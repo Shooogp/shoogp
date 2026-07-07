@@ -1,0 +1,225 @@
+{
+  "g4-sci": {
+    "book": "العلوم — الصف الرابع",
+    "units": [
+      {
+        "unit": "الإنسان والحيوان",
+        "lessons": [
+          { "title": "الهياكل العظمية", "file": "g4s-1-1", "open": true },
+          { "title": "الهيكل العظمي للإنسان", "file": "g4s-1-2", "open": true },
+          { "title": "لماذا نحتاج إلى هيكل عظمي؟", "file": "g4s-1-3", "open": true },
+          { "title": "الهياكل العظمية والحركة", "file": "g4s-1-4", "open": true },
+          { "title": "العقاقير كأدوية", "file": "g4s-1-5", "open": true },
+          { "title": "كيف تعمل الأدوية؟", "file": "g4s-1-6", "open": false },
+          { "title": "تحقّق من تقدّمك", "file": "g4s-1-7", "open": false }
+        ]
+      },
+      {
+        "unit": "الكائنات الحية والبيئات",
+        "lessons": [
+          { "title": "الطيور المُدهشة", "file": "g4s-2-1", "open": false },
+          { "title": "موطن الحلزون", "file": "g4s-2-2", "open": false },
+          { "title": "الحيوانات في المواطن الطبيعية", "file": "g4s-2-3", "open": false },
+          { "title": "المفاتيح التعريفية", "file": "g4s-2-4", "open": false },
+          { "title": "تمييز الحيوانات اللافقارية", "file": "g4s-2-5", "open": false },
+          { "title": "كيف نؤثّر على البيئة؟", "file": "g4s-2-6", "open": false },
+          { "title": "الماء الرائع", "file": "g4s-2-7", "open": false },
+          { "title": "إعادة التدوير تحمي الأرض", "file": "g4s-2-8", "open": false },
+          { "title": "تحقّق من تقدّمك", "file": "g4s-2-9", "open": false }
+        ]
+      },
+      {
+        "unit": "المواد الصلبة والسائلة والغازية",
+        "lessons": [
+          { "title": "المادة", "file": "g4s-3-1", "open": false },
+          { "title": "المادة تتكوّن من جُزيئات", "file": "g4s-3-2", "open": false },
+          { "title": "كيف تختلف المواد الصلبة والسائلة والغازية؟", "file": "g4s-3-3", "open": false },
+          { "title": "الانصهار والتجمّد والغليان", "file": "g4s-3-4", "open": false },
+          { "title": "انصهار أنواع مختلفة من المواد الصلبة", "file": "g4s-3-5", "open": false },
+          { "title": "درجات الانصهار ودرجات الغليان", "file": "g4s-3-6", "open": false },
+          { "title": "تحقّق من تقدّمك", "file": "g4s-3-7", "open": false }
+        ]
+      }
+    ]
+  },
+  "g3-sci": {
+    "book": "العلوم — الصف الثالث",
+    "units": [
+      {
+        "unit": "الاعتناء بالنباتات",
+        "lessons": [
+          { "title": "النباتات وأجزاؤها", "file": "g3s-1-1", "open": true },
+          { "title": "النباتات بحاجة إلى الضوء والماء", "file": "g3s-1-2", "open": false },
+          { "title": "نقل الماء", "file": "g3s-1-3", "open": false },
+          { "title": "نمو النباتات ودرجة الحرارة", "file": "g3s-1-4", "open": false },
+          { "title": "تحقّق من تقدّمك", "file": "g3s-1-5", "open": false }
+        ]
+      },
+      {
+        "unit": "الاعتناء بأنفسنا",
+        "lessons": [
+          { "title": "المجموعات الغذائية", "file": "g3s-2-1", "open": false },
+          { "title": "نظام غذائي صحي", "file": "g3s-2-2", "open": false },
+          { "title": "نظام غذائي غير صحي", "file": "g3s-2-3", "open": false },
+          { "title": "التمارين الرياضية والنوم", "file": "g3s-2-4", "open": false },
+          { "title": "تحقّق من تقدّمك", "file": "g3s-2-5", "open": false }
+        ]
+      },
+      {
+        "unit": "الكائنات الحية",
+        "lessons": [
+          { "title": "الكائنات الحية والأشياء غير الحية", "file": "g3s-3-1", "open": false },
+          { "title": "النمو والتغذية", "file": "g3s-3-2", "open": false },
+          { "title": "الحركة والتكاثر", "file": "g3s-3-3", "open": false },
+          { "title": "تصنيف البشر", "file": "g3s-3-4", "open": false },
+          { "title": "تصنيف الكائنات الحية", "file": "g3s-3-5", "open": false },
+          { "title": "تحقّق من تقدّمك", "file": "g3s-3-6", "open": false }
+        ]
+      }
+    ]
+  },
+  "g4-math": {
+    "book": "الرياضيات — الصف الرابع",
+    "units": [
+      {
+        "unit": "الأعداد ونظام العدّ",
+        "lessons": [
+          { "title": "قراءة وكتابة وتجزئة الأعداد", "file": "g4m-1-1", "open": true },
+          { "title": "الترتيب والتقريب", "file": "g4m-1-2", "open": false },
+          { "title": "الأعداد الموجبة والسالبة", "file": "g4m-1-3", "open": false },
+          { "title": "الأعداد الفردية والزوجية", "file": "g4m-1-4", "open": false }
+        ]
+      },
+      {
+        "unit": "الجمع والطرح",
+        "lessons": [
+          { "title": "الجمع (١)", "file": "g4m-2-1", "open": false },
+          { "title": "الطرح (١)", "file": "g4m-2-2", "open": false },
+          { "title": "التجزئة بهدف الجمع والطرح", "file": "g4m-2-3", "open": false },
+          { "title": "جمع وطرح الأعداد القريبة من مضاعفات العشرة", "file": "g4m-2-4", "open": false },
+          { "title": "اختيار الطريقة الأفضل", "file": "g4m-2-5", "open": false }
+        ]
+      },
+      {
+        "unit": "الضرب والقسمة",
+        "lessons": [
+          { "title": "الضرب والقسمة على ١٠ و١٠٠", "file": "g4m-3-1", "open": false },
+          { "title": "تعلّم حقائق الضرب", "file": "g4m-3-2", "open": false },
+          { "title": "استخدام حقائق الضرب", "file": "g4m-3-3", "open": false },
+          { "title": "استقصاء الأنماط", "file": "g4m-3-4", "open": false },
+          { "title": "المضاعفات أو الأمثال", "file": "g4m-3-5", "open": false },
+          { "title": "الضرب", "file": "g4m-3-6", "open": false },
+          { "title": "تدريبات ضرب إضافية", "file": "g4m-3-7", "open": false },
+          { "title": "القسمة", "file": "g4m-3-8", "open": false }
+        ]
+      },
+      {
+        "unit": "القياس",
+        "lessons": [
+          { "title": "قياس الوزن", "file": "g4m-4-1", "open": false },
+          { "title": "قراءة الوقت (١)", "file": "g4m-4-2", "open": false },
+          { "title": "استخدام الجدول الزمني", "file": "g4m-4-3", "open": false },
+          { "title": "المساحة", "file": "g4m-4-4", "open": false },
+          { "title": "المحيط", "file": "g4m-4-5", "open": false },
+          { "title": "النقود", "file": "g4m-4-6", "open": false }
+        ]
+      },
+      {
+        "unit": "تنظيم البيانات وتمثيلها",
+        "lessons": [
+          { "title": "التمثيل بعلامات العدّ والأعمدة", "file": "g4m-5-1", "open": false },
+          { "title": "التمثيل بالمصوّرات", "file": "g4m-5-2", "open": false },
+          { "title": "مخططات كارول (١)", "file": "g4m-5-3", "open": false },
+          { "title": "مخططات فِن", "file": "g4m-5-4", "open": false }
+        ]
+      }
+    ]
+  },
+  "g4-arabic-1": {
+    "book": "أحب لغتي (الجزء الأول) — الصف الرابع",
+    "units": [
+      {
+        "unit": "درس المراجعة",
+        "lessons": [
+          { "title": "مها والعصافير", "file": "g4a1-0-1", "open": true }
+        ]
+      },
+      {
+        "unit": "المحور الأول: في رُبوع وطني",
+        "lessons": [
+          { "title": "استماع: أجمل مكان في الدنيا", "file": "g4a1-1-1", "open": false },
+          { "title": "مستند بصري: قراءة شعار", "file": "g4a1-1-2", "open": false },
+          { "title": "الدرس الأول: مغامرة إلى قرية (الغَمب)", "file": "g4a1-1-3", "open": false },
+          { "title": "الدرس الثاني: خُبز ولَبَن", "file": "g4a1-1-4", "open": false },
+          { "title": "الدرس الثالث: بلادي عُمان", "file": "g4a1-1-5", "open": false },
+          { "title": "أنشد وأحفظ: بني وطني", "file": "g4a1-1-6", "open": false },
+          { "title": "قراءة حرّة: بين رفوف مكتبتي", "file": "g4a1-1-7", "open": false },
+          { "title": "أُقيّم أدائي", "file": "g4a1-1-8", "open": false }
+        ]
+      }
+    ]
+  },
+  "g4-arabic-2": {
+    "book": "أحب لغتي (الجزء الثاني) — الصف الرابع",
+    "units": [
+      {
+        "unit": "المحور الثاني: قصص وعِبَر",
+        "lessons": [
+          { "title": "استماع: الرسول لا يردّ سائلاً", "file": "g4a2-2-1", "open": true },
+          { "title": "مستند بصري: قراءة غلاف قصة", "file": "g4a2-2-2", "open": false },
+          { "title": "الدرس الأول: عُمر يتفقّد الرعيّة", "file": "g4a2-2-3", "open": false },
+          { "title": "الدرس الثاني: مُخّ الوَعِل", "file": "g4a2-2-4", "open": false },
+          { "title": "الدرس الثالث: نصيحة أب", "file": "g4a2-2-5", "open": false },
+          { "title": "أتلو وأحفظ: من سورة القلم", "file": "g4a2-2-6", "open": false },
+          { "title": "قراءة حرّة", "file": "g4a2-2-7", "open": false },
+          { "title": "أُقيّم أدائي", "file": "g4a2-2-8", "open": false }
+        ]
+      }
+    ]
+  },
+  "g4-dini-1": {
+    "book": "ديني حياتي (الجزء الأول) — الصف الرابع",
+    "units": [
+      { "unit": "التلاوة والحفظ", "lessons": [ { "title": "التلاوة والحفظ", "file": "g4d1-0-1", "open": true } ] },
+      {
+        "unit": "الوحدة الأولى",
+        "lessons": [
+          { "title": "الدرس الأول: سورة المطفّفين (١–١٧)", "file": "g4d1-1-1", "open": false },
+          { "title": "الدرس الثاني: الرِّفق", "file": "g4d1-1-2", "open": false },
+          { "title": "الدرس الثالث: اليوم الآخر", "file": "g4d1-1-3", "open": false },
+          { "title": "الدرس الرابع: أتجنّب مكروهات الوُضوء", "file": "g4d1-1-4", "open": false },
+          { "title": "الدرس الخامس: إسلام سيّدنا عمر بن الخطّاب", "file": "g4d1-1-5", "open": false },
+          { "title": "الدرس السادس: أدب الاستئذان", "file": "g4d1-1-6", "open": false }
+        ]
+      },
+      {
+        "unit": "الوحدة الثانية",
+        "lessons": [
+          { "title": "الدرس الأول: سورة المطفّفين (١٨–٢٨)", "file": "g4d1-2-1", "open": false },
+          { "title": "الدرس الثاني: تحيّة المسجد", "file": "g4d1-2-2", "open": false },
+          { "title": "الدرس الثالث: الله الغفور", "file": "g4d1-2-3", "open": false },
+          { "title": "الدرس الرابع: التيمّم", "file": "g4d1-2-4", "open": false },
+          { "title": "الدرس الخامس: السيّدة فاطمة الزهراء", "file": "g4d1-2-5", "open": false },
+          { "title": "الدرس السادس: أحسن الظّن", "file": "g4d1-2-6", "open": false }
+        ]
+      }
+    ]
+  },
+  "g4-dini-2": {
+    "book": "ديني حياتي (الجزء الثاني) — الصف الرابع",
+    "units": [
+      { "unit": "التلاوة والحفظ", "lessons": [ { "title": "التلاوة والحفظ", "file": "g4d2-0-1", "open": true } ] },
+      {
+        "unit": "الوحدة الثالثة",
+        "lessons": [
+          { "title": "الدرس الأول: سورة الانفطار", "file": "g4d2-3-1", "open": false },
+          { "title": "الدرس الثاني: المؤمن للمؤمن", "file": "g4d2-3-2", "open": false },
+          { "title": "الدرس الثالث: أُومن بالقضاء والقَدَر", "file": "g4d2-3-3", "open": false },
+          { "title": "الدرس الرابع: شروط صحّة الصلاة", "file": "g4d2-3-4", "open": false },
+          { "title": "الدرس الخامس: المُقاطعة", "file": "g4d2-3-5", "open": false },
+          { "title": "الدرس السادس: المُساواة", "file": "g4d2-3-6", "open": false }
+        ]
+      }
+    ]
+  }
+}
