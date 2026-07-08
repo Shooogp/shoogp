@@ -267,9 +267,23 @@ function renderDragDrop(q, body, fb){
     body.querySelectorAll('.target').forEach(bx=>{
       const dot=body.querySelector('.dnd-dot[data-i="'+bx.dataset.i+'"]'); if(!dot) return;
       const br=bx.getBoundingClientRect(), dr=dot.getBoundingClientRect();
+      // مركز الصندوق ومركز النقطة (نسبةً إلى منطقة النشاط)
+      const cx=br.left+br.width/2-sr.left, cy=br.top+br.height/2-sr.top;
+      const px=dr.left+dr.width/2-sr.left, py=dr.top+dr.height/2-sr.top;
+      // يبدأ الخط من حافة الصندوق (بعد الحد المنقّط) لا من مركزه
+      const dx=px-cx, dy=py-cy;
+      const GAP=4; // فراغ بسيط بعد الحد المنقّط
+      const hw=br.width/2, hh=br.height/2;
+      let sx=cx, sy=cy;
+      if(dx||dy){
+        const t=Math.min(hw/Math.abs(dx||1e-6), hh/Math.abs(dy||1e-6));
+        const len=Math.hypot(dx,dy);
+        sx=cx + dx*t + dx/len*GAP;
+        sy=cy + dy*t + dy/len*GAP;
+      }
       const ln=document.createElementNS(SVGNS,'line');
-      ln.setAttribute('x1',br.left+br.width/2-sr.left); ln.setAttribute('y1',br.top+br.height/2-sr.top);
-      ln.setAttribute('x2',dr.left+dr.width/2-sr.left); ln.setAttribute('y2',dr.top+dr.height/2-sr.top);
+      ln.setAttribute('x1',sx); ln.setAttribute('y1',sy);
+      ln.setAttribute('x2',px); ln.setAttribute('y2',py);
       ln.setAttribute('class','dndline'); svg.appendChild(ln);
     });
   }
