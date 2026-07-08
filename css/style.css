@@ -223,6 +223,8 @@
   .qnum{font-weight:700;color:#2c6e3f}
   .qtype{color:#7a8a75;font-size:.9rem;font-weight:700}
   .qprompt{margin:4px 0 16px}
+  /* لون نصّ السؤال في كتاب علوم الصف الثالث — أزرق */
+  body.theme-sci3 .card-box .qprompt{color:#2f88d0}
   /* اختيار من متعدد */
   .opts{display:flex;flex-direction:column;gap:10px;max-width:560px}
   .opt{width:100%;text-align:right;background:#eaf5ee;border:2px solid rgba(63,157,90,.25);border-radius:14px;
