@@ -190,9 +190,9 @@
   .target.filled.correct{background:#3f9d5a;border-color:#2c6e3f}
   .bank{display:flex;flex-direction:column;gap:12px}
   .bank .bt{font-weight:700;color:#2c6e3f;margin-bottom:2px}
-  .chip{background:linear-gradient(135deg,#ffd257,#f5a04a);border:2px solid #e08f2a;border-radius:14px;
-    padding:13px 16px;font-weight:700;font-size:1.02rem;color:#3a2c0a;cursor:grab;text-align:center;
-    box-shadow:0 3px 8px rgba(245,160,74,.3);user-select:none;touch-action:none;transition:.15s}
+  .chip{background:linear-gradient(135deg,#ffe9ad,#ffd777);border:2px solid #ecc659;border-radius:14px;
+    padding:13px 16px;font-weight:700;font-size:1.02rem;color:#4a3a10;cursor:grab;text-align:center;
+    box-shadow:0 3px 8px rgba(245,190,90,.22);user-select:none;touch-action:none;transition:.15s}
   .chip.used{opacity:.35;pointer-events:none;text-decoration:line-through}
   .chip.dragging{opacity:.6}
 
