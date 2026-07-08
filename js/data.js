@@ -11,7 +11,7 @@ window.DATA_FALLBACK = {
       "الأول": [],
       "الثاني": [],
       "الثالث": [
-        { key:"g3-sci", title:"العلوم", term:"الفصل الأول", color:"bk-red", ic:"🔬", isNew:false, theme:"theme-sci3", cover:"images/cover-g3-sci.jpg" }
+        { key:"g3-sci", title:"العلوم", term:"الفصل الأول", color:"bk-blue", ic:"🔬", isNew:false, theme:"theme-sci3", cover:"images/cover-g3-sci.jpg" }
       ],
       "الرابع": [
         { key:"g4-sci", title:"العلوم", term:"الفصل الأول", color:"bk-green", ic:"🔬", isNew:false, theme:"theme-sci", coverReal:"images/cover-g4-sci-real.jpg", coverOriginal:"images/cover-g4-sci.jpg" },
