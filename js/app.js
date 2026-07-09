@@ -41,11 +41,18 @@ function speak(t){if(muted||!('speechSynthesis'in window))return;try{speechSynth
 // مسار نسبيّ ليعمل على GitHub Pages. يُشغّل فقط عند الإجابة الصحيحة.
 const correctSound = new Audio('audio/correct.mp3');
 correctSound.preload = 'auto';
+// صوت الإجابة الخاطئة (audio/wrong.mp3) — بنفس أسلوب صوت الصواب
+const wrongSound = new Audio('audio/wrong.mp3');
+wrongSound.preload = 'auto';
 // حالة الكتم محفوظة بين الجلسات ليختار المعلّم مرّة واحدة
 let muted = (function(){try{return localStorage.getItem('shoogp-muted')==='1';}catch(e){return false;}})();
 function playCorrectSound(){
   if(muted) return;
   try{ correctSound.currentTime=0; const p=correctSound.play(); if(p&&p.catch)p.catch(function(){}); }catch(e){}
+}
+function playWrongSound(){
+  if(muted) return;
+  try{ wrongSound.currentTime=0; const p=wrongSound.play(); if(p&&p.catch)p.catch(function(){}); }catch(e){}
 }
 
 // فكّ قفل الصوت عند أول تفاعل (سياسة التشغيل التلقائي في متصفح السبورة الذكية)
@@ -54,11 +61,13 @@ function unlockAudio(){
   // تهيئة نطق الكلام العربي
   if('speechSynthesis' in window){try{const u=new SpeechSynthesisUtterance(' ');u.volume=0;speechSynthesis.speak(u);pickVoice();}catch(e){}}
   // تهيئة ملف الصوت: تشغيل صامت ثم إيقاف ليُسمح بالتشغيل البرمجي لاحقاً
-  try{const prev=correctSound.muted;correctSound.muted=true;const p=correctSound.play();
-    if(p&&p.then)p.then(function(){correctSound.pause();correctSound.currentTime=0;correctSound.muted=prev;})
-                  .catch(function(){correctSound.muted=prev;});
-    else{correctSound.pause();correctSound.currentTime=0;correctSound.muted=prev;}
-  }catch(e){}
+  [correctSound,wrongSound].forEach(function(snd){
+    try{const prev=snd.muted;snd.muted=true;const p=snd.play();
+      if(p&&p.then)p.then(function(){snd.pause();snd.currentTime=0;snd.muted=prev;})
+                    .catch(function(){snd.muted=prev;});
+      else{snd.pause();snd.currentTime=0;snd.muted=prev;}
+    }catch(e){}
+  });
 }
 ['click','touchstart','keydown'].forEach(ev=>document.addEventListener(ev,unlockAudio,{once:true,passive:true}));
 
@@ -72,7 +81,7 @@ function updateSoundBtn(){
 function toggleMute(){
   muted = !muted;
   try{localStorage.setItem('shoogp-muted', muted?'1':'0');}catch(e){}
-  if(muted){ try{correctSound.pause();}catch(e){} if('speechSynthesis'in window){try{speechSynthesis.cancel();}catch(e){}} }
+  if(muted){ try{correctSound.pause();}catch(e){} try{wrongSound.pause();}catch(e){} if('speechSynthesis'in window){try{speechSynthesis.cancel();}catch(e){}} }
   updateSoundBtn();
 }
 (function(){var b=document.getElementById('soundBtn');if(b){b.addEventListener('click',toggleMute);updateSoundBtn();}})();
@@ -199,7 +208,8 @@ function shuffle(a){return a.map(v=>[Math.random(),v]).sort((x,y)=>x[0]-y[0]).ma
 // تغذية راجعة موحّدة: نجاح (نجوم + احتفال + صوت) / إخفاق (تشجيع)
 // عند الصواب: يكفي صوت correct.mp3 — بلا نطق آلي متداخل معه
 function qWin(fb,msg,stars){fb.textContent=msg||'🎉 أحسنت!';fb.className='fb qfb good';playCorrectSound();addStar(stars||1);bumpStreak();}
-function qFail(fb,msg){fb.textContent=msg||'حاول مرة أخرى';fb.className='fb qfb bad';speak('حاول مرة أخرى');}
+// عند الخطأ: صوت wrong.mp3 — بنفس أسلوب صوت الصواب، بلا نطق آلي متداخل معه
+function qFail(fb,msg){fb.textContent=msg||'حاول مرة أخرى';fb.className='fb qfb bad';playWrongSound();}
 
 const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء'};
 
@@ -410,7 +420,7 @@ function renderTrueFalse(q, body, fb){
 function renderHotspot(q, body, fb){
   const inner=q.svg?q.svg:`<img src="${q.image}" alt="">`;
   const figCls = q.fit==='width' ? 'figwrap fw hsfig' : 'figwrap hsfig';
-  body.innerHTML=`<div class="dnd"><div class="stage stage-img"${q.bg?` style="background:${q.bg}"`:''}><div class="${figCls}">${inner}</div></div></div>`;
+  body.innerHTML=`<div class="dnd dnd-solo"><div class="stage stage-img"${q.bg?` style="background:${q.bg}"`:''}><div class="${figCls}">${inner}</div></div></div>`;
   const fig=body.querySelector('.hsfig'); fig.style.cursor='pointer';
   let done=false;
   fig.onclick=(e)=>{
