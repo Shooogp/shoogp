@@ -195,7 +195,8 @@ function backToLessons(){showScreen('lessonsScreen');}
 function shuffle(a){return a.map(v=>[Math.random(),v]).sort((x,y)=>x[0]-y[0]).map(v=>v[1]);}
 
 // تغذية راجعة موحّدة: نجاح (نجوم + احتفال + صوت) / إخفاق (تشجيع)
-function qWin(fb,msg,stars){fb.textContent=msg||'🎉 أحسنت!';fb.className='fb qfb good';playCorrectSound();speak('أحسنت، إجابة صحيحة');addStar(stars||1);bumpStreak();}
+// عند الصواب: يكفي صوت correct.mp3 — بلا نطق آلي متداخل معه
+function qWin(fb,msg,stars){fb.textContent=msg||'🎉 أحسنت!';fb.className='fb qfb good';playCorrectSound();addStar(stars||1);bumpStreak();}
 function qFail(fb,msg){fb.textContent=msg||'حاول مرة أخرى';fb.className='fb qfb bad';speak('حاول مرة أخرى');}
 
 // أسئلة افتراضية للدروس التي لم تُؤلَّف أسئلتها بعد (نموذج النبتة)
@@ -381,7 +382,7 @@ function renderMatching(q, body, fb){
     d.onclick=()=>{if(d.classList.contains('matched'))return;L.querySelectorAll('.left').forEach(x=>x.classList.remove('selected'));d.classList.add('selected');sel=d;speak(pr.a);};L.appendChild(d);});
   shuffle(q.pairs).forEach(pr=>{const d=document.createElement('div');d.className='mitem right';d.textContent=pr.b;d.dataset.k=pr.a;
     d.onclick=()=>{if(!sel||d.classList.contains('matched'))return;
-      if(sel.dataset.k===pr.a){drawLink(sel,d);sel.classList.add('matched');d.classList.add('matched');sel.classList.remove('selected');sel=null;done++;playCorrectSound();speak('صحيح');addStar(1);
+      if(sel.dataset.k===pr.a){drawLink(sel,d);sel.classList.add('matched');d.classList.add('matched');sel.classList.remove('selected');sel=null;done++;playCorrectSound();addStar(1);
         if(done===q.pairs.length) qWin(fb,'🌟 ممتاز! أكملت التوصيل',1);}
       else{qFail(fb,'ليست الإجابة الصحيحة، حاول مجدداً');d.style.background='#fde2e2';setTimeout(()=>d.style.background='',500);}};Rr.appendChild(d);});
   body.querySelector('.btn-reset').onclick=()=>renderMatching(q,body,fb);
