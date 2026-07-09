@@ -216,6 +216,35 @@ const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصي�
 // تحويل الأرقام إلى هندية (عربية) للعرض
 function arNum(n){ return String(n).replace(/[0-9]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'[+d];}); }
 
+/* ===== طبقة العناصر التعليمية على حواف بطاقة السؤال (رسوم SVG داخل الكود) =====
+   وسط البطاقة يبقى فاتحاً هادئاً للسؤال، والعناصر (كتاب/قلم/مسطرة/مثلّث/دورق/
+   ذرّة/منقلة/نجمة/حرف/رقم) موزّعة على الحواف بألوان هادئة وشفافية خفيفة. */
+const QI={
+  book:'<path d="M4 5.5c2.6-1 5.4-1 8 .3 2.6-1.3 5.4-1.3 8-.3v13c-2.6-1-5.4-1-8 .3-2.6-1.3-5.4-1.3-8-.3z"/><path d="M12 5.8v13"/>',
+  pencil:'<path d="M4 20l1.2-4.2L15 6l3 3L8.2 18.8z"/><path d="M13.3 7.7l3 3"/>',
+  ruler:'<rect x="2.5" y="8.5" width="19" height="7" rx="1.2"/><path d="M6.5 8.5v2.4M10 8.5v3.4M13.5 8.5v2.4M17 8.5v3.4"/>',
+  triangle:'<path d="M4 18.5h15.5L4 6.5z"/><path d="M6.3 16.4v-2h2"/>',
+  flask:'<path d="M9.5 3.5h5M10.5 3.5v5.2l-4.4 8.1a2 2 0 0 0 1.8 3h8.2a2 2 0 0 0 1.8-3l-4.4-8.1V3.5"/><path d="M8 15h8"/>',
+  atom:'<circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="9.5" ry="4"/><ellipse cx="12" cy="12" rx="9.5" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9.5" ry="4" transform="rotate(120 12 12)"/>',
+  protractor:'<path d="M3 15.5a9 9 0 0 1 18 0z"/><path d="M3 15.5h18"/><path d="M8 15.5a4 4 0 0 1 8 0"/>',
+  star:'<path d="M12 3.8l2.3 5.2 5.7.5-4.3 3.7 1.3 5.6L12 16.3l-4.9 2.5 1.3-5.6-4.3-3.7 5.7-.5z"/>'
+};
+function qiSvg(name,color){return '<svg viewBox="0 0 24 24" fill="none" stroke="'+color+'" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+QI[name]+'</svg>';}
+function qiGlyph(ch,color){return '<svg viewBox="0 0 24 24"><text x="12" y="18.5" text-anchor="middle" font-family="Cairo,Tajawal,sans-serif" font-size="19" font-weight="900" fill="'+color+'">'+ch+'</text></svg>';}
+const QDECO_ITEMS=[
+  {s:qiSvg('book','#7fae86'),      css:'top:8px;right:12px',              big:true},
+  {s:qiSvg('star','#d6b46a'),      css:'top:10px;left:50%;margin-left:-17px'},
+  {s:qiSvg('ruler','#8aa8cc'),     css:'top:8px;left:12px'},
+  {s:qiSvg('pencil','#d6a86a'),    css:'top:72px;right:6px'},
+  {s:qiSvg('triangle','#7fae86'),  css:'top:72px;left:6px'},
+  {s:qiGlyph('٣','#a992c4'),       css:'top:50%;right:8px;margin-top:-17px'},
+  {s:qiSvg('protractor','#7bb3a6'),css:'top:50%;left:8px;margin-top:-17px'},
+  {s:qiSvg('flask','#7bb3a6'),     css:'bottom:10px;right:14px'},
+  {s:qiGlyph('أ','#a992c4'),       css:'bottom:8px;left:50%;margin-left:-17px'},
+  {s:qiSvg('atom','#c58f9a'),      css:'bottom:10px;left:12px',           big:true}
+];
+const QDECO='<div class="qdeco">'+QDECO_ITEMS.map(function(it){return '<span class="di'+(it.big?' big':'')+'" style="'+it.css+'">'+it.s+'</span>';}).join('')+'</div>';
+
 // يبني أسئلة الدرس ويعرضها واحداً تلو الآخر مع تنقّل حرّ ومؤشّر تقدّم وزر إنهاء
 function renderQuestions(ls){
   const host=document.getElementById('questionList'); if(!host) return; host.innerHTML='';
@@ -227,7 +256,7 @@ function renderQuestions(ls){
   qs.forEach((q,i)=>{
     const fn=R[q.type]; if(!fn) return;
     const card=document.createElement('div'); card.className='card-box qcard';
-    card.innerHTML=`<div class="qhead"><span class="qnum">سؤال ${arNum(i+1)}</span><span class="qtype">${Q_LABEL[q.type]||''}</span></div>`+
+    card.innerHTML=QDECO+`<div class="qhead"><span class="qnum">سؤال ${arNum(i+1)}</span><span class="qtype">${Q_LABEL[q.type]||''}</span></div>`+
       `<h3 class="qprompt">${q.prompt||q.statement||''}</h3>`+
       `<div class="qbody"></div><div class="fb qfb"></div>`;
     fn(q, card.querySelector('.qbody'), card.querySelector('.qfb'));
