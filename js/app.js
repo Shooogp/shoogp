@@ -279,7 +279,6 @@ function renderQuestions(ls){
       `<h3 class="qprompt">${q.prompt||q.statement||''}</h3>`+
       `<div class="qbody"></div><div class="fb qfb"></div>`;
     fn(q, card.querySelector('.qbody'), card.querySelector('.qfb'));
-    buildWavyFrame(card);
     slides.appendChild(card);
   });
   host.appendChild(slides);
