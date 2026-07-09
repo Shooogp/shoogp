@@ -238,14 +238,14 @@
     border:1px solid rgba(255,255,255,.16);
     box-shadow:0 12px 30px rgba(0,0,0,.28)}
   @media(max-width:560px){ .qcard{padding:24px 18px 28px} }
-  /* لون الكتاب بشفافية 0.5 (نصف القوّة) فوق خلفية الصفحة الفضائية الداكنة.
+  /* لون الكتاب بشفافية 0.3 فوق خلفية الصفحة الفضائية الداكنة.
      التخفيف يُبقي النصّ الأبيض واضحاً ويربط البطاقة بهوية الكتاب. */
-  .qcard.bk-red{background:linear-gradient(150deg,rgba(242,97,105,.5),rgba(207,58,68,.5))}
-  .qcard.bk-green{background:linear-gradient(150deg,rgba(92,201,138,.5),rgba(63,168,112,.5))}
-  .qcard.bk-orange{background:linear-gradient(150deg,rgba(245,160,74,.5),rgba(224,127,43,.5))}
-  .qcard.bk-blue{background:linear-gradient(150deg,rgba(79,168,232,.5),rgba(47,136,208,.5))}
-  .qcard.bk-purple{background:linear-gradient(150deg,rgba(160,127,216,.5),rgba(127,92,192,.5))}
-  .qcard.bk-teal{background:linear-gradient(150deg,rgba(75,179,171,.5),rgba(51,151,143,.5))}
+  .qcard.bk-red{background:linear-gradient(150deg,rgba(242,97,105,.3),rgba(207,58,68,.3))}
+  .qcard.bk-green{background:linear-gradient(150deg,rgba(92,201,138,.3),rgba(63,168,112,.3))}
+  .qcard.bk-orange{background:linear-gradient(150deg,rgba(245,160,74,.3),rgba(224,127,43,.3))}
+  .qcard.bk-blue{background:linear-gradient(150deg,rgba(79,168,232,.3),rgba(47,136,208,.3))}
+  .qcard.bk-purple{background:linear-gradient(150deg,rgba(160,127,216,.3),rgba(127,92,192,.3))}
+  .qcard.bk-teal{background:linear-gradient(150deg,rgba(75,179,171,.3),rgba(51,151,143,.3))}
   /* تعتيم قاعديّ أسفل البطاقة (عمق + وضوح النصّ) */
   .qcard::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
     background:linear-gradient(180deg,rgba(0,0,0,0) 58%,rgba(0,0,0,.16) 100%)}
