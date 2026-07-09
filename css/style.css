@@ -63,6 +63,16 @@
   .pill .e{font-size:1.1rem}
   #starTxt{color:var(--star)}
 
+  /* زر كتم/تشغيل الصوت (أعلى اليمين) */
+  .sound-btn{position:absolute;top:0;right:0;
+    background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);
+    border-radius:16px;padding:8px 14px;font-size:1.25rem;line-height:1;
+    cursor:pointer;color:#fff;backdrop-filter:blur(6px);transition:.2s;
+    -webkit-user-select:none;user-select:none;touch-action:manipulation}
+  .sound-btn:hover{background:rgba(255,255,255,.24)}
+  .sound-btn:active{transform:scale(.94)}
+  .sound-btn.muted{opacity:.6}
+
   /* تبويب الفصول الدراسية (الأعلى) */
   .terms{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:6px 0 54px}
   .term-btn{background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.18);
