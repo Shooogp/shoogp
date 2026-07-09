@@ -248,10 +248,11 @@
   /* تعتيم قاعديّ أسفل البطاقة (عمق + وضوح النصّ) */
   .qcard::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
     background:linear-gradient(180deg,rgba(0,0,0,0) 58%,rgba(0,0,0,.16) 100%)}
-  /* طبقة النجوم البيضاء داخل البطاقة */
-  .qstars{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
-  .qstars i{position:absolute;background:#fff;border-radius:50%;opacity:.7;animation:tw 3s infinite}
-  /* المحتوى فوق النجوم والتعتيم */
+  /* نقاط شبكية صغيرة منتظمة (نفس نمط خلفية بطاقة الكتاب) */
+  .qcard::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+    background-image:radial-gradient(rgba(255,255,255,.17) 1.3px, transparent 1.7px);
+    background-size:22px 22px;background-position:6px 6px}
+  /* المحتوى فوق النقاط والتعتيم */
   .qcard>.qhead,.qcard>.qprompt,.qcard>.qbody,.qcard>.qfb{position:relative;z-index:2}
   .qhead{display:flex;justify-content:space-between;align-items:center;font-family:'Tajawal';margin-bottom:2px}
   /* نصوص رأس/متن البطاقة فاتحة لتوضح فوق لون الكتاب */
