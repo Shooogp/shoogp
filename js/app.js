@@ -229,9 +229,7 @@ function renderQuestions(ls){
   qs.forEach((q,i)=>{
     const fn=R[q.type]; if(!fn) return;
     const card=document.createElement('div');
-    // استثناء: السؤال الثالث في كتاب علوم الصف الرابع يُعرض برمادي شفّاف
-    const grayOverride = (currentBook==='g4-sci' && i===2);
-    card.className='card-box qcard'+(grayOverride?' qcard-gray':(currentBookColor?' '+currentBookColor:''));
+    card.className='card-box qcard';
     card.innerHTML=`<div class="qhead"><span class="qnum">سؤال ${arNum(i+1)}</span><span class="qtype">${Q_LABEL[q.type]||''}</span></div>`+
       `<h3 class="qprompt">${q.prompt||q.statement||''}</h3>`+
       `<div class="qbody"></div><div class="fb qfb"></div>`;
