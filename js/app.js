@@ -352,7 +352,7 @@ function renderDragDrop(q, body, fb){
 }
 
 /* ② توصيل: خط منحنٍ (Bézier) بنقطتين يُرسم بين المفردتين عند التوصيل الصحيح */
-const MATCH_LINE='#9ef01a';
+const MATCH_LINE='#b5c99a';
 function renderMatching(q, body, fb){
   body.innerHTML=`<div class="matchwrap"><svg class="matchsvg"></svg>`+
     `<div class="match"><div class="mcol mcolL"></div><div class="mcol mcolR"></div></div></div>`+
