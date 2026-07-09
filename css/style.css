@@ -197,8 +197,8 @@
     border:2px dashed #b5c99a;border-radius:12px;padding:8px 4px;min-width:88px;text-align:center;
     font-weight:700;color:#9aa596;font-size:.86rem;transition:.2s}
   .target.over{background:#fff6d8;border-color:#f5b942;transform:translate(-50%,-50%) scale(1.08)}
-  /* بمجرد وضع الإجابة داخل الصندوق: يتحوّل إلى البرتقالي الفاتح #FFE0B3 (ويعود للقديم إن أُفرغ) */
-  .target.filled{background:#FFE0B3;border-style:solid;border-color:#e0b380;color:#3a2c0a}
+  /* بمجرد وضع الإجابة داخل الصندوق (غير فارغ): يتحوّل إلى الأصفر الذهبي #ffd000 */
+  .target.filled{background:#ffd000;border-style:solid;border-color:#d9ac00;color:#3a2c0a}
   .target.filled.correct{background:#b5c99a;border-color:#8fa86f;color:#20340a}
   .bank{display:flex;flex-direction:column;gap:12px}
   .bank .bt{font-weight:700;color:#2c6e3f;margin-bottom:2px}
