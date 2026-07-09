@@ -35,9 +35,47 @@ let score=0, streak=0;
 let arVoice=null, audioReady=false;
 function pickVoice(){const vs=speechSynthesis.getVoices();arVoice=vs.find(v=>v.lang&&v.lang.toLowerCase().startsWith('ar'))||null;}
 if('speechSynthesis' in window){pickVoice();speechSynthesis.onvoiceschanged=pickVoice;}
-function speak(t){if(!('speechSynthesis'in window))return;try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='ar-SA';u.rate=.95;if(!arVoice)pickVoice();if(arVoice)u.voice=arVoice;speechSynthesis.speak(u);}catch(e){}}
-function unlockAudio(){if(audioReady||!('speechSynthesis'in window))return;audioReady=true;try{const u=new SpeechSynthesisUtterance(' ');u.volume=0;speechSynthesis.speak(u);pickVoice();}catch(e){}}
+function speak(t){if(muted||!('speechSynthesis'in window))return;try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='ar-SA';u.rate=.95;if(!arVoice)pickVoice();if(arVoice)u.voice=arVoice;speechSynthesis.speak(u);}catch(e){}}
+
+/* ===== صوت الإجابة الصحيحة (audio/correct.mp3) ===== */
+// مسار نسبيّ ليعمل على GitHub Pages. يُشغّل فقط عند الإجابة الصحيحة.
+const correctSound = new Audio('audio/correct.mp3');
+correctSound.preload = 'auto';
+// حالة الكتم محفوظة بين الجلسات ليختار المعلّم مرّة واحدة
+let muted = (function(){try{return localStorage.getItem('shoogp-muted')==='1';}catch(e){return false;}})();
+function playCorrectSound(){
+  if(muted) return;
+  try{ correctSound.currentTime=0; const p=correctSound.play(); if(p&&p.catch)p.catch(function(){}); }catch(e){}
+}
+
+// فكّ قفل الصوت عند أول تفاعل (سياسة التشغيل التلقائي في متصفح السبورة الذكية)
+function unlockAudio(){
+  if(audioReady) return; audioReady=true;
+  // تهيئة نطق الكلام العربي
+  if('speechSynthesis' in window){try{const u=new SpeechSynthesisUtterance(' ');u.volume=0;speechSynthesis.speak(u);pickVoice();}catch(e){}}
+  // تهيئة ملف الصوت: تشغيل صامت ثم إيقاف ليُسمح بالتشغيل البرمجي لاحقاً
+  try{const prev=correctSound.muted;correctSound.muted=true;const p=correctSound.play();
+    if(p&&p.then)p.then(function(){correctSound.pause();correctSound.currentTime=0;correctSound.muted=prev;})
+                  .catch(function(){correctSound.muted=prev;});
+    else{correctSound.pause();correctSound.currentTime=0;correctSound.muted=prev;}
+  }catch(e){}
+}
 ['click','touchstart','keydown'].forEach(ev=>document.addEventListener(ev,unlockAudio,{once:true,passive:true}));
+
+/* ===== زر كتم/تشغيل الصوت ===== */
+function updateSoundBtn(){
+  const b=document.getElementById('soundBtn'); if(!b) return;
+  b.textContent = muted ? '🔇' : '🔊';
+  b.classList.toggle('muted', muted);
+  b.title = muted ? 'الصوت مكتوم — اضغط للتشغيل' : 'الصوت يعمل — اضغط للكتم';
+}
+function toggleMute(){
+  muted = !muted;
+  try{localStorage.setItem('shoogp-muted', muted?'1':'0');}catch(e){}
+  if(muted){ try{correctSound.pause();}catch(e){} if('speechSynthesis'in window){try{speechSynthesis.cancel();}catch(e){}} }
+  updateSoundBtn();
+}
+(function(){var b=document.getElementById('soundBtn');if(b){b.addEventListener('click',toggleMute);updateSoundBtn();}})();
 function addStar(n){score+=n;document.getElementById('starTxt').textContent=score;}
 function bumpStreak(){streak++;document.getElementById('streak').textContent=streak;}
 
@@ -157,7 +195,7 @@ function backToLessons(){showScreen('lessonsScreen');}
 function shuffle(a){return a.map(v=>[Math.random(),v]).sort((x,y)=>x[0]-y[0]).map(v=>v[1]);}
 
 // تغذية راجعة موحّدة: نجاح (نجوم + احتفال + صوت) / إخفاق (تشجيع)
-function qWin(fb,msg,stars){fb.textContent=msg||'🎉 أحسنت!';fb.className='fb qfb good';speak('أحسنت، إجابة صحيحة');addStar(stars||1);bumpStreak();}
+function qWin(fb,msg,stars){fb.textContent=msg||'🎉 أحسنت!';fb.className='fb qfb good';playCorrectSound();speak('أحسنت، إجابة صحيحة');addStar(stars||1);bumpStreak();}
 function qFail(fb,msg){fb.textContent=msg||'حاول مرة أخرى';fb.className='fb qfb bad';speak('حاول مرة أخرى');}
 
 // أسئلة افتراضية للدروس التي لم تُؤلَّف أسئلتها بعد (نموذج النبتة)
@@ -343,7 +381,7 @@ function renderMatching(q, body, fb){
     d.onclick=()=>{if(d.classList.contains('matched'))return;L.querySelectorAll('.left').forEach(x=>x.classList.remove('selected'));d.classList.add('selected');sel=d;speak(pr.a);};L.appendChild(d);});
   shuffle(q.pairs).forEach(pr=>{const d=document.createElement('div');d.className='mitem right';d.textContent=pr.b;d.dataset.k=pr.a;
     d.onclick=()=>{if(!sel||d.classList.contains('matched'))return;
-      if(sel.dataset.k===pr.a){drawLink(sel,d);sel.classList.add('matched');d.classList.add('matched');sel.classList.remove('selected');sel=null;done++;speak('صحيح');addStar(1);
+      if(sel.dataset.k===pr.a){drawLink(sel,d);sel.classList.add('matched');d.classList.add('matched');sel.classList.remove('selected');sel=null;done++;playCorrectSound();speak('صحيح');addStar(1);
         if(done===q.pairs.length) qWin(fb,'🌟 ممتاز! أكملت التوصيل',1);}
       else{qFail(fb,'ليست الإجابة الصحيحة، حاول مجدداً');d.style.background='#fde2e2';setTimeout(()=>d.style.background='',500);}};Rr.appendChild(d);});
   body.querySelector('.btn-reset').onclick=()=>renderMatching(q,body,fb);
