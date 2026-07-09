@@ -230,7 +230,19 @@
   .fb.good{color:#2c6e3f} .fb.bad{color:#c94a4a}
 
   /* ===== محرّك الأسئلة الموحّد ===== */
-  .qcard{margin-bottom:18px}
+  /* بطاقة السؤال: وسط فاتح هادئ + عناصر مدرسية على الحواف */
+  .qcard{margin-bottom:18px;position:relative;overflow:hidden;
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 42%, rgba(255,255,255,.85) 0%, rgba(255,255,255,0) 72%),
+      linear-gradient(135deg,#f7f4ef 0%,#eef3ec 45%,#eef0f6 100%)}
+  /* المحتوى فوق طبقة الزينة */
+  .qcard>.qhead,.qcard>.qprompt,.qcard>.qbody,.qcard>.qfb{position:relative;z-index:1}
+  /* طبقة العناصر التعليمية (خلف المحتوى، لا تعترض النقر) */
+  .qdeco{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.5}
+  .qdeco .di{position:absolute;width:34px;height:34px}
+  .qdeco .di svg{width:100%;height:100%;display:block;overflow:visible}
+  .qdeco .di.big{width:40px;height:40px}
+  @media(max-width:560px){ .qdeco{opacity:.4} .qdeco .di{width:26px;height:26px} }
   .qhead{display:flex;justify-content:space-between;align-items:center;font-family:'Tajawal';margin-bottom:2px}
   .qnum{font-weight:700;color:#2c6e3f}
   .qtype{color:#7a8a75;font-size:.9rem;font-weight:700}
