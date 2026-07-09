@@ -238,13 +238,14 @@
     border:1px solid rgba(255,255,255,.16);
     box-shadow:0 12px 30px rgba(0,0,0,.28)}
   @media(max-width:560px){ .qcard{padding:24px 18px 28px} }
-  /* ألوان بطاقة الكتاب (نفس تدرّجات بطاقات الكتب) مع تعتيم خفيف لوضوح النصّ الأبيض */
-  .qcard.bk-red{background:linear-gradient(0deg,rgba(0,0,0,.12),rgba(0,0,0,.12)),linear-gradient(150deg,#f26169,#cf3a44)}
-  .qcard.bk-green{background:linear-gradient(0deg,rgba(0,0,0,.16),rgba(0,0,0,.16)),linear-gradient(150deg,#5cc98a,#3fa870)}
-  .qcard.bk-orange{background:linear-gradient(0deg,rgba(0,0,0,.14),rgba(0,0,0,.14)),linear-gradient(150deg,#f5a04a,#e07f2b)}
-  .qcard.bk-blue{background:linear-gradient(0deg,rgba(0,0,0,.12),rgba(0,0,0,.12)),linear-gradient(150deg,#4fa8e8,#2f88d0)}
-  .qcard.bk-purple{background:linear-gradient(0deg,rgba(0,0,0,.12),rgba(0,0,0,.12)),linear-gradient(150deg,#a07fd8,#7f5cc0)}
-  .qcard.bk-teal{background:linear-gradient(0deg,rgba(0,0,0,.14),rgba(0,0,0,.14)),linear-gradient(150deg,#4bb3ab,#33978f)}
+  /* لون الكتاب بشفافية 0.5 (نصف القوّة) فوق خلفية الصفحة الفضائية الداكنة.
+     التخفيف يُبقي النصّ الأبيض واضحاً ويربط البطاقة بهوية الكتاب. */
+  .qcard.bk-red{background:linear-gradient(150deg,rgba(242,97,105,.5),rgba(207,58,68,.5))}
+  .qcard.bk-green{background:linear-gradient(150deg,rgba(92,201,138,.5),rgba(63,168,112,.5))}
+  .qcard.bk-orange{background:linear-gradient(150deg,rgba(245,160,74,.5),rgba(224,127,43,.5))}
+  .qcard.bk-blue{background:linear-gradient(150deg,rgba(79,168,232,.5),rgba(47,136,208,.5))}
+  .qcard.bk-purple{background:linear-gradient(150deg,rgba(160,127,216,.5),rgba(127,92,192,.5))}
+  .qcard.bk-teal{background:linear-gradient(150deg,rgba(75,179,171,.5),rgba(51,151,143,.5))}
   /* تعتيم قاعديّ أسفل البطاقة (عمق + وضوح النصّ) */
   .qcard::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
     background:linear-gradient(180deg,rgba(0,0,0,0) 58%,rgba(0,0,0,.16) 100%)}
