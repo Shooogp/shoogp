@@ -232,22 +232,13 @@
   /* ===== محرّك الأسئلة الموحّد ===== */
   /* بطاقة السؤال تأخذ هوية الكتاب: خلفيتها بلون بطاقة الكتاب (bk-*) + نجوم بيضاء
      (الثيم الفضائي). تتغيّر تلقائياً حسب الكتاب الحالي عبر صنف اللون المُضاف. */
+  /* جميع بطاقات الأسئلة: خلفية رمادية بشفافية 35% + حدّ أبيض */
   .qcard{margin-bottom:18px;position:relative;overflow:hidden;border-radius:24px;
     padding:30px 28px 34px;color:#fff;
-    background:linear-gradient(150deg,#3a4a66,#28324a);   /* احتياطيّ إن غاب لون الكتاب */
-    border:1px solid rgba(255,255,255,.16);
+    background:linear-gradient(150deg,rgba(158,162,170,.35),rgba(120,124,132,.35));
+    border:2px solid rgba(255,255,255,.9);
     box-shadow:0 12px 30px rgba(0,0,0,.28)}
   @media(max-width:560px){ .qcard{padding:24px 18px 28px} }
-  /* لون الكتاب بشفافية 0.4 فوق خلفية الصفحة الفضائية الداكنة.
-     التخفيف يُبقي النصّ الأبيض واضحاً ويربط البطاقة بهوية الكتاب. */
-  .qcard.bk-red{background:linear-gradient(150deg,rgba(242,97,105,.4),rgba(207,58,68,.4))}
-  .qcard.bk-green{background:linear-gradient(150deg,rgba(92,201,138,.4),rgba(63,168,112,.4))}
-  .qcard.bk-orange{background:linear-gradient(150deg,rgba(245,160,74,.4),rgba(224,127,43,.4))}
-  .qcard.bk-blue{background:linear-gradient(150deg,rgba(79,168,232,.4),rgba(47,136,208,.4))}
-  .qcard.bk-purple{background:linear-gradient(150deg,rgba(160,127,216,.4),rgba(127,92,192,.4))}
-  .qcard.bk-teal{background:linear-gradient(150deg,rgba(75,179,171,.4),rgba(51,151,143,.4))}
-  /* استثناء: السؤال الثالث في كتاب علوم الصف الرابع — رمادي بشفافية 35% */
-  .qcard.qcard-gray{background:linear-gradient(150deg,rgba(158,162,170,.35),rgba(120,124,132,.35))}
   /* تعتيم قاعديّ أسفل البطاقة (عمق + وضوح النصّ) */
   .qcard::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
     background:linear-gradient(180deg,rgba(0,0,0,0) 58%,rgba(0,0,0,.16) 100%)}
