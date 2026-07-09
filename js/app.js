@@ -410,7 +410,7 @@ function renderTrueFalse(q, body, fb){
 function renderHotspot(q, body, fb){
   const inner=q.svg?q.svg:`<img src="${q.image}" alt="">`;
   const figCls = q.fit==='width' ? 'figwrap fw hsfig' : 'figwrap hsfig';
-  body.innerHTML=`<div class="dnd"><div class="stage stage-img"${q.bg?` style="background:${q.bg}"`:''}><div class="${figCls}">${inner}</div></div></div>`;
+  body.innerHTML=`<div class="dnd dnd-solo"><div class="stage stage-img"${q.bg?` style="background:${q.bg}"`:''}><div class="${figCls}">${inner}</div></div></div>`;
   const fig=body.querySelector('.hsfig'); fig.style.cursor='pointer';
   let done=false;
   fig.onclick=(e)=>{
