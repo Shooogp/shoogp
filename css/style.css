@@ -246,6 +246,8 @@
   .qcard.bk-blue{background:linear-gradient(150deg,rgba(79,168,232,.4),rgba(47,136,208,.4))}
   .qcard.bk-purple{background:linear-gradient(150deg,rgba(160,127,216,.4),rgba(127,92,192,.4))}
   .qcard.bk-teal{background:linear-gradient(150deg,rgba(75,179,171,.4),rgba(51,151,143,.4))}
+  /* استثناء: السؤال الثالث في كتاب علوم الصف الرابع — رمادي بشفافية 35% */
+  .qcard.qcard-gray{background:linear-gradient(150deg,rgba(158,162,170,.35),rgba(120,124,132,.35))}
   /* تعتيم قاعديّ أسفل البطاقة (عمق + وضوح النصّ) */
   .qcard::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
     background:linear-gradient(180deg,rgba(0,0,0,0) 58%,rgba(0,0,0,.16) 100%)}
