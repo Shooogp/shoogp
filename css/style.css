@@ -251,7 +251,10 @@
   /* نصوص رأس/متن البطاقة فاتحة لتوضح فوق لون الكتاب */
   .qnum{font-weight:700;color:#ffe27a}
   .qtype{color:#eaf1ee;font-size:.9rem;font-weight:700}
-  .qcard>.qprompt{margin:4px 0 16px;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.34)}
+  .qcard>.qprompt{margin:4px 0 16px;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.34);text-align:center}
+  /* توسيط محتوى السؤال داخل بطاقته */
+  .qcard>.qbody{display:flex;flex-direction:column;align-items:center}
+  .qcard>.qbody>*{width:100%}
   .qcard .qfb.good{color:#c2f2d1;text-shadow:0 1px 2px rgba(0,0,0,.35)}
   .qcard .qfb.bad{color:#ffc7c0;text-shadow:0 1px 2px rgba(0,0,0,.35)}
   .qcard .bank .bt{color:#eef5ef}
@@ -266,7 +269,7 @@
   .opt.correct{background:#a7c957;color:#20340a;border-color:#82a83e}
   .opt.wrong{background:#fde2e2;color:#c94a4a;border-color:#c94a4a}
   /* صواب وخطأ */
-  .tf-btns{display:flex;gap:14px}
+  .tf-btns{display:flex;gap:14px;justify-content:center}
   .tf-btns .tf{flex:1;max-width:190px;background:#FFE0B3;color:#4a3a10;border:2px solid #e0b380}
   .tf-btns .tf:hover{background:#ffd39a}
   .tf-correct{background:#a7c957 !important;color:#20340a !important;border-color:#82a83e !important}
