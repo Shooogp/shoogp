@@ -230,19 +230,28 @@
   .fb.good{color:#2c6e3f} .fb.bad{color:#c94a4a}
 
   /* ===== محرّك الأسئلة الموحّد ===== */
-  /* بطاقة السؤال: وسط فاتح هادئ + عناصر مدرسية على الحواف */
-  .qcard{margin-bottom:18px;position:relative;overflow:hidden;
+  /* بطاقة السؤال بأسلوب الألوان المائية: خلفية كريمية + لمسات خضراء + إطار أزرق
+     متموّج + عناصر عُمانية على الحواف. هوامش واسعة تُبقي النصوص والأزرار في الداخل. */
+  .qcard{margin-bottom:18px;position:relative;overflow:hidden;border-radius:22px;
+    padding:76px 74px 84px;color:#3a3327;
     background:
-      radial-gradient(ellipse 70% 60% at 50% 42%, rgba(255,255,255,.85) 0%, rgba(255,255,255,0) 72%),
-      linear-gradient(135deg,#f7f4ef 0%,#eef3ec 45%,#eef0f6 100%)}
-  /* المحتوى فوق طبقة الزينة */
-  .qcard>.qhead,.qcard>.qprompt,.qcard>.qbody,.qcard>.qfb{position:relative;z-index:1}
-  /* طبقة العناصر التعليمية (خلف المحتوى، لا تعترض النقر) */
-  .qdeco{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.5}
-  .qdeco .di{position:absolute;width:34px;height:34px}
-  .qdeco .di svg{width:100%;height:100%;display:block;overflow:visible}
-  .qdeco .di.big{width:40px;height:40px}
-  @media(max-width:560px){ .qdeco{opacity:.4} .qdeco .di{width:26px;height:26px} }
+      radial-gradient(150px 110px at 10% 92%, rgba(150,178,150,.32), rgba(150,178,150,0) 72%),
+      radial-gradient(170px 130px at 97% 72%, rgba(150,178,150,.26), rgba(150,178,150,0) 72%),
+      radial-gradient(130px 95px at 3% 60%, rgba(150,178,150,.14), rgba(150,178,150,0) 72%),
+      #fef7ec}
+  @media(max-width:560px){ .qcard{padding:52px 24px 60px} }
+  /* المحتوى فوق الإطار والزينة */
+  .qcard>.qhead,.qcard>.qprompt,.qcard>.qbody,.qcard>.qfb{position:relative;z-index:2}
+  /* الإطار الأزرق المتموّج (يُرسم ديناميكياً بالكود حسب حجم البطاقة) */
+  .qframe{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+  /* طبقة العناصر العُمانية/التعليمية على الحواف (لا تعترض النقر) */
+  .qdeco{position:absolute;inset:0;z-index:1;pointer-events:none}
+  .qdeco .omani-el{position:absolute;display:block;height:auto;
+    filter:drop-shadow(0 1px 1px rgba(0,0,0,.06))}
+  @media(max-width:560px){
+    .qdeco .omani-el{transform:scale(.72);transform-origin:top left}
+    .qdeco .omani-el.hide-sm{display:none}
+  }
   .qhead{display:flex;justify-content:space-between;align-items:center;font-family:'Tajawal';margin-bottom:2px}
   .qnum{font-weight:700;color:#2c6e3f}
   .qtype{color:#7a8a75;font-size:.9rem;font-weight:700}
