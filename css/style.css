@@ -210,23 +210,21 @@
   .chip.used{opacity:.35;pointer-events:none;text-decoration:line-through}
   .chip.dragging{opacity:.6}
 
-  /* ⑥ الترتيب التسلسلي: بطاقات كبيرة قابلة للسحب/التحريك بأزرار ▲▼ */
+  /* ⑥ الترتيب التسلسلي: بطاقات كبيرة تُرتَّب بالسحب لتغيير أماكنها */
   .seq{width:100%;max-width:620px;margin-inline:auto}
+  .seq-hint{color:#eaf1ee;font-size:.95rem;font-weight:700;margin-bottom:10px;opacity:.9}
   .seqlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
   .seqitem{display:flex;align-items:center;gap:12px;background:#FFE0B3;border:2px solid #e0b380;
     border-radius:16px;padding:14px 16px;color:#3a2c0a;font-weight:700;font-size:1.05rem;
-    cursor:grab;touch-action:none;box-shadow:0 3px 10px rgba(0,0,0,.22);transition:.12s}
-  .seqitem.dragging{opacity:.6}
+    cursor:grab;touch-action:none;box-shadow:0 3px 10px rgba(0,0,0,.22);transition:background .12s,border-color .12s,transform .12s}
+  .seqitem:active{cursor:grabbing}
+  .seqitem.dragging{opacity:.55;transform:scale(1.02);box-shadow:0 8px 20px rgba(0,0,0,.32)}
   .seqitem.correct{background:#a7c957;border-color:#82a83e;color:#20340a}
   .seqitem.wrong{background:#fde2e2;border-color:#c94a4a;color:#c94a4a}
   .seq-ord{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:#fff;color:#c8791f;
     display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.05rem;box-shadow:0 1px 3px rgba(0,0,0,.2)}
   .seq-txt{flex:1 1 auto;text-align:right}
-  .seq-moves{flex:0 0 auto;display:flex;flex-direction:column;gap:5px}
-  .seq-moves button{width:44px;height:30px;border:2px solid #e0b380;background:#fff7ec;border-radius:9px;
-    color:#8a5a12;font-size:.95rem;line-height:1;padding:0;cursor:pointer;transition:.12s}
-  .seq-moves button:hover:not(:disabled){background:#ffe9cc}
-  .seq-moves button:disabled{opacity:.3;cursor:default}
+  .seq-grip{flex:0 0 auto;color:#b98a3e;font-size:1.5rem;line-height:1;cursor:grab;user-select:none}
 
   /* توصيل */
   /* التوصيل: طبقة SVG لرسم الخطوط المنحنية بين المفردتين */
