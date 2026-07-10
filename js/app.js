@@ -211,7 +211,7 @@ function qWin(fb,msg,stars){fb.textContent=msg||'🎉 أحسنت!';fb.className=
 // عند الخطأ: صوت wrong.mp3 — بنفس أسلوب صوت الصواب، بلا نطق آلي متداخل معه
 function qFail(fb,msg){fb.textContent=msg||'حاول مرة أخرى';fb.className='fb qfb bad';playWrongSound();}
 
-const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء'};
+const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي'};
 
 // تحويل الأرقام إلى هندية (عربية) للعرض
 function arNum(n){ return String(n).replace(/[0-9]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'[+d];}); }
@@ -226,7 +226,7 @@ function renderQuestions(ls){
     m.innerHTML='<div class="qbody" style="text-align:center;padding:14px 6px;font-size:1.15rem">📚 أسئلة هذا الدرس ستُضاف قريباً بإذن الله</div>';
     host.appendChild(m); return;
   }
-  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot};
+  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence};
 
   // بناء كل البطاقات (تبقى في الصفحة لحفظ إجاباتها، ونُظهر واحدة فقط)
   const slides=document.createElement('div'); slides.className='qslides';
@@ -433,6 +433,61 @@ function renderHotspot(q, body, fb){
     else{mark.classList.add('miss');qFail(fb,'ليس هنا، حاول مرة أخرى');setTimeout(()=>mark.remove(),800);}
     fig.appendChild(mark);
   };
+}
+
+/* ⑥ الترتيب التسلسلي (sequence): steps[] بالترتيب الصحيح — الطالب يرتّب البطاقات المبعثرة
+   (سحب لإعادة الترتيب على الفأرة واللمس + زرّا ▲▼ كبيران للسبورة الذكية) */
+function renderSequence(q, body, fb){
+  const correct=q.steps.slice();
+  // ترتيب مبدئي مبعثر يختلف عن الصحيح (حتى لا يبدأ محلولاً)
+  let order=shuffle(correct);
+  if(correct.length>1){ let g=0; while(order.every((s,i)=>s===correct[i]) && g++<20) order=shuffle(correct); }
+  body.innerHTML=`<div class="seq"><ol class="seqlist"></ol></div>`+
+    `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
+  const list=body.querySelector('.seqlist');
+  order.forEach(txt=>{
+    const li=document.createElement('li');
+    li.className='seqitem'; li.dataset.k=txt; li.draggable=true;
+    li.innerHTML=`<span class="seq-ord"></span><span class="seq-txt">${txt}</span>`+
+      `<span class="seq-moves"><button class="seq-up" type="button" aria-label="تحريك لأعلى">▲</button>`+
+      `<button class="seq-down" type="button" aria-label="تحريك لأسفل">▼</button></span>`;
+    list.appendChild(li);
+  });
+  const items=()=>[...list.querySelectorAll('.seqitem')];
+  function renumber(){ const all=items(); all.forEach((li,i)=>{
+    li.querySelector('.seq-ord').textContent=arNum(i+1);
+    li.querySelector('.seq-up').disabled=(i===0);
+    li.querySelector('.seq-down').disabled=(i===all.length-1);
+    li.classList.remove('correct','wrong'); }); }
+  renumber();
+  // أزرار أعلى/أسفل (الأنسب للمس على السبورة)
+  list.addEventListener('click',e=>{
+    const up=e.target.closest('.seq-up'), dn=e.target.closest('.seq-down'); if(!up&&!dn)return;
+    const li=e.target.closest('.seqitem');
+    if(up&&li.previousElementSibling) list.insertBefore(li,li.previousElementSibling);
+    if(dn&&li.nextElementSibling) list.insertBefore(li.nextElementSibling,li);
+    renumber(); speak(li.querySelector('.seq-txt').textContent);
+  });
+  // سحب لإعادة الترتيب (فأرة + لمس)
+  let dragged=null;
+  function afterElement(y){ return items().filter(li=>li!==dragged).reduce((closest,li)=>{
+    const box=li.getBoundingClientRect(); const off=y-box.top-box.height/2;
+    return (off<0 && off>closest.offset) ? {offset:off,el:li} : closest;
+  },{offset:-Infinity,el:null}).el; }
+  function moveTo(y){ const after=afterElement(y); if(!after) list.appendChild(dragged); else list.insertBefore(dragged,after); }
+  list.addEventListener('dragstart',e=>{const li=e.target.closest('.seqitem'); if(!li)return; dragged=li; li.classList.add('dragging');});
+  list.addEventListener('dragend',()=>{ if(dragged)dragged.classList.remove('dragging'); dragged=null; renumber(); });
+  list.addEventListener('dragover',e=>{ if(!dragged)return; e.preventDefault(); moveTo(e.clientY); });
+  list.addEventListener('touchstart',e=>{const li=e.target.closest('.seqitem'); if(!li||e.target.closest('.seq-moves'))return; dragged=li; li.classList.add('dragging');},{passive:true});
+  list.addEventListener('touchmove',e=>{ if(!dragged)return; e.preventDefault(); moveTo(e.touches[0].clientY); },{passive:false});
+  list.addEventListener('touchend',()=>{ if(dragged)dragged.classList.remove('dragging'); dragged=null; renumber(); });
+  body.querySelector('.btn-check').onclick=()=>{
+    const cur=items(); let ok=0;
+    cur.forEach((li,i)=>{ if(li.dataset.k===correct[i]){li.classList.add('correct');ok++;} else li.classList.add('wrong'); });
+    if(ok===correct.length) qWin(fb,'🎉 أحسنت! الترتيب صحيح',3);
+    else qFail(fb,`راجع الترتيب — الصحيح ${arNum(ok)} من ${arNum(correct.length)}`);
+  };
+  body.querySelector('.btn-reset').onclick=()=>renderSequence(q,body,fb);
 }
 
 /* ===== إقلاع ===== */
