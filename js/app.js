@@ -211,7 +211,7 @@ function qWin(fb,msg,stars){fb.textContent=msg||'🎉 أحسنت!';fb.className=
 // عند الخطأ: صوت wrong.mp3 — بنفس أسلوب صوت الصواب، بلا نطق آلي متداخل معه
 function qFail(fb,msg){fb.textContent=msg||'حاول مرة أخرى';fb.className='fb qfb bad';playWrongSound();}
 
-const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي'};
+const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف'};
 
 // تحويل الأرقام إلى هندية (عربية) للعرض
 function arNum(n){ return String(n).replace(/[0-9]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'[+d];}); }
@@ -226,7 +226,7 @@ function renderQuestions(ls){
     m.innerHTML='<div class="qbody" style="text-align:center;padding:14px 6px;font-size:1.15rem">📚 أسئلة هذا الدرس ستُضاف قريباً بإذن الله</div>';
     host.appendChild(m); return;
   }
-  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence};
+  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify};
 
   // بناء كل البطاقات (تبقى في الصفحة لحفظ إجاباتها، ونُظهر واحدة فقط)
   const slides=document.createElement('div'); slides.className='qslides';
@@ -481,6 +481,47 @@ function renderSequence(q, body, fb){
     else qFail(fb,`راجع الترتيب — الصحيح ${arNum(ok)} من ${arNum(correct.length)}`);
   };
   body.querySelector('.btn-reset').onclick=()=>renderSequence(q,body,fb);
+}
+
+/* ⑦ التصنيف في مجموعات (classify): groups[{name, items[]}] — سحب العناصر إلى صندوق مجموعتها
+   (صناديق المجموعات جنباً إلى جنب، بلا صورة/خطوط؛ سحب فأرة + لمس للسبورة) */
+function renderClassify(q, body, fb){
+  // خريطة كل عنصر ← اسم مجموعته الصحيحة
+  const correct={}; q.groups.forEach(g=>g.items.forEach(it=>correct[it]=g.name));
+  const all=shuffle(q.groups.reduce((a,g)=>a.concat(g.items),[]));
+  const groupsHtml=q.groups.map((g,i)=>
+    `<div class="grp"><div class="grp-h">${g.name}</div><div class="grp-drop" data-i="${i}" data-name="${g.name}"></div></div>`).join('');
+  body.innerHTML=`<div class="classify"><div class="grp-row">${groupsHtml}</div>`+
+    `<div class="bank clsbank"><div class="bt">العناصر:</div><div class="chips">`+
+    all.map(w=>`<div class="chip" draggable="true" data-w="${w}">${w}</div>`).join('')+
+    `</div></div></div>`+
+    `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
+  let dragged=null;
+  const clearMark=()=>body.querySelectorAll('.chip').forEach(c=>c.classList.remove('ok','no'));
+  const place=zone=>{ if(!dragged)return; zone.appendChild(dragged); clearMark(); dragged=null; };
+  body.querySelectorAll('.chip').forEach(chip=>{
+    chip.addEventListener('dragstart',()=>{dragged=chip;chip.classList.add('dragging')});
+    chip.addEventListener('dragend',()=>chip.classList.remove('dragging'));
+    chip.addEventListener('touchstart',()=>{dragged=chip;chip.classList.add('dragging')},{passive:true});
+    chip.addEventListener('touchend',e=>{const t=e.changedTouches[0];const el=document.elementFromPoint(t.clientX,t.clientY);const z=el&&el.closest('.grp-drop, .chips');if(z)place(z);chip.classList.remove('dragging')});
+  });
+  body.querySelectorAll('.grp-drop, .chips').forEach(zone=>{
+    zone.addEventListener('dragover',e=>{e.preventDefault();zone.classList.add('over')});
+    zone.addEventListener('dragleave',()=>zone.classList.remove('over'));
+    zone.addEventListener('drop',e=>{e.preventDefault();zone.classList.remove('over');place(zone)});
+  });
+  body.querySelector('.btn-check').onclick=()=>{
+    let ok=0;const total=all.length;
+    q.groups.forEach((g,i)=>{
+      body.querySelector('.grp-drop[data-i="'+i+'"]').querySelectorAll('.chip').forEach(c=>{
+        if(correct[c.dataset.w]===g.name){c.classList.add('ok');c.classList.remove('no');ok++;}
+        else{c.classList.add('no');c.classList.remove('ok');}
+      });
+    });
+    if(ok===total) qWin(fb,'🎉 أحسنت! كل العناصر في مجموعتها',3);
+    else qFail(fb,`راجع التصنيف — الصحيح ${arNum(ok)} من ${arNum(total)}`);
+  };
+  body.querySelector('.btn-reset').onclick=()=>renderClassify(q,body,fb);
 }
 
 /* ===== إقلاع ===== */
