@@ -237,8 +237,9 @@
   .grp-h{background:rgba(255,255,255,.2);color:#fff;font-weight:800;text-align:center;padding:10px 8px;font-size:1.08rem;
     text-shadow:0 1px 2px rgba(0,0,0,.3)}
   .grp-drop{flex:1 1 auto;min-height:120px;padding:12px;display:flex;flex-wrap:wrap;gap:10px;
-    align-content:flex-start;justify-content:center;transition:background .12s}
-  .grp-drop.over,.clsbank .chips.over{background:rgba(255,246,216,.28)}
+    align-content:flex-start;justify-content:center;background:#fff;transition:background .12s}
+  .grp-drop.over{background:#fff6d8}
+  .clsbank .chips.over{background:rgba(255,246,216,.28)}
   .clsbank .chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;min-height:54px;padding:8px;border-radius:12px;transition:background .12s}
   .chip.ok{background:#a7c957;border-color:#82a83e;color:#20340a}
   .chip.no{background:#fde2e2;border-color:#c94a4a;color:#c94a4a}
