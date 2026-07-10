@@ -436,51 +436,43 @@ function renderHotspot(q, body, fb){
 }
 
 /* ⑥ الترتيب التسلسلي (sequence): steps[] بالترتيب الصحيح — الطالب يرتّب البطاقات المبعثرة
-   (سحب لإعادة الترتيب على الفأرة واللمس + زرّا ▲▼ كبيران للسبورة الذكية) */
+   بالسحب لتغيير أماكنها (فأرة + لمس على السبورة الذكية) */
 function renderSequence(q, body, fb){
   const correct=q.steps.slice();
   // ترتيب مبدئي مبعثر يختلف عن الصحيح (حتى لا يبدأ محلولاً)
   let order=shuffle(correct);
   if(correct.length>1){ let g=0; while(order.every((s,i)=>s===correct[i]) && g++<20) order=shuffle(correct); }
-  body.innerHTML=`<div class="seq"><ol class="seqlist"></ol></div>`+
+  body.innerHTML=`<div class="seq"><div class="seq-hint">اسحب البطاقات لترتيبها</div><ol class="seqlist"></ol></div>`+
     `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
   const list=body.querySelector('.seqlist');
   order.forEach(txt=>{
     const li=document.createElement('li');
     li.className='seqitem'; li.dataset.k=txt; li.draggable=true;
-    li.innerHTML=`<span class="seq-ord"></span><span class="seq-txt">${txt}</span>`+
-      `<span class="seq-moves"><button class="seq-up" type="button" aria-label="تحريك لأعلى">▲</button>`+
-      `<button class="seq-down" type="button" aria-label="تحريك لأسفل">▼</button></span>`;
+    li.innerHTML=`<span class="seq-ord"></span><span class="seq-txt">${txt}</span><span class="seq-grip" aria-hidden="true">≡</span>`;
     list.appendChild(li);
   });
   const items=()=>[...list.querySelectorAll('.seqitem')];
-  function renumber(){ const all=items(); all.forEach((li,i)=>{
-    li.querySelector('.seq-ord').textContent=arNum(i+1);
-    li.querySelector('.seq-up').disabled=(i===0);
-    li.querySelector('.seq-down').disabled=(i===all.length-1);
-    li.classList.remove('correct','wrong'); }); }
+  function renumber(){ items().forEach((li,i)=>{ li.querySelector('.seq-ord').textContent=arNum(i+1); li.classList.remove('correct','wrong'); }); }
   renumber();
-  // أزرار أعلى/أسفل (الأنسب للمس على السبورة)
-  list.addEventListener('click',e=>{
-    const up=e.target.closest('.seq-up'), dn=e.target.closest('.seq-down'); if(!up&&!dn)return;
-    const li=e.target.closest('.seqitem');
-    if(up&&li.previousElementSibling) list.insertBefore(li,li.previousElementSibling);
-    if(dn&&li.nextElementSibling) list.insertBefore(li.nextElementSibling,li);
-    renumber(); speak(li.querySelector('.seq-txt').textContent);
-  });
-  // سحب لإعادة الترتيب (فأرة + لمس)
+  // السحب لإعادة الترتيب: تُزاح البطاقات لإفساح مكان البطاقة المسحوبة (فأرة + لمس)
   let dragged=null;
   function afterElement(y){ return items().filter(li=>li!==dragged).reduce((closest,li)=>{
     const box=li.getBoundingClientRect(); const off=y-box.top-box.height/2;
     return (off<0 && off>closest.offset) ? {offset:off,el:li} : closest;
   },{offset:-Infinity,el:null}).el; }
-  function moveTo(y){ const after=afterElement(y); if(!after) list.appendChild(dragged); else list.insertBefore(dragged,after); }
-  list.addEventListener('dragstart',e=>{const li=e.target.closest('.seqitem'); if(!li)return; dragged=li; li.classList.add('dragging');});
-  list.addEventListener('dragend',()=>{ if(dragged)dragged.classList.remove('dragging'); dragged=null; renumber(); });
+  function moveTo(y){ if(!dragged)return; const after=afterElement(y); if(!after) list.appendChild(dragged); else list.insertBefore(dragged,after); renumber(); }
+  function start(li){ dragged=li; li.classList.add('dragging'); }
+  function end(){ if(dragged)dragged.classList.remove('dragging'); dragged=null; renumber(); }
+  // فأرة (HTML5 DnD)
+  list.addEventListener('dragstart',e=>{const li=e.target.closest('.seqitem'); if(!li)return; start(li); try{e.dataTransfer.effectAllowed='move';e.dataTransfer.setData('text/plain','');}catch(_){}});
   list.addEventListener('dragover',e=>{ if(!dragged)return; e.preventDefault(); moveTo(e.clientY); });
-  list.addEventListener('touchstart',e=>{const li=e.target.closest('.seqitem'); if(!li||e.target.closest('.seq-moves'))return; dragged=li; li.classList.add('dragging');},{passive:true});
+  list.addEventListener('drop',e=>{ if(dragged)e.preventDefault(); });
+  list.addEventListener('dragend',end);
+  // لمس (السبورة الذكية)
+  list.addEventListener('touchstart',e=>{const li=e.target.closest('.seqitem'); if(!li)return; start(li);},{passive:true});
   list.addEventListener('touchmove',e=>{ if(!dragged)return; e.preventDefault(); moveTo(e.touches[0].clientY); },{passive:false});
-  list.addEventListener('touchend',()=>{ if(dragged)dragged.classList.remove('dragging'); dragged=null; renumber(); });
+  list.addEventListener('touchend',end);
+  list.addEventListener('touchcancel',end);
   body.querySelector('.btn-check').onclick=()=>{
     const cur=items(); let ok=0;
     cur.forEach((li,i)=>{ if(li.dataset.k===correct[i]){li.classList.add('correct');ok++;} else li.classList.add('wrong'); });
