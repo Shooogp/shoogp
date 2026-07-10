@@ -38,7 +38,7 @@ window.DATA_FALLBACK = {
         { title:"لماذا نحتاج إلى هيكل عظمي؟", file:"g4s-1-3", open:true },
         { title:"الهياكل العظمية والحركة", file:"g4s-1-4", open:true },
         { title:"العقاقير كأدوية", file:"g4s-1-5", open:true },
-        { title:"كيف تعمل الأدوية؟", file:"g4s-1-6", open:false },
+        { title:"كيف تعمل الأدوية؟", file:"g4s-1-6", open:true },
         { title:"تحقّق من تقدّمك", file:"g4s-1-7", open:false }
       ]},
       { unit:"الكائنات الحية والبيئات", lessons:[
