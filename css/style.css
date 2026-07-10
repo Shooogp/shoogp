@@ -246,10 +246,12 @@
 
   /* ⑧ ملء الفراغ بالسحب: جملة فيها فراغات تُسحب إليها الكلمات */
   .fill{width:100%;max-width:640px;margin-inline:auto;display:flex;flex-direction:column;gap:22px}
-  .fbtext{color:#fff;font-size:1.25rem;line-height:2.5;text-align:center;font-weight:700;text-shadow:0 1px 3px rgba(0,0,0,.34)}
+  /* نصّ السؤال داخل صندوق أبيض */
+  .fbtext{background:#fff;color:#2f3a2c;font-size:1.25rem;line-height:2.6;text-align:center;font-weight:700;
+    padding:22px 24px;border-radius:18px;box-shadow:0 4px 14px rgba(0,0,0,.22)}
   .blank{display:inline-block;min-width:104px;margin:0 5px;padding:6px 14px;border-radius:12px;vertical-align:middle;
-    background:rgba(255,255,255,.16);border:2px dashed rgba(255,255,255,.6);color:#fff;font-weight:800;
-    text-align:center;cursor:pointer;transition:.12s;box-shadow:0 2px 6px rgba(0,0,0,.18)}
+    background:#f4ecdd;border:2px dashed #c3ad82;color:#9c7b3f;font-weight:800;
+    text-align:center;cursor:pointer;transition:.12s;box-shadow:0 1px 4px rgba(0,0,0,.12)}
   .blank.over{background:#fff6d8;border-color:#f5b942;color:#3a2c0a;transform:scale(1.05)}
   .blank.filled{background:#FFE0B3;border-style:solid;border-color:#e0b380;color:#3a2c0a}
   .blank.correct{background:#a7c957;border-color:#82a83e;color:#20340a}
