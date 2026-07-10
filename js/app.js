@@ -448,11 +448,12 @@ function renderSequence(q, body, fb){
   order.forEach(txt=>{
     const li=document.createElement('li');
     li.className='seqitem'; li.dataset.k=txt; li.draggable=true;
-    li.innerHTML=`<span class="seq-ord"></span><span class="seq-txt">${txt}</span><span class="seq-grip" aria-hidden="true">≡</span>`;
+    li.innerHTML=`<span class="seq-txt">${txt}</span><span class="seq-grip" aria-hidden="true">≡</span>`;
     list.appendChild(li);
   });
   const items=()=>[...list.querySelectorAll('.seqitem')];
-  function renumber(){ items().forEach((li,i)=>{ li.querySelector('.seq-ord').textContent=arNum(i+1); li.classList.remove('correct','wrong'); }); }
+  // الأرقام عمود ثابت خارج الصناديق (١،٢،٣…): تُعرض بجانب كل صفّ عبر data-pos، لا تتحرك مع البطاقة
+  function renumber(){ items().forEach((li,i)=>{ li.setAttribute('data-pos',arNum(i+1)); li.classList.remove('correct','wrong'); }); }
   renumber();
   // السحب لإعادة الترتيب: تُزاح البطاقات لإفساح مكان البطاقة المسحوبة (فأرة + لمس)
   let dragged=null;
