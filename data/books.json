@@ -1,0 +1,23 @@
+{
+  "الأول": {
+    "الأول": [],
+    "الثاني": [],
+    "الثالث": [
+      { "key": "g3-sci", "title": "العلوم", "term": "الفصل الأول", "color": "bk-red", "ic": "🔬", "isNew": false, "theme": "theme-sci3", "cover": "images/cover-g3-sci.jpg" }
+    ],
+    "الرابع": [
+      { "key": "g4-sci", "title": "العلوم", "term": "الفصل الأول", "color": "bk-green", "ic": "🔬", "isNew": false, "theme": "theme-sci", "coverReal": "images/cover-g4-sci-real.jpg", "coverOriginal": "images/cover-g4-sci.jpg" },
+      { "key": "g4-math", "title": "الرياضيات", "term": "الفصل الأول", "color": "bk-orange", "ic": "📐", "isNew": true, "theme": "theme-math", "cover": "images/cover-g4-math.jpg" },
+      { "key": "g4-arabic-1", "title": "أحب لغتي", "term": "الفصل الأول", "color": "bk-teal", "ic": "🪶", "isNew": false, "theme": "theme-arabic", "cover": "images/cover-g4-arabic-1.jpg" },
+      { "key": "g4-arabic-2", "title": "أحب لغتي", "term": "الفصل الأول", "color": "bk-orange", "ic": "🪶", "isNew": false, "theme": "theme-arabic-2", "cover": "images/cover-g4-arabic-2.jpg" },
+      { "key": "g4-dini-1", "title": "ديني حياتي", "term": "الفصل الأول", "color": "bk-blue", "ic": "🕌", "isNew": false, "theme": "theme-dini", "cover": "images/cover-g4-dini-1.jpg" },
+      { "key": "g4-dini-2", "title": "ديني حياتي", "term": "الفصل الأول", "color": "bk-teal", "ic": "🕌", "isNew": false, "theme": "theme-dini-2", "cover": "images/cover-g4-dini-2.jpg" }
+    ]
+  },
+  "الثاني": {
+    "الأول": [],
+    "الثاني": [],
+    "الثالث": [],
+    "الرابع": []
+  }
+}

@@ -1,0 +1,20 @@
+# اعتماديات Node
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# إعدادات خاصة بالجهاز (Claude Code المحلية)
+.claude/settings.local.json
+
+# ملفات نظام التشغيل
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# ملفات المحرّرات المؤقتة
+*.swp
+*~
+.vscode/
+.idea/

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>المنصة التفاعلية — المناهج العُمانية</title>
+<link rel="stylesheet" href="css/style.css?v=20260709-26">
+</head>
+<body>
+  <div class="stars" id="stars"></div>
+
+  <div class="app">
+    <header>
+      <div class="scorebar">
+        <div class="pill"><span class="e">🔥</span><span id="streak">0</span></div>
+        <div class="pill"><span class="e">⭐</span><span id="starTxt">0</span></div>
+      </div>
+      <button class="sound-btn" id="soundBtn" type="button"
+        title="كتم/تشغيل الصوت" aria-label="كتم أو تشغيل الصوت">🔊</button>
+      <div class="logo-wrap">
+        <img class="logo" src="images/logo.png" alt="شوجب">
+      </div>
+      <h1 class="main-title">منصتك للأنشطة التعليمية التفاعلية</h1>
+    </header>
+
+    <!-- ① الشاشة الرئيسية: الفصل + الصفوف + الكتب -->
+    <section class="screen active" id="home">
+      <p class="choose-line">اختر صفّك ثم كتابك، ولننطلق في المغامرة!</p>
+      <div class="terms" id="terms"></div>
+      <div class="grades" id="grades"></div>
+      <div class="books" id="books"></div>
+    </section>
+
+    <!-- ③ شاشة الدروس -->
+    <section class="screen" id="lessonsScreen">
+      <button class="back" onclick="goHome()">→ رجوع للكتب</button>
+      <div class="screen-title" id="bookTitle"></div>
+      <div class="screen-sub" id="bookSub"></div>
+      <div class="lessons" id="lessons"></div>
+    </section>
+
+    <!-- ④ شاشة النشاط: أسئلة الدرس (تُبنى بالكود) -->
+    <section class="screen" id="activityScreen">
+      <button class="back" onclick="backToLessons()">→ رجوع للدروس</button>
+      <div class="screen-title" id="lessonTitle"></div>
+      <div class="screen-sub">أجب عن الأسئلة واجمع النجوم ⭐</div>
+      <div id="questionList"></div>
+    </section>
+
+    <p class="hint">💡 مصمَّم للمس على السبورة · التغذية الصوتية العربية تعمل بعد أول لمسة</p>
+  </div>
+
+<script src="js/data.js?v=20260709-26"></script>
+<script src="js/questions.js?v=20260709-26"></script>
+<script src="js/app.js?v=20260709-26"></script>
+</body>
+</html>
