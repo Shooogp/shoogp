@@ -211,7 +211,7 @@ function qWin(fb,msg,stars){fb.textContent=msg||'🎉 أحسنت!';fb.className=
 // عند الخطأ: صوت wrong.mp3 — بنفس أسلوب صوت الصواب، بلا نطق آلي متداخل معه
 function qFail(fb,msg){fb.textContent=msg||'حاول مرة أخرى';fb.className='fb qfb bad';playWrongSound();}
 
-const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف'};
+const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ'};
 
 // تحويل الأرقام إلى هندية (عربية) للعرض
 function arNum(n){ return String(n).replace(/[0-9]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'[+d];}); }
@@ -226,7 +226,7 @@ function renderQuestions(ls){
     m.innerHTML='<div class="qbody" style="text-align:center;padding:14px 6px;font-size:1.15rem">📚 أسئلة هذا الدرس ستُضاف قريباً بإذن الله</div>';
     host.appendChild(m); return;
   }
-  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify};
+  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank};
 
   // بناء كل البطاقات (تبقى في الصفحة لحفظ إجاباتها، ونُظهر واحدة فقط)
   const slides=document.createElement('div'); slides.className='qslides';
@@ -522,6 +522,51 @@ function renderClassify(q, body, fb){
     else qFail(fb,`راجع التصنيف — الصحيح ${arNum(ok)} من ${arNum(total)}`);
   };
   body.querySelector('.btn-reset').onclick=()=>renderClassify(q,body,fb);
+}
+
+/* ⑧ ملء الفراغ بالسحب (fill-blank): text فيه علامات {} للفراغات + answers[] + distractors[]
+   الطالب يسحب الكلمة المناسبة من البنك إلى كل فراغ (فأرة + لمس)؛ نقر الفراغ يفرّغه */
+function renderFillBlank(q, body, fb){
+  const parts=q.text.split('{}');
+  const n=parts.length-1; // عدد الفراغات
+  let sentence='<p class="fbtext">';
+  parts.forEach((seg,i)=>{
+    sentence+=`<span class="fbseg">${seg}</span>`;
+    if(i<n) sentence+=`<span class="blank" data-i="${i}" data-answer="${q.answers[i]}">______</span>`;
+  });
+  sentence+='</p>';
+  const bankWords=shuffle(q.answers.concat(q.distractors||[]));
+  body.innerHTML=`<div class="fill">${sentence}`+
+    `<div class="bank fillbank"><div class="bt">الكلمات:</div><div class="chips">`+
+    bankWords.map(w=>`<div class="chip" draggable="true" data-w="${w}">${w}</div>`).join('')+
+    `</div></div></div>`+
+    `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
+  let dragged=null;
+  const used=()=>{const p=[...body.querySelectorAll('.blank')].map(b=>b.dataset.placed).filter(Boolean);
+    body.querySelectorAll('.chip').forEach(c=>c.classList.toggle('used',p.includes(c.dataset.w)));};
+  const fill=bl=>{ if(!dragged)return; bl.textContent=dragged.dataset.w; bl.dataset.placed=dragged.dataset.w;
+    bl.classList.add('filled'); bl.classList.remove('correct','wrong'); used(); dragged=null; };
+  body.querySelectorAll('.chip').forEach(chip=>{
+    chip.addEventListener('dragstart',()=>{dragged=chip;chip.classList.add('dragging')});
+    chip.addEventListener('dragend',()=>chip.classList.remove('dragging'));
+    chip.addEventListener('touchstart',()=>{dragged=chip;chip.classList.add('dragging')},{passive:true});
+    chip.addEventListener('touchend',e=>{const t=e.changedTouches[0];const el=document.elementFromPoint(t.clientX,t.clientY);const bl=el&&el.closest('.blank');if(bl)fill(bl);chip.classList.remove('dragging')});
+  });
+  body.querySelectorAll('.blank').forEach(bl=>{
+    bl.addEventListener('dragover',e=>{e.preventDefault();bl.classList.add('over')});
+    bl.addEventListener('dragleave',()=>bl.classList.remove('over'));
+    bl.addEventListener('drop',e=>{e.preventDefault();bl.classList.remove('over');fill(bl)});
+    // نقر فراغ ممتلئ يفرّغه (يعيد الكلمة للبنك)
+    bl.addEventListener('click',()=>{ if(bl.dataset.placed){ bl.textContent='______'; delete bl.dataset.placed; bl.classList.remove('filled','correct','wrong'); used(); }});
+  });
+  body.querySelector('.btn-check').onclick=()=>{
+    const bls=body.querySelectorAll('.blank'); let ok=0;
+    bls.forEach(bl=>{ if(bl.dataset.placed===bl.dataset.answer){bl.classList.add('correct');bl.classList.remove('wrong');ok++;}
+      else{bl.classList.add('wrong');bl.classList.remove('correct');} });
+    if(ok===bls.length) qWin(fb,'🎉 أحسنت! كل الفراغات صحيحة',3);
+    else qFail(fb,`راجع الفراغات — الصحيح ${arNum(ok)} من ${arNum(bls.length)}`);
+  };
+  body.querySelector('.btn-reset').onclick=()=>renderFillBlank(q,body,fb);
 }
 
 /* ===== إقلاع ===== */
