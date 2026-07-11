@@ -584,6 +584,8 @@ function renderExclude(q, body, fb){
 
 /* ⑩ ترتيب الحروف (arrange): word (الكلمة الصحيحة) + letters[] (اختياري، الحروف المبعثرة)
    الطالب يسحب كل حرف من البنك إلى خانته بالترتيب (قراءة يمين→يسار) لتكوين الكلمة.
+   الحروف تُعرض **منفصلة (مفردة)** أثناء الترتيب — أوضح للأطفال وأبسط؛ وعند الترتيب الصحيح
+   تُكشف **الكلمة كاملة متّصلة** كي يرى الطفل شكلها النهائي.
    تُحرّك بطاقة الحرف نفسها إلى الخانة (تدعم الحروف المكرّرة)؛ نقر الخانة الممتلئة يعيد الحرف للبنك.
    يعمل بالسحب (فأرة + لمس على السبورة). عند التحقّق: الحرف الصحيح أخضر والخاطئ أحمر */
 function renderArrange(q, body, fb){
@@ -600,7 +602,7 @@ function renderArrange(q, body, fb){
     bank.map(c=>`<div class="chip lchip" draggable="true" data-w="${c}">${c}</div>`).join('')+
     `</div></div></div>`+
     `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
-  let dragged=null;
+  let dragged=null, done=false;
   const bankEl=body.querySelector('.lbank');
   const clearMark=()=>body.querySelectorAll('.lchip').forEach(c=>c.classList.remove('ok','no'));
   // إسقاط حرف في خانة: إن كانت ممتلئة يُعاد حرفها السابق للبنك أولاً
@@ -624,11 +626,18 @@ function renderArrange(q, body, fb){
   bankEl.addEventListener('dragleave',()=>bankEl.classList.remove('over'));
   bankEl.addEventListener('drop',e=>{e.preventDefault();bankEl.classList.remove('over');toBank()});
   body.querySelector('.btn-check').onclick=()=>{
+    if(done)return;
     const slots=body.querySelectorAll('.lslot'); let ok=0;
     slots.forEach(s=>{const c=s.querySelector('.lchip');
       if(c && c.dataset.w===s.dataset.answer){c.classList.add('ok');c.classList.remove('no');ok++;}
       else if(c){c.classList.add('no');c.classList.remove('ok');} });
-    if(ok===n) qWin(fb,'🎉 أحسنت! كوّنت الكلمة: '+q.word,3);
+    if(ok===n){
+      done=true;
+      qWin(fb,'🎉 أحسنت! كوّنت الكلمة: '+q.word,3);
+      // كشف الكلمة كاملة متّصلة بعد أن رتّب الطفل حروفها منفصلة
+      const wrap=body.querySelector('.lslots');
+      if(wrap) wrap.innerHTML=`<span class="lword">${q.word}</span>`;
+    }
     else qFail(fb,`راجع الترتيب — الصحيح ${arNum(ok)} من ${arNum(n)}`);
   };
   body.querySelector('.btn-reset').onclick=()=>renderArrange(q,body,fb);
