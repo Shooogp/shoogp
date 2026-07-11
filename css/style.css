@@ -408,6 +408,27 @@
   .mmchip{min-width:70px;text-align:center;font-size:1.15rem;font-weight:700;padding:14px 20px}
   .mmchip.ok{background:#a7c957;border-color:#82a83e;color:#20340a}
   .mmchip.no{background:#fde2e2;border-color:#c94a4a;color:#c94a4a}
+  /* ⑯ البازل (تركيب الصورة): صورة واحدة تُقسَّم بـ background-position إلى شبكة قطع تُركَّب بالسحب.
+     اللوح direction:ltr كي تطابق أعمدة الشبكة أعمدة الصورة؛ القطع كبيرة تناسب اللمس على السبورة */
+  .puzzle{display:flex;flex-direction:column;align-items:center;gap:18px;width:100%}
+  .pzboard{direction:ltr;display:grid;gap:4px;width:min(340px,86%);aspect-ratio:1/1;
+    background:rgba(255,255,255,.5);border-radius:16px;padding:4px;box-sizing:border-box}
+  .pzslot{border:2px dashed rgba(255,255,255,.75);border-radius:8px;background:rgba(255,255,255,.14);
+    display:flex;align-items:center;justify-content:center;overflow:hidden;min-height:0}
+  .pzslot.over{background:#fff6d8;border-color:#f5b942}
+  .pzslot.correct{border-color:#82a83e;border-style:solid}
+  .pzslot.wrong{border-color:#c94a4a;border-style:solid}
+  .pzslot .pzpiece{width:100%;height:100%}
+  .pzpiece{background-repeat:no-repeat;border-radius:6px;cursor:grab;touch-action:none;
+    box-shadow:0 2px 6px rgba(0,0,0,.28);transition:opacity .12s}
+  .pzpiece.dragging{opacity:.55}
+  .pztray{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;min-height:60px;padding:8px;border-radius:12px}
+  .pztray .pzpiece{width:var(--pw,84px);height:var(--ph,84px)}
+  .pztray.over{outline:2px dashed rgba(255,255,255,.5);outline-offset:3px}
+  /* مكافأة الاكتمال: تختفي الفواصل والحدود فتظهر الصورة صورةً واحدة متّصلة */
+  .pzboard.solved{gap:0;padding:0}
+  .pzboard.solved .pzslot{border-color:transparent;background:transparent}
+  .pzboard.solved .pzpiece{border-radius:0;box-shadow:none}
   /* صواب وخطأ */
   .tf-btns{display:flex;gap:14px;justify-content:center}
   .tf-btns .tf{flex:1;max-width:190px;background:#FFE0B3;color:#4a3a10;border:2px solid #e0b380}

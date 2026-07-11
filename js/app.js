@@ -211,7 +211,7 @@ function qWin(fb,msg,stars){fb.textContent=msg||'🎉 أحسنت!';fb.className=
 // عند الخطأ: صوت wrong.mp3 — بنفس أسلوب صوت الصواب، بلا نطق آلي متداخل معه
 function qFail(fb,msg){fb.textContent=msg||'حاول مرة أخرى';fb.className='fb qfb bad';playWrongSound();}
 
-const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات'};
+const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل'};
 
 // تحويل الأرقام إلى هندية (عربية) للعرض
 function arNum(n){ return String(n).replace(/[0-9]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'[+d];}); }
@@ -226,7 +226,7 @@ function renderQuestions(ls){
     m.innerHTML='<div class="qbody" style="text-align:center;padding:14px 6px;font-size:1.15rem">📚 أسئلة هذا الدرس ستُضاف قريباً بإذن الله</div>';
     host.appendChild(m); return;
   }
-  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor};
+  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor,'puzzle':renderPuzzle};
 
   // بناء كل البطاقات (تبقى في الصفحة لحفظ إجاباتها، ونُظهر واحدة فقط)
   const slides=document.createElement('div'); slides.className='qslides';
@@ -669,6 +669,70 @@ function renderColor(q, body, fb){
     else qFail(fb,`راجع الألوان — الصحيح ${arNum(ok)} من ${arNum(need)}`);
   };
   body.querySelector('.btn-reset').onclick=()=>renderColor(q,body,fb);
+}
+
+/* ⑯ البازل (تركيب الصورة) — puzzle:
+   صورة واحدة كاملة تُقسَّم برمجياً إلى شبكة grid.cols × grid.rows قطعاً عبر خاصية
+   background-position (لا حاجة لصور متعددة — صورة واحدة تكفي والكود يقسّمها). تُبعثَر
+   القطع في صينية سفلية، والطالب يعيد ترتيبها بالسحب إلى لوح الشبكة (فأرة + لمس).
+   عند اكتمال كل القطع في مكانها الصحيح → مكافأة (تختفي الفواصل فتظهر الصورة كاملة)
+   وصوت correct.mp3. اللوح بـ direction:ltr كي تطابق أعمدةُ الشبكة أعمدةَ الصورة
+   (الصورة محتوى بصري لا نصّ) بينما تبقى بقيّة الواجهة RTL.
+   الصوت: qWin/qFail يشغّلان correct.mp3/wrong.mp3 ويخضعان لزرّ الكتم العامّ. */
+function renderPuzzle(q, body, fb){
+  const cols=(q.grid&&q.grid.cols)||3, rows=(q.grid&&q.grid.rows)||3, n=cols*rows;
+  // موضع خلفية كل قطعة: العمود يتوزّع أفقياً والصف عمودياً (نسبة مئوية قياسية)
+  const posX=i=>cols>1?(i%cols)/(cols-1)*100:0;
+  const posY=i=>rows>1?Math.floor(i/cols)/(rows-1)*100:0;
+  const piece=i=>`<div class="pzpiece" draggable="true" data-i="${i}" `+
+    `style="background-image:url('${q.image}');background-size:${cols*100}% ${rows*100}%;`+
+    `background-position:${posX(i)}% ${posY(i)}%"></div>`;
+  const slots=Array.from({length:n},(_,i)=>`<div class="pzslot" data-i="${i}"></div>`).join('');
+  const pieces=shuffle(Array.from({length:n},(_,i)=>i)).map(piece).join('');
+  body.innerHTML=`<div class="puzzle">`+
+    `<div class="pzboard" style="grid-template-columns:repeat(${cols},1fr);grid-template-rows:repeat(${rows},1fr)">${slots}</div>`+
+    `<div class="bank pzbank"><div class="bt">القطع:</div><div class="chips pztray">${pieces}</div></div>`+
+    `</div>`+
+    `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
+  const board=body.querySelector('.pzboard'), tray=body.querySelector('.pztray');
+  if(q.bg) board.style.background=q.bg;
+  // نسبة اللوح = نسبة الصورة الحقيقية، وحجم قطع الصينية = حجم خانة اللوح (يُحدَّث مع تغيّر القياس)
+  function sizePieces(){ const s=board.querySelector('.pzslot'); if(!s)return;
+    tray.style.setProperty('--pw', s.clientWidth+'px');
+    tray.style.setProperty('--ph', s.clientHeight+'px'); }
+  const probe=new Image();
+  probe.onload=()=>{ if(probe.naturalWidth) board.style.aspectRatio=probe.naturalWidth+'/'+probe.naturalHeight; sizePieces(); };
+  probe.src=q.image;
+  if(window.ResizeObserver){ new ResizeObserver(sizePieces).observe(board); }
+  setTimeout(sizePieces,60);
+  let dragged=null;
+  const clearMark=()=>{ board.classList.remove('solved'); body.querySelectorAll('.pzslot').forEach(s=>s.classList.remove('correct','wrong')); };
+  // نقل القطعة إلى خانة (مع تبديل القطعة الموجودة إلى الصينية) أو إعادتها إلى الصينية
+  const toSlot=slot=>{ if(!dragged)return; const ex=slot.querySelector('.pzpiece'); if(ex&&ex!==dragged) tray.appendChild(ex); slot.appendChild(dragged); clearMark(); dragged=null; };
+  const toTray=()=>{ if(!dragged)return; tray.appendChild(dragged); clearMark(); dragged=null; };
+  body.querySelectorAll('.pzpiece').forEach(p=>{
+    p.addEventListener('dragstart',()=>{dragged=p;p.classList.add('dragging')});
+    p.addEventListener('dragend',()=>p.classList.remove('dragging'));
+    p.addEventListener('touchstart',()=>{dragged=p;p.classList.add('dragging')},{passive:true});
+    p.addEventListener('touchend',e=>{const t=e.changedTouches[0];const el=document.elementFromPoint(t.clientX,t.clientY);const z=el&&el.closest('.pzslot, .pztray');if(z){z.classList.contains('pzslot')?toSlot(z):toTray();}p.classList.remove('dragging')});
+  });
+  body.querySelectorAll('.pzslot').forEach(slot=>{
+    slot.addEventListener('dragover',e=>{e.preventDefault();slot.classList.add('over')});
+    slot.addEventListener('dragleave',()=>slot.classList.remove('over'));
+    slot.addEventListener('drop',e=>{e.preventDefault();slot.classList.remove('over');toSlot(slot)});
+  });
+  tray.addEventListener('dragover',e=>{e.preventDefault();tray.classList.add('over')});
+  tray.addEventListener('dragleave',()=>tray.classList.remove('over'));
+  tray.addEventListener('drop',e=>{e.preventDefault();tray.classList.remove('over');toTray()});
+  body.querySelector('.btn-check').onclick=()=>{
+    let ok=0;const ss=body.querySelectorAll('.pzslot');
+    ss.forEach(s=>{const p=s.querySelector('.pzpiece');
+      if(p&&+p.dataset.i===+s.dataset.i){s.classList.add('correct');s.classList.remove('wrong');ok++;}
+      else{s.classList.remove('correct');if(p)s.classList.add('wrong');else s.classList.remove('wrong');}});
+    if(ok===n){ board.classList.add('solved'); qWin(fb,'🧩 أحسنت! ركّبت الصورة كاملة',3); }
+    else qFail(fb,`راجع القطع — الصحيح ${arNum(ok)} من ${arNum(n)}`);
+  };
+  body.querySelector('.btn-reset').onclick=()=>renderPuzzle(q,body,fb);
 }
 
 /* ⑧ ملء الفراغ بالسحب (fill-blank): text فيه علامات {} للفراغات + answers[] + distractors[]
