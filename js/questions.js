@@ -152,6 +152,56 @@ window.QUESTIONS = {
       fit: "height",
       bg: "#fdf9ee",
       spot: { x: 53, y: 27, r: 11 }
+    },
+
+    // 🎨 التلوين بالتعليمات (color) — سؤال تجريبي لنوع التلوين
+    // رسم SVG لهيكل عظمي مبسّط بأجزاء منفصلة (كل جزء <g> له id/اسم قابل للتلوين)
+    {
+      type: "color",
+      objective: "4Bh7: يستنتج أنّ العظام ترتبط مع بعضها لتكوّن الهيكل العظمي",
+      level: "knowledge",
+      prompt: "لوّن كل جزء من الهيكل حسب التعليمات: اختر لوناً من اللوحة ثم اضغط الجزء.",
+      bg: "#fdf9ee",
+      palette: [
+        { name: "أزرق", color: "#2f6fb0" },
+        { name: "أحمر", color: "#cf3b3b" },
+        { name: "أخضر", color: "#3e9b4f" }
+      ],
+      parts: [
+        { name: "الجمجمة",       color: "#2f6fb0" },
+        { name: "القفص الصدري",  color: "#cf3b3b" },
+        { name: "العمود الفقري", color: "#3e9b4f" }
+      ],
+      svg: `<svg viewBox="0 0 220 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="هيكل عظمي مبسّط">
+        <g class="cpart" data-name="الجمجمة" id="part-skull">
+          <circle cx="110" cy="54" r="40"/>
+          <path d="M84 82 Q110 112 136 82 L134 92 Q110 118 86 92 Z"/>
+          <circle cx="96" cy="50" r="8" fill="#33334d"/>
+          <circle cx="124" cy="50" r="8" fill="#33334d"/>
+          <path d="M104 66 L110 74 L116 66 Z" fill="#33334d"/>
+        </g>
+        <g class="cpart" data-name="القفص الصدري" id="part-ribs">
+          <path d="M70 116 Q110 104 150 116 Q156 156 110 200 Q64 156 70 116 Z"/>
+          <path d="M80 130 Q110 140 140 130" fill="none"/>
+          <path d="M78 146 Q110 158 142 146" fill="none"/>
+          <path d="M80 162 Q110 174 140 162" fill="none"/>
+          <path d="M85 178 Q110 188 135 178" fill="none"/>
+        </g>
+        <g class="cpart" data-name="العمود الفقري" id="part-spine">
+          <rect x="96" y="208" width="28" height="16" rx="6"/>
+          <rect x="96" y="228" width="28" height="16" rx="6"/>
+          <rect x="96" y="248" width="28" height="16" rx="6"/>
+          <rect x="96" y="268" width="28" height="16" rx="6"/>
+          <rect x="96" y="288" width="28" height="16" rx="6"/>
+        </g>
+        <g class="cpart" data-name="عظمة فخذ" id="part-femur">
+          <rect x="100" y="330" width="20" height="70" rx="10"/>
+          <circle cx="102" cy="326" r="13"/>
+          <circle cx="118" cy="326" r="13"/>
+          <circle cx="102" cy="404" r="13"/>
+          <circle cx="118" cy="404" r="13"/>
+        </g>
+      </svg>`
     }
 
   ],
