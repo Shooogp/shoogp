@@ -211,7 +211,7 @@ function qWin(fb,msg,stars){fb.textContent=msg||'🎉 أحسنت!';fb.className=
 // عند الخطأ: صوت wrong.mp3 — بنفس أسلوب صوت الصواب، بلا نطق آلي متداخل معه
 function qFail(fb,msg){fb.textContent=msg||'حاول مرة أخرى';fb.className='fb qfb bad';playWrongSound();}
 
-const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد'};
+const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف'};
 
 // تحويل الأرقام إلى هندية (عربية) للعرض
 function arNum(n){ return String(n).replace(/[0-9]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'[+d];}); }
@@ -226,7 +226,7 @@ function renderQuestions(ls){
     m.innerHTML='<div class="qbody" style="text-align:center;padding:14px 6px;font-size:1.15rem">📚 أسئلة هذا الدرس ستُضاف قريباً بإذن الله</div>';
     host.appendChild(m); return;
   }
-  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude};
+  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange};
 
   // بناء كل البطاقات (تبقى في الصفحة لحفظ إجاباتها، ونُظهر واحدة فقط)
   const slides=document.createElement('div'); slides.className='qslides';
@@ -580,6 +580,58 @@ function renderExclude(q, body, fb){
     if(+btn.dataset.i===q.answer){done=true;btn.classList.add('correct');body.querySelectorAll('.excl-opt').forEach(b=>b.disabled=true);qWin(fb, q.reason ? '🎉 أحسنت! هذا هو الدخيل — '+q.reason : '🎉 أحسنت! هذا هو الدخيل',2);}
     else{btn.classList.add('wrong');btn.disabled=true;qFail(fb,'هذا العنصر ينتمي للمجموعة، ابحث عن الدخيل');}
   };});
+}
+
+/* ⑩ ترتيب الحروف (arrange): word (الكلمة الصحيحة) + letters[] (اختياري، الحروف المبعثرة)
+   الطالب يسحب كل حرف من البنك إلى خانته بالترتيب (قراءة يمين→يسار) لتكوين الكلمة.
+   تُحرّك بطاقة الحرف نفسها إلى الخانة (تدعم الحروف المكرّرة)؛ نقر الخانة الممتلئة يعيد الحرف للبنك.
+   يعمل بالسحب (فأرة + لمس على السبورة). عند التحقّق: الحرف الصحيح أخضر والخاطئ أحمر */
+function renderArrange(q, body, fb){
+  const target=Array.from(q.word);                                   // الترتيب الصحيح للحروف
+  const scatter=(q.letters && q.letters.length) ? q.letters.slice() : target.slice();
+  const n=target.length;
+  // خلط الحروف بحيث لا يبدأ البنك بالترتيب الصحيح
+  let bank=shuffle(scatter);
+  if(n>1){ let g=0; while(bank.every((c,i)=>c===target[i]) && g++<20) bank=shuffle(scatter); }
+  let cells='';
+  for(let i=0;i<n;i++) cells+=`<span class="lslot" data-i="${i}" data-answer="${target[i]}"></span>`;
+  body.innerHTML=`<div class="arrange"><div class="lslots">${cells}</div>`+
+    `<div class="bank arrbank"><div class="bt">الحروف:</div><div class="chips lbank">`+
+    bank.map(c=>`<div class="chip lchip" draggable="true" data-w="${c}">${c}</div>`).join('')+
+    `</div></div></div>`+
+    `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
+  let dragged=null;
+  const bankEl=body.querySelector('.lbank');
+  const clearMark=()=>body.querySelectorAll('.lchip').forEach(c=>c.classList.remove('ok','no'));
+  // إسقاط حرف في خانة: إن كانت ممتلئة يُعاد حرفها السابق للبنك أولاً
+  const place=slot=>{ if(!dragged)return; const ex=slot.querySelector('.lchip');
+    if(ex && ex!==dragged) bankEl.appendChild(ex); slot.appendChild(dragged); clearMark(); dragged=null; };
+  const toBank=()=>{ if(!dragged)return; bankEl.appendChild(dragged); clearMark(); dragged=null; };
+  body.querySelectorAll('.lchip').forEach(chip=>{
+    chip.addEventListener('dragstart',()=>{dragged=chip;chip.classList.add('dragging')});
+    chip.addEventListener('dragend',()=>chip.classList.remove('dragging'));
+    chip.addEventListener('touchstart',()=>{dragged=chip;chip.classList.add('dragging')},{passive:true});
+    chip.addEventListener('touchend',e=>{const t=e.changedTouches[0];const el=document.elementFromPoint(t.clientX,t.clientY);const z=el&&el.closest('.lslot, .lbank');if(z){z.classList.contains('lslot')?place(z):toBank();}chip.classList.remove('dragging')});
+  });
+  body.querySelectorAll('.lslot').forEach(slot=>{
+    slot.addEventListener('dragover',e=>{e.preventDefault();slot.classList.add('over')});
+    slot.addEventListener('dragleave',()=>slot.classList.remove('over'));
+    slot.addEventListener('drop',e=>{e.preventDefault();slot.classList.remove('over');place(slot)});
+    // نقر الخانة الممتلئة يعيد حرفها للبنك
+    slot.addEventListener('click',()=>{const c=slot.querySelector('.lchip'); if(c){bankEl.appendChild(c);clearMark();}});
+  });
+  bankEl.addEventListener('dragover',e=>{e.preventDefault();bankEl.classList.add('over')});
+  bankEl.addEventListener('dragleave',()=>bankEl.classList.remove('over'));
+  bankEl.addEventListener('drop',e=>{e.preventDefault();bankEl.classList.remove('over');toBank()});
+  body.querySelector('.btn-check').onclick=()=>{
+    const slots=body.querySelectorAll('.lslot'); let ok=0;
+    slots.forEach(s=>{const c=s.querySelector('.lchip');
+      if(c && c.dataset.w===s.dataset.answer){c.classList.add('ok');c.classList.remove('no');ok++;}
+      else if(c){c.classList.add('no');c.classList.remove('ok');} });
+    if(ok===n) qWin(fb,'🎉 أحسنت! كوّنت الكلمة: '+q.word,3);
+    else qFail(fb,`راجع الترتيب — الصحيح ${arNum(ok)} من ${arNum(n)}`);
+  };
+  body.querySelector('.btn-reset').onclick=()=>renderArrange(q,body,fb);
 }
 
 /* ===== إقلاع ===== */

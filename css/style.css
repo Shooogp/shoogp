@@ -328,6 +328,18 @@
   .excl-opt:disabled{cursor:default;opacity:.9}
   .excl-opt.correct{background:#a7c957;color:#20340a;border-color:#82a83e}
   .excl-opt.wrong{background:#fde2e2;color:#c94a4a;border-color:#c94a4a}
+  /* ترتيب الحروف — خانات كبيرة أفقية (قراءة يمين→يسار) وبنك حروف مبعثرة، عناصر لمسية للسبورة */
+  .arrange{display:flex;flex-direction:column;align-items:center;gap:18px}
+  .lslots{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+  .lslot{min-width:72px;min-height:72px;display:flex;align-items:center;justify-content:center;
+    background:rgba(255,255,255,.9);border:2px dashed #e0b380;border-radius:16px;padding:6px;box-sizing:border-box}
+  .lslot.over{border-color:#82a83e;background:#eef7e2}
+  .arrbank .chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;min-height:60px;padding:8px;border-radius:12px}
+  .lbank.over{outline:2px dashed rgba(255,255,255,.5);outline-offset:3px;border-radius:12px}
+  .lchip{min-width:56px;text-align:center;font-size:1.6rem;font-weight:800;padding:14px 20px}
+  .lslot .lchip{margin:0}
+  .lchip.ok{background:#a7c957;border-color:#82a83e;color:#20340a}
+  .lchip.no{background:#fde2e2;border-color:#c94a4a;color:#c94a4a}
   /* صواب وخطأ */
   .tf-btns{display:flex;gap:14px;justify-content:center}
   .tf-btns .tf{flex:1;max-width:190px;background:#FFE0B3;color:#4a3a10;border:2px solid #e0b380}

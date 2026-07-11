@@ -53,7 +53,7 @@ window.DATA_FALLBACK = {
         { title:"تحقّق من تقدّمك", file:"g4s-2-9", open:false }
       ]},
       { unit:"المواد الصلبة والسائلة والغازية", lessons:[
-        { title:"المادة", file:"g4s-3-1", open:false },
+        { title:"المادة", file:"g4s-3-1", open:true },
         { title:"المادة تتكوّن من جُزيئات", file:"g4s-3-2", open:false },
         { title:"كيف تختلف المواد الصلبة والسائلة والغازية؟", file:"g4s-3-3", open:false },
         { title:"الانصهار والتجمّد والغليان", file:"g4s-3-4", open:false },
