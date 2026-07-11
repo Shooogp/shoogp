@@ -152,56 +152,6 @@ window.QUESTIONS = {
       fit: "height",
       bg: "#fdf9ee",
       spot: { x: 53, y: 27, r: 11 }
-    },
-
-    // 🎨 التلوين بالتعليمات (color) — سؤال تجريبي لنوع التلوين
-    // رسم SVG لهيكل عظمي مبسّط بأجزاء منفصلة (كل جزء <g> له id/اسم قابل للتلوين)
-    {
-      type: "color",
-      objective: "4Bh7: يستنتج أنّ العظام ترتبط مع بعضها لتكوّن الهيكل العظمي",
-      level: "knowledge",
-      prompt: "لوّن كل جزء من الهيكل حسب التعليمات: اختر لوناً من اللوحة ثم اضغط الجزء.",
-      bg: "#fdf9ee",
-      palette: [
-        { name: "أزرق", color: "#2f6fb0" },
-        { name: "أحمر", color: "#cf3b3b" },
-        { name: "أخضر", color: "#3e9b4f" }
-      ],
-      parts: [
-        { name: "الجمجمة",       color: "#2f6fb0" },
-        { name: "القفص الصدري",  color: "#cf3b3b" },
-        { name: "العمود الفقري", color: "#3e9b4f" }
-      ],
-      svg: `<svg viewBox="0 0 220 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="هيكل عظمي مبسّط">
-        <g class="cpart" data-name="الجمجمة" id="part-skull">
-          <circle cx="110" cy="54" r="40"/>
-          <path d="M84 82 Q110 112 136 82 L134 92 Q110 118 86 92 Z"/>
-          <circle cx="96" cy="50" r="8" fill="#33334d"/>
-          <circle cx="124" cy="50" r="8" fill="#33334d"/>
-          <path d="M104 66 L110 74 L116 66 Z" fill="#33334d"/>
-        </g>
-        <g class="cpart" data-name="القفص الصدري" id="part-ribs">
-          <path d="M70 116 Q110 104 150 116 Q156 156 110 200 Q64 156 70 116 Z"/>
-          <path d="M80 130 Q110 140 140 130" fill="none"/>
-          <path d="M78 146 Q110 158 142 146" fill="none"/>
-          <path d="M80 162 Q110 174 140 162" fill="none"/>
-          <path d="M85 178 Q110 188 135 178" fill="none"/>
-        </g>
-        <g class="cpart" data-name="العمود الفقري" id="part-spine">
-          <rect x="96" y="208" width="28" height="16" rx="6"/>
-          <rect x="96" y="228" width="28" height="16" rx="6"/>
-          <rect x="96" y="248" width="28" height="16" rx="6"/>
-          <rect x="96" y="268" width="28" height="16" rx="6"/>
-          <rect x="96" y="288" width="28" height="16" rx="6"/>
-        </g>
-        <g class="cpart" data-name="عظمة فخذ" id="part-femur">
-          <rect x="100" y="330" width="20" height="70" rx="10"/>
-          <circle cx="102" cy="326" r="13"/>
-          <circle cx="118" cy="326" r="13"/>
-          <circle cx="102" cy="404" r="13"/>
-          <circle cx="118" cy="404" r="13"/>
-        </g>
-      </svg>`
     }
 
   ],
@@ -589,6 +539,69 @@ window.QUESTIONS = {
         { label: "غازية", answer: "هواء" }
       ],
       distractors: ["نار", "ضوء"]
+    },
+
+    // 🎨 التلوين بالتعليمات (color) — سؤال تجريبي لنوع التلوين
+    // رسم SVG: ثلاثة صناديق، كل صندوق جزيئاته مرتّبة حسب حالة المادة (صلب/سائل/غاز)
+    {
+      type: "color",
+      objective: "يميّز ترتيب الجزيئات في حالات المادة الثلاث",
+      level: "knowledge",
+      prompt: "لوّن كل صندوق حسب حالة المادة: اختر لوناً من اللوحة ثم اضغط الصندوق.",
+      bg: "#fdf9ee",
+      palette: [
+        { name: "أزرق", color: "#2f6fb0" },
+        { name: "أخضر", color: "#3e9b4f" },
+        { name: "أصفر", color: "#f2c230" }
+      ],
+      parts: [
+        { name: "صندوق الصلب",  color: "#2f6fb0" },
+        { name: "صندوق السائل", color: "#3e9b4f" },
+        { name: "صندوق الغاز",  color: "#f2c230" }
+      ],
+      svg: `<svg viewBox="0 0 470 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="صناديق حالات المادة الثلاث">
+        <g class="cpart" data-name="صندوق الغاز" id="part-gas">
+          <rect x="20" y="35" width="130" height="130" rx="10"/>
+          <circle cx="55" cy="70" r="9" fill="#fff"/>
+          <circle cx="112" cy="60" r="9" fill="#fff"/>
+          <circle cx="82" cy="105" r="9" fill="#fff"/>
+          <circle cx="48" cy="140" r="9" fill="#fff"/>
+          <circle cx="122" cy="132" r="9" fill="#fff"/>
+        </g>
+        <g class="cpart" data-name="صندوق السائل" id="part-liquid">
+          <rect x="170" y="35" width="130" height="130" rx="10"/>
+          <circle cx="192" cy="62" r="9" fill="#fff"/>
+          <circle cx="216" cy="54" r="9" fill="#fff"/>
+          <circle cx="242" cy="66" r="9" fill="#fff"/>
+          <circle cx="270" cy="58" r="9" fill="#fff"/>
+          <circle cx="202" cy="90" r="9" fill="#fff"/>
+          <circle cx="230" cy="98" r="9" fill="#fff"/>
+          <circle cx="258" cy="90" r="9" fill="#fff"/>
+          <circle cx="284" cy="86" r="9" fill="#fff"/>
+          <circle cx="210" cy="126" r="9" fill="#fff"/>
+          <circle cx="244" cy="130" r="9" fill="#fff"/>
+          <circle cx="276" cy="122" r="9" fill="#fff"/>
+        </g>
+        <g class="cpart" data-name="صندوق الصلب" id="part-solid">
+          <rect x="320" y="35" width="130" height="130" rx="10"/>
+          <circle cx="342" cy="57" r="9" fill="#fff"/>
+          <circle cx="366" cy="57" r="9" fill="#fff"/>
+          <circle cx="390" cy="57" r="9" fill="#fff"/>
+          <circle cx="414" cy="57" r="9" fill="#fff"/>
+          <circle cx="342" cy="81" r="9" fill="#fff"/>
+          <circle cx="366" cy="81" r="9" fill="#fff"/>
+          <circle cx="390" cy="81" r="9" fill="#fff"/>
+          <circle cx="414" cy="81" r="9" fill="#fff"/>
+          <circle cx="342" cy="105" r="9" fill="#fff"/>
+          <circle cx="366" cy="105" r="9" fill="#fff"/>
+          <circle cx="390" cy="105" r="9" fill="#fff"/>
+          <circle cx="414" cy="105" r="9" fill="#fff"/>
+          <circle cx="342" cy="129" r="9" fill="#fff"/>
+          <circle cx="366" cy="129" r="9" fill="#fff"/>
+          <circle cx="390" cy="129" r="9" fill="#fff"/>
+          <circle cx="414" cy="129" r="9" fill="#fff"/>
+        </g>
+      </svg>`
     }
 
   ]
