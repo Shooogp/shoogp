@@ -42,7 +42,7 @@ window.DATA_FALLBACK = {
         { title:"تحقّق من تقدّمك", file:"g4s-1-7", open:false }
       ]},
       { unit:"الكائنات الحية والبيئات", lessons:[
-        { title:"الطيور المُدهشة", file:"g4s-2-1", open:false },
+        { title:"الطيور المُدهشة", file:"g4s-2-1", open:true },
         { title:"موطن الحلزون", file:"g4s-2-2", open:false },
         { title:"الحيوانات في المواطن الطبيعية", file:"g4s-2-3", open:false },
         { title:"المفاتيح التعريفية", file:"g4s-2-4", open:false },
