@@ -1,10 +1,12 @@
 /* ═══════════════════════════════════════════════════════════════
    أسئلة الدروس التفاعلية — مرجعها ملف "نماذج-الأسئلة.md"
    المفتاح: معرّف الدرس (file) → مصفوفة أسئلة.
-   كل سؤال: { type, objective, ...حقول النوع }
+   كل سؤال: { type, objective, level, ...حقول النوع }
    الأنواع: drag-drop | matching | mcq | true-false | hotspot
+   المستوى (level): knowledge (معرفة) | application (تطبيق) | reasoning (استدلال)
    قاعدة: ٤–٦ أسئلة لكل درس على نوعين مختلفين على الأقل، متدرّجة الصعوبة،
           وكل سؤال مبني على هدف من وثيقة الأهداف ومستمدّ من الكتاب.
+          التوزيع المعرفي الأساسي: ٣ معرفة + ١ تطبيق + ١ استدلال (المرجع question-types.md).
    ═══════════════════════════════════════════════════════════════ */
 window.QUESTIONS = {
 
@@ -15,6 +17,7 @@ window.QUESTIONS = {
     {
       type: "true-false",
       objective: "4Bh1: يستنتج أنّ للإنسان وبعض الحيوانات هيكلاً عظميًّا داخل الجسم",
+      level: "knowledge",
       statement: "يملك الإنسانُ هيكلاً عظميًّا داخل جسمه.",
       answer: true
     },
@@ -23,6 +26,7 @@ window.QUESTIONS = {
     {
       type: "mcq",
       objective: "4Bh1: يستنتج أنّ للإنسان وبعض الحيوانات هيكلاً عظميًّا داخل الجسم",
+      level: "knowledge",
       prompt: "مِمَّ تتكوّن الهياكل العظمية؟",
       options: ["العظام", "العضلات", "الجلد", "الشَّعر"],
       answer: 0
@@ -32,6 +36,7 @@ window.QUESTIONS = {
     {
       type: "matching",
       objective: "4Bh1: يستنتج أنّ للإنسان وبعض الحيوانات هيكلاً عظميًّا داخل الجسم",
+      level: "knowledge",
       prompt: "صِل كل كلمة بمعناها.",
       pairs: [
         { a: "الهيكل العظمي", b: "يدعم الجسم من الداخل" },
@@ -45,6 +50,7 @@ window.QUESTIONS = {
     {
       type: "hotspot",
       objective: "4Bh1: يستنتج أنّ للإنسان وبعض الحيوانات هيكلاً عظميًّا داخل الجسم",
+      level: "knowledge",
       prompt: "انقر على الجُمجمة (عظام الرأس) في الهيكل العظمي.",
       image: "images/skeleton.png",
       fit: "height",
@@ -56,6 +62,7 @@ window.QUESTIONS = {
     {
       type: "drag-drop",
       objective: "4Bh1: يستنتج أنّ للإنسان وبعض الحيوانات هيكلاً عظميًّا داخل الجسم",
+      level: "application",
       prompt: "اسحب اسم كل جزء إلى مكانه في الهيكل.",
       image: "images/skeleton.png",
       bg: "#fdf9ee",
@@ -71,6 +78,7 @@ window.QUESTIONS = {
     {
       type: "classify",
       objective: "4Bh1: يستنتج أنّ للإنسان وبعض الحيوانات هيكلاً عظميًّا داخل الجسم",
+      level: "reasoning",
       prompt: "صنّف الحيوانات حسب هيكلها.",
       groups: [
         { name: "فقاريات",   items: ["إنسان", "سمكة", "طائر"] },
@@ -87,6 +95,7 @@ window.QUESTIONS = {
     {
       type: "true-false",
       objective: "4Bh7: يستنتج أنّ العظام ترتبط مع بعضها لتكوّن الهيكل العظمي",
+      level: "knowledge",
       statement: "الجُمجمة تتكوّن من عظمة واحدة فقط.",
       answer: false
     },
@@ -95,6 +104,7 @@ window.QUESTIONS = {
     {
       type: "mcq",
       objective: "4Bh6: يلاحظ أنّ للعظام أشكالاً وأحجاماً مختلفة",
+      level: "knowledge",
       prompt: "كم عدد العظام في هيكل جسم الإنسان؟",
       options: ["١٠٦ عظمة", "٢٠٦ عظمة", "٣٠٦ عظمة", "٤٠٦ عظمة"],
       answer: 1
@@ -104,6 +114,7 @@ window.QUESTIONS = {
     {
       type: "matching",
       objective: "4Bh6: يلاحظ أنّ للعظام أشكالاً وأحجاماً مختلفة",
+      level: "knowledge",
       prompt: "صِل كل عظم بنوعه.",
       pairs: [
         { a: "عظمة الفخذ",   b: "عظم طويل" },
@@ -117,6 +128,7 @@ window.QUESTIONS = {
     {
       type: "drag-drop",
       objective: "4Bh7: يستنتج أنّ العظام ترتبط مع بعضها لتكوّن الهيكل العظمي",
+      level: "application",
       prompt: "اسحب اسم كل عظم إلى مكانه في الهيكل.",
       image: "images/skeleton.png",
       bg: "#fdf9ee",
@@ -134,6 +146,7 @@ window.QUESTIONS = {
     {
       type: "hotspot",
       objective: "4Bh7: يستنتج أنّ العظام ترتبط مع بعضها لتكوّن الهيكل العظمي",
+      level: "knowledge",
       prompt: "انقر على القفص الصدري (الأضلاع) الذي يحمي القلب والرئتين.",
       image: "images/skeleton.png",
       fit: "height",
@@ -150,6 +163,7 @@ window.QUESTIONS = {
     {
       type: "hotspot",
       objective: "4Bh2: يميّز أنّ الهيكل العظمي ينمو مع نمو الإنسان ويدعم ويحمي الجسم",
+      level: "application",
       prompt: "انقر على هيكل الشخص البالغ (الأكبر حجماً).",
       image: "images/skeleton-ages.jpg",
       fit: "width",
@@ -161,6 +175,7 @@ window.QUESTIONS = {
     {
       type: "mcq",
       objective: "4Bh2: يميّز أنّ الهيكل العظمي ينمو مع نمو الإنسان ويدعم ويحمي الجسم",
+      level: "knowledge",
       prompt: "ما اسم الصورة التي يطلبها الأطباء لرؤية العظام داخل الجسم والتأكّد من سلامتها؟",
       options: ["الأشعة السينية", "الصورة الملوّنة", "صورة المجهر", "الصورة الحرارية"],
       answer: 0
@@ -170,6 +185,7 @@ window.QUESTIONS = {
     {
       type: "true-false",
       objective: "4Bh2: يميّز أنّ الهيكل العظمي ينمو مع نمو الإنسان ويدعم ويحمي الجسم",
+      level: "knowledge",
       statement: "تبقى العظام مكسورة ولا تلتئم أبداً.",
       answer: false
     },
@@ -178,6 +194,7 @@ window.QUESTIONS = {
     {
       type: "drag-drop",
       objective: "4Bh2: يميّز أنّ الهيكل العظمي ينمو مع نمو الإنسان ويدعم ويحمي الجسم",
+      level: "reasoning",
       prompt: "اسحب المرحلة العمرية المناسبة تحت كل هيكل، من الأصغر إلى الأكبر.",
       image: "images/skeleton-ages.jpg",
       bg: "#ebd1ad",
@@ -193,6 +210,7 @@ window.QUESTIONS = {
     {
       type: "matching",
       objective: "4Bh2: يميّز أنّ الهيكل العظمي ينمو مع نمو الإنسان ويدعم ويحمي الجسم",
+      level: "knowledge",
       prompt: "صِل كل مصطلح بمعناه.",
       pairs: [
         { a: "الكَسْر",        b: "إصابة في العظام" },
@@ -211,6 +229,7 @@ window.QUESTIONS = {
     {
       type: "true-false",
       objective: "4Bh3: يستنتج أنّ الحيوانات ذات الهيكل العظمي تملك عضلات مرتبطة بالعظام",
+      level: "knowledge",
       statement: "العضلات في أجسامنا مرتبطة بالعظام.",
       answer: true
     },
@@ -219,6 +238,7 @@ window.QUESTIONS = {
     {
       type: "hotspot",
       objective: "4Bh4b: يميّز طريقة عمل العضلة بشكل ثنائي لتساعدنا على الحركة",
+      level: "reasoning",
       prompt: "انقر على الذراع التي انقبضت عضلتها الأمامية (الذراع المثنيّة).",
       image: "images/muscles-arm.jpg",
       fit: "width",
@@ -230,6 +250,7 @@ window.QUESTIONS = {
     {
       type: "mcq",
       objective: "4Bh4a: يستنتج أنّ انقباض العضلة يؤدّي إلى حركة العظام",
+      level: "knowledge",
       prompt: "ماذا يحدث للعضلة عندما تنقبض؟",
       options: ["تصبح أقصر وتجذب العظم", "تصبح أطول وترتاح", "تلتوي حول العظم", "تنفصل عن العظم"],
       answer: 0
@@ -239,6 +260,7 @@ window.QUESTIONS = {
     {
       type: "drag-drop",
       objective: "4Bh4b: يميّز طريقة عمل العضلة بشكل ثنائي لتساعدنا على الحركة",
+      level: "application",
       prompt: "اسحب حالة العضلة الأمامية لكل ذراع: «منقبضة» للذراع المثنيّة، و«منبسطة» للذراع الممدودة.",
       image: "images/muscles-arm.jpg",
       bg: "#e9dcc2",
@@ -252,6 +274,7 @@ window.QUESTIONS = {
     {
       type: "matching",
       objective: "4Bh4a: يستنتج أنّ انقباض العضلة يؤدّي إلى حركة العظام",
+      level: "knowledge",
       prompt: "صِل كل مصطلح بمعناه.",
       pairs: [
         { a: "تنقبض العضلة", b: "تصبح أقصر وتجذب العظم" },
@@ -270,6 +293,7 @@ window.QUESTIONS = {
     {
       type: "hotspot",
       objective: "4Bh9: يميّز طرق استهلاك الأدوية",
+      level: "knowledge",
       prompt: "انقر على الدواء الذي يُؤخذ عبر الدم (المحلول الوريدي).",
       image: "images/medicine-types.jpg",
       fit: "width",
@@ -281,6 +305,7 @@ window.QUESTIONS = {
     {
       type: "true-false",
       objective: "4Bh5: يشرح دور العقاقير كأدوية",
+      level: "reasoning",
       statement: "جميع الأدوية عقاقير، لكن ليست جميع العقاقير أدوية.",
       answer: true
     },
@@ -289,6 +314,7 @@ window.QUESTIONS = {
     {
       type: "mcq",
       objective: "4Bh8: يستنتج أنّ الأدوية تحمي وتشفي وتخفّف من أعراض المرض",
+      level: "knowledge",
       prompt: "متى يتناول الناس الأدوية؟",
       options: ["عند المرض لتحسين صحتهم", "للتسلية واللعب", "عند الجوع", "قبل النوم دائماً"],
       answer: 0
@@ -298,6 +324,7 @@ window.QUESTIONS = {
     {
       type: "drag-drop",
       objective: "4Bh9: يميّز طرق استهلاك الأدوية",
+      level: "application",
       prompt: "اسحب اسم كل شكل من أشكال الدواء إلى صندوقه في الأعلى.",
       image: "images/medicine-types.jpg",
       bg: "#f3e8d6",
@@ -313,6 +340,7 @@ window.QUESTIONS = {
     {
       type: "matching",
       objective: "4Bh8: يستنتج أنّ الأدوية تحمي وتشفي وتخفّف من أعراض المرض",
+      level: "knowledge",
       prompt: "صِل كل مصطلح بمعناه.",
       pairs: [
         { a: "العقاقير", b: "مواد تؤثّر على الجسم" },
@@ -331,6 +359,7 @@ window.QUESTIONS = {
     {
       type: "sequence",
       objective: "4Bh10: يتتبّع مسار الدواء في الجسم حتى وصوله إلى موضع الألم",
+      level: "reasoning",
       prompt: "رتّب رحلة الدواء في الجسم من البداية إلى النهاية.",
       steps: [
         "تناول الدواء",
@@ -344,6 +373,7 @@ window.QUESTIONS = {
     {
       type: "fill-blank",
       objective: "4Bh11: يدرك أهمية أخذ الدواء بالجرعة والوقت المناسبين وبإشراف بالغ",
+      level: "application",
       prompt: "أكمل الجمل بسحب الكلمات المناسبة.",
       text: "يجب أخذ الدواء بـ {} المحددة، وفي {} المناسب، ولا نتناول دواءً دون إشراف {}",
       answers: ["الجرعة", "الوقت", "شخص بالغ"],
@@ -359,6 +389,7 @@ window.QUESTIONS = {
     {
       type: "true-false",
       objective: "يستنتج أنّ الطيور تتكيّف لتعيش في موطنها",
+      level: "knowledge",
       statement: "تتكيّف أجسامُ الطيور لتساعدها على العيش في موطنها.",
       answer: true
     },
@@ -367,6 +398,7 @@ window.QUESTIONS = {
     {
       type: "mcq",
       objective: "يوضّح معنى الموطن كبيئة يحصل فيها الكائن على احتياجاته",
+      level: "knowledge",
       prompt: "ما المقصود بـ«موطن» الكائن الحي؟",
       options: [
         "البيئة المحلية التي يعيش فيها ويحصل على احتياجاته",
@@ -381,6 +413,7 @@ window.QUESTIONS = {
     {
       type: "matching",
       objective: "يربط كل تكيّف في جسم الطائر بوظيفته",
+      level: "application",
       prompt: "صِل كل تكيّف بفائدته.",
       pairs: [
         { a: "المخالب الحادّة", b: "حمل الفريسة وتمزيق اللحم" },
@@ -394,6 +427,7 @@ window.QUESTIONS = {
     {
       type: "classify",
       objective: "يميّز تكيّفات كل طائر بما يناسب موطنه",
+      level: "reasoning",
       prompt: "صنّف كل تكيّف تحت الطائر صاحبه.",
       groups: [
         { name: "النسر",         items: ["أجنحة قوية", "مخالب حادّة"] },
@@ -406,6 +440,7 @@ window.QUESTIONS = {
     {
       type: "fill-blank",
       objective: "يستنتج العلاقة بين تكيّف الطائر وموطنه",
+      level: "reasoning",
       prompt: "أكمل الجملة بسحب الكلمات المناسبة.",
       text: "تتكيّف أجسام الطيور لتعيش في {} الخاص بها، فمخالب النسر {} لتحمل الفريسة، وأقدام البطريق {} لتساعده على السباحة.",
       answers: ["الموطن", "حادّة", "مسطّحة"],
@@ -417,6 +452,7 @@ window.QUESTIONS = {
     {
       type: "audio-q",
       objective: "يميّز مصدر الصوت من بين الحيوانات بالاستماع",
+      level: "knowledge",
       prompt: "استمع إلى الصوت، ثم اختر الحيوان الذي أصدره.",
       sound: "audio/sound-bird.wav",
       options: [
@@ -437,6 +473,7 @@ window.QUESTIONS = {
     {
       type: "find-error",
       objective: "يميّز الكائن الموجود في موطن غير مناسب له",
+      level: "reasoning",
       prompt: "في هذا المشهد كائن وُضع في الموطن الخطأ — اضغط على الخطأ.",
       image: "images/خطأ-الموطن.png",
       spot: { x: 57, y: 29, r: 12 }
@@ -451,6 +488,7 @@ window.QUESTIONS = {
     {
       type: "exclude",
       objective: "يستخدم صفات الكائنات ليميّز الدخيل عن مجموعة تشترك في صفة",
+      level: "reasoning",
       prompt: "أيّها لا ينتمي؟",
       options: ["عصفور", "نسر", "بطة", "قطة"],
       answer: 3,
@@ -467,6 +505,7 @@ window.QUESTIONS = {
     {
       type: "zoom-reveal",
       objective: "يتعرّف على الحشرة من تفاصيلها الدقيقة",
+      level: "knowledge",
       prompt: "ما هذا الكائن؟ خمّن مبكراً كي تربح نجوماً أكثر.",
       image: "images/حشرة-تكبير.png",
       options: ["حشرة", "زهرة", "حجر", "ورقة شجر"],
@@ -482,6 +521,7 @@ window.QUESTIONS = {
     {
       type: "arrange",
       objective: "يرسّخ كتابة مصطلح «المادة» بترتيب حروفه ترتيباً صحيحاً",
+      level: "knowledge",
       prompt: "رتّب الحروف لتكوين الكلمة الصحيحة.",
       word: "مادة"
     },
@@ -490,6 +530,7 @@ window.QUESTIONS = {
     {
       type: "mindmap",
       objective: "يربط كل حالة من حالات المادة بمثال مناسب لها",
+      level: "application",
       prompt: "أكمل الخريطة الذهنية بسحب المثال المناسب إلى كل فرع.",
       center: "حالات المادة",
       branches: [
