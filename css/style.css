@@ -311,7 +311,7 @@
   .qcard .qfb.bad{color:#ffc7c0;text-shadow:0 1px 2px rgba(0,0,0,.35)}
   .qcard .bank .bt{color:#eef5ef}
   /* بطاقات/أزرار الإجابات تبقى بارزة فوق أي لون بظلّ واضح */
-  .qcard .opt,.qcard .tf,.qcard .chip,.qcard .mitem,.qcard .target,.qcard .excl-opt{box-shadow:0 3px 10px rgba(0,0,0,.22)}
+  .qcard .opt,.qcard .tf,.qcard .chip,.qcard .mitem,.qcard .target,.qcard .excl-opt,.qcard .mmchip{box-shadow:0 3px 10px rgba(0,0,0,.22)}
   /* اختيار من متعدد */
   .opts{display:flex;flex-direction:column;gap:10px;max-width:560px}
   .opt{width:100%;text-align:right;background:#FFE0B3;border:2px solid #e0b380;border-radius:14px;
@@ -343,6 +343,26 @@
   /* الكلمة كاملة متّصلة تُكشف عند النجاح (بلا letter-spacing كي تبقى الحروف موصولة) */
   .lword{display:inline-block;font-size:2.4rem;font-weight:800;color:#20340a;background:#a7c957;
     border:2px solid #82a83e;border-radius:16px;padding:10px 28px;box-shadow:0 3px 10px rgba(0,0,0,.22)}
+  /* الخريطة الذهنية الناقصة — عقدة مركزية تتفرّع لفروع بخانات تُملأ بالسحب، عناصر لمسية للسبورة و RTL */
+  .mindmap{display:flex;flex-direction:column;align-items:center;gap:16px}
+  .mm-stage{position:relative;width:100%;display:flex;flex-direction:column;align-items:center;gap:28px;padding-top:6px}
+  .mmlines{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+  .mmline{stroke:#a7c957;stroke-width:3.5;stroke-linecap:round}
+  .mm-center{position:relative;z-index:1;background:#f5a04a;color:#fff;font-family:'Cairo';font-weight:800;
+    font-size:1.3rem;padding:16px 30px;border-radius:20px;box-shadow:0 3px 12px rgba(0,0,0,.28);text-align:center}
+  .mm-branches{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:18px;justify-content:center}
+  .mm-branch{display:flex;flex-direction:column;align-items:center;gap:8px;background:rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.25);border-radius:16px;padding:12px 14px;min-width:122px}
+  .mm-label{font-family:'Cairo';font-weight:700;color:#fff;font-size:1.1rem}
+  .mm-slot{min-width:96px;min-height:54px;display:flex;align-items:center;justify-content:center;
+    background:rgba(255,255,255,.9);border:2px dashed #e0b380;border-radius:14px;padding:4px;box-sizing:border-box}
+  .mm-slot.over{border-color:#82a83e;background:#eef7e2}
+  .mm-slot .mmchip{margin:0}
+  .mmbank .chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;min-height:58px;padding:8px;border-radius:12px}
+  .mmchips.over{outline:2px dashed rgba(255,255,255,.5);outline-offset:3px}
+  .mmchip{min-width:70px;text-align:center;font-size:1.15rem;font-weight:700;padding:14px 20px}
+  .mmchip.ok{background:#a7c957;border-color:#82a83e;color:#20340a}
+  .mmchip.no{background:#fde2e2;border-color:#c94a4a;color:#c94a4a}
   /* صواب وخطأ */
   .tf-btns{display:flex;gap:14px;justify-content:center}
   .tf-btns .tf{flex:1;max-width:190px;background:#FFE0B3;color:#4a3a10;border:2px solid #e0b380}

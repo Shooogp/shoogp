@@ -211,7 +211,7 @@ function qWin(fb,msg,stars){fb.textContent=msg||'🎉 أحسنت!';fb.className=
 // عند الخطأ: صوت wrong.mp3 — بنفس أسلوب صوت الصواب، بلا نطق آلي متداخل معه
 function qFail(fb,msg){fb.textContent=msg||'حاول مرة أخرى';fb.className='fb qfb bad';playWrongSound();}
 
-const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف'};
+const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية'};
 
 // تحويل الأرقام إلى هندية (عربية) للعرض
 function arNum(n){ return String(n).replace(/[0-9]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'[+d];}); }
@@ -226,7 +226,7 @@ function renderQuestions(ls){
     m.innerHTML='<div class="qbody" style="text-align:center;padding:14px 6px;font-size:1.15rem">📚 أسئلة هذا الدرس ستُضاف قريباً بإذن الله</div>';
     host.appendChild(m); return;
   }
-  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange};
+  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap};
 
   // بناء كل البطاقات (تبقى في الصفحة لحفظ إجاباتها، ونُظهر واحدة فقط)
   const slides=document.createElement('div'); slides.className='qslides';
@@ -641,6 +641,78 @@ function renderArrange(q, body, fb){
     else qFail(fb,`راجع الترتيب — الصحيح ${arNum(ok)} من ${arNum(n)}`);
   };
   body.querySelector('.btn-reset').onclick=()=>renderArrange(q,body,fb);
+}
+
+/* ⑪ الخريطة الذهنية الناقصة (mindmap): center + branches[{label, answer}] + distractors[]
+   عقدة مركزية تتفرّع إلى فروع، لكلّ فرع عنوان ثابت وخانة فارغة يسحب إليها الطالب الكلمة الصحيحة
+   من البنك (فأرة + لمس على السبورة). تُرسم خطوط منحنية من المركز إلى كل فرع وتُحدَّث ديناميكياً.
+   تُحرّك بطاقة الكلمة نفسها إلى الخانة (تدعم التكرار)؛ نقر الخانة الممتلئة يعيد كلمتها للبنك.
+   عند التحقّق: الخانة الصحيحة خضراء والخاطئة حمراء */
+function renderMindmap(q, body, fb){
+  const branches=q.branches||[];
+  const bankWords=shuffle(branches.map(b=>b.answer).concat(q.distractors||[]));
+  const branchesHtml=branches.map((b,i)=>
+    `<div class="mm-branch"><div class="mm-label">${b.label}</div>`+
+    `<div class="mm-slot" data-i="${i}" data-answer="${b.answer}"></div></div>`).join('');
+  body.innerHTML=`<div class="mindmap"><div class="mm-stage">`+
+    `<svg class="mmlines"></svg>`+
+    `<div class="mm-center">${q.center||''}</div>`+
+    `<div class="mm-branches">${branchesHtml}</div></div>`+
+    `<div class="bank mmbank"><div class="bt">الكلمات:</div><div class="chips mmchips">`+
+    bankWords.map(w=>`<div class="chip mmchip" draggable="true" data-w="${w}">${w}</div>`).join('')+
+    `</div></div></div>`+
+    `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
+  // رسم خطوط منحنية من أسفل العقدة المركزية إلى أعلى كل فرع (دقيقة على كل الأحجام)
+  const stage=body.querySelector('.mm-stage'), svg=body.querySelector('.mmlines'), center=body.querySelector('.mm-center');
+  const NS='http://www.w3.org/2000/svg';
+  function redraw(){
+    const sr=stage.getBoundingClientRect(); if(!sr.width) return;
+    const cr=center.getBoundingClientRect();
+    const cx=cr.left+cr.width/2-sr.left, cy=cr.bottom-sr.top;
+    svg.innerHTML='';
+    body.querySelectorAll('.mm-branch').forEach(br=>{
+      const rr=br.getBoundingClientRect();
+      const bx=rr.left+rr.width/2-sr.left, by=rr.top-sr.top, my=(cy+by)/2;
+      const ln=document.createElementNS(NS,'path');
+      ln.setAttribute('d',`M ${cx} ${cy} C ${cx} ${my}, ${bx} ${my}, ${bx} ${by}`);
+      ln.setAttribute('class','mmline'); ln.setAttribute('fill','none');
+      svg.appendChild(ln);
+    });
+  }
+  if(window.ResizeObserver){ new ResizeObserver(redraw).observe(stage); }
+  setTimeout(redraw,60);
+  // السحب (كنمط arrange/classify): تحريك بطاقة الكلمة إلى الخانة
+  let dragged=null;
+  const bankEl=body.querySelector('.mmchips');
+  const clearMark=()=>body.querySelectorAll('.mmchip').forEach(c=>c.classList.remove('ok','no'));
+  const place=slot=>{ if(!dragged)return; const ex=slot.querySelector('.mmchip');
+    if(ex && ex!==dragged) bankEl.appendChild(ex); slot.appendChild(dragged); clearMark(); dragged=null; setTimeout(redraw,0); };
+  const toBank=()=>{ if(!dragged)return; bankEl.appendChild(dragged); clearMark(); dragged=null; setTimeout(redraw,0); };
+  body.querySelectorAll('.mmchip').forEach(chip=>{
+    chip.addEventListener('dragstart',()=>{dragged=chip;chip.classList.add('dragging')});
+    chip.addEventListener('dragend',()=>chip.classList.remove('dragging'));
+    chip.addEventListener('touchstart',()=>{dragged=chip;chip.classList.add('dragging')},{passive:true});
+    chip.addEventListener('touchend',e=>{const t=e.changedTouches[0];const el=document.elementFromPoint(t.clientX,t.clientY);const z=el&&el.closest('.mm-slot, .mmchips');if(z){z.classList.contains('mm-slot')?place(z):toBank();}chip.classList.remove('dragging')});
+  });
+  body.querySelectorAll('.mm-slot').forEach(slot=>{
+    slot.addEventListener('dragover',e=>{e.preventDefault();slot.classList.add('over')});
+    slot.addEventListener('dragleave',()=>slot.classList.remove('over'));
+    slot.addEventListener('drop',e=>{e.preventDefault();slot.classList.remove('over');place(slot)});
+    // نقر الخانة الممتلئة يعيد كلمتها للبنك
+    slot.addEventListener('click',()=>{const c=slot.querySelector('.mmchip'); if(c){bankEl.appendChild(c);clearMark();setTimeout(redraw,0);}});
+  });
+  bankEl.addEventListener('dragover',e=>{e.preventDefault();bankEl.classList.add('over')});
+  bankEl.addEventListener('dragleave',()=>bankEl.classList.remove('over'));
+  bankEl.addEventListener('drop',e=>{e.preventDefault();bankEl.classList.remove('over');toBank()});
+  body.querySelector('.btn-check').onclick=()=>{
+    const slots=body.querySelectorAll('.mm-slot'); let ok=0;
+    slots.forEach(s=>{const c=s.querySelector('.mmchip');
+      if(c && c.dataset.w===s.dataset.answer){c.classList.add('ok');c.classList.remove('no');ok++;}
+      else if(c){c.classList.add('no');c.classList.remove('ok');} });
+    if(ok===slots.length && slots.length) qWin(fb,'🎉 أحسنت! أكملت الخريطة الذهنية',3);
+    else qFail(fb,`راجع الفروع — الصحيح ${arNum(ok)} من ${arNum(slots.length)}`);
+  };
+  body.querySelector('.btn-reset').onclick=()=>renderMindmap(q,body,fb);
 }
 
 /* ===== إقلاع ===== */
