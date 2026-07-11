@@ -211,7 +211,7 @@ function qWin(fb,msg,stars){fb.textContent=msg||'🎉 أحسنت!';fb.className=
 // عند الخطأ: صوت wrong.mp3 — بنفس أسلوب صوت الصواب، بلا نطق آلي متداخل معه
 function qFail(fb,msg){fb.textContent=msg||'حاول مرة أخرى';fb.className='fb qfb bad';playWrongSound();}
 
-const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ'};
+const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد'};
 
 // تحويل الأرقام إلى هندية (عربية) للعرض
 function arNum(n){ return String(n).replace(/[0-9]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'[+d];}); }
@@ -226,7 +226,7 @@ function renderQuestions(ls){
     m.innerHTML='<div class="qbody" style="text-align:center;padding:14px 6px;font-size:1.15rem">📚 أسئلة هذا الدرس ستُضاف قريباً بإذن الله</div>';
     host.appendChild(m); return;
   }
-  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank};
+  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude};
 
   // بناء كل البطاقات (تبقى في الصفحة لحفظ إجاباتها، ونُظهر واحدة فقط)
   const slides=document.createElement('div'); slides.className='qslides';
@@ -567,6 +567,19 @@ function renderFillBlank(q, body, fb){
     else qFail(fb,`راجع الفراغات — الصحيح ${arNum(ok)} من ${arNum(bls.length)}`);
   };
   body.querySelector('.btn-reset').onclick=()=>renderFillBlank(q,body,fb);
+}
+
+/* ⑨ الاستبعاد (الدخيل): options[] + answer (فهرس العنصر الدخيل) — الطالب يضغط العنصر الذي لا ينتمي
+   reason (اختياري): سبب عدم انتماء الدخيل، يُعرض عند الإجابة الصحيحة. الخيارات تُخلط تلقائياً */
+function renderExclude(q, body, fb){
+  const opts=shuffle(q.options.map((o,idx)=>({o,idx})));
+  body.innerHTML=`<div class="excl">`+opts.map(x=>`<button class="excl-opt" data-i="${x.idx}">${x.o}</button>`).join('')+`</div>`;
+  let done=false;
+  body.querySelectorAll('.excl-opt').forEach(btn=>{btn.onclick=()=>{
+    if(done)return;
+    if(+btn.dataset.i===q.answer){done=true;btn.classList.add('correct');body.querySelectorAll('.excl-opt').forEach(b=>b.disabled=true);qWin(fb, q.reason ? '🎉 أحسنت! هذا هو الدخيل — '+q.reason : '🎉 أحسنت! هذا هو الدخيل',2);}
+    else{btn.classList.add('wrong');btn.disabled=true;qFail(fb,'هذا العنصر ينتمي للمجموعة، ابحث عن الدخيل');}
+  };});
 }
 
 /* ===== إقلاع ===== */
