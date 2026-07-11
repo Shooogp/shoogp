@@ -211,7 +211,7 @@ function qWin(fb,msg,stars){fb.textContent=msg||'🎉 أحسنت!';fb.className=
 // عند الخطأ: صوت wrong.mp3 — بنفس أسلوب صوت الصواب، بلا نطق آلي متداخل معه
 function qFail(fb,msg){fb.textContent=msg||'حاول مرة أخرى';fb.className='fb qfb bad';playWrongSound();}
 
-const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي'};
+const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي'};
 
 // تحويل الأرقام إلى هندية (عربية) للعرض
 function arNum(n){ return String(n).replace(/[0-9]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'[+d];}); }
@@ -226,7 +226,7 @@ function renderQuestions(ls){
     m.innerHTML='<div class="qbody" style="text-align:center;padding:14px 6px;font-size:1.15rem">📚 أسئلة هذا الدرس ستُضاف قريباً بإذن الله</div>';
     host.appendChild(m); return;
   }
-  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ};
+  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom};
 
   // بناء كل البطاقات (تبقى في الصفحة لحفظ إجاباتها، ونُظهر واحدة فقط)
   const slides=document.createElement('div'); slides.className='qslides';
@@ -479,6 +479,50 @@ function renderAudioQ(q, body, fb){
     if(done)return;
     if(+btn.dataset.i===q.answer){done=true;btn.classList.add('correct');body.querySelectorAll('.aopt').forEach(b=>b.disabled=true);qWin(fb,'🎉 أحسنت! هذا هو مصدر الصوت',2);}
     else{btn.classList.add('wrong');btn.disabled=true;qFail(fb,'ليس هذا مصدر الصوت، استمع مرّة أخرى');}
+  };});
+}
+
+/* ⑭ التكبير التدريجي (zoom-reveal): image + options[] + answer + (maxZoom, seconds اختياريان).
+   تبدأ الصورة مقرّبة جداً (scale=maxZoom) ثم تتّسع تدريجياً إلى حجمها الكامل خلال seconds؛
+   التخمين المبكر (والصورة أكثر تقريباً) يمنح نجوماً أكثر. الخيارات تُخلط كنمط MCQ.
+   أصوات correct/wrong عبر qWin/qFail مع زر الكتم. */
+function renderZoom(q, body, fb){
+  const maxZoom=q.maxZoom||6;      // مقدار التقريب الابتدائي
+  const seconds=q.seconds||9;      // زمن الاتّساع الكامل بالثواني
+  const MAXSTARS=5;
+  const opts=shuffle(q.options.map((o,idx)=>({o,idx})));
+  body.innerHTML=`<div class="zoomq">`+
+    `<div class="zoom-stage"><img class="zoom-img" src="${q.image}" alt=""></div>`+
+    `<div class="zoom-meter">التخمين الآن يمنح <b class="zoom-pts">${arNum(MAXSTARS)}</b> ⭐</div>`+
+    `<button class="btn zoom-start">ابدأ التكبير 🔎</button>`+
+    `<div class="opts zoom-opts" hidden>`+
+      opts.map(x=>`<button class="opt" data-i="${x.idx}">${x.o}</button>`).join('')+
+    `</div></div>`;
+  const img=body.querySelector('.zoom-img'), ptsEl=body.querySelector('.zoom-pts');
+  const optsWrap=body.querySelector('.zoom-opts'), startBtn=body.querySelector('.zoom-start');
+  const meter=body.querySelector('.zoom-meter');
+  img.style.transform=`scale(${maxZoom})`;
+  let done=false, scale=maxZoom, raf=null, t0=null;
+  // النجوم الحالية بحسب مقدار التقريب (تنخفض من MAXSTARS عند أقصى تقريب إلى 1 عند الحجم الكامل)
+  function curStars(){ return Math.max(1, Math.round(1 + (scale-1)/(maxZoom-1)*(MAXSTARS-1))); }
+  function frame(ts){
+    if(t0===null) t0=ts;
+    const p=Math.min(1,(ts-t0)/(seconds*1000));
+    scale=maxZoom-(maxZoom-1)*p;
+    img.style.transform=`scale(${scale})`;
+    ptsEl.textContent=arNum(curStars());
+    if(p<1 && !done) raf=requestAnimationFrame(frame);
+  }
+  startBtn.onclick=()=>{ startBtn.hidden=true; optsWrap.hidden=false; t0=null; raf=requestAnimationFrame(frame); };
+  optsWrap.querySelectorAll('.opt').forEach(btn=>{ btn.onclick=()=>{
+    if(done)return;
+    if(+btn.dataset.i===q.answer){
+      done=true; if(raf)cancelAnimationFrame(raf);
+      const win=curStars();
+      btn.classList.add('correct'); optsWrap.querySelectorAll('.opt').forEach(b=>b.disabled=true);
+      meter.innerHTML=`ربحت <b class="zoom-pts">${arNum(win)}</b> ⭐`;
+      qWin(fb,'🎉 أحسنت! عرفته — +'+arNum(win)+' نجوم',win);
+    } else { btn.classList.add('wrong'); btn.disabled=true; qFail(fb,'ليس هذا، انتظر حتى تتّضح الصورة ثم جرّب'); }
   };});
 }
 
