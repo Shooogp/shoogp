@@ -46,7 +46,7 @@ window.DATA_FALLBACK = {
         { title:"موطن الحلزون", file:"g4s-2-2", open:false },
         { title:"الحيوانات في المواطن الطبيعية", file:"g4s-2-3", open:true },
         { title:"المفاتيح التعريفية", file:"g4s-2-4", open:true },
-        { title:"تمييز الحيوانات اللافقارية", file:"g4s-2-5", open:false },
+        { title:"تمييز الحيوانات اللافقارية", file:"g4s-2-5", open:true },
         { title:"كيف نؤثّر على البيئة؟", file:"g4s-2-6", open:false },
         { title:"الماء الرائع", file:"g4s-2-7", open:false },
         { title:"إعادة التدوير تحمي الأرض", file:"g4s-2-8", open:false },
