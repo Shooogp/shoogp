@@ -211,7 +211,7 @@ function qWin(fb,msg,stars){fb.textContent=msg||'🎉 أحسنت!';fb.className=
 // عند الخطأ: صوت wrong.mp3 — بنفس أسلوب صوت الصواب، بلا نطق آلي متداخل معه
 function qFail(fb,msg){fb.textContent=msg||'حاول مرة أخرى';fb.className='fb qfb bad';playWrongSound();}
 
-const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل'};
+const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل','slider':'🎚️ الشريط المتدرج'};
 
 // تحويل الأرقام إلى هندية (عربية) للعرض
 function arNum(n){ return String(n).replace(/[0-9]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'[+d];}); }
@@ -226,7 +226,7 @@ function renderQuestions(ls){
     m.innerHTML='<div class="qbody" style="text-align:center;padding:14px 6px;font-size:1.15rem">📚 أسئلة هذا الدرس ستُضاف قريباً بإذن الله</div>';
     host.appendChild(m); return;
   }
-  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor,'puzzle':renderPuzzle};
+  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor,'puzzle':renderPuzzle,'slider':renderSlider};
 
   // بناء كل البطاقات (تبقى في الصفحة لحفظ إجاباتها، ونُظهر واحدة فقط)
   const slides=document.createElement('div'); slides.className='qslides';
@@ -924,6 +924,75 @@ function renderMindmap(q, body, fb){
     else qFail(fb,`راجع الفروع — الصحيح ${arNum(ok)} من ${arNum(slots.length)}`);
   };
   body.querySelector('.btn-reset').onclick=()=>renderMindmap(q,body,fb);
+}
+
+/* ⑬ الشريط المتدرّج (slider): شريط أفقي بمؤشّر يسحبه الطالب لتحديد قيمة رقمية على تدريج مرئيّ.
+   min/max حدّا الشريط، answer القيمة الصحيحة، tolerance هامش القبول (±) لأن اللمس على السبورة
+   غير دقيق. step خطوة الحركة (الافتراضي ١)، unit لاحقة العرض (مثل °)، ticks مسافة التدريج الكبير.
+   الشريط dir:ltr كي تتصاعد الأرقام يساراً→يميناً كمسطرة، بينما تبقى بقيّة الواجهة RTL.
+   يعمل بالسحب (فأرة + لمس على السبورة) والنقر على الشريط ينقل المؤشّر مباشرةً. عناصر كبيرة
+   وأرقام واضحة تناسب اللمس. عند التحقّق: |القيمة − الصحيحة| ≤ tolerance → فوز (المؤشّر أخضر)،
+   وإلّا تلميح إن كانت أصغر أو أكبر من المطلوب.
+   الصوت: qWin/qFail يشغّلان correct.mp3/wrong.mp3 ويخضعان لزرّ الكتم العامّ. */
+function renderSlider(q, body, fb){
+  const min=+q.min, max=+q.max, span=max-min;
+  const step=q.step||1;
+  const tol=(q.tolerance!=null)?+q.tolerance:0;
+  const unit=q.unit||'';
+  // مسافة التدريج الكبير: من البيانات أو نحو ٦ فترات افتراضياً
+  const tickStep=q.ticks||Math.max(step,Math.round(span/6));
+  // علامات التدريج وأرقامها الكبيرة على طول الشريط
+  let ticks='';
+  for(let v=min; v<=max+1e-9; v+=tickStep){
+    const r=(v-min)/span*100;
+    ticks+=`<span class="sld-tick" style="left:${r}%"></span>`+
+           `<span class="sld-tlabel" style="left:${r}%">${arNum(Math.round(v))}${unit}</span>`;
+  }
+  body.innerHTML=`<div class="slider">`+
+    `<div class="sld-value">القيمة المختارة: <b class="sld-num"></b></div>`+
+    `<div class="sld-scale" dir="ltr">`+
+      `<div class="sld-track">`+
+        `<div class="sld-fill"></div>`+
+        `<div class="sld-ticks">${ticks}</div>`+
+        `<button class="sld-thumb" type="button" aria-label="مؤشّر الشريط">≡</button>`+
+      `</div>`+
+      `<div class="sld-ends"><span>${arNum(min)}${unit}</span><span>${arNum(max)}${unit}</span></div>`+
+    `</div>`+
+    `</div>`+
+    `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
+  const track=body.querySelector('.sld-track'), thumb=body.querySelector('.sld-thumb');
+  const fill=body.querySelector('.sld-fill'), numEl=body.querySelector('.sld-num');
+  let val=min, done=false, dragging=false;
+  const clamp=v=>Math.max(min,Math.min(max,v));
+  function setVal(v){
+    val=clamp(Math.round(v/step)*step);
+    const r=(val-min)/span*100;
+    thumb.style.left=r+'%'; fill.style.width=r+'%'; numEl.textContent=arNum(val)+unit;
+  }
+  function fromX(clientX){ const rc=track.getBoundingClientRect(); if(!rc.width)return; setVal(min+(clientX-rc.left)/rc.width*span); }
+  // السحب: تُضاف مستمعات الحركة عند البدء وتُزال عند الإفلات (بلا تسريب)
+  function onMouseMove(e){ if(dragging) fromX(e.clientX); }
+  function onTouchMove(e){ if(dragging){ fromX(e.touches[0].clientX); e.preventDefault(); } }
+  function endDrag(){ dragging=false; thumb.classList.remove('grab');
+    window.removeEventListener('mousemove',onMouseMove); window.removeEventListener('mouseup',endDrag);
+    window.removeEventListener('touchmove',onTouchMove); window.removeEventListener('touchend',endDrag); }
+  function startDrag(clientX){ if(done)return; dragging=true; thumb.classList.add('grab'); if(clientX!=null) fromX(clientX);
+    window.addEventListener('mousemove',onMouseMove); window.addEventListener('mouseup',endDrag);
+    window.addEventListener('touchmove',onTouchMove,{passive:false}); window.addEventListener('touchend',endDrag); }
+  track.addEventListener('mousedown',e=>{ e.preventDefault(); startDrag(e.clientX); });
+  track.addEventListener('touchstart',e=>{ startDrag(e.touches[0].clientX); },{passive:true});
+  // القيمة الابتدائية في منتصف الشريط (لا تبدأ عند الإجابة)
+  setVal((min+max)/2);
+  body.querySelector('.btn-check').onclick=()=>{
+    if(done)return;
+    if(Math.abs(val-q.answer)<=tol){
+      done=true; thumb.classList.add('correct'); endDrag();
+      qWin(fb,'🎯 أحسنت! القيمة صحيحة — '+arNum(q.answer)+unit,2);
+    } else {
+      qFail(fb, val<q.answer ? 'القيمة أصغر من المطلوب، حرّك المؤشّر يميناً قليلاً' : 'القيمة أكبر من المطلوب، حرّك المؤشّر يساراً قليلاً');
+    }
+  };
+  body.querySelector('.btn-reset').onclick=()=>renderSlider(q,body,fb);
 }
 
 /* ===== إقلاع ===== */

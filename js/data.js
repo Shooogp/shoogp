@@ -58,7 +58,7 @@ window.DATA_FALLBACK = {
         { title:"كيف تختلف المواد الصلبة والسائلة والغازية؟", file:"g4s-3-3", open:false },
         { title:"الانصهار والتجمّد والغليان", file:"g4s-3-4", open:false },
         { title:"انصهار أنواع مختلفة من المواد الصلبة", file:"g4s-3-5", open:false },
-        { title:"درجات الانصهار ودرجات الغليان", file:"g4s-3-6", open:false },
+        { title:"درجات الانصهار ودرجات الغليان", file:"g4s-3-6", open:true },
         { title:"تحقّق من تقدّمك", file:"g4s-3-7", open:false }
       ]}
     ]},
