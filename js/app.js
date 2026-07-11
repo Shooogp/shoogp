@@ -211,7 +211,7 @@ function qWin(fb,msg,stars){fb.textContent=msg||'🎉 أحسنت!';fb.className=
 // عند الخطأ: صوت wrong.mp3 — بنفس أسلوب صوت الصواب، بلا نطق آلي متداخل معه
 function qFail(fb,msg){fb.textContent=msg||'حاول مرة أخرى';fb.className='fb qfb bad';playWrongSound();}
 
-const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ'};
+const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي'};
 
 // تحويل الأرقام إلى هندية (عربية) للعرض
 function arNum(n){ return String(n).replace(/[0-9]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'[+d];}); }
@@ -226,7 +226,7 @@ function renderQuestions(ls){
     m.innerHTML='<div class="qbody" style="text-align:center;padding:14px 6px;font-size:1.15rem">📚 أسئلة هذا الدرس ستُضاف قريباً بإذن الله</div>';
     host.appendChild(m); return;
   }
-  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError};
+  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ};
 
   // بناء كل البطاقات (تبقى في الصفحة لحفظ إجاباتها، ونُظهر واحدة فقط)
   const slides=document.createElement('div'); slides.className='qslides';
@@ -453,6 +453,33 @@ function renderFindError(q, body, fb){
     else{mark.classList.add('miss');qFail(fb,'ليس هنا الخطأ، دقّق أكثر');setTimeout(()=>mark.remove(),800);}
     fig.appendChild(mark);
   };
+}
+
+/* ⑬ السؤال الصوتي (audio-q): sound (ملف صوت) + options[{image,label}] + answer (فهرس الصحيح).
+   يُشغَّل الصوت بزر «استمع»، والطالب يختار مصدره من صور الخيارات (تُخلط تلقائياً كنمط MCQ).
+   صوت السؤال يُشغَّل بضغطة صريحة على الزر (مستقلّ عن كتم أصوات التغذية الراجعة correct/wrong).
+   إن تعذّر تحميل صورة خيار تُخفى وتبقى تسميتها (تدرّج سليم قبل توليد الصور). */
+function renderAudioQ(q, body, fb){
+  const snd=new Audio(q.sound); snd.preload='auto';
+  const opts=shuffle(q.options.map((o,idx)=>({o,idx})));
+  body.innerHTML=`<div class="audioq">`+
+    `<button class="btn aplay">🔊 استمع</button>`+
+    `<div class="aopts">`+opts.map(x=>
+      `<button class="aopt" data-i="${x.idx}">`+
+      (x.o.image?`<img class="aopt-img" src="${x.o.image}" alt="${x.o.label||''}">`:'')+
+      (x.o.label?`<span class="aopt-label">${x.o.label}</span>`:'')+
+      `</button>`).join('')+
+    `</div></div>`;
+  // تشغيل صوت السؤال عند الطلب (ضغطة صريحة؛ لا يخضع لكتم التغذية الراجعة)
+  body.querySelector('.aplay').onclick=()=>{ try{ snd.currentTime=0; const p=snd.play(); if(p&&p.catch)p.catch(function(){}); }catch(e){} };
+  // إن فشل تحميل صورة خيار، أخفها وأبقِ التسمية ظاهرة
+  body.querySelectorAll('.aopt-img').forEach(im=>{ im.onerror=()=>{ im.style.display='none'; im.closest('.aopt').classList.add('noimg'); }; });
+  let done=false;
+  body.querySelectorAll('.aopt').forEach(btn=>{ btn.onclick=()=>{
+    if(done)return;
+    if(+btn.dataset.i===q.answer){done=true;btn.classList.add('correct');body.querySelectorAll('.aopt').forEach(b=>b.disabled=true);qWin(fb,'🎉 أحسنت! هذا هو مصدر الصوت',2);}
+    else{btn.classList.add('wrong');btn.disabled=true;qFail(fb,'ليس هذا مصدر الصوت، استمع مرّة أخرى');}
+  };});
 }
 
 /* ⑥ الترتيب التسلسلي (sequence): steps[] بالترتيب الصحيح — الطالب يرتّب البطاقات المبعثرة
