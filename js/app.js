@@ -211,7 +211,7 @@ function qWin(fb,msg,stars){fb.textContent=msg||'🎉 أحسنت!';fb.className=
 // عند الخطأ: صوت wrong.mp3 — بنفس أسلوب صوت الصواب، بلا نطق آلي متداخل معه
 function qFail(fb,msg){fb.textContent=msg||'حاول مرة أخرى';fb.className='fb qfb bad';playWrongSound();}
 
-const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي'};
+const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات'};
 
 // تحويل الأرقام إلى هندية (عربية) للعرض
 function arNum(n){ return String(n).replace(/[0-9]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'[+d];}); }
@@ -226,7 +226,7 @@ function renderQuestions(ls){
     m.innerHTML='<div class="qbody" style="text-align:center;padding:14px 6px;font-size:1.15rem">📚 أسئلة هذا الدرس ستُضاف قريباً بإذن الله</div>';
     host.appendChild(m); return;
   }
-  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom};
+  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor};
 
   // بناء كل البطاقات (تبقى في الصفحة لحفظ إجاباتها، ونُظهر واحدة فقط)
   const slides=document.createElement('div'); slides.className='qslides';
@@ -613,6 +613,62 @@ function renderClassify(q, body, fb){
     else qFail(fb,`راجع التصنيف — الصحيح ${arNum(ok)} من ${arNum(total)}`);
   };
   body.querySelector('.btn-reset').onclick=()=>renderClassify(q,body,fb);
+}
+
+/* ⑮ التلوين بالتعليمات (color): رسم SVG بأجزاء منفصلة — كل جزء عنصر <g class="cpart" data-name="…">
+   بنيته على نمط دورة حياة النبات (مجموعات <g> قابلة للتلوين، لا صورة نقطية).
+   palette[{name,color}] = لوحة الألوان الكبيرة، parts[{name,color}] = اللون الصحيح لكل جزء مطلوب
+   (يُطابق data-name في الرسم). الطالب يختار لوناً ثم يضغط الجزء فيتلوّن؛ التحقّق: هل كل جزء
+   مطلوب باللون الصحيح؟ الأجزاء غير المذكورة في parts تبقى حرّة (تلوينها لا يؤثّر في النتيجة).
+   الصوت: qWin/qFail يشغّلان correct.mp3/wrong.mp3 ويخضعان لزرّ الكتم العامّ. */
+function renderColor(q, body, fb){
+  const norm=c=>String(c||'').trim().toLowerCase();
+  const nameOf=c=>{ const p=q.palette.find(x=>norm(x.color)===norm(c)); return p?p.name:''; };
+  // لوحة ألوان كبيرة تناسب اللمس على السبورة
+  const swatches=q.palette.map(p=>
+    `<button class="cswatch" type="button" data-color="${p.color}" title="${p.name}">`+
+      `<span class="cswatch-dot" style="background:${p.color}"></span>`+
+      `<span class="cswatch-name">${p.name}</span></button>`).join('');
+  // شريط التعليمات: لكل جزء مطلوب اسمه ولونه المطلوب
+  const instr=q.parts.map(pt=>
+    `<span class="cinstr"><span class="cinstr-dot" style="background:${pt.color}"></span>`+
+    `${pt.name} ← ${nameOf(pt.color)}</span>`).join('');
+  body.innerHTML=
+    `<div class="colorq">`+
+      `<div class="cpalette">${swatches}</div>`+
+      `<div class="cinstrbar">${instr}</div>`+
+      `<div class="dnd dnd-solo"><div class="stage stage-img"${q.bg?` style="background:${q.bg}"`:''}>`+
+        `<div class="figwrap csvg">${q.svg}</div>`+
+      `</div></div>`+
+    `</div>`+
+    `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
+  let chosen=null;
+  // اختيار لون من اللوحة
+  body.querySelectorAll('.cswatch').forEach(sw=>{ sw.onclick=()=>{
+    body.querySelectorAll('.cswatch').forEach(x=>x.classList.remove('sel'));
+    sw.classList.add('sel'); chosen=sw.dataset.color;
+    speak(sw.querySelector('.cswatch-name').textContent);
+  };});
+  // تلوين جزء عند الضغط (بعد اختيار لون)
+  body.querySelectorAll('.cpart').forEach(part=>{
+    part.style.cursor='pointer';
+    part.addEventListener('click',()=>{
+      if(!chosen){ fb.textContent='اختر لوناً أوّلاً من اللوحة 🎨'; fb.className='fb qfb'; return; }
+      part.style.fill=chosen; part.dataset.fill=chosen; part.classList.remove('cwrong');
+    });
+  });
+  // التحقّق: كل جزء مطلوب باللون الصحيح حسب التعليمات
+  body.querySelector('.btn-check').onclick=()=>{
+    let ok=0; const need=q.parts.length;
+    q.parts.forEach(pt=>{
+      const el=body.querySelector('.cpart[data-name="'+pt.name+'"]'); if(!el) return;
+      if(norm(el.dataset.fill)===norm(pt.color)){ ok++; el.classList.remove('cwrong'); }
+      else el.classList.add('cwrong');
+    });
+    if(ok===need && need) qWin(fb,'🎨 أحسنت! لوّنت كل جزء باللون الصحيح',3);
+    else qFail(fb,`راجع الألوان — الصحيح ${arNum(ok)} من ${arNum(need)}`);
+  };
+  body.querySelector('.btn-reset').onclick=()=>renderColor(q,body,fb);
 }
 
 /* ⑧ ملء الفراغ بالسحب (fill-blank): text فيه علامات {} للفراغات + answers[] + distractors[]
