@@ -311,7 +311,7 @@
   .qcard .qfb.bad{color:#ffc7c0;text-shadow:0 1px 2px rgba(0,0,0,.35)}
   .qcard .bank .bt{color:#eef5ef}
   /* بطاقات/أزرار الإجابات تبقى بارزة فوق أي لون بظلّ واضح */
-  .qcard .opt,.qcard .tf,.qcard .chip,.qcard .mitem,.qcard .target{box-shadow:0 3px 10px rgba(0,0,0,.22)}
+  .qcard .opt,.qcard .tf,.qcard .chip,.qcard .mitem,.qcard .target,.qcard .excl-opt{box-shadow:0 3px 10px rgba(0,0,0,.22)}
   /* اختيار من متعدد */
   .opts{display:flex;flex-direction:column;gap:10px;max-width:560px}
   .opt{width:100%;text-align:right;background:#FFE0B3;border:2px solid #e0b380;border-radius:14px;
@@ -320,6 +320,14 @@
   .opt:disabled{cursor:default;opacity:.9}
   .opt.correct{background:#a7c957;color:#20340a;border-color:#82a83e}
   .opt.wrong{background:#fde2e2;color:#c94a4a;border-color:#c94a4a}
+  /* الاستبعاد (الدخيل) — عناصر كبيرة تناسب اللمس على السبورة، تتوزّع في صفّ يلتفّ */
+  .excl{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;max-width:640px;margin:0 auto}
+  .excl-opt{min-width:150px;text-align:center;background:#FFE0B3;border:2px solid #e0b380;border-radius:16px;
+    padding:20px 26px;cursor:pointer;font-family:'Tajawal';font-weight:700;color:#4a3a10;font-size:1.15rem;transition:.15s}
+  .excl-opt:hover:not(:disabled){background:#ffd39a}
+  .excl-opt:disabled{cursor:default;opacity:.9}
+  .excl-opt.correct{background:#a7c957;color:#20340a;border-color:#82a83e}
+  .excl-opt.wrong{background:#fde2e2;color:#c94a4a;border-color:#c94a4a}
   /* صواب وخطأ */
   .tf-btns{display:flex;gap:14px;justify-content:center}
   .tf-btns .tf{flex:1;max-width:190px;background:#FFE0B3;color:#4a3a10;border:2px solid #e0b380}
