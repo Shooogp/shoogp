@@ -413,8 +413,8 @@
   .puzzle{display:flex;flex-direction:column;align-items:center;gap:18px;width:100%}
   /* اللوح الفارغ يظهر كشبكة: خطوط رمادية خفيفة (حدود الخانات) بين المربّعات التي توضع فيها القطع */
   .pzboard{direction:ltr;display:grid;gap:0;width:min(340px,86%);aspect-ratio:1/1;
-    border:2px solid #b3b3b3;border-radius:12px;padding:0;box-sizing:border-box;overflow:hidden}
-  .pzslot{border:1px solid #b3b3b3;background:#fbfaf5;box-sizing:border-box;
+    border:3px solid #b3b3b3;border-radius:12px;padding:0;box-sizing:border-box;overflow:hidden}
+  .pzslot{border:2px solid #b3b3b3;background:#fbfaf5;box-sizing:border-box;
     display:flex;align-items:center;justify-content:center;overflow:hidden;min-height:0}
   .pzslot.over{background:#fff6d8;border-color:#f5b942;z-index:2}
   .pzslot.correct{border-color:#82a83e;z-index:2}
