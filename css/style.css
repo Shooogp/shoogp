@@ -311,7 +311,7 @@
   .qcard .qfb.bad{color:#ffc7c0;text-shadow:0 1px 2px rgba(0,0,0,.35)}
   .qcard .bank .bt{color:#eef5ef}
   /* بطاقات/أزرار الإجابات تبقى بارزة فوق أي لون بظلّ واضح */
-  .qcard .opt,.qcard .tf,.qcard .chip,.qcard .mitem,.qcard .target,.qcard .excl-opt,.qcard .mmchip{box-shadow:0 3px 10px rgba(0,0,0,.22)}
+  .qcard .opt,.qcard .tf,.qcard .chip,.qcard .mitem,.qcard .target,.qcard .excl-opt,.qcard .mmchip,.qcard .aopt{box-shadow:0 3px 10px rgba(0,0,0,.22)}
   /* اختيار من متعدد */
   .opts{display:flex;flex-direction:column;gap:10px;max-width:560px}
   .opt{width:100%;text-align:right;background:#FFE0B3;border:2px solid #e0b380;border-radius:14px;
@@ -328,6 +328,23 @@
   .excl-opt:disabled{cursor:default;opacity:.9}
   .excl-opt.correct{background:#a7c957;color:#20340a;border-color:#82a83e}
   .excl-opt.wrong{background:#fde2e2;color:#c94a4a;border-color:#c94a4a}
+  /* السؤال الصوتي — زر استماع كبير وخيارات صور كبيرة تناسب اللمس على السبورة */
+  .audioq{display:flex;flex-direction:column;align-items:center;gap:20px}
+  .aplay{background:#f5a04a !important;color:#fff !important;border:none !important;font-size:1.3rem;
+    padding:16px 44px;border-radius:40px;min-width:210px;box-shadow:0 4px 12px rgba(0,0,0,.28)}
+  .aplay:hover{filter:brightness(1.06)}
+  .aopts{display:flex;flex-wrap:wrap;gap:16px;justify-content:center}
+  .aopt{background:#FFE0B3;border:3px solid #e0b380;border-radius:18px;padding:12px;cursor:pointer;
+    display:flex;flex-direction:column;align-items:center;gap:8px;width:162px;transition:.15s;font-family:'Tajawal'}
+  .aopt:hover:not(:disabled){background:#ffd39a}
+  .aopt:disabled{cursor:default;opacity:.9}
+  .aopt-img{width:132px;height:132px;object-fit:contain;background:#fff;border-radius:12px}
+  .aopt.noimg{min-height:120px;justify-content:center}
+  .aopt-label{font-weight:800;color:#4a3a10;font-size:1.2rem}
+  .aopt.correct{background:#a7c957;border-color:#82a83e;color:#20340a}
+  .aopt.correct .aopt-label{color:#20340a}
+  .aopt.wrong{background:#fde2e2;border-color:#c94a4a;color:#c94a4a}
+  .aopt.wrong .aopt-label{color:#c94a4a}
   /* ترتيب الحروف — خانات كبيرة أفقية (قراءة يمين→يسار) وبنك حروف مبعثرة، عناصر لمسية للسبورة */
   .arrange{display:flex;flex-direction:column;align-items:center;gap:18px}
   .lslots{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
