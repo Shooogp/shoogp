@@ -211,7 +211,7 @@ function qWin(fb,msg,stars){fb.textContent=msg||'🎉 أحسنت!';fb.className=
 // عند الخطأ: صوت wrong.mp3 — بنفس أسلوب صوت الصواب، بلا نطق آلي متداخل معه
 function qFail(fb,msg){fb.textContent=msg||'حاول مرة أخرى';fb.className='fb qfb bad';playWrongSound();}
 
-const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل','slider':'🎚️ الشريط المتدرج'};
+const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل','slider':'🎚️ الشريط المتدرج','memory':'🎴 بطاقات الذاكرة'};
 
 // تحويل الأرقام إلى هندية (عربية) للعرض
 function arNum(n){ return String(n).replace(/[0-9]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'[+d];}); }
@@ -226,7 +226,7 @@ function renderQuestions(ls){
     m.innerHTML='<div class="qbody" style="text-align:center;padding:14px 6px;font-size:1.15rem">📚 أسئلة هذا الدرس ستُضاف قريباً بإذن الله</div>';
     host.appendChild(m); return;
   }
-  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor,'puzzle':renderPuzzle,'slider':renderSlider};
+  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor,'puzzle':renderPuzzle,'slider':renderSlider,'memory':renderMemory};
 
   // بناء كل البطاقات (تبقى في الصفحة لحفظ إجاباتها، ونُظهر واحدة فقط)
   const slides=document.createElement('div'); slides.className='qslides';
@@ -993,6 +993,43 @@ function renderSlider(q, body, fb){
     }
   };
   body.querySelector('.btn-reset').onclick=()=>renderSlider(q,body,fb);
+}
+
+/* ⑱ بطاقات الذاكرة (memory): pairs[{a,b}] — كل زوج يولّد بطاقتين تشتركان في مفتاح (فهرس الزوج).
+   تُخلط البطاقات مقلوبة في شبكة. يقلب الطالب بطاقتين في كل دور: إن تطابقتا (نفس المفتاح) تبقيان
+   مكشوفتين (صوت correct.mp3 + نجمة)، وإلا تُقلبان ثانيةً بعد لحظة (صوت wrong.mp3). ينتهي السؤال
+   عند كشف كل الأزواج. نسخة نصية (مطابقة كلمة بكلمة) لا تحتاج صوراً؛ بطاقات كبيرة تناسب اللمس على
+   السبورة واتجاه RTL. الصوت عبر playCorrectSound/playWrongSound وqWin خاضعاً لزرّ الكتم العامّ. */
+function renderMemory(q, body, fb){
+  // كل زوج → بطاقتان تشتركان في مفتاح k (فهرس الزوج)، ثم تُخلط كل البطاقات مقلوبة
+  const cards=shuffle(q.pairs.reduce((a,p,i)=>a.concat([{k:i,t:p.a},{k:i,t:p.b}]),[]));
+  const cols=cards.length<=6?3:4;   // شبكة تناسب العدد (٦ بطاقات ← ٣ أعمدة، ٨ ← ٤)
+  const total=q.pairs.length;
+  body.innerHTML=`<div class="memory">`+
+    `<div class="memgrid" style="grid-template-columns:repeat(${cols},1fr)">`+
+    cards.map(c=>
+      `<button class="memcard" type="button" data-k="${c.k}">`+
+        `<span class="memface memback">🎴</span>`+
+        `<span class="memface memfront">${c.t}</span>`+
+      `</button>`).join('')+
+    `</div>`+
+    `<div class="actions"><button class="btn btn-reset">إعادة ↺</button></div>`;
+  let first=null, lock=false, matched=0;
+  body.querySelectorAll('.memcard').forEach(card=>{ card.onclick=()=>{
+    // تجاهل النقر أثناء قلب زوج غير متطابق، أو على بطاقة مكشوفة/متطابقة
+    if(lock || card.classList.contains('flipped') || card.classList.contains('matched')) return;
+    card.classList.add('flipped'); speak(card.querySelector('.memfront').textContent);
+    if(!first){ first=card; return; }           // البطاقة الأولى في الدور
+    if(first.dataset.k===card.dataset.k){        // تطابق: تبقى البطاقتان مكشوفتين
+      first.classList.add('matched'); card.classList.add('matched');
+      first=null; matched++; playCorrectSound(); addStar(1); bumpStreak();
+      if(matched===total) qWin(fb,'🎉 أحسنت! كشفت كل الأزواج',3);
+    }else{                                        // عدم تطابق: تُقلب البطاقتان ثانيةً بعد لحظة
+      lock=true; const a=first, b=card; first=null; playWrongSound();
+      setTimeout(()=>{ a.classList.remove('flipped'); b.classList.remove('flipped'); lock=false; },900);
+    }
+  };});
+  body.querySelector('.btn-reset').onclick=()=>renderMemory(q,body,fb);
 }
 
 /* ===== إقلاع ===== */

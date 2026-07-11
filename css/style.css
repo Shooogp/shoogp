@@ -475,6 +475,26 @@
   .hs-mark.hit{background:rgba(63,157,90,.6)}
   .hs-mark.miss{background:rgba(201,74,74,.6)}
 
+  /* ⑱ بطاقات الذاكرة — شبكة بطاقات مقلوبة تُقلب بطاقتان كل دور (نسخة نصية)، بطاقات كبيرة للسبورة و RTL */
+  .memory{display:flex;flex-direction:column;align-items:center;gap:18px;width:100%}
+  .memgrid{display:grid;gap:14px;width:100%;max-width:620px;margin-inline:auto}
+  /* البطاقة: مربّعة كبيرة بمنظور ثلاثيّ لقلبها */
+  .memcard{position:relative;aspect-ratio:1/1;min-height:96px;border:none;background:none;padding:0;
+    cursor:pointer;perspective:800px;font-family:'Tajawal'}
+  /* وجها البطاقة متطابقان في المكان، يُخفى المقلوب منهما (backface) */
+  .memface{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;
+    border-radius:16px;padding:8px;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+    transition:transform .4s;box-shadow:0 3px 10px rgba(0,0,0,.22)}
+  /* الوجه الخلفي (الظاهر ابتداءً): برتقاليّ هوية المنصّة بشعار البطاقة */
+  .memback{background:linear-gradient(150deg,#f5a04a,#e07f2a);color:#fff;font-size:2rem}
+  /* الوجه الأمامي (النصّ): مقلوب ابتداءً فلا يظهر إلا عند القلب */
+  .memfront{background:#FFE0B3;color:#4a3a10;font-size:1.15rem;font-weight:800;transform:rotateY(180deg)}
+  .memcard.flipped .memback{transform:rotateY(180deg)}
+  .memcard.flipped .memfront{transform:rotateY(360deg)}
+  /* بطاقة متطابقة: تبقى مكشوفة بلون النجاح ولا تُنقر ثانيةً */
+  .memcard.matched{cursor:default}
+  .memcard.matched .memfront{background:#a7c957;color:#20340a;box-shadow:0 0 0 3px #82a83e inset}
+
   /* التنقّل بين الأسئلة (خطوة بخطوة) */
   .qnav{display:flex;align-items:center;justify-content:center;gap:12px;margin:6px 0 10px;flex-wrap:wrap}
   .qnav .btn{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);color:#fff;min-width:118px}
