@@ -211,7 +211,7 @@ function qWin(fb,msg,stars){fb.textContent=msg||'🎉 أحسنت!';fb.className=
 // عند الخطأ: صوت wrong.mp3 — بنفس أسلوب صوت الصواب، بلا نطق آلي متداخل معه
 function qFail(fb,msg){fb.textContent=msg||'حاول مرة أخرى';fb.className='fb qfb bad';playWrongSound();}
 
-const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية'};
+const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ'};
 
 // تحويل الأرقام إلى هندية (عربية) للعرض
 function arNum(n){ return String(n).replace(/[0-9]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'[+d];}); }
@@ -226,7 +226,7 @@ function renderQuestions(ls){
     m.innerHTML='<div class="qbody" style="text-align:center;padding:14px 6px;font-size:1.15rem">📚 أسئلة هذا الدرس ستُضاف قريباً بإذن الله</div>';
     host.appendChild(m); return;
   }
-  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap};
+  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError};
 
   // بناء كل البطاقات (تبقى في الصفحة لحفظ إجاباتها، ونُظهر واحدة فقط)
   const slides=document.createElement('div'); slides.className='qslides';
@@ -431,6 +431,26 @@ function renderHotspot(q, body, fb){
     const mark=document.createElement('div');mark.className='hs-mark';mark.style.left=px+'%';mark.style.top=py+'%';
     if(Math.hypot(px-q.spot.x,py-q.spot.y)<=(q.spot.r||10)){done=true;mark.classList.add('hit');qWin(fb,'🎯 أحسنت! نقرت على المكان الصحيح',2);}
     else{mark.classList.add('miss');qFail(fb,'ليس هنا، حاول مرة أخرى');setTimeout(()=>mark.remove(),800);}
+    fig.appendChild(mark);
+  };
+}
+
+/* ⑫ اكتشف الخطأ (find-error): صورة فيها خطأ علمي واحد + spot{x,y,r} — الطالب يضغط على موضع الخطأ.
+   نفس آليّة النقطة الساخنة بصرياً؛ عند إصابة موضع الخطأ يفوز، وإلا يشجَّع على التدقيق أكثر */
+function renderFindError(q, body, fb){
+  const inner=q.svg?q.svg:`<img src="${q.image}" alt="">`;
+  const figCls = q.fit==='width' ? 'figwrap fw hsfig' : 'figwrap hsfig';
+  body.innerHTML=`<div class="dnd dnd-solo"><div class="stage stage-img"${q.bg?` style="background:${q.bg}"`:''}><div class="${figCls}">${inner}</div></div></div>`;
+  const fig=body.querySelector('.hsfig'); fig.style.cursor='pointer';
+  let done=false;
+  fig.onclick=(e)=>{
+    if(done)return;
+    const box=fig.getBoundingClientRect();
+    const px=(e.clientX-box.left)/box.width*100, py=(e.clientY-box.top)/box.height*100;
+    if(px<0||px>100||py<0||py>100) return;
+    const mark=document.createElement('div');mark.className='hs-mark';mark.style.left=px+'%';mark.style.top=py+'%';
+    if(Math.hypot(px-q.spot.x,py-q.spot.y)<=(q.spot.r||10)){done=true;mark.classList.add('hit');qWin(fb,'🔍 أحسنت! اكتشفت الخطأ',2);}
+    else{mark.classList.add('miss');qFail(fb,'ليس هنا الخطأ، دقّق أكثر');setTimeout(()=>mark.remove(),800);}
     fig.appendChild(mark);
   };
 }
