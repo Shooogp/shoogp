@@ -33,6 +33,9 @@
   /* خلفية ديني حياتي (ج٢) — بنفسجي داكن بلمسة نعناعية خفيفة */
   body.theme-dini-2{
     background:linear-gradient(180deg,#20283f 0%,#26404e 32%,#2c5c50 65%,#357d64 100%)}
+  /* خلفية رياضيات الثاني — بنفسجي داكن بلمسة برتقالية دافئة خفيفة */
+  body.theme-math2{
+    background:linear-gradient(180deg,#241f3c 0%,#3b3350 32%,#664a34 65%,#93672c 100%)}
 
   /* نجوم الخلفية */
   .stars{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}

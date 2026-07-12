@@ -9,7 +9,9 @@ window.DATA_FALLBACK = {
   terms: {
     "الأول": {
       "الأول": [],
-      "الثاني": [],
+      "الثاني": [
+        { key:"g2-math", title:"الرياضيات", term:"الفصل الأول", color:"bk-orange", ic:"📐", isNew:true, theme:"theme-math2", cover:"images/cover-g2-math.jpg" }
+      ],
       "الثالث": [
         { key:"g3-sci", title:"العلوم", term:"الفصل الأول", color:"bk-red", ic:"🔬", isNew:false, theme:"theme-sci3", cover:"images/cover-g3-sci.jpg" }
       ],
