@@ -195,7 +195,8 @@ function openLesson(ls){
 }
 
 function setTheme(name){
-  document.body.classList.remove('theme-home','theme-sci','theme-math');
+  // أزل كل سمات theme-* (لا قائمة ثابتة ناقصة) كي لا تبقى خلفية كتابٍ عالقة عند التنقّل
+  [].slice.call(document.body.classList).forEach(function(c){ if(c.indexOf('theme-')===0) document.body.classList.remove(c); });
   document.body.classList.add(name || 'theme-home');
 }
 function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
