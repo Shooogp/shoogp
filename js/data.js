@@ -33,6 +33,11 @@ window.DATA_FALLBACK = {
   },
   // فهرس منفصل لكل كتاب  (مطابق لـ data/index.json)
   index: {
+    "g2-math": { book:"الرياضيات — الصف الثاني", units:[
+      { unit:"٢أ: الأعداد والعمليات الحسابية", lessons:[
+        { title:"العشرات والآحاد حتى ١٠٠ (١٢-١)", file:"g2m-12-1", open:true }
+      ]}
+    ]},
     "g4-sci": { book:"العلوم — الصف الرابع", units:[
       { unit:"الإنسان والحيوان", lessons:[
         { title:"الهياكل العظمية", file:"g4s-1-1", open:true },
