@@ -208,7 +208,7 @@
     padding:13px 16px;font-weight:700;font-size:1.02rem;color:#4a3a10;cursor:grab;text-align:center;
     box-shadow:0 3px 8px rgba(217,161,92,.22);user-select:none;touch-action:none;transition:.15s}
   .chip.used{opacity:.35;pointer-events:none;text-decoration:line-through}
-  .chip.dragging{opacity:.6}
+  .chip.dragging{opacity:1;transform:scale(1.06);box-shadow:0 6px 16px rgba(245,160,74,.55);cursor:grabbing}
 
   /* ⑮ التلوين بالتعليمات: لوحة ألوان كبيرة + رسم SVG بأجزاء <g class="cpart"> قابلة للتلوين */
   .colorq{display:flex;flex-direction:column;gap:16px}
