@@ -200,17 +200,19 @@ function setTheme(name){
   document.body.classList.add(name || 'theme-home');
 }
 function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
-function goHome(){setTheme('theme-home');showScreen('home');}
-function backToLessons(){showScreen('lessonsScreen');}
+// عند مغادرة شاشة النشاط: أزل مسار الصاروخ وأعِد إظهار شريط النقاط
+function leaveRocket(){document.body.classList.remove('rocket-mode');if(window.RocketJourney)RocketJourney.unmount();}
+function goHome(){leaveRocket();setTheme('theme-home');showScreen('home');}
+function backToLessons(){leaveRocket();showScreen('lessonsScreen');}
 
 /* ═══════════════ محرّك الأسئلة الموحّد (خمسة أنواع) ═══════════════ */
 function shuffle(a){return a.map(v=>[Math.random(),v]).sort((x,y)=>x[0]-y[0]).map(v=>v[1]);}
 
 // تغذية راجعة موحّدة: نجاح (نجوم + احتفال + صوت) / إخفاق (تشجيع)
 // عند الصواب: يكفي صوت correct.mp3 — بلا نطق آلي متداخل معه
-function qWin(fb,msg,stars){fb.textContent=msg||'🎉 أحسنت!';fb.className='fb qfb good';playCorrectSound();addStar(stars||1);bumpStreak();}
+function qWin(fb,msg,stars){fb.textContent=msg||'🎉 أحسنت!';fb.className='fb qfb good';playCorrectSound();addStar(stars||1);bumpStreak();if(window.RocketJourney)RocketJourney.onAnswer(true);}
 // عند الخطأ: صوت wrong.mp3 — بنفس أسلوب صوت الصواب، بلا نطق آلي متداخل معه
-function qFail(fb,msg){fb.textContent=msg||'حاول مرة أخرى';fb.className='fb qfb bad';playWrongSound();}
+function qFail(fb,msg){fb.textContent=msg||'حاول مرة أخرى';fb.className='fb qfb bad';playWrongSound();if(window.RocketJourney)RocketJourney.onAnswer(false);}
 
 const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل','slider':'🎚️ الشريط المتدرج','memory':'🎴 بطاقات الذاكرة'};
 
@@ -245,6 +247,19 @@ function renderQuestions(ls){
   const cards=[].slice.call(slides.children);
   const total=cards.length;
 
+  // ── رحلة الصاروخ: بديل النجوم في الدروس المفعَّلة فقط ──
+  const rocketOn = !!(window.RocketJourney && RocketJourney.isEnabled(ls.file));
+  const actSub = document.querySelector('#activityScreen .screen-sub');
+  if(rocketOn){
+    document.body.classList.add('rocket-mode');
+    if(actSub) actSub.textContent='أجب عن الأسئلة وأطلق صاروخك إلى القمر 🚀';
+    RocketJourney.mount(host, total);
+  }else{
+    document.body.classList.remove('rocket-mode');
+    if(window.RocketJourney) RocketJourney.unmount();
+    if(actSub) actSub.textContent='أجب عن الأسئلة واجمع النجوم ⭐';
+  }
+
   // شريط التنقّل + مؤشّر التقدّم
   const nav=document.createElement('div'); nav.className='qnav';
   nav.innerHTML='<button class="btn qprev">→ السابق</button>'+
@@ -273,7 +288,8 @@ function renderQuestions(ls){
     result.innerHTML='<div class="card-box qresult-box">'+
       '<h3>🎉 أنهيت الدرس!</h3>'+
       '<p>أجبت صحيحاً عن <b>'+arNum(good)+'</b> من <b>'+arNum(total)+'</b> أسئلة.</p>'+
-      '<p>مجموع نجومك ⭐ <b>'+arNum(score)+'</b></p>'+
+      // في درس الصاروخ يُحذف سطر «مجموع نجومك» (النجوم مُستبدَلة بالصاروخ)
+      (rocketOn ? '' : '<p>مجموع نجومك ⭐ <b>'+arNum(score)+'</b></p>')+
       (good===total ? '<p class="qresult-cheer">ممتاز! أكملت كل الأسئلة 🌟</p>'
                     : '<p class="qresult-cheer">أحسنت! يمكنك الرجوع وإكمال ما تبقّى.</p>')+
       '</div>';
