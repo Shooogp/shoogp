@@ -492,6 +492,38 @@
   .memcard.matched{cursor:default}
   .memcard.matched .memfront{background:#a7c957;color:#20340a;box-shadow:0 0 0 3px #82a83e inset}
 
+  /* ⑲ العدسة المكبّرة (lens): صورتان متطابقتا الأبعاد — العلوية المشهد الظاهر والسفلية الطبقة
+     الخفية — والعدسة دائرة clip-path (قطر ~160px) بمقبض واضح تُسحب بالفأرة واللمس فتكشف
+     السفلية أينما تحرّكت. العناصر المكتشفة تثبت مكشوفة بتسميتها. عناصر كبيرة للسبورة و RTL */
+  .lensq{display:flex;flex-direction:column;align-items:center;gap:16px;width:100%}
+  .lens-progress{font-family:'Cairo';font-weight:700;color:#fff;font-size:1.15rem;
+    text-shadow:0 1px 3px rgba(0,0,0,.34)}
+  .lens-progress b{color:#ffe27a;font-size:1.4rem;margin-inline:4px}
+  .lensfig{cursor:pointer;touch-action:none;-webkit-user-select:none;user-select:none}
+  .lensfig img{pointer-events:none;-webkit-user-drag:none}
+  .lens-top{position:relative;z-index:0}
+  /* الطبقة الخفية: فوق العلوية وتُقصّ بدائرة العدسة (يحدّث الكود القصّ مع كل حركة) */
+  .lens-reveal{position:absolute;inset:0;z-index:1;pointer-events:none;clip-path:circle(0 at 50% 50%)}
+  .lensfig .lens-under{position:absolute;inset:0;width:100%;height:100%}
+  /* العناصر المكتشفة: دوائر كشف دائمة من الطبقة الخفية + تسمية فوق كل عنصر */
+  .lens-found{position:absolute;inset:0;z-index:2;pointer-events:none}
+  .lens-spot{position:absolute;inset:0}
+  .lens-label{position:absolute;transform:translate(-50%,-140%);background:#FFE0B3;border:2px solid #e0b380;
+    color:#3a2c0a;font-weight:800;font-size:.98rem;padding:5px 14px;border-radius:12px;white-space:nowrap;
+    box-shadow:0 3px 8px rgba(0,0,0,.3);animation:lensPop .35s ease-out}
+  @keyframes lensPop{from{opacity:0;transform:translate(-50%,-140%) scale(.6)}
+    to{opacity:1;transform:translate(-50%,-140%) scale(1)}}
+  /* العدسة: إطار برتقالي بهوية المنصّة + لمعة زجاج + مقبض مائل واضح (RTL: أسفل اليسار) */
+  .lens-glass{position:absolute;left:76%;top:80%;width:160px;height:160px;margin:-80px 0 0 -80px;
+    z-index:3;pointer-events:none;filter:drop-shadow(0 6px 14px rgba(0,0,0,.35))}
+  .lens-ring{position:absolute;inset:0;border-radius:50%;border:8px solid #f5a04a;box-sizing:border-box;
+    background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.28),rgba(255,255,255,0) 55%);
+    box-shadow:inset 0 0 0 3px #c87f2a}
+  .lens-handle{position:absolute;bottom:-42px;left:-10px;width:24px;height:76px;border-radius:14px;
+    background:linear-gradient(180deg,#c87f2a,#9a5f1c);transform:rotate(38deg);transform-origin:top center;
+    box-shadow:0 3px 8px rgba(0,0,0,.35)}
+  .lens-glass.grab .lens-ring{border-color:#ffb763}
+
   /* التنقّل بين الأسئلة (خطوة بخطوة) */
   .qnav{display:flex;align-items:center;justify-content:center;gap:12px;margin:6px 0 10px;flex-wrap:wrap}
   .qnav .btn{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);color:#fff;min-width:118px}

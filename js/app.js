@@ -213,7 +213,7 @@ function qWin(fb,msg,stars){fb.textContent=msg||'🎉 أحسنت!';fb.className=
 // أي واجهة بلا صاروخ تُبقي wrong.mp3 يعمل (بقية دروس المنصّة كلها تحوي الصاروخ الآن)
 function qFail(fb,msg){fb.textContent=msg||'حاول مرة أخرى';fb.className='fb qfb bad';if(!(window.RocketJourney&&RocketJourney.isActive&&RocketJourney.isActive()))playWrongSound();if(window.RocketJourney)RocketJourney.onAnswer(false);}
 
-const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل','slider':'🎚️ الشريط المتدرج','memory':'🎴 بطاقات الذاكرة'};
+const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل','slider':'🎚️ الشريط المتدرج','memory':'🎴 بطاقات الذاكرة','lens':'🔍 العدسة المكبّرة'};
 
 // تحويل الأرقام إلى هندية (عربية) للعرض
 function arNum(n){ return String(n).replace(/[0-9]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'[+d];}); }
@@ -228,7 +228,7 @@ function renderQuestions(ls){
     m.innerHTML='<div class="qbody" style="text-align:center;padding:14px 6px;font-size:1.15rem">📚 أسئلة هذا الدرس ستُضاف قريباً بإذن الله</div>';
     host.appendChild(m); return;
   }
-  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor,'puzzle':renderPuzzle,'slider':renderSlider,'memory':renderMemory};
+  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor,'puzzle':renderPuzzle,'slider':renderSlider,'memory':renderMemory,'lens':renderLens};
 
   // بناء كل البطاقات (تبقى في الصفحة لحفظ إجاباتها، ونُظهر واحدة فقط)
   const slides=document.createElement('div'); slides.className='qslides';
@@ -1040,6 +1040,106 @@ function renderMemory(q, body, fb){
     }
   };});
   body.querySelector('.btn-reset').onclick=()=>renderMemory(q,body,fb);
+}
+
+/* ⑲ العدسة المكبّرة (lens): صورتان PNG متطابقتا الأبعاد — image العلوية (المشهد الظاهر)
+   وhidden السفلية (الطبقة الخفية) — والعدسة دائرة clip-path قطرها ~160px بمقبض واضح،
+   تُسحب بالفأرة واللمس معاً (الاستخدام الأساسي سبورة تفاعلية بالأصابع) فتكشف السفلية
+   أينما تحرّكت. spots[{label,x,y,r}] العناصر المخفية (نِسَب مئوية كنمط hotspot).
+   الطالب يضغط العنصر وهو ظاهر داخل العدسة: صحيح = صوت النجاح + يثبت العنصر مكشوفاً
+   بتسميته + تقدّم عدّاد «اكتشفت … من …»؛ خاطئ = تغذية الخطأ المعتمدة (qFail: اختناق
+   محرّك الصاروخ، وwrong.mp3 في واجهة بلا صاروخ). يكتمل السؤال باكتشاف كل العناصر. */
+function renderLens(q, body, fb){
+  const R=80;      // نصف قطر العدسة بالبكسل (قطر ~160px يناسب أصابع السبورة)
+  const GRIP=54;   // هامش حول العدسة يُحتسب مسكاً للسحب (يشمل الإطار والمقبض)
+  const spots=q.spots||[];
+  const figCls=q.fit==='width' ? 'figwrap fw lensfig' : 'figwrap lensfig';
+  body.innerHTML=`<div class="lensq">`+
+    `<div class="lens-progress">اكتشفت <b class="lens-count">٠</b> من <b>${arNum(spots.length)}</b></div>`+
+    `<div class="dnd dnd-solo"><div class="stage stage-img"${q.bg?` style="background:${q.bg}"`:''}>`+
+      `<div class="${figCls}">`+
+        `<img class="lens-top" src="${q.image}" alt="">`+
+        `<div class="lens-reveal"><img class="lens-under" src="${q.hidden}" alt=""></div>`+
+        `<div class="lens-found"></div>`+
+        `<div class="lens-glass"><span class="lens-ring"></span><span class="lens-handle"></span></div>`+
+      `</div>`+
+    `</div></div></div>`+
+    `<div class="actions"><button class="btn btn-reset">إعادة ↺</button></div>`;
+  const fig=body.querySelector('.lensfig'), glass=body.querySelector('.lens-glass');
+  const reveal=body.querySelector('.lens-reveal'), foundLayer=body.querySelector('.lens-found');
+  const countEl=body.querySelector('.lens-count'), topImg=body.querySelector('.lens-top');
+  let lx=76, ly=80;                // موضع مركز العدسة % (تبدأ أسفل المشهد كي يظهر كاملاً)
+  let found=0, done=false;
+  const foundSet={};
+  // رسم العدسة: يضع الزجاج على مركزها ويقصّ الطبقة الخفية بدائرتها (يُعاد مع كل حركة/تغيّر حجم)
+  function draw(){
+    const w=fig.clientWidth, h=fig.clientHeight; if(!w||!h) return;
+    const cx=lx/100*w, cy=ly/100*h;
+    glass.style.left=cx+'px'; glass.style.top=cy+'px';
+    reveal.style.clipPath='circle('+R+'px at '+cx+'px '+cy+'px)';
+  }
+  if(window.ResizeObserver){ new ResizeObserver(draw).observe(fig); }
+  topImg.addEventListener('load',draw);
+  setTimeout(draw,60);
+  // تثبيت عنصر مكتشف: دائرة كشف دائمة حول موضعه (بنِسَب مئوية تصمد مع تغيّر الحجم) + تسميته
+  function fixSpot(i){
+    const sp=spots[i]; foundSet[i]=true;
+    const d=document.createElement('div'); d.className='lens-spot';
+    d.style.clipPath='circle('+((sp.r||10)*1.35)+'% at '+sp.x+'% '+sp.y+'%)';
+    d.innerHTML=`<img class="lens-under" src="${q.hidden}" alt="">`;
+    foundLayer.appendChild(d);
+    const lb=document.createElement('span'); lb.className='lens-label';
+    lb.style.left=sp.x+'%'; lb.style.top=sp.y+'%'; lb.textContent=sp.label;
+    foundLayer.appendChild(lb);
+  }
+  // السحب (فأرة + لمس، كنمط الشريط المتدرّج) — والنقرة القصيرة دون حركة تُحتسب إجابة
+  let dragging=false, moved=false, sx=0, sy=0, offX=0, offY=0;
+  const rel=(cx,cy)=>{ const r=fig.getBoundingClientRect(); return {x:cx-r.left, y:cy-r.top, w:r.width, h:r.height}; };
+  function start(cx,cy){
+    const p=rel(cx,cy); if(!p.w) return;
+    moved=false; sx=p.x; sy=p.y;
+    if(Math.hypot(p.x-lx/100*p.w, p.y-ly/100*p.h)<=R+GRIP){
+      dragging=true; offX=lx/100*p.w-p.x; offY=ly/100*p.h-p.y; glass.classList.add('grab');
+      window.addEventListener('mousemove',onMove); window.addEventListener('mouseup',end);
+      window.addEventListener('touchmove',onTouchMove,{passive:false}); window.addEventListener('touchend',end);
+    }
+  }
+  function track(cx,cy){
+    const p=rel(cx,cy); if(!p.w) return;
+    if(Math.hypot(p.x-sx,p.y-sy)>7) moved=true;
+    lx=Math.max(0,Math.min(100,(p.x+offX)/p.w*100));
+    ly=Math.max(0,Math.min(100,(p.y+offY)/p.h*100));
+    draw();
+  }
+  function onMove(e){ if(dragging) track(e.clientX,e.clientY); }
+  function onTouchMove(e){ if(dragging){ track(e.touches[0].clientX,e.touches[0].clientY); e.preventDefault(); } }
+  function end(){ dragging=false; glass.classList.remove('grab');
+    window.removeEventListener('mousemove',onMove); window.removeEventListener('mouseup',end);
+    window.removeEventListener('touchmove',onTouchMove); window.removeEventListener('touchend',end); }
+  fig.addEventListener('mousedown',e=>{ e.preventDefault(); start(e.clientX,e.clientY); });
+  fig.addEventListener('touchstart',e=>{ start(e.touches[0].clientX,e.touches[0].clientY); },{passive:true});
+  // النقر = محاولة إجابة (بعد استبعاد سحبات العدسة ومسكات إطارها/مقبضها)
+  fig.addEventListener('click',e=>{
+    if(done || moved) return;                        // moved: كانت سحبة عدسة لا نقرة
+    const p=rel(e.clientX,e.clientY); if(!p.w) return;
+    const px=p.x/p.w*100, py=p.y/p.h*100;
+    if(px<0||px>100||py<0||py>100) return;
+    const distLens=Math.hypot(p.x-lx/100*p.w, p.y-ly/100*p.h);
+    if(distLens>R && distLens<=R+GRIP) return;       // نقرة على إطار/مقبض العدسة: مسك لا إجابة
+    let hit=-1;
+    spots.forEach((sp,i)=>{ if(hit<0 && !foundSet[i] && Math.hypot(px-sp.x,py-sp.y)<=(sp.r||10)) hit=i; });
+    if(hit>=0 && distLens<=R){                       // العنصر مضغوط وهو ظاهر داخل العدسة
+      fixSpot(hit); found++; countEl.textContent=arNum(found);
+      speak(spots[hit].label);
+      if(found===spots.length){ done=true; qWin(fb,'🎉 أحسنت! اكتشفت كل العناصر الخفية',3); }
+      else{ playCorrectSound();
+        fb.textContent='🔍 أحسنت! اكتشفت: '+spots[hit].label; fb.className='fb qfb'; }
+    } else {
+      qFail(fb, distLens<=R ? 'ليس هذا هو المطلوب — دقّق فيما يظهر داخل العدسة'
+                            : 'حرّك العدسة فوق الصورة لتكشف ما تحتها ثم اضغط عليه');
+    }
+  });
+  body.querySelector('.btn-reset').onclick=()=>renderLens(q,body,fb);
 }
 
 /* ===== إقلاع ===== */
