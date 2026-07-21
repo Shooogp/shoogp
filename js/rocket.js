@@ -187,9 +187,10 @@
       if(bimg && !bimg.complete) bimg.addEventListener('load', ready, {once:true});
       if(mimg && !mimg.complete) mimg.addEventListener('load', ready, {once:true});
 
-      // الحاوية مثبَّتة بارتفاع بكسليّ ثابت، فقياسها لا يتغيّر مع النافذة؛ نكتفي بإعادة
-      // وضع الصاروخ على مرحلته الحالية دون إعادة حساب المسار (مرجعية ثابتة تماماً).
-      this._onResize=()=>{ this._apply(); };
+      // عند تغيّر النافذة: إعادة القياس والرسم والموضع معاً من المصدر نفسه (الحاوية
+      // ثابتة الارتفاع فأغلب التغييرات لا تبدّل شيئاً، لكن عبور حدود الميديا يبدّل
+      // عرض الحارة وأحجام الصور — فيلزم أن يلحق الرسمُ والحركة معاً).
+      this._onResize=()=>{ this._measure(); this._apply(); };
       window.addEventListener('resize', this._onResize);
       this._emitT=setInterval(()=>this._emit(), 55);
     },
@@ -198,6 +199,7 @@
       try{ SFX.engineStop(); }catch(e){}   // أوقف همهمة المحرّك عند مغادرة الدرس
       if(this._onResize){ window.removeEventListener('resize', this._onResize); this._onResize=null; }
       clearInterval(this._emitT); clearTimeout(this._spT); clearTimeout(this._arrT); clearTimeout(this._arrT2);
+      if(this._anim){ try{ this._anim.cancel(); }catch(e){} this._anim=null; }
       if(this.lane && this.lane.parentNode) this.lane.parentNode.removeChild(this.lane);
       this.lane=this.rocket=this.flag=this.curve=this.cloud=this.sat=this.host=null; this.dots=[];
       this.total=0; this.ignited=false; this.hadError=false; this.arrived=false;
@@ -209,6 +211,19 @@
     _tiltAt: function(t){ const d=(this._dxAt(t+0.02)-this._dxAt(t-0.02))/0.04;
       return Math.max(-12, Math.min(12, d*0.10)); },
 
+    // ── المصدر الهندسي الواحد: نقطة المسار عند النسبة t داخل الحارة ──
+    //    كل ما يُرسم (الخط المنقط، المحطّات، المعالم، العلم) وكل ما يتحرّك (إطارات
+    //    طيران الصاروخ) يُشتق من هذه الدالة بعد القياس الحيّ نفسه — فيستحيل منطقياً
+    //    أن ينفصل مسار الحركة عن المسار المرسوم.
+    _pointAt: function(t){ return { x: this._cx + this._dxAt(t), up: this._winRest + t*this.travel }; },
+
+    // بصمة الهندسة الحيّة (رخيصة القراءة): تتغيّر مع تحميل الصور، عبور حدود الميديا،
+    // التكبير، أو أي إعادة تخطيط تمسّ الحارة/القمر — فتستدعي إعادة القياس والرسم معاً.
+    _readSig: function(){ if(!this.lane) return '';
+      const L=this.lane.getBoundingClientRect(),
+            M=this.lane.querySelector('.rj-moon-img').getBoundingClientRect();
+      return [L.top,L.left,L.width,L.height,M.top-L.top,M.width,M.height].map(v=>v.toFixed(1)).join('|'); },
+
     _measure: function(){
       if(!this.lane || !this.rocket) return;
       const L=this.lane.getBoundingClientRect();
@@ -219,7 +234,7 @@
       const rr=this.rocket.getBoundingClientRect();
       const winRest = L.bottom - (rr.top + WIN_RATIO*rr.height); const rH=rr.height;
       this.rocket.style.transform=pt; this.rocket.style.transition=ptr;
-      this._winRest=winRest;
+      this._winRest=winRest; this._rH=rH;
 
       // المسافة: تهبط الفوّهة على أعلى قوس القمر عند الاكتمال
       const M=this.lane.querySelector('.rj-moon-img').getBoundingClientRect();
@@ -228,26 +243,32 @@
       this.travel=Math.max(0, winF1 - winRest);
 
       const N=this.total||1;
-      this.dots.forEach((d,i)=>{ const t=(i+0.5)/N;
-        d.style.left  =(this._cx + this._dxAt(t))+'px';
-        d.style.bottom=(winRest + t*this.travel - 8)+'px'; });
+      this.dots.forEach((d,i)=>{ const p=this._pointAt((i+0.5)/N);
+        d.style.left  =p.x+'px';
+        d.style.bottom=(p.up - 8)+'px'; });
       this._placeMarker(this.cloud, 0.30, 8);
       this._placeMarker(this.sat,   0.70, -6);
       // العلم: الساريّة خلف الصاروخ والقماش يمينه مرئي بالكامل
-      if(this.flag){ this.flag.style.left=(this._cx + this._dxAt(1) + 20)+'px';
-        this.flag.style.bottom=(winRest + this.travel - 20)+'px'; }
+      if(this.flag){ const pf=this._pointAt(1);
+        this.flag.style.left=(pf.x + 20)+'px';
+        this.flag.style.bottom=(pf.up - 20)+'px'; }
       this._drawCurve();
+      this._sig=this._readSig();   // بصمة الهندسة التي رُسم عليها كل شيء الآن
     },
 
     _placeMarker: function(el, t, ex){ if(!el) return;
-      el.style.left=(this._cx + this._dxAt(t) + (ex||0))+'px';
-      el.style.bottom=(this._winRest + t*this.travel - 4)+'px'; },
+      const p=this._pointAt(t);
+      el.style.left=(p.x + (ex||0))+'px';
+      el.style.bottom=(p.up - 4)+'px'; },
 
     _drawCurve: function(){ if(!this.curve) return; const H=this._laneH, steps=44;
-      // يتوقّف المسار عند آخر محطّة (لا نقاط بعدها نحو القمر)
-      const N=this.total||1, tEnd=(N-0.5)/N; let d='';
-      for(let i=0;i<=steps;i++){ const t=tEnd*i/steps; const x=this._cx+this._dxAt(t); const y=H-(this._winRest+t*this.travel);
-        d+=(i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1)+' '; }
+      // الخط المنقط يغطّي مسار الطيران الفعلي كاملاً حتى سطح القمر — كان يتوقّف عند
+      // آخر محطّة فيطير الصاروخ خارج الخط في المقطع الأخير. طرفه العلويّ يُقصّ عند
+      // قوس القمر (نقطة التلامس)، أي بالضبط حيث تحطّ فوّهة الصاروخ عند الاكتمال.
+      const tEnd=Math.max(0, Math.min(1, 1 - ((1-WIN_RATIO)*(this._rH||0))/(this.travel||1)));
+      let d='';
+      for(let i=0;i<=steps;i++){ const p=this._pointAt(tEnd*i/steps); const y=H-p.up;
+        d+=(i?'L':'M')+p.x.toFixed(1)+' '+y.toFixed(1)+' '; }
       this.curve.setAttribute('d', d); },
 
     _lightDots: function(n){ this.dots.forEach((d,i)=> d.classList.toggle('on', i<n)); },
@@ -260,6 +281,43 @@
       if(!this.rocket || this._frame===state) return; this._frame=state;
       this.rocket.classList.toggle('st-fly', state==='flying');
       this.rocket.classList.toggle('st-sput', state==='sputtering');
+    },
+
+    // ── الطيران على الخط المرسوم نفسه: إطارات مأخوذة من _pointAt (لا وتر مستقيم) ──
+    //    كان الصاروخ ينتقل بين المحطّات في خط مستقيم (transition واحد) بينما الخط
+    //    المنقط منحنى S — فيقصّ المنعطفات ويبتعد عن الخط المرسوم أثناء الحركة.
+    _anim:null,
+    _fly: function(from, to, dur, ease){
+      const el=this.rocket; if(!el || !this.lane) return;
+      const x1=this._dxAt(to), y1=-(to*this.travel), r1=this._tiltAt(to);
+      el.style.setProperty('--rj-y', y1.toFixed(2)+'px');
+      el.style.setProperty('--rj-x', x1.toFixed(2)+'px');
+      el.style.setProperty('--rj-rot', r1.toFixed(2)+'deg');
+      const finT='translate('+x1.toFixed(2)+'px,'+y1.toFixed(2)+'px) rotate('+r1.toFixed(2)+'deg)';
+      if(typeof el.animate==='function'){
+        let frames=[];
+        if(this._anim){ // مقاطعة: ابدأ من الموضع المرئي الحالي بدل القفز
+          const m=getComputedStyle(el).transform;
+          try{ this._anim.cancel(); }catch(e){} this._anim=null;
+          if(m && m!=='none') frames.push({transform:m});
+        }
+        const S=Math.max(8, Math.round(Math.abs(to-from)*28));
+        for(let i=frames.length?1:0;i<=S;i++){ const t=from+(to-from)*i/S;
+          frames.push({transform:'translate('+this._dxAt(t).toFixed(2)+'px,'+(-(t*this.travel)).toFixed(2)+'px) rotate('+this._tiltAt(t).toFixed(2)+'deg)'}); }
+        if(frames.length<2) frames.push({transform:finT});
+        el.style.transition='none';
+        const a=el.animate(frames,{duration:dur*1000,easing:ease,fill:'forwards'});
+        this._anim=a;
+        a.onfinish=()=>{ if(this._anim===a) this._anim=null;
+          try{ a.cancel(); }catch(e){} el.style.transform=finT; };
+      } else {
+        // متصفّح بلا Web Animations: انتقال مستقيم كما في السابق
+        el.style.transition='transform '+dur+'s '+ease;
+        el.style.transform=finT;
+      }
+      const airborne = to>0.001 && this.ignited;
+      this.lane.classList.toggle('rj-airborne', airborne);
+      if(!this.arrived && !this._sputtering) this._setFrame(airborne ? 'flying' : 'idle');
     },
 
     onAnswer: function(ok){
@@ -275,20 +333,22 @@
       let frac = this.total ? (solved/this.total) : 0;
       this._lightDots(solved);
 
+      const fromF=this._frac||0;
       if(ok){
         const first=!this.ignited;
         if(first){ this.ignited=true; this.lane.classList.add('rj-lit'); }
         if(this.total && solved>=this.total && !this.arrived){
           if(first){ SFX.ignite(); SFX.engineStart(); }   // حالة نادرة (سؤال واحد)
-          this._frac=1; this._land();                     // مشهد هبوط بطيء مُبطئ + خفوت المحرّك
+          this._frac=1; this._land(fromF);                // مشهد هبوط بطيء مُبطئ + خفوت المحرّك
         } else {
-          this._frac=frac; this._apply();
+          this._frac=frac; this._fly(fromF, frac, 1.1, 'cubic-bezier(.22,.61,.36,1)');
           if(first){ SFX.ignite(); SFX.engineStart(); }   // اشتعال + بدء الهدير المستمرّ
           else { SFX.whoosh(); SFX.engineSwell(); }        // ووش يندمج مع علوّ الهدير
         }
       }else{
         this.hadError=true;
-        this._frac=Math.max(0, frac - step); this._apply();
+        this._frac=Math.max(0, frac - step);
+        this._fly(fromF, this._frac, 1.1, 'cubic-bezier(.22,.61,.36,1)');
         this._sputter();          // انزلاق + لهب متقطّع (بصريّ)
         SFX.engineChoke();        // اختناق المحرّك = التنبيه الصوتيّ الوحيد للخطأ
       }
@@ -298,6 +358,7 @@
 
     _place: function(frac, smooth){
       if(!this.rocket) return;
+      if(this._anim){ try{ this._anim.cancel(); }catch(e){} this._anim=null; }
       const y=(-(frac*this.travel)).toFixed(2), x=(this._dxAt(frac)).toFixed(2), rot=(this._tiltAt(frac)).toFixed(2);
       this.rocket.style.setProperty('--rj-y', y+'px');
       this.rocket.style.setProperty('--rj-x', x+'px');
@@ -321,7 +382,14 @@
 
     // ── دخان حيّ: فرق واضح — صعود أبيض غزير متدفّق، تعثّر رماديّ شحيح متقطّع ──
     _emit: function(){
-      if(!this.lane || this.arrived) return;
+      if(!this.lane) return;
+      // حارس الانفصال (كل 55مث): إن تغيّرت الهندسة الحيّة عمّا رُسم عليه المسار
+      // (تحميل صورة متأخّر، تكبير، عبور ميديا، أي إعادة تخطيط) يُعاد القياس والرسم
+      // والموضع معاً فوراً — لا حالة يبقى فيها الرسم على هندسة والحركة على أخرى.
+      // (يُرجأ أثناء طيران جارٍ كي لا يقطع الإطارات؛ الطيران نفسه قاس لحظة انطلاقه.)
+      if(!this._anim){ const s=this._readSig();
+        if(s!==this._sig){ this._measure(); this._apply(); } }
+      if(this.arrived) return;
       if(this._frame==='flying'){                 // غزير: 3–4 نفثات كلّ نبضة
         const n=3+(Math.random()<0.6?1:0);
         for(let i=0;i<n;i++) this._puff(false);
@@ -345,16 +413,11 @@
 
     // ── مشهد هبوط هادئ: نزول بطيء ممتدّ بإبطاء قويّ حتى ملامسة القمر ثم استقرار ──
     LAND_DUR: 2.7,   // ثوانٍ — أطول بوضوح من خطوة الصعود العادية (1.1ث)
-    _land: function(){
+    _land: function(from){
       this._sputtering=false;
       const dur=this.LAND_DUR;
-      const y=(-(1*this.travel)).toFixed(2), x=(this._dxAt(1)).toFixed(2), rot=(this._tiltAt(1)).toFixed(2);
-      this.rocket.style.setProperty('--rj-y', y+'px');
-      this.rocket.style.setProperty('--rj-x', x+'px');
-      this.rocket.style.setProperty('--rj-rot', rot+'deg');
-      // إبطاء تدريجيّ قويّ كلّما اقترب من السطح (ease-out حادّ)
-      this.rocket.style.transition='transform '+dur+'s cubic-bezier(.08,.66,.16,1)';
-      this.rocket.style.transform ='translate('+x+'px,'+y+'px) rotate('+rot+'deg)';
+      // المقطع الأخير أيضاً على الخط المرسوم نفسه، بإبطاء قويّ قرب السطح (ease-out حادّ)
+      this._fly(from||0, 1, dur, 'cubic-bezier(.08,.66,.16,1)');
       this._setFrame('flying');                  // المحرّك مشتعل أثناء الاقتراب
       this.lane.classList.add('rj-airborne');     // يبقى التأرجح حتى الملامسة
       SFX.engineLand(dur);                        // خفوت المحرّك متزامن → صمت لحظة الملامسة
