@@ -512,73 +512,69 @@
 
   .hint{text-align:center;color:#b8aee5;font-size:.82rem;margin-top:26px}
 
-  /* ═══════════ رحلة الصاروخ (بديل النجوم — مؤشّر تقدّم بصريّ) ═══════════ */
+  /* ═══════════ رحلة الصاروخ (بديل النجوم — مؤشّر تقدّم بصريّ) ═══════════
+     صور جاهزة (images/rocket/*.png): الصاروخ يتبدّل بالحالة، المعالم ثابتة،
+     وعلم عُمان بديل الاحتفال. المسار المتقطّع والنقاط مرسومة بالكود فوق الصور. */
   /* إخفاء شريط النقاط داخل درس الصاروخ (يُضاف الصنف على body) */
   body.rocket-mode .scorebar{display:none}
+  /* حجز مساحة يسارية لمسار الصاروخ كي لا يزاحم الأسئلة على الشاشات الأضيق */
+  body.rocket-mode #activityScreen{padding-left:132px}
 
   /* المسار العموديّ على حافّة الشاشة (RTL: على اليسار بعيداً عن زر الرجوع) */
-  .rocket-lane{position:fixed;top:96px;bottom:26px;left:14px;width:104px;z-index:6;
-    pointer-events:none; /* عرض فقط، لا يعترض اللمس */
-    display:flex;flex-direction:column;align-items:center}
-  /* القمر أعلى المسار */
-  .rocket-lane .rj-moon{font-size:52px;line-height:1;filter:drop-shadow(0 0 14px rgba(255,255,210,.6));
-    transition:transform .4s}
-  /* خطّ المسار المنقّط بين الأرض والقمر */
-  .rocket-lane .rj-track{position:absolute;top:64px;bottom:150px;left:50%;width:4px;
+  .rocket-lane{position:fixed;top:92px;bottom:22px;left:14px;width:116px;z-index:6;
+    pointer-events:none} /* عرض فقط، لا يعترض اللمس */
+  .rocket-lane img{position:absolute;display:block;-webkit-user-select:none;user-select:none}
+
+  /* ── القمر أعلى المسار ── */
+  .rocket-lane .rj-moon-img{top:2px;left:50%;margin-left:-48px;width:96px;
+    filter:drop-shadow(0 0 10px rgba(255,246,196,.5))}
+  /* قمر صناعيّ صغير جداً في الثلث الأعلى */
+  .rocket-lane .rj-sat-img{top:22%;left:12px;width:40px;opacity:.95}
+  /* سحابة صغيرة واحدة في الثلث الأسفل */
+  .rocket-lane .rj-cloud-img{bottom:27%;right:6px;width:56px;opacity:.95}
+  /* ── الأرض ومنصّة الإطلاق أسفل المسار ── */
+  .rocket-lane .rj-earth-img{bottom:0;left:50%;margin-left:-62px;width:124px;
+    filter:drop-shadow(0 0 10px rgba(120,180,255,.4))}
+
+  /* ── مسار النقاط المتقطّع ونقاط المحطّات ── */
+  .rocket-lane .rj-track{position:absolute;top:96px;bottom:150px;left:50%;width:4px;
     transform:translateX(-50%);border-radius:3px;
-    background:repeating-linear-gradient(180deg,rgba(255,255,255,.5) 0 8px,transparent 8px 20px)}
-  /* الأرض ومنصّة الإطلاق أسفل المسار */
-  .rocket-lane .rj-earth{position:absolute;bottom:0;left:0;right:0;text-align:center}
-  .rocket-lane .rj-planet{font-size:56px;line-height:1;filter:drop-shadow(0 0 12px rgba(120,180,255,.55))}
-  .rocket-lane .rj-pad{width:70px;height:12px;margin:0 auto 4px;border-radius:6px;
-    background:linear-gradient(180deg,#c9cdd6,#7d828e);box-shadow:0 3px 8px rgba(0,0,0,.4)}
+    background:repeating-linear-gradient(180deg,rgba(120,170,255,.85) 0 7px,transparent 7px 18px)}
+  /* النقاط فوق الصاروخ ودخانه كي تظهر المُضاءة المتجاوَزة من خلف النفث */
+  .rocket-lane .rj-dots{position:absolute;inset:0;pointer-events:none;z-index:4}
+  .rocket-lane .rj-dot{position:absolute;left:50%;width:16px;height:16px;margin-left:-8px;
+    border-radius:50%;background:#26365c;border:2.5px solid #7ea6ff;
+    box-shadow:0 1px 3px rgba(0,0,0,.4);transition:.35s}
+  /* نقطة مضاءة: يتجاوزها الصاروخ عند كل إجابة صحيحة */
+  .rocket-lane .rj-dot.on{background:#7fe0ff;border-color:#eaffff;
+    box-shadow:0 0 10px 2px rgba(127,224,255,.8)}
 
-  /* الصاروخ نفسه — يقف على المنصّة ويرتفع بالـ transform */
-  .rocket-lane .rj-rocket{position:absolute;bottom:120px;left:50%;width:64px;height:120px;
-    margin-left:-32px;transform:translateY(0);will-change:transform;z-index:2}
-  .rocket-lane .rj-body{fill:#f3f4f8}
-  .rocket-lane .rj-nose{fill:var(--c-orange)}
-  .rocket-lane .rj-fin{fill:var(--c-orange)}
-  .rocket-lane .rj-win{fill:#2a3350}
-  .rocket-lane .rj-win-g{fill:var(--c-blue)}
+  /* ── الصاروخ: صورة تتبدّل بالحالة وترتفع بالـ transform ──
+     bottom سالب لأنّ أسفل الصورة منطقة نفث شفافة؛ هكذا تجلس الفوّهة على المنصّة. */
+  .rocket-lane .rj-rocket{bottom:-14px;left:50%;width:74px;margin-left:-37px;
+    transform:translateY(0);will-change:transform;z-index:3;
+    filter:drop-shadow(0 3px 6px rgba(0,0,0,.35))}
 
-  /* اللهب: مخفيّ حتى اشتعال المحرك، ونابض أثناء الإقلاع */
-  .rocket-lane .rj-flame{opacity:0;transform-origin:30px 96px;transition:opacity .3s}
-  .rocket-lane .rj-flame-out{fill:#ff9d3a}
-  .rocket-lane .rj-flame-in{fill:#ffe27a}
-  .rocket-lane.rj-lit .rj-flame{opacity:1}
-  .rocket-lane.rj-airborne .rj-flame{animation:rjFlame .28s infinite alternate}
-  @keyframes rjFlame{from{transform:scaleY(.75) scaleX(.9)}to{transform:scaleY(1.25) scaleX(1.05)}}
-
-  /* الدخان: نفثات تتصاعد من المحرك أثناء الإقلاع */
-  .rocket-lane .rj-smoke{position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);
-    width:34px;height:34px;pointer-events:none}
-  .rocket-lane.rj-airborne .rj-smoke::before,
-  .rocket-lane.rj-airborne .rj-smoke::after{content:"";position:absolute;left:50%;bottom:0;
-    width:20px;height:20px;margin-left:-10px;border-radius:50%;
-    background:radial-gradient(circle,rgba(255,255,255,.75),rgba(255,255,255,0) 70%);
-    animation:rjSmoke 1s infinite ease-out}
-  .rocket-lane.rj-airborne .rj-smoke::after{animation-delay:.5s}
-  @keyframes rjSmoke{0%{transform:translateY(0) scale(.4);opacity:.8}
-    100%{transform:translateY(30px) scale(1.5);opacity:0}}
-  /* تعثّر المحرك عند الخطأ: دخان متقطّع أوضح للحظة */
-  .rocket-lane.rj-sputter .rj-flame{opacity:1;animation:rjSputter .18s 4 alternate}
-  @keyframes rjSputter{from{opacity:.35;transform:scaleY(.5)}to{opacity:1;transform:scaleY(1.1)}}
-
-  /* الوصول إلى القمر: حركة احتفالية على السبورة */
-  .rocket-lane.rj-arrived .rj-rocket{animation:rjArrive 1.1s ease-in-out}
-  .rocket-lane.rj-arrived .rj-moon{animation:rjMoonPop 1.1s ease-in-out}
-  @keyframes rjArrive{0%{filter:none}
-    25%{transform:translateY(var(--rj-y,0)) rotate(-8deg) scale(1.06)}
-    50%{transform:translateY(var(--rj-y,0)) rotate(8deg) scale(1.12)}
-    75%{transform:translateY(var(--rj-y,0)) rotate(-5deg) scale(1.08)}
-    100%{transform:translateY(var(--rj-y,0)) rotate(0) scale(1)}}
-  @keyframes rjMoonPop{0%,100%{transform:scale(1)}40%{transform:scale(1.35) rotate(-10deg)}}
+  /* ── علم عُمان: يظهر منبثقاً من خلف الصاروخ عند الوصول بحركة رفع لطيفة ── */
+  .rocket-lane .rj-flag-img{left:50%;margin-left:2px;width:52px;z-index:2;
+    opacity:0;transform:translateY(26px) scale(.9);transform-origin:bottom center}
+  .rocket-lane.rj-arrived .rj-flag-img{animation:rjFlag 1s cubic-bezier(.34,1.4,.5,1) forwards}
+  @keyframes rjFlag{0%{opacity:0;transform:translateY(26px) scale(.9)}
+    100%{opacity:1;transform:translateY(0) scale(1)}}
+  /* هبوط لطيف للصاروخ عند الوصول (استقرار على السطح) */
+  .rocket-lane.rj-arrived .rj-rocket{animation:rjSettle .9s ease-out}
+  @keyframes rjSettle{0%{transform:translateY(var(--rj-y,0)) scale(1.05)}
+    60%{transform:translateY(var(--rj-y,0)) scale(.98)}
+    100%{transform:translateY(var(--rj-y,0)) scale(1)}}
 
   /* السبورات الضيّقة: مسار أصغر قليلاً كي لا يزاحم المحتوى */
   @media (max-width:900px){
-    .rocket-lane{width:78px;left:6px}
-    .rocket-lane .rj-rocket{width:48px;margin-left:-24px}
-    .rocket-lane .rj-moon{font-size:40px}
-    .rocket-lane .rj-planet{font-size:42px}
+    .rocket-lane{width:92px;left:6px}
+    body.rocket-mode #activityScreen{padding-left:100px}
+    .rocket-lane .rj-moon-img{width:74px;margin-left:-37px}
+    .rocket-lane .rj-earth-img{width:104px;margin-left:-52px}
+    .rocket-lane .rj-rocket{width:60px;margin-left:-30px;bottom:-10px}
+    .rocket-lane .rj-flag-img{width:44px}
+    .rocket-lane .rj-sat-img{width:32px;left:6px}
+    .rocket-lane .rj-cloud-img{width:44px;right:2px}
   }
