@@ -529,7 +529,7 @@
   /* المعالم عند انحناءات المنحنى (يوضعها الكود بالـ left/bottom) */
   .rocket-lane .rj-sat-img{width:40px;opacity:.95;transform:translateX(-50%);z-index:1}
   .rocket-lane .rj-cloud-img{width:58px;opacity:.95;transform:translateX(-50%);z-index:1}
-  .rocket-lane .rj-earth-img{bottom:0;left:50%;margin-left:-64px;width:128px;z-index:1;
+  .rocket-lane .rj-earth-img{bottom:0;left:50%;margin-left:-59px;width:118px;z-index:1;
     filter:drop-shadow(0 0 10px rgba(120,180,255,.4))}
 
   /* المنحنى المتقطّع (نقاط زرقاء) */
@@ -546,7 +546,7 @@
     box-shadow:0 0 10px 2px rgba(127,224,255,.8)}
 
   /* الصاروخ: يتبع المنحنى بالـ transform (إزاحة + ميلان)، فوق القمر والعلم */
-  .rocket-lane .rj-rocket{bottom:22px;left:50%;width:74px;margin-left:-37px;
+  .rocket-lane .rj-rocket{bottom:55px;left:50%;width:74px;margin-left:-37px;
     transform:translate(0,0);will-change:transform;z-index:3;
     filter:drop-shadow(0 3px 6px rgba(0,0,0,.35))}
 
@@ -580,8 +580,8 @@
     .rocket-lane{width:98px;left:6px}
     body.rocket-mode #activityScreen{padding-left:104px}
     .rocket-lane .rj-moon-img{width:76px;margin-left:-38px}
-    .rocket-lane .rj-earth-img{width:108px;margin-left:-54px}
-    .rocket-lane .rj-rocket{width:60px;margin-left:-30px;bottom:20px}
+    .rocket-lane .rj-earth-img{width:100px;margin-left:-50px}
+    .rocket-lane .rj-rocket{width:60px;margin-left:-30px;bottom:46px}
     .rocket-lane .rj-flag-img{width:46px}
     .rocket-lane .rj-sat-img{width:32px}
     .rocket-lane .rj-cloud-img{width:46px}
