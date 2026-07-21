@@ -525,13 +525,14 @@
     pointer-events:none} /* عرض فقط، لا يعترض اللمس */
   .rocket-lane img{position:absolute;display:block;-webkit-user-select:none;user-select:none}
 
-  /* القمر أعلى المسار (خلف الصاروخ ليهبط فوقه) */
-  .rocket-lane .rj-moon-img{top:2px;left:50%;margin-left:-48px;width:96px;z-index:1;
+  /* القمر أعلى المسار (مُبعَد ~80px عن الحافّة العليا ليتنفّس المسار) */
+  .rocket-lane .rj-moon-img{top:82px;left:50%;margin-left:-48px;width:96px;z-index:1;
     filter:drop-shadow(0 0 10px rgba(255,246,196,.5))}
   /* المعالم عند انحناءات المنحنى (يوضعها الكود بالـ left/bottom) — مكبّرة */
   .rocket-lane .rj-sat-img{width:66px;opacity:.95;transform:translateX(-50%);z-index:1}
   .rocket-lane .rj-cloud-img{width:94px;opacity:.95;transform:translateX(-50%);z-index:1}
-  .rocket-lane .rj-earth-img{bottom:0;left:50%;margin-left:-59px;width:118px;z-index:1;
+  /* الأرض مُبعَدة ~80px عن الحافّة السفلى */
+  .rocket-lane .rj-earth-img{bottom:80px;left:50%;margin-left:-59px;width:118px;z-index:1;
     filter:drop-shadow(0 0 10px rgba(120,180,255,.4))}
 
   /* المنحنى المتقطّع (نقاط زرقاء) */
@@ -549,7 +550,7 @@
 
   /* الصاروخ: الحاوية الخارجية تتبع المنحنى بالـ transform (JS)،
      والطبقة الداخلية تتأرجح تأرجحاً عائماً مستمراً (translate/rotate مستقلّان) */
-  .rocket-lane .rj-rocket{position:absolute;bottom:55px;left:50%;width:74px;margin-left:-37px;
+  .rocket-lane .rj-rocket{position:absolute;bottom:135px;left:50%;width:74px;margin-left:-37px;
     transform:translate(0,0);will-change:transform;z-index:3;
     filter:drop-shadow(0 3px 6px rgba(0,0,0,.35))}
   .rocket-lane .rj-rocket-inner{position:relative;display:block;width:100%}
@@ -610,12 +611,12 @@
   @keyframes rjFlag{0%{opacity:0;transform:translateY(26px) scale(.92)}
     100%{opacity:1;transform:translateY(0) scale(1)}}
 
-  /* هبوط لطيف للصاروخ عند الوصول (استقرار على سطح القمر) */
-  .rocket-lane.rj-arrived .rj-rocket{animation:rjSettle .9s ease-out}
+  /* استقرار لطيف عند الملامسة: انضغاط خفيف كعجلات هبوط، بلا وثبة للأعلى */
+  .rocket-lane.rj-arrived .rj-rocket{animation:rjSettle .6s ease-out}
   @keyframes rjSettle{
-    0%{transform:translate(var(--rj-x,0),var(--rj-y,0)) rotate(var(--rj-rot,0)) scale(1.06)}
-    60%{transform:translate(var(--rj-x,0),var(--rj-y,0)) rotate(var(--rj-rot,0)) scale(.97)}
-    100%{transform:translate(var(--rj-x,0),var(--rj-y,0)) rotate(var(--rj-rot,0)) scale(1)}}
+    0%{transform:translate(var(--rj-x,0),var(--rj-y,0)) rotate(var(--rj-rot,0)) scale(1,1)}
+    38%{transform:translate(var(--rj-x,0),var(--rj-y,0)) rotate(var(--rj-rot,0)) scale(1.03,.96)}
+    100%{transform:translate(var(--rj-x,0),var(--rj-y,0)) rotate(var(--rj-rot,0)) scale(1,1)}}
 
   /* السبورات الضيّقة */
   @media (max-width:900px){
@@ -623,7 +624,7 @@
     body.rocket-mode #activityScreen{padding-left:170px}
     .rocket-lane .rj-moon-img{width:76px;margin-left:-38px}
     .rocket-lane .rj-earth-img{width:100px;margin-left:-50px}
-    .rocket-lane .rj-rocket{width:60px;margin-left:-30px;bottom:46px}
+    .rocket-lane .rj-rocket{width:60px;margin-left:-30px;bottom:126px}
     .rocket-lane .rj-flag-img{width:48px}
     .rocket-lane .rj-sat-img{width:54px}
     .rocket-lane .rj-cloud-img{width:76px}

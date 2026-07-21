@@ -60,7 +60,7 @@
     /* ── هدير محرّك واقعيّ مستمرّ: ضجيج عريض مفلتر (لا نغمات) بمركز طاقة أعلى قليلاً
        (يُسمع على سماعات السبورة)، باتساع غير منتظم (هدير خشن حيّ) + طقطقة عشوائية.
        أرضية خفيفة تعلو مع الصعود وتخفت في التحويم، وتخضع لزرّ الكتم حيّاً. */
-    engine:{on:false, nodes:[], gain:null, amp:null, base:0, timer:null, swT:null, chokeT:null, choking:false},
+    engine:{on:false, nodes:[], gain:null, amp:null, base:0, timer:null, swT:null, chokeT:null, choking:false, landing:false, landT:null},
     engineStart:function(){ const c=this._c(); if(!c || this.engine.on) return; this.engine.on=true;
       const g=c.createGain(); g.gain.value=0; g.connect(c.destination);
       const amp=c.createGain(); amp.gain.value=1; amp.connect(g);           // اتساع غير منتظم (خشونة)
@@ -71,7 +71,7 @@
       n.connect(lp); lp.connect(bp); bp.connect(bpg); bpg.connect(amp);
       try{ n.start(); }catch(e){}
       this.engine.nodes=[n]; this.engine.gain=g; this.engine.amp=amp;
-      this.engine.base=0.10; this.engine.choking=false;
+      this.engine.base=0.075; this.engine.choking=false; this.engine.landing=false;
       // تحكّم حيّ: خشونة اتساع + طقطقة عشوائية + كتم + مستوى القاعدة
       this.engine.timer=setInterval(()=>{ const c2=this.ctx; if(!c2||!this.engine.gain) return; const t=c2.currentTime;
         // اتساع غير منتظم (هدير خشن): هدف عشوائيّ سريع
@@ -83,13 +83,21 @@
           cg.gain.setValueAtTime(0.0001,t); cg.gain.linearRampToValueAtTime(0.02+Math.random()*0.03,t+.008); cg.gain.exponentialRampToValueAtTime(0.0008,t+.05);
           cn.connect(chp); chp.connect(cg); cg.connect(c2.destination); cn.start(t); cn.stop(t+.06);
         }catch(e){} }
-        // مستوى القاعدة (لا يُلمس أثناء الاختناق إلا للكتم)
+        // مستوى القاعدة (لا يُلمس أثناء الاختناق/الهبوط إلا للكتم)
         if(this.muted()){ try{ this.engine.gain.gain.setTargetAtTime(0, t, 0.12); }catch(e){} }
-        else if(!this.engine.choking){ try{ this.engine.gain.gain.setTargetAtTime(this.engine.base, t, 0.25); }catch(e){} }
+        else if(!this.engine.choking && !this.engine.landing){ try{ this.engine.gain.gain.setTargetAtTime(this.engine.base, t, 0.25); }catch(e){} }
       }, 90);
-      try{ g.gain.setTargetAtTime(this.muted()?0:0.10, c.currentTime, 0.4); }catch(e){} },
-    engineSwell:function(){ if(!this.engine.on) return; this.engine.base=0.16;   // يعلو مع الووش
-      clearTimeout(this.engine.swT); this.engine.swT=setTimeout(()=>{ this.engine.base=0.085; }, 520); }, // ثم يخفت للتحويم
+      try{ g.gain.setTargetAtTime(this.muted()?0:0.075, c.currentTime, 0.4); }catch(e){} },
+    engineSwell:function(){ if(!this.engine.on || this.engine.landing) return; this.engine.base=0.12;   // يعلو مع الووش
+      clearTimeout(this.engine.swT); this.engine.swT=setTimeout(()=>{ this.engine.base=0.062; }, 520); }, // ثم يخفت للتحويم
+    // خفوت متزامن مع مشهد الهبوط: يصل الصمت لحظة الملامسة (بلا قطع مفاجئ)
+    engineLand:function(dur){ if(!this.engine.on) return; this.engine.choking=false; this.engine.landing=true;
+      clearTimeout(this.engine.swT);
+      const c=this.ctx, g=this.engine.gain;
+      if(c && g){ const t=c.currentTime; try{ g.gain.cancelScheduledValues(t);
+        g.gain.setValueAtTime(Math.max(0.0001, this.muted()?0:this.engine.base), t);
+        g.gain.linearRampToValueAtTime(0, t+dur); }catch(e){} }
+      clearTimeout(this.engine.landT); this.engine.landT=setTimeout(()=>{ this.engineStop(); }, dur*1000+90); },
     // اختناق المحرّك عند الخطأ: هبوط سريع + تقطّعات (فقدان وقود) ثم استعادة تدريجية
     engineChoke:function(){ if(this.muted())return; const c=this._c(); if(!c) return; const t=c.currentTime;
       // صوت اختناق قصير (التنبيه الوحيد للخطأ): ضجيج هابط بتقطّعات
@@ -108,8 +116,8 @@
           eg.gain.setTargetAtTime(b,t+0.72,0.5);
         }catch(e){}
         clearTimeout(this.engine.chokeT); this.engine.chokeT=setTimeout(()=>{ this.engine.choking=false; }, 1300); } },
-    engineStop:function(){ if(!this.engine.on) return; this.engine.on=false; this.engine.choking=false;
-      clearInterval(this.engine.timer); clearTimeout(this.engine.swT); clearTimeout(this.engine.chokeT);
+    engineStop:function(){ if(!this.engine.on) return; this.engine.on=false; this.engine.choking=false; this.engine.landing=false;
+      clearInterval(this.engine.timer); clearTimeout(this.engine.swT); clearTimeout(this.engine.chokeT); clearTimeout(this.engine.landT);
       const c=this.ctx, g=this.engine.gain, nodes=this.engine.nodes.slice();
       if(c && g){ const t=c.currentTime; try{ g.gain.cancelScheduledValues(t); g.gain.setTargetAtTime(0,t,0.18); }catch(e){} }
       setTimeout(()=>{ nodes.forEach(s=>{ try{s.stop();}catch(e){} }); if(g){ try{g.disconnect();}catch(e){} } }, 650);
@@ -173,7 +181,7 @@
     unmount: function(){
       try{ SFX.engineStop(); }catch(e){}   // أوقف همهمة المحرّك عند مغادرة الدرس
       if(this._onResize){ window.removeEventListener('resize', this._onResize); this._onResize=null; }
-      clearInterval(this._emitT); clearTimeout(this._spT); clearTimeout(this._arrT);
+      clearInterval(this._emitT); clearTimeout(this._spT); clearTimeout(this._arrT); clearTimeout(this._arrT2);
       if(this.lane && this.lane.parentNode) this.lane.parentNode.removeChild(this.lane);
       this.lane=this.rocket=this.flag=this.curve=this.cloud=this.sat=this.host=null; this.dots=[];
       this.total=0; this.ignited=false; this.hadError=false; this.arrived=false;
@@ -245,10 +253,14 @@
       if(ok){
         const first=!this.ignited;
         if(first){ this.ignited=true; this.lane.classList.add('rj-lit'); }
-        this._frac=frac; this._apply();
-        if(this.total && solved>=this.total && !this.arrived){ this._arrive(); }   // يشمل صوت الهبوط + إيقاف الهمهمة
-        else if(first){ SFX.ignite(); SFX.engineStart(); }   // اشتعال + بدء همهمة المحرّك المستمرة
-        else { SFX.whoosh(); SFX.engineSwell(); }            // ووش يندمج مع علوّ الهمهمة
+        if(this.total && solved>=this.total && !this.arrived){
+          if(first){ SFX.ignite(); SFX.engineStart(); }   // حالة نادرة (سؤال واحد)
+          this._frac=1; this._land();                     // مشهد هبوط بطيء مُبطئ + خفوت المحرّك
+        } else {
+          this._frac=frac; this._apply();
+          if(first){ SFX.ignite(); SFX.engineStart(); }   // اشتعال + بدء الهدير المستمرّ
+          else { SFX.whoosh(); SFX.engineSwell(); }        // ووش يندمج مع علوّ الهدير
+        }
       }else{
         this.hadError=true;
         this._frac=Math.max(0, frac - step); this._apply();
@@ -306,18 +318,35 @@
       this.lane.appendChild(p);
     },
 
-    _arrive: function(){
+    // ── مشهد هبوط هادئ: نزول بطيء ممتدّ بإبطاء قويّ حتى ملامسة القمر ثم استقرار ──
+    LAND_DUR: 2.7,   // ثوانٍ — أطول بوضوح من خطوة الصعود العادية (1.1ث)
+    _land: function(){
+      this._sputtering=false;
+      const dur=this.LAND_DUR;
+      const y=(-(1*this.travel)).toFixed(2), x=(this._dxAt(1)).toFixed(2), rot=(this._tiltAt(1)).toFixed(2);
+      this.rocket.style.setProperty('--rj-y', y+'px');
+      this.rocket.style.setProperty('--rj-x', x+'px');
+      this.rocket.style.setProperty('--rj-rot', rot+'deg');
+      // إبطاء تدريجيّ قويّ كلّما اقترب من السطح (ease-out حادّ)
+      this.rocket.style.transition='transform '+dur+'s cubic-bezier(.08,.66,.16,1)';
+      this.rocket.style.transform ='translate('+x+'px,'+y+'px) rotate('+rot+'deg)';
+      this._setFrame('flying');                  // المحرّك مشتعل أثناء الاقتراب
+      this.lane.classList.add('rj-airborne');     // يبقى التأرجح حتى الملامسة
+      SFX.engineLand(dur);                        // خفوت المحرّك متزامن → صمت لحظة الملامسة
+      clearTimeout(this._arrT);
+      this._arrT=setTimeout(()=>{ this._touchdown(); }, dur*1000);
+    },
+    _touchdown: function(){
       this.arrived=true; this._sputtering=false;
-      this._setFrame('idle');                 // أُطفئ المحرّك
-      this.lane.classList.remove('rj-airborne');
-      this.lane.classList.add('rj-arrived');
-      SFX.engineStop();                       // توقّف الهمهمة المستمرة عند الاستقرار
-      SFX.landing();
+      this._setFrame('idle');                     // أُطفئ المحرّك عند الاستقرار
+      this.lane.classList.remove('rj-airborne','rj-sputter');   // توقّف التأرجح
+      this.lane.classList.add('rj-arrived');      // رفع العلم + استقرار لطيف
+      SFX.landing();                              // صوت الهبوط الختاميّ (بعد الصمت)
       const msg = this.hadError
         ? 'أحسنت! وصلت القمر بعد رحلة مليئة بالتحدّي!'
         : 'أحسنت! وصلت القمر في الوقت المناسب!';
-      clearTimeout(this._arrT);
-      this._arrT=setTimeout(()=>{ try{ if(typeof speak==='function') speak(msg); }catch(e){} }, 900);
+      clearTimeout(this._arrT2);
+      this._arrT2=setTimeout(()=>{ try{ if(typeof speak==='function') speak(msg); }catch(e){} }, 650);
     }
   };
 
