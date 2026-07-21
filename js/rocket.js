@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════════
    رحلة الصاروخ — نظام تقدّم بصريّ مشترك (بديل النجوم)
-   - ملفّ مستقلّ قابل للإضافة لأي درس (LESSONS أدناه).
+   - مفعَّل افتراضياً في كل دروس المنصّة (أي درس له أسئلة مؤلَّفة) بكل المواد والصفوف.
    - المعادلة: الارتفاع = (الإجابات الصحيحة ÷ عدد أسئلة الدرس) × المسافة الكلية.
    - يعتمد على عدّ ‎.qfb.good‎ في حاوية الأسئلة (نفس مصدر التقرير النهائي).
    - الصاروخ صورة جسم فقط (rocket-body.png)؛ اللهب والدخان حيّان بالكامل بالكود
@@ -11,7 +11,6 @@
 (function(){
   'use strict';
 
-  const LESSONS = new Set(['g4s-1-1']);
   const IMG = 'images/rocket/';
   const WIN_RATIO = 0.528;   // موضع النافذة من أعلى صورة الجسم (بعد القصّ)
 
@@ -125,9 +124,9 @@
   };
 
   const RocketJourney = {
-    LESSONS: LESSONS,
-    isEnabled: function(file){ return LESSONS.has(file); },
-    isActive: function(){ return !!(this.lane && this.host); },   // مركَّب لدرس صاروخ الآن
+    // مفعَّل افتراضياً لكل الدروس (المعادلة تتكيّف تلقائياً مع عدد أسئلة كل درس)
+    isEnabled: function(file){ return true; },
+    isActive: function(){ return !!(this.lane && this.host); },   // مركَّب حالياً في درسٍ ما
 
     lane:null, rocket:null, flag:null, curve:null, cloud:null, sat:null, host:null, dots:[],
     total:0, ignited:false, hadError:false, arrived:false, travel:0,

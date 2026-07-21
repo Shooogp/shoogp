@@ -30,8 +30,7 @@ async function loadData(){
   }
 }
 
-/* ===== الحالة والصوت والنقاط ===== */
-let score=0, streak=0;
+/* ===== الحالة والصوت ===== */
 let arVoice=null, audioReady=false;
 function pickVoice(){const vs=speechSynthesis.getVoices();arVoice=vs.find(v=>v.lang&&v.lang.toLowerCase().startsWith('ar'))||null;}
 if('speechSynthesis' in window){pickVoice();speechSynthesis.onvoiceschanged=pickVoice;}
@@ -85,8 +84,7 @@ function toggleMute(){
   updateSoundBtn();
 }
 (function(){var b=document.getElementById('soundBtn');if(b){b.addEventListener('click',toggleMute);updateSoundBtn();}})();
-function addStar(n){score+=n;document.getElementById('starTxt').textContent=score;}
-function bumpStreak(){streak++;document.getElementById('streak').textContent=streak;}
+// نظام المكافأة هو رحلة الصاروخ (js/rocket.js) — أُزيل نظام النجوم/السلسلة نهائياً
 
 /* ===== نجوم الخلفية ===== */
 (function(){const s=document.getElementById('stars');for(let i=0;i<60;i++){const t=document.createElement('i');const sz=Math.random()*3+1;t.style.width=sz+'px';t.style.height=sz+'px';t.style.left=Math.random()*100+'%';t.style.top=Math.random()*100+'%';t.style.animationDelay=Math.random()*3+'s';s.appendChild(t);}})();
@@ -200,7 +198,7 @@ function setTheme(name){
   document.body.classList.add(name || 'theme-home');
 }
 function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
-// عند مغادرة شاشة النشاط: أزل مسار الصاروخ وأعِد إظهار شريط النقاط
+// عند مغادرة شاشة النشاط: أزل مسار الصاروخ
 function leaveRocket(){document.body.classList.remove('rocket-mode');if(window.RocketJourney)RocketJourney.unmount();}
 function goHome(){leaveRocket();setTheme('theme-home');showScreen('home');}
 function backToLessons(){leaveRocket();showScreen('lessonsScreen');}
@@ -208,11 +206,11 @@ function backToLessons(){leaveRocket();showScreen('lessonsScreen');}
 /* ═══════════════ محرّك الأسئلة الموحّد (خمسة أنواع) ═══════════════ */
 function shuffle(a){return a.map(v=>[Math.random(),v]).sort((x,y)=>x[0]-y[0]).map(v=>v[1]);}
 
-// تغذية راجعة موحّدة: نجاح (نجوم + احتفال + صوت) / إخفاق (تشجيع)
-// عند الصواب: يكفي صوت correct.mp3 — بلا نطق آلي متداخل معه
-function qWin(fb,msg,stars){fb.textContent=msg||'🎉 أحسنت!';fb.className='fb qfb good';playCorrectSound();addStar(stars||1);bumpStreak();if(window.RocketJourney)RocketJourney.onAnswer(true);}
-// عند الخطأ: صوت wrong.mp3 — بنفس أسلوب صوت الصواب، بلا نطق آلي متداخل معه
-// في درس الصاروخ يُكتم wrong.mp3 (اختناق المحرّك هو تنبيه الخطأ)؛ بقية الدروس كما هي
+// تغذية راجعة موحّدة: نجاح (صوت صحيح + رفع الصاروخ) / إخفاق (اختناق المحرّك + انزلاق)
+// المكافأة هي رحلة الصاروخ (onAnswer)؛ أُزيل نظام النجوم — الوسيط stars مُهمَل (للتوافق فقط)
+function qWin(fb,msg,stars){fb.textContent=msg||'🎉 أحسنت!';fb.className='fb qfb good';playCorrectSound();if(window.RocketJourney)RocketJourney.onAnswer(true);}
+// عند الخطأ: يُكتم wrong.mp3 ما دام الصاروخ مركَّباً (اختناق المحرّك هو تنبيه الخطأ)؛
+// أي واجهة بلا صاروخ تُبقي wrong.mp3 يعمل (بقية دروس المنصّة كلها تحوي الصاروخ الآن)
 function qFail(fb,msg){fb.textContent=msg||'حاول مرة أخرى';fb.className='fb qfb bad';if(!(window.RocketJourney&&RocketJourney.isActive&&RocketJourney.isActive()))playWrongSound();if(window.RocketJourney)RocketJourney.onAnswer(false);}
 
 const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل','slider':'🎚️ الشريط المتدرج','memory':'🎴 بطاقات الذاكرة'};
@@ -248,17 +246,12 @@ function renderQuestions(ls){
   const cards=[].slice.call(slides.children);
   const total=cards.length;
 
-  // ── رحلة الصاروخ: بديل النجوم في الدروس المفعَّلة فقط ──
-  const rocketOn = !!(window.RocketJourney && RocketJourney.isEnabled(ls.file));
+  // ── رحلة الصاروخ: نظام المكافأة الافتراضيّ لكل الدروس (المعادلة تتكيّف مع عدد الأسئلة) ──
   const actSub = document.querySelector('#activityScreen .screen-sub');
-  if(rocketOn){
+  if(window.RocketJourney){
     document.body.classList.add('rocket-mode');
     if(actSub) actSub.textContent='أجب عن الأسئلة وأطلق صاروخك إلى القمر 🚀';
     RocketJourney.mount(host, total);
-  }else{
-    document.body.classList.remove('rocket-mode');
-    if(window.RocketJourney) RocketJourney.unmount();
-    if(actSub) actSub.textContent='أجب عن الأسئلة واجمع النجوم ⭐';
   }
 
   // شريط التنقّل + مؤشّر التقدّم
@@ -289,8 +282,7 @@ function renderQuestions(ls){
     result.innerHTML='<div class="card-box qresult-box">'+
       '<h3>🎉 أنهيت الدرس!</h3>'+
       '<p>أجبت صحيحاً عن <b>'+arNum(good)+'</b> من <b>'+arNum(total)+'</b> أسئلة.</p>'+
-      // في درس الصاروخ يُحذف سطر «مجموع نجومك» (النجوم مُستبدَلة بالصاروخ)
-      (rocketOn ? '' : '<p>مجموع نجومك ⭐ <b>'+arNum(score)+'</b></p>')+
+      // أُزيل سطر «مجموع نجومك» (النجوم مُستبدَلة برحلة الصاروخ) — بقية التقرير كما هي
       (good===total ? '<p class="qresult-cheer">ممتاز! أكملت كل الأسئلة 🌟</p>'
                     : '<p class="qresult-cheer">أحسنت! يمكنك الرجوع وإكمال ما تبقّى.</p>')+
       '</div>';
@@ -407,7 +399,7 @@ function renderMatching(q, body, fb){
     d.onclick=()=>{if(d.classList.contains('matched'))return;L.querySelectorAll('.left').forEach(x=>x.classList.remove('selected'));d.classList.add('selected');sel=d;speak(pr.a);};L.appendChild(d);});
   shuffle(q.pairs).forEach(pr=>{const d=document.createElement('div');d.className='mitem right';d.textContent=pr.b;d.dataset.k=pr.a;
     d.onclick=()=>{if(!sel||d.classList.contains('matched'))return;
-      if(sel.dataset.k===pr.a){drawLink(sel,d);sel.classList.add('matched');d.classList.add('matched');sel.classList.remove('selected');sel=null;done++;playCorrectSound();addStar(1);
+      if(sel.dataset.k===pr.a){drawLink(sel,d);sel.classList.add('matched');d.classList.add('matched');sel.classList.remove('selected');sel=null;done++;playCorrectSound();
         if(done===q.pairs.length) qWin(fb,'🌟 ممتاز! أكملت التوصيل',1);}
       else{qFail(fb,'ليست الإجابة الصحيحة، حاول مجدداً');d.style.background='#fde2e2';setTimeout(()=>d.style.background='',500);}};Rr.appendChild(d);});
   body.querySelector('.btn-reset').onclick=()=>renderMatching(q,body,fb);
@@ -1040,7 +1032,7 @@ function renderMemory(q, body, fb){
     if(!first){ first=card; return; }           // البطاقة الأولى في الدور
     if(first.dataset.k===card.dataset.k){        // تطابق: تبقى البطاقتان مكشوفتين
       first.classList.add('matched'); card.classList.add('matched');
-      first=null; matched++; playCorrectSound(); addStar(1); bumpStreak();
+      first=null; matched++; playCorrectSound();
       if(matched===total) qWin(fb,'🎉 أحسنت! كشفت كل الأزواج',3);
     }else{                                        // عدم تطابق: تُقلب البطاقتان ثانيةً بعد لحظة
       lock=true; const a=first, b=card; first=null; playWrongSound();

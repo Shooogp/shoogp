@@ -59,12 +59,6 @@
     margin-top:8px !important;margin-bottom:4px !important;font-weight:700}
   header h1{font-family:'Cairo';font-size:2rem;text-shadow:0 3px 14px rgba(0,0,0,.35)}
   header p{color:#cfc4f5;margin-top:6px;font-size:1rem}
-  .scorebar{position:absolute;top:0;left:0;display:flex;gap:10px}
-  .pill{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);
-    border-radius:16px;padding:8px 14px;display:flex;align-items:center;gap:7px;font-weight:700;
-    backdrop-filter:blur(6px)}
-  .pill .e{font-size:1.1rem}
-  #starTxt{color:var(--star)}
 
   /* زر كتم/تشغيل الصوت (أعلى اليمين) */
   .sound-btn{position:absolute;top:0;right:0;
@@ -516,7 +510,6 @@
      الصاروخ صورة جسم فقط (rocket-body.png)؛ اللهب والدخان حيّان بالكامل بالكود
      (لهب متذبذب + جسيمات) بتدرّج طاقة بين الصعود والتعثّر. مسار منحنٍ S،
      نقاط ديناميكية، هبوط على القمر ورفع علم عُمان. */
-  body.rocket-mode .scorebar{display:none}
   /* مساحة يسارية تكفي لعرض المسار بعد إزاحته للداخل، فلا يزاحم الأسئلة */
   body.rocket-mode #activityScreen{padding-left:250px}
 
