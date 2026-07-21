@@ -1081,13 +1081,20 @@ function renderLens(q, body, fb){
   if(window.ResizeObserver){ new ResizeObserver(draw).observe(fig); }
   topImg.addEventListener('load',draw);
   setTimeout(draw,60);
+  // هل النقطة (px,py) داخل العنصر؟ — دائرته الرئيسة أو البديلة alt (للأعضاء المزدوجة كالذراعين)
+  function hitSpot(sp,px,py){
+    if(Math.hypot(px-sp.x,py-sp.y)<=(sp.r||10)) return true;
+    return !!(sp.alt && Math.hypot(px-sp.alt.x,py-sp.alt.y)<=(sp.alt.r||sp.r||10));
+  }
   // تثبيت عنصر مكتشف: دائرة كشف دائمة حول موضعه (بنِسَب مئوية تصمد مع تغيّر الحجم) + تسميته
   function fixSpot(i){
     const sp=spots[i]; foundSet[i]=true;
-    const d=document.createElement('div'); d.className='lens-spot';
-    d.style.clipPath='circle('+((sp.r||10)*1.35)+'% at '+sp.x+'% '+sp.y+'%)';
-    d.innerHTML=`<img class="lens-under" src="${q.hidden}" alt="">`;
-    foundLayer.appendChild(d);
+    [sp, sp.alt].filter(Boolean).forEach(c=>{
+      const d=document.createElement('div'); d.className='lens-spot';
+      d.style.clipPath='circle('+((c.r||sp.r||10)*1.35)+'% at '+c.x+'% '+c.y+'%)';
+      d.innerHTML=`<img class="lens-under" src="${q.hidden}" alt="">`;
+      foundLayer.appendChild(d);
+    });
     const lb=document.createElement('span'); lb.className='lens-label';
     lb.style.left=sp.x+'%'; lb.style.top=sp.y+'%'; lb.textContent=sp.label;
     foundLayer.appendChild(lb);
@@ -1127,7 +1134,7 @@ function renderLens(q, body, fb){
     const distLens=Math.hypot(p.x-lx/100*p.w, p.y-ly/100*p.h);
     if(distLens>R && distLens<=R+GRIP) return;       // نقرة على إطار/مقبض العدسة: مسك لا إجابة
     let hit=-1;
-    spots.forEach((sp,i)=>{ if(hit<0 && !foundSet[i] && Math.hypot(px-sp.x,py-sp.y)<=(sp.r||10)) hit=i; });
+    spots.forEach((sp,i)=>{ if(hit<0 && !foundSet[i] && hitSpot(sp,px,py)) hit=i; });
     if(hit>=0 && distLens<=R){                       // العنصر مضغوط وهو ظاهر داخل العدسة
       fixSpot(hit); found++; countEl.textContent=arNum(found);
       speak(spots[hit].label);
