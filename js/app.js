@@ -1050,8 +1050,19 @@ function renderMemory(q, body, fb){
    بتسميته + تقدّم عدّاد «اكتشفت … من …»؛ خاطئ = تغذية الخطأ المعتمدة (qFail: اختناق
    محرّك الصاروخ، وwrong.mp3 في واجهة بلا صاروخ). يكتمل السؤال باكتشاف كل العناصر. */
 function renderLens(q, body, fb){
-  const R=80;      // نصف قطر العدسة بالبكسل (قطر ~160px يناسب أصابع السبورة)
-  const GRIP=54;   // هامش حول العدسة يُحتسب مسكاً للسحب (يشمل الإطار والمقبض)
+  const R=80;      // نصف قطر فتحة العدسة بالبكسل (قطر ~160px يناسب أصابع السبورة)
+  // إطار العدسة صورة "عدسة-إطار.png" (فتحة شفافة الجوف): دائرة الكشف تطابق الفتحة تماماً
+  // موقعاً وقطراً (التحجيم والإزاحة في CSS مشتقّان من قياس الصورة: مركز الفتحة 746,484
+  // ونصف قطرها 371px من أصل 1254px). المسك = جسم الإطار: حلقة R→RING_OUT + كبسولة المقبض.
+  const RING_OUT=100;                                    // نصف القطر الخارجي للحلقة (بعد التحجيم)
+  const HANDLE={ax:-68,ay:73,bx:-149,by:154,hw:24};      // كبسولة المقبض نسبةً لمركز الفتحة (px)
+  function onFrame(dx,dy){                               // هل النقطة على جسم الإطار (حلقة/مقبض)؟
+    const d=Math.hypot(dx,dy);
+    if(d>=R-4 && d<=RING_OUT+4) return true;
+    const vx=HANDLE.bx-HANDLE.ax, vy=HANDLE.by-HANDLE.ay;
+    const t=Math.max(0,Math.min(1,((dx-HANDLE.ax)*vx+(dy-HANDLE.ay)*vy)/(vx*vx+vy*vy)));
+    return Math.hypot(dx-(HANDLE.ax+vx*t), dy-(HANDLE.ay+vy*t))<=HANDLE.hw;
+  }
   const spots=q.spots||[];
   const figCls=q.fit==='width' ? 'figwrap fw lensfig' : 'figwrap lensfig';
   body.innerHTML=`<div class="lensq">`+
@@ -1061,7 +1072,7 @@ function renderLens(q, body, fb){
         `<img class="lens-top" src="${q.image}" alt="">`+
         `<div class="lens-reveal"><img class="lens-under" src="${q.hidden}" alt=""></div>`+
         `<div class="lens-found"></div>`+
-        `<div class="lens-glass"><span class="lens-ring"></span><span class="lens-handle"></span></div>`+
+        `<div class="lens-glass"><img class="lens-frame" src="images/عدسة-إطار.png" alt=""></div>`+
       `</div>`+
     `</div></div></div>`+
     `<div class="actions"><button class="btn btn-reset">إعادة ↺</button></div>`;
@@ -1106,7 +1117,8 @@ function renderLens(q, body, fb){
   function start(cx,cy){
     const p=rel(cx,cy); if(!p.w) return;
     moved=false; sx=p.x; sy=p.y;
-    if(Math.hypot(p.x-lx/100*p.w, p.y-ly/100*p.h)<=R+GRIP){
+    const dx=p.x-lx/100*p.w, dy=p.y-ly/100*p.h;
+    if(Math.hypot(dx,dy)<=R || onFrame(dx,dy)){
       dragging=true; offX=lx/100*p.w-p.x; offY=ly/100*p.h-p.y; glass.classList.add('grab');
       window.addEventListener('mousemove',onMove); window.addEventListener('mouseup',end);
       window.addEventListener('touchmove',onTouchMove,{passive:false}); window.addEventListener('touchend',end);
@@ -1132,8 +1144,9 @@ function renderLens(q, body, fb){
     const p=rel(e.clientX,e.clientY); if(!p.w) return;
     const px=p.x/p.w*100, py=p.y/p.h*100;
     if(px<0||px>100||py<0||py>100) return;
-    const distLens=Math.hypot(p.x-lx/100*p.w, p.y-ly/100*p.h);
-    if(distLens>R && distLens<=R+GRIP) return;       // نقرة على إطار/مقبض العدسة: مسك لا إجابة
+    const dx=p.x-lx/100*p.w, dy=p.y-ly/100*p.h;
+    const distLens=Math.hypot(dx,dy);
+    if(distLens>R && onFrame(dx,dy)) return;         // نقرة على جسم الإطار/المقبض: مسك لا إجابة
     let hit=-1;
     spots.forEach((sp,i)=>{ if(hit<0 && !foundSet[i] && hitSpot(sp,px,py)) hit=i; });
     if(hit>=0 && distLens<=R){                       // العنصر مضغوط وهو ظاهر داخل العدسة
