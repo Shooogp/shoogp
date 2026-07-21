@@ -1,0 +1,51 @@
+# نشر GitHub Pages مع ختم نسخة الأصول تلقائياً
+# عند كل دفعة إلى main: يُستبدل كل وسم ?v= في ملفات HTML ببصمة النشرة (أول 8 خانات
+# من SHA) قبل النشر — فتُجبَر المتصفحات على جلب css/js المحدَّثة دون أي ترقية يدوية.
+# القيم المكتوبة في المستودع تبقى قيماً مبدئية تُستبدل عند النشر.
+name: نشر الموقع مع ختم النسخة
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# نشرة واحدة في كل لحظة، ولا تُلغى نشرة جارية (حسب قالب Pages الرسمي)
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: جلب الملفات
+        uses: actions/checkout@v4
+
+      - name: ختم ?v= ببصمة النشرة
+        run: |
+          STAMP="${GITHUB_SHA:0:8}"
+          find . -name '*.html' -not -path './.git/*' \
+            -exec sed -i -E "s/\?v=[0-9A-Za-z-]+/?v=${STAMP}/g" {} +
+          echo "الوسوم بعد الختم:"
+          grep -ho '?v=[0-9A-Za-z-]*' index.html | sort -u
+
+      # يضبط الموقع للنشر عبر Actions (يحوّل build_type تلقائياً في أول تشغيل)
+      - name: تهيئة Pages
+        uses: actions/configure-pages@v5
+
+      - name: رفع محتوى الموقع
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: النشر
+        id: deployment
+        uses: actions/deploy-pages@v4
