@@ -83,10 +83,10 @@
         '<img class="rj-cloud-img" src="'+IMG+'cloud.png" alt="">'+
         '<div class="rj-dots">'+dotsHTML+'</div>'+
         '<img class="rj-flag-img" src="'+IMG+'flag.png" alt="">'+
-        '<div class="rj-rocket">'+
+        '<div class="rj-rocket"><div class="rj-rocket-inner">'+
           '<img class="rj-body-img" src="'+IMG+'rocket-body.png" alt="">'+
           '<div class="rj-flame"><i class="fo"></i><i class="fi"></i></div>'+
-        '</div>'+
+        '</div></div>'+
         '<img class="rj-earth-img" src="'+IMG+'earth-pad.png" alt="">';
       document.body.appendChild(lane);
 
@@ -157,8 +157,10 @@
       el.style.left=(this._cx + this._dxAt(t) + (ex||0))+'px';
       el.style.bottom=(this._winRest + t*this.travel - 4)+'px'; },
 
-    _drawCurve: function(){ if(!this.curve) return; const H=this._laneH, steps=44; let d='';
-      for(let i=0;i<=steps;i++){ const t=i/steps; const x=this._cx+this._dxAt(t); const y=H-(this._winRest+t*this.travel);
+    _drawCurve: function(){ if(!this.curve) return; const H=this._laneH, steps=44;
+      // يتوقّف المسار عند آخر محطّة (لا نقاط بعدها نحو القمر)
+      const N=this.total||1, tEnd=(N-0.5)/N; let d='';
+      for(let i=0;i<=steps;i++){ const t=tEnd*i/steps; const x=this._cx+this._dxAt(t); const y=H-(this._winRest+t*this.travel);
         d+=(i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1)+' '; }
       this.curve.setAttribute('d', d); },
 
@@ -217,22 +219,26 @@
       }, 1000);
     },
 
-    // ── دخان حيّ: جسيمات من الفوّهة (كثيفة طيراناً، رمادية شحيحة تعثّراً) ──
+    // ── دخان حيّ: فرق واضح — صعود أبيض غزير متدفّق، تعثّر رماديّ شحيح متقطّع ──
     _emit: function(){
       if(!this.lane || this.arrived) return;
-      if(this._frame==='flying'){ this._puff(false); if(Math.random()<0.7) this._puff(false); }
-      else if(this._frame==='sputtering'){ if(Math.random()<0.4) this._puff(true); }
+      if(this._frame==='flying'){                 // غزير: 3–4 نفثات كلّ نبضة
+        const n=3+(Math.random()<0.6?1:0);
+        for(let i=0;i<n;i++) this._puff(false);
+      } else if(this._frame==='sputtering'){       // شحيح ومتقطّع: نفثة واحدة أحياناً
+        if(Math.random()<0.3) this._puff(true);
+      }
     },
     _puff: function(gray){
       const L=this.lane.getBoundingClientRect(), rr=this.rocket.getBoundingClientRect();
-      const x=(rr.left-L.left)+rr.width/2 + (Math.random()*8-4);
+      const x=(rr.left-L.left)+rr.width/2 + (Math.random()*(gray?8:14)-(gray?4:7));
       const y=(rr.top -L.top )+rr.height - 2;   // الفوّهة ≈ أسفل الصورة
       const p=document.createElement('i'); p.className='rj-particle'+(gray?' gray':'');
-      const s=(gray?4:6)+Math.random()*(gray?4:7);
+      const s=(gray?4:9)+Math.random()*(gray?4:12);   // الصعود جسيمات أكبر
       p.style.left=x+'px'; p.style.top=y+'px'; p.style.width=s+'px'; p.style.height=s+'px';
-      p.style.setProperty('--dx',(Math.random()*18-9)+'px');
-      p.style.setProperty('--dx2',(Math.random()*10-5)+'px');   // تمايل جانبيّ (اهتزاز)
-      p.style.setProperty('--dy',((gray?16:24)+Math.random()*(gray?16:28))+'px');
+      p.style.setProperty('--dx',(Math.random()*(gray?16:26)-(gray?8:13))+'px');
+      p.style.setProperty('--dx2',(Math.random()*12-6)+'px');   // تمايل جانبيّ (اهتزاز)
+      p.style.setProperty('--dy',((gray?14:34)+Math.random()*(gray?14:34))+'px');
       p.addEventListener('animationend', ()=>{ if(p.parentNode) p.parentNode.removeChild(p); });
       this.lane.appendChild(p);
     },

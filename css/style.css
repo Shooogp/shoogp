@@ -517,18 +517,20 @@
      (لهب متذبذب + جسيمات) بتدرّج طاقة بين الصعود والتعثّر. مسار منحنٍ S،
      نقاط ديناميكية، هبوط على القمر ورفع علم عُمان. */
   body.rocket-mode .scorebar{display:none}
-  body.rocket-mode #activityScreen{padding-left:138px}
+  /* مساحة يسارية تكفي لعرض المسار بعد إزاحته للداخل، فلا يزاحم الأسئلة */
+  body.rocket-mode #activityScreen{padding-left:250px}
 
-  .rocket-lane{position:fixed;top:92px;bottom:22px;left:14px;width:124px;z-index:6;
+  /* المسار مُزاح للداخل ~100px عن حافّة الشاشة */
+  .rocket-lane{position:fixed;top:92px;bottom:22px;left:114px;width:124px;z-index:6;
     pointer-events:none} /* عرض فقط، لا يعترض اللمس */
   .rocket-lane img{position:absolute;display:block;-webkit-user-select:none;user-select:none}
 
   /* القمر أعلى المسار (خلف الصاروخ ليهبط فوقه) */
   .rocket-lane .rj-moon-img{top:2px;left:50%;margin-left:-48px;width:96px;z-index:1;
     filter:drop-shadow(0 0 10px rgba(255,246,196,.5))}
-  /* المعالم عند انحناءات المنحنى (يوضعها الكود بالـ left/bottom) — مكبّرة قليلاً */
-  .rocket-lane .rj-sat-img{width:52px;opacity:.95;transform:translateX(-50%);z-index:1}
-  .rocket-lane .rj-cloud-img{width:72px;opacity:.95;transform:translateX(-50%);z-index:1}
+  /* المعالم عند انحناءات المنحنى (يوضعها الكود بالـ left/bottom) — مكبّرة */
+  .rocket-lane .rj-sat-img{width:66px;opacity:.95;transform:translateX(-50%);z-index:1}
+  .rocket-lane .rj-cloud-img{width:94px;opacity:.95;transform:translateX(-50%);z-index:1}
   .rocket-lane .rj-earth-img{bottom:0;left:50%;margin-left:-59px;width:118px;z-index:1;
     filter:drop-shadow(0 0 10px rgba(120,180,255,.4))}
 
@@ -545,11 +547,23 @@
   .rocket-lane .rj-dot.on{background:#7fe0ff;border-color:#eaffff;
     box-shadow:0 0 10px 2px rgba(127,224,255,.8)}
 
-  /* الصاروخ (حاوية: جسم + لهب حيّ) يتبع المنحنى بالـ transform، فوق القمر والعلم */
+  /* الصاروخ: الحاوية الخارجية تتبع المنحنى بالـ transform (JS)،
+     والطبقة الداخلية تتأرجح تأرجحاً عائماً مستمراً (translate/rotate مستقلّان) */
   .rocket-lane .rj-rocket{position:absolute;bottom:55px;left:50%;width:74px;margin-left:-37px;
     transform:translate(0,0);will-change:transform;z-index:3;
     filter:drop-shadow(0 3px 6px rgba(0,0,0,.35))}
+  .rocket-lane .rj-rocket-inner{position:relative;display:block;width:100%}
   .rocket-lane .rj-body-img{position:static;width:100%;display:block}
+  /* التأرجح العائم: يعمل أثناء الطيران/التعثّر فقط (لا idle، ويتوقّف عند الهبوط) —
+     ترددان مختلفان (موضع 3.1ث + دوران 4.7ث) كي لا يبدو التكرار نمطياً */
+  .rocket-lane.rj-airborne .rj-rocket-inner,
+  .rocket-lane.rj-sputter  .rj-rocket-inner{
+    animation:rjFloatT 3.1s ease-in-out infinite, rjFloatR 4.7s ease-in-out infinite}
+  @keyframes rjFloatT{0%{translate:-3px 2px}50%{translate:3px -3px}100%{translate:-3px 2px}}
+  @keyframes rjFloatR{0%{rotate:-2.6deg}50%{rotate:2.6deg}100%{rotate:-2.6deg}}
+  @media (prefers-reduced-motion: reduce){
+    .rocket-lane.rj-airborne .rj-rocket-inner,
+    .rocket-lane.rj-sputter  .rj-rocket-inner{animation:none}}
 
   /* ── اللهب الحيّ: طبقتان تتذبذبان (تمايل/اتساع/انكماش) كلهب حقيقي ── */
   .rocket-lane .rj-flame{position:absolute;top:99%;left:50%;transform:translateX(-50%);
@@ -605,12 +619,12 @@
 
   /* السبورات الضيّقة */
   @media (max-width:900px){
-    .rocket-lane{width:98px;left:6px}
-    body.rocket-mode #activityScreen{padding-left:104px}
+    .rocket-lane{width:98px;left:56px}
+    body.rocket-mode #activityScreen{padding-left:170px}
     .rocket-lane .rj-moon-img{width:76px;margin-left:-38px}
     .rocket-lane .rj-earth-img{width:100px;margin-left:-50px}
     .rocket-lane .rj-rocket{width:60px;margin-left:-30px;bottom:46px}
     .rocket-lane .rj-flag-img{width:48px}
-    .rocket-lane .rj-sat-img{width:42px}
-    .rocket-lane .rj-cloud-img{width:58px}
+    .rocket-lane .rj-sat-img{width:54px}
+    .rocket-lane .rj-cloud-img{width:76px}
   }
