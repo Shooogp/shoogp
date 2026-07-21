@@ -70,7 +70,7 @@
       n.connect(lp); lp.connect(bp); bp.connect(bpg); bpg.connect(amp);
       try{ n.start(); }catch(e){}
       this.engine.nodes=[n]; this.engine.gain=g; this.engine.amp=amp;
-      this.engine.base=0.075; this.engine.choking=false; this.engine.landing=false;
+      this.engine.base=0.12; this.engine.choking=false; this.engine.landing=false;   // حضور مسموع بوضوح، دون مستوى أصوات التفاعل
       // تحكّم حيّ: خشونة اتساع + طقطقة عشوائية + كتم + مستوى القاعدة
       this.engine.timer=setInterval(()=>{ const c2=this.ctx; if(!c2||!this.engine.gain) return; const t=c2.currentTime;
         // اتساع غير منتظم (هدير خشن): هدف عشوائيّ سريع
@@ -86,9 +86,9 @@
         if(this.muted()){ try{ this.engine.gain.gain.setTargetAtTime(0, t, 0.12); }catch(e){} }
         else if(!this.engine.choking && !this.engine.landing){ try{ this.engine.gain.gain.setTargetAtTime(this.engine.base, t, 0.25); }catch(e){} }
       }, 90);
-      try{ g.gain.setTargetAtTime(this.muted()?0:0.075, c.currentTime, 0.4); }catch(e){} },
-    engineSwell:function(){ if(!this.engine.on || this.engine.landing) return; this.engine.base=0.12;   // يعلو مع الووش
-      clearTimeout(this.engine.swT); this.engine.swT=setTimeout(()=>{ this.engine.base=0.062; }, 520); }, // ثم يخفت للتحويم
+      try{ g.gain.setTargetAtTime(this.muted()?0:0.12, c.currentTime, 0.4); }catch(e){} },
+    engineSwell:function(){ if(!this.engine.on || this.engine.landing) return; this.engine.base=0.19;   // يعلو مع الووش
+      clearTimeout(this.engine.swT); this.engine.swT=setTimeout(()=>{ this.engine.base=0.10; }, 520); }, // ثم يخفت للتحويم
     // خفوت متزامن مع مشهد الهبوط: يصل الصمت لحظة الملامسة (بلا قطع مفاجئ)
     engineLand:function(dur){ if(!this.engine.on) return; this.engine.choking=false; this.engine.landing=true;
       clearTimeout(this.engine.swT);
@@ -398,9 +398,17 @@
       }
     },
     _puff: function(gray){
-      const L=this.lane.getBoundingClientRect(), rr=this.rocket.getBoundingClientRect();
-      const x=(rr.left-L.left)+rr.width/2 + (Math.random()*(gray?8:14)-(gray?4:7));
-      const y=(rr.top -L.top )+rr.height - 2;   // الفوّهة ≈ أسفل الصورة
+      const L=this.lane.getBoundingClientRect();
+      // نقطة التوليد = طرف اللهب الحيّ لحظياً: طول اللهب متغيّر (قويّ طويل صعوداً،
+      // ضعيف قصير تعثّراً، ومتذبذب باستمرار بالتحريك)، فيُقاس صندوق طبقة اللهب
+      // الخارجية في كل إطار وتُؤخذ نهايته السفلى — لا إزاحة ثابتة عن الفوّهة.
+      // فيبقى اللهب متصلاً نظيفاً من الفوّهة حتى طرفه، ويتفتّح الدخان من الطرف فصاعداً.
+      const fo=this.rocket.querySelector('.rj-flame .fo');
+      let fr=fo ? fo.getBoundingClientRect() : null;
+      if(!fr || fr.height<2){ const rr=this.rocket.getBoundingClientRect();   // لهب غير ظاهر: من الفوّهة
+        fr={left:rr.left, width:rr.width, bottom:rr.top+rr.height-2}; }
+      const x=(fr.left-L.left)+fr.width/2 + (Math.random()*(gray?8:14)-(gray?4:7));
+      const y=(fr.bottom-L.top) - 1;
       const p=document.createElement('i'); p.className='rj-particle'+(gray?' gray':'');
       const s=(gray?4:9)+Math.random()*(gray?4:12);   // الصعود جسيمات أكبر
       p.style.left=x+'px'; p.style.top=y+'px'; p.style.width=s+'px'; p.style.height=s+'px';
