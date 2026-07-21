@@ -21,7 +21,10 @@
     muted:function(){ try{ return (typeof muted!=='undefined') ? muted
       : (localStorage.getItem('shoogp-muted')==='1'); }catch(e){ return false; } },
     _c:function(){ if(!this.ctx){ try{ this.ctx=new (window.AudioContext||window.webkitAudioContext)(); }
-        catch(e){ return null; } } if(this.ctx.state==='suspended'){ try{this.ctx.resume();}catch(e){} } return this.ctx; },
+        catch(e){ return null; } }
+      // استئناف السياقات الحيّة فقط (السياق غير المتّصل offline لا يُستأنف)
+      if(this.ctx.state==='suspended' && typeof this.ctx.startRendering!=='function'){ try{this.ctx.resume();}catch(e){} }
+      return this.ctx; },
     _noise:function(c,dur){ const n=Math.max(1,(c.sampleRate*dur)|0); const b=c.createBuffer(1,n,c.sampleRate);
       const d=b.getChannelData(0); for(let i=0;i<n;i++) d[i]=Math.random()*2-1; const s=c.createBufferSource(); s.buffer=b; return s; },
     // اشتعال: هدير قصير مهيب (~1.3ث)
@@ -40,20 +43,45 @@
       bp.type='bandpass'; bp.Q.value=.7; bp.frequency.setValueAtTime(320,t); bp.frequency.exponentialRampToValueAtTime(1700,t+.32);
       g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(.15,t+.05); g.gain.exponentialRampToValueAtTime(.001,t+.4);
       n.connect(bp); bp.connect(g); g.connect(c.destination); n.start(t); n.stop(t+.5); },
-    // تعثّر: تقطيع خافت جداً بعد wrong.mp3 (لا يتصادم معه)
-    sputter:function(){ if(this.muted())return; const c=this._c(); if(!c)return; const t0=c.currentTime+.42;
-      for(let i=0;i<4;i++){ const t=t0+i*.1; const n=this._noise(c,.06), lp=c.createBiquadFilter(), g=c.createGain();
-        lp.type='lowpass'; lp.frequency.value=520; g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(.05,t+.008); g.gain.exponentialRampToValueAtTime(.001,t+.06);
-        n.connect(lp); lp.connect(g); g.connect(c.destination); n.start(t); n.stop(t+.07); } },
-    // هبوط ناعم قصير
+    // هبوط: لحظة ختامية مسموعة بوضوح (لا تطغى على «أحسنت» التي تليها بعد ~0.9ث)
     landing:function(){ if(this.muted())return; const c=this._c(); if(!c)return; const t=c.currentTime;
       const o=c.createOscillator(), g=c.createGain(); o.type='sine';
-      o.frequency.setValueAtTime(150,t); o.frequency.exponentialRampToValueAtTime(58,t+.28);
-      g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(.19,t+.04); g.gain.exponentialRampToValueAtTime(.001,t+.4);
-      o.connect(g); g.connect(c.destination); o.start(t); o.stop(t+.42);
-      const n=this._noise(c,.22), lp=c.createBiquadFilter(), ng=c.createGain(); lp.type='lowpass'; lp.frequency.value=320;
-      ng.gain.setValueAtTime(.11,t); ng.gain.exponentialRampToValueAtTime(.001,t+.24);
-      n.connect(lp); lp.connect(ng); ng.connect(c.destination); n.start(t); n.stop(t+.24); }
+      o.frequency.setValueAtTime(180,t); o.frequency.exponentialRampToValueAtTime(60,t+.32);
+      g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(.42,t+.03); g.gain.exponentialRampToValueAtTime(.001,t+.5);
+      o.connect(g); g.connect(c.destination); o.start(t); o.stop(t+.52);
+      const o2=c.createOscillator(), g2=c.createGain(); o2.type='sine'; // نغمة ناعمة ختامية
+      o2.frequency.setValueAtTime(320,t); o2.frequency.exponentialRampToValueAtTime(220,t+.4);
+      g2.gain.setValueAtTime(0,t); g2.gain.linearRampToValueAtTime(.16,t+.05); g2.gain.exponentialRampToValueAtTime(.001,t+.5);
+      o2.connect(g2); g2.connect(c.destination); o2.start(t); o2.stop(t+.52);
+      const n=this._noise(c,.28), lp=c.createBiquadFilter(), ng=c.createGain(); lp.type='lowpass'; lp.frequency.value=340;
+      ng.gain.setValueAtTime(.22,t); ng.gain.exponentialRampToValueAtTime(.001,t+.3);
+      n.connect(lp); lp.connect(ng); ng.connect(c.destination); n.start(t); n.stop(t+.3); },
+
+    /* ── همهمة محرّك مستمرة: أرضية صوتية منخفضة جداً (الأخفّ)، بلا نقطة وصل مسموعة ──
+       ترددات منخفضة مؤلَّفة (بلا حلقة عيّنة) + تنفّس بطيء + احترام حيّ لزرّ الكتم. */
+    engine:{on:false, nodes:[], gain:null, base:0, timer:null, swT:null, phase:0},
+    engineStart:function(){ const c=this._c(); if(!c || this.engine.on) return; this.engine.on=true;
+      const g=c.createGain(); g.gain.value=0; g.connect(c.destination); this.engine.gain=g;
+      const mk=(type,f,a)=>{ const o=c.createOscillator(); o.type=type; o.frequency.value=f;
+        const og=c.createGain(); og.gain.value=a; o.connect(og); og.connect(g); return o; };
+      const o1=mk('sine',43,.34), o2=mk('sine',54,.28), o3=mk('triangle',82,.14);
+      [o1,o2,o3].forEach(s=>{ try{s.start();}catch(e){} }); this.engine.nodes=[o1,o2,o3];
+      this.engine.base=0.05; this.engine.phase=0;
+      // تحكّم مستمر: تنفّس لطيف + كتم حيّ (بلا نقرات عبر setTargetAtTime)
+      this.engine.timer=setInterval(()=>{ const c2=this.ctx; if(!c2||!this.engine.gain) return;
+        this.engine.phase+=0.25; const breath=1+0.16*Math.sin(this.engine.phase*0.85);
+        const target=this.muted()?0:this.engine.base*breath;
+        try{ this.engine.gain.gain.setTargetAtTime(target, c2.currentTime, 0.2); }catch(e){}
+      }, 220);
+      try{ g.gain.setTargetAtTime(this.muted()?0:0.05, c.currentTime, 0.4); }catch(e){} },
+    engineSwell:function(){ if(!this.engine.on) return; this.engine.base=0.085;  // يعلو مع الووش
+      clearTimeout(this.engine.swT); this.engine.swT=setTimeout(()=>{ this.engine.base=0.045; }, 520); }, // ثم يخفت للتحويم
+    engineStop:function(){ if(!this.engine.on) return; this.engine.on=false;
+      clearInterval(this.engine.timer); clearTimeout(this.engine.swT);
+      const c=this.ctx, g=this.engine.gain, nodes=this.engine.nodes.slice();
+      if(c && g){ const t=c.currentTime; try{ g.gain.cancelScheduledValues(t); g.gain.setTargetAtTime(0,t,0.18); }catch(e){} }
+      setTimeout(()=>{ nodes.forEach(s=>{ try{s.stop();}catch(e){} }); if(g){ try{g.disconnect();}catch(e){} } }, 650);
+      this.engine.nodes=[]; this.engine.gain=null; }
   };
 
   const RocketJourney = {
@@ -110,6 +138,7 @@
     },
 
     unmount: function(){
+      try{ SFX.engineStop(); }catch(e){}   // أوقف همهمة المحرّك عند مغادرة الدرس
       if(this._onResize){ window.removeEventListener('resize', this._onResize); this._onResize=null; }
       clearInterval(this._emitT); clearTimeout(this._spT); clearTimeout(this._arrT);
       if(this.lane && this.lane.parentNode) this.lane.parentNode.removeChild(this.lane);
@@ -184,13 +213,13 @@
         const first=!this.ignited;
         if(first){ this.ignited=true; this.lane.classList.add('rj-lit'); }
         this._frac=frac; this._apply();
-        if(this.total && solved>=this.total && !this.arrived){ this._arrive(); }   // يشمل صوت الهبوط
-        else if(first){ SFX.ignite(); }
-        else { SFX.whoosh(); }
+        if(this.total && solved>=this.total && !this.arrived){ this._arrive(); }   // يشمل صوت الهبوط + إيقاف الهمهمة
+        else if(first){ SFX.ignite(); SFX.engineStart(); }   // اشتعال + بدء همهمة المحرّك المستمرة
+        else { SFX.whoosh(); SFX.engineSwell(); }            // ووش يندمج مع علوّ الهمهمة
       }else{
         this.hadError=true;
         this._frac=Math.max(0, frac - step); this._apply();
-        this._sputter(); SFX.sputter();
+        this._sputter();   // بصريّ فقط (الهمهمة المستمرة تكفي صوتياً — لا تقطيع منفصل)
       }
     },
 
@@ -248,6 +277,7 @@
       this._setFrame('idle');                 // أُطفئ المحرّك
       this.lane.classList.remove('rj-airborne');
       this.lane.classList.add('rj-arrived');
+      SFX.engineStop();                       // توقّف الهمهمة المستمرة عند الاستقرار
       SFX.landing();
       const msg = this.hadError
         ? 'أحسنت! وصلت القمر بعد رحلة مليئة بالتحدّي!'
@@ -258,4 +288,5 @@
   };
 
   window.RocketJourney = RocketJourney;
+  RocketJourney._sfx = SFX;   // مرجع داخليّ (للاختبار/التشخيص)
 })();
