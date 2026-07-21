@@ -508,11 +508,15 @@
   /* العناصر المكتشفة: دوائر كشف دائمة من الطبقة الخفية + تسمية فوق كل عنصر */
   .lens-found{position:absolute;inset:0;z-index:2;pointer-events:none}
   .lens-spot{position:absolute;inset:0}
-  .lens-label{position:absolute;transform:translate(-50%,-140%);background:#FFE0B3;border:2px solid #e0b380;
+  .lens-label{position:absolute;z-index:1;transform:translate(-50%,-140%);background:#FFE0B3;border:2px solid #e0b380;
     color:#3a2c0a;font-weight:800;font-size:.98rem;padding:5px 14px;border-radius:12px;white-space:nowrap;
     box-shadow:0 3px 8px rgba(0,0,0,.3);animation:lensPop .35s ease-out}
   @keyframes lensPop{from{opacity:0;transform:translate(-50%,-140%) scale(.6)}
     to{opacity:1;transform:translate(-50%,-140%) scale(1)}}
+  /* تسمية أسفل العنصر (labelBelow): للعناصر المتجاورة كي لا تتراكب تسمياتها */
+  .lens-label.below{transform:translate(-50%,40%);animation-name:lensPopB}
+  @keyframes lensPopB{from{opacity:0;transform:translate(-50%,40%) scale(.6)}
+    to{opacity:1;transform:translate(-50%,40%) scale(1)}}
   /* العدسة: إطار برتقالي بهوية المنصّة + لمعة زجاج + مقبض مائل واضح (RTL: أسفل اليسار) */
   .lens-glass{position:absolute;left:76%;top:80%;width:160px;height:160px;margin:-80px 0 0 -80px;
     z-index:3;pointer-events:none;filter:drop-shadow(0 6px 14px rgba(0,0,0,.35))}

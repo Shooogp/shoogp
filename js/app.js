@@ -1095,7 +1095,8 @@ function renderLens(q, body, fb){
       d.innerHTML=`<img class="lens-under" src="${q.hidden}" alt="">`;
       foundLayer.appendChild(d);
     });
-    const lb=document.createElement('span'); lb.className='lens-label';
+    const lb=document.createElement('span');
+    lb.className='lens-label'+(sp.labelBelow?' below':'');   // below: التسمية أسفل العنصر (لتفادي تزاحم التسميات المتجاورة)
     lb.style.left=sp.x+'%'; lb.style.top=sp.y+'%'; lb.textContent=sp.label;
     foundLayer.appendChild(lb);
   }
