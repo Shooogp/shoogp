@@ -57,36 +57,69 @@
       ng.gain.setValueAtTime(.22,t); ng.gain.exponentialRampToValueAtTime(.001,t+.3);
       n.connect(lp); lp.connect(ng); ng.connect(c.destination); n.start(t); n.stop(t+.3); },
 
-    /* ── همهمة محرّك مستمرة: أرضية صوتية منخفضة جداً (الأخفّ)، بلا نقطة وصل مسموعة ──
-       ترددات منخفضة مؤلَّفة (بلا حلقة عيّنة) + تنفّس بطيء + احترام حيّ لزرّ الكتم. */
-    engine:{on:false, nodes:[], gain:null, base:0, timer:null, swT:null, phase:0},
+    /* ── هدير محرّك واقعيّ مستمرّ: ضجيج عريض مفلتر (لا نغمات) بمركز طاقة أعلى قليلاً
+       (يُسمع على سماعات السبورة)، باتساع غير منتظم (هدير خشن حيّ) + طقطقة عشوائية.
+       أرضية خفيفة تعلو مع الصعود وتخفت في التحويم، وتخضع لزرّ الكتم حيّاً. */
+    engine:{on:false, nodes:[], gain:null, amp:null, base:0, timer:null, swT:null, chokeT:null, choking:false},
     engineStart:function(){ const c=this._c(); if(!c || this.engine.on) return; this.engine.on=true;
-      const g=c.createGain(); g.gain.value=0; g.connect(c.destination); this.engine.gain=g;
-      const mk=(type,f,a)=>{ const o=c.createOscillator(); o.type=type; o.frequency.value=f;
-        const og=c.createGain(); og.gain.value=a; o.connect(og); og.connect(g); return o; };
-      const o1=mk('sine',43,.34), o2=mk('sine',54,.28), o3=mk('triangle',82,.14);
-      [o1,o2,o3].forEach(s=>{ try{s.start();}catch(e){} }); this.engine.nodes=[o1,o2,o3];
-      this.engine.base=0.05; this.engine.phase=0;
-      // تحكّم مستمر: تنفّس لطيف + كتم حيّ (بلا نقرات عبر setTargetAtTime)
-      this.engine.timer=setInterval(()=>{ const c2=this.ctx; if(!c2||!this.engine.gain) return;
-        this.engine.phase+=0.25; const breath=1+0.16*Math.sin(this.engine.phase*0.85);
-        const target=this.muted()?0:this.engine.base*breath;
-        try{ this.engine.gain.gain.setTargetAtTime(target, c2.currentTime, 0.2); }catch(e){}
-      }, 220);
-      try{ g.gain.setTargetAtTime(this.muted()?0:0.05, c.currentTime, 0.4); }catch(e){} },
-    engineSwell:function(){ if(!this.engine.on) return; this.engine.base=0.085;  // يعلو مع الووش
-      clearTimeout(this.engine.swT); this.engine.swT=setTimeout(()=>{ this.engine.base=0.045; }, 520); }, // ثم يخفت للتحويم
-    engineStop:function(){ if(!this.engine.on) return; this.engine.on=false;
-      clearInterval(this.engine.timer); clearTimeout(this.engine.swT);
+      const g=c.createGain(); g.gain.value=0; g.connect(c.destination);
+      const amp=c.createGain(); amp.gain.value=1; amp.connect(g);           // اتساع غير منتظم (خشونة)
+      const n=this._noise(c,3); n.loop=true;                                // ضجيج عريض متكرّر
+      const lp=c.createBiquadFilter(); lp.type='lowpass'; lp.frequency.value=360; lp.Q.value=0.6;
+      const bp=c.createBiquadFilter(); bp.type='bandpass'; bp.frequency.value=180; bp.Q.value=0.9; // مركز الطاقة ~180Hz
+      const bpg=c.createGain(); bpg.gain.value=2.2;                         // تعويض خسارة bandpass
+      n.connect(lp); lp.connect(bp); bp.connect(bpg); bpg.connect(amp);
+      try{ n.start(); }catch(e){}
+      this.engine.nodes=[n]; this.engine.gain=g; this.engine.amp=amp;
+      this.engine.base=0.10; this.engine.choking=false;
+      // تحكّم حيّ: خشونة اتساع + طقطقة عشوائية + كتم + مستوى القاعدة
+      this.engine.timer=setInterval(()=>{ const c2=this.ctx; if(!c2||!this.engine.gain) return; const t=c2.currentTime;
+        // اتساع غير منتظم (هدير خشن): هدف عشوائيّ سريع
+        const rough=0.55+Math.random()*0.75; try{ this.engine.amp.gain.setTargetAtTime(rough, t, 0.05); }catch(e){}
+        // طقطقة/فرقعة خفيفة عشوائية
+        if(!this.muted() && Math.random()<0.16){ try{
+          const cn=this._noise(c2,.05), chp=c2.createBiquadFilter(), cg=c2.createGain();
+          chp.type='bandpass'; chp.frequency.value=900+Math.random()*700; chp.Q.value=1.2;
+          cg.gain.setValueAtTime(0.0001,t); cg.gain.linearRampToValueAtTime(0.02+Math.random()*0.03,t+.008); cg.gain.exponentialRampToValueAtTime(0.0008,t+.05);
+          cn.connect(chp); chp.connect(cg); cg.connect(c2.destination); cn.start(t); cn.stop(t+.06);
+        }catch(e){} }
+        // مستوى القاعدة (لا يُلمس أثناء الاختناق إلا للكتم)
+        if(this.muted()){ try{ this.engine.gain.gain.setTargetAtTime(0, t, 0.12); }catch(e){} }
+        else if(!this.engine.choking){ try{ this.engine.gain.gain.setTargetAtTime(this.engine.base, t, 0.25); }catch(e){} }
+      }, 90);
+      try{ g.gain.setTargetAtTime(this.muted()?0:0.10, c.currentTime, 0.4); }catch(e){} },
+    engineSwell:function(){ if(!this.engine.on) return; this.engine.base=0.16;   // يعلو مع الووش
+      clearTimeout(this.engine.swT); this.engine.swT=setTimeout(()=>{ this.engine.base=0.085; }, 520); }, // ثم يخفت للتحويم
+    // اختناق المحرّك عند الخطأ: هبوط سريع + تقطّعات (فقدان وقود) ثم استعادة تدريجية
+    engineChoke:function(){ if(this.muted())return; const c=this._c(); if(!c) return; const t=c.currentTime;
+      // صوت اختناق قصير (التنبيه الوحيد للخطأ): ضجيج هابط بتقطّعات
+      const n=this._noise(c,.85), lp=c.createBiquadFilter(), g=c.createGain(); lp.type='lowpass';
+      lp.frequency.setValueAtTime(340,t); lp.frequency.exponentialRampToValueAtTime(120,t+.7);
+      n.connect(lp); lp.connect(g); g.connect(c.destination);
+      g.gain.setValueAtTime(0.0001,t); g.gain.linearRampToValueAtTime(0.34,t+.03);
+      [0.07,0.16,0.27,0.4,0.55].forEach((dt,i)=>{ const a=0.32*(1-i*0.17);
+        g.gain.setValueAtTime(0.02,t+dt); g.gain.linearRampToValueAtTime(Math.max(0.03,a),t+dt+0.02); });
+      g.gain.exponentialRampToValueAtTime(0.001,t+.8); n.start(t); n.stop(t+.85);
+      // اخنق الهدير المستمرّ إن كان يعمل، ثم استعده تدريجياً
+      if(this.engine.on && this.engine.gain){ const eg=this.engine.gain, b=this.engine.base;
+        this.engine.choking=true; try{ eg.gain.cancelScheduledValues(t);
+          eg.gain.setTargetAtTime(b*0.1,t,0.04);
+          [0.12,0.26,0.42].forEach(dt=>{ eg.gain.setValueAtTime(b*0.04,t+dt); eg.gain.setTargetAtTime(b*0.3,t+dt+0.02,0.03); });
+          eg.gain.setTargetAtTime(b,t+0.72,0.5);
+        }catch(e){}
+        clearTimeout(this.engine.chokeT); this.engine.chokeT=setTimeout(()=>{ this.engine.choking=false; }, 1300); } },
+    engineStop:function(){ if(!this.engine.on) return; this.engine.on=false; this.engine.choking=false;
+      clearInterval(this.engine.timer); clearTimeout(this.engine.swT); clearTimeout(this.engine.chokeT);
       const c=this.ctx, g=this.engine.gain, nodes=this.engine.nodes.slice();
       if(c && g){ const t=c.currentTime; try{ g.gain.cancelScheduledValues(t); g.gain.setTargetAtTime(0,t,0.18); }catch(e){} }
       setTimeout(()=>{ nodes.forEach(s=>{ try{s.stop();}catch(e){} }); if(g){ try{g.disconnect();}catch(e){} } }, 650);
-      this.engine.nodes=[]; this.engine.gain=null; }
+      this.engine.nodes=[]; this.engine.gain=null; this.engine.amp=null; }
   };
 
   const RocketJourney = {
     LESSONS: LESSONS,
     isEnabled: function(file){ return LESSONS.has(file); },
+    isActive: function(){ return !!(this.lane && this.host); },   // مركَّب لدرس صاروخ الآن
 
     lane:null, rocket:null, flag:null, curve:null, cloud:null, sat:null, host:null, dots:[],
     total:0, ignited:false, hadError:false, arrived:false, travel:0,
@@ -219,7 +252,8 @@
       }else{
         this.hadError=true;
         this._frac=Math.max(0, frac - step); this._apply();
-        this._sputter();   // بصريّ فقط (الهمهمة المستمرة تكفي صوتياً — لا تقطيع منفصل)
+        this._sputter();          // انزلاق + لهب متقطّع (بصريّ)
+        SFX.engineChoke();        // اختناق المحرّك = التنبيه الصوتيّ الوحيد للخطأ
       }
     },
 
