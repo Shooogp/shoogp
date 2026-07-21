@@ -158,6 +158,17 @@
         '<img class="rj-earth-img" src="'+IMG+'earth-pad.png" alt="">';
       document.body.appendChild(lane);
 
+      // ── مرجعية ثابتة للمسار (إصلاح): المسار حاوية مستقلّة بارتفاع محدَّد بالبكسل،
+      //    مُثبَّتة من الأعلى فقط (top ثابت + height ثابت، بلا bottom). يُحسب الارتفاع
+      //    مرّة واحدة عند التركيب، فلا يتزحزح القمر/المنصّة/المسافة الكلية إطلاقاً مع
+      //    تغيّر ارتفاع الأسئلة، أو ظهور/اختفاء أشرطة التمرير، أو أي إعادة تخطيط لاحقة.
+      //    (قبل الإصلاح كان الأسفل مربوطاً بحافّة النافذة فيتحرّك طرفا المسار على نحوٍ
+      //     متعاكس عند أي تغيّر في ارتفاع النافذة، فيخطئ الصاروخ القمر.)
+      const vh = window.innerHeight || document.documentElement.clientHeight || 800;
+      this._laneHpx = Math.max(360, Math.round(vh) - 114);   // نفس هامش التصميم: أعلى ٩٢ + أسفل ٢٢
+      lane.style.height = this._laneHpx + 'px';
+      lane.style.bottom = 'auto';
+
       this.lane=lane;
       this.rocket=lane.querySelector('.rj-rocket');
       this.flag  =lane.querySelector('.rj-flag-img');
@@ -166,13 +177,19 @@
       this.sat   =lane.querySelector('.rj-sat-img');
       this.dots=[].slice.call(lane.querySelectorAll('.rj-dot'));
 
-      const ready=()=>{ this._measure(); this._place(0,false); this._lightDots(0); };
+      const ready=()=>{ this._measure(); this._place(this._frac||0,false); this._lightDots(this._solvedCount()); };
       ready();
-      const eimg=lane.querySelector('.rj-earth-img'), bimg=lane.querySelector('.rj-body-img');
+      // إعادة القياس مرّة واحدة عند اكتمال تحميل كلّ صور المسار (القمر أيضاً — كان مفقوداً)
+      // كي تُحسب المسافة على أبعاد القمر الحقيقية لا على صورة غير محمّلة.
+      const eimg=lane.querySelector('.rj-earth-img'), bimg=lane.querySelector('.rj-body-img'),
+            mimg=lane.querySelector('.rj-moon-img');
       if(eimg && !eimg.complete) eimg.addEventListener('load', ready, {once:true});
       if(bimg && !bimg.complete) bimg.addEventListener('load', ready, {once:true});
+      if(mimg && !mimg.complete) mimg.addEventListener('load', ready, {once:true});
 
-      this._onResize=()=>{ this._measure(); this._apply(); };
+      // الحاوية مثبَّتة بارتفاع بكسليّ ثابت، فقياسها لا يتغيّر مع النافذة؛ نكتفي بإعادة
+      // وضع الصاروخ على مرحلته الحالية دون إعادة حساب المسار (مرجعية ثابتة تماماً).
+      this._onResize=()=>{ this._apply(); };
       window.addEventListener('resize', this._onResize);
       this._emitT=setInterval(()=>this._emit(), 55);
     },
@@ -234,6 +251,9 @@
       this.curve.setAttribute('d', d); },
 
     _lightDots: function(n){ this.dots.forEach((d,i)=> d.classList.toggle('on', i<n)); },
+
+    // عدد الإجابات الصحيحة الحالية (نفس مصدر onAnswer والتقرير النهائي)
+    _solvedCount: function(){ return this.host ? this.host.querySelectorAll('.qfb.good').length : 0; },
 
     // حالة المحرّك: idle / flying / sputtering → أصناف تتحكّم باللهب الحيّ
     _setFrame: function(state){
