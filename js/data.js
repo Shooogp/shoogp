@@ -9,15 +9,13 @@ window.DATA_FALLBACK = {
   terms: {
     "الأول": {
       "الأول": [
-        { key:"g1-sci", title:"العلوم", term:"الفصل الأول", color:"bk-blue", ic:"🔬", isNew:false, theme:"theme-sci1" }
+        { key:"g1-sci", title:"العلوم", term:"الفصل الأول", color:"bk-teal", ic:"🔬", isNew:false, theme:"theme-sci1", cover:"images/cover-g1-sci.jpg" }
       ],
       "الثاني": [
-        { key:"g2-sci", title:"العلوم", term:"الفصل الأول", color:"bk-orange", ic:"🔬", isNew:false, theme:"theme-sci2" },
+        { key:"g2-sci", title:"العلوم", term:"الفصل الأول", color:"bk-orange", ic:"🔬", isNew:false, theme:"theme-sci2", cover:"images/cover-g2-sci.jpg" },
         { key:"g2-math", title:"الرياضيات", term:"الفصل الأول", color:"bk-orange", ic:"📐", isNew:true, theme:"theme-math2", cover:"images/cover-g2-math.jpg" }
       ],
-      "الثالث": [
-        { key:"g3-sci", title:"العلوم", term:"الفصل الأول", color:"bk-red", ic:"🔬", isNew:false, theme:"theme-sci3", cover:"images/cover-g3-sci.jpg" }
-      ],
+      "الثالث": [],
       "الرابع": [
         { key:"g4-sci", title:"العلوم", term:"الفصل الأول", color:"bk-green", ic:"🔬", isNew:false, theme:"theme-sci", coverReal:"images/cover-g4-sci-real.jpg", coverOriginal:"images/cover-g4-sci.jpg" },
         { key:"g4-math", title:"الرياضيات", term:"الفصل الأول", color:"bk-orange", ic:"📐", isNew:true, theme:"theme-math", cover:"images/cover-g4-math.jpg" },

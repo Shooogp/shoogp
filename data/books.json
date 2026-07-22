@@ -1,10 +1,10 @@
 {
   "الأول": {
     "الأول": [
-      { "key": "g1-sci", "title": "العلوم", "term": "الفصل الأول", "color": "bk-blue", "ic": "🔬", "isNew": false, "theme": "theme-sci1" }
+      { "key": "g1-sci", "title": "العلوم", "term": "الفصل الأول", "color": "bk-teal", "ic": "🔬", "isNew": false, "theme": "theme-sci1", "cover": "images/cover-g1-sci.jpg" }
     ],
     "الثاني": [
-      { "key": "g2-sci", "title": "العلوم", "term": "الفصل الأول", "color": "bk-orange", "ic": "🔬", "isNew": false, "theme": "theme-sci2" },
+      { "key": "g2-sci", "title": "العلوم", "term": "الفصل الأول", "color": "bk-orange", "ic": "🔬", "isNew": false, "theme": "theme-sci2", "cover": "images/cover-g2-sci.jpg" },
       { "key": "g2-math", "title": "الرياضيات", "term": "الفصل الأول", "color": "bk-orange", "ic": "📐", "isNew": true, "theme": "theme-math2", "cover": "images/cover-g2-math.jpg" }
     ],
     "الثالث": [
