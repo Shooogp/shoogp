@@ -45,7 +45,7 @@ window.DATA_FALLBACK = {
       { unit:"النباتات", lessons:[
         { title:"أجزاء النبات", file:"g1s-2-1", open:true },
         { title:"زراعة البذور", file:"g1s-2-2", open:true },
-        { title:"النبات والضوء", file:"g1s-2-3", open:false },
+        { title:"النبات والضوء", file:"g1s-2-3", open:true },
         { title:"تحقّق من تقدّمك", file:"g1s-2-4", open:false }
       ]},
       { unit:"نحن", lessons:[
