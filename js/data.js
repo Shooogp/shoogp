@@ -50,7 +50,7 @@ window.DATA_FALLBACK = {
       ]},
       { unit:"نحن", lessons:[
         { title:"نحن متشابهون", file:"g1s-3-1", open:true },
-        { title:"نحن مختلفون", file:"g1s-3-2", open:false },
+        { title:"نحن مختلفون", file:"g1s-3-2", open:true },
         { title:"أجسامنا", file:"g1s-3-3", open:false },
         { title:"حواسّنا الرائعة", file:"g1s-3-4", open:false },
         { title:"تحقّق من تقدّمك", file:"g1s-3-5", open:false }

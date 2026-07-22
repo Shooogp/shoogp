@@ -1376,6 +1376,98 @@ window.QUESTIONS = {
       distractors: ["الحَجَرَ"]
     }
 
+  ],
+
+  // العلوم/الأول — الوحدة الثالثة، الدرس الثاني: نحن مختلفون (كتاب التلميذ ص٣٦–٣٧)
+  "g1s-3-2": [
+
+    // ④ صواب وخطأ (الأسهل) — 1Bh1 معرفة
+    {
+      type: "true-false",
+      objective: "1Bh1: يتعرّف أوجه التشابه والاختلاف بيننا",
+      level: "knowledge",
+      statement: "التَّلاميذُ مُختَلِفونَ قَليلاً بَعضُهُم عَن بَعضٍ.",
+      answer: true
+    },
+
+    // ③ اختيار من متعدد — 1Bh1 معرفة
+    {
+      type: "mcq",
+      objective: "1Bh1: يتعرّف أوجه التشابه والاختلاف بيننا",
+      level: "knowledge",
+      prompt: "فيمَ يَختَلِفُ الأطفالُ بَعضُهُم عَن بَعضٍ؟",
+      options: ["في لَونِ الشَّعرِ والطُّولِ", "في عَدَدِ العُيونِ", "في عَدَدِ الأيدي", "في حاجَتِهِم إلى الطَّعامِ"],
+      answer: 0
+    },
+
+    // ⑧ ملء الفراغ بالسحب — 1Bh1 معرفة
+    {
+      type: "fill-blank",
+      objective: "1Bh1: يتعرّف أوجه التشابه والاختلاف بيننا",
+      level: "knowledge",
+      prompt: "أكمِلِ الجُملَةَ بسَحبِ الكَلِماتِ الَّتي نَختَلِفُ فيها.",
+      text: "نَختَلِفُ في لَونِ {} وفي {} الجِسمِ.",
+      answers: ["الشَّعرِ", "طولِ"],
+      distractors: ["الطَّعامِ"]
+    },
+
+    // ⑤ تحديد الأجزاء — 1Bh1 تطبيق (اختيار الطفل صاحب الشعر الداكن على مخطّط SVG)
+    {
+      type: "hotspot",
+      objective: "1Bh1: يتعرّف أوجه التشابه والاختلاف بيننا",
+      level: "application",
+      prompt: "اضغَطْ على الطِّفلِ صاحِبِ الشَّعرِ الداكِنِ.",
+      fit: "width",
+      bg: "#eef7ff",
+      spot: { x: 82, y: 45, r: 15 },
+      svg: `<svg viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ثلاثة أطفال مختلفون">
+        <g>
+          <circle cx="60" cy="90" r="34" fill="#f6c9a0" stroke="#d89b6a" stroke-width="3"/>
+          <path d="M28 82 Q60 40 92 82 Q92 60 60 52 Q28 60 28 82 Z" fill="#e8b23a" stroke="#c7911f" stroke-width="2.5"/>
+          <circle cx="49" cy="90" r="4" fill="#3b2a1a"/><circle cx="71" cy="90" r="4" fill="#3b2a1a"/>
+          <path d="M50 106 Q60 114 70 106" fill="none" stroke="#7c4a22" stroke-width="3" stroke-linecap="round"/>
+          <rect x="36" y="130" width="48" height="60" rx="14" fill="#e0574c"/>
+        </g>
+        <g>
+          <circle cx="180" cy="90" r="34" fill="#e7b48a" stroke="#c98e5c" stroke-width="3"/>
+          <path d="M148 84 Q180 44 212 84 Q214 62 180 54 Q146 62 148 84 Z" fill="#9b6a3c" stroke="#794f2a" stroke-width="2.5"/>
+          <circle cx="169" cy="90" r="4" fill="#3b2a1a"/><circle cx="191" cy="90" r="4" fill="#3b2a1a"/>
+          <path d="M170 106 Q180 114 190 106" fill="none" stroke="#7c4a22" stroke-width="3" stroke-linecap="round"/>
+          <rect x="156" y="130" width="48" height="60" rx="14" fill="#4e9d42"/>
+        </g>
+        <g>
+          <circle cx="300" cy="90" r="34" fill="#f3d3b3" stroke="#d3ab86" stroke-width="3"/>
+          <path d="M266 86 Q300 40 334 86 Q336 58 300 50 Q262 58 266 86 Z" fill="#2f2622" stroke="#15100d" stroke-width="2.5"/>
+          <circle cx="289" cy="90" r="4" fill="#3b2a1a"/><circle cx="311" cy="90" r="4" fill="#3b2a1a"/>
+          <path d="M290 106 Q300 114 310 106" fill="none" stroke="#7c4a22" stroke-width="3" stroke-linecap="round"/>
+          <rect x="276" y="130" width="48" height="60" rx="14" fill="#2f6fb0"/>
+        </g>
+      </svg>`
+    },
+
+    // ⑦ التصنيف في مجموعات — 1Bh1 استدلال (نتشابه فيه / نختلف فيه)
+    {
+      type: "classify",
+      objective: "1Bh1: يتعرّف أوجه التشابه والاختلاف بيننا",
+      level: "reasoning",
+      prompt: "صَنِّفْ: أشياءُ نَتَشابَهُ فيها، وأشياءُ نَختَلِفُ فيها.",
+      groups: [
+        { name: "نَتَشابَهُ فيهِ", items: ["نَحتاجُ إلى الطَّعامِ", "نَنمو ونَكبُرُ", "نُحِبُّ اللَّعِبَ"] },
+        { name: "نَختَلِفُ فيهِ",  items: ["لَونُ الشَّعرِ", "الطُّولُ", "لَونُ البَشَرَةِ"] }
+      ]
+    },
+
+    // ⑨ الاستبعاد (إثرائي) — 1Bh1 استدلال
+    {
+      type: "exclude",
+      objective: "1Bh1: يتعرّف أوجه التشابه والاختلاف بيننا",
+      level: "reasoning",
+      prompt: "أيُّ شَيءٍ لا نَختَلِفُ فيهِ؟",
+      options: ["لَونُ الشَّعرِ", "الطُّولُ", "الحاجَةُ إلى الطَّعامِ", "لَونُ البَشَرَةِ"],
+      answer: 2,
+      reason: "الحاجَةُ إلى الطَّعامِ يَتَشابَهُ فيها كُلُّ النّاسِ ولا نَختَلِفُ فيها"
+    }
+
   ]
 
 };
