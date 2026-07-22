@@ -67,7 +67,7 @@ window.DATA_FALLBACK = {
       { unit:"اكتشاف الصخور", lessons:[
         { title:"ما هي الصخور؟", file:"g2s-2-1", open:true },
         { title:"استخدامات الصخور", file:"g2s-2-2", open:true },
-        { title:"التربة", file:"g2s-2-3", open:false },
+        { title:"التربة", file:"g2s-2-3", open:true },
         { title:"المواد الطبيعية الأخرى", file:"g2s-2-4", open:false },
         { title:"تحقّق من تقدّمك", file:"g2s-2-5", open:false }
       ]},
