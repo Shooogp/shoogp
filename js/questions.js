@@ -1124,6 +1124,89 @@ window.QUESTIONS = {
       reason: "الحَجَرُ شَيءٌ غَيرُ حَيٍّ ولَيسَ جُزءاً مِنَ النَّباتِ"
     }
 
+  ],
+
+  // العلوم/الأول — الوحدة الثانية، الدرس الثاني: زراعة البذور (كتاب التلميذ ص٢٨–٢٩)
+  "g1s-2-2": [
+
+    // ④ صواب وخطأ (الأسهل) — 1Bp5 معرفة
+    {
+      type: "true-false",
+      objective: "1Bp5: يعرف أنّ النباتات تحتاج إلى الضوء والماء لتنمو",
+      level: "knowledge",
+      statement: "تَحتاجُ البُذورُ إلى الماءِ لِتَنمو.",
+      answer: true
+    },
+
+    // ③ اختيار من متعدد — 1Bp6 معرفة
+    {
+      type: "mcq",
+      objective: "1Bp6: يكتشف الطرق التي تنمو فيها البذور لتصبح نبتة مزهرة",
+      level: "knowledge",
+      prompt: "ماذا تُصبِحُ البَذرَةُ عِندَما تَنمو؟",
+      options: ["نَبتَةً", "حَجَراً", "ماءً", "تُراباً"],
+      answer: 0
+    },
+
+    // ⑧ ملء الفراغ بالسحب — 1Bp6 معرفة (ينمو الجذر أولاً)
+    {
+      type: "fill-blank",
+      objective: "1Bp6: يكتشف الطرق التي تنمو فيها البذور لتصبح نبتة مزهرة",
+      level: "knowledge",
+      prompt: "أكمِلْ تَرتيبَ نُمُوِّ البَذرَةِ بسَحبِ الكَلِماتِ.",
+      text: "يَنمو {} أوَّلاً، ثُمَّ تَنمو {} والأوراقُ.",
+      answers: ["الجَذرُ", "الساقُ"],
+      distractors: ["الزَّهرَةُ"]
+    },
+
+    // ⑤ تحديد الأجزاء — 1Bp6 تطبيق (اختيار البذرة التي نمت وأصبحت نبتة على مخطّط SVG)
+    {
+      type: "hotspot",
+      objective: "1Bp6: يكتشف الطرق التي تنمو فيها البذور لتصبح نبتة مزهرة",
+      level: "application",
+      prompt: "اضغَطْ على البَذرَةِ الَّتي نَمَت وأصبَحَت نَبتَةً.",
+      fit: "width",
+      bg: "#eaf3fb",
+      spot: { x: 83, y: 40, r: 14 },
+      svg: `<svg viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="مراحل نمو البذرة">
+        <rect x="0" y="112" width="360" height="108" fill="#c8935e"/>
+        <rect x="0" y="112" width="360" height="9" fill="#a9743f"/>
+        <ellipse cx="60" cy="150" rx="15" ry="10" fill="#e6c15a" stroke="#b9922f" stroke-width="2.5" transform="rotate(20 60 150)"/>
+        <g transform="translate(180 0)">
+          <ellipse cx="0" cy="146" rx="14" ry="9" fill="#e6c15a" stroke="#b9922f" stroke-width="2.5"/>
+          <path d="M0 152 Q-6 176 -14 196" fill="none" stroke="#d9d2b0" stroke-width="4" stroke-linecap="round"/>
+          <path d="M0 152 Q4 172 10 190" fill="none" stroke="#d9d2b0" stroke-width="4" stroke-linecap="round"/>
+        </g>
+        <g transform="translate(300 0)">
+          <line x1="0" y1="118" x2="0" y2="52" stroke="#4e9d42" stroke-width="7" stroke-linecap="round"/>
+          <path d="M0 78 Q-26 70 -40 74 Q-26 90 0 78 Z" fill="#63c154" stroke="#3c8a34" stroke-width="2.5"/>
+          <path d="M0 64 Q26 56 40 60 Q26 76 0 64 Z" fill="#63c154" stroke="#3c8a34" stroke-width="2.5"/>
+          <path d="M0 120 Q-8 150 -16 190" fill="none" stroke="#d9d2b0" stroke-width="4" stroke-linecap="round"/>
+          <path d="M0 120 Q6 150 12 192" fill="none" stroke="#d9d2b0" stroke-width="4" stroke-linecap="round"/>
+        </g>
+      </svg>`
+    },
+
+    // ⑥ الترتيب التسلسلي — 1Bp6 استدلال (مراحل نمو البذرة)
+    {
+      type: "sequence",
+      objective: "1Bp6: يكتشف الطرق التي تنمو فيها البذور لتصبح نبتة مزهرة",
+      level: "reasoning",
+      prompt: "رَتِّبْ مَراحِلَ نُمُوِّ البَذرَةِ مِنَ البِدايَةِ إلى النِّهايَةِ.",
+      steps: ["بَذرَةٌ في التُّرابِ", "يَنمو الجَذرُ", "تَنمو الساقُ والأوراقُ", "نَبتَةٌ كامِلَةٌ"]
+    },
+
+    // ⑨ الاستبعاد (إثرائي) — 1Bp5 استدلال
+    {
+      type: "exclude",
+      objective: "1Bp5: يعرف أنّ النباتات تحتاج إلى الضوء والماء لتنمو",
+      level: "reasoning",
+      prompt: "أيُّها لا تَحتاجُهُ البَذرَةُ لِتَنمو؟",
+      options: ["الماءُ", "التُّرابُ", "الضَّوءُ", "الحِذاءُ"],
+      answer: 3,
+      reason: "الحِذاءُ لا عَلاقَةَ لَهُ بنُمُوِّ البَذرَةِ"
+    }
+
   ]
 
 };

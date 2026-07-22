@@ -185,7 +185,7 @@
   .figwrap svg,.figwrap img{height:100%;width:auto;display:block}
   /* ملاءمة العرض: للصور العريضة (تملأ العرض ويتوسّط ارتفاعها) */
   .figwrap.fw{height:auto;width:100%;display:block}
-  .figwrap.fw img{width:100%;height:auto}
+  .figwrap.fw img,.figwrap.fw svg{width:100%;height:auto}
   .psvg{position:absolute;inset:0;width:100%;height:100%}
   /* نمط التسمية بخطوط واصلة: صورة في الوسط + صناديق حولها + طبقة SVG */
   .stage-label{position:relative;overflow:hidden}
