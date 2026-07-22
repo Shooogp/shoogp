@@ -788,7 +788,7 @@ window.QUESTIONS = {
       image: "images/مشهد-كائنات-حية.png",
       fit: "width",
       bg: "#eef7ff",
-      spot: { x: 50, y: 54, r: 14 }
+      spot: { x: 51, y: 47, r: 22 }
     },
 
     // ⑦ التصنيف في مجموعات — 1Bp1 استدلال
