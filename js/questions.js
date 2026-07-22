@@ -1558,6 +1558,92 @@ window.QUESTIONS = {
       grid: { cols: 3, rows: 3 }
     }
 
+  ],
+
+  // العلوم/الأول — الوحدة الثالثة، الدرس الرابع: حواسّنا الرائعة (كتاب التلميذ ص٤٠–٤١)
+  "g1s-3-4": [
+
+    // ④ صواب وخطأ (الأسهل) — 1Bh3 معرفة
+    {
+      type: "true-false",
+      objective: "1Bh3: يتعرّف الحواسّ الخمس وأعضاءها ووظائفها",
+      level: "knowledge",
+      statement: "نَستَخدِمُ العَينَ لِنَرى الأشياءَ.",
+      answer: true
+    },
+
+    // ③ اختيار من متعدد — 1Bh3 معرفة
+    {
+      type: "mcq",
+      objective: "1Bh3: يتعرّف الحواسّ الخمس وأعضاءها ووظائفها",
+      level: "knowledge",
+      prompt: "بأيِّ حاسَّةٍ نَعرِفُ طَعمَ الطَّعامِ؟",
+      options: ["التَّذَوُّقُ", "السَّمعُ", "البَصَرُ", "الشَّمُّ"],
+      answer: 0
+    },
+
+    // ② توصيل — 1Bh3 معرفة (كلّ عضو بحاسّته)
+    {
+      type: "matching",
+      objective: "1Bh3: يتعرّف الحواسّ الخمس وأعضاءها ووظائفها",
+      level: "knowledge",
+      prompt: "صِلْ كُلَّ عُضوٍ بالحاسَّةِ الَّتي نَستَخدِمُهُ فيها.",
+      pairs: [
+        { a: "العَينُ",   b: "البَصَرُ" },
+        { a: "الأذُنُ",   b: "السَّمعُ" },
+        { a: "الأنفُ",    b: "الشَّمُّ" },
+        { a: "اللِّسانُ", b: "التَّذَوُّقُ" },
+        { a: "الجِلدُ",   b: "اللَّمسُ" }
+      ]
+    },
+
+    // ⑤ تحديد الأجزاء — 1Bh3 تطبيق (اختيار عضو الشمّ على مخطّط وجه SVG)
+    {
+      type: "hotspot",
+      objective: "1Bh3: يتعرّف الحواسّ الخمس وأعضاءها ووظائفها",
+      level: "application",
+      prompt: "اضغَطْ على العُضوِ الَّذي نَشُمُّ بِهِ الرَّوائِحَ.",
+      bg: "#eef7ff",
+      spot: { x: 50, y: 55, r: 9 },
+      svg: `<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="مخطّط وجه">
+        <ellipse cx="52" cy="152" rx="16" ry="26" fill="#f1b98f" stroke="#d89b6a" stroke-width="3"/>
+        <ellipse cx="248" cy="152" rx="16" ry="26" fill="#f1b98f" stroke="#d89b6a" stroke-width="3"/>
+        <circle cx="150" cy="152" r="108" fill="#f6c9a0" stroke="#d89b6a" stroke-width="3"/>
+        <path d="M60 92 Q150 10 240 92 Q244 40 150 30 Q56 40 60 92 Z" fill="#3a2a1c"/>
+        <circle cx="115" cy="132" r="11" fill="#ffffff" stroke="#c98e5c" stroke-width="2"/><circle cx="115" cy="132" r="5" fill="#3b2a1a"/>
+        <circle cx="185" cy="132" r="11" fill="#ffffff" stroke="#c98e5c" stroke-width="2"/><circle cx="185" cy="132" r="5" fill="#3b2a1a"/>
+        <path d="M150 150 Q141 176 150 184 Q159 182 156 173" fill="none" stroke="#c98e5c" stroke-width="4" stroke-linecap="round"/>
+        <path d="M124 216 Q150 236 176 216" fill="none" stroke="#b5533f" stroke-width="4" stroke-linecap="round"/>
+      </svg>`
+    },
+
+    // ⑦ التصنيف في مجموعات — 1Bh3 استدلال (بأيّ حاسّة نعرف كلّ شيء)
+    {
+      type: "classify",
+      objective: "1Bh3: يتعرّف الحواسّ الخمس وأعضاءها ووظائفها",
+      level: "reasoning",
+      prompt: "صَنِّفْ: هل نَعرِفُ هذا الشَّيءَ بالعَينِ أم بالأذُنِ؟",
+      groups: [
+        { name: "نَعرِفُهُ بالعَينِ (البَصَرِ)", items: ["ألوانُ الزَّهرَةِ", "ضَوءُ الشَّمسِ", "شَكلُ الكِتابِ"] },
+        { name: "نَعرِفُهُ بالأذُنِ (السَّمعِ)", items: ["صَوتُ الطَّائِرِ", "رَنينُ الجَرَسِ", "قَرعُ الطَّبلِ"] }
+      ]
+    },
+
+    // ⑪ السؤال الصوتي (إثرائي) — 1Bh3 معرفة (استخدام حاسّة السمع)
+    {
+      type: "audio-q",
+      objective: "1Bh3: يتعرّف الحواسّ الخمس وأعضاءها ووظائفها",
+      level: "knowledge",
+      prompt: "استَخدِمْ حاسَّةَ السَّمعِ: استَمِعْ إلى الصَّوتِ، ثُمَّ اختَرِ الحَيَوانَ الَّذي أصدَرَهُ.",
+      sound: "audio/sound-bird.wav",
+      options: [
+        { image: "images/حيوان-طائر.png", label: "طائر" },
+        { image: "images/حيوان-قطة.png",  label: "قطة" },
+        { image: "images/حيوان-ضفدع.png", label: "ضفدع" }
+      ],
+      answer: 0
+    }
+
   ]
 
 };
