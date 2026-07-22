@@ -36,7 +36,7 @@ window.DATA_FALLBACK = {
   index: {
     "g1-sci": { book:"العلوم — الصف الأول", units:[
       { unit:"الكائنات الحيّة", lessons:[
-        { title:"النباتات والحيوانات هي كائنات حيّة", file:"g1s-1-1", open:false },
+        { title:"النباتات والحيوانات هي كائنات حيّة", file:"g1s-1-1", open:true },
         { title:"البيئات المحلّية", file:"g1s-1-2", open:false },
         { title:"صغير الإنسان وصغير الحيوان", file:"g1s-1-3", open:false },
         { title:"الطعام والشراب الصحّي", file:"g1s-1-4", open:false },
