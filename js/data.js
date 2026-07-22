@@ -58,7 +58,7 @@ window.DATA_FALLBACK = {
     ]},
     "g2-sci": { book:"العلوم — الصف الثاني", units:[
       { unit:"اكتشاف المحيط من حولنا", lessons:[
-        { title:"أماكن مختلفة للعيش", file:"g2s-1-1", open:false },
+        { title:"أماكن مختلفة للعيش", file:"g2s-1-1", open:true },
         { title:"هل يمكننا العناية ببيئتنا؟", file:"g2s-1-2", open:false },
         { title:"طقسنا", file:"g2s-1-3", open:false },
         { title:"الطقس القاسي", file:"g2s-1-4", open:false },
