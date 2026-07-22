@@ -1468,6 +1468,96 @@ window.QUESTIONS = {
       reason: "الحاجَةُ إلى الطَّعامِ يَتَشابَهُ فيها كُلُّ النّاسِ ولا نَختَلِفُ فيها"
     }
 
+  ],
+
+  // العلوم/الأول — الوحدة الثالثة، الدرس الثالث: أجسامنا (كتاب التلميذ ص٣٨–٣٩)
+  "g1s-3-3": [
+
+    // ④ صواب وخطأ (الأسهل) — 1Bh2 معرفة
+    {
+      type: "true-false",
+      objective: "1Bh2: يسمّي الأجزاء الرئيسية في الجسم ويحدّد مواضعها",
+      level: "knowledge",
+      statement: "نُمسِكُ الأشياءَ بِأصابِعِ اليَدِ.",
+      answer: true
+    },
+
+    // ③ اختيار من متعدد — 1Bh2 معرفة
+    {
+      type: "mcq",
+      objective: "1Bh2: يسمّي الأجزاء الرئيسية في الجسم ويحدّد مواضعها",
+      level: "knowledge",
+      prompt: "أينَ تُوجَدُ العَينُ والأنفُ والفَمُ؟",
+      options: ["في الرَّأسِ", "في القَدَمِ", "في الرُّكبَةِ", "في الكَتِفِ"],
+      answer: 0
+    },
+
+    // ⑧ ملء الفراغ بالسحب — 1Bh2 معرفة
+    {
+      type: "fill-blank",
+      objective: "1Bh2: يسمّي الأجزاء الرئيسية في الجسم ويحدّد مواضعها",
+      level: "knowledge",
+      prompt: "أكمِلِ الجُملَةَ بسَحبِ الكَلِمَتَينِ المُناسِبَتَينِ.",
+      text: "نَمشي على {}، ونَنظُرُ بِـ {}.",
+      answers: ["القَدَمَينِ", "العَينَينِ"],
+      distractors: ["الأذُنَينِ"]
+    },
+
+    // ① سحب وإفلات — 1Bh2 تطبيق (تسمية أجزاء الجسم على مخطّط SVG)
+    {
+      type: "drag-drop",
+      objective: "1Bh2: يسمّي الأجزاء الرئيسية في الجسم ويحدّد مواضعها",
+      level: "application",
+      prompt: "اسحَبِ اسمَ كُلِّ جُزءٍ إلى مَكانِهِ في الجِسمِ.",
+      bg: "#eef7ff",
+      targets: [
+        { answer: "الرَّأسُ",  box:{x:82,y:6},  dot:{x:50,y:13} },
+        { answer: "الذِّراعُ", box:{x:10,y:32}, dot:{x:33,y:37} },
+        { answer: "اليَدُ",    box:{x:10,y:52}, dot:{x:28,y:51} },
+        { answer: "الساقُ",    box:{x:86,y:70}, dot:{x:59,y:74} },
+        { answer: "القَدَمُ",  box:{x:86,y:90}, dot:{x:57,y:94} }
+      ],
+      svg: `<svg viewBox="0 0 300 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="مخطّط جسم طفل">
+        <circle cx="150" cy="62" r="40" fill="#f6c9a0" stroke="#d89b6a" stroke-width="3"/>
+        <path d="M110 55 Q150 8 190 55 Q192 30 150 22 Q108 30 110 55 Z" fill="#3a2a1c"/>
+        <circle cx="137" cy="60" r="4.5" fill="#3b2a1a"/><circle cx="163" cy="60" r="4.5" fill="#3b2a1a"/>
+        <path d="M150 66 L150 74" stroke="#c98e5c" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M138 82 Q150 92 162 82" stroke="#b5533f" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <rect x="140" y="98" width="20" height="16" fill="#f6c9a0"/>
+        <path d="M118 116 Q150 108 182 116 L176 250 L124 250 Z" fill="#e0574c" stroke="#b8402f" stroke-width="2"/>
+        <path d="M120 120 Q92 172 84 232" fill="none" stroke="#f6c9a0" stroke-width="16" stroke-linecap="round"/>
+        <path d="M180 120 Q208 172 216 232" fill="none" stroke="#f6c9a0" stroke-width="16" stroke-linecap="round"/>
+        <circle cx="84" cy="238" r="12" fill="#f6c9a0" stroke="#d89b6a" stroke-width="2"/>
+        <circle cx="216" cy="238" r="12" fill="#f6c9a0" stroke="#d89b6a" stroke-width="2"/>
+        <path d="M126 250 L120 430 L146 430 L150 300 L154 430 L180 430 L174 250 Z" fill="#2f6fb0" stroke="#22507f" stroke-width="2"/>
+        <ellipse cx="128" cy="440" rx="20" ry="10" fill="#5a3a22"/>
+        <ellipse cx="172" cy="440" rx="20" ry="10" fill="#5a3a22"/>
+      </svg>`
+    },
+
+    // ⑦ التصنيف في مجموعات — 1Bh2 استدلال (أجزاء الرأس / أطراف الجسم)
+    {
+      type: "classify",
+      objective: "1Bh2: يسمّي الأجزاء الرئيسية في الجسم ويحدّد مواضعها",
+      level: "reasoning",
+      prompt: "صَنِّفْ كُلَّ جُزءٍ: هل هوَ في الرَّأسِ أم مِنَ الأطرافِ؟",
+      groups: [
+        { name: "في الرَّأسِ",  items: ["العَينُ", "الأنفُ", "الفَمُ", "الأذُنُ"] },
+        { name: "مِنَ الأطرافِ", items: ["اليَدُ", "القَدَمُ", "الذِّراعُ", "الساقُ"] }
+      ]
+    },
+
+    // ⑭ البازل (إثرائي) — 1Bh2 تطبيق (تركيب صورة جسم الطفل)
+    {
+      type: "puzzle",
+      objective: "1Bh2: يسمّي الأجزاء الرئيسية في الجسم ويحدّد مواضعها",
+      level: "application",
+      prompt: "رَكِّبْ صورَةَ جِسمِ الطِّفلِ: اسحَبْ كُلَّ قِطعَةٍ إلى مَكانِها الصَّحيحِ.",
+      image: "images/جسم-الطفل-بازل.png",
+      bg: "#eef7ff",
+      grid: { cols: 3, rows: 3 }
+    }
+
   ]
 
 };
