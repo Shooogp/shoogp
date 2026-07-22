@@ -536,54 +536,6 @@
     left:-160.9px;top:-104.4px;pointer-events:auto;cursor:grab}
   .lens-glass.grab .lens-frame{filter:brightness(1.07)}
 
-  /* ⑳ الطبقات (القشّر): صور PNG متطابقة الأبعاد مكدّسة؛ القاعدة الطبقة الخارجية كاملة،
-     وفوقها قصاصات محصورة في مستطيل rect (منطقة القشر) تُسحب جانباً فتنزلق كاشفةً ما تحتها.
-     لكل طبقة سؤال «ما هذه الطبقة؟» بثلاثة خيارات. عناصر كبيرة للسبورة و RTL */
-  .peelq{display:flex;flex-direction:column;align-items:center;gap:16px;width:100%}
-  .peel-progress{font-family:'Cairo';font-weight:700;color:#fff;font-size:1.15rem;
-    text-shadow:0 1px 3px rgba(0,0,0,.34)}
-  .peel-progress b{color:#ffe27a;font-size:1.4rem;margin-inline:4px}
-  /* المشهد: فريم مربّع، سماء زرقاء في الأعلى، وعمود التربة ملتصق بقاع الفريم (محاذاة سفلية) */
-  .peelq .dnd-solo{width:100%}
-  .stage.peel-stage{display:block;width:100%;height:auto;aspect-ratio:1/1;overflow:hidden;
-    border:2px dashed rgba(150,190,220,.6);
-    background:linear-gradient(180deg,#a9dcf6 0%,#c7ebfb 42%,#e6f6fd 66%,#eef9fd 100%)}
-  .dnd-solo .stage-img.peel-stage{max-width:440px;margin-inline:auto}
-  .peel-scene{position:relative;width:100%;height:100%;touch-action:none;
-    -webkit-user-select:none;user-select:none}
-  .peel-scene img{pointer-events:none;-webkit-user-drag:none}
-  /* عمود التربة: ملتصق بالقاع وممتدّ بعرض الفريم، تُوزّع داخله الشرائح عمودياً (overflow مرئيّ
-     كي تنزلق الشريحة المرفوعة صعوداً فوق السماء حتى تخرج من الفريم الذي يقصّها) */
-  .peel-col{position:absolute;left:0;bottom:0;width:100%;height:70%;overflow:visible}
-  /* ظلّ خفيف عند سطح التربة (حدّ الشريحة العُليا مع السماء) لإحساس العمق */
-  .peel-col::before{content:'';position:absolute;left:0;right:0;top:0;height:9px;z-index:120;
-    pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.18),transparent)}
-  /* شريحة الطبقة: شريط أفقيّ بعرض العمود، موضعها/ارتفاعها يُضبطان بالكود (top/height) وينتقلان
-     بسلاسة عند اتّساع الباقيات؛ والصورة بداخلها مقصوصة على شريط التربة فتملأ الشريحة (بلا خلفية) */
-  .peel-slice{position:absolute;left:0;width:100%;overflow:hidden;
-    transition:top .42s ease, height .42s ease; will-change:top,height}
-  .peel-slice img{position:absolute;max-width:none;display:block}
-  /* الشريحة النشطة (العُليا القابلة للرفع الآن): مؤشّر مسك + حدّ متوهّج + نبض لطيف يدعو للسحب */
-  .peel-slice.peelable{cursor:grab;pointer-events:auto;z-index:60;
-    box-shadow:0 0 0 2px rgba(255,226,122,.9),0 0 16px rgba(255,226,122,.55);
-    animation:peelPulse 1.4s ease-in-out infinite}
-  .peel-slice.peelable.grab{cursor:grabbing;animation:none}
-  @keyframes peelPulse{0%,100%{box-shadow:0 0 0 2px rgba(255,226,122,.65),0 0 10px rgba(255,226,122,.4)}
-    50%{box-shadow:0 0 0 3px rgba(255,226,122,1),0 0 22px rgba(255,226,122,.75)}}
-  /* شريط الطبقات المسمّاة أسفل الصورة (بطاقات نصية لا تُقصّ ولا تحجب الرسم) */
-  .peel-legend{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;min-height:0}
-  .peel-label{background:#FFE0B3;border:2px solid #e0b380;
-    color:#3a2c0a;font-weight:800;font-size:.95rem;padding:5px 14px;border-radius:12px;white-space:nowrap;
-    box-shadow:0 3px 8px rgba(0,0,0,.3);animation:peelPop .35s ease-out}
-  @keyframes peelPop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:scale(1)}}
-  .peel-hint{min-height:1.2em;font-family:'Cairo';font-weight:700;color:#ffe27a;font-size:1.02rem;
-    text-shadow:0 1px 3px rgba(0,0,0,.34);text-align:center}
-  /* لوحة سؤال الطبقة: نفس هوية خيارات الاختيار من متعدد */
-  .peel-ask{width:100%;display:flex;flex-direction:column;align-items:center;gap:12px}
-  .peel-q{font-family:'Cairo';font-weight:700;color:#fff;font-size:1.12rem;text-align:center;
-    text-shadow:0 1px 3px rgba(0,0,0,.34)}
-  .peel-opts{max-width:520px;width:100%}
-
   /* التنقّل بين الأسئلة (خطوة بخطوة) */
   .qnav{display:flex;align-items:center;justify-content:center;gap:12px;margin:6px 0 10px;flex-wrap:wrap}
   .qnav .btn{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);color:#fff;min-width:118px}
