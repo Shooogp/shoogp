@@ -1163,34 +1163,33 @@ function renderLens(q, body, fb){
   body.querySelector('.btn-reset').onclick=()=>renderLens(q,body,fb);
 }
 
-/* ⑳ الطبقات (القشّر) — peel: سلسلة صور PNG متطابقة الأبعاد لطبقاتٍ **مكدّسة رأسياً** (طبقتان
-   أو ثلاث) داخل عمود تربة ملتصق بقاع فريم مربّع، فوقه سماء زرقاء — مقطعٌ رأسيّ واقعيّ للأرض.
-   كل طبقة قصاصةٌ مقصوصة على شريط rect{x,y,w,h} (نِسَب % من الصورة) تملأ العمود، والطبقات فوق
-   بعضها في المكان نفسه (الأعمق أسفل z والعُليا فوقها). الطالب يسحب الطبقة العُليا **إلى الأعلى**
-   (فأرة + لمس معاً، الاستخدام الأساسي سبورة تفاعلية) فتنزلق صعوداً وتختفي كاشفةً ما **تحتها** —
-   لا سحباً جانبياً، فيتّضح أنّ الطبقة المكشوفة كانت أسفلها لا بجانبها. لكل طبقة سؤال «ما هذه
-   الطبقة؟» بثلاثة خيارات نصية: الصحيح يفتح قشر الطبقة الحالية لكشف التالية، والخطأ = تغذية الخطأ
-   المعتمدة (qFail: اختناق محرّك الصاروخ، وwrong.mp3 في واجهة بلا صاروخ). يكتمل السؤال بتسمية كل
-   الطبقات حتى الأعمق ثم qWin. layers[{image,label,question,options[3],answer}] من الأعلى إلى الأعمق. */
+/* ⑳ الطبقات (القشّر) — peel: مقطعٌ أرضيّ جانبيّ حقيقيّ داخل فريم مربّع بمحاذاة سفلية: سماءٌ
+   زرقاء في الأعلى، وتحتها الطبقات **شرائح أفقية مكدّسة عمودياً كلها ظاهرة معاً** من أعلى لأسفل
+   (السطحية شريحة عليا، الفرعية وسطى، الأعمق في القاع) — لا صور تحجب بعضها في العمق. كل شريحة
+   صورةٌ مقصوصة على شريط rect{x,y,w,h} (نِسَب %) فتملأ مكانها دون خلفية الصورة. القشر **يرفع
+   الشريحة العليا الحالية إلى الأعلى وخارج الفريم** (تنزلق صعوداً وتختفي)، فتتّسع الشرائح الباقية
+   وترتفع لتصير التالية هي العليا. لكل طبقة سؤال «ما هذه الطبقة؟» بثلاثة خيارات: الصحيح يرفع
+   شريحتها لكشف التالية، والخطأ = تغذية الخطأ المعتمدة (qFail: اختناق محرّك الصاروخ، وwrong.mp3
+   في واجهة بلا صاروخ). يكتمل السؤال بتسمية كل الطبقات ثم qWin.
+   layers[{image,label,question,options[3],answer}] من الأعلى (السطحية) إلى الأعمق. */
 function renderPeel(q, body, fb){
   const layers=q.layers||[];
   const N=layers.length;
   const rect=q.rect||{x:0,y:0,w:100,h:100};
-  // القصاصة تملأ عمود التربة، والصورة بداخلها مُحجَّمة ومُزاحة كي ينطبق شريط rect منها على
-  // العمود تماماً مهما تغيّر الحجم (نِسَب % صامدة) — فتظهر طبقة التربة وحدها دون خلفية الصورة.
+  // الشريحة تملأ مكانها، والصورة بداخلها مُحجَّمة ومُزاحة كي ينطبق شريط rect منها على الشريحة
+  // (نِسَب % صامدة مهما تغيّر ارتفاع الشريحة) — فتظهر طبقة التربة وحدها دون خلفية الصورة.
   const clipImg=`width:${10000/rect.w}%;height:${10000/rect.h}%;`+
                 `left:${-(rect.x/rect.w*100)}%;top:${-(rect.y/rect.h*100)}%`;
-  // القصاصات من الأعمق (z أقلّ) إلى العُليا (z أعلى) — العُليا تُقشَّر أوّلاً (تنزلق صعوداً)
-  let clips='';
-  for(let i=N-1;i>=0;i--){
-    clips+=`<div class="peel-clip" data-i="${i}" style="z-index:${10+(N-i)}">`+
-           `<img src="${layers[i].image}" alt="" style="${clipImg}"></div>`;
+  // شرائح الطبقات من الأعلى (السطحية) إلى الأسفل (الأعمق) — كلها ظاهرة معاً منذ البداية
+  let slices='';
+  for(let i=0;i<N;i++){
+    slices+=`<div class="peel-slice" data-i="${i}"><img src="${layers[i].image}" alt="" style="${clipImg}"></div>`;
   }
   body.innerHTML=`<div class="peelq">`+
     `<div class="peel-progress">سمّيتَ <b class="peel-count">٠</b> من <b>${arNum(N)}</b> طبقات</div>`+
     `<div class="dnd dnd-solo"><div class="stage stage-img peel-stage">`+
       `<div class="peel-scene">`+
-        `<div class="peel-col">`+clips+`</div>`+
+        `<div class="peel-col">`+slices+`</div>`+
       `</div>`+
     `</div></div>`+
     `<div class="peel-legend"></div>`+
@@ -1198,10 +1197,24 @@ function renderPeel(q, body, fb){
     `<div class="peel-ask"></div>`+
     `<div class="actions"><button class="btn btn-reset">إعادة ↺</button></div>`+
     `</div>`;
+  const stage=body.querySelector('.peel-stage');
   const col=body.querySelector('.peel-col'), legend=body.querySelector('.peel-legend');
   const countEl=body.querySelector('.peel-count'), hint=body.querySelector('.peel-hint');
   const ask=body.querySelector('.peel-ask');
   let named=0, done=false;
+  let present=layers.map((_,i)=>i);   // فهارس الطبقات الظاهرة، مرتّبة من الأعلى إلى الأسفل
+
+  // توزيع الشرائح الظاهرة عمودياً بالتساوي داخل العمود (تتّسع كلما قلّ عددها) — مع انتقال سلس
+  function layoutSlices(){
+    const C=present.length||1;
+    present.forEach((idx,p)=>{
+      const sl=col.querySelector('.peel-slice[data-i="'+idx+'"]');
+      if(!sl) return;
+      sl.style.top=(p*100/C)+'%';
+      sl.style.height=(100/C)+'%';
+    });
+  }
+  layoutSlices();
 
   // شريط الطبقات المسمّاة أسفل الصورة (لا يتزاحم مع الرسم ولا يُقصّ عند حوافه)
   function addLabel(text){
@@ -1210,7 +1223,7 @@ function renderPeel(q, body, fb){
     legend.appendChild(lb);
   }
 
-  // سؤال «ما هذه الطبقة؟» للطبقة k بثلاثة خيارات نصية تُخلط تلقائياً
+  // سؤال «ما هذه الطبقة؟» للطبقة k (الشريحة العُليا الحالية) بثلاثة خيارات نصية تُخلط تلقائياً
   function showQuestion(k){
     const L=layers[k]; if(!L) return;
     const opts=shuffle(L.options.map((o,idx)=>({o,idx})));
@@ -1225,11 +1238,11 @@ function renderPeel(q, body, fb){
         answered=true; btn.classList.add('correct');
         ask.querySelectorAll('.opt').forEach(b=>b.disabled=true);
         onNamed(k,L);
-      } else { btn.classList.add('wrong'); btn.disabled=true; qFail(fb,'ليست هذه الطبقة، دقّق فيما ظهر ثم جرّب'); }
+      } else { btn.classList.add('wrong'); btn.disabled=true; qFail(fb,'ليست هذه الطبقة، دقّق فيها ثم جرّب'); }
     };});
   }
 
-  // بعد تسمية الطبقة k بنجاح: ثبّت تسميتها، ثم افتح قشرتها لكشف التالية أو أنهِ عند الأعمق
+  // بعد تسمية الطبقة k بنجاح: ثبّت تسميتها، ثم فعّل رفع شريحتها لكشف التالية أو أنهِ عند الأعمق
   function onNamed(k,L){
     named++; countEl.textContent=arNum(named); addLabel(L.label); speak(L.label);
     if(k===N-1){ done=true; hint.textContent=''; qWin(fb,'🎉 أحسنت! قشّرت الطبقات وسمّيتها كلّها'); }
@@ -1240,47 +1253,53 @@ function renderPeel(q, body, fb){
     }
   }
 
-  // تفعيل قشر الطبقة k: تُسحب **إلى الأعلى** (فأرة + لمس)؛ الحركة صعوداً فقط (تُقاوَم للأسفل)،
-  // وعند تجاوز مسافة القشر تنزلق صعوداً وتختفي كاشفةً ما تحتها.
+  // تفعيل رفع الشريحة العُليا k: تُسحب **إلى الأعلى** (فأرة + لمس)؛ الحركة صعوداً فقط (تُقاوَم
+  // للأسفل)، وعند تجاوز مسافة الرفع تنزلق صعوداً خارج الفريم وتختفي.
   function enablePeel(k){
-    const clip=col.querySelector('.peel-clip[data-i="'+k+'"]'); if(!clip) return;
-    clip.classList.add('peelable'); hint.textContent='👆 اسحب الطبقة العُليا إلى الأعلى لتكشف ما تحتها';
+    const sl=col.querySelector('.peel-slice[data-i="'+k+'"]'); if(!sl) return;
+    sl.classList.add('peelable'); hint.textContent='👆 ارفع الشريحة العُليا إلى الأعلى لتكشف ما تحتها';
     let dragging=false, sx=0, sy=0, dx=0, dy=0;
-    function start(cx,cy){ if(clip.dataset.peeled||done)return; dragging=true; sx=cx; sy=cy; dx=0; dy=0;
-      clip.classList.add('grab');
+    function start(cx,cy){ if(sl.dataset.peeled||done)return; dragging=true; sx=cx; sy=cy; dx=0; dy=0;
+      sl.classList.add('grab');
       window.addEventListener('mousemove',mv); window.addEventListener('mouseup',up);
       window.addEventListener('touchmove',tmv,{passive:false}); window.addEventListener('touchend',up); }
     function moveTo(cx,cy){ if(!dragging)return; dx=cx-sx; dy=cy-sy;
       const uy=Math.min(0,dy);                                  // صعوداً فقط (لا ينزل تحت مكانه)
-      const sh=Math.max(-36,Math.min(36,dx*0.22));              // ميلٌ أفقيّ طفيف للإحساس الطبيعي
-      clip.style.transform='translate('+sh+'px,'+uy+'px)';
-      clip.style.opacity=String(Math.max(.25,1+uy/240)); }
+      const shx=Math.max(-36,Math.min(36,dx*0.22));             // ميلٌ أفقيّ طفيف للإحساس الطبيعي
+      sl.style.transition='none';
+      sl.style.transform='translate('+shx+'px,'+uy+'px)';
+      sl.style.opacity=String(Math.max(.25,1+uy/240)); }
     function mv(e){ moveTo(e.clientX,e.clientY); }
     function tmv(e){ moveTo(e.touches[0].clientX,e.touches[0].clientY); e.preventDefault(); }
-    function up(){ if(!dragging)return; dragging=false; clip.classList.remove('grab');
+    function up(){ if(!dragging)return; dragging=false; sl.classList.remove('grab');
       window.removeEventListener('mousemove',mv); window.removeEventListener('mouseup',up);
       window.removeEventListener('touchmove',tmv); window.removeEventListener('touchend',up);
-      const upDist=Math.max(0,-dy), THRESH=Math.max(38,clip.getBoundingClientRect().height*0.4);
-      if(upDist>=THRESH) peelOff(clip,k);
-      else{ clip.style.transition='transform .25s ease, opacity .25s ease';
-        clip.style.transform='translate(0,0)'; clip.style.opacity='1';
-        setTimeout(()=>{ clip.style.transition=''; },260); }
+      const upDist=Math.max(0,-dy), THRESH=Math.max(34,sl.getBoundingClientRect().height*0.45);
+      if(upDist>=THRESH) peelOff(sl,k);
+      else{ sl.style.transition='transform .25s ease, opacity .25s ease';
+        sl.style.transform='translate(0,0)'; sl.style.opacity='1'; }
     }
-    clip.addEventListener('mousedown',e=>{ e.preventDefault(); start(e.clientX,e.clientY); });
-    clip.addEventListener('touchstart',e=>{ start(e.touches[0].clientX,e.touches[0].clientY); },{passive:true});
+    sl.addEventListener('mousedown',e=>{ e.preventDefault(); start(e.clientX,e.clientY); });
+    sl.addEventListener('touchstart',e=>{ start(e.touches[0].clientX,e.touches[0].clientY); },{passive:true});
   }
 
-  // القشر: تنزلق الطبقة **صعوداً** خارج الفريم ثمّ تُزال كاشفةً ما تحتها، فيظهر سؤال الطبقة المكشوفة
-  function peelOff(clip,k){
-    clip.dataset.peeled='1'; clip.classList.remove('peelable'); hint.textContent='';
-    const H=clip.getBoundingClientRect().height||160;
-    clip.style.transition='transform .5s ease-in, opacity .5s ease-in';
-    clip.style.transform='translateY('+(-(H+90))+'px)';
-    clip.style.opacity='0';
-    setTimeout(()=>{ clip.remove(); showQuestion(k+1); }, 470);
+  // الرفع: تنزلق الشريحة العُليا **صعوداً** خارج الفريم وتُزال، فتتّسع الباقية وترتفع، ثم يظهر سؤال التالية
+  function peelOff(sl,k){
+    sl.dataset.peeled='1'; sl.classList.remove('peelable'); hint.textContent='';
+    const stageH=stage.getBoundingClientRect().height||440;
+    sl.style.zIndex='200';
+    sl.style.transition='transform .5s ease-in, opacity .5s ease-in';
+    sl.style.transform='translateY('+(-stageH)+'px)';
+    sl.style.opacity='0';
+    setTimeout(()=>{
+      sl.remove();
+      present=present.filter(x=>x!==k);
+      layoutSlices();                 // الشرائح الباقية تتّسع وترتفع بسلاسة
+      showQuestion(k+1);
+    }, 470);
   }
 
-  // البداية: سمِّ الطبقة الخارجية الظاهرة أوّلاً، ثم يُفتح قشرها لكشف ما تحتها
+  // البداية: كل الطبقات ظاهرة؛ سمِّ الشريحة العُليا (السطحية) أوّلاً ثم ارفعها لكشف ما تحتها
   showQuestion(0);
   body.querySelector('.btn-reset').onclick=()=>renderPeel(q,body,fb);
 }

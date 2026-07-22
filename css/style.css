@@ -552,19 +552,22 @@
   .peel-scene{position:relative;width:100%;height:100%;touch-action:none;
     -webkit-user-select:none;user-select:none}
   .peel-scene img{pointer-events:none;-webkit-user-drag:none}
-  /* عمود التربة: ملتصق بالقاع وممتدّ بعرض الفريم، والطبقات مكدّسة داخله رأسياً في المكان نفسه */
-  .peel-col{position:absolute;left:0;bottom:0;width:100%;height:40%}
-  /* ظلّ خفيف عند سطح التربة (حدّها مع السماء) لإحساس العمق */
-  .peel-col::before{content:'';position:absolute;left:0;right:0;top:0;height:9px;z-index:100;
+  /* عمود التربة: ملتصق بالقاع وممتدّ بعرض الفريم، تُوزّع داخله الشرائح عمودياً (overflow مرئيّ
+     كي تنزلق الشريحة المرفوعة صعوداً فوق السماء حتى تخرج من الفريم الذي يقصّها) */
+  .peel-col{position:absolute;left:0;bottom:0;width:100%;height:70%;overflow:visible}
+  /* ظلّ خفيف عند سطح التربة (حدّ الشريحة العُليا مع السماء) لإحساس العمق */
+  .peel-col::before{content:'';position:absolute;left:0;right:0;top:0;height:9px;z-index:120;
     pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.18),transparent)}
-  /* قصاصة الطبقة: تملأ العمود، والصورة بداخلها مقصوصة على شريط التربة فتملأه (بلا خلفية الصورة) */
-  .peel-clip{position:absolute;inset:0;overflow:hidden;will-change:transform,opacity}
-  .peel-clip img{position:absolute;max-width:none;display:block}
-  /* القصاصة النشطة (القابلة للقشر الآن): مؤشّر مسك + حدّ متوهّج + نبض لطيف يدعو للسحب */
-  .peel-clip.peelable{cursor:grab;pointer-events:auto;
+  /* شريحة الطبقة: شريط أفقيّ بعرض العمود، موضعها/ارتفاعها يُضبطان بالكود (top/height) وينتقلان
+     بسلاسة عند اتّساع الباقيات؛ والصورة بداخلها مقصوصة على شريط التربة فتملأ الشريحة (بلا خلفية) */
+  .peel-slice{position:absolute;left:0;width:100%;overflow:hidden;
+    transition:top .42s ease, height .42s ease; will-change:top,height}
+  .peel-slice img{position:absolute;max-width:none;display:block}
+  /* الشريحة النشطة (العُليا القابلة للرفع الآن): مؤشّر مسك + حدّ متوهّج + نبض لطيف يدعو للسحب */
+  .peel-slice.peelable{cursor:grab;pointer-events:auto;z-index:60;
     box-shadow:0 0 0 2px rgba(255,226,122,.9),0 0 16px rgba(255,226,122,.55);
     animation:peelPulse 1.4s ease-in-out infinite}
-  .peel-clip.peelable.grab{cursor:grabbing;animation:none}
+  .peel-slice.peelable.grab{cursor:grabbing;animation:none}
   @keyframes peelPulse{0%,100%{box-shadow:0 0 0 2px rgba(255,226,122,.65),0 0 10px rgba(255,226,122,.4)}
     50%{box-shadow:0 0 0 3px rgba(255,226,122,1),0 0 22px rgba(255,226,122,.75)}}
   /* شريط الطبقات المسمّاة أسفل الصورة (بطاقات نصية لا تُقصّ ولا تحجب الرسم) */
