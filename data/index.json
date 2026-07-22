@@ -7,7 +7,7 @@
         "lessons": [
           { "title": "النباتات والحيوانات هي كائنات حيّة", "file": "g1s-1-1", "open": true },
           { "title": "البيئات المحلّية", "file": "g1s-1-2", "open": true },
-          { "title": "صغير الإنسان وصغير الحيوان", "file": "g1s-1-3", "open": false },
+          { "title": "صغير الإنسان وصغير الحيوان", "file": "g1s-1-3", "open": true },
           { "title": "الطعام والشراب الصحّي", "file": "g1s-1-4", "open": false },
           { "title": "تحقّق من تقدّمك", "file": "g1s-1-5", "open": false }
         ]
