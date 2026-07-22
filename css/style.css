@@ -36,6 +36,12 @@
   /* خلفية رياضيات الثاني — بنفسجي داكن بلمسة برتقالية دافئة خفيفة */
   body.theme-math2{
     background:linear-gradient(180deg,#241f3c 0%,#3b3350 32%,#664a34 65%,#93672c 100%)}
+  /* خلفية علوم الأول — بنفسجي داكن بلمسة فيروزية سماوية خفيفة */
+  body.theme-sci1{
+    background:linear-gradient(180deg,#1f253f 0%,#26405a 32%,#2d6074 65%,#377f92 100%)}
+  /* خلفية علوم الثاني — بنفسجي داكن بلمسة برتقالية مشمسة خفيفة */
+  body.theme-sci2{
+    background:linear-gradient(180deg,#251f3a 0%,#402f4a 32%,#6f4c2e 65%,#a06d24 100%)}
 
   /* نجوم الخلفية */
   .stars{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}

@@ -8,8 +8,11 @@ window.DATA_FALLBACK = {
   // الفصول الدراسية → الصفوف → الكتب  (مطابق لـ data/books.json)
   terms: {
     "الأول": {
-      "الأول": [],
+      "الأول": [
+        { key:"g1-sci", title:"العلوم", term:"الفصل الأول", color:"bk-blue", ic:"🔬", isNew:false, theme:"theme-sci1" }
+      ],
       "الثاني": [
+        { key:"g2-sci", title:"العلوم", term:"الفصل الأول", color:"bk-orange", ic:"🔬", isNew:false, theme:"theme-sci2" },
         { key:"g2-math", title:"الرياضيات", term:"الفصل الأول", color:"bk-orange", ic:"📐", isNew:true, theme:"theme-math2", cover:"images/cover-g2-math.jpg" }
       ],
       "الثالث": [
@@ -33,6 +36,52 @@ window.DATA_FALLBACK = {
   },
   // فهرس منفصل لكل كتاب  (مطابق لـ data/index.json)
   index: {
+    "g1-sci": { book:"العلوم — الصف الأول", units:[
+      { unit:"الكائنات الحيّة", lessons:[
+        { title:"النباتات والحيوانات هي كائنات حيّة", file:"g1s-1-1", open:false },
+        { title:"البيئات المحلّية", file:"g1s-1-2", open:false },
+        { title:"صغير الإنسان وصغير الحيوان", file:"g1s-1-3", open:false },
+        { title:"الطعام والشراب الصحّي", file:"g1s-1-4", open:false },
+        { title:"تحقّق من تقدّمك", file:"g1s-1-5", open:false }
+      ]},
+      { unit:"النباتات", lessons:[
+        { title:"أجزاء النبات", file:"g1s-2-1", open:false },
+        { title:"زراعة البذور", file:"g1s-2-2", open:false },
+        { title:"النبات والضوء", file:"g1s-2-3", open:false },
+        { title:"تحقّق من تقدّمك", file:"g1s-2-4", open:false }
+      ]},
+      { unit:"نحن", lessons:[
+        { title:"نحن متشابهون", file:"g1s-3-1", open:false },
+        { title:"نحن مختلفون", file:"g1s-3-2", open:false },
+        { title:"أجسامنا", file:"g1s-3-3", open:false },
+        { title:"حواسّنا الرائعة", file:"g1s-3-4", open:false },
+        { title:"تحقّق من تقدّمك", file:"g1s-3-5", open:false }
+      ]}
+    ]},
+    "g2-sci": { book:"العلوم — الصف الثاني", units:[
+      { unit:"اكتشاف المحيط من حولنا", lessons:[
+        { title:"أماكن مختلفة للعيش", file:"g2s-1-1", open:false },
+        { title:"هل يمكننا العناية ببيئتنا؟", file:"g2s-1-2", open:false },
+        { title:"طقسنا", file:"g2s-1-3", open:false },
+        { title:"الطقس القاسي", file:"g2s-1-4", open:false },
+        { title:"تحقّق من تقدّمك", file:"g2s-1-5", open:false }
+      ]},
+      { unit:"اكتشاف الصخور", lessons:[
+        { title:"ما هي الصخور؟", file:"g2s-2-1", open:false },
+        { title:"استخدامات الصخور", file:"g2s-2-2", open:false },
+        { title:"التربة", file:"g2s-2-3", open:false },
+        { title:"المواد الطبيعية الأخرى", file:"g2s-2-4", open:false },
+        { title:"تحقّق من تقدّمك", file:"g2s-2-5", open:false }
+      ]},
+      { unit:"تغيير المواد", lessons:[
+        { title:"تغيير شكل المواد", file:"g2s-3-1", open:false },
+        { title:"الثَّني واللَّيّ", file:"g2s-3-2", open:false },
+        { title:"المرونة الرائعة", file:"g2s-3-3", open:false },
+        { title:"التسخين والتبريد", file:"g2s-3-4", open:false },
+        { title:"لماذا تكون مياه البحر مالحة؟", file:"g2s-3-5", open:false },
+        { title:"تحقّق من تقدّمك", file:"g2s-3-6", open:false }
+      ]}
+    ]},
     "g2-math": { book:"الرياضيات — الصف الثاني", units:[
       { unit:"٢أ: الأعداد والعمليات الحسابية", lessons:[
         { title:"العشرات والآحاد حتى ١٠٠ (١٢-١)", file:"g2m-12-1", open:true }
