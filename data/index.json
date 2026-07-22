@@ -61,7 +61,7 @@
         "lessons": [
           { "title": "النباتات وأجزاؤها", "file": "g3s-1-1", "open": true },
           { "title": "النباتات بحاجة إلى الضوء والماء", "file": "g3s-1-2", "open": false },
-          { "title": "نقل الماء", "file": "g3s-1-3", "open": false },
+          { "title": "نقل الماء", "file": "g3s-1-3", "open": true },
           { "title": "نمو النباتات ودرجة الحرارة", "file": "g3s-1-4", "open": false },
           { "title": "تحقّق من تقدّمك", "file": "g3s-1-5", "open": false }
         ]

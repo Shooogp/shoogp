@@ -213,7 +213,7 @@ function qWin(fb,msg,stars){fb.textContent=msg||'🎉 أحسنت!';fb.className=
 // أي واجهة بلا صاروخ تُبقي wrong.mp3 يعمل (بقية دروس المنصّة كلها تحوي الصاروخ الآن)
 function qFail(fb,msg){fb.textContent=msg||'حاول مرة أخرى';fb.className='fb qfb bad';if(!(window.RocketJourney&&RocketJourney.isActive&&RocketJourney.isActive()))playWrongSound();if(window.RocketJourney)RocketJourney.onAnswer(false);}
 
-const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل','slider':'🎚️ الشريط المتدرج','memory':'🎴 بطاقات الذاكرة','lens':'🔍 العدسة المكبّرة'};
+const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل','slider':'🎚️ الشريط المتدرج','memory':'🎴 بطاقات الذاكرة','lens':'🔍 العدسة المكبّرة','peel':'🧅 الطبقات (القشّر)'};
 
 // تحويل الأرقام إلى هندية (عربية) للعرض
 function arNum(n){ return String(n).replace(/[0-9]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'[+d];}); }
@@ -228,7 +228,7 @@ function renderQuestions(ls){
     m.innerHTML='<div class="qbody" style="text-align:center;padding:14px 6px;font-size:1.15rem">📚 أسئلة هذا الدرس ستُضاف قريباً بإذن الله</div>';
     host.appendChild(m); return;
   }
-  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor,'puzzle':renderPuzzle,'slider':renderSlider,'memory':renderMemory,'lens':renderLens};
+  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor,'puzzle':renderPuzzle,'slider':renderSlider,'memory':renderMemory,'lens':renderLens,'peel':renderPeel};
 
   // بناء كل البطاقات (تبقى في الصفحة لحفظ إجاباتها، ونُظهر واحدة فقط)
   const slides=document.createElement('div'); slides.className='qslides';
@@ -1161,6 +1161,128 @@ function renderLens(q, body, fb){
     }
   });
   body.querySelector('.btn-reset').onclick=()=>renderLens(q,body,fb);
+}
+
+/* ⑳ الطبقات (القشّر) — peel: سلسلة صور PNG متطابقة الأبعاد مكدّسة فوق بعضها (طبقتان أو ثلاث
+   حسب البيانات) — الأعلى ظاهرة والبقية تحتها. القشر محصور في مستطيل rect{x,y,w,h} (نِسَب %
+   من الصورة) لا كامل الصورة: القاعدة صورة الطبقة الخارجية كاملة (تُظهر بقيّة المشهد ثابتاً
+   خارج المستطيل)، وفوقها لكل طبقة قصاصة محصورة في المستطيل — الأعمق أسفل والخارجية فوقها.
+   الطالب يسحب القصاصة العليا جانباً (فأرة + لمس معاً، الاستخدام الأساسي سبورة تفاعلية) فتنزلق
+   وتختفي كاشفةً ما تحتها داخل المستطيل. لكل طبقة سؤال «ما هذه الطبقة؟» بثلاثة خيارات نصية:
+   الصحيح يفتح قشرة الطبقة الحالية لكشف التالية، والخطأ = تغذية الخطأ المعتمدة (qFail: اختناق
+   محرّك الصاروخ، وwrong.mp3 في واجهة بلا صاروخ). يكتمل السؤال بتسمية كل الطبقات حتى الأعمق ثم qWin.
+   layers[{image,label,question,options[3],answer}] من الأعلى (الخارجية) إلى الأعمق. */
+function renderPeel(q, body, fb){
+  const layers=q.layers||[];
+  const N=layers.length;
+  const rect=q.rect||{x:0,y:0,w:100,h:100};
+  const figCls=q.fit==='width' ? 'figwrap fw peelfig' : 'figwrap peelfig';
+  // القصاصة: حاوية محصورة في المستطيل (overflow) وصورة كاملة بداخلها مُحجَّمة ومُزاحة كي
+  // ينطبق جزؤها على موضع المستطيل تماماً مهما تغيّر حجم الصورة (نِسَب % صامدة).
+  const clipBox=`left:${rect.x}%;top:${rect.y}%;width:${rect.w}%;height:${rect.h}%`;
+  const clipImg=`width:${10000/rect.w}%;height:${10000/rect.h}%;`+
+                `left:${-(rect.x/rect.w*100)}%;top:${-(rect.y/rect.h*100)}%`;
+  // القصاصات من الأعمق (z أقلّ) إلى الخارجية (z أعلى) — الخارجية تُقشَّر أوّلاً
+  let clips='';
+  for(let i=N-1;i>=0;i--){
+    clips+=`<div class="peel-clip" data-i="${i}" style="${clipBox};z-index:${10+(N-i)}">`+
+           `<img src="${layers[i].image}" alt="" style="${clipImg}"></div>`;
+  }
+  body.innerHTML=`<div class="peelq">`+
+    `<div class="peel-progress">سمّيتَ <b class="peel-count">٠</b> من <b>${arNum(N)}</b> طبقات</div>`+
+    `<div class="dnd dnd-solo"><div class="stage stage-img"${q.bg?` style="background:${q.bg}"`:''}>`+
+      `<div class="${figCls}">`+
+        `<img class="peel-base" src="${layers[0].image}" alt="">`+
+        clips+
+      `</div>`+
+    `</div></div>`+
+    `<div class="peel-legend"></div>`+
+    `<div class="peel-hint"></div>`+
+    `<div class="peel-ask"></div>`+
+    `<div class="actions"><button class="btn btn-reset">إعادة ↺</button></div>`+
+    `</div>`;
+  const fig=body.querySelector('.peelfig'), legend=body.querySelector('.peel-legend');
+  const countEl=body.querySelector('.peel-count'), hint=body.querySelector('.peel-hint');
+  const ask=body.querySelector('.peel-ask');
+  let named=0, done=false;
+
+  // شريط الطبقات المسمّاة أسفل الصورة (لا يتزاحم مع الرسم ولا يُقصّ عند حوافه)
+  function addLabel(text){
+    const lb=document.createElement('span'); lb.className='peel-label';
+    lb.textContent=arNum(named)+'. '+text+' ✓';
+    legend.appendChild(lb);
+  }
+
+  // سؤال «ما هذه الطبقة؟» للطبقة k بثلاثة خيارات نصية تُخلط تلقائياً
+  function showQuestion(k){
+    const L=layers[k]; if(!L) return;
+    const opts=shuffle(L.options.map((o,idx)=>({o,idx})));
+    ask.innerHTML=`<div class="peel-q">${L.question||'ما هذه الطبقة؟'}</div>`+
+      `<div class="opts peel-opts">`+
+      opts.map(x=>`<button class="opt" data-i="${x.idx}">${x.o}</button>`).join('')+
+      `</div>`;
+    let answered=false;
+    ask.querySelectorAll('.opt').forEach(btn=>{ btn.onclick=()=>{
+      if(answered)return;
+      if(+btn.dataset.i===L.answer){
+        answered=true; btn.classList.add('correct');
+        ask.querySelectorAll('.opt').forEach(b=>b.disabled=true);
+        onNamed(k,L);
+      } else { btn.classList.add('wrong'); btn.disabled=true; qFail(fb,'ليست هذه الطبقة، دقّق فيما ظهر ثم جرّب'); }
+    };});
+  }
+
+  // بعد تسمية الطبقة k بنجاح: ثبّت تسميتها، ثم افتح قشرتها لكشف التالية أو أنهِ عند الأعمق
+  function onNamed(k,L){
+    named++; countEl.textContent=arNum(named); addLabel(L.label); speak(L.label);
+    if(k===N-1){ done=true; hint.textContent=''; qWin(fb,'🎉 أحسنت! قشّرت الطبقات وسمّيتها كلّها'); }
+    else{
+      playCorrectSound();
+      fb.textContent='🔍 أحسنت! هذه: '+L.label; fb.className='fb qfb';
+      enablePeel(k);
+    }
+  }
+
+  // تفعيل قشر القصاصة k: تُسحب جانباً (فأرة + لمس) وعند تجاوز مسافة القشر تنزلق وتختفي
+  function enablePeel(k){
+    const clip=fig.querySelector('.peel-clip[data-i="'+k+'"]'); if(!clip) return;
+    clip.classList.add('peelable'); hint.textContent='👉 اسحب الطبقة جانباً لتكشف ما تحتها';
+    let dragging=false, sx=0, sy=0, dx=0, dy=0;
+    function start(cx,cy){ if(clip.dataset.peeled||done)return; dragging=true; sx=cx; sy=cy; dx=0; dy=0;
+      clip.classList.add('grab');
+      window.addEventListener('mousemove',mv); window.addEventListener('mouseup',up);
+      window.addEventListener('touchmove',tmv,{passive:false}); window.addEventListener('touchend',up); }
+    function moveTo(cx,cy){ if(!dragging)return; dx=cx-sx; dy=cy-sy;
+      clip.style.transform='translate('+dx+'px,'+dy+'px)';
+      clip.style.opacity=String(Math.max(.25,1-Math.hypot(dx,dy)/260)); }
+    function mv(e){ moveTo(e.clientX,e.clientY); }
+    function tmv(e){ moveTo(e.touches[0].clientX,e.touches[0].clientY); e.preventDefault(); }
+    function up(){ if(!dragging)return; dragging=false; clip.classList.remove('grab');
+      window.removeEventListener('mousemove',mv); window.removeEventListener('mouseup',up);
+      window.removeEventListener('touchmove',tmv); window.removeEventListener('touchend',up);
+      const dist=Math.hypot(dx,dy), THRESH=Math.max(42,clip.getBoundingClientRect().width*0.5);
+      if(dist>=THRESH) peelOff(clip,dx,dy,k);
+      else{ clip.style.transition='transform .25s ease, opacity .25s ease';
+        clip.style.transform='translate(0,0)'; clip.style.opacity='1';
+        setTimeout(()=>{ clip.style.transition=''; },260); }
+    }
+    clip.addEventListener('mousedown',e=>{ e.preventDefault(); start(e.clientX,e.clientY); });
+    clip.addEventListener('touchstart',e=>{ start(e.touches[0].clientX,e.touches[0].clientY); },{passive:true});
+  }
+
+  // القشر: تنزلق القصاصة في اتجاه السحب ثمّ تُزال كاشفةً ما تحتها، فيظهر سؤال الطبقة المكشوفة
+  function peelOff(clip,dx,dy,k){
+    clip.dataset.peeled='1'; clip.classList.remove('peelable'); hint.textContent='';
+    const len=Math.hypot(dx,dy)||1, m=520/len;
+    clip.style.transition='transform .5s ease-in, opacity .5s ease-in';
+    clip.style.transform='translate('+(dx*m)+'px,'+(dy*m)+'px) rotate('+(dx>=0?16:-16)+'deg)';
+    clip.style.opacity='0';
+    setTimeout(()=>{ clip.remove(); showQuestion(k+1); }, 470);
+  }
+
+  // البداية: سمِّ الطبقة الخارجية الظاهرة أوّلاً، ثم يُفتح قشرها لكشف ما تحتها
+  showQuestion(0);
+  body.querySelector('.btn-reset').onclick=()=>renderPeel(q,body,fb);
 }
 
 /* ===== إقلاع ===== */
