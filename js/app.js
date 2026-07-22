@@ -633,16 +633,18 @@ function renderClassify(q, body, fb){
    الصوت: qWin/qFail يشغّلان correct.mp3/wrong.mp3 ويخضعان لزرّ الكتم العامّ. */
 function renderColor(q, body, fb){
   const norm=c=>String(c||'').trim().toLowerCase();
-  const nameOf=c=>{ const p=q.palette.find(x=>norm(x.color)===norm(c)); return p?p.name:''; };
-  // لوحة ألوان كبيرة تناسب اللمس على السبورة
+  // لوحة ألوان: دلاء طلاء، كلّ دلو بلون خياره (تناسب اللمس على السبورة)
+  const bucket=color=>`<span class="bucket-wrap"><svg class="bucket-ic" viewBox="0 0 48 48" aria-hidden="true">`+
+    `<path d="M13 17 q11 -12 22 0" fill="none" stroke="#3a2c0a" stroke-width="2.4"/>`+
+    `<path d="M11 17 h26 l-3 22 a4 4 0 0 1 -4 3.5 h-12 a4 4 0 0 1 -4 -3.5 z" fill="${color}" stroke="#3a2c0a" stroke-width="2.4" stroke-linejoin="round"/>`+
+    `<ellipse cx="24" cy="17" rx="13" ry="4.3" fill="${color}" stroke="#3a2c0a" stroke-width="2.4"/>`+
+    `</svg></span>`;
   const swatches=q.palette.map(p=>
     `<button class="cswatch" type="button" data-color="${p.color}" title="${p.name}">`+
-      `<span class="cswatch-dot" style="background:${p.color}"></span>`+
+      bucket(p.color)+
       `<span class="cswatch-name">${p.name}</span></button>`).join('');
-  // شريط التعليمات: لكل جزء مطلوب اسمه ولونه المطلوب
-  const instr=q.parts.map(pt=>
-    `<span class="cinstr"><span class="cinstr-dot" style="background:${pt.color}"></span>`+
-    `${pt.name} ← ${nameOf(pt.color)}</span>`).join('');
+  // شارات المفردات: المفردة وحدها دون اسم اللون أو أيقونته (كي لا تُكشف الإجابة)
+  const instr=q.parts.map(pt=>`<span class="cinstr">${pt.name}</span>`).join('');
   body.innerHTML=
     `<div class="colorq">`+
       `<div class="cpalette">${swatches}</div>`+
@@ -652,16 +654,17 @@ function renderColor(q, body, fb){
       `</div></div>`+
     `</div>`+
     `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
+  const area=body.querySelector('.csvg');
   let chosen=null;
-  // اختيار لون من اللوحة
+  // اختيار دلو طلاء من اللوحة: يفعّل حالة الرفع (لمس) وفرشاة المؤشّر (حاسوب)
   body.querySelectorAll('.cswatch').forEach(sw=>{ sw.onclick=()=>{
     body.querySelectorAll('.cswatch').forEach(x=>x.classList.remove('sel'));
     sw.classList.add('sel'); chosen=sw.dataset.color;
+    if(area) area.classList.add('brushing');
     speak(sw.querySelector('.cswatch-name').textContent);
   };});
   // تلوين جزء عند الضغط (بعد اختيار لون)
   body.querySelectorAll('.cpart').forEach(part=>{
-    part.style.cursor='pointer';
     part.addEventListener('click',()=>{
       if(!chosen){ fb.textContent='اختر لوناً أوّلاً من اللوحة 🎨'; fb.className='fb qfb'; return; }
       part.style.fill=chosen; part.dataset.fill=chosen; part.classList.remove('cwrong');
