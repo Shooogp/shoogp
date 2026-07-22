@@ -633,11 +633,23 @@ function renderClassify(q, body, fb){
    الصوت: qWin/qFail يشغّلان correct.mp3/wrong.mp3 ويخضعان لزرّ الكتم العامّ. */
 function renderColor(q, body, fb){
   const norm=c=>String(c||'').trim().toLowerCase();
-  // لوحة ألوان: دلاء طلاء، كلّ دلو بلون خياره (تناسب اللمس على السبورة)
-  const bucket=color=>`<span class="bucket-wrap"><svg class="bucket-ic" viewBox="0 0 48 48" aria-hidden="true">`+
-    `<path d="M13 17 q11 -12 22 0" fill="none" stroke="#3a2c0a" stroke-width="2.4"/>`+
-    `<path d="M11 17 h26 l-3 22 a4 4 0 0 1 -4 3.5 h-12 a4 4 0 0 1 -4 -3.5 z" fill="${color}" stroke="#3a2c0a" stroke-width="2.4" stroke-linejoin="round"/>`+
-    `<ellipse cx="24" cy="17" rx="13" ry="4.3" fill="${color}" stroke="#3a2c0a" stroke-width="2.4"/>`+
+  // لوحة ألوان: دلو طلاء طفوليّ مرسوم SVG — جسمه ثابت، والطلاء (السطح والانسكاب والقطرات)
+  // يأخذ لون خيار السؤال تلقائياً فيعمل مع أيّ لون دون أصول جديدة.
+  const bucket=color=>`<span class="bucket-wrap"><svg class="bucket-ic" viewBox="0 0 56 56" aria-hidden="true">`+
+    // المقبض (ثابت)
+    `<path d="M15 19 Q28 4 41 19" fill="none" stroke="#9a8259" stroke-width="3" stroke-linecap="round"/>`+
+    // جسم الدلو الممتلئ مستدير الحواف (ثابت)
+    `<path d="M11 20 C9 31 11 42 15 47 Q28 54 41 47 C45 42 47 31 45 20 Z" fill="#e2e8ee" stroke="#5b4a2f" stroke-width="2.6" stroke-linejoin="round"/>`+
+    // حلقة الحافة (ثابت)
+    `<ellipse cx="28" cy="20" rx="17" ry="5.4" fill="#eef2f6" stroke="#5b4a2f" stroke-width="2.6"/>`+
+    // سطح الطلاء داخل الفتحة (لون الخيار)
+    `<ellipse cx="28" cy="20" rx="13" ry="3.7" fill="${color}"/>`+
+    // انسكاب الطلاء فوق الحافة الأمامية (لون الخيار)
+    `<path d="M17 22 C11 25 10 34 14 40 C17 44 23 42 22 35 C21 30 23 25 23 22 Z" fill="${color}"/>`+
+    // قطرة منسكبة (لون الخيار)
+    `<path d="M15 42 q-2.6 4.4 0 6.6 q2.6 -2.2 0 -6.6 Z" fill="${color}"/>`+
+    // قطرة متطايرة (لون الخيار)
+    `<circle cx="20" cy="49" r="2.1" fill="${color}"/>`+
     `</svg></span>`;
   const swatches=q.palette.map(p=>
     `<button class="cswatch" type="button" data-color="${p.color}" title="${p.name}">`+
