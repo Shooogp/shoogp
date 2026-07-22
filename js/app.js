@@ -657,6 +657,8 @@ function renderColor(q, body, fb){
       `<span class="cswatch-name">${p.name}</span></button>`).join('');
   // شارات المفردات: المفردة وحدها دون اسم اللون أو أيقونته (كي لا تُكشف الإجابة)
   const instr=q.parts.map(pt=>`<span class="cinstr">${pt.name}</span>`).join('');
+  // ── الوضع الثاني (طبقات صور): يُكتشف تلقائياً بوجود q.base — لا يمسّ وضع SVG ولا الدلاء ──
+  if(q.base){ return renderColorLayers(q, body, fb, swatches, instr, norm); }
   body.innerHTML=
     `<div class="colorq">`+
       `<div class="cpalette">${swatches}</div>`+
@@ -691,6 +693,86 @@ function renderColor(q, body, fb){
       else el.classList.add('cwrong');
     });
     if(ok===need && need) qWin(fb,'🎨 أحسنت! لوّنت كل جزء باللون الصحيح',3);
+    else qFail(fb,`راجع الألوان — الصحيح ${arNum(ok)} من ${arNum(need)}`);
+  };
+  body.querySelector('.btn-reset').onclick=()=>renderColor(q,body,fb);
+}
+
+/* ⑮-ب التلوين — وضع «طبقات الصور»:
+   طبقة أساس واحدة (المشهد كاملاً) تُعرض منزوعة التشبع عبر filter:saturate(0)،
+   وفوقها طبقة PNG ملوّنة لكل منطقة بمقاس الأساس نفسه (opacity:0). النقر يحدّد المنطقة
+   بفحص شفافية بكسل طبقاتها (canvas.getImageData)؛ عند تطابق أصغر منطقة تحوي البكسل.
+   لون صحيح ⇒ كشف طبقتها الملوّنة بانبثاق ناعم (opacity→1). لون خاطئ ⇒ غسل المنطقة
+   بطبقة شفافة من اللون المختار فوق رماديّها (cwash مقنّعة بشكل الطبقة). زر «تحقّق»
+   يقيّم كالمعتاد (عدد المناطق التي طُبِّق عليها لونها الصحيح). الدلاء ووضع SVG دون تغيير. */
+function renderColorLayers(q, body, fb, swatches, instr, norm){
+  const esc=s=>String(s).replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+  body.innerHTML=
+    `<div class="colorq">`+
+      `<div class="cpalette">${swatches}</div>`+
+      `<div class="cinstrbar">${instr}</div>`+
+      `<div class="dnd dnd-solo"><div class="stage stage-img"${q.bg?` style="background:${q.bg}"`:''}>`+
+        `<div class="figwrap clayers">`+
+          `<img class="clayer-base" src="${q.base}" alt="" draggable="false">`+
+          q.parts.map(pt=>`<img class="clayer" data-name="${esc(pt.name)}" src="${pt.layer}" alt="" draggable="false">`).join('')+
+          q.parts.map(pt=>`<div class="cwash" data-name="${esc(pt.name)}" style="-webkit-mask-image:url('${pt.layer}');mask-image:url('${pt.layer}')"></div>`).join('')+
+        `</div>`+
+      `</div></div>`+
+    `</div>`+
+    `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
+  const area=body.querySelector('.clayers');
+  const baseImg=body.querySelector('.clayer-base');
+  let chosen=null; const state={};
+  // خرائط الشفافية لكل طبقة (لتحديد المنطقة المنقورة) + عدد بكسلاتها المعتمة (لتفضيل الأصغر عند التداخل)
+  const hit=q.parts.map(()=>null);
+  q.parts.forEach((pt,i)=>{
+    const im=new Image();
+    im.onload=()=>{ try{
+      const c=document.createElement('canvas'); c.width=im.naturalWidth; c.height=im.naturalHeight;
+      const cx=c.getContext('2d',{willReadFrequently:true}); cx.drawImage(im,0,0);
+      const d=cx.getImageData(0,0,c.width,c.height).data; let cnt=0;
+      for(let p=3;p<d.length;p+=4){ if(d[p]>40) cnt++; }
+      hit[i]={ctx:cx,w:c.width,h:c.height,count:cnt};
+    }catch(e){ hit[i]={ctx:null,w:im.naturalWidth||1,h:im.naturalHeight||1,count:1e9}; } };
+    im.src=pt.layer;
+  });
+  // اختيار دلو طلاء (كوضع SVG): يفعّل اللون وفرشاة المؤشّر وينطق اسم اللون
+  body.querySelectorAll('.cswatch').forEach(sw=>{ sw.onclick=()=>{
+    body.querySelectorAll('.cswatch').forEach(x=>x.classList.remove('sel'));
+    sw.classList.add('sel'); chosen=sw.dataset.color; area.classList.add('brushing');
+    speak(sw.querySelector('.cswatch-name').textContent);
+  };});
+  const apply=(i,color)=>{
+    const pt=q.parts[i]; state[pt.name]=color;
+    const layerEl=body.querySelector('.clayer[data-name="'+CSS.escape(pt.name)+'"]');
+    const washEl=body.querySelector('.cwash[data-name="'+CSS.escape(pt.name)+'"]');
+    if(norm(color)===norm(pt.color)){
+      if(washEl) washEl.classList.remove('on');
+      if(layerEl) layerEl.classList.add('on');      // كشف الطبقة الملوّنة (انبثاق ناعم)
+    }else{
+      if(layerEl) layerEl.classList.remove('on');
+      if(washEl){ washEl.style.background=color; washEl.classList.add('on'); }  // غسل شفّاف باللون المختار
+    }
+  };
+  area.addEventListener('click',ev=>{
+    if(!chosen){ fb.textContent='اختر لوناً أوّلاً من اللوحة 🎨'; fb.className='fb qfb'; return; }
+    const rect=baseImg.getBoundingClientRect(); if(!rect.width) return;
+    const px=(ev.clientX-rect.left)/rect.width, py=(ev.clientY-rect.top)/rect.height;
+    if(px<0||px>1||py<0||py>1) return;
+    let best=-1,bestCount=Infinity;
+    q.parts.forEach((pt,i)=>{
+      const H=hit[i]; if(!H||!H.ctx) return;
+      const sx=Math.min(H.w-1,Math.max(0,Math.floor(px*H.w))), sy=Math.min(H.h-1,Math.max(0,Math.floor(py*H.h)));
+      let a=0; try{ a=H.ctx.getImageData(sx,sy,1,1).data[3]; }catch(e){}
+      if(a>40 && H.count<bestCount){ best=i; bestCount=H.count; }
+    });
+    if(best<0) return;                 // نقر خارج المناطق (السماء) — لا شيء
+    apply(best,chosen);
+  });
+  body.querySelector('.btn-check').onclick=()=>{
+    let ok=0; const need=q.parts.length;
+    q.parts.forEach(pt=>{ if(norm(state[pt.name])===norm(pt.color)) ok++; });
+    if(ok===need && need) qWin(fb,'🎨 أحسنت! لوّنت كل منطقة باللون الصحيح',3);
     else qFail(fb,`راجع الألوان — الصحيح ${arNum(ok)} من ${arNum(need)}`);
   };
   body.querySelector('.btn-reset').onclick=()=>renderColor(q,body,fb);
