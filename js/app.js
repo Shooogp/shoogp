@@ -1163,37 +1163,34 @@ function renderLens(q, body, fb){
   body.querySelector('.btn-reset').onclick=()=>renderLens(q,body,fb);
 }
 
-/* ⑳ الطبقات (القشّر) — peel: سلسلة صور PNG متطابقة الأبعاد مكدّسة فوق بعضها (طبقتان أو ثلاث
-   حسب البيانات) — الأعلى ظاهرة والبقية تحتها. القشر محصور في مستطيل rect{x,y,w,h} (نِسَب %
-   من الصورة) لا كامل الصورة: القاعدة صورة الطبقة الخارجية كاملة (تُظهر بقيّة المشهد ثابتاً
-   خارج المستطيل)، وفوقها لكل طبقة قصاصة محصورة في المستطيل — الأعمق أسفل والخارجية فوقها.
-   الطالب يسحب القصاصة العليا جانباً (فأرة + لمس معاً، الاستخدام الأساسي سبورة تفاعلية) فتنزلق
-   وتختفي كاشفةً ما تحتها داخل المستطيل. لكل طبقة سؤال «ما هذه الطبقة؟» بثلاثة خيارات نصية:
-   الصحيح يفتح قشرة الطبقة الحالية لكشف التالية، والخطأ = تغذية الخطأ المعتمدة (qFail: اختناق
-   محرّك الصاروخ، وwrong.mp3 في واجهة بلا صاروخ). يكتمل السؤال بتسمية كل الطبقات حتى الأعمق ثم qWin.
-   layers[{image,label,question,options[3],answer}] من الأعلى (الخارجية) إلى الأعمق. */
+/* ⑳ الطبقات (القشّر) — peel: سلسلة صور PNG متطابقة الأبعاد لطبقاتٍ **مكدّسة رأسياً** (طبقتان
+   أو ثلاث) داخل عمود تربة ملتصق بقاع فريم مربّع، فوقه سماء زرقاء — مقطعٌ رأسيّ واقعيّ للأرض.
+   كل طبقة قصاصةٌ مقصوصة على شريط rect{x,y,w,h} (نِسَب % من الصورة) تملأ العمود، والطبقات فوق
+   بعضها في المكان نفسه (الأعمق أسفل z والعُليا فوقها). الطالب يسحب الطبقة العُليا **إلى الأعلى**
+   (فأرة + لمس معاً، الاستخدام الأساسي سبورة تفاعلية) فتنزلق صعوداً وتختفي كاشفةً ما **تحتها** —
+   لا سحباً جانبياً، فيتّضح أنّ الطبقة المكشوفة كانت أسفلها لا بجانبها. لكل طبقة سؤال «ما هذه
+   الطبقة؟» بثلاثة خيارات نصية: الصحيح يفتح قشر الطبقة الحالية لكشف التالية، والخطأ = تغذية الخطأ
+   المعتمدة (qFail: اختناق محرّك الصاروخ، وwrong.mp3 في واجهة بلا صاروخ). يكتمل السؤال بتسمية كل
+   الطبقات حتى الأعمق ثم qWin. layers[{image,label,question,options[3],answer}] من الأعلى إلى الأعمق. */
 function renderPeel(q, body, fb){
   const layers=q.layers||[];
   const N=layers.length;
   const rect=q.rect||{x:0,y:0,w:100,h:100};
-  const figCls=q.fit==='width' ? 'figwrap fw peelfig' : 'figwrap peelfig';
-  // القصاصة: حاوية محصورة في المستطيل (overflow) وصورة كاملة بداخلها مُحجَّمة ومُزاحة كي
-  // ينطبق جزؤها على موضع المستطيل تماماً مهما تغيّر حجم الصورة (نِسَب % صامدة).
-  const clipBox=`left:${rect.x}%;top:${rect.y}%;width:${rect.w}%;height:${rect.h}%`;
+  // القصاصة تملأ عمود التربة، والصورة بداخلها مُحجَّمة ومُزاحة كي ينطبق شريط rect منها على
+  // العمود تماماً مهما تغيّر الحجم (نِسَب % صامدة) — فتظهر طبقة التربة وحدها دون خلفية الصورة.
   const clipImg=`width:${10000/rect.w}%;height:${10000/rect.h}%;`+
                 `left:${-(rect.x/rect.w*100)}%;top:${-(rect.y/rect.h*100)}%`;
-  // القصاصات من الأعمق (z أقلّ) إلى الخارجية (z أعلى) — الخارجية تُقشَّر أوّلاً
+  // القصاصات من الأعمق (z أقلّ) إلى العُليا (z أعلى) — العُليا تُقشَّر أوّلاً (تنزلق صعوداً)
   let clips='';
   for(let i=N-1;i>=0;i--){
-    clips+=`<div class="peel-clip" data-i="${i}" style="${clipBox};z-index:${10+(N-i)}">`+
+    clips+=`<div class="peel-clip" data-i="${i}" style="z-index:${10+(N-i)}">`+
            `<img src="${layers[i].image}" alt="" style="${clipImg}"></div>`;
   }
   body.innerHTML=`<div class="peelq">`+
     `<div class="peel-progress">سمّيتَ <b class="peel-count">٠</b> من <b>${arNum(N)}</b> طبقات</div>`+
-    `<div class="dnd dnd-solo"><div class="stage stage-img"${q.bg?` style="background:${q.bg}"`:''}>`+
-      `<div class="${figCls}">`+
-        `<img class="peel-base" src="${layers[0].image}" alt="">`+
-        clips+
+    `<div class="dnd dnd-solo"><div class="stage stage-img peel-stage">`+
+      `<div class="peel-scene">`+
+        `<div class="peel-col">`+clips+`</div>`+
       `</div>`+
     `</div></div>`+
     `<div class="peel-legend"></div>`+
@@ -1201,7 +1198,7 @@ function renderPeel(q, body, fb){
     `<div class="peel-ask"></div>`+
     `<div class="actions"><button class="btn btn-reset">إعادة ↺</button></div>`+
     `</div>`;
-  const fig=body.querySelector('.peelfig'), legend=body.querySelector('.peel-legend');
+  const col=body.querySelector('.peel-col'), legend=body.querySelector('.peel-legend');
   const countEl=body.querySelector('.peel-count'), hint=body.querySelector('.peel-hint');
   const ask=body.querySelector('.peel-ask');
   let named=0, done=false;
@@ -1243,25 +1240,28 @@ function renderPeel(q, body, fb){
     }
   }
 
-  // تفعيل قشر القصاصة k: تُسحب جانباً (فأرة + لمس) وعند تجاوز مسافة القشر تنزلق وتختفي
+  // تفعيل قشر الطبقة k: تُسحب **إلى الأعلى** (فأرة + لمس)؛ الحركة صعوداً فقط (تُقاوَم للأسفل)،
+  // وعند تجاوز مسافة القشر تنزلق صعوداً وتختفي كاشفةً ما تحتها.
   function enablePeel(k){
-    const clip=fig.querySelector('.peel-clip[data-i="'+k+'"]'); if(!clip) return;
-    clip.classList.add('peelable'); hint.textContent='👉 اسحب الطبقة جانباً لتكشف ما تحتها';
+    const clip=col.querySelector('.peel-clip[data-i="'+k+'"]'); if(!clip) return;
+    clip.classList.add('peelable'); hint.textContent='👆 اسحب الطبقة العُليا إلى الأعلى لتكشف ما تحتها';
     let dragging=false, sx=0, sy=0, dx=0, dy=0;
     function start(cx,cy){ if(clip.dataset.peeled||done)return; dragging=true; sx=cx; sy=cy; dx=0; dy=0;
       clip.classList.add('grab');
       window.addEventListener('mousemove',mv); window.addEventListener('mouseup',up);
       window.addEventListener('touchmove',tmv,{passive:false}); window.addEventListener('touchend',up); }
     function moveTo(cx,cy){ if(!dragging)return; dx=cx-sx; dy=cy-sy;
-      clip.style.transform='translate('+dx+'px,'+dy+'px)';
-      clip.style.opacity=String(Math.max(.25,1-Math.hypot(dx,dy)/260)); }
+      const uy=Math.min(0,dy);                                  // صعوداً فقط (لا ينزل تحت مكانه)
+      const sh=Math.max(-36,Math.min(36,dx*0.22));              // ميلٌ أفقيّ طفيف للإحساس الطبيعي
+      clip.style.transform='translate('+sh+'px,'+uy+'px)';
+      clip.style.opacity=String(Math.max(.25,1+uy/240)); }
     function mv(e){ moveTo(e.clientX,e.clientY); }
     function tmv(e){ moveTo(e.touches[0].clientX,e.touches[0].clientY); e.preventDefault(); }
     function up(){ if(!dragging)return; dragging=false; clip.classList.remove('grab');
       window.removeEventListener('mousemove',mv); window.removeEventListener('mouseup',up);
       window.removeEventListener('touchmove',tmv); window.removeEventListener('touchend',up);
-      const dist=Math.hypot(dx,dy), THRESH=Math.max(42,clip.getBoundingClientRect().width*0.5);
-      if(dist>=THRESH) peelOff(clip,dx,dy,k);
+      const upDist=Math.max(0,-dy), THRESH=Math.max(38,clip.getBoundingClientRect().height*0.4);
+      if(upDist>=THRESH) peelOff(clip,k);
       else{ clip.style.transition='transform .25s ease, opacity .25s ease';
         clip.style.transform='translate(0,0)'; clip.style.opacity='1';
         setTimeout(()=>{ clip.style.transition=''; },260); }
@@ -1270,12 +1270,12 @@ function renderPeel(q, body, fb){
     clip.addEventListener('touchstart',e=>{ start(e.touches[0].clientX,e.touches[0].clientY); },{passive:true});
   }
 
-  // القشر: تنزلق القصاصة في اتجاه السحب ثمّ تُزال كاشفةً ما تحتها، فيظهر سؤال الطبقة المكشوفة
-  function peelOff(clip,dx,dy,k){
+  // القشر: تنزلق الطبقة **صعوداً** خارج الفريم ثمّ تُزال كاشفةً ما تحتها، فيظهر سؤال الطبقة المكشوفة
+  function peelOff(clip,k){
     clip.dataset.peeled='1'; clip.classList.remove('peelable'); hint.textContent='';
-    const len=Math.hypot(dx,dy)||1, m=520/len;
+    const H=clip.getBoundingClientRect().height||160;
     clip.style.transition='transform .5s ease-in, opacity .5s ease-in';
-    clip.style.transform='translate('+(dx*m)+'px,'+(dy*m)+'px) rotate('+(dx>=0?16:-16)+'deg)';
+    clip.style.transform='translateY('+(-(H+90))+'px)';
     clip.style.opacity='0';
     setTimeout(()=>{ clip.remove(); showQuestion(k+1); }, 470);
   }

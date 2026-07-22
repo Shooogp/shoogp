@@ -543,11 +543,22 @@
   .peel-progress{font-family:'Cairo';font-weight:700;color:#fff;font-size:1.15rem;
     text-shadow:0 1px 3px rgba(0,0,0,.34)}
   .peel-progress b{color:#ffe27a;font-size:1.4rem;margin-inline:4px}
-  .peelfig{touch-action:none;-webkit-user-select:none;user-select:none}
-  .peelfig img{pointer-events:none;-webkit-user-drag:none}
-  .peel-base{position:relative;z-index:0}
-  /* قصاصة قابلة للقشر: حاوية تقصّ (overflow) وصورة كاملة بداخلها مُزاحة لتنطبق على المستطيل */
-  .peel-clip{position:absolute;overflow:hidden;will-change:transform,opacity}
+  /* المشهد: فريم مربّع، سماء زرقاء في الأعلى، وعمود التربة ملتصق بقاع الفريم (محاذاة سفلية) */
+  .peelq .dnd-solo{width:100%}
+  .stage.peel-stage{display:block;width:100%;height:auto;aspect-ratio:1/1;overflow:hidden;
+    border:2px dashed rgba(150,190,220,.6);
+    background:linear-gradient(180deg,#a9dcf6 0%,#c7ebfb 42%,#e6f6fd 66%,#eef9fd 100%)}
+  .dnd-solo .stage-img.peel-stage{max-width:440px;margin-inline:auto}
+  .peel-scene{position:relative;width:100%;height:100%;touch-action:none;
+    -webkit-user-select:none;user-select:none}
+  .peel-scene img{pointer-events:none;-webkit-user-drag:none}
+  /* عمود التربة: ملتصق بالقاع وممتدّ بعرض الفريم، والطبقات مكدّسة داخله رأسياً في المكان نفسه */
+  .peel-col{position:absolute;left:0;bottom:0;width:100%;height:40%}
+  /* ظلّ خفيف عند سطح التربة (حدّها مع السماء) لإحساس العمق */
+  .peel-col::before{content:'';position:absolute;left:0;right:0;top:0;height:9px;z-index:100;
+    pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.18),transparent)}
+  /* قصاصة الطبقة: تملأ العمود، والصورة بداخلها مقصوصة على شريط التربة فتملأه (بلا خلفية الصورة) */
+  .peel-clip{position:absolute;inset:0;overflow:hidden;will-change:transform,opacity}
   .peel-clip img{position:absolute;max-width:none;display:block}
   /* القصاصة النشطة (القابلة للقشر الآن): مؤشّر مسك + حدّ متوهّج + نبض لطيف يدعو للسحب */
   .peel-clip.peelable{cursor:grab;pointer-events:auto;
