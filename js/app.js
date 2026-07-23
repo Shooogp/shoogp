@@ -296,7 +296,9 @@ function renderQuestions(ls){
 function renderDragDrop(q, body, fb){
   let dragged=null;
   // الوسط: صورة تُحجّم مباشرةً (تظهر كاملة لكل النِسَب) أو رسم SVG داخل غلاف
-  const media = q.svg ? `<div class="labelimg">${q.svg}</div>` : `<img class="labelimg" src="${q.image}" alt="">`;
+  // fit:"width" للرسوم/الصور العريضة (كخط الأعداد): تملأ العرض ويُشتقّ ارتفاعها من نسبتها
+  const wideCls = q.fit==='width' ? ' lw' : '';
+  const media = q.svg ? `<div class="labelimg${wideCls}">${q.svg}</div>` : `<img class="labelimg${wideCls}" src="${q.image}" alt="">`;
   // النقاط: تُوضع ديناميكياً حسب صندوق الصورة الحيّ (نِسَب الصورة محفوظة في data)
   const dots = q.targets.map((t,i)=>`<span class="dnd-dot" data-i="${i}" data-x="${t.dot.x}" data-y="${t.dot.y}"></span>`).join('');
   // الصناديق حول الصورة (نِسَب مئوية من منطقة النشاط)

@@ -143,9 +143,9 @@ window.DATA_FALLBACK = {
     "g4-math": { book:"الرياضيات — الصف الرابع", units:[
       { unit:"الأعداد ونظام العدّ", lessons:[
         { title:"قراءة وكتابة وتجزئة الأعداد", file:"g4m-1-1", open:true },
-        { title:"الترتيب والتقريب", file:"g4m-1-2", open:false },
-        { title:"الأعداد الموجبة والسالبة", file:"g4m-1-3", open:false },
-        { title:"الأعداد الفردية والزوجية", file:"g4m-1-4", open:false }
+        { title:"الترتيب والتقريب", file:"g4m-1-2", open:true },
+        { title:"الأعداد الموجبة والسالبة", file:"g4m-1-3", open:true },
+        { title:"الأعداد الفردية والزوجية", file:"g4m-1-4", open:true }
       ]},
       { unit:"الجمع والطرح", lessons:[
         { title:"الجمع (١)", file:"g4m-2-1", open:false },

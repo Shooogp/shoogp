@@ -82,6 +82,407 @@ window.QUESTIONS = {
 
   ],
 
+  /* ── الرياضيات/الرابع — الوحدة ١: الأعداد ونظام العدّ ──
+     الأهداف من: المصادر/الفصل الدراسي الاول/الصف الرابع/مادة الرياضيات/الرياضيات-الرابع-الأهداف.md */
+
+  // الرياضيات/الرابع — الدرس ١-١: قراءة وكتابة وتجزئة الأعداد
+  "g4m-1-1": [
+
+    // ④ صواب وخطأ — معرفة
+    {
+      type: "true-false",
+      objective: "4Nn3: يفهم ما يمثّله كل رقم في عدد مكوّن من أربعة أرقام، ويجزّئ العدد إلى آلاف ومئات وعشرات وآحاد",
+      level: "knowledge",
+      statement: "قيمةُ الرقمِ ٧ في العددِ ٢٧٥٣ هي ٧٠٠.",
+      answer: true
+    },
+
+    // ③ اختيار من متعدد — معرفة
+    {
+      type: "mcq",
+      objective: "4Nn1: يقرأ ويكتب الأعداد حتى ١٠٠٠٠",
+      level: "knowledge",
+      prompt: "ما العددُ الذي يُقرأُ: ثلاثةُ آلافٍ وخمسُمئةٍ وأربعون؟",
+      options: ["٣٥٤٠", "٣٥٠٤", "٣٤٥٠", "٥٣٤٠"],
+      answer: 0
+    },
+
+    // ② توصيل — معرفة
+    {
+      type: "matching",
+      objective: "4Nn3: يفهم ما يمثّله كل رقم في عدد مكوّن من أربعة أرقام، ويجزّئ العدد إلى آلاف ومئات وعشرات وآحاد",
+      level: "knowledge",
+      prompt: "صِلْ كلَّ عددٍ بتجزئتِهِ الصحيحةِ.",
+      pairs: [
+        { a: "٢٦٤٨", b: "٢٠٠٠ + ٦٠٠ + ٤٠ + ٨" },
+        { a: "٦٢٨٤", b: "٦٠٠٠ + ٢٠٠ + ٨٠ + ٤" },
+        { a: "٤٨٦٢", b: "٤٠٠٠ + ٨٠٠ + ٦٠ + ٢" },
+        { a: "٨٤٢٦", b: "٨٠٠٠ + ٤٠٠ + ٢٠ + ٦" }
+      ]
+    },
+
+    // ⑧ ملء الفراغ بالسحب — تطبيق
+    {
+      type: "fill-blank",
+      objective: "4Nn3: يفهم ما يمثّله كل رقم في عدد مكوّن من أربعة أرقام، ويجزّئ العدد إلى آلاف ومئات وعشرات وآحاد",
+      level: "application",
+      prompt: "أكملِ الجملةَ بسحبِ الرقمِ المناسبِ إلى كلِّ فراغٍ.",
+      text: "العددُ ٥٠٧٩ فيهِ {} آلافٍ و {} مئاتٍ و {} عشراتٍ و {} آحادٍ.",
+      answers: ["٥", "٠", "٧", "٩"],
+      distractors: ["٥٠", "٧٩"]
+    },
+
+    // ⑥ الترتيب التسلسلي — استدلال (العدّ التنازلي بالمئات عبر حدّ الآلاف)
+    {
+      type: "sequence",
+      objective: "4Nn2: يعدّ تصاعدياً وتنازلياً بالآحاد والعشرات والمئات والآلاف من أعداد مكوّنة من أربعة أرقام",
+      level: "reasoning",
+      prompt: "رتّبِ البطاقاتِ للعدِّ التنازليِّ بالمئاتِ ابتداءً منَ العددِ ٤١٥٠.",
+      steps: ["٤١٥٠", "٤٠٥٠", "٣٩٥٠", "٣٨٥٠"]
+    },
+
+    // ⑬ الخريطة الذهنية الناقصة (إثرائي) — تطبيق
+    {
+      type: "mindmap",
+      objective: "4Nn3: يفهم ما يمثّله كل رقم في عدد مكوّن من أربعة أرقام، ويجزّئ العدد إلى آلاف ومئات وعشرات وآحاد",
+      level: "application",
+      prompt: "أكملِ الخريطةَ الذهنيةَ بسحبِ الرقمِ المناسبِ إلى كلِّ خانةٍ منْ خاناتِ العددِ.",
+      center: "العددُ ٦٣٠٧",
+      branches: [
+        { label: "خانة الآلاف",  answer: "٦" },
+        { label: "خانة المئات",  answer: "٣" },
+        { label: "خانة العشرات", answer: "٠" },
+        { label: "خانة الآحاد",  answer: "٧" }
+      ],
+      distractors: ["٤", "٩"]
+    }
+
+  ],
+
+  // الرياضيات/الرابع — الدرس ١-٢: الترتيب والتقريب
+  "g4m-1-2": [
+
+    // ④ صواب وخطأ — معرفة (قاعدة التقريب)
+    {
+      type: "true-false",
+      objective: "4Nn5: يقرّب الأعداد المكوّنة من ثلاثة أو أربعة أرقام إلى أقرب ١٠ أو ١٠٠",
+      level: "knowledge",
+      statement: "عندَ التقريبِ إلى أقربِ عشرةٍ: إذا كانَ رقمُ الآحادِ ٥ أوْ أكثرَ نُقرِّبُ إلى العشرةِ الأعلى.",
+      answer: true
+    },
+
+    // ③ اختيار من متعدد — معرفة (خطوات المقارنة)
+    {
+      type: "mcq",
+      objective: "4Nn8: يقارن بين زوجين من الأعداد المكوّنة من ثلاثة أو أربعة أرقام، ويجد عدداً يقع بينهما",
+      level: "knowledge",
+      prompt: "عندَ مقارنةِ عددينِ مكوّنينِ منْ أربعةِ أرقامٍ، بأيِّ خانةٍ نبدأُ المقارنةَ؟",
+      options: ["خانة الآلاف", "خانة الآحاد", "خانة العشرات", "خانة المئات"],
+      answer: 0
+    },
+
+    // ② توصيل — معرفة (تقريب مباشر لأقرب عشرة)
+    {
+      type: "matching",
+      objective: "4Nn5: يقرّب الأعداد المكوّنة من ثلاثة أو أربعة أرقام إلى أقرب ١٠ أو ١٠٠",
+      level: "knowledge",
+      prompt: "صِلْ كلَّ عددٍ بتقريبِهِ إلى أقربِ عشرةٍ.",
+      pairs: [
+        { a: "٤٣", b: "٤٠" },
+        { a: "٥٧", b: "٦٠" },
+        { a: "٧٥", b: "٨٠" },
+        { a: "٨٩", b: "٩٠" }
+      ]
+    },
+
+    // ⑤ النقطة الساخنة — تطبيق (تحديد موضع عدد على خط الأعداد)
+    {
+      type: "hotspot",
+      objective: "4Nn6: يضع الأعداد بدقة على خط أعداد مقسّم بمضاعفات ١٠ أو ١٠٠",
+      level: "application",
+      prompt: "خطُّ الأعدادِ منْ ٣٠٠٠ إلى ٤٠٠٠ مقسّمٌ بالمئاتِ — اضغطْ على موضعِ العددِ ٣٧٠٠.",
+      bg: "#fdf9ee",
+      fit: "width",
+      svg: `<svg viewBox="0 0 900 210" width="900" height="210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="خط أعداد من ٣٠٠٠ إلى ٤٠٠٠">
+        <line x1="70" y1="120" x2="830" y2="120" stroke="#33415e" stroke-width="5" stroke-linecap="round"/>
+        <line x1="70" y1="98" x2="70" y2="142" stroke="#33415e" stroke-width="5" stroke-linecap="round"/>
+        <line x1="146" y1="106" x2="146" y2="134" stroke="#33415e" stroke-width="4"/>
+        <line x1="222" y1="106" x2="222" y2="134" stroke="#33415e" stroke-width="4"/>
+        <line x1="298" y1="106" x2="298" y2="134" stroke="#33415e" stroke-width="4"/>
+        <line x1="374" y1="106" x2="374" y2="134" stroke="#33415e" stroke-width="4"/>
+        <line x1="450" y1="98" x2="450" y2="142" stroke="#33415e" stroke-width="5" stroke-linecap="round"/>
+        <line x1="526" y1="106" x2="526" y2="134" stroke="#33415e" stroke-width="4"/>
+        <line x1="602" y1="106" x2="602" y2="134" stroke="#33415e" stroke-width="4"/>
+        <line x1="678" y1="106" x2="678" y2="134" stroke="#33415e" stroke-width="4"/>
+        <line x1="754" y1="106" x2="754" y2="134" stroke="#33415e" stroke-width="4"/>
+        <line x1="830" y1="98" x2="830" y2="142" stroke="#33415e" stroke-width="5" stroke-linecap="round"/>
+        <text x="70" y="180" font-size="30" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٣٠٠٠</text>
+        <text x="450" y="180" font-size="30" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٣٥٠٠</text>
+        <text x="830" y="180" font-size="30" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٤٠٠٠</text>
+      </svg>`,
+      spot: { x: 67, y: 57, r: 5 }
+    },
+
+    // ⑦ التصنيف في مجموعات — استدلال (تحليل التقريب لأقرب مئة)
+    {
+      type: "classify",
+      objective: "4Nn5: يقرّب الأعداد المكوّنة من ثلاثة أو أربعة أرقام إلى أقرب ١٠ أو ١٠٠",
+      level: "reasoning",
+      prompt: "صنّفِ الأعدادَ حسبَ تقريبِها إلى أقربِ مئةٍ.",
+      groups: [
+        { name: "تُقرَّبُ إلى ٦٠٠", items: ["٥٧٤", "٦٤٩", "٥٥١"] },
+        { name: "تُقرَّبُ إلى ٧٠٠", items: ["٦٥٣", "٧٤٩", "٦٨٢"] }
+      ]
+    },
+
+    // ⑫ اكتشف الخطأ (إثرائي) — استدلال
+    {
+      type: "find-error",
+      objective: "4Nn6: يضع الأعداد بدقة على خط أعداد مقسّم بمضاعفات ١٠ أو ١٠٠",
+      level: "reasoning",
+      prompt: "خطُّ الأعدادِ منْ ٠ إلى ١٠٠٠ فيهِ عددٌ واحدٌ في غيرِ موضعِهِ — اضغطْ عليهِ.",
+      bg: "#fdf9ee",
+      fit: "width",
+      svg: `<svg viewBox="0 0 900 210" width="900" height="210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="خط أعداد من صفر إلى ألف فيه عدد خاطئ">
+        <line x1="70" y1="110" x2="830" y2="110" stroke="#33415e" stroke-width="5" stroke-linecap="round"/>
+        <line x1="70" y1="88" x2="70" y2="132" stroke="#33415e" stroke-width="5" stroke-linecap="round"/>
+        <line x1="146" y1="96" x2="146" y2="124" stroke="#33415e" stroke-width="4"/>
+        <line x1="222" y1="96" x2="222" y2="124" stroke="#33415e" stroke-width="4"/>
+        <line x1="298" y1="96" x2="298" y2="124" stroke="#33415e" stroke-width="4"/>
+        <line x1="374" y1="96" x2="374" y2="124" stroke="#33415e" stroke-width="4"/>
+        <line x1="450" y1="96" x2="450" y2="124" stroke="#33415e" stroke-width="4"/>
+        <line x1="526" y1="96" x2="526" y2="124" stroke="#33415e" stroke-width="4"/>
+        <line x1="602" y1="96" x2="602" y2="124" stroke="#33415e" stroke-width="4"/>
+        <line x1="678" y1="96" x2="678" y2="124" stroke="#33415e" stroke-width="4"/>
+        <line x1="754" y1="96" x2="754" y2="124" stroke="#33415e" stroke-width="4"/>
+        <line x1="830" y1="88" x2="830" y2="132" stroke="#33415e" stroke-width="5" stroke-linecap="round"/>
+        <text x="70"  y="165" font-size="24" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٠</text>
+        <text x="146" y="165" font-size="24" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">١٠٠</text>
+        <text x="222" y="165" font-size="24" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٢٠٠</text>
+        <text x="298" y="165" font-size="24" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٣٠٠</text>
+        <text x="374" y="165" font-size="24" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٤٠٠</text>
+        <text x="450" y="165" font-size="24" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٥٠٠</text>
+        <text x="526" y="165" font-size="24" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٦٥٠</text>
+        <text x="602" y="165" font-size="24" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٧٠٠</text>
+        <text x="678" y="165" font-size="24" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٨٠٠</text>
+        <text x="754" y="165" font-size="24" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٩٠٠</text>
+        <text x="830" y="165" font-size="24" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">١٠٠٠</text>
+      </svg>`,
+      spot: { x: 58.4, y: 76, r: 6 }
+    }
+
+  ],
+
+  // الرياضيات/الرابع — الدرس ١-٣: الأعداد الموجبة والسالبة
+  "g4m-1-3": [
+
+    // ④ صواب وخطأ — معرفة
+    {
+      type: "true-false",
+      objective: "4Nn9: يستخدم الأعداد السالبة في سياقات عملية مثل درجات الحرارة",
+      level: "knowledge",
+      statement: "الأعدادُ السالبةُ أصغرُ منَ الصفرِ.",
+      answer: true
+    },
+
+    // ③ اختيار من متعدد — معرفة
+    {
+      type: "mcq",
+      objective: "4Nn9: يستخدم الأعداد السالبة في سياقات عملية مثل درجات الحرارة",
+      level: "knowledge",
+      prompt: "درجةُ الحرارةِ خمسُ درجاتٍ تحتَ الصفرِ — كيفَ نكتبُها؟",
+      options: ["٥-", "٥", "٥٠", "٠٫٥"],
+      answer: 0
+    },
+
+    // ② توصيل — معرفة
+    {
+      type: "matching",
+      objective: "4Nn9: يستخدم الأعداد السالبة في سياقات عملية مثل درجات الحرارة",
+      level: "knowledge",
+      prompt: "صِلْ كلَّ وصفٍ لدرجةِ الحرارةِ بالعددِ المناسبِ.",
+      pairs: [
+        { a: "ثلاثُ درجاتٍ فوقَ الصفرِ",  b: "٣" },
+        { a: "أربعُ درجاتٍ تحتَ الصفرِ",  b: "٤-" },
+        { a: "درجةُ التجمُّدِ (الصفرُ)",   b: "٠" },
+        { a: "درجةٌ واحدةٌ تحتَ الصفرِ",  b: "١-" }
+      ]
+    },
+
+    // ① سحب وإفلات — تطبيق (وضع أعداد على خط الأعداد الممتد تحت الصفر)
+    {
+      type: "drag-drop",
+      objective: "4Nn9: يستخدم الأعداد السالبة في سياقات عملية مثل درجات الحرارة",
+      level: "application",
+      prompt: "اسحبْ كلَّ عددٍ إلى موضعِهِ الصحيحِ على خطِّ الأعدادِ.",
+      bg: "#fdf9ee",
+      fit: "width",
+      svg: `<svg viewBox="0 0 900 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="خط أعداد من سالب خمسة إلى خمسة">
+        <line x1="70" y1="110" x2="830" y2="110" stroke="#33415e" stroke-width="5" stroke-linecap="round"/>
+        <line x1="70" y1="88" x2="70" y2="132" stroke="#33415e" stroke-width="5" stroke-linecap="round"/>
+        <line x1="222" y1="96" x2="222" y2="124" stroke="#33415e" stroke-width="4"/>
+        <line x1="298" y1="96" x2="298" y2="124" stroke="#33415e" stroke-width="4"/>
+        <line x1="450" y1="88" x2="450" y2="132" stroke="#33415e" stroke-width="5" stroke-linecap="round"/>
+        <line x1="526" y1="96" x2="526" y2="124" stroke="#33415e" stroke-width="4"/>
+        <line x1="602" y1="96" x2="602" y2="124" stroke="#33415e" stroke-width="4"/>
+        <line x1="754" y1="96" x2="754" y2="124" stroke="#33415e" stroke-width="4"/>
+        <line x1="830" y1="88" x2="830" y2="132" stroke="#33415e" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="146" cy="110" r="11" fill="#fff" stroke="#d97a2b" stroke-width="4"/>
+        <circle cx="374" cy="110" r="11" fill="#fff" stroke="#d97a2b" stroke-width="4"/>
+        <circle cx="678" cy="110" r="11" fill="#fff" stroke="#d97a2b" stroke-width="4"/>
+        <text x="70"  y="165" font-size="28" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">-٥</text>
+        <text x="222" y="165" font-size="28" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">-٣</text>
+        <text x="298" y="165" font-size="28" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">-٢</text>
+        <text x="450" y="165" font-size="28" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٠</text>
+        <text x="526" y="165" font-size="28" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">١</text>
+        <text x="602" y="165" font-size="28" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٢</text>
+        <text x="754" y="165" font-size="28" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٤</text>
+        <text x="830" y="165" font-size="28" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٥</text>
+      </svg>`,
+      targets: [
+        { answer: "٤-", box:{x:16,y:10}, dot:{x:16.2,y:52.4} },
+        { answer: "١-", box:{x:50,y:10}, dot:{x:41.6,y:52.4} },
+        { answer: "٣",  box:{x:84,y:10}, dot:{x:75.3,y:52.4} }
+      ]
+    },
+
+    // ⑥ الترتيب التسلسلي — استدلال (نمط عدّ تنازلي يعبر الصفر)
+    {
+      type: "sequence",
+      objective: "4Nn10: يتعرّف الأنماط العددية المتكوّنة بالعدّ تصاعدياً أو تنازلياً بخطوات ثابتة ويمدّها، متجاوزاً الصفر عند العدّ التنازلي",
+      level: "reasoning",
+      prompt: "رتّبِ البطاقاتِ لإكمالِ نمطِ العدِّ التنازليِّ باثنينِ اثنينِ مروراً بالصفرِ.",
+      steps: ["٤", "٢", "٠", "٢-", "٤-"]
+    },
+
+    // ⑨ الاستبعاد (إثرائي) — استدلال
+    {
+      type: "exclude",
+      objective: "4Nn9: يستخدم الأعداد السالبة في سياقات عملية مثل درجات الحرارة",
+      level: "reasoning",
+      prompt: "أيُّ الأعدادِ لا ينتمي إلى المجموعةِ؟",
+      options: ["٣-", "٧-", "١-", "٥"],
+      answer: 3,
+      reason: "٥ عددٌ موجبٌ فوقَ الصفرِ، والبقيّةُ أعدادٌ سالبةٌ تحتَ الصفرِ"
+    }
+
+  ],
+
+  // الرياضيات/الرابع — الدرس ١-٤: الأعداد الفردية والزوجية
+  "g4m-1-4": [
+
+    // ④ صواب وخطأ — معرفة
+    {
+      type: "true-false",
+      objective: "4Nn11: يميّز الأعداد الفردية والزوجية",
+      level: "knowledge",
+      statement: "العددُ ٣٦ عددٌ زوجيٌّ لأنَّ رقمَ آحادِهِ ٦.",
+      answer: true
+    },
+
+    // ③ اختيار من متعدد — معرفة
+    {
+      type: "mcq",
+      objective: "4Nn11: يميّز الأعداد الفردية والزوجية",
+      level: "knowledge",
+      prompt: "بأيِّ الأرقامِ تنتهي الأعدادُ الفرديةُ؟",
+      options: ["١ أو ٣ أو ٥ أو ٧ أو ٩", "٠ أو ٢ أو ٤ أو ٦ أو ٨", "٠ أو ٥ فقط", "٢ أو ٣ فقط"],
+      answer: 0
+    },
+
+    // ⑤ النقطة الساخنة — معرفة (تمييز العدد الزوجي)
+    {
+      type: "hotspot",
+      objective: "4Nn11: يميّز الأعداد الفردية والزوجية",
+      level: "knowledge",
+      prompt: "اضغطْ على العددِ الزوجيِّ.",
+      bg: "#fdf9ee",
+      fit: "width",
+      svg: `<svg viewBox="0 0 800 220" width="800" height="220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="أربع بطاقات أعداد">
+        <rect x="50"  y="55" width="150" height="110" rx="16" fill="#eef4fb" stroke="#33415e" stroke-width="3"/>
+        <rect x="230" y="55" width="150" height="110" rx="16" fill="#eef4fb" stroke="#33415e" stroke-width="3"/>
+        <rect x="410" y="55" width="150" height="110" rx="16" fill="#eef4fb" stroke="#33415e" stroke-width="3"/>
+        <rect x="590" y="55" width="150" height="110" rx="16" fill="#eef4fb" stroke="#33415e" stroke-width="3"/>
+        <text x="125" y="130" font-size="56" font-weight="800" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٤٧</text>
+        <text x="305" y="130" font-size="56" font-weight="800" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٣٩</text>
+        <text x="485" y="130" font-size="56" font-weight="800" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٦٢</text>
+        <text x="665" y="130" font-size="56" font-weight="800" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٨٥</text>
+      </svg>`,
+      spot: { x: 60.6, y: 50, r: 10 }
+    },
+
+    // ⑧ ملء الفراغ بالسحب — تطبيق (تعميمات مجموع الفردي والزوجي)
+    {
+      type: "fill-blank",
+      objective: "4Nn12: يصوغ عبارات عامة عن مجموع الأعداد الفردية والزوجية والفرق بينها",
+      level: "application",
+      prompt: "أكملِ القاعدتينِ بسحبِ الكلمةِ المناسبةِ.",
+      text: "مجموعُ عددينِ فرديينِ عددٌ {}، ومجموعُ عددٍ زوجيٍّ وعددٍ فرديٍّ عددٌ {}.",
+      answers: ["زوجي", "فردي"],
+      distractors: ["صفر"]
+    },
+
+    // ⑦ التصنيف في مجموعات — استدلال
+    {
+      type: "classify",
+      objective: "4Nn11: يميّز الأعداد الفردية والزوجية",
+      level: "reasoning",
+      prompt: "صنّفِ الأعدادَ إلى فرديةٍ وزوجيةٍ.",
+      groups: [
+        { name: "أعدادٌ فردية", items: ["١٥٧", "٤٦٣", "٢٠٩"] },
+        { name: "أعدادٌ زوجية", items: ["٣٤٢", "٦٧٨", "٥٩٠"] }
+      ]
+    },
+
+    // ⑩ التلوين بالتعليمات (إثرائي) — تطبيق
+    {
+      type: "color",
+      objective: "4Nn11: يميّز الأعداد الفردية والزوجية",
+      level: "application",
+      prompt: "لوِّنِ الأعدادَ الزوجيةَ بالأخضرِ والأعدادَ الفرديةَ بالبرتقاليِّ: اخترْ لوناً ثمَّ اضغطِ العددَ.",
+      bg: "#fdf9ee",
+      palette: [
+        { name: "أخضر",    color: "#3e9b4f" },
+        { name: "برتقالي", color: "#e8862e" }
+      ],
+      parts: [
+        { name: "١٢", color: "#3e9b4f" },
+        { name: "٧",  color: "#e8862e" },
+        { name: "٢٠", color: "#3e9b4f" },
+        { name: "٩",  color: "#e8862e" },
+        { name: "١٦", color: "#3e9b4f" },
+        { name: "٢٥", color: "#e8862e" }
+      ],
+      svg: `<svg viewBox="0 0 560 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ست دوائر أعداد للتلوين">
+        <g class="cpart" data-name="١٢" id="part-n12">
+          <circle cx="110" cy="95" r="52"/>
+          <text x="110" y="112" font-size="44" font-weight="800" text-anchor="middle" fill="#243040" stroke="none" font-family="Tajawal, Dubai, Cairo, sans-serif">١٢</text>
+        </g>
+        <g class="cpart" data-name="٧" id="part-n7">
+          <circle cx="280" cy="95" r="52"/>
+          <text x="280" y="112" font-size="44" font-weight="800" text-anchor="middle" fill="#243040" stroke="none" font-family="Tajawal, Dubai, Cairo, sans-serif">٧</text>
+        </g>
+        <g class="cpart" data-name="٢٠" id="part-n20">
+          <circle cx="450" cy="95" r="52"/>
+          <text x="450" y="112" font-size="44" font-weight="800" text-anchor="middle" fill="#243040" stroke="none" font-family="Tajawal, Dubai, Cairo, sans-serif">٢٠</text>
+        </g>
+        <g class="cpart" data-name="٩" id="part-n9">
+          <circle cx="110" cy="245" r="52"/>
+          <text x="110" y="262" font-size="44" font-weight="800" text-anchor="middle" fill="#243040" stroke="none" font-family="Tajawal, Dubai, Cairo, sans-serif">٩</text>
+        </g>
+        <g class="cpart" data-name="١٦" id="part-n16">
+          <circle cx="280" cy="245" r="52"/>
+          <text x="280" y="262" font-size="44" font-weight="800" text-anchor="middle" fill="#243040" stroke="none" font-family="Tajawal, Dubai, Cairo, sans-serif">١٦</text>
+        </g>
+        <g class="cpart" data-name="٢٥" id="part-n25">
+          <circle cx="450" cy="245" r="52"/>
+          <text x="450" y="262" font-size="44" font-weight="800" text-anchor="middle" fill="#243040" stroke="none" font-family="Tajawal, Dubai, Cairo, sans-serif">٢٥</text>
+        </g>
+      </svg>`
+    }
+
+  ],
+
   // العلوم/الرابع — الدرس الأول: الهياكل العظمية (ص ٢٢–٢٣)
   "g4s-1-1": [
 
