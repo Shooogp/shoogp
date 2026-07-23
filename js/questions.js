@@ -1062,46 +1062,21 @@ window.QUESTIONS = {
       distractors: ["حَجَرٌ"]
     },
 
-    // ① سحب وإفلات — 1Bp4 تطبيق (تسمية أجزاء النبتة على مخطّط SVG)
+    // ① سحب وإفلات — 1Bp4 تطبيق (تسمية أجزاء النبتة على صورة نبتة-اجزاء.png)
     {
       type: "drag-drop",
       objective: "1Bp4: يسمّي الأجزاء الرئيسية في النباتات",
       level: "application",
       prompt: "اسحَبِ اسمَ كُلِّ جُزءٍ إلى مَكانِهِ في النَّبتَةِ.",
       bg: "#eef7ff",
+      image: "images/نبتة-اجزاء.png",
       targets: [
-        { answer: "الزَّهرَةُ", box:{x:82,y:6},  dot:{x:50,y:14.5} },
-        { answer: "الثَّمَرَةُ", box:{x:86,y:38}, dot:{x:71.3,y:43.8} },
-        { answer: "الوَرَقَةُ", box:{x:12,y:52}, dot:{x:20,y:55.5} },
-        { answer: "الساقُ",    box:{x:14,y:70}, dot:{x:50,y:68} },
-        { answer: "الجُذورُ",  box:{x:82,y:86}, dot:{x:50,y:86} }
-      ],
-      svg: `<svg viewBox="0 0 300 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="مخطّط نبتة">
-        <rect x="0" y="340" width="300" height="130" fill="#c8935e"/>
-        <rect x="0" y="340" width="300" height="10" fill="#a9743f"/>
-        <g fill="none" stroke="#7c4a22" stroke-width="5" stroke-linecap="round">
-          <path d="M150 346 L150 452"/>
-          <path d="M150 372 Q120 400 108 444"/>
-          <path d="M150 372 Q180 400 192 444"/>
-          <path d="M150 404 Q134 428 128 456"/>
-          <path d="M150 404 Q166 428 172 456"/>
-        </g>
-        <line x1="150" y1="348" x2="150" y2="92" stroke="#4e9d42" stroke-width="9" stroke-linecap="round"/>
-        <path d="M150 262 Q108 258 80 260" fill="none" stroke="#4e9d42" stroke-width="5"/>
-        <path d="M80 260 Q52 242 40 262 Q52 282 80 260 Z" fill="#63c154" stroke="#3c8a34" stroke-width="3"/>
-        <path d="M80 260 L44 261" stroke="#3c8a34" stroke-width="2" fill="none"/>
-        <path d="M150 210 Q186 204 208 206" fill="none" stroke="#4e9d42" stroke-width="5"/>
-        <circle cx="214" cy="206" r="25" fill="#e64632" stroke="#b7301f" stroke-width="3"/>
-        <path d="M214 183 l0 -11 M214 183 l-7 -9 M214 183 l7 -9" stroke="#3c8a34" stroke-width="3" fill="none" stroke-linecap="round"/>
-        <g fill="#b98ede" stroke="#7d55b0" stroke-width="2.5">
-          <ellipse cx="150" cy="46" rx="13" ry="19"/>
-          <ellipse cx="180" cy="66" rx="19" ry="13"/>
-          <ellipse cx="120" cy="66" rx="19" ry="13"/>
-          <ellipse cx="169" cy="90" rx="13" ry="18" transform="rotate(34 169 90)"/>
-          <ellipse cx="131" cy="90" rx="13" ry="18" transform="rotate(-34 131 90)"/>
-        </g>
-        <circle cx="150" cy="68" r="13" fill="#f2c230" stroke="#c99a1e" stroke-width="2.5"/>
-      </svg>`
+        { answer: "الزَّهرَةُ", box:{x:80,y:7},  dot:{x:47,y:12} },
+        { answer: "الثَّمَرَةُ", box:{x:89,y:50}, dot:{x:71,y:49} },
+        { answer: "الوَرَقَةُ", box:{x:11,y:36}, dot:{x:22,y:42} },
+        { answer: "الساقُ",    box:{x:12,y:70}, dot:{x:47,y:62} },
+        { answer: "الجُذورُ",  box:{x:82,y:90}, dot:{x:48,y:84} }
+      ]
     },
 
     // ⑥ الترتيب التسلسلي — 1Bp4 استدلال (ترتيب الأجزاء من الأسفل إلى الأعلى)
