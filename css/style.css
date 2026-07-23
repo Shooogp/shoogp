@@ -232,16 +232,6 @@
   .csvg .cpart.cwrong{stroke:#c94a4a!important;stroke-width:5;stroke-dasharray:7 4}
   /* بعد اختيار دلو: مؤشّر فرشاة طلاء فوق منطقة التلوين (حاسوب) */
   .csvg.brushing,.csvg.brushing .cpart{cursor:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><g stroke='black' stroke-width='1.5' stroke-linejoin='round'><rect x='18' y='3' width='6' height='16' rx='2' transform='rotate(45 21 11)' fill='saddlebrown'/><path d='M10 14 l7 7 l-3 3 l-8 -2 z' fill='gold'/><path d='M5 22 l3 3 l-5 1 z' fill='dimgray'/></g></svg>") 4 28,crosshair}
-  /* التلوين — الوضع الثاني: طبقات صور (أساس منزوع التشبع + طبقة ملوّنة لكل منطقة) */
-  .clayers{position:relative;width:100%;max-width:760px;margin-inline:auto;line-height:0;border-radius:14px;overflow:hidden;cursor:pointer;touch-action:manipulation}
-  .clayers .clayer-base{display:block;width:100%;height:auto;filter:saturate(0);-webkit-user-select:none;user-select:none}
-  .clayers .clayer,.clayers .cwash{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none}
-  .clayers .clayer{opacity:0;transition:opacity .55s ease}
-  .clayers .clayer.on{opacity:1}
-  .clayers .cwash{opacity:0;transition:opacity .3s ease;
-    -webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
-  .clayers .cwash.on{opacity:.5}
-  .clayers.brushing{cursor:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><g stroke='black' stroke-width='1.5' stroke-linejoin='round'><rect x='18' y='3' width='6' height='16' rx='2' transform='rotate(45 21 11)' fill='saddlebrown'/><path d='M10 14 l7 7 l-3 3 l-8 -2 z' fill='gold'/><path d='M5 22 l3 3 l-5 1 z' fill='dimgray'/></g></svg>") 4 28,crosshair}
 
   /* ⑥ الترتيب التسلسلي: بطاقات كبيرة تُرتَّب بالسحب لتغيير أماكنها */
   .seq{width:100%;max-width:620px;margin-inline:auto}

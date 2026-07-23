@@ -2189,26 +2189,74 @@ window.QUESTIONS = {
       ]
     },
 
-    // ⑩ التلوين بالتعليمات (إثرائي) — 2Cp1 معرفة (تلوين مشهد التربة — وضع طبقات الصور)
+    // ⑩ التلوين بالتعليمات (إثرائي) — 2Cp1 معرفة (تلوين مشهد التربة)
     {
       type: "color",
       objective: "2Cp1: يتعرّف تأثير الصخور في تكوّن التربة وأهمية الحصى فيها",
       level: "knowledge",
-      prompt: "لَوِّنْ مَشهَدَ التُّربَةِ: اختَرْ لَوناً منَ اللَّوحَةِ ثُمَّ اضغَطِ المِنطَقَةَ.",
+      prompt: "لَوِّنْ مَشهَدَ التُّربَةِ: اختَرْ لَوناً منَ اللَّوحَةِ ثُمَّ اضغَطِ الجُزءَ.",
       bg: "#eef7ff",
-      base: "images/مشهد-التربة-اساس.png",
       palette: [
-        { name: "أصفر", color: "#f2c230" },
         { name: "أخضر", color: "#3e9b4f" },
         { name: "بنّي", color: "#8a5a2b" },
         { name: "رمادي", color: "#9aa7b0" }
       ],
       parts: [
-        { name: "الشمس",  color: "#f2c230", layer: "images/مشهد-التربة-شمس.png" },
-        { name: "العشب",  color: "#3e9b4f", layer: "images/مشهد-التربة-عشب.png" },
-        { name: "التربة", color: "#8a5a2b", layer: "images/مشهد-التربة-تربة.png" },
-        { name: "الحصى",  color: "#9aa7b0", layer: "images/مشهد-التربة-حصى.png" }
-      ]
+        { name: "العشب",  color: "#3e9b4f" },
+        { name: "التربة", color: "#8a5a2b" },
+        { name: "الحصى",  color: "#9aa7b0" }
+      ],
+      svg: `<svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="مشهد تربة للتلوين">
+        <rect x="0" y="0" width="300" height="60" fill="#cfeafb"/>
+        <!-- شمس بأشعة (زينة ثابتة) -->
+        <g pointer-events="none">
+          <g stroke="#f4c531" stroke-width="3" stroke-linecap="round">
+            <line x1="268" y1="6" x2="268" y2="14"/>
+            <line x1="290" y1="28" x2="298" y2="28"/>
+            <line x1="238" y1="28" x2="246" y2="28"/>
+            <line x1="251" y1="11" x2="256" y2="16"/>
+            <line x1="285" y1="11" x2="280" y2="16"/>
+            <line x1="251" y1="45" x2="256" y2="40"/>
+            <line x1="285" y1="45" x2="280" y2="40"/>
+          </g>
+          <circle cx="268" cy="28" r="14" fill="#f7d64a" stroke="#e8b42a" stroke-width="2"/>
+        </g>
+        <!-- غيمتان بحواف ناعمة منحنية (زينة ثابتة) -->
+        <g pointer-events="none" fill="#ffffff" stroke="#dfeaf2" stroke-width="1.5" stroke-linejoin="round">
+          <path d="M36 37 Q33 27 44 26 Q47 17 58 21 Q67 14 75 23 Q87 23 85 34 Q91 41 78 41 L46 41 Q31 41 36 37 Z"/>
+          <path d="M150 31 Q147 22 157 22 Q161 13 172 17 Q182 12 185 24 Q196 25 191 34 L159 35 Q145 35 150 31 Z"/>
+        </g>
+        <!-- العشب: حافة علوية متموّجة (منطقة تلوين) -->
+        <g class="cpart" data-name="العشب" id="part-grass">
+          <path d="M0 74 L0 55 Q19 47 38 53 Q57 59 76 51 Q95 45 114 53 Q133 60 152 51 Q171 44 190 53 Q209 60 228 51 Q247 44 266 53 Q283 59 300 52 L300 74 Z"/>
+        </g>
+        <!-- التربة (منطقة تلوين) -->
+        <g class="cpart" data-name="التربة" id="part-soil"><rect x="0" y="74" width="300" height="126"/></g>
+        <!-- تفاصيل صغيرة في التربة (زينة ثابتة لا تؤثّر في التلوين) -->
+        <g pointer-events="none">
+          <g fill="#a9743f" opacity="0.5">
+            <ellipse cx="30" cy="100" rx="3" ry="2"/>
+            <ellipse cx="96" cy="128" rx="2.6" ry="1.8"/>
+            <ellipse cx="190" cy="122" rx="3" ry="2"/>
+            <ellipse cx="272" cy="140" rx="2.6" ry="2"/>
+            <ellipse cx="45" cy="166" rx="3" ry="2"/>
+            <ellipse cx="168" cy="186" rx="2.6" ry="1.8"/>
+            <ellipse cx="206" cy="158" rx="2.4" ry="1.8"/>
+          </g>
+          <g fill="none" stroke="#7c4a22" stroke-width="1.6" stroke-linecap="round" opacity="0.4">
+            <path d="M80 98 q6 8 2 17"/>
+            <path d="M214 132 q-5 7 0 15"/>
+          </g>
+        </g>
+        <!-- الحصى (منطقة تلوين) -->
+        <g class="cpart" data-name="الحصى" id="part-pebbles">
+          <circle cx="60" cy="118" r="11"/>
+          <circle cx="150" cy="150" r="13"/>
+          <circle cx="232" cy="112" r="10"/>
+          <circle cx="110" cy="176" r="12"/>
+          <circle cx="248" cy="170" r="11"/>
+        </g>
+      </svg>`
     }
 
   ],
