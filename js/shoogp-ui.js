@@ -29,11 +29,11 @@ function gateOn(){
    إن عجز l حتى عند +30% → حاوية CSS مرنة (qflex) بروح العائلة، بلا تمرير.
    FRAME_SIZES: هندسة كل مقاس (الصورة، النسبة، إزاحات الفتحة المتحفظة). */
 var FRAME_SIZES={
-  s:{img:'images/ui/frame-moon-s.png', ar:'1859 / 788',
+  s:{img:'../images/ui/frame-moon-s.png', ar:'1859 / 788',
      win:{top:'13%',   left:'8.5%',  right:'9%',    bottom:'14.5%'}},
-  m:{img:'images/ui/frame-moon-m.png', ar:'1445 / 1055',
+  m:{img:'../images/ui/frame-moon-m.png', ar:'1445 / 1055',
      win:{top:'10%',   left:'9.5%',  right:'9.5%',  bottom:'11%'}},
-  l:{img:'images/ui/frame-moon-l.png', ar:'1246 / 1222',
+  l:{img:'../images/ui/frame-moon-l.png', ar:'1246 / 1222',
      win:{top:'10.5%', left:'12.5%', right:'11.5%', bottom:'11.5%'}}
 };
 var FRAME_ORDER=['s','m','l'];

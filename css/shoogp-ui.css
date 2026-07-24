@@ -13,7 +13,7 @@
 /* ① زر تحقّق: نجمة خضراء + النص الحالي فوقها (٦٥٪ — الارتفاع فقط والعرض تلقائي) */
 .shoogp-ui .actions .btn-check,
 .shoogp-ui .actions .btn-check:hover{
-  background:url('images/ui/btn-check.png') no-repeat center / contain !important;
+  background:url('../images/ui/btn-check.png') no-repeat center / contain !important;
   border:none !important; box-shadow:none !important; border-radius:0;
   height:84px; aspect-ratio:842/816; width:auto; padding:9px 0 0 !important; min-width:0;
   color:#fff; font-weight:800; font-size:.96rem;
@@ -30,7 +30,7 @@
 /* ② زر إعادة: كوكب أزرق بسهم دوران + النص الحالي فوقه (٦٥٪) */
 .shoogp-ui .actions .btn-reset,
 .shoogp-ui .actions .btn-reset:hover{
-  background:url('images/ui/btn-retry.png') no-repeat center / contain !important;
+  background:url('../images/ui/btn-retry.png') no-repeat center / contain !important;
   border:none !important; box-shadow:none !important; border-radius:0;
   height:74px; aspect-ratio:1056/785; width:auto; padding:0 22px 0 0 !important; min-width:0;
   color:#fff; font-weight:800; font-size:.94rem;
@@ -81,7 +81,7 @@
 .shoogp-ui .qcard .qnum{
   display:inline-flex; align-items:center; justify-content:center;
   height:46px; aspect-ratio:2096/534; width:auto; padding:0;
-  background:url('images/ui/badge-qnum.png') no-repeat center / contain;
+  background:url('../images/ui/badge-qnum.png') no-repeat center / contain;
   color:#ffe27a; font-weight:800; font-size:1.14rem;
   text-shadow:0 2px 3px rgba(0,40,70,.75);
   filter:drop-shadow(0 1px 2px rgba(0,0,0,.22));
@@ -94,7 +94,7 @@
   display:inline-flex; align-items:center; justify-content:center;
   height:54px; aspect-ratio:1657/511; width:auto; padding:0 8px 0 36px;
   white-space:nowrap;
-  background:url('images/ui/badge-qtype.png') no-repeat center / contain;
+  background:url('../images/ui/badge-qtype.png') no-repeat center / contain;
   color:#fff; font-weight:800; font-size:.9rem;
   text-shadow:0 2px 3px rgba(0,40,70,.75);
   filter:drop-shadow(0 1px 2px rgba(0,0,0,.22));
@@ -105,7 +105,7 @@
 .shoogp-ui .qprogress{
   display:inline-flex; align-items:center; justify-content:center;
   height:42px; aspect-ratio:2096/534; width:auto; padding:0;
-  background:url('images/ui/badge-qnum.png') no-repeat center / contain;
+  background:url('../images/ui/badge-qnum.png') no-repeat center / contain;
   color:#fff; font-weight:800; font-size:.98rem;
   text-shadow:0 2px 3px rgba(0,40,70,.75);
   filter:drop-shadow(0 1px 2px rgba(0,0,0,.22));
@@ -207,7 +207,7 @@
   inset:0; background:none;
   border-style:solid; border-color:transparent;
   border-width:100px 110px 115px 110px;
-  border-image:url('images/ui/frame-moon-l.png') 218 240 250 240 stretch;
+  border-image:url('../images/ui/frame-moon-l.png') 218 240 250 240 stretch;
 }
 .qframe.qflex .qfill{display:block; inset:26px !important; border-radius:26px}
 .qframe.qflex .qwin{
