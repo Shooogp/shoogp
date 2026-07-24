@@ -1,0 +1,433 @@
+/* ═══════════════════════════════════════════════════════════════════
+   نظام واجهة شوجب الفضائي (مهارة shoogp-ui) — أنماط النظام
+   المرحلة الأولى: مُبوَّبة تحت صنف .shoogp-ui (على #questionList) فيُطبَّق
+   النظام على الدرس النموذج فقط. قواعد العناصر المشتركة (الأزرار/الشارات/
+   .qcard) مسبوقة بـ.shoogp-ui كي لا تمسّ بقية الدروس؛ وقواعد .qframe/.qfill/
+   .qmoon/.qwin بنيوياً خاصة بالدرس (السكربت لا يبنيها إلا حين البوّابة مفتوحة).
+   نِسَب الأبعاد محفوظة دائماً: بُعد واحد + aspect-ratio.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* محاذاة تحقّق/إعادة على خط منتصف رأسي واحد + تباعد ٤٨px */
+.shoogp-ui .actions{align-items:center; gap:48px}
+
+/* ① زر تحقّق: نجمة خضراء + النص الحالي فوقها (٦٥٪ — الارتفاع فقط والعرض تلقائي) */
+.shoogp-ui .actions .btn-check,
+.shoogp-ui .actions .btn-check:hover{
+  background:url('images/ui/btn-check.png') no-repeat center / contain !important;
+  border:none !important; box-shadow:none !important; border-radius:0;
+  height:84px; aspect-ratio:842/816; width:auto; padding:9px 0 0 !important; min-width:0;
+  color:#fff; font-weight:800; font-size:.96rem;
+  text-shadow:0 2px 4px rgba(25,90,15,.8), 0 0 8px rgba(25,90,15,.45);
+  filter:drop-shadow(0 2px 3px rgba(0,0,0,.22));
+  transition:transform .18s, filter .2s;
+}
+.shoogp-ui .actions .btn-check:hover{
+  transform:translateY(-3px) scale(1.06);
+  filter:drop-shadow(0 2px 3px rgba(0,0,0,.22)) drop-shadow(0 0 12px rgba(150,225,90,.8));
+}
+.shoogp-ui .actions .btn-check:active{transform:scale(.94)}
+
+/* ② زر إعادة: كوكب أزرق بسهم دوران + النص الحالي فوقه (٦٥٪) */
+.shoogp-ui .actions .btn-reset,
+.shoogp-ui .actions .btn-reset:hover{
+  background:url('images/ui/btn-retry.png') no-repeat center / contain !important;
+  border:none !important; box-shadow:none !important; border-radius:0;
+  height:74px; aspect-ratio:1056/785; width:auto; padding:0 22px 0 0 !important; min-width:0;
+  color:#fff; font-weight:800; font-size:.94rem;
+  text-shadow:0 2px 4px rgba(0,45,85,.85), 0 0 8px rgba(0,45,85,.5);
+  filter:drop-shadow(0 2px 3px rgba(0,0,0,.22));
+  transition:transform .18s, filter .2s;
+}
+.shoogp-ui .actions .btn-reset:hover{
+  transform:translateY(-3px) scale(1.06);
+  filter:drop-shadow(0 2px 3px rgba(0,0,0,.22)) drop-shadow(0 0 12px rgba(255,190,80,.75));
+}
+.shoogp-ui .actions .btn-reset:active{transform:scale(.94)}
+
+/* ③+④ التنقل (٧٥٪): btn-next-prev.png مرتين — السابق بالاتجاه الأصلي
+   (سهمه يمين: رجوع)، والتالي بنفس الصورة معكوسة scaleX(-1) (سهمه يسار:
+   تقدّم في الواجهة العربية، يطابق «→ السابق» و«التالي ←» الأصلية).
+   الصورة تحدد عرض الزرّ (height ثابت وwidth تلقائي فلا شدّ عرضياً)،
+   والنصان حيّان في <span> منفصل فلا يُعكسان مع الصورة (يحقنهما السكربت أدناه) */
+.qnav .nav-btn,
+.qnav .nav-btn:hover:not(:disabled){
+  position:relative; background:none !important; border:none !important;
+  box-shadow:none !important; height:66px; width:auto; padding:0; min-width:0;
+  transition:transform .18s, filter .2s;
+}
+.qnav .nav-btn img{
+  display:block; height:100%; width:auto; object-fit:contain;
+  pointer-events:none;
+  filter:drop-shadow(0 2px 3px rgba(0,0,0,.25));
+}
+.qnav .nav-next img{transform:scaleX(-1)}
+.qnav .nav-btn .ncap{
+  position:absolute; top:50%; transform:translateY(-53%);
+  text-align:center; color:#fff; font-weight:800; font-size:1rem;
+  pointer-events:none; font-family:'Tajawal',sans-serif;
+  text-shadow:0 2px 4px rgba(150,70,5,.85), 0 0 8px rgba(150,70,5,.4);
+}
+.qnav .nav-prev .ncap{left:12px; right:46px}   /* السهم في يمين الصورة الأصلية */
+.qnav .nav-next .ncap{left:46px; right:12px}   /* وبعد العكس في يسارها */
+.qnav .nav-btn:hover:not(:disabled){
+  transform:translateY(-3px) scale(1.05);
+  filter:drop-shadow(0 0 13px rgba(255,165,60,.8));
+}
+.qnav .nav-btn:active:not(:disabled){transform:scale(.95)}
+.qnav .nav-btn:disabled{opacity:.35}
+
+/* ⑤ شارة رقم السؤال: الصورة كما هي بلا أي معالجة — ارتفاع ثابت والعرض من
+   نسبة الأبعاد الأصلية (2508:627) بلا شد، والنص الحيّ متوسط فوقها */
+.shoogp-ui .qcard .qnum{
+  display:inline-flex; align-items:center; justify-content:center;
+  height:46px; aspect-ratio:2096/534; width:auto; padding:0;
+  background:url('images/ui/badge-qnum.png') no-repeat center / contain;
+  color:#ffe27a; font-weight:800; font-size:1.14rem;
+  text-shadow:0 2px 3px rgba(0,40,70,.75);
+  filter:drop-shadow(0 1px 2px rgba(0,0,0,.22));
+}
+
+/* ⑥ شارة نوع السؤال: الصورة كما هي بلا معالجة إضافية — ارتفاع ثابت والعرض من
+   نسبتها الأصلية (1657:511) بلا شد، والنص الحيّ متوسط في جسم الكبسولة
+   (إزاحة يسارية بسيطة كي لا يزاحم زخرفة النجمة والكوكب في طرفها) */
+.shoogp-ui .qcard .qtype{
+  display:inline-flex; align-items:center; justify-content:center;
+  height:54px; aspect-ratio:1657/511; width:auto; padding:0 8px 0 36px;
+  white-space:nowrap;
+  background:url('images/ui/badge-qtype.png') no-repeat center / contain;
+  color:#fff; font-weight:800; font-size:.9rem;
+  text-shadow:0 2px 3px rgba(0,40,70,.75);
+  filter:drop-shadow(0 1px 2px rgba(0,0,0,.22));
+}
+.shoogp-ui .qhead{margin-bottom:10px}
+
+/* ⑦ مؤشر التقدّم (٧٥٪): نفس كبسولة الرقم 9-slice (progress-pill.png غير متوفر بعد) */
+.shoogp-ui .qprogress{
+  display:inline-flex; align-items:center; justify-content:center;
+  height:42px; aspect-ratio:2096/534; width:auto; padding:0;
+  background:url('images/ui/badge-qnum.png') no-repeat center / contain;
+  color:#fff; font-weight:800; font-size:.98rem;
+  text-shadow:0 2px 3px rgba(0,40,70,.75);
+  filter:drop-shadow(0 1px 2px rgba(0,0,0,.22));
+  margin-inline:auto;
+}
+
+/* ⑧ بطاقات الكلمات: تُرسَم بالكود (البطاقات الزرقاء الزجاجية §٦ عبر .qwin .chip)،
+   لا بصورة word-card.png (متجاوَزة/غير مستعملة). أُزيلت قواعد .chip المصوّرة القديمة
+   لأنها غير مبوّبة وكانت ستمسّ بطاقات بقية الدروس. حالة .chip.used تبقى من ستايل المنصّة. */
+
+/* ⑨ حاوية الإجابة وفراغات الإسقاط (.blank .target .grp-drop): CSS المنصّة كما هو — بلا صور */
+
+/* ⑩ تجربة: صورة الإطار frame-moon-source.png كما هي حاويةً كاملة للسؤال.
+   الإطار صندوق بنسبة أبعاد الصورة الأصلية بالضبط (1448:1086) بلا أي شد،
+   والمحتوى في نافذة داخلية فوق منطقة وسط الإطار مع تمرير داخلي عند الطول —
+   الإطار نفسه لا يتمدد. الشارتان تبقيان فوقه من الخارج. */
+.shoogp-ui .qcard{
+  background:none !important;
+  border:none !important;
+  box-shadow:none !important;
+  border-radius:0;
+  overflow:visible;
+  padding:0 !important;
+  color:#fff;
+}
+.shoogp-ui .qcard::before,.shoogp-ui .qcard::after{display:none}
+.shoogp-ui .qcard .qhead{padding:0 10px; margin-bottom:14px}
+/* عائلة الإطارات القمرية: صنف الحجم (qf-s/qf-m/qf-l) والهندسة تُضبط من
+   جدول FRAME_SIZES في السكربت — الإطار بنسبة صورته الأصلية دائماً بلا شد،
+   والعرض يتناسب مع الشاشة ويُقيَّد بالارتفاع المتاح */
+.qframe{
+  position:relative;
+  margin-inline:auto;
+  background:none;
+  /* إعادة ضبط المقاس بانتقال سلس لا قفزة (يُدار من fitFrame: يُعطَّل أثناء
+     القياس ويُفعَّل للتغيّر النهائي فقط، حتى لا يفسد قياس الأبعاد المتزامن) */
+  transition:width .30s ease;
+}
+/* ضمان بقاء أزرار تحقّق/إعادة فوق كل الطبقات داخل النافذة (فوق صورة الإطار) */
+.qwin .actions{position:relative; z-index:5}
+/* تلاشٍ قصير عند التنقل بين سؤالين (يمنع قفزة تغيّر حجم الإطار) */
+.shoogp-ui .qcard{animation:cardFade .28s ease}
+@keyframes cardFade{from{opacity:0}to{opacity:1}}
+
+/* ثلاث طبقات فوق خلفية الصفحة:
+   (0) .qfill  — التعبئة النقطية، خلف الإطار، تُرى من الفتحة الشفافة فقط
+   (1) .qmoon  — صورة الإطار القمري بحوافه وحفره وزخارفه، تغطّي حواف التعبئة
+   (2) .qwin   — محتوى السؤال، فوق الجميع */
+
+/* التعبئة الداخلية (CSS خالص — الصور لم تُمسّ): قماشة الحاوية القديمة نفسها —
+   تعبئة بيضاء شبه شفافة (alpha 0.3 = شفافية 70%) وفوقها شبكة النقاط المنسوخة
+   حرفياً من .qcard::after في css/style.css (نقطة 1.3px بشفافية .17، شبكة
+   22×22px، إزاحة 6px). إزاحاتها = نصف إزاحات الفتحة، فتمتدّ تحت حافة الإطار
+   الداخلية (تداخل يمنع أي خط فاصل أو فجوة)، وزواياها مستديرة كبيرة تقارب
+   انحناء الفتحة. مربوطة نسبياً فتلاحق كل تكبير وتصغير، والنقاط ثابتة الحجم. */
+.qfill{
+  position:absolute; z-index:0;
+  background-color:rgba(43,87,72,.65);     /* أخضر #2B5748 بشفافية 65% — لكل الأسئلة */
+  box-shadow:inset 0 0 10px rgba(0,0,0,1); /* ظل داخلي أسود واضح، انتشار 10px */
+  background-image:radial-gradient(rgba(255,255,255,.17) 1.3px, transparent 1.7px);
+  background-size:22px 22px;
+  background-position:6px 6px;
+  border-radius:8%/7%;
+  backdrop-filter:blur(6px) saturate(.9);
+  -webkit-backdrop-filter:blur(6px) saturate(.9);
+  pointer-events:none;
+}
+/* صورة الإطار القمري فوق التعبئة (تُحقن عبر متغيّر --fimg) */
+.qmoon{
+  position:absolute; inset:0; z-index:1; pointer-events:none;
+  background:var(--fimg) no-repeat center / contain;
+}
+/* نافذة المحتوى فوق الجميع — إزاحاتها من جدول المقاسات (متحفظة عن الزخارف) */
+.qwin{
+  --s:1;   /* الخطوط بأحجامها الافتراضية — الإطار هو الذي يتكيف، لا تمرير أبداً */
+  position:absolute; z-index:2;
+  overflow:hidden;
+  padding:10px 16px;
+  display:flex; flex-direction:column;
+  justify-content:space-evenly;   /* القليل يتباعد باسترخاء */
+  row-gap:10px;
+  color:#3d2f14;
+}
+/* الملاذ الأخير: حاوية CSS مرنة بروح العائلة (حد ودرجات كريمية قمرية +
+   طبقة الشفافية) تتمدد مع المحتوى — للسؤال الذي يتجاوز سقف تكبير الإطار l */
+/* الملاذ المرن = إطار قمري مطاطي (9-slice من رسم l): الزوايا وزخارفها
+   (الكوكب، الفوهات) بنسبها الأصلية ثابتة، والأشرطة الوسطى وحدها تتمدد
+   رأسياً بقدر المحتوى — فيبقى الشكل القمري معمّماً على كل الأسئلة */
+.qframe.qflex{
+  width:min(100%, 880px) !important;
+  aspect-ratio:auto !important;
+  background:none !important;
+  filter:drop-shadow(0 8px 18px rgba(0,0,0,.3));
+  padding:6px 2px 10px;
+}
+/* في المرن: صورة الإطار 9-slice على طبقة .qmoon (بلا fill فيبقى الوسط شفافاً
+   وتظهر التعبئة خلفه)، والأشرطة الوسطى وحدها تتمدد رأسياً */
+.qframe.qflex .qmoon{
+  inset:0; background:none;
+  border-style:solid; border-color:transparent;
+  border-width:100px 110px 115px 110px;
+  border-image:url('images/ui/frame-moon-l.png') 218 240 250 240 stretch;
+}
+.qframe.qflex .qfill{display:block; inset:26px !important; border-radius:26px}
+.qframe.qflex .qwin{
+  position:relative; z-index:2; overflow:visible; height:auto;
+  top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;
+}
+.qwin>*{width:100%; flex:0 0 auto}
+
+/* التقليص التدريجي بحدود دنيا صارمة:
+   نص السؤال ≥22px · الخيارات والبطاقات ≥18px · العنصر التفاعلي ≥60px */
+.qwin .qprompt{font-size:max(22px, calc(26px * var(--s))) !important}
+.qwin .tf,.qwin .opt{
+  font-size:max(18px, calc(21px * var(--s))) !important;
+  min-height:60px;
+}
+.qwin .mitem,.qwin .seqitem,.qwin .excl-opt,.qwin .aopt{
+  font-size:max(18px, calc(20px * var(--s))) !important;
+  min-height:60px; display:flex; align-items:center; justify-content:center;
+}
+.qwin .chip{
+  font-size:max(18px, calc(19px * var(--s))) !important;
+  min-height:60px;
+}
+.qwin .fbtext{font-size:max(18px, calc(21px * var(--s))) !important}
+.qwin .grp-h{font-size:max(18px, calc(19px * var(--s))) !important}
+.qwin .grp-drop{min-height:max(60px, calc(110px * var(--s)))}
+.qwin::-webkit-scrollbar{width:10px}
+.qwin::-webkit-scrollbar-thumb{background:#d9be93; border-radius:5px}
+.qwin::-webkit-scrollbar-track{background:rgba(120,90,40,.08); border-radius:5px}
+/* نصوص فاتحة فوق طبقة التعبئة الكحلية الداكنة (النصوص العارية فقط —
+   الخيارات والبطاقات لها خلفية كريمية بنصّها الداكن فتبقى كما هي) */
+.qwin{color:#eef1f6}
+.qwin>.qprompt{margin:4px 0 14px;color:#fff;text-align:center;text-shadow:0 1px 3px rgba(0,0,0,.45)}
+.qwin .qfb.good{color:#a8e6bd !important;text-shadow:0 1px 2px rgba(0,0,0,.4) !important}
+.qwin .qfb.bad{color:#ffb3aa !important;text-shadow:0 1px 2px rgba(0,0,0,.4) !important}
+.qwin .bank .bt{color:#e7ecf3 !important}
+.qwin .seq-hint{color:#dfe4ee !important}
+.qwin .grp{border-color:#d9b97c !important}
+.qwin .grp-h{background:#e6cd9c !important;color:#4a3213 !important;text-shadow:none !important}
+
+/* ═══════════════════════════════════════════════════════════════════
+   ★ ستايل البطاقات الزجاجية الزرقاء (CSS خالص، بلا صور) ★
+   يُطبَّق على: بطاقات التوصيل (.mitem) · خيارات الاختيار (.opt) ·
+   بطاقات الكلمات القابلة للسحب (.chip في التصنيف وملء الفراغ).
+   لا يمسّ الأزرار المصوّرة (تحقّق/إعادة/التنقل/الشارات).
+   ─ خلفية زرقاء بتدرّج رأسي (أفتح أعلى، أغمق أسفل) + لمعة زجاجية علوية
+   ─ حدّ أزرق أغمق سميك + زوايا كبيرة + نجيمتان بيضاوان في الزاويتين العلويتين
+   ─ نص كحليّ داكن غامق متوسط · ظل خفيف للبروز
+   ═══════════════════════════════════════════════════════════════════ */
+.qwin .opt, .qwin .mitem, .qwin .chip{
+  /* نجمة/بريق أبيض صغير (رباعي الأطراف) للزخرفة في الزاويتين */
+  --spk:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M8 0C8.7 4.6 11.4 7.3 16 8 11.4 8.7 8.7 11.4 8 16 7.3 11.4 4.6 8.7 0 8 4.6 7.3 7.3 4.6 8 0Z' fill='white'/></svg>");
+  /* التدرّج الأساسي: سماوي فاتح أعلى ← أزرق أغمق أسفل (درجات الصورة) */
+  --card-grad:linear-gradient(180deg,#d4edfb 0%,#a8d6f2 52%,#82bfe8 100%);
+  /* اللمعة الزجاجية: شريط أبيض شبه شفّاف يعلو النصف الأعلى ثم يتلاشى */
+  --card-sheen:linear-gradient(180deg,rgba(255,255,255,.60) 0%,rgba(255,255,255,.18) 40%,rgba(255,255,255,0) 56%);
+  background:
+    var(--spk) top 7px right 10px / 13px 13px no-repeat,
+    var(--spk) top 8px left  10px / 9px  9px  no-repeat,
+    var(--card-sheen),
+    var(--card-grad) !important;
+  border:2.5px solid #3d86bd !important;
+  border-image:none !important;          /* يلغي إطار word-card.png المصوّر */
+  border-radius:17px !important;
+  box-shadow:0 4px 9px rgba(23,66,102,.30), inset 0 1px 0 rgba(255,255,255,.55) !important;
+  color:#143247 !important;              /* نص كحليّ داكن */
+  font-weight:800 !important;
+  text-shadow:none !important;
+  filter:none !important;                /* يلغي drop-shadow صور البطاقة القديمة */
+  min-height:60px;                       /* حد أدنى للمس */
+  transition:transform .16s ease, box-shadow .18s ease, filter .18s ease !important;
+}
+/* بطاقات الكلمات: حشوة مريحة وتوسيط (كانت تعتمد على أبعاد الصورة) */
+.qwin .chip{
+  padding:12px 20px !important;
+  display:inline-flex; align-items:center; justify-content:center;
+}
+.qwin .chip.ok::before, .qwin .chip.no::before{content:none}  /* بلا علامات نصية — نكتفي باللون */
+
+/* ⟡ تحويم/لمس: تفتيح طفيف مع رفع بسيط */
+.qwin .opt:hover:not(:disabled),
+.qwin .mitem:not(.matched):hover,
+.qwin .chip:not(.used):hover{
+  filter:brightness(1.06) !important;
+  transform:translateY(-2px);
+}
+.qwin .opt:active:not(:disabled),
+.qwin .mitem:not(.matched):active,
+.qwin .chip:not(.used):active{transform:translateY(0) scale(.98)}
+.qwin .chip.dragging{
+  transform:scale(1.07) !important;
+  box-shadow:0 10px 20px rgba(23,66,102,.42) !important;
+  filter:none !important;
+}
+
+/* ⟡ حالة «محدّدة» (التوصيل): توهّج أزرق حول الحد */
+.qwin .mitem.selected{
+  border-color:#2f79b5 !important;
+  box-shadow:0 0 0 3px rgba(125,198,242,.80),
+             0 0 16px rgba(85,170,235,.80),
+             0 4px 10px rgba(23,66,102,.32) !important;
+  transform:translateY(-1px);
+}
+
+/* ⟡ بعد التحقّق — الصحيحة: تدرّج أخضر بنفس الأسلوب (نبدّل التدرّج فقط
+   فتبقى اللمعة والنجيمتان) */
+.qwin .opt.correct,
+.qwin .mitem.matched,
+.qwin .chip.ok{
+  --card-grad:linear-gradient(180deg,#ddf4c8 0%,#aee08a 52%,#8ccf66 100%);
+  border-color:#5fa23f !important;
+  color:#22380b !important;
+  box-shadow:0 4px 9px rgba(40,80,20,.28),
+             0 0 12px rgba(140,205,95,.55),
+             inset 0 1px 0 rgba(255,255,255,.45) !important;
+}
+
+/* ⟡ بعد التحقّق — الخاطئة: اهتزاز لطيف مع بقاء البطاقة على حالها العادية
+   (لا لون عقابيّ صارخ — نلغي أي خلفية وردية يفرضها المنطق) */
+.qwin .opt.wrong,
+.qwin .chip.no,
+.qwin .mitem.shake{animation:cardShake .45s ease}
+@keyframes cardShake{
+  0%,100%{transform:translateX(0)}
+  15%{transform:translateX(-5px)} 30%{transform:translateX(5px)}
+  45%{transform:translateX(-4px)} 60%{transform:translateX(4px)}
+  75%{transform:translateX(-2px)} 90%{transform:translateX(2px)}
+}
+@media(prefers-reduced-motion:reduce){
+  .qwin .opt.wrong,.qwin .chip.no,.qwin .mitem.shake{animation:none}
+}
+
+/* ═══════════ إصلاح المطّ في أسئلة البطاقات (التصنيف/السحب) ═══════════
+   الإطار سليم (نسبة أبعاده محفوظة)؛ المطّ كان من align-items الافتراضي (stretch):
+   الصناديق الفارغة تنتفخ لتطابق أطول صندوق، والبطاقات تتمدّد رأسياً لتطابق
+   أطول بطاقة في صفّها. الحل: محاذاة البداية فيأخذ كلٌّ ارتفاع محتواه فقط. */
+/* ④ صناديق التصنيف: كلٌّ بارتفاع محتواه — الفارغ لا يُمطّ ليطابق الأطول */
+.qwin .grp-row{align-items:flex-start}
+/* ③ البطاقات: ارتفاعها مع نصّها فقط (سطر/سطران) لا مع أطول بطاقة في الصف،
+   وحدّ أقصى مريح للعرض فتلتفّ الكلمة الطويلة بدل أن تتمدّد عرضاً */
+.qwin .grp-drop,
+.qwin .clsbank .chips,
+.qwin .fillbank .chips{align-items:flex-start}
+.qwin .chip{max-width:min(100%,340px)}
+/* ② صورة «السحب على صورة»: object-fit:contain احترازاً ضد أي شدّ */
+.qwin img.labelimg{object-fit:contain}
+
+/* ═══════════ تمييز السحب/الإفلات (تربوي): المحمول ≠ المستقبِل ═══════════
+   الطفل يميّز فوراً: البطاقة الزرقاء «ترتفع» عن السطح (تُحمَل)، والفراغ «غائر»
+   كالحفرة (يستقبِل). أثناء السحب يتوهّج الفراغ الصالح ترحيباً، وبعد الإفلات
+   يمتلئ الفراغ ببطاقة زرقاء ليفهم أنّ المكان اكتمل. */
+.qwin .blank, .qwin .target{
+  --spk:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M8 0C8.7 4.6 11.4 7.3 16 8 11.4 8.7 8.7 11.4 8 16 7.3 11.4 4.6 8.7 0 8 4.6 7.3 7.3 4.6 8 0Z' fill='white'/></svg>");
+}
+
+/* ① بطاقات السحب: بروز أوضح (ظل أعمق) وتوهّج عند اللمس يوحي بالارتفاع عن السطح */
+.qwin .chip{
+  box-shadow:0 6px 13px rgba(23,66,102,.40), inset 0 1px 0 rgba(255,255,255,.55) !important;
+}
+.qwin .chip:not(.used):hover{
+  box-shadow:0 10px 18px rgba(23,66,102,.44), 0 0 14px rgba(120,195,240,.70),
+             inset 0 1px 0 rgba(255,255,255,.60) !important;
+  transform:translateY(-3px);
+}
+.qwin .chip:not(.used):active, .qwin .chip.dragging{
+  cursor:grabbing;
+  box-shadow:0 14px 26px rgba(23,66,102,.50), 0 0 20px rgba(120,195,240,.90),
+             inset 0 1px 0 rgba(255,255,255,.60) !important;
+  transform:translateY(-4px) scale(1.06) !important;
+}
+
+/* ② فراغات الإسقاط الفارغة: غائرة كالحفرة — أغمق قليلاً من محيطها، حد متقطّع
+   واضح، ظل داخليّ، بلا أيّ لمعة أو بروز */
+.qwin .blank{
+  background:rgba(30,45,38,.12) !important;
+  border:2px dashed #9fb0a6 !important; border-radius:12px !important;
+  box-shadow:inset 0 2px 5px rgba(0,0,0,.22) !important;
+  color:#8a998f !important; text-shadow:none !important; font-weight:800;
+}
+.qwin .target{
+  background:rgba(20,36,29,.32) !important;
+  border:2px dashed rgba(255,255,255,.80) !important; border-radius:12px !important;
+  box-shadow:inset 0 2px 6px rgba(0,0,0,.42) !important;
+  color:#eef3ef !important; text-shadow:0 1px 2px rgba(0,0,0,.45) !important;
+}
+
+/* ④ بعد الإفلات: يستقرّ كبطاقة زرقاء ممتلئة (نفس أسلوب البطاقات) — المكان اكتمل،
+   ويبقى قابلاً للسحب/الإخراج للتصحيح (منطق التفريغ قائم في المحرّك) */
+.qwin .blank.filled, .qwin .target.filled{
+  background:
+    var(--spk) top 5px right 7px/11px 11px no-repeat,
+    var(--spk) top 6px left  7px/8px  8px  no-repeat,
+    linear-gradient(180deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,.16) 40%,rgba(255,255,255,0) 56%),
+    linear-gradient(180deg,#d4edfb 0%,#a8d6f2 52%,#82bfe8 100%) !important;
+  border:2.5px solid #3d86bd !important; border-style:solid !important; border-radius:13px !important;
+  box-shadow:0 4px 9px rgba(23,66,102,.30), inset 0 1px 0 rgba(255,255,255,.55) !important;
+  color:#143247 !important; text-shadow:none !important; font-weight:800 !important; cursor:grab;
+}
+/* الصحيحة بعد التحقّق: بطاقة خضراء بنفس الأسلوب */
+.qwin .blank.filled.correct, .qwin .target.filled.correct, .qwin .blank.correct{
+  background:
+    var(--spk) top 5px right 7px/11px 11px no-repeat,
+    var(--spk) top 6px left  7px/8px  8px  no-repeat,
+    linear-gradient(180deg,rgba(255,255,255,.50) 0%,rgba(255,255,255,.14) 40%,rgba(255,255,255,0) 56%),
+    linear-gradient(180deg,#ddf4c8 0%,#aee08a 52%,#8ccf66 100%) !important;
+  border-color:#5fa23f !important; color:#22380b !important;
+  box-shadow:0 4px 9px rgba(40,80,20,.28), 0 0 12px rgba(140,205,95,.50),
+             inset 0 1px 0 rgba(255,255,255,.45) !important;
+}
+/* الخاطئة: تبقى زرقاء (لا لون عقابيّ) مع اهتزاز لطيف */
+.qwin .blank.wrong, .qwin .target.wrong{animation:cardShake .45s ease}
+
+/* ③ أثناء السحب فوق فراغ صالح: توهّج مرحّب (أخضر فاتح) يقول «أفلت هنا»
+   — يأتي أخيراً ليَغلِب كلّ الحالات أثناء التحويم */
+.qwin .blank.over, .qwin .target.over{
+  background:rgba(95,191,106,.32) !important;
+  border:2px dashed #5fbf6a !important;
+  box-shadow:inset 0 1px 3px rgba(0,0,0,.10),
+             0 0 0 3px rgba(95,191,106,.45),
+             0 0 16px rgba(95,191,106,.65) !important;
+  color:#1f4a26 !important; text-shadow:none !important;
+}
+
