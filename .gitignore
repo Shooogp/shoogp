@@ -5,6 +5,7 @@ yarn-error.log*
 
 # إعدادات خاصة بالجهاز (Claude Code المحلية)
 .claude/settings.local.json
+.claude/launch.json
 
 # ملفات نظام التشغيل
 Thumbs.db
