@@ -770,8 +770,8 @@ window.QUESTIONS = {
       image: "images/muscles-arm.jpg",
       bg: "#e9dcc2",
       targets: [
-        { answer: "منقبضة", box:{x:9,y:46}, dot:{x:16,y:49} },
-        { answer: "منبسطة", box:{x:91,y:46}, dot:{x:73,y:49} }
+        { answer: "منقبضة", box:{x:16,y:46}, dot:{x:16,y:49} },
+        { answer: "منبسطة", box:{x:84,y:46}, dot:{x:73,y:49} }
       ]
     },
 
@@ -1472,10 +1472,10 @@ window.QUESTIONS = {
       bg: "#eef7ff",
       image: "images/نبتة-اجزاء.png",
       targets: [
-        { answer: "الزَّهرَةُ", box:{x:80,y:7},  dot:{x:47,y:12} },
-        { answer: "الثَّمَرَةُ", box:{x:89,y:50}, dot:{x:71,y:49} },
-        { answer: "الوَرَقَةُ", box:{x:11,y:36}, dot:{x:22,y:42} },
-        { answer: "الساقُ",    box:{x:12,y:70}, dot:{x:47,y:62} },
+        { answer: "الزَّهرَةُ", box:{x:80,y:8},  dot:{x:47,y:12} },
+        { answer: "الثَّمَرَةُ", box:{x:84,y:50}, dot:{x:71,y:49} },
+        { answer: "الوَرَقَةُ", box:{x:16,y:36}, dot:{x:22,y:42} },
+        { answer: "الساقُ",    box:{x:16,y:70}, dot:{x:47,y:62} },
         { answer: "الجُذورُ",  box:{x:82,y:90}, dot:{x:48,y:84} }
       ]
     },
@@ -1887,11 +1887,11 @@ window.QUESTIONS = {
       prompt: "اسحَبِ اسمَ كُلِّ جُزءٍ إلى مَكانِهِ في الجِسمِ.",
       bg: "#eef7ff",
       targets: [
-        { answer: "الرَّأسُ",  box:{x:82,y:6},  dot:{x:50,y:13} },
-        { answer: "الذِّراعُ", box:{x:10,y:32}, dot:{x:33,y:37} },
-        { answer: "اليَدُ",    box:{x:10,y:52}, dot:{x:28,y:51} },
-        { answer: "الساقُ",    box:{x:86,y:70}, dot:{x:59,y:74} },
-        { answer: "القَدَمُ",  box:{x:86,y:90}, dot:{x:57,y:94} }
+        { answer: "الرَّأسُ",  box:{x:82,y:8},  dot:{x:50,y:13} },
+        { answer: "الذِّراعُ", box:{x:16,y:32}, dot:{x:33,y:37} },
+        { answer: "اليَدُ",    box:{x:16,y:52}, dot:{x:28,y:51} },
+        { answer: "الساقُ",    box:{x:84,y:70}, dot:{x:59,y:74} },
+        { answer: "القَدَمُ",  box:{x:84,y:90}, dot:{x:57,y:94} }
       ],
       svg: `<svg viewBox="0 0 300 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="مخطّط جسم طفل">
         <circle cx="150" cy="62" r="40" fill="#f6c9a0" stroke="#d89b6a" stroke-width="3"/>
