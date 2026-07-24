@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تجربة الستايل الجديد — الطيور المُدهشة</title>
+<!--
+  ⚠️ صفحة تجريبية منفصلة لتجربة تصميم عناصر واجهة الأسئلة الجديد (المرجع الفاتح)
+  على درس «الطيور المُدهشة». لا تعتمد على css/style.css ولا js/app.js إطلاقاً —
+  كل الستايل والمنطق داخلها، وتقرأ بيانات الأسئلة فقط من js/questions.js (قراءة دون تعديل).
+  كل العناصر SVG + CSS: نجمة تحقّق، كوكب إعادة بحلقة برتقالية، صاروخ التالي، شهاب السابق.
+-->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@500;700;800&display=swap');
+
+/* ═══════════ الأساس (خلفية فاتحة + نص داكن) ═══════════ */
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --ink:#1c3d5c;          /* النص الداكن الرئيسي */
+  --navy:#16344f;         /* الكبسولات الكحلية */
+  --gold:#ffd75e;
+  --teal-1:#58a7cc;       /* شارة نوع السؤال */
+  --teal-2:#3d8bb0;
+  --cream:#fdf6e0;        /* بطاقات الكلمات */
+  --cream-line:#e8b45a;   /* حدّها البرتقالي الذهبي */
+  --blank-line:#4a90c4;   /* حدود الفراغات المنقطة */
+  --blank-bg:#eaf3fb;
+  --good:#2c7a33;
+  --bad:#c0392b;
+}
+html{font-size:17px}
+body{
+  font-family:'Tajawal','Cairo','Segoe UI',Tahoma,sans-serif;
+  color:var(--ink);
+  min-height:100vh;overflow-x:hidden;
+  background:
+    radial-gradient(900px 400px at 85% -100px, rgba(140,200,240,.18), transparent 60%),
+    radial-gradient(800px 400px at 10% 110%, rgba(255,200,120,.10), transparent 60%),
+    linear-gradient(180deg,#f4fafe 0%, #e9f3fb 60%, #e2eefa 100%);
+}
+
+/* نجيمات زخرفية فاتحة على الخلفية */
+.bg-spark{position:fixed;pointer-events:none;z-index:0;color:#f5c73f;opacity:.7;animation:tw 4s ease-in-out infinite;text-shadow:0 1px 4px rgba(240,185,58,.4)}
+.bg-spark.b{color:#8ec3e6;text-shadow:0 1px 4px rgba(90,160,210,.35)}
+@keyframes tw{0%,100%{opacity:.25;transform:scale(.85)}50%{opacity:.85;transform:scale(1.15)}}
+
+/* ═══════════ الإطار العام ═══════════ */
+.frame{position:relative;z-index:2;max-width:1080px;margin:0 auto 60px;padding:28px 24px 0}
+
+/* رأس الصفحة: شارة رقم السؤال (يمين) + شارة نوع السؤال (يسار) */
+.head-row{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:30px}
+
+/* ② شارة رقم السؤال: كبسولة كحلية بنص أصفر ونجمة + حلقة كوكبية */
+.q-chip{
+  position:relative;
+  display:inline-flex;align-items:center;gap:10px;
+  background:linear-gradient(180deg,#24476a,var(--navy));
+  border:2.5px solid #0e2740;
+  color:var(--gold);
+  font-family:'Cairo',sans-serif;font-weight:900;font-size:1.25rem;
+  border-radius:999px;padding:11px 30px;
+  box-shadow:0 5px 14px rgba(22,52,79,.35), inset 0 2px 0 rgba(255,255,255,.14);
+}
+.q-chip .st{filter:drop-shadow(0 0 6px rgba(255,215,94,.8))}
+.q-chip::before{
+  content:"";position:absolute;inset:-11px -22px;
+  border:3px solid rgba(90,167,204,.55);
+  border-radius:50%;
+  transform:rotate(-8deg);
+  pointer-events:none;
+}
+
+/* ① شارة نوع السؤال: كبسولة زرقاء + أيقونة داخل كوكب بحلقة */
+.type-chip{position:relative;display:inline-flex;align-items:center}
+.type-chip .ic{
+  position:relative;z-index:2;
+  width:58px;height:58px;border-radius:50%;flex:none;
+  background:radial-gradient(circle at 32% 28%, #9fd4b4, #4d9b74);
+  border:3px solid #fff;
+  display:grid;place-items:center;font-size:1.55rem;
+  box-shadow:0 4px 12px rgba(30,80,60,.3);
+}
+.type-chip .ic::before{ /* الحلقة الكوكبية حول الأيقونة */
+  content:"";position:absolute;inset:-9px -18px;
+  border:3px solid #6fb3d6;
+  border-radius:50%;
+  transform:rotate(-16deg);
+  pointer-events:none;
+}
+.type-chip .lb{
+  background:linear-gradient(180deg,var(--teal-1),var(--teal-2));
+  border:2.5px solid #2e7396;
+  color:#fff;font-weight:800;font-size:1.05rem;
+  border-radius:999px;padding:11px 26px 11px 22px;
+  margin-right:-16px;   /* تتداخل الكبسولة خلف الأيقونة كما في الصورة */
+  box-shadow:0 4px 12px rgba(46,115,150,.3), inset 0 2px 0 rgba(255,255,255,.22);
+  text-shadow:0 1px 2px rgba(0,50,80,.35);
+}
+
+/* ③ نص السؤال: داكن كبير بنجيمات صفراء */
+.q-title{
+  text-align:center;
+  font-family:'Cairo',sans-serif;font-size:1.8rem;font-weight:900;color:var(--ink);
+  margin:0 0 26px;
+}
+.q-title .tw{color:#f5c73f;font-size:1.05rem;vertical-align:super;margin:0 12px;text-shadow:0 1px 6px rgba(240,185,58,.55)}
+
+/* ④ منطقة الإجابة: بطاقة بيضاء بظل خفيف */
+.qzone{
+  background:#fff;
+  border:1.5px solid #e2edf6;
+  border-radius:26px;
+  padding:32px;
+  color:var(--ink);
+  box-shadow:0 10px 28px rgba(60,110,160,.14), 0 2px 6px rgba(60,110,160,.08);
+}
+.qzone *{color:inherit}
+
+/* الفراغات: حدود زرقاء متقطعة وخلفية زرقاء فاتحة جداً */
+.fbtext{font-size:1.6rem;font-weight:800;line-height:3;text-align:center;color:var(--ink)}
+.blank{
+  display:inline-block;min-width:150px;min-height:62px;
+  background:var(--blank-bg);
+  border:2.5px dashed var(--blank-line);
+  border-radius:16px;
+  margin:8px 10px;padding:8px 18px;
+  vertical-align:middle;text-align:center;
+  font-size:1.3rem;font-weight:800;color:var(--ink);line-height:1.7;
+  transition:background .15s, border-color .15s, transform .15s;
+}
+.blank.over{background:#d6eafc;border-color:#2470a8;transform:scale(1.05)}
+.blank.filled{border-style:solid;background:#fff;cursor:pointer}
+.blank.correct{border-color:var(--good);background:#e9f7ea;color:var(--good)}
+.blank.wrong{border-color:var(--bad);background:#fdecea;color:var(--bad)}
+
+/* ═══════════ بنك الكلمات ═══════════ */
+.bank-wrap{margin-top:28px}
+.bank-title{
+  display:flex;align-items:center;gap:14px;
+  color:var(--ink);font-family:'Cairo',sans-serif;font-weight:900;font-size:1.25rem;
+  margin-bottom:20px;
+}
+.bank-title::before,.bank-title::after{
+  content:"";flex:1;height:2px;
+  background:linear-gradient(90deg, transparent, rgba(90,150,200,.4), transparent);
+}
+.bank-title .tw{color:#f5c73f;font-size:1rem;text-shadow:0 1px 6px rgba(240,185,58,.5)}
+.chips-row{display:flex;flex-wrap:wrap;justify-content:center;gap:20px}
+
+/* ⑤ بطاقات الكلمات: كريمية بحد ذهبي + أيقونة + بريق نجمة بالزاوية */
+.chip{
+  position:relative;
+  display:inline-flex;align-items:center;gap:12px;
+  background:linear-gradient(180deg,#fffdf4,var(--cream));
+  border:2.5px solid var(--cream-line);
+  border-bottom-width:4.5px;
+  color:#4a3b22;
+  font-weight:800;font-size:1.25rem;
+  border-radius:20px;
+  padding:14px 26px;
+  cursor:grab;user-select:none;
+  box-shadow:0 5px 12px rgba(160,120,40,.22);
+  transition:transform .15s, opacity .2s, box-shadow .15s;
+  touch-action:none;
+}
+.chip::after{
+  content:"✦";position:absolute;top:-11px;left:-5px;
+  color:#fff;font-size:.9rem;
+  text-shadow:0 0 6px rgba(240,185,58,.95), 0 0 2px #f0b93a;
+}
+.chip .wi{font-size:1.35rem;line-height:1;filter:drop-shadow(0 1px 2px rgba(0,0,0,.15))}
+.chip:hover{transform:translateY(-3px);box-shadow:0 8px 18px rgba(160,120,40,.3)}
+.chip.dragging{opacity:.55;transform:scale(1.08);cursor:grabbing}
+.chip.used{opacity:.3;pointer-events:none}
+
+/* ═══════════ صواب / خطأ ═══════════ */
+.tf-btns{display:flex;justify-content:center;gap:24px;flex-wrap:wrap}
+.tf{
+  font-family:inherit;font-size:1.4rem;font-weight:800;
+  border-radius:22px;border:2.5px solid;border-bottom-width:5px;
+  padding:18px 54px;cursor:pointer;
+  transition:transform .15s, box-shadow .15s;
+}
+.tf:hover{transform:translateY(-3px)}
+.tf-t{background:#ecf8ec;border-color:#9ccf9e;color:#2c6e2f}
+.tf-f{background:#fdf0ef;border-color:#e3a8a4;color:#a03c36}
+.tf.tf-correct{background:#3e9142;border-color:#357a39;color:#fff;box-shadow:0 0 0 6px rgba(62,145,66,.22)}
+.tf.tf-wrong{background:var(--bad);border-color:#a53c3c;color:#fff;animation:shake .4s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+
+/* ═══════════ اختيار من متعدد ═══════════ */
+.opts{display:grid;gap:16px}
+.opt{
+  text-align:right;font-family:inherit;
+  font-size:1.22rem;font-weight:700;
+  background:#f6fafd;
+  border:2px solid #cfe3ef;border-bottom-width:4px;
+  border-radius:18px;color:var(--ink);
+  padding:16px 24px;cursor:pointer;
+  transition:transform .12s, background .15s, border-color .15s;
+}
+.opt:hover:not(:disabled){transform:translateY(-2px);background:#eaf4fb;border-color:#9ecbe6}
+.opt.correct{background:#e9f7ea;border-color:var(--good);color:var(--good)}
+.opt.wrong{background:#fdecea;border-color:var(--bad);color:var(--bad)}
+.opt:disabled{cursor:default}
+
+/* ═══════════ التوصيل ═══════════ */
+.matchwrap{position:relative}
+.matchsvg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+.match{display:flex;justify-content:space-between;gap:60px;position:relative;z-index:2}
+.mcol{display:flex;flex-direction:column;gap:16px;flex:1}
+.mitem{
+  background:#f6fafd;border:2px solid #cfe3ef;border-radius:18px;
+  font-weight:700;font-size:1.12rem;color:var(--ink);
+  padding:14px 18px;text-align:center;cursor:pointer;
+  transition:transform .12s, background .15s, border-color .15s;
+}
+.mitem:hover{transform:translateY(-2px)}
+.mitem.selected{border-color:#2f8cc0;background:#dcf0fb;box-shadow:0 0 0 4px rgba(47,140,192,.16)}
+.mitem.matched{background:#e9f7ea;border-color:#9ccf9e;color:#2c6e2f;cursor:default}
+
+/* ═══════════ التصنيف ═══════════ */
+.grp-row{display:flex;gap:18px;flex-wrap:wrap;justify-content:center}
+.grp{flex:1;min-width:200px}
+.grp-h{
+  text-align:center;font-family:'Cairo',sans-serif;font-weight:900;font-size:1.18rem;color:#fff;
+  background:linear-gradient(180deg,var(--teal-1),var(--teal-2));
+  border-radius:18px 18px 0 0;padding:12px;
+  border:2px solid #b7d8ea;border-bottom:none;
+  text-shadow:0 1px 2px rgba(0,50,80,.35);
+}
+.grp-drop{
+  min-height:130px;
+  background:var(--blank-bg);
+  border:2.5px dashed var(--blank-line);border-radius:0 0 18px 18px;
+  padding:14px;display:flex;flex-direction:column;gap:12px;align-items:center;
+  transition:background .15s;
+}
+.grp-drop.over{background:#d6eafc}
+.grp-drop .chip{font-size:1.08rem;padding:10px 20px}
+.chip.ok{border-color:var(--good);background:#e9f7ea;color:var(--good)}
+.chip.no{border-color:var(--bad);background:#fdecea;color:var(--bad)}
+
+/* ═══════════ السؤال الصوتي ═══════════ */
+.audioq{text-align:center}
+.aplay{
+  font-family:inherit;font-size:1.3rem;font-weight:800;
+  background:linear-gradient(180deg,var(--gold),#f0b93a);
+  color:#5b4413;border:none;border-bottom:4px solid #c2922a;
+  border-radius:999px;padding:14px 46px;cursor:pointer;
+  box-shadow:0 6px 16px rgba(190,140,40,.35);
+  transition:transform .15s, box-shadow .15s;
+}
+.aplay:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(190,140,40,.5)}
+.aopts{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:26px}
+.aopt{
+  font-family:inherit;
+  background:#f6fafd;border:2px solid #cfe3ef;border-bottom-width:4px;
+  border-radius:22px;padding:16px;cursor:pointer;width:175px;
+  display:flex;flex-direction:column;align-items:center;gap:12px;
+  transition:transform .12s, border-color .15s, background .15s;
+}
+.aopt:hover:not(:disabled){transform:translateY(-3px);border-color:#9ecbe6}
+.aopt-img{width:112px;height:112px;object-fit:contain}
+.aopt-label{font-weight:800;font-size:1.18rem;color:var(--ink)}
+.aopt.correct{border-color:var(--good);background:#e9f7ea}
+.aopt.wrong{border-color:var(--bad);background:#fdecea}
+.aopt:disabled{cursor:default}
+
+/* ═══════════ بطاقات الذاكرة ═══════════ */
+.memgrid{display:grid;gap:16px;max-width:660px;margin:0 auto}
+.memcard{position:relative;height:100px;border:none;background:none;cursor:pointer;perspective:700px;font-family:inherit}
+.memface{
+  position:absolute;inset:0;border-radius:18px;
+  display:grid;place-items:center;
+  font-weight:800;font-size:1.08rem;padding:10px;
+  backface-visibility:hidden;transition:transform .5s;
+  border:2px solid;border-bottom-width:4px;
+}
+.memback{background:linear-gradient(180deg,var(--teal-1),var(--teal-2));border-color:#2e7396;color:#fff;font-size:2rem;transform:rotateY(0)}
+.memfront{background:linear-gradient(180deg,#fffdf4,var(--cream));border-color:var(--cream-line);color:#4a3b22;transform:rotateY(180deg)}
+.memcard.flipped .memback,.memcard.matched .memback{transform:rotateY(180deg)}
+.memcard.flipped .memfront,.memcard.matched .memfront{transform:rotateY(0)}
+.memcard.matched .memfront{background:#e9f7ea;border-color:#9ccf9e;color:#2c6e2f}
+
+/* ═══════════ الأزرار الفضائية المُشكَّلة (SVG) ═══════════ */
+.actions{
+  display:flex;justify-content:center;align-items:center;gap:30px;
+  margin-top:30px;flex-wrap:wrap;
+}
+.shape-btn{
+  position:relative;background:none;border:none;cursor:pointer;
+  font-family:inherit;padding:0;
+  transition:transform .18s, filter .2s;
+}
+.shape-btn:hover{transform:translateY(-4px) scale(1.04)}
+.shape-btn:active{transform:scale(.96)}
+.shape-btn svg{display:block;width:100%;height:100%}
+.shape-btn .cap{
+  position:absolute;left:0;right:0;text-align:center;
+  color:#fff;font-weight:800;pointer-events:none;
+}
+/* ⑥ تحقّق: نجمة خضراء بحد أبيض — توهج أخضر عند المرور */
+.btn-check{width:136px;height:136px;filter:drop-shadow(0 6px 12px rgba(60,130,40,.35))}
+.btn-check:hover{filter:drop-shadow(0 0 16px rgba(120,210,70,.8)) drop-shadow(0 8px 14px rgba(60,130,40,.35))}
+.btn-check .cap{top:57%;font-size:1.3rem;text-shadow:0 2px 4px rgba(25,90,15,.65)}
+/* ⑦ إعادة: كوكب أزرق بحلقة برتقالية — توهج برتقالي عند المرور */
+.btn-reset{width:180px;height:120px;filter:drop-shadow(0 6px 12px rgba(40,100,150,.3))}
+.btn-reset:hover{filter:drop-shadow(0 0 16px rgba(255,170,60,.75)) drop-shadow(0 8px 14px rgba(40,100,150,.3))}
+.btn-reset .cap{top:50%;transform:translateY(-50%);font-size:1.28rem;text-shadow:0 2px 5px rgba(0,45,85,.75)}
+.btn-reset .rot{font-family:'Segoe UI Symbol','Segoe UI',sans-serif;font-weight:400}
+/* ⑧ التالي: صاروخ أزرق — توهج أزرق + اهتزاز عند الضغط */
+.nav-next{width:216px;height:88px;filter:drop-shadow(0 6px 12px rgba(30,80,130,.3))}
+.nav-next:hover{filter:drop-shadow(0 0 15px rgba(90,180,240,.8)) drop-shadow(0 8px 14px rgba(30,80,130,.3))}
+.nav-next .cap{top:50%;transform:translateY(-50%);font-size:1.25rem;padding-left:44px;padding-right:34px;text-shadow:0 2px 4px rgba(0,45,85,.75)}
+.nav-next.shaking{animation:rocket-shake .45s ease-in-out}
+@keyframes rocket-shake{
+  0%,100%{transform:translate(0,0) rotate(0)}
+  20%{transform:translate(2px,-3px) rotate(1.5deg)}
+  40%{transform:translate(-2px,2px) rotate(-1.5deg)}
+  60%{transform:translate(2px,2px) rotate(1deg)}
+  80%{transform:translate(-2px,-2px) rotate(-1deg)}
+}
+/* ⑨ السابق: شهاب برتقالي — توهج برتقالي */
+.nav-prev{width:216px;height:88px;filter:drop-shadow(0 6px 12px rgba(180,90,20,.3))}
+.nav-prev:hover{filter:drop-shadow(0 0 15px rgba(255,160,60,.8)) drop-shadow(0 8px 14px rgba(180,90,20,.3))}
+.nav-prev .cap{top:50%;transform:translateY(-50%);font-size:1.25rem;padding-right:70px;padding-left:40px;text-shadow:0 2px 4px rgba(130,60,0,.65)}
+.nav-prev:disabled,.nav-next:disabled{opacity:.4;cursor:default}
+.nav-prev:disabled:hover,.nav-next:disabled:hover{transform:none;filter:drop-shadow(0 6px 12px rgba(30,80,130,.2))}
+/* إنهاء: كبسولة ذهبية (يظهر في السؤال الأخير مكان التالي) */
+.nav-finish{
+  font-family:inherit;font-size:1.2rem;font-weight:800;
+  background:linear-gradient(180deg,var(--gold),#f0b93a);
+  color:#5b4413;border:2.5px solid #c2922a;border-bottom-width:5px;
+  border-radius:999px;padding:15px 44px;cursor:pointer;
+  box-shadow:0 6px 16px rgba(190,140,40,.35);
+  transition:transform .15s, box-shadow .15s;
+}
+.nav-finish:hover{transform:translateY(-3px);box-shadow:0 0 18px rgba(255,200,80,.7), 0 8px 18px rgba(190,140,40,.4)}
+
+/* ═══════════ التغذية الراجعة ═══════════ */
+.fb{min-height:36px;text-align:center;font-weight:800;font-size:1.25rem;margin-top:22px;transition:opacity .2s}
+.fb.good{color:var(--good)}
+.fb.bad{color:var(--bad)}
+
+/* ⑩ شريط التنقّل السفلي: السابق (يمين) / المؤشر (وسط) / التالي (يسار) */
+.qnav{
+  display:flex;justify-content:center;align-items:center;gap:30px;
+  margin-top:32px;flex-wrap:wrap;position:relative;z-index:2;
+}
+.nav-progress{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'Cairo',sans-serif;font-weight:900;font-size:1.18rem;color:#fff;
+  background:linear-gradient(180deg,#24476a,var(--navy));
+  border:2.5px solid #0e2740;
+  border-radius:999px;padding:15px 40px;
+  box-shadow:0 5px 14px rgba(22,52,79,.3), inset 0 2px 0 rgba(255,255,255,.14);
+}
+.nav-progress b{color:var(--gold)}
+.nav-progress .tw{color:var(--gold);font-size:.85rem;margin:0 4px;text-shadow:0 0 8px rgba(255,215,94,.85)}
+
+/* نتيجة الإنهاء */
+.result-box{
+  margin-top:28px;text-align:center;
+  background:#fff;
+  border:2px solid var(--cream-line);
+  border-radius:26px;padding:28px;
+  box-shadow:0 10px 28px rgba(160,120,40,.16);
+}
+.result-box h3{font-family:'Cairo',sans-serif;font-size:1.55rem;color:#b07714;margin-bottom:12px}
+.result-box p{font-size:1.18rem;color:var(--ink)}
+
+/* شارة الصفحة التجريبية */
+.test-badge{
+  position:fixed;top:14px;left:14px;z-index:9;
+  background:rgba(255,120,60,.92);color:#fff;font-weight:800;font-size:.85rem;
+  border-radius:999px;padding:6px 16px;
+  box-shadow:0 3px 10px rgba(0,0,0,.25);
+}
+
+@media(max-width:760px){
+  .qzone{padding:24px}
+  .q-title{font-size:1.45rem}
+  .fbtext{font-size:1.3rem}
+  .match{gap:24px}
+  .nav-next,.nav-prev{width:182px;height:76px}
+  .btn-reset{width:156px;height:106px}
+  .btn-check{width:118px;height:118px}
+}
+</style>
+</head>
+<body>
+
+<span class="bg-spark" style="top:12%;right:5%;font-size:22px">✦</span>
+<span class="bg-spark b" style="top:40%;right:3%;font-size:15px;animation-delay:1.2s">✦</span>
+<span class="bg-spark b" style="top:20%;left:6%;font-size:18px;animation-delay:.6s">✦</span>
+<span class="bg-spark" style="top:68%;left:4%;font-size:14px;animation-delay:2s">✦</span>
+<span class="bg-spark b" style="top:6%;left:40%;font-size:15px;animation-delay:1.6s">✦</span>
+
+<span class="test-badge">🧪 صفحة تجريبية — لا تمسّ الدرس الأصلي</span>
+
+<div class="frame">
+
+  <!-- الرأس: رقم السؤال (يمين) + نوع السؤال (يسار) -->
+  <div class="head-row">
+    <span class="q-chip"><span class="st">★</span> <span id="qNum">سؤال ١</span></span>
+    <span class="type-chip">
+      <span class="lb" id="qType"></span>
+      <span class="ic" id="qTypeIcon">📖</span>
+    </span>
+  </div>
+
+  <!-- نص السؤال -->
+  <h2 class="q-title"><span class="tw">✦</span><span id="qPrompt"></span><span class="tw">✦</span></h2>
+
+  <!-- جسم السؤال -->
+  <div id="qBody"></div>
+
+  <div class="fb" id="qFb"></div>
+
+  <!-- شريط التنقّل السفلي -->
+  <div class="qnav">
+    <button class="shape-btn nav-prev" id="btnPrev" aria-label="السابق">
+      <svg viewBox="0 0 240 100" aria-hidden="true">
+        <defs>
+          <linearGradient id="gCmB" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#ffb648"/><stop offset="1" stop-color="#f08420"/>
+          </linearGradient>
+          <linearGradient id="gCmT" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#ffcf5e"/><stop offset="1" stop-color="#ff9838"/>
+          </linearGradient>
+        </defs>
+        <!-- ذيل الشهاب (يسار) -->
+        <path d="M118 50 C152 24 190 16 238 12 C210 30 204 38 232 44 C204 50 200 56 228 64 C200 68 194 74 212 86 C178 84 146 68 118 50 Z" fill="url(#gCmT)" opacity=".9"/>
+        <path d="M126 50 C154 32 184 26 216 22 C196 36 194 42 212 48 C192 52 190 58 206 66 C182 66 152 60 126 50 Z" fill="#ffe29a" opacity=".85"/>
+        <!-- جسم الشهاب -->
+        <rect x="6" y="22" width="140" height="56" rx="28" fill="url(#gCmB)" stroke="#d9731a" stroke-width="3"/>
+        <rect x="20" y="30" width="86" height="11" rx="5.5" fill="#ffe0a6" opacity=".7"/>
+        <!-- سهم الرجوع داخل دائرة فاتحة -->
+        <circle cx="42" cy="50" r="17" fill="#fff3dd" stroke="#e8963c" stroke-width="2.5"/>
+        <path d="M36 50 L50 42 L50 58 Z" fill="#f08420"/>
+      </svg>
+      <span class="cap">السابق</span>
+    </button>
+
+    <span class="nav-progress"><span class="tw">✦</span><span id="qProgress"></span><span class="tw">✦</span></span>
+
+    <button class="shape-btn nav-next" id="btnNext" aria-label="التالي">
+      <svg viewBox="0 0 240 100" aria-hidden="true">
+        <defs>
+          <linearGradient id="gRkB" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#5fb3e6"/><stop offset="1" stop-color="#2a6da8"/>
+          </linearGradient>
+        </defs>
+        <!-- لهب الصاروخ (يسار) -->
+        <path d="M46 50 C28 32 18 28 2 22 C12 38 12 62 2 78 C18 72 28 68 46 50 Z" fill="#ffb23e"/>
+        <path d="M46 50 C34 38 26 35 14 31 C21 43 21 57 14 69 C26 65 34 62 46 50 Z" fill="#ffe07a"/>
+        <!-- الزعنفتان الحمراوان -->
+        <path d="M88 24 L62 6 L54 26 Z" fill="#e04f3f" stroke="#b23527" stroke-width="2"/>
+        <path d="M88 76 L62 94 L54 74 Z" fill="#e04f3f" stroke="#b23527" stroke-width="2"/>
+        <!-- جسم الصاروخ -->
+        <rect x="42" y="24" width="162" height="52" rx="26" fill="url(#gRkB)" stroke="#16344f" stroke-width="3.5"/>
+        <rect x="58" y="31" width="110" height="9" rx="4.5" fill="#a5daf4" opacity=".65"/>
+        <!-- المقدمة الحمراء (يمين كما في الصورة) -->
+        <path d="M198 24 C220 31 234 42 239 50 C234 58 220 69 198 76 Z" fill="#e04f3f" stroke="#b23527" stroke-width="2.5"/>
+      </svg>
+      <span class="cap">التالي</span>
+    </button>
+
+    <button class="nav-finish" id="btnFinish">إنهاء 🏁</button>
+  </div>
+
+  <div id="qResult"></div>
+</div>
+
+<script src="js/questions.js"></script>
+<script>
+/* ═══════════════════════════════════════════════════════
+   منطق الصفحة التجريبية — نسخة مستقلة مبسّطة من محرّك الأسئلة
+   (لا يمسّ js/app.js — الأصناف والستايل خاصّان بهذه الصفحة)
+   ═══════════════════════════════════════════════════════ */
+
+/* أدوات */
+function shuffle(a){return a.map(function(v){return [Math.random(),v];}).sort(function(x,y){return x[0]-y[0];}).map(function(v){return v[1];});}
+function arNum(n){return String(n).replace(/[0-9]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'[+d];});}
+
+/* أسماء أنواع الأسئلة وأيقوناتها (لشارة النوع أعلى اليسار) */
+var TYPE_LABEL={'true-false':'صواب أو خطأ','mcq':'اختيار من متعدد','matching':'توصيل','classify':'تصنيف','fill-blank':'ملء الفراغ','audio-q':'سؤال صوتي','memory':'بطاقات الذاكرة'};
+var TYPE_ICON={'true-false':'⚖️','mcq':'✅','matching':'🔗','classify':'🗂️','fill-blank':'📖','audio-q':'🔊','memory':'🎴'};
+
+/* أيقونات معبّرة لبطاقات الكلمات (تظهر فقط للكلمات المعرَّفة هنا) */
+var WORD_ICONS={
+  'الموطن':'🏞️','حادّة':'✂️','مسطّحة':'🥞','ناعمة':'🪶','طويلة':'📏',
+  'أجنحة قوية':'🪽','مخالب حادّة':'🪝','أقدام مسطّحة':'🦶',
+  'ريش يحفظ الحرارة':'🪶','جسم انسيابي':'🐬','طيران سريع':'💨'
+};
+function chipHTML(w){
+  var ic=WORD_ICONS[w];
+  return '<div class="chip" draggable="true" data-w="'+w+'">'+
+    (ic?'<span class="wi">'+ic+'</span>':'')+'<span>'+w+'</span></div>';
+}
+
+/* أزرار تحقّق (نجمة بحد أبيض) وإعادة (كوكب بحلقة برتقالية) — معرّفات فريدة لكل نسخة */
+var UID=0;
+function btnCheckHTML(){
+  var id='gs'+(++UID);
+  return '<button class="shape-btn btn-check" type="button">'+
+    '<svg viewBox="0 0 120 120" aria-hidden="true">'+
+    '<defs><linearGradient id="'+id+'" x1="0" y1="0" x2="0" y2="1">'+
+    '<stop offset="0" stop-color="#a8e85e"/><stop offset="1" stop-color="#48a51e"/></linearGradient></defs>'+
+    '<path d="M60 5 L75 41 L113 44 L84 69 L93 107 L60 86 L27 107 L36 69 L7 44 L45 41 Z" '+
+      'fill="url(#'+id+')" stroke="#ffffff" stroke-width="6" stroke-linejoin="round"/>'+
+    '<circle cx="60" cy="43" r="14" fill="#fff"/>'+
+    '<path d="M53 43 l5 6 l11 -12" fill="none" stroke="#3f9d2f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>'+
+    '</svg><span class="cap">تحقّق</span></button>';
+}
+function btnResetHTML(){
+  var g='gp'+(++UID), r='gr'+(++UID), c='gc'+(++UID);
+  return '<button class="shape-btn btn-reset" type="button">'+
+    '<svg viewBox="0 0 200 130" aria-hidden="true">'+
+    '<defs>'+
+    '<radialGradient id="'+g+'" cx=".35" cy=".3" r="1"><stop offset="0" stop-color="#6ec4ef"/><stop offset="1" stop-color="#1f6da8"/></radialGradient>'+
+    '<linearGradient id="'+r+'" x1="0" x2="1"><stop offset="0" stop-color="#ffb648"/><stop offset="1" stop-color="#f08420"/></linearGradient>'+
+    '<clipPath id="'+c+'"><rect x="0" y="66" width="200" height="64"/></clipPath>'+
+    '</defs>'+
+    '<g transform="rotate(-14 100 66)"><ellipse cx="100" cy="66" rx="92" ry="25" fill="none" stroke="url(#'+r+')" stroke-width="12"/></g>'+
+    '<circle cx="100" cy="64" r="45" fill="url(#'+g+')" stroke="#fff" stroke-width="3.5"/>'+
+    '<circle cx="84" cy="50" r="9" fill="#4a97c9" opacity=".8"/>'+
+    '<circle cx="115" cy="79" r="7" fill="#3d88ba" opacity=".8"/>'+
+    '<circle cx="112" cy="47" r="4.5" fill="#9adcf7" opacity=".9"/>'+
+    '<g transform="rotate(-14 100 66)" clip-path="url(#'+c+')"><ellipse cx="100" cy="66" rx="92" ry="25" fill="none" stroke="url(#'+r+')" stroke-width="12"/></g>'+
+    '</svg><span class="cap"><span class="rot">↺</span> إعادة</span></button>';
+}
+function actionsHTML(withCheck){
+  return '<div class="actions">'+(withCheck?btnCheckHTML():'')+btnResetHTML()+'</div>';
+}
+
+/* أصوات التغذية الراجعة (نفس ملفات المنصّة) */
+var sndGood=new Audio('audio/correct.mp3'); sndGood.preload='auto';
+var sndBad =new Audio('audio/wrong.mp3');   sndBad.preload='auto';
+function play(a){try{a.currentTime=0;var p=a.play();if(p&&p.catch)p.catch(function(){});}catch(e){}}
+
+/* بيانات الدرس من js/questions.js (قراءة فقط) */
+var LESSON='g4s-2-1';
+var qs=(window.QUESTIONS && QUESTIONS[LESSON]) || [];
+
+/* ══════ عناصر الصفحة ══════ */
+var elNum=document.getElementById('qNum'),
+    elType=document.getElementById('qType'),
+    elTypeIcon=document.getElementById('qTypeIcon'),
+    elPrompt=document.getElementById('qPrompt'),
+    elBody=document.getElementById('qBody'),
+    elFb=document.getElementById('qFb'),
+    elProgress=document.getElementById('qProgress'),
+    btnPrev=document.getElementById('btnPrev'),
+    btnNext=document.getElementById('btnNext'),
+    btnFinish=document.getElementById('btnFinish'),
+    elResult=document.getElementById('qResult');
+
+/* تُحفظ حالة كل سؤال (بطاقته) كي لا تضيع الإجابات عند التنقّل */
+var slides=qs.map(function(q){return {q:q, dom:document.createElement('div'), built:false, done:false, fbMsg:'', fbCls:'fb'};});
+
+var R={
+  'true-false':renderTrueFalse,'mcq':renderMcq,'matching':renderMatching,
+  'classify':renderClassify,'fill-blank':renderFillBlank,'audio-q':renderAudioQ,'memory':renderMemory
+};
+
+var cur=0;
+function show(i){
+  cur=Math.max(0,Math.min(qs.length-1,i));
+  var sl=slides[cur], q=sl.q;
+  elNum.textContent='سؤال '+arNum(cur+1);
+  elType.textContent=TYPE_LABEL[q.type]||'نشاط تفاعلي';
+  elTypeIcon.textContent=TYPE_ICON[q.type]||'📖';
+  elPrompt.textContent=q.prompt||q.statement||'';
+  elBody.innerHTML=''; elBody.appendChild(sl.dom);
+  if(!sl.built){
+    sl.built=true;
+    var fn=R[q.type];
+    if(fn) fn(q, sl.dom, sl);
+    else sl.dom.innerHTML='<div class="qzone" style="text-align:center">نوع السؤال «'+q.type+'» غير مدعوم في هذه الصفحة التجريبية</div>';
+  }
+  elFb.textContent=sl.fbMsg; elFb.className=sl.fbCls;
+  elProgress.innerHTML='السؤال <b>'+arNum(cur+1)+'</b> من <b>'+arNum(qs.length)+'</b>';
+  btnPrev.disabled=(cur===0);
+  var last=(cur===qs.length-1);
+  btnNext.style.display=last?'none':'';
+  btnFinish.style.display=last?'':'none';
+  elResult.innerHTML='';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function win(sl,msg){sl.fbMsg=msg||'🎉 أحسنت!';sl.fbCls='fb good';sl.done=true;if(slides[cur]===sl){elFb.textContent=sl.fbMsg;elFb.className=sl.fbCls;}play(sndGood);}
+function fail(sl,msg){sl.fbMsg=msg||'حاول مرة أخرى';sl.fbCls='fb bad';if(slides[cur]===sl){elFb.textContent=sl.fbMsg;elFb.className=sl.fbCls;}play(sndBad);}
+function resetSlide(sl,rebuild){sl.done=false;sl.fbMsg='';sl.fbCls='fb';rebuild();if(slides[cur]===sl){elFb.textContent='';elFb.className='fb';}}
+
+btnPrev.onclick=function(){show(cur-1);};
+/* التالي: اهتزاز لطيف للصاروخ ثم الانتقال */
+btnNext.onclick=function(){
+  btnNext.classList.remove('shaking');
+  void btnNext.offsetWidth;             /* إعادة تشغيل الحركة */
+  btnNext.classList.add('shaking');
+  setTimeout(function(){btnNext.classList.remove('shaking');},500);
+  show(cur+1);
+};
+btnFinish.onclick=function(){
+  var good=slides.filter(function(s){return s.done;}).length;
+  elResult.innerHTML='<div class="result-box"><h3>🎉 أنهيت الدرس!</h3>'+
+    '<p>أجبت صحيحاً عن <b>'+arNum(good)+'</b> من <b>'+arNum(qs.length)+'</b> أسئلة.</p>'+
+    (good===qs.length?'<p>ممتاز! أكملت كل الأسئلة 🌟</p>':'<p>أحسنت! يمكنك الرجوع وإكمال ما تبقّى.</p>')+
+    '</div>';
+  window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
+};
+
+/* ══════ ④ صواب وخطأ ══════ */
+function renderTrueFalse(q, host, sl){
+  host.innerHTML='<div class="qzone"><div class="tf-btns">'+
+    '<button class="tf tf-t">صواب ✔</button><button class="tf tf-f">خطأ ✘</button></div></div>';
+  var done=false;
+  function judge(val,btn){
+    if(done)return;
+    if(val===q.answer){done=true;btn.classList.add('tf-correct');win(sl,'🎉 إجابة صحيحة!');}
+    else{btn.classList.add('tf-wrong');fail(sl,'الإجابة غير صحيحة، فكّر مجدداً');}
+  }
+  host.querySelector('.tf-t').onclick=function(e){judge(true,e.currentTarget);};
+  host.querySelector('.tf-f').onclick=function(e){judge(false,e.currentTarget);};
+}
+
+/* ══════ ③ اختيار من متعدد ══════ */
+function renderMcq(q, host, sl){
+  var opts=shuffle(q.options.map(function(o,idx){return {o:o,idx:idx};}));
+  host.innerHTML='<div class="qzone"><div class="opts">'+
+    opts.map(function(x){return '<button class="opt" data-i="'+x.idx+'">'+x.o+'</button>';}).join('')+
+    '</div></div>';
+  var done=false;
+  host.querySelectorAll('.opt').forEach(function(btn){btn.onclick=function(){
+    if(done)return;
+    if(+btn.dataset.i===q.answer){done=true;btn.classList.add('correct');host.querySelectorAll('.opt').forEach(function(b){b.disabled=true;});win(sl,'🎉 إجابة صحيحة!');}
+    else{btn.classList.add('wrong');btn.disabled=true;fail(sl,'ليست الصحيحة، جرّب خياراً آخر');}
+  };});
+}
+
+/* ══════ ② توصيل ══════ */
+function renderMatching(q, host, sl){
+  host.innerHTML='<div class="qzone"><div class="matchwrap"><svg class="matchsvg"></svg>'+
+    '<div class="match"><div class="mcol mcolL"></div><div class="mcol mcolR"></div></div></div></div>'+
+    actionsHTML(false);
+  var wrap=host.querySelector('.matchwrap'), svg=host.querySelector('.matchsvg');
+  var L=host.querySelector('.mcolL'), Rr=host.querySelector('.mcolR');
+  var sel=null, done=0, NS='http://www.w3.org/2000/svg', LINE='#6fbf55';
+  function drawLink(a,b){
+    var wr=wrap.getBoundingClientRect(), ra=a.getBoundingClientRect(), rb=b.getBoundingClientRect();
+    var aRight=ra.left<rb.left;
+    var ax=(aRight?ra.right:ra.left)-wr.left, ay=ra.top+ra.height/2-wr.top;
+    var bx=(aRight?rb.left:rb.right)-wr.left, by=rb.top+rb.height/2-wr.top;
+    var mx=(ax+bx)/2;
+    var p=document.createElementNS(NS,'path');
+    p.setAttribute('d','M '+ax+' '+ay+' C '+mx+' '+ay+', '+mx+' '+by+', '+bx+' '+by);
+    p.setAttribute('fill','none');p.setAttribute('stroke',LINE);
+    p.setAttribute('stroke-width','3.5');p.setAttribute('stroke-linecap','round');
+    svg.appendChild(p);
+    [[ax,ay],[bx,by]].forEach(function(pt){var c=document.createElementNS(NS,'circle');
+      c.setAttribute('cx',pt[0]);c.setAttribute('cy',pt[1]);c.setAttribute('r','5');c.setAttribute('fill',LINE);svg.appendChild(c);});
+  }
+  shuffle(q.pairs).forEach(function(pr){var d=document.createElement('div');d.className='mitem left';d.textContent=pr.a;d.dataset.k=pr.a;
+    d.onclick=function(){if(d.classList.contains('matched'))return;L.querySelectorAll('.left').forEach(function(x){x.classList.remove('selected');});d.classList.add('selected');sel=d;};L.appendChild(d);});
+  shuffle(q.pairs).forEach(function(pr){var d=document.createElement('div');d.className='mitem right';d.dataset.k=pr.a;d.textContent=pr.b;
+    d.onclick=function(){if(!sel||d.classList.contains('matched'))return;
+      if(sel.dataset.k===pr.a){drawLink(sel,d);sel.classList.add('matched');d.classList.add('matched');sel.classList.remove('selected');sel=null;done++;play(sndGood);
+        if(done===q.pairs.length)win(sl,'🌟 ممتاز! أكملت التوصيل');}
+      else{fail(sl,'ليست الإجابة الصحيحة، حاول مجدداً');d.style.background='#fdecea';setTimeout(function(){d.style.background='';},500);}};Rr.appendChild(d);});
+  host.querySelector('.btn-reset').onclick=function(){resetSlide(sl,function(){renderMatching(q,host,sl);});};
+}
+
+/* ══════ ⑦ التصنيف ══════ */
+function renderClassify(q, host, sl){
+  var correct={}; q.groups.forEach(function(g){g.items.forEach(function(it){correct[it]=g.name;});});
+  var all=shuffle(q.groups.reduce(function(a,g){return a.concat(g.items);},[]));
+  var groupsHtml=q.groups.map(function(g,i){
+    return '<div class="grp"><div class="grp-h">'+g.name+'</div><div class="grp-drop" data-i="'+i+'"></div></div>';}).join('');
+  host.innerHTML='<div class="qzone"><div class="grp-row">'+groupsHtml+'</div></div>'+
+    '<div class="bank-wrap"><div class="bank-title"><span class="tw">✦</span> العناصر: <span class="tw">✦</span></div>'+
+    '<div class="chips-row">'+all.map(chipHTML).join('')+'</div></div>'+
+    actionsHTML(true);
+  var dragged=null;
+  var clearMark=function(){host.querySelectorAll('.chip').forEach(function(c){c.classList.remove('ok','no');});};
+  var place=function(zone){if(!dragged)return;zone.appendChild(dragged);clearMark();dragged=null;};
+  host.querySelectorAll('.chip').forEach(function(chip){
+    chip.addEventListener('dragstart',function(){dragged=chip;chip.classList.add('dragging');});
+    chip.addEventListener('dragend',function(){chip.classList.remove('dragging');});
+    chip.addEventListener('touchstart',function(){dragged=chip;chip.classList.add('dragging');},{passive:true});
+    chip.addEventListener('touchend',function(e){var t=e.changedTouches[0];var el=document.elementFromPoint(t.clientX,t.clientY);var z=el&&el.closest('.grp-drop, .chips-row');if(z)place(z);chip.classList.remove('dragging');});
+  });
+  host.querySelectorAll('.grp-drop, .chips-row').forEach(function(zone){
+    zone.addEventListener('dragover',function(e){e.preventDefault();zone.classList.add('over');});
+    zone.addEventListener('dragleave',function(){zone.classList.remove('over');});
+    zone.addEventListener('drop',function(e){e.preventDefault();zone.classList.remove('over');place(zone);});
+  });
+  host.querySelector('.btn-check').onclick=function(){
+    var ok=0,total=all.length;
+    q.groups.forEach(function(g,i){
+      host.querySelector('.grp-drop[data-i="'+i+'"]').querySelectorAll('.chip').forEach(function(c){
+        if(correct[c.dataset.w]===g.name){c.classList.add('ok');c.classList.remove('no');ok++;}
+        else{c.classList.add('no');c.classList.remove('ok');}
+      });
+    });
+    if(ok===total)win(sl,'🎉 أحسنت! كل العناصر في مجموعتها');
+    else fail(sl,'راجع التصنيف — الصحيح '+arNum(ok)+' من '+arNum(total));
+  };
+  host.querySelector('.btn-reset').onclick=function(){resetSlide(sl,function(){renderClassify(q,host,sl);});};
+}
+
+/* ══════ ⑧ ملء الفراغ بالسحب ══════ */
+function renderFillBlank(q, host, sl){
+  var parts=q.text.split('{}'), n=parts.length-1;
+  var sentence='<p class="fbtext">';
+  parts.forEach(function(seg,i){
+    sentence+='<span>'+seg+'</span>';
+    if(i<n)sentence+='<span class="blank" data-i="'+i+'" data-answer="'+q.answers[i]+'"></span>';
+  });
+  sentence+='</p>';
+  var bankWords=shuffle(q.answers.concat(q.distractors||[]));
+  host.innerHTML='<div class="qzone">'+sentence+'</div>'+
+    '<div class="bank-wrap"><div class="bank-title"><span class="tw">✦</span> الكلمات: <span class="tw">✦</span></div>'+
+    '<div class="chips-row">'+bankWords.map(chipHTML).join('')+'</div></div>'+
+    actionsHTML(true);
+  var dragged=null;
+  var used=function(){var p=[].slice.call(host.querySelectorAll('.blank')).map(function(b){return b.dataset.placed;}).filter(Boolean);
+    host.querySelectorAll('.chip').forEach(function(c){c.classList.toggle('used',p.indexOf(c.dataset.w)>-1);});};
+  var fill=function(bl){if(!dragged)return;bl.textContent=dragged.dataset.w;bl.dataset.placed=dragged.dataset.w;
+    bl.classList.add('filled');bl.classList.remove('correct','wrong');used();dragged=null;};
+  host.querySelectorAll('.chip').forEach(function(chip){
+    chip.addEventListener('dragstart',function(){dragged=chip;chip.classList.add('dragging');});
+    chip.addEventListener('dragend',function(){chip.classList.remove('dragging');});
+    chip.addEventListener('touchstart',function(){dragged=chip;chip.classList.add('dragging');},{passive:true});
+    chip.addEventListener('touchend',function(e){var t=e.changedTouches[0];var el=document.elementFromPoint(t.clientX,t.clientY);var bl=el&&el.closest('.blank');if(bl)fill(bl);chip.classList.remove('dragging');});
+  });
+  host.querySelectorAll('.blank').forEach(function(bl){
+    bl.addEventListener('dragover',function(e){e.preventDefault();bl.classList.add('over');});
+    bl.addEventListener('dragleave',function(){bl.classList.remove('over');});
+    bl.addEventListener('drop',function(e){e.preventDefault();bl.classList.remove('over');fill(bl);});
+    bl.addEventListener('click',function(){if(bl.dataset.placed){bl.textContent='';delete bl.dataset.placed;bl.classList.remove('filled','correct','wrong');used();}});
+  });
+  host.querySelector('.btn-check').onclick=function(){
+    var bls=host.querySelectorAll('.blank'),ok=0;
+    bls.forEach(function(bl){if(bl.dataset.placed===bl.dataset.answer){bl.classList.add('correct');bl.classList.remove('wrong');ok++;}
+      else{bl.classList.add('wrong');bl.classList.remove('correct');}});
+    if(ok===bls.length)win(sl,'🎉 أحسنت! كل الفراغات صحيحة');
+    else fail(sl,'راجع الفراغات — الصحيح '+arNum(ok)+' من '+arNum(bls.length));
+  };
+  host.querySelector('.btn-reset').onclick=function(){resetSlide(sl,function(){renderFillBlank(q,host,sl);});};
+}
+
+/* ══════ ⑬ السؤال الصوتي ══════ */
+function renderAudioQ(q, host, sl){
+  var snd=new Audio(q.sound); snd.preload='auto';
+  var opts=shuffle(q.options.map(function(o,idx){return {o:o,idx:idx};}));
+  host.innerHTML='<div class="qzone audioq">'+
+    '<button class="aplay">🔊 استمع</button>'+
+    '<div class="aopts">'+opts.map(function(x){
+      return '<button class="aopt" data-i="'+x.idx+'">'+
+        (x.o.image?'<img class="aopt-img" src="'+x.o.image+'" alt="'+(x.o.label||'')+'">':'')+
+        (x.o.label?'<span class="aopt-label">'+x.o.label+'</span>':'')+
+        '</button>';}).join('')+
+    '</div></div>';
+  host.querySelector('.aplay').onclick=function(){play(snd);};
+  host.querySelectorAll('.aopt-img').forEach(function(im){im.onerror=function(){im.style.display='none';};});
+  var done=false;
+  host.querySelectorAll('.aopt').forEach(function(btn){btn.onclick=function(){
+    if(done)return;
+    if(+btn.dataset.i===q.answer){done=true;btn.classList.add('correct');host.querySelectorAll('.aopt').forEach(function(b){b.disabled=true;});win(sl,'🎉 أحسنت! هذا هو مصدر الصوت');}
+    else{btn.classList.add('wrong');btn.disabled=true;fail(sl,'ليس هذا مصدر الصوت، استمع مرّة أخرى');}
+  };});
+}
+
+/* ══════ ⑯ بطاقات الذاكرة ══════ */
+function renderMemory(q, host, sl){
+  var cards=shuffle(q.pairs.reduce(function(a,p,i){return a.concat([{k:i,t:p.a},{k:i,t:p.b}]);},[]));
+  var cols=cards.length<=6?3:4, total=q.pairs.length;
+  host.innerHTML='<div class="qzone">'+
+    '<div class="memgrid" style="grid-template-columns:repeat('+cols+',1fr)">'+
+    cards.map(function(c){return '<button class="memcard" type="button" data-k="'+c.k+'">'+
+      '<span class="memface memback">🚀</span>'+
+      '<span class="memface memfront">'+c.t+'</span></button>';}).join('')+
+    '</div></div>'+
+    actionsHTML(false);
+  var first=null, lock=false, matched=0;
+  host.querySelectorAll('.memcard').forEach(function(card){card.onclick=function(){
+    if(lock||card.classList.contains('flipped')||card.classList.contains('matched'))return;
+    card.classList.add('flipped');
+    if(!first){first=card;return;}
+    if(first.dataset.k===card.dataset.k){
+      first.classList.add('matched');card.classList.add('matched');
+      first=null;matched++;play(sndGood);
+      if(matched===total)win(sl,'🎉 أحسنت! كشفت كل الأزواج');
+    }else{
+      lock=true;var a=first,b=card;first=null;play(sndBad);
+      setTimeout(function(){a.classList.remove('flipped');b.classList.remove('flipped');lock=false;},900);
+    }
+  };});
+  host.querySelector('.btn-reset').onclick=function(){resetSlide(sl,function(){renderMemory(q,host,sl);});};
+}
+
+/* انطلاق */
+if(qs.length) show(0);
+else document.getElementById('qBody').innerHTML='<div class="qzone" style="text-align:center">تعذّر تحميل أسئلة الدرس — شغّل الصفحة عبر خادم محلي (start-server.bat)</div>';
+</script>
+</body>
+</html>
