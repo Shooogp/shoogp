@@ -163,15 +163,11 @@
    انحناء الفتحة. مربوطة نسبياً فتلاحق كل تكبير وتصغير، والنقاط ثابتة الحجم. */
 .qfill{
   position:absolute; z-index:0;
-  /* أساس داكن محايد + لمسة خضراء خفيفة جداً بلون ثابت #5cc98a (تدرّج قطريّ باهت +
-     نقاط بيضاء مشوبة قليلاً). محسوسة لا ملحوظة. لون واحد ثابت لكل المواد. */
-  background-color:rgba(15,19,27,.70);
+  background-color:rgba(43,87,72,.65);     /* أخضر #2B5748 بشفافية 65% — التعبئة الأصلية (قبل عمل الهوية) */
   box-shadow:inset 0 0 10px rgba(0,0,0,1); /* ظل داخلي أسود واضح، انتشار 10px */
-  background-image:
-    linear-gradient(160deg, color-mix(in srgb, #5cc98a 13%, transparent) 0%, transparent 60%),
-    radial-gradient(color-mix(in srgb, #5cc98a 18%, rgba(255,255,255,.72)) 1.3px, transparent 1.7px);
-  background-size:100% 100%, 22px 22px;
-  background-position:0 0, 6px 6px;
+  background-image:radial-gradient(rgba(255,255,255,.17) 1.3px, transparent 1.7px);
+  background-size:22px 22px;
+  background-position:6px 6px;
   border-radius:8%/7%;
   backdrop-filter:blur(6px) saturate(.9);
   -webkit-backdrop-filter:blur(6px) saturate(.9);
