@@ -47,6 +47,63 @@ function frameAR(cfg){          /* الارتفاع÷العرض (لاشتقاق 
 }
 function availHeight(){ return Math.max(380, window.innerHeight*0.80); }
 
+/* ═══════════ الطبقة ٣ — زخارف الزوايا (طقم موحّد ثابت لكل المواد) ═══════════
+   أشكال SVG بالكود (كبقية عناصر الواجهة)، لون ثابت واحد.
+   أشكال مصمتة (fill) لا خطوط شعرية: ذرّة بحلقات مصمتة (annuli)، جزيء بدوائر مصمتة
+   وروابط سميكة، أنبوب جسم مصمت بسائل داخله (تجويف علويّ)، ورقة نصل مصمت بلا عرق. */
+var SUBJECT_SHAPES={
+  atom:'<svg viewBox="0 0 40 40" fill="currentColor" fill-rule="evenodd"><circle cx="20" cy="20" r="5"/><path d="M3 20a17 7.5 0 1 0 34 0a17 7.5 0 1 0-34 0ZM7.8 20a12.2 4.3 0 1 0 24.4 0a12.2 4.3 0 1 0-24.4 0Z"/><path transform="rotate(60 20 20)" d="M3 20a17 7.5 0 1 0 34 0a17 7.5 0 1 0-34 0ZM7.8 20a12.2 4.3 0 1 0 24.4 0a12.2 4.3 0 1 0-24.4 0Z"/><path transform="rotate(120 20 20)" d="M3 20a17 7.5 0 1 0 34 0a17 7.5 0 1 0-34 0ZM7.8 20a12.2 4.3 0 1 0 24.4 0a12.2 4.3 0 1 0-24.4 0Z"/></svg>',
+  molecule:'<svg viewBox="0 0 40 40" fill="currentColor"><path fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" d="M13 15 27 25M13 15 27 13"/><circle cx="13" cy="15" r="5.5"/><circle cx="27" cy="25" r="5.5"/><circle cx="27" cy="13" r="4"/></svg>',
+  testtube:'<svg viewBox="0 0 40 40" fill="currentColor" fill-rule="evenodd"><path d="M13 5H27V22A7 7 0 0 1 13 22ZM16.5 5H23.5V16H16.5Z"/></svg>',
+  leaf:'<svg viewBox="0 0 40 40" fill="currentColor"><path d="M8 32C8 16 20 6 32 8C34 20 24 32 8 32Z"/></svg>'
+};
+/* الزوايا الأربع (الطقم الموحّد الثابت): ذرّة/أنبوب/ورقة/جزيء — منحوتة في زوايا
+   جسم الإطار المستديرة (أسمك الشريط وأهدؤه). خريطة النسب في CSS معايَرة على m. */
+var DECOR_CORNERS=[
+  {pos:'sd-tl', shape:'atom'},
+  {pos:'sd-tr', shape:'testtube'},
+  {pos:'sd-bl', shape:'leaf'},
+  {pos:'sd-br', shape:'molecule'}
+];
+function buildDecor(frame){
+  if(frame.querySelector('.subject-decor')) return;
+  var d=document.createElement('div'); d.className='subject-decor'; d.setAttribute('aria-hidden','true');
+  DECOR_CORNERS.forEach(function(item){
+    var el=document.createElement('span');
+    el.className='sd-corner '+item.pos; el.dataset.name=item.shape;
+    el.innerHTML=SUBJECT_SHAPES[item.shape];
+    d.appendChild(el);
+  });
+  frame.appendChild(d);
+}
+/* ═══ تطبيق الزخارف بعد اختيار المقاس ═══
+   حارس التأجيل (البند ١): خريطة الزوايا معايَرة على m/l فقط. أي حجم آخر (s البيضويّ
+   ٤:١، أو الحاوية المرنة) لا خريطة له → لا تُرسم زخرفة إطلاقاً، ولا تُستعار خريطة m/l،
+   مع تحذير console يذكر الحجم المفقود.
+   البند ٥ (شبكة أمان): أخفِ أيّ زاوية تخرج أفقياً أو تتقاطع مع مسار الصاروخ الثابت. */
+function applyDecor(card){
+  var decor=card.querySelector('.subject-decor'); if(!decor) return;
+  var size=(card.dataset.fit||'').split('@')[0];   /* s / m / l / flex */
+  if(size!=='m' && size!=='l'){
+    decor.style.display='none';
+    if(DEV) console.warn('[زخرفة] الحجم «'+size+'» بلا خريطة زوايا (المتاح: m, l) — لم تُرسم زخارف (حارس التأجيل).');
+    return;
+  }
+  decor.style.display='';
+  var lane=document.querySelector('.rocket-lane');
+  var laneR=lane?lane.getBoundingClientRect():null;
+  var vw=window.innerWidth; var hidden=[];
+  Array.prototype.forEach.call(decor.querySelectorAll('.sd-corner'),function(dot){
+    dot.style.display='';
+    var r=dot.getBoundingClientRect(); var reason=null;
+    if(r.right<0||r.left>vw) reason='خارج الشاشة أفقياً';
+    else if(laneR && r.left<laneR.right && r.right>laneR.left) reason='تقاطع مع مسار الصاروخ';
+    if(reason){ dot.style.display='none'; hidden.push(dot.dataset.name+' ('+reason+')'); }
+  });
+  if(DEV) console.log('%c[زخرفة] '+size+' → '+(hidden.length?('مخفيّة: '+hidden.join(' · ')):'الزوايا الأربع ظاهرة ✔'),
+    'color:#3fa870;font-weight:bold');
+}
+
 /* لفّ محتوى كل بطاقة (عدا الشارتين) داخل هيكل الإطار (طبقة .qfill الشبه شفافة
    ثم نافذة .qwin) — بمقاس مبدئي محايد؛ fitFrame() هو من يختار المقاس ويضبطه */
 function frameize(){
@@ -61,6 +118,7 @@ function frameize(){
     Array.prototype.slice.call(c.children).forEach(function(ch){
       if(ch!==head) w.appendChild(ch);
     });
+    buildDecor(f);            /* الطبقة ٣: زخارف صامتة (absolute، لا تؤثر في القياس) */
     c.appendChild(f);
   });
 }
@@ -260,7 +318,7 @@ function fitShown(){
   if(shown.dataset.fitSig===sig && shown.dataset.fit) return;
   shown.dataset.fitSig=sig;
   _fitBusy=true;
-  try{ fitFrame(shown); }
+  try{ fitFrame(shown); applyDecor(shown); }
   finally{ setTimeout(function(){_fitBusy=false;},0); }
 }
 
