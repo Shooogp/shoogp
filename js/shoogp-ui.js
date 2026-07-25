@@ -1,9 +1,19 @@
 /* ═══════════════════════════════════════════════════════════════════
    نظام واجهة شوجب الفضائي (مهارة shoogp-ui) — سكربت التفعيل
-   المرحلة الأولى: مطبَّق على درس نموذج واحد فقط عبر بوّابة .shoogp-ui.
-   لا يمسّ app.js ولا بقية الدروس؛ كل ما هنا يعمل فقط حين تكون البوّابة مفتوحة.
+   مُعمَّم على كامل كتاب علوم الصف الرابع (g4-sci) عبر بوّابة .shoogp-ui.
+   لا يمسّ app.js ولا الكتب الأخرى؛ كل ما هنا يعمل فقط حين تكون البوّابة مفتوحة.
    ═══════════════════════════════════════════════════════════════════ */
-var SHOOGP_LESSON='g4s-2-1';   /* الدرس النموذج (الطيور المُدهشة) */
+/* نطاق التعميم: كامل كتاب علوم الصف الرابع، بمصدرٍ واحد لتعريف النطاق =
+   دروس DATA.index['g4-sci'] (لا تُعدَّد أسماء الدروس هنا؛ أي درس يُضاف
+   للكتاب لاحقاً يدخل النظام تلقائياً). احتياطٌ عند غياب DATA: بادئة g4s-. */
+var SHOOGP_BOOK='g4-sci';
+function lessonInScope(ls){
+  if(!ls || !ls.file) return false;
+  var idx=(window.DATA && DATA.index && DATA.index[SHOOGP_BOOK]);
+  if(!idx) return ls.file.indexOf('g4s-')===0;
+  return idx.units.some(function(u){
+    return u.lessons.some(function(l){ return l.file===ls.file; }); });
+}
 /* البوّابة: هل النظام مُفعَّل الآن؟ (صنف .shoogp-ui على #questionList) */
 function gateOn(){
   var q=document.getElementById('questionList');
@@ -307,15 +317,15 @@ window.addEventListener('resize',function(){
   fitShown(); watchShown();
 });
 
-/* ═══ تفعيل النظام لدرس نموذج واحد فقط (المرحلة الأولى من التعميم) ═══
+/* ═══ تفعيل النظام لكامل كتاب علوم الصف الرابع (g4-sci) ═══
    نرقّع openLesson (دون تعديل app.js المشترك): نضيف صنف .shoogp-ui على
-   #questionList عند فتح الدرس النموذج فقط، ونزيله لأي درس آخر — فتبقى كل
-   أنماط النظام وسكربته معزولةً في هذا الدرس ولا تمسّ بقية الدروس. */
+   #questionList عند فتح أي درس من الكتاب، ونزيله لأي كتاب آخر — فيبقى النظام
+   معزولاً في هذا الكتاب وحده ولا يمسّ بقية الكتب. */
 (function(){
   var orig=window.openLesson;
   if(typeof orig!=='function') return;
   window.openLesson=function(ls){
-    var on = !!(ls && ls.file===SHOOGP_LESSON);
+    var on = lessonInScope(ls);
     var q=document.getElementById('questionList');
     if(q) q.classList.toggle('shoogp-ui', on);   /* البوّابة: قبل بناء الأسئلة */
     return orig.apply(this, arguments);
