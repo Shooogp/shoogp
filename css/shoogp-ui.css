@@ -163,7 +163,7 @@
    انحناء الفتحة. مربوطة نسبياً فتلاحق كل تكبير وتصغير، والنقاط ثابتة الحجم. */
 .qfill{
   position:absolute; z-index:0;
-  background-color:rgba(43,87,72,.65);     /* أخضر #2B5748 بشفافية 65% — التعبئة الأصلية (قبل عمل الهوية) */
+  background-color:rgba(43,87,72,.65);     /* أخضر #2B5748 بشفافية 65% — لكل الأسئلة */
   box-shadow:inset 0 0 10px rgba(0,0,0,1); /* ظل داخلي أسود واضح، انتشار 10px */
   background-image:radial-gradient(rgba(255,255,255,.17) 1.3px, transparent 1.7px);
   background-size:22px 22px;
@@ -430,31 +430,4 @@
              0 0 16px rgba(95,191,106,.65) !important;
   color:#1f4a26 !important; text-shadow:none !important;
 }
-
-/* ═══════════════════════════════════════════════════════════════════
-   ★ زخارف الزوايا — طقم موحّد ثابت لكل المواد ★
-   لون ثابت واحد #5cc98a (بلا متغيّر ولا تبديل حسب المادة).
-   ═══════════════════════════════════════════════════════════════════ */
-/* الطبقة ٣ — زخارف SVG بالكود منحوتة في زوايا جسم الإطار: فوق صورة الإطار
-   (.qmoon) وتحت المحتوى، لا تؤثر في المقاس (البند ٤: absolute)، بلا حركة (البند ٦)،
-   currentColor بلون ثابت. الشفافية 0.55 (الشريط فاتح). */
-.subject-decor{
-  position:absolute; inset:0; z-index:1; pointer-events:none;
-  color:#5cc98a; opacity:.55;
-}
-/* حجم وموضع بالنسب فتتكبّر وتتصغّر مع الإطار (لا حجم ثابت).
-   السقف: 5.6% أقصى حجم يبقى محيط الشكل كاملاً على الصخر في m وl (6.4% يتجاوزه). */
-.subject-decor .sd-corner{
-  position:absolute; width:5.6%; aspect-ratio:1; transform:translate(-50%,-50%);
-  /* معالجة حفر للمساحة المصمتة: حزّ داكن أعلى (عمق التجويف) + شفة فاتحة أسفل
-     (حافة التجويف تلتقط الضوء) — منحوتة في الصخر لا ملصقة فوقه */
-  filter:drop-shadow(0 1.5px 0 rgba(255,255,255,.6)) drop-shadow(0 -1.5px 1px rgba(0,0,0,.45));
-}
-.subject-decor .sd-corner svg{ display:block; width:100%; height:100%; }
-/* خريطة الزوايا الأربع (معايَرة على m، ~٣٢٪ داخل الشريط = النصف الخارجي،
-   بعيداً عن الحافة الداخلية؛ على l الأسمك تقع أكثر خارجيةً = آمنة). */
-.subject-decor .sd-tl{ left:6.6%;  top:6.6%; }
-.subject-decor .sd-tr{ left:94.5%; top:5.4%; }
-.subject-decor .sd-bl{ left:7.2%;  top:92.7%; }
-.subject-decor .sd-br{ left:93.4%; top:93.4%; }
 
