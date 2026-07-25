@@ -44,16 +44,35 @@ var FRAME_SIZES={
   m:{img:'../images/ui/frame-moon-m.png', ar:'1445 / 1055',
      win:{top:'10%',   left:'9.5%',  right:'9.5%',  bottom:'11%'}},
   l:{img:'../images/ui/frame-moon-l.png', ar:'1246 / 1222',
-     win:{top:'10.5%', left:'12.5%', right:'11.5%', bottom:'11.5%'}}
+     win:{top:'10.5%', left:'12.5%', right:'11.5%', bottom:'11.5%'}},
+  tall:{img:'../images/ui/frame-moon-tall.png', ar:'968 / 1464',
+     win:{top:'8.4%',  left:'14.6%', right:'14.3%', bottom:'13.8%'}}
 };
-var FRAME_ORDER=['s','m','l'];
+/* ترتيب التقييم — العضو الجديد يُضاف هنا وفي FRAME_SIZES فقط، بلا إعادة هيكلة */
+var FRAME_ORDER=['s','m','l','tall'];
 var BASE_FILL=0.70;   /* حجم مقياس 1: ارتفاع الإطار = 70% من المساحة المتاحة */
-var CAP_UP=1.30, CAP_DOWN=0.75, OUTER=0.92;
+var CAP_DOWN=0.75;    /* حدّ التصغير: −25% من الحجم الأساسي */
 var DEV=true;         /* تقرير تطويري في الطرفية عن دقّة الحساب المسبق */
+/* الحاوية المرنة (qflex) ملاذٌ أخير ونادر بعد إضافة tall. لم تعد معفاةً من فحص
+   النسبة: يُطبع رقم انحراف صندوقها عن نسبة نافذة l. لا سقف ولا مئزر ولا round —
+   صورتها تُعرض contain كسائر الإطارات (بلا مطّ ولا تكرار). */
+var QFLEX_NOM_AR=1246/1222;     /* نسبة إطار l (مرجع طباعة الانحراف) */
 
 function frameAR(cfg){          /* الارتفاع÷العرض (لاشتقاق ارتفاع من عرض) */
   if(!cfg._r){ var p=cfg.ar.split('/'); cfg._r=parseFloat(p[1])/parseFloat(p[0]); }
   return cfg._r;
+}
+/* نسبة نافذة الإطار (العرض÷الارتفاع بعد إزاحات .win) — مفتاح الاختيار بالنسبة.
+   محسوبة مرّة ومخبّأة. تُقارَن بنسبة المحتوى: الإطار يسع المحتوى إن كانت نسبة
+   نافذته ≤ نسبة المحتوى، والأفضل = أعلى نسبة نافذة تسعه (أقلّ فراغ رأسيّ). */
+function frameWinAR(cfg){
+  if(cfg._war==null){
+    var p=cfg.ar.split('/'), W=parseFloat(p[0]), H=parseFloat(p[1]);
+    var iw=1-parseFloat(cfg.win.left)/100-parseFloat(cfg.win.right)/100;
+    var ih=1-parseFloat(cfg.win.top)/100-parseFloat(cfg.win.bottom)/100;
+    cfg._war=(W*iw)/(H*ih);
+  }
+  return cfg._war;
 }
 function availHeight(){ return Math.max(380, window.innerHeight*0.80); }
 
@@ -93,7 +112,7 @@ function frameFits(f,fill,w,size,Wf){
   f.style.width=Wf+'px';
   return w.scrollHeight<=w.clientHeight+2;   /* قراءة تفرض التخطيط */
 }
-/* الملاذ الأخير: حاوية مرنة بروح العائلة، بلا تمرير */
+/* الملاذ الأخير: حاوية مرنة بروح العائلة، بلا تمرير (صورة الإطار contain) */
 function toFlex(f,fill,w,base){
   applyFrame(f,fill,w,base);
   f.className='qframe qf-'+base+' qflex';
@@ -180,8 +199,20 @@ function fitFrame(card){
   var Wceil=Math.max(contW, Math.min(1240, window.innerWidth-60));
 
   f.style.marginLeft=''; f.style.marginRight='';
-  /* قيّم المرشحين الثلاثة: أصغر عرض يسع لكل منهم، ثم اختر أصغرهم مساحةً
-     نهائية — فلا يأخذ سؤال قصير إطاراً عريضاً ضخماً لمجرد أنه «يسع» */
+  /* نسبة المحتوى الطبيعية D: تُقاس بعرضٍ مريح ثابت (DREF) والنافذة height:auto —
+     فتعكس شكل المحتوى الحقيقيّ لا مطاطيّةَ الإطار (scrollHeight يُقصّ عند حجم
+     النافذة، لذا نقيس بارتفاعٍ حرّ). هي الهدف الذي نطابق عليه نسبة النافذة. */
+  var DREF=760;
+  var _ws={position:w.style.position,height:w.style.height,width:w.style.width,top:w.style.top,right:w.style.right,bottom:w.style.bottom,left:w.style.left,overflow:w.style.overflow};
+  w.style.position='static'; w.style.height='auto'; w.style.width=DREF+'px';
+  w.style.top='auto'; w.style.right='auto'; w.style.bottom='auto'; w.style.left='auto'; w.style.overflow='visible';
+  void w.offsetWidth;
+  var D=DREF/Math.max(1,w.scrollHeight);
+  w.style.position=_ws.position; w.style.height=_ws.height; w.style.width=_ws.width;
+  w.style.top=_ws.top; w.style.right=_ws.right; w.style.bottom=_ws.bottom; w.style.left=_ws.left; w.style.overflow=_ws.overflow;
+  /* الاختيار بالنسبة (لا بترتيب الحجم): من بين الأطر التي تسع المحتوى نأخذ الأقرب
+     نسبةَ نافذةٍ إلى نسبة المحتوى D — أفضل مطابقة شكلٍ، وأقلّ هدر. عضوٌ جديد يدخل
+     المطابقة تلقائياً بمجرّد إضافته إلى FRAME_SIZES/FRAME_ORDER. */
   var best=null;
   for(var i=0;i<FRAME_ORDER.length;i++){
     var size=FRAME_ORDER[i], cfg=FRAME_SIZES[size], r=frameAR(cfg);
@@ -189,14 +220,15 @@ function fitFrame(card){
     var Wmax=Wceil;                               /* التكبير حرّ بنسبة محفوظة */
     var Wmin=Math.min(Wmax, CAP_DOWN*baseW);      /* أدنى عرض (−25%) */
     if(!frameFits(f,fill,w,size,Wmax)) continue;  /* لا يسع حتى عند الأكبر */
+    var d=Math.abs(frameWinAR(cfg)-D);            /* بُعد نسبة نافذته عن نسبة المحتوى */
+    if(best && d>=best.d) continue;               /* أبعد من الفائز الحاليّ */
     /* بحث ثنائي عن أصغر عرض يسع في [Wmin,Wmax] (hi يسع دائماً) */
     var lo=Wmin, hi=Wmax;
     for(var it=0; it<16; it++){
       var mid=(lo+hi)/2;
       if(frameFits(f,fill,w,size,mid)) hi=mid; else lo=mid;
     }
-    var area=hi*(hi*r);
-    if(!best || area<best.area) best={size:size, W:hi, baseW:baseW, area:area};
+    best={size:size, W:hi, baseW:baseW, d:d};
   }
   if(!best){ toFlex(f,fill,w,'l'); card.dataset.fit='flex'; _worstH=w.scrollHeight; return; }
   frameFits(f,fill,w,best.size,best.W);           /* ثبّت الفائز */
@@ -235,7 +267,14 @@ function fitFrame(card){
           'أصلية '+_origAR.toFixed(4)+' / معروضة '+_shownAR.toFixed(4)+
           ' (فرق '+(_diff*100).toFixed(1)+'%)','color:#c0392b;font-weight:bold;font-size:13px');
       } else if(_sz==='flex'){
-        console.warn('[إطار] ⚠️ الحاوية المرنة (qflex) ملاذٌ أخير — نسبة الإطار غير مثبّتة هنا. '+_kind);
+        /* qflex لم يعد معفياً من الفحص: نطبع رقم انحراف صندوقه عن نسبة نافذة l */
+        var _fw=f.getBoundingClientRect().width;
+        var _ch=w.scrollHeight;
+        var _flexAR=_ch>0?_fw/_ch:0;
+        var _devF=QFLEX_NOM_AR>0?(QFLEX_NOM_AR-_flexAR)/QFLEX_NOM_AR:0;
+        console.warn('%c[إطار] ⚠️ qflex (ملاذ أخير) '+_kind+' — نسبة الصندوق '+_flexAR.toFixed(3)+
+          ' · انحراف '+(_devF*100).toFixed(1)+'% عن نسبة نافذة l ('+QFLEX_NOM_AR.toFixed(2)+')',
+          'color:#c0392b;font-weight:bold;font-size:12px');
       }
       console.log('%c[إطار] '+_kind+' → '+_fit+
         ' | نسبة أصلية '+(_origAR?_origAR.toFixed(4):'—')+' / معروضة '+_shownAR.toFixed(4)+' '+

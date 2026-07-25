@@ -189,11 +189,9 @@
   row-gap:10px;
   color:#3d2f14;
 }
-/* الملاذ الأخير: حاوية CSS مرنة بروح العائلة (حد ودرجات كريمية قمرية +
-   طبقة الشفافية) تتمدد مع المحتوى — للسؤال الذي يتجاوز سقف تكبير الإطار l */
-/* الملاذ المرن = إطار قمري مطاطي (9-slice من رسم l): الزوايا وزخارفها
-   (الكوكب، الفوهات) بنسبها الأصلية ثابتة، والأشرطة الوسطى وحدها تتمدد
-   رأسياً بقدر المحتوى — فيبقى الشكل القمري معمّماً على كل الأسئلة */
+/* الملاذ الأخير النادر: حاوية CSS مرنة بروح العائلة — للسؤال الذي لا يسعه أنحف
+   إطار (أطول من نافذة tall). صورة الإطار تُعرض contain كسائر الإطارات (بلا مطّ
+   ولا تكرار)، والتعبئة المنقّطة خلفها، والمحتوى فوقها. لا سقف ولا مئزر ولا round. */
 .qframe.qflex{
   width:min(100%, 880px) !important;
   aspect-ratio:auto !important;
@@ -201,14 +199,8 @@
   filter:drop-shadow(0 8px 18px rgba(0,0,0,.3));
   padding:6px 2px 10px;
 }
-/* في المرن: صورة الإطار 9-slice على طبقة .qmoon (بلا fill فيبقى الوسط شفافاً
-   وتظهر التعبئة خلفه)، والأشرطة الوسطى وحدها تتمدد رأسياً */
-.qframe.qflex .qmoon{
-  inset:0; background:none;
-  border-style:solid; border-color:transparent;
-  border-width:100px 110px 115px 110px;
-  border-image:url('../images/ui/frame-moon-l.png') 218 240 250 240 stretch;
-}
+/* .qmoon يرث background: var(--fimg) center / contain من القاعدة الأساسية */
+.qframe.qflex .qmoon{ inset:0; }
 .qframe.qflex .qfill{display:block; inset:26px !important; border-radius:26px}
 .qframe.qflex .qwin{
   position:relative; z-index:2; overflow:visible; height:auto;
