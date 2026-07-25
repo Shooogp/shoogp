@@ -2114,26 +2114,17 @@ window.QUESTIONS = {
       ]
     },
 
-    // ⑫ اكتشف الخطأ — إثرائي (مشهد SVG: الماء يغلي لكنّ قراءة الميزان منخفضة خطأً)
+    // ⑫ اكتشف الخطأ — إثرائي (صورة غليان-الماء.png: الماء يغلي لكنّ قراءة الميزان منخفضة خطأً)
+    // spot مضبوط على قراءة الميزان المنخفضة (الزئبق قرب القاع) وهي موضع الخطأ.
     {
       type: "find-error",
       objective: "4Cs4: يلاحظ كيف يتغيّر الماء إلى بخار عند تسخينه وعند التبريد يعود ماءً",
       level: "reasoning",
       prompt: "الماءُ يغلي، لكنّ قراءةَ ميزانِ الحرارةِ خاطئةٌ — اضغط على الخطأِ.",
-      spot: { x: 78, y: 58, r: 12 },
-      svg: `<svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="ماء يغلي وميزان حرارة قراءته منخفضة">
-        <rect x="40" y="150" width="150" height="80" rx="8" fill="#c9ced4" stroke="#5b6570" stroke-width="4"/>
-        <rect x="52" y="152" width="126" height="55" fill="#8fc7e8"/>
-        <g fill="#eaf6ff"><circle cx="80" cy="172" r="7"/><circle cx="112" cy="164" r="9"/><circle cx="142" cy="174" r="7"/><circle cx="120" cy="188" r="6"/></g>
-        <g fill="#d9d9d9" opacity="0.7"><circle cx="95" cy="135" r="12"/><circle cx="120" cy="120" r="13"/><circle cx="145" cy="132" r="11"/></g>
-        <g fill="#f2a13b"><path d="M62 232 q10 -22 20 0 z"/><path d="M104 232 q12 -28 24 0 z"/><path d="M150 232 q10 -22 20 0 z"/></g>
-        <rect x="300" y="45" width="22" height="165" rx="11" fill="#f4f1ea" stroke="#33334d" stroke-width="3"/>
-        <circle cx="311" cy="216" r="18" fill="#cf3b3b" stroke="#33334d" stroke-width="3"/>
-        <rect x="304" y="150" width="14" height="66" fill="#cf3b3b"/>
-        <circle cx="311" cy="216" r="12" fill="#cf3b3b"/>
-        <g stroke="#33334d" stroke-width="2"><line x1="322" y1="55" x2="334" y2="55"/><line x1="322" y1="200" x2="334" y2="200"/></g>
-        <g font-family="sans-serif" font-size="14" fill="#33334d"><text x="338" y="60">١٠٠</text><text x="338" y="205">٠</text></g>
-      </svg>`
+      image: "images/غليان-الماء.png",
+      fit: "width",
+      bg: "#ffffff",
+      spot: { x: 82, y: 74, r: 13 }
     }
 
   ],
