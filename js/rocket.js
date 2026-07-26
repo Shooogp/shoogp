@@ -128,6 +128,14 @@
     isEnabled: function(file){ return true; },
     isActive: function(){ return !!(this.lane && this.host); },   // مركَّب حالياً في درسٍ ما
 
+    // ── وعيٌ بالـ zoom (ملاءمة العرض): getBoundingClientRect يرجع إحداثيات مكبّرة،
+    //    بينما transform/left/top تُطبَّق بوحدات تصميميّة ثم تُكبَّر. فنقرأ كل مستطيل
+    //    في الفضاء التصميميّ (÷zoom) كي تتطابق القياسات مع الحركة والرسم. عند غياب
+    //    الملاءمة (zoom=1) يعود السلوك كما كان تماماً.
+    _z: function(){ return (window.ShoogpFit && window.ShoogpFit.zoom) || 1; },
+    _rect: function(el){ const r=el.getBoundingClientRect(), z=this._z();
+      return { left:r.left/z, top:r.top/z, right:r.right/z, bottom:r.bottom/z, width:r.width/z, height:r.height/z }; },
+
     lane:null, rocket:null, flag:null, curve:null, cloud:null, sat:null, host:null, dots:[],
     total:0, ignited:false, hadError:false, arrived:false, travel:0,
     _frame:null, _sputtering:false, amp:0,
@@ -164,7 +172,9 @@
       //    تغيّر ارتفاع الأسئلة، أو ظهور/اختفاء أشرطة التمرير، أو أي إعادة تخطيط لاحقة.
       //    (قبل الإصلاح كان الأسفل مربوطاً بحافّة النافذة فيتحرّك طرفا المسار على نحوٍ
       //     متعاكس عند أي تغيّر في ارتفاع النافذة، فيخطئ الصاروخ القمر.)
-      const vh = window.innerHeight || document.documentElement.clientHeight || 800;
+      // الارتفاع المتاح في الفضاء التصميميّ: تحت الملاءمة (zoom) يُقاس على الارتفاع
+      // التصميميّ (innerHeight÷zoom) لا الحقيقيّ، وإلا تجاوز العمودُ الشاشةَ رأسياً.
+      const vh = (window.ShoogpFit && window.ShoogpFit.designH) || window.innerHeight || document.documentElement.clientHeight || 800;
       this._laneHpx = Math.max(360, Math.round(vh) - 114);   // نفس هامش التصميم: أعلى ٩٢ + أسفل ٢٢
       lane.style.height = this._laneHpx + 'px';
       lane.style.bottom = 'auto';
@@ -220,24 +230,24 @@
     // بصمة الهندسة الحيّة (رخيصة القراءة): تتغيّر مع تحميل الصور، عبور حدود الميديا،
     // التكبير، أو أي إعادة تخطيط تمسّ الحارة/القمر — فتستدعي إعادة القياس والرسم معاً.
     _readSig: function(){ if(!this.lane) return '';
-      const L=this.lane.getBoundingClientRect(),
-            M=this.lane.querySelector('.rj-moon-img').getBoundingClientRect();
+      const L=this._rect(this.lane),
+            M=this._rect(this.lane.querySelector('.rj-moon-img'));
       return [L.top,L.left,L.width,L.height,M.top-L.top,M.width,M.height].map(v=>v.toFixed(1)).join('|'); },
 
     _measure: function(){
       if(!this.lane || !this.rocket) return;
-      const L=this.lane.getBoundingClientRect();
+      const L=this._rect(this.lane);
       this._laneH=L.height; this._cx=L.width/2; this.amp=Math.min(26, L.width*0.20);
 
       const pt=this.rocket.style.transform, ptr=this.rocket.style.transition;
       this.rocket.style.transition='none'; this.rocket.style.transform='translate(0,0)';
-      const rr=this.rocket.getBoundingClientRect();
+      const rr=this._rect(this.rocket);
       const winRest = L.bottom - (rr.top + WIN_RATIO*rr.height); const rH=rr.height;
       this.rocket.style.transform=pt; this.rocket.style.transition=ptr;
       this._winRest=winRest; this._rH=rH;
 
       // المسافة: تهبط الفوّهة على أعلى قوس القمر عند الاكتمال
-      const M=this.lane.querySelector('.rj-moon-img').getBoundingClientRect();
+      const M=this._rect(this.lane.querySelector('.rj-moon-img'));
       const nozzleTarget = L.bottom - (M.top + M.height*0.30);
       const winF1 = nozzleTarget + (1-WIN_RATIO)*rH;   // النافذة أعلى الفوّهة (الفوّهة ≈ أسفل الصورة)
       this.travel=Math.max(0, winF1 - winRest);
@@ -409,14 +419,14 @@
       }
     },
     _puff: function(gray){
-      const L=this.lane.getBoundingClientRect();
+      const L=this._rect(this.lane);
       // نقطة التوليد = طرف اللهب الحيّ لحظياً: طول اللهب متغيّر (قويّ طويل صعوداً،
       // ضعيف قصير تعثّراً، ومتذبذب باستمرار بالتحريك)، فيُقاس صندوق طبقة اللهب
       // الخارجية في كل إطار وتُؤخذ نهايته السفلى — لا إزاحة ثابتة عن الفوّهة.
       // فيبقى اللهب متصلاً نظيفاً من الفوّهة حتى طرفه، ويتفتّح الدخان من الطرف فصاعداً.
       const fo=this.rocket.querySelector('.rj-flame .fo');
-      let fr=fo ? fo.getBoundingClientRect() : null;
-      if(!fr || fr.height<2){ const rr=this.rocket.getBoundingClientRect();   // لهب غير ظاهر: من الفوّهة
+      let fr=fo ? this._rect(fo) : null;
+      if(!fr || fr.height<2){ const rr=this._rect(this.rocket);   // لهب غير ظاهر: من الفوّهة
         fr={left:rr.left, width:rr.width, bottom:rr.top+rr.height-2}; }
       const x=(fr.left-L.left)+fr.width/2 + (Math.random()*(gray?8:14)-(gray?4:7));
       const y=(fr.bottom-L.top) - 1;

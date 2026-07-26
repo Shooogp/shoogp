@@ -74,7 +74,11 @@ function frameWinAR(cfg){
   }
   return cfg._war;
 }
-function availHeight(){ return Math.max(380, window.innerHeight*0.80); }
+/* الارتفاع/العرض في الفضاء التصميميّ (واعٍ بملاءمة العرض zoom): تحت الملاءمة
+   نقيس على الأبعاد التصميميّة لا الحقيقية، وإلا اختلّ اختيار الإطار وحجمه. */
+function fitH(){ var f=window.ShoogpFit; return (f&&f.active)? f.designH : window.innerHeight; }
+function fitW(){ var f=window.ShoogpFit; return (f&&f.active)? f.designW : window.innerWidth; }
+function availHeight(){ return Math.max(380, fitH()*0.80); }
 
 /* لفّ محتوى كل بطاقة (عدا الشارتين) داخل هيكل الإطار (طبقة .qfill الشبه شفافة
    ثم نافذة .qwin) — بمقاس مبدئي محايد؛ fitFrame() هو من يختار المقاس ويضبطه */
@@ -196,7 +200,7 @@ function fitFrame(card){
   try{
   var availH=availHeight();
   var contW=(card.clientWidth||600);
-  var Wceil=Math.max(contW, Math.min(1240, window.innerWidth-60));
+  var Wceil=Math.max(contW, Math.min(1240, fitW()-60));
 
   f.style.marginLeft=''; f.style.marginRight='';
   /* نسبة المحتوى الطبيعية D: تُقاس بعرضٍ مريح ثابت (DREF) والنافذة height:auto —

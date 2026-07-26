@@ -315,8 +315,9 @@ function renderDragDrop(q, body, fb){
   const stage=body.querySelector('.stage'), svg=body.querySelector('.dndlines'), imgEl=body.querySelector('.labelimg');
   const SVGNS='http://www.w3.org/2000/svg';
   function redraw(){
-    const sr=stage.getBoundingClientRect(); if(!sr.width||!imgEl) return;
-    const ir=imgEl.getBoundingClientRect();
+    const R=window.fitRect||(el=>el.getBoundingClientRect());   // مستطيل بالفضاء التصميميّ (واعٍ بـ zoom)
+    const sr=R(stage); if(!sr.width||!imgEl) return;
+    const ir=R(imgEl);
     body.querySelectorAll('.dnd-dot').forEach(dot=>{
       dot.style.left=(ir.left-sr.left + (+dot.dataset.x)/100*ir.width)+'px';
       dot.style.top =(ir.top -sr.top  + (+dot.dataset.y)/100*ir.height)+'px';
@@ -324,7 +325,7 @@ function renderDragDrop(q, body, fb){
     svg.innerHTML='';
     body.querySelectorAll('.target').forEach(bx=>{
       const dot=body.querySelector('.dnd-dot[data-i="'+bx.dataset.i+'"]'); if(!dot) return;
-      const br=bx.getBoundingClientRect(), dr=dot.getBoundingClientRect();
+      const br=R(bx), dr=R(dot);
       // مركز الصندوق ومركز النقطة (نسبةً إلى منطقة النشاط)
       const cx=br.left+br.width/2-sr.left, cy=br.top+br.height/2-sr.top;
       const px=dr.left+dr.width/2-sr.left, py=dr.top+dr.height/2-sr.top;
@@ -383,7 +384,8 @@ function renderMatching(q, body, fb){
 
   // يرسم خطاً منحنياً بين عنصرَين مع نقطة دائرية عند كل طرف
   function drawLink(a,b){
-    const wr=wrap.getBoundingClientRect(), ra=a.getBoundingClientRect(), rb=b.getBoundingClientRect();
+    const R=window.fitRect||(el=>el.getBoundingClientRect());   // مستطيل بالفضاء التصميميّ (واعٍ بـ zoom)
+    const wr=R(wrap), ra=R(a), rb=R(b);
     const aRight = ra.left < rb.left; // أيّهما إلى اليمين لاختيار الحافة المواجهة
     const ax=(aRight?ra.right:ra.left)-wr.left, ay=ra.top+ra.height/2-wr.top;
     const bx=(aRight?rb.left:rb.right)-wr.left, by=rb.top+rb.height/2-wr.top;
@@ -904,12 +906,13 @@ function renderMindmap(q, body, fb){
   const stage=body.querySelector('.mm-stage'), svg=body.querySelector('.mmlines'), center=body.querySelector('.mm-center');
   const NS='http://www.w3.org/2000/svg';
   function redraw(){
-    const sr=stage.getBoundingClientRect(); if(!sr.width) return;
-    const cr=center.getBoundingClientRect();
+    const R=window.fitRect||(el=>el.getBoundingClientRect());   // مستطيل بالفضاء التصميميّ (واعٍ بـ zoom)
+    const sr=R(stage); if(!sr.width) return;
+    const cr=R(center);
     const cx=cr.left+cr.width/2-sr.left, cy=cr.bottom-sr.top;
     svg.innerHTML='';
     body.querySelectorAll('.mm-branch').forEach(br=>{
-      const rr=br.getBoundingClientRect();
+      const rr=R(br);
       const bx=rr.left+rr.width/2-sr.left, by=rr.top-sr.top, my=(cy+by)/2;
       const ln=document.createElementNS(NS,'path');
       ln.setAttribute('d',`M ${cx} ${cy} C ${cx} ${my}, ${bx} ${my}, ${bx} ${by}`);
