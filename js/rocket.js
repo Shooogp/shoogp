@@ -246,12 +246,23 @@
       this.dots.forEach((d,i)=>{ const p=this._pointAt((i+0.5)/N);
         d.style.left  =p.x+'px';
         d.style.bottom=(p.up - 8)+'px'; });
-      this._placeMarker(this.cloud, 0.30, 8);
-      this._placeMarker(this.sat,   0.70, -6);
-      // العلم: الساريّة خلف الصاروخ والقماش يمينه مرئي بالكامل
-      if(this.flag){ const pf=this._pointAt(1);
-        this.flag.style.left=(pf.x + 20)+'px';
-        this.flag.style.bottom=(pf.up - 20)+'px'; }
+      // ── المناظر (السحابة/القمر الصناعي/العلم) مثبَّتة على هندسة القمر الفعلية ──
+      //    كانت تُوزَّع على مقياس travel (مسار نافذة الصاروخ) الذي يتجاوز مركز القمر،
+      //    فتقع المحطّة العليا داخل قرص القمر أو فوقه، ويُغرَس العلم أعلى القمر. الآن
+      //    نحسب على الخط نفسه النسبةَ التي يبلغ عندها حافةَ القمر السفلى (sMoon) ونضع
+      //    المحطّتين *أسفلها* بنسبة ثابتة (فتخلو من القمر على كل أحجام الشاشات)، ونغرِس
+      //    العلمَ عند مركز القمر لا فوقه. حركة الصاروخ والخطّ ونقاط التقدّم بلا تغيير.
+      const moonBottomUp = L.bottom - (M.top + M.height);          // حافة القمر السفلى (إحداثي up)
+      const moonCenterUp = L.bottom - (M.top + M.height*0.5);      // مركز القمر (إحداثي up)
+      const sMoon = this.travel>0
+        ? Math.max(0, Math.min(1, (moonBottomUp - this._winRest)/this.travel)) : 0;
+      this._placeMarker(this.cloud, sMoon*0.42, 8);               // نحو منتصف الطريق
+      this._placeMarker(this.sat,   sMoon*0.80, -6);              // أسفل القمر بوضوح (لا تداخل)
+      // العلم مغروس على القمر (عند مركزه) لا فوقه — على منحنى الخط نفسه
+      if(this.flag){ const sFlag = this.travel>0
+          ? Math.max(0, Math.min(1, (moonCenterUp - this._winRest)/this.travel)) : 1;
+        this.flag.style.left=(this._cx + this._dxAt(sFlag) + 20)+'px';
+        this.flag.style.bottom=(moonCenterUp - 20)+'px'; }
       this._drawCurve();
       this._sig=this._readSig();   // بصمة الهندسة التي رُسم عليها كل شيء الآن
     },
