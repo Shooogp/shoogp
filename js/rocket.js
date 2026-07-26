@@ -449,3 +449,102 @@
   window.RocketJourney = RocketJourney;
   RocketJourney._sfx = SFX;   // مرجع داخليّ (للاختبار/التشخيص)
 })();
+
+/* ═══════════════════════════════════════════════════════════════
+   قراءة تشخيصية مؤقتة (?debug=1) — طبقة قراءة فقط، لا تمسّ أي منطق قائم.
+   • تُفعَّل حصراً عند وجود ‎?debug=1‎ في رابط الدرس (وإلا لا تُنشأ أصلاً).
+   • تُعرض في طبقة ثابتة أعلى يمين الشاشة، بخط أحادي المسافة 14px وخلفية
+     سوداء شبه شفافة، و‎pointer-events:none‎ فلا تحجب أيّ عنصر تفاعليّ.
+   • تقرأ كل قيمة من العناصر المرسومة حيّاً عبر ‎getBoundingClientRect‎
+     (كما يفعل ‎_pointAt‎) لا من ثوابت الكود، وتُحدَّث عند ‎resize‎ (ودوريّاً
+     الخفيف كي تلحق بحركة الطيران وتنقّل الأسئلة).
+   ═══════════════════════════════════════════════════════════════ */
+(function initRocketDebug(){
+  var on=false;
+  try{ on=/[?&]debug=1\b/.test(location.href); }catch(e){ on=false; }
+  if(!on) return;
+
+  var box=null;
+  function ensureBox(){
+    if(box) return box;
+    box=document.createElement('div');
+    box.id='rj-debug'; box.setAttribute('aria-hidden','true');
+    box.style.cssText=[
+      'position:fixed','top:8px','right:8px','z-index:2147483647',
+      'pointer-events:none',                       // لا تحجب أيّ عنصر تفاعليّ
+      'background:rgba(0,0,0,0.72)','color:#fff',
+      'font:14px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace',
+      'padding:8px 10px','border-radius:6px','max-width:48ch',
+      'white-space:pre-wrap','direction:rtl','text-align:right',
+      'text-shadow:0 1px 2px rgba(0,0,0,.6)'
+    ].join(';');
+    (document.body||document.documentElement).appendChild(box);
+    return box;
+  }
+
+  function n(v){ return (v==null||isNaN(v)) ? '—' : Math.round(v); }
+  function rect(el){ return el ? el.getBoundingClientRect() : null; }
+  function cy(r){ return r ? r.top + r.height/2 : null; }    // مركز y في إحداثيات النافذة
+  function gap(a,b){ return (a!=null&&b!=null) ? Math.abs(a-b) : null; }
+  function dim(r){ return r ? n(r.width)+'×'+n(r.height) : '—'; }
+
+  function build(){
+    var RJ=window.RocketJourney, lane=RJ && RJ.lane, out=[];
+    out.push('🚀 تشخيص مسار الصاروخ (debug)');
+    // ‏(١) أبعاد النافذة ونسبة البكسل
+    out.push('١) النافذة: '+window.innerWidth+'×'+window.innerHeight+
+             ' · DPR '+(window.devicePixelRatio||1));
+    if(!lane){
+      out.push('لا يوجد مسار صاروخ نشط في هذا الدرس.');
+      ensureBox().textContent=out.join('\n'); return;
+    }
+
+    var Lr=rect(lane);
+    // ‏(٢) الارتفاع المتاح لعمود الصاروخ بعد خصم الهوامش (يُقرأ حيّاً من الحاوية)
+    var expH=Math.max(360,(window.innerHeight||0)-114);   // نفس هامش التصميم: أعلى ٩٢ + أسفل ٢٢
+    out.push('٢) ارتفاع العمود: '+n(Lr&&Lr.height)+'px  (متوقّع = '+n(expH)+')');
+
+    var earth=rect(lane.querySelector('.rj-earth-img')),
+        cloud=rect(lane.querySelector('.rj-cloud-img')),
+        sat  =rect(lane.querySelector('.rj-sat-img')),
+        moon =rect(lane.querySelector('.rj-moon-img'));
+    var eY=cy(earth), cY=cy(cloud), sY=cy(sat), mY=cy(moon);
+
+    // ‏(٣) طول المسار المحسوب فعلياً من الأرض إلى القمر (مركز→مركز، حيّاً) + قيمة travel الداخلية
+    var span=(eY!=null&&mY!=null) ? (eY-mY) : null;
+    out.push('٣) طول المسار (الأرض→القمر): '+n(span)+'px'+
+             ' · travel المحسوب '+n(RJ.travel)+'px');
+
+    // ‏(٤) إحداثي y لكل معلَم (مركزه، من أعلى النافذة)
+    out.push('٤) y المعالم (مركز): القمر '+n(mY)+' · الصناعي '+n(sY)+
+             ' · السحابة '+n(cY)+' · الأرض '+n(eY));
+
+    // ‏(٥) المسافة الرأسية بين كل معلَمين متتاليين (من الأعلى للأسفل)
+    out.push('٥) بين المتتاليين: قمر→صناعي '+n(gap(mY,sY))+
+             ' · صناعي→سحابة '+n(gap(sY,cY))+' · سحابة→أرض '+n(gap(cY,eY)));
+
+    // ‏(٦) القطر المرسوم فعلياً لكل معلَم (عرض×ارتفاع من getBoundingClientRect)
+    out.push('٦) القطر المرسوم (عرض×ارتفاع): القمر '+dim(moon)+' · الصناعي '+dim(sat)+
+             ' · السحابة '+dim(cloud)+' · الأرض '+dim(earth));
+
+    // ‏(٧) الإطار القمري المختار للسؤال الحالي ونسبة الـ scale (من data-fit للبطاقة الظاهرة)
+    var shown=Array.prototype.find.call(document.querySelectorAll('.qcard'),
+      function(k){ return k.style.display!=='none'; });
+    var fit=shown && shown.dataset ? shown.dataset.fit : null, size='—', scale='—';
+    if(fit && fit.indexOf('@')>-1){ var p=fit.split('@'); size=p[0]; scale=p[1]; }
+    else if(fit){ size=fit; }
+    out.push('٧) الإطار القمري للسؤال الحالي: '+size+' · scale '+scale);
+
+    ensureBox().textContent=out.join('\n');
+  }
+
+  var raf=0;
+  function schedule(){
+    if(raf) return;
+    raf=requestAnimationFrame(function(){ raf=0; try{ build(); }catch(e){} });
+  }
+  setInterval(schedule, 250);                 // تحديث دوريّ خفيف (طيران/تنقّل)
+  window.addEventListener('resize', schedule); // وتحديث فوريّ عند تغيّر النافذة
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', schedule);
+  else schedule();
+})();
