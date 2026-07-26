@@ -207,17 +207,16 @@
       // عرض الحارة وأحجام الصور — فيلزم أن يلحق الرسمُ والحركة معاً).
       this._onResize=()=>{ this._measure(); this._apply(); };
       window.addEventListener('resize', this._onResize);
-      // إعادة القياس عند إعادة ضبط الملاءمة (تغيّر النافذة يبدّل ارتفاع العمود الحقيقيّ)؛
-      // تغيّر السؤال لا يبدّل هندسة العمود (ثابتة بالبكسل الحقيقيّ) فيبقى مستقرّاً.
-      this._onFit=()=>{ this._measure(); this._apply(); };
-      window.addEventListener('shoogp-fit', this._onFit);
+      // ملاحظة: لا نعيد القياس عند كل حدث shoogp-fit (يقع مع كل سؤال) — فقد يقع أثناء
+      // حركة الطيران فيُقاس الصاروخ في موضعه المتحرّك ويفسد travel ويتراكم للأعلى.
+      // هندسة العمود ثابتة بالبكسل الحقيقيّ؛ وحلقة _emit تلتقط أيّ تغيّر حقيقيّ (resize)
+      // عبر حارس التوقيع (_readSig) دون المساس بحركة الطيران.
       this._emitT=setInterval(()=>this._emit(), 55);
     },
 
     unmount: function(){
       try{ SFX.engineStop(); }catch(e){}   // أوقف همهمة المحرّك عند مغادرة الدرس
       if(this._onResize){ window.removeEventListener('resize', this._onResize); this._onResize=null; }
-      if(this._onFit){ window.removeEventListener('shoogp-fit', this._onFit); this._onFit=null; }
       clearInterval(this._emitT); clearTimeout(this._spT); clearTimeout(this._arrT); clearTimeout(this._arrT2);
       if(this._anim){ try{ this._anim.cancel(); }catch(e){} this._anim=null; }
       if(this.lane && this.lane.parentNode) this.lane.parentNode.removeChild(this.lane);
@@ -249,6 +248,10 @@
       const L=this._rect(this.lane);
       this._laneH=L.height; this._cx=L.width/2; this.amp=Math.min(26, L.width*0.20);
 
+      // ألغِ أيّ حركة طيران جارية قبل قياس موضع السكون: حركة Web Animations بـ
+      // fill:forwards تتجاوز النمط السطريّ، فلو قِيس الصاروخ أثناءها لُقِّط في موضعه
+      // المتحرّك، فيفسد winRest وtravel ويتراكم المسار للأعلى مع كل قياس أثناء الطيران.
+      if(this._anim){ try{ this._anim.cancel(); }catch(e){} this._anim=null; }
       const pt=this.rocket.style.transform, ptr=this.rocket.style.transition;
       this.rocket.style.transition='none'; this.rocket.style.transform='translate(0,0)';
       const rr=this._rect(this.rocket);
