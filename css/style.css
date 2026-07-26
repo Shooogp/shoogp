@@ -65,17 +65,20 @@
      ويقترب من الأعلى بعد تحرير المساحة الكبيرة التي كانت تشغلها الترويسة الوسطى. */
   .app:has(#lessonsScreen.active) > header,
   .app:has(#activityScreen.active) > header{
-    text-align:right; margin:0 0 10px 0;
+    position:fixed; top:6px; right:14px; left:auto; margin:0;
+    text-align:right; z-index:40;
   }
   .app:has(#lessonsScreen.active) > header .logo,
-  .app:has(#activityScreen.active) > header .logo{ height:65px; }
+  .app:has(#activityScreen.active) > header .logo{ height:60px }
   .app:has(#lessonsScreen.active) > header .logo-wrap,
   .app:has(#activityScreen.active) > header .logo-wrap{ margin-bottom:2px }
   .app:has(#lessonsScreen.active) > header .main-title,
-  .app:has(#activityScreen.active) > header .main-title{ font-size:.6rem }
-  /* زرّ الصوت إلى اليسار كي لا يتراكب مع الشعار المُحاذى لليمين */
+  .app:has(#activityScreen.active) > header .main-title{ font-size:.55rem }
+  /* زرّ الصوت مثبَّت في أعلى اليسار كي يبقى متاحاً بعيداً عن الشعار */
   .app:has(#lessonsScreen.active) > header .sound-btn,
-  .app:has(#activityScreen.active) > header .sound-btn{ right:auto; left:0 }
+  .app:has(#activityScreen.active) > header .sound-btn{ position:fixed; top:10px; left:12px; right:auto }
+  /* رفع المحتوى إلى الأعلى أكثر بعد خروج الترويسة من التدفّق */
+  .app:has(#lessonsScreen.active), .app:has(#activityScreen.active){ padding-top:12px }
   .choose-line{text-align:center;color:#cfc4f5;font-size:1.35rem;
     margin:6px 0 12px;font-weight:500}
   .tagline{font-family:'Cairo';color:#ffd257 !important;font-size:1.1rem !important;
