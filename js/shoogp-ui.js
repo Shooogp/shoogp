@@ -3,6 +3,18 @@
    مُعمَّم على كامل كتاب علوم الصف الرابع (g4-sci) عبر بوّابة .shoogp-ui.
    لا يمسّ app.js ولا الكتب الأخرى؛ كل ما هنا يعمل فقط حين تكون البوّابة مفتوحة.
    ═══════════════════════════════════════════════════════════════════ */
+/* ═══ مسار صور الإطارات: يُحسب ديناميكياً من موقع ملف السكربت نفسه ═══
+   المسار النسبيّ ../images/ (في متغيّر CSS --fimg على عنصرٍ inline) يُحَلّ نسبةً
+   إلى *المستند* لا إلى ملف السكربت؛ فينكسر على مواقع مشاريع GitHub Pages
+   (‎/repo/‎ → ‎/images/‎ فوق الجذر → 404)، ويتكرّر مع أي عمق نشرٍ مختلف.
+   الحلّ الصامد: نستخرج جذر الصور من document.currentScript.src (رابطٌ مطلق دائماً،
+   محسوبٌ من موقع السكربت الفعليّ)، فيعمل الإطار في أيّ درسٍ ونطاقٍ بلا تعديل يدويّ. */
+var IMG_BASE=(function(){
+  var s=(document.currentScript && document.currentScript.src) || '';
+  var b=s.replace(/[?#].*$/,'').replace(/\/js\/[^\/]*$/,'/images/ui/');
+  return /\/images\/ui\/$/.test(b) ? b : 'images/ui/';   /* احتياطٌ آمن */
+})();
+function imgURL(name){ return IMG_BASE + name; }
 /* نطاق التعميم: كتب الحلقة المفعّلة في النظام. لكل كتاب: مفتاحه في DATA.index
    (مصدر النطاق — أي درس يُضاف للكتاب يدخل تلقائياً)، وبادئة رمز دروسه (احتياطٌ
    عند غياب DATA)، ومادّته (مفتاح اختيار الإطار حسب المادة — §مادة الدرس).
@@ -60,13 +72,13 @@ var FRAME_SIZES={
      s: خُفِّضَت bottom (14.5→13.5) لموازنةِ الهامشِ (السفليُّ كان أكبرَ) وتقليصِ فجوةٍ
         سفليةٍ زائدةٍ. tall: رُفِعَت top (8.4→9.7) لإصلاحِ هامشٍ علويٍّ سالبٍ (المحتوى
         كان يركبُ الزخرفةَ العلويةَ) وموازنتِه. m وl علويُّهما أكبرُ أصلاً فلم يُمَسّا. */
-  s:{img:'../images/ui/frame-moon-s.png', ar:'1859 / 788',
+  s:{img:'frame-moon-s.png', ar:'1859 / 788',
      win:{top:'13%',   left:'8.5%',  right:'9%',    bottom:'13.5%'}},
-  m:{img:'../images/ui/frame-moon-m.png', ar:'1445 / 1055',
+  m:{img:'frame-moon-m.png', ar:'1445 / 1055',
      win:{top:'10%',   left:'9.5%',  right:'9.5%',  bottom:'11%'}},
-  l:{img:'../images/ui/frame-moon-l.png', ar:'1246 / 1222',
+  l:{img:'frame-moon-l.png', ar:'1246 / 1222',
      win:{top:'10.5%', left:'12.5%', right:'11.5%', bottom:'11.5%'}},
-  tall:{img:'../images/ui/frame-moon-tall.png', ar:'968 / 1464',
+  tall:{img:'frame-moon-tall.png', ar:'968 / 1464',
      win:{top:'9.7%',  left:'14.6%', right:'14.3%', bottom:'13.8%'}}
 };
 /* إطار الرياضيات لمقاس s حصراً: صورة بزخارف رياضية. يُبدَّل مكان s حين تكون مادةُ
@@ -77,7 +89,7 @@ var FRAME_SIZES={
    نسبةُ أبعاد الصورة، و`win` إزاحاتُ نافذة المحتوى داخل الفتحة (بتنفّسٍ يسير). أيّ
    تبديلٍ لصورة الإطار يوجب مزامنةَ هذين الحقلين مع أبعاد/فتحة الصورة الجديدة —
    وطبقةُ التعبئة تنحصر تلقائياً بالقياس الحيّ (§قاعدة انحصار التعبئة النقطية). */
-var FRAME_MATH_S={img:'../images/ui/frame-moon-math-s.png', ar:'1536 / 1024',
+var FRAME_MATH_S={img:'frame-moon-math-s.png', ar:'1536 / 1024',
      win:{top:'25%', left:'15%', right:'15%', bottom:'29%'}};
 /* اختيار الإطار حسب المادة: يُرجِع هندسة الإطار الفعلية لمقاسٍ ما، مع مراعاة المادة.
    القاعدة الوحيدة: مقاس s في مادة الرياضيات → إطار الرياضيات؛ ما عداه بلا تغيير. */
@@ -134,31 +146,45 @@ function frameize(){
     c.appendChild(f);
   });
 }
-/* يضبط صورة الإطار (في متغيّر --fimg لطبقة .qmoon) ونسبته وإزاحات فتحته لمقاس.
-   إزاحاتُ التعبئة هنا **احتياطيةٌ** (نصف إزاحات فتحة الإعداد) تُطبَّق حتى يجهز القياسُ
-   الحيّ؛ ثم يعيد placeFill حصرَها بالفتحة الشفّافة الفعلية للصورة (§قاعدة الانحصار). */
+/* عاملُ انحصار التعبئة: حافةُ .qfill تقعُ عند نسبةٍ من عمقِ حافةِ الإطار (من الحدِّ
+   الخارجيّ 0 إلى الحدِّ الداخليّ = الفتحة). 0.9 ⇒ تصلُ التعبئةُ إلى الفتحة وتتوغّلُ
+   ~10% من عمقِ الحافة تحتَ المعدنِ (تداخلٌ يمنعُ الخيطَ الفاصلَ، محصورٌ تحتَ الإطار). */
+var FILL_K=0.9;
+/* نسبةُ فتحةِ صورةِ الإطار (٪ من أبعاد الصورة) من القياس الحيّ — أو null إن لم يجهز.
+   بما أنّ نسبةَ صندوقِ الإطار = نسبةَ صورته (بلا letterbox)، فنسبةُ الفتحةِ من الصورة
+   = نسبتُها من الصندوق مباشرةً، فتصلحُ كإزاحةٍ مئويةٍ للتعبئةِ في أيِّ مقاسٍ (scale). */
+function openingPct(name){
+  var g=_frameGeo[name];
+  if(!g || g==='pending') return null;
+  return {left:g.oL/g.natW*100, right:(g.natW-1-g.oR)/g.natW*100,
+          top:g.oT/g.natH*100,  bottom:(g.natH-1-g.oB)/g.natH*100};
+}
+/* يضبط صورة الإطار (--fimg، مسارٌ مطلق عبر imgURL) ونسبته وإزاحات نافذته لمقاس.
+   إزاحاتُ التعبئة (.qfill) = نسبةٌ مئويةٌ من أبعاد الإطار محكومةٌ بفتحته الفعلية
+   (openingPct × FILL_K) — قاعدةٌ نسبيةٌ واحدةٌ تتبعها كلُّ الأطر، تنحصرُ تلقائياً بين
+   الحافتين مهما تغيّر الحجمُ أو الدرسُ أو المادة. احتياطاً (قبل جهوزِ القياس): نصفُ
+   إزاحةِ نافذةِ الإعداد. (الحاويةُ المرنةُ qflex تُعالَج بـplaceFill لأنها تُحاط letterbox.) */
 function applyFrame(f,fill,w,size){
   var cfg=resolveCfg(size);
-  f.style.setProperty('--fimg',"url('"+cfg.img+"')");
+  f.style.setProperty('--fimg',"url('"+imgURL(cfg.img)+"')");
   f.style.aspectRatio=cfg.ar;
+  var op=openingPct(cfg.img);
   ['top','left','right','bottom'].forEach(function(k){
     w.style[k]=cfg.win[k];
-    fill.style[k]=(parseFloat(cfg.win[k])*0.5).toFixed(2)+'%';
+    var v = op ? (op[k]*FILL_K) : (parseFloat(cfg.win[k])*0.5);
+    fill.style[k]=v.toFixed(2)+'%';
   });
   return cfg;
 }
-/* ═══ قاعدة انحصار التعبئة النقطية بالفتحة الفعلية (قياسٌ حيّ — عامّ لكل إطار) ═══
-   المشكلة المُعالَجة: إزاحاتُ التعبئة بالنسب المئوية (الاحتياطية) تُقاس على صندوق
-   الإطار لا على *فتحة الصورة الشفّافة*؛ فحين تختلف نسبةُ صورة الإطار أو موضعُ نافذتها
-   عن الإعداد (كإطار مادةٍ جديد) تتسرّب النقاطُ خارج الحافة الداخلية وتظهر حول جسم
-   الإطار وفي شريطَي الـcontain الشفّافين. الحلّ العامّ: نقيس *مرّةً* فتحةَ كلِّ صورة
-   إطار (bbox الشفافية عبر canvas) ونخبّئها، ثم نضع .qfill على تلك الفتحة بالضبط —
-   محسوبةً بتحويل contain من فضاء الصورة إلى صندوق الإطار الظاهر — فتتوقّف عند الحافة
-   الداخلية مهما كانت الصورة. يعمل لأي مادة/مقاس بنفس المبدأ، دون لمس صورة الإطار. */
-var _frameGeo={};   /* url → {natW,natH,oL,oR,oT,oB} | 'pending' | null(تعذّر) */
-function measureFrameGeo(url){
-  if(!url || _frameGeo[url]!==undefined) return;   /* مقيسٌ أو قيد القياس */
-  _frameGeo[url]='pending';
+/* ═══ قياسُ فتحةِ صورةِ الإطار (bbox الشفافية) — مصدرُ هندسةِ التعبئة ═══
+   نقيسُ *مرّةً* فتحةَ كلِّ صورةِ إطارٍ عبر canvas ونخبّئها. تُشتَقّ منها نسبةُ الفتحة
+   (openingPct) لقاعدةِ انحصارِ التعبئة النسبية في applyFrame — وتُستعمَل أيضاً في
+   placeFill لحالةِ الحاوية المرنة qflex فقط (لأنها تُحاط letterbox فلا تكفيها النِّسَب).
+   القياسُ من نفسِ الأصل (imgURL مطلق) فلا تلوُّثَ CORS. */
+var _frameGeo={};   /* name → {natW,natH,oL,oR,oT,oB} | 'pending' | null(تعذّر) */
+function measureFrameGeo(name){
+  if(!name || _frameGeo[name]!==undefined) return;   /* مقيسٌ أو قيد القياس */
+  _frameGeo[name]='pending';
   var im=new Image();
   im.onload=function(){
     try{
@@ -174,20 +200,19 @@ function measureFrameGeo(url){
       for(y=0;y<H;y++){ a=d[(y*W+cxx)*4+3];
         if(a<128){ if(cs<0)cs=y; } else if(cs>=0){ if(y-cs>bv){bv=y-cs;bt=cs;bb=y-1;} cs=-1; } }
       if(cs>=0 && H-cs>bv){bv=H-cs;bt=cs;bb=H-1;}
-      _frameGeo[url]={natW:W,natH:H,oL:bl,oR:br,oT:bt,oB:bb};
-    }catch(e){ _frameGeo[url]=null; }   /* تعذّر (CORS مثلاً) → تبقى الإزاحات الاحتياطية */
-    /* أعد ضبط البطاقة الظاهرة كي توضَع التعبئة بالقياس الجاهز الآن */
+      _frameGeo[name]={natW:W,natH:H,oL:bl,oR:br,oT:bt,oB:bb};
+    }catch(e){ _frameGeo[name]=null; }   /* تعذّر (CORS مثلاً) → تبقى الإزاحات الاحتياطية */
+    /* أعد ضبط البطاقة الظاهرة كي تُطبَّق نسبةُ الفتحة الجاهزةُ الآن على التعبئة */
     if(gateOn()){ var sh=currentShown(); if(sh){ sh.dataset.fitSig=''; fitShown(); } }
   };
-  im.onerror=function(){ _frameGeo[url]=null; };
-  im.src=url;
+  im.onerror=function(){ _frameGeo[name]=null; };
+  im.src=imgURL(name);
 }
-/* يضع .qfill على الفتحة الشفّافة الفعلية للصورة، بتحويل contain إلى صندوق الإطار.
-   تداخلٌ يسير (bleed) تحت الحافة المعدنية يمنع أي خيطٍ فاصل، ويبقى محصوراً تحت الإطار
-   (لا يبلغ شريطَي الـcontain). احتياطٌ: إن لم يجهز القياس تبقى إزاحاتُ % من applyFrame. */
-function placeFill(f,fill,url){
-  var geo=_frameGeo[url];
-  if(!geo || geo==='pending'){ measureFrameGeo(url); return; }
+/* يضع .qfill على الفتحة الفعلية بتحويل contain — للحاوية المرنة qflex فقط (نسبتها ≠
+   نسبة صورتها فتُحاط letterbox، فلا تكفيها النسبةُ المئوية). تداخلٌ يسير تحت المعدن. */
+function placeFill(f,fill,name){
+  var geo=_frameGeo[name];
+  if(!geo || geo==='pending'){ measureFrameGeo(name); return; }
   var bw=f.clientWidth, bh=f.clientHeight; if(!bw||!bh) return;
   var scale=Math.min(bw/geo.natW, bh/geo.natH);          /* contain */
   var offX=(bw-geo.natW*scale)/2, offY=(bh-geo.natH*scale)/2;
@@ -338,7 +363,8 @@ function fitFrame(card){
     var mrg=(contW-best.W)/2;
     f.style.marginLeft=mrg+'px'; f.style.marginRight=mrg+'px';
   }
-  placeFill(f,fill,resolveCfg(best.size).img);    /* احصر التعبئة بالفتحة الفعلية (قياسٌ حيّ) */
+  /* التعبئة للأطر المقيسة تُضبط بالنسبة المئوية في applyFrame (openingPct×FILL_K)،
+     فلا تحتاج px هنا؛ placeFill يبقى للحاوية المرنة فقط (letterbox). */
   card.dataset.fit=best.size+'@'+Math.round(best.W/best.baseW*100)+'%';
   }finally{
     if(_restore) _restore();
