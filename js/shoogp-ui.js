@@ -3,17 +3,32 @@
    مُعمَّم على كامل كتاب علوم الصف الرابع (g4-sci) عبر بوّابة .shoogp-ui.
    لا يمسّ app.js ولا الكتب الأخرى؛ كل ما هنا يعمل فقط حين تكون البوّابة مفتوحة.
    ═══════════════════════════════════════════════════════════════════ */
-/* نطاق التعميم: كامل كتاب علوم الصف الرابع، بمصدرٍ واحد لتعريف النطاق =
-   دروس DATA.index['g4-sci'] (لا تُعدَّد أسماء الدروس هنا؛ أي درس يُضاف
-   للكتاب لاحقاً يدخل النظام تلقائياً). احتياطٌ عند غياب DATA: بادئة g4s-. */
-var SHOOGP_BOOK='g4-sci';
-function lessonInScope(ls){
-  if(!ls || !ls.file) return false;
-  var idx=(window.DATA && DATA.index && DATA.index[SHOOGP_BOOK]);
-  if(!idx) return ls.file.indexOf('g4s-')===0;
-  return idx.units.some(function(u){
-    return u.lessons.some(function(l){ return l.file===ls.file; }); });
+/* نطاق التعميم: كتب الحلقة المفعّلة في النظام. لكل كتاب: مفتاحه في DATA.index
+   (مصدر النطاق — أي درس يُضاف للكتاب يدخل تلقائياً)، وبادئة رمز دروسه (احتياطٌ
+   عند غياب DATA)، ومادّته (مفتاح اختيار الإطار حسب المادة — §مادة الدرس).
+   العلوم (g4s-) والرياضيات (g4m-) مفعّلتان؛ إضافة كتابٍ = سطرٌ واحد هنا. */
+var SHOOGP_BOOKS=[
+  {key:'g4-sci',  prefix:'g4s-', subject:'science'},
+  {key:'g4-math', prefix:'g4m-', subject:'math'}
+];
+/* كتاب الدرس (أو null إن خارج النطاق) — يُعتمد لتحديد النطاق والمادة معاً */
+function lessonBook(ls){
+  if(!ls || !ls.file) return null;
+  for(var i=0;i<SHOOGP_BOOKS.length;i++){
+    var b=SHOOGP_BOOKS[i];
+    var idx=(window.DATA && DATA.index && DATA.index[b.key]);
+    if(idx){
+      if(idx.units.some(function(u){
+        return u.lessons.some(function(l){ return l.file===ls.file; }); })) return b;
+    } else if(ls.file.indexOf(b.prefix)===0){ return b; }
+  }
+  return null;
 }
+function lessonInScope(ls){ return !!lessonBook(ls); }
+/* مادة الدرس (science/math) — مفتاح اختيار الإطار حسب المادة */
+function lessonSubject(ls){ var b=lessonBook(ls); return b?b.subject:null; }
+/* مادة الدرس المفتوح حالياً — تُضبط في ترقيع openLesson، وتقرؤها resolveCfg */
+var _curSubject=null;
 /* البوّابة: هل النظام مُفعَّل الآن؟ (صنف .shoogp-ui على #questionList) */
 function gateOn(){
   var q=document.getElementById('questionList');
@@ -39,15 +54,37 @@ function gateOn(){
    إن عجز l حتى عند +30% → حاوية CSS مرنة (qflex) بروح العائلة، بلا تمرير.
    FRAME_SIZES: هندسة كل مقاس (الصورة، النسبة، إزاحات الفتحة المتحفظة). */
 var FRAME_SIZES={
+  /* إزاحاتُ النافذةِ مضبوطةٌ ليكونَ الهامشُ العلويُّ (إزاحة−زخرفة) ≥ السفليِّ في كلِّ
+     إطارٍ (قاعدةُ §8). القيمُ المقيسةُ للزخرفةِ الداخليةِ (وسيطُ النطاقِ المركزيِّ، %H):
+     s: علوية10.03/سفلية10.53 · m: 7.01/9.19 · l: 7.45/9.17 · tall: 8.74/12.91.
+     s: خُفِّضَت bottom (14.5→13.5) لموازنةِ الهامشِ (السفليُّ كان أكبرَ) وتقليصِ فجوةٍ
+        سفليةٍ زائدةٍ. tall: رُفِعَت top (8.4→9.7) لإصلاحِ هامشٍ علويٍّ سالبٍ (المحتوى
+        كان يركبُ الزخرفةَ العلويةَ) وموازنتِه. m وl علويُّهما أكبرُ أصلاً فلم يُمَسّا. */
   s:{img:'../images/ui/frame-moon-s.png', ar:'1859 / 788',
-     win:{top:'13%',   left:'8.5%',  right:'9%',    bottom:'14.5%'}},
+     win:{top:'13%',   left:'8.5%',  right:'9%',    bottom:'13.5%'}},
   m:{img:'../images/ui/frame-moon-m.png', ar:'1445 / 1055',
      win:{top:'10%',   left:'9.5%',  right:'9.5%',  bottom:'11%'}},
   l:{img:'../images/ui/frame-moon-l.png', ar:'1246 / 1222',
      win:{top:'10.5%', left:'12.5%', right:'11.5%', bottom:'11.5%'}},
   tall:{img:'../images/ui/frame-moon-tall.png', ar:'968 / 1464',
-     win:{top:'8.4%',  left:'14.6%', right:'14.3%', bottom:'13.8%'}}
+     win:{top:'9.7%',  left:'14.6%', right:'14.3%', bottom:'13.8%'}}
 };
+/* إطار الرياضيات لمقاس s حصراً: صورة بزخارف رياضية. يُبدَّل مكان s حين تكون مادةُ
+   الدرس رياضيات (resolveCfg)، وليس عضواً في FRAME_ORDER فلا يُختار مستقلاً. العلوم
+   تبقى دائماً على frame-moon-s (لا استبدال). m/l/tall للرياضيات غير جاهزة بعد فتقع
+   دروسُها عليها على إطار moon العادي مؤقتاً (مقبول).
+   **الهندسة تُطابق صورةَ الإطار الفعلية على القرص** (نافذتها الشفّافة ~2.25): `ar`
+   نسبةُ أبعاد الصورة، و`win` إزاحاتُ نافذة المحتوى داخل الفتحة (بتنفّسٍ يسير). أيّ
+   تبديلٍ لصورة الإطار يوجب مزامنةَ هذين الحقلين مع أبعاد/فتحة الصورة الجديدة —
+   وطبقةُ التعبئة تنحصر تلقائياً بالقياس الحيّ (§قاعدة انحصار التعبئة النقطية). */
+var FRAME_MATH_S={img:'../images/ui/frame-moon-math-s.png', ar:'1536 / 1024',
+     win:{top:'25%', left:'15%', right:'15%', bottom:'29%'}};
+/* اختيار الإطار حسب المادة: يُرجِع هندسة الإطار الفعلية لمقاسٍ ما، مع مراعاة المادة.
+   القاعدة الوحيدة: مقاس s في مادة الرياضيات → إطار الرياضيات؛ ما عداه بلا تغيير. */
+function resolveCfg(size){
+  if(size==='s' && _curSubject==='math') return FRAME_MATH_S;
+  return FRAME_SIZES[size];
+}
 /* ترتيب التقييم — العضو الجديد يُضاف هنا وفي FRAME_SIZES فقط، بلا إعادة هيكلة */
 var FRAME_ORDER=['s','m','l','tall'];
 var BASE_FILL=0.70;   /* حجم مقياس 1: ارتفاع الإطار = 70% من المساحة المتاحة */
@@ -98,9 +135,10 @@ function frameize(){
   });
 }
 /* يضبط صورة الإطار (في متغيّر --fimg لطبقة .qmoon) ونسبته وإزاحات فتحته لمقاس.
-   إزاحات التعبئة = نصف إزاحات الفتحة → تمتدّ تحت حافة الإطار (تداخل بلا فجوة) */
+   إزاحاتُ التعبئة هنا **احتياطيةٌ** (نصف إزاحات فتحة الإعداد) تُطبَّق حتى يجهز القياسُ
+   الحيّ؛ ثم يعيد placeFill حصرَها بالفتحة الشفّافة الفعلية للصورة (§قاعدة الانحصار). */
 function applyFrame(f,fill,w,size){
-  var cfg=FRAME_SIZES[size];
+  var cfg=resolveCfg(size);
   f.style.setProperty('--fimg',"url('"+cfg.img+"')");
   f.style.aspectRatio=cfg.ar;
   ['top','left','right','bottom'].forEach(function(k){
@@ -109,6 +147,64 @@ function applyFrame(f,fill,w,size){
   });
   return cfg;
 }
+/* ═══ قاعدة انحصار التعبئة النقطية بالفتحة الفعلية (قياسٌ حيّ — عامّ لكل إطار) ═══
+   المشكلة المُعالَجة: إزاحاتُ التعبئة بالنسب المئوية (الاحتياطية) تُقاس على صندوق
+   الإطار لا على *فتحة الصورة الشفّافة*؛ فحين تختلف نسبةُ صورة الإطار أو موضعُ نافذتها
+   عن الإعداد (كإطار مادةٍ جديد) تتسرّب النقاطُ خارج الحافة الداخلية وتظهر حول جسم
+   الإطار وفي شريطَي الـcontain الشفّافين. الحلّ العامّ: نقيس *مرّةً* فتحةَ كلِّ صورة
+   إطار (bbox الشفافية عبر canvas) ونخبّئها، ثم نضع .qfill على تلك الفتحة بالضبط —
+   محسوبةً بتحويل contain من فضاء الصورة إلى صندوق الإطار الظاهر — فتتوقّف عند الحافة
+   الداخلية مهما كانت الصورة. يعمل لأي مادة/مقاس بنفس المبدأ، دون لمس صورة الإطار. */
+var _frameGeo={};   /* url → {natW,natH,oL,oR,oT,oB} | 'pending' | null(تعذّر) */
+function measureFrameGeo(url){
+  if(!url || _frameGeo[url]!==undefined) return;   /* مقيسٌ أو قيد القياس */
+  _frameGeo[url]='pending';
+  var im=new Image();
+  im.onload=function(){
+    try{
+      var W=im.naturalWidth,H=im.naturalHeight,x,y,a;
+      var cv=document.createElement('canvas'); cv.width=W; cv.height=H;
+      var g=cv.getContext('2d'); g.drawImage(im,0,0);
+      var d=g.getImageData(0,0,W,H).data;
+      var cy=H>>1, bl=0,br=0,best=0,cs=-1;         /* أطول مدى شفّاف في السطر الأوسط */
+      for(x=0;x<W;x++){ a=d[(cy*W+x)*4+3];
+        if(a<128){ if(cs<0)cs=x; } else if(cs>=0){ if(x-cs>best){best=x-cs;bl=cs;br=x-1;} cs=-1; } }
+      if(cs>=0 && W-cs>best){best=W-cs;bl=cs;br=W-1;}
+      var cxx=(bl+br)>>1, bt=0,bb=0,bv=0; cs=-1;   /* وفي العمود الأوسط للنافذة */
+      for(y=0;y<H;y++){ a=d[(y*W+cxx)*4+3];
+        if(a<128){ if(cs<0)cs=y; } else if(cs>=0){ if(y-cs>bv){bv=y-cs;bt=cs;bb=y-1;} cs=-1; } }
+      if(cs>=0 && H-cs>bv){bv=H-cs;bt=cs;bb=H-1;}
+      _frameGeo[url]={natW:W,natH:H,oL:bl,oR:br,oT:bt,oB:bb};
+    }catch(e){ _frameGeo[url]=null; }   /* تعذّر (CORS مثلاً) → تبقى الإزاحات الاحتياطية */
+    /* أعد ضبط البطاقة الظاهرة كي توضَع التعبئة بالقياس الجاهز الآن */
+    if(gateOn()){ var sh=currentShown(); if(sh){ sh.dataset.fitSig=''; fitShown(); } }
+  };
+  im.onerror=function(){ _frameGeo[url]=null; };
+  im.src=url;
+}
+/* يضع .qfill على الفتحة الشفّافة الفعلية للصورة، بتحويل contain إلى صندوق الإطار.
+   تداخلٌ يسير (bleed) تحت الحافة المعدنية يمنع أي خيطٍ فاصل، ويبقى محصوراً تحت الإطار
+   (لا يبلغ شريطَي الـcontain). احتياطٌ: إن لم يجهز القياس تبقى إزاحاتُ % من applyFrame. */
+function placeFill(f,fill,url){
+  var geo=_frameGeo[url];
+  if(!geo || geo==='pending'){ measureFrameGeo(url); return; }
+  var bw=f.clientWidth, bh=f.clientHeight; if(!bw||!bh) return;
+  var scale=Math.min(bw/geo.natW, bh/geo.natH);          /* contain */
+  var offX=(bw-geo.natW*scale)/2, offY=(bh-geo.natH*scale)/2;
+  var bleed=Math.max(2, Math.round(scale*6));            /* تداخلٌ يسير تحت المعدن */
+  /* حوافُّ الفتحة داخل صندوق الإطار (بالبكسل): يسار/أعلى موضعان، يمين/أسفل إزاحتان */
+  var Lx=offX+geo.oL*scale, Rx=offX+geo.oR*scale;
+  var Ty=offY+geo.oT*scale, By=offY+geo.oB*scale;
+  fill.style.left  =Math.round(Math.max(0, Lx-bleed))+'px';
+  fill.style.top   =Math.round(Math.max(0, Ty-bleed))+'px';
+  fill.style.right =Math.round(Math.max(0, bw-Rx-bleed))+'px';
+  fill.style.bottom=Math.round(Math.max(0, bh-By-bleed))+'px';
+}
+/* تهيئة: قِس فتحات كل صور الإطارات مسبقاً (مرّة) كي تجهز التعبئة عند فتح أول درس */
+(function(){
+  FRAME_ORDER.forEach(function(s){ measureFrameGeo(FRAME_SIZES[s].img); });
+  measureFrameGeo(FRAME_MATH_S.img);
+})();
 /* يبني الإطار بعرض Wf ويعيد هل يسع محتواه (بلا فائض) */
 function frameFits(f,fill,w,size,Wf){
   applyFrame(f,fill,w,size);
@@ -219,7 +315,7 @@ function fitFrame(card){
      المطابقة تلقائياً بمجرّد إضافته إلى FRAME_SIZES/FRAME_ORDER. */
   var best=null;
   for(var i=0;i<FRAME_ORDER.length;i++){
-    var size=FRAME_ORDER[i], cfg=FRAME_SIZES[size], r=frameAR(cfg);
+    var size=FRAME_ORDER[i], cfg=resolveCfg(size), r=frameAR(cfg);
     var baseW=BASE_FILL*availH/r;                 /* عرض مقياس 1 */
     var Wmax=Wceil;                               /* التكبير حرّ بنسبة محفوظة */
     var Wmin=Math.min(Wmax, CAP_DOWN*baseW);      /* أدنى عرض (−25%) */
@@ -234,13 +330,15 @@ function fitFrame(card){
     }
     best={size:size, W:hi, baseW:baseW, d:d};
   }
-  if(!best){ toFlex(f,fill,w,'l'); card.dataset.fit='flex'; _worstH=w.scrollHeight; return; }
+  if(!best){ toFlex(f,fill,w,'l'); card.dataset.fit='flex'; _worstH=w.scrollHeight;
+    placeFill(f,fill,resolveCfg('l').img); return; }   /* احصر تعبئة المرنة أيضاً بالفتحة الفعلية */
   frameFits(f,fill,w,best.size,best.W);           /* ثبّت الفائز */
   _worstH=w.scrollHeight;                          /* ارتفاع أسوأ الحالات في الإطار الفائز */
   if(best.W>contW){                               /* أعرض من العمود → وسّطه فوقه */
     var mrg=(contW-best.W)/2;
     f.style.marginLeft=mrg+'px'; f.style.marginRight=mrg+'px';
   }
+  placeFill(f,fill,resolveCfg(best.size).img);    /* احصر التعبئة بالفتحة الفعلية (قياسٌ حيّ) */
   card.dataset.fit=best.size+'@'+Math.round(best.W/best.baseW*100)+'%';
   }finally{
     if(_restore) _restore();
@@ -263,7 +361,7 @@ function fitFrame(card){
       var _shownAR=_fr.height>0?_fr.width/_fr.height:0;
       var _origAR=null, _ratioOK=null;
       if(_sz!=='flex' && FRAME_SIZES[_sz]){
-        var _p=FRAME_SIZES[_sz].ar.split('/');
+        var _p=resolveCfg(_sz).ar.split('/');   /* الإطار الفعلي المطبَّق (يراعي مادة الرياضيات) */
         _origAR=parseFloat(_p[0])/parseFloat(_p[1]);
         var _diff=Math.abs(_shownAR-_origAR)/_origAR;
         _ratioOK=_diff<=0.01;
@@ -369,6 +467,7 @@ window.addEventListener('resize',function(){
   if(typeof orig!=='function') return;
   window.openLesson=function(ls){
     var on = lessonInScope(ls);
+    _curSubject = on ? lessonSubject(ls) : null;  /* مادة الدرس لاختيار الإطار */
     var q=document.getElementById('questionList');
     if(q) q.classList.toggle('shoogp-ui', on);   /* البوّابة: قبل بناء الأسئلة */
     return orig.apply(this, arguments);

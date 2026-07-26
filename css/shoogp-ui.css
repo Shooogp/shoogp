@@ -189,6 +189,14 @@
   row-gap:10px;
   color:#3d2f14;
 }
+/* ── تناظر التنفّس العلويّ/السفليّ (قاعدة §8) ──
+   سطر التغذية الراجعة .fb (css/style.css) يحجز أسفلَ الأزرارِ 42px فارغةً دائماً
+   (margin-top:16 + min-height:26) بلا مقابلٍ علويّ، والمحتوى يملأ النافذة تماماً،
+   فتُدفَعُ الكتلةُ المرئيةُ (العنوان↔الأزرار) للأعلى ويلامسُ العنوانُ الزخرفةَ.
+   نعكسُ ذلك الحجزَ فوقَ العنوانِ بفاصلٍ مساوٍ (--fb-reserve) فتتوسّطُ الكتلةُ بينَ
+   حافّتَي الزخرفةِ العلويةِ والسفليةِ. طبقةٌ مشتركةٌ لكلِّ الأسئلةِ لا سؤالٌ مفرد. */
+.qwin{ --fb-reserve:42px; }
+.qwin::before{ content:""; display:block; flex:0 0 auto; height:var(--fb-reserve); }
 /* الملاذ الأخير النادر: حاوية CSS مرنة بروح العائلة — للسؤال الذي لا يسعه أنحف
    إطار (أطول من نافذة tall). صورة الإطار تُعرض contain كسائر الإطارات (بلا مطّ
    ولا تكرار)، والتعبئة المنقّطة خلفها، والمحتوى فوقها. لا سقف ولا مئزر ولا round. */
@@ -201,7 +209,9 @@
 }
 /* .qmoon يرث background: var(--fimg) center / contain من القاعدة الأساسية */
 .qframe.qflex .qmoon{ inset:0; }
-.qframe.qflex .qfill{display:block; inset:26px !important; border-radius:26px}
+/* التعبئة في المرنة تُحصر أيضاً بالفتحة الفعلية عبر placeFill (قياسٌ حيّ)؛ لا إزاحة
+   ثابتة تتجاوز حافة الصورة. inset:0 مبدئيٌّ فقط حتى يجهز القياس (يُستبدل بالبكسل). */
+.qframe.qflex .qfill{display:block; inset:0; border-radius:26px}
 .qframe.qflex .qwin{
   position:relative; z-index:2; overflow:visible; height:auto;
   top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;
@@ -232,7 +242,9 @@
 /* نصوص فاتحة فوق طبقة التعبئة الكحلية الداكنة (النصوص العارية فقط —
    الخيارات والبطاقات لها خلفية كريمية بنصّها الداكن فتبقى كما هي) */
 .qwin{color:#eef1f6}
-.qwin>.qprompt{margin:4px 0 14px;color:#fff;text-align:center;text-shadow:0 1px 3px rgba(0,0,0,.45)}
+/* padding-top:.22em = بدلُ تجاوزِ التشكيلِ العربيِّ (الحركات/الشدّة) فوقَ صندوقِ السطرِ
+   (قِيسَ ~3px عند Cairo 26px)؛ بوحدةِ em ليتناسبَ مع تكبيرِ الخطّ عبرَ الأطرِ. */
+.qwin>.qprompt{margin:4px 0 14px;padding-top:.22em;color:#fff;text-align:center;text-shadow:0 1px 3px rgba(0,0,0,.45)}
 .qwin .qfb.good{color:#a8e6bd !important;text-shadow:0 1px 2px rgba(0,0,0,.4) !important}
 .qwin .qfb.bad{color:#ffb3aa !important;text-shadow:0 1px 2px rgba(0,0,0,.4) !important}
 .qwin .bank .bt{color:#e7ecf3 !important}
