@@ -56,6 +56,11 @@
     var zoom = Math.max(ZOOM_MIN, Math.min(ZOOM_MAX, Math.min((iw-2)/DESIGN_W, (ih-4)/Hc)));
     de.style.zoom = String(zoom);
     state.zoom=zoom; state.designW=DESIGN_W; state.designH=DESIGN_H; state.contentH=Hc; state.active=true;
+    // اربط عمود الصاروخ (المثبَّت) بحافة المحتوى اليسرى كي لا ينفصل عند توسّط .app
+    // في شاشة عريضة — يُقاس يسار .app بالفضاء التصميميّ ويُوضع العمود عنده.
+    var lane=document.querySelector('.rocket-lane');
+    if(lane && app){ var aL=app.getBoundingClientRect().left/zoom;
+      lane.style.left=Math.max(0,Math.round(aL-6))+'px'; }
     if(mo && app) mo.observe(app,{childList:true,subtree:true,attributes:true,attributeFilter:['style','class','hidden']});
     try{ window.dispatchEvent(new Event('shoogp-fit')); }catch(e){}
   }
