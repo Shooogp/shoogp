@@ -486,13 +486,15 @@
   function rect(el){ return el ? el.getBoundingClientRect() : null; }
   function cy(r){ return r ? r.top + r.height/2 : null; }    // مركز y في إحداثيات النافذة
   function gap(a,b){ return (a!=null&&b!=null) ? Math.abs(a-b) : null; }
-  function dim(r){ return r ? n(r.width)+'×'+n(r.height) : '—'; }
+  // عزل LTR (LRI…PDI) كي لا تنعكس أزواج الأرقام المفصولة بـ× في سياق RTL فتُقرأ صحيحة
+  function ltr(s){ return '⁦'+s+'⁩'; }
+  function dim(r){ return r ? ltr(n(r.width)+'×'+n(r.height)) : '—'; }
 
   function build(){
     var RJ=window.RocketJourney, lane=RJ && RJ.lane, out=[];
     out.push('🚀 تشخيص مسار الصاروخ (debug)');
     // ‏(١) أبعاد النافذة ونسبة البكسل
-    out.push('١) النافذة: '+window.innerWidth+'×'+window.innerHeight+
+    out.push('١) النافذة: '+ltr(window.innerWidth+'×'+window.innerHeight)+
              ' · DPR '+(window.devicePixelRatio||1));
     if(!lane){
       out.push('لا يوجد مسار صاروخ نشط في هذا الدرس.');
