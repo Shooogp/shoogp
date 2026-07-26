@@ -132,9 +132,11 @@
     //    بينما transform/left/top تُطبَّق بوحدات تصميميّة ثم تُكبَّر. فنقرأ كل مستطيل
     //    في الفضاء التصميميّ (÷zoom) كي تتطابق القياسات مع الحركة والرسم. عند غياب
     //    الملاءمة (zoom=1) يعود السلوك كما كان تماماً.
-    _z: function(){ return (window.ShoogpFit && window.ShoogpFit.zoom) || 1; },
-    _rect: function(el){ const r=el.getBoundingClientRect(), z=this._z();
-      return { left:r.left/z, top:r.top/z, right:r.right/z, bottom:r.bottom/z, width:r.width/z, height:r.height/z }; },
+    // عمود الصاروخ مفصولٌ عن زوم المحتوى بزومٍ مضادّ (fit.js: lane.zoom = 1÷zoom)
+    // فيُرسم بالبكسل الحقيقيّ؛ لذا نقرأ مستطيلاته كما هي (z=1): القياس والحركة والرسم
+    // كلّها في البكسل الحقيقيّ نفسه، متطابقة، ولا تتأثّر بتغيّر زوم المحتوى بين الأسئلة.
+    _z: function(){ return 1; },
+    _rect: function(el){ return el.getBoundingClientRect(); },
 
     lane:null, rocket:null, flag:null, curve:null, cloud:null, sat:null, host:null, dots:[],
     total:0, ignited:false, hadError:false, arrived:false, travel:0,
@@ -187,6 +189,9 @@
       this.sat   =lane.querySelector('.rj-sat-img');
       this.dots=[].slice.call(lane.querySelectorAll('.rj-dot'));
 
+      // ثبّت هندسة العمود (الزوم المضادّ + الموضع الحقيقيّ) قبل أول قياس، كي يُحسب
+      // المسار على الأبعاد النهائية الثابتة لا على قيم CSS المبدئية.
+      try{ if(window.ShoogpFit && window.ShoogpFit.apply) window.ShoogpFit.apply(); }catch(e){}
       const ready=()=>{ this._measure(); this._place(this._frac||0,false); this._lightDots(this._solvedCount()); };
       ready();
       // إعادة القياس مرّة واحدة عند اكتمال تحميل كلّ صور المسار (القمر أيضاً — كان مفقوداً)
@@ -202,12 +207,17 @@
       // عرض الحارة وأحجام الصور — فيلزم أن يلحق الرسمُ والحركة معاً).
       this._onResize=()=>{ this._measure(); this._apply(); };
       window.addEventListener('resize', this._onResize);
+      // إعادة القياس عند إعادة ضبط الملاءمة (تغيّر النافذة يبدّل ارتفاع العمود الحقيقيّ)؛
+      // تغيّر السؤال لا يبدّل هندسة العمود (ثابتة بالبكسل الحقيقيّ) فيبقى مستقرّاً.
+      this._onFit=()=>{ this._measure(); this._apply(); };
+      window.addEventListener('shoogp-fit', this._onFit);
       this._emitT=setInterval(()=>this._emit(), 55);
     },
 
     unmount: function(){
       try{ SFX.engineStop(); }catch(e){}   // أوقف همهمة المحرّك عند مغادرة الدرس
       if(this._onResize){ window.removeEventListener('resize', this._onResize); this._onResize=null; }
+      if(this._onFit){ window.removeEventListener('shoogp-fit', this._onFit); this._onFit=null; }
       clearInterval(this._emitT); clearTimeout(this._spT); clearTimeout(this._arrT); clearTimeout(this._arrT2);
       if(this._anim){ try{ this._anim.cancel(); }catch(e){} this._anim=null; }
       if(this.lane && this.lane.parentNode) this.lane.parentNode.removeChild(this.lane);

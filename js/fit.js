@@ -56,11 +56,21 @@
     var zoom = Math.max(ZOOM_MIN, Math.min(ZOOM_MAX, Math.min((iw-2)/DESIGN_W, (ih-4)/Hc)));
     de.style.zoom = String(zoom);
     state.zoom=zoom; state.designW=DESIGN_W; state.designH=DESIGN_H; state.contentH=Hc; state.active=true;
-    // اربط عمود الصاروخ (المثبَّت) بحافة المحتوى اليسرى كي لا ينفصل عند توسّط .app
-    // في شاشة عريضة — يُقاس يسار .app بالفضاء التصميميّ ويُوضع العمود عنده.
+    // عمود الصاروخ: مفصولٌ عن زوم المحتوى ليبقى ثابتاً بين الأسئلة. نطبّق عليه زوماً
+    // مضادّاً (1÷zoom) فيُرسم بالبكسل الحقيقيّ (لا يتأثّر بتغيّر زوم المحتوى)، ونثبّته:
+    //  • رأسياً: القمر على بُعد LANE_MARGIN من الحافة العليا، والأرض على بُعده من السفلى.
+    //  • أفقياً: في منتصف المنطقة اليسرى (موضع ثابت حسب عرض النافذة، لا يتغيّر مع السؤال).
     var lane=document.querySelector('.rocket-lane');
-    if(lane && app){ var aL=app.getBoundingClientRect().left/zoom;
-      lane.style.left=Math.max(0,Math.round(aL-6))+'px'; }
+    if(lane){
+      var LANE_MARGIN=100, MOON_TOP=82, EARTH_BOTTOM=80, LANE_W=124;
+      lane.style.zoom = String(1/zoom);                 // يُلغي زوم المحتوى → بكسل حقيقيّ
+      var laneTop = LANE_MARGIN - MOON_TOP;             // =18: القمر (top:82) يقع عند LANE_MARGIN من الأعلى
+      lane.style.top = laneTop + 'px';
+      lane.style.bottom = 'auto';
+      lane.style.height = (ih - LANE_MARGIN - laneTop + EARTH_BOTTOM) + 'px';  // الأرض عند ih−LANE_MARGIN
+      var cx = Math.max(85, Math.min(300, iw*0.13));    // منتصف المنطقة اليسرى (ثابت حسب النافذة)
+      lane.style.left = Math.round(cx - LANE_W/2) + 'px';
+    }
     if(mo && app) mo.observe(app,{childList:true,subtree:true,attributes:true,attributeFilter:['style','class','hidden']});
     try{ window.dispatchEvent(new Event('shoogp-fit')); }catch(e){}
   }
