@@ -593,7 +593,7 @@
   .rocket-lane img{position:absolute;display:block;-webkit-user-select:none;user-select:none}
 
   /* القمر أعلى المسار (مُبعَد ~80px عن الحافّة العليا ليتنفّس المسار) */
-  .rocket-lane .rj-moon-img{top:82px;left:50%;margin-left:-48px;width:96px;z-index:1;
+  .rocket-lane .rj-moon-img{top:82px;left:50%;margin-left:-55px;width:110px;z-index:1;
     filter:drop-shadow(0 0 10px rgba(255,246,196,.5))}
   /* المعالم عند انحناءات المنحنى (يوضعها الكود بالـ left/bottom) — مكبّرة */
   .rocket-lane .rj-sat-img{width:66px;opacity:.95;transform:translateX(-50%);z-index:1}
@@ -673,10 +673,10 @@
   /* علم عُمان: يوضع بالكود (الساريّة خلف الصاروخ، القماش يمينه مرئي كاملاً)،
      وينبثق بحركة رفع لطيفة عند الوصول */
   .rocket-lane .rj-flag-img{width:58px;z-index:2;transform-origin:bottom left;
-    transform:translateY(26px) scale(.92);opacity:0}
+    transform:translateY(26px) scale(.92) rotate(8deg);opacity:0}
   .rocket-lane.rj-arrived .rj-flag-img{animation:rjFlag 1s cubic-bezier(.34,1.4,.5,1) forwards}
-  @keyframes rjFlag{0%{opacity:0;transform:translateY(26px) scale(.92)}
-    100%{opacity:1;transform:translateY(0) scale(1)}}
+  @keyframes rjFlag{0%{opacity:0;transform:translateY(26px) scale(.92) rotate(8deg)}
+    100%{opacity:1;transform:translateY(0) scale(1) rotate(8deg)}}
 
   /* استقرار لطيف عند الملامسة: انضغاط خفيف كعجلات هبوط، بلا وثبة للأعلى */
   .rocket-lane.rj-arrived .rj-rocket{animation:rjSettle .6s ease-out}
@@ -689,7 +689,7 @@
   @media (max-width:900px){
     .rocket-lane{width:98px;left:56px}
     body.rocket-mode #activityScreen{padding-left:170px}
-    .rocket-lane .rj-moon-img{width:76px;margin-left:-38px}
+    .rocket-lane .rj-moon-img{width:88px;margin-left:-44px}
     .rocket-lane .rj-earth-img{width:100px;margin-left:-50px}
     .rocket-lane .rj-rocket{width:60px;margin-left:-30px;bottom:126px}
     .rocket-lane .rj-flag-img{width:48px}

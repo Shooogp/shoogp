@@ -281,11 +281,12 @@
         ? Math.max(0, Math.min(1, (moonBottomUp - this._winRest)/this.travel)) : 0;
       this._placeMarker(this.cloud, sMoon*0.42, 8);               // نحو منتصف الطريق
       this._placeMarker(this.sat,   sMoon*0.80, -6);              // أسفل القمر بوضوح (لا تداخل)
-      // العلم مغروس على القمر (عند مركزه) لا فوقه — على منحنى الخط نفسه
+      // العلم مغروس على النصف العلويّ للقمر (عند ~30% من أعلى القرص) — على منحنى الخط نفسه
+      const moonUpperUp = L.bottom - (M.top + M.height*0.30);       // النصف العلويّ للقمر
       if(this.flag){ const sFlag = this.travel>0
-          ? Math.max(0, Math.min(1, (moonCenterUp - this._winRest)/this.travel)) : 1;
+          ? Math.max(0, Math.min(1, (moonUpperUp - this._winRest)/this.travel)) : 1;
         this.flag.style.left=(this._cx + this._dxAt(sFlag) + 20)+'px';
-        this.flag.style.bottom=(moonCenterUp - 20)+'px'; }
+        this.flag.style.bottom=(moonUpperUp - 8)+'px'; }
       this._drawCurve();
       this._sig=this._readSig();   // بصمة الهندسة التي رُسم عليها كل شيء الآن
     },
