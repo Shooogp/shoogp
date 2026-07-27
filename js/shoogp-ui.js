@@ -64,41 +64,45 @@ function gateOn(){
        حتى تسع نافذته المحتوى بالضبط.
    القيود: تكبير ≤ +30% · تصغير ≥ −25% · الإطار ≤ 92% من المساحة الرأسية.
    إن عجز l حتى عند +30% → حاوية CSS مرنة (qflex) بروح العائلة، بلا تمرير.
-   FRAME_SIZES: هندسة كل مقاس (الصورة، النسبة، إزاحات الفتحة المتحفظة). */
-var FRAME_SIZES={
-  /* إزاحاتُ النافذةِ مضبوطةٌ ليكونَ الهامشُ العلويُّ (إزاحة−زخرفة) ≥ السفليِّ في كلِّ
-     إطارٍ (قاعدةُ §8). القيمُ المقيسةُ للزخرفةِ الداخليةِ (وسيطُ النطاقِ المركزيِّ، %H):
-     s: علوية10.03/سفلية10.53 · m: 7.01/9.19 · l: 7.45/9.17 · tall: 8.74/12.91.
-     s: خُفِّضَت bottom (14.5→13.5) لموازنةِ الهامشِ (السفليُّ كان أكبرَ) وتقليصِ فجوةٍ
-        سفليةٍ زائدةٍ. tall: رُفِعَت top (8.4→9.7) لإصلاحِ هامشٍ علويٍّ سالبٍ (المحتوى
-        كان يركبُ الزخرفةَ العلويةَ) وموازنتِه. m وl علويُّهما أكبرُ أصلاً فلم يُمَسّا. */
-  s:{img:'frame-moon-s.png', ar:'1859 / 788',
-     win:{top:'13%',   left:'8.5%',  right:'9%',    bottom:'13.5%'}},
-  m:{img:'frame-moon-m.png', ar:'1445 / 1055',
-     win:{top:'10%',   left:'9.5%',  right:'9.5%',  bottom:'11%'}},
-  l:{img:'frame-moon-l.png', ar:'1246 / 1222',
-     win:{top:'10.5%', left:'12.5%', right:'11.5%', bottom:'11.5%'}},
-  tall:{img:'frame-moon-tall.png', ar:'968 / 1464',
-     win:{top:'9.7%',  left:'14.6%', right:'14.3%', bottom:'13.8%'}}
+   FRAME_FAMILIES: جدولٌ صريحٌ (مادة × حجم)؛ كلُّ خانةٍ {img,ar,win,hasFill[,fillColor]}. */
+/* ═══ نظام «فريم لكل مادة» — جدولٌ حجماً بحجم ═══
+   لكلِّ مادةٍ عائلةٌ فيها **خانةٌ لكلِّ حجم** (s/m/l/tall)؛ خوارزميةُ «الاختيار ثم الضبط»
+   تعملُ داخلَ عائلةِ المادةِ الحالية فتختارُ الحجمَ بالنسبة، ثم تأخذُ خانتَه.
+   **`hasFill` لكلِّ خانة** (لا للعائلة):
+     • false ← تعبئةٌ نقطيةٌ عبر طبقةِ .qfill (القمريّ).
+     • true  ← التعبئةُ مدموجةٌ في صورةِ الفريم نفسِها؛ لا تُبنى/تُخفى .qfill.
+   `ar` = نسبةُ الصورةِ الفعلية (**خطٌّ أحمر §٣**). `win` = إزاحاتُ نافذةِ المحتوى (تحصرُه
+   في المنطقةِ الداخلية). `fillColor` (لخانةِ hasFill) = لونُ التعبئةِ المدموج (لخلفيةِ الحاوية
+   المرنة). المسارُ مطلقٌ عبر imgURL. **الإكمالُ لاحقاً:** استبدلْ خانةَ الرياضيات s/l بفريمِها
+   المعبّأ بسطرٍ واحد (img+ar+win+hasFill:true+fillColor) متى توفّر frame-math-s/l. */
+var FRAME_FAMILIES={
+  moon:{ order:['s','m','l','tall'], flexBase:'l', sizes:{
+    s:{img:'frame-moon-s.png', ar:'1859 / 788',  win:{top:'13%',  left:'8.5%', right:'9%',    bottom:'13.5%'}, hasFill:false},
+    m:{img:'frame-moon-m.png', ar:'1445 / 1055', win:{top:'10%',  left:'9.5%', right:'9.5%',  bottom:'11%'},   hasFill:false},
+    l:{img:'frame-moon-l.png', ar:'1246 / 1222', win:{top:'10.5%',left:'12.5%',right:'11.5%', bottom:'11.5%'}, hasFill:false},
+    tall:{img:'frame-moon-tall.png', ar:'968 / 1464', win:{top:'9.7%', left:'14.6%', right:'14.3%', bottom:'13.8%'}, hasFill:false}
+  }},
+  /* الرياضيات — حجماً بحجم: m لها فريمُها المعبّأ (frame-math-m، أبعادُه = القمريّ m تماماً
+     1445×1055 بعد التوحيد)، وs/l/tall تستعملُ القمريَّ مؤقتاً حتى يتوفّر نظيرُها math.
+     m: hasFill:true (تعبئةٌ مدموجةٌ فاتحة #fefefe، لا .qfill)؛ win = منطقتُها الداخلية
+        (قِيست L14.5/R14.5/T16.4/B22.4٪) + تنفّسٌ يسير. */
+  math:{ order:['s','m','l','tall'], flexBase:'l', sizes:{
+    s:{img:'frame-moon-s.png', ar:'1859 / 788',  win:{top:'13%',  left:'8.5%', right:'9%',    bottom:'13.5%'}, hasFill:false},  /* مؤقت: قمريّ حتى يتوفّر frame-math-s */
+    m:{img:'frame-math-m.png', ar:'1445 / 1055', win:{top:'18%',  left:'16%',  right:'16%',   bottom:'23%'},   hasFill:true, fillColor:'#fefefe'},
+    l:{img:'frame-moon-l.png', ar:'1246 / 1222', win:{top:'10.5%',left:'12.5%',right:'11.5%', bottom:'11.5%'}, hasFill:false},  /* مؤقت: قمريّ حتى يتوفّر frame-math-l */
+    tall:{img:'frame-moon-tall.png', ar:'968 / 1464', win:{top:'9.7%', left:'14.6%', right:'14.3%', bottom:'13.8%'}, hasFill:false}  /* مؤقت */
+  }}
 };
-/* إطار الرياضيات لمقاس s حصراً: صورة بزخارف رياضية. يُبدَّل مكان s حين تكون مادةُ
-   الدرس رياضيات (resolveCfg)، وليس عضواً في FRAME_ORDER فلا يُختار مستقلاً. العلوم
-   تبقى دائماً على frame-moon-s (لا استبدال). m/l/tall للرياضيات غير جاهزة بعد فتقع
-   دروسُها عليها على إطار moon العادي مؤقتاً (مقبول).
-   **الهندسة تُطابق صورةَ الإطار الفعلية على القرص** (نافذتها الشفّافة ~2.25): `ar`
-   نسبةُ أبعاد الصورة، و`win` إزاحاتُ نافذة المحتوى داخل الفتحة (بتنفّسٍ يسير). أيّ
-   تبديلٍ لصورة الإطار يوجب مزامنةَ هذين الحقلين مع أبعاد/فتحة الصورة الجديدة —
-   وطبقةُ التعبئة تنحصر تلقائياً بالقياس الحيّ (§قاعدة انحصار التعبئة النقطية). */
-var FRAME_MATH_S={img:'frame-moon-math-s.png', ar:'1536 / 1024',
-     win:{top:'25%', left:'15%', right:'15%', bottom:'29%'}};
-/* اختيار الإطار حسب المادة: يُرجِع هندسة الإطار الفعلية لمقاسٍ ما، مع مراعاة المادة.
-   القاعدة الوحيدة: مقاس s في مادة الرياضيات → إطار الرياضيات؛ ما عداه بلا تغيير. */
-function resolveCfg(size){
-  if(size==='s' && _curSubject==='math') return FRAME_MATH_S;
-  return FRAME_SIZES[size];
-}
-/* ترتيب التقييم — العضو الجديد يُضاف هنا وفي FRAME_SIZES فقط، بلا إعادة هيكلة */
-var FRAME_ORDER=['s','m','l','tall'];
+/* مادةُ الدرس → عائلةُ الفريم: الرياضيات ← math، وبقيةُ المواد ← moon (الافتراضية). */
+function famFor(subj){ return (subj==='math') ? FRAME_FAMILIES.math : FRAME_FAMILIES.moon; }
+function curFam(){ return famFor(_curSubject); }
+/* هندسةُ الفريم لخانةِ (المادةِ الحالية × الحجم). */
+function resolveCfg(size){ var fam=curFam(); return fam.sizes[size] || fam.sizes[fam.order[0]]; }
+var BASE_FILL=0.70;   /* حجم مقياس 1: ارتفاع الإطار = 70% من المساحة المتاحة */
+var CAP_DOWN=0.75;    /* حدّ التصغير: −25% من الحجم الأساسي */
+var DEV=true;         /* تقرير تطويري في الطرفية عن دقّة الحساب المسبق */
+/* الحاوية المرنة (qflex) ملاذٌ أخير ونادر. يُطبع رقم انحراف صندوقها عن نسبة نافذة l. */
+var QFLEX_NOM_AR=1246/1222;     /* نسبة إطار moon l (مرجع طباعة الانحراف) */
 var BASE_FILL=0.70;   /* حجم مقياس 1: ارتفاع الإطار = 70% من المساحة المتاحة */
 var CAP_DOWN=0.75;    /* حدّ التصغير: −25% من الحجم الأساسي */
 var DEV=true;         /* تقرير تطويري في الطرفية عن دقّة الحساب المسبق */
@@ -129,8 +133,10 @@ function fitH(){ var f=window.ShoogpFit; return (f&&f.active)? f.designH : windo
 function fitW(){ var f=window.ShoogpFit; return (f&&f.active)? f.designW : window.innerWidth; }
 function availHeight(){ return Math.max(380, fitH()*0.80); }
 
-/* لفّ محتوى كل بطاقة (عدا الشارتين) داخل هيكل الإطار (طبقة .qfill الشبه شفافة
-   ثم نافذة .qwin) — بمقاس مبدئي محايد؛ fitFrame() هو من يختار المقاس ويضبطه */
+/* لفّ محتوى كل بطاقة داخل هيكل الإطار — بمقاس مبدئي محايد؛ fitFrame() يختار الحجم.
+   طبقةُ .qfill تُبنى **دائماً** (الحجمُ/الخانةُ غيرُ معروفَين بعد)، ثم يُخفيها applyFrame
+   لخاناتِ hasFill:true (تعبئةٌ مدموجة) ويُظهرها للنقطية — فقد تختلطُ خاناتٌ من النوعين
+   في درسٍ واحد (كسؤالِ رياضياتٍ حجمُه m معبّأ وآخرَ حجمُه s قمريّ نقطيّ). */
 function frameize(){
   document.querySelectorAll('.qcard:not([data-frame])').forEach(function(c){
     c.dataset.frame='1';
@@ -168,12 +174,18 @@ function applyFrame(f,fill,w,size){
   var cfg=resolveCfg(size);
   f.style.setProperty('--fimg',"url('"+imgURL(cfg.img)+"')");
   f.style.aspectRatio=cfg.ar;
-  var op=openingPct(cfg.img);
-  ['top','left','right','bottom'].forEach(function(k){
-    w.style[k]=cfg.win[k];
-    var v = op ? (op[k]*FILL_K) : (parseFloat(cfg.win[k])*0.5);
-    fill.style[k]=v.toFixed(2)+'%';
-  });
+  ['top','left','right','bottom'].forEach(function(k){ w.style[k]=cfg.win[k]; });
+  if(fill){
+    if(cfg.hasFill){ fill.style.display='none'; }   /* تعبئةٌ مدموجةٌ في الصورة → أخفِ الطبقة النقطية */
+    else {
+      fill.style.display='';
+      var op=openingPct(cfg.img);   /* انحصار التعبئة النقطية بفتحة الصورة (§٥) */
+      ['top','left','right','bottom'].forEach(function(k){
+        var v = op ? (op[k]*FILL_K) : (parseFloat(cfg.win[k])*0.5);
+        fill.style[k]=v.toFixed(2)+'%';
+      });
+    }
+  }
   return cfg;
 }
 /* ═══ قياسُ فتحةِ صورةِ الإطار (bbox الشفافية) — مصدرُ هندسةِ التعبئة ═══
@@ -225,23 +237,33 @@ function placeFill(f,fill,name){
   fill.style.right =Math.round(Math.max(0, bw-Rx-bleed))+'px';
   fill.style.bottom=Math.round(Math.max(0, bh-By-bleed))+'px';
 }
-/* تهيئة: قِس فتحات كل صور الإطارات مسبقاً (مرّة) كي تجهز التعبئة عند فتح أول درس */
+/* تهيئة: قِس فتحاتِ صورِ الخانات النقطية (hasFill:false) مسبقاً كي تجهزَ تعبئتُها عند أول درس.
+   خاناتُ التعبئة المدموجة (hasFill:true) لا فتحةَ شفّافةَ فيها → لا تُقاس (لا .qfill لها). */
 (function(){
-  FRAME_ORDER.forEach(function(s){ measureFrameGeo(FRAME_SIZES[s].img); });
-  measureFrameGeo(FRAME_MATH_S.img);
+  Object.keys(FRAME_FAMILIES).forEach(function(fk){
+    var fam=FRAME_FAMILIES[fk];
+    fam.order.forEach(function(s){ var c=fam.sizes[s]; if(!c.hasFill) measureFrameGeo(c.img); });
+  });
 })();
-/* يبني الإطار بعرض Wf ويعيد هل يسع محتواه (بلا فائض) */
+/* يبني الإطار بعرض Wf ويعيد هل يسع محتواه (بلا فائض). يحفظ وسمَ qf-hasfill حسب الخانة. */
 function frameFits(f,fill,w,size,Wf){
-  applyFrame(f,fill,w,size);
-  f.className='qframe qf-'+size;
+  var cfg=applyFrame(f,fill,w,size);
+  f.className='qframe qf-'+size+(cfg.hasFill?' qf-hasfill':'');
   f.style.width=Wf+'px';
   return w.scrollHeight<=w.clientHeight+2;   /* قراءة تفرض التخطيط */
 }
-/* الملاذ الأخير: حاوية مرنة بروح العائلة، بلا تمرير (صورة الإطار contain) */
+/* الملاذ الأخير: حاوية مرنة بروح العائلة، بلا تمرير (صورة الإطار contain). يعيد cfg. */
 function toFlex(f,fill,w,base){
-  applyFrame(f,fill,w,base);
-  f.className='qframe qf-'+base+' qflex';
+  var cfg=applyFrame(f,fill,w,base);
+  f.className='qframe qf-'+base+' qflex'+(cfg.hasFill?' qf-hasfill':'');
   f.style.width=''; f.style.aspectRatio='';
+  /* خانةُ التعبئةِ المدموجة في الحاوية المرنة: الصورةُ (contain) تُحاط letterbox فلا تُغطّي
+     المحتوى المتجاوز؛ نملأُ الصندوقَ بلونِ التعبئةِ المدموج (inline !important ليتغلّبَ على
+     background:none !important في .qflex) فيبقى المحتوى على تعبئةٍ مقروءة. الخانةُ النقطيةُ
+     تُبقي .qfill (placeFill). */
+  if(cfg.hasFill && cfg.fillColor) f.style.setProperty('background', cfg.fillColor, 'important');
+  else f.style.background='';
+  return cfg;
 }
 /* البطاقة الظاهرة حالياً (غير المخفيّة) */
 function currentShown(){
@@ -335,12 +357,12 @@ function fitFrame(card){
   var D=DREF/Math.max(1,w.scrollHeight);
   w.style.position=_ws.position; w.style.height=_ws.height; w.style.width=_ws.width;
   w.style.top=_ws.top; w.style.right=_ws.right; w.style.bottom=_ws.bottom; w.style.left=_ws.left; w.style.overflow=_ws.overflow;
-  /* الاختيار بالنسبة (لا بترتيب الحجم): من بين الأطر التي تسع المحتوى نأخذ الأقرب
-     نسبةَ نافذةٍ إلى نسبة المحتوى D — أفضل مطابقة شكلٍ، وأقلّ هدر. عضوٌ جديد يدخل
-     المطابقة تلقائياً بمجرّد إضافته إلى FRAME_SIZES/FRAME_ORDER. */
-  var best=null;
-  for(var i=0;i<FRAME_ORDER.length;i++){
-    var size=FRAME_ORDER[i], cfg=resolveCfg(size), r=frameAR(cfg);
+  /* الاختيار بالنسبة داخلَ عائلةِ المادةِ الحالية: من أطرها التي تسع المحتوى نأخذ الأقرب
+     نسبةَ نافذةٍ إلى نسبة المحتوى D. عضوٌ جديد (كـframe-math-s) يدخل المطابقة تلقائياً
+     بمجرّد إضافته إلى sizes/order في عائلته. (الرياضيات: m فقط الآن → يُختار دائماً.) */
+  var best=null, ORDER=curFam().order;
+  for(var i=0;i<ORDER.length;i++){
+    var size=ORDER[i], cfg=resolveCfg(size), r=frameAR(cfg);
     var baseW=BASE_FILL*availH/r;                 /* عرض مقياس 1 */
     var Wmax=Wceil;                               /* التكبير حرّ بنسبة محفوظة */
     var Wmin=Math.min(Wmax, CAP_DOWN*baseW);      /* أدنى عرض (−25%) */
@@ -355,8 +377,9 @@ function fitFrame(card){
     }
     best={size:size, W:hi, baseW:baseW, d:d};
   }
-  if(!best){ toFlex(f,fill,w,'l'); card.dataset.fit='flex'; _worstH=w.scrollHeight;
-    placeFill(f,fill,resolveCfg('l').img); return; }   /* احصر تعبئة المرنة أيضاً بالفتحة الفعلية */
+  if(!best){ var fb=curFam().flexBase; var fcfg=toFlex(f,fill,w,fb); card.dataset.fit='flex'; _worstH=w.scrollHeight;
+    if(!fcfg.hasFill) placeFill(f,fill,resolveCfg(fb).img);   /* النقطية فقط؛ المدموجة من الصورة/اللون */
+    return; }
   frameFits(f,fill,w,best.size,best.W);           /* ثبّت الفائز */
   _worstH=w.scrollHeight;                          /* ارتفاع أسوأ الحالات في الإطار الفائز */
   if(best.W>contW){                               /* أعرض من العمود → وسّطه فوقه */
@@ -386,8 +409,8 @@ function fitFrame(card){
       var _fr=f.getBoundingClientRect();
       var _shownAR=_fr.height>0?_fr.width/_fr.height:0;
       var _origAR=null, _ratioOK=null;
-      if(_sz!=='flex' && FRAME_SIZES[_sz]){
-        var _p=resolveCfg(_sz).ar.split('/');   /* الإطار الفعلي المطبَّق (يراعي مادة الرياضيات) */
+      if(_sz!=='flex' && curFam().sizes[_sz]){
+        var _p=resolveCfg(_sz).ar.split('/');   /* الإطار الفعلي المطبَّق (عائلة المادة) */
         _origAR=parseFloat(_p[0])/parseFloat(_p[1]);
         var _diff=Math.abs(_shownAR-_origAR)/_origAR;
         _ratioOK=_diff<=0.01;
