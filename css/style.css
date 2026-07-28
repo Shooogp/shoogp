@@ -194,6 +194,12 @@
   /* سحب وإفلات */
   .dnd{display:grid;grid-template-columns:1fr 260px;gap:24px}
   @media(max-width:680px){.dnd{grid-template-columns:1fr}}
+  /* عرضية (نسبة الصورة ≥ 1.2): البطاقات صفّ أفقيّ في الأعلى + الصورة بالعرض الكامل أسفلها.
+     التبديل يُدار في renderDragDrop (js/app.js) بإضافة/إزالة .dnd-wide حسب نسبة الصورة. */
+  .dnd.dnd-wide{display:flex;flex-direction:column;gap:16px}
+  .dnd.dnd-wide .bank{order:-1;flex-direction:row;flex-wrap:wrap;align-items:flex-start;
+    justify-content:center;gap:12px}
+  .dnd.dnd-wide .bank .bt{flex-basis:100%;text-align:center;margin-bottom:0}
   /* أسئلة تحديد الأجزاء (hotspot): لا بطاقات جانبية — الصورة تملأ العرض وتتوسّط */
   .dnd-solo{grid-template-columns:1fr}
   .dnd-solo .stage-img{max-width:640px;margin-inline:auto}

@@ -292,6 +292,27 @@ function renderQuestions(ls){
   show(0);
 }
 
+/* عتبة «عرضية» لأسئلة السحب والإفلات ذات نقاط الارتساء: النسبة = عرض÷ارتفاع.
+   الصورة العرضية (ar ≥ DND_WIDE_AR) → البطاقات صفّ أفقيّ في الأعلى والصورة بالعرض
+   الكامل أسفلها (فلا يقتطع العمود الجانبيُّ عرضَها فتظهر صغيرة)؛ الطولية/المربّعة →
+   العمود الجانبي كما هو. احتياط: إن التفّ صفّ البطاقات إلى أكثر من سطرين رجعنا للعمود. */
+const DND_WIDE_AR = 1.2;
+function dndSvgAR(svgStr){
+  const m=/viewBox\s*=\s*["']\s*[-\d.eE]+\s+[-\d.eE]+\s+([\d.eE]+)\s+([\d.eE]+)/.exec(svgStr||'');
+  if(m){ const w=parseFloat(m[1]), h=parseFloat(m[2]); if(w>0&&h>0) return w/h; }
+  return null;
+}
+function applyDndLayout(dnd, ar){
+  if(!dnd) return;
+  const wide = ar!=null && ar >= DND_WIDE_AR;
+  dnd.classList.toggle('dnd-wide', wide);
+  if(wide){                         // احتياط: صفّ بطاقات يتجاوز سطرين → عُد للعمود الجانبي
+    const tops={};
+    dnd.querySelectorAll('.bank .chip').forEach(c=>{ tops[Math.round(c.offsetTop)]=1; });
+    if(Object.keys(tops).length>2) dnd.classList.remove('dnd-wide');
+  }
+}
+
 /* ① سحب وإفلات: targets[{answer,x,y}] + خلفية image/svg */
 function renderDragDrop(q, body, fb){
   let dragged=null;
@@ -313,7 +334,15 @@ function renderDragDrop(q, body, fb){
     `</div></div><div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
   // وضع النقاط + رسم الخطوط ديناميكياً (دقيق مهما تغيّر الحجم أو ظهر السؤال)
   const stage=body.querySelector('.stage'), svg=body.querySelector('.dndlines'), imgEl=body.querySelector('.labelimg');
+  const dndEl=body.querySelector('.dnd');
   const SVGNS='http://www.w3.org/2000/svg';
+  // اختيار اتجاه التخطيط حسب نسبة الصورة (SVG فوراً من viewBox، والصورة عند تحميلها)
+  function relayout(){
+    let ar=null;
+    if(q.svg) ar=dndSvgAR(q.svg);
+    else if(imgEl && imgEl.naturalWidth && imgEl.naturalHeight) ar=imgEl.naturalWidth/imgEl.naturalHeight;
+    applyDndLayout(dndEl, ar);
+  }
   function redraw(){
     const R=window.fitRect||(el=>el.getBoundingClientRect());   // مستطيل بالفضاء التصميميّ (واعٍ بـ zoom)
     const sr=R(stage); if(!sr.width||!imgEl) return;
@@ -347,7 +376,11 @@ function renderDragDrop(q, body, fb){
     });
   }
   if(window.ResizeObserver){ new ResizeObserver(redraw).observe(stage); }
-  if(imgEl && imgEl.tagName==='IMG') imgEl.addEventListener('load',redraw);
+  if(q.svg) relayout();                                   // نسبة الـSVG معروفة فوراً (قبل اختيار الإطار)
+  if(imgEl && imgEl.tagName==='IMG'){
+    if(imgEl.complete && imgEl.naturalWidth) relayout();  // صورة مخبّأة: قرّر فوراً
+    imgEl.addEventListener('load',()=>{ relayout(); redraw(); });  // وإلا عند التحميل (وشبكة الأمان تعيد اختيار الإطار)
+  }
   setTimeout(redraw,60);
   const used=()=>{const p=[...body.querySelectorAll('.target')].map(t=>t.dataset.placed).filter(Boolean);body.querySelectorAll('.chip').forEach(c=>c.classList.toggle('used',p.includes(c.dataset.w)));};
   const drop=tg=>{if(!dragged)return;tg.textContent=dragged.dataset.w;tg.dataset.placed=dragged.dataset.w;tg.classList.add('filled');tg.classList.remove('correct');tg.style.borderColor='';used();dragged=null;};

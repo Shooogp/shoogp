@@ -446,3 +446,228 @@
   color:#1f4a26 !important; text-shadow:none !important;
 }
 
+/* ═══════════════════════════════════════════════════════════════════
+   ★ ٩. قشورُ أزرارِ الإجابة حسبَ المادة (طبقةُ عرضٍ خالصة) ★
+   «القشرة» = صنفٌ واحدٌ يضعُه `js/shoogp-ui.js` على `#questionList` بجانبِ بوّابةِ
+   `.shoogp-ui`، مشتقٌّ من **مادةِ الدرس** بنفسِ منطقِ اختيارِ إطاراتِ المواد
+   (`SUBJECT_SKINS` ← `lessonSubject`). المادةُ التي لا قشرةَ لها تبقى على شكلِها
+   القائمِ **دونَ أيِّ تغيير** (الرياضياتُ اليوم على الأزرقِ الزجاجيّ §٦).
+   إضافةُ مادةٍ لاحقاً = سطرٌ في `SUBJECT_SKINS` + كتلةٌ هنا بنفسِ اسمِ الصنف.
+   القشرةُ **كسوةٌ بصريةٌ بحتة**: لا تمسُّ منطقَ الأسئلةِ ولا بنيةَ DOM، ولا تستعملُ
+   أيَّ صورة — CSS ومرشِّحُ SVG (`feTurbulence`) مُضمَّنٌ في `data:` فقط.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ───────── قشرةُ العلوم: «الصخرُ الرمليّ» (skin-rocky) ─────────
+   تُقارِبُ أسلوبَ الإطارِ القمريِّ الصخريِّ الرمليّ: جسمٌ رمليٌّ فاتحٌ متدرّج، كبسولةٌ
+   تامّةُ الاستدارة، سماكةٌ عبرَ إضاءةٍ علويةٍ وحافّةٍ سفليةٍ أغمق، وملمسٌ حبيبيٌّ مع
+   نقراتٍ متناثرة. النطاقُ: أزرارُ «اختَرْ إجابةً» — الاختيارُ من متعدد (`.opt`)
+   وصواب/خطأ (`.tf`) والاستبعاد (`.excl-opt`). بطاقاتُ التوصيلِ والسحبِ (`.mitem`/
+   `.chip`) عائلةُ تفاعلٍ أخرى فتبقى على الأزرقِ الزجاجيّ. */
+.shoogp-ui.skin-rocky{
+  /* ألوانُ الجسم — مُتغيّراتٌ تُعادُ كتابتُها على الزرِّ في حالتَي الصواب/الخطأ،
+     فتتلوّنُ الكسوةُ كلُّها (تدرّجاً وحبيباتٍ ونقراتٍ) بتبديلِ متغيّرٍ لا بتكرارِ قواعد. */
+  --rk-hi:#fdf4e2;        /* أعلى الجسم — إضاءة */
+  --rk-mid:#f3ddb6;       /* وسطُ الجسم */
+  --rk-lo:#e4c691;        /* أسفلُ الجسم — إيحاءُ السماكة */
+  --rk-edge:#cba86e;      /* الحافّة */
+  --rk-edge-dk:#a3823f;   /* الحافّةُ السفليةُ الأغمق (سماكة) */
+  --rk-ink:#4a3117;       /* النصّ: بنّيٌّ داكنٌ غامق */
+  --rk-lip:rgba(163,127,72,.55);   /* شفةُ السماكةِ أسفلَ الكبسولة */
+  --rk-cast:rgba(60,40,15,.26);    /* الظلُّ المُلقى */
+  --rk-glow:0 0 0 rgba(0,0,0,0);   /* توهّجُ الحالة — شفّافٌ في الوضعِ العاديّ */
+
+  /* الملمسُ الحبيبيّ: ضجيجٌ كسوريٌّ (feTurbulence) بلا لونٍ وبشفافيةٍ منخفضة.
+     `stitchTiles=stitch` يَخيطُ حوافَّ البلاطةِ فلا يبينُ خطُّ التكرار، ومقاسُ
+     البلاطةِ غيرُ مدوَّرٍ (190×96) فلا ينتظمُ النمطُ للعين. */
+  --rk-grain:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='190' height='96'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='190' height='96' filter='url(%23n)' opacity='0.15'/></svg>");
+
+  /* النقرات: ثلاثةُ أعماقٍ (غائرة/متوسطة/سطحية) — قاعٌ داكنٌ ثمّ حافّةٌ مضاءةٌ ثمّ تلاشٍ،
+     فتُقرأُ كحفرةٍ لا كبقعة. تُركَّبُ عشرَ طبقاتٍ مفردةٍ (`no-repeat`) بمواضعَ ومقاساتٍ
+     غيرِ منتظمة، وتختلفُ من شريطٍ لآخرَ عبرَ `nth-child` فلا يتكرّرُ نمطٌ ظاهر. */
+  --rk-pit-deep:radial-gradient(50% 50% at 50% 42%, rgba(132,94,44,.50) 0 30%, rgba(255,252,240,.60) 56%, rgba(255,252,240,0) 76%);
+  --rk-pit-mid:radial-gradient(50% 50% at 50% 44%, rgba(146,106,52,.40) 0 33%, rgba(255,250,235,.52) 58%, rgba(255,250,235,0) 77%);
+  --rk-pit-soft:radial-gradient(50% 50% at 50% 46%, rgba(160,120,64,.28) 0 36%, rgba(255,248,230,.42) 60%, rgba(255,248,230,0) 78%);
+}
+
+/* أشرطةُ الخيارات تتبعُ عرضَ النافذةِ الحيّة (رُفِعَ سقفُ 560px داخلَ القشرةِ وحدَها). */
+.shoogp-ui.skin-rocky .qwin .opts{max-width:none}
+
+/* ── جسمُ الشريط ──
+   بلا صورةٍ ولا 9-slice، فالتمدّدُ مع النصِّ وعرضِ الإطارِ **بلا تشوّهٍ بنيوياً**:
+   التدرّجُ والحوافُّ والظلالُ كلُّها نسبيةٌ أو بسماكةٍ ثابتة. الحبيباتُ طبقةُ خلفيةٍ
+   فوقَ التدرّج، والنقراتُ في `::before` (مطلقةُ الموضعِ بـ`z-index:-1` داخلَ سياقِ
+   تكديسٍ معزول) فلا تعلو النصَّ ولا تدخلُ في تخطيطِ الـflex. */
+.shoogp-ui.skin-rocky .qwin .opt,
+.shoogp-ui.skin-rocky .qwin .tf,
+.shoogp-ui.skin-rocky .qwin .excl-opt{
+  position:relative;
+  isolation:isolate;                       /* سياقُ تكديسٍ كي يبقى ::before تحتَ النص */
+  background:
+    var(--rk-grain) 0 0/190px 96px repeat,
+    linear-gradient(180deg, var(--rk-hi) 0%, var(--rk-mid) 46%, var(--rk-lo) 100%) 0 0/100% 100% no-repeat
+    !important;
+  border:2px solid var(--rk-edge) !important;
+  border-bottom-color:var(--rk-edge-dk) !important;
+  border-image:none !important;            /* يُلغي أيَّ إطارٍ مصوَّرٍ موروث */
+  border-radius:999px !important;          /* كبسولةٌ تامّةُ الاستدارة في أيِّ ارتفاع */
+  color:var(--rk-ink) !important;
+  font-weight:800 !important;
+  text-shadow:0 1px 0 rgba(255,255,255,.55) !important;
+  filter:none !important;
+  /* السماكة: إضاءةٌ علويةٌ داخلية + قاعٌ داخليٌّ أغمق + شفةٌ سفليةٌ صلبة + ظلٌّ مُلقى */
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.78),
+    inset 0 -3px 0 rgba(150,112,52,.30),
+    inset 0 -8px 11px -7px rgba(120,86,36,.38),
+    0 3px 0 var(--rk-lip),
+    0 6px 12px var(--rk-cast),
+    var(--rk-glow)
+    !important;
+  min-height:60px;                         /* الحدُّ الأدنى التفاعليّ (قاعدةُ الحدود) */
+  display:flex; align-items:center;        /* توسيطُ النصِّ رأسياً مهما التفَّ */
+  gap:12px;
+  padding:14px 26px !important;
+  /* **الحركةُ على `transform` وحدَه — و`box-shadow` خارجَ التحوّل عمداً.**
+     كروم لا يُعيدُ حلَّ خاصيةٍ *متحوِّلةٍ* حين يتغيّرُ المتغيّرُ المخصّصُ الذي تعتمدُ
+     عليه فقط، فيبقى الظلُّ عالقاً على قيمتِه القديمة ولا يظهرُ التوهّجُ إطلاقاً
+     (فُحِصَ حيّاً: بإلغاءِ التحوّلِ ظهرَ التوهّجُ فوراً). والظلُّ يتبدّلُ آنياً مع
+     الرفعِ المتحرّك فلا يُلحَظُ انقطاع. */
+  transition:transform .14s ease !important;
+}
+/* الاختيارُ من متعدد: النصُّ إلى بدايةِ السطر (يمينُ RTL)؛ الآخرانِ متوسّطان. */
+.shoogp-ui.skin-rocky .qwin .opt{justify-content:flex-start; text-align:start}
+.shoogp-ui.skin-rocky .qwin .tf,
+.shoogp-ui.skin-rocky .qwin .excl-opt{justify-content:center; text-align:center}
+
+/* ── طبقةُ النقرات ── */
+.shoogp-ui.skin-rocky .qwin .opt::before,
+.shoogp-ui.skin-rocky .qwin .tf::before,
+.shoogp-ui.skin-rocky .qwin .excl-opt::before{
+  content:"";
+  position:absolute; inset:0; z-index:-1;  /* تحتَ النصِّ، فوقَ خلفيةِ الزرّ */
+  border-radius:inherit; pointer-events:none;
+  background-repeat:no-repeat;
+  background-image:
+    var(--rk-pit-mid),  var(--rk-pit-soft), var(--rk-pit-deep), var(--rk-pit-soft), var(--rk-pit-mid),
+    var(--rk-pit-deep), var(--rk-pit-soft), var(--rk-pit-mid),  var(--rk-pit-soft), var(--rk-pit-deep);
+  /* المواضعُ والمقاساتُ الافتراضية (النمطُ ١) — تُبدَّلُ بحسبِ ترتيبِ الشريط أدناه */
+  background-position:7% 30%, 15% 72%, 24% 22%, 31% 60%, 43% 38%, 52% 75%, 61% 26%, 70% 66%, 82% 34%, 91% 70%;
+  background-size:11px 9px, 7px 6px, 14px 11px, 6px 5px, 9px 8px, 12px 10px, 7px 6px, 10px 8px, 8px 7px, 13px 10px;
+}
+/* ــ أربعةُ أنماطٍ للنقراتِ تتناوبُ على الأشرطة، مع إزاحةِ بلاطةِ الحبيباتِ لكلِّ نمط،
+     فلا يبدو شريطانِ متجاورانِ نسخةً واحدة (شرطُ «بلا نمطٍ ظاهر»). ــ */
+.shoogp-ui.skin-rocky .qwin .opt:nth-child(4n+2)::before,
+.shoogp-ui.skin-rocky .qwin .tf:nth-child(4n+2)::before,
+.shoogp-ui.skin-rocky .qwin .excl-opt:nth-child(4n+2)::before{
+  background-position:4% 66%, 12% 28%, 21% 70%, 34% 24%, 40% 68%, 49% 32%, 58% 72%, 67% 30%, 79% 64%, 88% 28%;
+  background-size:8px 7px, 13px 10px, 6px 5px, 10px 9px, 14px 11px, 7px 6px, 9px 7px, 12px 10px, 6px 6px, 10px 8px;
+}
+.shoogp-ui.skin-rocky .qwin .opt:nth-child(4n+3)::before,
+.shoogp-ui.skin-rocky .qwin .tf:nth-child(4n+3)::before,
+.shoogp-ui.skin-rocky .qwin .excl-opt:nth-child(4n+3)::before{
+  background-position:9% 74%, 18% 34%, 27% 64%, 36% 30%, 46% 70%, 55% 26%, 64% 62%, 73% 36%, 85% 68%, 94% 32%;
+  background-size:12px 10px, 6px 5px, 9px 8px, 14px 11px, 7px 6px, 11px 9px, 8px 7px, 6px 5px, 13px 10px, 9px 8px;
+}
+.shoogp-ui.skin-rocky .qwin .opt:nth-child(4n)::before,
+.shoogp-ui.skin-rocky .qwin .tf:nth-child(4n)::before,
+.shoogp-ui.skin-rocky .qwin .excl-opt:nth-child(4n)::before{
+  background-position:5% 38%, 14% 66%, 26% 32%, 33% 72%, 44% 28%, 51% 64%, 63% 74%, 72% 28%, 80% 60%, 90% 40%;
+  background-size:9px 8px, 11px 9px, 7px 6px, 13px 10px, 10px 8px, 6px 5px, 12px 10px, 8px 7px, 7px 6px, 11px 9px;
+}
+/* إزاحةُ بلاطةِ الحبيباتِ لكلِّ ترتيبٍ (الطبقةُ الأولى في `background`) */
+.shoogp-ui.skin-rocky .qwin .opt:nth-child(4n+2),
+.shoogp-ui.skin-rocky .qwin .tf:nth-child(4n+2),
+.shoogp-ui.skin-rocky .qwin .excl-opt:nth-child(4n+2){background-position:-47px -23px, 0 0 !important}
+.shoogp-ui.skin-rocky .qwin .opt:nth-child(4n+3),
+.shoogp-ui.skin-rocky .qwin .tf:nth-child(4n+3),
+.shoogp-ui.skin-rocky .qwin .excl-opt:nth-child(4n+3){background-position:-93px -51px, 0 0 !important}
+.shoogp-ui.skin-rocky .qwin .opt:nth-child(4n),
+.shoogp-ui.skin-rocky .qwin .tf:nth-child(4n),
+.shoogp-ui.skin-rocky .qwin .excl-opt:nth-child(4n){background-position:-138px -11px, 0 0 !important}
+
+/* ── تحويم: بروزٌ خفيف (رفعٌ + ظلٌّ أعمق + شفةٌ أطول) ── */
+.shoogp-ui.skin-rocky .qwin .opt:hover:not(:disabled),
+.shoogp-ui.skin-rocky .qwin .tf:hover:not(:disabled),
+.shoogp-ui.skin-rocky .qwin .excl-opt:hover:not(:disabled){
+  transform:translateY(-2px);
+  filter:none !important;
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.85),
+    inset 0 -3px 0 rgba(150,112,52,.28),
+    inset 0 -8px 11px -7px rgba(120,86,36,.34),
+    0 5px 0 var(--rk-lip),
+    0 10px 18px rgba(60,40,15,.30),
+    var(--rk-glow)
+    !important;
+}
+/* ── نقر: انضغاطٌ داخلَ سطحِه (تنزلُ الشفةُ ويغورُ السطح) ── */
+.shoogp-ui.skin-rocky .qwin .opt:active:not(:disabled),
+.shoogp-ui.skin-rocky .qwin .tf:active:not(:disabled),
+.shoogp-ui.skin-rocky .qwin .excl-opt:active:not(:disabled){
+  transform:translateY(3px) scale(.995);
+  box-shadow:
+    inset 0 3px 7px rgba(120,86,36,.42),
+    inset 0 -1px 0 rgba(255,255,255,.35),
+    0 1px 0 var(--rk-lip),
+    0 2px 5px rgba(60,40,15,.20),
+    var(--rk-glow)
+    !important;
+}
+
+/* ── الصواب: تلوينُ الكسوةِ خُضرةً (بتبديلِ المتغيّراتِ فقط) + توهّجٌ أخضر + ✓ ── */
+.shoogp-ui.skin-rocky .qwin .opt.correct,
+.shoogp-ui.skin-rocky .qwin .tf.tf-correct,
+.shoogp-ui.skin-rocky .qwin .excl-opt.correct{
+  --rk-hi:#eef8dc; --rk-mid:#cfeaa6; --rk-lo:#a9d477;
+  --rk-edge:#7cb051; --rk-edge-dk:#5c8c36;
+  --rk-ink:#22380b;
+  --rk-lip:rgba(92,140,54,.60);
+  --rk-cast:rgba(40,80,20,.28);
+  --rk-glow:0 0 18px 2px rgba(140,205,95,.70);
+}
+/* ── الخطأ: تلوينٌ أحمرُ هادئ + توهّجٌ أحمر + ✗ + اهتزازٌ خفيف ── */
+.shoogp-ui.skin-rocky .qwin .opt.wrong,
+.shoogp-ui.skin-rocky .qwin .tf.tf-wrong,
+.shoogp-ui.skin-rocky .qwin .excl-opt.wrong{
+  --rk-hi:#fdeae4; --rk-mid:#f4cabe; --rk-lo:#e6a695;
+  --rk-edge:#c98070; --rk-edge-dk:#a55c4a;
+  --rk-ink:#7a2419;
+  --rk-lip:rgba(165,92,74,.58);
+  --rk-cast:rgba(100,30,20,.26);
+  --rk-glow:0 0 18px 2px rgba(228,120,100,.65);
+  animation:cardShake .45s ease;
+}
+/* شارةُ الحالة: دائرةٌ في طرفِ الشريطِ الحرّ (يسارُ RTL) — عنصرُ flex بهامشٍ تلقائيّ */
+.shoogp-ui.skin-rocky .qwin .opt.correct::after,
+.shoogp-ui.skin-rocky .qwin .opt.wrong::after,
+.shoogp-ui.skin-rocky .qwin .excl-opt.correct::after,
+.shoogp-ui.skin-rocky .qwin .excl-opt.wrong::after{
+  margin-inline-start:auto; flex:0 0 auto;
+  /* 30px = ارتفاعُ النصِّ نفسِه تقريباً، فلا يزيدُ ارتفاعَ الشريطِ عند ظهورِ الشارة
+     (لا قفزةَ تخطيطٍ لحظةَ الإجابة). */
+  width:30px; height:30px; border-radius:50%;
+  display:grid; place-items:center;
+  font-size:18px; font-weight:900; line-height:1;
+  text-shadow:none;
+}
+.shoogp-ui.skin-rocky .qwin .opt.correct::after,
+.shoogp-ui.skin-rocky .qwin .excl-opt.correct::after{
+  content:"✓"; color:#2f6b1f; background:rgba(255,255,255,.58);
+  box-shadow:inset 0 0 0 2px rgba(95,162,63,.80), 0 1px 2px rgba(40,80,20,.30);
+}
+.shoogp-ui.skin-rocky .qwin .opt.wrong::after,
+.shoogp-ui.skin-rocky .qwin .excl-opt.wrong::after{
+  content:"✗"; color:#a8382a; background:rgba(255,255,255,.55);
+  box-shadow:inset 0 0 0 2px rgba(190,95,78,.80), 0 1px 2px rgba(100,30,20,.28);
+}
+/* المعطَّلةُ تخفتُ قليلاً، والصحيحةُ تبقى بكاملِ وضوحِها بعدَ قفلِ السؤال */
+.shoogp-ui.skin-rocky .qwin .opt:disabled{opacity:.88}
+.shoogp-ui.skin-rocky .qwin .opt.correct:disabled,
+.shoogp-ui.skin-rocky .qwin .excl-opt.correct:disabled{opacity:1}
+
+@media(prefers-reduced-motion:reduce){
+  .shoogp-ui.skin-rocky .qwin .opt.wrong,
+  .shoogp-ui.skin-rocky .qwin .tf.tf-wrong,
+  .shoogp-ui.skin-rocky .qwin .excl-opt.wrong{animation:none}
+}
+
