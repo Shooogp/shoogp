@@ -99,7 +99,15 @@
   text-shadow:0 2px 3px rgba(0,40,70,.75);
   filter:drop-shadow(0 1px 2px rgba(0,0,0,.22));
 }
+/* ═══ الأيقوناتُ حولَ الحاوية: 10px من حافّةِ الإطارِ الفعلية (قاعدةٌ دائمة) ═══
+   القيمُ هنا **مبدئيةٌ فقط** حتى يجهزَ القياس؛ الموضعَ الفعليَّ يكتبُه `placeIcons`
+   في js/shoogp-ui.js من صندوقِ الرسمِ المعتمِ للإطارِ مسقَطاً على مقاسِه المعروض
+   (الهامشُ الشفّافُ حولَ صخرِ القمر وletterbox المرنةِ داخلانِ في الحساب).
+   ‎.qcard‎ بلا هامشٍ سفليٍّ كي يكونَ `margin-top` لـ‎.qnav‎ **وحدَه** حاكمَ المسافة
+   السفلى (الهامشانِ متجاوران فينهارانِ إلى واحد؛ فلو بقيَ 18px لغلبَ الحسابَ). */
 .shoogp-ui .qhead{margin-bottom:10px}
+.shoogp-ui .qcard{margin-bottom:0}
+.shoogp-ui .qnav{margin-top:10px}
 
 /* ⑦ مؤشر التقدّم (٧٥٪): نفس كبسولة الرقم 9-slice (progress-pill.png غير متوفر بعد) */
 .shoogp-ui .qprogress{
@@ -132,7 +140,7 @@
   color:#fff;
 }
 .shoogp-ui .qcard::before,.shoogp-ui .qcard::after{display:none}
-.shoogp-ui .qcard .qhead{padding:0 10px; margin-bottom:14px}
+.shoogp-ui .qcard .qhead{padding:0 10px; margin-bottom:10px}   /* مبدئيّ — placeIcons يحكمه */
 /* عائلة الإطارات القمرية: صنف الحجم (qf-s/qf-m/qf-l) والهندسة تُضبط من
    جدول FRAME_SIZES في السكربت — الإطار بنسبة صورته الأصلية دائماً بلا شد،
    والعرض يتناسب مع الشاشة ويُقيَّد بالارتفاع المتاح */

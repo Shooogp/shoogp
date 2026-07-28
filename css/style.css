@@ -70,6 +70,17 @@
   }
   .app:has(#lessonsScreen.active) > header .logo,
   .app:has(#activityScreen.active) > header .logo{ height:60px }
+  /* ── صفحةُ الدرسِ وحدَها: الشعارُ ينتقلُ من الترويسةِ إلى سطرِ الدرس ──
+     في شاشةِ النشاطِ يُخفى شعارُ الترويسةِ ونصُّها، ويظهرُ الشعارُ داخلَ
+     ‎.lesson-head‎ على السطرِ نفسِه مع عنوانِ الدرس (الطرفانِ المتقابلان)
+     مباشرةً فوقَ حاويةِ السؤال. صفحةُ التنقّلِ (‎#lessonsScreen‎) لا تُمَسّ. */
+  .app:has(#activityScreen.active) > header .logo-wrap,
+  .app:has(#activityScreen.active) > header .main-title{ display:none }
+  #activityScreen .lesson-head{display:flex;align-items:center;
+    justify-content:space-between;gap:20px;margin-bottom:6px}
+  #activityScreen .lesson-head .screen-title{margin-bottom:0;flex:1 1 auto;min-width:0}
+  #activityScreen .lesson-logo{height:60px;width:auto;display:block;flex:0 0 auto;
+    filter:drop-shadow(0 6px 16px rgba(0,0,0,.35))}
   .app:has(#lessonsScreen.active) > header .logo-wrap,
   .app:has(#activityScreen.active) > header .logo-wrap{ margin-bottom:2px }
   .app:has(#lessonsScreen.active) > header .main-title,
@@ -597,24 +608,26 @@
   /* --rj-k = معامِلُ حجمِ عناصرِ نظامِ الصاروخ (1 = الأحجامُ الأصلية).
      كلُّ مقاسٍ أدناه مضروبٌ فيه، وهوامشُ التمركز (‏margin-left = −العرض÷2) مضروبةٌ معه
      فيبقى كلُّ عنصرٍ متمركزاً على المحور أيّاً كان المعامِل. **لتغييرِ الحجمِ: هذا الرقمُ
-     وحدَه.** مواضعُ النظامِ لا تُمَسّ (top:82 للقمر، bottom:80 للأرض، وعرضُ العمودِ 124)
-     لأنّ `js/fit.js` يُحاذي عليها بثوابتِه MOON_TOP/EARTH_BOTTOM/LANE_W — فتصغرُ العناصرُ
-     في مواضعِها بلا إزاحةٍ للمنظومة ولا كسرٍ لعقدِ المحاذاة. وحركةُ الصاروخِ ومحطّاتُه
-     تُقاسُ حيّاً من الأبعادِ الفعلية (‏_measure في rocket.js) فتتبعُ التصغيرَ تلقائياً. */
-  .rocket-lane{--rj-k:.85;
+     وحدَه.** مواضعُ النظامِ (top للقمر، bottom للأرض، وعرضُ العمودِ 124) مرتبطةٌ بثوابتِ
+     `js/fit.js` (MOON_TOP/EARTH_BOTTOM/LANE_W) — **لا تُغيَّر إلا معها في الملفّين معاً**.
+     فتصغرُ العناصرُ في مواضعِها بلا إزاحةٍ للمنظومة ولا كسرٍ لعقدِ المحاذاة. وحركةُ
+     الصاروخِ ومحطّاتُه تُقاسُ حيّاً من الأبعادِ الفعلية (‏_measure في rocket.js) فتتبعُ
+     التصغيرَ تلقائياً.
+     --rj-sat-k = معامِلٌ إضافيٌّ للقمرِ الصناعيِّ وحدَه (فوقَ --rj-k)، للمعايرةِ بالنظر. */
+  .rocket-lane{--rj-k:.85;--rj-sat-k:1.18;
     position:fixed;top:92px;bottom:22px;left:114px;width:124px;z-index:6;
     pointer-events:none} /* عرض فقط، لا يعترض اللمس */
   .rocket-lane img{position:absolute;display:block;-webkit-user-select:none;user-select:none}
 
-  /* القمر أعلى المسار (مُبعَد ~80px عن الحافّة العليا ليتنفّس المسار) */
-  .rocket-lane .rj-moon-img{top:82px;left:50%;
+  /* القمر رأسُ المسار: top هنا + laneTop في fit.js = 50px تحتَ حافّةِ الشاشةِ العليا */
+  .rocket-lane .rj-moon-img{top:32px;left:50%;
     width:calc(110px * var(--rj-k));margin-left:calc(-55px * var(--rj-k));z-index:1;
     filter:drop-shadow(0 0 10px rgba(255,246,196,.5))}
   /* المعالم عند انحناءات المنحنى (يوضعها الكود بالـ left/bottom) — مكبّرة */
-  .rocket-lane .rj-sat-img{width:calc(66px * var(--rj-k));opacity:.95;transform:translateX(-50%);z-index:1}
+  .rocket-lane .rj-sat-img{width:calc(66px * var(--rj-k) * var(--rj-sat-k));opacity:.95;transform:translateX(-50%);z-index:1}
   .rocket-lane .rj-cloud-img{width:calc(94px * var(--rj-k));opacity:.95;transform:translateX(-50%);z-index:1}
-  /* الأرض مُبعَدة ~80px عن الحافّة السفلى */
-  .rocket-lane .rj-earth-img{bottom:80px;left:50%;
+  /* الأرضُ ذيلُ المسار: bottom هنا + أسفلُ العمودِ في fit.js = 50px فوقَ الحافّةِ السفلى */
+  .rocket-lane .rj-earth-img{bottom:30px;left:50%;
     width:calc(118px * var(--rj-k));margin-left:calc(-59px * var(--rj-k));z-index:1;
     filter:drop-shadow(0 0 10px rgba(120,180,255,.4))}
 
@@ -636,7 +649,8 @@
 
   /* الصاروخ: الحاوية الخارجية تتبع المنحنى بالـ transform (JS)،
      والطبقة الداخلية تتأرجح تأرجحاً عائماً مستمراً (translate/rotate مستقلّان) */
-  .rocket-lane .rj-rocket{position:absolute;bottom:135px;left:50%;
+  /* موضعُ السكون: 55px فوقَ حافّةِ الأرضِ السفلى (‏bottom الأرضِ + 55) — نزلَ معها 50px */
+  .rocket-lane .rj-rocket{position:absolute;bottom:85px;left:50%;
     width:calc(74px * var(--rj-k));margin-left:calc(-37px * var(--rj-k));
     transform:translate(0,0);will-change:transform;z-index:3;
     filter:drop-shadow(0 3px 6px rgba(0,0,0,.35))}
@@ -711,8 +725,8 @@
     body.rocket-mode #activityScreen{padding-left:170px}
     .rocket-lane .rj-moon-img{width:88px;margin-left:-44px}
     .rocket-lane .rj-earth-img{width:100px;margin-left:-50px}
-    .rocket-lane .rj-rocket{width:60px;margin-left:-30px;bottom:126px}
+    .rocket-lane .rj-rocket{width:60px;margin-left:-30px;bottom:76px}
     .rocket-lane .rj-flag-img{width:48px}
-    .rocket-lane .rj-sat-img{width:54px}
+    .rocket-lane .rj-sat-img{width:calc(54px * var(--rj-sat-k))}
     .rocket-lane .rj-cloud-img{width:76px}
   }

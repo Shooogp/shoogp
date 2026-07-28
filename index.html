@@ -40,7 +40,13 @@
     <!-- ④ شاشة النشاط: أسئلة الدرس (تُبنى بالكود) -->
     <section class="screen" id="activityScreen">
       <button class="back" onclick="backToLessons()">→ رجوع للدروس</button>
-      <div class="screen-title" id="lessonTitle"></div>
+      <!-- سطرُ الدرس: عنوانُ الدرسِ في طرفٍ وشعارُ شوجب في الطرفِ المقابل، على سطرٍ واحدٍ
+           فوقَ حاويةِ السؤال. الشعارُ يُخفى من الترويسةِ في هذه الشاشةِ وحدَها (css/style.css)،
+           وموضعُه في صفحاتِ التنقّلِ (الرئيسيةِ وقائمةِ الدروس) لا يُمَسّ. -->
+      <div class="lesson-head">
+        <div class="screen-title" id="lessonTitle"></div>
+        <img class="lesson-logo" src="images/logo-mark.png" alt="شوجب">
+      </div>
       <div class="screen-sub">أجب عن الأسئلة وأطلق صاروخك إلى القمر 🚀</div>
       <div id="questionList"></div>
     </section>

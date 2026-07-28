@@ -236,6 +236,7 @@ function applyFrame(f,fill,w,size,paint){
    لا نكتبُ --fimg إلا إن تغيّرت قيمتُه فعلاً، فلا طلبَ جديداً لصورةٍ معروضةٍ أصلاً. */
 function paintFrame(f,fill,cfg){
   var url="url('"+imgURL(cfg.img)+"')";
+  f.dataset.fimg=cfg.img;                       /* اسمُ الصورةِ المعروضة — مفتاحُ هندسةِ الأيقونات */
   if(f.style.getPropertyValue('--fimg')!==url) f.style.setProperty('--fimg',url);
   if(!fill) return;
   /* تعبئةٌ مدموجةٌ في الصورة (إعلاناً أو واقعاً: صورةٌ بلا فتحةٍ شفّافة) → أخفِ الطبقةَ النقطية */
@@ -252,7 +253,7 @@ function paintFrame(f,fill,cfg){
    (openingPct) لقاعدةِ انحصارِ التعبئة النسبية في applyFrame — وتُستعمَل أيضاً في
    placeFill لحالةِ الحاوية المرنة qflex فقط (لأنها تُحاط letterbox فلا تكفيها النِّسَب).
    القياسُ من نفسِ الأصل (imgURL مطلق) فلا تلوُّثَ CORS. */
-var _frameGeo={};   /* name → {natW,natH,oL,oR,oT,oB} | 'pending' | null(تعذّر) */
+var _frameGeo={};   /* name → {natW,natH,oL,oR,oT,oB,aL,aR,aT,aB} | 'pending' | null(تعذّر) */
 function measureFrameGeo(name){
   if(!name || _frameGeo[name]!==undefined) return;   /* مقيسٌ أو قيد القياس */
   _frameGeo[name]='pending';
@@ -271,7 +272,21 @@ function measureFrameGeo(name){
       for(y=0;y<H;y++){ a=d[(y*W+cxx)*4+3];
         if(a<128){ if(cs<0)cs=y; } else if(cs>=0){ if(y-cs>bv){bv=y-cs;bt=cs;bb=y-1;} cs=-1; } }
       if(cs>=0 && H-cs>bv){bv=H-cs;bt=cs;bb=H-1;}
-      _frameGeo[name]={natW:W,natH:H,oL:bl,oR:br,oT:bt,oB:bb};
+      /* ═══ صندوقُ الرسمِ المعتم (حافّةُ الإطارِ الفعلية) — مصدرُ موضعِ الأيقونات ═══
+         صورةُ الإطارِ تحملُ هامشاً شفّافاً حولَ صخرِ القمر (~2%)، فحافّةُ *الصندوق* ليست
+         حافّةَ الإطارِ المرئية. نمسحُ الشفافيةَ مرّةً (في نفسِ التمريرةِ التي تقيسُ الفتحة)
+         ونخبّئُ حدودَ أوّلِ/آخرِ بكسلٍ معتمٍ — فتُشتَقُّ منها إزاحاتُ الأيقوناتِ نسبةً،
+         فتلاحقُ الإطارَ في كلِّ مقاسٍ وكلِّ ضبطِ scale بلا رقمٍ ثابتٍ واحد. */
+      var aL=W, aT=-1, aR=-1, aB=-1;
+      for(y=0;y<H;y++){
+        var row=y*W, f0=-1, f1=-1;
+        for(x=0;x<W;x++){ if(d[(row+x)*4+3]>=8){ if(f0<0) f0=x; f1=x; } }
+        if(f0<0) continue;
+        if(aT<0) aT=y;
+        aB=y; if(f0<aL) aL=f0; if(f1>aR) aR=f1;
+      }
+      if(aT<0){ aL=0; aT=0; aR=W-1; aB=H-1; }   /* صورةٌ شفّافةٌ كلُّها → الصندوقُ كما هو */
+      _frameGeo[name]={natW:W,natH:H,oL:bl,oR:br,oT:bt,oB:bb,aL:aL,aR:aR,aT:aT,aB:aB};
     }catch(e){ _frameGeo[name]=null; }   /* تعذّر (CORS مثلاً) → تبقى الإزاحات الاحتياطية */
     reconcileAR(name, im.naturalWidth, im.naturalHeight);
     /* أعد ضبط البطاقة الظاهرة كي تُطبَّق نسبةُ الفتحة الجاهزةُ الآن على التعبئة */
@@ -297,6 +312,61 @@ function placeFill(f,fill,name){
   fill.style.right =Math.round(Math.max(0, bw-Rx-bleed))+'px';
   fill.style.bottom=Math.round(Math.max(0, bh-By-bleed))+'px';
 }
+/* ═══ الأيقوناتُ حولَ الحاوية — 10px من حافّةِ الإطارِ الفعلية (قاعدةٌ دائمة) ═══
+   فوقَ الحاوية: شارتا رقمِ السؤالِ ونوعِه (‏.qhead‎). أسفلَها: زرّا السابق/التالي وشارةُ
+   «السؤال من/إلى» (‏.qnav‎). المسافةُ **10px بالضبط** من حافّةِ الإطارِ المرئيةِ **بعدَ
+   الـscale**، فتلاحقُ الأيقوناتُ الحاويةَ مع كلِّ سؤالٍ ومع كلِّ تغيّرِ مقاس.
+
+   **لماذا لا يكفي هامشٌ ثابتٌ في CSS:** حافّةُ صندوقِ الإطارِ ليست حافّتَه المرئية —
+   صورةُ الإطارِ تحملُ هامشاً شفّافاً حولَ صخرِ القمر (~2%)، والحاويةُ المرنةُ qflex
+   تُحاطُ letterbox فوقَ ذلك (نسبتُها ≠ نسبةَ صورتِها). فهامشُ CSS الثابتُ يقيسُ من
+   الصندوقِ لا من الرسم، ويتغيّرُ خطؤه مع كلِّ مقاسٍ لأنّ الهامشَ الشفّافَ **نسبةٌ**
+   تكبرُ وتصغرُ مع الإطار. لذا نشتقُّ الإزاحةَ من **نفسِ مصدرِ الهندسةِ الحيّة** الذي
+   تعتمدُه placeFill/measureFrameGeo: صندوقُ الرسمِ المعتمُ المقيسُ من الصورةِ نفسِها،
+   مُسقَطاً على مقاسِ الإطارِ المعروضِ الآن.
+
+   القياسُ كلُّه بالوحداتِ التصميميّة (clientWidth/clientHeight لا rect) فلا يدخلُ
+   الزومُ الحسابَ أصلاً. تسري القاعدةُ على كلِّ المقاسات (s/m/l/tall) وإطاراتِ المواد
+   والحاويةِ المرنةِ وفي المنفذَينِ العريضِ والطوليِّ سواء. */
+var ICON_GAP=10;   /* بالبكسلِ التصميميّ — الرقمُ الوحيدُ في القاعدة */
+/* إزاحةُ الرسمِ المعتمِ عن حافّتَي صندوقِ الإطارِ العليا والسفلى (بكسلٌ تصميميّ). */
+function artOffsets(f){
+  var bw=f.clientWidth, bh=f.clientHeight;
+  if(!bw||!bh) return null;
+  var g=_frameGeo[f.dataset.fimg||''];
+  if(!g || g==='pending' || g.aT==null) return {top:0,bottom:0};
+  /* غيرُ المرنة: النسبةُ محفوظةٌ (§٣) فالصندوقُ = الصورةُ تماماً، بلا letterbox.
+     المرنة: الصورةُ contain داخلَ الصندوق فتُحاطُ بشريطَين — يدخلانِ الحساب. */
+  var scale = f.classList.contains('qflex')
+      ? Math.min(bw/g.natW, bh/g.natH) : (bh/g.natH);
+  var offY = f.classList.contains('qflex') ? (bh-g.natH*scale)/2 : 0;
+  return { top: offY + g.aT*scale, bottom: offY + (g.natH-1-g.aB)*scale };
+}
+/* كتابةٌ لا تُطلقُ حلقةَ المراقب: لا نلمسُ النمطَ إلا إن تغيّرت قيمتُه فعلاً
+   (‏MutationObserver يُسجّلُ تغيّرَ السمةِ حتى لو كانت القيمةُ نفسَها). */
+function setStyleOnce(el,prop,v){ if(el && el.style[prop]!==v) el.style[prop]=v; }
+function placeIcons(){
+  var q=document.getElementById('questionList');
+  var nav=q && q.querySelector('.qnav');
+  var act=document.getElementById('activityScreen');
+  var shown=(gateOn() && act && act.classList.contains('active')) ? currentShown() : null;
+  var f=shown && shown.querySelector('.qframe');
+  var head=shown && shown.querySelector('.qhead');
+  if(!f || !f.clientHeight){        /* خارجَ النظام/الشاشة → أعِدِ الهوامشَ لأنماطِ المنصّة */
+    setStyleOnce(head,'marginBottom',''); setStyleOnce(nav,'marginTop','');
+    return;
+  }
+  var ao=artOffsets(f) || {top:0,bottom:0};
+  /* الهامشُ يُقاسُ إلى حافّةِ *الصندوق*، والمطلوبُ 10px إلى حافّةِ *الرسم*؛ فنطرحُ
+     الهامشَ الشفّافَ. إن جاوزَ الشفّافُ العشرةَ صارَ الهامشُ سالباً فتدخلُ الأيقونةُ
+     في المنطقةِ الشفّافةِ من الصندوق — وهو المقصود (‏.qhead‎ عند z=2 و‎.qnav‎ لاحقٌ
+     في الترتيب، فكلاهما فوقَ الإطار). */
+  setStyleOnce(head,'marginBottom',(ICON_GAP-ao.top).toFixed(2)+'px');
+  setStyleOnce(nav ,'marginTop'   ,(ICON_GAP-ao.bottom).toFixed(2)+'px');
+}
+/* الأيقوناتُ ثمّ الشريطُ — الشريطُ يقرأُ صندوقَ ‎.qhead‎ فيجبُ أن يكونَ قد استقرَّ */
+function placeChrome(){ placeIcons(); placeBand(); }
+
 /* ═══ الشريطُ الرماديُّ الخلفيُّ (.qband) ═══
    مستطيلٌ رأسيٌّ يمتدُّ من أعلى الشاشةِ إلى أسفلِها خلفَ منطقةِ السؤال، عرضُه يتبعُ
    **عرضَ الإطارِ الحاليِّ بمقاسِه المعروضِ** مضافاً إليه الأيقونات (شارتا .qhead) وخلوصٌ.
@@ -362,13 +432,15 @@ function placeBand(){
   if(!fr || !fr.width){ b.style.display='none'; return; }
   var z=liveZoom(f);
   var pad=BAND_PAD*z;
-  /* اتحادُ الإطارِ والأيقونات أفقياً — الشارتانِ قد تتجاوزانِ إطاراً ضيقاً والعكس */
+  /* اتحادُ الإطارِ والأيقوناتِ أفقياً — الشارتانِ (فوق) وأزرارُ التنقّلِ ومؤشّرُ التقدّم
+     (تحت) قد تتجاوزُ إطاراً ضيقاً والعكس، فيحتضنُ الشريطُ الجميعَ في مواضعِهم الفعلية */
   var L=fr.left, R=fr.right;
-  var head=shown.querySelector('.qhead');
-  if(head){
-    var hr=head.getBoundingClientRect();
-    if(hr.width){ L=Math.min(L,hr.left); R=Math.max(R,hr.right); }
-  }
+  [shown.querySelector('.qhead'), document.querySelector('#questionList .qnav')]
+    .forEach(function(el){
+      if(!el) return;
+      var r=el.getBoundingClientRect();
+      if(r.width){ L=Math.min(L,r.left); R=Math.max(R,r.right); }
+    });
   L-=pad; R+=pad;
   /* لا يمتدُّ تحتَ عمودِ الصاروخ */
   var lane=document.querySelector('.rocket-lane');
@@ -404,10 +476,10 @@ function preloadFamily(fam){
     var cfg=fam.sizes[s];
     if(!cfg || _preloaded[cfg.img]) return;
     _preloaded[cfg.img]=1;
-    if(!cfg.hasFill){ measureFrameGeo(cfg.img); return; }   /* يُحمّل ويقيسُ الفتحةَ ويُصالحُ النسبة */
-    var im=new Image();
-    im.onload=function(){ reconcileAR(cfg.img, im.naturalWidth, im.naturalHeight); };
-    im.src=imgURL(cfg.img);
+    /* يُحمّلُ ويقيسُ (الفتحةَ + صندوقَ الرسمِ المعتم) ويُصالحُ النسبة — **لكلِّ خانةٍ مهما
+       كان hasFill**: الفتحةُ تلزمُ النقطيةَ وحدَها، أمّا صندوقُ الرسمِ (حافّةُ الإطارِ
+       الفعلية) فيلزمُ موضعَ الأيقوناتِ في كلِّ الخانات، معبّأةً كانت أو نقطية. */
+    measureFrameGeo(cfg.img);
   });
 }
 /* فهرسٌ عكسيّ: اسمُ الصورة → كلُّ خاناتِ الجدولِ التي تستعملُها (الصورةُ الواحدةُ قد
@@ -658,7 +730,7 @@ function fitShown(){
   shown.dataset.fitSig=sig;
   _fitBusy=true;
   try{ fitFrame(shown); }
-  finally{ setTimeout(function(){_fitBusy=false;},0); placeBand(); }
+  finally{ setTimeout(function(){_fitBusy=false;},0); placeChrome(); }
 }
 
 /* ═══ إعادة حساب ديناميكية: شبكة أمان بمراقب أبعاد على محتوى النافذة ═══
@@ -689,7 +761,7 @@ var contentRO = window.ResizeObserver ? new ResizeObserver(onContentResize) : nu
 /* مراقبُ صندوقِ الإطارِ نفسِه — للشريطِ الخلفيّ وحدَه. عرضُ الإطارِ يتغيّر بانتقالِ CSS
    (‏transition:width) فلا تكفي قراءةٌ واحدةٌ بعدَ الضبط: نتابعُ الصندوقَ حتى يستقرَّ فيلاحقَه
    الشريطُ لحظةً بلحظة. لا يمسُّ خوارزميةَ الاختيارِ ولا يُعيدُ الضبطَ إطلاقاً. */
-var frameRO = window.ResizeObserver ? new ResizeObserver(function(){ placeBand(); }) : null;
+var frameRO = window.ResizeObserver ? new ResizeObserver(function(){ placeChrome(); }) : null;
 function watchShown(){
   var shown=currentShown(); if(!shown) return;
   var w=shown.querySelector('.qwin');
@@ -705,13 +777,13 @@ function watchShown(){
   }
 }
 
-new MutationObserver(function(){ if(_fitBusy||!gateOn()) return; enhanceNav(); fitShown(); watchShown(); placeBand(); })
+new MutationObserver(function(){ if(_fitBusy||!gateOn()) return; enhanceNav(); fitShown(); watchShown(); placeChrome(); })
   .observe(document.getElementById('questionList'),
     {childList:true,subtree:true,attributes:true,attributeFilter:['style']});
 window.addEventListener('resize',function(){
   if(!gateOn()) return;
   document.querySelectorAll('.qcard').forEach(function(c){c.dataset.fitSig='';});
-  fitShown(); watchShown(); placeBand();
+  fitShown(); watchShown(); placeChrome();
 });
 /* مغادرةُ شاشةِ النشاطِ لا تُطفئُ البوّابةَ (الصنفُ يبقى على questionList)، فنرقّعُ
    showScreen كي يختفيَ الشريطُ خارجَ صفحةِ الدرسِ ويعودَ عندَ الرجوعِ إليها. */
@@ -720,7 +792,7 @@ window.addEventListener('resize',function(){
   if(typeof orig!=='function') return;
   window.showScreen=function(){
     var r=orig.apply(this, arguments);
-    placeBand();
+    placeChrome();
     return r;
   };
 })();

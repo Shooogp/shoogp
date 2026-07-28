@@ -62,7 +62,13 @@
     //  • أفقياً: في منتصف المنطقة اليسرى (موضع ثابت حسب عرض النافذة، لا يتغيّر مع السؤال).
     var lane=document.querySelector('.rocket-lane');
     if(lane){
-      var LANE_MARGIN=100, MOON_TOP=82, EARTH_BOTTOM=80, LANE_W=124;
+      /* LANE_MARGIN = طولُ المسارِ من طرفَيه: القمرُ على بُعدِه من الحافّةِ العليا،
+         والأرضُ على بُعدِه من السفلى — **مهما كان ارتفاعُ المنفذ** (يُحسَبُ من ih الحيّ).
+         MOON_TOP/EARTH_BOTTOM = موضعا الصورتين داخلَ العمود (‎css/style.css‎)، وهما
+         المُعادَلانِ هنا. ضُبطا (‎82→32‎ و‎80→30‎) مع خفضِ LANE_MARGIN إلى 50 كي يمتدَّ
+         المسارُ 50px من كلِّ حافّة **بلا أن يتغيّرَ صندوقُ العمودِ نفسُه** (‎laneTop=18‎
+         والارتفاع ‎ih−38‎ كما كانا) — فلا يتأثّرُ حارسُ contentHeight أدناه ولا الزوم. */
+      var LANE_MARGIN=50, MOON_TOP=32, EARTH_BOTTOM=30, LANE_W=124;
       lane.style.zoom = String(1/zoom);                 // يُلغي زوم المحتوى → بكسل حقيقيّ
       var laneTop = LANE_MARGIN - MOON_TOP;             // =18: القمر (top:82) يقع عند LANE_MARGIN من الأعلى
       lane.style.top = laneTop + 'px';
