@@ -108,11 +108,11 @@ var FRAME_FAMILIES={
      القمريَّ مؤقتاً حتى يتوفّر نظيرُها math.
      s: hasFill:true (تعبئةٌ مدموجةٌ سماوية #00b6d7، لا .qfill)؛ 1536×1024؛ win = منطقتُها
         الداخلية (قِيست L13.8/R13.8/T26.8/B24.3٪) + تنفّسٌ يسير.
-     m: hasFill:true (تعبئةٌ مدموجةٌ فاتحة #fefefe، لا .qfill)؛ win = منطقتُها الداخلية
+     m: hasFill:true (تعبئةٌ مدموجةٌ فيروزية ~#00c7c6، لا .qfill)؛ win = منطقتُها الداخلية
         (قِيست L14.5/R14.5/T16.4/B22.4٪) + تنفّسٌ يسير. */
   math:{ order:['s','m','l','tall'], flexBase:'l', sizes:{
     s:{img:'frame-math-s.png', ar:'1536 / 1024', win:{top:'28.5%',left:'15.5%',right:'15.5%',bottom:'26%'},   hasFill:true, fillColor:'#00b6d7'},
-    m:{img:'frame-math-m.png', ar:'1445 / 1055', win:{top:'18%',  left:'16%',  right:'16%',   bottom:'23%'},   hasFill:true, fillColor:'#fefefe'},
+    m:{img:'frame-math-m.png', ar:'1445 / 1055', win:{top:'18%',  left:'16%',  right:'16%',   bottom:'23%'},   hasFill:true, fillColor:'#00c7c6'},
     l:{img:'frame-moon-l.png', ar:'1246 / 1222', win:{top:'10.5%',left:'12.5%',right:'11.5%', bottom:'11.5%'}, hasFill:false},  /* مؤقت: قمريّ حتى يتوفّر frame-math-l */
     tall:{img:'frame-moon-tall.png', ar:'968 / 1464', win:{top:'9.7%', left:'14.6%', right:'14.3%', bottom:'13.8%'}, hasFill:false}  /* مؤقت */
   }}
