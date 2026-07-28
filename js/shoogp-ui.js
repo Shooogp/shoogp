@@ -323,6 +323,17 @@ function placeFill(f,fill,name){
    اليمنى تُقصَّ حافّةُ الشريطِ اليسرى عندَها (يبقى الإطارُ بارزاً، والصاروخُ مكشوفاً). */
 var BAND_PAD=26;        /* الخلوصُ على الجانبين، بكسلٌ تصميميّ (يُضرَب في الزوم) */
 var BAND_LANE_GAP=0;    /* فجوةٌ إضافيةٌ قبلَ عمودِ الصاروخ (بكسلٌ حقيقيّ) */
+/* ═══ قشرةُ تعبئةِ الشريطِ حسبَ المادة — **تجربةُ مقارنةٍ مؤقتة** ═══
+   العلوم: تعبئةُ الشريطِ = **الخلفيةُ البصريةُ لبطاقةِ كتابِ العلوم** وحدَها (بلا نصوصٍ ولا
+   أيقونة) — انظرْ `.qband.qb-sci` في css/shoogp-ui.css. بقيةُ الكتبِ (ومنها الرياضيات) تبقى
+   على الرماديِّ الشفّافِ كما هو، فتُقارَنُ النسختانِ جنباً إلى جنب.
+   الصنفُ يُوضَع على **الشريطِ نفسِه** لا على questionList، لأنّ الشريطَ ابنُ body فلا تصلُه
+   علامةُ المادة `subj-*`. مصدرُ المادةِ نفسُه (`_curSubject`).
+   ⚠️ تجربةٌ غيرُ محسومة: **لا تُوثَّق في مهارةِ shoogp-ui** حتى تُعتمَدَ النسخةُ الفائزة. */
+var BAND_SKINS={ science:'qb-sci' };
+function allBandSkinClasses(){
+  return Object.keys(BAND_SKINS).map(function(k){ return BAND_SKINS[k]; });
+}
 var _bandEl=null;
 function bandEl(){
   if(_bandEl && _bandEl.isConnected) return _bandEl;
@@ -368,6 +379,10 @@ function placeBand(){
   L=Math.max(0,L); R=Math.min(window.innerWidth,R);
   if(R-L<2){ b.style.display='none'; return; }
   b.style.display='block';   /* صريحٌ لا '' — الـCSS يبدأُ بـdisplay:none فيعودُ إليه الفراغ */
+  /* قشرةُ التعبئةِ حسبَ المادة (تجربةُ مقارنة): تُنزَعُ كلُّها ثمّ تُوضَعُ قشرةُ المادةِ إن وُجدت */
+  allBandSkinClasses().forEach(function(c){ b.classList.remove(c); });
+  var bs=BAND_SKINS[_curSubject];
+  if(bs) b.classList.add(bs);
   /* الصندوقُ يغطّي المنفذَ (inset:0) ونقتصُّ حافّتيه: من البكسلِ الحقيقيِّ (rect) إلى
      فضاءِ المحتوى المزوَّم بالقسمةِ على الزوم. inset(أعلى يمين أسفل يسار). */
   var Wv=window.innerWidth/z;
