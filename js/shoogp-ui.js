@@ -297,6 +297,82 @@ function placeFill(f,fill,name){
   fill.style.right =Math.round(Math.max(0, bw-Rx-bleed))+'px';
   fill.style.bottom=Math.round(Math.max(0, bh-By-bleed))+'px';
 }
+/* ═══ الشريطُ الرماديُّ الخلفيُّ (.qband) ═══
+   مستطيلٌ رأسيٌّ يمتدُّ من أعلى الشاشةِ إلى أسفلِها خلفَ منطقةِ السؤال، عرضُه يتبعُ
+   **عرضَ الإطارِ الحاليِّ بمقاسِه المعروضِ** مضافاً إليه الأيقونات (شارتا .qhead) وخلوصٌ.
+
+   **قاعدةُ الهندسةِ الحيّة (سببُ وجودِها):** لا بُعدَ ثابتاً هنا إطلاقاً. كلُّ رقمٍ يُقرأ
+   لحظةَ الحسابِ من `getBoundingClientRect` للعناصرِ الفعلية (الإطار + الأيقونات + عمودُ
+   الصاروخ) — نفسُ مصدرِ الهندسةِ الحيّةِ الذي تعتمدُه placeFill/measureFrameGeo. الأبعادُ
+   المعلَنةُ سلفاً هي التي بَلِيَت في طبقةِ النقاط حين أُعيدَ تصديرُ الصور، فلا نُعيدُها.
+
+   **وحدةُ القياس — مصيدةٌ حقيقية:** ملاءمةُ العرضِ تُطبِّق **CSS `zoom` على الجذر** (لا
+   `transform`)، فـ`getBoundingClientRect` يرجعُ بكسلاً *حقيقياً* بينما الأنماطُ المكتوبةُ
+   تُفسَّرُ بوحداتٍ *مزوَّمة*. لذلك نقيسُ بالبكسلِ الحقيقيِّ ثم **نقسمُ على الزوم** قبلَ
+   الكتابة، فيستقرُّ الشريطُ في نفسِ فضاءِ بقيةِ المحتوى (مقيسٌ حيّاً: كتابةُ `left:200px`
+   بلا زومٍ خاصٍّ تُرسَم عند 139.6 = 200×0.698 ✔). ولا نُعطيه زوماً مضادّاً كما تفعلُ
+   `.rocket-lane` (تحتاجُه لأنّها تُرسَم بالبكسلِ الحقيقيِّ بغضِّ النظرِ عن زومِ المحتوى)؛
+   البقاءُ في فضاءِ المحتوى أبسطُ هنا ويكفي.
+
+   **العرضُ يتحرّكُ بـ`clip-path` لا بـ`left`/`width`:** الصندوقُ يغطّي المنفذَ كلَّه
+   (`inset:0` في CSS) ونقتصُّ حافّتيه، فيتغيّرُ العرضُ **بلا أيِّ إعادةِ تخطيط** في كلِّ
+   إطارٍ من الانتقال (‏`left`/`width` تُعيدُ التخطيطَ لكلِّ إطار)، و`inset:0` يكفلُ الامتدادَ
+   الكاملَ من أعلى الشاشةِ إلى أسفلِها بلا حسابِ ارتفاعٍ إطلاقاً.
+
+   **حدُّ الصاروخ:** الشريطُ لا يمتدُّ تحتَ عمودِ الصاروخ؛ إن تجاوزَ الإطارُ العريضُ حافّتَه
+   اليمنى تُقصَّ حافّةُ الشريطِ اليسرى عندَها (يبقى الإطارُ بارزاً، والصاروخُ مكشوفاً). */
+var BAND_PAD=26;        /* الخلوصُ على الجانبين، بكسلٌ تصميميّ (يُضرَب في الزوم) */
+var BAND_LANE_GAP=0;    /* فجوةٌ إضافيةٌ قبلَ عمودِ الصاروخ (بكسلٌ حقيقيّ) */
+var _bandEl=null;
+function bandEl(){
+  if(_bandEl && _bandEl.isConnected) return _bandEl;
+  _bandEl=document.querySelector('.qband');
+  if(!_bandEl){
+    _bandEl=document.createElement('div');
+    _bandEl.className='qband';
+    _bandEl.setAttribute('aria-hidden','true');   /* زخرفةٌ بحتة، لا يقرؤها القارئُ الصوتيّ */
+    document.body.appendChild(_bandEl);
+  }
+  return _bandEl;
+}
+/* معامِلُ الزوم الحيّ: من ShoogpFit إن توفّر، وإلا يُشتَقّ من العنصرِ نفسِه
+   (مرئيّ ÷ تصميميّ) فلا يعتمدُ على ثابتٍ ولا على حالةٍ خارجية. */
+function liveZoom(el){
+  var z=(window.ShoogpFit && ShoogpFit.zoom) || 0;
+  if(z>0) return z;
+  return (el && el.offsetWidth) ? (el.getBoundingClientRect().width/el.offsetWidth) : 1;
+}
+function placeBand(){
+  var b=bandEl();
+  var act=document.getElementById('activityScreen');
+  var shown=(gateOn() && act && act.classList.contains('active')) ? currentShown() : null;
+  var f=shown && shown.querySelector('.qframe');
+  var fr=f && f.getBoundingClientRect();
+  if(!fr || !fr.width){ b.style.display='none'; return; }
+  var z=liveZoom(f);
+  var pad=BAND_PAD*z;
+  /* اتحادُ الإطارِ والأيقونات أفقياً — الشارتانِ قد تتجاوزانِ إطاراً ضيقاً والعكس */
+  var L=fr.left, R=fr.right;
+  var head=shown.querySelector('.qhead');
+  if(head){
+    var hr=head.getBoundingClientRect();
+    if(hr.width){ L=Math.min(L,hr.left); R=Math.max(R,hr.right); }
+  }
+  L-=pad; R+=pad;
+  /* لا يمتدُّ تحتَ عمودِ الصاروخ */
+  var lane=document.querySelector('.rocket-lane');
+  if(lane){
+    var lr=lane.getBoundingClientRect();
+    if(lr.width) L=Math.max(L, lr.right+BAND_LANE_GAP);
+  }
+  L=Math.max(0,L); R=Math.min(window.innerWidth,R);
+  if(R-L<2){ b.style.display='none'; return; }
+  b.style.display='block';   /* صريحٌ لا '' — الـCSS يبدأُ بـdisplay:none فيعودُ إليه الفراغ */
+  /* الصندوقُ يغطّي المنفذَ (inset:0) ونقتصُّ حافّتيه: من البكسلِ الحقيقيِّ (rect) إلى
+     فضاءِ المحتوى المزوَّم بالقسمةِ على الزوم. inset(أعلى يمين أسفل يسار). */
+  var Wv=window.innerWidth/z;
+  b.style.clipPath='inset(0px '+(Wv-R/z).toFixed(2)+'px 0px '+(L/z).toFixed(2)+'px)';
+}
 /* ═══ التحميلُ المسبقُ لإطاراتِ المادة (كلُّ خاناتِ العائلة، لا النقطيةُ وحدَها) ═══
    الطبقةُ القديمةُ كانت تُحمّلُ *فقط* خاناتِ hasFill:false — أي أربعةَ إطارٍ قمريّ لا غير،
    لأنّ خاناتِ الرياضياتِ المعبّأةَ (hasFill:true) لم تكن تُقاسُ فتحتُها فلم تُحمَّل. النتيجةُ:
@@ -567,7 +643,7 @@ function fitShown(){
   shown.dataset.fitSig=sig;
   _fitBusy=true;
   try{ fitFrame(shown); }
-  finally{ setTimeout(function(){_fitBusy=false;},0); }
+  finally{ setTimeout(function(){_fitBusy=false;},0); placeBand(); }
 }
 
 /* ═══ إعادة حساب ديناميكية: شبكة أمان بمراقب أبعاد على محتوى النافذة ═══
@@ -595,23 +671,44 @@ function onContentResize(){
   });
 }
 var contentRO = window.ResizeObserver ? new ResizeObserver(onContentResize) : null;
+/* مراقبُ صندوقِ الإطارِ نفسِه — للشريطِ الخلفيّ وحدَه. عرضُ الإطارِ يتغيّر بانتقالِ CSS
+   (‏transition:width) فلا تكفي قراءةٌ واحدةٌ بعدَ الضبط: نتابعُ الصندوقَ حتى يستقرَّ فيلاحقَه
+   الشريطُ لحظةً بلحظة. لا يمسُّ خوارزميةَ الاختيارِ ولا يُعيدُ الضبطَ إطلاقاً. */
+var frameRO = window.ResizeObserver ? new ResizeObserver(function(){ placeBand(); }) : null;
 function watchShown(){
-  if(!contentRO) return;
   var shown=currentShown(); if(!shown) return;
-  var w=shown.querySelector('.qwin'); if(!w) return;
-  try{ contentRO.disconnect(); }catch(e){}
-  /* نراقب أبناء النافذة (تنمو أطوالهم مع توزيع البطاقات) — النافذة نفسها ثابتة الأبعاد */
-  Array.prototype.forEach.call(w.children,function(ch){ contentRO.observe(ch); });
+  var w=shown.querySelector('.qwin');
+  if(contentRO && w){
+    try{ contentRO.disconnect(); }catch(e){}
+    /* نراقب أبناء النافذة (تنمو أطوالهم مع توزيع البطاقات) — النافذة نفسها ثابتة الأبعاد */
+    Array.prototype.forEach.call(w.children,function(ch){ contentRO.observe(ch); });
+  }
+  if(frameRO){
+    var f=shown.querySelector('.qframe');
+    try{ frameRO.disconnect(); }catch(e){}
+    if(f) frameRO.observe(f);
+  }
 }
 
-new MutationObserver(function(){ if(_fitBusy||!gateOn()) return; enhanceNav(); fitShown(); watchShown(); })
+new MutationObserver(function(){ if(_fitBusy||!gateOn()) return; enhanceNav(); fitShown(); watchShown(); placeBand(); })
   .observe(document.getElementById('questionList'),
     {childList:true,subtree:true,attributes:true,attributeFilter:['style']});
 window.addEventListener('resize',function(){
   if(!gateOn()) return;
   document.querySelectorAll('.qcard').forEach(function(c){c.dataset.fitSig='';});
-  fitShown(); watchShown();
+  fitShown(); watchShown(); placeBand();
 });
+/* مغادرةُ شاشةِ النشاطِ لا تُطفئُ البوّابةَ (الصنفُ يبقى على questionList)، فنرقّعُ
+   showScreen كي يختفيَ الشريطُ خارجَ صفحةِ الدرسِ ويعودَ عندَ الرجوعِ إليها. */
+(function(){
+  var orig=window.showScreen;
+  if(typeof orig!=='function') return;
+  window.showScreen=function(){
+    var r=orig.apply(this, arguments);
+    placeBand();
+    return r;
+  };
+})();
 
 /* ═══ تفعيل النظام لكامل كتاب علوم الصف الرابع (g4-sci) ═══
    نرقّع openLesson (دون تعديل app.js المشترك): نضيف صنف .shoogp-ui على
