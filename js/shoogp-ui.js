@@ -63,6 +63,15 @@ function skinFor(ls){
 function allSkinClasses(){
   return Object.keys(SUBJECT_SKINS).map(function(k){ return SUBJECT_SKINS[k]; });
 }
+/* ═══ علامةُ المادة (`subj-*`) — دائمةٌ لكلِّ دروسِ المادة ═══
+   تُميَّزُ عن «القشرة» أعلاه: القشرةُ كسوةٌ ثقيلةٌ محكومةٌ بقائمةِ المعاينة، أمّا هذه
+   فعلامةٌ خفيفةٌ تُوضَع **لكلِّ درسٍ في نطاقِ النظام** تقولُ «هذا درسُ علومٍ/رياضيات»،
+   فتلتقطُها قواعدُ CSS الخاصةُ بمادةٍ بعينِها (كلونِ نصِّ السؤال) وتسري على الكتابِ كلِّه.
+   مصدرُها نفسُه: `lessonSubject` ← `SHOOGP_BOOKS`. */
+function subjectClass(subj){ return subj ? 'subj-'+subj : null; }
+function allSubjectClasses(){
+  return SHOOGP_BOOKS.map(function(b){ return subjectClass(b.subject); });
+}
 /* البوّابة: هل النظام مُفعَّل الآن؟ (صنف .shoogp-ui على #questionList) */
 function gateOn(){
   var q=document.getElementById('questionList');
@@ -618,7 +627,11 @@ window.addEventListener('resize',function(){
     var q=document.getElementById('questionList');
     if(q){
       q.classList.toggle('shoogp-ui', on);       /* البوّابة: قبل بناء الأسئلة */
-      var sk = on ? skinFor(ls) : null;          /* قشرةُ أزرارِ الإجابة حسبَ المادة */
+      /* علامةُ المادة — لكلِّ دروسِ المادة (تلتقطها قواعدُ CSS الخاصةُ بمادةٍ بعينِها) */
+      var sc = on ? subjectClass(_curSubject) : null;
+      allSubjectClasses().forEach(function(c){ q.classList.remove(c); });
+      if(sc) q.classList.add(sc);
+      var sk = on ? skinFor(ls) : null;          /* قشرةُ أزرارِ الإجابة (محكومةٌ بالمعاينة) */
       allSkinClasses().forEach(function(c){ q.classList.remove(c); });
       if(sk) q.classList.add(sk);
     }
