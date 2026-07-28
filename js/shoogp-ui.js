@@ -109,7 +109,7 @@ function gateOn(){
 var FRAME_FAMILIES={
   moon:{ order:['s','m','l','tall'], flexBase:'l', sizes:{
     s:{img:'frame-moon-s.png', ar:'1836 / 856',  win:{top:'13%',  left:'8.5%', right:'9%',    bottom:'13.5%'}, hasFill:false},
-    m:{img:'frame-moon-m.png', ar:'1466 / 1073', win:{top:'10%',  left:'9.5%', right:'9.5%',  bottom:'11%'},   hasFill:false},
+    m:{img:'frame-moon-m.png', ar:'1448 / 1086', win:{top:'10%',  left:'9.5%', right:'9.5%',  bottom:'11%'},   hasFill:false},
     l:{img:'frame-moon-l.png', ar:'1246 / 1222', win:{top:'10.5%',left:'12.5%',right:'11.5%', bottom:'11.5%'}, hasFill:false},
     tall:{img:'frame-moon-tall.png', ar:'973 / 1464', win:{top:'9.7%', left:'14.6%', right:'14.3%', bottom:'13.8%'}, hasFill:false}
   }},
