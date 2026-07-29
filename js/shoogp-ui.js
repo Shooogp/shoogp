@@ -23,12 +23,20 @@ var SHOOGP_BOOKS=[
   {key:'g4-sci',  prefix:'g4s-', subject:'science'},
   {key:'g4-math', prefix:'g4m-', subject:'math'}
 ];
+/* ═══ الوصولُ إلى DATA — لا عبرَ window ═══
+   `DATA` في js/data.js معلَنٌ بـ`const` على مستوى السكربت، و`const/let` في النطاقِ
+   العلويِّ **لا تُصبحُ خصائصَ على window** (بخلافِ `var`). فـ`window.DATA` تساوي
+   `undefined` دائماً، وكلُّ حارسٍ مكتوبٍ هكذا يسقطُ صامتاً إلى الاحتياط. الوصولُ
+   الصحيحُ هو الاسمُ المجرّدُ محروساً بـ`typeof` (سكربتاتُ المنصّةِ كلُّها كلاسيكيةٌ
+   في نطاقٍ عامٍّ واحد). نفسُ العلّةِ تنطبقُ على `currentBookColor` في app.js. */
+function theData(){ return (typeof DATA!=='undefined') ? DATA : null; }
 /* كتاب الدرس (أو null إن خارج النطاق) — يُعتمد لتحديد النطاق والمادة معاً */
 function lessonBook(ls){
   if(!ls || !ls.file) return null;
+  var D=theData();
   for(var i=0;i<SHOOGP_BOOKS.length;i++){
     var b=SHOOGP_BOOKS[i];
-    var idx=(window.DATA && DATA.index && DATA.index[b.key]);
+    var idx=(D && D.index && D.index[b.key]);
     if(idx){
       if(idx.units.some(function(u){
         return u.lessons.some(function(l){ return l.file===ls.file; }); })) return b;
@@ -41,6 +49,8 @@ function lessonInScope(ls){ return !!lessonBook(ls); }
 function lessonSubject(ls){ var b=lessonBook(ls); return b?b.subject:null; }
 /* مادة الدرس المفتوح حالياً — تُضبط في ترقيع openLesson، وتقرؤها resolveCfg */
 var _curSubject=null;
+/* وكتابُه (مدخلُه في SHOOGP_BOOKS) — مفتاحُ لونِ بطاقتِه لكسوةِ الشريطِ الخلفيّ */
+var _curBook=null;
 /* ═══ قشورُ أزرارِ الإجابة حسبَ المادة (كسوةٌ بصريةٌ بحتة) ═══
    «القشرة» = صنفٌ واحدٌ يُوضَع على #questionList بجانبِ بوّابةِ .shoogp-ui، يلتقطه
    CSS (§٩ في css/shoogp-ui.css) فيُعيدُ كسوةَ أزرارِ الإجابةِ لتلكَ المادةِ وحدَها.
@@ -393,16 +403,30 @@ function placeChrome(){ placeIcons(); placeBand(); }
    اليمنى تُقصَّ حافّةُ الشريطِ اليسرى عندَها (يبقى الإطارُ بارزاً، والصاروخُ مكشوفاً). */
 var BAND_PAD=26;        /* الخلوصُ على الجانبين، بكسلٌ تصميميّ (يُضرَب في الزوم) */
 var BAND_LANE_GAP=0;    /* فجوةٌ إضافيةٌ قبلَ عمودِ الصاروخ (بكسلٌ حقيقيّ) */
-/* ═══ قشرةُ تعبئةِ الشريطِ حسبَ المادة — **تجربةُ مقارنةٍ مؤقتة** ═══
-   العلوم: تعبئةُ الشريطِ = **الخلفيةُ البصريةُ لبطاقةِ كتابِ العلوم** وحدَها (بلا نصوصٍ ولا
-   أيقونة) — انظرْ `.qband.qb-sci` في css/shoogp-ui.css. بقيةُ الكتبِ (ومنها الرياضيات) تبقى
-   على الرماديِّ الشفّافِ كما هو، فتُقارَنُ النسختانِ جنباً إلى جنب.
+/* ═══ كسوةُ الشريطِ ببطاقةِ الكتابِ الحاليّ — **لكلِّ المواد** ═══
+   تعبئةُ الشريطِ = **الهويةُ البصريةُ لبطاقةِ الكتابِ المفتوح** (لونُها ونقاطُها ودائرتاها،
+   بلا نصوصٍ ولا أيقونة) — انظرْ `.qband.qb-book` في css/shoogp-ui.css.
    الصنفُ يُوضَع على **الشريطِ نفسِه** لا على questionList، لأنّ الشريطَ ابنُ body فلا تصلُه
-   علامةُ المادة `subj-*`. مصدرُ المادةِ نفسُه (`_curSubject`).
-   ⚠️ تجربةٌ غيرُ محسومة: **لا تُوثَّق في مهارةِ shoogp-ui** حتى تُعتمَدَ النسخةُ الفائزة. */
-var BAND_SKINS={ science:'qb-sci' };
+   علامةُ المادة `subj-*`.
+   **مصدرُ اللونِ هو مصدرُ البطاقةِ نفسُه:** حقلُ `color` للكتابِ في `data/books.json`
+   (‏`bk-*`) — وهو ما يضعُه app.js على بطاقةِ الكتابِ في صفحةِ التنقّلِ ويحفظُه في
+   `currentBookColor`. نبحثُ عنه بمفتاحِ كتابِ الدرسِ في `DATA.terms`، واحتياطاً
+   `window.currentBookColor`. فلا مصدرَ ثانٍ للحقيقةِ ولا لونَ مكرّرٌ في الكود. */
+function bookColorClass(){
+  var b=_curBook, D=theData(), T=D && D.terms;
+  if(b && T){
+    for(var t in T){ for(var g in T[t]){
+      for(var i=0;i<T[t][g].length;i++){
+        if(T[t][g][i].key===b.key) return T[t][g][i].color||null;
+      } } }
+  }
+  /* احتياطٌ: ما وضعَه app.js على البطاقة (اسمٌ مجرّدٌ لا window — راجعْ theData) */
+  return (typeof currentBookColor!=='undefined' && currentBookColor) ? currentBookColor : null;
+}
+/* كلُّ أصنافِ الكسوةِ الممكنة — تُنزَع جميعاً قبلَ وضعِ صنفِ الكتابِ الحاليّ */
+var BAND_COLOR_CLASSES=['bk-red','bk-green','bk-orange','bk-blue','bk-purple','bk-teal'];
 function allBandSkinClasses(){
-  return Object.keys(BAND_SKINS).map(function(k){ return BAND_SKINS[k]; });
+  return ['qb-book'].concat(BAND_COLOR_CLASSES.map(function(c){ return 'qb-'+c; }));
 }
 var _bandEl=null;
 function bandEl(){
@@ -451,10 +475,11 @@ function placeBand(){
   L=Math.max(0,L); R=Math.min(window.innerWidth,R);
   if(R-L<2){ b.style.display='none'; return; }
   b.style.display='block';   /* صريحٌ لا '' — الـCSS يبدأُ بـdisplay:none فيعودُ إليه الفراغ */
-  /* قشرةُ التعبئةِ حسبَ المادة (تجربةُ مقارنة): تُنزَعُ كلُّها ثمّ تُوضَعُ قشرةُ المادةِ إن وُجدت */
+  /* كسوةُ بطاقةِ الكتاب: تُنزَعُ كلُّ الأصنافِ ثمّ يُوضَعُ صنفُ لونِ الكتابِ الحاليّ.
+     كتابٌ بلا لونٍ معلَن → يبقى الشريطُ على الرماديِّ الأساسيِّ (تراجُعٌ آمن). */
   allBandSkinClasses().forEach(function(c){ b.classList.remove(c); });
-  var bs=BAND_SKINS[_curSubject];
-  if(bs) b.classList.add(bs);
+  var bc=bookColorClass();
+  if(bc && BAND_COLOR_CLASSES.indexOf(bc)>=0){ b.classList.add('qb-book','qb-'+bc); }
   /* الصندوقُ يغطّي المنفذَ (inset:0) ونقتصُّ حافّتيه: من البكسلِ الحقيقيِّ (rect) إلى
      فضاءِ المحتوى المزوَّم بالقسمةِ على الزوم. inset(أعلى يمين أسفل يسار). */
   var Wv=window.innerWidth/z;
@@ -806,6 +831,7 @@ window.addEventListener('resize',function(){
   if(typeof orig!=='function') return;
   window.openLesson=function(ls){
     var on = lessonInScope(ls);
+    _curBook = on ? lessonBook(ls) : null;        /* كتابُ الدرس (لونُ بطاقتِه للشريط) */
     _curSubject = on ? lessonSubject(ls) : null;  /* مادة الدرس لاختيار الإطار */
     if(on) preloadFamily(curFam());               /* سخّن إطاراتِ مادةِ الدرس قبل بناء الأسئلة */
     var q=document.getElementById('questionList');

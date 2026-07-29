@@ -142,12 +142,25 @@
   .book.has-cover{padding:0;overflow:hidden;min-height:260px}
   .book.has-cover::after{display:none}
   .cover-img{width:100%;height:100%;object-fit:cover;display:block;border-radius:30px}
-  .bk-red{background:linear-gradient(145deg,#f26169,#cf3a44)}
-  .bk-green{background:linear-gradient(145deg,#5cc98a,#3fa870)}
-  .bk-orange{background:linear-gradient(145deg,#f5a04a,#e07f2b)}
-  .bk-blue{background:linear-gradient(145deg,#4fa8e8,#2f88d0)}
-  .bk-purple{background:linear-gradient(145deg,#a07fd8,#7f5cc0)}
-  .bk-teal{background:linear-gradient(145deg,#4bb3ab,#33978f)}
+  /* ── لوحةُ ألوانِ بطاقاتِ الكتب — **مصدرُ حقيقةٍ واحد** ──
+     تُعلَنُ المحطّتانِ (فاتحة/غامقة) لكلِّ لونٍ متغيّراتٍ على :root، فتستهلكُها
+     بطاقةُ الكتابِ هنا **والشريطُ الخلفيُّ في صفحةِ الدرس** (‏.qband في
+     css/shoogp-ui.css) — فيستحيلُ أن ينفصلَ لونُ الشريطِ عن لونِ البطاقة.
+     **لتغييرِ لونِ كتاب: هذه المتغيّراتُ وحدَها.** */
+  :root{
+    --bk-red-a:#f26169;    --bk-red-b:#cf3a44;
+    --bk-green-a:#5cc98a;  --bk-green-b:#3fa870;
+    --bk-orange-a:#f5a04a; --bk-orange-b:#e07f2b;
+    --bk-blue-a:#4fa8e8;   --bk-blue-b:#2f88d0;
+    --bk-purple-a:#a07fd8; --bk-purple-b:#7f5cc0;
+    --bk-teal-a:#4bb3ab;   --bk-teal-b:#33978f;
+  }
+  .bk-red{background:linear-gradient(145deg,var(--bk-red-a),var(--bk-red-b))}
+  .bk-green{background:linear-gradient(145deg,var(--bk-green-a),var(--bk-green-b))}
+  .bk-orange{background:linear-gradient(145deg,var(--bk-orange-a),var(--bk-orange-b))}
+  .bk-blue{background:linear-gradient(145deg,var(--bk-blue-a),var(--bk-blue-b))}
+  .bk-purple{background:linear-gradient(145deg,var(--bk-purple-a),var(--bk-purple-b))}
+  .bk-teal{background:linear-gradient(145deg,var(--bk-teal-a),var(--bk-teal-b))}
   .empty{grid-column:1/-1;text-align:center;color:#b8aee5;padding:50px;font-size:1.05rem}
 
   /* شاشة الدروس */
