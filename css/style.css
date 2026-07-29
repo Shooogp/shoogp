@@ -734,6 +734,33 @@
   .hcchip{min-width:74px;min-height:64px;display:inline-flex;align-items:center;justify-content:center;
     font-family:'Cairo';font-weight:800;font-size:1.5rem;line-height:1}
 
+  /* ㉓ المصفوفات (array): رسم SVG **خارج الكسوة** كسائر رسوم الأسئلة؛ أمّا خيارات وضع
+     القراءة فهي .opt المعتادة فترث قشرة المادة وحدّها الأدنى بلا قاعدة جديدة */
+  .arrayq{width:100%;display:flex;flex-direction:column;align-items:center;gap:14px}
+  .arsvg{width:100%;height:auto;display:block;max-width:520px;touch-action:manipulation;
+    -webkit-user-select:none;user-select:none}
+  .ar-dot{fill:#f5a04a;stroke:#c8791f;stroke-width:3}
+  .ar-count{font-family:'Cairo';font-weight:700;color:#fff;font-size:1.1rem;
+    text-shadow:0 1px 3px rgba(0,0,0,.34)}
+  .ar-count b{color:#ffe27a;font-size:1.35rem;margin-inline:4px}
+  /* لوح البناء: خانة فارغة **غائرة بحدّ متقطّع** (مستقبِل)، وقرصها مخفيّ حتى تُختار */
+  .ar-cell{cursor:pointer}
+  .ar-hit{fill:transparent;stroke:none}   /* مساحة اللمس = خطوة الخلية كاملة (كـ.hc-hit) */
+  .ar-face{fill:rgba(255,255,255,.55);stroke:#9c7b3f;stroke-width:3;stroke-dasharray:11 8;
+    transition:fill .12s}
+  .arsvg-build .ar-dot{opacity:0;transition:opacity .12s}
+  .ar-cell:hover .ar-face{fill:#fff6e6}
+  /* المختارة: الحدّ يصير صلباً ويظهر القرص — فارق شكليّ مع اللون لا لون فحسب */
+  .ar-cell.on .ar-face{fill:#fff;stroke:#c8791f;stroke-width:5;stroke-dasharray:none}
+  .arsvg-build .ar-cell.on .ar-dot{opacity:1}
+  .ar-cell.correct .ar-face{fill:#eef8dc;stroke:#4e7c1f;stroke-width:5}
+  .ar-cell.correct .ar-dot{fill:#a7c957;stroke:#4e7c1f}
+  /* جملة الضرب/الجمع المتكرر تُكشف عند الصواب */
+  .ar-sentence{display:none}
+  .ar-sentence.show{display:block;background:#fff;border-radius:14px;padding:10px 22px;
+    font-family:'Cairo';font-weight:800;font-size:1.5rem;color:#2f3a2c;
+    box-shadow:0 4px 14px rgba(0,0,0,.22)}
+
   /* التنقّل بين الأسئلة (خطوة بخطوة) */
   .qnav{display:flex;align-items:center;justify-content:center;gap:16px;margin:6px 0 10px;flex-wrap:wrap}
   .qnav .btn{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);color:#fff;min-width:118px}

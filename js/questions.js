@@ -3732,6 +3732,17 @@ window.QUESTIONS = {
       prompt: "لَوِّنْ مُضاعَفاتِ العَدَدِ ٥ في اللَّوحةِ.",
       from: 1, to: 50, columns: 10,
       multiple: 5
+    },
+
+    // ㉓ المصفوفات — وضع البناء (build)
+    {
+      type: "array",
+      mode: "build",
+      objective: "اختبار النوع فقط — لا يخدم هدف درس",
+      level: "application",
+      prompt: "ابْنِ مَصفوفةً فيها ٣ صُفوفٍ، في كُلِّ صَفٍّ ٤ مُربَّعاتٍ.",
+      rows: 3, cols: 4,
+      answerSentence: "٣ × ٤ = ١٢"
     }
 
   ]

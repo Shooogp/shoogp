@@ -213,7 +213,7 @@ function qWin(fb,msg,stars){fb.textContent=msg||'🎉 أحسنت!';fb.className=
 // أي واجهة بلا صاروخ تُبقي wrong.mp3 يعمل (بقية دروس المنصّة كلها تحوي الصاروخ الآن)
 function qFail(fb,msg){fb.textContent=msg||'حاول مرة أخرى';fb.className='fb qfb bad';if(!(window.RocketJourney&&RocketJourney.isActive&&RocketJourney.isActive()))playWrongSound();if(window.RocketJourney)RocketJourney.onAnswer(false);}
 
-const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل','slider':'🎚️ الشريط المتدرج','memory':'🎴 بطاقات الذاكرة','lens':'🔍 العدسة المكبّرة','equation-builder':'🧮 بناء المعادلة','number-line':'📏 خط الأعداد','hundred-chart':'💯 لوحة المائة'};
+const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل','slider':'🎚️ الشريط المتدرج','memory':'🎴 بطاقات الذاكرة','lens':'🔍 العدسة المكبّرة','equation-builder':'🧮 بناء المعادلة','number-line':'📏 خط الأعداد','hundred-chart':'💯 لوحة المائة','array':'🔲 المصفوفات'};
 
 // تحويل الأرقام إلى هندية (عربية) للعرض
 function arNum(n){ return String(n).replace(/[0-9]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'[+d];}); }
@@ -228,7 +228,7 @@ function renderQuestions(ls){
     m.innerHTML='<div class="qbody" style="text-align:center;padding:14px 6px;font-size:1.15rem">📚 أسئلة هذا الدرس ستُضاف قريباً بإذن الله</div>';
     host.appendChild(m); return;
   }
-  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor,'puzzle':renderPuzzle,'slider':renderSlider,'memory':renderMemory,'lens':renderLens,'equation-builder':renderEquationBuilder,'number-line':renderNumberLine,'hundred-chart':renderHundredChart};
+  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor,'puzzle':renderPuzzle,'slider':renderSlider,'memory':renderMemory,'lens':renderLens,'equation-builder':renderEquationBuilder,'number-line':renderNumberLine,'hundred-chart':renderHundredChart,'array':renderArray};
 
   // بناء كل البطاقات (تبقى في الصفحة لحفظ إجاباتها، ونُظهر واحدة فقط)
   const slides=document.createElement('div'); slides.className='qslides';
@@ -1660,6 +1660,87 @@ function renderHundredChart(q, body, fb){
     }
   };
   body.querySelector('.btn-reset').onclick=()=>renderHundredChart(q,body,fb);
+}
+
+/* ㉓ المصفوفات (array): rows × cols + answerSentence (جملة الضرب أو الجمع المتكرر)
+   وضعان — build يبني فيها الطالب الشبكة بالنقر على لوح فارغ، وread تُعرض فيها المصفوفة
+   مبنيّةً ويختار جملتها من options. الرسم SVG من محرّك الشبكة المشترك. */
+function renderArray(q, body, fb){
+  const rows=Math.max(1,Math.round(+q.rows)), cols=Math.max(1,Math.round(+q.cols));
+  const mode=q.mode||'build';
+  const CELL=100, R=30;                                   // خطوة الخلية ونصف قطر القرص
+  if(mode==='read'){
+    // ── وضع القراءة: المصفوفة معروضة والطالب يختار جملتها ──
+    const W=cols*CELL, H=rows*CELL;
+    let dots='';
+    for(let r=0;r<rows;r++) for(let c=0;c<cols;c++)
+      dots+=`<circle class="ar-dot" cx="${(cols-1-c)*CELL+CELL/2}" cy="${r*CELL+CELL/2}" r="${R}"></circle>`;
+    const opts=shuffle((q.options||[]).slice());
+    body.innerHTML=`<div class="arrayq">`+
+      `<svg class="arsvg" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${dots}</svg>`+
+      `<div class="opts">`+opts.map(o=>`<button class="opt" data-o="${o}">${o}</button>`).join('')+`</div>`+
+      `</div>`;
+    let done=false;
+    body.querySelectorAll('.opt').forEach(btn=>{ btn.onclick=()=>{
+      if(done) return;
+      if(btn.dataset.o===q.answerSentence){
+        done=true; btn.classList.add('correct');
+        body.querySelectorAll('.opt').forEach(b=>b.disabled=true);
+        qWin(fb,'🎉 أحسنت! '+q.answerSentence,3);
+      } else { btn.classList.add('wrong'); btn.disabled=true; qFail(fb,'ليست الجملة الصحيحة — عُدَّ الصفوف ثم ما في كل صفّ'); }
+    };});
+    return;
+  }
+  // ── وضع البناء: لوح فارغ أوسع من المطلوب، يبني الطالب مصفوفته بالنقر ──
+  const gRows=Math.max(rows, Math.min(8, Math.round(+((q.grid||{}).rows) || rows+2)));
+  const gCols=Math.max(cols, Math.min(8, Math.round(+((q.grid||{}).cols) || cols+2)));
+  const W=gCols*CELL, H=gRows*CELL;
+  let cells='';
+  for(let r=0;r<gRows;r++) for(let c=0;c<gCols;c++){
+    const x=(gCols-1-c)*CELL, y=r*CELL;                   // العمود ٠ أقصى اليمين (اتجاه القراءة)
+    cells+=`<g class="ar-cell" data-r="${r}" data-c="${c}">`+
+      `<rect class="ar-hit" x="${x}" y="${y}" width="${CELL}" height="${CELL}"></rect>`+
+      `<rect class="ar-face" x="${x+5}" y="${y+5}" width="${CELL-10}" height="${CELL-10}" rx="12"></rect>`+
+      `<circle class="ar-dot" cx="${x+CELL/2}" cy="${y+CELL/2}" r="${R}"></circle></g>`;
+  }
+  body.innerHTML=`<div class="arrayq">`+
+    `<div class="ar-count">اخترتَ <b>٠</b> مربّعاً</div>`+
+    `<svg class="arsvg arsvg-build" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${cells}</svg>`+
+    `<div class="ar-sentence"></div></div>`+
+    `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
+  const on={}; let done=false;
+  const countEl=body.querySelector('.ar-count b');
+  body.querySelectorAll('.ar-cell').forEach(g=>{
+    g.addEventListener('click',()=>{
+      if(done) return;
+      const k=g.dataset.r+','+g.dataset.c;
+      if(on[k]){ delete on[k]; g.classList.remove('on'); } else { on[k]=1; g.classList.add('on'); }
+      g.classList.remove('correct','wrong');
+      countEl.textContent=arNum(Object.keys(on).length);
+    });
+  });
+  body.querySelector('.btn-check').onclick=()=>{
+    if(done) return;
+    const keys=Object.keys(on);
+    if(!keys.length){ qFail(fb,'اضغط المربّعات لتبني المصفوفة أولاً'); return; }
+    const rs=keys.map(k=>+k.split(',')[0]), cs=keys.map(k=>+k.split(',')[1]);
+    const r0=Math.min(...rs), r1=Math.max(...rs), c0=Math.min(...cs), c1=Math.max(...cs);
+    const gotR=r1-r0+1, gotC=c1-c0+1;
+    const solid=(keys.length===gotR*gotC);                 // مستطيل مصمت بلا ثقوب
+    if(!solid){ qFail(fb,'المصفوفة يجب أن تكون مستطيلاً كاملاً بلا فراغات بين مربّعاتها'); return; }
+    if(gotR===rows && gotC===cols){
+      done=true;
+      body.querySelectorAll('.ar-cell.on').forEach(g=>g.classList.add('correct'));
+      const s=body.querySelector('.ar-sentence');
+      if(q.answerSentence){ s.textContent=q.answerSentence; s.classList.add('show'); }
+      qWin(fb,'🎉 أحسنت! '+(q.answerSentence||'المصفوفة صحيحة'),3);
+    } else if(gotR===cols && gotC===rows){
+      qFail(fb,`الصفوف والأعمدة معكوسة — المطلوب ${arNum(rows)} صفوف في كل صفّ ${arNum(cols)}`);
+    } else {
+      qFail(fb,`بنيت ${arNum(gotR)} × ${arNum(gotC)} والمطلوب ${arNum(rows)} × ${arNum(cols)}`);
+    }
+  };
+  body.querySelector('.btn-reset').onclick=()=>renderArray(q,body,fb);
 }
 
 /* ⑳ بناء المعادلة (equation-builder): tokens[] فيها "__" لكل خانة فارغة + bank[] + answers[]
