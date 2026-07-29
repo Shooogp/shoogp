@@ -1005,6 +1005,50 @@
   box-shadow:inset 0 3px 7px rgba(120,86,36,.38), 0 1px 0 var(--rk-lip) !important;
 }
 
+/* ═══════════════════════════════════════════════════════════════════
+   دفعة ٤/٤ — الفراغاتُ **الفارغة**: حجرٌ **غائر** (§٧ مقدَّمةٌ على توحيدِ الشكل)
+   قاعدةُ «المحمول ≠ المستقبِل» تفرضُ أن يبقى المستقبِلُ **حفرةً**: أغمقَ من
+   محيطِه، بحدٍّ متقطّع، وظلٍّ داخليّ، **بلا لمعةٍ ولا شفةٍ ولا ظلٍّ مُلقى**.
+   فتُكسى بنفسِ الحبيباتِ والنقراتِ (هويةٌ واحدة) لكن **بإضاءةٍ مقلوبة**:
+     • التدرّجُ من الغامقِ أعلى إلى الفاتحِ أسفل (عكسُ الزرّ) ← إيحاءُ الغَور.
+     • ظلٌّ داخليٌّ علويٌّ قويّ، وبلا `0 3px 0` شفةٍ ولا ظلٍّ خارجيّ.
+     • حدٌّ **متقطّعٌ** لا صلب — الإشارةُ البصريةُ الأصرحُ لـ«مكانٌ ينتظرُ شيئاً».
+   وحينَ تمتلئُ يتكفّلُ محدِّدُ `.filled` أعلاه بإعادتِها بارزةً (المكانُ اكتمل).
+   ═══════════════════════════════════════════════════════════════════ */
+.shoogp-ui.skin-rocky .qwin :is(.blank,.target):not(.filled):not(.correct):not(.wrong){
+  --rk-face:
+    var(--rk-grain) 0 0/190px 96px repeat,
+    linear-gradient(180deg, #b9a077 0%, #cdb392 46%, #e0cbaa 100%) 0 0/100% 100% no-repeat;
+  background:var(--rk-face) !important;
+  border:2px dashed var(--rk-edge-dk) !important;
+  border-radius:14px !important;
+  color:#6b5636 !important;
+  text-shadow:0 1px 0 rgba(255,255,255,.35) !important;
+  box-shadow:
+    inset 0 3px 8px rgba(90,64,26,.45),
+    inset 0 -1px 0 rgba(255,255,255,.30) !important;   /* بلا شفةٍ ولا ظلٍّ مُلقى */
+  filter:none !important;
+}
+/* النقراتُ نفسُها تسري على الفارغِ أيضاً (‏::before مشمولٌ في مجموعةِ الوجه أعلاه
+   للممتلئ؛ نُضيفُها هنا للفارغِ كي تتوحّدَ الهوية) */
+.shoogp-ui.skin-rocky .qwin :is(.blank,.target):not(.filled)::before{
+  content:""; position:absolute; inset:0; z-index:-1;
+  border-radius:inherit; pointer-events:none; background-repeat:no-repeat;
+  background-image:
+    var(--rk-pit-mid), var(--rk-pit-soft), var(--rk-pit-deep), var(--rk-pit-soft), var(--rk-pit-mid);
+  background-position:12% 32%, 28% 68%, 47% 30%, 66% 70%, 85% 38%;
+  background-size:9px 8px, 7px 6px, 12px 10px, 8px 7px, 10px 8px;
+  opacity:.75;
+}
+.shoogp-ui.skin-rocky .qwin :is(.blank,.target):not(.filled){position:relative; isolation:isolate}
+/* أثناءَ السحبِ فوقَ فراغٍ صالح: توهّجٌ مرحّبٌ أخضرُ يقولُ «أفلتْ هنا» (يبقى غائراً) */
+.shoogp-ui.skin-rocky .qwin :is(.blank,.target).over:not(.filled){
+  border-color:#7cb051 !important;
+  box-shadow:
+    inset 0 3px 8px rgba(60,90,30,.40),
+    0 0 0 3px rgba(140,205,95,.45) !important;
+}
+
 /* زرُّ «إنهاء» يتبعُ الكسوةَ نفسَها (قواعدُه الأصليةُ تحملُ !important فنُقابلُها) */
 .shoogp-ui.skin-rocky .qnav .qfinish{
   --rk-face:
