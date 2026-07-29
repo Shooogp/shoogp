@@ -630,6 +630,41 @@
     left:-160.9px;top:-104.4px;pointer-events:auto;cursor:grab}
   .lens-glass.grab .lens-frame{filter:brightness(1.07)}
 
+  /* ⑳ بناء المعادلة (equation-builder): صفّ المعادلة (رموز ثابتة + خانات) فوق بنك البطاقات.
+     الخانة `.blank` والبطاقة `.chip` هما نفساهما في `fill-blank` — فترثان قشرة المادة
+     وحدودها الدنيا تلقائياً بلا قاعدة كسوة جديدة. أمّا `.eqtok` (الرمز المطبوع) فليس
+     عنصراً تفاعلياً، فهو **خارج الكسوة** كرسم السؤال (نفس منطق استثناء .cpart و.grp) */
+  /* بلا max-width عمداً: المعادلة شكلها **عريض** بطبعها، وتقييد عرضها كان يُطيل المحتوى
+     عند قياس نسبته الطبيعية فيختار له النظام إطاراً طوليّاً ضيّقاً فتلتفّ المعادلة على
+     سطرين (قيس: D=1.271 ← qf-tall). بلا القيد تُقاس النسبة على شكلها الحقيقيّ فيُختار
+     إطارٌ عريض وتبقى المعادلة سطراً واحداً. (نفس منطق .opts{max-width:none} في القشرة) */
+  .eqb{width:100%;margin-inline:auto;display:flex;flex-direction:column;gap:26px}
+  /* dir:ltr كي تُقرأ المعادلة يساراً→يميناً كما تُكتب رياضياً (كنمط dir:ltr في الشريط
+     المتدرّج ولوح البازل)، وبقيّة الواجهة تبقى RTL */
+  /* الالتفاف مسموح احتياطاً لا اختياراً: نافذة إطار الرياضيات المقيسة **471.8px** عرضاً
+     (الإطار محكوم بالارتفاع المتاح availH=560 فلا يتّسع بزيادة العرض)، فالعرض الصافي
+     لرموز المعادلة ~404px. والمقادير أدناه (رمز 58 + فجوة 12 + حشوة 18) تجعل معادلة
+     الخمسة رموز **368px** بفائض 36px — لا على حدّ الالتفاف تماماً: بمقاس 64/14/20 كان
+     المجموع 400px مقابل 400px متاحة، فالتفّت على 1280×800 ولم تلتفّ على 1920×1080
+     لفارق تقريبٍ كسريّ لا أكثر. المعادلة الأطول من خمسة رموز تلتفّ سطرين بدل أن تفيض */
+  .eqrow{direction:ltr;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;
+    gap:12px;background:#fff;border-radius:18px;padding:18px;box-shadow:0 4px 14px rgba(0,0,0,.22)}
+  /* الرمز المطبوع: أرقام ورموز كبيرة واضحة للسبورة (لا تُنقر) */
+  .eqtok{display:inline-flex;align-items:center;justify-content:center;min-width:58px;min-height:64px;
+    font-family:'Cairo';font-weight:800;font-size:2rem;color:#2f3a2c;line-height:1;user-select:none}
+  .eqtok.eqop{color:#c8791f;font-size:2.2rem}
+  /* الخانة داخل صفّ المعادلة: بحجم الرمز نفسه فلا يتموّج السطر */
+  .eqrow .eqslot{min-width:88px;min-height:64px;display:inline-flex;align-items:center;justify-content:center;
+    margin:0;font-size:1.9rem;line-height:1}
+  .eqchips{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;padding:8px}
+  /* بطاقة البنك: مربّعة كبيرة تناسب إصبعاً على السبورة */
+  .eqchip{min-width:74px;min-height:64px;display:inline-flex;align-items:center;justify-content:center;
+    font-size:1.7rem;font-family:'Cairo';font-weight:800;line-height:1}
+  .eqchip.eqchip-op{color:#c8791f}
+  /* بطاقة مختارة بالنقر (نمط السبورة: انقر البطاقة ثم الخانة) — حلقة بارزة لا لون فحسب */
+  .chip.picked{box-shadow:0 0 0 4px rgba(245,160,74,.55),0 6px 16px rgba(245,160,74,.4);
+    transform:translateY(-2px)}
+
   /* التنقّل بين الأسئلة (خطوة بخطوة) */
   .qnav{display:flex;align-items:center;justify-content:center;gap:16px;margin:6px 0 10px;flex-wrap:wrap}
   .qnav .btn{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);color:#fff;min-width:118px}

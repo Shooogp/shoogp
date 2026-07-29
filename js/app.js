@@ -213,7 +213,7 @@ function qWin(fb,msg,stars){fb.textContent=msg||'🎉 أحسنت!';fb.className=
 // أي واجهة بلا صاروخ تُبقي wrong.mp3 يعمل (بقية دروس المنصّة كلها تحوي الصاروخ الآن)
 function qFail(fb,msg){fb.textContent=msg||'حاول مرة أخرى';fb.className='fb qfb bad';if(!(window.RocketJourney&&RocketJourney.isActive&&RocketJourney.isActive()))playWrongSound();if(window.RocketJourney)RocketJourney.onAnswer(false);}
 
-const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل','slider':'🎚️ الشريط المتدرج','memory':'🎴 بطاقات الذاكرة','lens':'🔍 العدسة المكبّرة'};
+const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل','slider':'🎚️ الشريط المتدرج','memory':'🎴 بطاقات الذاكرة','lens':'🔍 العدسة المكبّرة','equation-builder':'🧮 بناء المعادلة'};
 
 // تحويل الأرقام إلى هندية (عربية) للعرض
 function arNum(n){ return String(n).replace(/[0-9]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'[+d];}); }
@@ -228,7 +228,7 @@ function renderQuestions(ls){
     m.innerHTML='<div class="qbody" style="text-align:center;padding:14px 6px;font-size:1.15rem">📚 أسئلة هذا الدرس ستُضاف قريباً بإذن الله</div>';
     host.appendChild(m); return;
   }
-  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor,'puzzle':renderPuzzle,'slider':renderSlider,'memory':renderMemory,'lens':renderLens};
+  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor,'puzzle':renderPuzzle,'slider':renderSlider,'memory':renderMemory,'lens':renderLens,'equation-builder':renderEquationBuilder};
 
   // بناء كل البطاقات (تبقى في الصفحة لحفظ إجاباتها، ونُظهر واحدة فقط)
   const slides=document.createElement('div'); slides.className='qslides';
@@ -897,8 +897,65 @@ function renderPuzzle(q, body, fb){
   body.querySelector('.btn-reset').onclick=()=>renderPuzzle(q,body,fb);
 }
 
+/* ═══ بنك البطاقات المشترك (wireBank) ═══
+   منطق «بنك بطاقات ← خانات» مكتوبٌ **مرّة واحدة** يعمل مع كل نوع يستعمله: كان أصلاً
+   داخل `renderFillBlank` فاستُخرج كما هو ليتقاسمه `fill-blank` و`equation-builder`
+   (وأيّ نوع لاحق) بلا تكرار — نفس السحب بالفأرة واللمس، ونفس تفريغ الخانة بالنقر.
+   زيادتان على الأصل تخدمان السبورة والأعداد المكرّرة:
+   • **النقر للسبورة:** نقر البطاقة يختارها (`.picked`) ثم نقر الخانة يضعها فيها —
+     الإصبع على السبورة أدقّ في النقر منه في السحب (قاعدة lesson-authoring).
+   • **الوسم بالهوية لا بالقيمة:** كل بطاقة تحمل `data-cid` فريداً والخانة تخزّنه،
+     فبطاقتا «٣» في بنك معادلة لا تُشطبان معاً عند استعمال إحداهما (الأصل كان يقارن
+     النصّ فيشطب كل ما يساويه — لا يظهر في العلوم لأنّ كلماتها لا تتكرّر).
+   الوسائط: `chip` محدِّد البطاقة، `slot` محدِّد الخانة، `empty` نصّ الخانة الفارغة،
+   `onChange` نداءٌ بعد كل تغيير. تُرجع `{sync, clearSlot}`. */
+function wireBank(body, o){
+  o=o||{};
+  const chipSel=o.chip||'.chip', slotSel=o.slot||'.blank', empty=(o.empty!=null)?o.empty:'______';
+  const chips=[].slice.call(body.querySelectorAll(chipSel));
+  chips.forEach((c,i)=>{ c.dataset.cid=String(i); });
+  let dragged=null, picked=null;
+  // شطب البطاقات المستعملة: بالهوية (cid) لا بالنصّ، فتصحّ مع القيم المكرّرة
+  function sync(){
+    const held={};
+    body.querySelectorAll(slotSel).forEach(sl=>{ if(sl.dataset.cid!=null&&sl.dataset.cid!=='') held[sl.dataset.cid]=1; });
+    chips.forEach(c=>c.classList.toggle('used', !!held[c.dataset.cid]));
+  }
+  function pick(c){ if(picked&&picked!==c) picked.classList.remove('picked');
+    picked=(c&&picked!==c)?c:null; if(picked) picked.classList.add('picked'); }
+  function put(sl, chip){
+    if(!chip||!sl) return;
+    sl.textContent=chip.dataset.w; sl.dataset.placed=chip.dataset.w; sl.dataset.cid=chip.dataset.cid;
+    sl.classList.add('filled'); sl.classList.remove('correct','wrong','over');
+    dragged=null; pick(null); sync(); if(o.onChange) o.onChange();
+  }
+  function clearSlot(sl){
+    if(!sl||!sl.dataset.placed) return;
+    sl.textContent=empty; delete sl.dataset.placed; delete sl.dataset.cid;
+    sl.classList.remove('filled','correct','wrong'); sync(); if(o.onChange) o.onChange();
+  }
+  chips.forEach(chip=>{
+    chip.addEventListener('dragstart',()=>{dragged=chip;chip.classList.add('dragging')});
+    chip.addEventListener('dragend',()=>chip.classList.remove('dragging'));
+    chip.addEventListener('touchstart',()=>{dragged=chip;chip.classList.add('dragging')},{passive:true});
+    chip.addEventListener('touchend',e=>{const t=e.changedTouches[0];const el=document.elementFromPoint(t.clientX,t.clientY);
+      const sl=el&&el.closest(slotSel); if(sl) put(sl,chip); chip.classList.remove('dragging')});
+    chip.addEventListener('click',()=>{ if(!chip.classList.contains('used')) pick(chip); });
+  });
+  body.querySelectorAll(slotSel).forEach(sl=>{
+    sl.addEventListener('dragover',e=>{e.preventDefault();sl.classList.add('over')});
+    sl.addEventListener('dragleave',()=>sl.classList.remove('over'));
+    sl.addEventListener('drop',e=>{e.preventDefault();sl.classList.remove('over');put(sl,dragged)});
+    // بطاقة مختارة → وضعها؛ وإلا فنقر الخانة الممتلئة يفرّغها (يعيد بطاقتها للبنك)
+    sl.addEventListener('click',()=>{ if(picked) put(sl,picked); else clearSlot(sl); });
+  });
+  sync();
+  return { sync:sync, clearSlot:clearSlot };
+}
+
 /* ⑧ ملء الفراغ بالسحب (fill-blank): text فيه علامات {} للفراغات + answers[] + distractors[]
-   الطالب يسحب الكلمة المناسبة من البنك إلى كل فراغ (فأرة + لمس)؛ نقر الفراغ يفرّغه */
+   الطالب يسحب الكلمة المناسبة من البنك إلى كل فراغ (فأرة + لمس)؛ نقر الفراغ يفرّغه.
+   منطق البنك مشترك في `wireBank` أعلاه (يتقاسمه مع `equation-builder`) */
 function renderFillBlank(q, body, fb){
   const parts=q.text.split('{}');
   const n=parts.length-1; // عدد الفراغات
@@ -914,24 +971,7 @@ function renderFillBlank(q, body, fb){
     bankWords.map(w=>`<div class="chip" draggable="true" data-w="${w}">${w}</div>`).join('')+
     `</div></div></div>`+
     `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
-  let dragged=null;
-  const used=()=>{const p=[...body.querySelectorAll('.blank')].map(b=>b.dataset.placed).filter(Boolean);
-    body.querySelectorAll('.chip').forEach(c=>c.classList.toggle('used',p.includes(c.dataset.w)));};
-  const fill=bl=>{ if(!dragged)return; bl.textContent=dragged.dataset.w; bl.dataset.placed=dragged.dataset.w;
-    bl.classList.add('filled'); bl.classList.remove('correct','wrong'); used(); dragged=null; };
-  body.querySelectorAll('.chip').forEach(chip=>{
-    chip.addEventListener('dragstart',()=>{dragged=chip;chip.classList.add('dragging')});
-    chip.addEventListener('dragend',()=>chip.classList.remove('dragging'));
-    chip.addEventListener('touchstart',()=>{dragged=chip;chip.classList.add('dragging')},{passive:true});
-    chip.addEventListener('touchend',e=>{const t=e.changedTouches[0];const el=document.elementFromPoint(t.clientX,t.clientY);const bl=el&&el.closest('.blank');if(bl)fill(bl);chip.classList.remove('dragging')});
-  });
-  body.querySelectorAll('.blank').forEach(bl=>{
-    bl.addEventListener('dragover',e=>{e.preventDefault();bl.classList.add('over')});
-    bl.addEventListener('dragleave',()=>bl.classList.remove('over'));
-    bl.addEventListener('drop',e=>{e.preventDefault();bl.classList.remove('over');fill(bl)});
-    // نقر فراغ ممتلئ يفرّغه (يعيد الكلمة للبنك)
-    bl.addEventListener('click',()=>{ if(bl.dataset.placed){ bl.textContent='______'; delete bl.dataset.placed; bl.classList.remove('filled','correct','wrong'); used(); }});
-  });
+  wireBank(body, { chip:'.chip', slot:'.blank', empty:'______' });
   body.querySelector('.btn-check').onclick=()=>{
     const bls=body.querySelectorAll('.blank'); let ok=0;
     bls.forEach(bl=>{ if(bl.dataset.placed===bl.dataset.answer){bl.classList.add('correct');bl.classList.remove('wrong');ok++;}
@@ -1314,6 +1354,100 @@ function renderLens(q, body, fb){
     }
   });
   body.querySelector('.btn-reset').onclick=()=>renderLens(q,body,fb);
+}
+
+/* ═══ أدوات عددية مشتركة لأنواع الرياضيات ═══
+   الأرقام في بيانات الأسئلة تُكتب هندية (٣ ٤ ٥) كما تُقرأ على الشاشة، والحساب يحتاجها
+   لاتينية — فالتحويل في اتجاهين هنا مرّة واحدة بدل تكراره في كل نوع. */
+const AR_DIGITS='٠١٢٣٤٥٦٧٨٩';
+function toLatinNum(s){ return String(s).replace(/[٠-٩]/g,d=>String(AR_DIGITS.indexOf(d))).replace(/[٫،]/g,'.'); }
+function numOf(s){ const v=parseFloat(toLatinNum(String(s).trim())); return isNaN(v)?null:v; }
+/* رموز العمليات المقبولة في بناء المعادلة (الطرح بعلامة «−» الرياضية أو «-» العادية) */
+const EQ_OPS={'+':1,'−':1,'-':1,'×':1,'÷':1,'=':1,'<':1,'>':1};
+function isEqOp(t){ return EQ_OPS[String(t).trim()]===1; }
+
+/* ⑳ بناء المعادلة (equation-builder): tokens[] فيها "__" لكل خانة فارغة + bank[] + answers[]
+   المعادلة صفٌّ من رموز ثابتة وخانات فارغة، وبنك بطاقات أرقام ورموز (+ − =) تُسحب إليها
+   (أو تُنقر البطاقة ثم الخانة — أدقّ على السبورة). منطق البنك مشترك في `wireBank`
+   (هو نفسه منطق `fill-blank` بلا تكرار). وضعان:
+   • `fill` — إكمال الناتج أو المجهول: كل خانة تُقارَن بـ`answers[i]` بترتيب الخانات.
+   • `equivalence` — الحكم على تكافؤ طرفَي «=»: يُقبل **أيُّ ملءٍ يجعل الطرفين متساويين**
+     (لا الإجابة النموذجية وحدها)، وهو معنى التكافؤ لا التطابق النصّي؛ و`answers` تبقى
+     الإجابة النموذجية للمراجعة. الحساب يحترم أسبقية × ÷ على + −.
+   الصوت وزر الكتم والصاروخ عبر qWin/qFail كسائر الأنواع. */
+function renderEquationBuilder(q, body, fb){
+  const toks=q.tokens||[];
+  const mode=q.mode||'fill';
+  const answers=q.answers||[];
+  let si=0;
+  const row=toks.map(t=>{
+    const s=String(t);
+    if(s==='__'){ const i=si++;
+      return `<span class="blank eqslot" data-i="${i}" data-answer="${answers[i]!=null?answers[i]:''}">؟</span>`; }
+    return `<span class="eqtok ${isEqOp(s)?'eqop':'eqnum'}">${s}</span>`;
+  }).join('');
+  const nSlots=si;
+  body.innerHTML=`<div class="eqb"><div class="eqrow">${row}</div>`+
+    `<div class="bank eqbank"><div class="bt">البطاقات:</div><div class="chips eqchips">`+
+    shuffle((q.bank||[]).slice()).map(w=>`<div class="chip eqchip${isEqOp(w)?' eqchip-op':''}" draggable="true" data-w="${w}">${w}</div>`).join('')+
+    `</div></div></div>`+
+    `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
+  wireBank(body, { chip:'.eqchip', slot:'.eqslot', empty:'؟' });
+  // قراءة المعادلة كاملةً بعد استبدال الخانات بما وُضع فيها (null إن بقيت خانة فارغة)
+  function readTokens(){
+    const slots=[].slice.call(body.querySelectorAll('.eqslot'));
+    let k=0, out=[];
+    for(let i=0;i<toks.length;i++){
+      const s=String(toks[i]);
+      if(s==='__'){ const v=slots[k++].dataset.placed; if(!v) return null; out.push(v); }
+      else out.push(s);
+    }
+    return out;
+  }
+  // حساب طرفٍ من المعادلة: × ÷ أولاً ثم + − (يمين→يسار لا يغيّر النتيجة مع هذه الأسبقية)
+  function evalSide(list){
+    const t=list.slice(); let i=0;
+    const vals=[], ops=[];
+    while(i<t.length){
+      const v=numOf(t[i]); if(v===null) return null; vals.push(v); i++;
+      if(i<t.length){ const op=String(t[i]).trim(); if(!isEqOp(op)||op==='=') return null; ops.push(op); i++; }
+    }
+    if(!vals.length || ops.length!==vals.length-1) return null;
+    for(let j=0;j<ops.length;){                      // تمريرة الضرب والقسمة
+      if(ops[j]==='×'||ops[j]==='÷'){
+        const r=(ops[j]==='×')?vals[j]*vals[j+1]:(vals[j+1]===0?null:vals[j]/vals[j+1]);
+        if(r===null) return null;
+        vals.splice(j,2,r); ops.splice(j,1);
+      } else j++;
+    }
+    let acc=vals[0];
+    for(let j=0;j<ops.length;j++) acc=(ops[j]==='+')?acc+vals[j+1]:acc-vals[j+1];
+    return acc;
+  }
+  function markAll(cls){ body.querySelectorAll('.eqslot').forEach(sl=>{ sl.classList.remove('correct','wrong'); if(cls) sl.classList.add(cls); }); }
+  body.querySelector('.btn-check').onclick=()=>{
+    const full=readTokens();
+    if(!full){ qFail(fb,'أكمل كل الخانات أولاً — اسحب بطاقة إلى كل خانة فارغة'); return; }
+    if(mode==='equivalence'){
+      // شقّ المعادلة عند «=» وقارن الطرفين حساباً (التكافؤ لا التطابق النصّي)
+      const sides=[[]]; full.forEach(t=>{ if(String(t).trim()==='=') sides.push([]); else sides[sides.length-1].push(t); });
+      const vs=sides.map(evalSide);
+      if(sides.length<2 || vs.some(v=>v===null)){ qFail(fb,'راجع ترتيب البطاقات — المعادلة غير مكتملة'); return; }
+      const ok=vs.every(v=>Math.abs(v-vs[0])<1e-9);
+      if(ok){ markAll('correct'); qWin(fb,'🎉 أحسنت! الطرفان متكافئان — كلٌّ منهما يساوي '+arNum(vs[0]),3); }
+      else{ markAll('wrong'); qFail(fb,'الطرفان غير متساويين: '+arNum(vs[0])+' مقابل '+arNum(vs[1])); }
+      return;
+    }
+    // وضع الإكمال: كل خانة تُقارَن بإجابتها (بعد توحيد صيغة الأرقام)
+    const slots=body.querySelectorAll('.eqslot'); let ok=0;
+    slots.forEach(sl=>{
+      const good=toLatinNum(sl.dataset.placed||'')===toLatinNum(sl.dataset.answer||'');
+      sl.classList.toggle('correct',good); sl.classList.toggle('wrong',!good); if(good) ok++;
+    });
+    if(ok===nSlots) qWin(fb,'🎉 أحسنت! المعادلة صحيحة',3);
+    else qFail(fb,`راجع المعادلة — الصحيح ${arNum(ok)} من ${arNum(nSlots)}`);
+  };
+  body.querySelector('.btn-reset').onclick=()=>renderEquationBuilder(q,body,fb);
 }
 
 /* ===== إقلاع ===== */
