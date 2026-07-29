@@ -131,13 +131,16 @@ var FRAME_FAMILIES={
      لأنّ ميداليةَ النجمةِ تقتحمُ حافّتَه في الأربعةِ جميعاً.
        s    1536×1024 · تعبئة #00b6d7 · فتحةٌ قِيست L13.8/R13.8/T26.8/B24.3٪
        m    1138×818  · تعبئة #01afda · فتحةٌ قِيست L11.8/R11.9/T13.8/B15.0٪ (مساحة 50.8٪)
-       l    1352×996  · تعبئة #02aad9 · فتحةٌ قِيست L11.9/R12.0/T12.9/B14.1٪ (مساحة 51.9٪)
-       tall 1086×1448 · تعبئة #01a2df · فتحةٌ قِيست L14.5/R14.3/T9.9/B9.3٪  (مساحة 54.7٪) */
+       l    1261×1247 · تعبئة #03a5ec · فتحةٌ قِيست L13.1/R12.8/T10.4/B13.1٪ (نافذة 934×954)
+       tall 1086×1448 · تعبئة #01a2df · فتحةٌ قِيست L14.5/R14.3/T9.9/B9.3٪  (نافذة 773×1171)
+     ونِسَبُ `win` أدناه **أوسعُ إنساحاً من الفتحةِ المقيسة عمداً**: الفتحةُ تُقاسُ إلى
+     أقصى امتدادِ اللونِ فتشملُ مدى الزوايا المستديرة، فلو لُصِقَ المحتوى بها لامسَ
+     القوسَ في الأركان. الإنساحُ الزائدُ يُبعدُه عن الأقواسِ ويحفظُ التنفّس (§٨). */
   math:{ order:['s','m','l','tall'], flexBase:'l', sizes:{
     s:{img:'frame-math-s.png', ar:'1536 / 1024', win:{top:'28.5%',left:'15.5%',right:'15.5%',bottom:'26%'},   hasFill:true, fillColor:'#00b6d7'},
     m:{img:'frame-math-m.png', ar:'1138 / 818',  win:{top:'16%',  left:'14%',  right:'14%',   bottom:'19%'},   hasFill:true, fillColor:'#01afda'},
-    l:{img:'frame-math-l.png', ar:'1352 / 996',  win:{top:'15%',  left:'14%',  right:'14%',   bottom:'18%'},   hasFill:true, fillColor:'#02aad9'},
-    tall:{img:'frame-math-tall.png', ar:'1086 / 1448', win:{top:'12%', left:'16.5%', right:'16.5%', bottom:'13.5%'}, hasFill:true, fillColor:'#01a2df'}
+    l:{img:'frame-math-l.png', ar:'1261 / 1247', win:{top:'13%',  left:'15%',  right:'15%',   bottom:'18.5%'}, hasFill:true, fillColor:'#03a5ec'},
+    tall:{img:'frame-math-tall.png', ar:'1086 / 1448', win:{top:'13%', left:'16.5%', right:'16.5%', bottom:'14%'}, hasFill:true, fillColor:'#01a2df'}
   }}
 };
 /* مادةُ الدرس → عائلةُ الفريم: الرياضيات ← math، وبقيةُ المواد ← moon (الافتراضية). */
