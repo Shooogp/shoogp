@@ -78,7 +78,14 @@
   .app:has(#activityScreen.active) > header .main-title{ display:none }
   #activityScreen .lesson-head{display:flex;align-items:center;
     justify-content:space-between;gap:20px;margin-bottom:6px}
-  #activityScreen .lesson-head .screen-title{margin-bottom:0;flex:1 1 auto;min-width:0}
+  /* هالةٌ داكنةٌ حولَ عنوانِ الدرس: الشريطُ الخلفيُّ صارَ يحملُ لونَ بطاقةِ الكتابِ
+     بشفافيةٍ عالية، فبعضُ الألوانِ الفاتحة (الأخضرُ والبرتقاليُّ) تُنزِلُ تباينَ النصِّ
+     الفاتحِ إلى ~2.5:1 — دونَ حدِّ 3:1 للنصِّ الكبير. الهالةُ تُعيدُ الفصلَ فوقَ أيِّ
+     لونِ كتابٍ بلا تغميقِ الشريطِ ولا انحرافٍ عن لونِ البطاقة. */
+  #activityScreen .lesson-head .screen-title{margin-bottom:0;flex:1 1 auto;min-width:0;
+    text-shadow:0 2px 7px rgba(8,22,18,.80), 0 0 3px rgba(8,22,18,.65)}
+  #activityScreen .lesson-head + .screen-sub{
+    text-shadow:0 1px 5px rgba(8,22,18,.75)}
   #activityScreen .lesson-logo{height:60px;width:auto;display:block;flex:0 0 auto;
     filter:drop-shadow(0 6px 16px rgba(0,0,0,.35))}
   .app:has(#lessonsScreen.active) > header .logo-wrap,
