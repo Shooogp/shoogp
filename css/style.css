@@ -484,6 +484,24 @@
      اللوح direction:ltr كي تطابق أعمدة الشبكة أعمدة الصورة؛ القطع كبيرة تناسب اللمس على السبورة */
   .puzzle{display:flex;flex-direction:column;align-items:center;gap:18px;width:100%}
   /* اللوح الفارغ يظهر كشبكة: خطوط رمادية خفيفة (حدود الخانات) بين المربّعات التي توضع فيها القطع */
+  /* ── تخطيط البازل: اللوح وصينية القطع **جنباً إلى جنب** لا فوق بعضهما ──
+     كان اللوح فوق والصينية تحته، فيصير الارتفاع = اللوح + الصينية؛ ومع تسع قطعٍ
+     بحجم خانة اللوح تنكسر الصينية إلى صفّين فيرتفع المجموع حتى يتجاوز أطول إطار
+     (‏tall) فيسقط السؤال إلى الحاوية المرنة qflex، وعندها تُحاط صورة الإطار
+     letterbox فيخرج المحتوى عن الرمل المرسوم ويُقصّ أعلى الإطار فوق حدّ الشاشة.
+     بالتجاور يصير الارتفاع = **أطولهما** فقط، ويتّسع اللوح للعرض المتاح. */
+  .puzzle{display:flex;flex-direction:row;gap:20px;align-items:flex-start;width:100%}
+  .puzzle .pzbank{flex:0 0 220px;width:220px}
+  /* عرض اللوح يضبطه `fitBoard` في js/app.js بالبكسل: خاناته فارغة فلا عرض ذاتيّ
+     لها (‏`flex-basis:0` أعطى 180×6 — مجرّد حدود الخانات)، وصورته قد تكون طوليّة
+     فتوسيعه عرضاً يُطيله لا يُقصّره. لذا يُحسب العرض من **سقف الارتفاع × النسبة**،
+     فتُحفظ نسبة الصورة تماماً ويبقى الارتفاع داخل المنطقة الداخلية. */
+  .puzzle .pzboard{flex:0 0 auto;max-width:none}
+  /* صينية ثابتة 3×3 — لا تنكسر إلى صفّين مهما ضاق العرض */
+  .puzzle .pztray{display:grid;grid-template-columns:repeat(3,auto);gap:10px;
+    justify-content:center;justify-items:center;flex-wrap:nowrap}
+  @media(max-width:560px){ .puzzle{flex-direction:column;align-items:center}
+    .puzzle .pzbank{flex:0 0 auto;width:100%} }
   .pzboard{direction:ltr;display:grid;gap:0;width:min(340px,86%);aspect-ratio:1/1;
     border:3px solid #b3b3b3;border-radius:12px;padding:0;box-sizing:border-box;overflow:hidden}
   .pzslot{border:2px solid #b3b3b3;background:#fbfaf5;box-sizing:border-box;

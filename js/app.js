@@ -824,14 +824,49 @@ function renderPuzzle(q, body, fb){
   const board=body.querySelector('.pzboard'), tray=body.querySelector('.pztray');
   if(q.bg) board.style.background=q.bg;
   // نسبة اللوح = نسبة الصورة الحقيقية، وحجم قطع الصينية = حجم خانة اللوح (يُحدَّث مع تغيّر القياس)
+  /* حجم قطع الصينية: **من عرض عمود الصينية** لا من خانة اللوح.
+     ربطُه بالخانة كان يجعل الصينية تكبر مع اللوح فتنكسر إلى صفّين ويطول السؤال؛
+     ولا حاجة للتطابق أصلاً، فالقطعة تملأ الخانة عند إسقاطها (`.pzslot .pzpiece`).
+     **نسبة القطعة محفوظة تماماً**: نأخذ نسبة الخانة ونضرب فيها العرض المحسوب،
+     فلا تشويه مهما تغيّر العرض. وحدٌّ أدنى 60px للبُعد الأكبر (قاعدة اللمس §٨). */
   function sizePieces(){ const s=board.querySelector('.pzslot'); if(!s)return;
-    tray.style.setProperty('--pw', s.clientWidth+'px');
-    tray.style.setProperty('--ph', s.clientHeight+'px'); }
+    /* نسبة القطعة تُشتقّ من **نسبة الصورة والشبكة** لا من صندوق الخانة: حدود الخانة
+       (2px) وحدود القطعة (1px) تدخل في `clientHeight` على نحوٍ غير متماثل فتنحرف
+       النسبة ~2% (قِيس 0.653 بدل 0.667). هذا الاشتقاق يعطي النسبة بالضبط. */
+    const ar=(pzAR>0)? (rows/cols)/pzAR : 1.5;   // ارتفاع ÷ عرض للقطعة الواحدة
+    const gap=10, TRAY_COLS=3;                   // مطابقٌ لـ.pztray في style.css
+    const colW=tray.clientWidth || 220;
+    let pw=Math.floor((colW-gap*(TRAY_COLS-1))/TRAY_COLS);
+    if(pw*Math.max(1,ar)<60) pw=Math.ceil(60/Math.max(1,ar));   // لا ينزل البُعد الأكبر عن 60px
+    tray.style.setProperty('--pw', pw+'px');
+    tray.style.setProperty('--ph', Math.round(pw*ar)+'px'); }
+  /* ── سقف ارتفاع اللوح: يمنع سقوط السؤال إلى الحاوية المرنة qflex ──
+     صورة البازل قد تكون طوليّة (‏1024×1536 هنا)، فكلّما وُسّع اللوح **طال**. ومع
+     الصينية تحته كان مجموع الارتفاع يتجاوز أطول إطار فيسقط السؤال إلى qflex،
+     وعندها تُحاط صورة الإطار letterbox فيخرج المحتوى عن الرمل ويُقصّ أعلى الإطار.
+     الحلّ: عرض اللوح = **سقف الارتفاع × نسبة الصورة**، مقيَّداً بالعرض المتاح —
+     فالنسبة محفوظة بالضبط والارتفاع مضمون. */
+  const PZ_BOARD_MAX_H = 430;      // بكسل تصميميّ (يقابل صينية 3×3 بارتفاع ~375)
+  const PZ_BANK_COL    = 240;      // عمود الصينية 220 + الفجوة 20
+  let pzAR = 1;                    // عرض ÷ ارتفاع لصورة البازل
+  function fitBoard(){
+    const wrap=body.querySelector('.puzzle'); if(!wrap) return;
+    const avail=wrap.clientWidth-PZ_BANK_COL;
+    const w=Math.max(160, Math.min(avail>0?avail:160, PZ_BOARD_MAX_H*pzAR));
+    const v=Math.round(w)+'px';
+    if(board.style.width!==v) board.style.width=v;
+  }
   const probe=new Image();
-  probe.onload=()=>{ if(probe.naturalWidth) board.style.aspectRatio=probe.naturalWidth+'/'+probe.naturalHeight; sizePieces(); };
+  probe.onload=()=>{ if(probe.naturalWidth){ pzAR=probe.naturalWidth/probe.naturalHeight;
+      board.style.aspectRatio=probe.naturalWidth+'/'+probe.naturalHeight; }
+    fitBoard(); sizePieces(); };
   probe.src=q.image;
-  if(window.ResizeObserver){ new ResizeObserver(sizePieces).observe(board); }
-  setTimeout(sizePieces,60);
+  if(window.ResizeObserver){
+    new ResizeObserver(sizePieces).observe(board);
+    /* نراقب الغلاف لا اللوح: كتابتنا لعرض اللوح تُطلق مراقبه فتنشأ حلقة */
+    const wrap=body.querySelector('.puzzle'); if(wrap) new ResizeObserver(fitBoard).observe(wrap);
+  }
+  setTimeout(()=>{ fitBoard(); sizePieces(); },60);
   let dragged=null;
   const clearMark=()=>{ board.classList.remove('solved'); body.querySelectorAll('.pzslot').forEach(s=>s.classList.remove('correct','wrong')); };
   // نقل القطعة إلى خانة (مع تبديل القطعة الموجودة إلى الصينية) أو إعادتها إلى الصينية
