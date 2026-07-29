@@ -3721,6 +3721,17 @@ window.QUESTIONS = {
       prompt: "ضَعِ المُؤشِّرَ على العَدَدِ ١٣ في خَطِّ الأعدادِ.",
       min: 0, max: 20, step: 1, labelEvery: 5,
       target: 13
+    },
+
+    // ㉒ لوحة المائة — وضع المضاعفات (multiples)
+    {
+      type: "hundred-chart",
+      mode: "multiples",
+      objective: "اختبار النوع فقط — لا يخدم هدف درس",
+      level: "reasoning",
+      prompt: "لَوِّنْ مُضاعَفاتِ العَدَدِ ٥ في اللَّوحةِ.",
+      from: 1, to: 50, columns: 10,
+      multiple: 5
     }
 
   ]

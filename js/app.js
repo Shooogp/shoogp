@@ -213,7 +213,7 @@ function qWin(fb,msg,stars){fb.textContent=msg||'🎉 أحسنت!';fb.className=
 // أي واجهة بلا صاروخ تُبقي wrong.mp3 يعمل (بقية دروس المنصّة كلها تحوي الصاروخ الآن)
 function qFail(fb,msg){fb.textContent=msg||'حاول مرة أخرى';fb.className='fb qfb bad';if(!(window.RocketJourney&&RocketJourney.isActive&&RocketJourney.isActive()))playWrongSound();if(window.RocketJourney)RocketJourney.onAnswer(false);}
 
-const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل','slider':'🎚️ الشريط المتدرج','memory':'🎴 بطاقات الذاكرة','lens':'🔍 العدسة المكبّرة','equation-builder':'🧮 بناء المعادلة','number-line':'📏 خط الأعداد'};
+const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل','slider':'🎚️ الشريط المتدرج','memory':'🎴 بطاقات الذاكرة','lens':'🔍 العدسة المكبّرة','equation-builder':'🧮 بناء المعادلة','number-line':'📏 خط الأعداد','hundred-chart':'💯 لوحة المائة'};
 
 // تحويل الأرقام إلى هندية (عربية) للعرض
 function arNum(n){ return String(n).replace(/[0-9]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'[+d];}); }
@@ -228,7 +228,7 @@ function renderQuestions(ls){
     m.innerHTML='<div class="qbody" style="text-align:center;padding:14px 6px;font-size:1.15rem">📚 أسئلة هذا الدرس ستُضاف قريباً بإذن الله</div>';
     host.appendChild(m); return;
   }
-  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor,'puzzle':renderPuzzle,'slider':renderSlider,'memory':renderMemory,'lens':renderLens,'equation-builder':renderEquationBuilder,'number-line':renderNumberLine};
+  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor,'puzzle':renderPuzzle,'slider':renderSlider,'memory':renderMemory,'lens':renderLens,'equation-builder':renderEquationBuilder,'number-line':renderNumberLine,'hundred-chart':renderHundredChart};
 
   // بناء كل البطاقات (تبقى في الصفحة لحفظ إجاباتها، ونُظهر واحدة فقط)
   const slides=document.createElement('div'); slides.className='qslides';
@@ -1533,6 +1533,133 @@ function renderNumberLine(q, body, fb){
                                 : 'موضعك بعد المطلوب — تراجع على الخط قليلاً');
   };
   body.querySelector('.btn-reset').onclick=()=>renderNumberLine(q,body,fb);
+}
+
+/* ㉒ لوحة المائة (hundred-chart): شبكة من from إلى to بعدد أعمدة columns (افتراضياً ١٠)
+   من محرّك الشبكة المشترك (numCells) — تُملأ الأعمدة من اليمين إلى اليسار باتجاه القراءة.
+   ثلاثة أوضاع: multiples (تلوين مضاعفات عدد)، missing (ملء خلايا ناقصة من بنك بطاقات)،
+   more-less (إيجاد الأكثر/الأقل بمقدار ١ أو ١٠). النقر يلوّن الخلية،
+   و**التحقّق على مجموعة الخلايا لا على خلية واحدة** (sameNumSet). */
+function renderHundredChart(q, body, fb){
+  const from=Math.round(+q.from||1), to=Math.round(+q.to||100);
+  const mode=q.mode||'multiples';
+  const G=numCells(from,to,q.columns||10);
+  const CELL=100, PAD=6;                                  // وحدات viewBox
+  const W=G.cols*CELL, H=G.rows*CELL;
+  const missing=(q.missing||[]).map(Number);
+  const asks=(q.asks||[]).map(a=>({base:Math.round(+a.base), delta:Math.round(+a.delta)}));
+  // مجموعة الإجابات الصحيحة لكل وضع
+  let answers=[];
+  if(mode==='multiples'){
+    const m=Math.abs(Math.round(+q.multiple))||2;
+    G.cells.forEach(c=>{ if(c.v%m===0) answers.push(c.v); });
+  } else if(mode==='more-less'){
+    answers=asks.map(a=>a.base+a.delta);
+  } else answers=missing.slice();
+  // ── بناء الشبكة ──
+  const baseSet={}; asks.forEach(a=>baseSet[a.base]=1);
+  let cellsHtml='';
+  G.cells.forEach(c=>{
+    const x=(G.cols-1-c.c)*CELL, y=c.r*CELL;              // العمود ٠ أقصى اليمين
+    const blank=(mode==='missing' && missing.indexOf(c.v)>=0);
+    const cls='hc-cell'+(blank?' hc-blank':'')+(baseSet[c.v]?' hc-base':'');
+    /* مستطيلٌ شفّافٌ يملأ **كامل خطوة الخلية**: اختبار الإصابة في SVG يقع على الشكل
+       المرسوم وحدَه، فلولاه لصار هدفُ اللمس هو المستطيلَ المرئيَّ المحشوَّ (‏52.8px
+       تصميميّ) بدل خطوة الخلية كاملةً (‏60px) — أي فقدُ 12% من مساحة اللمس بلا سبب */
+    cellsHtml+=`<g class="${cls}" data-v="${c.v}">`+
+      `<rect class="hc-hit" x="${x}" y="${y}" width="${CELL}" height="${CELL}"></rect>`+
+      `<rect class="hc-face" x="${x+PAD}" y="${y+PAD}" width="${CELL-PAD*2}" height="${CELL-PAD*2}" rx="14"></rect>`+
+      `<text x="${x+CELL/2}" y="${y+CELL/2+16}">${blank?'':arNum(c.v)}</text></g>`;
+  });
+  // شريط تعليمات وضع الأكثر/الأقل: بطاقة لكل مطلوب فلا يحتاج المعلّم شرحاً شفهياً
+  let bar='';
+  if(mode==='more-less' && asks.length)
+    bar=`<div class="hc-asks">`+asks.map(a=>
+      `<span class="hc-ask"><b>${arNum(a.base)}</b> ← ${a.delta>0?'أكثرُ بـ':'أقلُّ بـ'}${arNum(Math.abs(a.delta))}</span>`).join('')+`</div>`;
+  // بنك بطاقات الأعداد لوضع الخلايا الناقصة
+  let bank='';
+  if(mode==='missing')
+    bank=`<div class="bank hcbank"><div class="bt">الأعداد:</div><div class="chips hcchips">`+
+      shuffle(missing.concat(q.distractors||[]).map(Number)).map(v=>
+        `<div class="chip hcchip" draggable="true" data-w="${arNum(v)}" data-v="${v}">${arNum(v)}</div>`).join('')+
+      `</div></div>`;
+  body.innerHTML=`<div class="hchart">${bar}`+
+    `<svg class="hcsvg" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${cellsHtml}</svg>`+
+    `${bank}</div>`+
+    `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
+  const cellEls=[].slice.call(body.querySelectorAll('.hc-cell'));
+  let done=false, picked=null;
+  const sel={};                                            // الخلايا المختارة (multiples/more-less)
+  const put={};                                            // العدد الموضوع في كل خلية ناقصة (missing)
+  // ── وضع الخلايا الناقصة: اختر بطاقة ثم انقر الخانة (أو اسحبها إليها) ──
+  function pick(c){ if(picked&&picked!==c) picked.classList.remove('picked');
+    picked=(c&&picked!==c)?c:null; if(picked) picked.classList.add('picked'); }
+  function syncChips(){
+    const held={}; Object.keys(put).forEach(k=>{ if(put[k]!=null) held[put[k]]=1; });
+    body.querySelectorAll('.hcchip').forEach(ch=>ch.classList.toggle('used', !!held[ch.dataset.v]));
+  }
+  function placeIn(g, chip){
+    const t=g.querySelector('text'); t.textContent=chip.dataset.w;
+    put[g.dataset.v]=+chip.dataset.v;
+    g.classList.add('filled'); g.classList.remove('correct','wrong');
+    pick(null); syncChips();
+  }
+  function clearCell(g){
+    if(put[g.dataset.v]==null) return;
+    g.querySelector('text').textContent=''; delete put[g.dataset.v];
+    g.classList.remove('filled','correct','wrong'); syncChips();
+  }
+  body.querySelectorAll('.hcchip').forEach(chip=>{
+    chip.addEventListener('click',()=>{ if(!chip.classList.contains('used')) pick(chip); });
+    chip.addEventListener('touchstart',()=>{picked=chip;chip.classList.add('dragging')},{passive:true});
+    chip.addEventListener('dragstart',()=>{picked=chip;chip.classList.add('dragging')});
+    chip.addEventListener('dragend',()=>chip.classList.remove('dragging'));
+    chip.addEventListener('touchend',e=>{ const t=e.changedTouches[0];
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      const g=el&&el.closest&&el.closest('.hc-blank'); if(g) placeIn(g,chip); chip.classList.remove('dragging'); });
+  });
+  // ── النقر على الخلايا ──
+  cellEls.forEach(g=>{
+    g.addEventListener('click',()=>{
+      if(done) return;
+      if(mode==='missing'){
+        if(!g.classList.contains('hc-blank')) return;      // الخلايا المطبوعة ليست أهدافاً
+        if(picked) placeIn(g,picked); else clearCell(g);
+        return;
+      }
+      const v=+g.dataset.v;                                 // تلوين/إلغاء تلوين
+      if(sel[v]){ delete sel[v]; g.classList.remove('picked-cell'); }
+      else { sel[v]=1; g.classList.add('picked-cell'); }
+      g.classList.remove('correct','wrong');
+    });
+  });
+  body.querySelector('.btn-check').onclick=()=>{
+    if(done) return;
+    if(mode==='missing'){
+      let ok=0;
+      cellEls.forEach(g=>{ if(!g.classList.contains('hc-blank')) return;
+        const good=(put[g.dataset.v]===+g.dataset.v);
+        g.classList.toggle('correct',good); g.classList.toggle('wrong',!good); if(good) ok++; });
+      if(ok===missing.length){ done=true; qWin(fb,'🎉 أحسنت! كل الخلايا الناقصة صحيحة',3); }
+      else qFail(fb,`راجع الخلايا — الصحيح ${arNum(ok)} من ${arNum(missing.length)}`);
+      return;
+    }
+    // التحقّق على **مجموعة** الخلايا: لا تكفي خلية صحيحة مع نقص أو زيادة
+    const chosen=Object.keys(sel).map(Number);
+    cellEls.forEach(g=>{ const v=+g.dataset.v;
+      if(sel[v]) g.classList.toggle(answers.indexOf(v)>=0?'correct':'wrong',true); });
+    if(sameNumSet(chosen,answers)){
+      done=true;
+      qWin(fb, mode==='multiples' ? '🎉 أحسنت! لوّنت كل المضاعفات ولم تزد عليها'
+                                  : '🎉 أحسنت! وجدت كل الأعداد المطلوبة', 3);
+    } else {
+      const hit=chosen.filter(v=>answers.indexOf(v)>=0).length;
+      const extra=chosen.length-hit;
+      qFail(fb, extra ? `الصحيح ${arNum(hit)} من ${arNum(answers.length)}، ولديك ${arNum(extra)} خلية زائدة`
+                      : `الصحيح ${arNum(hit)} من ${arNum(answers.length)} — أكمل الباقي`);
+    }
+  };
+  body.querySelector('.btn-reset').onclick=()=>renderHundredChart(q,body,fb);
 }
 
 /* ⑳ بناء المعادلة (equation-builder): tokens[] فيها "__" لكل خانة فارغة + bank[] + answers[]

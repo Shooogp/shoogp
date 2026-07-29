@@ -700,6 +700,40 @@
   .nl-jdot.nl-jstart{fill:#f5a04a;stroke:#c8791f;stroke-width:3}
   .nl-jlabel{fill:#4a3a10;font-family:'Cairo';font-weight:800;font-size:28px;text-anchor:middle}
 
+  /* ㉒ لوحة المائة (hundred-chart): شبكة SVG واحدة — **رسم سؤال خارج الكسوة** كخط الأعداد.
+     الخلية المطبوعة بارزة والخلية الناقصة **غائرة بحدّ متقطّع** (قاعدة المحمول ≠ المستقبِل)،
+     وبطاقات البنك .chip ترث قشرة المادة كسائر البطاقات */
+  .hchart{width:100%;display:flex;flex-direction:column;align-items:center;gap:14px}
+  .hcsvg{width:100%;height:auto;display:block;touch-action:manipulation;
+    -webkit-user-select:none;user-select:none}
+  .hc-cell{cursor:pointer}
+  /* .hc-hit = مساحة اللمس (خطوة الخلية كاملة، شفّافة)، و.hc-face = الوجه المرئيّ المحشوّ */
+  .hc-hit{fill:transparent;stroke:none}
+  .hc-face{fill:#fff;stroke:#d9c7a4;stroke-width:3;transition:fill .12s}
+  .hc-cell text{fill:#2f3a2c;font-family:'Cairo';font-weight:800;font-size:44px;
+    text-anchor:middle;pointer-events:none}
+  .hc-cell:hover .hc-face{fill:#fff6e6}
+  /* المختارة: لون **ومعه** حدّ أثخن وأغمق (اللون ليس الفارق الوحيد) */
+  .hc-cell.picked-cell .hc-face{fill:#ffd79a;stroke:#c8791f;stroke-width:6}
+  .hc-cell.correct .hc-face{fill:#a7c957;stroke:#4e7c1f;stroke-width:6}
+  .hc-cell.correct text{fill:#20340a}
+  .hc-cell.wrong .hc-face{fill:#fde2e2;stroke:#c94a4a;stroke-width:6}
+  .hc-cell.wrong text{fill:#c94a4a}
+  /* خلية الأساس في وضع الأكثر/الأقل: معلَّمة لا مختارة (نقطة الانطلاق) */
+  .hc-cell.hc-base .hc-face{fill:#dce9f7;stroke:#2f6fb0;stroke-width:6}
+  .hc-cell.hc-base text{fill:#1d4b7e}
+  /* الخلية الناقصة (مستقبِل): غائرة بحدّ متقطّع بلا بروز */
+  .hc-cell.hc-blank .hc-face{fill:#efe6d6;stroke:#9c7b3f;stroke-width:4;stroke-dasharray:12 9}
+  .hc-cell.hc-blank.filled .hc-face{fill:#FFE0B3;stroke:#e0b380;stroke-dasharray:none}
+  /* شريط مطالب وضع الأكثر/الأقل */
+  .hc-asks{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+  .hc-ask{background:rgba(255,255,255,.92);border-radius:12px;padding:8px 16px;
+    font-family:'Cairo';font-weight:700;color:#3a2c0a;font-size:1.05rem}
+  .hc-ask b{color:#2f6fb0;font-size:1.2rem;margin-inline-start:4px}
+  .hcchips{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;padding:6px}
+  .hcchip{min-width:74px;min-height:64px;display:inline-flex;align-items:center;justify-content:center;
+    font-family:'Cairo';font-weight:800;font-size:1.5rem;line-height:1}
+
   /* التنقّل بين الأسئلة (خطوة بخطوة) */
   .qnav{display:flex;align-items:center;justify-content:center;gap:16px;margin:6px 0 10px;flex-wrap:wrap}
   .qnav .btn{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);color:#fff;min-width:118px}
