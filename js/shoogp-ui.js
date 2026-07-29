@@ -734,54 +734,22 @@ function fitFrame(card){
     }
   }
 }
-/* ═══ فنُّ زرِّ التنقّل: SVG مُضمَّنٌ للقشرةِ الحجرية، وصورةُ PNG لغيرِها ═══
-   المادةُ ذاتُ القشرةِ (العلومُ اليوم) لا تُشيرُ إلى `btn-next-prev.png` إطلاقاً —
-   لا عنصرَ `<img>` يُنشَأُ لها أصلاً (فالصورةُ لا تُحمَّل، لا تُخفى فحسب). والملفُّ
-   باقٍ في المستودعِ تستعملُه بقيةُ المواد.
-   السهمُ رأسُ سهمٍ بسيطٌ (‏`path` واحد) يرثُ لونَ الحبرِ الحجريِّ عبرَ `fill`
-   في CSS، ويُعكَسُ لـ«التالي» بـ`scaleX(-1)` كما كانتِ الصورةُ تُعكَس. */
-function navArt(){
-  /* مصدرُ الحقيقةِ الوحيد: هل صنفُ القشرةِ موضوعٌ فعلاً على #questionList الآن؟
-     (يضعُه ترقيعُ openLesson من skinFor) — فلا منطقَ مادةٍ مكرّرٌ هنا. */
-  var q=document.getElementById('questionList');
-  var on=q && allSkinClasses().some(function(c){ return q.classList.contains(c); });
-  return on
-    ? '<svg class="nav-ic" viewBox="0 0 24 24" aria-hidden="true">'+
-      '<path d="M9.3 3.6a1.6 1.6 0 0 1 2.3 0l7.2 7.3a1.6 1.6 0 0 1 0 2.2l-7.2 7.3a1.6 1.6 0 1 1-2.3-2.2L15.4 12 9.3 5.8a1.6 1.6 0 0 1 0-2.2Z"/>'+
-      '</svg>'
-    : '<img src="images/ui/btn-next-prev.png" alt="">';
-}
-/* ═══ فصلُ رمزِ الزرِّ عن نصِّه (تحقّق/إعادة) — شرطُ «اللونُ ليس الفارقَ الوحيد» ═══
-   نصُّ الزرِّ في app.js «تحقّق ✔» و«إعادة ↺»: الرمزُ جزءٌ من عقدةِ النصِّ فلا يمكنُ
-   تكبيرُه أو تمييزُه بـCSS وحدَه. نلفُّه في عنصرٍ خاصٍّ (كما فُعِلَ بنصِّ التنقّل)
-   فيصيرَ **ميداليةً واضحةً أكبرَ من النصّ**، فيميّزُه الطفلُ الذي لا يفرّقُ الألوان.
-   لا يمسُّ معالجاتِ النقر (‏`onclick` على الزرِّ نفسِه في app.js).
-   يعملُ للقشرةِ وحدَها؛ وبقيةُ المواد تبقى بأزرارِها المصوّرة. */
-var ACT_GLYPH={'btn-check':'✔','btn-reset':'↺'};
-function enhanceActions(){
-  var q=document.getElementById('questionList');
-  if(!q || !allSkinClasses().some(function(c){ return q.classList.contains(c); })) return;
-  q.querySelectorAll('.actions .btn-check:not([data-gly]), .actions .btn-reset:not([data-gly])')
-   .forEach(function(b){
-     b.dataset.gly='1';
-     var key=b.classList.contains('btn-check')?'btn-check':'btn-reset';
-     var gly=ACT_GLYPH[key];
-     var txt=(b.textContent||'').replace(gly,'').trim();
-     b.innerHTML='<span class="aglyph" aria-hidden="true">'+gly+'</span>'+
-                 '<span class="acap">'+txt+'</span>';
-   });
-}
+/* ═══ أزرارُ التنقّل: صورةُ btn-next-prev.png كما كانت (قرارُ المالك) ═══
+   **استثناءٌ نهائيّ:** الشاراتُ وأزرارُ التنقّلِ وتحقّق/إعادة **خارجَ التعميمِ
+   الحجريّ**، لأنّ الأسلوبَ الحجريَّ مقصودٌ **داخلَ حاويةِ السؤال (`.qwin`) وحدَها**.
+   فأُزيلَ توليدُ السهمِ SVG وعادَ عنصرُ `<img>` لكلِّ المواد بلا استثناء،
+   وأُزيلَ فصلُ رمزِ «تحقّق/إعادة» فعادَ الرمزُ في عقدةِ نصِّ الزرِّ كما يكتبُه app.js. */
 function enhanceNav(){
   frameize();
-  enhanceActions();
-  var art=navArt();
   document.querySelectorAll('.qnav .qprev:not([data-img])').forEach(function(b){
     b.dataset.img='1'; b.classList.add('nav-btn','nav-prev');
-    b.innerHTML=art+'<span class="ncap">السابق</span>';
+    b.innerHTML='<img src="images/ui/btn-next-prev.png" alt="">'+
+                '<span class="ncap">السابق</span>';
   });
   document.querySelectorAll('.qnav .qnext:not([data-img])').forEach(function(b){
     b.dataset.img='1'; b.classList.add('nav-btn','nav-next');
-    b.innerHTML=art+'<span class="ncap">التالي</span>';
+    b.innerHTML='<img src="images/ui/btn-next-prev.png" alt="">'+
+                '<span class="ncap">التالي</span>';
   });
 }
 /* يضبط البطاقة الظاهرة فقط، مع حارس يمنع حلقة المراقب (كتابتنا للأنماط

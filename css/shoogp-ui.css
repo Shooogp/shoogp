@@ -10,12 +10,17 @@
 /* ═══════════════════════════════════════════════════════════════════
    ⓪ الحدُّ الأدنى لخطوطِ العناصرِ التفاعلية: **18px** (§٨) — قاعدةُ مقروئيةٍ
    لا كسوة، فتسري على **كلِّ موادِّ النظام** لا العلومَ وحدَها.
-   كانت مخروقةً في ستّةِ عناصرَ (مقيسةً من الإعلانِ لا من العرض):
-     .qtype 14.4 · .qprogress 15.68 · .btn-check 15.36 · .btn-reset 15.04
-     · نصُّ التنقّل (.ncap) 16 · .qfinish 16 · .cswatch-name 16
-   وتُرفَعُ معها **أوعيةُ الشاراتِ المصوّرة** (ارتفاعاً وحشوةً) وإلا اقتُصَّ النصُّ
-   الأكبرُ داخلَ صورةٍ ثابتةِ الارتفاع. (‏`.grp-drop` و`.grp-h` مستثنيان: الأولُ
-   وعاءٌ بلا نصٍّ خاصٍّ به، والثاني مرفوعٌ أصلاً بـ`max(18px,…)`.)
+   يُطبَّقُ اليوم على: `.qfinish` و`.cswatch`/`.cswatch-name`.
+   (‏`.grp-drop` و`.grp-h` مستثنيان: الأولُ وعاءٌ بلا نصٍّ خاصٍّ به، والثاني
+   مرفوعٌ أصلاً بـ`max(18px,…)`.)
+
+   ⚠️ **استثناءٌ نهائيٌّ بقرارِ المالك — ستّةُ عناصرَ خارجَ هذا الحدِّ عمداً:**
+   `.qnum` و`.qtype` و`.qprogress` وزرّا التنقّل و`.btn-check` و`.btn-reset`.
+   خطوطُها تبقى 18.24/14.4/15.68/16/15.36/15.04px، وأوعيتُها بمقاساتِها الأصلية
+   (46/54/42/66/84/74px)، وصورُها PNG كما هي. **السبب:** هذه العناصرُ **خارجَ
+   حاويةِ السؤال `.qwin`**، ونصُّها مرسومٌ **فوقَ صورةٍ ثابتةِ الأبعاد**، فرفعُ الخطِّ
+   يستلزمُ تكبيرَ الصورةِ وتغييرَ هويةِ الواجهة. راجعْ §٨ في مهارةِ shoogp-ui.
+   **لا تُدرَجْ في أيِّ تعميمٍ لاحقٍ للحدِّ الأدنى ولا للأسلوبِ الحجريّ.**
    ═══════════════════════════════════════════════════════════════════ */
 :root{ --ui-min-font:18px; }
 
@@ -27,8 +32,8 @@
 .shoogp-ui .actions .btn-check:hover{
   background:url('../images/ui/btn-check.png') no-repeat center / contain !important;
   border:none !important; box-shadow:none !important; border-radius:0;
-  height:92px; aspect-ratio:842/816; width:auto; padding:10px 0 0 !important; min-width:0;
-  color:#fff; font-weight:800; font-size:var(--ui-min-font);   /* كان .96rem = 15.36px */
+  height:84px; aspect-ratio:842/816; width:auto; padding:9px 0 0 !important; min-width:0;
+  color:#fff; font-weight:800; font-size:.96rem;   /* استثناءُ المالك — خارجَ حدِّ 18px */
   text-shadow:0 2px 4px rgba(25,90,15,.8), 0 0 8px rgba(25,90,15,.45);
   filter:drop-shadow(0 2px 3px rgba(0,0,0,.22));
   transition:transform .18s, filter .2s;
@@ -44,8 +49,8 @@
 .shoogp-ui .actions .btn-reset:hover{
   background:url('../images/ui/btn-retry.png') no-repeat center / contain !important;
   border:none !important; box-shadow:none !important; border-radius:0;
-  height:84px; aspect-ratio:1056/785; width:auto; padding:0 24px 0 0 !important; min-width:0;
-  color:#fff; font-weight:800; font-size:var(--ui-min-font);   /* كان .94rem = 15.04px */
+  height:74px; aspect-ratio:1056/785; width:auto; padding:0 22px 0 0 !important; min-width:0;
+  color:#fff; font-weight:800; font-size:.94rem;   /* استثناءُ المالك — خارجَ حدِّ 18px */
   text-shadow:0 2px 4px rgba(0,45,85,.85), 0 0 8px rgba(0,45,85,.5);
   filter:drop-shadow(0 2px 3px rgba(0,0,0,.22));
   transition:transform .18s, filter .2s;
@@ -64,7 +69,7 @@
 .qnav .nav-btn,
 .qnav .nav-btn:hover:not(:disabled){
   position:relative; background:none !important; border:none !important;
-  box-shadow:none !important; height:76px; width:auto; padding:0; min-width:0;
+  box-shadow:none !important; height:66px; width:auto; padding:0; min-width:0;
   transition:transform .18s, filter .2s;
 }
 .qnav .nav-btn img{
@@ -75,14 +80,12 @@
 .qnav .nav-next img{transform:scaleX(-1)}
 .qnav .nav-btn .ncap{
   position:absolute; top:50%; transform:translateY(-53%);
-  text-align:center; color:#fff; font-weight:800; font-size:var(--ui-min-font);  /* كان 1rem = 16px */
+  text-align:center; color:#fff; font-weight:800; font-size:1rem;  /* استثناءُ المالك — خارجَ حدِّ 18px */
   pointer-events:none; font-family:'Tajawal',sans-serif;
   text-shadow:0 2px 4px rgba(150,70,5,.85), 0 0 8px rgba(150,70,5,.4);
 }
-.qnav .nav-prev .ncap{left:14px; right:52px}   /* السهم في يمين الصورة الأصلية */
-.qnav .nav-next .ncap{left:52px; right:14px}   /* وبعد العكس في يسارها */
-/* الزرُّ نفسُه أيضاً 18px (لا نصُّه وحدَه) فلا يرثُ شيءٌ داخلَه 16px */
-.shoogp-ui .qnav .nav-btn{font-size:var(--ui-min-font)}
+.qnav .nav-prev .ncap{left:12px; right:46px}   /* السهم في يمين الصورة الأصلية */
+.qnav .nav-next .ncap{left:46px; right:12px}   /* وبعد العكس في يسارها */
 /* «إنهاء» ونصُّ عيّناتِ الألوان: رُفِعا إلى الحدِّ الأدنى كذلك */
 .shoogp-ui .qnav .qfinish{font-size:var(--ui-min-font); min-height:60px}
 .shoogp-ui .qwin :is(.cswatch,.cswatch-name){font-size:var(--ui-min-font)}
@@ -109,10 +112,10 @@
    (إزاحة يسارية بسيطة كي لا يزاحم زخرفة النجمة والكوكب في طرفها) */
 .shoogp-ui .qcard .qtype{
   display:inline-flex; align-items:center; justify-content:center;
-  height:66px; aspect-ratio:1657/511; width:auto; padding:0 10px 0 44px;
+  height:54px; aspect-ratio:1657/511; width:auto; padding:0 8px 0 36px;
   white-space:nowrap;
   background:url('../images/ui/badge-qtype.png') no-repeat center / contain;
-  color:#fff; font-weight:800; font-size:var(--ui-min-font);   /* كان .9rem = 14.4px */
+  color:#fff; font-weight:800; font-size:.9rem;   /* استثناءُ المالك — خارجَ حدِّ 18px */
   text-shadow:0 2px 3px rgba(0,40,70,.75);
   filter:drop-shadow(0 1px 2px rgba(0,0,0,.22));
 }
@@ -129,9 +132,9 @@
 /* ⑦ مؤشر التقدّم (٧٥٪): نفس كبسولة الرقم 9-slice (progress-pill.png غير متوفر بعد) */
 .shoogp-ui .qprogress{
   display:inline-flex; align-items:center; justify-content:center;
-  height:52px; aspect-ratio:2096/534; width:auto; padding:0;
+  height:42px; aspect-ratio:2096/534; width:auto; padding:0;
   background:url('../images/ui/badge-qnum.png') no-repeat center / contain;
-  color:#fff; font-weight:800; font-size:var(--ui-min-font);   /* كان .98rem = 15.68px */
+  color:#fff; font-weight:800; font-size:.98rem;   /* استثناءُ المالك — خارجَ حدِّ 18px */
   text-shadow:0 2px 3px rgba(0,40,70,.75);
   filter:drop-shadow(0 1px 2px rgba(0,0,0,.22));
   margin-inline:auto;
@@ -856,155 +859,6 @@
 .shoogp-ui .qwin .target{
   min-height:60px; font-size:max(18px, 1rem) !important;
   display:flex; align-items:center; justify-content:center;
-}
-
-/* ═══════════════════════════════════════════════════════════════════
-   دفعة ٢/٤ — الشاراتُ وأزرارُ التنقّل: حجرٌ بالكود بدلَ صورِ PNG
-   النطاقُ **خارجَ `.qwin`**: الشارتانِ في `.qhead` (ابنُ `.qcard`)، والتقدّمُ
-   وأزرارُ التنقّلِ في `.qnav` (ابنُ `#questionList` الحاملِ لصنفِ القشرة) —
-   فلا يبلغُها محدِّدُ `.qwin` مهما وُسِّع؛ لذا محدِّداتٌ مستقلّةٌ هنا.
-   وزنُها (‏`.shoogp-ui.skin-rocky` صنفان + الباقي) يغلبُ القواعدَ المصوّرةَ
-   أعلاه (‏`.shoogp-ui …` صنفٌ واحد) **بلا `!important`**.
-   **العلومُ وحدَها:** `skin-rocky` لا تُوضَع إلا لمادةِ العلوم، فتبقى الرياضياتُ
-   على شاراتِها المصوّرة. وملفّاتُ PNG باقيةٌ في المستودعِ بلا إشارةٍ من العلوم.
-   ═══════════════════════════════════════════════════════════════════ */
-.shoogp-ui.skin-rocky :is(.qcard .qnum, .qcard .qtype, .qprogress, .qnav .nav-btn){
-  /* الوصفةُ تُعلَنُ على العنصرِ نفسِه (فخُّ §٦: المتغيّرُ المركَّبُ يُستبدَلُ عندَ مُعلِنِه) */
-  --rk-face:
-    var(--rk-grain) 0 0/190px 96px repeat,
-    linear-gradient(180deg, var(--rk-hi) 0%, var(--rk-mid) 46%, var(--rk-lo) 100%) 0 0/100% 100% no-repeat;
-  background:var(--rk-face);
-  border:2px solid var(--rk-edge);
-  border-bottom-color:var(--rk-edge-dk);
-  border-radius:999px;
-  color:var(--rk-ink);
-  text-shadow:0 1px 0 rgba(255,255,255,.55);
-  filter:none;
-  box-shadow:
-    inset 0 2px 0 rgba(255,255,255,.72),
-    inset 0 -3px 0 rgba(150,112,52,.28),
-    0 2px 0 var(--rk-lip),
-    0 4px 9px var(--rk-cast);
-}
-/* الشارتانِ: كبسولةٌ بحشوةٍ مريحةٍ بدلَ نسبةِ أبعادِ الصورة (النصُّ يحكمُ العرضَ الآن) */
-.shoogp-ui.skin-rocky .qcard :is(.qnum,.qtype){
-  aspect-ratio:auto; height:auto; min-height:44px;
-  padding:8px 20px; gap:8px;
-}
-/* نجيمةٌ صغيرةٌ في صدرِ الشارة — بديلُ زخرفةِ الصورةِ الأصلية (SVG مُضمَّن) */
-.shoogp-ui.skin-rocky .qcard :is(.qnum,.qtype)::before{
-  content:""; flex:0 0 auto; width:17px; height:17px;
-  background:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M8 0C8.7 4.6 11.4 7.3 16 8 11.4 8.7 8.7 11.4 8 16 7.3 11.4 4.6 8.7 0 8 4.6 7.3 7.3 4.6 8 0Z' fill='%23a3823f'/></svg>") center/contain no-repeat;
-  opacity:.85;
-}
-.shoogp-ui.skin-rocky .qprogress{
-  aspect-ratio:auto; height:auto; min-height:44px; padding:8px 22px;
-}
-/* أزرارُ التنقّل: كبسولةٌ حجريةٌ والسهمُ SVG مُضمَّنٌ يحقنُه enhanceNav.
-   **`!important` لازمٌ هنا وحدَه:** القاعدةُ الأساسيةُ للتنقّل تفرضُ
-   `background/border/box-shadow: none !important` (كانت تُفرِّغُ الزرَّ ليظهرَ
-   الـ`<img>` وحدَه)، فلا يكفي الوزنُ الأعلى لمقابلتِها. (قِيسَ حيّاً: بقيَ الزرُّ
-   بلا وجهٍ حجريٍّ حتى أُضيفت.) */
-.shoogp-ui.skin-rocky .qnav .nav-btn{
-  height:auto; min-height:60px; padding:10px 22px;
-  display:inline-flex; align-items:center; gap:10px;
-  transition:transform .14s ease;
-  background:var(--rk-face) !important;
-  border:2px solid var(--rk-edge) !important;
-  border-bottom-color:var(--rk-edge-dk) !important;
-  box-shadow:
-    inset 0 2px 0 rgba(255,255,255,.72),
-    inset 0 -3px 0 rgba(150,112,52,.28),
-    0 2px 0 var(--rk-lip),
-    0 4px 9px var(--rk-cast) !important;
-}
-.shoogp-ui.skin-rocky .qnav .nav-btn .nav-ic{
-  flex:0 0 auto; width:26px; height:26px; display:block;
-  fill:var(--rk-ink); opacity:.92;
-}
-/* «التالي» سهمُه إلى اليسار (تقدّمٌ في الواجهةِ العربية) و«السابق» إلى اليمين */
-.shoogp-ui.skin-rocky .qnav .nav-next .nav-ic{transform:scaleX(-1)}
-/* النصُّ عادَ عنصرَ flex عادياً (كان مطلقَ الموضعِ فوقَ الصورة) */
-.shoogp-ui.skin-rocky .qnav .nav-btn .ncap{
-  position:static; transform:none; left:auto; right:auto;
-  color:var(--rk-ink); text-shadow:0 1px 0 rgba(255,255,255,.55);
-}
-.shoogp-ui.skin-rocky .qnav .nav-btn:hover:not(:disabled){
-  transform:translateY(-2px); filter:none !important;
-  box-shadow:
-    inset 0 2px 0 rgba(255,255,255,.85),
-    inset 0 -3px 0 rgba(150,112,52,.26),
-    0 4px 0 var(--rk-lip),
-    0 8px 15px rgba(60,40,15,.28) !important;
-}
-.shoogp-ui.skin-rocky .qnav .nav-btn:active:not(:disabled){
-  transform:translateY(2px) scale(.995);
-  box-shadow:inset 0 3px 7px rgba(120,86,36,.42), 0 1px 0 var(--rk-lip) !important;
-}
-/* ═══════════════════════════════════════════════════════════════════
-   دفعة ٣/٤ — زرّا تحقّق/إعادة: أساسٌ حجريٌّ واحدٌ + مسحةٌ لونيةٌ + رمزٌ بارز
-   **اللونُ ليس الفارقَ الوحيد:** الرمزُ (✔/↺) في ميداليةٍ دائريةٍ بحجمِ **26px**
-   — أكبرَ من نصِّ الزرِّ (18px) وأكبرَ ممّا كان عليه قبلَ التحويل (15.36/15.04)
-   — فيميّزُ الطفلُ الزرَّينِ بالشكلِ ولو لم يفرّقِ الأخضرَ من الأزرق.
-   المسحةُ اللونيةُ **بتبديلِ `--rk-*` فقط** (لا تكرارَ لوصفةِ الوجه).
-   `!important` لازمٌ: القواعدُ المصوّرةُ الأصليةُ تفرضُ background/border/box-shadow
-   بـ`!important` لتُظهرَ صورةَ الزرّ.
-   ═══════════════════════════════════════════════════════════════════ */
-.shoogp-ui.skin-rocky .actions :is(.btn-check,.btn-reset){
-  --rk-face:
-    var(--rk-grain) 0 0/190px 96px repeat,
-    linear-gradient(180deg, var(--rk-hi) 0%, var(--rk-mid) 46%, var(--rk-lo) 100%) 0 0/100% 100% no-repeat;
-  background:var(--rk-face) !important;
-  border:2px solid var(--rk-edge) !important;
-  border-bottom-color:var(--rk-edge-dk) !important;
-  border-radius:999px !important;
-  aspect-ratio:auto !important; height:auto !important; width:auto !important;
-  min-height:60px;                        /* الحدُّ الأدنى التفاعليّ */
-  padding:10px 26px !important;
-  display:inline-flex; align-items:center; gap:12px;
-  color:var(--rk-ink) !important;
-  font-size:var(--ui-min-font); font-weight:800;
-  text-shadow:0 1px 0 rgba(255,255,255,.55) !important;
-  filter:none !important;
-  box-shadow:
-    inset 0 2px 0 rgba(255,255,255,.72),
-    inset 0 -3px 0 rgba(150,112,52,.28),
-    0 3px 0 var(--rk-lip),
-    0 6px 12px var(--rk-cast) !important;
-  transition:transform .14s ease !important;
-}
-/* الميداليةُ: قرصٌ فاتحٌ يحملُ الرمزَ — الفارقُ الشكليُّ المستقلُّ عن اللون */
-.shoogp-ui.skin-rocky .actions :is(.btn-check,.btn-reset) .aglyph{
-  flex:0 0 auto; width:34px; height:34px; border-radius:50%;
-  display:grid; place-items:center;
-  font-size:26px; line-height:1; font-weight:900;
-  background:rgba(255,255,255,.62);
-  box-shadow:inset 0 0 0 2px var(--rk-edge-dk), 0 1px 2px rgba(60,40,15,.28);
-  text-shadow:none;
-}
-.shoogp-ui.skin-rocky .actions :is(.btn-check,.btn-reset) .acap{white-space:nowrap}
-/* مسحةُ «تحقّق» الخضراء ومسحةُ «إعادة» الزرقاء — متغيّراتٌ لا قواعدُ مكرّرة */
-.shoogp-ui.skin-rocky .actions .btn-check{
-  --rk-hi:#eef8dc; --rk-mid:#cfeaa6; --rk-lo:#a9d477;
-  --rk-edge:#7cb051; --rk-edge-dk:#5c8c36; --rk-ink:#22380b;
-  --rk-lip:rgba(92,140,54,.60); --rk-cast:rgba(40,80,20,.26);
-}
-.shoogp-ui.skin-rocky .actions .btn-reset{
-  --rk-hi:#e9f3fb; --rk-mid:#c3dcf1; --rk-lo:#96c4e6;
-  --rk-edge:#5f97c4; --rk-edge-dk:#3f74a0; --rk-ink:#123049;
-  --rk-lip:rgba(63,116,160,.60); --rk-cast:rgba(15,50,80,.26);
-}
-.shoogp-ui.skin-rocky .actions :is(.btn-check,.btn-reset):hover:not(:disabled){
-  transform:translateY(-2px) !important;
-  box-shadow:
-    inset 0 2px 0 rgba(255,255,255,.85),
-    inset 0 -3px 0 rgba(150,112,52,.26),
-    0 5px 0 var(--rk-lip),
-    0 10px 18px var(--rk-cast) !important;
-}
-.shoogp-ui.skin-rocky .actions :is(.btn-check,.btn-reset):active:not(:disabled){
-  transform:translateY(3px) scale(.995) !important;
-  box-shadow:inset 0 3px 7px rgba(120,86,36,.38), 0 1px 0 var(--rk-lip) !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════════
