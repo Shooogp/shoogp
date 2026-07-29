@@ -982,3 +982,297 @@
   padding:10px 26px;
 }
 
+
+/* ═══════════════════════════════════════════════════════════════════
+   ★ قشرةُ الرياضيات: «المعدنُ الفضّيّ» (skin-metal) ★
+   كسوةٌ بالكودِ وحدَه (CSS/تدرّجات — **بلا أيِّ صورةٍ خارجية**) للعناصرِ التفاعلية
+   **داخلَ `.qwin` في كتابِ الرياضياتِ فقط**. مصدرُ الصنفِ نفسُ منطقِ القشور
+   (`SUBJECT_SKINS.math` ← `lessonSubject`)، فلا مصدرَ ثانٍ للحقيقة، والعلومُ
+   (`skin-rocky`) لا تتأثّرُ إطلاقاً.
+
+   **النطاق (١٠٦ عنصراً في ٢٤ سؤالاً):** `.opt` · `.tf` · `.excl-opt` · `.mitem` ·
+   `.chip` (ومنه `.chip.mmchip`) · `.seqitem` · `.blank` · `.target` · `.grp-drop` ·
+   `.cswatch`.
+   **خارجَ النطاقِ عمداً:** `.grp` (حاويةٌ لا عنصرٌ تفاعليّ) و`.cpart` (جزءٌ من رسمِ
+   سؤالِ التلوينِ وتلوينُه وظيفةُ السؤال)، وكلُّ ما هو خارجَ `.qwin` (الشارتان،
+   التنقّل، العدّاد، الرجوع، تحقّق/إعادة — استثناءُ المالكِ §٨ بصورِها PNG).
+
+   **البناء (لوحةُ المالكِ حرفياً):** تدرّجٌ رأسيٌّ للجسم #f7f9f7←#d4d9db←
+   #c6cdd0←#a2acb4 · خطُّ تشطيبٍ داخليٌّ 1px #eaeced تحتَ الحافّةِ العليا ·
+   حافّةٌ داكنةٌ #525d6e · حدٌّ خارجيٌّ كحليٌّ 3px بتدرّج #023650←#092d3f
+   (بتقنيةِ padding-box/border-box كي يحترمَ الاستدارة) · غطاءانِ كحليّانِ على
+   الطرفينِ بخطوطِ تشطيبٍ رأسية · مصباحانِ سماويانِ #01b9de أعلى منتصفِ العنصرِ
+   وأسفلَه · نصٌّ #1b1b1b والرمزُ (✓/✗) بعدَه. لا زخرفةَ سواها.
+
+   **كلُّ ذلك في وصفةٍ واحدةٍ (--mt-face) تُعلَنُ على العنصرِ نفسِه** — لا على
+   الحاوية: المتغيّرُ المركَّبُ يُستبدَلُ داخلُه عندَ مُعلِنِه ثمّ يُورَثُ نصّاً
+   مُستبدَلاً، فلو أُعلِنَ على الحاويةِ لتجمّدَ على ألوانِ الحالةِ العادية ولما
+   لوّنتْه حالتا الصواب/الخطأ (فخٌّ موثّقٌ في §٦ من المهارة).
+   ═══════════════════════════════════════════════════════════════════ */
+.shoogp-ui.skin-metal{
+  /* ── لوحةُ المعدن (البند ٤ من طلبِ المالك — أرقامٌ لا تُقارَب) ── */
+  --mt-hi:#f7f9f7;        /* إضاءةٌ عليا */
+  --mt-hi2:#d4d9db;       /* نهايةُ الإضاءةِ العليا */
+  --mt-mid:#c6cdd0;       /* وسطُ الجسم */
+  --mt-lo:#a2acb4;        /* أسفلُ الجسم */
+  --mt-finish:#eaeced;    /* خطُّ التشطيبِ الداخليّ */
+  --mt-edge:#525d6e;      /* الحافّةُ الداكنة */
+  --mt-cap-a:#023650;     /* الأغطيةُ والحدُّ الخارجيّ — كحليٌّ فاتح */
+  --mt-cap-b:#092d3f;     /* … وكحليٌّ غامق */
+  --mt-ink:#1b1b1b;       /* لونُ النصّ */
+  --mt-lamp:#01b9de;      /* المصباحانِ السماويان */
+  --mt-lamp-h:rgba(1,185,222,.55);
+  --mt-cast:rgba(9,45,63,.30);
+  --mt-glow:0 0 0 rgba(0,0,0,0);   /* توهّجُ الحالة — شفّافٌ عادةً */
+  --mt-cap-w:14px;        /* عرضُ الغطاءِ الطرفيّ */
+
+  /* ═══ الحدُّ الأدنى المعروضُ (البند ٦) — تعويضٌ بالحساب لا بالتقدير ═══
+     أسوأُ زومٍ مقيسٍ في الرياضيات **0.774**، فالمعروضُ = المُعلَن × 0.774:
+       الارتفاع: 60 ÷ 0.774 = 77.52 ← **78px**
+       الخطّ:    18 ÷ 0.774 = 23.26 ← **23.5px**
+     (fit.js لم يُمَسّ إطلاقاً — أيُّ فارقٍ متبقٍّ يُذكَرُ بالرقمِ في التقرير.) */
+  --mt-min-h:78px;
+  --mt-min-f:23.5px;
+}
+
+/* أشرطةُ الخيارات تتبعُ عرضَ النافذةِ الحيّة (كما في قشرةِ العلوم) */
+.shoogp-ui.skin-metal .qwin .opts{max-width:none}
+
+/* ═════ ① الوجهُ المعدنيُّ — المجموعةُ كاملةً بوصفةٍ واحدة ═════
+   :where() وزنُه صفر، فتبقى المجموعةُ عندَ وزنِ `.shoogp-ui.skin-metal .qwin`
+   (يكفي لغَلَبةِ الأزرقِ الزجاجيِّ الواقعِ قبلَها)، وتغلبُها الاستثناءاتُ الأخصُّ
+   أدناه طبيعياً — بخلافِ :is() الذي يرثُ أعلى وزنِ وسائطِه فيبتلعُها. */
+/* ── مقاديرُ الوجهِ (طبقاتُ التدرّجِ الخام) ──
+   تُعلَنُ على **كلِّ** أعضاءِ الكسوةِ ومنهم `.grp-drop`، لأنّ المتغيّرَ المركَّبَ
+   يُستبدَلُ عندَ مُعلِنِه: فلو بقيت هذه المقاديرُ محصورةً في مجموعةِ «الوجهِ البارز»
+   لخرجَ `.grp-drop` (وهو مستقبِلٌ غائرٌ خارجَها) بخلفيةٍ **شفّافةٍ لاغية** — وهو
+   ما وقعَ فعلاً وقُيسَ (`background-color: rgba(0,0,0,0)`) قبلَ هذا الفصل. */
+.shoogp-ui.skin-metal .qwin :where(.opt,.tf,.excl-opt,.mitem,.chip,.seqitem,
+                                   .blank,.target,.cswatch,.grp-drop){
+  /* الوجه: مصباحان (أعلى/أسفل) ← غطاءان بخطوطِ تشطيبٍ رأسية ← جسمُ التدرّج.
+     الطبقةُ الأخيرةُ border-box هي حدُّ التدرّجِ الكحليّ، وما قبلَها padding-box
+     كي لا يطمسَها — فيُرسَمُ حدٌّ متدرّجٌ **يحترمُ border-radius** (خلافاً
+     لـborder-image الذي يتجاهلُ الاستدارة). */
+  --mt-lampg:radial-gradient(ellipse at center,
+              var(--mt-lamp) 0 52%, var(--mt-lamp-h) 68%, rgba(1,185,222,0) 100%);
+  --mt-caphair:repeating-linear-gradient(90deg,
+              rgba(255,255,255,.30) 0 1px, rgba(0,0,0,.26) 1px 2px, rgba(255,255,255,0) 2px 4px);
+  --mt-capbase:linear-gradient(180deg, var(--mt-cap-a) 0%, var(--mt-cap-b) 100%);
+  --mt-body:linear-gradient(180deg, var(--mt-hi) 0%, var(--mt-hi2) 20%,
+                                    var(--mt-mid) 55%, var(--mt-lo) 100%);
+  --mt-body-rev:linear-gradient(0deg, var(--mt-hi) 0%, var(--mt-hi2) 20%,
+                                      var(--mt-mid) 55%, var(--mt-lo) 100%);
+}
+/* ── الوجهُ البارزُ + خصائصُ الزرّ (المستقبِلاتُ خارجَها — لها وجهُها الغائرُ أدناه) ── */
+.shoogp-ui.skin-metal .qwin :where(.opt,.tf,.excl-opt,.mitem,.chip,.seqitem,
+                                   .blank,.target,.cswatch){
+  --mt-face:
+    var(--mt-lampg)   50% 5px/24px 6px no-repeat padding-box,
+    var(--mt-lampg)   50% calc(100% - 5px)/24px 6px no-repeat padding-box,
+    var(--mt-caphair) 100% 0/var(--mt-cap-w) 100% no-repeat padding-box,
+    var(--mt-capbase) 100% 0/var(--mt-cap-w) 100% no-repeat padding-box,
+    var(--mt-caphair) 0 0/var(--mt-cap-w) 100% no-repeat padding-box,
+    var(--mt-capbase) 0 0/var(--mt-cap-w) 100% no-repeat padding-box,
+    var(--mt-body)    0 0/100% 100% no-repeat padding-box,
+    var(--mt-capbase) 0 0/100% 100% no-repeat border-box;
+  --mt-face-press:
+    var(--mt-lampg)   50% 5px/24px 6px no-repeat padding-box,
+    var(--mt-lampg)   50% calc(100% - 5px)/24px 6px no-repeat padding-box,
+    var(--mt-caphair) 100% 0/var(--mt-cap-w) 100% no-repeat padding-box,
+    var(--mt-capbase) 100% 0/var(--mt-cap-w) 100% no-repeat padding-box,
+    var(--mt-caphair) 0 0/var(--mt-cap-w) 100% no-repeat padding-box,
+    var(--mt-capbase) 0 0/var(--mt-cap-w) 100% no-repeat padding-box,
+    var(--mt-body-rev) 0 0/100% 100% no-repeat padding-box,
+    var(--mt-capbase) 0 0/100% 100% no-repeat border-box;
+  /* السماكة: حافّةٌ داكنةٌ 1px + خطُّ تشطيبٍ 1px تحتَها + قاعٌ داخليٌّ + ظلٌّ مُلقى */
+  --mt-shadow:
+    inset 0 0 0 1px var(--mt-edge),
+    inset 0 2px 0 -1px var(--mt-finish),
+    inset 0 -7px 10px -8px rgba(30,44,58,.55),
+    0 3px 7px var(--mt-cast),
+    var(--mt-glow);
+  --mt-shadow-hover:
+    inset 0 0 0 1px var(--mt-edge),
+    inset 0 2px 0 -1px #ffffff,
+    inset 0 -7px 10px -8px rgba(30,44,58,.45),
+    0 6px 13px var(--mt-cast),
+    var(--mt-glow);
+  --mt-shadow-press:
+    inset 0 0 0 1px var(--mt-edge),
+    inset 0 3px 6px rgba(30,44,58,.45),
+    0 1px 2px var(--mt-cast),
+    var(--mt-glow);
+
+  background:var(--mt-face) !important;
+  border:3px solid transparent !important;
+  border-image:none !important;
+  border-style:solid !important;            /* يُلغي الحدَّ المتقطّعَ الموروث */
+  border-radius:14px !important;            /* زوايا الصورةِ المرجعية */
+  color:var(--mt-ink) !important;
+  font-weight:800 !important;
+  text-shadow:0 1px 0 rgba(255,255,255,.60) !important;
+  filter:none !important;
+  box-shadow:var(--mt-shadow) !important;
+  /* الحدودُ الدنيا المعوَّضةُ حسابياً (أعلاه) */
+  min-height:var(--mt-min-h);
+  font-size:var(--mt-min-f) !important;
+  display:flex; align-items:center; gap:10px;
+  padding:12px calc(var(--mt-cap-w) + 12px) !important;   /* لا يركبُ النصُّ الغطاءين */
+  /* الحركةُ على transform وحدَه: كروم لا يُعيدُ حلَّ خاصيةٍ متحوّلةٍ حين يتغيّرُ
+     المتغيّرُ المخصّصُ وحدَه، فيَعلَقُ الظلُّ ولا يظهرُ التوهّج (فخٌّ موثّق §٦). */
+  transition:transform .14s ease !important;
+}
+/* حاويةُ الموضعِ — **بلا `.target`** إطلاقاً: هو position:absolute أصلاً فوقَ
+   صورةِ السؤال، وفرضُ relative يُعيدُه للتدفّقِ فينهارُ «السحبُ على صورة». */
+.shoogp-ui.skin-metal .qwin :where(.opt,.tf,.excl-opt,.mitem,.chip,.seqitem,
+                                   .blank,.cswatch){position:relative}
+
+/* ═════ ② فروقُ الشكلِ لكلِّ عائلة ═════ */
+.shoogp-ui.skin-metal .qwin .opt{justify-content:flex-start; text-align:start}
+.shoogp-ui.skin-metal .qwin :where(.tf,.excl-opt,.mitem,.chip,.blank,.target){
+  justify-content:center; text-align:center;
+}
+.shoogp-ui.skin-metal .qwin .seqitem{justify-content:flex-start}
+/* البطاقاتُ المحمولةُ تبقى بعرضِ نصِّها داخلَ صفِّها (لا تتمدّدُ كتلةً) */
+.shoogp-ui.skin-metal .qwin .chip{
+  display:inline-flex; cursor:grab;
+  padding:12px calc(var(--mt-cap-w) + 10px) !important;
+}
+/* `.mmchip` هو `.chip` نفسُه بصنفٍ ثانٍ (class="chip mmchip") — لا قاعدةَ كسوةٍ
+   ثانيةٍ له، هذه لضبطِ المقاسِ وحدَه (خاناتُ الخريطةِ ضيّقةٌ فيلزمُ حدٌّ أدنى للعرض). */
+.shoogp-ui.skin-metal .qwin .chip.mmchip{min-width:86px}
+.shoogp-ui.skin-metal .qwin .chip.used{opacity:.35; cursor:default}
+.shoogp-ui.skin-metal .qwin .chip.dragging{
+  cursor:grabbing;
+  transform:translateY(-4px) scale(1.06) !important;
+  box-shadow:var(--mt-shadow-hover) !important;
+}
+/* عيّناتُ الألوان: عمودٌ (دلوٌ فوقَ اسم) — و**لونُ الطلاءِ لا يتأثّرُ** لأنّه في
+   أيقونةِ الدلوِ لا في خلفيةِ الزرّ، فلا تضيعُ وظيفةُ الزرّ. */
+.shoogp-ui.skin-metal .qwin .cswatch{
+  flex-direction:column; justify-content:center; gap:4px;
+  border-radius:16px !important; padding:10px 14px !important;
+}
+.shoogp-ui.skin-metal .qwin .cswatch-name{font-size:var(--mt-min-f)}
+
+/* ═════ ③ المستقبِلاتُ: معدنٌ **غائر** (قاعدة «المحمول ≠ المستقبِل» §٧) ═════
+   نفسُ اللوحةِ والهوية، لكنّ الإضاءةَ **مقلوبة** (غامقٌ أعلى ← فاتحٌ أسفل) مع ظلٍّ
+   داخليٍّ وبلا ظلٍّ مُلقىً ولا مصابيح: فيُقرأُ «مكانٌ ينتظرُ شيئاً» لا زرّاً يُضغَط.
+   ويبقى الفارقُ متعدّدَ المحاور لا لوناً وحدَه: نمطُ الحدّ (متقطّع↔صلب) واتجاهُ
+   الإضاءةِ ووجودُ المصابيحِ والظلِّ المُلقى. */
+.shoogp-ui.skin-metal .qwin :is(.blank,.target):not(.filled):not(.correct):not(.wrong){
+  /* **لا طبقةَ `border-box` هنا** ولا حدَّ شفّاف: التدرّجُ الكحليُّ لو رُسِمَ تحتَ
+     الحدِّ لَملأَ فجواتِ التقطيعِ فبدا الحدُّ **صلباً**، فيسقطُ محورُ «نمطِ الحدّ»
+     من فوارقِ §٧ (قِيسَ بالنظرِ في معرضِ الحالات). فالخلفيةُ `padding-box` وحدَها
+     والحدُّ **متقطّعٌ بلونٍ صريح**، فتبقى الأربعةُ: نمطُ الحدّ + اتجاهُ الإضاءة +
+     غيابُ المصابيح + غيابُ الظلِّ المُلقى. */
+  background:
+    var(--mt-body-rev) 0 0/100% 100% no-repeat padding-box !important;
+  border:3px dashed #45566a !important;
+  box-shadow:
+    inset 0 0 0 1px var(--mt-edge),
+    inset 0 3px 8px rgba(30,44,58,.50) !important;
+  color:#2b3742 !important;
+  text-shadow:0 1px 0 rgba(255,255,255,.35) !important;
+}
+/* الفراغُ الفارغُ يبقى في تدفّقِ الجملةِ (لا كتلةً تكسرُ السطر) */
+.shoogp-ui.skin-metal .qwin .blank{display:inline-flex; vertical-align:middle}
+/* أثناءَ السحبِ فوقَ فراغٍ صالح: توهّجٌ سماويٌّ مرحّبٌ يقولُ «أفلتْ هنا» */
+.shoogp-ui.skin-metal .qwin :is(.blank,.target).over:not(.correct):not(.wrong){
+  box-shadow:
+    inset 0 0 0 1px var(--mt-edge),
+    inset 0 3px 8px rgba(30,44,58,.40),
+    0 0 0 3px rgba(1,185,222,.50),
+    0 0 16px rgba(1,185,222,.65) !important;
+}
+/* بعدَ الإفلاتِ يستقرُّ بارزاً (المكانُ اكتمل). قاعدةُ الزجاجِ الأخضرِ للفراغِ
+   الصحيحِ وزنُها أربعةُ أصناف (.qwin .blank.filled.correct) فتغلبُ المجموعة —
+   نُعيدُ الوجهَ المعدنيَّ بوزنٍ أعلى، واللونُ يأتي من متغيّراتِ الحالةِ أدناه. */
+.shoogp-ui.skin-metal .qwin :is(.blank.filled,.target.filled,
+                                .blank.filled.correct,.target.filled.correct,
+                                .blank.correct,.blank.wrong,.target.wrong){
+  background:var(--mt-face) !important;
+  border:3px solid transparent !important;
+  border-style:solid !important;
+  box-shadow:var(--mt-shadow) !important;
+  color:var(--mt-ink) !important;
+  cursor:grab;
+}
+/* صناديقُ التصنيف: صينيةٌ معدنيةٌ غائرةٌ (مستقبِلٌ كذلك) — وتصحيحُ ما طلبَه المالك:
+   الخطُّ كان **16px** (دونَ الحدّ) والزوايا **0**. */
+.shoogp-ui.skin-metal .qwin .grp-drop{
+  background:
+    var(--mt-body-rev) 0 0/100% 100% no-repeat padding-box,
+    var(--mt-capbase)  0 0/100% 100% no-repeat border-box !important;
+  border:3px solid transparent !important;
+  border-radius:14px !important;
+  box-shadow:
+    inset 0 0 0 1px var(--mt-edge),
+    inset 0 3px 8px rgba(30,44,58,.45) !important;
+  color:var(--mt-ink);
+  font-size:var(--mt-min-f);
+}
+.shoogp-ui.skin-metal .qwin .grp-drop.over{
+  box-shadow:
+    inset 0 0 0 1px var(--mt-edge),
+    inset 0 3px 8px rgba(30,44,58,.35),
+    0 0 0 3px rgba(1,185,222,.45) !important;
+}
+
+/* ═════ ④ الحالاتُ السبع ═════ */
+/* (٢) تمريرُ الماوس: إضاءةٌ أعلى + رفعٌ طفيف */
+.shoogp-ui.skin-metal .qwin :where(.opt,.tf,.excl-opt,.mitem,.chip,.seqitem,
+       .blank.filled,.target.filled,.cswatch):hover:not(:disabled):not(.matched):not(.used){
+  --mt-hi:#ffffff; --mt-hi2:#e4e9eb; --mt-mid:#d3dadd; --mt-lo:#b3bcc3;
+  transform:translateY(-2px);
+  box-shadow:var(--mt-shadow-hover) !important;
+}
+/* (٣) مضغوط: انعكاسُ التدرّجِ وغَورُ 1px */
+.shoogp-ui.skin-metal .qwin :where(.opt,.tf,.excl-opt,.mitem,.chip,.seqitem,
+       .blank.filled,.target.filled,.cswatch):active:not(:disabled):not(.matched):not(.used){
+  background:var(--mt-face-press) !important;
+  transform:translateY(1px);
+  box-shadow:var(--mt-shadow-press) !important;
+}
+/* (٤) مُختار: توهّجٌ سماويٌّ حولَ الحدّ (التوصيلُ وعيّنةُ اللون) */
+.shoogp-ui.skin-metal .qwin :is(.mitem.selected,.cswatch.sel){
+  --mt-glow:0 0 0 3px rgba(1,185,222,.55), 0 0 18px 2px rgba(1,185,222,.75);
+  transform:translateY(-1px);
+}
+/* (٥) صحيح: مسحةٌ خضراءُ **على المصابيحِ فقط** — المعدنُ كما هو */
+.shoogp-ui.skin-metal .qwin :is(.opt.correct,.tf.tf-correct,.excl-opt.correct,
+                                .mitem.matched,.chip.ok,.seqitem.correct,
+                                .blank.correct,.blank.filled.correct,.target.filled.correct){
+  --mt-lamp:#2fd07d;
+  --mt-lamp-h:rgba(47,208,125,.60);
+  --mt-glow:0 0 14px 1px rgba(47,208,125,.55);
+}
+/* (٦) خطأ: مسحةٌ حمراءُ على المصابيحِ فقط + اهتزازٌ لطيف */
+.shoogp-ui.skin-metal .qwin :is(.opt.wrong,.tf.tf-wrong,.excl-opt.wrong,.mitem.shake,
+                                .chip.no,.seqitem.wrong,.blank.wrong,.target.wrong){
+  --mt-lamp:#ff5c4d;
+  --mt-lamp-h:rgba(255,92,77,.60);
+  --mt-glow:0 0 14px 1px rgba(255,92,77,.50);
+  animation:cardShake .45s ease;
+}
+@media(prefers-reduced-motion:reduce){
+  .shoogp-ui.skin-metal .qwin :is(.opt.wrong,.tf.tf-wrong,.excl-opt.wrong,.mitem.shake,
+                                  .chip.no,.seqitem.wrong,.blank.wrong,.target.wrong){animation:none}
+}
+/* الرمزُ (✓/✗) بعدَ النصِّ — عقدةُ نصٍّ صرفةٌ بلا ميداليةٍ ولا أيِّ زخرفةٍ إضافية */
+.shoogp-ui.skin-metal .qwin :is(.opt,.tf,.excl-opt,.mitem,.chip,.seqitem):is(
+       .correct,.tf-correct,.ok,.matched,.wrong,.tf-wrong,.no)::after{
+  margin-inline-start:auto; flex:0 0 auto;
+  font-size:var(--mt-min-f); font-weight:900; line-height:1; text-shadow:none;
+}
+.shoogp-ui.skin-metal .qwin :is(.opt,.tf,.excl-opt,.mitem,.chip,.seqitem):is(
+       .correct,.tf-correct,.ok,.matched)::after{content:"✓"; color:#0e7a45}
+.shoogp-ui.skin-metal .qwin :is(.opt,.tf,.excl-opt,.mitem,.chip,.seqitem):is(
+       .wrong,.tf-wrong,.no)::after{content:"✗"; color:#b3271a}
+/* (٧) معطّل: تشبّعٌ منخفضٌ دونَ فقدانِ القراءة — والصحيحةُ تبقى بكاملِ وضوحِها */
+.shoogp-ui.skin-metal .qwin :is(.opt,.tf,.excl-opt,.aopt):disabled{
+  filter:saturate(.45) brightness(.98) !important; opacity:.92;
+}
+.shoogp-ui.skin-metal .qwin :is(.opt,.excl-opt).correct:disabled{
+  filter:none !important; opacity:1;
+}
