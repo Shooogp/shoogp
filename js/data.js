@@ -81,6 +81,9 @@ window.DATA_FALLBACK = {
       ]}
     ]},
     "g2-math": { book:"الرياضيات — الصف الثاني", units:[
+      { unit:"١أ: الأعداد", lessons:[
+        { title:"صناعة لوحة المائة (١-١)", file:"g2m-1-1", open:true }
+      ]},
       { unit:"٢أ: الأعداد والعمليات الحسابية", lessons:[
         { title:"العشرات والآحاد حتى ١٠٠ (١٢-١)", file:"g2m-12-1", open:true }
       ]}

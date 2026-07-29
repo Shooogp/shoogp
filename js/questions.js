@@ -10,6 +10,130 @@
    ═══════════════════════════════════════════════════════════════ */
 window.QUESTIONS = {
 
+  // الرياضيات/الثاني — النشاط الأساسي ١-١: صناعة لوحة المائة (كتاب التلميذ ص٤–٥، الوحدة ١أ)
+  // الأهداف: 2Nn1 (العدّ والقراءة والكتابة حتى ١٠٠ تصاعدياً وتنازلياً) و2Nn9 (عدد بين أضعاف العشرة)
+  // التوزيع المعرفي (رياضيات): ٢ معرفة + ٢ تطبيق + ١ استدلال + إثرائي اختياري
+  "g2m-1-1": [
+
+    // ① لوحة المائة (missing) — معرفة — 2Nn1
+    {
+      type: "hundred-chart",
+      mode: "missing",
+      objective: "2Nn1: يعدّ ويقرأ ويكتب الأعداد حتى ١٠٠ كحد أدنى، تصاعدياً وتنازلياً",
+      level: "knowledge",
+      prompt: "أكمِلْ لَوحةَ المِائةِ: ضَعْ كُلَّ عَدَدٍ ناقِصٍ في خانَتِهِ الصَّحيحةِ.",
+      from: 1, to: 100, columns: 10,
+      missing: [7, 23, 56, 80, 99]
+    },
+
+    // ② صواب وخطأ — معرفة — 2Nn1
+    {
+      type: "true-false",
+      objective: "2Nn1: يعدّ ويقرأ ويكتب الأعداد حتى ١٠٠ كحد أدنى، تصاعدياً وتنازلياً",
+      level: "knowledge",
+      statement: "العَدَدُ الَّذي يَأتي بَعدَ ٦٩ مُباشَرةً هو ٧٠.",
+      answer: true
+    },
+
+    // ③ اختيار من متعدد — تطبيق — 2Nn9
+    {
+      type: "mcq",
+      objective: "2Nn9: يذكر عدداً بين أي عددين متجاورين من أضعاف العشرة، مثال: عدد بين ٤٠ و٥٠",
+      level: "application",
+      prompt: "أيُّ عَدَدٍ يَقَعُ بَينَ ٤٠ و٥٠؟",
+      options: ["٣٩", "٤٦", "٥٤", "٦٠"],
+      answer: 1
+    },
+
+    // ④ سحب وإفلات — تطبيق — 2Nn1 (صفّ ٣١–٤٠ بثلاث خانات ناقصة)
+    // الصفّ يُقرأ من اليمين إلى اليسار كصفوف لوحة المائة في السؤال ①، فيتّسق المشهدان.
+    // الخانات الناقصة مرسومة بحدٍّ متقطّع وأرضيّة غائرة كخانات اللوحة الناقصة تماماً.
+    {
+      type: "drag-drop",
+      objective: "2Nn1: يعدّ ويقرأ ويكتب الأعداد حتى ١٠٠ كحد أدنى، تصاعدياً وتنازلياً",
+      level: "application",
+      prompt: "اسحَبْ كُلَّ عَدَدٍ إلى خانَتِهِ الفارِغةِ في صَفِّ لَوحةِ المِائةِ.",
+      bg: "#fdf9ee",
+      fit: "width",
+      svg: `<svg viewBox="0 0 900 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="صف من لوحة المائة من ٣١ إلى ٤٠ فيه ثلاث خانات ناقصة">
+        <rect x="789" y="95" width="78" height="90" rx="12" fill="#ffffff" stroke="#d9c7a4" stroke-width="3"/>
+        <text x="828" y="152" font-size="40" font-weight="700" text-anchor="middle" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">٣١</text>
+        <rect x="705" y="95" width="78" height="90" rx="12" fill="#ffffff" stroke="#d9c7a4" stroke-width="3"/>
+        <text x="744" y="152" font-size="40" font-weight="700" text-anchor="middle" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">٣٢</text>
+        <rect x="621" y="95" width="78" height="90" rx="12" fill="#efe6d6" stroke="#9c7b3f" stroke-width="4" stroke-dasharray="12 9"/>
+        <rect x="537" y="95" width="78" height="90" rx="12" fill="#ffffff" stroke="#d9c7a4" stroke-width="3"/>
+        <text x="576" y="152" font-size="40" font-weight="700" text-anchor="middle" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">٣٤</text>
+        <rect x="453" y="95" width="78" height="90" rx="12" fill="#ffffff" stroke="#d9c7a4" stroke-width="3"/>
+        <text x="492" y="152" font-size="40" font-weight="700" text-anchor="middle" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">٣٥</text>
+        <rect x="369" y="95" width="78" height="90" rx="12" fill="#ffffff" stroke="#d9c7a4" stroke-width="3"/>
+        <text x="408" y="152" font-size="40" font-weight="700" text-anchor="middle" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">٣٦</text>
+        <rect x="285" y="95" width="78" height="90" rx="12" fill="#efe6d6" stroke="#9c7b3f" stroke-width="4" stroke-dasharray="12 9"/>
+        <rect x="201" y="95" width="78" height="90" rx="12" fill="#ffffff" stroke="#d9c7a4" stroke-width="3"/>
+        <text x="240" y="152" font-size="40" font-weight="700" text-anchor="middle" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">٣٨</text>
+        <rect x="117" y="95" width="78" height="90" rx="12" fill="#efe6d6" stroke="#9c7b3f" stroke-width="4" stroke-dasharray="12 9"/>
+        <rect x="33" y="95" width="78" height="90" rx="12" fill="#ffffff" stroke="#d9c7a4" stroke-width="3"/>
+        <text x="72" y="152" font-size="40" font-weight="700" text-anchor="middle" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">٤٠</text>
+      </svg>`,
+      targets: [
+        { answer: "٣٣", box:{x:74, y:10}, dot:{x:73.3, y:60.9} },
+        { answer: "٣٧", box:{x:45, y:10}, dot:{x:36.0, y:60.9} },
+        { answer: "٣٩", box:{x:16, y:10}, dot:{x:17.3, y:60.9} }
+      ]
+    },
+
+    // ⑤ الترتيب التسلسلي — استدلال — 2Nn1 (العدّ التنازلي عبر عقد العشرة)
+    {
+      type: "sequence",
+      objective: "2Nn1: يعدّ ويقرأ ويكتب الأعداد حتى ١٠٠ كحد أدنى، تصاعدياً وتنازلياً",
+      level: "reasoning",
+      prompt: "رَتِّبِ البِطاقاتِ تَنازُلِيّاً مِنَ الأكبَرِ إلى الأصغَرِ.",
+      steps: ["٥١", "٥٠", "٤٩", "٤٨"]
+    },
+
+    // ⑥ البازل (إثرائي اختياري) — استدلال — 2Nn9
+    // الصورة رسم SVG مضمّن في البيانات نفسها (data URI) لا ملفّ خارجيّ: يكشف تركيبُ
+    // القطعِ العددَ ٧٥ ومعه تمثيلُه بسبعِ عشراتٍ وخمسةِ آحادٍ، فيقرأ الطفل جوابه ويتحقّق منه.
+    {
+      type: "puzzle",
+      objective: "2Nn9: يذكر عدداً بين أي عددين متجاورين من أضعاف العشرة، مثال: عدد بين ٤٠ و٥٠",
+      level: "reasoning",
+      prompt: "لُغزٌ: أنا عَدَدٌ بَينَ ٧٠ و٨٠، وفي آحادي ٥. رَكِّبِ القِطَعَ لِتَكشِفَ مَنْ أنا.",
+      bg: "#fdf9ee",
+      grid: { cols: 3, rows: 3 },
+      image: "data:image/svg+xml," + encodeURIComponent(
+        `<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600">
+          <defs><g id="rod">
+            <rect x="0" y="0" width="44" height="160" rx="8" fill="#ffffff" stroke="#2f6fb0" stroke-width="4"/>
+            <line x1="0" y1="16"  x2="44" y2="16"  stroke="#2f6fb0" stroke-width="2"/>
+            <line x1="0" y1="32"  x2="44" y2="32"  stroke="#2f6fb0" stroke-width="2"/>
+            <line x1="0" y1="48"  x2="44" y2="48"  stroke="#2f6fb0" stroke-width="2"/>
+            <line x1="0" y1="64"  x2="44" y2="64"  stroke="#2f6fb0" stroke-width="2"/>
+            <line x1="0" y1="80"  x2="44" y2="80"  stroke="#2f6fb0" stroke-width="2"/>
+            <line x1="0" y1="96"  x2="44" y2="96"  stroke="#2f6fb0" stroke-width="2"/>
+            <line x1="0" y1="112" x2="44" y2="112" stroke="#2f6fb0" stroke-width="2"/>
+            <line x1="0" y1="128" x2="44" y2="128" stroke="#2f6fb0" stroke-width="2"/>
+            <line x1="0" y1="144" x2="44" y2="144" stroke="#2f6fb0" stroke-width="2"/>
+          </g></defs>
+          <rect width="900" height="600" fill="#fdf9ee"/>
+          <text x="450" y="255" font-size="210" font-weight="800" text-anchor="middle" fill="#d97a2b" font-family="Cairo, Tajawal, Segoe UI, sans-serif">٧٥</text>
+          <text x="450" y="335" font-size="42" font-weight="700" text-anchor="middle" fill="#4a3a10" font-family="Cairo, Tajawal, Segoe UI, sans-serif">٧ عشرات و٥ آحاد</text>
+          <use href="#rod" x="731" y="390"/>
+          <use href="#rod" x="673" y="390"/>
+          <use href="#rod" x="615" y="390"/>
+          <use href="#rod" x="557" y="390"/>
+          <use href="#rod" x="499" y="390"/>
+          <use href="#rod" x="441" y="390"/>
+          <use href="#rod" x="383" y="390"/>
+          <rect x="293" y="520" width="30" height="30" rx="6" fill="#ffffff" stroke="#d97a2b" stroke-width="4"/>
+          <rect x="251" y="520" width="30" height="30" rx="6" fill="#ffffff" stroke="#d97a2b" stroke-width="4"/>
+          <rect x="209" y="520" width="30" height="30" rx="6" fill="#ffffff" stroke="#d97a2b" stroke-width="4"/>
+          <rect x="167" y="520" width="30" height="30" rx="6" fill="#ffffff" stroke="#d97a2b" stroke-width="4"/>
+          <rect x="125" y="520" width="30" height="30" rx="6" fill="#ffffff" stroke="#d97a2b" stroke-width="4"/>
+        </svg>`)
+    }
+
+  ],
+
   // الرياضيات/الثاني — النشاط الأساسي ١٢-١: العشرات والآحاد حتى ١٠٠ (كتاب التلميذ ص٣١، الوحدة ٢أ)
   "g2m-12-1": [
 
@@ -3687,62 +3811,6 @@ window.QUESTIONS = {
       options: ["الخَشَبُ", "القُطنُ", "البلاستيكُ", "الصَّخرُ"],
       answer: 2,
       reason: "البلاستيكُ من صُنعِ الإنسانِ، والبَقِيَّةُ موادُّ طَبيعِيَّةٌ"
-    }
-
-  ],
-
-  /* ═══════════════════════════════════════════════════════════════
-     أسئلة تجريبية لاختبار الأنواع المبنية حديثاً — **ليست أسئلة درس**.
-     هذا المفتاح لا يقابله درسٌ في data/index.json فلا يظهر للطلاب أبداً؛
-     غرضه الوحيد اختبار سلامة النوع بعد بنائه (سؤال واحد لكل نوع).
-     الاختبار الحيّ: افتح درساً ثم في وحدة التحكّم
-       QUESTIONS['g2m-12-1'].push(QUESTIONS['tst-math-types'][0]); openLesson(...)
-     ═══════════════════════════════════════════════════════════════ */
-  "tst-math-types": [
-
-    // ⑳ بناء المعادلة — وضع الإكمال (fill): خانة واحدة للناتج
-    {
-      type: "equation-builder",
-      mode: "fill",
-      objective: "اختبار النوع فقط — لا يخدم هدف درس",
-      level: "application",
-      prompt: "أكمِلِ المعادلةَ: اسحَبِ البِطاقةَ المُناسِبةَ إلى الخانةِ الفارِغةِ.",
-      tokens: ["٤", "+", "٦", "=", "__"],
-      bank: ["٨", "٩", "١٠", "١١"],
-      answers: ["١٠"]
-    },
-
-    // ㉑ خط الأعداد — وضع الوضع (place): ضع العدد على تدريجته
-    {
-      type: "number-line",
-      mode: "place",
-      objective: "اختبار النوع فقط — لا يخدم هدف درس",
-      level: "application",
-      prompt: "ضَعِ المُؤشِّرَ على العَدَدِ ١٣ في خَطِّ الأعدادِ.",
-      min: 0, max: 20, step: 1, labelEvery: 5,
-      target: 13
-    },
-
-    // ㉒ لوحة المائة — وضع المضاعفات (multiples)
-    {
-      type: "hundred-chart",
-      mode: "multiples",
-      objective: "اختبار النوع فقط — لا يخدم هدف درس",
-      level: "reasoning",
-      prompt: "لَوِّنْ مُضاعَفاتِ العَدَدِ ٥ في اللَّوحةِ.",
-      from: 1, to: 50, columns: 10,
-      multiple: 5
-    },
-
-    // ㉓ المصفوفات — وضع البناء (build)
-    {
-      type: "array",
-      mode: "build",
-      objective: "اختبار النوع فقط — لا يخدم هدف درس",
-      level: "application",
-      prompt: "ابْنِ مَصفوفةً فيها ٣ صُفوفٍ، في كُلِّ صَفٍّ ٤ مُربَّعاتٍ.",
-      rows: 3, cols: 4,
-      answerSentence: "٣ × ٤ = ١٢"
     }
 
   ]
