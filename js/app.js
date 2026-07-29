@@ -1430,10 +1430,17 @@ function sameNumSet(a,b){
   return A.length===B.length && A.every((v,i)=>v===B[i]);
 }
 
-/* ㉑ خط الأعداد (number-line): min/max/step/labelEvery لضبط التدريج + mode
+/* ⑳ خط الأعداد (number-line): min/max/step/labelEvery لضبط التدريج + mode
    ثلاثة أوضاع — place (وضع عدد على الخط)، jump (القفز بالعدّ)، round (التقريب لأقرب عشرة).
    التفاعل: نقر التدريجة أو سحب المؤشّر إليها (فأرة + لمس)، مع tolerance لمساحة الخطأ.
-   الرسم SVG بالكامل من محرّك التدريج المشترك أعلاه. */
+   الرسم SVG بالكامل من محرّك التدريج المشترك أعلاه.
+
+   ⏳ **توحيد مؤجَّل مع `slider` (قرار مالك):** النوعان يتقاسمان الأساس نفسه — شريط أفقيّ
+   بتدريج ومؤشّر يُسحب — لكنّ محرّكيهما منفصلان: `renderSlider` مبنيّ على عناصر DOM
+   (`.sld-track`) وهذا مبنيّ على SVG ومحرّك التدريج المشترك. **يُؤجَّل دمجهما في محرّك
+   واحد إلى دفعة تنظيف `zoom-reveal`** فيُنجَز التنظيفان معاً في طلب مستقلّ. حتى ذلك
+   الحين: **لا تُبنى أوضاع جديدة في أيٍّ منهما اعتماداً على الآخر**، ولا يُكسر توافق
+   صيغة بيانات `slider` القائمة. (المرجع: «قرار إلغاء» في `question-types.md`.) */
 function renderNumberLine(q, body, fb){
   const min=+q.min, max=+q.max, step=Math.abs(+q.step)||1;
   const mode=q.mode||'place';
@@ -1535,7 +1542,7 @@ function renderNumberLine(q, body, fb){
   body.querySelector('.btn-reset').onclick=()=>renderNumberLine(q,body,fb);
 }
 
-/* ㉒ لوحة المائة (hundred-chart): شبكة من from إلى to بعدد أعمدة columns (افتراضياً ١٠)
+/* ㉑ لوحة المائة (hundred-chart): شبكة من from إلى to بعدد أعمدة columns (افتراضياً ١٠)
    من محرّك الشبكة المشترك (numCells) — تُملأ الأعمدة من اليمين إلى اليسار باتجاه القراءة.
    ثلاثة أوضاع: multiples (تلوين مضاعفات عدد)، missing (ملء خلايا ناقصة من بنك بطاقات)،
    more-less (إيجاد الأكثر/الأقل بمقدار ١ أو ١٠). النقر يلوّن الخلية،
@@ -1662,7 +1669,7 @@ function renderHundredChart(q, body, fb){
   body.querySelector('.btn-reset').onclick=()=>renderHundredChart(q,body,fb);
 }
 
-/* ㉓ المصفوفات (array): rows × cols + answerSentence (جملة الضرب أو الجمع المتكرر)
+/* ㉒ المصفوفات (array): rows × cols + answerSentence (جملة الضرب أو الجمع المتكرر)
    وضعان — build يبني فيها الطالب الشبكة بالنقر على لوح فارغ، وread تُعرض فيها المصفوفة
    مبنيّةً ويختار جملتها من options. الرسم SVG من محرّك الشبكة المشترك. */
 function renderArray(q, body, fb){
@@ -1743,7 +1750,7 @@ function renderArray(q, body, fb){
   body.querySelector('.btn-reset').onclick=()=>renderArray(q,body,fb);
 }
 
-/* ⑳ بناء المعادلة (equation-builder): tokens[] فيها "__" لكل خانة فارغة + bank[] + answers[]
+/* ⑲ بناء المعادلة (equation-builder): tokens[] فيها "__" لكل خانة فارغة + bank[] + answers[]
    المعادلة صفٌّ من رموز ثابتة وخانات فارغة، وبنك بطاقات أرقام ورموز (+ − =) تُسحب إليها
    (أو تُنقر البطاقة ثم الخانة — أدقّ على السبورة). منطق البنك مشترك في `wireBank`
    (هو نفسه منطق `fill-blank` بلا تكرار). وضعان:
