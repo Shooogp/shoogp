@@ -416,16 +416,33 @@ var BAND_LANE_GAP=0;    /* فجوةٌ إضافيةٌ قبلَ عمودِ الص�
    (‏`bk-*`) — وهو ما يضعُه app.js على بطاقةِ الكتابِ في صفحةِ التنقّلِ ويحفظُه في
    `currentBookColor`. نبحثُ عنه بمفتاحِ كتابِ الدرسِ في `DATA.terms`، واحتياطاً
    `window.currentBookColor`. فلا مصدرَ ثانٍ للحقيقةِ ولا لونَ مكرّرٌ في الكود. */
-function bookColorClass(){
+/* مدخلُ الكتابِ الحاليِّ في `data/books.json` (أو null) */
+function bookEntry(){
   var b=_curBook, D=theData(), T=D && D.terms;
-  if(b && T){
-    for(var t in T){ for(var g in T[t]){
-      for(var i=0;i<T[t][g].length;i++){
-        if(T[t][g][i].key===b.key) return T[t][g][i].color||null;
-      } } }
-  }
+  if(!b || !T) return null;
+  for(var t in T){ for(var g in T[t]){
+    for(var i=0;i<T[t][g].length;i++){ if(T[t][g][i].key===b.key) return T[t][g][i]; } } }
+  return null;
+}
+function bookColorClass(){
+  var e=bookEntry();
+  if(e && e.color) return e.color;
   /* احتياطٌ: ما وضعَه app.js على البطاقة (اسمٌ مجرّدٌ لا window — راجعْ theData) */
   return (typeof currentBookColor!=='undefined' && currentBookColor) ? currentBookColor : null;
+}
+/* ═══ لونُ الشريطِ = لونُ البطاقةِ **كما تُرى** لا كما يُعلَنُ التدرّج ═══
+   بطاقةُ الكتابِ تُعرَضُ **بصورةِ غلافٍ** فوقَ تدرّجِ `bk-*`، فالمرئيُّ هو الغلافُ
+   لا التدرّج. وكان الشريطُ يأخذُ التدرّجَ وحدَه، فتصادفَ التقاربُ في بعضِ الكتبِ
+   (العلوم) وانحرفَ في غيرِها انحرافاً صارخاً (الرياضياتُ: تدرّجٌ برتقاليٌّ مقابلَ
+   غلافٍ أخضرَ ليمونيّ — ΔE≈66).
+   لذا صارَ لكلِّ كتابٍ **زوجُ لونٍ صريحٌ في البيانات** (`band:[فاتح,غامق]`) مصدرُه
+   غلافُه، يُقرأُ مباشرةً بلا أيِّ سحبٍ لونيٍّ وقتَ التشغيل (لا canvas، لا عملَ عند
+   كلِّ فتحِ درس، ولا ارتجافَ لون). وصنفُ `bk-*` يبقى **احتياطاً** لأيِّ كتابٍ بلا
+   `band` (أو بلا غلاف). */
+function bookBandPair(){
+  var e=bookEntry();
+  var p=e && e.band;
+  return (p && p.length===2 && p[0] && p[1]) ? p : null;
 }
 /* كلُّ أصنافِ الكسوةِ الممكنة — تُنزَع جميعاً قبلَ وضعِ صنفِ الكتابِ الحاليّ */
 var BAND_COLOR_CLASSES=['bk-red','bk-green','bk-orange','bk-blue','bk-purple','bk-teal'];
@@ -479,11 +496,21 @@ function placeBand(){
   L=Math.max(0,L); R=Math.min(window.innerWidth,R);
   if(R-L<2){ b.style.display='none'; return; }
   b.style.display='block';   /* صريحٌ لا '' — الـCSS يبدأُ بـdisplay:none فيعودُ إليه الفراغ */
-  /* كسوةُ بطاقةِ الكتاب: تُنزَعُ كلُّ الأصنافِ ثمّ يُوضَعُ صنفُ لونِ الكتابِ الحاليّ.
-     كتابٌ بلا لونٍ معلَن → يبقى الشريطُ على الرماديِّ الأساسيِّ (تراجُعٌ آمن). */
+  /* كسوةُ بطاقةِ الكتاب — **أولويةُ المصادر**:
+       ١) زوجُ `band` الصريحُ في البيانات (مصدرُه الغلافُ المرئيّ) ← يُكتَبُ متغيّرَين.
+       ٢) وإلا صنفُ `bk-*` (التدرّجُ المعلَن) ← احتياطٌ لكتابٍ بلا `band`.
+       ٣) وإلا يبقى الشريطُ على الرماديِّ الأساسيِّ (تراجُعٌ آمن).
+     تُنزَعُ الأصنافُ والمتغيّراتُ أولاً فلا تتسرّبُ كسوةُ كتابٍ إلى آخر. */
   allBandSkinClasses().forEach(function(c){ b.classList.remove(c); });
-  var bc=bookColorClass();
-  if(bc && BAND_COLOR_CLASSES.indexOf(bc)>=0){ b.classList.add('qb-book','qb-'+bc); }
+  b.style.removeProperty('--qb-a'); b.style.removeProperty('--qb-b');
+  var pair=bookBandPair(), bc=bookColorClass();
+  if(pair){
+    b.classList.add('qb-book');
+    b.style.setProperty('--qb-a', pair[0]);
+    b.style.setProperty('--qb-b', pair[1]);
+  } else if(bc && BAND_COLOR_CLASSES.indexOf(bc)>=0){
+    b.classList.add('qb-book','qb-'+bc);
+  }
   /* الصندوقُ يغطّي المنفذَ (inset:0) ونقتصُّ حافّتيه: من البكسلِ الحقيقيِّ (rect) إلى
      فضاءِ المحتوى المزوَّم بالقسمةِ على الزوم. inset(أعلى يمين أسفل يسار). */
   var Wv=window.innerWidth/z;
