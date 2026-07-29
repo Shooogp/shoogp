@@ -302,15 +302,77 @@ function dndSvgAR(svgStr){
   if(m){ const w=parseFloat(m[1]), h=parseFloat(m[2]); if(w>0&&h>0) return w/h; }
   return null;
 }
+/* ── الحدّ الأدنى لعرض مسرح الصورة: مُشتَقّ من هندسة السؤال نفسه لا رقمٌ سحريّ ──
+   صناديق الإفلات تُوضَع بنسبة مئوية من عرض *المسرح* مع translate(-50%)، فالصندوق
+   الأقرب إلى الحافّة يخرج عن المسرح ما لم يكن:
+        عرض المسرح ≥ عرض الصندوق ÷ (٢ × نسبة أقرب صندوق إلى الحافّة)
+   قياسٌ حيّ على أسئلة العلوم الخمسة يعطي المطلوب: 388 · 351 · 275 · 177 · 169px،
+   وأقصاها 388px — وهو ما يفسّر أنّ «الهياكل العظمية» (مسرحه 391px) نجا بـ3px فقط
+   بينما «الهيكل العظمي للإنسان» (196px) انهار. نحسبها لكل سؤال بدل تثبيت رقم،
+   فتصحّ لأي سؤال يُؤلَّف لاحقاً مهما كانت مواضعه، وDND_MIN_STAGE أرضيةٌ احتياطية. */
+const DND_MIN_STAGE = 300;
+function dndStageNeed(dnd){
+  const stage=dnd.querySelector('.stage'); if(!stage) return DND_MIN_STAGE;
+  let edge=.5, wmax=0;
+  dnd.querySelectorAll('.target').forEach(t=>{
+    const x=parseFloat(t.style.left);                 // نسبة الصندوق من عرض المسرح
+    if(!isNaN(x)) edge=Math.min(edge, Math.min(x,100-x)/100);
+    const keep=t.textContent;                          // أسوأ الحالات: بنصّ إجابته
+    t.textContent=t.dataset.answer||keep;
+    wmax=Math.max(wmax, t.getBoundingClientRect().width);
+    t.textContent=keep;
+  });
+  if(!wmax || edge<=0) return DND_MIN_STAGE;
+  const z=(window.ShoogpFit&&ShoogpFit.zoom)||1;
+  return Math.max(DND_MIN_STAGE, (wmax/z)/(2*edge));
+}
+/* حارس خنق الصورة.
+   **لا يقيس المسرح الحاليّ** — بل يحسب العرض الذي *سيؤول* إليه المسرح في تخطيط
+   العمودين من عرض الحاوية: `عرض .dnd − (عمود البطاقات 260 + الفجوة 24)`. والسبب
+   أنّ عرض المسرح الفعليّ يمرّ بقيمٍ عابرةٍ ضيّقةٍ قبل أن تستقرّ خوارزمية الإطار،
+   فقياسه مباشرةً كان يقلب أسئلةً سليمةً إلى الصفّ الأفقيّ بناءً على لحظةٍ عابرة
+   (رُصد فعلاً على «الهياكل العظمية»). الحساب من عرض الحاوية ثابتٌ ولا يخدعه العبور.
+   وللمنع من التذبذب: العودة إلى العمودين تشترط فائضاً 15% فوق الحاجة (هستيريسيس)،
+   ولا تقع أصلاً إن كانت نسبة الصورة هي التي فرضت الصفّ (arWide). */
+const DND_BANK_COL = 260 + 24;      // عمود البطاقات + الفجوة (مطابق لـ.dnd في style.css)
+function dndStageGuard(dnd){
+  if(!dnd) return;
+  const need=dndStageNeed(dnd);
+  const z=(window.ShoogpFit&&ShoogpFit.zoom)||1;
+  const colStage=dnd.getBoundingClientRect().width/z - DND_BANK_COL;
+  if(colStage < need) dnd.classList.add('dnd-wide');
+  else if(dnd.dataset.arWide!=='1' && colStage >= need*1.15) dnd.classList.remove('dnd-wide');
+  dndCapStage(dnd, need);
+}
+/* سقف عرض المسرح للصور الطولية في الصفّ الأفقيّ.
+   الصفّ يمنح المسرح عرض النافذة كاملاً، فتبتعد صناديق الوسم عن صورةٍ طوليّةٍ ضيّقة
+   (محكومةٌ بارتفاع المسرح لا بعرضه) فتبدو سابحةً بعيداً عنها رغم الخيوط الواصلة.
+   المرجع المقيس: الحالة السليمة «الهياكل العظمية» — أقصى بُعد صندوق عن مركز الصورة
+   = 84% من عرض الصورة. وبما أنّ البُعد = (٥٠٪ − نسبة الحافّة) × عرض المسرح، يكون:
+        عرض المسرح ≤ 0.84 × عرض الصورة ÷ (٥٠٪ − نسبة الحافّة)  ≈ 2.5 × عرض الصورة
+   ولا ينزل السقف تحت الحاجة أبداً (منع الخروج مقدَّم على التنسيق).
+   لا يُطبَّق على الصور العرضية: عرضها يتبع المسرح فيلاحقه السقف بلا معنى. */
+function dndCapStage(dnd, need){
+  const stage=dnd.querySelector('.stage'), im=dnd.querySelector('.labelimg');
+  if(!stage||!im) return;
+  if(!dnd.classList.contains('dnd-wide') || dnd.dataset.arWide==='1'){ stage.style.maxWidth=''; return; }
+  const z=(window.ShoogpFit&&ShoogpFit.zoom)||1;
+  const iw=im.getBoundingClientRect().width/z; if(!iw) return;
+  const cap=Math.max(need, 2.5*iw);
+  const v=Math.round(cap)+'px';
+  if(stage.style.maxWidth!==v) stage.style.maxWidth=v;   // لا كتابة بلا تغيّر (لا حلقة مع المراقب)
+}
 function applyDndLayout(dnd, ar){
   if(!dnd) return;
-  const wide = ar!=null && ar >= DND_WIDE_AR;
+  let wide = ar!=null && ar >= DND_WIDE_AR;
   dnd.classList.toggle('dnd-wide', wide);
   if(wide){                         // احتياط: صفّ بطاقات يتجاوز سطرين → عُد للعمود الجانبي
     const tops={};
     dnd.querySelectorAll('.bank .chip').forEach(c=>{ tops[Math.round(c.offsetTop)]=1; });
-    if(Object.keys(tops).length>2) dnd.classList.remove('dnd-wide');
+    if(Object.keys(tops).length>2){ dnd.classList.remove('dnd-wide'); wide=false; }
   }
+  dnd.dataset.arWide = wide ? '1' : '0';   // قرار النسبة، ليعرف الحارس ما يجوز نقضه
+  dndStageGuard(dnd);
 }
 
 /* ① سحب وإفلات: targets[{answer,x,y}] + خلفية image/svg */
@@ -375,7 +437,10 @@ function renderDragDrop(q, body, fb){
       ln.setAttribute('class','dndline'); svg.appendChild(ln);
     });
   }
-  if(window.ResizeObserver){ new ResizeObserver(redraw).observe(stage); }
+  /* مراقب أبعاد المسرح: يعيد رسم الخيوط، **ويعيد فحص خنق الصورة** — لأنّ عرض المسرح
+     لا يستقرّ إلا بعد أن تختار خوارزمية الإطار مقاسها وتضبطه، أي بعد relayout الأول.
+     الحارس رتيب (يضيف ولا يزيل) فلا يتذبذب مع هذا المراقب. */
+  if(window.ResizeObserver){ new ResizeObserver(()=>{ redraw(); dndStageGuard(dndEl); }).observe(stage); }
   if(q.svg) relayout();                                   // نسبة الـSVG معروفة فوراً (قبل اختيار الإطار)
   if(imgEl && imgEl.tagName==='IMG'){
     if(imgEl.complete && imgEl.naturalWidth) relayout();  // صورة مخبّأة: قرّر فوراً

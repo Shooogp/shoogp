@@ -228,6 +228,8 @@
   /* عرضية (نسبة الصورة ≥ 1.2): البطاقات صفّ أفقيّ في الأعلى + الصورة بالعرض الكامل أسفلها.
      التبديل يُدار في renderDragDrop (js/app.js) بإضافة/إزالة .dnd-wide حسب نسبة الصورة. */
   .dnd.dnd-wide{display:flex;flex-direction:column;gap:16px}
+  /* المسرح يتوسّط حين يُقيَّد عرضه بسقفٍ للصور الطولية (dndCapStage في js/app.js) */
+  .dnd.dnd-wide .stage{margin-inline:auto;width:100%}
   .dnd.dnd-wide .bank{order:-1;flex-direction:row;flex-wrap:wrap;align-items:flex-start;
     justify-content:center;gap:12px}
   .dnd.dnd-wide .bank .bt{flex-basis:100%;text-align:center;margin-bottom:0}
