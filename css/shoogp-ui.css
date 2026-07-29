@@ -7,6 +7,18 @@
    نِسَب الأبعاد محفوظة دائماً: بُعد واحد + aspect-ratio.
    ═══════════════════════════════════════════════════════════════════ */
 
+/* ═══════════════════════════════════════════════════════════════════
+   ⓪ الحدُّ الأدنى لخطوطِ العناصرِ التفاعلية: **18px** (§٨) — قاعدةُ مقروئيةٍ
+   لا كسوة، فتسري على **كلِّ موادِّ النظام** لا العلومَ وحدَها.
+   كانت مخروقةً في ستّةِ عناصرَ (مقيسةً من الإعلانِ لا من العرض):
+     .qtype 14.4 · .qprogress 15.68 · .btn-check 15.36 · .btn-reset 15.04
+     · نصُّ التنقّل (.ncap) 16 · .qfinish 16 · .cswatch-name 16
+   وتُرفَعُ معها **أوعيةُ الشاراتِ المصوّرة** (ارتفاعاً وحشوةً) وإلا اقتُصَّ النصُّ
+   الأكبرُ داخلَ صورةٍ ثابتةِ الارتفاع. (‏`.grp-drop` و`.grp-h` مستثنيان: الأولُ
+   وعاءٌ بلا نصٍّ خاصٍّ به، والثاني مرفوعٌ أصلاً بـ`max(18px,…)`.)
+   ═══════════════════════════════════════════════════════════════════ */
+:root{ --ui-min-font:18px; }
+
 /* محاذاة تحقّق/إعادة على خط منتصف رأسي واحد + تباعد ٤٨px */
 .shoogp-ui .actions{align-items:center; gap:48px}
 
@@ -15,8 +27,8 @@
 .shoogp-ui .actions .btn-check:hover{
   background:url('../images/ui/btn-check.png') no-repeat center / contain !important;
   border:none !important; box-shadow:none !important; border-radius:0;
-  height:84px; aspect-ratio:842/816; width:auto; padding:9px 0 0 !important; min-width:0;
-  color:#fff; font-weight:800; font-size:.96rem;
+  height:92px; aspect-ratio:842/816; width:auto; padding:10px 0 0 !important; min-width:0;
+  color:#fff; font-weight:800; font-size:var(--ui-min-font);   /* كان .96rem = 15.36px */
   text-shadow:0 2px 4px rgba(25,90,15,.8), 0 0 8px rgba(25,90,15,.45);
   filter:drop-shadow(0 2px 3px rgba(0,0,0,.22));
   transition:transform .18s, filter .2s;
@@ -32,8 +44,8 @@
 .shoogp-ui .actions .btn-reset:hover{
   background:url('../images/ui/btn-retry.png') no-repeat center / contain !important;
   border:none !important; box-shadow:none !important; border-radius:0;
-  height:74px; aspect-ratio:1056/785; width:auto; padding:0 22px 0 0 !important; min-width:0;
-  color:#fff; font-weight:800; font-size:.94rem;
+  height:84px; aspect-ratio:1056/785; width:auto; padding:0 24px 0 0 !important; min-width:0;
+  color:#fff; font-weight:800; font-size:var(--ui-min-font);   /* كان .94rem = 15.04px */
   text-shadow:0 2px 4px rgba(0,45,85,.85), 0 0 8px rgba(0,45,85,.5);
   filter:drop-shadow(0 2px 3px rgba(0,0,0,.22));
   transition:transform .18s, filter .2s;
@@ -52,7 +64,7 @@
 .qnav .nav-btn,
 .qnav .nav-btn:hover:not(:disabled){
   position:relative; background:none !important; border:none !important;
-  box-shadow:none !important; height:66px; width:auto; padding:0; min-width:0;
+  box-shadow:none !important; height:76px; width:auto; padding:0; min-width:0;
   transition:transform .18s, filter .2s;
 }
 .qnav .nav-btn img{
@@ -63,12 +75,15 @@
 .qnav .nav-next img{transform:scaleX(-1)}
 .qnav .nav-btn .ncap{
   position:absolute; top:50%; transform:translateY(-53%);
-  text-align:center; color:#fff; font-weight:800; font-size:1rem;
+  text-align:center; color:#fff; font-weight:800; font-size:var(--ui-min-font);  /* كان 1rem = 16px */
   pointer-events:none; font-family:'Tajawal',sans-serif;
   text-shadow:0 2px 4px rgba(150,70,5,.85), 0 0 8px rgba(150,70,5,.4);
 }
-.qnav .nav-prev .ncap{left:12px; right:46px}   /* السهم في يمين الصورة الأصلية */
-.qnav .nav-next .ncap{left:46px; right:12px}   /* وبعد العكس في يسارها */
+.qnav .nav-prev .ncap{left:14px; right:52px}   /* السهم في يمين الصورة الأصلية */
+.qnav .nav-next .ncap{left:52px; right:14px}   /* وبعد العكس في يسارها */
+/* «إنهاء» ونصُّ عيّناتِ الألوان: رُفِعا إلى الحدِّ الأدنى كذلك */
+.shoogp-ui .qnav .qfinish{font-size:var(--ui-min-font); min-height:60px}
+.shoogp-ui .qwin .cswatch-name{font-size:var(--ui-min-font)}
 .qnav .nav-btn:hover:not(:disabled){
   transform:translateY(-3px) scale(1.05);
   filter:drop-shadow(0 0 13px rgba(255,165,60,.8));
@@ -92,10 +107,10 @@
    (إزاحة يسارية بسيطة كي لا يزاحم زخرفة النجمة والكوكب في طرفها) */
 .shoogp-ui .qcard .qtype{
   display:inline-flex; align-items:center; justify-content:center;
-  height:54px; aspect-ratio:1657/511; width:auto; padding:0 8px 0 36px;
+  height:66px; aspect-ratio:1657/511; width:auto; padding:0 10px 0 44px;
   white-space:nowrap;
   background:url('../images/ui/badge-qtype.png') no-repeat center / contain;
-  color:#fff; font-weight:800; font-size:.9rem;
+  color:#fff; font-weight:800; font-size:var(--ui-min-font);   /* كان .9rem = 14.4px */
   text-shadow:0 2px 3px rgba(0,40,70,.75);
   filter:drop-shadow(0 1px 2px rgba(0,0,0,.22));
 }
@@ -112,9 +127,9 @@
 /* ⑦ مؤشر التقدّم (٧٥٪): نفس كبسولة الرقم 9-slice (progress-pill.png غير متوفر بعد) */
 .shoogp-ui .qprogress{
   display:inline-flex; align-items:center; justify-content:center;
-  height:42px; aspect-ratio:2096/534; width:auto; padding:0;
+  height:52px; aspect-ratio:2096/534; width:auto; padding:0;
   background:url('../images/ui/badge-qnum.png') no-repeat center / contain;
-  color:#fff; font-weight:800; font-size:.98rem;
+  color:#fff; font-weight:800; font-size:var(--ui-min-font);   /* كان .98rem = 15.68px */
   text-shadow:0 2px 3px rgba(0,40,70,.75);
   filter:drop-shadow(0 1px 2px rgba(0,0,0,.22));
   margin-inline:auto;
