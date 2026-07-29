@@ -939,6 +939,72 @@
   transform:translateY(2px) scale(.995);
   box-shadow:inset 0 3px 7px rgba(120,86,36,.42), 0 1px 0 var(--rk-lip) !important;
 }
+/* ═══════════════════════════════════════════════════════════════════
+   دفعة ٣/٤ — زرّا تحقّق/إعادة: أساسٌ حجريٌّ واحدٌ + مسحةٌ لونيةٌ + رمزٌ بارز
+   **اللونُ ليس الفارقَ الوحيد:** الرمزُ (✔/↺) في ميداليةٍ دائريةٍ بحجمِ **26px**
+   — أكبرَ من نصِّ الزرِّ (18px) وأكبرَ ممّا كان عليه قبلَ التحويل (15.36/15.04)
+   — فيميّزُ الطفلُ الزرَّينِ بالشكلِ ولو لم يفرّقِ الأخضرَ من الأزرق.
+   المسحةُ اللونيةُ **بتبديلِ `--rk-*` فقط** (لا تكرارَ لوصفةِ الوجه).
+   `!important` لازمٌ: القواعدُ المصوّرةُ الأصليةُ تفرضُ background/border/box-shadow
+   بـ`!important` لتُظهرَ صورةَ الزرّ.
+   ═══════════════════════════════════════════════════════════════════ */
+.shoogp-ui.skin-rocky .actions :is(.btn-check,.btn-reset){
+  --rk-face:
+    var(--rk-grain) 0 0/190px 96px repeat,
+    linear-gradient(180deg, var(--rk-hi) 0%, var(--rk-mid) 46%, var(--rk-lo) 100%) 0 0/100% 100% no-repeat;
+  background:var(--rk-face) !important;
+  border:2px solid var(--rk-edge) !important;
+  border-bottom-color:var(--rk-edge-dk) !important;
+  border-radius:999px !important;
+  aspect-ratio:auto !important; height:auto !important; width:auto !important;
+  min-height:60px;                        /* الحدُّ الأدنى التفاعليّ */
+  padding:10px 26px !important;
+  display:inline-flex; align-items:center; gap:12px;
+  color:var(--rk-ink) !important;
+  font-size:var(--ui-min-font); font-weight:800;
+  text-shadow:0 1px 0 rgba(255,255,255,.55) !important;
+  filter:none !important;
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.72),
+    inset 0 -3px 0 rgba(150,112,52,.28),
+    0 3px 0 var(--rk-lip),
+    0 6px 12px var(--rk-cast) !important;
+  transition:transform .14s ease !important;
+}
+/* الميداليةُ: قرصٌ فاتحٌ يحملُ الرمزَ — الفارقُ الشكليُّ المستقلُّ عن اللون */
+.shoogp-ui.skin-rocky .actions :is(.btn-check,.btn-reset) .aglyph{
+  flex:0 0 auto; width:34px; height:34px; border-radius:50%;
+  display:grid; place-items:center;
+  font-size:26px; line-height:1; font-weight:900;
+  background:rgba(255,255,255,.62);
+  box-shadow:inset 0 0 0 2px var(--rk-edge-dk), 0 1px 2px rgba(60,40,15,.28);
+  text-shadow:none;
+}
+.shoogp-ui.skin-rocky .actions :is(.btn-check,.btn-reset) .acap{white-space:nowrap}
+/* مسحةُ «تحقّق» الخضراء ومسحةُ «إعادة» الزرقاء — متغيّراتٌ لا قواعدُ مكرّرة */
+.shoogp-ui.skin-rocky .actions .btn-check{
+  --rk-hi:#eef8dc; --rk-mid:#cfeaa6; --rk-lo:#a9d477;
+  --rk-edge:#7cb051; --rk-edge-dk:#5c8c36; --rk-ink:#22380b;
+  --rk-lip:rgba(92,140,54,.60); --rk-cast:rgba(40,80,20,.26);
+}
+.shoogp-ui.skin-rocky .actions .btn-reset{
+  --rk-hi:#e9f3fb; --rk-mid:#c3dcf1; --rk-lo:#96c4e6;
+  --rk-edge:#5f97c4; --rk-edge-dk:#3f74a0; --rk-ink:#123049;
+  --rk-lip:rgba(63,116,160,.60); --rk-cast:rgba(15,50,80,.26);
+}
+.shoogp-ui.skin-rocky .actions :is(.btn-check,.btn-reset):hover:not(:disabled){
+  transform:translateY(-2px) !important;
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.85),
+    inset 0 -3px 0 rgba(150,112,52,.26),
+    0 5px 0 var(--rk-lip),
+    0 10px 18px var(--rk-cast) !important;
+}
+.shoogp-ui.skin-rocky .actions :is(.btn-check,.btn-reset):active:not(:disabled){
+  transform:translateY(3px) scale(.995) !important;
+  box-shadow:inset 0 3px 7px rgba(120,86,36,.38), 0 1px 0 var(--rk-lip) !important;
+}
+
 /* زرُّ «إنهاء» يتبعُ الكسوةَ نفسَها (قواعدُه الأصليةُ تحملُ !important فنُقابلُها) */
 .shoogp-ui.skin-rocky .qnav .qfinish{
   --rk-face:

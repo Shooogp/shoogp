@@ -751,8 +751,29 @@ function navArt(){
       '</svg>'
     : '<img src="images/ui/btn-next-prev.png" alt="">';
 }
+/* ═══ فصلُ رمزِ الزرِّ عن نصِّه (تحقّق/إعادة) — شرطُ «اللونُ ليس الفارقَ الوحيد» ═══
+   نصُّ الزرِّ في app.js «تحقّق ✔» و«إعادة ↺»: الرمزُ جزءٌ من عقدةِ النصِّ فلا يمكنُ
+   تكبيرُه أو تمييزُه بـCSS وحدَه. نلفُّه في عنصرٍ خاصٍّ (كما فُعِلَ بنصِّ التنقّل)
+   فيصيرَ **ميداليةً واضحةً أكبرَ من النصّ**، فيميّزُه الطفلُ الذي لا يفرّقُ الألوان.
+   لا يمسُّ معالجاتِ النقر (‏`onclick` على الزرِّ نفسِه في app.js).
+   يعملُ للقشرةِ وحدَها؛ وبقيةُ المواد تبقى بأزرارِها المصوّرة. */
+var ACT_GLYPH={'btn-check':'✔','btn-reset':'↺'};
+function enhanceActions(){
+  var q=document.getElementById('questionList');
+  if(!q || !allSkinClasses().some(function(c){ return q.classList.contains(c); })) return;
+  q.querySelectorAll('.actions .btn-check:not([data-gly]), .actions .btn-reset:not([data-gly])')
+   .forEach(function(b){
+     b.dataset.gly='1';
+     var key=b.classList.contains('btn-check')?'btn-check':'btn-reset';
+     var gly=ACT_GLYPH[key];
+     var txt=(b.textContent||'').replace(gly,'').trim();
+     b.innerHTML='<span class="aglyph" aria-hidden="true">'+gly+'</span>'+
+                 '<span class="acap">'+txt+'</span>';
+   });
+}
 function enhanceNav(){
   frameize();
+  enhanceActions();
   var art=navArt();
   document.querySelectorAll('.qnav .qprev:not([data-img])').forEach(function(b){
     b.dataset.img='1'; b.classList.add('nav-btn','nav-prev');
