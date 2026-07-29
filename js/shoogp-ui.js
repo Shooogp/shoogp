@@ -407,6 +407,27 @@ function placeChrome(){ placeIcons(); placeBand(); }
    اليمنى تُقصَّ حافّةُ الشريطِ اليسرى عندَها (يبقى الإطارُ بارزاً، والصاروخُ مكشوفاً). */
 var BAND_PAD=26;        /* الخلوصُ على الجانبين، بكسلٌ تصميميّ (يُضرَب في الزوم) */
 var BAND_LANE_GAP=0;    /* فجوةٌ إضافيةٌ قبلَ عمودِ الصاروخ (بكسلٌ حقيقيّ) */
+/* ═══ الحدّانِ الرأسيّانِ للشريطِ وانحناءُ زواياه ═══
+   لم يعدِ الشريطُ يمتدُّ من أعلى الشاشةِ إلى أسفلِها: قمّتُه فوقَ صفِّ الشاراتِ بـ20px
+   وقاعدتُه تحتَ صفِّ أزرارِ التنقّلِ بـ20px، فيحتضنُ منطقةَ السؤالِ وحدَها ويبقى
+   سطرُ التلميحِ `.hint` خارجَه. القياسُ حيٌّ من `getBoundingClientRect` كالعرضِ تماماً
+   (نفسُ فضاءِ الإحداثيات: يُقسَمُ على الزوم قبلَ الكتابة).
+   **حارسُ الترويسة:** القاعدةُ الأصليةُ `qhead.top − 20`، فإن وقعت فوقَ أسفلِ الترويسة
+   (زرُّ الرجوع · سطرُ الشعارِ والعنوان · السطرُ التعريفيّ) هبطت إلى ما بعدَ أسفلِها
+   بخلوصٍ مريح — فلا يلمسُ المستطيلُ نصّاً ولا شعاراً من الترويسةِ أبداً، ولو التفَّ
+   عنوانُ الدرسِ إلى سطرين. */
+var BAND_PAD_V=20;       /* فوقَ الشاراتِ وتحتَ أزرارِ التنقّل، بكسلٌ تصميميّ */
+var BAND_HEAD_GAP=10;    /* خلوصُ الأمانِ تحتَ الترويسةِ حين يلزمُ الهبوط */
+/* نصفُ قطرِ الزوايا = نصفُ قطرِ **بطاقةِ الكتابِ** نفسِها — يُقرأُ من `.book` حيّاً
+   فلا يتكرّرُ الرقمُ في مكانين (البطاقةُ مصدرُ هوية الشريطِ لوناً وشكلاً). */
+var _bandR=null;
+function bandRadius(){
+  if(_bandR!=null) return _bandR;
+  var bk=document.querySelector('.book');
+  var v=bk ? parseFloat(getComputedStyle(bk).borderTopLeftRadius) : NaN;
+  _bandR=(v>0)?v:30;      /* احتياطٌ آمنٌ إن لم تُبنَ البطاقاتُ بعد */
+  return _bandR;
+}
 /* ═══ كسوةُ الشريطِ ببطاقةِ الكتابِ الحاليّ — **لكلِّ المواد** ═══
    تعبئةُ الشريطِ = **الهويةُ البصريةُ لبطاقةِ الكتابِ المفتوح** (لونُها ونقاطُها ودائرتاها،
    بلا نصوصٍ ولا أيقونة) — انظرْ `.qband.qb-book` في css/shoogp-ui.css.
@@ -511,10 +532,31 @@ function placeBand(){
   } else if(bc && BAND_COLOR_CLASSES.indexOf(bc)>=0){
     b.classList.add('qb-book','qb-'+bc);
   }
-  /* الصندوقُ يغطّي المنفذَ (inset:0) ونقتصُّ حافّتيه: من البكسلِ الحقيقيِّ (rect) إلى
-     فضاءِ المحتوى المزوَّم بالقسمةِ على الزوم. inset(أعلى يمين أسفل يسار). */
-  var Wv=window.innerWidth/z;
-  b.style.clipPath='inset(0px '+(Wv-R/z).toFixed(2)+'px 0px '+(L/z).toFixed(2)+'px)';
+  /* ── الحدّانِ الرأسيّان (نفسُ مصدرِ الهندسةِ الحيّةِ ونفسُ فضاءِ الإحداثيات) ── */
+  var Wv=window.innerWidth/z, Hv=window.innerHeight/z;
+  var headEl=shown.querySelector('.qhead');
+  var navEl=document.querySelector('#questionList .qnav');
+  var hr=headEl && headEl.getBoundingClientRect();
+  var nr=navEl && navEl.getBoundingClientRect();
+  /* بديلٌ آمنٌ إن غابَ أحدُ المرجعَين: حافّةُ الإطارِ نفسُها بالخلوصِ ذاتِه */
+  var top = (hr && hr.height) ? hr.top/z - BAND_PAD_V : fr.top/z - BAND_PAD_V;
+  var bot = (nr && nr.height) ? nr.bottom/z + BAND_PAD_V : fr.bottom/z + BAND_PAD_V;
+  /* حارسُ الترويسة: لا يعلو الشريطُ على أسفلِ آخرِ عنصرٍ من الترويسةِ الظاهرة */
+  var headerBottom=0;
+  ['.back', '.lesson-head', '.screen-sub'].forEach(function(sel){
+    var e=act.querySelector(sel); if(!e) return;
+    var r=e.getBoundingClientRect();
+    if(r.height && r.bottom/z>headerBottom) headerBottom=r.bottom/z;
+  });
+  if(headerBottom && top < headerBottom) top = headerBottom + BAND_HEAD_GAP;
+  /* احتواءٌ داخلَ المنفذِ وحراسةٌ من الانقلاب */
+  top=Math.max(0, top); bot=Math.min(Hv, bot);
+  if(bot-top<8){ b.style.display='none'; return; }
+  /* الصندوقُ يغطّي المنفذَ (inset:0) ونقتصُّ حوافَّه الأربع: من البكسلِ الحقيقيِّ
+     (rect) إلى فضاءِ المحتوى المزوَّم بالقسمةِ على الزوم.
+     inset(أعلى يمين أسفل يسار round نصفُ القطر). */
+  b.style.clipPath='inset('+top.toFixed(2)+'px '+(Wv-R/z).toFixed(2)+'px '+
+    (Hv-bot).toFixed(2)+'px '+(L/z).toFixed(2)+'px round '+bandRadius()+'px)';
 }
 /* ═══ التحميلُ المسبقُ لإطاراتِ المادة (كلُّ خاناتِ العائلة، لا النقطيةُ وحدَها) ═══
    الطبقةُ القديمةُ كانت تُحمّلُ *فقط* خاناتِ hasFill:false — أي أربعةَ إطارٍ قمريّ لا غير،
@@ -841,10 +883,15 @@ function watchShown(){
 new MutationObserver(function(){ if(_fitBusy||!gateOn()) return; enhanceNav(); fitShown(); watchShown(); placeChrome(); })
   .observe(document.getElementById('questionList'),
     {childList:true,subtree:true,attributes:true,attributeFilter:['style']});
-window.addEventListener('resize',function(){
-  if(!gateOn()) return;
-  document.querySelectorAll('.qcard').forEach(function(c){c.dataset.fitSig='';});
-  fitShown(); watchShown(); placeChrome();
+/* `orientationchange` معه: بعضُ الأجهزةِ تُطلقُه دونَ `resize` موثوقٍ في اللحظةِ
+   نفسِها، وحدّا الشريطِ الرأسيّانِ يعتمدانِ على مواضعَ تتبدّلُ مع دوران الشاشة.
+   (الزومُ يتغيّرُ عبرَ fit.js فيُطلقُ مراقبَ الأنماطِ ثمّ placeChrome — مغطّىً أصلاً.) */
+['resize','orientationchange'].forEach(function(ev){
+  window.addEventListener(ev,function(){
+    if(!gateOn()) return;
+    document.querySelectorAll('.qcard').forEach(function(c){c.dataset.fitSig='';});
+    fitShown(); watchShown(); placeChrome();
+  });
 });
 /* مغادرةُ شاشةِ النشاطِ لا تُطفئُ البوّابةَ (الصنفُ يبقى على questionList)، فنرقّعُ
    showScreen كي يختفيَ الشريطُ خارجَ صفحةِ الدرسِ ويعودَ عندَ الرجوعِ إليها. */
