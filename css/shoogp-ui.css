@@ -856,3 +856,101 @@
   display:flex; align-items:center; justify-content:center;
 }
 
+/* ═══════════════════════════════════════════════════════════════════
+   دفعة ٢/٤ — الشاراتُ وأزرارُ التنقّل: حجرٌ بالكود بدلَ صورِ PNG
+   النطاقُ **خارجَ `.qwin`**: الشارتانِ في `.qhead` (ابنُ `.qcard`)، والتقدّمُ
+   وأزرارُ التنقّلِ في `.qnav` (ابنُ `#questionList` الحاملِ لصنفِ القشرة) —
+   فلا يبلغُها محدِّدُ `.qwin` مهما وُسِّع؛ لذا محدِّداتٌ مستقلّةٌ هنا.
+   وزنُها (‏`.shoogp-ui.skin-rocky` صنفان + الباقي) يغلبُ القواعدَ المصوّرةَ
+   أعلاه (‏`.shoogp-ui …` صنفٌ واحد) **بلا `!important`**.
+   **العلومُ وحدَها:** `skin-rocky` لا تُوضَع إلا لمادةِ العلوم، فتبقى الرياضياتُ
+   على شاراتِها المصوّرة. وملفّاتُ PNG باقيةٌ في المستودعِ بلا إشارةٍ من العلوم.
+   ═══════════════════════════════════════════════════════════════════ */
+.shoogp-ui.skin-rocky :is(.qcard .qnum, .qcard .qtype, .qprogress, .qnav .nav-btn){
+  /* الوصفةُ تُعلَنُ على العنصرِ نفسِه (فخُّ §٦: المتغيّرُ المركَّبُ يُستبدَلُ عندَ مُعلِنِه) */
+  --rk-face:
+    var(--rk-grain) 0 0/190px 96px repeat,
+    linear-gradient(180deg, var(--rk-hi) 0%, var(--rk-mid) 46%, var(--rk-lo) 100%) 0 0/100% 100% no-repeat;
+  background:var(--rk-face);
+  border:2px solid var(--rk-edge);
+  border-bottom-color:var(--rk-edge-dk);
+  border-radius:999px;
+  color:var(--rk-ink);
+  text-shadow:0 1px 0 rgba(255,255,255,.55);
+  filter:none;
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.72),
+    inset 0 -3px 0 rgba(150,112,52,.28),
+    0 2px 0 var(--rk-lip),
+    0 4px 9px var(--rk-cast);
+}
+/* الشارتانِ: كبسولةٌ بحشوةٍ مريحةٍ بدلَ نسبةِ أبعادِ الصورة (النصُّ يحكمُ العرضَ الآن) */
+.shoogp-ui.skin-rocky .qcard :is(.qnum,.qtype){
+  aspect-ratio:auto; height:auto; min-height:44px;
+  padding:8px 20px; gap:8px;
+}
+/* نجيمةٌ صغيرةٌ في صدرِ الشارة — بديلُ زخرفةِ الصورةِ الأصلية (SVG مُضمَّن) */
+.shoogp-ui.skin-rocky .qcard :is(.qnum,.qtype)::before{
+  content:""; flex:0 0 auto; width:17px; height:17px;
+  background:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M8 0C8.7 4.6 11.4 7.3 16 8 11.4 8.7 8.7 11.4 8 16 7.3 11.4 4.6 8.7 0 8 4.6 7.3 7.3 4.6 8 0Z' fill='%23a3823f'/></svg>") center/contain no-repeat;
+  opacity:.85;
+}
+.shoogp-ui.skin-rocky .qprogress{
+  aspect-ratio:auto; height:auto; min-height:44px; padding:8px 22px;
+}
+/* أزرارُ التنقّل: كبسولةٌ حجريةٌ والسهمُ SVG مُضمَّنٌ يحقنُه enhanceNav.
+   **`!important` لازمٌ هنا وحدَه:** القاعدةُ الأساسيةُ للتنقّل تفرضُ
+   `background/border/box-shadow: none !important` (كانت تُفرِّغُ الزرَّ ليظهرَ
+   الـ`<img>` وحدَه)، فلا يكفي الوزنُ الأعلى لمقابلتِها. (قِيسَ حيّاً: بقيَ الزرُّ
+   بلا وجهٍ حجريٍّ حتى أُضيفت.) */
+.shoogp-ui.skin-rocky .qnav .nav-btn{
+  height:auto; min-height:60px; padding:10px 22px;
+  display:inline-flex; align-items:center; gap:10px;
+  transition:transform .14s ease;
+  background:var(--rk-face) !important;
+  border:2px solid var(--rk-edge) !important;
+  border-bottom-color:var(--rk-edge-dk) !important;
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.72),
+    inset 0 -3px 0 rgba(150,112,52,.28),
+    0 2px 0 var(--rk-lip),
+    0 4px 9px var(--rk-cast) !important;
+}
+.shoogp-ui.skin-rocky .qnav .nav-btn .nav-ic{
+  flex:0 0 auto; width:26px; height:26px; display:block;
+  fill:var(--rk-ink); opacity:.92;
+}
+/* «التالي» سهمُه إلى اليسار (تقدّمٌ في الواجهةِ العربية) و«السابق» إلى اليمين */
+.shoogp-ui.skin-rocky .qnav .nav-next .nav-ic{transform:scaleX(-1)}
+/* النصُّ عادَ عنصرَ flex عادياً (كان مطلقَ الموضعِ فوقَ الصورة) */
+.shoogp-ui.skin-rocky .qnav .nav-btn .ncap{
+  position:static; transform:none; left:auto; right:auto;
+  color:var(--rk-ink); text-shadow:0 1px 0 rgba(255,255,255,.55);
+}
+.shoogp-ui.skin-rocky .qnav .nav-btn:hover:not(:disabled){
+  transform:translateY(-2px); filter:none !important;
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.85),
+    inset 0 -3px 0 rgba(150,112,52,.26),
+    0 4px 0 var(--rk-lip),
+    0 8px 15px rgba(60,40,15,.28) !important;
+}
+.shoogp-ui.skin-rocky .qnav .nav-btn:active:not(:disabled){
+  transform:translateY(2px) scale(.995);
+  box-shadow:inset 0 3px 7px rgba(120,86,36,.42), 0 1px 0 var(--rk-lip) !important;
+}
+/* زرُّ «إنهاء» يتبعُ الكسوةَ نفسَها (قواعدُه الأصليةُ تحملُ !important فنُقابلُها) */
+.shoogp-ui.skin-rocky .qnav .qfinish{
+  --rk-face:
+    var(--rk-grain) 0 0/190px 96px repeat,
+    linear-gradient(180deg, var(--rk-hi) 0%, var(--rk-mid) 46%, var(--rk-lo) 100%) 0 0/100% 100% no-repeat;
+  background:var(--rk-face) !important;
+  border:2px solid var(--rk-edge) !important;
+  border-bottom-color:var(--rk-edge-dk) !important;
+  border-radius:999px !important;
+  color:var(--rk-ink) !important;
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.72), 0 2px 0 var(--rk-lip),
+             0 4px 9px var(--rk-cast) !important;
+  padding:10px 26px;
+}
+

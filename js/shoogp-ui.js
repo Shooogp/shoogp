@@ -734,17 +734,33 @@ function fitFrame(card){
     }
   }
 }
+/* ═══ فنُّ زرِّ التنقّل: SVG مُضمَّنٌ للقشرةِ الحجرية، وصورةُ PNG لغيرِها ═══
+   المادةُ ذاتُ القشرةِ (العلومُ اليوم) لا تُشيرُ إلى `btn-next-prev.png` إطلاقاً —
+   لا عنصرَ `<img>` يُنشَأُ لها أصلاً (فالصورةُ لا تُحمَّل، لا تُخفى فحسب). والملفُّ
+   باقٍ في المستودعِ تستعملُه بقيةُ المواد.
+   السهمُ رأسُ سهمٍ بسيطٌ (‏`path` واحد) يرثُ لونَ الحبرِ الحجريِّ عبرَ `fill`
+   في CSS، ويُعكَسُ لـ«التالي» بـ`scaleX(-1)` كما كانتِ الصورةُ تُعكَس. */
+function navArt(){
+  /* مصدرُ الحقيقةِ الوحيد: هل صنفُ القشرةِ موضوعٌ فعلاً على #questionList الآن؟
+     (يضعُه ترقيعُ openLesson من skinFor) — فلا منطقَ مادةٍ مكرّرٌ هنا. */
+  var q=document.getElementById('questionList');
+  var on=q && allSkinClasses().some(function(c){ return q.classList.contains(c); });
+  return on
+    ? '<svg class="nav-ic" viewBox="0 0 24 24" aria-hidden="true">'+
+      '<path d="M9.3 3.6a1.6 1.6 0 0 1 2.3 0l7.2 7.3a1.6 1.6 0 0 1 0 2.2l-7.2 7.3a1.6 1.6 0 1 1-2.3-2.2L15.4 12 9.3 5.8a1.6 1.6 0 0 1 0-2.2Z"/>'+
+      '</svg>'
+    : '<img src="images/ui/btn-next-prev.png" alt="">';
+}
 function enhanceNav(){
   frameize();
+  var art=navArt();
   document.querySelectorAll('.qnav .qprev:not([data-img])').forEach(function(b){
     b.dataset.img='1'; b.classList.add('nav-btn','nav-prev');
-    b.innerHTML='<img src="images/ui/btn-next-prev.png" alt="">'+
-                '<span class="ncap">السابق</span>';
+    b.innerHTML=art+'<span class="ncap">السابق</span>';
   });
   document.querySelectorAll('.qnav .qnext:not([data-img])').forEach(function(b){
     b.dataset.img='1'; b.classList.add('nav-btn','nav-next');
-    b.innerHTML='<img src="images/ui/btn-next-prev.png" alt="">'+
-                '<span class="ncap">التالي</span>';
+    b.innerHTML=art+'<span class="ncap">التالي</span>';
   });
 }
 /* يضبط البطاقة الظاهرة فقط، مع حارس يمنع حلقة المراقب (كتابتنا للأنماط
@@ -848,6 +864,20 @@ window.addEventListener('resize',function(){
       var sk = on ? skinFor(ls) : null;          /* قشرةُ أزرارِ الإجابة (محكومةٌ بالمعاينة) */
       allSkinClasses().forEach(function(c){ q.classList.remove(c); });
       if(sk) q.classList.add(sk);
+      /* ═══ حارسُ التلازم: القشرةُ لا تُوضَع إلا مع علامةِ مادّتِها ═══
+         `skin-rocky` كسوةُ العلوم، و`subj-science` علامتُها؛ وكلاهما مشتقٌّ اليوم
+         من `lessonSubject` فهما متلازمانِ بنيوياً. الحارسُ يمنعُ انفكاكَهما لو
+         تغيّرَ أحدُ المصدرَينِ مستقبلاً — فتتسرّبَ كسوةُ العلومِ إلى مادةٍ أخرى. */
+      if(DEV){
+        var skinOn=allSkinClasses().filter(function(c){ return q.classList.contains(c); });
+        skinOn.forEach(function(c){
+          var owner=Object.keys(SUBJECT_SKINS).filter(function(k){ return SUBJECT_SKINS[k]===c; })[0];
+          if(!q.classList.contains(subjectClass(owner)))
+            console.warn('%c[قشرة] ⛔ تسرُّب: الصنفُ '+c+' موضوعٌ بلا علامةِ مادّتِه '+
+              subjectClass(owner)+' (الدرس '+(ls&&ls.file)+') — راجعْ skinFor/lessonSubject.',
+              'color:#c0392b;font-weight:bold;font-size:13px');
+        });
+      }
     }
     return orig.apply(this, arguments);
   };
