@@ -3710,6 +3710,17 @@ window.QUESTIONS = {
       tokens: ["٤", "+", "٦", "=", "__"],
       bank: ["٨", "٩", "١٠", "١١"],
       answers: ["١٠"]
+    },
+
+    // ㉑ خط الأعداد — وضع الوضع (place): ضع العدد على تدريجته
+    {
+      type: "number-line",
+      mode: "place",
+      objective: "اختبار النوع فقط — لا يخدم هدف درس",
+      level: "application",
+      prompt: "ضَعِ المُؤشِّرَ على العَدَدِ ١٣ في خَطِّ الأعدادِ.",
+      min: 0, max: 20, step: 1, labelEvery: 5,
+      target: 13
     }
 
   ]

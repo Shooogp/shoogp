@@ -213,7 +213,7 @@ function qWin(fb,msg,stars){fb.textContent=msg||'🎉 أحسنت!';fb.className=
 // أي واجهة بلا صاروخ تُبقي wrong.mp3 يعمل (بقية دروس المنصّة كلها تحوي الصاروخ الآن)
 function qFail(fb,msg){fb.textContent=msg||'حاول مرة أخرى';fb.className='fb qfb bad';if(!(window.RocketJourney&&RocketJourney.isActive&&RocketJourney.isActive()))playWrongSound();if(window.RocketJourney)RocketJourney.onAnswer(false);}
 
-const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل','slider':'🎚️ الشريط المتدرج','memory':'🎴 بطاقات الذاكرة','lens':'🔍 العدسة المكبّرة','equation-builder':'🧮 بناء المعادلة'};
+const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل','slider':'🎚️ الشريط المتدرج','memory':'🎴 بطاقات الذاكرة','lens':'🔍 العدسة المكبّرة','equation-builder':'🧮 بناء المعادلة','number-line':'📏 خط الأعداد'};
 
 // تحويل الأرقام إلى هندية (عربية) للعرض
 function arNum(n){ return String(n).replace(/[0-9]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'[+d];}); }
@@ -228,7 +228,7 @@ function renderQuestions(ls){
     m.innerHTML='<div class="qbody" style="text-align:center;padding:14px 6px;font-size:1.15rem">📚 أسئلة هذا الدرس ستُضاف قريباً بإذن الله</div>';
     host.appendChild(m); return;
   }
-  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor,'puzzle':renderPuzzle,'slider':renderSlider,'memory':renderMemory,'lens':renderLens,'equation-builder':renderEquationBuilder};
+  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor,'puzzle':renderPuzzle,'slider':renderSlider,'memory':renderMemory,'lens':renderLens,'equation-builder':renderEquationBuilder,'number-line':renderNumberLine};
 
   // بناء كل البطاقات (تبقى في الصفحة لحفظ إجاباتها، ونُظهر واحدة فقط)
   const slides=document.createElement('div'); slides.className='qslides';
@@ -1365,6 +1365,175 @@ function numOf(s){ const v=parseFloat(toLatinNum(String(s).trim())); return isNa
 /* رموز العمليات المقبولة في بناء المعادلة (الطرح بعلامة «−» الرياضية أو «-» العادية) */
 const EQ_OPS={'+':1,'−':1,'-':1,'×':1,'÷':1,'=':1,'<':1,'>':1};
 function isEqOp(t){ return EQ_OPS[String(t).trim()]===1; }
+
+/* ═══ محرّك الشبكة والتدريج المشترك (NumGrid) ═══
+   تتقاسمه أنواع الرياضيات الثلاثة: خط الأعداد ولوحة المائة والمصفوفات — يكتب المنطق
+   مرّة واحدة (بناء التدريج، بناء شبكة الأعداد، تحويل إحداثيات الحدث إلى فضاء الرسم،
+   والتقاط أقرب علامة). كل الرسوم SVG داخل الكود بلا صور خارجية. */
+const SVG_NS='http://www.w3.org/2000/svg';
+function svgEl(tag,attrs,txt){
+  const e=document.createElementNS(SVG_NS,tag);
+  for(const k in attrs) e.setAttribute(k,attrs[k]);
+  if(txt!=null) e.textContent=txt;
+  return e;
+}
+/* علامات التدريج على مدى [min,max] بخطوة step: كل علامة {v,i,major}
+   و`labelEvery` = كل كم خطوةٍ تحمل العلامةُ رقماً (1 = كلّها) */
+function scaleTicks(min,max,step,labelEvery){
+  const st=Math.abs(+step)||1, every=Math.max(1,Math.round(+labelEvery||1)), out=[];
+  const n=Math.round((max-min)/st);
+  for(let i=0;i<=n;i++){
+    const v=+(min+i*st).toFixed(10);
+    out.push({v:v, i:i, major:(i%every===0)});
+  }
+  return out;
+}
+/* موضع قيمة على محور مرسوم بين x0 وx1 (وعكسه) */
+function scalePos(v,min,max,x0,x1){ return x0+(v-min)/(max-min)*(x1-x0); }
+function scaleVal(x,min,max,x0,x1){ return min+(x-x0)/(x1-x0)*(max-min); }
+/* شبكة أعداد متّصلة من from إلى to بعدد أعمدة columns → خلايا {v,r,c} + عدد الصفوف.
+   الأعمدة تُملأ **من اليمين إلى اليسار** (اتجاه القراءة العربي): العمود ٠ أقصى اليمين. */
+function numCells(from,to,columns){
+  const cols=Math.max(1,Math.round(+columns||10)), cells=[];
+  const n=Math.max(0,Math.round(to-from))+1;
+  for(let k=0;k<n;k++) cells.push({v:from+k, r:Math.floor(k/cols), c:k%cols});
+  return {cells:cells, cols:cols, rows:Math.ceil(n/cols)};
+}
+/* إحداثيات حدث الفأرة/اللمس داخل فضاء الـviewBox — عبر مصفوفة الشاشة المقلوبة،
+   فتصحّ مع زوم الجذر ومع أيّ تحجيم للإطار بلا حساب يدويّ لعوامل المقياس. */
+function svgPoint(svg, clientX, clientY){
+  const m=svg.getScreenCTM(); if(!m) return null;
+  const p=svg.createSVGPoint(); p.x=clientX; p.y=clientY;
+  const q=p.matrixTransform(m.inverse());
+  return {x:q.x, y:q.y};
+}
+/* يربط النقر واللمس والسحب على رسم SVG بدالّة واحدة تستقبل نقطة بفضاء الرسم.
+   `onMove` (اختياري) للسحب المتواصل، و`onDown` للنقرة/بداية السحب. */
+function svgPointer(svg, onDown, onMove){
+  let live=false;
+  const at=(cx,cy)=>svgPoint(svg,cx,cy);
+  function down(cx,cy){ const p=at(cx,cy); if(!p) return; live=true; onDown(p); }
+  function move(cx,cy){ if(!live||!onMove) return; const p=at(cx,cy); if(p) onMove(p); }
+  function up(){ live=false;
+    window.removeEventListener('mousemove',mm); window.removeEventListener('mouseup',up);
+    window.removeEventListener('touchmove',tm); window.removeEventListener('touchend',up); }
+  function mm(e){ move(e.clientX,e.clientY); }
+  function tm(e){ if(live){ move(e.touches[0].clientX,e.touches[0].clientY); e.preventDefault(); } }
+  svg.addEventListener('mousedown',e=>{ e.preventDefault(); down(e.clientX,e.clientY);
+    window.addEventListener('mousemove',mm); window.addEventListener('mouseup',up); });
+  svg.addEventListener('touchstart',e=>{ down(e.touches[0].clientX,e.touches[0].clientY);
+    window.addEventListener('touchmove',tm,{passive:false}); window.addEventListener('touchend',up); },{passive:true});
+}
+/* مقارنة مجموعتَي أعداد (للتحقّق على مجموعة خلايا لا على خلية واحدة) */
+function sameNumSet(a,b){
+  const A=[...new Set(a)].sort((x,y)=>x-y), B=[...new Set(b)].sort((x,y)=>x-y);
+  return A.length===B.length && A.every((v,i)=>v===B[i]);
+}
+
+/* ㉑ خط الأعداد (number-line): min/max/step/labelEvery لضبط التدريج + mode
+   ثلاثة أوضاع — place (وضع عدد على الخط)، jump (القفز بالعدّ)، round (التقريب لأقرب عشرة).
+   التفاعل: نقر التدريجة أو سحب المؤشّر إليها (فأرة + لمس)، مع tolerance لمساحة الخطأ.
+   الرسم SVG بالكامل من محرّك التدريج المشترك أعلاه. */
+function renderNumberLine(q, body, fb){
+  const min=+q.min, max=+q.max, step=Math.abs(+q.step)||1;
+  const mode=q.mode||'place';
+  const tol=(q.tolerance!=null)?Math.abs(+q.tolerance):0;
+  const ticks=scaleTicks(min,max,step,q.labelEvery||1);
+  // مساحة الرسم: عريضة بطبعها، والهوامش تتّسع لأرقام التدريج ولقوس القفز فوق الخط
+  // الهوامش ضيّقة عمداً: عرض النافذة المقيس ~483px هو كل ما يتاح للخط، فكل بكسل هامشٍ
+  // يقتطع من تباعد التدريجات — وهو ما يحكم دقّة اللمس على السبورة
+  const W=900, H=260, X0=46, X1=854, Y=170;
+  const jump=q.jump||{}, jStart=+jump.start||min, jSize=Math.abs(+jump.size)||step, jCount=Math.max(1,Math.round(+jump.count||1));
+  const roundTo=Math.abs(+q.roundTo)||10;
+  const answer = mode==='round' ? Math.round((+q.target)/roundTo)*roundTo
+               : mode==='jump'  ? jStart+jSize*jCount
+               : +q.target;
+  const px=v=>scalePos(v,min,max,X0,X1);
+  // ── بناء الرسم ──
+  let marks='';
+  ticks.forEach(t=>{
+    const x=px(t.v), h=t.major?26:14;
+    marks+=`<line class="nl-tick${t.major?' nl-major':''}" x1="${x}" y1="${Y-h}" x2="${x}" y2="${Y+h}"></line>`;
+    if(t.major) marks+=`<text class="nl-num" x="${x}" y="${Y+64}">${arNum(t.v)}</text>`;
+  });
+  // في وضع التقريب: العدد المطلوب تقريبُه معلَّمٌ ثابتاً على الخط ليقارن الطالب بُعده عن العشرتين
+  let fixed='';
+  if(mode==='round'){
+    const tx=px(+q.target);
+    fixed=`<g class="nl-given"><line x1="${tx}" y1="${Y-64}" x2="${tx}" y2="${Y}"></line>`+
+      `<circle cx="${tx}" cy="${Y}" r="11"></circle>`+
+      `<text x="${tx}" y="${Y-76}">${arNum(+q.target)}</text></g>`;
+  }
+  const showMarker = (mode!=='jump');
+  /* المؤشّر: كبسولة عرضها 128 وحدة (~64px تصميميّ بعد التحجيم) برأسٍ مدبّب يلمس الخط.
+     وهو **مؤشّر لا مقبض**: مساحة اللمس هي لوح الرسم كلّه (نقرة في أي موضع تنقله)، كما
+     أنّ .hs-mark في «تحديد الأجزاء» علامةُ عرضٍ لا هدفَ لمس — فلا يسري عليه حدّ 60px. */
+  const MT=Y-136;                                   // قمّة الكبسولة
+  const marker = showMarker ? `<g class="nl-marker" transform="translate(${px(min)},0)">`+
+      `<path class="nl-mhead" d="M -50 ${MT} h 100 a 14 14 0 0 1 14 14 v 74 a 14 14 0 0 1 -14 14 h -34 l -16 18 l -16 -18 h -34 a 14 14 0 0 1 -14 -14 v -74 a 14 14 0 0 1 14 -14 z"></path>`+
+      `<circle class="nl-mdot" cx="0" cy="${Y}" r="12"></circle>`+
+      `<text class="nl-mval" x="0" y="${MT+72}"></text></g>` : '';
+  const actions = (mode==='jump')
+    ? `<div class="actions"><button class="btn btn-reset">إعادة ↺</button></div>`
+    : `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
+  body.innerHTML=`<div class="numline">`+
+    (mode==='jump'?`<div class="nl-progress">القَفَزاتُ: <b>٠</b> من <b>${arNum(jCount)}</b></div>`:'')+
+    `<svg class="nlsvg" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">`+
+      `<line class="nl-axis" x1="${X0-24}" y1="${Y}" x2="${X1+24}" y2="${Y}"></line>`+
+      `<g class="nl-jumps"></g>${marks}${fixed}${marker}`+
+    `</svg></div>${actions}`;
+  const svg=body.querySelector('.nlsvg');
+  const mk=body.querySelector('.nl-marker'), mval=body.querySelector('.nl-mval');
+  const jumpsG=body.querySelector('.nl-jumps');
+  let val=min, done=false, jDone=0;
+  function setVal(v){
+    // الالتقاط إلى أقرب تدريجة: اللمس على السبورة غير دقيق فلا تُترك القيمة بين علامتين
+    const snapped=Math.max(min,Math.min(max, min+Math.round((v-min)/step)*step));
+    val=+snapped.toFixed(10);
+    if(mk){ mk.setAttribute('transform','translate('+px(val)+',0)'); mval.textContent=arNum(val); }
+  }
+  // قوس قفزة واحدة من a إلى b فوق الخط، بسهم ومقدار القفزة
+  function drawJump(a,b){
+    const xa=px(a), xb=px(b), mx=(xa+xb)/2, top=Y-84;
+    jumpsG.appendChild(svgEl('path',{class:'nl-arc',d:`M ${xa} ${Y-14} Q ${mx} ${top} ${xb} ${Y-14}`,fill:'none'}));
+    jumpsG.appendChild(svgEl('path',{class:'nl-arrow',d:`M ${xb} ${Y-10} l -9 -13 l 18 0 z`}));
+    jumpsG.appendChild(svgEl('text',{class:'nl-arclabel',x:mx,y:top+6},'+'+arNum(jSize)));
+    jumpsG.appendChild(svgEl('circle',{class:'nl-jdot',cx:xb,cy:Y,r:10}));
+  }
+  if(mode==='jump'){
+    jumpsG.appendChild(svgEl('circle',{class:'nl-jdot nl-jstart',cx:px(jStart),cy:Y,r:12}));
+    jumpsG.appendChild(svgEl('text',{class:'nl-jlabel',x:px(jStart),y:Y+96},'البداية'));
+  } else setVal(min);
+  // ── التفاعل: نقر التدريجة أو سحب المؤشّر إليها ──
+  function pointAt(p){
+    if(done) return;
+    const v=scaleVal(p.x,min,max,X0,X1);
+    if(mode==='jump'){
+      const snapped=Math.max(min,Math.min(max, min+Math.round((v-min)/step)*step));
+      const want=jStart+jSize*(jDone+1);
+      if(Math.abs(snapped-want)<=Math.max(tol,step/2)){
+        drawJump(jStart+jSize*jDone, want); jDone++;
+        const pr=body.querySelector('.nl-progress b'); if(pr) pr.textContent=arNum(jDone);
+        if(jDone===jCount){ done=true; qWin(fb,'🎉 أحسنت! وصلت بالقفز إلى '+arNum(answer),3); }
+        else{ playCorrectSound(); fb.textContent='👍 قفزة صحيحة — تابع'; fb.className='fb qfb'; }
+      } else qFail(fb,'ليست هذه القفزة — اقفز '+arNum(jSize)+' من آخر موضع وصلت إليه');
+      return;
+    }
+    setVal(v);
+  }
+  svgPointer(svg, pointAt, p=>{ if(mode!=='jump') pointAt(p); });
+  const chk=body.querySelector('.btn-check');
+  if(chk) chk.onclick=()=>{
+    if(done) return;
+    if(Math.abs(val-answer)<=tol){
+      done=true; if(mk) mk.classList.add('correct');
+      qWin(fb, mode==='round' ? '🎯 أحسنت! '+arNum(+q.target)+' يُقرَّب إلى '+arNum(answer)
+                              : '🎯 أحسنت! هذا موضع العدد '+arNum(answer), 3);
+    } else qFail(fb, val<answer ? 'موضعك قبل المطلوب — تقدّم على الخط قليلاً'
+                                : 'موضعك بعد المطلوب — تراجع على الخط قليلاً');
+  };
+  body.querySelector('.btn-reset').onclick=()=>renderNumberLine(q,body,fb);
+}
 
 /* ⑳ بناء المعادلة (equation-builder): tokens[] فيها "__" لكل خانة فارغة + bank[] + answers[]
    المعادلة صفٌّ من رموز ثابتة وخانات فارغة، وبنك بطاقات أرقام ورموز (+ − =) تُسحب إليها

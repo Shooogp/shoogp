@@ -665,6 +665,41 @@
   .chip.picked{box-shadow:0 0 0 4px rgba(245,160,74,.55),0 6px 16px rgba(245,160,74,.4);
     transform:translateY(-2px)}
 
+  /* ㉑ خط الأعداد (number-line): رسم SVG واحد بالكامل — محور وتدريج وأرقام ومؤشّر
+     وأقواس قفز. الرسم **خارج الكسوة** (رسم سؤال لا عنصر تفاعليّ ملوَّن) كنمط hotspot،
+     ولوحته فاتحة كي تُقرأ فوق تعبئة الإطار السماوية الداكنة */
+  .numline{width:100%;display:flex;flex-direction:column;align-items:center;gap:10px}
+  .nl-progress{font-family:'Cairo';font-weight:700;color:#fff;font-size:1.15rem;
+    text-shadow:0 1px 3px rgba(0,0,0,.34)}
+  .nl-progress b{color:#ffe27a;font-size:1.4rem;margin-inline:4px}
+  /* لوح الرسم: أبيض مستدير كصندوق نصّ ملء الفراغ — خلفية موحّدة تُقرأ عليها الأرقام */
+  .nlsvg{width:100%;height:auto;display:block;background:#fff;border-radius:18px;
+    box-shadow:0 4px 14px rgba(0,0,0,.22);touch-action:none;cursor:pointer;
+    -webkit-user-select:none;user-select:none}
+  .nl-axis{stroke:#4a3a10;stroke-width:5;stroke-linecap:round}
+  .nl-tick{stroke:#c3ad82;stroke-width:3;stroke-linecap:round}
+  .nl-tick.nl-major{stroke:#4a3a10;stroke-width:5}
+  .nl-num{fill:#2f3a2c;font-family:'Cairo';font-weight:800;font-size:34px;text-anchor:middle}
+  /* العدد المُعطى في وضع التقريب: معلَّم ثابتاً ليقارن الطالب بُعده عن العشرتين */
+  .nl-given line{stroke:#c94a4a;stroke-width:4;stroke-dasharray:9 7}
+  .nl-given circle{fill:#c94a4a}
+  .nl-given text{fill:#c94a4a;font-family:'Cairo';font-weight:800;font-size:38px;text-anchor:middle}
+  /* المؤشّر: كبسولة كبيرة برأس مثلّث تلمس الخط — هدف لمس واسع للسبورة */
+  .nl-mhead{fill:#f5a04a;stroke:#c8791f;stroke-width:4}
+  .nl-mdot{fill:#f5a04a;stroke:#c8791f;stroke-width:3}
+  .nl-mval{fill:#fff;font-family:'Cairo';font-weight:800;font-size:62px;text-anchor:middle}
+  /* الصواب: فارق شكليّ مع اللون (حلقة أوضح) لا لون فحسب */
+  .nl-marker.correct .nl-mhead{fill:#a7c957;stroke:#4e7c1f;stroke-width:5}
+  .nl-marker.correct .nl-mdot{fill:#a7c957;stroke:#4e7c1f}
+  .nl-marker.correct .nl-mval{fill:#20340a}
+  /* أقواس القفز بالعدّ */
+  .nl-arc{stroke:#2f6fb0;stroke-width:5;stroke-linecap:round}
+  .nl-arrow{fill:#2f6fb0}
+  .nl-arclabel{fill:#2f6fb0;font-family:'Cairo';font-weight:800;font-size:32px;text-anchor:middle}
+  .nl-jdot{fill:#2f6fb0}
+  .nl-jdot.nl-jstart{fill:#f5a04a;stroke:#c8791f;stroke-width:3}
+  .nl-jlabel{fill:#4a3a10;font-family:'Cairo';font-weight:800;font-size:28px;text-anchor:middle}
+
   /* التنقّل بين الأسئلة (خطوة بخطوة) */
   .qnav{display:flex;align-items:center;justify-content:center;gap:16px;margin:6px 0 10px;flex-wrap:wrap}
   .qnav .btn{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);color:#fff;min-width:118px}
