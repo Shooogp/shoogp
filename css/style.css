@@ -235,13 +235,20 @@
   .dnd.dnd-wide .bank .bt{flex-basis:100%;text-align:center;margin-bottom:0}
   /* أسئلة تحديد الأجزاء (hotspot): لا بطاقات جانبية — الصورة تملأ العرض وتتوسّط */
   .dnd-solo{grid-template-columns:1fr}
-  .dnd-solo .stage-img{max-width:640px;margin-inline:auto}
+  /* `min(…,100%)` لا 640px مجرّدة: السقف الثابت يتجاوز نافذة الإطار حين تكون أضيق
+     منه (نافذة الرياضيات tall = 622px) فيخرج الرسم عن الإطار ويميل عن مركزه.
+     القيد بالحاوية يمنع ذلك ولا يصغّر شيئاً حين تتّسع النافذة. */
+  .dnd-solo .stage-img{max-width:min(640px,100%);margin-inline:auto}
   .stage{position:relative;background:linear-gradient(180deg,#eaf5ee 60%,#f3e8d8 60%);
     border-radius:18px;height:400px;overflow:hidden;border:2px dashed rgba(181,201,154,.55)}
   .stage-img{background:#fdfbf5;display:flex;align-items:center;justify-content:center}
   .plantimg{max-height:100%;max-width:100%;object-fit:contain}
   /* غلاف الرسم/الصورة: يحافظ على النسبة وتُوضع الأهداف نسبةً إليه */
-  .figwrap{position:relative;height:100%;display:inline-block}
+  /* `max-width:100%` حارسٌ عام: الغلاف يأخذ عرضه من نسبة الرسم × ارتفاع المسرح،
+     فقد يتجاوز نافذة الإطار حين تكون ضيّقةً (نافذة الرياضيات tall = 622px مقابل
+     رسمٍ عرضه 654px) فيخرج الرسم عن الإطار من الجهتين. */
+  .figwrap{position:relative;height:100%;display:inline-block;max-width:100%}
+  .figwrap svg,.figwrap img{max-width:100%}
   .figwrap svg,.figwrap img{height:100%;width:auto;display:block}
   /* ملاءمة العرض: للصور العريضة (تملأ العرض ويتوسّط ارتفاعها) */
   .figwrap.fw{height:auto;width:100%;display:block}
