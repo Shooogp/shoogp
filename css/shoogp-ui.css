@@ -669,7 +669,10 @@
     0 1px 0 var(--rk-lip),
     0 2px 5px rgba(60,40,15,.20),
     var(--rk-glow);
-  position:relative;
+  /* ⚠️ **لا `position` هنا** — انظرِ القاعدةَ التالية. الكسوةُ تحتاجُ العنصرَ
+     **حاوياً للموضعِ المطلق** لطبقةِ `::before` فقط، و`absolute` يفي بذلك مثلَ
+     `relative` تماماً. وفرضُ `relative` على المجموعةِ كلِّها كان يُبطِلُ
+     `.target{position:absolute}` فينهارُ تخطيطُ «السحبِ على صورة». */
   isolation:isolate;                       /* سياقُ تكديسٍ كي يبقى ::before تحتَ النص */
   background:var(--rk-face) !important;
   border:2px solid var(--rk-edge) !important;
@@ -694,6 +697,15 @@
      الرفعِ المتحرّك فلا يُلحَظُ انقطاع. */
   transition:transform .14s ease !important;
 }
+/* ── حاويةُ الموضعِ لطبقةِ `::before`: لكلِّ الأعضاءِ **إلا `.target`** ──
+   الأعضاءُ الآخرون ساكنونَ بطبيعتِهم (`static`) فيلزمُهم `relative` كي تنحصرَ
+   طبقةُ النقراتِ فيهم. أمّا `.target` فمطلَقُ الموضعِ أصلاً (‏`position:absolute`
+   مع `left/top` بالنسبةِ المئويةِ و`translate(-50%,-50%)` فوقَ صورةِ السؤال)،
+   **والمطلَقُ حاوٍ لنفسِه**، فلا يحتاجُ `relative` — بل يُفسدُه: فرضُها يُعيدُه
+   إلى التدفّقِ فيمتدَّ بعرضِ المسرحِ ويسقطَ تحتَ قاعِه.
+   قُصِرَ النطاقُ هنا بدلَ رفعِ خصوصيةٍ أو `!important` على `.target`. */
+.shoogp-ui.skin-rocky .qwin :where(.opt,.tf,.excl-opt,.mitem,.chip,.mmchip,.seqitem,.aopt,
+                                   .blank){position:relative}
 /* الاختيارُ من متعدد: النصُّ إلى بدايةِ السطر (يمينُ RTL)؛ وبقيةُ الكبسولاتِ متوسّطة. */
 .shoogp-ui.skin-rocky .qwin .opt{justify-content:flex-start; text-align:start}
 .shoogp-ui.skin-rocky .qwin :where(.tf,.excl-opt,.mitem,.chip,.mmchip,
@@ -896,9 +908,19 @@
   background-size:9px 8px, 7px 6px, 12px 10px, 8px 7px, 10px 8px;
   opacity:.75;
 }
-.shoogp-ui.skin-rocky .qwin :is(.blank,.target):not(.filled){position:relative; isolation:isolate}
+/* سياقُ التكديسِ للفارغِ أيضاً — **بلا `position`** للسببِ نفسِه أعلاه:
+   `.blank` يأخذُ `relative` من قاعدةِ الحاويةِ العامّة، و`.target` مطلَقٌ فيكفي. */
+.shoogp-ui.skin-rocky .qwin :is(.blank,.target):not(.filled){isolation:isolate}
 /* أثناءَ السحبِ فوقَ فراغٍ صالح: توهّجٌ مرحّبٌ أخضرُ يقولُ «أفلتْ هنا» (يبقى غائراً) */
-.shoogp-ui.skin-rocky .qwin :is(.blank,.target).over:not(.filled){
+/* تُستثنى الحالاتُ المُجابةُ كما في قاعدةِ «الفارغ» تماماً — فبدونِها كانت قاعدةُ
+   الفارغِ (ثلاثةُ `:not`) أوزنَ من هذه (‏`:not` واحد) فتبتلعُ توهّجَ الترحيب.
+   **حدٌّ معروفٌ (لم يُحَلّ):** توهّجُ الترحيبِ (‏`box-shadow`) يعملُ الآن ويُقاسُ،
+   أمّا **لونُ الحدِّ فلا يتبدّلُ** رغمَ الإعلانِ الصريحِ بـ`!important` وبوزنٍ أعلى،
+   ولا بتبديلِ `--rk-edge-dk`، ولا بعدَ استقرارِ انتقالِ `.target` (‏قِيسَ بعد 350مث).
+   **والسلوكُ نفسُه في الرياضياتِ التي لم تُمَسّ** (قاعدتُها `.qwin .target.over`
+   بـ`!important` لا تُطبَّقُ أيضاً) — فالعلّةُ سابقةٌ للقشرةِ وخارجَ نطاقِ هذا
+   الإصلاح. التوهّجُ وحدَه يكفي إشارةَ «أفلتْ هنا» حالياً. */
+.shoogp-ui.skin-rocky .qwin :is(.blank,.target).over:not(.filled):not(.correct):not(.wrong){
   border-color:#7cb051 !important;
   box-shadow:
     inset 0 3px 8px rgba(60,90,30,.40),
