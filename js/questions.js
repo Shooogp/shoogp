@@ -93,8 +93,11 @@ window.QUESTIONS = {
     },
 
     // ⑥ البازل (إثرائي اختياري) — استدلال — 2Nn9
-    // الصورة رسم SVG مضمّن في البيانات نفسها (data URI) لا ملفّ خارجيّ: يكشف تركيبُ
-    // القطعِ العددَ ٧٥ ومعه تمثيلُه بسبعِ عشراتٍ وخمسةِ آحادٍ، فيقرأ الطفل جوابه ويتحقّق منه.
+    // الصورة رسم SVG مضمّن (data URI) مصمّم على قاعدة «صورة القطع ممتلئة المعالم»
+    // (DESIGN_RULES.md §أسئلة البازل): معالم مميّزة في كل خلية من خلايا ٣×٣ —
+    // إطار يمرّ بقطع الحواف، رموز مختلفة في الأركان الأربعة (هلال/نجمة/كوكب/صاروخ)،
+    // خط أعداد ٧٠–٨٠ يعبر الصف العلوي كاملاً (استمرارية تعين على التركيب)، والعدد
+    // ٧٥ الكبير وتمثيله بالعشرات والآحاد يملآن الوسط والأسفل — فلا قطعة خالية.
     {
       type: "puzzle",
       objective: "2Nn9: يذكر عدداً بين أي عددين متجاورين من أضعاف العشرة، مثال: عدد بين ٤٠ و٥٠",
@@ -104,33 +107,83 @@ window.QUESTIONS = {
       grid: { cols: 3, rows: 3 },
       image: "data:image/svg+xml," + encodeURIComponent(
         `<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600">
-          <defs><g id="rod">
-            <rect x="0" y="0" width="44" height="160" rx="8" fill="#ffffff" stroke="#2f6fb0" stroke-width="4"/>
-            <line x1="0" y1="16"  x2="44" y2="16"  stroke="#2f6fb0" stroke-width="2"/>
-            <line x1="0" y1="32"  x2="44" y2="32"  stroke="#2f6fb0" stroke-width="2"/>
-            <line x1="0" y1="48"  x2="44" y2="48"  stroke="#2f6fb0" stroke-width="2"/>
-            <line x1="0" y1="64"  x2="44" y2="64"  stroke="#2f6fb0" stroke-width="2"/>
-            <line x1="0" y1="80"  x2="44" y2="80"  stroke="#2f6fb0" stroke-width="2"/>
-            <line x1="0" y1="96"  x2="44" y2="96"  stroke="#2f6fb0" stroke-width="2"/>
-            <line x1="0" y1="112" x2="44" y2="112" stroke="#2f6fb0" stroke-width="2"/>
-            <line x1="0" y1="128" x2="44" y2="128" stroke="#2f6fb0" stroke-width="2"/>
-            <line x1="0" y1="144" x2="44" y2="144" stroke="#2f6fb0" stroke-width="2"/>
-          </g></defs>
+          <defs>
+            <g id="rod">
+              <rect x="0" y="0" width="44" height="150" rx="8" fill="#ffffff" stroke="#2f6fb0" stroke-width="4"/>
+              <line x1="0" y1="15" x2="44" y2="15" stroke="#2f6fb0" stroke-width="2"/>
+              <line x1="0" y1="30" x2="44" y2="30" stroke="#2f6fb0" stroke-width="2"/>
+              <line x1="0" y1="45" x2="44" y2="45" stroke="#2f6fb0" stroke-width="2"/>
+              <line x1="0" y1="60" x2="44" y2="60" stroke="#2f6fb0" stroke-width="2"/>
+              <line x1="0" y1="75" x2="44" y2="75" stroke="#2f6fb0" stroke-width="2"/>
+              <line x1="0" y1="90" x2="44" y2="90" stroke="#2f6fb0" stroke-width="2"/>
+              <line x1="0" y1="105" x2="44" y2="105" stroke="#2f6fb0" stroke-width="2"/>
+              <line x1="0" y1="120" x2="44" y2="120" stroke="#2f6fb0" stroke-width="2"/>
+              <line x1="0" y1="135" x2="44" y2="135" stroke="#2f6fb0" stroke-width="2"/>
+            </g>
+            <pattern id="pzdots" width="30" height="30" patternUnits="userSpaceOnUse">
+              <circle cx="7" cy="7" r="2.2" fill="#f2ead9"/>
+            </pattern>
+          </defs>
           <rect width="900" height="600" fill="#fdf9ee"/>
-          <text x="450" y="255" font-size="210" font-weight="800" text-anchor="middle" fill="#d97a2b" font-family="Cairo, Tajawal, Segoe UI, sans-serif">٧٥</text>
-          <text x="450" y="335" font-size="42" font-weight="700" text-anchor="middle" fill="#4a3a10" font-family="Cairo, Tajawal, Segoe UI, sans-serif">٧ عشرات و٥ آحاد</text>
-          <use href="#rod" x="731" y="390"/>
-          <use href="#rod" x="673" y="390"/>
-          <use href="#rod" x="615" y="390"/>
-          <use href="#rod" x="557" y="390"/>
-          <use href="#rod" x="499" y="390"/>
-          <use href="#rod" x="441" y="390"/>
-          <use href="#rod" x="383" y="390"/>
-          <rect x="293" y="520" width="30" height="30" rx="6" fill="#ffffff" stroke="#d97a2b" stroke-width="4"/>
-          <rect x="251" y="520" width="30" height="30" rx="6" fill="#ffffff" stroke="#d97a2b" stroke-width="4"/>
-          <rect x="209" y="520" width="30" height="30" rx="6" fill="#ffffff" stroke="#d97a2b" stroke-width="4"/>
-          <rect x="167" y="520" width="30" height="30" rx="6" fill="#ffffff" stroke="#d97a2b" stroke-width="4"/>
-          <rect x="125" y="520" width="30" height="30" rx="6" fill="#ffffff" stroke="#d97a2b" stroke-width="4"/>
+          <rect width="900" height="600" fill="url(#pzdots)"/>
+          <rect x="14" y="14" width="872" height="572" rx="26" fill="none" stroke="#2f6fb0" stroke-width="12"/>
+          <circle cx="64" cy="64" r="26" fill="#f2c14e"/>
+          <circle cx="76" cy="54" r="22" fill="#fdf9ee"/>
+          <path d="M836,36 L843.6,54 L862,54 L847,66 L852,84 L836,73 L820,84 L825,66 L810,54 L828.4,54 Z" fill="#f2c14e" stroke="#c8791f" stroke-width="3"/>
+          <circle cx="64" cy="536" r="24" fill="#7fb3e0" stroke="#2f6fb0" stroke-width="4"/>
+          <ellipse cx="64" cy="536" rx="40" ry="12" fill="none" stroke="#d97a2b" stroke-width="4"/>
+          <g stroke="#8a4a1f" stroke-width="3" fill="#e8875a">
+            <rect x="822" y="500" width="30" height="58" rx="14"/>
+            <path d="M837,486 L851,506 L823,506 Z"/>
+            <path d="M822,544 L808,566 L822,558 Z"/>
+            <path d="M852,544 L866,566 L852,558 Z"/>
+          </g>
+          <circle cx="837" cy="524" r="7" fill="#dceefb" stroke="#8a4a1f" stroke-width="3"/>
+          <line x1="80" y1="105" x2="820" y2="105" stroke="#33415e" stroke-width="5" stroke-linecap="round"/>
+          <line x1="810" y1="92" x2="810" y2="118" stroke="#33415e" stroke-width="4"/>
+          <text x="810" y="158" font-size="28" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Cairo, Tajawal, sans-serif">٧٠</text>
+          <line x1="738" y1="92" x2="738" y2="118" stroke="#33415e" stroke-width="4"/>
+          <text x="738" y="158" font-size="28" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Cairo, Tajawal, sans-serif">٧١</text>
+          <line x1="666" y1="92" x2="666" y2="118" stroke="#33415e" stroke-width="4"/>
+          <text x="666" y="158" font-size="28" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Cairo, Tajawal, sans-serif">٧٢</text>
+          <line x1="594" y1="92" x2="594" y2="118" stroke="#33415e" stroke-width="4"/>
+          <text x="594" y="158" font-size="28" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Cairo, Tajawal, sans-serif">٧٣</text>
+          <line x1="522" y1="92" x2="522" y2="118" stroke="#33415e" stroke-width="4"/>
+          <text x="522" y="158" font-size="28" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Cairo, Tajawal, sans-serif">٧٤</text>
+          <circle cx="450" cy="105" r="26" fill="#ffd79a" stroke="#d97a2b" stroke-width="4"/>
+          <line x1="450" y1="92" x2="450" y2="118" stroke="#33415e" stroke-width="5"/>
+          <text x="450" y="158" font-size="34" font-weight="800" text-anchor="middle" fill="#d97a2b" font-family="Cairo, Tajawal, sans-serif">٧٥</text>
+          <line x1="378" y1="92" x2="378" y2="118" stroke="#33415e" stroke-width="4"/>
+          <text x="378" y="158" font-size="28" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Cairo, Tajawal, sans-serif">٧٦</text>
+          <line x1="306" y1="92" x2="306" y2="118" stroke="#33415e" stroke-width="4"/>
+          <text x="306" y="158" font-size="28" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Cairo, Tajawal, sans-serif">٧٧</text>
+          <line x1="234" y1="92" x2="234" y2="118" stroke="#33415e" stroke-width="4"/>
+          <text x="234" y="158" font-size="28" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Cairo, Tajawal, sans-serif">٧٨</text>
+          <line x1="162" y1="92" x2="162" y2="118" stroke="#33415e" stroke-width="4"/>
+          <text x="162" y="158" font-size="28" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Cairo, Tajawal, sans-serif">٧٩</text>
+          <line x1="90" y1="92" x2="90" y2="118" stroke="#33415e" stroke-width="4"/>
+          <text x="90" y="158" font-size="28" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Cairo, Tajawal, sans-serif">٨٠</text>
+          <text x="450" y="318" font-size="185" font-weight="800" text-anchor="middle" fill="#d97a2b" font-family="Cairo, Tajawal, Segoe UI, sans-serif">٧٥</text>
+          <text x="450" y="378" font-size="36" font-weight="700" text-anchor="middle" fill="#4a3a10" font-family="Cairo, Tajawal, Segoe UI, sans-serif">أنا بَينَ ٧٠ و٨٠</text>
+          <text x="745" y="330" font-size="44" font-weight="800" text-anchor="middle" fill="#2f6fb0" font-family="Cairo, Tajawal, Segoe UI, sans-serif">٧ عشرات</text>
+          <line x1="745" y1="348" x2="745" y2="392" stroke="#2f6fb0" stroke-width="5" stroke-linecap="round"/>
+          <path d="M733,390 L757,390 L745,408 Z" fill="#2f6fb0"/>
+          <text x="160" y="330" font-size="44" font-weight="800" text-anchor="middle" fill="#d97a2b" font-family="Cairo, Tajawal, Segoe UI, sans-serif">٥ آحاد</text>
+          <line x1="160" y1="348" x2="160" y2="392" stroke="#d97a2b" stroke-width="5" stroke-linecap="round"/>
+          <path d="M148,390 L172,390 L160,408 Z" fill="#d97a2b"/>
+          <rect x="70" y="418" width="220" height="164" rx="14" fill="none" stroke="#d97a2b" stroke-width="3" stroke-dasharray="10 8"/>
+          <use href="#rod" x="380" y="420"/>
+          <use href="#rod" x="438" y="420"/>
+          <use href="#rod" x="496" y="420"/>
+          <use href="#rod" x="554" y="420"/>
+          <use href="#rod" x="612" y="420"/>
+          <use href="#rod" x="670" y="420"/>
+          <use href="#rod" x="728" y="420"/>
+          <rect x="95" y="435" width="44" height="44" rx="8" fill="#ffffff" stroke="#d97a2b" stroke-width="5"/>
+          <rect x="215" y="435" width="44" height="44" rx="8" fill="#ffffff" stroke="#d97a2b" stroke-width="5"/>
+          <rect x="155" y="495" width="44" height="44" rx="8" fill="#ffffff" stroke="#d97a2b" stroke-width="5"/>
+          <rect x="95" y="555" width="44" height="44" rx="8" fill="#ffffff" stroke="#d97a2b" stroke-width="5"/>
+          <rect x="215" y="555" width="44" height="44" rx="8" fill="#ffffff" stroke="#d97a2b" stroke-width="5"/>
         </svg>`)
     }
 

@@ -748,6 +748,18 @@ function fitFrame(card){
       fill=card.querySelector('.qfill'),
       w=card.querySelector('.qwin');
   if(!f||!w) return;
+  /* ═══ محتوىٌ فيه «وسيطٌ مرن» (‏`.qfit-flex` — قاعدةُ الاحتواءِ الأساسية §④) ═══
+     الوسيطُ المرنُ يتقلّصُ ليتلاءمَ مع النافذة، فالبطاقةُ «تسعُ» أيَّ إطارٍ مهما ضاق —
+     ولو تُرِكَ البحثُ الثنائيُّ على حالِه لاختارَ **أضيقَ** إطارٍ فسُحِقَ الرسمُ إلى لا شيء.
+     فمعيارُ الاختيارِ ينقلبُ لهذه البطاقات: **أوسعُ إطارٍ مسموح**، فيأخذَ الرسمُ كلَّ ما
+     تبقّى من النافذة. (اختيارُ *الحجمِ* بالنسبة لا يتغيّر: النسبةُ D تُقاسُ والنافذةُ
+     `height:auto` فالوسيطُ عندها بحجمِه الطبيعيّ.) ونُهيّئُ وعاءَ الوسيطِ عمودَ flex
+     كي يصلَ التقلّصُ من النافذةِ إليه (‏`.qbody.qflexmedia` في css/style.css). */
+  var _flexMedia=w.querySelector('.qfit-flex');
+  if(_flexMedia){
+    var _fmBody=_flexMedia.closest('.qbody');
+    if(_fmBody) _fmBody.classList.add('qflexmedia');
+  }
   /* قِس بأسوأ الحالات (للأنواع المتحرّكة) ثم أعِد كل شيء كما كان في finally */
   var _wc=worstCaseArrange(w);
   var _restore=_wc&&_wc.restore;
@@ -784,9 +796,10 @@ function fitFrame(card){
     if(!frameFits(f,fill,w,size,Wmax)) continue;  /* لا يسع حتى عند الأكبر */
     var d=Math.abs(frameWinAR(cfg)-D);            /* بُعد نسبة نافذته عن نسبة المحتوى */
     if(best && d>=best.d) continue;               /* أبعد من الفائز الحاليّ */
-    /* بحث ثنائي عن أصغر عرض يسع في [Wmin,Wmax] (hi يسع دائماً) */
+    /* بحث ثنائي عن أصغر عرض يسع في [Wmin,Wmax] (hi يسع دائماً).
+       والوسيطُ المرنُ يتخطّاه: أوسعُ عرضٍ مسموحٍ (hi=Wmax) هو مطلوبُه (انظر أعلاه). */
     var lo=Wmin, hi=Wmax;
-    for(var it=0; it<16; it++){
+    if(!_flexMedia) for(var it=0; it<16; it++){
       var mid=(lo+hi)/2;
       if(frameFits(f,fill,w,size,mid)) hi=mid; else lo=mid;
     }
@@ -919,8 +932,15 @@ function watchShown(){
   var w=shown.querySelector('.qwin');
   if(contentRO && w){
     try{ contentRO.disconnect(); }catch(e){}
-    /* نراقب أبناء النافذة (تنمو أطوالهم مع توزيع البطاقات) — النافذة نفسها ثابتة الأبعاد */
-    Array.prototype.forEach.call(w.children,function(ch){ contentRO.observe(ch); });
+    /* نراقب أبناء النافذة (تنمو أطوالهم مع توزيع البطاقات) — النافذة نفسها ثابتة الأبعاد.
+       **وأبناءَ أبنائِها معهم**: قاعدةُ الاحتواءِ الأساسية (css/style.css) تسقُفُ `.qbody`
+       بـ`max-height:100%`، فصندوقُه لا يعلو عن النافذةِ بعدَها ولو نما محتواه — فلو
+       اكتفينا بالمستوى الأول لَصَمَتَ المراقبُ عن نموٍّ حقيقيٍّ داخلَه. المستوى الثاني
+       يُبقي شبكةَ الأمانِ حيّةً (طبقةٌ مشتركةٌ لكلِّ الأنواع، بلا استثناءٍ لنوع). */
+    Array.prototype.forEach.call(w.children,function(ch){
+      contentRO.observe(ch);
+      Array.prototype.forEach.call(ch.children,function(gc){ contentRO.observe(gc); });
+    });
   }
   if(frameRO){
     var f=shown.querySelector('.qframe');

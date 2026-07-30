@@ -346,7 +346,8 @@ function dndStageGuard(dnd){
 }
 /* سقف عرض المسرح للصور الطولية في الصفّ الأفقيّ.
    الصفّ يمنح المسرح عرض النافذة كاملاً، فتبتعد صناديق الوسم عن صورةٍ طوليّةٍ ضيّقة
-   (محكومةٌ بارتفاع المسرح لا بعرضه) فتبدو سابحةً بعيداً عنها رغم الخيوط الواصلة.
+   (محكومةٌ بارتفاع المسرح لا بعرضه) فتبدو سابحةً بعيداً عنها رغم الخيوط الواصلة —
+   وفي الرياضيات (بلا خطوط، DESIGN_RULES.md) القربُ المكانيُّ وسيلةُ الربطِ الوحيدة فالسقفُ ألزم.
    المرجع المقيس: الحالة السليمة «الهياكل العظمية» — أقصى بُعد صندوق عن مركز الصورة
    = 84% من عرض الصورة. وبما أنّ البُعد = (٥٠٪ − نسبة الحافّة) × عرض المسرح، يكون:
         عرض المسرح ≤ 0.84 × عرض الصورة ÷ (٥٠٪ − نسبة الحافّة)  ≈ 2.5 × عرض الصورة
@@ -375,29 +376,100 @@ function applyDndLayout(dnd, ar){
   dndStageGuard(dnd);
 }
 
-/* ① سحب وإفلات: targets[{answer,x,y}] + خلفية image/svg */
+/* ① سحب وإفلات: targets[{answer,box,dot}] + خلفية image/svg
+   ═══ قاعدة تصميم دائمة — انظر DESIGN_RULES.md §«أسئلة السحب والإفلات — خطوط التوصيل» ═══
+   نوعا مناطق الإفلات:
+   (أ) مناطق استقبال منفصلة حول الرسم (.target «؟») — السلوك الافتراضي لكل
+       المواد بما فيها الرياضيات: خط واصل (.dndline داخل svg.dndlines) ونقطة
+       (.dnd-dot) بين المنطقة وموضعها على الرسم/الصورة.
+   (ب) خانات فارغة داخل رسم السؤال نفسه (rect/circle بحدّ متقطّع داخل svg —
+       كالخانات الناقصة بين الأرقام في صف لوحة المائة) — استثناء الرياضيات:
+       الهدف الذي تقع نقطته داخل خانةٍ منها يصير طبقةَ إفلاتٍ شفافةً على
+       الخانة نفسها (.target-cell)، بلا خط ولا نقطة — لا تُنشأ عناصرها أصلاً
+       في DOM — والسحب مباشر إلى الخانة الفارغة بين الأرقام، لأن موضعها صحيح
+       وثابت فلا يحتاج خطاً يوجّه إليه.
+   التصنيف تلقائيّ من الرسم الحيّ والشرط مركزيّ هنا، فيرثه كل سؤال سحب
+   وإفلات حالي أو مستقبلي تلقائياً دون تعديل بياناته. */
 function renderDragDrop(q, body, fb){
   let dragged=null;
+  // استثناء الرياضيات (DESIGN_RULES.md): صنف subj-math يضعه shoogp-ui.js على #questionList
+  // قبل بناء الأسئلة. البطاقة تُبنى منفصلةً ثم تُلحق، فـclosest وحدها لا تكفي وقت
+  // الرسم — نقرأ الصنف من حاوية الأسئلة مباشرةً، وclosest احتياطٌ لإعادة الرسم (إعادة ↺).
+  const _ql=document.getElementById('questionList');
+  const isMath = !!(_ql && _ql.classList.contains('subj-math')) || !!body.closest('.subj-math');
   // الوسط: صورة تُحجّم مباشرةً (تظهر كاملة لكل النِسَب) أو رسم SVG داخل غلاف
   // fit:"width" للرسوم/الصور العريضة (كخط الأعداد): تملأ العرض ويُشتقّ ارتفاعها من نسبتها
   const wideCls = q.fit==='width' ? ' lw' : '';
   const media = q.svg ? `<div class="labelimg${wideCls}">${q.svg}</div>` : `<img class="labelimg${wideCls}" src="${q.image}" alt="">`;
-  // النقاط: تُوضع ديناميكياً حسب صندوق الصورة الحيّ (نِسَب الصورة محفوظة في data)
-  const dots = q.targets.map((t,i)=>`<span class="dnd-dot" data-i="${i}" data-x="${t.dot.x}" data-y="${t.dot.y}"></span>`).join('');
   // الصناديق حول الصورة (نِسَب مئوية من منطقة النشاط)
   const boxes = q.targets.map((t,i)=>`<div class="target" data-i="${i}" data-answer="${t.answer}" style="left:${t.box.x}%;top:${t.box.y}%">؟</div>`).join('');
   body.innerHTML=`<div class="dnd"><div class="stage stage-label"${q.bg?` style="background:${q.bg}"`:''}>`+
-    media +
-    `<svg class="dndlines"></svg>`+
-    dots + boxes +
+    media + boxes +
     `</div>`+
     `<div class="bank"><div class="bt">البطاقات:</div>`+
     shuffle(q.targets.map(t=>t.answer)).map(w=>`<div class="chip" draggable="true" data-w="${w}">${w}</div>`).join('')+
     `</div></div><div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
-  // وضع النقاط + رسم الخطوط ديناميكياً (دقيق مهما تغيّر الحجم أو ظهر السؤال)
-  const stage=body.querySelector('.stage'), svg=body.querySelector('.dndlines'), imgEl=body.querySelector('.labelimg');
+  const stage=body.querySelector('.stage'), imgEl=body.querySelector('.labelimg');
   const dndEl=body.querySelector('.dnd');
   const SVGNS='http://www.w3.org/2000/svg';
+  /* ── تصنيف الأهداف (DESIGN_RULES.md): النوع (ب) = خانة داخل الرسم ──
+     الخانة الفارغة عنصر rect/circle/ellipse يحمل stroke-dasharray في svg السؤال
+     الحيّ (لا في النص المصدري — القوالب تتوسّع بـmap). الهدف الذي تقع نقطته dot
+     داخل حدود خانةٍ يُصنَّف (ب)؛ والقياس بنسب viewBox المئوية كنسب dot نفسها. */
+  let cellOf=q.targets.map(()=>null);
+  /* حجم العدد بعد الإفلات = حجم أرقام الرسم نفسها: نقيس خط نصوص svg السؤال
+     (الوسيط بين عناصر text بوحدات viewBox) ونحوّله بكسلاً حسب مقياس الصورة الحيّ
+     في redraw — فلا يتقلّص العدد الموضوع في الخانة ولا يظهر أصغر من جيرانه. */
+  let cellFontSvg=null, cellVbW=0;
+  if(isMath && q.svg){
+    const inSvg=imgEl && imgEl.querySelector('svg');
+    const vb=inSvg && inSvg.viewBox && inSvg.viewBox.baseVal;
+    if(vb && vb.width && vb.height){
+      cellVbW=vb.width;
+      const fss=[].map.call(inSvg.querySelectorAll('text'),t=>parseFloat(t.getAttribute('font-size'))||0)
+        .filter(v=>v>0).sort((a,b)=>a-b);
+      if(fss.length) cellFontSvg=fss[Math.floor(fss.length/2)];
+      const cells=[];
+      inSvg.querySelectorAll('rect[stroke-dasharray],circle[stroke-dasharray],ellipse[stroke-dasharray]').forEach(el=>{
+        let cx,cy,w,h;
+        if(el.tagName==='rect'){
+          const x=+el.getAttribute('x')||0, y=+el.getAttribute('y')||0;
+          w=+el.getAttribute('width'); h=+el.getAttribute('height'); cx=x+w/2; cy=y+h/2;
+        }else{
+          cx=+el.getAttribute('cx'); cy=+el.getAttribute('cy');
+          const rx=+(el.getAttribute('r')||el.getAttribute('rx')), ry=+(el.getAttribute('r')||el.getAttribute('ry'));
+          w=2*rx; h=2*ry;
+        }
+        if(!w||!h) return;
+        cells.push({cx:(cx-vb.x)/vb.width*100, cy:(cy-vb.y)/vb.height*100,
+                    w:w/vb.width*100, h:h/vb.height*100, round:el.tagName!=='rect'});
+      });
+      cellOf=q.targets.map(t=>cells.find(c=>
+        Math.abs(t.dot.x-c.cx)<=c.w/2 && Math.abs(t.dot.y-c.cy)<=c.h/2)||null);
+    }
+  }
+  // أهداف النوع (ب): طبقة شفافة على الخانة نفسها (الموضع المبدئي مركز الخانة؛
+  // redraw يضبطه بالبكسل على صندوق الصورة الحيّ ويمنحها مقاس الخانة)
+  body.querySelectorAll('.target').forEach(tg=>{
+    const c=cellOf[+tg.dataset.i]; if(!c) return;
+    tg.classList.add('target-cell');
+    tg.style.left=c.cx+'%'; tg.style.top=c.cy+'%';
+    if(c.round) tg.style.borderRadius='50%';
+  });
+  // الخط والنقطة لأهداف النوع (أ) فقط — لا تُنشأ عناصرها أصلاً حين لا حاجة إليها
+  const firstTarget=stage.querySelector('.target');
+  if(q.targets.some((t,i)=>!cellOf[i])){
+    const lsvg=document.createElementNS(SVGNS,'svg');
+    lsvg.setAttribute('class','dndlines');
+    stage.insertBefore(lsvg, firstTarget);
+    q.targets.forEach((t,i)=>{
+      if(cellOf[i]) return;
+      const d=document.createElement('span'); d.className='dnd-dot';
+      d.dataset.i=i; d.dataset.x=t.dot.x; d.dataset.y=t.dot.y;
+      stage.insertBefore(d, firstTarget);
+    });
+  }
+  const svg=stage.querySelector('.dndlines');   // null إن كانت كل الأهداف خانات (ب)
   // اختيار اتجاه التخطيط حسب نسبة الصورة (SVG فوراً من viewBox، والصورة عند تحميلها)
   function relayout(){
     let ar=null;
@@ -409,6 +481,19 @@ function renderDragDrop(q, body, fb){
     const R=window.fitRect||(el=>el.getBoundingClientRect());   // مستطيل بالفضاء التصميميّ (واعٍ بـ zoom)
     const sr=R(stage); if(!sr.width||!imgEl) return;
     const ir=R(imgEl);
+    // أهداف النوع (ب): تُطابَق على خانتها المرسومة موقعاً ومقاساً (DESIGN_RULES.md)
+    body.querySelectorAll('.target-cell').forEach(tg=>{
+      const c=cellOf[+tg.dataset.i]; if(!c) return;
+      tg.style.left =(ir.left-sr.left + c.cx/100*ir.width)+'px';
+      tg.style.top  =(ir.top -sr.top  + c.cy/100*ir.height)+'px';
+      tg.style.width =(c.w/100*ir.width)+'px';
+      tg.style.height=(c.h/100*ir.height)+'px';
+      /* خط العدد الموضوع = خط أرقام الرسم بمقياس الصورة الحيّ (لا يتقلّص مع
+         الخانة) — والاحتياط عند غياب نصوص في الرسم: نصف ارتفاع الخانة تقريباً */
+      const fs = cellFontSvg ? cellFontSvg*ir.width/cellVbW : 0.48*c.h/100*ir.height;
+      tg.style.setProperty('--cellfs', fs.toFixed(2)+'px');
+    });
+    if(!svg) return;      // كل الأهداف خانات (ب) — لا خطوط ولا نقاط أصلاً
     body.querySelectorAll('.dnd-dot').forEach(dot=>{
       dot.style.left=(ir.left-sr.left + (+dot.dataset.x)/100*ir.width)+'px';
       dot.style.top =(ir.top -sr.top  + (+dot.dataset.y)/100*ir.height)+'px';
@@ -437,7 +522,7 @@ function renderDragDrop(q, body, fb){
       ln.setAttribute('class','dndline'); svg.appendChild(ln);
     });
   }
-  /* مراقب أبعاد المسرح: يعيد رسم الخيوط، **ويعيد فحص خنق الصورة** — لأنّ عرض المسرح
+  /* مراقب أبعاد المسرح: يعيد رسم الخيوط والنقاط، **ويعيد فحص خنق الصورة** — لأنّ عرض المسرح
      لا يستقرّ إلا بعد أن تختار خوارزمية الإطار مقاسها وتضبطه، أي بعد relayout الأول.
      الحارس رتيب (يضيف ولا يزيل) فلا يتذبذب مع هذا المراقب. */
   if(window.ResizeObserver){ new ResizeObserver(()=>{ redraw(); dndStageGuard(dndEl); }).observe(stage); }
@@ -806,8 +891,36 @@ function renderColor(q, body, fb){
    وصوت correct.mp3. اللوح بـ direction:ltr كي تطابق أعمدةُ الشبكة أعمدةَ الصورة
    (الصورة محتوى بصري لا نصّ) بينما تبقى بقيّة الواجهة RTL.
    الصوت: qWin/qFail يشغّلان correct.mp3/wrong.mp3 ويخضعان لزرّ الكتم العامّ. */
+/* ═══ قاعدة تصميم دائمة — DESIGN_RULES.md §«أسئلة البازل — صورة القطع» ═══
+   صورة البازل يجب أن تكون ممتلئة المعالم بالكامل: كل قطعة من قطع الشبكة تحمل
+   معالم مميّزة يستدلّ بها الطالب على موضعها — لا قطعة خالية بلا معالم.
+   الحارس pzGuard أدناه يفحص كل خلية عند تحميل الصورة ويحذّر صراحةً من أي خلية
+   شبه خالية، فلا تُعتمد صورة مخالفة أثناء التأليف (فحصٌ لا رفض — لا يكسر
+   السؤال أمام الطالب). لا تُزل الحارس ولا تتجاهل تحذيره. */
 function renderPuzzle(q, body, fb){
   const cols=(q.grid&&q.grid.cols)||3, rows=(q.grid&&q.grid.rows)||3, n=cols*rows;
+  /* فحص امتلاء المعالم (DESIGN_RULES.md): لكل خلية نحسب نسبة البكسلات المخالفة
+     لمتوسط لون الخلية — الخلية الملساء (خلفية بلا محتوى) نسبتها شبه صفرية. */
+  function pzGuard(im){
+    try{
+      const S=120, cv=document.createElement('canvas');
+      cv.width=cols*S; cv.height=rows*S;
+      const g=cv.getContext('2d'); g.drawImage(im,0,0,cv.width,cv.height);
+      for(let r=0;r<rows;r++) for(let c=0;c<cols;c++){
+        const d=g.getImageData(c*S,r*S,S,S).data, N=S*S;
+        let mr=0,mg=0,mb=0;
+        for(let i=0;i<d.length;i+=4){ mr+=d[i]; mg+=d[i+1]; mb+=d[i+2]; }
+        mr/=N; mg/=N; mb/=N;
+        let feat=0;
+        for(let i=0;i<d.length;i+=4)
+          if(Math.abs(d[i]-mr)+Math.abs(d[i+1]-mg)+Math.abs(d[i+2]-mb)>60) feat++;
+        if(feat/N<0.02)
+          console.warn('%c[بازل] ⛔ قطعة شبه خالية من المعالم (الصف '+(r+1)+'، العمود '+(c+1)+' من '+
+            rows+'×'+cols+') — خلاف قاعدة DESIGN_RULES.md §أسئلة البازل — صورة القطع. السؤال: '+
+            (q.prompt||'').slice(0,50), 'color:#c0392b;font-weight:bold');
+      }
+    }catch(e){}
+  }
   // موضع خلفية كل قطعة: العمود يتوزّع أفقياً والصف عمودياً (نسبة مئوية قياسية)
   const posX=i=>cols>1?(i%cols)/(cols-1)*100:0;
   const posY=i=>rows>1?Math.floor(i/cols)/(rows-1)*100:0;
@@ -859,7 +972,8 @@ function renderPuzzle(q, body, fb){
   const probe=new Image();
   probe.onload=()=>{ if(probe.naturalWidth){ pzAR=probe.naturalWidth/probe.naturalHeight;
       board.style.aspectRatio=probe.naturalWidth+'/'+probe.naturalHeight; }
-    fitBoard(); sizePieces(); };
+    fitBoard(); sizePieces();
+    pzGuard(probe); };   /* حارس امتلاء المعالم (DESIGN_RULES.md §أسئلة البازل) */
   probe.src=q.image;
   if(window.ResizeObserver){
     new ResizeObserver(sizePieces).observe(board);
@@ -1206,10 +1320,13 @@ function renderSlider(q, body, fb){
 function renderMemory(q, body, fb){
   // كل زوج → بطاقتان تشتركان في مفتاح k (فهرس الزوج)، ثم تُخلط كل البطاقات مقلوبة
   const cards=shuffle(q.pairs.reduce((a,p,i)=>a.concat([{k:i,t:p.a},{k:i,t:p.b}]),[]));
-  const cols=cards.length<=6?3:4;   // شبكة تناسب العدد (٦ بطاقات ← ٣ أعمدة، ٨ ← ٤)
+  const cols=cards.length<=6?3:4;   // عدد الأعمدة المفضَّل (٦ بطاقات ← ٣ أعمدة، ٨ ← ٤)
   const total=q.pairs.length;
+  /* ‏--memcols لا قالب أعمدة إنلاين (DESIGN_RULES.md §أسئلة بطاقات الذاكرة —
+     تخطيط الشبكة): قالب الأعمدة المتجاوب في .memgrid (css/style.css) يحقق العدد
+     المفضَّل في العرض الواسع ويقلّله تلقائياً إن ضاق الإطار، فلا تُقصّ بطاقة أبداً. */
   body.innerHTML=`<div class="memory">`+
-    `<div class="memgrid" style="grid-template-columns:repeat(${cols},1fr)">`+
+    `<div class="memgrid" style="--memcols:${cols}">`+
     cards.map(c=>
       `<button class="memcard" type="button" data-k="${c.k}">`+
         `<span class="memface memback">🎴</span>`+
@@ -1590,8 +1707,12 @@ function renderHundredChart(q, body, fb){
       shuffle(missing.concat(q.distractors||[]).map(Number)).map(v=>
         `<div class="chip hcchip" draggable="true" data-w="${arNum(v)}" data-v="${v}">${arNum(v)}</div>`).join('')+
       `</div></div>`;
+  /* ‏`qfit-flex` = وسمُ «الوسيطِ المرن» في قاعدةِ الاحتواءِ الأساسية (css/style.css §④):
+     الشبكةُ المربّعةُ ١٠×١٠ أطولُ من أن تسعَها نافذةُ أيِّ إطارٍ بعرضِها الكامل مع نصِّ
+     السؤالِ وبطاقاتِه وأزراره، فتُعلَنُ مرنةً لتضيقَ إلى ما تبقّى (نسبتُها محفوظةٌ
+     بـpreserveAspectRatio)، وتُعطي طبقةُ الإطارِ البطاقةَ أوسعَ إطارٍ مسموحٍ لأجلِها. */
   body.innerHTML=`<div class="hchart">${bar}`+
-    `<svg class="hcsvg" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${cellsHtml}</svg>`+
+    `<svg class="hcsvg qfit-flex" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${cellsHtml}</svg>`+
     `${bank}</div>`+
     `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
   const cellEls=[].slice.call(body.querySelectorAll('.hc-cell'));
@@ -1751,6 +1872,11 @@ function renderArray(q, body, fb){
 }
 
 /* ⑲ بناء المعادلة (equation-builder): tokens[] فيها "__" لكل خانة فارغة + bank[] + answers[]
+   ═══ قاعدة تصميم دائمة — DESIGN_RULES.md §«أسئلة بناء المعادلة — اتجاه العرض» ═══
+   المعادلة تُعرض RTL دائماً: tokens[] بترتيب القراءة (الحدّ الأول أولاً و«=» والناتج
+   آخراً)، وحاوية العرض .eqrow مضبوطة direction:rtl (css/style.css) فيبدأ أول حدّ
+   من أقصى اليمين وينتهي الناتج في أقصى اليسار — القاعدة مركزية في .eqrow فترثها
+   كل أسئلة المعادلات، ومنطق التحقق يعمل على مصفوفة الرموز فلا يتأثر بالاتجاه.
    المعادلة صفٌّ من رموز ثابتة وخانات فارغة، وبنك بطاقات أرقام ورموز (+ − =) تُسحب إليها
    (أو تُنقر البطاقة ثم الخانة — أدقّ على السبورة). منطق البنك مشترك في `wireBank`
    (هو نفسه منطق `fill-blank` بلا تكرار). وضعان:

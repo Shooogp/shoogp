@@ -263,6 +263,8 @@
   /* ملاءمة العرض في نمط التسمية (fit:"width"): للرسوم العريضة كخط الأعداد */
   .labelimg.lw{width:86%;max-width:86%;height:auto}
   .labelimg.lw svg,img.labelimg.lw{width:100%;height:auto}
+  /* خطوط التوصيل والنقاط: السلوك الافتراضي لكل المواد — وفي الرياضيات لا تُنشأ
+     عناصرها أصلاً في renderDragDrop (قاعدة DESIGN_RULES.md §خطوط التوصيل). */
   .dndlines{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
   .dndline{stroke:#f5a04a;stroke-width:2.5;stroke-linecap:round}
   .dnd-dot{position:absolute;width:12px;height:12px;border-radius:50%;background:#f5a04a;
@@ -271,6 +273,15 @@
   .target{position:absolute;transform:translate(-50%,-50%);background:rgba(255,255,255,.7);
     border:2px dashed #b5c99a;border-radius:12px;padding:8px 4px;min-width:88px;text-align:center;
     font-weight:700;color:#9aa596;font-size:.86rem;transition:.2s}
+  /* النوع (ب) — هدف على خانة مرسومة داخل svg السؤال (DESIGN_RULES.md §خطوط
+     التوصيل): يطابق خانته موقعاً ومقاساً (redraw يضبطهما بالبكسل)، فيُصفَّر
+     حدُّه الأدنى وحشوُه كي لا يفيض عن الخانة */
+  /* ‏--cellfs يضبطه redraw = خط أرقام الرسم بمقياس الصورة الحيّ — فالعدد الموضوع
+     في الخانة بحجم جيرانه في الصف نفسه لا أصغر */
+  .target.target-cell{min-width:0;padding:0;display:flex;align-items:center;justify-content:center;
+    font-size:var(--cellfs, 1.05rem);line-height:1}
+  /* قبل الامتلاء: شفاف تماماً — الخانة المتقطّعة المرسومة نفسها هي المرئيّ */
+  .target.target-cell:not(.filled):not(.over){background:transparent;border-color:transparent;box-shadow:none;color:transparent;text-shadow:none}
   .target.over{background:#fff6d8;border-color:#f5b942;transform:translate(-50%,-50%) scale(1.08)}
   /* بمجرد وضع الإجابة داخل الصندوق: يتحوّل إلى البرتقالي الفاتح #FFE0B3 (ويعود للقديم إن أُفرغ) */
   .target.filled{background:#FFE0B3;border-style:solid;border-color:#e0b380;color:#3a2c0a}
@@ -375,6 +386,52 @@
   .fb.good{color:#2c6e3f} .fb.bad{color:#c94a4a}
 
   /* ===== محرّك الأسئلة الموحّد ===== */
+
+  /* ═══════════════════════════════════════════════════════════════
+     ⚠️ قاعدةُ الاحتواءِ الأساسيةُ لكلِّ أنواعِ الأسئلة — **لا تُزَل** ⚠️
+     قاعدةُ تصميمٍ دائمةٌ مرجعُها DESIGN_RULES.md §«احتواء محتوى السؤال داخل
+     الإطار» — عندَ أيِّ تعارضٍ يُطابَقُ الكودُ على ما هو موثَّقٌ هناك.
+     الغرض: ألّا يخرجَ محتوى أيِّ سؤالٍ — قائمٍ أو مستقبليّ (لوحةٌ · سحبٌ وإفلات ·
+     بازل · ترتيب · اختيار …) — عن حدودِ إطارِه، ولا يتداخلَ مع العنوانِ وأزرارِ
+     الترويسة. قاعدةٌ **واحدةٌ في طبقةِ النوعِ المشتركة**، فلا تُكرَّرُ في كلِّ
+     نوعٍ ولا تُنسى مع نوعٍ جديد.
+
+     ① `min-height:0; min-width:0` على حاوياتِ السؤال: عنصرُ flex **لا يتقلّصُ
+        افتراضياً** عن حجمِ محتواه (‏`min-*:auto` = الحدُّ الأدنى التلقائيّ)، فيتجاوزُ
+        المحتوى ارتفاعَ الإطارِ المتاحَ ويبرزُ من أعلاه وأسفله. الصفرُ يفتحُ بابَ
+        التقلّصِ فتُطبَّقَ الحدودُ أدناه فعلاً — وهذا **السببُ التقنيُّ الجذريُّ**
+        لخروجِ شبكةِ لوحةِ المائةِ عن الإطارِ المعدنيّ.
+     ② `.qbody`: ‏`max-height:100%` + `overflow:hidden` — حدُّ أمانٍ نهائيّ: لا
+        يتجاوزُ متنُ السؤالِ ارتفاعَ نافذتِه مهما جدَّ من محتوى.
+     ③ الوسائطُ داخلَ `.qbody` (‏svg · img · canvas · video · ‎.media‎): لا تتجاوزُ
+        حاويتَها (‏`max-width/height:100%`) وتحفظُ نسبتَها (‏`object-fit:contain`
+        للصورةِ، و`preserveAspectRatio` للـSVG).
+        **لا نفرضُ `height:auto` على كلِّ وسيط**: بعضُ رسومِ الأسئلةِ طبقاتٌ مطلقةُ
+        الموضعِ بارتفاعِ 100% (خطوطُ التوصيل `.matchsvg` · خطوطُ الخريطةِ الذهنية
+        `.mmlines` · طبقةُ التلوين `.psvg`) فيصفّرُها `height:auto`. الوسيطُ الجاري
+        في التدفّقِ يعلنُ `width:100%;height:auto` في قاعدةِ نوعِه (‏`.hcsvg` ·
+        `.nlsvg` · `.arsvg`).
+     ④ **الوسيطُ المرن** (اختياريٌّ بالوسم): الرسمُ الذي يجبُ أن *يتقلّصَ* ليتلاءمَ
+        مع النافذةِ بدلَ أن يفيضَ منها يُوسَمُ `qfit-flex` في مُنشئِه (مثلُ شبكةِ لوحةِ
+        المائة)، فيصيرَ عنصرَ flex قابلاً للتقلّصِ وتتكفّلَ `preserveAspectRatio`
+        بحفظِ نسبته. وطبقةُ الإطار (‏js/shoogp-ui.js) تقرأُ الوسمَ فتُعطي البطاقةَ
+        **أوسعَ إطارٍ مسموح** (لا أضيقَه) وتُهيّئُ عمودَ flex على `.qbody`.
+        ولا يُوسَمُ الوسمُ عامّاً لكلِّ وسيط: لو تقلّصَ كلُّ رسمٍ لصار كلُّ سؤالٍ
+        «يسعُ» أيَّ إطارٍ فاختارت الخوارزميةُ أصغرَ إطارٍ دائماً.
+     ═══════════════════════════════════════════════════════════════ */
+  .qslides,.qcard,.qcard .qbody,.qframe,.qwin{min-height:0;min-width:0;box-sizing:border-box}
+  .qcard .qbody{max-height:100%;overflow:hidden}
+  /* ‏`:where()` بلا وزنٍ في التخصيص (0,0,0) **عن قصد**: هذه *قاعدةٌ أساسيةٌ* لا حاكمة،
+     فأيُّ قاعدةِ نوعٍ لها حدُّها الخاصُّ تغلبُها (مثلُ `.labelimg{max-height:86%}` التي
+     تحجزُ حولَ الرسمِ فراغَ صناديقِ التسميةِ وخطوطِها). ولو كُتبت بوزنٍ أعلى لَجرفت
+     تلك الحدودَ إلى 100% فالتصقَ الرسمُ بما حولَه. */
+  :where(.qcard .qbody) :where(svg,img,canvas,video,.media){max-width:100%;max-height:100%}
+  :where(.qcard .qbody) :where(img,canvas,video){object-fit:contain}
+  /* ④ الوسيطُ المرن ووعاؤه (الوسمُ من المُنشئِ/طبقةِ الإطار — انظر أعلاه) */
+  .qcard .qbody.qflexmedia{display:flex;flex-direction:column;flex:0 1 auto;min-height:0}
+  .qcard .qbody.qflexmedia>*{min-height:0}
+  .qcard .qbody .qfit-flex{flex:0 1 auto;min-height:0}
+
   /* بطاقة السؤال تأخذ هوية الكتاب: خلفيتها بلون بطاقة الكتاب (bk-*) + نجوم بيضاء
      (الثيم الفضائي). تتغيّر تلقائياً حسب الكتاب الحالي عبر صنف اللون المُضاف. */
   /* جميع بطاقات الأسئلة: خلفية رمادية بشفافية 35% + حدّ أبيض */
@@ -574,9 +631,19 @@
 
   /* ⑱ بطاقات الذاكرة — شبكة بطاقات مقلوبة تُقلب بطاقتان كل دور (نسخة نصية)، بطاقات كبيرة للسبورة و RTL */
   .memory{display:flex;flex-direction:column;align-items:center;gap:18px;width:100%}
-  .memgrid{display:grid;gap:16px;width:100%;max-width:620px;margin-inline:auto}
-  /* البطاقة: مربّعة كبيرة بمنظور ثلاثيّ لقلبها */
-  .memcard{position:relative;aspect-ratio:1/1;min-height:96px;border:none;background:none;padding:0;
+  /* تخطيط الشبكة — قاعدة تصميم دائمة (DESIGN_RULES.md §أسئلة بطاقات الذاكرة —
+     تخطيط الشبكة): الشبكة تتلاءم كاملة داخل الإطار بلا قصّ أي بطاقة.
+     ‏--memcols = عدد الأعمدة المفضَّل (يمرّره renderMemory حسب عدد البطاقات)،
+     يتحقق في العرض الواسع بعرض بطاقة نسبي؛ وإن ضاق الإطار عن العمود الأدنى
+     (76px — فوق حدّ اللمس 60px) قلّ عدد الأعمدة تلقائياً (auto-fit) والتفّت
+     البطاقات لصفوف أكثر — فلا يتجاوز مجموع الأعمدة عرض الإطار أبداً. */
+  .memgrid{display:grid;gap:16px;width:100%;max-width:620px;margin-inline:auto;
+    grid-template-columns:repeat(auto-fit,
+      minmax(max(76px, calc(100%/var(--memcols,4) - 16px)), 1fr))}
+  /* البطاقة: مربّعة بمنظور ثلاثيّ لقلبها — عرضها نسبيّ من عمودها (لا حدّ أدنى
+     ثابتاً بالبكسل يفرض على العمود عرضاً أكبر من المتاح فيقصّ البطاقات الطرفية —
+     الحدّ الأدنى مضمون من عمود الشبكة أعلاه) */
+  .memcard{position:relative;aspect-ratio:1/1;min-height:0;min-width:0;border:none;background:none;padding:0;
     cursor:pointer;perspective:800px;font-family:'Tajawal'}
   /* وجها البطاقة متطابقان في المكان، يُخفى المقلوب منهما (backface) */
   .memface{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;
@@ -647,7 +714,11 @@
      الخمسة رموز **368px** بفائض 36px — لا على حدّ الالتفاف تماماً: بمقاس 64/14/20 كان
      المجموع 400px مقابل 400px متاحة، فالتفّت على 1280×800 ولم تلتفّ على 1920×1080
      لفارق تقريبٍ كسريّ لا أكثر. المعادلة الأطول من خمسة رموز تلتفّ سطرين بدل أن تفيض */
-  .eqrow{direction:ltr;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;
+  /* اتجاه المعادلة RTL — قاعدة تصميم دائمة (DESIGN_RULES.md §أسئلة بناء المعادلة —
+     اتجاه العرض): أول حدّ من أقصى اليمين والناتج (= والخانة) في أقصى اليسار،
+     والتفاف flex يتابع الأسطر من اليمين. البيانات بترتيب القراءة والاتجاه شأن
+     العرض وحده — لا يُعاد ضبطها ltr. */
+  .eqrow{direction:rtl;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;
     gap:12px;background:#fff;border-radius:18px;padding:18px;box-shadow:0 4px 14px rgba(0,0,0,.22)}
   /* الرمز المطبوع: أرقام ورموز كبيرة واضحة للسبورة (لا تُنقر) */
   .eqtok{display:inline-flex;align-items:center;justify-content:center;min-width:58px;min-height:64px;
@@ -703,8 +774,14 @@
   /* ㉒ لوحة المائة (hundred-chart): شبكة SVG واحدة — **رسم سؤال خارج الكسوة** كخط الأعداد.
      الخلية المطبوعة بارزة والخلية الناقصة **غائرة بحدّ متقطّع** (قاعدة المحمول ≠ المستقبِل)،
      وبطاقات البنك .chip ترث قشرة المادة كسائر البطاقات */
-  .hchart{width:100%;display:flex;flex-direction:column;align-items:center;gap:14px}
-  .hcsvg{width:100%;height:auto;display:block;touch-action:manipulation;
+  /* الشبكةُ **مربّعةٌ دائماً** (‏١٠×١٠) ومرنةٌ: `qfit-flex` في مُنشئِها (‏js/app.js)
+     يجعلُها عنصرَ flex قابلاً للتقلّصِ (‏§④ في قاعدةِ الاحتواءِ الأساسية أعلاه)، فتضيقُ
+     لتتلاءمَ مع ما تبقّى من نافذةِ السؤالِ بعدَ نصِّه وبطاقاتِه وأزراره — **بلا أيِّ
+     ارتفاعٍ ثابت**؛ و`aspect-ratio:1/1` يعلنُ نسبتَها المربّعةَ في حالةِ السَّعة،
+     و`preserveAspectRatio="xMidYMid meet"` يحفظُها مركزيّةً مربّعةً عندَ التقلّص.
+     وصفُّ بطاقاتِ الأعدادِ أسفلَها لا يتقلّصُ (حدُّه الأدنى التلقائيّ) فيبقى ظاهراً. */
+  .hchart{width:100%;display:flex;flex-direction:column;align-items:center;gap:14px;min-height:0}
+  .hcsvg{width:100%;height:auto;aspect-ratio:1/1;display:block;touch-action:manipulation;
     -webkit-user-select:none;user-select:none}
   .hc-cell{cursor:pointer}
   /* .hc-hit = مساحة اللمس (خطوة الخلية كاملة، شفّافة)، و.hc-face = الوجه المرئيّ المحشوّ */

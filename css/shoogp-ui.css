@@ -558,6 +558,13 @@
   box-shadow:inset 0 2px 6px rgba(0,0,0,.42) !important;
   color:#eef3ef !important; text-shadow:0 1px 2px rgba(0,0,0,.45) !important;
 }
+/* النوع (ب) — طبقة على خانة مرسومة داخل رسم السؤال (DESIGN_RULES.md §خطوط
+   التوصيل): الغَور مرسوم في الخانة نفسها داخل svg فلا كسوة فوقها قبل الامتلاء؛
+   حالات الامتلاء/التحويم/التصحيح تبقى بأنماطها المعتادة أعلاه وأدناه. */
+.qwin .target.target-cell:not(.filled):not(.over){
+  background:transparent !important; border-color:transparent !important;
+  box-shadow:none !important; color:transparent !important; text-shadow:none !important;
+}
 
 /* ④ بعد الإفلات: يستقرّ كبطاقة زرقاء ممتلئة (نفس أسلوب البطاقات) — المكان اكتمل،
    ويبقى قابلاً للسحب/الإخراج للتصحيح (منطق التفريغ قائم في المحرّك) */
@@ -1174,6 +1181,25 @@
     inset 0 3px 8px rgba(30,44,58,.50) !important;
   color:#2b3742 !important;
   text-shadow:0 1px 0 rgba(255,255,255,.35) !important;
+}
+/* النوع (ب) — طبقةٌ على خانةٍ مرسومةٍ داخلَ رسمِ السؤال (DESIGN_RULES.md §خطوط
+   التوصيل): الغَورُ مرسومٌ في الخانةِ المتقطّعةِ نفسِها داخلَ svg، فلا كسوةَ معدنٍ
+   غائرٍ فوقَها قبلَ الامتلاء — بوزنٍ أعلى من قاعدةِ المستقبِلاتِ أعلاه عمداً.
+   حالاتُ الامتلاءِ والتحويمِ والتصحيحِ تبقى بأنماطِها المعتادة. */
+.shoogp-ui.skin-metal .qwin .target.target-cell:not(.filled):not(.correct):not(.wrong):not(.over){
+  background:transparent !important;
+  border-color:transparent !important;
+  box-shadow:none !important;
+  color:transparent !important; text-shadow:none !important;
+}
+/* وفي كلِّ الحالاتِ (فارغةً وممتلئة): مقاسُ الطبقةِ مقاسُ الخانةِ المرسومةِ بالضبط —
+   تُصفَّرُ حدودُ المجموعةِ الدنيا وحشوُها كي لا تفيضَ البطاقةُ عن خانتِها،
+   وخطُّ العددِ الموضوعِ = خطُّ أرقامِ الرسمِ (--cellfs من redraw) لا الحدُّ الأدنى
+   المعدنيُّ الثابت — فلا يتقلّصُ العددُ ولا يَصغُرُ عن جيرانِه في الصفّ */
+.shoogp-ui.skin-metal .qwin .target.target-cell{
+  min-height:0 !important; min-width:0 !important; padding:0 !important;
+  font-size:var(--cellfs, var(--mt-min-f)) !important; line-height:1 !important;
+  gap:0 !important;
 }
 /* الفراغُ الفارغُ يبقى في تدفّقِ الجملةِ (لا كتلةً تكسرُ السطر) */
 .shoogp-ui.skin-metal .qwin .blank{display:inline-flex; vertical-align:middle}
