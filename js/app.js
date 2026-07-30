@@ -213,7 +213,7 @@ function qWin(fb,msg,stars){fb.textContent=msg||'🎉 أحسنت!';fb.className=
 // أي واجهة بلا صاروخ تُبقي wrong.mp3 يعمل (بقية دروس المنصّة كلها تحوي الصاروخ الآن)
 function qFail(fb,msg){fb.textContent=msg||'حاول مرة أخرى';fb.className='fb qfb bad';if(!(window.RocketJourney&&RocketJourney.isActive&&RocketJourney.isActive()))playWrongSound();if(window.RocketJourney)RocketJourney.onAnswer(false);}
 
-const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل','slider':'🎚️ الشريط المتدرج','memory':'🎴 بطاقات الذاكرة','lens':'🔍 العدسة المكبّرة','equation-builder':'🧮 بناء المعادلة','number-line':'📏 خط الأعداد','hundred-chart':'💯 لوحة المائة','array':'🔲 المصفوفات','compare':'⚖️ المقارنة','pattern':'🔁 إكمال النمط','count-tap':'🖐️ العد بالنقر','place-value':'🧱 القيمة المنزلية'};
+const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل','slider':'🎚️ الشريط المتدرج','memory':'🎴 بطاقات الذاكرة','lens':'🔍 العدسة المكبّرة','equation-builder':'🧮 بناء المعادلة','number-line':'📏 خط الأعداد','hundred-chart':'💯 لوحة المائة','array':'🔲 المصفوفات','compare':'⚖️ المقارنة','pattern':'🔁 إكمال النمط','count-tap':'🖐️ العد بالنقر','place-value':'🧱 القيمة المنزلية','clock':'🕐 الساعة التفاعلية','measure-tool':'📐 أداة القياس','money':'🪙 النقود العُمانية'};
 
 // تحويل الأرقام إلى هندية (عربية) للعرض
 function arNum(n){ return String(n).replace(/[0-9]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'[+d];}); }
@@ -228,7 +228,7 @@ function renderQuestions(ls){
     m.innerHTML='<div class="qbody" style="text-align:center;padding:14px 6px;font-size:1.15rem">📚 أسئلة هذا الدرس ستُضاف قريباً بإذن الله</div>';
     host.appendChild(m); return;
   }
-  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor,'puzzle':renderPuzzle,'slider':renderSlider,'memory':renderMemory,'lens':renderLens,'equation-builder':renderEquationBuilder,'number-line':renderNumberLine,'hundred-chart':renderHundredChart,'array':renderArray,'compare':renderCompare,'pattern':renderPattern,'count-tap':renderCountTap,'place-value':renderPlaceValue};
+  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor,'puzzle':renderPuzzle,'slider':renderSlider,'memory':renderMemory,'lens':renderLens,'equation-builder':renderEquationBuilder,'number-line':renderNumberLine,'hundred-chart':renderHundredChart,'array':renderArray,'compare':renderCompare,'pattern':renderPattern,'count-tap':renderCountTap,'place-value':renderPlaceValue,'clock':renderClock,'measure-tool':renderMeasureTool,'money':renderMoney};
 
   // بناء كل البطاقات (تبقى في الصفحة لحفظ إجاباتها، ونُظهر واحدة فقط)
   const slides=document.createElement('div'); slides.className='qslides';
@@ -2078,6 +2078,274 @@ function renderPlaceValue(q, body, fb){
     qWin(fb,'🎉 أحسنت! '+readout(tens,ones),3);
   };
   body.querySelector('.btn-reset').onclick=()=>renderPlaceValue(q,body,fb);
+}
+
+/* ⓔ الساعة التفاعلية (clock): ثلاثةُ أوضاعٍ —
+   • read: الميناءُ يُظهرُ `target` فيقرؤه الطالبُ ويختارُ من `options` (تُقارَنُ الأوقاتُ تحليلاً لا نصّاً).
+   • set: يضبطُ الطالبُ العقربَينِ إلى `target` (وموضعُ البدايةِ `from`)، والدقائقُ تلتقطُ إلى `snap`.
+   • elapsed: يبدأُ من `start` ويُضيفُ `minutes` فيُحسبُ الهدفُ حسابياً (وقتُ الطهيِ ونحوُه).
+   عقربُ الساعاتِ يتقدّمُ بكسرِ الساعةِ تلقائياً (M×٠٫٥ درجة) فلا يكذبُ الميناءُ.
+   اللمس: الحلقةُ الخارجيّةُ (نصفُ القطر ≥١٠٠) للدقائقِ والوسطُ للساعاتِ — هدفانِ واسعانِ. */
+function renderClock(q, body, fb){
+  const mode=q.mode||'read';
+  const snap=Math.max(1,Math.round(numOf(q.snap)||5));   // دقّةُ ضبطِ الدقائق (٥ افتراضاً)
+  function parseTime(s){ const p=String(toLatinNum(s)).split(':');
+    let h=parseInt(p[0],10)||0, m=parseInt(p[1],10)||0; return {h:((h%12)+12)%12, m:((m%60)+60)%60}; }
+  function fmt(h,m){ const hh=(h%12===0)?12:h%12; return arNum(hh)+':'+arNum(m<10?('0'+m):m); }
+  const start=q.start?parseTime(q.start):null;
+  const addMin=Math.round(numOf(q.minutes)||0);
+  let target;
+  if(mode==='elapsed'&&start){ const t=start.h*60+start.m+addMin; target={h:Math.floor(t/60)%12, m:t%60}; }
+  else target=parseTime(q.target||'12:00');
+  // ── رسمُ الميناء: ٦٠ علامةَ دقيقةٍ و١٢ رقمَ ساعةٍ بالأرقامِ الهندية ──
+  const CX=200, CY=200, R=170;
+  const pol=(r,deg)=>({x:CX+r*Math.sin(deg*Math.PI/180), y:CY-r*Math.cos(deg*Math.PI/180)});
+  let ticks='', nums='';
+  for(let i=0;i<60;i++){
+    const big=(i%5===0), a=i*6, p1=pol(R-(big?22:11),a), p2=pol(R-2,a);
+    ticks+='<line class="ck-tick'+(big?' ck-tick-h':'')+'" x1="'+p1.x.toFixed(1)+'" y1="'+p1.y.toFixed(1)+'" x2="'+p2.x.toFixed(1)+'" y2="'+p2.y.toFixed(1)+'"></line>';
+  }
+  for(let n=1;n<=12;n++){ const p=pol(R-52,n*30);
+    nums+='<text class="ck-num" x="'+p.x.toFixed(1)+'" y="'+(p.y+12).toFixed(1)+'">'+arNum(n)+'</text>'; }
+  const readout=(mode==='set'||mode==='elapsed')?'<div class="ck-read"><span class="ck-time"></span></div>':'';
+  const hint=(mode==='set'||mode==='elapsed')?'<div class="ck-hint">اسحبْ في الحلقةِ الخارجيّةِ لعقربِ الدقائق، وفي الوسطِ لعقربِ الساعات</div>':'';
+  const head=(mode==='elapsed'&&start)?'<div class="ck-task">البدايةُ <b>'+fmt(start.h,start.m)+'</b> — أضِفْ <b>'+arNum(addMin)+'</b> دقيقة</div>':'';
+  const opts=(mode==='read')?'<div class="opts">'+shuffle((q.options||[]).slice()).map(o=>'<button class="opt" data-o="'+o+'">'+o+'</button>').join('')+'</div>':'';
+  const acts=(mode==='read')?'':'<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>';
+  body.innerHTML='<div class="clockq">'+head+
+    '<svg class="cksvg" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet">'+
+    '<circle class="ck-face" cx="200" cy="200" r="184"></circle>'+ticks+nums+
+    '<g class="ck-hand ck-hour"><line x1="200" y1="200" x2="200" y2="110"></line></g>'+
+    '<g class="ck-hand ck-min"><line x1="200" y1="200" x2="200" y2="62"></line></g>'+
+    '<circle class="ck-pin" cx="200" cy="200" r="9"></circle></svg>'+
+    readout+hint+opts+'</div>'+acts;
+  const svg=body.querySelector('.cksvg');
+  const hourG=body.querySelector('.ck-hour'), minG=body.querySelector('.ck-min');
+  const timeEl=body.querySelector('.ck-time');
+  let H, M, done=false;
+  function paint(){
+    minG.setAttribute('transform','rotate('+(M*6)+' 200 200)');
+    hourG.setAttribute('transform','rotate('+((H%12)*30+M*0.5)+' 200 200)');
+    if(timeEl) timeEl.textContent=fmt(H,M);
+  }
+  if(mode==='read'){ H=target.h; M=target.m; paint(); }
+  else if(mode==='elapsed'&&start){ H=start.h; M=start.m; paint(); }
+  else { H=parseTime(q.from||'12:00').h; M=parseTime(q.from||'12:00').m; paint(); }
+  if(mode==='read'){
+    body.querySelectorAll('.opt').forEach(btn=>{ btn.onclick=()=>{
+      if(done) return;
+      const t=parseTime(btn.dataset.o);
+      if(t.h===target.h&&t.m===target.m){ done=true; btn.classList.add('correct');
+        body.querySelectorAll('.opt').forEach(b=>b.disabled=true);
+        qWin(fb,'🎉 أحسنت! الساعةُ تشيرُ إلى '+fmt(target.h,target.m),3);
+      } else { btn.classList.add('wrong'); btn.disabled=true;
+        qFail(fb,'العقربُ القصيرُ للساعاتِ والطويلُ للدقائق — اقرأْهما معاً'); }
+    };});
+    return;
+  }
+  // ── الضبطُ باللمس: الحلقةُ الخارجيّةُ للدقائقِ والوسطُ للساعات (هدفانِ واسعانِ لا مقبضانِ دقيقان) ──
+  function at(p){
+    if(done) return;
+    const dx=p.x-CX, dy=p.y-CY, r=Math.hypot(dx,dy);
+    let a=Math.atan2(dx,-dy)*180/Math.PI; if(a<0) a+=360;
+    if(r>=100){ const steps=Math.round(a/6/snap)*snap; M=((steps%60)+60)%60; }
+    else { H=(Math.round(a/30))%12; }
+    paint();
+  }
+  svgPointer(svg, at, at);
+  body.querySelector('.btn-check').onclick=()=>{
+    if(done) return;
+    if(H%12===target.h&&M===target.m){ done=true; svg.classList.add('correct');
+      qWin(fb,'🎉 أحسنت! '+(mode==='elapsed'?('بعدَ '+arNum(addMin)+' دقيقةً تصيرُ الساعةُ '):'الساعةُ ')+fmt(target.h,target.m),3);
+    } else {
+      const mine=H%12*60+M, want=target.h*60+target.m;
+      qFail(fb, (M!==target.m&&H%12===target.h) ? 'الساعاتُ صحيحةٌ وعقربُ الدقائقِ ليس في موضعه'
+        : (mine<want?'ضبطُك قبلَ الوقتِ المطلوب':'ضبطُك بعدَ الوقتِ المطلوب'));
+    }
+  };
+  body.querySelector('.btn-reset').onclick=()=>renderClock(q,body,fb);
+}
+
+/* ⓕ قراءة أداة القياس (measure-tool): أربعةُ أوضاعٍ على أداتَينِ —
+   • ruler-read: جسمٌ ممتدٌّ من الصفرِ بطولِ `value` فيقرأُ الطالبُ طولَه ويختارُ من `options`.
+   • ruler-set: يمدُّ الطالبُ الجسمَ حتى `target` (رسمُ طولٍ مطلوبٍ لا قراءتُه).
+   • scale-read: مؤشّرُ الميزانِ عند `value` فيقرأُ الكتلةَ ويختارُ من `options`.
+   • scale-set: يُدير الطالبُ المؤشّرَ إلى `target`.
+   التدريجُ من `min`/`max`/`step`/`labelEvery` بمحرّكِ التدريجِ المشترك (scaleTicks/scalePos/scaleVal)،
+   و`unit` وحدةُ العرضِ (سم، غرام، مل…). القيمةُ تلتقطُ إلى `step` فلا تقعُ بين تدريجتَين. */
+function renderMeasureTool(q, body, fb){
+  const mode=q.mode||'ruler-read';
+  const isRuler=(mode.indexOf('ruler')===0), isSet=(mode.indexOf('-set')>0);
+  const unit=q.unit||(isRuler?'سم':'غرام');
+  const min=isRuler?0:(numOf(q.min)||0), max=numOf(q.max)||(isRuler?20:1000);
+  const step=Math.abs(numOf(q.step))||(isRuler?1:50);
+  const labelEvery=Math.max(1,Math.round(numOf(q.labelEvery)||(isRuler?5:2)));
+  const ticks=scaleTicks(min,max,step,labelEvery);
+  const value=(q.value!=null)?numOf(q.value):null;                 // للقراءة
+  const target=(q.target!=null)?numOf(q.target):value;             // للضبط
+  let cur=isSet?min:(value!=null?value:min);
+  let done=false;
+  let svgHtml='', W, H;
+  if(isRuler){
+    W=900; H=230; const X0=60, X1=840, RY=120;
+    const px=v=>scalePos(v,min,max,X0,X1);
+    let marks='';
+    ticks.forEach(t=>{ const x=px(t.v), h=t.major?46:26;
+      marks+='<line class="ms-tick'+(t.major?' ms-major':'')+'" x1="'+x.toFixed(1)+'" y1="'+RY+'" x2="'+x.toFixed(1)+'" y2="'+(RY+h)+'"></line>';
+      if(t.major) marks+='<text class="ms-num" x="'+x.toFixed(1)+'" y="'+(RY+78)+'">'+arNum(t.v)+'</text>';
+    });
+    svgHtml='<svg class="mssvg" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="xMidYMid meet">'+
+      '<rect class="ms-ruler" x="'+(X0-26)+'" y="'+RY+'" width="'+(X1-X0+52)+'" height="96" rx="8"></rect>'+marks+
+      '<g class="ms-obj"><rect class="ms-bar" x="'+X0+'" y="52" height="52" rx="16" width="0"></rect>'+
+      '<line class="ms-edge" x1="0" y1="40" x2="0" y2="'+(RY+8)+'"></line></g></svg>';
+  } else {
+    W=420; H=300; const CX=210, CY=230, R=170;
+    const A0=-120, A1=120;                                        // قوسُ الميناءِ ٢٤٠ درجة
+    const pol=(r,deg)=>({x:CX+r*Math.sin(deg*Math.PI/180), y:CY-r*Math.cos(deg*Math.PI/180)});
+    const ang=v=>A0+(v-min)/(max-min)*(A1-A0);
+    window.__msAng=ang; 
+    let marks='';
+    ticks.forEach(t=>{ const a=ang(t.v), p1=pol(R-(t.major?34:20),a), p2=pol(R-2,a);
+      marks+='<line class="ms-tick'+(t.major?' ms-major':'')+'" x1="'+p1.x.toFixed(1)+'" y1="'+p1.y.toFixed(1)+'" x2="'+p2.x.toFixed(1)+'" y2="'+p2.y.toFixed(1)+'"></line>';
+      if(t.major){ const pn=pol(R-62,a);
+        marks+='<text class="ms-num" x="'+pn.x.toFixed(1)+'" y="'+(pn.y+10).toFixed(1)+'">'+arNum(t.v)+'</text>'; }
+    });
+    const pa=pol(R,A0), pb=pol(R,A1);
+    svgHtml='<svg class="mssvg mssvg-dial" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="xMidYMid meet">'+
+      '<path class="ms-dialface" d="M '+pa.x.toFixed(1)+' '+pa.y.toFixed(1)+' A '+R+' '+R+' 0 1 1 '+pb.x.toFixed(1)+' '+pb.y.toFixed(1)+'"></path>'+
+      marks+'<g class="ms-needle"><line x1="'+CX+'" y1="'+CY+'" x2="'+CX+'" y2="'+(CY-R+34)+'"></line></g>'+
+      '<circle class="ms-pin" cx="'+CX+'" cy="'+CY+'" r="12"></circle>'+
+      '<text class="ms-unit" x="'+CX+'" y="'+(CY+34)+'">'+unit+'</text></svg>';
+  }
+  const readout=isSet?'<div class="ms-read"><b></b> '+unit+'</div>':'';
+  const opts=(!isSet)?'<div class="opts">'+shuffle((q.options||[]).slice()).map(o=>'<button class="opt" data-o="'+o+'">'+o+'</button>').join('')+'</div>':'';
+  const acts=isSet?'<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>':'';
+  body.innerHTML='<div class="meas">'+svgHtml+readout+opts+'</div>'+acts;
+  const svg=body.querySelector('.mssvg');
+  const readEl=body.querySelector('.ms-read b');
+  function paint(){
+    if(isRuler){
+      const X0=60, X1=840;
+      const x=scalePos(cur,min,max,X0,X1);
+      const bar=svg.querySelector('.ms-bar'), edge=svg.querySelector('.ms-edge');
+      bar.setAttribute('width', Math.max(0,x-X0).toFixed(1));
+      edge.setAttribute('x1', x.toFixed(1)); edge.setAttribute('x2', x.toFixed(1));
+    } else {
+      svg.querySelector('.ms-needle').setAttribute('transform','rotate('+window.__msAng(cur).toFixed(2)+' 210 230)');
+    }
+    if(readEl) readEl.textContent=arNum(cur);
+  }
+  cur=isSet?min:(value!=null?value:min); paint();
+  if(!isSet){
+    const ans=value;
+    body.querySelectorAll('.opt').forEach(btn=>{ btn.onclick=()=>{
+      if(done) return;
+      if(numOf(btn.dataset.o)===ans){ done=true; btn.classList.add('correct');
+        body.querySelectorAll('.opt').forEach(b=>b.disabled=true);
+        qWin(fb,'🎉 أحسنت! القراءةُ '+arNum(ans)+' '+unit,3);
+      } else { btn.classList.add('wrong'); btn.disabled=true;
+        qFail(fb, isRuler?'ابدأْ من الصفرِ وعُدَّ التدريجاتِ حتى طرفِ الجسم'
+                        :'اقرأْ أقربَ تدريجةٍ يشيرُ إليها المؤشّر'); }
+    };});
+    return;
+  }
+  // ── الضبطُ: النقرُ أو السحبُ على لوحِ الرسمِ كلِّه (لا مقبضٌ دقيق)، والقيمةُ تلتقطُ إلى step ──
+  function at(p){
+    if(done) return;
+    let v;
+    if(isRuler) v=scaleVal(p.x,min,max,60,840);
+    else { const dx=p.x-210, dy=p.y-230; let a=Math.atan2(dx,-dy)*180/Math.PI;
+      a=Math.max(-120,Math.min(120,a)); v=min+(a+120)/240*(max-min); }
+    cur=Math.max(min,Math.min(max, min+Math.round((v-min)/step)*step));
+    cur=+cur.toFixed(10); paint();
+  }
+  svgPointer(svg, at, at);
+  body.querySelector('.btn-check').onclick=()=>{
+    if(done) return;
+    if(cur===target){ done=true; svg.classList.add('correct');
+      qWin(fb,'🎉 أحسنت! '+arNum(target)+' '+unit,3);
+    } else qFail(fb, cur<target?'قراءتُك أقلُّ من المطلوب — تقدّمْ قليلاً':'قراءتُك أكثرُ من المطلوب — تراجعْ قليلاً');
+  };
+  body.querySelector('.btn-reset').onclick=()=>renderMeasureTool(q,body,fb);
+}
+
+/* ⓖ النقود العُمانية (money): كلُّ القيمِ **بالبيسة** (١ ر.ع = ١٠٠٠ بيسة) فالحسابُ صحيحٌ بلا
+   كسورٍ عشريّة، والعرضُ يُنسَّق تلقائياً (ر.ع/بيسة). ثلاثةُ أوضاعٍ —
+   • pay: يُكوّن الطالبُ `target` من رفِّ النقودِ `rack` (نقرُ القطعةِ في الصندوقِ يُرجعها).
+   • count: قطعٌ معروضةٌ في `items` فيختارُ مجموعَها من `options`.
+   • change: `price` و`paid` والهدفُ = الفرقُ، يُكوّنه الطالبُ نقوداً.
+   القطعُ مرسومةٌ SVG (قرصٌ للعملةِ ومستطيلٌ للورقة) لا صورَ عملةٍ حقيقيّة، و`maxPieces` تحدُّ العدد. */
+function renderMoney(q, body, fb){
+  const mode=q.mode||'pay';
+  /* كلُّ القيمِ بالبيسة (١ ريال = ١٠٠٠ بيسة) فالحسابُ صحيحٌ بلا كسورٍ عشريّة */
+  const RACK=(q.rack||[5,10,25,50,100,200,500,1000]).map(v=>Math.round(numOf(v)));
+  function fmt(v){ if(v>=1000){ const r=Math.floor(v/1000), b=v%1000;
+      return arNum(r)+' ر.ع'+(b?(' و'+arNum(b)+' بيسة'):''); } return arNum(v)+' بيسة'; }
+  function pieceSvg(v){
+    // ≤١٠٠ بيسة تُرسم عملةً معدنيّةً، وما فوقها ورقةً نقديّةً — تمييزٌ شكليٌّ لا لونيٌّ فحسب
+    if(v<=100) return '<svg class="mn-svg mn-coin" viewBox="0 0 80 80"><circle class="mn-coinface" cx="40" cy="40" r="36"></circle>'+
+      '<circle class="mn-coinring" cx="40" cy="40" r="29"></circle>'+
+      '<text class="mn-val" x="40" y="46">'+arNum(v)+'</text>'+
+      '<text class="mn-unit" x="40" y="63">بيسة</text></svg>';
+    const lbl=(v>=1000)?(arNum(v/1000)+' ر.ع'):(arNum(v)+' بيسة');
+    return '<svg class="mn-svg mn-note" viewBox="0 0 132 76"><rect class="mn-noteface" x="3" y="3" width="126" height="70" rx="9"></rect>'+
+      '<rect class="mn-noteinner" x="13" y="13" width="106" height="50" rx="6"></rect>'+
+      '<text class="mn-val mn-noteval" x="66" y="46">'+lbl+'</text></svg>';
+  }
+  const price=(q.price!=null)?Math.round(numOf(q.price)):null;
+  const paid=(q.paid!=null)?Math.round(numOf(q.paid)):null;
+  let target=(q.target!=null)?Math.round(numOf(q.target)):null;
+  if(mode==='change'&&price!=null&&paid!=null) target=paid-price;
+  const head = (mode==='change')
+    ? '<div class="mn-task">الثمنُ <b>'+fmt(price)+'</b> ودفعَ <b>'+fmt(paid)+'</b> — كم الباقي؟</div>'
+    : (mode==='pay'&&target!=null ? '<div class="mn-task">المطلوبُ: <b>'+fmt(target)+'</b></div>' : '');
+  const editable=(mode!=='count');
+  const items=(q.items||[]).map(v=>Math.round(numOf(v)));
+  const rack = editable ? '<div class="bank mnrack"><div class="bt">النقود:</div><div class="chips mnchips">'+
+      RACK.map(v=>'<button class="mn-piece mn-rackitem" data-v="'+v+'">'+pieceSvg(v)+'</button>').join('')+
+      '</div></div>' : '';
+  const opts = (mode==='count') ? '<div class="opts">'+shuffle((q.options||[]).slice()).map(o=>'<button class="opt" data-o="'+o+'">'+o+'</button>').join('')+'</div>' : '';
+  const acts = (mode==='count') ? '' : '<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>';
+  body.innerHTML='<div class="moneyq">'+head+
+    '<div class="mn-tray'+(editable?'':' mn-tray-fixed')+'"></div>'+
+    '<div class="mn-total">المجموع: <b>'+fmt(0)+'</b></div>'+rack+opts+'</div>'+acts;
+  const tray=body.querySelector('.mn-tray'), totalEl=body.querySelector('.mn-total b');
+  let picked=editable?[]:items.slice(), done=false;
+  function total(){ return picked.reduce((a,b)=>a+b,0); }
+  function paint(){
+    tray.innerHTML=picked.length?picked.map((v,i)=>'<button class="mn-piece mn-trayitem" data-i="'+i+'">'+pieceSvg(v)+'</button>').join('')
+      :'<span class="mn-empty">'+(editable?'اختر النقودَ من الأسفل':'')+'</span>';
+    totalEl.textContent=(mode==='count'&&!done)?'؟':fmt(total()); // في وضعِ العدِّ لا يُكشفُ المجموعُ قبلَ الجواب
+    if(editable) tray.querySelectorAll('.mn-trayitem').forEach(b=>b.onclick=()=>{
+      if(done) return; picked.splice(+b.dataset.i,1); paint(); });
+  }
+  paint();
+  if(mode==='count'){
+    const val=total();
+    body.querySelectorAll('.opt').forEach(btn=>{ btn.onclick=()=>{
+      if(done) return;
+      if(numOf(btn.dataset.o)===val){ done=true; btn.classList.add('correct');
+        body.querySelectorAll('.opt').forEach(b=>b.disabled=true);
+        paint(); qWin(fb,'🎉 أحسنت! المجموعُ '+fmt(val),3);
+      } else { btn.classList.add('wrong'); btn.disabled=true;
+        qFail(fb,'اجمعْ قيمةَ كلِّ قطعةٍ على حِدَة ثم اجمعِ النواتج'); }
+    };});
+    return;
+  }
+  body.querySelectorAll('.mn-rackitem').forEach(b=>{ b.onclick=()=>{
+    if(done) return;
+    if(q.maxPieces && picked.length>=Math.round(numOf(q.maxPieces))){ qFail(fb,'لا تزدْ على '+arNum(Math.round(numOf(q.maxPieces)))+' قطعة'); return; }
+    picked.push(+b.dataset.v); paint(); };});
+  body.querySelector('.btn-check').onclick=()=>{
+    if(done) return;
+    const t=total();
+    if(t===target){ done=true;
+      tray.querySelectorAll('.mn-piece').forEach(el=>el.classList.add('correct'));
+      qWin(fb,'🎉 أحسنت! '+(mode==='change'?'الباقي ':'')+fmt(target)+' بـ'+arNum(picked.length)+' قطعة',3);
+    } else qFail(fb, t<target ? 'معك '+fmt(t)+' والمطلوبُ '+fmt(target)+' — أضِفْ المزيد'
+                              : 'معك '+fmt(t)+' وهو أكثرُ من '+fmt(target)+' — انقرْ قطعةً في الصندوقِ لإرجاعها');
+  };
+  body.querySelector('.btn-reset').onclick=()=>renderMoney(q,body,fb);
 }
 
 /* ===== إقلاع ===== */
