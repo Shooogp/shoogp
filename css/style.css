@@ -628,9 +628,19 @@
 
   /* ⑱ بطاقات الذاكرة — شبكة بطاقات مقلوبة تُقلب بطاقتان كل دور (نسخة نصية)، بطاقات كبيرة للسبورة و RTL */
   .memory{display:flex;flex-direction:column;align-items:center;gap:18px;width:100%}
-  .memgrid{display:grid;gap:16px;width:100%;max-width:620px;margin-inline:auto}
-  /* البطاقة: مربّعة كبيرة بمنظور ثلاثيّ لقلبها */
-  .memcard{position:relative;aspect-ratio:1/1;min-height:96px;border:none;background:none;padding:0;
+  /* تخطيط الشبكة — قاعدة تصميم دائمة (DESIGN_RULES.md §أسئلة بطاقات الذاكرة —
+     تخطيط الشبكة): الشبكة تتلاءم كاملة داخل الإطار بلا قصّ أي بطاقة.
+     ‏--memcols = عدد الأعمدة المفضَّل (يمرّره renderMemory حسب عدد البطاقات)،
+     يتحقق في العرض الواسع بعرض بطاقة نسبي؛ وإن ضاق الإطار عن العمود الأدنى
+     (76px — فوق حدّ اللمس 60px) قلّ عدد الأعمدة تلقائياً (auto-fit) والتفّت
+     البطاقات لصفوف أكثر — فلا يتجاوز مجموع الأعمدة عرض الإطار أبداً. */
+  .memgrid{display:grid;gap:16px;width:100%;max-width:620px;margin-inline:auto;
+    grid-template-columns:repeat(auto-fit,
+      minmax(max(76px, calc(100%/var(--memcols,4) - 16px)), 1fr))}
+  /* البطاقة: مربّعة بمنظور ثلاثيّ لقلبها — عرضها نسبيّ من عمودها (لا حدّ أدنى
+     ثابتاً بالبكسل يفرض على العمود عرضاً أكبر من المتاح فيقصّ البطاقات الطرفية —
+     الحدّ الأدنى مضمون من عمود الشبكة أعلاه) */
+  .memcard{position:relative;aspect-ratio:1/1;min-height:0;min-width:0;border:none;background:none;padding:0;
     cursor:pointer;perspective:800px;font-family:'Tajawal'}
   /* وجها البطاقة متطابقان في المكان، يُخفى المقلوب منهما (backface) */
   .memface{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;
