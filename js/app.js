@@ -1590,8 +1590,12 @@ function renderHundredChart(q, body, fb){
       shuffle(missing.concat(q.distractors||[]).map(Number)).map(v=>
         `<div class="chip hcchip" draggable="true" data-w="${arNum(v)}" data-v="${v}">${arNum(v)}</div>`).join('')+
       `</div></div>`;
+  /* ‏`qfit-flex` = وسمُ «الوسيطِ المرن» في قاعدةِ الاحتواءِ الأساسية (css/style.css §④):
+     الشبكةُ المربّعةُ ١٠×١٠ أطولُ من أن تسعَها نافذةُ أيِّ إطارٍ بعرضِها الكامل مع نصِّ
+     السؤالِ وبطاقاتِه وأزراره، فتُعلَنُ مرنةً لتضيقَ إلى ما تبقّى (نسبتُها محفوظةٌ
+     بـpreserveAspectRatio)، وتُعطي طبقةُ الإطارِ البطاقةَ أوسعَ إطارٍ مسموحٍ لأجلِها. */
   body.innerHTML=`<div class="hchart">${bar}`+
-    `<svg class="hcsvg" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${cellsHtml}</svg>`+
+    `<svg class="hcsvg qfit-flex" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${cellsHtml}</svg>`+
     `${bank}</div>`+
     `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
   const cellEls=[].slice.call(body.querySelectorAll('.hc-cell'));
