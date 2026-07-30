@@ -1305,6 +1305,7 @@ window.QUESTIONS = {
     },
 
     // ⑤ النقطة الساخنة — تطبيق (تحديد موضع عدد على خط الأعداد)
+    // نسبة الرسم ٢٫١٩٥ (shoogp-ui §١.١٠): طالت علامات التدريج وكبرت الأرقام (٣٠ ⇒ ٤٢).
     {
       type: "hotspot",
       objective: "4Nn6: يضع الأعداد بدقة على خط أعداد مقسّم بمضاعفات ١٠ أو ١٠٠",
@@ -1312,24 +1313,24 @@ window.QUESTIONS = {
       prompt: "خطُّ الأعدادِ منْ ٣٠٠٠ إلى ٤٠٠٠ مقسّمٌ بالمئاتِ — اضغطْ على موضعِ العددِ ٣٧٠٠.",
       bg: "#fdf9ee",
       fit: "width",
-      svg: `<svg viewBox="0 0 900 210" width="900" height="210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="خط أعداد من ٣٠٠٠ إلى ٤٠٠٠">
-        <line x1="70" y1="120" x2="830" y2="120" stroke="#33415e" stroke-width="5" stroke-linecap="round"/>
-        <line x1="70" y1="98" x2="70" y2="142" stroke="#33415e" stroke-width="5" stroke-linecap="round"/>
-        <line x1="146" y1="106" x2="146" y2="134" stroke="#33415e" stroke-width="4"/>
-        <line x1="222" y1="106" x2="222" y2="134" stroke="#33415e" stroke-width="4"/>
-        <line x1="298" y1="106" x2="298" y2="134" stroke="#33415e" stroke-width="4"/>
-        <line x1="374" y1="106" x2="374" y2="134" stroke="#33415e" stroke-width="4"/>
-        <line x1="450" y1="98" x2="450" y2="142" stroke="#33415e" stroke-width="5" stroke-linecap="round"/>
-        <line x1="526" y1="106" x2="526" y2="134" stroke="#33415e" stroke-width="4"/>
-        <line x1="602" y1="106" x2="602" y2="134" stroke="#33415e" stroke-width="4"/>
-        <line x1="678" y1="106" x2="678" y2="134" stroke="#33415e" stroke-width="4"/>
-        <line x1="754" y1="106" x2="754" y2="134" stroke="#33415e" stroke-width="4"/>
-        <line x1="830" y1="98" x2="830" y2="142" stroke="#33415e" stroke-width="5" stroke-linecap="round"/>
-        <text x="70" y="180" font-size="30" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٣٠٠٠</text>
-        <text x="450" y="180" font-size="30" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٣٥٠٠</text>
-        <text x="830" y="180" font-size="30" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٤٠٠٠</text>
+      svg: `<svg viewBox="0 0 900 410" width="900" height="410" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="خط أعداد من ٣٠٠٠ إلى ٤٠٠٠">
+        <line x1="70" y1="190" x2="830" y2="190" stroke="#33415e" stroke-width="7" stroke-linecap="round"/>
+        <line x1="70" y1="150" x2="70" y2="230" stroke="#33415e" stroke-width="7" stroke-linecap="round"/>
+        <line x1="146" y1="164" x2="146" y2="216" stroke="#33415e" stroke-width="5"/>
+        <line x1="222" y1="164" x2="222" y2="216" stroke="#33415e" stroke-width="5"/>
+        <line x1="298" y1="164" x2="298" y2="216" stroke="#33415e" stroke-width="5"/>
+        <line x1="374" y1="164" x2="374" y2="216" stroke="#33415e" stroke-width="5"/>
+        <line x1="450" y1="150" x2="450" y2="230" stroke="#33415e" stroke-width="7" stroke-linecap="round"/>
+        <line x1="526" y1="164" x2="526" y2="216" stroke="#33415e" stroke-width="5"/>
+        <line x1="602" y1="164" x2="602" y2="216" stroke="#33415e" stroke-width="5"/>
+        <line x1="678" y1="164" x2="678" y2="216" stroke="#33415e" stroke-width="5"/>
+        <line x1="754" y1="164" x2="754" y2="216" stroke="#33415e" stroke-width="5"/>
+        <line x1="830" y1="150" x2="830" y2="230" stroke="#33415e" stroke-width="7" stroke-linecap="round"/>
+        <text x="70" y="300" font-size="42" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٣٠٠٠</text>
+        <text x="450" y="300" font-size="42" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٣٥٠٠</text>
+        <text x="830" y="300" font-size="42" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٤٠٠٠</text>
       </svg>`,
-      spot: { x: 67, y: 57, r: 5 }
+      spot: { x: 67, y: 46.3, r: 5 }
     },
 
     // ⑦ التصنيف في مجموعات — استدلال (تحليل التقريب لأقرب مئة)
@@ -1345,6 +1346,7 @@ window.QUESTIONS = {
     },
 
     // ⑫ اكتشف الخطأ (إثرائي) — استدلال
+    // نسبة الرسم ٢٫١٩٥ (shoogp-ui §١.١٠): طالت العلامات وكبرت الأرقام (٢٤ ⇒ ٣٤).
     {
       type: "find-error",
       objective: "4Nn6: يضع الأعداد بدقة على خط أعداد مقسّم بمضاعفات ١٠ أو ١٠٠",
@@ -1352,32 +1354,32 @@ window.QUESTIONS = {
       prompt: "خطُّ الأعدادِ منْ ٠ إلى ١٠٠٠ فيهِ عددٌ واحدٌ في غيرِ موضعِهِ — اضغطْ عليهِ.",
       bg: "#fdf9ee",
       fit: "width",
-      svg: `<svg viewBox="0 0 900 210" width="900" height="210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="خط أعداد من صفر إلى ألف فيه عدد خاطئ">
-        <line x1="70" y1="110" x2="830" y2="110" stroke="#33415e" stroke-width="5" stroke-linecap="round"/>
-        <line x1="70" y1="88" x2="70" y2="132" stroke="#33415e" stroke-width="5" stroke-linecap="round"/>
-        <line x1="146" y1="96" x2="146" y2="124" stroke="#33415e" stroke-width="4"/>
-        <line x1="222" y1="96" x2="222" y2="124" stroke="#33415e" stroke-width="4"/>
-        <line x1="298" y1="96" x2="298" y2="124" stroke="#33415e" stroke-width="4"/>
-        <line x1="374" y1="96" x2="374" y2="124" stroke="#33415e" stroke-width="4"/>
-        <line x1="450" y1="96" x2="450" y2="124" stroke="#33415e" stroke-width="4"/>
-        <line x1="526" y1="96" x2="526" y2="124" stroke="#33415e" stroke-width="4"/>
-        <line x1="602" y1="96" x2="602" y2="124" stroke="#33415e" stroke-width="4"/>
-        <line x1="678" y1="96" x2="678" y2="124" stroke="#33415e" stroke-width="4"/>
-        <line x1="754" y1="96" x2="754" y2="124" stroke="#33415e" stroke-width="4"/>
-        <line x1="830" y1="88" x2="830" y2="132" stroke="#33415e" stroke-width="5" stroke-linecap="round"/>
-        <text x="70"  y="165" font-size="24" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٠</text>
-        <text x="146" y="165" font-size="24" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">١٠٠</text>
-        <text x="222" y="165" font-size="24" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٢٠٠</text>
-        <text x="298" y="165" font-size="24" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٣٠٠</text>
-        <text x="374" y="165" font-size="24" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٤٠٠</text>
-        <text x="450" y="165" font-size="24" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٥٠٠</text>
-        <text x="526" y="165" font-size="24" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٦٥٠</text>
-        <text x="602" y="165" font-size="24" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٧٠٠</text>
-        <text x="678" y="165" font-size="24" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٨٠٠</text>
-        <text x="754" y="165" font-size="24" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٩٠٠</text>
-        <text x="830" y="165" font-size="24" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">١٠٠٠</text>
+      svg: `<svg viewBox="0 0 900 410" width="900" height="410" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="خط أعداد من صفر إلى ألف فيه عدد خاطئ">
+        <line x1="70" y1="180" x2="830" y2="180" stroke="#33415e" stroke-width="7" stroke-linecap="round"/>
+        <line x1="70" y1="140" x2="70" y2="220" stroke="#33415e" stroke-width="7" stroke-linecap="round"/>
+        <line x1="146" y1="154" x2="146" y2="206" stroke="#33415e" stroke-width="5"/>
+        <line x1="222" y1="154" x2="222" y2="206" stroke="#33415e" stroke-width="5"/>
+        <line x1="298" y1="154" x2="298" y2="206" stroke="#33415e" stroke-width="5"/>
+        <line x1="374" y1="154" x2="374" y2="206" stroke="#33415e" stroke-width="5"/>
+        <line x1="450" y1="154" x2="450" y2="206" stroke="#33415e" stroke-width="5"/>
+        <line x1="526" y1="154" x2="526" y2="206" stroke="#33415e" stroke-width="5"/>
+        <line x1="602" y1="154" x2="602" y2="206" stroke="#33415e" stroke-width="5"/>
+        <line x1="678" y1="154" x2="678" y2="206" stroke="#33415e" stroke-width="5"/>
+        <line x1="754" y1="154" x2="754" y2="206" stroke="#33415e" stroke-width="5"/>
+        <line x1="830" y1="140" x2="830" y2="220" stroke="#33415e" stroke-width="7" stroke-linecap="round"/>
+        <text x="70"  y="290" font-size="34" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٠</text>
+        <text x="146" y="290" font-size="34" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">١٠٠</text>
+        <text x="222" y="290" font-size="34" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٢٠٠</text>
+        <text x="298" y="290" font-size="34" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٣٠٠</text>
+        <text x="374" y="290" font-size="34" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٤٠٠</text>
+        <text x="450" y="290" font-size="34" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٥٠٠</text>
+        <text x="526" y="290" font-size="34" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٦٥٠</text>
+        <text x="602" y="290" font-size="34" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٧٠٠</text>
+        <text x="678" y="290" font-size="34" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٨٠٠</text>
+        <text x="754" y="290" font-size="34" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٩٠٠</text>
+        <text x="830" y="290" font-size="34" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">١٠٠٠</text>
       </svg>`,
-      spot: { x: 58.4, y: 76, r: 6 }
+      spot: { x: 58.4, y: 68, r: 6 }
     }
 
   ],
@@ -1419,6 +1421,7 @@ window.QUESTIONS = {
     },
 
     // ① سحب وإفلات — تطبيق (وضع أعداد على خط الأعداد الممتد تحت الصفر)
+    // نسبة الرسم ٢٫١٩٥ (shoogp-ui §١.١٠): كبرت الدوائر (نق ١١ ⇒ ١٧) والأرقام (٢٨ ⇒ ٣٨).
     {
       type: "drag-drop",
       objective: "4Nn9: يستخدم الأعداد السالبة في سياقات عملية مثل درجات الحرارة",
@@ -1426,32 +1429,32 @@ window.QUESTIONS = {
       prompt: "اسحبْ كلَّ عددٍ إلى موضعِهِ الصحيحِ على خطِّ الأعدادِ.",
       bg: "#fdf9ee",
       fit: "width",
-      svg: `<svg viewBox="0 0 900 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="خط أعداد من سالب خمسة إلى خمسة">
-        <line x1="70" y1="110" x2="830" y2="110" stroke="#33415e" stroke-width="5" stroke-linecap="round"/>
-        <line x1="70" y1="88" x2="70" y2="132" stroke="#33415e" stroke-width="5" stroke-linecap="round"/>
-        <line x1="222" y1="96" x2="222" y2="124" stroke="#33415e" stroke-width="4"/>
-        <line x1="298" y1="96" x2="298" y2="124" stroke="#33415e" stroke-width="4"/>
-        <line x1="450" y1="88" x2="450" y2="132" stroke="#33415e" stroke-width="5" stroke-linecap="round"/>
-        <line x1="526" y1="96" x2="526" y2="124" stroke="#33415e" stroke-width="4"/>
-        <line x1="602" y1="96" x2="602" y2="124" stroke="#33415e" stroke-width="4"/>
-        <line x1="754" y1="96" x2="754" y2="124" stroke="#33415e" stroke-width="4"/>
-        <line x1="830" y1="88" x2="830" y2="132" stroke="#33415e" stroke-width="5" stroke-linecap="round"/>
-        <circle cx="146" cy="110" r="11" fill="#fff" stroke="#d97a2b" stroke-width="4"/>
-        <circle cx="374" cy="110" r="11" fill="#fff" stroke="#d97a2b" stroke-width="4"/>
-        <circle cx="678" cy="110" r="11" fill="#fff" stroke="#d97a2b" stroke-width="4"/>
-        <text x="70"  y="165" font-size="28" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">-٥</text>
-        <text x="222" y="165" font-size="28" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">-٣</text>
-        <text x="298" y="165" font-size="28" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">-٢</text>
-        <text x="450" y="165" font-size="28" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٠</text>
-        <text x="526" y="165" font-size="28" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">١</text>
-        <text x="602" y="165" font-size="28" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٢</text>
-        <text x="754" y="165" font-size="28" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٤</text>
-        <text x="830" y="165" font-size="28" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٥</text>
+      svg: `<svg viewBox="0 0 900 410" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="خط أعداد من سالب خمسة إلى خمسة">
+        <line x1="70" y1="180" x2="830" y2="180" stroke="#33415e" stroke-width="7" stroke-linecap="round"/>
+        <line x1="70" y1="140" x2="70" y2="220" stroke="#33415e" stroke-width="7" stroke-linecap="round"/>
+        <line x1="222" y1="154" x2="222" y2="206" stroke="#33415e" stroke-width="5"/>
+        <line x1="298" y1="154" x2="298" y2="206" stroke="#33415e" stroke-width="5"/>
+        <line x1="450" y1="140" x2="450" y2="220" stroke="#33415e" stroke-width="7" stroke-linecap="round"/>
+        <line x1="526" y1="154" x2="526" y2="206" stroke="#33415e" stroke-width="5"/>
+        <line x1="602" y1="154" x2="602" y2="206" stroke="#33415e" stroke-width="5"/>
+        <line x1="754" y1="154" x2="754" y2="206" stroke="#33415e" stroke-width="5"/>
+        <line x1="830" y1="140" x2="830" y2="220" stroke="#33415e" stroke-width="7" stroke-linecap="round"/>
+        <circle cx="146" cy="180" r="17" fill="#fff" stroke="#d97a2b" stroke-width="5"/>
+        <circle cx="374" cy="180" r="17" fill="#fff" stroke="#d97a2b" stroke-width="5"/>
+        <circle cx="678" cy="180" r="17" fill="#fff" stroke="#d97a2b" stroke-width="5"/>
+        <text x="70"  y="290" font-size="38" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">-٥</text>
+        <text x="222" y="290" font-size="38" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">-٣</text>
+        <text x="298" y="290" font-size="38" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">-٢</text>
+        <text x="450" y="290" font-size="38" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٠</text>
+        <text x="526" y="290" font-size="38" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">١</text>
+        <text x="602" y="290" font-size="38" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٢</text>
+        <text x="754" y="290" font-size="38" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٤</text>
+        <text x="830" y="290" font-size="38" font-weight="700" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٥</text>
       </svg>`,
       targets: [
-        { answer: "٤-", box:{x:16,y:10}, dot:{x:16.2,y:52.4} },
-        { answer: "١-", box:{x:50,y:10}, dot:{x:41.6,y:52.4} },
-        { answer: "٣",  box:{x:84,y:10}, dot:{x:75.3,y:52.4} }
+        { answer: "٤-", box:{x:16,y:10}, dot:{x:16.2,y:43.9} },
+        { answer: "١-", box:{x:50,y:10}, dot:{x:41.6,y:43.9} },
+        { answer: "٣",  box:{x:84,y:10}, dot:{x:75.3,y:43.9} }
       ]
     },
 
@@ -1500,6 +1503,7 @@ window.QUESTIONS = {
     },
 
     // ⑤ النقطة الساخنة — معرفة (تمييز العدد الزوجي)
+    // نسبة الرسم ٢٫١٩٢ (shoogp-ui §١.١٠): طالت البطاقات (١١٠ ⇒ ١٨٥) وكبر الخط (٥٦ ⇒ ٧٢).
     {
       type: "hotspot",
       objective: "4Nn11: يميّز الأعداد الفردية والزوجية",
@@ -1507,15 +1511,15 @@ window.QUESTIONS = {
       prompt: "اضغطْ على العددِ الزوجيِّ.",
       bg: "#fdf9ee",
       fit: "width",
-      svg: `<svg viewBox="0 0 800 220" width="800" height="220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="أربع بطاقات أعداد">
-        <rect x="50"  y="55" width="150" height="110" rx="16" fill="#eef4fb" stroke="#33415e" stroke-width="3"/>
-        <rect x="230" y="55" width="150" height="110" rx="16" fill="#eef4fb" stroke="#33415e" stroke-width="3"/>
-        <rect x="410" y="55" width="150" height="110" rx="16" fill="#eef4fb" stroke="#33415e" stroke-width="3"/>
-        <rect x="590" y="55" width="150" height="110" rx="16" fill="#eef4fb" stroke="#33415e" stroke-width="3"/>
-        <text x="125" y="130" font-size="56" font-weight="800" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٤٧</text>
-        <text x="305" y="130" font-size="56" font-weight="800" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٣٩</text>
-        <text x="485" y="130" font-size="56" font-weight="800" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٦٢</text>
-        <text x="665" y="130" font-size="56" font-weight="800" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٨٥</text>
+      svg: `<svg viewBox="0 0 800 365" width="800" height="365" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="أربع بطاقات أعداد">
+        <rect x="50"  y="90" width="150" height="185" rx="22" fill="#eef4fb" stroke="#33415e" stroke-width="4"/>
+        <rect x="230" y="90" width="150" height="185" rx="22" fill="#eef4fb" stroke="#33415e" stroke-width="4"/>
+        <rect x="410" y="90" width="150" height="185" rx="22" fill="#eef4fb" stroke="#33415e" stroke-width="4"/>
+        <rect x="590" y="90" width="150" height="185" rx="22" fill="#eef4fb" stroke="#33415e" stroke-width="4"/>
+        <text x="125" y="208" font-size="72" font-weight="800" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٤٧</text>
+        <text x="305" y="208" font-size="72" font-weight="800" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٣٩</text>
+        <text x="485" y="208" font-size="72" font-weight="800" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٦٢</text>
+        <text x="665" y="208" font-size="72" font-weight="800" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٨٥</text>
       </svg>`,
       spot: { x: 60.6, y: 50, r: 10 }
     },
@@ -2901,14 +2905,16 @@ window.QUESTIONS = {
       prompt: "انقر على الصندوقِ الذي تكونُ فيه الجُزيئاتُ متلاصقةً منتظمةً (المادّةُ الصلبةُ).",
       fit: "width",
       bg: "#fdf9ee",
-      spot: { x: 82, y: 50, r: 13 },
-      svg: `<svg viewBox="0 0 470 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="ثلاثة صناديق بترتيب الجزيئات">
-        <rect x="20" y="35" width="130" height="130" rx="10" fill="#eef2f6" stroke="#33334d" stroke-width="3"/>
-        <g fill="#2f6fb0"><circle cx="55" cy="70" r="9"/><circle cx="112" cy="60" r="9"/><circle cx="82" cy="105" r="9"/><circle cx="48" cy="140" r="9"/><circle cx="122" cy="132" r="9"/></g>
-        <rect x="170" y="35" width="130" height="130" rx="10" fill="#eef2f6" stroke="#33334d" stroke-width="3"/>
-        <g fill="#2f6fb0"><circle cx="192" cy="62" r="9"/><circle cx="216" cy="54" r="9"/><circle cx="242" cy="66" r="9"/><circle cx="270" cy="58" r="9"/><circle cx="202" cy="90" r="9"/><circle cx="230" cy="98" r="9"/><circle cx="258" cy="90" r="9"/><circle cx="284" cy="86" r="9"/><circle cx="210" cy="126" r="9"/><circle cx="244" cy="130" r="9"/><circle cx="276" cy="122" r="9"/></g>
-        <rect x="320" y="35" width="130" height="130" rx="10" fill="#eef2f6" stroke="#33334d" stroke-width="3"/>
-        <g fill="#2f6fb0"><circle cx="342" cy="57" r="9"/><circle cx="366" cy="57" r="9"/><circle cx="390" cy="57" r="9"/><circle cx="414" cy="57" r="9"/><circle cx="342" cy="81" r="9"/><circle cx="366" cy="81" r="9"/><circle cx="390" cy="81" r="9"/><circle cx="414" cy="81" r="9"/><circle cx="342" cy="105" r="9"/><circle cx="366" cy="105" r="9"/><circle cx="390" cy="105" r="9"/><circle cx="414" cy="105" r="9"/><circle cx="342" cy="129" r="9"/><circle cx="366" cy="129" r="9"/><circle cx="390" cy="129" r="9"/><circle cx="414" cy="129" r="9"/></g>
+      spot: { x: 82.5, y: 50, r: 13 },
+      // نسبة الرسم ٢٫١٩٦ (shoogp-ui §١.١٠): طالت الصناديق (١٣٠×١٣٠ ⇒ ١٣٨×١٦٥) وكبرت
+      // الجزيئات (نق ٩ ⇒ ١٠) وأُعيد توزيعها على الارتفاع الجديد بنفس أعدادها وأنماطها.
+      svg: `<svg viewBox="0 0 470 214" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="ثلاثة صناديق بترتيب الجزيئات">
+        <rect x="12" y="25" width="138" height="165" rx="12" fill="#eef2f6" stroke="#33334d" stroke-width="3"/>
+        <g fill="#2f6fb0"><circle cx="45" cy="62" r="10"/><circle cx="115" cy="54" r="10"/><circle cx="80" cy="108" r="10"/><circle cx="40" cy="152" r="10"/><circle cx="120" cy="146" r="10"/></g>
+        <rect x="166" y="25" width="138" height="165" rx="12" fill="#eef2f6" stroke="#33334d" stroke-width="3"/>
+        <g fill="#2f6fb0"><circle cx="188" cy="92" r="10"/><circle cx="216" cy="82" r="10"/><circle cx="246" cy="94" r="10"/><circle cx="276" cy="86" r="10"/><circle cx="198" cy="127" r="10"/><circle cx="228" cy="134" r="10"/><circle cx="258" cy="126" r="10"/><circle cx="288" cy="120" r="10"/><circle cx="208" cy="164" r="10"/><circle cx="242" cy="168" r="10"/><circle cx="274" cy="160" r="10"/></g>
+        <rect x="320" y="25" width="138" height="165" rx="12" fill="#eef2f6" stroke="#33334d" stroke-width="3"/>
+        <g fill="#2f6fb0"><circle cx="344" cy="58" r="10"/><circle cx="374" cy="58" r="10"/><circle cx="404" cy="58" r="10"/><circle cx="434" cy="58" r="10"/><circle cx="344" cy="94" r="10"/><circle cx="374" cy="94" r="10"/><circle cx="404" cy="94" r="10"/><circle cx="434" cy="94" r="10"/><circle cx="344" cy="130" r="10"/><circle cx="374" cy="130" r="10"/><circle cx="404" cy="130" r="10"/><circle cx="434" cy="130" r="10"/><circle cx="344" cy="166" r="10"/><circle cx="374" cy="166" r="10"/><circle cx="404" cy="166" r="10"/><circle cx="434" cy="166" r="10"/></g>
       </svg>`
     },
 
@@ -4305,24 +4311,35 @@ window.QUESTIONS = {
       prompt: "اضغَطْ على رَمزِ الطَّقسِ المُمطِرِ.",
       fit: "width",
       bg: "#eaf3fb",
-      spot: { x: 65, y: 51, r: 13 },
-      svg: `<svg viewBox="0 0 400 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="رموز حالات الطقس">
-        <circle cx="55" cy="55" r="22" fill="#f2c230"/>
-        <g stroke="#f2c230" stroke-width="4" stroke-linecap="round">
-          <line x1="55" y1="20" x2="55" y2="8"/><line x1="55" y1="90" x2="55" y2="102"/>
-          <line x1="20" y1="55" x2="8" y2="55"/><line x1="90" y1="55" x2="102" y2="55"/>
-          <line x1="30" y1="30" x2="21" y2="21"/><line x1="80" y1="30" x2="89" y2="21"/>
-          <line x1="30" y1="80" x2="21" y2="89"/><line x1="80" y1="80" x2="89" y2="89"/>
+      spot: { x: 25, y: 74, r: 13 },
+      // نسبة الرسم ١٫٦ (shoogp-ui §١.١٠): أُعيد توزيع الرموز الأربعة على صفّين (٢×٢)
+      // فكبر كل رمز ١٫٣ مرّة نسبةً إلى العرض بدل صفٍّ واحدٍ رفيع. لم تُنزَل النسبة تحت ١٫٦
+      // كي لا يتجاوز ارتفاعُ الرسم المعروض مسرحَ الـ400px على المنافذ العريضة.
+      svg: `<svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="رموز حالات الطقس">
+        <g transform="translate(100,65) scale(1.3) translate(-55,-55)">
+          <circle cx="55" cy="55" r="22" fill="#f2c230"/>
+          <g stroke="#f2c230" stroke-width="4" stroke-linecap="round">
+            <line x1="55" y1="20" x2="55" y2="8"/><line x1="55" y1="90" x2="55" y2="102"/>
+            <line x1="20" y1="55" x2="8" y2="55"/><line x1="90" y1="55" x2="102" y2="55"/>
+            <line x1="30" y1="30" x2="21" y2="21"/><line x1="80" y1="30" x2="89" y2="21"/>
+            <line x1="30" y1="80" x2="21" y2="89"/><line x1="80" y1="80" x2="89" y2="89"/>
+          </g>
         </g>
-        <path d="M120 70 Q120 50 142 52 Q150 38 168 48 Q188 46 188 66 Q202 68 198 82 L120 82 Q108 80 120 70 Z" fill="#c9d2d9" stroke="#9aa7b0" stroke-width="2"/>
-        <path d="M220 60 Q220 40 242 42 Q250 28 268 38 Q288 36 288 56 Q302 58 298 72 L220 72 Q208 70 220 60 Z" fill="#9aa7b0" stroke="#7c8a94" stroke-width="2"/>
-        <g fill="#2f6fb0">
-          <path d="M235 80 q-4 8 0 11 q4 -3 0 -11 Z"/>
-          <path d="M258 80 q-4 8 0 11 q4 -3 0 -11 Z"/>
-          <path d="M281 80 q-4 8 0 11 q4 -3 0 -11 Z"/>
+        <g transform="translate(300,65) scale(1.3) translate(-155,-60)">
+          <path d="M120 70 Q120 50 142 52 Q150 38 168 48 Q188 46 188 66 Q202 68 198 82 L120 82 Q108 80 120 70 Z" fill="#c9d2d9" stroke="#9aa7b0" stroke-width="2"/>
         </g>
-        <path d="M320 60 Q320 40 342 42 Q350 28 368 38 Q388 36 388 56 Q402 58 398 72 L320 72 Q308 70 320 60 Z" fill="#c9d2d9" stroke="#9aa7b0" stroke-width="2"/>
-        <g fill="#7fb2e0"><circle cx="335" cy="86" r="4"/><circle cx="358" cy="86" r="4"/><circle cx="381" cy="86" r="4"/></g>
+        <g transform="translate(100,185) scale(1.3) translate(-255,-59)">
+          <path d="M220 60 Q220 40 242 42 Q250 28 268 38 Q288 36 288 56 Q302 58 298 72 L220 72 Q208 70 220 60 Z" fill="#9aa7b0" stroke="#7c8a94" stroke-width="2"/>
+          <g fill="#2f6fb0">
+            <path d="M235 80 q-4 8 0 11 q4 -3 0 -11 Z"/>
+            <path d="M258 80 q-4 8 0 11 q4 -3 0 -11 Z"/>
+            <path d="M281 80 q-4 8 0 11 q4 -3 0 -11 Z"/>
+          </g>
+        </g>
+        <g transform="translate(300,185) scale(1.3) translate(-355,-59)">
+          <path d="M320 60 Q320 40 342 42 Q350 28 368 38 Q388 36 388 56 Q402 58 398 72 L320 72 Q308 70 320 60 Z" fill="#c9d2d9" stroke="#9aa7b0" stroke-width="2"/>
+          <g fill="#7fb2e0"><circle cx="335" cy="86" r="4"/><circle cx="358" cy="86" r="4"/><circle cx="381" cy="86" r="4"/></g>
+        </g>
       </svg>`
     },
 
@@ -4487,11 +4504,19 @@ window.QUESTIONS = {
       prompt: "اضغَطْ على أكبَرِ صَخرَةٍ.",
       fit: "width",
       bg: "#f3efe6",
-      spot: { x: 84, y: 64, r: 15 },
-      svg: `<svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ثلاث صخور بأحجام مختلفة">
-        <path d="M42 118 Q32 96 55 90 Q78 84 92 100 Q104 116 88 126 Q62 134 42 118 Z" fill="#c2c8cd" stroke="#8a9096" stroke-width="3"/>
-        <path d="M165 132 Q150 98 186 88 Q224 80 244 106 Q260 130 234 142 Q194 150 165 132 Z" fill="#b2b9bf" stroke="#7c848a" stroke-width="3"/>
-        <path d="M292 148 Q268 92 322 72 Q384 56 396 108 Q404 146 356 152 Q318 156 292 148 Z" fill="#a3abb1" stroke="#6f777d" stroke-width="3"/>
+      spot: { x: 50, y: 74, r: 15 },
+      // نسبة الرسم ١٫٦ (shoogp-ui §١.١٠): الصخرتان الصغيرتان في صفٍّ علويّ والكبرى وحدها
+      // أسفلهما، فكبرت كلُّها ١٫٢٥ مرّة نسبةً إلى العرض وبقي تفاوتُ الأحجام بيّناً.
+      svg: `<svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ثلاث صخور بأحجام مختلفة">
+        <g transform="translate(100,70) scale(1.25) translate(-73,-109)">
+          <path d="M42 118 Q32 96 55 90 Q78 84 92 100 Q104 116 88 126 Q62 134 42 118 Z" fill="#c2c8cd" stroke="#8a9096" stroke-width="3"/>
+        </g>
+        <g transform="translate(300,70) scale(1.25) translate(-205,-115)">
+          <path d="M165 132 Q150 98 186 88 Q224 80 244 106 Q260 130 234 142 Q194 150 165 132 Z" fill="#b2b9bf" stroke="#7c848a" stroke-width="3"/>
+        </g>
+        <g transform="translate(200,185) scale(1.25) translate(-336,-106)">
+          <path d="M292 148 Q268 92 322 72 Q384 56 396 108 Q404 146 356 152 Q318 156 292 148 Z" fill="#a3abb1" stroke="#6f777d" stroke-width="3"/>
+        </g>
       </svg>`
     },
 
