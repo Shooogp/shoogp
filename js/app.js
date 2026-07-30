@@ -1308,10 +1308,13 @@ function renderSlider(q, body, fb){
 function renderMemory(q, body, fb){
   // كل زوج → بطاقتان تشتركان في مفتاح k (فهرس الزوج)، ثم تُخلط كل البطاقات مقلوبة
   const cards=shuffle(q.pairs.reduce((a,p,i)=>a.concat([{k:i,t:p.a},{k:i,t:p.b}]),[]));
-  const cols=cards.length<=6?3:4;   // شبكة تناسب العدد (٦ بطاقات ← ٣ أعمدة، ٨ ← ٤)
+  const cols=cards.length<=6?3:4;   // عدد الأعمدة المفضَّل (٦ بطاقات ← ٣ أعمدة، ٨ ← ٤)
   const total=q.pairs.length;
+  /* ‏--memcols لا قالب أعمدة إنلاين (DESIGN_RULES.md §أسئلة بطاقات الذاكرة —
+     تخطيط الشبكة): قالب الأعمدة المتجاوب في .memgrid (css/style.css) يحقق العدد
+     المفضَّل في العرض الواسع ويقلّله تلقائياً إن ضاق الإطار، فلا تُقصّ بطاقة أبداً. */
   body.innerHTML=`<div class="memory">`+
-    `<div class="memgrid" style="grid-template-columns:repeat(${cols},1fr)">`+
+    `<div class="memgrid" style="--memcols:${cols}">`+
     cards.map(c=>
       `<button class="memcard" type="button" data-k="${c.k}">`+
         `<span class="memface memback">🎴</span>`+
