@@ -879,8 +879,36 @@ function renderColor(q, body, fb){
    وصوت correct.mp3. اللوح بـ direction:ltr كي تطابق أعمدةُ الشبكة أعمدةَ الصورة
    (الصورة محتوى بصري لا نصّ) بينما تبقى بقيّة الواجهة RTL.
    الصوت: qWin/qFail يشغّلان correct.mp3/wrong.mp3 ويخضعان لزرّ الكتم العامّ. */
+/* ═══ قاعدة تصميم دائمة — DESIGN_RULES.md §«أسئلة البازل — صورة القطع» ═══
+   صورة البازل يجب أن تكون ممتلئة المعالم بالكامل: كل قطعة من قطع الشبكة تحمل
+   معالم مميّزة يستدلّ بها الطالب على موضعها — لا قطعة خالية بلا معالم.
+   الحارس pzGuard أدناه يفحص كل خلية عند تحميل الصورة ويحذّر صراحةً من أي خلية
+   شبه خالية، فلا تُعتمد صورة مخالفة أثناء التأليف (فحصٌ لا رفض — لا يكسر
+   السؤال أمام الطالب). لا تُزل الحارس ولا تتجاهل تحذيره. */
 function renderPuzzle(q, body, fb){
   const cols=(q.grid&&q.grid.cols)||3, rows=(q.grid&&q.grid.rows)||3, n=cols*rows;
+  /* فحص امتلاء المعالم (DESIGN_RULES.md): لكل خلية نحسب نسبة البكسلات المخالفة
+     لمتوسط لون الخلية — الخلية الملساء (خلفية بلا محتوى) نسبتها شبه صفرية. */
+  function pzGuard(im){
+    try{
+      const S=120, cv=document.createElement('canvas');
+      cv.width=cols*S; cv.height=rows*S;
+      const g=cv.getContext('2d'); g.drawImage(im,0,0,cv.width,cv.height);
+      for(let r=0;r<rows;r++) for(let c=0;c<cols;c++){
+        const d=g.getImageData(c*S,r*S,S,S).data, N=S*S;
+        let mr=0,mg=0,mb=0;
+        for(let i=0;i<d.length;i+=4){ mr+=d[i]; mg+=d[i+1]; mb+=d[i+2]; }
+        mr/=N; mg/=N; mb/=N;
+        let feat=0;
+        for(let i=0;i<d.length;i+=4)
+          if(Math.abs(d[i]-mr)+Math.abs(d[i+1]-mg)+Math.abs(d[i+2]-mb)>60) feat++;
+        if(feat/N<0.02)
+          console.warn('%c[بازل] ⛔ قطعة شبه خالية من المعالم (الصف '+(r+1)+'، العمود '+(c+1)+' من '+
+            rows+'×'+cols+') — خلاف قاعدة DESIGN_RULES.md §أسئلة البازل — صورة القطع. السؤال: '+
+            (q.prompt||'').slice(0,50), 'color:#c0392b;font-weight:bold');
+      }
+    }catch(e){}
+  }
   // موضع خلفية كل قطعة: العمود يتوزّع أفقياً والصف عمودياً (نسبة مئوية قياسية)
   const posX=i=>cols>1?(i%cols)/(cols-1)*100:0;
   const posY=i=>rows>1?Math.floor(i/cols)/(rows-1)*100:0;
@@ -932,7 +960,8 @@ function renderPuzzle(q, body, fb){
   const probe=new Image();
   probe.onload=()=>{ if(probe.naturalWidth){ pzAR=probe.naturalWidth/probe.naturalHeight;
       board.style.aspectRatio=probe.naturalWidth+'/'+probe.naturalHeight; }
-    fitBoard(); sizePieces(); };
+    fitBoard(); sizePieces();
+    pzGuard(probe); };   /* حارس امتلاء المعالم (DESIGN_RULES.md §أسئلة البازل) */
   probe.src=q.image;
   if(window.ResizeObserver){
     new ResizeObserver(sizePieces).observe(board);
