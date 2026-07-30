@@ -378,40 +378,90 @@ function applyDndLayout(dnd, ar){
 
 /* ① سحب وإفلات: targets[{answer,box,dot}] + خلفية image/svg
    ═══ قاعدة تصميم دائمة — انظر DESIGN_RULES.md §«أسئلة السحب والإفلات — خطوط التوصيل» ═══
-   السلوك الافتراضي لكل المواد: خط واصل (.dndline داخل svg.dndlines) ونقطة
-   (.dnd-dot) بين صندوق الإفلات وموضعه على الصورة.
-   استثناء الرياضيات فقط (subj-math على حاوية السؤال): لا خط ولا نقطة —
-   لا تُنشأ عناصرها أصلاً في DOM — والسحب مباشر إلى المربع الفارغ في مكانه،
-   لأن موضع المربع في أسئلة الرياضيات صحيح وثابت فلا حاجة لخط يوجّه إليه.
-   الشرط مركزيّ هنا فيرثه كل سؤال سحب وإفلات حالي أو مستقبلي تلقائياً. */
+   نوعا مناطق الإفلات:
+   (أ) مناطق استقبال منفصلة حول الرسم (.target «؟») — السلوك الافتراضي لكل
+       المواد بما فيها الرياضيات: خط واصل (.dndline داخل svg.dndlines) ونقطة
+       (.dnd-dot) بين المنطقة وموضعها على الرسم/الصورة.
+   (ب) خانات فارغة داخل رسم السؤال نفسه (rect/circle بحدّ متقطّع داخل svg —
+       كالخانات الناقصة بين الأرقام في صف لوحة المائة) — استثناء الرياضيات:
+       الهدف الذي تقع نقطته داخل خانةٍ منها يصير طبقةَ إفلاتٍ شفافةً على
+       الخانة نفسها (.target-cell)، بلا خط ولا نقطة — لا تُنشأ عناصرها أصلاً
+       في DOM — والسحب مباشر إلى الخانة الفارغة بين الأرقام، لأن موضعها صحيح
+       وثابت فلا يحتاج خطاً يوجّه إليه.
+   التصنيف تلقائيّ من الرسم الحيّ والشرط مركزيّ هنا، فيرثه كل سؤال سحب
+   وإفلات حالي أو مستقبلي تلقائياً دون تعديل بياناته. */
 function renderDragDrop(q, body, fb){
   let dragged=null;
   // استثناء الرياضيات (DESIGN_RULES.md): صنف subj-math يضعه shoogp-ui.js على #questionList
   // قبل بناء الأسئلة. البطاقة تُبنى منفصلةً ثم تُلحق، فـclosest وحدها لا تكفي وقت
   // الرسم — نقرأ الصنف من حاوية الأسئلة مباشرةً، وclosest احتياطٌ لإعادة الرسم (إعادة ↺).
   const _ql=document.getElementById('questionList');
-  const noLines = !!(_ql && _ql.classList.contains('subj-math')) || !!body.closest('.subj-math');
+  const isMath = !!(_ql && _ql.classList.contains('subj-math')) || !!body.closest('.subj-math');
   // الوسط: صورة تُحجّم مباشرةً (تظهر كاملة لكل النِسَب) أو رسم SVG داخل غلاف
   // fit:"width" للرسوم/الصور العريضة (كخط الأعداد): تملأ العرض ويُشتقّ ارتفاعها من نسبتها
   const wideCls = q.fit==='width' ? ' lw' : '';
   const media = q.svg ? `<div class="labelimg${wideCls}">${q.svg}</div>` : `<img class="labelimg${wideCls}" src="${q.image}" alt="">`;
-  // النقاط: تُوضع ديناميكياً حسب صندوق الصورة الحيّ (نِسَب الصورة محفوظة في data)
-  const dots = noLines ? '' : q.targets.map((t,i)=>`<span class="dnd-dot" data-i="${i}" data-x="${t.dot.x}" data-y="${t.dot.y}"></span>`).join('');
   // الصناديق حول الصورة (نِسَب مئوية من منطقة النشاط)
   const boxes = q.targets.map((t,i)=>`<div class="target" data-i="${i}" data-answer="${t.answer}" style="left:${t.box.x}%;top:${t.box.y}%">؟</div>`).join('');
   body.innerHTML=`<div class="dnd"><div class="stage stage-label"${q.bg?` style="background:${q.bg}"`:''}>`+
-    media +
-    (noLines ? '' : `<svg class="dndlines"></svg>`)+
-    dots + boxes +
+    media + boxes +
     `</div>`+
     `<div class="bank"><div class="bt">البطاقات:</div>`+
     shuffle(q.targets.map(t=>t.answer)).map(w=>`<div class="chip" draggable="true" data-w="${w}">${w}</div>`).join('')+
     `</div></div><div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
-  // وضع النقاط + رسم الخطوط ديناميكياً (دقيق مهما تغيّر الحجم أو ظهر السؤال)
-  // — وفي الرياضيات لا عناصر أصلاً فيرجع redraw فوراً (قاعدة DESIGN_RULES.md أعلاه)
-  const stage=body.querySelector('.stage'), svg=body.querySelector('.dndlines'), imgEl=body.querySelector('.labelimg');
+  const stage=body.querySelector('.stage'), imgEl=body.querySelector('.labelimg');
   const dndEl=body.querySelector('.dnd');
   const SVGNS='http://www.w3.org/2000/svg';
+  /* ── تصنيف الأهداف (DESIGN_RULES.md): النوع (ب) = خانة داخل الرسم ──
+     الخانة الفارغة عنصر rect/circle/ellipse يحمل stroke-dasharray في svg السؤال
+     الحيّ (لا في النص المصدري — القوالب تتوسّع بـmap). الهدف الذي تقع نقطته dot
+     داخل حدود خانةٍ يُصنَّف (ب)؛ والقياس بنسب viewBox المئوية كنسب dot نفسها. */
+  let cellOf=q.targets.map(()=>null);
+  if(isMath && q.svg){
+    const inSvg=imgEl && imgEl.querySelector('svg');
+    const vb=inSvg && inSvg.viewBox && inSvg.viewBox.baseVal;
+    if(vb && vb.width && vb.height){
+      const cells=[];
+      inSvg.querySelectorAll('rect[stroke-dasharray],circle[stroke-dasharray],ellipse[stroke-dasharray]').forEach(el=>{
+        let cx,cy,w,h;
+        if(el.tagName==='rect'){
+          const x=+el.getAttribute('x')||0, y=+el.getAttribute('y')||0;
+          w=+el.getAttribute('width'); h=+el.getAttribute('height'); cx=x+w/2; cy=y+h/2;
+        }else{
+          cx=+el.getAttribute('cx'); cy=+el.getAttribute('cy');
+          const rx=+(el.getAttribute('r')||el.getAttribute('rx')), ry=+(el.getAttribute('r')||el.getAttribute('ry'));
+          w=2*rx; h=2*ry;
+        }
+        if(!w||!h) return;
+        cells.push({cx:(cx-vb.x)/vb.width*100, cy:(cy-vb.y)/vb.height*100,
+                    w:w/vb.width*100, h:h/vb.height*100, round:el.tagName!=='rect'});
+      });
+      cellOf=q.targets.map(t=>cells.find(c=>
+        Math.abs(t.dot.x-c.cx)<=c.w/2 && Math.abs(t.dot.y-c.cy)<=c.h/2)||null);
+    }
+  }
+  // أهداف النوع (ب): طبقة شفافة على الخانة نفسها (الموضع المبدئي مركز الخانة؛
+  // redraw يضبطه بالبكسل على صندوق الصورة الحيّ ويمنحها مقاس الخانة)
+  body.querySelectorAll('.target').forEach(tg=>{
+    const c=cellOf[+tg.dataset.i]; if(!c) return;
+    tg.classList.add('target-cell');
+    tg.style.left=c.cx+'%'; tg.style.top=c.cy+'%';
+    if(c.round) tg.style.borderRadius='50%';
+  });
+  // الخط والنقطة لأهداف النوع (أ) فقط — لا تُنشأ عناصرها أصلاً حين لا حاجة إليها
+  const firstTarget=stage.querySelector('.target');
+  if(q.targets.some((t,i)=>!cellOf[i])){
+    const lsvg=document.createElementNS(SVGNS,'svg');
+    lsvg.setAttribute('class','dndlines');
+    stage.insertBefore(lsvg, firstTarget);
+    q.targets.forEach((t,i)=>{
+      if(cellOf[i]) return;
+      const d=document.createElement('span'); d.className='dnd-dot';
+      d.dataset.i=i; d.dataset.x=t.dot.x; d.dataset.y=t.dot.y;
+      stage.insertBefore(d, firstTarget);
+    });
+  }
+  const svg=stage.querySelector('.dndlines');   // null إن كانت كل الأهداف خانات (ب)
   // اختيار اتجاه التخطيط حسب نسبة الصورة (SVG فوراً من viewBox، والصورة عند تحميلها)
   function relayout(){
     let ar=null;
@@ -420,10 +470,18 @@ function renderDragDrop(q, body, fb){
     applyDndLayout(dndEl, ar);
   }
   function redraw(){
-    if(noLines) return;   // الرياضيات: لا خطوط ولا نقاط (DESIGN_RULES.md)
     const R=window.fitRect||(el=>el.getBoundingClientRect());   // مستطيل بالفضاء التصميميّ (واعٍ بـ zoom)
     const sr=R(stage); if(!sr.width||!imgEl) return;
     const ir=R(imgEl);
+    // أهداف النوع (ب): تُطابَق على خانتها المرسومة موقعاً ومقاساً (DESIGN_RULES.md)
+    body.querySelectorAll('.target-cell').forEach(tg=>{
+      const c=cellOf[+tg.dataset.i]; if(!c) return;
+      tg.style.left =(ir.left-sr.left + c.cx/100*ir.width)+'px';
+      tg.style.top  =(ir.top -sr.top  + c.cy/100*ir.height)+'px';
+      tg.style.width =(c.w/100*ir.width)+'px';
+      tg.style.height=(c.h/100*ir.height)+'px';
+    });
+    if(!svg) return;      // كل الأهداف خانات (ب) — لا خطوط ولا نقاط أصلاً
     body.querySelectorAll('.dnd-dot').forEach(dot=>{
       dot.style.left=(ir.left-sr.left + (+dot.dataset.x)/100*ir.width)+'px';
       dot.style.top =(ir.top -sr.top  + (+dot.dataset.y)/100*ir.height)+'px';
