@@ -701,7 +701,11 @@
      الخمسة رموز **368px** بفائض 36px — لا على حدّ الالتفاف تماماً: بمقاس 64/14/20 كان
      المجموع 400px مقابل 400px متاحة، فالتفّت على 1280×800 ولم تلتفّ على 1920×1080
      لفارق تقريبٍ كسريّ لا أكثر. المعادلة الأطول من خمسة رموز تلتفّ سطرين بدل أن تفيض */
-  .eqrow{direction:ltr;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;
+  /* اتجاه المعادلة RTL — قاعدة تصميم دائمة (DESIGN_RULES.md §أسئلة بناء المعادلة —
+     اتجاه العرض): أول حدّ من أقصى اليمين والناتج (= والخانة) في أقصى اليسار،
+     والتفاف flex يتابع الأسطر من اليمين. البيانات بترتيب القراءة والاتجاه شأن
+     العرض وحده — لا يُعاد ضبطها ltr. */
+  .eqrow{direction:rtl;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;
     gap:12px;background:#fff;border-radius:18px;padding:18px;box-shadow:0 4px 14px rgba(0,0,0,.22)}
   /* الرمز المطبوع: أرقام ورموز كبيرة واضحة للسبورة (لا تُنقر) */
   .eqtok{display:inline-flex;align-items:center;justify-content:center;min-width:58px;min-height:64px;
