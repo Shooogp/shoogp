@@ -81,11 +81,49 @@ window.DATA_FALLBACK = {
       ]}
     ]},
     "g2-math": { book:"الرياضيات — الصف الثاني", units:[
-      { unit:"١أ: الأعداد", lessons:[
-        { title:"صناعة لوحة المائة (١-١)", file:"g2m-1-1", open:true }
+      { unit:"١أ: العدد وحل المشكلات", lessons:[
+        { title:"صناعة لوحة المائة (١-١)", file:"g2m-1-1", chapter:1, chapterTitle:"لوحة المائة", open:true },
+        { title:"العد بالاثنينات، الخمسات والعشرات (٢-١)", file:"g2m-2-1", chapter:2, chapterTitle:"العد بالاثنينات، الخمسات والعشرات", open:false },
+        { title:"الأزواج العددية لـ١٠٠ (٣-١)", file:"g2m-3-1", chapter:3, chapterTitle:"خط الأعداد حتى ١٠٠", open:false },
+        { title:"جمع وطرح الأزواج العددية لـ١٠٠ (٣-٢)", file:"g2m-3-2", chapter:3, chapterTitle:"خط الأعداد حتى ١٠٠", open:false },
+        { title:"استخدام خط الأعداد (٤-١)", file:"g2m-4-1", chapter:4, chapterTitle:"استخدام خط الأعداد", open:false },
+        { title:"تقريب الأعداد باستخدام خط الأعداد (٤-٢)", file:"g2m-4-2", chapter:4, chapterTitle:"استخدام خط الأعداد", open:false },
+        { title:"الأزواج العددية لـ٢٠ (٥-١)", file:"g2m-5-1", chapter:5, chapterTitle:"اللعب بـ٢٠", open:false },
+        { title:"الأزواج العددية بين ١٠ و٢٠ (٥-٢)", file:"g2m-5-2", chapter:5, chapterTitle:"اللعب بـ٢٠", open:false },
+        { title:"الجمع باستخدام الأزواج العددية (٦-١)", file:"g2m-6-1", chapter:6, chapterTitle:"الجمع والطرح (١)", open:false },
+        { title:"التحقق من الحل (٦-٢)", file:"g2m-6-2", chapter:6, chapterTitle:"الجمع والطرح (١)", open:false },
+        { title:"المتساوي والمتكافئ (٦-٣)", file:"g2m-6-3", chapter:6, chapterTitle:"الجمع والطرح (١)", open:false },
+        { title:"مقدمة حول المصفوفات (٧-١)", file:"g2m-7-1", chapter:7, chapterTitle:"مصفوفة الضرب", open:false }
       ]},
-      { unit:"٢أ: الأعداد والعمليات الحسابية", lessons:[
-        { title:"العشرات والآحاد حتى ١٠٠ (١٢-١)", file:"g2m-12-1", open:true }
+      { unit:"١ب: الهندسة وحل المشكلات", lessons:[
+        { title:"الأشكال الثنائية الأبعاد (٨-١)", file:"g2m-8-1", chapter:8, chapterTitle:"الأشكال الثنائية الأبعاد والمجسمات والتماثل", open:false },
+        { title:"المجسمات (٨-٢)", file:"g2m-8-2", chapter:8, chapterTitle:"الأشكال الثنائية الأبعاد والمجسمات والتماثل", open:false },
+        { title:"التماثل (٨-٣)", file:"g2m-8-3", chapter:8, chapterTitle:"الأشكال الثنائية الأبعاد والمجسمات والتماثل", open:false }
+      ]},
+      { unit:"١ج: القياس وحل المشكلات", lessons:[
+        { title:"صناعة علبة (٩-١)", file:"g2m-9-1", chapter:9, chapterTitle:"قياس الطول", open:false },
+        { title:"قياس المسافة (٩-٢)", file:"g2m-9-2", chapter:9, chapterTitle:"قياس الطول", open:false },
+        { title:"صناعة أجسام متحركة (٩-٣)", file:"g2m-9-3", chapter:9, chapterTitle:"قياس الطول", open:false },
+        { title:"قياس الوقت (١٠-١)", file:"g2m-10-1", chapter:10, chapterTitle:"قياس الوقت والمسافة", open:false },
+        { title:"قياس المسافة (١٠-٢)", file:"g2m-10-2", chapter:10, chapterTitle:"قياس الوقت والمسافة", open:false },
+        { title:"قياس الارتفاع (١٠-٣)", file:"g2m-10-3", chapter:10, chapterTitle:"قياس الوقت والمسافة", open:false },
+        { title:"قياس المكونات (١١-١)", file:"g2m-11-1", chapter:11, chapterTitle:"قياس الكتلة والوقت والإنفاق", open:false },
+        { title:"وقت الطهي (١١-٢)", file:"g2m-11-2", chapter:11, chapterTitle:"قياس الكتلة والوقت والإنفاق", open:false },
+        { title:"البسكويت الثمين (١١-٣)", file:"g2m-11-3", chapter:11, chapterTitle:"قياس الكتلة والوقت والإنفاق", open:false }
+      ]},
+      { unit:"٢أ: العدد وحل المشكلات", lessons:[
+        { title:"العشرات والآحاد حتى ١٠٠ (١٢-١)", file:"g2m-12-1", chapter:12, chapterTitle:"العشرات والآحاد حتى ١٠٠", open:true },
+        { title:"مقارنة وترتيب الأعداد (١٢-٢)", file:"g2m-12-2", chapter:12, chapterTitle:"العشرات والآحاد حتى ١٠٠", open:false },
+        { title:"التقدير (١٣-١)", file:"g2m-13-1", chapter:13, chapterTitle:"التقدير", open:false },
+        { title:"الأزواج العددية لـ٢٠ (١٤-١)", file:"g2m-14-1", chapter:14, chapterTitle:"أنماط الأعداد", open:false },
+        { title:"الضعف (١٤-٢)", file:"g2m-14-2", chapter:14, chapterTitle:"أنماط الأعداد", open:false },
+        { title:"تصنيف الأعداد (١٤-٣)", file:"g2m-14-3", chapter:14, chapterTitle:"أنماط الأعداد", open:false },
+        { title:"الأعداد المكونة من رقم أو رقمين (١٥-١)", file:"g2m-15-1", chapter:15, chapterTitle:"الجمع والطرح (٢)", open:false },
+        { title:"الأعداد المكونة من رقمين (١٥-٢)", file:"g2m-15-2", chapter:15, chapterTitle:"الجمع والطرح (٢)", open:false },
+        { title:"العثور على الفرق (١٦-١)", file:"g2m-16-1", chapter:16, chapterTitle:"العثور على الفروقات البسيطة", open:false },
+        { title:"المصفوفات (١٧-١)", file:"g2m-17-1", chapter:17, chapterTitle:"التجميع والمشاركة", open:false },
+        { title:"العد بالاثنينات والخمسات والعشرات (١٧-٢)", file:"g2m-17-2", chapter:17, chapterTitle:"التجميع والمشاركة", open:false },
+        { title:"القسمة (١٧-٣)", file:"g2m-17-3", chapter:17, chapterTitle:"التجميع والمشاركة", open:false }
       ]}
     ]},
     "g4-sci": { book:"العلوم — الصف الرابع", units:[
