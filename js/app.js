@@ -213,7 +213,7 @@ function qWin(fb,msg,stars){fb.textContent=msg||'🎉 أحسنت!';fb.className=
 // أي واجهة بلا صاروخ تُبقي wrong.mp3 يعمل (بقية دروس المنصّة كلها تحوي الصاروخ الآن)
 function qFail(fb,msg){fb.textContent=msg||'حاول مرة أخرى';fb.className='fb qfb bad';if(!(window.RocketJourney&&RocketJourney.isActive&&RocketJourney.isActive()))playWrongSound();if(window.RocketJourney)RocketJourney.onAnswer(false);}
 
-const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل','slider':'🎚️ الشريط المتدرج','memory':'🎴 بطاقات الذاكرة','lens':'🔍 العدسة المكبّرة','equation-builder':'🧮 بناء المعادلة','number-line':'📏 خط الأعداد','hundred-chart':'💯 لوحة المائة','array':'🔲 المصفوفات','compare':'⚖️ المقارنة','pattern':'🔁 إكمال النمط','count-tap':'🖐️ العد بالنقر','place-value':'🧱 القيمة المنزلية','clock':'🕐 الساعة التفاعلية','measure-tool':'📐 أداة القياس','money':'🪙 النقود العُمانية'};
+const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل','slider':'🎚️ الشريط المتدرج','memory':'🎴 بطاقات الذاكرة','lens':'🔍 العدسة المكبّرة','equation-builder':'🧮 بناء المعادلة','number-line':'📏 خط الأعداد','hundred-chart':'💯 لوحة المائة','array':'🔲 المصفوفات','compare':'⚖️ المقارنة','pattern':'🔁 إكمال النمط','count-tap':'🖐️ العد بالنقر','place-value':'🧱 القيمة المنزلية','clock':'🕐 الساعة التفاعلية','measure-tool':'📐 أداة القياس','money':'🪙 النقود العُمانية','symmetry':'🪞 خط التماثل','chart-read':'📊 التمثيل البياني'};
 
 // تحويل الأرقام إلى هندية (عربية) للعرض
 function arNum(n){ return String(n).replace(/[0-9]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'[+d];}); }
@@ -228,7 +228,7 @@ function renderQuestions(ls){
     m.innerHTML='<div class="qbody" style="text-align:center;padding:14px 6px;font-size:1.15rem">📚 أسئلة هذا الدرس ستُضاف قريباً بإذن الله</div>';
     host.appendChild(m); return;
   }
-  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor,'puzzle':renderPuzzle,'slider':renderSlider,'memory':renderMemory,'lens':renderLens,'equation-builder':renderEquationBuilder,'number-line':renderNumberLine,'hundred-chart':renderHundredChart,'array':renderArray,'compare':renderCompare,'pattern':renderPattern,'count-tap':renderCountTap,'place-value':renderPlaceValue,'clock':renderClock,'measure-tool':renderMeasureTool,'money':renderMoney};
+  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor,'puzzle':renderPuzzle,'slider':renderSlider,'memory':renderMemory,'lens':renderLens,'equation-builder':renderEquationBuilder,'number-line':renderNumberLine,'hundred-chart':renderHundredChart,'array':renderArray,'compare':renderCompare,'pattern':renderPattern,'count-tap':renderCountTap,'place-value':renderPlaceValue,'clock':renderClock,'measure-tool':renderMeasureTool,'money':renderMoney,'symmetry':renderSymmetry,'chart-read':renderChartRead};
 
   // بناء كل البطاقات (تبقى في الصفحة لحفظ إجاباتها، ونُظهر واحدة فقط)
   const slides=document.createElement('div'); slides.className='qslides';
@@ -2346,6 +2346,188 @@ function renderMoney(q, body, fb){
                               : 'معك '+fmt(t)+' وهو أكثرُ من '+fmt(target)+' — انقرْ قطعةً في الصندوقِ لإرجاعها');
   };
   body.querySelector('.btn-reset').onclick=()=>renderMoney(q,body,fb);
+}
+
+/* ⓗ خط التماثل (symmetry): وضعان —
+   • line: شكلٌ (من مكتبةِ الأشكالِ `shape` أو مسارٍ حرٍّ `path` في فضاء ٢٠٠×٢٠٠) وعليه خطوطٌ
+     مرشَّحةٌ في `lines[]` لكلٍّ منها `ok`، فينقرُ الطالبُ ما يراه خطَّ تماثلٍ **والتحقّقُ على
+     المجموعةِ** (لا تكفي إصابةٌ مع نقصٍ أو زيادة) — فيصحّ الشكلُ ذو الخطوطِ المتعدّدة.
+   • mirror: شبكةُ rows×cols ومحورٌ في الوسطِ (`axis:'v'` أو `'h'`)، وخلايا `shape[[r,c]]` معطاةٌ
+     على أحدِ الجانبَينِ فيُكمل الطالبُ صورتَها المرآتيّة؛ المقابلُ يُحسبُ حسابياً لا يُؤلَّف. */
+function renderSymmetry(q, body, fb){
+  const mode=q.mode||'line';
+  if(mode==='mirror'){
+    /* ── إكمالُ الصورةِ المرآتيّةِ على شبكةٍ: محورٌ عموديٌّ أو أفقيٌّ في الوسط ── */
+    const rows=Math.max(2,Math.round(numOf(q.rows)||6)), cols=Math.max(2,Math.round(numOf(q.cols)||6));
+    const axis=(q.axis==='h')?'h':'v';
+    const given={}; (q.shape||[]).forEach(p=>{ given[Math.round(numOf(p[0]))+','+Math.round(numOf(p[1]))]=1; });
+    const mirrorOf=(r,c)=> axis==='v' ? [r, cols-1-c] : [rows-1-r, c];
+    const want={}; Object.keys(given).forEach(k=>{ const p=k.split(',').map(Number), m=mirrorOf(p[0],p[1]);
+      const mk=m[0]+','+m[1]; if(!given[mk]) want[mk]=1; });
+    const CELL=100, W=cols*CELL, H=rows*CELL;
+    let cells='';
+    for(let r=0;r<rows;r++) for(let c=0;c<cols;c++){
+      const x=(cols-1-c)*CELL, y=r*CELL, k=r+','+c;        // العمودُ ٠ أقصى اليمين (اتجاهُ القراءة)
+      cells+='<g class="sy-cell'+(given[k]?' sy-given':'')+'" data-k="'+k+'">'+
+        '<rect class="sy-hit" x="'+x+'" y="'+y+'" width="'+CELL+'" height="'+CELL+'"></rect>'+
+        '<rect class="sy-face" x="'+(x+5)+'" y="'+(y+5)+'" width="'+(CELL-10)+'" height="'+(CELL-10)+'" rx="10"></rect></g>';
+    }
+    const ax = axis==='v'
+      ? '<line class="sy-axis" x1="'+(W/2)+'" y1="-8" x2="'+(W/2)+'" y2="'+(H+8)+'"></line>'
+      : '<line class="sy-axis" x1="-8" y1="'+(H/2)+'" x2="'+(W+8)+'" y2="'+(H/2)+'"></line>';
+    body.innerHTML='<div class="symq"><svg class="sysvg" viewBox="-10 -10 '+(W+20)+' '+(H+20)+'" preserveAspectRatio="xMidYMid meet">'+
+      cells+ax+'</svg></div>'+
+      '<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>';
+    const on={}; let done=false;
+    body.querySelectorAll('.sy-cell').forEach(g=>{ g.addEventListener('click',()=>{
+      if(done||g.classList.contains('sy-given')) return;     // الجانبُ المُعطى ثابتٌ لا يُعدَّل
+      const k=g.dataset.k;
+      if(on[k]){ delete on[k]; g.classList.remove('on'); } else { on[k]=1; g.classList.add('on'); }
+      g.classList.remove('correct','wrong');
+    });});
+    body.querySelector('.btn-check').onclick=()=>{
+      if(done) return;
+      const mine=Object.keys(on), need=Object.keys(want);
+      body.querySelectorAll('.sy-cell.on').forEach(g=>g.classList.toggle(want[g.dataset.k]?'correct':'wrong',true));
+      if(mine.length===need.length && need.every(k=>on[k])){
+        done=true; qWin(fb,'🎉 أحسنت! الصورةُ متماثلةٌ حولَ المحور',3);
+      } else {
+        const hit=mine.filter(k=>want[k]).length, extra=mine.length-hit;
+        qFail(fb, extra ? 'الصحيحُ '+arNum(hit)+' من '+arNum(need.length)+' ولديك '+arNum(extra)+' مربّعاً زائداً'
+                        : 'الصحيحُ '+arNum(hit)+' من '+arNum(need.length)+' — كلُّ مربّعٍ يقابلُه مربّعٌ على البعدِ نفسِه من المحور');
+      }
+    };
+    body.querySelector('.btn-reset').onclick=()=>renderSymmetry(q,body,fb);
+    return;
+  }
+  /* ── اختيارُ خطِّ التماثلِ الصحيحِ على شكلٍ: الخطوطُ المرشَّحةُ تُنقر، والتحقّقُ على المجموعة ── */
+  const SHAPES={ square:'M 40 40 H 160 V 160 H 40 Z', rect:'M 20 55 H 180 V 145 H 20 Z',
+    triangle:'M 100 30 L 170 165 H 30 Z', circle:'M 100 25 A 75 75 0 1 1 99 25 Z',
+    rhombus:'M 100 25 L 175 100 L 100 175 L 25 100 Z', hexagon:'M 60 32 H 140 L 175 100 L 140 168 H 60 L 25 100 Z',
+    heart:'M 100 168 C 20 110 30 40 68 40 C 88 40 100 58 100 58 C 100 58 112 40 132 40 C 170 40 180 110 100 168 Z' };
+  const path=q.path||SHAPES[q.shape||'square']||SHAPES.square;
+  const lines=(q.lines||[]).map(l=>({x1:numOf(l.x1),y1:numOf(l.y1),x2:numOf(l.x2),y2:numOf(l.y2),ok:!!l.ok}));
+  let ls='';
+  lines.forEach((l,i)=>{ ls+='<g class="sy-line" data-i="'+i+'">'+
+    '<line class="sy-lhit" x1="'+l.x1+'" y1="'+l.y1+'" x2="'+l.x2+'" y2="'+l.y2+'"></line>'+
+    '<line class="sy-lface" x1="'+l.x1+'" y1="'+l.y1+'" x2="'+l.x2+'" y2="'+l.y2+'"></line></g>'; });
+  body.innerHTML='<div class="symq"><svg class="sysvg sysvg-shape" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid meet">'+
+    '<path class="sy-shape" d="'+path+'"></path>'+ls+'</svg></div>'+
+    '<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>';
+  const sel={}; let done=false;
+  body.querySelectorAll('.sy-line').forEach(g=>{ g.addEventListener('click',()=>{
+    if(done) return; const i=g.dataset.i;
+    if(sel[i]){ delete sel[i]; g.classList.remove('on'); } else { sel[i]=1; g.classList.add('on'); }
+    g.classList.remove('correct','wrong');
+  });});
+  body.querySelector('.btn-check').onclick=()=>{
+    if(done) return;
+    const need=lines.map((l,i)=>l.ok?String(i):null).filter(v=>v!==null);
+    const mine=Object.keys(sel);
+    if(!mine.length){ qFail(fb,'انقرِ الخطَّ الذي تراه خطَّ تماثل'); return; }
+    body.querySelectorAll('.sy-line.on').forEach(g=>g.classList.toggle(lines[+g.dataset.i].ok?'correct':'wrong',true));
+    if(mine.length===need.length && need.every(i=>sel[i])){
+      done=true; qWin(fb, need.length>1?('🎉 أحسنت! وجدتَ خطوطَ التماثلِ كلَّها ('+arNum(need.length)+')'):'🎉 أحسنت! هذا خطُّ التماثل',3);
+    } else {
+      const hit=mine.filter(i=>lines[+i].ok).length;
+      qFail(fb, 'الصحيحُ '+arNum(hit)+' من '+arNum(need.length)+' — خطُّ التماثلِ يجعلُ نصفَي الشكلِ منطبقَينِ تماماً');
+    }
+  };
+  body.querySelector('.btn-reset').onclick=()=>renderSymmetry(q,body,fb);
+}
+
+/* ⓘ قراءة التمثيل البياني (chart-read): `series[{label,value}]` والتدريجُ من `step`/`max`
+   (يُحسبُ تلقائياً إن غاب). المحورُ الرأسيُّ **يمينَ الرسمِ** والفئاتُ من اليمينِ إلى اليسارِ
+   باتّجاهِ القراءةِ العربيّ (كمحرّكِ الشبكةِ المشترك). ثلاثةُ أوضاعٍ —
+   • read: يقرأُ الطالبُ الرسمَ ويختارُ من `options` والصوابُ `answer`.
+   • tap: ينقرُ العمودَ الذي يحقّقُ المطلوبَ و`answer` عنوانُه (الأكثرُ/الأقلُّ/عددٌ معيّن).
+   • build: أعمدةٌ فارغةٌ يضبطُ الطالبُ ارتفاعَها لتطابقَ `series` (تُعرضُ الأعدادُ في شريطٍ فوقَ الرسم). */
+function renderChartRead(q, body, fb){
+  const mode=q.mode||'read';
+  const series=(q.series||[]).map(s=>({label:String(s.label), value:Math.round(numOf(s.value)||0)}));
+  if(!series.length){ body.textContent='لا بيانات في هذا التمثيل'; return; }
+  const step=Math.max(1,Math.round(numOf(q.step)||1));
+  const max=Math.max(step, Math.round(numOf(q.max)|| (Math.ceil(Math.max.apply(null,series.map(s=>s.value))/step)*step)));
+  const W=900, H=470, AX=820, X0=110, Y0=60, Y1=380;
+  const py=v=>scalePos(v,0,max,Y1,Y0);                 // القيمةُ إلى إحداثيٍّ رأسيّ (محرّكُ التدريجِ نفسُه)
+  const vy=y=>scaleVal(y,0,max,Y1,Y0);
+  const n=series.length, slot=(AX-X0)/n, bw=Math.min(96, slot*0.62);
+  let grid='';
+  for(let v=0; v<=max; v+=step){ const y=py(v);
+    grid+='<line class="ch-grid" x1="'+X0+'" y1="'+y.toFixed(1)+'" x2="'+AX+'" y2="'+y.toFixed(1)+'"></line>'+
+      '<text class="ch-num" x="'+(AX+22)+'" y="'+(y+10).toFixed(1)+'">'+arNum(v)+'</text>';
+  }
+  let bars='';
+  series.forEach((s,i)=>{
+    const cx=AX-(i+0.5)*slot;                           // الفئةُ الأولى أقصى اليمين (اتجاهُ القراءة)
+    bars+='<g class="ch-bar" data-i="'+i+'" data-label="'+s.label+'">'+
+      '<rect class="ch-hit" x="'+(cx-slot/2).toFixed(1)+'" y="'+Y0+'" width="'+slot.toFixed(1)+'" height="'+(Y1-Y0)+'"></rect>'+
+      '<rect class="ch-face" x="'+(cx-bw/2).toFixed(1)+'" y="'+Y1+'" width="'+bw.toFixed(1)+'" height="0"></rect>'+
+      '<text class="ch-val" x="'+cx.toFixed(1)+'" y="'+(Y1-10)+'"></text>'+
+      '<text class="ch-label" x="'+cx.toFixed(1)+'" y="'+(Y1+44)+'">'+s.label+'</text></g>';
+  });
+  const legend=(mode==='build')?'<div class="ch-legend">'+series.map(s=>'<span>'+s.label+': <b>'+arNum(s.value)+'</b></span>').join('')+'</div>':'';
+  const opts=(mode==='read')?'<div class="opts">'+shuffle((q.options||[]).slice()).map(o=>'<button class="opt" data-o="'+o+'">'+o+'</button>').join('')+'</div>':'';
+  const acts=(mode==='build')?'<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>':'';
+  body.innerHTML='<div class="chartq">'+legend+
+    '<svg class="chsvg" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="xMidYMid meet">'+grid+
+    '<line class="ch-axis" x1="'+AX+'" y1="'+Y0+'" x2="'+AX+'" y2="'+Y1+'"></line>'+
+    '<line class="ch-axis" x1="'+X0+'" y1="'+Y1+'" x2="'+AX+'" y2="'+Y1+'"></line>'+bars+
+    (q.yTitle?'<text class="ch-title" x="'+(AX-6)+'" y="'+(Y0-34)+'">'+q.yTitle+'</text>':'')+
+    '</svg>'+opts+'</div>'+acts;
+  const cur=series.map(s=>(mode==='build')?0:s.value);
+  let done=false;
+  function paintBar(i){
+    const g=body.querySelector('.ch-bar[data-i="'+i+'"]');
+    const face=g.querySelector('.ch-face'), val=g.querySelector('.ch-val');
+    const y=py(cur[i]);
+    face.setAttribute('y', y.toFixed(1)); face.setAttribute('height', Math.max(0,Y1-y).toFixed(1));
+    val.setAttribute('y', (y-12).toFixed(1)); val.textContent=cur[i]?arNum(cur[i]):'';
+  }
+  series.forEach((s,i)=>paintBar(i));
+  if(mode==='build'){
+    const svg=body.querySelector('.chsvg');
+    // النقرُ في عمودِ الفئةِ يضبطُ ارتفاعَها إلى أقربِ تدريجةٍ (لا مقبضَ سحبٍ دقيق)
+    svgPointer(svg, p=>{
+      if(done) return;
+      if(p.x>AX||p.x<X0) return;
+      const i=Math.floor((AX-p.x)/slot); if(i<0||i>=n) return;
+      let v=Math.round(vy(p.y)/step)*step;
+      cur[i]=Math.max(0,Math.min(max,v)); paintBar(i);
+      const g=body.querySelector('.ch-bar[data-i="'+i+'"]'); g.classList.remove('correct','wrong');
+    }, p=>{ if(done) return;
+      if(p.x>AX||p.x<X0) return;
+      const i=Math.floor((AX-p.x)/slot); if(i<0||i>=n) return;
+      let v=Math.round(vy(p.y)/step)*step; cur[i]=Math.max(0,Math.min(max,v)); paintBar(i); });
+    body.querySelector('.btn-check').onclick=()=>{
+      if(done) return;
+      let ok=0;
+      series.forEach((s,i)=>{ const g=body.querySelector('.ch-bar[data-i="'+i+'"]');
+        const good=(cur[i]===s.value); g.classList.toggle('correct',good); g.classList.toggle('wrong',!good); if(good) ok++; });
+      if(ok===n){ done=true; qWin(fb,'🎉 أحسنت! التمثيلُ مطابقٌ للبيانات',3); }
+      else qFail(fb,'الصحيحُ '+arNum(ok)+' من '+arNum(n)+' — اضبطْ ارتفاعَ كلِّ عمودٍ على عددِه');
+    };
+    body.querySelector('.btn-reset').onclick=()=>renderChartRead(q,body,fb);
+    return;
+  }
+  if(mode==='tap'){
+    body.querySelectorAll('.ch-bar').forEach(g=>{ g.addEventListener('click',()=>{
+      if(done) return;
+      if(g.dataset.label===String(q.answer)){ done=true; g.classList.add('correct');
+        qWin(fb,'🎉 أحسنت! '+q.answer+' ('+arNum(cur[+g.dataset.i])+')',3);
+      } else { g.classList.add('wrong'); qFail(fb,'قارنْ ارتفاعاتِ الأعمدةِ بالتدريجِ على المحور'); }
+    });});
+    return;
+  }
+  body.querySelectorAll('.opt').forEach(btn=>{ btn.onclick=()=>{
+    if(done) return;
+    const good = (q.answer!=null) ? (String(btn.dataset.o)===String(q.answer)) : false;
+    if(good){ done=true; btn.classList.add('correct');
+      body.querySelectorAll('.opt').forEach(b=>b.disabled=true);
+      qWin(fb,'🎉 أحسنت! '+q.answer,3);
+    } else { btn.classList.add('wrong'); btn.disabled=true;
+      qFail(fb,'اقرأْ ارتفاعَ العمودِ على تدريجِ المحورِ ثم أجبْ'); }
+  };});
 }
 
 /* ===== إقلاع ===== */
