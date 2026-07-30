@@ -346,8 +346,8 @@ function dndStageGuard(dnd){
 }
 /* سقف عرض المسرح للصور الطولية في الصفّ الأفقيّ.
    الصفّ يمنح المسرح عرض النافذة كاملاً، فتبتعد صناديق الوسم عن صورةٍ طوليّةٍ ضيّقة
-   (محكومةٌ بارتفاع المسرح لا بعرضه) فتبدو سابحةً بعيداً عنها — والربطُ بلا خطوطٍ
-   (قاعدةُ السحبِ المباشر) يجعلُ القربَ المكانيَّ وسيلةَ الربطِ الوحيدة، فالسقفُ ألزم.
+   (محكومةٌ بارتفاع المسرح لا بعرضه) فتبدو سابحةً بعيداً عنها رغم الخيوط الواصلة —
+   وفي الرياضيات (بلا خطوط، DESIGN_RULES.md) القربُ المكانيُّ وسيلةُ الربطِ الوحيدة فالسقفُ ألزم.
    المرجع المقيس: الحالة السليمة «الهياكل العظمية» — أقصى بُعد صندوق عن مركز الصورة
    = 84% من عرض الصورة. وبما أنّ البُعد = (٥٠٪ − نسبة الحافّة) × عرض المسرح، يكون:
         عرض المسرح ≤ 0.84 × عرض الصورة ÷ (٥٠٪ − نسبة الحافّة)  ≈ 2.5 × عرض الصورة
@@ -377,35 +377,41 @@ function applyDndLayout(dnd, ar){
 }
 
 /* ① سحب وإفلات: targets[{answer,box,dot}] + خلفية image/svg
-   ═══ قاعدة تصميم معتمدة (إلزامية — لا تُنقض): سحب مباشر بلا خطوط توصيل ═══
-   في كل أسئلة السحب والإفلات — الحالية والمستقبلية — تُسحب البطاقة مباشرةً إلى
-   منطقة الإفلات الفارغة (.target) دون رسم أي خط توصيل أو خط تحديد بين الصندوق
-   وموضعه على الصورة. خطوط الربط البصرية (<line class="dndline"> داخل
-   <svg class="dndlines">) أُزيلت عمداً من هذه الدالة المشتركة وفق القاعدة —
-   **لا يُعاد بناؤها مستقبلاً**. نقاط الارتساء (.dnd-dot) باقية: تعلّم موضعَ كل
-   هدف على الصورة، وهي علامة موضع لا خط ربط. القاعدة موثّقة في CLAUDE.md
-   (§قاعدة السحب المباشر بلا خطوط توصيل). */
+   ═══ قاعدة تصميم دائمة — انظر DESIGN_RULES.md §«أسئلة السحب والإفلات — خطوط التوصيل» ═══
+   السلوك الافتراضي لكل المواد: خط واصل (.dndline داخل svg.dndlines) ونقطة
+   (.dnd-dot) بين صندوق الإفلات وموضعه على الصورة.
+   استثناء الرياضيات فقط (subj-math على حاوية السؤال): لا خط ولا نقطة —
+   لا تُنشأ عناصرها أصلاً في DOM — والسحب مباشر إلى المربع الفارغ في مكانه،
+   لأن موضع المربع في أسئلة الرياضيات صحيح وثابت فلا حاجة لخط يوجّه إليه.
+   الشرط مركزيّ هنا فيرثه كل سؤال سحب وإفلات حالي أو مستقبلي تلقائياً. */
 function renderDragDrop(q, body, fb){
   let dragged=null;
+  // استثناء الرياضيات (DESIGN_RULES.md): صنف subj-math يضعه shoogp-ui.js على #questionList
+  // قبل بناء الأسئلة. البطاقة تُبنى منفصلةً ثم تُلحق، فـclosest وحدها لا تكفي وقت
+  // الرسم — نقرأ الصنف من حاوية الأسئلة مباشرةً، وclosest احتياطٌ لإعادة الرسم (إعادة ↺).
+  const _ql=document.getElementById('questionList');
+  const noLines = !!(_ql && _ql.classList.contains('subj-math')) || !!body.closest('.subj-math');
   // الوسط: صورة تُحجّم مباشرةً (تظهر كاملة لكل النِسَب) أو رسم SVG داخل غلاف
   // fit:"width" للرسوم/الصور العريضة (كخط الأعداد): تملأ العرض ويُشتقّ ارتفاعها من نسبتها
   const wideCls = q.fit==='width' ? ' lw' : '';
   const media = q.svg ? `<div class="labelimg${wideCls}">${q.svg}</div>` : `<img class="labelimg${wideCls}" src="${q.image}" alt="">`;
   // النقاط: تُوضع ديناميكياً حسب صندوق الصورة الحيّ (نِسَب الصورة محفوظة في data)
-  const dots = q.targets.map((t,i)=>`<span class="dnd-dot" data-i="${i}" data-x="${t.dot.x}" data-y="${t.dot.y}"></span>`).join('');
+  const dots = noLines ? '' : q.targets.map((t,i)=>`<span class="dnd-dot" data-i="${i}" data-x="${t.dot.x}" data-y="${t.dot.y}"></span>`).join('');
   // الصناديق حول الصورة (نِسَب مئوية من منطقة النشاط)
   const boxes = q.targets.map((t,i)=>`<div class="target" data-i="${i}" data-answer="${t.answer}" style="left:${t.box.x}%;top:${t.box.y}%">؟</div>`).join('');
   body.innerHTML=`<div class="dnd"><div class="stage stage-label"${q.bg?` style="background:${q.bg}"`:''}>`+
     media +
+    (noLines ? '' : `<svg class="dndlines"></svg>`)+
     dots + boxes +
     `</div>`+
     `<div class="bank"><div class="bt">البطاقات:</div>`+
     shuffle(q.targets.map(t=>t.answer)).map(w=>`<div class="chip" draggable="true" data-w="${w}">${w}</div>`).join('')+
     `</div></div><div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
-  // وضع النقاط ديناميكياً حسب صندوق الصورة الحيّ (دقيق مهما تغيّر الحجم أو ظهر السؤال)
-  // — بلا أي رسم خطوط بين الصناديق والنقاط (قاعدة السحب المباشر أعلاه)
-  const stage=body.querySelector('.stage'), imgEl=body.querySelector('.labelimg');
+  // وضع النقاط + رسم الخطوط ديناميكياً (دقيق مهما تغيّر الحجم أو ظهر السؤال)
+  // — وفي الرياضيات لا عناصر أصلاً فيرجع redraw فوراً (قاعدة DESIGN_RULES.md أعلاه)
+  const stage=body.querySelector('.stage'), svg=body.querySelector('.dndlines'), imgEl=body.querySelector('.labelimg');
   const dndEl=body.querySelector('.dnd');
+  const SVGNS='http://www.w3.org/2000/svg';
   // اختيار اتجاه التخطيط حسب نسبة الصورة (SVG فوراً من viewBox، والصورة عند تحميلها)
   function relayout(){
     let ar=null;
@@ -414,6 +420,7 @@ function renderDragDrop(q, body, fb){
     applyDndLayout(dndEl, ar);
   }
   function redraw(){
+    if(noLines) return;   // الرياضيات: لا خطوط ولا نقاط (DESIGN_RULES.md)
     const R=window.fitRect||(el=>el.getBoundingClientRect());   // مستطيل بالفضاء التصميميّ (واعٍ بـ zoom)
     const sr=R(stage); if(!sr.width||!imgEl) return;
     const ir=R(imgEl);
@@ -421,8 +428,31 @@ function renderDragDrop(q, body, fb){
       dot.style.left=(ir.left-sr.left + (+dot.dataset.x)/100*ir.width)+'px';
       dot.style.top =(ir.top -sr.top  + (+dot.dataset.y)/100*ir.height)+'px';
     });
+    svg.innerHTML='';
+    body.querySelectorAll('.target').forEach(bx=>{
+      const dot=body.querySelector('.dnd-dot[data-i="'+bx.dataset.i+'"]'); if(!dot) return;
+      const br=R(bx), dr=R(dot);
+      // مركز الصندوق ومركز النقطة (نسبةً إلى منطقة النشاط)
+      const cx=br.left+br.width/2-sr.left, cy=br.top+br.height/2-sr.top;
+      const px=dr.left+dr.width/2-sr.left, py=dr.top+dr.height/2-sr.top;
+      // يبدأ الخط من حافة الصندوق (بعد الحد المنقّط) لا من مركزه
+      const dx=px-cx, dy=py-cy;
+      const GAP=4; // فراغ بسيط بعد الحد المنقّط
+      const hw=br.width/2, hh=br.height/2;
+      let sx=cx, sy=cy;
+      if(dx||dy){
+        const t=Math.min(hw/Math.abs(dx||1e-6), hh/Math.abs(dy||1e-6));
+        const len=Math.hypot(dx,dy);
+        sx=cx + dx*t + dx/len*GAP;
+        sy=cy + dy*t + dy/len*GAP;
+      }
+      const ln=document.createElementNS(SVGNS,'line');
+      ln.setAttribute('x1',sx); ln.setAttribute('y1',sy);
+      ln.setAttribute('x2',px); ln.setAttribute('y2',py);
+      ln.setAttribute('class','dndline'); svg.appendChild(ln);
+    });
   }
-  /* مراقب أبعاد المسرح: يعيد ضبط مواضع النقاط، **ويعيد فحص خنق الصورة** — لأنّ عرض المسرح
+  /* مراقب أبعاد المسرح: يعيد رسم الخيوط والنقاط، **ويعيد فحص خنق الصورة** — لأنّ عرض المسرح
      لا يستقرّ إلا بعد أن تختار خوارزمية الإطار مقاسها وتضبطه، أي بعد relayout الأول.
      الحارس رتيب (يضيف ولا يزيل) فلا يتذبذب مع هذا المراقب. */
   if(window.ResizeObserver){ new ResizeObserver(()=>{ redraw(); dndStageGuard(dndEl); }).observe(stage); }
