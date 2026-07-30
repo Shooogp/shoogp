@@ -1193,9 +1193,13 @@
   color:transparent !important; text-shadow:none !important;
 }
 /* وفي كلِّ الحالاتِ (فارغةً وممتلئة): مقاسُ الطبقةِ مقاسُ الخانةِ المرسومةِ بالضبط —
-   تُصفَّرُ حدودُ المجموعةِ الدنيا وحشوُها كي لا تفيضَ البطاقةُ عن خانتِها */
+   تُصفَّرُ حدودُ المجموعةِ الدنيا وحشوُها كي لا تفيضَ البطاقةُ عن خانتِها،
+   وخطُّ العددِ الموضوعِ = خطُّ أرقامِ الرسمِ (--cellfs من redraw) لا الحدُّ الأدنى
+   المعدنيُّ الثابت — فلا يتقلّصُ العددُ ولا يَصغُرُ عن جيرانِه في الصفّ */
 .shoogp-ui.skin-metal .qwin .target.target-cell{
   min-height:0 !important; min-width:0 !important; padding:0 !important;
+  font-size:var(--cellfs, var(--mt-min-f)) !important; line-height:1 !important;
+  gap:0 !important;
 }
 /* الفراغُ الفارغُ يبقى في تدفّقِ الجملةِ (لا كتلةً تكسرُ السطر) */
 .shoogp-ui.skin-metal .qwin .blank{display:inline-flex; vertical-align:middle}
