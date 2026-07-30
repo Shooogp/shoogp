@@ -48,6 +48,8 @@ window.QUESTIONS = {
     // ④ سحب وإفلات — تطبيق — 2Nn1 (صفّ ٣١–٤٠ بثلاث خانات ناقصة)
     // الصفّ يُقرأ من اليمين إلى اليسار كصفوف لوحة المائة في السؤال ①، فيتّسق المشهدان.
     // الخانات الناقصة مرسومة بحدٍّ متقطّع وأرضيّة غائرة كخانات اللوحة الناقصة تماماً.
+    // نسبة الرسم ٢٫١٩٥ التزاماً بقاعدة الرسوم الأفقية الطويلة (shoogp-ui §١.١٠): عرض الخانة
+    // محكومٌ بعشرة أعمدة فلا يزيد، فنمت الخانة ارتفاعاً (٩٠ ⇒ ١٣٠) وتوسّطت الصفَّ في الارتفاع.
     {
       type: "drag-drop",
       objective: "2Nn1: يعدّ ويقرأ ويكتب الأعداد حتى ١٠٠ كحد أدنى، تصاعدياً وتنازلياً",
@@ -55,29 +57,29 @@ window.QUESTIONS = {
       prompt: "اسحَبْ كُلَّ عَدَدٍ إلى خانَتِهِ الفارِغةِ في صَفِّ لَوحةِ المِائةِ.",
       bg: "#fdf9ee",
       fit: "width",
-      svg: `<svg viewBox="0 0 900 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="صف من لوحة المائة من ٣١ إلى ٤٠ فيه ثلاث خانات ناقصة">
-        <rect x="789" y="95" width="78" height="90" rx="12" fill="#ffffff" stroke="#d9c7a4" stroke-width="3"/>
-        <text x="828" y="152" font-size="40" font-weight="700" text-anchor="middle" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">٣١</text>
-        <rect x="705" y="95" width="78" height="90" rx="12" fill="#ffffff" stroke="#d9c7a4" stroke-width="3"/>
-        <text x="744" y="152" font-size="40" font-weight="700" text-anchor="middle" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">٣٢</text>
-        <rect x="621" y="95" width="78" height="90" rx="12" fill="#efe6d6" stroke="#9c7b3f" stroke-width="4" stroke-dasharray="12 9"/>
-        <rect x="537" y="95" width="78" height="90" rx="12" fill="#ffffff" stroke="#d9c7a4" stroke-width="3"/>
-        <text x="576" y="152" font-size="40" font-weight="700" text-anchor="middle" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">٣٤</text>
-        <rect x="453" y="95" width="78" height="90" rx="12" fill="#ffffff" stroke="#d9c7a4" stroke-width="3"/>
-        <text x="492" y="152" font-size="40" font-weight="700" text-anchor="middle" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">٣٥</text>
-        <rect x="369" y="95" width="78" height="90" rx="12" fill="#ffffff" stroke="#d9c7a4" stroke-width="3"/>
-        <text x="408" y="152" font-size="40" font-weight="700" text-anchor="middle" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">٣٦</text>
-        <rect x="285" y="95" width="78" height="90" rx="12" fill="#efe6d6" stroke="#9c7b3f" stroke-width="4" stroke-dasharray="12 9"/>
-        <rect x="201" y="95" width="78" height="90" rx="12" fill="#ffffff" stroke="#d9c7a4" stroke-width="3"/>
-        <text x="240" y="152" font-size="40" font-weight="700" text-anchor="middle" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">٣٨</text>
-        <rect x="117" y="95" width="78" height="90" rx="12" fill="#efe6d6" stroke="#9c7b3f" stroke-width="4" stroke-dasharray="12 9"/>
-        <rect x="33" y="95" width="78" height="90" rx="12" fill="#ffffff" stroke="#d9c7a4" stroke-width="3"/>
-        <text x="72" y="152" font-size="40" font-weight="700" text-anchor="middle" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">٤٠</text>
+      svg: `<svg viewBox="0 0 900 410" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="صف من لوحة المائة من ٣١ إلى ٤٠ فيه ثلاث خانات ناقصة">
+        <rect x="789" y="140" width="78" height="130" rx="16" fill="#ffffff" stroke="#d9c7a4" stroke-width="4"/>
+        <text x="828" y="222" font-size="50" font-weight="700" text-anchor="middle" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">٣١</text>
+        <rect x="705" y="140" width="78" height="130" rx="16" fill="#ffffff" stroke="#d9c7a4" stroke-width="4"/>
+        <text x="744" y="222" font-size="50" font-weight="700" text-anchor="middle" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">٣٢</text>
+        <rect x="621" y="140" width="78" height="130" rx="16" fill="#efe6d6" stroke="#9c7b3f" stroke-width="5" stroke-dasharray="14 10"/>
+        <rect x="537" y="140" width="78" height="130" rx="16" fill="#ffffff" stroke="#d9c7a4" stroke-width="4"/>
+        <text x="576" y="222" font-size="50" font-weight="700" text-anchor="middle" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">٣٤</text>
+        <rect x="453" y="140" width="78" height="130" rx="16" fill="#ffffff" stroke="#d9c7a4" stroke-width="4"/>
+        <text x="492" y="222" font-size="50" font-weight="700" text-anchor="middle" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">٣٥</text>
+        <rect x="369" y="140" width="78" height="130" rx="16" fill="#ffffff" stroke="#d9c7a4" stroke-width="4"/>
+        <text x="408" y="222" font-size="50" font-weight="700" text-anchor="middle" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">٣٦</text>
+        <rect x="285" y="140" width="78" height="130" rx="16" fill="#efe6d6" stroke="#9c7b3f" stroke-width="5" stroke-dasharray="14 10"/>
+        <rect x="201" y="140" width="78" height="130" rx="16" fill="#ffffff" stroke="#d9c7a4" stroke-width="4"/>
+        <text x="240" y="222" font-size="50" font-weight="700" text-anchor="middle" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">٣٨</text>
+        <rect x="117" y="140" width="78" height="130" rx="16" fill="#efe6d6" stroke="#9c7b3f" stroke-width="5" stroke-dasharray="14 10"/>
+        <rect x="33" y="140" width="78" height="130" rx="16" fill="#ffffff" stroke="#d9c7a4" stroke-width="4"/>
+        <text x="72" y="222" font-size="50" font-weight="700" text-anchor="middle" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">٤٠</text>
       </svg>`,
       targets: [
-        { answer: "٣٣", box:{x:74, y:10}, dot:{x:73.3, y:60.9} },
-        { answer: "٣٧", box:{x:45, y:10}, dot:{x:36.0, y:60.9} },
-        { answer: "٣٩", box:{x:16, y:10}, dot:{x:17.3, y:60.9} }
+        { answer: "٣٣", box:{x:74, y:10}, dot:{x:73.3, y:50.0} },
+        { answer: "٣٧", box:{x:45, y:10}, dot:{x:36.0, y:50.0} },
+        { answer: "٣٩", box:{x:16, y:10}, dot:{x:17.3, y:50.0} }
       ]
     },
 
@@ -240,7 +242,9 @@ window.QUESTIONS = {
 
     // ③ سحب وإفلات — تطبيق — 2Nc3 (ثلاث كِفَف، في كلٍّ كتلة معلومة وخانة ناقصة)
     // كل كِفّة مستقلّة بجوابٍ واحدٍ لا يقبل التبادل، فلا يُظلَم طفلٌ رتّب الكتلتين بترتيبٍ آخر.
-    // الشريط العلويّ (y=0..90 من ٣٢٠) مُبقًى فارغاً عمداً ليجلس فيه صندوق البطاقة بلا تراكب.
+    // الشريط العلويّ (y=0..75 من ٤١٠) مُبقًى فارغاً عمداً ليجلس فيه صندوق البطاقة بلا تراكب.
+    // نسبة الرسم ٢٫١٩٥ (shoogp-ui §١.١٠): كبرت الكتلتان (١٠٤×٩٠ ⇒ ١٠٤×١١٦) وتباعد عمودُ
+    // الميزان وقاعدتُه على الارتفاع الجديد؛ عرضُ الكِفّة محكومٌ بثلاث كِفَفٍ فلم يُمَسّ.
     {
       type: "drag-drop",
       objective: "2Nc3: يجد كلّ الأزواج العددية لمضاعفات العدد ١٠ بمجموع ١٠٠، وتسجيل حقائق الجمع والطرح المتعلقة بها",
@@ -248,21 +252,21 @@ window.QUESTIONS = {
       prompt: "مَجموعُ الكُتلَتَينِ في كُلِّ كِفّةٍ ١٠٠ غرام. اسحَبِ الكُتلةَ النّاقِصةَ إلى مَكانِها.",
       bg: "#fdf9ee",
       fit: "width",
-      svg: `<svg viewBox="0 0 900 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ثلاث كِفَف ميزان، في كل كِفّة كتلة معلومة وخانة ناقصة، ومجموع كل كِفّة مئة غرام">
+      svg: `<svg viewBox="0 0 900 410" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ثلاث كِفَف ميزان، في كل كِفّة كتلة معلومة وخانة ناقصة، ومجموع كل كِفّة مئة غرام">
         ${[{gx:590,given:'٢٠'},{gx:310,given:'٤٠'},{gx:30,given:'٩٠'}].map(g=>`
-          <text x="${g.gx+140}" y="104" font-size="34" font-weight="700" text-anchor="middle" fill="#4a3a10" font-family="Cairo, Tajawal, sans-serif">١٠٠ غرام</text>
-          <rect x="${g.gx+152}" y="124" width="104" height="90" rx="12" fill="#ffffff" stroke="#2f6fb0" stroke-width="4"/>
-          <text x="${g.gx+204}" y="182" font-size="40" font-weight="700" text-anchor="middle" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">${g.given}</text>
-          <text x="${g.gx+140}" y="182" font-size="40" font-weight="700" text-anchor="middle" fill="#4a3a10" font-family="Cairo, Tajawal, sans-serif">+</text>
-          <rect x="${g.gx+24}" y="124" width="104" height="90" rx="12" fill="#efe6d6" stroke="#9c7b3f" stroke-width="4" stroke-dasharray="12 9"/>
-          <rect x="${g.gx+10}" y="230" width="260" height="16" rx="8" fill="#d9c7a4"/>
-          <rect x="${g.gx+130}" y="246" width="20" height="40" fill="#c9b48c"/>
-          <rect x="${g.gx+70}" y="286" width="140" height="18" rx="8" fill="#c9b48c"/>`).join('')}
+          <text x="${g.gx+140}" y="104" font-size="40" font-weight="700" text-anchor="middle" fill="#4a3a10" font-family="Cairo, Tajawal, sans-serif">١٠٠ غرام</text>
+          <rect x="${g.gx+152}" y="136" width="104" height="116" rx="14" fill="#ffffff" stroke="#2f6fb0" stroke-width="5"/>
+          <text x="${g.gx+204}" y="208" font-size="46" font-weight="700" text-anchor="middle" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">${g.given}</text>
+          <text x="${g.gx+140}" y="208" font-size="42" font-weight="700" text-anchor="middle" fill="#4a3a10" font-family="Cairo, Tajawal, sans-serif">+</text>
+          <rect x="${g.gx+24}" y="136" width="104" height="116" rx="14" fill="#efe6d6" stroke="#9c7b3f" stroke-width="5" stroke-dasharray="14 10"/>
+          <rect x="${g.gx+10}" y="272" width="260" height="18" rx="9" fill="#d9c7a4"/>
+          <rect x="${g.gx+129}" y="290" width="22" height="46" fill="#c9b48c"/>
+          <rect x="${g.gx+65}" y="336" width="150" height="20" rx="10" fill="#c9b48c"/>`).join('')}
       </svg>`,
       targets: [
-        { answer: "٨٠", box: { x: 74, y: 6 }, dot: { x: 74.0, y: 52.8 } },
-        { answer: "٦٠", box: { x: 43, y: 6 }, dot: { x: 42.9, y: 52.8 } },
-        { answer: "١٠", box: { x: 12, y: 6 }, dot: { x: 11.8, y: 52.8 } }
+        { answer: "٨٠", box: { x: 74, y: 6 }, dot: { x: 74.0, y: 47.3 } },
+        { answer: "٦٠", box: { x: 43, y: 6 }, dot: { x: 42.9, y: 47.3 } },
+        { answer: "١٠", box: { x: 12, y: 6 }, dot: { x: 11.8, y: 47.3 } }
       ]
     },
 
@@ -329,7 +333,9 @@ window.QUESTIONS = {
     },
 
     // ③ سحب وإفلات — تطبيق — 2Nc3 (ثلاثة مثلثات، رأسٌ ناقصٌ في كلٍّ منها)
-    // الشريط العلويّ (y=0..70 من ٣٤٠) فارغٌ عمداً ليجلس فيه صندوق البطاقة فوق كل مثلث.
+    // الشريط العلويّ (y=0..66 من ٤١٠) فارغٌ عمداً ليجلس فيه صندوق البطاقة فوق كل مثلث.
+    // نسبة الرسم ٢٫١٩٥ (shoogp-ui §١.١٠): كبرت الدوائر (نق ٤٢ ⇒ ٥٢) وارتفع المثلث،
+    // وضاقت قاعدتُه (٩٢ ⇒ ٨٢) كي يبقى مجموعُ (نصفِ القاعدة + نصفِ القطر) ١٣٤ فلا تتلامس المثلثات.
     {
       type: "drag-drop",
       objective: "2Nc3: يجد كلّ الأزواج العددية لمضاعفات العدد ١٠ بمجموع ١٠٠، وتسجيل حقائق الجمع والطرح المتعلقة بها",
@@ -337,20 +343,20 @@ window.QUESTIONS = {
       prompt: "أكمِلْ كُلَّ مُثَلَّثِ عائِلةِ حَقائِقٍ: اسحَبِ العَدَدَ النّاقِصَ إلى رَأسِهِ الفارِغِ.",
       bg: "#fdf9ee",
       fit: "width",
-      svg: `<svg viewBox="0 0 900 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ثلاثة مثلثات لعائلة حقائق المئة، في كل مثلث رأس فارغ">
+      svg: `<svg viewBox="0 0 900 410" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ثلاثة مثلثات لعائلة حقائق المئة، في كل مثلث رأس فارغ">
         ${[{cx:730,given:'٤٠'},{cx:450,given:'٣٠'},{cx:170,given:'١٠'}].map(t=>`
-          <path d="M ${t.cx} 100 L ${t.cx+92} 262 L ${t.cx-92} 262 Z" fill="none" stroke="#9c7b3f" stroke-width="5" stroke-linejoin="round"/>
-          <text x="${t.cx}" y="212" font-size="34" font-weight="700" text-anchor="middle" fill="#9c7b3f" font-family="Cairo, Tajawal, sans-serif">+ −</text>
-          <circle cx="${t.cx}" cy="100" r="42" fill="#ffffff" stroke="#2f6fb0" stroke-width="4"/>
-          <text x="${t.cx}" y="114" font-size="34" font-weight="700" text-anchor="middle" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">١٠٠</text>
-          <circle cx="${t.cx+92}" cy="262" r="42" fill="#ffffff" stroke="#2f6fb0" stroke-width="4"/>
-          <text x="${t.cx+92}" y="276" font-size="36" font-weight="700" text-anchor="middle" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">${t.given}</text>
-          <circle cx="${t.cx-92}" cy="262" r="42" fill="#efe6d6" stroke="#9c7b3f" stroke-width="4" stroke-dasharray="12 9"/>`).join('')}
+          <path d="M ${t.cx} 118 L ${t.cx+82} 302 L ${t.cx-82} 302 Z" fill="none" stroke="#9c7b3f" stroke-width="6" stroke-linejoin="round"/>
+          <text x="${t.cx}" y="240" font-size="36" font-weight="700" text-anchor="middle" fill="#9c7b3f" font-family="Cairo, Tajawal, sans-serif">+ −</text>
+          <circle cx="${t.cx}" cy="118" r="52" fill="#ffffff" stroke="#2f6fb0" stroke-width="5"/>
+          <text x="${t.cx}" y="134" font-size="40" font-weight="700" text-anchor="middle" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">١٠٠</text>
+          <circle cx="${t.cx+82}" cy="302" r="52" fill="#ffffff" stroke="#2f6fb0" stroke-width="5"/>
+          <text x="${t.cx+82}" y="318" font-size="44" font-weight="700" text-anchor="middle" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">${t.given}</text>
+          <circle cx="${t.cx-82}" cy="302" r="52" fill="#efe6d6" stroke="#9c7b3f" stroke-width="5" stroke-dasharray="14 10"/>`).join('')}
       </svg>`,
       targets: [
-        { answer: "٦٠", box: { x: 71, y: 5 }, dot: { x: 70.9, y: 77.1 } },
-        { answer: "٧٠", box: { x: 40, y: 5 }, dot: { x: 39.8, y: 77.1 } },
-        { answer: "٩٠", box: { x: 9,  y: 5 }, dot: { x: 8.7,  y: 77.1 } }
+        { answer: "٦٠", box: { x: 71, y: 5 }, dot: { x: 72.0, y: 73.7 } },
+        { answer: "٧٠", box: { x: 40, y: 5 }, dot: { x: 40.9, y: 73.7 } },
+        { answer: "٩٠", box: { x: 9,  y: 5 }, dot: { x: 9.8,  y: 73.7 } }
       ]
     },
 
@@ -419,7 +425,9 @@ window.QUESTIONS = {
     },
 
     // ③ سحب وإفلات — تطبيق — 2Nn10 (ثلاث خانات تحت الخط في مواضع ١٨ و٤٥ و٩٥)
-    // الخانات تحت الخط والشريط العلويّ (y=0..56 من ٢٦٠) فارغٌ ليجلس فيه صندوق البطاقة.
+    // الخانات تحت الخط والشريط العلويّ (y=0..78 من ٤١٠) فارغٌ ليجلس فيه صندوق البطاقة.
+    // نسبة الرسم ٢٫١٩٥ (shoogp-ui §١.١٠): كبرت الخانة (٧٦×٦٤ ⇒ ١١٠×١٠٤) وطالت
+    // علاماتُ التدريجِ وأرقامُه، وتوزّع الكلُّ على الارتفاع الجديد.
     {
       type: "drag-drop",
       objective: "2Nn10: يضع عدداً من رقمين على خط الأعداد المميّز بمضاعفات العدد ١٠",
@@ -427,19 +435,19 @@ window.QUESTIONS = {
       prompt: "اسحَبْ كُلَّ عَدَدٍ إلى خانَتِهِ في مَوضِعِهِ الصَّحيحِ على خَطِّ الأعدادِ.",
       bg: "#fdf9ee",
       fit: "width",
-      svg: `<svg viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="خط أعداد من صفر إلى مئة تحته ثلاث خانات فارغة">
-        <line x1="60" y1="96" x2="840" y2="96" stroke="#cf3b3b" stroke-width="6" stroke-linecap="round"/>
+      svg: `<svg viewBox="0 0 900 410" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="خط أعداد من صفر إلى مئة تحته ثلاث خانات فارغة">
+        <line x1="60" y1="158" x2="840" y2="158" stroke="#cf3b3b" stroke-width="8" stroke-linecap="round"/>
         ${[0,10,20,30,40,50,60,70,80,90,100].map((v,i)=>{const x=60+v*7.8;const lbl=["٠","١٠","٢٠","٣٠","٤٠","٥٠","٦٠","٧٠","٨٠","٩٠","١٠٠"][i];return `
-          <line x1="${x}" y1="84" x2="${x}" y2="108" stroke="#cf3b3b" stroke-width="4"/>
-          <text x="${x}" y="70" font-size="26" font-weight="700" text-anchor="middle" fill="#4a3a10" font-family="Cairo, Tajawal, sans-serif">${lbl}</text>`;}).join("")}
+          <line x1="${x}" y1="140" x2="${x}" y2="176" stroke="#cf3b3b" stroke-width="5"/>
+          <text x="${x}" y="104" font-size="34" font-weight="700" text-anchor="middle" fill="#4a3a10" font-family="Cairo, Tajawal, sans-serif">${lbl}</text>`;}).join("")}
         ${[18,45,95].map(v=>{const cx=60+v*7.8;return `
-          <line x1="${cx}" y1="108" x2="${cx}" y2="128" stroke="#9c7b3f" stroke-width="3" stroke-dasharray="6 5"/>
-          <rect x="${cx-38}" y="128" width="76" height="64" rx="12" fill="#efe6d6" stroke="#9c7b3f" stroke-width="4" stroke-dasharray="12 9"/>`;}).join("")}
+          <line x1="${cx}" y1="176" x2="${cx}" y2="244" stroke="#9c7b3f" stroke-width="4" stroke-dasharray="8 7"/>
+          <rect x="${cx-55}" y="244" width="110" height="104" rx="16" fill="#efe6d6" stroke="#9c7b3f" stroke-width="5" stroke-dasharray="14 10"/>`;}).join("")}
       </svg>`,
       targets: [
-        { answer: "١٨", box: { x: 22, y: 4 }, dot: { x: 22.3, y: 61.5 } },
-        { answer: "٤٥", box: { x: 46, y: 4 }, dot: { x: 45.7, y: 61.5 } },
-        { answer: "٩٥", box: { x: 89, y: 4 }, dot: { x: 89.0, y: 61.5 } }
+        { answer: "١٨", box: { x: 22, y: 4 }, dot: { x: 22.3, y: 72.2 } },
+        { answer: "٤٥", box: { x: 46, y: 4 }, dot: { x: 45.7, y: 72.2 } },
+        { answer: "٩٥", box: { x: 89, y: 4 }, dot: { x: 89.0, y: 72.2 } }
       ]
     },
 
@@ -474,17 +482,17 @@ window.QUESTIONS = {
       prompt: "أحَدُ الأعدادِ وُضِعَ في المَكانِ الخَطأِ على خَطِّ الأعدادِ — اضغَطْ عَلَيهِ.",
       bg: "#fdf9ee",
       fit: "width",
-      svg: `<svg viewBox="0 0 900 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="خط أعداد عليه خمسة أعداد أحدها في غير موضعه">
-        <line x1="60" y1="140" x2="840" y2="140" stroke="#cf3b3b" stroke-width="6" stroke-linecap="round"/>
+      svg: `<svg viewBox="0 0 900 410" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="خط أعداد عليه خمسة أعداد أحدها في غير موضعه">
+        <line x1="60" y1="286" x2="840" y2="286" stroke="#cf3b3b" stroke-width="8" stroke-linecap="round"/>
         ${[0,10,20,30,40,50,60,70,80,90,100].map((v,i)=>{const x=60+v*7.8;const lbl=["٠","١٠","٢٠","٣٠","٤٠","٥٠","٦٠","٧٠","٨٠","٩٠","١٠٠"][i];return `
-          <line x1="${x}" y1="130" x2="${x}" y2="152" stroke="#cf3b3b" stroke-width="4"/>
-          <text x="${x}" y="188" font-size="26" font-weight="700" text-anchor="middle" fill="#4a3a10" font-family="Cairo, Tajawal, sans-serif">${lbl}</text>`;}).join("")}
+          <line x1="${x}" y1="268" x2="${x}" y2="304" stroke="#cf3b3b" stroke-width="5"/>
+          <text x="${x}" y="352" font-size="34" font-weight="700" text-anchor="middle" fill="#4a3a10" font-family="Cairo, Tajawal, sans-serif">${lbl}</text>`;}).join("")}
         ${[{v:5,lbl:"٥"},{v:18,lbl:"١٨"},{v:45,lbl:"٤٥"},{v:66,lbl:"٩٥"},{v:79,lbl:"٧٩"}].map(n=>{const x=60+n.v*7.8;return `
-          <line x1="${x}" y1="86" x2="${x}" y2="140" stroke="#2f6fb0" stroke-width="4"/>
-          <rect x="${x-32}" y="46" width="64" height="46" rx="10" fill="#ffffff" stroke="#2f6fb0" stroke-width="4"/>
-          <text x="${x}" y="78" font-size="30" font-weight="700" text-anchor="middle" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">${n.lbl}</text>`;}).join("")}
+          <line x1="${x}" y1="124" x2="${x}" y2="286" stroke="#2f6fb0" stroke-width="5"/>
+          <rect x="${x-42}" y="48" width="84" height="76" rx="14" fill="#ffffff" stroke="#2f6fb0" stroke-width="5"/>
+          <text x="${x}" y="100" font-size="40" font-weight="700" text-anchor="middle" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">${n.lbl}</text>`;}).join("")}
       </svg>`,
-      spot: { x: 63.9, y: 30.4, r: 8 }
+      spot: { x: 63.9, y: 21.0, r: 8 }
     }
 
   ],
@@ -527,6 +535,7 @@ window.QUESTIONS = {
     },
 
     // ④ سحب وإفلات — تطبيق — 2Nn10 (كل عدد إلى العشرة التي يُقرَّب إليها)
+    // نسبة الرسم ٢٫١٩٥ (shoogp-ui §١.١٠) بنفس توزيع خط أعداد النشاط ٤-١.
     {
       type: "drag-drop",
       objective: "2Nn10: يضع عدداً من رقمين على خط الأعداد المميّز بمضاعفات العدد ١٠",
@@ -534,19 +543,19 @@ window.QUESTIONS = {
       prompt: "اسحَبْ كُلَّ عَدَدٍ إلى خانةِ العَشَرةِ الَّتي يُقَرَّبُ إلَيها.",
       bg: "#fdf9ee",
       fit: "width",
-      svg: `<svg viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="خط أعداد من صفر إلى مئة تحته ثلاث خانات عند الثلاثين والستين والتسعين">
-        <line x1="60" y1="96" x2="840" y2="96" stroke="#cf3b3b" stroke-width="6" stroke-linecap="round"/>
+      svg: `<svg viewBox="0 0 900 410" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="خط أعداد من صفر إلى مئة تحته ثلاث خانات عند الثلاثين والستين والتسعين">
+        <line x1="60" y1="158" x2="840" y2="158" stroke="#cf3b3b" stroke-width="8" stroke-linecap="round"/>
         ${[0,10,20,30,40,50,60,70,80,90,100].map((v,i)=>{const x=60+v*7.8;const lbl=["٠","١٠","٢٠","٣٠","٤٠","٥٠","٦٠","٧٠","٨٠","٩٠","١٠٠"][i];return `
-          <line x1="${x}" y1="84" x2="${x}" y2="108" stroke="#cf3b3b" stroke-width="4"/>
-          <text x="${x}" y="70" font-size="26" font-weight="700" text-anchor="middle" fill="#4a3a10" font-family="Cairo, Tajawal, sans-serif">${lbl}</text>`;}).join("")}
+          <line x1="${x}" y1="140" x2="${x}" y2="176" stroke="#cf3b3b" stroke-width="5"/>
+          <text x="${x}" y="104" font-size="34" font-weight="700" text-anchor="middle" fill="#4a3a10" font-family="Cairo, Tajawal, sans-serif">${lbl}</text>`;}).join("")}
         ${[30,60,90].map(v=>{const cx=60+v*7.8;return `
-          <line x1="${cx}" y1="108" x2="${cx}" y2="128" stroke="#9c7b3f" stroke-width="3" stroke-dasharray="6 5"/>
-          <rect x="${cx-38}" y="128" width="76" height="64" rx="12" fill="#efe6d6" stroke="#9c7b3f" stroke-width="4" stroke-dasharray="12 9"/>`;}).join("")}
+          <line x1="${cx}" y1="176" x2="${cx}" y2="244" stroke="#9c7b3f" stroke-width="4" stroke-dasharray="8 7"/>
+          <rect x="${cx-55}" y="244" width="110" height="104" rx="16" fill="#efe6d6" stroke="#9c7b3f" stroke-width="5" stroke-dasharray="14 10"/>`;}).join("")}
       </svg>`,
       targets: [
-        { answer: "٣٤", box: { x: 33, y: 4 }, dot: { x: 32.7, y: 61.5 } },
-        { answer: "٦٣", box: { x: 59, y: 4 }, dot: { x: 58.7, y: 61.5 } },
-        { answer: "٩٤", box: { x: 85, y: 4 }, dot: { x: 84.7, y: 61.5 } }
+        { answer: "٣٤", box: { x: 33, y: 4 }, dot: { x: 32.7, y: 72.2 } },
+        { answer: "٦٣", box: { x: 59, y: 4 }, dot: { x: 58.7, y: 72.2 } },
+        { answer: "٩٤", box: { x: 85, y: 4 }, dot: { x: 84.7, y: 72.2 } }
       ]
     },
 
@@ -600,7 +609,9 @@ window.QUESTIONS = {
     },
 
     // ③ سحب وإفلات — تطبيق — 2Nc2 (ثلاثة صفوف من إطاري العشرة)
-    // الهامش الأيسر (x=0..270 من ٩٠٠) فارغٌ عمداً ليجلس فيه صندوق كل بطاقة بمحاذاة صفّه.
+    // الهامش الأيسر (x=0..268 من ٩٠٠) فارغٌ عمداً ليجلس فيه صندوق كل بطاقة بمحاذاة صفّه.
+    // نسبة الرسم ٢٫١٩٥ (shoogp-ui §١.١٠): تباعدت السطور الثلاثة (خطوة ١٢٦ ⇒ ١٢٨، وفجوة
+    // إطاري العشرة ٤٢ ⇒ ٤٤) وكبرت خانة الجواب (٨٠×٦٤ ⇒ ٨٤×٦٨)؛ عرضُ الخلية محكومٌ بعشرة أعمدة.
     {
       type: "drag-drop",
       objective: "2Nc2: يجزّئ جميع الأعداد حتى ٢٠ إلى أزواج ويسجل حقائق الجمع والطرح المرتبطة بها",
@@ -608,18 +619,18 @@ window.QUESTIONS = {
       prompt: "في كُلِّ سَطرٍ إطارا عَشَرةٍ فيهِما ٢٠ خانةً. اسحَبِ العَدَدَ الَّذي يُكمِلُ المُلَوَّنَ إلى ٢٠.",
       bg: "#fdf9ee",
       fit: "width",
-      svg: `<svg viewBox="0 0 900 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ثلاثة سطور، كل سطر إطارا عشرة فيهما عشرون خانة بعضها ملوّن وخانة فارغة للجواب">
-        ${[14,11,17].map((filled,r)=>{const y0=20+r*126;let cells="";for(let k=0;k<20;k++){const col=k%10,row=Math.floor(k/10);const x=774-col*42,y=y0+row*42;const on=k<filled;cells+=`<rect x="${x}" y="${y}" width="36" height="36" rx="6" fill="${on?"#2f6fb0":"#ffffff"}" stroke="#33334d" stroke-width="3"/>`;}return `
+      svg: `<svg viewBox="0 0 900 410" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ثلاثة سطور، كل سطر إطارا عشرة فيهما عشرون خانة بعضها ملوّن وخانة فارغة للجواب">
+        ${[14,11,17].map((filled,r)=>{const y0=24+r*128;let cells="";for(let k=0;k<20;k++){const col=k%10,row=Math.floor(k/10);const x=774-col*42,y=y0+row*44;const on=k<filled;cells+=`<rect x="${x}" y="${y}" width="36" height="36" rx="6" fill="${on?"#2f6fb0":"#ffffff"}" stroke="#33334d" stroke-width="3"/>`;}return `
           ${cells}
-          <text x="872" y="${y0+50}" font-size="36" font-weight="700" text-anchor="middle" fill="#4a3a10" font-family="Cairo, Tajawal, sans-serif">٢٠</text>
-          <text x="832" y="${y0+50}" font-size="36" font-weight="700" text-anchor="middle" fill="#4a3a10" font-family="Cairo, Tajawal, sans-serif">=</text>
-          <text x="360" y="${y0+50}" font-size="36" font-weight="700" text-anchor="middle" fill="#4a3a10" font-family="Cairo, Tajawal, sans-serif">+</text>
-          <rect x="280" y="${y0+8}" width="80" height="64" rx="12" fill="#efe6d6" stroke="#9c7b3f" stroke-width="4" stroke-dasharray="12 9"/>`;}).join("")}
+          <text x="872" y="${y0+56}" font-size="38" font-weight="700" text-anchor="middle" fill="#4a3a10" font-family="Cairo, Tajawal, sans-serif">٢٠</text>
+          <text x="832" y="${y0+56}" font-size="38" font-weight="700" text-anchor="middle" fill="#4a3a10" font-family="Cairo, Tajawal, sans-serif">=</text>
+          <text x="360" y="${y0+56}" font-size="38" font-weight="700" text-anchor="middle" fill="#4a3a10" font-family="Cairo, Tajawal, sans-serif">+</text>
+          <rect x="278" y="${y0+10}" width="84" height="68" rx="14" fill="#efe6d6" stroke="#9c7b3f" stroke-width="5" stroke-dasharray="14 10"/>`;}).join("")}
       </svg>`,
       targets: [
-        { answer: "٦", box: { x: 8, y: 11 }, dot: { x: 35.6, y: 15.0 } },
-        { answer: "٩", box: { x: 8, y: 43 }, dot: { x: 35.6, y: 46.5 } },
-        { answer: "٣", box: { x: 8, y: 74 }, dot: { x: 35.6, y: 78.0 } }
+        { answer: "٦", box: { x: 8, y: 11 }, dot: { x: 35.6, y: 16.6 } },
+        { answer: "٩", box: { x: 8, y: 43 }, dot: { x: 35.6, y: 47.8 } },
+        { answer: "٣", box: { x: 8, y: 74 }, dot: { x: 35.6, y: 79.0 } }
       ]
     },
 
@@ -649,6 +660,8 @@ window.QUESTIONS = {
     // ٢٠ خانةً كلُّ واحدةٍ جزءٌ مستقلٌّ؛ أسماؤها وألوانُها الصحيحة مُشتقّةٌ من موضعها
     // (أوّل ١٤ من اليمين أزرق والباقي برتقالي) فيرى الطفل الزوج ١٤ و٦ ملوّناً بيدِه.
     // الأشكال بلا fill/stroke لترث لون الجزء من CSS كبقيّة أسئلة التلوين.
+    // نسبة الرسم ٢٫١٨٩ (shoogp-ui §١.١٠): عرض الخانة محكومٌ بعشرة أعمدة (خطوة ٥٠) فلم يزد
+    // إلا يسيراً (٤٤ ⇒ ٤٦)، ونمت ارتفاعاً (٤٤ ⇒ ٧٦) فارتفع هدف اللمس، وتباعد إطارا العشرة.
     {
       type: "color",
       objective: "2Nc2: يجزّئ جميع الأعداد حتى ٢٠ إلى أزواج ويسجل حقائق الجمع والطرح المرتبطة بها",
@@ -668,10 +681,10 @@ window.QUESTIONS = {
         const ar = n => String(n).replace(/[0-9]/g, d => "٠١٢٣٤٥٦٧٨٩"[+d]);
         const cells = Array.from({ length: 20 }, (_, k) => {
           const col = k % 10, row = Math.floor(k / 10);
-          const x = 470 - col * 50, y = 20 + row * 60;
-          return `<g class="cpart" data-name="خانة ${ar(k + 1)}"><rect x="${x}" y="${y}" width="44" height="44" rx="8"/></g>`;
+          const x = 470 - col * 50, y = 36 + row * 96;
+          return `<g class="cpart" data-name="خانة ${ar(k + 1)}"><rect x="${x}" y="${y}" width="46" height="76" rx="12"/></g>`;
         }).join("");
-        return `<svg viewBox="0 0 534 144" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="إطارا عشرة فيهما عشرون خانة للتلوين">${cells}</svg>`;
+        return `<svg viewBox="0 0 534 244" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="إطارا عشرة فيهما عشرون خانة للتلوين">${cells}</svg>`;
       })()
     }
 
@@ -789,7 +802,9 @@ window.QUESTIONS = {
     },
 
     // ③ سحب وإفلات — تطبيق — 2Nc11 (جمع آحاد إلى عدد من رقمين)
-    // الشريط العلويّ (y=0..60 من ٢٦٠) فارغٌ عمداً ليجلس فيه صندوق كل بطاقة فوق بطاقتها.
+    // الشريط العلويّ (y=0..96 من ٤١٠) فارغٌ عمداً ليجلس فيه صندوق كل بطاقة فوق بطاقتها.
+    // نسبة الرسم ٢٫١٩٥ (shoogp-ui §١.١٠): طالت البطاقة (١٠٠ ⇒ ٢٠٠) وخانةُ الجواب (٧٢ ⇒ ١٤٠)
+    // فتوسّطتا الارتفاع الجديد؛ وعرضُ البطاقة ٢٦٠ وخطُّ العملية ٣٨ لم يُمَسّا كي يسع النصُّ إطارَه.
     {
       type: "drag-drop",
       objective: "2Nc11: يجمع أو يطرح عدداً من رقم واحد إلى/من عدد من رقمين",
@@ -797,17 +812,17 @@ window.QUESTIONS = {
       prompt: "اسحَبِ المَجموعَ الصَّحيحَ إلى خانَتِهِ في كُلِّ بِطاقةٍ.",
       bg: "#fdf9ee",
       fit: "width",
-      svg: `<svg viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ثلاث بطاقات جمع، في كل بطاقة خانة فارغة للمجموع">
+      svg: `<svg viewBox="0 0 900 410" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ثلاث بطاقات جمع، في كل بطاقة خانة فارغة للمجموع">
         ${[{gx:590,exp:"٤٧ + ٥"},{gx:310,exp:"٦٨ + ٤"},{gx:30,exp:"٣٩ + ٦"}].map(g=>`
-          <rect x="${g.gx+10}" y="60" width="260" height="100" rx="14" fill="#ffffff" stroke="#d9c7a4" stroke-width="3"/>
-          <text x="${g.gx+200}" y="118" font-size="38" font-weight="700" text-anchor="middle" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">${g.exp}</text>
-          <text x="${g.gx+150}" y="118" font-size="38" font-weight="700" text-anchor="middle" fill="#4a3a10" font-family="Cairo, Tajawal, sans-serif">=</text>
-          <rect x="${g.gx+30}" y="82" width="100" height="72" rx="12" fill="#efe6d6" stroke="#9c7b3f" stroke-width="4" stroke-dasharray="12 9"/>`).join("")}
+          <rect x="${g.gx+10}" y="96" width="260" height="200" rx="20" fill="#ffffff" stroke="#d9c7a4" stroke-width="4"/>
+          <text x="${g.gx+200}" y="212" font-size="38" font-weight="700" text-anchor="middle" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">${g.exp}</text>
+          <text x="${g.gx+150}" y="212" font-size="38" font-weight="700" text-anchor="middle" fill="#4a3a10" font-family="Cairo, Tajawal, sans-serif">=</text>
+          <rect x="${g.gx+30}" y="126" width="100" height="140" rx="16" fill="#efe6d6" stroke="#9c7b3f" stroke-width="5" stroke-dasharray="14 10"/>`).join("")}
       </svg>`,
       targets: [
-        { answer: "٥٢", box: { x: 74, y: 6 }, dot: { x: 74.4, y: 45.4 } },
-        { answer: "٧٢", box: { x: 43, y: 6 }, dot: { x: 43.3, y: 45.4 } },
-        { answer: "٤٥", box: { x: 12, y: 6 }, dot: { x: 12.2, y: 45.4 } }
+        { answer: "٥٢", box: { x: 74, y: 6 }, dot: { x: 74.4, y: 47.8 } },
+        { answer: "٧٢", box: { x: 43, y: 6 }, dot: { x: 43.3, y: 47.8 } },
+        { answer: "٤٥", box: { x: 12, y: 6 }, dot: { x: 12.2, y: 47.8 } }
       ]
     },
 
@@ -908,6 +923,8 @@ window.QUESTIONS = {
 
     // ⑥ اكتشف الخطأ (إثرائي اختياري) — استدلال — 2Pt6
     // أربع بطاقاتٍ لأزواج العشرين، الثّالثةُ (١٧ + ٤) خاطئةٌ فالصّحيحُ ١٧ + ٣.
+    // نسبة الرسم ٢٫١٩٥ (shoogp-ui §١.١٠): طالت البطاقة (١١٠ ⇒ ٢٣٠) وكبر القلبُ ١٫٨ مرّة
+    // وارتفع خطُّ العملية (٣٢ ⇒ ٣٦)؛ وعرضُ البطاقة ١٩٠ محكومٌ بأربعة أعمدة فلم يُمَسّ.
     {
       type: "find-error",
       objective: "2Pt6: يتحقق من إجابة عملية جمع عن طريق جمع الأعداد بترتيب مختلف أو استخدام استراتيجية مختلفة",
@@ -915,11 +932,11 @@ window.QUESTIONS = {
       prompt: "إحدى بِطاقاتِ القُلوبِ فيها خَطأٌ في الجَمْعِ — اضغَطْ عَلَيها.",
       bg: "#fdf9ee",
       fit: "width",
-      svg: `<svg viewBox="0 0 900 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="أربع بطاقات جمع مجموع كل منها عشرون إحداها خاطئة">
+      svg: `<svg viewBox="0 0 900 410" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="أربع بطاقات جمع مجموع كل منها عشرون إحداها خاطئة">
         ${[{x:670,exp:"١٣ + ٧ = ٢٠"},{x:460,exp:"١٥ + ٥ = ٢٠"},{x:250,exp:"١٧ + ٤ = ٢٠"},{x:40,exp:"١٨ + ٢ = ٢٠"}].map(c=>`
-          <rect x="${c.x}" y="60" width="190" height="110" rx="16" fill="#ffffff" stroke="#2f6fb0" stroke-width="4"/>
-          <path d="M ${c.x+95} ${86} l 13 -13 a 9 9 0 0 1 13 13 l -26 26 l -26 -26 a 9 9 0 0 1 13 -13 z" fill="#2f6fb0"/>
-          <text x="${c.x+95}" y="146" font-size="32" font-weight="700" text-anchor="middle" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">${c.exp}</text>`).join("")}
+          <rect x="${c.x}" y="90" width="190" height="230" rx="26" fill="#ffffff" stroke="#2f6fb0" stroke-width="5"/>
+          <path d="M ${c.x+95} ${163} l 23 -23 a 16 16 0 0 1 23 23 l -46 46 l -46 -46 a 16 16 0 0 1 23 -23 z" fill="#2f6fb0"/>
+          <text x="${c.x+95}" y="278" font-size="36" font-weight="700" text-anchor="middle" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">${c.exp}</text>`).join("")}
       </svg>`,
       spot: { x: 38.3, y: 50.0, r: 10 }
     }
