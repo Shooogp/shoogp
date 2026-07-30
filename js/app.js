@@ -417,10 +417,18 @@ function renderDragDrop(q, body, fb){
      الحيّ (لا في النص المصدري — القوالب تتوسّع بـmap). الهدف الذي تقع نقطته dot
      داخل حدود خانةٍ يُصنَّف (ب)؛ والقياس بنسب viewBox المئوية كنسب dot نفسها. */
   let cellOf=q.targets.map(()=>null);
+  /* حجم العدد بعد الإفلات = حجم أرقام الرسم نفسها: نقيس خط نصوص svg السؤال
+     (الوسيط بين عناصر text بوحدات viewBox) ونحوّله بكسلاً حسب مقياس الصورة الحيّ
+     في redraw — فلا يتقلّص العدد الموضوع في الخانة ولا يظهر أصغر من جيرانه. */
+  let cellFontSvg=null, cellVbW=0;
   if(isMath && q.svg){
     const inSvg=imgEl && imgEl.querySelector('svg');
     const vb=inSvg && inSvg.viewBox && inSvg.viewBox.baseVal;
     if(vb && vb.width && vb.height){
+      cellVbW=vb.width;
+      const fss=[].map.call(inSvg.querySelectorAll('text'),t=>parseFloat(t.getAttribute('font-size'))||0)
+        .filter(v=>v>0).sort((a,b)=>a-b);
+      if(fss.length) cellFontSvg=fss[Math.floor(fss.length/2)];
       const cells=[];
       inSvg.querySelectorAll('rect[stroke-dasharray],circle[stroke-dasharray],ellipse[stroke-dasharray]').forEach(el=>{
         let cx,cy,w,h;
@@ -480,6 +488,10 @@ function renderDragDrop(q, body, fb){
       tg.style.top  =(ir.top -sr.top  + c.cy/100*ir.height)+'px';
       tg.style.width =(c.w/100*ir.width)+'px';
       tg.style.height=(c.h/100*ir.height)+'px';
+      /* خط العدد الموضوع = خط أرقام الرسم بمقياس الصورة الحيّ (لا يتقلّص مع
+         الخانة) — والاحتياط عند غياب نصوص في الرسم: نصف ارتفاع الخانة تقريباً */
+      const fs = cellFontSvg ? cellFontSvg*ir.width/cellVbW : 0.48*c.h/100*ir.height;
+      tg.style.setProperty('--cellfs', fs.toFixed(2)+'px');
     });
     if(!svg) return;      // كل الأهداف خانات (ب) — لا خطوط ولا نقاط أصلاً
     body.querySelectorAll('.dnd-dot').forEach(dot=>{
