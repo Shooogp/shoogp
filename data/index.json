@@ -76,17 +76,17 @@
         "unit": "١أ: العدد وحل المشكلات",
         "lessons": [
           { "title": "صناعة لوحة المائة (١-١)", "file": "g2m-1-1", "chapter": 1, "chapterTitle": "لوحة المائة", "open": true },
-          { "title": "العد بالاثنينات، الخمسات والعشرات (٢-١)", "file": "g2m-2-1", "chapter": 2, "chapterTitle": "العد بالاثنينات، الخمسات والعشرات", "open": false },
-          { "title": "الأزواج العددية لـ١٠٠ (٣-١)", "file": "g2m-3-1", "chapter": 3, "chapterTitle": "خط الأعداد حتى ١٠٠", "open": false },
-          { "title": "جمع وطرح الأزواج العددية لـ١٠٠ (٣-٢)", "file": "g2m-3-2", "chapter": 3, "chapterTitle": "خط الأعداد حتى ١٠٠", "open": false },
-          { "title": "استخدام خط الأعداد (٤-١)", "file": "g2m-4-1", "chapter": 4, "chapterTitle": "استخدام خط الأعداد", "open": false },
-          { "title": "تقريب الأعداد باستخدام خط الأعداد (٤-٢)", "file": "g2m-4-2", "chapter": 4, "chapterTitle": "استخدام خط الأعداد", "open": false },
-          { "title": "الأزواج العددية لـ٢٠ (٥-١)", "file": "g2m-5-1", "chapter": 5, "chapterTitle": "اللعب بـ٢٠", "open": false },
-          { "title": "الأزواج العددية بين ١٠ و٢٠ (٥-٢)", "file": "g2m-5-2", "chapter": 5, "chapterTitle": "اللعب بـ٢٠", "open": false },
-          { "title": "الجمع باستخدام الأزواج العددية (٦-١)", "file": "g2m-6-1", "chapter": 6, "chapterTitle": "الجمع والطرح (١)", "open": false },
-          { "title": "التحقق من الحل (٦-٢)", "file": "g2m-6-2", "chapter": 6, "chapterTitle": "الجمع والطرح (١)", "open": false },
-          { "title": "المتساوي والمتكافئ (٦-٣)", "file": "g2m-6-3", "chapter": 6, "chapterTitle": "الجمع والطرح (١)", "open": false },
-          { "title": "مقدمة حول المصفوفات (٧-١)", "file": "g2m-7-1", "chapter": 7, "chapterTitle": "مصفوفة الضرب", "open": false }
+          { "title": "العد بالاثنينات، الخمسات والعشرات (٢-١)", "file": "g2m-2-1", "chapter": 2, "chapterTitle": "العد بالاثنينات، الخمسات والعشرات", "open": true },
+          { "title": "الأزواج العددية لـ١٠٠ (٣-١)", "file": "g2m-3-1", "chapter": 3, "chapterTitle": "خط الأعداد حتى ١٠٠", "open": true },
+          { "title": "جمع وطرح الأزواج العددية لـ١٠٠ (٣-٢)", "file": "g2m-3-2", "chapter": 3, "chapterTitle": "خط الأعداد حتى ١٠٠", "open": true },
+          { "title": "استخدام خط الأعداد (٤-١)", "file": "g2m-4-1", "chapter": 4, "chapterTitle": "استخدام خط الأعداد", "open": true },
+          { "title": "تقريب الأعداد باستخدام خط الأعداد (٤-٢)", "file": "g2m-4-2", "chapter": 4, "chapterTitle": "استخدام خط الأعداد", "open": true },
+          { "title": "الأزواج العددية لـ٢٠ (٥-١)", "file": "g2m-5-1", "chapter": 5, "chapterTitle": "اللعب بـ٢٠", "open": true },
+          { "title": "الأزواج العددية بين ١٠ و٢٠ (٥-٢)", "file": "g2m-5-2", "chapter": 5, "chapterTitle": "اللعب بـ٢٠", "open": true },
+          { "title": "الجمع باستخدام الأزواج العددية (٦-١)", "file": "g2m-6-1", "chapter": 6, "chapterTitle": "الجمع والطرح (١)", "open": true },
+          { "title": "التحقق من الحل (٦-٢)", "file": "g2m-6-2", "chapter": 6, "chapterTitle": "الجمع والطرح (١)", "open": true },
+          { "title": "المتساوي والمتكافئ (٦-٣)", "file": "g2m-6-3", "chapter": 6, "chapterTitle": "الجمع والطرح (١)", "open": true },
+          { "title": "مقدمة حول المصفوفات (٧-١)", "file": "g2m-7-1", "chapter": 7, "chapterTitle": "مصفوفة الضرب", "open": true }
         ]
       },
       {
