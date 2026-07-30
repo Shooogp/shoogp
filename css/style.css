@@ -263,8 +263,10 @@
   /* ملاءمة العرض في نمط التسمية (fit:"width"): للرسوم العريضة كخط الأعداد */
   .labelimg.lw{width:86%;max-width:86%;height:auto}
   .labelimg.lw svg,img.labelimg.lw{width:100%;height:auto}
-  /* قاعدة السحب المباشر (CLAUDE.md): لا خطوط توصيل في السحب والإفلات — أُزيلت
-     قواعد .dndlines/.dndline مع منطق رسمها في renderDragDrop، ولا تُعاد. */
+  /* خطوط التوصيل والنقاط: السلوك الافتراضي لكل المواد — وفي الرياضيات لا تُنشأ
+     عناصرها أصلاً في renderDragDrop (قاعدة DESIGN_RULES.md §خطوط التوصيل). */
+  .dndlines{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+  .dndline{stroke:#f5a04a;stroke-width:2.5;stroke-linecap:round}
   .dnd-dot{position:absolute;width:12px;height:12px;border-radius:50%;background:#f5a04a;
     border:2px solid #fff;transform:translate(-50%,-50%);box-shadow:0 1px 3px rgba(0,0,0,.35)}
   /* صندوق الإفلات الفارغ: يبقى بلونه/شكله القديم (أبيض شفّاف بحدّ منقّط) */
