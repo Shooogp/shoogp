@@ -213,7 +213,7 @@ function qWin(fb,msg,stars){fb.textContent=msg||'🎉 أحسنت!';fb.className=
 // أي واجهة بلا صاروخ تُبقي wrong.mp3 يعمل (بقية دروس المنصّة كلها تحوي الصاروخ الآن)
 function qFail(fb,msg){fb.textContent=msg||'حاول مرة أخرى';fb.className='fb qfb bad';if(!(window.RocketJourney&&RocketJourney.isActive&&RocketJourney.isActive()))playWrongSound();if(window.RocketJourney)RocketJourney.onAnswer(false);}
 
-const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل','slider':'🎚️ الشريط المتدرج','memory':'🎴 بطاقات الذاكرة','lens':'🔍 العدسة المكبّرة','equation-builder':'🧮 بناء المعادلة','number-line':'📏 خط الأعداد','hundred-chart':'💯 لوحة المائة','array':'🔲 المصفوفات'};
+const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل','slider':'🎚️ الشريط المتدرج','memory':'🎴 بطاقات الذاكرة','lens':'🔍 العدسة المكبّرة','equation-builder':'🧮 بناء المعادلة','number-line':'📏 خط الأعداد','hundred-chart':'💯 لوحة المائة','array':'🔲 المصفوفات','compare':'⚖️ المقارنة','pattern':'🔁 إكمال النمط','count-tap':'🖐️ العد بالنقر','place-value':'🧱 القيمة المنزلية'};
 
 // تحويل الأرقام إلى هندية (عربية) للعرض
 function arNum(n){ return String(n).replace(/[0-9]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'[+d];}); }
@@ -228,7 +228,7 @@ function renderQuestions(ls){
     m.innerHTML='<div class="qbody" style="text-align:center;padding:14px 6px;font-size:1.15rem">📚 أسئلة هذا الدرس ستُضاف قريباً بإذن الله</div>';
     host.appendChild(m); return;
   }
-  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor,'puzzle':renderPuzzle,'slider':renderSlider,'memory':renderMemory,'lens':renderLens,'equation-builder':renderEquationBuilder,'number-line':renderNumberLine,'hundred-chart':renderHundredChart,'array':renderArray};
+  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor,'puzzle':renderPuzzle,'slider':renderSlider,'memory':renderMemory,'lens':renderLens,'equation-builder':renderEquationBuilder,'number-line':renderNumberLine,'hundred-chart':renderHundredChart,'array':renderArray,'compare':renderCompare,'pattern':renderPattern,'count-tap':renderCountTap,'place-value':renderPlaceValue};
 
   // بناء كل البطاقات (تبقى في الصفحة لحفظ إجاباتها، ونُظهر واحدة فقط)
   const slides=document.createElement('div'); slides.className='qslides';
@@ -1832,6 +1832,252 @@ function renderEquationBuilder(q, body, fb){
     else qFail(fb,`راجع المعادلة — الصحيح ${arNum(ok)} من ${arNum(nSlots)}`);
   };
   body.querySelector('.btn-reset').onclick=()=>renderEquationBuilder(q,body,fb);
+}
+
+
+/* ═══════════════ أنواعٌ رياضيّةٌ إضافيّةٌ (الدفعةُ الثانية) ═══════════════
+   بُنيت بطلبٍ مستقلٍّ لتغطيةِ وحداتِ الرياضياتِ كلِّها لا وحدةَ الأعدادِ وحدَها، على المحرّكاتِ
+   المشتركةِ نفسِها (wireBank، وأدواتُ الأعدادِ، ومحرّكُ الشبكةِ والتدريجِ) بلا صورٍ خارجيّة. */
+
+/* ⓐ المقارنة (compare): pairs[] لكل صفٍّ عددان a وb وخانةٌ بينهما، والبطاقات < = >
+   الرمزُ الصحيحُ **يُحسب** من العددين لا يُؤلَّف. الصفُّ يُعرض بترتيبٍ رياضيّ (يسار→يمين)
+   داخل الصفحة RTL: a يساراً وb يميناً، فيصحّ معنى «يفتح فمه نحو الأكبر». بطاقاتُ الرموز
+   لا تُستهلك (الرمزُ يصلح لعدّة صفوف)، والسحبُ واللمسُ والنقرُ كلُّها تعمل. */
+function renderCompare(q, body, fb){
+  const pairs=(q.pairs||[]).map(p=>({a:numOf(p.a), b:numOf(p.b), unit:p.unit||q.unit||''}));
+  if(!pairs.length){ body.textContent='لا توجد أزواج في هذا السؤال'; return; }
+  const SYMS=[{s:'<',w:'أصغرُ من'},{s:'=',w:'يساوي'},{s:'>',w:'أكبرُ من'}];
+  // الرمز الصحيح **يُحسب** من العددين فلا يُؤلَّف يدوياً (لا خطأ تأليف ممكن)
+  const symOf=p=>(p.a<p.b?'<':(p.a>p.b?'>':'='));
+  const rows=pairs.map((p,i)=>
+    '<div class="cmp-row">'+
+    '<span class="cmp-num">'+arNum(p.a)+(p.unit?' '+p.unit:'')+'</span>'+
+    '<span class="blank cmp-slot" data-i="'+i+'">؟</span>'+
+    '<span class="cmp-num">'+arNum(p.b)+(p.unit?' '+p.unit:'')+'</span>'+
+    '</div>').join('');
+  body.innerHTML='<div class="cmp">'+rows+
+    '<div class="bank cmpbank"><div class="bt">الرموز:</div><div class="chips">'+
+    SYMS.map(x=>'<div class="chip cmp-chip" draggable="true" data-s="'+x.s+'"><b>'+x.s+'</b><i>'+x.w+'</i></div>').join('')+
+    '</div></div></div>'+
+    '<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>';
+  let picked=null, dragged=null, done=false;
+  // بطاقات الرموز **لا تُستهلك**: الرمز نفسه يصلح لعدّة صفوف (بخلاف بنك fill-blank)
+  function put(sl, s){ if(!sl||!s) return;
+    sl.textContent=s; sl.dataset.placed=s;
+    sl.classList.add('filled'); sl.classList.remove('correct','wrong','over');
+    if(picked){ picked.classList.remove('picked'); picked=null; } }
+  function clearSlot(sl){ if(!sl.dataset.placed) return;
+    sl.textContent='؟'; delete sl.dataset.placed; sl.classList.remove('filled','correct','wrong'); }
+  body.querySelectorAll('.cmp-chip').forEach(ch=>{
+    ch.addEventListener('click',()=>{ if(done) return;
+      if(picked&&picked!==ch) picked.classList.remove('picked');
+      picked=(picked===ch)?null:ch; ch.classList.toggle('picked', picked===ch); });
+    ch.addEventListener('dragstart',()=>{dragged=ch;ch.classList.add('dragging')});
+    ch.addEventListener('dragend',()=>ch.classList.remove('dragging'));
+    ch.addEventListener('touchstart',()=>{dragged=ch;ch.classList.add('dragging')},{passive:true});
+    ch.addEventListener('touchend',e=>{ const t=e.changedTouches[0];
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      const sl=el&&el.closest&&el.closest('.cmp-slot'); if(sl&&!done) put(sl,ch.dataset.s);
+      ch.classList.remove('dragging'); });
+  });
+  body.querySelectorAll('.cmp-slot').forEach(sl=>{
+    sl.addEventListener('dragover',e=>{e.preventDefault();sl.classList.add('over')});
+    sl.addEventListener('dragleave',()=>sl.classList.remove('over'));
+    sl.addEventListener('drop',e=>{e.preventDefault();sl.classList.remove('over'); if(!done&&dragged) put(sl,dragged.dataset.s)});
+    sl.addEventListener('click',()=>{ if(done) return; if(picked) put(sl,picked.dataset.s); else clearSlot(sl); });
+  });
+  body.querySelector('.btn-check').onclick=()=>{
+    if(done) return;
+    const slots=[].slice.call(body.querySelectorAll('.cmp-slot'));
+    if(slots.some(sl=>!sl.dataset.placed)){ qFail(fb,'ضع رمزاً في كل خانة أولاً'); return; }
+    let ok=0;
+    slots.forEach(sl=>{ const p=pairs[+sl.dataset.i], good=(sl.dataset.placed===symOf(p));
+      sl.classList.toggle('correct',good); sl.classList.toggle('wrong',!good); if(good) ok++; });
+    if(ok===slots.length){ done=true;
+      qWin(fb, slots.length>1?'🎉 أحسنت! كل المقارنات صحيحة':'🎉 أحسنت! المقارنة صحيحة', 3);
+    } else qFail(fb,'الصحيح '+arNum(ok)+' من '+arNum(slots.length)+' — تذكّر: الرمز يفتح فمه نحو العدد الأكبر');
+  };
+  body.querySelector('.btn-reset').onclick=()=>renderCompare(q,body,fb);
+}
+
+/* ⓑ إكمال النمط (pattern): items[] فيها "__" لكل خانة ناقصة + answers[] بترتيب الخانات
+   + bank[] (أو answers+distractors). الشريطُ يُقرأ يميناً→يساراً كنصّ الصفحة والسهم «←»،
+   و`ltr:true` يقلبه إلى يسار→يمين مع السهم «→». منطقُ البنك المشترك (wireBank)، والمقارنةُ
+   قيميّةٌ للأعداد ونصّيّةٌ لغيرها (فيصحّ النمطُ بالأشكال والرموز). `rule` تُكشف عند الصواب. */
+function renderPattern(q, body, fb){
+  const items=(q.items||[]).map(String);
+  const answers=(q.answers||[]).map(String);
+  if(!items.length){ body.textContent='لا عناصر في هذا النمط'; return; }
+  const ltr=!!q.ltr;                       // الافتراض: النمط يُقرأ يميناً→يساراً كنصّ الصفحة
+  const arrow=ltr?'→':'←';
+  let si=0;
+  const cells=items.map(it=>{
+    if(it==='__'){ const i=si++;
+      return '<span class="blank pt-slot" data-i="'+i+'" data-answer="'+(answers[i]!=null?answers[i]:'')+'">؟</span>'; }
+    return '<span class="pt-cell">'+it+'</span>';
+  });
+  const nSlots=si;
+  const strip=cells.join('<span class="pt-arrow">'+arrow+'</span>');
+  body.innerHTML='<div class="patt'+(ltr?' patt-ltr':'')+'">'+
+    '<div class="pt-strip">'+strip+'</div>'+
+    '<div class="bank ptbank"><div class="bt">البطاقات:</div><div class="chips ptchips">'+
+    shuffle((q.bank||answers.concat(q.distractors||[])).map(String)).map(w=>
+      '<div class="chip ptchip" draggable="true" data-w="'+w+'">'+w+'</div>').join('')+
+    '</div></div>'+
+    '<div class="pt-rule">'+(q.rule?('القاعدة: '+q.rule):'')+'</div></div>'+
+    '<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>';
+  // بنك البطاقات: المنطق المشترك نفسه (wireBank) — بطاقة واحدة لكل خانة، والمكرّر يصحّ بالهوية
+  wireBank(body, { chip:'.ptchip', slot:'.pt-slot', empty:'؟' });
+  let done=false;
+  body.querySelector('.btn-check').onclick=()=>{
+    if(done) return;
+    const slots=[].slice.call(body.querySelectorAll('.pt-slot'));
+    if(slots.some(sl=>!sl.dataset.placed)){ qFail(fb,'أكمل كل خانات النمط أولاً'); return; }
+    let ok=0;
+    slots.forEach(sl=>{
+      const got=sl.dataset.placed||'', want=sl.dataset.answer||'';
+      // الأعداد تُقارَن قيمةً (هندية/لاتينية سواء)، وغيرها نصّاً
+      const good=(numOf(want)!=null&&numOf(got)!=null)?(numOf(got)===numOf(want)):(got===want);
+      sl.classList.toggle('correct',good); sl.classList.toggle('wrong',!good); if(good) ok++;
+    });
+    if(ok===nSlots){ done=true;
+      const r=body.querySelector('.pt-rule'); if(q.rule) r.classList.add('show');
+      qWin(fb,'🎉 أحسنت! أكملت النمط'+(q.rule?' — '+q.rule:''),3);
+    } else qFail(fb,'راجع النمط — الصحيح '+arNum(ok)+' من '+arNum(nSlots)+'؛ انظر مقدار التغيّر بين كل عنصرين');
+  };
+  body.querySelector('.btn-reset').onclick=()=>renderPattern(q,body,fb);
+}
+
+/* ⓒ العد بالنقر (count-tap): وضعان — each عناصرٌ مفردةٌ يُنقر منها `target` (والافتراضُ عدُّها
+   كلِّها)، وstep مجموعاتٌ في كلٍّ منها `step` عنصراً فيُعَدُّ بالقفز (٢، ٥، ١٠). العددُ يظهر
+   على العنصر المنقور بترتيب النقر، والمجموعُ التراكميُّ في وضع القفز — فالعدُّ مرئيٌّ لا خفيّ.
+   إعادةُ النقر تُلغي العدَّ، والتحقّقُ يقارن المجموعَ بـ`target`. */
+function renderCountTap(q, body, fb){
+  const mode=q.mode||'each';
+  const glyph=q.glyph||'🔵';
+  const step=Math.max(1,Math.round(numOf(q.step)||1));
+  const count=Math.max(1,Math.round(numOf(q.count)||10));
+  const groups=Math.max(1,Math.round(numOf(q.groups)||5));
+  const target=(q.target!=null)?Math.round(numOf(q.target)):(mode==='step'?step*groups:count);
+  let tiles='';
+  if(mode==='step'){
+    for(let g=0;g<groups;g++){
+      let inner=''; for(let k=0;k<step;k++) inner+='<span class="ct-glyph">'+glyph+'</span>';
+      tiles+='<div class="ct-group" data-g="'+g+'"><div class="ct-glyphs">'+inner+'</div><span class="ct-badge"></span></div>';
+    }
+  } else {
+    for(let i=0;i<count;i++)
+      tiles+='<div class="ct-tile" data-i="'+i+'"><span class="ct-glyph">'+glyph+'</span><span class="ct-badge"></span></div>';
+  }
+  body.innerHTML='<div class="cnt"><div class="ct-count">عدَدتَ: <b>٠</b>'+
+    (mode==='step'?' <i>(بالقفز '+arNum(step)+')</i>':'')+'</div>'+
+    '<div class="ct-area'+(mode==='step'?' ct-area-step':'')+'">'+tiles+'</div></div>'+
+    '<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>';
+  const sel=[]; let done=false;
+  const unit=(mode==='step')?step:1;
+  const countEl=body.querySelector('.ct-count b');
+  const nodes=[].slice.call(body.querySelectorAll(mode==='step'?'.ct-group':'.ct-tile'));
+  /* ترقيمُ ما عُدَّ بترتيب النقر: العددُ يظهر على العنصر نفسِه فيرى الصفُّ العدَّ يتقدّم
+     (وفي وضع القفز يظهر المجموعُ التراكميّ ٥، ١٠، ١٥ … لا رقمُ المجموعة) */
+  function renumber(){
+    nodes.forEach(n=>{ n.classList.remove('on'); n.querySelector('.ct-badge').textContent=''; });
+    sel.forEach((n,i)=>{ n.classList.add('on'); n.querySelector('.ct-badge').textContent=arNum((i+1)*unit); });
+    countEl.textContent=arNum(sel.length*unit);
+  }
+  nodes.forEach(n=>{ n.addEventListener('click',()=>{ if(done) return;
+    const at=sel.indexOf(n); if(at>=0) sel.splice(at,1); else sel.push(n);
+    n.classList.remove('correct','wrong'); renumber(); }); });
+  body.querySelector('.btn-check').onclick=()=>{
+    if(done) return;
+    const got=sel.length*unit;
+    if(got===target){ done=true; sel.forEach(n=>n.classList.add('correct'));
+      qWin(fb,'🎉 أحسنت! عددتَ '+arNum(target)+(mode==='step'?' بالقفز '+arNum(step):''),3);
+    } else qFail(fb, got<target ? 'عددتَ '+arNum(got)+' — المطلوب '+arNum(target)+'، تابع العدّ'
+                                : 'عددتَ '+arNum(got)+' وهو أكثر من المطلوب '+arNum(target)+' — انقر العنصر مرّة أخرى لإلغائه');
+  };
+  body.querySelector('.btn-reset').onclick=()=>renderCountTap(q,body,fb);
+}
+
+/* ⓓ القيمة المنزلية بالمكعبات (place-value): وضعان — build يبني الطالبُ فيه `target` بإضافةِ
+   أعمدةِ العشراتِ ومكعّباتِ الآحادِ (نقرُ القطعةِ يحذفها)، وread تُعرض فيه `tens` و`ones`
+   فيختارُ العددَ من `options`. العشرةُ عمودٌ بطولِ عشرِ مكعّباتٍ فالعلاقةُ مرئيّةٌ بالقياس.
+   لوحُ المنازلِ بترتيبِ الكتابةِ (العشراتُ يساراً والآحادُ يميناً). والتحقّقُ يشترطُ الصورةَ
+   القانونيّةَ (آحادٌ < ١٠) إلّا إذا نُصَّ `allowExchange:true` لدروسِ التبديل. */
+function renderPlaceValue(q, body, fb){
+  const mode=q.mode||'build';
+  /* المكعّبُ وحدةُ الرسم (٢٢ في فضاء الـviewBox) والعشرةُ عمودٌ من عشرةِ مكعّباتٍ بالطول نفسِه،
+     فالعلاقةُ «عشرةٌ = عشرُ آحادٍ» مرئيّةٌ بالقياس لا بالكلام. كلُّ قطعةٍ في غلافٍ لمسُه ≥60px. */
+  function rodMarkup(){ let ln='';
+    for(let i=1;i<10;i++) ln+='<line class="pv-line" x1="0" y1="'+(i*22)+'" x2="22" y2="'+(i*22)+'"></line>';
+    return '<svg class="pv-svg pv-rod" viewBox="-2 -2 26 224"><rect class="pv-face" x="0" y="0" width="22" height="220" rx="3"></rect>'+ln+'</svg>'; }
+  function cubeMarkup(){
+    return '<svg class="pv-svg pv-cube" viewBox="-2 -2 26 26"><rect class="pv-face" x="0" y="0" width="22" height="22" rx="3"></rect></svg>'; }
+  function word(n,one,two,many){ return n===1?one:(n===2?two:arNum(n)+' '+many); }
+  function readout(t,o){ return word(t,'عشرةٌ واحدة','عشرتان','عشرات')+' و'+word(o,'واحدٌ','اثنان','آحاد')+' = '+arNum(t*10+o); }
+  const addBtn=(p,lbl)=> (mode==='build')?'<button class="btn pv-add" data-p="'+p+'">＋ '+lbl+'</button>':'';
+  body.innerHTML='<div class="pv"><div class="pv-panes">'+
+    '<div class="pv-pane"><div class="pv-head">عشرات</div><div class="pv-items" data-p="tens"></div>'+addBtn('tens','عشرة')+'</div>'+
+    '<div class="pv-pane"><div class="pv-head">آحاد</div><div class="pv-items" data-p="ones"></div>'+addBtn('ones','واحد')+'</div>'+
+    '</div><div class="pv-read"></div>'+
+    (mode==='read'?'<div class="opts">'+shuffle((q.options||[]).slice()).map(o=>'<button class="opt" data-o="'+o+'">'+o+'</button>').join('')+'</div>':'')+
+    '</div>'+
+    (mode==='build'?'<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>':'');
+  const tensBox=body.querySelector('.pv-items[data-p="tens"]'), onesBox=body.querySelector('.pv-items[data-p="ones"]');
+  const readEl=body.querySelector('.pv-read');
+  let done=false;
+  if(mode==='read'){
+    const t=Math.max(0,Math.round(numOf(q.tens)||0)), o=Math.max(0,Math.round(numOf(q.ones)||0));
+    tensBox.innerHTML=Array(t).fill('<span class="pv-item">'+rodMarkup()+'</span>').join('');
+    onesBox.innerHTML=Array(o).fill('<span class="pv-item pv-item-cube">'+cubeMarkup()+'</span>').join('');
+    const val=t*10+o;
+    body.querySelectorAll('.opt').forEach(btn=>{ btn.onclick=()=>{
+      if(done) return;
+      if(numOf(btn.dataset.o)===val){ done=true; btn.classList.add('correct');
+        body.querySelectorAll('.opt').forEach(b=>b.disabled=true);
+        readEl.textContent=readout(t,o); readEl.classList.add('show');
+        qWin(fb,'🎉 أحسنت! '+readout(t,o),3);
+      } else { btn.classList.add('wrong'); btn.disabled=true;
+        qFail(fb,'عُدَّ الأعمدةَ عشراتٍ ثم المكعّباتَ المفردةَ آحاداً'); }
+    };});
+    return;
+  }
+  // ── وضعُ البناء: يبني الطالبُ العددَ بإضافةِ عشراتٍ وآحادٍ، ونقرُ القطعةِ يحذفها ──
+  const target=Math.round(numOf(q.target)||0);
+  const maxTens=Math.max(1,Math.round(numOf(q.maxTens)||10));
+  const maxOnes=Math.max(1,Math.round(numOf(q.maxOnes)||12));
+  const exchange=!!q.allowExchange;   // الافتراض: الصورةُ القانونيّة (الآحادُ أقلُّ من عشرة)
+  let tens=0, ones=0;
+  function paint(){
+    tensBox.innerHTML=Array(tens).fill('<span class="pv-item">'+rodMarkup()+'</span>').join('');
+    onesBox.innerHTML=Array(ones).fill('<span class="pv-item pv-item-cube">'+cubeMarkup()+'</span>').join('');
+    readEl.textContent=readout(tens,ones); readEl.classList.add('show');
+    tensBox.querySelectorAll('.pv-item').forEach(el=>el.onclick=()=>{ if(done) return; tens--; paint(); });
+    onesBox.querySelectorAll('.pv-item').forEach(el=>el.onclick=()=>{ if(done) return; ones--; paint(); });
+  }
+  body.querySelectorAll('.pv-add').forEach(b=>{ b.onclick=()=>{
+    if(done) return;
+    if(b.dataset.p==='tens'){ if(tens>=maxTens){ qFail(fb,'لا تزد على '+arNum(maxTens)+' عشرات'); return; } tens++; }
+    else { if(ones>=maxOnes){ qFail(fb,'لا تزد على '+arNum(maxOnes)+' آحاد'); return; } ones++; }
+    paint();
+  };});
+  paint();
+  body.querySelector('.btn-check').onclick=()=>{
+    if(done) return;
+    const val=tens*10+ones;
+    if(val!==target){
+      qFail(fb, val<target ? 'بنيتَ '+arNum(val)+' والمطلوب '+arNum(target)+' — أضِف المزيد'
+                           : 'بنيتَ '+arNum(val)+' والمطلوب '+arNum(target)+' — انقر قطعةً لحذفها');
+      return;
+    }
+    if(!exchange && ones>9){
+      qFail(fb,'القيمةُ صحيحةٌ، لكن بدّل عشرَ آحادٍ بعشرةٍ واحدةٍ لتكتب العددَ بمنازله');
+      return;
+    }
+    done=true;
+    body.querySelectorAll('.pv-item').forEach(el=>el.classList.add('correct'));
+    qWin(fb,'🎉 أحسنت! '+readout(tens,ones),3);
+  };
+  body.querySelector('.btn-reset').onclick=()=>renderPlaceValue(q,body,fb);
 }
 
 /* ===== إقلاع ===== */
