@@ -761,7 +761,82 @@
     font-family:'Cairo';font-weight:800;font-size:1.5rem;color:#2f3a2c;
     box-shadow:0 4px 14px rgba(0,0,0,.22)}
 
-  /* التنقّل بين الأسئلة (خطوة بخطوة) */
+  /* ═══ أنماطُ الأنواعِ الرياضيّةِ الإضافيّة (الدفعةُ الثانية) ═══ */
+/* ⓐ المقارنة (compare): صفّ «عددٌ — رمزٌ — عددٌ» بترتيب رياضيّ (يسار→يمين) داخل صفحة RTL */
+.cmp{display:flex;flex-direction:column;gap:12px;align-items:center}
+.cmp-row{direction:ltr;display:flex;align-items:center;justify-content:center;gap:16px}
+.cmp-num{background:#fff;color:#2f3a2c;font-family:'Cairo';font-weight:800;font-size:2rem;
+  min-width:112px;padding:6px 18px;border-radius:16px;text-align:center;box-shadow:0 3px 12px rgba(0,0,0,.2)}
+/* الخانة والبطاقة: مساحة لمس ≥60px في البعدين (قاعدة السبورة) */
+.cmp-slot{min-width:92px;min-height:66px;display:inline-flex;align-items:center;justify-content:center;
+  font-size:2.1rem;font-family:'Cairo';font-weight:800}
+.cmpbank{width:100%}
+.cmpbank .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+.cmp-chip{display:flex;flex-direction:column;align-items:center;gap:2px;line-height:1.15;min-width:104px;min-height:64px}
+/* رمزا < و> **قابلان للانعكاس البِدِيّ**: داخل صفحة RTL يُقلبان بصرياً ويصير المعنى ضدَّه،
+   فيُعزل الرمز في سياق LTR — وهذا شرطُ صحّةِ النوع لا تجميلٌ */
+.cmp-chip b{direction:ltr;unicode-bidi:isolate;font-size:2rem;font-family:'Cairo';font-weight:800}
+.cmp-chip i{font-style:normal;font-size:.92rem;opacity:.72}
+/* ⓑ إكمال النمط (pattern): شريطُ عناصرَ بينها أسهمُ اتّجاهِ التتابع + خاناتٌ من بنك البطاقات */
+.patt{display:flex;flex-direction:column;gap:12px;align-items:center}
+.pt-strip{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px}
+.patt-ltr .pt-strip{direction:ltr}
+.pt-cell{background:#fff;color:#2f3a2c;font-family:'Cairo';font-weight:800;font-size:1.9rem;
+  min-width:84px;min-height:66px;padding:4px 12px;border-radius:16px;display:inline-flex;
+  align-items:center;justify-content:center;box-shadow:0 3px 12px rgba(0,0,0,.2)}
+.pt-slot{min-width:84px;min-height:66px;display:inline-flex;align-items:center;justify-content:center;
+  font-size:1.9rem;font-family:'Cairo';font-weight:800}
+.pt-arrow{color:#ffe27a;font-size:1.4rem;opacity:.85}
+.ptbank{width:100%}
+.ptbank .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.ptchip{min-width:78px;min-height:62px;display:inline-flex;align-items:center;justify-content:center;font-size:1.6rem}
+/* القاعدة تُكشف عند الصواب (كجملة المصفوفة) لا قبله فلا تُفسد التفكير */
+.pt-rule{display:none}
+.pt-rule.show{display:block;background:#fff;border-radius:14px;padding:8px 20px;
+  font-family:'Cairo';font-weight:800;font-size:1.3rem;color:#2f3a2c;box-shadow:0 4px 14px rgba(0,0,0,.22)}
+/* ⓒ العد بالنقر (count-tap): عناصرُ تُنقر فيظهر عليها العددُ بترتيب النقر */
+.cnt{display:flex;flex-direction:column;gap:10px;align-items:center}
+.ct-count{font-family:'Cairo';font-weight:700;color:#fff;font-size:1.15rem}
+.ct-count b{color:#ffe27a;font-size:1.6rem;margin-inline:6px}
+.ct-count i{font-style:normal;opacity:.7;font-size:.95rem}
+.ct-area{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;max-width:940px}
+.ct-tile,.ct-group{position:relative;background:rgba(255,255,255,.9);border:3px solid #c9b48a;
+  border-radius:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  min-width:66px;min-height:66px;transition:transform .1s,background .12s}
+.ct-group{gap:6px;padding:8px 12px;min-width:auto}
+.ct-glyphs{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;max-width:170px}
+.ct-glyph{font-size:1.9rem;line-height:1}
+.ct-tile:hover,.ct-group:hover{background:#fff6e6}
+/* المعدودُ: فارقٌ شكليٌّ (حدٌّ صلبٌ + شارةٌ) لا لونٌ فحسب */
+.ct-tile.on,.ct-group.on{background:#fff;border-color:#c8791f;transform:scale(.96)}
+.ct-tile.correct,.ct-group.correct{background:#eef8dc;border-color:#4e7c1f}
+.ct-badge{position:absolute;top:-10px;inset-inline-start:-10px;min-width:30px;height:30px;
+  border-radius:50%;background:#c8791f;color:#fff;font-family:'Cairo';font-weight:800;font-size:.95rem;
+  display:flex;align-items:center;justify-content:center;padding:0 6px}
+.ct-badge:empty{display:none}
+/* ⓓ القيمة المنزلية بالمكعبات (place-value): لوحُ عشراتٍ وآحادٍ بترتيب المنازل (العشراتُ يساراً) */
+.pv{display:flex;flex-direction:column;gap:12px;align-items:center}
+.pv-panes{direction:ltr;display:flex;gap:16px;align-items:flex-start;justify-content:center;flex-wrap:wrap}
+.pv-pane{background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.22);border-radius:18px;
+  padding:10px 12px;min-width:180px;display:flex;flex-direction:column;gap:8px;align-items:center}
+.pv-head{font-family:'Cairo';font-weight:800;color:#ffe27a;font-size:1.1rem}
+.pv-items{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;align-items:flex-end;min-height:70px;max-width:340px}
+/* الغلافُ هو هدفُ اللمس (≥60px) والرسمُ داخله بقياسه الحقيقيّ */
+.pv-item{display:inline-flex;align-items:flex-end;justify-content:center;min-width:62px;min-height:62px;cursor:pointer}
+.pv-svg{display:block}
+.pv-rod{width:26px;height:224px}
+.pv-cube{width:26px;height:26px}
+.pv-face{fill:#f7c948;stroke:#8a5a12;stroke-width:2}
+.pv-item-cube .pv-face{fill:#7fd1ae}
+.pv-line{stroke:#8a5a12;stroke-width:1.4;opacity:.85}
+.pv-item:hover .pv-face{fill:#fff0c2}
+.pv-item.correct .pv-face{fill:#a7c957;stroke:#4e7c1f}
+.pv-add{background:#FFE0B3;color:#3a2c0a;border-color:transparent;font-size:1.05rem;min-height:52px}
+.pv-read{display:none}
+.pv-read.show{display:block;background:#fff;border-radius:14px;padding:8px 20px;font-family:'Cairo';
+  font-weight:800;font-size:1.35rem;color:#2f3a2c;box-shadow:0 4px 14px rgba(0,0,0,.22)}
+
+/* التنقّل بين الأسئلة (خطوة بخطوة) */
   .qnav{display:flex;align-items:center;justify-content:center;gap:16px;margin:6px 0 10px;flex-wrap:wrap}
   .qnav .btn{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);color:#fff;min-width:118px}
   .qnav .btn:hover:not(:disabled){background:rgba(255,255,255,.24)}
