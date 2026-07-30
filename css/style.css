@@ -836,6 +836,72 @@
 .pv-read.show{display:block;background:#fff;border-radius:14px;padding:8px 20px;font-family:'Cairo';
   font-weight:800;font-size:1.35rem;color:#2f3a2c;box-shadow:0 4px 14px rgba(0,0,0,.22)}
 
+/* ⓔ الساعة التفاعلية (clock): ميناءٌ SVG بعقربَينِ يُضبطانِ باللمس */
+.clockq{display:flex;flex-direction:column;gap:10px;align-items:center}
+.ck-task,.ck-hint{font-family:'Cairo';color:#fff;font-size:1.02rem;text-align:center;max-width:520px}
+.ck-task b{color:#ffe27a;margin-inline:4px}
+.ck-hint{opacity:.72;font-size:.95rem}
+.cksvg{width:min(360px,86vw);height:auto;touch-action:none;cursor:pointer}
+.ck-face{fill:#fffdf6;stroke:#8a5a12;stroke-width:7}
+.ck-tick{stroke:#8a7d63;stroke-width:2.4;stroke-linecap:round}
+.ck-tick-h{stroke:#4a3a18;stroke-width:5}
+.ck-num{fill:#2f3a2c;font-family:'Cairo';font-weight:800;font-size:34px;text-anchor:middle}
+.ck-hand line{stroke-linecap:round}
+.ck-hour line{stroke:#4a3a18;stroke-width:14}
+.ck-min line{stroke:#c8791f;stroke-width:9}
+.ck-pin{fill:#4a3a18}
+.cksvg.correct .ck-face{stroke:#4e7c1f}
+.ck-read{background:#fff;border-radius:14px;padding:6px 22px;box-shadow:0 4px 14px rgba(0,0,0,.22)}
+/* الوقتُ «٣:٣٠» يُعزل في سياقِ LTR فلا تُقلبُ النقطتانِ موضعَ الساعةِ والدقيقة */
+.ck-time{direction:ltr;unicode-bidi:isolate;font-family:'Cairo';font-weight:800;font-size:1.6rem;color:#2f3a2c}
+/* ⓕ قراءة أداة القياس (measure-tool): مسطرةٌ خطّيّةٌ أو ميناءُ ميزانٍ من محرّكِ التدريجِ المشترك */
+.meas{display:flex;flex-direction:column;gap:10px;align-items:center;width:100%}
+.mssvg{width:min(880px,94%);height:auto;touch-action:none}
+.mssvg-dial{width:min(400px,86vw)}
+.ms-ruler{fill:#f7dfa5;stroke:#8a5a12;stroke-width:4}
+.ms-tick{stroke:#6b5320;stroke-width:2.6;stroke-linecap:round}
+.ms-major{stroke:#3f3010;stroke-width:5}
+.ms-num{fill:#3f3010;font-family:'Cairo';font-weight:800;font-size:30px;text-anchor:middle}
+.ms-bar{fill:#7fd1ae;stroke:#1f6f52;stroke-width:4}
+.ms-edge{stroke:#1f6f52;stroke-width:3;stroke-dasharray:9 7}
+.ms-dialface{fill:none;stroke:#fffdf6;stroke-width:16;stroke-linecap:round}
+.ms-needle line{stroke:#c8791f;stroke-width:11;stroke-linecap:round}
+.ms-pin{fill:#4a3a18}
+.ms-unit{fill:#ffe27a;font-family:'Cairo';font-weight:800;font-size:30px;text-anchor:middle}
+.mssvg.correct .ms-bar{fill:#a7c957;stroke:#4e7c1f}
+.mssvg.correct .ms-needle line{stroke:#4e7c1f}
+.ms-read{background:#fff;border-radius:14px;padding:6px 20px;font-family:'Cairo';font-weight:800;
+  font-size:1.4rem;color:#2f3a2c;box-shadow:0 4px 14px rgba(0,0,0,.22)}
+.ms-read b{color:#8a5a12;margin-inline-end:4px}
+.mssvg-dial .ms-num{font-size:26px}
+/* ⓖ النقود العُمانية (money): عملاتٌ ووَرَقٌ مرسومٌ SVG (لا صورَ عملةٍ حقيقيّة) والقيمُ بالبيسة */
+.moneyq{display:flex;flex-direction:column;gap:10px;align-items:center;width:100%}
+.mn-task{font-family:'Cairo';color:#fff;font-size:1.08rem;text-align:center}
+.mn-task b{color:#ffe27a;margin-inline:4px}
+.mn-tray{min-height:96px;width:min(760px,94%);display:flex;flex-wrap:wrap;gap:10px;justify-content:center;
+  align-items:center;background:rgba(255,255,255,.1);border:2px dashed rgba(255,255,255,.3);border-radius:18px;padding:10px}
+.mn-tray-fixed{border-style:solid}
+.mn-empty{font-family:'Cairo';color:rgba(255,255,255,.6)}
+/* كلُّ قطعةٍ زرٌّ مساحتُه ≥60px في البعدين */
+.mn-piece{background:none;border:none;padding:0;cursor:pointer;min-width:66px;min-height:66px;
+  display:inline-flex;align-items:center;justify-content:center;transition:transform .1s}
+.mn-piece:hover{transform:translateY(-3px)}
+.mn-coin{width:72px;height:72px}
+.mn-note{width:116px;height:67px}
+.mn-coinface{fill:#e8c46a;stroke:#8a5a12;stroke-width:3}
+.mn-coinring{fill:none;stroke:#8a5a12;stroke-width:1.6;opacity:.6}
+.mn-noteface{fill:#cfe8d6;stroke:#2f6f4f;stroke-width:3}
+.mn-noteinner{fill:none;stroke:#2f6f4f;stroke-width:1.6;opacity:.55}
+.mn-val{fill:#3f3010;font-family:'Cairo';font-weight:800;font-size:26px;text-anchor:middle}
+.mn-noteval{fill:#1f5138;font-size:22px}
+.mn-unit{fill:#6b5320;font-family:'Cairo';font-weight:700;font-size:14px;text-anchor:middle}
+.mn-total{font-family:'Cairo';color:#fff;font-size:1.05rem}
+.mn-total b{color:#ffe27a;font-size:1.35rem;margin-inline-start:6px}
+.mnrack{width:100%}
+.mnchips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.mn-piece.correct .mn-coinface{fill:#a7c957;stroke:#4e7c1f}
+.mn-piece.correct .mn-noteface{fill:#a7c957;stroke:#4e7c1f}
+
 /* التنقّل بين الأسئلة (خطوة بخطوة) */
   .qnav{display:flex;align-items:center;justify-content:center;gap:16px;margin:6px 0 10px;flex-wrap:wrap}
   .qnav .btn{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);color:#fff;min-width:118px}
