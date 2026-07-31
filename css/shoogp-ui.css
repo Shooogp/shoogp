@@ -426,7 +426,8 @@
    (أخضرُ/أحمرُ مضيئان) لتُقرأَ على الخلفيةِ السماوية. */
 .qframe.qf-hasfill .qwin>.qprompt{
   color:#fff;
-  text-shadow:0 1px 3px rgba(0,0,0,.6);
+  /* ظلٌّ أوضحُ قليلاً (قرارُ المالك ٢٠٢٦-٠٧-٣١؛ كان 0 1px 3px بألفا 0.6) */
+  text-shadow:0 2px 4px rgba(0,0,0,.75);
 }
 .qframe.qf-hasfill .qwin .bank .bt,
 .qframe.qf-hasfill .qwin .seq-hint,
