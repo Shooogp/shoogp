@@ -2175,8 +2175,24 @@ function renderPlaceValue(q, body, fb){
   }
   // ── وضعُ البناء: يبني الطالبُ العددَ بإضافةِ عشراتٍ وآحادٍ، ونقرُ القطعةِ يحذفها ──
   const target=Math.round(numOf(q.target)||0);
-  const maxTens=Math.max(1,Math.round(numOf(q.maxTens)||10));
-  const maxOnes=Math.max(1,Math.round(numOf(q.maxOnes)||12));
+  /* الحدّانِ الافتراضيّانِ مشتقّانِ من الهدفِ لا رقمَينِ سحريَّينِ واسعَين: عشراتُ الهدفِ
+     بالضبطِ (فتبقى الساحةُ صفّاً واحداً غالباً)، وعشرُ آحادٍ تُتيحُ لحظةَ «بدِّل عشرَ
+     آحادٍ بعشرة». q.maxTens/q.maxOnes الصريحانِ يتقدّمانِ كما كانا. */
+  const maxTens=Math.max(1,Math.round(numOf(q.maxTens)||Math.floor(target/10)));
+  const maxOnes=Math.max(1,Math.round(numOf(q.maxOnes)||10));
+  /* الحسابُ بأسوأِ الحالات (shoogp-ui §١.٤ب): تُحجَزُ ساحتا اللوحِ منذُ البناءِ **عرضاً
+     وارتفاعاً** بأقصى حالةٍ يسمحُ بها الحدّانِ — فلا يكبرُ السؤالُ أثناءَ إجابةِ الطالبِ
+     ولا يلتفُّ صفُّ الساحتَينِ فوقَ بعضِه، ويُختارُ الإطارُ على الحالةِ النهائيةِ لا على
+     اللوحِ الفارغِ (النموُّ بعدَ الإجابةِ كان يُخرِجُ المحتوى من الإطارِ — قِيسَ +132px
+     في g2m-12-2 س٤). سعةُ الصفِّ ٤ قطعٍ والفجوةُ 2px، ومقاساتُ القطعِ في css/style.css
+     (العمودُ 180 والمكعّبُ 21 بنفسِ نسبةِ الرسمِ فتبقى «العشرةُ = عشرُ آحادٍ» بالقياس). */
+  const PV_ROW=4, PV_ROD_H=180, PV_CUBE_H=62, PV_GAP=2;
+  const pvCapT=Math.min(maxTens,PV_ROW), pvCapO=Math.min(maxOnes,PV_ROW);
+  const pvRowsT=Math.ceil(maxTens/pvCapT), pvRowsO=Math.ceil(maxOnes/pvCapO);
+  tensBox.style.width=(pvCapT*62+(pvCapT-1)*PV_GAP)+'px';
+  onesBox.style.width=(pvCapO*62+(pvCapO-1)*PV_GAP)+'px';
+  tensBox.style.minHeight=(pvRowsT*PV_ROD_H+(pvRowsT-1)*PV_GAP)+'px';
+  onesBox.style.minHeight=(pvRowsO*PV_CUBE_H+(pvRowsO-1)*PV_GAP)+'px';
   const exchange=!!q.allowExchange;   // الافتراض: الصورةُ القانونيّة (الآحادُ أقلُّ من عشرة)
   let tens=0, ones=0;
   function paint(){

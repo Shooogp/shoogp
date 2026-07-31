@@ -893,16 +893,18 @@
 .ct-badge:empty{display:none}
 /* ⓓ القيمة المنزلية بالمكعبات (place-value): لوحُ عشراتٍ وآحادٍ بترتيب المنازل (العشراتُ يساراً) */
 .pv{display:flex;flex-direction:column;gap:12px;align-items:center}
-.pv-panes{direction:ltr;display:flex;gap:16px;align-items:flex-start;justify-content:center;flex-wrap:wrap}
+.pv-panes{direction:ltr;display:flex;gap:10px;align-items:flex-start;justify-content:center;flex-wrap:wrap}
 .pv-pane{background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.22);border-radius:18px;
   padding:10px 12px;min-width:180px;display:flex;flex-direction:column;gap:8px;align-items:center}
 .pv-head{font-family:'Cairo';font-weight:800;color:#ffe27a;font-size:1.1rem}
-.pv-items{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;align-items:flex-end;min-height:70px;max-width:340px}
+.pv-items{display:flex;flex-wrap:wrap;gap:2px;justify-content:center;align-items:flex-end;min-height:70px;max-width:340px}
 /* الغلافُ هو هدفُ اللمس (≥60px) والرسمُ داخله بقياسه الحقيقيّ */
 .pv-item{display:inline-flex;align-items:flex-end;justify-content:center;min-width:62px;min-height:62px;cursor:pointer}
 .pv-svg{display:block}
-.pv-rod{width:26px;height:224px}
-.pv-cube{width:26px;height:26px}
+/* العمودُ والمكعّبُ مُصغَّرانِ بنسبةٍ واحدة (‎×0.804‎ من 26×224 و26×26) فتبقى
+   «العشرةُ = عشرُ آحادٍ» صحيحةً بالقياس، ويتّسعُ اللوحُ المحجوزُ لإطارٍ حقيقيّ */
+.pv-rod{width:21px;height:180px}
+.pv-cube{width:21px;height:21px}
 .pv-face{fill:#f7c948;stroke:#8a5a12;stroke-width:2}
 .pv-item-cube .pv-face{fill:#7fd1ae}
 .pv-line{stroke:#8a5a12;stroke-width:1.4;opacity:.85}
