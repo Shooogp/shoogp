@@ -308,7 +308,19 @@ function measureFrameGeo(name){
         aB=y; if(f0<aL) aL=f0; if(f1>aR) aR=f1;
       }
       if(aT<0){ aL=0; aT=0; aR=W-1; aB=H-1; }   /* صورةٌ شفّافةٌ كلُّها → الصندوقُ كما هو */
-      _frameGeo[name]={natW:W,natH:H,oL:bl,oR:br,oT:bt,oB:bb,aL:aL,aR:aR,aT:aT,aB:aB};
+      /* ═══ الحدُّ الداخليُّ للزخرفةِ العلوية/السفلية (decoT/decoB) — للحاويةِ المرنة ═══
+         الداخلُ معتمٌ فلا تسعفُه الشفافية؛ نكشفُه لوناً: مرجعُنا لونُ مركزِ الصورة
+         (التعبئةُ المستقرّة)، وننزلُ من أعلى الرسمِ حتى أوّلِ مدى مستقرٍّ بلونِ المرجع
+         (طولُه ≥4% من الارتفاع) فذاك حيثُ تنتهي الزخرفةُ وتبدأُ ساحةُ المحتوى.
+         داخلٌ غيرُ مستقرٍّ (مزخرفٌ كلُّه) → null ويتكفّلُ الاحتياطُ النسبيُّ في CSS. */
+      var cx2=W>>1, ci=((H>>1)*W+cx2)*4, rR=d[ci], rG=d[ci+1], rB2=d[ci+2];
+      var nearRef=function(yy){ var i2=(yy*W+cx2)*4;
+        return d[i2+3]>=128 && Math.abs(d[i2]-rR)+Math.abs(d[i2+1]-rG)+Math.abs(d[i2+2]-rB2)<=48; };
+      var runN=Math.max(8,Math.round(H*0.04)), decoT=null, decoB=null, rc=0;
+      for(y=aT;y<=(H>>1);y++){ if(nearRef(y)){ if(++rc>=runN){ decoT=y-runN+1; break; } } else rc=0; }
+      rc=0;
+      for(y=aB;y>=(H>>1);y--){ if(nearRef(y)){ if(++rc>=runN){ decoB=y+runN-1; break; } } else rc=0; }
+      _frameGeo[name]={natW:W,natH:H,oL:bl,oR:br,oT:bt,oB:bb,aL:aL,aR:aR,aT:aT,aB:aB,decoT:decoT,decoB:decoB};
     }catch(e){ _frameGeo[name]=null; }   /* تعذّر (CORS مثلاً) → تبقى الإزاحات الاحتياطية */
     reconcileAR(name, im.naturalWidth, im.naturalHeight);
     /* أعد ضبط البطاقة الظاهرة كي تُطبَّق نسبةُ الفتحة الجاهزةُ الآن على التعبئة */
@@ -333,6 +345,47 @@ function placeFill(f,fill,name){
   fill.style.top   =Math.round(Math.max(0, Ty-bleed))+'px';
   fill.style.right =Math.round(Math.max(0, bw-Rx-bleed))+'px';
   fill.style.bottom=Math.round(Math.max(0, bh-By-bleed))+'px';
+}
+/* ═══ حشوةُ الحاويةِ المرنة (qflex) — «المحتوى يبدأُ أسفلَ الزخرفةِ العلوية» §١.٤ز ═══
+   صورةُ qflex تُحاطُ letterbox (وسطاً) وزخرفتُها العلويةُ مرسومةٌ داخلَها معتمةً،
+   فيقعُ نصُّ السؤالِ فوقَها. نحسبُ حشوةً علويةً تُنزِلُ بدايةَ المحتوى تحتَ الحدِّ
+   الداخليِّ للزخرفة (decoT المقيس لوناً) بخلوصٍ علويٍّ ≥ السفليِّ (§١.٥ج) و≥ تنفّسِ
+   §١.٥ب. المعادلة تراعي أنّ كلَّ بكسلِ حشوةٍ يُطيلُ الصندوقَ فيُنزِلُ الصورةَ نصفَه:
+   pad = (h0−imgH) + 2×(deco + خلوص − t0). تُكتَبُ في --flexpad (يستهلكُها CSS تحتَ
+   .qframe.qflex فقط، فزوالُ الصنفِ يُبطِلُها)، والاحتياطُ النسبيُّ في CSS إن غابت
+   الهندسة. الجانبان: حافّةُ الرسمِ + تنفّس (--flexpadx). */
+var FLEX_BREATH=16;   /* هامشُ التنفّس §١.٥ب */
+function placeFlexPad(f,w){
+  var g=_frameGeo[f.dataset.fimg||''];
+  if(g==='pending') return;               /* اكتمالُ القياسِ يعيدُ الضبطَ (measureFrameGeo) */
+  var bw=f.clientWidth; if(!bw) return;
+  if(!g || g.decoT==null){                /* بلا هندسة: احتياطٌ نسبيّ ~15% من العرض + تنفّس */
+    f.style.setProperty('--flexpad', Math.round(bw*0.15+FLEX_BREATH)+'px');
+    return;
+  }
+  /* أساسُ القياس: حشوةٌ صفر (القياسُ بالوحداتِ التصميميّة — العلاقةُ rect/client تعزلُ الزوم) */
+  var cur=parseFloat(f.style.getPropertyValue('--flexpad'))||0;
+  f.style.setProperty('--flexpad','0px');
+  var h0=f.clientHeight; if(!h0) return;
+  var fr=f.getBoundingClientRect(); if(!fr.width) return;
+  var k=bw/fr.width;
+  var p=w.querySelector('.qprompt'); if(!p) return;
+  var t0=(p.getBoundingClientRect().top-fr.top)*k;      /* بدايةُ النصِّ داخلَ الصندوق */
+  var last=0;                                            /* أسفلُ آخرِ محتوى مرئيّ */
+  for(var ch=w.firstElementChild; ch; ch=ch.nextElementSibling){
+    var cb=(ch.getBoundingClientRect().bottom-fr.top)*k; if(cb>last) last=cb;
+  }
+  var sW=bw/g.natW, imgH=g.natH*sW;                     /* الصندوقُ الأطولُ ← العرضُ هو الحاكم */
+  var deco=g.decoT*sW;                                   /* الحدُّ الداخليُّ من أعلى الصورة */
+  var C=Math.max(FLEX_BREATH, h0-last);                  /* الخلوصُ العلويُّ ≥ السفليِّ و≥ التنفّس */
+  var pad=Math.max(0, (h0-imgH) + 2*(deco + C - t0));
+  if(h0+pad<imgH) pad=Math.max(0, deco + C - t0);        /* صندوقٌ أقصرُ من الصورة: offY=0 (تقديرٌ آمن) */
+  var side=Math.round(Math.max(g.aL, g.natW-1-g.aR)*sW) + FLEX_BREATH;
+  /* حارسُ الذبذبة: قيمةٌ قريبةٌ من السابقةِ (±1px) تُعادُ كما كانت، فلا كتابةَ متكررة.
+     والسقفُ (ceil) لا التقريبُ: يضمنُ «العلويُّ ≥ السفليُّ» (§١.٥ج) حرفياً لا ±نصفَ بكسل */
+  f.style.setProperty('--flexpad', Math.ceil(Math.abs(cur-pad)>1 ? pad : cur)+'px');
+  var curX=parseFloat(f.style.getPropertyValue('--flexpadx'))||0;
+  if(Math.abs(curX-side)>1) f.style.setProperty('--flexpadx', side+'px');
 }
 /* ═══ الأيقوناتُ حولَ الحاوية — 10px من حافّةِ الإطارِ الفعلية (قاعدةٌ دائمة) ═══
    فوقَ الحاوية: شارتا رقمِ السؤالِ ونوعِه (‏.qhead‎). أسفلَها: زرّا السابق/التالي وشارةُ
@@ -777,6 +830,9 @@ function fitFrame(card){
      فتعكس شكل المحتوى الحقيقيّ لا مطاطيّةَ الإطار (scrollHeight يُقصّ عند حجم
      النافذة، لذا نقيس بارتفاعٍ حرّ). هي الهدف الذي نطابق عليه نسبة النافذة. */
   var DREF=760;
+  /* حشوةُ qflex من ضبطٍ سابقٍ تُلوّثُ قياسَ D (طولٌ وهميّ) — تُصفَّرُ قبلَه،
+     وtoFlex يعيدُ حسابَها إن انتهى السقوطُ إلى المرنةِ ثانيةً (§١.٤ز). */
+  if(f.style.getPropertyValue('--flexpad')) f.style.removeProperty('--flexpad');
   var _ws={position:w.style.position,height:w.style.height,width:w.style.width,top:w.style.top,right:w.style.right,bottom:w.style.bottom,left:w.style.left,overflow:w.style.overflow};
   w.style.position='static'; w.style.height='auto'; w.style.width=DREF+'px';
   w.style.top='auto'; w.style.right='auto'; w.style.bottom='auto'; w.style.left='auto'; w.style.overflow='visible';
@@ -820,6 +876,9 @@ function fitFrame(card){
   card.dataset.fit=best.size+'@'+Math.round(best.W/best.baseW*100)+'%';
   }finally{
     if(_restore) _restore();
+    /* §١.٤ز: حشوةُ qflex تُحسَبُ بعدَ استرجاعِ المحتوى الحقيقيِّ (لا بأسوأِ الحالات —
+       صندوقُ المرنةِ ديناميكيٌّ أصلاً، وonContentResize يلاحقُ نموَّه أثناءَ الإجابة) */
+    if(f.classList.contains('qflex')) placeFlexPad(f,w);
     /* القياس تمّ بلا انتقال؛ الآن نُحرّك التغيّر النهائي في العرض بسلاسة:
        نقفز للعرض السابق فوراً ثم نُعيد الانتقال ونضبط العرض النهائي فيتحرّك. */
     var _finalW=f.style.width;
@@ -911,7 +970,11 @@ function onContentResize(){
     if(_fitBusy||!gateOn()) return;
     var shown=currentShown(); if(!shown) return;
     var w=shown.querySelector('.qwin'); if(!w) return;
-    if(shown.dataset.fit==='flex') return;          /* المرنة تنمو تلقائياً */
+    if(shown.dataset.fit==='flex'){                 /* المرنة تنمو تلقائياً — وحشوتُها تلاحقُ
+       المحتوى الحيَّ (لا أسوأَ الحالات): الصندوقُ نفسُه ديناميكيٌّ فالحشوةُ مثلُه (§١.٤ز) */
+      var ff=shown.querySelector('.qframe'); if(ff) placeFlexPad(ff,w);
+      return;
+    }
     if(w.scrollHeight > w.clientHeight+2){            /* فائض فعليّ → كبّر الإطار */
       if(DEV) console.warn('[إطار] ResizeObserver تدخّل: المحتوى فاض بعد الحساب المسبق ('+
         w.scrollHeight+'>'+w.clientHeight+'px) — إعادة الاختيار والضبط. (تقدير مسبق ناقص)');
