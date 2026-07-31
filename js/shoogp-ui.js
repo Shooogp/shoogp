@@ -335,8 +335,8 @@ function placeFill(f,fill,name){
   var geo=_frameGeo[name];
   if(!geo || geo==='pending'){ measureFrameGeo(name); return; }
   var bw=f.clientWidth, bh=f.clientHeight; if(!bw||!bh) return;
-  var scale=Math.min(bw/geo.natW, bh/geo.natH);          /* contain */
-  var offX=(bw-geo.natW*scale)/2, offY=(bh-geo.natH*scale)/2;
+  var scale=Math.min(bw/geo.natW, bh/geo.natH);          /* contain — مُرساةً أعلى (center top) */
+  var offX=(bw-geo.natW*scale)/2, offY=0;
   var bleed=Math.max(2, Math.round(scale*6));            /* تداخلٌ يسير تحت المعدن */
   /* حوافُّ الفتحة داخل صندوق الإطار (بالبكسل): يسار/أعلى موضعان، يمين/أسفل إزاحتان */
   var Lx=offX+geo.oL*scale, Rx=offX+geo.oR*scale;
@@ -375,11 +375,14 @@ function placeFlexPad(f,w){
   for(var ch=w.firstElementChild; ch; ch=ch.nextElementSibling){
     var cb=(ch.getBoundingClientRect().bottom-fr.top)*k; if(cb>last) last=cb;
   }
-  var sW=bw/g.natW, imgH=g.natH*sW;                     /* الصندوقُ الأطولُ ← العرضُ هو الحاكم */
+  /* الصورةُ مُرساةٌ **أعلى** (center top — §«حارس الشاشة») فلا letterbox فوقَها:
+     الحدُّ الداخليُّ للزخرفةِ ثابتٌ من قمّةِ الصندوقِ مهما نما المحتوى، والمعادلةُ
+     مباشرةٌ بلا حدِّ (h0−imgH) — كانت للإرساءِ الأوسطِ حيثُ كلُّ بكسلِ حشوةٍ
+     يُغرقُ الصورةَ نصفَه. */
+  var sW=bw/g.natW;
   var deco=g.decoT*sW;                                   /* الحدُّ الداخليُّ من أعلى الصورة */
   var C=Math.max(FLEX_BREATH, h0-last);                  /* الخلوصُ العلويُّ ≥ السفليِّ و≥ التنفّس */
-  var pad=Math.max(0, (h0-imgH) + 2*(deco + C - t0));
-  if(h0+pad<imgH) pad=Math.max(0, deco + C - t0);        /* صندوقٌ أقصرُ من الصورة: offY=0 (تقديرٌ آمن) */
+  var pad=Math.max(0, deco + C - t0);
   var side=Math.round(Math.max(g.aL, g.natW-1-g.aR)*sW) + FLEX_BREATH;
   /* حارسُ الذبذبة: قيمةٌ قريبةٌ من السابقةِ (±1px) تُعادُ كما كانت، فلا كتابةَ متكررة.
      والسقفُ (ceil) لا التقريبُ: يضمنُ «العلويُّ ≥ السفليُّ» (§١.٥ج) حرفياً لا ±نصفَ بكسل */
@@ -411,11 +414,12 @@ function artOffsets(f){
   var g=_frameGeo[f.dataset.fimg||''];
   if(!g || g==='pending' || g.aT==null) return {top:0,bottom:0};
   /* غيرُ المرنة: النسبةُ محفوظةٌ (§٣) فالصندوقُ = الصورةُ تماماً، بلا letterbox.
-     المرنة: الصورةُ contain داخلَ الصندوق فتُحاطُ بشريطَين — يدخلانِ الحساب. */
-  var scale = f.classList.contains('qflex')
-      ? Math.min(bw/g.natW, bh/g.natH) : (bh/g.natH);
-  var offY = f.classList.contains('qflex') ? (bh-g.natH*scale)/2 : 0;
-  return { top: offY + g.aT*scale, bottom: offY + (g.natH-1-g.aB)*scale };
+     المرنة: الصورةُ contain **مُرساةً أعلى** (§«حارس الشاشة») — فلا شريطَ فوقَها،
+     وشريطُ letterbox كلُّه أسفلَها يدخلُ حسابَ الحافّةِ السفلى. */
+  var flex=f.classList.contains('qflex');
+  var scale = flex ? Math.min(bw/g.natW, bh/g.natH) : (bh/g.natH);
+  var offB = flex ? Math.max(0, bh-g.natH*scale) : 0;
+  return { top: g.aT*scale, bottom: offB + (g.natH-1-g.aB)*scale };
 }
 /* كتابةٌ لا تُطلقُ حلقةَ المراقب: لا نلمسُ النمطَ إلا إن تغيّرت قيمتُه فعلاً
    (‏MutationObserver يُسجّلُ تغيّرَ السمةِ حتى لو كانت القيمةُ نفسَها). */
@@ -951,10 +955,93 @@ function fitShown(){
   if(!shown||!shown.querySelector('.qframe')) return;
   var sig=(shown.clientWidth||0)+'x'+Math.round(availHeight());
   if(shown.dataset.fitSig===sig && shown.dataset.fit) return;
+  /* توقيعٌ جديدٌ حقاً (منفذٌ/عرضٌ آخر): مقياسُ المحتوى يبدأُ من 1 وحارسُ الشاشةِ يخفضُه
+     ثانيةً إن لزم. يُقارَنُ بتوقيعٍ محفوظٍ مستقلٍّ (csSig) لا بـfitSig — لأنّ مراقبَ
+     الفيضِ يمسحُ fitSig عمداً لإعادةِ الضبط، ولو صفّرنا المقياسَ عندَها لدخلنا حلقةَ
+     «تصفيرٌ → تصغيرُ الحارسِ → فيضٌ حدّيٌّ → مسحٌ → تصفيرٌ…» بلا نهاية (وقعت فعلاً). */
+  if(shown.dataset.csSig!==sig){
+    shown.dataset.csSig=sig;
+    delete shown.dataset.cs;
+    delete shown.dataset.csTries;
+    var w0=shown.querySelector('.qwin'); if(w0) w0.style.removeProperty('--s');
+  }
   shown.dataset.fitSig=sig;
   _fitBusy=true;
   try{ fitFrame(shown); }
-  finally{ setTimeout(function(){_fitBusy=false;},0); placeChrome(); }
+  finally{ setTimeout(function(){_fitBusy=false;},0); placeChrome(); scheduleScreenGuard(); }
+}
+/* ═══ حارسُ الشاشة — «لا يتجاوزُ ارتفاعُ أيِّ إطارٍ (شاملاً حشوةَ qflex) ارتفاعَ
+   الشاشةِ المتاح؛ عندَ التجاوزِ يُصغَّرُ المحتوى لا الإطار» (§١.٤ب/§١.٤ز) ═══
+   زومُ fit.js يحتوي المحتوى المتدفّقَ أصلاً، لكنّ ما يمتدُّ فوقَ أصلِ التمريرِ
+   (الهوامشُ السالبةُ لركوبِ الأيقونات + letterbox المرنةِ الملوَّنُ بتعبئتِها) لا
+   يراهُ scrollHeight فيُقصُّ من أعلى الشاشةِ بلا علاج — وهذه حالةُ qflex الثقيلة.
+   المعيارُ إمبريقيٌّ بالبكسلِ الحقيقيّ: قمّةُ العمودِ (الإطار/الشارات) ≥ 0 وقاعُه
+   (الإطار/التنقّل) ≤ ارتفاعِ المنفذ، مع «صفرِ تجاوزٍ» داخلَ النافذة (§١.٤و).
+   **البنيةُ تكّاتٌ مستقرّةٌ لا حلقةٌ متزامنة:** القياسُ داخلَ fitShown يسبقُ placeChrome
+   والمراقباتِ وانتقالَ العرضِ فيقرأُ حالةً لم تستقرَّ (تذبذبَ فعلاً وتأرجحَ بين qflex
+   وtall بلا نهاية). فالفحصُ يُجدوَلُ بعدَ سكونِ كلِّ شيء (rAF مزدوجٌ يَعقُبُ زومَ
+   fit.js المجدوَل): إن تجاوزَ العمودُ الشاشةَ خُفِّضَ مقياسُ المحتوى `--s` خطوةً
+   (inline على .qwin — إعلانُ الورقةِ عليها يغلبُ الوراثة، فتنكمشُ الخطوطُ حتى
+   أرضياتِها §١.٥أ والوسائطُ بنسبةِ المقياس) وأُعيدَ الاختيارُ والضبطُ ثم تكّةٌ
+   جديدة — حتى الاتساعِ أو أرضيةِ CS_MIN، وبصمّامِ CS_TRIES_MAX ضدّ أيّ تأرجح.
+   السؤالُ المتّسعُ أصلاً تمرُّ تكّتُه قياساً صِرفاً دونَ أيِّ تغيير. */
+var CS_MIN=0.5, CS_STEP=0.07, CS_TRIES_MAX=12;
+/* الجدولةُ بمؤقّتٍ لا بـrAF: rAF لا ينبضُ في لوحةٍ غيرِ معروضة (سبورةٌ مطفأة،
+   تبويبٌ خلفيّ) فيتجمّدُ الحارسُ — والمؤقّتُ ينبضُ دائماً (مخنوقاً في الخلفيةِ إلى
+   ~ثانية، وهو كافٍ). والتكّةُ تستدعي ShoogpFit.apply بنفسِها فلا تعتمدُ على rAF زومِ
+   fit.js المجدوَل. مهلةُ 60ms تدعُ المراقباتِ والانتقالاتِ تسكن. */
+var _sgTimer=0;
+function scheduleScreenGuard(){
+  if(_sgTimer) return;
+  _sgTimer=setTimeout(function(){ _sgTimer=0; screenGuardTick(); }, 60);
+}
+function screenGuardTick(){
+  if(!gateOn() || _fitBusy) return;
+  var card=currentShown(); if(!card) return;
+  var f=card.querySelector('.qframe'), w=card.querySelector('.qwin');
+  if(!f||!w||!f.clientHeight) return;
+  /* هندسةُ صورِ العائلةِ أساسُ القياسِ الصادق (حشوةُ qflex وهوامشُ الأيقونات) —
+     قبلَ جهوزِها لا حُكْمَ: اكتمالُ القياسِ يستدعي fitShown فتُجدوَلُ تكّةٌ صادقة. */
+  var fam=curFam(), k2, st2;
+  for(k2 in fam.sizes){ st2=_frameGeo[fam.sizes[k2].img];
+    if(st2===undefined) measureFrameGeo(fam.sizes[k2].img);
+    if(st2===undefined || st2==='pending') return;
+  }
+  /* ثبّتِ انتقالَ العرضِ قبلَ القياس (القياسُ أثناءَ الحركةِ يقرأُ عرضاً لم يستقرّ) */
+  f.style.transition='none'; void f.offsetWidth;
+  if(window.ShoogpFit && ShoogpFit.apply) ShoogpFit.apply();
+  var ih=window.innerHeight;
+  var fr=f.getBoundingClientRect(), top=fr.top, bot=fr.bottom, r2;
+  var head=card.querySelector('.qhead');
+  if(head){ r2=head.getBoundingClientRect(); if(r2.top<top) top=r2.top; }
+  var q=document.getElementById('questionList'), nav=q && q.querySelector('.qnav');
+  if(nav){ r2=nav.getBoundingClientRect(); if(r2.bottom>bot) bot=r2.bottom; }
+  var ovf=(w.scrollHeight>w.clientHeight+2) && !f.classList.contains('qflex');
+  f.style.transition='';
+  var s=parseFloat(card.dataset.cs||'1');
+  if(top>=-0.5 && bot<=ih+0.5 && !ovf){
+    if(DEV && s<1) console.log('%c[إطار] حارس الشاشة: اتّسع عند --s='+s.toFixed(2)+
+      ' (قمة '+top.toFixed(1)+' / قاع '+bot.toFixed(1)+' / منفذ '+ih+')','color:#2B5748;font-weight:bold');
+    delete card.dataset.csTries;
+    return;
+  }
+  var tries=+(card.dataset.csTries||0);
+  if(tries>=CS_TRIES_MAX) return;               /* صمّامُ الأمان: لا مطاردةَ بلا نهاية */
+  card.dataset.csTries=String(tries+1);
+  /* فيضُ تقريبٍ وحدَه (الشاشةُ متّسعة) → إعادةُ اختيارٍ وضبطٍ بلا تصغيرٍ إضافيّ */
+  if(!(ovf && top>=-0.5 && bot<=ih+0.5)){
+    if(s<=CS_MIN){
+      if(DEV) console.warn('%c[إطار] ⚠️ حارس الشاشة: بلغ الأرضية --s='+CS_MIN+
+        ' وما زال التجاوز (قمة '+top.toFixed(1)+' / قاع '+bot.toFixed(1)+' / منفذ '+ih+
+        ') — الأرضياتُ الدنيا (§١.٥أ) تمنعُ مزيدَ التصغير','color:#c0392b;font-weight:bold');
+      return;
+    }
+    s=Math.max(CS_MIN, +(s-CS_STEP).toFixed(2));
+    card.dataset.cs=String(s);
+    w.style.setProperty('--s', String(s));
+  }
+  card.dataset.fitSig='';
+  fitShown();                    /* يعيدُ الاختيارَ والضبطَ ويجدولُ تكّةَ تحقّقٍ جديدة */
 }
 
 /* ═══ إعادة حساب ديناميكية: شبكة أمان بمراقب أبعاد على محتوى النافذة ═══

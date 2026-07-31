@@ -316,7 +316,9 @@
 }
 /* نافذة المحتوى فوق الجميع — إزاحاتها من جدول المقاسات (متحفظة عن الزخارف) */
 .qwin{
-  --s:1;   /* الخطوط بأحجامها الافتراضية — الإطار هو الذي يتكيف، لا تمرير أبداً */
+  --s:1;   /* الخطوط بأحجامها الافتراضية — الإطار هو الذي يتكيف، لا تمرير أبداً.
+              حارسُ الشاشة (js/shoogp-ui.js) قد يخفضُ --s inline على .qwin حين
+              يتجاوزُ الإطارُ حدودَ الشاشة — «يُصغَّرُ المحتوى لا الإطار» (§١.٤ب) */
   position:absolute; z-index:2;
   overflow:hidden;
   padding:10px 16px;
@@ -343,8 +345,12 @@
   filter:drop-shadow(0 8px 18px rgba(0,0,0,.3));
   padding:6px 2px 10px;
 }
-/* .qmoon يرث background: var(--fimg) center / contain من القاعدة الأساسية */
-.qframe.qflex .qmoon{ inset:0; }
+/* .qmoon يرث background: var(--fimg) / contain من القاعدة الأساسية — لكن الإرساء هنا
+   **أعلى** لا وسطاً: الإرساء الأوسط يولّد شريط letterbox علوياً فارغاً (يتلوّن بتعبئة
+   hasFill) تسحبه هوامش الأيقونات السالبة فوق أصل التمرير حيث لا يراه scrollHeight
+   فيُقصّ من أعلى الشاشة بلا علاج (§١.٤ب «حارس الشاشة»). بالإرساء العلوي يبدأ الرسم
+   من قمة الصندوق فيبقى العمود كله في التدفق المحسوب. */
+.qframe.qflex .qmoon{ inset:0; background-position:center top; }
 /* التعبئة في المرنة تُحصر أيضاً بالفتحة الفعلية عبر placeFill (قياسٌ حيّ)؛ لا إزاحة
    ثابتة تتجاوز حافة الصورة. inset:0 مبدئيٌّ فقط حتى يجهز القياس (يُستبدل بالبكسل). */
 .qframe.qflex .qfill{display:block; inset:0; border-radius:26px}
@@ -377,6 +383,12 @@
 .qwin .fbtext{font-size:max(18px, calc(21px * var(--s))) !important}
 .qwin .grp-h{font-size:max(18px, calc(19px * var(--s))) !important}
 .qwin .grp-drop{min-height:max(60px, calc(110px * var(--s)))}
+/* حارسُ الشاشة: الوسائطُ (رسومُ الأسئلةِ الثابتة) تتقلّصُ عرضاً مع مقياسِ المحتوى
+   --s فيتبعُها ارتفاعُها بنسبةِ الرسم — محايدٌ عند 1 (max-width:100% هو الأصل).
+   بلا zoom متداخلٍ (يُفسدُ scrollHeight فيغشُّ زومَ fit.js). تُستثنى مسارحُ «السحبِ
+   على صورة»: صناديقُ .target تُوضَعُ نسبةً من المسرحِ لا من الرسم. */
+.qwin .figwrap{max-width:calc(100% * var(--s,1)); margin-left:auto; margin-right:auto}
+.qwin .stage:has(.target) .figwrap{max-width:100%}
 .qwin::-webkit-scrollbar{width:10px}
 .qwin::-webkit-scrollbar-thumb{background:#d9be93; border-radius:5px}
 .qwin::-webkit-scrollbar-track{background:rgba(120,90,40,.08); border-radius:5px}
