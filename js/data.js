@@ -96,9 +96,9 @@ window.DATA_FALLBACK = {
         { title:"مقدمة حول المصفوفات (٧-١)", file:"g2m-7-1", chapter:7, chapterTitle:"مصفوفة الضرب", open:true }
       ]},
       { unit:"١ب: الهندسة وحل المشكلات", lessons:[
-        { title:"الأشكال الثنائية الأبعاد (٨-١)", file:"g2m-8-1", chapter:8, chapterTitle:"الأشكال الثنائية الأبعاد والمجسمات والتماثل", open:false },
-        { title:"المجسمات (٨-٢)", file:"g2m-8-2", chapter:8, chapterTitle:"الأشكال الثنائية الأبعاد والمجسمات والتماثل", open:false },
-        { title:"التماثل (٨-٣)", file:"g2m-8-3", chapter:8, chapterTitle:"الأشكال الثنائية الأبعاد والمجسمات والتماثل", open:false }
+        { title:"الأشكال الثنائية الأبعاد (٨-١)", file:"g2m-8-1", chapter:8, chapterTitle:"الأشكال الثنائية الأبعاد والمجسمات والتماثل", open:true },
+        { title:"المجسمات (٨-٢)", file:"g2m-8-2", chapter:8, chapterTitle:"الأشكال الثنائية الأبعاد والمجسمات والتماثل", open:true },
+        { title:"التماثل (٨-٣)", file:"g2m-8-3", chapter:8, chapterTitle:"الأشكال الثنائية الأبعاد والمجسمات والتماثل", open:true }
       ]},
       { unit:"١ج: القياس وحل المشكلات", lessons:[
         { title:"صناعة علبة (٩-١)", file:"g2m-9-1", chapter:9, chapterTitle:"قياس الطول", open:false },
