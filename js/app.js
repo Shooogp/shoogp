@@ -843,11 +843,17 @@ function renderColor(q, body, fb){
       bucket(p.color)+
       `<span class="cswatch-name">${p.name}</span></button>`).join('');
   // شارات المفردات: المفردة وحدها دون اسم اللون أو أيقونته (كي لا تُكشف الإجابة)
-  const instr=q.parts.map(pt=>`<span class="cinstr">${pt.name}</span>`).join('');
+  // «تسمية الجزء تُعرَض فقط إن كانت معلومة تعليمية»: showLabels الصريح يتقدّم على الافتراض،
+  // وإلا تُخفى الشارات تلقائياً إن كانت كل الأسماء معرّفات متسلسلة «خانة N» (الطالب يلوّن
+  // بالموضع لا بالاسم). data-name يبقى دائماً في الرسم — التحقّق ومساحة اللمس لا يتأثران.
+  const techName=/^خانة\s*[٠-٩0-9]+$/;
+  const showLabels = q.showLabels!==undefined ? !!q.showLabels
+                   : !(q.parts.length && q.parts.every(pt=>techName.test(String(pt.name).trim())));
+  const instr=showLabels ? q.parts.map(pt=>`<span class="cinstr">${pt.name}</span>`).join('') : '';
   body.innerHTML=
     `<div class="colorq">`+
       `<div class="cpalette">${swatches}</div>`+
-      `<div class="cinstrbar">${instr}</div>`+
+      (instr?`<div class="cinstrbar">${instr}</div>`:'')+
       `<div class="dnd dnd-solo"><div class="stage stage-img"${q.bg?` style="background:${q.bg}"`:''}>`+
         `<div class="figwrap csvg">${q.svg}</div>`+
       `</div></div>`+
