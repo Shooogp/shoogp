@@ -4369,29 +4369,50 @@ window.QUESTIONS = {
         { name: "الحشرة",     color: "#3e9b4f" },
         { name: "دودة الأرض", color: "#8a5a2b" }
       ],
-      svg: `<svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="حشرة ودودة أرض">
-        <g stroke="#5b4a2f" stroke-width="4" stroke-linecap="round" fill="none">
-          <line x1="90" y1="118" x2="58" y2="150"/>
-          <line x1="92" y1="130" x2="60" y2="168"/>
-          <line x1="96" y1="142" x2="72" y2="178"/>
-          <line x1="120" y1="118" x2="152" y2="150"/>
-          <line x1="118" y1="130" x2="150" y2="168"/>
-          <line x1="114" y1="142" x2="138" y2="178"/>
-          <line x1="99" y1="84" x2="84" y2="60"/>
-          <line x1="111" y1="84" x2="126" y2="60"/>
+      // رسم مُغنى وفق قاعدة التفصيل البصري (CLAUDE.md): حشرة بتشريحها (رأس/صدر/بطن،
+      // جناحان، ٦ أرجل مفصلية، قرنا استشعار، خطوط بطن) ودودة متعرجة مقسمة على كومة
+      // تربة، مع خط أرض وأعشاب — وبلا ملامح وجه. الزخارف الثابتة بألوان صريحة،
+      // وجزءا التلوين (cpart) بلا تعبئة ليرثا لون الطالب.
+      svg: `<svg viewBox="0 0 560 340" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="حشرة مفصلة ودودة أرض على كومة تربة">
+        <line x1="30" y1="300" x2="530" y2="300" stroke="#c9b189" stroke-width="5" stroke-linecap="round"/>
+        <path d="M70,300 L64,282 M70,300 L74,280 M70,300 L81,286" stroke="#3e9b4f" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <path d="M262,300 L256,284 M262,300 L266,281 M262,300 L272,287" stroke="#3e9b4f" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <path d="M508,300 L502,283 M508,300 L512,281 M508,300 L518,287" stroke="#3e9b4f" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <ellipse cx="122" cy="198" rx="36" ry="16" fill="#dceefb" stroke="#7fb3e0" stroke-width="3" transform="rotate(-32 122 198)"/>
+        <ellipse cx="178" cy="198" rx="36" ry="16" fill="#dceefb" stroke="#7fb3e0" stroke-width="3" transform="rotate(32 178 198)"/>
+        <g stroke="#5b4a2f" stroke-width="5" stroke-linecap="round" fill="none">
+          <path d="M132,220 L100,238 L92,262"/>
+          <path d="M130,232 L96,252 L92,278"/>
+          <path d="M134,244 L104,266 L104,290"/>
+          <path d="M168,220 L200,238 L208,262"/>
+          <path d="M170,232 L204,252 L208,278"/>
+          <path d="M166,244 L196,266 L196,290"/>
+          <path d="M142,166 C134,150 130,142 120,134"/>
+          <path d="M158,166 C166,150 170,142 180,134"/>
         </g>
+        <circle cx="120" cy="134" r="5" fill="#5b4a2f"/>
+        <circle cx="180" cy="134" r="5" fill="#5b4a2f"/>
         <g class="cpart" data-name="الحشرة" id="part-insect">
-          <ellipse cx="105" cy="90" rx="15" ry="13"/>
-          <ellipse cx="105" cy="116" rx="20" ry="16"/>
-          <ellipse cx="105" cy="150" rx="17" ry="24"/>
+          <circle cx="150" cy="174" r="18"/>
+          <ellipse cx="150" cy="212" rx="24" ry="20"/>
+          <ellipse cx="150" cy="262" rx="20" ry="34"/>
         </g>
+        <path d="M132,248 Q150,254 168,248" stroke="#5b4a2f" stroke-width="3" fill="none"/>
+        <path d="M131,266 Q150,272 169,266" stroke="#5b4a2f" stroke-width="3" fill="none"/>
+        <path d="M134,284 Q150,290 166,284" stroke="#5b4a2f" stroke-width="3" fill="none"/>
+        <path d="M310,300 Q400,258 510,300 Z" fill="#e8d9b8" stroke="#c9b189" stroke-width="4"/>
         <g class="cpart" data-name="دودة الأرض" id="part-worm">
-          <ellipse cx="250" cy="150" rx="16" ry="13"/>
-          <ellipse cx="274" cy="136" rx="16" ry="13"/>
-          <ellipse cx="298" cy="138" rx="16" ry="13"/>
-          <ellipse cx="318" cy="156" rx="16" ry="13"/>
-          <ellipse cx="312" cy="180" rx="16" ry="13"/>
+          <circle cx="340" cy="288" r="11"/>
+          <circle cx="360" cy="272" r="13"/>
+          <circle cx="384" cy="260" r="15"/>
+          <circle cx="410" cy="254" r="15"/>
+          <circle cx="436" cy="257" r="15"/>
+          <circle cx="460" cy="266" r="15"/>
+          <circle cx="480" cy="280" r="16"/>
         </g>
+        <path d="M372,268 q7,-6 13,-5" stroke="#5b4a2f" stroke-width="3" fill="none"/>
+        <path d="M398,256 q7,-3 13,-2" stroke="#5b4a2f" stroke-width="3" fill="none"/>
+        <path d="M448,260 q7,2 12,5" stroke="#5b4a2f" stroke-width="3" fill="none"/>
       </svg>`
     }
 
