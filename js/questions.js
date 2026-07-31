@@ -1642,7 +1642,10 @@ window.QUESTIONS = {
     },
 
     // ⑥ اكتشف الخطأ (إثرائي اختياري) — استدلال — 2Pt3
-    // عربة بثلاث عجلات دائرية وواحدة مربعة — الخطأ الذي يمنع التدحرج.
+    // عربة خشبية بثلاث عجلات دائرية وواحدة مربعة — الخطأ الذي يمنع التدحرج.
+    // النموذج الأول لقاعدة التفصيل البصري (CLAUDE.md): مكونات طبيعية (ألواح، مسامير،
+    // حافة معدنية، مقبض بيد، عجلات بصرة وأضلاع) + عمق مسطح (ظل أرضي وخط أرض)؛
+    // وبند الترقية إلى مستوى فن المنصة مسجل في graphics-queue.md.
     {
       type: "find-error",
       objective: "2Pt3: يستكشف المسائل العددية والألغاز",
@@ -1650,13 +1653,49 @@ window.QUESTIONS = {
       prompt: "في هذِهِ العَرَبةِ خَطَأٌ يَمنَعُها مِنَ التَّدَحرُجِ — اضغَطْ عَلَيهِ.",
       bg: "#fdf9ee",
       fit: "width",
-      svg: `<svg viewBox="0 0 900 410" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="عربة بثلاث عجلات دائرية وعجلة مربعة">
-        <rect x="180" y="110" width="540" height="150" rx="24" fill="#7fb3e0" stroke="#2f6fb0" stroke-width="6"/>
-        <line x1="720" y1="150" x2="820" y2="110" stroke="#2f6fb0" stroke-width="10" stroke-linecap="round"/>
+      svg: `<svg viewBox="0 0 900 410" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="عربة خشبية مفصلة بثلاث عجلات دائرية وعجلة مربعة">
+        <ellipse cx="465" cy="362" rx="340" ry="10" fill="#e8dfc9"/>
+        <line x1="40" y1="360" x2="860" y2="360" stroke="#c9b189" stroke-width="6" stroke-linecap="round"/>
+        <rect x="180" y="108" width="540" height="152" rx="12" fill="#d9a05b" stroke="#8a5a2b" stroke-width="6"/>
+        <line x1="186" y1="146" x2="714" y2="146" stroke="#b97f3e" stroke-width="4"/>
+        <line x1="186" y1="184" x2="714" y2="184" stroke="#b97f3e" stroke-width="4"/>
+        <line x1="186" y1="222" x2="714" y2="222" stroke="#b97f3e" stroke-width="4"/>
+        <line x1="320" y1="114" x2="320" y2="254" stroke="#b97f3e" stroke-width="4"/>
+        <line x1="460" y1="114" x2="460" y2="254" stroke="#b97f3e" stroke-width="4"/>
+        <line x1="600" y1="114" x2="600" y2="254" stroke="#b97f3e" stroke-width="4"/>
+        <circle cx="205" cy="127" r="6" fill="#6b4423"/>
+        <circle cx="695" cy="127" r="6" fill="#6b4423"/>
+        <circle cx="205" cy="241" r="6" fill="#6b4423"/>
+        <circle cx="695" cy="241" r="6" fill="#6b4423"/>
+        <rect x="170" y="94" width="560" height="22" rx="10" fill="#aab4bd" stroke="#5b6770" stroke-width="5"/>
+        <line x1="200" y1="94" x2="200" y2="52" stroke="#8a5a2b" stroke-width="5" stroke-linecap="round"/>
+        <polygon points="200,54 152,64 200,78" fill="#d94f4f" stroke="#a33636" stroke-width="3"/>
+        <line x1="725" y1="140" x2="845" y2="88" stroke="#5b6770" stroke-width="10" stroke-linecap="round"/>
+        <circle cx="852" cy="85" r="15" fill="#e8862e" stroke="#8a4a1f" stroke-width="5"/>
+        <rect x="252" y="250" width="16" height="18" fill="#5b6770"/>
+        <rect x="392" y="250" width="16" height="18" fill="#5b6770"/>
+        <rect x="532" y="250" width="16" height="18" fill="#5b6770"/>
+        <rect x="662" y="250" width="16" height="18" fill="#5b6770"/>
         <circle cx="260" cy="310" r="48" fill="#f2c14e" stroke="#c8791f" stroke-width="6"/>
+        <circle cx="260" cy="310" r="34" fill="none" stroke="#c8791f" stroke-width="4"/>
+        <line x1="226" y1="310" x2="294" y2="310" stroke="#c8791f" stroke-width="5"/>
+        <line x1="260" y1="276" x2="260" y2="344" stroke="#c8791f" stroke-width="5"/>
+        <circle cx="260" cy="310" r="9" fill="#8a5a2b"/>
         <circle cx="400" cy="310" r="48" fill="#f2c14e" stroke="#c8791f" stroke-width="6"/>
+        <circle cx="400" cy="310" r="34" fill="none" stroke="#c8791f" stroke-width="4"/>
+        <line x1="366" y1="310" x2="434" y2="310" stroke="#c8791f" stroke-width="5"/>
+        <line x1="400" y1="276" x2="400" y2="344" stroke="#c8791f" stroke-width="5"/>
+        <circle cx="400" cy="310" r="9" fill="#8a5a2b"/>
         <circle cx="540" cy="310" r="48" fill="#f2c14e" stroke="#c8791f" stroke-width="6"/>
+        <circle cx="540" cy="310" r="34" fill="none" stroke="#c8791f" stroke-width="4"/>
+        <line x1="506" y1="310" x2="574" y2="310" stroke="#c8791f" stroke-width="5"/>
+        <line x1="540" y1="276" x2="540" y2="344" stroke="#c8791f" stroke-width="5"/>
+        <circle cx="540" cy="310" r="9" fill="#8a5a2b"/>
         <rect x="622" y="262" width="96" height="96" fill="#f2c14e" stroke="#c8791f" stroke-width="6"/>
+        <rect x="636" y="276" width="68" height="68" fill="none" stroke="#c8791f" stroke-width="4"/>
+        <line x1="636" y1="310" x2="704" y2="310" stroke="#c8791f" stroke-width="5"/>
+        <line x1="670" y1="276" x2="670" y2="344" stroke="#c8791f" stroke-width="5"/>
+        <circle cx="670" cy="310" r="9" fill="#8a5a2b"/>
       </svg>`,
       spot: { x: 74, y: 76, r: 11 }
     }
