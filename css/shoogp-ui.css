@@ -424,16 +424,22 @@
   text-shadow:0 1px 2px rgba(255,255,255,.55);
 }
 
-/* ══ خانةُ التعبئةِ المدموجةِ الفاتحة (qf-hasfill، مثل frame-math-m تعبئتُه ~بيضاء) ══
-   القمريُّ تعبئتُه داكنةٌ فنصوصُه فاتحة (أعلاه)؛ أمّا التعبئةُ المدموجةُ الفاتحةُ فنقلبُ
-   النصوصَ الملامسةَ لها إلى داكنٍ لتُقرأ. البطاقاتُ (خيارات/توصيل/كلمات) بخلفياتها الفاتحة
-   ونصِّها الداكن أصلاً فلا تتأثّر. النقطيةُ (hasFill:false) تبقى فاتحةً كما هي. */
-.qframe.qf-hasfill .qwin{color:#143247}
-.qframe.qf-hasfill .qwin>.qprompt{color:#143247;text-shadow:0 1px 2px rgba(255,255,255,.55)}
-.qframe.qf-hasfill .qwin .qfb.good{color:#1f7a3f !important;text-shadow:none !important}
-.qframe.qf-hasfill .qwin .qfb.bad{color:#b3261e !important;text-shadow:none !important}
+/* ══ قاعدة تصميم خاصة بكتب الرياضيات (qf-hasfill — التعبئةُ المدموجة) ══
+   تعبئةُ أطرِ الرياضياتِ سماويةٌ مشبّعة (#00b6d7 وأخواتُها)، فالنصوصُ الملامسةُ لها
+   بيضاءُ بظلٍّ داكنٍ يرفعُها عن التعبئة. وألوانُ التغذيةِ الراجعةِ فاتحةٌ
+   (أخضرُ/أحمرُ مضيئان) لتُقرأَ على الخلفيةِ السماوية. */
+.qframe.qf-hasfill .qwin>.qprompt{
+  color:#fff;
+  text-shadow:0 1px 3px rgba(0,0,0,.6);
+}
 .qframe.qf-hasfill .qwin .bank .bt,
-.qframe.qf-hasfill .qwin .seq-hint{color:#20364a !important;text-shadow:none !important}
+.qframe.qf-hasfill .qwin .seq-hint,
+.qframe.qf-hasfill .qwin .cinstr{
+  color:#fff !important;
+  text-shadow:0 1px 2px rgba(0,0,0,.65) !important;
+}
+.qframe.qf-hasfill .qwin .qfb.good{ color:#7ee2a0 !important; }
+.qframe.qf-hasfill .qwin .qfb.bad{ color:#ff8a8a !important; }
 
 /* ═══════════════════════════════════════════════════════════════════
    ★ ستايل البطاقات الزجاجية الزرقاء (CSS خالص، بلا صور) ★
@@ -1091,6 +1097,13 @@
                                     var(--mt-mid) 55%, var(--mt-lo) 100%);
   --mt-body-rev:linear-gradient(0deg, var(--mt-hi) 0%, var(--mt-hi2) 20%,
                                       var(--mt-mid) 55%, var(--mt-lo) 100%);
+}
+/* ── قاعدة تصميم خاصة بكتب الرياضيات: أغطيةٌ زرقاءُ كحليةٌ أفتح تنسجمُ مع
+   التعبئةِ السماويةِ لأطرِ الرياضيات (تجاوزٌ على نفسِ الحاويةِ فيُعادُ حلُّ
+   --mt-capbase تلقائياً بالقيمِ الجديدة). ── */
+.shoogp-ui.skin-metal.subj-math{
+  --mt-cap-a:#16447e;
+  --mt-cap-b:#123969;
 }
 /* ── الوجهُ البارزُ + خصائصُ الزرّ (المستقبِلاتُ خارجَها — لها وجهُها الغائرُ أدناه) ── */
 .shoogp-ui.skin-metal .qwin :where(.opt,.tf,.excl-opt,.mitem,.chip,.seqitem,
