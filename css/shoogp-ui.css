@@ -389,6 +389,11 @@
    على صورة»: صناديقُ .target تُوضَعُ نسبةً من المسرحِ لا من الرسم. */
 .qwin .figwrap{max-width:calc(100% * var(--s,1)); margin-left:auto; margin-right:auto}
 .qwin .stage:has(.target) .figwrap{max-width:100%}
+/* المسرحُ نفسه ثابتُ الارتفاع في style.css (‏400px) فلا يتأثر بالمقياس — وهو الكتلة
+   الكبرى في أسئلة الوسائط (كالتلوين)؛ نُخضِعه للمقياس هنا (محايد عند 1) فيتبعه
+   ارتفاعُ الرسم (height:100%). مسارحُ «السحب على صورة» مستثناة: صناديق .target
+   وحارس dndStageNeed مبنيان على أبعادها القائمة. */
+.qwin .stage:not(:has(.target)){height:calc(400px * var(--s,1))}
 .qwin::-webkit-scrollbar{width:10px}
 .qwin::-webkit-scrollbar-thumb{background:#d9be93; border-radius:5px}
 .qwin::-webkit-scrollbar-track{background:rgba(120,90,40,.08); border-radius:5px}

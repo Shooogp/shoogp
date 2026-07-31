@@ -847,23 +847,51 @@ function fitFrame(card){
   /* الاختيار بالنسبة داخلَ عائلةِ المادةِ الحالية: من أطرها التي تسع المحتوى نأخذ الأقرب
      نسبةَ نافذةٍ إلى نسبة المحتوى D. عضوٌ جديد (كـframe-math-s) يدخل المطابقة تلقائياً
      بمجرّد إضافته إلى sizes/order في عائلته. (الرياضيات: m فقط الآن → يُختار دائماً.) */
-  var best=null, ORDER=curFam().order;
-  for(var i=0;i<ORDER.length;i++){
-    var size=ORDER[i], cfg=resolveCfg(size), r=frameAR(cfg);
-    var baseW=BASE_FILL*availH/r;                 /* عرض مقياس 1 */
-    var Wmax=Wceil;                               /* التكبير حرّ بنسبة محفوظة */
-    var Wmin=Math.min(Wmax, CAP_DOWN*baseW);      /* أدنى عرض (−25%) */
-    if(!frameFits(f,fill,w,size,Wmax)) continue;  /* لا يسع حتى عند الأكبر */
-    var d=Math.abs(frameWinAR(cfg)-D);            /* بُعد نسبة نافذته عن نسبة المحتوى */
-    if(best && d>=best.d) continue;               /* أبعد من الفائز الحاليّ */
-    /* بحث ثنائي عن أصغر عرض يسع في [Wmin,Wmax] (hi يسع دائماً).
-       والوسيطُ المرنُ يتخطّاه: أوسعُ عرضٍ مسموحٍ (hi=Wmax) هو مطلوبُه (انظر أعلاه). */
-    var lo=Wmin, hi=Wmax;
-    if(!_flexMedia) for(var it=0; it<16; it++){
-      var mid=(lo+hi)/2;
-      if(frameFits(f,fill,w,size,mid)) hi=mid; else lo=mid;
+  var ORDER=curFam().order;
+  function selectBest(){
+    var bst=null;
+    for(var i=0;i<ORDER.length;i++){
+      var size=ORDER[i], cfg=resolveCfg(size), r=frameAR(cfg);
+      var baseW=BASE_FILL*availH/r;                 /* عرض مقياس 1 */
+      var Wmax=Wceil;                               /* التكبير حرّ بنسبة محفوظة */
+      var Wmin=Math.min(Wmax, CAP_DOWN*baseW);      /* أدنى عرض (−25%) */
+      if(!frameFits(f,fill,w,size,Wmax)) continue;  /* لا يسع حتى عند الأكبر */
+      var d=Math.abs(frameWinAR(cfg)-D);            /* بُعد نسبة نافذته عن نسبة المحتوى */
+      if(bst && d>=bst.d) continue;                 /* أبعد من الفائز الحاليّ */
+      /* بحث ثنائي عن أصغر عرض يسع في [Wmin,Wmax] (hi يسع دائماً).
+         والوسيطُ المرنُ يتخطّاه: أوسعُ عرضٍ مسموحٍ (hi=Wmax) هو مطلوبُه (انظر أعلاه). */
+      var lo=Wmin, hi=Wmax;
+      if(!_flexMedia) for(var it=0; it<16; it++){
+        var mid=(lo+hi)/2;
+        if(frameFits(f,fill,w,size,mid)) hi=mid; else lo=mid;
+      }
+      bst={size:size, W:hi, baseW:baseW, d:d};
     }
-    best={size:size, W:hi, baseW:baseW, d:d};
+    return bst;
+  }
+  var best=selectBest();
+  if(!best){
+    /* ═══ «تصغيرُ المحتوى قبلَ الملاذِ الأخير» (§١.٤ز) ═══
+       المرنةُ لمحتوى لا يسعُه إطارٌ حقيقيٌّ البتة؛ أمّا محتوىً يفصلُه عن أكبرِ
+       نافذةٍ هامشٌ يسير (قِيس: 970 مقابل 914 في تلوينِ المصفوفات) فتصغيرُه
+       التدريجيُّ (--s: خطوطٌ حتى أرضياتِها §١.٥أ ووسائطُ بنسبةِ المقياس) يُدخلُه
+       إطاراً حقيقياً — خيرٌ من مرنةٍ صندوقُها يفيضُ مئاتِ البكسلاتِ تحتَ رسمِها
+       شريطاً أزرقَ خاماً. القياسُ كلُّه بفضاءِ التصميم (client لا rect) فالقرارُ
+       **مستقلٌّ عن الزوم** ومستقرٌّ عبرَ المنافذ. */
+    var s0=parseFloat(card.dataset.cs||'1'), sTry=s0;
+    while(!best && sTry>CS_MIN+1e-9){
+      sTry=+Math.max(CS_MIN, sTry-CS_STEP).toFixed(2);
+      w.style.setProperty('--s', String(sTry));
+      best=selectBest();
+    }
+    if(best){
+      card.dataset.cs=String(sTry);
+      if(DEV) console.log('%c[إطار] تصغير قبل الملاذ: --s='+sTry.toFixed(2)+
+        ' أدخل المحتوى إطارَ '+best.size,'color:#2B5748;font-weight:bold');
+    } else {
+      /* لم يُجدِ التصغيرُ حتى الأرضية → مرنةٌ حقّاً؛ أعدِ المقياسَ لحالتِه */
+      if(s0>=1) w.style.removeProperty('--s'); else w.style.setProperty('--s', String(s0));
+    }
   }
   if(!best){ var fb=curFam().flexBase; var fcfg=toFlex(f,fill,w,fb); card.dataset.fit='flex'; _worstH=w.scrollHeight;
     if(!fcfg.hasFill) placeFill(f,fill,resolveCfg(fb).img);   /* النقطية فقط؛ المدموجة من الصورة/اللون */
@@ -1017,9 +1045,23 @@ function screenGuardTick(){
   var q=document.getElementById('questionList'), nav=q && q.querySelector('.qnav');
   if(nav){ r2=nav.getBoundingClientRect(); if(r2.bottom>bot) bot=r2.bottom; }
   var ovf=(w.scrollHeight>w.clientHeight+2) && !f.classList.contains('qflex');
+  /* (أ) نسبةُ المحتوى إلى الإطار — إطارٌ منفوخٌ فوقَ محتواه (فراغٌ مفرط)؟
+     و(ب) البرومبتُ أسفلَ الحدِّ الداخليِّ للزخرفةِ العلوية دائماً (§١.٤ز).
+     كلاهما بفضاءِ التصميم (client) فالحكمُ مستقلٌّ عن الزوم. */
+  var inflated=false, promptClash=false;
+  if(w.scrollHeight && f.clientHeight && (w.scrollHeight/f.clientHeight)<0.5) inflated=true;
+  var g2=_frameGeo[f.dataset.fimg||''];
+  if(f.classList.contains('qflex') && g2 && g2!=='pending' && g2.decoT!=null){
+    var p2=w.querySelector('.qprompt');
+    if(p2){
+      var k2b=f.clientWidth/fr.width;
+      var s2b=Math.min(f.clientWidth/g2.natW, f.clientHeight/g2.natH);
+      promptClash=((p2.getBoundingClientRect().top-fr.top)*k2b) < (g2.decoT*s2b + FLEX_BREATH - 2);
+    }
+  }
   f.style.transition='';
   var s=parseFloat(card.dataset.cs||'1');
-  if(top>=-0.5 && bot<=ih+0.5 && !ovf){
+  if(top>=-0.5 && bot<=ih+0.5 && !ovf && !inflated && !promptClash){
     if(DEV && s<1) console.log('%c[إطار] حارس الشاشة: اتّسع عند --s='+s.toFixed(2)+
       ' (قمة '+top.toFixed(1)+' / قاع '+bot.toFixed(1)+' / منفذ '+ih+')','color:#2B5748;font-weight:bold');
     delete card.dataset.csTries;
@@ -1028,8 +1070,10 @@ function screenGuardTick(){
   var tries=+(card.dataset.csTries||0);
   if(tries>=CS_TRIES_MAX) return;               /* صمّامُ الأمان: لا مطاردةَ بلا نهاية */
   card.dataset.csTries=String(tries+1);
-  /* فيضُ تقريبٍ وحدَه (الشاشةُ متّسعة) → إعادةُ اختيارٍ وضبطٍ بلا تصغيرٍ إضافيّ */
-  if(!(ovf && top>=-0.5 && bot<=ih+0.5)){
+  /* والشاشةُ متّسعة (فيضُ تقريبٍ أو انتفاخٌ أو تزاحمُ برومبت) → إعادةُ اختيارٍ وضبطٍ
+     بلا تصغيرٍ أولاً؛ فإن **استمرّتِ** المخالفةُ بعدَ محاولتَينِ فالنتيجةُ حتميةٌ
+     (كفيضِ تقريبٍ بثلاثِ بكسلاتٍ يعيدُ نفسَه) — عندَها التصغيرُ هو الحلّ. */
+  if(top<-0.5 || bot>ih+0.5 || tries>=3){
     if(s<=CS_MIN){
       if(DEV) console.warn('%c[إطار] ⚠️ حارس الشاشة: بلغ الأرضية --s='+CS_MIN+
         ' وما زال التجاوز (قمة '+top.toFixed(1)+' / قاع '+bot.toFixed(1)+' / منفذ '+ih+
