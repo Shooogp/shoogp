@@ -84,8 +84,10 @@
   pointer-events:none; font-family:'Tajawal',sans-serif;
   text-shadow:0 2px 4px rgba(150,70,5,.85), 0 0 8px rgba(150,70,5,.4);
 }
-.qnav .nav-prev .ncap{left:12px; right:46px}   /* السهم في يمين الصورة الأصلية */
-.qnav .nav-next .ncap{left:46px; right:12px}   /* وبعد العكس في يسارها */
+/* الكلمتان تتوسطان زرّيهما (قرار المالك ٢٠٢٦-٠٧-٣١) — كانت كل كلمة مُزاحة
+   بعيداً عن جهة السهم (12/46) فتبدو غير متوسطة؛ الإزاحتان الآن متساويتان */
+.qnav .nav-prev .ncap{left:12px; right:12px}
+.qnav .nav-next .ncap{left:12px; right:12px}
 /* «إنهاء» ونصُّ عيّناتِ الألوان: رُفِعا إلى الحدِّ الأدنى كذلك */
 .shoogp-ui .qnav .qfinish{font-size:var(--ui-min-font); min-height:60px}
 .shoogp-ui .qwin :is(.cswatch,.cswatch-name){font-size:var(--ui-min-font)}
