@@ -2301,6 +2301,8 @@ window.QUESTIONS = {
     },
 
     // ④ النقطة الساخنة — تطبيق — 2Nn13 (مرطبانان: قليل وكثير)
+    // رسم مُغنى وفق قاعدة التفصيل البصري (CLAUDE.md): مرطبانان زجاجيان بغطاء
+    // معدني بطبقتين وعنق ولمعة زجاج، وخرزات ملونة متنوعة مرصوصة، وظل وخط أرض.
     {
       type: "hotspot",
       objective: "2Nn13: يعطي تقديراً منطقياً لعدد أشياء حتى ١٠٠",
@@ -2308,15 +2310,22 @@ window.QUESTIONS = {
       prompt: "انقُرِ المِرطَبانَ الَّذي فيهِ حَوالَيْ ٥٠ خَرَزةً.",
       bg: "#fdf9ee",
       fit: "width",
-      svg: `<svg viewBox="0 0 900 410" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="مرطبانان: أحدهما فيه خرزات قليلة والآخر كثيرة">
-        <rect x="560" y="95" width="180" height="26" rx="8" fill="#9c7b3f"/>
-        <rect x="545" y="130" width="210" height="230" rx="26" fill="#ffffff" stroke="#2f6fb0" stroke-width="6"/>
-        ${Array.from({length:12},(_,i)=>{const c=i%4,r=Math.floor(i/4);return `<circle cx="${578+c*48}" cy="${240+r*48}" r="14" fill="#2f6fb0"/>`;}).join("")}
-        <rect x="160" y="95" width="180" height="26" rx="8" fill="#9c7b3f"/>
-        <rect x="145" y="130" width="210" height="230" rx="26" fill="#ffffff" stroke="#d97a2b" stroke-width="6"/>
-        ${Array.from({length:50},(_,i)=>{const c=i%8,r=Math.floor(i/8);return `<circle cx="${168+c*24}" cy="${170+r*27}" r="8" fill="#d97a2b"/>`;}).join("")}
+      svg: `<svg viewBox="0 0 900 410" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="مرطبانان زجاجيان: أحدهما فيه خرزات قليلة والآخر مملوء بخرزات كثيرة">
+        <ellipse cx="250" cy="374" rx="130" ry="9" fill="#e8dfc9"/>
+        <ellipse cx="650" cy="374" rx="130" ry="9" fill="#e8dfc9"/>
+        <line x1="60" y1="372" x2="840" y2="372" stroke="#c9b189" stroke-width="5" stroke-linecap="round"/>
+        <rect x="573" y="92" width="154" height="30" rx="10" fill="#9c7b3f" stroke="#6b4423" stroke-width="4"/>
+        <rect x="563" y="120" width="174" height="22" rx="6" fill="#c8a76b" stroke="#6b4423" stroke-width="4"/>
+        <rect x="545" y="140" width="210" height="230" rx="26" fill="#eaf6ff" stroke="#2f6fb0" stroke-width="6"/>
+        <rect x="566" y="164" width="16" height="140" rx="8" fill="#ffffff"/>
+        ${[[578,336],[614,336],[650,336],[686,336],[722,336],[596,308],[632,308],[668,308],[704,308],[614,280],[650,280],[686,280]].map((p,i)=>`<circle cx="${p[0]}" cy="${p[1]}" r="15" fill="${['#e8862e','#3e9b4f','#d94f70','#f2c14e','#7f5bd5'][i%5]}" stroke="#5b4632" stroke-width="3"/>`).join("")}
+        <rect x="173" y="92" width="154" height="30" rx="10" fill="#9c7b3f" stroke="#6b4423" stroke-width="4"/>
+        <rect x="163" y="120" width="174" height="22" rx="6" fill="#c8a76b" stroke="#6b4423" stroke-width="4"/>
+        <rect x="145" y="140" width="210" height="230" rx="26" fill="#eaf6ff" stroke="#2f6fb0" stroke-width="6"/>
+        <rect x="166" y="164" width="16" height="140" rx="8" fill="#ffffff"/>
+        ${Array.from({length:50},(_,i)=>{const row=Math.floor(i/7),col=i%7;const cx=174+col*24+(row%2?12:0);const cy=348-row*23;return `<circle cx="${cx}" cy="${cy}" r="11" fill="${['#e8862e','#3e9b4f','#d94f70','#f2c14e','#7f5bd5'][i%5]}" stroke="#5b4632" stroke-width="3"/>`;}).join("")}
       </svg>`,
-      spot: { x: 28, y: 60, r: 14 }
+      spot: { x: 28, y: 62, r: 14 }
     },
 
     // ⑤ إكمال النمط — استدلال — 2Nn4
