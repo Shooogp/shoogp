@@ -231,15 +231,22 @@ function renderQuestions(ls){
   const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor,'puzzle':renderPuzzle,'slider':renderSlider,'memory':renderMemory,'lens':renderLens,'equation-builder':renderEquationBuilder,'number-line':renderNumberLine,'hundred-chart':renderHundredChart,'array':renderArray,'compare':renderCompare,'pattern':renderPattern,'count-tap':renderCountTap,'place-value':renderPlaceValue,'clock':renderClock,'measure-tool':renderMeasureTool,'money':renderMoney,'symmetry':renderSymmetry,'chart-read':renderChartRead};
 
   // بناء كل البطاقات (تبقى في الصفحة لحفظ إجاباتها، ونُظهر واحدة فقط)
+  // شارة رقم السؤال أُلغيت (قرار المالك): مؤشر التقدم «السؤال ٢ من ٦» يغني عنها
+  // ويحل محلها في رأس البطاقة — نصه ثابت لكل بطاقة فيُكتب عند البناء.
   const slides=document.createElement('div'); slides.className='qslides';
+  let relocateActions=null;   // تُعرَّف بعد بناء شريط التنقّل (تبنّي أزرار تحقق/إعادة)
   qs.forEach((q,i)=>{
     const fn=R[q.type]; if(!fn) return;
     const card=document.createElement('div');
     card.className='card-box qcard';
-    card.innerHTML=`<div class="qhead"><span class="qnum">سؤال ${arNum(i+1)}</span><span class="qtype">${Q_LABEL[q.type]||''}</span></div>`+
+    card.innerHTML=`<div class="qhead"><span class="qprogress">السؤال ${arNum(i+1)} من ${arNum(qs.length)}</span><span class="qtype">${Q_LABEL[q.type]||''}</span></div>`+
       `<h3 class="qprompt">${q.prompt||q.statement||''}</h3>`+
       `<div class="qbody"></div><div class="fb qfb"></div>`;
     fn(q, card.querySelector('.qbody'), card.querySelector('.qfb'));
+    // زر «إعادة» يعيد بناء جسم السؤال فيولد .actions جديدة داخله — المراقب
+    // يعيد تبنّيها إلى شريط التنقّل فور ظهورها (للسؤال الظاهر فقط).
+    new MutationObserver(()=>{ if(relocateActions) relocateActions(card); })
+      .observe(card.querySelector('.qbody'),{childList:true});
     slides.appendChild(card);
   });
   host.appendChild(slides);
@@ -254,20 +261,40 @@ function renderQuestions(ls){
     RocketJourney.mount(host, total);
   }
 
-  // شريط التنقّل + مؤشّر التقدّم
+  // شريط التنقّل — وسطه يتبنّى أزرار «تحقّق/إعادة» من جسم السؤال الظاهر
+  // (قرار المالك: الأزرار بين «السابق» و«التالي» خارج الحاوية، فيتفرّغ داخل
+  // الإطار للسؤال وحده؛ ومؤشر التقدم صعد إلى رأس البطاقة مكان شارة الرقم الملغاة)
   const nav=document.createElement('div'); nav.className='qnav';
   nav.innerHTML='<button class="btn qprev">→ السابق</button>'+
-    '<span class="qprogress"></span>'+
+    '<span class="qnav-mid"></span>'+
     '<button class="btn qnext">التالي ←</button>'+
     '<button class="btn qfinish">إنهاء 🏁</button>';
   host.appendChild(nav);
   const result=document.createElement('div'); result.className='qresult'; host.appendChild(result);
 
   let cur=0;
+  const navMid=nav.querySelector('.qnav-mid');
+  let navOwner=null;   // البطاقة التي أزرارها في الشريط الآن (تُعاد لجسمها عند مغادرتها)
+  relocateActions=function(card){
+    if(card!==cards[cur]) return;
+    const a=card.querySelector('.qbody .actions'); if(!a) return;
+    navMid.innerHTML=''; navOwner=card; navMid.appendChild(a);
+  };
+  function adoptActions(){
+    if(navOwner===cards[cur] && navMid.querySelector('.actions')) return;
+    if(navOwner){
+      const back=navMid.querySelector('.actions');
+      const nb=navOwner.querySelector('.qbody');
+      if(back&&nb) nb.appendChild(back);
+    }
+    navMid.innerHTML=''; navOwner=null;
+    const act=cards[cur].querySelector('.qbody .actions');
+    if(act){ navOwner=cards[cur]; navMid.appendChild(act); }
+  }
   function show(i){
     cur=Math.max(0,Math.min(total-1,i));
     cards.forEach((c,idx)=>{ c.style.display=(idx===cur)?'block':'none'; });
-    nav.querySelector('.qprogress').textContent='السؤال '+arNum(cur+1)+' من '+arNum(total);
+    adoptActions();
     nav.querySelector('.qprev').disabled=(cur===0);
     const last=(cur===total-1);
     nav.querySelector('.qnext').style.display=last?'none':'';

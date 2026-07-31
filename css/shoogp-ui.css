@@ -96,16 +96,8 @@
 .qnav .nav-btn:active:not(:disabled){transform:scale(.95)}
 .qnav .nav-btn:disabled{opacity:.35}
 
-/* ⑤ شارة رقم السؤال: الصورة كما هي بلا أي معالجة — ارتفاع ثابت والعرض من
-   نسبة الأبعاد الأصلية (2508:627) بلا شد، والنص الحيّ متوسط فوقها */
-.shoogp-ui .qcard .qnum{
-  display:inline-flex; align-items:center; justify-content:center;
-  height:46px; aspect-ratio:2096/534; width:auto; padding:0;
-  background:url('../images/ui/badge-qnum.png') no-repeat center / contain;
-  color:#ffe27a; font-weight:800; font-size:1.14rem;
-  text-shadow:0 2px 3px rgba(0,40,70,.75);
-  filter:drop-shadow(0 1px 2px rgba(0,0,0,.22));
-}
+/* ⑤ شارة رقم السؤال — أُلغيت (قرار المالك): مؤشر التقدم «السؤال ٢ من ٦» يغني
+   عنها ويحل محلها في رأس البطاقة بنفس كبسولة badge-qnum.png (انظر ⑦ أدناه). */
 
 /* ⑥ شارة نوع السؤال: الصورة كما هي بلا معالجة إضافية — ارتفاع ثابت والعرض من
    نسبتها الأصلية (1657:511) بلا شد، والنص الحيّ متوسط في جسم الكبسولة
@@ -129,15 +121,15 @@
 .shoogp-ui .qcard{margin-bottom:0}
 .shoogp-ui .qnav{margin-top:10px}
 
-/* ⑦ مؤشر التقدّم (٧٥٪): نفس كبسولة الرقم 9-slice (progress-pill.png غير متوفر بعد) */
+/* ⑦ مؤشر التقدّم: صعد إلى رأس البطاقة مكان شارة الرقم الملغاة (قرار المالك)،
+   بنفس كبسولة badge-qnum.png وبمقاس الشارة القديم (46px) لأنه وريثها البصري */
 .shoogp-ui .qprogress{
   display:inline-flex; align-items:center; justify-content:center;
-  height:42px; aspect-ratio:2096/534; width:auto; padding:0;
+  height:46px; aspect-ratio:2096/534; width:auto; padding:0;
   background:url('../images/ui/badge-qnum.png') no-repeat center / contain;
-  color:#fff; font-weight:800; font-size:.98rem;   /* استثناءُ المالك — خارجَ حدِّ 18px */
+  color:#ffe27a; font-weight:800; font-size:1.02rem;   /* استثناءُ المالك — خارجَ حدِّ 18px */
   text-shadow:0 2px 3px rgba(0,40,70,.75);
   filter:drop-shadow(0 1px 2px rgba(0,0,0,.22));
-  margin-inline:auto;
 }
 
 /* ⑧ بطاقات الكلمات: تُرسَم بالكود (البطاقات الزرقاء الزجاجية §٦ عبر .qwin .chip)،
@@ -172,8 +164,8 @@
      القياس ويُفعَّل للتغيّر النهائي فقط، حتى لا يفسد قياس الأبعاد المتزامن) */
   transition:width .30s ease;
 }
-/* ضمان بقاء أزرار تحقّق/إعادة فوق كل الطبقات داخل النافذة (فوق صورة الإطار) */
-.qwin .actions{position:relative; z-index:5}
+/* أزرار تحقّق/إعادة صارت في وسط شريط التنقّل (قرار المالك — التبنّي في app.js)؛
+   قاعدة z-index القديمة داخل النافذة أُزيلت لأنها لم تعد تنطبق */
 /* تلاشٍ قصير عند التنقل بين سؤالين (يمنع قفزة تغيّر حجم الإطار) */
 .shoogp-ui .qcard{animation:cardFade .28s ease}
 @keyframes cardFade{from{opacity:0}to{opacity:1}}

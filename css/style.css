@@ -382,6 +382,11 @@
   .btn-reset{background:#eee;color:#666} .btn-reset:hover{background:#ddd}
   /* قاعدة التنفّس البصري: أزرار تحقّق/إعادة ≥24px عن آخر محتوى */
   .actions{display:flex;gap:16px;justify-content:center;margin-top:24px;flex-wrap:wrap}
+  /* أزرار تحقّق/إعادة تُتبنّى من جسم السؤال إلى وسط شريط التنقّل (renderQuestions)
+     فيتفرّغ داخل الإطار للسؤال؛ وما بقي منها في الجسم يُخفى فلا يدخل قياس الإطار */
+  .qbody .actions{display:none}
+  .qnav .qnav-mid{display:flex;justify-content:center;align-items:center;min-width:132px}
+  .qnav .qnav-mid .actions{display:flex;margin-top:0}
   .fb{text-align:center;margin-top:16px;font-weight:700;font-size:1.08rem;min-height:26px}
   .fb.good{color:#2c6e3f} .fb.bad{color:#c94a4a}
 
