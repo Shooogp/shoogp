@@ -100,32 +100,32 @@
       {
         "unit": "١ج: القياس وحل المشكلات",
         "lessons": [
-          { "title": "صناعة علبة (٩-١)", "file": "g2m-9-1", "chapter": 9, "chapterTitle": "قياس الطول", "open": false },
-          { "title": "قياس المسافة (٩-٢)", "file": "g2m-9-2", "chapter": 9, "chapterTitle": "قياس الطول", "open": false },
-          { "title": "صناعة أجسام متحركة (٩-٣)", "file": "g2m-9-3", "chapter": 9, "chapterTitle": "قياس الطول", "open": false },
-          { "title": "قياس الوقت (١٠-١)", "file": "g2m-10-1", "chapter": 10, "chapterTitle": "قياس الوقت والمسافة", "open": false },
-          { "title": "قياس المسافة (١٠-٢)", "file": "g2m-10-2", "chapter": 10, "chapterTitle": "قياس الوقت والمسافة", "open": false },
-          { "title": "قياس الارتفاع (١٠-٣)", "file": "g2m-10-3", "chapter": 10, "chapterTitle": "قياس الوقت والمسافة", "open": false },
-          { "title": "قياس المكونات (١١-١)", "file": "g2m-11-1", "chapter": 11, "chapterTitle": "قياس الكتلة والوقت والإنفاق", "open": false },
-          { "title": "وقت الطهي (١١-٢)", "file": "g2m-11-2", "chapter": 11, "chapterTitle": "قياس الكتلة والوقت والإنفاق", "open": false },
-          { "title": "البسكويت الثمين (١١-٣)", "file": "g2m-11-3", "chapter": 11, "chapterTitle": "قياس الكتلة والوقت والإنفاق", "open": false }
+          { "title": "صناعة علبة (٩-١)", "file": "g2m-9-1", "chapter": 9, "chapterTitle": "قياس الطول", "open": true },
+          { "title": "قياس المسافة (٩-٢)", "file": "g2m-9-2", "chapter": 9, "chapterTitle": "قياس الطول", "open": true },
+          { "title": "صناعة أجسام متحركة (٩-٣)", "file": "g2m-9-3", "chapter": 9, "chapterTitle": "قياس الطول", "open": true },
+          { "title": "قياس الوقت (١٠-١)", "file": "g2m-10-1", "chapter": 10, "chapterTitle": "قياس الوقت والمسافة", "open": true },
+          { "title": "قياس المسافة (١٠-٢)", "file": "g2m-10-2", "chapter": 10, "chapterTitle": "قياس الوقت والمسافة", "open": true },
+          { "title": "قياس الارتفاع (١٠-٣)", "file": "g2m-10-3", "chapter": 10, "chapterTitle": "قياس الوقت والمسافة", "open": true },
+          { "title": "قياس المكونات (١١-١)", "file": "g2m-11-1", "chapter": 11, "chapterTitle": "قياس الكتلة والوقت والإنفاق", "open": true },
+          { "title": "وقت الطهي (١١-٢)", "file": "g2m-11-2", "chapter": 11, "chapterTitle": "قياس الكتلة والوقت والإنفاق", "open": true },
+          { "title": "البسكويت الثمين (١١-٣)", "file": "g2m-11-3", "chapter": 11, "chapterTitle": "قياس الكتلة والوقت والإنفاق", "open": true }
         ]
       },
       {
         "unit": "٢أ: العدد وحل المشكلات",
         "lessons": [
           { "title": "العشرات والآحاد حتى ١٠٠ (١٢-١)", "file": "g2m-12-1", "chapter": 12, "chapterTitle": "العشرات والآحاد حتى ١٠٠", "open": true },
-          { "title": "مقارنة وترتيب الأعداد (١٢-٢)", "file": "g2m-12-2", "chapter": 12, "chapterTitle": "العشرات والآحاد حتى ١٠٠", "open": false },
-          { "title": "التقدير (١٣-١)", "file": "g2m-13-1", "chapter": 13, "chapterTitle": "التقدير", "open": false },
-          { "title": "الأزواج العددية لـ٢٠ (١٤-١)", "file": "g2m-14-1", "chapter": 14, "chapterTitle": "أنماط الأعداد", "open": false },
-          { "title": "الضعف (١٤-٢)", "file": "g2m-14-2", "chapter": 14, "chapterTitle": "أنماط الأعداد", "open": false },
-          { "title": "تصنيف الأعداد (١٤-٣)", "file": "g2m-14-3", "chapter": 14, "chapterTitle": "أنماط الأعداد", "open": false },
-          { "title": "الأعداد المكونة من رقم أو رقمين (١٥-١)", "file": "g2m-15-1", "chapter": 15, "chapterTitle": "الجمع والطرح (٢)", "open": false },
-          { "title": "الأعداد المكونة من رقمين (١٥-٢)", "file": "g2m-15-2", "chapter": 15, "chapterTitle": "الجمع والطرح (٢)", "open": false },
-          { "title": "العثور على الفرق (١٦-١)", "file": "g2m-16-1", "chapter": 16, "chapterTitle": "العثور على الفروقات البسيطة", "open": false },
-          { "title": "المصفوفات (١٧-١)", "file": "g2m-17-1", "chapter": 17, "chapterTitle": "التجميع والمشاركة", "open": false },
-          { "title": "العد بالاثنينات والخمسات والعشرات (١٧-٢)", "file": "g2m-17-2", "chapter": 17, "chapterTitle": "التجميع والمشاركة", "open": false },
-          { "title": "القسمة (١٧-٣)", "file": "g2m-17-3", "chapter": 17, "chapterTitle": "التجميع والمشاركة", "open": false }
+          { "title": "مقارنة وترتيب الأعداد (١٢-٢)", "file": "g2m-12-2", "chapter": 12, "chapterTitle": "العشرات والآحاد حتى ١٠٠", "open": true },
+          { "title": "التقدير (١٣-١)", "file": "g2m-13-1", "chapter": 13, "chapterTitle": "التقدير", "open": true },
+          { "title": "الأزواج العددية لـ٢٠ (١٤-١)", "file": "g2m-14-1", "chapter": 14, "chapterTitle": "أنماط الأعداد", "open": true },
+          { "title": "الضعف (١٤-٢)", "file": "g2m-14-2", "chapter": 14, "chapterTitle": "أنماط الأعداد", "open": true },
+          { "title": "تصنيف الأعداد (١٤-٣)", "file": "g2m-14-3", "chapter": 14, "chapterTitle": "أنماط الأعداد", "open": true },
+          { "title": "الأعداد المكونة من رقم أو رقمين (١٥-١)", "file": "g2m-15-1", "chapter": 15, "chapterTitle": "الجمع والطرح (٢)", "open": true },
+          { "title": "الأعداد المكونة من رقمين (١٥-٢)", "file": "g2m-15-2", "chapter": 15, "chapterTitle": "الجمع والطرح (٢)", "open": true },
+          { "title": "العثور على الفرق (١٦-١)", "file": "g2m-16-1", "chapter": 16, "chapterTitle": "العثور على الفروقات البسيطة", "open": true },
+          { "title": "المصفوفات (١٧-١)", "file": "g2m-17-1", "chapter": 17, "chapterTitle": "التجميع والمشاركة", "open": true },
+          { "title": "العد بالاثنينات والخمسات والعشرات (١٧-٢)", "file": "g2m-17-2", "chapter": 17, "chapterTitle": "التجميع والمشاركة", "open": true },
+          { "title": "القسمة (١٧-٣)", "file": "g2m-17-3", "chapter": 17, "chapterTitle": "التجميع والمشاركة", "open": true }
         ]
       }
     ]
