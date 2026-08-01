@@ -160,24 +160,24 @@ window.DATA_FALLBACK = {
     "g3-sci": { book:"العلوم — الصف الثالث", units:[
       { unit:"الاعتناء بالنباتات", lessons:[
         { title:"النباتات وأجزاؤها", file:"g3s-1-1", open:true },
-        { title:"النباتات بحاجة إلى الضوء والماء", file:"g3s-1-2", open:false },
-        { title:"نقل الماء", file:"g3s-1-3", open:false },
-        { title:"نمو النباتات ودرجة الحرارة", file:"g3s-1-4", open:false },
+        { title:"النباتات بحاجة إلى الضوء والماء", file:"g3s-1-2", open:true },
+        { title:"نقل الماء", file:"g3s-1-3", open:true },
+        { title:"نمو النباتات ودرجة الحرارة", file:"g3s-1-4", open:true },
         { title:"تحقّق من تقدّمك", file:"g3s-1-5", open:false }
       ]},
       { unit:"الاعتناء بأنفسنا", lessons:[
-        { title:"المجموعات الغذائية", file:"g3s-2-1", open:false },
-        { title:"نظام غذائي صحي", file:"g3s-2-2", open:false },
-        { title:"نظام غذائي غير صحي", file:"g3s-2-3", open:false },
-        { title:"التمارين الرياضية والنوم", file:"g3s-2-4", open:false },
+        { title:"المجموعات الغذائية", file:"g3s-2-1", open:true },
+        { title:"نظام غذائي صحي", file:"g3s-2-2", open:true },
+        { title:"نظام غذائي غير صحي", file:"g3s-2-3", open:true },
+        { title:"التمارين الرياضية والنوم", file:"g3s-2-4", open:true },
         { title:"تحقّق من تقدّمك", file:"g3s-2-5", open:false }
       ]},
       { unit:"الكائنات الحية", lessons:[
-        { title:"الكائنات الحية والأشياء غير الحية", file:"g3s-3-1", open:false },
-        { title:"النمو والتغذية", file:"g3s-3-2", open:false },
-        { title:"الحركة والتكاثر", file:"g3s-3-3", open:false },
-        { title:"تصنيف البشر", file:"g3s-3-4", open:false },
-        { title:"تصنيف الكائنات الحية", file:"g3s-3-5", open:false },
+        { title:"الكائنات الحية والأشياء غير الحية", file:"g3s-3-1", open:true },
+        { title:"النمو والتغذية", file:"g3s-3-2", open:true },
+        { title:"الحركة والتكاثر", file:"g3s-3-3", open:true },
+        { title:"تصنيف البشر", file:"g3s-3-4", open:true },
+        { title:"تصنيف الكائنات الحية", file:"g3s-3-5", open:true },
         { title:"تحقّق من تقدّمك", file:"g3s-3-6", open:false }
       ]}
     ]},
