@@ -295,10 +295,76 @@ window.DATA_FALLBACK = {
       ]}
     ]},
     "g3-math": { book:"الرياضيات — الصف الثالث", units:[] },
-    "g1-arabic-1": { book:"أحب لغتي (الجزء الأول) — الصف الأول", units:[] },
-    "g1-arabic-2": { book:"أحب لغتي (الجزء الثاني) — الصف الأول", units:[] },
-    "g2-arabic-1": { book:"أحب لغتي (الجزء الأول) — الصف الثاني", units:[] },
-    "g2-arabic-2": { book:"أحب لغتي (الجزء الثاني) — الصف الثاني", units:[] },
+    "g1-arabic-1": { book:"أحب لغتي (الجزء الأول) — الصف الأول", units:[
+      { unit:"التَّهيِئَةُ", lessons:[
+        { title:"أَتَعَرَّفُ مَدْرَسَتي", file:"g1a1-0-1", open:false },
+        { title:"أَتَعَرَّفُ صَفّي", file:"g1a1-0-2", open:false },
+        { title:"مِنَ الْبَيْتِ إِلَى الْمَدْرَسَةِ", file:"g1a1-0-3", open:false }
+      ]},
+      { unit:"المحور الأول: هُنا أَعيشُ", lessons:[
+        { title:"الدرس الأول: ب", file:"g1a1-1-1", open:false },
+        { title:"الدرس الثاني: ل", file:"g1a1-1-2", open:false },
+        { title:"الدرس الثالث: م", file:"g1a1-1-3", open:false },
+        { title:"الدرس الرابع: ر", file:"g1a1-1-4", open:false },
+        { title:"المراجعة: ب ل م ر", file:"g1a1-1-5", open:false },
+        { title:"نشيد: أُمّي وأَبي", file:"g1a1-1-6", open:false }
+      ]},
+      { unit:"المحور الثاني: هُنا أَتَعَلَّمُ", lessons:[
+        { title:"الدرس الأول: د", file:"g1a1-2-1", open:false },
+        { title:"الدرس الثاني: س", file:"g1a1-2-2", open:false },
+        { title:"الدرس الثالث: ك", file:"g1a1-2-3", open:false },
+        { title:"الدرس الرابع: ن", file:"g1a1-2-4", open:false },
+        { title:"المراجعة: د س ك ن", file:"g1a1-2-5", open:false },
+        { title:"نشيد: مَدْرَسَتي حَديقَتي", file:"g1a1-2-6", open:false }
+      ]}
+    ]},
+    "g1-arabic-2": { book:"أحب لغتي (الجزء الثاني) — الصف الأول", units:[
+      { unit:"المحور الثالث: أَنا نَظيفٌ", lessons:[
+        { title:"الدرس الأول: ف", file:"g1a2-3-1", open:false },
+        { title:"الدرس الثاني: ت", file:"g1a2-3-2", open:false },
+        { title:"الدرس الثالث: ح", file:"g1a2-3-3", open:false },
+        { title:"الدرس الرابع: ق", file:"g1a2-3-4", open:false },
+        { title:"الدرس الخامس: ز", file:"g1a2-3-5", open:false },
+        { title:"الدرس السادس: ط", file:"g1a2-3-6", open:false },
+        { title:"المراجعة: ف ت ح ق ز ط", file:"g1a2-3-7", open:false },
+        { title:"نشيد: النَّظافَةُ", file:"g1a2-3-8", open:false }
+      ]},
+      { unit:"المحور الرابع: هَذا غِذائي", lessons:[
+        { title:"الدرس الأول: ء", file:"g1a2-4-1", open:false },
+        { title:"الدرس الثاني: ج", file:"g1a2-4-2", open:false },
+        { title:"الدرس الثالث: و", file:"g1a2-4-3", open:false },
+        { title:"الدرس الرابع: ش", file:"g1a2-4-4", open:false },
+        { title:"الدرس الخامس: ع", file:"g1a2-4-5", open:false },
+        { title:"الدرس السادس: ظ", file:"g1a2-4-6", open:false },
+        { title:"المراجعة: ء و ج ش ع ظ", file:"g1a2-4-7", open:false },
+        { title:"نشيد: تَوازُنُ الْغِذاءِ", file:"g1a2-4-8", open:false }
+      ]}
+    ]},
+    "g2-arabic-1": { book:"أحب لغتي (الجزء الأول) — الصف الثاني", units:[
+      { unit:"تمهيد", lessons:[
+        { title:"مراجعة", file:"g2a1-0-1", open:false }
+      ]},
+      { unit:"المحور الأول: حَياتي", lessons:[
+        { title:"الاستماع: أَتَسَوَّقُ مَعَ أُسْرَتي", file:"g2a1-1-1", open:false },
+        { title:"الدرس الأول: لُعْبَتي", file:"g2a1-1-2", open:false },
+        { title:"الدرس الثاني: سَيَكْبُرونَ", file:"g2a1-1-3", open:false },
+        { title:"الدرس الثالث: لَيْسَ هَذا ضَعْفًا", file:"g2a1-1-4", open:false },
+        { title:"أُنْشِدُ وأَحْفَظُ: صَباحُ الْخَيْرِ", file:"g2a1-1-5", open:false },
+        { title:"مراجعة المحور: مِفْتاحُ الْقِراءَةِ", file:"g2a1-1-6", open:false },
+        { title:"قِصَّةٌ أَعْجَبَتْني", file:"g2a1-1-7", open:false }
+      ]}
+    ]},
+    "g2-arabic-2": { book:"أحب لغتي (الجزء الثاني) — الصف الثاني", units:[
+      { unit:"المحور الثاني: وَطَني", lessons:[
+        { title:"الاستماع: الذِّكْرَى الْخالِدَةُ", file:"g2a2-2-1", open:false },
+        { title:"الدرس الأول: نورُ تُحِبُّ قَرْيَتَها", file:"g2a2-2-2", open:false },
+        { title:"الدرس الثاني: لَيْلَى تَرْسُمُ وَطَنًا", file:"g2a2-2-3", open:false },
+        { title:"الدرس الثالث: الْبَحْرُ يَتَّسِعُ لِلْجَميعِ", file:"g2a2-2-4", open:false },
+        { title:"أُنْشِدُ وأَحْفَظُ: أَزْهارُ الْخَمائِلِ", file:"g2a2-2-5", open:false },
+        { title:"مراجعة المحور: ضِياءٌ في الْفَضاءِ", file:"g2a2-2-6", open:false },
+        { title:"قِصَّةٌ أَعْجَبَتْني", file:"g2a2-2-7", open:false }
+      ]}
+    ]},
     "g3-arabic-1": { book:"أحب لغتي (الجزء الأول) — الصف الثالث", units:[] },
     "g3-arabic-2": { book:"أحب لغتي (الجزء الثاني) — الصف الثالث", units:[] },
     "g1-dini-1": { book:"ديني حياتي (الجزء الأول) — الصف الأول", units:[] },
