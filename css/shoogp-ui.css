@@ -168,6 +168,11 @@
 }
 /* أزرار تحقّق/إعادة صارت في وسط شريط التنقّل (قرار المالك — التبنّي في app.js)؛
    قاعدة z-index القديمة داخل النافذة أُزيلت لأنها لم تعد تنطبق */
+/* قناع المحتوى (قرار المالك ٢٠٢٦-٠٨-٠١ — placeMask في js/shoogp-ui.js): أربع شرائح
+   تعرض حلقة صورة الإطار المحيطة بالنافذة فوق المحتوى (z=3 فوق .qwin z=2)، فما تجاوز
+   النافذة يغطيه رسم الإطار بزخارفه (الدورق والمجهر...) ويبدو داخلاً أسفله. بلا لمس. */
+.qframe .qmask{position:absolute;inset:0;pointer-events:none;z-index:3}
+.qframe .qmask span{position:absolute;background-image:var(--fimg);background-repeat:no-repeat}
 /* تلاشٍ قصير عند التنقل بين سؤالين (يمنع قفزة تغيّر حجم الإطار) */
 .shoogp-ui .qcard{animation:cardFade .28s ease}
 @keyframes cardFade{from{opacity:0}to{opacity:1}}

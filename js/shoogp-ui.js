@@ -444,34 +444,57 @@ function placeIcons(){
   setStyleOnce(nav ,'marginTop'   ,(ICON_GAP-ao.bottom).toFixed(2)+'px');
 }
 /* ═══ قناعُ المحتوى (قرارُ المالك ٢٠٢٦-٠٨-٠١) ═══
-   ما تجاوزَ من محتوى النافذةِ حدودَها يُقَصُّ عندَ حدٍّ يقعُ **تحتَ حافّةِ رسمِ الإطارِ
-   الداخلية** فيبدو المتجاوزُ وكأنّه داخلٌ أسفلَ الإطارِ (كبطاقاتِ بنكٍ عريضةٍ تركبُ
-   على رملِ الإطار — قِيسَ في g4s-1-5 س٤). الحدُّ = إزاحاتُ النافذةِ (win) × MASK_K:
-   إزاحاتُ win أوسعُ عمداً من فتحةِ الرسمِ (§أعلاه)، فعندَ 0.8 يقعُ خطُّ القصِّ بينَ
-   الفتحةِ وحافّةِ المعدنِ في الأطرِ المقيسةِ كلِّها — أي مغطّىً بالرسمِ أو ملاصقاً له.
-   القصُّ **خارجَ صندوقِ النافذةِ بالكامل**، فالمحتوى المنضبطُ داخلَها لا يتأثّرُ بشيء؛
-   والمرنةُ (qflex) مستثناةٌ (رسمُها letterbox لا تصدقُ عليه نسبُ win). */
-var MASK_K=0.8;
+   ما تجاوزَ من محتوى النافذةِ حدودَها يجبُ أن يبدوَ **داخلاً أسفلَ الإطارِ** — بما فيه
+   زخارفُ الإطارِ البارزةُ نحوَ الداخلِ (الدورقُ والمجهرُ والتلسكوب...) التي لا يصدقُ
+   عليها خطُّ قصٍّ مستقيم. الآلية من شقّين:
+   ١) **حلقةُ الإطارِ فوقَ المحتوى:** أربعُ شرائحَ (.qmask span) تعرضُ أجزاءَ صورةِ
+      الإطارِ نفسِها المحيطةَ بصندوقِ النافذةِ فوقَ المحتوى (z=3، بلا لمس) — فأيُّ
+      متجاوزٍ يغطّيه رسمُ الإطارِ بكاملِ محيطِه وزخارفِه، لأنّ داخلَ الصورِ معتمٌ أصلاً.
+   ٢) **قصٌّ احتياطيٌّ عندَ صندوقِ الإطار:** clip-path على .qwin يمنعُ أيَّ امتدادٍ خارجَ
+      الإطارِ كلِّه (فوقَ الشريطِ الخلفيِّ مثلاً).
+   القصُّ والتغطيةُ كلاهما **خارجَ صندوقِ النافذة**، فالمحتوى المنضبطُ لا يتأثّرُ بشيء؛
+   والمرنةُ (qflex) مستثناةٌ (رسمُها letterbox لا يطابقُ صندوقَها). */
 function placeMask(){
   var R=window.fitRect||function(el){ return el.getBoundingClientRect(); };
   document.querySelectorAll('.qcard .qframe').forEach(function(f){
     var w=f.querySelector('.qwin'); if(!w) return;
-    if(f.classList.contains('qflex')){ if(w.style.clipPath) w.style.clipPath=''; return; }
+    var mask=f.querySelector('.qmask');
+    if(f.classList.contains('qflex')){
+      if(w.style.clipPath) w.style.clipPath='';
+      if(mask) mask.style.display='none';
+      return;
+    }
     var fr=R(f); if(!fr.width || !fr.height) return;      /* بطاقةٌ مخفيّةٌ — تُحسَبُ عندَ ظهورِها */
-    var ins={ top:parseFloat(w.style.top), left:parseFloat(w.style.left),
-              right:parseFloat(w.style.right), bottom:parseFloat(w.style.bottom) };
-    if(isNaN(ins.top)||isNaN(ins.left)){ if(w.style.clipPath) w.style.clipPath=''; return; }
-    /* امتدادُ القصِّ خارجَ صندوقِ النافذة = الجزءُ المتبقّي من إزاحةِ win بعدَ MASK_K */
-    var exL=fr.width *ins.left  *(1-MASK_K)/100,
-        exR=fr.width *ins.right *(1-MASK_K)/100,
-        exT=fr.height*ins.top   *(1-MASK_K)/100,
-        exB=fr.height*ins.bottom*(1-MASK_K)/100;
     var wr=R(w);
-    var poly='polygon('+(-exL).toFixed(1)+'px '+(-exT).toFixed(1)+'px, '
-      +(wr.width+exR).toFixed(1)+'px '+(-exT).toFixed(1)+'px, '
-      +(wr.width+exR).toFixed(1)+'px '+(wr.height+exB).toFixed(1)+'px, '
-      +(-exL).toFixed(1)+'px '+(wr.height+exB).toFixed(1)+'px)';
+    var wl=wr.left-fr.left, wt=wr.top-fr.top;
+    var wrgt=fr.right-wr.right, wbot=fr.bottom-wr.bottom;
+    if(wl<0||wt<0||wrgt<0||wbot<0) return;                /* هندسةٌ لم تستقرَّ بعد */
+    /* الشقّ ٢: القصُّ الاحتياطيُّ عندَ حدودِ صندوقِ الإطار */
+    var poly='polygon('+(-wl).toFixed(1)+'px '+(-wt).toFixed(1)+'px, '
+      +(wr.width+wrgt).toFixed(1)+'px '+(-wt).toFixed(1)+'px, '
+      +(wr.width+wrgt).toFixed(1)+'px '+(wr.height+wbot).toFixed(1)+'px, '
+      +(-wl).toFixed(1)+'px '+(wr.height+wbot).toFixed(1)+'px)';
     if(w.style.clipPath!==poly) w.style.clipPath=poly;
+    /* الشقّ ١: شرائحُ حلقةِ الإطارِ فوقَ المحتوى */
+    if(!mask){
+      mask=document.createElement('div'); mask.className='qmask';
+      mask.innerHTML='<span></span><span></span><span></span><span></span>';
+      f.appendChild(mask);
+    }
+    mask.style.display='';
+    var s=mask.children;
+    var W=fr.width, H=fr.height;
+    var iy2=wt+wr.height, ix2=wl+wr.width;
+    function strip(el,L,T,SW,SH){
+      el.style.left=L.toFixed(1)+'px'; el.style.top=T.toFixed(1)+'px';
+      el.style.width=Math.max(0,SW).toFixed(1)+'px'; el.style.height=Math.max(0,SH).toFixed(1)+'px';
+      el.style.backgroundSize=W.toFixed(1)+'px '+H.toFixed(1)+'px';
+      el.style.backgroundPosition=(-L).toFixed(1)+'px '+(-T).toFixed(1)+'px';
+    }
+    strip(s[0], 0,   0,   W,      wt);            /* الشريحةُ العليا */
+    strip(s[1], 0,   iy2, W,      H-iy2);         /* السفلى */
+    strip(s[2], 0,   wt,  wl,     wr.height);     /* اليسرى */
+    strip(s[3], ix2, wt,  W-ix2,  wr.height);     /* اليمنى */
   });
 }
 /* الأيقوناتُ ثمّ الشريطُ — الشريطُ يقرأُ صندوقَ ‎.qhead‎ فيجبُ أن يكونَ قد استقرَّ */
