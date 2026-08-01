@@ -6992,6 +6992,1131 @@ window.QUESTIONS = {
       reason: "البلاستيكُ من صُنعِ الإنسانِ، والبَقِيَّةُ موادُّ طَبيعِيَّةٌ"
     }
 
+  ],
+
+  /* ═══════════ العلوم — الصف الثالث · الوحدة الأولى: الاعتناءُ بالنّباتات ═══════════
+     المصدر: كتاب التلميذ ص١٤–٢٣ (PDF ١٦–٢٥)، والأهداف من جدول «عبارات أستطيع»
+     المستخرَج في المصادر/…/الصف الثالث/مادة العلوم/الأهداف.md.
+     كل درس: ٥ أساسية (٥ أنواع مختلفة) بتوزيع ٣ معرفة + ١ تطبيق + ١ استدلال، وإثرائيّ
+     واحد. الرسوم SVG بورقة المواصفات البصرية (حدّ #111111 بسماكة 3/2، سلالم ٣ درجات
+     بحوافّ حادّة، لمعة بيضاء، بلا ملامح وجه). */
+
+  // العلوم/الثالث — الوحدة ١، الدرس ١-١: النباتات وأجزاؤها (ص١٤–١٥)
+  "g3s-1-1": [
+
+    // ① صواب/خطأ — معرفة — 3Bp1
+    {
+      type: "true-false",
+      objective: "3Bp1: يعرف أن النباتات لها جذور وأوراق وسيقان وأزهار",
+      level: "knowledge",
+      prompt: "لِمُعْظَمِ النَّباتاتِ أَربَعةُ أَجزاءٍ رَئيسيَّةٍ.",
+      answer: true,
+      reason: "أَجزاؤُها الرَّئيسيَّةُ: الجُذورُ والسّاقُ والأَوراقُ والأَزهارُ"
+    },
+
+    // ② اختيار من متعدد — معرفة — 3Bp1
+    {
+      type: "mcq",
+      objective: "3Bp1: يعرف أن النباتات لها جذور وأوراق وسيقان وأزهار",
+      level: "knowledge",
+      prompt: "أَيُّ جُزءٍ مِنَ النَّبتةِ يَصنَعُ الغِذاءَ؟",
+      options: ["الأَوراقُ", "الجُذورُ", "السّاقُ", "الأَزهارُ"],
+      answer: 0,
+      reason: "الأَوراقُ تَصنَعُ الغِذاءَ لِلنَّبتةِ"
+    },
+
+    // ③ التوصيل — معرفة — 3Bp1
+    {
+      type: "matching",
+      objective: "3Bp1: يعرف أن النباتات لها جذور وأوراق وسيقان وأزهار",
+      level: "knowledge",
+      prompt: "صِلْ كُلَّ جُزءٍ مِنَ النَّبتةِ بِوَظيفَتِهِ.",
+      pairs: [
+        { a: "الجُذورُ", b: "تُثَبِّتُ النَّبتةَ وتَمْتَصُّ الماءَ" },
+        { a: "السّاقُ",  b: "تَنقُلُ الماءَ إلى بَقيَّةِ الأَجزاءِ" },
+        { a: "الأَوراقُ", b: "تَصنَعُ الغِذاءَ" },
+        { a: "الأَزهارُ", b: "تُساعِدُ على إنتاجِ البُذورِ" }
+      ]
+    },
+
+    // ④ تحديد الأجزاء — تطبيق — 3Bp1
+    {
+      type: "hotspot",
+      objective: "3Bp1: يعرف أن النباتات لها جذور وأوراق وسيقان وأزهار",
+      level: "application",
+      prompt: "اضغَطْ على الجُزءِ الَّذي يَمْتَصُّ الماءَ مِنَ التُّربةِ.",
+      bg: "#eef7ff",
+      spot: { x: 50, y: 82, r: 16 },
+      svg: `<svg viewBox="0 0 600 430" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="نبتة بأجزائها: جذور وساق وأوراق وزهرة">
+        <rect x="0" y="300" width="600" height="130" fill="#9A6636"/>
+        <rect x="0" y="300" width="600" height="14" fill="#7A4C22"/>
+        <rect x="0" y="392" width="600" height="38" fill="#7A4C22"/>
+        <line x1="0" y1="300" x2="600" y2="300" stroke="#111111" stroke-width="3"/>
+        <path d="M300 306 Q268 344 240 396" fill="none" stroke="#111111" stroke-width="11"/>
+        <path d="M300 306 Q332 344 360 396" fill="none" stroke="#111111" stroke-width="11"/>
+        <path d="M300 306 Q297 352 294 404" fill="none" stroke="#111111" stroke-width="11"/>
+        <path d="M300 306 Q268 344 240 396" fill="none" stroke="#D8D6D0" stroke-width="7"/>
+        <path d="M300 306 Q332 344 360 396" fill="none" stroke="#D8D6D0" stroke-width="7"/>
+        <path d="M300 306 Q297 352 294 404" fill="none" stroke="#D8D6D0" stroke-width="7"/>
+        <path d="M300 306 Q268 344 240 396" fill="none" stroke="#F9F8F3" stroke-width="3"/>
+        <path d="M300 306 Q332 344 360 396" fill="none" stroke="#F9F8F3" stroke-width="3"/>
+        <path d="M300 306 Q297 352 294 404" fill="none" stroke="#F9F8F3" stroke-width="3"/>
+        <line x1="300" y1="308" x2="300" y2="118" stroke="#111111" stroke-width="15"/>
+        <line x1="300" y1="308" x2="300" y2="118" stroke="#4A9018" stroke-width="11"/>
+        <line x1="298" y1="304" x2="298" y2="122" stroke="#60C020" stroke-width="6"/>
+        <line x1="296" y1="300" x2="296" y2="128" stroke="#80C020" stroke-width="2.5"/>
+        <path d="M300 232 Q252 216 226 224 Q252 254 300 232 Z" fill="#60C020" stroke="#111111" stroke-width="3"/>
+        <path d="M300 232 Q252 216 226 224 Q256 231 300 232 Z" fill="#80C020"/>
+        <path d="M300 232 Q256 231 226 224 Q252 254 300 232 Z" fill="#4A9018"/>
+        <path d="M300 232 Q252 216 226 224 Q252 254 300 232 Z" fill="none" stroke="#111111" stroke-width="3"/>
+        <path d="M300 195 Q348 179 374 187 Q348 217 300 195 Z" fill="#60C020" stroke="#111111" stroke-width="3"/>
+        <path d="M300 195 Q348 179 374 187 Q344 193 300 195 Z" fill="#80C020"/>
+        <path d="M300 195 Q344 193 374 187 Q348 217 300 195 Z" fill="#4A9018"/>
+        <path d="M300 195 Q348 179 374 187 Q348 217 300 195 Z" fill="none" stroke="#111111" stroke-width="3"/>
+        <g stroke="#111111" stroke-width="3">
+          <ellipse cx="300" cy="66" rx="22" ry="30" fill="#E07E8A"/>
+          <ellipse cx="338" cy="88" rx="30" ry="22" fill="#E07E8A"/>
+          <ellipse cx="262" cy="88" rx="30" ry="22" fill="#E07E8A"/>
+          <ellipse cx="326" cy="126" rx="24" ry="26" fill="#E07E8A"/>
+          <ellipse cx="274" cy="126" rx="24" ry="26" fill="#E07E8A"/>
+          <circle cx="300" cy="100" r="26" fill="#FFA000"/>
+          <path d="M279.4 92 A26 26 0 0 1 320.6 92 Z" fill="#FFFFC0" stroke="none"/>
+          <ellipse cx="290" cy="88" rx="8" ry="3.5" transform="rotate(-24 290 88)" fill="#FFFFFF" stroke="none"/>
+        </g>
+      </svg>`
+    },
+
+    // ⑤ ملء الفراغ — استدلال — 3Bp4
+    {
+      type: "fill-blank",
+      objective: "3Bp4: يعرف أن النباتات تحتاج إلى جذور وأوراق وسيقان سليمة لتنمو بشكل جيد",
+      level: "reasoning",
+      prompt: "أكمِلِ الجُملَةَ بسَحبِ الكَلِمَتَينِ المُناسِبَتَينِ.",
+      text: "إذا صارَتْ جُذورُ النَّبتةِ غَيرَ سَليمةٍ فَلَنْ تَمْتَصَّ {}، وسَتُصبِحُ النَّبتةُ {}.",
+      answers: ["الماءَ", "ذابِلةً"],
+      distractors: ["الغِذاءَ", "قَويَّةً"]
+    },
+
+    // ⑥ إثرائي: التلوين بالتعليمات — تطبيق — 3Bp1
+    {
+      type: "color",
+      objective: "3Bp1: يعرف أن النباتات لها جذور وأوراق وسيقان وأزهار",
+      level: "application",
+      prompt: "لَوِّنْ أَجزاءَ النَّبتةِ: اختَرْ لَوناً مِنَ اللَّوحةِ ثُمَّ اضغَطِ الجُزءَ.",
+      bg: "#eef7ff",
+      palette: [
+        { name: "بنّي",  color: "#8a5a2b" },
+        { name: "أخضر", color: "#3e9b4f" },
+        { name: "وردي", color: "#e0708a" }
+      ],
+      parts: [
+        { name: "الجُذورُ", color: "#8a5a2b" },
+        { name: "السّاقُ",  color: "#3e9b4f" },
+        { name: "الأَزهارُ", color: "#e0708a" }
+      ],
+      svg: `<svg viewBox="0 0 600 430" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="نبتة للتلوين: جذور وساق وأزهار">
+        <rect x="0" y="300" width="600" height="130" fill="#efe4d2"/>
+        <line x1="0" y1="300" x2="600" y2="300" stroke="#111111" stroke-width="3"/>
+        <g class="cpart" data-name="الجُذورُ" id="part-roots">
+          <path d="M288 300 L312 300 L308 336 L336 396 L316 400 L300 352 L284 400 L264 396 L292 336 Z"/>
+        </g>
+        <g class="cpart" data-name="السّاقُ" id="part-stem">
+          <rect x="288" y="120" width="24" height="184" rx="8"/>
+        </g>
+        <path d="M300 232 Q252 216 226 224 Q252 254 300 232 Z" fill="#63c154" stroke="#111111" stroke-width="3"/>
+        <path d="M300 195 Q348 179 374 187 Q348 217 300 195 Z" fill="#63c154" stroke="#111111" stroke-width="3"/>
+        <g class="cpart" data-name="الأَزهارُ" id="part-flowers">
+          <ellipse cx="300" cy="66" rx="22" ry="30"/>
+          <ellipse cx="338" cy="88" rx="30" ry="22"/>
+          <ellipse cx="262" cy="88" rx="30" ry="22"/>
+          <ellipse cx="326" cy="126" rx="24" ry="26"/>
+          <ellipse cx="274" cy="126" rx="24" ry="26"/>
+        </g>
+        <circle cx="300" cy="100" r="26" fill="#FFA000" stroke="#111111" stroke-width="3"/>
+      </svg>`
+    }
+
+  ],
+
+  // العلوم/الثالث — الوحدة ١، الدرس ١-٢: النباتات بحاجة إلى الضوء والماء (ص١٦–١٧)
+  "g3s-1-2": [
+
+    // ① صواب/خطأ — معرفة — 3Bp2
+    {
+      type: "true-false",
+      objective: "3Bp2: يشرح الملاحظات المرتبطة بحاجة النباتات إلى الضوء والماء لتنمو",
+      level: "knowledge",
+      prompt: "تَحتاجُ النَّباتاتُ إلى الضَّوءِ والماءِ لِتَنمُوَ سَليمةً.",
+      answer: true,
+      reason: "الضَّوءُ والماءُ يُساعِدانِ النَّباتاتِ على صُنعِ الغِذاءِ"
+    },
+
+    // ② اختيار من متعدد — معرفة — 3Bp2
+    {
+      type: "mcq",
+      objective: "3Bp2: يشرح الملاحظات المرتبطة بحاجة النباتات إلى الضوء والماء لتنمو",
+      level: "knowledge",
+      prompt: "ماذا يَحدُثُ لِلنَّبتةِ إذا لَمْ تَحصُلْ على الماءِ؟",
+      options: ["تَذبُلُ", "تُزهِرُ أَكثَرَ", "يَكبُرُ حَجمُها", "يَصيرُ لَونُها أَزرَقَ"],
+      answer: 0,
+      reason: "بِلا ماءٍ تَذبُلُ النَّبتةُ وتَتَدَلّى أَوراقُها"
+    },
+
+    // ③ ملء الفراغ — معرفة — 3Bp2
+    {
+      type: "fill-blank",
+      objective: "3Bp2: يشرح الملاحظات المرتبطة بحاجة النباتات إلى الضوء والماء لتنمو",
+      level: "knowledge",
+      prompt: "أكمِلِ الجُملَةَ بسَحبِ الكَلِمَتَينِ المُناسِبَتَينِ.",
+      text: "يُساعِدُ {} و{} النَّباتاتِ على صُنعِ الغِذاءِ.",
+      answers: ["الضَّوءُ", "الماءُ"],
+      distractors: ["الرَّملُ", "الظَّلامُ"]
+    },
+
+    // ④ سحب وإفلات — تطبيق — 3Bp2
+    {
+      type: "drag-drop",
+      objective: "3Bp2: يشرح الملاحظات المرتبطة بحاجة النباتات إلى الضوء والماء لتنمو",
+      level: "application",
+      prompt: "اسحَبِ اسمَ ما تَحتاجُهُ النَّبتةُ إلى مَكانِهِ في الصّورةِ.",
+      bg: "#eef7ff",
+      targets: [
+        { answer: "الضَّوءُ", box:{x:84,y:10}, dot:{x:83,y:19} },
+        { answer: "الماءُ",   box:{x:16,y:30}, dot:{x:19,y:35} },
+        { answer: "التُّربةُ", box:{x:84,y:82}, dot:{x:50,y:84} }
+      ],
+      svg: `<svg viewBox="0 0 600 430" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="نبتة في أصيص مع شمس ومرشّة ماء">
+        <g stroke="#111111" stroke-width="3">
+          <polygon points="562,82 545.3,92.2 549.9,111.2 530.9,106.6 520,124 509.1,106.6 490.1,111.2 494.7,92.2 478,82 494.7,71.8 490.1,52.8 509.1,57.4 520,40 530.9,57.4 549.9,52.8 545.3,71.8" fill="#E08000"/>
+          <circle cx="520" cy="82" r="27" fill="#FFA000"/>
+          <path d="M501.4 72 A27 27 0 0 1 538.6 72 Z" fill="#FFFFC0" stroke="none"/>
+        </g>
+        <g stroke="#111111" stroke-width="3">
+          <rect x="70" y="128" width="96" height="66" rx="14" fill="#20A0FF"/>
+          <rect x="78" y="134" width="80" height="16" rx="8" fill="#40C0FF" stroke="none"/>
+          <rect x="78" y="176" width="80" height="12" rx="6" fill="#2080E0" stroke="none"/>
+          <rect x="70" y="128" width="96" height="66" rx="14" fill="none"/>
+          <path d="M166 142 L206 118 L214 132 L176 156 Z" fill="#20A0FF"/>
+          <path d="M96 128 Q112 100 140 108" fill="none" stroke-width="9"/>
+        </g>
+        <g stroke="#111111" stroke-width="3">
+          <path d="M206 122 Q202 140 212 150" fill="none" stroke="#40C0FF" stroke-width="7"/>
+          <path d="M222 126 Q220 144 230 154" fill="none" stroke="#40C0FF" stroke-width="7"/>
+        </g>
+        <rect x="196" y="330" width="208" height="86" rx="14" fill="#C06000" stroke="#111111" stroke-width="3"/>
+        <rect x="204" y="336" width="192" height="18" fill="#E08000"/>
+        <rect x="204" y="392" width="192" height="18" fill="#984800"/>
+        <rect x="196" y="330" width="208" height="86" rx="14" fill="none" stroke="#111111" stroke-width="3"/>
+        <rect x="186" y="306" width="228" height="30" rx="10" fill="#E08000" stroke="#111111" stroke-width="3"/>
+        <line x1="300" y1="336" x2="300" y2="220" stroke="#111111" stroke-width="15"/>
+        <line x1="300" y1="336" x2="300" y2="220" stroke="#4A9018" stroke-width="11"/>
+        <line x1="298" y1="332" x2="298" y2="224" stroke="#60C020" stroke-width="6"/>
+        <path d="M300 268 Q256 252 232 260 Q256 290 300 268 Z" fill="#60C020" stroke="#111111" stroke-width="3"/>
+        <path d="M300 268 Q256 252 232 260 Q260 267 300 268 Z" fill="#80C020"/>
+        <path d="M300 268 Q256 252 232 260 Q256 290 300 268 Z" fill="none" stroke="#111111" stroke-width="3"/>
+        <path d="M300 240 Q344 224 368 232 Q344 262 300 240 Z" fill="#60C020" stroke="#111111" stroke-width="3"/>
+        <path d="M300 240 Q344 224 368 232 Q340 238 300 240 Z" fill="#80C020"/>
+        <path d="M300 240 Q344 224 368 232 Q344 262 300 240 Z" fill="none" stroke="#111111" stroke-width="3"/>
+      </svg>`
+    },
+
+    // ⑤ التصنيف في مجموعات — استدلال — 3Bp2
+    {
+      type: "classify",
+      objective: "3Bp2: يشرح الملاحظات المرتبطة بحاجة النباتات إلى الضوء والماء لتنمو",
+      level: "reasoning",
+      prompt: "صَنِّفْ كُلَّ حالةٍ: نَبتةٌ سَتَنمو سَليمةً أَم نَبتةٌ سَتَذبُلُ؟",
+      groups: [
+        { name: "سَتَنمو سَليمةً", items: ["في نافِذةٍ مُشمِسةٍ وتُروى كُلَّ يَومٍ", "تُروى بانتِظامٍ وتَبقى في الضَّوءِ"] },
+        { name: "سَتَذبُلُ", items: ["داخِلَ عُلبةٍ مُغلَقةٍ مُظلِمةٍ", "لَمْ تُروَ مُنذُ أُسبوعٍ"] }
+      ]
+    },
+
+    // ⑥ إثرائي: اكتشف الخطأ — استدلال — 3Bp2
+    {
+      type: "find-error",
+      objective: "3Bp2: يشرح الملاحظات المرتبطة بحاجة النباتات إلى الضوء والماء لتنمو",
+      level: "reasoning",
+      prompt: "في هذا المَشهَدِ خَطَأٌ يَمنَعُ النَّبتةَ مِنَ النُّمُوِّ — اضغَطْ عَلَيهِ.",
+      bg: "#eef7ff",
+      fit: "width",
+      spot: { x: 72, y: 52, r: 20 },
+      svg: `<svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="نبتة في الضوء وأخرى تحت صندوق مغلق">
+        <g stroke="#111111" stroke-width="3">
+          <polygon points="118,52 105.4,59.7 108.9,74 94.6,70.5 86,84 77.4,70.5 63.1,74 66.6,59.7 54,52 66.6,44.3 63.1,30 77.4,33.5 86,20 94.6,33.5 108.9,30 105.4,44.3" fill="#E08000"/>
+          <circle cx="86" cy="52" r="20" fill="#FFA000"/>
+          <path d="M72.2 44.5 A20 20 0 0 1 99.8 44.5 Z" fill="#FFFFC0" stroke="none"/>
+        </g>
+        <rect x="120" y="236" width="150" height="52" rx="10" fill="#C06000" stroke="#111111" stroke-width="3"/>
+        <rect x="126" y="240" width="138" height="12" fill="#E08000"/>
+        <rect x="120" y="236" width="150" height="52" rx="10" fill="none" stroke="#111111" stroke-width="3"/>
+        <line x1="195" y1="240" x2="195" y2="168" stroke="#111111" stroke-width="13"/>
+        <line x1="195" y1="240" x2="195" y2="168" stroke="#4A9018" stroke-width="9"/>
+        <path d="M195 200 Q162 188 144 194 Q162 216 195 200 Z" fill="#60C020" stroke="#111111" stroke-width="3"/>
+        <path d="M195 182 Q228 170 246 176 Q228 198 195 182 Z" fill="#60C020" stroke="#111111" stroke-width="3"/>
+        <rect x="380" y="236" width="150" height="52" rx="10" fill="#C06000" stroke="#111111" stroke-width="3"/>
+        <path d="M368 236 L368 96 L410 66 L560 66 L560 206 L518 236 Z" fill="#8A5A2B" stroke="#111111" stroke-width="3"/>
+        <path d="M368 96 L410 66 L560 66 L518 96 Z" fill="#B98551" stroke="#111111" stroke-width="3"/>
+        <path d="M518 96 L560 66 L560 206 L518 236 Z" fill="#6B4320" stroke="#111111" stroke-width="3"/>
+        <line x1="368" y1="96" x2="518" y2="96" stroke="#111111" stroke-width="3"/>
+      </svg>`
+    }
+
+  ],
+
+  // العلوم/الثالث — الوحدة ١، الدرس ١-٣: نقل الماء (ص١٨–١٩)
+  "g3s-1-3": [
+
+    // ① اختيار من متعدد — معرفة — 3Bp3
+    {
+      type: "mcq",
+      objective: "3Bp3: يعرف أن الماء يُمتص بواسطة الجذور ويُنقل عبر الساق",
+      level: "knowledge",
+      prompt: "أَيُّ جُزءٍ مِنَ النَّبتةِ يَمْتَصُّ الماءَ مِنَ التُّربةِ؟",
+      options: ["الجُذورُ", "السّاقُ", "الأَوراقُ", "الأَزهارُ"],
+      answer: 0,
+      reason: "الجُذورُ تَمْتَصُّ الماءَ مِنَ التُّربةِ ثُمَّ تَنقُلُهُ إلى السّاقِ"
+    },
+
+    // ② صواب/خطأ — معرفة — 3Bp3
+    {
+      type: "true-false",
+      objective: "3Bp3: يعرف أن الماء يُمتص بواسطة الجذور ويُنقل عبر الساق",
+      level: "knowledge",
+      prompt: "تَنقُلُ السّاقُ الماءَ إلى الأَوراقِ والأَزهارِ.",
+      answer: true,
+      reason: "السّاقُ طَريقُ الماءِ مِنَ الجُذورِ إلى بَقيَّةِ أَجزاءِ النَّبتةِ"
+    },
+
+    // ③ التوصيل — معرفة — 3Bp3
+    {
+      type: "matching",
+      objective: "3Bp3: يعرف أن الماء يُمتص بواسطة الجذور ويُنقل عبر الساق",
+      level: "knowledge",
+      prompt: "صِلْ كُلَّ جُزءٍ بِدَورِهِ في رِحلةِ الماءِ.",
+      pairs: [
+        { a: "التُّربةُ", b: "فيها الماءُ" },
+        { a: "الجُذورُ", b: "تَمْتَصُّ الماءَ" },
+        { a: "السّاقُ",  b: "تَنقُلُ الماءَ إلى أَعلى" },
+        { a: "الأَوراقُ", b: "يَصِلُها الماءُ أَخيراً" }
+      ]
+    },
+
+    // ④ تحديد الأجزاء — تطبيق — 3Bp3
+    {
+      type: "hotspot",
+      objective: "3Bp3: يعرف أن الماء يُمتص بواسطة الجذور ويُنقل عبر الساق",
+      level: "application",
+      prompt: "اضغَطْ على الجُزءِ الَّذي يَنقُلُ الماءَ مِنَ الجُذورِ إلى الأَوراقِ.",
+      bg: "#eef7ff",
+      spot: { x: 50, y: 50, r: 14 },
+      svg: `<svg viewBox="0 0 600 430" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="مسار الماء في النبتة من الجذور إلى الأوراق">
+        <rect x="0" y="300" width="600" height="130" fill="#9A6636"/>
+        <rect x="0" y="300" width="600" height="14" fill="#7A4C22"/>
+        <line x1="0" y1="300" x2="600" y2="300" stroke="#111111" stroke-width="3"/>
+        <path d="M300 306 Q268 344 240 396" fill="none" stroke="#111111" stroke-width="11"/>
+        <path d="M300 306 Q332 344 360 396" fill="none" stroke="#111111" stroke-width="11"/>
+        <path d="M300 306 Q268 344 240 396" fill="none" stroke="#D8D6D0" stroke-width="7"/>
+        <path d="M300 306 Q332 344 360 396" fill="none" stroke="#D8D6D0" stroke-width="7"/>
+        <line x1="300" y1="308" x2="300" y2="140" stroke="#111111" stroke-width="15"/>
+        <line x1="300" y1="308" x2="300" y2="140" stroke="#4A9018" stroke-width="11"/>
+        <line x1="298" y1="304" x2="298" y2="144" stroke="#60C020" stroke-width="6"/>
+        <path d="M300 236 Q252 220 226 228 Q252 258 300 236 Z" fill="#60C020" stroke="#111111" stroke-width="3"/>
+        <path d="M300 236 Q252 220 226 228 Q256 235 300 236 Z" fill="#80C020"/>
+        <path d="M300 236 Q252 220 226 228 Q252 258 300 236 Z" fill="none" stroke="#111111" stroke-width="3"/>
+        <path d="M300 196 Q348 180 374 188 Q348 218 300 196 Z" fill="#60C020" stroke="#111111" stroke-width="3"/>
+        <path d="M300 196 Q348 180 374 188 Q344 194 300 196 Z" fill="#80C020"/>
+        <path d="M300 196 Q348 180 374 188 Q348 218 300 196 Z" fill="none" stroke="#111111" stroke-width="3"/>
+        <g stroke="#20A0FF" stroke-width="7" fill="none" stroke-dasharray="14 10">
+          <path d="M262 372 Q286 340 300 300"/>
+          <path d="M338 372 Q314 340 300 300"/>
+          <path d="M300 296 L300 168"/>
+        </g>
+        <g fill="#20A0FF" stroke="#111111" stroke-width="2">
+          <polygon points="300,152 310,176 290,176"/>
+          <polygon points="268,226 246,238 262,220"/>
+          <polygon points="332,190 354,180 340,198"/>
+        </g>
+      </svg>`
+    },
+
+    // ⑤ الترتيب التسلسلي — استدلال — 3Bp3
+    {
+      type: "sequence",
+      objective: "3Bp3: يعرف أن الماء يُمتص بواسطة الجذور ويُنقل عبر الساق",
+      level: "reasoning",
+      prompt: "رَتِّبْ رِحلةَ الماءِ في النَّبتةِ مِنَ البِدايةِ إلى النِّهايةِ.",
+      steps: [
+        "الماءُ في التُّربةِ",
+        "تَمْتَصُّهُ الجُذورُ",
+        "تَنقُلُهُ السّاقُ إلى أَعلى",
+        "يَصِلُ إلى الأَوراقِ والأَزهارِ"
+      ]
+    },
+
+    // ⑥ إثرائي: الخريطة الذهنية — استدلال — 3Bp3
+    {
+      type: "mindmap",
+      objective: "3Bp3: يعرف أن الماء يُمتص بواسطة الجذور ويُنقل عبر الساق",
+      level: "reasoning",
+      prompt: "أَكمِلْ خَريطةَ رِحلةِ الماءِ بِسَحبِ الكَلِمةِ المُناسِبةِ إلى كُلِّ فَرعٍ.",
+      center: "رِحلةُ الماءِ",
+      branches: [
+        { label: "يَبدَأُ مِنْ",   answer: "التُّربةِ" },
+        { label: "يَمْتَصُّهُ",    answer: "الجُذورُ" },
+        { label: "يَنقُلُهُ",      answer: "السّاقُ" },
+        { label: "يَصِلُ إلى",     answer: "الأَوراقِ" }
+      ],
+      distractors: ["الحَجَرِ", "الرّيحِ"]
+    }
+
+  ],
+
+  // العلوم/الثالث — الوحدة ١، الدرس ١-٤: نمو النباتات ودرجة الحرارة (ص٢٠–٢١)
+  "g3s-1-4": [
+
+    // ① صواب/خطأ — معرفة — 3Bp5
+    {
+      type: "true-false",
+      objective: "3Bp5: يعرف أن نمو النبات يتأثر بدرجة الحرارة",
+      level: "knowledge",
+      prompt: "تَتَأَثَّرُ سُرعةُ نُمُوِّ النَّبتةِ بِدَرَجةِ الحَرارةِ.",
+      answer: true,
+      reason: "النَّبتةُ تَنمو أَفضَلَ في الدِّفءِ المُعتَدِلِ، وببُطءٍ في البَردِ الشَّديدِ"
+    },
+
+    // ② اختيار من متعدد — معرفة — 3Bp5
+    {
+      type: "mcq",
+      objective: "3Bp5: يعرف أن نمو النبات يتأثر بدرجة الحرارة",
+      level: "knowledge",
+      prompt: "في أَيِّ مَكانٍ تَنمو النَّبتةُ أَفضَلَ؟",
+      options: ["مَكانٌ دافِئٌ مُعتَدِلٌ", "مَكانٌ شَديدُ البُرودةِ", "مَكانٌ مُغَطّى بِالثَّلجِ", "مَكانٌ مُظلِمٌ بارِدٌ"],
+      answer: 0,
+      reason: "الدِّفءُ المُعتَدِلُ أَنسَبُ لِنُمُوِّ مُعظَمِ النَّباتاتِ"
+    },
+
+    // ③ ملء الفراغ — معرفة — 3Bp5
+    {
+      type: "fill-blank",
+      objective: "3Bp5: يعرف أن نمو النبات يتأثر بدرجة الحرارة",
+      level: "knowledge",
+      prompt: "أكمِلِ الجُملَةَ بسَحبِ الكَلِمَتَينِ المُناسِبَتَينِ.",
+      text: "تَنمو النَّبتةُ ببُطءٍ في المَكانِ {}، وتَنمو أَفضَلَ في المَكانِ {}.",
+      answers: ["البارِدِ", "الدّافِئِ"],
+      distractors: ["الرَّطبِ", "المُغبَرِّ"]
+    },
+
+    // ④ سحب وإفلات — تطبيق — 3Eo2 (هدف استقصاء: القياس بأدوات بسيطة)
+    {
+      type: "drag-drop",
+      objective: "3Eo2: يقيس باستخدام معدات بسيطة ويسجل الملاحظات بطرق متنوعة",
+      level: "application",
+      prompt: "اسحَبِ اسمَ كُلِّ أَداةٍ إلى ما تَقيسُهُ.",
+      bg: "#eef7ff",
+      fit: "width",
+      targets: [
+        { answer: "المِسطَرةُ",       box:{x:18,y:14}, dot:{x:26,y:55} },
+        { answer: "مِقياسُ الحَرارةِ", box:{x:82,y:14}, dot:{x:74,y:55} }
+      ],
+      svg: `<svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="مسطرة ومقياس حرارة">
+        <rect x="96" y="120" width="70" height="150" rx="10" fill="#E08000" stroke="#111111" stroke-width="3"/>
+        <rect x="104" y="126" width="54" height="16" fill="#FFA000"/>
+        <rect x="96" y="120" width="70" height="150" rx="10" fill="none" stroke="#111111" stroke-width="3"/>
+        <g stroke="#111111" stroke-width="3">
+          <line x1="112" y1="140" x2="150" y2="140"/><line x1="112" y1="162" x2="150" y2="162"/>
+          <line x1="112" y1="184" x2="150" y2="184"/><line x1="112" y1="206" x2="150" y2="206"/>
+          <line x1="112" y1="228" x2="150" y2="228"/><line x1="112" y1="250" x2="150" y2="250"/>
+        </g>
+        <g stroke="#111111" stroke-width="3">
+          <rect x="452" y="90" width="34" height="140" rx="17" fill="#F9F8F3"/>
+          <rect x="458" y="96" width="10" height="120" rx="5" fill="#FFFFFF" stroke="none"/>
+          <rect x="452" y="90" width="34" height="140" rx="17" fill="none"/>
+          <circle cx="469" cy="244" r="26" fill="#FF2020"/>
+          <path d="M449.4 236 A26 26 0 0 1 488.6 236 Z" fill="#FF4020" stroke="none"/>
+          <circle cx="469" cy="244" r="26" fill="none"/>
+          <rect x="461" y="160" width="16" height="76" fill="#FF2020" stroke="none"/>
+          <line x1="492" y1="118" x2="512" y2="118"/><line x1="492" y1="142" x2="512" y2="142"/>
+          <line x1="492" y1="166" x2="512" y2="166"/><line x1="492" y1="190" x2="512" y2="190"/>
+        </g>
+      </svg>`
+    },
+
+    // ⑤ التصنيف في مجموعات — استدلال — 3Bp5
+    {
+      type: "classify",
+      objective: "3Bp5: يعرف أن نمو النبات يتأثر بدرجة الحرارة",
+      level: "reasoning",
+      prompt: "صَنِّفِ الأَماكِنَ: تَنمو فيها النَّبتةُ جَيِّداً أَمْ لا تَنمو جَيِّداً؟",
+      groups: [
+        { name: "تَنمو جَيِّداً", items: ["نافِذةٌ دافِئةٌ مُشمِسةٌ", "غُرفةُ الصَّفِّ المُعتَدِلةُ"] },
+        { name: "لا تَنمو جَيِّداً", items: ["داخِلَ الثَّلّاجةِ", "مَكانٌ مُغَطّى بِالثَّلجِ"] }
+      ]
+    },
+
+    // ⑥ إثرائي: الشريط المتدرّج — تطبيق — 3Bp5 (أول استعمال للنوع في المنصّة)
+    {
+      type: "slider",
+      objective: "3Bp5: يعرف أن نمو النبات يتأثر بدرجة الحرارة",
+      level: "application",
+      prompt: "قَدِّرْ: عِندَ أَيِّ دَرَجةِ حَرارةٍ تَنمو مُعظَمُ النَّباتاتِ أَفضَلَ؟",
+      min: 0, max: 50, answer: 25, tolerance: 5, unit: "°س", ticks: 10,
+      svg: `<svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="مقياس حرارة">
+        <g stroke="#111111" stroke-width="3">
+          <rect x="290" y="40" width="46" height="180" rx="23" fill="#F9F8F3"/>
+          <rect x="298" y="48" width="12" height="156" rx="6" fill="#FFFFFF" stroke="none"/>
+          <rect x="290" y="40" width="46" height="180" rx="23" fill="none"/>
+          <circle cx="313" cy="240" r="36" fill="#FF2020"/>
+          <path d="M285.6 229 A36 36 0 0 1 340.4 229 Z" fill="#FF4020" stroke="none"/>
+          <circle cx="313" cy="240" r="36" fill="none"/>
+          <rect x="303" y="130" width="20" height="96" fill="#FF2020" stroke="none"/>
+          <line x1="344" y1="70" x2="372" y2="70"/><line x1="344" y1="100" x2="372" y2="100"/>
+          <line x1="344" y1="130" x2="380" y2="130"/><line x1="344" y1="160" x2="372" y2="160"/>
+          <line x1="344" y1="190" x2="372" y2="190"/>
+        </g>
+      </svg>`
+    }
+
+  ],
+
+  // العلوم/الثالث — الوحدة ١، الدرس ١-٥: تحقّق من تقدّمك (ص٢٢–٢٣)
+  // درس مراجعة: يعيد استخدام رسوم الوحدة ولا يُنشئ رسوماً جديدة (قاعدة CLAUDE.md)
+  "g3s-1-5": [
+
+    // ① اختيار من متعدد — معرفة — 3Bp1
+    {
+      type: "mcq",
+      objective: "3Bp1: يعرف أن النباتات لها جذور وأوراق وسيقان وأزهار",
+      level: "knowledge",
+      prompt: "أَيُّ الأَجزاءِ يُساعِدُ النَّبتةَ على إنتاجِ البُذورِ؟",
+      options: ["الأَزهارُ", "الجُذورُ", "السّاقُ", "الأَوراقُ"],
+      answer: 0,
+      reason: "الأَزهارُ تُساعِدُ النَّبتةَ على إنتاجِ البُذورِ"
+    },
+
+    // ② صواب/خطأ — معرفة — 3Bp2
+    {
+      type: "true-false",
+      objective: "3Bp2: يشرح الملاحظات المرتبطة بحاجة النباتات إلى الضوء والماء لتنمو",
+      level: "knowledge",
+      prompt: "تَستَطيعُ النَّبتةُ أَنْ تَنمُوَ سَليمةً في الظَّلامِ التّامِّ.",
+      answer: false,
+      reason: "بِلا ضَوءٍ لا تَصنَعُ النَّبتةُ غِذاءَها فَتَذبُلُ"
+    },
+
+    // ③ ملء الفراغ — معرفة — 3Bp3
+    {
+      type: "fill-blank",
+      objective: "3Bp3: يعرف أن الماء يُمتص بواسطة الجذور ويُنقل عبر الساق",
+      level: "knowledge",
+      prompt: "أكمِلِ الجُملَةَ بسَحبِ الكَلِمَتَينِ المُناسِبَتَينِ.",
+      text: "تَمْتَصُّ {} الماءَ مِنَ التُّربةِ، وتَنقُلُهُ {} إلى الأَوراقِ.",
+      answers: ["الجُذورُ", "السّاقُ"],
+      distractors: ["الأَزهارُ", "التُّربةُ"]
+    },
+
+    // ④ تحديد الأجزاء — تطبيق — 3Bp1 (نفس رسم الدرس ١-١)
+    {
+      type: "hotspot",
+      objective: "3Bp1: يعرف أن النباتات لها جذور وأوراق وسيقان وأزهار",
+      level: "application",
+      prompt: "اضغَطْ على الجُزءِ الَّذي يَصنَعُ الغِذاءَ لِلنَّبتةِ.",
+      bg: "#eef7ff",
+      spot: { x: 44, y: 53, r: 14 },
+      svg: `<svg viewBox="0 0 600 430" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="نبتة بأجزائها: جذور وساق وأوراق وزهرة">
+        <rect x="0" y="300" width="600" height="130" fill="#9A6636"/>
+        <rect x="0" y="300" width="600" height="14" fill="#7A4C22"/>
+        <rect x="0" y="392" width="600" height="38" fill="#7A4C22"/>
+        <line x1="0" y1="300" x2="600" y2="300" stroke="#111111" stroke-width="3"/>
+        <path d="M300 306 Q268 344 240 396" fill="none" stroke="#111111" stroke-width="11"/>
+        <path d="M300 306 Q332 344 360 396" fill="none" stroke="#111111" stroke-width="11"/>
+        <path d="M300 306 Q268 344 240 396" fill="none" stroke="#D8D6D0" stroke-width="7"/>
+        <path d="M300 306 Q332 344 360 396" fill="none" stroke="#D8D6D0" stroke-width="7"/>
+        <line x1="300" y1="308" x2="300" y2="118" stroke="#111111" stroke-width="15"/>
+        <line x1="300" y1="308" x2="300" y2="118" stroke="#4A9018" stroke-width="11"/>
+        <line x1="298" y1="304" x2="298" y2="122" stroke="#60C020" stroke-width="6"/>
+        <path d="M300 232 Q252 216 226 224 Q252 254 300 232 Z" fill="#60C020" stroke="#111111" stroke-width="3"/>
+        <path d="M300 232 Q252 216 226 224 Q256 231 300 232 Z" fill="#80C020"/>
+        <path d="M300 232 Q252 216 226 224 Q252 254 300 232 Z" fill="none" stroke="#111111" stroke-width="3"/>
+        <path d="M300 195 Q348 179 374 187 Q348 217 300 195 Z" fill="#60C020" stroke="#111111" stroke-width="3"/>
+        <path d="M300 195 Q348 179 374 187 Q344 193 300 195 Z" fill="#80C020"/>
+        <path d="M300 195 Q348 179 374 187 Q348 217 300 195 Z" fill="none" stroke="#111111" stroke-width="3"/>
+        <g stroke="#111111" stroke-width="3">
+          <ellipse cx="300" cy="66" rx="22" ry="30" fill="#E07E8A"/>
+          <ellipse cx="338" cy="88" rx="30" ry="22" fill="#E07E8A"/>
+          <ellipse cx="262" cy="88" rx="30" ry="22" fill="#E07E8A"/>
+          <ellipse cx="326" cy="126" rx="24" ry="26" fill="#E07E8A"/>
+          <ellipse cx="274" cy="126" rx="24" ry="26" fill="#E07E8A"/>
+          <circle cx="300" cy="100" r="26" fill="#FFA000"/>
+          <path d="M279.4 92 A26 26 0 0 1 320.6 92 Z" fill="#FFFFC0" stroke="none"/>
+        </g>
+      </svg>`
+    },
+
+    // ⑤ التصنيف في مجموعات — استدلال — 3Bp5
+    {
+      type: "classify",
+      objective: "3Bp5: يعرف أن نمو النبات يتأثر بدرجة الحرارة",
+      level: "reasoning",
+      prompt: "صَنِّفْ: أَيُّها يُساعِدُ النَّبتةَ على النُّمُوِّ وأَيُّها يَضُرُّ بِنُمُوِّها؟",
+      groups: [
+        { name: "يُساعِدُ على النُّمُوِّ", items: ["ماءٌ كافٍ", "ضَوءُ الشَّمسِ", "دِفءٌ مُعتَدِلٌ"] },
+        { name: "يَضُرُّ بِالنُّمُوِّ", items: ["ظَلامٌ تامٌّ", "بَردٌ شَديدٌ", "عَطَشٌ طَويلٌ"] }
+      ]
+    },
+
+    // ⑥ إثرائي: الاستبعاد — استدلال — 3Bp1
+    {
+      type: "exclude",
+      objective: "3Bp1: يعرف أن النباتات لها جذور وأوراق وسيقان وأزهار",
+      level: "reasoning",
+      prompt: "أَيُّها لَيسَ جُزءاً مِنَ النَّبتةِ؟",
+      options: ["الجُذورُ", "السّاقُ", "الأَوراقُ", "المِسطَرةُ"],
+      answer: 3,
+      reason: "المِسطَرةُ أَداةُ قِياسٍ، وبَقيَّةُ الخِياراتِ أَجزاءٌ مِنَ النَّبتةِ"
+    }
+
+  ],
+
+  /* ═══════════ العلوم — الصف الثالث · الوحدة الثانية: الاعتناءُ بأنفسنا ═══════════
+     المصدر: كتاب التلميذ ص٢٤–٣٣ (PDF ٢٦–٣٥). الأهداف: 3Bh3 (نظام غذائي كافٍ ومتنوّع
+     وتمارين) و3Bh4 (أضرار السكّر والدهون)، ومعها 3Ep1 لخطوات التجربة.
+     رسوم الوحدة **أشياءٌ بلا أشخاص** (قاعدة «بلا ملامح وجه» — CLAUDE.md). */
+
+  // العلوم/الثالث — الوحدة ٢، الدرس ٢-١: المجموعات الغذائية (ص٢٤–٢٥)
+  "g3s-2-1": [
+
+    // ① اختيار من متعدد — معرفة — 3Bh3
+    {
+      type: "mcq",
+      objective: "3Bh3: يستكشف ويبحث عن النظام الغذائي الكافي والمتنوع اللازم للحفاظ على صحة جيدة",
+      level: "knowledge",
+      prompt: "أَيُّ مَجموعةٍ غِذائيَّةٍ تُعطينا الطّاقةَ؟",
+      options: ["النَّشَوِيّاتُ", "البُروتيناتُ", "مُنتَجاتُ الأَلبانِ", "الفَواكِهُ"],
+      answer: 0,
+      reason: "النَّشَوِيّاتُ كالخُبزِ والأَرُزِّ مَصدَرُ الطّاقةِ لِلجِسمِ"
+    },
+
+    // ② صواب/خطأ — معرفة — 3Bh3
+    {
+      type: "true-false",
+      objective: "3Bh3: يستكشف ويبحث عن النظام الغذائي الكافي والمتنوع اللازم للحفاظ على صحة جيدة",
+      level: "knowledge",
+      prompt: "نَحتاجُ إلى مُنتَجاتِ الأَلبانِ لِعِظامٍ وأَسنانٍ قَويَّةٍ.",
+      answer: true,
+      reason: "الحَليبُ والجُبنُ يُقَوّيانِ العِظامَ والأَسنانَ"
+    },
+
+    // ③ التوصيل — معرفة — 3Bh3
+    {
+      type: "matching",
+      objective: "3Bh3: يستكشف ويبحث عن النظام الغذائي الكافي والمتنوع اللازم للحفاظ على صحة جيدة",
+      level: "knowledge",
+      prompt: "صِلْ كُلَّ مَجموعةٍ غِذائيَّةٍ بِفائِدَتِها.",
+      pairs: [
+        { a: "مُنتَجاتُ الأَلبانِ",     b: "عِظامٌ وأَسنانٌ قَويَّةٌ" },
+        { a: "النَّشَوِيّاتُ",          b: "إنتاجُ الطّاقةِ" },
+        { a: "البُروتيناتُ",            b: "نُمُوُّ الجِسمِ" },
+        { a: "الفَواكِهُ والخَضراواتُ", b: "الوِقايةُ مِنَ الأَمراضِ" }
+      ]
+    },
+
+    // ④ تحديد الأجزاء — تطبيق — 3Bh3
+    {
+      type: "hotspot",
+      objective: "3Bh3: يستكشف ويبحث عن النظام الغذائي الكافي والمتنوع اللازم للحفاظ على صحة جيدة",
+      level: "application",
+      prompt: "اضغَطْ على سَلّةِ البُروتيناتِ (اللُّحومِ والأَسماكِ).",
+      bg: "#eef7ff",
+      spot: { x: 27, y: 73, r: 16 },
+      svg: `<svg viewBox="0 0 600 430" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="أربع سلال غذائية: ألبان ونشويات وبروتينات وفواكه وخضراوات">
+        <g stroke="#111111" stroke-width="3">
+          <rect x="60" y="40" width="210" height="150" rx="18" fill="#E08000"/>
+          <rect x="68" y="46" width="194" height="20" fill="#FFA000"/>
+          <rect x="68" y="166" width="194" height="18" fill="#C06000"/>
+          <rect x="60" y="40" width="210" height="150" rx="18" fill="none"/>
+          <rect x="100" y="76" width="46" height="86" rx="8" fill="#F9F8F3"/>
+          <rect x="106" y="106" width="34" height="52" rx="5" fill="#FFFFFF" stroke="none"/>
+          <rect x="100" y="76" width="46" height="86" rx="8" fill="none"/>
+          <polygon points="176,160 230,160 230,110" fill="#FFA000"/>
+          <circle cx="212" cy="142" r="5" fill="#E08000"/>
+          <circle cx="222" cy="152" r="4" fill="#E08000"/>
+        </g>
+        <g stroke="#111111" stroke-width="3">
+          <rect x="330" y="40" width="210" height="150" rx="18" fill="#E08000"/>
+          <rect x="338" y="46" width="194" height="20" fill="#FFA000"/>
+          <rect x="338" y="166" width="194" height="18" fill="#C06000"/>
+          <rect x="330" y="40" width="210" height="150" rx="18" fill="none"/>
+          <ellipse cx="392" cy="122" rx="46" ry="30" fill="#C88A5E"/>
+          <path d="M346 118 A46 30 0 0 1 438 118 Z" fill="#E0A87F" stroke="none"/>
+          <ellipse cx="392" cy="122" rx="46" ry="30" fill="none"/>
+          <path d="M470 156 L470 100 Q470 86 490 86 Q510 86 510 100 L510 156 Z" fill="#F2C3A0"/>
+          <path d="M470 100 Q470 86 490 86 Q510 86 510 100 L510 112 L470 112 Z" fill="#F7D3B4" stroke="none"/>
+          <path d="M470 156 L470 100 Q470 86 490 86 Q510 86 510 100 L510 156 Z" fill="none"/>
+        </g>
+        <g stroke="#111111" stroke-width="3">
+          <rect x="60" y="240" width="210" height="150" rx="18" fill="#E08000"/>
+          <rect x="68" y="246" width="194" height="20" fill="#FFA000"/>
+          <rect x="68" y="366" width="194" height="18" fill="#C06000"/>
+          <rect x="60" y="240" width="210" height="150" rx="18" fill="none"/>
+          <ellipse cx="140" cy="320" rx="52" ry="30" fill="#20A0FF"/>
+          <path d="M88 314 A52 30 0 0 1 192 314 Z" fill="#40C0FF" stroke="none"/>
+          <ellipse cx="140" cy="320" rx="52" ry="30" fill="none"/>
+          <polygon points="192,320 224,298 224,342" fill="#2080E0"/>
+          <ellipse cx="230" cy="330" rx="26" ry="32" fill="#F9F8F3"/>
+          <path d="M204 326 A26 32 0 0 1 256 326 Z" fill="#FFFFFF" stroke="none"/>
+          <ellipse cx="230" cy="330" rx="26" ry="32" fill="none"/>
+        </g>
+        <g stroke="#111111" stroke-width="3">
+          <rect x="330" y="240" width="210" height="150" rx="18" fill="#E08000"/>
+          <rect x="338" y="246" width="194" height="20" fill="#FFA000"/>
+          <rect x="338" y="366" width="194" height="18" fill="#C06000"/>
+          <rect x="330" y="240" width="210" height="150" rx="18" fill="none"/>
+          <circle cx="392" cy="326" r="42" fill="#FF2020"/>
+          <path d="M362 305 A42 42 0 0 1 422 305 Z" fill="#FF4020" stroke="none"/>
+          <circle cx="392" cy="326" r="42" fill="none"/>
+          <path d="M392 284 L392 268" stroke-width="7"/>
+          <polygon points="480,286 512,368 466,368" fill="#FFA000"/>
+          <path d="M480 286 L498 332 L470 332 Z" fill="#E08000" stroke="none"/>
+          <polygon points="480,286 512,368 466,368" fill="none"/>
+          <path d="M480 286 Q466 262 448 260" fill="none" stroke="#4A9018" stroke-width="8"/>
+          <path d="M480 286 Q496 264 514 264" fill="none" stroke="#4A9018" stroke-width="8"/>
+        </g>
+      </svg>`
+    },
+
+    // ⑤ التصنيف في مجموعات — استدلال — 3Bh3
+    {
+      type: "classify",
+      objective: "3Bh3: يستكشف ويبحث عن النظام الغذائي الكافي والمتنوع اللازم للحفاظ على صحة جيدة",
+      level: "reasoning",
+      prompt: "صَنِّفْ كُلَّ طَعامٍ إلى مَجموعَتِهِ الغِذائيَّةِ.",
+      groups: [
+        { name: "النَّشَوِيّاتُ", items: ["الخُبزُ", "الأَرُزُّ"] },
+        { name: "البُروتيناتُ", items: ["السَّمَكُ", "البَيضُ"] },
+        { name: "فَواكِهُ وخَضراواتُ", items: ["التُّفّاحُ", "الجَزَرُ"] }
+      ]
+    },
+
+    // ⑥ إثرائي: بطاقات الذاكرة — تطبيق — 3Bh3 (أول استعمال للنوع في المنصّة)
+    {
+      type: "memory",
+      objective: "3Bh3: يستكشف ويبحث عن النظام الغذائي الكافي والمتنوع اللازم للحفاظ على صحة جيدة",
+      level: "application",
+      prompt: "اقلِبْ بِطاقَتَينِ في كُلِّ دَورٍ وابحَثْ عَنِ المَجموعةِ وفائِدَتِها.",
+      pairs: [
+        { a: "مُنتَجاتُ الأَلبانِ", b: "عِظامٌ قَويَّةٌ" },
+        { a: "النَّشَوِيّاتُ",      b: "الطّاقةُ" },
+        { a: "البُروتيناتُ",        b: "النُّمُوُّ" },
+        { a: "فَواكِهُ وخَضراواتُ", b: "الوِقايةُ مِنَ الأَمراضِ" }
+      ]
+    }
+
+  ],
+
+  // العلوم/الثالث — الوحدة ٢، الدرس ٢-٢: نظام غذائي صحي (ص٢٦–٢٧)
+  "g3s-2-2": [
+
+    // ① صواب/خطأ — معرفة — 3Bh3
+    {
+      type: "true-false",
+      objective: "3Bh3: يستكشف في النظام الغذائي الكافي والمتنوع اللازم للحفاظ على صحة جيدة",
+      level: "knowledge",
+      prompt: "النِّظامُ الغِذائيُّ الصِّحّيُّ يَجِبُ أَنْ يَكونَ مُتَنَوِّعاً.",
+      answer: true,
+      reason: "تَوازُنُ الأَطعِمةِ مِنْ مُختَلِفِ المَجموعاتِ يَمنَحُ الجِسمَ التَّغذِيةَ اللّازِمةَ"
+    },
+
+    // ② اختيار من متعدد — معرفة — 3Bh3
+    {
+      type: "mcq",
+      objective: "3Bh3: يستكشف في النظام الغذائي الكافي والمتنوع اللازم للحفاظ على صحة جيدة",
+      level: "knowledge",
+      prompt: "أَيُّ مَجموعةٍ في قِمّةِ الهَرَمِ الغِذائيِّ نَأكُلُ مِنها أَقَلَّ شَيءٍ؟",
+      options: ["الدُّهونُ والسُّكَّرِيّاتُ", "النَّشَوِيّاتُ", "الخَضراواتُ", "البُروتيناتُ"],
+      answer: 0,
+      reason: "الدُّهونُ والسُّكَّرِيّاتُ في القِمّةِ، فَنَأكُلُ مِنها أَقَلَّ شَيءٍ"
+    },
+
+    // ③ ملء الفراغ — معرفة — 3Bh3
+    {
+      type: "fill-blank",
+      objective: "3Bh3: يستكشف في النظام الغذائي الكافي والمتنوع اللازم للحفاظ على صحة جيدة",
+      level: "knowledge",
+      prompt: "أكمِلِ الجُملَةَ بسَحبِ الكَلِمَتَينِ المُناسِبَتَينِ.",
+      text: "تَوازُنُ الأَطعِمةِ مِنْ مُختَلِفِ المَجموعاتِ يَمنَحُ جِسمَكَ {} اللّازِمةَ، ويَجِبُ أَنْ يَكونَ غِذاؤُكَ {}.",
+      answers: ["التَّغذِيةَ", "مُتَنَوِّعاً"],
+      distractors: ["الحَلوى", "واحِداً"]
+    },
+
+    // ④ تحديد الأجزاء — تطبيق — 3Bh3
+    {
+      type: "hotspot",
+      objective: "3Bh3: يستكشف في النظام الغذائي الكافي والمتنوع اللازم للحفاظ على صحة جيدة",
+      level: "application",
+      prompt: "اضغَطْ على قاعِدةِ الهَرَمِ الغِذائيِّ: المَجموعةُ الَّتي نَأكُلُ مِنها أَكثَرَ شَيءٍ.",
+      bg: "#eef7ff",
+      spot: { x: 50, y: 79, r: 13 },
+      svg: `<svg viewBox="0 0 600 430" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="الهرم الغذائي بأربع طبقات">
+        <g stroke="#111111" stroke-width="3">
+          <polygon points="300,50 351.5,135 248.5,135" fill="#E07E8A"/>
+          <polygon points="300,50 326,93 274,93" fill="#F49AA4" stroke="none"/>
+          <polygon points="300,50 351.5,135 248.5,135" fill="none"/>
+          <polygon points="351.5,135 400,215 200,215 248.5,135" fill="#FF2020"/>
+          <polygon points="351.5,135 366,159 234,159 248.5,135" fill="#FF4020" stroke="none"/>
+          <polygon points="400,215 388,196 212,196 200,215" fill="#E02000" stroke="none"/>
+          <polygon points="351.5,135 400,215 200,215 248.5,135" fill="none"/>
+          <polygon points="400,215 451.5,300 148.5,300 200,215" fill="#60C020"/>
+          <polygon points="400,215 415,240 185,240 200,215" fill="#80C020" stroke="none"/>
+          <polygon points="451.5,300 438,278 162,278 148.5,300" fill="#4A9018" stroke="none"/>
+          <polygon points="400,215 451.5,300 148.5,300 200,215" fill="none"/>
+          <polygon points="451.5,300 500,380 100,380 148.5,300" fill="#E08000"/>
+          <polygon points="451.5,300 466,324 134,324 148.5,300" fill="#FFA000" stroke="none"/>
+          <polygon points="500,380 488,360 112,360 100,380" fill="#C06000" stroke="none"/>
+          <polygon points="451.5,300 500,380 100,380 148.5,300" fill="none"/>
+        </g>
+      </svg>`
+    },
+
+    // ⑤ الترتيب التسلسلي — استدلال — 3Bh3
+    {
+      type: "sequence",
+      objective: "3Bh3: يستكشف في النظام الغذائي الكافي والمتنوع اللازم للحفاظ على صحة جيدة",
+      level: "reasoning",
+      prompt: "رَتِّبْ طَبَقاتِ الهَرَمِ الغِذائيِّ مِنَ المَجموعةِ الَّتي نَأكُلُ مِنها أَكثَرَ إلى الَّتي نَأكُلُ مِنها أَقَلَّ.",
+      steps: [
+        "النَّشَوِيّاتُ",
+        "الفَواكِهُ والخَضراواتُ",
+        "البُروتيناتُ ومُنتَجاتُ الأَلبانِ",
+        "الدُّهونُ والسُّكَّرِيّاتُ"
+      ]
+    },
+
+    // ⑥ إثرائي: الاستبعاد — استدلال — 3Bh3
+    {
+      type: "exclude",
+      objective: "3Bh3: يستكشف في النظام الغذائي الكافي والمتنوع اللازم للحفاظ على صحة جيدة",
+      level: "reasoning",
+      prompt: "أَيُّها لَيسَ مِنَ الفَواكِهِ والخَضراواتِ؟",
+      options: ["الجَزَرُ", "التُّفّاحُ", "الطَّماطِمُ", "الجُبنُ"],
+      answer: 3,
+      reason: "الجُبنُ مِنْ مُنتَجاتِ الأَلبانِ، وبَقيَّةُ الخِياراتِ فَواكِهُ وخَضراواتٌ"
+    }
+
+  ],
+
+  // العلوم/الثالث — الوحدة ٢، الدرس ٢-٣: نظام غذائي غير صحي (ص٢٨–٢٩)
+  "g3s-2-3": [
+
+    // ① صواب/خطأ — معرفة — 3Bh4
+    {
+      type: "true-false",
+      objective: "3Bh4: يعرف أن بعض الأطعمة الغنية بالسكر أو الدهون قد تضر بالصحة",
+      level: "knowledge",
+      prompt: "بَعضُ الأَطعِمةِ الغَنيَّةِ بِالسُّكَّرِ أَوِ الدُّهونِ قَدْ تَضُرُّ بِالصِّحّةِ.",
+      answer: true,
+      reason: "الإكثارُ مِنَ السُّكَّرِ والدُّهونِ يَضُرُّ بِالأَسنانِ وبِالصِّحّةِ عامّةً"
+    },
+
+    // ② اختيار من متعدد — معرفة — 3Bh4
+    {
+      type: "mcq",
+      objective: "3Bh4: يعرف أن بعض الأطعمة الغنية بالسكر أو الدهون قد تضر بالصحة",
+      level: "knowledge",
+      prompt: "ماذا يَفعَلُ السُّكَّرُ الكَثيرُ بِأَسنانِكَ؟",
+      options: ["يُتلِفُها ويُسَبِّبُ التَّسَوُّسَ", "يُقَوّيها", "يُبَيِّضُها", "لا يُؤَثِّرُ فيها"],
+      answer: 0,
+      reason: "تَجرِبةُ قِشرةِ البَيضِ تُبَيِّنُ أَنَّ السُّكَّرَ يُتلِفُ المادّةَ الَّتي تُكَوِّنُ الأَسنانَ"
+    },
+
+    // ③ ملء الفراغ — معرفة — 3Bh4
+    {
+      type: "fill-blank",
+      objective: "3Bh4: يعرف أن بعض الأطعمة الغنية بالسكر أو الدهون قد تضر بالصحة",
+      level: "knowledge",
+      prompt: "أكمِلِ الجُملَةَ بسَحبِ الكَلِمَتَينِ المُناسِبَتَينِ.",
+      text: "المَشروباتُ الغَنيَّةُ بِـ{} تَضُرُّ بِالأَسنانِ، والأَفضَلُ أَنْ نَشرَبَ {}.",
+      answers: ["السُّكَّرِ", "الماءَ"],
+      distractors: ["الخُضارِ", "المَشروبَ الغازِيَّ"]
+    },
+
+    // ④ الترتيب التسلسلي — تطبيق — 3Ep1 (هدف استقصاء: خطوات جمع الأدلّة)
+    {
+      type: "sequence",
+      objective: "3Ep1: يجمع الأدلة في سياقات متنوعة بهدف الإجابة عن الأسئلة أو اختبار الأفكار",
+      level: "application",
+      prompt: "رَتِّبْ خُطُواتِ تَجرِبةِ قِشرةِ البَيضِ.",
+      steps: [
+        "ضَعْ نِصفَ قِشرةِ بَيضٍ في كُلِّ كوبٍ",
+        "أَضِفْ ماءً إلى كوبٍ وشَرابَ السُّكَّرِ إلى الآخَرِ",
+        "انتَظِرْ عِدّةَ أَيّامٍ",
+        "لاحِظْ ما حَدَثَ لِلقِشرَتَينِ"
+      ]
+    },
+
+    // ⑤ التصنيف في مجموعات — استدلال — 3Bh4
+    {
+      type: "classify",
+      objective: "3Bh4: يعرف أن بعض الأطعمة الغنية بالسكر أو الدهون قد تضر بالصحة",
+      level: "reasoning",
+      prompt: "صَنِّفْ كُلَّ صِنفٍ: صِحّيٌّ أَمْ غَيرُ صِحّيٍّ؟",
+      groups: [
+        { name: "صِحّيٌّ", items: ["الماءُ", "الحَليبُ", "الفَواكِهُ"] },
+        { name: "غَيرُ صِحّيٍّ", items: ["المَشروبُ الغازِيُّ", "الحَلوى", "الرَّقائِقُ المَقلِيَّةُ"] }
+      ]
+    },
+
+    // ⑥ إثرائي: اكتشف الخطأ — استدلال — 3Bh4
+    {
+      type: "find-error",
+      objective: "3Bh4: يعرف أن بعض الأطعمة الغنية بالسكر أو الدهون قد تضر بالصحة",
+      level: "reasoning",
+      prompt: "في هذِهِ الوَجبةِ صِنفٌ يَضُرُّ بِالصِّحّةِ إذا أَكثَرْنا مِنهُ — اضغَطْ عَلَيهِ.",
+      bg: "#eef7ff",
+      fit: "width",
+      spot: { x: 78, y: 50, r: 17 },
+      svg: `<svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="صينية عليها تفاحة وكوب حليب وكوب مشروب غازي">
+        <ellipse cx="320" cy="252" rx="290" ry="30" fill="#C88A5E" stroke="#111111" stroke-width="3"/>
+        <ellipse cx="320" cy="244" rx="272" ry="22" fill="#E0A87F" stroke="none"/>
+        <ellipse cx="320" cy="252" rx="290" ry="30" fill="none" stroke="#111111" stroke-width="3"/>
+        <g stroke="#111111" stroke-width="3">
+          <circle cx="150" cy="176" r="54" fill="#FF2020"/>
+          <path d="M112 149 A54 54 0 0 1 188 149 Z" fill="#FF4020" stroke="none"/>
+          <circle cx="150" cy="176" r="54" fill="none"/>
+          <path d="M150 122 L150 100" stroke-width="8"/>
+          <path d="M150 108 Q128 92 108 100" fill="none" stroke="#4A9018" stroke-width="8"/>
+        </g>
+        <g stroke="#111111" stroke-width="3">
+          <path d="M292 108 L348 108 L340 232 L300 232 Z" fill="#F9F8F3"/>
+          <path d="M292 108 L348 108 L346 138 L294 138 Z" fill="#FFFFFF" stroke="none"/>
+          <path d="M300 232 L340 232 L342 200 L298 200 Z" fill="#E4E6E8" stroke="none"/>
+          <path d="M292 108 L348 108 L340 232 L300 232 Z" fill="none"/>
+        </g>
+        <g stroke="#111111" stroke-width="3">
+          <path d="M446 92 L556 92 L540 232 L462 232 Z" fill="#E02000"/>
+          <path d="M446 92 L556 92 L552 128 L450 128 Z" fill="#FF4020" stroke="none"/>
+          <path d="M462 232 L540 232 L544 194 L458 194 Z" fill="#B01800" stroke="none"/>
+          <path d="M446 92 L556 92 L540 232 L462 232 Z" fill="none"/>
+          <ellipse cx="501" cy="92" rx="55" ry="12" fill="#FF4020"/>
+          <rect x="486" y="30" width="14" height="64" rx="7" fill="#F9F8F3"/>
+          <path d="M486 44 L500 36" stroke-width="4"/>
+        </g>
+      </svg>`
+    }
+
+  ],
+
+  // العلوم/الثالث — الوحدة ٢، الدرس ٢-٤: التمارين الرياضية والنوم (ص٣٠–٣١)
+  "g3s-2-4": [
+
+    // ① صواب/خطأ — معرفة — 3Bh3
+    {
+      type: "true-false",
+      objective: "3Bh3: يستكشف في التمارين الرياضية والنظام الغذائي الضروريّ للحفاظ على صحّة جيّدة",
+      level: "knowledge",
+      prompt: "التَّمارينُ الرِّياضيَّةُ تُقَوّي القَلبَ والعِظامَ والعَضَلاتِ.",
+      answer: true,
+      reason: "الحَرَكةُ واللَّعِبُ والجَريُ تُقَوّي القَلبَ والعِظامَ والعَضَلاتِ"
+    },
+
+    // ② اختيار من متعدد — معرفة — 3Bh3
+    {
+      type: "mcq",
+      objective: "3Bh3: يستكشف في التمارين الرياضية والنظام الغذائي الضروريّ للحفاظ على صحّة جيّدة",
+      level: "knowledge",
+      prompt: "كَمْ ساعةً يَحتاجُ مُعظَمُ تَلاميذِ المَدارِسِ لِلنَّومِ يَوميّاً؟",
+      options: ["مِنْ ١٠ إلى ١٢ ساعةً", "مِنْ ٣ إلى ٤ ساعاتٍ", "مِنْ ٥ إلى ٦ ساعاتٍ", "مِنْ ١٥ إلى ١٦ ساعةً"],
+      answer: 0,
+      reason: "يَحتاجُ مُعظَمُ تَلاميذِ المَدارِسِ لِلنَّومِ مِنْ ١٠ إلى ١٢ ساعةً يَوميّاً"
+    },
+
+    // ③ التوصيل — معرفة — 3Bh3
+    {
+      type: "matching",
+      objective: "3Bh3: يستكشف في التمارين الرياضية والنظام الغذائي الضروريّ للحفاظ على صحّة جيّدة",
+      level: "knowledge",
+      prompt: "صِلْ كُلَّ عادةٍ بِفائِدَتِها.",
+      pairs: [
+        { a: "الجَريُ واللَّعِبُ",   b: "يُقَوّيانِ القَلبَ والعَضَلاتِ" },
+        { a: "النَّومُ الكافي",     b: "يُريحُ الجِسمَ ويَحفَظُ الصِّحّةَ" },
+        { a: "الغِذاءُ المُتَنَوِّعُ", b: "يَمنَحُ الجِسمَ التَّغذِيةَ اللّازِمةَ" },
+        { a: "شُربُ الماءِ",        b: "يَقي الجِسمَ مِنَ الجَفافِ" }
+      ]
+    },
+
+    // ④ تحديد الأجزاء — تطبيق — 3Bh3
+    {
+      type: "hotspot",
+      objective: "3Bh3: يستكشف في التمارين الرياضية والنظام الغذائي الضروريّ للحفاظ على صحّة جيّدة",
+      level: "application",
+      prompt: "اضغَطْ على ما يُقَوّي عَضَلاتِكَ إذا استَعمَلتَهُ كُلَّ يَومٍ.",
+      bg: "#eef7ff",
+      fit: "width",
+      spot: { x: 18, y: 50, r: 15 },
+      svg: `<svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="حبل نطّ وسرير وأريكة أمام شاشة">
+        <g stroke="#111111" stroke-width="3">
+          <path d="M62 118 Q116 44 170 118 Q116 210 62 118 Z" fill="none" stroke-width="9"/>
+          <rect x="44" y="112" width="26" height="60" rx="12" fill="#FF2020"/>
+          <rect x="162" y="112" width="26" height="60" rx="12" fill="#FF2020"/>
+          <rect x="48" y="118" width="18" height="18" rx="9" fill="#FF4020" stroke="none"/>
+          <rect x="166" y="118" width="18" height="18" rx="9" fill="#FF4020" stroke="none"/>
+          <rect x="44" y="112" width="26" height="60" rx="12" fill="none"/>
+          <rect x="162" y="112" width="26" height="60" rx="12" fill="none"/>
+        </g>
+        <g stroke="#111111" stroke-width="3">
+          <rect x="248" y="150" width="164" height="56" rx="10" fill="#20A0FF"/>
+          <rect x="256" y="156" width="148" height="14" fill="#40C0FF" stroke="none"/>
+          <rect x="256" y="188" width="148" height="12" fill="#2080E0" stroke="none"/>
+          <rect x="248" y="150" width="164" height="56" rx="10" fill="none"/>
+          <rect x="258" y="120" width="60" height="34" rx="12" fill="#F9F8F3"/>
+          <rect x="240" y="132" width="16" height="86" rx="6" fill="#8A5A2B"/>
+          <rect x="404" y="150" width="16" height="68" rx="6" fill="#8A5A2B"/>
+        </g>
+        <g stroke="#111111" stroke-width="3">
+          <rect x="486" y="152" width="130" height="56" rx="12" fill="#8A5A2B"/>
+          <rect x="494" y="158" width="114" height="14" fill="#A87048" stroke="none"/>
+          <rect x="486" y="152" width="130" height="56" rx="12" fill="none"/>
+          <rect x="478" y="120" width="24" height="56" rx="10" fill="#A87048"/>
+          <rect x="600" y="120" width="24" height="56" rx="10" fill="#A87048"/>
+          <rect x="506" y="46" width="94" height="62" rx="8" fill="#606060"/>
+          <rect x="514" y="52" width="78" height="18" fill="#808080" stroke="none"/>
+          <rect x="506" y="46" width="94" height="62" rx="8" fill="none"/>
+          <rect x="544" y="108" width="18" height="14" fill="#404040"/>
+        </g>
+      </svg>`
+    },
+
+    // ⑤ التصنيف في مجموعات — استدلال — 3Bh3
+    {
+      type: "classify",
+      objective: "3Bh3: يستكشف في التمارين الرياضية والنظام الغذائي الضروريّ للحفاظ على صحّة جيّدة",
+      level: "reasoning",
+      prompt: "صَنِّفْ كُلَّ عادةٍ: صِحّيّةٌ أَمْ غَيرُ صِحّيّةٍ؟",
+      groups: [
+        { name: "عادةٌ صِحّيّةٌ", items: ["المَشيُ إلى المَدرَسةِ", "النَّومُ مُبَكِّراً", "شُربُ الماءِ"] },
+        { name: "عادةٌ غَيرُ صِحّيّةٍ", items: ["الجُلوسُ أَمامَ الشّاشةِ طَويلاً", "السَّهَرُ لِوَقتٍ مُتَأَخِّرٍ", "الإكثارُ مِنَ الحَلوى"] }
+      ]
+    },
+
+    // ⑥ إثرائي: الشريط المتدرّج — تطبيق — 3Bh3
+    {
+      type: "slider",
+      objective: "3Bh3: يستكشف في التمارين الرياضية والنظام الغذائي الضروريّ للحفاظ على صحّة جيّدة",
+      level: "application",
+      prompt: "قَدِّرْ: كَمْ ساعةً يَنامُ تِلميذُ المَدرَسةِ في اللَّيلةِ؟",
+      min: 0, max: 16, answer: 11, tolerance: 1, unit: " ساعة", ticks: 4,
+      svg: `<svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="سرير وهلال يدلّان على النوم">
+        <g stroke="#111111" stroke-width="3">
+          <rect x="180" y="150" width="230" height="76" rx="14" fill="#20A0FF"/>
+          <rect x="190" y="158" width="210" height="20" fill="#40C0FF" stroke="none"/>
+          <rect x="190" y="204" width="210" height="16" fill="#2080E0" stroke="none"/>
+          <rect x="180" y="150" width="230" height="76" rx="14" fill="none"/>
+          <rect x="194" y="110" width="86" height="46" rx="16" fill="#F9F8F3"/>
+          <rect x="202" y="116" width="70" height="14" rx="7" fill="#FFFFFF" stroke="none"/>
+          <rect x="194" y="110" width="86" height="46" rx="16" fill="none"/>
+          <rect x="168" y="122" width="20" height="118" rx="8" fill="#8A5A2B"/>
+          <rect x="402" y="150" width="20" height="90" rx="8" fill="#8A5A2B"/>
+          <path d="M470 60 A56 56 0 1 0 536 126 A44 44 0 1 1 470 60 Z" fill="#FFA000"/>
+          <path d="M470 60 A56 56 0 0 0 448 100 A44 44 0 0 1 470 60 Z" fill="#FFFFC0" stroke="none"/>
+          <path d="M470 60 A56 56 0 1 0 536 126 A44 44 0 1 1 470 60 Z" fill="none"/>
+        </g>
+      </svg>`
+    }
+
+  ],
+
+  // العلوم/الثالث — الوحدة ٢، الدرس ٢-٥: تحقّق من تقدّمك (ص٣٢–٣٣) — مراجعة
+  "g3s-2-5": [
+
+    // ① اختيار من متعدد — معرفة — 3Bh3
+    {
+      type: "mcq",
+      objective: "3Bh3: يستكشف ويبحث عن النظام الغذائي الكافي والمتنوع اللازم للحفاظ على صحة جيدة",
+      level: "knowledge",
+      prompt: "أَيُّ مَجموعةٍ غِذائيَّةٍ نَحتاجُها لِنُمُوِّ الجِسمِ؟",
+      options: ["البُروتيناتُ", "النَّشَوِيّاتُ", "الدُّهونُ", "السُّكَّرِيّاتُ"],
+      answer: 0,
+      reason: "البُروتيناتُ كاللُّحومِ والأَسماكِ والبَيضِ تُساعِدُ الجِسمَ على النُّمُوِّ"
+    },
+
+    // ② صواب/خطأ — معرفة — 3Bh4
+    {
+      type: "true-false",
+      objective: "3Bh4: يعرف أن بعض الأطعمة الغنية بالسكر أو الدهون قد تضر بالصحة",
+      level: "knowledge",
+      prompt: "الإكثارُ مِنَ المَشروباتِ السُّكَّرِيَّةِ لا يَضُرُّ بِالأَسنانِ.",
+      answer: false,
+      reason: "السُّكَّرُ الكَثيرُ يُتلِفُ الأَسنانَ ويُسَبِّبُ التَّسَوُّسَ"
+    },
+
+    // ③ ملء الفراغ — معرفة — 3Bh3
+    {
+      type: "fill-blank",
+      objective: "3Bh3: يستكشف في التمارين الرياضية والنظام الغذائي الضروريّ للحفاظ على صحّة جيّدة",
+      level: "knowledge",
+      prompt: "أكمِلِ الجُملَةَ بسَحبِ الكَلِمَتَينِ المُناسِبَتَينِ.",
+      text: "لِتَكونَ صِحّيّاً تَحتاجُ إلى غِذاءٍ {} ومُمارَسةِ {} ونَومٍ كافٍ.",
+      answers: ["مُتَنَوِّعٍ", "الرِّياضةِ"],
+      distractors: ["واحِدٍ", "الشّاشةِ"]
+    },
+
+    // ④ تحديد الأجزاء — تطبيق — 3Bh3 (نفس هرم الدرس ٢-٢)
+    {
+      type: "hotspot",
+      objective: "3Bh3: يستكشف في النظام الغذائي الكافي والمتنوع اللازم للحفاظ على صحة جيدة",
+      level: "application",
+      prompt: "اضغَطْ على المَجموعةِ الَّتي نَأكُلُ مِنها أَقَلَّ شَيءٍ.",
+      bg: "#eef7ff",
+      spot: { x: 50, y: 23, r: 12 },
+      svg: `<svg viewBox="0 0 600 430" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="الهرم الغذائي بأربع طبقات">
+        <g stroke="#111111" stroke-width="3">
+          <polygon points="300,50 351.5,135 248.5,135" fill="#E07E8A"/>
+          <polygon points="300,50 326,93 274,93" fill="#F49AA4" stroke="none"/>
+          <polygon points="300,50 351.5,135 248.5,135" fill="none"/>
+          <polygon points="351.5,135 400,215 200,215 248.5,135" fill="#FF2020"/>
+          <polygon points="351.5,135 366,159 234,159 248.5,135" fill="#FF4020" stroke="none"/>
+          <polygon points="400,215 388,196 212,196 200,215" fill="#E02000" stroke="none"/>
+          <polygon points="351.5,135 400,215 200,215 248.5,135" fill="none"/>
+          <polygon points="400,215 451.5,300 148.5,300 200,215" fill="#60C020"/>
+          <polygon points="400,215 415,240 185,240 200,215" fill="#80C020" stroke="none"/>
+          <polygon points="451.5,300 438,278 162,278 148.5,300" fill="#4A9018" stroke="none"/>
+          <polygon points="400,215 451.5,300 148.5,300 200,215" fill="none"/>
+          <polygon points="451.5,300 500,380 100,380 148.5,300" fill="#E08000"/>
+          <polygon points="451.5,300 466,324 134,324 148.5,300" fill="#FFA000" stroke="none"/>
+          <polygon points="500,380 488,360 112,360 100,380" fill="#C06000" stroke="none"/>
+          <polygon points="451.5,300 500,380 100,380 148.5,300" fill="none"/>
+        </g>
+      </svg>`
+    },
+
+    // ⑤ التصنيف في مجموعات — استدلال — 3Bh4
+    {
+      type: "classify",
+      objective: "3Bh4: يعرف أن بعض الأطعمة الغنية بالسكر أو الدهون قد تضر بالصحة",
+      level: "reasoning",
+      prompt: "صَنِّفْ: يُفيدُ الجِسمَ أَمْ يَضُرُّ بِهِ إذا أَكثَرْنا مِنهُ؟",
+      groups: [
+        { name: "يُفيدُ الجِسمَ", items: ["الفَواكِهُ", "الماءُ", "السَّمَكُ"] },
+        { name: "يَضُرُّ إذا أَكثَرْنا", items: ["الحَلوى", "المَشروبُ الغازِيُّ", "الرَّقائِقُ المَقلِيَّةُ"] }
+      ]
+    },
+
+    // ⑥ إثرائي: الخريطة الذهنية — استدلال — 3Bh3
+    {
+      type: "mindmap",
+      objective: "3Bh3: يستكشف ويبحث عن النظام الغذائي الكافي والمتنوع اللازم للحفاظ على صحة جيدة",
+      level: "reasoning",
+      prompt: "أَكمِلْ خَريطةَ المَجموعاتِ الغِذائيَّةِ بِسَحبِ الفائِدةِ المُناسِبةِ إلى كُلِّ فَرعٍ.",
+      center: "المَجموعاتُ الغِذائيَّةُ",
+      branches: [
+        { label: "النَّشَوِيّاتُ",          answer: "الطّاقةُ" },
+        { label: "البُروتيناتُ",            answer: "النُّمُوُّ" },
+        { label: "مُنتَجاتُ الأَلبانِ",     answer: "العِظامُ القَويَّةُ" },
+        { label: "الفَواكِهُ والخَضراواتُ", answer: "الوِقايةُ" }
+      ],
+      distractors: ["النَّومُ", "الجَريُ"]
+    }
+
   ]
 
 };
