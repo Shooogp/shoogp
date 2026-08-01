@@ -1298,7 +1298,13 @@ function renderSlider(q, body, fb){
     ticks+=`<span class="sld-tick" style="left:${r}%"></span>`+
            `<span class="sld-tlabel" style="left:${r}%">${arNum(Math.round(v))}${unit}</span>`;
   }
+  // رسمٌ اختياريٌّ فوق الشريط: svg مباشر أو image من images/ — مرجعٌ بصريٌّ للمقدار
+  // المطلوب تقديرُه (قلمٌ يُقدَّر طولُه مثلاً). يُحذف كلياً من DOM إن لم يوجد في البيانات.
+  const sldFig=(q.svg||q.image)
+    ? `<div class="sldfig">${q.svg?q.svg:`<img src="${q.image}" alt="">`}</div>`
+    : '';
   body.innerHTML=`<div class="slider">`+
+    sldFig+
     `<div class="sld-value">القيمة المختارة: <b class="sld-num"></b></div>`+
     `<div class="sld-scale" dir="ltr">`+
       `<div class="sld-track">`+
