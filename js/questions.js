@@ -1584,39 +1584,6 @@ window.QUESTIONS = {
       objective: "2Ml1: يقدّر ويقيس ويقارن الأطوال والكتل والسعات بوحدات مناسبة وأدوات قياس مناسبة",
       level: "application",
       prompt: "قَدِّرْ: كَمْ سَنتيمِتراً يَبلُغُ طولُ قَلَمِ الرَّصاصِ الجَديدِ تَقريباً؟",
-      // رسمُ القلمِ مرجعٌ بصريٌّ للتقدير — **بلا تدريجٍ ولا مسطرةٍ عمداً**: السؤالُ تقديرٌ
-      // (‏«تَقريباً») لا قراءةُ قياس، فلو حُوذيَ الرسمُ بتدريجِ الشريطِ لقرأ التلميذُ الجوابَ
-      // بدل أن يقدّره. مبنيٌّ على ورقة المواصفات البصرية المعتمدة (CLAUDE.md).
-      svg: `<svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="قلم رصاص كهرمانيّ بسنٍّ مبريّ وطوق معدنيّ وممحاة حمراء">
-        <g stroke="#111111" stroke-width="3">
-          <rect x="150" y="110" width="360" height="80" rx="8" fill="#E08000"/>
-          <path d="M150 110 H510 V136 H150 Z" fill="#FFA000" stroke="none"/>
-          <path d="M150 164 H510 V190 H150 Z" fill="#C06000" stroke="none"/>
-          <rect x="172" y="116" width="316" height="12" rx="6" fill="#FFFFFF" stroke="none"/>
-          <rect x="150" y="110" width="360" height="80" rx="8" fill="none"/>
-          <line x1="152" y1="136" x2="508" y2="136" stroke-width="2"/>
-          <line x1="152" y1="164" x2="508" y2="164" stroke-width="2"/>
-          <rect x="558" y="112" width="52" height="76" rx="20" fill="#FF2020"/>
-          <path d="M566 112 H602 A20 20 0 0 1 610 128 V138 H558 V128 A20 20 0 0 1 566 112 Z" fill="#FF4020" stroke="none"/>
-          <path d="M558 166 H610 V172 A20 20 0 0 1 602 188 H566 A20 20 0 0 1 558 172 Z" fill="#E02000" stroke="none"/>
-          <rect x="558" y="112" width="52" height="76" rx="20" fill="none"/>
-          <rect x="504" y="106" width="60" height="88" rx="12" fill="#808080"/>
-          <path d="M516 106 H552 A12 12 0 0 1 564 118 V134 H504 V118 A12 12 0 0 1 516 106 Z" fill="#C0C0C0" stroke="none"/>
-          <path d="M504 166 H564 V182 A12 12 0 0 1 552 194 H516 A12 12 0 0 1 504 182 Z" fill="#606060" stroke="none"/>
-          <rect x="504" y="106" width="60" height="88" rx="12" fill="none"/>
-          <line x1="504" y1="134" x2="564" y2="134" stroke-width="2"/>
-          <line x1="504" y1="166" x2="564" y2="166" stroke-width="2"/>
-          <path d="M100 130 L158 110 V190 L100 170 Z" fill="#E0A87F"/>
-          <path d="M100 130 L158 110 V137 L100 143 Z" fill="#F2C3A0" stroke="none"/>
-          <path d="M100 157 L158 163 V190 L100 170 Z" fill="#C88A5E" stroke="none"/>
-          <path d="M100 130 L158 110 V190 L100 170 Z" fill="none"/>
-          <line x1="100" y1="143" x2="158" y2="137" stroke-width="2"/>
-          <line x1="100" y1="157" x2="158" y2="163" stroke-width="2"/>
-          <path d="M44 150 L100 130 V170 Z" fill="#404040"/>
-          <path d="M44 150 L100 130 V150 Z" fill="#606060" stroke="none"/>
-          <path d="M44 150 L100 130 V170 Z" fill="none"/>
-        </g>
-      </svg>`,
       min: 0, max: 30, answer: 15, tolerance: 3, unit: "سم", ticks: 5
     }
 
@@ -3988,142 +3955,36 @@ window.QUESTIONS = {
       ]
     },
 
-    // ⑫ اكتشف الخطأ — إثرائي: تناول كمية كبيرة من الدواء (رسم SVG بلا ملامح وجه).
-    // أُعيد رسمه بموجب قاعدة التفصيل البصري (CLAUDE.md): يدٌ بأصابع ومفاصل وكُمّ،
-    // وأقراصٌ بخطٍّ فاصل وسماكةِ حافّة، وزجاجةٌ بعنقٍ وغطاءٍ مضلّعٍ وملصقٍ ولمعةِ زجاج.
-    // وبند الترقية إلى مستوى فن المنصة مسجل في graphics-queue.md.
+    // ⑫ اكتشف الخطأ — إثرائي: تناول كمية كبيرة من الدواء (رسم SVG بلا ملامح وجه)
     {
       type: "find-error",
       objective: "4Bh11: يدرك أهمية أخذ الدواء بالجرعة والوقت المناسبين وبإشراف بالغ",
       level: "reasoning",
       prompt: "الطريقةُ الآمنةُ أن نأخذَ الجرعةَ المحدّدةَ فقط. اضغط على الخطأِ في هذا المشهدِ.",
       bg: "#f3e8d6",
-      spot: { x: 51, y: 69, r: 15 },
-      svg: `<svg viewBox="0 0 600 450" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="يد مفتوحة تحمل كمية كبيرة من الأقراص تنسكب من زجاجة دواء مائلة">
-        <g transform="rotate(-145 450 190)">
-          <rect x="433" y="128" width="34" height="24" rx="5" fill="#F1913D" stroke="#2B2E36" stroke-width="5"/>
-          <rect x="404" y="146" width="92" height="140" rx="18" fill="#F1913D" stroke="#2B2E36" stroke-width="5"/>
-          <rect x="466" y="156" width="24" height="120" rx="12" fill="#D97C2E"/>
-          <rect x="425" y="98" width="50" height="34" rx="10" fill="#EE6D5A" stroke="#2B2E36" stroke-width="5"/>
-          <line x1="437" y1="106" x2="437" y2="124" stroke="#2B2E36" stroke-width="3"/>
-          <line x1="450" y1="106" x2="450" y2="124" stroke="#2B2E36" stroke-width="3"/>
-          <line x1="463" y1="106" x2="463" y2="124" stroke="#2B2E36" stroke-width="3"/>
-          <rect x="412" y="182" width="76" height="68" rx="8" fill="#F7F9FA" stroke="#2B2E36" stroke-width="5"/>
-          <rect x="444" y="192" width="12" height="26" rx="3" fill="#EE6D5A"/>
-          <rect x="437" y="199" width="26" height="12" rx="3" fill="#EE6D5A"/>
-          <line x1="424" y1="230" x2="476" y2="230" stroke="#C9CDD4" stroke-width="4"/>
-          <line x1="424" y1="241" x2="464" y2="241" stroke="#C9CDD4" stroke-width="4"/>
-          <rect x="414" y="158" width="12" height="52" rx="6" fill="#ffffff" opacity=".4"/>
+      spot: { x: 50, y: 62, r: 16 },
+      svg: `<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="يد تتناول كمية كبيرة من الأقراص من زجاجة دواء">
+        <g transform="rotate(-36 318 96)">
+          <rect x="292" y="54" width="52" height="84" rx="12" fill="#e6913c" stroke="#9c5a1e" stroke-width="4"/>
+          <rect x="303" y="36" width="30" height="24" rx="5" fill="#c76f28" stroke="#9c5a1e" stroke-width="4"/>
+          <rect x="299" y="78" width="38" height="34" rx="4" fill="#fff5e2" stroke="#9c5a1e" stroke-width="2"/>
+          <line x1="305" y1="88" x2="331" y2="88" stroke="#c76f28" stroke-width="3"/>
+          <line x1="305" y1="98" x2="331" y2="98" stroke="#c76f28" stroke-width="3"/>
         </g>
-        <g fill="#F2C3A0" stroke="#2B2E36" stroke-width="5">
-          <g transform="rotate(-14 220 338)">
-            <rect x="204" y="248" width="32" height="92" rx="16"/>
-            <line x1="210" y1="288" x2="230" y2="288" stroke-width="3"/>
-            <line x1="210" y1="314" x2="230" y2="314" stroke-width="3"/>
-          </g>
-          <g transform="rotate(-6 257 338)">
-            <rect x="240" y="232" width="34" height="106" rx="17"/>
-            <line x1="246" y1="276" x2="268" y2="276" stroke-width="3"/>
-            <line x1="246" y1="306" x2="268" y2="306" stroke-width="3"/>
-          </g>
-          <g>
-            <rect x="278" y="224" width="34" height="114" rx="17"/>
-            <line x1="284" y1="268" x2="306" y2="268" stroke-width="3"/>
-            <line x1="284" y1="300" x2="306" y2="300" stroke-width="3"/>
-          </g>
-          <g transform="rotate(7 333 338)">
-            <rect x="316" y="234" width="34" height="104" rx="17"/>
-            <line x1="322" y1="278" x2="344" y2="278" stroke-width="3"/>
-            <line x1="322" y1="308" x2="344" y2="308" stroke-width="3"/>
-          </g>
+        <path d="M132 236 Q126 196 172 190 L236 190 Q282 196 276 236 Q270 268 204 271 Q138 268 132 236 Z" fill="#f0c8a2" stroke="#cf9a6e" stroke-width="5"/>
+        <g fill="#f28a8a" stroke="#b23b3b" stroke-width="2">
+          <ellipse cx="176" cy="176" rx="17" ry="11"/>
+          <ellipse cx="212" cy="170" rx="17" ry="11"/>
+          <ellipse cx="246" cy="178" rx="17" ry="11"/>
+          <ellipse cx="192" cy="192" rx="17" ry="11"/>
+          <ellipse cx="230" cy="192" rx="17" ry="11"/>
+          <ellipse cx="164" cy="196" rx="17" ry="11"/>
+          <ellipse cx="258" cy="198" rx="17" ry="11"/>
+          <ellipse cx="204" cy="156" rx="17" ry="11"/>
         </g>
-        <rect x="252" y="396" width="100" height="32" rx="8" fill="#F2C3A0" stroke="#2B2E36" stroke-width="5"/>
-        <path d="M198 322 Q194 386 244 404 L356 404 Q406 388 402 322 Q396 300 300 298 Q204 300 198 322 Z" fill="#F2C3A0" stroke="#2B2E36" stroke-width="5"/>
-        <path d="M384 308 Q404 318 402 332 Q404 384 358 402 Q390 376 386 332 Q386 318 384 308 Z" fill="#E0A87F"/>
-        <rect x="236" y="418" width="132" height="32" rx="12" fill="#5BC0EB" stroke="#2B2E36" stroke-width="5"/>
-        <rect x="242" y="436" width="120" height="10" rx="5" fill="#4A9FD5"/>
-        <line x1="258" y1="428" x2="346" y2="428" stroke="#2B2E36" stroke-width="3"/>
-        <g transform="rotate(42 394 336)" fill="#F2C3A0" stroke="#2B2E36" stroke-width="5">
-          <rect x="378" y="296" width="32" height="84" rx="16"/>
-          <line x1="384" y1="332" x2="404" y2="332" stroke-width="3"/>
-        </g>
-        <path d="M226 344 Q276 334 326 342" fill="none" stroke="#2B2E36" stroke-width="3"/>
-        <path d="M234 368 Q288 358 342 366" fill="none" stroke="#2B2E36" stroke-width="3"/>
-        <ellipse cx="302" cy="352" rx="92" ry="18" fill="#E0A87F" opacity=".6"/>
-        <g transform="translate(256 350)">
-          <ellipse cx="0" cy="4" rx="20" ry="13" fill="#E07E8A" stroke="#2B2E36" stroke-width="5"/>
-          <ellipse cx="0" cy="0" rx="20" ry="13" fill="#F49AA4" stroke="#2B2E36" stroke-width="5"/>
-          <line x1="-11" y1="0" x2="11" y2="0" stroke="#2B2E36" stroke-width="3"/>
-        </g>
-        <g transform="translate(302 352)">
-          <ellipse cx="0" cy="4" rx="20" ry="13" fill="#E07E8A" stroke="#2B2E36" stroke-width="5"/>
-          <ellipse cx="0" cy="0" rx="20" ry="13" fill="#F49AA4" stroke="#2B2E36" stroke-width="5"/>
-          <line x1="-11" y1="0" x2="11" y2="0" stroke="#2B2E36" stroke-width="3"/>
-        </g>
-        <g transform="translate(348 348) rotate(8)">
-          <rect x="-22" y="-9" width="44" height="18" rx="9" fill="#F7C948"/>
-          <path d="M0 -9 H-13 A9 9 0 0 0 -13 9 H0 Z" fill="#5BC0EB"/>
-          <line x1="0" y1="-9" x2="0" y2="9" stroke="#2B2E36" stroke-width="3"/>
-          <rect x="-22" y="-9" width="44" height="18" rx="9" fill="none" stroke="#2B2E36" stroke-width="5"/>
-        </g>
-        <g transform="translate(240 326) rotate(-12)">
-          <rect x="-22" y="-9" width="44" height="18" rx="9" fill="#F7C948"/>
-          <path d="M0 -9 H-13 A9 9 0 0 0 -13 9 H0 Z" fill="#5BC0EB"/>
-          <line x1="0" y1="-9" x2="0" y2="9" stroke="#2B2E36" stroke-width="3"/>
-          <rect x="-22" y="-9" width="44" height="18" rx="9" fill="none" stroke="#2B2E36" stroke-width="5"/>
-        </g>
-        <g transform="translate(284 324)">
-          <ellipse cx="0" cy="4" rx="20" ry="13" fill="#E07E8A" stroke="#2B2E36" stroke-width="5"/>
-          <ellipse cx="0" cy="0" rx="20" ry="13" fill="#F49AA4" stroke="#2B2E36" stroke-width="5"/>
-          <line x1="-11" y1="0" x2="11" y2="0" stroke="#2B2E36" stroke-width="3"/>
-        </g>
-        <g transform="translate(328 326)">
-          <ellipse cx="0" cy="4" rx="20" ry="13" fill="#E07E8A" stroke="#2B2E36" stroke-width="5"/>
-          <ellipse cx="0" cy="0" rx="20" ry="13" fill="#F49AA4" stroke="#2B2E36" stroke-width="5"/>
-          <line x1="-11" y1="0" x2="11" y2="0" stroke="#2B2E36" stroke-width="3"/>
-        </g>
-        <g transform="translate(368 328)">
-          <ellipse cx="0" cy="4" rx="20" ry="13" fill="#E07E8A" stroke="#2B2E36" stroke-width="5"/>
-          <ellipse cx="0" cy="0" rx="20" ry="13" fill="#F49AA4" stroke="#2B2E36" stroke-width="5"/>
-          <line x1="-11" y1="0" x2="11" y2="0" stroke="#2B2E36" stroke-width="3"/>
-        </g>
-        <g transform="translate(264 304)">
-          <ellipse cx="0" cy="4" rx="20" ry="13" fill="#E07E8A" stroke="#2B2E36" stroke-width="5"/>
-          <ellipse cx="0" cy="0" rx="20" ry="13" fill="#F49AA4" stroke="#2B2E36" stroke-width="5"/>
-          <line x1="-11" y1="0" x2="11" y2="0" stroke="#2B2E36" stroke-width="3"/>
-        </g>
-        <g transform="translate(308 300) rotate(-5)">
-          <rect x="-22" y="-9" width="44" height="18" rx="9" fill="#F7C948"/>
-          <path d="M0 -9 H-13 A9 9 0 0 0 -13 9 H0 Z" fill="#5BC0EB"/>
-          <line x1="0" y1="-9" x2="0" y2="9" stroke="#2B2E36" stroke-width="3"/>
-          <rect x="-22" y="-9" width="44" height="18" rx="9" fill="none" stroke="#2B2E36" stroke-width="5"/>
-        </g>
-        <g transform="translate(352 306)">
-          <ellipse cx="0" cy="4" rx="20" ry="13" fill="#E07E8A" stroke="#2B2E36" stroke-width="5"/>
-          <ellipse cx="0" cy="0" rx="20" ry="13" fill="#F49AA4" stroke="#2B2E36" stroke-width="5"/>
-          <line x1="-11" y1="0" x2="11" y2="0" stroke="#2B2E36" stroke-width="3"/>
-        </g>
-        <g transform="translate(286 282)">
-          <ellipse cx="0" cy="4" rx="20" ry="13" fill="#E07E8A" stroke="#2B2E36" stroke-width="5"/>
-          <ellipse cx="0" cy="0" rx="20" ry="13" fill="#F49AA4" stroke="#2B2E36" stroke-width="5"/>
-          <line x1="-11" y1="0" x2="11" y2="0" stroke="#2B2E36" stroke-width="3"/>
-        </g>
-        <g transform="translate(330 284) rotate(14)">
-          <rect x="-22" y="-9" width="44" height="18" rx="9" fill="#F7C948"/>
-          <path d="M0 -9 H-13 A9 9 0 0 0 -13 9 H0 Z" fill="#5BC0EB"/>
-          <line x1="0" y1="-9" x2="0" y2="9" stroke="#2B2E36" stroke-width="3"/>
-          <rect x="-22" y="-9" width="44" height="18" rx="9" fill="none" stroke="#2B2E36" stroke-width="5"/>
-        </g>
-        <g transform="translate(362 292) rotate(-18)">
-          <ellipse cx="0" cy="4" rx="20" ry="13" fill="#E07E8A" stroke="#2B2E36" stroke-width="5"/>
-          <ellipse cx="0" cy="0" rx="20" ry="13" fill="#F49AA4" stroke="#2B2E36" stroke-width="5"/>
-          <line x1="-11" y1="0" x2="11" y2="0" stroke="#2B2E36" stroke-width="3"/>
-        </g>
-        <g transform="translate(378 274) rotate(28)">
-          <rect x="-22" y="-9" width="44" height="18" rx="9" fill="#F7C948"/>
-          <path d="M0 -9 H-13 A9 9 0 0 0 -13 9 H0 Z" fill="#5BC0EB"/>
-          <line x1="0" y1="-9" x2="0" y2="9" stroke="#2B2E36" stroke-width="3"/>
-          <rect x="-22" y="-9" width="44" height="18" rx="9" fill="none" stroke="#2B2E36" stroke-width="5"/>
+        <g fill="#f7b3b3" stroke="#b23b3b" stroke-width="2">
+          <ellipse cx="238" cy="132" rx="13" ry="8" transform="rotate(-30 238 132)"/>
+          <ellipse cx="222" cy="150" rx="13" ry="8" transform="rotate(-20 222 150)"/>
         </g>
       </svg>`
     }
@@ -5674,61 +5535,23 @@ window.QUESTIONS = {
       prompt: "اضغَطْ على البَذرَةِ الَّتي نَمَت وأصبَحَت نَبتَةً.",
       fit: "width",
       bg: "#eaf3fb",
-      // نصفُ قطرِ الهدفِ رُفِع 14←18 مع إعادةِ الرسم: الورقةُ اليمنى تمتدُّ إلى 94.5٪ عرضاً
-      // فكانت أطرافُها خارجَ الدائرةِ (17.2 > 14) رغمَ أنّها من النبتةِ نفسِها. و18 يغطّيها
-      // ويبقى بعيداً عن المرحلةِ الوسطى (مسافتُها 42).
-      spot: { x: 83, y: 40, r: 18 },
-      // أُعيد رسمه بورقة المواصفات البصرية (CLAUDE.md): حدٌّ ‎#111111‎، وسلالمُ حجمٍ من
-      // ٣ درجاتٍ بحوافَّ حادّة، ولمعةٌ بيضاءُ على الأسطحِ المنحنية. رُفِعت اللوحةُ
-      // 360×220 ← 600×367 (النسبةُ 1.635 كما هي، داخلَ نطاقِ [1.6، 2.2] لرسومِ fit:"width"
-      // — shoogp-ui §١.١٠) ليصيرَ ‎stroke-width:3‎ مطابقاً لسماكةِ الورقةِ المقيسةِ على ٦٠٠.
-      // التربةُ هنا **مقطعٌ من المشهدِ لا خطُّ أرضٍ مُضاف**، فلا تخالفُ قاعدةَ «بلا خطِّ أرض».
-      svg: `<svg viewBox="0 0 600 367" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="مراحل نمو البذرة: بذرة ساكنة، وبذرة أنبتت جذوراً، ونبتة نمت بأوراق">
-        <rect x="0" y="187" width="600" height="180" fill="#9A6636"/>
-        <rect x="0" y="187" width="600" height="15" fill="#7A4C22"/>
-        <rect x="0" y="300" width="600" height="67" fill="#7A4C22"/>
-        <g fill="#000000" opacity="0.18">
-          <ellipse cx="72" cy="228" rx="7" ry="4.5"/><ellipse cx="196" cy="286" rx="6" ry="4"/>
-          <ellipse cx="392" cy="252" rx="6.5" ry="4"/><ellipse cx="548" cy="292" rx="6" ry="4"/>
-          <ellipse cx="140" cy="330" rx="6" ry="4"/><ellipse cx="356" cy="344" rx="5.5" ry="3.5"/>
+      spot: { x: 83, y: 40, r: 14 },
+      svg: `<svg viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="مراحل نمو البذرة">
+        <rect x="0" y="112" width="360" height="108" fill="#c8935e"/>
+        <rect x="0" y="112" width="360" height="9" fill="#a9743f"/>
+        <ellipse cx="60" cy="150" rx="15" ry="10" fill="#e6c15a" stroke="#b9922f" stroke-width="2.5" transform="rotate(20 60 150)"/>
+        <g transform="translate(180 0)">
+          <ellipse cx="0" cy="146" rx="14" ry="9" fill="#e6c15a" stroke="#b9922f" stroke-width="2.5"/>
+          <path d="M0 152 Q-6 176 -14 196" fill="none" stroke="#d9d2b0" stroke-width="4" stroke-linecap="round"/>
+          <path d="M0 152 Q4 172 10 190" fill="none" stroke="#d9d2b0" stroke-width="4" stroke-linecap="round"/>
         </g>
-        <line x1="0" y1="187" x2="600" y2="187" stroke="#111111" stroke-width="3"/>
-        <g transform="rotate(20 100 250)">
-          <ellipse cx="100" cy="250" rx="25" ry="17" fill="#C06000" stroke="#111111" stroke-width="3"/>
-          <ellipse cx="97" cy="246" rx="20" ry="13" fill="#E08000"/>
-          <ellipse cx="94" cy="243" rx="14" ry="9" fill="#FFA000"/>
-          <ellipse cx="91" cy="240" rx="7" ry="3.5" transform="rotate(-18 91 240)" fill="#FFFFFF"/>
+        <g transform="translate(300 0)">
+          <line x1="0" y1="118" x2="0" y2="52" stroke="#4e9d42" stroke-width="7" stroke-linecap="round"/>
+          <path d="M0 78 Q-26 70 -40 74 Q-26 90 0 78 Z" fill="#63c154" stroke="#3c8a34" stroke-width="2.5"/>
+          <path d="M0 64 Q26 56 40 60 Q26 76 0 64 Z" fill="#63c154" stroke="#3c8a34" stroke-width="2.5"/>
+          <path d="M0 120 Q-8 150 -16 190" fill="none" stroke="#d9d2b0" stroke-width="4" stroke-linecap="round"/>
+          <path d="M0 120 Q6 150 12 192" fill="none" stroke="#d9d2b0" stroke-width="4" stroke-linecap="round"/>
         </g>
-        <path d="M300 253 Q290 293 277 327" fill="none" stroke="#111111" stroke-width="11"/>
-        <path d="M300 253 Q307 287 317 317" fill="none" stroke="#111111" stroke-width="11"/>
-        <path d="M300 253 Q290 293 277 327" fill="none" stroke="#D8D6D0" stroke-width="7"/>
-        <path d="M300 253 Q307 287 317 317" fill="none" stroke="#D8D6D0" stroke-width="7"/>
-        <path d="M300 253 Q290 293 277 327" fill="none" stroke="#F9F8F3" stroke-width="3"/>
-        <path d="M300 253 Q307 287 317 317" fill="none" stroke="#F9F8F3" stroke-width="3"/>
-        <ellipse cx="300" cy="243" rx="24" ry="16" fill="#C06000" stroke="#111111" stroke-width="3"/>
-        <ellipse cx="297" cy="239" rx="19" ry="12" fill="#E08000"/>
-        <ellipse cx="294" cy="236" rx="13" ry="8" fill="#FFA000"/>
-        <ellipse cx="291" cy="233" rx="6.5" ry="3.5" transform="rotate(-18 291 233)" fill="#FFFFFF"/>
-        <path d="M500 197 Q487 247 473 317" fill="none" stroke="#111111" stroke-width="11"/>
-        <path d="M500 197 Q510 247 520 320" fill="none" stroke="#111111" stroke-width="11"/>
-        <path d="M500 197 Q487 247 473 317" fill="none" stroke="#D8D6D0" stroke-width="7"/>
-        <path d="M500 197 Q510 247 520 320" fill="none" stroke="#D8D6D0" stroke-width="7"/>
-        <path d="M500 197 Q487 247 473 317" fill="none" stroke="#F9F8F3" stroke-width="3"/>
-        <path d="M500 197 Q510 247 520 320" fill="none" stroke="#F9F8F3" stroke-width="3"/>
-        <line x1="500" y1="200" x2="500" y2="87" stroke="#111111" stroke-width="15"/>
-        <line x1="500" y1="200" x2="500" y2="87" stroke="#4A9018" stroke-width="11"/>
-        <line x1="498" y1="197" x2="498" y2="90" stroke="#60C020" stroke-width="6"/>
-        <line x1="496" y1="194" x2="496" y2="94" stroke="#80C020" stroke-width="2.5"/>
-        <path d="M500 130 Q457 117 433 123 Q457 150 500 130 Z" fill="#60C020" stroke="#111111" stroke-width="3"/>
-        <path d="M500 130 Q457 117 433 123 Q460 129 500 130 Z" fill="#80C020"/>
-        <path d="M500 130 Q460 129 433 123 Q457 150 500 130 Z" fill="#4A9018"/>
-        <path d="M500 130 Q457 117 433 123 Q457 150 500 130 Z" fill="none" stroke="#111111" stroke-width="3"/>
-        <path d="M500 130 Q463 128 435 123" fill="none" stroke="#4A9018" stroke-width="2"/>
-        <path d="M500 107 Q543 93 567 100 Q543 127 500 107 Z" fill="#60C020" stroke="#111111" stroke-width="3"/>
-        <path d="M500 107 Q543 93 567 100 Q540 105 500 107 Z" fill="#80C020"/>
-        <path d="M500 107 Q540 105 567 100 Q543 127 500 107 Z" fill="#4A9018"/>
-        <path d="M500 107 Q543 93 567 100 Q543 127 500 107 Z" fill="none" stroke="#111111" stroke-width="3"/>
-        <path d="M500 107 Q540 103 565 100" fill="none" stroke="#4A9018" stroke-width="2"/>
       </svg>`
     },
 
@@ -5795,49 +5618,30 @@ window.QUESTIONS = {
       prompt: "نَبتَةٌ في الضَّوءِ وأُخرى داخِلَ صُندوقٍ مُظلِمٍ. اضغَطْ على النَّبتَةِ الَّتي سَتَنمو أفضَلَ.",
       fit: "width",
       bg: "#eaf3fb",
-      // نصفُ قطرِ الهدفِ رُفِع 15←17 مع إعادةِ الرسم: طرفُ الورقةِ اليمنى عندَ 33.8٪ عرضاً
-      // فكانَ خارجَ الدائرةِ (15.1 > 15) رغمَ أنّه من النبتةِ الصحيحة. و17 يغطّيه، وأقربُ
-      // نقطةٍ في الصندوقِ المظلمِ تبعدُ 36.3 فلا خطرَ من التداخل.
-      spot: { x: 22, y: 55, r: 17 },
-      // أُعيد رسمه بورقة المواصفات البصرية (CLAUDE.md): حدٌّ ‎#111111‎، وسلالمُ حجمٍ من
-      // ٣ درجاتٍ بحوافَّ حادّة، ولمعةٌ بيضاء. رُفِعت اللوحةُ 360×220 ← 600×367 (النسبةُ
-      // 1.635 داخلَ نطاقِ [1.6، 2.2] لرسومِ fit:"width" — shoogp-ui §١.١٠).
-      // **وأُصلِح خللٌ في الرسمِ القديم:** وجهُ الصندوقِ الجانبيُّ كان يمتدُّ إلى x=400
-      // بينما عرضُ اللوحةِ 360 — أي أنّ جزءاً منه كان **مقصوصاً خارجَ الرسم**. الصندوقُ
-      // الآن محصورٌ كاملاً داخلَ اللوحة (أقصى x = 590). وحُذِف مسارٌ ميّتٌ بلا تعبئةٍ ولا حدّ.
-      svg: `<svg viewBox="0 0 600 367" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="نبتة في الضوء تحت الشمس وصندوق مظلم مغلق">
-        <g stroke="#111111" stroke-width="3">
-          <polygon points="172,70 146.96,85.31 153.84,113.84 125.31,106.96 110,132 94.69,106.96 66.16,113.84 73.04,85.31 48,70 73.04,54.69 66.16,26.16 94.69,33.04 110,8 125.31,33.04 153.84,26.16 146.96,54.69" fill="#E08000"/>
-          <circle cx="110" cy="70" r="40" fill="#FFA000"/>
-          <path d="M73.34 54 A40 40 0 0 1 146.66 54 Z" fill="#FFFFC0" stroke="none"/>
-          <ellipse cx="92" cy="45" rx="13" ry="5" transform="rotate(-24 92 45)" fill="#FFFFFF" stroke="none"/>
+      spot: { x: 22, y: 55, r: 15 },
+      svg: `<svg viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="تجربة النبات والضوء">
+        <g fill="#f7d64a">
+          <circle cx="70" cy="42" r="26"/>
+          <g stroke="#f7d64a" stroke-width="5" stroke-linecap="round">
+            <line x1="70" y1="4" x2="70" y2="14"/>
+            <line x1="70" y1="70" x2="70" y2="80"/>
+            <line x1="32" y1="42" x2="42" y2="42"/>
+            <line x1="98" y1="42" x2="108" y2="42"/>
+            <line x1="43" y1="15" x2="50" y2="22"/>
+            <line x1="90" y1="62" x2="97" y2="69"/>
+            <line x1="43" y1="69" x2="50" y2="62"/>
+            <line x1="90" y1="22" x2="97" y2="15"/>
+          </g>
         </g>
-        <rect x="33" y="250" width="200" height="50" rx="10" fill="#9A6636" stroke="#111111" stroke-width="3"/>
-        <path d="M43 250 H223 V262 H43 Z" fill="#7A4C22"/>
-        <path d="M43 288 H223 V296 A6 6 0 0 1 217 300 H49 A6 6 0 0 1 43 296 Z" fill="#6B4320"/>
-        <rect x="33" y="250" width="200" height="50" rx="10" fill="none" stroke="#111111" stroke-width="3"/>
-        <line x1="133" y1="256" x2="133" y2="160" stroke="#111111" stroke-width="15"/>
-        <line x1="133" y1="256" x2="133" y2="160" stroke="#4A9018" stroke-width="11"/>
-        <line x1="131" y1="253" x2="131" y2="163" stroke="#60C020" stroke-width="6"/>
-        <line x1="129" y1="250" x2="129" y2="167" stroke="#80C020" stroke-width="2.5"/>
-        <path d="M133 200 Q87 187 63 193 Q87 220 133 200 Z" fill="#60C020" stroke="#111111" stroke-width="3"/>
-        <path d="M133 200 Q87 187 63 193 Q90 199 133 200 Z" fill="#80C020"/>
-        <path d="M133 200 Q90 199 63 193 Q87 220 133 200 Z" fill="#4A9018"/>
-        <path d="M133 200 Q87 187 63 193 Q87 220 133 200 Z" fill="none" stroke="#111111" stroke-width="3"/>
-        <path d="M133 200 Q93 198 65 193" fill="none" stroke="#4A9018" stroke-width="2"/>
-        <path d="M133 173 Q180 160 203 167 Q180 193 133 173 Z" fill="#60C020" stroke="#111111" stroke-width="3"/>
-        <path d="M133 173 Q180 160 203 167 Q177 171 133 173 Z" fill="#80C020"/>
-        <path d="M133 173 Q177 171 203 167 Q180 193 133 173 Z" fill="#4A9018"/>
-        <path d="M133 173 Q180 160 203 167 Q180 193 133 173 Z" fill="none" stroke="#111111" stroke-width="3"/>
-        <path d="M133 173 Q177 169 201 167" fill="none" stroke="#4A9018" stroke-width="2"/>
-        <path d="M530 140 L590 105 L590 275 L530 310 Z" fill="#6B4320" stroke="#111111" stroke-width="3"/>
-        <path d="M350 140 L410 105 L590 105 L530 140 Z" fill="#B98551" stroke="#111111" stroke-width="3"/>
-        <rect x="350" y="140" width="180" height="170" rx="12" fill="#7A4C22" stroke="#111111" stroke-width="3"/>
-        <path d="M356 140 H524 V158 H356 Z" fill="#9A6636"/>
-        <path d="M356 286 H524 V298 A12 12 0 0 1 512 310 H368 A12 12 0 0 1 356 298 Z" fill="#5A3618"/>
-        <rect x="350" y="140" width="180" height="170" rx="12" fill="none" stroke="#111111" stroke-width="3"/>
-        <line x1="440" y1="158" x2="440" y2="286" stroke="#5A3618" stroke-width="2.5"/>
-        <text x="440" y="248" font-size="62" text-anchor="middle" fill="#E4E6E8" font-family="Tajawal, Dubai, sans-serif">؟</text>
+        <rect x="20" y="150" width="120" height="30" rx="6" fill="#c8935e"/>
+        <path d="M40 150 l40 -34 l40 34 Z" fill="none"/>
+        <line x1="80" y1="150" x2="80" y2="96" stroke="#4e9d42" stroke-width="8" stroke-linecap="round"/>
+        <path d="M80 120 Q52 112 38 116 Q52 132 80 120 Z" fill="#63c154" stroke="#3c8a34" stroke-width="2.5"/>
+        <path d="M80 104 Q108 96 122 100 Q108 116 80 104 Z" fill="#63c154" stroke="#3c8a34" stroke-width="2.5"/>
+        <rect x="235" y="70" width="110" height="110" rx="8" fill="#a9743f" stroke="#7c4a22" stroke-width="4"/>
+        <path d="M235 70 l55 -22 l110 0 l-55 22 Z" fill="#c8935e" stroke="#7c4a22" stroke-width="4"/>
+        <path d="M345 70 l55 -22 l0 110 l-55 22 Z" fill="#9c692f" stroke="#7c4a22" stroke-width="4"/>
+        <text x="290" y="135" font-size="30" text-anchor="middle" fill="#f3e2c6" font-family="Tajawal, Dubai, sans-serif">؟</text>
       </svg>`
     },
 
@@ -5983,56 +5787,29 @@ window.QUESTIONS = {
       prompt: "اضغَطْ على الطِّفلِ صاحِبِ الشَّعرِ الداكِنِ.",
       fit: "width",
       bg: "#eef7ff",
-      // نصفُ قطرِ الهدفِ 15←21 ومركزُه (82,45)←(83,45) مع إعادةِ الرسم: الطفلُ الثالثُ يمتدُّ
-      // من 25.3٪ (قمّةُ الشعر — وهي **دليلُ السؤال**) إلى 86.4٪ ارتفاعاً، وكانت 15 تُخطّئُ
-      // النقرَ على شعرِه نفسِه. و21 يغطّي الشعرَ والرأسَ وأعلى الجذع، وأقربُ نقطةٍ في
-      // الطفلِ الأوسطِ تبعدُ 23.9 فيبقى خارجَها.
-      spot: { x: 83, y: 45, r: 21 },
-      // أُعيد رسمه بورقة المواصفات البصرية (CLAUDE.md) مع **حذفِ ملامحِ الوجه** (قاعدةُ
-      // «بلا ملامح وجه» — CLAUDE.md): حُذِفت العيونُ والابتسامات. **لا أثرَ على السؤال**
-      // لأنّ دليلَه **لونُ الشعر** لا الوجه. رُفِعت اللوحةُ 360×220 ← 600×367 (النسبة 1.635،
-      // داخلَ نطاقِ [1.6، 2.2] لرسومِ fit:"width" — shoogp-ui §١.١٠).
-      // اختلافُ درجاتِ البشرةِ والشعرِ بينَ الثلاثةِ **مقصودٌ** — هو موضوعُ الدرسِ نفسِه.
-      svg: `<svg viewBox="0 0 600 367" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="ثلاثة أطفال بألوان شعر وبشرة مختلفة، بلا ملامح وجه">
-        <rect x="85" y="194" width="30" height="30" rx="9" fill="#E0A87F" stroke="#111111" stroke-width="3"/>
-        <rect x="60" y="217" width="80" height="100" rx="23" fill="#FF2020" stroke="#111111" stroke-width="3"/>
-        <rect x="60" y="240" width="80" height="22" fill="#FF4020"/>
-        <rect x="60" y="272" width="80" height="22" fill="#E02000"/>
-        <rect x="60" y="217" width="80" height="100" rx="23" fill="none" stroke="#111111" stroke-width="3"/>
-        <circle cx="100" cy="150" r="57" fill="#E0A87F" stroke="#111111" stroke-width="3"/>
-        <path d="M46.6 130 A57 57 0 0 1 153.4 130 Z" fill="#F2C3A0"/>
-        <path d="M49.3 176 A57 57 0 0 0 150.7 176 Z" fill="#C88A5E"/>
-        <circle cx="100" cy="150" r="57" fill="none" stroke="#111111" stroke-width="3"/>
-        <path d="M46.7 136.7 Q100 66.7 153.3 136.7 Q153.3 100 100 86.7 Q46.7 100 46.7 136.7 Z" fill="#DDB03C" stroke="#111111" stroke-width="3"/>
-        <path d="M58 120 Q100 78 142 120 Q100 96 58 120 Z" fill="#F5CE5A"/>
-        <ellipse cx="78" cy="104" rx="15" ry="5.5" transform="rotate(-26 78 104)" fill="#FFFFFF"/>
-        <path d="M46.7 136.7 Q100 66.7 153.3 136.7 Q153.3 100 100 86.7 Q46.7 100 46.7 136.7 Z" fill="none" stroke="#111111" stroke-width="3"/>
-        <rect x="285" y="194" width="30" height="30" rx="9" fill="#C88A5E" stroke="#111111" stroke-width="3"/>
-        <rect x="260" y="217" width="80" height="100" rx="23" fill="#60C020" stroke="#111111" stroke-width="3"/>
-        <rect x="260" y="240" width="80" height="22" fill="#80C020"/>
-        <rect x="260" y="272" width="80" height="22" fill="#4A9018"/>
-        <rect x="260" y="217" width="80" height="100" rx="23" fill="none" stroke="#111111" stroke-width="3"/>
-        <circle cx="300" cy="150" r="57" fill="#C88A5E" stroke="#111111" stroke-width="3"/>
-        <path d="M246.6 130 A57 57 0 0 1 353.4 130 Z" fill="#E0A87F"/>
-        <path d="M249.3 176 A57 57 0 0 0 350.7 176 Z" fill="#A87048"/>
-        <circle cx="300" cy="150" r="57" fill="none" stroke="#111111" stroke-width="3"/>
-        <path d="M246.7 140 Q300 73.3 353.3 140 Q356.7 103.3 300 90 Q243.3 103.3 246.7 140 Z" fill="#8A5A2B" stroke="#111111" stroke-width="3"/>
-        <path d="M258 122 Q300 82 342 122 Q300 100 258 122 Z" fill="#A87048"/>
-        <ellipse cx="278" cy="107" rx="15" ry="5.5" transform="rotate(-26 278 107)" fill="#FFFFFF" opacity="0.75"/>
-        <path d="M246.7 140 Q300 73.3 353.3 140 Q356.7 103.3 300 90 Q243.3 103.3 246.7 140 Z" fill="none" stroke="#111111" stroke-width="3"/>
-        <rect x="485" y="194" width="30" height="30" rx="9" fill="#EABF9A" stroke="#111111" stroke-width="3"/>
-        <rect x="460" y="217" width="80" height="100" rx="23" fill="#20A0FF" stroke="#111111" stroke-width="3"/>
-        <rect x="460" y="240" width="80" height="22" fill="#40C0FF"/>
-        <rect x="460" y="272" width="80" height="22" fill="#2080E0"/>
-        <rect x="460" y="217" width="80" height="100" rx="23" fill="none" stroke="#111111" stroke-width="3"/>
-        <circle cx="500" cy="150" r="57" fill="#EABF9A" stroke="#111111" stroke-width="3"/>
-        <path d="M446.6 130 A57 57 0 0 1 553.4 130 Z" fill="#F7D3B4"/>
-        <path d="M449.3 176 A57 57 0 0 0 550.7 176 Z" fill="#D0A47C"/>
-        <circle cx="500" cy="150" r="57" fill="none" stroke="#111111" stroke-width="3"/>
-        <path d="M443.3 143.3 Q500 66.7 556.7 143.3 Q560 96.7 500 83.3 Q436.7 96.7 443.3 143.3 Z" fill="#262626" stroke="#111111" stroke-width="3"/>
-        <path d="M458 122 Q500 80 542 122 Q500 98 458 122 Z" fill="#3A3A3A"/>
-        <ellipse cx="478" cy="106" rx="15" ry="5.5" transform="rotate(-26 478 106)" fill="#FFFFFF" opacity="0.55"/>
-        <path d="M443.3 143.3 Q500 66.7 556.7 143.3 Q560 96.7 500 83.3 Q436.7 96.7 443.3 143.3 Z" fill="none" stroke="#111111" stroke-width="3"/>
+      spot: { x: 82, y: 45, r: 15 },
+      svg: `<svg viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ثلاثة أطفال مختلفون">
+        <g>
+          <circle cx="60" cy="90" r="34" fill="#f6c9a0" stroke="#d89b6a" stroke-width="3"/>
+          <path d="M28 82 Q60 40 92 82 Q92 60 60 52 Q28 60 28 82 Z" fill="#e8b23a" stroke="#c7911f" stroke-width="2.5"/>
+          <circle cx="49" cy="90" r="4" fill="#3b2a1a"/><circle cx="71" cy="90" r="4" fill="#3b2a1a"/>
+          <path d="M50 106 Q60 114 70 106" fill="none" stroke="#7c4a22" stroke-width="3" stroke-linecap="round"/>
+          <rect x="36" y="130" width="48" height="60" rx="14" fill="#e0574c"/>
+        </g>
+        <g>
+          <circle cx="180" cy="90" r="34" fill="#e7b48a" stroke="#c98e5c" stroke-width="3"/>
+          <path d="M148 84 Q180 44 212 84 Q214 62 180 54 Q146 62 148 84 Z" fill="#9b6a3c" stroke="#794f2a" stroke-width="2.5"/>
+          <circle cx="169" cy="90" r="4" fill="#3b2a1a"/><circle cx="191" cy="90" r="4" fill="#3b2a1a"/>
+          <path d="M170 106 Q180 114 190 106" fill="none" stroke="#7c4a22" stroke-width="3" stroke-linecap="round"/>
+          <rect x="156" y="130" width="48" height="60" rx="14" fill="#4e9d42"/>
+        </g>
+        <g>
+          <circle cx="300" cy="90" r="34" fill="#f3d3b3" stroke="#d3ab86" stroke-width="3"/>
+          <path d="M266 86 Q300 40 334 86 Q336 58 300 50 Q262 58 266 86 Z" fill="#2f2622" stroke="#15100d" stroke-width="2.5"/>
+          <circle cx="289" cy="90" r="4" fill="#3b2a1a"/><circle cx="311" cy="90" r="4" fill="#3b2a1a"/>
+          <path d="M290 106 Q300 114 310 106" fill="none" stroke="#7c4a22" stroke-width="3" stroke-linecap="round"/>
+          <rect x="276" y="130" width="48" height="60" rx="14" fill="#2f6fb0"/>
+        </g>
       </svg>`
     },
 
@@ -6101,22 +5878,29 @@ window.QUESTIONS = {
       level: "application",
       prompt: "اسحَبِ اسمَ كُلِّ جُزءٍ إلى مَكانِهِ في الجِسمِ.",
       bg: "#eef7ff",
-      // **صورةٌ مُعادُ استعمالُها لا رسمٌ جديد (اقتراحُ المالك):** `images/طفل-أشعة.png`
-      // نفسُها المستعمَلةُ في `g4s-1-1` السؤالِ السادس (نوع `lens`). ومزاياها ثلاث:
-      // فنُّها من فنِّ المنصّةِ نفسِه، و**وجهُها خالٍ من الملامحِ أصلاً** فتحقّقُ قاعدةَ
-      // «بلا ملامح وجه» بلا تعديل، ونسبتُها **1.5 ≥ 1.2** فيختارُ لها النظامُ تخطيطَ
-      // الصفِّ الأفقيّ (shoogp-ui §١.٧‑هـ) — بخلافِ الرسمِ الطوليِّ السابقِ (نسبة 0.638)
-      // الذي كان **يفيضُ خارجَ غلافِه**: `.labelimg` سقفُه `max-height:86%` = 341px
-      // بينما الرسمُ يُصيَّرُ 470px (مقيسٌ حيّاً).
-      // **الأهدافُ أُعيد حسابُها كلُّها** لأنّ `dot` نِسَبٌ من الصورةِ لا من الرسمِ القديم.
-      image: "images/طفل-أشعة.png",
       targets: [
-        { answer: "الرَّأسُ",  box:{x:82,y:8},  dot:{x:49.5,y:22} },
-        { answer: "الذِّراعُ", box:{x:16,y:32}, dot:{x:41,  y:48} },
-        { answer: "اليَدُ",    box:{x:16,y:52}, dot:{x:38.5,y:60} },
-        { answer: "الساقُ",    box:{x:84,y:70}, dot:{x:45.5,y:76} },
-        { answer: "القَدَمُ",  box:{x:84,y:90}, dot:{x:43,  y:89} }
+        { answer: "الرَّأسُ",  box:{x:82,y:8},  dot:{x:50,y:13} },
+        { answer: "الذِّراعُ", box:{x:16,y:32}, dot:{x:33,y:37} },
+        { answer: "اليَدُ",    box:{x:16,y:52}, dot:{x:28,y:51} },
+        { answer: "الساقُ",    box:{x:84,y:70}, dot:{x:59,y:74} },
+        { answer: "القَدَمُ",  box:{x:84,y:90}, dot:{x:57,y:94} }
       ],
+      svg: `<svg viewBox="0 0 300 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="مخطّط جسم طفل">
+        <circle cx="150" cy="62" r="40" fill="#f6c9a0" stroke="#d89b6a" stroke-width="3"/>
+        <path d="M110 55 Q150 8 190 55 Q192 30 150 22 Q108 30 110 55 Z" fill="#3a2a1c"/>
+        <circle cx="137" cy="60" r="4.5" fill="#3b2a1a"/><circle cx="163" cy="60" r="4.5" fill="#3b2a1a"/>
+        <path d="M150 66 L150 74" stroke="#c98e5c" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M138 82 Q150 92 162 82" stroke="#b5533f" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <rect x="140" y="98" width="20" height="16" fill="#f6c9a0"/>
+        <path d="M118 116 Q150 108 182 116 L176 250 L124 250 Z" fill="#e0574c" stroke="#b8402f" stroke-width="2"/>
+        <path d="M120 120 Q92 172 84 232" fill="none" stroke="#f6c9a0" stroke-width="16" stroke-linecap="round"/>
+        <path d="M180 120 Q208 172 216 232" fill="none" stroke="#f6c9a0" stroke-width="16" stroke-linecap="round"/>
+        <circle cx="84" cy="238" r="12" fill="#f6c9a0" stroke="#d89b6a" stroke-width="2"/>
+        <circle cx="216" cy="238" r="12" fill="#f6c9a0" stroke="#d89b6a" stroke-width="2"/>
+        <path d="M126 250 L120 430 L146 430 L150 300 L154 430 L180 430 L174 250 Z" fill="#2f6fb0" stroke="#22507f" stroke-width="2"/>
+        <ellipse cx="128" cy="440" rx="20" ry="10" fill="#5a3a22"/>
+        <ellipse cx="172" cy="440" rx="20" ry="10" fill="#5a3a22"/>
+      </svg>`
     },
 
     // ⑦ التصنيف في مجموعات — 1Bh2 استدلال (أجزاء الرأس / أطراف الجسم)
@@ -6615,47 +6399,18 @@ window.QUESTIONS = {
       prompt: "اضغَطْ على أكبَرِ صَخرَةٍ.",
       fit: "width",
       bg: "#f3efe6",
-      // نصفُ قطرِ الهدفِ رُفِع 15←22 مع إعادةِ الرسم: الصخرةُ الكبرى تمتدُّ ±21٪ عرضاً
-      // و±25٪ ارتفاعاً، فـ15 كانت تُخطّئُ النقرَ على طرفِها الصحيح. و22 يغطّيها ويبقى
-      // بعيداً عن الصغرَيَين (أقربُ نقطةٍ فيهما على مسافة 32 و39).
-      spot: { x: 50, y: 74, r: 22 },
+      spot: { x: 50, y: 74, r: 15 },
       // نسبة الرسم ١٫٦ (shoogp-ui §١.١٠): الصخرتان الصغيرتان في صفٍّ علويّ والكبرى وحدها
-      // أسفلهما، وتفاوتُ الأحجام هو دليلُ السؤال فلا يُمَسّ.
-      // أُعيد رسمها بورقة المواصفات البصرية (CLAUDE.md): ثلاثُ حُزَمٍ مائلةٍ بحوافَّ حادّةٍ
-      // من سُلَّمِ المعدنِ المقيس، ولمعةٌ بيضاءُ عريضةٌ، وشقوقٌ وحبيباتٌ معدنية.
-      // **اللونُ واحدٌ في الثلاث عمداً** — الحجمُ وحدَه دليلُ الإجابة، فلا يُلمِّحُ لونٌ إليها.
-      svg: `<svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="ثلاث صخور بأحجام مختلفة، الكبرى في الأسفل">
-        <g stroke="#111111" stroke-width="3">
-          <path d="M58 76 L66 58 L86 48 L112 50 L132 62 L138 80 L124 94 L96 98 L70 92 Z" fill="#808080"/>
-          <path d="M58 76 L66 58 L86 48 L112 50 L132 62 L138 80 L110 70 L82 68 Z" fill="#C0C0C0" stroke="none"/>
-          <path d="M138 80 L124 94 L96 98 L70 92 L58 76 L80 82 L108 86 L132 82 Z" fill="#606060" stroke="none"/>
-          <path d="M72 70 Q82 58 100 57 Q108 56 105 61 Q88 64 79 73 Q73 76 72 70 Z" fill="#FFFFFF" stroke="none"/>
-          <ellipse cx="118" cy="84" rx="3.5" ry="2.5" fill="#4A4A4A" stroke="none"/>
-          <ellipse cx="86" cy="88" rx="3" ry="2" fill="#4A4A4A" stroke="none"/>
-          <path d="M58 76 L82 68 L110 70 L138 80" fill="none" stroke-width="2"/>
-          <path d="M58 76 L80 82 L108 86 L132 82 L138 80" fill="none" stroke-width="2"/>
-          <path d="M58 76 L66 58 L86 48 L112 50 L132 62 L138 80 L124 94 L96 98 L70 92 Z" fill="none"/>
-          <path d="M232 78 L242 52 L268 36 L302 32 L334 44 L354 68 L344 94 L310 108 L272 106 L246 96 Z" fill="#808080"/>
-          <path d="M232 78 L242 52 L268 36 L302 32 L334 44 L354 68 L316 58 L276 58 L250 66 Z" fill="#C0C0C0" stroke="none"/>
-          <path d="M354 68 L344 94 L310 108 L272 106 L246 96 L232 78 L262 86 L306 92 L342 84 Z" fill="#606060" stroke="none"/>
-          <path d="M250 68 Q264 50 292 47 Q302 46 298 53 Q274 57 260 72 Q251 76 250 68 Z" fill="#FFFFFF" stroke="none"/>
-          <ellipse cx="326" cy="86" rx="5" ry="3.5" fill="#4A4A4A" stroke="none"/>
-          <ellipse cx="280" cy="96" rx="4" ry="3" fill="#4A4A4A" stroke="none"/>
-          <ellipse cx="300" cy="74" rx="4" ry="3" fill="#5A5A5A" stroke="none"/>
-          <path d="M232 78 L250 66 L276 58 L316 58 L354 68" fill="none" stroke-width="2"/>
-          <path d="M232 78 L262 86 L306 92 L342 84 L354 68" fill="none" stroke-width="2"/>
-          <path d="M232 78 L242 52 L268 36 L302 32 L334 44 L354 68 L344 94 L310 108 L272 106 L246 96 Z" fill="none"/>
-          <path d="M118 186 L134 150 L168 130 L214 126 L258 142 L284 172 L272 212 L232 240 L172 238 L134 214 Z" fill="#808080"/>
-          <path d="M118 186 L134 150 L168 130 L214 126 L258 142 L284 172 L246 166 L196 158 L152 164 Z" fill="#C0C0C0" stroke="none"/>
-          <path d="M284 172 L272 212 L232 240 L172 238 L134 214 L118 186 L154 196 L206 202 L252 194 Z" fill="#606060" stroke="none"/>
-          <path d="M148 160 Q166 138 204 136 Q216 135 210 143 Q182 148 162 165 Q150 170 148 160 Z" fill="#FFFFFF" stroke="none"/>
-          <ellipse cx="232" cy="186" rx="5" ry="3.5" fill="#5A5A5A" stroke="none"/>
-          <ellipse cx="170" cy="212" rx="4.5" ry="3" fill="#4A4A4A" stroke="none"/>
-          <ellipse cx="212" cy="222" rx="4" ry="3" fill="#4A4A4A" stroke="none"/>
-          <path d="M212 152 L204 176 L218 198" fill="none" stroke="#4A4A4A" stroke-width="2"/>
-          <path d="M118 186 L152 164 L196 158 L246 166 L284 172" fill="none" stroke-width="2"/>
-          <path d="M118 186 L154 196 L206 202 L252 194 L284 172" fill="none" stroke-width="2"/>
-          <path d="M118 186 L134 150 L168 130 L214 126 L258 142 L284 172 L272 212 L232 240 L172 238 L134 214 Z" fill="none"/>
+      // أسفلهما، فكبرت كلُّها ١٫٢٥ مرّة نسبةً إلى العرض وبقي تفاوتُ الأحجام بيّناً.
+      svg: `<svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ثلاث صخور بأحجام مختلفة">
+        <g transform="translate(100,70) scale(1.25) translate(-73,-109)">
+          <path d="M42 118 Q32 96 55 90 Q78 84 92 100 Q104 116 88 126 Q62 134 42 118 Z" fill="#c2c8cd" stroke="#8a9096" stroke-width="3"/>
+        </g>
+        <g transform="translate(300,70) scale(1.25) translate(-205,-115)">
+          <path d="M165 132 Q150 98 186 88 Q224 80 244 106 Q260 130 234 142 Q194 150 165 132 Z" fill="#b2b9bf" stroke="#7c848a" stroke-width="3"/>
+        </g>
+        <g transform="translate(200,185) scale(1.25) translate(-336,-106)">
+          <path d="M292 148 Q268 92 322 72 Q384 56 396 108 Q404 146 356 152 Q318 156 292 148 Z" fill="#a3abb1" stroke="#6f777d" stroke-width="3"/>
         </g>
       </svg>`
     },
@@ -6838,84 +6593,55 @@ window.QUESTIONS = {
         { name: "التربة", color: "#8a5a2b" },
         { name: "الحصى",  color: "#9aa7b0" }
       ],
-      // أُعيد رسمه بورقة المواصفات البصرية (CLAUDE.md): حدٌّ ‎#111111‎، وسلالمُ حجمٍ من
-      // ٣ درجاتٍ بحوافَّ حادّة، ولمعةٌ بيضاءُ عريضة. رُفِعت اللوحةُ 300×200 ← 600×400
-      // (النسبةُ 1.5 كما هي) ليصيرَ ‎stroke-width:3‎ الذي تفرضه ‎.cpart‎ في CSS مطابقاً
-      // لسماكةِ الورقةِ المقيسةِ على لوحةِ ٦٠٠ — لا ضِعفَها كما كان.
-      //
-      // **قيدُ نوعِ التلوين:** منطقةُ التلوينِ تأخذُ **لوناً مسطّحاً واحداً** يختارُه التلميذُ
-      // (‏`part.style.fill` في renderColor)، فأيُّ تعبئةٍ على أبنائِها تُبطلُ التلوين. لذلك
-      // **لا يُوضَعُ سُلَّمُ الحجمِ داخلَها**، بل طبقاتُ ظلٍّ ولمعةٍ **فوقَها** بـ`pointer-events:none`
-      // (أسودُ/أبيضُ بشفافية) — فتُظلِّلُ أيَّ لونٍ يختارُه ولا تعترضُ نقرَه ولا تمسُّ التحقّق.
-      svg: `<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="مشهد تربة للتلوين: عشب وتربة وحصى">
-        <rect x="0" y="0" width="600" height="150" fill="#cfeafb"/>
-        <!-- الشمس: هالةٌ مسنّنةٌ + قرصٌ بدرجتين + لمعة (زينة ثابتة) -->
-        <g pointer-events="none" stroke="#111111" stroke-width="3">
-          <polygon points="582,56 563.7,67.5 568.5,88.5 547.5,83.7 536,102 524.5,83.7 503.5,88.5 508.3,67.5 490,56 508.3,44.5 503.5,23.5 524.5,28.3 536,10 547.5,28.3 568.5,23.5 563.7,44.5" fill="#E08000"/>
-          <circle cx="536" cy="56" r="30" fill="#FFA000"/>
-          <path d="M508.5 44 A30 30 0 0 1 563.5 44 Z" fill="#FFFFC0" stroke="none"/>
-          <ellipse cx="524" cy="38" rx="10" ry="4" transform="rotate(-24 524 38)" fill="#FFFFFF" stroke="none"/>
-        </g>
-        <!-- غيمتان بثلاث درجات (زينة ثابتة) -->
-        <g pointer-events="none" stroke="#111111" stroke-width="3">
-          <path d="M72 82 Q64 62 88 60 Q94 42 116 50 Q134 34 150 52 Q174 52 170 72 Q182 86 156 86 L92 86 Q62 86 72 82 Z" fill="#F9F8F3"/>
-          <path d="M72 82 Q64 62 88 60 Q94 42 116 50 Q134 34 150 52 Q174 52 170 72 L150 66 Q130 56 110 60 Q90 64 72 82 Z" fill="#FFFFFF" stroke="none"/>
-          <path d="M170 72 Q182 86 156 86 L92 86 Q62 86 72 82 Q100 78 132 80 Q156 80 170 72 Z" fill="#E4E6E8" stroke="none"/>
-          <path d="M72 82 Q64 62 88 60 Q94 42 116 50 Q134 34 150 52 Q174 52 170 72 Q182 86 156 86 L92 86 Q62 86 72 82 Z" fill="none"/>
-          <path d="M300 62 Q294 46 314 46 Q322 32 344 40 Q364 34 370 48 Q392 50 382 68 L318 70 Q290 70 300 62 Z" fill="#F9F8F3"/>
-          <path d="M300 62 Q294 46 314 46 Q322 32 344 40 Q364 34 370 48 L348 54 Q326 48 310 54 Q302 58 300 62 Z" fill="#FFFFFF" stroke="none"/>
-          <path d="M300 62 Q294 46 314 46 Q322 32 344 40 Q364 34 370 48 Q392 50 382 68 L318 70 Q290 70 300 62 Z" fill="none"/>
-        </g>
-        <!-- العشب (منطقة تلوين) -->
-        <g class="cpart" data-name="العشب" id="part-grass">
-          <path d="M0 148 L0 110 Q38 94 76 106 Q114 118 152 102 Q190 90 228 106 Q266 120 304 102 Q342 88 380 106 Q418 120 456 102 Q494 88 532 106 Q566 118 600 104 L600 148 Z"/>
-        </g>
-        <!-- لمعةُ العشبِ فوقَه (لا تعترضُ النقر) -->
-        <path pointer-events="none" fill="#FFFFFF" opacity="0.22" d="M0 110 Q38 94 76 106 Q114 118 152 102 Q190 90 228 106 Q266 120 304 102 Q342 88 380 106 Q418 120 456 102 Q494 88 532 106 Q566 118 600 104 L600 118 Q566 132 532 120 Q494 102 456 116 Q418 134 380 120 Q342 102 304 116 Q266 134 228 120 Q190 104 152 116 Q114 132 76 120 Q38 108 0 124 Z"/>
-        <!-- التربة (منطقة تلوين) -->
-        <g class="cpart" data-name="التربة" id="part-soil"><rect x="0" y="148" width="600" height="252"/></g>
-        <!-- سُلَّمُ التربةِ وتفاصيلُها فوقَها (لا تعترضُ النقر) -->
+      svg: `<svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="مشهد تربة للتلوين">
+        <rect x="0" y="0" width="300" height="60" fill="#cfeafb"/>
+        <!-- شمس بأشعة (زينة ثابتة) -->
         <g pointer-events="none">
-          <rect x="0" y="148" width="600" height="44" fill="#FFFFFF" opacity="0.13"/>
-          <rect x="0" y="318" width="600" height="82" fill="#000000" opacity="0.17"/>
-          <g fill="#000000" opacity="0.20">
-            <ellipse cx="60" cy="200" rx="6" ry="4"/>
-            <ellipse cx="192" cy="256" rx="5.2" ry="3.6"/>
-            <ellipse cx="380" cy="244" rx="6" ry="4"/>
-            <ellipse cx="544" cy="280" rx="5.2" ry="4"/>
-            <ellipse cx="90" cy="332" rx="6" ry="4"/>
-            <ellipse cx="336" cy="372" rx="5.2" ry="3.6"/>
-            <ellipse cx="412" cy="316" rx="4.8" ry="3.6"/>
+          <g stroke="#f4c531" stroke-width="3" stroke-linecap="round">
+            <line x1="268" y1="6" x2="268" y2="14"/>
+            <line x1="290" y1="28" x2="298" y2="28"/>
+            <line x1="238" y1="28" x2="246" y2="28"/>
+            <line x1="251" y1="11" x2="256" y2="16"/>
+            <line x1="285" y1="11" x2="280" y2="16"/>
+            <line x1="251" y1="45" x2="256" y2="40"/>
+            <line x1="285" y1="45" x2="280" y2="40"/>
           </g>
-          <g fill="none" stroke="#000000" stroke-width="3" opacity="0.22">
-            <path d="M160 196 q12 16 4 34"/>
-            <path d="M428 264 q-10 14 0 30"/>
+          <circle cx="268" cy="28" r="14" fill="#f7d64a" stroke="#e8b42a" stroke-width="2"/>
+        </g>
+        <!-- غيمتان بحواف ناعمة منحنية (زينة ثابتة) -->
+        <g pointer-events="none" fill="#ffffff" stroke="#dfeaf2" stroke-width="1.5" stroke-linejoin="round">
+          <path d="M36 37 Q33 27 44 26 Q47 17 58 21 Q67 14 75 23 Q87 23 85 34 Q91 41 78 41 L46 41 Q31 41 36 37 Z"/>
+          <path d="M150 31 Q147 22 157 22 Q161 13 172 17 Q182 12 185 24 Q196 25 191 34 L159 35 Q145 35 150 31 Z"/>
+        </g>
+        <!-- العشب: حافة علوية متموّجة (منطقة تلوين) -->
+        <g class="cpart" data-name="العشب" id="part-grass">
+          <path d="M0 74 L0 55 Q19 47 38 53 Q57 59 76 51 Q95 45 114 53 Q133 60 152 51 Q171 44 190 53 Q209 60 228 51 Q247 44 266 53 Q283 59 300 52 L300 74 Z"/>
+        </g>
+        <!-- التربة (منطقة تلوين) -->
+        <g class="cpart" data-name="التربة" id="part-soil"><rect x="0" y="74" width="300" height="126"/></g>
+        <!-- تفاصيل صغيرة في التربة (زينة ثابتة لا تؤثّر في التلوين) -->
+        <g pointer-events="none">
+          <g fill="#a9743f" opacity="0.5">
+            <ellipse cx="30" cy="100" rx="3" ry="2"/>
+            <ellipse cx="96" cy="128" rx="2.6" ry="1.8"/>
+            <ellipse cx="190" cy="122" rx="3" ry="2"/>
+            <ellipse cx="272" cy="140" rx="2.6" ry="2"/>
+            <ellipse cx="45" cy="166" rx="3" ry="2"/>
+            <ellipse cx="168" cy="186" rx="2.6" ry="1.8"/>
+            <ellipse cx="206" cy="158" rx="2.4" ry="1.8"/>
+          </g>
+          <g fill="none" stroke="#7c4a22" stroke-width="1.6" stroke-linecap="round" opacity="0.4">
+            <path d="M80 98 q6 8 2 17"/>
+            <path d="M214 132 q-5 7 0 15"/>
           </g>
         </g>
         <!-- الحصى (منطقة تلوين) -->
         <g class="cpart" data-name="الحصى" id="part-pebbles">
-          <circle cx="120" cy="236" r="22"/>
-          <circle cx="300" cy="300" r="26"/>
-          <circle cx="464" cy="224" r="20"/>
-          <circle cx="220" cy="352" r="24"/>
-          <circle cx="496" cy="340" r="22"/>
-        </g>
-        <!-- ظلُّ الحصى ولمعتُها فوقَها (لا تعترضُ النقر) -->
-        <g pointer-events="none">
-          <g fill="#000000" opacity="0.18">
-            <path d="M100.4 245.9 A22 22 0 0 0 139.6 245.9 Z"/>
-            <path d="M276.8 311.7 A26 26 0 0 0 323.2 311.7 Z"/>
-            <path d="M446.1 233 A20 20 0 0 0 481.9 233 Z"/>
-            <path d="M198.6 362.8 A24 24 0 0 0 241.4 362.8 Z"/>
-            <path d="M476.4 349.9 A22 22 0 0 0 515.6 349.9 Z"/>
-          </g>
-          <g fill="#FFFFFF" opacity="0.38">
-            <ellipse cx="112" cy="228" rx="8" ry="4.5" transform="rotate(-28 112 228)"/>
-            <ellipse cx="289" cy="290" rx="10" ry="5" transform="rotate(-28 289 290)"/>
-            <ellipse cx="456" cy="216" rx="7" ry="4" transform="rotate(-28 456 216)"/>
-            <ellipse cx="210" cy="343" rx="9" ry="4.5" transform="rotate(-28 210 343)"/>
-            <ellipse cx="487" cy="331" rx="8" ry="4.5" transform="rotate(-28 487 331)"/>
-          </g>
+          <circle cx="60" cy="118" r="11"/>
+          <circle cx="150" cy="150" r="13"/>
+          <circle cx="232" cy="112" r="10"/>
+          <circle cx="110" cy="176" r="12"/>
+          <circle cx="248" cy="170" r="11"/>
         </g>
       </svg>`
     }
@@ -6990,6 +6716,542 @@ window.QUESTIONS = {
       options: ["الخَشَبُ", "القُطنُ", "البلاستيكُ", "الصَّخرُ"],
       answer: 2,
       reason: "البلاستيكُ من صُنعِ الإنسانِ، والبَقِيَّةُ موادُّ طَبيعِيَّةٌ"
+    }
+
+  ],
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     العلوم/الثاني — الوحدة الثالثة: تغيير المواد
+     أهدافها (2Cp3 – 2Cp6) مستكمِلةٌ لترقيم الوحدتين ١ و٢ وصياغتِهما؛ تُصحَّح
+     نصوصُها في حقل objective وحده عند الرجوع إلى كتاب التلميذ، بلا مساس بالأسئلة.
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  // الدرس الأول: تغيير شكل المواد
+  "g2s-3-1": [
+
+    // ④ صواب وخطأ (الأسهل) — 2Cp3 معرفة
+    {
+      type: "true-false",
+      objective: "2Cp3: يستكشف أنّ شكل بعض المواد يتغيّر بالضغط والشدّ والثني واللَّيّ",
+      level: "knowledge",
+      statement: "يُمكِنُنا تَغييرُ شَكلِ العَجينِ بالضَّغطِ عَلَيهِ.",
+      answer: true
+    },
+
+    // ③ اختيار من متعدد — 2Cp3 معرفة
+    {
+      type: "mcq",
+      objective: "2Cp3: يستكشف أنّ شكل بعض المواد يتغيّر بالضغط والشدّ والثني واللَّيّ",
+      level: "knowledge",
+      prompt: "ماذا يَحدُثُ للصَّلصالِ عِندَ الضَّغطِ عَلَيهِ؟",
+      options: ["يَتَغَيَّرُ شَكلُهُ", "يَختَفي", "يُصبِحُ ماءً", "يُصبِحُ صَخراً"],
+      answer: 0
+    },
+
+    // ② توصيل — 2Cp3 معرفة (كلّ فعل وما يُحدِثُهُ في المادة)
+    {
+      type: "matching",
+      objective: "2Cp3: يستكشف أنّ شكل بعض المواد يتغيّر بالضغط والشدّ والثني واللَّيّ",
+      level: "knowledge",
+      prompt: "صِلْ كُلَّ فِعلٍ بما يَحدُثُ للمادَّةِ.",
+      pairs: [
+        { a: "الضَّغطُ", b: "تَنبَعِجُ المادَّةُ" },
+        { a: "الشَّدُّ",  b: "تَستَطيلُ المادَّةُ" },
+        { a: "الثَّنيُ",  b: "تَنحَني المادَّةُ" },
+        { a: "اللَّيُّ",   b: "تَلتَوي المادَّةُ" }
+      ]
+    },
+
+    // ⑧ ملء الفراغ بالسحب — 2Cp3 تطبيق (فراغان فقط — قيد السعة)
+    {
+      type: "fill-blank",
+      objective: "2Cp3: يستكشف أنّ شكل بعض المواد يتغيّر بالضغط والشدّ والثني واللَّيّ",
+      level: "application",
+      prompt: "أكمِلِ الجُملَةَ بسَحبِ الكَلِمَتَينِ المُناسِبَتَينِ.",
+      text: "نُغَيِّرُ شَكلَ العَجينِ بـ{} ، ونُغَيِّرُ شَكلَ المَطّاطِ بـ{}.",
+      answers: ["الضَّغطِ", "الشَّدِّ"],
+      distractors: ["الشَّمِّ"]
+    },
+
+    // ⑦ التصنيف في مجموعات — 2Cp3 استدلال (مجموعتان × عنصران — قيد السعة)
+    {
+      type: "classify",
+      objective: "2Cp3: يستكشف أنّ شكل بعض المواد يتغيّر بالضغط والشدّ والثني واللَّيّ",
+      level: "reasoning",
+      prompt: "صَنِّفِ المَوادَّ حَسَبَ سُهولَةِ تَغييرِ شَكلِها.",
+      groups: [
+        { name: "يَسهُلُ تَغييرُ شَكلِها", items: ["عَجينٌ", "صَلصالٌ"] },
+        { name: "يَصعُبُ تَغييرُ شَكلِها", items: ["صَخرٌ", "زُجاجٌ"] }
+      ]
+    },
+
+    // ⑬ الخريطة الذهنية الناقصة (إثرائي) — 2Cp3 تطبيق
+    {
+      type: "mindmap",
+      objective: "2Cp3: يستكشف أنّ شكل بعض المواد يتغيّر بالضغط والشدّ والثني واللَّيّ",
+      level: "application",
+      prompt: "أكمِلْ خَريطَةَ تَغييرِ الشَّكلِ بسَحبِ المادَّةِ المُناسِبَةِ إلى كُلِّ فَرعٍ.",
+      center: "نُغَيِّرُ الشَّكلَ",
+      branches: [
+        { label: "نَضغَطُ", answer: "العَجينَ" },
+        { label: "نَشُدُّ",  answer: "المَطّاطَ" },
+        { label: "نَثني",   answer: "السِّلكَ" }
+      ],
+      distractors: ["الصَّخرَ"]
+    }
+
+  ],
+
+  // الدرس الثاني: الثَّني واللَّيّ
+  "g2s-3-2": [
+
+    // ④ صواب وخطأ (الأسهل) — 2Cp3 معرفة
+    {
+      type: "true-false",
+      objective: "2Cp3: يستكشف أنّ شكل بعض المواد يتغيّر بالضغط والشدّ والثني واللَّيّ",
+      level: "knowledge",
+      statement: "السِّلكُ المَعدِنِيُّ الرَّفيعُ يُمكِنُ ثَنيُهُ ولَيُّهُ.",
+      answer: true
+    },
+
+    // ③ اختيار من متعدد — 2Cp3 معرفة
+    {
+      type: "mcq",
+      objective: "2Cp3: يستكشف أنّ شكل بعض المواد يتغيّر بالضغط والشدّ والثني واللَّيّ",
+      level: "knowledge",
+      prompt: "أيُّ هذِهِ المَوادِّ يَنكَسِرُ ولا يَنثَني؟",
+      options: ["الزُّجاجُ", "السِّلكُ", "الوَرَقُ", "الخَيطُ"],
+      answer: 0
+    },
+
+    // ② توصيل — 2Cp3 معرفة (كلّ جسم وما نفعله به)
+    {
+      type: "matching",
+      objective: "2Cp3: يستكشف أنّ شكل بعض المواد يتغيّر بالضغط والشدّ والثني واللَّيّ",
+      level: "knowledge",
+      prompt: "صِلْ كُلَّ جِسمٍ بما نَفعَلُهُ بهِ.",
+      pairs: [
+        { a: "السِّلكُ",  b: "نَلويهِ" },
+        { a: "الوَرَقُ",  b: "نَثنيهِ" },
+        { a: "الإسفَنجُ", b: "نَضغَطُهُ" },
+        { a: "المَطّاطُ", b: "نَشُدُّهُ" }
+      ]
+    },
+
+    // ⑤ تحديد الأجزاء — 2Cp3 تطبيق (اختيار الجسم القابل للثني من أربعة أجسام)
+    // نسبة الرسم ١٫٦ (shoogp-ui §١.١٠): أربعة أجسام في صفّين ٢×٢ ليكبر كلٌّ منها.
+    {
+      type: "hotspot",
+      objective: "2Cp3: يستكشف أنّ شكل بعض المواد يتغيّر بالضغط والشدّ والثني واللَّيّ",
+      level: "application",
+      prompt: "اضغَطْ على الجِسمِ الَّذي يُمكِنُ ثَنيُهُ ولَيُّهُ.",
+      fit: "width",
+      bg: "#f3f6f8",
+      spot: { x: 75, y: 33, r: 14 },
+      svg: `<svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="أربعة أجسام: كوب زجاج وسلك معدني وصخرة وقضيب حديد">
+        <!-- كوب زجاج (لا يُثنى) -->
+        <g>
+          <ellipse cx="100" cy="116" rx="34" ry="7" fill="#000" opacity="0.10"/>
+          <path d="M80 34 L86 106 Q86 112 100 112 Q114 112 114 106 L120 34 Z" fill="#dff0f7" stroke="#6b7c88" stroke-width="4" stroke-linejoin="round"/>
+          <path d="M89 44 L93 100" stroke="#ffffff" stroke-width="6" stroke-linecap="round" opacity="0.85"/>
+          <ellipse cx="100" cy="34" rx="20" ry="6" fill="#eef8fc" stroke="#6b7c88" stroke-width="4"/>
+        </g>
+        <!-- سلك معدني ملويّ (الإجابة الصحيحة) -->
+        <g>
+          <ellipse cx="300" cy="116" rx="46" ry="7" fill="#000" opacity="0.10"/>
+          <path d="M252 96 Q268 52 288 90 T322 90 Q338 90 350 62" fill="none" stroke="#5d6a73" stroke-width="14" stroke-linecap="round"/>
+          <path d="M252 96 Q268 52 288 90 T322 90 Q338 90 350 62" fill="none" stroke="#c3ced6" stroke-width="6" stroke-linecap="round"/>
+          <circle cx="252" cy="96" r="7" fill="#8e9aa3" stroke="#5d6a73" stroke-width="3"/>
+          <circle cx="350" cy="62" r="7" fill="#8e9aa3" stroke="#5d6a73" stroke-width="3"/>
+        </g>
+        <!-- صخرة (لا تُثنى) -->
+        <g>
+          <ellipse cx="100" cy="228" rx="48" ry="8" fill="#000" opacity="0.12"/>
+          <path d="M56 222 L66 180 L90 162 L124 168 L144 194 L140 222 Z" fill="#9b9186" stroke="#6d655c" stroke-width="4" stroke-linejoin="round"/>
+          <path d="M66 180 L98 190 L92 222 L56 222 Z" fill="#867c72"/>
+          <path d="M90 162 L124 168 L98 190 Z" fill="#b0a69a"/>
+          <path d="M56 222 L66 180 L90 162 L124 168 L144 194 L140 222 Z" fill="none" stroke="#6d655c" stroke-width="4" stroke-linejoin="round"/>
+        </g>
+        <!-- قضيب حديد سميك (لا يُثنى) -->
+        <g>
+          <ellipse cx="300" cy="228" rx="52" ry="8" fill="#000" opacity="0.12"/>
+          <rect x="246" y="180" width="108" height="34" rx="17" fill="#8e9aa3" stroke="#5d6a73" stroke-width="4"/>
+          <path d="M258 189 H342" stroke="#c3ced6" stroke-width="7" stroke-linecap="round"/>
+          <circle cx="266" cy="197" r="4.5" fill="#5d6a73"/>
+          <circle cx="334" cy="197" r="4.5" fill="#5d6a73"/>
+        </g>
+      </svg>`
+    },
+
+    // ⑦ التصنيف في مجموعات — 2Cp3 استدلال (مجموعتان × عنصران — قيد السعة)
+    {
+      type: "classify",
+      objective: "2Cp3: يستكشف أنّ شكل بعض المواد يتغيّر بالضغط والشدّ والثني واللَّيّ",
+      level: "reasoning",
+      prompt: "صَنِّفِ الأجسامَ: هل يَنثَني أم لا يَنثَني؟",
+      groups: [
+        { name: "يَنثَني",     items: ["سِلكٌ رَفيعٌ", "وَرَقَةٌ"] },
+        { name: "لا يَنثَني", items: ["زُجاجٌ", "صَخرٌ"] }
+      ]
+    },
+
+    // ⑫ الاستبعاد (إثرائي) — 2Cp3 استدلال
+    {
+      type: "exclude",
+      objective: "2Cp3: يستكشف أنّ شكل بعض المواد يتغيّر بالضغط والشدّ والثني واللَّيّ",
+      level: "reasoning",
+      prompt: "أيُّها لا يُمكِنُ ثَنيُهُ؟",
+      options: ["سِلكٌ", "وَرَقٌ", "خَيطٌ", "صَخرٌ"],
+      answer: 3,
+      reason: "الصَّخرُ صُلبٌ لا يَنثَني، أمّا السِّلكُ والوَرَقُ والخَيطُ فَتَنثَني"
+    }
+
+  ],
+
+  // الدرس الثالث: المرونة الرائعة
+  "g2s-3-3": [
+
+    // ④ صواب وخطأ (الأسهل) — 2Cp4 معرفة
+    {
+      type: "true-false",
+      objective: "2Cp4: يتعرّف المواد المرنة ويميّزها بعودتها إلى شكلها الأصلي",
+      level: "knowledge",
+      statement: "الرِّباطُ المَطّاطِيُّ يَعودُ إلى شَكلِهِ الأوَّلِ بَعدَ أن نَترُكَهُ.",
+      answer: true
+    },
+
+    // ③ اختيار من متعدد — 2Cp4 معرفة
+    {
+      type: "mcq",
+      objective: "2Cp4: يتعرّف المواد المرنة ويميّزها بعودتها إلى شكلها الأصلي",
+      level: "knowledge",
+      prompt: "ما مَعنى أنَّ المادَّةَ مَرِنَةٌ؟",
+      options: ["تَعودُ إلى شَكلِها بَعدَ شَدِّها", "تَبقى مَشدودَةً دائِماً", "تَنكَسِرُ بسُرعَةٍ", "تَذوبُ في الماءِ"],
+      answer: 0
+    },
+
+    // ② توصيل — 2Cp4 معرفة (كلّ جسم مرن واستخدامه)
+    {
+      type: "matching",
+      objective: "2Cp4: يتعرّف المواد المرنة ويميّزها بعودتها إلى شكلها الأصلي",
+      level: "knowledge",
+      prompt: "صِلْ كُلَّ جِسمٍ مَرِنٍ باستِخدامِهِ.",
+      pairs: [
+        { a: "الرِّباطُ المَطّاطِيُّ", b: "يَربِطُ الأشياءَ" },
+        { a: "الإسفَنجَةُ",          b: "تُنَظِّفُ الأطباقَ" },
+        { a: "النَّابِضُ",             b: "داخِلَ القَلَمِ" },
+        { a: "الكُرَةُ",              b: "تَرتَدُّ عنِ الأرضِ" }
+      ]
+    },
+
+    // ① سحب وإفلات — 2Cp4 تطبيق (تسمية ثلاثة أجسام مرنة على الرسم)
+    // نسبة الرسم ٢٫٠ (≤ 2.2)، وتخطيطه صفّ بطاقات أعلى الصورة (نسبة ≥ 1.2).
+    {
+      type: "drag-drop",
+      objective: "2Cp4: يتعرّف المواد المرنة ويميّزها بعودتها إلى شكلها الأصلي",
+      level: "application",
+      prompt: "اسحَبِ اسمَ كُلِّ جِسمٍ مَرِنٍ إلى مَكانِهِ.",
+      fit: "width",
+      bg: "#f3f6f8",
+      // الشريط العلويّ (y=0..58 من ٢٣٠) مُبقًى فارغاً عمداً ليجلس فيه صفّ الصناديق بلا تراكب.
+      targets: [
+        // نقطة الرباط على حلقته نفسها لا في جوفها الفارغ (جوف الحلقة ليس جزءاً من الجسم)
+        { answer: "رِباطٌ مَطّاطِيٌّ", box: { x: 15, y: 11 }, dot: { x: 17.5, y: 42 } },
+        { answer: "إسفَنجَةٌ",        box: { x: 50, y: 11 }, dot: { x: 50,   y: 58 } },
+        { answer: "نابِضٌ",           box: { x: 85, y: 11 }, dot: { x: 82.5, y: 56 } }
+      ],
+      svg: `<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="رباط مطاطي وإسفنجة ونابض">
+        <!-- رباط مطاطي -->
+        <g>
+          <ellipse cx="70" cy="188" rx="42" ry="7" fill="#000" opacity="0.10"/>
+          <ellipse cx="70" cy="124" rx="44" ry="32" fill="none" stroke="#8a5a2b" stroke-width="18"/>
+          <ellipse cx="70" cy="124" rx="44" ry="32" fill="none" stroke="#d08a45" stroke-width="10"/>
+          <path d="M40 106 q10 -12 26 -14" fill="none" stroke="#f0bb85" stroke-width="5" stroke-linecap="round"/>
+        </g>
+        <!-- إسفنجة -->
+        <g>
+          <ellipse cx="200" cy="188" rx="48" ry="7" fill="#000" opacity="0.10"/>
+          <rect x="154" y="96" width="92" height="76" rx="14" fill="#f2c230" stroke="#a8801f" stroke-width="4"/>
+          <path d="M154 120 q46 -18 92 0 V110 q0 -14 -14 -14 H168 q-14 0 -14 14 Z" fill="#f8dd7c"/>
+          <g fill="#c99a1e">
+            <circle cx="176" cy="136" r="7"/><circle cx="206" cy="150" r="8"/>
+            <circle cx="230" cy="130" r="6"/><circle cx="190" cy="162" r="5"/>
+            <circle cx="228" cy="160" r="6"/>
+          </g>
+          <rect x="154" y="96" width="92" height="76" rx="14" fill="none" stroke="#a8801f" stroke-width="4"/>
+        </g>
+        <!-- نابض -->
+        <g>
+          <ellipse cx="330" cy="188" rx="40" ry="7" fill="#000" opacity="0.10"/>
+          <rect x="296" y="166" width="68" height="11" rx="5.5" fill="#8e9aa3" stroke="#5d6a73" stroke-width="3"/>
+          <path d="M304 162 L356 152 L304 140 L356 130 L304 118 L356 108 L304 98" fill="none" stroke="#5d6a73" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M304 162 L356 152 L304 140 L356 130 L304 118 L356 108 L304 98" fill="none" stroke="#c3ced6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="296" y="86" width="68" height="11" rx="5.5" fill="#8e9aa3" stroke="#5d6a73" stroke-width="3"/>
+        </g>
+      </svg>`
+    },
+
+    // ⑥ الترتيب التسلسلي — 2Cp4 استدلال (ما يحدث للرباط المطاطي بالترتيب)
+    {
+      type: "sequence",
+      objective: "2Cp4: يتعرّف المواد المرنة ويميّزها بعودتها إلى شكلها الأصلي",
+      level: "reasoning",
+      prompt: "رَتِّبْ ما يَحدُثُ للرِّباطِ المَطّاطِيِّ منَ البِدايَةِ إلى النِّهايَةِ.",
+      steps: [
+        "نُمسِكُ الرِّباطَ المَطّاطِيَّ",
+        "نَشُدُّهُ بأصابِعِنا",
+        "يَستَطيلُ ويَطولُ",
+        "نَترُكُهُ فَيَعودُ كَما كانَ"
+      ]
+    },
+
+    // ⑯ بطاقات الذاكرة (إثرائي) — 2Cp4 معرفة
+    {
+      type: "memory",
+      objective: "2Cp4: يتعرّف المواد المرنة ويميّزها بعودتها إلى شكلها الأصلي",
+      level: "knowledge",
+      prompt: "اعثُرْ على الأزواجِ المُتَطابِقَةِ: اقلِبْ بِطاقَتَينِ في كُلِّ دَورٍ.",
+      pairs: [
+        { a: "الرِّباطُ المَطّاطِيُّ", b: "يَستَطيلُ ثُمَّ يَعودُ" },
+        { a: "الإسفَنجَةُ",          b: "تَنضَغِطُ ثُمَّ تَنتَفِخُ" },
+        { a: "النَّابِضُ",             b: "يَنكَمِشُ ثُمَّ يَمتَدُّ" },
+        { a: "الصَّخرُ",              b: "لا يَتَغَيَّرُ شَكلُهُ" }
+      ]
+    }
+
+  ],
+
+  // الدرس الرابع: التسخين والتبريد
+  "g2s-3-4": [
+
+    // ④ صواب وخطأ (الأسهل) — 2Cp5 معرفة
+    {
+      type: "true-false",
+      objective: "2Cp5: يلاحظ التغيّرات التي يُحدثها التسخين والتبريد في المواد",
+      level: "knowledge",
+      statement: "الثَّلجُ يَذوبُ ويُصبِحُ ماءً عِندَ تَسخينِهِ.",
+      answer: true
+    },
+
+    // ③ اختيار من متعدد — 2Cp5 معرفة
+    {
+      type: "mcq",
+      objective: "2Cp5: يلاحظ التغيّرات التي يُحدثها التسخين والتبريد في المواد",
+      level: "knowledge",
+      prompt: "ماذا يَحدُثُ للماءِ إذا وَضَعناهُ في المُجَمِّدِ؟",
+      options: ["يَتَجَمَّدُ ويُصبِحُ ثَلجاً", "يَغلي", "يَختَفي", "يُصبِحُ مِلحاً"],
+      answer: 0
+    },
+
+    // ② توصيل — 2Cp5 معرفة (كلّ حالة وما يحدث فيها)
+    {
+      type: "matching",
+      objective: "2Cp5: يلاحظ التغيّرات التي يُحدثها التسخين والتبريد في المواد",
+      level: "knowledge",
+      prompt: "صِلْ كُلَّ حالَةٍ بما يَحدُثُ فيها.",
+      pairs: [
+        { a: "الشُّوكولاتَةُ في الشَّمسِ", b: "تَنصَهِرُ" },
+        { a: "الماءُ في المُجَمِّدِ",       b: "يَتَجَمَّدُ" },
+        { a: "الماءُ على النَّارِ",         b: "يَغلي" },
+        { a: "العَجينُ في الفُرنِ",        b: "يُصبِحُ خُبزاً" }
+      ]
+    },
+
+    // ⑧ ملء الفراغ بالسحب — 2Cp5 تطبيق (فراغان فقط — قيد السعة)
+    {
+      type: "fill-blank",
+      objective: "2Cp5: يلاحظ التغيّرات التي يُحدثها التسخين والتبريد في المواد",
+      level: "application",
+      prompt: "أكمِلِ الجُملَةَ بسَحبِ الكَلِمَتَينِ المُناسِبَتَينِ.",
+      text: "التَّسخينُ يُذيبُ {} ، والتَّبريدُ يُجَمِّدُ {}.",
+      answers: ["الثَّلجَ", "الماءَ"],
+      distractors: ["الصَّخرَ"]
+    },
+
+    // ⑥ الترتيب التسلسلي — 2Cp5 استدلال (رحلة مكعّب الثلج مع التسخين)
+    {
+      type: "sequence",
+      objective: "2Cp5: يلاحظ التغيّرات التي يُحدثها التسخين والتبريد في المواد",
+      level: "reasoning",
+      prompt: "رَتِّبْ ما يَحدُثُ لمُكَعَّبِ الثَّلجِ عِندَ تَسخينِهِ.",
+      steps: [
+        "مُكَعَّبُ ثَلجٍ صُلبٌ",
+        "يَبدَأُ الذَّوَبانُ",
+        "يُصبِحُ ماءً سائِلاً",
+        "يَغلي فَيَتَصاعَدُ البُخارُ"
+      ]
+    },
+
+    // ⑩ التلوين بالتعليمات (إثرائي) — 2Cp5 تطبيق (الساخن أحمر والبارد أزرق)
+    // نسبة الرسم ١٫٧٤ (≤ 2.2). الأسماء مخفيّة (showLabels:false) كي يُميّز الطالب بالصورة.
+    {
+      type: "color",
+      objective: "2Cp5: يلاحظ التغيّرات التي يُحدثها التسخين والتبريد في المواد",
+      level: "application",
+      prompt: "لَوِّنِ السَّاخِنَ بالأحمَرِ والباردَ بالأزرَقِ: اختَرْ لَوناً ثُمَّ اضغَطِ الشَّيءَ.",
+      bg: "#f3f6f8",
+      showLabels: false,
+      palette: [
+        { name: "أحمر", color: "#cf3b3b" },
+        { name: "أزرق", color: "#2f6fb0" },
+        { name: "أصفر", color: "#f2c230" }
+      ],
+      parts: [
+        { name: "كوب الشاي",  color: "#cf3b3b" },
+        { name: "الخبز",      color: "#cf3b3b" },
+        { name: "مكعب الثلج", color: "#2f6fb0" },
+        { name: "المثلجات",   color: "#2f6fb0" }
+      ],
+      svg: `<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="كوب شاي وخبز ومكعب ثلج ومثلجات للتلوين">
+        <!-- بخار كوب الشاي (ثابت لا يُلوَّن) -->
+        <g fill="none" stroke="#c9d2d9" stroke-width="4" stroke-linecap="round">
+          <path d="M86 30 q7 -9 0 -18"/><path d="M100 26 q7 -9 0 -18"/><path d="M114 30 q7 -9 0 -18"/>
+        </g>
+        <ellipse cx="100" cy="106" rx="48" ry="9" fill="#e6ded2" stroke="#5b4632" stroke-width="3"/>
+        <g class="cpart" data-name="كوب الشاي" id="part-tea">
+          <path d="M64 44 L72 94 Q74 102 100 102 Q126 102 128 94 L136 44 Z" stroke="#5b4632" stroke-width="4" stroke-linejoin="round"/>
+          <path d="M134 54 Q156 54 156 68 Q156 82 134 82" fill="none" stroke="#5b4632" stroke-width="8" stroke-linecap="round"/>
+        </g>
+        <!-- بخار الخبز (ثابت) -->
+        <g fill="none" stroke="#c9d2d9" stroke-width="4" stroke-linecap="round">
+          <path d="M286 26 q7 -9 0 -18"/><path d="M312 26 q7 -9 0 -18"/>
+        </g>
+        <ellipse cx="300" cy="100" rx="50" ry="8" fill="#000" opacity="0.10"/>
+        <g class="cpart" data-name="الخبز" id="part-bread">
+          <path d="M254 96 Q248 58 276 48 Q300 34 324 48 Q352 58 346 96 Z" stroke="#7a5227" stroke-width="4" stroke-linejoin="round"/>
+        </g>
+        <g fill="none" stroke="#7a5227" stroke-width="3" stroke-linecap="round">
+          <path d="M276 68 l14 -12"/><path d="M296 70 l14 -12"/><path d="M316 72 l12 -11"/>
+        </g>
+        <!-- مكعّب ثلج -->
+        <ellipse cx="100" cy="212" rx="42" ry="7" fill="#000" opacity="0.10"/>
+        <g class="cpart" data-name="مكعب الثلج" id="part-ice">
+          <path d="M64 142 L100 128 L136 142 L136 194 L100 208 L64 194 Z" stroke="#39708c" stroke-width="4" stroke-linejoin="round"/>
+        </g>
+        <g fill="none" stroke="#39708c" stroke-width="3" stroke-linejoin="round">
+          <path d="M64 142 L100 156 L136 142"/><path d="M100 156 L100 208"/>
+        </g>
+        <path d="M76 152 L94 145" stroke="#ffffff" stroke-width="5" stroke-linecap="round" opacity="0.8"/>
+        <!-- مثلّجات (المخروط ثابت والكرة تُلوَّن) -->
+        <ellipse cx="300" cy="212" rx="34" ry="6" fill="#000" opacity="0.10"/>
+        <path d="M270 152 L300 208 L330 152 Z" fill="#d9a441" stroke="#7a5227" stroke-width="4" stroke-linejoin="round"/>
+        <g fill="none" stroke="#7a5227" stroke-width="2.5">
+          <path d="M280 168 L312 162"/><path d="M288 182 L318 176"/><path d="M286 160 L296 186"/><path d="M304 156 L314 180"/>
+        </g>
+        <g class="cpart" data-name="المثلجات" id="part-icecream">
+          <path d="M266 152 Q266 118 300 118 Q334 118 334 152 Z" stroke="#5b4632" stroke-width="4" stroke-linejoin="round"/>
+        </g>
+      </svg>`
+    }
+
+  ],
+
+  // الدرس الخامس: لماذا تكون مياه البحر مالحة؟
+  "g2s-3-5": [
+
+    // ④ صواب وخطأ (الأسهل) — 2Cp6 معرفة
+    {
+      type: "true-false",
+      objective: "2Cp6: يستكشف ذوبان بعض المواد في الماء وعدم ذوبان غيرها",
+      level: "knowledge",
+      statement: "مياهُ البَحرِ مالِحَةٌ لأنَّ فيها مِلحاً ذائِباً.",
+      answer: true
+    },
+
+    // ③ اختيار من متعدد — 2Cp6 معرفة
+    {
+      type: "mcq",
+      objective: "2Cp6: يستكشف ذوبان بعض المواد في الماء وعدم ذوبان غيرها",
+      level: "knowledge",
+      prompt: "ماذا يَحدُثُ للمِلحِ إذا حَرَّكناهُ في الماءِ؟",
+      options: ["يَذوبُ فيهِ", "يَطفو فَوقَهُ", "يُصبِحُ رَملاً", "يَبقى كَما هُوَ"],
+      answer: 0
+    },
+
+    // ② توصيل — 2Cp6 معرفة (كلّ ماء وطعمه، وكلّ مادة وسلوكها في الماء)
+    {
+      type: "matching",
+      objective: "2Cp6: يستكشف ذوبان بعض المواد في الماء وعدم ذوبان غيرها",
+      level: "knowledge",
+      prompt: "صِلْ كُلَّ عِبارَةٍ بما يُناسِبُها.",
+      pairs: [
+        { a: "مياهُ البَحرِ",   b: "مالِحَةٌ" },
+        { a: "مياهُ المَطَرِ",  b: "عَذبَةٌ" },
+        { a: "المِلحُ في الماءِ", b: "يَذوبُ" },
+        { a: "الرَّملُ في الماءِ", b: "لا يَذوبُ" }
+      ]
+    },
+
+    // ⑧ ملء الفراغ بالسحب — 2Cp6 تطبيق (فراغان فقط — قيد السعة)
+    {
+      type: "fill-blank",
+      objective: "2Cp6: يستكشف ذوبان بعض المواد في الماء وعدم ذوبان غيرها",
+      level: "application",
+      prompt: "أكمِلِ الجُملَةَ بسَحبِ الكَلِمَتَينِ المُناسِبَتَينِ.",
+      text: "المِلحُ {} في الماءِ، أمّا الرَّملُ فَـ{} فيهِ.",
+      answers: ["يَذوبُ", "يَرسُبُ"],
+      distractors: ["يَطفو"]
+    },
+
+    // ⑦ التصنيف في مجموعات — 2Cp6 استدلال (مجموعتان × عنصران — قيد السعة)
+    {
+      type: "classify",
+      objective: "2Cp6: يستكشف ذوبان بعض المواد في الماء وعدم ذوبان غيرها",
+      level: "reasoning",
+      prompt: "صَنِّفِ المَوادَّ: هل تَذوبُ في الماءِ أم لا؟",
+      groups: [
+        { name: "تَذوبُ في الماءِ",    items: ["مِلحٌ", "سُكَّرٌ"] },
+        { name: "لا تَذوبُ في الماءِ", items: ["رَملٌ", "حَصىً"] }
+      ]
+    },
+
+    // ⑨ اكتشف الخطأ (إثرائي) — 2Cp6 استدلال (كوب الرمل رُسم صافياً بلا رَسوب)
+    // نسبة الرسم ١٫٦ (≤ 2.2)؛ التسميات داخل الرسم لأنّ الخطأ في العلاقة بين المادة والكوب.
+    {
+      type: "find-error",
+      objective: "2Cp6: يستكشف ذوبان بعض المواد في الماء وعدم ذوبان غيرها",
+      level: "reasoning",
+      prompt: "الرَّملُ لا يَذوبُ في الماءِ. اضغَطْ على الكوبِ الَّذي رُسِمَ خَطَأً.",
+      fit: "width",
+      bg: "#eaf3fb",
+      spot: { x: 81, y: 58, r: 13 },
+      svg: `<svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ثلاثة أكواب ماء: ملح وسكر ورمل">
+        <defs>
+          <g id="jar">
+            <ellipse cx="0" cy="196" rx="42" ry="7" fill="#000" opacity="0.10"/>
+            <path d="M-36 92 L-32 180 Q-32 190 0 190 Q32 190 32 180 L36 92 Z" fill="#dff0f7" stroke="#6b7c88" stroke-width="4" stroke-linejoin="round"/>
+            <path d="M-33.5 120 L-32 180 Q-32 187 0 187 Q32 187 32 180 L33.5 120 Z" fill="#9fd4ee"/>
+            <ellipse cx="0" cy="120" rx="33.5" ry="6" fill="#c2e6f7"/>
+            <path d="M-26 132 L-24 172" stroke="#ffffff" stroke-width="5" stroke-linecap="round" opacity="0.7"/>
+            <path d="M-36 92 L-32 180 Q-32 190 0 190 Q32 190 32 180 L36 92 Z" fill="none" stroke="#6b7c88" stroke-width="4" stroke-linejoin="round"/>
+            <ellipse cx="0" cy="92" rx="36" ry="7" fill="none" stroke="#6b7c88" stroke-width="4"/>
+          </g>
+        </defs>
+        <!-- كوب المِلح: حبيبات بيضاء تُسكب، والماء صافٍ (صحيح) -->
+        <g transform="translate(76,0)">
+          <use href="#jar"/>
+          <g fill="#f4f7f9" stroke="#9aa7b0" stroke-width="2">
+            <circle cx="-10" cy="60" r="5"/><circle cx="4" cy="50" r="5"/><circle cx="14" cy="66" r="5"/><circle cx="0" cy="74" r="4"/>
+          </g>
+          <text x="0" y="228" text-anchor="middle" font-size="21" font-weight="700" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">مِلحٌ</text>
+        </g>
+        <!-- كوب السُّكّر: مكعّبات تُسكب، والماء صافٍ (صحيح) -->
+        <g transform="translate(200,0)">
+          <use href="#jar"/>
+          <g fill="#fdfaf2" stroke="#c2ac82" stroke-width="2">
+            <rect x="-16" y="50" width="14" height="14" rx="2"/><rect x="2" y="60" width="14" height="14" rx="2"/><rect x="-4" y="36" width="12" height="12" rx="2"/>
+          </g>
+          <text x="0" y="228" text-anchor="middle" font-size="21" font-weight="700" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">سُكَّرٌ</text>
+        </g>
+        <!-- كوب الرَّمل: حبيبات بنّية تُسكب، لكنّ الماء رُسم صافياً بلا رَسوب في القاع (الخطأ) -->
+        <g transform="translate(324,0)">
+          <use href="#jar"/>
+          <g fill="#c79a5a" stroke="#8a6a3f" stroke-width="2">
+            <circle cx="-12" cy="58" r="5"/><circle cx="2" cy="48" r="5"/><circle cx="14" cy="64" r="5"/><circle cx="-2" cy="72" r="4"/>
+          </g>
+          <text x="0" y="228" text-anchor="middle" font-size="21" font-weight="700" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">رَملٌ</text>
+        </g>
+      </svg>`
     }
 
   ],
@@ -8118,5 +8380,4 @@ window.QUESTIONS = {
     }
 
   ]
-
 };

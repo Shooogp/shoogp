@@ -59,11 +59,11 @@
       {
         "unit": "تغيير المواد",
         "lessons": [
-          { "title": "تغيير شكل المواد", "file": "g2s-3-1", "open": false },
-          { "title": "الثَّني واللَّيّ", "file": "g2s-3-2", "open": false },
-          { "title": "المرونة الرائعة", "file": "g2s-3-3", "open": false },
-          { "title": "التسخين والتبريد", "file": "g2s-3-4", "open": false },
-          { "title": "لماذا تكون مياه البحر مالحة؟", "file": "g2s-3-5", "open": false },
+          { "title": "تغيير شكل المواد", "file": "g2s-3-1", "open": true },
+          { "title": "الثَّني واللَّيّ", "file": "g2s-3-2", "open": true },
+          { "title": "المرونة الرائعة", "file": "g2s-3-3", "open": true },
+          { "title": "التسخين والتبريد", "file": "g2s-3-4", "open": true },
+          { "title": "لماذا تكون مياه البحر مالحة؟", "file": "g2s-3-5", "open": true },
           { "title": "تحقّق من تقدّمك", "file": "g2s-3-6", "open": false }
         ]
       }

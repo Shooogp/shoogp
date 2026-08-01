@@ -35,6 +35,77 @@
 
 ---
 
+## بند ٢ — `g2s-3-4` · السؤال الإثرائي (تلوين الساخن والبارد)
+
+- **رمز السؤال:** `g2s-3-4` (العلوم/الثاني — الوحدة الثالثة، الدرس الرابع: التسخين والتبريد) — السؤال الإثرائي `color`.
+- **الهدف:** `2Cp5: يلاحظ التغيّرات التي يُحدثها التسخين والتبريد في المواد`. المستوى: تطبيق.
+- **نصّ السؤال (بعد الربط):** «لَوِّنِ السَّاخِنَ بالأحمَرِ والباردَ بالأزرَقِ: اختَرْ لَوناً ثُمَّ اضغَطِ الشَّيءَ.»
+- **اسم الملف العربي المقترح:** `images/ساخن-بارد-اجسام.png` (ومنه `ساخن-بارد-اجسام.svg` بعد التتبّع).
+- **نتيجة البوّابة:** ✅ **مرّ** — ٤ مناطق (≤٤) · حدود مغلقة لكلٍّ · بلا تداخل · لون مسطّح فريد لكلٍّ.
+
+| المنطقة | المعرّف `id`/`data-name` | لون التوليد (مفتاح العزل) | لون الإجابة النهائي |
+|---------|--------------------------|---------------------------|---------------------|
+| كوب الشاي (ساخن) | `hot-tea` | `#3AA0FF` (أزرق صريح) | يُحيَّد إلى `#E8E4DC`؛ الإجابة: أحمر `#cf3b3b` |
+| رغيف الخبز (ساخن) | `hot-bread` | `#35C759` (أخضر صريح) | يُحيَّد إلى `#E8E4DC`؛ الإجابة: أحمر `#cf3b3b` |
+| مكعّب الثلج (بارد) | `cold-ice` | `#F2C94C` (أصفر صريح) | يُحيَّد إلى `#E8E4DC`؛ الإجابة: أزرق `#2f6fb0` |
+| كرة المثلّجات (بارد) | `cold-icecream` | `#B14BE0` (بنفسجي صريح) | يُحيَّد إلى `#E8E4DC`؛ الإجابة: أزرق `#2f6fb0` |
+
+> ألوانُ التوليد الأربعة مختلفةٌ تماماً وإن تشارك جسمانِ **لونَ الإجابة** — اللون مفتاحُ العزل في التتبّع لا معنى الإجابة.
+> الأجزاءُ الثابتةُ (صحنُ الكوب، مخروطُ المثلّجات، البخار) تبقى بألوانها الطبيعية ولا تُلوَّن.
+
+**عربي:** أنشئ رسماً تعليمياً لأربعةِ أشياءَ منفصلةٍ في صفَّينِ (٢×٢): **كوبُ شايٍ ساخنٍ بصحنٍ ويتصاعدُ منه بخارٌ** بلونٍ **أزرقَ مسطّحٍ صريحٍ `#3AA0FF`**، و**رغيفُ خبزٍ ساخنٍ يتصاعدُ منه بخارٌ** بلونٍ **أخضرَ مسطّحٍ صريحٍ `#35C759`**، و**مكعّبُ ثلجٍ** بلونٍ **أصفرَ مسطّحٍ صريحٍ `#F2C94C`**، و**مثلّجاتٌ في مخروطٍ** كرتُها بلونٍ **بنفسجيٍّ مسطّحٍ صريحٍ `#B14BE0`**. لكلِّ شيءٍ **حدٌّ خارجيٌّ أسودُ سميكٌ مغلقٌ** يفصلُه تماماً، ولا تتداخلُ الأشياءُ، ولا يتكرّرُ لونٌ بينها. الخلفيةُ **بيضاءُ نقيّةٌ `#FFFFFF`** بلا أيّ نصوصٍ أو تسمياتٍ أو أرقامٍ. رسم كرتونيّ متّجهي لامع بأسلوب ملصقات الفضاء، بألوانٍ صريحةٍ مشبعة، لكلِّ جسمٍ تدرّجُ حجمٍ من ثلاثِ إلى أربعِ درجاتٍ من لونِه نفسِه (فاتحةٌ ثمّ أساسيةٌ ثمّ غامقةٌ ثمّ ظِلّ) بحوافَّ فاصلةٍ واضحةٍ بين الدرجاتِ لا مزجٍ ناعم، مع لمعةٍ بيضاءَ عريضةٍ على الأسطحِ المنحنية، وحدٍّ خارجيٍّ أسودَ رفيعٍ واضحٍ ‎#111111‎ مستديرِ الرؤوسِ يحيطُ كلَّ جسمٍ وأجزاءَه الداخلية (خطٌّ نظيفٌ رفيعٌ لا حدٌّ ثقيل)، بأشكالٍ ممتلئةٍ مستديرةٍ بلا زاويةٍ حادّة، والأجسامُ طافيةٌ بلا خطِّ أرضٍ ولا ظلٍّ مُلقًى، وبلا أيِّ ملامحِ وجهٍ على أيِّ شيءٍ إطلاقاً. صورة واحدة مستقلّة فقط.
+
+**English:** Create an educational illustration of four separate objects arranged in two rows (2×2): a **hot cup of tea on a saucer with steam rising**, in flat solid **blue `#3AA0FF`**; a **hot loaf of bread with steam rising**, in flat solid **green `#35C759`**; an **ice cube**, in flat solid **yellow `#F2C94C`**; and an **ice cream cone** whose scoop is flat solid **purple `#B14BE0`**. Each object has a **thick closed black outline** fully separating it; objects do not overlap; no color is repeated between them. Pure **white background `#FFFFFF`**, with no text, labels, or numbers. Glossy cartoon vector illustration in a space-sticker style, bold saturated colors, each object shaded with a 3-4 step ramp of its own hue (highlight, base, shade, deep shade) as crisp discrete bands with hard edges and no soft blending, a broad white gloss highlight on curved surfaces, a thin crisp black outline #111111 with rounded caps around every object and its inner parts (a clean fine line, not a heavy border), plump rounded forms with no sharp angles, objects floating with no ground line and no cast shadow, absolutely no facial features on anything. One single standalone image only.
+
+---
+
+## بند ٣ — `g2s-3-3` · السؤال الرابع (سحب أسماء الأجسام المرنة)
+
+- **رمز السؤال:** `g2s-3-3` (الوحدة الثالثة، الدرس الثالث: المرونة الرائعة) — السؤال الرابع `drag-drop`.
+- **الهدف:** `2Cp4: يتعرّف المواد المرنة ويميّزها بعودتها إلى شكلها الأصلي`. المستوى: تطبيق.
+- **اسم الملف العربي المقترح:** `images/اجسام-مرنة.png`.
+- **نتيجة البوّابة:** ✅ **مرّ** — ٣ مناطق · حدود مغلقة · بلا تداخل · لون فريد لكلٍّ.
+
+| المنطقة | المعرّف | لون التوليد | ملاحظة |
+|---------|---------|-------------|--------|
+| رِباط مطّاطي (حلقة) | `elastic-band` | `#3AA0FF` | نقطةُ الارتساء على الحلقةِ نفسِها لا في جوفِها |
+| إسفنجة | `elastic-sponge` | `#35C759` | |
+| نابِض | `elastic-spring` | `#F2C94C` | |
+
+> **قيدُ تخطيطٍ عندَ الاستبدال:** يُبقى **الشريطُ العلويُّ (نحو ربعِ الارتفاع) فارغاً** ليجلسَ فيه صفُّ الصناديق، ونسبةُ الصورةِ تبقى ≥ 1.2 (تخطيطُ الصفِّ العلويّ) و≤ 2.2 (سقفُ النسبة). وبعدَ الاستبدالِ **يُعاد حسابُ `targets[].dot`** وفحصُ الإطار.
+
+**عربي:** أنشئ رسماً تعليمياً لثلاثةِ أجسامٍ مرنةٍ منفصلةٍ في صفٍّ أفقيٍّ واحدٍ في **النصفِ السفليِّ من الصورة** (يُترك النصفُ العلويُّ فارغاً بالكامل): **رِباطٌ مطّاطيٌّ على هيئةِ حلقةٍ سميكةٍ** بلونٍ **أزرقَ مسطّحٍ صريحٍ `#3AA0FF`**، و**إسفنجةُ تنظيفٍ مستطيلةٌ بحوافَّ دائريّةٍ وثقوبٍ ظاهرةٍ** بلونٍ **أخضرَ مسطّحٍ صريحٍ `#35C759`**، و**نابِضٌ لولبيٌّ بلوحٍ معدنيٍّ في أعلاه وأسفلِه** بلونٍ **أصفرَ مسطّحٍ صريحٍ `#F2C94C`**. لكلِّ جسمٍ **حدٌّ خارجيٌّ أسودُ سميكٌ مغلقٌ**، ولا تتداخلُ الأجسامُ، ولا يتكرّرُ لونٌ بينها. الخلفيةُ **بيضاءُ نقيّةٌ `#FFFFFF`** بلا أيّ نصوصٍ أو تسمياتٍ أو أرقامٍ. رسم كرتونيّ متّجهي لامع بأسلوب ملصقات الفضاء، بألوانٍ صريحةٍ مشبعة، لكلِّ جسمٍ تدرّجُ حجمٍ من ثلاثِ إلى أربعِ درجاتٍ من لونِه نفسِه (فاتحةٌ ثمّ أساسيةٌ ثمّ غامقةٌ ثمّ ظِلّ) بحوافَّ فاصلةٍ واضحةٍ بين الدرجاتِ لا مزجٍ ناعم، مع لمعةٍ بيضاءَ عريضةٍ على الأسطحِ المنحنية، وحدٍّ خارجيٍّ أسودَ رفيعٍ واضحٍ ‎#111111‎ مستديرِ الرؤوسِ يحيطُ كلَّ جسمٍ وأجزاءَه الداخلية (خطٌّ نظيفٌ رفيعٌ لا حدٌّ ثقيل)، بأشكالٍ ممتلئةٍ مستديرةٍ بلا زاويةٍ حادّة، والأجسامُ طافيةٌ بلا خطِّ أرضٍ ولا ظلٍّ مُلقًى، وبلا أيِّ ملامحِ وجهٍ على أيِّ شيءٍ إطلاقاً. صورة واحدة مستقلّة فقط.
+
+**English:** Create an educational illustration of three separate elastic objects in a single horizontal row placed in the **lower half of the image** (leave the upper half completely empty): a **thick rubber band shaped as a ring**, in flat solid **blue `#3AA0FF`**; a **rectangular cleaning sponge with rounded corners and visible holes**, in flat solid **green `#35C759`**; and a **coiled spring with a metal plate at its top and bottom**, in flat solid **yellow `#F2C94C`**. Each object has a **thick closed black outline**; objects do not overlap; no color is repeated between them. Pure **white background `#FFFFFF`**, with no text, labels, or numbers. Glossy cartoon vector illustration in a space-sticker style, bold saturated colors, each object shaded with a 3-4 step ramp of its own hue (highlight, base, shade, deep shade) as crisp discrete bands with hard edges and no soft blending, a broad white gloss highlight on curved surfaces, a thin crisp black outline #111111 with rounded caps around every object and its inner parts (a clean fine line, not a heavy border), plump rounded forms with no sharp angles, objects floating with no ground line and no cast shadow, absolutely no facial features on anything. One single standalone image only.
+
+---
+
+## بند ٤ — `g2s-3-2` · السؤال الرابع (الجسم القابل للثني)
+
+- **رمز السؤال:** `g2s-3-2` (الوحدة الثالثة، الدرس الثاني: الثَّني واللَّيّ) — السؤال الرابع `hotspot`.
+- **الهدف:** `2Cp3: يستكشف أنّ شكل بعض المواد يتغيّر بالضغط والشدّ والثني واللَّيّ`. المستوى: تطبيق.
+- **اسم الملف العربي المقترح:** `images/اجسام-تنثني.png`.
+- **نتيجة البوّابة:** ✅ **مرّ** — ٤ مناطق · حدود مغلقة · بلا تداخل · لون فريد لكلٍّ.
+
+| المنطقة | المعرّف | لون التوليد | ملاحظة |
+|---------|---------|-------------|--------|
+| سِلك معدنيّ ملويّ | `bend-wire` | `#3AA0FF` | **الإجابة الصحيحة** — عليها `spot` |
+| كوب زجاج | `bend-glass` | `#35C759` | مموّه |
+| صخرة | `bend-rock` | `#F2C94C` | مموّه |
+| قضيب حديد سميك | `bend-rod` | `#B14BE0` | مموّه |
+
+> بعدَ الاستبدالِ **يُعاد حسابُ `spot.x/y`** على مركزِ السِّلك (`spot.r` لا يُمَسّ).
+
+**عربي:** أنشئ رسماً تعليمياً لأربعةِ أجسامٍ منفصلةٍ في صفَّينِ (٢×٢): **سِلكٌ معدنيٌّ رفيعٌ ملويٌّ بانحناءاتٍ واضحةٍ** بلونٍ **أزرقَ مسطّحٍ صريحٍ `#3AA0FF`**، و**كوبُ زجاجٍ فارغٌ** بلونٍ **أخضرَ مسطّحٍ صريحٍ `#35C759`**، و**صخرةٌ ذاتُ أوجهٍ** بلونٍ **أصفرَ مسطّحٍ صريحٍ `#F2C94C`**، و**قضيبُ حديدٍ سميكٌ أفقيٌّ** بلونٍ **بنفسجيٍّ مسطّحٍ صريحٍ `#B14BE0`**. لكلِّ جسمٍ **حدٌّ خارجيٌّ أسودُ سميكٌ مغلقٌ**، ولا تتداخلُ الأجسامُ، ولا يتكرّرُ لونٌ بينها. الخلفيةُ **بيضاءُ نقيّةٌ `#FFFFFF`** بلا أيّ نصوصٍ أو تسمياتٍ أو أرقامٍ. رسم كرتونيّ متّجهي لامع بأسلوب ملصقات الفضاء، بألوانٍ صريحةٍ مشبعة، لكلِّ جسمٍ تدرّجُ حجمٍ من ثلاثِ إلى أربعِ درجاتٍ من لونِه نفسِه (فاتحةٌ ثمّ أساسيةٌ ثمّ غامقةٌ ثمّ ظِلّ) بحوافَّ فاصلةٍ واضحةٍ بين الدرجاتِ لا مزجٍ ناعم، مع لمعةٍ بيضاءَ عريضةٍ على الأسطحِ المنحنية، وحدٍّ خارجيٍّ أسودَ رفيعٍ واضحٍ ‎#111111‎ مستديرِ الرؤوسِ يحيطُ كلَّ جسمٍ وأجزاءَه الداخلية (خطٌّ نظيفٌ رفيعٌ لا حدٌّ ثقيل)، بأشكالٍ ممتلئةٍ مستديرةٍ بلا زاويةٍ حادّة، والأجسامُ طافيةٌ بلا خطِّ أرضٍ ولا ظلٍّ مُلقًى، وبلا أيِّ ملامحِ وجهٍ على أيِّ شيءٍ إطلاقاً. صورة واحدة مستقلّة فقط.
+
+**English:** Create an educational illustration of four separate objects arranged in two rows (2×2): a **thin twisted metal wire with clear bends**, in flat solid **blue `#3AA0FF`**; an **empty drinking glass**, in flat solid **green `#35C759`**; a **faceted rock**, in flat solid **yellow `#F2C94C`**; and a **thick horizontal iron rod**, in flat solid **purple `#B14BE0`**. Each object has a **thick closed black outline**; objects do not overlap; no color is repeated between them. Pure **white background `#FFFFFF`**, with no text, labels, or numbers. Glossy cartoon vector illustration in a space-sticker style, bold saturated colors, each object shaded with a 3-4 step ramp of its own hue (highlight, base, shade, deep shade) as crisp discrete bands with hard edges and no soft blending, a broad white gloss highlight on curved surfaces, a thin crisp black outline #111111 with rounded caps around every object and its inner parts (a clean fine line, not a heavy border), plump rounded forms with no sharp angles, objects floating with no ground line and no cast shadow, absolutely no facial features on anything. One single standalone image only.
+
+---
+
+> **خارج الطابور عمداً — `g2s-3-5` السؤال الإثرائي (اكتشف الخطأ: أكواب المِلح والسُّكّر والرَّمل):** يسقطُ في البوّابةِ لأنّ المشهدَ يحتاجُ **تسمياتٍ نصّيّةً** تحتَ كلِّ كوبٍ (بها وحدَها يُعرَف أيُّ كوبٍ رُسِمَ خطأً)، وقالبُ التوليدِ يشترطُ صورةً **بلا أيّ نصوصٍ**. فيبقى رسماً يدوياً دائماً — وهذا هو المخرَجُ الصحيحُ في البوّابة: لا يُغيَّرُ الهدفُ التعليميّ ولا يُقحَمُ المسار.
+
+---
+
 ## ملاحظات للجولة الثانية
 - بعد التتبّع: سمِّ المسارات الثلاثة `state-solid` / `state-liquid` / `state-gas`، وحوّلها إلى `class="cpart" data-name="..."`، وحيّد تعبئتها إلى `#E8E4DC`.
 - بيانات السؤال `parts`: `state-solid`→`#2f6fb0`، `state-liquid`→`#3e9b4f`، `state-gas`→`#f2c230`. واللوحة `palette`: أزرق/أخضر/أصفر بنفس القيم.
@@ -42,7 +113,7 @@
 
 ---
 
-## بند ٢ — `g2m-9-3` · السؤال الإثرائي (اكتشف الخطأ: العربة ذات العجلة المربعة)
+## بند ٥ — `g2m-9-3` · السؤال الإثرائي (اكتشف الخطأ: العربة ذات العجلة المربعة)
 
 > **أول بند بموجب «قاعدة التفصيل البصري» (`CLAUDE.md`)** — مسار الترقية إلى مستوى فنّ المنصّة. الرسم اليدوي الغنيّ الحالي في `js/questions.js` جسرٌ مؤقت يُستبدل بناتج هذا البند.
 
@@ -74,7 +145,7 @@
 
 ---
 
-## بند ٣ — `g2m-13-1` · السؤال الرابع (تحديد الأجزاء: مرطبانا التقدير)
+## بند ٦ — `g2m-13-1` · السؤال الرابع (تحديد الأجزاء: مرطبانا التقدير)
 
 > بند بموجب «قاعدة التفصيل البصري» (`CLAUDE.md`) — الرسم اليدوي الغنيّ الحالي في `js/questions.js` جسرٌ مؤقت.
 
@@ -108,7 +179,7 @@
 
 ---
 
-## بند ٤ — `g4s-2-5` · السؤال الإثرائي (تلوين: الحشرة ودودة الأرض)
+## بند ٧ — `g4s-2-5` · السؤال الإثرائي (تلوين: الحشرة ودودة الأرض)
 
 > بند بموجب «قاعدة التفصيل البصري» (`CLAUDE.md`) — الرسم اليدوي الغنيّ الحالي في `js/questions.js` جسرٌ مؤقت.
 
@@ -142,7 +213,7 @@
 
 ---
 
-## بند ٥ — `g4s-1-6` · السؤال السادس (اكتشف الخطأ: كمية الدواء الكبيرة)
+## بند ٨ — `g4s-1-6` · السؤال السادس (اكتشف الخطأ: كمية الدواء الكبيرة)
 
 > بند بموجب «قاعدة التفصيل البصري» (`CLAUDE.md`) — الرسم اليدوي الغنيّ الحالي في `js/questions.js` جسرٌ مؤقت.
 
