@@ -8808,7 +8808,7 @@ window.QUESTIONS = {
       svg: `<svg viewBox="0 0 640 310" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="ثلاث بصمات بأنماط مختلفة">
         <g stroke="#111111" stroke-width="3">
           <rect x="440" y="40" width="120" height="220" rx="60" fill="#F2C3A0"/>
-          <path d="M500,40 A60,60 0 0 1 560,100 L560,200 A60,60 0 0 1 500,260 L500,246 A46,46 0 0 0 546,200 L546,100 A46,46 0 0 0 500,54 Z" fill="#E0C080" stroke="none"/>
+          <path d="M500,40 A60,60 0 0 1 560,100 L560,200 A60,60 0 0 1 500,260 L500,246 A46,46 0 0 0 546,200 L546,100 A46,46 0 0 0 500,54 Z" fill="#E0A87F" stroke="none"/>
           <ellipse cx="474" cy="82" rx="13" ry="22" fill="#FFFFFF" stroke="none" opacity=".45"/>
           <rect x="440" y="40" width="120" height="220" rx="60" fill="none"/>
           <g fill="none" stroke="#984800" stroke-width="4">
@@ -8820,7 +8820,7 @@ window.QUESTIONS = {
           </g>
 
           <rect x="260" y="40" width="120" height="220" rx="60" fill="#F2C3A0"/>
-          <path d="M320,40 A60,60 0 0 1 380,100 L380,200 A60,60 0 0 1 320,260 L320,246 A46,46 0 0 0 366,200 L366,100 A46,46 0 0 0 320,54 Z" fill="#E0C080" stroke="none"/>
+          <path d="M320,40 A60,60 0 0 1 380,100 L380,200 A60,60 0 0 1 320,260 L320,246 A46,46 0 0 0 366,200 L366,100 A46,46 0 0 0 320,54 Z" fill="#E0A87F" stroke="none"/>
           <ellipse cx="294" cy="82" rx="13" ry="22" fill="#FFFFFF" stroke="none" opacity=".45"/>
           <rect x="260" y="40" width="120" height="220" rx="60" fill="none"/>
           <g fill="none" stroke="#984800" stroke-width="4">
@@ -8832,7 +8832,7 @@ window.QUESTIONS = {
           </g>
 
           <rect x="80" y="40" width="120" height="220" rx="60" fill="#F2C3A0"/>
-          <path d="M140,40 A60,60 0 0 1 200,100 L200,200 A60,60 0 0 1 140,260 L140,246 A46,46 0 0 0 186,200 L186,100 A46,46 0 0 0 140,54 Z" fill="#E0C080" stroke="none"/>
+          <path d="M140,40 A60,60 0 0 1 200,100 L200,200 A60,60 0 0 1 140,260 L140,246 A46,46 0 0 0 186,200 L186,100 A46,46 0 0 0 140,54 Z" fill="#E0A87F" stroke="none"/>
           <ellipse cx="114" cy="82" rx="13" ry="22" fill="#FFFFFF" stroke="none" opacity=".45"/>
           <rect x="80" y="40" width="120" height="220" rx="60" fill="none"/>
           <g fill="none" stroke="#984800" stroke-width="4">
