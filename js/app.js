@@ -142,8 +142,16 @@ function openBook(key){
   setTheme(bk && bk.theme ? bk.theme : 'theme-home');
   document.getElementById('bookTitle').textContent=idx.book;
   const totalL = idx.units.reduce((s,u)=>s+u.lessons.length,0);
-  document.getElementById('bookSub').textContent=`${idx.units.length} وحدات · ${totalL} درساً`;
   const list=document.getElementById('lessons');list.innerHTML='';
+  /* كتابٌ له بطاقة ولمّا تُبنَ دروسُه بعد: يُعرض بلطفٍ بدل قائمةٍ فارغة صامتة.
+     (البطاقة تسبق الفهرس عمداً — تُنشأ عند إرفاق كتاب التلميذ، ويُبنى الفهرس لاحقاً.) */
+  if(!totalL){
+    document.getElementById('bookSub').textContent='البطاقة جاهزة · الدروس تُضاف قريباً';
+    list.innerHTML='<div class="empty">📖 دروس هذا الكتاب ستُضاف قريباً بإذن الله</div>';
+    showScreen('lessonsScreen');
+    return;
+  }
+  document.getElementById('bookSub').textContent=`${idx.units.length} وحدات · ${totalL} درساً`;
   let n=0;
   idx.units.forEach((u,ui)=>{
     // --- بطاقة الوحدة (قابلة للطي) ---
