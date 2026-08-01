@@ -18,9 +18,23 @@ function imgURL(name){ return IMG_BASE + name; }
 /* نطاق التعميم: كتب الحلقة المفعّلة في النظام. لكل كتاب: مفتاحه في DATA.index
    (مصدر النطاق — أي درس يُضاف للكتاب يدخل تلقائياً)، وبادئة رمز دروسه (احتياطٌ
    عند غياب DATA)، ومادّته (مفتاح اختيار الإطار حسب المادة — §مادة الدرس).
-   المفعَّلُ اليوم: علومُ الرابع (g4s-) ورياضياتُ الرابع (g4m-) ورياضياتُ الثاني (g2m-)؛
-   إضافة كتابٍ = سطرٌ واحد هنا، يرثُ به كلَّ قواعدِ مادّتِه بلا كودٍ جديد. */
-var SHOOGP_BOOKS=[
+
+   ═══ العلومُ مشمولةٌ بالمادةِ لا بالكتاب (قرارُ المالك ٢٠٢٦-٠٨-٠١) ═══
+   المطلوبُ: **كلُّ كتبِ العلومِ لكلِّ الصفوف — القائمةُ اليومَ والتي تُنشَأُ غداً.**
+   فالنطاقُ لم يعدْ قائمةً يدويةً للعلوم: كلُّ مفتاحِ كتابٍ ينتهي بـ`-sci` يدخلُ النظامَ
+   **تلقائياً** بمادةِ `science` (‏SUBJECT_BY_KEY_SUFFIX)، فكتابُ علومٍ جديدٌ في
+   `data/books.json` يرثُ الإطارَ القمريَّ **بلا سطرٍ هنا ولا كودٍ جديد**.
+   وتبقى الموادُّ الأخرى (الرياضياتُ اليوم) **مُدرَجةً صراحةً** لأنّ تعميمَها قرارٌ مستقلّ.
+
+   **البذرةُ الساكنة (`SHOOGP_BOOKS_SEED`) ليست تكراراً:** الاشتقاقُ يحتاجُ `DATA`،
+   و`DATA` تُحمَّلُ لاحقاً (‏`data/books.json`)؛ فلو سُئلَ النطاقُ قبلَ وصولِها لخرجتِ
+   العلومُ منه لحظةً وظهرتِ البطاقةُ القديمةُ ثمّ قفزت. فالبذرةُ تضمنُ الكتبَ المعروفةَ
+   وقتَ الكتابةِ في كلِّ الأحوال، والاشتقاقُ يضيفُ ما جدَّ بعدها. */
+var SUBJECT_BY_KEY_SUFFIX={ '-sci':'science' };
+var SHOOGP_BOOKS_SEED=[
+  {key:'g1-sci',  prefix:'g1s-', subject:'science'},
+  {key:'g2-sci',  prefix:'g2s-', subject:'science'},
+  {key:'g3-sci',  prefix:'g3s-', subject:'science'},
   {key:'g4-sci',  prefix:'g4s-', subject:'science'},
   {key:'g4-math', prefix:'g4m-', subject:'math'},
   /* الرياضيات — الصف الثاني: أوّلُ كتابٍ يرثُ مرجعَ مادّتِه بسطرٍ واحدٍ بلا كودٍ خاصّ
@@ -28,6 +42,29 @@ var SHOOGP_BOOKS=[
      كلُّها من `subject` وحدَه، ولونُ الشريطِ من `band` في data/books.json. */
   {key:'g2-math', prefix:'g2m-', subject:'math'}
 ];
+/* بادئةُ دروسِ الكتابِ من مفتاحِه: `g4-sci`←`g4s-` و`g2-math`←`g2m-` (الصفُّ + أوّلُ
+   حرفِ المادةِ). تُستعمَلُ للكتبِ المشتقّةِ فقط، وهي احتياطُ «غيابِ DATA» لا أكثر. */
+function bookKeyPrefix(k){
+  var p=String(k).split('-');
+  return (p.length>1 && p[1]) ? (p[0]+p[1].charAt(0)+'-') : (p[0]+'-');
+}
+/* النطاقُ الفعليّ: البذرةُ + كلُّ كتابٍ في DATA مفتاحُه بلاحقةٍ مشمولة. */
+function shoogpBooks(){
+  var out=SHOOGP_BOOKS_SEED.slice();
+  var D=theData();
+  var idx=(D && D.index) ? D.index : null;
+  if(!idx) return out;
+  Object.keys(idx).forEach(function(k){
+    for(var suf in SUBJECT_BY_KEY_SUFFIX){
+      if(k.length>suf.length && k.slice(-suf.length)===suf){
+        for(var i=0;i<out.length;i++){ if(out[i].key===k) return; }
+        out.push({key:k, prefix:bookKeyPrefix(k), subject:SUBJECT_BY_KEY_SUFFIX[suf]});
+        return;
+      }
+    }
+  });
+  return out;
+}
 /* ═══ الوصولُ إلى DATA — لا عبرَ window ═══
    `DATA` في js/data.js معلَنٌ بـ`const` على مستوى السكربت، و`const/let` في النطاقِ
    العلويِّ **لا تُصبحُ خصائصَ على window** (بخلافِ `var`). فـ`window.DATA` تساوي
@@ -39,8 +76,9 @@ function theData(){ return (typeof DATA!=='undefined') ? DATA : null; }
 function lessonBook(ls){
   if(!ls || !ls.file) return null;
   var D=theData();
-  for(var i=0;i<SHOOGP_BOOKS.length;i++){
-    var b=SHOOGP_BOOKS[i];
+  var BOOKS=shoogpBooks();
+  for(var i=0;i<BOOKS.length;i++){
+    var b=BOOKS[i];
     var idx=(D && D.index && D.index[b.key]);
     if(idx){
       if(idx.units.some(function(u){
@@ -54,12 +92,12 @@ function lessonInScope(ls){ return !!lessonBook(ls); }
 function lessonSubject(ls){ var b=lessonBook(ls); return b?b.subject:null; }
 /* مادة الدرس المفتوح حالياً — تُضبط في ترقيع openLesson، وتقرؤها resolveCfg */
 var _curSubject=null;
-/* وكتابُه (مدخلُه في SHOOGP_BOOKS) — مفتاحُ لونِ بطاقتِه لكسوةِ الشريطِ الخلفيّ */
+/* وكتابُه (مدخلُه في نطاقِ shoogpBooks()) — مفتاحُ لونِ بطاقتِه لكسوةِ الشريطِ الخلفيّ */
 var _curBook=null;
 /* ═══ قشورُ أزرارِ الإجابة حسبَ المادة (كسوةٌ بصريةٌ بحتة) ═══
    «القشرة» = صنفٌ واحدٌ يُوضَع على #questionList بجانبِ بوّابةِ .shoogp-ui، يلتقطه
    CSS (§٩ في css/shoogp-ui.css) فيُعيدُ كسوةَ أزرارِ الإجابةِ لتلكَ المادةِ وحدَها.
-   المصدرُ هو **نفسُ منطقِ إطاراتِ المواد** (lessonSubject ← الكتاب في SHOOGP_BOOKS)،
+   المصدرُ هو **نفسُ منطقِ إطاراتِ المواد** (lessonSubject ← الكتاب في نطاقِ shoogpBooks())،
    فلا مصدرَ ثانٍ للحقيقة. المادةُ التي لا قشرةَ لها تبقى على شكلِها القائمِ دونَ أيِّ
    تغيير (الرياضياتُ اليوم). لا تمسُّ القشرةُ منطقَ الأسئلةِ ولا بنيةَ DOM.
    **إضافةُ مادةٍ لاحقاً = سطرٌ هنا + كتلةُ CSS بنفسِ اسمِ الصنف.** */
@@ -83,10 +121,10 @@ function allSkinClasses(){
    تُميَّزُ عن «القشرة» أعلاه: القشرةُ كسوةٌ ثقيلةٌ محكومةٌ بقائمةِ المعاينة، أمّا هذه
    فعلامةٌ خفيفةٌ تُوضَع **لكلِّ درسٍ في نطاقِ النظام** تقولُ «هذا درسُ علومٍ/رياضيات»،
    فتلتقطُها قواعدُ CSS الخاصةُ بمادةٍ بعينِها (كلونِ نصِّ السؤال) وتسري على الكتابِ كلِّه.
-   مصدرُها نفسُه: `lessonSubject` ← `SHOOGP_BOOKS`. */
+   مصدرُها نفسُه: `lessonSubject` ← `shoogpBooks()`. */
 function subjectClass(subj){ return subj ? 'subj-'+subj : null; }
 function allSubjectClasses(){
-  return SHOOGP_BOOKS.map(function(b){ return subjectClass(b.subject); });
+  return shoogpBooks().map(function(b){ return subjectClass(b.subject); });
 }
 /* البوّابة: هل النظام مُفعَّل الآن؟ (صنف .shoogp-ui على #questionList) */
 function gateOn(){
@@ -719,6 +757,20 @@ function bandEl(){
   }
   return _bandEl;
 }
+/* إطارُ الشريطِ الأبيض — عنصرٌ مستقلٌّ لأنّ صندوقَ الشريطِ يغطّي المنفذَ ولا يُرى إلا بقناعِه،
+   فأيُّ حدٍّ عليه يُرسَمُ عندَ حوافِّ المنفذِ ثمّ يقتصُّه القناع (راجعْ .qbandframe في CSS). */
+var _bandFrameEl=null;
+function bandFrameEl(){
+  if(_bandFrameEl && _bandFrameEl.isConnected) return _bandFrameEl;
+  _bandFrameEl=document.querySelector('.qbandframe');
+  if(!_bandFrameEl){
+    _bandFrameEl=document.createElement('div');
+    _bandFrameEl.className='qbandframe';
+    _bandFrameEl.setAttribute('aria-hidden','true');
+    document.body.appendChild(_bandFrameEl);
+  }
+  return _bandFrameEl;
+}
 /* معامِلُ الزوم الحيّ: من ShoogpFit إن توفّر، وإلا يُشتَقّ من العنصرِ نفسِه
    (مرئيّ ÷ تصميميّ) فلا يعتمدُ على ثابتٍ ولا على حالةٍ خارجية. */
 function liveZoom(el){
@@ -732,7 +784,8 @@ function placeBand(){
   var shown=(gateOn() && act && act.classList.contains('active')) ? currentShown() : null;
   var f=shown && shown.querySelector('.qframe');
   var fr=f && f.getBoundingClientRect();
-  if(!fr || !fr.width){ b.style.display='none'; return; }
+  var bf=bandFrameEl();
+  if(!fr || !fr.width){ b.style.display='none'; bf.style.display='none'; return; }
   var z=liveZoom(f);
   var pad=BAND_PAD*z;
   /* اتحادُ الإطارِ والأيقوناتِ أفقياً — الشارتانِ (فوق) وأزرارُ التنقّلِ ومؤشّرُ التقدّم
@@ -752,7 +805,7 @@ function placeBand(){
     if(lr.width) L=Math.max(L, lr.right+BAND_LANE_GAP);
   }
   L=Math.max(0,L); R=Math.min(window.innerWidth,R);
-  if(R-L<2){ b.style.display='none'; return; }
+  if(R-L<2){ b.style.display='none'; bf.style.display='none'; return; }
   b.style.display='block';   /* صريحٌ لا '' — الـCSS يبدأُ بـdisplay:none فيعودُ إليه الفراغ */
   /* كسوةُ بطاقةِ الكتاب — **أولويةُ المصادر**:
        ١) زوجُ `band` الصريحُ في البيانات (مصدرُه الغلافُ المرئيّ) ← يُكتَبُ متغيّرَين.
@@ -788,12 +841,19 @@ function placeBand(){
   if(headerBottom && top < headerBottom) top = headerBottom + BAND_HEAD_GAP;
   /* احتواءٌ داخلَ المنفذِ وحراسةٌ من الانقلاب */
   top=Math.max(0, top); bot=Math.min(Hv, bot);
-  if(bot-top<8){ b.style.display='none'; return; }
+  if(bot-top<8){ b.style.display='none'; bf.style.display='none'; return; }
   /* الصندوقُ يغطّي المنفذَ (inset:0) ونقتصُّ حوافَّه الأربع: من البكسلِ الحقيقيِّ
      (rect) إلى فضاءِ المحتوى المزوَّم بالقسمةِ على الزوم.
      inset(أعلى يمين أسفل يسار round نصفُ القطر). */
   b.style.clipPath='inset('+top.toFixed(2)+'px '+(Wv-R/z).toFixed(2)+'px '+
     (Hv-bot).toFixed(2)+'px '+(L/z).toFixed(2)+'px round '+bandRadius()+'px)';
+  /* إطارُ الشريطِ على **نفسِ المستطيل** المحسوبِ أعلاه (فضاءُ المحتوى المزوَّم عينُه الذي
+     يُفسَّرُ به clip-path) — فلا ينزلقُ عنه في أيِّ زومٍ أو مقاس. */
+  bf.style.display='block';
+  bf.style.left  =(L/z).toFixed(2)+'px';
+  bf.style.top   =top.toFixed(2)+'px';
+  bf.style.width =((R-L)/z).toFixed(2)+'px';
+  bf.style.height=(bot-top).toFixed(2)+'px';
   /* ── دائرتا الزاويتين: مقاسٌ وموضعٌ بوحدةِ **عرضِ المستطيلِ المرئيّ** ──
      تُحسبانِ هنا لا بالنسبةِ المئويةِ في CSS، لأنّ صندوقَ الشريطِ يغطّي المنفذَ كلَّه
      ولا يُقتَصُّ إلا بـ`clip-path`، فالنسبةُ المئويةُ كانت تُقاسُ على المنفذِ لا على

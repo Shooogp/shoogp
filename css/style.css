@@ -43,6 +43,18 @@
   body.theme-sci2{
     background:linear-gradient(180deg,#251f3a 0%,#402f4a 32%,#6f4c2e 65%,#a06d24 100%)}
 
+  /* ═══ خلفيةُ الفضاءِ ثابتةٌ على المنفذِ لا تتمرّرُ مع المحتوى (قرارُ المالك ٢٠٢٦-٠٨-٠١) ═══
+     بعدَ فتحِ التمريرِ في صفحتَي الكتبِ والفهرسِ (‏`js/fit.js` — §١.٥‑أ) صارَ المستندُ أطولَ
+     من الشاشة، فكانَ التدرّجُ **يتمرّرُ مع المحتوى ويُبلَّطُ** عندَ تجاوزِ ارتفاعِ منطقةِ
+     تموضعِه (‏`background-repeat` الافتراضيُّ `repeat`) — فتبدو الخلفيةُ «متكرّرة».
+     `background-attachment:fixed` يُثبّتُها على المنفذِ: لا حركةَ ولا تبليطَ ولا حاجةَ
+     إلى `background-size` ولا إلى إلغاءِ التكرار.
+     **لماذا مُحدِّدانِ لا `body` وحدَه:** كلُّ `body.theme-*` يكتبُ **اختصارَ** `background`
+     فيُصفِّرُ `background-attachment` إلى `scroll`؛ وقاعدةُ `body` المجرّدةُ وزنُها أدنى
+     فتُغلَب. فـ`body[class]` بوزنِ الثيماتِ نفسِه ومتأخّرٌ عنها في المصدرِ ⇒ يغلبُها.
+     **لا يمسُّ شاشةَ الأسئلة:** تمريرُها مقفولٌ (`fit-lock`) فلا فرقَ فيها أصلاً. */
+  body, body[class]{background-attachment:fixed}
+
   /* نجوم الخلفية */
   .stars{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
   .stars i{position:absolute;background:#fff;border-radius:50%;opacity:.7;animation:tw 3s infinite}
@@ -134,6 +146,35 @@
 
   /* شبكة الكتب (مربّعات منحنية) */
   .books{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:22px;max-width:720px;margin:0 auto}
+  /* ═══ إطارُ البطاقةِ الأبيضُ ذو الزوايا السميكة (قرارُ المالك ٢٠٢٦-٠٨-٠١) ═══
+     رسمٌ واحدٌ يُستعمَلُ 9-slice (‏`border-image`) — أسلوبُ المنصّةِ المعتمدُ للأطرِ المصوّرةِ
+     التي تتمدّدُ مع المحتوى (مهارةُ shoogp-ui §١.١): الأركانُ ثابتةُ الشكلِ والأضلاعُ تتمدّد.
+     **كيف تنشأُ السماكةُ المتغيّرة:** الحلقةُ محصورةٌ بين مستطيلَين مستديرَين، الخارجيُّ
+     نصفُ قطرِه **46** والداخليُّ **58** (أكبرُ لا أصغر) وبإزاحةٍ 8 — فعندَ الأضلاعِ المستقيمةِ
+     تكونُ الفجوةُ 8 بالضبط، وعلى القطرِ عندَ الركنِ تتّسعُ إلى **16.3** (الضِّعف) بانتقالٍ
+     مماسيٍّ ناعمٍ لأنّ الحدَّين قوسانِ لا خطوطٌ مكسورة. (لو جُعِلَ الداخليُّ أصغرَ لانقلبت
+     الحلقةُ فرقّت عندَ الأركان.)
+     **لماذا عرضُ الحدِّ 39px:** الشريحةُ 60 والقطرُ الخارجيُّ 46، فنصفُ القطرِ المعروضُ =
+     46 × (39÷60) = **30px** — أي **استدارةُ بطاقةِ الكتابِ نفسُها** فينطبقُ الإطارُ على
+     حافّتِها بلا انزلاق. تغييرُ العرضِ يغيّرُ الاستدارةَ معه، فلا يُغيَّرُ إلا مع نظيرِه.
+     **الحلقةُ ملاصقةٌ لحافّةِ الصندوقِ (إزاحةٌ صفر — قرارُ المالك):** كانت مُزاحةً 10 وحدات
+     لتُفسِحَ للظلِّ المخبوزِ في الرسم، فبقيت حافّةُ البطاقةِ الملوّنةُ ظاهرةً **6.5px** خارجَ
+     الأبيضِ فبدا الإطارُ طافياً داخلَها لا مُغطّياً لحدِّها. الآن الحدُّ الخارجيُّ للحلقةِ
+     على الصندوقِ تماماً فيُغطّي المحيطَ، **والظلُّ انتقلَ إلى `filter` في CSS** فلا يحتاجُ
+     فسحةً داخلَ الرسم. */
+  :root{
+    --shoogp-frame-w:39px;
+    --shoogp-frame:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'><path fill='%23ffffff' fill-rule='evenodd' d='M46,0 H114 A46,46 0 0 1 160,46 V114 A46,46 0 0 1 114,160 H46 A46,46 0 0 1 0,114 V46 A46,46 0 0 1 46,0 Z M68,8 H92 A60,60 0 0 1 152,68 V92 A60,60 0 0 1 92,152 H68 A60,60 0 0 1 8,92 V68 A60,60 0 0 1 68,8 Z'/></svg>");
+    --shoogp-frame-shadow:drop-shadow(0 2px 5px rgba(0,0,0,.28));
+  }
+  /* الإطارُ طبقةٌ فوقَ البطاقةِ لا حدٌّ لها: `.book` عليه `overflow:hidden` وغلافٌ مصوَّر،
+     فالحدُّ الحقيقيُّ كان سيُقتَصُّ أو يزيحَ المحتوى. و`::after` محجوزٌ للمعةِ البطاقة.
+     الظلُّ بـ`filter` يتبعُ شفافيةَ الحلقةِ فيقعُ حولَها **وداخلَ فتحتِها** معاً؛ وما وقعَ
+     خارجَ البطاقةِ يقتصُّه `overflow:hidden` ويبقى الداخليُّ فيؤدّي العمقَ المطلوب. */
+  .book::before{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;
+    border:var(--shoogp-frame-w) solid transparent;
+    border-image:var(--shoogp-frame) 60 stretch;
+    filter:var(--shoogp-frame-shadow)}
   .book{border-radius:30px;padding:26px 22px;cursor:pointer;position:relative;overflow:hidden;min-height:200px;
     display:flex;flex-direction:column;justify-content:space-between;transition:.25s;
     box-shadow:0 16px 34px rgba(0,0,0,.3), inset 0 2px 10px rgba(255,255,255,.3)}
@@ -308,7 +349,9 @@
   .cinstrbar{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
   .cinstr{display:inline-flex;align-items:center;background:rgba(255,255,255,.92);
     border-radius:12px;padding:6px 16px;font-weight:700;color:#3a2c0a;font-size:1.05rem}
-  .csvg .cpart{fill:#efe7d3;stroke:#33334d;stroke-width:3;transition:fill .12s;cursor:pointer}
+  /* حدُّ مناطقِ التلوين = حدُّ ورقةِ المواصفات البصرية نفسُه (‏#111111‎ — CLAUDE.md).
+     كان ‎#33334d‎ قبلَ اعتمادِ الورقة؛ وُحِّد هنا لأنّ الحدَّ خاصيةُ الرسمِ لا خاصيةُ السؤال. */
+  .csvg .cpart{fill:#efe7d3;stroke:#111111;stroke-width:3;transition:fill .12s;cursor:pointer}
   .csvg .cpart:hover{filter:brightness(.96)}
   .csvg .cpart.cwrong{stroke:#c94a4a!important;stroke-width:5;stroke-dasharray:7 4}
   /* بعد اختيار دلو: مؤشّر فرشاة طلاء فوق منطقة التلوين (حاسوب) */
@@ -593,6 +636,11 @@
   /* ⑬ الشريط المتدرّج: شريط أفقي بمؤشّر كبير يُسحب لتحديد قيمة على تدريج مرئيّ بأرقام كبيرة.
      الشريط dir:ltr كي تتصاعد الأرقام يساراً→يميناً كمسطرة، وبقيّة الواجهة RTL */
   .slider{display:flex;flex-direction:column;align-items:center;gap:26px;width:100%;max-width:640px;margin-inline:auto}
+  /* رسمٌ اختياريٌّ فوق الشريط (‏svg/image في بيانات السؤال) — مرجعٌ بصريٌّ للمقدار
+     المطلوب تقديرُه. محدودُ العرض عمداً: الشريطُ وتدريجُه هما بطلا السؤال، والرسمُ
+     مُعينٌ لا يزاحمهما، وتحديدُ العرضِ يمنع نموَّ الإطارِ إلى الحاوية المرنة. */
+  .sldfig{width:100%;max-width:360px;margin-inline:auto;display:block}
+  .sldfig svg,.sldfig img{width:100%;height:auto;display:block}
   /* عرض القيمة المختارة بأرقام كبيرة واضحة */
   .sld-value{font-family:'Cairo';font-weight:700;color:#fff;font-size:1.15rem;text-shadow:0 1px 3px rgba(0,0,0,.34)}
   .sld-value .sld-num{color:#ffe27a;font-size:1.7rem;margin-inline-start:6px}
