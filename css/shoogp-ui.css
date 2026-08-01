@@ -173,6 +173,9 @@
    النافذة يغطيه رسم الإطار بزخارفه (الدورق والمجهر...) ويبدو داخلاً أسفله. بلا لمس. */
 .qframe .qmask{position:absolute;inset:0;pointer-events:none;z-index:3}
 .qframe .qmask span{position:absolute;background-image:var(--fimg);background-repeat:no-repeat}
+/* قصاصة الإطار: شكل الإطار الحقيقي بزخارفه شفاف الوسط (تُبنى من صورته وقت التشغيل) */
+.qframe .qmaskart{position:absolute;inset:0;pointer-events:none;z-index:3;
+  background-repeat:no-repeat;background-size:100% 100%}
 /* تلاشٍ قصير عند التنقل بين سؤالين (يمنع قفزة تغيّر حجم الإطار) */
 .shoogp-ui .qcard{animation:cardFade .28s ease}
 @keyframes cardFade{from{opacity:0}to{opacity:1}}

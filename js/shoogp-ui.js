@@ -444,24 +444,103 @@ function placeIcons(){
   setStyleOnce(nav ,'marginTop'   ,(ICON_GAP-ao.bottom).toFixed(2)+'px');
 }
 /* ═══ قناعُ المحتوى (قرارُ المالك ٢٠٢٦-٠٨-٠١) ═══
-   ما تجاوزَ من محتوى النافذةِ حدودَها يجبُ أن يبدوَ **داخلاً أسفلَ الإطارِ** — بما فيه
-   زخارفُ الإطارِ البارزةُ نحوَ الداخلِ (الدورقُ والمجهرُ والتلسكوب...) التي لا يصدقُ
-   عليها خطُّ قصٍّ مستقيم. الآلية من شقّين:
-   ١) **حلقةُ الإطارِ فوقَ المحتوى:** أربعُ شرائحَ (.qmask span) تعرضُ أجزاءَ صورةِ
-      الإطارِ نفسِها المحيطةَ بصندوقِ النافذةِ فوقَ المحتوى (z=3، بلا لمس) — فأيُّ
-      متجاوزٍ يغطّيه رسمُ الإطارِ بكاملِ محيطِه وزخارفِه، لأنّ داخلَ الصورِ معتمٌ أصلاً.
-   ٢) **قصٌّ احتياطيٌّ عندَ صندوقِ الإطار:** clip-path على .qwin يمنعُ أيَّ امتدادٍ خارجَ
+   شكلُ الإطارِ **نفسُه** هو القناع: أيُّ جزءٍ من محتوى السؤالِ يتداخلُ مع رسمِ الإطارِ
+   يختفي خلفَه **بمحيطِه الحقيقيِّ وزخارفِه** (الدورقُ والمجهرُ والتلسكوب...) فيبدو
+   داخلاً أسفلَ الإطارِ لا أمامَه. الآلية:
+   ١) **قصاصةُ الإطار (buildFrameCutout):** تُستخرَجُ من صورةِ الإطارِ نفسِها وقتَ
+      التشغيلِ مرّةً لكلِّ صورة: تفريغُ الداخلِ بالنموِّ اللونيِّ من المركزِ (يقفُ عندَ
+      حدودِ الزخارفِ والحوافِّ الملوّنةِ المغايرة)، ثمّ إبقاءُ ما يتصلُ بحوافِّ الصورةِ
+      فقط ومسحُ جزرِ الداخلِ (نقوشُ الرملِ والنجومُ الصغيرة) — فالناتجُ طبقةُ الإطارِ
+      وحدَه شفافةَ الوسط، تُرسَمُ فوقَ المحتوى (z=3، بلا لمس).
+   ٢) **بوّابةُ جودةٍ للقصاصة:** وسطُها شفّافٌ (25–90٪ من الصورة) وركنُها معتمٌ — وإلا
+      سقطتِ الصورةُ إلى **الاحتياط**: أربعُ شرائحَ (.qmask span) تعرضُ حلقةَ الإطارِ
+      حولَ صندوقِ النافذةِ (تغطيةٌ مستطيلةٌ صمّاء).
+   ٣) **قصٌّ احتياطيٌّ عندَ صندوقِ الإطار:** clip-path على .qwin يمنعُ أيَّ امتدادٍ خارجَ
       الإطارِ كلِّه (فوقَ الشريطِ الخلفيِّ مثلاً).
-   القصُّ والتغطيةُ كلاهما **خارجَ صندوقِ النافذة**، فالمحتوى المنضبطُ لا يتأثّرُ بشيء؛
+   التغطيةُ خارجَ فتحةِ الرسمِ الفعليةِ، فالمحتوى المنضبطُ لا يتأثّرُ بشيء؛
    والمرنةُ (qflex) مستثناةٌ (رسمُها letterbox لا يطابقُ صندوقَها). */
+var _frameCut={};   /* name → dataURL | 'pending' | null (فشل → احتياط الشرائح) */
+/* winPct: إزاحاتُ نافذةِ الإطارِ {top,left,right,bottom} بالنسبةِ المئوية — النموُّ محصورٌ
+   داخلَ مستطيلِها، فلا يتسرّبُ عبرَ زخارفَ بلونِ الداخلِ (أضواءُ أطرِ الرياضياتِ السماوية —
+   قِيسَ التسرّبُ فعلاً بلا الحصر)، ويُرفَعُ التسامحُ بأمانٍ فيصفو الداخلُ رغمَ نقوشِه. */
+function buildFrameCutout(name, winPct){
+  if(!name || !winPct || _frameCut[name]!==undefined) return;
+  _frameCut[name]='pending';
+  var im=new Image();
+  im.onload=function(){
+    try{
+      var W=im.naturalWidth, H=im.naturalHeight;
+      var cv=document.createElement('canvas'); cv.width=W; cv.height=H;
+      var c2=cv.getContext('2d'); c2.drawImage(im,0,0);
+      var d=c2.getImageData(0,0,W,H), p=d.data;
+      /* مستطيلُ الحصرِ = صندوقُ النافذة */
+      var rl=Math.round(W*winPct.left/100), rr=Math.round(W*(100-winPct.right)/100);
+      var rt=Math.round(H*winPct.top/100),  rb=Math.round(H*(100-winPct.bottom)/100);
+      var sx=W>>1, sy=H>>1, si=(sy*W+sx)*4;
+      var sr=p[si], sg=p[si+1], sb=p[si+2];
+      var TOL2=110*110;
+      /* ١: تفريغُ الداخلِ نموّاً من المركزِ داخلَ مستطيلِ النافذةِ حصراً */
+      var seen=new Uint8Array(W*H);
+      var stack=[sx,sy]; seen[sy*W+sx]=1;
+      while(stack.length){
+        var y=stack.pop(), x=stack.pop(), i=(y*W+x)*4;
+        var dr=p[i]-sr, dg=p[i+1]-sg, db=p[i+2]-sb;
+        if(p[i+3]===0 || (dr*dr+dg*dg+db*db)<=TOL2){
+          p[i+3]=0;
+          if(x>rl   && !seen[y*W+x-1]){seen[y*W+x-1]=1; stack.push(x-1,y);}
+          if(x<rr-1 && !seen[y*W+x+1]){seen[y*W+x+1]=1; stack.push(x+1,y);}
+          if(y>rt   && !seen[(y-1)*W+x]){seen[(y-1)*W+x]=1; stack.push(x,y-1);}
+          if(y<rb-1 && !seen[(y+1)*W+x]){seen[(y+1)*W+x]=1; stack.push(x,y+1);}
+        }
+      }
+      /* ٢: داخلَ المستطيلِ يُبقى فقط ما يتصلُ بخارجِه (زخارفُ داخلةٌ من الإطار)،
+         وتُمسحُ جزرُ الداخلِ المعزولةُ (نقوشُ الرملِ والنجومُ الصغيرة) */
+      var keep=new Uint8Array(W*H), st2=[];
+      function push2(x2,y2){ var k=y2*W+x2;
+        if(!keep[k] && p[k*4+3]>0){ keep[k]=1; st2.push(x2,y2); } }
+      for(var xb=rl; xb<rr; xb++){ push2(xb,rt); push2(xb,rb-1); }
+      for(var yb=rt; yb<rb; yb++){ push2(rl,yb); push2(rr-1,yb); }
+      while(st2.length){
+        var y3=st2.pop(), x3=st2.pop();
+        if(x3>rl)   push2(x3-1,y3);
+        if(x3<rr-1) push2(x3+1,y3);
+        if(y3>rt)   push2(x3,y3-1);
+        if(y3<rb-1) push2(x3,y3+1);
+      }
+      var cleared=0, rectArea=(rr-rl)*(rb-rt);
+      for(var yy=rt; yy<rb; yy++) for(var xx=rl; xx<rr; xx++){
+        var kk=yy*W+xx;
+        if(!keep[kk] && p[kk*4+3]===0) cleared++;
+        else if(!keep[kk]){ p[kk*4+3]=0; cleared++; }
+      }
+      /* ٣: بوّابةُ الجودة — المركزُ شفّافٌ ومعظمُ النافذةِ صافٍ وحدُّ الإطارِ معتم.
+         نقطةُ فحصِ الحدِّ في منتصفِ الشريطِ الأيسرِ للرسمِ (rl/2, H/2) لا في ركنِ
+         الصورةِ (هامشٌ شفّافٌ خارجيٌّ يُفشلُ زوراً) ولا أعلى الوسطِ (ميداليةُ نجمةِ
+         الرياضياتِ حولَها فراغاتٌ شفّافة — قِيسَ الاثنان). */
+      var centerClear = p[si+3]===0;
+      var borderOpaque = p[((H>>1)*W+Math.max(1,rl>>1))*4+3]>0;
+      var frac = cleared/rectArea;
+      if(!centerClear || !borderOpaque || frac<0.7){ _frameCut[name]=null; return; }
+      c2.putImageData(d,0,0);
+      /* Blob URL لا dataURL: القصاصةُ ~2MB، وربطُها نصّاً في style كلِّ بطاقةٍ يثقلُ DOM */
+      cv.toBlob(function(bl){
+        _frameCut[name]= bl ? URL.createObjectURL(bl) : null;
+        placeMask();                                 /* حدِّث العرضَ فورَ جهوزِ القصاصة */
+      },'image/png');
+    }catch(e){ _frameCut[name]=null; }
+  };
+  im.onerror=function(){ _frameCut[name]=null; };
+  im.src=imgURL(name);
+}
 function placeMask(){
   var R=window.fitRect||function(el){ return el.getBoundingClientRect(); };
   document.querySelectorAll('.qcard .qframe').forEach(function(f){
     var w=f.querySelector('.qwin'); if(!w) return;
-    var mask=f.querySelector('.qmask');
+    var mask=f.querySelector('.qmask'), art=f.querySelector('.qmaskart');
     if(f.classList.contains('qflex')){
       if(w.style.clipPath) w.style.clipPath='';
       if(mask) mask.style.display='none';
+      if(art)  art.style.display='none';
       return;
     }
     var fr=R(f); if(!fr.width || !fr.height) return;      /* بطاقةٌ مخفيّةٌ — تُحسَبُ عندَ ظهورِها */
@@ -469,13 +548,27 @@ function placeMask(){
     var wl=wr.left-fr.left, wt=wr.top-fr.top;
     var wrgt=fr.right-wr.right, wbot=fr.bottom-wr.bottom;
     if(wl<0||wt<0||wrgt<0||wbot<0) return;                /* هندسةٌ لم تستقرَّ بعد */
-    /* الشقّ ٢: القصُّ الاحتياطيُّ عندَ حدودِ صندوقِ الإطار */
+    /* الشقّ ٣: القصُّ الاحتياطيُّ عندَ حدودِ صندوقِ الإطار */
     var poly='polygon('+(-wl).toFixed(1)+'px '+(-wt).toFixed(1)+'px, '
       +(wr.width+wrgt).toFixed(1)+'px '+(-wt).toFixed(1)+'px, '
       +(wr.width+wrgt).toFixed(1)+'px '+(wr.height+wbot).toFixed(1)+'px, '
       +(-wl).toFixed(1)+'px '+(wr.height+wbot).toFixed(1)+'px)';
     if(w.style.clipPath!==poly) w.style.clipPath=poly;
-    /* الشقّ ١: شرائحُ حلقةِ الإطارِ فوقَ المحتوى */
+    /* الشقّ ١: قصاصةُ الإطارِ (شكلُه الحقيقيُّ بزخارفِه) فوقَ المحتوى */
+    var name=f.dataset.fimg||'';
+    var winPct={ top:parseFloat(w.style.top), left:parseFloat(w.style.left),
+                 right:parseFloat(w.style.right), bottom:parseFloat(w.style.bottom) };
+    buildFrameCutout(name, isNaN(winPct.top)?null:winPct);
+    var cut=_frameCut[name];
+    if(typeof cut==='string'){
+      if(!art){ art=document.createElement('div'); art.className='qmaskart'; f.appendChild(art); }
+      if(art.style.backgroundImage!=='url("'+cut+'")') art.style.backgroundImage='url("'+cut+'")';
+      art.style.display='';
+      if(mask) mask.style.display='none';
+      return;
+    }
+    if(art) art.style.display='none';
+    /* الشقّ ٢ (احتياط): شرائحُ حلقةِ الإطارِ حولَ صندوقِ النافذة */
     if(!mask){
       mask=document.createElement('div'); mask.className='qmask';
       mask.innerHTML='<span></span><span></span><span></span><span></span>';
