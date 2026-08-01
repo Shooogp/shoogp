@@ -55,15 +55,16 @@
     if(mo) mo.disconnect();
     ensureAppWidth(app);
     var Hc = contentHeight(app);
-    /* شاشة الأسئلة = احتواء كامل بلا تمرير (كما كان)؛ الكتب والفهرس = ملاءمة
-       العرض فقط والتمرير الرأسي يعمل (قرار المالك ٢٠٢٦-٠٨-٠١) */
+    /* شاشة الأسئلة = احتواء كامل بلا تمرير (كما كان)؛ الكتب والفهرس = بلا زوم
+       (الحجم الطبيعي ١:١) والتمرير الرأسي يعمل — مع انكماش وقائي فقط إن كانت
+       الشاشة أضيق من العرض التصميمي كي لا تُقص الأطراف (قرار المالك ٢٠٢٦-٠٨-٠١) */
     var act=document.getElementById('activityScreen');
     var locked=!!(act && act.classList.contains('active'));
     de.classList.toggle('fit-lock', locked);
     // هامش أمان بسيط (بضعة بكسلات) كي لا يُقصّ المحتوى عند الحافّة
     var zoom = locked
       ? Math.max(ZOOM_MIN, Math.min(ZOOM_MAX, Math.min((iw-2)/DESIGN_W, (ih-4)/Hc)))
-      : Math.max(ZOOM_MIN, Math.min(ZOOM_MAX, (iw-2)/DESIGN_W));
+      : Math.max(ZOOM_MIN, Math.min(1, (iw-2)/DESIGN_W));
     de.style.zoom = String(zoom);
     state.zoom=zoom; state.designW=DESIGN_W; state.designH=DESIGN_H; state.contentH=Hc; state.active=true;
     // عمود الصاروخ: مفصولٌ عن زوم المحتوى ليبقى ثابتاً بين الأسئلة. نطبّق عليه زوماً
