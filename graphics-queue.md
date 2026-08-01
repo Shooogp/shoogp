@@ -244,3 +244,140 @@
 - بعد التتبّع: ادمج مسارات الأقراص في مجموعةٍ واحدةٍ باسم `pills-heap`، ثمّ **أعد ألوانها الطبيعية** (أحمر وكبسولات صفراء/زرقاء) — البنفسجي مفتاحُ عزلٍ لا لونٌ نهائيّ.
 - أعد حساب `spot` من مركز الكومة في الرسم الجديد، **وتحقّق أن القرصَين المتساقطَين داخل الدائرة** وأن فمَ الزجاجةِ خارجَها (المسافة في فضاء النسب المئوية لا البكسل — المحور الرأسيّ أضيق فيكبر وزنُه).
 - بوّابة الجودة ثم فحص الإطار كسابقيه.
+
+---
+
+## بند ٩ — `g3s-3-1` · السؤال الرابع (تحديد الأجزاء: الكائن الحيّ بين الأشياء غير الحيّة)
+
+> بند بموجب «قاعدة التفصيل البصري» (`CLAUDE.md`) — الرسم اليدوي الغنيّ الحالي في `js/questions.js` جسرٌ مؤقت.
+> **الصورة تخدم سؤالَين:** `g3s-3-1` السؤال الرابع (الهدف = الفراشة) و`g3s-3-6` السؤال الرابع (الهدف = الحاسوب) — رسمٌ واحدٌ، و`spot` مختلف لكلٍّ.
+
+- **رمز السؤال:** `g3s-3-1` (الكائنات الحية والأشياء غير الحية، علوم الصف الثالث) — السؤال الرابع `hotspot`.
+- **الهدف:** `3Bh2: يصف الاختلافات بين الكائنات الحية والأشياء غير الحية من خلال معرفتهم عن العمليّات الحيويّة`. المستوى: تطبيق.
+- **نصّ السؤال:** «اضغَطْ على الكائِنِ الحَيِّ.»
+- **اسم الملف العربي المقترح:** `images/حي-وغير-حي.png` (ومنه `حي-وغير-حي.svg` بعد التتبّع).
+- **نتيجة البوّابة:** ✅ **مرّ** — منطقة تفاعلية واحدة (الفراشة) · حدود مغلقة · بلا تداخل · لون توليد فريد لها.
+- **قيد المحتوى الحاسم:** **بلا ملامح وجه** على الفراشة (لا عيون ولا فم) — قاعدة إلزامية. والأجسام الثلاثة **متباعدةٌ لا تتلامس** لأن دائرةَ الإصابة تُقاس بالنسب المئوية فالتقاربُ يُدخل جسماً مُلهياً في الدائرة.
+- **قيد النسبة:** `viewBox` الحالي 620×320 (نسبة ١٫٩٤ ≤ 2.2) — تُحفظ الصورة المولّدة بنسبة ١٦:٩ تقريباً.
+
+### المناطق التفاعلية (١)
+
+| المنطقة | المعرّف | لون التوليد (مفتاح العزل) | المعالجة بعد التتبّع |
+|---------|---------|---------------------------|----------------------|
+| الفراشة كاملةً | `living-butterfly` | `#7B2FF2` (بنفسجي صريح على الجناحين والجسم) | **تُعاد إلى ألوانها البرتقالية** `#FF8000` ← `#FF6000` ← `#E04000` ← `#C04000` — التحييد لإزالة لون العزل لا لإخفاء تلميح |
+
+### البرومبت الكامل (يُلصق في ChatGPT/DALL·E — صورة واحدة)
+
+**عربي:**
+> أنشئ رسماً تعليمياً لثلاثةِ أشياءَ منفصلةٍ متباعدةٍ على صفٍّ أفقيٍّ واحد: على اليمينِ **فراشةٌ منشورةُ الجناحين** بأربعةِ أجنحةٍ مستديرةٍ عليها بقعٌ دائريةٌ وجسمٍ مجزّأٍ وقرنَي استشعارٍ منتهيَينِ بكرتَينِ صغيرتَين، **بلونٍ بنفسجيٍّ مسطّحٍ صريحٍ `#7B2FF2` على جناحَيها وجسمِها كلِّه**؛ وفي الوسطِ **حاسوبٌ مكتبيٌّ** بشاشةٍ رماديةٍ `#808080` معروضٌ عليها لونٌ سماويٌّ `#40C0FF` وشريطٌ أزرقُ أسفلَها، وله عنقٌ وقاعدةٌ ولوحةُ مفاتيحَ رماديةٌ فاتحةٌ `#C0C0C0` بمفاتيحَ ظاهرة؛ وعلى اليسارِ **صخرةٌ ملساءُ** رماديةٌ بسُلَّمِ `#C0C0C0` ← `#808080` ← `#606060` ← `#404040` بحزامٍ فاتحٍ يتبعُ حافّتَها العلويةَ وحزامٍ غامقٍ يتبعُ قاعدتَها وشقٍّ رفيعٍ في وسطِها. **الأشياءُ الثلاثةُ متباعدةٌ لا يلمسُ أحدُها الآخرَ**، ولا يتكرّرُ لونُ الفراشةِ في غيرِها. **بلا أيِّ ملامحِ وجهٍ على الفراشةِ** ولا على أيِّ شيءٍ في المشهد. الخلفيةُ **بيضاءُ نقيّةٌ `#FFFFFF`** بلا أيّ نصوصٍ أو تسمياتٍ أو أرقامٍ. نسبةُ الصورةِ عريضةٌ نحو ١٦:٩. رسم كرتونيّ متّجهي لامع بأسلوب ملصقات الفضاء، بألوانٍ صريحةٍ مشبعة، لكلِّ جسمٍ تدرّجُ حجمٍ من ثلاثِ إلى أربعِ درجاتٍ من لونِه نفسِه (فاتحةٌ ثمّ أساسيةٌ ثمّ غامقةٌ ثمّ ظِلّ) بحوافَّ فاصلةٍ واضحةٍ بين الدرجاتِ لا مزجٍ ناعم، مع لمعةٍ بيضاءَ عريضةٍ على الأسطحِ المنحنية، وحدٍّ خارجيٍّ أسودَ رفيعٍ واضحٍ ‎#111111‎ مستديرِ الرؤوسِ يحيطُ كلَّ جسمٍ وأجزاءَه الداخلية (خطٌّ نظيفٌ رفيعٌ لا حدٌّ ثقيل)، بأشكالٍ ممتلئةٍ مستديرةٍ بلا زاويةٍ حادّة، والأجسامُ طافيةٌ بلا خطِّ أرضٍ ولا ظلٍّ مُلقًى، وبلا أيِّ ملامحِ وجهٍ على أيِّ شيءٍ إطلاقاً. صورة واحدة مستقلّة فقط.
+
+**English:**
+> Create an educational illustration of three separate, well-spaced objects in a single horizontal row: on the right a **butterfly with open wings**, four rounded wings bearing circular spots, a segmented body, and two antennae ending in small balls, rendered in a **flat solid purple `#7B2FF2` across its wings and whole body**; in the middle a **desktop computer** with a grey `#808080` monitor showing a sky-blue `#40C0FF` screen with a darker blue band at its base, plus a stand, a tower, and a light grey `#C0C0C0` keyboard with visible keys; on the left a **smooth grey rock** in the ramp `#C0C0C0` / `#808080` / `#606060` / `#404040`, with a lighter band following its upper edge, a darker band following its base, and a fine crack across its middle. The **three objects are well separated and never touch**, and the butterfly's colour is not repeated anywhere else. **No facial features on the butterfly** or on anything in the scene. Pure **white background `#FFFFFF`**, with no text, labels, or numbers. Wide image aspect ratio, roughly 16:9. Glossy cartoon vector illustration in a space-sticker style, bold saturated colors, each object shaded with a 3-4 step ramp of its own hue (highlight, base, shade, deep shade) as crisp discrete bands with hard edges and no soft blending, a broad white gloss highlight on curved surfaces, a thin crisp black outline #111111 with rounded caps around every object and its inner parts (a clean fine line, not a heavy border), plump rounded forms with no sharp angles, objects floating with no ground line and no cast shadow, absolutely no facial features on anything. One single standalone image only.
+
+### ملاحظات الجولة الثانية لهذا البند
+- بعد التتبّع: ادمج مسارات الفراشة في مجموعةٍ باسم `living-butterfly` وأعد ألوانها البرتقالية.
+- **أعد حساب `spot` مرّتين** — مرّةً على مركز الفراشة لـ`g3s-3-1` ومرّةً على مركز الشاشة لـ`g3s-3-6` — ثمّ **امسح الدائرتين شبكياً** للتأكّد أن دائرةَ كلٍّ لا تلمسُ صندوقَ جسمٍ آخر (القياسُ في فضاء النسب المئوية: المحور الرأسيّ أضيق فيكبر وزنُه).
+- بوّابة الجودة ثمّ فحص الإطار.
+
+---
+
+## بند ١٠ — `g3s-3-2` · السؤال الرابع (تحديد الأجزاء: مرحلة البذرة)
+
+> بند بموجب «قاعدة التفصيل البصري» (`CLAUDE.md`) — الرسم اليدوي الغنيّ الحالي في `js/questions.js` جسرٌ مؤقت.
+
+- **رمز السؤال:** `g3s-3-2` (النمو والتغذية، علوم الصف الثالث) — السؤال الرابع `hotspot`.
+- **الهدف:** `3Bh1: يعرف أن العمليات الحيوية المشتركة بين الإنسان والحيوان تشمل التغذية والحركة والنمو والتكاثر`. المستوى: تطبيق.
+- **نصّ السؤال:** «اضغَطْ على مَرحَلةِ البَذرةِ.»
+- **اسم الملف العربي المقترح:** `images/مراحل-نمو-النبتة.png` (ومنه `مراحل-نمو-النبتة.svg` بعد التتبّع).
+- **نتيجة البوّابة:** ✅ **مرّ** — منطقة تفاعلية واحدة (البذرة المفردة) · حدود مغلقة · بلا تداخل · لون توليد فريد لها.
+- **قيد المحتوى الحاسم:** المراحلُ **أربعٌ بالترتيب من اليمين إلى اليسار** كما في كتاب التلميذ (بذرة ← تبدأ بالنمو ← نبتة صغيرة ← نبتة زهرية كاملة)، لأن السؤال الخامس في الدرس نفسِه يرتّبها. والأرقامُ **لا تُكتَب في الصورة** (تُضاف نصّاً في الـSVG بعد التتبّع).
+- **قيد النسبة:** `viewBox` الحالي 700×330 (نسبة ٢٫١٢ ≤ 2.2) — تُحفظ الصورة المولّدة بنسبة ٢:١ تقريباً.
+
+### المناطق التفاعلية (١)
+
+| المنطقة | المعرّف | لون التوليد (مفتاح العزل) | المعالجة بعد التتبّع |
+|---------|---------|---------------------------|----------------------|
+| البذرة المفردة (المرحلة الأولى) | `stage-seed` | `#7B2FF2` (بنفسجي صريح) | **تُعاد إلى لونها الكهرمانيّ** `#C06000` مع لمعةٍ `#E08000` |
+
+### البرومبت الكامل (يُلصق في ChatGPT/DALL·E — صورة واحدة)
+
+**عربي:**
+> أنشئ رسماً تعليمياً لأربعِ مراحلَ من نُمُوِّ نبتةٍ مصفوفةً على صفٍّ أفقيٍّ واحدٍ **من اليمينِ إلى اليسارِ**، متباعدةً لا تتلامس: **أوّلاً على أقصى اليمين بذرةٌ بيضويةٌ مفردةٌ** بلونٍ **بنفسجيٍّ مسطّحٍ صريحٍ `#7B2FF2`**؛ **ثمّ البذرةُ نفسُها وقد بدأت تنمو** بلونها الكهرمانيِّ `#C06000` يخرجُ منها جُذَيرٌ رفيعٌ إلى الأسفلِ وبُرعمٌ أخضرُ صغيرٌ إلى الأعلى؛ **ثمّ نبتةٌ صغيرةٌ** لها ساقٌ أخضرُ وثلاثُ أوراقٍ بسُلَّمِ `#80C020` ← `#60C020` ← `#4A9018` وجذورٌ رفيعةٌ؛ **وأخيراً على أقصى اليسارِ نبتةٌ زهريةٌ كاملةٌ** لها ساقٌ طويلٌ وأوراقٌ وزهرةٌ برتقاليةٌ بخمسِ بتلاتٍ `#FF8000` وقلبٍ أصفرَ `#FFFFC0`. المراحلُ **متدرّجةٌ في الحجمِ تصاعدياً** فيُرى النموُّ بوضوح، ولا يتكرّرُ البنفسجيُّ في غيرِ البذرةِ الأولى. الخلفيةُ **بيضاءُ نقيّةٌ `#FFFFFF`** بلا أيّ نصوصٍ أو أرقامٍ أو أسهمٍ أو تسمياتٍ. نسبةُ الصورةِ عريضةٌ نحو ٢:١. رسم كرتونيّ متّجهي لامع بأسلوب ملصقات الفضاء، بألوانٍ صريحةٍ مشبعة، لكلِّ جسمٍ تدرّجُ حجمٍ من ثلاثِ إلى أربعِ درجاتٍ من لونِه نفسِه (فاتحةٌ ثمّ أساسيةٌ ثمّ غامقةٌ ثمّ ظِلّ) بحوافَّ فاصلةٍ واضحةٍ بين الدرجاتِ لا مزجٍ ناعم، مع لمعةٍ بيضاءَ عريضةٍ على الأسطحِ المنحنية، وحدٍّ خارجيٍّ أسودَ رفيعٍ واضحٍ ‎#111111‎ مستديرِ الرؤوسِ يحيطُ كلَّ جسمٍ وأجزاءَه الداخلية (خطٌّ نظيفٌ رفيعٌ لا حدٌّ ثقيل)، بأشكالٍ ممتلئةٍ مستديرةٍ بلا زاويةٍ حادّة، والأجسامُ طافيةٌ بلا خطِّ أرضٍ ولا ظلٍّ مُلقًى، وبلا أيِّ ملامحِ وجهٍ على أيِّ شيءٍ إطلاقاً. صورة واحدة مستقلّة فقط.
+
+**English:**
+> Create an educational illustration of four stages of a plant's growth arranged in one horizontal row **from right to left**, well spaced and never touching: **first, at the far right, a single oval seed** in a **flat solid purple `#7B2FF2`**; **then the same seed beginning to germinate**, in its amber colour `#C06000`, with a thin rootlet growing downward and a small green shoot growing upward; **then a small plant** with a green stem, three leaves in the ramp `#80C020` / `#60C020` / `#4A9018`, and thin roots; **and finally, at the far left, a fully grown flowering plant** with a tall stem, leaves, and an orange five-petalled flower `#FF8000` with a yellow `#FFFFC0` centre. The stages **increase in size progressively** so the growth is obvious, and the purple is not repeated anywhere except the first seed. Pure **white background `#FFFFFF`**, with no text, numbers, arrows, or labels. Wide image aspect ratio, roughly 2:1. Glossy cartoon vector illustration in a space-sticker style, bold saturated colors, each object shaded with a 3-4 step ramp of its own hue (highlight, base, shade, deep shade) as crisp discrete bands with hard edges and no soft blending, a broad white gloss highlight on curved surfaces, a thin crisp black outline #111111 with rounded caps around every object and its inner parts (a clean fine line, not a heavy border), plump rounded forms with no sharp angles, objects floating with no ground line and no cast shadow, absolutely no facial features on anything. One single standalone image only.
+
+### ملاحظات الجولة الثانية لهذا البند
+- **تحقّق من ترتيب المراحل** في الصورة المولّدة (البذرةُ على أقصى اليمين) وإلا أعد التوليد — الترتيبُ يمينيٌّ لأن القراءةَ عربية.
+- أضِف أرقامَ المراحل ١–٤ **نصّاً في الـSVG** بعد التتبّع لا في الصورة.
+- أعد حساب `spot` من مركز البذرة، وتحقّق أن الدائرةَ **لا تلمسُ صندوقَ المرحلةِ الثانية** (وهي أقربُ الملهيات).
+- بوّابة الجودة ثمّ فحص الإطار.
+
+---
+
+## بند ١١ — `g3s-3-3` · السؤال الإثرائي (اكتشف الخطأ: النبتة المائلة بعيداً عن الضوء)
+
+> بند بموجب «قاعدة التفصيل البصري» (`CLAUDE.md`) — الرسم اليدوي الغنيّ الحالي في `js/questions.js` جسرٌ مؤقت.
+
+- **رمز السؤال:** `g3s-3-3` (الحركة والتكاثر، علوم الصف الثالث) — السؤال الإثرائي `find-error`.
+- **الهدف:** `3Bh1: يعرف أن العمليات الحيوية المشتركة بين الإنسان والحيوان تشمل التغذية والحركة والنمو والتكاثر`. المستوى: استدلال.
+- **نصّ السؤال:** «إحدى النَّبتَتَينِ تَميلُ في الاتِّجاهِ الخَطأِ — اضغَطْ عَلَيها.»
+- **اسم الملف العربي المقترح:** `images/نبتتان-نحو-الضوء.png` (ومنه `نبتتان-نحو-الضوء.svg` بعد التتبّع).
+- **نتيجة البوّابة:** ✅ **مرّ** — منطقة تفاعلية واحدة (النبتة المائلة خطأً) · حدود مغلقة · بلا تداخل · لون توليد فريد لها.
+- **قيد المحتوى الحاسم:** الميلُ **صريحٌ ومتعاكسٌ** بين النبتتَين، والنافذةُ **في جهةٍ واحدةٍ فقط** — فإن غمضَ الاتجاهُ ضاعَ الخطأُ المطلوبُ اكتشافُه. والأصيصانِ **متطابقانِ في الشكلِ واللون** فلا يُميَّزانِ إلا بالميل.
+- **قيد النسبة:** `viewBox` الحالي 640×400 (نسبة ١٫٦٠ ≤ 2.2) — تُحفظ الصورة المولّدة بنسبة ٨:٥.
+
+### المناطق التفاعلية (١)
+
+| المنطقة | المعرّف | لون التوليد (مفتاح العزل) | المعالجة بعد التتبّع |
+|---------|---------|---------------------------|----------------------|
+| النبتة المائلة بعيداً عن الضوء (ساقُها وأوراقُها دون أصيصِها) | `plant-wrong-lean` | `#7B2FF2` (بنفسجي صريح) | **تُعاد إلى أخضرِها** `#80C020` ← `#60C020` ← `#4A9018` كي تُطابقَ النبتةَ الصحيحةَ تماماً — فلا يهتدي الطالبُ باللونِ بل بالاتجاه |
+
+### البرومبت الكامل (يُلصق في ChatGPT/DALL·E — صورة واحدة)
+
+**عربي:**
+> أنشئ رسماً تعليمياً لمشهدٍ فيه **نافذةٌ على أقصى اليمين** إطارُها أسودُ رفيعٌ وزجاجُها سماويٌّ بسُلَّمِ `#40C0FF` ← `#20A0FF` ← `#2080E0` عليه لمعةٌ بيضاءُ عريضةٌ مائلةٌ، ويخرجُ منها **ثلاثةُ أشعّةِ ضوءٍ صفراءَ `#E0C060`** مستقيمةٌ متّجهةٌ إلى اليسار. وأمامَ النافذةِ **أصيصانِ متطابقانِ تماماً** كهرمانيّانِ بسُلَّمِ `#C06000` ← `#E08000` بحافّةٍ علويةٍ عريضة. في الأصيصِ **الأقربِ إلى النافذةِ نبتةٌ خضراءُ** بسُلَّمِ `#80C020` ← `#60C020` ← `#4A9018` **ساقُها منحنٍ بوضوحٍ نحوَ النافذةِ (إلى اليمين)** وأوراقُها الثلاثُ مائلةٌ نحوَ الضوء. وفي الأصيصِ **الأبعدِ نبتةٌ مماثلةٌ في الشكلِ والحجمِ تماماً** لكنّ **ساقَها منحنٍ في الاتّجاهِ المعاكسِ بعيداً عن النافذةِ (إلى اليسار)**، وهي **بلونٍ بنفسجيٍّ مسطّحٍ صريحٍ `#7B2FF2` على ساقِها وأوراقِها** دونَ أصيصِها. الميلانِ **متعاكسانِ وواضحانِ** لا يلتبسان. **بلا أيِّ ملامحِ وجهٍ** على النبتتَينِ ولا على شيءٍ في المشهد. الخلفيةُ **بيضاءُ نقيّةٌ `#FFFFFF`** بلا نصوصٍ أو أسهمٍ أو تسمياتٍ. نسبةُ الصورةِ ٨:٥ أفقية. رسم كرتونيّ متّجهي لامع بأسلوب ملصقات الفضاء، بألوانٍ صريحةٍ مشبعة، لكلِّ جسمٍ تدرّجُ حجمٍ من ثلاثِ إلى أربعِ درجاتٍ من لونِه نفسِه (فاتحةٌ ثمّ أساسيةٌ ثمّ غامقةٌ ثمّ ظِلّ) بحوافَّ فاصلةٍ واضحةٍ بين الدرجاتِ لا مزجٍ ناعم، مع لمعةٍ بيضاءَ عريضةٍ على الأسطحِ المنحنية، وحدٍّ خارجيٍّ أسودَ رفيعٍ واضحٍ ‎#111111‎ مستديرِ الرؤوسِ يحيطُ كلَّ جسمٍ وأجزاءَه الداخلية (خطٌّ نظيفٌ رفيعٌ لا حدٌّ ثقيل)، بأشكالٍ ممتلئةٍ مستديرةٍ بلا زاويةٍ حادّة، والأجسامُ طافيةٌ بلا خطِّ أرضٍ ولا ظلٍّ مُلقًى، وبلا أيِّ ملامحِ وجهٍ على أيِّ شيءٍ إطلاقاً. صورة واحدة مستقلّة فقط.
+
+**English:**
+> Create an educational illustration of a scene with a **window at the far right**, its frame a thin black outline and its glass sky-blue in the ramp `#40C0FF` / `#20A0FF` / `#2080E0` with a broad diagonal white gloss, emitting **three straight yellow `#E0C060` light rays** pointing left. In front of the window stand **two completely identical amber flowerpots** in the ramp `#C06000` / `#E08000` with a wide top rim. In the pot **nearer the window is a green plant** in the ramp `#80C020` / `#60C020` / `#4A9018` whose **stem bends clearly toward the window (to the right)**, its three leaves angled toward the light. In the **farther pot is a plant identical in shape and size**, but whose **stem bends the opposite way, away from the window (to the left)**, rendered in a **flat solid purple `#7B2FF2` on its stem and leaves** but not its pot. The two leans are **opposite and unmistakable**. **No facial features** on either plant or anything in the scene. Pure **white background `#FFFFFF`**, with no text, arrows, or labels. Image aspect ratio 8:5 horizontal. Glossy cartoon vector illustration in a space-sticker style, bold saturated colors, each object shaded with a 3-4 step ramp of its own hue (highlight, base, shade, deep shade) as crisp discrete bands with hard edges and no soft blending, a broad white gloss highlight on curved surfaces, a thin crisp black outline #111111 with rounded caps around every object and its inner parts (a clean fine line, not a heavy border), plump rounded forms with no sharp angles, objects floating with no ground line and no cast shadow, absolutely no facial features on anything. One single standalone image only.
+
+### ملاحظات الجولة الثانية لهذا البند
+- **تحقّق أن الميلَين متعاكسان فعلاً** في الصورة المولّدة (النماذجُ تميلُ إلى رسمِ نبتتَينِ متشابهتَينِ في الاتجاه) — وإلا أعد التوليد؛ فإن اتّفقَ الميلانِ ضاعَ السؤالُ كلُّه.
+- بعد التتبّع: ادمج ساقَ النبتةِ الخطأِ وأوراقَها في مجموعةٍ باسم `plant-wrong-lean` وأعد لونَها الأخضرَ **مطابقاً للنبتةِ الصحيحة**.
+- أعد حساب `spot` من مركز كتلةِ النبتةِ الخطأِ (لا من أصيصِها)، وتحقّق أن الدائرةَ لا تلمسُ النبتةَ الصحيحةَ ولا النافذة.
+- بوّابة الجودة ثمّ فحص الإطار.
+
+---
+
+## بند ١٢ — `g3s-3-5` · السؤال الرابع (تحديد الأجزاء: الحيوان ذو الحراشف)
+
+> بند بموجب «قاعدة التفصيل البصري» (`CLAUDE.md`) — الرسم اليدوي الغنيّ الحالي في `js/questions.js` جسرٌ مؤقت.
+
+- **رمز السؤال:** `g3s-3-5` (تصنيف الكائنات الحية، علوم الصف الثالث) — السؤال الرابع `hotspot`.
+- **الهدف:** `3Bh6: يصنف الكائنات الحيّة إلى مجموعات باستخدام سمات بسيطة ووصف الأساس المنطقي لهذا التصنيف`. المستوى: تطبيق.
+- **نصّ السؤال:** «اضغَطْ على الحَيَوانِ ذي الحَراشِفِ.»
+- **اسم الملف العربي المقترح:** `images/حراشف-فرو-ريش.png` (ومنه `حراشف-فرو-ريش.svg` بعد التتبّع).
+- **نتيجة البوّابة:** ✅ **مرّ** — منطقة تفاعلية واحدة (السمكة) · حدود مغلقة · بلا تداخل · لون توليد فريد لها.
+- **قيد المحتوى الحاسم:** **بلا ملامح وجه** على أيِّ حيوان (لا عيونَ ولا مناقيرَ ولا أفواه) — قاعدة إلزامية؛ فالتمييزُ **بغطاءِ الجسمِ وحدَه**: حراشفُ ظاهرةٌ على السمكةِ، وفروٌ على الدبِّ، وريشٌ مصفوفٌ على الطائر. وهذا الغطاءُ **هو موضوعُ السؤال** فيجبُ أن يكونَ أوضحَ ما في كلِّ حيوان.
+- **قيد النسبة:** `viewBox` الحالي 640×300 (نسبة ٢٫١٣ ≤ 2.2) — تُحفظ الصورة المولّدة بنسبة ٢:١ تقريباً.
+
+### المناطق التفاعلية (١)
+
+| المنطقة | المعرّف | لون التوليد (مفتاح العزل) | المعالجة بعد التتبّع |
+|---------|---------|---------------------------|----------------------|
+| السمكة كاملةً | `animal-scales-fish` | `#7B2FF2` (بنفسجي صريح على الجسم والزعانف والذيل) | **تُعاد إلى أزرقِها المحيطيِّ** `#00A0E0` ← `#0080C0` ← `#0060A0` ← `#004880` |
+
+### البرومبت الكامل (يُلصق في ChatGPT/DALL·E — صورة واحدة)
+
+**عربي:**
+> أنشئ رسماً تعليمياً لثلاثةِ حيواناتٍ منفصلةٍ متباعدةٍ على صفٍّ أفقيٍّ واحد: على اليمينِ **سمكةٌ** جسمُها بيضويٌّ ممتلئٌ وذيلُها مشقوقٌ ولها زعنفةٌ ظهريةٌ وأخرى بطنيةٌ، **وعلى جسمِها ثلاثةُ صفوفٍ واضحةٍ من الحراشفِ المقوّسة**، وهي كلُّها بلونٍ **بنفسجيٍّ مسطّحٍ صريحٍ `#7B2FF2`**؛ وفي الوسطِ **دُبٌّ جالسٌ** جسمُه دائريٌّ ممتلئٌ ورأسُه دائريٌّ عليه أذنانِ مستديرتان وله كفّانِ أماميّانِ، بلونٍ كهرمانيٍّ بسُلَّمِ `#C06000` ← `#E08000` ← `#984800` **وعلى جانبِ جسمِه خصلاتُ فروٍ قصيرةٌ منحنيةٌ**؛ وعلى اليسارِ **طائرٌ** جسمُه بيضويٌّ ورأسُه دائريٌّ عليه عُرفٌ صغيرٌ ولهُ ساقانِ نحيلتانِ صفراوانِ `#E0C060` وذيلٌ من ثلاثِ ريشاتٍ مدبّبةٍ، بلونٍ سماويٍّ بسُلَّمِ `#40C0FF` ← `#20A0FF` ← `#2080E0` **وجناحُه مرسومٌ بثلاثِ طبقاتٍ من الريشِ المصفوف**. الحيواناتُ **متباعدةٌ لا يلمسُ أحدُها الآخرَ**، ولا يتكرّرُ البنفسجيُّ في غيرِ السمكة. **بلا أيِّ ملامحِ وجهٍ على أيِّ حيوانٍ إطلاقاً — لا عيونَ ولا مناقيرَ ولا أفواه**، والتمييزُ بغطاءِ الجسمِ وحدَه. الخلفيةُ **بيضاءُ نقيّةٌ `#FFFFFF`** بلا نصوصٍ أو تسمياتٍ. نسبةُ الصورةِ عريضةٌ نحو ٢:١. رسم كرتونيّ متّجهي لامع بأسلوب ملصقات الفضاء، بألوانٍ صريحةٍ مشبعة، لكلِّ جسمٍ تدرّجُ حجمٍ من ثلاثِ إلى أربعِ درجاتٍ من لونِه نفسِه (فاتحةٌ ثمّ أساسيةٌ ثمّ غامقةٌ ثمّ ظِلّ) بحوافَّ فاصلةٍ واضحةٍ بين الدرجاتِ لا مزجٍ ناعم، مع لمعةٍ بيضاءَ عريضةٍ على الأسطحِ المنحنية، وحدٍّ خارجيٍّ أسودَ رفيعٍ واضحٍ ‎#111111‎ مستديرِ الرؤوسِ يحيطُ كلَّ جسمٍ وأجزاءَه الداخلية (خطٌّ نظيفٌ رفيعٌ لا حدٌّ ثقيل)، بأشكالٍ ممتلئةٍ مستديرةٍ بلا زاويةٍ حادّة، والأجسامُ طافيةٌ بلا خطِّ أرضٍ ولا ظلٍّ مُلقًى. صورة واحدة مستقلّة فقط.
+
+**English:**
+> Create an educational illustration of three separate, well-spaced animals in a single horizontal row: on the right a **fish** with a plump oval body, a forked tail, a dorsal fin and a ventral fin, and **three clear rows of curved scales across its body**, rendered entirely in a **flat solid purple `#7B2FF2`**; in the middle a **sitting bear** with a round plump body, a round head with two rounded ears, and two front paws, in an amber ramp `#C06000` / `#E08000` / `#984800`, **with short curved fur tufts along the side of its body**; on the left a **bird** with an oval body, a round head bearing a small crest, two slender yellow `#E0C060` legs, and a tail of three pointed feathers, in a sky-blue ramp `#40C0FF` / `#20A0FF` / `#2080E0`, **its wing drawn as three layered rows of feathers**. The animals are **well separated and never touch**, and the purple is not repeated anywhere except the fish. **Absolutely no facial features on any animal — no eyes, no beaks, no mouths**; the animals are told apart by body covering alone. Pure **white background `#FFFFFF`**, with no text or labels. Wide image aspect ratio, roughly 2:1. Glossy cartoon vector illustration in a space-sticker style, bold saturated colors, each object shaded with a 3-4 step ramp of its own hue (highlight, base, shade, deep shade) as crisp discrete bands with hard edges and no soft blending, a broad white gloss highlight on curved surfaces, a thin crisp black outline #111111 with rounded caps around every object and its inner parts (a clean fine line, not a heavy border), plump rounded forms with no sharp angles, objects floating with no ground line and no cast shadow. One single standalone image only.
+
+### ملاحظات الجولة الثانية لهذا البند
+- **افحص الوجوهَ أوّلاً**: النماذجُ تُصرُّ على إضافةِ عيونٍ ومناقيرَ للحيوانات — إن ظهرَ أيُّ ملمحِ وجهٍ أعد التوليدَ ولا تُصلِحْه بالتحرير.
+- **تحقّق أن غطاءَ الجسمِ الثلاثيَّ ظاهرٌ** (حراشف/فرو/ريش) وإلا فقدَ السؤالُ مِعيارَه.
+- بعد التتبّع: ادمج مسارات السمكة في مجموعةٍ باسم `animal-scales-fish` وأعد لونَها الأزرق.
+- أعد حساب `spot` من مركز جسمِ السمكة، وتحقّق أن الدائرةَ لا تلمسُ الدُبَّ (أقربُ الملهيات).
+- بوّابة الجودة ثمّ فحص الإطار.
