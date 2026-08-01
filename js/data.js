@@ -367,11 +367,131 @@ window.DATA_FALLBACK = {
     ]},
     "g3-arabic-1": { book:"أحب لغتي (الجزء الأول) — الصف الثالث", units:[] },
     "g3-arabic-2": { book:"أحب لغتي (الجزء الثاني) — الصف الثالث", units:[] },
-    "g1-dini-1": { book:"ديني حياتي (الجزء الأول) — الصف الأول", units:[] },
-    "g1-dini-2": { book:"ديني حياتي (الجزء الثاني) — الصف الأول", units:[] },
-    "g2-dini-1": { book:"ديني حياتي (الجزء الأول) — الصف الثاني", units:[] },
-    "g2-dini-2": { book:"ديني حياتي (الجزء الثاني) — الصف الثاني", units:[] },
-    "g3-dini-1": { book:"ديني حياتي (الجزء الأول) — الصف الثالث", units:[] },
-    "g3-dini-2": { book:"ديني حياتي (الجزء الثاني) — الصف الثالث", units:[] }
+    "g1-dini-1": { book:"ديني حياتي (الجزء الأول) — الصف الأول", units:[
+      { unit:"التلاوة والحفظ", lessons:[
+        { title:"التلاوة والحفظ", file:"g1d1-0-1", open:false }
+      ]},
+      { unit:"الوحدة الأولى", lessons:[
+        { title:"الدرس الأول: سورة الفاتحة", file:"g1d1-1-1", open:false },
+        { title:"الدرس الثاني: أنا مُسلمٌ نظيف", file:"g1d1-1-2", open:false },
+        { title:"الدرس الثالث: آداب العُطاس", file:"g1d1-1-3", open:false },
+        { title:"الدرس الرابع: مولد الصادق الأمين", file:"g1d1-1-4", open:false },
+        { title:"الدرس الخامس: النَّجاسات", file:"g1d1-1-5", open:false },
+        { title:"الدرس السادس: شكرًا يا ربِّ", file:"g1d1-1-6", open:false }
+      ]},
+      { unit:"الوحدة الثانية", lessons:[
+        { title:"الدرس الأول: أُحبُّ الله ربّي", file:"g1d1-2-1", open:false },
+        { title:"الدرس الثاني: سورة الناس", file:"g1d1-2-2", open:false },
+        { title:"الدرس الثالث: أحقُّ الناس", file:"g1d1-2-3", open:false },
+        { title:"الدرس الرابع: أُطيع أُمّي وأَبي", file:"g1d1-2-4", open:false },
+        { title:"الدرس الخامس: طهارتي عنواني", file:"g1d1-2-5", open:false },
+        { title:"الدرس السادس: رسولي محمّد ﷺ", file:"g1d1-2-6", open:false }
+      ]}
+    ]},
+    "g1-dini-2": { book:"ديني حياتي (الجزء الثاني) — الصف الأول", units:[
+      { unit:"التلاوة والحفظ", lessons:[
+        { title:"التلاوة والحفظ", file:"g1d2-0-1", open:false }
+      ]},
+      { unit:"الوحدة الثالثة", lessons:[
+        { title:"الدرس الأول: سورة الفلق", file:"g1d2-3-1", open:false },
+        { title:"الدرس الثاني: الله تعالى ربُّ كلِّ شيء", file:"g1d2-3-2", open:false },
+        { title:"الدرس الثالث: من آداب الطعام", file:"g1d2-3-3", open:false },
+        { title:"الدرس الرابع: آداب قضاء الحاجة", file:"g1d2-3-4", open:false },
+        { title:"الدرس الخامس: محمّد ﷺ الطفل المبارك", file:"g1d2-3-5", open:false },
+        { title:"الدرس السادس: أحترم معلّمتي", file:"g1d2-3-6", open:false }
+      ]},
+      { unit:"الوحدة الرابعة", lessons:[
+        { title:"الدرس الأول: سورة الإخلاص", file:"g1d2-4-1", open:false },
+        { title:"الدرس الثاني: الله تعالى خالقي", file:"g1d2-4-2", open:false },
+        { title:"الدرس الثالث: الصدق طريق الجنّة", file:"g1d2-4-3", open:false },
+        { title:"الدرس الرابع: الاستنجاء", file:"g1d2-4-4", open:false },
+        { title:"الدرس الخامس: أُساعد الآخرين", file:"g1d2-4-5", open:false },
+        { title:"الدرس السادس: النشأة المباركة", file:"g1d2-4-6", open:false }
+      ]}
+    ]},
+    "g2-dini-1": { book:"ديني حياتي (الجزء الأول) — الصف الثاني", units:[
+      { unit:"التلاوة والحفظ", lessons:[
+        { title:"التلاوة والحفظ", file:"g2d1-0-1", open:false }
+      ]},
+      { unit:"الوحدة الأولى", lessons:[
+        { title:"الدرس الأول: أُحبُّكَ ربّي", file:"g2d1-1-1", open:false },
+        { title:"الدرس الثاني: سورة القدر", file:"g2d1-1-2", open:false },
+        { title:"الدرس الثالث: أركان الإسلام", file:"g2d1-1-3", open:false },
+        { title:"الدرس الرابع: الأذان والإقامة", file:"g2d1-1-4", open:false },
+        { title:"الدرس الخامس: النبيُّ ﷺ يرعى الغنم", file:"g2d1-1-5", open:false },
+        { title:"الدرس السادس: أُؤدّي الأمانة", file:"g2d1-1-6", open:false }
+      ]},
+      { unit:"الوحدة الثانية", lessons:[
+        { title:"الدرس الأول: سورة الزلزلة", file:"g2d1-2-1", open:false },
+        { title:"الدرس الثاني: أنا مُتعاون", file:"g2d1-2-2", open:false },
+        { title:"الدرس الثالث: أُحبُّكَ يا رسول الله", file:"g2d1-2-3", open:false },
+        { title:"الدرس الرابع: أوقات الصلاة", file:"g2d1-2-4", open:false },
+        { title:"الدرس الخامس: النبيُّ محمّد ﷺ يعمل في التجارة", file:"g2d1-2-5", open:false },
+        { title:"الدرس السادس: الصَّفح الجميل", file:"g2d1-2-6", open:false }
+      ]}
+    ]},
+    "g2-dini-2": { book:"ديني حياتي (الجزء الثاني) — الصف الثاني", units:[
+      { unit:"التلاوة والحفظ", lessons:[
+        { title:"التلاوة والحفظ", file:"g2d2-0-1", open:false }
+      ]},
+      { unit:"الوحدة الثالثة", lessons:[
+        { title:"الدرس الأول: سورة العلق", file:"g2d2-3-1", open:false },
+        { title:"الدرس الثاني: أرحم الصغير وأُوقِّر الكبير", file:"g2d2-3-2", open:false },
+        { title:"الدرس الثالث: أُحبُّ القرآن الكريم", file:"g2d2-3-3", open:false },
+        { title:"الدرس الرابع: دعاء الاستفتاح (التوجيه)", file:"g2d2-3-4", open:false },
+        { title:"الدرس الخامس: محمّد ﷺ النبيُّ الصادق", file:"g2d2-3-5", open:false },
+        { title:"الدرس السادس: أحترم وقتي", file:"g2d2-3-6", open:false }
+      ]},
+      { unit:"الوحدة الرابعة", lessons:[
+        { title:"الدرس الأول: سورة التين", file:"g2d2-4-1", open:false },
+        { title:"الدرس الثاني: أُطيع الله تعالى", file:"g2d2-4-2", open:false },
+        { title:"الدرس الثالث: أتعلَّم العِلم", file:"g2d2-4-3", open:false },
+        { title:"الدرس الرابع: التشهُّد (التحيّات)", file:"g2d2-4-4", open:false },
+        { title:"الدرس الخامس: محمّد ﷺ النبيُّ الأمين", file:"g2d2-4-5", open:false },
+        { title:"الدرس السادس: أصِلُ أرحامي", file:"g2d2-4-6", open:false }
+      ]}
+    ]},
+    "g3-dini-1": { book:"ديني حياتي (الجزء الأول) — الصف الثالث", units:[
+      { unit:"التلاوة والحفظ", lessons:[
+        { title:"التلاوة والحفظ", file:"g3d1-0-1", open:false }
+      ]},
+      { unit:"الوحدة الأولى", lessons:[
+        { title:"الدرس الأول: سورة البلد", file:"g3d1-1-1", open:false },
+        { title:"الدرس الثاني: أركان الإيمان", file:"g3d1-1-2", open:false },
+        { title:"الدرس الثالث: آمنتُ بالله (١)", file:"g3d1-1-3", open:false },
+        { title:"الدرس الرابع: أُحافظ على صلاتي", file:"g3d1-1-4", open:false },
+        { title:"الدرس الخامس: في غار حِراء", file:"g3d1-1-5", open:false },
+        { title:"الدرس السادس: آداب المسجد", file:"g3d1-1-6", open:false }
+      ]},
+      { unit:"الوحدة الثانية", lessons:[
+        { title:"الدرس الأول: سورة الفجر (١–١٦)", file:"g3d1-2-1", open:false },
+        { title:"الدرس الثاني: الأمر بالصلاة", file:"g3d1-2-2", open:false },
+        { title:"الدرس الثالث: آمنتُ بالله (٢)", file:"g3d1-2-3", open:false },
+        { title:"الدرس الرابع: صلاة الجماعة", file:"g3d1-2-4", open:false },
+        { title:"الدرس الخامس: إسلام السيّدة خديجة بنت خويلد ؓ", file:"g3d1-2-5", open:false },
+        { title:"الدرس السادس: أحمي نفسي", file:"g3d1-2-6", open:false }
+      ]}
+    ]},
+    "g3-dini-2": { book:"ديني حياتي (الجزء الثاني) — الصف الثالث", units:[
+      { unit:"التلاوة والحفظ", lessons:[
+        { title:"التلاوة والحفظ", file:"g3d2-0-1", open:false }
+      ]},
+      { unit:"الوحدة الثالثة", lessons:[
+        { title:"الدرس الأول: سورة الفجر (١٧–٣٠)", file:"g3d2-3-1", open:false },
+        { title:"الدرس الثاني: كفالة اليتيم", file:"g3d2-3-2", open:false },
+        { title:"الدرس الثالث: الله السميع", file:"g3d2-3-3", open:false },
+        { title:"الدرس الرابع: صلاة الجمعة", file:"g3d2-3-4", open:false },
+        { title:"الدرس الخامس: إسلام أبي بكر الصدّيق ؓ", file:"g3d2-3-5", open:false },
+        { title:"الدرس السادس: الادّخار", file:"g3d2-3-6", open:false }
+      ]},
+      { unit:"الوحدة الرابعة", lessons:[
+        { title:"الدرس الأول: سورة الغاشية", file:"g3d2-4-1", open:false },
+        { title:"الدرس الثاني: أُسبِّح الله تعالى", file:"g3d2-4-2", open:false },
+        { title:"الدرس الثالث: الله الشافي", file:"g3d2-4-3", open:false },
+        { title:"الدرس الرابع: السنن الراتبة", file:"g3d2-4-4", open:false },
+        { title:"الدرس الخامس: الإمام عليُّ بن أبي طالب ؓ", file:"g3d2-4-5", open:false },
+        { title:"الدرس السادس: العطاء", file:"g3d2-4-6", open:false }
+      ]}
+    ]}
   }
 };
