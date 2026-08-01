@@ -26,9 +26,12 @@
   window.fitRect = function(el){ var r=el.getBoundingClientRect(), z=state.zoom||1;
     return { left:r.left/z, top:r.top/z, right:r.right/z, bottom:r.bottom/z, width:r.width/z, height:r.height/z }; };
 
-  // منع أشرطة التمرير نهائياً (عموديّ وأفقيّ)
+  /* نطاق قفل التمرير (قرار المالك ٢٠٢٦-٠٨-٠١): الاحتواء الكامل ومنع التمرير
+     في **شاشة الأسئلة وحدها** (fit-lock على الجذر عندما #activityScreen نشطة)؛
+     أما صفحتا الكتب والفهرس فتتلاءمان عرضاً فقط ويعمل تمريرهما الرأسي طبيعياً. */
   var st=document.createElement('style');
-  st.textContent='html,body{margin:0 !important;overflow:hidden !important;}html{height:100%}';
+  st.textContent='html,body{margin:0 !important;overflow-x:hidden !important}html{height:100%}'+
+    'html.fit-lock,html.fit-lock body{overflow:hidden !important}';
   (document.head||document.documentElement).appendChild(st);
 
   var mo=null;
@@ -52,8 +55,15 @@
     if(mo) mo.disconnect();
     ensureAppWidth(app);
     var Hc = contentHeight(app);
+    /* شاشة الأسئلة = احتواء كامل بلا تمرير (كما كان)؛ الكتب والفهرس = ملاءمة
+       العرض فقط والتمرير الرأسي يعمل (قرار المالك ٢٠٢٦-٠٨-٠١) */
+    var act=document.getElementById('activityScreen');
+    var locked=!!(act && act.classList.contains('active'));
+    de.classList.toggle('fit-lock', locked);
     // هامش أمان بسيط (بضعة بكسلات) كي لا يُقصّ المحتوى عند الحافّة
-    var zoom = Math.max(ZOOM_MIN, Math.min(ZOOM_MAX, Math.min((iw-2)/DESIGN_W, (ih-4)/Hc)));
+    var zoom = locked
+      ? Math.max(ZOOM_MIN, Math.min(ZOOM_MAX, Math.min((iw-2)/DESIGN_W, (ih-4)/Hc)))
+      : Math.max(ZOOM_MIN, Math.min(ZOOM_MAX, (iw-2)/DESIGN_W));
     de.style.zoom = String(zoom);
     state.zoom=zoom; state.designW=DESIGN_W; state.designH=DESIGN_H; state.contentH=Hc; state.active=true;
     // عمود الصاروخ: مفصولٌ عن زوم المحتوى ليبقى ثابتاً بين الأسئلة. نطبّق عليه زوماً
