@@ -443,8 +443,39 @@ function placeIcons(){
   setStyleOnce(head,'marginBottom',(ICON_GAP-ao.top).toFixed(2)+'px');
   setStyleOnce(nav ,'marginTop'   ,(ICON_GAP-ao.bottom).toFixed(2)+'px');
 }
+/* ═══ قناعُ المحتوى (قرارُ المالك ٢٠٢٦-٠٨-٠١) ═══
+   ما تجاوزَ من محتوى النافذةِ حدودَها يُقَصُّ عندَ حدٍّ يقعُ **تحتَ حافّةِ رسمِ الإطارِ
+   الداخلية** فيبدو المتجاوزُ وكأنّه داخلٌ أسفلَ الإطارِ (كبطاقاتِ بنكٍ عريضةٍ تركبُ
+   على رملِ الإطار — قِيسَ في g4s-1-5 س٤). الحدُّ = إزاحاتُ النافذةِ (win) × MASK_K:
+   إزاحاتُ win أوسعُ عمداً من فتحةِ الرسمِ (§أعلاه)، فعندَ 0.8 يقعُ خطُّ القصِّ بينَ
+   الفتحةِ وحافّةِ المعدنِ في الأطرِ المقيسةِ كلِّها — أي مغطّىً بالرسمِ أو ملاصقاً له.
+   القصُّ **خارجَ صندوقِ النافذةِ بالكامل**، فالمحتوى المنضبطُ داخلَها لا يتأثّرُ بشيء؛
+   والمرنةُ (qflex) مستثناةٌ (رسمُها letterbox لا تصدقُ عليه نسبُ win). */
+var MASK_K=0.8;
+function placeMask(){
+  var R=window.fitRect||function(el){ return el.getBoundingClientRect(); };
+  document.querySelectorAll('.qcard .qframe').forEach(function(f){
+    var w=f.querySelector('.qwin'); if(!w) return;
+    if(f.classList.contains('qflex')){ if(w.style.clipPath) w.style.clipPath=''; return; }
+    var fr=R(f); if(!fr.width || !fr.height) return;      /* بطاقةٌ مخفيّةٌ — تُحسَبُ عندَ ظهورِها */
+    var ins={ top:parseFloat(w.style.top), left:parseFloat(w.style.left),
+              right:parseFloat(w.style.right), bottom:parseFloat(w.style.bottom) };
+    if(isNaN(ins.top)||isNaN(ins.left)){ if(w.style.clipPath) w.style.clipPath=''; return; }
+    /* امتدادُ القصِّ خارجَ صندوقِ النافذة = الجزءُ المتبقّي من إزاحةِ win بعدَ MASK_K */
+    var exL=fr.width *ins.left  *(1-MASK_K)/100,
+        exR=fr.width *ins.right *(1-MASK_K)/100,
+        exT=fr.height*ins.top   *(1-MASK_K)/100,
+        exB=fr.height*ins.bottom*(1-MASK_K)/100;
+    var wr=R(w);
+    var poly='polygon('+(-exL).toFixed(1)+'px '+(-exT).toFixed(1)+'px, '
+      +(wr.width+exR).toFixed(1)+'px '+(-exT).toFixed(1)+'px, '
+      +(wr.width+exR).toFixed(1)+'px '+(wr.height+exB).toFixed(1)+'px, '
+      +(-exL).toFixed(1)+'px '+(wr.height+exB).toFixed(1)+'px)';
+    if(w.style.clipPath!==poly) w.style.clipPath=poly;
+  });
+}
 /* الأيقوناتُ ثمّ الشريطُ — الشريطُ يقرأُ صندوقَ ‎.qhead‎ فيجبُ أن يكونَ قد استقرَّ */
-function placeChrome(){ placeIcons(); placeBand(); }
+function placeChrome(){ placeIcons(); placeBand(); placeMask(); }
 
 /* ═══ الشريطُ الرماديُّ الخلفيُّ (.qband) ═══
    مستطيلٌ رأسيٌّ يمتدُّ من أعلى الشاشةِ إلى أسفلِها خلفَ منطقةِ السؤال، عرضُه يتبعُ
