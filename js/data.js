@@ -10,6 +10,7 @@ window.DATA_FALLBACK = {
     "الأول": {
       "الأول": [
         { key:"g1-sci", band:["#4bb3ab","#33978f"], title:"العلوم", term:"الفصل الأول", color:"bk-teal", ic:"🔬", isNew:false, theme:"theme-sci1", cover:"images/cover-g1-sci.jpg" },
+        { key:"g1-math", band:["#30b8d0","#2590a2"], title:"الرياضيات", term:"الفصل الأول", color:"bk-teal", ic:"📐", isNew:false, theme:"theme-math1", cover:"images/cover-g1-math.jpg" },
         { key:"g1-arabic-1", band:["#93c93f","#74a52c"], title:"أحب لغتي", term:"الفصل الأول", color:"bk-green", ic:"🪶", isNew:false, theme:"theme-arabic1a", cover:"images/cover-g1-arabic-1.jpg" },
         { key:"g1-arabic-2", band:["#6fa834","#527d22"], title:"أحب لغتي", term:"الفصل الأول", color:"bk-green", ic:"🪶", isNew:false, theme:"theme-arabic1b", cover:"images/cover-g1-arabic-2.jpg" },
         { key:"g1-dini-1", band:["#6fb8e0","#4a95c4"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-blue", ic:"🕌", isNew:false, theme:"theme-dini1a", cover:"images/cover-g1-dini-1.jpg" },
@@ -295,6 +296,7 @@ window.DATA_FALLBACK = {
       ]}
     ]},
     "g3-math": { book:"الرياضيات — الصف الثالث", units:[] },
+    "g1-math": { book:"الرياضيات — الصف الأول", units:[] },
     "g1-arabic-1": { book:"أحب لغتي (الجزء الأول) — الصف الأول", units:[
       { unit:"التَّهيِئَةُ", lessons:[
         { title:"أَتَعَرَّفُ مَدْرَسَتي", file:"g1a1-0-1", open:false },
