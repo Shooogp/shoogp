@@ -339,39 +339,39 @@ window.DATA_FALLBACK = {
     ]},
     "g1-math": { book:"الرياضيات — الصف الأول", units:[
       { unit:"١أ: العدد وحل المشكلات", lessons:[
-        { title:"تمييز وقراءة الأعداد حتى عشرة (١-١)", file:"g1m-1-1", chapter:1, chapterTitle:"العد حتى العشرة", open:false },
-        { title:"العد حتى العشرة (١-٢)", file:"g1m-1-2", chapter:1, chapterTitle:"العد حتى العشرة", open:false },
-        { title:"تكوين العدد ١٠ (٢-١)", file:"g1m-2-1", chapter:2, chapterTitle:"العدد عشرة", open:false },
-        { title:"الأخذ من عشرة (٢-٢)", file:"g1m-2-2", chapter:2, chapterTitle:"العدد عشرة", open:false },
-        { title:"الضِّعْف (٢-٣)", file:"g1m-2-3", chapter:2, chapterTitle:"العدد عشرة", open:false }
+        { title:"تمييز وقراءة الأعداد حتى عشرة (١-١)", file:"g1m-1-1", chapter:1, chapterTitle:"العد حتى العشرة", open:true },
+        { title:"العد حتى العشرة (١-٢)", file:"g1m-1-2", chapter:1, chapterTitle:"العد حتى العشرة", open:true },
+        { title:"تكوين العدد ١٠ (٢-١)", file:"g1m-2-1", chapter:2, chapterTitle:"العدد عشرة", open:true },
+        { title:"الأخذ من عشرة (٢-٢)", file:"g1m-2-2", chapter:2, chapterTitle:"العدد عشرة", open:true },
+        { title:"الضِّعْف (٢-٣)", file:"g1m-2-3", chapter:2, chapterTitle:"العدد عشرة", open:true }
       ]},
       { unit:"١ج: القياس وحل المشكلات", lessons:[
-        { title:"قياس الطول (٣-١)", file:"g1m-3-1", chapter:3, chapterTitle:"الطول", open:false }
+        { title:"قياس الطول (٣-١)", file:"g1m-3-1", chapter:3, chapterTitle:"الطول", open:true }
       ]},
       { unit:"١أ: العدد وحل المشكلات", lessons:[
-        { title:"أزواج الأعداد الأقل من عشرة (٤-١)", file:"g1m-4-1", chapter:4, chapterTitle:"العد ما بعد العشرة", open:false },
-        { title:"أكثر من عشرة بقليل (٤-٢)", file:"g1m-4-2", chapter:4, chapterTitle:"العد ما بعد العشرة", open:false },
-        { title:"التقدير (٥-١)", file:"g1m-5-1", chapter:5, chapterTitle:"التقدير", open:false },
-        { title:"المزيد من التقدير (٥-٢)", file:"g1m-5-2", chapter:5, chapterTitle:"التقدير", open:false }
+        { title:"أزواج الأعداد الأقل من عشرة (٤-١)", file:"g1m-4-1", chapter:4, chapterTitle:"العد ما بعد العشرة", open:true },
+        { title:"أكثر من عشرة بقليل (٤-٢)", file:"g1m-4-2", chapter:4, chapterTitle:"العد ما بعد العشرة", open:true },
+        { title:"التقدير (٥-١)", file:"g1m-5-1", chapter:5, chapterTitle:"التقدير", open:true },
+        { title:"المزيد من التقدير (٥-٢)", file:"g1m-5-2", chapter:5, chapterTitle:"التقدير", open:true }
       ]},
       { unit:"١ب: الهندسة وحل المشكلات", lessons:[
-        { title:"تمييز وفرز الأشكال الثنائية الأبعاد (٦-١)", file:"g1m-6-1", chapter:6, chapterTitle:"الأشكال الثنائية الأبعاد والمجسَّمات وأنماطها", open:false },
-        { title:"المجسَّمات (٦-٢)", file:"g1m-6-2", chapter:6, chapterTitle:"الأشكال الثنائية الأبعاد والمجسَّمات وأنماطها", open:false },
-        { title:"التماثل والأنماط (٦-٣)", file:"g1m-6-3", chapter:6, chapterTitle:"الأشكال الثنائية الأبعاد والمجسَّمات وأنماطها", open:false }
+        { title:"تمييز وفرز الأشكال الثنائية الأبعاد (٦-١)", file:"g1m-6-1", chapter:6, chapterTitle:"الأشكال الثنائية الأبعاد والمجسَّمات وأنماطها", open:true },
+        { title:"المجسَّمات (٦-٢)", file:"g1m-6-2", chapter:6, chapterTitle:"الأشكال الثنائية الأبعاد والمجسَّمات وأنماطها", open:true },
+        { title:"التماثل والأنماط (٦-٣)", file:"g1m-6-3", chapter:6, chapterTitle:"الأشكال الثنائية الأبعاد والمجسَّمات وأنماطها", open:true }
       ]},
       { unit:"١أ: العدد وحل المشكلات", lessons:[
-        { title:"أزواج الأعداد حتى عشرة (٧-١)", file:"g1m-7-1", chapter:7, chapterTitle:"العدُّ لما بعد العشرين", open:false },
-        { title:"الأعداد الأكبر من ٢٠ (٧-٢)", file:"g1m-7-2", chapter:7, chapterTitle:"العدُّ لما بعد العشرين", open:false }
+        { title:"أزواج الأعداد حتى عشرة (٧-١)", file:"g1m-7-1", chapter:7, chapterTitle:"العدُّ لما بعد العشرين", open:true },
+        { title:"الأعداد الأكبر من ٢٠ (٧-٢)", file:"g1m-7-2", chapter:7, chapterTitle:"العدُّ لما بعد العشرين", open:true }
       ]},
       { unit:"١ج: القياس وحل المشكلات", lessons:[
-        { title:"قياس السعة (٨-١)", file:"g1m-8-1", chapter:8, chapterTitle:"السعة", open:false },
-        { title:"تقدير السعة (٨-٢)", file:"g1m-8-2", chapter:8, chapterTitle:"السعة", open:false },
-        { title:"أهلاً بك في مطعم المدرسة (٩-١)", file:"g1m-9-1", chapter:9, chapterTitle:"النقود والوقت", open:false },
-        { title:"النقود (٩-٢)", file:"g1m-9-2", chapter:9, chapterTitle:"النقود والوقت", open:false },
-        { title:"قراءة الوقت (١) (٩-٣)", file:"g1m-9-3", chapter:9, chapterTitle:"النقود والوقت", open:false },
-        { title:"قراءة الوقت (٢) (٩-٤)", file:"g1m-9-4", chapter:9, chapterTitle:"النقود والوقت", open:false },
-        { title:"المقارنة المباشرة (١٠-١)", file:"g1m-10-1", chapter:10, chapterTitle:"مقارنة الوزن", open:false },
-        { title:"استخدام الميزان ذي الكفتين (١٠-٢)", file:"g1m-10-2", chapter:10, chapterTitle:"مقارنة الوزن", open:false }
+        { title:"قياس السعة (٨-١)", file:"g1m-8-1", chapter:8, chapterTitle:"السعة", open:true },
+        { title:"تقدير السعة (٨-٢)", file:"g1m-8-2", chapter:8, chapterTitle:"السعة", open:true },
+        { title:"أهلاً بك في مطعم المدرسة (٩-١)", file:"g1m-9-1", chapter:9, chapterTitle:"النقود والوقت", open:true },
+        { title:"النقود (٩-٢)", file:"g1m-9-2", chapter:9, chapterTitle:"النقود والوقت", open:true },
+        { title:"قراءة الوقت (١) (٩-٣)", file:"g1m-9-3", chapter:9, chapterTitle:"النقود والوقت", open:true },
+        { title:"قراءة الوقت (٢) (٩-٤)", file:"g1m-9-4", chapter:9, chapterTitle:"النقود والوقت", open:true },
+        { title:"المقارنة المباشرة (١٠-١)", file:"g1m-10-1", chapter:10, chapterTitle:"مقارنة الوزن", open:true },
+        { title:"استخدام الميزان ذي الكفتين (١٠-٢)", file:"g1m-10-2", chapter:10, chapterTitle:"مقارنة الوزن", open:true }
       ]},
       { unit:"٢أ: العدد وحل المشكلات", lessons:[
         { title:"الأعداد الزوجيّة (١١-١)", file:"g1m-11-1", chapter:11, chapterTitle:"الأعداد الفردية والزوجية", open:false },

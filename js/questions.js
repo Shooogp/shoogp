@@ -9143,5 +9143,1479 @@ window.QUESTIONS = {
       </svg>`
     }
 
+  ],
+
+  /* ═══ الرياضيات — الصف الأول · الوحدة ١أ · الفصل ١: العدُّ حتى العشرة ═══ */
+
+  "g1m-1-1": [
+    {
+      type: "count-tap",
+      objective: "1Nn3: يعدّ أغراضًا حتى الـ٢٠، ويتعرّف حفظ الأعداد",
+      level: "knowledge",
+      prompt: "اِنْقُرْ سَبْعَ فَراشاتٍ وعُدَّها.",
+      mode: "each", glyph: "🦋", count: 10, target: 7
+    },
+    {
+      type: "mcq",
+      objective: "1Nn2: يقرأ ويكتب الأعداد من ٠ حتى ٢٠",
+      level: "knowledge",
+      prompt: "أَيُّ هٰذِهِ هُوَ العَدَدُ ثَمانِيَةٌ؟",
+      options: ["٦", "٨", "٩", "٧"],
+      answer: 1
+    },
+    {
+      type: "matching",
+      objective: "1Nn2: يقرأ ويكتب الأعداد من ٠ حتى ٢٠",
+      level: "application",
+      prompt: "صِلْ كُلَّ عَدَدٍ بِاسْمِهِ.",
+      pairs: [
+        { a: "٤",  b: "أَرْبَعَةٌ" },
+        { a: "٦",  b: "سِتَّةٌ" },
+        { a: "٨",  b: "ثَمانِيَةٌ" },
+        { a: "١٠", b: "عَشَرَةٌ" }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "1Nn1: يضع الأعداد بالترتيب",
+      level: "application",
+      prompt: "رَتِّبِ الأَعْدادَ مِنَ الأَصْغَرِ إِلَى الأَكْبَرِ.",
+      steps: ["٣", "٥", "٦", "٨", "٩"]
+    },
+    {
+      type: "pattern",
+      objective: "1Nn1: يضع الأعداد بالترتيب",
+      level: "reasoning",
+      prompt: "أَكْمِلِ النَّمَطَ: العَدُّ واحِدًا واحِدًا.",
+      items: ["١", "٢", "__", "٤", "٥", "__", "٧"],
+      answers: ["٣", "٦"],
+      distractors: ["٨", "٩"],
+      rule: "نَزيدُ ١ كُلَّ مَرَّةٍ"
+    },
+    {
+      type: "memory",
+      objective: "1Nn3: يعدّ أغراضًا حتى الـ٢٠، ويتعرّف حفظ الأعداد",
+      level: "knowledge",
+      prompt: "اِقْلِبْ بِطاقَتَيْنِ في كُلِّ دَوْرٍ: طابِقْ كُلَّ عَدَدٍ بِمَجْموعَتِهِ.",
+      pairs: [
+        { a: "٢", b: "🔵🔵" },
+        { a: "٣", b: "🔵🔵🔵" },
+        { a: "٤", b: "🔵🔵🔵🔵" },
+        { a: "٥", b: "🔵🔵🔵🔵🔵" }
+      ]
+    }
+  ],
+
+  "g1m-1-2": [
+    {
+      type: "mcq",
+      objective: "1Nn3: يعدّ أغراضًا حتى الـ٢٠، ويتعرّف حفظ الأعداد",
+      level: "knowledge",
+      prompt: "كَمْ صَدَفَةً في هٰذِهِ المَجْموعَةِ؟ 🐚🐚🐚🐚",
+      options: ["٣", "٤", "٥", "٦"],
+      answer: 1
+    },
+    {
+      type: "true-false",
+      objective: "1Nn3: يعدّ أغراضًا حتى الـ٢٠، ويتعرّف حفظ الأعداد",
+      level: "knowledge",
+      statement: "في هٰذِهِ المَجْموعَةِ سِتُّ صَدَفاتٍ: 🐚🐚🐚🐚🐚",
+      answer: false
+    },
+    {
+      type: "count-tap",
+      objective: "1Nn3: يعدّ أغراضًا حتى الـ٢٠، ويتعرّف حفظ الأعداد",
+      level: "application",
+      prompt: "اِنْقُرْ تِسْعَ صَدَفاتٍ وعُدَّها.",
+      mode: "each", glyph: "🐚", count: 12, target: 9
+    },
+    {
+      type: "matching",
+      objective: "1Nn2: يقرأ ويكتب الأعداد من ٠ حتى ٢٠",
+      level: "application",
+      prompt: "صِلْ كُلَّ مَجْموعَةٍ بِعَدَدِها.",
+      pairs: [
+        { a: "🐚",            b: "١" },
+        { a: "🐚🐚",          b: "٢" },
+        { a: "🐚🐚🐚🐚",       b: "٤" },
+        { a: "🐚🐚🐚🐚🐚🐚",    b: "٦" }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "1Nn1: يضع الأعداد بالترتيب",
+      level: "reasoning",
+      prompt: "رَتِّبِ المَجْموعاتِ مِنَ الأَقَلِّ إِلَى الأَكْثَرِ.",
+      steps: ["🐚", "🐚🐚", "🐚🐚🐚🐚", "🐚🐚🐚🐚🐚🐚"]
+    },
+    {
+      type: "exclude",
+      objective: "1Nn3: يعدّ أغراضًا حتى الـ٢٠، ويتعرّف حفظ الأعداد",
+      level: "reasoning",
+      prompt: "كُلُّها مَجْموعاتٌ فيها أَرْبَعَةُ عَناصِرَ — أَيُّها لا يَنْتَمي؟",
+      options: ["🐚🐚🐚🐚", "⭐⭐⭐⭐", "🌸🌸🌸", "🍎🍎🍎🍎"],
+      answer: 2,
+      reason: "فيها ثَلاثَةُ عَناصِرَ لا أَرْبَعَةً"
+    }
+  ],
+
+  /* ═══ الوحدة ١أ · الفصل ٢: العدد عشرة ═══ */
+
+  "g1m-2-1": [
+    {
+      type: "mcq",
+      objective: "1Nn3: يعدّ أغراضًا حتى الـ٢٠، ويتعرّف حفظ الأعداد",
+      level: "knowledge",
+      prompt: "في إِطارِ العَشَرَةِ خَمْسَةُ أَقْراصٍ حَمْراءَ وثَلاثَةٌ صَفْراءُ. كَمْ قُرْصًا فيهِ؟",
+      options: ["٧", "٨", "٩", "١٠"],
+      answer: 1
+    },
+    {
+      type: "equation-builder",
+      mode: "fill",
+      objective: "1Nc1: يعرف كل أزواج الأعداد حتى عشرة",
+      level: "knowledge",
+      prompt: "أَكْمِلِ المُعادَلَةَ لِتُكَوِّنَ العَشَرَةَ.",
+      tokens: ["٦", "+", "__", "=", "١٠"],
+      bank: ["٢", "٣", "٤", "٥"],
+      answers: ["٤"]
+    },
+    {
+      type: "count-tap",
+      objective: "1Nc1: يعرف كل أزواج الأعداد حتى عشرة",
+      level: "application",
+      prompt: "اِنْقُرْ سِتَّةَ أَقْراصٍ، ثُمَّ فَكِّرْ: كَمْ يَنْقُصُ لِتُكْمِلَ العَشَرَةَ؟",
+      mode: "each", glyph: "🔴", count: 10, target: 6
+    },
+    {
+      type: "drag-drop",
+      objective: "1Nc8: يفهم الجمع على أنه العدّ تصاعديًّا وجمع مجموعتين",
+      level: "application",
+      prompt: "اِسْحَبِ العَدَدَ إِلَى إِطارِ العَشَرَةِ الَّذي يَحْمِلُ هٰذا العَدَدَ مِنَ الأَقْراصِ.",
+      bg: "#fdf6ec",
+      svg: `<svg viewBox="0 0 560 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <g id="tf-disc">
+            <circle r="22" fill="#FF2020" stroke="#111111" stroke-width="2"/>
+            <ellipse cx="-6" cy="-8" rx="9" ry="6" fill="#FF8080" opacity=".85"/>
+          </g>
+        </defs>
+        <g stroke="#111111" stroke-linecap="round" stroke-linejoin="round" fill="#FFFFFF">
+          <rect x="20"  y="110" width="160" height="128" rx="10" stroke-width="3"/>
+          <rect x="200" y="110" width="160" height="128" rx="10" stroke-width="3"/>
+          <rect x="380" y="110" width="160" height="128" rx="10" stroke-width="3"/>
+        </g>
+        <g stroke="#111111" stroke-width="2" stroke-linecap="round">
+          <path d="M52,110 V238 M84,110 V238 M116,110 V238 M148,110 V238 M20,174 H180"/>
+          <path d="M232,110 V238 M264,110 V238 M296,110 V238 M328,110 V238 M200,174 H360"/>
+          <path d="M412,110 V238 M444,110 V238 M476,110 V238 M508,110 V238 M380,174 H540"/>
+        </g>
+        <g>
+          <use href="#tf-disc" x="36"  y="142"/><use href="#tf-disc" x="68"  y="142"/>
+          <use href="#tf-disc" x="100" y="142"/><use href="#tf-disc" x="132" y="142"/>
+        </g>
+        <g>
+          <use href="#tf-disc" x="216" y="142"/><use href="#tf-disc" x="248" y="142"/>
+          <use href="#tf-disc" x="280" y="142"/><use href="#tf-disc" x="312" y="142"/>
+          <use href="#tf-disc" x="344" y="142"/><use href="#tf-disc" x="216" y="206"/>
+        </g>
+        <g>
+          <use href="#tf-disc" x="396" y="142"/><use href="#tf-disc" x="428" y="142"/>
+          <use href="#tf-disc" x="460" y="142"/><use href="#tf-disc" x="492" y="142"/>
+          <use href="#tf-disc" x="524" y="142"/><use href="#tf-disc" x="396" y="206"/>
+          <use href="#tf-disc" x="428" y="206"/><use href="#tf-disc" x="460" y="206"/>
+        </g>
+      </svg>`,
+      targets: [
+        { answer: "٤", box: { x: 82, y: 16 }, dot: { x: 18, y: 58 } },
+        { answer: "٦", box: { x: 50, y: 16 }, dot: { x: 50, y: 58 } },
+        { answer: "٨", box: { x: 18, y: 16 }, dot: { x: 82, y: 58 } }
+      ]
+    },
+    {
+      type: "matching",
+      objective: "1Nc1: يعرف كل أزواج الأعداد حتى عشرة",
+      level: "reasoning",
+      prompt: "صِلْ كُلَّ عَدَدٍ بِشَريكِهِ الَّذي يُكَوِّنُ مَعَهُ عَشَرَةً.",
+      pairs: [
+        { a: "١", b: "٩" },
+        { a: "٢", b: "٨" },
+        { a: "٣", b: "٧" },
+        { a: "٤", b: "٦" }
+      ]
+    },
+    {
+      type: "memory",
+      objective: "1Nc1: يعرف كل أزواج الأعداد حتى عشرة",
+      level: "knowledge",
+      prompt: "اِقْلِبْ بِطاقَتَيْنِ في كُلِّ دَوْرٍ: طابِقْ كُلَّ جَمْعٍ بِمَجْموعِهِ.",
+      pairs: [
+        { a: "٦ + ٤", b: "١٠" },
+        { a: "٥ + ٣", b: "٨" },
+        { a: "٤ + ٣", b: "٧" },
+        { a: "٢ + ٧", b: "٩" }
+      ]
+    }
+  ],
+
+  "g1m-2-2": [
+    {
+      type: "mcq",
+      objective: "1Nc9: يفهم الطرح على أنه العدّ تنازليًّا والأخذ بعيدًا",
+      level: "knowledge",
+      prompt: "في إِطارِ العَشَرَةِ عَشَرَةُ أَقْراصٍ، أَخَذْنا أَرْبَعَةً. كَمْ بَقِيَ؟",
+      options: ["٥", "٦", "٧", "٤"],
+      answer: 1
+    },
+    {
+      type: "equation-builder",
+      mode: "fill",
+      objective: "1Nc9: يفهم الطرح على أنه العدّ تنازليًّا والأخذ بعيدًا",
+      level: "knowledge",
+      prompt: "أَكْمِلِ المُعادَلَةَ: كَمْ يَبْقى؟",
+      tokens: ["١٠", "−", "٣", "=", "__"],
+      bank: ["٦", "٧", "٨", "٩"],
+      answers: ["٧"]
+    },
+    {
+      type: "count-tap",
+      objective: "1Nc9: يفهم الطرح على أنه العدّ تنازليًّا والأخذ بعيدًا",
+      level: "application",
+      prompt: "أَخَذْنا مِنَ العَشَرَةِ خَمْسَةً. اِنْقُرِ الأَقْراصَ الباقِيَةَ وعُدَّها.",
+      mode: "each", glyph: "🔴", count: 8, target: 5
+    },
+    {
+      type: "fill-blank",
+      objective: "1Nc11: يجمع / يطرح عددًا مؤلَّفًا من رقم واحد بواسطة العدّ تصاعديًّا وللخلف",
+      level: "application",
+      prompt: "أَكْمِلِ الجُمْلَتَيْنِ بِسَحْبِ العَدَدِ المُناسِبِ.",
+      text: "أَخَذْنا مِنَ العَشَرَةِ سِتَّةً فَبَقِيَ {} ، وأَخَذْنا مِنَ العَشَرَةِ ثَمانِيَةً فَبَقِيَ {}",
+      answers: ["٤", "٢"],
+      distractors: ["٣", "٥"]
+    },
+    {
+      type: "matching",
+      objective: "1Nc11: يجمع / يطرح عددًا مؤلَّفًا من رقم واحد بواسطة العدّ تصاعديًّا وللخلف",
+      level: "reasoning",
+      prompt: "صِلْ كُلَّ جُمْلَةِ طَرْحٍ بِناتِجِها.",
+      pairs: [
+        { a: "١٠ − ١", b: "٩" },
+        { a: "١٠ − ٥", b: "٥" },
+        { a: "١٠ − ٧", b: "٣" },
+        { a: "١٠ − ٩", b: "١" }
+      ]
+    },
+    {
+      type: "find-error",
+      objective: "1Nc9: يفهم الطرح على أنه العدّ تنازليًّا والأخذ بعيدًا",
+      level: "reasoning",
+      prompt: "البِطاقَةُ تَقولُ إِنَّ في الإِطارِ سَبْعَةَ أَقْراصٍ — اِضْغَطْ عَلى الخَطَإِ.",
+      bg: "#fdf6ec",
+      spot: { x: 82, y: 50, r: 15 },
+      svg: `<svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <g id="fe-disc">
+            <circle r="24" fill="#20A0FF" stroke="#111111" stroke-width="2"/>
+            <ellipse cx="-7" cy="-9" rx="10" ry="7" fill="#A8DCFF" opacity=".9"/>
+          </g>
+        </defs>
+        <rect x="30" y="66" width="340" height="128" rx="12" fill="#FFFFFF"
+              stroke="#111111" stroke-width="3" stroke-linejoin="round"/>
+        <g stroke="#111111" stroke-width="2" stroke-linecap="round">
+          <path d="M98,66 V194 M166,66 V194 M234,66 V194 M302,66 V194 M30,130 H370"/>
+        </g>
+        <g>
+          <use href="#fe-disc" x="64"  y="98"/><use href="#fe-disc" x="132" y="98"/>
+          <use href="#fe-disc" x="200" y="98"/><use href="#fe-disc" x="268" y="98"/>
+          <use href="#fe-disc" x="336" y="98"/><use href="#fe-disc" x="64"  y="162"/>
+        </g>
+        <g>
+          <rect x="404" y="86" width="112" height="88" rx="14" fill="#FFFFC0"
+                stroke="#111111" stroke-width="3" stroke-linejoin="round"/>
+          <text x="460" y="148" font-size="58" font-weight="800" text-anchor="middle"
+                fill="#111111" font-family="Cairo, Tajawal, sans-serif">٧</text>
+        </g>
+      </svg>`
+    }
+  ],
+
+  "g1m-2-3": [
+    {
+      type: "true-false",
+      objective: "1Nc5: يعرف الضعف حتى ٥ على الأقل",
+      level: "knowledge",
+      statement: "ضِعْفُ العَدَدِ ثَلاثَةٍ هُوَ سِتَّةٌ.",
+      answer: true
+    },
+    {
+      type: "mcq",
+      objective: "1Nc5: يعرف الضعف حتى ٥ على الأقل",
+      level: "knowledge",
+      prompt: "ما ضِعْفُ العَدَدِ أَرْبَعَةٍ؟",
+      options: ["٦", "٧", "٨", "٩"],
+      answer: 2
+    },
+    {
+      type: "array",
+      mode: "build",
+      objective: "1Nc5: يعرف الضعف حتى ٥ على الأقل",
+      level: "application",
+      prompt: "ابْنِ مَصْفوفَةً فيها صَفّانِ، في كُلِّ صَفٍّ خَمْسَةُ مُرَبَّعاتٍ — لِتَرى ضِعْفَ الخَمْسَةِ.",
+      rows: 2, cols: 5,
+      answerSentence: "٥ + ٥ = ١٠"
+    },
+    {
+      type: "fill-blank",
+      objective: "1Nc5: يعرف الضعف حتى ٥ على الأقل",
+      level: "application",
+      prompt: "أَكْمِلِ الجُمْلَتَيْنِ بِسَحْبِ العَدَدِ المُناسِبِ.",
+      text: "ضِعْفُ الاِثْنَيْنِ هُوَ {} ، وضِعْفُ الخَمْسَةِ هُوَ {}",
+      answers: ["٤", "١٠"],
+      distractors: ["٦", "٨"]
+    },
+    {
+      type: "classify",
+      objective: "1Nc5: يعرف الضعف حتى ٥ على الأقل",
+      level: "reasoning",
+      prompt: "صَنِّفْ كُلَّ جَمْعٍ: أَهُوَ ضِعْفٌ أَمْ لا؟",
+      groups: [
+        { name: "ضِعْفٌ",     items: ["٣ + ٣", "٥ + ٥"] },
+        { name: "لَيْسَ ضِعْفًا", items: ["٤ + ٢", "٦ + ١"] }
+      ]
+    },
+    {
+      type: "color",
+      objective: "1Nc5: يعرف الضعف حتى ٥ على الأقل",
+      level: "reasoning",
+      prompt: "لَوِّنِ المَجْموعَةَ الَّتي تُظْهِرُ ضِعْفًا بِالأَخْضَرِ، والَّتي لَيْسَتْ ضِعْفًا بِالأَحْمَرِ.",
+      bg: "#fdf6ec",
+      showLabels: true,
+      palette: [
+        { name: "أَخْضَر", color: "#60C020" },
+        { name: "أَحْمَر", color: "#FF2020" }
+      ],
+      parts: [
+        { name: "٢ + ٢", color: "#60C020" },
+        { name: "٣ + ٣", color: "#60C020" },
+        { name: "٤ + ١", color: "#FF2020" }
+      ],
+      svg: `<svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
+        <g class="cpart" data-name="٢ + ٢" id="part-d2" stroke="#111111" stroke-width="2"
+           stroke-linejoin="round">
+          <circle cx="52"  cy="96"  r="20"/><circle cx="100" cy="96"  r="20"/>
+          <circle cx="52"  cy="150" r="20"/><circle cx="100" cy="150" r="20"/>
+        </g>
+        <g class="cpart" data-name="٣ + ٣" id="part-d3" stroke="#111111" stroke-width="2"
+           stroke-linejoin="round">
+          <circle cx="228" cy="96"  r="20"/><circle cx="276" cy="96"  r="20"/>
+          <circle cx="324" cy="96"  r="20"/><circle cx="228" cy="150" r="20"/>
+          <circle cx="276" cy="150" r="20"/><circle cx="324" cy="150" r="20"/>
+        </g>
+        <g class="cpart" data-name="٤ + ١" id="part-n4" stroke="#111111" stroke-width="2"
+           stroke-linejoin="round">
+          <circle cx="428" cy="96"  r="20"/><circle cx="476" cy="96"  r="20"/>
+          <circle cx="524" cy="96"  r="20"/><circle cx="452" cy="150" r="20"/>
+          <circle cx="500" cy="150" r="20"/>
+        </g>
+      </svg>`
+    }
+  ],
+
+  /* ═══ الوحدة ١أ · الفصل ٤: العد ما بعد العشرة ═══ */
+
+  "g1m-4-1": [
+    {
+      type: "mcq",
+      objective: "1Nc2: يبدأ بالتعرّف إلى أزواج الأعداد ٦، ٧، ٨، ٩، ١٠",
+      level: "knowledge",
+      prompt: "مَجْموعُ خَمْسَةٍ وواحِدٍ هُوَ:",
+      options: ["٤", "٥", "٦", "٧"],
+      answer: 2
+    },
+    {
+      type: "equation-builder",
+      mode: "fill",
+      objective: "1Nc8: يفهم الجمع على أنه العدّ تصاعديًّا وجمع مجموعتين",
+      level: "knowledge",
+      prompt: "أَكْمِلِ المُعادَلَةَ.",
+      tokens: ["٤", "+", "٣", "=", "__"],
+      bank: ["٥", "٦", "٧", "٨"],
+      answers: ["٧"]
+    },
+    {
+      type: "count-tap",
+      objective: "1Nn3: يعدّ أغراضًا حتى الـ٢٠، ويتعرّف حفظ الأعداد",
+      level: "application",
+      prompt: "اِنْقُرْ ثَماني دَوائِرَ وعُدَّها.",
+      mode: "each", glyph: "🟢", count: 11, target: 8
+    },
+    {
+      type: "matching",
+      objective: "1Nc2: يبدأ بالتعرّف إلى أزواج الأعداد ٦، ٧، ٨، ٩، ١٠",
+      level: "application",
+      prompt: "صِلْ كُلَّ زَوْجٍ بِمَجْموعِهِ.",
+      pairs: [
+        { a: "٥ + ١", b: "٦" },
+        { a: "٤ + ٣", b: "٧" },
+        { a: "٢ + ٦", b: "٨" },
+        { a: "٣ + ٦", b: "٩" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "1Nc1: يعرف كل أزواج الأعداد حتى عشرة",
+      level: "reasoning",
+      prompt: "صَنِّفْ كُلَّ زَوْجٍ حَسَبَ مَجْموعِهِ.",
+      groups: [
+        { name: "مَجْموعُهُ ٧", items: ["٤ + ٣", "٥ + ٢"] },
+        { name: "مَجْموعُهُ ٩", items: ["٦ + ٣", "٨ + ١"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "1Nc2: يبدأ بالتعرّف إلى أزواج الأعداد ٦، ٧، ٨، ٩، ١٠",
+      level: "reasoning",
+      prompt: "كُلُّها أَزْواجٌ مَجْموعُها ثَمانِيَةٌ — أَيُّها لا يَنْتَمي؟",
+      options: ["٥ + ٣", "٦ + ٢", "٤ + ٤", "٥ + ٤"],
+      answer: 3,
+      reason: "٥ + ٤ = ٩ لا ٨"
+    }
+  ],
+
+  "g1m-4-2": [
+    {
+      type: "mcq",
+      objective: "1Nn8: يستخدم المفردات «أكبر» و«أقل» لوصف عدد يقع بين عددين آخرين",
+      level: "knowledge",
+      prompt: "أَيُّ عَدَدٍ يَقَعُ بَيْنَ ١٤ و١٦؟",
+      options: ["١٣", "١٥", "١٧", "١٢"],
+      answer: 1
+    },
+    {
+      type: "place-value",
+      mode: "build",
+      objective: "1Nn6: يجزّئ العدد من منزلتين إلى آحاد وعشرات والعكس",
+      level: "knowledge",
+      prompt: "ابْنِ العَدَدَ ١٣ بِالعَشَراتِ والآحادِ.",
+      target: 13
+    },
+    {
+      type: "number-line",
+      mode: "place",
+      objective: "1Nn9: يرتّب الأعداد حتى ٢٠ على الأقل على أشرطة الأعداد",
+      level: "application",
+      prompt: "ضَعِ المُؤَشِّرَ عَلى العَدَدِ ١٧.",
+      min: 10, max: 20, step: 1, labelEvery: 1,
+      target: 17
+    },
+    {
+      type: "sequence",
+      objective: "1Nn1: يضع الأعداد بالترتيب",
+      level: "application",
+      prompt: "رَتِّبِ الأَعْدادَ مِنَ الأَصْغَرِ إِلَى الأَكْبَرِ.",
+      steps: ["١١", "١٢", "١٣", "١٤", "١٥"]
+    },
+    {
+      type: "compare",
+      objective: "1Nn8: يستخدم المفردات «أكبر» و«أقل» لوصف عدد يقع بين عددين آخرين",
+      level: "reasoning",
+      prompt: "ضَعِ الرَّمْزَ المُناسِبَ بَيْنَ كُلِّ عَدَدَيْنِ.",
+      pairs: [ { a: "١٢", b: "١٧" }, { a: "١٥", b: "١٥" }, { a: "١٩", b: "١٣" } ]
+    },
+    {
+      type: "slider",
+      objective: "1Nn9: يرتّب الأعداد حتى ٢٠ على الأقل على أشرطة الأعداد",
+      level: "application",
+      prompt: "اِسْحَبِ المُؤَشِّرَ إِلَى العَدَدِ سِتَّةَ عَشَرَ.",
+      min: 10, max: 20, answer: 16, tolerance: 0, ticks: 2
+    }
+  ],
+
+  /* ═══ الوحدة ١أ · الفصل ٥: التقدير ═══ */
+
+  "g1m-5-1": [
+    {
+      type: "mcq",
+      objective: "1Nn11: يعطي تقديرًا معقولًا لبعض الأشياء قبل عدّها حتى ٣٠",
+      level: "knowledge",
+      prompt: "خَمِّنْ: كَمْ مُكَعَّبًا هُنا تَقْريبًا؟ 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦",
+      options: ["٥", "١٢", "٢٥", "٣٠"],
+      answer: 1
+    },
+    {
+      type: "true-false",
+      objective: "1Nn11: يعطي تقديرًا معقولًا لبعض الأشياء قبل عدّها حتى ٣٠",
+      level: "knowledge",
+      statement: "التَّقْديرُ تَخْمينٌ قَريبٌ مِنَ العَدَدِ الحَقيقِيِّ.",
+      answer: true
+    },
+    {
+      type: "count-tap",
+      objective: "1Nn3: يعدّ أغراضًا حتى الـ٢٠، ويتعرّف حفظ الأعداد",
+      level: "application",
+      prompt: "الآنَ عُدَّ لِلتَّحَقُّقِ: اِنْقُرِ اثْنَيْ عَشَرَ مُكَعَّبًا.",
+      mode: "each", glyph: "🟦", count: 15, target: 12
+    },
+    {
+      type: "sequence",
+      objective: "1Nn1: يضع الأعداد بالترتيب",
+      level: "application",
+      prompt: "رَتِّبِ التَّقْديراتِ مِنَ الأَصْغَرِ إِلَى الأَكْبَرِ.",
+      steps: ["٥", "١٠", "١٥", "٢٠", "٢٥"]
+    },
+    {
+      type: "compare",
+      objective: "1Nn8: يستخدم المفردات «أكبر» و«أقل» لوصف عدد يقع بين عددين آخرين",
+      level: "reasoning",
+      prompt: "قارِنْ بَيْنَ التَّقْديرِ والعَدَدِ الحَقيقِيِّ.",
+      pairs: [ { a: "١٢", b: "٢٠" }, { a: "٢٥", b: "٢٥" }, { a: "٣٠", b: "١٨" } ]
+    },
+    {
+      type: "memory",
+      objective: "1Nn2: يقرأ ويكتب الأعداد من ٠ حتى ٢٠",
+      level: "knowledge",
+      prompt: "اِقْلِبْ بِطاقَتَيْنِ في كُلِّ دَوْرٍ: طابِقْ كُلَّ عَدَدٍ بِاسْمِهِ.",
+      pairs: [
+        { a: "١٠", b: "عَشَرَة" },
+        { a: "١٥", b: "خَمْسَةَ عَشَرَ" },
+        { a: "٢٠", b: "عِشْرونَ" },
+        { a: "٣٠", b: "ثَلاثونَ" }
+      ]
+    }
+  ],
+
+  "g1m-5-2": [
+    {
+      type: "mcq",
+      objective: "1Nn11: يعطي تقديرًا معقولًا لبعض الأشياء قبل عدّها حتى ٣٠",
+      level: "knowledge",
+      prompt: "في الكَفِّ سِتُّ قِطَعٍ. فَإِذا كانَ ما في الكَفَّيْنِ ضِعْفَها، فَكَمْ قِطْعَةً فيهِما؟",
+      options: ["٨", "١٠", "١٢", "١٤"],
+      answer: 2
+    },
+    {
+      type: "true-false",
+      objective: "1Nn11: يعطي تقديرًا معقولًا لبعض الأشياء قبل عدّها حتى ٣٠",
+      level: "knowledge",
+      statement: "إِذا كانَ في الكَفِّ خَمْسُ قِطَعٍ فَإِنَّ ضِعْفَها إِحْدى عَشْرَةَ قِطْعَةً.",
+      answer: false
+    },
+    {
+      type: "count-tap",
+      objective: "1Nn3: يعدّ أغراضًا حتى الـ٢٠، ويتعرّف حفظ الأعداد",
+      level: "application",
+      prompt: "اِنْقُرْ عَشْرَ قِطَعٍ وعُدَّها.",
+      mode: "each", glyph: "🟨", count: 14, target: 10
+    },
+    {
+      type: "classify",
+      objective: "1Pt2: يستكشف المسائل العددية والألغاز",
+      level: "application",
+      prompt: "في الكَفِّ نَحْوُ اثْنَتَيْ عَشْرَةَ قِطْعَةً — صَنِّفِ التَّقْديراتِ.",
+      groups: [
+        { name: "تَقْديرٌ مَعْقولٌ",     items: ["١٠ قِطَعٍ", "١٣ قِطْعَةً"] },
+        { name: "تَقْديرٌ غَيْرُ مَعْقولٍ", items: ["١٠٠ قِطْعَةٍ", "قِطْعَتانِ"] }
+      ]
+    },
+    {
+      type: "compare",
+      objective: "1Nn8: يستخدم المفردات «أكبر» و«أقل» لوصف عدد يقع بين عددين آخرين",
+      level: "reasoning",
+      prompt: "قارِنْ بَيْنَ عَدَدِ قِطَعِ الكَفِّ وعَدَدِ قِطَعِ الكَفَّيْنِ.",
+      pairs: [ { a: "٦", b: "١٢" }, { a: "٩", b: "٩" }, { a: "١٤", b: "٧" } ]
+    },
+    {
+      type: "exclude",
+      objective: "1Pt2: يستكشف المسائل العددية والألغاز",
+      level: "reasoning",
+      prompt: "تَقْديرٌ لِعَدَدِ القِطَعِ في كَفٍّ واحِدَةٍ — أَيُّها غَيْرُ مَعْقولٍ؟",
+      options: ["٧ قِطَعٍ", "١٠ قِطَعٍ", "١٢ قِطْعَةً", "٩٠ قِطْعَةً"],
+      answer: 3,
+      reason: "الكَفُّ الواحِدَةُ لا تَحْمِلُ تِسْعينَ قِطْعَةً"
+    }
+  ],
+
+  /* ═══ الوحدة ١أ · الفصل ٧: العدُّ لما بعد العشرين ═══ */
+
+  "g1m-7-1": [
+    {
+      type: "mcq",
+      objective: "1Nc1: يعرف كل أزواج الأعداد حتى عشرة",
+      level: "knowledge",
+      prompt: "أَيُّ زَوْجٍ مَجْموعُهُ سَبْعَةٌ؟",
+      options: ["٣ + ٥", "٤ + ٣", "٦ + ٢", "٥ + ٥"],
+      answer: 1
+    },
+    {
+      type: "equation-builder",
+      mode: "fill",
+      objective: "1Nc8: يفهم الجمع على أنه العدّ تصاعديًّا وجمع مجموعتين",
+      level: "knowledge",
+      prompt: "أَكْمِلِ المُعادَلَةَ: ما العَدَدُ المَفْقودُ؟",
+      tokens: ["__", "+", "٢", "=", "٧"],
+      bank: ["٣", "٤", "٥", "٦"],
+      answers: ["٥"]
+    },
+    {
+      type: "matching",
+      objective: "1Nc1: يعرف كل أزواج الأعداد حتى عشرة",
+      level: "application",
+      prompt: "صِلْ كُلَّ عَدَدٍ بِشَريكِهِ الَّذي يُكَوِّنُ مَعَهُ سَبْعَةً.",
+      pairs: [
+        { a: "٦", b: "١" },
+        { a: "٥", b: "٢" },
+        { a: "٤", b: "٣" },
+        { a: "٧", b: "٠" }
+      ]
+    },
+    {
+      type: "fill-blank",
+      objective: "1Nc1: يعرف كل أزواج الأعداد حتى عشرة",
+      level: "application",
+      prompt: "أَكْمِلِ الجُمْلَتَيْنِ بِسَحْبِ العَدَدِ المُناسِبِ.",
+      text: "سِتَّةٌ و {} يُكَوِّنانِ سَبْعَةً، وخَمْسَةٌ و {} يُكَوِّنانِ سَبْعَةً",
+      answers: ["١", "٢"],
+      distractors: ["٣", "٤"]
+    },
+    {
+      type: "true-false",
+      objective: "1Nc15: يفهم أن تغيير ترتيب عملية الجمع لا يغيّر ناتجها",
+      level: "reasoning",
+      statement: "٣ + ٤ يُساوي ٤ + ٣.",
+      answer: true
+    },
+    {
+      type: "find-error",
+      objective: "1Nc1: يعرف كل أزواج الأعداد حتى عشرة",
+      level: "reasoning",
+      prompt: "كُلُّ سَطْرٍ يَجِبُ أَنْ يَكونَ مَجْموعُهُ سَبْعَةً — اِضْغَطْ عَلى السَّطْرِ الخاطِئِ.",
+      bg: "#fdf6ec",
+      spot: { x: 50, y: 80, r: 17 },
+      svg: `<svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
+        <g font-family="Cairo, Tajawal, sans-serif" font-size="42" font-weight="800"
+           fill="#111111" text-anchor="middle">
+          <g>
+            <rect x="130" y="24" width="300" height="58" rx="14" fill="#FFFFC0"
+                  stroke="#111111" stroke-width="3" stroke-linejoin="round"/>
+            <text x="280" y="66">٦ + ١ = ٧</text>
+          </g>
+          <g>
+            <rect x="130" y="100" width="300" height="58" rx="14" fill="#FFFFC0"
+                  stroke="#111111" stroke-width="3" stroke-linejoin="round"/>
+            <text x="280" y="142">٤ + ٣ = ٧</text>
+          </g>
+          <g>
+            <rect x="130" y="176" width="300" height="58" rx="14" fill="#FFFFC0"
+                  stroke="#111111" stroke-width="3" stroke-linejoin="round"/>
+            <text x="280" y="218">٥ + ٣ = ٧</text>
+          </g>
+        </g>
+      </svg>`
+    }
+  ],
+
+  "g1m-7-2": [
+    {
+      type: "mcq",
+      objective: "1Nn2: يقرأ ويكتب الأعداد من ٠ حتى ٢٠",
+      level: "knowledge",
+      prompt: "أَيُّ هٰذِهِ هُوَ العَدَدُ خَمْسَةٌ وثَلاثونَ؟",
+      options: ["٣٥", "٥٣", "٢٥", "٤٥"],
+      answer: 0
+    },
+    {
+      type: "hundred-chart",
+      mode: "missing",
+      objective: "1Nn1: يضع الأعداد بالترتيب",
+      level: "knowledge",
+      prompt: "أَكْمِلِ الخَلايا النّاقِصَةَ في اللَّوْحَةِ.",
+      from: 1, to: 30, columns: 10,
+      missing: [7, 14, 23],
+      distractors: [17, 24]
+    },
+    {
+      type: "place-value",
+      mode: "build",
+      objective: "1Nn6: يجزّئ العدد من منزلتين إلى آحاد وعشرات والعكس",
+      level: "application",
+      prompt: "ابْنِ العَدَدَ ٣٤ بِالعَشَراتِ والآحادِ.",
+      target: 34
+    },
+    {
+      type: "count-tap",
+      objective: "1Nn4: يعدّ بالعشرات من الصفر حتى ١٠٠ أو أكثر من ذلك بقليل",
+      level: "application",
+      prompt: "عُدَّ بِالعَشَراتِ حَتّى الخَمْسينَ: اِنْقُرْ كُلَّ مَجْموعَةٍ بِدَوْرِها.",
+      mode: "step", glyph: "🟠", step: 10, groups: 5, target: 50
+    },
+    {
+      type: "pattern",
+      objective: "1Pt7: يصف ويكمل النمط، مثل العدّ والعدّ التنازلي بالعشرات",
+      level: "reasoning",
+      prompt: "أَكْمِلِ النَّمَطَ: العَدُّ التَّنازُلِيُّ بِالعَشَراتِ.",
+      items: ["٩٠", "٨٠", "__", "٦٠", "__", "٤٠"],
+      answers: ["٧٠", "٥٠"],
+      distractors: ["٧٥", "٥٥"],
+      rule: "نَنْقُصُ ١٠ كُلَّ مَرَّةٍ"
+    },
+    {
+      type: "color",
+      objective: "1Nn4: يعدّ بالعشرات من الصفر حتى ١٠٠ أو أكثر من ذلك بقليل",
+      level: "reasoning",
+      prompt: "لَوِّنْ مُضاعَفاتِ العَشَرَةِ بِالأَخْضَرِ، وما عَداها بِالأَحْمَرِ.",
+      bg: "#fdf6ec",
+      showLabels: true,
+      palette: [
+        { name: "أَخْضَر", color: "#60C020" },
+        { name: "أَحْمَر", color: "#FF2020" }
+      ],
+      parts: [
+        { name: "١٠", color: "#60C020" },
+        { name: "٢٠", color: "#60C020" },
+        { name: "٣٠", color: "#60C020" },
+        { name: "٢٥", color: "#FF2020" },
+        { name: "٣٣", color: "#FF2020" }
+      ],
+      svg: `<svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#111111" stroke-width="3" stroke-linejoin="round">
+          <g class="cpart" data-name="١٠" id="part-t10"><circle cx="70"  cy="130" r="44"/></g>
+          <g class="cpart" data-name="٢٥" id="part-t25"><circle cx="180" cy="130" r="44"/></g>
+          <g class="cpart" data-name="٢٠" id="part-t20"><circle cx="290" cy="130" r="44"/></g>
+          <g class="cpart" data-name="٣٣" id="part-t33"><circle cx="400" cy="130" r="44"/></g>
+          <g class="cpart" data-name="٣٠" id="part-t30"><circle cx="504" cy="130" r="44"/></g>
+        </g>
+      </svg>`
+    }
+  ],
+
+  /* ═══ الوحدة ١ب · الفصل ٦: الأشكال الثنائية الأبعاد والمجسَّمات وأنماطها ═══ */
+
+  "g1m-6-1": [
+    {
+      type: "mcq",
+      objective: "1Gs1: يسمّي ويصنّف الأشكال الثنائية الأبعاد الشائعة باستخدام ميزات مثل عدد الأضلاع",
+      level: "knowledge",
+      prompt: "كَمْ ضِلْعًا لِلْمُضَلَّعِ الخُماسِيِّ؟",
+      options: ["٣", "٤", "٥", "٦"],
+      answer: 2
+    },
+    {
+      type: "matching",
+      objective: "1Gs1: يسمّي ويصنّف الأشكال الثنائية الأبعاد الشائعة باستخدام ميزات مثل عدد الأضلاع",
+      level: "knowledge",
+      prompt: "صِلْ كُلَّ شَكْلٍ بِعَدَدِ أَضْلاعِهِ.",
+      pairs: [
+        { a: "مُثَلَّث",          b: "٣ أَضْلاعٍ" },
+        { a: "مُرَبَّع",          b: "٤ أَضْلاعٍ" },
+        { a: "مُضَلَّع خُماسِيّ",  b: "٥ أَضْلاعٍ" },
+        { a: "مُضَلَّع سُداسِيّ",  b: "٦ أَضْلاعٍ" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "1Gs1: يسمّي ويصنّف الأشكال الثنائية الأبعاد الشائعة باستخدام ميزات مثل عدد الأضلاع",
+      level: "application",
+      prompt: "صَنِّفِ الأَشْكالَ: أَلَها أَضْلاعٌ مُسْتَقيمَةٌ أَمْ لا؟",
+      groups: [
+        { name: "لَها أَضْلاعٌ مُسْتَقيمَةٌ", items: ["مُثَلَّث", "مُرَبَّع"] },
+        { name: "لَيْسَ لَها أَضْلاعٌ",      items: ["دائِرَة", "بَيْضاوِيّ"] }
+      ]
+    },
+    {
+      type: "count-tap",
+      objective: "1Gs1: يسمّي ويصنّف الأشكال الثنائية الأبعاد الشائعة باستخدام ميزات مثل عدد الأضلاع",
+      level: "application",
+      prompt: "اِنْقُرْ أَرْبَعَةَ عيدانٍ — وهُوَ عَدَدُ ما يَلْزَمُ لِصُنْعِ مُرَبَّعٍ.",
+      mode: "each", glyph: "🟫", count: 8, target: 4
+    },
+    {
+      type: "sequence",
+      objective: "1Pt8: يحدّد العلاقات البسيطة بين الأعداد والأشكال",
+      level: "reasoning",
+      prompt: "رَتِّبِ الأَشْكالَ مِنَ الأَقَلِّ أَضْلاعًا إِلَى الأَكْثَرِ.",
+      steps: ["مُثَلَّث", "مُرَبَّع", "مُضَلَّع خُماسِيّ", "مُضَلَّع سُداسِيّ"]
+    },
+    {
+      type: "memory",
+      objective: "1Gs1: يسمّي ويصنّف الأشكال الثنائية الأبعاد الشائعة باستخدام ميزات مثل عدد الأضلاع",
+      level: "knowledge",
+      prompt: "اِقْلِبْ بِطاقَتَيْنِ في كُلِّ دَوْرٍ: طابِقْ كُلَّ شَكْلٍ بِوَصْفِهِ.",
+      pairs: [
+        { a: "مُرَبَّع",        b: "أَرْبَعَةُ أَضْلاعٍ مُتَساوِيَةٍ" },
+        { a: "دائِرَة",         b: "بِلا أَضْلاعٍ" },
+        { a: "مُثَلَّث",        b: "ثَلاثَةُ أَضْلاعٍ" },
+        { a: "مُضَلَّع سُداسِيّ", b: "سِتَّةُ أَضْلاعٍ" }
+      ]
+    }
+  ],
+
+  "g1m-6-2": [
+    {
+      type: "mcq",
+      objective: "1Gs2: يسمّي ويصنّف المجسَّمات الشائعة باستخدام ميزات مثل عدد الوجوه",
+      level: "knowledge",
+      prompt: "أَيُّ مُجَسَّمٍ كُلُّ أَوْجُهِهِ مُرَبَّعاتٌ؟",
+      options: ["الكُرَة", "المُكَعَّب", "المَخْروط", "الهَرَم"],
+      answer: 1
+    },
+    {
+      type: "true-false",
+      objective: "1Gs2: يسمّي ويصنّف المجسَّمات الشائعة باستخدام ميزات مثل عدد الوجوه",
+      level: "knowledge",
+      statement: "الكُرَةُ لَيْسَ لَها أَوْجُهٌ مُسْتَوِيَةٌ.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "1Gs2: يسمّي ويصنّف المجسَّمات الشائعة باستخدام ميزات مثل عدد الوجوه",
+      level: "application",
+      prompt: "صِلْ كُلَّ مُجَسَّمٍ بِوَصْفِ أَوْجُهِهِ.",
+      pairs: [
+        { a: "المُكَعَّب",    b: "سِتَّةُ أَوْجُهٍ مُرَبَّعَةٍ" },
+        { a: "الهَرَم",       b: "قاعِدَةٌ ومُثَلَّثاتٌ" },
+        { a: "الأُسْطُوانَة",  b: "دائِرَتانِ وسَطْحٌ مُنْحَنٍ" },
+        { a: "المَخْروط",     b: "دائِرَةٌ ورَأْسٌ واحِدٌ" }
+      ]
+    },
+    {
+      type: "fill-blank",
+      objective: "1Gs2: يسمّي ويصنّف المجسَّمات الشائعة باستخدام ميزات مثل عدد الوجوه",
+      level: "application",
+      prompt: "أَكْمِلِ الجُمْلَتَيْنِ بِسَحْبِ الكَلِمَةِ المُناسِبَةِ.",
+      text: "لِلْمُكَعَّبِ {} أَوْجُهٍ، ولِلْمَخْروطِ رَأْسٌ {}",
+      answers: ["سِتَّةُ", "واحِدٌ"],
+      distractors: ["أَرْبَعَةُ", "اثْنانِ"]
+    },
+    {
+      type: "classify",
+      objective: "1Pt8: يحدّد العلاقات البسيطة بين الأعداد والأشكال",
+      level: "reasoning",
+      prompt: "صَنِّفِ المُجَسَّماتِ: أَيُّها يَتَدَحْرَجُ؟",
+      groups: [
+        { name: "يَتَدَحْرَجُ",    items: ["الكُرَة", "الأُسْطُوانَة"] },
+        { name: "لا يَتَدَحْرَجُ", items: ["المُكَعَّب", "الهَرَم"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "1Gs2: يسمّي ويصنّف المجسَّمات الشائعة باستخدام ميزات مثل عدد الوجوه",
+      level: "reasoning",
+      prompt: "كُلُّها مُجَسَّماتٌ لَها أَوْجُهٌ مُسْتَوِيَةٌ — أَيُّها لا يَنْتَمي؟",
+      options: ["المُكَعَّب", "الهَرَم", "المِنْشورُ الثُّلاثِيُّ", "الكُرَة"],
+      answer: 3,
+      reason: "الكُرَةُ سَطْحُها مُنْحَنٍ كُلُّهُ"
+    }
+  ],
+
+  "g1m-6-3": [
+    {
+      type: "mcq",
+      objective: "1Gs3: يتعرّف إلى خط التماثل",
+      level: "knowledge",
+      prompt: "كَمْ خَطَّ تَماثُلٍ لِلْمُرَبَّعِ؟",
+      options: ["١", "٢", "٣", "٤"],
+      answer: 3
+    },
+    {
+      type: "true-false",
+      objective: "1Gs3: يتعرّف إلى خط التماثل",
+      level: "knowledge",
+      statement: "لِلدّائِرَةِ خَطُّ تَماثُلٍ واحِدٌ فَقَطْ.",
+      answer: false
+    },
+    {
+      type: "symmetry",
+      mode: "line",
+      objective: "1Gs3: يتعرّف إلى خط التماثل",
+      level: "application",
+      prompt: "اِنْقُرْ خُطوطَ التَّماثُلِ في المُسْتَطيلِ.",
+      shape: "rect",
+      lines: [
+        { x1: 100, y1: 35,  x2: 100, y2: 165, ok: true },
+        { x1: 15,  y1: 100, x2: 185, y2: 100, ok: true },
+        { x1: 25,  y1: 45,  x2: 175, y2: 155, ok: false }
+      ]
+    },
+    {
+      type: "pattern",
+      objective: "1Pt8: يحدّد العلاقات البسيطة بين الأعداد والأشكال",
+      level: "application",
+      prompt: "أَكْمِلِ النَّمَطَ المُتَكَرِّرَ.",
+      items: ["🟧", "🔴", "🟧", "__", "🟧", "🔴"],
+      answers: ["🔴"],
+      distractors: ["🟧", "🔺"],
+      rule: "يَتَكَرَّرُ: بُرْتُقالِيٌّ ثُمَّ أَحْمَرُ"
+    },
+    {
+      type: "classify",
+      objective: "1Gs3: يتعرّف إلى خط التماثل",
+      level: "reasoning",
+      prompt: "صَنِّفِ الأَشْكالَ: أَلَها خَطُّ تَماثُلٍ أَمْ لا؟",
+      groups: [
+        { name: "لَهُ خَطُّ تَماثُلٍ",  items: ["مُرَبَّع", "دائِرَة"] },
+        { name: "لَيْسَ لَهُ تَماثُلٌ", items: ["مُثَلَّثٌ مُخْتَلِفُ الأَضْلاعِ", "شَكْلٌ غَيْرُ مُنْتَظِمٍ"] }
+      ]
+    },
+    {
+      type: "color",
+      objective: "1Pt8: يحدّد العلاقات البسيطة بين الأعداد والأشكال",
+      level: "reasoning",
+      prompt: "النَّمَطُ يَتَكَرَّرُ: مُرَبَّعٌ بُرْتُقالِيٌّ ثُمَّ دائِرَةٌ حَمْراءُ — لَوِّنِ الشَّكْلَيْنِ الأَخيرَيْنِ.",
+      bg: "#fdf6ec",
+      showLabels: false,
+      palette: [
+        { name: "بُرْتُقالِيّ", color: "#FF6000" },
+        { name: "أَحْمَر",    color: "#FF2020" }
+      ],
+      parts: [
+        { name: "خانة ٥", color: "#FF6000" },
+        { name: "خانة ٦", color: "#FF2020" }
+      ],
+      svg: `<svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#111111" stroke-width="3" stroke-linejoin="round">
+          <rect x="466" y="88" width="84" height="84" rx="10" fill="#FF6000"/>
+          <circle cx="420" cy="130" r="42" fill="#FF2020"/>
+          <rect x="290" y="88" width="84" height="84" rx="10" fill="#FF6000"/>
+          <circle cx="244" cy="130" r="42" fill="#FF2020"/>
+          <g class="cpart" data-name="خانة ٥"><rect x="114" y="88" width="84" height="84" rx="10"/></g>
+          <g class="cpart" data-name="خانة ٦"><circle cx="68" cy="130" r="42"/></g>
+        </g>
+      </svg>`
+    }
+  ],
+
+  /* ═══ الوحدة ١ج · الفصل ٣: الطول ═══ */
+
+  "g1m-3-1": [
+    {
+      type: "mcq",
+      objective: "1Ml3: يستخدم لغة المقارنة، مثل: أطول، أقصر، أثقل، أخف",
+      level: "knowledge",
+      prompt: "الحَبْلُ الَّذي طولُهُ ٩ وَحَداتٍ والحَبْلُ الَّذي طولُهُ ٤ وَحَداتٍ — أَيُّهُما أَطْوَلُ؟",
+      options: ["الَّذي طولُهُ ٤", "الَّذي طولُهُ ٩", "مُتَساوِيانِ", "لا يُمْكِنُ المَعْرِفَةُ"],
+      answer: 1
+    },
+    {
+      type: "true-false",
+      objective: "1Ml1: يقارن بين الأطوال بالمقارنة المباشرة ثم بوحدات متناسقة غير قياسية",
+      level: "knowledge",
+      statement: "لِمُقارَنَةِ طولَيْنِ مُقارَنَةً مُباشِرَةً نَبْدَأُ مِنَ الطَّرَفِ نَفْسِهِ.",
+      answer: true
+    },
+    {
+      type: "measure-tool",
+      mode: "ruler-read",
+      objective: "1Ml1: يقارن بين الأطوال بالمقارنة المباشرة ثم بوحدات متناسقة غير قياسية",
+      level: "application",
+      prompt: "كَمْ طولُ الشَّريطِ بِالسَّنْتيمِتْراتِ؟",
+      max: 20, step: 1, labelEvery: 5, value: 12,
+      unit: "سم", options: ["١٢", "١٠", "١٤", "٢٠"]
+    },
+    {
+      type: "sequence",
+      objective: "1Ml3: يستخدم لغة المقارنة، مثل: أطول، أقصر، أثقل، أخف",
+      level: "application",
+      prompt: "رَتِّبِ الأَشْياءَ مِنَ الأَقْصَرِ إِلَى الأَطْوَلِ.",
+      steps: ["قَلَمٌ", "مِسْطَرَةٌ", "مِظَلَّةٌ", "بابٌ"]
+    },
+    {
+      type: "compare",
+      objective: "1Ml3: يستخدم لغة المقارنة، مثل: أطول، أقصر، أثقل، أخف",
+      level: "reasoning",
+      prompt: "قارِنْ بَيْنَ الطّولَيْنِ بِالسَّنْتيمِتْراتِ.",
+      unit: "سم",
+      pairs: [ { a: "٧", b: "١٣" }, { a: "١٠", b: "١٠" }, { a: "١٨", b: "٩" } ]
+    },
+    {
+      type: "slider",
+      objective: "1Pt9: يقدّر الحسابات، ويفسّر ما إذا كانت الإجابة معقولة",
+      level: "application",
+      prompt: "قَدِّرْ طولَ القَلَمِ بِالسَّنْتيمِتْراتِ — اِسْحَبِ المُؤَشِّرَ.",
+      min: 0, max: 20, answer: 14, tolerance: 2, unit: " سم", ticks: 5
+    }
+  ],
+
+  /* ═══ الوحدة ١ج · الفصل ٨: السعة ═══ */
+
+  "g1m-8-1": [
+    {
+      type: "mcq",
+      objective: "1Ml2: يُقدِّر ويقارن السعات المختلفة عن طريق المقارنة المباشرة ثم بوحدات غير قياسية",
+      level: "knowledge",
+      prompt: "السَّعَةُ هِيَ:",
+      options: ["كَمْ يَزِنُ الوِعاءُ", "كَمْ يَتَّسِعُ الوِعاءُ", "كَمْ طولُ الوِعاءِ", "لَوْنُ الوِعاءِ"],
+      answer: 1
+    },
+    {
+      type: "true-false",
+      objective: "1Ml2: يُقدِّر ويقارن السعات المختلفة عن طريق المقارنة المباشرة ثم بوحدات غير قياسية",
+      level: "knowledge",
+      statement: "الوِعاءُ الأَكْبَرُ يَتَّسِعُ لِماءٍ أَكْثَرَ مِنَ الوِعاءِ الأَصْغَرِ.",
+      answer: true
+    },
+    {
+      type: "count-tap",
+      objective: "1Ml2: يُقدِّر ويقارن السعات المختلفة عن طريق المقارنة المباشرة ثم بوحدات غير قياسية",
+      level: "application",
+      prompt: "مَلَأْنا الإِبْريقَ بِسَبْعَةِ أَكْوابٍ — اِنْقُرْها وعُدَّها.",
+      mode: "each", glyph: "🥛", count: 10, target: 7
+    },
+    {
+      type: "matching",
+      objective: "1Ml2: يُقدِّر ويقارن السعات المختلفة عن طريق المقارنة المباشرة ثم بوحدات غير قياسية",
+      level: "application",
+      prompt: "صِلْ كُلَّ وِعاءٍ بِعَدَدِ الأَكْوابِ الَّتي تَمْلَؤُهُ.",
+      pairs: [
+        { a: "كوبٌ صَغيرٌ",  b: "كوبٌ واحِدٌ" },
+        { a: "إِبْريقٌ",     b: "سِتَّةُ أَكْوابٍ" },
+        { a: "دَلْوٌ",       b: "عَشَرَةُ أَكْوابٍ" },
+        { a: "مِلْعَقَةٌ",    b: "أَقَلُّ مِنْ كوبٍ" }
+      ]
+    },
+    {
+      type: "compare",
+      objective: "1Ml2: يُقدِّر ويقارن السعات المختلفة عن طريق المقارنة المباشرة ثم بوحدات غير قياسية",
+      level: "reasoning",
+      prompt: "قارِنْ بَيْنَ سَعَتَيِ الوِعاءَيْنِ بِعَدَدِ الأَكْوابِ.",
+      unit: "كوب",
+      pairs: [ { a: "٣", b: "٨" }, { a: "٦", b: "٦" }, { a: "١٢", b: "٥" } ]
+    },
+    {
+      type: "memory",
+      objective: "1Ml2: يُقدِّر ويقارن السعات المختلفة عن طريق المقارنة المباشرة ثم بوحدات غير قياسية",
+      level: "knowledge",
+      prompt: "اِقْلِبْ بِطاقَتَيْنِ في كُلِّ دَوْرٍ: طابِقْ كُلَّ وِعاءٍ بِسَعَتِهِ.",
+      pairs: [
+        { a: "مِلْعَقَةٌ", b: "أَصْغَرُ سَعَةً" },
+        { a: "كوبٌ",      b: "سَعَةٌ صَغيرَةٌ" },
+        { a: "إِبْريقٌ",   b: "سَعَةٌ مُتَوَسِّطَةٌ" },
+        { a: "دَلْوٌ",     b: "أَكْبَرُ سَعَةً" }
+      ]
+    }
+  ],
+
+  "g1m-8-2": [
+    {
+      type: "mcq",
+      objective: "1Ml2: يُقدِّر ويقارن السعات المختلفة عن طريق المقارنة المباشرة ثم بوحدات غير قياسية",
+      level: "knowledge",
+      prompt: "قَدِّرْ: كَمْ كوبًا يَمْلَأُ إِبْريقًا مُتَوَسِّطًا تَقْريبًا؟",
+      options: ["كوبٌ واحِدٌ", "سِتَّةُ أَكْوابٍ", "خَمْسونَ كوبًا", "مِئَةُ كوبٍ"],
+      answer: 1
+    },
+    {
+      type: "true-false",
+      objective: "1Pt1: يختار استراتيجية مناسبة للعمليات الحسابية مع شرح خطوات الحل",
+      level: "knowledge",
+      statement: "التَّقْديرُ قَبْلَ القِياسِ يُساعِدُنا عَلى اخْتِيارِ الوِعاءِ المُناسِبِ.",
+      answer: true
+    },
+    {
+      type: "classify",
+      objective: "1Ml2: يُقدِّر ويقارن السعات المختلفة عن طريق المقارنة المباشرة ثم بوحدات غير قياسية",
+      level: "application",
+      prompt: "صَنِّفِ الأَوْعِيَةَ حَسَبَ سَعَتِها.",
+      groups: [
+        { name: "سَعَةٌ صَغيرَةٌ", items: ["مِلْعَقَةٌ", "كوبٌ"] },
+        { name: "سَعَةٌ كَبيرَةٌ", items: ["دَلْوٌ", "حَوْضٌ"] }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "1Ml2: يُقدِّر ويقارن السعات المختلفة عن طريق المقارنة المباشرة ثم بوحدات غير قياسية",
+      level: "application",
+      prompt: "رَتِّبِ الأَوْعِيَةَ مِنَ الأَقَلِّ سَعَةً إِلَى الأَكْثَرِ.",
+      steps: ["مِلْعَقَةٌ", "كوبٌ", "إِبْريقٌ", "دَلْوٌ"]
+    },
+    {
+      type: "exclude",
+      objective: "1Pt1: يختار استراتيجية مناسبة للعمليات الحسابية مع شرح خطوات الحل",
+      level: "reasoning",
+      prompt: "تَقْديرٌ لِسَعَةِ كوبٍ واحِدٍ — أَيُّها غَيْرُ مَعْقولٍ؟",
+      options: ["نِصْفُ إِبْريقٍ", "أَقَلُّ مِنْ إِبْريقٍ", "أَكْثَرُ مِنْ مِلْعَقَةٍ", "أَكْثَرُ مِنْ دَلْوٍ"],
+      answer: 3,
+      reason: "الدَّلْوُ أَكْبَرُ سَعَةً مِنَ الكوبِ بِكَثيرٍ"
+    },
+    {
+      type: "slider",
+      objective: "1Ml2: يُقدِّر ويقارن السعات المختلفة عن طريق المقارنة المباشرة ثم بوحدات غير قياسية",
+      level: "application",
+      prompt: "قَدِّرْ: كَمْ كوبًا يَمْلَأُ هٰذا الإِبْريقَ؟ اِسْحَبِ المُؤَشِّرَ.",
+      min: 0, max: 12, answer: 6, tolerance: 1, unit: " كوب", ticks: 2
+    }
+  ],
+
+  /* ═══ الوحدة ١ج · الفصل ٩: النقود والوقت ═══ */
+
+  "g1m-9-1": [
+    {
+      type: "mcq",
+      objective: "1Pt2: يستكشف المسائل العددية والألغاز",
+      level: "knowledge",
+      prompt: "في مَطْعَمِ المَدْرَسَةِ ثَلاثُ فَطائِرَ وأَرْبَعُ حَبّاتِ تُفّاحٍ. كَمْ صِنْفًا مِنَ الطَّعامِ فيهِ؟",
+      options: ["صِنْفانِ", "ثَلاثَةٌ", "أَرْبَعَةٌ", "سَبْعَةٌ"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "1Pt2: يستكشف المسائل العددية والألغاز",
+      level: "knowledge",
+      statement: "إِذا كانَ في القائِمَةِ ثَلاثُ فَطائِرَ وأَرْبَعُ حَبّاتِ تُفّاحٍ فَالمَجْموعُ سَبْعُ قِطَعٍ.",
+      answer: true
+    },
+    {
+      type: "count-tap",
+      objective: "1Pt2: يستكشف المسائل العددية والألغاز",
+      level: "application",
+      prompt: "اِنْقُرْ خَمْسَ حَبّاتِ تُفّاحٍ لِقائِمَةِ الطَّعامِ.",
+      mode: "each", glyph: "🍎", count: 9, target: 5
+    },
+    {
+      type: "equation-builder",
+      mode: "fill",
+      objective: "1Pt1: يختار استراتيجية مناسبة للعمليات الحسابية مع شرح خطوات الحل",
+      level: "application",
+      prompt: "ثَلاثُ فَطائِرَ وأَرْبَعُ حَبّاتِ تُفّاحٍ — أَكْمِلِ المُعادَلَةَ.",
+      tokens: ["٣", "+", "٤", "=", "__"],
+      bank: ["٥", "٦", "٧", "٨"],
+      answers: ["٧"]
+    },
+    {
+      type: "classify",
+      objective: "1Pt2: يستكشف المسائل العددية والألغاز",
+      level: "reasoning",
+      prompt: "صَنِّفْ ما يَحْتاجُهُ مَطْعَمُ المَدْرَسَةِ.",
+      groups: [
+        { name: "طَعامٌ",  items: ["فَطيرَةٌ", "تُفّاحَةٌ"] },
+        { name: "أَدَواتٌ", items: ["صَحْنٌ", "مِلْعَقَةٌ"] }
+      ]
+    },
+    {
+      type: "memory",
+      objective: "1Pt2: يستكشف المسائل العددية والألغاز",
+      level: "knowledge",
+      prompt: "اِقْلِبْ بِطاقَتَيْنِ في كُلِّ دَوْرٍ: طابِقْ كُلَّ صِنْفٍ بِعَدَدِهِ في القائِمَةِ.",
+      pairs: [
+        { a: "فَطائِرُ",    b: "٣" },
+        { a: "تُفّاحٌ",     b: "٤" },
+        { a: "أَكْوابُ ماءٍ", b: "٦" },
+        { a: "تَمْرٌ",      b: "٨" }
+      ]
+    }
+  ],
+
+  "g1m-9-2": [
+    {
+      type: "mcq",
+      objective: "1Mm1: يتعرَّف على جميع العملات ويتدرَّب على كيفية دفع النقود بالضبط",
+      level: "knowledge",
+      prompt: "أَيُّ هٰذِهِ المَبالِغِ أَكْبَرُ؟",
+      options: ["٥٠ بَيْسَةً", "١٠٠ بَيْسَةٍ", "٢٠٠ بَيْسَةٍ", "٢٥ بَيْسَةً"],
+      answer: 2
+    },
+    {
+      type: "true-false",
+      objective: "1Mm1: يتعرَّف على جميع العملات ويتدرَّب على كيفية دفع النقود بالضبط",
+      level: "knowledge",
+      statement: "الرِّيالُ العُمانِيُّ الواحِدُ يُساوي ١٠٠٠ بَيْسَةٍ.",
+      answer: true
+    },
+    {
+      type: "money",
+      mode: "pay",
+      objective: "1Mm1: يتعرَّف على جميع العملات ويتدرَّب على كيفية دفع النقود بالضبط",
+      level: "application",
+      prompt: "ثَمَنُ الفَطيرَةِ ١٥٠ بَيْسَةً — كَوِّنِ المَبْلَغَ.",
+      target: 150, rack: [25, 50, 100, 200]
+    },
+    {
+      type: "matching",
+      objective: "1Pt1: يختار استراتيجية مناسبة للعمليات الحسابية مع شرح خطوات الحل",
+      level: "application",
+      prompt: "صِلْ كُلَّ صِنْفٍ بِثَمَنِهِ.",
+      pairs: [
+        { a: "تُفّاحَةٌ",  b: "٥٠ بَيْسَةً" },
+        { a: "فَطيرَةٌ",   b: "١٥٠ بَيْسَةً" },
+        { a: "عَصيرٌ",    b: "٢٠٠ بَيْسَةٍ" },
+        { a: "ساندويتش", b: "٣٠٠ بَيْسَةٍ" }
+      ]
+    },
+    {
+      type: "compare",
+      objective: "1Pt9: يقدّر الحسابات، ويفسّر ما إذا كانت الإجابة معقولة",
+      level: "reasoning",
+      prompt: "قارِنْ بَيْنَ الثَّمَنَيْنِ بِالبَيْسَةِ.",
+      unit: "بيسة",
+      pairs: [ { a: "٥٠", b: "١٥٠" }, { a: "٢٠٠", b: "٢٠٠" }, { a: "٣٠٠", b: "١٠٠" } ]
+    },
+    {
+      type: "exclude",
+      objective: "1Mm1: يتعرَّف على جميع العملات ويتدرَّب على كيفية دفع النقود بالضبط",
+      level: "reasoning",
+      prompt: "كُلُّها مَبالِغُ أَقَلُّ مِنْ رِيالٍ — أَيُّها لا يَنْتَمي؟",
+      options: ["٥٠ بَيْسَةً", "٢٠٠ بَيْسَةٍ", "٥٠٠ بَيْسَةٍ", "١٥٠٠ بَيْسَةٍ"],
+      answer: 3,
+      reason: "١٥٠٠ بَيْسَةٍ أَكْثَرُ مِنْ رِيالٍ (١٠٠٠ بَيْسَة)"
+    }
+  ],
+
+  "g1m-9-3": [
+    {
+      type: "mcq",
+      objective: "1Mt2: يقرأ الوقت بالساعات ويعرف الأوقات الرئيسية في اليوم لأقرب ساعة",
+      level: "knowledge",
+      prompt: "عِنْدَما يُشيرُ العَقْرَبُ الطَّويلُ إِلى ١٢ والقَصيرُ إِلى ٣ تَكونُ السّاعَةُ:",
+      options: ["١٢:٣٠", "٣:٠٠", "٣:١٢", "١٢:٠٣"],
+      answer: 1
+    },
+    {
+      type: "true-false",
+      objective: "1Mt2: يقرأ الوقت بالساعات ويعرف الأوقات الرئيسية في اليوم لأقرب ساعة",
+      level: "knowledge",
+      statement: "عِنْدَما يُشيرُ العَقْرَبُ الطَّويلُ إِلى ١٢ تَكونُ السّاعَةُ تَمامًا.",
+      answer: true
+    },
+    {
+      type: "clock",
+      mode: "set",
+      objective: "1Mt2: يقرأ الوقت بالساعات ويعرف الأوقات الرئيسية في اليوم لأقرب ساعة",
+      level: "application",
+      prompt: "اضْبِطِ السّاعَةَ عَلى الثّانِيَةِ تَمامًا.",
+      target: "٢:٠٠", from: "١٢:٠٠"
+    },
+    {
+      type: "matching",
+      objective: "1Mt2: يقرأ الوقت بالساعات ويعرف الأوقات الرئيسية في اليوم لأقرب ساعة",
+      level: "application",
+      prompt: "صِلْ كُلَّ نَشاطٍ بِوَقْتِهِ.",
+      pairs: [
+        { a: "الاسْتِيقاظُ",       b: "٦:٠٠ صَباحًا" },
+        { a: "بِدايَةُ المَدْرَسَةِ", b: "٧:٠٠ صَباحًا" },
+        { a: "الغَداءُ",          b: "١:٠٠ ظُهْرًا" },
+        { a: "النَّوْمُ",          b: "٩:٠٠ مَساءً" }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "1Pt7: يصف ويكمل النمط",
+      level: "reasoning",
+      prompt: "رَتِّبْ أَنْشِطَةَ اليَوْمِ مِنَ الأَوَّلِ إِلَى الأَخيرِ.",
+      steps: ["الاسْتِيقاظُ", "الذَّهابُ إِلى المَدْرَسَةِ", "الغَداءُ", "النَّوْمُ"]
+    },
+    {
+      type: "find-error",
+      objective: "1Mt2: يقرأ الوقت بالساعات ويعرف الأوقات الرئيسية في اليوم لأقرب ساعة",
+      level: "reasoning",
+      prompt: "سَطْرٌ واحِدٌ فيهِ وَقْتٌ غَيْرُ مَعْقولٍ لِنَشاطِهِ — اِضْغَطْ عَلَيْهِ.",
+      bg: "#fdf6ec",
+      spot: { x: 50, y: 80, r: 17 },
+      svg: `<svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
+        <g font-family="Cairo, Tajawal, sans-serif" font-size="30" font-weight="800"
+           fill="#111111" text-anchor="middle">
+          <g>
+            <rect x="90" y="24" width="380" height="58" rx="14" fill="#A8DCFF"
+                  stroke="#111111" stroke-width="3" stroke-linejoin="round"/>
+            <text x="280" y="63">الاسْتِيقاظُ ٦:٠٠ صَباحًا</text>
+          </g>
+          <g>
+            <rect x="90" y="100" width="380" height="58" rx="14" fill="#A8DCFF"
+                  stroke="#111111" stroke-width="3" stroke-linejoin="round"/>
+            <text x="280" y="139">الغَداءُ ١:٠٠ ظُهْرًا</text>
+          </g>
+          <g>
+            <rect x="90" y="176" width="380" height="58" rx="14" fill="#A8DCFF"
+                  stroke="#111111" stroke-width="3" stroke-linejoin="round"/>
+            <text x="280" y="215">النَّوْمُ ٧:٠٠ صَباحًا</text>
+          </g>
+        </g>
+      </svg>`
+    }
+  ],
+
+  "g1m-9-4": [
+    {
+      type: "mcq",
+      objective: "1Mt2: يقرأ الوقت بالساعات ويعرف الأوقات الرئيسية في اليوم لأقرب ساعة",
+      level: "knowledge",
+      prompt: "في الجَدْوَلِ الزَّمَنِيِّ: الحِصَّةُ الأولى ٧:٠٠ والثّانِيَةُ ٨:٠٠. كَمْ تَسْتَغْرِقُ الحِصَّةُ؟",
+      options: ["نِصْفَ ساعَةٍ", "ساعَةً واحِدَةً", "ساعَتَيْنِ", "ثَلاثَ ساعاتٍ"],
+      answer: 1
+    },
+    {
+      type: "clock",
+      mode: "read",
+      objective: "1Mt2: يقرأ الوقت بالساعات ويعرف الأوقات الرئيسية في اليوم لأقرب ساعة",
+      level: "knowledge",
+      prompt: "كَمِ السّاعَةُ؟",
+      target: "١٠:٠٠",
+      options: ["١٠:٠٠", "٩:٠٠", "١١:٠٠", "١٠:٣٠"]
+    },
+    {
+      type: "fill-blank",
+      objective: "1Mt2: يقرأ الوقت بالساعات ويعرف الأوقات الرئيسية في اليوم لأقرب ساعة",
+      level: "application",
+      prompt: "أَكْمِلِ الجَدْوَلَ بِسَحْبِ الوَقْتِ المُناسِبِ.",
+      text: "تَبْدَأُ الحِصَّةُ الأولى السّاعَةَ {} وتَنْتَهي السّاعَةَ {}",
+      answers: ["٧:٠٠", "٨:٠٠"],
+      distractors: ["٩:٠٠", "١٠:٠٠"]
+    },
+    {
+      type: "matching",
+      objective: "1Mt2: يقرأ الوقت بالساعات ويعرف الأوقات الرئيسية في اليوم لأقرب ساعة",
+      level: "application",
+      prompt: "صِلْ كُلَّ حِصَّةٍ بِوَقْتِ بِدايَتِها.",
+      pairs: [
+        { a: "الحِصَّةُ الأولى",  b: "٧:٠٠" },
+        { a: "الحِصَّةُ الثّانِيَةُ", b: "٨:٠٠" },
+        { a: "الحِصَّةُ الثّالِثَةُ", b: "٩:٠٠" },
+        { a: "الحِصَّةُ الرّابِعَةُ", b: "١٠:٠٠" }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "1Pt7: يصف ويكمل النمط",
+      level: "reasoning",
+      prompt: "رَتِّبْ أَوْقاتَ الجَدْوَلِ مِنَ الأَبْكَرِ إِلَى الأَحْدَثِ.",
+      steps: ["٧:٠٠", "٨:٠٠", "٩:٠٠", "١٠:٠٠", "١١:٠٠"]
+    },
+    {
+      type: "exclude",
+      objective: "1Mt2: يقرأ الوقت بالساعات ويعرف الأوقات الرئيسية في اليوم لأقرب ساعة",
+      level: "reasoning",
+      prompt: "كُلُّها أَوْقاتُ صَباحٍ في الجَدْوَلِ — أَيُّها لا يَنْتَمي؟",
+      options: ["٧:٠٠ صَباحًا", "٨:٠٠ صَباحًا", "٩:٠٠ صَباحًا", "٩:٠٠ مَساءً"],
+      answer: 3,
+      reason: "التّاسِعَةُ مَساءً لَيْسَتْ وَقْتَ دِراسَةٍ"
+    }
+  ],
+
+  /* ═══ الوحدة ١ج · الفصل ١٠: مقارنة الوزن ═══ */
+
+  "g1m-10-1": [
+    {
+      type: "mcq",
+      objective: "1Ml3: يستخدم صيغة المقارنة مثل: أثقل من — أخف من",
+      level: "knowledge",
+      prompt: "إِذا مالَتْ كِفَّةُ الميزانِ إِلى أَسْفَلَ فَإِنَّ ما فيها:",
+      options: ["أَخَفُّ", "أَثْقَلُ", "مُتَساوٍ", "أَصْغَرُ حَجْمًا"],
+      answer: 1
+    },
+    {
+      type: "true-false",
+      objective: "1Ml1: يقارن الأوزان مقارنة مباشرة ثم باستخدام وحدات غير قياسيّة",
+      level: "knowledge",
+      statement: "الشَّيْءُ الأَكْبَرُ حَجْمًا يَكونُ دائِمًا أَثْقَلَ.",
+      answer: false
+    },
+    {
+      type: "measure-tool",
+      mode: "scale-read",
+      objective: "1Ml1: يقارن الأوزان مقارنة مباشرة ثم باستخدام وحدات غير قياسيّة",
+      level: "application",
+      prompt: "كَمْ كُتْلَةُ الشَّيْءِ عَلى الميزانِ؟",
+      min: 0, max: 500, step: 50, labelEvery: 2, value: 300,
+      unit: "غرام", options: ["٣٠٠", "٢٠٠", "٤٠٠", "٥٠٠"]
+    },
+    {
+      type: "classify",
+      objective: "1Ml3: يستخدم صيغة المقارنة مثل: أثقل من — أخف من",
+      level: "application",
+      prompt: "صَنِّفِ الأَشْياءَ حَسَبَ وَزْنِها.",
+      groups: [
+        { name: "خَفيفٌ", items: ["ريشَةٌ", "وَرَقَةٌ"] },
+        { name: "ثَقيلٌ", items: ["حَجَرٌ", "كِتابٌ"] }
+      ]
+    },
+    {
+      type: "compare",
+      objective: "1Ml3: يستخدم صيغة المقارنة مثل: أثقل من — أخف من",
+      level: "reasoning",
+      prompt: "قارِنْ بَيْنَ الكُتْلَتَيْنِ بِالغِرامِ.",
+      unit: "غرام",
+      pairs: [ { a: "١٠٠", b: "٣٠٠" }, { a: "٢٠٠", b: "٢٠٠" }, { a: "٥٠٠", b: "١٥٠" } ]
+    },
+    {
+      type: "memory",
+      objective: "1Ml3: يستخدم صيغة المقارنة مثل: أثقل من — أخف من",
+      level: "knowledge",
+      prompt: "اِقْلِبْ بِطاقَتَيْنِ في كُلِّ دَوْرٍ: طابِقْ كُلَّ شَيْءٍ بِوَصْفِ وَزْنِهِ.",
+      pairs: [
+        { a: "ريشَةٌ",     b: "خَفيفَةٌ جِدًّا" },
+        { a: "تُفّاحَةٌ",   b: "خَفيفَةٌ" },
+        { a: "كِتابٌ",     b: "ثَقيلٌ" },
+        { a: "حَقيبَةٌ مَلْأى", b: "ثَقيلَةٌ جِدًّا" }
+      ]
+    }
+  ],
+
+  "g1m-10-2": [
+    {
+      type: "mcq",
+      objective: "1Ml1: يقارن الأوزان مقارنة مباشرة ثم باستخدام وحدات غير قياسيّة",
+      level: "knowledge",
+      prompt: "تَوازَنَ الكِتابُ مَعَ ثَمانِ مُكَعَّباتٍ. كَمْ يَزِنُ الكِتابُ؟",
+      options: ["سِتَّ مُكَعَّباتٍ", "ثَمانِ مُكَعَّباتٍ", "عَشْرَ مُكَعَّباتٍ", "مُكَعَّبًا واحِدًا"],
+      answer: 1
+    },
+    {
+      type: "true-false",
+      objective: "1Ml1: يقارن الأوزان مقارنة مباشرة ثم باستخدام وحدات غير قياسيّة",
+      level: "knowledge",
+      statement: "إِذا اسْتَوَتْ كِفَّتا الميزانِ فَالوَزْنانِ مُتَساوِيانِ.",
+      answer: true
+    },
+    {
+      type: "count-tap",
+      objective: "1Ml1: يقارن الأوزان مقارنة مباشرة ثم باستخدام وحدات غير قياسيّة",
+      level: "application",
+      prompt: "اِنْقُرْ سِتَّ مُكَعَّباتٍ لِتُوازِنَ الكِفَّةَ الأُخْرى.",
+      mode: "each", glyph: "🟦", count: 10, target: 6
+    },
+    {
+      type: "measure-tool",
+      mode: "scale-set",
+      objective: "1Ml1: يقارن الأوزان مقارنة مباشرة ثم باستخدام وحدات غير قياسيّة",
+      level: "application",
+      prompt: "أَدِرْ مُؤَشِّرَ الميزانِ إِلى ٢٥٠ غِرامًا.",
+      min: 0, max: 500, step: 50, labelEvery: 2, target: 250,
+      unit: "غرام"
+    },
+    {
+      type: "sequence",
+      objective: "1Pt1: يختار استراتيجية مناسبة للعمليات الحسابية مع شرح خطوات الحل",
+      level: "reasoning",
+      prompt: "رَتِّبِ الأَشْياءَ مِنَ الأَخَفِّ إِلَى الأَثْقَلِ.",
+      steps: ["ريشَةٌ", "قَلَمٌ", "تُفّاحَةٌ", "كِتابٌ"]
+    },
+    {
+      type: "color",
+      objective: "1Ml3: يستخدم صيغة المقارنة مثل: أثقل من — أخف من",
+      level: "reasoning",
+      prompt: "لَوِّنِ الكِفَّةَ الأَثْقَلَ بِالأَحْمَرِ والكِفَّةَ الأَخَفَّ بِالأَزْرَقِ.",
+      bg: "#fdf6ec",
+      showLabels: true,
+      palette: [
+        { name: "أَحْمَر", color: "#FF2020" },
+        { name: "أَزْرَق", color: "#20A0FF" }
+      ],
+      parts: [
+        { name: "الكِفَّةُ اليُمْنى", color: "#20A0FF" },
+        { name: "الكِفَّةُ اليُسْرى", color: "#FF2020" }
+      ],
+      svg: `<svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#111111" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M280,208 L280,70" stroke-width="4" fill="none"/>
+          <path d="M200,236 L360,236" stroke-width="6" fill="none"/>
+          <path d="M170,96 L390,60" stroke-width="4" fill="none"/>
+          <path d="M170,96 L170,120 M390,60 L390,84" stroke-width="3" fill="none"/>
+          <g class="cpart" data-name="الكِفَّةُ اليُمْنى" stroke-width="3">
+            <path d="M118,120 L222,120 L196,168 L144,168 Z"/>
+          </g>
+          <g class="cpart" data-name="الكِفَّةُ اليُسْرى" stroke-width="3">
+            <path d="M338,84 L442,84 L416,132 L364,132 Z"/>
+          </g>
+        </g>
+      </svg>`
+    }
   ]
 };
