@@ -10617,5 +10617,669 @@ window.QUESTIONS = {
         </g>
       </svg>`
     }
+  ],
+
+  /* ═══ الوحدة ٢أ · الفصل ١١: الأعداد الفردية والزوجية ═══ */
+
+  "g1m-11-1": [
+    {
+      type: "mcq",
+      objective: "1Nn5: يعدّ بإضافة اثنين، ويبدأ بمعرفة الأعداد الفردية والزوجية إلى ٢٠",
+      level: "knowledge",
+      prompt: "أَيُّ هٰذِهِ عَدَدٌ زَوْجِيٌّ؟",
+      options: ["٧", "٩", "١٢", "١٥"],
+      answer: 2
+    },
+    {
+      type: "true-false",
+      objective: "1Nn5: يعدّ بإضافة اثنين، ويبدأ بمعرفة الأعداد الفردية والزوجية إلى ٢٠",
+      level: "knowledge",
+      statement: "العَدَدُ الزَّوْجِيُّ يُمْكِنُ تَقْسيمُهُ إِلى أَزْواجٍ بِلا باقٍ.",
+      answer: true
+    },
+    {
+      type: "hundred-chart",
+      mode: "multiples",
+      objective: "1Nc7: يبدأ في التعرّف على مضاعفات ٢ (وعشرة)",
+      level: "application",
+      prompt: "لَوِّنْ مُضاعَفاتِ العَدَدِ ٢ في اللَّوْحَةِ.",
+      from: 1, to: 20, columns: 10,
+      multiple: 2
+    },
+    {
+      type: "count-tap",
+      objective: "1Nn5: يعدّ بإضافة اثنين، ويبدأ بمعرفة الأعداد الفردية والزوجية إلى ٢٠",
+      level: "application",
+      prompt: "عُدَّ بِالاثْنَيْنِ حَتّى العَشَرَةِ: اِنْقُرْ كُلَّ زَوْجٍ بِدَوْرِهِ.",
+      mode: "step", glyph: "👟", step: 2, groups: 5, target: 10
+    },
+    {
+      type: "classify",
+      objective: "1Nn5: يعدّ بإضافة اثنين، ويبدأ بمعرفة الأعداد الفردية والزوجية إلى ٢٠",
+      level: "reasoning",
+      prompt: "صَنِّفِ الأَعْدادَ: زَوْجِيٌّ أَمْ فَرْدِيٌّ؟",
+      groups: [
+        { name: "زَوْجِيٌّ", items: ["٤", "١٠"] },
+        { name: "فَرْدِيٌّ", items: ["٧", "١٣"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "1Nn5: يعدّ بإضافة اثنين، ويبدأ بمعرفة الأعداد الفردية والزوجية إلى ٢٠",
+      level: "reasoning",
+      prompt: "كُلُّها أَعْدادٌ زَوْجِيَّةٌ — أَيُّها لا يَنْتَمي؟",
+      options: ["٢", "٦", "٨", "٩"],
+      answer: 3,
+      reason: "٩ فَرْدِيٌّ لا يَنْقَسِمُ إِلى أَزْواجٍ"
+    }
+  ],
+
+  "g1m-11-2": [
+    {
+      type: "mcq",
+      objective: "1Nn5: يعدّ بإضافة اثنين، ويبدأ بمعرفة الأعداد الفردية والزوجية إلى ٢٠",
+      level: "knowledge",
+      prompt: "أَيُّ هٰذِهِ عَدَدٌ فَرْدِيٌّ؟",
+      options: ["٤", "٨", "١١", "١٤"],
+      answer: 2
+    },
+    {
+      type: "true-false",
+      objective: "1Nn5: يعدّ بإضافة اثنين، ويبدأ بمعرفة الأعداد الفردية والزوجية إلى ٢٠",
+      level: "knowledge",
+      statement: "إِذا أَضَفْنا واحِدًا إِلى عَدَدٍ زَوْجِيٍّ صارَ فَرْدِيًّا.",
+      answer: true
+    },
+    {
+      type: "pattern",
+      objective: "1Nn5: يعدّ بإضافة اثنين، ويبدأ بمعرفة الأعداد الفردية والزوجية إلى ٢٠",
+      level: "application",
+      prompt: "أَكْمِلِ نَمَطَ الأَعْدادِ الفَرْدِيَّةِ.",
+      items: ["١", "٣", "__", "٧", "__", "١١"],
+      answers: ["٥", "٩"],
+      distractors: ["٤", "٨"],
+      rule: "نَزيدُ ٢ كُلَّ مَرَّةٍ"
+    },
+    {
+      type: "equation-builder",
+      mode: "fill",
+      objective: "1Nn5: يعدّ بإضافة اثنين، ويبدأ بمعرفة الأعداد الفردية والزوجية إلى ٢٠",
+      level: "application",
+      prompt: "أَضِفْ واحِدًا إِلى عَدَدٍ زَوْجِيٍّ — أَكْمِلِ المُعادَلَةَ.",
+      tokens: ["٨", "+", "١", "=", "__"],
+      bank: ["٧", "٩", "١٠", "١١"],
+      answers: ["٩"]
+    },
+    {
+      type: "sequence",
+      objective: "1Nn1: يضع الأعداد بالترتيب",
+      level: "reasoning",
+      prompt: "رَتِّبِ الأَعْدادَ الفَرْدِيَّةَ مِنَ الأَصْغَرِ إِلَى الأَكْبَرِ.",
+      steps: ["١", "٣", "٥", "٧", "٩"]
+    },
+    {
+      type: "memory",
+      objective: "1Nn5: يعدّ بإضافة اثنين، ويبدأ بمعرفة الأعداد الفردية والزوجية إلى ٢٠",
+      level: "knowledge",
+      prompt: "اِقْلِبْ بِطاقَتَيْنِ في كُلِّ دَوْرٍ: طابِقْ كُلَّ عَدَدٍ زَوْجِيٍّ بِالفَرْدِيِّ الَّذي يَليهِ.",
+      pairs: [
+        { a: "٢", b: "٣" },
+        { a: "٦", b: "٧" },
+        { a: "١٠", b: "١١" },
+        { a: "١٤", b: "١٥" }
+      ]
+    }
+  ],
+
+  /* ═══ الوحدة ٢أ · الفصل ١٢: ترتيب الأعداد (١) ═══ */
+
+  "g1m-12-1": [
+    {
+      type: "mcq",
+      objective: "1Nn8: يستخدم أكبر أو أصغر للمقارنة بين الأعداد، وإعطاء العدد الذي يقع بينها",
+      level: "knowledge",
+      prompt: "أَيُّ هٰذِهِ الأَعْدادِ أَكْبَرُ؟",
+      options: ["٩", "١٤", "١١", "٦"],
+      answer: 1
+    },
+    {
+      type: "true-false",
+      objective: "1Nn9: يرتّب الأعداد إلى ما لا يقل عن ٢٠، ويضعها على مسار عددي",
+      level: "knowledge",
+      statement: "عَلى خَطِّ الأَعْدادِ يَأْتي العَدَدُ الأَكْبَرُ بَعْدَ الأَصْغَرِ.",
+      answer: true
+    },
+    {
+      type: "number-line",
+      mode: "place",
+      objective: "1Nn9: يرتّب الأعداد إلى ما لا يقل عن ٢٠، ويضعها على مسار عددي",
+      level: "application",
+      prompt: "ضَعِ المُؤَشِّرَ عَلى العَدَدِ ١٤.",
+      min: 0, max: 20, step: 1, labelEvery: 5,
+      target: 14
+    },
+    {
+      type: "sequence",
+      objective: "1Nn1: يضع الأعداد بالترتيب",
+      level: "application",
+      prompt: "رَتِّبِ الأَعْدادَ مِنَ الأَصْغَرِ إِلَى الأَكْبَرِ.",
+      steps: ["٦", "٩", "١٢", "١٦", "١٩"]
+    },
+    {
+      type: "compare",
+      objective: "1Nn8: يستخدم أكبر أو أصغر للمقارنة بين الأعداد، وإعطاء العدد الذي يقع بينها",
+      level: "reasoning",
+      prompt: "ضَعِ الرَّمْزَ المُناسِبَ بَيْنَ كُلِّ عَدَدَيْنِ.",
+      pairs: [ { a: "٨", b: "١٤" }, { a: "١١", b: "١١" }, { a: "١٧", b: "٦" } ]
+    },
+    {
+      type: "slider",
+      objective: "1Nn9: يرتّب الأعداد إلى ما لا يقل عن ٢٠، ويضعها على مسار عددي",
+      level: "application",
+      prompt: "اِسْحَبِ المُؤَشِّرَ إِلَى العَدَدِ ثَمانِيَةَ عَشَرَ.",
+      min: 0, max: 20, answer: 18, tolerance: 0, ticks: 5
+    }
+  ],
+
+  "g1m-12-2": [
+    {
+      type: "mcq",
+      objective: "1Nn8: يستخدم أكبر أو أصغر للمقارنة بين الأعداد، وإعطاء العدد الذي يقع بينها",
+      level: "knowledge",
+      prompt: "أَيُّ عَدَدٍ يَقَعُ بَيْنَ ٧ و٩؟",
+      options: ["٦", "٨", "١٠", "١١"],
+      answer: 1
+    },
+    {
+      type: "true-false",
+      objective: "1Nn8: يستخدم أكبر أو أصغر للمقارنة بين الأعداد، وإعطاء العدد الذي يقع بينها",
+      level: "knowledge",
+      statement: "العَدَدُ ١٢ يَقَعُ بَيْنَ ١٠ و١٥.",
+      answer: true
+    },
+    {
+      type: "number-line",
+      mode: "place",
+      objective: "1Nn9: يرتّب الأعداد إلى ما لا يقل عن ٢٠، ويضعها على مسار عددي",
+      level: "application",
+      prompt: "ضَعِ المُؤَشِّرَ عَلى العَدَدِ الَّذي يَقَعُ بَيْنَ ١٢ و١٤.",
+      min: 5, max: 20, step: 1, labelEvery: 5,
+      target: 13
+    },
+    {
+      type: "fill-blank",
+      objective: "1Nn8: يستخدم أكبر أو أصغر للمقارنة بين الأعداد، وإعطاء العدد الذي يقع بينها",
+      level: "application",
+      prompt: "أَكْمِلِ الجُمْلَتَيْنِ بِسَحْبِ العَدَدِ المُناسِبِ.",
+      text: "يَقَعُ العَدَدُ {} بَيْنَ ٤ و٦، ويَقَعُ العَدَدُ {} بَيْنَ ١٥ و١٧",
+      answers: ["٥", "١٦"],
+      distractors: ["٧", "١٤"]
+    },
+    {
+      type: "compare",
+      objective: "1Nn8: يستخدم أكبر أو أصغر للمقارنة بين الأعداد، وإعطاء العدد الذي يقع بينها",
+      level: "reasoning",
+      prompt: "ضَعِ الرَّمْزَ المُناسِبَ بَيْنَ كُلِّ عَدَدَيْنِ.",
+      pairs: [ { a: "٥", b: "٩" }, { a: "١٣", b: "١٣" }, { a: "١٨", b: "١٢" } ]
+    },
+    {
+      type: "exclude",
+      objective: "1Nn8: يستخدم أكبر أو أصغر للمقارنة بين الأعداد، وإعطاء العدد الذي يقع بينها",
+      level: "reasoning",
+      prompt: "كُلُّها أَعْدادٌ تَقَعُ بَيْنَ ١٠ و٢٠ — أَيُّها لا يَنْتَمي؟",
+      options: ["١٢", "١٥", "١٨", "٢٤"],
+      answer: 3,
+      reason: "٢٤ أَكْبَرُ مِنْ ٢٠"
+    }
+  ],
+
+  /* ═══ الوحدة ٢أ · الفصل ١٣: الجمع والطرح — الإضافة والحذف ═══ */
+
+  "g1m-13-1": [
+    {
+      type: "mcq",
+      objective: "1Nc1: يعرف الأزواج العددية جميعًا حتى ١٠",
+      level: "knowledge",
+      prompt: "أَيُّ زَوْجٍ مَجْموعُهُ عَشَرَةٌ؟",
+      options: ["٦ + ٣", "٧ + ٣", "٥ + ٤", "٨ + ١"],
+      answer: 1
+    },
+    {
+      type: "equation-builder",
+      mode: "fill",
+      objective: "1Nc1: يعرف الأزواج العددية جميعًا حتى ١٠",
+      level: "knowledge",
+      prompt: "أَكْمِلِ المُعادَلَةَ لِتُكَوِّنَ العَشَرَةَ.",
+      tokens: ["٧", "+", "__", "=", "١٠"],
+      bank: ["١", "٢", "٣", "٤"],
+      answers: ["٣"]
+    },
+    {
+      type: "count-tap",
+      objective: "1Nc1: يعرف الأزواج العددية جميعًا حتى ١٠",
+      level: "application",
+      prompt: "اِنْقُرْ أَرْبَعَةَ أَقْراصٍ — وهِيَ ما يَنْقُصُ السِّتَّةَ لِتُكْمِلَ العَشَرَةَ.",
+      mode: "each", glyph: "🔵", count: 9, target: 4
+    },
+    {
+      type: "fill-blank",
+      objective: "1Nc1: يعرف الأزواج العددية جميعًا حتى ١٠",
+      level: "application",
+      prompt: "أَكْمِلِ الجُمْلَتَيْنِ بِسَحْبِ العَدَدِ المُناسِبِ.",
+      text: "ثَمانِيَةٌ و {} يُكَوِّنانِ عَشَرَةً، وسِتَّةٌ و {} يُكَوِّنانِ عَشَرَةً",
+      answers: ["٢", "٤"],
+      distractors: ["٣", "٥"]
+    },
+    {
+      type: "classify",
+      objective: "1Nc1: يعرف الأزواج العددية جميعًا حتى ١٠",
+      level: "reasoning",
+      prompt: "صَنِّفِ الأَزْواجَ: أَمَجْموعُها عَشَرَةٌ أَمْ لا؟",
+      groups: [
+        { name: "مَجْموعُها ١٠",   items: ["٦ + ٤", "٩ + ١"] },
+        { name: "لَيْسَ مَجْموعُها ١٠", items: ["٥ + ٣", "٧ + ٤"] }
+      ]
+    },
+    {
+      type: "memory",
+      objective: "1Nc1: يعرف الأزواج العددية جميعًا حتى ١٠",
+      level: "knowledge",
+      prompt: "اِقْلِبْ بِطاقَتَيْنِ في كُلِّ دَوْرٍ: طابِقْ كُلَّ عَدَدٍ بِشَريكِهِ إِلَى العَشَرَةِ.",
+      pairs: [
+        { a: "١", b: "٩" },
+        { a: "٣", b: "٧" },
+        { a: "٤", b: "٦" },
+        { a: "٢", b: "٨" }
+      ]
+    }
+  ],
+
+  "g1m-13-2": [
+    {
+      type: "mcq",
+      objective: "1Nc8: يفهم الجمع كدمج لمجموعتين أو أكثر ويكتب جملة عددية خاصة بالجمع",
+      level: "knowledge",
+      prompt: "مَجْموعَةٌ فيها ٥ أَقْلامٍ وأُخْرى فيها ٤. كَمْ قَلَمًا مَعًا؟",
+      options: ["٧", "٨", "٩", "١٠"],
+      answer: 2
+    },
+    {
+      type: "equation-builder",
+      mode: "fill",
+      objective: "1Nc8: يفهم الجمع كدمج لمجموعتين أو أكثر ويكتب جملة عددية خاصة بالجمع",
+      level: "knowledge",
+      prompt: "أَكْمِلِ جُمْلَةَ الجَمْعِ.",
+      tokens: ["٥", "+", "٤", "=", "__"],
+      bank: ["٧", "٨", "٩", "١٠"],
+      answers: ["٩"]
+    },
+    {
+      type: "count-tap",
+      objective: "1Nc8: يفهم الجمع كدمج لمجموعتين أو أكثر ويكتب جملة عددية خاصة بالجمع",
+      level: "application",
+      prompt: "ضُمَّ المَجْموعَتَيْنِ: اِنْقُرْ تِسْعَةَ أَقْلامٍ وعُدَّها.",
+      mode: "each", glyph: "✏️", count: 12, target: 9
+    },
+    {
+      type: "matching",
+      objective: "1Nc8: يفهم الجمع كدمج لمجموعتين أو أكثر ويكتب جملة عددية خاصة بالجمع",
+      level: "application",
+      prompt: "صِلْ كُلَّ جُمْلَةِ جَمْعٍ بِناتِجِها.",
+      pairs: [
+        { a: "٣ + ٤", b: "٧" },
+        { a: "٥ + ٣", b: "٨" },
+        { a: "٦ + ٤", b: "١٠" },
+        { a: "٢ + ٩", b: "١١" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "1Nc8: يفهم الجمع كدمج لمجموعتين أو أكثر ويكتب جملة عددية خاصة بالجمع",
+      level: "reasoning",
+      prompt: "صَنِّفْ كُلَّ جَمْعٍ حَسَبَ ناتِجِهِ.",
+      groups: [
+        { name: "ناتِجُهُ ٨",  items: ["٥ + ٣", "٦ + ٢"] },
+        { name: "ناتِجُهُ ١٠", items: ["٧ + ٣", "٤ + ٦"] }
+      ]
+    },
+    {
+      type: "find-error",
+      objective: "1Nc8: يفهم الجمع كدمج لمجموعتين أو أكثر ويكتب جملة عددية خاصة بالجمع",
+      level: "reasoning",
+      prompt: "كُلُّ سَطْرٍ يَجِبُ أَنْ يَكونَ ناتِجُهُ تِسْعَةً — اِضْغَطْ عَلى السَّطْرِ الخاطِئِ.",
+      bg: "#fdf6ec",
+      spot: { x: 50, y: 80, r: 17 },
+      svg: `<svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
+        <g font-family="Cairo, Tajawal, sans-serif" font-size="42" font-weight="800"
+           fill="#111111" text-anchor="middle">
+          <g>
+            <rect x="130" y="24" width="300" height="58" rx="14" fill="#80C020"
+                  stroke="#111111" stroke-width="3" stroke-linejoin="round"/>
+            <text x="280" y="66">٥ + ٤ = ٩</text>
+          </g>
+          <g>
+            <rect x="130" y="100" width="300" height="58" rx="14" fill="#80C020"
+                  stroke="#111111" stroke-width="3" stroke-linejoin="round"/>
+            <text x="280" y="142">٦ + ٣ = ٩</text>
+          </g>
+          <g>
+            <rect x="130" y="176" width="300" height="58" rx="14" fill="#80C020"
+                  stroke="#111111" stroke-width="3" stroke-linejoin="round"/>
+            <text x="280" y="218">٧ + ٣ = ٩</text>
+          </g>
+        </g>
+      </svg>`
+    }
+  ],
+
+  "g1m-13-3": [
+    {
+      type: "mcq",
+      objective: "1Nc9: يفهم الطرح على أنه عملية العدّ تنازليًّا والأخذ بعيدًا أو الإبعاد",
+      level: "knowledge",
+      prompt: "في السَّلَّةِ ٩ تُفّاحاتٍ، أَخَذْنا ٤. كَمْ بَقِيَ؟",
+      options: ["٣", "٤", "٥", "٦"],
+      answer: 2
+    },
+    {
+      type: "equation-builder",
+      mode: "fill",
+      objective: "1Nc9: يفهم الطرح على أنه عملية العدّ تنازليًّا والأخذ بعيدًا أو الإبعاد",
+      level: "knowledge",
+      prompt: "أَكْمِلِ جُمْلَةَ الطَّرْحِ.",
+      tokens: ["٩", "−", "٤", "=", "__"],
+      bank: ["٣", "٤", "٥", "٦"],
+      answers: ["٥"]
+    },
+    {
+      type: "count-tap",
+      objective: "1Nc9: يفهم الطرح على أنه عملية العدّ تنازليًّا والأخذ بعيدًا أو الإبعاد",
+      level: "application",
+      prompt: "اِنْقُرِ التُّفّاحاتِ الباقِيَةَ الخَمْسَ وعُدَّها.",
+      mode: "each", glyph: "🍎", count: 9, target: 5
+    },
+    {
+      type: "fill-blank",
+      objective: "1Nc11: يجمع / يطرح عددًا من منزلتين عن طريق العدّ تصاعديًّا أو للخلف",
+      level: "application",
+      prompt: "أَكْمِلِ الجُمْلَتَيْنِ بِسَحْبِ العَدَدِ المُناسِبِ.",
+      text: "أَخَذْنا مِنَ الثَّمانِيَةِ ثَلاثَةً فَبَقِيَ {} ، وأَخَذْنا مِنَ السَّبْعَةِ خَمْسَةً فَبَقِيَ {}",
+      answers: ["٥", "٢"],
+      distractors: ["٤", "٣"]
+    },
+    {
+      type: "matching",
+      objective: "1Nc9: يفهم الطرح على أنه عملية العدّ تنازليًّا والأخذ بعيدًا أو الإبعاد",
+      level: "reasoning",
+      prompt: "صِلْ كُلَّ جُمْلَةِ طَرْحٍ بِناتِجِها.",
+      pairs: [
+        { a: "٨ − ٢", b: "٦" },
+        { a: "٩ − ٥", b: "٤" },
+        { a: "٧ − ٤", b: "٣" },
+        { a: "٦ − ٥", b: "١" }
+      ]
+    },
+    {
+      type: "color",
+      objective: "1Nc9: يفهم الطرح على أنه عملية العدّ تنازليًّا والأخذ بعيدًا أو الإبعاد",
+      level: "reasoning",
+      prompt: "مِنْ خَمْسَةِ أَقْراصٍ نَأْخُذُ اثْنَيْنِ — لَوِّنِ المَأْخوذَيْنِ بِالأَحْمَرِ والباقِيَ بِالأَزْرَقِ.",
+      bg: "#fdf6ec",
+      showLabels: false,
+      palette: [
+        { name: "أَحْمَر", color: "#FF2020" },
+        { name: "أَزْرَق", color: "#20A0FF" }
+      ],
+      parts: [
+        { name: "خانة ١", color: "#FF2020" },
+        { name: "خانة ٢", color: "#FF2020" },
+        { name: "خانة ٣", color: "#20A0FF" },
+        { name: "خانة ٤", color: "#20A0FF" },
+        { name: "خانة ٥", color: "#20A0FF" }
+      ],
+      svg: `<svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#111111" stroke-width="3" stroke-linejoin="round">
+          <g class="cpart" data-name="خانة ١"><circle cx="490" cy="130" r="42"/></g>
+          <g class="cpart" data-name="خانة ٢"><circle cx="390" cy="130" r="42"/></g>
+          <g class="cpart" data-name="خانة ٣"><circle cx="280" cy="130" r="42"/></g>
+          <g class="cpart" data-name="خانة ٤"><circle cx="170" cy="130" r="42"/></g>
+          <g class="cpart" data-name="خانة ٥"><circle cx="70"  cy="130" r="42"/></g>
+        </g>
+      </svg>`
+    }
+  ],
+
+  "g1m-13-4": [
+    {
+      type: "mcq",
+      objective: "1Nc10: يفهم الفرق على أنه الإبْعاد أو الحذف أو الأخذ بعيدًا",
+      level: "knowledge",
+      prompt: "ما الفَرْقُ بَيْنَ ٩ و٤؟",
+      options: ["٣", "٤", "٥", "٦"],
+      answer: 2
+    },
+    {
+      type: "true-false",
+      objective: "1Nc10: يفهم الفرق على أنه الإبْعاد أو الحذف أو الأخذ بعيدًا",
+      level: "knowledge",
+      statement: "الفَرْقُ بَيْنَ عَدَدَيْنِ هُوَ عَدَدُ القَفَزاتِ بَيْنَهُما عَلى خَطِّ الأَعْدادِ.",
+      answer: true
+    },
+    {
+      type: "number-line",
+      mode: "jump",
+      objective: "1Nc10: يفهم الفرق على أنه الإبْعاد أو الحذف أو الأخذ بعيدًا",
+      level: "application",
+      prompt: "اِقْفِزْ مِنَ ٤ إِلَى ٩ قَفْزَةً قَفْزَةً لِتَجِدَ الفَرْقَ.",
+      min: 0, max: 15, step: 1, labelEvery: 5,
+      jump: { start: 4, size: 1, count: 5 }
+    },
+    {
+      type: "equation-builder",
+      mode: "fill",
+      objective: "1Nc10: يفهم الفرق على أنه الإبْعاد أو الحذف أو الأخذ بعيدًا",
+      level: "application",
+      prompt: "أَكْمِلِ المُعادَلَةَ لِتَجِدَ الفَرْقَ.",
+      tokens: ["١٢", "−", "٧", "=", "__"],
+      bank: ["٤", "٥", "٦", "٧"],
+      answers: ["٥"]
+    },
+    {
+      type: "compare",
+      objective: "1Nn8: يستخدم أكبر أو أصغر للمقارنة بين الأعداد",
+      level: "reasoning",
+      prompt: "قارِنْ بَيْنَ الفَرْقَيْنِ.",
+      pairs: [ { a: "٥", b: "٨" }, { a: "٦", b: "٦" }, { a: "٩", b: "٤" } ]
+    },
+    {
+      type: "slider",
+      objective: "1Nc10: يفهم الفرق على أنه الإبْعاد أو الحذف أو الأخذ بعيدًا",
+      level: "application",
+      prompt: "الفَرْقُ بَيْنَ ١٤ و٦ — اِسْحَبِ المُؤَشِّرَ إِلَيْهِ.",
+      min: 0, max: 15, answer: 8, tolerance: 0, ticks: 5
+    }
+  ],
+
+  "g1m-13-5": [
+    {
+      type: "mcq",
+      objective: "1Nc12: يجد ٢ أكثر، أو ٢ أقل من أي عدد حتى ٢٠",
+      level: "knowledge",
+      prompt: "اثْنانِ أَكْثَرُ مِنْ ١٥ هُوَ:",
+      options: ["١٣", "١٦", "١٧", "١٨"],
+      answer: 2
+    },
+    {
+      type: "true-false",
+      objective: "1Nc12: يجد ٢ أكثر، أو ٢ أقل من أي عدد حتى ٢٠",
+      level: "knowledge",
+      statement: "اثْنانِ أَقَلُّ مِنْ ١٠ هُوَ ٨.",
+      answer: true
+    },
+    {
+      type: "number-line",
+      mode: "jump",
+      objective: "1Nc12: يجد ٢ أكثر، أو ٢ أقل من أي عدد حتى ٢٠",
+      level: "application",
+      prompt: "اِقْفِزْ بِالاثْنَيْنِ مِنَ ٦: انْقُرْ مَوْضِعَ كُلِّ قَفْزَةٍ.",
+      min: 0, max: 20, step: 1, labelEvery: 5,
+      jump: { start: 6, size: 2, count: 4 }
+    },
+    {
+      type: "pattern",
+      objective: "1Nc12: يجد ٢ أكثر، أو ٢ أقل من أي عدد حتى ٢٠",
+      level: "application",
+      prompt: "أَكْمِلِ النَّمَطَ: القَفْزُ بِالاثْنَيْنِ.",
+      items: ["٤", "٦", "__", "١٠", "__", "١٤"],
+      answers: ["٨", "١٢"],
+      distractors: ["٩", "١٣"],
+      rule: "نَزيدُ ٢ كُلَّ مَرَّةٍ"
+    },
+    {
+      type: "sequence",
+      objective: "1Nn1: يضع الأعداد بالترتيب",
+      level: "reasoning",
+      prompt: "رَتِّبْ نَواتِجَ القَفْزِ بِالاثْنَيْنِ.",
+      steps: ["٦", "٨", "١٠", "١٢", "١٤"]
+    },
+    {
+      type: "exclude",
+      objective: "1Nc12: يجد ٢ أكثر، أو ٢ أقل من أي عدد حتى ٢٠",
+      level: "reasoning",
+      prompt: "كُلُّها نَواتِجُ القَفْزِ بِالاثْنَيْنِ مِنَ ٦ — أَيُّها لا يَنْتَمي؟",
+      options: ["٨", "١٠", "١١", "١٢"],
+      answer: 2,
+      reason: "١١ فَرْدِيٌّ لا تَقَعُ عَلَيْهِ قَفْزَةُ الاثْنَيْنِ مِنَ ٦"
+    }
+  ],
+
+  /* ═══ الوحدة ٢أ · الفصل ١٤: ترتيب الأعداد (٢) ═══ */
+
+  "g1m-14-1": [
+    {
+      type: "mcq",
+      objective: "1Nn6: يبدأ بتجزئة الأعداد إلى عشرات وآحاد والعكس",
+      level: "knowledge",
+      prompt: "العَدَدُ ٢٧ يَتَكَوَّنُ مِنْ:",
+      options: ["٧ عَشَراتٍ و٢ آحادٍ", "٢ عَشَراتٍ و٧ آحادٍ", "٢٧ عَشْرَةً", "٩ آحادٍ"],
+      answer: 1
+    },
+    {
+      type: "place-value",
+      mode: "build",
+      objective: "1Nn6: يبدأ بتجزئة الأعداد إلى عشرات وآحاد والعكس",
+      level: "knowledge",
+      prompt: "ابْنِ العَدَدَ ٢٧ بِالعَشَراتِ والآحادِ.",
+      target: 27
+    },
+    {
+      type: "sequence",
+      objective: "1Nn1: يضع الأعداد بالترتيب",
+      level: "application",
+      prompt: "رَتِّبِ الأَعْدادَ مِنَ الأَصْغَرِ إِلَى الأَكْبَرِ.",
+      steps: ["١٢", "١٨", "٢٣", "٢٧", "٣١"]
+    },
+    {
+      type: "number-line",
+      mode: "place",
+      objective: "1Nn9: يرتّب الأعداد إلى ما لا يقل عن ٢٠، ويضعها على مسار عددي",
+      level: "application",
+      prompt: "ضَعِ المُؤَشِّرَ عَلى العَدَدِ ٢٣.",
+      min: 10, max: 30, step: 1, labelEvery: 5,
+      target: 23
+    },
+    {
+      type: "compare",
+      objective: "1Nn8: يستخدم أكبر أو أصغر للمقارنة بين الأعداد",
+      level: "reasoning",
+      prompt: "ضَعِ الرَّمْزَ المُناسِبَ بَيْنَ كُلِّ عَدَدَيْنِ.",
+      pairs: [ { a: "١٩", b: "٢٤" }, { a: "٢٧", b: "٢٧" }, { a: "٣١", b: "١٣" } ]
+    },
+    {
+      type: "memory",
+      objective: "1Nn6: يبدأ بتجزئة الأعداد إلى عشرات وآحاد والعكس",
+      level: "knowledge",
+      prompt: "اِقْلِبْ بِطاقَتَيْنِ في كُلِّ دَوْرٍ: طابِقْ كُلَّ عَدَدٍ بِتَجْزِئَتِهِ.",
+      pairs: [
+        { a: "١٤", b: "عَشْرَةٌ و٤ آحادٍ" },
+        { a: "٢٣", b: "عَشْرَتانِ و٣ آحادٍ" },
+        { a: "٣٠", b: "٣ عَشَراتٍ" },
+        { a: "٢٧", b: "عَشْرَتانِ و٧ آحادٍ" }
+      ]
+    }
+  ],
+
+  "g1m-14-2": [
+    {
+      type: "mcq",
+      objective: "1Pt3: يجد العديد من التركيبات",
+      level: "knowledge",
+      prompt: "لَدَيْنا قَميصانِ وثَلاثُ قُبَّعاتٍ — كَمْ تَرْكيبَةً مُخْتَلِفَةً يُمْكِنُ تَكْوينُها؟",
+      options: ["٢", "٣", "٥", "٦"],
+      answer: 3
+    },
+    {
+      type: "true-false",
+      objective: "1Pt3: يجد العديد من التركيبات",
+      level: "knowledge",
+      statement: "الطَّريقَةُ المُنَظَّمَةُ تُساعِدُنا عَلى إِيجادِ كُلِّ التَّراكيبِ بِلا تَكْرارٍ.",
+      answer: true
+    },
+    {
+      type: "array",
+      mode: "build",
+      objective: "1Pt3: يجد العديد من التركيبات",
+      level: "application",
+      prompt: "ابْنِ مَصْفوفَةً فيها صَفّانِ، في كُلِّ صَفٍّ ثَلاثَةُ مُرَبَّعاتٍ — لِتَرى كُلَّ التَّراكيبِ.",
+      rows: 2, cols: 3,
+      answerSentence: "٢ × ٣ = ٦"
+    },
+    {
+      type: "count-tap",
+      objective: "1Pt3: يجد العديد من التركيبات",
+      level: "application",
+      prompt: "اِنْقُرْ سِتَّ تَراكيبَ وعُدَّها.",
+      mode: "each", glyph: "🧢", count: 9, target: 6
+    },
+    {
+      type: "classify",
+      objective: "1Pt3: يجد العديد من التركيبات",
+      level: "reasoning",
+      prompt: "صَنِّفِ الطُّرُقَ: أَيُّها يَضْمَنُ إِيجادَ كُلِّ التَّراكيبِ؟",
+      groups: [
+        { name: "طَريقَةٌ مُنَظَّمَةٌ",  items: ["نُثَبِّتُ القَميصَ ونُغَيِّرُ القُبَّعَةَ", "نَكْتُبُ التَّراكيبَ في جَدْوَلٍ"] },
+        { name: "طَريقَةٌ عَشْوائِيَّةٌ", items: ["نَخْتارُ بِلا تَرْتيبٍ", "نُعيدُ التَّرْكيبَ نَفْسَهُ"] }
+      ]
+    },
+    {
+      type: "color",
+      objective: "1Pt3: يجد العديد من التركيبات",
+      level: "reasoning",
+      prompt: "الصَّفُّ الأَوَّلُ لِلْقَميصِ الأَحْمَرِ والثّاني لِلأَزْرَقِ — لَوِّنْ كُلَّ صَفٍّ بِلَوْنِهِ.",
+      bg: "#fdf6ec",
+      showLabels: false,
+      palette: [
+        { name: "أَحْمَر", color: "#FF2020" },
+        { name: "أَزْرَق", color: "#20A0FF" }
+      ],
+      parts: [
+        { name: "خانة ١", color: "#FF2020" },
+        { name: "خانة ٢", color: "#FF2020" },
+        { name: "خانة ٣", color: "#FF2020" },
+        { name: "خانة ٤", color: "#20A0FF" },
+        { name: "خانة ٥", color: "#20A0FF" },
+        { name: "خانة ٦", color: "#20A0FF" }
+      ],
+      svg: `<svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#111111" stroke-width="3" stroke-linejoin="round">
+          <g class="cpart" data-name="خانة ١"><rect x="396" y="34" width="96" height="82" rx="12"/></g>
+          <g class="cpart" data-name="خانة ٢"><rect x="232" y="34" width="96" height="82" rx="12"/></g>
+          <g class="cpart" data-name="خانة ٣"><rect x="68"  y="34" width="96" height="82" rx="12"/></g>
+          <g class="cpart" data-name="خانة ٤"><rect x="396" y="144" width="96" height="82" rx="12"/></g>
+          <g class="cpart" data-name="خانة ٥"><rect x="232" y="144" width="96" height="82" rx="12"/></g>
+          <g class="cpart" data-name="خانة ٦"><rect x="68"  y="144" width="96" height="82" rx="12"/></g>
+        </g>
+      </svg>`
+    }
   ]
 };

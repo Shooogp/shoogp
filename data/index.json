@@ -469,17 +469,17 @@
       {
         "unit": "٢أ: العدد وحل المشكلات",
         "lessons": [
-          { "title": "الأعداد الزوجيّة (١١-١)", "file": "g1m-11-1", "chapter": 11, "chapterTitle": "الأعداد الفردية والزوجية", "open": false },
-          { "title": "الأعداد الفرديّة (١١-٢)", "file": "g1m-11-2", "chapter": 11, "chapterTitle": "الأعداد الفردية والزوجية", "open": false },
-          { "title": "ترتيب الأعداد (١٢-١)", "file": "g1m-12-1", "chapter": 12, "chapterTitle": "ترتيب الأعداد (١)", "open": false },
-          { "title": "بين (١٢-٢)", "file": "g1m-12-2", "chapter": 12, "chapterTitle": "ترتيب الأعداد (١)", "open": false },
-          { "title": "المزيد من أزواج الأعداد لـ١٠ (١٣-١)", "file": "g1m-13-1", "chapter": 13, "chapterTitle": "الجمع والطرح: الإضافة والحذف", "open": false },
-          { "title": "الجمع على شكل ضم (١٣-٢)", "file": "g1m-13-2", "chapter": 13, "chapterTitle": "الجمع والطرح: الإضافة والحذف", "open": false },
-          { "title": "الطرح على شكل الأخذ من (١٣-٣)", "file": "g1m-13-3", "chapter": 13, "chapterTitle": "الجمع والطرح: الإضافة والحذف", "open": false },
-          { "title": "خط الأعداد (١) إيجاد الفرق (١٣-٤)", "file": "g1m-13-4", "chapter": 13, "chapterTitle": "الجمع والطرح: الإضافة والحذف", "open": false },
-          { "title": "خط الأعداد (٢) إضافة وطرح اثنين (١٣-٥)", "file": "g1m-13-5", "chapter": 13, "chapterTitle": "الجمع والطرح: الإضافة والحذف", "open": false },
-          { "title": "ترتيب الأعداد (١٤-١)", "file": "g1m-14-1", "chapter": 14, "chapterTitle": "ترتيب الأعداد (٢)", "open": false },
-          { "title": "المجموعات (١٤-٢)", "file": "g1m-14-2", "chapter": 14, "chapterTitle": "ترتيب الأعداد (٢)", "open": false }
+          { "title": "الأعداد الزوجيّة (١١-١)", "file": "g1m-11-1", "chapter": 11, "chapterTitle": "الأعداد الفردية والزوجية", "open": true },
+          { "title": "الأعداد الفرديّة (١١-٢)", "file": "g1m-11-2", "chapter": 11, "chapterTitle": "الأعداد الفردية والزوجية", "open": true },
+          { "title": "ترتيب الأعداد (١٢-١)", "file": "g1m-12-1", "chapter": 12, "chapterTitle": "ترتيب الأعداد (١)", "open": true },
+          { "title": "بين (١٢-٢)", "file": "g1m-12-2", "chapter": 12, "chapterTitle": "ترتيب الأعداد (١)", "open": true },
+          { "title": "المزيد من أزواج الأعداد لـ١٠ (١٣-١)", "file": "g1m-13-1", "chapter": 13, "chapterTitle": "الجمع والطرح: الإضافة والحذف", "open": true },
+          { "title": "الجمع على شكل ضم (١٣-٢)", "file": "g1m-13-2", "chapter": 13, "chapterTitle": "الجمع والطرح: الإضافة والحذف", "open": true },
+          { "title": "الطرح على شكل الأخذ من (١٣-٣)", "file": "g1m-13-3", "chapter": 13, "chapterTitle": "الجمع والطرح: الإضافة والحذف", "open": true },
+          { "title": "خط الأعداد (١) إيجاد الفرق (١٣-٤)", "file": "g1m-13-4", "chapter": 13, "chapterTitle": "الجمع والطرح: الإضافة والحذف", "open": true },
+          { "title": "خط الأعداد (٢) إضافة وطرح اثنين (١٣-٥)", "file": "g1m-13-5", "chapter": 13, "chapterTitle": "الجمع والطرح: الإضافة والحذف", "open": true },
+          { "title": "ترتيب الأعداد (١٤-١)", "file": "g1m-14-1", "chapter": 14, "chapterTitle": "ترتيب الأعداد (٢)", "open": true },
+          { "title": "المجموعات (١٤-٢)", "file": "g1m-14-2", "chapter": 14, "chapterTitle": "ترتيب الأعداد (٢)", "open": true }
         ]
       }
     ]
