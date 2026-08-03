@@ -1372,40 +1372,78 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════════
-   ★ زرّا صواب/خطأ في اللغة العربية — صورة btn-true-arabic.png ★
-   كبسولةٌ فضائيةٌ واحدة (تدرّجٌ سماويٌّ يسارَها وكهرمانيٌّ يمينَها) تخدم الزرّين معاً:
-   «صواب» بوضعها الأصليّ، و«خطأ» بها معكوسةً أفقياً. الانعكاسُ على طبقةِ خلفيةٍ
-   منفصلة (`::before` بـ`z-index:-1`) لا على الزرِّ نفسِه، فلا ينعكس نصُّ الزرِّ معها —
-   نفسُ أسلوبِ `btn-next-prev.png` المعكوسِ لزرِّ «التالي» في enhanceNav (js/shoogp-ui.js).
-   النطاق: علامةُ المادةِ `subj-arabic` — تسري تلقائياً على كلِّ دروسِ «أحب لغتي» ولا
-   تتأثّر بها بقيةُ المواد. حالتا الصواب/الخطأ (بعد التحقّق) تُعرَضان بحلقةِ توهّجٍ حولَ
-   الكبسولة بدلَ تغييرِ لونِ الخلفية، فتبقى الصورةُ ظاهرةً في الحالتين. */
-.shoogp-ui.subj-arabic .qwin .tf-btns .tf{
-  position:relative;
-  flex:0 0 auto; max-width:none;
-  height:64px; width:calc(64px * 1394 / 444);
-  background:transparent !important; border:none !important; box-shadow:none !important;
-  color:#3a2a12; text-shadow:0 1px 1px rgba(255,255,255,.5);
-  transition:transform .18s;
+   ★ قشرةُ اللغة العربية: «الكبسولة» (skin-capsule) ★
+   نسخٌ من صورةٍ واحدة (btn-true-arabic.png) عبر `border-image` (تقنية ٩-slice) على
+   **كلِّ العناصرِ التفاعلية** (نفسُ مجموعةِ عائلةِ `skin-rocky`)، بدلَ تصميمِ حجمٍ منفصلٍ
+   لكلِّ نوعِ سؤال كما فعلنا في الفريمات: طرفا الصورةِ نصفا دائرةٍ (نصفُ قطرِهما =
+   نصفُ ارتفاعِها، ٢٢٢=٤٤٤÷٢ بالضبط)، فبتثبيتِ ارتفاعٍ موحّدٍ (٦٠px) وحدٍّ جانبيٍّ
+   يساويه نصفَه (٣٠px) تخرجُ الأطرافُ أنصافَ دوائرَ سليمة، والوسطُ (تدرّجٌ سماويٌّ
+   يسارَه وكهرمانيٌّ يمينَه) يتمدّدُ أفقياً بلا تشويهٍ ليَسعَ أيَّ طولِ نصّ — بخلافِ
+   صورةٍ واحدةٍ مشدودةٍ على عرضٍ ثابت. مصدرُ اللونِ نفسُ صورةِ الكبسولة (لا متغيّراتِ
+   CSS كسائرِ القشور)، فحالتا الصواب/الخطأ حلقةُ توهّجٍ حولَ الكبسولةِ بدلَ تغييرِ
+   الخلفية، فتبقى الصورةُ ظاهرةً دائماً. النطاق SUBJECT_SKINS.arabic ← lessonSubject
+   (js/shoogp-ui.js) — يسري تلقائياً على كلِّ دروسِ «أحب لغتي» ولا يتأثّر بها غيرُها.
+   **القياس (بعد تحديث الصورة إلى ١٣٧٤×٤١١):** الصندوقُ المعتمُ يمتدُّ ٣٠–١٣٤٢ أفقياً
+   و٤٢–٣٧٠ رأسياً (قياسٌ ببكسل الشفافية)، فارتفاعُه ٣٢٨ ونصفُ قطرِ طرفَيه ١٦٤ — ومنه
+   `slice-left=194` (٣٠+١٦٤) و`slice-right=196` (١٣٧٤−(١٣٤٢−١٦٤)). وحدُّ الصندوقِ الجانبيُّ
+   (`border-width`) يُشتَقُّ من ارتفاعِ الزرِّ الفعليِّ (٦٤px) بنفسِ نسبةِ الأصل
+   (١٦٤/٤١١≈٠٫٣٩٩) فيُعطي ≈٢٦px — وإلا بدا الطرفُ بيضاويّاً لا نصفَ دائرة. */
+.shoogp-ui.skin-capsule .qwin :where(.opt,.tf,.excl-opt,.mitem,.chip,.mmchip,.seqitem,.aopt,
+                                     .blank.filled,.target.filled){
+  isolation:isolate;
+  min-height:64px;
+  display:flex; align-items:center; gap:12px;
+  padding:14px 30px !important;
+  border-style:solid !important; border-width:0 26px !important;
+  border-image:url('../images/ui/btn-true-arabic.png') 0 196 0 194 fill !important;
+  background:#FFE0B3 !important;         /* احتياطٌ قبلَ تحميلِ الصورةِ أو عندَ فشلها */
+  box-shadow:none !important;
+  border-radius:999px;                   /* احتياطٌ أيضاً — لا أثرَ له وborder-image فعّال */
+  color:#3a2a12 !important;
+  font-weight:800 !important;
+  text-shadow:0 1px 1px rgba(255,255,255,.55) !important;
+  transition:transform .14s ease !important;
 }
-.shoogp-ui.subj-arabic .qwin .tf-btns .tf::before{
-  content:""; position:absolute; inset:0; z-index:-1; border-radius:inherit;
-  background:url('../images/ui/btn-true-arabic.png') no-repeat center/100% 100%;
-}
-.shoogp-ui.subj-arabic .qwin .tf-btns .tf-f::before{ transform:scaleX(-1); }
-.shoogp-ui.subj-arabic .qwin .tf-btns .tf:hover:not(:disabled){ transform:translateY(-2px); }
-.shoogp-ui.subj-arabic .qwin .tf-btns .tf:active:not(:disabled){ transform:translateY(1px) scale(.98); }
-.shoogp-ui.subj-arabic .qwin .tf-btns .tf.tf-correct{
-  background:transparent !important; color:#20340a !important;
+.shoogp-ui.skin-capsule .qwin :where(.opt,.tf,.excl-opt,.mitem,.chip,.mmchip,.seqitem,.aopt,
+                                     .blank){position:relative}
+/* الاختيارُ من متعدد: النصُّ إلى بدايةِ السطر (يمينُ RTL)؛ وبقيةُ الكبسولاتِ متوسّطة. */
+.shoogp-ui.skin-capsule .qwin .opt{justify-content:flex-start; text-align:start}
+.shoogp-ui.skin-capsule .qwin :where(.tf,.excl-opt,.mitem,.chip,.mmchip,
+                                     .blank.filled,.target.filled){justify-content:center; text-align:center}
+
+/* الصواب: حلقةُ توهّجٍ خضراء حولَ الكبسولة (الصورةُ تبقى ظاهرةً تحتها) */
+.shoogp-ui.skin-capsule .qwin :is(.opt.correct,.tf.tf-correct,.excl-opt.correct,.mitem.matched,
+                                  .chip.ok,.mmchip.ok,.seqitem.correct,.aopt.correct,
+                                  .blank.correct,.blank.filled.correct,.target.filled.correct){
   box-shadow:0 0 0 4px #7cb051, 0 0 14px 2px rgba(124,176,81,.65) !important;
+  color:#20340a !important;
 }
-.shoogp-ui.subj-arabic .qwin .tf-btns .tf.tf-wrong{
-  background:transparent !important; color:#7a1f1f !important;
+/* الخطأ: حلقةُ توهّجٍ حمراء + اهتزازٌ خفيف */
+.shoogp-ui.skin-capsule .qwin :is(.opt.wrong,.tf.tf-wrong,.excl-opt.wrong,.mitem.shake,
+                                  .chip.no,.mmchip.no,.aopt.wrong,
+                                  .blank.wrong,.target.wrong){
   box-shadow:0 0 0 4px #d9534f, 0 0 14px 2px rgba(217,83,79,.6) !important;
+  color:#7a1f1f !important;
   animation:cardShake .45s ease;
 }
 @media(prefers-reduced-motion:reduce){
-  .shoogp-ui.subj-arabic .qwin .tf-btns .tf.tf-wrong{animation:none}
+  .shoogp-ui.skin-capsule .qwin :is(.opt.wrong,.tf.tf-wrong,.excl-opt.wrong,.mitem.shake,
+                                    .chip.no,.mmchip.no,.aopt.wrong,
+                                    .blank.wrong,.target.wrong){animation:none}
 }
-.shoogp-ui.subj-arabic .qwin .tf-btns .tf:disabled{opacity:.92}
-.shoogp-ui.subj-arabic .qwin .tf-btns .tf.tf-correct:disabled{opacity:1}
+/* التحويم/النقر: رفعٌ وانضغاطٌ بالتحوّل وحدَه (بلا مسّ لـborder-image) */
+.shoogp-ui.skin-capsule .qwin :where(.opt,.tf,.excl-opt,.mitem,.chip,.mmchip,.seqitem,.aopt,
+       .blank.filled,.target.filled):hover:not(:disabled):not(.matched):not(.used){
+  transform:translateY(-2px);
+}
+.shoogp-ui.skin-capsule .qwin :where(.opt,.tf,.excl-opt,.mitem,.chip,.mmchip,.seqitem,.aopt,
+       .blank.filled,.target.filled):active:not(:disabled):not(.matched):not(.used){
+  transform:translateY(2px) scale(.98);
+}
+/* السحبُ (بطاقاتُ الكلماتِ والترتيبِ التسلسليّ): ظلٌّ مرتفعٌ يوحي بالرفع أثناء السحب */
+.shoogp-ui.skin-capsule .qwin :is(.chip.dragging,.seqitem.dragging){
+  box-shadow:0 8px 20px rgba(0,0,0,.32) !important; transform:scale(1.05);
+}
+/* معطَّلة: تخفتُ قليلاً، والصحيحةُ تبقى بكاملِ وضوحِها بعدَ قفلِ السؤال */
+.shoogp-ui.skin-capsule .qwin :is(.opt,.excl-opt,.aopt):disabled{opacity:.9}
+.shoogp-ui.skin-capsule .qwin :is(.opt,.excl-opt,.aopt).correct:disabled{opacity:1}
