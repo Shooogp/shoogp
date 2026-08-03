@@ -1370,3 +1370,42 @@
 .shoogp-ui.skin-metal .qwin :is(.opt,.excl-opt).correct:disabled{
   filter:none !important; opacity:1;
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   ★ زرّا صواب/خطأ في اللغة العربية — صورة btn-true-arabic.png ★
+   كبسولةٌ فضائيةٌ واحدة (تدرّجٌ سماويٌّ يسارَها وكهرمانيٌّ يمينَها) تخدم الزرّين معاً:
+   «صواب» بوضعها الأصليّ، و«خطأ» بها معكوسةً أفقياً. الانعكاسُ على طبقةِ خلفيةٍ
+   منفصلة (`::before` بـ`z-index:-1`) لا على الزرِّ نفسِه، فلا ينعكس نصُّ الزرِّ معها —
+   نفسُ أسلوبِ `btn-next-prev.png` المعكوسِ لزرِّ «التالي» في enhanceNav (js/shoogp-ui.js).
+   النطاق: علامةُ المادةِ `subj-arabic` — تسري تلقائياً على كلِّ دروسِ «أحب لغتي» ولا
+   تتأثّر بها بقيةُ المواد. حالتا الصواب/الخطأ (بعد التحقّق) تُعرَضان بحلقةِ توهّجٍ حولَ
+   الكبسولة بدلَ تغييرِ لونِ الخلفية، فتبقى الصورةُ ظاهرةً في الحالتين. */
+.shoogp-ui.subj-arabic .qwin .tf-btns .tf{
+  position:relative;
+  flex:0 0 auto; max-width:none;
+  height:64px; width:calc(64px * 1394 / 444);
+  background:transparent !important; border:none !important; box-shadow:none !important;
+  color:#3a2a12; text-shadow:0 1px 1px rgba(255,255,255,.5);
+  transition:transform .18s;
+}
+.shoogp-ui.subj-arabic .qwin .tf-btns .tf::before{
+  content:""; position:absolute; inset:0; z-index:-1; border-radius:inherit;
+  background:url('../images/ui/btn-true-arabic.png') no-repeat center/100% 100%;
+}
+.shoogp-ui.subj-arabic .qwin .tf-btns .tf-f::before{ transform:scaleX(-1); }
+.shoogp-ui.subj-arabic .qwin .tf-btns .tf:hover:not(:disabled){ transform:translateY(-2px); }
+.shoogp-ui.subj-arabic .qwin .tf-btns .tf:active:not(:disabled){ transform:translateY(1px) scale(.98); }
+.shoogp-ui.subj-arabic .qwin .tf-btns .tf.tf-correct{
+  background:transparent !important; color:#20340a !important;
+  box-shadow:0 0 0 4px #7cb051, 0 0 14px 2px rgba(124,176,81,.65) !important;
+}
+.shoogp-ui.subj-arabic .qwin .tf-btns .tf.tf-wrong{
+  background:transparent !important; color:#7a1f1f !important;
+  box-shadow:0 0 0 4px #d9534f, 0 0 14px 2px rgba(217,83,79,.6) !important;
+  animation:cardShake .45s ease;
+}
+@media(prefers-reduced-motion:reduce){
+  .shoogp-ui.subj-arabic .qwin .tf-btns .tf.tf-wrong{animation:none}
+}
+.shoogp-ui.subj-arabic .qwin .tf-btns .tf:disabled{opacity:.92}
+.shoogp-ui.subj-arabic .qwin .tf-btns .tf.tf-correct:disabled{opacity:1}
