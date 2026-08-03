@@ -33,8 +33,11 @@ function imgURL(name){ return IMG_BASE + name; }
 /* خريطةُ لاحقةِ المفتاحِ إلى المادة. `-math` مضافةٌ هنا لا في البذرةِ عمداً: البذرةُ
    تُعدِّدُ كتباً بعينِها، والخريطةُ تشملُ **كلَّ** كتابِ المادةِ حاضرِه ومستقبلِه — فدخلَ
    بها `g1-math` و`g3-math` بلا سطرٍ لكلٍّ منهما. (قبلها كان `g1-math` خارجَ النطاقِ
-   فيسقطُ إلى إطارِ القمرِ والأيقوناتِ الافتراضيةِ بدلَ إطارِ الرياضياتِ وقشرةِ المعدن.) */
-var SUBJECT_BY_KEY_SUFFIX={ '-sci':'science', '-math':'math' };
+   فيسقطُ إلى إطارِ القمرِ والأيقوناتِ الافتراضيةِ بدلَ إطارِ الرياضياتِ وقشرةِ المعدن.)
+   `-arabic-1` و`-arabic-2` بنفسِ المنطق: تشملُ كتبَ «أحب لغتي» بجزأيها لكلِّ الصفوفِ
+   (‏`g1-arabic-1`…`g4-arabic-2`) فتَرِثُ عائلةَ الإطارِ `arabic` وعلامةَ `subj-arabic`
+   بمجرّدِ دخولِ أيِّ درسٍ منها DATA.index، بلا سطرٍ لكلِّ كتابٍ ولا قشرةِ Skin (لم تُطلب). */
+var SUBJECT_BY_KEY_SUFFIX={ '-sci':'science', '-math':'math', '-arabic-1':'arabic', '-arabic-2':'arabic' };
 var SHOOGP_BOOKS_SEED=[
   {key:'g1-sci',  prefix:'g1s-', subject:'science'},
   {key:'g2-sci',  prefix:'g2s-', subject:'science'},
