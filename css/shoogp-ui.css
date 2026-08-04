@@ -1483,65 +1483,45 @@
 .shoogp-ui.skin-capsule .qwin :where(.tf,.excl-opt,.mitem,.mmchip,
                                      .blank.filled,.target.filled){justify-content:center; text-align:center}
 
-/* الصواب: حلقةُ توهّجٍ خضراء حولَ الكبسولة (الصورةُ تبقى ظاهرةً تحتها).
-   `.opt`/`.tf`/`.chip` مستثناةٌ هنا — إطارُها أدناه على ::after لا على الزرِّ نفسِه. */
+/* ═══ لا حلقاتِ صوابٍ/خطأٍ ملوّنةً إطلاقاً في «أحب لغتي» (قرارُ المالك ٢٠٢٦-٠٨-٠٤) ═══
+   **«في كلِّ الأحوالِ لا تجعلْ هذه الخطوطَ الخضراءَ والحمراءَ تظهر.»** فلا `box-shadow`
+   حولَ العنصرِ ولا حدَّ على `::after` — الحلقةُ تُنافسُ زخرفةَ الكبسولةِ نفسَها وتُشوّشُها.
+   **والتغذيةُ الراجعةُ لا تضيع:** تبقى في **لونِ النصّ** (أخضرُ داكنٌ للصواب وأحمرُ داكنٌ
+   للخطأ) وفي **سطرِ الرسالةِ أسفلَ السؤال** (§٣ب.٣) وفي **اهتزازِ الخطأ**. */
 .shoogp-ui.skin-capsule .qwin :is(.excl-opt.correct,.mitem.matched,
                                   .mmchip.ok,.seqitem.correct,.aopt.correct,
                                   .blank.correct,.blank.filled.correct,.target.filled.correct){
-  box-shadow:0 0 0 4px #7cb051, 0 0 14px 2px rgba(124,176,81,.65) !important;
+  box-shadow:none !important;
   color:#20340a !important;
 }
-/* الخطأ: حلقةُ توهّجٍ حمراء + اهتزازٌ خفيف (بنفسِ استثناءِ الصواب أعلاه) */
 .shoogp-ui.skin-capsule .qwin :is(.excl-opt.wrong,.mitem.shake,
                                   .mmchip.no,.aopt.wrong,
                                   .blank.wrong,.target.wrong){
-  box-shadow:0 0 0 4px #d9534f, 0 0 14px 2px rgba(217,83,79,.6) !important;
+  box-shadow:none !important;
   color:#7a1f1f !important;
   animation:cardShake .45s ease;
 }
+/* الفراغُ الممتلئُ حاويةٌ شفّافةٌ ونصُّه داخلَ `.chip`، فلا يرثُ لونَ الحالةِ من أبيه —
+   نُلوّنُ بطاقتَه صراحةً كي تبقى التغذيةُ الراجعةُ ظاهرةً بلا حلقة. */
+.shoogp-ui.skin-capsule .qwin :is(.blank.correct,.blank.filled.correct) .chip{color:#20340a !important}
+.shoogp-ui.skin-capsule .qwin .blank.wrong .chip{color:#7a1f1f !important}
 @media(prefers-reduced-motion:reduce){
   .shoogp-ui.skin-capsule .qwin :is(.excl-opt.wrong,.mitem.shake,
                                     .mmchip.no,.aopt.wrong,
                                     .blank.wrong,.target.wrong){animation:none}
 }
-/* ═══ تعديلُ المالك (٢٠٢٦-٠٨-٠٣): إطارُ الحالة على حدِّ اللوحةِ اللامعةِ الداخلية،
-   لا الحافةِ المعدنيةِ الخارجية — لثلاثةِ العناصرِ الأكثرِ استعمالاً فقط
-   (`.tf-btns .tf`، `.chip`، `.opt`؛ لا تمسُّ بقيةَ عائلةِ الكبسولةِ أعلاه) ═══
-   ١) الإطارُ الملوّنُ ينتقلُ من box-shadow على الزرِّ إلى حدٍّ على ::after مُدخَلٍ
-      للداخل (رأسياً ٩px، أفقياً ٣٠px يطابقُ حشوةَ الزرِّ الأفقية) — فيرسمُ عند حافةِ
-      اللوحةِ اللامعةِ الداخليةِ تماماً بدلَ الحافةِ المعدنيةِ الخارجية.
-   ٢) النصُّ يتمركزُ سطراً واحداً (`white-space:nowrap`) داخلَ اللوحةِ اللامعة، معَ
-      الحفاظِ على علامتَي ✓/✗ ضمنَ النصِّ نفسِه (لا تُضافانِ بشكلٍ منفصل).
-   **القيمُ مشتقّةٌ حسابياً من الصورةِ المقصوصةِ لا بالتجربة** (أُعيدَ اشتقاقُها
-   ٢٠٢٦-٠٨-٠٤ بعدَ قصِّ الهامشِ الشفّاف): اللوحةُ اللامعةُ في الملفِّ (١٣١٥×٣٧٣) تبدأُ
-   عندَ y=66 وتنتهي عندَ y=319، وتبدأُ أفقياً عندَ x=99 وتنتهي عندَ x=1213 (قياسُ
-   بكسلٍ للخطِّ الداكنِ الفاصل). ومعاملُ التصغيرِ من فضاءِ الصورةِ إلى فضاءِ الزرِّ
-   واحدٌ في المحورَين (‏`border-width`÷`slice` = 32÷186.5 = ارتفاعُ الزرِّ÷ارتفاعُ
-   الصورة = 64÷373 ≈ **0.1716**) لأنّ الحدَّ نصفُ الارتفاعِ والشريحةَ نصفُ ارتفاعِ
-   الصورة. فالإزاحاتُ = القياسُ × ٠٫١٧١٦:
-     أعلى 66×0.1716≈**11px** · أسفل 54×0.1716≈**9px** · يمنةً/يسرةً 99×0.1716≈**17px**
-   (كانت ٣٠px أفقياً فكانتِ الحلقةُ غائرةً عن اللوحةِ بمقدارِ الضِّعف). */
+/* توسيطُ نصِّ العناصرِ الثلاثةِ الأكثرِ استعمالاً سطراً واحداً داخلَ اللوحةِ اللامعة،
+   معَ الحفاظِ على علامتَي ✓/✗ ضمنَ النصِّ نفسِه (لا تُضافانِ بشكلٍ منفصل).
+   **وحلقةُ `::after` أُلغيت بالكامل** بقرارِ المالك ٢٠٢٦-٠٨-٠٤ («في كلِّ الأحوالِ لا
+   تجعلْ هذه الخطوطَ تظهر») — لا تُعَدْ بناؤها؛ التغذيةُ الراجعةُ في لونِ النصِّ وسطرِ
+   الرسالةِ والاهتزاز. */
 .shoogp-ui.skin-capsule .qwin :is(.tf-btns .tf,.chip,.opt){
   justify-content:center !important; text-align:center !important;
   white-space:nowrap !important;
   padding:14px 34px !important;
   box-shadow:none !important;
 }
-.shoogp-ui.skin-capsule .qwin :is(.tf-btns .tf,.chip,.opt)::after{
-  content:""; position:absolute;
-  top:11px; bottom:9px; left:17px; right:17px;
-  border-radius:999px;
-  border:4px solid transparent;
-  pointer-events:none;
-}
-.shoogp-ui.skin-capsule .qwin :is(.tf.tf-correct,.chip.ok,.opt.correct)::after{
-  border-color:#7cb051;
-  box-shadow:0 0 14px 2px rgba(124,176,81,.65);
-}
-.shoogp-ui.skin-capsule .qwin :is(.tf.tf-wrong,.chip.no,.opt.wrong)::after{
-  border-color:#d9534f;
-  box-shadow:0 0 14px 2px rgba(217,83,79,.6);
-}
+.shoogp-ui.skin-capsule .qwin :is(.tf-btns .tf,.chip,.opt)::after{ content:none !important; }
 .shoogp-ui.skin-capsule .qwin :is(.tf.tf-correct,.chip.ok,.opt.correct){color:#20340a !important}
 .shoogp-ui.skin-capsule .qwin :is(.tf.tf-wrong,.chip.no,.opt.wrong){
   color:#7a1f1f !important;
