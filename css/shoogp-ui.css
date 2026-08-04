@@ -1383,19 +1383,22 @@
    CSS كسائرِ القشور)، فحالتا الصواب/الخطأ حلقةُ توهّجٍ حولَ الكبسولةِ بدلَ تغييرِ
    الخلفية، فتبقى الصورةُ ظاهرةً دائماً. النطاق SUBJECT_SKINS.arabic ← lessonSubject
    (js/shoogp-ui.js) — يسري تلقائياً على كلِّ دروسِ «أحب لغتي» ولا يتأثّر بها غيرُها.
-   **القياس (بعد تحديث الصورة إلى ١٣٧٤×٤١١):** الصندوقُ المعتمُ يمتدُّ ٣٠–١٣٤٢ أفقياً
-   و٤٢–٣٧٠ رأسياً (قياسٌ ببكسل الشفافية)، فارتفاعُه ٣٢٨ ونصفُ قطرِ طرفَيه ١٦٤ — ومنه
-   `slice-left=194` (٣٠+١٦٤) و`slice-right=196` (١٣٧٤−(١٣٤٢−١٦٤)). وحدُّ الصندوقِ الجانبيُّ
+   **القياس (نسخةٌ ثانيةٌ من الصورة، لا تزال ١٣٧٤×٤١١ لكنَّ هامشَها الشفّافَ الرأسيَّ
+   تقلَّص):** الصندوقُ المعتمُ يمتدُّ ٢٩–١٣٤٣ أفقياً و٢٠–٣٩١ رأسياً (قياسُ بكسلٍ كامل،
+   لا عيّنة)، فارتفاعُه ٣٧١ ونصفُ قطرِ طرفَيه ١٨٥٫٥ — ومنه `slice-left=214.5`
+   (٢٩+١٨٥٫٥) و`slice-right=216.5` (١٣٧٤−(١٣٤٣−١٨٥٫٥)). وحدُّ الصندوقِ الجانبيُّ
    (`border-width`) يُشتَقُّ من ارتفاعِ الزرِّ الفعليِّ (٦٤px) بنفسِ نسبةِ الأصل
-   (١٦٤/٤١١≈٠٫٣٩٩) فيُعطي ≈٢٦px — وإلا بدا الطرفُ بيضاويّاً لا نصفَ دائرة. */
+   (١٨٥٫٥/٤١١≈٠٫٤٥١) فيُعطي ≈٢٩px — وإلا بدا الطرفُ بيضاويّاً لا نصفَ دائرة.
+   **أُعيدَ القياسُ ٢٠٢٦-٠٨-٠٤** بعد رفع المعلّم نسخةً ثانيةً من الملفِّ نفسِه بهامشٍ
+   مختلف؛ فحصْ هذا القياسَ أولاً عند أيِّ تشوّهٍ مستقبليّ في أطرافِ الكبسولة. */
 .shoogp-ui.skin-capsule .qwin :where(.opt,.tf,.excl-opt,.mitem,.chip,.mmchip,.seqitem,.aopt,
                                      .blank.filled,.target.filled){
   isolation:isolate;
   min-height:64px;
   display:flex; align-items:center; gap:12px;
   padding:14px 30px !important;
-  border-style:solid !important; border-width:0 26px !important;
-  border-image:url('../images/ui/btn-true-arabic.png') 0 196 0 194 fill !important;
+  border-style:solid !important; border-width:0 29px !important;
+  border-image:url('../images/ui/btn-true-arabic.png') 0 216.5 0 214.5 fill !important;
   background:#FFE0B3 !important;         /* احتياطٌ قبلَ تحميلِ الصورةِ أو عندَ فشلها */
   box-shadow:none !important;
   border-radius:999px;                   /* احتياطٌ أيضاً — لا أثرَ له وborder-image فعّال */
@@ -1406,30 +1409,71 @@
 }
 .shoogp-ui.skin-capsule .qwin :where(.opt,.tf,.excl-opt,.mitem,.chip,.mmchip,.seqitem,.aopt,
                                      .blank){position:relative}
-/* الاختيارُ من متعدد: النصُّ إلى بدايةِ السطر (يمينُ RTL)؛ وبقيةُ الكبسولاتِ متوسّطة. */
+/* الاختيارُ من متعدد: النصُّ إلى بدايةِ السطر (يمينُ RTL)؛ وبقيةُ الكبسولاتِ متوسّطة.
+   (‏`.opt` تُعادُ توسيطُها أدناه في تعديلِ الثلاثةِ عناصرَ — القاعدةُ هنا للبقيّةِ فقط.) */
 .shoogp-ui.skin-capsule .qwin .opt{justify-content:flex-start; text-align:start}
-.shoogp-ui.skin-capsule .qwin :where(.tf,.excl-opt,.mitem,.chip,.mmchip,
+.shoogp-ui.skin-capsule .qwin :where(.tf,.excl-opt,.mitem,.mmchip,
                                      .blank.filled,.target.filled){justify-content:center; text-align:center}
 
-/* الصواب: حلقةُ توهّجٍ خضراء حولَ الكبسولة (الصورةُ تبقى ظاهرةً تحتها) */
-.shoogp-ui.skin-capsule .qwin :is(.opt.correct,.tf.tf-correct,.excl-opt.correct,.mitem.matched,
-                                  .chip.ok,.mmchip.ok,.seqitem.correct,.aopt.correct,
+/* الصواب: حلقةُ توهّجٍ خضراء حولَ الكبسولة (الصورةُ تبقى ظاهرةً تحتها).
+   `.opt`/`.tf`/`.chip` مستثناةٌ هنا — إطارُها أدناه على ::after لا على الزرِّ نفسِه. */
+.shoogp-ui.skin-capsule .qwin :is(.excl-opt.correct,.mitem.matched,
+                                  .mmchip.ok,.seqitem.correct,.aopt.correct,
                                   .blank.correct,.blank.filled.correct,.target.filled.correct){
   box-shadow:0 0 0 4px #7cb051, 0 0 14px 2px rgba(124,176,81,.65) !important;
   color:#20340a !important;
 }
-/* الخطأ: حلقةُ توهّجٍ حمراء + اهتزازٌ خفيف */
-.shoogp-ui.skin-capsule .qwin :is(.opt.wrong,.tf.tf-wrong,.excl-opt.wrong,.mitem.shake,
-                                  .chip.no,.mmchip.no,.aopt.wrong,
+/* الخطأ: حلقةُ توهّجٍ حمراء + اهتزازٌ خفيف (بنفسِ استثناءِ الصواب أعلاه) */
+.shoogp-ui.skin-capsule .qwin :is(.excl-opt.wrong,.mitem.shake,
+                                  .mmchip.no,.aopt.wrong,
                                   .blank.wrong,.target.wrong){
   box-shadow:0 0 0 4px #d9534f, 0 0 14px 2px rgba(217,83,79,.6) !important;
   color:#7a1f1f !important;
   animation:cardShake .45s ease;
 }
 @media(prefers-reduced-motion:reduce){
-  .shoogp-ui.skin-capsule .qwin :is(.opt.wrong,.tf.tf-wrong,.excl-opt.wrong,.mitem.shake,
-                                    .chip.no,.mmchip.no,.aopt.wrong,
+  .shoogp-ui.skin-capsule .qwin :is(.excl-opt.wrong,.mitem.shake,
+                                    .mmchip.no,.aopt.wrong,
                                     .blank.wrong,.target.wrong){animation:none}
+}
+/* ═══ تعديلُ المالك (٢٠٢٦-٠٨-٠٣): إطارُ الحالة على حدِّ اللوحةِ اللامعةِ الداخلية،
+   لا الحافةِ المعدنيةِ الخارجية — لثلاثةِ العناصرِ الأكثرِ استعمالاً فقط
+   (`.tf-btns .tf`، `.chip`، `.opt`؛ لا تمسُّ بقيةَ عائلةِ الكبسولةِ أعلاه) ═══
+   ١) الإطارُ الملوّنُ ينتقلُ من box-shadow على الزرِّ إلى حدٍّ على ::after مُدخَلٍ
+      للداخل (رأسياً ٩px، أفقياً ٣٠px يطابقُ حشوةَ الزرِّ الأفقية) — فيرسمُ عند حافةِ
+      اللوحةِ اللامعةِ الداخليةِ تماماً بدلَ الحافةِ المعدنيةِ الخارجية.
+   ٢) النصُّ يتمركزُ سطراً واحداً (`white-space:nowrap`) داخلَ اللوحةِ اللامعة، معَ
+      الحفاظِ على علامتَي ✓/✗ ضمنَ النصِّ نفسِه (لا تُضافانِ بشكلٍ منفصل).
+   القيمُ (٩px/٣٠px) قِيسَت بصرياً على ارتفاعِ الزرِّ الحاليِّ (٦٤px) وحدِّه الجانبيِّ
+   (٢٦px) — تُعادُ معايرتُها لو تغيّرت هذه الأبعادُ أو صورةُ الكبسولةِ لاحقاً. */
+.shoogp-ui.skin-capsule .qwin :is(.tf-btns .tf,.chip,.opt){
+  justify-content:center !important; text-align:center !important;
+  white-space:nowrap !important;
+  padding:14px 34px !important;
+  box-shadow:none !important;
+}
+.shoogp-ui.skin-capsule .qwin :is(.tf-btns .tf,.chip,.opt)::after{
+  content:""; position:absolute;
+  top:9px; bottom:9px; left:30px; right:30px;
+  border-radius:999px;
+  border:4px solid transparent;
+  pointer-events:none;
+}
+.shoogp-ui.skin-capsule .qwin :is(.tf.tf-correct,.chip.ok,.opt.correct)::after{
+  border-color:#7cb051;
+  box-shadow:0 0 14px 2px rgba(124,176,81,.65);
+}
+.shoogp-ui.skin-capsule .qwin :is(.tf.tf-wrong,.chip.no,.opt.wrong)::after{
+  border-color:#d9534f;
+  box-shadow:0 0 14px 2px rgba(217,83,79,.6);
+}
+.shoogp-ui.skin-capsule .qwin :is(.tf.tf-correct,.chip.ok,.opt.correct){color:#20340a !important}
+.shoogp-ui.skin-capsule .qwin :is(.tf.tf-wrong,.chip.no,.opt.wrong){
+  color:#7a1f1f !important;
+  animation:cardShake .45s ease;
+}
+@media(prefers-reduced-motion:reduce){
+  .shoogp-ui.skin-capsule .qwin :is(.tf.tf-wrong,.chip.no,.opt.wrong){animation:none}
 }
 /* التحويم/النقر: رفعٌ وانضغاطٌ بالتحوّل وحدَه (بلا مسّ لـborder-image) */
 .shoogp-ui.skin-capsule .qwin :where(.opt,.tf,.excl-opt,.mitem,.chip,.mmchip,.seqitem,.aopt,

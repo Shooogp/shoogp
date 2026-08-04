@@ -199,7 +199,7 @@ var FRAME_FAMILIES={
     s:{img:'frame-arabic-s.png', ar:'1648 / 978',  win:{top:'23.3%', left:'18.9%', right:'23.7%', bottom:'20.1%'}, hasFill:true, fillColor:'#F9E8D5'},
     m:{img:'frame-arabic-m.png', ar:'1448 / 1086', win:{top:'23%',   left:'19.1%', right:'20.4%', bottom:'24.1%'}, hasFill:true, fillColor:'#F8E4D0'},
     l:{img:'frame-arabic-l.png', ar:'1254 / 1254', win:{top:'18.2%', left:'19.9%', right:'17.8%', bottom:'16.5%'}, hasFill:true, fillColor:'#F7E2CE'},
-    tall:{img:'frame-arabic-tall.png', ar:'897 / 1665', win:{top:'18.7%', left:'18.4%', right:'20.5%', bottom:'24.5%'}, hasFill:true, fillColor:'#F7E6D4'}
+    tall:{img:'frame-arabic-tall.png', ar:'980 / 1819', win:{top:'18.7%', left:'18.9%', right:'20.5%', bottom:'24.6%'}, hasFill:true, fillColor:'#F7E6D4'}
   }}
 };
 /* مادةُ الدرس → عائلةُ الفريم: الرياضيات ← math، اللغةُ العربيةُ ← arabic، وبقيةُ
