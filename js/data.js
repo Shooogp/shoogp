@@ -297,44 +297,44 @@ window.DATA_FALLBACK = {
     ]},
     "g3-math": { book:"الرياضيات — الصف الثالث", units:[
       { unit:"١أ: العدد وحل المشكلات", lessons:[
-        { title:"المئات والعشرات والآحاد (١-١)", file:"g3m-1-1", chapter:1, chapterTitle:"القيمة المكانيّة (١)", open:false },
-        { title:"العدُّ حتى ١٠٠٠ (١-٢)", file:"g3m-1-2", chapter:1, chapterTitle:"القيمة المكانيّة (١)", open:false },
-        { title:"القيمة المكانية (١-٣)", file:"g3m-1-3", chapter:1, chapterTitle:"القيمة المكانيّة (١)", open:false },
-        { title:"أقل بـ١٠ وأكثر بـ١٠ (٢-١)", file:"g3m-2-1", chapter:2, chapterTitle:"اللعب بـ١٠ و١٠٠", open:false },
-        { title:"جمع مجموعة من الأعداد الصغيرة (٣-١)", file:"g3m-3-1", chapter:3, chapterTitle:"جمع مجموعة أعداد صغيرة", open:false },
-        { title:"الضعف والنصف (١) (٤-١)", file:"g3m-4-1", chapter:4, chapterTitle:"الضعف والنصف", open:false },
-        { title:"الأزواج العددية للعدد ١٠٠ (٥-١)", file:"g3m-5-1", chapter:5, chapterTitle:"الأزواج العدديّة", open:false },
-        { title:"العمليات الحسابية المتساوية (٥-٢)", file:"g3m-5-2", chapter:5, chapterTitle:"الأزواج العدديّة", open:false },
-        { title:"مضاعفات الأعداد ٢ و٥ و١٠ (٦-١)", file:"g3m-6-1", chapter:6, chapterTitle:"المضاعفات", open:false },
-        { title:"مضاعفات مختارة (٦-٢)", file:"g3m-6-2", chapter:6, chapterTitle:"المضاعفات", open:false },
-        { title:"أنماط المضاعفات (٦-٣)", file:"g3m-6-3", chapter:6, chapterTitle:"المضاعفات", open:false }
+        { title:"المئات والعشرات والآحاد (١-١)", file:"g3m-1-1", chapter:1, chapterTitle:"القيمة المكانيّة (١)", open:true },
+        { title:"العدُّ حتى ١٠٠٠ (١-٢)", file:"g3m-1-2", chapter:1, chapterTitle:"القيمة المكانيّة (١)", open:true },
+        { title:"القيمة المكانية (١-٣)", file:"g3m-1-3", chapter:1, chapterTitle:"القيمة المكانيّة (١)", open:true },
+        { title:"أقل بـ١٠ وأكثر بـ١٠ (٢-١)", file:"g3m-2-1", chapter:2, chapterTitle:"اللعب بـ١٠ و١٠٠", open:true },
+        { title:"جمع مجموعة من الأعداد الصغيرة (٣-١)", file:"g3m-3-1", chapter:3, chapterTitle:"جمع مجموعة أعداد صغيرة", open:true },
+        { title:"الضعف والنصف (١) (٤-١)", file:"g3m-4-1", chapter:4, chapterTitle:"الضعف والنصف", open:true },
+        { title:"الأزواج العددية للعدد ١٠٠ (٥-١)", file:"g3m-5-1", chapter:5, chapterTitle:"الأزواج العدديّة", open:true },
+        { title:"العمليات الحسابية المتساوية (٥-٢)", file:"g3m-5-2", chapter:5, chapterTitle:"الأزواج العدديّة", open:true },
+        { title:"مضاعفات الأعداد ٢ و٥ و١٠ (٦-١)", file:"g3m-6-1", chapter:6, chapterTitle:"المضاعفات", open:true },
+        { title:"مضاعفات مختارة (٦-٢)", file:"g3m-6-2", chapter:6, chapterTitle:"المضاعفات", open:true },
+        { title:"أنماط المضاعفات (٦-٣)", file:"g3m-6-3", chapter:6, chapterTitle:"المضاعفات", open:true }
       ]},
       { unit:"١ب: الهندسة وحل المشكلات", lessons:[
-        { title:"الأشكال ثنائية الأبعاد (٧-١)", file:"g3m-7-1", chapter:7, chapterTitle:"المزيد من الأشكال الهندسية", open:false },
-        { title:"استكشاف الأشكال ثلاثية الأبعاد (٧-٢)", file:"g3m-7-2", chapter:7, chapterTitle:"المزيد من الأشكال الهندسية", open:false },
-        { title:"شبكات الأشكال ثلاثية الأبعاد (٧-٣)", file:"g3m-7-3", chapter:7, chapterTitle:"المزيد من الأشكال الهندسية", open:false },
-        { title:"التماثل (٨-١)", file:"g3m-8-1", chapter:8, chapterTitle:"التماثل والحركة", open:false },
-        { title:"الاتجاه والحركة (٨-٢)", file:"g3m-8-2", chapter:8, chapterTitle:"التماثل والحركة", open:false }
+        { title:"الأشكال ثنائية الأبعاد (٧-١)", file:"g3m-7-1", chapter:7, chapterTitle:"المزيد من الأشكال الهندسية", open:true },
+        { title:"استكشاف الأشكال ثلاثية الأبعاد (٧-٢)", file:"g3m-7-2", chapter:7, chapterTitle:"المزيد من الأشكال الهندسية", open:true },
+        { title:"شبكات الأشكال ثلاثية الأبعاد (٧-٣)", file:"g3m-7-3", chapter:7, chapterTitle:"المزيد من الأشكال الهندسية", open:true },
+        { title:"التماثل (٨-١)", file:"g3m-8-1", chapter:8, chapterTitle:"التماثل والحركة", open:true },
+        { title:"الاتجاه والحركة (٨-٢)", file:"g3m-8-2", chapter:8, chapterTitle:"التماثل والحركة", open:true }
       ]},
       { unit:"١ج: القياس وحل المشكلات", lessons:[
-        { title:"النقود (٩-١)", file:"g3m-9-1", chapter:9, chapterTitle:"النقود", open:false },
-        { title:"الوقت (١٠-١)", file:"g3m-10-1", chapter:10, chapterTitle:"الوقت", open:false },
-        { title:"الوقت والنمو (١١-١)", file:"g3m-11-1", chapter:11, chapterTitle:"القياسات", open:false },
-        { title:"النمو والحصاد (١١-٢)", file:"g3m-11-2", chapter:11, chapterTitle:"القياسات", open:false }
+        { title:"النقود (٩-١)", file:"g3m-9-1", chapter:9, chapterTitle:"النقود", open:true },
+        { title:"الوقت (١٠-١)", file:"g3m-10-1", chapter:10, chapterTitle:"الوقت", open:true },
+        { title:"الوقت والنمو (١١-١)", file:"g3m-11-1", chapter:11, chapterTitle:"القياسات", open:true },
+        { title:"النمو والحصاد (١١-٢)", file:"g3m-11-2", chapter:11, chapterTitle:"القياسات", open:true }
       ]},
       { unit:"٢أ: العدد وحل المشكلات", lessons:[
-        { title:"الأعداد المكوَّنة من ثلاثة أرقام (١٢-١)", file:"g3m-12-1", chapter:12, chapterTitle:"القيمة المكانيّة (٢)", open:false },
-        { title:"مقارنة الأعداد (١٢-٢)", file:"g3m-12-2", chapter:12, chapterTitle:"القيمة المكانيّة (٢)", open:false },
-        { title:"الضرب × ١٠ (١٢-٣)", file:"g3m-12-3", chapter:12, chapterTitle:"القيمة المكانيّة (٢)", open:false },
-        { title:"التقريب إلى أقرب ١٠ أو ١٠٠ (١٣-١)", file:"g3m-13-1", chapter:13, chapterTitle:"التقدير والتقريب", open:false },
-        { title:"التقدير (١٣-٢)", file:"g3m-13-2", chapter:13, chapterTitle:"التقدير والتقريب", open:false },
-        { title:"الضعف والنصف (٢) (١٤-١)", file:"g3m-14-1", chapter:14, chapterTitle:"الضعف والنصف", open:false },
-        { title:"استقصاء حول الجمع (١٥-١)", file:"g3m-15-1", chapter:15, chapterTitle:"الجمع والطرح", open:false },
-        { title:"استقصاء حول الطرح (١٥-٢)", file:"g3m-15-2", chapter:15, chapterTitle:"الجمع والطرح", open:false },
-        { title:"جمع وطرح الأعداد المكونة من ثلاثة أرقام (١٥-٣)", file:"g3m-15-3", chapter:15, chapterTitle:"الجمع والطرح", open:false },
-        { title:"مضاعفات ٥ و١٠ (١٦-١)", file:"g3m-16-1", chapter:16, chapterTitle:"المزيد من المضاعفات", open:false },
-        { title:"مضاعفات ٢ و٤ (١٦-٢)", file:"g3m-16-2", chapter:16, chapterTitle:"المزيد من المضاعفات", open:false },
-        { title:"مضاعفات ٣ و٦ و٩ (١٦-٣)", file:"g3m-16-3", chapter:16, chapterTitle:"المزيد من المضاعفات", open:false }
+        { title:"الأعداد المكوَّنة من ثلاثة أرقام (١٢-١)", file:"g3m-12-1", chapter:12, chapterTitle:"القيمة المكانيّة (٢)", open:true },
+        { title:"مقارنة الأعداد (١٢-٢)", file:"g3m-12-2", chapter:12, chapterTitle:"القيمة المكانيّة (٢)", open:true },
+        { title:"الضرب × ١٠ (١٢-٣)", file:"g3m-12-3", chapter:12, chapterTitle:"القيمة المكانيّة (٢)", open:true },
+        { title:"التقريب إلى أقرب ١٠ أو ١٠٠ (١٣-١)", file:"g3m-13-1", chapter:13, chapterTitle:"التقدير والتقريب", open:true },
+        { title:"التقدير (١٣-٢)", file:"g3m-13-2", chapter:13, chapterTitle:"التقدير والتقريب", open:true },
+        { title:"الضعف والنصف (٢) (١٤-١)", file:"g3m-14-1", chapter:14, chapterTitle:"الضعف والنصف", open:true },
+        { title:"استقصاء حول الجمع (١٥-١)", file:"g3m-15-1", chapter:15, chapterTitle:"الجمع والطرح", open:true },
+        { title:"استقصاء حول الطرح (١٥-٢)", file:"g3m-15-2", chapter:15, chapterTitle:"الجمع والطرح", open:true },
+        { title:"جمع وطرح الأعداد المكونة من ثلاثة أرقام (١٥-٣)", file:"g3m-15-3", chapter:15, chapterTitle:"الجمع والطرح", open:true },
+        { title:"مضاعفات ٥ و١٠ (١٦-١)", file:"g3m-16-1", chapter:16, chapterTitle:"المزيد من المضاعفات", open:true },
+        { title:"مضاعفات ٢ و٤ (١٦-٢)", file:"g3m-16-2", chapter:16, chapterTitle:"المزيد من المضاعفات", open:true },
+        { title:"مضاعفات ٣ و٦ و٩ (١٦-٣)", file:"g3m-16-3", chapter:16, chapterTitle:"المزيد من المضاعفات", open:true }
       ]}
     ]},
     "g1-math": { book:"الرياضيات — الصف الأول", units:[
