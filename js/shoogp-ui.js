@@ -194,12 +194,16 @@ var FRAME_FAMILIES={
   }},
   /* اللغة العربية — عائلةُ إطارٍ مخصّصةٌ لكتبِ «أحب لغتي» (حروفٌ عربيةٌ على مسارِ الكواكب
      بدلَ الفراغ)، تعبئتُها مدموجةٌ في الصورةِ كالرياضيات. `win` مقيسةٌ بملءٍ فيضيٍّ من
-     المركزِ (نفسُ أسلوبِ قياسِ الرياضيات) ثمّ +2% إنساحٌ يُبعدها عن أقواسِ الحروفِ والكواكب. */
+     المركزِ (نفسُ أسلوبِ قياسِ الرياضيات) ثمّ +2% إنساحٌ يُبعدها عن أقواسِ الحروفِ والكواكب.
+     **أُعيدَ القياسُ ٢٠٢٦-٠٨-٠٤** بعدَ رفعِ المعلّمِ نسخاً جديدةً من s وm وl: الأبعادُ
+     كما هي لكنّ **موضعَ النافذةِ ولونَ التعبئةِ تغيّرا** (قاعُ s ارتفعَ 20.1٪→23.6٪ وقاعُ
+     l ‏16.5٪→19.3٪، والتعبئةُ صارت أكثرَ إشباعاً: ‎#F9E8D5→#F4D4B2‎ وأخواتُها). أعِدِ
+     القياسَ بالملءِ الفيضيِّ من المركزِ عندَ كلِّ تحديثٍ للصور — لا تُبقِ القيمَ القديمة. */
   arabic:{ order:['s','m','l','tall'], flexBase:'l', sizes:{
-    s:{img:'frame-arabic-s.png', ar:'1648 / 978',  win:{top:'23.3%', left:'18.9%', right:'23.7%', bottom:'20.1%'}, hasFill:true, fillColor:'#F9E8D5'},
-    m:{img:'frame-arabic-m.png', ar:'1448 / 1086', win:{top:'23%',   left:'19.1%', right:'20.4%', bottom:'24.1%'}, hasFill:true, fillColor:'#F8E4D0'},
-    l:{img:'frame-arabic-l.png', ar:'1254 / 1254', win:{top:'18.2%', left:'19.9%', right:'17.8%', bottom:'16.5%'}, hasFill:true, fillColor:'#F7E2CE'},
-    tall:{img:'frame-arabic-tall.png', ar:'980 / 1819', win:{top:'18.7%', left:'18.9%', right:'20.5%', bottom:'24.6%'}, hasFill:true, fillColor:'#F7E6D4'}
+    s:{img:'frame-arabic-s.png', ar:'1648 / 978',  win:{top:'23.3%', left:'19.0%', right:'23.8%', bottom:'23.6%'}, hasFill:true, fillColor:'#F4D4B2'},
+    m:{img:'frame-arabic-m.png', ar:'1448 / 1086', win:{top:'23%',   left:'19.1%', right:'20.6%', bottom:'24.2%'}, hasFill:true, fillColor:'#F1CDAD'},
+    l:{img:'frame-arabic-l.png', ar:'1254 / 1254', win:{top:'18.2%', left:'19.9%', right:'17.8%', bottom:'19.3%'}, hasFill:true, fillColor:'#F0C8A5'},
+    tall:{img:'frame-arabic-tall.png', ar:'980 / 1819', win:{top:'18.7%', left:'18.9%', right:'20.5%', bottom:'24.6%'}, hasFill:true, fillColor:'#F7E3CC'}
   }}
 };
 /* مادةُ الدرس → عائلةُ الفريم: الرياضيات ← math، اللغةُ العربيةُ ← arabic، وبقيةُ
