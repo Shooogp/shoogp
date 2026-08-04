@@ -1483,11 +1483,36 @@
 .shoogp-ui.skin-capsule .qwin :where(.tf,.excl-opt,.mitem,.mmchip,
                                      .blank.filled,.target.filled){justify-content:center; text-align:center}
 
-/* ═══ لا حلقاتِ صوابٍ/خطأٍ ملوّنةً إطلاقاً في «أحب لغتي» (قرارُ المالك ٢٠٢٦-٠٨-٠٤) ═══
-   **«في كلِّ الأحوالِ لا تجعلْ هذه الخطوطَ الخضراءَ والحمراءَ تظهر.»** فلا `box-shadow`
-   حولَ العنصرِ ولا حدَّ على `::after` — الحلقةُ تُنافسُ زخرفةَ الكبسولةِ نفسَها وتُشوّشُها.
-   **والتغذيةُ الراجعةُ لا تضيع:** تبقى في **لونِ النصّ** (أخضرُ داكنٌ للصواب وأحمرُ داكنٌ
-   للخطأ) وفي **سطرِ الرسالةِ أسفلَ السؤال** (§٣ب.٣) وفي **اهتزازِ الخطأ**. */
+/* ═══ التغذيةُ الراجعةُ: **توهّجٌ داخلَ الزرّ** لا خطٌّ حولَه (قرارُ المالك ٢٠٢٦-٠٨-٠٤) ═══
+   ألغى المالكُ الحلقةَ الملوّنةَ (خطّاً حادّاً حولَ الكبسولةِ يُنافسُ زخرفتَها)، واعتمدَ بدلَها
+   **توهّجاً داخلياً**: أخضرَ للصوابِ وأحمرَ للخطأ.
+   **لماذا على `::after` لا `box-shadow: inset` على الزرِّ نفسِه:** ترتيبُ الرسمِ في CSS يضعُ
+   الظلَّ الداخليَّ **فوقَ الخلفيةِ وتحتَ الحدّ**، و`border-image` **هو** الحدُّ هنا ويغطّي
+   الصندوقَ كلَّه بـ`fill` — فيُدفَنُ التوهّجُ خلفَ رسمِ الكبسولةِ ولا يُرى. أمّا العنصرُ
+   الزائفُ فيُرسمُ **فوقَ** الحدِّ فيظهرُ التوهّجُ على اللوحةِ اللامعة.
+   الطبقةُ محصورةٌ بإزاحاتِ اللوحةِ الداخلية (§أدناه) فلا يتسرّبُ التوهّجُ على الإطارِ المعدنيّ،
+   و`border-radius:999px` يجعلُه يتبعُ انحناءَ الكبسولة. */
+.shoogp-ui.skin-capsule .qwin :is(.opt,.tf,.excl-opt,.mitem,.chip,.mmchip,.seqitem,.aopt,
+                                  .blank.filled,.target.filled)::after{
+  content:""; position:absolute;
+  top:11px; bottom:9px; left:17px; right:17px;
+  border-radius:999px;
+  pointer-events:none;
+  box-shadow:none;                       /* بلا توهّجٍ في الحالةِ العادية */
+  transition:box-shadow .18s ease;
+}
+.shoogp-ui.skin-capsule .qwin :is(.opt.correct,.tf.tf-correct,.excl-opt.correct,.mitem.matched,
+                                  .chip.ok,.mmchip.ok,.seqitem.correct,.aopt.correct,
+                                  .blank.correct .chip,.blank.filled.correct .chip,
+                                  .target.filled.correct)::after{
+  box-shadow:inset 0 0 20px 0 rgba(90,160,50,.85);
+}
+.shoogp-ui.skin-capsule .qwin :is(.opt.wrong,.tf.tf-wrong,.excl-opt.wrong,.mitem.shake,
+                                  .chip.no,.mmchip.no,.seqitem.wrong,.aopt.wrong,
+                                  .blank.wrong .chip,.target.wrong)::after{
+  box-shadow:inset 0 0 20px 0 rgba(200,55,50,.82);
+}
+/* ولا خطَّ حولَ العنصرِ في أيِّ حال — الحلقةُ الخارجيةُ ملغاةٌ نهائياً (لا تُعَدْ). */
 .shoogp-ui.skin-capsule .qwin :is(.excl-opt.correct,.mitem.matched,
                                   .mmchip.ok,.seqitem.correct,.aopt.correct,
                                   .blank.correct,.blank.filled.correct,.target.filled.correct){
@@ -1512,16 +1537,14 @@
 }
 /* توسيطُ نصِّ العناصرِ الثلاثةِ الأكثرِ استعمالاً سطراً واحداً داخلَ اللوحةِ اللامعة،
    معَ الحفاظِ على علامتَي ✓/✗ ضمنَ النصِّ نفسِه (لا تُضافانِ بشكلٍ منفصل).
-   **وحلقةُ `::after` أُلغيت بالكامل** بقرارِ المالك ٢٠٢٦-٠٨-٠٤ («في كلِّ الأحوالِ لا
-   تجعلْ هذه الخطوطَ تظهر») — لا تُعَدْ بناؤها؛ التغذيةُ الراجعةُ في لونِ النصِّ وسطرِ
-   الرسالةِ والاهتزاز. */
+   `box-shadow:none` هنا على **الزرِّ نفسِه** (يمنعُ الحلقةَ الخارجية)، ولا يمسُّ طبقةَ
+   `::after` التي تحملُ التوهّجَ الداخليَّ أعلاه. */
 .shoogp-ui.skin-capsule .qwin :is(.tf-btns .tf,.chip,.opt){
   justify-content:center !important; text-align:center !important;
   white-space:nowrap !important;
   padding:14px 34px !important;
   box-shadow:none !important;
 }
-.shoogp-ui.skin-capsule .qwin :is(.tf-btns .tf,.chip,.opt)::after{ content:none !important; }
 .shoogp-ui.skin-capsule .qwin :is(.tf.tf-correct,.chip.ok,.opt.correct){color:#20340a !important}
 .shoogp-ui.skin-capsule .qwin :is(.tf.tf-wrong,.chip.no,.opt.wrong){
   color:#7a1f1f !important;
