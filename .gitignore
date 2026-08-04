@@ -7,6 +7,11 @@ yarn-error.log*
 .claude/settings.local.json
 .claude/launch.json
 
+# أشجار عمل git المؤقتة داخل المستودع — نسخةٌ كاملةٌ من المستودع (‏٨٥ م.ب) تظهر
+# «غير متتبَّعة»، فَـ‏git add -A‏ كان سيُودِعها داخل المستودع نفسه. إزالتُها تكون
+# بـ‏git worktree remove‏ لا بالحذف اليدويّ (وإلا بقي تسجيلُها معطوباً).
+.claude/worktrees/
+
 # ملفات نظام التشغيل
 Thumbs.db
 ehthumbs.db
