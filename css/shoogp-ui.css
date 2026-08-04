@@ -1447,6 +1447,22 @@
 }
 .shoogp-ui.skin-capsule .qwin :where(.opt,.tf,.excl-opt,.mitem,.chip,.mmchip,.seqitem,.aopt,
                                      .blank){position:relative}
+/* ── الفراغُ في «ملء الفراغ» و«ترتيبِ الحروف»: يبقى **سطرياً** فيحتضنُ كلمتَه ──
+   `.blank` أصلُه `inline-block` (‏`css/style.css`)، ومجموعةُ الكبسولةِ أعلاه تجعلُه `flex`
+   وهو **مستوى كتلة**، فبعدَ الإفلاتِ يمتدُّ الزرُّ بعرضِ السطرِ كلِّه بلا داعٍ ويُفكِّكُ
+   تخطيطَ الجملة (رصدَه المالكُ ٢٠٢٦-٠٨-٠٤). `inline-flex` يُبقي التوسيطَ الرأسيَّ الذي
+   تحتاجُه الكبسولةُ ويُعيدُ السلوكَ السطريّ. **نفسُ علاجِ الرياضيات حرفاً بحرف**
+   (`.shoogp-ui.skin-metal .qwin .blank` — §٣.٢)، فهي سابقةٌ محلولةٌ في المنصّةِ لا اجتهادٌ جديد. */
+.shoogp-ui.skin-capsule .qwin .blank{display:inline-flex; vertical-align:middle}
+/* ولا كبسولةَ داخلَ كبسولة: الفراغُ **الممتلئُ** حاويةٌ شفّافةٌ لا زينةَ لها، فتظهرُ
+   كبسولةُ بطاقةِ الكلمةِ (`.chip`) بداخلِه وحدَها. فالمعنى: الكلمةُ بطاقةٌ استقرّت في
+   مكانِها، لا بطاقةٌ داخلَ بطاقة. (الفراغُ الفارغُ يبقى على حدِّه المتقطّعِ الأصليِّ
+   إشارةً إلى «أفلتْ هنا» — قاعدةُ «المحمول ≠ المستقبِل».) */
+.shoogp-ui.skin-capsule .qwin .blank.filled{
+  border-image:none !important; border-width:0 !important; border-style:none !important;
+  background:transparent !important;
+  padding:0 !important; min-height:0 !important;
+}
 /* الاختيارُ من متعدد: النصُّ إلى بدايةِ السطر (يمينُ RTL)؛ وبقيةُ الكبسولاتِ متوسّطة.
    (‏`.opt` تُعادُ توسيطُها أدناه في تعديلِ الثلاثةِ عناصرَ — القاعدةُ هنا للبقيّةِ فقط.) */
 .shoogp-ui.skin-capsule .qwin .opt{justify-content:flex-start; text-align:start}
