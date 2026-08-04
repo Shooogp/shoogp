@@ -221,7 +221,7 @@ function qWin(fb,msg,stars){fb.textContent=msg||'🎉 أحسنت!';fb.className=
 // أي واجهة بلا صاروخ تُبقي wrong.mp3 يعمل (بقية دروس المنصّة كلها تحوي الصاروخ الآن)
 function qFail(fb,msg){fb.textContent=msg||'حاول مرة أخرى';fb.className='fb qfb bad';if(!(window.RocketJourney&&RocketJourney.isActive&&RocketJourney.isActive()))playWrongSound();if(window.RocketJourney)RocketJourney.onAnswer(false);}
 
-const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل','slider':'🎚️ الشريط المتدرج','memory':'🎴 بطاقات الذاكرة','lens':'🔍 العدسة المكبّرة','equation-builder':'🧮 بناء المعادلة','number-line':'📏 خط الأعداد','hundred-chart':'💯 لوحة المائة','array':'🔲 المصفوفات','compare':'⚖️ المقارنة','pattern':'🔁 إكمال النمط','count-tap':'🖐️ العد بالنقر','place-value':'🧱 القيمة المنزلية','clock':'🕐 الساعة التفاعلية','measure-tool':'📐 أداة القياس','money':'🪙 النقود العُمانية','symmetry':'🪞 خط التماثل','chart-read':'📊 التمثيل البياني'};
+const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل','slider':'🎚️ الشريط المتدرج','memory':'🎴 بطاقات الذاكرة','lens':'🔍 العدسة المكبّرة','equation-builder':'🧮 بناء المعادلة','number-line':'📏 خط الأعداد','hundred-chart':'💯 لوحة المائة','array':'🔲 المصفوفات','compare':'⚖️ المقارنة','pattern':'🔁 إكمال النمط','count-tap':'🖐️ العد بالنقر','place-value':'🧱 القيمة المنزلية','clock':'🕐 الساعة التفاعلية','measure-tool':'📐 أداة القياس','money':'🪙 النقود العُمانية','symmetry':'🪞 خط التماثل','chart-read':'📊 التمثيل البياني','tashkeel':'ـَ التشكيل','sentence':'📝 ترتيب الجملة','sun-moon':'☀️ شمسية وقمرية','letter-picture':'🔠 الحرف والصورة'};
 
 // تحويل الأرقام إلى هندية (عربية) للعرض
 function arNum(n){ return String(n).replace(/[0-9]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'[+d];}); }
@@ -236,7 +236,7 @@ function renderQuestions(ls){
     m.innerHTML='<div class="qbody" style="text-align:center;padding:14px 6px;font-size:1.15rem">📚 أسئلة هذا الدرس ستُضاف قريباً بإذن الله</div>';
     host.appendChild(m); return;
   }
-  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor,'puzzle':renderPuzzle,'slider':renderSlider,'memory':renderMemory,'lens':renderLens,'equation-builder':renderEquationBuilder,'number-line':renderNumberLine,'hundred-chart':renderHundredChart,'array':renderArray,'compare':renderCompare,'pattern':renderPattern,'count-tap':renderCountTap,'place-value':renderPlaceValue,'clock':renderClock,'measure-tool':renderMeasureTool,'money':renderMoney,'symmetry':renderSymmetry,'chart-read':renderChartRead};
+  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor,'puzzle':renderPuzzle,'slider':renderSlider,'memory':renderMemory,'lens':renderLens,'equation-builder':renderEquationBuilder,'number-line':renderNumberLine,'hundred-chart':renderHundredChart,'array':renderArray,'compare':renderCompare,'pattern':renderPattern,'count-tap':renderCountTap,'place-value':renderPlaceValue,'clock':renderClock,'measure-tool':renderMeasureTool,'money':renderMoney,'symmetry':renderSymmetry,'chart-read':renderChartRead,'tashkeel':renderTashkeel,'sentence':renderSentence,'sun-moon':renderSunMoon,'letter-picture':renderLetterPicture};
 
   // بناء كل البطاقات (تبقى في الصفحة لحفظ إجاباتها، ونُظهر واحدة فقط)
   // شارة رقم السؤال أُلغيت (قرار المالك): مؤشر التقدم «السؤال ٢ من ٦» يغني عنها
@@ -1159,15 +1159,33 @@ function renderExclude(q, body, fb){
 function renderArrange(q, body, fb){
   const target=Array.from(q.word);                                   // الترتيب الصحيح للحروف
   const scatter=(q.letters && q.letters.length) ? q.letters.slice() : target.slice();
+  return renderTokenOrder(q, body, fb, {
+    target, scatter,
+    wrapClass:'arrange', slotClass:'', chipClass:'',
+    bankTitle:'الحروف:',
+    reveal:q.word,
+    win:'🎉 أحسنت! كوّنت الكلمة: '+q.word,
+    fail:'راجع الترتيب',
+    again:()=>renderArrange(q,body,fb)
+  });
+}
+
+/* محرّكُ الترتيبِ المشترك — يخدمُ `arrange` (حروف) و`sentence` (كلمات) بمنطقٍ واحد.
+   الفرقُ بينهما بيانيٌّ لا سلوكيّ: ما يُرتَّب رمزٌ (حرفٌ أو كلمة)، والخاناتُ والبنكُ
+   والتحقّقُ والكشفُ سواء. أصنافُ الـDOM تبقى أصنافَ `arrange` نفسَها (`lslot`/`lchip`)
+   فترثُ CSS القائمَ وقشرةَ المادةِ تلقائياً، ويضيفُ النوعُ الجديدُ صنفَه المميِّزَ فوقَها.
+   cfg: { target[], scatter[], wrapClass, slotClass, chipClass, bankTitle, reveal, win, fail, again } */
+function renderTokenOrder(q, body, fb, cfg){
+  const target=cfg.target, scatter=cfg.scatter.slice();
   const n=target.length;
   // خلط الحروف بحيث لا يبدأ البنك بالترتيب الصحيح
   let bank=shuffle(scatter);
   if(n>1){ let g=0; while(bank.every((c,i)=>c===target[i]) && g++<20) bank=shuffle(scatter); }
   let cells='';
-  for(let i=0;i<n;i++) cells+=`<span class="lslot" data-i="${i}" data-answer="${target[i]}"></span>`;
-  body.innerHTML=`<div class="arrange"><div class="lslots">${cells}</div>`+
-    `<div class="bank arrbank"><div class="bt">الحروف:</div><div class="chips lbank">`+
-    bank.map(c=>`<div class="chip lchip" draggable="true" data-w="${c}">${c}</div>`).join('')+
+  for(let i=0;i<n;i++) cells+=`<span class="lslot ${cfg.slotClass}" data-i="${i}" data-answer="${target[i]}"></span>`;
+  body.innerHTML=`<div class="arrange ${cfg.wrapClass}"><div class="lslots">${cells}</div>`+
+    `<div class="bank arrbank"><div class="bt">${cfg.bankTitle}</div><div class="chips lbank">`+
+    bank.map(c=>`<div class="chip lchip ${cfg.chipClass}" draggable="true" data-w="${c}">${c}</div>`).join('')+
     `</div></div></div>`+
     `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
   let dragged=null, done=false;
@@ -1201,14 +1219,14 @@ function renderArrange(q, body, fb){
       else if(c){c.classList.add('no');c.classList.remove('ok');} });
     if(ok===n){
       done=true;
-      qWin(fb,'🎉 أحسنت! كوّنت الكلمة: '+q.word,3);
-      // كشف الكلمة كاملة متّصلة بعد أن رتّب الطفل حروفها منفصلة
+      qWin(fb,cfg.win,3);
+      // كشف النصّ كاملاً متّصلاً بعد أن رتّب الطفل رموزه منفصلة
       const wrap=body.querySelector('.lslots');
-      if(wrap) wrap.innerHTML=`<span class="lword">${q.word}</span>`;
+      if(wrap) wrap.innerHTML=`<span class="lword ${cfg.chipClass}">${cfg.reveal}</span>`;
     }
-    else qFail(fb,`راجع الترتيب — الصحيح ${arNum(ok)} من ${arNum(n)}`);
+    else qFail(fb,`${cfg.fail} — الصحيح ${arNum(ok)} من ${arNum(n)}`);
   };
-  body.querySelector('.btn-reset').onclick=()=>renderArrange(q,body,fb);
+  body.querySelector('.btn-reset').onclick=cfg.again;
 }
 
 /* ⑪ الخريطة الذهنية الناقصة (mindmap): center + branches[{label, answer}] + distractors[]
@@ -2717,6 +2735,244 @@ function renderChartRead(q, body, fb){
     } else { btn.classList.add('wrong'); btn.disabled=true;
       qFail(fb,'اقرأْ ارتفاعَ العمودِ على تدريجِ المحورِ ثم أجبْ'); }
   };});
+}
+
+/* ══════════ الأنواعُ الخاصةُ باللغةِ العربية («أحب لغتي») ══════════
+   أربعةُ أنواعٍ بُنيت بطلبٍ مستقلٍّ (قاعدةُ بناءِ الأنواعِ الجديدة — CLAUDE.md)، وكلُّها
+   على محرّكاتِ المنصّةِ القائمةِ لا بجانبِها: `tashkeel` على بنكِ البطاقاتِ وخاناتِ `.blank`،
+   و`sentence` على محرّكِ الترتيبِ المشتركِ نفسِه الذي يخدمُ `arrange`، و`sun-moon` على
+   صناديقِ `classify`، و`letter-picture` على خطوطِ `matching`. وتستعملُ **أصنافَ العناصرِ
+   القائمةَ** (`.chip` و`.blank` و`.mitem`) فترثُ قشرةَ «الكبسولة» تلقائياً بلا CSS جديدٍ فيها.
+
+   ومبدأٌ يجمعُ `tashkeel` و`sun-moon`: **البياناتُ تُكتَبُ مرّةً والباقي يُشتَقّ** — الحركاتُ
+   تُقشَّرُ من الكلمةِ المشكولة، ونوعُ اللامِ يُحسَبُ من الحرفِ التالي — فلا يقعُ المؤلِّفُ
+   في خطأِ تصنيفٍ لغويٍّ ولا يُكرّرُ الجوابَ في حقلٍ ثانٍ يتعارضُ مع الأول. */
+
+/* ㉜ التشكيل (tashkeel): `word` = الكلمةُ **مشكولةً كاملة** (مثل "كَتَبَ").
+   تُقشَّرُ الحركاتُ برمجياً: كلُّ حرفٍ يحملُ حركةً في المصدرِ تصيرُ فوقَه خانةٌ فارغة،
+   والحرفُ العاري (كألفِ «قال») يبقى بلا خانةٍ فلا يُطالَبُ الطفلُ بما لا حركةَ له.
+   والحركاتُ المتتاليةُ على حرفٍ واحد (الشدّةُ معَ الفتحة) **وحدةٌ واحدةٌ وبطاقةٌ واحدة**،
+   فالطفلُ يرى «ــَّ» كما ينطقُها لا رمزَين يركّبُهما.
+   التفاعلُ **نقرٌ لا سحب** (نمطُ لوحةِ ألوانِ `color`): تُختارُ الحركةُ ثم تُنقَرُ الحروف —
+   لأنّ **بطاقةَ الحركةِ لا تُستهلَك** (الفتحةُ الواحدةُ قد تلزمُ ثلاثةَ حروف)، والنقرُ
+   أسلمُ على السبورةِ من سحبِ نسخةٍ عن بطاقةٍ باقية. ونقرُ الحرفِ بحركتِه نفسِها يمحوها.
+   الحقول: `word` (إلزامي)، `marks[]` (اختياري — بنكُ حركاتٍ مخصّص). */
+/* الحركاتُ **بترميزِ `\u` صريحٍ لا بحرفِها المجرّد**: الحركةُ علامةٌ تركيبيةٌ لا عرضَ لها،
+   فلو كُتبت في المصدرِ حرفاً لالتصقت بالاقتباسِ قبلَها وصارت غيرَ مرئيةٍ للقارئِ ولا
+   للمراجِع، ويُتلفُها أيُّ نسخٍ أو محرّرٍ لا يحسنُ التطبيع. والترميزُ يجعلُها مقروءةً
+   ومتينة. النطاق U+064B–U+0652 = التنوينُ والحركاتُ والشدّةُ والسكون. */
+const AR_MARK_RE=/[\u064B-\u0652]/;
+const AR_SHADDA='\u0651', AR_SUKUN='\u0652';
+const AR_MARK_POOL=['\u064E','\u064F','\u0650','\u0652','\u0651'];  // فتحة، ضمّة، كسرة، سكون، شدّة
+function renderTashkeel(q, body, fb){
+  // ①  تقشيرُ الكلمة: كلُّ وحدةٍ = حرفٌ أساسيٌّ + ما تلاه من حركات
+  const units=[];
+  Array.from(q.word).forEach(ch=>{
+    if(AR_MARK_RE.test(ch) && units.length) units[units.length-1].mark+=ch;
+    else units.push({ch, mark:''});
+  });
+  const needed=units.filter(u=>u.mark);                   // الحروفُ المطلوبُ تشكيلُها
+  if(!needed.length){ body.innerHTML='<div class="qerr">كلمةُ السؤالِ غيرُ مشكولة</div>'; return; }
+  // ②  بنكُ الحركات: حركاتُ الكلمةِ نفسِها، ثم يُكمَّلُ من الحركاتِ القياسيةِ حتى ثلاثٍ
+  //     على الأقلّ — كي لا يصيرَ السؤالُ بلا اختيارٍ حين تتّحدُ حركاتُ الكلمةِ كلُّها.
+  let bank=q.marks ? q.marks.slice() : [];
+  if(!bank.length){
+    needed.forEach(u=>{ if(bank.indexOf(u.mark)<0) bank.push(u.mark); });
+    for(let i=0;i<AR_MARK_POOL.length && bank.length<3;i++)
+      if(bank.indexOf(AR_MARK_POOL[i])<0) bank.push(AR_MARK_POOL[i]);
+  }
+  bank=shuffle(bank);
+  // ③  البناء: عمودٌ لكلِّ حرف — الخانةُ فوقَه والحرفُ تحتَها (قراءةُ الكلمةِ يمين→يسار)
+  let cols='';
+  units.forEach((u,i)=>{
+    const slot=u.mark
+      ? `<span class="blank tshslot" data-i="${i}" data-answer="${u.mark}"></span>`
+      : `<span class="tshslot tsh-none"></span>`;
+    cols+=`<span class="tshcol">${slot}<span class="tshletter">${u.ch}</span></span>`;
+  });
+  body.innerHTML=`<div class="tashkeel"><div class="tshword">${cols}</div>`+
+    `<div class="bank tshbank"><div class="bt">الحركات:</div><div class="chips">`+
+    bank.map(m=>`<button type="button" class="chip tshmark" data-m="${m}">ـ${m}</button>`).join('')+
+    `</div></div></div>`+
+    `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
+  let pick=bank[0], done=false;
+  const marks=body.querySelectorAll('.tshmark');
+  const paint=()=>marks.forEach(b=>b.classList.toggle('sel', b.dataset.m===pick));
+  paint();
+  marks.forEach(b=>b.onclick=()=>{ if(done)return; pick=b.dataset.m; paint(); });
+  const clearMark=()=>body.querySelectorAll('.tshslot').forEach(s=>s.classList.remove('correct','wrong'));
+  body.querySelectorAll('.blank.tshslot').forEach(slot=>{
+    slot.onclick=()=>{
+      if(done)return;
+      // نقرُ الحرفِ بحركتِه نفسِها يمحوها (مِفتاحُ تصحيحٍ بلا زرٍّ إضافي)
+      if(slot.dataset.put===pick){ slot.dataset.put=''; slot.innerHTML=''; slot.classList.remove('filled'); }
+      else { slot.dataset.put=pick; slot.innerHTML=`<span class="chip tshput">ـ${pick}</span>`; slot.classList.add('filled'); }
+      clearMark();
+    };
+  });
+  body.querySelector('.btn-check').onclick=()=>{
+    if(done)return;
+    const slots=body.querySelectorAll('.blank.tshslot'); let ok=0;
+    slots.forEach(s=>{
+      if(s.dataset.put && s.dataset.put===s.dataset.answer){ s.classList.add('correct'); s.classList.remove('wrong'); ok++; }
+      else { s.classList.add('wrong'); s.classList.remove('correct'); }
+    });
+    if(ok===slots.length){
+      done=true;
+      qWin(fb,'🎉 أحسنت! الكلمةُ مشكولةٌ صحيحةً: '+q.word,3);
+      const w=body.querySelector('.tshword');
+      if(w) w.innerHTML=`<span class="lword tshfull">${q.word}</span>`;
+    }
+    else qFail(fb,`راجعِ الحركات — الصحيح ${arNum(ok)} من ${arNum(slots.length)}`);
+  };
+  body.querySelector('.btn-reset').onclick=()=>renderTashkeel(q,body,fb);
+}
+
+/* ㉝ ترتيبُ كلماتٍ لتكوينِ جملة (sentence): `sentence` = الجملةُ الصحيحة، تُقسَّمُ على
+   المسافاتِ فتصيرُ كلماتُها رموزَ الترتيب. `words[]` (اختياري) لبنكٍ مخصّصٍ يُضافُ إليه
+   دخيلٌ أو تُدمَجُ فيه كلمتانِ متلازمتان. المحرّكُ هو محرّكُ الترتيبِ المشتركُ نفسُه
+   (`renderTokenOrder`) — لا سطرَ منطقٍ مكرّرٌ بينَه وبينَ `arrange`. */
+function renderSentence(q, body, fb){
+  const target=String(q.sentence).trim().split(/\s+/);
+  const scatter=(q.words && q.words.length) ? q.words.slice() : target.slice();
+  return renderTokenOrder(q, body, fb, {
+    target, scatter,
+    wrapClass:'sentbuild', slotClass:'wslot', chipClass:'wchip',
+    bankTitle:'الكلمات:',
+    reveal:q.sentence,
+    win:'🎉 أحسنت! الجملة: '+q.sentence,
+    fail:'راجعْ ترتيبَ الكلمات',
+    again:()=>renderSentence(q,body,fb)
+  });
+}
+
+/* ㉞ الحروفُ الشمسيةُ والقمرية (sun-moon): `words[]` كلماتٌ معرَّفةٌ بـ«ال» **نصّاً فقط**،
+   والنوعُ يستنتجُ شمسيَّتَها من قمريَّتِها بالحروفِ الأربعةَ عشرَ المعروفة — فلا يُكتَبُ
+   الجوابُ في البياناتِ أصلاً ولا يُخطئُ المؤلِّفُ تصنيفَ حرف. (يجوزُ `{word, kind}` لكلمةٍ
+   شاذّةٍ أو غيرِ مبدوءةٍ بـ«ال».)
+   وفائدةُ الدرسِ تظهرُ **عندَ الصواب**: تُكشَفُ صورةُ النطقِ — «الشّمس» بشدّةٍ على الحرفِ
+   بعدَ اللام (اللامُ لا تُنطَق)، و«الْقمر» بسكونٍ على اللامِ (تُنطَقُ ساكنة) — فالتغذيةُ
+   الراجعةُ تعليمٌ لا حكمٌ فقط. صناديقُ الاستقبالِ صناديقُ `classify` نفسُها. */
+const AR_SUN='تثدذرزسشصضطظلن';
+function renderSunMoon(q, body, fb){
+  const items=q.words.map(w=>{
+    const word=(typeof w==='string')?w:w.word;
+    let kind=(typeof w==='object' && w.kind) ? w.kind : null;
+    const after=(word.indexOf('ال')===0) ? word.charAt(2) : '';
+    if(!kind) kind = (after && AR_SUN.indexOf(after)>=0) ? 'sun' : 'moon';
+    // صورةُ النطق: شدّةٌ على الحرفِ بعدَ اللامِ في الشمسية، وسكونٌ على اللامِ في القمرية
+    const show = after
+      ? (kind==='sun' ? 'ال'+after+AR_SHADDA+word.slice(3) : 'ال'+AR_SUKUN+word.slice(2))
+      : word;
+    return {word, kind, show};
+  });
+  const zone=(key,name,ic)=>`<div class="grp smgrp"><div class="grp-h">${ic} ${name}</div>`+
+    `<div class="grp-drop" data-kind="${key}"></div></div>`;
+  body.innerHTML=`<div class="classify sunmoon"><div class="grp-row">`+
+    zone('sun','شمسية','☀️')+zone('moon','قمرية','🌙')+`</div>`+
+    `<div class="bank clsbank"><div class="bt">الكلمات:</div><div class="chips">`+
+    shuffle(items).map(it=>`<div class="chip smchip" draggable="true" data-w="${it.word}">${it.word}</div>`).join('')+
+    `</div></div></div>`+
+    `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
+  const kindOf={}, showOf={};
+  items.forEach(it=>{kindOf[it.word]=it.kind; showOf[it.word]=it.show;});
+  let dragged=null, done=false;
+  const clearMark=()=>body.querySelectorAll('.smchip').forEach(c=>c.classList.remove('ok','no'));
+  const place=z=>{ if(!dragged)return; z.appendChild(dragged); clearMark(); dragged=null; };
+  body.querySelectorAll('.smchip').forEach(chip=>{
+    chip.addEventListener('dragstart',()=>{dragged=chip;chip.classList.add('dragging')});
+    chip.addEventListener('dragend',()=>chip.classList.remove('dragging'));
+    chip.addEventListener('touchstart',()=>{dragged=chip;chip.classList.add('dragging')},{passive:true});
+    chip.addEventListener('touchend',e=>{const t=e.changedTouches[0];const el=document.elementFromPoint(t.clientX,t.clientY);
+      const z=el&&el.closest('.grp-drop, .chips'); if(z)place(z); chip.classList.remove('dragging')});
+  });
+  body.querySelectorAll('.grp-drop, .clsbank .chips').forEach(z=>{
+    z.addEventListener('dragover',e=>{e.preventDefault();z.classList.add('over')});
+    z.addEventListener('dragleave',()=>z.classList.remove('over'));
+    z.addEventListener('drop',e=>{e.preventDefault();z.classList.remove('over');place(z)});
+  });
+  body.querySelector('.btn-check').onclick=()=>{
+    if(done)return;
+    let ok=0;
+    body.querySelectorAll('.grp-drop').forEach(z=>{
+      z.querySelectorAll('.smchip').forEach(c=>{
+        if(kindOf[c.dataset.w]===z.dataset.kind){c.classList.add('ok');c.classList.remove('no');ok++;}
+        else{c.classList.add('no');c.classList.remove('ok');}
+      });
+    });
+    if(ok===items.length){
+      done=true;
+      // كشفُ صورةِ النطقِ على كلِّ بطاقةٍ بعدَ صحّةِ التصنيف
+      body.querySelectorAll('.smchip').forEach(c=>{c.textContent=showOf[c.dataset.w];c.classList.add('revealed');});
+      qWin(fb,'🎉 أحسنت! في الشمسيةِ لا تُنطَقُ اللامُ ويُشدَّدُ الحرفُ بعدَها، وفي القمريةِ تُنطَقُ اللامُ ساكنة',3);
+    }
+    else qFail(fb,`راجعِ التصنيف — الصحيح ${arNum(ok)} من ${arNum(items.length)}`);
+  };
+  body.querySelector('.btn-reset').onclick=()=>renderSunMoon(q,body,fb);
+}
+
+/* ㉟ توصيلُ الحرفِ بالصورة (letter-picture): `pairs[{letter, word, img|svg}]` — عمودُ حروفٍ
+   وعمودُ صور، يُنقَرُ الحرفُ ثم صورتُه فيُرسَمُ الخطُّ الواصل. وعندَ الوصلِ الصحيحِ
+   **تظهرُ الكلمةُ تحتَ الصورةِ وحرفُها الأولُ مميَّز**، فيرى الطفلُ الصوتَ في موضعِه من
+   الكلمةِ لا مجرّدَ «صحيح». الصورةُ إمّا أصلٌ من `images/` (`img`) أو SVG مكتوبٌ معَ
+   السؤال (`svg`) — والثاني هو الأصلُ في قاعدةِ الرسومِ (CLAUDE.md).
+   محرّكُ الخطِّ المنحني هو محرّكُ `matching` نفسُه. */
+function renderLetterPicture(q, body, fb){
+  body.innerHTML=`<div class="matchwrap lpwrap"><svg class="matchsvg"></svg>`+
+    `<div class="match"><div class="mcol mcolL"></div><div class="mcol mcolR"></div></div></div>`+
+    `<div class="actions"><button class="btn btn-reset">إعادة ↺</button></div>`;
+  const wrap=body.querySelector('.matchwrap'), svg=body.querySelector('.matchsvg');
+  const L=body.querySelector('.mcolL'), Rr=body.querySelector('.mcolR');
+  const NS='http://www.w3.org/2000/svg';
+  let sel=null, done=0;
+  function drawLink(a,b){
+    const R=window.fitRect||(el=>el.getBoundingClientRect());
+    const wr=R(wrap), ra=R(a), rb=R(b);
+    const aRight = ra.left < rb.left;
+    const ax=(aRight?ra.right:ra.left)-wr.left, ay=ra.top+ra.height/2-wr.top;
+    const bx=(aRight?rb.left:rb.right)-wr.left, by=rb.top+rb.height/2-wr.top;
+    const mx=(ax+bx)/2;
+    const p=document.createElementNS(NS,'path');
+    p.setAttribute('d',`M ${ax} ${ay} C ${mx} ${ay}, ${mx} ${by}, ${bx} ${by}`);
+    p.setAttribute('fill','none'); p.setAttribute('stroke',MATCH_LINE);
+    p.setAttribute('stroke-width','3.5'); p.setAttribute('stroke-linecap','round');
+    svg.appendChild(p);
+    [[ax,ay],[bx,by]].forEach(pt=>{const c=document.createElementNS(NS,'circle');
+      c.setAttribute('cx',pt[0]); c.setAttribute('cy',pt[1]); c.setAttribute('r','5');
+      c.setAttribute('fill',MATCH_LINE); svg.appendChild(c);});
+  }
+  // عمودُ الصور (يسار) — الكلمةُ مخفيّةٌ حتى يصحَّ الوصل.
+  // **ليست `.mitem` عن قصد:** الكبسولةُ زخرفةُ نصٍّ لا إطارُ صورة، ولو حملتِ البطاقةُ
+  // صنفَ `.mitem` لفُرِدَت عليها كبسولةٌ ضخمةٌ حولَ الرسم. فلها لوحُها الهادئُ الخاصّ
+  // (‏`.lpcard` في `style.css`)، وتبقى الكبسولةُ لعمودِ الحروفِ النصّيّ وحدَه.
+  shuffle(q.pairs).forEach(pr=>{
+    const d=document.createElement('div');
+    d.className='lpcard left'; d.dataset.k=pr.letter;
+    d.innerHTML=`<span class="lpimg">${pr.svg || `<img src="${pr.img}" alt="">`}</span>`+
+                `<span class="lpword">${pr.word||''}</span>`;
+    d.onclick=()=>{
+      if(!sel || d.classList.contains('matched'))return;
+      if(sel.dataset.k===pr.letter){
+        drawLink(sel,d); sel.classList.add('matched'); d.classList.add('matched','shown');
+        sel.classList.remove('selected'); sel=null; done++; playCorrectSound();
+        if(pr.word) speak(pr.word);
+        if(done===q.pairs.length) qWin(fb,'🌟 ممتاز! وصلتَ كلَّ حرفٍ بصورتِه',1);
+      } else { qFail(fb,'ليس هذا حرفَ الصورة، أعدِ المحاولة'); d.classList.add('shake'); setTimeout(()=>d.classList.remove('shake'),500); }
+    };
+    L.appendChild(d);
+  });
+  // عمودُ الحروف (يمين)
+  shuffle(q.pairs).forEach(pr=>{
+    const d=document.createElement('div');
+    d.className='mitem right lpletter'; d.dataset.k=pr.letter; d.textContent=pr.letter;
+    d.onclick=()=>{
+      if(d.classList.contains('matched'))return;
+      Rr.querySelectorAll('.right').forEach(x=>x.classList.remove('selected'));
+      d.classList.add('selected'); sel=d; speak(pr.letter);
+    };
+    Rr.appendChild(d);
+  });
+  body.querySelector('.btn-reset').onclick=()=>renderLetterPicture(q,body,fb);
 }
 
 /* ===== إقلاع ===== */
