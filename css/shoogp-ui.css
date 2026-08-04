@@ -1483,53 +1483,38 @@
 .shoogp-ui.skin-capsule .qwin :where(.tf,.excl-opt,.mitem,.mmchip,
                                      .blank.filled,.target.filled){justify-content:center; text-align:center}
 
-/* ═══ التغذيةُ الراجعةُ: **توهّجٌ داخلَ الزرّ** لا خطٌّ حولَه (قرارُ المالك ٢٠٢٦-٠٨-٠٤) ═══
-   ألغى المالكُ الحلقةَ الملوّنةَ (خطّاً حادّاً حولَ الكبسولةِ يُنافسُ زخرفتَها)، واعتمدَ بدلَها
-   **توهّجاً داخلياً**: أخضرَ للصوابِ وأحمرَ للخطأ.
-   **لماذا على `::after` لا `box-shadow: inset` على الزرِّ نفسِه:** ترتيبُ الرسمِ في CSS يضعُ
-   الظلَّ الداخليَّ **فوقَ الخلفيةِ وتحتَ الحدّ**، و`border-image` **هو** الحدُّ هنا ويغطّي
-   الصندوقَ كلَّه بـ`fill` — فيُدفَنُ التوهّجُ خلفَ رسمِ الكبسولةِ ولا يُرى. أمّا العنصرُ
-   الزائفُ فيُرسمُ **فوقَ** الحدِّ فيظهرُ التوهّجُ على اللوحةِ اللامعة.
-   الطبقةُ محصورةٌ بإزاحاتِ اللوحةِ الداخلية (§أدناه) فلا يتسرّبُ التوهّجُ على الإطارِ المعدنيّ،
-   و`border-radius:999px` يجعلُه يتبعُ انحناءَ الكبسولة. */
-.shoogp-ui.skin-capsule .qwin :is(.opt,.tf,.excl-opt,.mitem,.chip,.mmchip,.seqitem,.aopt,
-                                  .blank.filled,.target.filled)::after{
-  content:""; position:absolute;
-  top:11px; bottom:9px; left:17px; right:17px;
-  border-radius:999px;
-  pointer-events:none;
-  box-shadow:none;                       /* بلا توهّجٍ في الحالةِ العادية */
-  transition:box-shadow .18s ease;
-}
+/* ═══ التغذيةُ الراجعةُ: **توهّجٌ يخرجُ من خلفِ الزرّ** (قرارُ المالك ٢٠٢٦-٠٨-٠٤) ═══
+   مرَّ القرارُ بثلاثِ مراحلَ حتى استقرَّ — **والمرحلةُ الأخيرةُ هي المعتمدة**:
+   حلقةٌ حادّةٌ حولَ الكبسولة ← أُلغيت · توهّجٌ داخليٌّ على اللوحةِ اللامعة ← لم يُعجبْ ·
+   **توهّجٌ خارجيٌّ ينبعثُ من خلفِ الزرِّ ويتعدّى حدودَه قليلاً ← المعتمد.**
+   أخضرُ للصوابِ وأحمرُ للخطأ.
+
+   **لماذا `box-shadow` خارجيٌّ على الزرِّ نفسِه (لا `::after` ولا `inset`):** الظلُّ
+   الخارجيُّ يُرسَمُ **خارجَ صندوقِ الحدِّ وتحتَ خلفيةِ العنصرِ وحدِّه**، فينبعثُ فعلاً
+   **من خلفِ** رسمِ الكبسولةِ وينتشرُ حولَها — وهو المطلوبُ حرفياً. (بخلافِ `inset` الذي
+   يُدفَنُ خلفَ `border-image` فلا يُرى، ولذا كانَ التوهّجُ الداخليُّ على `::after`.)
+   و`border-radius:999px` على العنصرِ يجعلُ الظلَّ يتبعُ هيئةَ الكبسولةِ لا مستطيلاً.
+   **بلا `spread` كبير:** `0 0 22px 4px` — تجاوزٌ يسيرٌ للحدودِ كما طُلِب، لا هالةٌ ثقيلة. */
 .shoogp-ui.skin-capsule .qwin :is(.opt.correct,.tf.tf-correct,.excl-opt.correct,.mitem.matched,
                                   .chip.ok,.mmchip.ok,.seqitem.correct,.aopt.correct,
                                   .blank.correct .chip,.blank.filled.correct .chip,
-                                  .target.filled.correct)::after{
-  box-shadow:inset 0 0 20px 0 rgba(90,160,50,.85);
+                                  .target.filled.correct){
+  box-shadow:0 0 22px 4px rgba(90,170,45,.85) !important;
+  color:#20340a !important;
 }
 .shoogp-ui.skin-capsule .qwin :is(.opt.wrong,.tf.tf-wrong,.excl-opt.wrong,.mitem.shake,
                                   .chip.no,.mmchip.no,.seqitem.wrong,.aopt.wrong,
-                                  .blank.wrong .chip,.target.wrong)::after{
-  box-shadow:inset 0 0 20px 0 rgba(200,55,50,.82);
-}
-/* ولا خطَّ حولَ العنصرِ في أيِّ حال — الحلقةُ الخارجيةُ ملغاةٌ نهائياً (لا تُعَدْ). */
-.shoogp-ui.skin-capsule .qwin :is(.excl-opt.correct,.mitem.matched,
-                                  .mmchip.ok,.seqitem.correct,.aopt.correct,
-                                  .blank.correct,.blank.filled.correct,.target.filled.correct){
-  box-shadow:none !important;
-  color:#20340a !important;
-}
-.shoogp-ui.skin-capsule .qwin :is(.excl-opt.wrong,.mitem.shake,
-                                  .mmchip.no,.aopt.wrong,
-                                  .blank.wrong,.target.wrong){
-  box-shadow:none !important;
+                                  .blank.wrong .chip,.target.wrong){
+  box-shadow:0 0 22px 4px rgba(210,50,45,.82) !important;
   color:#7a1f1f !important;
   animation:cardShake .45s ease;
 }
-/* الفراغُ الممتلئُ حاويةٌ شفّافةٌ ونصُّه داخلَ `.chip`، فلا يرثُ لونَ الحالةِ من أبيه —
-   نُلوّنُ بطاقتَه صراحةً كي تبقى التغذيةُ الراجعةُ ظاهرةً بلا حلقة. */
-.shoogp-ui.skin-capsule .qwin :is(.blank.correct,.blank.filled.correct) .chip{color:#20340a !important}
-.shoogp-ui.skin-capsule .qwin .blank.wrong .chip{color:#7a1f1f !important}
+/* الفراغُ الممتلئُ حاويةٌ شفّافةٌ ونصُّه داخلَ `.chip`، فيحملُ **الابنُ** التوهّجَ واللونَ
+   (أعلاه) ويبقى **الأبُ وحدَه** بلا ظلٍّ كي لا يُرسمَ توهّجانِ متراكبان.
+   (‏`.target` لا يدخلُ هنا — فهو عنصرٌ قائمٌ بذاتِه على الصورةِ لا حاويةٌ لبطاقة.) */
+.shoogp-ui.skin-capsule .qwin :is(.blank.correct,.blank.filled.correct,.blank.wrong){
+  box-shadow:none !important;
+}
 @media(prefers-reduced-motion:reduce){
   .shoogp-ui.skin-capsule .qwin :is(.excl-opt.wrong,.mitem.shake,
                                     .mmchip.no,.aopt.wrong,
