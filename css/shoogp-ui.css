@@ -412,6 +412,18 @@
   font-size:max(18px, calc(19px * var(--s))) !important;
   min-height:60px;
 }
+/* استثناءُ بطاقةِ الحركةِ في نوعِ التشكيل (`tashkeel`) — **بصريٌّ لا تجميليّ:**
+   قياسُ البطاقاتِ أعلاه معايَرٌ على **كلمةٍ** تملأُ سطرَها، والحركةُ **علامةٌ تركيبيةٌ**
+   تُرسَمُ فوقَ التطويلِ بجزءٍ يسيرٍ من مربّعِ الخطّ، فبقياسِ الكلمةِ تخرجُ الفتحةُ خطّاً
+   شعرياً لا يُقرأُ على السبورة. والقيمةُ مضروبةٌ في `var(--s)` كسائرِ النصوصِ فتتقلّصُ
+   وتكبرُ معَ الإطارِ ولا تكسرُ نظامَ المقياس. (نظيرتُها في `style.css` احتياطُ ما قبلَ
+   الإطارِ فقط — الحاكمةُ هي هذه.) */
+.qwin .tshmark, .qwin .blank.tshslot .tshput{
+  font-size:max(30px, calc(34px * var(--s))) !important;
+  line-height:1 !important;
+}
+/* حرفُ التشكيلِ العاري نصٌّ حرٌّ لا بطاقةَ له، فيُقاسُ كنصِّ السؤالِ لا كبطاقة */
+.qwin .tshletter{ font-size:max(24px, calc(30px * var(--s))); }
 .qwin .fbtext{font-size:max(18px, calc(21px * var(--s))) !important}
 .qwin .grp-h{font-size:max(18px, calc(19px * var(--s))) !important}
 .qwin .grp-drop{min-height:max(60px, calc(110px * var(--s)))}
@@ -473,6 +485,47 @@
 }
 .qframe.qf-hasfill .qwin .qfb.good{ color:#7ee2a0 !important; }
 .qframe.qf-hasfill .qwin .qfb.bad{ color:#ff8a8a !important; }
+
+/* ══ نصوصُ حاويةِ السؤالِ في «أحب لغتي»: أسودُ صريحٌ بلا ظلّ (قرارُ المالك ٢٠٢٦-٠٨-٠٤) ══
+   **العلّةُ المُصلَحة:** أطرُ العربيةِ `hasFill:true`، فورثتِ القاعدتَينِ أعلاه المكتوبتَينِ
+   لتعبئةِ الرياضياتِ **السماويةِ المشبّعة** (`#00b6d7`) — أبيضُ بظلٍّ داكن. لكنّ تعبئةَ
+   العربيةِ **كريميةٌ فاتحة** (`#F7E2CE` وأخواتُها)، فكانَ الأبيضُ عليها بتباينٍ **1.26:1**
+   (قِيسَ حسابياً؛ الحدُّ المقبولُ 4.5:1) — نصٌّ شبهُ مقروءٍ لا يُنقذُه إلا ظلُّه.
+   الأسودُ الصريحُ يرفعُ التباينَ إلى **~15.7:1**، والظلُّ يُلغى لأنّه لم يعدْ له عملٌ على
+   خلفيةٍ فاتحة (كان يُوحِلُ الحرفَ لا يرفعُه).
+   **النطاق:** يشملُ نصَّ السؤالِ (`.qprompt`) وتلميحاتِ البنوكِ والتعليمات
+   (‏`.bank .bt` = «الكلمات:/الحروف:/العناصر:» · `.seq-hint` · `.cinstr`).
+   **الوزن:** قواعدُ `qf-hasfill` أعلاه (0,3,0) و(0,4,0) وبعضُها `!important`، فرُفِعَ
+   وزنُ هذه بإضافةِ `.qframe.qf-hasfill` إلى المحدِّدِ لتغلبَ بالتخصيصِ لا بالترتيبِ وحدَه.
+   بقيةُ المواد لا تتأثّر (`subj-arabic` علامةُ مادّةٍ لا قشرة). */
+.shoogp-ui.subj-arabic .qframe.qf-hasfill .qwin>.qprompt{
+  color:#000 !important;
+  text-shadow:none !important;
+}
+.shoogp-ui.subj-arabic .qframe.qf-hasfill .qwin .bank .bt,
+.shoogp-ui.subj-arabic .qframe.qf-hasfill .qwin .seq-hint,
+.shoogp-ui.subj-arabic .qframe.qf-hasfill .qwin .cinstr,
+/* حرفُ التشكيلِ العاري (`tashkeel`): نصٌّ حرٌّ على تعبئةِ الإطارِ لا بطاقةَ له،
+   فهو من هذه العائلةِ بعينِها — أسودُ صريحٌ بلا ظلّ. (الحركةُ فوقَه بطاقةٌ فترثُ
+   الكبسولةَ وحدَها.) */
+.shoogp-ui.subj-arabic .qframe.qf-hasfill .qwin .tshletter{
+  color:#000 !important;
+  text-shadow:none !important;
+}
+/* التغذيةُ الراجعة: أخضرُ داكنٌ للصواب وأحمرُ داكنٌ للخطأ (قرارُ المالك ٢٠٢٦-٠٨-٠٤).
+   ورثتِ العربيةُ ألوانَ الرياضياتِ **الفاتحةَ المضيئة** (`#7ee2a0`/`#ff8a8a`) المُعَدّةَ
+   لتُقرأَ على تعبئةٍ سماويةٍ داكنة؛ وهي على الكريميِّ الفاتحِ تكادُ تختفي. والداكنانِ
+   أدناه مقيسانِ على التعبئاتِ الأربعِ كلِّها: الأخضرُ **5.1–6.3:1** والأحمرُ **6.0–7.4:1**
+   (الحدُّ 4.5:1). والظلُّ يُلغى كسائرِ نصوصِ العربيةِ أعلاه — على خلفيةٍ فاتحةٍ يُوحِلُ
+   الحرفَ لا يرفعُه. */
+.shoogp-ui.subj-arabic .qframe.qf-hasfill .qwin .qfb.good{
+  color:#1b5e20 !important;
+  text-shadow:none !important;
+}
+.shoogp-ui.subj-arabic .qframe.qf-hasfill .qwin .qfb.bad{
+  color:#8b1a1a !important;
+  text-shadow:none !important;
+}
 
 /* ═══════════════════════════════════════════════════════════════════
    ★ ستايل البطاقات الزجاجية الزرقاء (CSS خالص، بلا صور) ★
@@ -1383,20 +1436,38 @@
    CSS كسائرِ القشور)، فحالتا الصواب/الخطأ حلقةُ توهّجٍ حولَ الكبسولةِ بدلَ تغييرِ
    الخلفية، فتبقى الصورةُ ظاهرةً دائماً. النطاق SUBJECT_SKINS.arabic ← lessonSubject
    (js/shoogp-ui.js) — يسري تلقائياً على كلِّ دروسِ «أحب لغتي» ولا يتأثّر بها غيرُها.
-   **القياس (بعد تحديث الصورة إلى ١٣٧٤×٤١١):** الصندوقُ المعتمُ يمتدُّ ٣٠–١٣٤٢ أفقياً
-   و٤٢–٣٧٠ رأسياً (قياسٌ ببكسل الشفافية)، فارتفاعُه ٣٢٨ ونصفُ قطرِ طرفَيه ١٦٤ — ومنه
-   `slice-left=194` (٣٠+١٦٤) و`slice-right=196` (١٣٧٤−(١٣٤٢−١٦٤)). وحدُّ الصندوقِ الجانبيُّ
-   (`border-width`) يُشتَقُّ من ارتفاعِ الزرِّ الفعليِّ (٦٤px) بنفسِ نسبةِ الأصل
-   (١٦٤/٤١١≈٠٫٣٩٩) فيُعطي ≈٢٦px — وإلا بدا الطرفُ بيضاويّاً لا نصفَ دائرة. */
+   ═══ قاعدةٌ حاكمة: **الصورةُ مقصوصةٌ على حدودِ الكبسولةِ بالضبط، بلا هامشٍ شفّاف** ═══
+   `border-image` يفردُ **الملفَّ كاملاً** على صندوقِ العنصر — بما فيه أيُّ فراغٍ شفّافٍ
+   حولَ الرسم. فلو حملتِ الصورةُ هامشاً شفّافاً لرُسمتِ الكبسولةُ **داخلَ** حدودِ الزرِّ
+   بمقدارِ ذلك الهامشِ مقيساً على الصندوق، **وتتّسعُ الفجوةُ كلّما كبُرَ الزرّ** — وهي
+   علّةُ «حوافُّ الصورةِ ليست على حدودِ الزرِّ الفعلية» (قرارُ المالك ٢٠٢٦-٠٨-٠٤).
+   الأصلُ المرفوعُ كان ١٣٧٤×٤١١ بهامشٍ شفّافٍ ٢٩px يمنةً و٣٠px يسرةً و~٢٠px أعلى/أسفل،
+   فقُصَّ على صندوقِه المعتمِ إلى **١٣١٥×٣٧٣** (النسخةُ الأصليةُ محفوظةٌ في
+   `images/ui/originals/btn-true-arabic.png`).
+   **وبعدَ القصِّ يصيرُ الحسابُ بديهياً وثابتاً في أيِّ حجم:** الكبسولةُ تلامسُ حوافَّ
+   الملفِّ الأربعة، فطرفاها نصفا دائرةٍ نصفُ قطرِها = نصفُ الارتفاعِ = ٣٧٣÷٢ ≈ **١٨٦٫٥**،
+   ومنه `slice = 186.5` يمنةً ويسرةً، و`border-width` = **نصفُ ارتفاعِ الزرِّ** (٦٤÷٢=٣٢px)
+   — نسبةٌ لا تتغيّرُ مهما تغيّرَ الارتفاع، فتبقى الأطرافُ أنصافَ دوائرَ سليمةً دائماً.
+   ⚠️ **عند رفعِ أيِّ نسخةٍ جديدةٍ من الزرّ: اقصصْها على حدودِها المعتمةِ أولاً**
+   (‏`Image.getbbox()`)، وإلا عادتِ العلّةُ نفسُها.
+
+   ═══ ولا خلفيةَ لونيةً خلفَ الصورةِ إطلاقاً (قرارُ المالك ٢٠٢٦-٠٨-٠٤) ═══
+   كانت هنا خلفيةٌ احتياطيةٌ `#FFE0B3` تُطلى **مستطيلاً** خلفَ الكبسولة. و`border-radius`
+   يقصُّها كبسولةً هندسيةً نصفُ قطرِها نصفُ الارتفاعِ بالضبط، بينما **طرفا الرسمِ أبلدُ
+   قليلاً من نصفِ الدائرة** (قِيسَ: عندَ حافّةِ الملفِّ الطرفُ مسطّحٌ ٢٠px من أصلِ ٣٧٣)،
+   فيبقى فرقٌ رفيعٌ بينَ الكبسولتَينِ يتسرّبُ منه اللونُ فوقَ الرسمِ وتحتَه عندَ الأطراف —
+   وهي «الحوافُّ القليلةُ الباقية» (قِيسَت لونياً `#FFE0B3` فوقَ حافّةِ الكبسولةِ مباشرة).
+   العلاجُ: **شفّافةٌ تماماً**؛ فالصورةُ أصلٌ محلّيٌّ في المستودعِ لا يفشلُ تحميلُه،
+   ولا يجوزُ أن تدفعَ الواجهةُ ثمنَ احتياطٍ لا يقع. */
 .shoogp-ui.skin-capsule .qwin :where(.opt,.tf,.excl-opt,.mitem,.chip,.mmchip,.seqitem,.aopt,
                                      .blank.filled,.target.filled){
   isolation:isolate;
   min-height:64px;
   display:flex; align-items:center; gap:12px;
   padding:14px 30px !important;
-  border-style:solid !important; border-width:0 26px !important;
-  border-image:url('../images/ui/btn-true-arabic.png') 0 196 0 194 fill !important;
-  background:#FFE0B3 !important;         /* احتياطٌ قبلَ تحميلِ الصورةِ أو عندَ فشلها */
+  border-style:solid !important; border-width:0 32px !important;
+  border-image:url('../images/ui/btn-true-arabic.png') 0 186.5 fill !important;
+  background:transparent !important;     /* لا لونَ خلفَ الرسمِ — انظرِ الشرحَ أعلاه */
   box-shadow:none !important;
   border-radius:999px;                   /* احتياطٌ أيضاً — لا أثرَ له وborder-image فعّال */
   color:#3a2a12 !important;
@@ -1406,30 +1477,82 @@
 }
 .shoogp-ui.skin-capsule .qwin :where(.opt,.tf,.excl-opt,.mitem,.chip,.mmchip,.seqitem,.aopt,
                                      .blank){position:relative}
-/* الاختيارُ من متعدد: النصُّ إلى بدايةِ السطر (يمينُ RTL)؛ وبقيةُ الكبسولاتِ متوسّطة. */
+/* ── الفراغُ في «ملء الفراغ» و«ترتيبِ الحروف»: يبقى **سطرياً** فيحتضنُ كلمتَه ──
+   `.blank` أصلُه `inline-block` (‏`css/style.css`)، ومجموعةُ الكبسولةِ أعلاه تجعلُه `flex`
+   وهو **مستوى كتلة**، فبعدَ الإفلاتِ يمتدُّ الزرُّ بعرضِ السطرِ كلِّه بلا داعٍ ويُفكِّكُ
+   تخطيطَ الجملة (رصدَه المالكُ ٢٠٢٦-٠٨-٠٤). `inline-flex` يُبقي التوسيطَ الرأسيَّ الذي
+   تحتاجُه الكبسولةُ ويُعيدُ السلوكَ السطريّ. **نفسُ علاجِ الرياضيات حرفاً بحرف**
+   (`.shoogp-ui.skin-metal .qwin .blank` — §٣.٢)، فهي سابقةٌ محلولةٌ في المنصّةِ لا اجتهادٌ جديد. */
+.shoogp-ui.skin-capsule .qwin .blank{display:inline-flex; vertical-align:middle}
+/* ولا كبسولةَ داخلَ كبسولة: الفراغُ **الممتلئُ** حاويةٌ شفّافةٌ لا زينةَ لها، فتظهرُ
+   كبسولةُ بطاقةِ الكلمةِ (`.chip`) بداخلِه وحدَها. فالمعنى: الكلمةُ بطاقةٌ استقرّت في
+   مكانِها، لا بطاقةٌ داخلَ بطاقة. (الفراغُ الفارغُ يبقى على حدِّه المتقطّعِ الأصليِّ
+   إشارةً إلى «أفلتْ هنا» — قاعدةُ «المحمول ≠ المستقبِل».) */
+.shoogp-ui.skin-capsule .qwin .blank.filled{
+  border-image:none !important; border-width:0 !important; border-style:none !important;
+  background:transparent !important;
+  padding:0 !important; min-height:0 !important;
+}
+/* الاختيارُ من متعدد: النصُّ إلى بدايةِ السطر (يمينُ RTL)؛ وبقيةُ الكبسولاتِ متوسّطة.
+   (‏`.opt` تُعادُ توسيطُها أدناه في تعديلِ الثلاثةِ عناصرَ — القاعدةُ هنا للبقيّةِ فقط.) */
 .shoogp-ui.skin-capsule .qwin .opt{justify-content:flex-start; text-align:start}
-.shoogp-ui.skin-capsule .qwin :where(.tf,.excl-opt,.mitem,.chip,.mmchip,
+.shoogp-ui.skin-capsule .qwin :where(.tf,.excl-opt,.mitem,.mmchip,
                                      .blank.filled,.target.filled){justify-content:center; text-align:center}
 
-/* الصواب: حلقةُ توهّجٍ خضراء حولَ الكبسولة (الصورةُ تبقى ظاهرةً تحتها) */
+/* ═══ التغذيةُ الراجعةُ: **توهّجٌ يخرجُ من خلفِ الزرّ** (قرارُ المالك ٢٠٢٦-٠٨-٠٤) ═══
+   مرَّ القرارُ بثلاثِ مراحلَ حتى استقرَّ — **والمرحلةُ الأخيرةُ هي المعتمدة**:
+   حلقةٌ حادّةٌ حولَ الكبسولة ← أُلغيت · توهّجٌ داخليٌّ على اللوحةِ اللامعة ← لم يُعجبْ ·
+   **توهّجٌ خارجيٌّ ينبعثُ من خلفِ الزرِّ ويتعدّى حدودَه قليلاً ← المعتمد.**
+   أخضرُ للصوابِ وأحمرُ للخطأ.
+
+   **لماذا `box-shadow` خارجيٌّ على الزرِّ نفسِه (لا `::after` ولا `inset`):** الظلُّ
+   الخارجيُّ يُرسَمُ **خارجَ صندوقِ الحدِّ وتحتَ خلفيةِ العنصرِ وحدِّه**، فينبعثُ فعلاً
+   **من خلفِ** رسمِ الكبسولةِ وينتشرُ حولَها — وهو المطلوبُ حرفياً. (بخلافِ `inset` الذي
+   يُدفَنُ خلفَ `border-image` فلا يُرى، ولذا كانَ التوهّجُ الداخليُّ على `::after`.)
+   و`border-radius:999px` على العنصرِ يجعلُ الظلَّ يتبعُ هيئةَ الكبسولةِ لا مستطيلاً.
+   **بلا `spread` كبير:** `0 0 22px 4px` — تجاوزٌ يسيرٌ للحدودِ كما طُلِب، لا هالةٌ ثقيلة. */
 .shoogp-ui.skin-capsule .qwin :is(.opt.correct,.tf.tf-correct,.excl-opt.correct,.mitem.matched,
                                   .chip.ok,.mmchip.ok,.seqitem.correct,.aopt.correct,
-                                  .blank.correct,.blank.filled.correct,.target.filled.correct){
-  box-shadow:0 0 0 4px #7cb051, 0 0 14px 2px rgba(124,176,81,.65) !important;
+                                  .blank.correct .chip,.blank.filled.correct .chip,
+                                  .target.filled.correct){
+  box-shadow:0 0 22px 4px rgba(90,170,45,.85) !important;
   color:#20340a !important;
 }
-/* الخطأ: حلقةُ توهّجٍ حمراء + اهتزازٌ خفيف */
 .shoogp-ui.skin-capsule .qwin :is(.opt.wrong,.tf.tf-wrong,.excl-opt.wrong,.mitem.shake,
-                                  .chip.no,.mmchip.no,.aopt.wrong,
-                                  .blank.wrong,.target.wrong){
-  box-shadow:0 0 0 4px #d9534f, 0 0 14px 2px rgba(217,83,79,.6) !important;
+                                  .chip.no,.mmchip.no,.seqitem.wrong,.aopt.wrong,
+                                  .blank.wrong .chip,.target.wrong){
+  box-shadow:0 0 22px 4px rgba(210,50,45,.82) !important;
+  color:#7a1f1f !important;
+  animation:cardShake .45s ease;
+}
+/* الفراغُ الممتلئُ حاويةٌ شفّافةٌ ونصُّه داخلَ `.chip`، فيحملُ **الابنُ** التوهّجَ واللونَ
+   (أعلاه) ويبقى **الأبُ وحدَه** بلا ظلٍّ كي لا يُرسمَ توهّجانِ متراكبان.
+   (‏`.target` لا يدخلُ هنا — فهو عنصرٌ قائمٌ بذاتِه على الصورةِ لا حاويةٌ لبطاقة.) */
+.shoogp-ui.skin-capsule .qwin :is(.blank.correct,.blank.filled.correct,.blank.wrong){
+  box-shadow:none !important;
+}
+@media(prefers-reduced-motion:reduce){
+  .shoogp-ui.skin-capsule .qwin :is(.excl-opt.wrong,.mitem.shake,
+                                    .mmchip.no,.aopt.wrong,
+                                    .blank.wrong,.target.wrong){animation:none}
+}
+/* توسيطُ نصِّ العناصرِ الثلاثةِ الأكثرِ استعمالاً سطراً واحداً داخلَ اللوحةِ اللامعة،
+   معَ الحفاظِ على علامتَي ✓/✗ ضمنَ النصِّ نفسِه (لا تُضافانِ بشكلٍ منفصل).
+   `box-shadow:none` هنا على **الزرِّ نفسِه** (يمنعُ الحلقةَ الخارجية)، ولا يمسُّ طبقةَ
+   `::after` التي تحملُ التوهّجَ الداخليَّ أعلاه. */
+.shoogp-ui.skin-capsule .qwin :is(.tf-btns .tf,.chip,.opt){
+  justify-content:center !important; text-align:center !important;
+  white-space:nowrap !important;
+  padding:14px 34px !important;
+  box-shadow:none !important;
+}
+.shoogp-ui.skin-capsule .qwin :is(.tf.tf-correct,.chip.ok,.opt.correct){color:#20340a !important}
+.shoogp-ui.skin-capsule .qwin :is(.tf.tf-wrong,.chip.no,.opt.wrong){
   color:#7a1f1f !important;
   animation:cardShake .45s ease;
 }
 @media(prefers-reduced-motion:reduce){
-  .shoogp-ui.skin-capsule .qwin :is(.opt.wrong,.tf.tf-wrong,.excl-opt.wrong,.mitem.shake,
-                                    .chip.no,.mmchip.no,.aopt.wrong,
-                                    .blank.wrong,.target.wrong){animation:none}
+  .shoogp-ui.skin-capsule .qwin :is(.tf.tf-wrong,.chip.no,.opt.wrong){animation:none}
 }
 /* التحويم/النقر: رفعٌ وانضغاطٌ بالتحوّل وحدَه (بلا مسّ لـborder-image) */
 .shoogp-ui.skin-capsule .qwin :where(.opt,.tf,.excl-opt,.mitem,.chip,.mmchip,.seqitem,.aopt,
