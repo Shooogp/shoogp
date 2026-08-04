@@ -33,8 +33,11 @@ function imgURL(name){ return IMG_BASE + name; }
 /* خريطةُ لاحقةِ المفتاحِ إلى المادة. `-math` مضافةٌ هنا لا في البذرةِ عمداً: البذرةُ
    تُعدِّدُ كتباً بعينِها، والخريطةُ تشملُ **كلَّ** كتابِ المادةِ حاضرِه ومستقبلِه — فدخلَ
    بها `g1-math` و`g3-math` بلا سطرٍ لكلٍّ منهما. (قبلها كان `g1-math` خارجَ النطاقِ
-   فيسقطُ إلى إطارِ القمرِ والأيقوناتِ الافتراضيةِ بدلَ إطارِ الرياضياتِ وقشرةِ المعدن.) */
-var SUBJECT_BY_KEY_SUFFIX={ '-sci':'science', '-math':'math' };
+   فيسقطُ إلى إطارِ القمرِ والأيقوناتِ الافتراضيةِ بدلَ إطارِ الرياضياتِ وقشرةِ المعدن.)
+   `-arabic-1` و`-arabic-2` بنفسِ المنطق: تشملُ كتبَ «أحب لغتي» بجزأيها لكلِّ الصفوفِ
+   (‏`g1-arabic-1`…`g4-arabic-2`) فتَرِثُ عائلةَ الإطارِ `arabic` وعلامةَ `subj-arabic`
+   بمجرّدِ دخولِ أيِّ درسٍ منها DATA.index، بلا سطرٍ لكلِّ كتابٍ ولا قشرةِ Skin (لم تُطلب). */
+var SUBJECT_BY_KEY_SUFFIX={ '-sci':'science', '-math':'math', '-arabic-1':'arabic', '-arabic-2':'arabic' };
 var SHOOGP_BOOKS_SEED=[
   {key:'g1-sci',  prefix:'g1s-', subject:'science'},
   {key:'g2-sci',  prefix:'g2s-', subject:'science'},
@@ -105,7 +108,7 @@ var _curBook=null;
    فلا مصدرَ ثانٍ للحقيقة. المادةُ التي لا قشرةَ لها تبقى على شكلِها القائمِ دونَ أيِّ
    تغيير (الرياضياتُ اليوم). لا تمسُّ القشرةُ منطقَ الأسئلةِ ولا بنيةَ DOM.
    **إضافةُ مادةٍ لاحقاً = سطرٌ هنا + كتلةُ CSS بنفسِ اسمِ الصنف.** */
-var SUBJECT_SKINS={ science:'skin-rocky', math:'skin-metal' };
+var SUBJECT_SKINS={ science:'skin-rocky', math:'skin-metal', arabic:'skin-capsule' };
 /* مرحلةُ المعاينة: تحصرُ القشرةَ بدروسٍ بعينِها ريثما تُعتمَد.
    **اعتُمدت القشرةُ وعُمِّمت على كلِّ دروسِ العلوم** — `null` تعني «بلا حصر».
    (تُعادُ قائمةٌ هنا لو أُريدَ حصرُ قشرةٍ *جديدةٍ* بدروسِ معاينةٍ مستقبلاً.) */
@@ -188,10 +191,24 @@ var FRAME_FAMILIES={
     m:{img:'frame-math-m.png', ar:'1138 / 818',  win:{top:'16%',  left:'14%',  right:'14%',   bottom:'19%'},   hasFill:true, fillColor:'#01afda'},
     l:{img:'frame-math-l.png', ar:'1261 / 1247', win:{top:'13%',  left:'15%',  right:'15%',   bottom:'18.5%'}, hasFill:true, fillColor:'#03a5ec'},
     tall:{img:'frame-math-tall.png', ar:'1086 / 1448', win:{top:'13%', left:'16.5%', right:'16.5%', bottom:'14%'}, hasFill:true, fillColor:'#01a2df'}
+  }},
+  /* اللغة العربية — عائلةُ إطارٍ مخصّصةٌ لكتبِ «أحب لغتي» (حروفٌ عربيةٌ على مسارِ الكواكب
+     بدلَ الفراغ)، تعبئتُها مدموجةٌ في الصورةِ كالرياضيات. `win` مقيسةٌ بملءٍ فيضيٍّ من
+     المركزِ (نفسُ أسلوبِ قياسِ الرياضيات) ثمّ +2% إنساحٌ يُبعدها عن أقواسِ الحروفِ والكواكب. */
+  arabic:{ order:['s','m','l','tall'], flexBase:'l', sizes:{
+    s:{img:'frame-arabic-s.png', ar:'1648 / 978',  win:{top:'23.3%', left:'18.9%', right:'23.7%', bottom:'20.1%'}, hasFill:true, fillColor:'#F9E8D5'},
+    m:{img:'frame-arabic-m.png', ar:'1448 / 1086', win:{top:'23%',   left:'19.1%', right:'20.4%', bottom:'24.1%'}, hasFill:true, fillColor:'#F8E4D0'},
+    l:{img:'frame-arabic-l.png', ar:'1254 / 1254', win:{top:'18.2%', left:'19.9%', right:'17.8%', bottom:'16.5%'}, hasFill:true, fillColor:'#F7E2CE'},
+    tall:{img:'frame-arabic-tall.png', ar:'897 / 1665', win:{top:'18.7%', left:'18.4%', right:'20.5%', bottom:'24.5%'}, hasFill:true, fillColor:'#F7E6D4'}
   }}
 };
-/* مادةُ الدرس → عائلةُ الفريم: الرياضيات ← math، وبقيةُ المواد ← moon (الافتراضية). */
-function famFor(subj){ return (subj==='math') ? FRAME_FAMILIES.math : FRAME_FAMILIES.moon; }
+/* مادةُ الدرس → عائلةُ الفريم: الرياضيات ← math، اللغةُ العربيةُ ← arabic، وبقيةُ
+   الموادِّ ← moon (الافتراضية). */
+function famFor(subj){
+  if(subj==='math') return FRAME_FAMILIES.math;
+  if(subj==='arabic') return FRAME_FAMILIES.arabic;
+  return FRAME_FAMILIES.moon;
+}
 function curFam(){ return famFor(_curSubject); }
 /* هندسةُ الفريم لخانةِ (المادةِ الحالية × الحجم). */
 function resolveCfg(size){ var fam=curFam(); return fam.sizes[size] || fam.sizes[fam.order[0]]; }
