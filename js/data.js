@@ -243,12 +243,12 @@ window.DATA_FALLBACK = {
         { title:"مها والعصافير", file:"g4a1-0-1", open:true }
       ]},
       { unit:"المحور الأول: في رُبوع وطني", lessons:[
-        { title:"استماع: أجمل مكان في الدنيا", file:"g4a1-1-1", open:false },
-        { title:"مستند بصري: قراءة شعار", file:"g4a1-1-2", open:false },
-        { title:"الدرس الأول: مغامرة إلى قرية (الغَمب)", file:"g4a1-1-3", open:false },
-        { title:"الدرس الثاني: خُبز ولَبَن", file:"g4a1-1-4", open:false },
-        { title:"الدرس الثالث: بلادي عُمان", file:"g4a1-1-5", open:false },
-        { title:"أنشد وأحفظ: بني وطني", file:"g4a1-1-6", open:false },
+        { title:"استماع: أجمل مكان في الدنيا", file:"g4a1-1-1", open:true },
+        { title:"مستند بصري: قراءة شعار", file:"g4a1-1-2", open:true },
+        { title:"الدرس الأول: مغامرة إلى قرية (الغَمب)", file:"g4a1-1-3", open:true },
+        { title:"الدرس الثاني: خُبز ولَبَن", file:"g4a1-1-4", open:true },
+        { title:"الدرس الثالث: بلادي عُمان", file:"g4a1-1-5", open:true },
+        { title:"أنشد وأحفظ: بني وطني", file:"g4a1-1-6", open:true },
         { title:"قراءة حرّة: بين رفوف مكتبتي", file:"g4a1-1-7", open:false },
         { title:"أُقيّم أدائي", file:"g4a1-1-8", open:false }
       ]}
