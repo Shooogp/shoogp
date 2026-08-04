@@ -627,14 +627,48 @@ function renderMatching(q, body, fb){
   body.querySelector('.btn-reset').onclick=()=>renderMatching(q,body,fb);
 }
 
-/* ③ اختيار من متعدد: options[] + answer (فهرس الخيار الصحيح) */
+/* ═══ مشغّلُ صوتِ السؤال — مشتركٌ بين الأنواع ═══
+   مستخرَجٌ من `renderAudioQ` بترميزِه نفسِه (`.aplay`) وسلوكِه نفسِه حرفياً، ليستعملَه
+   `audio-q` (حيثُ الصوتُ **جوهرُ** السؤال) و`mcq` و`arrange` (حيثُ الصوتُ **إضافةٌ
+   اختيارية** عبر الحقلِ `audio`). مصدرٌ واحدٌ للحقيقةِ بدلَ ثلاثِ نسخٍ تنحرفُ لاحقاً.
+   ملاحظتانِ منقولتانِ من الأصلِ بلا تغيير: التشغيلُ **بضغطةٍ صريحة** (لا تلقائياً،
+   فالمتصفّحاتُ تحجبُه)، وهو **مستقلٌّ عن كتمِ أصواتِ التغذيةِ الراجعة** correct/wrong.
+   `audioPlayerHTML()` يعيدُ **الزرَّ وحدَه بلا غلاف** — والغلافُ مسؤوليةُ المستدعي عمداً:
+   `audio-q` يضعُه ابناً مباشراً لـ`.audioq` (فترميزُه يبقى مطابقاً لما كان حرفاً بحرف،
+   إذ `.audioq` فليكسٌ عموديٌّ يوسّطُ أبناءَه المباشرين، ولو لُفَّ الزرُّ لَتغيّرَ التوسيط)،
+   بينما `mcq` و`arrange` يلفّانِه بـ`.qaudio` لضبطِ المسافةِ فوقَ الخيارات.
+   وإن غابَ المسارُ لم يُبنَ شيءٌ أصلاً، وإن فشلَ التحميلُ ابتُلعَ الخطأُ فلا يكسرُ السؤال. */
+function audioPlayerHTML(src, label){
+  if(!src) return '';
+  return `<button class="btn aplay" type="button">🔊 ${label||'استمع'}</button>`;
+}
+function wireAudioPlayer(scope, src){
+  if(!src) return;
+  const btn=scope.querySelector('.aplay'); if(!btn) return;
+  const snd=new Audio(src); snd.preload='auto';
+  btn.onclick=()=>{ try{ snd.currentTime=0; const p=snd.play(); if(p&&p.catch)p.catch(function(){}); }catch(e){} };
+}
+
+/* ③ اختيار من متعدد: options[] + answer (فهرس الخيار الصحيح).
+   **توسعتانِ اختياريتانِ متوافقتانِ تماماً مع القديم** (كلتاهما لا تعملُ إلا إذا وُجد
+   الحقلُ الجديد، والأسئلةُ القائمةُ الـ١٦٩ لا تحملُه فتمرُّ على المسارِ نفسِه حرفياً):
+   • `audio` (اختياريّ) — مسارُ ملفٍّ صوتيّ، يُعرَضُ مشغّلُه فوقَ الخيارات. يخدمُ أسئلةَ
+     الاستماعِ في اللغةِ العربية. غيابُه = لا مشغّلَ ولا عنصرَ في DOM.
+   • `answer` يقبلُ **مصفوفةَ فهارس** بدلَ فهرسٍ واحد، فأيُّ فهرسٍ فيها يُحتسَبُ صحيحاً.
+     يخدمُ «اقترحْ بديلاً» و«ضعْ عنواناً آخر» حيثُ تصحُّ أكثرُ من إجابة.
+     **التوافقُ بالبناءِ لا بالفحص:** فرعُ الرقمِ المفردِ هو تعبيرُ اليومِ حرفياً
+     (`+btn.dataset.i===q.answer`)، والرقمُ لا يدخلُ `Array.isArray` أصلاً. */
 function renderMcq(q, body, fb){
   const opts=shuffle(q.options.map((o,idx)=>({o,idx})));
-  body.innerHTML=`<div class="opts">`+opts.map(x=>`<button class="opt" data-i="${x.idx}">${x.o}</button>`).join('')+`</div>`;
+  body.innerHTML=(q.audio?`<div class="qaudio">`+audioPlayerHTML(q.audio)+`</div>`:'')+
+    `<div class="opts">`+opts.map(x=>`<button class="opt" data-i="${x.idx}">${x.o}</button>`).join('')+`</div>`;
+  wireAudioPlayer(body,q.audio);
   let done=false;
   body.querySelectorAll('.opt').forEach(btn=>{btn.onclick=()=>{
     if(done)return;
-    if(+btn.dataset.i===q.answer){done=true;btn.classList.add('correct');body.querySelectorAll('.opt').forEach(b=>b.disabled=true);qWin(fb,'🎉 إجابة صحيحة!',2);}
+    const i=+btn.dataset.i;
+    const ok=Array.isArray(q.answer) ? q.answer.indexOf(i)>=0 : i===q.answer;
+    if(ok){done=true;btn.classList.add('correct');body.querySelectorAll('.opt').forEach(b=>b.disabled=true);qWin(fb,'🎉 إجابة صحيحة!',2);}
     else{btn.classList.add('wrong');btn.disabled=true;qFail(fb,'ليست الصحيحة، جرّب خياراً آخر');}
   };});
 }
@@ -692,10 +726,9 @@ function renderFindError(q, body, fb){
    صوت السؤال يُشغَّل بضغطة صريحة على الزر (مستقلّ عن كتم أصوات التغذية الراجعة correct/wrong).
    إن تعذّر تحميل صورة خيار تُخفى وتبقى تسميتها (تدرّج سليم قبل توليد الصور). */
 function renderAudioQ(q, body, fb){
-  const snd=new Audio(q.sound); snd.preload='auto';
   const opts=shuffle(q.options.map((o,idx)=>({o,idx})));
   body.innerHTML=`<div class="audioq">`+
-    `<button class="btn aplay">🔊 استمع</button>`+
+    audioPlayerHTML(q.sound)+                       // الزرُّ نفسُه بلا غلافٍ — ترميزٌ مطابقٌ لما كان
     `<div class="aopts">`+opts.map(x=>
       `<button class="aopt" data-i="${x.idx}">`+
       (x.o.image?`<img class="aopt-img" src="${x.o.image}" alt="${x.o.label||''}">`:'')+
@@ -703,7 +736,7 @@ function renderAudioQ(q, body, fb){
       `</button>`).join('')+
     `</div></div>`;
   // تشغيل صوت السؤال عند الطلب (ضغطة صريحة؛ لا يخضع لكتم التغذية الراجعة)
-  body.querySelector('.aplay').onclick=()=>{ try{ snd.currentTime=0; const p=snd.play(); if(p&&p.catch)p.catch(function(){}); }catch(e){} };
+  wireAudioPlayer(body,q.sound);
   // إن فشل تحميل صورة خيار، أخفها وأبقِ التسمية ظاهرة
   body.querySelectorAll('.aopt-img').forEach(im=>{ im.onerror=()=>{ im.style.display='none'; im.closest('.aopt').classList.add('noimg'); }; });
   let done=false;
@@ -1159,7 +1192,7 @@ function renderExclude(q, body, fb){
 function renderArrange(q, body, fb){
   const target=Array.from(q.word);                                   // الترتيب الصحيح للحروف
   const scatter=(q.letters && q.letters.length) ? q.letters.slice() : target.slice();
-  return renderTokenOrder(q, body, fb, {
+  const out=renderTokenOrder(q, body, fb, {
     target, scatter,
     wrapClass:'arrange', slotClass:'', chipClass:'',
     bankTitle:'الحروف:',
@@ -1168,6 +1201,18 @@ function renderArrange(q, body, fb){
     fail:'راجع الترتيب',
     again:()=>renderArrange(q,body,fb)
   });
+  /* `audio` (اختياريّ) — يسمعُ الطالبُ الكلمةَ ثمّ يرتّبُ حروفَها، فيخدمُ القضايا الإملائية.
+     يُحقَنُ **بعدَ** المحرّكِ المشتركِ لأنّه هو الذي يكتبُ `body.innerHTML`، وبذلك يبقى
+     `renderTokenOrder` بلا تعديلٍ فلا يتأثّرُ النوعُ `sentence` الذي يشاركُه المحرّك.
+     وزرُّ «إعادة ↺» يستدعي `renderArrange` فيُعادُ بناءُ المشغّلِ تلقائياً. */
+  if(q.audio){
+    const bar=document.createElement('div');
+    bar.className='qaudio';
+    bar.innerHTML=audioPlayerHTML(q.audio,'استمع للكلمة');
+    body.insertBefore(bar, body.firstChild);
+    wireAudioPlayer(bar,q.audio);
+  }
+  return out;
 }
 
 /* محرّكُ الترتيبِ المشترك — يخدمُ `arrange` (حروف) و`sentence` (كلمات) بمنطقٍ واحد.

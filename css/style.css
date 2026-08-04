@@ -599,6 +599,10 @@
   .excl-opt.wrong{background:#fde2e2;color:#c94a4a;border-color:#c94a4a}
   /* السؤال الصوتي — زر استماع كبير وخيارات صور كبيرة تناسب اللمس على السبورة */
   .audioq{display:flex;flex-direction:column;align-items:center;gap:20px}
+  /* غلافُ مشغّلِ الصوتِ الاختياريِّ فوقَ سؤالٍ من نوعٍ آخر (`audio` في mcq و arrange).
+     `.audioq` أعلاه لا يُمَسّ — هو للنوعِ الصوتيِّ حيثُ الصوتُ جوهرُ السؤال، وهذا للإضافةِ
+     الاختيارية. والزرُّ نفسُه (`.aplay`) مشتركٌ بينهما فالهويةُ البصريةُ واحدة. */
+  .qaudio{display:flex;justify-content:center;margin-bottom:16px}
   .aplay{background:#f5a04a !important;color:#fff !important;border:none !important;font-size:1.3rem;
     padding:16px 44px;border-radius:40px;min-width:210px;box-shadow:0 4px 12px rgba(0,0,0,.28)}
   .aplay:hover{filter:brightness(1.06)}
