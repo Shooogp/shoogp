@@ -1290,3 +1290,38 @@
     .rocket-lane .rj-sat-img{width:calc(54px * var(--rj-sat-k))}
     .rocket-lane .rj-cloud-img{width:76px}
   }
+
+/* ============================================================
+   قاعدة أزرار "صواب / خطأ" لتصميم "أحب لغتي"
+   تُطبَّق تلقائياً على كل الدروس والكتب التي تستخدم هذا التصميم
+   ============================================================ */
+
+/* ⚠️ حسابُ الأسبقية (قِيسَ حيّاً — لا تُخفَّضْ هذه المحدِّدات):
+   `css/shoogp-ui.css` يُحمَّلُ **بعدَ** هذا الملفِّ في `index.html`، وفيه قواعدُ
+   قشرةِ الكبسولةِ تُنافسُ القاعدتَينِ أدناه بوزنٍ أعلى:
+     `.shoogp-ui.skin-capsule .qwin :is(.tf-btns .tf,.chip,.opt)::after` = (0,5,0)
+   فلو كُتِبَ المحدِّدُ هنا `.qwin .tf-btns .tf.tf` = (0,4,0) لسقطَ صامتاً
+   (فُحِصَ: بقيَ الإطارُ أحمرَ والحشوةُ 14px 34px). لذا:
+     • تكرارُ `.tf` أربعَ مرّاتٍ يرفعُ الوزنَ إلى (0,6,0) فيغلبُ بالتخصيصِ لا بالترتيب —
+       وهو امتدادٌ لنفسِ أسلوبِ `.tf.tf` المكتوبِ أصلاً في الطلب.
+     • و`!important` لازمٌ للحشوةِ لأنّ قاعدةَ القشرةِ تحملُها `!important` أيضاً.
+   المحدِّدُ يبقى **عامّاً بلا قيدِ مادّةٍ أو كتاب**، فيسري على كلِّ الدروسِ كما طُلِب. */
+
+/* 1) إخفاء الإطارات الملوّنة (الأخضر/الأحمر) حول النص */
+.qwin .tf-btns .tf.tf.tf.tf::after{
+  border-color: transparent !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+/* 2) إبقاء النص متمركزاً داخل اللوحة اللامعة على سطر واحد مع العلامتين */
+.qwin .tf-btns .tf.tf.tf.tf{
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  padding: 12px 18px !important;
+  line-height: 1 !important;
+  position: relative !important;
+}
