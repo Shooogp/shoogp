@@ -412,6 +412,18 @@
   font-size:max(18px, calc(19px * var(--s))) !important;
   min-height:60px;
 }
+/* استثناءُ بطاقةِ الحركةِ في نوعِ التشكيل (`tashkeel`) — **بصريٌّ لا تجميليّ:**
+   قياسُ البطاقاتِ أعلاه معايَرٌ على **كلمةٍ** تملأُ سطرَها، والحركةُ **علامةٌ تركيبيةٌ**
+   تُرسَمُ فوقَ التطويلِ بجزءٍ يسيرٍ من مربّعِ الخطّ، فبقياسِ الكلمةِ تخرجُ الفتحةُ خطّاً
+   شعرياً لا يُقرأُ على السبورة. والقيمةُ مضروبةٌ في `var(--s)` كسائرِ النصوصِ فتتقلّصُ
+   وتكبرُ معَ الإطارِ ولا تكسرُ نظامَ المقياس. (نظيرتُها في `style.css` احتياطُ ما قبلَ
+   الإطارِ فقط — الحاكمةُ هي هذه.) */
+.qwin .tshmark, .qwin .blank.tshslot .tshput{
+  font-size:max(30px, calc(34px * var(--s))) !important;
+  line-height:1 !important;
+}
+/* حرفُ التشكيلِ العاري نصٌّ حرٌّ لا بطاقةَ له، فيُقاسُ كنصِّ السؤالِ لا كبطاقة */
+.qwin .tshletter{ font-size:max(24px, calc(30px * var(--s))); }
 .qwin .fbtext{font-size:max(18px, calc(21px * var(--s))) !important}
 .qwin .grp-h{font-size:max(18px, calc(19px * var(--s))) !important}
 .qwin .grp-drop{min-height:max(60px, calc(110px * var(--s)))}
@@ -492,7 +504,11 @@
 }
 .shoogp-ui.subj-arabic .qframe.qf-hasfill .qwin .bank .bt,
 .shoogp-ui.subj-arabic .qframe.qf-hasfill .qwin .seq-hint,
-.shoogp-ui.subj-arabic .qframe.qf-hasfill .qwin .cinstr{
+.shoogp-ui.subj-arabic .qframe.qf-hasfill .qwin .cinstr,
+/* حرفُ التشكيلِ العاري (`tashkeel`): نصٌّ حرٌّ على تعبئةِ الإطارِ لا بطاقةَ له،
+   فهو من هذه العائلةِ بعينِها — أسودُ صريحٌ بلا ظلّ. (الحركةُ فوقَه بطاقةٌ فترثُ
+   الكبسولةَ وحدَها.) */
+.shoogp-ui.subj-arabic .qframe.qf-hasfill .qwin .tshletter{
   color:#000 !important;
   text-shadow:none !important;
 }

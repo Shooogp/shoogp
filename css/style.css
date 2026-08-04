@@ -628,6 +628,61 @@
   /* الكلمة كاملة متّصلة تُكشف عند النجاح (بلا letter-spacing كي تبقى الحروف موصولة) */
   .lword{display:inline-block;font-size:2.4rem;font-weight:800;color:#20340a;background:#a7c957;
     border:2px solid #82a83e;border-radius:16px;padding:10px 28px;box-shadow:0 3px 10px rgba(0,0,0,.22)}
+
+  /* ══ الأنواعُ الخاصةُ باللغةِ العربية ══
+     كلُّها تستعملُ أصنافَ العناصرِ القائمة (`.chip` و`.blank` و`.mitem` و`.grp-drop`)
+     فترثُ قشرةَ «الكبسولة» (shoogp-ui.css §قشرةُ اللغةِ العربية) تلقائياً؛ وما هنا
+     **مقاساتٌ ومواضعُ فقط** لا زخرفةَ فيها تُنازعُ القشرة. */
+
+  /* ㉜ التشكيل — عمودٌ لكلِّ حرف: خانةُ الحركةِ فوقَه والحرفُ تحتَها.
+     الصفُّ يرثُ اتجاهَ الصفحةِ RTL فتُقرأُ الحروفُ يمين→يسار بلا `direction` صريح. */
+  .tashkeel{display:flex;flex-direction:column;align-items:center;gap:20px}
+  /* **لا التفافَ في الكلمة** (‏`nowrap`): الكلمةُ وحدةٌ واحدةٌ تُقرأُ على سطر، ولو
+     انكسرت لَسقطَ آخرُ حروفِها وحدَه في سطرٍ ثانٍ فانقطعَ تسلسلُ القراءةِ على الطفل.
+     والضيقُ يُعالَجُ بتقلّصِ الأعمدةِ (`flex-shrink` مسموحٌ ومقاسُها بحدٍّ أدنى صغير)
+     وبمقياسِ الإطارِ `--s`، لا بكسرِ الكلمة. */
+  .tshword{display:flex;gap:10px;flex-wrap:nowrap;justify-content:center;align-items:flex-end;max-width:100%}
+  .tshcol{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0}
+  .blank.tshslot{min-width:48px;min-height:52px;margin:0;display:inline-flex;
+    align-items:center;justify-content:center;font-size:1.8rem;line-height:1}
+  /* الحرفُ العاري: مساحةٌ شفّافةٌ بارتفاعِ الخانةِ كي تستويَ الحروفُ على سطرٍ واحد */
+  .tshslot.tsh-none{display:inline-block;min-width:48px;height:52px;visibility:hidden}
+  .tshletter{font-size:2.4rem;font-weight:800;color:#fff;line-height:1.2;
+    text-shadow:0 2px 4px rgba(0,0,0,.35);min-width:52px;text-align:center}
+  .tshbank .chips{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;min-height:60px;padding:8px}
+  /* الحركةُ علامةٌ صغيرةٌ فوقَ التطويل، فتُكبَّرُ بطاقتُها عن سائرِ البطاقاتِ كي تُقرأ */
+  .tshmark{min-width:76px;font-size:2.5rem;font-weight:800;text-align:center;cursor:pointer;line-height:1}
+  .tshmark.sel{outline:4px solid #f5b942;outline-offset:3px;transform:translateY(-2px)}
+  .blank.tshslot .tshput{margin:0;min-width:44px;font-size:1.8rem;line-height:1}
+  .lword.tshfull{font-size:2.6rem;letter-spacing:0}
+
+  /* ㉝ ترتيبُ الجملة — خاناتٌ أعرضُ وخطٌّ أصغرُ من ترتيبِ الحروف (الرمزُ كلمةٌ لا حرف).
+     تأتي بعدَ `.lslot`/`.lchip` فتغلبُهما بتساوي الخصوصيةِ وترتيبِ المصدر. */
+  .sentbuild .wslot{min-width:132px;min-height:64px}
+  .wchip{min-width:96px;font-size:1.25rem;padding:12px 18px}
+  .lword.wchip{font-size:1.7rem;min-width:0;padding:12px 26px;line-height:1.9}
+
+  /* ㉞ الشمسيةُ والقمرية — صناديقُ التصنيفِ نفسُها، وعنوانُ كلِّ صندوقٍ بلونِ رمزِه */
+  .sunmoon .grp-row{gap:18px}
+  .smgrp .grp-h{font-size:1.15rem}
+  .smchip{font-size:1.35rem;font-weight:800}
+  /* صورةُ النطقِ المكشوفةُ عندَ الصواب: أبرزُ قليلاً كي تُقرأَ حركاتُها */
+  .smchip.revealed{font-size:1.5rem;letter-spacing:0}
+
+  /* ㉟ الحرفُ والصورة — عمودُ حروفٍ كبيرةٍ وعمودُ صور، والكلمةُ تحتَ الصورةِ مخفيّةٌ
+     حتى يصحَّ الوصل (المعلومةُ مكافأةٌ لا تلميحٌ سابق). */
+  .lpletter{font-size:2.4rem;font-weight:800;min-width:96px;justify-content:center;text-align:center}
+  /* بطاقةُ الصورةِ لوحٌ هادئٌ لا كبسولة (انظرَ التعليقَ عندَ بنائِها في js/app.js) */
+  .lpcard{display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;
+    background:#fff;border:2px solid #e0b380;border-radius:18px;padding:12px 14px;min-width:136px;
+    transition:.14s;box-shadow:0 3px 10px rgba(0,0,0,.22)}
+  .lpcard:hover{transform:translateY(-2px)}
+  .lpcard.matched{border-color:#82a83e;box-shadow:0 0 0 3px rgba(130,168,62,.55);cursor:default;pointer-events:none}
+  .lpimg{display:flex;align-items:center;justify-content:center}
+  .lpimg img,.lpimg svg{width:104px;height:104px;object-fit:contain;display:block}
+  .lpword{font-size:1.15rem;font-weight:800;color:#3a2a12;visibility:hidden;min-height:1.4em}
+  .lpcard.shown .lpword{visibility:visible}
+  .lpcard.shake{animation:cardShake .45s ease}
   /* الخريطة الذهنية الناقصة — عقدة مركزية تتفرّع لفروع بخانات تُملأ بالسحب، عناصر لمسية للسبورة و RTL */
   .mindmap{display:flex;flex-direction:column;align-items:center;gap:16px}
   .mm-stage{position:relative;width:100%;display:flex;flex-direction:column;align-items:center;gap:28px;padding-top:6px}
