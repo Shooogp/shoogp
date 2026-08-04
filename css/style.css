@@ -577,6 +577,18 @@
   .opt:disabled{cursor:default;opacity:.9}
   .opt.correct{background:#a7c957;color:#20340a;border-color:#82a83e}
   .opt.wrong{background:#fde2e2;color:#c94a4a;border-color:#c94a4a}
+  /* الحكم والتعليل (judge-reason) — خاصّ باللغة العربية. يعيد استعمال .opts/.opt كما هي،
+     ولا يزيد إلا فاصلَ الخطوتين وعنوانَ «لماذا؟» الذي يظهر بعد صحّة الحكم وحدَها */
+  .jr{display:flex;flex-direction:column;gap:18px;width:100%;align-items:center}
+  .jr .opts{margin:0 auto}
+  .jr-why{width:100%;display:flex;flex-direction:column;gap:10px;align-items:center;
+    animation:jrReveal .28s ease-out}
+  /* محجوزةُ الارتفاعِ من البداية (فالإطارُ القمريُّ يُختارُ على أقصى امتدادِ السؤال)
+     لكنّها محجوبةٌ بصرياً ولا تُنقر حتى يصحَّ الحكم — تفصيلُ العلّةِ في js/app.js */
+  .jr-why.jr-locked{visibility:hidden;pointer-events:none;animation:none}
+  .jr-bt{font-weight:700;color:#2c6e3f;align-self:center}
+  .qcard .jr-bt{color:#eef5ef}
+  @keyframes jrReveal{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
   /* الاستبعاد (الدخيل) — عناصر كبيرة تناسب اللمس على السبورة، تتوزّع في صفّ يلتفّ */
   .excl{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;max-width:640px;margin:0 auto}
   .excl-opt{min-width:150px;text-align:center;background:#FFE0B3;border:2px solid #e0b380;border-radius:16px;

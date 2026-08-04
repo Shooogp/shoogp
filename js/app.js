@@ -221,7 +221,7 @@ function qWin(fb,msg,stars){fb.textContent=msg||'🎉 أحسنت!';fb.className=
 // أي واجهة بلا صاروخ تُبقي wrong.mp3 يعمل (بقية دروس المنصّة كلها تحوي الصاروخ الآن)
 function qFail(fb,msg){fb.textContent=msg||'حاول مرة أخرى';fb.className='fb qfb bad';if(!(window.RocketJourney&&RocketJourney.isActive&&RocketJourney.isActive()))playWrongSound();if(window.RocketJourney)RocketJourney.onAnswer(false);}
 
-const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل','slider':'🎚️ الشريط المتدرج','memory':'🎴 بطاقات الذاكرة','lens':'🔍 العدسة المكبّرة','equation-builder':'🧮 بناء المعادلة','number-line':'📏 خط الأعداد','hundred-chart':'💯 لوحة المائة','array':'🔲 المصفوفات','compare':'⚖️ المقارنة','pattern':'🔁 إكمال النمط','count-tap':'🖐️ العد بالنقر','place-value':'🧱 القيمة المنزلية','clock':'🕐 الساعة التفاعلية','measure-tool':'📐 أداة القياس','money':'🪙 النقود العُمانية','symmetry':'🪞 خط التماثل','chart-read':'📊 التمثيل البياني','tashkeel':'ـَ التشكيل','sentence':'📝 ترتيب الجملة','sun-moon':'☀️ شمسية وقمرية','letter-picture':'🔠 الحرف والصورة'};
+const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل','slider':'🎚️ الشريط المتدرج','memory':'🎴 بطاقات الذاكرة','lens':'🔍 العدسة المكبّرة','equation-builder':'🧮 بناء المعادلة','number-line':'📏 خط الأعداد','hundred-chart':'💯 لوحة المائة','array':'🔲 المصفوفات','compare':'⚖️ المقارنة','pattern':'🔁 إكمال النمط','count-tap':'🖐️ العد بالنقر','place-value':'🧱 القيمة المنزلية','clock':'🕐 الساعة التفاعلية','measure-tool':'📐 أداة القياس','money':'🪙 النقود العُمانية','symmetry':'🪞 خط التماثل','chart-read':'📊 التمثيل البياني','tashkeel':'ـَ التشكيل','sentence':'📝 ترتيب الجملة','sun-moon':'☀️ شمسية وقمرية','letter-picture':'🔠 الحرف والصورة','judge-reason':'⚖️ الحكم والتعليل'};
 
 // تحويل الأرقام إلى هندية (عربية) للعرض
 function arNum(n){ return String(n).replace(/[0-9]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'[+d];}); }
@@ -236,7 +236,7 @@ function renderQuestions(ls){
     m.innerHTML='<div class="qbody" style="text-align:center;padding:14px 6px;font-size:1.15rem">📚 أسئلة هذا الدرس ستُضاف قريباً بإذن الله</div>';
     host.appendChild(m); return;
   }
-  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor,'puzzle':renderPuzzle,'slider':renderSlider,'memory':renderMemory,'lens':renderLens,'equation-builder':renderEquationBuilder,'number-line':renderNumberLine,'hundred-chart':renderHundredChart,'array':renderArray,'compare':renderCompare,'pattern':renderPattern,'count-tap':renderCountTap,'place-value':renderPlaceValue,'clock':renderClock,'measure-tool':renderMeasureTool,'money':renderMoney,'symmetry':renderSymmetry,'chart-read':renderChartRead,'tashkeel':renderTashkeel,'sentence':renderSentence,'sun-moon':renderSunMoon,'letter-picture':renderLetterPicture};
+  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor,'puzzle':renderPuzzle,'slider':renderSlider,'memory':renderMemory,'lens':renderLens,'equation-builder':renderEquationBuilder,'number-line':renderNumberLine,'hundred-chart':renderHundredChart,'array':renderArray,'compare':renderCompare,'pattern':renderPattern,'count-tap':renderCountTap,'place-value':renderPlaceValue,'clock':renderClock,'measure-tool':renderMeasureTool,'money':renderMoney,'symmetry':renderSymmetry,'chart-read':renderChartRead,'tashkeel':renderTashkeel,'sentence':renderSentence,'sun-moon':renderSunMoon,'letter-picture':renderLetterPicture,'judge-reason':renderJudgeReason};
 
   // بناء كل البطاقات (تبقى في الصفحة لحفظ إجاباتها، ونُظهر واحدة فقط)
   // شارة رقم السؤال أُلغيت (قرار المالك): مؤشر التقدم «السؤال ٢ من ٦» يغني عنها
@@ -2973,6 +2973,83 @@ function renderLetterPicture(q, body, fb){
     Rr.appendChild(d);
   });
   body.querySelector('.btn-reset').onclick=()=>renderLetterPicture(q,body,fb);
+}
+
+/* ㊱ الحكمُ والتعليل (judge-reason) — **خاصٌّ باللغة العربية**، مستواه `evaluation`:
+   بنيةُ `mcq` نفسُها (`options` + `answer`) للحكم، ويزيدُ عليها `reasons` (ثلاثةُ أسباب)
+   و`reasonAnswer` (فهرسُ الصحيح) للتعليل.
+
+   **لماذا خطوتان لا خطوة:** لو ظهرتِ الأسبابُ معَ الحكمِ لَدَلَّ نصُّ السببِ على الحكمِ
+   نفسِه («لأنّه أخذَه إلى الطبيب» يفضحُ أنّ الجوابَ «نعم»)، فيصيرُ السؤالُ تذكّراً لا تقويماً.
+
+   **ولماذا تُبنى الأسبابُ من البداية محجوبةً بـ`visibility` لا تُنشأُ عندَ الكشف:**
+   هذا النوعُ **الوحيدُ في المنصّةِ الذي ينمو بعدَ أوّلِ تفاعل**، وكلُّ الأنواعِ القائمةِ
+   ثابتةُ الارتفاعِ فيُختارُ إطارُها القمريُّ مرّةً واحدةً عندَ العرض. وقد قِسنا أنّ إنشاءَ
+   الأسبابِ عندَ الكشفِ يُنمي المحتوى ‏١٨٦px فيفيضُ عن الإطارِ المختار (‏`scrollHeight 534`
+   مقابلَ `clientHeight 348`) **ولا تتدخّلُ شبكةُ أمانِ الأبعاد**. فحجزُ ارتفاعِها من البداية
+   يجعلُ الارتفاعَ ثابتاً فيُختارُ الإطارُ على أقصى امتدادِ السؤالِ من أوّلِ لحظة — وهو
+   علاجُ «تخفيفِ السؤالِ ليدخلَ إطاراً حقيقياً» لا تعديلُ الواجهة (قاعدةُ فحصِ الإطار).
+
+   **المقايضةُ المقبولةُ صراحةً:** نصُّ الأسبابِ موجودٌ في DOM منذ البداية (محجوبٌ بصرياً
+   وغيرُ قابلٍ للتركيزِ ولا النقر)، فيمكنُ لفاحصِ الصفحةِ رؤيتُه. قُبِلَ ذلك لأنّ البديلَ
+   يكسرُ قاعدةَ الإطارِ الإلزامية، ولأنّ المخاطبَ تلميذُ الحلقةِ الأولى على سبّورةٍ ذكيّةٍ
+   لا فاحصَ عناصر. الشرطُ التربويُّ محفوظٌ: **لا يراها الطالبُ حتى يصحَّ حكمُه.**
+
+   **الدرجةُ واحدةٌ لا اثنتان:** `qWin` (ورفعُ الصاروخ) لا يُنادى إلا عندَ صحّةِ الحكمِ
+   والسببِ معاً. وصحّةُ الحكمِ وحدَها تعطي سطرَ تغذيةٍ محايداً بلا صوتٍ ولا مكافأة.
+
+   **الحكمُ الخاطئ يُعادُ اختيارُه** (لا يُعطَّلُ زرُّه) لأنّ الخيارَينِ اثنانِ فتعطيلُ
+   الخطأِ يكشفُ الصواب؛ بخلافِ السببِ الخاطئِ فيُعطَّلُ كما في `mcq` لأنّ الأسبابَ ثلاثة.
+
+   يُعيدُ استعمالَ `.opts/.opt` فيرثُ أقشرةَ الواجهةِ الثلاث (rocky · metal · capsule) تلقائياً. */
+function renderJudgeReason(q, body, fb){
+  const opts=shuffle(q.options.map((o,idx)=>({o,idx})));
+  const reasons=shuffle(q.reasons.map((r,idx)=>({r,idx})));
+  body.innerHTML=`<div class="jr">`+
+    `<div class="opts jr-judge">`+opts.map(x=>`<button class="opt" data-i="${x.idx}">${x.o}</button>`).join('')+`</div>`+
+    /* محجوزةُ الارتفاعِ من البداية، محجوبةٌ بـ`visibility` ومعطّلةٌ وخارجَ ترتيبِ التركيز */
+    `<div class="jr-why jr-locked" aria-hidden="true"><div class="bt jr-bt">لماذا؟</div>`+
+    `<div class="opts jr-reasons">`+reasons.map(x=>
+      `<button class="opt" data-i="${x.idx}" disabled tabindex="-1">${x.r}</button>`).join('')+
+    `</div></div></div>`;
+  const why=body.querySelector('.jr-why');
+  let judged=false, done=false;
+
+  body.querySelectorAll('.jr-judge .opt').forEach(btn=>{ btn.onclick=()=>{
+    if(judged) return;
+    if(+btn.dataset.i===q.answer){
+      judged=true;
+      btn.classList.add('correct');
+      body.querySelectorAll('.jr-judge .opt').forEach(b=>b.disabled=true);
+      fb.textContent='حكمٌ صحيح ✔ — والآن: لماذا؟';
+      fb.className='fb qfb';                       // محايد: لا مكافأةَ حتى يصحَّ السببُ أيضاً
+      unlockReasons();
+    } else {
+      btn.classList.add('wrong');
+      qFail(fb,'أعِدِ النظرَ في الموقف، ثمّ اختَرِ الحكم');
+      setTimeout(()=>btn.classList.remove('wrong'),900);   // يُعادُ الاختيارُ ولا يُعطَّل
+    }
+  };});
+
+  function unlockReasons(){
+    why.classList.remove('jr-locked');
+    why.removeAttribute('aria-hidden');
+    why.querySelectorAll('.jr-reasons .opt').forEach(btn=>{
+      btn.disabled=false; btn.removeAttribute('tabindex');
+      btn.onclick=()=>{
+        if(done) return;
+        if(+btn.dataset.i===q.reasonAnswer){
+          done=true;
+          btn.classList.add('correct');
+          why.querySelectorAll('.opt').forEach(b=>b.disabled=true);
+          qWin(fb,'🎉 أحسنت! الحكمُ صحيحٌ وتعليلُه صحيح',3);
+        } else {
+          btn.classList.add('wrong'); btn.disabled=true;
+          qFail(fb,'ليس هذا هو السبب، تأمّلْ ما فعلَه بالضبط');
+        }
+      };
+    });
+  }
 }
 
 /* ===== إقلاع ===== */
