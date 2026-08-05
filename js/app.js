@@ -139,6 +139,9 @@ function openBook(key){
   // ابحث عن الكتاب لتطبيق ثيمه ولونه
   const bk=DATA.terms[currentTerm][currentGrade].find(b=>b.key===key);
   currentBookColor=(bk && bk.color) ? bk.color : '';
+  /* ‏`let` في سكربتٍ كلاسيكيٍّ لا يصيرُ خاصيةً على `window`، فنُصدّرُه صراحةً
+     ليقرأَه `js/unlock.js` (شريطُ لونِ الكتابِ في نافذةِ الرمز). */
+  window.currentBookColor=currentBookColor;
   setTheme(bk && bk.theme ? bk.theme : 'theme-home');
   document.getElementById('bookTitle').textContent=idx.book;
   const totalL = idx.units.reduce((s,u)=>s+u.lessons.length,0);
@@ -154,16 +157,23 @@ function openBook(key){
   document.getElementById('bookSub').textContent=`${idx.units.length} وحدات · ${totalL} درساً`;
   let n=0;
   idx.units.forEach((u,ui)=>{
+    /* قفلُ الشراء: مشتقٌّ من رقمِ الوحدةِ وحدَه (الأولى مجانيةٌ دائماً) — لا حقلَ
+       `locked` في البيانات. القاعدةُ كاملةً في `js/unlock.js`. */
+    const payLocked = !!(window.ShoogpLock && ShoogpLock.isUnitLocked(key, ui));
+
     // --- بطاقة الوحدة (قابلة للطي) ---
     const unitBox=document.createElement('div');unitBox.className='unit-box';
 
     // رأس الوحدة (زر الطي)
     const uh=document.createElement('button');
-    uh.className='unit-head'+(ui===0?' open':'');
+    uh.className='unit-head'+(ui===0?' open':'')+(payLocked?' paylock':'');
     const count=u.lessons.length;
+    /* شارةُ القفل: `span` لا `button` — لأنّ رأسَ الوحدةِ نفسَه `button`، وتعشيشُ
+       عنصرَينِ تفاعليَّينِ غيرُ صالحٍ في HTML. نقرُها يُلتقَطُ في معالجِ الرأسِ أدناه. */
     uh.innerHTML=`<span class="unit-no">الوحدة ${ui+1}</span>`+
       `<span class="unit-title">${u.unit}</span>`+
       `<span class="unit-count">${count} دروس</span>`+
+      (payLocked?`<span class="unit-lock" title="افتحي هذه الوحدة برمز">🔒 مقفلة</span>`:'')+
       `<span class="unit-chevron">⌄</span>`;
 
     // حاوية الدروس (تنطوي)
@@ -172,15 +182,30 @@ function openBook(key){
 
     u.lessons.forEach(ls=>{
       n++;
-      const el=document.createElement('div');el.className='lesson'+(ls.open?'':' locked');
+      /* قفلانِ مختلفانِ لا يُخلَطان:
+         • `!ls.open`  = الدرسُ لم يُؤلَّفْ بعد ⇒ باهتٌ وميّت، ولا يفتحُه رمزٌ (يبقى كما هو).
+         • payLocked   = الدرسُ مؤلَّفٌ في وحدةٍ مقفلةٍ بالشراء ⇒ حيٌّ ويفتحُ نافذةَ الرمز. */
+      const authored = !!ls.open;
+      const payl = payLocked && authored;
+      const el=document.createElement('div');
+      el.className='lesson'+(authored?'':' locked')+(payl?' paylocked':'');
       el.innerHTML=`<div class="num">${n}</div><div class="lt">${ls.title}</div>`+
-        `<div class="arrow">${ls.open?'←':'🔒'}</div>`;
-      if(ls.open) el.onclick=()=>openLesson(ls);
+        `<div class="arrow">${(authored&&!payl)?'←':'🔒'}</div>`;
+      if(payl){
+        // صفٌّ حيٌّ ⇒ يُبلَّغُ للقارئِ الشاشيِّ ويُبلَغُ بلوحةِ المفاتيح (تركيزُه ظاهرٌ في CSS)
+        el.tabIndex=0; el.setAttribute('role','button');
+        const open=()=>ShoogpLock.ask(key,ui,u.unit);
+        el.onclick=open;
+        el.onkeydown=(e)=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();open();} };
+      }else if(authored){
+        el.onclick=()=>openLesson(ls);
+      }
       body.appendChild(el);
     });
 
-    // تفعيل الطيّ/الفتح
-    uh.onclick=()=>{
+    // تفعيل الطيّ/الفتح — ونقرُ شارةِ القفلِ يفتحُ النافذةَ بدلَ الطيّ
+    uh.onclick=(e)=>{
+      if(payLocked && e.target.closest('.unit-lock')){ ShoogpLock.ask(key,ui,u.unit); return; }
       const isOpen=uh.classList.contains('open');
       uh.classList.toggle('open',!isOpen);
       body.classList.toggle('open',!isOpen);
@@ -195,6 +220,10 @@ function openBook(key){
 
 /* ===== ④ فتح درس: عرض الأسئلة التفاعلية ===== */
 function openLesson(ls){
+  /* حارسُ القفل — هنا لا في معالجِ النقر، فيغطّي أيَّ مدخلٍ للدرس (نداءٌ برمجيٌّ
+     أو رابطٌ مباشرٌ إن أُضيفَ لاحقاً) لا النقرَ وحدَه. هويةُ الكتابِ من `currentBook`
+     (مفتاحُ `data/books.json`) — **لا تُشتَقُّ من اسمِ ملفِّ الدرس**. */
+  if(window.ShoogpLock && ShoogpLock.guardLesson(currentBook, ls, DATA.index)) return;
   document.getElementById('lessonTitle').textContent=ls.title;
   renderQuestions(ls);
   showScreen('activityScreen');

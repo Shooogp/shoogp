@@ -1,0 +1,201 @@
+/* ═══════════════════════════════════════════════════════════════════
+   شوجب — كسوةُ قفلِ الوحداتِ ونافذةِ الرمز
+   القاعدةُ نفسُها (متى تُقفَلُ الوحدةُ وكيف يُتحقَّقُ من الرمز) موطنُها
+   `js/unlock.js` وحدَه — هنا الكسوةُ البصريةُ فقط.
+
+   الهوية: الأسلوبُ الحجريُّ الرمليُّ المعتمدُ في أزرارِ العلوم (‏`skin-rocky`
+   في `css/shoogp-ui.css`) — جسمٌ رمليٌّ فاتحٌ متدرّج، حافّةٌ سفليةٌ أغمقُ
+   للسماكة، وملمسٌ حبيبيٌّ بـ`feTurbulence` مُضمَّنٍ في `data:` (بلا صور).
+   ولونُ الكتابِ يظهرُ في شريطِ النافذةِ العلويِّ وحدَه (صنف `bk-*`).
+
+   الحدود الدنيا للسبورة التفاعلية: ارتفاعُ أيِّ عنصرٍ تفاعليٍّ ≥ 60px،
+   والنصوصُ ≥ 18px. وقاعدةُ التنفّسِ البصريِّ: حشوةٌ كافيةٌ بلا تلامسٍ مع الحواف.
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root{
+  /* سلّمُ الحجرِ الرمليّ — منقولٌ عن `--rk-*` في `css/shoogp-ui.css` */
+  --lk-hi:#fdf4e2;
+  --lk-mid:#f3ddb6;
+  --lk-lo:#e4c691;
+  --lk-edge:#cba86e;
+  --lk-edge-dk:#a3823f;
+  --lk-ink:#4a3117;
+  --lk-grain:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='190' height='96'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='190' height='96' filter='url(%23n)' opacity='0.15'/></svg>");
+}
+
+/* ═══════════════ ① علامةُ القفلِ في قائمةِ الوحدات ═══════════════ */
+
+/* شارةُ القفلِ في رأسِ الوحدة — عنصرٌ غيرُ تفاعليٍّ بنيوياً (‏`span` داخلَ
+   `button` رأسِ الوحدة، فلا تُعشَّشُ عناصرُ تفاعلية)، ونقرُها يُلتقَطُ في
+   معالجِ الرأسِ نفسِه (`js/app.js`) فيفتحُ النافذةَ بدلَ الطيّ. */
+.unit-head .unit-lock{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  min-height:60px; padding:0 20px; border-radius:999px;
+  font-family:'Cairo',sans-serif; font-size:18px; font-weight:800;
+  color:var(--lk-ink); white-space:nowrap;
+  background:var(--lk-grain) 0 0/190px 96px repeat,
+             linear-gradient(180deg,var(--lk-hi) 0%,var(--lk-mid) 46%,var(--lk-lo) 100%);
+  border:2px solid var(--lk-edge); border-bottom-color:var(--lk-edge-dk);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.78),
+             inset 0 -3px 0 rgba(150,112,52,.30),
+             0 3px 0 rgba(163,127,72,.55),
+             0 6px 12px rgba(60,40,15,.26);
+  cursor:pointer; transition:transform .18s, box-shadow .18s;
+}
+.unit-head .unit-lock:hover{
+  transform:translateY(-2px);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.85),
+             inset 0 -3px 0 rgba(150,112,52,.28),
+             0 5px 0 rgba(163,127,72,.55),
+             0 9px 16px rgba(60,40,15,.30);
+}
+/* الوحدةُ المقفلةُ: عدّادُ الدروسِ يفسحُ للشارةِ فلا تتلامسان */
+.unit-head.paylock .unit-count{margin-inline-end:12px}
+
+/* ═══════════════ ② الدرسُ داخلَ وحدةٍ مقفلة ═══════════════
+   ⚠️ يُفرَّقُ بينَ قفلَينِ مختلفَينِ تماماً:
+   • `.lesson.locked`  = درسٌ **لم يُؤلَّفْ بعد** (‏`open:false` في الفهرس) —
+     باهتٌ وميّتٌ ولا يُفتَحُ برمز. **يبقى كما هو ولا يُمَسّ.**
+   • `.lesson.paylocked` = درسٌ **مؤلَّفٌ في وحدةٍ مقفلةٍ بالشراء** — حيٌّ يستجيبُ
+     للمسِ ويفتحُ نافذةَ الرمز، ولونُه رمليٌّ دافئٌ يميّزُه عن الباهتِ الميّت. */
+.lesson.paylocked{
+  cursor:pointer; opacity:1;
+  background:rgba(243,221,182,.14);
+  border-color:rgba(203,168,110,.45);
+}
+.lesson.paylocked:hover{background:rgba(243,221,182,.24); transform:translateX(-4px)}
+.lesson.paylocked .num{background:var(--lk-mid); color:var(--lk-ink)}
+.lesson.paylocked .arrow{color:var(--lk-mid); font-size:1.4rem}
+/* تركيزُ لوحةِ المفاتيحِ ظاهر (الصفُّ `role="button"` و`tabindex="0"`) */
+.lesson.paylocked:focus-visible{
+  outline:3px solid #FFE0B3; outline-offset:3px;
+  background:rgba(243,221,182,.26);
+}
+
+/* ═══════════════ ③ نافذةُ إدخالِ الرمز ═══════════════ */
+
+.lockwrap[hidden]{display:none}
+.lockwrap{
+  position:fixed; inset:0; z-index:2000;
+  display:flex; align-items:center; justify-content:center;
+  padding:24px;                      /* تنفّسٌ بصريّ: لا تلامسَ مع حوافِّ المنفذ */
+}
+.lockback{
+  position:absolute; inset:0;
+  background:rgba(18,10,42,.72); backdrop-filter:blur(4px);
+  animation:lkfade .22s ease;
+}
+@keyframes lkfade{from{opacity:0}to{opacity:1}}
+
+.lockbox{
+  position:relative; z-index:1;
+  width:min(560px,100%); max-height:calc(100vh - 48px); overflow:auto;
+  padding:0 34px 34px; border-radius:28px; text-align:center;
+  background:var(--lk-grain) 0 0/190px 96px repeat,
+             linear-gradient(180deg,var(--lk-hi) 0%,var(--lk-mid) 52%,var(--lk-lo) 100%);
+  border:3px solid var(--lk-edge); border-bottom-color:var(--lk-edge-dk);
+  box-shadow:inset 0 3px 0 rgba(255,255,255,.8),
+             inset 0 -5px 0 rgba(150,112,52,.28),
+             0 6px 0 rgba(163,127,72,.5),
+             0 24px 48px rgba(10,5,30,.55);
+  animation:lkrise .26s cubic-bezier(.2,.9,.3,1.2);
+}
+@keyframes lkrise{from{opacity:0;transform:translateY(18px) scale(.96)}to{opacity:1;transform:none}}
+
+/* شريطُ لونِ الكتاب — الصنفُ `bk-*` يأتي من بطاقةِ الكتابِ الحالي (‏`currentBookColor`).
+   بلا صنفٍ يبقى رملياً محايداً، فلا ينكسرُ شيءٌ إن غابَ اللون. */
+.lockband{ height:14px; margin:0 -34px 26px; border-radius:24px 24px 0 0 }
+/* التعبئةُ الافتراضيةُ بـ`:where()` — **وزنُها صفر** عمداً، فيغلبُها صنفُ لونِ الكتاب
+   (`.bk-green` وزنُه 0,1,0) رغمَ أنّ `style.css` يسبقُ هذا الملفَّ في الترتيب.
+   بدونِها كانت القاعدةُ المتأخّرةُ تغلبُ اللونَ فيبقى الشريطُ رملياً في كلِّ الكتب. */
+:where(.lockband){ background:linear-gradient(145deg,var(--lk-edge),var(--lk-edge-dk)) }
+
+.lockclose{
+  position:absolute; inset-block-start:20px; inset-inline-start:20px;
+  width:60px; height:60px; border-radius:50%;   /* ≥60px — حدُّ السبورة */
+  display:flex; align-items:center; justify-content:center;
+  font-size:22px; font-weight:800; line-height:1; color:var(--lk-ink);
+  background:rgba(255,255,255,.55); border:2px solid var(--lk-edge);
+  cursor:pointer; transition:transform .18s, background .18s;
+}
+.lockclose:hover{background:rgba(255,255,255,.85); transform:scale(1.06)}
+.lockclose:focus-visible{outline:3px solid #7f5cc0; outline-offset:3px}
+
+.lockicon{font-size:56px; line-height:1; margin-bottom:10px;
+  filter:drop-shadow(0 3px 4px rgba(90,60,20,.35))}
+
+.locktitle{
+  font-family:'Cairo',sans-serif; font-size:1.7rem; font-weight:800;
+  color:var(--lk-ink); margin:0 0 8px;
+}
+.locksub{
+  font-family:'Tajawal','Cairo',sans-serif; font-size:18px; line-height:1.7;
+  color:#6b4a24; margin:0 0 24px;
+}
+.locklabel{
+  display:block; font-family:'Cairo',sans-serif; font-size:18px; font-weight:700;
+  color:var(--lk-ink); margin-bottom:10px;
+}
+
+.lockinput{
+  width:100%; min-height:60px; padding:14px 18px; box-sizing:border-box;
+  border-radius:18px; border:2px solid var(--lk-edge);
+  background:rgba(255,255,255,.72); color:var(--lk-ink);
+  font-family:'Cairo',monospace; font-size:22px; font-weight:800;
+  letter-spacing:.14em; text-align:center; text-transform:uppercase;
+  box-shadow:inset 0 3px 7px rgba(120,86,36,.22);
+}
+.lockinput::placeholder{color:rgba(120,86,36,.42); letter-spacing:.1em}
+.lockinput:focus{outline:3px solid #7f5cc0; outline-offset:2px; background:#fff}
+
+/* سطرُ الرسالةِ الواحد — يحجزُ ارتفاعَه دائماً فلا يقفزُ التخطيطُ عند ظهورِها */
+.lockmsg{
+  min-height:28px; margin:14px 0 20px;
+  font-family:'Tajawal','Cairo',sans-serif; font-size:18px; line-height:1.6;
+  color:#6b4a24;
+}
+.lockmsg.bad{color:#a32828; font-weight:700}
+.lockmsg.good{color:#2f6b1f; font-weight:800}
+
+.lockgo{
+  width:100%; min-height:60px; padding:16px 24px; border-radius:999px;
+  font-family:'Cairo',sans-serif; font-size:20px; font-weight:800;
+  color:#fff; cursor:pointer;
+  background:linear-gradient(180deg,#8fc74a 0%,#6fa832 55%,#548420 100%);
+  border:2px solid #4d7a1c; border-bottom-color:#3a5c14;
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.45),
+             0 4px 0 #3f651a, 0 8px 16px rgba(30,55,10,.4);
+  text-shadow:0 2px 4px rgba(25,60,10,.5);
+  transition:transform .18s, box-shadow .18s, filter .18s;
+}
+.lockgo:hover:not(:disabled){transform:translateY(-2px);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.5), 0 6px 0 #3f651a, 0 12px 20px rgba(30,55,10,.45)}
+.lockgo:active:not(:disabled){transform:translateY(2px);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.4), 0 2px 0 #3f651a, 0 4px 10px rgba(30,55,10,.4)}
+.lockgo:disabled{filter:grayscale(.5) brightness(.9); cursor:default}
+.lockgo:focus-visible{outline:3px solid #7f5cc0; outline-offset:3px}
+
+/* منعُ تمريرِ الصفحةِ خلفَ النافذة */
+body.lock-open{overflow:hidden}
+
+/* ── منفذُ اللابتوبِ الضيّق: النافذةُ تبقى سليمةً بلا اقتطاع ── */
+@media (max-height:640px){
+  .lockicon{font-size:40px; margin-bottom:4px}
+  .locktitle{font-size:1.4rem}
+  .locksub{margin-bottom:16px}
+  .lockbox{padding-bottom:26px}
+  .lockband{margin-bottom:18px}
+}
+@media (max-width:520px){
+  .lockbox{padding-inline:22px}
+  .lockband{margin-inline:-22px}
+  .lockinput{font-size:20px; letter-spacing:.08em}
+}
+
+/* ── احترامُ `prefers-reduced-motion`: تبقى الوظيفةُ وتسقطُ الحركةُ وحدَها ── */
+@media (prefers-reduced-motion:reduce){
+  .lockback,.lockbox{animation:none}
+  .lockgo,.lockclose,.lesson.paylocked,.unit-head .unit-lock{transition:none}
+  .lockgo:hover:not(:disabled),.lockclose:hover,
+  .unit-head .unit-lock:hover,.lesson.paylocked:hover{transform:none}
+}
