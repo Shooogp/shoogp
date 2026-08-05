@@ -198,12 +198,19 @@ var FRAME_FAMILIES={
      **أُعيدَ القياسُ ٢٠٢٦-٠٨-٠٤** بعدَ رفعِ المعلّمِ نسخاً جديدةً من s وm وl: الأبعادُ
      كما هي لكنّ **موضعَ النافذةِ ولونَ التعبئةِ تغيّرا** (قاعُ s ارتفعَ 20.1٪→23.6٪ وقاعُ
      l ‏16.5٪→19.3٪، والتعبئةُ صارت أكثرَ إشباعاً: ‎#F9E8D5→#F4D4B2‎ وأخواتُها). أعِدِ
-     القياسَ بالملءِ الفيضيِّ من المركزِ عندَ كلِّ تحديثٍ للصور — لا تُبقِ القيمَ القديمة. */
+     القياسَ بالملءِ الفيضيِّ من المركزِ عندَ كلِّ تحديثٍ للصور — لا تُبقِ القيمَ القديمة.
+     **تفتيحٌ يسيرٌ ٢٠٢٦-٠٨-٠٥ (قرارُ المالك):** فُتِّحتِ التعبئةُ الداخليةُ في الصورِ
+     الأربعِ **بمزجِ ٢٥٪ نحوَ الأبيضِ** (‏`c + 0.25×(255−c)` لكلِّ قناة). التحريرُ وقعَ
+     على **البكسلِ المشمولِ بالملءِ الفيضيِّ من المركزِ (تسامحٌ ٢٦) وحدَه**، فلم تُمَسَّ
+     حروفُ الإطارِ ولا كواكبُه ولا حدودُه ولا شفافيةُ الخارج، ولم تتغيّرْ أبعادُ صورةٍ
+     ولا نافذةٌ — فلا يُعادُ قياسُ `win`. الأصولُ قبلَ التفتيحِ محفوظةٌ في
+     `images/ui/originals/frame-arabic-*.png` (لإعادةِ الكرّةِ بنسبةٍ أخرى من الأصلِ
+     لا من المفتَّحِ — فالمزجُ تراكميّ). القيمُ أدناه **مقيسةٌ من الصورِ بعدَ التفتيح**. */
   arabic:{ order:['s','m','l','tall'], flexBase:'l', sizes:{
-    s:{img:'frame-arabic-s.png', ar:'1648 / 978',  win:{top:'23.3%', left:'19.0%', right:'23.8%', bottom:'23.6%'}, hasFill:true, fillColor:'#F4D4B2'},
-    m:{img:'frame-arabic-m.png', ar:'1448 / 1086', win:{top:'23%',   left:'19.1%', right:'20.6%', bottom:'24.2%'}, hasFill:true, fillColor:'#F1CDAD'},
-    l:{img:'frame-arabic-l.png', ar:'1254 / 1254', win:{top:'18.2%', left:'19.9%', right:'17.8%', bottom:'19.3%'}, hasFill:true, fillColor:'#F0C8A5'},
-    tall:{img:'frame-arabic-tall.png', ar:'980 / 1819', win:{top:'18.7%', left:'18.9%', right:'20.5%', bottom:'24.6%'}, hasFill:true, fillColor:'#F7E3CC'}
+    s:{img:'frame-arabic-s.png', ar:'1648 / 978',  win:{top:'23.3%', left:'19.0%', right:'23.8%', bottom:'23.6%'}, hasFill:true, fillColor:'#F7DFC5'},
+    m:{img:'frame-arabic-m.png', ar:'1448 / 1086', win:{top:'23%',   left:'19.1%', right:'20.6%', bottom:'24.2%'}, hasFill:true, fillColor:'#F4DAC2'},
+    l:{img:'frame-arabic-l.png', ar:'1254 / 1254', win:{top:'18.2%', left:'19.9%', right:'17.8%', bottom:'19.3%'}, hasFill:true, fillColor:'#F4D6BC'},
+    tall:{img:'frame-arabic-tall.png', ar:'980 / 1819', win:{top:'18.7%', left:'18.9%', right:'20.5%', bottom:'24.6%'}, hasFill:true, fillColor:'#F9EBDA'}
   }}
 };
 /* مادةُ الدرس → عائلةُ الفريم: الرياضيات ← math، اللغةُ العربيةُ ← arabic، وبقيةُ
