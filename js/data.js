@@ -256,11 +256,11 @@ window.DATA_FALLBACK = {
     "g4-arabic-2": { book:"أحب لغتي (الجزء الثاني) — الصف الرابع", units:[
       { unit:"المحور الثاني: قصص وعِبَر", lessons:[
         { title:"استماع: الرسول لا يردّ سائلاً", file:"g4a2-2-1", open:true },
-        { title:"مستند بصري: قراءة غلاف قصة", file:"g4a2-2-2", open:false },
-        { title:"الدرس الأول: عُمر يتفقّد الرعيّة", file:"g4a2-2-3", open:false },
-        { title:"الدرس الثاني: مُخّ الوَعِل", file:"g4a2-2-4", open:false },
-        { title:"الدرس الثالث: نصيحة أب", file:"g4a2-2-5", open:false },
-        { title:"أتلو وأحفظ: من سورة القلم", file:"g4a2-2-6", open:false },
+        { title:"مستند بصري: قراءة غلاف قصة", file:"g4a2-2-2", open:true },
+        { title:"الدرس الأول: عُمر يتفقّد الرعيّة", file:"g4a2-2-3", open:true },
+        { title:"الدرس الثاني: مُخّ الوَعِل", file:"g4a2-2-4", open:true },
+        { title:"الدرس الثالث: نصيحة أب", file:"g4a2-2-5", open:true },
+        { title:"أتلو وأحفظ: من سورة القلم", file:"g4a2-2-6", open:true },
         { title:"قراءة حرّة", file:"g4a2-2-7", open:false },
         { title:"أُقيّم أدائي", file:"g4a2-2-8", open:false }
       ]}
