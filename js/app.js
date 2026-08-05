@@ -154,7 +154,7 @@ function openBook(key){
     showScreen('lessonsScreen');
     return;
   }
-  document.getElementById('bookSub').textContent=`${idx.units.length} وحدات · ${totalL} درساً`;
+  document.getElementById('bookSub').textContent=`${arNum(idx.units.length)} وحدات · ${arNum(totalL)} درساً`;
   let n=0;
   idx.units.forEach((u,ui)=>{
     /* قفلُ الشراء: مشتقٌّ من رقمِ الوحدةِ وحدَه (الأولى مجانيةٌ دائماً) — لا حقلَ
@@ -170,9 +170,9 @@ function openBook(key){
     const count=u.lessons.length;
     /* شارةُ القفل: `span` لا `button` — لأنّ رأسَ الوحدةِ نفسَه `button`، وتعشيشُ
        عنصرَينِ تفاعليَّينِ غيرُ صالحٍ في HTML. نقرُها يُلتقَطُ في معالجِ الرأسِ أدناه. */
-    uh.innerHTML=`<span class="unit-no">الوحدة ${ui+1}</span>`+
+    uh.innerHTML=`<span class="unit-no">الوحدة ${arNum(ui+1)}</span>`+
       `<span class="unit-title">${u.unit}</span>`+
-      `<span class="unit-count">${count} دروس</span>`+
+      `<span class="unit-count">${arNum(count)} دروس</span>`+
       (payLocked?`<span class="unit-lock" title="افتحي هذه الوحدة برمز">🔒 مقفلة</span>`:'')+
       `<span class="unit-chevron">⌄</span>`;
 
@@ -189,7 +189,7 @@ function openBook(key){
       const payl = payLocked && authored;
       const el=document.createElement('div');
       el.className='lesson'+(authored?'':' locked')+(payl?' paylocked':'');
-      el.innerHTML=`<div class="num">${n}</div><div class="lt">${ls.title}</div>`+
+      el.innerHTML=`<div class="num">${arNum(n)}</div><div class="lt">${ls.title}</div>`+
         `<div class="arrow">${(authored&&!payl)?'←':'🔒'}</div>`;
       if(payl){
         // صفٌّ حيٌّ ⇒ يُبلَّغُ للقارئِ الشاشيِّ ويُبلَغُ بلوحةِ المفاتيح (تركيزُه ظاهرٌ في CSS)
@@ -252,7 +252,13 @@ function qFail(fb,msg){fb.textContent=msg||'حاول مرة أخرى';fb.classNa
 
 const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل','slider':'🎚️ الشريط المتدرج','memory':'🎴 بطاقات الذاكرة','lens':'🔍 العدسة المكبّرة','equation-builder':'🧮 بناء المعادلة','number-line':'📏 خط الأعداد','hundred-chart':'💯 لوحة المائة','array':'🔲 المصفوفات','compare':'⚖️ المقارنة','pattern':'🔁 إكمال النمط','count-tap':'🖐️ العد بالنقر','place-value':'🧱 القيمة المنزلية','clock':'🕐 الساعة التفاعلية','measure-tool':'📐 أداة القياس','money':'🪙 النقود العُمانية','symmetry':'🪞 خط التماثل','chart-read':'📊 التمثيل البياني','tashkeel':'ـَ التشكيل','sentence':'📝 ترتيب الجملة','sun-moon':'☀️ شمسية وقمرية','letter-picture':'🔠 الحرف والصورة','judge-reason':'⚖️ الحكم والتعليل'};
 
-// تحويل الأرقام إلى هندية (عربية) للعرض
+/* تحويل الأرقام إلى هندية (عربية) للعرض — قاعدةُ المنصّة: **كلُّ رقمٍ يراه المستخدمُ
+   بالأرقامِ الهندية**. يُستعمَلُ في محرّكِ الأسئلةِ **وفي طبقةِ التنقّلِ أعلاه أيضاً**
+   (بطاقةُ الكتابِ ورؤوسُ الوحداتِ وأرقامُ الدروس) — فهو مُعرَّفٌ هنا لكنّه مرفوعٌ
+   (hoisted) فيعملُ في `openBook` السابقِ له في الملفّ. لا يُلَفُّ هذا الملفُّ في IIFE
+   دونَ نقلِ الدالّةِ أوّلاً.
+   ⛔ لا يُطبَّقُ على المعرّفاتِ والمفاتيحِ والمسارات (`g4-sci`، `g4s-1-1`، إحداثيات
+   SVG، `data-*` التي تُقرأُ برمجياً) — تحويلُها يكسرُ المطابقة. */
 function arNum(n){ return String(n).replace(/[0-9]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'[+d];}); }
 
 // يبني أسئلة الدرس ويعرضها واحداً تلو الآخر مع تنقّل حرّ ومؤشّر تقدّم وزر إنهاء
@@ -613,7 +619,7 @@ function renderDragDrop(q, body, fb){
     let ok=0;const ts=body.querySelectorAll('.target');
     ts.forEach(t=>{if(t.dataset.placed===t.dataset.answer){t.classList.add('correct');ok++;}else{t.classList.remove('correct');if(t.dataset.placed)t.style.borderColor='#c94a4a';}});
     if(ok===ts.length&&ts.length) qWin(fb,'🎉 أحسنت! كل البطاقات في مكانها',3);
-    else qFail(fb,`راجع إجاباتك — الصحيح ${ok} من ${ts.length}`);
+    else qFail(fb,`راجع إجاباتك — الصحيح ${arNum(ok)} من ${arNum(ts.length)}`);
   };
   body.querySelector('.btn-reset').onclick=()=>renderDragDrop(q,body,fb);
 }
