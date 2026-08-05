@@ -192,8 +192,50 @@
     expired: 'انتهت صلاحية هذا الرمز. الرموز تُباع بالفصل الدراسي.',
     net:     'تعذّر الاتصال للتحقّق من الرمز. تأكّدي من الإنترنت وأعيدي المحاولة.',
     store:   'متصفّحكِ يمنع الحفظ (تصفّح خاص؟). جرّبي نافذة عادية.',
-    ok:      '🎉 تمّ الفتح! جارٍ تحديث الصفحة…'
+    ok:      '🎉 تمّ الفتح! تظهر الدروس الآن…'
   };
+
+  // الأرقام الهندية وجوباً — `arNum` من `js/app.js`، وبديلٌ محلّيٌّ إن غاب
+  function num(n) {
+    return (typeof window.arNum === 'function')
+      ? window.arNum(n)
+      : String(n).replace(/[0-9]/g, function (d) { return '٠١٢٣٤٥٦٧٨٩'[+d]; });
+  }
+
+  /* عنوانُ الكتابِ المقروءُ للمعلّمة (مثل «العلوم — الصف الأول»).
+     `DATA` مُعرَّفٌ بـ`let` في `js/app.js`، فهو في النطاقِ المعجميِّ العامِّ لا على
+     `window`؛ ويُقرأُ هنا وقتَ الاستعمالِ لا وقتَ التحميل. و`try` تحمي من منطقةِ
+     الموتِ المؤقّتة (TDZ) لو نودِيَت قبلَ تنفيذِ `app.js` — إذ حتى `typeof` يرمي. */
+  function bookTitle(bookKey) {
+    try {
+      var idx = DATA && DATA.index && DATA.index[bookKey];
+      return (idx && idx.book) || bookKey;
+    } catch (e) { return bookKey; }
+  }
+
+  /* ═══ هل يغطّي النطاقُ المقبولُ الوحدةَ التي تحاولُ المعلّمةُ فتحَها؟ ═══
+     بدونِ هذا الفحصِ يُقبَلُ رمزُ كتابٍ آخرَ وتظهرُ رسالةُ نجاحٍ ثمّ لا تُفتَحُ
+     الوحدةُ التي أمامها — «نجاحٌ كاذب». */
+  function scopeCovers(scope, bookKey, unitIndex) {
+    return scope === bookKey || scope === unitScope(bookKey, unitIndex);
+  }
+
+  /* رسالةُ عدمِ التطابقِ — تقولُ للمعلّمةِ **ما الذي يفتحُه رمزُها** و**أين هي الآن**،
+     وتطمئنُها أنّ الرمزَ لم يُهدَرْ (المنحةُ محفوظةٌ فعلاً — الرمزُ مدفوعٌ وصحيح). */
+  function mismatchMsg(scope, p) {
+    var parts = String(scope).split(SEP);
+    var grantedBook = parts[0], grantedUnit = parts[1];
+    if (grantedBook !== p.bookKey) {
+      return 'هذا الرمز لكتابٍ آخر: «' + bookTitle(grantedBook) + '»' +
+             (grantedUnit ? ' (الوحدة ' + num(grantedUnit) + ')' : '') +
+             '، وأنتِ الآن في «' + bookTitle(p.bookKey) + '». ' +
+             'الرمز محفوظٌ ولم يُهدَر — افتحي ذلك الكتاب لتجديه مفتوحاً.';
+    }
+    // الكتابُ نفسُه لكنّ الرمزَ لوحدةٍ أخرى
+    return 'هذا الرمز يفتح الوحدة ' + num(grantedUnit) + ' من هذا الكتاب، ' +
+           'والوحدة التي أمامكِ هي ' + num(p.unitIndex + 1) + '. ' +
+           'الرمز محفوظٌ ولم يُهدَر.';
+  }
 
   var box = null, elInput, elMsg, elGo, elTitle, elSub, elBand, lastFocus = null;
 
@@ -261,11 +303,7 @@
 
     // لونُ الكتابِ حيث يصحّ: شريطٌ علويٌّ بصنفِ بطاقةِ الكتابِ الحالي
     elBand.className = 'lockband' + (window.currentBookColor ? ' ' + window.currentBookColor : '');
-    // الأرقامُ الهنديةُ وجوباً (قاعدةُ المنصّة) — `arNum` من `js/app.js`، وبديلٌ محلّيٌّ إن غاب
-    var num = (typeof window.arNum === 'function')
-      ? window.arNum(unitIndex + 1)
-      : String(unitIndex + 1).replace(/[0-9]/g, function (d) { return '٠١٢٣٤٥٦٧٨٩'[+d]; });
-    elTitle.textContent = 'الوحدة ' + num + ' مقفلة';
+    elTitle.textContent = 'الوحدة ' + num(unitIndex + 1) + ' مقفلة';
     elSub.textContent = unitTitle
       ? unitTitle + ' — افتحيها برمزٍ لتظهر دروسها.'
       : 'افتحيها برمزٍ لتظهر دروسها.';
@@ -294,11 +332,19 @@
     elGo.disabled = true;
     say('جارٍ التحقّق…', '');
 
+    var p = pending;   // نلتقطُه الآن: `close()` يصفّرُه، والوعدُ يُحَلُّ لاحقاً
     redeem(elInput.value).then(function (res) {
       if (res.ok) {
+        /* الرمزُ صحيحٌ ومحفوظ — لكن هل يفتحُ ما أمامها؟ إن لم يكنْ فلا نقولُ
+           «تمّ الفتح» ثمّ ندعُها أمامَ وحدةٍ مقفلة. */
+        if (p && !scopeCovers(res.scope, p.bookKey, p.unitIndex)) {
+          elGo.disabled = false;
+          say(mismatchMsg(res.scope, p), 'bad');
+          elInput.focus(); elInput.select();
+          return;
+        }
         say(MSG.ok, 'good');
-        // إعادةُ التحميلِ أبسطُ من إعادةِ بناءِ القائمةِ يدوياً، وتضمنُ اتّساقَ كلِّ شيء
-        setTimeout(function () { location.reload(); }, 900);
+        setTimeout(function () { close(); reveal(p); }, 700);
         return;
       }
       elGo.disabled = false;
@@ -306,6 +352,23 @@
       elInput.focus();
       elInput.select();
     });
+  }
+
+  /* ═══ إظهارُ الوحدةِ في مكانِها بدلَ `location.reload()` ═══
+     إعادةُ التحميلِ كانت تُرجِعُ المعلّمةَ إلى الشاشةِ الرئيسيةِ فتفقدُ موضعَها
+     وتظنُّ أنّ شيئاً لم يحدث. بدلَها نعيدُ بناءَ الكتابِ نفسِه — فتُقرأُ الأقفالُ
+     من `localStorage` من جديدٍ وتختفي أقفالُ ما فُتح — ثمّ نفتحُ الوحدةَ ونمرّرُ
+     إليها، فترى دروسَها فوراً. */
+  function reveal(p) {
+    if (!p || typeof window.openBook !== 'function') return;
+    window.openBook(p.bookKey);                       // يعيدُ الرسمَ ويبقى على شاشةِ الدروس
+    var heads = document.querySelectorAll('#lessons .unit-head');
+    var head = heads[p.unitIndex];
+    if (!head) return;
+    if (!head.classList.contains('open')) head.click();   // افتحِ الأكورديون
+    var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    try { head.scrollIntoView({ block: 'center', behavior: calm ? 'auto' : 'smooth' }); } catch (e) { head.scrollIntoView(); }
+    try { head.focus({ preventScroll: true }); } catch (e) {}   // التركيزُ حيثُ الحدث
   }
 
   /* ───────────────────────────── الواجهة ───────────────────────────── */
