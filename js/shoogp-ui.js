@@ -623,7 +623,12 @@ function placeMask(){
                  right:parseFloat(w.style.right), bottom:parseFloat(w.style.bottom) };
     buildFrameCutout(name, isNaN(winPct.top)?null:winPct);
     var cut=_frameCut[name];
-    if(typeof cut==='string'){
+    /* `'pending'` سلسلةٌ أيضاً — فاستثناؤها شرطٌ لا تزيّد: بدونه يُبنى
+       `url("pending")` فيطلبُه المتصفّحُ ويعودُ بـ404، **ويُخفى القناعُ الاحتياطيُّ**
+       (السطرُ أدناه) فيبقى الإطارُ بلا قناعٍ حتى تكتملَ القصاصة. الحالاتُ الثلاثُ
+       للقيمة: dataURL (جاهزة) · 'pending' (قيدَ البناء) · null (تعذّرت) — والأخيرتانِ
+       تسقطانِ إلى شقِّ الشرائحِ الاحتياطيِّ سواء. */
+    if(typeof cut==='string' && cut!=='pending'){
       if(!art){ art=document.createElement('div'); art.className='qmaskart'; f.appendChild(art); }
       if(art.style.backgroundImage!=='url("'+cut+'")') art.style.backgroundImage='url("'+cut+'")';
       art.style.display='';
