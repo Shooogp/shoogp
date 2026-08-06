@@ -223,7 +223,14 @@ var FRAME_FAMILIES={
     s:{img:'frame-arabic-s.png', ar:'1648 / 978',  win:{top:'23.3%', left:'19.0%', right:'23.8%', bottom:'23.6%'}, hasFill:true, fillColor:'#F7DFC5'},
     m:{img:'frame-arabic-m.png', ar:'1448 / 1086', win:{top:'23%',   left:'19.1%', right:'20.6%', bottom:'24.2%'}, hasFill:true, fillColor:'#F4DAC2'},
     l:{img:'frame-arabic-l.png', ar:'1254 / 1254', win:{top:'18.2%', left:'19.9%', right:'17.8%', bottom:'19.3%'}, hasFill:true, fillColor:'#F4D6BC'},
-    tall:{img:'frame-arabic-tall.png', ar:'980 / 1819', win:{top:'18.7%', left:'18.9%', right:'20.5%', bottom:'24.6%'}, hasFill:true, fillColor:'#F9EBDA'}
+    /* ‏tall: أُعيدَ قياسُه ٢٠٢٦-٠٨-٠٦ بعدَ رفعِ المعلّمِ نسخةً جديدةً — **الأبعادُ نفسُها
+       تغيّرت** ‏980×1819 ← ‏1040×1819. فبقاءُ `ar` على القديمِ يجعلُ الصندوقَ أضيقَ من
+       الصورة، فتُحتوى الصورةُ بالعرضِ وتُرسَمُ أقصرَ من الصندوقِ وسطَه، ويصيرُ إنساحُ
+       النافذةِ (نسبةً من الصندوق) واقعاً **خارجَ فتحةِ الرسم** — فتتداخلُ البطاقاتُ مع
+       جسمِ الإطارِ من اليسار (بلاغُ المالك بلقطةِ شاشة). ⚠️ **عندَ تحديثِ أيِّ صورةِ
+       إطارٍ تُراجَعُ `ar` قبلَ `win`** — فمقاسُ الملفِّ قد يتغيّرُ بلا أن يبدوَ الرسمُ
+       مختلفاً. */
+    tall:{img:'frame-arabic-tall.png', ar:'1040 / 1819', win:{top:'18.8%', left:'22.9%', right:'22.3%', bottom:'24.6%'}, hasFill:true, fillColor:'#F9EADA'}
   }}
 };
 /* مادةُ الدرس → عائلةُ الفريم: الرياضيات ← math، اللغةُ العربيةُ ← arabic، وبقيةُ
