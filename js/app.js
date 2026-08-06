@@ -140,8 +140,10 @@ function openBook(key){
   const bk=DATA.terms[currentTerm][currentGrade].find(b=>b.key===key);
   currentBookColor=(bk && bk.color) ? bk.color : '';
   /* ‏`let` في سكربتٍ كلاسيكيٍّ لا يصيرُ خاصيةً على `window`، فنُصدّرُه صراحةً
-     ليقرأَه `js/unlock.js` (شريطُ لونِ الكتابِ في نافذةِ الرمز). */
+     ليقرأَه `js/unlock.js`: اللونُ لشريطِ نافذةِ الرمز، والمفتاحُ ليُعيدَ زرُّ
+     تبديلِ القفلِ رسمَ الكتابِ المفتوحِ في مكانِه عندَ التبديل. */
   window.currentBookColor=currentBookColor;
+  window.currentBook=key;
   setTheme(bk && bk.theme ? bk.theme : 'theme-home');
   document.getElementById('bookTitle').textContent=idx.book;
   const totalL = idx.units.reduce((s,u)=>s+u.lessons.length,0);

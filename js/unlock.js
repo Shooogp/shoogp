@@ -36,6 +36,13 @@
    • ما يُفتَحُ يُحفَظُ في `localStorage` تحتَ **مفتاحٍ واحد** (`shoogp-unlocked`)
      خريطةً: النطاقُ ← تاريخُ الانتهاء (أو `null` بلا انتهاء).
 
+   ── زرُّ تبديلِ القفل (بقرارِ المالك ٢٠٢٦-٠٨-٠٦) ──
+   زرٌّ **ظاهرٌ لكلِّ زائر** في أعلى الصفحةِ الرئيسيةِ وشاشةِ الكتاب، يبدّلُ القفلَ
+   بين مفعَّلٍ ومعطَّلٍ بنقرة. حالتُه في `localStorage` تحتَ `shoogp-lock-off` —
+   **مفتاحٌ منفصلٌ لا يمسُّ خريطةَ المنَحِ (`shoogp-unlocked`) في الحالتَين**.
+   التفصيلُ عندَ `OFF_KEY` أدناه. ⚠️ وهو **يفتحُ كلَّ الكتبِ لأيِّ زائرٍ بنقرة**،
+   فالحاجزُ أدناه يبقى وصفاً للآليةِ لا لِما يراه الزائرُ فعلاً.
+
    ── حدٌّ صريحٌ لا يُتجاوَز ──
    هذا **حاجزُ شراءٍ لا حمايةٌ أمنية**. أيُّ قفلٍ في موقعٍ ثابتٍ يمكنُ تجاوزُه من
    أدواتِ المطوّر، وأيُّ رمزٍ يمكنُ مشاركتُه. **لا يُبنى تعقيدٌ إضافيٌّ لمنعِ ذلك** —
@@ -108,6 +115,25 @@
     return out;
   }
 
+  /* ═══════════ مفتاحُ تعطيلِ القفل — حالةٌ مستقلّةٌ عن الرموز ═══════════
+     تبديلٌ يدويٌّ بزرٍّ في أعلى الصفحة: حين يكونُ القفلُ **معطَّلاً** تُفتَحُ كلُّ
+     الوحداتِ بلا رمز، وحين يعودُ **مفعَّلاً** يعملُ القفلُ كما كانَ تماماً.
+
+     ⚠️ **مفتاحُ تخزينٍ منفصلٌ تماماً عن `STORE_KEY`** — والفصلُ مقصودٌ لا تنظيميّ:
+     التعطيلُ **لا يقرأُ خريطةَ المنَحِ ولا يكتبُها ولا يمسحُها**، فالرموزُ المفتوحةُ
+     تبقى كما هي في الحالتَين، ويعودُ ما فُتِحَ بها مفتوحاً لحظةَ إعادةِ التفعيل.
+     ‏(‏`removeItem` عندَ التفعيلِ يمحو **مفتاحَ التعطيلِ وحدَه** لا شيءَ سواه.)
+
+     ⚠️ **وهذا الزرُّ ظاهرٌ لكلِّ زائرٍ على الموقعِ المنشور** — فهو تبديلٌ للفحصِ
+     والعرضِ لا حاجزُ شراء. حاجزُ الشراءِ نفسُه يبقى ما وُصِفَ في رأسِ الملفّ. */
+  var OFF_KEY = 'shoogp-lock-off';
+
+  var lockOff = (function () {
+    try { return localStorage.getItem(OFF_KEY) === '1'; } catch (e) { return false; }
+  })();
+
+  function isLockOff() { return lockOff; }
+
   /* ───────────────────── حالة القفل (بلا شبكة) ───────────────────── */
 
   // نطاق الوحدة بترقيم العرض (١-based) — الوحدة الأولى ui=0 ⇒ '…#1'
@@ -116,6 +142,7 @@
   }
 
   function isUnitLocked(bookKey, unitIndex) {
+    if (lockOff) return false;                         // القفلُ معطَّلٌ ⇒ كلُّ الوحداتِ مفتوحة
     if (!bookKey) return false;
     if (unitIndex < FREE_UNITS) return false;          // القاعدة: الأولى مجانية دائماً
     var g = grants();
@@ -371,6 +398,79 @@
     try { head.focus({ preventScroll: true }); } catch (e) {}   // التركيزُ حيثُ الحدث
   }
 
+  /* ═══════════════ زرُّ تبديلِ القفل (أعلى الصفحة) ═══════════════
+     زرٌّ واحدٌ ظاهرٌ في كلِّ الأجهزةِ والمنافذ، على الشاشةِ الرئيسيةِ وشاشةِ الكتاب.
+     نصُّه ولونُه يقولانِ الحالةَ الجاريةَ بلا نقر: **رمليٌّ = القفلُ مفعَّل**،
+     **أحمرُ = القفلُ معطَّل**. ويُخفى في شاشةِ الأسئلةِ وحدَها (‏`css/unlock.css`)
+     كي لا يعلوَ حاويةَ السؤالِ المحسوبةَ الارتفاع.
+
+     ⚠️ **في تدفّقِ `.app` لا `position:fixed`** — جُرِّبَ الثابتُ أولاً فركبَ شعارَ
+     شوجبِ في الشاشةِ الرئيسية (‏**تراكبٌ مقيسٌ 20px**: الشعارُ يبدأُ عندَ 26px
+     والزرُّ ينتهي عندَ 46، ولا هامشَ شفّافاً في `logo-mark.png` يخفيه — مقيسٌ:
+     أوّلُ صفٍّ معتمٍ = 0). العنصرُ في التدفّقِ **يحجزُ مساحتَه** فيستحيلُ التراكب. */
+
+  var devWrap = null, devBtn = null;
+
+  /* الزومُ المضادّ — نفسُ حيلةِ عمودِ الصاروخِ في `js/fit.js`.
+     بدونَه يُرسَمُ الزرُّ بالزومِ العامّ: على منفذِ الهاتفِ (‏375px) الزومُ ≈0.37
+     فيصيرُ ارتفاعُ 46px نحوَ **17px** — نصٌّ لا يُقرَأُ وهدفٌ لا يُلمَس.
+     ولأنّه في التدفّقِ فالزومُ المضادُّ **يحجزُ المساحةَ الحقيقيةَ أيضاً**
+     (‏46÷0.37 ≈ 123 وحدةً تصميميةً تُرسَمُ 46px حقيقية) — فلا تراكبَ في أيِّ منفذ. */
+  function fitBtn() {
+    if (!devBtn) return;
+    var z = (window.ShoogpFit && window.ShoogpFit.zoom) || 1;
+    devBtn.style.zoom = String(1 / z);
+  }
+
+  function paintBtn() {
+    if (!devBtn) return;
+    devBtn.classList.toggle('off', lockOff);
+    devBtn.textContent = lockOff ? '🔓 القفل معطّل' : '🔒 القفل مفعّل';
+    devBtn.title = lockOff
+      ? 'كلُّ الوحدات مفتوحة بلا رمز — اضغطي لإعادة تفعيل القفل'
+      : 'القفل يعمل — اضغطي لتعطيله وفتح كلّ الوحدات';
+  }
+
+  /* إعادةُ رسمِ قائمةِ الوحداتِ في مكانِها — لا `location.reload()`.
+     ‏`openBook` يُعيدُ قراءةَ حالةِ القفلِ لكلِّ وحدةٍ فتظهرُ الأقفالُ أو تختفي فوراً. */
+  function redrawUnits() {
+    var scr = document.getElementById('lessonsScreen');
+    if (!scr || !scr.classList.contains('active')) return;
+    if (window.currentBook && typeof window.openBook === 'function') window.openBook(window.currentBook);
+  }
+
+  function setLockOff(v) {
+    lockOff = !!v;
+    // الكتابةُ تمسُّ `OFF_KEY` وحدَه — خريطةُ المنَحِ (`STORE_KEY`) لا تُقرَأُ ولا تُكتَب
+    try {
+      if (lockOff) localStorage.setItem(OFF_KEY, '1');
+      else localStorage.removeItem(OFF_KEY);
+    } catch (e) {}
+    if (lockOff) close();          // نافذةُ الرمزِ المفتوحةُ لا معنى لها والقفلُ معطَّل
+    paintBtn();
+    redrawUnits();
+  }
+
+  function buildBtn() {
+    if (devWrap) return;
+    var app = document.querySelector('.app');
+    if (!app) return;
+    devWrap = document.createElement('div');
+    devWrap.className = 'lockdev';
+    devBtn = document.createElement('button');
+    devBtn.type = 'button';
+    devBtn.className = 'lockdev-btn';
+    devWrap.appendChild(devBtn);
+    app.insertBefore(devWrap, app.firstChild);   // أوّلُ عنصرٍ في `.app` — فوقَ الترويسة
+    devBtn.addEventListener('click', function () { setLockOff(!lockOff); });
+    paintBtn();
+    fitBtn();
+  }
+
+  window.addEventListener('shoogp-fit', fitBtn);
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildBtn);
+  else buildBtn();
+
   /* ───────────────────────────── الواجهة ───────────────────────────── */
   window.ShoogpLock = {
     isUnitLocked: isUnitLocked,
@@ -379,6 +479,8 @@
     ask:          ask,
     close:        close,
     normalize:    normalize,
+    isLockOff:    isLockOff,
+    setLockOff:   setLockOff,
     FREE_UNITS:   FREE_UNITS
   };
 })();

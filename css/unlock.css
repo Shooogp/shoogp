@@ -178,6 +178,66 @@
 /* منعُ تمريرِ الصفحةِ خلفَ النافذة */
 body.lock-open{overflow:hidden}
 
+/* ═══════════════ ④ زرُّ تبديلِ القفل (أعلى الصفحة) ═══════════════
+   لسانٌ حجريٌّ رمليٌّ مُعلَّقٌ من الحافّةِ العليا (استدارةٌ سفليةٌ فقط)، بهويةِ
+   بقيّةِ عناصرِ القفلِ نفسِها (‏`--lk-*`). حالتُه تُقرَأُ **بلا نقر**:
+     • **رمليٌّ فاتح + 🔒 «القفل مفعّل»** = القفلُ يعملُ كما هو.
+     • **أحمرُ صريح + 🔓 «القفل معطّل»** = كلُّ الوحداتِ مفتوحةٌ بلا رمز.
+   واللونُ وحدَه لا يحملُ المعنى — النصُّ والرمزُ يقولانِه أيضاً (عمى الألوان). */
+
+.lockdev{
+  display:flex; justify-content:center; margin:0 0 10px;
+}
+
+.lockdev-btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  min-height:46px; padding:0 20px; border-radius:0 0 18px 18px;
+  font-family:'Cairo',sans-serif; font-size:17px; font-weight:800;
+  color:var(--lk-ink); white-space:nowrap; cursor:pointer;
+  /* كسائرِ كسوةِ المنصّة (`.sound-btn`): اللمسُ المطوَّلُ لا يُظلِّلُ النصَّ ولا يؤخّرُ النقر */
+  -webkit-user-select:none; user-select:none; touch-action:manipulation;
+  background:var(--lk-grain) 0 0/190px 96px repeat,
+             linear-gradient(180deg,var(--lk-hi) 0%,var(--lk-mid) 46%,var(--lk-lo) 100%);
+  border:2px solid var(--lk-edge); border-block-start:0; border-bottom-color:var(--lk-edge-dk);
+  box-shadow:inset 0 -3px 0 rgba(150,112,52,.30),
+             0 3px 0 rgba(163,127,72,.55),
+             0 6px 14px rgba(10,5,30,.35);
+  transition:transform .18s, box-shadow .18s, filter .18s;
+}
+.lockdev-btn:hover{
+  filter:brightness(1.04);
+  box-shadow:inset 0 -3px 0 rgba(150,112,52,.28),
+             0 5px 0 rgba(163,127,72,.55),
+             0 9px 18px rgba(10,5,30,.40);
+}
+.lockdev-btn:active{transform:translateY(-2px);
+  box-shadow:inset 0 -3px 0 rgba(150,112,52,.28), 0 1px 0 rgba(163,127,72,.55), 0 3px 8px rgba(10,5,30,.35)}
+.lockdev-btn:focus-visible{outline:3px solid #7f5cc0; outline-offset:-4px}
+
+/* حالةُ التعطيل — أحمرُ صريحٌ لا يُخطئُه النظر، بالبنيةِ الحجريةِ نفسِها */
+.lockdev-btn.off{
+  color:#fff;
+  background:var(--lk-grain) 0 0/190px 96px repeat,
+             linear-gradient(180deg,#ff7a5e 0%,#e8452a 52%,#b62c14 100%);
+  border-color:#8f2410; border-block-start:0; border-bottom-color:#6d1b0b;
+  text-shadow:0 2px 4px rgba(90,20,5,.55);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.30),
+             inset 0 -3px 0 rgba(120,30,10,.45),
+             0 3px 0 #8f2410,
+             0 8px 20px rgba(200,50,20,.45);
+}
+.lockdev-btn.off:hover{
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.34),
+             inset 0 -3px 0 rgba(120,30,10,.42),
+             0 5px 0 #8f2410,
+             0 11px 24px rgba(200,50,20,.5);
+}
+
+/* شاشةُ الأسئلةِ وحدَها: يُخفى الزرُّ — ارتفاعُ تلك الشاشةِ محسوبٌ بلا تمرير
+   (‏`fit-lock` في `js/fit.js`)، فكلُّ بكسلٍ يأخذُه الزرُّ يخصمُ من زومِ السؤال.
+   ‏`display:none` لا `visibility` كي يخرجَ من `scrollHeight` أصلاً. */
+.app:has(#activityScreen.active) .lockdev{display:none}
+
 /* ── منفذُ اللابتوبِ الضيّق: النافذةُ تبقى سليمةً بلا اقتطاع ── */
 @media (max-height:640px){
   .lockicon{font-size:40px; margin-bottom:4px}
@@ -195,7 +255,7 @@ body.lock-open{overflow:hidden}
 /* ── احترامُ `prefers-reduced-motion`: تبقى الوظيفةُ وتسقطُ الحركةُ وحدَها ── */
 @media (prefers-reduced-motion:reduce){
   .lockback,.lockbox{animation:none}
-  .lockgo,.lockclose,.lesson.paylocked,.unit-head .unit-lock{transition:none}
+  .lockgo,.lockclose,.lesson.paylocked,.unit-head .unit-lock,.lockdev-btn{transition:none}
   .lockgo:hover:not(:disabled),.lockclose:hover,
-  .unit-head .unit-lock:hover,.lesson.paylocked:hover{transform:none}
+  .unit-head .unit-lock:hover,.lesson.paylocked:hover,.lockdev-btn:active{transform:none}
 }
