@@ -34,8 +34,16 @@ jobs:
           STAMP="${GITHUB_SHA:0:8}"
           find . -name '*.html' -not -path './.git/*' \
             -exec sed -i -E "s/\?v=[0-9A-Za-z-]+/?v=${STAMP}/g" {} +
+          # صورُ CSS: ‏`url(../images/…)‎` لا وسمَ فيها في المستودع، فتُختَمُ هنا —
+          # وإلا بقيَ المتصفّحُ على نسخةٍ قديمةٍ من زرٍّ أو شارةٍ بعدَ تحديثِ ملفِّها.
+          # النمطُ يستبدلُ ختماً قائماً أو يُضيفُه، فلا يتضاعفُ لو أُعيدَ تشغيلُه.
+          # (روابطُ `data:` والخطوطُ الخارجيةُ خارجَه — يشترطُ مساراً فيه `images/`.)
+          find . -name '*.css' -not -path './.git/*' \
+            -exec sed -i -E "s#(url\(['\"]?[^)'\"]*images/[^)'\"?]+)(\?v=[0-9A-Za-z-]+)?#\1?v=${STAMP}#g" {} +
           echo "الوسوم بعد الختم:"
           grep -ho '?v=[0-9A-Za-z-]*' index.html | sort -u
+          echo "صور CSS بعد الختم:"
+          grep -ho "url([^)]*images/[^)]*)" css/*.css | sort -u
 
       # يضبط الموقع للنشر عبر Actions (يحوّل build_type تلقائياً في أول تشغيل)
       - name: تهيئة Pages
