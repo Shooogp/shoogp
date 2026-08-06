@@ -1213,6 +1213,12 @@
 
   .hint{text-align:center;color:#b8aee5;font-size:.82rem;margin-top:26px}
 
+  /* تذييلُ الموقع — رابطُ سياسةِ الخصوصية. يظهرُ في كلِّ الشاشاتِ ليبلغَه
+     الزاحفُ والمعلّمةُ معاً بلا رابطٍ مباشر. أخفتُ من ‎.hint‎ فلا يزاحمُها. */
+  .site-foot{text-align:center;margin-top:10px}
+  .site-foot a{color:#9f96cf;font-size:.78rem;text-decoration:none}
+  .site-foot a:hover{color:#ffd257;text-decoration:underline}
+
   /* ═══════════ رحلة الصاروخ (بديل النجوم — مؤشّر تقدّم بصريّ) ═══════════
      الصاروخ صورة جسم فقط (rocket-body.png)؛ اللهب والدخان حيّان بالكامل بالكود
      (لهب متذبذب + جسيمات) بتدرّج طاقة بين الصعود والتعثّر. مسار منحنٍ S،
