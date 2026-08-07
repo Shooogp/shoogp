@@ -1215,7 +1215,8 @@
 
   /* تذييلُ الموقع — رابطُ سياسةِ الخصوصية. يظهرُ في كلِّ الشاشاتِ ليبلغَه
      الزاحفُ والمعلّمةُ معاً بلا رابطٍ مباشر. أخفتُ من ‎.hint‎ فلا يزاحمُها. */
-  .site-foot{text-align:center;margin-top:10px}
+  /* اللونُ للفاصلِ «·» بينَ الرابطين — الروابطُ نفسُها لها لونُها أدناه */
+  .site-foot{text-align:center;margin-top:10px;color:#6f679a;font-size:.78rem}
   .site-foot a{color:#9f96cf;font-size:.78rem;text-decoration:none}
   .site-foot a:hover{color:#ffd257;text-decoration:underline}
 
