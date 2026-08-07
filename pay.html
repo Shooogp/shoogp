@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>فتح كتاب — شوجب</title>
+<!-- مكتبةُ رمزِ QR. ⚠️ النسخةُ 1.4.4 لا 1.5.x: حزمةُ `qrcode` توقّفت عن نشرِ
+     مجلّدِ `build/` على npm بعدَ 1.4.4، فوسمُ 1.5.4 يرجعُ 404 (ملفّاتُها `lib/`
+     و`bin/` فقط). واجهةُ `QRCode.toCanvas` واحدةٌ في النسختين.
+     و`integrity` يقفلُ الملفَّ على بصمتِه فلا يُنفَّذُ لو تبدّلَ في الـCDN. -->
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.4.4/build/qrcode.min.js"
+        integrity="sha384-0RsG1yo/crf/1Qc14sho26SXXOTngNCjgJw7fuvXBt9W/OChF/Ijx+aUuBDqQwEk"
+        crossorigin="anonymous"></script>
 
 <!--
   ═══════════════════════════════════════════════════════════════
@@ -116,6 +123,15 @@ input[type=file]{display:none}
 }
 select option:disabled{color:var(--muted)}
 
+/* بطاقةُ رمزِ QR — لإكمالِ الرفعِ من الهاتف */
+.qrcard{
+  margin-bottom:16px;padding:20px;border-radius:14px;text-align:center;
+  background:#0D111A;border:1px solid var(--line);
+}
+.qrcard h2{margin:0 0 6px;font-size:19px;font-weight:700}
+.qrcard p{margin:0 0 14px;color:var(--muted);font-size:15px}
+.qrcard canvas{display:block;margin:0 auto;border-radius:8px}
+
 /* التوقيع: الرمز محفور على شظيّة قمرية */
 .code-card{
   padding:26px 20px;border-radius:18px;text-align:center;
@@ -170,6 +186,12 @@ select option:disabled{color:var(--muted)}
   <!-- ٢ -->
   <div class="step">
     <div class="step-head"><div class="step-num">٢</div><div class="step-title">ارفعي إيصال التحويل</div></div>
+
+    <div class="qrcard" id="qrCard">
+      <h2>أكملي من هاتفك</h2>
+      <p>التقطي الرمز بكاميرا هاتفك لترفعي الإيصال من هاتفك مباشرة</p>
+      <canvas id="qr"></canvas>
+    </div>
 
     <div class="drop" id="drop" role="button" tabindex="0">
       <div id="dropMain">اضغطي لاختيار ملف الإيصال</div>
@@ -273,12 +295,29 @@ function applyWanted(){
 
 $("book").onchange = () => { if (blocked){ blocked = ""; note(""); } check(); };
 
+/* ═══════════ رمزُ QR — جسرٌ من الحاسوبِ إلى الهاتف ═══════════
+   الإيصالُ ملفُّ PDF في تطبيقِ البنكِ على الهاتف، فالمعلّمةُ الجالسةُ أمامَ
+   الحاسوبِ تلتقطُ الرمزَ فتُكمِلُ من هاتفِها. ويُخفى على الأجهزةِ اللمسيةِ
+   (`pointer: coarse`) — لا معنى لأن يُصوَّرَ الهاتفُ رمزاً على نفسِه. */
+function drawQR(){
+  const url = location.origin + location.pathname + "?book=" + $("book").value;
+  QRCode.toCanvas($("qr"), url, { width:190, margin:1,
+    color:{ dark:"#EDE8DE", light:"#0D111A" } });
+}
+
+// مكتبةُ الرمزِ من CDN خارجيّ — إن لم تصلْ تُخفى البطاقةُ ولا تنكسرُ الصفحة
+const showQR = !matchMedia("(pointer: coarse)").matches && typeof QRCode !== "undefined";
+if (!showQR) $("qrCard").style.display = "none";
+else $("book").addEventListener("change", drawQR);
+
 fetch(BOOKS_URL)
   .then(r => { if (!r.ok) throw new Error("http " + r.status); return r.json(); })
-  .then(data => { books = flatten(data); fillBooks(); applyWanted(); check(); })
+  // الرسمُ بعدَ وصولِ القائمةِ لا قبلَها — قبلَها قيمةُ القائمةِ نصُّ «جارٍ التحميل…»
+  .then(data => { books = flatten(data); fillBooks(); applyWanted(); check(); if (showQR) drawQR(); })
   .catch(() => {
     blocked = "تعذّر تحميل قائمة الكتب. تأكّدي من الإنترنت وأعيدي تحميل الصفحة.";
     $("book").innerHTML = '<option>—</option>';
+    $("qrCard").style.display = "none";   // بلا كتابٍ صالحٍ لا رمزَ يُرسَم
     note(blocked); check();
   });
 
