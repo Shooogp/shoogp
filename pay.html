@@ -149,8 +149,10 @@ select option:disabled{color:var(--muted)}
 .expires{color:var(--muted);font-size:15px}
 .code-actions{display:flex;gap:10px;margin-top:18px}
 .code-actions button{flex:1;padding:13px;border-radius:12px;font:inherit;font-size:16px;cursor:pointer}
-.btn-open{background:var(--moon);color:#141A24;border:0;font-weight:700}
-.btn-copy{background:transparent;color:var(--moon);border:1px solid var(--line)}
+.btn-copy{width:100%;background:transparent;color:var(--moon);border:1px solid var(--line)}
+.btn-copy:hover{border-color:var(--stone)}
+/* الفعلُ الوحيدُ هنا نسخٌ ولصق، والسطرُ يقولُ أينَ يُلصَق */
+.code-hint{margin:10px 0 0;color:var(--muted);font-size:14px}
 
 .spin{display:inline-block;width:17px;height:17px;vertical-align:-3px;
   border:2px solid rgba(0,0,0,.25);border-top-color:#1A1206;border-radius:50%;
@@ -389,11 +391,10 @@ $("go").onclick = async () => {
           <div class="code" id="theCode">${data.code}</div>
           <div class="expires">صالح حتى ${data.expires || "—"}</div>
           <div class="code-actions">
-            <button class="btn-open" id="useIt">افتحي الكتاب الآن</button>
             <button class="btn-copy" data-copy2="theCode">نسخ الرمز</button>
           </div>
+          <p class="code-hint">انسخي الرمز والصقيه في خانة فتح الوحدة</p>
         </div>`);
-      $("useIt").onclick = () => unlockNow(data.code);
       document.querySelector("[data-copy2]").onclick = async e => {
         await navigator.clipboard.writeText(data.code);
         e.target.textContent = "تم النسخ";
@@ -409,15 +410,6 @@ $("go").onclick = async () => {
     check();
   }
 };
-
-/* الوصل بنظام القفل القائم — يستبدله كلود كود باستدعاء redeem() مباشرة */
-function unlockNow(code){
-  if (window.Unlock && typeof window.Unlock.redeem === "function") {
-    window.Unlock.redeem(code);
-  } else {
-    location.href = "/?code=" + encodeURIComponent(code);
-  }
-}
 </script>
 </body>
 </html>
