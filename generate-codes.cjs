@@ -8,11 +8,14 @@
 
    الاستعمال (أمرٌ واحد):
      npm run codes -- --count 30 --scope g4-sci  --exp 2026-12-31
-     npm run codes -- --count 5  --scope g2-sci#3
 
    النطاق = **مفتاحُ الكتابِ في `data/books.json` حرفياً** (‏`g4-sci`‏، `g4-math`‏،
    `g2-arabic-1`‏) — لا بادئةُ ملفِّ الدرس (‏`g4s-1-1`‏)، وبينهما اختلافٌ قائمٌ في
-   المستودع. ونطاقُ الوحدةِ يُفصَلُ بـ`#` لا بشرطة، لأنّ المفاتيحَ نفسَها تحوي شرطات.
+   المستودع.
+
+   ⛔ **نطاقُ الوحدةِ (`g2-sci#3`) أُسقِطَ نهائياً** (قرارُ المالك ٢٠٢٦-٠٨-٠٧): البيعُ
+   والفتحُ على **مستوى الكتابِ كاملاً**، فلا يُصدَرُ رمزٌ بهذه الصيغة. وما صدرَ بها
+   قديماً — إن وُجِد — يقبلُه `js/unlock.js` ويعاملُه رمزَ كتابٍ ولا يرفضُه.
    القاعدةُ كاملةً في `js/unlock.js`.
 
    ⚠️ الامتدادُ `.cjs` مقصود: `package.json` فيه `"type":"module"`، فملفُّ `.js`
@@ -45,13 +48,13 @@ const scope = arg('scope');
 const exp = arg('exp', null);
 
 if (!scope) {
-  console.error('ينقص --scope  (مثال: g4-sci للكتاب كاملاً، أو g4-sci#3 لوحدةٍ واحدة)');
+  console.error('ينقص --scope  (مفتاحُ الكتاب — مثال: g4-sci)');
   process.exit(1);
 }
 
 /* حارسُ النطاق: يتحقّقُ أنّ الكتابَ موجودٌ فعلاً في `data/books.json` قبلَ إصدارِ
    رموزٍ لا تفتحُ شيئاً. البنيةُ: فصلٌ ← صفٌّ ← مصفوفةُ كتب. */
-const bookKey = scope.split('#')[0];
+const bookKey = scope.split('#')[0];   // `#` لم يعدْ يُصدَرُ — يُقتَطعُ احتياطاً لا غير
 try {
   const terms = JSON.parse(fs.readFileSync(path.resolve('data/books.json'), 'utf8'));
   const keys = [];

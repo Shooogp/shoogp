@@ -10,19 +10,28 @@
    • القاعدةُ **مشتقّةٌ من رقمِ الوحدةِ نفسِه** (ترتيبِها في `units`) — فلا حقلَ
      `locked` في `data/index.json`، ولا تعديلَ بياناتٍ عندَ إضافةِ كتاب.
 
-   ── نطاقُ الرمز ──
-   الرمزُ الواحدُ يفتحُ إمّا كتاباً كاملاً أو وحدةً مفردة، ويُحدَّدُ **في ملفِّ
-   الرموزِ لا في الكود**:
-     • كتابٌ كامل →  `g4-sci`
-     • وحدةٌ مفردة → `g4-sci#3`   (الوحدةُ الثالثة — بترقيمِ العرضِ ١‑based)
+   ── نطاقُ الرمز: الكتابُ كاملاً لا غير (قرارُ المالك ٢٠٢٦-٠٨-٠٧) ──
+   **الرمزُ يفتحُ كتاباً كاملاً. ولا وجودَ لنطاقِ وحدةٍ مستقلٍّ إطلاقاً**، فالبيعُ
+   والفتحُ على مستوى الكتاب.
 
    ⚠️ **النطاقُ هو مفتاحُ الكتابِ في `data/books.json` حرفياً** (‏`g4-sci`‏، `g4-math`‏،
    `g2-arabic-1`‏) — **لا بادئةُ ملفِّ الدرس** (‏`g4s-1-1`‏). وبينهما اختلافٌ قائمٌ في
    المستودع، ولا تُبنى ترجمةٌ بينهما في أيِّ موضع: هويةُ الكتابِ في القفلِ تُقرأُ من
    **المصدرِ نفسِه الذي تُقرأُ منه القائمة** (`currentBook` في `js/app.js`).
 
-   ⚠️ **الفاصلُ `#` لا `-`** — لأنّ مفاتيحَ الكتبِ نفسَها تحوي شرطات (`g4-sci`)،
-   فالتقسيمُ بالشرطةِ يفشل.
+   ⚠️ **الصيغةُ القديمةُ `g4-sci#3` (نطاقُ وحدة) أُسقِطت من المنطقِ ولا تُرفَض:**
+   يُقتَطَعُ ما بعدَ `#` فتُعامَلُ رمزَ كتاب — في `redeem` لِما يردُ من `codes.json`،
+   وفي `grants` لِما قد يكونُ محفوظاً في متصفّحِ معلّمةٍ من قبل. **احتياطٌ بسطرَين
+   لا أكثر:** مُتحقَّقٌ أنّ الرموزَ الـ١٢٠ الصادرةَ فعلاً كلَّها بنطاقِ كتاب.
+
+   ⚠️ **والإسقاطُ لا يُبطِلُ رمزاً واحداً صادراً:** البصمةُ `SHA-256` تُحسَبُ على
+   `SALT + الرمزُ المطبَّع` **ولا يدخلُ النطاقُ فيها إطلاقاً** — النطاقُ **قيمةٌ**
+   في خريطةِ الرموزِ لا جزءٌ من مفتاحِها. فتغييرُ دلالةِ النطاقِ يمسُّ ما يفعلُه
+   الرمزُ لا صحّتَه.
+
+   ── الوحدةُ الأولى مجانية: عتبةٌ لا نطاق ──
+   `FREE_UNITS = 1` باقٍ كما هو. وهو **عتبةُ عرضٍ** مشتقّةٌ من رقمِ الوحدة، لا
+   نطاقَ منحةٍ يُشترى — فلا علاقةَ له بإسقاطِ نطاقِ الوحدة.
 
    ── آليةُ التحقّق ──
    • **لا يُخزَّنُ أيُّ رمزٍ صريحٍ في المستودع.** يُخزَّنُ `SHA-256` للنصِّ
@@ -76,7 +85,10 @@
   var STORE_KEY = 'shoogp-unlocked';
   var CODES_URL = 'data/codes.json';
   var FREE_UNITS = 1;               // عدد الوحدات المجانية في رأس كل كتاب
-  var SEP = '#';                    // فاصل نطاق الوحدة (لا '-' — المفاتيح تحوي شرطات)
+
+  /* نطاقُ الكتابِ من أيِّ نطاقٍ مخزَّن: يقتطعُ لاحقةَ `#n` من الصيغةِ القديمة
+     (نطاقُ الوحدة) فتُعامَلُ رمزَ كتاب. سطرٌ واحدٌ يحمي رمزاً قديماً إن وُجد. */
+  function bookOf(scope) { return String(scope == null ? '' : scope).split('#')[0]; }
 
   /* ───────────────────────── أدوات صغيرة ───────────────────────── */
 
@@ -121,7 +133,10 @@
     Object.keys(raw).forEach(function (scope) {
       var exp = raw[scope];
       if (isExpired(exp)) { dirty = true; return; }
-      out[scope] = exp || null;
+      // منحةٌ قديمةٌ بصيغةِ `g4-sci#3` تصيرُ منحةَ كتاب — فلا يُقفَلُ كتابٌ فُتِحَ فعلاً
+      var book = bookOf(scope);
+      if (book !== scope) dirty = true;
+      out[book] = exp || null;
     });
     if (dirty) writeStore(out);
     return out;
@@ -148,19 +163,13 @@
 
   /* ───────────────────── حالة القفل (بلا شبكة) ───────────────────── */
 
-  // نطاق الوحدة بترقيم العرض (١-based) — الوحدة الأولى ui=0 ⇒ '…#1'
-  function unitScope(bookKey, unitIndex) {
-    return bookKey + SEP + (unitIndex + 1);
-  }
-
+  /* الوحدةُ مقفلةٌ ما لم تكن مجانيةً بالعتبةِ أو يكن **الكتابُ** ممنوحاً.
+     لا فحصَ لنطاقِ وحدةٍ — أُسقِط (انظر رأسَ الملف). */
   function isUnitLocked(bookKey, unitIndex) {
     if (lockOff) return false;                         // القفلُ معطَّلٌ ⇒ كلُّ الوحداتِ مفتوحة
     if (!bookKey) return false;
     if (unitIndex < FREE_UNITS) return false;          // القاعدة: الأولى مجانية دائماً
-    var g = grants();
-    if (Object.prototype.hasOwnProperty.call(g, bookKey)) return false;              // رمز كتاب
-    if (Object.prototype.hasOwnProperty.call(g, unitScope(bookKey, unitIndex))) return false; // رمز وحدة
-    return true;
+    return !Object.prototype.hasOwnProperty.call(grants(), bookKey);
   }
 
   /* حارسُ الدرس: يمنعُ فتحَ درسٍ في وحدةٍ مقفلة مهما كان مدخلُه (نقرٌ أو نداءٌ
@@ -173,7 +182,9 @@
       var lessons = idx.units[i].lessons || [];
       for (var j = 0; j < lessons.length; j++) {
         if (lessons[j].file === lesson.file) {
-          if (isUnitLocked(bookKey, i)) { ask(bookKey, i, idx.units[i].unit); return true; }
+          /* حجبٌ صامتٌ بلا نافذة: نافذةُ الرمزِ تُفتَحُ من القفلِ الكبيرِ على الإطارِ
+             وحدَه، ونقرُ الدرسِ المقفلِ يوجّهُ النظرَ إليه (`nudge` في `js/app.js`). */
+          if (isUnitLocked(bookKey, i)) return true;
           return false;   // وُجد الدرس ووحدتُه مفتوحة
         }
       }
@@ -210,7 +221,8 @@
         if (!entry) return { ok: false, reason: 'bad' };
 
         // الصيغتان: نصٌّ مجرّد (بلا انتهاء) أو كائن {scope, exp}
-        var scope = (typeof entry === 'string') ? entry : entry.scope;
+        // و`bookOf` يقتطعُ `#n` فيُقبَلُ رمزُ الوحدةِ القديمُ رمزَ كتابٍ لا يُرفَض
+        var scope = bookOf((typeof entry === 'string') ? entry : entry.scope);
         var exp = (typeof entry === 'string') ? null : (entry.exp || null);
         if (!scope) return { ok: false, reason: 'bad' };
         if (isExpired(exp)) return { ok: false, reason: 'expired' };
@@ -252,28 +264,19 @@
     } catch (e) { return bookKey; }
   }
 
-  /* ═══ هل يغطّي النطاقُ المقبولُ الوحدةَ التي تحاولُ المعلّمةُ فتحَها؟ ═══
-     بدونِ هذا الفحصِ يُقبَلُ رمزُ كتابٍ آخرَ وتظهرُ رسالةُ نجاحٍ ثمّ لا تُفتَحُ
-     الوحدةُ التي أمامها — «نجاحٌ كاذب». */
-  function scopeCovers(scope, bookKey, unitIndex) {
-    return scope === bookKey || scope === unitScope(bookKey, unitIndex);
+  /* ═══ هل الرمزُ لهذا الكتاب؟ ═══
+     مطابقةٌ بسيطةٌ بعدَ إسقاطِ نطاقِ الوحدة. وبدونِ هذا الفحصِ يُقبَلُ رمزُ كتابٍ
+     آخرَ وتظهرُ رسالةُ نجاحٍ ثمّ لا يُفتَحُ ما أمامها — «نجاحٌ كاذب». */
+  function scopeCovers(scope, bookKey) {
+    return scope === bookKey;
   }
 
   /* رسالةُ عدمِ التطابقِ — تقولُ للمعلّمةِ **ما الذي يفتحُه رمزُها** و**أين هي الآن**،
      وتطمئنُها أنّ الرمزَ لم يُهدَرْ (المنحةُ محفوظةٌ فعلاً — الرمزُ مدفوعٌ وصحيح). */
   function mismatchMsg(scope, p) {
-    var parts = String(scope).split(SEP);
-    var grantedBook = parts[0], grantedUnit = parts[1];
-    if (grantedBook !== p.bookKey) {
-      return 'هذا الرمز لكتابٍ آخر: «' + bookTitle(grantedBook) + '»' +
-             (grantedUnit ? ' (الوحدة ' + num(grantedUnit) + ')' : '') +
-             '، وأنتِ الآن في «' + bookTitle(p.bookKey) + '». ' +
-             'الرمز محفوظٌ ولم يُهدَر — افتحي ذلك الكتاب لتجديه مفتوحاً.';
-    }
-    // الكتابُ نفسُه لكنّ الرمزَ لوحدةٍ أخرى
-    return 'هذا الرمز يفتح الوحدة ' + num(grantedUnit) + ' من هذا الكتاب، ' +
-           'والوحدة التي أمامكِ هي ' + num(p.unitIndex + 1) + '. ' +
-           'الرمز محفوظٌ ولم يُهدَر.';
+    return 'هذا الرمز لكتابٍ آخر: «' + bookTitle(scope) + '»، ' +
+           'وأنتِ الآن في «' + bookTitle(p.bookKey) + '». ' +
+           'الرمز محفوظٌ ولم يُهدَر — افتحي ذلك الكتاب لتجديه مفتوحاً.';
   }
 
   var box = null, elInput, elMsg, elGo, elBuy, elTitle, elSub, elBand, lastFocus = null;
@@ -296,7 +299,7 @@
         '<input class="lockinput" id="lockInput" type="text" autocomplete="off"' +
               ' spellcheck="false" autocapitalize="characters" dir="ltr" placeholder="XXXXX-XXXXX">' +
         '<p class="lockmsg" role="status" aria-live="polite"></p>' +
-        '<button type="button" class="lockgo">فتح الوحدة</button>' +
+        '<button type="button" class="lockgo">افتح الكتاب</button>' +
         '<a class="lockbuy" target="_blank" rel="noopener">🛒 شراء الكتاب</a>' +
       '</div>';
 
@@ -336,18 +339,17 @@
     elMsg.className = 'lockmsg' + (kind ? ' ' + kind : '');
   }
 
-  var pending = null;   // {bookKey, unitIndex}
+  var pending = null;   // {bookKey}
 
-  function ask(bookKey, unitIndex, unitTitle) {
+  /* النافذةُ على مستوى **الكتاب**: لا وسيطَ وحدةٍ ولا عنوانَ وحدة. */
+  function ask(bookKey) {
     build();
-    pending = { bookKey: bookKey, unitIndex: unitIndex };
+    pending = { bookKey: bookKey };
 
     // لونُ الكتابِ حيث يصحّ: شريطٌ علويٌّ بصنفِ بطاقةِ الكتابِ الحالي
     elBand.className = 'lockband' + (window.currentBookColor ? ' ' + window.currentBookColor : '');
-    elTitle.textContent = 'الوحدة ' + num(unitIndex + 1) + ' مقفلة';
-    elSub.textContent = unitTitle
-      ? unitTitle + ' — افتحيها برمزٍ لتظهر دروسها.'
-      : 'افتحيها برمزٍ لتظهر دروسها.';
+    elTitle.textContent = bookTitle(bookKey);
+    elSub.textContent = 'أدخلي رمز الفتح لتظهر وحدات هذا الكتاب كاملةً.';
     elInput.value = '';
     say('', '');
     elGo.disabled = false;
@@ -378,9 +380,9 @@
     var p = pending;   // نلتقطُه الآن: `close()` يصفّرُه، والوعدُ يُحَلُّ لاحقاً
     redeem(elInput.value).then(function (res) {
       if (res.ok) {
-        /* الرمزُ صحيحٌ ومحفوظ — لكن هل يفتحُ ما أمامها؟ إن لم يكنْ فلا نقولُ
-           «تمّ الفتح» ثمّ ندعُها أمامَ وحدةٍ مقفلة. */
-        if (p && !scopeCovers(res.scope, p.bookKey, p.unitIndex)) {
+        /* الرمزُ صحيحٌ ومحفوظ — لكن هل هو لهذا الكتاب؟ إن لم يكنْ فلا نقولُ
+           «تمّ الفتح» ثمّ ندعُها أمامَ كتابٍ مقفل. */
+        if (p && !scopeCovers(res.scope, p.bookKey)) {
           elGo.disabled = false;
           say(mismatchMsg(res.scope, p), 'bad');
           elInput.focus(); elInput.select();
@@ -397,21 +399,37 @@
     });
   }
 
-  /* ═══ إظهارُ الوحدةِ في مكانِها بدلَ `location.reload()` ═══
+  /* ═══ إعادةُ رسمِ الكتابِ كلِّه بدلَ `location.reload()` ═══
      إعادةُ التحميلِ كانت تُرجِعُ المعلّمةَ إلى الشاشةِ الرئيسيةِ فتفقدُ موضعَها
      وتظنُّ أنّ شيئاً لم يحدث. بدلَها نعيدُ بناءَ الكتابِ نفسِه — فتُقرأُ الأقفالُ
-     من `localStorage` من جديدٍ وتختفي أقفالُ ما فُتح — ثمّ نفتحُ الوحدةَ ونمرّرُ
-     إليها، فترى دروسَها فوراً. */
+     من `localStorage` من جديدٍ فيسقطُ الإطارُ وقفلُه وتظهرُ الوحداتُ كلُّها.
+     ولا استهدافَ لوحدةٍ بعينِها: الرمزُ يفتحُ الكتابَ كاملاً. */
   function reveal(p) {
     if (!p || typeof window.openBook !== 'function') return;
     window.openBook(p.bookKey);                       // يعيدُ الرسمَ ويبقى على شاشةِ الدروس
-    var heads = document.querySelectorAll('#lessons .unit-head');
-    var head = heads[p.unitIndex];
-    if (!head) return;
-    if (!head.classList.contains('open')) head.click();   // افتحِ الأكورديون
-    var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    try { head.scrollIntoView({ block: 'center', behavior: calm ? 'auto' : 'smooth' }); } catch (e) { head.scrollIntoView(); }
-    try { head.focus({ preventScroll: true }); } catch (e) {}   // التركيزُ حيثُ الحدث
+  }
+
+  /* ═══ تنبيهُ «القفلُ هناك» — بديلُ النافذةِ عندَ نقرِ درسٍ مقفل ═══
+     لا صوتَ ولا رسالة: اهتزازٌ أفقيٌّ خفيفٌ للإطارِ (400ms) مع إبرازِ القفل.
+     واحترامُ `prefers-reduced-motion` في **CSS** لا هنا — الصنفانِ يُوضَعانِ
+     دائماً، والوسائطُ تُلغي الاهتزازَ وتُبقي الإبراز. */
+  var NUDGE_MS = 400, nudgeTimer = null;
+
+  function nudge() {
+    var frame = document.querySelector('.paylock-frame');
+    if (!frame) return;
+    var btn = frame.querySelector('.paylock-btn');
+    // إعادةُ التشغيلِ من الصفرِ لو نُقِرَ درسٌ آخرُ أثناءَ الحركة
+    clearTimeout(nudgeTimer);
+    frame.classList.remove('paylock-nudge');
+    if (btn) btn.classList.remove('paylock-pop');
+    void frame.offsetWidth;                            // إجبارُ إعادةِ التدفّقِ ليُعادَ تشغيلُ الحركة
+    frame.classList.add('paylock-nudge');
+    if (btn) btn.classList.add('paylock-pop');
+    nudgeTimer = setTimeout(function () {
+      frame.classList.remove('paylock-nudge');
+      if (btn) btn.classList.remove('paylock-pop');
+    }, NUDGE_MS);
   }
 
   /* ═══════════════ زرُّ تبديلِ القفل (أعلى الصفحة) ═══════════════
@@ -491,8 +509,8 @@
   window.ShoogpLock = {
     isUnitLocked: isUnitLocked,
     guardLesson:  guardLesson,
-    unitScope:    unitScope,
     ask:          ask,
+    nudge:        nudge,
     close:        close,
     normalize:    normalize,
     isLockOff:    isLockOff,

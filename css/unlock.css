@@ -25,32 +25,9 @@
 
 /* ═══════════════ ① علامةُ القفلِ في قائمةِ الوحدات ═══════════════ */
 
-/* شارةُ القفلِ في رأسِ الوحدة — عنصرٌ غيرُ تفاعليٍّ بنيوياً (‏`span` داخلَ
-   `button` رأسِ الوحدة، فلا تُعشَّشُ عناصرُ تفاعلية)، ونقرُها يُلتقَطُ في
-   معالجِ الرأسِ نفسِه (`js/app.js`) فيفتحُ النافذةَ بدلَ الطيّ. */
-.unit-head .unit-lock{
-  display:inline-flex; align-items:center; justify-content:center; gap:8px;
-  min-height:60px; padding:0 20px; border-radius:999px;
-  font-family:'Cairo',sans-serif; font-size:18px; font-weight:800;
-  color:var(--lk-ink); white-space:nowrap;
-  background:var(--lk-grain) 0 0/190px 96px repeat,
-             linear-gradient(180deg,var(--lk-hi) 0%,var(--lk-mid) 46%,var(--lk-lo) 100%);
-  border:2px solid var(--lk-edge); border-bottom-color:var(--lk-edge-dk);
-  box-shadow:inset 0 2px 0 rgba(255,255,255,.78),
-             inset 0 -3px 0 rgba(150,112,52,.30),
-             0 3px 0 rgba(163,127,72,.55),
-             0 6px 12px rgba(60,40,15,.26);
-  cursor:pointer; transition:transform .18s, box-shadow .18s;
-}
-.unit-head .unit-lock:hover{
-  transform:translateY(-2px);
-  box-shadow:inset 0 2px 0 rgba(255,255,255,.85),
-             inset 0 -3px 0 rgba(150,112,52,.28),
-             0 5px 0 rgba(163,127,72,.55),
-             0 9px 16px rgba(60,40,15,.30);
-}
-/* الوحدةُ المقفلةُ: عدّادُ الدروسِ يفسحُ للشارةِ فلا تتلامسان */
-.unit-head.paylock .unit-count{margin-inline-end:12px}
+/* ⛔ **شارةُ القفلِ في رأسِ كلِّ وحدةٍ (`.unit-lock`) أُلغيت** (قرارُ المالك
+   ٢٠٢٦-٠٨-٠٧) وحلَّ محلَّها **قفلٌ واحدٌ** على إطارِ الوحداتِ المقفلةِ أدناه.
+   ولم تعدْ تُبنى في `js/app.js` — فلا كسوةَ لها هنا. */
 
 /* ═══════════ ①‑ب إطارُ الوحداتِ المقفلة ═══════════
    حاويةٌ واحدةٌ تلفُّ كلَّ ما بعدَ آخرِ وحدةٍ مفتوحة، بإطارٍ خطّيٍّ رفيعٍ وقفلٍ
@@ -95,6 +72,29 @@
              0 9px 16px rgba(60,40,15,.30);
 }
 .paylock-btn:focus-visible{outline:3px solid #7f5cc0; outline-offset:3px}
+
+/* ── تنبيهُ «القفلُ هناك»: نقرُ درسٍ مقفلٍ لا يفتحُ نافذةً بل يوجّهُ النظر ──
+   اهتزازٌ أفقيٌّ خفيفٌ للإطارِ (400ms) وإبرازٌ لحظيٌّ للقفل. الصنفانِ يُوضَعانِ
+   من `nudge()` في `js/unlock.js` ويُنزَعانِ بعدَ المدّةِ نفسِها. */
+@keyframes paylockShake{
+  0%,100%{transform:translateX(0)}
+  15%{transform:translateX(-6px)}
+  30%{transform:translateX(5px)}
+  45%{transform:translateX(-4px)}
+  60%{transform:translateX(3px)}
+  80%{transform:translateX(-2px)}
+}
+.paylock-frame.paylock-nudge{animation:paylockShake .4s ease-in-out}
+/* الإبراز: تكبيرٌ طفيفٌ وتوهّجٌ رمليّ — يبقى قائماً مع `reduced-motion` */
+.paylock-btn.paylock-pop{
+  transform:scale(1.08);
+  border-color:var(--lk-edge-dk);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.85),
+             inset 0 -3px 0 rgba(150,112,52,.28),
+             0 3px 0 rgba(163,127,72,.55),
+             0 0 0 4px rgba(243,221,182,.45),
+             0 0 22px 6px rgba(227,199,102,.55);
+}
 
 /* ═══════════════ ② الدرسُ داخلَ وحدةٍ مقفلة ═══════════════
    ⚠️ يُفرَّقُ بينَ قفلَينِ مختلفَينِ تماماً:
@@ -328,9 +328,12 @@ body.lock-open{overflow:hidden}
 /* ── احترامُ `prefers-reduced-motion`: تبقى الوظيفةُ وتسقطُ الحركةُ وحدَها ── */
 @media (prefers-reduced-motion:reduce){
   .lockback,.lockbox{animation:none}
-  .lockgo,.lockclose,.lesson.paylocked,.unit-head .unit-lock,.lockdev-btn,.lockbuy,
+  .lockgo,.lockclose,.lesson.paylocked,.lockdev-btn,.lockbuy,
   .paylock-btn{transition:none}
   .lockgo:hover:not(:disabled),.lockclose:hover,.lockbuy:hover,.lockbuy:active,
   .paylock-btn:hover,
-  .unit-head .unit-lock:hover,.lesson.paylocked:hover,.lockdev-btn:active{transform:none}
+  .lesson.paylocked:hover,.lockdev-btn:active{transform:none}
+  /* التنبيهُ: يسقطُ الاهتزازُ **ويبقى الإبراز** — فالمعلومةُ تصلُ بلا حركة */
+  .paylock-frame.paylock-nudge{animation:none}
+  .paylock-btn.paylock-pop{transform:none}
 }

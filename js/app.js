@@ -197,20 +197,21 @@ function openBook(key){
       el.innerHTML=`<div class="num">${arNum(n)}</div><div class="lt">${ls.title}</div>`+
         `<div class="arrow">${(authored&&!payl)?'←':'🔒'}</div>`;
       if(payl){
-        // صفٌّ حيٌّ ⇒ يُبلَّغُ للقارئِ الشاشيِّ ويُبلَغُ بلوحةِ المفاتيح (تركيزُه ظاهرٌ في CSS)
+        /* الدرسُ المقفلُ **لا يفتحُ نافذةَ الرمز** — النافذةُ من القفلِ الكبيرِ على
+           الإطارِ وحدَه. ونقرُه يوجّهُ النظرَ إلى ذلك القفلِ باهتزازٍ وإبراز.
+           صفٌّ حيٌّ ⇒ يُبلَّغُ للقارئِ الشاشيِّ ويُبلَغُ بلوحةِ المفاتيح. */
         el.tabIndex=0; el.setAttribute('role','button');
-        const open=()=>ShoogpLock.ask(key,ui,u.unit);
-        el.onclick=open;
-        el.onkeydown=(e)=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();open();} };
+        const point=()=>ShoogpLock.nudge();
+        el.onclick=point;
+        el.onkeydown=(e)=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();point();} };
       }else if(authored){
         el.onclick=()=>openLesson(ls);
       }
       body.appendChild(el);
     });
 
-    // تفعيل الطيّ/الفتح — ونقرُ شارةِ القفلِ يفتحُ النافذةَ بدلَ الطيّ
-    uh.onclick=(e)=>{
-      if(payLocked && e.target.closest('.unit-lock')){ ShoogpLock.ask(key,ui,u.unit); return; }
+    // تفعيل الطيّ/الفتح — بلا استثناءِ شارةٍ: لم تعدْ في رأسِ الوحدةِ شارةُ قفل
+    uh.onclick=()=>{
       const isOpen=uh.classList.contains('open');
       uh.classList.toggle('open',!isOpen);
       body.classList.toggle('open',!isOpen);
@@ -221,25 +222,17 @@ function openBook(key){
     boxes.push({box:unitBox, head:uh, locked:payLocked, ui:ui, title:u.unit});
   });
 
-  /* ═══════ إطارُ الوحداتِ المقفلة — قفلٌ واحدٌ بدلَ شارةٍ في كلِّ وحدة ═══════
-     يبدأُ **بعدَ آخرِ وحدةٍ مفتوحة**، فما بعدَها مقفلٌ كلُّه بحكمِ القاعدة.
+  /* ═══════ إطارُ الوحداتِ المقفلة — قفلٌ واحدٌ لا شارةَ في كلِّ وحدة ═══════
+     يبدأُ **بعدَ آخرِ وحدةٍ مفتوحة**. والنطاقُ صارَ الكتابَ كاملاً (‏`js/unlock.js`)
+     فالمقفولُ **ذيلٌ متّصلٌ دائماً**: إمّا الكتابُ ممنوحٌ فلا مقفولَ أصلاً، وإمّا
+     الوحداتُ المجانيةُ في الرأسِ وما بعدَها مقفلٌ كلُّه. ولذلك سقطتْ حالةُ «وحدةٌ
+     مقفلةٌ تسبقُ مفتوحةً» ومعها شارةُ القفلِ المفردة.
      وكتابٌ مفتوحٌ كاملاً ⇒ `framed` فارغةٌ ⇒ لا إطارَ ولا قفلَ إطلاقاً. */
   let lastOpen=-1;
   boxes.forEach((b,i)=>{ if(!b.locked) lastOpen=i; });
   const framed=boxes.slice(lastOpen+1);
 
-  boxes.slice(0,lastOpen+1).forEach(b=>{
-    /* وحدةٌ مقفلةٌ **تسبقُ** آخرَ وحدةٍ مفتوحة: تقعُ حينَ يفتحُ رمزُ وحدةٍ مفردةٍ
-       (`g4-sci#3`) وحدةً وتبقى ما قبلَها مقفلاً — فتخرجُ من الإطارِ وتحتفظُ
-       بشارتِها وحدَها، وإلا بقيت مقفلةً بلا أيِّ علامة. */
-    if(b.locked){
-      const badge=document.createElement('span');
-      badge.className='unit-lock'; badge.title='افتحي هذه الوحدة برمز';
-      badge.textContent='🔒 مقفلة';
-      b.head.insertBefore(badge, b.head.querySelector('.unit-chevron'));
-    }
-    list.appendChild(b.box);
-  });
+  boxes.slice(0,lastOpen+1).forEach(b=>list.appendChild(b.box));
 
   if(framed.length){
     /* ⚠️ `fieldset`/`legend` لا `div` بموضعٍ مطلق: الفجوةُ في الخطِّ يصنعُها
@@ -253,7 +246,7 @@ function openBook(key){
     btn.textContent='🔒 مقفلة';
     btn.title='افتحي هذه الوحدات برمز';
     // القفلُ يفتحُ النافذةَ على **أوّلِ** وحدةٍ مقفلة — أقربُ ما تحاولُه المعلّمة
-    btn.onclick=()=>ShoogpLock.ask(key, framed[0].ui, framed[0].title);
+    btn.onclick=()=>ShoogpLock.ask(key);   // النافذةُ على مستوى الكتاب
     lg.appendChild(btn); fs.appendChild(lg);
     framed.forEach(b=>fs.appendChild(b.box));
     list.appendChild(fs);
