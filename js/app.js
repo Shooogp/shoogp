@@ -158,6 +158,10 @@ function openBook(key){
   }
   document.getElementById('bookSub').textContent=`${arNum(idx.units.length)} وحدات · ${arNum(totalL)} درساً`;
   let n=0;
+  /* تُجمَعُ الصناديقُ أوّلاً ولا تُلحَقُ بالقائمةِ في الحلقة: قرارُ «أيُّ وحدةٍ تدخلُ
+     إطارَ القفل» يحتاجُ معرفةَ **آخرِ وحدةٍ مفتوحة**، ولا تُعرَفُ إلا بعدَ المرورِ
+     على الوحداتِ كلِّها. */
+  const boxes=[];
   idx.units.forEach((u,ui)=>{
     /* قفلُ الشراء: مشتقٌّ من رقمِ الوحدةِ وحدَه (الأولى مجانيةٌ دائماً) — لا حقلَ
        `locked` في البيانات. القاعدةُ كاملةً في `js/unlock.js`. */
@@ -170,12 +174,11 @@ function openBook(key){
     const uh=document.createElement('button');
     uh.className='unit-head'+(ui===0?' open':'')+(payLocked?' paylock':'');
     const count=u.lessons.length;
-    /* شارةُ القفل: `span` لا `button` — لأنّ رأسَ الوحدةِ نفسَه `button`، وتعشيشُ
-       عنصرَينِ تفاعليَّينِ غيرُ صالحٍ في HTML. نقرُها يُلتقَطُ في معالجِ الرأسِ أدناه. */
+    /* بلا شارةِ قفلٍ هنا: القفلُ صارَ **واحداً** على إطارِ الوحداتِ المقفلةِ أدناه.
+       وتُعادُ الشارةُ استثناءً لوحدةٍ مقفلةٍ تقعُ **خارجَ** الإطار (انظر أدناه). */
     uh.innerHTML=`<span class="unit-no">الوحدة ${arNum(ui+1)}</span>`+
       `<span class="unit-title">${u.unit}</span>`+
       `<span class="unit-count">${arNum(count)} دروس</span>`+
-      (payLocked?`<span class="unit-lock" title="افتحي هذه الوحدة برمز">🔒 مقفلة</span>`:'')+
       `<span class="unit-chevron">⌄</span>`;
 
     // حاوية الدروس (تنطوي)
@@ -215,8 +218,46 @@ function openBook(key){
 
     unitBox.appendChild(uh);
     unitBox.appendChild(body);
-    list.appendChild(unitBox);
+    boxes.push({box:unitBox, head:uh, locked:payLocked, ui:ui, title:u.unit});
   });
+
+  /* ═══════ إطارُ الوحداتِ المقفلة — قفلٌ واحدٌ بدلَ شارةٍ في كلِّ وحدة ═══════
+     يبدأُ **بعدَ آخرِ وحدةٍ مفتوحة**، فما بعدَها مقفلٌ كلُّه بحكمِ القاعدة.
+     وكتابٌ مفتوحٌ كاملاً ⇒ `framed` فارغةٌ ⇒ لا إطارَ ولا قفلَ إطلاقاً. */
+  let lastOpen=-1;
+  boxes.forEach((b,i)=>{ if(!b.locked) lastOpen=i; });
+  const framed=boxes.slice(lastOpen+1);
+
+  boxes.slice(0,lastOpen+1).forEach(b=>{
+    /* وحدةٌ مقفلةٌ **تسبقُ** آخرَ وحدةٍ مفتوحة: تقعُ حينَ يفتحُ رمزُ وحدةٍ مفردةٍ
+       (`g4-sci#3`) وحدةً وتبقى ما قبلَها مقفلاً — فتخرجُ من الإطارِ وتحتفظُ
+       بشارتِها وحدَها، وإلا بقيت مقفلةً بلا أيِّ علامة. */
+    if(b.locked){
+      const badge=document.createElement('span');
+      badge.className='unit-lock'; badge.title='افتحي هذه الوحدة برمز';
+      badge.textContent='🔒 مقفلة';
+      b.head.insertBefore(badge, b.head.querySelector('.unit-chevron'));
+    }
+    list.appendChild(b.box);
+  });
+
+  if(framed.length){
+    /* ⚠️ `fieldset`/`legend` لا `div` بموضعٍ مطلق: الفجوةُ في الخطِّ يصنعُها
+       المتصفّحُ بنفسِه هنا **بلا لونِ خلفيةٍ إطلاقاً**. وخلفيةُ الصفحةِ تدرّجٌ
+       رأسيٌّ يختلفُ بين ٢٥ ثيمةً و`background-attachment:fixed`، فرقعةٌ مصمتةٌ
+       تقطعُ الخطَّ لن تطابقَه إلا عندَ موضعِ تمريرٍ واحدٍ في ثيمةٍ واحدة. */
+    const fs=document.createElement('fieldset'); fs.className='paylock-frame';
+    const lg=document.createElement('legend'); lg.className='paylock-legend';
+    const btn=document.createElement('button');
+    btn.type='button'; btn.className='paylock-btn';
+    btn.textContent='🔒 مقفلة';
+    btn.title='افتحي هذه الوحدات برمز';
+    // القفلُ يفتحُ النافذةَ على **أوّلِ** وحدةٍ مقفلة — أقربُ ما تحاولُه المعلّمة
+    btn.onclick=()=>ShoogpLock.ask(key, framed[0].ui, framed[0].title);
+    lg.appendChild(btn); fs.appendChild(lg);
+    framed.forEach(b=>fs.appendChild(b.box));
+    list.appendChild(fs);
+  }
   showScreen('lessonsScreen');
 }
 
