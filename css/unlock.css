@@ -154,16 +154,32 @@
    بدونِها كانت القاعدةُ المتأخّرةُ تغلبُ اللونَ فيبقى الشريطُ رملياً في كلِّ الكتب. */
 :where(.lockband){ background:linear-gradient(145deg,var(--lk-edge),var(--lk-edge-dk)) }
 
+/* ⚠️ **`z-index` هنا ليس تجميلاً بل هو الإصلاح:** `.lockicon` عليها
+   `filter:drop-shadow(…)`، **والفلترُ يُنشئُ سياقَ تكديسٍ ويُرسِمُ عنصرَه في طبقةِ
+   المُموضَعاتِ عندَ `z-index:0`** — وهي بعدَ الزرِّ في الـDOM فكانت تغلبُه وتبتلعُ
+   أكثرَ مساحتِه. مقيسٌ قبلَ الإصلاح: `elementFromPoint` يرجعُ `lockicon` في الوسطِ
+   والأسفلِ واليسار، والزرُّ لا يُصابُ إلا من الأعلى واليمين.
+   والأبعادُ **صريحةٌ ثابتة** (`min-*` معها) مع توسيطٍ بـ`flex` و`line-height:1`،
+   فلا يقيسُ الزرُّ نفسَه بحرفِ ✕ ولا ينكمشُ في حاويةٍ مرنة. */
 .lockclose{
   position:absolute; inset-block-start:20px; inset-inline-start:20px;
-  width:60px; height:60px; border-radius:50%;   /* ≥60px — حدُّ السبورة */
+  z-index:5;                                    /* فوقَ الأيقونةِ والشريطِ والرأس */
+  width:60px; height:60px;                      /* ≥60px — حدُّ السبورة (وأكبرُ من 44) */
+  min-width:60px; min-height:60px;
+  flex:none; padding:0; border-radius:50%;
   display:flex; align-items:center; justify-content:center;
   font-size:22px; font-weight:800; line-height:1; color:var(--lk-ink);
   background:rgba(255,255,255,.55); border:2px solid var(--lk-edge);
   cursor:pointer; transition:transform .18s, background .18s;
 }
 .lockclose:hover{background:rgba(255,255,255,.85); transform:scale(1.06)}
-.lockclose:focus-visible{outline:3px solid #7f5cc0; outline-offset:3px}
+/* تركيزٌ ظاهرٌ لا يُخطئُه النظر: حلقةٌ بنفسجيةٌ سميكةٌ ومعها هالةٌ فاتحةٌ تفصلُها
+   عن الرملِ الفاتحِ خلفَها — فاللونُ وحدَه لا يكفي على خلفيةٍ فاتحة. */
+.lockclose:focus-visible{
+  outline:3px solid #7f5cc0; outline-offset:3px;
+  background:#fff;
+  box-shadow:0 0 0 6px rgba(127,92,192,.28);
+}
 
 .lockicon{font-size:56px; line-height:1; margin-bottom:10px;
   filter:drop-shadow(0 3px 4px rgba(90,60,20,.35))}

@@ -279,7 +279,7 @@
            'الرمز محفوظٌ ولم يُهدَر — افتحي ذلك الكتاب لتجديه مفتوحاً.';
   }
 
-  var box = null, elInput, elMsg, elGo, elBuy, elTitle, elSub, elBand, lastFocus = null;
+  var box = null, elInput, elMsg, elGo, elBuy, elClose, elTitle, elSub, elBand, lastFocus = null;
 
   function build() {
     if (box) return box;
@@ -291,7 +291,7 @@
       '<div class="lockback" data-close="1"></div>' +
       '<div class="lockbox" role="dialog" aria-modal="true" aria-labelledby="lockTitle">' +
         '<div class="lockband"></div>' +
-        '<button type="button" class="lockclose" data-close="1" aria-label="إغلاق">✕</button>' +
+        '<button type="button" class="lockclose" aria-label="إغلاق النافذة">✕</button>' +
         '<div class="lockicon" aria-hidden="true">🔒</div>' +
         '<h2 class="locktitle" id="lockTitle">هذه الوحدة مقفلة</h2>' +
         '<p class="locksub"></p>' +
@@ -311,9 +311,14 @@
     elMsg   = box.querySelector('.lockmsg');
     elGo    = box.querySelector('.lockgo');
     elBuy   = box.querySelector('.lockbuy');
+    elClose = box.querySelector('.lockclose');
 
+    /* ثلاثةُ مخارجَ للإغلاق: الزرُّ ✕ · الخلفيةُ خارجَ النافذة · مفتاحُ Escape.
+       ⚠️ **المستمعُ على `<button>` نفسِه لا مفوَّضاً على الحاوية** — التفويضُ كان
+       يعملُ لكنّه يجعلُ إصابةَ الزرِّ تابعةً لِما يعلوه في اختبارِ النقر. */
+    elClose.addEventListener('click', close);
     box.addEventListener('click', function (e) {
-      if (e.target.closest('[data-close]')) close();
+      if (e.target.closest('[data-close]')) close();   // الخلفيةُ `.lockback` وحدَها
     });
     elGo.addEventListener('click', submit);
     elInput.addEventListener('keydown', function (e) {
