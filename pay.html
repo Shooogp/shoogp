@@ -202,6 +202,8 @@ const riyal = n =>
   n <= 10 ? arNum(n) + " ريالات" : arNum(n) + " ريالاً";
 
 $("book").innerHTML = CONFIG.BOOKS.map(b => `<option value="${b.id}">${b.name}</option>`).join("");
+const wanted = new URLSearchParams(location.search).get("book");
+if (wanted && CONFIG.BOOKS.some(b => b.id === wanted)) $("book").value = wanted;
 $("price").textContent = riyal(CONFIG.PRICE);
 $("acctNo").textContent = CONFIG.ACCOUNT;
 $("acctName").textContent = CONFIG.HOLDER;
