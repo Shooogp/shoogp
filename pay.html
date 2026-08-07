@@ -181,7 +181,7 @@ input[type=file]{display:none}
 /* ═══════════ CONFIG — عدّلي هذه القيم ═══════════ */
 const CONFIG = {
   WEBHOOK : "https://shoogp.app.n8n.cloud/webhook/activate",
-  PRICE   : 4,
+  PRICE   : 1,
   ACCOUNT : "91496256",   // ← رقم الحساب أو رقم الهاتف للتحويل
   HOLDER  : "IBRAHIM KHAMIS — بنك مسقط",
   BOOKS   : [
@@ -195,9 +195,14 @@ const CONFIG = {
 
 const $ = id => document.getElementById(id);
 const arNum = n => String(n).replace(/[0-9]/g, d => "٠١٢٣٤٥٦٧٨٩"[d]);
+/* تمييزُ الريالِ يتبعُ العدد: ١ ريالٌ واحد · ٢ ريالان · ٣–١٠ ريالات · ما فوقُ ريالاً */
+const riyal = n =>
+  n === 1 ? "ريال واحد" :
+  n === 2 ? "ريالان" :
+  n <= 10 ? arNum(n) + " ريالات" : arNum(n) + " ريالاً";
 
 $("book").innerHTML = CONFIG.BOOKS.map(b => `<option value="${b.id}">${b.name}</option>`).join("");
-$("price").textContent = arNum(CONFIG.PRICE) + " ريالات";
+$("price").textContent = riyal(CONFIG.PRICE);
 $("acctNo").textContent = CONFIG.ACCOUNT;
 $("acctName").textContent = CONFIG.HOLDER;
 
