@@ -304,7 +304,13 @@ $("book").onchange = () => { if (blocked){ blocked = ""; note(""); } check(); };
    ⚠️ **بالعرضِ لا بـ`pointer: coarse`** (قرارُ المالك): السبورةُ الذكيةُ شاشةُ
    لمسٍ فتُبلِغُ `coarse`، فكانَ الفحصُ باللمسِ يُخفي الرمزَ على أهمِّ أجهزةِ
    المنصّةِ وهي أوْلى الشاشاتِ به. والعرضُ يقرأُ حجمَ الشاشةِ لا نوعَ الإدخال.
-   ويُقاسُ **مرّةً عندَ التحميل**، فتغييرُ حجمِ النافذةِ بعدَها لا يبدّلُ القرار. */
+   ويُقاسُ **مرّةً عندَ التحميل**، فتغييرُ حجمِ النافذةِ بعدَها لا يبدّلُ القرار.
+   ⚠️ **أصغرُ القيمتَين `innerWidth` و`screen.width` لا `innerWidth` وحدَه:**
+   وسمُ الـviewport هنا `width=device-width`، لكنّ متصفّحَ الهاتفِ **يتجاوزُه**
+   في وضعِ «موقع سطح المكتب» فيفرضُ منفذَ تخطيطٍ ≈٩٨٠px — فيتجاوزُ `innerWidth`
+   الحدَّ وتظهرُ البطاقةُ على الهاتف. مقيسٌ على الموقعِ الحيِّ بمنفذِ هاتف:
+   ‏`innerWidth` **٩٨١** بينما `screen.width` **٣٧٥**. و`screen.width` يقرأُ
+   الجهازَ نفسَه فلا يتأثّرُ بالوسمِ ولا بوضعِ المتصفّح. */
 function drawQR(){
   const url = location.origin + location.pathname + "?book=" + $("book").value;
   QRCode.toCanvas($("qr"), url, { width:190, margin:1,
@@ -312,7 +318,8 @@ function drawQR(){
 }
 
 // مكتبةُ الرمزِ من CDN خارجيّ — إن لم تصلْ تُخفى البطاقةُ ولا تنكسرُ الصفحة
-const showQR = window.innerWidth >= 700 && typeof QRCode !== "undefined";
+const showQR = Math.min(window.innerWidth, screen.width) >= 700
+            && typeof QRCode !== "undefined";
 if (!showQR) $("qrCard").style.display = "none";
 else $("book").addEventListener("change", drawQR);
 
