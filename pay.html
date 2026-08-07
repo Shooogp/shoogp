@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>فتح كتاب — شوجب</title>
+<title>شراء الكتب — شوجب</title>
 <!-- مكتبةُ رمزِ QR. ⚠️ النسخةُ 1.4.4 لا 1.5.x: حزمةُ `qrcode` توقّفت عن نشرِ
      مجلّدِ `build/` على npm بعدَ 1.4.4، فوسمُ 1.5.4 يرجعُ 404 (ملفّاتُها `lib/`
      و`bin/` فقط). واجهةُ `QRCode.toCanvas` واحدةٌ في النسختين.
@@ -14,9 +14,10 @@
 
 <!--
   ═══════════════════════════════════════════════════════════════
-  نموذج مستقل للتجربة الفورية. بعد نجاحه يحوّله كلود كود إلى
-  نافذة (modal) تُفتح من قفل الوحدة، ويأخذ الألوان من هوية الكتاب.
-  المطلوب تعديله قبل التشغيل: قسم CONFIG أسفل الصفحة.
+  سلّةُ شراءٍ متعدّدةُ الكتب. **ترتيبُ الشاشةِ قاعدةٌ لا تنسيق:**
+  المبلغُ ورقمُ الحسابِ وخانةُ الإيصالِ **لا تظهرُ قبلَ تأكيدِ الطلب** —
+  فلا تُحوِّلُ المعلّمةُ مبلغَ كتابٍ واحدٍ ثمّ تضيفُ كتاباً آخر.
+  المطلوبُ تعديلُه قبلَ التشغيل: قسمُ CONFIG أسفلَ الصفحة.
   ═══════════════════════════════════════════════════════════════
 -->
 
@@ -55,6 +56,7 @@ h1{font-size:26px;margin:0 0 4px;font-weight:700}
   background:var(--panel); border:1px solid var(--line);
   border-radius:18px; padding:22px; margin-bottom:16px;
 }
+.step[hidden]{display:none}
 .step-head{display:flex;align-items:center;gap:10px;margin-bottom:14px}
 .step-num{
   width:30px;height:30px;flex:none;border-radius:50%;
@@ -69,9 +71,67 @@ select,input[type=text],input[type=tel]{
   background:#0D111A;border:1px solid var(--line);
   color:var(--moon);font:inherit;font-size:17px;
 }
-select:focus,input:focus,button:focus-visible{
+select:focus,input:focus,button:focus-visible,a:focus-visible{
   outline:2px solid var(--stone-soft);outline-offset:2px;
 }
+select:disabled{opacity:.5;cursor:not-allowed}
+
+/* ═══════════ السلّة ═══════════ */
+/* البطاقةُ المثبّتة: الكتابُ الذي جاءت من أجلِه (من `?book`) — لا يُحذَف */
+.pin{
+  display:flex;align-items:center;gap:12px;
+  padding:16px 18px;border-radius:14px;
+  background:linear-gradient(180deg,#1D2637,#141A24);
+  border:1px solid var(--stone);
+}
+.pin .ic{font-size:22px;line-height:1}
+.pin .nm{flex:1;font-weight:700}
+.pin .tag{font-size:14px;color:var(--stone-soft);white-space:nowrap}
+
+.cart{margin-top:10px}
+.cart-item{
+  display:flex;align-items:center;gap:10px;
+  padding:12px 16px;border-radius:12px;margin-top:8px;
+  background:#0D111A;border:1px solid var(--line);
+}
+.cart-item .nm{flex:1;font-size:17px}
+.cart-del{
+  flex:none;min-width:44px;min-height:44px;
+  display:flex;align-items:center;justify-content:center;
+  background:transparent;border:1px solid var(--line);color:var(--danger);
+  border-radius:10px;font:inherit;font-size:18px;line-height:1;cursor:pointer;
+}
+.cart-del:hover{border-color:var(--danger);background:rgba(224,112,95,.1)}
+
+/* السلّةُ بعدَ التأكيد: رماديةٌ مقفلةٌ لا تُلمَس */
+.locked .pin,.locked .cart-item{opacity:.55;filter:grayscale(.6)}
+.locked .pin{border-color:var(--line)}
+
+.addrow{display:flex;gap:10px;align-items:stretch;margin-top:10px}
+.addrow select{flex:1}
+.addbtn{
+  flex:none;padding:0 20px;border-radius:12px;
+  background:transparent;border:1px solid var(--stone);color:var(--stone-soft);
+  font:inherit;font-size:16px;font-weight:700;cursor:pointer;white-space:nowrap;
+}
+.addbtn:hover:not(:disabled){background:rgba(201,162,39,.12)}
+.addbtn:disabled{opacity:.4;cursor:not-allowed}
+
+.hintline{margin:16px 0 0;color:var(--muted);font-size:16px;text-align:center}
+
+.confirm{
+  width:100%;margin-top:14px;padding:16px;border:0;border-radius:14px;
+  background:var(--stone);color:#1A1206;font:inherit;font-weight:700;font-size:19px;
+  cursor:pointer;transition:filter .18s;
+}
+.confirm:hover:not(:disabled){filter:brightness(1.08)}
+.confirm:disabled{opacity:.45;cursor:not-allowed}
+.edit{
+  width:100%;margin-top:14px;padding:14px;border-radius:14px;
+  background:transparent;border:1px solid var(--line);color:var(--moon);
+  font:inherit;font-size:17px;cursor:pointer;
+}
+.edit:hover{border-color:var(--stone)}
 
 .amount{
   display:flex;justify-content:space-between;align-items:center;
@@ -79,6 +139,7 @@ select:focus,input:focus,button:focus-visible{
   background:#0D111A;border:1px dashed var(--line);
 }
 .amount b{font-size:24px;color:var(--stone-soft)}
+.amount-calc{margin:6px 2px 0;color:var(--muted);font-size:15px}
 
 .acct{margin-top:12px}
 .acct-row{
@@ -116,7 +177,7 @@ input[type=file]{display:none}
   padding:16px;border-radius:14px;font-size:17px;
   background:#2A1A1A;border:1px solid var(--danger);color:#F3C9C2;
 }
-/* تنبيهٌ رمليّ — أخفُّ من رسالةِ الخطأ: الكتابُ سليمٌ لكنّه لم يُطرحْ بعد */
+/* تنبيهٌ رمليّ — أخفُّ من رسالةِ الخطأ: أمرٌ سليمٌ يحتاجُ انتباهاً لا تصحيحاً */
 .note{
   margin-top:10px;padding:14px 16px;border-radius:14px;font-size:16px;
   background:#241D0E;border:1px solid var(--stone);color:var(--stone-soft);
@@ -132,27 +193,30 @@ select option:disabled{color:var(--muted)}
 .qrcard p{margin:0 0 14px;color:var(--muted);font-size:15px}
 .qrcard canvas{display:block;margin:0 auto;border-radius:8px}
 
-/* التوقيع: الرمز محفور على شظيّة قمرية */
+/* التوقيع: الرمز محفور على شظيّة قمرية — بطاقةٌ لكلِّ كتاب */
 .code-card{
-  padding:26px 20px;border-radius:18px;text-align:center;
+  padding:22px 20px;border-radius:18px;text-align:center;margin-top:14px;
   background:radial-gradient(120% 90% at 50% 0%, #2B3242 0%, #141A24 70%);
   border:1px solid var(--stone);
   animation:rise .55s cubic-bezier(.2,.8,.25,1) both;
 }
 @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 .code-card .cap{color:var(--ok);font-size:16px}
+.code-book{font-size:17px;font-weight:700;margin-bottom:2px}
 .code{
-  font-family:ui-monospace,monospace;font-size:34px;font-weight:700;
-  letter-spacing:3px;color:var(--stone-soft);margin:12px 0 6px;
+  font-family:ui-monospace,monospace;font-size:30px;font-weight:700;
+  letter-spacing:3px;color:var(--stone-soft);margin:10px 0 6px;
   word-break:break-all;
 }
 .expires{color:var(--muted);font-size:15px}
-.code-actions{display:flex;gap:10px;margin-top:18px}
-.code-actions button{flex:1;padding:13px;border-radius:12px;font:inherit;font-size:16px;cursor:pointer}
-.btn-copy{width:100%;background:transparent;color:var(--moon);border:1px solid var(--line)}
+.btn-copy{
+  width:100%;margin-top:14px;padding:13px;border-radius:12px;
+  background:transparent;color:var(--moon);border:1px solid var(--line);
+  font:inherit;font-size:16px;cursor:pointer;
+}
 .btn-copy:hover{border-color:var(--stone)}
 /* الفعلُ الوحيدُ هنا نسخٌ ولصق، والسطرُ يقولُ أينَ يُلصَق */
-.code-hint{margin:10px 0 0;color:var(--muted);font-size:14px}
+.code-hint{margin:14px 0 0;color:var(--muted);font-size:14px;text-align:center}
 
 .spin{display:inline-block;width:17px;height:17px;vertical-align:-3px;
   border:2px solid rgba(0,0,0,.25);border-top-color:#1A1206;border-radius:50%;
@@ -165,18 +229,39 @@ select option:disabled{color:var(--muted)}
 <body>
 <div class="wrap">
   <a class="back" href="index.html">→ رجوع للرئيسة</a>
-  <h1>فتح كتاب</h1>
-  <p class="sub">حوّلي المبلغ، ارفعي الإيصال، ويظهر الرمز أمامك مباشرة.</p>
+  <h1>شراء الكتب</h1>
+  <p class="sub">أضيفي كتبك، أكّدي الطلب، حوّلي المبلغ وارفعي الإيصال.</p>
 
-  <!-- ١ -->
-  <div class="step">
-    <div class="step-head"><div class="step-num">١</div><div class="step-title">اختاري الكتاب وحوّلي المبلغ</div></div>
+  <!-- ① السلّة -->
+  <div class="step" id="step1">
+    <div class="step-head"><div class="step-num">١</div><div class="step-title">كتبك</div></div>
 
-    <label for="book">الكتاب</label>
-    <select id="book"><option>جارٍ تحميل قائمة الكتب…</option></select>
-    <div id="bookNote"></div>
+    <div id="cartWrap">
+      <div id="pinned"></div>
+      <div class="cart" id="cartList"></div>
+    </div>
+
+    <div id="addWrap">
+      <label for="addSel">إضافة كتاب آخر</label>
+      <div class="addrow">
+        <select id="addSel"><option>جارٍ تحميل قائمة الكتب…</option></select>
+        <button class="addbtn" id="addBtn" disabled>إضافة</button>
+      </div>
+    </div>
+
+    <div id="cartNote"></div>
+
+    <p class="hintline" id="preHint">أضيفي كل الكتب، ثم أكّدي الطلب ليظهر المبلغ</p>
+    <button class="confirm" id="confirmBtn" disabled>تأكيد الطلب</button>
+    <button class="edit" id="editBtn" hidden>تعديل الطلب</button>
+  </div>
+
+  <!-- ② المبلغ والحساب — لا يظهران قبل التأكيد -->
+  <div class="step" id="step2" hidden>
+    <div class="step-head"><div class="step-num">٢</div><div class="step-title">حوّلي المبلغ</div></div>
 
     <div class="amount"><span>المبلغ المطلوب</span><b id="price">—</b></div>
+    <p class="amount-calc" id="calc"></p>
 
     <div class="acct">
       <label>حوّلي إلى</label>
@@ -185,9 +270,9 @@ select option:disabled{color:var(--muted)}
     </div>
   </div>
 
-  <!-- ٢ -->
-  <div class="step">
-    <div class="step-head"><div class="step-num">٢</div><div class="step-title">ارفعي إيصال التحويل</div></div>
+  <!-- ③ الإيصال — لا يظهر قبل التأكيد -->
+  <div class="step" id="step3" hidden>
+    <div class="step-head"><div class="step-num">٣</div><div class="step-title">ارفعي إيصال التحويل</div></div>
 
     <div class="qrcard" id="qrCard">
       <h2>أكملي من هاتفك</h2>
@@ -206,11 +291,7 @@ select option:disabled{color:var(--muted)}
 
     <label for="name">اسمك (اختياري)</label>
     <input type="text" id="name" placeholder="للسجلّ فقط">
-  </div>
 
-  <!-- ٣ -->
-  <div class="step">
-    <div class="step-head"><div class="step-num">٣</div><div class="step-title">استلمي الرمز</div></div>
     <button class="go" id="go" disabled>تحقّقي من الدفع</button>
     <div class="result" id="result"></div>
   </div>
@@ -220,11 +301,11 @@ select option:disabled{color:var(--muted)}
 /* ═══════════ CONFIG — عدّلي هذه القيم ═══════════ */
 const CONFIG = {
   WEBHOOK : "https://shoogp.app.n8n.cloud/webhook/activate",
-  PRICE   : 1,
+  PRICE   : 1,            // سعرُ **الكتابِ الواحد** — والمجموعُ يُضرَبُ بعددِ كتبِ السلّة
   ACCOUNT : "91496256",   // ← رقم الحساب أو رقم الهاتف للتحويل
   HOLDER  : "IBRAHIM KHAMIS — بنك مسقط",
-  /* الكتبُ المطروحةُ للبيعِ اليوم. وما عداها من كتبِ `data/books.json` يظهرُ
-     في القائمةِ بكلمةِ «قريباً» معطَّلاً — فالقائمةُ كاملةٌ والبيعُ محدود. */
+  /* الكتبُ المطروحةُ للبيعِ اليوم. وما عداها من كتبِ `data/books.json` لا يظهرُ
+     في قائمةِ الإضافةِ أصلاً — السلّةُ لا تقبلُ إلا مطروحاً. */
   ON_SALE : ["g1-sci", "g2-sci", "g3-sci", "g4-sci"]
 };
 /* قائمةُ الكتبِ تُقرأُ من `data/books.json` — مصدرُ بطاقاتِ المنصّةِ نفسُه،
@@ -239,15 +320,23 @@ const riyal = n =>
   n === 1 ? "ريال واحد" :
   n === 2 ? "ريالان" :
   n <= 10 ? arNum(n) + " ريالات" : arNum(n) + " ريالاً";
+/* تمييزُ الكتابِ كذلك — «كتابٌ واحد» لا «١ كتب» */
+const kitab = n =>
+  n === 1 ? "كتاب واحد" :
+  n === 2 ? "كتابان" :
+  n <= 10 ? arNum(n) + " كتب" : arNum(n) + " كتاباً";
 
-$("price").textContent = riyal(CONFIG.PRICE);
 $("acctNo").textContent = CONFIG.ACCOUNT;
 $("acctName").textContent = CONFIG.HOLDER;
 
-/* ═══════════ قائمةُ الكتب ═══════════ */
-const wanted = new URLSearchParams(location.search).get("book");
-let books = [];      // [{id,name}] بترتيبِ `data/books.json`
-let blocked = "";    // سببُ منعِ التحقّق (كتابٌ غيرُ مطروحٍ أو قائمةٌ لم تُحمَّل)
+/* ═══════════ الحالة ═══════════ */
+let books = [];        // [{id,name}] بترتيبِ `data/books.json`
+let cart = [];         // مفاتيحُ كتبِ السلّةِ بالترتيب
+let pinned = null;     // الكتابُ المثبَّتُ من `?book` — بطاقةٌ في الأعلى لا تُحذَف
+let confirmed = false; // بعدَ التأكيدِ تُقفَلُ السلّةُ ويظهرُ المبلغُ والحساب
+let fatal = "";        // عطبٌ يمنعُ الطلبَ كلَّه (تعذّرت قائمةُ الكتبِ مثلاً)
+
+const nameOf = id => (books.find(b => b.id === id) || {}).name || id;
 
 /* اسمُ العرض: العنوانُ وحدَه لا يكفي — «أحب لغتي» جزآنِ في كلِّ صف،
    فيُضافُ الجزءُ من لاحقةِ المفتاحِ ثمّ الصفُّ من مفتاحِ التجميعِ في الملف. */
@@ -270,41 +359,80 @@ function flatten(data){
   return out;
 }
 
-function fillBooks(){
-  $("book").innerHTML = books.map(b => {
-    const on = CONFIG.ON_SALE.includes(b.id);
-    return `<option value="${b.id}"${on ? "" : " disabled"}>${b.name}${on ? "" : " — قريباً"}</option>`;
-  }).join("");
-  // المتصفّحُ يختارُ أوّلَ خيارٍ غيرِ معطَّل، فلا تبدأُ الصفحةُ على كتابٍ غيرِ مطروح
-}
+function note(html){ $("cartNote").innerHTML = html ? `<div class="note">${html}</div>` : ""; }
 
-function note(html){ $("bookNote").innerHTML = html ? `<div class="note">${html}</div>` : ""; }
+/* ═══════════ الرسم ═══════════ */
+function render(){
+  // ① البطاقةُ المثبّتة
+  $("pinned").innerHTML = pinned
+    ? `<div class="pin"><span class="ic">📘</span>
+         <span class="nm">${nameOf(pinned)}</span>
+         <span class="tag">كتابك</span></div>`
+    : "";
 
-/* الكتابُ المطلوبُ في الرابط: إن لم يكن مطروحاً نُنبّهُ ونمنعُ التحقّق —
-   وينفكُّ المنعُ إن اختارتِ المعلّمةُ كتاباً آخرَ من القائمة. */
-function applyWanted(){
-  if (!wanted) return;
-  const b = books.find(x => x.id === wanted);
-  if (!b){
-    blocked = "لم نجد هذا الكتاب في قائمة كتب المنصّة. اختاري كتاباً من القائمة أعلاه.";
-  } else if (!CONFIG.ON_SALE.includes(wanted)){
-    blocked = `«${b.name}» لم يُطرح للبيع بعد. اختاري كتاباً آخر من القائمة، أو عودي إلينا قريباً.`;
-  } else {
-    $("book").value = wanted;
+  // ② بقيّةُ السلّة — سطرٌ وزرُّ حذفٍ لكلِّ كتابٍ مضاف
+  const rest = cart.filter(id => id !== pinned);
+  $("cartList").innerHTML = rest.map(id =>
+    `<div class="cart-item"><span class="nm">${nameOf(id)}</span>` +
+    (confirmed ? "" : `<button class="cart-del" data-del="${id}" aria-label="حذف ${nameOf(id)}">✕</button>`) +
+    `</div>`).join("");
+  $("cartList").querySelectorAll("[data-del]").forEach(b =>
+    b.onclick = () => { cart = cart.filter(x => x !== b.dataset.del); afterCartChange(); });
+
+  // ③ قائمةُ الإضافة: المطروحُ فقط، وبلا ما في السلّةِ أصلاً
+  const avail = books.filter(b => CONFIG.ON_SALE.includes(b.id) && !cart.includes(b.id));
+  $("addSel").innerHTML = avail.length
+    ? avail.map(b => `<option value="${b.id}">${b.name}</option>`).join("")
+    : `<option>لا كتبَ أخرى متاحةً الآن</option>`;
+  $("addSel").disabled = !avail.length || !!fatal;
+  $("addBtn").disabled = !avail.length || !!fatal;
+  $("addWrap").hidden = confirmed;
+
+  // ④ قفلُ السلّةِ بعدَ التأكيد
+  $("cartWrap").classList.toggle("locked", confirmed);
+
+  // ⑤ الترتيبُ الحاسم: لا مبلغَ ولا حسابَ ولا إيصالَ قبلَ التأكيد
+  $("preHint").hidden   = confirmed;
+  $("confirmBtn").hidden = confirmed;
+  $("editBtn").hidden    = !confirmed;
+  $("step2").hidden      = !confirmed;
+  $("step3").hidden      = !confirmed;
+  $("confirmBtn").disabled = !cart.length || !!fatal;
+
+  if (confirmed){
+    $("price").textContent = riyal(CONFIG.PRICE * cart.length);
+    $("calc").textContent  = `${riyal(CONFIG.PRICE)} × ${kitab(cart.length)}`;
   }
-  note(blocked);
+  check();
 }
 
-$("book").onchange = () => { if (blocked){ blocked = ""; note(""); } check(); };
+/* كلُّ تغيّرٍ في السلّةِ يُعيدُ الرسمَ **ويُعيدُ رسمَ رمزِ QR** — الرمزُ يحملُ السلّةَ كاملة */
+function afterCartChange(){ render(); if (showQR) drawQR(); }
+
+$("addBtn").onclick = () => {
+  const id = $("addSel").value;
+  if (!id || cart.includes(id) || !CONFIG.ON_SALE.includes(id)) return;
+  cart.push(id);
+  note("");
+  afterCartChange();
+};
+
+$("confirmBtn").onclick = () => { confirmed = true; note(""); render(); };
+
+$("editBtn").onclick = () => {
+  confirmed = false;
+  render();
+  note("لا تحوّلي قبل تأكيد الطلب — المبلغ يتغيّر مع كل كتاب تضيفينه.");
+};
 
 /* ═══════════ رمزُ QR — جسرٌ من الشاشةِ الكبيرةِ إلى الهاتف ═══════════
    الإيصالُ ملفُّ PDF في تطبيقِ البنكِ على الهاتف، فمن كانت أمامَ شاشةٍ كبيرةٍ
-   تلتقطُ الرمزَ فتُكمِلُ من هاتفِها. ويُخفى تحتَ **٧٠٠px عرضاً** — أي على
+   تلتقطُ الرمزَ فتُكمِلُ من هاتفِها. **ويحملُ السلّةَ كاملةً** (`?book=a,b`)
+   فتُستأنَفُ على الهاتفِ كما هي. ويُخفى تحتَ **٧٠٠px عرضاً** — أي على
    الهاتفِ وحدَه، فلا معنى لأن يُصوَّرَ الهاتفُ رمزاً على نفسِه.
    ⚠️ **بالعرضِ لا بـ`pointer: coarse`** (قرارُ المالك): السبورةُ الذكيةُ شاشةُ
    لمسٍ فتُبلِغُ `coarse`، فكانَ الفحصُ باللمسِ يُخفي الرمزَ على أهمِّ أجهزةِ
    المنصّةِ وهي أوْلى الشاشاتِ به. والعرضُ يقرأُ حجمَ الشاشةِ لا نوعَ الإدخال.
-   ويُقاسُ **مرّةً عندَ التحميل**، فتغييرُ حجمِ النافذةِ بعدَها لا يبدّلُ القرار.
    ⚠️ **أصغرُ القيمتَين `innerWidth` و`screen.width` لا `innerWidth` وحدَه:**
    وسمُ الـviewport هنا `width=device-width`، لكنّ متصفّحَ الهاتفِ **يتجاوزُه**
    في وضعِ «موقع سطح المكتب» فيفرضُ منفذَ تخطيطٍ ≈٩٨٠px — فيتجاوزُ `innerWidth`
@@ -312,7 +440,8 @@ $("book").onchange = () => { if (blocked){ blocked = ""; note(""); } check(); };
    ‏`innerWidth` **٩٨١** بينما `screen.width` **٣٧٥**. و`screen.width` يقرأُ
    الجهازَ نفسَه فلا يتأثّرُ بالوسمِ ولا بوضعِ المتصفّح. */
 function drawQR(){
-  const url = location.origin + location.pathname + "?book=" + $("book").value;
+  if (!cart.length) return;
+  const url = location.origin + location.pathname + "?book=" + cart.join(",");
   QRCode.toCanvas($("qr"), url, { width:190, margin:1,
     color:{ dark:"#EDE8DE", light:"#0D111A" } });
 }
@@ -321,28 +450,51 @@ function drawQR(){
 const showQR = Math.min(window.innerWidth, screen.width) >= 700
             && typeof QRCode !== "undefined";
 if (!showQR) $("qrCard").style.display = "none";
-else $("book").addEventListener("change", drawQR);
+
+/* ═══════════ الإقلاع: قراءةُ `?book=` المتعدّد ═══════════
+   الفصلُ بفاصلة، وأوّلُ مفتاحٍ صالحٍ يصيرُ **البطاقةَ المثبّتة**. */
+const wantedRaw = new URLSearchParams(location.search).get("book") || "";
+const wantedIds = wantedRaw.split(",").map(s => s.trim()).filter(Boolean);
+
+function applyWanted(){
+  if (!wantedIds.length) return;
+  const unknown = [], soon = [];
+  wantedIds.forEach(id => {
+    const b = books.find(x => x.id === id);
+    if (!b) { unknown.push(id); return; }
+    if (!CONFIG.ON_SALE.includes(id)) { soon.push(b.name); return; }
+    if (!cart.includes(id)) cart.push(id);
+  });
+  if (cart.length) pinned = cart[0];
+
+  const msgs = [];
+  if (soon.length)    msgs.push(`«${soon.join("»، «")}» لم يُطرح للبيع بعد، فلم يُضَف إلى الطلب.`);
+  if (unknown.length) msgs.push(`لم نجد في قائمة كتب المنصّة: ${unknown.join("، ")}.`);
+  if (!cart.length)   msgs.push("أضيفي كتاباً من القائمة أدناه لتبدأي.");
+  note(msgs.join(" "));
+}
 
 fetch(BOOKS_URL)
   .then(r => { if (!r.ok) throw new Error("http " + r.status); return r.json(); })
-  // الرسمُ بعدَ وصولِ القائمةِ لا قبلَها — قبلَها قيمةُ القائمةِ نصُّ «جارٍ التحميل…»
-  .then(data => { books = flatten(data); fillBooks(); applyWanted(); check(); if (showQR) drawQR(); })
+  // الرسمُ بعدَ وصولِ القائمةِ لا قبلَها — قبلَها لا أسماءَ للمفاتيحِ أصلاً
+  .then(data => { books = flatten(data); applyWanted(); afterCartChange(); })
   .catch(() => {
-    blocked = "تعذّر تحميل قائمة الكتب. تأكّدي من الإنترنت وأعيدي تحميل الصفحة.";
-    $("book").innerHTML = '<option>—</option>';
-    $("qrCard").style.display = "none";   // بلا كتابٍ صالحٍ لا رمزَ يُرسَم
-    note(blocked); check();
+    fatal = "تعذّر تحميل قائمة الكتب. تأكّدي من الإنترنت وأعيدي تحميل الصفحة.";
+    $("qrCard").style.display = "none";   // بلا كتبٍ صالحةٍ لا رمزَ يُرسَم
+    render(); note(fatal);
   });
 
 document.querySelectorAll(".copy").forEach(btn => {
   btn.onclick = async () => {
-    await navigator.clipboard.writeText($(btn.dataset.copy).textContent.trim());
-    const old = btn.textContent; btn.textContent = "تم النسخ";
-    setTimeout(() => btn.textContent = old, 1600);
+    try{
+      await navigator.clipboard.writeText($(btn.dataset.copy).textContent.trim());
+      const old = btn.textContent; btn.textContent = "تم النسخ";
+      setTimeout(() => btn.textContent = old, 1600);
+    }catch(e){ btn.textContent = "انسخيه يدوياً"; }
   };
 });
 
-/* اختيار الملف */
+/* ═══════════ اختيار الملف ═══════════ */
 const drop = $("drop"), fileInput = $("file");
 drop.onclick = () => fileInput.click();
 drop.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fileInput.click(); } };
@@ -364,17 +516,16 @@ function onPick(){
   check();
 }
 
-/* تفعيل الزر */
+/* تفعيل الزر — التحقّقُ لا يُتاحُ إلا بعدَ التأكيدِ وبسلّةٍ غيرِ فارغة */
 $("phone").oninput = check;
 function check(){
   const phoneOk = $("phone").value.replace(/\D/g,"").length >= 8;
-  const bookOk  = !blocked && CONFIG.ON_SALE.includes($("book").value);
-  $("go").disabled = !(bookOk && fileInput.files[0] && phoneOk);
+  $("go").disabled = !(confirmed && cart.length && !fatal && fileInput.files[0] && phoneOk);
 }
 
 function show(html){ $("result").innerHTML = html; }
 
-/* الإرسال */
+/* ═══════════ الإرسال ═══════════ */
 $("go").onclick = async () => {
   const btn = $("go");
   btn.disabled = true;
@@ -383,7 +534,7 @@ $("go").onclick = async () => {
 
   const fd = new FormData();
   fd.append("receipt", fileInput.files[0]);
-  fd.append("scope", $("book").value);
+  fd.append("scope", cart.join(","));      // مفاتيحُ السلّةِ في قيمةٍ واحدة
   fd.append("phone", $("phone").value.replace(/\D/g,""));
   fd.append("name",  $("name").value);
 
@@ -392,20 +543,32 @@ $("go").onclick = async () => {
     const data = await res.json();
 
     if (data.ok){
-      show(`
-        <div class="code-card">
-          <div class="cap">تم التحقّق من الدفع</div>
-          <div class="code" id="theCode">${data.code}</div>
-          <div class="expires">صالح حتى ${data.expires || "—"}</div>
-          <div class="code-actions">
-            <button class="btn-copy" data-copy2="theCode">نسخ الرمز</button>
-          </div>
-          <p class="code-hint">انسخي الرمز والصقيه في خانة فتح الوحدة</p>
-        </div>`);
-      document.querySelector("[data-copy2]").onclick = async e => {
-        await navigator.clipboard.writeText(data.code);
-        e.target.textContent = "تم النسخ";
-      };
+      /* الردُّ `codes` مصفوفةُ {scope, code, expires} — بطاقةٌ لكلِّ كتاب.
+         والصيغةُ المفردةُ القديمةُ (`code`) تُقبَلُ ولا تُسقِطُ الردَّ. */
+      const list = Array.isArray(data.codes) && data.codes.length ? data.codes
+                 : (data.code ? [{ scope: cart[0], code: data.code, expires: data.expires }] : []);
+      if (!list.length){
+        show(`<div class="msg">تمّ التحقّق لكن لم تصلْنا الرموز. تواصلي معنا ومعك رقم هاتفك.</div>`);
+        return;
+      }
+      show(
+        `<div class="code-card"><div class="cap">تم التحقّق من الدفع</div></div>` +
+        list.map((c,i) =>
+          `<div class="code-card">
+             <div class="code-book">${nameOf(c.scope)}</div>
+             <div class="code" id="code${i}">${c.code}</div>
+             <div class="expires">صالح حتى ${c.expires || "—"}</div>
+             <button class="btn-copy" data-code="${i}">نسخ الرمز</button>
+           </div>`).join("") +
+        `<p class="code-hint">انسخي كل رمز والصقيه في خانة فتح الكتاب الخاص به</p>`
+      );
+      $("result").querySelectorAll("[data-code]").forEach(b =>
+        b.onclick = async () => {
+          try{
+            await navigator.clipboard.writeText(list[+b.dataset.code].code);
+            b.textContent = "تم النسخ";
+          }catch(e){ b.textContent = "انسخيه يدوياً"; }
+        });
     } else {
       show(`<div class="msg">${data.message || "تعذّر التحقّق من الإيصال."}</div>`);
     }
@@ -417,6 +580,8 @@ $("go").onclick = async () => {
     check();
   }
 };
+
+render();
 </script>
 </body>
 </html>
