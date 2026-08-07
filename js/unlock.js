@@ -43,6 +43,18 @@
    التفصيلُ عندَ `OFF_KEY` أدناه. ⚠️ وهو **يفتحُ كلَّ الكتبِ لأيِّ زائرٍ بنقرة**،
    فالحاجزُ أدناه يبقى وصفاً للآليةِ لا لِما يراه الزائرُ فعلاً.
 
+   ── زرُّ «شراء الكتاب» في شارةِ القفلِ الرملية ──
+   داخلَ نافذةِ الرمزِ نفسِها، أسفلَ زرِّ «فتح الوحدة»: رابطٌ يفتحُ
+   `pay.html?book=<مفتاحُ الكتاب>` في **تبويبٍ جديد** (‏`target="_blank"` مع
+   `rel="noopener"`). **يظهرُ لكلِّ الكتبِ بلا استثناء** — وصفحةُ الدفعِ وحدَها هي
+   التي تقولُ إن كان الكتابُ مطروحاً للبيعِ أو «قريباً» (‏`ON_SALE` هناك)، فلا
+   تُكرَّرُ قائمةُ المطروحِ في مكانَين.
+   ⚠️ **الزرُّ في النافذةِ لا في شارةِ رأسِ الوحدة** (‏`.unit-lock` في `js/app.js`):
+   تلك الشارةُ `span` داخلَ `button` رأسِ الوحدةِ عمداً — فعنصرٌ تفاعليٌّ داخلَها
+   يُعشِّشُ زرّاً في زرّ. والنافذةُ هي ما يُفتَحُ بنقرِ الشارةِ أصلاً.
+   ⚠️ **المفتاحُ هو مفتاحُ الكتابِ نفسُه** (`pending.bookKey`)، وهو مفتاحُ
+   `data/books.json` الذي تقرأُ منه صفحةُ الدفعِ قائمتَها — فالطرفانِ على مصدرٍ واحد.
+
    ── حدٌّ صريحٌ لا يُتجاوَز ──
    هذا **حاجزُ شراءٍ لا حمايةٌ أمنية**. أيُّ قفلٍ في موقعٍ ثابتٍ يمكنُ تجاوزُه من
    أدواتِ المطوّر، وأيُّ رمزٍ يمكنُ مشاركتُه. **لا يُبنى تعقيدٌ إضافيٌّ لمنعِ ذلك** —
@@ -264,7 +276,7 @@
            'الرمز محفوظٌ ولم يُهدَر.';
   }
 
-  var box = null, elInput, elMsg, elGo, elTitle, elSub, elBand, lastFocus = null;
+  var box = null, elInput, elMsg, elGo, elBuy, elTitle, elSub, elBand, lastFocus = null;
 
   function build() {
     if (box) return box;
@@ -285,6 +297,7 @@
               ' spellcheck="false" autocapitalize="characters" dir="ltr" placeholder="XXXXX-XXXXX">' +
         '<p class="lockmsg" role="status" aria-live="polite"></p>' +
         '<button type="button" class="lockgo">فتح الوحدة</button>' +
+        '<a class="lockbuy" target="_blank" rel="noopener">🛒 شراء الكتاب</a>' +
       '</div>';
 
     document.body.appendChild(box);
@@ -294,6 +307,7 @@
     elInput = box.querySelector('.lockinput');
     elMsg   = box.querySelector('.lockmsg');
     elGo    = box.querySelector('.lockgo');
+    elBuy   = box.querySelector('.lockbuy');
 
     box.addEventListener('click', function (e) {
       if (e.target.closest('[data-close]')) close();
@@ -308,7 +322,7 @@
     box.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') { e.preventDefault(); close(); return; }
       if (e.key !== 'Tab') return;
-      var f = box.querySelectorAll('.lockclose, .lockinput, .lockgo');
+      var f = box.querySelectorAll('.lockclose, .lockinput, .lockgo, .lockbuy');
       var first = f[0], last = f[f.length - 1];
       if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
@@ -337,6 +351,8 @@
     elInput.value = '';
     say('', '');
     elGo.disabled = false;
+    // زرُّ الشراءِ يحملُ مفتاحَ الكتابِ الحاليَّ فتفتحُ صفحةُ الدفعِ عليه مختاراً
+    elBuy.href = 'pay.html?book=' + encodeURIComponent(bookKey);
 
     lastFocus = document.activeElement;
     box.removeAttribute('hidden');

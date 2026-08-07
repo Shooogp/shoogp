@@ -175,6 +175,35 @@
 .lockgo:disabled{filter:grayscale(.5) brightness(.9); cursor:default}
 .lockgo:focus-visible{outline:3px solid #7f5cc0; outline-offset:3px}
 
+/* زرُّ «شراء الكتاب» — فعلٌ ثانويٌّ بجانبِ «فتح الوحدة» الأخضرِ الرئيسيّ.
+   بهيئةِ الحجرِ الرمليِّ نفسِها (‏`--lk-*`) لا بالأخضر، فلا يتنافسُ فعلانِ على
+   العينِ في نافذةٍ واحدة. رابطٌ لا زرّ — يفتحُ تبويباً جديداً. */
+.lockbuy{
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  margin-top:12px; min-height:60px; padding:14px 24px; border-radius:999px;
+  font-family:'Cairo',sans-serif; font-size:19px; font-weight:800;
+  color:var(--lk-ink); text-decoration:none; cursor:pointer;
+  -webkit-user-select:none; user-select:none; touch-action:manipulation;
+  background:var(--lk-grain) 0 0/190px 96px repeat,
+             linear-gradient(180deg,var(--lk-hi) 0%,var(--lk-mid) 46%,var(--lk-lo) 100%);
+  border:2px solid var(--lk-edge); border-bottom-color:var(--lk-edge-dk);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.78),
+             inset 0 -3px 0 rgba(150,112,52,.30),
+             0 3px 0 rgba(163,127,72,.55),
+             0 6px 12px rgba(60,40,15,.26);
+  transition:transform .18s, box-shadow .18s;
+}
+.lockbuy:hover{
+  transform:translateY(-2px);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.85),
+             inset 0 -3px 0 rgba(150,112,52,.28),
+             0 5px 0 rgba(163,127,72,.55),
+             0 9px 16px rgba(60,40,15,.30);
+}
+.lockbuy:active{transform:translateY(1px);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.7), 0 1px 0 rgba(163,127,72,.55), 0 3px 8px rgba(60,40,15,.24)}
+.lockbuy:focus-visible{outline:3px solid #7f5cc0; outline-offset:3px}
+
 /* منعُ تمريرِ الصفحةِ خلفَ النافذة */
 body.lock-open{overflow:hidden}
 
@@ -255,7 +284,7 @@ body.lock-open{overflow:hidden}
 /* ── احترامُ `prefers-reduced-motion`: تبقى الوظيفةُ وتسقطُ الحركةُ وحدَها ── */
 @media (prefers-reduced-motion:reduce){
   .lockback,.lockbox{animation:none}
-  .lockgo,.lockclose,.lesson.paylocked,.unit-head .unit-lock,.lockdev-btn{transition:none}
-  .lockgo:hover:not(:disabled),.lockclose:hover,
+  .lockgo,.lockclose,.lesson.paylocked,.unit-head .unit-lock,.lockdev-btn,.lockbuy{transition:none}
+  .lockgo:hover:not(:disabled),.lockclose:hover,.lockbuy:hover,.lockbuy:active,
   .unit-head .unit-lock:hover,.lesson.paylocked:hover,.lockdev-btn:active{transform:none}
 }

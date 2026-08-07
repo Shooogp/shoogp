@@ -34,6 +34,13 @@ body{
   font-size:18px; line-height:1.9;
 }
 .wrap{max-width:560px;margin:0 auto}
+/* رابطُ العودة — بهيئةِ زرِّ الرجوعِ في المنصّة (`.back` في css/style.css) */
+.back{
+  display:inline-block;margin:0 0 18px;padding:10px 18px;border-radius:999px;
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+  color:#fff;font-size:16px;text-decoration:none;
+}
+.back:hover{background:rgba(255,255,255,.2)}
 h1{font-size:26px;margin:0 0 4px;font-weight:700}
 .sub{color:var(--muted);font-size:16px;margin:0 0 28px}
 
@@ -102,6 +109,12 @@ input[type=file]{display:none}
   padding:16px;border-radius:14px;font-size:17px;
   background:#2A1A1A;border:1px solid var(--danger);color:#F3C9C2;
 }
+/* تنبيهٌ رمليّ — أخفُّ من رسالةِ الخطأ: الكتابُ سليمٌ لكنّه لم يُطرحْ بعد */
+.note{
+  margin-top:10px;padding:14px 16px;border-radius:14px;font-size:16px;
+  background:#241D0E;border:1px solid var(--stone);color:var(--stone-soft);
+}
+select option:disabled{color:var(--muted)}
 
 /* التوقيع: الرمز محفور على شظيّة قمرية */
 .code-card{
@@ -133,6 +146,7 @@ input[type=file]{display:none}
 
 <body>
 <div class="wrap">
+  <a class="back" href="index.html">→ رجوع للرئيسة</a>
   <h1>فتح كتاب</h1>
   <p class="sub">حوّلي المبلغ، ارفعي الإيصال، ويظهر الرمز أمامك مباشرة.</p>
 
@@ -141,7 +155,8 @@ input[type=file]{display:none}
     <div class="step-head"><div class="step-num">١</div><div class="step-title">اختاري الكتاب وحوّلي المبلغ</div></div>
 
     <label for="book">الكتاب</label>
-    <select id="book"></select>
+    <select id="book"><option>جارٍ تحميل قائمة الكتب…</option></select>
+    <div id="bookNote"></div>
 
     <div class="amount"><span>المبلغ المطلوب</span><b id="price">—</b></div>
 
@@ -184,13 +199,13 @@ const CONFIG = {
   PRICE   : 1,
   ACCOUNT : "91496256",   // ← رقم الحساب أو رقم الهاتف للتحويل
   HOLDER  : "IBRAHIM KHAMIS — بنك مسقط",
-  BOOKS   : [
-    { id:"g1-sci", name:"علوم الصف الأول" },
-    { id:"g2-sci", name:"علوم الصف الثاني" },
-    { id:"g3-sci", name:"علوم الصف الثالث" },
-    { id:"g4-sci", name:"علوم الصف الرابع" }
-  ]
+  /* الكتبُ المطروحةُ للبيعِ اليوم. وما عداها من كتبِ `data/books.json` يظهرُ
+     في القائمةِ بكلمةِ «قريباً» معطَّلاً — فالقائمةُ كاملةٌ والبيعُ محدود. */
+  ON_SALE : ["g1-sci", "g2-sci", "g3-sci", "g4-sci"]
 };
+/* قائمةُ الكتبِ تُقرأُ من `data/books.json` — مصدرُ بطاقاتِ المنصّةِ نفسُه،
+   فلا تتفرّقُ نسختانِ ولا يُنسى كتابٌ جديدٌ هنا بعدَ إضافتِه هناك. */
+const BOOKS_URL = "data/books.json";
 /* ═══════════════════════════════════════════════ */
 
 const $ = id => document.getElementById(id);
@@ -201,12 +216,71 @@ const riyal = n =>
   n === 2 ? "ريالان" :
   n <= 10 ? arNum(n) + " ريالات" : arNum(n) + " ريالاً";
 
-$("book").innerHTML = CONFIG.BOOKS.map(b => `<option value="${b.id}">${b.name}</option>`).join("");
-const wanted = new URLSearchParams(location.search).get("book");
-if (wanted && CONFIG.BOOKS.some(b => b.id === wanted)) $("book").value = wanted;
 $("price").textContent = riyal(CONFIG.PRICE);
 $("acctNo").textContent = CONFIG.ACCOUNT;
 $("acctName").textContent = CONFIG.HOLDER;
+
+/* ═══════════ قائمةُ الكتب ═══════════ */
+const wanted = new URLSearchParams(location.search).get("book");
+let books = [];      // [{id,name}] بترتيبِ `data/books.json`
+let blocked = "";    // سببُ منعِ التحقّق (كتابٌ غيرُ مطروحٍ أو قائمةٌ لم تُحمَّل)
+
+/* اسمُ العرض: العنوانُ وحدَه لا يكفي — «أحب لغتي» جزآنِ في كلِّ صف،
+   فيُضافُ الجزءُ من لاحقةِ المفتاحِ ثمّ الصفُّ من مفتاحِ التجميعِ في الملف. */
+function bookLabel(b, grade){
+  const part = /-1$/.test(b.key) ? " (الجزء الأول)"
+             : /-2$/.test(b.key) ? " (الجزء الثاني)" : "";
+  return b.title + part + " — الصف " + grade;
+}
+
+/* الملفُّ مُبوَّبٌ: فصلٌ دراسيّ ← صفّ ← مصفوفةُ كتب. نسطّحُه محافظينَ على ترتيبِه. */
+function flatten(data){
+  const out = [], seen = new Set();
+  Object.values(data).forEach(grades =>
+    Object.entries(grades).forEach(([grade, list]) =>
+      (list || []).forEach(b => {
+        if (!b || !b.key || seen.has(b.key)) return;
+        seen.add(b.key);
+        out.push({ id:b.key, name:bookLabel(b, grade) });
+      })));
+  return out;
+}
+
+function fillBooks(){
+  $("book").innerHTML = books.map(b => {
+    const on = CONFIG.ON_SALE.includes(b.id);
+    return `<option value="${b.id}"${on ? "" : " disabled"}>${b.name}${on ? "" : " — قريباً"}</option>`;
+  }).join("");
+  // المتصفّحُ يختارُ أوّلَ خيارٍ غيرِ معطَّل، فلا تبدأُ الصفحةُ على كتابٍ غيرِ مطروح
+}
+
+function note(html){ $("bookNote").innerHTML = html ? `<div class="note">${html}</div>` : ""; }
+
+/* الكتابُ المطلوبُ في الرابط: إن لم يكن مطروحاً نُنبّهُ ونمنعُ التحقّق —
+   وينفكُّ المنعُ إن اختارتِ المعلّمةُ كتاباً آخرَ من القائمة. */
+function applyWanted(){
+  if (!wanted) return;
+  const b = books.find(x => x.id === wanted);
+  if (!b){
+    blocked = "لم نجد هذا الكتاب في قائمة كتب المنصّة. اختاري كتاباً من القائمة أعلاه.";
+  } else if (!CONFIG.ON_SALE.includes(wanted)){
+    blocked = `«${b.name}» لم يُطرح للبيع بعد. اختاري كتاباً آخر من القائمة، أو عودي إلينا قريباً.`;
+  } else {
+    $("book").value = wanted;
+  }
+  note(blocked);
+}
+
+$("book").onchange = () => { if (blocked){ blocked = ""; note(""); } check(); };
+
+fetch(BOOKS_URL)
+  .then(r => { if (!r.ok) throw new Error("http " + r.status); return r.json(); })
+  .then(data => { books = flatten(data); fillBooks(); applyWanted(); check(); })
+  .catch(() => {
+    blocked = "تعذّر تحميل قائمة الكتب. تأكّدي من الإنترنت وأعيدي تحميل الصفحة.";
+    $("book").innerHTML = '<option>—</option>';
+    note(blocked); check();
+  });
 
 document.querySelectorAll(".copy").forEach(btn => {
   btn.onclick = async () => {
@@ -242,7 +316,8 @@ function onPick(){
 $("phone").oninput = check;
 function check(){
   const phoneOk = $("phone").value.replace(/\D/g,"").length >= 8;
-  $("go").disabled = !(fileInput.files[0] && phoneOk);
+  const bookOk  = !blocked && CONFIG.ON_SALE.includes($("book").value);
+  $("go").disabled = !(bookOk && fileInput.files[0] && phoneOk);
 }
 
 function show(html){ $("result").innerHTML = html; }
