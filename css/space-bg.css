@@ -20,13 +20,25 @@
   will-change: transform;
 }
 
-/* ── الصاروخ: أعلى اليسار ───────────────────────────────── */
+/* ── الصاروخ: منتصبٌ عمودياً، ذيلُه غائصٌ في القمر ──────────
+   `left:8%` و`top:30vh` ليقعَ طرفُ الذيلِ الدخانيِّ داخلَ قرصِ القمرِ فيغطّيَه:
+   القمرُ متأخّرٌ عن الصاروخِ في ترتيبِ الـDOM وكلاهما بلا `z-index`، فيُرسمُ
+   القمرُ فوقَه ويبتلعُ نهايةَ الذيلِ فيبدو الصاروخُ خارجاً من خلفِه.
+   واليسارُ ‎8%‎ لا ‎14%‎ يخدمُ غرضَين: يقرّبُه من القمرِ، ويُخرجُ صندوقَه كلَّه
+   عن عمودِ البطاقاتِ (‎305px‎ مقابلَ حافّةِ البطاقةِ ‎316px‎ على ‎1366‎) فيصيرُ
+   إنزالُه رأسياً بلا خطرِ تداخلٍ معها.
+   الرسمُ نفسُه مائلٌ: قِيسَ محورُ بدنِ الصاروخِ (تحليلُ المركّباتِ الأساسيةِ على
+   بكسلاتِه الحمراءِ المشبَعة) فكان ‎11.9°‎ عن العمود، فَقُوِّمَ بـ‎-12deg‎.
+   استُعملت خاصّيةُ `rotate` المستقلّةُ لا `transform`: الحركةُ `sb-rocket`
+   تُحرّكُ `transform` فلو وُضِعَ الميلُ فيه لابتلعَته، أمّا `rotate` فيتركّبُ
+   معها فيبقى الصاروخُ عمودياً وتبقى أرجحتُه الخفيفة. */
 .space-bg .sb-rocket{
   background-image: url("../images/ui/space-rocket.png");
   height: 52vh;
   aspect-ratio: 170 / 455;
-  top: 4vh;
-  left: 14%;
+  top: 30vh;
+  left: 8%;
+  rotate: -12deg;
   opacity: .2;
   filter: brightness(.88);
   animation: sb-rocket 9s ease-in-out infinite;
@@ -49,24 +61,27 @@
   animation: sb-float 26s ease-in-out infinite;
 }
 
-/* ── زحل: أعلى اليمين ───────────────────────────────────── */
+/* ── زحل: يمينَ الوسط ───────────────────────────────────── */
 .space-bg .sb-saturn{
   background-image: url("../images/ui/space-saturn.png");
   width: 29vh;
   aspect-ratio: 296 / 170;
-  top: 5vh;
+  top: 38vh;
   right: 17%;
   opacity: .2;
   filter: brightness(.66) saturate(.85);
   animation: sb-float 19s ease-in-out infinite reverse;
 }
 
-/* ── الكوكب الصغير: يمين الوسط ──────────────────────────── */
+/* ── الكوكب الصغير: يمينَ الوسطِ، أسفلَ زحلَ ─────────────────
+   ‎55vh‎ لا ‎44vh‎ (وهو ما يوسّطُه تماماً): زحلُ والكوكبُ يتقاطعانِ أفقياً على
+   ‎1366‎ (زحل ينتهي عند ‎1121px‎ والكوكبُ يبدأ عند ‎1116‎)، فلو تساويا ارتفاعاً
+   لتلامسا. فَأُزيحَ الكوكبُ أسفلَ زحلَ ليبقيا في نطاقِ الوسطِ بلا تزاحم. */
 .space-bg .sb-planet{
   background-image: url("../images/ui/space-planet.png");
   width: 13vh;
   aspect-ratio: 1;
-  top: 33vh;
+  top: 55vh;
   right: 10%;
   opacity: .2;
   filter: brightness(.66) saturate(.85);
@@ -85,9 +100,13 @@
 
 /* ── المنافذ الضيّقة: تصغير وتخفيف الازدحام ─────────────── */
 @media (max-width: 900px){
-  .space-bg .sb-rocket{ height: 38vh; left: 6%; }
+  /* الصاروخُ يُرسى من الأسفلِ لا من الأعلى: `js/fit.js` يضعُ `zoom` على الجذرِ في
+     المنافذِ الضيّقة، فيُقلّصُ إزاحاتِ الـvh؛ فيبقى المُرسى من الأعلى عالياً ويبقى
+     القمرُ (‏`bottom`‎) أسفلَ، فيفترقان ويضيعُ غوصُ الذيلِ في القمر. وبإرسائِهما
+     من الحافّةِ نفسِها يتقلّصانِ معاً فتثبتُ العلاقةُ بينهما. */
+  .space-bg .sb-rocket{ height: 38vh; left: 6%; top: auto; bottom: 4vh; }
   .space-bg .sb-moon  { width: 46vh; bottom: -14vh; left: -8vh; }
-  .space-bg .sb-saturn{ width: 20vh; right: 6%; top: 4vh; }
+  .space-bg .sb-saturn{ width: 20vh; right: 6%; top: 38vh; }
   .space-bg .sb-planet{ display: none; }
 }
 
