@@ -1,0 +1,105 @@
+/* ============================================================
+   شوجب — طبقة الخلفية الفضائية للصفحة الرئيسة
+   الاستعمال: <div class="space-bg" aria-hidden="true"> ... </div>
+   بعد <body> مباشرة. الصور في images/ui/
+   ============================================================ */
+
+.space-bg{
+  position: fixed;
+  inset: 0;
+  z-index: 0;              /* خلف المحتوى، فوق لون الخلفية */
+  overflow: hidden;
+  pointer-events: none;    /* لا تعترض أي نقرة */
+  direction: ltr;          /* تثبيت الاتجاه حتى لا تنعكس المواضع */
+}
+
+.space-bg > i{             /* كل عنصر زخرفي */
+  position: absolute;
+  display: block;
+  background: no-repeat center / contain;
+  will-change: transform;
+}
+
+/* ── الصاروخ: أعلى اليسار ───────────────────────────────── */
+.space-bg .sb-rocket{
+  background-image: url("../images/ui/space-rocket.png");
+  height: 52vh;
+  aspect-ratio: 170 / 455;
+  top: 4vh;
+  left: 14%;
+  opacity: .2;
+  filter: brightness(.88);
+  animation: sb-rocket 9s ease-in-out infinite;
+}
+
+/* ── القمر: أسفل اليسار (يخرج جزئياً عن الحافة) ─────────── */
+.space-bg .sb-moon{
+  background-image: url("../images/ui/space-moon.png");
+  width: 60vh;
+  aspect-ratio: 1;
+  bottom: -20vh;
+  /* ‎-22vh‎ لا ‎6vh‎: عمودُ المحتوى ‎.app‎ ثابتٌ ‎1000px‎ موسَّطٌ (‎js/fit.js‎)، وحافّةُ
+     أوّلِ بطاقةٍ على بُعدِ ‎140px‎ من يسارِه. وبـ‎6vh‎ كانت حافّةُ القمرِ اليمنى تتجاوزُها
+     ‎191px‎ على ‎1366×768‎ فتُقصُّ البطاقاتُ القمر. ‎-22vh‎ يُبقي الحجمَ كما هو
+     ويُخرجُه من الحافّةِ اليسرى: حافّتُه اليمنى ‎38vh‎ — بخلوصِ ‎24px‎ على ‎1366‎
+     و‎182px‎ على ‎1920‎. */
+  left: -22vh;
+  opacity: .2;
+  filter: brightness(.62) saturate(.9);
+  animation: sb-float 26s ease-in-out infinite;
+}
+
+/* ── زحل: أعلى اليمين ───────────────────────────────────── */
+.space-bg .sb-saturn{
+  background-image: url("../images/ui/space-saturn.png");
+  width: 29vh;
+  aspect-ratio: 296 / 170;
+  top: 5vh;
+  right: 17%;
+  opacity: .2;
+  filter: brightness(.66) saturate(.85);
+  animation: sb-float 19s ease-in-out infinite reverse;
+}
+
+/* ── الكوكب الصغير: يمين الوسط ──────────────────────────── */
+.space-bg .sb-planet{
+  background-image: url("../images/ui/space-planet.png");
+  width: 13vh;
+  aspect-ratio: 1;
+  top: 33vh;
+  right: 10%;
+  opacity: .2;
+  filter: brightness(.66) saturate(.85);
+  animation: sb-float 22s ease-in-out infinite 3s;
+}
+
+/* ── حركات هادئة جداً ───────────────────────────────────── */
+@keyframes sb-float{
+  0%,100%{ transform: translate3d(0,0,0); }
+  50%    { transform: translate3d(0,-14px,0); }
+}
+@keyframes sb-rocket{
+  0%,100%{ transform: translate3d(0,0,0) rotate(0deg); }
+  50%    { transform: translate3d(4px,-18px,0) rotate(1.2deg); }
+}
+
+/* ── المنافذ الضيّقة: تصغير وتخفيف الازدحام ─────────────── */
+@media (max-width: 900px){
+  .space-bg .sb-rocket{ height: 38vh; left: 6%; }
+  .space-bg .sb-moon  { width: 46vh; bottom: -14vh; left: -8vh; }
+  .space-bg .sb-saturn{ width: 20vh; right: 6%; top: 4vh; }
+  .space-bg .sb-planet{ display: none; }
+}
+
+/* ── النطاق: الشاشةُ الرئيسةُ وحدَها ────────────────────────
+   شاشتا الدروسِ والنشاطِ قسمانِ داخلَ `index.html` نفسِه لا ملفّانِ مستقلّان،
+   والطبقةُ `fixed` على المستندِ فتظهرُ خلفَهما ما لم تُخفَ صراحةً. وشاشةُ النشاطِ
+   فيها صاروخٌ وقمرٌ أصلاً (`rocket-lane` وإطارُ `frame-moon`) فيتزاحمُ معهما
+   صاروخُ الخلفيةِ وقمرُها. (‏`:has()` مستعمَلٌ أصلاً في `css/style.css`.) */
+body:has(#lessonsScreen.active) .space-bg,
+body:has(#activityScreen.active) .space-bg{ display: none; }
+
+/* ── احترام تفضيل تقليل الحركة ──────────────────────────── */
+@media (prefers-reduced-motion: reduce){
+  .space-bg > i{ animation: none; }
+}
