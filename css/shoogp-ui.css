@@ -426,6 +426,11 @@
 .qwin .tshletter{ font-size:max(24px, calc(30px * var(--s))); }
 .qwin .fbtext{font-size:max(18px, calc(21px * var(--s))) !important}
 .qwin .grp-h{font-size:max(18px, calc(19px * var(--s))) !important}
+/* عنوانُ الخطوةِ الثانيةِ في «الحكمِ والتعليل» («لماذا؟»): كان بلا قاعدةِ حجمٍ فيرثُ
+   ‏16px من الجذر — **مقيسٌ معروضاً 9.7px** على 1920×1080 (زوم 0.605)، أي نصفُ الحدِّ
+   الأدنى فلا يكادُ يُقرأُ على السبورة. يُقاسُ بقياسِ الخيارِ الذي يعلوه (21px) لا أكبرَ
+   منه — فهو **عنوانُ خطوةٍ لا نصُّ سؤال** — والأرضيةُ 18px كأخواتِه (§١.٥أ). */
+.qwin .jr-bt{font-size:max(18px, calc(21px * var(--s))) !important}
 .qwin .grp-drop{min-height:max(60px, calc(110px * var(--s)))}
 /* حارسُ الشاشة: الوسائطُ (رسومُ الأسئلةِ الثابتة) تتقلّصُ عرضاً مع مقياسِ المحتوى
    --s فيتبعُها ارتفاعُها بنسبةِ الرسم — محايدٌ عند 1 (max-width:100% هو الأصل).
@@ -1557,9 +1562,51 @@
    `::after` التي تحملُ التوهّجَ الداخليَّ أعلاه. */
 .shoogp-ui.skin-capsule .qwin :is(.tf-btns .tf,.chip,.opt){
   justify-content:center !important; text-align:center !important;
+  box-shadow:none !important;
+}
+/* ‏`nowrap` بقيَ لِـ`.tf` و`.chip` وحدَهما — و`.opt` خرجَ منه (انظر §الكبسولةُ التساعية أدناه).
+   وحُفِظت حشوتُهما هنا لأنّ حشوةَ `.opt` الرأسيةَ تصيرُ صفراً هناك. */
+.shoogp-ui.skin-capsule .qwin :is(.tf-btns .tf,.chip){
   white-space:nowrap !important;
   padding:14px 34px !important;
-  box-shadow:none !important;
+}
+/* ═══ الكبسولةُ التساعيةُ لِـ`.opt` — ورفعُ `nowrap` عنه ═══
+   بشريحتَينِ (`0 186.5`) يُفرَدُ طرفُ الكبسولةِ بكاملِ ارتفاعِ الزرّ، فلا يخرجُ نصفَ دائرةٍ
+   إلا ببقاءِ نسبةِ `border-width` إلى الارتفاعِ ٣٢:٦٤. فلو التفَّ النصُّ سطرين تضاعفَ
+   الارتفاعُ وحدَه **فصارَ الطرفانِ بيضاويَّين** — ولذلك كُتِبَ `nowrap` قيدَ تأليف.
+   **والتقطيعُ التساعيُّ أسقطَ مبرِّرَه**، فرُفِعَ عن `.opt` (قرارُ المالك):
+     • **الزوايا الأربعُ ثابتةُ المقاسِ** لا تتبعُ الارتفاع، فانحناءتُها لا تُمَسُّ مهما طال.
+     • **الحزامُ الأوسطُ وحدَه يتمدّد**، فينمو الزرُّ بلا مسٍّ لطرفَيه.
+
+   ═══ الرقمُ الحاكم: الشريحةُ الرأسيةُ **نصفُ** الأفقية ═══
+       `border-image-slice: 93.25 186.5`   (‏93.25 = 186.5 ÷ 2)
+       `border-width:      16px   32px`    (‏16 = 32 ÷ 2)
+   ونسبةُ الرسمِ واحدةٌ في المحورَين: `k = 64 ÷ 373 = 0.171582`، و`186.5k = 32` و`93.25k = 16`.
+   ولأنّ ‏93.25 + 186.5 + 93.25 = 373 و‏16 + 32 + 16 = 64، فإنّ الزرَّ **عندَ سطرٍ واحدٍ يُرسَمُ
+   مطابقاً للقاعدةِ القديمةِ بكسلاً ببكسل** — الفرقُ لا يظهرُ إلا حينَ ينمو.
+   ⛔ **لا يُغيَّرُ عرضُ حدٍّ دونَ شريحتِه** — اختلالُ `k` يُفسدُ الزاويةَ كما كان يُفسدُ الطرف.
+
+   ═══ ولماذا 93.25 لا 173 (حيثُ حافّةُ الكبسولةِ مستقيمةٌ تماماً) ═══
+   الحزامُ عندَ `y = 173..215` هو وحدَه المستقيمُ في الأصل (‏`x ≤ 1` مقيساً بالبكسل)، فشريحةٌ
+   عندَه تُعطي حافّةً مستقيمةً رياضياً. **لكنّها تأكلُ ‏57px من ارتفاعِ الزرِّ حدوداً**، فلا يبقى
+   لسطرٍ واحدٍ (‏31px) إلا أن يُطيلَ الزرَّ من ‏64px إلى ‏87px — **زيادةُ ٣٦٪ في ارتفاعِ كلِّ خيارٍ
+   في مادّتَين**، وإعادةُ اختيارِ أطرِ مئاتِ الأسئلة. فاختيرَ ‏93.25: **ارتفاعُ الزرِّ الحاليُّ
+   يبقى ‏64px بلا تغيّرٍ البتّة**، وثمنُه أنّ الحافّةَ الجانبيةَ تنتفخُ **‏4.29px على الأكثر**
+   (مقيسٌ: أوّلُ بكسلٍ معتمٍ عندَ `y=93` هو `x=25` ⇒ `25k = 4.29`) وذلك **في الأزرارِ المتعدّدةِ
+   الأسطرِ وحدَها** — أمّا السطرُ الواحدُ فبلا انتفاخٍ إطلاقاً (النسبةُ موحّدةٌ عندَه).
+   **والحشوةُ الرأسيةُ تُصفَّرُ**: الحدودُ نفسُها ‏32px تنفّساً، والارتفاعُ يبقى ‏64px بـ
+   `min-height` (‏16+31+16 = 63 < 64). وحدُّ ‏60px/18px (§١.٥أ) بلا مساس. */
+.shoogp-ui.skin-capsule .qwin .opt{
+  white-space:normal !important;
+  overflow-wrap:break-word;
+  padding:0 34px !important;
+  border-width:16px 32px !important;
+  border-image:url('../images/ui/btn-true-arabic.png') 93.25 186.5 fill !important;
+  border-image-repeat:stretch !important;
+}
+/* شريطُ التعليلِ نثرٌ متعدّدُ الأسطر: يُقرأُ مصفوفَ الحافّةِ لا مركزاً مُشرشَراً */
+.shoogp-ui.skin-capsule .qwin .jr-reasons .opt{
+  justify-content:flex-start !important; text-align:start !important;
 }
 .shoogp-ui.skin-capsule .qwin :is(.tf.tf-correct,.chip.ok,.opt.correct){color:#20340a !important}
 .shoogp-ui.skin-capsule .qwin :is(.tf.tf-wrong,.chip.no,.opt.wrong){
@@ -1657,7 +1704,7 @@
   min-height:var(--dn-h);
   min-width:0;
   display:flex; align-items:center; justify-content:center; gap:10px;
-  white-space:nowrap;                                     /* انظرِ التعليلَ أعلاه */
+  white-space:nowrap;                                     /* انظرِ التعليلَ أعلاه — و`.opt` مستثنًى أدناه */
   padding:0 12px !important;                              /* الجانبانِ محجوزانِ للطرفَينِ المنحنيين */
   border-style:solid !important;
   border-width:0 calc(var(--dn-h) * var(--dn-cap)) !important;
@@ -1676,6 +1723,30 @@
 }
 /* عمودُ الخياراتِ يتبعُ عرضَ النافذةِ الحيّة (سقفُ 560px في style.css يقصُّ الكبسولةَ الطويلة) */
 .shoogp-ui.skin-ivory .qwin .opts{max-width:none}
+/* ═══ الكبسولةُ التساعيةُ لِـ`.opt` — ورفعُ `nowrap` عنه ═══
+   العلّةُ والعلاجُ والمقايضةُ **نفسُها المشروحةُ في نظيرِ هذه القاعدةِ في `skin-capsule`**
+   (‏§الكبسولةُ التساعية)، ولا يُعادُ شرحُها هنا. والقاعدةُ الحاكمةُ واحدةٌ في القشرتَين:
+   **الشريحةُ الرأسيةُ نصفُ الأفقية، وعرضُ الحدِّ العلويِّ نصفُ الجانبيّ** — وهي هنا تُكتَبُ
+   بلا رقمٍ جديدٍ إطلاقاً، التزاماً بقاعدةِ «الرقمُ الحاكمُ واحدٌ `--dn-h`» أعلى هذا القسم:
+       `border-image-slice: 75 150`   (‏75 = 150 ÷ 2)
+       `border-width: calc(--dn-h × --dn-cap ÷ 2)  calc(--dn-h × --dn-cap)`
+   فتغييرُ `--dn-h` يُحرّكُ الحدودَ الأربعةَ معاً كما كان يُحرّكُ الجانبَين.
+   وعندَ سطرٍ واحدٍ يُرسَمُ الزرُّ مطابقاً للقاعدةِ القديمة: ‏75 + 125 + 75 = 275، وبضربِها في
+   `k = 78 ÷ 275` تعودُ ‏21.27 + 35.45 + 21.27 = **78px** = `--dn-h` نفسُه.
+   **والانتفاخُ الجانبيُّ هنا أقلُّ من نظيرِه**: أوّلُ بكسلٍ معتمٍ عندَ `y=75` هو `x=6`
+   ⇒ `6k = 1.70px` (وعندَ الطرفِ الآخرِ `2.27px`) — وفي الأزرارِ المتعدّدةِ الأسطرِ وحدَها. */
+.shoogp-ui.skin-ivory .qwin .opt{
+  white-space:normal !important;
+  overflow-wrap:break-word;
+  border-width:calc(var(--dn-h) * var(--dn-cap) / 2)
+               calc(var(--dn-h) * var(--dn-cap)) !important;
+  border-image:url('../images/ui/opt-deeny.png') 75 150 fill !important;
+  border-image-repeat:stretch !important;
+}
+/* شريطُ التعليلِ نثرٌ متعدّدُ الأسطر: يُقرأُ مصفوفَ الحافّةِ لا مركزاً مُشرشَراً */
+.shoogp-ui.skin-ivory .qwin .jr-reasons .opt{
+  justify-content:flex-start !important; text-align:start !important;
+}
 /* المرور: سطوعٌ خفيفٌ ورفعٌ يسير */
 .shoogp-ui.skin-ivory .qwin :where(.opt,.tf,.excl-opt):hover:not(:disabled){
   filter:var(--dn-cast) brightness(1.06) !important;

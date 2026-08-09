@@ -1090,6 +1090,83 @@ function worstCaseArrange(w){
   if(w.querySelector('.seqitem')) return {kind:'sequence', restore:function(){}};
   return null;
 }
+/* ═══ فحصُ الفيضِ الأفقيّ — سدُّ البقعةِ العمياءِ في `frameFits` ═══
+   `frameFits` تقيسُ `scrollHeight` **وحدَه**، و`.qbody` يقصُّ بـ`overflow:clip` فلا يصلُ
+   فيضُ الأبناءِ الأفقيُّ إلى `scrollWidth` النافذةِ أصلاً. فالبحثُ الثنائيُّ **يضيّقُ الإطارَ
+   على فيضٍ لا يراه**، ولا يتدخّلُ `ResizeObserver` لأنّه هو الآخرُ يقيسُ الارتفاع.
+   (وقعَ فعلاً وقِيس: شريطُ تعليلٍ عرضُه 560px في نافذةٍ عرضُها 372px — خروجٌ 140.6px.)
+
+   ═══ درجتانِ لا درجةٌ واحدة — وإلا صارَ الفحصُ ضجيجاً ═══
+   حدُّ **التنفّسِ** حدٌّ تصميميّ، وحدُّ **القصِّ** حدٌّ فيزيائيّ، وبينهما حشوةُ النافذةِ
+   كلُّها (16px). فلو أنذرنا بواحدٍ لأنذرنا في غيرِ موضعِه: قِيسَ أنّ لصيقةَ آخرِ تدريجٍ في
+   «الشريطِ المتدرّج» تتجاوزُ حافّةَ المحتوى **0.5px** ولا تُقَصُّ البتّةَ لأنّها ما زالت
+   داخلَ الحشوة — إنذارٌ عليها إنذارٌ كاذب. فالدرجتان:
+     • ⛔ **قصٌّ فعليّ** (`cut`) — العنصرُ يتجاوزُ **صندوقَ القصِّ الحقيقيّ**: أقربُ جدٍّ
+       `overflow-x ≠ visible` (‏`.qbody` بـ`clip` وهامشِ قصِّه، ثمّ `.qwin` بـ`hidden`).
+       هذا بترٌ يراهُ التلميذُ على الشاشة.
+     • ⚠️ **أكلٌ من التنفّس** (`out`) — يتجاوزُ حافّةَ **محتوى** `.qwin` ولمّا يُقَصّ.
+   والمرجعُ في الحالَين **الهندسةُ الحيّةُ نفسُها** (صناديقُ العناصرِ المقيسة) لا رقمٌ مكتوب.
+
+   ⚠️ **و`scrollWidth > clientWidth` وحدَه ليس عيباً** — على عنصرٍ `overflow:visible` يعني
+   «محتواه أوسعُ من صندوقِه» والمحتوى **مرسومٌ كاملاً** خارجَه (حالةُ `.sld-track`: فيضٌ
+   22px بلا بترٍ إطلاقاً). فلا يُحتسَبُ بتراً (`selfCut`) إلا على عنصرٍ **يقصُّ بنفسِه**.
+
+   ⚠️ **ولا يُستثنى `visibility:hidden`** — وهو جوهرُ الفحصِ لا استثناؤه: `.jr-why` محجوبةٌ
+   به وقتَ اختيارِ الإطار (قياسُ «أسوأِ الخطوتَين»)، فتخطّيها يُعمي الفحصَ عن الحالةِ التي
+   وُضِعَ لها. ويُتخطّى `display:none` (لا صندوقَ له) وداخلُ `svg` (يقصُّه `viewBox` فلا
+   معنى لقياسِ عقدِه) والموضعُ الثابت. */
+var HOVF_TOL=1;                 /* تسامحُ البكسلِ الجزئيّ */
+/* صندوقُ القصِّ الحقيقيِّ لعنصر: أقربُ جدٍّ لا يمرّرُ الفيضَ أفقياً، محسوباً بحدودِ
+   حشوتِه (‏`overflow` يقصُّ عند صندوقِ الحشوة) مضافاً إليه `overflow-clip-margin`. */
+function clipBoundsOf(el, root, cache){
+  for(var p=el.parentElement; p; p=p.parentElement){
+    var hit=cache.get(p);
+    if(hit!==undefined){ if(hit) return hit; if(p===root) break; continue; }
+    var cs=getComputedStyle(p), box=null;
+    if(cs.overflowX!=='visible'){
+      var r=p.getBoundingClientRect();
+      var m=(cs.overflowX==='clip')?(parseFloat(cs.overflowClipMargin)||0):0;
+      box={ L:r.left+(parseFloat(cs.borderLeftWidth)||0)-m,
+            R:r.right-(parseFloat(cs.borderRightWidth)||0)+m, host:p };
+    }
+    cache.set(p, box);
+    if(box) return box;
+    if(p===root) break;
+  }
+  return null;
+}
+function hOverflow(w){
+  if(!w) return null;
+  var cs=getComputedStyle(w), r=w.getBoundingClientRect();
+  var L=r.left+(parseFloat(cs.paddingLeft)||0), R=r.right-(parseFloat(cs.paddingRight)||0);
+  var out=0, cut=0, selfCut=0, who=null, whoCut=null, whoSelf=null;
+  var all=w.querySelectorAll('*'), cache=new Map();
+  for(var i=0;i<all.length;i++){
+    var el=all[i];
+    if(el.closest('svg')) continue;
+    var ecs=getComputedStyle(el);
+    if(ecs.display==='none' || ecs.position==='fixed') continue;
+    var br=el.getBoundingClientRect();
+    if(!br.width || !br.height) continue;
+    var o=Math.max(L-br.left, br.right-R);
+    if(o>out){ out=o; who=el; }
+    var cb=clipBoundsOf(el, w, cache);
+    if(cb){ var k=Math.max(cb.L-br.left, br.right-cb.R);
+            if(k>cut){ cut=k; whoCut=el; } }
+    /* بترٌ داخليّ: العنصرُ نفسُه يقصُّ ومحتواه أوسعُ من صندوقِه */
+    if(ecs.overflowX==='hidden' || ecs.overflowX==='clip'){
+      var s=el.scrollWidth-el.clientWidth;
+      if(s>selfCut){ selfCut=s; whoSelf=el; }
+    }
+  }
+  var tag=function(el){ return el ? (el.tagName.toLowerCase()+
+    (el.className&&el.className.baseVal===undefined?'.'+String(el.className).trim().split(/\s+/).join('.'):'')) : '—'; };
+  return { out:+out.toFixed(1), cut:+cut.toFixed(1), selfCut:selfCut,
+           el:who, elCut:whoCut, elSelf:whoSelf,
+           outSel:tag(who), cutSel:tag(whoCut), selfSel:tag(whoSelf),
+           bad:(cut>HOVF_TOL || selfCut>HOVF_TOL),          /* ⛔ قصٌّ فعليّ */
+           warn:(out>HOVF_TOL) };                            /* ⚠️ أكلٌ من التنفّس */
+}
 /* الخوارزمية الكاملة لبطاقة واحدة: اختيار ثم ضبط.
    الاتساع رتيب مع عرض الإطار (أكبر = نافذة أعلى وأقلّ التفاف)، فنعتمد بحثاً ثنائياً.
    التكبير عند اللزوم يكون للإطار كاملاً بمقياس موحّد يحفظ نسبته تماماً —
@@ -1245,10 +1322,22 @@ function fitFrame(card){
           ' · انحراف '+(_devF*100).toFixed(1)+'% عن نسبة نافذة l ('+QFLEX_NOM_AR.toFixed(2)+')',
           'color:#c0392b;font-weight:bold;font-size:12px');
       }
+      /* فحصُ الفيضِ الأفقيّ — يُنذرُ كما يُنذرُ فحصُ النسبة (§hOverflow أعلاه) */
+      var _h=hOverflow(w);
+      if(_h && _h.bad) console.warn('%c[إطار] ⛔ قُصَّ أفقياً! '+_kind+' ('+_fit+') — '+
+        (_h.cut>HOVF_TOL ? 'تجاوزَ صندوقَ القصِّ '+_h.cut+'px ← '+_h.cutSel : '')+
+        (_h.cut>HOVF_TOL && _h.selfCut>HOVF_TOL ? ' · ' : '')+
+        (_h.selfCut>HOVF_TOL ? 'بترٌ داخليّ '+_h.selfCut+'px ← '+_h.selfSel : '')+
+        ' | نافذة '+w.clientWidth+'px','color:#c0392b;font-weight:bold;font-size:13px');
+      else if(_h && _h.warn) console.warn('%c[إطار] ⚠️ أكلٌ من تنفّسِ النافذة '+_h.out+
+        'px ← '+_h.outSel+' ('+_fit+') — لم يُقَصّ، لكنّه تجاوزَ حافّةَ المحتوى',
+        'color:#b8860b;font-weight:bold');
       console.log('%c[إطار] '+_kind+' → '+_fit+
         ' | نسبة أصلية '+(_origAR?_origAR.toFixed(4):'—')+' / معروضة '+_shownAR.toFixed(4)+' '+
         (_ratioOK===true?'✓':(_ratioOK===false?'✗':'(flex)'))+
         ' | أسوأ الحالات ≈'+Math.round(_worstH)+'px | نافذة '+w.clientHeight+'px'+
+        ' | أفقيّ:'+(_h?(_h.bad?'✗ قصٌّ '+Math.max(_h.cut,_h.selfCut)+'px'
+                        :(_h.warn?'⚠ تنفّس '+_h.out+'px':'✓')):'—')+
         ' | RO:'+(card.dataset.roIntervened?'⚠️تدخّل':'✔'),
         'color:#2B5748;font-weight:bold');
     }
