@@ -49,8 +49,14 @@ function imgURL(name){ return IMG_BASE + name + IMG_VER; }
    فيسقطُ إلى إطارِ القمرِ والأيقوناتِ الافتراضيةِ بدلَ إطارِ الرياضياتِ وقشرةِ المعدن.)
    `-arabic-1` و`-arabic-2` بنفسِ المنطق: تشملُ كتبَ «أحب لغتي» بجزأيها لكلِّ الصفوفِ
    (‏`g1-arabic-1`…`g4-arabic-2`) فتَرِثُ عائلةَ الإطارِ `arabic` وعلامةَ `subj-arabic`
-   بمجرّدِ دخولِ أيِّ درسٍ منها DATA.index، بلا سطرٍ لكلِّ كتابٍ ولا قشرةِ Skin (لم تُطلب). */
-var SUBJECT_BY_KEY_SUFFIX={ '-sci':'science', '-math':'math', '-arabic-1':'arabic', '-arabic-2':'arabic' };
+   بمجرّدِ دخولِ أيِّ درسٍ منها DATA.index، بلا سطرٍ لكلِّ كتابٍ ولا قشرةِ Skin (لم تُطلب).
+   و`-dini-1` و`-dini-2` كذلك لكتبِ «ديني حياتي» بجزأيها (‏`g1-dini-1`…`g4-dini-2`).
+   ⚠️ **لاحقةُ المفتاحِ `dini` واسمُ المادةِ `deeny` — والاختلافُ مقصودٌ لا سهو:**
+   اللاحقةُ تتبعُ مفاتيحَ الكتبِ القائمةَ في `data/books.json` ولا تُغيَّر (تغييرُها
+   يكسرُ الفهرسَ والرموزَ والأغلفة)، واسمُ المادةِ يتبعُ أسماءَ صورِ إطارِها
+   `frame-deeny-*.png`. فالجدولُ هذا هو **موضعُ اللقاءِ** بين التسميتين. */
+var SUBJECT_BY_KEY_SUFFIX={ '-sci':'science', '-math':'math',
+  '-arabic-1':'arabic', '-arabic-2':'arabic', '-dini-1':'deeny', '-dini-2':'deeny' };
 var SHOOGP_BOOKS_SEED=[
   {key:'g1-sci',  prefix:'g1s-', subject:'science'},
   {key:'g2-sci',  prefix:'g2s-', subject:'science'},
@@ -231,14 +237,41 @@ var FRAME_FAMILIES={
        إطارٍ تُراجَعُ `ar` قبلَ `win`** — فمقاسُ الملفِّ قد يتغيّرُ بلا أن يبدوَ الرسمُ
        مختلفاً. */
     tall:{img:'frame-arabic-tall.png', ar:'1040 / 1819', win:{top:'18.8%', left:'22.9%', right:'22.3%', bottom:'24.6%'}, hasFill:true, fillColor:'#F9EADA'}
+  }},
+  /* التربية الإسلامية «ديني حياتي» — عائلةُ إطارٍ عاجيةٌ بخيطٍ ذهبيٍّ وكوكبٍ فيروزيٍّ
+     في الركنِ الأعلى وميداليةِ فصٍّ في منتصفِ القاعدة، تعبئتُها بيضاءُ مدموجةٌ في
+     الصورةِ كالرياضياتِ والعربية. `win` مقيسةٌ بملءٍ فيضيٍّ من المركز (تسامحُ ٢٦)
+     ثمّ +2% إنساحٌ يُبعدُ المحتوى عن الخيطِ الذهبيِّ وعن حلقةِ الكوكبِ التي تعبرُ
+     الركنَ الأعلى الأيسر. والإنساحُ الأيمنُ أوسعُ في الأربعةِ جميعاً لأنّ القياسَ
+     نفسَه وقفَ عندَ الكوكبِ لا عندَ الخيط. أمّا ميداليةُ القاعدةِ فتقعُ **تحتَ**
+     الخيطِ لا داخلَ النافذة، فلا يُوسَّعُ لها القاعُ (بخلافِ نجمةِ الرياضيات).
+     نِسَبُ النوافذِ المقيسة: s ‏2.553 · m ‏1.385 · l ‏0.993 · tall ‏0.608 — مطابقةٌ
+     لسلّمِ العائلاتِ القائمةِ فلم يُمسَّ منطقُ الاختيارِ ولا حدودُه.
+     ⚠️ **‏`frame-deeny-s.png` وصلَ بثقبٍ شفّافٍ في وسطِه** (٣٤٫٦٥٪ من مساحتِه —
+     أكلَه مزيلُ الخلفيةِ البيضاءِ متسرِّباً عبرَ لمعاتِ الجسمِ العاجيّ). ولا يصلحُ
+     معه أيُّ `hasFill`: مع `true` تظهرُ خلفيةُ الفضاءِ من وسطِ الإطار، ومع `false`
+     تظهرُ التعبئةُ النقطيةُ الخضراء. فأُعيدَ البكسلُ المفرَّغُ إلى عتامتِه بتركيبِه
+     فوقَ الأبيضِ (عكسُ عمليةِ الإزالةِ حرفياً)، والأصلُ قبلَ الإصلاح في
+     `images/ui/originals/frame-deeny-s.png`. الثلاثةُ الباقيةُ سليمةٌ لم تُمسّ. */
+  deeny:{ order:['s','m','l','tall'], flexBase:'l', sizes:{
+    s:{img:'frame-deeny-s.png', ar:'1305 / 600',  win:{top:'21.5%', left:'12.8%', right:'15.5%', bottom:'18%'},   hasFill:true, fillColor:'#FFFFFF'},
+    m:{img:'frame-deeny-m.png', ar:'1200 / 904',  win:{top:'15.8%', left:'12.6%', right:'13.5%', bottom:'13.5%'}, hasFill:true, fillColor:'#FFFFFD'},
+    l:{img:'frame-deeny-l.png', ar:'927 / 904',   win:{top:'15.8%', left:'15.4%', right:'16.4%', bottom:'13.5%'}, hasFill:true, fillColor:'#FFFFFE'},
+    tall:{img:'frame-deeny-tall.png', ar:'927 / 1349', win:{top:'11.9%', left:'15.4%', right:'16.4%', bottom:'10.4%'}, hasFill:true, fillColor:'#FFFFFD'}
   }}
 };
-/* مادةُ الدرس → عائلةُ الفريم: الرياضيات ← math، اللغةُ العربيةُ ← arabic، وبقيةُ
-   الموادِّ ← moon (الافتراضية). */
+/* ═══ مادةُ الدرس → عائلةُ الفريم — **جدولٌ لا سلسلةُ شروط** ═══
+   كان الفرعُ سلسلةَ `if` تطولُ بمادة؛ صار جدولاً: **مادةٌ جديدةٌ = سطرٌ واحدٌ هنا**
+   (وعائلتُها في FRAME_FAMILIES) لا فرعٌ جديدٌ في الدالة. وما لا مفتاحَ له في الجدولِ
+   يرثُ القمريَّ الافتراضيّ — وهو المسارُ نفسُه الذي تسلكُه مادةٌ خارجَ النطاق.
+   ⚠️ **السطرُ هنا وحدَه لا يكفي:** المادةُ تُشتَقُّ من لاحقةِ مفتاحِ الكتابِ في
+   `SUBJECT_BY_KEY_SUFFIX` أعلاه، فما لم تُذكرْ لاحقتُه هناك بقيَ `lessonSubject`
+   يعيدُ `null` فيسقطَ الدرسُ إلى القمريِّ **بلا أيِّ تحذير**. */
+var FAMILY_BY_SUBJECT={ math:'math', arabic:'arabic', deeny:'deeny' };
 function famFor(subj){
-  if(subj==='math') return FRAME_FAMILIES.math;
-  if(subj==='arabic') return FRAME_FAMILIES.arabic;
-  return FRAME_FAMILIES.moon;
+  var key = (subj && Object.prototype.hasOwnProperty.call(FAMILY_BY_SUBJECT,subj))
+            ? FAMILY_BY_SUBJECT[subj] : null;
+  return (key && FRAME_FAMILIES[key]) || FRAME_FAMILIES.moon;
 }
 function curFam(){ return famFor(_curSubject); }
 /* هندسةُ الفريم لخانةِ (المادةِ الحالية × الحجم). */
