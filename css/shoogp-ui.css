@@ -1603,7 +1603,7 @@
   overflow-wrap:break-word;
   padding:0 34px !important;
   border-width:16px 32px !important;
-  border-image:url('../images/ui/btn-true-arabic.png') 93.25 186.5 fill !important;
+  border-image:url('../images/ui/btn-true-arabic.png') 25% 186.5 fill !important;
   border-image-repeat:stretch !important;
 }
 /* شريطُ التعليلِ نثرٌ متعدّدُ الأسطر: يُقرأُ مصفوفَ الحافّةِ لا مركزاً مُشرشَراً */
