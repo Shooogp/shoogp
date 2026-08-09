@@ -1615,6 +1615,20 @@
      ربحِ نصفِ بكسل. */
   --dn-f:23.5px;      /* الخطُّ التصميميّ (18px معروضاً ÷ 0.774) */
   --dn-cast:drop-shadow(0 3px 6px rgba(60,42,10,.34));    /* ظلُّ الكبسولةِ الأساسيّ */
+  /* ═══ نصفا قطرِ وهجِ الحالات — رقمانِ حاكمانِ لا ستّةٌ مكرّرة (قرارُ المالك ٢٠٢٦-٠٨-٠٩) ═══
+     ⛔ **السقفُ مقيسٌ لا مُختار:** الوهجُ يُقَصُّ عندَ حدِّ `.qwin` (‏`overflow:hidden`
+     ومعها `clip-path:polygon`، وفوقَهما `.qbody{overflow:clip}`)، **والخلوصُ الأفقيُّ
+     بين الزرِّ وحافّةِ النافذةِ 10.4px** في أضيقِ منفذٍ مقيس (‏1280×800؛ و11.8 على
+     1440×900 و14.1 على 1920×1080). فكانت القيمُ السابقةُ **19px و22px تُقَصُّ عندَ
+     الطرفَينِ الأيمنِ والأيسرِ في المنافذِ الثلاثةِ جميعاً** — والرأسيُّ سليمٌ دائماً
+     (خلوصُه 93px أعلى و250px أسفل)، ولذلك بدا القصُّ عندَ نصفَي الدائرةِ وحدَهما.
+     **ولا يُعالَجُ هذا بتوسيعِ مساحةِ `opt-deeny.png`:** الوهجُ `filter` يُرسَمُ خارجَ
+     صندوقِ الزرِّ ولا يسكنُ الصورةَ أصلاً، وهامشٌ شفّافٌ في الملفِّ يُعيدُ عطبَ
+     «الرسمُ داخلَ حدودِ الزرِّ والفجوةُ تتّسعُ بكِبَرِه» الذي عولجَ بقصِّ الصورةِ
+     إلى 1074×275 (§٣ج.٢ في مهارةِ shoogp-ui) — ومثلُه في كبسولةِ العربية ٢٠٢٦-٠٨-٠٤.
+     **فإن رُفِعَ الرقمُ يوماً فليُقَسِ الخلوصُ أوّلاً، ولا يُتجاوَزْ أضيقُه.** */
+  --dn-glow-in:4px;    /* الطبقةُ الحادّةُ الداخلية */
+  --dn-glow-out:7px;   /* الطبقةُ الناعمةُ الخارجية — يجبُ أن **ينطفئَ ذيلُها** قبلَ 10.4px لا أن يبلغَها */
 }
 .shoogp-ui.skin-ivory .qwin :where(.opt,.tf,.excl-opt){
   isolation:isolate; position:relative;
@@ -1654,19 +1668,19 @@
    المنصّة، فمتى استعملها نوعٌ في هذه المادةِ ورثَ التوهّجَ بلا سطرٍ جديد. */
 .shoogp-ui.skin-ivory .qwin :is(.opt,.tf,.excl-opt):is(:focus-visible,.sel,.selected,.picked){
   outline:none;
-  filter:var(--dn-cast) drop-shadow(0 0 9px rgba(230,178,60,.95))
-                        drop-shadow(0 0 19px rgba(214,152,32,.55)) !important;
+  filter:var(--dn-cast) drop-shadow(0 0 var(--dn-glow-in) rgba(230,178,60,.95))
+                        drop-shadow(0 0 var(--dn-glow-out) rgba(214,152,32,.88)) !important;
 }
 /* التغذيةُ الراجعة: الخلفيةُ محجوبةٌ خلفَ `border-image`، فالإشارةُ توهّجٌ ولونُ نصّ —
    وهي **ليست زينةً زائدة**: بدونَها تختفي إشارةُ الصواب/الخطأ التي يرسمُها style.css خلفيةً. */
 .shoogp-ui.skin-ivory .qwin :is(.opt,.tf,.excl-opt):is(.correct,.tf-correct){
-  filter:var(--dn-cast) drop-shadow(0 0 10px rgba(90,170,45,.95))
-                        drop-shadow(0 0 22px rgba(70,140,35,.55)) !important;
+  filter:var(--dn-cast) drop-shadow(0 0 var(--dn-glow-in) rgba(90,170,45,.95))
+                        drop-shadow(0 0 var(--dn-glow-out) rgba(70,140,35,.88)) !important;
   color:#20340a !important;
 }
 .shoogp-ui.skin-ivory .qwin :is(.opt,.tf,.excl-opt):is(.wrong,.tf-wrong){
-  filter:var(--dn-cast) drop-shadow(0 0 10px rgba(210,50,45,.92))
-                        drop-shadow(0 0 22px rgba(175,35,30,.52)) !important;
+  filter:var(--dn-cast) drop-shadow(0 0 var(--dn-glow-in) rgba(210,50,45,.92))
+                        drop-shadow(0 0 var(--dn-glow-out) rgba(175,35,30,.86)) !important;
   color:#7a1f1f !important;
   animation:cardShake .45s ease;
 }
