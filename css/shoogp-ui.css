@@ -1510,18 +1510,33 @@
    **من خلفِ** رسمِ الكبسولةِ وينتشرُ حولَها — وهو المطلوبُ حرفياً. (بخلافِ `inset` الذي
    يُدفَنُ خلفَ `border-image` فلا يُرى، ولذا كانَ التوهّجُ الداخليُّ على `::after`.)
    و`border-radius:999px` على العنصرِ يجعلُ الظلَّ يتبعُ هيئةَ الكبسولةِ لا مستطيلاً.
-   **بلا `spread` كبير:** `0 0 22px 4px` — تجاوزٌ يسيرٌ للحدودِ كما طُلِب، لا هالةٌ ثقيلة. */
+   **بلا `spread` كبير:** تجاوزٌ يسيرٌ للحدودِ كما طُلِب، لا هالةٌ ثقيلة.
+
+   ⛔ **ومداهُ محكومٌ بالخلوصِ الأفقيِّ لا بالذوق (قرارُ المالك ٢٠٢٦-٠٨-٠٩ — نفسُ علّةِ
+   `skin-ivory` §قشرةِ ديني حياتي):** التوهّجُ يُقَصُّ عندَ حدِّ `.qwin`
+   (‏`overflow:hidden` ومعها `clip-path:polygon`، وفوقَهما `.qbody{overflow:clip}`)،
+   والزرُّ يتمدّدُ إلى عرضِ `.opts` فالخلوصُ بينه وبين حافّةِ النافذةِ **11px على
+   1280×800 و15px على 1920×1080** — بينما `0 0 22px 4px` مداه ‏spread+blur/2 = **15px
+   تصميميّاً**، فكانَ يبلغُ الحدَّ ويُقطَعُ **حافّةً حادّةً رأسيةً عندَ طرفَي الكبسولة**.
+   **والقصُّ أسوأُ على الشاشةِ الأكبرِ لا الأصغر** — لأنّ زومَ `fit.js` أقربُ إلى ١
+   فيبقى المدى التصميميُّ كما هو، بينما يتقلّصُ مع الزومِ المنخفضِ في المنافذِ الضيّقة.
+   (مقيسٌ قبلَ الإصلاح: القفزةُ عندَ الحدِّ **18/255 = 7.1٪** على 1920×1080
+   و**8/255 = 3.1٪** على 1280×800.)
+   الرقمانِ أدناه **يُعلَنانِ مرّةً** ويستهلكُهما محدِّدا الصواب والخطأ. */
+.shoogp-ui.skin-capsule{
+  --cap-glow:0 0 10px 1px;   /* مدىً تصميميٌّ = 1 + 10/2 = **6px** — دونَ أضيقِ خلوصٍ مقيس */
+}
 .shoogp-ui.skin-capsule .qwin :is(.opt.correct,.tf.tf-correct,.excl-opt.correct,.mitem.matched,
                                   .chip.ok,.mmchip.ok,.seqitem.correct,.aopt.correct,
                                   .blank.correct .chip,.blank.filled.correct .chip,
                                   .target.filled.correct){
-  box-shadow:0 0 22px 4px rgba(90,170,45,.85) !important;
+  box-shadow:var(--cap-glow) rgba(90,170,45,.95) !important;
   color:#20340a !important;
 }
 .shoogp-ui.skin-capsule .qwin :is(.opt.wrong,.tf.tf-wrong,.excl-opt.wrong,.mitem.shake,
                                   .chip.no,.mmchip.no,.seqitem.wrong,.aopt.wrong,
                                   .blank.wrong .chip,.target.wrong){
-  box-shadow:0 0 22px 4px rgba(210,50,45,.82) !important;
+  box-shadow:var(--cap-glow) rgba(210,50,45,.92) !important;
   color:#7a1f1f !important;
   animation:cardShake .45s ease;
 }
@@ -1627,8 +1642,8 @@
      «الرسمُ داخلَ حدودِ الزرِّ والفجوةُ تتّسعُ بكِبَرِه» الذي عولجَ بقصِّ الصورةِ
      إلى 1074×275 (§٣ج.٢ في مهارةِ shoogp-ui) — ومثلُه في كبسولةِ العربية ٢٠٢٦-٠٨-٠٤.
      **فإن رُفِعَ الرقمُ يوماً فليُقَسِ الخلوصُ أوّلاً، ولا يُتجاوَزْ أضيقُه.** */
-  --dn-glow-in:4px;    /* الطبقةُ الحادّةُ الداخلية */
-  --dn-glow-out:7px;   /* الطبقةُ الناعمةُ الخارجية — يجبُ أن **ينطفئَ ذيلُها** قبلَ 10.4px لا أن يبلغَها */
+  --dn-glow-in:3px;    /* الطبقةُ الحادّةُ الداخلية */
+  --dn-glow-out:5px;   /* الخارجية — يجبُ أن **ينطفئَ ذيلُها** قبلَ 10.4px لا أن يبلغَها */
 }
 .shoogp-ui.skin-ivory .qwin :where(.opt,.tf,.excl-opt){
   isolation:isolate; position:relative;
