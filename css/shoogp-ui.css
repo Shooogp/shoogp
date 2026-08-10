@@ -532,6 +532,33 @@
   text-shadow:none !important;
 }
 
+/* ══ سطرُ التغذيةِ الراجعةِ في «ديني حياتي»: أخضرُ وأحمرُ **داكنان** ══
+   نفسُ علّةِ «أحب لغتي» أعلاه ونفسُ علاجِها، والعلّةُ ظهرت هنا **بأشدَّ منها**: أطرُ
+   ديني حياتي `hasFill:true`، فورثت لونَي الرياضياتِ الفاتحَينِ المضيئَينِ
+   (‏`#7ee2a0` و`#ff8a8a`) المُعَدَّينِ لتعبئةٍ سماويةٍ **داكنة**. وتعبئةُ هذه الأطرِ
+   **فيروزيةٌ ساطعة** — قِيسَت من مركزِ الصورِ الأربعِ نفسِها (canvas): ‏#18c5c9 (s)
+   و#1bc5c9 (m) و#37cfd1 (l) و#2acacc (tall). فكانَ التباينُ **1.21:1 للأخضر
+   و1.19:1 للأحمر** (الحدُّ المقبولُ 4.5:1) — أي سطرٌ لا يكادُ يُرى أصلاً.
+   والداكنانِ أدناه مقيسانِ على **التعبئاتِ الأربعِ كلِّها** لا على أوسعِها:
+   الأخضرُ **4.76–5.31:1** والأحمرُ **5.05–5.63:1**.
+   ⚠️ **ولا يصلحُ هنا لونا العربيةِ نفسُهما:** `#1b5e20` يهبطُ إلى **3.70:1** على
+   أضيقِ تعبئةٍ و`#8b1a1a` إلى **4.37:1** — كلاهما دونَ الحدّ. فالفيروزيُّ الساطعُ
+   أفتحُ من الكريميِّ لا مثلُه، فأُغمِقَ اللونانِ درجةً.
+   والظلُّ يُلغى: على خلفيةٍ فاتحةٍ يُوحِلُ الحرفَ لا يرفعُه.
+
+   ⚠️ **وباقٍ خارجَ هذا الإصلاحِ عمداً — بانتظارِ قرارِ المالك:** `.qprompt` و
+   `.bank .bt` و`.seq-hint` و`.cinstr` **بيضاءُ على الفيروزيّ بتباينِ 1.91:1**،
+   وهي نصوصٌ لا أزرار، فخرجت من نطاقِ هذا التعميم. علاجُها إن أُقِرَّ هو نفسُ
+   علاجِ العربية (أسودُ صريحٌ بلا ظلّ) بإضافةِ `subj-deeny` إلى محدِّداتِها أعلاه. */
+.shoogp-ui.subj-deeny .qframe.qf-hasfill .qwin .qfb.good{
+  color:#0f4c1e !important;
+  text-shadow:none !important;
+}
+.shoogp-ui.subj-deeny .qframe.qf-hasfill .qwin .qfb.bad{
+  color:#7a1616 !important;
+  text-shadow:none !important;
+}
+
 /* ═══════════════════════════════════════════════════════════════════
    ★ ستايل البطاقات الزجاجية الزرقاء (CSS خالص، بلا صور) ★
    يُطبَّق على: بطاقات التوصيل (.mitem) · خيارات الاختيار (.opt) ·
@@ -1637,24 +1664,37 @@
 
 /* ═══════════════════════════════════════════════════════════════════
    ★ قشرةُ التربية الإسلامية «ديني حياتي»: الكبسولةُ العاجية (skin-ivory) ★
-   صورةٌ واحدة (`opt-deeny.png`) تُفرَدُ بـ`border-image` (٩-slice أفقيٌّ ثلاثيّ) على
-   **أزرارِ الخياراتِ وحدَها**: `.opt` (الاختيارُ من متعدد وما يعيدُ استعمالَه كالحكمِ
-   والتعليل) و`.tf` (صواب/خطأ) و`.excl-opt` (الاستبعاد). وما عداها من عناصرِ `.qwin`
-   (البطاقاتُ والفراغاتُ وعناصرُ التوصيلِ والترتيب) **يبقى على شكلِه الافتراضيِّ بلا مساس** —
-   بخلافِ `skin-capsule` العربيةِ التي تكسو المجموعةَ كلَّها. النطاقُ `SUBJECT_SKINS.deeny`
-   ← `lessonSubject` (js/shoogp-ui.js) فيسري على كلِّ دروسِ «ديني حياتي» وحدَها.
+   صورةٌ واحدة (`opt-deeny.png`) تُفرَدُ بـ`border-image` على **كلِّ زرٍّ داخلَ حاويةِ
+   السؤال** في أيِّ نوع (قرارُ المالك ٢٠٢٦-٠٨-١٠ — تعميمٌ يُلحِقُ العاجيَّ بما فُعِلَ
+   في `skin-capsule` العربيةِ و`skin-rocky` العلمية):
+     • الخياراتُ `.opt` (ومنها أشرطةُ التعليلِ في «الحكم والتعليل») و`.tf` و`.excl-opt`
+     • طرفا التوصيل `.mitem` · عناصرُ الترتيبِ التسلسليّ `.seqitem` · خياراتُ الصوت `.aopt`
+     • البطاقاتُ المحمولة `.chip` (بطاقاتُ السحبِ وعناصرُ التصنيفِ وبدائلُ ملءِ الفراغ)
+       و`.mmchip` (الخريطةُ الذهنية) · عيّناتُ التلوين `.cswatch`
+     • المستقبِلاتُ **بعدَ الإفلات** `.blank.filled` و`.target.filled`
+     • عنوانُ صندوقِ التصنيف `.grp-h` · وزرُّ «لماذا؟» `.jr-bt`
+   ويبقى خارجَ الكسوةِ البارزةِ **المستقبِلُ ما دامَ فارغاً** (`.blank`/`.target` غيرُ
+   المملوءَينِ و`.grp-drop`) — لا إهمالاً بل تطبيقاً لقاعدةِ «المحمول ≠ المستقبِل» (§٧):
+   لها هنا **وجهٌ عاجيٌّ غائرٌ** من اللوحةِ نفسِها بإضاءةٍ مقلوبةٍ وحدٍّ متقطّع، فتُقرأُ
+   «مكانٌ ينتظرُ شيئاً» لا زرّاً يُضغَط. وأزرارُ المنصّة (تحقّق/إعادة/السابق/التالي)
+   خارجَ الحاويةِ أصلاً وصورُها مستقلّةٌ فلا تُمَسّ.
+   النطاقُ `SUBJECT_SKINS.deeny` ← `lessonSubject` (js/shoogp-ui.js) فيسري على كلِّ
+   دروسِ «ديني حياتي» وحدَها ولا يمسُّ مادةً أخرى.
 
    ═══ الرقمُ الحاكمُ واحدٌ: `--dn-h` — والجانبانِ يتبعانِه حساباً ═══
-   طرفا الكبسولةِ منحنيان، فلا يجوزُ مطُّهما. `border-image-slice: 0 150` يعزلُ **١٥٠px**
-   من كلِّ طرفٍ في **صورةٍ ارتفاعُها ٢٧٥** ⇒ النسبةُ **150 ÷ 275 = 0.5455**. فليخرجَ الطرفانِ
-   بلا تشويهٍ يجبُ أن تكونَ نسبةُ `border-width` إلى **ارتفاعِ الزرِّ** هي هي:
-       `border-width: 0 calc(var(--dn-h) × var(--dn-cap))`
-   فالرقمُ مكتوبٌ **مرّةً واحدة**، وتغييرُ `--dn-h` يُحرّكُ الجانبَينِ معه تلقائياً.
+   طرفا الكبسولةِ منحنيان، فلا يجوزُ مطُّهما. `border-image-slice` يعزلُ **١٢٨px** من كلِّ
+   طرفٍ في **صورةٍ ارتفاعُها ٢٥٦** ⇒ النسبةُ **128 ÷ 256 = 0.5** = `--dn-cap`. فليخرجَ
+   الطرفانِ بلا تشويهٍ يجبُ أن تكونَ نسبةُ `border-width` إلى **ارتفاعِ الزرِّ** هي هي:
+       `border-width: … calc(var(--dn-h) × var(--dn-cap))`
+   فالرقمُ مكتوبٌ **مرّةً واحدة**، وتغييرُ `--dn-h` يُحرّكُ الحدودَ معه تلقائياً.
    ⛔ **لا يُكتَبُ عرضُ الحدِّ رقماً صريحاً ولا يُغيَّرُ الارتفاعُ وحدَه** — اختلالُ النسبةِ
    يمطُّ نصفَ الدائرةِ فيخرجُ الطرفانِ **بيضاويَّين**.
-   ⚠️ ولذلك أيضاً **`white-space:nowrap`**: لو التفَّ النصُّ سطرين لصارَ الارتفاعُ الفعليُّ
-   ضِعفَ `--dn-h` بينما الجانبانِ محسوبانِ عليه، فينكسرُ الطرفانِ بالعلّةِ نفسِها. (وهو
-   قيدُ تأليفٍ لا قيدُ واجهة: نصُّ الخيارِ يُكتَبُ بما يسعُ سطراً واحداً.)
+   ⚠️ **و`150`/`0.5455` رقمانِ مُستبدَلانِ** كانا مقيسَينِ على نسخةِ ١٠٧٤×٢٧٥ من الصورة؛
+   المرفوعُ في `main` **١٠٥٨×٢٥٦** (§الصورةُ مقصوصةٌ أدناه). فإن وردا في طلبٍ أو وثيقةٍ
+   قديمةٍ فهما إشارةٌ إلى ملفٍّ لم يعدْ موجوداً — **والحاكمُ ما في هذا الملفِّ لا ما نُقِل.**
+   ⚠️ وقيدُ **`white-space:nowrap`** كانَ يتبعُ هذا الحسابَ (التفافُ النصِّ يُضاعفُ الارتفاعَ
+   وحدَه فينكسرُ الطرفان) — **وقد رُفِعَ عن المجموعةِ كلِّها بالتقطيعِ التساعيِّ أدناه**،
+   ولم يبقَ إلا على `.tf` و`.jr-bt`. فلا قيدَ تأليفٍ على طولِ النصِّ في هذه المادة.
 
    ═══ الصورةُ مقصوصةٌ على جسمِ الكبسولةِ — والظلُّ يُعادُ بالكود ═══
    `border-image` يفردُ **الملفَّ كاملاً** على صندوقِ الزرِّ بما فيه أيُّ هامشٍ شفّاف، فيُرسَمُ
@@ -1701,16 +1741,25 @@
   --dn-glow-in:3px;    /* الطبقةُ الحادّةُ الداخلية */
   --dn-glow-out:5px;   /* الخارجية — يجبُ أن **ينطفئَ ذيلُها** قبلَ 10.4px لا أن يبلغَها */
 }
-.shoogp-ui.skin-ivory .qwin :where(.opt,.tf,.excl-opt){
-  isolation:isolate; position:relative;
+/* ═══ ① الوجهُ العاجيُّ — المجموعةُ كاملةً بوصفةٍ واحدة ═══
+   ‏`:where()` وزنُه **صفر**، فتبقى المجموعةُ عندَ وزنِ `.shoogp-ui.skin-ivory .qwin`
+   (يكفي لغَلَبةِ الأزرقِ الزجاجيِّ في `style.css`)، وتغلبُها الاستثناءاتُ الأخصُّ أدناه
+   طبيعياً — بخلافِ `:is()` الذي يرثُ **أعلى** وزنِ وسائطِه (‏`.blank.filled` صنفان)
+   فيبتلعُ الاستثناءاتِ ولو كانت `!important` (فخٌّ قِيسَ حيّاً في `skin-rocky`).
+   ⚠️ **والافتراضُ هنا التقطيعُ التساعيُّ لا الثلاثيّ** — تفصيلُه في §الكبسولةُ التساعية أدناه. */
+.shoogp-ui.skin-ivory .qwin :where(.opt,.tf,.excl-opt,.mitem,.chip,.seqitem,.aopt,.cswatch,
+                                   .blank,.target,.grp-h,.jr-bt){
+  isolation:isolate;
   min-height:var(--dn-h);
   min-width:0;
   display:flex; align-items:center; justify-content:center; gap:10px;
-  white-space:nowrap;                                     /* انظرِ التعليلَ أعلاه — و`.opt` مستثنًى أدناه */
+  white-space:normal;                                     /* لا `nowrap` — §الالتفافُ الآمنُ أدناه */
+  overflow-wrap:break-word;
   padding:0 12px !important;                              /* الجانبانِ محجوزانِ للطرفَينِ المنحنيين */
   border-style:solid !important;
-  border-width:0 calc(var(--dn-h) * var(--dn-cap)) !important;
-  border-image:url('../images/ui/opt-deeny.png') 0 128 fill !important;
+  border-width:calc(var(--dn-h) * var(--dn-cap) / 2)
+               calc(var(--dn-h) * var(--dn-cap)) !important;
+  border-image:url('../images/ui/opt-deeny.png') 25% 128 fill !important;
   border-image-repeat:stretch !important;
   background:transparent !important;                      /* لا لونَ خلفَ الرسم */
   box-shadow:none !important;                             /* يُلغي ظلَّ style.css — بديلُه drop-shadow */
@@ -1723,9 +1772,30 @@
   filter:var(--dn-cast) !important;
   transition:transform .14s ease, filter .14s ease !important;
 }
+/* ⛔ `position:relative` لكلِّ الأعضاءِ **إلا `.target`** — قاعدةٌ دائمةٌ في المنصّة:
+   `.target` مطلَقُ الموضعِ فوقَ صورةِ السؤال (‏`left/top` نسبةً مئويةً مع `translate`)،
+   وفرضُ `relative` يُعيدُه إلى التدفّقِ فيمتدَّ بعرضِ المسرحِ ويسقطَ تحتَ قاعِه.
+   (نفسُ الفصلِ حرفاً بحرفٍ في `skin-rocky` و`skin-metal`.) */
+.shoogp-ui.skin-ivory .qwin :where(.opt,.tf,.excl-opt,.mitem,.chip,.seqitem,.aopt,.cswatch,
+                                   .blank,.grp-h,.jr-bt){position:relative}
 /* عمودُ الخياراتِ يتبعُ عرضَ النافذةِ الحيّة (سقفُ 560px في style.css يقصُّ الكبسولةَ الطويلة) */
 .shoogp-ui.skin-ivory .qwin .opts{max-width:none}
-/* ═══ الكبسولةُ التساعيةُ لِـ`.opt` — ورفعُ `nowrap` عنه ═══
+/* ═══ الكبسولةُ التساعيةُ هي **الافتراض** — والالتفافُ الآمنُ علّتُها ═══
+   ⚠️ **الرقمانِ ‏`0 150 fill` و‏`0.545` في طلبِ التعميمِ مقيسانِ على نسخةٍ مُستبدَلةٍ من
+   الصورة** (‏1074×275). المرفوعُ في `main` اليومَ **1058×256**، فالشريحةُ **128**
+   والنسبةُ **0.5** — والمكتوبُ أدناه هو المطابقُ للملفِّ الموجودِ فعلاً لا للأرقامِ
+   المنقولة. (الآليةُ هي هي: طرفانِ لا يُمطّان ووسطٌ يتمدّدُ وحدَه.)
+
+   **ولماذا التساعيُّ لا الثلاثيُّ افتراضاً:** بالتقطيعِ الثلاثيِّ (`0 128`) يُفرَدُ طرفُ
+   الكبسولةِ بكاملِ ارتفاعِ الزرّ، فلا يخرجُ نصفَ دائرةٍ إلا ببقاءِ نسبةِ `border-width`
+   إلى الارتفاعِ ثابتة. فلو التفَّ النصُّ سطرين تضاعفَ الارتفاعُ وحدَه **فصارَ الطرفانِ
+   بيضاويَّين** — ولذلك كانَ `nowrap` مكتوباً. **وهو قيدٌ لا يحتملُه التعميم:** الكسوةُ
+   الآنَ على `.mitem` و`.chip` و`.seqitem` وأشرطةِ التعليل، وفيها جملٌ لا كلمات.
+   وقياسٌ حيٌّ على `g4d1-1-2` س٤ (التصنيف): أعرضُ عنصرٍ يحتاجُ **298px** بسطرٍ واحدٍ
+   (‏196px نصّاً + 78px طرفَينِ + حشوة) بينما عرضُ `.grp-drop` **232px** — فيضٌ **66px**
+   يُقَصُّ عندَ حدِّ `.qwin`. فالتساعيُّ ليس تحسيناً بل **شرطُ صحّةِ التعميم**، ويبقى
+   `nowrap` استثناءً لِما لا يلتفُّ بطبيعتِه (أدناه).
+
    العلّةُ والعلاجُ والمقايضةُ **نفسُها المشروحةُ في نظيرِ هذه القاعدةِ في `skin-capsule`**
    (‏§الكبسولةُ التساعية)، ولا يُعادُ شرحُها هنا. والقاعدةُ الحاكمةُ واحدةٌ في القشرتَين:
    **الشريحةُ الرأسيةُ نصفُ الأفقية، وعرضُ الحدِّ العلويِّ نصفُ الجانبيّ** — وهي هنا تُكتَبُ
@@ -1748,51 +1818,155 @@
 
    **والانتفاخُ الجانبيُّ هنا أقلُّ من نظيرِه**: أوّلُ بكسلٍ معتمٍ عندَ `y=64` هو `x=8`
    ⇒ `8k = 2.44px` (وعندَ الطرفِ الآخرِ `1.52px`) — وفي الأزرارِ المتعدّدةِ الأسطرِ وحدَها. */
-.shoogp-ui.skin-ivory .qwin .opt{
-  white-space:normal !important;
-  overflow-wrap:break-word;
-  border-width:calc(var(--dn-h) * var(--dn-cap) / 2)
-               calc(var(--dn-h) * var(--dn-cap)) !important;
-  border-image:url('../images/ui/opt-deeny.png') 25% 128 fill !important;
-  border-image-repeat:stretch !important;
+/* ── الاستثناءُ الوحيد: **ما لا يلتفُّ بطبيعتِه** ← التقطيعُ الثلاثيُّ الأفقيّ ──
+   `.tf` كلمةٌ واحدةٌ («صواب»/«خطأ») و`.jr-bt` كلمةٌ واحدة («لماذا؟») — ارتفاعُهما
+   لا يتغيّرُ أبداً، فيصحُّ لهما `0 128` بلا حدٍّ علويٍّ ولا سفليّ: طرفانِ نصفا دائرةٍ
+   تامّان، ورسمٌ أخفّ. **ولا يُضافُ عضوٌ ثالثٌ إلى هذا الاستثناءِ إلا بيقينِ سطرٍ واحد.**
+   (‏`.chip` كانَ مرشَّحاً وأُخرِجَ بالقياسِ أعلاه — عناصرُ التصنيفِ جملٌ لا كلمات.) */
+.shoogp-ui.skin-ivory .qwin :where(.tf,.jr-bt){
+  white-space:nowrap;
+  border-width:0 calc(var(--dn-h) * var(--dn-cap)) !important;
+  border-image:url('../images/ui/opt-deeny.png') 0 128 fill !important;
 }
 /* شريطُ التعليلِ نثرٌ متعدّدُ الأسطر: يُقرأُ مصفوفَ الحافّةِ لا مركزاً مُشرشَراً */
 .shoogp-ui.skin-ivory .qwin .jr-reasons .opt{
   justify-content:flex-start !important; text-align:start !important;
 }
+
+/* ═══ ② فروقُ الشكلِ لكلِّ عائلة (ما لا تكفيه الكبسولةُ الموحّدة) ═══ */
+/* الترتيبُ التسلسليُّ يحملُ مقبضَ سحبٍ ونصّاً طويلاً: محاذاةٌ من بدايةِ السطر */
+.shoogp-ui.skin-ivory .qwin .seqitem{justify-content:flex-start; text-align:start !important; cursor:grab}
+/* ── رقمُ الموضعِ الثابتُ خارجَ البطاقة: يُزاحُ بعرضِ الطرفِ وإلا ركبَ الكبسولة ──
+   ‏`.seqitem::before` مطلَقُ الموضعِ، **وحاويتُه صندوقُ الحشوةِ لا صندوقُ الحدّ**.
+   وحدُّ الكبسولةِ هنا ‏39px (لا ‏2px كسائرِ القشور)، فـ`inset-inline-start:-50px`
+   المكتوبةُ في `style.css` تضعُ حافّةَ الشارةِ عندَ **‏11px خارجَ الزرِّ فقط**، فتمتدُّ
+   الشارةُ (‏38px) إلى **‏27px داخلَ الطرفِ المستدير** فتركبُه (قِيسَ في لوحِ الفحص).
+   الإزاحةُ بعرضِ الطرفِ نفسِه تُعيدُها كاملةً إلى الخانةِ الجانبية (‏50px في
+   `.seqlist`)، فتشغلُ ‏12px…50px منها: خارجَ الزرِّ كلَّها وبمتنفَّسٍ ‏12px عنه.
+   ومكتوبةٌ بـ`--dn-h` لا برقمٍ صريح، فتتبعُ أيَّ تغيّرٍ في ارتفاعِ الزرّ. */
+.shoogp-ui.skin-ivory .qwin .seqitem::before{
+  inset-inline-start:calc(-50px - var(--dn-h) * var(--dn-cap));
+}
+/* البطاقاتُ المحمولةُ تبقى بعرضِ نصِّها داخلَ صفِّها (لا كتلةً تملأُ السطر) */
+.shoogp-ui.skin-ivory .qwin .chip{display:inline-flex; cursor:grab}
+/* `.mmchip` هو `.chip` نفسُه بصنفٍ ثانٍ (`class="chip mmchip"`) — لا وصفةَ كسوةٍ ثانيةٍ
+   له، هذه لضبطِ المقاسِ وحدَه (خاناتُ الخريطةِ الذهنيةِ ضيّقةٌ فيلزمُها حدٌّ أدنى للعرض). */
+.shoogp-ui.skin-ivory .qwin .chip.mmchip{min-width:calc(var(--dn-h) * var(--dn-cap) * 2 + 24px)}
+.shoogp-ui.skin-ivory .qwin .chip.used{opacity:.35; cursor:default}
+.shoogp-ui.skin-ivory .qwin .chip.dragging{
+  cursor:grabbing; opacity:1;
+  transform:translateY(-4px) scale(1.05);
+  filter:var(--dn-cast) drop-shadow(0 7px 11px rgba(60,42,10,.42)) !important;
+}
+/* خياراتُ السؤالِ الصوتيّ: صورةٌ فوقَ عنوان. وعيّناتُ التلوين: دلوٌ فوقَ اسم —
+   **ولونُ الطلاءِ في أيقونةِ الدلوِ لا في الخلفية**، فلا تضيعُ وظيفةُ الزرِّ بالكسوة. */
+.shoogp-ui.skin-ivory .qwin :where(.aopt,.cswatch){flex-direction:column; justify-content:center}
+.shoogp-ui.skin-ivory .qwin .cswatch{gap:4px}
+.shoogp-ui.skin-ivory .qwin .cswatch-name{font-size:var(--dn-f)}
+/* صناديقُ «السحبِ على صورة»: مقاسُها في `style.css` **88×41px بخطِّ ‎.86rem‎** — دونَ
+   حدَّي ‏60px/18px، **والتقطيعُ ينهارُ عندَه**: الطرفانِ وحدَهما يطلبانِ ‏78px عرضاً
+   (‏39×2)، فتُفرَدُ الكبسولةُ في ‏88px بلا وسطٍ يُذكَر. فيُرفَعُ الحدّانِ أوّلاً — والعرضُ
+   الأدنى = طرفانِ + متنفَّسٌ للنصّ، مكتوباً بـ`--dn-h` لا برقمٍ جديد. */
+.shoogp-ui.skin-ivory .qwin .target{
+  min-height:var(--dn-h);
+  min-width:calc(var(--dn-h) * var(--dn-cap) * 2 + 28px);
+  font-size:var(--dn-f) !important;
+}
+/* الفراغُ يبقى في تدفّقِ الجملةِ (لا كتلةً تكسرُ السطر) — نفسُ علاجِ الرياضياتِ والعربية */
+.shoogp-ui.skin-ivory .qwin .blank{display:inline-flex; vertical-align:middle}
+/* ── صندوقُ التصنيف: عنوانُه كبسولةٌ، وصينيتُه مستقبِلٌ غائر ──
+   والصندوقُ الحاوي `.grp` يتنحّى (حدُّه وخلفيتُه و`overflow:hidden`) — **وإلا قصَّت
+   زواياه المستقيمةُ طرفَي الكبسولةِ المستديرَين** فبدا العنوانُ مقطوعَ الرأسَين. */
+.shoogp-ui.skin-ivory .qwin .grp{
+  border:0 !important; background:transparent !important;
+  overflow:visible !important; gap:10px;
+}
+.shoogp-ui.skin-ivory .qwin .grp-h{
+  background:transparent !important;                      /* يُلغي `#e6cd9c` من §نصوصِ الحاوية */
+  color:#3a2a12 !important;
+  text-shadow:0 1px 1px rgba(255,255,255,.55) !important;
+}
+
+/* ═══ ③ المستقبِلاتُ: عاجٌ **غائر** (قاعدةُ «المحمول ≠ المستقبِل» §٧) ═══
+   نفسُ اللوحةِ والهويةِ العاجية، لكنّ الإضاءةَ **مقلوبةٌ** (غامقٌ أعلى ← فاتحٌ أسفل) مع
+   ظلٍّ داخليٍّ **وبلا ظلٍّ مُلقًى**، وحدٌّ **متقطّعٌ** لا صلب. فيبقى الفارقُ متعدّدَ
+   المحاورِ لا لوناً وحدَه: نمطُ الحدّ + اتجاهُ الإضاءة + غيابُ الظلِّ المُلقى.
+   ولا `border-image` هنا إطلاقاً — الكبسولةُ إشارةُ «زرٌّ يُضغَط»، وهذا موضعٌ ينتظر.
+   ⚠️ **والمستقبِلُ داخلٌ في المجموعةِ الأولى للمقاسِ لا للوجه:** يأخذُ منها `--dn-h`
+   و`--dn-f` وحدَهما، وتُعادُ كتابةُ وجهِه هنا. فلا **يقفزُ مقاسُ المكانِ لحظةَ الإفلات**
+   (‏لو بقيَ صغيراً ثمّ كبُرَ بعدَ الإفلاتِ لانزاحَ سطرُ الجملةِ كلُّه تحتَ اليد)،
+   ويبلغُ الحدَّ الأدنى للمسِ ‏60px قبلَ الإفلاتِ لا بعدَه. نفسُ فصلِ `skin-metal`. */
+.shoogp-ui.skin-ivory .qwin :is(.blank,.target):not(.filled),
+.shoogp-ui.skin-ivory .qwin .grp-drop{
+  background:linear-gradient(180deg,#cdb68c 0%,#e6dac0 55%,#f4ecd8 100%) !important;
+  border:3px dashed #a2854f !important;
+  border-image:none !important;
+  border-radius:18px !important;
+  box-shadow:inset 0 3px 8px rgba(90,66,20,.36) !important;
+  color:#6b5426 !important;
+  text-shadow:0 1px 0 rgba(255,255,255,.45) !important;
+  filter:none !important;
+}
+/* مستقبِلٌ لم يُملأْ ثمّ حُكِمَ عليه: يبقى غائراً وتتلوّنُ حافّتُه وحدَها */
+.shoogp-ui.skin-ivory .qwin :is(.blank,.target):not(.filled).wrong{
+  border-color:#b0473c !important; color:#7a1f1f !important;
+}
+/* أثناءَ السحبِ فوقَ مستقبِلٍ صالح: توهّجٌ ذهبيٌّ مرحّبٌ يقولُ «أفلتْ هنا» */
+.shoogp-ui.skin-ivory .qwin :is(.blank,.target).over:not(.filled),
+.shoogp-ui.skin-ivory .qwin .grp-drop.over{
+  background:linear-gradient(180deg,#e0cca2 0%,#f4ead0 55%,#fdf7e8 100%) !important;
+  border-color:#d69820 !important;
+  box-shadow:inset 0 3px 8px rgba(90,66,20,.28),
+             0 0 0 3px rgba(230,178,60,.55) !important;
+}
+/* ═══ ④ الحالات ═══
+   ⚠️ **والفلاترُ لا تتراكم:** كلُّ حالةٍ تُعيدُ كتابةَ `filter` كاملاً (ظلُّ الأساسِ +
+   أثرُها)، وإلا ضاعَ الظلُّ في التحويمِ وضاعَ التوهّجُ في الصواب.
+   و`.grp-h` و`.jr-bt` خارجَ حالاتِ التفاعلِ كلِّها — عنوانانِ لا يُنقَران. */
 /* المرور: سطوعٌ خفيفٌ ورفعٌ يسير */
-.shoogp-ui.skin-ivory .qwin :where(.opt,.tf,.excl-opt):hover:not(:disabled){
+.shoogp-ui.skin-ivory .qwin :where(.opt,.tf,.excl-opt,.mitem,.chip,.seqitem,.aopt,.cswatch,
+       .blank.filled,.target.filled):hover:not(:disabled):not(.matched):not(.used){
   filter:var(--dn-cast) brightness(1.06) !important;
   transform:translateY(-2px);
 }
-.shoogp-ui.skin-ivory .qwin :where(.opt,.tf,.excl-opt):active:not(:disabled){
+.shoogp-ui.skin-ivory .qwin :where(.opt,.tf,.excl-opt,.mitem,.chip,.seqitem,.aopt,.cswatch,
+       .blank.filled,.target.filled):active:not(:disabled):not(.matched):not(.used){
   transform:translateY(2px) scale(.985);
 }
 /* المحدَّد: توهّجٌ ذهبيٌّ يتبعُ هيئةَ الكبسولة. `:focus-visible` هو «المحدَّدُ» الفعليُّ في
    أزرارِ الخياراتِ اليوم (النقرُ يحسمُ الإجابةَ فوراً فلا حالةَ اختيارٍ معلَّقة)؛ و`.sel`
    و`.selected` و`.picked` مذكورةٌ لأنّها أسماءُ حالةِ الاختيارِ المعلَّقِ في بقيةِ أنواعِ
    المنصّة، فمتى استعملها نوعٌ في هذه المادةِ ورثَ التوهّجَ بلا سطرٍ جديد. */
-.shoogp-ui.skin-ivory .qwin :is(.opt,.tf,.excl-opt):is(:focus-visible,.sel,.selected,.picked){
+.shoogp-ui.skin-ivory .qwin :is(.opt,.tf,.excl-opt,.mitem,.chip,.seqitem,.aopt,.cswatch,
+       .blank.filled,.target.filled):is(:focus-visible,.sel,.selected,.picked){
   outline:none;
   filter:var(--dn-cast) drop-shadow(0 0 var(--dn-glow-in) rgba(230,178,60,.95))
                         drop-shadow(0 0 var(--dn-glow-out) rgba(214,152,32,.88)) !important;
 }
 /* التغذيةُ الراجعة: الخلفيةُ محجوبةٌ خلفَ `border-image`، فالإشارةُ توهّجٌ ولونُ نصّ —
-   وهي **ليست زينةً زائدة**: بدونَها تختفي إشارةُ الصواب/الخطأ التي يرسمُها style.css خلفيةً. */
-.shoogp-ui.skin-ivory .qwin :is(.opt,.tf,.excl-opt):is(.correct,.tf-correct){
+   وهي **ليست زينةً زائدة**: بدونَها تختفي إشارةُ الصواب/الخطأ التي يرسمُها style.css خلفيةً.
+   وأسماءُ الحالةِ تختلفُ باختلافِ النوع (`matched` في التوصيلِ و`ok/no` في البطاقات
+   و`tf-correct` في صواب/خطأ) فتُذكَرُ كلُّها هنا — لا في وصفةِ كلِّ نوعٍ على حدة. */
+.shoogp-ui.skin-ivory .qwin :is(.opt.correct,.tf.tf-correct,.excl-opt.correct,.mitem.matched,
+       .chip.ok,.seqitem.correct,.aopt.correct,
+       .blank.filled.correct,.blank.correct,.target.filled.correct){
   filter:var(--dn-cast) drop-shadow(0 0 var(--dn-glow-in) rgba(90,170,45,.95))
                         drop-shadow(0 0 var(--dn-glow-out) rgba(70,140,35,.88)) !important;
   color:#20340a !important;
 }
-.shoogp-ui.skin-ivory .qwin :is(.opt,.tf,.excl-opt):is(.wrong,.tf-wrong){
+.shoogp-ui.skin-ivory .qwin :is(.opt.wrong,.tf.tf-wrong,.excl-opt.wrong,.mitem.shake,
+       .chip.no,.seqitem.wrong,.aopt.wrong,
+       .blank.filled.wrong,.target.filled.wrong){
   filter:var(--dn-cast) drop-shadow(0 0 var(--dn-glow-in) rgba(210,50,45,.92))
                         drop-shadow(0 0 var(--dn-glow-out) rgba(175,35,30,.86)) !important;
   color:#7a1f1f !important;
   animation:cardShake .45s ease;
 }
 @media(prefers-reduced-motion:reduce){
-  .shoogp-ui.skin-ivory .qwin :is(.opt,.tf,.excl-opt):is(.wrong,.tf-wrong){animation:none}
+  .shoogp-ui.skin-ivory .qwin :is(.opt.wrong,.tf.tf-wrong,.excl-opt.wrong,.mitem.shake,
+         .chip.no,.seqitem.wrong,.aopt.wrong,
+         .blank.filled.wrong,.target.filled.wrong){animation:none}
 }
 /* معطَّلة: تخفتُ قليلاً، والصحيحةُ تبقى بكاملِ وضوحِها بعدَ قفلِ السؤال */
-.shoogp-ui.skin-ivory .qwin :is(.opt,.excl-opt):disabled{opacity:.9}
-.shoogp-ui.skin-ivory .qwin :is(.opt,.excl-opt).correct:disabled{opacity:1}
+.shoogp-ui.skin-ivory .qwin :is(.opt,.tf,.excl-opt,.aopt):disabled{opacity:.9}
+.shoogp-ui.skin-ivory .qwin :is(.opt,.excl-opt,.aopt).correct:disabled{opacity:1}
