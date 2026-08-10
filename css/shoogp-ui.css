@@ -1526,8 +1526,13 @@
    وهي «الحوافُّ القليلةُ الباقية» (قِيسَت لونياً `#FFE0B3` فوقَ حافّةِ الكبسولةِ مباشرة).
    العلاجُ: **شفّافةٌ تماماً**؛ فالصورةُ أصلٌ محلّيٌّ في المستودعِ لا يفشلُ تحميلُه،
    ولا يجوزُ أن تدفعَ الواجهةُ ثمنَ احتياطٍ لا يقع. */
+/* ‏`.jr-bt` («لماذا؟» — عنوانُ خطوةِ التعليل) **أُلحِقَ بالمجموعةِ ٢٠٢٦-٠٨-١٠**: كان
+   `#eef5ef` (‏`.qcard .jr-bt` في `style.css`) على تعبئةٍ كريميةٍ فاتحة، وهي **العلّةُ
+   عينُها** التي عولجت لبقيةِ نصوصِ العربيةِ في §نصوصُ حاويةِ السؤال — لكنّه فاتَها لأنّه
+   ليس نصّاً عارياً بل **زرَّ خطوة**، فعلاجُه الكبسولةُ لا لونُ نصٍّ جديد. ورُصِدَ بالمقارنةِ
+   معَ نظيرِه في `skin-ivory` بعدَ تعميمِها. وهو خارجَ حالاتِ التفاعلِ كلِّها (عنوانٌ لا يُنقَر). */
 .shoogp-ui.skin-capsule .qwin :where(.opt,.tf,.excl-opt,.mitem,.chip,.mmchip,.seqitem,.aopt,
-                                     .blank.filled,.target.filled){
+                                     .blank.filled,.target.filled,.jr-bt){
   isolation:isolate;
   min-height:64px;
   display:flex; align-items:center; gap:12px;
@@ -1543,7 +1548,7 @@
   transition:transform .14s ease !important;
 }
 .shoogp-ui.skin-capsule .qwin :where(.opt,.tf,.excl-opt,.mitem,.chip,.mmchip,.seqitem,.aopt,
-                                     .blank){position:relative}
+                                     .blank,.jr-bt){position:relative}
 /* ── الفراغُ في «ملء الفراغ» و«ترتيبِ الحروف»: يبقى **سطرياً** فيحتضنُ كلمتَه ──
    `.blank` أصلُه `inline-block` (‏`css/style.css`)، ومجموعةُ الكبسولةِ أعلاه تجعلُه `flex`
    وهو **مستوى كتلة**، فبعدَ الإفلاتِ يمتدُّ الزرُّ بعرضِ السطرِ كلِّه بلا داعٍ ويُفكِّكُ
@@ -1564,7 +1569,13 @@
    (‏`.opt` تُعادُ توسيطُها أدناه في تعديلِ الثلاثةِ عناصرَ — القاعدةُ هنا للبقيّةِ فقط.) */
 .shoogp-ui.skin-capsule .qwin .opt{justify-content:flex-start; text-align:start}
 .shoogp-ui.skin-capsule .qwin :where(.tf,.excl-opt,.mitem,.mmchip,
-                                     .blank.filled,.target.filled){justify-content:center; text-align:center}
+                                     .blank.filled,.target.filled,.jr-bt){justify-content:center; text-align:center}
+/* ‏«لماذا؟» كلمةٌ واحدةٌ لا تلتفُّ أبداً، فتبقى على التقطيعِ الثلاثيِّ (‏`0 186.5`) بلا
+   حاجةٍ إلى التساعيّ، وحشوتُها حشوةُ `.tf` و`.chip` نفسُها (§أدناه).
+   ⚠️ **ولا قاعدةَ عرضٍ لها ولا حاجة:** `.jr-why` عمودٌ محاذاتُه `center` فلا يتمدّدُ
+   ابنُه (قِيسَ: 185px في أبٍ عرضُه 416px)، و`align-self:center` مكتوبةٌ لها في
+   `style.css` أصلاً. **و`display:inline-flex` لو كُتِبَت لكانت لغواً**: العنصرُ ابنُ
+   حاويةٍ مرنةٍ فيُبلَّكُ (blockified) إلى `flex` — وهو ما يظهرُ في الحسابِ فلا يُظَنَّ خللاً. */
 
 /* ═══ التغذيةُ الراجعةُ: **توهّجٌ يخرجُ من خلفِ الزرّ** (قرارُ المالك ٢٠٢٦-٠٨-٠٤) ═══
    مرَّ القرارُ بثلاثِ مراحلَ حتى استقرَّ — **والمرحلةُ الأخيرةُ هي المعتمدة**:
@@ -1626,9 +1637,9 @@
   justify-content:center !important; text-align:center !important;
   box-shadow:none !important;
 }
-/* ‏`nowrap` بقيَ لِـ`.tf` و`.chip` وحدَهما — و`.opt` خرجَ منه (انظر §الكبسولةُ التساعية أدناه).
-   وحُفِظت حشوتُهما هنا لأنّ حشوةَ `.opt` الرأسيةَ تصيرُ صفراً هناك. */
-.shoogp-ui.skin-capsule .qwin :is(.tf-btns .tf,.chip){
+/* ‏`nowrap` بقيَ لِـ`.tf` و`.chip` و`.jr-bt` — و`.opt` خرجَ منه (انظر §الكبسولةُ التساعية أدناه).
+   وحُفِظت حشوتُها هنا لأنّ حشوةَ `.opt` الرأسيةَ تصيرُ صفراً هناك. */
+.shoogp-ui.skin-capsule .qwin :is(.tf-btns .tf,.chip,.jr-bt){
   white-space:nowrap !important;
   padding:14px 34px !important;
 }
