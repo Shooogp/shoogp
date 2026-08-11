@@ -1,4 +1,20 @@
   @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Cairo:wght@700;900&display=swap');
+  /* خطُّ المصحف — أميري قرآن (رخصة SIL OFL، نصُّها في fonts/OFL.txt).
+     محلّيٌّ لا خارجيّ: النصُّ الشريفُ يجبُ أن يُرسمَ بخطِّه من أوّلِ لحظةٍ ولا يُعرَضَ
+     بخطٍّ بديلٍ ريثما يصلُ خطُّ الشبكة، فلذلك `font-display:block` لا `swap`. */
+  @font-face{
+    font-family:'AmiriQuran';
+    src:url('../fonts/amiri-quran.woff2') format('woff2');
+    font-weight:400; font-style:normal; font-display:block;
+  }
+  /* حاويةُ الآيةِ المشكولة — والوسمُ الداخليُّ (‏span التجويد) يرثُ الخطَّ صراحةً،
+     لأنّ محدِّدَ `*` أدناه يُلبسُه Tajawal فتنكسرُ الآيةُ في وسطِها. */
+  .tajweed-ayah,.tajweed-ayah *{font-family:'AmiriQuran',serif}
+  .tajweed-ayah{
+    direction:rtl; text-align:center; color:inherit;
+    font-size:1.6rem; line-height:2.1;         /* حركاتُ المصحفِ عاليةٌ ونازلةٌ فتحتاجُ فُسحة */
+    text-rendering:optimizeLegibility;
+  }
   *{margin:0;padding:0;box-sizing:border-box;font-family:'Tajawal',sans-serif;-webkit-tap-highlight-color:transparent}
   :root{
     --star:#ffe27a; --new:#ff5b7f;
