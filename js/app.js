@@ -286,7 +286,7 @@ function qWin(fb,msg,stars){fb.textContent=msg||'🎉 أحسنت!';fb.className=
 // أي واجهة بلا صاروخ تُبقي wrong.mp3 يعمل (بقية دروس المنصّة كلها تحوي الصاروخ الآن)
 function qFail(fb,msg){fb.textContent=msg||'حاول مرة أخرى';fb.className='fb qfb bad';if(!(window.RocketJourney&&RocketJourney.isActive&&RocketJourney.isActive()))playWrongSound();if(window.RocketJourney)RocketJourney.onAnswer(false);}
 
-const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل','slider':'🎚️ الشريط المتدرج','memory':'🎴 بطاقات الذاكرة','lens':'🔍 العدسة المكبّرة','equation-builder':'🧮 بناء المعادلة','number-line':'📏 خط الأعداد','hundred-chart':'💯 لوحة المائة','array':'🔲 المصفوفات','compare':'⚖️ المقارنة','pattern':'🔁 إكمال النمط','count-tap':'🖐️ العد بالنقر','place-value':'🧱 القيمة المنزلية','clock':'🕐 الساعة التفاعلية','measure-tool':'📐 أداة القياس','money':'🪙 النقود العُمانية','symmetry':'🪞 خط التماثل','chart-read':'📊 التمثيل البياني','tashkeel':'ـَ التشكيل','sentence':'📝 ترتيب الجملة','sun-moon':'☀️ شمسية وقمرية','letter-picture':'🔠 الحرف والصورة','judge-reason':'⚖️ الحكم والتعليل'};
+const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل','slider':'🎚️ الشريط المتدرج','memory':'🎴 بطاقات الذاكرة','lens':'🔍 العدسة المكبّرة','equation-builder':'🧮 بناء المعادلة','number-line':'📏 خط الأعداد','hundred-chart':'💯 لوحة المائة','array':'🔲 المصفوفات','compare':'⚖️ المقارنة','pattern':'🔁 إكمال النمط','count-tap':'🖐️ العد بالنقر','place-value':'🧱 القيمة المنزلية','clock':'🕐 الساعة التفاعلية','measure-tool':'📐 أداة القياس','money':'🪙 النقود العُمانية','symmetry':'🪞 خط التماثل','chart-read':'📊 التمثيل البياني','tashkeel':'ـَ التشكيل','sentence':'📝 ترتيب الجملة','sun-moon':'☀️ شمسية وقمرية','letter-picture':'🔠 الحرف والصورة','judge-reason':'⚖️ الحكم والتعليل','listen-locate':'🎧 أستمع وأحدّد'};
 
 /* تحويل الأرقام إلى هندية (عربية) للعرض — قاعدةُ المنصّة: **كلُّ رقمٍ يراه المستخدمُ
    بالأرقامِ الهندية**. يُستعمَلُ في محرّكِ الأسئلةِ **وفي طبقةِ التنقّلِ أعلاه أيضاً**
@@ -307,7 +307,7 @@ function renderQuestions(ls){
     m.innerHTML='<div class="qbody" style="text-align:center;padding:14px 6px;font-size:1.15rem">📚 أسئلة هذا الدرس ستُضاف قريباً بإذن الله</div>';
     host.appendChild(m); return;
   }
-  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor,'puzzle':renderPuzzle,'slider':renderSlider,'memory':renderMemory,'lens':renderLens,'equation-builder':renderEquationBuilder,'number-line':renderNumberLine,'hundred-chart':renderHundredChart,'array':renderArray,'compare':renderCompare,'pattern':renderPattern,'count-tap':renderCountTap,'place-value':renderPlaceValue,'clock':renderClock,'measure-tool':renderMeasureTool,'money':renderMoney,'symmetry':renderSymmetry,'chart-read':renderChartRead,'tashkeel':renderTashkeel,'sentence':renderSentence,'sun-moon':renderSunMoon,'letter-picture':renderLetterPicture,'judge-reason':renderJudgeReason};
+  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor,'puzzle':renderPuzzle,'slider':renderSlider,'memory':renderMemory,'lens':renderLens,'equation-builder':renderEquationBuilder,'number-line':renderNumberLine,'hundred-chart':renderHundredChart,'array':renderArray,'compare':renderCompare,'pattern':renderPattern,'count-tap':renderCountTap,'place-value':renderPlaceValue,'clock':renderClock,'measure-tool':renderMeasureTool,'money':renderMoney,'symmetry':renderSymmetry,'chart-read':renderChartRead,'tashkeel':renderTashkeel,'sentence':renderSentence,'sun-moon':renderSunMoon,'letter-picture':renderLetterPicture,'judge-reason':renderJudgeReason,'listen-locate':renderListenLocate};
 
   // بناء كل البطاقات (تبقى في الصفحة لحفظ إجاباتها، ونُظهر واحدة فقط)
   // شارة رقم السؤال أُلغيت (قرار المالك): مؤشر التقدم «السؤال ٢ من ٦» يغني عنها
@@ -3169,6 +3169,119 @@ function renderJudgeReason(q, body, fb){
       };
     });
   }
+}
+
+/* ㊲ أستمع وحدّد موضع الحكم (listen-locate) — مجالُ التلاوةِ والتجويدِ في «ديني حياتي».
+   البيانات: rule (اسمُ الحكم) · surah · ayah · audio (مسارُ التلاوة) · tokens[] (كلماتُ
+   الآيةِ على ترتيبِها الصحيح) · answer[{token, chars?}] · why (تعليلٌ قصير).
+
+   ⛔ **حُرمةُ النصِّ الشريف (CLAUDE.md §① وdini-hayati-question-types.json §sacredText):**
+   الآيةُ تُعرَضُ **كاملةً على ترتيبِها الصحيحِ مضبوطةً** ولا تُبعثَرُ ولا يُحذَفُ منها
+   شيء. التلميذُ **يشيرُ** إلى موضعِ الحكمِ ولا يحرّكُ لفظاً — فلا تنشأُ حالةٌ وسطى
+   محرَّفةٌ في أيِّ لحظة. و`shuffle` **لا تُستعمَلُ هنا إطلاقاً**، بخلافِ كلِّ نوعٍ
+   ذي خيارات.
+
+   **`chars` فهارسُ حروفٍ لا فهارسُ محارف** (`llClusters`): كلُّ حرفٍ يُضَمُّ إليه ما
+   يتبعُه من حركاتٍ فيصيرَ عنصراً واحداً. والفرقُ ليس تسهيلاً على المؤلِّف فحسب —
+   الفهرسةُ على محارفِ JS الخامِ كانت تفصلُ الحركةَ عن حرفِها فيخرجَ النصُّ الشريفُ
+   مشوّهاً على الشاشة، وهو عينُ ما تمنعُه القاعدةُ أعلاه. وغيابُ `chars` = إبرازُ
+   الكلمةِ كلِّها.
+
+   **الصوتُ لا يُعطِّلُ السؤال:** إن تعذّرَ تحميلُ الملفِّ عُطِّلَ الزرُّ وحدَه وتغيّرَ
+   نصُّه، ويبقى السؤالُ قابلاً للحلِّ بالنظرِ في النصّ. */
+function llClusters(word){
+  /* الحركاتُ والعلاماتُ العلويةُ/السفلية — تُلحَقُ بالحرفِ السابقِ لها.
+     بالهروبِ الرقميِّ لا بالمحارفِ نفسِها: محارفُ التشكيلِ غيرُ مرئيةٍ في الشيفرة
+     فلا تُراجَعُ بالعين. U+064B–U+065F حركاتٌ وتنوينٌ وسكونٌ وهمزات ·
+     U+0670 ألفٌ خنجرية · U+06D6–U+06ED علاماتُ الضبطِ والوقفِ المصحفية. */
+  const MARK=/[\u064B-\u065F\u0670\u06D6-\u06ED]/;
+  const out=[];
+  for(const ch of String(word)){
+    if(out.length && MARK.test(ch)) out[out.length-1]+=ch;
+    else out.push(ch);
+  }
+  return out;
+}
+function renderListenLocate(q, body, fb){
+  const toks=q.tokens||[];
+  const answers=q.answer||[];
+  body.innerHTML=`<div class="ll">`+
+    `<div class="ll-bar"><button class="btn aplay ll-listen" type="button">🔊 اسْتَمِعْ إِلى التِّلاوَةِ</button></div>`+
+    (q.rule?`<div class="ll-rule">الحُكْمُ: <b>${q.rule}</b></div>`:'')+
+    /* الآيةُ بخطِّ المصحف — `.tajweed-ayah` (تعريفُ ‎@font-face‎ في `css/style.css`) */
+    `<div class="tajweed-ayah ll-ayah">`+
+      toks.map((t,i)=>`<span class="ll-tok" data-i="${i}">${t}</span>`).join('')+
+    `</div>`+
+    (q.surah?`<div class="ll-src">﴿${q.surah}: ${arNum(q.ayah)}﴾</div>`:'')+
+    `<div class="ll-why" hidden></div>`+
+    `<div class="actions"><button class="btn btn-check" disabled>تحقّق ✔</button>`+
+    `<button class="btn btn-reset">إعادة ↺</button></div></div>`;
+
+  const playBtn=body.querySelector('.ll-listen');
+  const why=body.querySelector('.ll-why');
+  const check=body.querySelector('.btn-check');
+  const tokEls=[].slice.call(body.querySelectorAll('.ll-tok'));
+
+  /* ── الصوت: يُعطَّلُ الزرُّ وحدَه عندَ الفشل، ولا يُرمى استثناءٌ ولا ينكسرُ السؤال ── */
+  let snd=null, audioDead=false;
+  function killAudio(){
+    if(audioDead) return;
+    audioDead=true; snd=null;
+    playBtn.disabled=true;
+    playBtn.textContent='التسجيل غير متوفّر بعد';
+    playBtn.classList.add('ll-dead');
+  }
+  if(q.audio){
+    try{
+      snd=new Audio();
+      snd.preload='auto';
+      snd.addEventListener('error',killAudio);       // 404 أو ترميزٌ غيرُ مدعوم
+      snd.src=q.audio;
+    }catch(e){ killAudio(); }
+  } else killAudio();
+  function play(){
+    if(!snd||audioDead) return;
+    try{ snd.currentTime=0; const p=snd.play(); if(p&&p.catch)p.catch(function(){}); }catch(e){}
+  }
+  playBtn.onclick=play;
+
+  /* ── التحديد: نقرةٌ واحدةٌ تختارُ كلمةً واحدةً، وتفتحُ زرَّ التحقّق ── */
+  let sel=-1, done=false;
+  tokEls.forEach(el=>{ el.onclick=()=>{
+    if(done) return;
+    tokEls.forEach(x=>x.classList.remove('sel'));
+    el.classList.add('sel');
+    sel=+el.dataset.i;
+    check.disabled=false;
+  };});
+
+  check.onclick=()=>{
+    if(done||sel<0) return;
+    const hit=answers.filter(a=>a.token===sel)[0];
+    if(hit){
+      done=true;
+      const cl=llClusters(tokEls[sel].textContent);
+      const chars=hit.chars;
+      /* إبرازُ الحروفِ المقصودةِ داخلَ الكلمة — وبلا `chars` تُبرَزُ الكلمةُ كلُّها */
+      if(chars&&chars.length){
+        tokEls[sel].innerHTML=cl.map((c,i)=>
+          chars.indexOf(i)>=0?`<b class="ll-ch">${c}</b>`:c).join('');
+      } else tokEls[sel].classList.add('ll-whole');
+      tokEls[sel].classList.remove('sel');
+      tokEls[sel].classList.add('hit');
+      tokEls.forEach(x=>{ x.style.cursor='default'; });
+      if(q.why){ why.innerHTML=`<b>لِماذا؟</b> ${q.why}`; why.hidden=false; }
+      check.disabled=true;
+      qWin(fb,'🎯 أَحْسَنْتَ! هٰذا مَوْضِعُ الحُكْمِ',2);
+      play();                                        // إعادةُ التلاوةِ لترسيخِ الأثرِ السمعيّ
+    } else {
+      tokEls[sel].classList.add('miss');
+      const bad=tokEls[sel];
+      setTimeout(()=>{ if(bad) bad.classList.remove('miss'); },900);
+      qFail(fb,'لَيْسَ هٰذا مَوْضِعَ الحُكْمِ، اسْتَمِعْ مَرَّةً أُخْرى');
+    }
+  };
+  body.querySelector('.btn-reset').onclick=()=>renderListenLocate(q,body,fb);
 }
 
 /* ===== إقلاع ===== */

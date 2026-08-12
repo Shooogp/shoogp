@@ -589,7 +589,16 @@
 }
 .shoogp-ui.subj-deeny .qframe.qf-hasfill .qwin .bank .bt,
 .shoogp-ui.subj-deeny .qframe.qf-hasfill .qwin .seq-hint,
-.shoogp-ui.subj-deeny .qframe.qf-hasfill .qwin .cinstr{
+.shoogp-ui.subj-deeny .qframe.qf-hasfill .qwin .cinstr,
+/* نصوصُ «أستمع وحدّد» (‏listen-locate) — وهي **نصوصٌ عاريةٌ على التعبئةِ لا أزرار**
+   فتدخلُ نطاقَ القاعدةِ أعلاه بحدِّه نفسِه: الآيةُ وسطرُ الحكمِ والمصدرُ والتعليل.
+   ⚠️ **والآيةُ أولى بها من غيرِها**: خطُّ المصحفِ أرفعُ حرفاً من `Tajawal`، فالرماديُّ
+   الفاتحُ عليه أضعفُ قراءةً منه على خطِّ الواجهة. و`.ll-listen` **خارجٌ عمداً** —
+   كبسولةٌ عاجيةٌ نصُّها داكنٌ أصلاً (§٣ج.٢) لا نصٌّ عارٍ على التعبئة. */
+.shoogp-ui.subj-deeny .qframe.qf-hasfill .qwin .ll-ayah,
+.shoogp-ui.subj-deeny .qframe.qf-hasfill .qwin .ll-rule,
+.shoogp-ui.subj-deeny .qframe.qf-hasfill .qwin .ll-src,
+.shoogp-ui.subj-deeny .qframe.qf-hasfill .qwin .ll-why{
   color:#000 !important;
   text-shadow:none !important;
 }
@@ -1794,7 +1803,7 @@
    فيبتلعُ الاستثناءاتِ ولو كانت `!important` (فخٌّ قِيسَ حيّاً في `skin-rocky`).
    ⚠️ **والافتراضُ هنا التقطيعُ التساعيُّ لا الثلاثيّ** — تفصيلُه في §الكبسولةُ التساعية أدناه. */
 .shoogp-ui.skin-ivory .qwin :where(.opt,.tf,.excl-opt,.mitem,.chip,.seqitem,.aopt,.cswatch,
-                                   .blank,.target,.grp-h,.jr-bt){
+                                   .blank,.target,.grp-h,.jr-bt,.ll-listen){
   isolation:isolate;
   min-height:var(--dn-h);
   min-width:0;
@@ -1823,7 +1832,13 @@
    وفرضُ `relative` يُعيدُه إلى التدفّقِ فيمتدَّ بعرضِ المسرحِ ويسقطَ تحتَ قاعِه.
    (نفسُ الفصلِ حرفاً بحرفٍ في `skin-rocky` و`skin-metal`.) */
 .shoogp-ui.skin-ivory .qwin :where(.opt,.tf,.excl-opt,.mitem,.chip,.seqitem,.aopt,.cswatch,
-                                   .blank,.grp-h,.jr-bt){position:relative}
+                                   .blank,.grp-h,.jr-bt,.ll-listen){position:relative}
+/* زرُّ الاستماعِ كلمتانِ لا تلتفّان — فيأخذُ استثناءَ التقطيعِ الثلاثيِّ نفسَه
+   الذي يأخذُه `.tf` و`.jr-bt` (§الكبسولةُ التساعيةُ هي الافتراض). */
+.shoogp-ui.skin-ivory .qwin .ll-listen{
+  border-width:0 calc(var(--dn-h) * var(--dn-cap)) !important;
+  border-image:url('../images/ui/opt-deeny.png') 0 128 fill !important;
+}
 /* عمودُ الخياراتِ يتبعُ عرضَ النافذةِ الحيّة (سقفُ 560px في style.css يقصُّ الكبسولةَ الطويلة) */
 .shoogp-ui.skin-ivory .qwin .opts{max-width:none}
 /* ═══ الكبسولةُ التساعيةُ هي **الافتراض** — والالتفافُ الآمنُ علّتُها ═══
