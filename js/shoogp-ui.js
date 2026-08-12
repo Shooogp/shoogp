@@ -255,8 +255,13 @@ var FRAME_FAMILIES={
      فوقَ الأبيضِ (عكسُ عمليةِ الإزالةِ حرفياً)، والأصلُ قبلَ الإصلاح في
      `images/ui/originals/frame-deeny-s.png`. الثلاثةُ الباقيةُ سليمةٌ لم تُمسّ. */
   deeny:{ order:['s','m','l','tall'], flexBase:'l', sizes:{
-    s:{img:'frame-deeny-s.png', ar:'1305 / 600',  win:{top:'21.5%', left:'12.8%', right:'15.5%', bottom:'18%'},   hasFill:true, fillColor:'#FFFFFF'},
-    m:{img:'frame-deeny-m.png', ar:'1200 / 904',  win:{top:'15.8%', left:'12.6%', right:'13.5%', bottom:'13.5%'}, hasFill:true, fillColor:'#FFFFFD'},
+    /* ⚠️ أُعيدَ قياسُ `s` و`m` من الملفَّين ٢٠٢٦-٠٨-١٢: كانت نسبتاهما المعلنتانِ
+       (‏1305/600 و1200/904) **باليتَين** — الصورتانِ أُعيدَ تصديرُهما بأبعادٍ أخرى،
+       فكانَ `reconcileAR` يصحّحُ النسبةَ وقتَ التشغيلِ ويطبعُ تحذيراً عندَ كلِّ فتحِ
+       درس، **وتبقى `win` مقيسةً على أبعادٍ لم تعدْ قائمة** فلا يصحّحُها شيء.
+       و`l` و`tall` لم تُمسّا: ملفّاهما مطابقانِ لإعلانِهما. */
+    s:{img:'frame-deeny-s.png', ar:'1375 / 778',  win:{top:'24.8%', left:'13.1%', right:'17.2%', bottom:'24.5%'}, hasFill:true, fillColor:'#FFFFFF'},
+    m:{img:'frame-deeny-m.png', ar:'1200 / 966',  win:{top:'16.5%', left:'11.5%', right:'14.5%', bottom:'15.8%'}, hasFill:true, fillColor:'#FFFFFD'},
     l:{img:'frame-deeny-l.png', ar:'927 / 904',   win:{top:'15.8%', left:'15.4%', right:'16.4%', bottom:'13.5%'}, hasFill:true, fillColor:'#FFFFFE'},
     tall:{img:'frame-deeny-tall.png', ar:'927 / 1349', win:{top:'11.9%', left:'15.4%', right:'16.4%', bottom:'10.4%'}, hasFill:true, fillColor:'#FFFFFD'}
   }}
