@@ -3,44 +3,58 @@
    بالنقر المزدوج (وضع file://) حيث يمنع المتصفح قراءة ملفات JSON.
    ⚠️ يجب أن تبقى مطابقة لمحتوى data/books.json و data/index.json.
    إن عدّلت ملفات JSON، حدّث هذا الملف أيضاً (أو شغّل عبر الخادم المحلي).
+
+   ⚠️ **والمطابقةُ في `key` و`onSale` مفروضةٌ آلياً لا بالتحذيرِ وحدَه:**
+   ‏`node tools/check-data-sync.mjs` يقارنُ الملفَّينِ ويفشلُ عندَ أيِّ انحراف،
+   وهو خطوةٌ في نشرةِ `pages.yml` **تسبقُ النشرَ فتمنعُه**. سببُ الفرض: سقطت
+   بطاقةُ علومِ الثالثِ من هنا وهي في `books.json` (انظرِ التعليقَ عندَ الصفِّ
+   الثالثِ أدناه) فاختفى الكتابُ في وضعِ `file://` وحدَه — والتحذيرُ النصيُّ
+   كان موجوداً حينَها ولم يمنعْ شيئاً.
+
+   ── حقلُ `onSale` (مصدرُ الحقيقةِ الوحيدُ لِما يُباع) ──
+   ‏`true` = الكتابُ مطروحٌ للبيعِ اليوم ⇒ يُبنى له رابطُ واتساب في نافذةِ الرمزِ
+   ويظهرُ في سلّةِ `pay.html`. **والقيمةُ الافتراضيةُ عندَ غيابِ الحقلِ `false`**
+   (لا يُعرَضُ للبيع) — عمداً: أن يُنسى كتابٌ جديدٌ فلا يُباعَ خطأً يكتشفُه الفحصُ
+   أعلاه في دقائق، أمّا أن يُعرَضَ للبيعِ كتابٌ لا رموزَ له فتقعُ المعلّمةُ في
+   اعتذارِ البوتِ **بعدَ أن قرّرتِ الشراء**. الجانبُ الآمنُ هو الصمت.
    ═══════════════════════════════════════════════════════════════ */
 window.DATA_FALLBACK = {
   // الفصول الدراسية → الصفوف → الكتب  (مطابق لـ data/books.json)
   terms: {
     "الأول": {
       "الأول": [
-        { key:"g1-sci", band:["#4bb3ab","#33978f"], title:"العلوم", term:"الفصل الأول", color:"bk-teal", ic:"🔬", isNew:false, theme:"theme-sci1", cover:"images/cover-g1-sci.jpg" },
-        { key:"g1-math", band:["#30b8d0","#2590a2"], title:"الرياضيات", term:"الفصل الأول", color:"bk-teal", ic:"📐", isNew:false, theme:"theme-math1", cover:"images/cover-g1-math.jpg" },
-        { key:"g1-arabic-1", band:["#93c93f","#74a52c"], title:"أحب لغتي", term:"الفصل الأول", color:"bk-green", ic:"🪶", isNew:false, theme:"theme-arabic1a", cover:"images/cover-g1-arabic-1.jpg" },
-        { key:"g1-arabic-2", band:["#6fa834","#527d22"], title:"أحب لغتي", term:"الفصل الأول", color:"bk-green", ic:"🪶", isNew:false, theme:"theme-arabic1b", cover:"images/cover-g1-arabic-2.jpg" },
-        { key:"g1-dini-1", band:["#6fb8e0","#4a95c4"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-blue", ic:"🕌", isNew:false, theme:"theme-dini1a", cover:"images/cover-g1-dini-1.jpg" },
-        { key:"g1-dini-2", band:["#4a93c8","#2f70a4"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-blue", ic:"🕌", isNew:false, theme:"theme-dini1b", cover:"images/cover-g1-dini-2.jpg" }
+        { key:"g1-sci", onSale:true, band:["#4bb3ab","#33978f"], title:"العلوم", term:"الفصل الأول", color:"bk-teal", ic:"🔬", isNew:false, theme:"theme-sci1", cover:"images/cover-g1-sci.jpg" },
+        { key:"g1-math", onSale:false, band:["#30b8d0","#2590a2"], title:"الرياضيات", term:"الفصل الأول", color:"bk-teal", ic:"📐", isNew:false, theme:"theme-math1", cover:"images/cover-g1-math.jpg" },
+        { key:"g1-arabic-1", onSale:false, band:["#93c93f","#74a52c"], title:"أحب لغتي", term:"الفصل الأول", color:"bk-green", ic:"🪶", isNew:false, theme:"theme-arabic1a", cover:"images/cover-g1-arabic-1.jpg" },
+        { key:"g1-arabic-2", onSale:false, band:["#6fa834","#527d22"], title:"أحب لغتي", term:"الفصل الأول", color:"bk-green", ic:"🪶", isNew:false, theme:"theme-arabic1b", cover:"images/cover-g1-arabic-2.jpg" },
+        { key:"g1-dini-1", onSale:false, band:["#6fb8e0","#4a95c4"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-blue", ic:"🕌", isNew:false, theme:"theme-dini1a", cover:"images/cover-g1-dini-1.jpg" },
+        { key:"g1-dini-2", onSale:false, band:["#4a93c8","#2f70a4"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-blue", ic:"🕌", isNew:false, theme:"theme-dini1b", cover:"images/cover-g1-dini-2.jpg" }
       ],
       "الثاني": [
-        { key:"g2-sci", band:["#f5a04a","#e07f2b"], title:"العلوم", term:"الفصل الأول", color:"bk-orange", ic:"🔬", isNew:false, theme:"theme-sci2", cover:"images/cover-g2-sci.jpg" },
-        { key:"g2-math", band:["#f5a04a","#e07f2b"], title:"الرياضيات", term:"الفصل الأول", color:"bk-orange", ic:"📐", isNew:true, theme:"theme-math2", cover:"images/cover-g2-math.jpg" },
-        { key:"g2-arabic-1", band:["#f0a860","#d0863c"], title:"أحب لغتي", term:"الفصل الأول", color:"bk-orange", ic:"🪶", isNew:false, theme:"theme-arabic2a", cover:"images/cover-g2-arabic-1.jpg" },
-        { key:"g2-arabic-2", band:["#a888c8","#8666a8"], title:"أحب لغتي", term:"الفصل الأول", color:"bk-purple", ic:"🪶", isNew:false, theme:"theme-arabic2b", cover:"images/cover-g2-arabic-2.jpg" },
-        { key:"g2-dini-1", band:["#8fa83a","#6d8528"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-green", ic:"🕌", isNew:false, theme:"theme-dini2a", cover:"images/cover-g2-dini-1.jpg" },
-        { key:"g2-dini-2", band:["#6d8a2c","#52691c"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-green", ic:"🕌", isNew:false, theme:"theme-dini2b", cover:"images/cover-g2-dini-2.jpg" }
+        { key:"g2-sci", onSale:true, band:["#f5a04a","#e07f2b"], title:"العلوم", term:"الفصل الأول", color:"bk-orange", ic:"🔬", isNew:false, theme:"theme-sci2", cover:"images/cover-g2-sci.jpg" },
+        { key:"g2-math", onSale:false, band:["#f5a04a","#e07f2b"], title:"الرياضيات", term:"الفصل الأول", color:"bk-orange", ic:"📐", isNew:true, theme:"theme-math2", cover:"images/cover-g2-math.jpg" },
+        { key:"g2-arabic-1", onSale:false, band:["#f0a860","#d0863c"], title:"أحب لغتي", term:"الفصل الأول", color:"bk-orange", ic:"🪶", isNew:false, theme:"theme-arabic2a", cover:"images/cover-g2-arabic-1.jpg" },
+        { key:"g2-arabic-2", onSale:false, band:["#a888c8","#8666a8"], title:"أحب لغتي", term:"الفصل الأول", color:"bk-purple", ic:"🪶", isNew:false, theme:"theme-arabic2b", cover:"images/cover-g2-arabic-2.jpg" },
+        { key:"g2-dini-1", onSale:false, band:["#8fa83a","#6d8528"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-green", ic:"🕌", isNew:false, theme:"theme-dini2a", cover:"images/cover-g2-dini-1.jpg" },
+        { key:"g2-dini-2", onSale:false, band:["#6d8a2c","#52691c"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-green", ic:"🕌", isNew:false, theme:"theme-dini2b", cover:"images/cover-g2-dini-2.jpg" }
       ],
       /* ملاحظة: بطاقة علوم الثالث كانت مفقودة من هذا الاحتياط بينما هي في data/books.json —
          فكان الكتاب يختفي في وضع file:// وحده. أُضيفت هنا مع بطاقات الصف الجديدة. */
       "الثالث": [
-        { key:"g3-sci", band:["#f26169","#cf3a44"], title:"العلوم", term:"الفصل الأول", color:"bk-red", ic:"🔬", isNew:false, theme:"theme-sci3", cover:"images/cover-g3-sci.jpg" },
-        { key:"g3-math", band:["#f0596e","#cf3a52"], title:"الرياضيات", term:"الفصل الأول", color:"bk-red", ic:"📐", isNew:false, theme:"theme-math3", cover:"images/cover-g3-math.jpg" },
-        { key:"g3-arabic-1", band:["#f2b989","#d4936a"], title:"أحب لغتي", term:"الفصل الأول", color:"bk-orange", ic:"🪶", isNew:false, theme:"theme-arabic3a", cover:"images/cover-g3-arabic-1.jpg" },
-        { key:"g3-arabic-2", band:["#7fc4e8","#5aa0cc"], title:"أحب لغتي", term:"الفصل الأول", color:"bk-blue", ic:"🪶", isNew:false, theme:"theme-arabic3b", cover:"images/cover-g3-arabic-2.jpg" },
-        { key:"g3-dini-1", band:["#86bfb8","#609b94"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-teal", ic:"🕌", isNew:false, theme:"theme-dini3a", cover:"images/cover-g3-dini-1.jpg" },
-        { key:"g3-dini-2", band:["#62bcbc","#429898"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-teal", ic:"🕌", isNew:false, theme:"theme-dini3b", cover:"images/cover-g3-dini-2.jpg" }
+        { key:"g3-sci", onSale:true, band:["#f26169","#cf3a44"], title:"العلوم", term:"الفصل الأول", color:"bk-red", ic:"🔬", isNew:false, theme:"theme-sci3", cover:"images/cover-g3-sci.jpg" },
+        { key:"g3-math", onSale:false, band:["#f0596e","#cf3a52"], title:"الرياضيات", term:"الفصل الأول", color:"bk-red", ic:"📐", isNew:false, theme:"theme-math3", cover:"images/cover-g3-math.jpg" },
+        { key:"g3-arabic-1", onSale:false, band:["#f2b989","#d4936a"], title:"أحب لغتي", term:"الفصل الأول", color:"bk-orange", ic:"🪶", isNew:false, theme:"theme-arabic3a", cover:"images/cover-g3-arabic-1.jpg" },
+        { key:"g3-arabic-2", onSale:false, band:["#7fc4e8","#5aa0cc"], title:"أحب لغتي", term:"الفصل الأول", color:"bk-blue", ic:"🪶", isNew:false, theme:"theme-arabic3b", cover:"images/cover-g3-arabic-2.jpg" },
+        { key:"g3-dini-1", onSale:false, band:["#86bfb8","#609b94"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-teal", ic:"🕌", isNew:false, theme:"theme-dini3a", cover:"images/cover-g3-dini-1.jpg" },
+        { key:"g3-dini-2", onSale:false, band:["#62bcbc","#429898"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-teal", ic:"🕌", isNew:false, theme:"theme-dini3b", cover:"images/cover-g3-dini-2.jpg" }
       ],
       "الرابع": [
-        { key:"g4-sci", band:["#5cc98a","#3fa870"], title:"العلوم", term:"الفصل الأول", color:"bk-green", ic:"🔬", isNew:false, theme:"theme-sci", coverReal:"images/cover-g4-sci-real.jpg", coverOriginal:"images/cover-g4-sci.jpg" },
-        { key:"g4-math", band:["#8abc32","#719a29"], title:"الرياضيات", term:"الفصل الأول", color:"bk-orange", ic:"📐", isNew:true, theme:"theme-math", cover:"images/cover-g4-math.jpg" },
-        { key:"g4-arabic-1", band:["#4bb3ab","#33978f"], title:"أحب لغتي", term:"الفصل الأول", color:"bk-teal", ic:"🪶", isNew:false, theme:"theme-arabic", cover:"images/cover-g4-arabic-1.jpg" },
-        { key:"g4-arabic-2", band:["#ec9c70","#c2805c"], title:"أحب لغتي", term:"الفصل الأول", color:"bk-orange", ic:"🪶", isNew:false, theme:"theme-arabic-2", cover:"images/cover-g4-arabic-2.jpg" },
-        { key:"g4-dini-1", band:["#4fa8e8","#2f88d0"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-blue", ic:"🕌", isNew:false, theme:"theme-dini", cover:"images/cover-g4-dini-1.jpg" },
-        { key:"g4-dini-2", band:["#4bb3ab","#33978f"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-teal", ic:"🕌", isNew:false, theme:"theme-dini-2", cover:"images/cover-g4-dini-2.jpg" }
+        { key:"g4-sci", onSale:true, band:["#5cc98a","#3fa870"], title:"العلوم", term:"الفصل الأول", color:"bk-green", ic:"🔬", isNew:false, theme:"theme-sci", coverReal:"images/cover-g4-sci-real.jpg", coverOriginal:"images/cover-g4-sci.jpg" },
+        { key:"g4-math", onSale:false, band:["#8abc32","#719a29"], title:"الرياضيات", term:"الفصل الأول", color:"bk-orange", ic:"📐", isNew:true, theme:"theme-math", cover:"images/cover-g4-math.jpg" },
+        { key:"g4-arabic-1", onSale:false, band:["#4bb3ab","#33978f"], title:"أحب لغتي", term:"الفصل الأول", color:"bk-teal", ic:"🪶", isNew:false, theme:"theme-arabic", cover:"images/cover-g4-arabic-1.jpg" },
+        { key:"g4-arabic-2", onSale:false, band:["#ec9c70","#c2805c"], title:"أحب لغتي", term:"الفصل الأول", color:"bk-orange", ic:"🪶", isNew:false, theme:"theme-arabic-2", cover:"images/cover-g4-arabic-2.jpg" },
+        { key:"g4-dini-1", onSale:false, band:["#4fa8e8","#2f88d0"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-blue", ic:"🕌", isNew:false, theme:"theme-dini", cover:"images/cover-g4-dini-1.jpg" },
+        { key:"g4-dini-2", onSale:false, band:["#4bb3ab","#33978f"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-teal", ic:"🕌", isNew:false, theme:"theme-dini-2", cover:"images/cover-g4-dini-2.jpg" }
       ]
     },
     "الثاني": {

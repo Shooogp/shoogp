@@ -53,16 +53,32 @@
    فالحاجزُ أدناه يبقى وصفاً للآليةِ لا لِما يراه الزائرُ فعلاً.
 
    ── زرُّ «شراء الكتاب» في شارةِ القفلِ الرملية ──
-   داخلَ نافذةِ الرمزِ نفسِها، أسفلَ زرِّ «فتح الوحدة»: رابطٌ يفتحُ
-   `pay.html?book=<مفتاحُ الكتاب>` في **تبويبٍ جديد** (‏`target="_blank"` مع
-   `rel="noopener"`). **يظهرُ لكلِّ الكتبِ بلا استثناء** — وصفحةُ الدفعِ وحدَها هي
-   التي تقولُ إن كان الكتابُ مطروحاً للبيعِ أو «قريباً» (‏`ON_SALE` هناك)، فلا
-   تُكرَّرُ قائمةُ المطروحِ في مكانَين.
+   داخلَ نافذةِ الرمزِ نفسِها، أسفلَ زرِّ «فتح الوحدة»: رابطٌ يفتحُ **محادثةَ
+   واتسابِ شوجب** في تبويبٍ جديد (‏`target="_blank"` مع `rel="noopener"`) بنصٍّ
+   مهيَّأٍ فيه عنوانُ الكتابِ ومفتاحُه. تُرسِلُ المعلّمةُ الرسالةَ ثمّ الإيصالَ،
+   فيقرؤه سيرُ عملِ n8n ويردُّ بالرمز. **ولم يعدْ رفعُ الإيصالِ في الموقعِ مسارَ
+   البيع** — و`pay.html` باقيةٌ عاملةً بالتوازي مؤقّتاً ولم تُحذَفْ.
+   ⚠️ **صيغةُ `[المفتاح]` بين قوسَينِ معقوفَينِ عقدٌ مع n8n** — يلتقطُها بنمطِ
+   `\[([a-z0-9-]+)\]`، فلا يُغيَّرُ شكلُها ولا يُترجَمُ المفتاحُ ولا يُزخرَفُ
+   القوسان. والعنوانُ قبلَها للمعلّمةِ تقرؤه، والمفتاحُ للبوتِ يقرؤه.
    ⚠️ **الزرُّ في النافذةِ لا في شارةِ رأسِ الوحدة** (‏`.unit-lock` في `js/app.js`):
    تلك الشارةُ `span` داخلَ `button` رأسِ الوحدةِ عمداً — فعنصرٌ تفاعليٌّ داخلَها
    يُعشِّشُ زرّاً في زرّ. والنافذةُ هي ما يُفتَحُ بنقرِ الشارةِ أصلاً.
    ⚠️ **المفتاحُ هو مفتاحُ الكتابِ نفسُه** (`pending.bookKey`)، وهو مفتاحُ
    `data/books.json` الذي تقرأُ منه صفحةُ الدفعِ قائمتَها — فالطرفانِ على مصدرٍ واحد.
+
+   ── مَن يُباعُ ومَن «قريباً» — حقلُ `onSale` في `data/books.json` ──
+   الكتابُ غيرُ المطروحِ **لا يُبنى له رابطُ واتسابٍ أصلاً**: يُعطَّلُ الزرُّ ويصيرُ
+   نصُّه «🛒 شراء الكتاب — قريباً» بلا `href`. والقائمةُ تُقرأُ من `DATA.terms`
+   (‏وهو محتوى `data/books.json` كما حمّلَه `js/app.js`) — **بلا جلبٍ جديدٍ ولا
+   نسخةٍ ثانيةٍ من القائمة**؛ وسابقتُه `bookEntry()` في `js/shoogp-ui.js`.
+   ⚠️ **القيمةُ الافتراضيةُ عندَ غيابِ الحقلِ `false`** (لا يُعرَضُ للبيع) عمداً:
+   أن يُنسى كتابٌ جديدٌ فلا يُباعَ خطأً يكتشفُه `tools/check-data-sync.mjs` في
+   دقائق، أمّا أن يُعرَضَ للبيعِ كتابٌ لا رموزَ له فتقعُ المعلّمةُ في اعتذارِ البوتِ
+   **بعدَ أن قرّرتِ الشراء**. الجانبُ الآمنُ هو الصمت.
+   ⚠️ **ولا تُكرَّرُ القائمةُ في مكانَين:** `pay.html` تقرأُ `onSale` نفسَه من
+   الملفِّ نفسِه (‏`CONFIG.ON_SALE` حُذفت)، واحتياطُ `js/data.js` يحملُه أيضاً
+   ومطابقتُه مفروضةٌ آلياً في نشرةِ `pages.yml` لا بتحذيرٍ مكتوب.
 
    ── حدٌّ صريحٌ لا يُتجاوَز ──
    هذا **حاجزُ شراءٍ لا حمايةٌ أمنية**. أيُّ قفلٍ في موقعٍ ثابتٍ يمكنُ تجاوزُه من
@@ -260,8 +276,56 @@
   function bookTitle(bookKey) {
     try {
       var idx = DATA && DATA.index && DATA.index[bookKey];
-      return (idx && idx.book) || bookKey;
-    } catch (e) { return bookKey; }
+      if (idx && idx.book) return idx.book;
+    } catch (e) {}
+    /* احتياطٌ من `data/books.json` نفسِه — الكتابُ قد يكونُ ببطاقةٍ بلا مدخلٍ في
+       `index.json` بعد. ولولاه لَخرجَ **المفتاحُ** عنواناً إلى رسالةِ واتساب. */
+    var e2 = bookEntry(bookKey);
+    if (e2 && e2.title) {
+      var part = /-1$/.test(bookKey) ? ' (الجزء الأول)'
+               : /-2$/.test(bookKey) ? ' (الجزء الثاني)' : '';
+      return e2.title + part + (e2.grade ? ' — الصف ' + e2.grade : '');
+    }
+    return bookKey;
+  }
+
+  /* ═══ مدخلُ الكتابِ في `data/books.json` (‏`DATA.terms`) ومعه اسمُ صفِّه ═══
+     الملفُّ مُبوَّبٌ: فصلٌ ← صفٌّ ← قائمةُ كتب. نمسحُه كما تفعلُ `bookEntry()` في
+     `js/shoogp-ui.js` — لا جلبَ ولا نسخةَ بيانات. و`try` تحمي من منطقةِ الموتِ
+     المؤقّتةِ لِـ`DATA` كما في `bookTitle` أعلاه. */
+  function bookEntry(bookKey) {
+    try {
+      var T = DATA && DATA.terms;
+      for (var t in T) {
+        for (var g in T[t]) {
+          var list = T[t][g] || [];
+          for (var i = 0; i < list.length; i++) {
+            if (list[i] && list[i].key === bookKey) {
+              return { title: list[i].title, grade: g, onSale: list[i].onSale };
+            }
+          }
+        }
+      }
+    } catch (e) {}
+    return null;
+  }
+
+  /* هل الكتابُ مطروحٌ للبيعِ اليوم؟ — **`=== true` لا صدقٌ عامّ**: الغيابُ
+     (‏`undefined`) والكتابُ المجهولُ كلاهما «لا» (راجعْ رأسَ الملفّ: الجانبُ
+     الآمنُ هو الصمت). ولا قائمةَ هنا تُنسَخُ — الحقلُ في `data/books.json`. */
+  function isOnSale(bookKey) {
+    var e = bookEntry(bookKey);
+    return !!e && e.onSale === true;
+  }
+
+  /* ═══ رابطُ شراءٍ عبرَ واتساب ═══
+     ⚠️ `[المفتاح]` عقدٌ مع n8n (نمطُ `\[([a-z0-9-]+)\]`) — لا يُغيَّرُ شكلُه.
+     و`encodeURIComponent` يُخرِجُ العربيةَ بترميزِ UTF-8 المئويِّ الذي يفكُّه
+     واتسابُ نفسُه، فتصلُ الرسالةُ بحروفِها لا بعلاماتِ استفهام. */
+  var WA_NUMBER = '96871712937';
+  function waBuy(key, title) {
+    return 'https://wa.me/' + WA_NUMBER + '?text=' +
+           encodeURIComponent('أرغب في شراء: ' + title + ' [' + key + ']');
   }
 
   /* ═══ هل الرمزُ لهذا الكتاب؟ ═══
@@ -330,13 +394,30 @@
     box.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') { e.preventDefault(); close(); return; }
       if (e.key !== 'Tab') return;
-      var f = box.querySelectorAll('.lockclose, .lockinput, .lockgo, .lockbuy');
+      /* ⚠️ **الفعليُّ القابلُ للتركيزِ لا كلُّ ما طابقَ المحدِّد**: زرُّ الشراءِ
+         يفقدُ `href` حينَ يكونُ الكتابُ «قريباً» فيخرجُ من ترتيبِ التركيز.
+         الفرزُ في `focusable()` أدناه — وفيه لماذا لا يكفي `tabIndex`. */
+      var f = [].filter.call(
+        box.querySelectorAll('.lockclose, .lockinput, .lockgo, .lockbuy'), focusable);
+      if (!f.length) return;
       var first = f[0], last = f[f.length - 1];
       if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     });
 
     return box;
+  }
+
+  /* ═══ أيُّ عناصرِ النافذةِ يصلُها Tab فعلاً ═══
+     ⚠️ **`tabIndex` وحدَه يكذبُ على الروابط**: مقيسٌ في كروم — رابطٌ بلا `href`
+     يُرجِعُ `tabIndex = 0` مع أنّ `focus()` عليه لا يفعلُ شيئاً (‏`activeElement`
+     لا يتغيّر). فلو صُدِّقَ الرقمُ لبقيَ زرُّ الشراءِ المعطَّلُ («قريباً») آخرَ
+     عنصرٍ في الحلقةِ ولا يُطابِقُ `activeElement` أبداً ⇒ **يُفلِتُ Tab من
+     النافذةِ إلى شريطِ المتصفّح**. فالفحصُ على `href` صراحةً لا على الرقم. */
+  function focusable(el) {
+    if (el.disabled) return false;
+    if (el.tagName === 'A' && !el.hasAttribute('href')) return false;
+    return el.tabIndex >= 0;
   }
 
   function say(text, kind) {
@@ -358,8 +439,21 @@
     elInput.value = '';
     say('', '');
     elGo.disabled = false;
-    // زرُّ الشراءِ يحملُ مفتاحَ الكتابِ الحاليَّ فتفتحُ صفحةُ الدفعِ عليه مختاراً
-    elBuy.href = 'pay.html?book=' + encodeURIComponent(bookKey);
+    /* زرُّ الشراءِ يفتحُ محادثةَ واتسابٍ بعنوانِ الكتابِ ومفتاحِه — أو يُعطَّلُ
+       بـ«قريباً» إن لم يكنِ الكتابُ مطروحاً (‏`onSale`، راجعْ رأسَ الملفّ).
+       ⚠️ **إزالةُ `href` لا تعطيلٌ بصريٌّ فقط**: رابطٌ بلا `href` غيرُ قابلٍ
+       للنقرِ ولا للتركيز، فلا تصلُ المعلّمةُ إلى واتسابَ بلوحةِ المفاتيح. */
+    if (isOnSale(bookKey)) {
+      elBuy.href = waBuy(bookKey, bookTitle(bookKey));
+      elBuy.textContent = '🛒 شراء الكتاب';
+      elBuy.classList.remove('is-soon');
+      elBuy.removeAttribute('aria-disabled');
+    } else {
+      elBuy.removeAttribute('href');
+      elBuy.textContent = '🛒 شراء الكتاب — قريباً';
+      elBuy.classList.add('is-soon');
+      elBuy.setAttribute('aria-disabled', 'true');
+    }
 
     lastFocus = document.activeElement;
     box.removeAttribute('hidden');

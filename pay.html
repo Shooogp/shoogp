@@ -303,13 +303,16 @@ const CONFIG = {
   WEBHOOK : "https://shoogp.app.n8n.cloud/webhook/activate",
   PRICE   : 1,            // سعرُ **الكتابِ الواحد** — والمجموعُ يُضرَبُ بعددِ كتبِ السلّة
   ACCOUNT : "91496256",   // ← رقم الحساب أو رقم الهاتف للتحويل
-  HOLDER  : "IBRAHIM KHAMIS — بنك مسقط",
-  /* الكتبُ المطروحةُ للبيعِ اليوم. وما عداها من كتبِ `data/books.json` لا يظهرُ
-     في قائمةِ الإضافةِ أصلاً — السلّةُ لا تقبلُ إلا مطروحاً. */
-  ON_SALE : ["g1-sci", "g2-sci", "g3-sci", "g4-sci"]
+  HOLDER  : "IBRAHIM KHAMIS — بنك مسقط"
 };
 /* قائمةُ الكتبِ تُقرأُ من `data/books.json` — مصدرُ بطاقاتِ المنصّةِ نفسُه،
-   فلا تتفرّقُ نسختانِ ولا يُنسى كتابٌ جديدٌ هنا بعدَ إضافتِه هناك. */
+   فلا تتفرّقُ نسختانِ ولا يُنسى كتابٌ جديدٌ هنا بعدَ إضافتِه هناك.
+   ⚠️ **وما يُطرَحُ للبيعِ منها حقلُ `onSale` في الملفِّ نفسِه** — كانت هنا قائمةٌ
+   ثابتةٌ (`CONFIG.ON_SALE`) فحُذفت: نافذةُ الرمزِ في `js/unlock.js` تحتاجُ القائمةَ
+   أيضاً لتعطيلَ زرِّ واتساب، فكانت ستصيرُ نسختَينِ تنحرفان. والافتراضيُّ عندَ
+   غيابِ الحقلِ **`false`** (لا يُعرَضُ للبيع) — أن يُنسى كتابٌ فلا يُباعَ خطأً
+   يكتشفُه `tools/check-data-sync.mjs`، أمّا أن يُعرَضَ كتابٌ لا رموزَ له فتقعُ
+   المعلّمةُ في اعتذارِ البوتِ بعدَ أن قرّرتِ الشراء. */
 const BOOKS_URL = "data/books.json";
 /* ═══════════════════════════════════════════════ */
 
@@ -337,6 +340,8 @@ let confirmed = false; // بعدَ التأكيدِ تُقفَلُ السلّة�
 let fatal = "";        // عطبٌ يمنعُ الطلبَ كلَّه (تعذّرت قائمةُ الكتبِ مثلاً)
 
 const nameOf = id => (books.find(b => b.id === id) || {}).name || id;
+/* مطروحٌ للبيع؟ — `=== true` صراحةً: المفتاحُ المجهولُ والحقلُ الغائبُ كلاهما «لا» */
+const onSaleOf = id => (books.find(b => b.id === id) || {}).onSale === true;
 
 /* اسمُ العرض: العنوانُ وحدَه لا يكفي — «أحب لغتي» جزآنِ في كلِّ صف،
    فيُضافُ الجزءُ من لاحقةِ المفتاحِ ثمّ الصفُّ من مفتاحِ التجميعِ في الملف. */
@@ -354,7 +359,10 @@ function flatten(data){
       (list || []).forEach(b => {
         if (!b || !b.key || seen.has(b.key)) return;
         seen.add(b.key);
-        out.push({ id:b.key, name:bookLabel(b, grade) });
+        /* ⚠️ `onSale` يُحمَلُ معَ الاسمِ والمفتاح — التسطيحُ يُسقِطُ كلَّ حقلٍ لا
+           يُذكَرُ هنا، فلو نُسيَ لَقُرِئَ `undefined` ⇒ **لا كتابَ يُباعُ إطلاقاً**.
+           و`=== true` يُثبِّتُ الافتراضيَّ `false` عندَ غيابِ الحقلِ من المصدر. */
+        out.push({ id:b.key, name:bookLabel(b, grade), onSale:b.onSale === true });
       })));
   return out;
 }
@@ -380,7 +388,7 @@ function render(){
     b.onclick = () => { cart = cart.filter(x => x !== b.dataset.del); afterCartChange(); });
 
   // ③ قائمةُ الإضافة: المطروحُ فقط، وبلا ما في السلّةِ أصلاً
-  const avail = books.filter(b => CONFIG.ON_SALE.includes(b.id) && !cart.includes(b.id));
+  const avail = books.filter(b => b.onSale && !cart.includes(b.id));
   $("addSel").innerHTML = avail.length
     ? avail.map(b => `<option value="${b.id}">${b.name}</option>`).join("")
     : `<option>لا كتبَ أخرى متاحةً الآن</option>`;
@@ -411,7 +419,7 @@ function afterCartChange(){ render(); if (showQR) drawQR(); }
 
 $("addBtn").onclick = () => {
   const id = $("addSel").value;
-  if (!id || cart.includes(id) || !CONFIG.ON_SALE.includes(id)) return;
+  if (!id || cart.includes(id) || !onSaleOf(id)) return;
   cart.push(id);
   note("");
   afterCartChange();
@@ -462,7 +470,7 @@ function applyWanted(){
   wantedIds.forEach(id => {
     const b = books.find(x => x.id === id);
     if (!b) { unknown.push(id); return; }
-    if (!CONFIG.ON_SALE.includes(id)) { soon.push(b.name); return; }
+    if (!b.onSale) { soon.push(b.name); return; }
     if (!cart.includes(id)) cart.push(id);
   });
   if (cart.length) pinned = cart[0];

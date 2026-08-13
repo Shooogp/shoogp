@@ -29,6 +29,12 @@ jobs:
       - name: جلب الملفات
         uses: actions/checkout@v4
 
+      # حارسٌ **يسبقُ النشرَ فيمنعُه**: `data/books.json` و`js/data.js` نسختانِ
+      # لبياناتٍ واحدة (الثانيةُ احتياطُ وضعِ `file://`)، وانحرافُهما وقعَ فعلاً
+      # من قبل. الفحصُ بـNode وحدَه بلا `npm ci` — لا اعتماديةَ له خارجَ المنصّة.
+      - name: فحص تطابق بيانات الكتب
+        run: node tools/check-data-sync.mjs
+
       - name: ختم ?v= ببصمة النشرة
         run: |
           STAMP="${GITHUB_SHA:0:8}"

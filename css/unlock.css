@@ -237,7 +237,7 @@
 
 /* زرُّ «شراء الكتاب» — فعلٌ ثانويٌّ بجانبِ «فتح الوحدة» الأخضرِ الرئيسيّ.
    بهيئةِ الحجرِ الرمليِّ نفسِها (‏`--lk-*`) لا بالأخضر، فلا يتنافسُ فعلانِ على
-   العينِ في نافذةٍ واحدة. رابطٌ لا زرّ — يفتحُ تبويباً جديداً. */
+   العينِ في نافذةٍ واحدة. رابطٌ لا زرّ — يفتحُ محادثةَ واتسابٍ في تبويبٍ جديد. */
 .lockbuy{
   display:flex; align-items:center; justify-content:center; gap:8px;
   margin-top:12px; min-height:60px; padding:14px 24px; border-radius:999px;
@@ -263,6 +263,14 @@
 .lockbuy:active{transform:translateY(1px);
   box-shadow:inset 0 2px 0 rgba(255,255,255,.7), 0 1px 0 rgba(163,127,72,.55), 0 3px 8px rgba(60,40,15,.24)}
 .lockbuy:focus-visible{outline:3px solid #7f5cc0; outline-offset:3px}
+/* «— قريباً»: كتابٌ لم يُطرحْ للبيعِ بعد (‏`onSale:false` في data/books.json).
+   يبقى **مرئياً** لا مخفياً — فاختفاءُ الزرِّ يُقرأُ عطباً، وظهورُه باهتاً يقولُ
+   «هنا شراءٌ لم يحنْ». والتعطيلُ الفعليُّ بإزالةِ `href` في js/unlock.js لا هنا. */
+.lockbuy.is-soon{
+  filter:grayscale(.65) brightness(.94); opacity:.72;
+  cursor:default; pointer-events:none;
+}
+.lockbuy.is-soon:hover{transform:none}
 
 /* منعُ تمريرِ الصفحةِ خلفَ النافذة */
 body.lock-open{overflow:hidden}
