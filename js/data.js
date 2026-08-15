@@ -572,9 +572,9 @@ window.DATA_FALLBACK = {
         { title:"الدرس الأول: سورة الفجر (١٧–٣٠)", file:"g3d2-3-1", open:true },
         { title:"الدرس الثاني: كفالة اليتيم", file:"g3d2-3-2", open:true },
         { title:"الدرس الثالث: الله السميع", file:"g3d2-3-3", open:true },
-        { title:"الدرس الرابع: صلاة الجمعة", file:"g3d2-3-4", open:false },
-        { title:"الدرس الخامس: إسلام أبي بكر الصدّيق ؓ", file:"g3d2-3-5", open:false },
-        { title:"الدرس السادس: الادّخار", file:"g3d2-3-6", open:false }
+        { title:"الدرس الرابع: صلاة الجمعة", file:"g3d2-3-4", open:true },
+        { title:"الدرس الخامس: إسلام أبي بكر الصدّيق ؓ", file:"g3d2-3-5", open:true },
+        { title:"الدرس السادس: الادّخار", file:"g3d2-3-6", open:true }
       ]},
       { unit:"الوحدة الرابعة", lessons:[
         { title:"الدرس الأول: سورة الغاشية", file:"g3d2-4-1", open:false },
