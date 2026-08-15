@@ -19,6 +19,14 @@
    المستودع، ولا تُبنى ترجمةٌ بينهما في أيِّ موضع: هويةُ الكتابِ في القفلِ تُقرأُ من
    **المصدرِ نفسِه الذي تُقرأُ منه القائمة** (`currentBook` في `js/app.js`).
 
+   ── الحزمة: نطاقُ بيعٍ يمنحُ كتابَين ──
+   «ديني حياتي» و«أحب لغتي» جزآنِ في كلِّ صفّ، ويُباعانِ **كتاباً واحداً بثمنٍ
+   واحدٍ ورمزٍ واحد**. فالنطاقُ `g1-din` **حزمةٌ** لا مفتاحُ كتاب: يمنحُ
+   `g1-dini-1` و`g1-dini-2` معاً. التعريفُ في `data/bundles.json`، والتفصيلُ
+   عندَ `bundlesCache` أدناه. ⚠️ **والحزمةُ تُفَكُّ عندَ الفتحِ لا عندَ العرض:**
+   المخزَّنُ في `localStorage` مفاتيحُ الكتبِ الحقيقيةُ وحدَها، فلا يعرفُ القفلُ
+   بالحزمِ شيئاً وتبقى القاعدةُ أعلاه على حالِها بلا ترجمةٍ وقتَ الرسم.
+
    ⚠️ **الصيغةُ القديمةُ `g4-sci#3` (نطاقُ وحدة) أُسقِطت من المنطقِ ولا تُرفَض:**
    يُقتَطَعُ ما بعدَ `#` فتُعامَلُ رمزَ كتاب — في `redeem` لِما يردُ من `codes.json`،
    وفي `grants` لِما قد يكونُ محفوظاً في متصفّحِ معلّمةٍ من قبل. **احتياطٌ بسطرَين
@@ -84,11 +92,58 @@
   var SALT = 'shoogp::2026';        // ⚠️ يجب أن يطابق SALT في generate-codes.cjs
   var STORE_KEY = 'shoogp-unlocked';
   var CODES_URL = 'data/codes.json';
+  var BUNDLES_URL = 'data/bundles.json';
   var FREE_UNITS = 1;               // عدد الوحدات المجانية في رأس كل كتاب
 
   /* نطاقُ الكتابِ من أيِّ نطاقٍ مخزَّن: يقتطعُ لاحقةَ `#n` من الصيغةِ القديمة
      (نطاقُ الوحدة) فتُعامَلُ رمزَ كتاب. سطرٌ واحدٌ يحمي رمزاً قديماً إن وُجد. */
   function bookOf(scope) { return String(scope == null ? '' : scope).split('#')[0]; }
+
+  /* ═══════════════════ الحزمة: نطاقُ بيعٍ يمنحُ أكثرَ من كتاب ═══════════════════
+     «ديني حياتي» و«أحب لغتي» جزآنِ في كلِّ صفّ، فهما في `data/books.json` كتابانِ
+     مستقلّانِ لكلٍّ منهما وحداتُه. وقرارُ البيعِ أنّ **الجزأينِ كتابٌ واحدٌ بثمنٍ
+     واحدٍ ورمزٍ واحد** — فلا تشتري المعلّمةُ ما تراه كتاباً مرّتَين.
+
+     فالنطاقُ `g1-din` **حزمةٌ**: لا كتابَ بهذا المفتاحِ في `books.json`، وإنما
+     يمنحُ أعضاءَه `g1-dini-1` و`g1-dini-2`. والتعريفُ في `data/bundles.json`
+     **مصدراً واحداً** تقرأُ منه ثلاثةُ مواضع: هذا الملفُّ، و`pay.html`،
+     و`generate-codes.cjs`.
+
+     ⚠️ **ولا يخرقُ هذا قاعدةَ «النطاقُ مفتاحُ الكتابِ حرفياً» أعلاه:** تلك تمنعُ
+     الترجمةَ بينَ بادئةِ ملفِّ الدرسِ ومفتاحِ الكتاب. والحزمةُ ليست ترجمةً بل
+     **مفهومُ بيعٍ** فوقَ المفاتيح: ما يُخزَّنُ في `localStorage` بعدَ الفتحِ هو
+     **مفاتيحُ الكتبِ الحقيقيةُ لا مفتاحُ الحزمة**، فيبقى `isUnitLocked` وخريطةُ
+     المنَحِ على المفاتيحِ الحرفيةِ وحدَها بلا أيِّ ترجمةٍ وقتَ العرض.
+
+     ⚠️ **ولا يُبطِلُ رمزاً صادراً:** البصمةُ تُحسَبُ على الرمزِ المطبَّعِ وحدَه ولا
+     يدخلُ النطاقُ فيها — النطاقُ قيمةٌ في `codes.json` لا جزءٌ من مفتاحِها. */
+  var bundlesCache = null;
+
+  function loadBundles() {
+    if (bundlesCache) return Promise.resolve(bundlesCache);
+    return fetch(BUNDLES_URL, { cache: 'no-store' })
+      .then(function (r) { return r.ok ? r.json() : {}; })
+      .then(function (o) {
+        bundlesCache = (o && typeof o === 'object') ? o : {};
+        return bundlesCache;
+      })
+      // غيابُ الملفِّ لا يكسرُ الفتح: النطاقُ حينَها يُعامَلُ مفتاحَ كتابٍ كما كان
+      .catch(function () { bundlesCache = {}; return bundlesCache; });
+  }
+
+  /* الكتبُ التي يفتحُها نطاقٌ ما: أعضاءُ الحزمةِ إن كانت حزمة، وإلا فهو نفسُه. */
+  function booksOfScope(scope, bundles) {
+    var b = bundles && bundles[scope];
+    var m = b && b.members;
+    return (m && m.length) ? m.slice() : [scope];
+  }
+
+  /* اسمُ النطاقِ المقروء: عنوانُ الحزمةِ وصفُّها، وإلا فعنوانُ الكتابِ من الفهرس. */
+  function scopeTitle(scope, bundles) {
+    var b = bundles && bundles[scope];
+    if (b && b.title) return b.title + (b.grade ? ' — الصف ' + b.grade : '');
+    return bookTitle(scope);
+  }
 
   /* ───────────────────────── أدوات صغيرة ───────────────────────── */
 
@@ -212,9 +267,11 @@
 
     return sha256hex(SALT + code)
       .then(function (digest) {
-        return fetch(CODES_URL, { cache: 'no-store' })
-          .then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
-          .then(function (codes) { return { digest: digest, codes: codes }; });
+        return Promise.all([
+          fetch(CODES_URL, { cache: 'no-store' })
+            .then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.json(); }),
+          loadBundles()
+        ]).then(function (a) { return { digest: digest, codes: a[0], bundles: a[1] }; });
       })
       .then(function (res) {
         var entry = res.codes && res.codes[res.digest];
@@ -227,10 +284,16 @@
         if (!scope) return { ok: false, reason: 'bad' };
         if (isExpired(exp)) return { ok: false, reason: 'expired' };
 
+        /* الحزمةُ تُفَكُّ هنا مرّةً واحدة: يُخزَّنُ **أعضاؤها** لا مفتاحُها، فما بعدَ
+           هذه النقطةِ لا يعرفُ شيءٌ في الملفِّ بالحزمِ — لا `grants` ولا القفل. */
+        var opened = booksOfScope(scope, res.bundles);
         var g = grants();
-        g[scope] = exp;
+        opened.forEach(function (k) { g[k] = exp; });
         if (!writeStore(g)) return { ok: false, reason: 'store' };
-        return { ok: true, scope: scope, exp: exp };
+        return {
+          ok: true, scope: scope, exp: exp,
+          books: opened, title: scopeTitle(scope, res.bundles)
+        };
       })
       .catch(function () { return { ok: false, reason: 'net' }; });
   }
@@ -265,16 +328,18 @@
   }
 
   /* ═══ هل الرمزُ لهذا الكتاب؟ ═══
-     مطابقةٌ بسيطةٌ بعدَ إسقاطِ نطاقِ الوحدة. وبدونِ هذا الفحصِ يُقبَلُ رمزُ كتابٍ
-     آخرَ وتظهرُ رسالةُ نجاحٍ ثمّ لا يُفتَحُ ما أمامها — «نجاحٌ كاذب». */
-  function scopeCovers(scope, bookKey) {
-    return scope === bookKey;
+     يُفحَصُ على **الكتبِ التي فتحَها الرمزُ فعلاً** (`res.books`) لا على نطاقِه —
+     فرمزُ الحزمةِ `g1-din` يغطّي `g1-dini-1` و`g1-dini-2` كليهما. وبدونِ هذا
+     الفحصِ يُقبَلُ رمزُ كتابٍ آخرَ وتظهرُ رسالةُ نجاحٍ ثمّ لا يُفتَحُ ما أمامها. */
+  function scopeCovers(res, bookKey) {
+    var list = (res && res.books && res.books.length) ? res.books : [res && res.scope];
+    return list.indexOf(bookKey) !== -1;
   }
 
   /* رسالةُ عدمِ التطابقِ — تقولُ للمعلّمةِ **ما الذي يفتحُه رمزُها** و**أين هي الآن**،
      وتطمئنُها أنّ الرمزَ لم يُهدَرْ (المنحةُ محفوظةٌ فعلاً — الرمزُ مدفوعٌ وصحيح). */
-  function mismatchMsg(scope, p) {
-    return 'هذا الرمز لكتابٍ آخر: «' + bookTitle(scope) + '»، ' +
+  function mismatchMsg(res, p) {
+    return 'هذا الرمز لكتابٍ آخر: «' + (res.title || bookTitle(res.scope)) + '»، ' +
            'وأنتِ الآن في «' + bookTitle(p.bookKey) + '». ' +
            'الرمز محفوظٌ ولم يُهدَر — افتحي ذلك الكتاب لتجديه مفتوحاً.';
   }
@@ -387,9 +452,9 @@
       if (res.ok) {
         /* الرمزُ صحيحٌ ومحفوظ — لكن هل هو لهذا الكتاب؟ إن لم يكنْ فلا نقولُ
            «تمّ الفتح» ثمّ ندعُها أمامَ كتابٍ مقفل. */
-        if (p && !scopeCovers(res.scope, p.bookKey)) {
+        if (p && !scopeCovers(res, p.bookKey)) {
           elGo.disabled = false;
-          say(mismatchMsg(res.scope, p), 'bad');
+          say(mismatchMsg(res, p), 'bad');
           elInput.focus(); elInput.select();
           return;
         }
