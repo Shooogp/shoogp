@@ -577,12 +577,12 @@ window.DATA_FALLBACK = {
         { title:"الدرس السادس: الادّخار", file:"g3d2-3-6", open:true }
       ]},
       { unit:"الوحدة الرابعة", lessons:[
-        { title:"الدرس الأول: سورة الغاشية", file:"g3d2-4-1", open:false },
-        { title:"الدرس الثاني: أُسبِّح الله تعالى", file:"g3d2-4-2", open:false },
-        { title:"الدرس الثالث: الله الشافي", file:"g3d2-4-3", open:false },
-        { title:"الدرس الرابع: السنن الراتبة", file:"g3d2-4-4", open:false },
-        { title:"الدرس الخامس: الإمام عليُّ بن أبي طالب ؓ", file:"g3d2-4-5", open:false },
-        { title:"الدرس السادس: العطاء", file:"g3d2-4-6", open:false }
+        { title:"الدرس الأول: سورة الغاشية", file:"g3d2-4-1", open:true },
+        { title:"الدرس الثاني: أُسبِّح الله تعالى", file:"g3d2-4-2", open:true },
+        { title:"الدرس الثالث: الله الشافي", file:"g3d2-4-3", open:true },
+        { title:"الدرس الرابع: السنن الراتبة", file:"g3d2-4-4", open:true },
+        { title:"الدرس الخامس: الإمام عليُّ بن أبي طالب كرَّم الله وجهه", file:"g3d2-4-5", open:true },
+        { title:"الدرس السادس: العطاء", file:"g3d2-4-6", open:true }
       ]}
     ]}
   }
