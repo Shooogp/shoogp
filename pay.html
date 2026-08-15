@@ -305,12 +305,21 @@ const CONFIG = {
   ACCOUNT : "91496256",   // ← رقم الحساب أو رقم الهاتف للتحويل
   HOLDER  : "IBRAHIM KHAMIS — بنك مسقط",
   /* الكتبُ المطروحةُ للبيعِ اليوم. وما عداها من كتبِ `data/books.json` لا يظهرُ
-     في قائمةِ الإضافةِ أصلاً — السلّةُ لا تقبلُ إلا مطروحاً. */
-  ON_SALE : ["g1-sci", "g2-sci", "g3-sci", "g4-sci"]
+     في قائمةِ الإضافةِ أصلاً — السلّةُ لا تقبلُ إلا مطروحاً.
+     ⚠️ مفاتيحُ الحزمِ (`g1-din`، `g1-lug`) تُكتَبُ هنا لا مفاتيحُ أجزائِها —
+     فالجزآنِ يُباعانِ كتاباً واحداً (انظر `data/bundles.json`). */
+  ON_SALE : [
+    "g1-sci",  "g2-sci",  "g3-sci",  "g4-sci",
+    "g1-math", "g2-math", "g3-math", "g4-math",
+    "g1-din",  "g2-din",  "g3-din",  "g4-din",
+    "g1-lug",  "g2-lug",  "g3-lug",  "g4-lug"
+  ]
 };
 /* قائمةُ الكتبِ تُقرأُ من `data/books.json` — مصدرُ بطاقاتِ المنصّةِ نفسُه،
    فلا تتفرّقُ نسختانِ ولا يُنسى كتابٌ جديدٌ هنا بعدَ إضافتِه هناك. */
 const BOOKS_URL = "data/books.json";
+/* والحزمُ من `data/bundles.json` — المصدرُ نفسُه الذي يقرأُه `js/unlock.js`. */
+const BUNDLES_URL = "data/bundles.json";
 /* ═══════════════════════════════════════════════ */
 
 const $ = id => document.getElementById(id);
@@ -357,6 +366,37 @@ function flatten(data){
         out.push({ id:b.key, name:bookLabel(b, grade) });
       })));
   return out;
+}
+
+/* ═══ طيُّ الحزمِ: الجزآنِ سطرٌ واحدٌ في القائمة ═══
+   «ديني حياتي» و«أحب لغتي» جزآنِ في `data/books.json`، وهما في البيعِ كتابٌ
+   واحدٌ بثمنٍ واحدٍ ورمزٍ واحد. فيُستبدَلُ **أوّلُ** جزءٍ بسطرِ الحزمةِ — محافظةً
+   على ترتيبِ القائمةِ الأصليّ — ويُحذَفُ بقيّةُ الأجزاء.
+   والاسمُ بلا «(الجزء الأول)» لأنّ الشراءَ يفتحُهما معاً. */
+function collapseBundles(list, bundles){
+  const memberOf = new Map();   // مفتاحُ الجزءِ ← مفتاحُ الحزمة
+  Object.entries(bundles || {}).forEach(([id, b]) =>
+    (b.members || []).forEach(m => memberOf.set(m, id)));
+  if (!memberOf.size) return list;
+
+  const out = [], placed = new Set();
+  list.forEach(item => {
+    const bid = memberOf.get(item.id);
+    if (!bid){ out.push(item); return; }
+    if (placed.has(bid)) return;               // جزءٌ تالٍ لحزمةٍ وُضِعت — يُطوى
+    placed.add(bid);
+    const b = bundles[bid];
+    out.push({ id: bid, name: b.title + " — الصف " + b.grade, members: b.members.slice() });
+  });
+  return out;
+}
+
+/* مفتاحُ الشراءِ من أيِّ مفتاح: `?book=g1-dini-1` القادمُ من نافذةِ القفلِ في
+   `js/unlock.js` يصيرُ `g1-din` — فتفتحُ الصفحةُ على الحزمةِ لا على جزءٍ لا يُباعُ وحدَه. */
+function saleIdOf(key){
+  const hit = books.find(b => b.id === key
+                           || (b.members && b.members.indexOf(key) !== -1));
+  return hit ? hit.id : key;
 }
 
 function note(html){ $("cartNote").innerHTML = html ? `<div class="note">${html}</div>` : ""; }
@@ -459,9 +499,10 @@ const wantedIds = wantedRaw.split(",").map(s => s.trim()).filter(Boolean);
 function applyWanted(){
   if (!wantedIds.length) return;
   const unknown = [], soon = [];
-  wantedIds.forEach(id => {
+  wantedIds.forEach(raw => {
+    const id = saleIdOf(raw);          // جزءٌ من حزمةٍ ⇒ مفتاحُ الحزمة
     const b = books.find(x => x.id === id);
-    if (!b) { unknown.push(id); return; }
+    if (!b) { unknown.push(raw); return; }
     if (!CONFIG.ON_SALE.includes(id)) { soon.push(b.name); return; }
     if (!cart.includes(id)) cart.push(id);
   });
@@ -474,10 +515,16 @@ function applyWanted(){
   note(msgs.join(" "));
 }
 
-fetch(BOOKS_URL)
-  .then(r => { if (!r.ok) throw new Error("http " + r.status); return r.json(); })
+Promise.all([
+  fetch(BOOKS_URL).then(r => { if (!r.ok) throw new Error("http " + r.status); return r.json(); }),
+  // غيابُ ملفِّ الحزمِ لا يُسقِطُ الصفحة: تُعرَضُ الأجزاءُ كلٌّ على حدةٍ كما كانت
+  fetch(BUNDLES_URL).then(r => r.ok ? r.json() : {}).catch(() => ({}))
+])
   // الرسمُ بعدَ وصولِ القائمةِ لا قبلَها — قبلَها لا أسماءَ للمفاتيحِ أصلاً
-  .then(data => { books = flatten(data); applyWanted(); afterCartChange(); })
+  .then(([data, bundles]) => {
+    books = collapseBundles(flatten(data), bundles);
+    applyWanted(); afterCartChange();
+  })
   .catch(() => {
     fatal = "تعذّر تحميل قائمة الكتب. تأكّدي من الإنترنت وأعيدي تحميل الصفحة.";
     $("qrCard").style.display = "none";   // بلا كتبٍ صالحةٍ لا رمزَ يُرسَم

@@ -60,8 +60,15 @@ try {
   const keys = [];
   Object.values(terms).forEach((grades) =>
     Object.values(grades).forEach((books) => books.forEach((b) => keys.push(b.key))));
+  /* الحزمُ نطاقاتُ بيعٍ صالحةٌ وإن لم تكن مفاتيحَ كتبٍ في `data/books.json`:
+     `g1-din` يفتحُ جزأَي «ديني حياتي» معاً. التعريفُ في `data/bundles.json`،
+     ويقرأُه كذلك `js/unlock.js` و`pay.html` — مصدرٌ واحدٌ لا ثلاثُ نسخ. */
+  const bundlesPath = path.resolve('data/bundles.json');
+  if (fs.existsSync(bundlesPath)) {
+    keys.push(...Object.keys(JSON.parse(fs.readFileSync(bundlesPath, 'utf8'))));
+  }
   if (!keys.includes(bookKey)) {
-    console.error(`\n✗ لا كتابَ مفتاحُه «${bookKey}» في data/books.json.`);
+    console.error(`\n✗ لا كتابَ ولا حزمةَ مفتاحُها «${bookKey}».`);
     console.error('  النطاقُ هو مفتاحُ الكتابِ حرفياً — لا بادئةُ ملفِّ الدرس (g4s-1-1).');
     console.error(`  المتاح: ${keys.join('، ')}\n`);
     process.exit(1);
