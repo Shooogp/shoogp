@@ -235,6 +235,41 @@
 .lockgo:disabled{filter:grayscale(.5) brightness(.9); cursor:default}
 .lockgo:focus-visible{outline:3px solid #7f5cc0; outline-offset:3px}
 
+/* ═══ كتلةُ الشراء: عنوانٌ نصّيٌّ ثمّ طريقان ═══
+   العنوانُ نصٌّ لا زرّ — يفصلُ «عندي رمز» عن «أريد أن أشتري» فلا تحتار المعلّمةُ
+   بينَ ثلاثةِ أزرارٍ متجاورة. والطريقانِ صفٌّ واحد: واتساب (الأسرعُ عندها) ثمّ
+   الموقع. وينكسرانِ عمودَين على الشاشاتِ الضيّقةِ فلا يضيقُ النصُّ عليهما. */
+.lockbuytitle{
+  margin:20px 0 10px; text-align:center;
+  font-family:'Cairo',sans-serif; font-size:16px; font-weight:700;
+  color:var(--lk-ink); opacity:.72;
+}
+.lockbuyrow{ display:flex; gap:10px; align-items:stretch; flex-wrap:wrap }
+.lockbuyrow .lockbuy{
+  margin-top:0; flex:1 1 150px; min-width:150px;
+  font-size:17px; padding:14px 10px; gap:7px;
+}
+.lockbuyrow .lockbuy span{ white-space:nowrap }
+
+/* طريقُ الواتساب بلونِه المعروف — تعرفُه المعلّمةُ قبلَ أن تقرأ. وهو الطريقُ
+   الأيسرُ عليها فعلاً: تضغطُ فتُفتَحُ المحادثةُ ورسالتُها مكتوبةٌ سلفاً. */
+.lockbuy-wa{
+  color:#fff !important;
+  background:linear-gradient(180deg,#42d778 0%,#25b95c 48%,#1c9c4b 100%) !important;
+  border-color:#1a8f45 !important; border-bottom-color:#137436 !important;
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.38),
+             inset 0 -3px 0 rgba(0,60,25,.22),
+             0 3px 0 rgba(20,110,55,.55),
+             0 6px 12px rgba(10,60,30,.28) !important;
+}
+.lockbuy-wa:hover{
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.45),
+             inset 0 -3px 0 rgba(0,60,25,.20),
+             0 5px 0 rgba(20,110,55,.55),
+             0 9px 16px rgba(10,60,30,.32) !important;
+}
+.lockbuy-wa svg{ flex:0 0 auto }
+
 /* زرُّ «شراء الكتاب» — فعلٌ ثانويٌّ بجانبِ «فتح الوحدة» الأخضرِ الرئيسيّ.
    بهيئةِ الحجرِ الرمليِّ نفسِها (‏`--lk-*`) لا بالأخضر، فلا يتنافسُ فعلانِ على
    العينِ في نافذةٍ واحدة. رابطٌ لا زرّ — يفتحُ تبويباً جديداً. */
