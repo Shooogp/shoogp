@@ -551,9 +551,9 @@ window.DATA_FALLBACK = {
         { title:"الدرس الأول: سورة البلد", file:"g3d1-1-1", open:true },
         { title:"الدرس الثاني: أركان الإيمان", file:"g3d1-1-2", open:true },
         { title:"الدرس الثالث: آمنتُ بالله (١)", file:"g3d1-1-3", open:true },
-        { title:"الدرس الرابع: أُحافظ على صلاتي", file:"g3d1-1-4", open:false },
-        { title:"الدرس الخامس: في غار حِراء", file:"g3d1-1-5", open:false },
-        { title:"الدرس السادس: آداب المسجد", file:"g3d1-1-6", open:false }
+        { title:"الدرس الرابع: أُحافظ على صلاتي", file:"g3d1-1-4", open:true },
+        { title:"الدرس الخامس: في غار حِراء", file:"g3d1-1-5", open:true },
+        { title:"الدرس السادس: آداب المسجد", file:"g3d1-1-6", open:true }
       ]},
       { unit:"الوحدة الثانية", lessons:[
         { title:"الدرس الأول: سورة الفجر (١–١٦)", file:"g3d1-2-1", open:false },
