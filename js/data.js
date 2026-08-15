@@ -280,8 +280,8 @@ window.DATA_FALLBACK = {
         { title:"الدرس الثاني: تحيّة المسجد", file:"g4d1-2-2", open:true },
         { title:"الدرس الثالث: الله الغفور", file:"g4d1-2-3", open:true },
         { title:"الدرس الرابع: التيمّم", file:"g4d1-2-4", open:true },
-        { title:"الدرس الخامس: السيّدة فاطمة الزهراء", file:"g4d1-2-5", open:false },
-        { title:"الدرس السادس: أحسن الظّن", file:"g4d1-2-6", open:false }
+        { title:"الدرس الخامس: السيّدة فاطمة الزهراء", file:"g4d1-2-5", open:true },
+        { title:"الدرس السادس: أحسن الظّن", file:"g4d1-2-6", open:true }
       ]}
     ]},
     "g4-dini-2": { book:"ديني حياتي (الجزء الثاني) — الصف الرابع", units:[
