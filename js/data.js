@@ -557,8 +557,8 @@ window.DATA_FALLBACK = {
       ]},
       { unit:"الوحدة الثانية", lessons:[
         { title:"الدرس الأول: سورة الفجر (١–١٦)", file:"g3d1-2-1", open:true },
-        { title:"الدرس الثاني: الأمر بالصلاة", file:"g3d1-2-2", open:false },
-        { title:"الدرس الثالث: آمنتُ بالله (٢)", file:"g3d1-2-3", open:false },
+        { title:"الدرس الثاني: الأمر بالصلاة", file:"g3d1-2-2", open:true },
+        { title:"الدرس الثالث: آمنتُ بالله (٢)", file:"g3d1-2-3", open:true },
         { title:"الدرس الرابع: صلاة الجماعة", file:"g3d1-2-4", open:false },
         { title:"الدرس الخامس: إسلام السيّدة خديجة بنت خويلد ؓ", file:"g3d1-2-5", open:false },
         { title:"الدرس السادس: أحمي نفسي", file:"g3d1-2-6", open:false }
