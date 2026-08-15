@@ -440,12 +440,28 @@
     return box;
   }
 
+  /* ═══ وجهةُ الواتساب تتبعُ الجهاز ═══
+     `wa.me` يحاولُ فتحَ **تطبيقِ** واتساب، فيقفُ على الكمبيوترِ والسبورةِ الذكيةِ إن
+     لم يكن مثبَّتاً — والمنصّةُ تُستعمَلُ على الشاشاتِ الكبيرةِ لا الهاتفِ وحدَه.
+     فالشاشةُ الكبيرةُ تُوجَّهُ إلى **واتساب ويب** مباشرةً، والهاتفُ إلى `wa.me`.
+
+     ⚠️ **القياسُ بالعرضِ لا بنوعِ الإدخال** — للسببِ الموثَّقِ في `pay.html`:
+     السبورةُ الذكيةُ شاشةُ لمسٍ فتُبلِغُ `pointer: coarse`، فيُصنَّفُ أهمُّ أجهزةِ
+     المنصّةِ هاتفاً. و**أصغرُ القيمتَين** `innerWidth` و`screen.width` لأنّ وضعَ
+     «موقع سطح المكتب» في متصفّحِ الهاتفِ يفرضُ منفذاً ≈٩٨٠px فيخدعُ الأولى. */
+  function waBase() {
+    var a = window.innerWidth || 9999;
+    var b = (window.screen && window.screen.width) || 9999;
+    return (Math.min(a, b) >= 700)
+      ? 'https://web.whatsapp.com/send?phone=' + WA_NUMBER + '&text='
+      : 'https://wa.me/' + WA_NUMBER + '?text=';
+  }
+
   /* رسالةُ الواتساب المكتوبةُ سلفاً — صياغتُها مطابقةٌ لِما يتوقّعُه مسارُ الواتساب:
      اسمُ المادةِ ثمّ الصفُّ في سطرٍ واحدٍ بلا زخرفة. */
   function setWaHref(label) {
     if (!elBuyWa) return;
-    elBuyWa.href = 'https://wa.me/' + WA_NUMBER +
-                   '?text=' + encodeURIComponent('السلام عليكم، أريد شراء: ' + label);
+    elBuyWa.href = waBase() + encodeURIComponent('السلام عليكم، أريد شراء: ' + label);
   }
 
   function say(text, kind) {
