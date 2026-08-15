@@ -268,7 +268,7 @@ window.DATA_FALLBACK = {
     "g4-dini-1": { book:"ديني حياتي (الجزء الأول) — الصف الرابع", units:[
       { unit:"التلاوة والحفظ", lessons:[ { title:"التلاوة والحفظ", file:"g4d1-0-1", open:false } ]},
       { unit:"الوحدة الأولى", lessons:[
-        { title:"الدرس الأول: سورة المطفّفين (١–١٧)", file:"g4d1-1-1", open:false },
+        { title:"الدرس الأول: سورة المطفّفين (١–١٧)", file:"g4d1-1-1", open:true },
         { title:"الدرس الثاني: الرِّفق", file:"g4d1-1-2", open:true },
         { title:"الدرس الثالث: اليوم الآخر", file:"g4d1-1-3", open:false },
         { title:"الدرس الرابع: أتجنّب مكروهات الوُضوء", file:"g4d1-1-4", open:false },
