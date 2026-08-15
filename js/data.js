@@ -550,7 +550,7 @@ window.DATA_FALLBACK = {
       { unit:"الوحدة الأولى", lessons:[
         { title:"الدرس الأول: سورة البلد", file:"g3d1-1-1", open:true },
         { title:"الدرس الثاني: أركان الإيمان", file:"g3d1-1-2", open:true },
-        { title:"الدرس الثالث: آمنتُ بالله (١)", file:"g3d1-1-3", open:false },
+        { title:"الدرس الثالث: آمنتُ بالله (١)", file:"g3d1-1-3", open:true },
         { title:"الدرس الرابع: أُحافظ على صلاتي", file:"g3d1-1-4", open:false },
         { title:"الدرس الخامس: في غار حِراء", file:"g3d1-1-5", open:false },
         { title:"الدرس السادس: آداب المسجد", file:"g3d1-1-6", open:false }
