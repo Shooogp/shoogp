@@ -272,8 +272,8 @@ window.DATA_FALLBACK = {
         { title:"الدرس الثاني: الرِّفق", file:"g4d1-1-2", open:true },
         { title:"الدرس الثالث: اليوم الآخر", file:"g4d1-1-3", open:true },
         { title:"الدرس الرابع: أتجنّب مكروهات الوُضوء", file:"g4d1-1-4", open:true },
-        { title:"الدرس الخامس: إسلام سيّدنا عمر بن الخطّاب", file:"g4d1-1-5", open:false },
-        { title:"الدرس السادس: أدب الاستئذان", file:"g4d1-1-6", open:false }
+        { title:"الدرس الخامس: إسلام سيّدنا عمر بن الخطّاب", file:"g4d1-1-5", open:true },
+        { title:"الدرس السادس: أدب الاستئذان", file:"g4d1-1-6", open:true }
       ]},
       { unit:"الوحدة الثانية", lessons:[
         { title:"الدرس الأول: سورة المطفّفين (١٨–٢٨)", file:"g4d1-2-1", open:false },
