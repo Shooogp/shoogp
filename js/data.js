@@ -556,7 +556,7 @@ window.DATA_FALLBACK = {
         { title:"الدرس السادس: آداب المسجد", file:"g3d1-1-6", open:true }
       ]},
       { unit:"الوحدة الثانية", lessons:[
-        { title:"الدرس الأول: سورة الفجر (١–١٦)", file:"g3d1-2-1", open:false },
+        { title:"الدرس الأول: سورة الفجر (١–١٦)", file:"g3d1-2-1", open:true },
         { title:"الدرس الثاني: الأمر بالصلاة", file:"g3d1-2-2", open:false },
         { title:"الدرس الثالث: آمنتُ بالله (٢)", file:"g3d1-2-3", open:false },
         { title:"الدرس الرابع: صلاة الجماعة", file:"g3d1-2-4", open:false },
