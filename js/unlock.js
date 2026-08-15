@@ -60,12 +60,22 @@
    التفصيلُ عندَ `OFF_KEY` أدناه. ⚠️ وهو **يفتحُ كلَّ الكتبِ لأيِّ زائرٍ بنقرة**،
    فالحاجزُ أدناه يبقى وصفاً للآليةِ لا لِما يراه الزائرُ فعلاً.
 
-   ── زرُّ «شراء الكتاب» في شارةِ القفلِ الرملية ──
-   داخلَ نافذةِ الرمزِ نفسِها، أسفلَ زرِّ «فتح الوحدة»: رابطٌ يفتحُ
-   `pay.html?book=<مفتاحُ الكتاب>` في **تبويبٍ جديد** (‏`target="_blank"` مع
-   `rel="noopener"`). **يظهرُ لكلِّ الكتبِ بلا استثناء** — وصفحةُ الدفعِ وحدَها هي
-   التي تقولُ إن كان الكتابُ مطروحاً للبيعِ أو «قريباً» (‏`ON_SALE` هناك)، فلا
-   تُكرَّرُ قائمةُ المطروحِ في مكانَين.
+   ── كتلةُ الشراءِ في نافذةِ الرمز: عنوانٌ نصّيٌّ ثمّ طريقان ──
+   أسفلَ زرِّ «فتح الكتاب»: سطرُ **«شراء الكتاب»** نصّاً لا زرّاً، وتحتَه رابطان
+   يفتحانِ **تبويباً جديداً** (‏`target="_blank"` مع `rel="noopener"`):
+   • **واتساب** — `wa.me/<WA_NUMBER>` ومعه **رسالةٌ مكتوبةٌ سلفاً باسمِ الكتاب**.
+     والتعبئةُ المسبقةُ ليست زينةً: مسارُ الواتساب يستخرجُ الكتابَ من نصِّ الرسالة،
+     فصياغةٌ أخرى تُنتِجُ «لم نعرف أيّ كتاب تريدين». والاسمُ اسمُ **الحزمةِ** إن كان
+     الكتابُ جزءاً منها (‏`bundleOfBook`)، فلا تطلبُ جزءاً لا يُباعُ وحدَه.
+   • **من الموقع** — `pay.html?book=<مفتاحُ الكتاب>`. يُمرَّرُ المفتاحُ كما هو،
+     وصفحةُ الدفعِ هي التي تردُّ الجزءَ إلى حزمتِه (‏`saleIdOf` هناك) — فلا تُكرَّرُ
+     معرفةُ الحزمِ في طرفَين.
+   **يظهرانِ لكلِّ الكتبِ بلا استثناء** — وصفحةُ الدفعِ وحدَها هي التي تقولُ إن كان
+   الكتابُ مطروحاً للبيعِ أو «قريباً» (‏`ON_SALE` هناك)، فلا تُكرَّرُ قائمةُ المطروحِ
+   في مكانَين.
+   ⚠️ زرُّ الواتساب **أخضرُ بلونِ العلامةِ لا رمليّ** — استثناءٌ مقصودٌ من قاعدةِ
+   «فعلٌ أخضرُ واحدٌ في النافذة»، لأنّ لونَ واتساب يُعرَفُ قبلَ أن يُقرَأ. وهو معزولٌ
+   تحتَ عنوانٍ نصّيٍّ يفصلُ «عندي رمز» عن «أريد أن أشتري».
    ⚠️ **الزرُّ في النافذةِ لا في شارةِ رأسِ الوحدة** (‏`.unit-lock` في `js/app.js`):
    تلك الشارةُ `span` داخلَ `button` رأسِ الوحدةِ عمداً — فعنصرٌ تفاعليٌّ داخلَها
    يُعشِّشُ زرّاً في زرّ. والنافذةُ هي ما يُفتَحُ بنقرِ الشارةِ أصلاً.
@@ -93,6 +103,10 @@
   var STORE_KEY = 'shoogp-unlocked';
   var CODES_URL = 'data/codes.json';
   var BUNDLES_URL = 'data/bundles.json';
+  /* رقمُ واتساب شوجب التجاريُّ الذي يستقبلُ الطلبات (‏+968 7171 2937) — بصيغةِ
+     `wa.me`: أرقامٌ فقط بمفتاحِ الدولةِ بلا `+` ولا فراغات. وهو الرقمُ نفسُه الذي
+     يستمعُ إليه مسارُ «شوجب — استقبال واتساب» في n8n. */
+  var WA_NUMBER = '96871712937';
   var FREE_UNITS = 1;               // عدد الوحدات المجانية في رأس كل كتاب
 
   /* نطاقُ الكتابِ من أيِّ نطاقٍ مخزَّن: يقتطعُ لاحقةَ `#n` من الصيغةِ القديمة
@@ -136,6 +150,16 @@
     var b = bundles && bundles[scope];
     var m = b && b.members;
     return (m && m.length) ? m.slice() : [scope];
+  }
+
+  /* الحزمةُ التي ينتمي إليها كتابٌ ما، أو `null` إن كان يُباعُ وحدَه. */
+  function bundleOfBook(bookKey, bundles) {
+    var ids = Object.keys(bundles || {});
+    for (var i = 0; i < ids.length; i++) {
+      var m = bundles[ids[i]].members || [];
+      if (m.indexOf(bookKey) !== -1) return ids[i];
+    }
+    return null;
   }
 
   /* اسمُ النطاقِ المقروء: عنوانُ الحزمةِ وصفُّها، وإلا فعنوانُ الكتابِ من الفهرس. */
@@ -344,7 +368,7 @@
            'الرمز محفوظٌ ولم يُهدَر — افتحي ذلك الكتاب لتجديه مفتوحاً.';
   }
 
-  var box = null, elInput, elMsg, elGo, elBuy, elClose, elTitle, elSub, elBand, lastFocus = null;
+  var box = null, elInput, elMsg, elGo, elBuyWa, elBuySt, elClose, elTitle, elSub, elBand, lastFocus = null;
 
   function build() {
     if (box) return box;
@@ -365,7 +389,18 @@
               ' spellcheck="false" autocapitalize="characters" dir="ltr" placeholder="XXXXX-XXXXX">' +
         '<p class="lockmsg" role="status" aria-live="polite"></p>' +
         '<button type="button" class="lockgo">افتح الكتاب</button>' +
-        '<a class="lockbuy" target="_blank" rel="noopener">🛒 شراء الكتاب</a>' +
+        '<p class="lockbuytitle">شراء الكتاب</p>' +
+        '<div class="lockbuyrow">' +
+          '<a class="lockbuy lockbuy-wa" target="_blank" rel="noopener">' +
+            '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">' +
+              '<path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.23 8.23 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.41a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.21.88 2.39 1 2.55.12.17 1.73 2.64 4.19 3.7.59.25 1.04.4 1.4.52.59.19 1.12.16 1.54.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29Z"/>' +
+            '</svg>' +
+            '<span>واتساب</span>' +
+          '</a>' +
+          '<a class="lockbuy lockbuy-site" target="_blank" rel="noopener">' +
+            '<span aria-hidden="true">🛒</span><span>من الموقع</span>' +
+          '</a>' +
+        '</div>' +
       '</div>';
 
     document.body.appendChild(box);
@@ -375,7 +410,8 @@
     elInput = box.querySelector('.lockinput');
     elMsg   = box.querySelector('.lockmsg');
     elGo    = box.querySelector('.lockgo');
-    elBuy   = box.querySelector('.lockbuy');
+    elBuyWa = box.querySelector('.lockbuy-wa');
+    elBuySt = box.querySelector('.lockbuy-site');
     elClose = box.querySelector('.lockclose');
 
     /* ثلاثةُ مخارجَ للإغلاق: الزرُّ ✕ · الخلفيةُ خارجَ النافذة · مفتاحُ Escape.
@@ -395,13 +431,21 @@
     box.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') { e.preventDefault(); close(); return; }
       if (e.key !== 'Tab') return;
-      var f = box.querySelectorAll('.lockclose, .lockinput, .lockgo, .lockbuy');
+      var f = box.querySelectorAll('.lockclose, .lockinput, .lockgo, .lockbuy-wa, .lockbuy-site');
       var first = f[0], last = f[f.length - 1];
       if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     });
 
     return box;
+  }
+
+  /* رسالةُ الواتساب المكتوبةُ سلفاً — صياغتُها مطابقةٌ لِما يتوقّعُه مسارُ الواتساب:
+     اسمُ المادةِ ثمّ الصفُّ في سطرٍ واحدٍ بلا زخرفة. */
+  function setWaHref(label) {
+    if (!elBuyWa) return;
+    elBuyWa.href = 'https://wa.me/' + WA_NUMBER +
+                   '?text=' + encodeURIComponent('السلام عليكم، أريد شراء: ' + label);
   }
 
   function say(text, kind) {
@@ -423,8 +467,22 @@
     elInput.value = '';
     say('', '');
     elGo.disabled = false;
-    // زرُّ الشراءِ يحملُ مفتاحَ الكتابِ الحاليَّ فتفتحُ صفحةُ الدفعِ عليه مختاراً
-    elBuy.href = 'pay.html?book=' + encodeURIComponent(bookKey);
+
+    /* ═══ طريقا الشراء ═══
+       زرُّ الموقعِ يحملُ مفتاحَ الكتابِ الحاليَّ، وصفحةُ الدفعِ هي التي تردُّ الجزءَ
+       إلى حزمتِه (‏`saleIdOf` هناك) — فلا تُكرَّرُ معرفةُ الحزمِ في طرفَين.
+
+       وزرُّ الواتساب يفتحُ المحادثةَ **ورسالتُها مكتوبةٌ سلفاً باسمِ الكتاب**، لأنّ
+       مسارَ الواتساب يستخرجُ الكتابَ من نصِّ الرسالة: فلو كتبتْه المعلّمةُ بنفسِها
+       بصياغةٍ أخرى ردَّ عليها «لم نعرف أيّ كتاب تريدين». والاسمُ المكتوبُ هو اسمُ
+       **الحزمةِ** إن كان الكتابُ جزءاً منها، فلا تطلبُ جزءاً لا يُباعُ وحدَه. */
+    elBuySt.href = 'pay.html?book=' + encodeURIComponent(bookKey);
+    setWaHref(bookTitle(bookKey));          // اسمٌ مبدئيٌّ يعملُ قبلَ وصولِ الحزم
+    loadBundles().then(function (bundles) {
+      if (!pending || pending.bookKey !== bookKey) return;   // أُغلقت أو تبدّلت
+      var id = bundleOfBook(bookKey, bundles);
+      if (id) setWaHref(scopeTitle(id, bundles));
+    });
 
     lastFocus = document.activeElement;
     box.removeAttribute('hidden');
