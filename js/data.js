@@ -277,7 +277,7 @@ window.DATA_FALLBACK = {
       ]},
       { unit:"الوحدة الثانية", lessons:[
         { title:"الدرس الأول: سورة المطفّفين (١٨–٢٨)", file:"g4d1-2-1", open:true },
-        { title:"الدرس الثاني: تحيّة المسجد", file:"g4d1-2-2", open:false },
+        { title:"الدرس الثاني: تحيّة المسجد", file:"g4d1-2-2", open:true },
         { title:"الدرس الثالث: الله الغفور", file:"g4d1-2-3", open:false },
         { title:"الدرس الرابع: التيمّم", file:"g4d1-2-4", open:false },
         { title:"الدرس الخامس: السيّدة فاطمة الزهراء", file:"g4d1-2-5", open:false },
