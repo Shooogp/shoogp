@@ -287,9 +287,9 @@ window.DATA_FALLBACK = {
     "g4-dini-2": { book:"ديني حياتي (الجزء الثاني) — الصف الرابع", units:[
       { unit:"التلاوة والحفظ", lessons:[ { title:"التلاوة والحفظ", file:"g4d2-0-1", open:false } ]},
       { unit:"الوحدة الثالثة", lessons:[
-        { title:"الدرس الأول: سورة الانفطار (٦–١٩)", file:"g4d2-3-1", open:false },
-        { title:"الدرس الثاني: المؤمن للمؤمن", file:"g4d2-3-2", open:false },
-        { title:"الدرس الثالث: أُومن بالقضاء والقَدَر", file:"g4d2-3-3", open:false },
+        { title:"الدرس الأول: سورة الانفطار (٦–١٩)", file:"g4d2-3-1", open:true },
+        { title:"الدرس الثاني: المؤمن للمؤمن", file:"g4d2-3-2", open:true },
+        { title:"الدرس الثالث: أُومن بالقضاء والقَدَر", file:"g4d2-3-3", open:true },
         { title:"الدرس الرابع: شروط صحّة الصلاة", file:"g4d2-3-4", open:false },
         { title:"الدرس الخامس: المُقاطعة", file:"g4d2-3-5", open:false },
         { title:"الدرس السادس: المُساواة", file:"g4d2-3-6", open:false }
