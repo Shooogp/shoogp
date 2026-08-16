@@ -300,9 +300,9 @@ window.DATA_FALLBACK = {
       { unit:"الوحدة الرابعة", lessons:[
         { title:"الدرس الأول: سورة التكوير (١٥–٢٩)", file:"g4d2-4-1", open:true },
         { title:"الدرس الثاني: فضل الصدقة", file:"g4d2-4-2", open:true },
-        { title:"الدرس الثالث: أتوكّل على الله", file:"g4d2-4-3", open:false },
-        { title:"الدرس الرابع: أركان الصلاة (١)", file:"g4d2-4-4", open:false },
-        { title:"الدرس الخامس: انتهاء المقاطعة", file:"g4d2-4-5", open:false }
+        { title:"الدرس الثالث: أتوكّل على الله", file:"g4d2-4-3", open:true },
+        { title:"الدرس الرابع: أركان الصلاة (١)", file:"g4d2-4-4", open:true },
+        { title:"الدرس الخامس: انتهاء المقاطعة", file:"g4d2-4-5", open:true }
       ]}
     ]},
     "g3-math": { book:"الرياضيات — الصف الثالث", units:[
