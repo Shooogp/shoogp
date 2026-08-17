@@ -505,8 +505,8 @@ window.DATA_FALLBACK = {
       { unit:"الوحدة الرابعة", lessons:[
         { title:"الدرس الأول: سورة الإخلاص", file:"g1d2-4-1", open:true },
         { title:"الدرس الثاني: الله تعالى خالقي", file:"g1d2-4-2", open:true },
-        { title:"الدرس الثالث: الصدق طريق الجنّة", file:"g1d2-4-3", open:false },
-        { title:"الدرس الرابع: الاستنجاء", file:"g1d2-4-4", open:false },
+        { title:"الدرس الثالث: الصدق طريق الجنّة", file:"g1d2-4-3", open:true },
+        { title:"الدرس الرابع: الاستنجاء", file:"g1d2-4-4", open:true },
         { title:"الدرس الخامس: أُساعد الآخرين", file:"g1d2-4-5", open:false },
         { title:"الدرس السادس: النشأة المباركة", file:"g1d2-4-6", open:false }
       ]}
