@@ -539,7 +539,7 @@ window.DATA_FALLBACK = {
       { unit:"الوحدة الثالثة", lessons:[
         { title:"الدرس الأول: سورة العلق", file:"g2d2-3-1", open:true },
         { title:"الدرس الثاني: أرحم الصغير وأُوقِّر الكبير", file:"g2d2-3-2", open:true },
-        { title:"الدرس الثالث: أُحبُّ القرآن الكريم", file:"g2d2-3-3", open:false },
+        { title:"الدرس الثالث: أُحبُّ القرآن الكريم", file:"g2d2-3-3", open:true },
         { title:"الدرس الرابع: دعاء الاستفتاح (التوجيه)", file:"g2d2-3-4", open:false },
         { title:"الدرس الخامس: محمّد ﷺ النبيُّ الصادق", file:"g2d2-3-5", open:false },
         { title:"الدرس السادس: أحترم وقتي", file:"g2d2-3-6", open:false }
