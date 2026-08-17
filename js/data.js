@@ -482,8 +482,8 @@ window.DATA_FALLBACK = {
         { title:"الدرس السادس: شكرًا يا ربِّ", file:"g1d1-1-6", open:true }
       ]},
       { unit:"الوحدة الثانية", lessons:[
-        { title:"الدرس الأول: أُحبُّ الله ربّي", file:"g1d1-2-1", open:false },
-        { title:"الدرس الثاني: سورة الناس", file:"g1d1-2-2", open:false },
+        { title:"الدرس الأول: أُحبُّ الله ربّي", file:"g1d1-2-1", open:true },
+        { title:"الدرس الثاني: سورة الناس", file:"g1d1-2-2", open:true },
         { title:"الدرس الثالث: أحقُّ الناس", file:"g1d1-2-3", open:false },
         { title:"الدرس الرابع: أُطيع أُمّي وأَبي", file:"g1d1-2-4", open:false },
         { title:"الدرس الخامس: طهارتي عنواني", file:"g1d1-2-5", open:false },
