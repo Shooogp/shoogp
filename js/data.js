@@ -545,7 +545,7 @@ window.DATA_FALLBACK = {
         { title:"الدرس السادس: أحترم وقتي", file:"g2d2-3-6", open:true }
       ]},
       { unit:"الوحدة الرابعة", lessons:[
-        { title:"الدرس الأول: سورة التين", file:"g2d2-4-1", open:false },
+        { title:"الدرس الأول: سورة التين", file:"g2d2-4-1", open:true },
         { title:"الدرس الثاني: أُطيع الله تعالى", file:"g2d2-4-2", open:false },
         { title:"الدرس الثالث: أتعلَّم العِلم", file:"g2d2-4-3", open:false },
         { title:"الدرس الرابع: التشهُّد (التحيّات)", file:"g2d2-4-4", open:false },
