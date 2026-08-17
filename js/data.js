@@ -499,8 +499,8 @@ window.DATA_FALLBACK = {
         { title:"الدرس الثاني: الله تعالى ربُّ كلِّ شيء", file:"g1d2-3-2", open:true },
         { title:"الدرس الثالث: من آداب الطعام", file:"g1d2-3-3", open:true },
         { title:"الدرس الرابع: آداب قضاء الحاجة", file:"g1d2-3-4", open:true },
-        { title:"الدرس الخامس: محمّد ﷺ الطفل المبارك", file:"g1d2-3-5", open:false },
-        { title:"الدرس السادس: أحترم معلّمتي", file:"g1d2-3-6", open:false }
+        { title:"الدرس الخامس: محمّد ﷺ الطفل المبارك", file:"g1d2-3-5", open:true },
+        { title:"الدرس السادس: أحترم معلّمتي", file:"g1d2-3-6", open:true }
       ]},
       { unit:"الوحدة الرابعة", lessons:[
         { title:"الدرس الأول: سورة الإخلاص", file:"g1d2-4-1", open:false },
