@@ -521,7 +521,7 @@ window.DATA_FALLBACK = {
         { title:"الدرس الثالث: أركان الإسلام", file:"g2d1-1-3", open:true },
         { title:"الدرس الرابع: الأذان والإقامة", file:"g2d1-1-4", open:true },
         { title:"الدرس الخامس: النبيُّ ﷺ يرعى الغنم", file:"g2d1-1-5", open:true },
-        { title:"الدرس السادس: أُؤدّي الأمانة", file:"g2d1-1-6", open:false }
+        { title:"الدرس السادس: أُؤدّي الأمانة", file:"g2d1-1-6", open:true }
       ]},
       { unit:"الوحدة الثانية", lessons:[
         { title:"الدرس الأول: سورة الزلزلة", file:"g2d1-2-1", open:false },
