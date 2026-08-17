@@ -486,8 +486,8 @@ window.DATA_FALLBACK = {
         { title:"الدرس الثاني: سورة الناس", file:"g1d1-2-2", open:true },
         { title:"الدرس الثالث: أحقُّ الناس", file:"g1d1-2-3", open:true },
         { title:"الدرس الرابع: أُطيع أُمّي وأَبي", file:"g1d1-2-4", open:true },
-        { title:"الدرس الخامس: طهارتي عنواني", file:"g1d1-2-5", open:false },
-        { title:"الدرس السادس: رسولي محمّد ﷺ", file:"g1d1-2-6", open:false }
+        { title:"الدرس الخامس: طهارتي عنواني", file:"g1d1-2-5", open:true },
+        { title:"الدرس السادس: رسولي محمّد ﷺ", file:"g1d1-2-6", open:true }
       ]}
     ]},
     "g1-dini-2": { book:"ديني حياتي (الجزء الثاني) — الصف الأول", units:[
