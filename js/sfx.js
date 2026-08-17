@@ -53,13 +53,23 @@
   })();
 
   /* ── الملفّات ─────────────────────────────────────────────────────────── */
-  var SFX = {
-    click:  'audio/sfx/ui-click.mp3',   // نقرةُ زرٍّ أو خيار
-    pick:   'audio/sfx/ui-pick.mp3',    // التقاطٌ عندَ بدءِ السحب
-    drop:   'audio/sfx/ui-drop.mp3',    // استقرارٌ عندَ الإفلات
-    move:   'audio/sfx/ui-move.mp3',    // انتقالُ سؤالٍ أو شاشة
-    unlock: 'audio/sfx/ui-unlock.mp3'   // فتحُ قفلٍ حقيقيّ
+  /* **موضعانِ مقبولانِ لكلِّ مؤثّر** — `audio/sfx/` أوّلاً ثمّ `audio/` احتياطاً.
+     العلّةُ عمليةٌ لا نظرية: رفعُ مجلّدٍ عبرَ واجهةِ GitHub الشبكيةِ قد **يُسطّحُ
+     محتواه** فتنزلُ الملفّاتُ في `audio/` مباشرة (وقعَ فعلاً — ٢٠٢٦-٠٨-١٧).
+     فالوحدةُ تقبلُ الموضعَين: تعملُ الآنَ حيثما استقرَّتِ الملفّات، وتبقى تعملُ
+     إن رُتِّبَتْ لاحقاً في مجلّدِها الخاصّ — بلا تعديلِ كودٍ في الحالَين. */
+  var NAMES = {
+    click:  'ui-click.mp3',    // نقرةُ زرٍّ أو خيار
+    pick:   'ui-pick.mp3',     // التقاطٌ عندَ بدءِ السحب
+    drop:   'ui-drop.mp3',     // استقرارٌ عندَ الإفلات
+    move:   'ui-move.mp3',     // انتقالُ سؤالٍ أو شاشة
+    unlock: 'ui-unlock.mp3'    // فتحُ قفلٍ حقيقيّ
   };
+  var SFX_DIRS = ['audio/sfx/', 'audio/'];
+  var SFX = {};                                  // يُملأُ بالمسارِ المفضَّلِ ابتداءً
+  for (var _k in NAMES) if (Object.prototype.hasOwnProperty.call(NAMES, _k)) {
+    SFX[_k] = SFX_DIRS[0] + NAMES[_k];
+  }
   var VOICE = {
     'all-done':          'audio/voice/all-done.mp3',           // أحسنت، أكملتَ كلَّ الأسئلة
     'moon-arrived':      'audio/voice/moon-arrived.mp3',       // وصلتَ القمرَ في الوقتِ المناسب
@@ -88,11 +98,30 @@
     return ctx;
   }
 
+  /* يُستكشَفُ المجلّدُ **مرّةً واحدةً بملفٍّ واحد** لا بخمسِ محاولاتٍ فاشلة، فلا
+     يمتلئُ الـ console بأخطاءِ ٤٠٤ عندَ كلِّ فتحةِ درس. النتيجةُ وعدٌ مخزَّن. */
+  var dirPromise = null;
+  function resolveDir() {
+    if (dirPromise) return dirPromise;
+    dirPromise = (function probe(i) {
+      if (i >= SFX_DIRS.length) return Promise.resolve(null);
+      return fetch(SFX_DIRS[i] + NAMES.click + VER, { method: 'HEAD' })
+        .then(function (r) { return r.ok ? SFX_DIRS[i] : probe(i + 1); })
+        .catch(function () { return probe(i + 1); });
+    })(0);
+    return dirPromise;
+  }
+
   function loadOne(key) {
     var c = audioCtx(); if (!c) return;
     if (buffers[key] !== undefined) return;
     buffers[key] = null;                       // علامةُ «قيدَ التحميل» فلا يُطلَبُ مرّتين
-    fetch(SFX[key] + VER)
+    resolveDir()
+      .then(function (dir) {
+        if (!dir) return Promise.reject();
+        SFX[key] = dir + NAMES[key];           // يستفيدُ منه احتياطُ `<audio>` أيضاً
+        return fetch(SFX[key] + VER);
+      })
       .then(function (r) { return r.ok ? r.arrayBuffer() : Promise.reject(); })
       .then(function (a) {
         return new Promise(function (res, rej) {
