@@ -525,7 +525,7 @@ window.DATA_FALLBACK = {
       ]},
       { unit:"الوحدة الثانية", lessons:[
         { title:"الدرس الأول: سورة الزلزلة", file:"g2d1-2-1", open:true },
-        { title:"الدرس الثاني: أنا مُتعاون", file:"g2d1-2-2", open:false },
+        { title:"الدرس الثاني: أنا مُتعاون", file:"g2d1-2-2", open:true },
         { title:"الدرس الثالث: أُحبُّكَ يا رسول الله", file:"g2d1-2-3", open:false },
         { title:"الدرس الرابع: أوقات الصلاة", file:"g2d1-2-4", open:false },
         { title:"الدرس الخامس: النبيُّ محمّد ﷺ يعمل في التجارة", file:"g2d1-2-5", open:false },
