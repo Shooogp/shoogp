@@ -503,7 +503,7 @@ window.DATA_FALLBACK = {
         { title:"الدرس السادس: أحترم معلّمتي", file:"g1d2-3-6", open:true }
       ]},
       { unit:"الوحدة الرابعة", lessons:[
-        { title:"الدرس الأول: سورة الإخلاص", file:"g1d2-4-1", open:false },
+        { title:"الدرس الأول: سورة الإخلاص", file:"g1d2-4-1", open:true },
         { title:"الدرس الثاني: الله تعالى خالقي", file:"g1d2-4-2", open:false },
         { title:"الدرس الثالث: الصدق طريق الجنّة", file:"g1d2-4-3", open:false },
         { title:"الدرس الرابع: الاستنجاء", file:"g1d2-4-4", open:false },
