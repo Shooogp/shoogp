@@ -518,7 +518,7 @@ window.DATA_FALLBACK = {
       { unit:"الوحدة الأولى", lessons:[
         { title:"الدرس الأول: أُحبُّكَ ربّي", file:"g2d1-1-1", open:true },
         { title:"الدرس الثاني: سورة القدر", file:"g2d1-1-2", open:true },
-        { title:"الدرس الثالث: أركان الإسلام", file:"g2d1-1-3", open:false },
+        { title:"الدرس الثالث: أركان الإسلام", file:"g2d1-1-3", open:true },
         { title:"الدرس الرابع: الأذان والإقامة", file:"g2d1-1-4", open:false },
         { title:"الدرس الخامس: النبيُّ ﷺ يرعى الغنم", file:"g2d1-1-5", open:false },
         { title:"الدرس السادس: أُؤدّي الأمانة", file:"g2d1-1-6", open:false }
