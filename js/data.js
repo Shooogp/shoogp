@@ -528,7 +528,7 @@ window.DATA_FALLBACK = {
         { title:"الدرس الثاني: أنا مُتعاون", file:"g2d1-2-2", open:true },
         { title:"الدرس الثالث: أُحبُّكَ يا رسول الله", file:"g2d1-2-3", open:true },
         { title:"الدرس الرابع: أوقات الصلاة", file:"g2d1-2-4", open:true },
-        { title:"الدرس الخامس: النبيُّ محمّد ﷺ يعمل في التجارة", file:"g2d1-2-5", open:false },
+        { title:"الدرس الخامس: النبيُّ محمّد ﷺ يعمل في التجارة", file:"g2d1-2-5", open:true },
         { title:"الدرس السادس: الصَّفح الجميل", file:"g2d1-2-6", open:false }
       ]}
     ]},
