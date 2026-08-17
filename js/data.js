@@ -542,7 +542,7 @@ window.DATA_FALLBACK = {
         { title:"الدرس الثالث: أُحبُّ القرآن الكريم", file:"g2d2-3-3", open:true },
         { title:"الدرس الرابع: دعاء الاستفتاح (التوجيه)", file:"g2d2-3-4", open:true },
         { title:"الدرس الخامس: محمّد ﷺ النبيُّ الصادق", file:"g2d2-3-5", open:true },
-        { title:"الدرس السادس: أحترم وقتي", file:"g2d2-3-6", open:false }
+        { title:"الدرس السادس: أحترم وقتي", file:"g2d2-3-6", open:true }
       ]},
       { unit:"الوحدة الرابعة", lessons:[
         { title:"الدرس الأول: سورة التين", file:"g2d2-4-1", open:false },
