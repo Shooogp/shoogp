@@ -479,7 +479,7 @@ window.DATA_FALLBACK = {
         { title:"الدرس الثالث: آداب العُطاس", file:"g1d1-1-3", open:true },
         { title:"الدرس الرابع: مولد الصادق الأمين", file:"g1d1-1-4", open:true },
         { title:"الدرس الخامس: النَّجاسات", file:"g1d1-1-5", open:true },
-        { title:"الدرس السادس: شكرًا يا ربِّ", file:"g1d1-1-6", open:false }
+        { title:"الدرس السادس: شكرًا يا ربِّ", file:"g1d1-1-6", open:true }
       ]},
       { unit:"الوحدة الثانية", lessons:[
         { title:"الدرس الأول: أُحبُّ الله ربّي", file:"g1d1-2-1", open:false },
