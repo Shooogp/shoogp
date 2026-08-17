@@ -537,7 +537,7 @@ window.DATA_FALLBACK = {
         { title:"التلاوة والحفظ", file:"g2d2-0-1", open:false }
       ]},
       { unit:"الوحدة الثالثة", lessons:[
-        { title:"الدرس الأول: سورة العلق", file:"g2d2-3-1", open:false },
+        { title:"الدرس الأول: سورة العلق", file:"g2d2-3-1", open:true },
         { title:"الدرس الثاني: أرحم الصغير وأُوقِّر الكبير", file:"g2d2-3-2", open:false },
         { title:"الدرس الثالث: أُحبُّ القرآن الكريم", file:"g2d2-3-3", open:false },
         { title:"الدرس الرابع: دعاء الاستفتاح (التوجيه)", file:"g2d2-3-4", open:false },
