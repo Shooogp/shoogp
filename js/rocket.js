@@ -475,11 +475,13 @@
       this.lane.classList.remove('rj-airborne','rj-sputter');   // توقّف التأرجح
       this.lane.classList.add('rj-arrived');      // رفع العلم + استقرار لطيف
       SFX.landing();                              // صوت الهبوط الختاميّ (بعد الصمت)
-      const msg = this.hadError
-        ? 'أحسنت! وصلت القمر بعد رحلة مليئة بالتحدّي!'
-        : 'أحسنت! وصلت القمر في الوقت المناسب!';
+      /* عبارةُ الوصول: كانت تُنطَقُ آلياً بمحرّكِ جهازِ المعلّمة، فصارت **مقطعاً
+         بشرياً من المستودع** (`audio/voice/`) — قرارُ المالك ٢٠٢٦-٠٨-١٧.
+         **ولم يتغيّرْ من نظامِ الصاروخِ شيءٌ سوى مصدرِ الصوت**: التوقيتُ نفسُه
+         (٦٥٠ملّي بعدَ الملامسة) والشرطُ نفسُه (`hadError`) والمؤثّراتُ كما هي. */
+      const key = this.hadError ? 'moon-arrived-hard' : 'moon-arrived';
       clearTimeout(this._arrT2);
-      this._arrT2=setTimeout(()=>{ try{ if(typeof speak==='function') speak(msg); }catch(e){} }, 650);
+      this._arrT2=setTimeout(()=>{ try{ if(window.SHOOGP_SFX) SHOOGP_SFX.voice(key); }catch(e){} }, 650);
     }
   };
 

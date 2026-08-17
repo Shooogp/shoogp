@@ -533,6 +533,8 @@
           return;
         }
         say(MSG.ok, 'good');
+        // صوتُ فتحِ قفلٍ حقيقيّ (audio/sfx/ui-unlock.mp3) — خاضعٌ لزرِّ الكتمِ العامّ
+        if (window.SHOOGP_SFX) { try { SHOOGP_SFX.play('unlock'); } catch (e) {} }
         setTimeout(function () { close(); reveal(p); }, 700);
         return;
       }

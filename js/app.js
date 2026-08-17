@@ -31,10 +31,27 @@ async function loadData(){
 }
 
 /* ===== الحالة والصوت ===== */
-let arVoice=null, audioReady=false;
-function pickVoice(){const vs=speechSynthesis.getVoices();arVoice=vs.find(v=>v.lang&&v.lang.toLowerCase().startsWith('ar'))||null;}
-if('speechSynthesis' in window){pickVoice();speechSynthesis.onvoiceschanged=pickVoice;}
-function speak(t){if(muted||!('speechSynthesis'in window))return;try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='ar-SA';u.rate=.95;if(!arVoice)pickVoice();if(arVoice)u.voice=arVoice;speechSynthesis.speak(u);}catch(e){}}
+let audioReady=false;
+/* ═══ أُزيلَ النطقُ الآليُّ (`speechSynthesis`) نهائياً — قرارُ المالك ٢٠٢٦-٠٨-١٧ ═══
+   كانَ نطقُ العباراتِ يخرجُ من **محرّكِ جهازِ المعلّمةِ لا من المنصّة**، فيختلفُ الدرسُ
+   الواحدُ من فصلٍ إلى فصل: جهازٌ فيه صوتٌ عربيٌّ يَنطقُ، وجهازٌ بلا صوتٍ عربيٍّ يسقطُ
+   على محرّكٍ لاتينيٍّ فيخرجُ مشوَّهاً أو صامتاً. والتعزيزُ الذي لا يُسمَعُ بانتظامٍ
+   يفقدُ أثرَه التربويّ. فصارَ كلُّ صوتٍ **ملفّاً في المستودع** (`js/sfx.js`).
+
+   وأُلغيَتْ معه **قراءةُ محتوى الأسئلةِ آلياً** (الكلمةُ والحرفُ واسمُ اللونِ ووسمُ
+   الخريطةِ وبطاقةُ الذاكرةِ وطرفُ المطابقة) — قرارُ المالكِ في الجلسةِ نفسِها.
+
+   `speak` باقيةٌ **غلافاً للتوافقِ فقط**: تحوّلُ العبارةَ إلى مقطعِها البشريِّ إن
+   عُرِفَتْ، وتصمتُ فيما عداه. فأيُّ استدعاءٍ قديمٍ فاتَنا لا يكسرُ شيئاً ولا يَنطقُ آلياً. */
+const VOICE_BY_TEXT={
+  'أحسنت، أكملت كل الأسئلة':'all-done',
+  'أحسنت! وصلت القمر في الوقت المناسب!':'moon-arrived',
+  'أحسنت! وصلت القمر بعد رحلة مليئة بالتحدّي!':'moon-arrived-hard'
+};
+function speak(t){
+  const key=VOICE_BY_TEXT[String(t||'').trim()];
+  if(key&&window.SHOOGP_SFX) SHOOGP_SFX.voice(key);
+}
 
 /* ===== صوت الإجابة الصحيحة (audio/correct.mp3) ===== */
 // مسار نسبيّ ليعمل على GitHub Pages. يُشغّل فقط عند الإجابة الصحيحة.
@@ -57,8 +74,8 @@ function playWrongSound(){
 // فكّ قفل الصوت عند أول تفاعل (سياسة التشغيل التلقائي في متصفح السبورة الذكية)
 function unlockAudio(){
   if(audioReady) return; audioReady=true;
-  // تهيئة نطق الكلام العربي
-  if('speechSynthesis' in window){try{const u=new SpeechSynthesisUtterance(' ');u.volume=0;speechSynthesis.speak(u);pickVoice();}catch(e){}}
+  // تهيئة مؤثّرات المنصّة: تحميلُها وفكُّ سياقِ WebAudio عند أوّل تفاعل
+  if(window.SHOOGP_SFX){try{SHOOGP_SFX.warm();}catch(e){}}
   // تهيئة ملف الصوت: تشغيل صامت ثم إيقاف ليُسمح بالتشغيل البرمجي لاحقاً
   [correctSound,wrongSound].forEach(function(snd){
     try{const prev=snd.muted;snd.muted=true;const p=snd.play();
@@ -80,7 +97,7 @@ function updateSoundBtn(){
 function toggleMute(){
   muted = !muted;
   try{localStorage.setItem('shoogp-muted', muted?'1':'0');}catch(e){}
-  if(muted){ try{correctSound.pause();}catch(e){} try{wrongSound.pause();}catch(e){} if('speechSynthesis'in window){try{speechSynthesis.cancel();}catch(e){}} }
+  if(muted){ try{correctSound.pause();}catch(e){} try{wrongSound.pause();}catch(e){} if(window.SHOOGP_SFX){try{SHOOGP_SFX.stopVoice();}catch(e){}} }
   updateSoundBtn();
 }
 (function(){var b=document.getElementById('soundBtn');if(b){b.addEventListener('click',toggleMute);updateSoundBtn();}})();
@@ -392,7 +409,8 @@ function renderQuestions(ls){
       (good===total ? '<p class="qresult-cheer">ممتاز! أكملت كل الأسئلة 🌟</p>'
                     : '<p class="qresult-cheer">أحسنت! يمكنك الرجوع وإكمال ما تبقّى.</p>')+
       '</div>';
-    if(good===total) speak('أحسنت، أكملت كل الأسئلة');
+    // «أحسنت، أكملتَ كلَّ الأسئلة» — مقطعٌ بشريٌّ من المستودع لا نطقٌ آليّ
+    if(good===total && window.SHOOGP_SFX) SHOOGP_SFX.voice('all-done');
     window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
   };
   show(0);
@@ -689,7 +707,7 @@ function renderMatching(q, body, fb){
   }
 
   shuffle(q.pairs).forEach(pr=>{const d=document.createElement('div');d.className='mitem left';d.textContent=pr.a;d.dataset.k=pr.a;
-    d.onclick=()=>{if(d.classList.contains('matched'))return;L.querySelectorAll('.left').forEach(x=>x.classList.remove('selected'));d.classList.add('selected');sel=d;speak(pr.a);};L.appendChild(d);});
+    d.onclick=()=>{if(d.classList.contains('matched'))return;L.querySelectorAll('.left').forEach(x=>x.classList.remove('selected'));d.classList.add('selected');sel=d;};L.appendChild(d);});
   shuffle(q.pairs).forEach(pr=>{const d=document.createElement('div');d.className='mitem right';d.textContent=pr.b;d.dataset.k=pr.a;
     d.onclick=()=>{if(!sel||d.classList.contains('matched'))return;
       if(sel.dataset.k===pr.a){drawLink(sel,d);sel.classList.add('matched');d.classList.add('matched');sel.classList.remove('selected');sel=null;done++;playCorrectSound();
@@ -1005,7 +1023,6 @@ function renderColor(q, body, fb){
     body.querySelectorAll('.cswatch').forEach(x=>x.classList.remove('sel'));
     sw.classList.add('sel'); chosen=sw.dataset.color;
     if(area) area.classList.add('brushing');
-    speak(sw.querySelector('.cswatch-name').textContent);
   };});
   // تلوين جزء عند الضغط (بعد اختيار لون)
   body.querySelectorAll('.cpart').forEach(part=>{
@@ -1519,7 +1536,7 @@ function renderMemory(q, body, fb){
   body.querySelectorAll('.memcard').forEach(card=>{ card.onclick=()=>{
     // تجاهل النقر أثناء قلب زوج غير متطابق، أو على بطاقة مكشوفة/متطابقة
     if(lock || card.classList.contains('flipped') || card.classList.contains('matched')) return;
-    card.classList.add('flipped'); speak(card.querySelector('.memfront').textContent);
+    card.classList.add('flipped');
     if(!first){ first=card; return; }           // البطاقة الأولى في الدور
     if(first.dataset.k===card.dataset.k){        // تطابق: تبقى البطاقتان مكشوفتين
       first.classList.add('matched'); card.classList.add('matched');
@@ -1642,7 +1659,6 @@ function renderLens(q, body, fb){
     spots.forEach((sp,i)=>{ if(hit<0 && !foundSet[i] && hitSpot(sp,px,py)) hit=i; });
     if(hit>=0 && distLens<=R){                       // العنصر مضغوط وهو ظاهر داخل العدسة
       fixSpot(hit); found++; countEl.textContent=arNum(found);
-      speak(spots[hit].label);
       if(found===spots.length){ done=true; qWin(fb,'🎉 أحسنت! اكتشفت كل العناصر الخفية',3); }
       else{ playCorrectSound();
         fb.textContent='🔍 أحسنت! اكتشفت: '+spots[hit].label; fb.className='fb qfb'; }
@@ -3071,7 +3087,6 @@ function renderLetterPicture(q, body, fb){
       if(sel.dataset.k===pr.letter){
         drawLink(sel,d); sel.classList.add('matched'); d.classList.add('matched','shown');
         sel.classList.remove('selected'); sel=null; done++; playCorrectSound();
-        if(pr.word) speak(pr.word);
         if(done===q.pairs.length) qWin(fb,'🌟 ممتاز! وصلتَ كلَّ حرفٍ بصورتِه',1);
       } else { qFail(fb,'ليس هذا حرفَ الصورة، أعدِ المحاولة'); d.classList.add('shake'); setTimeout(()=>d.classList.remove('shake'),500); }
     };
@@ -3084,7 +3099,7 @@ function renderLetterPicture(q, body, fb){
     d.onclick=()=>{
       if(d.classList.contains('matched'))return;
       Rr.querySelectorAll('.right').forEach(x=>x.classList.remove('selected'));
-      d.classList.add('selected'); sel=d; speak(pr.letter);
+      d.classList.add('selected'); sel=d;
     };
     Rr.appendChild(d);
   });
