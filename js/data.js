@@ -516,7 +516,7 @@ window.DATA_FALLBACK = {
         { title:"التلاوة والحفظ", file:"g2d1-0-1", open:false }
       ]},
       { unit:"الوحدة الأولى", lessons:[
-        { title:"الدرس الأول: أُحبُّكَ ربّي", file:"g2d1-1-1", open:false },
+        { title:"الدرس الأول: أُحبُّكَ ربّي", file:"g2d1-1-1", open:true },
         { title:"الدرس الثاني: سورة القدر", file:"g2d1-1-2", open:false },
         { title:"الدرس الثالث: أركان الإسلام", file:"g2d1-1-3", open:false },
         { title:"الدرس الرابع: الأذان والإقامة", file:"g2d1-1-4", open:false },
