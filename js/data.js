@@ -484,8 +484,8 @@ window.DATA_FALLBACK = {
       { unit:"الوحدة الثانية", lessons:[
         { title:"الدرس الأول: أُحبُّ الله ربّي", file:"g1d1-2-1", open:true },
         { title:"الدرس الثاني: سورة الناس", file:"g1d1-2-2", open:true },
-        { title:"الدرس الثالث: أحقُّ الناس", file:"g1d1-2-3", open:false },
-        { title:"الدرس الرابع: أُطيع أُمّي وأَبي", file:"g1d1-2-4", open:false },
+        { title:"الدرس الثالث: أحقُّ الناس", file:"g1d1-2-3", open:true },
+        { title:"الدرس الرابع: أُطيع أُمّي وأَبي", file:"g1d1-2-4", open:true },
         { title:"الدرس الخامس: طهارتي عنواني", file:"g1d1-2-5", open:false },
         { title:"الدرس السادس: رسولي محمّد ﷺ", file:"g1d1-2-6", open:false }
       ]}
