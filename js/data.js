@@ -474,7 +474,7 @@ window.DATA_FALLBACK = {
         { title:"التلاوة والحفظ", file:"g1d1-0-1", open:false }
       ]},
       { unit:"الوحدة الأولى", lessons:[
-        { title:"الدرس الأول: سورة الفاتحة", file:"g1d1-1-1", open:false },
+        { title:"الدرس الأول: سورة الفاتحة", file:"g1d1-1-1", open:true },
         { title:"الدرس الثاني: أنا مُسلمٌ نظيف", file:"g1d1-1-2", open:false },
         { title:"الدرس الثالث: آداب العُطاس", file:"g1d1-1-3", open:false },
         { title:"الدرس الرابع: مولد الصادق الأمين", file:"g1d1-1-4", open:false },
