@@ -507,8 +507,8 @@ window.DATA_FALLBACK = {
         { title:"الدرس الثاني: الله تعالى خالقي", file:"g1d2-4-2", open:true },
         { title:"الدرس الثالث: الصدق طريق الجنّة", file:"g1d2-4-3", open:true },
         { title:"الدرس الرابع: الاستنجاء", file:"g1d2-4-4", open:true },
-        { title:"الدرس الخامس: أُساعد الآخرين", file:"g1d2-4-5", open:false },
-        { title:"الدرس السادس: النشأة المباركة", file:"g1d2-4-6", open:false }
+        { title:"الدرس الخامس: أُساعد الآخرين", file:"g1d2-4-5", open:true },
+        { title:"الدرس السادس: النشأة المباركة", file:"g1d2-4-6", open:true }
       ]}
     ]},
     "g2-dini-1": { book:"ديني حياتي (الجزء الأول) — الصف الثاني", units:[
