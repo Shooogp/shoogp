@@ -497,7 +497,7 @@ window.DATA_FALLBACK = {
       { unit:"الوحدة الثالثة", lessons:[
         { title:"الدرس الأول: سورة الفلق", file:"g1d2-3-1", open:true },
         { title:"الدرس الثاني: الله تعالى ربُّ كلِّ شيء", file:"g1d2-3-2", open:true },
-        { title:"الدرس الثالث: من آداب الطعام", file:"g1d2-3-3", open:false },
+        { title:"الدرس الثالث: من آداب الطعام", file:"g1d2-3-3", open:true },
         { title:"الدرس الرابع: آداب قضاء الحاجة", file:"g1d2-3-4", open:false },
         { title:"الدرس الخامس: محمّد ﷺ الطفل المبارك", file:"g1d2-3-5", open:false },
         { title:"الدرس السادس: أحترم معلّمتي", file:"g1d2-3-6", open:false }
