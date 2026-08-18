@@ -28179,5 +28179,200 @@ window.QUESTIONS = {
       ]
     }
 
+  ],
+
+  /* ── المراجعةُ: د س ك ن (ج١ ص ١٤٠–١٤٥) · بقالبِ المراجعةِ نفسِه ── */
+  "g1a1-2-5": [
+
+    {
+      type: "letter-picture",
+      objective: "أَنْ يَتَعَرَّفَ إِلى حُروفِ (د س ك ن) وَيَنْطِقَ مَقاطِعَها بِحَرَكاتِها",
+      level: "knowledge",
+      prompt: "صِلْ كُلَّ حَرْفٍ بِصورَةِ كَلِمَتِهِ.",
+      pairs: [
+        { letter: "د", art: "green", word: "دَرَجٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<rect x='10' y='76' width='80' height='14' fill='#0060A0'/>"+
+          "<rect x='10' y='76' width='80' height='5'  fill='#40C0FF'/>"+
+          "<rect x='10' y='76' width='80' height='14' fill='none' stroke='#111111' stroke-width='2.4'/>"+
+          "<rect x='24' y='60' width='66' height='16' fill='#0080C0'/>"+
+          "<rect x='24' y='60' width='66' height='5'  fill='#40C0FF'/>"+
+          "<rect x='24' y='60' width='66' height='16' fill='none' stroke='#111111' stroke-width='2.4'/>"+
+          "<rect x='38' y='44' width='52' height='16' fill='#0080C0'/>"+
+          "<rect x='38' y='44' width='52' height='5'  fill='#40C0FF'/>"+
+          "<rect x='38' y='44' width='52' height='16' fill='none' stroke='#111111' stroke-width='2.4'/>"+
+          "<rect x='52' y='28' width='38' height='16' fill='#0060A0'/>"+
+          "<rect x='52' y='28' width='38' height='5'  fill='#40C0FF'/>"+
+          "<rect x='52' y='28' width='38' height='16' fill='none' stroke='#111111' stroke-width='2.4'/>"+
+          "</svg>" },
+        { letter: "س", art: "amber", word: "سَمَكَةٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<defs><clipPath id='fshR'><ellipse cx='52' cy='52' rx='30' ry='19'/></clipPath></defs>"+
+          "<path d='M82 52 L96 36 L96 68 Z' fill='#E08000' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
+          "<path d='M46 33 L58 20 L64 34 Z' fill='#FFA000' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
+          "<g clip-path='url(#fshR)'>"+
+          "<rect x='0' y='0'  width='100' height='44' fill='#FFC040'/>"+
+          "<rect x='0' y='44' width='100' height='11' fill='#FFA000'/>"+
+          "<rect x='0' y='55' width='100' height='9'  fill='#E08000'/>"+
+          "<rect x='0' y='64' width='100' height='36' fill='#C06000'/>"+
+          "<rect x='40' y='30' width='5' height='50' fill='#984800' opacity='.7'/>"+
+          "<rect x='58' y='30' width='5' height='50' fill='#984800' opacity='.7'/>"+
+          "<ellipse cx='40' cy='42' rx='12' ry='5' fill='#ffffff' opacity='.7' transform='rotate(-12 40 42)'/>"+
+          "</g>"+
+          "<ellipse cx='52' cy='52' rx='30' ry='19' fill='none' stroke='#111111' stroke-width='2.6'/>"+
+          "</svg>" },
+        { letter: "ك", art: "sky", word: "كَرَزٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<defs><clipPath id='chrR'><circle cx='38' cy='68' r='20'/></clipPath>"+
+          "<clipPath id='chrR2'><circle cx='70' cy='74' r='16'/></clipPath></defs>"+
+          "<path d='M38 48 Q46 24 58 16' fill='none' stroke='#111111' stroke-width='7' stroke-linecap='round'/>"+
+          "<path d='M38 48 Q46 24 58 16' fill='none' stroke='#4A9018' stroke-width='3.5' stroke-linecap='round'/>"+
+          "<path d='M70 58 Q68 30 58 16' fill='none' stroke='#111111' stroke-width='7' stroke-linecap='round'/>"+
+          "<path d='M70 58 Q68 30 58 16' fill='none' stroke='#4A9018' stroke-width='3.5' stroke-linecap='round'/>"+
+          "<path d='M58 18 q22 -10 30 4 q-20 10 -30 -4 Z' fill='#60C020' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
+          "<g clip-path='url(#chrR)'>"+
+          "<rect x='0' y='0'  width='100' height='62' fill='#FF4020'/>"+
+          "<rect x='0' y='62' width='100' height='10' fill='#FF2020'/>"+
+          "<rect x='0' y='72' width='100' height='9'  fill='#E02000'/>"+
+          "<rect x='0' y='81' width='100' height='19' fill='#B01800'/>"+
+          "<ellipse cx='31' cy='60' rx='8' ry='4' fill='#ffffff' opacity='.8' transform='rotate(-25 31 60)'/>"+
+          "</g>"+
+          "<circle cx='38' cy='68' r='20' fill='none' stroke='#111111' stroke-width='2.6'/>"+
+          "<g clip-path='url(#chrR2)'>"+
+          "<rect x='0' y='0'  width='100' height='70' fill='#FF4020'/>"+
+          "<rect x='0' y='70' width='100' height='9'  fill='#FF2020'/>"+
+          "<rect x='0' y='79' width='100' height='21' fill='#E02000'/>"+
+          "</g>"+
+          "<circle cx='70' cy='74' r='16' fill='none' stroke='#111111' stroke-width='2.6'/>"+
+          "</svg>" },
+        { letter: "ن", art: "red", word: "نُجومٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<defs><clipPath id='stR'><path d='M50 14 L59 40 L86 40 L64 56 L73 82 L50 66 L27 82 L36 56 L14 40 L41 40 Z'/></clipPath></defs>"+
+          "<g clip-path='url(#stR)'>"+
+          "<rect x='0' y='0'  width='100' height='40' fill='#FFFFC0'/>"+
+          "<rect x='0' y='40' width='100' height='14' fill='#E0E0A0'/>"+
+          "<rect x='0' y='54' width='100' height='14' fill='#E0C080'/>"+
+          "<rect x='0' y='68' width='100' height='32' fill='#E0C060'/>"+
+          "</g>"+
+          "<path d='M50 14 L59 40 L86 40 L64 56 L73 82 L50 66 L27 82 L36 56 L14 40 L41 40 Z' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
+          "</svg>" }
+      ]
+    },
+
+    {
+      type: "tashkeel",
+      objective: "أَنْ يَتَعَرَّفَ إِلى حُروفِ (د س ك ن) وَيَنْطِقَ مَقاطِعَها بِحَرَكاتِها",
+      level: "application",
+      prompt: "ضَعِ الْحَرَكَةَ فَوْقَ كُلِّ حَرْفٍ.",
+      word: "مَدْرَسَة"
+    },
+
+    // «مسمار» من نشاطِ إكمالِ المقاطعِ ص ١٤٣.
+    {
+      type: "arrange",
+      objective: "أَنْ يَكْتُبَ الْحَرْفَ وَالْكَلِمَةَ وَيُكْمِلَ بِالْمَقْطَعِ الْمُناسِبِ",
+      level: "application",
+      prompt: "رَتِّبِ الْحُروفَ لِتُكَوِّنَ الْكَلِمَةَ.",
+      word: "مسمار"
+    },
+
+    // جملةُ نشاطِ ⑥ ص ١٤٤ نفسُها.
+    {
+      type: "sentence",
+      objective: "أَنْ يَتَحَدَّثَ بِجُمَلٍ سَليمَةٍ عَنْ مَضْمونِ اللَّوْحَةِ الْمَعْروضَةِ",
+      level: "application",
+      prompt: "رَتِّبِ الْكَلِماتِ لِتُكَوِّنَ جُمْلَةً.",
+      sentence: "كَتَبَ ناصِرٌ كَلِماتٍ جَديدَةً"
+    },
+
+    {
+      type: "classify",
+      objective: "أَنْ يَتَعَرَّفَ إِلى حُروفِ (د س ك ن) وَيَنْطِقَ مَقاطِعَها بِحَرَكاتِها",
+      level: "reasoning",
+      prompt: "صَنِّفِ الْكَلِماتِ بِحَسَبِ حَرْفِها الْأَوَّلِ.",
+      groups: [
+        { name: "د", items: ["دَرَجٌ"] },
+        { name: "س", items: ["سَمَكَةٌ"] },
+        { name: "ك", items: ["كَرَزٌ", "كِتابٌ"] }
+      ]
+    },
+
+    // إثرائيّ — نشاطُ «أُكْمِلُ بِالْمَقْطَعِ الْمُناسِبِ» ص ١٤٣ نفسُه.
+    {
+      type: "fill-blank",
+      objective: "أَنْ يَكْتُبَ الْحَرْفَ وَالْكَلِمَةَ وَيُكْمِلَ بِالْمَقْطَعِ الْمُناسِبِ",
+      level: "application",
+      prompt: "أَكْمِلِ الْكَلِمَةَ بِالْمَقْطَعِ الْمُناسِبِ.",
+      text: "{} رَسَةٌ",
+      answers: ["مَدْ"],
+      distractors: ["بَكْ", "مِسْ"]
+    }
+
+  ],
+
+  /* ── نشيد: مَدْرَسَتي حَديقَتي (ج١ ص ١٤٦) · شِعْرُ بَيان الصَّفدي ──
+     بقالبِ درسِ النشيدِ نفسِه (§`الأهداف.md`). */
+  "g1a1-2-6": [
+
+    {
+      type: "sequence",
+      objective: "أَنْ يَتَحَدَّثَ بِجُمَلٍ سَليمَةٍ عَنْ مَضْمونِ اللَّوْحَةِ الْمَعْروضَةِ",
+      level: "application",
+      prompt: "رَتِّبْ أَبْياتَ النَّشيدِ.",
+      steps: [
+        "مَدْرَسَتي حَديقَتي وَبابُها الْكِتابْ",
+        "أَقْرَأُ فيهِ قِصَصًا وَأَدْرُسُ الْحِسابْ",
+        "في كُلِّ صُبْحٍ نَذْهَبُ مَعَ الرِّفاقِ نَلْعَبْ",
+        "نَدْرُسُ في صُفوفِنا وَفي الْمَساءِ نَكْتُبْ"
+      ]
+    },
+
+    {
+      type: "matching",
+      objective: "أَنْ يَتَحَدَّثَ بِجُمَلٍ سَليمَةٍ عَنْ مَضْمونِ اللَّوْحَةِ الْمَعْروضَةِ",
+      level: "reasoning",
+      prompt: "صِلْ كُلَّ شَطْرٍ بِتَكْمِلَتِهِ.",
+      pairs: [
+        { a: "مَدْرَسَتي حَديقَتي", b: "وَبابُها الْكِتابْ" },
+        { a: "أَقْرَأُ فيهِ قِصَصًا", b: "وَأَدْرُسُ الْحِسابْ" },
+        { a: "أَنا الصَّغيرُ الصّالِحُ", b: "بِعَمَلي أُكافِحْ" }
+      ]
+    },
+
+    {
+      type: "fill-blank",
+      objective: "أَنْ يَتَحَدَّثَ بِجُمَلٍ سَليمَةٍ عَنْ مَضْمونِ اللَّوْحَةِ الْمَعْروضَةِ",
+      level: "application",
+      prompt: "أَكْمِلِ الشَّطْرَ بِسَحْبِ الْكَلِمَةِ الْمُناسِبَةِ.",
+      text: "مَدْرَسَتي {} وَبابُها الْكِتابْ",
+      answers: ["حَديقَتي"],
+      distractors: ["مَدينَتي", "غُرْفَتي"]
+    },
+
+    {
+      type: "sentence",
+      objective: "أَنْ يَكْتُبَ الْحَرْفَ وَالْكَلِمَةَ وَيُكْمِلَ بِالْمَقْطَعِ الْمُناسِبِ",
+      level: "application",
+      prompt: "رَتِّبِ الْكَلِماتِ لِتُكَوِّنَ شَطْرَ النَّشيدِ.",
+      sentence: "مَدْرَسَتي حَديقَتي وَبابُها الْكِتابْ"
+    },
+
+    {
+      type: "mcq",
+      objective: "أَنْ يُجيبَ عَنْ أَسْئِلَةِ الْفَهْمِ فيما اسْتَمَعَ إِلَيْهِ",
+      level: "knowledge",
+      prompt: "بِماذا شَبَّهَ الشّاعِرُ مَدْرَسَتَهُ؟",
+      options: ["بِالْحَديقَةِ", "بِالْبَحْرِ", "بِالْجَبَلِ"],
+      answer: 0
+    },
+
+    {
+      type: "tashkeel",
+      objective: "أَنْ يَتَعَرَّفَ إِلى حُروفِ (د س ك ن) وَيَنْطِقَ مَقاطِعَها بِحَرَكاتِها",
+      level: "application",
+      prompt: "ضَعِ الْحَرَكَةَ فَوْقَ كُلِّ حَرْفٍ.",
+      word: "حَديقَتي"
+    }
+
   ]
 };

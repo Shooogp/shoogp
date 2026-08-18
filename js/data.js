@@ -416,8 +416,8 @@ window.DATA_FALLBACK = {
         { title:"الدرس الثاني: س", file:"g1a1-2-2", open:true },
         { title:"الدرس الثالث: ك", file:"g1a1-2-3", open:true },
         { title:"الدرس الرابع: ن", file:"g1a1-2-4", open:true },
-        { title:"المراجعة: د س ك ن", file:"g1a1-2-5", open:false },
-        { title:"نشيد: مَدْرَسَتي حَديقَتي", file:"g1a1-2-6", open:false }
+        { title:"المراجعة: د س ك ن", file:"g1a1-2-5", open:true },
+        { title:"نشيد: مَدْرَسَتي حَديقَتي", file:"g1a1-2-6", open:true }
       ]}
     ]},
     "g1-arabic-2": { book:"أحب لغتي (الجزء الثاني) — الصف الأول", units:[
