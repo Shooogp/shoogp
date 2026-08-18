@@ -26539,5 +26539,233 @@ window.QUESTIONS = {
       distractors: ["أَحَدَ عَشَرَ", "عِشْرونَ"]
     }
 
+  ],
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     «أحب لغتي» — الصفُّ الأول · ج١ · المحورُ الأول: هُنا أَعيشُ
+     الدرسُ الأول: حرفُ الباء (ص ٤٤–٥٣)
+
+     القالبُ: قالبُ درسِ الحرفِ (قرارُ المالك ٢٠٢٦-٠٨-١٨) — القالبُ ② اللغويّ
+     بتعديلِ الخانةِ ④: **فهمُ المسموعِ** بدلَ «الشمسيةِ والقمريةِ» (لا تُدرَّسُ
+     في هذا الصفّ). ولا توزيعَ معرفيٌّ إلزاميٌّ فيه ولا `evaluation`.
+
+     ⚠️ **والترتيبُ هنا ترتيبُ الكتابِ نفسِه**: أَتَأَمَّلُ ← أَسْمَعُ/أَفْهَمُ ←
+     أَقْرَأُ ← أَكْتُبُ ← الجملة. وهو يوافقُ **تصاعدَ المستوى** في الوقتِ نفسِه
+     (معرفةٌ ← تطبيقٌ ← استدلالٌ في الإثرائيّ)، فلا تعارضَ بينَ القاعدتَين.
+
+     الأهدافُ الأربعةُ من صفحةِ «أُقَيِّمُ أَدائي» ص ٥٣ (انظر `الأهداف.md`).
+     ولونُ الباءِ **أخضر** — من بطاقتِها في صفحةِ المراجعةِ ص ٨٤.
+     ═══════════════════════════════════════════════════════════════════════ */
+  "g1a1-1-1": [
+
+    // ① التعرّفُ على الحرف — الحرفُ **مصمَّمٌ** لا نصّاً (حقلُ `art`)، وأشكالُ
+    //    الاتصالِ الثلاثةُ هي عينُ ما يُدرَّبُ عليه في «أنا تعلَّمتُ» ص ٥٢.
+    //    والكلماتُ الثلاثُ من صفحةِ «أُلَوِّنُ» ص ٤٥ بلا زيادة.
+    {
+      type: "letter-picture",
+      objective: "أَنْ يَتَعَرَّفَ إِلى حَرْفِ (ب) وَيَنْطِقَ مَقاطِعَهُ بِحَرَكاتِهِ الثَّلاثِ وَمُدودِهِ",
+      level: "knowledge",
+      prompt: "صِلْ شَكْلَ الْباءِ بِصورَةِ كَلِمَتِها.",
+      pairs: [
+        { letter: "بـ", art: "green", word: "بَيْتٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<rect x='19' y='44' width='62' height='42' rx='5' fill='#9A6636'/>"+
+          "<rect x='19' y='44' width='62' height='11' fill='#B98551'/>"+
+          "<rect x='19' y='66' width='62' height='11' fill='#7A4C22'/>"+
+          "<rect x='19' y='77' width='62' height='9' fill='#68411D'/>"+
+          "<rect x='19' y='44' width='62' height='42' rx='5' fill='none' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
+          "<path d='M10 47 L50 16 L90 47 Z' fill='#E02000'/>"+
+          "<path d='M10 47 L50 16 L50 47 Z' fill='#FF2020'/>"+
+          "<path d='M21 42 L47 22 L47 27 L28 42 Z' fill='#ffffff' opacity='.72'/>"+
+          "<path d='M10 47 L50 16 L90 47 Z' fill='none' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
+          "<rect x='24' y='52' width='14' height='12' rx='2' fill='#0080C0'/>"+
+          "<rect x='24' y='52' width='14' height='4' fill='#40C0FF'/>"+
+          "<path d='M31 52 V64 M24 58 H38' stroke='#111111' stroke-width='1.4'/>"+
+          "<rect x='24' y='52' width='14' height='12' rx='2' fill='none' stroke='#111111' stroke-width='2'/>"+
+          "<rect x='62' y='52' width='14' height='12' rx='2' fill='#0080C0'/>"+
+          "<rect x='62' y='52' width='14' height='4' fill='#40C0FF'/>"+
+          "<path d='M69 52 V64 M62 58 H76' stroke='#111111' stroke-width='1.4'/>"+
+          "<rect x='62' y='52' width='14' height='12' rx='2' fill='none' stroke='#111111' stroke-width='2'/>"+
+          "<rect x='42' y='62' width='17' height='24' rx='3' fill='#E08000'/>"+
+          "<rect x='42' y='62' width='17' height='7' fill='#FFA000'/>"+
+          "<rect x='42' y='80' width='17' height='6' fill='#C06000'/>"+
+          "<rect x='42' y='62' width='17' height='24' rx='3' fill='none' stroke='#111111' stroke-width='2.2' stroke-linejoin='round'/>"+
+          "<circle cx='46' cy='75' r='1.9' fill='#111111'/>"+
+          "</svg>" },
+        { letter: "ـبـ", art: "green", word: "شِبْلٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<defs>"+
+          "<clipPath id='cubB'><ellipse cx='54' cy='60' rx='27' ry='18'/></clipPath>"+
+          "<clipPath id='cubH'><circle cx='27' cy='42' r='19'/></clipPath>"+
+          "</defs>"+
+          "<path d='M78 56 Q94 48 89 32' fill='none' stroke='#111111' stroke-width='9' stroke-linecap='round'/>"+
+          "<path d='M78 56 Q94 48 89 32' fill='none' stroke='#C06000' stroke-width='5' stroke-linecap='round'/>"+
+          "<circle cx='89' cy='29' r='7' fill='#984800' stroke='#111111' stroke-width='2.4'/>"+
+          "<rect x='38' y='72' width='10' height='18' rx='5' fill='#C06000' stroke='#111111' stroke-width='2.2'/>"+
+          "<rect x='64' y='72' width='10' height='18' rx='5' fill='#C06000' stroke='#111111' stroke-width='2.2'/>"+
+          "<rect x='50' y='74' width='10' height='16' rx='5' fill='#E08000' stroke='#111111' stroke-width='2.2'/>"+
+          "<g clip-path='url(#cubB)'>"+
+          "<rect x='0' y='0' width='100' height='50' fill='#FFA000'/>"+
+          "<rect x='0' y='50' width='100' height='11' fill='#E08000'/>"+
+          "<rect x='0' y='61' width='100' height='10' fill='#C06000'/>"+
+          "<rect x='0' y='71' width='100' height='29' fill='#984800'/>"+
+          "<ellipse cx='48' cy='49' rx='13' ry='5' fill='#ffffff' opacity='.7' transform='rotate(-13 48 49)'/>"+
+          "</g>"+
+          "<ellipse cx='54' cy='60' rx='27' ry='18' fill='none' stroke='#111111' stroke-width='2.5'/>"+
+          // اللِّبْدَةُ — تفصلُ الشِّبْلَ عن القِطّةِ بصرياً (وهو المقصودُ في الكتاب)
+          "<circle cx='27' cy='42' r='24' fill='#C06000' stroke='#111111' stroke-width='2.4'/>"+
+          "<path d='M15 30 L12 18 L24 24 Z' fill='#E08000' stroke='#111111' stroke-width='2.3' stroke-linejoin='round'/>"+
+          "<path d='M39 30 L42 18 L30 24 Z' fill='#E08000' stroke='#111111' stroke-width='2.3' stroke-linejoin='round'/>"+
+          "<g clip-path='url(#cubH)'>"+
+          "<rect x='0' y='0' width='100' height='36' fill='#FFA000'/>"+
+          "<rect x='0' y='36' width='100' height='9' fill='#E08000'/>"+
+          "<rect x='0' y='45' width='100' height='9' fill='#C06000'/>"+
+          "<rect x='0' y='54' width='100' height='46' fill='#984800'/>"+
+          "<ellipse cx='21' cy='33' rx='9' ry='4' fill='#ffffff' opacity='.72' transform='rotate(-13 21 33)'/>"+
+          "</g>"+
+          "<circle cx='27' cy='42' r='19' fill='none' stroke='#111111' stroke-width='2.5'/>"+
+          "</svg>" },
+        { letter: "ـب", art: "green", word: "حاسوبٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<rect x='13' y='12' width='74' height='52' rx='7' fill='#808080'/>"+
+          "<rect x='13' y='12' width='74' height='9' fill='#C0C0C0'/>"+
+          "<rect x='13' y='54' width='74' height='10' fill='#606060'/>"+
+          "<rect x='13' y='12' width='74' height='52' rx='7' fill='none' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
+          "<rect x='20' y='19' width='60' height='36' rx='3' fill='#0080C0'/>"+
+          "<rect x='20' y='19' width='60' height='11' fill='#40C0FF'/>"+
+          "<rect x='20' y='44' width='60' height='11' fill='#0060A0'/>"+
+          "<path d='M26 55 L44 19 L54 19 L36 55 Z' fill='#ffffff' opacity='.5'/>"+
+          "<rect x='20' y='19' width='60' height='36' rx='3' fill='none' stroke='#111111' stroke-width='2.2' stroke-linejoin='round'/>"+
+          "<rect x='44' y='64' width='12' height='9' fill='#808080' stroke='#111111' stroke-width='2.2'/>"+
+          "<rect x='32' y='73' width='36' height='7' rx='3' fill='#606060' stroke='#111111' stroke-width='2.2' stroke-linejoin='round'/>"+
+          "<rect x='16' y='84' width='68' height='12' rx='4' fill='#808080'/>"+
+          "<rect x='16' y='84' width='68' height='4' fill='#C0C0C0'/>"+
+          "<path d='M22 92 H78 M22 90 H78' stroke='#404040' stroke-width='1.2'/>"+
+          "<rect x='16' y='84' width='68' height='12' rx='4' fill='none' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
+          "</svg>" }
+      ]
+    },
+
+    // ② فهمُ المسموع — سؤالُ الكتابِ نفسُه (ص ٤٧: «بيتُ بدرٍ وعبيرَ قُربَ… ؟»)
+    //    محوَّلاً إلى **نقرٍ على صورةٍ** لأنّ تلميذَ الصفِّ الأولِ لا يقرأُ الخيارات.
+    // ⚠️ **يقرأُ المعلّمُ نصَّ الاستماعِ أوّلاً** كما يقتضي الكتاب — ولا ملفَّ صوتٍ
+    //    لهذه النصوصِ بعدُ، فمتى سُجِّلَتْ أُضيفَ الحقلُ الصوتيُّ للنوعِ المناسب.
+    {
+      type: "hotspot",
+      objective: "أَنْ يُجيبَ عَنْ أَسْئِلَةِ الْفَهْمِ فيما اسْتَمَعَ إِلَيْهِ",
+      level: "knowledge",
+      prompt: "أَيْنَ بَيْتُ بَدْرٍ وَعَبيرَ؟",
+      bg: "#f4fbff",
+      spot: { x: 26, y: 26, r: 20 },
+      /* ⚠️ **اللوحةُ مربّعةٌ (300×300) عن قصدٍ لا اتّفاقاً — قيدٌ في محرّكِ `hotspot` نفسِه:**
+         اختبارُ الإصابةِ `Math.hypot` يقيسُ بـ**النسبةِ المئويةِ على المحورَين**، والنسبةُ
+         الواحدةُ تساوي وحداتٍ مختلفةً إن اختلفَ ضلعا اللوحة. ففي لوحةٍ عريضةٍ تصيرُ
+         «الدائرةُ» المقبولةُ **بيضاويةً مفلطحةً** فلا تغطّي هدفاً مربّعاً. والمربّعُ يجعلُها
+         دائرةً حقيقيةً فتغطّي اللوحَ كلَّه.
+         **والتخطيطُ ٢ + ١ لا صفّاً واحداً** لأنّ الصفَّ يفرضُ لوحةً عريضةً تصغُرُ داخلَ
+         الإطارِ الطوليِّ (مقيسٌ: ثلاثةُ ألواحٍ في صفٍّ خرجَتْ ٤٠px لكلِّ لوح). */
+      svg:
+        "<svg viewBox='0 0 300 300'>"+
+        "<defs>"+
+        "<clipPath id='pnA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='pnB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='pnC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
+        "</defs>"+
+        // ── لوحُ البحرِ (الجواب) ──
+        "<g clip-path='url(#pnA)'>"+
+        "<rect x='12' y='12' width='134' height='134' fill='#CDEBFF'/>"+
+        "<rect x='12' y='58' width='134' height='8' fill='#B98551'/>"+
+        "<rect x='12' y='66' width='134' height='6' fill='#9A6636'/>"+
+        "<rect x='12' y='72' width='134' height='74' fill='#0080C0'/>"+
+        "<path d='M12 72 q17 -9 34 0 t34 0 t34 0 t34 0 v12 H12 Z' fill='#00A0E0'/>"+
+        "<rect x='12' y='112' width='134' height='20' fill='#0060A0'/>"+
+        "<rect x='12' y='132' width='134' height='14' fill='#004880'/>"+
+        "<path d='M30 98 q10 -6 20 0 M98 122 q10 -6 20 0' stroke='#ffffff' stroke-width='3' fill='none' opacity='.8' stroke-linecap='round'/>"+
+        "<rect x='62' y='38' width='34' height='20' fill='#9A6636'/>"+
+        "<rect x='62' y='38' width='34' height='6' fill='#B98551'/>"+
+        "<rect x='62' y='38' width='34' height='20' fill='none' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
+        "<path d='M52 38 L79 18 L106 38 Z' fill='#E02000'/>"+
+        "<path d='M52 38 L79 18 L79 38 Z' fill='#FF2020'/>"+
+        "<path d='M52 38 L79 18 L106 38 Z' fill='none' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
+        "</g>"+
+        "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
+        // ── لوحُ الرَّبْوَة ──
+        "<g clip-path='url(#pnB)'>"+
+        "<rect x='154' y='12' width='134' height='134' fill='#CDEBFF'/>"+
+        "<path d='M154 146 Q221 20 288 146 Z' fill='#60C020'/>"+
+        "<rect x='154' y='104' width='134' height='20' fill='#4A9018'/>"+
+        "<rect x='154' y='124' width='134' height='22' fill='#356810'/>"+
+        "<path d='M154 146 Q221 20 288 146 Z' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
+        "<rect x='206' y='63' width='30' height='20' fill='#9A6636'/>"+
+        "<rect x='206' y='63' width='30' height='6' fill='#B98551'/>"+
+        "<rect x='206' y='63' width='30' height='20' fill='none' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
+        "<path d='M198 63 L221 43 L244 63 Z' fill='#E02000'/>"+
+        "<path d='M198 63 L221 43 L221 63 Z' fill='#FF2020'/>"+
+        "<path d='M198 63 L221 43 L244 63 Z' fill='none' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
+        "</g>"+
+        "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
+        // ── لوحُ الجبل ──
+        "<g clip-path='url(#pnC)'>"+
+        "<rect x='83' y='154' width='134' height='134' fill='#CDEBFF'/>"+
+        "<path d='M150 272 L184 200 L218 272 Z' fill='#606060'/>"+
+        "<path d='M150 272 L184 200 L184 272 Z' fill='#808080'/>"+
+        "<path d='M175 222 L184 200 L193 222 Z' fill='#FFFFC0'/>"+
+        "<path d='M150 272 L184 200 L218 272 Z' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
+        "<path d='M92 272 L138 176 L184 272 Z' fill='#808080'/>"+
+        "<path d='M92 272 L138 176 L138 272 Z' fill='#C0C0C0'/>"+
+        "<path d='M126 201 L138 176 L150 201 Z' fill='#FFFFC0'/>"+
+        "<path d='M92 272 L138 176 L184 272 Z' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
+        "<rect x='83' y='272' width='134' height='16' fill='#4A9018'/>"+
+        "<rect x='96' y='254' width='22' height='18' fill='#9A6636' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
+        "<path d='M89 254 L107 238 L125 254 Z' fill='#E02000' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
+        "</g>"+
+        "<rect x='83' y='154' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
+        "</svg>"
+    },
+
+    // ③ الضبطُ — «أَبي» مقصودةٌ: مقطعُ «بِي» أحدُ مقاطعِ الدرسِ المنصوصةِ ص ٤٨
+    //    (بَ بِ بُ / با بي بو)، والكلمةُ من نصِّ الاستماعِ نفسِه.
+    {
+      type: "tashkeel",
+      objective: "أَنْ يَتَعَرَّفَ إِلى حَرْفِ (ب) وَيَنْطِقَ مَقاطِعَهُ بِحَرَكاتِهِ الثَّلاثِ وَمُدودِهِ",
+      level: "application",
+      prompt: "ضَعِ الْحَرَكَةَ فَوْقَ كُلِّ حَرْفٍ.",
+      word: "أَبِي"
+    },
+
+    // ④ بناءُ الكلمة — «باب» من صفحةِ «أَقْرَأُ مُسْتَعينًا بِالصُّوَرِ» ص ٤٩،
+    //    وحرفاها ب و ا فقط، فلا يُطالَبُ الطفلُ بحرفٍ لم يُدرَسْ بعد.
+    {
+      type: "arrange",
+      objective: "أَنْ يَكْتُبَ الْحَرْفَ وَالْكَلِمَةَ وَيُكْمِلَ بِالْمَقْطَعِ الْمُناسِبِ",
+      level: "application",
+      prompt: "رَتِّبِ الْحُروفَ لِتُكَوِّنَ الْكَلِمَةَ.",
+      word: "باب"
+    },
+
+    // ⑤ بناءُ الجملة — الجملةُ نفسُها التي يبنيها الكتابُ في ص ٤٩ بالصور.
+    {
+      type: "sentence",
+      objective: "أَنْ يَتَحَدَّثَ بِجُمَلٍ سَليمَةٍ عَنْ مَضْمونِ اللَّوْحَةِ الْمَعْروضَةِ",
+      level: "application",
+      prompt: "رَتِّبِ الْكَلِماتِ لِتُكَوِّنَ جُمْلَةً.",
+      sentence: "عَبيرُ قُرْبَ الْبابِ"
+    },
+
+    // ⑥ إثرائيّ — مواضعُ الباءِ الثلاثةُ كما في «أنا تعلَّمتُ» ص ٥٢،
+    //    والكلماتُ الأربعُ كلُّها من صفحةِ «أُلَوِّنُ» ص ٤٥.
+    // ⚠️ ٣ مجموعاتٍ و٤ عناصرَ = حدُّ السعةِ المقيسِ للتصنيف (`نماذج-الأسئلة.md`).
+    {
+      type: "classify",
+      objective: "أَنْ يَتَعَرَّفَ إِلى حَرْفِ (ب) وَيَنْطِقَ مَقاطِعَهُ بِحَرَكاتِهِ الثَّلاثِ وَمُدودِهِ",
+      level: "reasoning",
+      prompt: "صَنِّفِ الْكَلِماتِ بِحَسَبِ مَوْضِعِ الْباءِ.",
+      groups: [
+        { name: "أَوَّلُ الْكَلِمَةِ",  items: ["بَيْتٌ"] },
+        { name: "وَسَطُ الْكَلِمَةِ", items: ["شِبْلٌ"] },
+        { name: "آخِرُ الْكَلِمَةِ",  items: ["حاسوبٌ", "حَليبٌ"] }
+      ]
+    }
+
   ]
 };

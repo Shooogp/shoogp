@@ -404,7 +404,7 @@ window.DATA_FALLBACK = {
         { title:"مِنَ الْبَيْتِ إِلَى الْمَدْرَسَةِ", file:"g1a1-0-3", open:false }
       ]},
       { unit:"المحور الأول: هُنا أَعيشُ", lessons:[
-        { title:"الدرس الأول: ب", file:"g1a1-1-1", open:false },
+        { title:"الدرس الأول: ب", file:"g1a1-1-1", open:true },
         { title:"الدرس الثاني: ل", file:"g1a1-1-2", open:false },
         { title:"الدرس الثالث: م", file:"g1a1-1-3", open:false },
         { title:"الدرس الرابع: ر", file:"g1a1-1-4", open:false },

@@ -746,6 +746,10 @@
   /* ㉟ الحرفُ والصورة — عمودُ حروفٍ كبيرةٍ وعمودُ صور، والكلمةُ تحتَ الصورةِ مخفيّةٌ
      حتى يصحَّ الوصل (المعلومةُ مكافأةٌ لا تلميحٌ سابق). */
   .lpletter{font-size:2.4rem;font-weight:800;min-width:96px;justify-content:center;text-align:center}
+  /* الحرفُ المصمَّم (دروسُ الحروف): البلاطةُ تحلُّ محلَّ النصِّ داخلَ الكبسولةِ نفسِها،
+     فتبقى هويةُ العمودِ واحدةً سواءٌ أكان الحرفُ رسماً أم نصّاً. */
+  .lpletter.hasart{padding:6px 10px}
+  .lpletter .letterart{width:112px;height:112px;display:block}
   /* بطاقةُ الصورةِ لوحٌ هادئٌ لا كبسولة (انظرَ التعليقَ عندَ بنائِها في js/app.js) */
   .lpcard{display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;
     background:#fff;border:2px solid #e0b380;border-radius:18px;padding:12px 14px;min-width:136px;

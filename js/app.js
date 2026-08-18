@@ -3043,7 +3043,52 @@ function renderSunMoon(q, body, fb){
   body.querySelector('.btn-reset').onclick=()=>renderSunMoon(q,body,fb);
 }
 
-/* ㉟ توصيلُ الحرفِ بالصورة (letter-picture): `pairs[{letter, word, img|svg}]` — عمودُ حروفٍ
+/* ★ الحرفُ المصمَّم — يُستعمَلُ في دروسِ الحروفِ («أحب لغتي» الصفُّ الأول) حيثُ الحرفُ
+   نفسُه هو موضوعُ الدرسِ لا مجرّدُ نصٍّ في بطاقة. يُبنى بورقةِ المواصفاتِ البصريةِ
+   المعتمدةِ في `CLAUDE.md`: **تدرّجُ أربعِ حزمٍ حادّةِ الحوافِّ** من سُلَّمِ لونٍ واحدٍ من
+   سلالمِ `images/rocket/`، و**لمعةٌ بيضاءُ عريضةٌ** على أعلاه، و**حدٌّ `#111111` رفيعٌ
+   مستديرُ الرؤوس**، والحرفُ **طافٍ بلا خطِّ أرضٍ ولا ظلٍّ مُلقًى**.
+
+   **ولماذا `<text>` مقصوصٌ لا مساراتٌ يدوية:** المساراتُ تعني رسمَ كلِّ حرفٍ من العشرينَ
+   يدوياً بكلِّ أشكالِ اتصالِه — أربعُ نسخٍ للحرفِ الواحد. والقصُّ يجعلُ الدالّةَ تعملُ مع
+   **أيِّ حرفٍ وأيِّ شكلِ اتصالٍ** بلا رسمٍ جديد، والحزمُ تبقى حزماً حادّةً كما تشترطُ الورقة.
+
+   `stroke-width` هنا **2.5 من لوحةِ 100** لا `3` من لوحةِ 600 — لأنّ المعيارَ في الورقةِ
+   سماكةٌ **معروضةٌ** ≈٣ بكسل، والبلاطةُ تُعرَضُ 96px فتُعطي 2.4px. ولو أُخِذَ الرقمُ حرفياً
+   لخرجَ الحدُّ شعرةً لا تُرى. */
+const LETTER_RAMPS = {
+  green:  ['#80C020','#60C020','#4A9018','#356810'],
+  orange: ['#FF8000','#FF6000','#E04000','#C04000'],
+  sky:    ['#40C0FF','#20A0FF','#2080E0','#1060A0'],
+  ocean:  ['#00A0E0','#0080C0','#0060A0','#004880'],
+  red:    ['#FF4020','#FF2020','#E02000','#B01800'],
+  amber:  ['#FFA000','#E08000','#C06000','#984800'],
+  moon:   ['#FFFFC0','#E0E0A0','#E0C080','#E0C060'],
+  steel:  ['#C0C0C0','#808080','#606060','#404040']
+};
+let _laSeq = 0;
+function letterArt(ch, ramp){
+  const c = LETTER_RAMPS[ramp] || LETTER_RAMPS.orange;
+  const id = 'la' + (++_laSeq);
+  // الأشكالُ المتّصلةُ («ـبـ») أعرضُ من المنفصلة، فيتقلّصُ القياسُ لتبقى داخلَ اللوحة.
+  const n = [...ch].length;
+  const fs = n >= 3 ? 60 : n === 2 ? 76 : 90;
+  const glyph = a => `<text x="50" y="54" text-anchor="middle" dominant-baseline="central"`+
+    ` font-family="Cairo,Tajawal,sans-serif" font-weight="900" font-size="${fs}" ${a}>${ch}</text>`;
+  return `<svg class="letterart" viewBox="0 0 100 100" role="img" aria-label="${ch}">`+
+    `<defs><clipPath id="${id}">${glyph('')}</clipPath></defs>`+
+    `<g clip-path="url(#${id})">`+
+      `<rect x="0" y="0"  width="100" height="30" fill="${c[0]}"/>`+
+      `<rect x="0" y="30" width="100" height="22" fill="${c[1]}"/>`+
+      `<rect x="0" y="52" width="100" height="22" fill="${c[2]}"/>`+
+      `<rect x="0" y="74" width="100" height="26" fill="${c[3]}"/>`+
+      `<ellipse cx="36" cy="25" rx="18" ry="8" fill="#fff" opacity=".82" transform="rotate(-14 36 25)"/>`+
+    `</g>`+
+    glyph('fill="none" stroke="#111111" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"')+
+  `</svg>`;
+}
+
+/* ㉟ توصيلُ الحرفِ بالصورة (letter-picture): `pairs[{letter, word, art?, img|svg}]` — عمودُ حروفٍ
    وعمودُ صور، يُنقَرُ الحرفُ ثم صورتُه فيُرسَمُ الخطُّ الواصل. وعندَ الوصلِ الصحيحِ
    **تظهرُ الكلمةُ تحتَ الصورةِ وحرفُها الأولُ مميَّز**، فيرى الطفلُ الصوتَ في موضعِه من
    الكلمةِ لا مجرّدَ «صحيح». الصورةُ إمّا أصلٌ من `images/` (`img`) أو SVG مكتوبٌ معَ
@@ -3095,7 +3140,11 @@ function renderLetterPicture(q, body, fb){
   // عمودُ الحروف (يمين)
   shuffle(q.pairs).forEach(pr=>{
     const d=document.createElement('div');
-    d.className='mitem right lpletter'; d.dataset.k=pr.letter; d.textContent=pr.letter;
+    d.className='mitem right lpletter'; d.dataset.k=pr.letter;
+    // `art` = اسمُ سُلَّمِ لونٍ ⇒ الحرفُ رسمٌ مصمَّم. وغيابُه يُبقيه نصّاً خامّاً كما كان
+    // حرفياً، فلا يتأثّرُ أيُّ سؤالٍ مؤلَّفٍ قبلَ هذه التوسعة.
+    if(pr.art){ d.classList.add('hasart'); d.innerHTML=letterArt(pr.letter,pr.art); }
+    else d.textContent=pr.letter;
     d.onclick=()=>{
       if(d.classList.contains('matched'))return;
       Rr.querySelectorAll('.right').forEach(x=>x.classList.remove('selected'));
