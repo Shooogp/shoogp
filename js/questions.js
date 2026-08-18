@@ -27108,5 +27108,173 @@ window.QUESTIONS = {
       ]
     }
 
+  ],
+
+  /* ── الدرسُ الرابع: حرفُ الراء (ج١ ص ٧٤–٨٣) · بطاقتُه **بنفسجيةٌ** في ص ٨٤ ──
+     ⚠️ ولا سُلَّمَ بنفسجيًّا في `images/rocket/`، فأُخِذَ **أقربُ سُلَّمٍ معتمَدٍ**
+     وهو `red` — ولا يُخترَعُ سُلَّمٌ جديدٌ (قاعدةُ السلالمِ في `CLAUDE.md`).
+     نصُّ الاستماع: «رُقَيَّةُ مَسْرورَةٌ» (ص ٧٦) — رحلةٌ إلى الصحراء. */
+  "g1a1-1-4": [
+
+    // ① التعرّف — كلماتُ «أُلَوِّنُ» ص ٧٥: رِمال (أوّل) · كُرَة (وسط) · قِطار (آخر).
+    {
+      type: "letter-picture",
+      objective: "أَنْ يَتَعَرَّفَ إِلى حَرْفِ (ر) وَيَنْطِقَ مَقاطِعَهُ بِحَرَكاتِهِ الثَّلاثِ وَمُدودِهِ",
+      level: "knowledge",
+      prompt: "صِلْ شَكْلَ الرّاءِ بِصورَةِ كَلِمَتِها.",
+      pairs: [
+        { letter: "رِ", art: "red", word: "رِمالٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<rect x='4' y='16' width='92' height='30' rx='4' fill='#CDEBFF'/>"+
+          "<path d='M4 62 q22 -22 46 -8 q24 14 46 -6 v38 H4 Z' fill='#E0C080'/>"+
+          "<path d='M4 62 q22 -22 46 -8 q24 14 46 -6 v10 q-24 18 -46 4 q-24 -14 -46 8 Z' fill='#FFFFC0'/>"+
+          "<rect x='4' y='80' width='92' height='9' fill='#E0A87F'/>"+
+          "<rect x='4' y='89' width='92' height='7' fill='#C88A5E'/>"+
+          "<path d='M4 62 q22 -22 46 -8 q24 14 46 -6' fill='none' stroke='#111111' stroke-width='2.6' stroke-linecap='round'/>"+
+          "<rect x='4' y='16' width='92' height='80' rx='4' fill='none' stroke='#111111' stroke-width='2.6'/>"+
+          "<path d='M18 78 L26 60 L46 60 L54 78 Z' fill='#0080C0'/>"+
+          "<path d='M18 78 L26 60 L34 60 L28 78 Z' fill='#40C0FF'/>"+
+          "<path d='M18 78 L26 60 L46 60 L54 78 Z' fill='none' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
+          "<path d='M26 60 q10 -12 20 0' fill='none' stroke='#111111' stroke-width='2.6'/>"+
+          "<path d='M70 78 L62 66 L78 60 L82 70 Z' fill='#FF2020' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
+          "<path d='M78 62 L88 46' stroke='#111111' stroke-width='5' stroke-linecap='round'/>"+
+          "<path d='M78 62 L88 46' stroke='#E08000' stroke-width='2.6' stroke-linecap='round'/>"+
+          "</svg>" },
+        { letter: "ـرَ", art: "red", word: "كُرَةٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<defs><clipPath id='ballR'><circle cx='50' cy='52' r='36'/></clipPath></defs>"+
+          "<g clip-path='url(#ballR)'>"+
+          "<rect x='10' y='0'  width='22' height='100' fill='#FF4020'/>"+
+          "<rect x='10' y='62' width='22' height='38' fill='#E02000'/>"+
+          "<rect x='32' y='0'  width='20' height='100' fill='#FFFFC0'/>"+
+          "<rect x='32' y='62' width='20' height='38' fill='#E0C080'/>"+
+          "<rect x='52' y='0'  width='20' height='100' fill='#40C0FF'/>"+
+          "<rect x='52' y='62' width='20' height='38' fill='#2080E0'/>"+
+          "<rect x='72' y='0'  width='22' height='100' fill='#80C020'/>"+
+          "<rect x='72' y='62' width='22' height='38' fill='#4A9018'/>"+
+          "<ellipse cx='36' cy='30' rx='14' ry='7' fill='#ffffff' opacity='.75' transform='rotate(-25 36 30)'/>"+
+          "</g>"+
+          "<path d='M32 17 v70 M52 16 v72 M72 17 v70' stroke='#111111' stroke-width='2.2'/>"+
+          "<circle cx='50' cy='52' r='36' fill='none' stroke='#111111' stroke-width='2.8'/>"+
+          "</svg>" },
+        { letter: "ـار", art: "red", word: "قِطارٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<rect x='6' y='78' width='88' height='5' rx='2' fill='#9A6636' stroke='#111111' stroke-width='2'/>"+
+          "<rect x='10' y='46' width='34' height='28' rx='4' fill='#FF2020'/>"+
+          "<rect x='10' y='46' width='34' height='8' fill='#FF4020'/>"+
+          "<rect x='10' y='66' width='34' height='8' fill='#E02000'/>"+
+          "<rect x='10' y='46' width='34' height='28' rx='4' fill='none' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
+          "<rect x='16' y='52' width='10' height='10' rx='2' fill='#CDEBFF' stroke='#111111' stroke-width='2'/>"+
+          "<rect x='30' y='52' width='10' height='10' rx='2' fill='#CDEBFF' stroke='#111111' stroke-width='2'/>"+
+          "<rect x='50' y='38' width='40' height='36' rx='5' fill='#0080C0'/>"+
+          "<rect x='50' y='38' width='40' height='10' fill='#40C0FF'/>"+
+          "<rect x='50' y='64' width='40' height='10' fill='#0060A0'/>"+
+          "<rect x='50' y='38' width='40' height='36' rx='5' fill='none' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
+          "<rect x='58' y='44' width='12' height='12' rx='2' fill='#CDEBFF' stroke='#111111' stroke-width='2'/>"+
+          "<rect x='62' y='22' width='14' height='18' rx='3' fill='#E08000'/>"+
+          "<rect x='62' y='22' width='14' height='5' rx='2' fill='#FFA000'/>"+
+          "<rect x='62' y='22' width='14' height='18' rx='3' fill='none' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
+          "<circle cx='20' cy='78' r='7' fill='#606060' stroke='#111111' stroke-width='2.4'/>"+
+          "<circle cx='36' cy='78' r='7' fill='#606060' stroke='#111111' stroke-width='2.4'/>"+
+          "<circle cx='60' cy='78' r='8' fill='#404040' stroke='#111111' stroke-width='2.4'/>"+
+          "<circle cx='80' cy='78' r='8' fill='#404040' stroke='#111111' stroke-width='2.4'/>"+
+          "</svg>" }
+      ]
+    },
+
+    // ② فهمُ المسموع — «سَنَخْرُجُ في رِحْلَةٍ إِلَى الصَّحْراءِ» في آخرِ النصّ.
+    {
+      type: "hotspot",
+      objective: "أَنْ يُجيبَ عَنْ أَسْئِلَةِ الْفَهْمِ فيما اسْتَمَعَ إِلَيْهِ",
+      level: "reasoning",
+      prompt: "إِلى أَيْنَ سَتَخْرُجُ الْأُسْرَةُ؟",
+      bg: "#fffaf0",
+      spot: { x: 26, y: 26, r: 20 },
+      svg:
+        "<svg viewBox='0 0 300 300'>"+
+        "<defs>"+
+        "<clipPath id='rrA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='rrB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='rrC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
+        "</defs>"+
+        // ── الصَّحْراءُ (الجواب) ──
+        "<g clip-path='url(#rrA)'>"+
+        "<rect x='12' y='12' width='134' height='134' fill='#FFF3D0'/>"+
+        "<circle cx='118' cy='42' r='15' fill='#FFA000' stroke='#111111' stroke-width='2.4'/>"+
+        "<path d='M12 96 q34 -30 67 -10 q33 20 67 -8 v68 H12 Z' fill='#E0C080'/>"+
+        "<path d='M12 96 q34 -30 67 -10 q33 20 67 -8 v12 q-34 26 -67 6 q-33 -20 -67 10 Z' fill='#FFFFC0'/>"+
+        "<rect x='12' y='126' width='134' height='12' fill='#E0A87F'/>"+
+        "<rect x='12' y='138' width='134' height='8' fill='#C88A5E'/>"+
+        "<path d='M12 96 q34 -30 67 -10 q33 20 67 -8' fill='none' stroke='#111111' stroke-width='2.8' stroke-linecap='round'/>"+
+        "<text x='79' y='136' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='19' font-weight='800' fill='#3a2a12'>الصَّحْراءُ</text>"+
+        "</g>"+
+        "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
+        // ── البَحْرُ ──
+        "<g clip-path='url(#rrB)'>"+
+        "<rect x='154' y='12' width='134' height='134' fill='#CDEBFF'/>"+
+        "<rect x='154' y='72' width='134' height='74' fill='#0080C0'/>"+
+        "<path d='M154 72 q17 -9 34 0 t34 0 t34 0 t34 0 v12 H154 Z' fill='#00A0E0'/>"+
+        "<rect x='154' y='112' width='134' height='20' fill='#0060A0'/>"+
+        "<rect x='154' y='132' width='134' height='14' fill='#004880'/>"+
+        "<path d='M172 98 q10 -6 20 0 M240 118 q10 -6 20 0' stroke='#ffffff' stroke-width='3' fill='none' opacity='.8' stroke-linecap='round'/>"+
+        "<text x='221' y='136' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='19' font-weight='800' fill='#ffffff'>الْبَحْرُ</text>"+
+        "</g>"+
+        "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
+        // ── الحَديقَةُ ──
+        "<g clip-path='url(#rrC)'>"+
+        "<rect x='83' y='154' width='134' height='134' fill='#EAF8E4'/>"+
+        "<rect x='83' y='246' width='134' height='20' fill='#60C020'/>"+
+        "<rect x='83' y='266' width='134' height='22' fill='#4A9018'/>"+
+        "<rect x='144' y='214' width='12' height='36' fill='#9A6636'/>"+
+        "<rect x='144' y='214' width='4'  height='36' fill='#B98551'/>"+
+        "<rect x='144' y='214' width='12' height='36' fill='none' stroke='#111111' stroke-width='2.4'/>"+
+        "<circle cx='150' cy='202' r='28' fill='#4A9018'/>"+
+        "<path d='M122 202 a28 28 0 0 1 56 0 Z' fill='#60C020'/>"+
+        "<path d='M126 190 a28 28 0 0 1 30 -14 Z' fill='#80C020'/>"+
+        "<circle cx='150' cy='202' r='28' fill='none' stroke='#111111' stroke-width='2.8'/>"+
+        "<text x='150' y='280' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='19' font-weight='800' fill='#ffffff'>الْحَديقَةُ</text>"+
+        "</g>"+
+        "<rect x='83' y='154' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
+        "</svg>"
+    },
+
+    // ③ الضبطُ — «كُرَة» من صفحةِ «أُلَوِّنُ»، وفيها مقطعا الدرسِ رَ ورُ.
+    {
+      type: "tashkeel",
+      objective: "أَنْ يَتَعَرَّفَ إِلى حَرْفِ (ر) وَيَنْطِقَ مَقاطِعَهُ بِحَرَكاتِهِ الثَّلاثِ وَمُدودِهِ",
+      level: "application",
+      prompt: "ضَعِ الْحَرَكَةَ فَوْقَ كُلِّ حَرْفٍ.",
+      word: "كُرَة"
+    },
+
+    // ④ بناءُ الكلمة — «قِطار» من صفحةِ «أُلَوِّنُ»، والراءُ في آخِرِها.
+    {
+      type: "arrange",
+      objective: "أَنْ يَكْتُبَ الْحَرْفَ وَالْكَلِمَةَ وَيُكْمِلَ بِالْمَقْطَعِ الْمُناسِبِ",
+      level: "application",
+      prompt: "رَتِّبِ الْحُروفَ لِتُكَوِّنَ الْكَلِمَةَ.",
+      word: "قطار"
+    },
+
+    // ⑤ بناءُ الجملة — جملةُ «أَقْرَأُ مُسْتَعينًا بِالصُّوَرِ» ص ٧٩ نفسُها (خمسُ كلماتٍ = سعةُ النوعِ القصوى).
+    {
+      type: "sentence",
+      objective: "أَنْ يَتَحَدَّثَ بِجُمَلٍ سَليمَةٍ عَنْ مَضْمونِ اللَّوْحَةِ الْمَعْروضَةِ",
+      level: "application",
+      prompt: "رَتِّبِ الْكَلِماتِ لِتُكَوِّنَ جُمْلَةً.",
+      sentence: "راشِدٌ يُرافِقُ أُسْرَتَهُ إِلَى الصَّحْراءِ"
+    },
+
+    // ⑥ إثرائيّ — فراغٌ واحدٌ (السعةُ الآمنةُ للنوع)، من مطلعِ نصِّ الاستماعِ نفسِه.
+    {
+      type: "fill-blank",
+      objective: "أَنْ يُجيبَ عَنْ أَسْئِلَةِ الْفَهْمِ فيما اسْتَمَعَ إِلَيْهِ",
+      level: "application",
+      prompt: "أَكْمِلِ الْجُمْلَةَ بِسَحْبِ الْكَلِمَةِ الْمُناسِبَةِ.",
+      text: "رُقَيَّةُ {} مَسْرورَةً في الدّارِ",
+      answers: ["تَجْري"],
+      distractors: ["تَنامُ", "تَأْكُلُ"]
+    }
+
   ]
 };
