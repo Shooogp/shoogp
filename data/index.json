@@ -550,10 +550,10 @@
         "lessons": [
           { "title": "الدرس الأول: ء", "file": "g1a2-4-1", "open": true },
           { "title": "الدرس الثاني: ج", "file": "g1a2-4-2", "open": true },
-          { "title": "الدرس الثالث: و", "file": "g1a2-4-3", "open": false },
-          { "title": "الدرس الرابع: ش", "file": "g1a2-4-4", "open": false },
-          { "title": "الدرس الخامس: ع", "file": "g1a2-4-5", "open": false },
-          { "title": "الدرس السادس: ظ", "file": "g1a2-4-6", "open": false },
+          { "title": "الدرس الثالث: و", "file": "g1a2-4-3", "open": true },
+          { "title": "الدرس الرابع: ش", "file": "g1a2-4-4", "open": true },
+          { "title": "الدرس الخامس: ع", "file": "g1a2-4-5", "open": true },
+          { "title": "الدرس السادس: ظ", "file": "g1a2-4-6", "open": true },
           { "title": "المراجعة: ء و ج ش ع ظ", "file": "g1a2-4-7", "open": false },
           { "title": "نشيد: تَوازُنُ الْغِذاءِ", "file": "g1a2-4-8", "open": false }
         ]
