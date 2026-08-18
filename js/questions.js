@@ -27667,5 +27667,177 @@ window.QUESTIONS = {
       ]
     }
 
+  ],
+
+  /* ── الدرسُ الثاني: حرفُ السين (ج١ ص ١٠٦–١١٥) · لونُه **كهرمانيّ** من ص ١٤٠ ──
+     نصُّ الاستماع: «تَحِيَّةُ الْإِسْلامِ» (ص ١٠٨) — «السَّلامُ عَلَيْكُمْ». */
+  "g1a1-2-2": [
+
+    // ① التعرّف — كلماتُ «أُلَوِّنُ» ص ١٠٧: سَمَكَة (أوّل) · عَسَل (وسط) · كَأْس (آخر).
+    {
+      type: "letter-picture",
+      objective: "أَنْ يَتَعَرَّفَ إِلى حَرْفِ (س) وَيَنْطِقَ مَقاطِعَهُ بِحَرَكاتِهِ الثَّلاثِ وَمُدودِهِ",
+      level: "knowledge",
+      prompt: "صِلْ شَكْلَ السّينِ بِصورَةِ كَلِمَتِها.",
+      pairs: [
+        { letter: "سَـ", art: "amber", word: "سَمَكَةٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<defs><clipPath id='fshB'><ellipse cx='52' cy='52' rx='30' ry='19'/></clipPath></defs>"+
+          "<path d='M82 52 L96 36 L96 68 Z' fill='#E08000' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
+          "<path d='M46 33 L58 20 L64 34 Z' fill='#FFA000' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
+          "<path d='M46 71 L56 84 L62 70 Z' fill='#C06000' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
+          "<g clip-path='url(#fshB)'>"+
+          "<rect x='0' y='0'  width='100' height='44' fill='#FFC040'/>"+
+          "<rect x='0' y='44' width='100' height='11' fill='#FFA000'/>"+
+          "<rect x='0' y='55' width='100' height='9'  fill='#E08000'/>"+
+          "<rect x='0' y='64' width='100' height='36' fill='#C06000'/>"+
+          "<rect x='34' y='30' width='5' height='50' fill='#984800' opacity='.7'/>"+
+          "<rect x='50' y='30' width='5' height='50' fill='#984800' opacity='.7'/>"+
+          "<rect x='66' y='30' width='5' height='50' fill='#984800' opacity='.7'/>"+
+          "<ellipse cx='40' cy='42' rx='12' ry='5' fill='#ffffff' opacity='.7' transform='rotate(-12 40 42)'/>"+
+          "</g>"+
+          "<ellipse cx='52' cy='52' rx='30' ry='19' fill='none' stroke='#111111' stroke-width='2.6'/>"+
+          "</svg>" },
+        { letter: "ـسَـ", art: "amber", word: "عَسَلٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<defs><clipPath id='jarB'><path d='M26 40 h48 v38 q0 10 -10 10 h-28 q-10 0 -10 -10 Z'/></clipPath></defs>"+
+          "<g clip-path='url(#jarB)'>"+
+          "<rect x='0' y='0'  width='100' height='52' fill='#FFC040'/>"+
+          "<rect x='0' y='52' width='100' height='12' fill='#FFA000'/>"+
+          "<rect x='0' y='64' width='100' height='11' fill='#E08000'/>"+
+          "<rect x='0' y='75' width='100' height='25' fill='#C06000'/>"+
+          "<rect x='32' y='40' width='7' height='58' fill='#ffffff' opacity='.55'/>"+
+          "</g>"+
+          "<path d='M26 40 h48 v38 q0 10 -10 10 h-28 q-10 0 -10 -10 Z' fill='none' stroke='#111111' stroke-width='2.7' stroke-linejoin='round'/>"+
+          "<rect x='22' y='28' width='56' height='13' rx='4' fill='#984800'/>"+
+          "<rect x='22' y='28' width='56' height='5'  rx='3' fill='#C06000'/>"+
+          "<rect x='22' y='28' width='56' height='13' rx='4' fill='none' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
+          "<rect x='38' y='18' width='24' height='11' rx='4' fill='#C06000' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
+          "<rect x='34' y='56' width='32' height='16' rx='3' fill='#FFFFC0' stroke='#111111' stroke-width='2.2'/>"+
+          "</svg>" },
+        { letter: "ـس", art: "amber", word: "كَأْسٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<defs><clipPath id='cupB'><path d='M30 20 h40 v22 q0 20 -20 20 q-20 0 -20 -20 Z'/></clipPath></defs>"+
+          "<path d='M30 26 q-14 0 -14 10 q0 10 14 12' fill='none' stroke='#111111' stroke-width='8' stroke-linecap='round'/>"+
+          "<path d='M30 26 q-14 0 -14 10 q0 10 14 12' fill='none' stroke='#E08000' stroke-width='4.5' stroke-linecap='round'/>"+
+          "<path d='M70 26 q14 0 14 10 q0 10 -14 12' fill='none' stroke='#111111' stroke-width='8' stroke-linecap='round'/>"+
+          "<path d='M70 26 q14 0 14 10 q0 10 -14 12' fill='none' stroke='#E08000' stroke-width='4.5' stroke-linecap='round'/>"+
+          "<g clip-path='url(#cupB)'>"+
+          "<rect x='0' y='0'  width='100' height='30' fill='#FFC040'/>"+
+          "<rect x='0' y='30' width='100' height='12' fill='#FFA000'/>"+
+          "<rect x='0' y='42' width='100' height='11' fill='#E08000'/>"+
+          "<rect x='0' y='53' width='100' height='47' fill='#C06000'/>"+
+          "<rect x='38' y='20' width='7' height='50' fill='#ffffff' opacity='.6'/>"+
+          "</g>"+
+          "<path d='M30 20 h40 v22 q0 20 -20 20 q-20 0 -20 -20 Z' fill='none' stroke='#111111' stroke-width='2.7' stroke-linejoin='round'/>"+
+          "<rect x='44' y='62' width='12' height='14' fill='#E08000' stroke='#111111' stroke-width='2.4'/>"+
+          "<rect x='30' y='76' width='40' height='9' rx='3' fill='#C06000'/>"+
+          "<rect x='30' y='76' width='40' height='3' rx='2' fill='#FFA000'/>"+
+          "<rect x='30' y='76' width='40' height='9' rx='3' fill='none' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
+          "<rect x='24' y='85' width='52' height='9' rx='3' fill='#984800' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
+          "</svg>" }
+      ]
+    },
+
+    // ② فهمُ المسموع — «ماذا يَقولُ الْمُسْلِمُ حينَ يَرى مُسْلِمًا؟» وجوابُ النصّ:
+    //    «السَّلامُ عَلَيْكُمْ». والعبارةُ **مكتوبةٌ في كلِّ لوحٍ معَ رمزِه**، فيُطابِقُ
+    //    الطفلُ المسموعَ بالمقروء.
+    {
+      type: "hotspot",
+      objective: "أَنْ يُجيبَ عَنْ أَسْئِلَةِ الْفَهْمِ فيما اسْتَمَعَ إِلَيْهِ",
+      level: "reasoning",
+      prompt: "ماذا يَقولُ الْمُسْلِمُ حينَ يَرى مُسْلِمًا؟",
+      bg: "#fffdf5",
+      spot: { x: 26, y: 26, r: 20 },
+      svg:
+        "<svg viewBox='0 0 300 300'>"+
+        "<defs>"+
+        "<clipPath id='ssA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='ssB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='ssC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
+        "</defs>"+
+        // ── المُصافَحَةُ: السَّلامُ عَلَيْكُمْ (الجواب) ──
+        "<g clip-path='url(#ssA)'>"+
+        "<rect x='12' y='12' width='134' height='134' fill='#EAF8E4'/>"+
+        "<rect x='30' y='60' width='40' height='22' rx='11' fill='#E0A87F'/>"+
+        "<rect x='30' y='60' width='40' height='8'  rx='6'  fill='#F2C3A0'/>"+
+        "<rect x='30' y='60' width='40' height='22' rx='11' fill='none' stroke='#111111' stroke-width='2.6'/>"+
+        "<rect x='88' y='60' width='40' height='22' rx='11' fill='#C88A5E'/>"+
+        "<rect x='88' y='60' width='40' height='8'  rx='6'  fill='#E0A87F'/>"+
+        "<rect x='88' y='60' width='40' height='22' rx='11' fill='none' stroke='#111111' stroke-width='2.6'/>"+
+        "<rect x='62' y='56' width='34' height='30' rx='10' fill='#F2C3A0'/>"+
+        "<rect x='62' y='56' width='34' height='10' rx='7'  fill='#FFDCC0'/>"+
+        "<rect x='62' y='56' width='34' height='30' rx='10' fill='none' stroke='#111111' stroke-width='2.6'/>"+
+        "<text x='79' y='118' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='17' font-weight='800' fill='#3a2a12'>السَّلامُ</text>"+
+        "<text x='79' y='138' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='17' font-weight='800' fill='#3a2a12'>عَلَيْكُمْ</text>"+
+        "</g>"+
+        "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
+        // ── الهِلالُ: تَصْبَحُ عَلى خَيْرٍ ──
+        "<g clip-path='url(#ssB)'>"+
+        "<rect x='154' y='12' width='134' height='134' fill='#E8EEFF'/>"+
+        "<path d='M234 34 a30 30 0 1 0 0 56 a24 24 0 1 1 0 -56 Z' fill='#E0E0A0'/>"+
+        "<path d='M234 34 a30 30 0 0 0 -22 10 a24 24 0 0 1 22 -10 Z' fill='#FFFFC0'/>"+
+        "<path d='M234 34 a30 30 0 1 0 0 56 a24 24 0 1 1 0 -56 Z' fill='none' stroke='#111111' stroke-width='2.7' stroke-linejoin='round'/>"+
+        "<path d='M198 44 l4 9 l9 4 l-9 4 l-4 9 l-4 -9 l-9 -4 l9 -4 Z' fill='#FFFFC0' stroke='#111111' stroke-width='2.3' stroke-linejoin='round'/>"+
+        "<text x='221' y='120' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='17' font-weight='800' fill='#3a2a12'>تَصْبَحُ</text>"+
+        "<text x='221' y='139' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='17' font-weight='800' fill='#3a2a12'>عَلى خَيْرٍ</text>"+
+        "</g>"+
+        "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
+        // ── المِحْفَظَةُ: مَعَ السَّلامَةِ ──
+        "<g clip-path='url(#ssC)'>"+
+        "<rect x='83' y='154' width='134' height='134' fill='#FFF0F6'/>"+
+        "<path d='M136 196 q14 -16 28 0' fill='none' stroke='#111111' stroke-width='6' stroke-linecap='round'/>"+
+        "<rect x='120' y='196' width='60' height='46' rx='8' fill='#0080C0'/>"+
+        "<rect x='120' y='196' width='60' height='13' rx='7' fill='#40C0FF'/>"+
+        "<rect x='120' y='230' width='60' height='12' fill='#0060A0'/>"+
+        "<rect x='120' y='196' width='60' height='46' rx='8' fill='none' stroke='#111111' stroke-width='2.7' stroke-linejoin='round'/>"+
+        "<rect x='136' y='212' width='28' height='14' rx='3' fill='#FFC040' stroke='#111111' stroke-width='2.3'/>"+
+        "<text x='150' y='266' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='17' font-weight='800' fill='#3a2a12'>مَعَ</text>"+
+        "<text x='150' y='284' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='17' font-weight='800' fill='#3a2a12'>السَّلامَةِ</text>"+
+        "</g>"+
+        "<rect x='83' y='154' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
+        "</svg>"
+    },
+
+    // ③ الضبطُ — «سَمَكَة» من صفحةِ «أُلَوِّنُ».
+    {
+      type: "tashkeel",
+      objective: "أَنْ يَتَعَرَّفَ إِلى حَرْفِ (س) وَيَنْطِقَ مَقاطِعَهُ بِحَرَكاتِهِ الثَّلاثِ وَمُدودِهِ",
+      level: "application",
+      prompt: "ضَعِ الْحَرَكَةَ فَوْقَ كُلِّ حَرْفٍ.",
+      word: "سَمَكَة"
+    },
+
+    // ④ بناءُ الكلمة — «عَسَل» من صفحةِ «أُلَوِّنُ»، والسينُ في وسطِها.
+    {
+      type: "arrange",
+      objective: "أَنْ يَكْتُبَ الْحَرْفَ وَالْكَلِمَةَ وَيُكْمِلَ بِالْمَقْطَعِ الْمُناسِبِ",
+      level: "application",
+      prompt: "رَتِّبِ الْحُروفَ لِتُكَوِّنَ الْكَلِمَةَ.",
+      word: "عسل"
+    },
+
+    // ⑤ بناءُ الجملة — جملةُ ص ١١١ نفسُها (خمسُ كلماتٍ = سعةُ النوعِ القصوى).
+    {
+      type: "sentence",
+      objective: "أَنْ يَتَحَدَّثَ بِجُمَلٍ سَليمَةٍ عَنْ مَضْمونِ اللَّوْحَةِ الْمَعْروضَةِ",
+      level: "application",
+      prompt: "رَتِّبِ الْكَلِماتِ لِتُكَوِّنَ جُمْلَةً.",
+      sentence: "يُسَلِّمُ الْمُسْلِمُ عَلى أَخيهِ الْمُسْلِمِ"
+    },
+
+    // ⑥ إثرائيّ — ٣ مجموعاتٍ و٤ عناصرَ = حدُّ السعةِ المقيسِ للتصنيف.
+    {
+      type: "classify",
+      objective: "أَنْ يَتَعَرَّفَ إِلى حَرْفِ (س) وَيَنْطِقَ مَقاطِعَهُ بِحَرَكاتِهِ الثَّلاثِ وَمُدودِهِ",
+      level: "reasoning",
+      prompt: "صَنِّفِ الْكَلِماتِ بِحَسَبِ مَوْضِعِ السّينِ.",
+      groups: [
+        { name: "أَوَّلُ الْكَلِمَةِ",  items: ["سَمَكَةٌ"] },
+        { name: "وَسَطُ الْكَلِمَةِ", items: ["عَسَلٌ"] },
+        { name: "آخِرُ الْكَلِمَةِ",  items: ["كَأْسٌ", "مَجْلِسٌ"] }
+      ]
+    }
+
   ]
 };

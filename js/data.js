@@ -413,7 +413,7 @@ window.DATA_FALLBACK = {
       ]},
       { unit:"المحور الثاني: هُنا أَتَعَلَّمُ", lessons:[
         { title:"الدرس الأول: د", file:"g1a1-2-1", open:true },
-        { title:"الدرس الثاني: س", file:"g1a1-2-2", open:false },
+        { title:"الدرس الثاني: س", file:"g1a1-2-2", open:true },
         { title:"الدرس الثالث: ك", file:"g1a1-2-3", open:false },
         { title:"الدرس الرابع: ن", file:"g1a1-2-4", open:false },
         { title:"المراجعة: د س ك ن", file:"g1a1-2-5", open:false },
