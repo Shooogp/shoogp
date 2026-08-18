@@ -484,7 +484,7 @@ window.DATA_FALLBACK = {
     "g3-arabic-2": { book:"أحب لغتي (الجزء الثاني) — الصف الثالث", units:[
       { unit:"المحور الثاني: علوم واكتشافات", lessons:[
         { title:"استماع: ضوءٌ في يدك", file:"g3a2-2-1", open:false },
-        { title:"مستند بصري: قراءة شِعار", file:"g3a2-2-2", open:false },
+        { title:"مستند بصري: قراءة شِعار", file:"g3a2-2-2", open:true },
         { title:"الدرس الأول: رحلة السِّندباد الثامنة", file:"g3a2-2-3", open:false },
         { title:"الدرس الثاني: قصّة وَرَقة", file:"g3a2-2-4", open:false },
         { title:"الدرس الثالث: حاسوب", file:"g3a2-2-5", open:false },
