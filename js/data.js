@@ -408,8 +408,8 @@ window.DATA_FALLBACK = {
         { title:"الدرس الثاني: ل", file:"g1a1-1-2", open:true },
         { title:"الدرس الثالث: م", file:"g1a1-1-3", open:true },
         { title:"الدرس الرابع: ر", file:"g1a1-1-4", open:true },
-        { title:"المراجعة: ب ل م ر", file:"g1a1-1-5", open:false },
-        { title:"نشيد: أُمّي وأَبي", file:"g1a1-1-6", open:false }
+        { title:"المراجعة: ب ل م ر", file:"g1a1-1-5", open:true },
+        { title:"نشيد: أُمّي وأَبي", file:"g1a1-1-6", open:true }
       ]},
       { unit:"المحور الثاني: هُنا أَتَعَلَّمُ", lessons:[
         { title:"الدرس الأول: د", file:"g1a1-2-1", open:false },
