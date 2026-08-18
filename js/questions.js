@@ -27839,5 +27839,173 @@ window.QUESTIONS = {
       ]
     }
 
+  ],
+
+  /* ── الدرسُ الثالث: حرفُ الكاف (ج١ ص ١١٦–١٢٩) · لونُه **أزرق** من ص ١٤٠ ──
+     نصُّ الاستماع: «أَنا أَكْتُبُ» (ص ١١٨) — مالِكٌ يكتبُ حرفَ الكافِ وكلماتِه. */
+  "g1a1-2-3": [
+
+    // ① التعرّف — كلماتُ «أُلَوِّنُ» ص ١١٧: كَرَز (أوّل) · مَكْتَبَة (وسط) · شَوْك (آخر).
+    {
+      type: "letter-picture",
+      objective: "أَنْ يَتَعَرَّفَ إِلى حَرْفِ (ك) وَيَنْطِقَ مَقاطِعَهُ بِحَرَكاتِهِ الثَّلاثِ وَمُدودِهِ",
+      level: "knowledge",
+      prompt: "صِلْ شَكْلَ الْكافِ بِصورَةِ كَلِمَتِها.",
+      pairs: [
+        { letter: "كَـ", art: "sky", word: "كَرَزٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<defs><clipPath id='chr1'><circle cx='34' cy='70' r='19'/></clipPath>"+
+          "<clipPath id='chr2'><circle cx='68' cy='76' r='16'/></clipPath></defs>"+
+          "<path d='M34 51 Q44 24 58 16' fill='none' stroke='#111111' stroke-width='7' stroke-linecap='round'/>"+
+          "<path d='M34 51 Q44 24 58 16' fill='none' stroke='#4A9018' stroke-width='3.5' stroke-linecap='round'/>"+
+          "<path d='M68 60 Q66 30 58 16' fill='none' stroke='#111111' stroke-width='7' stroke-linecap='round'/>"+
+          "<path d='M68 60 Q66 30 58 16' fill='none' stroke='#4A9018' stroke-width='3.5' stroke-linecap='round'/>"+
+          "<path d='M58 18 q22 -10 30 4 q-20 10 -30 -4 Z' fill='#60C020' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
+          "<g clip-path='url(#chr1)'>"+
+          "<rect x='0' y='0'  width='100' height='64' fill='#FF4020'/>"+
+          "<rect x='0' y='64' width='100' height='10' fill='#FF2020'/>"+
+          "<rect x='0' y='74' width='100' height='9'  fill='#E02000'/>"+
+          "<rect x='0' y='83' width='100' height='17' fill='#B01800'/>"+
+          "<ellipse cx='27' cy='62' rx='8' ry='4' fill='#ffffff' opacity='.8' transform='rotate(-25 27 62)'/>"+
+          "</g>"+
+          "<circle cx='34' cy='70' r='19' fill='none' stroke='#111111' stroke-width='2.6'/>"+
+          "<g clip-path='url(#chr2)'>"+
+          "<rect x='0' y='0'  width='100' height='72' fill='#FF4020'/>"+
+          "<rect x='0' y='72' width='100' height='9'  fill='#FF2020'/>"+
+          "<rect x='0' y='81' width='100' height='8'  fill='#E02000'/>"+
+          "<rect x='0' y='89' width='100' height='11' fill='#B01800'/>"+
+          "<ellipse cx='62' cy='69' rx='7' ry='3.5' fill='#ffffff' opacity='.8' transform='rotate(-25 62 69)'/>"+
+          "</g>"+
+          "<circle cx='68' cy='76' r='16' fill='none' stroke='#111111' stroke-width='2.6'/>"+
+          "</svg>" },
+        { letter: "ـكْـ", art: "sky", word: "مَكْتَبَةٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<rect x='12' y='14' width='76' height='76' rx='5' fill='#9A6636'/>"+
+          "<rect x='12' y='14' width='76' height='8'  fill='#B98551'/>"+
+          "<rect x='12' y='82' width='76' height='8'  fill='#68411D'/>"+
+          "<rect x='18' y='24' width='64' height='4' fill='#7A4C22'/>"+
+          "<rect x='18' y='48' width='64' height='4' fill='#7A4C22'/>"+
+          "<rect x='18' y='72' width='64' height='4' fill='#7A4C22'/>"+
+          "<rect x='22' y='30' width='8'  height='18' fill='#FF2020'/>"+
+          "<rect x='32' y='32' width='7'  height='16' fill='#0080C0'/>"+
+          "<rect x='41' y='29' width='9'  height='19' fill='#60C020'/>"+
+          "<rect x='52' y='33' width='7'  height='15' fill='#FFA000'/>"+
+          "<rect x='61' y='30' width='8'  height='18' fill='#984800'/>"+
+          "<rect x='71' y='34' width='7'  height='14' fill='#FF4020'/>"+
+          "<rect x='22' y='56' width='7'  height='16' fill='#0060A0'/>"+
+          "<rect x='31' y='54' width='9'  height='18' fill='#FFC040'/>"+
+          "<rect x='42' y='57' width='7'  height='15' fill='#B01800'/>"+
+          "<rect x='51' y='53' width='8'  height='19' fill='#4A9018'/>"+
+          "<rect x='61' y='56' width='7'  height='16' fill='#40C0FF'/>"+
+          "<rect x='70' y='55' width='9'  height='17' fill='#E08000'/>"+
+          "<rect x='12' y='14' width='76' height='76' rx='5' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
+          "</svg>" },
+        { letter: "ـك", art: "sky", word: "شَوْكٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<path d='M12 78 Q46 62 88 26' fill='none' stroke='#111111' stroke-width='11' stroke-linecap='round'/>"+
+          "<path d='M12 78 Q46 62 88 26' fill='none' stroke='#4A9018' stroke-width='7' stroke-linecap='round'/>"+
+          "<path d='M12 76 Q46 60 88 24' fill='none' stroke='#80C020' stroke-width='2.4' stroke-linecap='round'/>"+
+          "<path d='M30 68 L26 48 L38 62 Z' fill='#60C020' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
+          "<path d='M52 56 L50 34 L60 50 Z' fill='#60C020' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
+          "<path d='M72 42 L74 20 L80 38 Z' fill='#60C020' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
+          "<path d='M36 78 L44 92 L28 88 Z' fill='#4A9018' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
+          "<path d='M62 62 L72 76 L56 74 Z' fill='#4A9018' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
+          "</svg>" }
+      ]
+    },
+
+    // ② فهمُ المسموع — «كَتَبْتُ الْيَوْمَ حَرْفَ الْكافِ». والألواحُ **حروفٌ مصمَّمةٌ**
+    //    بالطريقةِ نفسِها التي يُرسَمُ بها عمودُ الحروفِ (حزمٌ حادّةٌ + حدٌّ رفيع).
+    {
+      type: "hotspot",
+      objective: "أَنْ يُجيبَ عَنْ أَسْئِلَةِ الْفَهْمِ فيما اسْتَمَعَ إِلَيْهِ",
+      level: "reasoning",
+      prompt: "أَيَّ حَرْفٍ كَتَبَ مالِكٌ الْيَوْمَ؟",
+      bg: "#f4fbff",
+      spot: { x: 26, y: 26, r: 20 },
+      svg:
+        "<svg viewBox='0 0 300 300'>"+
+        "<defs>"+
+        "<clipPath id='kkA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='kkB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='kkC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='kkGk'><text x='79' y='82' text-anchor='middle' dominant-baseline='central' font-family='Cairo,Tajawal,sans-serif' font-weight='900' font-size='96'>ك</text></clipPath>"+
+        "<clipPath id='kkGb'><text x='221' y='82' text-anchor='middle' dominant-baseline='central' font-family='Cairo,Tajawal,sans-serif' font-weight='900' font-size='96'>ب</text></clipPath>"+
+        "<clipPath id='kkGm'><text x='150' y='224' text-anchor='middle' dominant-baseline='central' font-family='Cairo,Tajawal,sans-serif' font-weight='900' font-size='96'>م</text></clipPath>"+
+        "</defs>"+
+        "<g clip-path='url(#kkA)'><rect x='12' y='12' width='134' height='134' fill='#EAF4FF'/></g>"+
+        "<g clip-path='url(#kkGk)'>"+
+        "<rect x='12' y='12'  width='134' height='52' fill='#40C0FF'/>"+
+        "<rect x='12' y='64'  width='134' height='28' fill='#20A0FF'/>"+
+        "<rect x='12' y='92'  width='134' height='28' fill='#2080E0'/>"+
+        "<rect x='12' y='120' width='134' height='30' fill='#1060A0'/>"+
+        "</g>"+
+        "<text x='79' y='82' text-anchor='middle' dominant-baseline='central' font-family='Cairo,Tajawal,sans-serif' font-weight='900' font-size='96' fill='none' stroke='#111111' stroke-width='3' stroke-linejoin='round'>ك</text>"+
+        "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
+        "<g clip-path='url(#kkB)'><rect x='154' y='12' width='134' height='134' fill='#EAF8E4'/></g>"+
+        "<g clip-path='url(#kkGb)'>"+
+        "<rect x='154' y='12'  width='134' height='52' fill='#80C020'/>"+
+        "<rect x='154' y='64'  width='134' height='28' fill='#60C020'/>"+
+        "<rect x='154' y='92'  width='134' height='28' fill='#4A9018'/>"+
+        "<rect x='154' y='120' width='134' height='30' fill='#356810'/>"+
+        "</g>"+
+        "<text x='221' y='82' text-anchor='middle' dominant-baseline='central' font-family='Cairo,Tajawal,sans-serif' font-weight='900' font-size='96' fill='none' stroke='#111111' stroke-width='3' stroke-linejoin='round'>ب</text>"+
+        "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
+        "<g clip-path='url(#kkC)'><rect x='83' y='154' width='134' height='134' fill='#FFF3E6'/></g>"+
+        "<g clip-path='url(#kkGm)'>"+
+        "<rect x='83' y='154' width='134' height='52' fill='#FFA000'/>"+
+        "<rect x='83' y='206' width='134' height='28' fill='#E08000'/>"+
+        "<rect x='83' y='234' width='134' height='28' fill='#C06000'/>"+
+        "<rect x='83' y='262' width='134' height='30' fill='#984800'/>"+
+        "</g>"+
+        "<text x='150' y='224' text-anchor='middle' dominant-baseline='central' font-family='Cairo,Tajawal,sans-serif' font-weight='900' font-size='96' fill='none' stroke='#111111' stroke-width='3' stroke-linejoin='round'>م</text>"+
+        "<rect x='83' y='154' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
+        "</svg>"
+    },
+
+    // ③ الضبطُ — «كَرَز» من صفحةِ «أُلَوِّنُ».
+    {
+      type: "tashkeel",
+      objective: "أَنْ يَتَعَرَّفَ إِلى حَرْفِ (ك) وَيَنْطِقَ مَقاطِعَهُ بِحَرَكاتِهِ الثَّلاثِ وَمُدودِهِ",
+      level: "application",
+      prompt: "ضَعِ الْحَرَكَةَ فَوْقَ كُلِّ حَرْفٍ.",
+      word: "كَرَز"
+    },
+
+    // ④ بناءُ الكلمة — «مكتبة» من صفحةِ «أُلَوِّنُ»، والكافُ في وسطِها.
+    {
+      type: "arrange",
+      objective: "أَنْ يَكْتُبَ الْحَرْفَ وَالْكَلِمَةَ وَيُكْمِلَ بِالْمَقْطَعِ الْمُناسِبِ",
+      level: "application",
+      prompt: "رَتِّبِ الْحُروفَ لِتُكَوِّنَ الْكَلِمَةَ.",
+      word: "مكتبة"
+    },
+
+    // ⑤ بناءُ الجملة — جملةُ «أَقْرَأُ مُسْتَعينًا بِالصُّوَرِ» ص ١٢٢ نفسُها (ستُّ كلماتٍ).
+    {
+      type: "sentence",
+      objective: "أَنْ يَتَحَدَّثَ بِجُمَلٍ سَليمَةٍ عَنْ مَضْمونِ اللَّوْحَةِ الْمَعْروضَةِ",
+      level: "application",
+      prompt: "رَتِّبِ الْكَلِماتِ لِتُكَوِّنَ جُمْلَةً.",
+      sentence: "يَقْرَأُ كامِلٌ كِتابًا في مَكْتَبَتِهِ الْكَبيرَةِ"
+    },
+
+    // ⑥ إثرائيّ — أمثلةُ النصِّ نفسِه لمواضعِ الكافِ الثلاثة.
+    // 🔎 ويصلحُ `mindmap` هنا: **لكلِّ فرعٍ جوابٌ واحدٌ بعينِه** فلا يصيرُ المموِّهُ
+    //    جواباً صحيحاً لفرعٍ آخر.
+    {
+      type: "mindmap",
+      objective: "أَنْ يَتَعَرَّفَ إِلى حَرْفِ (ك) وَيَنْطِقَ مَقاطِعَهُ بِحَرَكاتِهِ الثَّلاثِ وَمُدودِهِ",
+      level: "reasoning",
+      prompt: "أَكْمِلْ خَريطَةَ الْكافِ بِمِثالٍ لِكُلِّ مَوْضِعٍ.",
+      center: "مَواضِعُ الْكافِ",
+      branches: [
+        { label: "أَوَّلُ الْكَلِمَةِ",  answer: "كِتابٌ" },
+        { label: "وَسَطُ الْكَلِمَةِ", answer: "مَسْكَنٌ" },
+        { label: "آخِرُ الْكَلِمَةِ",  answer: "ديكٌ" }
+      ],
+      distractors: ["عَسَلٌ", "دَرَجٌ"]
+    }
+
   ]
 };
