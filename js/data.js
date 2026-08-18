@@ -424,8 +424,8 @@ window.DATA_FALLBACK = {
       { unit:"المحور الثالث: أَنا نَظيفٌ", lessons:[
         { title:"الدرس الأول: ف", file:"g1a2-3-1", open:true },
         { title:"الدرس الثاني: ت", file:"g1a2-3-2", open:true },
-        { title:"الدرس الثالث: ح", file:"g1a2-3-3", open:false },
-        { title:"الدرس الرابع: ق", file:"g1a2-3-4", open:false },
+        { title:"الدرس الثالث: ح", file:"g1a2-3-3", open:true },
+        { title:"الدرس الرابع: ق", file:"g1a2-3-4", open:true },
         { title:"الدرس الخامس: ز", file:"g1a2-3-5", open:false },
         { title:"الدرس السادس: ط", file:"g1a2-3-6", open:false },
         { title:"المراجعة: ف ت ح ق ز ط", file:"g1a2-3-7", open:false },
