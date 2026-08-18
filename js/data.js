@@ -488,7 +488,7 @@ window.DATA_FALLBACK = {
         { title:"الدرس الأول: رحلة السِّندباد الثامنة", file:"g3a2-2-3", open:false },
         { title:"الدرس الثاني: قصّة وَرَقة", file:"g3a2-2-4", open:false },
         { title:"الدرس الثالث: حاسوب", file:"g3a2-2-5", open:false },
-        { title:"أنشد وأحفظ: مَجد القلم", file:"g3a2-2-6", open:false },
+        { title:"أنشد وأحفظ: مَجد القلم", file:"g3a2-2-6", open:true },
         { title:"أُقيّم أدائي", file:"g3a2-2-7", open:false }
       ]}
     ]},
