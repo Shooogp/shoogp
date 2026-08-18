@@ -428,8 +428,8 @@ window.DATA_FALLBACK = {
         { title:"الدرس الرابع: ق", file:"g1a2-3-4", open:true },
         { title:"الدرس الخامس: ز", file:"g1a2-3-5", open:true },
         { title:"الدرس السادس: ط", file:"g1a2-3-6", open:true },
-        { title:"المراجعة: ف ت ح ق ز ط", file:"g1a2-3-7", open:false },
-        { title:"نشيد: النَّظافَةُ", file:"g1a2-3-8", open:false }
+        { title:"المراجعة: ف ت ح ق ز ط", file:"g1a2-3-7", open:true },
+        { title:"نشيد: النَّظافَةُ", file:"g1a2-3-8", open:true }
       ]},
       { unit:"المحور الرابع: هَذا غِذائي", lessons:[
         { title:"الدرس الأول: ء", file:"g1a2-4-1", open:false },

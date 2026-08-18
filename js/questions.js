@@ -29651,5 +29651,201 @@ window.QUESTIONS = {
       reason: "الطَّبْلُ آلَةُ إيقاعٍ لا أَداةُ تَنْظيفٍ"
     }
 
+  ],
+
+  /* ── المراجعةُ: ف ت ح ق ز ط (ج٢ ص ٨٤–٨٧) ──
+
+     ⚠️ **تصحيحٌ مقيسٌ لافتراضٍ سابق:** كُتِبَ في قالبِ درسِ الحرفِ أنّ «اللامَ الشمسيةَ
+     والقمريةَ لا تُدرَّسُ في هذا الصفّ» — **وهو صحيحٌ في دروسِ الحروفِ وفي ج١ كلِّه،
+     وخطأٌ في مراجعاتِ ج٢**: صفحةُ ج٢ ص ٨٦ نشاطُها ③ **«الْـ وال»** بعمودَينِ صريحَين
+     (‏الْقَمَرُ · الْبَيْتُ · الْكِتابُ ↔ اللَّيْلُ · الرِّحْلَةُ · الطّينُ).
+     **فالنوعُ `sun-moon` مستحَقٌّ هنا بنصِّ الكتاب**، ويشغلُ خانةَ القاعدةِ اللغويةِ ④
+     من القالبِ ② على أصلِها — لا بديلَ عنها. */
+  "g1a2-3-7": [
+
+    {
+      type: "letter-picture",
+      objective: "أَنْ يَتَعَرَّفَ إِلى حُروفِ (ف ت ح ق ز ط) وَيَنْطِقَ مَقاطِعَها بِحَرَكاتِها",
+      level: "knowledge",
+      prompt: "صِلْ كُلَّ حَرْفٍ بِصورَةِ كَلِمَتِهِ.",
+      pairs: [
+        { letter: "ف", art: "ocean", word: "فَراشَةٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<path d='M48 50 q-30 -30 -38 -8 q-6 18 14 22 q-16 8 -6 20 q10 12 30 -12 Z' fill='#0080C0'/>"+
+          "<path d='M48 50 q-30 -30 -38 -8 q-4 12 8 16 q14 4 30 -8 Z' fill='#00A0E0'/>"+
+          "<path d='M48 50 q-30 -30 -38 -8 q-6 18 14 22 q-16 8 -6 20 q10 12 30 -12 Z' fill='none' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
+          "<path d='M52 50 q30 -30 38 -8 q6 18 -14 22 q16 8 6 20 q-10 12 -30 -12 Z' fill='#0060A0'/>"+
+          "<path d='M52 50 q30 -30 38 -8 q4 12 -8 16 q-14 4 -30 -8 Z' fill='#0080C0'/>"+
+          "<path d='M52 50 q30 -30 38 -8 q6 18 -14 22 q16 8 6 20 q-10 12 -30 -12 Z' fill='none' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
+          "<rect x='46' y='26' width='8' height='52' rx='4' fill='#984800' stroke='#111111' stroke-width='2.5'/>"+
+          "<path d='M48 26 Q42 12 34 12 M52 26 Q58 12 66 12' fill='none' stroke='#111111' stroke-width='2.6' stroke-linecap='round'/>"+
+          "</svg>" },
+        { letter: "ق", art: "amber", word: "قَمَرٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<defs><clipPath id='mnR'><circle cx='50' cy='46' r='32'/></clipPath></defs>"+
+          "<g clip-path='url(#mnR)'>"+
+          "<rect x='0' y='0'  width='100' height='34' fill='#FFFFC0'/>"+
+          "<rect x='0' y='34' width='100' height='14' fill='#E0E0A0'/>"+
+          "<rect x='0' y='48' width='100' height='14' fill='#E0C080'/>"+
+          "<rect x='0' y='62' width='100' height='38' fill='#E0C060'/>"+
+          "<circle cx='38' cy='34' r='6' fill='#D6C48E'/><circle cx='62' cy='52' r='5' fill='#D6C48E'/>"+
+          "</g>"+
+          "<circle cx='50' cy='46' r='32' fill='none' stroke='#111111' stroke-width='2.8'/>"+
+          "</svg>" },
+        { letter: "ز", art: "sky", word: "زَرافَةٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<defs><clipPath id='grfB2'><ellipse cx='42' cy='64' rx='24' ry='17'/></clipPath>"+
+          "<clipPath id='grfN2'><path d='M56 60 L60 22 L72 22 L70 62 Z'/></clipPath>"+
+          "<clipPath id='grfH2'><ellipse cx='74' cy='18' rx='13' ry='9'/></clipPath></defs>"+
+          "<rect x='26' y='78' width='8' height='18' rx='4' fill='#C06000' stroke='#111111' stroke-width='2.2'/>"+
+          "<rect x='50' y='78' width='8' height='18' rx='4' fill='#C06000' stroke='#111111' stroke-width='2.2'/>"+
+          "<g clip-path='url(#grfN2)'>"+
+          "<rect x='0' y='0' width='100' height='40' fill='#FFC040'/>"+
+          "<rect x='0' y='40' width='100' height='60' fill='#FFA000'/>"+
+          "</g>"+
+          "<path d='M56 60 L60 22 L72 22 L70 62 Z' fill='none' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
+          "<g clip-path='url(#grfB2)'>"+
+          "<rect x='0' y='0'  width='100' height='58' fill='#FFC040'/>"+
+          "<rect x='0' y='58' width='100' height='12' fill='#FFA000'/>"+
+          "<rect x='0' y='70' width='100' height='30' fill='#E08000'/>"+
+          "<circle cx='32' cy='58' r='4' fill='#984800'/><circle cx='48' cy='66' r='4' fill='#984800'/>"+
+          "</g>"+
+          "<ellipse cx='42' cy='64' rx='24' ry='17' fill='none' stroke='#111111' stroke-width='2.6'/>"+
+          "<g clip-path='url(#grfH2)'><rect x='0' y='0' width='100' height='16' fill='#FFC040'/>"+
+          "<rect x='0' y='16' width='100' height='84' fill='#FFA000'/></g>"+
+          "<ellipse cx='74' cy='18' rx='13' ry='9' fill='none' stroke='#111111' stroke-width='2.5'/>"+
+          "</svg>" },
+        { letter: "ط", art: "orange", word: "طَبْلٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<defs><clipPath id='drmR'><rect x='18' y='42' width='64' height='38'/></clipPath></defs>"+
+          "<g clip-path='url(#drmR)'>"+
+          "<rect x='18' y='42' width='64' height='38' fill='#FF2020'/>"+
+          "<rect x='18' y='68' width='64' height='12' fill='#E02000'/>"+
+          "<path d='M18 42 L32 80 L46 42 Z' fill='#FFC040'/>"+
+          "<path d='M46 42 L60 80 L74 42 Z' fill='#FFC040'/>"+
+          "</g>"+
+          "<rect x='18' y='42' width='64' height='38' fill='none' stroke='#111111' stroke-width='2.7'/>"+
+          "<ellipse cx='50' cy='42' rx='32' ry='9' fill='#F1F0EA'/>"+
+          "<ellipse cx='50' cy='42' rx='32' ry='9' fill='none' stroke='#111111' stroke-width='2.7'/>"+
+          "<ellipse cx='50' cy='80' rx='32' ry='8' fill='#DCDAD2' stroke='#111111' stroke-width='2.7'/>"+
+          "</svg>" }
+      ]
+    },
+
+    {
+      type: "tashkeel",
+      objective: "أَنْ يَتَعَرَّفَ إِلى حُروفِ (ف ت ح ق ز ط) وَيَنْطِقَ مَقاطِعَها بِحَرَكاتِها",
+      level: "application",
+      prompt: "ضَعِ الْحَرَكَةَ فَوْقَ كُلِّ حَرْفٍ.",
+      word: "بَحْر"
+    },
+
+    {
+      type: "arrange",
+      objective: "أَنْ يَكْتُبَ الْحَرْفَ وَالْكَلِمَةَ وَيُكْمِلَ بِالْمَقْطَعِ الْمُناسِبِ",
+      level: "application",
+      prompt: "رَتِّبِ الْحُروفَ لِتُكَوِّنَ الْكَلِمَةَ.",
+      word: "حفل"
+    },
+
+    // ④ القاعدةُ اللغويّةُ — نشاطُ «الْـ وال» ج٢ ص ٨٦ بكلماتِه نفسِها.
+    {
+      type: "sun-moon",
+      objective: "أَنْ يَتَعَرَّفَ إِلى حُروفِ (ف ت ح ق ز ط) وَيَنْطِقَ مَقاطِعَها بِحَرَكاتِها",
+      level: "reasoning",
+      prompt: "صَنِّفِ الْكَلِماتِ بِحَسَبِ لامِها.",
+      words: ["القمر", "البيت", "الكتاب", "الليل", "الرحلة", "الطين"]
+    },
+
+    {
+      type: "classify",
+      objective: "أَنْ يَتَعَرَّفَ إِلى حُروفِ (ف ت ح ق ز ط) وَيَنْطِقَ مَقاطِعَها بِحَرَكاتِها",
+      level: "reasoning",
+      prompt: "صَنِّفِ الْكَلِماتِ بِحَسَبِ حَرْفِها الْأَوَّلِ.",
+      groups: [
+        { name: "ف", items: ["فَراشَةٌ"] },
+        { name: "ق", items: ["قَمَرٌ"] },
+        { name: "ط", items: ["طَبْلٌ", "طينٌ"] }
+      ]
+    },
+
+    // إثرائيّ — مقاطعُ وكلماتُ نشاطِ ② ج٢ ص ٨٥ نفسِه.
+    {
+      type: "memory",
+      objective: "أَنْ يَكْتُبَ الْحَرْفَ وَالْكَلِمَةَ وَيُكْمِلَ بِالْمَقْطَعِ الْمُناسِبِ",
+      level: "reasoning",
+      prompt: "اِقْلِبْ بِطاقَتَيْنِ: صِلْ كُلَّ مَقْطَعٍ بِكَلِمَتِهِ.",
+      pairs: [
+        { a: "حَفْ", b: "حَفْلٌ" },
+        { a: "بَحْ", b: "بَحْرٌ" },
+        { a: "تَقْ", b: "تَقْفِزُ" }
+      ]
+    }
+
+  ],
+
+  /* ── نشيد: النَّظافَةُ (ج٢ ص ٨٨) · شِعْرُ وجيه سالم (أغاني الطفولة) ── */
+  "g1a2-3-8": [
+
+    {
+      type: "sequence",
+      objective: "أَنْ يَتَحَدَّثَ بِجُمَلٍ سَليمَةٍ عَنْ مَضْمونِ اللَّوْحَةِ الْمَعْروضَةِ",
+      level: "application",
+      prompt: "رَتِّبْ أَبْياتَ النَّشيدِ.",
+      steps: [
+        "أُنَظِّفُ دائِمًا جِسْمي لِأَحْميهِ مِنَ السَّقَمِ",
+        "أُنَظِّفُ كُلَّ أَسْناني بِفُرْشاةٍ وَمَعْجونِ",
+        "فَلا سوسٌ لَها يَغْزو وَلا أَبْكي وَلا أَشْكو",
+        "لِنَهْتِفْ أَيُّها الْإِخْوانْ نَظافَتُنا مِنَ الْإيمانْ"
+      ]
+    },
+
+    {
+      type: "matching",
+      objective: "أَنْ يَتَحَدَّثَ بِجُمَلٍ سَليمَةٍ عَنْ مَضْمونِ اللَّوْحَةِ الْمَعْروضَةِ",
+      level: "reasoning",
+      prompt: "صِلْ كُلَّ شَطْرٍ بِتَكْمِلَتِهِ.",
+      pairs: [
+        { a: "أُنَظِّفُ دائِمًا جِسْمي", b: "لِأَحْميهِ مِنَ السَّقَمِ" },
+        { a: "وَأَصْحابي أَحَبّوني",    b: "وَكُلُّهُمْ أَعانوني" },
+        { a: "لِنَهْتِفْ أَيُّها الْإِخْوانْ", b: "نَظافَتُنا مِنَ الْإيمانْ" }
+      ]
+    },
+
+    {
+      type: "fill-blank",
+      objective: "أَنْ يَتَحَدَّثَ بِجُمَلٍ سَليمَةٍ عَنْ مَضْمونِ اللَّوْحَةِ الْمَعْروضَةِ",
+      level: "application",
+      prompt: "أَكْمِلِ الشَّطْرَ بِسَحْبِ الْكَلِمَةِ الْمُناسِبَةِ.",
+      text: "أُنَظِّفُ كُلَّ أَسْناني بِفُرْشاةٍ وَ{}",
+      answers: ["مَعْجونِ"],
+      distractors: ["ماءٍ", "صابونٍ"]
+    },
+
+    {
+      type: "sentence",
+      objective: "أَنْ يَكْتُبَ الْحَرْفَ وَالْكَلِمَةَ وَيُكْمِلَ بِالْمَقْطَعِ الْمُناسِبِ",
+      level: "application",
+      prompt: "رَتِّبِ الْكَلِماتِ لِتُكَوِّنَ شَطْرَ النَّشيدِ.",
+      sentence: "أُنَظِّفُ دائِمًا جِسْمي"
+    },
+
+    {
+      type: "mcq",
+      objective: "أَنْ يُجيبَ عَنْ أَسْئِلَةِ الْفَهْمِ فيما اسْتَمَعَ إِلَيْهِ",
+      level: "knowledge",
+      prompt: "بِمَ يُنَظِّفُ الطِّفْلُ أَسْنانَهُ؟",
+      options: ["بِفُرْشاةٍ وَمَعْجونٍ", "بِالْماءِ وَحْدَهُ", "بِالْمِنْديلِ"],
+      answer: 0
+    },
+
+    {
+      type: "tashkeel",
+      objective: "أَنْ يَتَعَرَّفَ إِلى حُروفِ (ف ت ح ق ز ط) وَيَنْطِقَ مَقاطِعَها بِحَرَكاتِها",
+      level: "application",
+      prompt: "ضَعِ الْحَرَكَةَ فَوْقَ كُلِّ حَرْفٍ.",
+      word: "نَظافَة"
+    }
+
   ]
 };
