@@ -26940,5 +26940,173 @@ window.QUESTIONS = {
       ]
     }
 
+  ],
+
+  /* ── الدرسُ الثالث: حرفُ الميم (ج١ ص ٦٤–٧٣) · لونُه **أزرق** من ص ٨٤ ──
+     نصُّ الاستماع: «أُسْرَتي مُتَعاوِنَةٌ» (ص ٦٦) — الأمُّ تُحضِّرُ الطعامَ وميعادُ
+     تُنظِّفُ المنزل. والإثرائيُّ `memory` (لا `matching` ولا `classify`). */
+  "g1a1-1-3": [
+
+    // ① التعرّف — كلماتُ «أُلَوِّنُ» ص ٦٥: مِظَلَّة (أوّل) · غَيْمَة (وسط) · قَلَم (آخر).
+    {
+      type: "letter-picture",
+      objective: "أَنْ يَتَعَرَّفَ إِلى حَرْفِ (م) وَيَنْطِقَ مَقاطِعَهُ بِحَرَكاتِهِ الثَّلاثِ وَمُدودِهِ",
+      level: "knowledge",
+      prompt: "صِلْ شَكْلَ الْميمِ بِصورَةِ كَلِمَتِها.",
+      pairs: [
+        { letter: "مـ", art: "sky", word: "مِظَلَّةٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<defs><clipPath id='umbC'><path d='M88 54 A38 38 0 0 0 12 54 q9.5 11 19 0 t19 0 t19 0 t19 0 Z'/></clipPath></defs>"+
+          "<path d='M50 54 L50 84 q0 8 -9 8 q-7 0 -7 -7' fill='none' stroke='#111111' stroke-width='8' stroke-linecap='round'/>"+
+          "<path d='M50 54 L50 84 q0 8 -9 8 q-7 0 -7 -7' fill='none' stroke='#9A6636' stroke-width='4.5' stroke-linecap='round'/>"+
+          "<g clip-path='url(#umbC)'>"+
+          "<rect x='0'  y='0' width='25' height='100' fill='#FFA000'/>"+
+          "<rect x='25' y='0' width='25' height='100' fill='#E08000'/>"+
+          "<rect x='50' y='0' width='25' height='100' fill='#C06000'/>"+
+          "<rect x='75' y='0' width='25' height='100' fill='#984800'/>"+
+          "<ellipse cx='34' cy='30' rx='13' ry='6' fill='#ffffff' opacity='.7' transform='rotate(-28 34 30)'/>"+
+          "</g>"+
+          "<path d='M88 54 A38 38 0 0 0 12 54 q9.5 11 19 0 t19 0 t19 0 t19 0 Z' fill='none' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
+          "<path d='M50 16 L50 54' stroke='#111111' stroke-width='2' opacity='.8'/>"+
+          "<circle cx='50' cy='14' r='4' fill='#984800' stroke='#111111' stroke-width='2.4'/>"+
+          "</svg>" },
+        { letter: "ـمـ", art: "sky", word: "غَيْمَةٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<defs><clipPath id='cldC'><path d='M26 74 q-16 0 -16 -14 q0 -12 12 -14 q0 -18 19 -18 q13 0 17 10 q5 -4 10 -4 q12 0 13 14 q11 2 11 13 q0 13 -14 13 Z'/></clipPath></defs>"+
+          "<g clip-path='url(#cldC)'>"+
+          "<rect x='0' y='0'  width='100' height='40' fill='#FFFFFF'/>"+
+          "<rect x='0' y='40' width='100' height='14' fill='#EDF4FA'/>"+
+          "<rect x='0' y='54' width='100' height='12' fill='#D6E6F2'/>"+
+          "<rect x='0' y='66' width='100' height='34' fill='#B9D2E6'/>"+
+          "</g>"+
+          "<path d='M26 74 q-16 0 -16 -14 q0 -12 12 -14 q0 -18 19 -18 q13 0 17 10 q5 -4 10 -4 q12 0 13 14 q11 2 11 13 q0 13 -14 13 Z' fill='none' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
+          "</svg>" },
+        { letter: "ـم", art: "sky", word: "قَلَمٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<rect x='40' y='16' width='20' height='50' fill='#0080C0'/>"+
+          "<rect x='40' y='16' width='7'  height='50' fill='#40C0FF'/>"+
+          "<rect x='53' y='16' width='7'  height='50' fill='#0060A0'/>"+
+          "<rect x='40' y='16' width='20' height='50' fill='none' stroke='#111111' stroke-width='2.5'/>"+
+          "<path d='M40 66 L50 90 L60 66 Z' fill='#B98551'/>"+
+          "<path d='M40 66 L50 90 L50 66 Z' fill='#9A6636'/>"+
+          "<path d='M40 66 L50 90 L60 66 Z' fill='none' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
+          "<path d='M45 78 L50 90 L55 78 Z' fill='#404040' stroke='#111111' stroke-width='2' stroke-linejoin='round'/>"+
+          "<rect x='40' y='9' width='20' height='8' fill='#808080'/>"+
+          "<rect x='40' y='9' width='20' height='3' fill='#C0C0C0'/>"+
+          "<rect x='40' y='9' width='20' height='8' fill='none' stroke='#111111' stroke-width='2.3'/>"+
+          "<rect x='41' y='2' width='18' height='8' rx='3' fill='#FF4020'/>"+
+          "<rect x='41' y='2' width='18' height='3' rx='2' fill='#FF8060'/>"+
+          "<rect x='41' y='2' width='18' height='8' rx='3' fill='none' stroke='#111111' stroke-width='2.3'/>"+
+          "</svg>" }
+      ]
+    },
+
+    // ② فهمُ المسموع — «أُمِّي تُحَضِّرُ الطَّعامَ» في النصّ. والخياراتُ **أشياءُ** لا
+    //    أشخاصٌ: قِدْرٌ · مِكْنَسَةٌ · كُرَةٌ — أوضحُ للطفلِ وأسلمُ من رسمِ الوجوه.
+    {
+      type: "hotspot",
+      objective: "أَنْ يُجيبَ عَنْ أَسْئِلَةِ الْفَهْمِ فيما اسْتَمَعَ إِلَيْهِ",
+      level: "reasoning",
+      prompt: "ماذا تُحَضِّرُ الْأُمُّ؟",
+      bg: "#f7fbff",
+      spot: { x: 26, y: 26, r: 20 },
+      svg:
+        "<svg viewBox='0 0 300 300'>"+
+        "<defs>"+
+        "<clipPath id='mmA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='mmB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='mmC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
+        "</defs>"+
+        // ── القِدْرُ (الجواب) ──
+        "<g clip-path='url(#mmA)'>"+
+        "<rect x='12' y='12' width='134' height='134' fill='#FFF7E6'/>"+
+        "<path d='M52 62 q6 -12 0 -20 M79 60 q6 -14 0 -22 M106 62 q6 -12 0 -20' fill='none' stroke='#C0C0C0' stroke-width='5' stroke-linecap='round'/>"+
+        "<rect x='38' y='84' width='16' height='9' rx='4' fill='#606060' stroke='#111111' stroke-width='2.4'/>"+
+        "<rect x='104' y='84' width='16' height='9' rx='4' fill='#606060' stroke='#111111' stroke-width='2.4'/>"+
+        "<rect x='48' y='78' width='62' height='42' rx='7' fill='#808080'/>"+
+        "<rect x='48' y='78' width='62' height='12' fill='#C0C0C0'/>"+
+        "<rect x='48' y='104' width='62' height='9' fill='#606060'/>"+
+        "<rect x='48' y='113' width='62' height='7' fill='#404040'/>"+
+        "<rect x='48' y='78' width='62' height='42' rx='7' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
+        "<rect x='42' y='68' width='74' height='11' rx='5' fill='#808080'/>"+
+        "<rect x='42' y='68' width='74' height='4' rx='3' fill='#C0C0C0'/>"+
+        "<rect x='42' y='68' width='74' height='11' rx='5' fill='none' stroke='#111111' stroke-width='2.6'/>"+
+        "<circle cx='79' cy='63' r='5' fill='#606060' stroke='#111111' stroke-width='2.4'/>"+
+        "<text x='79' y='136' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='19' font-weight='800' fill='#3a2a12'>الطَّعامُ</text>"+
+        "</g>"+
+        "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
+        // ── المِكْنَسَةُ ──
+        "<g clip-path='url(#mmB)'>"+
+        "<rect x='154' y='12' width='134' height='134' fill='#F3FBF0'/>"+
+        "<path d='M232 30 L210 84' fill='none' stroke='#111111' stroke-width='9' stroke-linecap='round'/>"+
+        "<path d='M232 30 L210 84' fill='none' stroke='#9A6636' stroke-width='5' stroke-linecap='round'/>"+
+        "<path d='M196 82 L224 82 L234 116 L186 116 Z' fill='#E08000'/>"+
+        "<path d='M196 82 L224 82 L229 99 L191 99 Z' fill='#FFA000'/>"+
+        "<path d='M188 110 L232 110 L234 116 L186 116 Z' fill='#984800'/>"+
+        "<path d='M196 82 L224 82 L234 116 L186 116 Z' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
+        "<path d='M199 99 L195 116 M210 99 L210 116 M221 99 L225 116' stroke='#111111' stroke-width='1.8' opacity='.7'/>"+
+        "<text x='221' y='136' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='19' font-weight='800' fill='#3a2a12'>التَّنْظيفُ</text>"+
+        "</g>"+
+        "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
+        // ── الكُرَةُ ──
+        "<g clip-path='url(#mmC)'>"+
+        "<rect x='83' y='154' width='134' height='134' fill='#FFF0F6'/>"+
+        "<defs><clipPath id='mmBall'><circle cx='150' cy='212' r='34'/></clipPath></defs>"+
+        "<g clip-path='url(#mmBall)'>"+
+        "<rect x='110' y='170' width='84' height='24' fill='#FF4020'/>"+
+        "<rect x='110' y='194' width='84' height='18' fill='#FF2020'/>"+
+        "<rect x='110' y='212' width='84' height='18' fill='#E02000'/>"+
+        "<rect x='110' y='230' width='84' height='22' fill='#B01800'/>"+
+        "<ellipse cx='136' cy='190' rx='13' ry='6' fill='#ffffff' opacity='.75' transform='rotate(-25 136 190)'/>"+
+        "</g>"+
+        "<circle cx='150' cy='212' r='34' fill='none' stroke='#111111' stroke-width='2.8'/>"+
+        "<path d='M116 212 h68 M150 178 v68' stroke='#111111' stroke-width='2' opacity='.55'/>"+
+        "<text x='150' y='276' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='19' font-weight='800' fill='#3a2a12'>اللَّعِبُ</text>"+
+        "</g>"+
+        "<rect x='83' y='154' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
+        "</svg>"
+    },
+
+    // ③ الضبطُ — «أُمِّي» من النصِّ ومن بيتِ الأنشودةِ ص ٦٥. والشدّةُ معَ الكسرةِ
+    //    **بطاقةٌ واحدةٌ** كما تُنطَق (قاعدةُ النوعِ في `نماذج-الأسئلة.md`).
+    {
+      type: "tashkeel",
+      objective: "أَنْ يَتَعَرَّفَ إِلى حَرْفِ (م) وَيَنْطِقَ مَقاطِعَهُ بِحَرَكاتِهِ الثَّلاثِ وَمُدودِهِ",
+      level: "application",
+      prompt: "ضَعِ الْحَرَكَةَ فَوْقَ كُلِّ حَرْفٍ.",
+      word: "أُمِّي"
+    },
+
+    // ④ بناءُ الكلمة — «قَلَم» من صفحةِ «أُلَوِّنُ»، والميمُ في آخِرِها.
+    {
+      type: "arrange",
+      objective: "أَنْ يَكْتُبَ الْحَرْفَ وَالْكَلِمَةَ وَيُكْمِلَ بِالْمَقْطَعِ الْمُناسِبِ",
+      level: "application",
+      prompt: "رَتِّبِ الْحُروفَ لِتُكَوِّنَ الْكَلِمَةَ.",
+      word: "قلم"
+    },
+
+    // ⑤ بناءُ الجملة — جملةُ «أَقْرَأُ مُسْتَعينًا بِالصُّوَرِ» ص ٦٨ نفسُها.
+    {
+      type: "sentence",
+      objective: "أَنْ يَتَحَدَّثَ بِجُمَلٍ سَليمَةٍ عَنْ مَضْمونِ اللَّوْحَةِ الْمَعْروضَةِ",
+      level: "application",
+      prompt: "رَتِّبِ الْكَلِماتِ لِتُكَوِّنَ جُمْلَةً.",
+      sentence: "في الْمَجْلِسِ مِصْباحٌ مُنيرٌ"
+    },
+
+    // ⑥ إثرائيّ — مقاطعُ الميمِ وكلماتُها من نشاطِ التلوينِ ص ٦٩.
+    {
+      type: "memory",
+      objective: "أَنْ يَتَعَرَّفَ إِلى حَرْفِ (م) وَيَنْطِقَ مَقاطِعَهُ بِحَرَكاتِهِ الثَّلاثِ وَمُدودِهِ",
+      level: "reasoning",
+      prompt: "اِقْلِبْ بِطاقَتَيْنِ: صِلْ كُلَّ مَقْطَعٍ بِكَلِمَتِهِ.",
+      pairs: [
+        { a: "مِفْ", b: "مِفْتاحٌ" },
+        { a: "ما",  b: "مالٌ" },
+        { a: "ـمو", b: "شُموعٌ" }
+      ]
+    }
+
   ]
 };
