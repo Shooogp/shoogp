@@ -486,7 +486,7 @@ window.DATA_FALLBACK = {
         { title:"استماع: ضوءٌ في يدك", file:"g3a2-2-1", open:false },
         { title:"مستند بصري: قراءة شِعار", file:"g3a2-2-2", open:true },
         { title:"الدرس الأول: رحلة السِّندباد الثامنة", file:"g3a2-2-3", open:true },
-        { title:"الدرس الثاني: قصّة وَرَقة", file:"g3a2-2-4", open:false },
+        { title:"الدرس الثاني: قصّة وَرَقة", file:"g3a2-2-4", open:true },
         { title:"الدرس الثالث: حاسوب", file:"g3a2-2-5", open:false },
         { title:"أنشد وأحفظ: مَجد القلم", file:"g3a2-2-6", open:true },
         { title:"أُقيّم أدائي", file:"g3a2-2-7", open:false }
