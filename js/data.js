@@ -399,9 +399,9 @@ window.DATA_FALLBACK = {
     ]},
     "g1-arabic-1": { book:"أحب لغتي (الجزء الأول) — الصف الأول", units:[
       { unit:"التَّهيِئَةُ", lessons:[
-        { title:"أَتَعَرَّفُ مَدْرَسَتي", file:"g1a1-0-1", open:false },
-        { title:"أَتَعَرَّفُ صَفّي", file:"g1a1-0-2", open:false },
-        { title:"مِنَ الْبَيْتِ إِلَى الْمَدْرَسَةِ", file:"g1a1-0-3", open:false }
+        { title:"أَتَعَرَّفُ مَدْرَسَتي", file:"g1a1-0-1", open:true },
+        { title:"أَتَعَرَّفُ صَفّي", file:"g1a1-0-2", open:true },
+        { title:"مِنَ الْبَيْتِ إِلَى الْمَدْرَسَةِ", file:"g1a1-0-3", open:true }
       ]},
       { unit:"المحور الأول: هُنا أَعيشُ", lessons:[
         { title:"الدرس الأول: ب", file:"g1a1-1-1", open:true },

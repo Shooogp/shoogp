@@ -28374,5 +28374,343 @@ window.QUESTIONS = {
       word: "حَديقَتي"
     }
 
+  ],
+
+  /* ═══ التَّهيِئَةُ اللُّغَويَّةُ (ج١ ص ١٣–٤٢) — ثلاثةُ دروسٍ **بلا حروف** ═══
+
+     **قالبُ درسِ التهيئةِ (قرارُ التأليف):** الحروفُ لم تُدرَّسْ بعدُ، فتسقطُ خاناتُ
+     قالبِ الحرفِ كلُّها (التعرّفُ · الضبطُ · بناءُ الكلمةِ) ولا يبقى إلا ما يُقاسُ
+     **بالصورةِ والمعنى**: تحديدٌ في مشهدٍ ← تصنيفٌ ← توصيلٌ ← استبعادُ الدخيلِ ←
+     تسلسلٌ، والإثرائيُّ ذاكرةٌ أو إكمالُ فراغ.
+
+     **والهدفانِ اثنانِ لا أربعة**: «تَحَدَّثْتُ» و«اسْتَمَعْتُ» — أمّا «قَرَأْتُ»
+     و«كَتَبْتُ» فلا محلَّ لهما قبلَ الحروف.
+
+     ⚠️ **والكلماتُ المكتوبةُ هنا مفردةٌ قصيرةٌ مشكولةٌ يقرؤها المعلّمُ على السبّورة**،
+     كما يقتضي الكتابُ نفسُه في هذه المرحلة (كلُّ تعليماتِ التهيئةِ فيه يقرؤها المعلّم).
+     وهو داخلٌ في قاعدةِ الصفِّ الأول: «الخياراتُ صوراً لا كلماتٍ **كلّما أمكن**». */
+
+  /* ── التهيئة ①: أَتَعَرَّفُ مَدْرَسَتي (ص ١٣–٢٠) ── */
+  "g1a1-0-1": [
+
+    {
+      type: "hotspot",
+      objective: "أَنْ يَتَحَدَّثَ بِجُمَلٍ سَليمَةٍ عَنْ مَضْمونِ اللَّوْحَةِ الْمَعْروضَةِ",
+      level: "knowledge",
+      prompt: "اِنْقُرْ عَلى بابِ الْمَدْرَسَةِ.",
+      bg: "#eef7ff",
+      spot: { x: 50, y: 72, r: 13 },
+      svg:
+        "<svg viewBox='0 0 300 300'>"+
+        "<rect x='0' y='0' width='300' height='300' fill='#CDEBFF'/>"+
+        "<rect x='0' y='236' width='300' height='34' fill='#60C020'/>"+
+        "<rect x='0' y='270' width='300' height='30' fill='#4A9018'/>"+
+        // المبنى
+        "<rect x='70' y='96' width='160' height='140' fill='#E0C080'/>"+
+        "<rect x='70' y='96' width='160' height='24' fill='#FFFFC0'/>"+
+        "<rect x='70' y='206' width='160' height='30' fill='#C88A5E'/>"+
+        "<rect x='70' y='96' width='160' height='140' fill='none' stroke='#111111' stroke-width='3' stroke-linejoin='round'/>"+
+        "<rect x='60' y='82' width='180' height='16' rx='5' fill='#9A6636'/>"+
+        "<rect x='60' y='82' width='180' height='5' rx='3' fill='#B98551'/>"+
+        "<rect x='60' y='82' width='180' height='16' rx='5' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
+        "<rect x='90' y='132' width='26' height='26' rx='3' fill='#40C0FF' stroke='#111111' stroke-width='2.5'/>"+
+        "<rect x='136' y='132' width='26' height='26' rx='3' fill='#40C0FF' stroke='#111111' stroke-width='2.5'/>"+
+        "<rect x='182' y='132' width='26' height='26' rx='3' fill='#40C0FF' stroke='#111111' stroke-width='2.5'/>"+
+        "<rect x='90' y='176' width='26' height='26' rx='3' fill='#40C0FF' stroke='#111111' stroke-width='2.5'/>"+
+        "<rect x='182' y='176' width='26' height='26' rx='3' fill='#40C0FF' stroke='#111111' stroke-width='2.5'/>"+
+        // البابُ (الهدف)
+        "<rect x='132' y='186' width='36' height='50' rx='4' fill='#9A6636'/>"+
+        "<rect x='132' y='186' width='36' height='12' rx='3' fill='#B98551'/>"+
+        "<rect x='132' y='224' width='36' height='12' fill='#68411D'/>"+
+        "<rect x='132' y='186' width='36' height='50' rx='4' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
+        "<circle cx='160' cy='212' r='3.4' fill='#111111'/>"+
+        // السّاريَةُ والشَّجَرَةُ والحافِلَةُ
+        "<rect x='252' y='120' width='6' height='116' fill='#C0C0C0' stroke='#111111' stroke-width='2.2'/>"+
+        "<rect x='34' y='196' width='12' height='42' fill='#9A6636' stroke='#111111' stroke-width='2.4'/>"+
+        "<circle cx='40' cy='176' r='30' fill='#4A9018'/>"+
+        "<path d='M10 176 a30 30 0 0 1 60 0 Z' fill='#60C020'/>"+
+        "<path d='M14 164 a30 30 0 0 1 32 -15 Z' fill='#80C020'/>"+
+        "<circle cx='40' cy='176' r='30' fill='none' stroke='#111111' stroke-width='2.8'/>"+
+        "<rect x='214' y='244' width='72' height='34' rx='7' fill='#FFA000'/>"+
+        "<rect x='214' y='244' width='72' height='10' rx='5' fill='#FFC040'/>"+
+        "<rect x='214' y='266' width='72' height='12' fill='#C06000'/>"+
+        "<rect x='214' y='244' width='72' height='34' rx='7' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
+        "<rect x='222' y='250' width='18' height='13' rx='2' fill='#CDEBFF' stroke='#111111' stroke-width='2'/>"+
+        "<rect x='246' y='250' width='18' height='13' rx='2' fill='#CDEBFF' stroke='#111111' stroke-width='2'/>"+
+        "<circle cx='232' cy='280' r='8' fill='#404040' stroke='#111111' stroke-width='2.4'/>"+
+        "<circle cx='270' cy='280' r='8' fill='#404040' stroke='#111111' stroke-width='2.4'/>"+
+        "</svg>"
+    },
+
+    {
+      type: "matching",
+      objective: "أَنْ يَتَحَدَّثَ بِجُمَلٍ سَليمَةٍ عَنْ مَضْمونِ اللَّوْحَةِ الْمَعْروضَةِ",
+      level: "reasoning",
+      prompt: "صِلْ كُلَّ شَيْءٍ بِمَكانِهِ في الْمَدْرَسَةِ.",
+      pairs: [
+        { a: "الْكُتُبُ",   b: "الْمَكْتَبَةُ" },
+        { a: "الطّابورُ",  b: "السّاحَةُ" },
+        { a: "السَّبّورَةُ", b: "الصَّفُّ" }
+      ]
+    },
+
+    {
+      type: "classify",
+      objective: "أَنْ يَتَحَدَّثَ بِجُمَلٍ سَليمَةٍ عَنْ مَضْمونِ اللَّوْحَةِ الْمَعْروضَةِ",
+      level: "reasoning",
+      prompt: "صَنِّفْ: أَيْنَ تَجِدُ كُلَّ مَكانٍ؟",
+      groups: [
+        { name: "في الْمَدْرَسَةِ", items: ["الصَّفُّ", "السّاحَةُ"] },
+        { name: "خارِجَ الْمَدْرَسَةِ", items: ["الشّارِعُ", "الْبَيْتُ"] }
+      ]
+    },
+
+    {
+      type: "exclude",
+      objective: "أَنْ يَتَحَدَّثَ بِجُمَلٍ سَليمَةٍ عَنْ مَضْمونِ اللَّوْحَةِ الْمَعْروضَةِ",
+      level: "reasoning",
+      prompt: "أَيُّها لَيْسَ في الْمَدْرَسَةِ؟",
+      options: ["مَكْتَبَةٌ", "ساحَةٌ", "صَفٌّ", "سَريرٌ"],
+      answer: 3,
+      reason: "السَّريرُ في الْبَيْتِ لا في الْمَدْرَسَةِ"
+    },
+
+    {
+      type: "sequence",
+      objective: "أَنْ يَتَحَدَّثَ بِجُمَلٍ سَليمَةٍ عَنْ مَضْمونِ اللَّوْحَةِ الْمَعْروضَةِ",
+      level: "application",
+      prompt: "رَتِّبْ يَوْمي في الْمَدْرَسَةِ.",
+      steps: [
+        "أَدْخُلُ مِنَ الْبابِ",
+        "أَقِفُ في الطّابورِ",
+        "أَجْلِسُ في صَفّي",
+        "أَعودُ إِلى بَيْتي"
+      ]
+    },
+
+    // إثرائيّ — نشاطُ «أُسَمّي ما في الصّورَةِ ثُمَّ أُحاكي الصَّوْتَ» ص ١٧.
+    {
+      type: "memory",
+      objective: "أَنْ يُمَيِّزَ الْأَصْواتَ وَمَصادِرَها فيما يَسْتَمِعُ إِلَيْهِ",
+      level: "reasoning",
+      prompt: "اِقْلِبْ بِطاقَتَيْنِ: صِلْ كُلَّ شَيْءٍ بِصَوْتِهِ.",
+      pairs: [
+        { a: "الْجَرَسُ",   b: "يَرِنُّ" },
+        { a: "الْحافِلَةُ", b: "تَزْمُرُ" },
+        { a: "الصّافِرَةُ", b: "تَصْفِرُ" }
+      ]
+    }
+
+  ],
+
+  /* ── التهيئة ②: أَتَعَرَّفُ صَفّي (ص ٢١–٢٨) ── */
+  "g1a1-0-2": [
+
+    {
+      type: "hotspot",
+      objective: "أَنْ يَتَحَدَّثَ بِجُمَلٍ سَليمَةٍ عَنْ مَضْمونِ اللَّوْحَةِ الْمَعْروضَةِ",
+      level: "knowledge",
+      prompt: "اِنْقُرْ عَلى السَّبّورَةِ.",
+      bg: "#fffdf5",
+      spot: { x: 50, y: 33, r: 14 },
+      svg:
+        "<svg viewBox='0 0 300 300'>"+
+        "<rect x='0' y='0' width='300' height='300' fill='#FFF6E0'/>"+
+        "<rect x='0' y='214' width='300' height='86' fill='#C0C0C0'/>"+
+        "<rect x='0' y='214' width='300' height='10' fill='#E0E0E0'/>"+
+        // السَّبّورَةُ (الهدف)
+        "<rect x='72' y='58' width='156' height='84' rx='6' fill='#F9F8F3'/>"+
+        "<rect x='72' y='58' width='156' height='16' rx='5' fill='#FFFFFF'/>"+
+        "<rect x='72' y='128' width='156' height='14' fill='#E6E4DC'/>"+
+        "<rect x='72' y='58' width='156' height='84' rx='6' fill='none' stroke='#111111' stroke-width='3' stroke-linejoin='round'/>"+
+        "<rect x='66' y='142' width='168' height='10' rx='4' fill='#9A6636' stroke='#111111' stroke-width='2.6'/>"+
+        "<path d='M100 88 h100 M100 106 h72' stroke='#40C0FF' stroke-width='5' stroke-linecap='round'/>"+
+        // مَكْتَبُ الْمُعَلِّمَةِ
+        "<rect x='104' y='166' width='92' height='14' rx='4' fill='#9A6636'/>"+
+        "<rect x='104' y='166' width='92' height='5' rx='3' fill='#B98551'/>"+
+        "<rect x='104' y='166' width='92' height='14' rx='4' fill='none' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
+        "<path d='M116 180 v34 M184 180 v34' stroke='#111111' stroke-width='8' stroke-linecap='round'/>"+
+        "<path d='M116 180 v34 M184 180 v34' stroke='#B98551' stroke-width='4.5' stroke-linecap='round'/>"+
+        // طاولتا التلاميذ
+        "<rect x='16' y='230' width='96' height='13' rx='4' fill='#0080C0'/>"+
+        "<rect x='16' y='230' width='96' height='5' rx='3' fill='#40C0FF'/>"+
+        "<rect x='16' y='230' width='96' height='13' rx='4' fill='none' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
+        "<path d='M28 243 v34 M100 243 v34' stroke='#111111' stroke-width='8' stroke-linecap='round'/>"+
+        "<path d='M28 243 v34 M100 243 v34' stroke='#606060' stroke-width='4.5' stroke-linecap='round'/>"+
+        "<rect x='188' y='230' width='96' height='13' rx='4' fill='#0080C0'/>"+
+        "<rect x='188' y='230' width='96' height='5' rx='3' fill='#40C0FF'/>"+
+        "<rect x='188' y='230' width='96' height='13' rx='4' fill='none' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
+        "<path d='M200 243 v34 M272 243 v34' stroke='#111111' stroke-width='8' stroke-linecap='round'/>"+
+        "<path d='M200 243 v34 M272 243 v34' stroke='#606060' stroke-width='4.5' stroke-linecap='round'/>"+
+        // رَفُّ الْكُتُبِ وَسَلَّةُ الْمُهْمَلاتِ
+        "<rect x='240' y='96' width='48' height='8' rx='3' fill='#9A6636' stroke='#111111' stroke-width='2.4'/>"+
+        "<rect x='246' y='78' width='8' height='18' fill='#FF2020' stroke='#111111' stroke-width='2'/>"+
+        "<rect x='256' y='80' width='8' height='16' fill='#60C020' stroke='#111111' stroke-width='2'/>"+
+        "<rect x='266' y='76' width='8' height='20' fill='#FFA000' stroke='#111111' stroke-width='2'/>"+
+        "<path d='M16 176 L60 176 L54 214 L22 214 Z' fill='#984800' stroke='#111111' stroke-width='2.7' stroke-linejoin='round'/>"+
+        "</svg>"
+    },
+
+    {
+      type: "classify",
+      objective: "أَنْ يَتَحَدَّثَ بِجُمَلٍ سَليمَةٍ عَنْ مَضْمونِ اللَّوْحَةِ الْمَعْروضَةِ",
+      level: "reasoning",
+      prompt: "صَنِّفْ أَشْياءَ صَفّي.",
+      groups: [
+        { name: "لِلْكِتابَةِ", items: ["قَلَمٌ", "دَفْتَرٌ"] },
+        { name: "لِلْجُلوسِ",  items: ["كُرْسِيٌّ", "طاوِلَةٌ"] }
+      ]
+    },
+
+    {
+      type: "matching",
+      objective: "أَنْ يَتَحَدَّثَ بِجُمَلٍ سَليمَةٍ عَنْ مَضْمونِ اللَّوْحَةِ الْمَعْروضَةِ",
+      level: "reasoning",
+      prompt: "صِلْ كُلَّ أَداةٍ بِعَمَلِها.",
+      pairs: [
+        { a: "الْقَلَمُ",   b: "أَكْتُبُ بِهِ" },
+        { a: "الْمِمْحاةُ", b: "أَمْحو بِها" },
+        { a: "الْمِبْراةُ", b: "أَبْري بِها" }
+      ]
+    },
+
+    {
+      type: "exclude",
+      objective: "أَنْ يَتَحَدَّثَ بِجُمَلٍ سَليمَةٍ عَنْ مَضْمونِ اللَّوْحَةِ الْمَعْروضَةِ",
+      level: "reasoning",
+      prompt: "أَيُّها لَيْسَ في الصَّفِّ؟",
+      options: ["سَبّورَةٌ", "كُرْسِيٌّ", "طاوِلَةٌ", "قِطارٌ"],
+      answer: 3,
+      reason: "الْقِطارُ لَيْسَ مِنْ أَثاثِ الصَّفِّ"
+    },
+
+    {
+      type: "fill-blank",
+      objective: "أَنْ يَتَحَدَّثَ بِجُمَلٍ سَليمَةٍ عَنْ مَضْمونِ اللَّوْحَةِ الْمَعْروضَةِ",
+      level: "application",
+      prompt: "أَكْمِلِ الْجُمْلَةَ بِسَحْبِ الْكَلِمَةِ الْمُناسِبَةِ.",
+      text: "تَكْتُبُ الْمُعَلِّمَةُ عَلى {}",
+      answers: ["السَّبّورَةِ"],
+      distractors: ["الْبابِ", "الشَّجَرَةِ"]
+    },
+
+    {
+      type: "sequence",
+      objective: "أَنْ يَتَحَدَّثَ بِجُمَلٍ سَليمَةٍ عَنْ مَضْمونِ اللَّوْحَةِ الْمَعْروضَةِ",
+      level: "application",
+      prompt: "رَتِّبْ آدابَ دُخولِ الصَّفِّ.",
+      steps: [
+        "أَسْتَأْذِنُ قَبْلَ الدُّخولِ",
+        "أُلْقي التَّحِيَّةَ",
+        "أَجْلِسُ في مَكاني",
+        "أُنْصِتُ لِمُعَلِّمَتي"
+      ]
+    }
+
+  ],
+
+  /* ── التهيئة ③: مِنَ الْبَيْتِ إِلَى الْمَدْرَسَةِ (ص ٢٩–٤٢) ── */
+  "g1a1-0-3": [
+
+    // نشاطُ الكتابِ نفسُه ص ٣٠: «أَضَعُ أَدَواتي الْمَدْرَسِيَّةَ — فَقَطْ — في مَكانِها».
+    {
+      type: "classify",
+      objective: "أَنْ يَتَحَدَّثَ بِجُمَلٍ سَليمَةٍ عَنْ مَضْمونِ اللَّوْحَةِ الْمَعْروضَةِ",
+      level: "reasoning",
+      prompt: "ضَعْ كُلَّ أَداةٍ في مَكانِها.",
+      groups: [
+        { name: "الْحَقيبَةُ", items: ["كِتابٌ", "دَفْتَرٌ"] },
+        { name: "الْمِقْلَمَةُ", items: ["قَلَمٌ", "مِمْحاةٌ"] }
+      ]
+    },
+
+    {
+      type: "exclude",
+      objective: "أَنْ يَتَحَدَّثَ بِجُمَلٍ سَليمَةٍ عَنْ مَضْمونِ اللَّوْحَةِ الْمَعْروضَةِ",
+      level: "reasoning",
+      prompt: "أَيُّها لَيْسَ أَداةً مَدْرَسِيَّةً؟",
+      options: ["مِسْطَرَةٌ", "مِبْراةٌ", "دَفْتَرٌ", "كُرَةٌ"],
+      answer: 3,
+      reason: "الْكُرَةُ لُعْبَةٌ لا أَداةٌ مَدْرَسِيَّةٌ"
+    },
+
+    {
+      type: "hotspot",
+      objective: "أَنْ يَتَحَدَّثَ بِجُمَلٍ سَليمَةٍ عَنْ مَضْمونِ اللَّوْحَةِ الْمَعْروضَةِ",
+      level: "application",
+      prompt: "اِنْقُرْ عَلى مَمَرِّ الْمُشاةِ.",
+      bg: "#f4fbff",
+      spot: { x: 50, y: 63, r: 14 },
+      svg:
+        "<svg viewBox='0 0 300 300'>"+
+        "<rect x='0' y='0' width='300' height='300' fill='#CDEBFF'/>"+
+        "<rect x='0' y='226' width='300' height='40' fill='#60C020'/>"+
+        "<rect x='0' y='266' width='300' height='34' fill='#4A9018'/>"+
+        "<rect x='0' y='150' width='300' height='76' fill='#606060'/>"+
+        "<rect x='0' y='150' width='300' height='8' fill='#808080'/>"+
+        "<rect x='0' y='218' width='300' height='8' fill='#404040'/>"+
+        // مَمَرُّ الْمُشاةِ (الهدف)
+        "<rect x='114' y='154' width='14' height='60' fill='#FFFFFF'/>"+
+        "<rect x='136' y='154' width='14' height='60' fill='#FFFFFF'/>"+
+        "<rect x='158' y='154' width='14' height='60' fill='#FFFFFF'/>"+
+        "<rect x='180' y='154' width='14' height='60' fill='#FFFFFF'/>"+
+        // إشارَةُ الْمُرورِ
+        "<rect x='240' y='120' width='8' height='106' fill='#808080' stroke='#111111' stroke-width='2.2'/>"+
+        "<rect x='228' y='60' width='32' height='66' rx='8' fill='#404040' stroke='#111111' stroke-width='2.8'/>"+
+        "<circle cx='244' cy='78'  r='9' fill='#FF2020' stroke='#111111' stroke-width='2.2'/>"+
+        "<circle cx='244' cy='100' r='9' fill='#FFC040' stroke='#111111' stroke-width='2.2'/>"+
+        "<circle cx='244' cy='118' r='7' fill='#60C020' stroke='#111111' stroke-width='2.2'/>"+
+        // بَيْتٌ (يسار) وَمَدْرَسَةٌ (يمين)
+        "<rect x='18' y='96' width='60' height='54' fill='#9A6636'/>"+
+        "<rect x='18' y='96' width='60' height='14' fill='#B98551'/>"+
+        "<rect x='18' y='96' width='60' height='54' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
+        "<path d='M8 98 L48 64 L88 98 Z' fill='#E02000'/>"+
+        "<path d='M8 98 L48 64 L48 98 Z' fill='#FF2020'/>"+
+        "<path d='M8 98 L48 64 L88 98 Z' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
+        "<rect x='38' y='122' width='20' height='28' rx='3' fill='#E08000' stroke='#111111' stroke-width='2.4'/>"+
+        "<rect x='176' y='84' width='108' height='66' fill='#E0C080'/>"+
+        "<rect x='176' y='84' width='108' height='16' fill='#FFFFC0'/>"+
+        "<rect x='176' y='84' width='108' height='66' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
+        "<rect x='190' y='110' width='18' height='18' rx='2' fill='#40C0FF' stroke='#111111' stroke-width='2.2'/>"+
+        "<rect x='218' y='110' width='18' height='18' rx='2' fill='#40C0FF' stroke='#111111' stroke-width='2.2'/>"+
+        "<rect x='246' y='110' width='18' height='18' rx='2' fill='#40C0FF' stroke='#111111' stroke-width='2.2'/>"+
+        "</svg>"
+    },
+
+    {
+      type: "sequence",
+      objective: "أَنْ يَتَحَدَّثَ بِجُمَلٍ سَليمَةٍ عَنْ مَضْمونِ اللَّوْحَةِ الْمَعْروضَةِ",
+      level: "application",
+      prompt: "رَتِّبْ رِحْلَتي إِلَى الْمَدْرَسَةِ.",
+      steps: [
+        "أَسْتَيْقِظُ مُبَكِّرًا",
+        "أَلْبَسُ زِيّي",
+        "أَحْمِلُ حَقيبَتي",
+        "أَرْكَبُ الْحافِلَةَ"
+      ]
+    },
+
+    {
+      type: "matching",
+      objective: "أَنْ يَتَحَدَّثَ بِجُمَلٍ سَليمَةٍ عَنْ مَضْمونِ اللَّوْحَةِ الْمَعْروضَةِ",
+      level: "reasoning",
+      prompt: "صِلْ كُلَّ أَداةٍ بِعَمَلِها.",
+      pairs: [
+        { a: "الْمِسْطَرَةُ", b: "أَرْسُمُ خَطًّا" },
+        { a: "الصَّمْغُ",    b: "أُلْصِقُ بِهِ" },
+        { a: "الْمِقَصُّ",   b: "أَقُصُّ بِهِ" }
+      ]
+    },
+
+    {
+      type: "fill-blank",
+      objective: "أَنْ يَتَحَدَّثَ بِجُمَلٍ سَليمَةٍ عَنْ مَضْمونِ اللَّوْحَةِ الْمَعْروضَةِ",
+      level: "application",
+      prompt: "أَكْمِلِ الْجُمْلَةَ بِسَحْبِ الْكَلِمَةِ الْمُناسِبَةِ.",
+      text: "أَحْمِلُ {} إِلَى الْمَدْرَسَةِ",
+      answers: ["حَقيبَتي"],
+      distractors: ["كُرَتي", "لُعْبَتي"]
+    }
+
   ]
 };
