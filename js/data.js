@@ -467,8 +467,31 @@ window.DATA_FALLBACK = {
         { title:"قِصَّةٌ أَعْجَبَتْني", file:"g2a2-2-7", open:false }
       ]}
     ]},
-    "g3-arabic-1": { book:"أحب لغتي (الجزء الأول) — الصف الثالث", units:[] },
-    "g3-arabic-2": { book:"أحب لغتي (الجزء الثاني) — الصف الثالث", units:[] },
+    "g3-arabic-1": { book:"أحب لغتي (الجزء الأول) — الصف الثالث", units:[
+      { unit:"درس المراجعة", lessons:[
+        { title:"الحمامة المطوّقة", file:"g3a1-0-1", open:false }
+      ]},
+      { unit:"المحور الأول: الحياة من حولي", lessons:[
+        { title:"استماع: حكايات حروفي الجميلة", file:"g3a1-1-1", open:false },
+        { title:"مستند بصري: قراءة إعلان إرشاديّ", file:"g3a1-1-2", open:false },
+        { title:"الدرس الأول: التَّيمينة", file:"g3a1-1-3", open:false },
+        { title:"الدرس الثاني: حَلوى لأبي", file:"g3a1-1-4", open:false },
+        { title:"الدرس الثالث: رِفاق المَجد", file:"g3a1-1-5", open:false },
+        { title:"أنشد وأحفظ: أنا أحبُّ جاري", file:"g3a1-1-6", open:false },
+        { title:"أُقيّم أدائي", file:"g3a1-1-7", open:false }
+      ]}
+    ]},
+    "g3-arabic-2": { book:"أحب لغتي (الجزء الثاني) — الصف الثالث", units:[
+      { unit:"المحور الثاني: علوم واكتشافات", lessons:[
+        { title:"استماع: ضوءٌ في يدك", file:"g3a2-2-1", open:false },
+        { title:"مستند بصري: قراءة شِعار", file:"g3a2-2-2", open:false },
+        { title:"الدرس الأول: رحلة السِّندباد الثامنة", file:"g3a2-2-3", open:false },
+        { title:"الدرس الثاني: قصّة وَرَقة", file:"g3a2-2-4", open:false },
+        { title:"الدرس الثالث: حاسوب", file:"g3a2-2-5", open:false },
+        { title:"أنشد وأحفظ: مَجد القلم", file:"g3a2-2-6", open:false },
+        { title:"أُقيّم أدائي", file:"g3a2-2-7", open:false }
+      ]}
+    ]},
     "g1-dini-1": { book:"ديني حياتي (الجزء الأول) — الصف الأول", units:[
       { unit:"التلاوة والحفظ", lessons:[
         { title:"التلاوة والحفظ", file:"g1d1-0-1", open:false }
