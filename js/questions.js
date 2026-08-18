@@ -26767,5 +26767,178 @@ window.QUESTIONS = {
       ]
     }
 
+  ],
+
+  /* ── الدرسُ الثاني: حرفُ اللام (ج١ ص ٥٤–٦٣) · لونُه **برتقاليّ** من ص ٨٤ ──
+     نصُّ الاستماع: «عائِلَةُ لَيْلى» (ص ٥٦) — خَليلٌ ٦ سنواتٍ، ولَيْلى ٣، وعَلِيٌّ
+     في عامِهِ الأول. والإثرائيُّ `matching` لا `classify` (قاعدةُ تناوبِ الإثرائيّ). */
+  "g1a1-1-2": [
+
+    // ① التعرّف — كلماتُ «أُلَوِّنُ» ص ٥٥: لُعْبَة (أوّل) · عَلَم (وسط) · جَمَل (آخر).
+    //    وعَلَمُ عُمانَ **أصلٌ موجودٌ في `images/`** مستعمَلٌ في المنصّة — أَولى من رسمِه
+    //    يدوياً (الشعارُ الوطنيُّ لا يُقارَبُ بالتقريب).
+    {
+      type: "letter-picture",
+      objective: "أَنْ يَتَعَرَّفَ إِلى حَرْفِ (ل) وَيَنْطِقَ مَقاطِعَهُ بِحَرَكاتِهِ الثَّلاثِ وَمُدودِهِ",
+      level: "knowledge",
+      prompt: "صِلْ شَكْلَ اللّامِ بِصورَةِ كَلِمَتِها.",
+      pairs: [
+        { letter: "لـ", art: "orange", word: "لُعْبَةٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<rect x='16' y='62' width='38' height='24' rx='4' fill='#FF2020'/>"+
+          "<rect x='16' y='62' width='38' height='7' fill='#FF4020'/>"+
+          "<rect x='16' y='79' width='38' height='7' fill='#E02000'/>"+
+          "<rect x='16' y='62' width='38' height='24' rx='4' fill='none' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
+          "<rect x='24' y='55' width='9' height='7' rx='2' fill='#B01800' stroke='#111111' stroke-width='2'/>"+
+          "<rect x='38' y='55' width='9' height='7' rx='2' fill='#B01800' stroke='#111111' stroke-width='2'/>"+
+          "<rect x='52' y='38' width='34' height='24' rx='4' fill='#0080C0'/>"+
+          "<rect x='52' y='38' width='34' height='7' fill='#40C0FF'/>"+
+          "<rect x='52' y='55' width='34' height='7' fill='#0060A0'/>"+
+          "<rect x='52' y='38' width='34' height='24' rx='4' fill='none' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
+          "<rect x='59' y='31' width='9' height='7' rx='2' fill='#004880' stroke='#111111' stroke-width='2'/>"+
+          "<rect x='72' y='31' width='9' height='7' rx='2' fill='#004880' stroke='#111111' stroke-width='2'/>"+
+          "<rect x='30' y='14' width='34' height='24' rx='4' fill='#60C020'/>"+
+          "<rect x='30' y='14' width='34' height='7' fill='#80C020'/>"+
+          "<rect x='30' y='31' width='34' height='7' fill='#4A9018'/>"+
+          "<rect x='30' y='14' width='34' height='24' rx='4' fill='none' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
+          "<rect x='37' y='7' width='9' height='7' rx='2' fill='#356810' stroke='#111111' stroke-width='2'/>"+
+          "<rect x='50' y='7' width='9' height='7' rx='2' fill='#356810' stroke='#111111' stroke-width='2'/>"+
+          "</svg>" },
+        { letter: "ـلـ", art: "orange", word: "عَلَمٌ", img: "images/oman-flag.png" },
+        { letter: "ـل", art: "orange", word: "جَمَلٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<defs><clipPath id='camB'><ellipse cx='50' cy='56' rx='28' ry='16'/></clipPath>"+
+          "<clipPath id='camH'><ellipse cx='79' cy='30' rx='11' ry='8'/></clipPath></defs>"+
+          "<rect x='30' y='66' width='8' height='24' rx='4' fill='#7A4C22' stroke='#111111' stroke-width='2.2'/>"+
+          "<rect x='60' y='66' width='8' height='24' rx='4' fill='#7A4C22' stroke='#111111' stroke-width='2.2'/>"+
+          "<rect x='40' y='68' width='8' height='22' rx='4' fill='#9A6636' stroke='#111111' stroke-width='2.2'/>"+
+          "<rect x='50' y='68' width='8' height='22' rx='4' fill='#9A6636' stroke='#111111' stroke-width='2.2'/>"+
+          "<path d='M24 52 Q16 46 20 38' fill='none' stroke='#111111' stroke-width='7' stroke-linecap='round'/>"+
+          "<path d='M24 52 Q16 46 20 38' fill='none' stroke='#7A4C22' stroke-width='3.5' stroke-linecap='round'/>"+
+          "<path d='M62 48 Q66 28 76 26' fill='none' stroke='#111111' stroke-width='13' stroke-linecap='round'/>"+
+          "<path d='M62 48 Q66 28 76 26' fill='none' stroke='#9A6636' stroke-width='9' stroke-linecap='round'/>"+
+          "<path d='M40 42 Q50 24 62 42 Z' fill='#B98551' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
+          "<g clip-path='url(#camB)'>"+
+          "<rect x='0' y='0' width='100' height='48' fill='#B98551'/>"+
+          "<rect x='0' y='48' width='100' height='10' fill='#9A6636'/>"+
+          "<rect x='0' y='58' width='100' height='9' fill='#7A4C22'/>"+
+          "<rect x='0' y='67' width='100' height='33' fill='#68411D'/>"+
+          "<ellipse cx='42' cy='47' rx='12' ry='4' fill='#ffffff' opacity='.62' transform='rotate(-10 42 47)'/>"+
+          "</g>"+
+          "<ellipse cx='50' cy='56' rx='28' ry='16' fill='none' stroke='#111111' stroke-width='2.5'/>"+
+          "<g clip-path='url(#camH)'>"+
+          "<rect x='0' y='0' width='100' height='28' fill='#B98551'/>"+
+          "<rect x='0' y='28' width='100' height='6' fill='#9A6636'/>"+
+          "<rect x='0' y='34' width='100' height='66' fill='#7A4C22'/>"+
+          "</g>"+
+          "<ellipse cx='79' cy='30' rx='11' ry='8' fill='none' stroke='#111111' stroke-width='2.4'/>"+
+          "<path d='M72 23 L69 17 L76 20 Z' fill='#9A6636' stroke='#111111' stroke-width='2' stroke-linejoin='round'/>"+
+          "</svg>" }
+      ]
+    },
+
+    // ② فهمُ المسموع — «مَنْ دَعا لَيْلى إِلَى اللَّعِبِ؟» والجوابُ خَليلٌ (لوحُ الأسفل).
+    //    الأسماءُ مكتوبةٌ تحتَ كلِّ صورةٍ فيُطابِقُ الطفلُ المسموعَ بالمقروء.
+    {
+      type: "hotspot",
+      objective: "أَنْ يُجيبَ عَنْ أَسْئِلَةِ الْفَهْمِ فيما اسْتَمَعَ إِلَيْهِ",
+      level: "reasoning",
+      prompt: "مَنْ دَعا لَيْلى إِلَى اللَّعِبِ؟",
+      bg: "#f7fbff",
+      spot: { x: 50, y: 74, r: 20 },
+      svg:
+        "<svg viewBox='0 0 300 300'>"+
+        "<defs>"+
+        "<clipPath id='lpA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='lpB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='lpC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
+        "</defs>"+
+        // ── عَلِيٌّ (الرضيع) ──
+        "<g clip-path='url(#lpA)'>"+
+        "<rect x='12' y='12' width='134' height='134' fill='#FFF7E6'/>"+
+        "<rect x='66' y='70' width='26' height='16' rx='8' fill='#E08000' stroke='#111111' stroke-width='2.4'/>"+
+        "<rect x='60' y='58' width='38' height='34' rx='14' fill='#FFA000'/>"+
+        "<rect x='60' y='58' width='38' height='11' rx='11' fill='#FFC040'/>"+
+        "<rect x='60' y='58' width='38' height='34' rx='14' fill='none' stroke='#111111' stroke-width='2.5'/>"+
+        "<circle cx='79' cy='40' r='16' fill='#E0A87F'/>"+
+        "<path d='M63 38 a16 16 0 0 1 32 0 Z' fill='#F2C3A0'/>"+
+        "<circle cx='79' cy='40' r='16' fill='none' stroke='#111111' stroke-width='2.5'/>"+
+        "<text x='79' y='128' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='20' font-weight='800' fill='#3a2a12'>عَلِيٌّ</text>"+
+        "</g>"+
+        "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
+        // ── لَيْلى ──
+        "<g clip-path='url(#lpB)'>"+
+        "<rect x='154' y='12' width='134' height='134' fill='#FFF0F6'/>"+
+        "<rect x='210' y='88' width='9' height='16' rx='4' fill='#C88A5E' stroke='#111111' stroke-width='2.2'/>"+
+        "<rect x='223' y='88' width='9' height='16' rx='4' fill='#C88A5E' stroke='#111111' stroke-width='2.2'/>"+
+        "<path d='M206 90 L216 52 L226 52 L236 90 Z' fill='#FF2020'/>"+
+        "<path d='M206 90 L216 52 L221 52 L216 90 Z' fill='#FF4020'/>"+
+        "<path d='M206 90 L216 52 L226 52 L236 90 Z' fill='none' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
+        "<path d='M204 48 a17 17 0 0 1 34 0 l0 20 l-6 0 l0 -14 l-22 0 l0 14 l-6 0 Z' fill='#68411D' stroke='#111111' stroke-width='2.3' stroke-linejoin='round'/>"+
+        "<circle cx='221' cy='44' r='14' fill='#E0A87F'/>"+
+        "<path d='M207 42 a14 14 0 0 1 28 0 Z' fill='#F2C3A0'/>"+
+        "<circle cx='221' cy='44' r='14' fill='none' stroke='#111111' stroke-width='2.5'/>"+
+        "<text x='221' y='128' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='20' font-weight='800' fill='#3a2a12'>لَيْلى</text>"+
+        "</g>"+
+        "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
+        // ── خَليلٌ (الجواب) ──
+        "<g clip-path='url(#lpC)'>"+
+        "<rect x='83' y='154' width='134' height='134' fill='#F0F8FF'/>"+
+        "<rect x='136' y='230' width='11' height='14' rx='4' fill='#C88A5E' stroke='#111111' stroke-width='2.2'/>"+
+        "<rect x='153' y='230' width='11' height='14' rx='4' fill='#C88A5E' stroke='#111111' stroke-width='2.2'/>"+
+        "<path d='M133 234 L141 190 L159 190 L167 234 Z' fill='#F7F6F1'/>"+
+        "<path d='M133 234 L141 190 L150 190 L146 234 Z' fill='#FFFFFF'/>"+
+        "<path d='M160 234 L159 190 L167 234 Z' fill='#E6E4DC'/>"+
+        "<path d='M133 234 L141 190 L159 190 L167 234 Z' fill='none' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
+        "<circle cx='150' cy='176' r='15' fill='#E0A87F'/>"+
+        "<path d='M135 174 a15 15 0 0 1 30 0 Z' fill='#F2C3A0'/>"+
+        "<circle cx='150' cy='176' r='15' fill='none' stroke='#111111' stroke-width='2.5'/>"+
+        "<path d='M136 168 a14 12 0 0 1 28 0 Z' fill='#60C020' stroke='#111111' stroke-width='2.3' stroke-linejoin='round'/>"+
+        "<text x='150' y='270' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='20' font-weight='800' fill='#3a2a12'>خَليلٌ</text>"+
+        "</g>"+
+        "<rect x='83' y='154' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
+        "</svg>"
+    },
+
+    // ③ الضبطُ — «لَيْلى» اسمُ بطلةِ النصّ، وحرفاها ل وي من مقاطعِ الدرس (لَ · لْ).
+    {
+      type: "tashkeel",
+      objective: "أَنْ يَتَعَرَّفَ إِلى حَرْفِ (ل) وَيَنْطِقَ مَقاطِعَهُ بِحَرَكاتِهِ الثَّلاثِ وَمُدودِهِ",
+      level: "application",
+      prompt: "ضَعِ الْحَرَكَةَ فَوْقَ كُلِّ حَرْفٍ.",
+      word: "لَيْلى"
+    },
+
+    // ④ بناءُ الكلمة — «جَمَل» من صفحةِ «أُلَوِّنُ»، واللامُ في آخِرِها.
+    {
+      type: "arrange",
+      objective: "أَنْ يَكْتُبَ الْحَرْفَ وَالْكَلِمَةَ وَيُكْمِلَ بِالْمَقْطَعِ الْمُناسِبِ",
+      level: "application",
+      prompt: "رَتِّبِ الْحُروفَ لِتُكَوِّنَ الْكَلِمَةَ.",
+      word: "جمل"
+    },
+
+    // ⑤ بناءُ الجملة — جملةُ «أَقْرَأُ مُسْتَعينًا بِالصُّوَرِ» ص ٥٩ نفسُها.
+    {
+      type: "sentence",
+      objective: "أَنْ يَتَحَدَّثَ بِجُمَلٍ سَليمَةٍ عَنْ مَضْمونِ اللَّوْحَةِ الْمَعْروضَةِ",
+      level: "application",
+      prompt: "رَتِّبِ الْكَلِماتِ لِتُكَوِّنَ جُمْلَةً.",
+      sentence: "خَليلٌ يَلْعَبُ مَعَ عَلِيٍّ"
+    },
+
+    // ⑥ إثرائيّ — نشاطُ الكتابِ نفسُه ص ٥٧: «أَصِلُ بَيْنَ الشَّخْصِيَّةِ وَعُمْرِها».
+    {
+      type: "matching",
+      objective: "أَنْ يُجيبَ عَنْ أَسْئِلَةِ الْفَهْمِ فيما اسْتَمَعَ إِلَيْهِ",
+      level: "reasoning",
+      prompt: "صِلْ كُلَّ شَخْصِيَّةٍ بِعُمْرِها.",
+      pairs: [
+        { a: "عَلِيٌّ",  b: "عامٌ واحِدٌ" },
+        { a: "لَيْلى",  b: "ثَلاثُ سَنَواتٍ" },
+        { a: "خَليلٌ",  b: "سِتُّ سَنَواتٍ" }
+      ]
+    }
+
   ]
 };
