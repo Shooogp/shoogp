@@ -469,7 +469,7 @@ window.DATA_FALLBACK = {
     ]},
     "g3-arabic-1": { book:"أحب لغتي (الجزء الأول) — الصف الثالث", units:[
       { unit:"درس المراجعة", lessons:[
-        { title:"الحمامة المطوّقة", file:"g3a1-0-1", open:false }
+        { title:"الحمامة المطوّقة", file:"g3a1-0-1", open:true }
       ]},
       { unit:"المحور الأول: الحياة من حولي", lessons:[
         { title:"استماع: حكايات حروفي الجميلة", file:"g3a1-1-1", open:false },
