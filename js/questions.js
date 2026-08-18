@@ -27477,5 +27477,195 @@ window.QUESTIONS = {
       word: "شُكْري"
     }
 
+  ],
+
+  /* ═══ المحورُ الثاني: هُنا أَتَعَلَّمُ (ج١ ص ٩٣–١٥٠) ═══
+     ألوانُ حروفِه من بطاقاتِ صفحةِ المراجعةِ ص ١٤٠:
+     **د أخضر · س كهرمانيّ · ك أزرق · ن بنفسجيّ** (والبنفسجيُّ لا سُلَّمَ له فيُؤخَذُ `red`).
+
+     ── الدرسُ الأول: حرفُ الدال (ص ٩٤–١٠٥) ──
+     نصُّ الاستماع: «الْمَدْرَسَةُ» (ص ٩٦) — طابورُ الصباحِ ورفعُ العَلَمِ والنشيدُ الوطنيّ. */
+  "g1a1-2-1": [
+
+    // ① التعرّف — كلماتُ «أُلَوِّنُ» ص ٩٥: دَرَج (أوّل) · هَدِيَّة (وسط) · فَهْد (آخر).
+    {
+      type: "letter-picture",
+      objective: "أَنْ يَتَعَرَّفَ إِلى حَرْفِ (د) وَيَنْطِقَ مَقاطِعَهُ بِحَرَكاتِهِ الثَّلاثِ وَمُدودِهِ",
+      level: "knowledge",
+      prompt: "صِلْ شَكْلَ الدّالِ بِصورَةِ كَلِمَتِها.",
+      pairs: [
+        { letter: "دَ", art: "green", word: "دَرَجٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<rect x='10' y='76' width='80' height='14' fill='#0060A0'/>"+
+          "<rect x='10' y='76' width='80' height='5'  fill='#40C0FF'/>"+
+          "<rect x='10' y='76' width='80' height='14' fill='none' stroke='#111111' stroke-width='2.4'/>"+
+          "<rect x='24' y='60' width='66' height='16' fill='#0080C0'/>"+
+          "<rect x='24' y='60' width='66' height='5'  fill='#40C0FF'/>"+
+          "<rect x='24' y='60' width='66' height='16' fill='none' stroke='#111111' stroke-width='2.4'/>"+
+          "<rect x='38' y='44' width='52' height='16' fill='#0080C0'/>"+
+          "<rect x='38' y='44' width='52' height='5'  fill='#40C0FF'/>"+
+          "<rect x='38' y='44' width='52' height='16' fill='none' stroke='#111111' stroke-width='2.4'/>"+
+          "<rect x='52' y='28' width='38' height='16' fill='#0060A0'/>"+
+          "<rect x='52' y='28' width='38' height='5'  fill='#40C0FF'/>"+
+          "<rect x='52' y='28' width='38' height='16' fill='none' stroke='#111111' stroke-width='2.4'/>"+
+          "<rect x='66' y='14' width='24' height='14' fill='#004880'/>"+
+          "<rect x='66' y='14' width='24' height='5'  fill='#2080E0'/>"+
+          "<rect x='66' y='14' width='24' height='14' fill='none' stroke='#111111' stroke-width='2.4'/>"+
+          "</svg>" },
+        { letter: "ـدِ", art: "green", word: "هَدِيَّةٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<rect x='16' y='44' width='68' height='44' rx='4' fill='#E08000'/>"+
+          "<rect x='16' y='44' width='68' height='12' fill='#FFA000'/>"+
+          "<rect x='16' y='76' width='68' height='12' fill='#C06000'/>"+
+          "<rect x='16' y='44' width='68' height='44' rx='4' fill='none' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
+          "<rect x='12' y='36' width='76' height='12' rx='3' fill='#FFA000'/>"+
+          "<rect x='12' y='36' width='76' height='4'  rx='2' fill='#FFC040'/>"+
+          "<rect x='12' y='36' width='76' height='12' rx='3' fill='none' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
+          "<rect x='42' y='36' width='16' height='52' fill='#FF2020'/>"+
+          "<rect x='42' y='36' width='6'  height='52' fill='#FF4020'/>"+
+          "<rect x='42' y='36' width='16' height='52' fill='none' stroke='#111111' stroke-width='2.4'/>"+
+          "<path d='M50 36 q-20 -22 -6 -22 q10 0 6 22 Z' fill='#FF2020' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
+          "<path d='M50 36 q20 -22 6 -22 q-10 0 -6 22 Z' fill='#E02000' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
+          "<circle cx='50' cy='33' r='5' fill='#B01800' stroke='#111111' stroke-width='2.3'/>"+
+          "</svg>" },
+        { letter: "ـد", art: "green", word: "فَهْدٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<defs><clipPath id='fhdB'><ellipse cx='50' cy='54' rx='30' ry='15'/></clipPath>"+
+          "<clipPath id='fhdH'><circle cx='80' cy='34' r='12'/></clipPath></defs>"+
+          "<path d='M22 50 Q8 42 12 28' fill='none' stroke='#111111' stroke-width='8' stroke-linecap='round'/>"+
+          "<path d='M22 50 Q8 42 12 28' fill='none' stroke='#C06000' stroke-width='4' stroke-linecap='round'/>"+
+          "<rect x='28' y='64' width='9' height='24' rx='4' fill='#C06000' stroke='#111111' stroke-width='2.2'/>"+
+          "<rect x='62' y='64' width='9' height='24' rx='4' fill='#C06000' stroke='#111111' stroke-width='2.2'/>"+
+          "<rect x='40' y='66' width='9' height='22' rx='4' fill='#E08000' stroke='#111111' stroke-width='2.2'/>"+
+          "<rect x='52' y='66' width='9' height='22' rx='4' fill='#E08000' stroke='#111111' stroke-width='2.2'/>"+
+          "<g clip-path='url(#fhdB)'>"+
+          "<rect x='0' y='0'  width='100' height='46' fill='#FFA000'/>"+
+          "<rect x='0' y='46' width='100' height='10' fill='#E08000'/>"+
+          "<rect x='0' y='56' width='100' height='9'  fill='#C06000'/>"+
+          "<rect x='0' y='65' width='100' height='35' fill='#984800'/>"+
+          "<circle cx='36' cy='48' r='3' fill='#68411D'/><circle cx='48' cy='56' r='3' fill='#68411D'/>"+
+          "<circle cx='60' cy='47' r='3' fill='#68411D'/><circle cx='42' cy='62' r='3' fill='#68411D'/>"+
+          "<circle cx='64' cy='60' r='3' fill='#68411D'/>"+
+          "<ellipse cx='42' cy='45' rx='11' ry='4' fill='#ffffff' opacity='.6' transform='rotate(-10 42 45)'/>"+
+          "</g>"+
+          "<ellipse cx='50' cy='54' rx='30' ry='15' fill='none' stroke='#111111' stroke-width='2.5'/>"+
+          "<path d='M70 46 Q72 36 78 34' fill='none' stroke='#111111' stroke-width='9' stroke-linecap='round'/>"+
+          "<path d='M70 46 Q72 36 78 34' fill='none' stroke='#E08000' stroke-width='5.5' stroke-linecap='round'/>"+
+          "<g clip-path='url(#fhdH)'>"+
+          "<rect x='0' y='0'  width='100' height='32' fill='#FFA000'/>"+
+          "<rect x='0' y='32' width='100' height='7'  fill='#E08000'/>"+
+          "<rect x='0' y='39' width='100' height='61' fill='#C06000'/>"+
+          "</g>"+
+          "<circle cx='80' cy='34' r='12' fill='none' stroke='#111111' stroke-width='2.4'/>"+
+          "<path d='M72 26 L70 18 L78 22 Z' fill='#E08000' stroke='#111111' stroke-width='2.2' stroke-linejoin='round'/>"+
+          "<path d='M88 26 L90 18 L82 22 Z' fill='#E08000' stroke='#111111' stroke-width='2.2' stroke-linejoin='round'/>"+
+          "</svg>" }
+      ]
+    },
+
+    // ② فهمُ المسموع — «وَقَفَ بَدْرٌ مَعَ رِفاقِهِ في ساحَةِ الْمَدْرَسَةِ».
+    {
+      type: "hotspot",
+      objective: "أَنْ يُجيبَ عَنْ أَسْئِلَةِ الْفَهْمِ فيما اسْتَمَعَ إِلَيْهِ",
+      level: "reasoning",
+      prompt: "أَيْنَ وَقَفَ بَدْرٌ مَعَ رِفاقِهِ؟",
+      bg: "#f7fbff",
+      spot: { x: 26, y: 26, r: 20 },
+      svg:
+        "<svg viewBox='0 0 300 300'>"+
+        "<defs>"+
+        "<clipPath id='ddA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='ddB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='ddC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
+        "</defs>"+
+        // ── المَدْرَسَةُ (الجواب) ──
+        "<g clip-path='url(#ddA)'>"+
+        "<rect x='12' y='12' width='134' height='134' fill='#EAF4FF'/>"+
+        "<rect x='12' y='120' width='134' height='26' fill='#B98551'/>"+
+        "<rect x='26' y='48' width='106' height='74' fill='#E0C080'/>"+
+        "<rect x='26' y='48' width='106' height='16' fill='#FFFFC0'/>"+
+        "<rect x='26' y='104' width='106' height='18' fill='#C88A5E'/>"+
+        "<rect x='26' y='48' width='106' height='74' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
+        "<rect x='20' y='40' width='118' height='10' rx='3' fill='#9A6636' stroke='#111111' stroke-width='2.5'/>"+
+        "<rect x='38' y='70' width='16' height='16' rx='2' fill='#40C0FF' stroke='#111111' stroke-width='2.2'/>"+
+        "<rect x='62' y='70' width='16' height='16' rx='2' fill='#40C0FF' stroke='#111111' stroke-width='2.2'/>"+
+        "<rect x='104' y='70' width='16' height='16' rx='2' fill='#40C0FF' stroke='#111111' stroke-width='2.2'/>"+
+        "<rect x='70' y='96' width='24' height='26' rx='3' fill='#9A6636' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
+        "<text x='79' y='140' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='19' font-weight='800' fill='#3a2a12'>الْمَدْرَسَةُ</text>"+
+        "</g>"+
+        "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
+        // ── البَيْتُ ──
+        "<g clip-path='url(#ddB)'>"+
+        "<rect x='154' y='12' width='134' height='134' fill='#FFF6EC'/>"+
+        "<rect x='154' y='122' width='134' height='24' fill='#60C020'/>"+
+        "<rect x='186' y='74' width='70' height='48' fill='#9A6636'/>"+
+        "<rect x='186' y='74' width='70' height='12' fill='#B98551'/>"+
+        "<rect x='186' y='110' width='70' height='12' fill='#7A4C22'/>"+
+        "<rect x='186' y='74' width='70' height='48' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
+        "<path d='M176 76 L221 42 L266 76 Z' fill='#E02000'/>"+
+        "<path d='M176 76 L221 42 L221 76 Z' fill='#FF2020'/>"+
+        "<path d='M176 76 L221 42 L266 76 Z' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
+        "<rect x='210' y='96' width='22' height='26' rx='3' fill='#E08000' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
+        "<text x='221' y='140' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='19' font-weight='800' fill='#3a2a12'>الْبَيْتُ</text>"+
+        "</g>"+
+        "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
+        // ── الحَديقَةُ ──
+        "<g clip-path='url(#ddC)'>"+
+        "<rect x='83' y='154' width='134' height='134' fill='#EAF8E4'/>"+
+        "<rect x='83' y='250' width='134' height='18' fill='#60C020'/>"+
+        "<rect x='83' y='268' width='134' height='20' fill='#4A9018'/>"+
+        "<rect x='144' y='218' width='12' height='34' fill='#9A6636'/>"+
+        "<rect x='144' y='218' width='4'  height='34' fill='#B98551'/>"+
+        "<rect x='144' y='218' width='12' height='34' fill='none' stroke='#111111' stroke-width='2.4'/>"+
+        "<circle cx='150' cy='206' r='27' fill='#4A9018'/>"+
+        "<path d='M123 206 a27 27 0 0 1 54 0 Z' fill='#60C020'/>"+
+        "<path d='M127 195 a27 27 0 0 1 29 -13 Z' fill='#80C020'/>"+
+        "<circle cx='150' cy='206' r='27' fill='none' stroke='#111111' stroke-width='2.8'/>"+
+        "<text x='150' y='282' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='19' font-weight='800' fill='#ffffff'>الْحَديقَةُ</text>"+
+        "</g>"+
+        "<rect x='83' y='154' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
+        "</svg>"
+    },
+
+    // ③ الضبطُ — «فَهْد» من صفحةِ «أُلَوِّنُ»، والدالُ ساكنةٌ في آخرِها.
+    {
+      type: "tashkeel",
+      objective: "أَنْ يَتَعَرَّفَ إِلى حَرْفِ (د) وَيَنْطِقَ مَقاطِعَهُ بِحَرَكاتِهِ الثَّلاثِ وَمُدودِهِ",
+      level: "application",
+      prompt: "ضَعِ الْحَرَكَةَ فَوْقَ كُلِّ حَرْفٍ.",
+      word: "فَهْد"
+    },
+
+    // ④ بناءُ الكلمة — «دَرَج» من صفحةِ «أُلَوِّنُ»، والدالُ في أوّلِها.
+    {
+      type: "arrange",
+      objective: "أَنْ يَكْتُبَ الْحَرْفَ وَالْكَلِمَةَ وَيُكْمِلَ بِالْمَقْطَعِ الْمُناسِبِ",
+      level: "application",
+      prompt: "رَتِّبِ الْحُروفَ لِتُكَوِّنَ الْكَلِمَةَ.",
+      word: "درج"
+    },
+
+    // ⑤ بناءُ الجملة — جملةُ «أَقْرَأُ مُسْتَعينًا بِالصُّوَرِ» ص ٩٩ نفسُها.
+    {
+      type: "sentence",
+      objective: "أَنْ يَتَحَدَّثَ بِجُمَلٍ سَليمَةٍ عَنْ مَضْمونِ اللَّوْحَةِ الْمَعْروضَةِ",
+      level: "application",
+      prompt: "رَتِّبِ الْكَلِماتِ لِتُكَوِّنَ جُمْلَةً.",
+      sentence: "دَفْتَرُ وِدادَ جَديدٌ"
+    },
+
+    // ⑥ إثرائيّ — مقاطعُ الدالِ وكلماتُها من نشاطِ ص ٩٩ نفسِه.
+    {
+      type: "memory",
+      objective: "أَنْ يَتَعَرَّفَ إِلى حَرْفِ (د) وَيَنْطِقَ مَقاطِعَهُ بِحَرَكاتِهِ الثَّلاثِ وَمُدودِهِ",
+      level: "reasoning",
+      prompt: "اِقْلِبْ بِطاقَتَيْنِ: صِلْ كُلَّ مَقْطَعٍ بِكَلِمَتِهِ.",
+      pairs: [
+        { a: "مَدْ", b: "مَدْرَسَةٌ" },
+        { a: "مِبْ", b: "مِبْراةٌ" },
+        { a: "بَدْ", b: "بَدْرٌ" }
+      ]
+    }
+
   ]
 };

@@ -412,7 +412,7 @@ window.DATA_FALLBACK = {
         { title:"نشيد: أُمّي وأَبي", file:"g1a1-1-6", open:true }
       ]},
       { unit:"المحور الثاني: هُنا أَتَعَلَّمُ", lessons:[
-        { title:"الدرس الأول: د", file:"g1a1-2-1", open:false },
+        { title:"الدرس الأول: د", file:"g1a1-2-1", open:true },
         { title:"الدرس الثاني: س", file:"g1a1-2-2", open:false },
         { title:"الدرس الثالث: ك", file:"g1a1-2-3", open:false },
         { title:"الدرس الرابع: ن", file:"g1a1-2-4", open:false },
