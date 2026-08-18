@@ -29847,5 +29847,304 @@ window.QUESTIONS = {
       word: "نَظافَة"
     }
 
+  ],
+
+  /* ═══ ج٢ · المحورُ الرابع: هَذا غِذائي (ج٢ ص ٩٢–١٧٤) ═══
+     السلالمُ (مُسنَدةٌ للتمييزِ كسابقتِها):
+     ء `red` · ج `amber` · و `green` · ش `sky` · ع `orange` · ظ `ocean`.
+
+     ── الدرسُ الأول: الهَمْزَةُ (ج٢ ص ٩٢–١٠٣) ──
+     نصُّ الاستماع: «أَنا وَعُلْبَةُ الْغِذاءِ» (ج٢ ص ٩٤). */
+  "g1a2-4-1": [
+
+    {
+      type: "letter-picture",
+      objective: "أَنْ يَتَعَرَّفَ إِلى الْهَمْزَةِ وَيَنْطِقَ مَقاطِعَها بِحَرَكاتِها الثَّلاثِ وَمُدودِها",
+      level: "knowledge",
+      prompt: "صِلْ شَكْلَ الْهَمْزَةِ بِصورَةِ كَلِمَتِها.",
+      pairs: [
+        { letter: "أَ", art: "red", word: "أَرْنَبٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<defs><clipPath id='rbtB'><ellipse cx='48' cy='64' rx='26' ry='20'/></clipPath>"+
+          "<clipPath id='rbtH'><circle cx='70' cy='42' r='15'/></clipPath></defs>"+
+          "<path d='M60 26 q-6 -22 2 -22 q8 0 6 22 Z' fill='#F1F0EA' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
+          "<path d='M76 26 q6 -22 -2 -22 q-8 0 -6 22 Z' fill='#DCDAD2' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
+          "<circle cx='22' cy='62' r='9' fill='#F1F0EA' stroke='#111111' stroke-width='2.5'/>"+
+          "<g clip-path='url(#rbtB)'>"+
+          "<rect x='0' y='0'  width='100' height='58' fill='#FFFFFF'/>"+
+          "<rect x='0' y='58' width='100' height='12' fill='#F1F0EA'/>"+
+          "<rect x='0' y='70' width='100' height='11' fill='#DCDAD2'/>"+
+          "<rect x='0' y='81' width='100' height='19' fill='#C0BEB6'/>"+
+          "</g>"+
+          "<ellipse cx='48' cy='64' rx='26' ry='20' fill='none' stroke='#111111' stroke-width='2.6'/>"+
+          "<g clip-path='url(#rbtH)'>"+
+          "<rect x='0' y='0'  width='100' height='40' fill='#FFFFFF'/>"+
+          "<rect x='0' y='40' width='100' height='60' fill='#F1F0EA'/>"+
+          "</g>"+
+          "<circle cx='70' cy='42' r='15' fill='none' stroke='#111111' stroke-width='2.6'/>"+
+          "<rect x='36' y='80' width='12' height='10' rx='5' fill='#DCDAD2' stroke='#111111' stroke-width='2.2'/>"+
+          "<rect x='54' y='80' width='12' height='10' rx='5' fill='#DCDAD2' stroke='#111111' stroke-width='2.2'/>"+
+          "</svg>" },
+        { letter: "ـئـ", art: "red", word: "طائِرَةٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<path d='M10 54 L34 40 L74 40 q16 0 16 8 q0 8 -16 8 H34 Z' fill='#F1F0EA'/>"+
+          "<path d='M10 54 L34 40 L74 40 q16 0 16 4 H10 Z' fill='#FFFFFF'/>"+
+          "<path d='M10 54 L34 40 L74 40 q16 0 16 8 q0 8 -16 8 H34 Z' fill='none' stroke='#111111' stroke-width='2.7' stroke-linejoin='round'/>"+
+          "<path d='M44 40 L54 18 L64 18 L60 40 Z' fill='#0080C0' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
+          "<path d='M40 56 L28 78 L40 78 L52 56 Z' fill='#0060A0' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
+          "<path d='M78 40 L84 26 L92 26 L88 40 Z' fill='#40C0FF' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
+          "<circle cx='30' cy='48' r='4' fill='#CDEBFF' stroke='#111111' stroke-width='2'/>"+
+          "<circle cx='44' cy='48' r='4' fill='#CDEBFF' stroke='#111111' stroke-width='2'/>"+
+          "<circle cx='58' cy='48' r='4' fill='#CDEBFF' stroke='#111111' stroke-width='2'/>"+
+          "</svg>" },
+        { letter: "ـاء", art: "red", word: "ماءٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<defs><clipPath id='wtrB'><path d='M18 76 q6 -22 32 -22 q26 0 32 22 q-6 10 -32 10 q-26 0 -32 -10 Z'/></clipPath></defs>"+
+          "<g clip-path='url(#wtrB)'>"+
+          "<rect x='0' y='0'  width='100' height='62' fill='#40C0FF'/>"+
+          "<rect x='0' y='62' width='100' height='10' fill='#20A0FF'/>"+
+          "<rect x='0' y='72' width='100' height='9'  fill='#2080E0'/>"+
+          "<rect x='0' y='81' width='100' height='19' fill='#1060A0'/>"+
+          "</g>"+
+          "<path d='M18 76 q6 -22 32 -22 q26 0 32 22 q-6 10 -32 10 q-26 0 -32 -10 Z' fill='none' stroke='#111111' stroke-width='2.7' stroke-linejoin='round'/>"+
+          "<path d='M34 54 q-4 -22 6 -30 q6 18 2 30 Z' fill='#40C0FF' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
+          "<path d='M62 54 q6 -20 -2 -28 q-8 16 -6 28 Z' fill='#20A0FF' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
+          "<circle cx='24' cy='36' r='6' fill='#40C0FF' stroke='#111111' stroke-width='2.3'/>"+
+          "<circle cx='78' cy='40' r='5' fill='#20A0FF' stroke='#111111' stroke-width='2.3'/>"+
+          "</svg>" }
+      ]
+    },
+
+    {
+      type: "hotspot",
+      objective: "أَنْ يُجيبَ عَنْ أَسْئِلَةِ الْفَهْمِ فيما اسْتَمَعَ إِلَيْهِ",
+      level: "reasoning",
+      prompt: "أَيُّ عُلْبَةٍ فيها غِذاءٌ مُتَكامِلٌ؟",
+      bg: "#fffaf6",
+      spot: { x: 26, y: 26, r: 20 },
+      svg:
+        "<svg viewBox='0 0 300 300'>"+
+        "<defs>"+
+        "<clipPath id='hmA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='hmB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='hmC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
+        "</defs>"+
+        // الغِذاءُ المتكامِلُ (الجواب)
+        "<g clip-path='url(#hmA)'>"+
+        "<rect x='12' y='12' width='134' height='134' fill='#F3FFF0'/>"+
+        "<rect x='30' y='40' width='30' height='46' rx='4' fill='#FFFFFF' stroke='#111111' stroke-width='2.6'/>"+
+        "<rect x='30' y='40' width='30' height='12' rx='3' fill='#40C0FF' stroke='#111111' stroke-width='2.4'/>"+
+        "<path d='M70 56 h44 l-6 30 h-32 Z' fill='#FFC040'/>"+
+        "<path d='M70 56 h44 l-2 10 h-40 Z' fill='#FFFFC0'/>"+
+        "<path d='M70 56 h44 l-6 30 h-32 Z' fill='none' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
+        "<circle cx='58' cy='104' r='14' fill='#80C020'/>"+
+        "<path d='M44 104 a14 14 0 0 1 28 0 Z' fill='#60C020'/>"+
+        "<circle cx='58' cy='104' r='14' fill='none' stroke='#111111' stroke-width='2.5'/>"+
+        "<circle cx='96' cy='106' r='12' fill='#FF4020' stroke='#111111' stroke-width='2.5'/>"+
+        "<text x='79' y='136' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='16' font-weight='800' fill='#3a2a12'>حَليبٌ وَشَطيرَةٌ وَفاكِهَةٌ</text>"+
+        "</g>"+
+        "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
+        // حَلْوى
+        "<g clip-path='url(#hmB)'>"+
+        "<rect x='154' y='12' width='134' height='134' fill='#FFF0F6'/>"+
+        "<circle cx='200' cy='70' r='18' fill='#FF2020' stroke='#111111' stroke-width='2.6'/>"+
+        "<circle cx='240' cy='84' r='16' fill='#FFA000' stroke='#111111' stroke-width='2.6'/>"+
+        "<circle cx='222' cy='50' r='14' fill='#60C020' stroke='#111111' stroke-width='2.6'/>"+
+        "<rect x='188' y='96' width='60' height='14' rx='7' fill='#984800' stroke='#111111' stroke-width='2.5'/>"+
+        "<text x='221' y='136' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>حَلْوى</text>"+
+        "</g>"+
+        "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
+        // مَشْروبٌ غازِيٌّ
+        "<g clip-path='url(#hmC)'>"+
+        "<rect x='83' y='154' width='134' height='134' fill='#FFF6EC'/>"+
+        "<rect x='128' y='192' width='44' height='62' rx='7' fill='#E02000'/>"+
+        "<rect x='128' y='192' width='44' height='14' rx='6' fill='#FF4020'/>"+
+        "<rect x='128' y='240' width='44' height='14' fill='#B01800'/>"+
+        "<rect x='128' y='192' width='44' height='62' rx='7' fill='none' stroke='#111111' stroke-width='2.7' stroke-linejoin='round'/>"+
+        "<rect x='134' y='186' width='32' height='8' rx='3' fill='#C0C0C0' stroke='#111111' stroke-width='2.4'/>"+
+        "<text x='150' y='276' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='17' font-weight='800' fill='#3a2a12'>مَشْروبٌ غازِيٌّ</text>"+
+        "</g>"+
+        "<rect x='83' y='154' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
+        "</svg>"
+    },
+
+    {
+      type: "tashkeel",
+      objective: "أَنْ يَتَعَرَّفَ إِلى الْهَمْزَةِ وَيَنْطِقَ مَقاطِعَها بِحَرَكاتِها الثَّلاثِ وَمُدودِها",
+      level: "application",
+      prompt: "ضَعِ الْحَرَكَةَ فَوْقَ كُلِّ حَرْفٍ.",
+      word: "أَرْنَب"
+    },
+
+    {
+      type: "arrange",
+      objective: "أَنْ يَكْتُبَ الْحَرْفَ وَالْكَلِمَةَ وَيُكْمِلَ بِالْمَقْطَعِ الْمُناسِبِ",
+      level: "application",
+      prompt: "رَتِّبِ الْحُروفَ لِتُكَوِّنَ الْكَلِمَةَ.",
+      word: "طائرة"
+    },
+
+    {
+      type: "sentence",
+      objective: "أَنْ يَتَحَدَّثَ بِجُمَلٍ سَليمَةٍ عَنْ مَضْمونِ اللَّوْحَةِ الْمَعْروضَةِ",
+      level: "application",
+      prompt: "رَتِّبِ الْكَلِماتِ لِتُكَوِّنَ جُمْلَةً.",
+      sentence: "آكُلُ غِذاءً صِحِّيًّا"
+    },
+
+    {
+      type: "classify",
+      objective: "أَنْ يُجيبَ عَنْ أَسْئِلَةِ الْفَهْمِ فيما اسْتَمَعَ إِلَيْهِ",
+      level: "reasoning",
+      prompt: "صَنِّفِ الْأَطْعِمَةَ.",
+      groups: [
+        { name: "غِذاءٌ صِحِّيٌّ", items: ["حَليبٌ", "إِجّاصٌ"] },
+        { name: "غَيْرُ صِحِّيٍّ", items: ["حَلْوى", "مَشْروبٌ غازِيٌّ"] }
+      ]
+    }
+
+  ],
+
+  /* ── الدرسُ الثاني: حرفُ الجيم (ج٢ ص ١٠٤–١١٥) · سُلَّمُه `amber` ──
+     نصُّ الاستماع: «وَجْبَتي الْمُفَضَّلَةُ» (ج٢ ص ١٠٦) — نصٌّ إجرائيٌّ بمكوّناتٍ وطريقةِ إعداد. */
+  "g1a2-4-2": [
+
+    {
+      type: "letter-picture",
+      objective: "أَنْ يَتَعَرَّفَ إِلى حَرْفِ (ج) وَيَنْطِقَ مَقاطِعَهُ بِحَرَكاتِهِ الثَّلاثِ وَمُدودِهِ",
+      level: "knowledge",
+      prompt: "صِلْ شَكْلَ الْجيمِ بِصورَةِ كَلِمَتِها.",
+      pairs: [
+        { letter: "جُـ", art: "amber", word: "جُوافَةٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<defs><clipPath id='gvaB'><circle cx='50' cy='58' r='32'/></clipPath></defs>"+
+          "<g clip-path='url(#gvaB)'>"+
+          "<rect x='0' y='0'  width='100' height='42' fill='#80C020'/>"+
+          "<rect x='0' y='42' width='100' height='14' fill='#60C020'/>"+
+          "<rect x='0' y='56' width='100' height='14' fill='#4A9018'/>"+
+          "<rect x='0' y='70' width='100' height='30' fill='#356810'/>"+
+          "<ellipse cx='38' cy='42' rx='12' ry='6' fill='#ffffff' opacity='.6' transform='rotate(-20 38 42)'/>"+
+          "</g>"+
+          "<circle cx='50' cy='58' r='32' fill='none' stroke='#111111' stroke-width='2.8'/>"+
+          "<ellipse cx='50' cy='58' rx='16' ry='18' fill='#FF8060' stroke='#111111' stroke-width='2.4'/>"+
+          "<circle cx='46' cy='52' r='2.6' fill='#FFFFC0'/><circle cx='55' cy='58' r='2.6' fill='#FFFFC0'/>"+
+          "<circle cx='47' cy='64' r='2.6' fill='#FFFFC0'/>"+
+          "<rect x='47' y='18' width='6' height='12' fill='#4A9018' stroke='#111111' stroke-width='2.2'/>"+
+          "<path d='M53 22 q18 -8 24 4 q-18 8 -24 -4 Z' fill='#60C020' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
+          "</svg>" },
+        { letter: "ـنْجـ", art: "amber", word: "باذِنْجانٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<defs><clipPath id='auB'><path d='M52 30 q26 4 26 32 q0 26 -24 30 q-26 4 -32 -20 q-6 -26 30 -42 Z'/></clipPath></defs>"+
+          "<g clip-path='url(#auB)'>"+
+          "<rect x='0' y='0'  width='100' height='48' fill='#8A4FD0'/>"+
+          "<rect x='0' y='48' width='100' height='14' fill='#6B2FB0'/>"+
+          "<rect x='0' y='62' width='100' height='14' fill='#521F8C'/>"+
+          "<rect x='0' y='76' width='100' height='24' fill='#3C1568'/>"+
+          "<ellipse cx='42' cy='50' rx='9' ry='16' fill='#ffffff' opacity='.35' transform='rotate(-18 42 50)'/>"+
+          "</g>"+
+          "<path d='M52 30 q26 4 26 32 q0 26 -24 30 q-26 4 -32 -20 q-6 -26 30 -42 Z' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
+          "<path d='M44 32 q-10 -12 0 -16 q10 -4 14 8 q10 -6 14 2 q-8 10 -20 12 Z' fill='#4A9018' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
+          "<path d='M56 20 L62 8' stroke='#111111' stroke-width='5' stroke-linecap='round'/>"+
+          "<path d='M56 20 L62 8' stroke='#60C020' stroke-width='2.6' stroke-linecap='round'/>"+
+          "</svg>" },
+        { letter: "ـج", art: "amber", word: "ثَلْجٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<path d='M14 46 L34 34 L60 34 L40 46 Z' fill='#CDEBFF' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
+          "<rect x='14' y='46' width='26' height='26' fill='#8ACDF5'/>"+
+          "<rect x='14' y='60' width='26' height='12' fill='#5FB0E0'/>"+
+          "<rect x='14' y='46' width='26' height='26' fill='none' stroke='#111111' stroke-width='2.5'/>"+
+          "<path d='M40 46 L60 34 L60 60 L40 72 Z' fill='#40C0FF' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
+          "<path d='M46 60 L66 48 L92 48 L72 60 Z' fill='#CDEBFF' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
+          "<rect x='46' y='60' width='26' height='26' fill='#8ACDF5'/>"+
+          "<rect x='46' y='74' width='26' height='12' fill='#5FB0E0'/>"+
+          "<rect x='46' y='60' width='26' height='26' fill='none' stroke='#111111' stroke-width='2.5'/>"+
+          "<path d='M72 60 L92 48 L92 74 L72 86 Z' fill='#40C0FF' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
+          "</svg>" }
+      ]
+    },
+
+    {
+      type: "hotspot",
+      objective: "أَنْ يُجيبَ عَنْ أَسْئِلَةِ الْفَهْمِ فيما اسْتَمَعَ إِلَيْهِ",
+      level: "reasoning",
+      prompt: "ما الَّذي يوضَعُ فَوْقَ شَريحَةِ الْخُبْزِ؟",
+      bg: "#fffaf0",
+      spot: { x: 26, y: 26, r: 20 },
+      svg:
+        "<svg viewBox='0 0 300 300'>"+
+        "<defs>"+
+        "<clipPath id='jjA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='jjB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='jjC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
+        "</defs>"+
+        // قِطْعَةُ دَجاجٍ (الجواب)
+        "<g clip-path='url(#jjA)'>"+
+        "<rect x='12' y='12' width='134' height='134' fill='#FFF7E6'/>"+
+        "<path d='M44 70 q14 -22 44 -14 q26 8 22 30 q-4 22 -32 22 q-32 0 -34 -20 q-2 -10 0 -18 Z' fill='#C06000'/>"+
+        "<path d='M44 70 q14 -22 44 -14 q18 6 21 18 q-30 -8 -65 -4 Z' fill='#E08000'/>"+
+        "<path d='M44 70 q14 -22 44 -14 q26 8 22 30 q-4 22 -32 22 q-32 0 -34 -20 q-2 -10 0 -18 Z' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
+        "<path d='M52 84 q22 8 44 2 M50 98 q22 8 44 0' fill='none' stroke='#984800' stroke-width='4' stroke-linecap='round'/>"+
+        "<text x='79' y='134' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>دَجاجٌ</text>"+
+        "</g>"+
+        "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
+        // سَمَكٌ
+        "<g clip-path='url(#jjB)'>"+
+        "<rect x='154' y='12' width='134' height='134' fill='#EAF6FF'/>"+
+        "<path d='M254 74 L276 58 L276 90 Z' fill='#0060A0' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
+        "<ellipse cx='218' cy='74' rx='36' ry='22' fill='#0080C0'/>"+
+        "<path d='M182 74 a36 22 0 0 1 72 0 Z' fill='#40C0FF'/>"+
+        "<ellipse cx='218' cy='74' rx='36' ry='22' fill='none' stroke='#111111' stroke-width='2.7'/>"+
+        "<path d='M206 52 v44 M224 52 v44' stroke='#0060A0' stroke-width='4' opacity='.8'/>"+
+        "<text x='221' y='134' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>سَمَكٌ</text>"+
+        "</g>"+
+        "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
+        // بَيْضٌ
+        "<g clip-path='url(#jjC)'>"+
+        "<rect x='83' y='154' width='134' height='134' fill='#FFFDF0'/>"+
+        "<ellipse cx='150' cy='214' rx='36' ry='28' fill='#FFFFFF' stroke='#111111' stroke-width='2.7'/>"+
+        "<circle cx='150' cy='214' r='14' fill='#FFC040' stroke='#111111' stroke-width='2.5'/>"+
+        "<ellipse cx='118' cy='240' rx='24' ry='18' fill='#F1F0EA' stroke='#111111' stroke-width='2.6'/>"+
+        "<text x='150' y='278' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>بَيْضٌ</text>"+
+        "</g>"+
+        "<rect x='83' y='154' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
+        "</svg>"
+    },
+
+    {
+      type: "tashkeel",
+      objective: "أَنْ يَتَعَرَّفَ إِلى حَرْفِ (ج) وَيَنْطِقَ مَقاطِعَهُ بِحَرَكاتِهِ الثَّلاثِ وَمُدودِهِ",
+      level: "application",
+      prompt: "ضَعِ الْحَرَكَةَ فَوْقَ كُلِّ حَرْفٍ.",
+      word: "ثَلْج"
+    },
+
+    {
+      type: "arrange",
+      objective: "أَنْ يَكْتُبَ الْحَرْفَ وَالْكَلِمَةَ وَيُكْمِلَ بِالْمَقْطَعِ الْمُناسِبِ",
+      level: "application",
+      prompt: "رَتِّبِ الْحُروفَ لِتُكَوِّنَ الْكَلِمَةَ.",
+      word: "دجاج"
+    },
+
+    // صدرُ جملةِ ج٢ ص ١٠٩.
+    {
+      type: "sentence",
+      objective: "أَنْ يَتَحَدَّثَ بِجُمَلٍ سَليمَةٍ عَنْ مَضْمونِ اللَّوْحَةِ الْمَعْروضَةِ",
+      level: "application",
+      prompt: "رَتِّبِ الْكَلِماتِ لِتُكَوِّنَ جُمْلَةً.",
+      sentence: "عَلَّمَتْ خَديجَةُ أَخاها جاسِمًا"
+    },
+
+    // إثرائيّ — «طَريقَةُ الْإِعْدادِ» بنصِّها في ج٢ ص ١٠٦.
+    {
+      type: "fill-blank",
+      objective: "أَنْ يُجيبَ عَنْ أَسْئِلَةِ الْفَهْمِ فيما اسْتَمَعَ إِلَيْهِ",
+      level: "application",
+      prompt: "أَكْمِلْ طَريقَةَ الْإِعْدادِ.",
+      text: "ضَعْ فَوْقَ شَريحَةِ الْخُبْزِ قِطْعَةً مِنْ لَحْمِ {}",
+      answers: ["الدَّجاجِ"],
+      distractors: ["السَّمَكِ", "الْخَروفِ"]
+    }
+
   ]
 };

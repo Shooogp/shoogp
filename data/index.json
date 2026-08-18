@@ -548,8 +548,8 @@
       {
         "unit": "المحور الرابع: هَذا غِذائي",
         "lessons": [
-          { "title": "الدرس الأول: ء", "file": "g1a2-4-1", "open": false },
-          { "title": "الدرس الثاني: ج", "file": "g1a2-4-2", "open": false },
+          { "title": "الدرس الأول: ء", "file": "g1a2-4-1", "open": true },
+          { "title": "الدرس الثاني: ج", "file": "g1a2-4-2", "open": true },
           { "title": "الدرس الثالث: و", "file": "g1a2-4-3", "open": false },
           { "title": "الدرس الرابع: ش", "file": "g1a2-4-4", "open": false },
           { "title": "الدرس الخامس: ع", "file": "g1a2-4-5", "open": false },
