@@ -28007,5 +28007,177 @@ window.QUESTIONS = {
       distractors: ["عَسَلٌ", "دَرَجٌ"]
     }
 
+  ],
+
+  /* ── الدرسُ الرابع: حرفُ النون (ج١ ص ١٣٠–١٣٩) · بطاقتُه **بنفسجيةٌ** في ص ١٤٠
+     فيُؤخَذُ لها `red` (لا سُلَّمَ بنفسجيًّا في `images/rocket/`) ──
+     نصُّ الاستماع: «عُلْبَةُ أَلْوانٍ» (ص ١٣٢). */
+  "g1a1-2-4": [
+
+    // ① التعرّف — كلماتُ «أُلَوِّنُ» ص ١٣١: نُجوم (أوّل) · مِنْضَدَة (وسط) · أَلْوان (آخر).
+    {
+      type: "letter-picture",
+      objective: "أَنْ يَتَعَرَّفَ إِلى حَرْفِ (ن) وَيَنْطِقَ مَقاطِعَهُ بِحَرَكاتِهِ الثَّلاثِ وَمُدودِهِ",
+      level: "knowledge",
+      prompt: "صِلْ شَكْلَ النّونِ بِصورَةِ كَلِمَتِها.",
+      pairs: [
+        { letter: "نُـ", art: "red", word: "نُجومٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<defs>"+
+          "<clipPath id='st1'><path d='M50 12 L59 38 L86 38 L64 54 L73 80 L50 64 L27 80 L36 54 L14 38 L41 38 Z'/></clipPath>"+
+          "<clipPath id='st2'><path d='M22 62 L27 76 L42 76 L30 85 L35 99 L22 90 L9 99 L14 85 L2 76 L17 76 Z'/></clipPath>"+
+          "<clipPath id='st3'><path d='M80 60 L84 72 L97 72 L86 80 L90 92 L80 84 L70 92 L74 80 L63 72 L76 72 Z'/></clipPath>"+
+          "</defs>"+
+          "<g clip-path='url(#st1)'>"+
+          "<rect x='0' y='0'  width='100' height='38' fill='#FFFFC0'/>"+
+          "<rect x='0' y='38' width='100' height='14' fill='#E0E0A0'/>"+
+          "<rect x='0' y='52' width='100' height='14' fill='#E0C080'/>"+
+          "<rect x='0' y='66' width='100' height='34' fill='#E0C060'/>"+
+          "</g>"+
+          "<path d='M50 12 L59 38 L86 38 L64 54 L73 80 L50 64 L27 80 L36 54 L14 38 L41 38 Z' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
+          "<g clip-path='url(#st2)'>"+
+          "<rect x='0' y='0'  width='100' height='78' fill='#FFFFC0'/>"+
+          "<rect x='0' y='78' width='100' height='8'  fill='#E0E0A0'/>"+
+          "<rect x='0' y='86' width='100' height='14' fill='#E0C080'/>"+
+          "</g>"+
+          "<path d='M22 62 L27 76 L42 76 L30 85 L35 99 L22 90 L9 99 L14 85 L2 76 L17 76 Z' fill='none' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
+          "<g clip-path='url(#st3)'>"+
+          "<rect x='0' y='0'  width='100' height='74' fill='#FFFFC0'/>"+
+          "<rect x='0' y='74' width='100' height='8'  fill='#E0E0A0'/>"+
+          "<rect x='0' y='82' width='100' height='18' fill='#E0C080'/>"+
+          "</g>"+
+          "<path d='M80 60 L84 72 L97 72 L86 80 L90 92 L80 84 L70 92 L74 80 L63 72 L76 72 Z' fill='none' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
+          "</svg>" },
+        { letter: "ـنْـ", art: "red", word: "مِنْضَدَةٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<rect x='10' y='30' width='80' height='14' rx='4' fill='#9A6636'/>"+
+          "<rect x='10' y='30' width='80' height='5'  rx='3' fill='#B98551'/>"+
+          "<rect x='10' y='39' width='80' height='5'  fill='#7A4C22'/>"+
+          "<rect x='10' y='30' width='80' height='14' rx='4' fill='none' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
+          "<path d='M20 44 L26 86' stroke='#111111' stroke-width='9' stroke-linecap='round'/>"+
+          "<path d='M20 44 L26 86' stroke='#B98551' stroke-width='5' stroke-linecap='round'/>"+
+          "<path d='M80 44 L74 86' stroke='#111111' stroke-width='9' stroke-linecap='round'/>"+
+          "<path d='M80 44 L74 86' stroke='#B98551' stroke-width='5' stroke-linecap='round'/>"+
+          "<path d='M34 44 L36 86' stroke='#111111' stroke-width='8' stroke-linecap='round'/>"+
+          "<path d='M34 44 L36 86' stroke='#9A6636' stroke-width='4.5' stroke-linecap='round'/>"+
+          "<path d='M66 44 L64 86' stroke='#111111' stroke-width='8' stroke-linecap='round'/>"+
+          "<path d='M66 44 L64 86' stroke='#9A6636' stroke-width='4.5' stroke-linecap='round'/>"+
+          "<path d='M28 66 L72 66' stroke='#111111' stroke-width='6' stroke-linecap='round'/>"+
+          "<path d='M28 66 L72 66' stroke='#7A4C22' stroke-width='3' stroke-linecap='round'/>"+
+          "</svg>" },
+        { letter: "ـن", art: "red", word: "أَلْوانٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<defs><clipPath id='pltB'><path d='M50 16 q34 0 34 28 q0 16 -16 16 q-10 0 -10 8 q0 8 -8 12 q-6 3 -12 -1 q-30 -12 -30 -35 q0 -28 42 -28 Z'/></clipPath></defs>"+
+          "<g clip-path='url(#pltB)'>"+
+          "<rect x='0' y='0'  width='100' height='46' fill='#FFFFC0'/>"+
+          "<rect x='0' y='46' width='100' height='14' fill='#E0E0A0'/>"+
+          "<rect x='0' y='60' width='100' height='40' fill='#E0C080'/>"+
+          "</g>"+
+          "<path d='M50 16 q34 0 34 28 q0 16 -16 16 q-10 0 -10 8 q0 8 -8 12 q-6 3 -12 -1 q-30 -12 -30 -35 q0 -28 42 -28 Z' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
+          "<circle cx='34' cy='34' r='7' fill='#FF2020' stroke='#111111' stroke-width='2.3'/>"+
+          "<circle cx='54' cy='30' r='7' fill='#0080C0' stroke='#111111' stroke-width='2.3'/>"+
+          "<circle cx='68' cy='46' r='7' fill='#60C020' stroke='#111111' stroke-width='2.3'/>"+
+          "<circle cx='30' cy='54' r='7' fill='#FFA000' stroke='#111111' stroke-width='2.3'/>"+
+          "<circle cx='46' cy='62' r='7' fill='#984800' stroke='#111111' stroke-width='2.3'/>"+
+          "</svg>" }
+      ]
+    },
+
+    // ② فهمُ المسموع — «ثُمَّ ناوَلَتْني عُلْبَةَ أَلْوانٍ نالَتْ إِعْجابي».
+    {
+      type: "hotspot",
+      objective: "أَنْ يُجيبَ عَنْ أَسْئِلَةِ الْفَهْمِ فيما اسْتَمَعَ إِلَيْهِ",
+      level: "reasoning",
+      prompt: "ماذا ناوَلَتْهُ الْمُعَلِّمَةُ؟",
+      bg: "#fdf7ff",
+      spot: { x: 26, y: 26, r: 20 },
+      svg:
+        "<svg viewBox='0 0 300 300'>"+
+        "<defs>"+
+        "<clipPath id='nnA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='nnB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='nnC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
+        "</defs>"+
+        // ── عُلْبَةُ الْأَلْوانِ (الجواب) ──
+        "<g clip-path='url(#nnA)'>"+
+        "<rect x='12' y='12' width='134' height='134' fill='#FFF7FB'/>"+
+        "<rect x='30' y='58' width='98' height='40' rx='6' fill='#0080C0'/>"+
+        "<rect x='30' y='58' width='98' height='11' rx='5' fill='#40C0FF'/>"+
+        "<rect x='30' y='88' width='98' height='10' fill='#0060A0'/>"+
+        "<rect x='30' y='58' width='98' height='40' rx='6' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
+        "<circle cx='46' cy='78' r='8' fill='#FF2020' stroke='#111111' stroke-width='2.3'/>"+
+        "<circle cx='68' cy='78' r='8' fill='#FFA000' stroke='#111111' stroke-width='2.3'/>"+
+        "<circle cx='90' cy='78' r='8' fill='#60C020' stroke='#111111' stroke-width='2.3'/>"+
+        "<circle cx='112' cy='78' r='8' fill='#984800' stroke='#111111' stroke-width='2.3'/>"+
+        "<text x='79' y='128' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='19' font-weight='800' fill='#3a2a12'>أَلْوانٌ</text>"+
+        "</g>"+
+        "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
+        // ── الكِتابُ ──
+        "<g clip-path='url(#nnB)'>"+
+        "<rect x='154' y='12' width='134' height='134' fill='#F3FBF0'/>"+
+        "<rect x='186' y='46' width='70' height='58' rx='5' fill='#4A9018'/>"+
+        "<rect x='186' y='46' width='70' height='14' rx='4' fill='#60C020'/>"+
+        "<rect x='186' y='92' width='70' height='12' fill='#356810'/>"+
+        "<rect x='186' y='46' width='70' height='58' rx='5' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
+        "<rect x='186' y='46' width='12' height='58' fill='#356810' stroke='#111111' stroke-width='2.4'/>"+
+        "<path d='M206 66 h38 M206 78 h38 M206 90 h26' stroke='#FFFFC0' stroke-width='3.4' stroke-linecap='round'/>"+
+        "<text x='221' y='128' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='19' font-weight='800' fill='#3a2a12'>كِتابٌ</text>"+
+        "</g>"+
+        "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
+        // ── المِبْراةُ ──
+        "<g clip-path='url(#nnC)'>"+
+        "<rect x='83' y='154' width='134' height='134' fill='#FFF6EC'/>"+
+        "<rect x='124' y='196' width='52' height='40' rx='6' fill='#0080C0'/>"+
+        "<rect x='124' y='196' width='52' height='11' rx='5' fill='#40C0FF'/>"+
+        "<rect x='124' y='226' width='52' height='10' fill='#0060A0'/>"+
+        "<rect x='124' y='196' width='52' height='40' rx='6' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
+        "<path d='M142 204 L158 204 L152 228 L148 228 Z' fill='#C0C0C0' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
+        "<text x='150' y='268' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='19' font-weight='800' fill='#3a2a12'>مِبْراةٌ</text>"+
+        "</g>"+
+        "<rect x='83' y='154' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
+        "</svg>"
+    },
+
+    // ③ الضبطُ — «نَدى» اسمُ بطلةِ جملةِ ص ١٣٥.
+    {
+      type: "tashkeel",
+      objective: "أَنْ يَتَعَرَّفَ إِلى حَرْفِ (ن) وَيَنْطِقَ مَقاطِعَهُ بِحَرَكاتِهِ الثَّلاثِ وَمُدودِهِ",
+      level: "application",
+      prompt: "ضَعِ الْحَرَكَةَ فَوْقَ كُلِّ حَرْفٍ.",
+      word: "نَدى"
+    },
+
+    // ④ بناءُ الكلمة — «ألوان» من صفحةِ «أُلَوِّنُ»، والنونُ في آخرِها.
+    {
+      type: "arrange",
+      objective: "أَنْ يَكْتُبَ الْحَرْفَ وَالْكَلِمَةَ وَيُكْمِلَ بِالْمَقْطَعِ الْمُناسِبِ",
+      level: "application",
+      prompt: "رَتِّبِ الْحُروفَ لِتُكَوِّنَ الْكَلِمَةَ.",
+      word: "ألوان"
+    },
+
+    // ⑤ بناءُ الجملة — جملةُ «أَقْرَأُ مُسْتَعينًا بِالصُّوَرِ» ص ١٣٥ نفسُها.
+    {
+      type: "sentence",
+      objective: "أَنْ يَتَحَدَّثَ بِجُمَلٍ سَليمَةٍ عَنْ مَضْمونِ اللَّوْحَةِ الْمَعْروضَةِ",
+      level: "application",
+      prompt: "رَتِّبِ الْكَلِماتِ لِتُكَوِّنَ جُمْلَةً.",
+      sentence: "لَوَّنَتْ نَدى حَرْفَ نونٍ بِلَوْنٍ بَنَفْسَجِيٍّ"
+    },
+
+    // ⑥ إثرائيّ — تسلسلُ أحداثِ النصِّ كما وردَتْ فيه.
+    {
+      type: "sequence",
+      objective: "أَنْ يُجيبَ عَنْ أَسْئِلَةِ الْفَهْمِ فيما اسْتَمَعَ إِلَيْهِ",
+      level: "reasoning",
+      prompt: "رَتِّبْ أَحْداثَ النَّصِّ.",
+      steps: [
+        "دَخَلْنا غُرْفَةَ صَفِّنا",
+        "أَخَذْنا أَماكِنَنا بِنِظامٍ",
+        "نادَتْني مُعَلِّمَتي",
+        "ناوَلَتْني عُلْبَةَ أَلْوانٍ"
+      ]
+    }
+
   ]
 };
