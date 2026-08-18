@@ -422,8 +422,8 @@ window.DATA_FALLBACK = {
     ]},
     "g1-arabic-2": { book:"أحب لغتي (الجزء الثاني) — الصف الأول", units:[
       { unit:"المحور الثالث: أَنا نَظيفٌ", lessons:[
-        { title:"الدرس الأول: ف", file:"g1a2-3-1", open:false },
-        { title:"الدرس الثاني: ت", file:"g1a2-3-2", open:false },
+        { title:"الدرس الأول: ف", file:"g1a2-3-1", open:true },
+        { title:"الدرس الثاني: ت", file:"g1a2-3-2", open:true },
         { title:"الدرس الثالث: ح", file:"g1a2-3-3", open:false },
         { title:"الدرس الرابع: ق", file:"g1a2-3-4", open:false },
         { title:"الدرس الخامس: ز", file:"g1a2-3-5", open:false },
