@@ -30748,5 +30748,201 @@ window.QUESTIONS = {
       distractors: ["الظَّهيرَةِ", "مُظْلِمَةٍ"]
     }
 
+  ],
+
+  /* ── المراجعةُ: ء ج و ش ع ظ (ج٢ ص ١٦٤–١٦٧) ── */
+  "g1a2-4-7": [
+
+    {
+      type: "letter-picture",
+      objective: "أَنْ يَتَعَرَّفَ إِلى حُروفِ (ء ج و ش ع ظ) وَيَنْطِقَ مَقاطِعَها بِحَرَكاتِها",
+      level: "knowledge",
+      prompt: "صِلْ كُلَّ حَرْفٍ بِصورَةِ كَلِمَتِهِ.",
+      pairs: [
+        { letter: "ء", art: "red", word: "أَرْنَبٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<defs><clipPath id='rbtR'><ellipse cx='48' cy='64' rx='26' ry='20'/></clipPath>"+
+          "<clipPath id='rbtRH'><circle cx='70' cy='42' r='15'/></clipPath></defs>"+
+          "<path d='M60 26 q-6 -22 2 -22 q8 0 6 22 Z' fill='#F1F0EA' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
+          "<path d='M76 26 q6 -22 -2 -22 q-8 0 -6 22 Z' fill='#DCDAD2' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
+          "<g clip-path='url(#rbtR)'>"+
+          "<rect x='0' y='0'  width='100' height='58' fill='#FFFFFF'/>"+
+          "<rect x='0' y='58' width='100' height='12' fill='#F1F0EA'/>"+
+          "<rect x='0' y='70' width='100' height='30' fill='#DCDAD2'/>"+
+          "</g>"+
+          "<ellipse cx='48' cy='64' rx='26' ry='20' fill='none' stroke='#111111' stroke-width='2.6'/>"+
+          "<g clip-path='url(#rbtRH)'><rect x='0' y='0' width='100' height='40' fill='#FFFFFF'/>"+
+          "<rect x='0' y='40' width='100' height='60' fill='#F1F0EA'/></g>"+
+          "<circle cx='70' cy='42' r='15' fill='none' stroke='#111111' stroke-width='2.6'/>"+
+          "</svg>" },
+        { letter: "ج", art: "amber", word: "جُوافَةٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<defs><clipPath id='gvaR'><circle cx='50' cy='58' r='32'/></clipPath></defs>"+
+          "<g clip-path='url(#gvaR)'>"+
+          "<rect x='0' y='0'  width='100' height='42' fill='#80C020'/>"+
+          "<rect x='0' y='42' width='100' height='14' fill='#60C020'/>"+
+          "<rect x='0' y='56' width='100' height='14' fill='#4A9018'/>"+
+          "<rect x='0' y='70' width='100' height='30' fill='#356810'/>"+
+          "</g>"+
+          "<circle cx='50' cy='58' r='32' fill='none' stroke='#111111' stroke-width='2.8'/>"+
+          "<ellipse cx='50' cy='58' rx='16' ry='18' fill='#FF8060' stroke='#111111' stroke-width='2.4'/>"+
+          "<rect x='47' y='18' width='6' height='12' fill='#4A9018' stroke='#111111' stroke-width='2.2'/>"+
+          "</svg>" },
+        { letter: "ش", art: "sky", word: "شَمَنْدَرٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<defs><clipPath id='btrR'><path d='M50 92 q-26 -16 -26 -34 q0 -16 26 -16 q26 0 26 16 q0 18 -26 34 Z'/></clipPath></defs>"+
+          "<g clip-path='url(#btrR)'>"+
+          "<rect x='0' y='0'  width='100' height='52' fill='#E02000'/>"+
+          "<rect x='0' y='52' width='100' height='14' fill='#B01800'/>"+
+          "<rect x='0' y='66' width='100' height='34' fill='#8A1000'/>"+
+          "</g>"+
+          "<path d='M50 92 q-26 -16 -26 -34 q0 -16 26 -16 q26 0 26 16 q0 18 -26 34 Z' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
+          "<path d='M44 44 q-16 -14 -10 -28 q12 4 16 22 Z' fill='#60C020' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
+          "<path d='M56 44 q16 -16 12 -30 q-14 6 -18 24 Z' fill='#4A9018' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
+          "</svg>" },
+        { letter: "ظ", art: "ocean", word: "ظَبْيٌ", svg:
+          "<svg viewBox='0 0 100 100'>"+
+          "<defs><clipPath id='gzlR'><ellipse cx='44' cy='58' rx='24' ry='16'/></clipPath>"+
+          "<clipPath id='gzlRH'><ellipse cx='76' cy='32' rx='11' ry='9'/></clipPath></defs>"+
+          "<rect x='26' y='72' width='7' height='22' rx='3' fill='#9A6636' stroke='#111111' stroke-width='2.2'/>"+
+          "<rect x='52' y='72' width='7' height='22' rx='3' fill='#9A6636' stroke='#111111' stroke-width='2.2'/>"+
+          "<path d='M62 50 Q68 38 74 34' fill='none' stroke='#111111' stroke-width='10' stroke-linecap='round'/>"+
+          "<path d='M62 50 Q68 38 74 34' fill='none' stroke='#B98551' stroke-width='6' stroke-linecap='round'/>"+
+          "<g clip-path='url(#gzlR)'>"+
+          "<rect x='0' y='0'  width='100' height='52' fill='#B98551'/>"+
+          "<rect x='0' y='52' width='100' height='11' fill='#9A6636'/>"+
+          "<rect x='0' y='63' width='100' height='37' fill='#7A4C22'/>"+
+          "</g>"+
+          "<ellipse cx='44' cy='58' rx='24' ry='16' fill='none' stroke='#111111' stroke-width='2.6'/>"+
+          "<g clip-path='url(#gzlRH)'><rect x='0' y='0' width='100' height='30' fill='#B98551'/>"+
+          "<rect x='0' y='30' width='100' height='70' fill='#9A6636'/></g>"+
+          "<ellipse cx='76' cy='32' rx='11' ry='9' fill='none' stroke='#111111' stroke-width='2.5'/>"+
+          "<path d='M70 24 Q66 8 74 4' fill='none' stroke='#111111' stroke-width='5' stroke-linecap='round'/>"+
+          "<path d='M70 24 Q66 8 74 4' fill='none' stroke='#68411D' stroke-width='2.6' stroke-linecap='round'/>"+
+          "<path d='M82 24 Q88 8 82 4' fill='none' stroke='#111111' stroke-width='5' stroke-linecap='round'/>"+
+          "<path d='M82 24 Q88 8 82 4' fill='none' stroke='#68411D' stroke-width='2.6' stroke-linecap='round'/>"+
+          "</svg>" }
+      ]
+    },
+
+    {
+      type: "tashkeel",
+      objective: "أَنْ يَتَعَرَّفَ إِلى حُروفِ (ء ج و ش ع ظ) وَيَنْطِقَ مَقاطِعَها بِحَرَكاتِها",
+      level: "application",
+      prompt: "ضَعِ الْحَرَكَةَ فَوْقَ كُلِّ حَرْفٍ.",
+      word: "مِشْمِش"
+    },
+
+    // «ظَريفَة» من أُحجيةِ المقاطعِ ج٢ ص ١٦٦.
+    {
+      type: "arrange",
+      objective: "أَنْ يَكْتُبَ الْحَرْفَ وَالْكَلِمَةَ وَيُكْمِلَ بِالْمَقْطَعِ الْمُناسِبِ",
+      level: "application",
+      prompt: "رَتِّبِ الْحُروفَ لِتُكَوِّنَ الْكَلِمَةَ.",
+      word: "ظريفة"
+    },
+
+    // نشاطُ ② ج٢ ص ١٦٦ نفسُه: «أُكْمِلُ بِهَمْزَةٍ أَوْ واوٍ أَوْ جيمٍ».
+    // ⚠️ صيغَ `mcq` لا `fill-blank`: الفراغُ **حرفٌ داخلَ كلمةٍ** لا كلمةٌ في جملة،
+    //    و`fill-blank` يقطعُ النصَّ حولَ الفراغِ فتتناثرُ حركةُ الحرفِ التالي وحدَها.
+    {
+      type: "mcq",
+      objective: "أَنْ يَكْتُبَ الْحَرْفَ وَالْكَلِمَةَ وَيُكْمِلَ بِالْمَقْطَعِ الْمُناسِبِ",
+      level: "application",
+      prompt: "بِأَيِّ حَرْفٍ تُكْمِلُ كَلِمَةَ (خَديـ … ـةُ)؟",
+      options: ["ج", "و", "ء"],
+      answer: 0
+    },
+
+    {
+      type: "classify",
+      objective: "أَنْ يَتَعَرَّفَ إِلى حُروفِ (ء ج و ش ع ظ) وَيَنْطِقَ مَقاطِعَها بِحَرَكاتِها",
+      level: "reasoning",
+      prompt: "صَنِّفِ الْكَلِماتِ بِحَسَبِ حَرْفِها الْأَوَّلِ.",
+      groups: [
+        { name: "ج", items: ["جُوافَةٌ"] },
+        { name: "ش", items: ["شَمَنْدَرٌ"] },
+        { name: "ظ", items: ["ظَبْيٌ", "ظَريفَةٌ"] }
+      ]
+    },
+
+    // إثرائيّ — مقاطعُ «الْمَقْطَعُ السّاكِنُ لِلْحَرْفِ» ج٢ ص ١٦٥ بكلماتِها.
+    {
+      type: "memory",
+      objective: "أَنْ يَكْتُبَ الْحَرْفَ وَالْكَلِمَةَ وَيُكْمِلَ بِالْمَقْطَعِ الْمُناسِبِ",
+      level: "reasoning",
+      prompt: "اِقْلِبْ بِطاقَتَيْنِ: صِلْ كُلَّ مَقْطَعٍ بِكَلِمَتِهِ.",
+      pairs: [
+        { a: "فَأْ", b: "فَأْسٌ" },
+        { a: "صَوْ", b: "صَوْتٌ" },
+        { a: "مُظْ", b: "مُظْلِمٌ" }
+      ]
+    }
+
+  ],
+
+  /* ── نشيد: تَوازُنُ الْغِذاءِ (ج٢ ص ١٦٩) · د. محمد فاضل الحمدو (بتصرّف) ── */
+  "g1a2-4-8": [
+
+    {
+      type: "sequence",
+      objective: "أَنْ يَتَحَدَّثَ بِجُمَلٍ سَليمَةٍ عَنْ مَضْمونِ اللَّوْحَةِ الْمَعْروضَةِ",
+      level: "application",
+      prompt: "رَتِّبْ أَبْياتَ النَّشيدِ.",
+      steps: [
+        "تَوازُنُ الْغِذاءِ خَيْرٌ مِنَ الدَّواءِ",
+        "فاكِهَةٌ وَخُضْرَةٌ وَالْبَدْءُ كَأْسُ ماءِ",
+        "وَلِلْحَليبِ دَوْرُهُ في قُوَّةِ الْأَعْضاءِ",
+        "إِنَّ الْغِذاءَ نِعْمَةٌ مِنْ خالِقٍ مِعْطاءِ"
+      ]
+    },
+
+    {
+      type: "matching",
+      objective: "أَنْ يَتَحَدَّثَ بِجُمَلٍ سَليمَةٍ عَنْ مَضْمونِ اللَّوْحَةِ الْمَعْروضَةِ",
+      level: "reasoning",
+      prompt: "صِلْ كُلَّ شَطْرٍ بِتَكْمِلَتِهِ.",
+      pairs: [
+        { a: "تَوازُنُ الْغِذاءِ",   b: "خَيْرٌ مِنَ الدَّواءِ" },
+        { a: "وَلِلْحَليبِ دَوْرُهُ", b: "في قُوَّةِ الْأَعْضاءِ" },
+        { a: "إِنَّ الْغِذاءَ نِعْمَةٌ", b: "مِنْ خالِقٍ مِعْطاءِ" }
+      ]
+    },
+
+    {
+      type: "fill-blank",
+      objective: "أَنْ يَتَحَدَّثَ بِجُمَلٍ سَليمَةٍ عَنْ مَضْمونِ اللَّوْحَةِ الْمَعْروضَةِ",
+      level: "application",
+      prompt: "أَكْمِلِ الشَّطْرَ بِسَحْبِ الْكَلِمَةِ الْمُناسِبَةِ.",
+      text: "تَوازُنُ الْغِذاءِ خَيْرٌ مِنَ {}",
+      answers: ["الدَّواءِ"],
+      distractors: ["الْماءِ", "الْهَواءِ"]
+    },
+
+    {
+      type: "sentence",
+      objective: "أَنْ يَكْتُبَ الْحَرْفَ وَالْكَلِمَةَ وَيُكْمِلَ بِالْمَقْطَعِ الْمُناسِبِ",
+      level: "application",
+      prompt: "رَتِّبِ الْكَلِماتِ لِتُكَوِّنَ شَطْرَ النَّشيدِ.",
+      sentence: "فاكِهَةٌ وَخُضْرَةٌ وَالْبَدْءُ كَأْسُ ماءِ"
+    },
+
+    {
+      type: "mcq",
+      objective: "أَنْ يُجيبَ عَنْ أَسْئِلَةِ الْفَهْمِ فيما اسْتَمَعَ إِلَيْهِ",
+      level: "knowledge",
+      prompt: "بِمَ يَبْدَأُ الطَّعامُ في النَّشيدِ؟",
+      options: ["بِكَأْسِ ماءٍ", "بِالْحَلْوى", "بِالتَّمْرِ"],
+      answer: 0
+    },
+
+    {
+      type: "tashkeel",
+      objective: "أَنْ يَتَعَرَّفَ إِلى حُروفِ (ء ج و ش ع ظ) وَيَنْطِقَ مَقاطِعَها بِحَرَكاتِها",
+      level: "application",
+      prompt: "ضَعِ الْحَرَكَةَ فَوْقَ كُلِّ حَرْفٍ.",
+      word: "غِذاء"
+    }
+
   ]
 };

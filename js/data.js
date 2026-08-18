@@ -438,8 +438,8 @@ window.DATA_FALLBACK = {
         { title:"الدرس الرابع: ش", file:"g1a2-4-4", open:true },
         { title:"الدرس الخامس: ع", file:"g1a2-4-5", open:true },
         { title:"الدرس السادس: ظ", file:"g1a2-4-6", open:true },
-        { title:"المراجعة: ء و ج ش ع ظ", file:"g1a2-4-7", open:false },
-        { title:"نشيد: تَوازُنُ الْغِذاءِ", file:"g1a2-4-8", open:false }
+        { title:"المراجعة: ء و ج ش ع ظ", file:"g1a2-4-7", open:true },
+        { title:"نشيد: تَوازُنُ الْغِذاءِ", file:"g1a2-4-8", open:true }
       ]}
     ]},
     "g2-arabic-1": { book:"أحب لغتي (الجزء الأول) — الصف الثاني", units:[
