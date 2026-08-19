@@ -222,7 +222,7 @@ window.DATA_FALLBACK = {
         { title:"٧-١ التمثيل بعلامات العدّ والأعمدة", file:"g4m-7-1", open:true },
         { title:"٧-٢ التمثيل بالمصوّرات", file:"g4m-7-2", open:true },
         { title:"٨-١ مخططات كارول", file:"g4m-8-1", open:true },
-        { title:"٨-٢ مخططات فن", file:"g4m-8-2", open:false }
+        { title:"٨-٢ مخططات فن", file:"g4m-8-2", open:true }
       ]},
       { unit:"٢أ: العدد وحلّ المشكلات", lessons:[
         { title:"٩-١ العدد العشري في النص", file:"g4m-9-1", open:false },
