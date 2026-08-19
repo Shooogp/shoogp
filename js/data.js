@@ -262,7 +262,7 @@ window.DATA_FALLBACK = {
       ]}
     ]},
     "g4-dini-1": { book:"ديني حياتي (الجزء الأول) — الصف الرابع", units:[
-      { unit:"التلاوة والحفظ", lessons:[ { title:"التلاوة والحفظ", file:"g4d1-0-1", open:false } ]},
+      { unit:"التلاوة والحفظ", lessons:[ { title:"التلاوة والحفظ", file:"g4d1-0-1", open:true } ]},
       { unit:"الوحدة الأولى", lessons:[
         { title:"الدرس الأول: سورة المطفّفين (١–١٧)", file:"g4d1-1-1", open:true },
         { title:"الدرس الثاني: الرِّفق", file:"g4d1-1-2", open:true },
@@ -281,7 +281,7 @@ window.DATA_FALLBACK = {
       ]}
     ]},
     "g4-dini-2": { book:"ديني حياتي (الجزء الثاني) — الصف الرابع", units:[
-      { unit:"التلاوة والحفظ", lessons:[ { title:"التلاوة والحفظ", file:"g4d2-0-1", open:false } ]},
+      { unit:"التلاوة والحفظ", lessons:[ { title:"التلاوة والحفظ", file:"g4d2-0-1", open:true } ]},
       { unit:"الوحدة الثالثة", lessons:[
         { title:"الدرس الأول: سورة الانفطار (٦–١٩)", file:"g4d2-3-1", open:true },
         { title:"الدرس الثاني: المؤمن للمؤمن", file:"g4d2-3-2", open:true },
@@ -490,7 +490,7 @@ window.DATA_FALLBACK = {
     ]},
     "g1-dini-1": { book:"ديني حياتي (الجزء الأول) — الصف الأول", units:[
       { unit:"التلاوة والحفظ", lessons:[
-        { title:"التلاوة والحفظ", file:"g1d1-0-1", open:false }
+        { title:"التلاوة والحفظ", file:"g1d1-0-1", open:true }
       ]},
       { unit:"الوحدة الأولى", lessons:[
         { title:"الدرس الأول: سورة الفاتحة", file:"g1d1-1-1", open:true },
@@ -511,7 +511,7 @@ window.DATA_FALLBACK = {
     ]},
     "g1-dini-2": { book:"ديني حياتي (الجزء الثاني) — الصف الأول", units:[
       { unit:"التلاوة والحفظ", lessons:[
-        { title:"التلاوة والحفظ", file:"g1d2-0-1", open:false }
+        { title:"التلاوة والحفظ", file:"g1d2-0-1", open:true }
       ]},
       { unit:"الوحدة الثالثة", lessons:[
         { title:"الدرس الأول: سورة الفلق", file:"g1d2-3-1", open:true },
@@ -532,7 +532,7 @@ window.DATA_FALLBACK = {
     ]},
     "g2-dini-1": { book:"ديني حياتي (الجزء الأول) — الصف الثاني", units:[
       { unit:"التلاوة والحفظ", lessons:[
-        { title:"التلاوة والحفظ", file:"g2d1-0-1", open:false }
+        { title:"التلاوة والحفظ", file:"g2d1-0-1", open:true }
       ]},
       { unit:"الوحدة الأولى", lessons:[
         { title:"الدرس الأول: أُحبُّكَ ربّي", file:"g2d1-1-1", open:true },
@@ -553,7 +553,7 @@ window.DATA_FALLBACK = {
     ]},
     "g2-dini-2": { book:"ديني حياتي (الجزء الثاني) — الصف الثاني", units:[
       { unit:"التلاوة والحفظ", lessons:[
-        { title:"التلاوة والحفظ", file:"g2d2-0-1", open:false }
+        { title:"التلاوة والحفظ", file:"g2d2-0-1", open:true }
       ]},
       { unit:"الوحدة الثالثة", lessons:[
         { title:"الدرس الأول: سورة العلق", file:"g2d2-3-1", open:true },
@@ -574,7 +574,7 @@ window.DATA_FALLBACK = {
     ]},
     "g3-dini-1": { book:"ديني حياتي (الجزء الأول) — الصف الثالث", units:[
       { unit:"التلاوة والحفظ", lessons:[
-        { title:"التلاوة والحفظ", file:"g3d1-0-1", open:false }
+        { title:"التلاوة والحفظ", file:"g3d1-0-1", open:true }
       ]},
       { unit:"الوحدة الأولى", lessons:[
         { title:"الدرس الأول: سورة البلد", file:"g3d1-1-1", open:true },
@@ -595,7 +595,7 @@ window.DATA_FALLBACK = {
     ]},
     "g3-dini-2": { book:"ديني حياتي (الجزء الثاني) — الصف الثالث", units:[
       { unit:"التلاوة والحفظ", lessons:[
-        { title:"التلاوة والحفظ", file:"g3d2-0-1", open:false }
+        { title:"التلاوة والحفظ", file:"g3d2-0-1", open:true }
       ]},
       { unit:"الوحدة الثالثة", lessons:[
         { title:"الدرس الأول: سورة الفجر (١٧–٣٠)", file:"g3d2-3-1", open:true },
