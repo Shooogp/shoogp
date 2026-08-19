@@ -3241,7 +3241,7 @@ window.QUESTIONS = {
     {
       type: "matching",
       objective: "4Nn3: يفهم ما يمثّله كل رقم في عدد مكوّن من أربعة أرقام، ويجزّئ العدد إلى آلاف ومئات وعشرات وآحاد",
-      level: "knowledge",
+      level: "application",
       prompt: "صِلْ كلَّ عددٍ بتجزئتِهِ الصحيحةِ.",
       pairs: [
         { a: "٢٦٤٨", b: "٢٠٠٠ + ٦٠٠ + ٤٠ + ٨" },
@@ -3315,7 +3315,7 @@ window.QUESTIONS = {
     {
       type: "matching",
       objective: "4Nn9: يقرّب الأعداد من ثلاثة أو أربعة أرقام إلى أقرب ١٠ أو ١٠٠",
-      level: "knowledge",
+      level: "application",
       prompt: "صِلْ كلَّ عددٍ بتقريبِهِ إلى أقربِ عشرةٍ.",
       pairs: [
         { a: "٤٣", b: "٤٠" },
@@ -5505,7 +5505,7 @@ window.QUESTIONS = {
     {
       type: "matching",
       objective: "4Nn13: يستخدم الأعداد السالبة في سياق درجات الحرارة",
-      level: "knowledge",
+      level: "application",
       prompt: "صِلْ كلَّ وصفٍ لدرجةِ الحرارةِ بالعددِ المناسبِ.",
       pairs: [
         { a: "ثلاثُ درجاتٍ فوقَ الصفرِ",  b: "٣" },
@@ -5602,7 +5602,7 @@ window.QUESTIONS = {
     {
       type: "hotspot",
       objective: "4Nn15: يتعرّف إلى الأعداد الفردية والأعداد الزوجية",
-      level: "knowledge",
+      level: "application",
       prompt: "اضغطْ على العددِ الزوجيِّ.",
       bg: "#fdf9ee",
       fit: "width",
