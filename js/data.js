@@ -206,7 +206,7 @@ window.DATA_FALLBACK = {
         { title:"١-٣ الضرب والقسمة على ١٠ و١٠٠", file:"g4m-1-3", open:true },
         { title:"٢-١ الجمع (١)", file:"g4m-2-1", open:true },
         { title:"٢-٢ الطرح (١)", file:"g4m-2-2", open:true },
-        { title:"٢-٣ التجزئة بهدف الجمع والطرح", file:"g4m-2-3", open:false },
+        { title:"٢-٣ التجزئة بهدف الجمع والطرح", file:"g4m-2-3", open:true },
         { title:"٣-١ تعلّم واستخدام حقائق الضرب", file:"g4m-3-1", open:false },
         { title:"٣-٢ استخدام ضعف الأعداد", file:"g4m-3-2", open:false },
         { title:"٣-٣ ضرب عدد من رقمين في عدد من رقم واحد", file:"g4m-3-3", open:false }
