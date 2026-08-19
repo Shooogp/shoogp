@@ -225,7 +225,7 @@ window.DATA_FALLBACK = {
         { title:"٨-٢ مخططات فن", file:"g4m-8-2", open:true }
       ]},
       { unit:"٢أ: العدد وحلّ المشكلات", lessons:[
-        { title:"٩-١ العدد العشري في النص", file:"g4m-9-1", open:false },
+        { title:"٩-١ العدد العشري في النص", file:"g4m-9-1", open:true },
         { title:"٩-٢ الأعداد الموجبة والسالبة", file:"g4m-9-2", open:true },
         { title:"٩-٣ الأعداد الفردية والزوجية", file:"g4m-9-3", open:true },
         { title:"١٠-١ الجمع والطرح لأعداد قريبة من مضاعفات العدد ١٠", file:"g4m-10-1", open:false },
