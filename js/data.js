@@ -216,7 +216,7 @@ window.DATA_FALLBACK = {
         { title:"٥-١ قراءة الوقت (١)", file:"g4m-5-1", open:true },
         { title:"٥-٢ استخدام الجداول الزمنية", file:"g4m-5-2", open:true },
         { title:"٦-١ المساحة (١)", file:"g4m-6-1", open:true },
-        { title:"٦-٢ المحيط (١)", file:"g4m-6-2", open:false }
+        { title:"٦-٢ المحيط (١)", file:"g4m-6-2", open:true }
       ]},
       { unit:"١ج: معالجة البيانات وحلّ المشكلات", lessons:[
         { title:"٧-١ التمثيل بعلامات العدّ والأعمدة", file:"g4m-7-1", open:false },
