@@ -566,7 +566,7 @@
       {
         "unit": "تمهيد",
         "lessons": [
-          { "title": "مراجعة", "file": "g2a1-0-1", "open": false }
+          { "title": "مراجعة", "file": "g2a1-0-1", "open": true }
         ]
       },
       {

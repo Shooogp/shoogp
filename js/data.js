@@ -444,7 +444,7 @@ window.DATA_FALLBACK = {
     ]},
     "g2-arabic-1": { book:"أحب لغتي (الجزء الأول) — الصف الثاني", units:[
       { unit:"تمهيد", lessons:[
-        { title:"مراجعة", file:"g2a1-0-1", open:false }
+        { title:"مراجعة", file:"g2a1-0-1", open:true }
       ]},
       { unit:"المحور الأول: حَياتي", lessons:[
         { title:"الاستماع: أَتَسَوَّقُ مَعَ أُسْرَتي", file:"g2a1-1-1", open:false },
