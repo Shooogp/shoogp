@@ -212,7 +212,7 @@ window.DATA_FALLBACK = {
         { title:"٣-٣ ضرب عدد من رقمين في عدد من رقم واحد", file:"g4m-3-3", open:true }
       ]},
       { unit:"١ب: القياس وحلّ المشكلات", lessons:[
-        { title:"٤-١ قياس الكتلة", file:"g4m-4-1", open:false },
+        { title:"٤-١ قياس الكتلة", file:"g4m-4-1", open:true },
         { title:"٥-١ قراءة الوقت (١)", file:"g4m-5-1", open:false },
         { title:"٥-٢ استخدام الجداول الزمنية", file:"g4m-5-2", open:false },
         { title:"٦-١ المساحة (١)", file:"g4m-6-1", open:false },
