@@ -215,7 +215,7 @@ window.DATA_FALLBACK = {
         { title:"٤-١ قياس الكتلة", file:"g4m-4-1", open:true },
         { title:"٥-١ قراءة الوقت (١)", file:"g4m-5-1", open:true },
         { title:"٥-٢ استخدام الجداول الزمنية", file:"g4m-5-2", open:true },
-        { title:"٦-١ المساحة (١)", file:"g4m-6-1", open:false },
+        { title:"٦-١ المساحة (١)", file:"g4m-6-1", open:true },
         { title:"٦-٢ المحيط (١)", file:"g4m-6-2", open:false }
       ]},
       { unit:"١ج: معالجة البيانات وحلّ المشكلات", lessons:[
