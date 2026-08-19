@@ -447,7 +447,7 @@ window.DATA_FALLBACK = {
         { title:"مراجعة", file:"g2a1-0-1", open:true }
       ]},
       { unit:"المحور الأول: حَياتي", lessons:[
-        { title:"الاستماع: أَتَسَوَّقُ مَعَ أُسْرَتي", file:"g2a1-1-1", open:false },
+        { title:"الاستماع: أَتَسَوَّقُ مَعَ أُسْرَتي", file:"g2a1-1-1", audio:"audio/arabic/g2a1-1-1.mp3", open:true },
         { title:"الدرس الأول: لُعْبَتي", file:"g2a1-1-2", open:true },
         { title:"الدرس الثاني: سَيَكْبُرونَ", file:"g2a1-1-3", open:true },
         { title:"الدرس الثالث: لَيْسَ هَذا ضَعْفًا", file:"g2a1-1-4", open:true },
