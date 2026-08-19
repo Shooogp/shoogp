@@ -664,6 +664,21 @@
   .aplay{background:#f5a04a !important;color:#fff !important;border:none !important;font-size:1.3rem;
     padding:16px 44px;border-radius:40px;min-width:210px;box-shadow:0 4px 12px rgba(0,0,0,.28)}
   .aplay:hover{filter:brightness(1.06)}
+
+  /* ── شريطُ استماعِ الدرس (`#lessonAudio`) — أزرارُ صوتٍ فقط بلا نصٍّ معروض ──
+     يرتدي هويةَ `.aplay` نفسَها فالزرُّ الصوتيُّ واحدٌ في المنصّةِ كلِّها، لكنّه هنا
+     **خارجَ `.qwin`** في الترويسة، ولذلك يبلغُ الحدَّ الأدنى التصميميَّ كاملاً
+     (`78px` ارتفاعاً و`23.5px` خطّاً — `shoogp-ui` §١.٥‑أ): المساحةُ متاحةٌ في الترويسةِ
+     ولا إطارَ يزاحمُه، بخلافِ `.aplay` داخلَ حاويةِ السؤال.
+     ⚠️ و`[hidden]` يحتاجُ `display:none` صريحاً لأنّ `display:flex` يغلبُه. */
+  .lesson-audio{display:flex;justify-content:center;align-items:center;
+    gap:16px;flex-wrap:wrap;margin:0 0 24px}
+  .lesson-audio[hidden]{display:none}
+  .lesson-audio .aplay{min-height:78px;font-size:23.5px;padding:14px 40px;
+    border-radius:999px;min-width:0}
+  /* «من البداية» ثانويٌّ فيتمايزُ لوناً وحجماً — و`!important` واجبٌ لأنّ `.aplay`
+     تُعلِنُ خلفيتَها به. */
+  .lesson-audio .la-again{background:#6f61b8 !important;padding:14px 28px}
   .aopts{display:flex;flex-wrap:wrap;gap:16px;justify-content:center}
   .aopt{background:#FFE0B3;border:3px solid #e0b380;border-radius:18px;padding:12px;cursor:pointer;
     display:flex;flex-direction:column;align-items:center;gap:8px;width:162px;transition:.15s;font-family:'Tajawal'}

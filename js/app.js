@@ -278,8 +278,66 @@ function openLesson(ls){
      (مفتاحُ `data/books.json`) — **لا تُشتَقُّ من اسمِ ملفِّ الدرس**. */
   if(window.ShoogpLock && ShoogpLock.guardLesson(currentBook, ls, DATA.index)) return;
   document.getElementById('lessonTitle').textContent=ls.title;
+  renderLessonAudio(ls);
   renderQuestions(ls);
   showScreen('activityScreen');
+}
+
+/* ═══ شريطُ استماعِ الدرس — نصُّ الاستماعِ في «أحب لغتي» ═══
+   دروسُ الاستماعِ في الكتابِ نصُّها **ليس في كتابِ التلميذ**: يقرؤُه المعلّمُ من دليلِه
+   ثمّ يجيبُ التلميذُ عن أسئلةِ الكتاب. فهذا الشريطُ يُغني عن القراءةِ الحيّة: تضغطُ
+   المعلّمةُ فيسمعُ الصفُّ التسجيلَ ثمّ يحلّون.
+
+   **الصوتُ وحدَه بلا نصٍّ معروض (قرارُ المالك ٢٠٢٦-٠٨-١٩):** الدرسُ درسُ **استماعٍ**،
+   فعرضُ النصِّ مكتوباً يُحوّلُه إلى فهمِ مقروءٍ ويُلغي المهارةَ التي يقيسُها. فلا حقلَ
+   للنصِّ في البياناتِ أصلاً — النصُّ مصدرُ تأليفٍ عندَ المعلّمِ لا بيانٌ في المنصّة.
+
+   **ولماذا الترويسةُ لا جسمُ السؤال:** الأسئلةُ تُعرَضُ **واحداً واحداً** (`.qslides`)،
+   فحقلُ `audio` داخلَ سؤالٍ يغيبُ عن بقيّةِ الأسئلة — والمعلّمةُ تحتاجُ إعادةَ التشغيلِ
+   في أيِّ سؤالٍ كان. وهنا يبقى الشريطُ ظاهراً مع الدرسِ كلِّه.
+   (وحقلُ `audio` على **السؤال** باقٍ كما هو لمقاطعِ الكلمةِ الواحدة — §`renderMcq`.)
+
+   البيانات: `audio` على الدرسِ في `js/data.js`. وغيابُه = لا شريطَ في DOM أصلاً،
+   فكلُّ دروسِ المنصّةِ الأخرى تمرُّ كما كانت حرفاً بحرف. */
+/* ═══ ختمُ نسخةِ ملفِّ الصوت — يُلتقَطُ من وسمِ هذا السكربتِ نفسِه ═══
+   تسجيلُ الدرسِ يُطلَبُ من **JS** لا من وسمٍ في HTML، فلا يمسُّه ختمُ `?v=` الذي
+   يكتبُه النشرُ في وسومِ HTML (‏.github/workflows/pages.yml). والمتصفّحُ يخزّنُ
+   المقطعَ طويلاً، فلو استُبدِلَ تسجيلٌ **بنفسِ اسمِ ملفِّه** بقيَ المعلّمُ يسمعُ
+   القديمَ والنشرُ ناجح — **وهي علّةُ `frame-arabic-tall.png` نفسُها حرفاً بحرف**
+   (‏`CLAUDE.md` §النشرُ وختمُ نسخِ الأصول).
+   والحلُّ نفسُ حلِّها بلا مصدرٍ ثانٍ للحقيقة: نلتقطُ `?v=` من رابطِ `js/app.js`
+   (‏وقد ختمَه النشرُ ببصمةِ النشرة) ونُلحقُه بمسارِ الصوت — نظيرُ `imgURL()` في
+   `js/shoogp-ui.js`. فيتغيّرُ الرابطُ مع كلِّ نشرةٍ تلقائياً بلا ترقيةٍ يدوية،
+   وإن غابَ الوسمُ (فتحٌ محليٌّ بلا ختم) رجعَ الرابطُ نظيفاً كما كان.
+   ⚠️ **يُقرأُ في المستوى العلويِّ لا داخلَ دالّة** — `document.currentScript`
+   لا يصلحُ إلا أثناءَ التنفيذِ الأوّليِّ للسكربت، ويرجعُ `null` بعدَه. */
+const AUDIO_VER=(function(){
+  const src=(document.currentScript && document.currentScript.src)||'';
+  const m=/[?&]v=([^&#]+)/.exec(src);
+  return m ? '?v='+m[1] : '';
+})();
+let lessonSnd=null;
+/* يُنادى عندَ مغادرةِ شاشةِ النشاطِ من مخرجَيها — وإلا استمرَّ نصُّ الاستماعِ يُسمَعُ
+   في صفحةِ الكتبِ بعدَ الخروجِ من الدرس. */
+function stopLessonAudio(){ if(lessonSnd){ try{ lessonSnd.pause(); }catch(e){} } }
+function renderLessonAudio(ls){
+  const bar=document.getElementById('lessonAudio'); if(!bar) return;
+  stopLessonAudio(); lessonSnd=null;
+  bar.innerHTML=''; bar.hidden=true;
+  if(!ls.audio) return;
+  bar.hidden=false;
+  bar.innerHTML=
+    `<button class="btn aplay la-play" type="button">🔊 استماع</button>`+
+    `<button class="btn aplay la-again" type="button">↻ من البداية</button>`;
+  const snd=new Audio(ls.audio+AUDIO_VER); snd.preload='auto'; lessonSnd=snd;
+  const play=bar.querySelector('.la-play');
+  /* المزامنةُ **بأحداثِ المشغّلِ لا بالنقر**: `play()` غيرُ متزامنٍ وقد يُرفَضُ
+     (سياساتُ التشغيلِ التلقائيّ)، فلو كُتِبَ النصُّ عندَ النقرِ لَقالَ «إيقاف» وهو ساكن. */
+  const sync=()=>{ play.textContent = snd.paused ? '🔊 استماع' : '⏸ إيقاف'; };
+  snd.onplay=sync; snd.onpause=sync; snd.onended=sync;
+  const start=()=>{ try{ const p=snd.play(); if(p&&p.catch)p.catch(function(){}); }catch(e){} };
+  play.onclick=()=>{ if(snd.paused) start(); else snd.pause(); };
+  bar.querySelector('.la-again').onclick=()=>{ try{ snd.currentTime=0; }catch(e){} start(); };
 }
 
 function setTheme(name){
@@ -290,8 +348,8 @@ function setTheme(name){
 function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
 // عند مغادرة شاشة النشاط: أزل مسار الصاروخ
 function leaveRocket(){document.body.classList.remove('rocket-mode');if(window.RocketJourney)RocketJourney.unmount();}
-function goHome(){leaveRocket();setTheme('theme-home');showScreen('home');}
-function backToLessons(){leaveRocket();showScreen('lessonsScreen');}
+function goHome(){stopLessonAudio();leaveRocket();setTheme('theme-home');showScreen('home');}
+function backToLessons(){stopLessonAudio();leaveRocket();showScreen('lessonsScreen');}
 
 /* ═══════════════ محرّك الأسئلة الموحّد (خمسة أنواع) ═══════════════ */
 function shuffle(a){return a.map(v=>[Math.random(),v]).sort((x,y)=>x[0]-y[0]).map(v=>v[1]);}
