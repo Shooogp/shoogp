@@ -200,42 +200,38 @@ window.DATA_FALLBACK = {
       ]}
     ]},
     "g4-math": { book:"الرياضيات — الصف الرابع", units:[
-      { unit:"الأعداد ونظام العدّ", lessons:[
-        { title:"قراءة وكتابة وتجزئة الأعداد", file:"g4m-1-1", open:true },
-        { title:"الترتيب والتقريب", file:"g4m-1-2", open:true },
-        { title:"الأعداد الموجبة والسالبة", file:"g4m-1-3", open:true },
-        { title:"الأعداد الفردية والزوجية", file:"g4m-1-4", open:true }
+      { unit:"١أ: العدد وحلّ المشكلات", lessons:[
+        { title:"١-١ قراءة وكتابة وتجزئة الأعداد", file:"g4m-1-1", open:true },
+        { title:"١-٢ ترتيب ومقارنة وتقريب الأعداد المكوّنة من أربعة أرقام", file:"g4m-1-2", open:true },
+        { title:"١-٣ الضرب والقسمة على ١٠ و١٠٠", file:"g4m-1-3", open:false },
+        { title:"٢-١ الجمع (١)", file:"g4m-2-1", open:false },
+        { title:"٢-٢ الطرح (١)", file:"g4m-2-2", open:false },
+        { title:"٢-٣ التجزئة بهدف الجمع والطرح", file:"g4m-2-3", open:false },
+        { title:"٣-١ تعلّم واستخدام حقائق الضرب", file:"g4m-3-1", open:false },
+        { title:"٣-٢ استخدام ضعف الأعداد", file:"g4m-3-2", open:false },
+        { title:"٣-٣ ضرب عدد من رقمين في عدد من رقم واحد", file:"g4m-3-3", open:false }
       ]},
-      { unit:"الجمع والطرح", lessons:[
-        { title:"الجمع (١)", file:"g4m-2-1", open:false },
-        { title:"الطرح (١)", file:"g4m-2-2", open:false },
-        { title:"التجزئة بهدف الجمع والطرح", file:"g4m-2-3", open:false },
-        { title:"جمع وطرح الأعداد القريبة من مضاعفات العشرة", file:"g4m-2-4", open:false },
-        { title:"اختيار الطريقة الأفضل", file:"g4m-2-5", open:false }
+      { unit:"١ب: القياس وحلّ المشكلات", lessons:[
+        { title:"٤-١ قياس الكتلة", file:"g4m-4-1", open:false },
+        { title:"٥-١ قراءة الوقت (١)", file:"g4m-5-1", open:false },
+        { title:"٥-٢ استخدام الجداول الزمنية", file:"g4m-5-2", open:false },
+        { title:"٦-١ المساحة (١)", file:"g4m-6-1", open:false },
+        { title:"٦-٢ المحيط (١)", file:"g4m-6-2", open:false }
       ]},
-      { unit:"الضرب والقسمة", lessons:[
-        { title:"الضرب والقسمة على ١٠ و١٠٠", file:"g4m-3-1", open:false },
-        { title:"تعلّم حقائق الضرب", file:"g4m-3-2", open:false },
-        { title:"استخدام حقائق الضرب", file:"g4m-3-3", open:false },
-        { title:"استقصاء الأنماط", file:"g4m-3-4", open:false },
-        { title:"المضاعفات أو الأمثال", file:"g4m-3-5", open:false },
-        { title:"الضرب", file:"g4m-3-6", open:false },
-        { title:"تدريبات ضرب إضافية", file:"g4m-3-7", open:false },
-        { title:"القسمة", file:"g4m-3-8", open:false }
+      { unit:"١ج: معالجة البيانات وحلّ المشكلات", lessons:[
+        { title:"٧-١ التمثيل بعلامات العدّ والأعمدة", file:"g4m-7-1", open:false },
+        { title:"٧-٢ التمثيل بالمصوّرات", file:"g4m-7-2", open:false },
+        { title:"٨-١ مخططات كارول", file:"g4m-8-1", open:false },
+        { title:"٨-٢ مخططات فن", file:"g4m-8-2", open:false }
       ]},
-      { unit:"القياس", lessons:[
-        { title:"قياس الوزن", file:"g4m-4-1", open:false },
-        { title:"قراءة الوقت (١)", file:"g4m-4-2", open:false },
-        { title:"استخدام الجدول الزمني", file:"g4m-4-3", open:false },
-        { title:"المساحة", file:"g4m-4-4", open:false },
-        { title:"المحيط", file:"g4m-4-5", open:false },
-        { title:"النقود", file:"g4m-4-6", open:false }
-      ]},
-      { unit:"تنظيم البيانات وتمثيلها", lessons:[
-        { title:"التمثيل بعلامات العدّ والأعمدة", file:"g4m-5-1", open:false },
-        { title:"التمثيل بالمصوّرات", file:"g4m-5-2", open:false },
-        { title:"مخططات كارول (١)", file:"g4m-5-3", open:false },
-        { title:"مخططات فِن", file:"g4m-5-4", open:false }
+      { unit:"٢أ: العدد وحلّ المشكلات", lessons:[
+        { title:"٩-١ العدد العشري في النص", file:"g4m-9-1", open:false },
+        { title:"٩-٢ الأعداد الموجبة والسالبة", file:"g4m-9-2", open:true },
+        { title:"٩-٣ الأعداد الفردية والزوجية", file:"g4m-9-3", open:true },
+        { title:"١٠-١ الجمع والطرح لأعداد قريبة من مضاعفات العدد ١٠", file:"g4m-10-1", open:false },
+        { title:"١٠-٢ اختيار الاستراتيجية الأنسب للطرح", file:"g4m-10-2", open:false },
+        { title:"١١-١ تدريبات ضرب إضافية", file:"g4m-11-1", open:false },
+        { title:"١١-٢ قسمة عدد من رقمين على عدد من رقم واحد", file:"g4m-11-2", open:false }
       ]}
     ]},
     "g4-arabic-1": { book:"أحب لغتي (الجزء الأول) — الصف الرابع", units:[
