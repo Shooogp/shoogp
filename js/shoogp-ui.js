@@ -929,7 +929,7 @@ function placeBand(){
   var bot = (nr && nr.height) ? nr.bottom/z + BAND_PAD_V : fr.bottom/z + BAND_PAD_V;
   /* حارسُ الترويسة: لا يعلو الشريطُ على أسفلِ آخرِ عنصرٍ من الترويسةِ الظاهرة */
   var headerBottom=0;
-  ['.back', '.lesson-head', '.screen-sub'].forEach(function(sel){
+  ['.back', '.lesson-head', '.screen-sub', '.lesson-audio'].forEach(function(sel){
     var e=act.querySelector(sel); if(!e) return;
     var r=e.getBoundingClientRect();
     if(r.height && r.bottom/z>headerBottom) headerBottom=r.bottom/z;
