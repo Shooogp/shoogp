@@ -209,7 +209,7 @@ window.DATA_FALLBACK = {
         { title:"٢-٣ التجزئة بهدف الجمع والطرح", file:"g4m-2-3", open:true },
         { title:"٣-١ تعلّم واستخدام حقائق الضرب", file:"g4m-3-1", open:true },
         { title:"٣-٢ استخدام المضاعفات", file:"g4m-3-2", open:true },
-        { title:"٣-٣ ضرب عدد من رقمين في عدد من رقم واحد", file:"g4m-3-3", open:false }
+        { title:"٣-٣ ضرب عدد من رقمين في عدد من رقم واحد", file:"g4m-3-3", open:true }
       ]},
       { unit:"١ب: القياس وحلّ المشكلات", lessons:[
         { title:"٤-١ قياس الكتلة", file:"g4m-4-1", open:false },
