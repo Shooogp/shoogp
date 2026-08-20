@@ -251,7 +251,7 @@ window.DATA_FALLBACK = {
     ]},
     "g4-arabic-2": { book:"أحب لغتي (الجزء الثاني) — الصف الرابع", units:[
       { unit:"المحور الثاني: قصص وعِبَر", lessons:[
-        { title:"استماع: الرسول لا يردّ سائلاً", file:"g4a2-2-1", open:true },
+        { title:"استماع: الرسول لا يردّ سائلاً", file:"g4a2-2-1", audio:"audio/arabic/g4a2-2-1.mp3", open:true },
         { title:"مستند بصري: قراءة غلاف قصة", file:"g4a2-2-2", open:true },
         { title:"الدرس الأول: عُمر يتفقّد الرعيّة", file:"g4a2-2-3", open:true },
         { title:"الدرس الثاني: مُخّ الوَعِل", file:"g4a2-2-4", open:true },
