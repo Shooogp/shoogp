@@ -58,20 +58,20 @@ window.DATA_FALLBACK = {
         { title:"البيئات المحلّية", file:"g1s-1-2", open:true },
         { title:"صغير الإنسان وصغير الحيوان", file:"g1s-1-3", open:true },
         { title:"الطعام والشراب الصحّي", file:"g1s-1-4", open:true },
-        { title:"تحقّق من تقدّمك", file:"g1s-1-5", open:false }
+        { title:"تحقّق من تقدّمك", file:"g1s-1-5", open:true }
       ]},
       { unit:"النباتات", lessons:[
         { title:"أجزاء النبات", file:"g1s-2-1", open:true },
         { title:"زراعة البذور", file:"g1s-2-2", open:true },
         { title:"النبات والضوء", file:"g1s-2-3", open:true },
-        { title:"تحقّق من تقدّمك", file:"g1s-2-4", open:false }
+        { title:"تحقّق من تقدّمك", file:"g1s-2-4", open:true }
       ]},
       { unit:"نحن", lessons:[
         { title:"نحن متشابهون", file:"g1s-3-1", open:true },
         { title:"نحن مختلفون", file:"g1s-3-2", open:true },
         { title:"أجسامنا", file:"g1s-3-3", open:true },
         { title:"حواسّنا الرائعة", file:"g1s-3-4", open:true },
-        { title:"تحقّق من تقدّمك", file:"g1s-3-5", open:false }
+        { title:"تحقّق من تقدّمك", file:"g1s-3-5", open:true }
       ]}
     ]},
     "g2-sci": { book:"العلوم — الصف الثاني", units:[
@@ -80,14 +80,14 @@ window.DATA_FALLBACK = {
         { title:"هل يمكننا العناية ببيئتنا؟", file:"g2s-1-2", open:true },
         { title:"طقسنا", file:"g2s-1-3", open:true },
         { title:"الطقس القاسي", file:"g2s-1-4", open:true },
-        { title:"تحقّق من تقدّمك", file:"g2s-1-5", open:false }
+        { title:"تحقّق من تقدّمك", file:"g2s-1-5", open:true }
       ]},
       { unit:"اكتشاف الصخور", lessons:[
         { title:"ما هي الصخور؟", file:"g2s-2-1", open:true },
         { title:"استخدامات الصخور", file:"g2s-2-2", open:true },
         { title:"التربة", file:"g2s-2-3", open:true },
         { title:"المواد الطبيعية الأخرى", file:"g2s-2-4", open:true },
-        { title:"تحقّق من تقدّمك", file:"g2s-2-5", open:false }
+        { title:"تحقّق من تقدّمك", file:"g2s-2-5", open:true }
       ]},
       { unit:"تغيير المواد", lessons:[
         { title:"تغيير شكل المواد", file:"g2s-3-1", open:false },
@@ -95,7 +95,7 @@ window.DATA_FALLBACK = {
         { title:"المرونة الرائعة", file:"g2s-3-3", open:false },
         { title:"التسخين والتبريد", file:"g2s-3-4", open:false },
         { title:"لماذا تكون مياه البحر مالحة؟", file:"g2s-3-5", open:false },
-        { title:"تحقّق من تقدّمك", file:"g2s-3-6", open:false }
+        { title:"تحقّق من تقدّمك", file:"g2s-3-6", open:true }
       ]}
     ]},
     "g2-math": { book:"الرياضيات — الصف الثاني", units:[
@@ -152,7 +152,7 @@ window.DATA_FALLBACK = {
         { title:"الهياكل العظمية والحركة", file:"g4s-1-4", open:true },
         { title:"العقاقير كأدوية", file:"g4s-1-5", open:true },
         { title:"كيف تعمل الأدوية؟", file:"g4s-1-6", open:true },
-        { title:"تحقّق من تقدّمك", file:"g4s-1-7", open:false }
+        { title:"تحقّق من تقدّمك", file:"g4s-1-7", open:true }
       ]},
       { unit:"الكائنات الحية والبيئات", lessons:[
         { title:"الطيور المُدهشة", file:"g4s-2-1", open:true },
@@ -163,7 +163,7 @@ window.DATA_FALLBACK = {
         { title:"كيف نؤثّر على البيئة؟", file:"g4s-2-6", open:false },
         { title:"الماء الرائع", file:"g4s-2-7", open:false },
         { title:"إعادة التدوير تحمي الأرض", file:"g4s-2-8", open:false },
-        { title:"تحقّق من تقدّمك", file:"g4s-2-9", open:false }
+        { title:"تحقّق من تقدّمك", file:"g4s-2-9", open:true }
       ]},
       { unit:"المواد الصلبة والسائلة والغازية", lessons:[
         { title:"المادة", file:"g4s-3-1", open:true },
@@ -172,7 +172,7 @@ window.DATA_FALLBACK = {
         { title:"الانصهار والتجمّد والغليان", file:"g4s-3-4", open:false },
         { title:"انصهار أنواع مختلفة من المواد الصلبة", file:"g4s-3-5", open:false },
         { title:"درجات الانصهار ودرجات الغليان", file:"g4s-3-6", open:true },
-        { title:"تحقّق من تقدّمك", file:"g4s-3-7", open:false }
+        { title:"تحقّق من تقدّمك", file:"g4s-3-7", open:true }
       ]}
     ]},
     "g3-sci": { book:"العلوم — الصف الثالث", units:[
