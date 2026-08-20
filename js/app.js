@@ -12,12 +12,33 @@ const USE_REAL_COVER = false;
 // تُملأ بعد تحميل البيانات
 let DATA = { terms:{}, index:{} };
 
+/* ═══ ختمُ نسخةِ الأصولِ المطلوبةِ من JS — يُلتقَطُ من وسمِ هذا السكربتِ نفسِه ═══
+   ما يُطلَبُ من **JS** لا من وسمٍ في HTML لا يمسُّه ختمُ `?v=` الذي يكتبُه النشرُ في
+   وسومِ HTML (‏.github/workflows/pages.yml) — فيخزّنُه المتصفّحُ ويعيدُ القديمَ بعدَ
+   نشرةٍ ناجحة. **وهي علّةُ `frame-arabic-tall.png` نفسُها** (`CLAUDE.md` §النشرُ وختمُ
+   نسخِ الأصول)، وعلاجُها نظيرُ `imgURL()` في `js/shoogp-ui.js`: نلتقطُ `?v=` من رابطِ
+   `js/app.js` (وقد ختمَه النشرُ ببصمةِ النشرة) ونُلحقُه بالمسار.
+
+   **ويخدمُ اليومَ أصلَين:**
+   • **`data/index.json` و`data/books.json`** — وهذا **أخطرُهما**: الفهرسُ يحملُ الدروسَ
+     وعناوينَها وحقلَ `audio` وحالةَ الفتح، فتخزينُه يعني أنّ المعلّمةَ **لا ترى درساً
+     جديداً ولا زرَ استماعٍ أُضيفَ** رغمَ نجاحِ النشر — وقد وقعَ فعلاً وشُخِّصَ ٢٠٢٦-٠٨-٢٠.
+   • **تسجيلَ درسِ الاستماع** (`renderLessonAudio`).
+
+   ⚠️ **يُقرأُ في المستوى العلويِّ لا داخلَ دالّة** — `document.currentScript` لا يصلحُ
+   إلا أثناءَ التنفيذِ الأوّليِّ للسكربت، ويرجعُ `null` بعدَه. */
+const ASSET_VER=(function(){
+  const src=(document.currentScript && document.currentScript.src)||'';
+  const m=/[?&]v=([^&#]+)/.exec(src);
+  return m ? '?v='+m[1] : '';
+})();
+
 /* ===== تحميل البيانات (JSON مع نسخة احتياطية) ===== */
 async function loadData(){
   try{
     const [terms, index] = await Promise.all([
-      fetch('data/books.json').then(r=>{ if(!r.ok) throw new Error('http '+r.status); return r.json(); }),
-      fetch('data/index.json').then(r=>{ if(!r.ok) throw new Error('http '+r.status); return r.json(); })
+      fetch('data/books.json'+ASSET_VER).then(r=>{ if(!r.ok) throw new Error('http '+r.status); return r.json(); }),
+      fetch('data/index.json'+ASSET_VER).then(r=>{ if(!r.ok) throw new Error('http '+r.status); return r.json(); })
     ]);
     return { terms, index };
   }catch(e){
@@ -299,23 +320,6 @@ function openLesson(ls){
 
    البيانات: `audio` على الدرسِ في `js/data.js`. وغيابُه = لا شريطَ في DOM أصلاً،
    فكلُّ دروسِ المنصّةِ الأخرى تمرُّ كما كانت حرفاً بحرف. */
-/* ═══ ختمُ نسخةِ ملفِّ الصوت — يُلتقَطُ من وسمِ هذا السكربتِ نفسِه ═══
-   تسجيلُ الدرسِ يُطلَبُ من **JS** لا من وسمٍ في HTML، فلا يمسُّه ختمُ `?v=` الذي
-   يكتبُه النشرُ في وسومِ HTML (‏.github/workflows/pages.yml). والمتصفّحُ يخزّنُ
-   المقطعَ طويلاً، فلو استُبدِلَ تسجيلٌ **بنفسِ اسمِ ملفِّه** بقيَ المعلّمُ يسمعُ
-   القديمَ والنشرُ ناجح — **وهي علّةُ `frame-arabic-tall.png` نفسُها حرفاً بحرف**
-   (‏`CLAUDE.md` §النشرُ وختمُ نسخِ الأصول).
-   والحلُّ نفسُ حلِّها بلا مصدرٍ ثانٍ للحقيقة: نلتقطُ `?v=` من رابطِ `js/app.js`
-   (‏وقد ختمَه النشرُ ببصمةِ النشرة) ونُلحقُه بمسارِ الصوت — نظيرُ `imgURL()` في
-   `js/shoogp-ui.js`. فيتغيّرُ الرابطُ مع كلِّ نشرةٍ تلقائياً بلا ترقيةٍ يدوية،
-   وإن غابَ الوسمُ (فتحٌ محليٌّ بلا ختم) رجعَ الرابطُ نظيفاً كما كان.
-   ⚠️ **يُقرأُ في المستوى العلويِّ لا داخلَ دالّة** — `document.currentScript`
-   لا يصلحُ إلا أثناءَ التنفيذِ الأوّليِّ للسكربت، ويرجعُ `null` بعدَه. */
-const AUDIO_VER=(function(){
-  const src=(document.currentScript && document.currentScript.src)||'';
-  const m=/[?&]v=([^&#]+)/.exec(src);
-  return m ? '?v='+m[1] : '';
-})();
 let lessonSnd=null;
 /* يُنادى عندَ مغادرةِ شاشةِ النشاطِ من مخرجَيها — وإلا استمرَّ نصُّ الاستماعِ يُسمَعُ
    في صفحةِ الكتبِ بعدَ الخروجِ من الدرس. */
@@ -329,7 +333,7 @@ function renderLessonAudio(ls){
   bar.innerHTML=
     `<button class="btn aplay la-play" type="button">🔊 استماع</button>`+
     `<button class="btn aplay la-again" type="button">↻ من البداية</button>`;
-  const snd=new Audio(ls.audio+AUDIO_VER); snd.preload='auto'; lessonSnd=snd;
+  const snd=new Audio(ls.audio+ASSET_VER); snd.preload='auto'; lessonSnd=snd;
   const play=bar.querySelector('.la-play');
   /* المزامنةُ **بأحداثِ المشغّلِ لا بالنقر**: `play()` غيرُ متزامنٍ وقد يُرفَضُ
      (سياساتُ التشغيلِ التلقائيّ)، فلو كُتِبَ النصُّ عندَ النقرِ لَقالَ «إيقاف» وهو ساكن. */
