@@ -239,7 +239,7 @@ window.DATA_FALLBACK = {
         { title:"مها والعصافير", file:"g4a1-0-1", open:true }
       ]},
       { unit:"المحور الأول: في رُبوع وطني", lessons:[
-        { title:"استماع: أجمل مكان في الدنيا", file:"g4a1-1-1", open:true },
+        { title:"استماع: أجمل مكان في الدنيا", file:"g4a1-1-1", audio:"audio/arabic/g4a1-1-1.mp3", open:true },
         { title:"مستند بصري: قراءة شعار", file:"g4a1-1-2", open:true },
         { title:"الدرس الأول: مغامرة إلى قرية (الغَمب)", file:"g4a1-1-3", open:true },
         { title:"الدرس الثاني: خُبز ولَبَن", file:"g4a1-1-4", open:true },
