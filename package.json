@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "cover-color": "node tools/extract-cover-color.mjs",
-    "codes": "node generate-codes.cjs"
+    "codes": "node generate-codes.cjs",
+    "check": "node tools/check-data-sync.mjs"
   },
   "devDependencies": {
     "pdfjs-dist": "^6.2.108",
