@@ -454,7 +454,7 @@ window.DATA_FALLBACK = {
     ]},
     "g2-arabic-2": { book:"أحب لغتي (الجزء الثاني) — الصف الثاني", units:[
       { unit:"المحور الثاني: وَطَني", lessons:[
-        { title:"الاستماع: الذِّكْرَى الْخالِدَةُ", file:"g2a2-2-1", open:false },
+        { title:"الاستماع: الذِّكْرَى الْخالِدَةُ", file:"g2a2-2-1", audio:"audio/arabic/g2a2-2-1.mp3", open:true },
         { title:"الدرس الأول: نورُ تُحِبُّ قَرْيَتَها", file:"g2a2-2-2", open:true },
         { title:"الدرس الثاني: لَيْلَى تَرْسُمُ وَطَنًا", file:"g2a2-2-3", open:true },
         { title:"الدرس الثالث: الْبَحْرُ يَتَّسِعُ لِلْجَميعِ", file:"g2a2-2-4", open:true },
