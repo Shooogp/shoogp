@@ -304,17 +304,14 @@ const CONFIG = {
   PRICE   : 1,            // سعرُ **الكتابِ الواحد** — والمجموعُ يُضرَبُ بعددِ كتبِ السلّة
   ACCOUNT : "91496256",   // ← رقم الحساب أو رقم الهاتف للتحويل
   HOLDER  : "IBRAHIM KHAMIS — بنك مسقط",
-  /* الكتبُ المطروحةُ للبيعِ اليوم. وما عداها من كتبِ `data/books.json` لا يظهرُ
-     في قائمةِ الإضافةِ أصلاً — السلّةُ لا تقبلُ إلا مطروحاً.
-     ⚠️ مفاتيحُ الحزمِ (`g1-din`، `g1-lug`) تُكتَبُ هنا لا مفاتيحُ أجزائِها —
-     فالجزآنِ يُباعانِ كتاباً واحداً (انظر `data/bundles.json`). */
-  ON_SALE : [
-    "g1-sci",  "g2-sci",  "g3-sci",  "g4-sci",
-    "g1-math", "g2-math", "g3-math", "g4-math",
-    "g1-din",  "g2-din",  "g3-din",  "g4-din",
-    "g1-lug",  "g2-lug",  "g3-lug",  "g4-lug"
-  ]
 };
+/* ═══ ما يُطرَحُ للبيعِ لا يُكتَبُ هنا ═══
+   `onSale` يسكنُ البياناتِ نفسَها: `data/books.json` للكتابِ المستقلّ، و
+   `data/bundles.json` للحزمة. فطرحُ كتابٍ أو سحبُه تعديلُ حقلٍ واحدٍ حيثُ
+   يُعرَّفُ الكتابُ أصلاً، لا قائمةٌ ثانيةٌ هنا تُنسى عندَ إضافةِ كتابٍ جديد.
+   ⚠️ **وهو خاصّيةُ الوحدةِ القابلةِ للبيعِ لا خاصّيةُ كلِّ كتاب:** جزءُ الحزمةِ
+   (`g1-dini-1`) **لا يحملُه إطلاقاً** — لا يُباعُ وحدَه، فحالتُه حالةُ حزمتِه.
+   يحرسُ هذه البنيةَ `tools/check-data-sync.mjs`. */
 /* قائمةُ الكتبِ تُقرأُ من `data/books.json` — مصدرُ بطاقاتِ المنصّةِ نفسُه،
    فلا تتفرّقُ نسختانِ ولا يُنسى كتابٌ جديدٌ هنا بعدَ إضافتِه هناك. */
 const BOOKS_URL = "data/books.json";
@@ -363,7 +360,7 @@ function flatten(data){
       (list || []).forEach(b => {
         if (!b || !b.key || seen.has(b.key)) return;
         seen.add(b.key);
-        out.push({ id:b.key, name:bookLabel(b, grade) });
+        out.push({ id:b.key, name:bookLabel(b, grade), onSale:b.onSale === true });
       })));
   return out;
 }
@@ -386,7 +383,8 @@ function collapseBundles(list, bundles){
     if (placed.has(bid)) return;               // جزءٌ تالٍ لحزمةٍ وُضِعت — يُطوى
     placed.add(bid);
     const b = bundles[bid];
-    out.push({ id: bid, name: b.title + " — الصف " + b.grade, members: b.members.slice() });
+    out.push({ id: bid, name: b.title + " — الصف " + b.grade,
+               members: b.members.slice(), onSale: b.onSale === true });
   });
   return out;
 }
@@ -397,6 +395,13 @@ function saleIdOf(key){
   const hit = books.find(b => b.id === key
                            || (b.members && b.members.indexOf(key) !== -1));
   return hit ? hit.id : key;
+}
+
+/* «أمطروحٌ؟» للوحدةِ (كتابٌ مستقلٌّ أو حزمة) — بعدَ الطيّ، فالمُسأَلُ عنه دائماً
+   مفتاحُ وحدةٍ لا مفتاحُ جزء. وغيابُ الوحدةِ = ليس مطروحاً (لا استثناء). */
+function isOnSale(id){
+  const u = books.find(b => b.id === id);
+  return !!(u && u.onSale);
 }
 
 function note(html){ $("cartNote").innerHTML = html ? `<div class="note">${html}</div>` : ""; }
@@ -420,7 +425,7 @@ function render(){
     b.onclick = () => { cart = cart.filter(x => x !== b.dataset.del); afterCartChange(); });
 
   // ③ قائمةُ الإضافة: المطروحُ فقط، وبلا ما في السلّةِ أصلاً
-  const avail = books.filter(b => CONFIG.ON_SALE.includes(b.id) && !cart.includes(b.id));
+  const avail = books.filter(b => b.onSale && !cart.includes(b.id));
   $("addSel").innerHTML = avail.length
     ? avail.map(b => `<option value="${b.id}">${b.name}</option>`).join("")
     : `<option>لا كتبَ أخرى متاحةً الآن</option>`;
@@ -451,7 +456,7 @@ function afterCartChange(){ render(); if (showQR) drawQR(); }
 
 $("addBtn").onclick = () => {
   const id = $("addSel").value;
-  if (!id || cart.includes(id) || !CONFIG.ON_SALE.includes(id)) return;
+  if (!id || cart.includes(id) || !isOnSale(id)) return;
   cart.push(id);
   note("");
   afterCartChange();
@@ -503,7 +508,7 @@ function applyWanted(){
     const id = saleIdOf(raw);          // جزءٌ من حزمةٍ ⇒ مفتاحُ الحزمة
     const b = books.find(x => x.id === id);
     if (!b) { unknown.push(raw); return; }
-    if (!CONFIG.ON_SALE.includes(id)) { soon.push(b.name); return; }
+    if (!b.onSale) { soon.push(b.name); return; }
     if (!cart.includes(id)) cart.push(id);
   });
   if (cart.length) pinned = cart[0];

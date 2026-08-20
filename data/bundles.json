@@ -2,6 +2,7 @@
   "g1-din": {
     "title": "ديني حياتي",
     "grade": "الأول",
+    "onSale": true,
     "members": [
       "g1-dini-1",
       "g1-dini-2"
@@ -10,6 +11,7 @@
   "g1-lug": {
     "title": "أحب لغتي",
     "grade": "الأول",
+    "onSale": true,
     "members": [
       "g1-arabic-1",
       "g1-arabic-2"
@@ -18,6 +20,7 @@
   "g2-din": {
     "title": "ديني حياتي",
     "grade": "الثاني",
+    "onSale": true,
     "members": [
       "g2-dini-1",
       "g2-dini-2"
@@ -26,6 +29,7 @@
   "g2-lug": {
     "title": "أحب لغتي",
     "grade": "الثاني",
+    "onSale": true,
     "members": [
       "g2-arabic-1",
       "g2-arabic-2"
@@ -34,6 +38,7 @@
   "g3-din": {
     "title": "ديني حياتي",
     "grade": "الثالث",
+    "onSale": true,
     "members": [
       "g3-dini-1",
       "g3-dini-2"
@@ -42,6 +47,7 @@
   "g3-lug": {
     "title": "أحب لغتي",
     "grade": "الثالث",
+    "onSale": true,
     "members": [
       "g3-arabic-1",
       "g3-arabic-2"
@@ -50,6 +56,7 @@
   "g4-din": {
     "title": "ديني حياتي",
     "grade": "الرابع",
+    "onSale": true,
     "members": [
       "g4-dini-1",
       "g4-dini-2"
@@ -58,6 +65,7 @@
   "g4-lug": {
     "title": "أحب لغتي",
     "grade": "الرابع",
+    "onSale": true,
     "members": [
       "g4-arabic-1",
       "g4-arabic-2"

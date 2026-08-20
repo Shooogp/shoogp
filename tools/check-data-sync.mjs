@@ -17,18 +17,23 @@
       فهما نسختانِ لبياناتٍ واحدةٍ يجبُ ألّا تتفرّقا.
    ② **أعضاءُ الحزم** — كلُّ عضوٍ في `data/bundles.json` له كتابٌ في
       `books.json`. عضوٌ بمفتاحٍ خاطئٍ يجعلُ الحزمةَ تُفتَحُ ناقصةً بعدَ الشراء.
-   ③ **قائمةُ المطروحِ للبيع** — كلُّ مفتاحٍ في `ON_SALE` بـ`pay.html` يُحَلُّ
-      إلى كتابٍ أو حزمة. مفتاحٌ لا يُحَلُّ يختفي من السلّةِ صامتاً، فتدفعُ
-      المعلّمةُ ولا تجدُ ما اشترتْ — وهذا الملفُّ هو الموضعُ الوحيدُ لقائمةِ
-      المطروحِ عمداً (‏`js/unlock.js` §كتلةُ الشراء)، فلا رقيبَ عليه سواه.
+   ③ **بنيةُ `onSale`** — وهو خاصّيةُ **الوحدةِ القابلةِ للبيعِ** لا خاصّيةُ كلِّ
+      كتاب، فتُفحَصُ البنيةُ لا القيمُ وحدَها:
+      • **الكتابُ المستقلُّ** (لا حزمةَ له) يحملُ `onSale` صريحاً — وغيابُه
+        يُقرَأُ `false` وقتَ التشغيل، فبلا هذا الفحصِ يُنشَرُ كتابٌ جديدٌ
+        **صامتاً غيرَ قابلٍ للبيعِ** ولا يُكتشَفُ إلا حينَ تسألُ معلّمةٌ عن زرٍّ
+        لا يعمل.
+      • **جزءُ الحزمةِ لا يحملُه إطلاقاً** — لا يُباعُ وحدَه، فحقلٌ فيه ادّعاءٌ
+        كاذبٌ ومصدرُ انحرافٍ (الحزمةُ `true` والجزءُ `false`، فأيُّهما يُصدَّق؟).
+      • **الحزمةُ** تحملُه صريحاً في `data/bundles.json`.
+      • وقيمتُه في `books.json` = قيمتُه في `js/data.js` — وانحرافُها أخطرُ من
+        غيرِه: كتابٌ يُباعُ لزائرٍ ولا يُباعُ لآخرَ بحسبِ كيفيةِ فتحِه للموقع.
+      • ولا تبقى في `pay.html` قائمةُ `ON_SALE` ثابتة — وجودُها ارتدادٌ إلى
+        مصدرَينِ للحقيقةِ الواحدة.
 
    ⚠️ ولا يُفحَصُ **ترتيبُ** الكتبِ ولا بقيّةُ حقولِها (اللونُ والغلافُ والشارة):
    الترتيبُ ترتيبُ عرضٍ لا صحّة، وبقيّةُ الحقولِ انحرافُها يُرى بالعينِ فوراً.
-
-   ⚠️ **ولا حقلَ `onSale` في البيانات** — قُصِدَ ذلك: قائمةُ المطروحِ تسكنُ
-   `pay.html` وحدَها، و`js/unlock.js` **لا يقرؤها** فيُظهرُ رابطَي الشراءِ لكلِّ
-   الكتبِ وصفحةُ الدفعِ وحدَها تقولُ «مطروحٌ» أو «قريباً». والفحصُ ③ يحرسُ هذا
-   التصميمَ لا يستبدلُه.
+   أمّا `onSale` فلا أثرَ له يُرى حتى تُنقَرَ شارةُ القفل.
    ═══════════════════════════════════════════════════════════════════ */
 import { readFileSync } from 'node:fs';
 
@@ -94,32 +99,55 @@ for (const [id, b] of Object.entries(bundles || {})) {
   }
 }
 
-/* ③ قائمةُ المطروحِ في pay.html: تُقرأُ نصّاً لا بتنفيذِ الصفحة (‏`ON_SALE : [ … ]`).
-   إن تغيّرت صياغةُ الإعلانِ فلن يُعثَرَ عليها — وذلك خطأٌ يُبلَّغُ عنه، لا يُتجاوَز. */
-const payText  = readFileSync(PAY, 'utf8');
-const onSaleRe = /ON_SALE\s*:\s*\[([\s\S]*?)\]/;
-const m = payText.match(onSaleRe);
-if (!m) {
-  errors.push(`${PAY}: لم يُعثَرْ على إعلانِ ON_SALE — أتغيّرت صياغتُه؟`);
-} else {
-  const saleIds = [...m[1].matchAll(/"([^"]+)"/g)].map(x => x[1]);
-  if (!saleIds.length) errors.push(`${PAY}: قائمةُ ON_SALE فارغة`);
-  const seen = new Set();
-  for (const id of saleIds) {
-    if (seen.has(id)) errors.push(`${PAY}: مفتاحٌ مكرّرٌ في ON_SALE — ${id}`);
-    seen.add(id);
-    if (!bookKeys.has(id) && !Object.hasOwn(bundles || {}, id)) {
-      errors.push(`${PAY}: ON_SALE فيه «${id}» ولا كتابَ بهذا المفتاحِ ولا حزمة`);
+/* ③ بنيةُ onSale. الوحدةُ القابلةُ للبيع = كتابٌ مستقلٌّ أو حزمة؛ وجزءُ
+   الحزمةِ ليس وحدةً فلا يحملُ الحقل. */
+const memberKeys = new Set(
+  Object.values(bundles || {}).flatMap(b => (b && b.members) || [])
+);
+
+for (const [path, b] of books) {
+  const f = fallback.get(path);
+  if (memberKeys.has(b.key)) {
+    if ('onSale' in b) {
+      errors.push(`${BOOKS}: «${path}» جزءُ حزمةٍ ولا يُباعُ وحدَه، فلا يحملُ onSale`);
     }
+    if (f && 'onSale' in f) {
+      errors.push(`${FALLBACK}: «${path}» جزءُ حزمةٍ ولا يُباعُ وحدَه، فلا يحملُ onSale`);
+    }
+    continue;
   }
+  if (typeof b.onSale !== 'boolean') {
+    errors.push(`${BOOKS}: «${path}» كتابٌ مستقلٌّ بلا حقلِ onSale صريح (true/false)`);
+  }
+  if (!f) continue;                        // بُلِّغَ عنه في ① فلا يُكرَّر
+  if (typeof f.onSale !== 'boolean') {
+    errors.push(`${FALLBACK}: «${path}» كتابٌ مستقلٌّ بلا حقلِ onSale صريح (true/false)`);
+  } else if (b.onSale !== f.onSale) {
+    errors.push(`onSale مختلف — ${path}: ${BOOKS}=${b.onSale} · ${FALLBACK}=${f.onSale}`);
+  }
+}
+
+for (const [id, b] of Object.entries(bundles || {})) {
+  if (typeof (b || {}).onSale !== 'boolean') {
+    errors.push(`${BUNDLES}: الحزمةُ «${id}» بلا حقلِ onSale صريح (true/false)`);
+  }
+}
+
+/* ولا ترتدُّ `pay.html` إلى قائمةٍ ثابتة. */
+if (/ON_SALE\s*:/.test(readFileSync(PAY, 'utf8'))) {
+  errors.push(`${PAY}: عادت قائمةُ ON_SALE الثابتة — المصدرُ هو onSale في البيانات`);
 }
 
 if (errors.length) {
   console.error(`\n✗ انحرافٌ في بياناتِ الكتبِ والبيع (${errors.length}):\n`);
   errors.forEach(e => console.error('  • ' + e));
-  console.error(`\nالعلاج: طابِقِ الملفّاتِ — ${BOOKS} و${FALLBACK} بنفسِ المفاتيح،\nوأعضاءُ ${BUNDLES} ومفاتيحُ ON_SALE في ${PAY} كلُّها موجودةٌ فعلاً.\n`);
+  console.error(`\nالعلاج: طابِقِ الملفّاتِ — ${BOOKS} و${FALLBACK} بنفسِ المفاتيح،\nوأعضاءُ ${BUNDLES} موجودةٌ فعلاً، وonSale على الوحداتِ القابلةِ للبيعِ وحدَها.\n`);
   process.exit(1);
 }
 
-const nBundles = Object.keys(bundles || {}).length;
-console.log(`✓ البياناتُ متماسكة — ${books.size} كتاباً في الملفَّين، ${nBundles} حزمةً بأعضاءٍ صحيحة، وقائمةُ ON_SALE كلُّها تُحَلّ.`);
+const nBundles   = Object.keys(bundles || {}).length;
+const standalone = [...books.values()].filter(b => !memberKeys.has(b.key));
+const forSale    = standalone.filter(b => b.onSale).length
+                 + Object.values(bundles || {}).filter(b => b.onSale).length;
+console.log(`✓ البياناتُ متماسكة — ${books.size} كتاباً في الملفَّين، ${nBundles} حزمةً بأعضاءٍ صحيحة،`);
+console.log(`  و${standalone.length + nBundles} وحدةً قابلةً للبيعِ منها ${forSale} مطروحةٌ اليوم.`);
