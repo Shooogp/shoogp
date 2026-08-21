@@ -997,6 +997,17 @@ function renderSequence(q, body, fb){
   body.querySelector('.btn-reset').onclick=()=>renderSequence(q,body,fb);
 }
 
+/* وجهُ البطاقةِ في التصنيفِ والاستبعاد: نصٌّ خامٌّ افتراضاً، و**رسمٌ فوقَ الكلمة**
+   حين يحملُ السؤالُ `pics: true` ويكونُ للكلمةِ رسمٌ في سِجِلِّ `js/qpics.js`.
+   الكلمةُ التي لا رسمَ لها تبقى نصّاً — فالسِّجِلُّ الناقصُ لا يكسرُ سؤالاً.
+   العلّةُ التربوية: تلميذُ الصفَّينِ الأولِ والثاني لَمّا يُتقنِ القراءة، فالكلمةُ
+   وحدَها تُحوّلُ سؤالَ العلومِ إلى اختبارِ قراءة (التفصيلُ في رأسِ `qpics.js`). */
+function qFace(q, w){
+  const p = (q && q.pics && window.qPic) ? window.qPic(w) : '';
+  return p ? { cls:' haspic', html:`<span class="qpic">${p}</span><span class="qpic-t">${w}</span>` }
+           : { cls:'',        html:w };
+}
+
 /* ⑦ التصنيف في مجموعات (classify): groups[{name, items[]}] — سحب العناصر إلى صندوق مجموعتها
    (صناديق المجموعات جنباً إلى جنب، بلا صورة/خطوط؛ سحب فأرة + لمس للسبورة) */
 function renderClassify(q, body, fb){
@@ -1007,7 +1018,7 @@ function renderClassify(q, body, fb){
     `<div class="grp"><div class="grp-h">${g.name}</div><div class="grp-drop" data-i="${i}" data-name="${g.name}"></div></div>`).join('');
   body.innerHTML=`<div class="classify"><div class="grp-row">${groupsHtml}</div>`+
     `<div class="bank clsbank"><div class="bt">العناصر:</div><div class="chips">`+
-    all.map(w=>`<div class="chip" draggable="true" data-w="${w}">${w}</div>`).join('')+
+    all.map(w=>{const f=qFace(q,w);return `<div class="chip${f.cls}" draggable="true" data-w="${w}">${f.html}</div>`;}).join('')+
     `</div></div></div>`+
     `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
   let dragged=null;
@@ -1331,7 +1342,7 @@ function renderFillBlank(q, body, fb){
    reason (اختياري): سبب عدم انتماء الدخيل، يُعرض عند الإجابة الصحيحة. الخيارات تُخلط تلقائياً */
 function renderExclude(q, body, fb){
   const opts=shuffle(q.options.map((o,idx)=>({o,idx})));
-  body.innerHTML=`<div class="excl">`+opts.map(x=>`<button class="excl-opt" data-i="${x.idx}">${x.o}</button>`).join('')+`</div>`;
+  body.innerHTML=`<div class="excl">`+opts.map(x=>{const f=qFace(q,x.o);return `<button class="excl-opt${f.cls}" data-i="${x.idx}">${f.html}</button>`;}).join('')+`</div>`;
   let done=false;
   body.querySelectorAll('.excl-opt').forEach(btn=>{btn.onclick=()=>{
     if(done)return;

@@ -640,6 +640,18 @@
   padding:12px 20px !important;
   display:inline-flex; align-items:center; justify-content:center;
 }
+/* ⟡ بطاقةُ الرسمِ (`pics: true` في التصنيفِ والاستبعاد): عمودٌ لا سطر — الرسمُ فوقَ
+   الكلمة. تكسرُ توسيطَ السطرِ أعلاه وحشوتَه، ويتقلّصُ الرسمُ مع مقياسِ المحتوى `--s`
+   كسائرِ نصوصِ الإطارِ فلا يخرقُ نظامَ المقياس، بأرضيةِ ‎42px‎ كي يبقى مقروءاً على
+   السبورةِ في أضيقِ منفَذ. والكلمةُ ترثُ قياسَ البطاقةِ مضروباً في ‎0.88‎ (`style.css`). */
+.qwin :is(.chip,.excl-opt).haspic{
+  flex-direction:column !important; align-items:center; justify-content:center;
+  padding:10px 12px !important; gap:5px;
+}
+.qwin .qpic{
+  width:max(42px, calc(64px * var(--s)));
+  height:max(42px, calc(64px * var(--s)));
+}
 .qwin .chip.ok::before, .qwin .chip.no::before{content:none}  /* بلا علامات نصية — نكتفي باللون */
 
 /* ⟡ تحويم/لمس: تفتيح طفيف مع رفع بسيط */
@@ -946,6 +958,10 @@
   padding:12px 22px !important; cursor:grab;
   display:inline-flex;                     /* تبقى بعرضِ نصِّها داخلَ صفِّ البطاقات */
 }
+/* بطاقةُ الرسمِ (`haspic`): حشوةٌ جانبيةٌ أضيقُ من النصّية. البطاقةُ صارت **عموداً**
+   (رسمٌ فوقَ كلمة)، والحشوةُ العريضةُ ‎22px‎ المعايَرةُ على سطرٍ واحدٍ تُدوّرُها قرصاً
+   فتزحمُ حافّتُه ذيلَ الكلمةِ أسفلَها. تُقاسُ ‎(0,5,0)‎ فتغلبُ قاعدةَ النصِّ أعلاه. */
+.shoogp-ui.skin-rocky .qwin :is(.chip,.excl-opt).haspic{padding:10px 14px 12px !important}
 .shoogp-ui.skin-rocky .qwin .chip.used{opacity:.35; cursor:default}
 .shoogp-ui.skin-rocky .qwin .chip.dragging{
   cursor:grabbing;

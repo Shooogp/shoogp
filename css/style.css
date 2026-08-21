@@ -651,6 +651,17 @@
   .excl{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;max-width:640px;margin:0 auto}
   .excl-opt{min-width:150px;text-align:center;background:#FFE0B3;border:2px solid #e0b380;border-radius:16px;
     padding:20px 26px;cursor:pointer;font-family:'Tajawal';font-weight:700;color:#4a3a10;font-size:1.15rem;transition:.15s}
+  /* بطاقةٌ برسمٍ فوقَ الكلمة (`pics: true` في التصنيفِ والاستبعاد — `js/qpics.js`):
+     الرسمُ يقودُ والكلمةُ تسنُد، فيقرأُ تلميذُ الحلقةِ الأولى السؤالَ بعينِه لا بحرفِه.
+     الحشوةُ أضيقُ من نظيرتِها النصّيةِ لأنّ الارتفاعَ صارَ سطرَينِ لا سطراً — وسَعةُ
+     إطارِ السؤالِ محدودة (قاعدةُ فحصِ الإطارِ في `CLAUDE.md`). */
+  .chip.haspic,.excl-opt.haspic{
+    display:flex;flex-direction:column;align-items:center;gap:5px;
+    padding:10px 12px;line-height:1.2;min-width:96px}
+  .qpic{display:block;width:60px;height:60px;flex:0 0 auto}
+  .qpic svg{width:100%;height:100%;display:block}
+  .qpic-t{font-size:.88em;font-weight:700}
+
   .excl-opt:hover:not(:disabled){background:#ffd39a}
   .excl-opt:disabled{cursor:default;opacity:.9}
   .excl-opt.correct{background:#a7c957;color:#20340a;border-color:#82a83e}
