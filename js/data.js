@@ -90,11 +90,11 @@ window.DATA_FALLBACK = {
         { title:"تحقّق من تقدّمك", file:"g2s-2-5", open:true }
       ]},
       { unit:"تغيير المواد", lessons:[
-        { title:"تغيير شكل المواد", file:"g2s-3-1", open:false },
-        { title:"الثَّني واللَّيّ", file:"g2s-3-2", open:false },
-        { title:"المرونة الرائعة", file:"g2s-3-3", open:false },
-        { title:"التسخين والتبريد", file:"g2s-3-4", open:false },
-        { title:"لماذا تكون مياه البحر مالحة؟", file:"g2s-3-5", open:false },
+        { title:"تغيير شكل المواد", file:"g2s-3-1", open:true },
+        { title:"الثَّني واللَّيّ", file:"g2s-3-2", open:true },
+        { title:"المرونة الرائعة", file:"g2s-3-3", open:true },
+        { title:"التسخين والتبريد", file:"g2s-3-4", open:true },
+        { title:"لماذا تكون مياه البحر مالحة؟", file:"g2s-3-5", open:true },
         { title:"تحقّق من تقدّمك", file:"g2s-3-6", open:true }
       ]}
     ]},
@@ -156,21 +156,21 @@ window.DATA_FALLBACK = {
       ]},
       { unit:"الكائنات الحية والبيئات", lessons:[
         { title:"الطيور المُدهشة", file:"g4s-2-1", open:true },
-        { title:"موطن الحلزون", file:"g4s-2-2", open:false },
+        { title:"موطن الحلزون", file:"g4s-2-2", open:true },
         { title:"الحيوانات في المواطن الطبيعية", file:"g4s-2-3", open:true },
         { title:"المفاتيح التعريفية", file:"g4s-2-4", open:true },
         { title:"تمييز الحيوانات اللافقارية", file:"g4s-2-5", open:true },
-        { title:"كيف نؤثّر على البيئة؟", file:"g4s-2-6", open:false },
-        { title:"الماء الرائع", file:"g4s-2-7", open:false },
-        { title:"إعادة التدوير تحمي الأرض", file:"g4s-2-8", open:false },
+        { title:"كيف نؤثّر على البيئة؟", file:"g4s-2-6", open:true },
+        { title:"الماء الرائع", file:"g4s-2-7", open:true },
+        { title:"إعادة التدوير تحمي الأرض", file:"g4s-2-8", open:true },
         { title:"تحقّق من تقدّمك", file:"g4s-2-9", open:true }
       ]},
       { unit:"المواد الصلبة والسائلة والغازية", lessons:[
         { title:"المادة", file:"g4s-3-1", open:true },
-        { title:"المادة تتكوّن من جُزيئات", file:"g4s-3-2", open:false },
-        { title:"كيف تختلف المواد الصلبة والسائلة والغازية؟", file:"g4s-3-3", open:false },
-        { title:"الانصهار والتجمّد والغليان", file:"g4s-3-4", open:false },
-        { title:"انصهار أنواع مختلفة من المواد الصلبة", file:"g4s-3-5", open:false },
+        { title:"المادة تتكوّن من جُزيئات", file:"g4s-3-2", open:true },
+        { title:"كيف تختلف المواد الصلبة والسائلة والغازية؟", file:"g4s-3-3", open:true },
+        { title:"الانصهار والتجمّد والغليان", file:"g4s-3-4", open:true },
+        { title:"انصهار أنواع مختلفة من المواد الصلبة", file:"g4s-3-5", open:true },
         { title:"درجات الانصهار ودرجات الغليان", file:"g4s-3-6", open:true },
         { title:"تحقّق من تقدّمك", file:"g4s-3-7", open:true }
       ]}
@@ -245,8 +245,8 @@ window.DATA_FALLBACK = {
         { title:"الدرس الثاني: خُبز ولَبَن", file:"g4a1-1-4", open:true },
         { title:"الدرس الثالث: بلادي عُمان", file:"g4a1-1-5", open:true },
         { title:"أنشد وأحفظ: بني وطني", file:"g4a1-1-6", open:true },
-        { title:"قراءة حرّة: بين رفوف مكتبتي", file:"g4a1-1-7", open:false },
-        { title:"أُقيّم أدائي", file:"g4a1-1-8", open:false }
+        { title:"قراءة حرّة: بين رفوف مكتبتي", file:"g4a1-1-7", open:false, bookOnly:true },
+        { title:"أُقيّم أدائي", file:"g4a1-1-8", open:false, bookOnly:true }
       ]}
     ]},
     "g4-arabic-2": { book:"أحب لغتي (الجزء الثاني) — الصف الرابع", units:[
@@ -257,8 +257,8 @@ window.DATA_FALLBACK = {
         { title:"الدرس الثاني: مُخّ الوَعِل", file:"g4a2-2-4", open:true },
         { title:"الدرس الثالث: نصيحة أب", file:"g4a2-2-5", open:true },
         { title:"أتلو وأحفظ: من سورة القلم", file:"g4a2-2-6", open:true },
-        { title:"قراءة حرّة", file:"g4a2-2-7", open:false },
-        { title:"أُقيّم أدائي", file:"g4a2-2-8", open:false }
+        { title:"قراءة حرّة", file:"g4a2-2-7", open:false, bookOnly:true },
+        { title:"أُقيّم أدائي", file:"g4a2-2-8", open:false, bookOnly:true }
       ]}
     ]},
     "g4-dini-1": { book:"ديني حياتي (الجزء الأول) — الصف الرابع", units:[
@@ -449,7 +449,7 @@ window.DATA_FALLBACK = {
         { title:"الدرس الثالث: لَيْسَ هَذا ضَعْفًا", file:"g2a1-1-4", open:true },
         { title:"أُنْشِدُ وأَحْفَظُ: صَباحُ الْخَيْرِ", file:"g2a1-1-5", open:true },
         { title:"مراجعة المحور: مِفْتاحُ الْقِراءَةِ", file:"g2a1-1-6", open:true },
-        { title:"قِصَّةٌ أَعْجَبَتْني", file:"g2a1-1-7", open:false }
+        { title:"قِصَّةٌ أَعْجَبَتْني", file:"g2a1-1-7", open:false, bookOnly:true }
       ]}
     ]},
     "g2-arabic-2": { book:"أحب لغتي (الجزء الثاني) — الصف الثاني", units:[
@@ -460,7 +460,7 @@ window.DATA_FALLBACK = {
         { title:"الدرس الثالث: الْبَحْرُ يَتَّسِعُ لِلْجَميعِ", file:"g2a2-2-4", open:true },
         { title:"أُنْشِدُ وأَحْفَظُ: أَزْهارُ الْخَمائِلِ", file:"g2a2-2-5", open:true },
         { title:"مراجعة المحور: ضِياءٌ في الْفَضاءِ", file:"g2a2-2-6", open:true },
-        { title:"قِصَّةٌ أَعْجَبَتْني", file:"g2a2-2-7", open:false }
+        { title:"قِصَّةٌ أَعْجَبَتْني", file:"g2a2-2-7", open:false, bookOnly:true }
       ]}
     ]},
     "g3-arabic-1": { book:"أحب لغتي (الجزء الأول) — الصف الثالث", units:[
@@ -474,7 +474,7 @@ window.DATA_FALLBACK = {
         { title:"الدرس الثاني: حَلوى لأبي", file:"g3a1-1-4", open:true },
         { title:"الدرس الثالث: رِفاق المَجد", file:"g3a1-1-5", open:true },
         { title:"أنشد وأحفظ: أنا أحبُّ جاري", file:"g3a1-1-6", open:true },
-        { title:"أُقيّم أدائي", file:"g3a1-1-7", open:false }
+        { title:"أُقيّم أدائي", file:"g3a1-1-7", open:false, bookOnly:true }
       ]}
     ]},
     "g3-arabic-2": { book:"أحب لغتي (الجزء الثاني) — الصف الثالث", units:[
@@ -485,7 +485,7 @@ window.DATA_FALLBACK = {
         { title:"الدرس الثاني: قصّة وَرَقة", file:"g3a2-2-4", open:true },
         { title:"الدرس الثالث: حاسوب", file:"g3a2-2-5", open:true },
         { title:"أنشد وأحفظ: مَجد القلم", file:"g3a2-2-6", open:true },
-        { title:"أُقيّم أدائي", file:"g3a2-2-7", open:false }
+        { title:"أُقيّم أدائي", file:"g3a2-2-7", open:false, bookOnly:true }
       ]}
     ]},
     "g1-dini-1": { book:"ديني حياتي (الجزء الأول) — الصف الأول", units:[

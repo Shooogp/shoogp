@@ -225,15 +225,22 @@ function openBook(key){
 
     u.lessons.forEach(ls=>{
       n++;
-      /* قفلانِ مختلفانِ لا يُخلَطان:
-         • `!ls.open`  = الدرسُ لم يُؤلَّفْ بعد ⇒ باهتٌ وميّت، ولا يفتحُه رمزٌ (يبقى كما هو).
+      /* ثلاثُ حالاتٍ لا تُخلَط:
+         • `ls.bookOnly` = مدخلٌ **في الكتابِ بلا نشاطٍ رقميّ** ولن يُؤلَّفَ أبداً
+           (تقويمٌ ذاتيٌّ بلا جوابٍ صحيح، أو قراءةٌ حرّةٌ يختارُ التلميذُ كتابَها)
+           ⇒ **📖 لا 🔒**، فلا يُقرأُ «اشترِ لتفتح» ولا «لم يُنجَزْ بعد».
+         • `!ls.open`  = الدرسُ لم يُؤلَّفْ **بعد** ⇒ باهتٌ وميّت بـ🔒، ولا يفتحُه رمز.
+           (يبقى كما هو — ومنه ما يُؤلَّفُ لاحقاً متى وصلَ مصدرُه.)
          • payLocked   = الدرسُ مؤلَّفٌ في وحدةٍ مقفلةٍ بالشراء ⇒ حيٌّ ويفتحُ نافذةَ الرمز. */
       const authored = !!ls.open;
+      const bookOnly = !authored && !!ls.bookOnly;
       const payl = payLocked && authored;
       const el=document.createElement('div');
-      el.className='lesson'+(authored?'':' locked')+(payl?' paylocked':'');
-      el.innerHTML=`<div class="num">${arNum(n)}</div><div class="lt">${ls.title}</div>`+
-        `<div class="arrow">${(authored&&!payl)?'←':'🔒'}</div>`;
+      el.className='lesson'+(authored?'':(bookOnly?' bookonly':' locked'))+(payl?' paylocked':'');
+      el.innerHTML=`<div class="num">${arNum(n)}</div><div class="lt">${ls.title}`+
+        (bookOnly?` <span class="lbook">في الكتاب</span>`:'')+`</div>`+
+        `<div class="arrow">${authored?(payl?'🔒':'←'):(bookOnly?'📖':'🔒')}</div>`;
+      if(bookOnly) el.setAttribute('aria-label', ls.title+' — نشاطٌ في الكتابِ الورقيّ، بلا أسئلةٍ في المنصّة');
       if(payl){
         /* الدرسُ المقفلُ **لا يفتحُ نافذةَ الرمز** — النافذةُ من القفلِ الكبيرِ على
            الإطارِ وحدَه. ونقرُه يوجّهُ النظرَ إلى ذلك القفلِ باهتزازٍ وإبراز.

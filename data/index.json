@@ -277,8 +277,8 @@
           { "title": "الدرس الثاني: خُبز ولَبَن", "file": "g4a1-1-4", "open": true },
           { "title": "الدرس الثالث: بلادي عُمان", "file": "g4a1-1-5", "open": true },
           { "title": "أنشد وأحفظ: بني وطني", "file": "g4a1-1-6", "open": true },
-          { "title": "قراءة حرّة: بين رفوف مكتبتي", "file": "g4a1-1-7", "open": false },
-          { "title": "أُقيّم أدائي", "file": "g4a1-1-8", "open": false }
+          { "title": "قراءة حرّة: بين رفوف مكتبتي", "file": "g4a1-1-7", "open": false, "bookOnly": true },
+          { "title": "أُقيّم أدائي", "file": "g4a1-1-8", "open": false, "bookOnly": true }
         ]
       }
     ]
@@ -295,8 +295,8 @@
           { "title": "الدرس الثاني: مُخّ الوَعِل", "file": "g4a2-2-4", "open": true },
           { "title": "الدرس الثالث: نصيحة أب", "file": "g4a2-2-5", "open": true },
           { "title": "أتلو وأحفظ: من سورة القلم", "file": "g4a2-2-6", "open": true },
-          { "title": "قراءة حرّة", "file": "g4a2-2-7", "open": false },
-          { "title": "أُقيّم أدائي", "file": "g4a2-2-8", "open": false }
+          { "title": "قراءة حرّة", "file": "g4a2-2-7", "open": false, "bookOnly": true },
+          { "title": "أُقيّم أدائي", "file": "g4a2-2-8", "open": false, "bookOnly": true }
         ]
       }
     ]
@@ -571,7 +571,7 @@
           { "title": "الدرس الثالث: لَيْسَ هَذا ضَعْفًا", "file": "g2a1-1-4", "open": true },
           { "title": "أُنْشِدُ وأَحْفَظُ: صَباحُ الْخَيْرِ", "file": "g2a1-1-5", "open": true },
           { "title": "مراجعة المحور: مِفْتاحُ الْقِراءَةِ", "file": "g2a1-1-6", "open": true },
-          { "title": "قِصَّةٌ أَعْجَبَتْني", "file": "g2a1-1-7", "open": false }
+          { "title": "قِصَّةٌ أَعْجَبَتْني", "file": "g2a1-1-7", "open": false, "bookOnly": true }
         ]
       }
     ]
@@ -588,7 +588,7 @@
           { "title": "الدرس الثالث: الْبَحْرُ يَتَّسِعُ لِلْجَميعِ", "file": "g2a2-2-4", "open": true },
           { "title": "أُنْشِدُ وأَحْفَظُ: أَزْهارُ الْخَمائِلِ", "file": "g2a2-2-5", "open": true },
           { "title": "مراجعة المحور: ضِياءٌ في الْفَضاءِ", "file": "g2a2-2-6", "open": true },
-          { "title": "قِصَّةٌ أَعْجَبَتْني", "file": "g2a2-2-7", "open": false }
+          { "title": "قِصَّةٌ أَعْجَبَتْني", "file": "g2a2-2-7", "open": false, "bookOnly": true }
         ]
       }
     ]
@@ -611,7 +611,7 @@
           { "title": "الدرس الثاني: حَلوى لأبي", "file": "g3a1-1-4", "open": true },
           { "title": "الدرس الثالث: رِفاق المَجد", "file": "g3a1-1-5", "open": true },
           { "title": "أنشد وأحفظ: أنا أحبُّ جاري", "file": "g3a1-1-6", "open": true },
-          { "title": "أُقيّم أدائي", "file": "g3a1-1-7", "open": false }
+          { "title": "أُقيّم أدائي", "file": "g3a1-1-7", "open": false, "bookOnly": true }
         ]
       }
     ]
@@ -628,7 +628,7 @@
           { "title": "الدرس الثاني: قصّة وَرَقة", "file": "g3a2-2-4", "open": true },
           { "title": "الدرس الثالث: حاسوب", "file": "g3a2-2-5", "open": true },
           { "title": "أنشد وأحفظ: مَجد القلم", "file": "g3a2-2-6", "open": true },
-          { "title": "أُقيّم أدائي", "file": "g3a2-2-7", "open": false }
+          { "title": "أُقيّم أدائي", "file": "g3a2-2-7", "open": false, "bookOnly": true }
         ]
       }
     ]

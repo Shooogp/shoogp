@@ -30,6 +30,13 @@
         غيرِه: كتابٌ يُباعُ لزائرٍ ولا يُباعُ لآخرَ بحسبِ كيفيةِ فتحِه للموقع.
       • ولا تبقى في `pay.html` قائمةُ `ON_SALE` ثابتة — وجودُها ارتدادٌ إلى
         مصدرَينِ للحقيقةِ الواحدة.
+   ④ **فهرسُ الدروس** — `data/index.json` و`js/data.js` بنفسِ الدروسِ ونفسِ
+      `open` ونفسِ `bookOnly`. **وهذا الفحصُ وُلِدَ من عطبٍ حقيقيّ:** ١٣ درسَ
+      علومٍ مؤلَّفةً (‏`g2s-3-*` و`g4s-2-*` و`g4s-3-*`) كانت `open:true` في
+      الفهرسِ و`open:false` في الاحتياط، **فتظهرُ ميّتةً مقفلةً في وضعِ
+      `file://` وحدَه** — نفسُ حادثةِ `g3-sci` أعلاه بحذافيرِها، لكن على
+      الدروسِ لا على البطاقات. والفحصُ ① كان يمرُّ عليها لأنّه يفحصُ
+      **الكتبَ** لا دروسَها.
 
    ⚠️ ولا يُفحَصُ **ترتيبُ** الكتبِ ولا بقيّةُ حقولِها (اللونُ والغلافُ والشارة):
    الترتيبُ ترتيبُ عرضٍ لا صحّة، وبقيّةُ الحقولِ انحرافُها يُرى بالعينِ فوراً.
@@ -41,6 +48,7 @@ const BOOKS    = 'data/books.json';
 const FALLBACK = 'js/data.js';
 const BUNDLES  = 'data/bundles.json';
 const PAY      = 'pay.html';
+const INDEX    = 'data/index.json';
 const errors   = [];
 
 /* الاحتياطُ ملفُّ سكربتٍ لا JSON: يُنفَّذُ بـ`window` وهميٍّ فيُلتقَطُ ما عُلِّقَ عليه.
@@ -52,6 +60,16 @@ function loadFallback() {
     throw new Error(`${FALLBACK}: لم يُعرَّف window.DATA_FALLBACK.terms`);
   }
   return win.DATA_FALLBACK.terms;
+}
+
+/* فهرسُ الدروسِ في الاحتياطِ يسكنُ `DATA_FALLBACK.index` (بجانبِ `.terms`). */
+function loadFallbackIndex() {
+  const win = {};
+  new Function('window', readFileSync(FALLBACK, 'utf8'))(win);
+  if (!win.DATA_FALLBACK || !win.DATA_FALLBACK.index) {
+    throw new Error(`${FALLBACK}: لم يُعرَّف window.DATA_FALLBACK.index`);
+  }
+  return win.DATA_FALLBACK.index;
 }
 
 /* الفصلُ ← الصفُّ ← قائمةُ الكتب  ⇒  خريطةٌ مسطّحة: "الفصل/الصف/المفتاح" ← الكتاب.
@@ -138,6 +156,43 @@ if (/ON_SALE\s*:/.test(readFileSync(PAY, 'utf8'))) {
   errors.push(`${PAY}: عادت قائمةُ ON_SALE الثابتة — المصدرُ هو onSale في البيانات`);
 }
 
+/* ④ فهرسُ الدروس: نفسُ المفاتيحِ ونفسُ حالةِ الفتحِ ووسمِ «في الكتاب».
+   `bookOnly` (مع `open:false`) يعني مدخلاً في كتابِ التلميذِ بلا نشاطٍ رقميٍّ
+   أبداً — يُعرَضُ بـ📖 لا 🔒 (‏`shoogp-ui` §١.٦‑ج). فانحرافُه بين الملفَّينِ
+   يُظهِرُ الدرسَ «اشترِ لتفتح» لزائرٍ و«في الكتاب» لآخرَ بحسبِ كيفيةِ فتحِه. */
+function flatLessons(index, where) {
+  const out = new Map();
+  for (const [book, v] of Object.entries(index || {})) {
+    for (const u of (v && v.units) || []) {
+      for (const l of (u && u.lessons) || []) {
+        if (!l || !l.file) { errors.push(`${where}: درسٌ بلا مفتاحِ ملفٍّ في «${book}»`); continue; }
+        if (out.has(l.file)) errors.push(`${where}: درسٌ مكرّر — ${l.file}`);
+        out.set(l.file, { book, open: !!l.open, bookOnly: !!l.bookOnly });
+      }
+    }
+  }
+  return out;
+}
+
+const lsBooks = flatLessons(JSON.parse(readFileSync(INDEX, 'utf8')), INDEX);
+const lsFall  = flatLessons(loadFallbackIndex(), FALLBACK);
+
+for (const [file, a] of lsBooks) {
+  const b = lsFall.get(file);
+  if (!b) { errors.push(`ناقصٌ من فهرسِ ${FALLBACK}: ${file} (${a.book})`); continue; }
+  if (a.open !== b.open) {
+    errors.push(`open مختلف — ${file}: ${INDEX}=${a.open} · ${FALLBACK}=${b.open}`);
+  }
+  if (a.bookOnly !== b.bookOnly) {
+    errors.push(`bookOnly مختلف — ${file}: ${INDEX}=${a.bookOnly} · ${FALLBACK}=${b.bookOnly}`);
+  }
+  /* `bookOnly` بلا `open:false` تناقضٌ: الدرسُ مؤلَّفٌ ومعروضٌ «بلا نشاطٍ رقميّ» معاً. */
+  if (a.bookOnly && a.open) errors.push(`${INDEX}: «${file}» يحملُ bookOnly وهو open:true`);
+}
+for (const file of lsFall.keys()) {
+  if (!lsBooks.has(file)) errors.push(`ناقصٌ من فهرسِ ${INDEX}: ${file}`);
+}
+
 if (errors.length) {
   console.error(`\n✗ انحرافٌ في بياناتِ الكتبِ والبيع (${errors.length}):\n`);
   errors.forEach(e => console.error('  • ' + e));
@@ -151,3 +206,6 @@ const forSale    = standalone.filter(b => b.onSale).length
                  + Object.values(bundles || {}).filter(b => b.onSale).length;
 console.log(`✓ البياناتُ متماسكة — ${books.size} كتاباً في الملفَّين، ${nBundles} حزمةً بأعضاءٍ صحيحة،`);
 console.log(`  و${standalone.length + nBundles} وحدةً قابلةً للبيعِ منها ${forSale} مطروحةٌ اليوم.`);
+const nOpen = [...lsBooks.values()].filter(l => l.open).length;
+const nBook = [...lsBooks.values()].filter(l => l.bookOnly).length;
+console.log(`  وفهرسُ الدروسِ متطابق — ${lsBooks.size} درساً: ${nOpen} مؤلَّفاً · ${nBook} «في الكتاب» · ${lsBooks.size - nOpen - nBook} لم يُؤلَّفْ بعد.`);
