@@ -29989,45 +29989,8 @@ window.QUESTIONS = {
       prompt: "صِلْ شَكْلَ الرّاءِ بِصورَةِ كَلِمَتِها.",
       pairs: [
         { letter: "رِ", art: "red", word: "رِمالٌ", img: "images/رمال.png" },
-        { letter: "ـرَ", art: "red", word: "كُرَةٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<defs><clipPath id='ballR'><circle cx='50' cy='52' r='36'/></clipPath></defs>"+
-          "<g clip-path='url(#ballR)'>"+
-          "<rect x='10' y='0'  width='22' height='100' fill='#FF4020'/>"+
-          "<rect x='10' y='62' width='22' height='38' fill='#E02000'/>"+
-          "<rect x='32' y='0'  width='20' height='100' fill='#FFFFC0'/>"+
-          "<rect x='32' y='62' width='20' height='38' fill='#E0C080'/>"+
-          "<rect x='52' y='0'  width='20' height='100' fill='#40C0FF'/>"+
-          "<rect x='52' y='62' width='20' height='38' fill='#2080E0'/>"+
-          "<rect x='72' y='0'  width='22' height='100' fill='#80C020'/>"+
-          "<rect x='72' y='62' width='22' height='38' fill='#4A9018'/>"+
-          "<ellipse cx='36' cy='30' rx='14' ry='7' fill='#ffffff' opacity='.75' transform='rotate(-25 36 30)'/>"+
-          "</g>"+
-          "<path d='M32 17 v70 M52 16 v72 M72 17 v70' stroke='#111111' stroke-width='2.2'/>"+
-          "<circle cx='50' cy='52' r='36' fill='none' stroke='#111111' stroke-width='2.8'/>"+
-          "</svg>" },
-        { letter: "ـار", art: "red", word: "قِطارٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<rect x='6' y='78' width='88' height='5' rx='2' fill='#9A6636' stroke='#111111' stroke-width='2'/>"+
-          "<rect x='10' y='46' width='34' height='28' rx='4' fill='#FF2020'/>"+
-          "<rect x='10' y='46' width='34' height='8' fill='#FF4020'/>"+
-          "<rect x='10' y='66' width='34' height='8' fill='#E02000'/>"+
-          "<rect x='10' y='46' width='34' height='28' rx='4' fill='none' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-          "<rect x='16' y='52' width='10' height='10' rx='2' fill='#CDEBFF' stroke='#111111' stroke-width='2'/>"+
-          "<rect x='30' y='52' width='10' height='10' rx='2' fill='#CDEBFF' stroke='#111111' stroke-width='2'/>"+
-          "<rect x='50' y='38' width='40' height='36' rx='5' fill='#0080C0'/>"+
-          "<rect x='50' y='38' width='40' height='10' fill='#40C0FF'/>"+
-          "<rect x='50' y='64' width='40' height='10' fill='#0060A0'/>"+
-          "<rect x='50' y='38' width='40' height='36' rx='5' fill='none' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-          "<rect x='58' y='44' width='12' height='12' rx='2' fill='#CDEBFF' stroke='#111111' stroke-width='2'/>"+
-          "<rect x='62' y='22' width='14' height='18' rx='3' fill='#E08000'/>"+
-          "<rect x='62' y='22' width='14' height='5' rx='2' fill='#FFA000'/>"+
-          "<rect x='62' y='22' width='14' height='18' rx='3' fill='none' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
-          "<circle cx='20' cy='78' r='7' fill='#606060' stroke='#111111' stroke-width='2.4'/>"+
-          "<circle cx='36' cy='78' r='7' fill='#606060' stroke='#111111' stroke-width='2.4'/>"+
-          "<circle cx='60' cy='78' r='8' fill='#404040' stroke='#111111' stroke-width='2.4'/>"+
-          "<circle cx='80' cy='78' r='8' fill='#404040' stroke='#111111' stroke-width='2.4'/>"+
-          "</svg>" }
+        { letter: "ـرَ", art: "red", word: "كُرَةٌ", img: "images/كرة.png" },
+        { letter: "ـار", art: "red", word: "قِطارٌ", img: "images/قطار.png" }
       ]
     },
 
@@ -30294,72 +30257,9 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "صِلْ شَكْلَ الدّالِ بِصورَةِ كَلِمَتِها.",
       pairs: [
-        { letter: "دَ", art: "green", word: "دَرَجٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<rect x='10' y='76' width='80' height='14' fill='#0060A0'/>"+
-          "<rect x='10' y='76' width='80' height='5'  fill='#40C0FF'/>"+
-          "<rect x='10' y='76' width='80' height='14' fill='none' stroke='#111111' stroke-width='2.4'/>"+
-          "<rect x='24' y='60' width='66' height='16' fill='#0080C0'/>"+
-          "<rect x='24' y='60' width='66' height='5'  fill='#40C0FF'/>"+
-          "<rect x='24' y='60' width='66' height='16' fill='none' stroke='#111111' stroke-width='2.4'/>"+
-          "<rect x='38' y='44' width='52' height='16' fill='#0080C0'/>"+
-          "<rect x='38' y='44' width='52' height='5'  fill='#40C0FF'/>"+
-          "<rect x='38' y='44' width='52' height='16' fill='none' stroke='#111111' stroke-width='2.4'/>"+
-          "<rect x='52' y='28' width='38' height='16' fill='#0060A0'/>"+
-          "<rect x='52' y='28' width='38' height='5'  fill='#40C0FF'/>"+
-          "<rect x='52' y='28' width='38' height='16' fill='none' stroke='#111111' stroke-width='2.4'/>"+
-          "<rect x='66' y='14' width='24' height='14' fill='#004880'/>"+
-          "<rect x='66' y='14' width='24' height='5'  fill='#2080E0'/>"+
-          "<rect x='66' y='14' width='24' height='14' fill='none' stroke='#111111' stroke-width='2.4'/>"+
-          "</svg>" },
-        { letter: "ـدِ", art: "green", word: "هَدِيَّةٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<rect x='16' y='44' width='68' height='44' rx='4' fill='#E08000'/>"+
-          "<rect x='16' y='44' width='68' height='12' fill='#FFA000'/>"+
-          "<rect x='16' y='76' width='68' height='12' fill='#C06000'/>"+
-          "<rect x='16' y='44' width='68' height='44' rx='4' fill='none' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
-          "<rect x='12' y='36' width='76' height='12' rx='3' fill='#FFA000'/>"+
-          "<rect x='12' y='36' width='76' height='4'  rx='2' fill='#FFC040'/>"+
-          "<rect x='12' y='36' width='76' height='12' rx='3' fill='none' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-          "<rect x='42' y='36' width='16' height='52' fill='#FF2020'/>"+
-          "<rect x='42' y='36' width='6'  height='52' fill='#FF4020'/>"+
-          "<rect x='42' y='36' width='16' height='52' fill='none' stroke='#111111' stroke-width='2.4'/>"+
-          "<path d='M50 36 q-20 -22 -6 -22 q10 0 6 22 Z' fill='#FF2020' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
-          "<path d='M50 36 q20 -22 6 -22 q-10 0 -6 22 Z' fill='#E02000' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
-          "<circle cx='50' cy='33' r='5' fill='#B01800' stroke='#111111' stroke-width='2.3'/>"+
-          "</svg>" },
-        { letter: "ـد", art: "green", word: "فَهْدٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<defs><clipPath id='fhdB'><ellipse cx='50' cy='54' rx='30' ry='15'/></clipPath>"+
-          "<clipPath id='fhdH'><circle cx='80' cy='34' r='12'/></clipPath></defs>"+
-          "<path d='M22 50 Q8 42 12 28' fill='none' stroke='#111111' stroke-width='8' stroke-linecap='round'/>"+
-          "<path d='M22 50 Q8 42 12 28' fill='none' stroke='#C06000' stroke-width='4' stroke-linecap='round'/>"+
-          "<rect x='28' y='64' width='9' height='24' rx='4' fill='#C06000' stroke='#111111' stroke-width='2.2'/>"+
-          "<rect x='62' y='64' width='9' height='24' rx='4' fill='#C06000' stroke='#111111' stroke-width='2.2'/>"+
-          "<rect x='40' y='66' width='9' height='22' rx='4' fill='#E08000' stroke='#111111' stroke-width='2.2'/>"+
-          "<rect x='52' y='66' width='9' height='22' rx='4' fill='#E08000' stroke='#111111' stroke-width='2.2'/>"+
-          "<g clip-path='url(#fhdB)'>"+
-          "<rect x='0' y='0'  width='100' height='46' fill='#FFA000'/>"+
-          "<rect x='0' y='46' width='100' height='10' fill='#E08000'/>"+
-          "<rect x='0' y='56' width='100' height='9'  fill='#C06000'/>"+
-          "<rect x='0' y='65' width='100' height='35' fill='#984800'/>"+
-          "<circle cx='36' cy='48' r='3' fill='#68411D'/><circle cx='48' cy='56' r='3' fill='#68411D'/>"+
-          "<circle cx='60' cy='47' r='3' fill='#68411D'/><circle cx='42' cy='62' r='3' fill='#68411D'/>"+
-          "<circle cx='64' cy='60' r='3' fill='#68411D'/>"+
-          "<ellipse cx='42' cy='45' rx='11' ry='4' fill='#ffffff' opacity='.6' transform='rotate(-10 42 45)'/>"+
-          "</g>"+
-          "<ellipse cx='50' cy='54' rx='30' ry='15' fill='none' stroke='#111111' stroke-width='2.5'/>"+
-          "<path d='M70 46 Q72 36 78 34' fill='none' stroke='#111111' stroke-width='9' stroke-linecap='round'/>"+
-          "<path d='M70 46 Q72 36 78 34' fill='none' stroke='#E08000' stroke-width='5.5' stroke-linecap='round'/>"+
-          "<g clip-path='url(#fhdH)'>"+
-          "<rect x='0' y='0'  width='100' height='32' fill='#FFA000'/>"+
-          "<rect x='0' y='32' width='100' height='7'  fill='#E08000'/>"+
-          "<rect x='0' y='39' width='100' height='61' fill='#C06000'/>"+
-          "</g>"+
-          "<circle cx='80' cy='34' r='12' fill='none' stroke='#111111' stroke-width='2.4'/>"+
-          "<path d='M72 26 L70 18 L78 22 Z' fill='#E08000' stroke='#111111' stroke-width='2.2' stroke-linejoin='round'/>"+
-          "<path d='M88 26 L90 18 L82 22 Z' fill='#E08000' stroke='#111111' stroke-width='2.2' stroke-linejoin='round'/>"+
-          "</svg>" }
+        { letter: "دَ", art: "green", word: "دَرَجٌ", img: "images/درج.png" },
+        { letter: "ـدِ", art: "green", word: "هَدِيَّةٌ", img: "images/هدية.png" },
+        { letter: "ـد", art: "green", word: "فَهْدٌ", img: "images/فهد.png" }
       ]
     },
 
@@ -30480,62 +30380,9 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "صِلْ شَكْلَ السّينِ بِصورَةِ كَلِمَتِها.",
       pairs: [
-        { letter: "سَـ", art: "amber", word: "سَمَكَةٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<defs><clipPath id='fshB'><ellipse cx='52' cy='52' rx='30' ry='19'/></clipPath></defs>"+
-          "<path d='M82 52 L96 36 L96 68 Z' fill='#E08000' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-          "<path d='M46 33 L58 20 L64 34 Z' fill='#FFA000' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
-          "<path d='M46 71 L56 84 L62 70 Z' fill='#C06000' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
-          "<g clip-path='url(#fshB)'>"+
-          "<rect x='0' y='0'  width='100' height='44' fill='#FFC040'/>"+
-          "<rect x='0' y='44' width='100' height='11' fill='#FFA000'/>"+
-          "<rect x='0' y='55' width='100' height='9'  fill='#E08000'/>"+
-          "<rect x='0' y='64' width='100' height='36' fill='#C06000'/>"+
-          "<rect x='34' y='30' width='5' height='50' fill='#984800' opacity='.7'/>"+
-          "<rect x='50' y='30' width='5' height='50' fill='#984800' opacity='.7'/>"+
-          "<rect x='66' y='30' width='5' height='50' fill='#984800' opacity='.7'/>"+
-          "<ellipse cx='40' cy='42' rx='12' ry='5' fill='#ffffff' opacity='.7' transform='rotate(-12 40 42)'/>"+
-          "</g>"+
-          "<ellipse cx='52' cy='52' rx='30' ry='19' fill='none' stroke='#111111' stroke-width='2.6'/>"+
-          "</svg>" },
-        { letter: "ـسَـ", art: "amber", word: "عَسَلٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<defs><clipPath id='jarB'><path d='M26 40 h48 v38 q0 10 -10 10 h-28 q-10 0 -10 -10 Z'/></clipPath></defs>"+
-          "<g clip-path='url(#jarB)'>"+
-          "<rect x='0' y='0'  width='100' height='52' fill='#FFC040'/>"+
-          "<rect x='0' y='52' width='100' height='12' fill='#FFA000'/>"+
-          "<rect x='0' y='64' width='100' height='11' fill='#E08000'/>"+
-          "<rect x='0' y='75' width='100' height='25' fill='#C06000'/>"+
-          "<rect x='32' y='40' width='7' height='58' fill='#ffffff' opacity='.55'/>"+
-          "</g>"+
-          "<path d='M26 40 h48 v38 q0 10 -10 10 h-28 q-10 0 -10 -10 Z' fill='none' stroke='#111111' stroke-width='2.7' stroke-linejoin='round'/>"+
-          "<rect x='22' y='28' width='56' height='13' rx='4' fill='#984800'/>"+
-          "<rect x='22' y='28' width='56' height='5'  rx='3' fill='#C06000'/>"+
-          "<rect x='22' y='28' width='56' height='13' rx='4' fill='none' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
-          "<rect x='38' y='18' width='24' height='11' rx='4' fill='#C06000' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
-          "<rect x='34' y='56' width='32' height='16' rx='3' fill='#FFFFC0' stroke='#111111' stroke-width='2.2'/>"+
-          "</svg>" },
-        { letter: "ـس", art: "amber", word: "كَأْسٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<defs><clipPath id='cupB'><path d='M30 20 h40 v22 q0 20 -20 20 q-20 0 -20 -20 Z'/></clipPath></defs>"+
-          "<path d='M30 26 q-14 0 -14 10 q0 10 14 12' fill='none' stroke='#111111' stroke-width='8' stroke-linecap='round'/>"+
-          "<path d='M30 26 q-14 0 -14 10 q0 10 14 12' fill='none' stroke='#E08000' stroke-width='4.5' stroke-linecap='round'/>"+
-          "<path d='M70 26 q14 0 14 10 q0 10 -14 12' fill='none' stroke='#111111' stroke-width='8' stroke-linecap='round'/>"+
-          "<path d='M70 26 q14 0 14 10 q0 10 -14 12' fill='none' stroke='#E08000' stroke-width='4.5' stroke-linecap='round'/>"+
-          "<g clip-path='url(#cupB)'>"+
-          "<rect x='0' y='0'  width='100' height='30' fill='#FFC040'/>"+
-          "<rect x='0' y='30' width='100' height='12' fill='#FFA000'/>"+
-          "<rect x='0' y='42' width='100' height='11' fill='#E08000'/>"+
-          "<rect x='0' y='53' width='100' height='47' fill='#C06000'/>"+
-          "<rect x='38' y='20' width='7' height='50' fill='#ffffff' opacity='.6'/>"+
-          "</g>"+
-          "<path d='M30 20 h40 v22 q0 20 -20 20 q-20 0 -20 -20 Z' fill='none' stroke='#111111' stroke-width='2.7' stroke-linejoin='round'/>"+
-          "<rect x='44' y='62' width='12' height='14' fill='#E08000' stroke='#111111' stroke-width='2.4'/>"+
-          "<rect x='30' y='76' width='40' height='9' rx='3' fill='#C06000'/>"+
-          "<rect x='30' y='76' width='40' height='3' rx='2' fill='#FFA000'/>"+
-          "<rect x='30' y='76' width='40' height='9' rx='3' fill='none' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-          "<rect x='24' y='85' width='52' height='9' rx='3' fill='#984800' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-          "</svg>" }
+        { letter: "سَـ", art: "amber", word: "سَمَكَةٌ", img: "images/سمكة.png" },
+        { letter: "ـسَـ", art: "amber", word: "عَسَلٌ", img: "images/عسل.png" },
+        { letter: "ـس", art: "amber", word: "كَأْسٌ", img: "images/كأس.png" }
       ]
     },
 
@@ -30652,65 +30499,9 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "صِلْ شَكْلَ الْكافِ بِصورَةِ كَلِمَتِها.",
       pairs: [
-        { letter: "كَـ", art: "sky", word: "كَرَزٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<defs><clipPath id='chr1'><circle cx='34' cy='70' r='19'/></clipPath>"+
-          "<clipPath id='chr2'><circle cx='68' cy='76' r='16'/></clipPath></defs>"+
-          "<path d='M34 51 Q44 24 58 16' fill='none' stroke='#111111' stroke-width='7' stroke-linecap='round'/>"+
-          "<path d='M34 51 Q44 24 58 16' fill='none' stroke='#4A9018' stroke-width='3.5' stroke-linecap='round'/>"+
-          "<path d='M68 60 Q66 30 58 16' fill='none' stroke='#111111' stroke-width='7' stroke-linecap='round'/>"+
-          "<path d='M68 60 Q66 30 58 16' fill='none' stroke='#4A9018' stroke-width='3.5' stroke-linecap='round'/>"+
-          "<path d='M58 18 q22 -10 30 4 q-20 10 -30 -4 Z' fill='#60C020' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
-          "<g clip-path='url(#chr1)'>"+
-          "<rect x='0' y='0'  width='100' height='64' fill='#FF4020'/>"+
-          "<rect x='0' y='64' width='100' height='10' fill='#FF2020'/>"+
-          "<rect x='0' y='74' width='100' height='9'  fill='#E02000'/>"+
-          "<rect x='0' y='83' width='100' height='17' fill='#B01800'/>"+
-          "<ellipse cx='27' cy='62' rx='8' ry='4' fill='#ffffff' opacity='.8' transform='rotate(-25 27 62)'/>"+
-          "</g>"+
-          "<circle cx='34' cy='70' r='19' fill='none' stroke='#111111' stroke-width='2.6'/>"+
-          "<g clip-path='url(#chr2)'>"+
-          "<rect x='0' y='0'  width='100' height='72' fill='#FF4020'/>"+
-          "<rect x='0' y='72' width='100' height='9'  fill='#FF2020'/>"+
-          "<rect x='0' y='81' width='100' height='8'  fill='#E02000'/>"+
-          "<rect x='0' y='89' width='100' height='11' fill='#B01800'/>"+
-          "<ellipse cx='62' cy='69' rx='7' ry='3.5' fill='#ffffff' opacity='.8' transform='rotate(-25 62 69)'/>"+
-          "</g>"+
-          "<circle cx='68' cy='76' r='16' fill='none' stroke='#111111' stroke-width='2.6'/>"+
-          "</svg>" },
-        { letter: "ـكْـ", art: "sky", word: "مَكْتَبَةٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<rect x='12' y='14' width='76' height='76' rx='5' fill='#9A6636'/>"+
-          "<rect x='12' y='14' width='76' height='8'  fill='#B98551'/>"+
-          "<rect x='12' y='82' width='76' height='8'  fill='#68411D'/>"+
-          "<rect x='18' y='24' width='64' height='4' fill='#7A4C22'/>"+
-          "<rect x='18' y='48' width='64' height='4' fill='#7A4C22'/>"+
-          "<rect x='18' y='72' width='64' height='4' fill='#7A4C22'/>"+
-          "<rect x='22' y='30' width='8'  height='18' fill='#FF2020'/>"+
-          "<rect x='32' y='32' width='7'  height='16' fill='#0080C0'/>"+
-          "<rect x='41' y='29' width='9'  height='19' fill='#60C020'/>"+
-          "<rect x='52' y='33' width='7'  height='15' fill='#FFA000'/>"+
-          "<rect x='61' y='30' width='8'  height='18' fill='#984800'/>"+
-          "<rect x='71' y='34' width='7'  height='14' fill='#FF4020'/>"+
-          "<rect x='22' y='56' width='7'  height='16' fill='#0060A0'/>"+
-          "<rect x='31' y='54' width='9'  height='18' fill='#FFC040'/>"+
-          "<rect x='42' y='57' width='7'  height='15' fill='#B01800'/>"+
-          "<rect x='51' y='53' width='8'  height='19' fill='#4A9018'/>"+
-          "<rect x='61' y='56' width='7'  height='16' fill='#40C0FF'/>"+
-          "<rect x='70' y='55' width='9'  height='17' fill='#E08000'/>"+
-          "<rect x='12' y='14' width='76' height='76' rx='5' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-          "</svg>" },
-        { letter: "ـك", art: "sky", word: "شَوْكٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<path d='M12 78 Q46 62 88 26' fill='none' stroke='#111111' stroke-width='11' stroke-linecap='round'/>"+
-          "<path d='M12 78 Q46 62 88 26' fill='none' stroke='#4A9018' stroke-width='7' stroke-linecap='round'/>"+
-          "<path d='M12 76 Q46 60 88 24' fill='none' stroke='#80C020' stroke-width='2.4' stroke-linecap='round'/>"+
-          "<path d='M30 68 L26 48 L38 62 Z' fill='#60C020' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
-          "<path d='M52 56 L50 34 L60 50 Z' fill='#60C020' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
-          "<path d='M72 42 L74 20 L80 38 Z' fill='#60C020' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
-          "<path d='M36 78 L44 92 L28 88 Z' fill='#4A9018' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
-          "<path d='M62 62 L72 76 L56 74 Z' fill='#4A9018' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
-          "</svg>" }
+        { letter: "كَـ", art: "sky", word: "كَرَزٌ", img: "images/كرز.png" },
+        { letter: "ـكْـ", art: "sky", word: "مَكْتَبَةٌ", img: "images/مكتبة.png" },
+        { letter: "ـك", art: "sky", word: "شَوْكٌ", img: "images/شوك.png" }
       ]
     },
 
@@ -30821,65 +30612,9 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "صِلْ شَكْلَ النّونِ بِصورَةِ كَلِمَتِها.",
       pairs: [
-        { letter: "نُـ", art: "red", word: "نُجومٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<defs>"+
-          "<clipPath id='st1'><path d='M50 12 L59 38 L86 38 L64 54 L73 80 L50 64 L27 80 L36 54 L14 38 L41 38 Z'/></clipPath>"+
-          "<clipPath id='st2'><path d='M22 62 L27 76 L42 76 L30 85 L35 99 L22 90 L9 99 L14 85 L2 76 L17 76 Z'/></clipPath>"+
-          "<clipPath id='st3'><path d='M80 60 L84 72 L97 72 L86 80 L90 92 L80 84 L70 92 L74 80 L63 72 L76 72 Z'/></clipPath>"+
-          "</defs>"+
-          "<g clip-path='url(#st1)'>"+
-          "<rect x='0' y='0'  width='100' height='38' fill='#FFFFC0'/>"+
-          "<rect x='0' y='38' width='100' height='14' fill='#E0E0A0'/>"+
-          "<rect x='0' y='52' width='100' height='14' fill='#E0C080'/>"+
-          "<rect x='0' y='66' width='100' height='34' fill='#E0C060'/>"+
-          "</g>"+
-          "<path d='M50 12 L59 38 L86 38 L64 54 L73 80 L50 64 L27 80 L36 54 L14 38 L41 38 Z' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-          "<g clip-path='url(#st2)'>"+
-          "<rect x='0' y='0'  width='100' height='78' fill='#FFFFC0'/>"+
-          "<rect x='0' y='78' width='100' height='8'  fill='#E0E0A0'/>"+
-          "<rect x='0' y='86' width='100' height='14' fill='#E0C080'/>"+
-          "</g>"+
-          "<path d='M22 62 L27 76 L42 76 L30 85 L35 99 L22 90 L9 99 L14 85 L2 76 L17 76 Z' fill='none' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-          "<g clip-path='url(#st3)'>"+
-          "<rect x='0' y='0'  width='100' height='74' fill='#FFFFC0'/>"+
-          "<rect x='0' y='74' width='100' height='8'  fill='#E0E0A0'/>"+
-          "<rect x='0' y='82' width='100' height='18' fill='#E0C080'/>"+
-          "</g>"+
-          "<path d='M80 60 L84 72 L97 72 L86 80 L90 92 L80 84 L70 92 L74 80 L63 72 L76 72 Z' fill='none' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-          "</svg>" },
-        { letter: "ـنْـ", art: "red", word: "مِنْضَدَةٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<rect x='10' y='30' width='80' height='14' rx='4' fill='#9A6636'/>"+
-          "<rect x='10' y='30' width='80' height='5'  rx='3' fill='#B98551'/>"+
-          "<rect x='10' y='39' width='80' height='5'  fill='#7A4C22'/>"+
-          "<rect x='10' y='30' width='80' height='14' rx='4' fill='none' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
-          "<path d='M20 44 L26 86' stroke='#111111' stroke-width='9' stroke-linecap='round'/>"+
-          "<path d='M20 44 L26 86' stroke='#B98551' stroke-width='5' stroke-linecap='round'/>"+
-          "<path d='M80 44 L74 86' stroke='#111111' stroke-width='9' stroke-linecap='round'/>"+
-          "<path d='M80 44 L74 86' stroke='#B98551' stroke-width='5' stroke-linecap='round'/>"+
-          "<path d='M34 44 L36 86' stroke='#111111' stroke-width='8' stroke-linecap='round'/>"+
-          "<path d='M34 44 L36 86' stroke='#9A6636' stroke-width='4.5' stroke-linecap='round'/>"+
-          "<path d='M66 44 L64 86' stroke='#111111' stroke-width='8' stroke-linecap='round'/>"+
-          "<path d='M66 44 L64 86' stroke='#9A6636' stroke-width='4.5' stroke-linecap='round'/>"+
-          "<path d='M28 66 L72 66' stroke='#111111' stroke-width='6' stroke-linecap='round'/>"+
-          "<path d='M28 66 L72 66' stroke='#7A4C22' stroke-width='3' stroke-linecap='round'/>"+
-          "</svg>" },
-        { letter: "ـن", art: "red", word: "أَلْوانٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<defs><clipPath id='pltB'><path d='M50 16 q34 0 34 28 q0 16 -16 16 q-10 0 -10 8 q0 8 -8 12 q-6 3 -12 -1 q-30 -12 -30 -35 q0 -28 42 -28 Z'/></clipPath></defs>"+
-          "<g clip-path='url(#pltB)'>"+
-          "<rect x='0' y='0'  width='100' height='46' fill='#FFFFC0'/>"+
-          "<rect x='0' y='46' width='100' height='14' fill='#E0E0A0'/>"+
-          "<rect x='0' y='60' width='100' height='40' fill='#E0C080'/>"+
-          "</g>"+
-          "<path d='M50 16 q34 0 34 28 q0 16 -16 16 q-10 0 -10 8 q0 8 -8 12 q-6 3 -12 -1 q-30 -12 -30 -35 q0 -28 42 -28 Z' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-          "<circle cx='34' cy='34' r='7' fill='#FF2020' stroke='#111111' stroke-width='2.3'/>"+
-          "<circle cx='54' cy='30' r='7' fill='#0080C0' stroke='#111111' stroke-width='2.3'/>"+
-          "<circle cx='68' cy='46' r='7' fill='#60C020' stroke='#111111' stroke-width='2.3'/>"+
-          "<circle cx='30' cy='54' r='7' fill='#FFA000' stroke='#111111' stroke-width='2.3'/>"+
-          "<circle cx='46' cy='62' r='7' fill='#984800' stroke='#111111' stroke-width='2.3'/>"+
-          "</svg>" }
+        { letter: "نُـ", art: "red", word: "نُجومٌ", img: "images/نجوم.png" },
+        { letter: "ـنْـ", art: "red", word: "مِنْضَدَةٌ", img: "images/منضدة.png" },
+        { letter: "ـن", art: "red", word: "أَلْوانٌ", img: "images/ألوان.png" }
       ]
     },
 
@@ -30990,72 +30725,10 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "صِلْ كُلَّ حَرْفٍ بِصورَةِ كَلِمَتِهِ.",
       pairs: [
-        { letter: "د", art: "green", word: "دَرَجٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<rect x='10' y='76' width='80' height='14' fill='#0060A0'/>"+
-          "<rect x='10' y='76' width='80' height='5'  fill='#40C0FF'/>"+
-          "<rect x='10' y='76' width='80' height='14' fill='none' stroke='#111111' stroke-width='2.4'/>"+
-          "<rect x='24' y='60' width='66' height='16' fill='#0080C0'/>"+
-          "<rect x='24' y='60' width='66' height='5'  fill='#40C0FF'/>"+
-          "<rect x='24' y='60' width='66' height='16' fill='none' stroke='#111111' stroke-width='2.4'/>"+
-          "<rect x='38' y='44' width='52' height='16' fill='#0080C0'/>"+
-          "<rect x='38' y='44' width='52' height='5'  fill='#40C0FF'/>"+
-          "<rect x='38' y='44' width='52' height='16' fill='none' stroke='#111111' stroke-width='2.4'/>"+
-          "<rect x='52' y='28' width='38' height='16' fill='#0060A0'/>"+
-          "<rect x='52' y='28' width='38' height='5'  fill='#40C0FF'/>"+
-          "<rect x='52' y='28' width='38' height='16' fill='none' stroke='#111111' stroke-width='2.4'/>"+
-          "</svg>" },
-        { letter: "س", art: "amber", word: "سَمَكَةٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<defs><clipPath id='fshR'><ellipse cx='52' cy='52' rx='30' ry='19'/></clipPath></defs>"+
-          "<path d='M82 52 L96 36 L96 68 Z' fill='#E08000' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-          "<path d='M46 33 L58 20 L64 34 Z' fill='#FFA000' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
-          "<g clip-path='url(#fshR)'>"+
-          "<rect x='0' y='0'  width='100' height='44' fill='#FFC040'/>"+
-          "<rect x='0' y='44' width='100' height='11' fill='#FFA000'/>"+
-          "<rect x='0' y='55' width='100' height='9'  fill='#E08000'/>"+
-          "<rect x='0' y='64' width='100' height='36' fill='#C06000'/>"+
-          "<rect x='40' y='30' width='5' height='50' fill='#984800' opacity='.7'/>"+
-          "<rect x='58' y='30' width='5' height='50' fill='#984800' opacity='.7'/>"+
-          "<ellipse cx='40' cy='42' rx='12' ry='5' fill='#ffffff' opacity='.7' transform='rotate(-12 40 42)'/>"+
-          "</g>"+
-          "<ellipse cx='52' cy='52' rx='30' ry='19' fill='none' stroke='#111111' stroke-width='2.6'/>"+
-          "</svg>" },
-        { letter: "ك", art: "sky", word: "كَرَزٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<defs><clipPath id='chrR'><circle cx='38' cy='68' r='20'/></clipPath>"+
-          "<clipPath id='chrR2'><circle cx='70' cy='74' r='16'/></clipPath></defs>"+
-          "<path d='M38 48 Q46 24 58 16' fill='none' stroke='#111111' stroke-width='7' stroke-linecap='round'/>"+
-          "<path d='M38 48 Q46 24 58 16' fill='none' stroke='#4A9018' stroke-width='3.5' stroke-linecap='round'/>"+
-          "<path d='M70 58 Q68 30 58 16' fill='none' stroke='#111111' stroke-width='7' stroke-linecap='round'/>"+
-          "<path d='M70 58 Q68 30 58 16' fill='none' stroke='#4A9018' stroke-width='3.5' stroke-linecap='round'/>"+
-          "<path d='M58 18 q22 -10 30 4 q-20 10 -30 -4 Z' fill='#60C020' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
-          "<g clip-path='url(#chrR)'>"+
-          "<rect x='0' y='0'  width='100' height='62' fill='#FF4020'/>"+
-          "<rect x='0' y='62' width='100' height='10' fill='#FF2020'/>"+
-          "<rect x='0' y='72' width='100' height='9'  fill='#E02000'/>"+
-          "<rect x='0' y='81' width='100' height='19' fill='#B01800'/>"+
-          "<ellipse cx='31' cy='60' rx='8' ry='4' fill='#ffffff' opacity='.8' transform='rotate(-25 31 60)'/>"+
-          "</g>"+
-          "<circle cx='38' cy='68' r='20' fill='none' stroke='#111111' stroke-width='2.6'/>"+
-          "<g clip-path='url(#chrR2)'>"+
-          "<rect x='0' y='0'  width='100' height='70' fill='#FF4020'/>"+
-          "<rect x='0' y='70' width='100' height='9'  fill='#FF2020'/>"+
-          "<rect x='0' y='79' width='100' height='21' fill='#E02000'/>"+
-          "</g>"+
-          "<circle cx='70' cy='74' r='16' fill='none' stroke='#111111' stroke-width='2.6'/>"+
-          "</svg>" },
-        { letter: "ن", art: "red", word: "نُجومٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<defs><clipPath id='stR'><path d='M50 14 L59 40 L86 40 L64 56 L73 82 L50 66 L27 82 L36 56 L14 40 L41 40 Z'/></clipPath></defs>"+
-          "<g clip-path='url(#stR)'>"+
-          "<rect x='0' y='0'  width='100' height='40' fill='#FFFFC0'/>"+
-          "<rect x='0' y='40' width='100' height='14' fill='#E0E0A0'/>"+
-          "<rect x='0' y='54' width='100' height='14' fill='#E0C080'/>"+
-          "<rect x='0' y='68' width='100' height='32' fill='#E0C060'/>"+
-          "</g>"+
-          "<path d='M50 14 L59 40 L86 40 L64 56 L73 82 L50 66 L27 82 L36 56 L14 40 L41 40 Z' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-          "</svg>" }
+        { letter: "د", art: "green", word: "دَرَجٌ", img: "images/درج.png" },
+        { letter: "س", art: "amber", word: "سَمَكَةٌ", img: "images/سمكة.png" },
+        { letter: "ك", art: "sky", word: "كَرَزٌ", img: "images/كرز.png" },
+        { letter: "ن", art: "red", word: "نُجومٌ", img: "images/نجوم.png" }
       ]
     },
 
@@ -31530,49 +31203,9 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "صِلْ شَكْلَ الْفاءِ بِصورَةِ كَلِمَتِها.",
       pairs: [
-        { letter: "فَـ", art: "ocean", word: "فَراشَةٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<path d='M48 50 q-30 -30 -38 -8 q-6 18 14 22 q-16 8 -6 20 q10 12 30 -12 Z' fill='#0080C0'/>"+
-          "<path d='M48 50 q-30 -30 -38 -8 q-4 12 8 16 q14 4 30 -8 Z' fill='#00A0E0'/>"+
-          "<path d='M48 50 q-30 -30 -38 -8 q-6 18 14 22 q-16 8 -6 20 q10 12 30 -12 Z' fill='none' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
-          "<path d='M52 50 q30 -30 38 -8 q6 18 -14 22 q16 8 6 20 q-10 12 -30 -12 Z' fill='#0060A0'/>"+
-          "<path d='M52 50 q30 -30 38 -8 q4 12 -8 16 q-14 4 -30 -8 Z' fill='#0080C0'/>"+
-          "<path d='M52 50 q30 -30 38 -8 q6 18 -14 22 q16 8 6 20 q-10 12 -30 -12 Z' fill='none' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
-          "<rect x='46' y='26' width='8' height='52' rx='4' fill='#984800' stroke='#111111' stroke-width='2.5'/>"+
-          "<path d='M48 26 Q42 12 34 12 M52 26 Q58 12 66 12' fill='none' stroke='#111111' stroke-width='2.6' stroke-linecap='round'/>"+
-          "<circle cx='34' cy='11' r='3.4' fill='#111111'/><circle cx='66' cy='11' r='3.4' fill='#111111'/>"+
-          "</svg>" },
-        { letter: "ـفْـ", art: "ocean", word: "قُفْلٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<path d='M32 48 v-12 a18 18 0 0 1 36 0 v12' fill='none' stroke='#111111' stroke-width='12' stroke-linecap='round'/>"+
-          "<path d='M32 48 v-12 a18 18 0 0 1 36 0 v12' fill='none' stroke='#C0C0C0' stroke-width='7' stroke-linecap='round'/>"+
-          "<rect x='20' y='46' width='60' height='44' rx='8' fill='#E08000'/>"+
-          "<rect x='20' y='46' width='60' height='12' rx='6' fill='#FFC040'/>"+
-          "<rect x='20' y='74' width='60' height='10' fill='#C06000'/>"+
-          "<rect x='20' y='84' width='60' height='6' fill='#984800'/>"+
-          "<rect x='20' y='46' width='60' height='44' rx='8' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-          "<circle cx='50' cy='64' r='7' fill='#984800' stroke='#111111' stroke-width='2.5'/>"+
-          "<rect x='47' y='68' width='6' height='12' rx='2' fill='#984800' stroke='#111111' stroke-width='2.2'/>"+
-          "</svg>" },
-        { letter: "ـف", art: "ocean", word: "خَروفٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<defs><clipPath id='shpB'><ellipse cx='48' cy='52' rx='30' ry='21'/></clipPath></defs>"+
-          "<rect x='28' y='68' width='9' height='24' rx='4' fill='#404040' stroke='#111111' stroke-width='2.2'/>"+
-          "<rect x='58' y='68' width='9' height='24' rx='4' fill='#404040' stroke='#111111' stroke-width='2.2'/>"+
-          "<rect x='42' y='70' width='9' height='22' rx='4' fill='#606060' stroke='#111111' stroke-width='2.2'/>"+
-          "<g clip-path='url(#shpB)'>"+
-          "<rect x='0' y='0'  width='100' height='44' fill='#FFFFFF'/>"+
-          "<rect x='0' y='44' width='100' height='11' fill='#F7F6F1'/>"+
-          "<rect x='0' y='55' width='100' height='10' fill='#E6E4DC'/>"+
-          "<rect x='0' y='65' width='100' height='35' fill='#C8C6BE'/>"+
-          "</g>"+
-          "<ellipse cx='48' cy='52' rx='30' ry='21' fill='none' stroke='#111111' stroke-width='2.6'/>"+
-          "<circle cx='30' cy='38' r='9' fill='#FFFFFF' stroke='#111111' stroke-width='2.2'/>"+
-          "<circle cx='50' cy='32' r='10' fill='#FFFFFF' stroke='#111111' stroke-width='2.2'/>"+
-          "<circle cx='68' cy='38' r='9' fill='#FFFFFF' stroke='#111111' stroke-width='2.2'/>"+
-          "<ellipse cx='80' cy='40' rx='13' ry='11' fill='#E0A87F' stroke='#111111' stroke-width='2.5'/>"+
-          "<path d='M70 32 q-8 -6 -12 0 q6 6 12 0 Z' fill='#C88A5E' stroke='#111111' stroke-width='2.2' stroke-linejoin='round'/>"+
-          "</svg>" }
+        { letter: "فَـ", art: "ocean", word: "فَراشَةٌ", img: "images/فراشة.png" },
+        { letter: "ـفْـ", art: "ocean", word: "قُفْلٌ", img: "images/قفل.png" },
+        { letter: "ـف", art: "ocean", word: "خَروفٌ", img: "images/خروف.png" }
       ]
     },
 
@@ -31677,35 +31310,8 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "صِلْ شَكْلَ التّاءِ بِصورَةِ كَلِمَتِها.",
       pairs: [
-        { letter: "تا", art: "green", word: "تاجٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<path d='M14 76 L14 34 L32 52 L50 26 L68 52 L86 34 L86 76 Z' fill='#E08000'/>"+
-          "<path d='M14 76 L14 34 L32 52 L50 26 L50 76 Z' fill='#FFA000'/>"+
-          "<rect x='14' y='64' width='72' height='12' fill='#C06000'/>"+
-          "<path d='M14 76 L14 34 L32 52 L50 26 L68 52 L86 34 L86 76 Z' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-          "<rect x='10' y='76' width='80' height='12' rx='4' fill='#984800'/>"+
-          "<rect x='10' y='76' width='80' height='4' rx='3' fill='#FFC040'/>"+
-          "<rect x='10' y='76' width='80' height='12' rx='4' fill='none' stroke='#111111' stroke-width='2.7' stroke-linejoin='round'/>"+
-          "<circle cx='32' cy='70' r='4.5' fill='#FF2020' stroke='#111111' stroke-width='2'/>"+
-          "<circle cx='50' cy='70' r='4.5' fill='#0080C0' stroke='#111111' stroke-width='2'/>"+
-          "<circle cx='68' cy='70' r='4.5' fill='#60C020' stroke='#111111' stroke-width='2'/>"+
-          "<circle cx='50' cy='20' r='5.5' fill='#FFC040' stroke='#111111' stroke-width='2.3'/>"+
-          "</svg>" },
-        { letter: "ـتـ", art: "green", word: "سِتارٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<rect x='8' y='14' width='84' height='9' rx='4' fill='#9A6636' stroke='#111111' stroke-width='2.5'/>"+
-          "<circle cx='10' cy='18' r='5' fill='#B98551' stroke='#111111' stroke-width='2.2'/>"+
-          "<circle cx='90' cy='18' r='5' fill='#B98551' stroke='#111111' stroke-width='2.2'/>"+
-          "<path d='M16 24 q6 34 0 66 q10 4 18 0 q-6 -32 0 -66 Z' fill='#FF4020'/>"+
-          "<path d='M16 24 q6 34 0 66 q5 2 9 0 q-6 -32 0 -66 Z' fill='#FF8060'/>"+
-          "<path d='M16 24 q6 34 0 66 q10 4 18 0 q-6 -32 0 -66 Z' fill='none' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-          "<path d='M34 24 q6 34 0 66 q10 4 18 0 q-6 -32 0 -66 Z' fill='#FF2020'/>"+
-          "<path d='M34 24 q6 34 0 66 q10 4 18 0 q-6 -32 0 -66 Z' fill='none' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-          "<path d='M66 24 q-6 34 0 66 q-10 4 -18 0 q6 -32 0 -66 Z' fill='#E02000'/>"+
-          "<path d='M66 24 q-6 34 0 66 q-10 4 -18 0 q6 -32 0 -66 Z' fill='none' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-          "<path d='M84 24 q-6 34 0 66 q-10 4 -18 0 q6 -32 0 -66 Z' fill='#B01800'/>"+
-          "<path d='M84 24 q-6 34 0 66 q-10 4 -18 0 q6 -32 0 -66 Z' fill='none' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-          "</svg>" },
+        { letter: "تا", art: "green", word: "تاجٌ", img: "images/تاج.png" },
+        { letter: "ـتـ", art: "green", word: "سِتارٌ", img: "images/ستار.png" },
         { letter: "ـت", art: "green", word: "بَيْتٌ", img: "images/بيت.png" }
       ]
     },
@@ -31812,47 +31418,9 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "صِلْ شَكْلَ الْحاءِ بِصورَةِ كَلِمَتِها.",
       pairs: [
-        { letter: "حَـ", art: "red", word: "حَبْلٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<circle cx='50' cy='52' r='34' fill='none' stroke='#111111' stroke-width='16'/>"+
-          "<circle cx='50' cy='52' r='34' fill='none' stroke='#B98551' stroke-width='11'/>"+
-          "<circle cx='50' cy='52' r='34' fill='none' stroke='#9A6636' stroke-width='4' stroke-dasharray='7 7'/>"+
-          "<circle cx='50' cy='52' r='22' fill='none' stroke='#111111' stroke-width='14'/>"+
-          "<circle cx='50' cy='52' r='22' fill='none' stroke='#E0C080' stroke-width='9'/>"+
-          "<circle cx='50' cy='52' r='22' fill='none' stroke='#9A6636' stroke-width='3.4' stroke-dasharray='6 6'/>"+
-          "<path d='M78 34 q16 -14 8 -24' fill='none' stroke='#111111' stroke-width='14' stroke-linecap='round'/>"+
-          "<path d='M78 34 q16 -14 8 -24' fill='none' stroke='#B98551' stroke-width='9' stroke-linecap='round'/>"+
-          "</svg>" },
-        { letter: "ـحْـ", art: "red", word: "لَحْمٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<defs><clipPath id='mtB'><path d='M24 40 q18 -18 44 -8 q22 8 18 30 q-4 22 -30 24 q-28 2 -34 -18 q-4 -16 2 -28 Z'/></clipPath></defs>"+
-          "<g clip-path='url(#mtB)'>"+
-          "<rect x='0' y='0'  width='100' height='48' fill='#FF4020'/>"+
-          "<rect x='0' y='48' width='100' height='14' fill='#FF2020'/>"+
-          "<rect x='0' y='62' width='100' height='12' fill='#E02000'/>"+
-          "<rect x='0' y='74' width='100' height='26' fill='#B01800'/>"+
-          "<path d='M34 44 q16 12 34 6 M30 60 q18 10 38 2' fill='none' stroke='#FFDCD0' stroke-width='5' stroke-linecap='round'/>"+
-          "</g>"+
-          "<path d='M24 40 q18 -18 44 -8 q22 8 18 30 q-4 22 -30 24 q-28 2 -34 -18 q-4 -16 2 -28 Z' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-          "<path d='M62 30 q22 4 20 24 q-2 16 -16 20 q10 -18 4 -30 q-4 -10 -8 -14 Z' fill='#F7F6F1' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-          "</svg>" },
-        { letter: "ـح", art: "red", word: "مِلْحٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<defs><clipPath id='sltB'><path d='M30 40 h40 q6 0 6 8 v34 q0 8 -8 8 h-36 q-8 0 -8 -8 v-34 q0 -8 6 -8 Z'/></clipPath></defs>"+
-          "<g clip-path='url(#sltB)'>"+
-          "<rect x='0' y='0'  width='100' height='58' fill='#FFFFFF'/>"+
-          "<rect x='0' y='58' width='100' height='12' fill='#F1F0EA'/>"+
-          "<rect x='0' y='70' width='100' height='12' fill='#DCDAD2'/>"+
-          "<rect x='0' y='82' width='100' height='18' fill='#C0BEB6'/>"+
-          "</g>"+
-          "<path d='M30 40 h40 q6 0 6 8 v34 q0 8 -8 8 h-36 q-8 0 -8 -8 v-34 q0 -8 6 -8 Z' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-          "<path d='M28 40 h44 q4 0 4 -6 v-6 q0 -6 -6 -6 h-40 q-6 0 -6 6 v6 q0 6 4 6 Z' fill='#C0C0C0'/>"+
-          "<path d='M28 40 h44 q4 0 4 -6 v-4 h-52 v4 q0 6 4 6 Z' fill='#808080'/>"+
-          "<path d='M28 40 h44 q4 0 4 -6 v-6 q0 -6 -6 -6 h-40 q-6 0 -6 6 v6 q0 6 4 6 Z' fill='none' stroke='#111111' stroke-width='2.7' stroke-linejoin='round'/>"+
-          "<circle cx='42' cy='28' r='2.4' fill='#111111'/><circle cx='50' cy='25' r='2.4' fill='#111111'/>"+
-          "<circle cx='58' cy='28' r='2.4' fill='#111111'/>"+
-          "<circle cx='42' cy='64' r='3' fill='#DCDAD2'/><circle cx='56' cy='72' r='3' fill='#DCDAD2'/>"+
-          "</svg>" }
+        { letter: "حَـ", art: "red", word: "حَبْلٌ", img: "images/حبل.png" },
+        { letter: "ـحْـ", art: "red", word: "لَحْمٌ", img: "images/لحم.png" },
+        { letter: "ـح", art: "red", word: "مِلْحٌ", img: "images/ملح.png" }
       ]
     },
 
@@ -31967,62 +31535,9 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "صِلْ شَكْلَ الْقافِ بِصورَةِ كَلِمَتِها.",
       pairs: [
-        { letter: "قَـ", art: "amber", word: "قَمَرٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<defs><clipPath id='mnB'><circle cx='50' cy='46' r='32'/></clipPath></defs>"+
-          "<g clip-path='url(#mnB)'>"+
-          "<rect x='0' y='0'  width='100' height='34' fill='#FFFFC0'/>"+
-          "<rect x='0' y='34' width='100' height='14' fill='#E0E0A0'/>"+
-          "<rect x='0' y='48' width='100' height='14' fill='#E0C080'/>"+
-          "<rect x='0' y='62' width='100' height='38' fill='#E0C060'/>"+
-          "<circle cx='38' cy='34' r='6' fill='#D6C48E'/><circle cx='62' cy='52' r='5' fill='#D6C48E'/>"+
-          "<circle cx='44' cy='60' r='4' fill='#D6C48E'/>"+
-          "</g>"+
-          "<circle cx='50' cy='46' r='32' fill='none' stroke='#111111' stroke-width='2.8'/>"+
-          "<path d='M26 80 q-14 0 -14 -9 q0 -8 9 -9 q1 -11 12 -11 q8 0 11 7 q4 -3 8 -3 q9 0 10 10 q9 1 9 8 q0 7 -10 7 Z' fill='#808080'/>"+
-          "<path d='M26 80 q-14 0 -14 -9 q0 -8 9 -9 q1 -11 12 -11 q8 0 11 7 q4 -3 8 -3 q9 0 10 10 q9 1 9 8 q0 7 -10 7 Z' fill='none' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
-          "</svg>" },
-        { letter: "ـقْـ", art: "amber", word: "صَقْرٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<defs><clipPath id='flcB'><ellipse cx='48' cy='54' rx='24' ry='26'/></clipPath>"+
-          "<clipPath id='flcH'><circle cx='62' cy='26' r='14'/></clipPath></defs>"+
-          "<path d='M24 44 Q6 52 14 76 Q28 70 34 56 Z' fill='#7A4C22' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
-          "<path d='M72 44 Q90 52 82 76 Q68 70 62 56 Z' fill='#68411D' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
-          "<g clip-path='url(#flcB)'>"+
-          "<rect x='0' y='0'  width='100' height='48' fill='#B98551'/>"+
-          "<rect x='0' y='48' width='100' height='13' fill='#9A6636'/>"+
-          "<rect x='0' y='61' width='100' height='12' fill='#7A4C22'/>"+
-          "<rect x='0' y='73' width='100' height='27' fill='#68411D'/>"+
-          "</g>"+
-          "<ellipse cx='48' cy='54' rx='24' ry='26' fill='none' stroke='#111111' stroke-width='2.7'/>"+
-          "<g clip-path='url(#flcH)'>"+
-          "<rect x='0' y='0'  width='100' height='24' fill='#F1F0EA'/>"+
-          "<rect x='0' y='24' width='100' height='8'  fill='#DCDAD2'/>"+
-          "<rect x='0' y='32' width='100' height='68' fill='#C0BEB6'/>"+
-          "</g>"+
-          "<circle cx='62' cy='26' r='14' fill='none' stroke='#111111' stroke-width='2.6'/>"+
-          "<path d='M76 24 L90 30 L76 34 Z' fill='#FFC040' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
-          "<rect x='40' y='78' width='7' height='14' rx='3' fill='#FFC040' stroke='#111111' stroke-width='2.2'/>"+
-          "<rect x='54' y='78' width='7' height='14' rx='3' fill='#FFC040' stroke='#111111' stroke-width='2.2'/>"+
-          "</svg>" },
-        { letter: "ـق", art: "amber", word: "إِبْريقٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<defs><clipPath id='ktB'><path d='M28 46 h44 q8 0 8 10 v22 q0 10 -12 10 h-36 q-12 0 -12 -10 v-22 q0 -10 8 -10 Z'/></clipPath></defs>"+
-          "<path d='M28 58 q-16 2 -18 12 q-2 10 10 12' fill='none' stroke='#111111' stroke-width='9' stroke-linecap='round'/>"+
-          "<path d='M28 58 q-16 2 -18 12 q-2 10 10 12' fill='none' stroke='#FFC040' stroke-width='5' stroke-linecap='round'/>"+
-          "<g clip-path='url(#ktB)'>"+
-          "<rect x='0' y='0'  width='100' height='58' fill='#FFC040'/>"+
-          "<rect x='0' y='58' width='100' height='13' fill='#FFA000'/>"+
-          "<rect x='0' y='71' width='100' height='11' fill='#E08000'/>"+
-          "<rect x='0' y='82' width='100' height='18' fill='#C06000'/>"+
-          "<rect x='34' y='46' width='7' height='46' fill='#ffffff' opacity='.6'/>"+
-          "</g>"+
-          "<path d='M28 46 h44 q8 0 8 10 v22 q0 10 -12 10 h-36 q-12 0 -12 -10 v-22 q0 -10 8 -10 Z' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-          "<rect x='30' y='38' width='40' height='9' rx='4' fill='#E08000' stroke='#111111' stroke-width='2.5'/>"+
-          "<path d='M40 38 q10 -16 20 0' fill='none' stroke='#111111' stroke-width='7' stroke-linecap='round'/>"+
-          "<path d='M40 38 q10 -16 20 0' fill='none' stroke='#404040' stroke-width='4' stroke-linecap='round'/>"+
-          "<rect x='72' y='52' width='16' height='7' rx='3' fill='#E08000' stroke='#111111' stroke-width='2.4' transform='rotate(-24 80 55)'/>"+
-          "</svg>" }
+        { letter: "قَـ", art: "amber", word: "قَمَرٌ", img: "images/قمر.png" },
+        { letter: "ـقْـ", art: "amber", word: "صَقْرٌ", img: "images/صقر.png" },
+        { letter: "ـق", art: "amber", word: "إِبْريقٌ", img: "images/إبريق.png" }
       ]
     },
 
@@ -32128,76 +31643,9 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "صِلْ شَكْلَ الزّايِ بِصورَةِ كَلِمَتِها.",
       pairs: [
-        { letter: "زَ", art: "sky", word: "زَرافَةٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<defs><clipPath id='grfB'><ellipse cx='42' cy='64' rx='24' ry='17'/></clipPath>"+
-          "<clipPath id='grfN'><path d='M56 60 L60 22 L72 22 L70 62 Z'/></clipPath>"+
-          "<clipPath id='grfH'><ellipse cx='74' cy='18' rx='13' ry='9'/></clipPath></defs>"+
-          "<rect x='26' y='78' width='8' height='18' rx='4' fill='#C06000' stroke='#111111' stroke-width='2.2'/>"+
-          "<rect x='50' y='78' width='8' height='18' rx='4' fill='#C06000' stroke='#111111' stroke-width='2.2'/>"+
-          "<rect x='38' y='80' width='8' height='16' rx='4' fill='#E08000' stroke='#111111' stroke-width='2.2'/>"+
-          "<path d='M18 58 Q8 52 12 40' fill='none' stroke='#111111' stroke-width='7' stroke-linecap='round'/>"+
-          "<path d='M18 58 Q8 52 12 40' fill='none' stroke='#C06000' stroke-width='3.4' stroke-linecap='round'/>"+
-          "<g clip-path='url(#grfN)'>"+
-          "<rect x='0' y='0' width='100' height='40' fill='#FFC040'/>"+
-          "<rect x='0' y='40' width='100' height='60' fill='#FFA000'/>"+
-          "<circle cx='62' cy='32' r='3.4' fill='#984800'/><circle cx='68' cy='44' r='3.4' fill='#984800'/>"+
-          "<circle cx='62' cy='52' r='3.4' fill='#984800'/>"+
-          "</g>"+
-          "<path d='M56 60 L60 22 L72 22 L70 62 Z' fill='none' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
-          "<g clip-path='url(#grfB)'>"+
-          "<rect x='0' y='0'  width='100' height='58' fill='#FFC040'/>"+
-          "<rect x='0' y='58' width='100' height='12' fill='#FFA000'/>"+
-          "<rect x='0' y='70' width='100' height='11' fill='#E08000'/>"+
-          "<rect x='0' y='81' width='100' height='19' fill='#C06000'/>"+
-          "<circle cx='32' cy='58' r='4' fill='#984800'/><circle cx='48' cy='66' r='4' fill='#984800'/>"+
-          "<circle cx='40' cy='74' r='4' fill='#984800'/><circle cx='56' cy='56' r='4' fill='#984800'/>"+
-          "</g>"+
-          "<ellipse cx='42' cy='64' rx='24' ry='17' fill='none' stroke='#111111' stroke-width='2.6'/>"+
-          "<path d='M66 12 v-6 M80 12 v-6' stroke='#111111' stroke-width='4.4' stroke-linecap='round'/>"+
-          "<circle cx='66' cy='5' r='3.4' fill='#984800' stroke='#111111' stroke-width='2'/>"+
-          "<circle cx='80' cy='5' r='3.4' fill='#984800' stroke='#111111' stroke-width='2'/>"+
-          "<g clip-path='url(#grfH)'><rect x='0' y='0' width='100' height='16' fill='#FFC040'/>"+
-          "<rect x='0' y='16' width='100' height='84' fill='#FFA000'/></g>"+
-          "<ellipse cx='74' cy='18' rx='13' ry='9' fill='none' stroke='#111111' stroke-width='2.5'/>"+
-          "</svg>" },
-        { letter: "ـزَّ", art: "sky", word: "إِوَزَّةٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<defs><clipPath id='gseB'><ellipse cx='44' cy='62' rx='28' ry='19'/></clipPath>"+
-          "<clipPath id='gseH'><circle cx='72' cy='30' r='12'/></clipPath></defs>"+
-          "<ellipse cx='50' cy='86' rx='38' ry='8' fill='#40C0FF' stroke='#111111' stroke-width='2.4'/>"+
-          "<path d='M64 56 Q66 38 70 32' fill='none' stroke='#111111' stroke-width='12' stroke-linecap='round'/>"+
-          "<path d='M64 56 Q66 38 70 32' fill='none' stroke='#FFFFFF' stroke-width='8' stroke-linecap='round'/>"+
-          "<g clip-path='url(#gseB)'>"+
-          "<rect x='0' y='0'  width='100' height='56' fill='#FFFFFF'/>"+
-          "<rect x='0' y='56' width='100' height='11' fill='#F1F0EA'/>"+
-          "<rect x='0' y='67' width='100' height='10' fill='#DCDAD2'/>"+
-          "<rect x='0' y='77' width='100' height='23' fill='#C0BEB6'/>"+
-          "</g>"+
-          "<ellipse cx='44' cy='62' rx='28' ry='19' fill='none' stroke='#111111' stroke-width='2.6'/>"+
-          "<path d='M30 54 q16 -8 30 2 q-14 12 -30 -2 Z' fill='#F1F0EA' stroke='#111111' stroke-width='2.3' stroke-linejoin='round'/>"+
-          "<g clip-path='url(#gseH)'><rect x='0' y='0' width='100' height='28' fill='#FFFFFF'/>"+
-          "<rect x='0' y='28' width='100' height='72' fill='#F1F0EA'/></g>"+
-          "<circle cx='72' cy='30' r='12' fill='none' stroke='#111111' stroke-width='2.5'/>"+
-          "<path d='M84 28 L96 32 L84 36 Z' fill='#FFA000' stroke='#111111' stroke-width='2.3' stroke-linejoin='round'/>"+
-          "</svg>" },
-        { letter: "ـنْز", art: "sky", word: "كَنْزٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<path d='M16 44 q34 -26 68 0 v6 H16 Z' fill='#9A6636'/>"+
-          "<path d='M16 44 q34 -26 68 0 v-1 q-34 -22 -68 1 Z' fill='#B98551'/>"+
-          "<path d='M16 44 q34 -26 68 0 v6 H16 Z' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-          "<rect x='16' y='50' width='68' height='38' rx='4' fill='#9A6636'/>"+
-          "<rect x='16' y='50' width='68' height='9' fill='#B98551'/>"+
-          "<rect x='16' y='74' width='68' height='8' fill='#7A4C22'/>"+
-          "<rect x='16' y='82' width='68' height='6' fill='#68411D'/>"+
-          "<rect x='16' y='50' width='68' height='38' rx='4' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-          "<rect x='42' y='56' width='16' height='18' rx='3' fill='#FFC040' stroke='#111111' stroke-width='2.5'/>"+
-          "<circle cx='50' cy='63' r='3' fill='#111111'/>"+
-          "<circle cx='26' cy='40' r='7' fill='#FFC040' stroke='#111111' stroke-width='2.3'/>"+
-          "<circle cx='42' cy='34' r='7' fill='#FFFFC0' stroke='#111111' stroke-width='2.3'/>"+
-          "<circle cx='60' cy='34' r='7' fill='#FFC040' stroke='#111111' stroke-width='2.3'/>"+
-          "<circle cx='74' cy='40' r='7' fill='#E08000' stroke='#111111' stroke-width='2.3'/>"+
-          "</svg>" }
+        { letter: "زَ", art: "sky", word: "زَرافَةٌ", img: "images/زرافة.png" },
+        { letter: "ـزَّ", art: "sky", word: "إِوَزَّةٌ", img: "images/إوزة.png" },
+        { letter: "ـنْز", art: "sky", word: "كَنْزٌ", img: "images/كنز.png" }
       ]
     },
 
@@ -32298,48 +31746,9 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "صِلْ شَكْلَ الطّاءِ بِصورَةِ كَلِمَتِها.",
       pairs: [
-        { letter: "طَـ", art: "orange", word: "طَبْلٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<defs><clipPath id='drmB'><rect x='18' y='42' width='64' height='38'/></clipPath></defs>"+
-          "<g clip-path='url(#drmB)'>"+
-          "<rect x='18' y='42' width='64' height='38' fill='#FF2020'/>"+
-          "<rect x='18' y='68' width='64' height='12' fill='#E02000'/>"+
-          "<path d='M18 42 L32 80 L46 42 Z' fill='#FFC040'/>"+
-          "<path d='M46 42 L60 80 L74 42 Z' fill='#FFC040'/>"+
-          "</g>"+
-          "<rect x='18' y='42' width='64' height='38' fill='none' stroke='#111111' stroke-width='2.7'/>"+
-          "<ellipse cx='50' cy='42' rx='32' ry='9' fill='#F1F0EA'/>"+
-          "<ellipse cx='50' cy='42' rx='32' ry='9' fill='none' stroke='#111111' stroke-width='2.7'/>"+
-          "<ellipse cx='50' cy='80' rx='32' ry='8' fill='#DCDAD2' stroke='#111111' stroke-width='2.7'/>"+
-          "<path d='M56 40 L84 14' stroke='#111111' stroke-width='7' stroke-linecap='round'/>"+
-          "<path d='M56 40 L84 14' stroke='#B98551' stroke-width='4' stroke-linecap='round'/>"+
-          "<circle cx='86' cy='12' r='6' fill='#9A6636' stroke='#111111' stroke-width='2.4'/>"+
-          "<path d='M44 40 L20 14' stroke='#111111' stroke-width='7' stroke-linecap='round'/>"+
-          "<path d='M44 40 L20 14' stroke='#B98551' stroke-width='4' stroke-linecap='round'/>"+
-          "<circle cx='18' cy='12' r='6' fill='#9A6636' stroke='#111111' stroke-width='2.4'/>"+
-          "</svg>" },
-        { letter: "ـطْـ", art: "orange", word: "قُطْنٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<path d='M28 82 L36 52' stroke='#111111' stroke-width='7' stroke-linecap='round'/>"+
-          "<path d='M28 82 L36 52' stroke='#4A9018' stroke-width='4' stroke-linecap='round'/>"+
-          "<path d='M72 82 L64 52' stroke='#111111' stroke-width='7' stroke-linecap='round'/>"+
-          "<path d='M72 82 L64 52' stroke='#4A9018' stroke-width='4' stroke-linecap='round'/>"+
-          "<path d='M50 84 L50 56' stroke='#111111' stroke-width='7' stroke-linecap='round'/>"+
-          "<path d='M50 84 L50 56' stroke='#4A9018' stroke-width='4' stroke-linecap='round'/>"+
-          "<circle cx='34' cy='44' r='15' fill='#FFFFFF' stroke='#111111' stroke-width='2.6'/>"+
-          "<circle cx='66' cy='44' r='15' fill='#F1F0EA' stroke='#111111' stroke-width='2.6'/>"+
-          "<circle cx='50' cy='34' r='17' fill='#FFFFFF' stroke='#111111' stroke-width='2.6'/>"+
-          "<circle cx='42' cy='27' r='6' fill='#ffffff' opacity='.9'/>"+
-          "</svg>" },
-        { letter: "ـط", art: "orange", word: "مِشْطٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<rect x='12' y='30' width='76' height='20' rx='6' fill='#E02000'/>"+
-          "<rect x='12' y='30' width='76' height='7'  rx='4' fill='#FF4020'/>"+
-          "<rect x='12' y='44' width='76' height='6'  fill='#B01800'/>"+
-          "<rect x='12' y='30' width='76' height='20' rx='6' fill='none' stroke='#111111' stroke-width='2.7' stroke-linejoin='round'/>"+
-          "<path d='M18 50 v26 M26 50 v26 M34 50 v26 M42 50 v26 M50 50 v26 M58 50 v26 M66 50 v26 M74 50 v26 M82 50 v26' stroke='#111111' stroke-width='5.4' stroke-linecap='round'/>"+
-          "<path d='M18 50 v26 M26 50 v26 M34 50 v26 M42 50 v26 M50 50 v26 M58 50 v26 M66 50 v26 M74 50 v26 M82 50 v26' stroke='#FF2020' stroke-width='2.6' stroke-linecap='round'/>"+
-          "</svg>" }
+        { letter: "طَـ", art: "orange", word: "طَبْلٌ", img: "images/طبل.png" },
+        { letter: "ـطْـ", art: "orange", word: "قُطْنٌ", img: "images/قطن.png" },
+        { letter: "ـط", art: "orange", word: "مِشْطٌ", img: "images/مشط.png" }
       ]
     },
 
@@ -32453,66 +31862,10 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "صِلْ كُلَّ حَرْفٍ بِصورَةِ كَلِمَتِهِ.",
       pairs: [
-        { letter: "ف", art: "ocean", word: "فَراشَةٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<path d='M48 50 q-30 -30 -38 -8 q-6 18 14 22 q-16 8 -6 20 q10 12 30 -12 Z' fill='#0080C0'/>"+
-          "<path d='M48 50 q-30 -30 -38 -8 q-4 12 8 16 q14 4 30 -8 Z' fill='#00A0E0'/>"+
-          "<path d='M48 50 q-30 -30 -38 -8 q-6 18 14 22 q-16 8 -6 20 q10 12 30 -12 Z' fill='none' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
-          "<path d='M52 50 q30 -30 38 -8 q6 18 -14 22 q16 8 6 20 q-10 12 -30 -12 Z' fill='#0060A0'/>"+
-          "<path d='M52 50 q30 -30 38 -8 q4 12 -8 16 q-14 4 -30 -8 Z' fill='#0080C0'/>"+
-          "<path d='M52 50 q30 -30 38 -8 q6 18 -14 22 q16 8 6 20 q-10 12 -30 -12 Z' fill='none' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
-          "<rect x='46' y='26' width='8' height='52' rx='4' fill='#984800' stroke='#111111' stroke-width='2.5'/>"+
-          "<path d='M48 26 Q42 12 34 12 M52 26 Q58 12 66 12' fill='none' stroke='#111111' stroke-width='2.6' stroke-linecap='round'/>"+
-          "</svg>" },
-        { letter: "ق", art: "amber", word: "قَمَرٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<defs><clipPath id='mnR'><circle cx='50' cy='46' r='32'/></clipPath></defs>"+
-          "<g clip-path='url(#mnR)'>"+
-          "<rect x='0' y='0'  width='100' height='34' fill='#FFFFC0'/>"+
-          "<rect x='0' y='34' width='100' height='14' fill='#E0E0A0'/>"+
-          "<rect x='0' y='48' width='100' height='14' fill='#E0C080'/>"+
-          "<rect x='0' y='62' width='100' height='38' fill='#E0C060'/>"+
-          "<circle cx='38' cy='34' r='6' fill='#D6C48E'/><circle cx='62' cy='52' r='5' fill='#D6C48E'/>"+
-          "</g>"+
-          "<circle cx='50' cy='46' r='32' fill='none' stroke='#111111' stroke-width='2.8'/>"+
-          "</svg>" },
-        { letter: "ز", art: "sky", word: "زَرافَةٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<defs><clipPath id='grfB2'><ellipse cx='42' cy='64' rx='24' ry='17'/></clipPath>"+
-          "<clipPath id='grfN2'><path d='M56 60 L60 22 L72 22 L70 62 Z'/></clipPath>"+
-          "<clipPath id='grfH2'><ellipse cx='74' cy='18' rx='13' ry='9'/></clipPath></defs>"+
-          "<rect x='26' y='78' width='8' height='18' rx='4' fill='#C06000' stroke='#111111' stroke-width='2.2'/>"+
-          "<rect x='50' y='78' width='8' height='18' rx='4' fill='#C06000' stroke='#111111' stroke-width='2.2'/>"+
-          "<g clip-path='url(#grfN2)'>"+
-          "<rect x='0' y='0' width='100' height='40' fill='#FFC040'/>"+
-          "<rect x='0' y='40' width='100' height='60' fill='#FFA000'/>"+
-          "</g>"+
-          "<path d='M56 60 L60 22 L72 22 L70 62 Z' fill='none' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
-          "<g clip-path='url(#grfB2)'>"+
-          "<rect x='0' y='0'  width='100' height='58' fill='#FFC040'/>"+
-          "<rect x='0' y='58' width='100' height='12' fill='#FFA000'/>"+
-          "<rect x='0' y='70' width='100' height='30' fill='#E08000'/>"+
-          "<circle cx='32' cy='58' r='4' fill='#984800'/><circle cx='48' cy='66' r='4' fill='#984800'/>"+
-          "</g>"+
-          "<ellipse cx='42' cy='64' rx='24' ry='17' fill='none' stroke='#111111' stroke-width='2.6'/>"+
-          "<g clip-path='url(#grfH2)'><rect x='0' y='0' width='100' height='16' fill='#FFC040'/>"+
-          "<rect x='0' y='16' width='100' height='84' fill='#FFA000'/></g>"+
-          "<ellipse cx='74' cy='18' rx='13' ry='9' fill='none' stroke='#111111' stroke-width='2.5'/>"+
-          "</svg>" },
-        { letter: "ط", art: "orange", word: "طَبْلٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<defs><clipPath id='drmR'><rect x='18' y='42' width='64' height='38'/></clipPath></defs>"+
-          "<g clip-path='url(#drmR)'>"+
-          "<rect x='18' y='42' width='64' height='38' fill='#FF2020'/>"+
-          "<rect x='18' y='68' width='64' height='12' fill='#E02000'/>"+
-          "<path d='M18 42 L32 80 L46 42 Z' fill='#FFC040'/>"+
-          "<path d='M46 42 L60 80 L74 42 Z' fill='#FFC040'/>"+
-          "</g>"+
-          "<rect x='18' y='42' width='64' height='38' fill='none' stroke='#111111' stroke-width='2.7'/>"+
-          "<ellipse cx='50' cy='42' rx='32' ry='9' fill='#F1F0EA'/>"+
-          "<ellipse cx='50' cy='42' rx='32' ry='9' fill='none' stroke='#111111' stroke-width='2.7'/>"+
-          "<ellipse cx='50' cy='80' rx='32' ry='8' fill='#DCDAD2' stroke='#111111' stroke-width='2.7'/>"+
-          "</svg>" }
+        { letter: "ف", art: "ocean", word: "فَراشَةٌ", img: "images/فراشة.png" },
+        { letter: "ق", art: "amber", word: "قَمَرٌ", img: "images/قمر.png" },
+        { letter: "ز", art: "sky", word: "زَرافَةٌ", img: "images/زرافة.png" },
+        { letter: "ط", art: "orange", word: "طَبْلٌ", img: "images/طبل.png" }
       ]
     },
 
@@ -32647,55 +32000,9 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "صِلْ شَكْلَ الْهَمْزَةِ بِصورَةِ كَلِمَتِها.",
       pairs: [
-        { letter: "أَ", art: "red", word: "أَرْنَبٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<defs><clipPath id='rbtB'><ellipse cx='48' cy='64' rx='26' ry='20'/></clipPath>"+
-          "<clipPath id='rbtH'><circle cx='70' cy='42' r='15'/></clipPath></defs>"+
-          "<path d='M60 26 q-6 -22 2 -22 q8 0 6 22 Z' fill='#F1F0EA' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-          "<path d='M76 26 q6 -22 -2 -22 q-8 0 -6 22 Z' fill='#DCDAD2' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-          "<circle cx='22' cy='62' r='9' fill='#F1F0EA' stroke='#111111' stroke-width='2.5'/>"+
-          "<g clip-path='url(#rbtB)'>"+
-          "<rect x='0' y='0'  width='100' height='58' fill='#FFFFFF'/>"+
-          "<rect x='0' y='58' width='100' height='12' fill='#F1F0EA'/>"+
-          "<rect x='0' y='70' width='100' height='11' fill='#DCDAD2'/>"+
-          "<rect x='0' y='81' width='100' height='19' fill='#C0BEB6'/>"+
-          "</g>"+
-          "<ellipse cx='48' cy='64' rx='26' ry='20' fill='none' stroke='#111111' stroke-width='2.6'/>"+
-          "<g clip-path='url(#rbtH)'>"+
-          "<rect x='0' y='0'  width='100' height='40' fill='#FFFFFF'/>"+
-          "<rect x='0' y='40' width='100' height='60' fill='#F1F0EA'/>"+
-          "</g>"+
-          "<circle cx='70' cy='42' r='15' fill='none' stroke='#111111' stroke-width='2.6'/>"+
-          "<rect x='36' y='80' width='12' height='10' rx='5' fill='#DCDAD2' stroke='#111111' stroke-width='2.2'/>"+
-          "<rect x='54' y='80' width='12' height='10' rx='5' fill='#DCDAD2' stroke='#111111' stroke-width='2.2'/>"+
-          "</svg>" },
-        { letter: "ـئـ", art: "red", word: "طائِرَةٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<path d='M10 54 L34 40 L74 40 q16 0 16 8 q0 8 -16 8 H34 Z' fill='#F1F0EA'/>"+
-          "<path d='M10 54 L34 40 L74 40 q16 0 16 4 H10 Z' fill='#FFFFFF'/>"+
-          "<path d='M10 54 L34 40 L74 40 q16 0 16 8 q0 8 -16 8 H34 Z' fill='none' stroke='#111111' stroke-width='2.7' stroke-linejoin='round'/>"+
-          "<path d='M44 40 L54 18 L64 18 L60 40 Z' fill='#0080C0' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-          "<path d='M40 56 L28 78 L40 78 L52 56 Z' fill='#0060A0' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-          "<path d='M78 40 L84 26 L92 26 L88 40 Z' fill='#40C0FF' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
-          "<circle cx='30' cy='48' r='4' fill='#CDEBFF' stroke='#111111' stroke-width='2'/>"+
-          "<circle cx='44' cy='48' r='4' fill='#CDEBFF' stroke='#111111' stroke-width='2'/>"+
-          "<circle cx='58' cy='48' r='4' fill='#CDEBFF' stroke='#111111' stroke-width='2'/>"+
-          "</svg>" },
-        { letter: "ـاء", art: "red", word: "ماءٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<defs><clipPath id='wtrB'><path d='M18 76 q6 -22 32 -22 q26 0 32 22 q-6 10 -32 10 q-26 0 -32 -10 Z'/></clipPath></defs>"+
-          "<g clip-path='url(#wtrB)'>"+
-          "<rect x='0' y='0'  width='100' height='62' fill='#40C0FF'/>"+
-          "<rect x='0' y='62' width='100' height='10' fill='#20A0FF'/>"+
-          "<rect x='0' y='72' width='100' height='9'  fill='#2080E0'/>"+
-          "<rect x='0' y='81' width='100' height='19' fill='#1060A0'/>"+
-          "</g>"+
-          "<path d='M18 76 q6 -22 32 -22 q26 0 32 22 q-6 10 -32 10 q-26 0 -32 -10 Z' fill='none' stroke='#111111' stroke-width='2.7' stroke-linejoin='round'/>"+
-          "<path d='M34 54 q-4 -22 6 -30 q6 18 2 30 Z' fill='#40C0FF' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-          "<path d='M62 54 q6 -20 -2 -28 q-8 16 -6 28 Z' fill='#20A0FF' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-          "<circle cx='24' cy='36' r='6' fill='#40C0FF' stroke='#111111' stroke-width='2.3'/>"+
-          "<circle cx='78' cy='40' r='5' fill='#20A0FF' stroke='#111111' stroke-width='2.3'/>"+
-          "</svg>" }
+        { letter: "أَ", art: "red", word: "أَرْنَبٌ", img: "images/أرنب.png" },
+        { letter: "ـئـ", art: "red", word: "طائِرَةٌ", img: "images/طائرة.png" },
+        { letter: "ـاء", art: "red", word: "ماءٌ", img: "images/ماء.png" }
       ]
     },
 
@@ -32799,51 +32106,9 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "صِلْ شَكْلَ الْجيمِ بِصورَةِ كَلِمَتِها.",
       pairs: [
-        { letter: "جُـ", art: "amber", word: "جُوافَةٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<defs><clipPath id='gvaB'><circle cx='50' cy='58' r='32'/></clipPath></defs>"+
-          "<g clip-path='url(#gvaB)'>"+
-          "<rect x='0' y='0'  width='100' height='42' fill='#80C020'/>"+
-          "<rect x='0' y='42' width='100' height='14' fill='#60C020'/>"+
-          "<rect x='0' y='56' width='100' height='14' fill='#4A9018'/>"+
-          "<rect x='0' y='70' width='100' height='30' fill='#356810'/>"+
-          "<ellipse cx='38' cy='42' rx='12' ry='6' fill='#ffffff' opacity='.6' transform='rotate(-20 38 42)'/>"+
-          "</g>"+
-          "<circle cx='50' cy='58' r='32' fill='none' stroke='#111111' stroke-width='2.8'/>"+
-          "<ellipse cx='50' cy='58' rx='16' ry='18' fill='#FF8060' stroke='#111111' stroke-width='2.4'/>"+
-          "<circle cx='46' cy='52' r='2.6' fill='#FFFFC0'/><circle cx='55' cy='58' r='2.6' fill='#FFFFC0'/>"+
-          "<circle cx='47' cy='64' r='2.6' fill='#FFFFC0'/>"+
-          "<rect x='47' y='18' width='6' height='12' fill='#4A9018' stroke='#111111' stroke-width='2.2'/>"+
-          "<path d='M53 22 q18 -8 24 4 q-18 8 -24 -4 Z' fill='#60C020' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
-          "</svg>" },
-        { letter: "ـنْجـ", art: "amber", word: "باذِنْجانٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<defs><clipPath id='auB'><path d='M52 30 q26 4 26 32 q0 26 -24 30 q-26 4 -32 -20 q-6 -26 30 -42 Z'/></clipPath></defs>"+
-          "<g clip-path='url(#auB)'>"+
-          "<rect x='0' y='0'  width='100' height='48' fill='#8A4FD0'/>"+
-          "<rect x='0' y='48' width='100' height='14' fill='#6B2FB0'/>"+
-          "<rect x='0' y='62' width='100' height='14' fill='#521F8C'/>"+
-          "<rect x='0' y='76' width='100' height='24' fill='#3C1568'/>"+
-          "<ellipse cx='42' cy='50' rx='9' ry='16' fill='#ffffff' opacity='.35' transform='rotate(-18 42 50)'/>"+
-          "</g>"+
-          "<path d='M52 30 q26 4 26 32 q0 26 -24 30 q-26 4 -32 -20 q-6 -26 30 -42 Z' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-          "<path d='M44 32 q-10 -12 0 -16 q10 -4 14 8 q10 -6 14 2 q-8 10 -20 12 Z' fill='#4A9018' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-          "<path d='M56 20 L62 8' stroke='#111111' stroke-width='5' stroke-linecap='round'/>"+
-          "<path d='M56 20 L62 8' stroke='#60C020' stroke-width='2.6' stroke-linecap='round'/>"+
-          "</svg>" },
-        { letter: "ـج", art: "amber", word: "ثَلْجٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<path d='M14 46 L34 34 L60 34 L40 46 Z' fill='#CDEBFF' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-          "<rect x='14' y='46' width='26' height='26' fill='#8ACDF5'/>"+
-          "<rect x='14' y='60' width='26' height='12' fill='#5FB0E0'/>"+
-          "<rect x='14' y='46' width='26' height='26' fill='none' stroke='#111111' stroke-width='2.5'/>"+
-          "<path d='M40 46 L60 34 L60 60 L40 72 Z' fill='#40C0FF' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-          "<path d='M46 60 L66 48 L92 48 L72 60 Z' fill='#CDEBFF' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-          "<rect x='46' y='60' width='26' height='26' fill='#8ACDF5'/>"+
-          "<rect x='46' y='74' width='26' height='12' fill='#5FB0E0'/>"+
-          "<rect x='46' y='60' width='26' height='26' fill='none' stroke='#111111' stroke-width='2.5'/>"+
-          "<path d='M72 60 L92 48 L92 74 L72 86 Z' fill='#40C0FF' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-          "</svg>" }
+        { letter: "جُـ", art: "amber", word: "جُوافَةٌ", img: "images/جوافة.png" },
+        { letter: "ـنْجـ", art: "amber", word: "باذِنْجانٌ", img: "images/باذنجان.png" },
+        { letter: "ـج", art: "amber", word: "ثَلْجٌ", img: "images/ثلج.png" }
       ]
     },
 
@@ -32945,50 +32210,9 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "صِلْ شَكْلَ الْواوِ بِصورَةِ كَلِمَتِها.",
       pairs: [
-        { letter: "وَ", art: "green", word: "وَجْبَةٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<ellipse cx='50' cy='62' rx='42' ry='26' fill='#F1F0EA'/>"+
-          "<path d='M8 62 a42 26 0 0 1 84 0 Z' fill='#FFFFFF'/>"+
-          "<ellipse cx='50' cy='62' rx='42' ry='26' fill='none' stroke='#111111' stroke-width='2.8'/>"+
-          "<ellipse cx='50' cy='62' rx='30' ry='18' fill='none' stroke='#DCDAD2' stroke-width='2.4'/>"+
-          "<circle cx='36' cy='58' r='9' fill='#FF2020' stroke='#111111' stroke-width='2.4'/>"+
-          "<circle cx='58' cy='54' r='8' fill='#60C020' stroke='#111111' stroke-width='2.4'/>"+
-          "<circle cx='68' cy='66' r='7' fill='#FFA000' stroke='#111111' stroke-width='2.4'/>"+
-          "<path d='M32 70 q12 -8 24 0 q-10 8 -24 0 Z' fill='#4A9018' stroke='#111111' stroke-width='2.3' stroke-linejoin='round'/>"+
-          "<path d='M14 40 q10 -14 20 -2' fill='none' stroke='#C0C0C0' stroke-width='5' stroke-linecap='round'/>"+
-          "<path d='M14 40 q10 -14 20 -2' fill='none' stroke='#111111' stroke-width='2' stroke-linecap='round'/>"+
-          "</svg>" },
-        { letter: "ـوْ", art: "green", word: "كَوْكَبٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<defs><clipPath id='pltC'><circle cx='50' cy='50' r='30'/></clipPath></defs>"+
-          "<g clip-path='url(#pltC)'>"+
-          "<rect x='0' y='0'  width='100' height='30' fill='#FFC040'/>"+
-          "<rect x='0' y='30' width='100' height='14' fill='#FFA000'/>"+
-          "<rect x='0' y='44' width='100' height='14' fill='#E08000'/>"+
-          "<rect x='0' y='58' width='100' height='42' fill='#C06000'/>"+
-          "<ellipse cx='38' cy='30' rx='12' ry='5' fill='#ffffff' opacity='.65' transform='rotate(-20 38 30)'/>"+
-          "</g>"+
-          "<circle cx='50' cy='50' r='30' fill='none' stroke='#111111' stroke-width='2.8'/>"+
-          "<ellipse cx='50' cy='56' rx='46' ry='11' fill='none' stroke='#111111' stroke-width='6' transform='rotate(-16 50 56)'/>"+
-          "<ellipse cx='50' cy='56' rx='46' ry='11' fill='none' stroke='#FFC040' stroke-width='3' transform='rotate(-16 50 56)'/>"+
-          "</svg>" },
-        { letter: "ـوِ", art: "green", word: "فَراوِلَةٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<defs><clipPath id='strB'><path d='M50 90 q-32 -14 -32 -38 q0 -18 32 -18 q32 0 32 18 q0 24 -32 38 Z'/></clipPath></defs>"+
-          "<g clip-path='url(#strB)'>"+
-          "<rect x='0' y='0'  width='100' height='48' fill='#FF4020'/>"+
-          "<rect x='0' y='48' width='100' height='14' fill='#FF2020'/>"+
-          "<rect x='0' y='62' width='100' height='14' fill='#E02000'/>"+
-          "<rect x='0' y='76' width='100' height='24' fill='#B01800'/>"+
-          "<ellipse cx='36' cy='46' rx='11' ry='5' fill='#ffffff' opacity='.7' transform='rotate(-22 36 46)'/>"+
-          "</g>"+
-          "<path d='M50 90 q-32 -14 -32 -38 q0 -18 32 -18 q32 0 32 18 q0 24 -32 38 Z' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-          "<circle cx='38' cy='52' r='2.6' fill='#FFFFC0'/><circle cx='56' cy='48' r='2.6' fill='#FFFFC0'/>"+
-          "<circle cx='48' cy='64' r='2.6' fill='#FFFFC0'/><circle cx='64' cy='62' r='2.6' fill='#FFFFC0'/>"+
-          "<path d='M50 34 q-20 -6 -24 -14 q14 -2 24 6 q10 -8 24 -6 q-4 8 -24 14 Z' fill='#60C020' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-          "<path d='M50 22 L50 10' stroke='#111111' stroke-width='5' stroke-linecap='round'/>"+
-          "<path d='M50 22 L50 10' stroke='#4A9018' stroke-width='2.6' stroke-linecap='round'/>"+
-          "</svg>" }
+        { letter: "وَ", art: "green", word: "وَجْبَةٌ", img: "images/وجبة.png" },
+        { letter: "ـوْ", art: "green", word: "كَوْكَبٌ", img: "images/كوكب.png" },
+        { letter: "ـوِ", art: "green", word: "فَراوِلَةٌ", img: "images/فراولة.png" }
       ]
     },
 
@@ -33086,49 +32310,9 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "صِلْ شَكْلَ الشّينِ بِصورَةِ كَلِمَتِها.",
       pairs: [
-        { letter: "شَـ", art: "sky", word: "شَمَنْدَرٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<defs><clipPath id='btrB'><path d='M50 92 q-26 -16 -26 -34 q0 -16 26 -16 q26 0 26 16 q0 18 -26 34 Z'/></clipPath></defs>"+
-          "<g clip-path='url(#btrB)'>"+
-          "<rect x='0' y='0'  width='100' height='52' fill='#E02000'/>"+
-          "<rect x='0' y='52' width='100' height='14' fill='#B01800'/>"+
-          "<rect x='0' y='66' width='100' height='14' fill='#8A1000'/>"+
-          "<rect x='0' y='80' width='100' height='20' fill='#6A0C00'/>"+
-          "<ellipse cx='38' cy='50' rx='10' ry='5' fill='#ffffff' opacity='.5' transform='rotate(-20 38 50)'/>"+
-          "</g>"+
-          "<path d='M50 92 q-26 -16 -26 -34 q0 -16 26 -16 q26 0 26 16 q0 18 -26 34 Z' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-          "<path d='M44 44 q-16 -14 -10 -28 q12 4 16 22 Z' fill='#60C020' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-          "<path d='M56 44 q16 -16 12 -30 q-14 6 -18 24 Z' fill='#4A9018' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-          "<path d='M50 44 L50 16' stroke='#111111' stroke-width='5' stroke-linecap='round'/>"+
-          "<path d='M50 44 L50 16' stroke='#80C020' stroke-width='2.6' stroke-linecap='round'/>"+
-          "</svg>" },
-        { letter: "ـشْـ", art: "sky", word: "عُشْبٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<rect x='6' y='84' width='88' height='10' rx='4' fill='#9A6636' stroke='#111111' stroke-width='2.5'/>"+
-          "<path d='M18 86 q-4 -34 6 -50 q6 22 4 50 Z' fill='#4A9018' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
-          "<path d='M30 86 q0 -40 12 -54 q2 26 -4 54 Z' fill='#60C020' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
-          "<path d='M44 86 q2 -44 14 -56 q0 30 -6 56 Z' fill='#80C020' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
-          "<path d='M58 86 q4 -38 18 -48 q-2 26 -10 48 Z' fill='#60C020' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
-          "<path d='M72 86 q6 -30 16 -38 q-2 20 -8 38 Z' fill='#4A9018' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
-          "</svg>" },
-        { letter: "ـش", art: "sky", word: "خُفّاشٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<defs><clipPath id='batB'><ellipse cx='50' cy='56' rx='15' ry='19'/></clipPath></defs>"+
-          "<path d='M36 46 q-24 -14 -32 4 q12 -2 12 8 q10 -4 12 6 q6 -8 14 4 Z' fill='#606060'/>"+
-          "<path d='M36 46 q-24 -14 -32 4 q12 -2 12 8 q4 -2 8 0 Z' fill='#808080'/>"+
-          "<path d='M36 46 q-24 -14 -32 4 q12 -2 12 8 q10 -4 12 6 q6 -8 14 4 Z' fill='none' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
-          "<path d='M64 46 q24 -14 32 4 q-12 -2 -12 8 q-10 -4 -12 6 q-6 -8 -14 4 Z' fill='#404040'/>"+
-          "<path d='M64 46 q24 -14 32 4 q-12 -2 -12 8 q-4 -2 -8 0 Z' fill='#606060'/>"+
-          "<path d='M64 46 q24 -14 32 4 q-12 -2 -12 8 q-10 -4 -12 6 q-6 -8 -14 4 Z' fill='none' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
-          "<g clip-path='url(#batB)'>"+
-          "<rect x='0' y='0'  width='100' height='50' fill='#808080'/>"+
-          "<rect x='0' y='50' width='100' height='12' fill='#606060'/>"+
-          "<rect x='0' y='62' width='100' height='38' fill='#404040'/>"+
-          "</g>"+
-          "<ellipse cx='50' cy='56' rx='15' ry='19' fill='none' stroke='#111111' stroke-width='2.6'/>"+
-          "<path d='M40 40 L36 24 L48 34 Z' fill='#606060' stroke='#111111' stroke-width='2.3' stroke-linejoin='round'/>"+
-          "<path d='M60 40 L64 24 L52 34 Z' fill='#606060' stroke='#111111' stroke-width='2.3' stroke-linejoin='round'/>"+
-          "</svg>" }
+        { letter: "شَـ", art: "sky", word: "شَمَنْدَرٌ", img: "images/شمندر.png" },
+        { letter: "ـشْـ", art: "sky", word: "عُشْبٌ", img: "images/عشب.png" },
+        { letter: "ـش", art: "sky", word: "خُفّاشٌ", img: "images/خفاش.png" }
       ]
     },
 
@@ -33242,44 +32426,9 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "صِلْ شَكْلَ الْعَيْنِ بِصورَةِ كَلِمَتِها.",
       pairs: [
-        { letter: "عِـ", art: "orange", word: "عِنَبٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<path d='M50 34 L50 18' stroke='#111111' stroke-width='6' stroke-linecap='round'/>"+
-          "<path d='M50 34 L50 18' stroke='#9A6636' stroke-width='3.4' stroke-linecap='round'/>"+
-          "<path d='M50 20 q22 -10 30 2 q-20 10 -30 -2 Z' fill='#60C020' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
-          "<circle cx='50' cy='40' r='10' fill='#80C020' stroke='#111111' stroke-width='2.4'/>"+
-          "<circle cx='36' cy='52' r='10' fill='#60C020' stroke='#111111' stroke-width='2.4'/>"+
-          "<circle cx='64' cy='52' r='10' fill='#60C020' stroke='#111111' stroke-width='2.4'/>"+
-          "<circle cx='50' cy='60' r='10' fill='#80C020' stroke='#111111' stroke-width='2.4'/>"+
-          "<circle cx='30' cy='68' r='10' fill='#4A9018' stroke='#111111' stroke-width='2.4'/>"+
-          "<circle cx='70' cy='68' r='10' fill='#4A9018' stroke='#111111' stroke-width='2.4'/>"+
-          "<circle cx='50' cy='78' r='10' fill='#4A9018' stroke='#111111' stroke-width='2.4'/>"+
-          "<circle cx='47' cy='36' r='3' fill='#ffffff' opacity='.8'/>"+
-          "</svg>" },
-        { letter: "ـعا", art: "orange", word: "طَعامٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<ellipse cx='50' cy='60' rx='40' ry='24' fill='#F1F0EA'/>"+
-          "<path d='M10 60 a40 24 0 0 1 80 0 Z' fill='#FFFFFF'/>"+
-          "<ellipse cx='50' cy='60' rx='40' ry='24' fill='none' stroke='#111111' stroke-width='2.8'/>"+
-          "<ellipse cx='50' cy='60' rx='28' ry='16' fill='none' stroke='#DCDAD2' stroke-width='2.4'/>"+
-          "<path d='M32 62 q16 -12 34 -2 q-16 10 -34 2 Z' fill='#FFC040' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
-          "<circle cx='38' cy='54' r='7' fill='#60C020' stroke='#111111' stroke-width='2.3'/>"+
-          "<circle cx='62' cy='52' r='7' fill='#FF2020' stroke='#111111' stroke-width='2.3'/>"+
-          "<path d='M84 30 v24' stroke='#111111' stroke-width='6' stroke-linecap='round'/>"+
-          "<path d='M84 30 v24' stroke='#C0C0C0' stroke-width='3.4' stroke-linecap='round'/>"+
-          "<path d='M14 30 v24 M20 30 v24' stroke='#111111' stroke-width='5' stroke-linecap='round'/>"+
-          "<path d='M14 30 v24 M20 30 v24' stroke='#C0C0C0' stroke-width='2.6' stroke-linecap='round'/>"+
-          "</svg>" },
-        { letter: "ـع", art: "orange", word: "نَعْناعٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<path d='M50 88 L50 44' stroke='#111111' stroke-width='7' stroke-linecap='round'/>"+
-          "<path d='M50 88 L50 44' stroke='#4A9018' stroke-width='4' stroke-linecap='round'/>"+
-          "<path d='M48 62 q-24 -4 -30 -20 q22 -4 30 12 Z' fill='#60C020' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-          "<path d='M52 62 q24 -4 30 -20 q-22 -4 -30 12 Z' fill='#4A9018' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-          "<path d='M48 44 q-20 -6 -24 -22 q18 -2 24 14 Z' fill='#80C020' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-          "<path d='M52 44 q20 -6 24 -22 q-18 -2 -24 14 Z' fill='#60C020' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-          "<path d='M50 26 q-10 -14 0 -20 q10 6 0 20 Z' fill='#80C020' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
-          "</svg>" }
+        { letter: "عِـ", art: "orange", word: "عِنَبٌ", img: "images/عنب.png" },
+        { letter: "ـعا", art: "orange", word: "طَعامٌ", img: "images/طعام.png" },
+        { letter: "ـع", art: "orange", word: "نَعْناعٌ", img: "images/نعناع.png" }
       ]
     },
 
@@ -33387,50 +32536,9 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "صِلْ شَكْلَ الظّاءِ بِصورَةِ كَلِمَتِها.",
       pairs: [
-        { letter: "ظَـ", art: "ocean", word: "ظَبْيٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<defs><clipPath id='gzlB'><ellipse cx='44' cy='58' rx='24' ry='16'/></clipPath>"+
-          "<clipPath id='gzlH'><ellipse cx='76' cy='32' rx='11' ry='9'/></clipPath></defs>"+
-          "<rect x='26' y='72' width='7' height='22' rx='3' fill='#9A6636' stroke='#111111' stroke-width='2.2'/>"+
-          "<rect x='52' y='72' width='7' height='22' rx='3' fill='#9A6636' stroke='#111111' stroke-width='2.2'/>"+
-          "<rect x='38' y='74' width='7' height='20' rx='3' fill='#B98551' stroke='#111111' stroke-width='2.2'/>"+
-          "<path d='M20 52 Q10 46 14 36' fill='none' stroke='#111111' stroke-width='6' stroke-linecap='round'/>"+
-          "<path d='M20 52 Q10 46 14 36' fill='none' stroke='#B98551' stroke-width='3' stroke-linecap='round'/>"+
-          "<path d='M62 50 Q68 38 74 34' fill='none' stroke='#111111' stroke-width='10' stroke-linecap='round'/>"+
-          "<path d='M62 50 Q68 38 74 34' fill='none' stroke='#B98551' stroke-width='6' stroke-linecap='round'/>"+
-          "<g clip-path='url(#gzlB)'>"+
-          "<rect x='0' y='0'  width='100' height='52' fill='#B98551'/>"+
-          "<rect x='0' y='52' width='100' height='11' fill='#9A6636'/>"+
-          "<rect x='0' y='63' width='100' height='10' fill='#7A4C22'/>"+
-          "<rect x='0' y='73' width='100' height='27' fill='#68411D'/>"+
-          "</g>"+
-          "<ellipse cx='44' cy='58' rx='24' ry='16' fill='none' stroke='#111111' stroke-width='2.6'/>"+
-          "<g clip-path='url(#gzlH)'><rect x='0' y='0' width='100' height='30' fill='#B98551'/>"+
-          "<rect x='0' y='30' width='100' height='70' fill='#9A6636'/></g>"+
-          "<ellipse cx='76' cy='32' rx='11' ry='9' fill='none' stroke='#111111' stroke-width='2.5'/>"+
-          "<path d='M70 24 Q66 8 74 4' fill='none' stroke='#111111' stroke-width='5' stroke-linecap='round'/>"+
-          "<path d='M70 24 Q66 8 74 4' fill='none' stroke='#68411D' stroke-width='2.6' stroke-linecap='round'/>"+
-          "<path d='M82 24 Q88 8 82 4' fill='none' stroke='#111111' stroke-width='5' stroke-linecap='round'/>"+
-          "<path d='M82 24 Q88 8 82 4' fill='none' stroke='#68411D' stroke-width='2.6' stroke-linecap='round'/>"+
-          "</svg>" },
+        { letter: "ظَـ", art: "ocean", word: "ظَبْيٌ", img: "images/ظبي.png" },
         { letter: "ـظَـ", art: "ocean", word: "مِظَلَّةٌ", img: "images/مظلة.png" },
-        { letter: "ـظ", art: "ocean", word: "مَحافِظُ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<rect x='10' y='56' width='46' height='32' rx='5' fill='#7A4C22'/>"+
-          "<rect x='10' y='56' width='46' height='9'  rx='4' fill='#9A6636'/>"+
-          "<rect x='10' y='78' width='46' height='10' fill='#68411D'/>"+
-          "<rect x='10' y='56' width='46' height='32' rx='5' fill='none' stroke='#111111' stroke-width='2.7' stroke-linejoin='round'/>"+
-          "<rect x='28' y='64' width='16' height='10' rx='2' fill='#FFC040' stroke='#111111' stroke-width='2.3'/>"+
-          "<rect x='46' y='34' width='44' height='30' rx='5' fill='#4A9018'/>"+
-          "<rect x='46' y='34' width='44' height='9'  rx='4' fill='#60C020'/>"+
-          "<rect x='46' y='55' width='44' height='9'  fill='#356810'/>"+
-          "<rect x='46' y='34' width='44' height='30' rx='5' fill='none' stroke='#111111' stroke-width='2.7' stroke-linejoin='round'/>"+
-          "<rect x='62' y='42' width='15' height='9' rx='2' fill='#FFFFC0' stroke='#111111' stroke-width='2.3'/>"+
-          "<rect x='34' y='14' width='40' height='26' rx='5' fill='#0060A0'/>"+
-          "<rect x='34' y='14' width='40' height='8'  rx='4' fill='#0080C0'/>"+
-          "<rect x='34' y='32' width='40' height='8'  fill='#004880'/>"+
-          "<rect x='34' y='14' width='40' height='26' rx='5' fill='none' stroke='#111111' stroke-width='2.7' stroke-linejoin='round'/>"+
-          "</svg>" }
+        { letter: "ـظ", art: "ocean", word: "مَحافِظُ", img: "images/محافظ.png" }
       ]
     },
 
@@ -33529,69 +32637,10 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "صِلْ كُلَّ حَرْفٍ بِصورَةِ كَلِمَتِهِ.",
       pairs: [
-        { letter: "ء", art: "red", word: "أَرْنَبٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<defs><clipPath id='rbtR'><ellipse cx='48' cy='64' rx='26' ry='20'/></clipPath>"+
-          "<clipPath id='rbtRH'><circle cx='70' cy='42' r='15'/></clipPath></defs>"+
-          "<path d='M60 26 q-6 -22 2 -22 q8 0 6 22 Z' fill='#F1F0EA' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-          "<path d='M76 26 q6 -22 -2 -22 q-8 0 -6 22 Z' fill='#DCDAD2' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-          "<g clip-path='url(#rbtR)'>"+
-          "<rect x='0' y='0'  width='100' height='58' fill='#FFFFFF'/>"+
-          "<rect x='0' y='58' width='100' height='12' fill='#F1F0EA'/>"+
-          "<rect x='0' y='70' width='100' height='30' fill='#DCDAD2'/>"+
-          "</g>"+
-          "<ellipse cx='48' cy='64' rx='26' ry='20' fill='none' stroke='#111111' stroke-width='2.6'/>"+
-          "<g clip-path='url(#rbtRH)'><rect x='0' y='0' width='100' height='40' fill='#FFFFFF'/>"+
-          "<rect x='0' y='40' width='100' height='60' fill='#F1F0EA'/></g>"+
-          "<circle cx='70' cy='42' r='15' fill='none' stroke='#111111' stroke-width='2.6'/>"+
-          "</svg>" },
-        { letter: "ج", art: "amber", word: "جُوافَةٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<defs><clipPath id='gvaR'><circle cx='50' cy='58' r='32'/></clipPath></defs>"+
-          "<g clip-path='url(#gvaR)'>"+
-          "<rect x='0' y='0'  width='100' height='42' fill='#80C020'/>"+
-          "<rect x='0' y='42' width='100' height='14' fill='#60C020'/>"+
-          "<rect x='0' y='56' width='100' height='14' fill='#4A9018'/>"+
-          "<rect x='0' y='70' width='100' height='30' fill='#356810'/>"+
-          "</g>"+
-          "<circle cx='50' cy='58' r='32' fill='none' stroke='#111111' stroke-width='2.8'/>"+
-          "<ellipse cx='50' cy='58' rx='16' ry='18' fill='#FF8060' stroke='#111111' stroke-width='2.4'/>"+
-          "<rect x='47' y='18' width='6' height='12' fill='#4A9018' stroke='#111111' stroke-width='2.2'/>"+
-          "</svg>" },
-        { letter: "ش", art: "sky", word: "شَمَنْدَرٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<defs><clipPath id='btrR'><path d='M50 92 q-26 -16 -26 -34 q0 -16 26 -16 q26 0 26 16 q0 18 -26 34 Z'/></clipPath></defs>"+
-          "<g clip-path='url(#btrR)'>"+
-          "<rect x='0' y='0'  width='100' height='52' fill='#E02000'/>"+
-          "<rect x='0' y='52' width='100' height='14' fill='#B01800'/>"+
-          "<rect x='0' y='66' width='100' height='34' fill='#8A1000'/>"+
-          "</g>"+
-          "<path d='M50 92 q-26 -16 -26 -34 q0 -16 26 -16 q26 0 26 16 q0 18 -26 34 Z' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-          "<path d='M44 44 q-16 -14 -10 -28 q12 4 16 22 Z' fill='#60C020' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-          "<path d='M56 44 q16 -16 12 -30 q-14 6 -18 24 Z' fill='#4A9018' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-          "</svg>" },
-        { letter: "ظ", art: "ocean", word: "ظَبْيٌ", svg:
-          "<svg viewBox='0 0 100 100'>"+
-          "<defs><clipPath id='gzlR'><ellipse cx='44' cy='58' rx='24' ry='16'/></clipPath>"+
-          "<clipPath id='gzlRH'><ellipse cx='76' cy='32' rx='11' ry='9'/></clipPath></defs>"+
-          "<rect x='26' y='72' width='7' height='22' rx='3' fill='#9A6636' stroke='#111111' stroke-width='2.2'/>"+
-          "<rect x='52' y='72' width='7' height='22' rx='3' fill='#9A6636' stroke='#111111' stroke-width='2.2'/>"+
-          "<path d='M62 50 Q68 38 74 34' fill='none' stroke='#111111' stroke-width='10' stroke-linecap='round'/>"+
-          "<path d='M62 50 Q68 38 74 34' fill='none' stroke='#B98551' stroke-width='6' stroke-linecap='round'/>"+
-          "<g clip-path='url(#gzlR)'>"+
-          "<rect x='0' y='0'  width='100' height='52' fill='#B98551'/>"+
-          "<rect x='0' y='52' width='100' height='11' fill='#9A6636'/>"+
-          "<rect x='0' y='63' width='100' height='37' fill='#7A4C22'/>"+
-          "</g>"+
-          "<ellipse cx='44' cy='58' rx='24' ry='16' fill='none' stroke='#111111' stroke-width='2.6'/>"+
-          "<g clip-path='url(#gzlRH)'><rect x='0' y='0' width='100' height='30' fill='#B98551'/>"+
-          "<rect x='0' y='30' width='100' height='70' fill='#9A6636'/></g>"+
-          "<ellipse cx='76' cy='32' rx='11' ry='9' fill='none' stroke='#111111' stroke-width='2.5'/>"+
-          "<path d='M70 24 Q66 8 74 4' fill='none' stroke='#111111' stroke-width='5' stroke-linecap='round'/>"+
-          "<path d='M70 24 Q66 8 74 4' fill='none' stroke='#68411D' stroke-width='2.6' stroke-linecap='round'/>"+
-          "<path d='M82 24 Q88 8 82 4' fill='none' stroke='#111111' stroke-width='5' stroke-linecap='round'/>"+
-          "<path d='M82 24 Q88 8 82 4' fill='none' stroke='#68411D' stroke-width='2.6' stroke-linecap='round'/>"+
-          "</svg>" }
+        { letter: "ء", art: "red", word: "أَرْنَبٌ", img: "images/أرنب.png" },
+        { letter: "ج", art: "amber", word: "جُوافَةٌ", img: "images/جوافة.png" },
+        { letter: "ش", art: "sky", word: "شَمَنْدَرٌ", img: "images/شمندر.png" },
+        { letter: "ظ", art: "ocean", word: "ظَبْيٌ", img: "images/ظبي.png" }
       ]
     },
 
