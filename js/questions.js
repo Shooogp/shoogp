@@ -30685,46 +30685,10 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "اِنْقُرْ عَلى بابِ الْمَدْرَسَةِ.",
       bg: "#eef7ff",
-      spot: { x: 50, y: 72, r: 13 },
+      spot: { x: 49, y: 80, r: 9 },
       svg:
         "<svg viewBox='0 0 300 300'>"+
-        "<rect x='0' y='0' width='300' height='300' fill='#CDEBFF'/>"+
-        "<rect x='0' y='236' width='300' height='34' fill='#60C020'/>"+
-        "<rect x='0' y='270' width='300' height='30' fill='#4A9018'/>"+
-        // المبنى
-        "<rect x='70' y='96' width='160' height='140' fill='#E0C080'/>"+
-        "<rect x='70' y='96' width='160' height='24' fill='#FFFFC0'/>"+
-        "<rect x='70' y='206' width='160' height='30' fill='#C88A5E'/>"+
-        "<rect x='70' y='96' width='160' height='140' fill='none' stroke='#111111' stroke-width='3' stroke-linejoin='round'/>"+
-        "<rect x='60' y='82' width='180' height='16' rx='5' fill='#9A6636'/>"+
-        "<rect x='60' y='82' width='180' height='5' rx='3' fill='#B98551'/>"+
-        "<rect x='60' y='82' width='180' height='16' rx='5' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-        "<rect x='90' y='132' width='26' height='26' rx='3' fill='#40C0FF' stroke='#111111' stroke-width='2.5'/>"+
-        "<rect x='136' y='132' width='26' height='26' rx='3' fill='#40C0FF' stroke='#111111' stroke-width='2.5'/>"+
-        "<rect x='182' y='132' width='26' height='26' rx='3' fill='#40C0FF' stroke='#111111' stroke-width='2.5'/>"+
-        "<rect x='90' y='176' width='26' height='26' rx='3' fill='#40C0FF' stroke='#111111' stroke-width='2.5'/>"+
-        "<rect x='182' y='176' width='26' height='26' rx='3' fill='#40C0FF' stroke='#111111' stroke-width='2.5'/>"+
-        // البابُ (الهدف)
-        "<rect x='132' y='186' width='36' height='50' rx='4' fill='#9A6636'/>"+
-        "<rect x='132' y='186' width='36' height='12' rx='3' fill='#B98551'/>"+
-        "<rect x='132' y='224' width='36' height='12' fill='#68411D'/>"+
-        "<rect x='132' y='186' width='36' height='50' rx='4' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-        "<circle cx='160' cy='212' r='3.4' fill='#111111'/>"+
-        // السّاريَةُ والشَّجَرَةُ والحافِلَةُ
-        "<rect x='252' y='120' width='6' height='116' fill='#C0C0C0' stroke='#111111' stroke-width='2.2'/>"+
-        "<rect x='34' y='196' width='12' height='42' fill='#9A6636' stroke='#111111' stroke-width='2.4'/>"+
-        "<circle cx='40' cy='176' r='30' fill='#4A9018'/>"+
-        "<path d='M10 176 a30 30 0 0 1 60 0 Z' fill='#60C020'/>"+
-        "<path d='M14 164 a30 30 0 0 1 32 -15 Z' fill='#80C020'/>"+
-        "<circle cx='40' cy='176' r='30' fill='none' stroke='#111111' stroke-width='2.8'/>"+
-        "<rect x='214' y='244' width='72' height='34' rx='7' fill='#FFA000'/>"+
-        "<rect x='214' y='244' width='72' height='10' rx='5' fill='#FFC040'/>"+
-        "<rect x='214' y='266' width='72' height='12' fill='#C06000'/>"+
-        "<rect x='214' y='244' width='72' height='34' rx='7' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-        "<rect x='222' y='250' width='18' height='13' rx='2' fill='#CDEBFF' stroke='#111111' stroke-width='2'/>"+
-        "<rect x='246' y='250' width='18' height='13' rx='2' fill='#CDEBFF' stroke='#111111' stroke-width='2'/>"+
-        "<circle cx='232' cy='280' r='8' fill='#404040' stroke='#111111' stroke-width='2.4'/>"+
-        "<circle cx='270' cy='280' r='8' fill='#404040' stroke='#111111' stroke-width='2.4'/>"+
+        "<image href='images/مدرسة-باب.png' x='0' y='0' width='300' height='300'/>"+
         "</svg>"
     },
 
@@ -30798,42 +30762,10 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "اِنْقُرْ عَلى السَّبّورَةِ.",
       bg: "#fffdf5",
-      spot: { x: 50, y: 33, r: 14 },
+      spot: { x: 50, y: 38, r: 16 },
       svg:
         "<svg viewBox='0 0 300 300'>"+
-        "<rect x='0' y='0' width='300' height='300' fill='#FFF6E0'/>"+
-        "<rect x='0' y='214' width='300' height='86' fill='#C0C0C0'/>"+
-        "<rect x='0' y='214' width='300' height='10' fill='#E0E0E0'/>"+
-        // السَّبّورَةُ (الهدف)
-        "<rect x='72' y='58' width='156' height='84' rx='6' fill='#F9F8F3'/>"+
-        "<rect x='72' y='58' width='156' height='16' rx='5' fill='#FFFFFF'/>"+
-        "<rect x='72' y='128' width='156' height='14' fill='#E6E4DC'/>"+
-        "<rect x='72' y='58' width='156' height='84' rx='6' fill='none' stroke='#111111' stroke-width='3' stroke-linejoin='round'/>"+
-        "<rect x='66' y='142' width='168' height='10' rx='4' fill='#9A6636' stroke='#111111' stroke-width='2.6'/>"+
-        "<path d='M100 88 h100 M100 106 h72' stroke='#40C0FF' stroke-width='5' stroke-linecap='round'/>"+
-        // مَكْتَبُ الْمُعَلِّمَةِ
-        "<rect x='104' y='166' width='92' height='14' rx='4' fill='#9A6636'/>"+
-        "<rect x='104' y='166' width='92' height='5' rx='3' fill='#B98551'/>"+
-        "<rect x='104' y='166' width='92' height='14' rx='4' fill='none' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
-        "<path d='M116 180 v34 M184 180 v34' stroke='#111111' stroke-width='8' stroke-linecap='round'/>"+
-        "<path d='M116 180 v34 M184 180 v34' stroke='#B98551' stroke-width='4.5' stroke-linecap='round'/>"+
-        // طاولتا التلاميذ
-        "<rect x='16' y='230' width='96' height='13' rx='4' fill='#0080C0'/>"+
-        "<rect x='16' y='230' width='96' height='5' rx='3' fill='#40C0FF'/>"+
-        "<rect x='16' y='230' width='96' height='13' rx='4' fill='none' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
-        "<path d='M28 243 v34 M100 243 v34' stroke='#111111' stroke-width='8' stroke-linecap='round'/>"+
-        "<path d='M28 243 v34 M100 243 v34' stroke='#606060' stroke-width='4.5' stroke-linecap='round'/>"+
-        "<rect x='188' y='230' width='96' height='13' rx='4' fill='#0080C0'/>"+
-        "<rect x='188' y='230' width='96' height='5' rx='3' fill='#40C0FF'/>"+
-        "<rect x='188' y='230' width='96' height='13' rx='4' fill='none' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
-        "<path d='M200 243 v34 M272 243 v34' stroke='#111111' stroke-width='8' stroke-linecap='round'/>"+
-        "<path d='M200 243 v34 M272 243 v34' stroke='#606060' stroke-width='4.5' stroke-linecap='round'/>"+
-        // رَفُّ الْكُتُبِ وَسَلَّةُ الْمُهْمَلاتِ
-        "<rect x='240' y='96' width='48' height='8' rx='3' fill='#9A6636' stroke='#111111' stroke-width='2.4'/>"+
-        "<rect x='246' y='78' width='8' height='18' fill='#FF2020' stroke='#111111' stroke-width='2'/>"+
-        "<rect x='256' y='80' width='8' height='16' fill='#60C020' stroke='#111111' stroke-width='2'/>"+
-        "<rect x='266' y='76' width='8' height='20' fill='#FFA000' stroke='#111111' stroke-width='2'/>"+
-        "<path d='M16 176 L60 176 L54 214 L22 214 Z' fill='#984800' stroke='#111111' stroke-width='2.7' stroke-linejoin='round'/>"+
+        "<image href='images/سبورة.png' x='0' y='0' width='300' height='300'/>"+
         "</svg>"
     },
 
@@ -30926,40 +30858,10 @@ window.QUESTIONS = {
       level: "application",
       prompt: "اِنْقُرْ عَلى مَمَرِّ الْمُشاةِ.",
       bg: "#f4fbff",
-      spot: { x: 50, y: 63, r: 14 },
+      spot: { x: 50, y: 55, r: 13 },
       svg:
         "<svg viewBox='0 0 300 300'>"+
-        "<rect x='0' y='0' width='300' height='300' fill='#CDEBFF'/>"+
-        "<rect x='0' y='226' width='300' height='40' fill='#60C020'/>"+
-        "<rect x='0' y='266' width='300' height='34' fill='#4A9018'/>"+
-        "<rect x='0' y='150' width='300' height='76' fill='#606060'/>"+
-        "<rect x='0' y='150' width='300' height='8' fill='#808080'/>"+
-        "<rect x='0' y='218' width='300' height='8' fill='#404040'/>"+
-        // مَمَرُّ الْمُشاةِ (الهدف)
-        "<rect x='114' y='154' width='14' height='60' fill='#FFFFFF'/>"+
-        "<rect x='136' y='154' width='14' height='60' fill='#FFFFFF'/>"+
-        "<rect x='158' y='154' width='14' height='60' fill='#FFFFFF'/>"+
-        "<rect x='180' y='154' width='14' height='60' fill='#FFFFFF'/>"+
-        // إشارَةُ الْمُرورِ
-        "<rect x='240' y='120' width='8' height='106' fill='#808080' stroke='#111111' stroke-width='2.2'/>"+
-        "<rect x='228' y='60' width='32' height='66' rx='8' fill='#404040' stroke='#111111' stroke-width='2.8'/>"+
-        "<circle cx='244' cy='78'  r='9' fill='#FF2020' stroke='#111111' stroke-width='2.2'/>"+
-        "<circle cx='244' cy='100' r='9' fill='#FFC040' stroke='#111111' stroke-width='2.2'/>"+
-        "<circle cx='244' cy='118' r='7' fill='#60C020' stroke='#111111' stroke-width='2.2'/>"+
-        // بَيْتٌ (يسار) وَمَدْرَسَةٌ (يمين)
-        "<rect x='18' y='96' width='60' height='54' fill='#9A6636'/>"+
-        "<rect x='18' y='96' width='60' height='14' fill='#B98551'/>"+
-        "<rect x='18' y='96' width='60' height='54' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-        "<path d='M8 98 L48 64 L88 98 Z' fill='#E02000'/>"+
-        "<path d='M8 98 L48 64 L48 98 Z' fill='#FF2020'/>"+
-        "<path d='M8 98 L48 64 L88 98 Z' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-        "<rect x='38' y='122' width='20' height='28' rx='3' fill='#E08000' stroke='#111111' stroke-width='2.4'/>"+
-        "<rect x='176' y='84' width='108' height='66' fill='#E0C080'/>"+
-        "<rect x='176' y='84' width='108' height='16' fill='#FFFFC0'/>"+
-        "<rect x='176' y='84' width='108' height='66' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-        "<rect x='190' y='110' width='18' height='18' rx='2' fill='#40C0FF' stroke='#111111' stroke-width='2.2'/>"+
-        "<rect x='218' y='110' width='18' height='18' rx='2' fill='#40C0FF' stroke='#111111' stroke-width='2.2'/>"+
-        "<rect x='246' y='110' width='18' height='18' rx='2' fill='#40C0FF' stroke='#111111' stroke-width='2.2'/>"+
+        "<image href='images/ممر-مشاة.png' x='0' y='0' width='300' height='300'/>"+
         "</svg>"
     },
 
@@ -31266,52 +31168,15 @@ window.QUESTIONS = {
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
-        "<clipPath id='qqA'>"+
-        "<rect x='12' y='12' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
-        "<clipPath id='qqB'>"+
-        "<rect x='154' y='12' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
-        "<clipPath id='qqC'>"+
-        "<rect x='83' y='154' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
+        "<clipPath id='qqA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='qqB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='qqC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
         "</defs>"+
-        "<g transform='translate(142 0)'>"+
-        "<g clip-path='url(#qqA)'>"+
-        "<rect x='12' y='12' width='134' height='134' fill='#F3FFF0'/>"+
-        "<circle cx='54' cy='68' r='20' fill='#FF2020'/>"+
-        "<path d='M34 68 a20 20 0 0 1 40 0 Z' fill='#FF4020'/>"+
-        "<circle cx='54' cy='68' r='20' fill='none' stroke='#111111' stroke-width='2.7'/>"+
-        "<path d='M54 48 q4 -10 12 -12' fill='none' stroke='#4A9018' stroke-width='4.5' stroke-linecap='round'/>"+
-        "<circle cx='98' cy='78' r='16' fill='#E08000'/>"+
-        "<path d='M82 78 a16 16 0 0 1 32 0 Z' fill='#FFA000'/>"+
-        "<circle cx='98' cy='78' r='16' fill='none' stroke='#111111' stroke-width='2.6'/>"+
-        "<path d='M62 100 q18 -10 34 0 q-4 14 -17 14 q-13 0 -17 -14 Z' fill='#60C020' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-        "<text x='79' y='136' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='17' font-weight='800' fill='#3a2a12'>خُضارٌ وَفَواكِهُ</text>"+
-        "</g>"+
-        "</g>"+
+        "<g clip-path='url(#qqA)'><image href='images/ملابس.png' x='12' y='12' width='134' height='134'/></g>"+
         "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        "<g transform='translate(-142 0)'>"+
-        "<g clip-path='url(#qqB)'>"+
-        "<rect x='154' y='12' width='134' height='134' fill='#F4F0FF'/>"+
-        "<path d='M196 50 l14 -8 h22 l14 8 l-10 16 l-8 -5 v50 h-24 v-50 l-8 5 Z' fill='#0080C0'/>"+
-        "<path d='M196 50 l14 -8 h11 v69 h-11 v-50 l-8 5 Z' fill='#40C0FF'/>"+
-        "<path d='M196 50 l14 -8 h22 l14 8 l-10 16 l-8 -5 v50 h-24 v-50 l-8 5 Z' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-        "<text x='221' y='136' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>مَلابِسُ</text>"+
-        "</g>"+
-        "</g>"+
+        "<g clip-path='url(#qqB)'><image href='images/خضار-وفواكه.png' x='154' y='12' width='134' height='134'/></g>"+
         "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        "<g clip-path='url(#qqC)'>"+
-        "<rect x='83' y='154' width='134' height='134' fill='#FFF6F0'/>"+
-        "<rect x='112' y='214' width='40' height='26' rx='4' fill='#FF2020'/>"+
-        "<rect x='112' y='214' width='40' height='8' fill='#FF4020'/>"+
-        "<rect x='112' y='214' width='40' height='26' rx='4' fill='none' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
-        "<rect x='152' y='198' width='36' height='42' rx='4' fill='#60C020'/>"+
-        "<rect x='152' y='198' width='36' height='11' fill='#80C020'/>"+
-        "<rect x='152' y='198' width='36' height='42' rx='4' fill='none' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
-        "<circle cx='132' cy='196' r='14' fill='#FFA000' stroke='#111111' stroke-width='2.6'/>"+
-        "<text x='150' y='274' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>أَلْعابٌ</text>"+
-        "</g>"+
+        "<g clip-path='url(#qqC)'><image href='images/ألعاب.png' x='83' y='154' width='134' height='134'/></g>"+
         "<rect x='83' y='154' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
         "</svg>"
     },
@@ -31676,52 +31541,15 @@ window.QUESTIONS = {
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
-        "<clipPath id='hmA'>"+
-        "<rect x='12' y='12' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
-        "<clipPath id='hmB'>"+
-        "<rect x='154' y='12' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
-        "<clipPath id='hmC'>"+
-        "<rect x='83' y='154' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
+        "<clipPath id='hmA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='hmB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='hmC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
         "</defs>"+
-        "<g transform='translate(142 0)'>"+
-        "<g clip-path='url(#hmA)'>"+
-        "<rect x='12' y='12' width='134' height='134' fill='#F3FFF0'/>"+
-        "<rect x='30' y='40' width='30' height='46' rx='4' fill='#FFFFFF' stroke='#111111' stroke-width='2.6'/>"+
-        "<rect x='30' y='40' width='30' height='12' rx='3' fill='#40C0FF' stroke='#111111' stroke-width='2.4'/>"+
-        "<path d='M70 56 h44 l-6 30 h-32 Z' fill='#FFC040'/>"+
-        "<path d='M70 56 h44 l-2 10 h-40 Z' fill='#FFFFC0'/>"+
-        "<path d='M70 56 h44 l-6 30 h-32 Z' fill='none' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
-        "<circle cx='58' cy='104' r='14' fill='#80C020'/>"+
-        "<path d='M44 104 a14 14 0 0 1 28 0 Z' fill='#60C020'/>"+
-        "<circle cx='58' cy='104' r='14' fill='none' stroke='#111111' stroke-width='2.5'/>"+
-        "<circle cx='96' cy='106' r='12' fill='#FF4020' stroke='#111111' stroke-width='2.5'/>"+
-        "<text x='79' y='136' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='16' font-weight='800' fill='#3a2a12'>حَليبٌ وَشَطيرَةٌ وَفاكِهَةٌ</text>"+
-        "</g>"+
-        "</g>"+
+        "<g clip-path='url(#hmA)'><image href='images/علبة-حلوى.png' x='12' y='12' width='134' height='134'/></g>"+
         "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        "<g transform='translate(-142 0)'>"+
-        "<g clip-path='url(#hmB)'>"+
-        "<rect x='154' y='12' width='134' height='134' fill='#FFF0F6'/>"+
-        "<circle cx='200' cy='70' r='18' fill='#FF2020' stroke='#111111' stroke-width='2.6'/>"+
-        "<circle cx='240' cy='84' r='16' fill='#FFA000' stroke='#111111' stroke-width='2.6'/>"+
-        "<circle cx='222' cy='50' r='14' fill='#60C020' stroke='#111111' stroke-width='2.6'/>"+
-        "<rect x='188' y='96' width='60' height='14' rx='7' fill='#984800' stroke='#111111' stroke-width='2.5'/>"+
-        "<text x='221' y='136' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>حَلْوى</text>"+
-        "</g>"+
-        "</g>"+
+        "<g clip-path='url(#hmB)'><image href='images/علبة-متكاملة.png' x='154' y='12' width='134' height='134'/></g>"+
         "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        "<g clip-path='url(#hmC)'>"+
-        "<rect x='83' y='154' width='134' height='134' fill='#FFF6EC'/>"+
-        "<rect x='128' y='192' width='44' height='62' rx='7' fill='#E02000'/>"+
-        "<rect x='128' y='192' width='44' height='14' rx='6' fill='#FF4020'/>"+
-        "<rect x='128' y='240' width='44' height='14' fill='#B01800'/>"+
-        "<rect x='128' y='192' width='44' height='62' rx='7' fill='none' stroke='#111111' stroke-width='2.7' stroke-linejoin='round'/>"+
-        "<rect x='134' y='186' width='32' height='8' rx='3' fill='#C0C0C0' stroke='#111111' stroke-width='2.4'/>"+
-        "<text x='150' y='276' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='17' font-weight='800' fill='#3a2a12'>مَشْروبٌ غازِيٌّ</text>"+
-        "</g>"+
+        "<g clip-path='url(#hmC)'><image href='images/علبة-مشروب.png' x='83' y='154' width='134' height='134'/></g>"+
         "<rect x='83' y='154' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
         "</svg>"
     },
@@ -31869,46 +31697,15 @@ window.QUESTIONS = {
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
-        "<clipPath id='wwA'>"+
-        "<rect x='12' y='12' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
-        "<clipPath id='wwB'>"+
-        "<rect x='154' y='12' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
-        "<clipPath id='wwC'>"+
-        "<rect x='83' y='154' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
+        "<clipPath id='wwA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='wwB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='wwC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
         "</defs>"+
-        "<g clip-path='url(#wwA)'>"+
-        "<rect x='12' y='12' width='134' height='134' fill='#FFFDF0'/>"+
-        "<path d='M34 62 q10 34 44 34 q30 0 34 -22 q-14 12 -34 8 q-30 -6 -44 -20 Z' fill='#FFC040'/>"+
-        "<path d='M34 62 q10 34 44 34 q16 0 26 -8 q-30 4 -70 -26 Z' fill='#FFFFC0'/>"+
-        "<path d='M34 62 q10 34 44 34 q30 0 34 -22 q-14 12 -34 8 q-30 -6 -44 -20 Z' fill='none' stroke='#111111' stroke-width='2.7' stroke-linejoin='round'/>"+
-        "<path d='M50 60 q40 -6 62 -18' fill='none' stroke='#111111' stroke-width='9' stroke-linecap='round'/>"+
-        "<path d='M50 60 q40 -6 62 -18' fill='none' stroke='#FFC040' stroke-width='5.5' stroke-linecap='round'/>"+
-        "<path d='M70 108 q-20 -10 -20 -24 q0 -11 20 -11 q20 0 20 11 q0 14 -20 24 Z' fill='#FF2020' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
-        "<path d='M70 73 q-12 -4 -14 -9 q9 -1 14 4 q6 -5 14 -4 q-2 5 -14 9 Z' fill='#60C020' stroke='#111111' stroke-width='2.3' stroke-linejoin='round'/>"+
-        "<text x='79' y='138' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='17' font-weight='800' fill='#3a2a12'>مَوْزٌ وَفَراوِلَةٌ</text>"+
-        "</g>"+
+        "<g clip-path='url(#wwA)'><image href='images/موز-وفراولة.png' x='12' y='12' width='134' height='134'/></g>"+
         "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        "<g clip-path='url(#wwB)'>"+
-        "<rect x='154' y='12' width='134' height='134' fill='#F0FFF0'/>"+
-        "<path d='M196 96 q-10 -34 22 -34 q34 0 24 34 q-4 14 -24 14 q-18 0 -22 -14 Z' fill='#60C020'/>"+
-        "<path d='M196 96 q-10 -34 22 -34 q16 0 20 12 q-24 6 -42 22 Z' fill='#80C020'/>"+
-        "<path d='M196 96 q-10 -34 22 -34 q34 0 24 34 q-4 14 -24 14 q-18 0 -22 -14 Z' fill='none' stroke='#111111' stroke-width='2.7' stroke-linejoin='round'/>"+
-        "<circle cx='248' cy='84' r='16' fill='#FF4020' stroke='#111111' stroke-width='2.6'/>"+
-        "<circle cx='192' cy='60' r='13' fill='#E08000' stroke='#111111' stroke-width='2.5'/>"+
-        "<text x='221' y='134' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>خُضارٌ</text>"+
-        "</g>"+
+        "<g clip-path='url(#wwB)'><image href='images/خضار.png' x='154' y='12' width='134' height='134'/></g>"+
         "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        "<g clip-path='url(#wwC)'>"+
-        "<rect x='83' y='154' width='134' height='134' fill='#FFF0F6'/>"+
-        "<circle cx='132' cy='206' r='18' fill='#FF2020' stroke='#111111' stroke-width='2.6'/>"+
-        "<circle cx='170' cy='218' r='16' fill='#FFA000' stroke='#111111' stroke-width='2.6'/>"+
-        "<circle cx='152' cy='188' r='14' fill='#60C020' stroke='#111111' stroke-width='2.6'/>"+
-        "<rect x='118' y='232' width='62' height='14' rx='7' fill='#984800' stroke='#111111' stroke-width='2.5'/>"+
-        "<text x='150' y='276' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>حَلْوى</text>"+
-        "</g>"+
+        "<g clip-path='url(#wwC)'><image href='images/حلوى.png' x='83' y='154' width='134' height='134'/></g>"+
         "<rect x='83' y='154' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
         "</svg>"
     },
