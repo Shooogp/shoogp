@@ -30016,54 +30016,15 @@ window.QUESTIONS = {
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
-        "<clipPath id='rrA'>"+
-        "<rect x='12' y='12' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
-        "<clipPath id='rrB'>"+
-        "<rect x='154' y='12' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
-        "<clipPath id='rrC'>"+
-        "<rect x='83' y='154' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
+        "<clipPath id='rrA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='rrB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='rrC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
         "</defs>"+
-        "<g transform='translate(71 142)'>"+
-        "<g clip-path='url(#rrA)'>"+
-        "<rect x='12' y='12' width='134' height='134' fill='#FFF3D0'/>"+
-        "<circle cx='118' cy='42' r='15' fill='#FFA000' stroke='#111111' stroke-width='2.4'/>"+
-        "<path d='M12 96 q34 -30 67 -10 q33 20 67 -8 v68 H12 Z' fill='#E0C080'/>"+
-        "<path d='M12 96 q34 -30 67 -10 q33 20 67 -8 v12 q-34 26 -67 6 q-33 -20 -67 10 Z' fill='#FFFFC0'/>"+
-        "<rect x='12' y='126' width='134' height='12' fill='#E0A87F'/>"+
-        "<rect x='12' y='138' width='134' height='8' fill='#C88A5E'/>"+
-        "<path d='M12 96 q34 -30 67 -10 q33 20 67 -8' fill='none' stroke='#111111' stroke-width='2.8' stroke-linecap='round'/>"+
-        "<text x='79' y='136' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='19' font-weight='800' fill='#3a2a12'>الصَّحْراءُ</text>"+
-        "</g>"+
-        "</g>"+
+        "<g clip-path='url(#rrA)'><image href='images/حديقة.png' x='12' y='12' width='134' height='134'/></g>"+
         "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        "<g clip-path='url(#rrB)'>"+
-        "<rect x='154' y='12' width='134' height='134' fill='#CDEBFF'/>"+
-        "<rect x='154' y='72' width='134' height='74' fill='#0080C0'/>"+
-        "<path d='M154 72 q17 -9 34 0 t34 0 t34 0 t34 0 v12 H154 Z' fill='#00A0E0'/>"+
-        "<rect x='154' y='112' width='134' height='20' fill='#0060A0'/>"+
-        "<rect x='154' y='132' width='134' height='14' fill='#004880'/>"+
-        "<path d='M172 98 q10 -6 20 0 M240 118 q10 -6 20 0' stroke='#ffffff' stroke-width='3' fill='none' opacity='.8' stroke-linecap='round'/>"+
-        "<text x='221' y='136' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='19' font-weight='800' fill='#ffffff'>الْبَحْرُ</text>"+
-        "</g>"+
+        "<g clip-path='url(#rrB)'><image href='images/بحر.png' x='154' y='12' width='134' height='134'/></g>"+
         "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        "<g transform='translate(-71 -142)'>"+
-        "<g clip-path='url(#rrC)'>"+
-        "<rect x='83' y='154' width='134' height='134' fill='#EAF8E4'/>"+
-        "<rect x='83' y='246' width='134' height='20' fill='#60C020'/>"+
-        "<rect x='83' y='266' width='134' height='22' fill='#4A9018'/>"+
-        "<rect x='144' y='214' width='12' height='36' fill='#9A6636'/>"+
-        "<rect x='144' y='214' width='4'  height='36' fill='#B98551'/>"+
-        "<rect x='144' y='214' width='12' height='36' fill='none' stroke='#111111' stroke-width='2.4'/>"+
-        "<circle cx='150' cy='202' r='28' fill='#4A9018'/>"+
-        "<path d='M122 202 a28 28 0 0 1 56 0 Z' fill='#60C020'/>"+
-        "<path d='M126 190 a28 28 0 0 1 30 -14 Z' fill='#80C020'/>"+
-        "<circle cx='150' cy='202' r='28' fill='none' stroke='#111111' stroke-width='2.8'/>"+
-        "<text x='150' y='280' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='19' font-weight='800' fill='#ffffff'>الْحَديقَةُ</text>"+
-        "</g>"+
-        "</g>"+
+        "<g clip-path='url(#rrC)'><image href='images/صحراء.png' x='83' y='154' width='134' height='134'/></g>"+
         "<rect x='83' y='154' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
         "</svg>"
     },
@@ -30292,58 +30253,15 @@ window.QUESTIONS = {
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
-        "<clipPath id='ddA'>"+
-        "<rect x='12' y='12' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
-        "<clipPath id='ddB'>"+
-        "<rect x='154' y='12' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
-        "<clipPath id='ddC'>"+
-        "<rect x='83' y='154' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
+        "<clipPath id='ddA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='ddB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='ddC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
         "</defs>"+
-        "<g clip-path='url(#ddA)'>"+
-        "<rect x='12' y='12' width='134' height='134' fill='#EAF4FF'/>"+
-        "<rect x='12' y='120' width='134' height='26' fill='#B98551'/>"+
-        "<rect x='26' y='48' width='106' height='74' fill='#E0C080'/>"+
-        "<rect x='26' y='48' width='106' height='16' fill='#FFFFC0'/>"+
-        "<rect x='26' y='104' width='106' height='18' fill='#C88A5E'/>"+
-        "<rect x='26' y='48' width='106' height='74' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-        "<rect x='20' y='40' width='118' height='10' rx='3' fill='#9A6636' stroke='#111111' stroke-width='2.5'/>"+
-        "<rect x='38' y='70' width='16' height='16' rx='2' fill='#40C0FF' stroke='#111111' stroke-width='2.2'/>"+
-        "<rect x='62' y='70' width='16' height='16' rx='2' fill='#40C0FF' stroke='#111111' stroke-width='2.2'/>"+
-        "<rect x='104' y='70' width='16' height='16' rx='2' fill='#40C0FF' stroke='#111111' stroke-width='2.2'/>"+
-        "<rect x='70' y='96' width='24' height='26' rx='3' fill='#9A6636' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
-        "<text x='79' y='140' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='19' font-weight='800' fill='#3a2a12'>الْمَدْرَسَةُ</text>"+
-        "</g>"+
+        "<g clip-path='url(#ddA)'><image href='images/مدرسة.png' x='12' y='12' width='134' height='134'/></g>"+
         "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        "<g clip-path='url(#ddB)'>"+
-        "<rect x='154' y='12' width='134' height='134' fill='#FFF6EC'/>"+
-        "<rect x='154' y='122' width='134' height='24' fill='#60C020'/>"+
-        "<rect x='186' y='74' width='70' height='48' fill='#9A6636'/>"+
-        "<rect x='186' y='74' width='70' height='12' fill='#B98551'/>"+
-        "<rect x='186' y='110' width='70' height='12' fill='#7A4C22'/>"+
-        "<rect x='186' y='74' width='70' height='48' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-        "<path d='M176 76 L221 42 L266 76 Z' fill='#E02000'/>"+
-        "<path d='M176 76 L221 42 L221 76 Z' fill='#FF2020'/>"+
-        "<path d='M176 76 L221 42 L266 76 Z' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-        "<rect x='210' y='96' width='22' height='26' rx='3' fill='#E08000' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
-        "<text x='221' y='140' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='19' font-weight='800' fill='#3a2a12'>الْبَيْتُ</text>"+
-        "</g>"+
+        "<g clip-path='url(#ddB)'><image href='images/بيت.png' x='154' y='12' width='134' height='134'/></g>"+
         "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        "<g clip-path='url(#ddC)'>"+
-        "<rect x='83' y='154' width='134' height='134' fill='#EAF8E4'/>"+
-        "<rect x='83' y='250' width='134' height='18' fill='#60C020'/>"+
-        "<rect x='83' y='268' width='134' height='20' fill='#4A9018'/>"+
-        "<rect x='144' y='218' width='12' height='34' fill='#9A6636'/>"+
-        "<rect x='144' y='218' width='4'  height='34' fill='#B98551'/>"+
-        "<rect x='144' y='218' width='12' height='34' fill='none' stroke='#111111' stroke-width='2.4'/>"+
-        "<circle cx='150' cy='206' r='27' fill='#4A9018'/>"+
-        "<path d='M123 206 a27 27 0 0 1 54 0 Z' fill='#60C020'/>"+
-        "<path d='M127 195 a27 27 0 0 1 29 -13 Z' fill='#80C020'/>"+
-        "<circle cx='150' cy='206' r='27' fill='none' stroke='#111111' stroke-width='2.8'/>"+
-        "<text x='150' y='282' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='19' font-weight='800' fill='#ffffff'>الْحَديقَةُ</text>"+
-        "</g>"+
+        "<g clip-path='url(#ddC)'><image href='images/حديقة.png' x='83' y='154' width='134' height='134'/></g>"+
         "<rect x='83' y='154' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
         "</svg>"
     },
@@ -30650,53 +30568,15 @@ window.QUESTIONS = {
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
-        "<clipPath id='nnA'>"+
-        "<rect x='12' y='12' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
-        "<clipPath id='nnB'>"+
-        "<rect x='154' y='12' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
-        "<clipPath id='nnC'>"+
-        "<rect x='83' y='154' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
+        "<clipPath id='nnA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='nnB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='nnC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
         "</defs>"+
-        "<g transform='translate(71 142)'>"+
-        "<g clip-path='url(#nnA)'>"+
-        "<rect x='12' y='12' width='134' height='134' fill='#FFF7FB'/>"+
-        "<rect x='30' y='58' width='98' height='40' rx='6' fill='#0080C0'/>"+
-        "<rect x='30' y='58' width='98' height='11' rx='5' fill='#40C0FF'/>"+
-        "<rect x='30' y='88' width='98' height='10' fill='#0060A0'/>"+
-        "<rect x='30' y='58' width='98' height='40' rx='6' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-        "<circle cx='46' cy='78' r='8' fill='#FF2020' stroke='#111111' stroke-width='2.3'/>"+
-        "<circle cx='68' cy='78' r='8' fill='#FFA000' stroke='#111111' stroke-width='2.3'/>"+
-        "<circle cx='90' cy='78' r='8' fill='#60C020' stroke='#111111' stroke-width='2.3'/>"+
-        "<circle cx='112' cy='78' r='8' fill='#984800' stroke='#111111' stroke-width='2.3'/>"+
-        "<text x='79' y='128' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='19' font-weight='800' fill='#3a2a12'>أَلْوانٌ</text>"+
-        "</g>"+
-        "</g>"+
+        "<g clip-path='url(#nnA)'><image href='images/مبراة.png' x='12' y='12' width='134' height='134'/></g>"+
         "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        "<g clip-path='url(#nnB)'>"+
-        "<rect x='154' y='12' width='134' height='134' fill='#F3FBF0'/>"+
-        "<rect x='186' y='46' width='70' height='58' rx='5' fill='#4A9018'/>"+
-        "<rect x='186' y='46' width='70' height='14' rx='4' fill='#60C020'/>"+
-        "<rect x='186' y='92' width='70' height='12' fill='#356810'/>"+
-        "<rect x='186' y='46' width='70' height='58' rx='5' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-        "<rect x='186' y='46' width='12' height='58' fill='#356810' stroke='#111111' stroke-width='2.4'/>"+
-        "<path d='M206 66 h38 M206 78 h38 M206 90 h26' stroke='#FFFFC0' stroke-width='3.4' stroke-linecap='round'/>"+
-        "<text x='221' y='128' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='19' font-weight='800' fill='#3a2a12'>كِتابٌ</text>"+
-        "</g>"+
+        "<g clip-path='url(#nnB)'><image href='images/كتاب.png' x='154' y='12' width='134' height='134'/></g>"+
         "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        "<g transform='translate(-71 -142)'>"+
-        "<g clip-path='url(#nnC)'>"+
-        "<rect x='83' y='154' width='134' height='134' fill='#FFF6EC'/>"+
-        "<rect x='124' y='196' width='52' height='40' rx='6' fill='#0080C0'/>"+
-        "<rect x='124' y='196' width='52' height='11' rx='5' fill='#40C0FF'/>"+
-        "<rect x='124' y='226' width='52' height='10' fill='#0060A0'/>"+
-        "<rect x='124' y='196' width='52' height='40' rx='6' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-        "<path d='M142 204 L158 204 L152 228 L148 228 Z' fill='#C0C0C0' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
-        "<text x='150' y='268' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='19' font-weight='800' fill='#3a2a12'>مِبْراةٌ</text>"+
-        "</g>"+
-        "</g>"+
+        "<g clip-path='url(#nnC)'><image href='images/ألوان.png' x='83' y='154' width='134' height='134'/></g>"+
         "<rect x='83' y='154' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
         "</svg>"
     },
@@ -31247,55 +31127,15 @@ window.QUESTIONS = {
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
-        "<clipPath id='ffA'>"+
-        "<rect x='12' y='12' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
-        "<clipPath id='ffB'>"+
-        "<rect x='154' y='12' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
-        "<clipPath id='ffC'>"+
-        "<rect x='83' y='154' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
+        "<clipPath id='ffA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='ffB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='ffC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
         "</defs>"+
-        "<g transform='translate(142 0)'>"+
-        "<g clip-path='url(#ffA)'>"+
-        "<rect x='12' y='12' width='134' height='134' fill='#FFF7E6'/>"+
-        "<rect x='42' y='62' width='74' height='48' rx='5' fill='#0080C0'/>"+
-        "<rect x='42' y='62' width='74' height='13' fill='#40C0FF'/>"+
-        "<rect x='42' y='98' width='74' height='12' fill='#0060A0'/>"+
-        "<rect x='42' y='62' width='74' height='48' rx='5' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-        "<rect x='38' y='54' width='82' height='12' rx='4' fill='#40C0FF' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
-        "<rect x='72' y='54' width='14' height='56' fill='#C0C0C0' stroke='#111111' stroke-width='2.4'/>"+
-        "<path d='M79 54 q-18 -18 -6 -18 q9 0 6 18 Z' fill='#C0C0C0' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
-        "<path d='M79 54 q18 -18 6 -18 q-9 0 -6 18 Z' fill='#808080' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
-        "<text x='79' y='134' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>عُلْبَةٌ</text>"+
-        "</g>"+
-        "</g>"+
+        "<g clip-path='url(#ffA)'><image href='images/زهرة.png' x='12' y='12' width='134' height='134'/></g>"+
         "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        "<g transform='translate(-142 0)'>"+
-        "<g clip-path='url(#ffB)'>"+
-        "<rect x='154' y='12' width='134' height='134' fill='#F7FFF0'/>"+
-        "<rect x='217' y='84' width='9' height='42' fill='#4A9018' stroke='#111111' stroke-width='2.3'/>"+
-        "<circle cx='221' cy='56' r='13' fill='#FFC040' stroke='#111111' stroke-width='2.5'/>"+
-        "<circle cx='201' cy='68' r='13' fill='#FF4020' stroke='#111111' stroke-width='2.5'/>"+
-        "<circle cx='241' cy='68' r='13' fill='#FF4020' stroke='#111111' stroke-width='2.5'/>"+
-        "<circle cx='209' cy='88' r='13' fill='#FF2020' stroke='#111111' stroke-width='2.5'/>"+
-        "<circle cx='233' cy='88' r='13' fill='#FF2020' stroke='#111111' stroke-width='2.5'/>"+
-        "<circle cx='221' cy='74' r='10' fill='#FFFFC0' stroke='#111111' stroke-width='2.4'/>"+
-        "<text x='221' y='134' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>زَهْرَةٌ</text>"+
-        "</g>"+
-        "</g>"+
+        "<g clip-path='url(#ffB)'><image href='images/علبة.png' x='154' y='12' width='134' height='134'/></g>"+
         "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        "<g clip-path='url(#ffC)'>"+
-        "<rect x='83' y='154' width='134' height='134' fill='#FFF0F6'/>"+
-        "<path d='M136 200 q14 -16 28 0' fill='none' stroke='#111111' stroke-width='6' stroke-linecap='round'/>"+
-        "<rect x='118' y='200' width='64' height='48' rx='8' fill='#984800'/>"+
-        "<rect x='118' y='200' width='64' height='13' rx='7' fill='#C06000'/>"+
-        "<rect x='118' y='236' width='64' height='12' fill='#68411D'/>"+
-        "<rect x='118' y='200' width='64' height='48' rx='8' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-        "<rect x='136' y='218' width='28' height='14' rx='3' fill='#FFC040' stroke='#111111' stroke-width='2.3'/>"+
-        "<text x='150' y='274' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>حَقيبَةٌ</text>"+
-        "</g>"+
+        "<g clip-path='url(#ffC)'><image href='images/حقيبة.png' x='83' y='154' width='134' height='134'/></g>"+
         "<rect x='83' y='154' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
         "</svg>"
     },
@@ -31475,60 +31315,15 @@ window.QUESTIONS = {
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
-        "<clipPath id='hhA'>"+
-        "<rect x='12' y='12' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
-        "<clipPath id='hhB'>"+
-        "<rect x='154' y='12' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
-        "<clipPath id='hhC'>"+
-        "<rect x='83' y='154' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
+        "<clipPath id='hhA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='hhB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='hhC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
         "</defs>"+
-        "<g transform='translate(71 142)'>"+
-        "<g clip-path='url(#hhA)'>"+
-        "<rect x='12' y='12' width='134' height='134' fill='#FFF9E8'/>"+
-        "<rect x='26' y='54' width='106' height='48' rx='9' fill='#FFA000'/>"+
-        "<rect x='26' y='54' width='106' height='13' rx='7' fill='#FFC040'/>"+
-        "<rect x='26' y='86' width='106' height='16' fill='#C06000'/>"+
-        "<rect x='26' y='54' width='106' height='48' rx='9' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-        "<rect x='34' y='62' width='22' height='16' rx='2' fill='#CDEBFF' stroke='#111111' stroke-width='2.2'/>"+
-        "<rect x='62' y='62' width='22' height='16' rx='2' fill='#CDEBFF' stroke='#111111' stroke-width='2.2'/>"+
-        "<rect x='90' y='62' width='22' height='16' rx='2' fill='#CDEBFF' stroke='#111111' stroke-width='2.2'/>"+
-        "<circle cx='48' cy='104' r='11' fill='#404040' stroke='#111111' stroke-width='2.6'/>"+
-        "<circle cx='110' cy='104' r='11' fill='#404040' stroke='#111111' stroke-width='2.6'/>"+
-        "<text x='79' y='134' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>الْحافِلَةُ</text>"+
-        "</g>"+
-        "</g>"+
+        "<g clip-path='url(#hhA)'><image href='images/سفينة.png' x='12' y='12' width='134' height='134'/></g>"+
         "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        "<g clip-path='url(#hhB)'>"+
-        "<rect x='154' y='12' width='134' height='134' fill='#F0FBFF'/>"+
-        "<circle cx='188' cy='94' r='22' fill='none' stroke='#111111' stroke-width='6'/>"+
-        "<circle cx='188' cy='94' r='22' fill='none' stroke='#606060' stroke-width='3'/>"+
-        "<circle cx='254' cy='94' r='22' fill='none' stroke='#111111' stroke-width='6'/>"+
-        "<circle cx='254' cy='94' r='22' fill='none' stroke='#606060' stroke-width='3'/>"+
-        "<path d='M188 94 L214 62 L246 62 L254 94 M214 62 L226 94' fill='none' stroke='#111111' stroke-width='6' stroke-linejoin='round'/>"+
-        "<path d='M188 94 L214 62 L246 62 L254 94 M214 62 L226 94' fill='none' stroke='#FF2020' stroke-width='3.4' stroke-linejoin='round'/>"+
-        "<rect x='206' y='54' width='22' height='7' rx='3' fill='#404040' stroke='#111111' stroke-width='2.2'/>"+
-        "<path d='M246 62 L252 50 h12' fill='none' stroke='#111111' stroke-width='5' stroke-linecap='round'/>"+
-        "<text x='221' y='134' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>الدَّرّاجَةُ</text>"+
-        "</g>"+
+        "<g clip-path='url(#hhB)'><image href='images/دراجة.png' x='154' y='12' width='134' height='134'/></g>"+
         "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        "<g transform='translate(-71 -142)'>"+
-        "<g clip-path='url(#hhC)'>"+
-        "<rect x='83' y='154' width='134' height='134' fill='#EAF6FF'/>"+
-        "<rect x='83' y='244' width='134' height='44' fill='#0080C0'/>"+
-        "<path d='M83 244 q17 -8 34 0 t34 0 t34 0 t34 0 v10 H83 Z' fill='#00A0E0'/>"+
-        "<rect x='83' y='268' width='134' height='20' fill='#0060A0'/>"+
-        "<path d='M110 222 h80 l-14 24 h-52 Z' fill='#984800'/>"+
-        "<path d='M110 222 h80 l-5 9 h-70 Z' fill='#C06000'/>"+
-        "<path d='M110 222 h80 l-14 24 h-52 Z' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-        "<rect x='147' y='176' width='6' height='46' fill='#9A6636' stroke='#111111' stroke-width='2.2'/>"+
-        "<path d='M153 180 L188 200 L153 214 Z' fill='#FFFFFF' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-        "<path d='M147 180 L114 200 L147 214 Z' fill='#F1F0EA' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-        "<text x='150' y='280' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#ffffff'>السَّفينَةُ</text>"+
-        "</g>"+
-        "</g>"+
+        "<g clip-path='url(#hhC)'><image href='images/حافلة.png' x='83' y='154' width='134' height='134'/></g>"+
         "<rect x='83' y='154' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
         "</svg>"
     },
@@ -31714,45 +31509,15 @@ window.QUESTIONS = {
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
-        "<clipPath id='zzA'>"+
-        "<rect x='12' y='12' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
-        "<clipPath id='zzB'>"+
-        "<rect x='154' y='12' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
-        "<clipPath id='zzC'>"+
-        "<rect x='83' y='154' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
+        "<clipPath id='zzA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='zzB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='zzC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
         "</defs>"+
-        "<g clip-path='url(#zzA)'>"+
-        "<rect x='12' y='12' width='134' height='134' fill='#CDEBFF'/>"+
-        "<rect x='12' y='102' width='134' height='44' fill='#0080C0'/>"+
-        "<path d='M12 102 q17 -8 34 0 t34 0 t34 0 t34 0 v10 H12 Z' fill='#00A0E0'/>"+
-        "<rect x='12' y='128' width='134' height='18' fill='#0060A0'/>"+
-        "<path d='M42 96 q10 -38 44 -40 q-6 12 -14 18 q10 4 12 14 q-16 -6 -26 4 q10 8 8 20 q-16 -12 -24 -16 Z' fill='#808080'/>"+
-        "<path d='M42 96 q10 -38 44 -40 q-6 12 -14 18 q-14 4 -30 22 Z' fill='#C0C0C0'/>"+
-        "<path d='M42 96 q10 -38 44 -40 q-6 12 -14 18 q10 4 12 14 q-16 -6 -26 4 q10 8 8 20 q-16 -12 -24 -16 Z' fill='none' stroke='#111111' stroke-width='2.7' stroke-linejoin='round'/>"+
-        "<text x='79' y='138' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#ffffff'>الدَّلافينُ</text>"+
-        "</g>"+
+        "<g clip-path='url(#zzA)'><image href='images/دلافين.png' x='12' y='12' width='134' height='134'/></g>"+
         "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        "<g clip-path='url(#zzB)'>"+
-        "<rect x='154' y='12' width='134' height='134' fill='#E8F8FF'/>"+
-        "<path d='M248 70 L268 54 L268 86 Z' fill='#E08000' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-        "<ellipse cx='216' cy='70' rx='34' ry='22' fill='#FFA000'/>"+
-        "<path d='M182 70 a34 22 0 0 1 68 0 Z' fill='#FFC040'/>"+
-        "<ellipse cx='216' cy='70' rx='34' ry='22' fill='none' stroke='#111111' stroke-width='2.7'/>"+
-        "<path d='M206 48 v44 M222 48 v44' stroke='#C06000' stroke-width='4' opacity='.8'/>"+
-        "<text x='221' y='134' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>الْأَسْماكُ</text>"+
-        "</g>"+
+        "<g clip-path='url(#zzB)'><image href='images/أسماك.png' x='154' y='12' width='134' height='134'/></g>"+
         "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        "<g clip-path='url(#zzC)'>"+
-        "<rect x='83' y='154' width='134' height='134' fill='#F0FFF4'/>"+
-        "<path d='M112 208 q14 -16 28 0 q-14 8 -28 0 Z' fill='#FFFFFF' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-        "<path d='M140 208 q14 -16 28 0 q-14 8 -28 0 Z' fill='#F1F0EA' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-        "<path d='M124 238 q12 -14 24 0 q-12 7 -24 0 Z' fill='#FFFFFF' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
-        "<path d='M156 244 q12 -14 24 0 q-12 7 -24 0 Z' fill='#F1F0EA' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
-        "<text x='150' y='276' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>الطُّيورُ</text>"+
-        "</g>"+
+        "<g clip-path='url(#zzC)'><image href='images/طيور.png' x='83' y='154' width='134' height='134'/></g>"+
         "<rect x='83' y='154' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
         "</svg>"
     },
@@ -31820,57 +31585,15 @@ window.QUESTIONS = {
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
-        "<clipPath id='taA'>"+
-        "<rect x='12' y='12' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
-        "<clipPath id='taB'>"+
-        "<rect x='154' y='12' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
-        "<clipPath id='taC'>"+
-        "<rect x='83' y='154' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
+        "<clipPath id='taA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='taB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='taC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
         "</defs>"+
-        "<g transform='translate(71 142)'>"+
-        "<g clip-path='url(#taA)'>"+
-        "<rect x='12' y='12' width='134' height='134' fill='#CDEBFF'/>"+
-        "<rect x='12' y='96' width='134' height='50' fill='#E0C080'/>"+
-        "<rect x='12' y='124' width='134' height='22' fill='#C88A5E'/>"+
-        "<path d='M12 96 q34 -14 67 -2 q33 12 67 -4 v14 q-34 16 -67 4 q-33 -12 -67 2 Z' fill='#0080C0'/>"+
-        "<rect x='12' y='60' width='134' height='38' fill='#00A0E0'/>"+
-        "<path d='M12 96 q34 -14 67 -2 q33 12 67 -4' fill='none' stroke='#111111' stroke-width='2.6'/>"+
-        "<circle cx='118' cy='40' r='14' fill='#FFC040' stroke='#111111' stroke-width='2.5'/>"+
-        "<path d='M34 46 q10 -10 20 0 q-10 6 -20 0 Z' fill='#FFFFFF' stroke='#111111' stroke-width='2.2' stroke-linejoin='round'/>"+
-        "<text x='79' y='138' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>الشّاطِئُ</text>"+
-        "</g>"+
-        "</g>"+
+        "<g clip-path='url(#taA)'><image href='images/مدرسة.png' x='12' y='12' width='134' height='134'/></g>"+
         "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        "<g clip-path='url(#taB)'>"+
-        "<rect x='154' y='12' width='134' height='134' fill='#FFF7E6'/>"+
-        "<rect x='176' y='72' width='90' height='48' fill='#E0C080'/>"+
-        "<rect x='176' y='72' width='90' height='12' fill='#FFFFC0'/>"+
-        "<rect x='176' y='72' width='90' height='48' fill='none' stroke='#111111' stroke-width='2.7' stroke-linejoin='round'/>"+
-        "<path d='M170 72 h102 l-8 -14 h-86 Z' fill='#FF2020' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
-        "<path d='M170 72 h102' stroke='#111111' stroke-width='2.4'/>"+
-        "<circle cx='198' cy='96' r='9' fill='#FF4020' stroke='#111111' stroke-width='2.3'/>"+
-        "<circle cx='220' cy='96' r='9' fill='#FFA000' stroke='#111111' stroke-width='2.3'/>"+
-        "<circle cx='242' cy='96' r='9' fill='#60C020' stroke='#111111' stroke-width='2.3'/>"+
-        "<text x='221' y='136' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>السّوقُ</text>"+
-        "</g>"+
+        "<g clip-path='url(#taB)'><image href='images/سوق.png' x='154' y='12' width='134' height='134'/></g>"+
         "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        "<g transform='translate(-71 -142)'>"+
-        "<g clip-path='url(#taC)'>"+
-        "<rect x='83' y='154' width='134' height='134' fill='#EAF4FF'/>"+
-        "<rect x='83' y='262' width='134' height='26' fill='#60C020'/>"+
-        "<rect x='102' y='196' width='96' height='66' fill='#E0C080'/>"+
-        "<rect x='102' y='196' width='96' height='14' fill='#FFFFC0'/>"+
-        "<rect x='102' y='196' width='96' height='66' fill='none' stroke='#111111' stroke-width='2.7' stroke-linejoin='round'/>"+
-        "<rect x='96' y='186' width='108' height='11' rx='4' fill='#9A6636' stroke='#111111' stroke-width='2.5'/>"+
-        "<rect x='114' y='216' width='18' height='18' rx='2' fill='#40C0FF' stroke='#111111' stroke-width='2.2'/>"+
-        "<rect x='168' y='216' width='18' height='18' rx='2' fill='#40C0FF' stroke='#111111' stroke-width='2.2'/>"+
-        "<rect x='138' y='232' width='24' height='30' rx='3' fill='#9A6636' stroke='#111111' stroke-width='2.4'/>"+
-        "<text x='150' y='282' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#ffffff'>الْمَدْرَسَةُ</text>"+
-        "</g>"+
-        "</g>"+
+        "<g clip-path='url(#taC)'><image href='images/شاطئ.png' x='83' y='154' width='134' height='134'/></g>"+
         "<rect x='83' y='154' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
         "</svg>"
     },
@@ -32194,46 +31917,15 @@ window.QUESTIONS = {
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
-        "<clipPath id='jjA'>"+
-        "<rect x='12' y='12' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
-        "<clipPath id='jjB'>"+
-        "<rect x='154' y='12' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
-        "<clipPath id='jjC'>"+
-        "<rect x='83' y='154' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
+        "<clipPath id='jjA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='jjB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='jjC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
         "</defs>"+
-        "<g transform='translate(71 142)'>"+
-        "<g clip-path='url(#jjA)'>"+
-        "<rect x='12' y='12' width='134' height='134' fill='#FFF7E6'/>"+
-        "<path d='M44 70 q14 -22 44 -14 q26 8 22 30 q-4 22 -32 22 q-32 0 -34 -20 q-2 -10 0 -18 Z' fill='#C06000'/>"+
-        "<path d='M44 70 q14 -22 44 -14 q18 6 21 18 q-30 -8 -65 -4 Z' fill='#E08000'/>"+
-        "<path d='M44 70 q14 -22 44 -14 q26 8 22 30 q-4 22 -32 22 q-32 0 -34 -20 q-2 -10 0 -18 Z' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-        "<path d='M52 84 q22 8 44 2 M50 98 q22 8 44 0' fill='none' stroke='#984800' stroke-width='4' stroke-linecap='round'/>"+
-        "<text x='79' y='134' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>دَجاجٌ</text>"+
-        "</g>"+
-        "</g>"+
+        "<g clip-path='url(#jjA)'><image href='images/بيض.png' x='12' y='12' width='134' height='134'/></g>"+
         "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        "<g clip-path='url(#jjB)'>"+
-        "<rect x='154' y='12' width='134' height='134' fill='#EAF6FF'/>"+
-        "<path d='M254 74 L276 58 L276 90 Z' fill='#0060A0' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-        "<ellipse cx='218' cy='74' rx='36' ry='22' fill='#0080C0'/>"+
-        "<path d='M182 74 a36 22 0 0 1 72 0 Z' fill='#40C0FF'/>"+
-        "<ellipse cx='218' cy='74' rx='36' ry='22' fill='none' stroke='#111111' stroke-width='2.7'/>"+
-        "<path d='M206 52 v44 M224 52 v44' stroke='#0060A0' stroke-width='4' opacity='.8'/>"+
-        "<text x='221' y='134' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>سَمَكٌ</text>"+
-        "</g>"+
+        "<g clip-path='url(#jjB)'><image href='images/سمك.png' x='154' y='12' width='134' height='134'/></g>"+
         "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        "<g transform='translate(-71 -142)'>"+
-        "<g clip-path='url(#jjC)'>"+
-        "<rect x='83' y='154' width='134' height='134' fill='#FFFDF0'/>"+
-        "<ellipse cx='150' cy='214' rx='36' ry='28' fill='#FFFFFF' stroke='#111111' stroke-width='2.7'/>"+
-        "<circle cx='150' cy='214' r='14' fill='#FFC040' stroke='#111111' stroke-width='2.5'/>"+
-        "<ellipse cx='118' cy='240' rx='24' ry='18' fill='#F1F0EA' stroke='#111111' stroke-width='2.6'/>"+
-        "<text x='150' y='278' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>بَيْضٌ</text>"+
-        "</g>"+
-        "</g>"+
+        "<g clip-path='url(#jjC)'><image href='images/دجاج.png' x='83' y='154' width='134' height='134'/></g>"+
         "<rect x='83' y='154' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
         "</svg>"
     },
