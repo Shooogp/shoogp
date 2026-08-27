@@ -29610,7 +29610,7 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "أَيْنَ بَيْتُ بَدْرٍ وَعَبيرَ؟",
       bg: "#f4fbff",
-      spot: { x: 26, y: 26, r: 20 },
+      spot: { x: 50, y: 74, r: 20 },
       /* ⚠️ **اللوحةُ مربّعةٌ (300×300) عن قصدٍ لا اتّفاقاً — قيدٌ في محرّكِ `hotspot` نفسِه:**
          اختبارُ الإصابةِ `Math.hypot` يقيسُ بـ**النسبةِ المئويةِ على المحورَين**، والنسبةُ
          الواحدةُ تساوي وحداتٍ مختلفةً إن اختلفَ ضلعا اللوحة. ففي لوحةٍ عريضةٍ تصيرُ
@@ -29625,54 +29625,11 @@ window.QUESTIONS = {
         "<clipPath id='pnB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
         "<clipPath id='pnC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
         "</defs>"+
-        // ── لوحُ البحرِ (الجواب) ──
-        "<g clip-path='url(#pnA)'>"+
-        "<rect x='12' y='12' width='134' height='134' fill='#CDEBFF'/>"+
-        "<rect x='12' y='58' width='134' height='8' fill='#B98551'/>"+
-        "<rect x='12' y='66' width='134' height='6' fill='#9A6636'/>"+
-        "<rect x='12' y='72' width='134' height='74' fill='#0080C0'/>"+
-        "<path d='M12 72 q17 -9 34 0 t34 0 t34 0 t34 0 v12 H12 Z' fill='#00A0E0'/>"+
-        "<rect x='12' y='112' width='134' height='20' fill='#0060A0'/>"+
-        "<rect x='12' y='132' width='134' height='14' fill='#004880'/>"+
-        "<path d='M30 98 q10 -6 20 0 M98 122 q10 -6 20 0' stroke='#ffffff' stroke-width='3' fill='none' opacity='.8' stroke-linecap='round'/>"+
-        "<rect x='62' y='38' width='34' height='20' fill='#9A6636'/>"+
-        "<rect x='62' y='38' width='34' height='6' fill='#B98551'/>"+
-        "<rect x='62' y='38' width='34' height='20' fill='none' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
-        "<path d='M52 38 L79 18 L106 38 Z' fill='#E02000'/>"+
-        "<path d='M52 38 L79 18 L79 38 Z' fill='#FF2020'/>"+
-        "<path d='M52 38 L79 18 L106 38 Z' fill='none' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
-        "</g>"+
+        "<g clip-path='url(#pnA)'><image href='images/بيت-جبال.png' x='12' y='12' width='134' height='134'/></g>"+
         "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        // ── لوحُ الرَّبْوَة ──
-        "<g clip-path='url(#pnB)'>"+
-        "<rect x='154' y='12' width='134' height='134' fill='#CDEBFF'/>"+
-        "<path d='M154 146 Q221 20 288 146 Z' fill='#60C020'/>"+
-        "<rect x='154' y='104' width='134' height='20' fill='#4A9018'/>"+
-        "<rect x='154' y='124' width='134' height='22' fill='#356810'/>"+
-        "<path d='M154 146 Q221 20 288 146 Z' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-        "<rect x='206' y='63' width='30' height='20' fill='#9A6636'/>"+
-        "<rect x='206' y='63' width='30' height='6' fill='#B98551'/>"+
-        "<rect x='206' y='63' width='30' height='20' fill='none' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
-        "<path d='M198 63 L221 43 L244 63 Z' fill='#E02000'/>"+
-        "<path d='M198 63 L221 43 L221 63 Z' fill='#FF2020'/>"+
-        "<path d='M198 63 L221 43 L244 63 Z' fill='none' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
-        "</g>"+
+        "<g clip-path='url(#pnB)'><image href='images/بيت-تل.png' x='154' y='12' width='134' height='134'/></g>"+
         "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        // ── لوحُ الجبل ──
-        "<g clip-path='url(#pnC)'>"+
-        "<rect x='83' y='154' width='134' height='134' fill='#CDEBFF'/>"+
-        "<path d='M150 272 L184 200 L218 272 Z' fill='#606060'/>"+
-        "<path d='M150 272 L184 200 L184 272 Z' fill='#808080'/>"+
-        "<path d='M175 222 L184 200 L193 222 Z' fill='#FFFFC0'/>"+
-        "<path d='M150 272 L184 200 L218 272 Z' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-        "<path d='M92 272 L138 176 L184 272 Z' fill='#808080'/>"+
-        "<path d='M92 272 L138 176 L138 272 Z' fill='#C0C0C0'/>"+
-        "<path d='M126 201 L138 176 L150 201 Z' fill='#FFFFC0'/>"+
-        "<path d='M92 272 L138 176 L184 272 Z' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-        "<rect x='83' y='272' width='134' height='16' fill='#4A9018'/>"+
-        "<rect x='96' y='254' width='22' height='18' fill='#9A6636' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
-        "<path d='M89 254 L107 238 L125 254 Z' fill='#E02000' stroke='#111111' stroke-width='2.6' stroke-linejoin='round'/>"+
-        "</g>"+
+        "<g clip-path='url(#pnC)'><image href='images/بيت-بحر.png' x='83' y='154' width='134' height='134'/></g>"+
         "<rect x='83' y='154' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
         "</svg>"
     },
