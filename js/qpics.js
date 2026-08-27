@@ -416,6 +416,331 @@
     gloss(37, 32, 4, 8, 4, .5)
   ].join(''));
 
+
+  /* ══ أماكنُ ومبانٍ ═════════════════════════════════════════════════════ */
+
+  RAW['بيت'] = svg('بيت', [
+    '<path d="M50,12 L90,44 L10,44 Z" fill="#E02000"/>',
+    '<path d="M50,12 L10,44 L50,44 Z" fill="#FF2020" stroke="none"/>',
+    '<path d="M50,12 L90,44 L10,44 Z" fill="none"/>',
+    '<rect x="20" y="44" width="60" height="42" rx="3" fill="#E0E0A0"/>',
+    '<rect x="20" y="44" width="24" height="42" fill="#FFFFC0" stroke="none"/>',
+    '<rect x="20" y="44" width="60" height="42" rx="3" fill="none"/>',
+    '<rect x="41" y="60" width="18" height="26" rx="2" fill="#9A6636" stroke-width="2"/>',
+    '<rect x="26" y="52" width="12" height="12" rx="2" fill="#40C0FF" stroke-width="2"/>',
+    '<rect x="62" y="52" width="12" height="12" rx="2" fill="#40C0FF" stroke-width="2"/>',
+    gloss(30, 24, 4, 9, 38, .35)
+  ].join(''));
+
+  RAW['صف'] = svg('صف', [
+    '<rect x="26" y="8" width="48" height="26" rx="3" fill="#9A6636"/>',
+    '<rect x="31" y="13" width="38" height="16" rx="2" fill="#356810" stroke-width="2"/>',
+    '<rect x="31" y="13" width="17" height="16" fill="#4A9018" stroke="none"/>',
+    '<rect x="31" y="13" width="38" height="16" rx="2" fill="none" stroke-width="2"/>',
+    '<rect x="6" y="52" width="40" height="10" rx="4" fill="#B98551"/>',
+    '<path d="M12,62 L12,86 M40,62 L40,86" fill="none" stroke-width="3"/>',
+    '<rect x="16" y="40" width="18" height="13" rx="4" fill="#E08000" stroke-width="2"/>',
+    '<rect x="54" y="52" width="40" height="10" rx="4" fill="#B98551"/>',
+    '<path d="M60,62 L60,86 M88,62 L88,86" fill="none" stroke-width="3"/>',
+    '<rect x="64" y="40" width="18" height="13" rx="4" fill="#20A0FF" stroke-width="2"/>',
+    gloss(38, 17, 5, 2, -12, .4)
+  ].join(''));
+
+  RAW['سبورة'] = svg('سبورة', [
+    '<rect x="8" y="16" width="84" height="56" rx="5" fill="#9A6636"/>',
+    '<rect x="15" y="23" width="70" height="42" rx="3" fill="#356810" stroke-width="2"/>',
+    '<rect x="15" y="23" width="30" height="42" fill="#4A9018" stroke="none"/>',
+    '<rect x="15" y="23" width="70" height="42" rx="3" fill="none" stroke-width="2"/>',
+    '<rect x="13" y="70" width="74" height="10" rx="4" fill="#B98551"/>',
+    '<rect x="13" y="70" width="74" height="5" fill="#C8A76B" stroke="none"/>',
+    '<rect x="13" y="70" width="74" height="10" rx="4" fill="none"/>',
+    '<rect x="24" y="72" width="20" height="6" rx="3" fill="#FFFFFF" stroke-width="2"/>',
+    '<rect x="50" y="72" width="14" height="6" rx="3" fill="#FFFFC0" stroke-width="2"/>',
+    gloss(27, 30, 8, 4, -12, .4)
+  ].join(''));
+
+  RAW['مكتبة'] = svg('مكتبة', [
+    '<rect x="14" y="10" width="72" height="78" rx="4" fill="#9A6636"/>',
+    '<rect x="14" y="10" width="22" height="78" fill="#B98551" stroke="none"/>',
+    '<rect x="14" y="10" width="72" height="78" rx="4" fill="none"/>',
+    '<path d="M14,49 L86,49" fill="none" stroke-width="3"/>',
+    '<rect x="23" y="18" width="11" height="28" rx="2" fill="#FF2020" stroke-width="2"/>',
+    '<rect x="36" y="16" width="11" height="30" rx="2" fill="#20A0FF" stroke-width="2"/>',
+    '<rect x="49" y="20" width="11" height="26" rx="2" fill="#60C020" stroke-width="2"/>',
+    '<rect x="62" y="17" width="11" height="29" rx="2" fill="#E08000" stroke-width="2"/>',
+    '<rect x="23" y="57" width="11" height="28" rx="2" fill="#E08000" stroke-width="2"/>',
+    '<rect x="36" y="55" width="11" height="30" rx="2" fill="#FF2020" stroke-width="2"/>',
+    '<rect x="49" y="59" width="11" height="26" rx="2" fill="#20A0FF" stroke-width="2"/>',
+    '<rect x="62" y="56" width="11" height="29" rx="2" fill="#60C020" stroke-width="2"/>'
+  ].join(''));
+
+  RAW['ساحة'] = svg('ساحة', [
+    '<rect x="6" y="24" width="88" height="54" rx="9" fill="#4A9018"/>',
+    '<rect x="6" y="24" width="88" height="26" fill="#60C020" stroke="none"/>',
+    '<rect x="6" y="24" width="88" height="54" rx="9" fill="none"/>',
+    '<circle cx="50" cy="51" r="15" fill="none" stroke="#FFFFFF" stroke-width="3"/>',
+    '<path d="M50,24 L50,78" fill="none" stroke="#FFFFFF" stroke-width="3"/>',
+    '<circle cx="73" cy="62" r="13" fill="#F9F8F3"/>',
+    '<path d="M73,53 L80,58 L77,67 L69,67 L66,58 Z" fill="#606060" stroke="none"/>',
+    '<path d="M73,49 L73,53 M62,58 L66,58 M84,58 L80,58 M68,72 L69,67 M78,72 L77,67" fill="none" stroke="#606060" stroke-width="2"/>',
+    gloss(67, 56, 4, 2, -25, .75)
+  ].join(''));
+
+  RAW['شارع'] = svg('شارع', [
+    '<rect x="6" y="22" width="88" height="9" rx="3" fill="#C0C0C0"/>',
+    '<rect x="6" y="69" width="88" height="9" rx="3" fill="#C0C0C0"/>',
+    '<rect x="6" y="31" width="88" height="38" fill="#606060"/>',
+    '<rect x="6" y="31" width="88" height="13" fill="#808080" stroke="none"/>',
+    '<rect x="6" y="31" width="88" height="38" fill="none"/>',
+    '<g fill="#FFFFC0" stroke="none">',
+    '<rect x="14" y="47" width="15" height="6" rx="3"/>',
+    '<rect x="42" y="47" width="15" height="6" rx="3"/>',
+    '<rect x="70" y="47" width="15" height="6" rx="3"/>',
+    '</g>'
+  ].join(''));
+
+  RAW['سرير'] = svg('سرير', [
+    '<rect x="8" y="30" width="13" height="52" rx="5" fill="#9A6636"/>',
+    '<rect x="79" y="50" width="13" height="32" rx="5" fill="#9A6636"/>',
+    '<rect x="14" y="52" width="72" height="21" rx="6" fill="#F9F8F3"/>',
+    '<rect x="14" y="63" width="72" height="10" fill="#F7F6F1" stroke="none"/>',
+    '<rect x="14" y="52" width="72" height="21" rx="6" fill="none"/>',
+    '<path d="M44,52 L86,52 C89,52 92,55 92,58 L92,67 C92,70 89,73 86,73 L44,73 Z" fill="#20A0FF" stroke-width="2"/>',
+    '<rect x="20" y="43" width="24" height="13" rx="6" fill="#FFFFFF" stroke-width="2"/>',
+    gloss(28, 47, 6, 3, -14, .55)
+  ].join(''));
+
+  RAW['قطار'] = svg('قطار', [
+    '<rect x="8" y="40" width="30" height="26" rx="4" fill="#0080C0"/>',
+    '<rect x="8" y="40" width="30" height="11" fill="#40C0FF" stroke="none"/>',
+    '<rect x="8" y="40" width="30" height="26" rx="4" fill="none"/>',
+    '<path d="M38,56 L46,56" fill="none" stroke-width="3"/>',
+    '<path d="M46,66 L46,38 C46,35 48,33 51,33 L64,33 C67,33 69,35 69,38 L69,46 L85,46 C88,46 90,48 90,51 L90,66 Z" fill="#E02000"/>',
+    '<path d="M46,66 L46,38 C46,35 48,33 51,33 L57,33 L57,66 Z" fill="#FF2020" stroke="none"/>',
+    '<path d="M46,66 L46,38 C46,35 48,33 51,33 L64,33 C67,33 69,35 69,38 L69,46 L85,46 C88,46 90,48 90,51 L90,66 Z" fill="none"/>',
+    '<rect x="51" y="38" width="14" height="11" rx="2" fill="#40C0FF" stroke-width="2"/>',
+    '<rect x="73" y="26" width="11" height="14" rx="3" fill="#606060" stroke-width="2"/>',
+    '<circle cx="18" cy="72" r="8" fill="#606060"/><circle cx="18" cy="72" r="3" fill="#C0C0C0" stroke-width="2"/>',
+    '<circle cx="55" cy="72" r="8" fill="#606060"/><circle cx="55" cy="72" r="3" fill="#C0C0C0" stroke-width="2"/>',
+    '<circle cx="80" cy="72" r="8" fill="#606060"/><circle cx="80" cy="72" r="3" fill="#C0C0C0" stroke-width="2"/>'
+  ].join(''));
+
+
+  /* ══ أدواتٌ مدرسيّة ════════════════════════════════════════════════════ */
+
+  RAW['قلم'] = svg('قلم', [
+    '<path d="M38,68 L50,90 L62,68 Z" fill="#B98551"/>',
+    '<path d="M44,79 L50,90 L56,79 Z" fill="#404040" stroke="none"/>',
+    '<path d="M38,68 L50,90 L62,68 Z" fill="none"/>',
+    '<rect x="38" y="24" width="24" height="44" fill="#E08000"/>',
+    '<rect x="38" y="24" width="9" height="44" fill="#FFA000" stroke="none"/>',
+    '<rect x="38" y="24" width="24" height="44" fill="none"/>',
+    '<rect x="37" y="16" width="26" height="9" rx="2" fill="#C0C0C0"/>',
+    '<path d="M43,8 L57,8 C60,8 62,10 62,13 L62,16 L38,16 L38,13 C38,10 40,8 43,8 Z" fill="#FF4020"/>',
+    gloss(43, 40, 3, 12, 0, .35)
+  ].join(''));
+
+  RAW['دفتر'] = svg('دفتر', [
+    '<rect x="20" y="14" width="60" height="74" rx="4" fill="#2080E0"/>',
+    '<rect x="20" y="14" width="20" height="74" fill="#40C0FF" stroke="none"/>',
+    '<rect x="20" y="14" width="60" height="74" rx="4" fill="none"/>',
+    '<rect x="28" y="30" width="44" height="50" rx="2" fill="#F9F8F3" stroke-width="2"/>',
+    '<g fill="none" stroke="#808080" stroke-width="2">',
+    '<path d="M34,42 L66,42"/><path d="M34,53 L66,53"/><path d="M34,64 L66,64"/>',
+    '</g>',
+    '<g fill="none" stroke-width="3">',
+    '<path d="M32,10 C28,14 28,20 32,24"/><path d="M50,10 C46,14 46,20 50,24"/><path d="M68,10 C64,14 64,20 68,24"/>',
+    '</g>'
+  ].join(''));
+
+  RAW['كتاب'] = svg('كتاب', [
+    '<path d="M50,30 C42,22 26,20 14,23 L14,80 C26,77 42,79 50,86 Z" fill="#E02000"/>',
+    '<path d="M50,30 C58,22 74,20 86,23 L86,80 C74,77 58,79 50,86 Z" fill="#FF2020"/>',
+    '<path d="M50,34 C43,28 30,26 20,28 L20,74 C30,72 43,74 50,79 Z" fill="#F9F8F3" stroke-width="2"/>',
+    '<path d="M50,34 C57,28 70,26 80,28 L80,74 C70,72 57,74 50,79 Z" fill="#FFFFFF" stroke-width="2"/>',
+    '<g fill="none" stroke="#808080" stroke-width="2">',
+    '<path d="M27,42 C33,41 40,42 44,44"/><path d="M27,53 C33,52 40,53 44,55"/>',
+    '<path d="M73,42 C67,41 60,42 56,44"/><path d="M73,53 C67,52 60,53 56,55"/>',
+    '</g>',
+    '<path d="M50,30 L50,86" fill="none" stroke-width="3"/>'
+  ].join(''));
+
+  RAW['طاولة'] = svg('طاولة', [
+    '<rect x="8" y="32" width="84" height="14" rx="5" fill="#9A6636"/>',
+    '<rect x="8" y="32" width="84" height="6" fill="#B98551" stroke="none"/>',
+    '<rect x="8" y="32" width="84" height="14" rx="5" fill="none"/>',
+    '<rect x="16" y="46" width="10" height="38" rx="3" fill="#9A6636"/>',
+    '<rect x="74" y="46" width="10" height="38" rx="3" fill="#9A6636"/>',
+    gloss(28, 36, 8, 2, 0, .4)
+  ].join(''));
+
+  RAW['ممحاة'] = svg('ممحاة', [
+    '<rect x="14" y="34" width="72" height="32" rx="7" fill="#20A0FF"/>',
+    '<path d="M21,34 L79,34 C83,34 86,37 86,41 L86,50 L14,50 L14,41 C14,37 17,34 21,34 Z" fill="#FF4020" stroke="none"/>',
+    '<path d="M14,50 L86,50" fill="none" stroke-width="2"/>',
+    '<rect x="14" y="34" width="72" height="32" rx="7" fill="none"/>',
+    gloss(30, 40, 10, 3, -8, .45)
+  ].join(''));
+
+  RAW['مسطرة'] = svg('مسطرة', [
+    '<rect x="8" y="38" width="84" height="24" rx="4" fill="#E0C080"/>',
+    '<rect x="8" y="38" width="84" height="10" fill="#FFFFC0" stroke="none"/>',
+    '<rect x="8" y="38" width="84" height="24" rx="4" fill="none"/>',
+    '<g fill="none" stroke-width="2">',
+    '<path d="M20,62 L20,50"/><path d="M28,62 L28,55"/><path d="M36,62 L36,55"/>',
+    '<path d="M44,62 L44,50"/><path d="M52,62 L52,55"/><path d="M60,62 L60,55"/>',
+    '<path d="M68,62 L68,50"/><path d="M76,62 L76,55"/><path d="M84,62 L84,55"/>',
+    '</g>',
+    gloss(28, 42, 12, 2, 0, .45)
+  ].join(''));
+
+  RAW['مبراة'] = svg('مبراة', [
+    '<rect x="6" y="43" width="26" height="14" fill="#E08000"/>',
+    '<rect x="6" y="43" width="26" height="6" fill="#FFA000" stroke="none"/>',
+    '<rect x="6" y="43" width="26" height="14" fill="none"/>',
+    '<path d="M32,43 L44,50 L32,57 Z" fill="#B98551" stroke-width="2"/>',
+    '<rect x="38" y="32" width="52" height="36" rx="6" fill="#2080E0"/>',
+    '<rect x="38" y="32" width="52" height="15" fill="#40C0FF" stroke="none"/>',
+    '<rect x="38" y="32" width="52" height="36" rx="6" fill="none"/>',
+    '<path d="M38,42 L52,46 L52,54 L38,58 Z" fill="#1060A0" stroke-width="2"/>',
+    '<rect x="56" y="37" width="30" height="26" rx="3" fill="#C0C0C0" stroke-width="2"/>',
+    '<path d="M56,50 L86,50" fill="none" stroke="#606060" stroke-width="2"/>',
+    '<circle cx="64" cy="43" r="2.5" fill="#606060" stroke="none"/>',
+    '<circle cx="78" cy="57" r="2.5" fill="#606060" stroke="none"/>',
+    gloss(50, 36, 6, 2, 0, .4)
+  ].join(''));
+
+  RAW['كرة'] = svg('كرة', [
+    '<circle cx="50" cy="50" r="36" fill="#F9F8F3"/>',
+    '<path d="M50,14 C60,26 60,74 50,86 C62,86 74,74 78,62 C72,54 72,46 78,38 C74,26 62,14 50,14 Z" fill="#20A0FF" stroke="none"/>',
+    '<path d="M50,14 C40,26 40,74 50,86 C38,86 26,74 22,62 C28,54 28,46 22,38 C26,26 38,14 50,14 Z" fill="#FF2020" stroke="none"/>',
+    '<path d="M50,14 C56,26 56,74 50,86 C44,74 44,26 50,14 Z" fill="#E0C060" stroke="none"/>',
+    '<path d="M78,38 C84,46 84,54 78,62 C86,54 86,46 78,38 Z" fill="#60C020" stroke="none"/>',
+    '<circle cx="50" cy="50" r="36" fill="none"/>',
+    '<path d="M50,14 C60,26 60,74 50,86" fill="none" stroke-width="2"/>',
+    '<path d="M50,14 C40,26 40,74 50,86" fill="none" stroke-width="2"/>',
+    '<path d="M22,38 C28,46 28,54 22,62" fill="none" stroke-width="2"/>',
+    '<path d="M78,38 C72,46 72,54 78,62" fill="none" stroke-width="2"/>',
+    gloss(36, 32, 9, 5, -35, .6)
+  ].join(''));
+
+  /* ══ أدواتُ تنظيفٍ وموسيقى ═════════════════════════════════════════════ */
+
+  RAW['كيس'] = svg('كيس', [
+    '<g fill="none" stroke-width="3">',
+    '<path d="M36,38 C36,24 40,16 50,16 C60,16 64,24 64,38"/>',
+    '</g>',
+    '<path d="M20,36 L80,36 L86,84 C86,87 84,89 81,89 L19,89 C16,89 14,87 14,84 Z" fill="#0080C0"/>',
+    '<path d="M20,36 L44,36 L46,89 L19,89 C16,89 14,87 14,84 Z" fill="#00A0E0" stroke="none"/>',
+    '<path d="M20,36 L80,36 L86,84 C86,87 84,89 81,89 L19,89 C16,89 14,87 14,84 Z" fill="none"/>',
+    '<rect x="14" y="34" width="72" height="9" rx="4" fill="#40C0FF" stroke-width="2"/>',
+    gloss(28, 56, 4, 14, 4, .3)
+  ].join(''));
+
+  RAW['ملقط'] = svg('ملقط', [
+    '<path d="M45,16 C38,28 22,40 20,58 C19,68 26,74 34,74" fill="none" stroke-width="10"/>',
+    '<path d="M45,16 C38,28 22,40 20,58 C19,68 26,74 34,74" fill="none" stroke="#C0C0C0" stroke-width="6"/>',
+    '<path d="M55,16 C62,28 78,40 80,58 C81,68 74,74 66,74" fill="none" stroke-width="10"/>',
+    '<path d="M55,16 C62,28 78,40 80,58 C81,68 74,74 66,74" fill="none" stroke="#C0C0C0" stroke-width="6"/>',
+    '<path d="M45,16 C47,10 53,10 55,16" fill="none" stroke-width="10"/>',
+    '<path d="M45,16 C47,10 53,10 55,16" fill="none" stroke="#808080" stroke-width="6"/>',
+    '<rect x="22" y="72" width="24" height="12" rx="4" fill="#E08000"/>',
+    '<rect x="22" y="72" width="24" height="5" fill="#FFA000" stroke="none"/>',
+    '<rect x="22" y="72" width="24" height="12" rx="4" fill="none"/>',
+    '<rect x="54" y="72" width="24" height="12" rx="4" fill="#E08000"/>',
+    '<rect x="54" y="72" width="24" height="5" fill="#FFA000" stroke="none"/>',
+    '<rect x="54" y="72" width="24" height="12" rx="4" fill="none"/>'
+  ].join(''));
+
+  RAW['قفاز'] = svg('قفاز', [
+    '<path d="M30,44 L30,26 C30,22 33,19 37,19 C41,19 44,22 44,26 L44,40 L44,22 C44,18 47,15 51,15 C55,15 58,18 58,22 L58,40 L58,26 C58,22 61,19 65,19 C69,19 72,22 72,26 L72,58 C72,72 64,82 50,82 C36,82 28,72 28,58 L28,50 C24,46 20,44 16,44 C12,44 10,48 13,52 L24,66" fill="#E0C080"/>',
+    '<path d="M30,44 L30,26 C30,22 33,19 37,19 C41,19 44,22 44,26 L44,58 C44,72 44,78 44,82 C36,82 28,72 28,58 L28,50 C24,46 20,44 16,44 C12,44 10,48 13,52 L24,66" fill="#FFFFC0" stroke="none"/>',
+    '<path d="M30,44 L30,26 C30,22 33,19 37,19 C41,19 44,22 44,26 L44,40 L44,22 C44,18 47,15 51,15 C55,15 58,18 58,22 L58,40 L58,26 C58,22 61,19 65,19 C69,19 72,22 72,26 L72,58 C72,72 64,82 50,82 C36,82 28,72 28,58 L28,50 C24,46 20,44 16,44 C12,44 10,48 13,52 L24,66" fill="none"/>',
+    '<path d="M28,74 L72,74 L72,86 C72,88 70,90 68,90 L32,90 C30,90 28,88 28,86 Z" fill="#E0A87F" stroke-width="2"/>',
+    gloss(36, 34, 3, 8, 4, .4)
+  ].join(''));
+
+  RAW['طبل'] = svg('طبل', [
+    '<path d="M22,40 L78,40 L78,72 C78,78 66,82 50,82 C34,82 22,78 22,72 Z" fill="#E02000"/>',
+    '<path d="M22,40 L40,40 L40,81 C29,79 22,76 22,72 Z" fill="#FF2020" stroke="none"/>',
+    '<path d="M22,40 L78,40 L78,72 C78,78 66,82 50,82 C34,82 22,78 22,72 Z" fill="none"/>',
+    '<g fill="none" stroke="#E0C060" stroke-width="3">',
+    '<path d="M30,44 L42,72"/><path d="M42,44 L54,72"/><path d="M54,44 L66,72"/><path d="M66,44 L78,68"/>',
+    '</g>',
+    '<ellipse cx="50" cy="40" rx="28" ry="10" fill="#F9F8F3"/>',
+    '<path d="M28,52 L18,22" fill="none" stroke-width="7"/>',
+    '<path d="M28,52 L18,22" fill="none" stroke="#B98551" stroke-width="4"/>',
+    '<circle cx="17" cy="19" r="6" fill="#9A6636" stroke-width="2"/>',
+    '<path d="M72,52 L82,22" fill="none" stroke-width="7"/>',
+    '<path d="M72,52 L82,22" fill="none" stroke="#B98551" stroke-width="4"/>',
+    '<circle cx="83" cy="19" r="6" fill="#9A6636" stroke-width="2"/>',
+    gloss(40, 37, 8, 3, -8, .55)
+  ].join(''));
+
+  /* ══ أطعمة ═════════════════════════════════════════════════════════════ */
+
+  RAW['حليب'] = svg('حليب', [
+    '<path d="M29,20 L71,20 L64,84 C64,88 61,90 58,90 L42,90 C39,90 36,88 36,84 Z" fill="#F7F6F1"/>',
+    '<path d="M31,32 L69,32 L63,82 C63,86 61,87 58,87 L42,87 C39,87 37,86 37,82 Z" fill="#FFFFFF" stroke="none"/>',
+    '<ellipse cx="50" cy="32" rx="19" ry="6" fill="#F9F8F3" stroke-width="2"/>',
+    '<path d="M29,20 L71,20 L64,84 C64,88 61,90 58,90 L42,90 C39,90 36,88 36,84 Z" fill="none"/>',
+    '<ellipse cx="50" cy="20" rx="21" ry="6.5" fill="none"/>',
+    gloss(40, 56, 4, 16, 3, .55)
+  ].join(''));
+
+  RAW['إجاص'] = svg('إجاص', [
+    '<path d="M50,26 C50,20 51,15 54,10" fill="none" stroke="#7A4C22" stroke-width="5"/>',
+    '<path d="M54,16 C62,10 74,13 74,21 C66,27 56,25 54,16 Z" fill="#60C020" stroke-width="2"/>',
+    '<path d="M50,24 C58,24 62,32 60,42 C58,52 72,56 72,68 C72,80 62,90 50,90 C38,90 28,80 28,68 C28,56 42,52 40,42 C38,32 42,24 50,24 Z" fill="#80C020"/>',
+    '<path d="M50,24 C42,24 38,32 40,42 C42,52 28,56 28,68 C28,80 38,90 50,90 Z" fill="#B0D840" stroke="none"/>',
+    '<path d="M50,24 C58,24 62,32 60,42 C58,52 72,56 72,68 C72,80 62,90 50,90 C38,90 28,80 28,68 C28,56 42,52 40,42 C38,32 42,24 50,24 Z" fill="none"/>',
+    gloss(39, 64, 5, 11, -18, .45)
+  ].join(''));
+
+  RAW['سلطة'] = svg('سلطة', [
+    '<path d="M28,44 C24,34 32,26 42,30 C44,20 58,20 60,30 C70,26 78,34 74,44 Z" fill="#4A9018" stroke-width="2"/>',
+    '<path d="M34,44 C30,36 36,30 42,33 C44,25 56,25 58,33 C64,30 70,36 66,44 Z" fill="#60C020" stroke="none"/>',
+    '<circle cx="62" cy="40" r="8" fill="#FF2020" stroke-width="2"/>',
+    '<circle cx="38" cy="41" r="6" fill="#E08000" stroke-width="2"/>',
+    '<path d="M14,46 L86,46 C86,68 72,82 50,82 C28,82 14,68 14,46 Z" fill="#C0C0C0"/>',
+    '<path d="M14,46 L50,46 L50,82 C28,82 14,68 14,46 Z" fill="#F9F8F3" stroke="none"/>',
+    '<path d="M14,46 L86,46 C86,68 72,82 50,82 C28,82 14,68 14,46 Z" fill="none"/>',
+    gloss(30, 58, 5, 10, -30, .5)
+  ].join(''));
+
+  RAW['أرز'] = svg('أرز', [
+    '<path d="M26,54 C26,38 36,28 50,28 C64,28 74,38 74,54 Z" fill="#F9F8F3"/>',
+    '<path d="M26,54 C26,38 36,28 50,28 L50,54 Z" fill="#FFFFFF" stroke="none"/>',
+    '<path d="M26,54 C26,38 36,28 50,28 C64,28 74,38 74,54 Z" fill="none"/>',
+    '<g fill="none" stroke="#C88A5E" stroke-width="2">',
+    '<path d="M34,48 C36,45 39,45 41,48"/><path d="M45,50 C47,47 50,47 52,50"/>',
+    '<path d="M56,48 C58,45 61,45 63,48"/><path d="M40,41 C42,38 45,38 47,41"/>',
+    '<path d="M52,40 C54,37 57,37 59,40"/><path d="M46,33 C48,30 51,30 53,33"/>',
+    '<path d="M62,42 C64,39 67,39 68,42"/><path d="M30,50 C32,47 35,47 36,50"/>',
+    '</g>',
+    '<path d="M10,54 L90,54 C90,70 76,80 50,80 C24,80 10,70 10,54 Z" fill="#20A0FF"/>',
+    '<path d="M10,54 L50,54 L50,80 C24,80 10,70 10,54 Z" fill="#40C0FF" stroke="none"/>',
+    '<path d="M10,54 L90,54 C90,70 76,80 50,80 C24,80 10,70 10,54 Z" fill="none"/>',
+    gloss(26, 63, 5, 8, -30, .5)
+  ].join(''));
+
+  RAW['فواكه'] = svg('فواكه', [
+    '<path d="M34,32 C34,26 36,22 39,19" fill="none" stroke="#7A4C22" stroke-width="4"/>',
+    '<path d="M34,30 C26,30 20,38 22,48 C24,56 28,58 34,58 C40,58 44,56 46,48 C48,38 42,30 34,30 Z" fill="#E02000"/>',
+    '<path d="M34,30 C26,30 20,38 22,48 C24,56 28,58 34,58 L34,30 Z" fill="#FF2020" stroke="none"/>',
+    '<path d="M34,30 C26,30 20,38 22,48 C24,56 28,58 34,58 C40,58 44,56 46,48 C48,38 42,30 34,30 Z" fill="none"/>',
+    '<path d="M66,26 C62,22 60,20 58,20 C62,26 62,38 56,46 C50,54 60,58 68,54 C78,48 76,34 66,26 Z" fill="#E0C060"/>',
+    '<path d="M66,26 C62,22 60,20 58,20 C62,26 62,38 56,46 C50,54 60,58 68,54 Z" fill="#FFFFC0" stroke="none"/>',
+    '<path d="M66,26 C62,22 60,20 58,20 C62,26 62,38 56,46 C50,54 60,58 68,54 C78,48 76,34 66,26 Z" fill="none"/>',
+    '<path d="M12,58 L88,58 C88,74 74,86 50,86 C26,86 12,74 12,58 Z" fill="#C06000"/>',
+    '<path d="M12,58 L50,58 L50,86 C26,86 12,74 12,58 Z" fill="#E08000" stroke="none"/>',
+    '<path d="M12,58 L88,58 C88,74 74,86 50,86 C26,86 12,74 12,58 Z" fill="none"/>',
+    gloss(27, 66, 5, 8, -30, .45)
+  ].join(''));
+
+  /* «سمك» اسمُ جنسٍ لِـ«سمكة» — الرسمُ واحدٌ والوسمُ يتبعُ الكلمة، فلا يُرسَمُ مرّتَين */
+  RAW['سمك'] = RAW['سمكة'].replace('aria-label="سمكة"', 'aria-label="سمك"');
+
   /* ══ بناءُ السجلِّ النهائيِّ بمفاتيحَ مجرّدة ═══════════════════════════ */
   var PICS = {};
   Object.keys(RAW).forEach(function(k){ PICS[key(k)] = RAW[k]; });
