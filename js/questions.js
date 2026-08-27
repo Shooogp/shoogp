@@ -7615,6 +7615,7 @@ window.QUESTIONS = {
     // ③ اختيار من متعدد — 1Bp1 معرفة
     {
       type: "mcq",
+      pics: true,
       objective: "1Bp1: يتعلّم أنّ هناك كائنات حيّة وأشياء غير حيّة",
       level: "knowledge",
       prompt: "أيُّ هذِهِ الأشياءِ غَيرُ حَيٍّ؟",
@@ -7762,6 +7763,7 @@ window.QUESTIONS = {
     // ③ اختيار من متعدد — 1Bh5 معرفة
     {
       type: "mcq",
+      pics: true,
       objective: "1Bh5: يعرف أنّ الإنسان والحيوان قادران على إنجاب الصغار الذين يكبرون ليصبحوا بالغين",
       level: "knowledge",
       prompt: "ماذا يُسَمّى صَغيرُ الأسَدِ؟",
@@ -7833,6 +7835,7 @@ window.QUESTIONS = {
     // ③ اختيار من متعدد — 1Bh3 معرفة
     {
       type: "mcq",
+      pics: true,
       objective: "1Bh3: يعرف حاجة الإنسان للغذاء الصحّي، بما في ذلك أنواع الطعام والماء المناسبين",
       level: "knowledge",
       prompt: "أيُّ هذِهِ الأطعِمَةِ صِحّيٌّ؟",
@@ -7902,6 +7905,7 @@ window.QUESTIONS = {
     // ③ اختيار من متعدد — معرفة — 1Bp2
     {
       type: "mcq",
+      pics: true,
       objective: "1Bp2: يتعلّم أنّ النباتات والحيوانات هي كائنات حيّة",
       level: "knowledge",
       prompt: "أيُّ هذِهِ كائِنٌ حَيٌّ؟",
@@ -7954,6 +7958,7 @@ window.QUESTIONS = {
     // ⑰ بطاقات الذاكرة — إثرائي — 1Bh5
     {
       type: "memory",
+      pics: true,
       objective: "1Bh5: يعرف أنّ الإنسان والحيوان قادران على إنجاب الصغار الذين يكبرون ليصبحوا بالغين",
       level: "knowledge",
       prompt: "اقلِبْ بِطاقَتَينِ في كُلِّ دَورٍ لِتَربِطَ كُلَّ حَيَوانٍ بصَغيرِهِ.",
@@ -7982,6 +7987,7 @@ window.QUESTIONS = {
     // ③ اختيار من متعدد — 1Bp4 معرفة
     {
       type: "mcq",
+      pics: true,
       objective: "1Bp4: يسمّي الأجزاء الرئيسية في النباتات",
       level: "knowledge",
       prompt: "أيُّ أجزاءِ النَّباتِ يَنمو تَحتَ التُّرابِ؟",
@@ -8056,6 +8062,7 @@ window.QUESTIONS = {
     // ③ اختيار من متعدد — 1Bp6 معرفة
     {
       type: "mcq",
+      pics: true,
       objective: "1Bp6: يكتشف الطرق التي تنمو فيها البذور لتصبح نبتة مزهرة",
       level: "knowledge",
       prompt: "ماذا تُصبِحُ البَذرَةُ عِندَما تَنمو؟",
@@ -8520,6 +8527,7 @@ window.QUESTIONS = {
     // ③ اختيار من متعدد — 1Bh2 معرفة
     {
       type: "mcq",
+      pics: true,
       objective: "1Bh2: يسمّي الأجزاء الرئيسية في الجسم ويحدّد مواضعها",
       level: "knowledge",
       prompt: "أينَ تُوجَدُ العَينُ والأنفُ والفَمُ؟",
@@ -8610,6 +8618,7 @@ window.QUESTIONS = {
     // ③ اختيار من متعدد — 1Bh3 معرفة
     {
       type: "mcq",
+      pics: true,
       objective: "1Bh3: يتعرّف الحواسّ الخمس وأعضاءها ووظائفها",
       level: "knowledge",
       prompt: "بأيِّ حاسَّةٍ نَعرِفُ طَعمَ الطَّعامِ؟",
@@ -8699,6 +8708,7 @@ window.QUESTIONS = {
     // ③ اختيار من متعدد — معرفة — 1Bh3
     {
       type: "mcq",
+      pics: true,
       objective: "1Bh3: يتعرّف الحواسّ الخمس وأعضاءها ووظائفها",
       level: "knowledge",
       prompt: "بأيِّ حاسَّةٍ نَعرِفُ أنَّ الماءَ باردٌ؟",

@@ -2085,7 +2085,7 @@
    الواحدةُ في `js/app.js` — فبطاقاتُهما تحملُ `.haspic` كما تحملُها بطاقةُ التصنيف.
    وإضافتُها هنا **لا ترفعُ الأولويةَ ولا تُغيّرُها**: `:is()` تأخذُ وزنَ أثقلِ
    وسائطِها، وكلُّها صنفٌ واحد. */
-.shoogp-ui.shoogp-ui .qwin :is(.chip,.excl-opt,.mitem,.seqitem).haspic.haspic{
+.shoogp-ui.shoogp-ui .qwin :is(.chip,.excl-opt,.mitem,.seqitem,.opt,.memfront).haspic.haspic{
   --qpic-h:max(40px, calc(56px * var(--s,1)));
   /* ═══ الكلمةُ **تجاورُ** الرسمَ لا تعلوه (قرارُ المالك ٢٠٢٦-٠٨-٢٧) ═══
      الكبسولةُ شكلٌ **عرضيّ**: لوحُها اللامعُ عريضٌ قصير. فبطاقةٌ من سطرَين تُطيلُها

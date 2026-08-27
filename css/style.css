@@ -657,7 +657,7 @@
      والصفُّ الواحدُ (لا العمود) يُبقي البطاقةَ سطراً واحداً فتستقرُّ في وسطِ الزرِّ
      المكسوِّ حيثُ هو أعرض — العلّةُ الكاملةُ في `css/shoogp-ui.css` §بطاقةُ الرسمِ
      داخلَ القشورِ المصوَّرة، وهي التي تحكمُ العرضَ الفعليَّ في كلِّ المواد. */
-  .chip.haspic,.excl-opt.haspic,.mitem.haspic,.seqitem.haspic .seq-txt{
+  .chip.haspic,.excl-opt.haspic,.mitem.haspic,.opt.haspic,.memfront.haspic,.seqitem.haspic .seq-txt{
     display:flex;flex-direction:row-reverse;align-items:center;gap:9px;
     padding:10px 14px;line-height:1.3}
   /* في الترتيبِ التسلسليِّ الوجهُ داخلَ `.seq-txt` لا في البطاقةِ نفسِها، لأنّ

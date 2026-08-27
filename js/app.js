@@ -821,7 +821,8 @@ function wireAudioPlayer(scope, src){
 function renderMcq(q, body, fb){
   const opts=shuffle(q.options.map((o,idx)=>({o,idx})));
   body.innerHTML=(q.audio?`<div class="qaudio">`+audioPlayerHTML(q.audio)+`</div>`:'')+
-    `<div class="opts">`+opts.map(x=>`<button class="opt" data-i="${x.idx}">${x.o}</button>`).join('')+`</div>`;
+    `<div class="opts">`+opts.map(x=>{const f=qFace(q,x.o);
+      return `<button class="opt${f.cls}" data-i="${x.idx}">${f.html}</button>`;}).join('')+`</div>`;
   wireAudioPlayer(body,q.audio);
   let done=false;
   body.querySelectorAll('.opt').forEach(btn=>{btn.onclick=()=>{
@@ -1018,8 +1019,13 @@ function renderSequence(q, body, fb){
   body.querySelector('.btn-reset').onclick=()=>renderSequence(q,body,fb);
 }
 
-/* وجهُ البطاقةِ في التصنيفِ والاستبعاد: نصٌّ خامٌّ افتراضاً، و**رسمٌ فوقَ الكلمة**
-   حين يحملُ السؤالُ `pics: true` ويكونُ للكلمةِ رسمٌ في سِجِلِّ `js/qpics.js`.
+/* وجهُ البطاقةِ: نصٌّ خامٌّ افتراضاً، و**رسمٌ يجاورُ الكلمة** حين يحملُ السؤالُ
+   `pics: true` ويكونُ للكلمةِ رسمٌ في سِجِلِّ `js/qpics.js`.
+
+   **ستّةُ أنواعٍ تُنادي هذه الدالّة**، فالمنطقُ مكتوبٌ مرّةً: التصنيفُ (بطاقاتُ
+   البنك) · الاستبعادُ (الخيارات) · التوصيلُ (طرفا الزوج) · الترتيبُ التسلسليُّ
+   (الخطوات) · **الاختيارُ من متعدد (الخيارات)** · **بطاقاتُ الذاكرة (وجهُ البطاقة)**.
+   والأخيرانِ فُتِحا ٢٠٢٦-٠٨-٢٧ لإتمامِ علومِ الصفِّ الأول.
    الكلمةُ التي لا رسمَ لها تبقى نصّاً — فالسِّجِلُّ الناقصُ لا يكسرُ سؤالاً.
    العلّةُ التربوية: تلميذُ الصفَّينِ الأولِ والثاني لَمّا يُتقنِ القراءة، فالكلمةُ
    وحدَها تُحوّلُ سؤالَ العلومِ إلى اختبارِ قراءة (التفصيلُ في رأسِ `qpics.js`). */
@@ -1626,11 +1632,11 @@ function renderMemory(q, body, fb){
      المفضَّل في العرض الواسع ويقلّله تلقائياً إن ضاق الإطار، فلا تُقصّ بطاقة أبداً. */
   body.innerHTML=`<div class="memory">`+
     `<div class="memgrid" style="--memcols:${cols}">`+
-    cards.map(c=>
-      `<button class="memcard" type="button" data-k="${c.k}">`+
+    cards.map(c=>{const f=qFace(q,c.t);
+      return `<button class="memcard" type="button" data-k="${c.k}">`+
         `<span class="memface memback">🎴</span>`+
-        `<span class="memface memfront">${c.t}</span>`+
-      `</button>`).join('')+
+        `<span class="memface memfront${f.cls}">${f.html}</span>`+
+      `</button>`;}).join('')+
     `</div>`+
     `<div class="actions"><button class="btn btn-reset">إعادة ↺</button></div>`;
   let first=null, lock=false, matched=0;
