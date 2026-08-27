@@ -667,7 +667,11 @@
      في `row-reverse` مع RTL يُعيدُها إلى الحافّةِ اليمنى حيثُ كانت. */
   .seqitem.haspic .seq-txt{padding:4px 0;justify-content:flex-end}
   .qpic{display:block;width:60px;height:60px;flex:0 0 auto}
-  .qpic svg{width:100%;height:100%;display:block}
+  /* الوجهُ إمّا SVG مضمَّنٌ وإمّا صورةٌ مولَّدةٌ من `images/` — القاعدةُ واحدةٌ لهما
+     فلا يفترقُ مقاسُ بطاقةٍ عن أختِها في الصفِّ الواحد. و`object-fit:contain`
+     يحفظُ نسبةَ الصورةِ المربّعةِ (٣٠٠×٣٠٠) داخلَ المربّعِ المخصَّصِ لها. */
+  .qpic svg,.qpic .qpic-img{width:100%;height:100%;display:block}
+  .qpic .qpic-img{object-fit:contain;user-select:none;-webkit-user-drag:none}
   .qpic-t{font-size:.88em;font-weight:700}
 
   .excl-opt:hover:not(:disabled){background:#ffd39a}
