@@ -28680,12 +28680,14 @@ window.QUESTIONS = {
     // ① تذكّر — `knowledge` (المخرَج ②) — **عنوانُ الإعلانِ نصّاً**
     // ⚠️ **والمموِّهاتُ كسورٌ من جنسِ الكسرِ نفسِه** فيُقاسُ ضبطُ المقدارِ لا التخمين.
     {
-      type: "mcq",
-      objective: "يتعرف إلى قراءة إعلان إرشادي",
+      type: "hotspot",
+      objective: "يقرأ مستنداً بصرياً ويستخرج منه معلومة محدَّدة",
       level: "knowledge",
-      prompt: "بِحَسَبِ الْإِعْلانِ، وَزْنُ الْحَقيبَةِ بِأَدَواتِها لا يَزيدُ عَلى:",
-      options: ["خُمْسِ وَزْني", "رُبْعِ وَزْني", "ثُلُثِ وَزْني", "نِصْفِ وَزْني"],
-      answer: 0
+      prompt: "اُنْقُرْ عَلى السَّطْرِ الَّذي يَذْكُرُ وَزْنَ الْحَقيبَةِ.",
+      fit: "width",
+      bg: "#fdf9ee",
+      spot: { x: 50.0, y: 84.5, w: 91.2, h: 16.6 },
+      svg: "<svg viewBox=\"0 0 640 470\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"إعلانٌ إرشاديٌّ عن الحقيبةِ المدرسيةِ فيه ثلاثةُ أسطرٍ وصورةُ حقيبة\"><g stroke=\"#111111\" stroke-linecap=\"round\" stroke-linejoin=\"round\" font-family=\"Tajawal, Dubai, Cairo, sans-serif\"><rect x=\"10\" y=\"10\" width=\"620\" height=\"450\" rx=\"30\" fill=\"#FFFFC0\" stroke-width=\"3\"/><rect x=\"10\" y=\"10\" width=\"620\" height=\"140\" rx=\"30\" fill=\"#FF8000\" stroke-width=\"3\"/><clipPath id=\"g3adbag\"><rect x=\"26\" y=\"18\" width=\"124\" height=\"124\" rx=\"24\"/></clipPath><rect x=\"26\" y=\"18\" width=\"124\" height=\"124\" rx=\"24\" fill=\"#FFFFFF\" stroke-width=\"3\"/><g clip-path=\"url(#g3adbag)\"><image href=\"images/حقيبة.png\" x=\"26\" y=\"18\" width=\"124\" height=\"124\"/></g><rect x=\"26\" y=\"18\" width=\"124\" height=\"124\" rx=\"24\" fill=\"none\" stroke-width=\"3\"/><text x=\"395\" y=\"98\" font-size=\"48\" font-weight=\"800\" text-anchor=\"middle\" fill=\"#FFFFFF\" stroke=\"none\">حَقيبَتي السَّليمَةُ</text><rect x=\"28\" y=\"178\" width=\"584\" height=\"78\" rx=\"20\" fill=\"#FFFFFF\" stroke-width=\"3\"/><circle cx=\"574\" cy=\"217\" r=\"14\" fill=\"#FF8000\" stroke-width=\"3\"/><text x=\"282\" y=\"229\" font-size=\"34\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#111111\" stroke=\"none\">لا تَكونُ أَعْرَضَ مِنْ كَتِفَيَّ</text><rect x=\"28\" y=\"268\" width=\"584\" height=\"78\" rx=\"20\" fill=\"#FFFFFF\" stroke-width=\"3\"/><circle cx=\"574\" cy=\"307\" r=\"14\" fill=\"#FF8000\" stroke-width=\"3\"/><text x=\"282\" y=\"319\" font-size=\"34\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#111111\" stroke=\"none\">حِزامُها عَريضٌ وَمَحْشُوٌّ</text><rect x=\"28\" y=\"358\" width=\"584\" height=\"78\" rx=\"20\" fill=\"#FFFFFF\" stroke-width=\"3\"/><circle cx=\"574\" cy=\"397\" r=\"14\" fill=\"#FF8000\" stroke-width=\"3\"/><text x=\"282\" y=\"409\" font-size=\"34\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#111111\" stroke=\"none\">وَزْنُها خُمْسُ وَزْني</text></g></svg>"
     },
 
     // ② فهم — `reasoning` (المخرَج ②)
@@ -29020,17 +29022,13 @@ window.QUESTIONS = {
 
     // ① تذكّر — `knowledge` (المخرَج ②) — **سؤالُ الكتابِ الأوّلُ**
     {
-      type: "mcq",
-      objective: "يتعرف إلى قراءة شعار الصيدلية",
+      type: "hotspot",
+      objective: "يقرأ رمزاً بصرياً ويربطه بمدلوله",
       level: "knowledge",
-      prompt: "ماذا تُشاهِدُ في شِعارِ الصَّيْدَلِيَّةِ؟",
-      options: [
-        "أَفْعى مُلْتَفَّةً حَوْلَ كَأْسٍ",
-        "طائِرًا فَوْقَ غُصْنٍ",
-        "سَمَكَةً في إِناءٍ",
-        "شَجَرَةً في حَديقَةٍ"
-      ],
-      answer: 0
+      prompt: "اُنْقُرْ عَلى شِعارِ الصَّيْدَلِيَّةِ.",
+      bg: "#fdf9ee",
+      spot: { x: 74.0, y: 74.0, w: 44.2, h: 44.2 },
+      svg: "<svg viewBox='0 0 520 520' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='أربعةُ رموزٍ: طائرٌ على غصنٍ وسمكةٌ في إناءٍ وشجرةٌ في حديقةٍ وشعارُ صيدليّة'><defs><clipPath id='g3shA'><rect x='20' y='20' width='230' height='230' rx='18'/></clipPath><clipPath id='g3shB'><rect x='270' y='20' width='230' height='230' rx='18'/></clipPath><clipPath id='g3shC'><rect x='20' y='270' width='230' height='230' rx='18'/></clipPath><clipPath id='g3shD'><rect x='270' y='270' width='230' height='230' rx='18'/></clipPath></defs><g clip-path='url(#g3shA)'><image href='images/طائر-غصن.png' x='20' y='20' width='230' height='230'/></g><rect x='20' y='20' width='230' height='230' rx='18' fill='none' stroke='#111111' stroke-width='3'/><g clip-path='url(#g3shB)'><image href='images/سمكة-إناء.png' x='270' y='20' width='230' height='230'/></g><rect x='270' y='20' width='230' height='230' rx='18' fill='none' stroke='#111111' stroke-width='3'/><g clip-path='url(#g3shC)'><image href='images/حديقة.png' x='20' y='270' width='230' height='230'/></g><rect x='20' y='270' width='230' height='230' rx='18' fill='none' stroke='#111111' stroke-width='3'/><g clip-path='url(#g3shD)'><image href='images/شعار-صيدلية.png' x='270' y='270' width='230' height='230'/></g><rect x='270' y='270' width='230' height='230' rx='18' fill='none' stroke='#111111' stroke-width='3'/></svg>"
     },
 
     // ② فهم — `reasoning` (المخرَج ②) — **سؤالُ الكتابِ الثالثُ نصّاً**
