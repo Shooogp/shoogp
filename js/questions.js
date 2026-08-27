@@ -178,8 +178,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "2Nn1: يعدّ ويقرأ ويكتب الأعداد حتى ١٠٠ كحد أدنى، تصاعدياً وتنازلياً",
       level: "knowledge",
-      statement: "العَدَدُ الَّذي يَأتي بَعدَ ٦٩ مُباشَرةً هو ٧٠.",
-      answer: true
+      statement: "العَدَدُ الَّذي يَأتي بَعدَ ٦٩ مُباشَرةً هو ٧١.",
+      answer: false
     },
 
     // ③ اختيار من متعدد — تطبيق — 2Nn9
@@ -1165,8 +1165,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "2Nc7: يستخدم إشارة = للتعبير عن التساوي، مثلاً: ١٦+٤ = ١٧+٣",
       level: "knowledge",
-      statement: "٥ + ٢ و٩ − ٢ مُتَكافِئانِ لِأنَّ قيمةَ كُلٍّ مِنهُما ٧.",
-      answer: true
+      statement: "٥ + ٢ و٩ − ٤ مُتَكافِئانِ لِأنَّ قيمةَ كُلٍّ مِنهُما ٧.",
+      answer: false
     },
 
     // ③ التوصيل — تطبيق — 2Nc11 (بطاقات الآلة في كتاب التلميذ ص١٦)
@@ -1419,8 +1419,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "2Gs2: يصنّف ويسمّي ويصف وينشئ الأشكال الثلاثية الأبعاد ويميزها من رسومات ثنائية",
       level: "knowledge",
-      statement: "المُكَعَّبُ لَهُ ٦ أوجُهٍ، كُلُّ وَجهٍ مِنها مُرَبَّعٌ.",
-      answer: true
+      statement: "المُكَعَّبُ لَهُ ٤ أوجُهٍ، كُلُّ وَجهٍ مِنها مُرَبَّعٌ.",
+      answer: false
     },
 
     // ② اختيار من متعدد — معرفة — 2Gs2
@@ -1688,8 +1688,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "2Ml1: يقدّر ويقيس ويقارن الأطوال والكتل والسعات بوحدات مناسبة وأدوات قياس مناسبة",
       level: "knowledge",
-      statement: "المِترُ الواحِدُ أطوَلُ مِنَ السَّنتيمِترِ الواحِدِ.",
-      answer: true
+      statement: "السَّنتيمِترُ الواحِدُ أطوَلُ مِنَ المِترِ الواحِدِ.",
+      answer: false
     },
 
     // ③ المقارنة — تطبيق — 2Ml1
@@ -1867,8 +1867,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "2Mt2: يعرف العلاقات بين وحدات الوقت المتتالية",
       level: "knowledge",
-      statement: "في الدَّقيقةِ الواحِدةِ ٦٠ ثانِيةً.",
-      answer: true
+      statement: "في الدَّقيقةِ الواحِدةِ ١٠٠ ثانِيةٍ.",
+      answer: false
     },
 
     // ③ الساعة التفاعلية (قراءة) — تطبيق — 2Mt1
@@ -2214,8 +2214,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "2Mm2: يستخدم صيغة كتابة النقود (المبلغ الكامل أو نصف ريال عماني)",
       level: "knowledge",
-      statement: "نِصفُ رِيالٍ عُمانِيٍّ يُساوي ٥٠٠ بَيسةٍ.",
-      answer: true
+      statement: "نِصفُ رِيالٍ عُمانِيٍّ يُساوي ٥٠ بَيسةً.",
+      answer: false
     },
 
     // ③ النقود العُمانية — تطبيق — 2Mm3
@@ -2272,8 +2272,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "2Nn6: يعرف ما يمثّله كل رقم في الأعداد المكوّنة من رقمين؛ ويجزّئ العدد إلى عشرات وآحاد",
       level: "knowledge",
-      statement: "العددُ ٦٠ فيهِ ٦ عَشَراتٍ و٠ آحاد.",
-      answer: true
+      statement: "العددُ ٦٠ فيهِ ٠ عَشَراتٍ و٦ آحاد.",
+      answer: false
     },
 
     // ③ اختيار من متعدد — 2Nn6
@@ -2506,8 +2506,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "2Nc1: يجد ويحفظ غيباً كل الأزواج العددية للعدد ١٠ والأزواج بمجموع ٢٠",
       level: "knowledge",
-      statement: "١٥ + ٥ = ٢٠",
-      answer: true
+      statement: "١٥ + ٥ = ٢٥",
+      answer: false
     },
 
     // ② التوصيل — معرفة — 2Nc1
@@ -2672,8 +2672,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "2Nn14: يفهم الأعداد الفردية والزوجية ويميزها حتى ٢٠ على الأقل",
       level: "knowledge",
-      statement: "العَدَدُ ١٤ عَدَدٌ زَوجِيٌّ.",
-      answer: true
+      statement: "العَدَدُ ١٥ عَدَدٌ زَوجِيٌّ.",
+      answer: false
     },
 
     // ② اختيار من متعدد — معرفة — 2Nn15
@@ -2744,8 +2744,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "2Nn7: يجد العدد أكثر/أقل بمقدار ١ أو ١٠ من أي عدد من رقمين",
       level: "knowledge",
-      statement: "العَدَدُ الأكثَرُ بِمِقدارِ ١٠ مِنَ العَدَدِ ٣٤ هو ٤٤.",
-      answer: true
+      statement: "العَدَدُ الأكثَرُ بِمِقدارِ ١٠ مِنَ العَدَدِ ٣٤ هو ٣٥.",
+      answer: false
     },
 
     // ② اختيار من متعدد — معرفة — 2Nc11
@@ -2914,8 +2914,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "2Nc15: يفهم الطرح من ناحية الفرق والأخذ من",
       level: "knowledge",
-      statement: "الفَرقُ بَينَ العَدَدَينِ ١٢ و١٠ هو ٢.",
-      answer: true
+      statement: "الفَرقُ بَينَ العَدَدَينِ ١٢ و١٠ هو ٢٢.",
+      answer: false
     },
 
     // ② اختيار من متعدد — معرفة — 2Nc13
@@ -3160,8 +3160,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "2Nc23: يفهم أنه قد يبقى عدد بعد عملية القسمة",
       level: "knowledge",
-      statement: "عِندَ تَوزيعِ ٧ أقلامٍ عَلى تِلميذَينِ بِالتَّساوي يَبقى قَلَمٌ واحِدٌ.",
-      answer: true
+      statement: "عِندَ تَوزيعِ ٧ أقلامٍ عَلى تِلميذَينِ بِالتَّساوي لا يَبقى شَيءٌ.",
+      answer: false
     },
 
     // ③ التصنيف — تطبيق — 2Nc23
@@ -3223,8 +3223,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "4Nn3: يفهم ما يمثّله كل رقم في عدد مكوّن من أربعة أرقام، ويجزّئ العدد إلى آلاف ومئات وعشرات وآحاد",
       level: "knowledge",
-      statement: "قيمةُ الرقمِ ٧ في العددِ ٢٧٥٣ هي ٧٠٠.",
-      answer: true
+      statement: "قيمةُ الرقمِ ٧ في العددِ ٢٧٥٣ هي ٧٠.",
+      answer: false
     },
 
     // ③ اختيار من متعدد — معرفة
@@ -3439,8 +3439,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "4Nn7: يضرب ويقسم عدداً من ثلاثة أرقام بالعدد ١٠ ويبدأ بالضرب بـ١٠٠",
       level: "knowledge",
-      statement: "عِنْدَ الْقِسْمَةِ عَلى ١٠٠ يَنْتَقِلُ كُلُّ رَقْمٍ خانَتَيْنِ إِلى الْيَمينِ.",
-      answer: true
+      statement: "عِنْدَ الْقِسْمَةِ عَلى ١٠٠ يَنْتَقِلُ كُلُّ رَقْمٍ خانَتَيْنِ إِلى الْيَسارِ.",
+      answer: false
     },
 
     // ③ تطبيق — `4Nc25` — تمرينا الكتابِ ٤-ب و٤-د: **المفقودُ هو العاملُ لا الناتج**،
@@ -3728,8 +3728,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "4Nc18: يجمع عددين مكوّنين من ثلاثة أرقام",
       level: "knowledge",
-      statement: "تَجْزِئَةُ الْعَدَدِ ٦٠٨ هِيَ ٦٠٠ + ٨.",
-      answer: true
+      statement: "تَجْزِئَةُ الْعَدَدِ ٦٠٨ هِيَ ٦٠ + ٨.",
+      answer: false
     },
 
     // ③ تطبيق — `4Nc18` — **ثلاثةٌ من أزواجِ الشبكةِ الخمسةِ بأعدادِها**.
@@ -4106,8 +4106,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "4Ml2: يدرك ويستخدم العلاقات بين الوحدات المرتبطة بالطول والكتلة والسعة",
       level: "knowledge",
-      statement: "الْكيلوغْرامُ الْواحِدُ يُساوي ١٠٠٠ غْرامٍ.",
-      answer: true
+      statement: "الْكيلوغْرامُ الْواحِدُ يُساوي ١٠٠ غْرامٍ.",
+      answer: false
     },
 
     // ② معرفة — `4Ml4` — **قراءةُ ميناءِ الميزانِ** كالميزانِ القرصيِّ (أ) في الصفحة.
@@ -4491,8 +4491,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "4Ma1: يرسم مستطيلاً، ويقيس ويحسب أبعاده",
       level: "knowledge",
-      statement: "الْمُحيطُ هُوَ الْمَسافَةُ حَوْلَ الشَّكْلِ الْهَنْدَسِيِّ.",
-      answer: true
+      statement: "الْمُحيطُ هُوَ الْمَساحَةُ داخِلَ الشَّكْلِ الْهَنْدَسِيِّ.",
+      answer: false
     },
 
     // ② معرفة — `4Ma1` — **المستطيلُ الأحمرُ في تمرينِ الصفحةِ ٢-أ بأبعادِه**.
@@ -5021,8 +5021,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "4Nn4: يستخدم رمز الأعداد العشرية والقيمة المكانية في سياق قيمة نقدية",
       level: "knowledge",
-      statement: "في الْعَدَدِ ٠٫٤ يُمَثِّلُ الرَّقْمُ ٤ جُزْءًا مِنْ عَشَرَةٍ.",
-      answer: true
+      statement: "في الْعَدَدِ ٠٫٤ يُمَثِّلُ الرَّقْمُ ٤ جُزْءًا مِنْ مِئَةٍ.",
+      answer: false
     },
 
     // ③ تطبيق — `4Nn4` — **التحويلُ من الريالِ إلى البيسة**، وهو نصُّ المخرَج.
@@ -5307,8 +5307,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "4Nc4: يعرف جدول ضرب ٢× و٣× و٤× و٥× و١٠× ويستنتج حقائق القسمة منها",
       level: "knowledge",
-      statement: "ناتِجُ ضَرْبِ الْعَدَدَيْنِ ٤ وَ٣ يُساوي ١٢.",
-      answer: true
+      statement: "ناتِجُ ضَرْبِ الْعَدَدَيْنِ ٤ وَ٣ يُساوي ٧.",
+      answer: false
     },
 
     // ② معرفة — `4Nc13` — **الأزواجُ الثلاثةُ الباقيةُ من بطاقاتِ اللغز**.
@@ -5583,8 +5583,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "4Nn15: يتعرّف إلى الأعداد الفردية والأعداد الزوجية",
       level: "knowledge",
-      statement: "العددُ ٣٦ عددٌ زوجيٌّ لأنَّ رقمَ آحادِهِ ٦.",
-      answer: true
+      statement: "العددُ ٣٧ عددٌ زوجيٌّ لأنَّ رقمَ آحادِهِ ٧.",
+      answer: false
     },
 
     // ③ اختيار من متعدد — معرفة
@@ -5837,8 +5837,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "4Bh6: يلاحظ أنّ للعظام أشكالاً وأحجاماً مختلفة",
       level: "reasoning",
-      statement: "العظامُ المسطّحةُ مثلُ الجُمجمةِ أنسبُ لحمايةِ الأعضاءِ من العظامِ الطويلةِ.",
-      answer: true
+      statement: "العظامُ الطويلةُ مثلُ عظمِ الفخذِ أنسبُ لحمايةِ الأعضاءِ من العظامِ المسطّحةِ.",
+      answer: false
     },
 
     // ⑯ البازل (تركيب الصورة)
@@ -6049,8 +6049,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "4Bh5: يشرح دور العقاقير كأدوية",
       level: "reasoning",
-      statement: "جميع الأدوية عقاقير، لكن ليست جميع العقاقير أدوية.",
-      answer: true
+      statement: "جميعُ العقاقيرِ أدويةٌ، لكن ليست جميعُ الأدويةِ عقاقيرَ.",
+      answer: false
     },
 
     // ③ اختيار من متعدد
@@ -6118,8 +6118,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "4Bh13: يدرك أنّ الجراثيم من أسباب المرض ولا تُرى إلّا بالمجهر",
       level: "knowledge",
-      statement: "لا يُمكنُ رؤيةُ الجراثيمِ إلّا باستخدامِ المِجهرِ.",
-      answer: true
+      statement: "يُمكنُ رؤيةُ الجراثيمِ بالعينِ المجرّدةِ بلا مِجهرٍ.",
+      answer: false
     },
 
     // ③ اختيار من متعدد — معرفة (دور الأدوية)
@@ -6234,8 +6234,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "4Bh4a: يستنتج أنّ انقباض العضلة يؤدّي إلى حركة العظام",
       level: "knowledge",
-      statement: "عندما تنقبضُ العضلةُ تسحبُ العظمَ فيتحرّكُ.",
-      answer: true
+      statement: "عندما تنقبضُ العضلةُ تدفعُ العظمَ فيتحرّكُ.",
+      answer: false
     },
 
     // ② توصيل — معرفة — 4Bh13
@@ -6613,8 +6613,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "4Be2: يستخدم مفتاحاً تعريفياً مبسّطاً",
       level: "knowledge",
-      statement: "دودةُ الأرضِ من الحيواناتِ اللافقاريةِ لكنّها ليست حشرةً.",
-      answer: true
+      statement: "دودةُ الأرضِ حشرةٌ لأنّها من الحيواناتِ اللافقاريةِ.",
+      answer: false
     },
 
     // ② توصيل — معرفة
@@ -7151,8 +7151,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "4Cs1: يميّز المادة الصلبة والسائلة والغازية",
       level: "knowledge",
-      statement: "جُزيئاتُ المادّةِ الصلبةِ متلاصقةٌ بشدّةٍ وتهتزُّ في موضِعِها.",
-      answer: true
+      statement: "جُزيئاتُ المادّةِ الصلبةِ متباعدةٌ وتتحرّكُ بحرّيةٍ في كلِّ اتّجاهٍ.",
+      answer: false
     },
 
     // ② توصيل — معرفة
@@ -7239,8 +7239,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "4Cs1: يميّز المادة الصلبة والسائلة والغازية",
       level: "knowledge",
-      statement: "معظمُ المَوادِّ الصلبةِ لا تُغيّرُ شكلَها عند الضغطِ عليها.",
-      answer: true
+      statement: "معظمُ المَوادِّ الصلبةِ تُغيّرُ شكلَها بسهولةٍ عند الضغطِ عليها.",
+      answer: false
     },
 
     // ② توصيل — معرفة
@@ -7300,8 +7300,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "4Cs3: يعرّف الانصهار بالتغيّر من الحالة الصلبة إلى السائلة وأنّ التجمّد عكسه",
       level: "knowledge",
-      statement: "التّجمُّدُ عكسُ الانصِهارِ.",
-      answer: true
+      statement: "التّجمُّدُ عكسُ التّبخُّرِ.",
+      answer: false
     },
 
     // ② توصيل — معرفة
@@ -7453,8 +7453,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "4Cs2: يستقصي تغيّرات المادة عند التسخين والتبريد",
       level: "knowledge",
-      statement: "درجةُ انصِهارِ الثلجِ هي صفرٌ °س.",
-      answer: true
+      statement: "درجةُ انصِهارِ الثلجِ هي ١٠٠ °س.",
+      answer: false
     },
 
     // ② توصيل — معرفة
@@ -7972,8 +7972,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "1Bp4: يسمّي الأجزاء الرئيسية في النباتات",
       level: "knowledge",
-      statement: "لِلنَّباتِ جُذورٌ وساقٌ وأوراقٌ.",
-      answer: true
+      statement: "لِلنَّباتِ جُذورٌ وساقٌ وأَجنِحَةٌ.",
+      answer: false
     },
 
     // ③ اختيار من متعدد — 1Bp4 معرفة
@@ -8044,8 +8044,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "1Bp5: يعرف أنّ النباتات تحتاج إلى الضوء والماء لتنمو",
       level: "knowledge",
-      statement: "تَحتاجُ البُذورُ إلى الماءِ لِتَنمو.",
-      answer: true
+      statement: "تَحتاجُ البُذورُ إلى المِلحِ لِتَنمو.",
+      answer: false
     },
 
     // ③ اختيار من متعدد — 1Bp6 معرفة
@@ -8127,8 +8127,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "1Bp5: يعرف أنّ النباتات تحتاج إلى الضوء والماء لتنمو",
       level: "knowledge",
-      statement: "تَحتاجُ النَّباتاتُ إلى الضَّوءِ لِتَنمو.",
-      answer: true
+      statement: "تَنمو النَّباتاتُ في الظَّلامِ أَفضَلَ مِنَ الضَّوءِ.",
+      answer: false
     },
 
     // ③ اختيار من متعدد — 1Bp5 معرفة
@@ -8503,8 +8503,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "1Bh2: يسمّي الأجزاء الرئيسية في الجسم ويحدّد مواضعها",
       level: "knowledge",
-      statement: "نُمسِكُ الأشياءَ بِأصابِعِ اليَدِ.",
-      answer: true
+      statement: "نُمسِكُ الأشياءَ بِأصابِعِ القَدَمِ.",
+      answer: false
     },
 
     // ③ اختيار من متعدد — 1Bh2 معرفة
@@ -8593,8 +8593,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "1Bh3: يتعرّف الحواسّ الخمس وأعضاءها ووظائفها",
       level: "knowledge",
-      statement: "نَستَخدِمُ العَينَ لِنَرى الأشياءَ.",
-      answer: true
+      statement: "نَستَخدِمُ الأُذُنَ لِنَرى الأشياءَ.",
+      answer: false
     },
 
     // ③ اختيار من متعدد — 1Bh3 معرفة
@@ -8911,8 +8911,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "2Be3: يلاحظ الطقس ويسجّل ملاحظاته حول الأحوال الجوية",
       level: "knowledge",
-      statement: "يَتَغَيَّرُ الطَّقسُ من يَومٍ إلى آخَرَ.",
-      answer: true
+      statement: "يَبقى الطَّقسُ نَفسَهُ كُلَّ يَومٍ لا يَتَغَيَّرُ.",
+      answer: false
     },
 
     // ③ اختيار من متعدد — 2Be3 معرفة
@@ -9295,8 +9295,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "2Cp1b: يحدّد استخدامات الصخور المختلفة",
       level: "knowledge",
-      statement: "يُستَخدَمُ حَجَرُ الجرانيتِ في البِناءِ لأنَّهُ قَوِيٌّ جِدّاً.",
-      answer: true
+      statement: "يُستَخدَمُ حَجَرُ الجرانيتِ في البِناءِ لأنَّهُ لَيِّنٌ وخَفيفٌ.",
+      answer: false
     },
 
     // ③ اختيار من متعدد — 2Cp1b معرفة
@@ -9371,8 +9371,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "2Cp1: يتعرّف تأثير الصخور في تكوّن التربة وأهمية الحصى فيها",
       level: "knowledge",
-      statement: "تَحتَوي التُّربَةُ على صُخورٍ صَغيرَةٍ تُسَمّى الحَصى.",
-      answer: true
+      statement: "تَحتَوي التُّربَةُ على صُخورٍ صَغيرَةٍ تُسَمّى المَعادِنَ.",
+      answer: false
     },
 
     // ③ اختيار من متعدد — 2Cp1 معرفة
@@ -9740,8 +9740,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "2Cp3: يستكشف أنّ شكل بعض المواد يتغيّر بالضغط والشدّ والثني واللَّيّ",
       level: "knowledge",
-      statement: "السِّلكُ المَعدِنِيُّ الرَّفيعُ يُمكِنُ ثَنيُهُ ولَيُّهُ.",
-      answer: true
+      statement: "السِّلكُ المَعدِنِيُّ الرَّفيعُ لا يُمكِنُ ثَنيُهُ ولا لَيُّهُ.",
+      answer: false
     },
 
     // ③ اختيار من متعدد — 2Cp3 معرفة
@@ -9959,8 +9959,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "2Cp5: يلاحظ التغيّرات التي يُحدثها التسخين والتبريد في المواد",
       level: "knowledge",
-      statement: "الثَّلجُ يَذوبُ ويُصبِحُ ماءً عِندَ تَسخينِهِ.",
-      answer: true
+      statement: "الثَّلجُ يَذوبُ ويُصبِحُ ماءً عِندَ تَبريدِهِ.",
+      answer: false
     },
 
     // ③ اختيار من متعدد — 2Cp5 معرفة
@@ -10084,8 +10084,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "2Cp6: يستكشف ذوبان بعض المواد في الماء وعدم ذوبان غيرها",
       level: "knowledge",
-      statement: "مياهُ البَحرِ مالِحَةٌ لأنَّ فيها مِلحاً ذائِباً.",
-      answer: true
+      statement: "مياهُ البَحرِ مالِحَةٌ لأنَّ فيها رَملاً ذائِباً.",
+      answer: false
     },
 
     // ③ اختيار من متعدد — 2Cp6 معرفة
@@ -10197,8 +10197,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "2Cp4: يتعرّف المواد المرنة ويميّزها بعودتها إلى شكلها الأصلي",
       level: "knowledge",
-      statement: "المادَّةُ المَرِنَةُ تَعودُ إلى شَكلِها الأوَّلِ بَعدَ أن نَترُكَها.",
-      answer: true
+      statement: "المادَّةُ المَرِنَةُ تَبقى عَلى شَكلِها الجَديدِ بَعدَ أن نَترُكَها.",
+      answer: false
     },
 
     // ③ اختيار من متعدد — معرفة — 2Cp5
@@ -10304,9 +10304,9 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "3Bp1: يعرف أن النباتات لها جذور وأوراق وسيقان وأزهار",
       level: "knowledge",
-      prompt: "لِمُعْظَمِ النَّباتاتِ أَربَعةُ أَجزاءٍ رَئيسيَّةٍ.",
-      answer: true,
-      reason: "أَجزاؤُها الرَّئيسيَّةُ: الجُذورُ والسّاقُ والأَوراقُ والأَزهارُ"
+      prompt: "لِمُعْظَمِ النَّباتاتِ جُزءانِ رَئيسيّانِ فَقَط.",
+      answer: false,
+      reason: "أَجزاؤُها الرَّئيسيَّةُ أَربَعةٌ: الجُذورُ والسّاقُ والأَوراقُ والأَزهارُ"
     },
 
     // ② اختيار من متعدد — معرفة — 3Bp1
@@ -10578,9 +10578,9 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "3Bp3: يعرف أن الماء يُمتص بواسطة الجذور ويُنقل عبر الساق",
       level: "knowledge",
-      prompt: "تَنقُلُ السّاقُ الماءَ إلى الأَوراقِ والأَزهارِ.",
-      answer: true,
-      reason: "السّاقُ طَريقُ الماءِ مِنَ الجُذورِ إلى بَقيَّةِ أَجزاءِ النَّبتةِ"
+      prompt: "تَنقُلُ الأَوراقُ الماءَ إلى الجُذورِ والسّاقِ.",
+      answer: false,
+      reason: "السّاقُ هي طَريقُ الماءِ مِنَ الجُذورِ إلى بَقيَّةِ أَجزاءِ النَّبتةِ، لا الأَوراقُ"
     },
 
     // ③ التوصيل — معرفة — 3Bp3
@@ -10897,9 +10897,9 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "3Bh3: يستكشف ويبحث عن النظام الغذائي الكافي والمتنوع اللازم للحفاظ على صحة جيدة",
       level: "knowledge",
-      prompt: "نَحتاجُ إلى مُنتَجاتِ الأَلبانِ لِعِظامٍ وأَسنانٍ قَويَّةٍ.",
-      answer: true,
-      reason: "الحَليبُ والجُبنُ يُقَوّيانِ العِظامَ والأَسنانَ"
+      prompt: "نَحتاجُ إلى الحَلوى لِعِظامٍ وأَسنانٍ قَويَّةٍ.",
+      answer: false,
+      reason: "الحَليبُ والجُبنُ هُما اللَّذانِ يُقَوّيانِ العِظامَ والأَسنانَ، والحَلوى تَضُرُّهُما"
     },
 
     // ③ التوصيل — معرفة — 3Bh3
@@ -11429,9 +11429,9 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "3Bh2: يصف الاختلافات بين الكائنات الحية والأشياء غير الحية من خلال معرفتهم عن العمليّات الحيويّة",
       level: "knowledge",
-      prompt: "جَميعُ الكائِناتِ الحَيَّةِ تَتَنَفَّسُ.",
-      answer: true,
-      reason: "التَّنَفُّسُ عَمَليَّةٌ حَيَويَّةٌ تَقومُ بِها كُلُّ الكائِناتِ الحَيَّةِ"
+      prompt: "النَّباتاتُ وَحدَها لا تَتَنَفَّسُ.",
+      answer: false,
+      reason: "التَّنَفُّسُ عَمَليَّةٌ حَيَويَّةٌ تَقومُ بِها كُلُّ الكائِناتِ الحَيَّةِ، ومِنها النَّباتُ"
     },
 
     // ② اختيار من متعدد — معرفة — 3Bh2
@@ -11656,9 +11656,9 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "3Bh1: يعرف أن العمليات الحيوية المشتركة بين الإنسان والحيوان تشمل التغذية والحركة والنمو والتكاثر",
       level: "knowledge",
-      prompt: "تَتَحَرَّكُ النَّباتاتُ بِرِفقٍ نَحوَ الضَّوءِ.",
-      answer: true,
-      reason: "حَرَكةُ النَّباتِ بَطيئةٌ لا نَكادُ نَراها، لكِنَّ ساقَهُ تَميلُ نَحوَ الضَّوءِ"
+      prompt: "تَتَحَرَّكُ النَّباتاتُ بِرِفقٍ بَعيداً عَنِ الضَّوءِ.",
+      answer: false,
+      reason: "حَرَكةُ النَّباتِ بَطيئةٌ لا نَكادُ نَراها، لكِنَّ ساقَهُ تَميلُ نَحوَ الضَّوءِ لا بَعيداً عَنهُ"
     },
 
     // ② اختيار من متعدد — معرفة — 3Bh1
@@ -11803,8 +11803,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "3Bh6: يصنف الكائنات الحيّة إلى مجموعات باستخدام سمات بسيطة ووصف الأساس المنطقي لهذا التصنيف",
       level: "knowledge",
-      prompt: "بَصَماتُ أَصابِعِ النّاسِ مُختَلِفةٌ.",
-      answer: true,
+      prompt: "بَصَماتُ أَصابِعِ النّاسِ مُتَشابِهةٌ.",
+      answer: false,
       reason: "لا تَتَشابَهُ بَصمةُ شَخصٍ مَعَ بَصمةِ شَخصٍ آخَرَ أَبَداً"
     },
 
@@ -11924,9 +11924,9 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "3Bh6: يصنف الكائنات الحيّة إلى مجموعات باستخدام سمات بسيطة ووصف الأساس المنطقي لهذا التصنيف",
       level: "knowledge",
-      prompt: "الأَسَدُ مِنَ الحَيَواناتِ ذاتِ الفَروِ.",
-      answer: true,
-      reason: "جِسمُ الأَسَدِ مُغَطّىً بِالفَروِ، ولِذَكَرِهِ لَبْدةٌ كَثيفةٌ حَولَ رَأسِهِ"
+      prompt: "الأَسَدُ مِنَ الحَيَواناتِ ذاتِ الحَراشِفِ.",
+      answer: false,
+      reason: "جِسمُ الأَسَدِ مُغَطّىً بِالفَروِ لا بِالحَراشِفِ، ولِذَكَرِهِ لَبْدةٌ كَثيفةٌ حَولَ رَأسِهِ"
     },
 
     // ③ التوصيل — معرفة — 3Bh6
@@ -12477,8 +12477,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "1Nc5: يعرف الضعف حتى ٥ على الأقل",
       level: "knowledge",
-      statement: "ضِعْفُ العَدَدِ ثَلاثَةٍ هُوَ سِتَّةٌ.",
-      answer: true
+      statement: "ضِعْفُ العَدَدِ ثَلاثَةٍ هُوَ خَمْسَةٌ.",
+      answer: false
     },
     {
       type: "mcq",
@@ -12995,8 +12995,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "1Gs2: يسمّي ويصنّف المجسَّمات الشائعة باستخدام ميزات مثل عدد الوجوه",
       level: "knowledge",
-      statement: "الكُرَةُ لَيْسَ لَها أَوْجُهٌ مُسْتَوِيَةٌ.",
-      answer: true
+      statement: "الكُرَةُ لَها وَجْهٌ مُسْتَوٍ واحِدٌ.",
+      answer: false
     },
     {
       type: "matching",
@@ -13293,8 +13293,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "1Pt2: يستكشف المسائل العددية والألغاز",
       level: "knowledge",
-      statement: "إِذا كانَ في القائِمَةِ ثَلاثُ فَطائِرَ وأَرْبَعُ حَبّاتِ تُفّاحٍ فَالمَجْموعُ سَبْعُ قِطَعٍ.",
-      answer: true
+      statement: "إِذا كانَ في القائِمَةِ ثَلاثُ فَطائِرَ وأَرْبَعُ حَبّاتِ تُفّاحٍ فَالمَجْموعُ ثَماني قِطَعٍ.",
+      answer: false
     },
     {
       type: "count-tap",
@@ -13350,8 +13350,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "1Mm1: يتعرَّف على جميع العملات ويتدرَّب على كيفية دفع النقود بالضبط",
       level: "knowledge",
-      statement: "الرِّيالُ العُمانِيُّ الواحِدُ يُساوي ١٠٠٠ بَيْسَةٍ.",
-      answer: true
+      statement: "الرِّيالُ العُمانِيُّ الواحِدُ يُساوي ١٠٠ بَيْسَةٍ.",
+      answer: false
     },
     {
       type: "money",
@@ -13720,8 +13720,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "1Nn5: يعدّ بإضافة اثنين، ويبدأ بمعرفة الأعداد الفردية والزوجية إلى ٢٠",
       level: "knowledge",
-      statement: "إِذا أَضَفْنا واحِدًا إِلى عَدَدٍ زَوْجِيٍّ صارَ فَرْدِيًّا.",
-      answer: true
+      statement: "إِذا أَضَفْنا واحِدًا إِلى عَدَدٍ زَوْجِيٍّ بَقِيَ زَوْجِيًّا.",
+      answer: false
     },
     {
       type: "pattern",
@@ -13827,8 +13827,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "1Nn8: يستخدم أكبر أو أصغر للمقارنة بين الأعداد، وإعطاء العدد الذي يقع بينها",
       level: "knowledge",
-      statement: "العَدَدُ ١٢ يَقَعُ بَيْنَ ١٠ و١٥.",
-      answer: true
+      statement: "العَدَدُ ١٧ يَقَعُ بَيْنَ ١٠ و١٥.",
+      answer: false
     },
     {
       type: "number-line",
@@ -14146,8 +14146,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "1Nc12: يجد ٢ أكثر، أو ٢ أقل من أي عدد حتى ٢٠",
       level: "knowledge",
-      statement: "اثْنانِ أَقَلُّ مِنْ ١٠ هُوَ ٨.",
-      answer: true
+      statement: "اثْنانِ أَقَلُّ مِنْ ١٠ هُوَ ١٢.",
+      answer: false
     },
     {
       type: "number-line",
@@ -14475,8 +14475,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "3Ps3: يستكشف ويحل المشكلات العددية والألغاز",
       level: "reasoning",
-      statement: "أَصغَرُ عَدَدٍ مُكَوَّنٍ مِن ثَلاثَةِ أَرقامٍ يُمكِنُ تَكوينُهُ مِنَ الأَرقامِ ٧، ٤، ٩، ١ هُوَ ١٤٧.",
-      answer: true
+      statement: "أَصغَرُ عَدَدٍ مُكَوَّنٍ مِن ثَلاثَةِ أَرقامٍ يُمكِنُ تَكوينُهُ مِنَ الأَرقامِ ٧، ٤، ٩، ١ هُوَ ٩٧٤.",
+      answer: false
     },
     {
       type: "memory",
@@ -14643,8 +14643,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "3Nc19: يفهم العلاقة بين الضعف والنصف",
       level: "application",
-      statement: "نِصْفُ العَدَدِ ٥٠٠ يُساوي ٢٥٠.",
-      answer: true
+      statement: "نِصْفُ العَدَدِ ٥٠٠ يُساوي ٢٠٠.",
+      answer: false
     },
     {
       type: "fill-blank",
@@ -14706,8 +14706,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "3Nc2: يعرف حقائق الجمع والطرح التالية: مضاعفات ١٠٠ بمجموع ١٠٠٠ · مضاعفات ٥ بمجموع ١٠٠",
       level: "application",
-      statement: "مَجموعُ ٥٥ و٤٥ يُساوي ١٠٠.",
-      answer: true
+      statement: "مَجموعُ ٥٥ و٤٥ يُساوي ٩٠.",
+      answer: false
     },
     {
       type: "fill-blank",
@@ -14752,8 +14752,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "3Nc11: يستخدم العلامة (=) للتعبير عن التساوي",
       level: "knowledge",
-      statement: "٨ + ٣ = ٥ + ٦",
-      answer: true
+      statement: "٨ + ٣ = ٥ + ٧",
+      answer: false
     },
     {
       type: "classify",
@@ -14881,8 +14881,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "3Nc5: يتعرّف على المضاعفات المكونة من رقمين وثلاثة الأرقام للأعداد ٢، ٥، ١٠",
       level: "application",
-      statement: "العَدَدُ ٤٥ مِن مُضاعَفاتِ العَدَدِ ٥.",
-      answer: true
+      statement: "العَدَدُ ٤٧ مِن مُضاعَفاتِ العَدَدِ ٥.",
+      answer: false
     },
     {
       type: "sequence",
@@ -15299,8 +15299,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "3Mm1: يستوعب استخدام صيغة كتابة النقود (المبلغ الكامل أو نصف ريال عماني)",
       level: "knowledge",
-      statement: "٥٠ بَيْسَة + ٢٥ بَيْسَة = ٧٥ بَيْسَة",
-      answer: true
+      statement: "٥٠ بَيْسَة + ٢٥ بَيْسَة = ٧٠ بَيْسَة",
+      answer: false
     },
     {
       type: "fill-blank",
@@ -15355,8 +15355,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "3Mt2: يقرأ الوقت على ساعة العقارب والساعة الرقمية إلى أقرب خمس دقائق على ساعة العقارب، وإلى أقرب دقيقة على الساعة الرقمية",
       level: "application",
-      statement: "السّاعَةُ الرَّقميَّةُ ١٢:١٥ تَعني السّاعَةَ الثّانيَةَ عَشرَةَ وخَمسَ عَشرَةَ دَقيقَة.",
-      answer: true
+      statement: "السّاعَةُ الرَّقميَّةُ ١٢:١٥ تَعني السّاعَةَ الثّانيَةَ عَشرَةَ وخَمسَ دَقائِقَ.",
+      answer: false
     },
     {
       type: "sequence",
@@ -15410,8 +15410,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "3Ml2: يعرف العلاقة بين الكيلومترات والأمتار وبين الأمتار والسنتيمترات وبين الكيلوغرامات والغرامات وبين اللترات والمللِيلترات",
       level: "application",
-      statement: "١٠٠٠ متر تُساوي كيلومتراً واحداً.",
-      answer: true
+      statement: "١٠٠ مترٍ تُساوي كيلومتراً واحداً.",
+      answer: false
     },
     {
       type: "fill-blank",
@@ -15529,8 +15529,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "3Nn12: يرتّب الأعداد من رقمين وثلاثة أرقام",
       level: "knowledge",
-      statement: "العَدَدُ ٧٦٨ أَصغَرُ مِنَ العَدَدِ ٨٦٧.",
-      answer: true
+      statement: "العَدَدُ ٨٦٧ أَصغَرُ مِنَ العَدَدِ ٧٦٨.",
+      answer: false
     },
     {
       type: "number-line",
@@ -15700,8 +15700,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "3Nn8: يقرّب الأعداد المكونة من رقمين إلى أقرب ١٠ والأعداد المكونة من ثلاثة أرقام إلى أقرب ١٠٠",
       level: "knowledge",
-      statement: "عِندَ التَّقريبِ، إذا كانَ رَقمُ الآحادِ ٥ فَأَكثَر نُقَرِّبُ لِأَعلى.",
-      answer: true
+      statement: "عِندَ التَّقريبِ، إذا كانَ رَقمُ الآحادِ ٥ فَأَكثَر نُقَرِّبُ لِأَسفَل.",
+      answer: false
     },
     {
       type: "classify",
@@ -15814,8 +15814,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "3Nc7: يحسب بسرعة ضعف مضاعفات العدد ٥ (أقل من ١٠٠) ويستنتج أنصافها",
       level: "application",
-      statement: "ضِعفُ العَدَدِ ٤٥ هُوَ ٩٠.",
-      answer: true
+      statement: "ضِعفُ العَدَدِ ٤٥ هُوَ ٨٠.",
+      answer: false
     },
     {
       type: "matching",
@@ -15918,8 +15918,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "3Nc17: يجمع / يطرح الأعداد المؤلّفة من رقم واحد إلى / من الأعداد المكوّنة من ثلاثة أرقام",
       level: "knowledge",
-      statement: "١٣٣ - ٧ = ١٢٦",
-      answer: true
+      statement: "١٣٣ - ٧ = ١٣٦",
+      answer: false
     },
     {
       type: "fill-blank",
@@ -16099,8 +16099,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "3Nc21: يضرب الأعداد المكونة من رقم واحد ويقسم الأعداد المكونة من رقمين على / بـ ٢ و٣ و٤ و٥ و٦ و٩ و١٠",
       level: "knowledge",
-      statement: "٢ × ٩ = ١٨",
-      answer: true
+      statement: "٢ × ٩ = ١١",
+      answer: false
     },
     {
       type: "fill-blank",
@@ -17269,8 +17269,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "يستنتج الحكمةَ من تجربةِ كسرِ العِصِيّ",
       level: "reasoning",
-      statement: "عَجَزَ الأَبْناءُ عَنْ كَسْرِ العِصِيِّ وَهِيَ مُجْتَمِعَةٌ، وَنَجَحوا في كَسْرِها مُفْرَدَةً.",
-      answer: true
+      statement: "نَجَحَ الأَبْناءُ في كَسْرِ العِصِيِّ وَهِيَ مُجْتَمِعَةٌ، وَعَجَزوا عَنْ كَسْرِها مُفْرَدَةً.",
+      answer: false
     },
 
     // ⑥ الترتيب التسلسلي — تطبيق
@@ -18561,8 +18561,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "يتعرَّف صلاة الجماعة",
       level: "knowledge",
-      statement: "«الْفَذُّ» في الْحَديثِ الشَّريفِ هُوَ الَّذي يُصَلّي مُنْفَرِدًا.",
-      answer: true
+      statement: "«الْفَذُّ» في الْحَديثِ الشَّريفِ هُوَ الَّذي يُصَلّي في جَماعَةٍ.",
+      answer: false
     },
 
     // ⑧ ملء الفراغ بالسحب — معرفة (الهدف ②) — أسلوبُ التسميع
@@ -19208,8 +19208,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "يتعرَّف صلاة الجمعة",
       level: "knowledge",
-      statement: "يُصَلّي الإِمامُ بِالنّاسِ صَلاةَ الْجُمُعَةِ رَكْعَتَيْنِ يَجْهَرُ فيهِما بِالْقِراءَةِ.",
-      answer: true
+      statement: "يُصَلّي الإِمامُ بِالنّاسِ صَلاةَ الْجُمُعَةِ أَرْبَعَ رَكَعاتٍ يُسِرُّ فيها بِالْقِراءَةِ.",
+      answer: false
     },
 
     // ⑥ توصيل — معرفة (الهدف ③) — السننُ من مشاهدِ ص ٣٧
@@ -19425,8 +19425,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "يعدِّد فوائد الادّخار",
       level: "knowledge",
-      statement: "الاِدِّخارُ وَسيلَةٌ لِتَحْقيقِ الأَهْدافِ.",
-      answer: true
+      statement: "الاِدِّخارُ يَمْنَعُ مِنْ تَحْقيقِ الأَهْدافِ.",
+      answer: false
     },
 
     // ⑥ توصيل — معرفة (الهدف ②) — خُطَطُ أحمدَ ومريمَ ص ٤٦
@@ -19874,8 +19874,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "يعرِّف السنن الراتبة",
       level: "knowledge",
-      statement: "سُمِّيَتِ السُّنَنُ الرّاتِبَةُ بِهذا الاِسْمِ لِأَنَّ الْمُسْلِمَ يُحافِظُ عَلى أَدائِها بِانْتِظامٍ.",
-      answer: true
+      statement: "سُمِّيَتِ السُّنَنُ الرّاتِبَةُ بِهذا الاِسْمِ لِأَنَّها تُؤَدّى مَرَّةً واحِدَةً في السَّنَةِ.",
+      answer: false
     },
 
     // ⑥ توصيل — معرفة (الهدف ②)
@@ -21908,8 +21908,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "يعدِّد الجوانب التي شملتها المقاطعة",
       level: "knowledge",
-      statement: "شَمَلَتِ الْمُقاطَعَةُ الرِّجالَ وَالنِّساءَ وَالأَطْفالَ، وَاسْتَمَرَّتْ ثَلاثَ سَنَواتٍ.",
-      answer: true
+      statement: "شَمَلَتِ الْمُقاطَعَةُ الرِّجالَ وَالنِّساءَ وَالأَطْفالَ، وَاسْتَمَرَّتْ يَوْمًا واحِدًا.",
+      answer: false
     },
 
     // ⑥ توصيل — معرفة (الهدف ②) — بنودُ الصحيفةِ ص ٤٣
@@ -33032,8 +33032,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "يجيب عن أنشطة الفهم القرائي",
       level: "knowledge",
-      statement: "كانَ يَحْيى الأَوَّلَ في التَّعْبيرِ الْكِتابيِّ.",
-      answer: true
+      statement: "كانَ يَحْيى الأَوَّلَ في سِباقِ الجَرْيِ.",
+      answer: false
     },
 
     // ② فهم — `reasoning` (المخرَج ⑤) — **سؤالُ الكتابِ ص ٩١ الرابعُ نصّاً**
@@ -33905,8 +33905,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "يجيب عن أنشطة الفهم القرائي",
       level: "knowledge",
-      statement: "اِشْتَرى والِدا ضِياءٍ لَهُ لُعْبَةَ اللُّغْزِ وَهُوَ في الْخامِسَةِ.",
-      answer: true
+      statement: "اِشْتَرى والِدا ضِياءٍ لَهُ لُعْبَةَ اللُّغْزِ وَهُوَ في الْعاشِرَةِ.",
+      answer: false
     },
 
     // ② فهم — `reasoning` (المخرَج ⑤ — الْمَعْنى الْخَفيُّ)
@@ -34210,8 +34210,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "③ معرفة المصحف الشريف وبعض علاماته التوضيحية",
       level: "knowledge",
-      statement: "الدّائِرَةُ الَّتي فيها رَقْمٌ تَدُلُّ عَلى نِهايَةِ الْآيَةِ.",
-      answer: true
+      statement: "الدّائِرَةُ الَّتي فيها رَقْمٌ تَدُلُّ عَلى بِدايَةِ الْآيَةِ.",
+      answer: false
     },
 
     // ④ تطبيق — المخرَج ③ — **قراءةُ الصفحةِ نفسِها**.
@@ -34492,8 +34492,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "③ معرفة المصحف الشريف وبعض علاماته التوضيحية",
       level: "knowledge",
-      statement: "الدّائِرَةُ الَّتي فيها رَقْمٌ تَدُلُّ عَلى نِهايَةِ الْآيَةِ.",
-      answer: true
+      statement: "الدّائِرَةُ الَّتي فيها رَقْمٌ تَدُلُّ عَلى بِدايَةِ الْآيَةِ.",
+      answer: false
     },
 
     // ④ تطبيق — المخرَج ③ — **قراءةُ الصفحةِ نفسِها**.
@@ -34774,8 +34774,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "③ معرفة المصحف الشريف وبعض علاماته التوضيحية",
       level: "knowledge",
-      statement: "الدّائِرَةُ الَّتي فيها رَقْمٌ تَدُلُّ عَلى نِهايَةِ الْآيَةِ.",
-      answer: true
+      statement: "الدّائِرَةُ الَّتي فيها رَقْمٌ تَدُلُّ عَلى بِدايَةِ الْآيَةِ.",
+      answer: false
     },
 
     // ④ تطبيق — المخرَج ③ — **قراءةُ الصفحةِ نفسِها**.
@@ -35056,8 +35056,8 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "③ معرفة المصحف الشريف وبعض علاماته التوضيحية",
       level: "knowledge",
-      statement: "الدّائِرَةُ الَّتي فيها رَقْمٌ تَدُلُّ عَلى نِهايَةِ الْآيَةِ.",
-      answer: true
+      statement: "الدّائِرَةُ الَّتي فيها رَقْمٌ تَدُلُّ عَلى بِدايَةِ الْآيَةِ.",
+      answer: false
     },
 
     // ④ تطبيق — المخرَج ③ — **قراءةُ الصفحةِ نفسِها**.
