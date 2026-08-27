@@ -29874,15 +29874,21 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "ماذا تُحَضِّرُ الْأُمُّ؟",
       bg: "#f7fbff",
-      spot: { x: 26, y: 26, r: 20 },
+      spot: { x: 74, y: 26, r: 20 },
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
-        "<clipPath id='mmA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
-        "<clipPath id='mmB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
-        "<clipPath id='mmC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='mmA'>"+
+        "<rect x='12' y='12' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
+        "<clipPath id='mmB'>"+
+        "<rect x='154' y='12' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
+        "<clipPath id='mmC'>"+
+        "<rect x='83' y='154' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
         "</defs>"+
-        // ── القِدْرُ (الجواب) ──
+        "<g transform='translate(142 0)'>"+
         "<g clip-path='url(#mmA)'>"+
         "<rect x='12' y='12' width='134' height='134' fill='#FFF7E6'/>"+
         "<path d='M52 62 q6 -12 0 -20 M79 60 q6 -14 0 -22 M106 62 q6 -12 0 -20' fill='none' stroke='#C0C0C0' stroke-width='5' stroke-linecap='round'/>"+
@@ -29899,8 +29905,9 @@ window.QUESTIONS = {
         "<circle cx='79' cy='63' r='5' fill='#606060' stroke='#111111' stroke-width='2.4'/>"+
         "<text x='79' y='136' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='19' font-weight='800' fill='#3a2a12'>الطَّعامُ</text>"+
         "</g>"+
+        "</g>"+
         "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        // ── المِكْنَسَةُ ──
+        "<g transform='translate(-142 0)'>"+
         "<g clip-path='url(#mmB)'>"+
         "<rect x='154' y='12' width='134' height='134' fill='#F3FBF0'/>"+
         "<path d='M232 30 L210 84' fill='none' stroke='#111111' stroke-width='9' stroke-linecap='round'/>"+
@@ -29912,11 +29919,15 @@ window.QUESTIONS = {
         "<path d='M199 99 L195 116 M210 99 L210 116 M221 99 L225 116' stroke='#111111' stroke-width='1.8' opacity='.7'/>"+
         "<text x='221' y='136' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='19' font-weight='800' fill='#3a2a12'>التَّنْظيفُ</text>"+
         "</g>"+
+        "</g>"+
         "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        // ── الكُرَةُ ──
         "<g clip-path='url(#mmC)'>"+
         "<rect x='83' y='154' width='134' height='134' fill='#FFF0F6'/>"+
-        "<defs><clipPath id='mmBall'><circle cx='150' cy='212' r='34'/></clipPath></defs>"+
+        "<defs>"+
+        "<clipPath id='mmBall'>"+
+        "<circle cx='150' cy='212' r='34'/>"+
+        "</clipPath>"+
+        "</defs>"+
         "<g clip-path='url(#mmBall)'>"+
         "<rect x='110' y='170' width='84' height='24' fill='#FF4020'/>"+
         "<rect x='110' y='194' width='84' height='18' fill='#FF2020'/>"+
@@ -30001,15 +30012,21 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "إِلى أَيْنَ سَتَخْرُجُ الْأُسْرَةُ؟",
       bg: "#fffaf0",
-      spot: { x: 26, y: 26, r: 20 },
+      spot: { x: 50, y: 74, r: 20 },
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
-        "<clipPath id='rrA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
-        "<clipPath id='rrB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
-        "<clipPath id='rrC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='rrA'>"+
+        "<rect x='12' y='12' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
+        "<clipPath id='rrB'>"+
+        "<rect x='154' y='12' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
+        "<clipPath id='rrC'>"+
+        "<rect x='83' y='154' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
         "</defs>"+
-        // ── الصَّحْراءُ (الجواب) ──
+        "<g transform='translate(71 142)'>"+
         "<g clip-path='url(#rrA)'>"+
         "<rect x='12' y='12' width='134' height='134' fill='#FFF3D0'/>"+
         "<circle cx='118' cy='42' r='15' fill='#FFA000' stroke='#111111' stroke-width='2.4'/>"+
@@ -30020,8 +30037,8 @@ window.QUESTIONS = {
         "<path d='M12 96 q34 -30 67 -10 q33 20 67 -8' fill='none' stroke='#111111' stroke-width='2.8' stroke-linecap='round'/>"+
         "<text x='79' y='136' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='19' font-weight='800' fill='#3a2a12'>الصَّحْراءُ</text>"+
         "</g>"+
+        "</g>"+
         "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        // ── البَحْرُ ──
         "<g clip-path='url(#rrB)'>"+
         "<rect x='154' y='12' width='134' height='134' fill='#CDEBFF'/>"+
         "<rect x='154' y='72' width='134' height='74' fill='#0080C0'/>"+
@@ -30032,7 +30049,7 @@ window.QUESTIONS = {
         "<text x='221' y='136' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='19' font-weight='800' fill='#ffffff'>الْبَحْرُ</text>"+
         "</g>"+
         "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        // ── الحَديقَةُ ──
+        "<g transform='translate(-71 -142)'>"+
         "<g clip-path='url(#rrC)'>"+
         "<rect x='83' y='154' width='134' height='134' fill='#EAF8E4'/>"+
         "<rect x='83' y='246' width='134' height='20' fill='#60C020'/>"+
@@ -30045,6 +30062,7 @@ window.QUESTIONS = {
         "<path d='M126 190 a28 28 0 0 1 30 -14 Z' fill='#80C020'/>"+
         "<circle cx='150' cy='202' r='28' fill='none' stroke='#111111' stroke-width='2.8'/>"+
         "<text x='150' y='280' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='19' font-weight='800' fill='#ffffff'>الْحَديقَةُ</text>"+
+        "</g>"+
         "</g>"+
         "<rect x='83' y='154' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
         "</svg>"
@@ -30274,11 +30292,16 @@ window.QUESTIONS = {
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
-        "<clipPath id='ddA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
-        "<clipPath id='ddB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
-        "<clipPath id='ddC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='ddA'>"+
+        "<rect x='12' y='12' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
+        "<clipPath id='ddB'>"+
+        "<rect x='154' y='12' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
+        "<clipPath id='ddC'>"+
+        "<rect x='83' y='154' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
         "</defs>"+
-        // ── المَدْرَسَةُ (الجواب) ──
         "<g clip-path='url(#ddA)'>"+
         "<rect x='12' y='12' width='134' height='134' fill='#EAF4FF'/>"+
         "<rect x='12' y='120' width='134' height='26' fill='#B98551'/>"+
@@ -30294,7 +30317,6 @@ window.QUESTIONS = {
         "<text x='79' y='140' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='19' font-weight='800' fill='#3a2a12'>الْمَدْرَسَةُ</text>"+
         "</g>"+
         "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        // ── البَيْتُ ──
         "<g clip-path='url(#ddB)'>"+
         "<rect x='154' y='12' width='134' height='134' fill='#FFF6EC'/>"+
         "<rect x='154' y='122' width='134' height='24' fill='#60C020'/>"+
@@ -30309,7 +30331,6 @@ window.QUESTIONS = {
         "<text x='221' y='140' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='19' font-weight='800' fill='#3a2a12'>الْبَيْتُ</text>"+
         "</g>"+
         "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        // ── الحَديقَةُ ──
         "<g clip-path='url(#ddC)'>"+
         "<rect x='83' y='154' width='134' height='134' fill='#EAF8E4'/>"+
         "<rect x='83' y='250' width='134' height='18' fill='#60C020'/>"+
@@ -30625,15 +30646,21 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "ماذا ناوَلَتْهُ الْمُعَلِّمَةُ؟",
       bg: "#fdf7ff",
-      spot: { x: 26, y: 26, r: 20 },
+      spot: { x: 50, y: 74, r: 20 },
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
-        "<clipPath id='nnA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
-        "<clipPath id='nnB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
-        "<clipPath id='nnC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='nnA'>"+
+        "<rect x='12' y='12' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
+        "<clipPath id='nnB'>"+
+        "<rect x='154' y='12' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
+        "<clipPath id='nnC'>"+
+        "<rect x='83' y='154' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
         "</defs>"+
-        // ── عُلْبَةُ الْأَلْوانِ (الجواب) ──
+        "<g transform='translate(71 142)'>"+
         "<g clip-path='url(#nnA)'>"+
         "<rect x='12' y='12' width='134' height='134' fill='#FFF7FB'/>"+
         "<rect x='30' y='58' width='98' height='40' rx='6' fill='#0080C0'/>"+
@@ -30646,8 +30673,8 @@ window.QUESTIONS = {
         "<circle cx='112' cy='78' r='8' fill='#984800' stroke='#111111' stroke-width='2.3'/>"+
         "<text x='79' y='128' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='19' font-weight='800' fill='#3a2a12'>أَلْوانٌ</text>"+
         "</g>"+
+        "</g>"+
         "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        // ── الكِتابُ ──
         "<g clip-path='url(#nnB)'>"+
         "<rect x='154' y='12' width='134' height='134' fill='#F3FBF0'/>"+
         "<rect x='186' y='46' width='70' height='58' rx='5' fill='#4A9018'/>"+
@@ -30659,7 +30686,7 @@ window.QUESTIONS = {
         "<text x='221' y='128' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='19' font-weight='800' fill='#3a2a12'>كِتابٌ</text>"+
         "</g>"+
         "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        // ── المِبْراةُ ──
+        "<g transform='translate(-71 -142)'>"+
         "<g clip-path='url(#nnC)'>"+
         "<rect x='83' y='154' width='134' height='134' fill='#FFF6EC'/>"+
         "<rect x='124' y='196' width='52' height='40' rx='6' fill='#0080C0'/>"+
@@ -30668,6 +30695,7 @@ window.QUESTIONS = {
         "<rect x='124' y='196' width='52' height='40' rx='6' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
         "<path d='M142 204 L158 204 L152 228 L148 228 Z' fill='#C0C0C0' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
         "<text x='150' y='268' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='19' font-weight='800' fill='#3a2a12'>مِبْراةٌ</text>"+
+        "</g>"+
         "</g>"+
         "<rect x='83' y='154' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
         "</svg>"
@@ -31215,14 +31243,21 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "ماذا قَدَّمَتِ الْمُرَبِّيَةُ لِعارِفٍ؟",
       bg: "#f4fbff",
-      spot: { x: 26, y: 26, r: 20 },
+      spot: { x: 74, y: 26, r: 20 },
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
-        "<clipPath id='ffA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
-        "<clipPath id='ffB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
-        "<clipPath id='ffC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='ffA'>"+
+        "<rect x='12' y='12' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
+        "<clipPath id='ffB'>"+
+        "<rect x='154' y='12' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
+        "<clipPath id='ffC'>"+
+        "<rect x='83' y='154' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
         "</defs>"+
+        "<g transform='translate(142 0)'>"+
         "<g clip-path='url(#ffA)'>"+
         "<rect x='12' y='12' width='134' height='134' fill='#FFF7E6'/>"+
         "<rect x='42' y='62' width='74' height='48' rx='5' fill='#0080C0'/>"+
@@ -31235,7 +31270,9 @@ window.QUESTIONS = {
         "<path d='M79 54 q18 -18 6 -18 q-9 0 -6 18 Z' fill='#808080' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
         "<text x='79' y='134' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>عُلْبَةٌ</text>"+
         "</g>"+
+        "</g>"+
         "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
+        "<g transform='translate(-142 0)'>"+
         "<g clip-path='url(#ffB)'>"+
         "<rect x='154' y='12' width='134' height='134' fill='#F7FFF0'/>"+
         "<rect x='217' y='84' width='9' height='42' fill='#4A9018' stroke='#111111' stroke-width='2.3'/>"+
@@ -31246,6 +31283,7 @@ window.QUESTIONS = {
         "<circle cx='233' cy='88' r='13' fill='#FF2020' stroke='#111111' stroke-width='2.5'/>"+
         "<circle cx='221' cy='74' r='10' fill='#FFFFC0' stroke='#111111' stroke-width='2.4'/>"+
         "<text x='221' y='134' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>زَهْرَةٌ</text>"+
+        "</g>"+
         "</g>"+
         "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
         "<g clip-path='url(#ffC)'>"+
@@ -31326,11 +31364,16 @@ window.QUESTIONS = {
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
-        "<clipPath id='ttA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
-        "<clipPath id='ttB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
-        "<clipPath id='ttC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='ttA'>"+
+        "<rect x='12' y='12' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
+        "<clipPath id='ttB'>"+
+        "<rect x='154' y='12' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
+        "<clipPath id='ttC'>"+
+        "<rect x='83' y='154' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
         "</defs>"+
-        // فُرْشاةُ الْأَسْنانِ (الجواب)
         "<g clip-path='url(#ttA)'>"+
         "<rect x='12' y='12' width='134' height='134' fill='#EAF4FF'/>"+
         "<rect x='34' y='72' width='84' height='16' rx='8' fill='#0080C0'/>"+
@@ -31343,7 +31386,6 @@ window.QUESTIONS = {
         "<text x='79' y='142' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='17' font-weight='800' fill='#3a2a12'>الْأَسْنانِ</text>"+
         "</g>"+
         "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        // الْحَلْوى
         "<g clip-path='url(#ttB)'>"+
         "<rect x='154' y='12' width='134' height='134' fill='#FFF0F6'/>"+
         "<circle cx='221' cy='72' r='26' fill='#FF2020'/>"+
@@ -31354,7 +31396,6 @@ window.QUESTIONS = {
         "<text x='221' y='142' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='17' font-weight='800' fill='#3a2a12'>الْحَلْوى</text>"+
         "</g>"+
         "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        // النَّوْمُ
         "<g clip-path='url(#ttC)'>"+
         "<rect x='83' y='154' width='134' height='134' fill='#F2F0FF'/>"+
         "<rect x='104' y='224' width='92' height='24' rx='6' fill='#0080C0'/>"+
@@ -31430,15 +31471,21 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "بِماذا تَذْهَبُ فَرَحُ إِلَى الْمَدْرَسَةِ؟",
       bg: "#fff6f6",
-      spot: { x: 26, y: 26, r: 20 },
+      spot: { x: 50, y: 74, r: 20 },
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
-        "<clipPath id='hhA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
-        "<clipPath id='hhB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
-        "<clipPath id='hhC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='hhA'>"+
+        "<rect x='12' y='12' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
+        "<clipPath id='hhB'>"+
+        "<rect x='154' y='12' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
+        "<clipPath id='hhC'>"+
+        "<rect x='83' y='154' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
         "</defs>"+
-        // الْحافِلَةُ (الجواب)
+        "<g transform='translate(71 142)'>"+
         "<g clip-path='url(#hhA)'>"+
         "<rect x='12' y='12' width='134' height='134' fill='#FFF9E8'/>"+
         "<rect x='26' y='54' width='106' height='48' rx='9' fill='#FFA000'/>"+
@@ -31452,8 +31499,8 @@ window.QUESTIONS = {
         "<circle cx='110' cy='104' r='11' fill='#404040' stroke='#111111' stroke-width='2.6'/>"+
         "<text x='79' y='134' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>الْحافِلَةُ</text>"+
         "</g>"+
+        "</g>"+
         "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        // الدَّرّاجَةُ
         "<g clip-path='url(#hhB)'>"+
         "<rect x='154' y='12' width='134' height='134' fill='#F0FBFF'/>"+
         "<circle cx='188' cy='94' r='22' fill='none' stroke='#111111' stroke-width='6'/>"+
@@ -31467,7 +31514,7 @@ window.QUESTIONS = {
         "<text x='221' y='134' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>الدَّرّاجَةُ</text>"+
         "</g>"+
         "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        // السَّفينَةُ
+        "<g transform='translate(-71 -142)'>"+
         "<g clip-path='url(#hhC)'>"+
         "<rect x='83' y='154' width='134' height='134' fill='#EAF6FF'/>"+
         "<rect x='83' y='244' width='134' height='44' fill='#0080C0'/>"+
@@ -31480,6 +31527,7 @@ window.QUESTIONS = {
         "<path d='M153 180 L188 200 L153 214 Z' fill='#FFFFFF' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
         "<path d='M147 180 L114 200 L147 214 Z' fill='#F1F0EA' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
         "<text x='150' y='280' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#ffffff'>السَّفينَةُ</text>"+
+        "</g>"+
         "</g>"+
         "<rect x='83' y='154' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
         "</svg>"
@@ -31547,15 +31595,21 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "ماذا يُباعُ في سوقِ الْقَرْيَةِ؟",
       bg: "#fffaf0",
-      spot: { x: 26, y: 26, r: 20 },
+      spot: { x: 74, y: 26, r: 20 },
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
-        "<clipPath id='qqA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
-        "<clipPath id='qqB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
-        "<clipPath id='qqC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='qqA'>"+
+        "<rect x='12' y='12' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
+        "<clipPath id='qqB'>"+
+        "<rect x='154' y='12' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
+        "<clipPath id='qqC'>"+
+        "<rect x='83' y='154' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
         "</defs>"+
-        // الْخُضارُ وَالْفَواكِهُ (الجواب)
+        "<g transform='translate(142 0)'>"+
         "<g clip-path='url(#qqA)'>"+
         "<rect x='12' y='12' width='134' height='134' fill='#F3FFF0'/>"+
         "<circle cx='54' cy='68' r='20' fill='#FF2020'/>"+
@@ -31568,8 +31622,9 @@ window.QUESTIONS = {
         "<path d='M62 100 q18 -10 34 0 q-4 14 -17 14 q-13 0 -17 -14 Z' fill='#60C020' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
         "<text x='79' y='136' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='17' font-weight='800' fill='#3a2a12'>خُضارٌ وَفَواكِهُ</text>"+
         "</g>"+
+        "</g>"+
         "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        // الْمَلابِسُ
+        "<g transform='translate(-142 0)'>"+
         "<g clip-path='url(#qqB)'>"+
         "<rect x='154' y='12' width='134' height='134' fill='#F4F0FF'/>"+
         "<path d='M196 50 l14 -8 h22 l14 8 l-10 16 l-8 -5 v50 h-24 v-50 l-8 5 Z' fill='#0080C0'/>"+
@@ -31577,8 +31632,8 @@ window.QUESTIONS = {
         "<path d='M196 50 l14 -8 h22 l14 8 l-10 16 l-8 -5 v50 h-24 v-50 l-8 5 Z' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
         "<text x='221' y='136' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>مَلابِسُ</text>"+
         "</g>"+
+        "</g>"+
         "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        // الْأَلْعابُ
         "<g clip-path='url(#qqC)'>"+
         "<rect x='83' y='154' width='134' height='134' fill='#FFF6F0'/>"+
         "<rect x='112' y='214' width='40' height='26' rx='4' fill='#FF2020'/>"+
@@ -31659,11 +31714,16 @@ window.QUESTIONS = {
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
-        "<clipPath id='zzA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
-        "<clipPath id='zzB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
-        "<clipPath id='zzC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='zzA'>"+
+        "<rect x='12' y='12' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
+        "<clipPath id='zzB'>"+
+        "<rect x='154' y='12' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
+        "<clipPath id='zzC'>"+
+        "<rect x='83' y='154' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
         "</defs>"+
-        // الدَّلافينُ (الجواب)
         "<g clip-path='url(#zzA)'>"+
         "<rect x='12' y='12' width='134' height='134' fill='#CDEBFF'/>"+
         "<rect x='12' y='102' width='134' height='44' fill='#0080C0'/>"+
@@ -31675,7 +31735,6 @@ window.QUESTIONS = {
         "<text x='79' y='138' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#ffffff'>الدَّلافينُ</text>"+
         "</g>"+
         "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        // الْأَسْماكُ
         "<g clip-path='url(#zzB)'>"+
         "<rect x='154' y='12' width='134' height='134' fill='#E8F8FF'/>"+
         "<path d='M248 70 L268 54 L268 86 Z' fill='#E08000' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
@@ -31686,7 +31745,6 @@ window.QUESTIONS = {
         "<text x='221' y='134' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>الْأَسْماكُ</text>"+
         "</g>"+
         "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        // الطُّيورُ
         "<g clip-path='url(#zzC)'>"+
         "<rect x='83' y='154' width='134' height='134' fill='#F0FFF4'/>"+
         "<path d='M112 208 q14 -16 28 0 q-14 8 -28 0 Z' fill='#FFFFFF' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
@@ -31758,15 +31816,21 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "إِلى أَيْنَ انْطَلَقَتْ أُسْرَةُ طارِقٍ؟",
       bg: "#fffaf2",
-      spot: { x: 26, y: 26, r: 20 },
+      spot: { x: 50, y: 74, r: 20 },
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
-        "<clipPath id='taA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
-        "<clipPath id='taB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
-        "<clipPath id='taC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='taA'>"+
+        "<rect x='12' y='12' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
+        "<clipPath id='taB'>"+
+        "<rect x='154' y='12' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
+        "<clipPath id='taC'>"+
+        "<rect x='83' y='154' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
         "</defs>"+
-        // الشّاطِئُ (الجواب)
+        "<g transform='translate(71 142)'>"+
         "<g clip-path='url(#taA)'>"+
         "<rect x='12' y='12' width='134' height='134' fill='#CDEBFF'/>"+
         "<rect x='12' y='96' width='134' height='50' fill='#E0C080'/>"+
@@ -31778,8 +31842,8 @@ window.QUESTIONS = {
         "<path d='M34 46 q10 -10 20 0 q-10 6 -20 0 Z' fill='#FFFFFF' stroke='#111111' stroke-width='2.2' stroke-linejoin='round'/>"+
         "<text x='79' y='138' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>الشّاطِئُ</text>"+
         "</g>"+
+        "</g>"+
         "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        // السّوقُ
         "<g clip-path='url(#taB)'>"+
         "<rect x='154' y='12' width='134' height='134' fill='#FFF7E6'/>"+
         "<rect x='176' y='72' width='90' height='48' fill='#E0C080'/>"+
@@ -31793,7 +31857,7 @@ window.QUESTIONS = {
         "<text x='221' y='136' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>السّوقُ</text>"+
         "</g>"+
         "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        // الْمَدْرَسَةُ
+        "<g transform='translate(-71 -142)'>"+
         "<g clip-path='url(#taC)'>"+
         "<rect x='83' y='154' width='134' height='134' fill='#EAF4FF'/>"+
         "<rect x='83' y='262' width='134' height='26' fill='#60C020'/>"+
@@ -31805,6 +31869,7 @@ window.QUESTIONS = {
         "<rect x='168' y='216' width='18' height='18' rx='2' fill='#40C0FF' stroke='#111111' stroke-width='2.2'/>"+
         "<rect x='138' y='232' width='24' height='30' rx='3' fill='#9A6636' stroke='#111111' stroke-width='2.4'/>"+
         "<text x='150' y='282' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#ffffff'>الْمَدْرَسَةُ</text>"+
+        "</g>"+
         "</g>"+
         "<rect x='83' y='154' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
         "</svg>"
@@ -32012,15 +32077,21 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "أَيُّ عُلْبَةٍ فيها غِذاءٌ مُتَكامِلٌ؟",
       bg: "#fffaf6",
-      spot: { x: 26, y: 26, r: 20 },
+      spot: { x: 74, y: 26, r: 20 },
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
-        "<clipPath id='hmA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
-        "<clipPath id='hmB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
-        "<clipPath id='hmC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='hmA'>"+
+        "<rect x='12' y='12' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
+        "<clipPath id='hmB'>"+
+        "<rect x='154' y='12' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
+        "<clipPath id='hmC'>"+
+        "<rect x='83' y='154' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
         "</defs>"+
-        // الغِذاءُ المتكامِلُ (الجواب)
+        "<g transform='translate(142 0)'>"+
         "<g clip-path='url(#hmA)'>"+
         "<rect x='12' y='12' width='134' height='134' fill='#F3FFF0'/>"+
         "<rect x='30' y='40' width='30' height='46' rx='4' fill='#FFFFFF' stroke='#111111' stroke-width='2.6'/>"+
@@ -32034,8 +32105,9 @@ window.QUESTIONS = {
         "<circle cx='96' cy='106' r='12' fill='#FF4020' stroke='#111111' stroke-width='2.5'/>"+
         "<text x='79' y='136' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='16' font-weight='800' fill='#3a2a12'>حَليبٌ وَشَطيرَةٌ وَفاكِهَةٌ</text>"+
         "</g>"+
+        "</g>"+
         "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        // حَلْوى
+        "<g transform='translate(-142 0)'>"+
         "<g clip-path='url(#hmB)'>"+
         "<rect x='154' y='12' width='134' height='134' fill='#FFF0F6'/>"+
         "<circle cx='200' cy='70' r='18' fill='#FF2020' stroke='#111111' stroke-width='2.6'/>"+
@@ -32044,8 +32116,8 @@ window.QUESTIONS = {
         "<rect x='188' y='96' width='60' height='14' rx='7' fill='#984800' stroke='#111111' stroke-width='2.5'/>"+
         "<text x='221' y='136' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>حَلْوى</text>"+
         "</g>"+
+        "</g>"+
         "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        // مَشْروبٌ غازِيٌّ
         "<g clip-path='url(#hmC)'>"+
         "<rect x='83' y='154' width='134' height='134' fill='#FFF6EC'/>"+
         "<rect x='128' y='192' width='44' height='62' rx='7' fill='#E02000'/>"+
@@ -32118,15 +32190,21 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "ما الَّذي يوضَعُ فَوْقَ شَريحَةِ الْخُبْزِ؟",
       bg: "#fffaf0",
-      spot: { x: 26, y: 26, r: 20 },
+      spot: { x: 50, y: 74, r: 20 },
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
-        "<clipPath id='jjA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
-        "<clipPath id='jjB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
-        "<clipPath id='jjC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='jjA'>"+
+        "<rect x='12' y='12' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
+        "<clipPath id='jjB'>"+
+        "<rect x='154' y='12' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
+        "<clipPath id='jjC'>"+
+        "<rect x='83' y='154' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
         "</defs>"+
-        // قِطْعَةُ دَجاجٍ (الجواب)
+        "<g transform='translate(71 142)'>"+
         "<g clip-path='url(#jjA)'>"+
         "<rect x='12' y='12' width='134' height='134' fill='#FFF7E6'/>"+
         "<path d='M44 70 q14 -22 44 -14 q26 8 22 30 q-4 22 -32 22 q-32 0 -34 -20 q-2 -10 0 -18 Z' fill='#C06000'/>"+
@@ -32135,8 +32213,8 @@ window.QUESTIONS = {
         "<path d='M52 84 q22 8 44 2 M50 98 q22 8 44 0' fill='none' stroke='#984800' stroke-width='4' stroke-linecap='round'/>"+
         "<text x='79' y='134' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>دَجاجٌ</text>"+
         "</g>"+
+        "</g>"+
         "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        // سَمَكٌ
         "<g clip-path='url(#jjB)'>"+
         "<rect x='154' y='12' width='134' height='134' fill='#EAF6FF'/>"+
         "<path d='M254 74 L276 58 L276 90 Z' fill='#0060A0' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
@@ -32147,13 +32225,14 @@ window.QUESTIONS = {
         "<text x='221' y='134' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>سَمَكٌ</text>"+
         "</g>"+
         "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        // بَيْضٌ
+        "<g transform='translate(-71 -142)'>"+
         "<g clip-path='url(#jjC)'>"+
         "<rect x='83' y='154' width='134' height='134' fill='#FFFDF0'/>"+
         "<ellipse cx='150' cy='214' rx='36' ry='28' fill='#FFFFFF' stroke='#111111' stroke-width='2.7'/>"+
         "<circle cx='150' cy='214' r='14' fill='#FFC040' stroke='#111111' stroke-width='2.5'/>"+
         "<ellipse cx='118' cy='240' rx='24' ry='18' fill='#F1F0EA' stroke='#111111' stroke-width='2.6'/>"+
         "<text x='150' y='278' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>بَيْضٌ</text>"+
+        "</g>"+
         "</g>"+
         "<rect x='83' y='154' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
         "</svg>"
@@ -32226,9 +32305,15 @@ window.QUESTIONS = {
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
-        "<clipPath id='wwA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
-        "<clipPath id='wwB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
-        "<clipPath id='wwC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='wwA'>"+
+        "<rect x='12' y='12' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
+        "<clipPath id='wwB'>"+
+        "<rect x='154' y='12' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
+        "<clipPath id='wwC'>"+
+        "<rect x='83' y='154' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
         "</defs>"+
         "<g clip-path='url(#wwA)'>"+
         "<rect x='12' y='12' width='134' height='134' fill='#FFFDF0'/>"+
@@ -32322,15 +32407,21 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "أَيَّ شَجَرَةٍ غَرَسَ الْجَدُّ؟",
       bg: "#f7fbff",
-      spot: { x: 26, y: 26, r: 20 },
+      spot: { x: 74, y: 26, r: 20 },
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
-        "<clipPath id='shA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
-        "<clipPath id='shB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
-        "<clipPath id='shC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='shA'>"+
+        "<rect x='12' y='12' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
+        "<clipPath id='shB'>"+
+        "<rect x='154' y='12' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
+        "<clipPath id='shC'>"+
+        "<rect x='83' y='154' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
         "</defs>"+
-        // شَجَرَةُ الْمِشْمِشِ (الجواب)
+        "<g transform='translate(142 0)'>"+
         "<g clip-path='url(#shA)'>"+
         "<rect x='12' y='12' width='134' height='134' fill='#F0FFF4'/>"+
         "<rect x='72' y='86' width='14' height='40' fill='#9A6636'/>"+
@@ -32345,8 +32436,9 @@ window.QUESTIONS = {
         "<circle cx='86' cy='80' r='8' fill='#FFA000' stroke='#111111' stroke-width='2.3'/>"+
         "<text x='79' y='140' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>مِشْمِشٌ</text>"+
         "</g>"+
+        "</g>"+
         "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        // نَخْلَةٌ
+        "<g transform='translate(-142 0)'>"+
         "<g clip-path='url(#shB)'>"+
         "<rect x='154' y='12' width='134' height='134' fill='#FFFBEF'/>"+
         "<path d='M214 126 q4 -50 12 -66 l6 2 q-8 18 -10 64 Z' fill='#9A6636' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
@@ -32358,8 +32450,8 @@ window.QUESTIONS = {
         "<circle cx='234' cy='76' r='5' fill='#984800' stroke='#111111' stroke-width='2'/>"+
         "<text x='221' y='140' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>نَخْلَةٌ</text>"+
         "</g>"+
+        "</g>"+
         "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        // تُفّاحٌ
         "<g clip-path='url(#shC)'>"+
         "<rect x='83' y='154' width='134' height='134' fill='#FFF2F2'/>"+
         "<rect x='143' y='226' width='14' height='38' fill='#9A6636' stroke='#111111' stroke-width='2.5'/>"+
@@ -32442,11 +32534,16 @@ window.QUESTIONS = {
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
-        "<clipPath id='ayA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
-        "<clipPath id='ayB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
-        "<clipPath id='ayC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='ayA'>"+
+        "<rect x='12' y='12' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
+        "<clipPath id='ayB'>"+
+        "<rect x='154' y='12' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
+        "<clipPath id='ayC'>"+
+        "<rect x='83' y='154' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
         "</defs>"+
-        // عُلْبَتانِ وَخَيْطٌ (الجواب)
         "<g clip-path='url(#ayA)'>"+
         "<rect x='12' y='12' width='134' height='134' fill='#FFFDF0'/>"+
         "<path d='M52 80 q28 22 54 0' fill='none' stroke='#111111' stroke-width='3'/>"+
@@ -32461,10 +32558,13 @@ window.QUESTIONS = {
         "<text x='79' y='134' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='17' font-weight='800' fill='#3a2a12'>عُلْبَتانِ وَخَيْطٌ</text>"+
         "</g>"+
         "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        // كُرَةٌ
         "<g clip-path='url(#ayB)'>"+
         "<rect x='154' y='12' width='134' height='134' fill='#F0F8FF'/>"+
-        "<defs><clipPath id='ayBall'><circle cx='221' cy='72' r='34'/></clipPath></defs>"+
+        "<defs>"+
+        "<clipPath id='ayBall'>"+
+        "<circle cx='221' cy='72' r='34'/>"+
+        "</clipPath>"+
+        "</defs>"+
         "<g clip-path='url(#ayBall)'>"+
         "<rect x='180' y='30' width='84' height='24' fill='#40C0FF'/>"+
         "<rect x='180' y='54' width='84' height='18' fill='#20A0FF'/>"+
@@ -32476,7 +32576,6 @@ window.QUESTIONS = {
         "<text x='221' y='134' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>كُرَةٌ</text>"+
         "</g>"+
         "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        // كِتابٌ
         "<g clip-path='url(#ayC)'>"+
         "<rect x='83' y='154' width='134' height='134' fill='#F3FFF0'/>"+
         "<rect x='114' y='188' width='72' height='60' rx='5' fill='#4A9018'/>"+
@@ -32548,15 +32647,21 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "أَيْنَ لا يَقْرَأُ ظافِرٌ؟",
       bg: "#f2f8ff",
-      spot: { x: 26, y: 26, r: 20 },
+      spot: { x: 74, y: 26, r: 20 },
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
-        "<clipPath id='zaA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
-        "<clipPath id='zaB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
-        "<clipPath id='zaC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='zaA'>"+
+        "<rect x='12' y='12' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
+        "<clipPath id='zaB'>"+
+        "<rect x='154' y='12' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
+        "<clipPath id='zaC'>"+
+        "<rect x='83' y='154' width='134' height='134' rx='12'/>"+
+        "</clipPath>"+
         "</defs>"+
-        // غُرْفَةٌ مُظْلِمَةٌ (الجواب)
+        "<g transform='translate(142 0)'>"+
         "<g clip-path='url(#zaA)'>"+
         "<rect x='12' y='12' width='134' height='134' fill='#2A2A3E'/>"+
         "<rect x='40' y='40' width='60' height='50' rx='4' fill='#1A1A2A' stroke='#111111' stroke-width='2.6'/>"+
@@ -32565,8 +32670,9 @@ window.QUESTIONS = {
         "<circle cx='118' cy='36' r='10' fill='#3A3A50' stroke='#111111' stroke-width='2.4'/>"+
         "<text x='79' y='134' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='17' font-weight='800' fill='#ffffff'>غُرْفَةٌ مُظْلِمَةٌ</text>"+
         "</g>"+
+        "</g>"+
         "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        // غُرْفَةٌ مُضيئَةٌ
+        "<g transform='translate(-142 0)'>"+
         "<g clip-path='url(#zaB)'>"+
         "<rect x='154' y='12' width='134' height='134' fill='#FFFDF0'/>"+
         "<rect x='182' y='40' width='60' height='50' rx='4' fill='#FFFFFF' stroke='#111111' stroke-width='2.6'/>"+
@@ -32576,8 +32682,8 @@ window.QUESTIONS = {
         "<path d='M260 20 v-8 M274 36 h8 M246 36 h-8 M270 26 l6 -6 M250 26 l-6 -6' stroke='#FFA000' stroke-width='3.4' stroke-linecap='round'/>"+
         "<text x='221' y='134' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='17' font-weight='800' fill='#3a2a12'>غُرْفَةٌ مُضيئَةٌ</text>"+
         "</g>"+
+        "</g>"+
         "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        // حَديقَةٌ
         "<g clip-path='url(#zaC)'>"+
         "<rect x='83' y='154' width='134' height='134' fill='#EAF8E4'/>"+
         "<rect x='83' y='252' width='134' height='36' fill='#60C020'/>"+
