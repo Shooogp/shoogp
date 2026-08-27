@@ -32286,48 +32286,8 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "اُنْقُرْ عَلَى الْقَنْطَرَةِ الَّتي دَخَلَتْ تَحْتَها الدُّمْيَةُ.",
       bg: "#fdf9ee",
-      fit: "width",
-      svg: `<svg viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="قريةٌ فيها فلجٌ تعبرُه قنطرةٌ حجريّةٌ، وسلّمٌ حجريٌّ ينزلُ إلى الماء">
-        <g stroke="#111111" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="0" y="118" width="600" height="182" fill="#B98551" stroke="none"/>
-          <rect x="0" y="118" width="600" height="20" fill="#9A6636" stroke="none"/>
-
-          <rect x="56" y="50" width="112" height="82" fill="#E08000" stroke-width="3"/>
-          <rect x="56" y="50" width="112" height="16" fill="#FFA000" stroke-width="2"/>
-          <rect x="48" y="38" width="128" height="14" fill="#C06000" stroke-width="3"/>
-          <rect x="96" y="92" width="32" height="40" fill="#7A4C22" stroke-width="2"/>
-
-          <rect x="438" y="58" width="118" height="74" fill="#E08000" stroke-width="3"/>
-          <rect x="438" y="58" width="118" height="14" fill="#FFA000" stroke-width="2"/>
-          <rect x="430" y="46" width="134" height="14" fill="#C06000" stroke-width="3"/>
-          <rect x="478" y="98" width="30" height="34" fill="#7A4C22" stroke-width="2"/>
-
-          <rect x="266" y="62" width="16" height="70" fill="#9A6636" stroke-width="3"/>
-          <path d="M274 66 C240 52 214 58 200 74 C226 70 252 74 274 84 Z" fill="#60C020" stroke-width="3"/>
-          <path d="M274 66 C308 52 334 58 348 74 C322 70 296 74 274 84 Z" fill="#4A9018" stroke-width="3"/>
-          <path d="M274 58 C258 34 234 26 214 30 C240 40 260 54 274 76 Z" fill="#80C020" stroke-width="3"/>
-          <path d="M274 58 C290 34 314 26 334 30 C308 40 288 54 274 76 Z" fill="#4A9018" stroke-width="3"/>
-
-          <rect x="0" y="176" width="600" height="16" fill="#C0C0C0" stroke-width="3"/>
-          <rect x="0" y="192" width="600" height="44" fill="#20A0FF" stroke="none"/>
-          <rect x="0" y="192" width="600" height="12" fill="#40C0FF" stroke="none"/>
-          <rect x="0" y="222" width="600" height="14" fill="#2080E0" stroke="none"/>
-          <rect x="0" y="236" width="600" height="16" fill="#C0C0C0" stroke-width="3"/>
-
-          <rect x="18" y="128" width="42" height="13" fill="#C0C0C0" stroke-width="3"/>
-          <rect x="18" y="141" width="58" height="13" fill="#C0C0C0" stroke-width="3"/>
-          <rect x="18" y="154" width="74" height="13" fill="#C0C0C0" stroke-width="3"/>
-          <rect x="18" y="167" width="90" height="12" fill="#808080" stroke-width="3"/>
-
-          <path d="M360 236 L360 208 A40 40 0 0 1 440 208 L440 236 Z" fill="#404040" stroke-width="3"/>
-          <rect x="330" y="176" width="30" height="60" fill="#808080" stroke-width="3"/>
-          <rect x="440" y="176" width="30" height="60" fill="#808080" stroke-width="3"/>
-          <rect x="318" y="148" width="164" height="30" fill="#C0C0C0" stroke-width="3"/>
-          <rect x="318" y="148" width="164" height="9" fill="#FFFFFF" stroke-width="2"/>
-          <rect x="318" y="169" width="164" height="9" fill="#606060" stroke-width="2"/>
-        </g>
-      </svg>`,
-      spot: { x: 66.7, y: 54.3, w: 27.3, h: 10 }
+      svg: "<svg viewBox='0 0 300 300'><image href='images/فلج-قنطرة.png' x='0' y='0' width='300' height='300'/></svg>",
+      spot: { x: 50, y: 62.1, w: 40.1, h: 22.2 }
     },
 
     // ② فهم — `reasoning` (المخرَج ⑥) — **نشاطُ ص ٤١ «خُطْوَتي الثّانِيَةُ» ①**
@@ -32452,62 +32412,8 @@ window.QUESTIONS = {
       prompt: "اُنْقُرْ عَلَى الْوَقْتِ الَّذي مَرِضَ فيهِ أَسْعَدُ.",
       bg: "#fdf9ee",
       fit: "width",
-      svg: `<svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="أربعُ دوائرَ لأوقاتِ اليوم: صباحٌ وظهيرةٌ وبعدَ الظهرِ ومساء">
-        <defs>
-          <clipPath id="g2a13-a"><circle cx="526" cy="140" r="64"/></clipPath>
-          <clipPath id="g2a13-b"><circle cx="376" cy="140" r="64"/></clipPath>
-          <clipPath id="g2a13-c"><circle cx="226" cy="140" r="64"/></clipPath>
-          <clipPath id="g2a13-d"><circle cx="76"  cy="140" r="64"/></clipPath>
-        </defs>
-        <g stroke="#111111" stroke-linecap="round" stroke-linejoin="round">
-
-          <g clip-path="url(#g2a13-a)">
-            <rect x="462" y="76" width="128" height="128" fill="#40C0FF" stroke="none"/>
-            <g stroke="#E08000" stroke-width="5">
-              <line x1="520" y1="146" x2="520" y2="134"/>
-              <line x1="492" y1="158" x2="484" y2="150"/>
-              <line x1="548" y1="158" x2="556" y2="150"/>
-            </g>
-            <circle cx="520" cy="176" r="22" fill="#FFA000" stroke-width="3"/>
-            <path d="M507 168 A17 17 0 0 1 524 161" fill="none" stroke="#FFFFFF" stroke-width="6"/>
-          </g>
-          <circle cx="526" cy="140" r="64" fill="none" stroke-width="3"/>
-
-          <g clip-path="url(#g2a13-b)">
-            <rect x="312" y="76" width="128" height="128" fill="#20A0FF" stroke="none"/>
-            <g stroke="#E08000" stroke-width="5">
-              <line x1="376" y1="76" x2="376" y2="88"/>
-              <line x1="340" y1="90" x2="348" y2="98"/>
-              <line x1="412" y1="90" x2="404" y2="98"/>
-              <line x1="330" y1="116" x2="342" y2="116"/>
-              <line x1="422" y1="116" x2="410" y2="116"/>
-            </g>
-            <circle cx="376" cy="118" r="30" fill="#FFA000" stroke-width="3"/>
-            <path d="M359 108 A24 24 0 0 1 383 96" fill="none" stroke="#FFFFFF" stroke-width="7"/>
-          </g>
-          <circle cx="376" cy="140" r="64" fill="none" stroke-width="3"/>
-
-          <g clip-path="url(#g2a13-c)">
-            <rect x="162" y="76" width="128" height="128" fill="#FFA000" stroke="none"/>
-            <rect x="162" y="170" width="128" height="34" fill="#E08000" stroke="none"/>
-            <circle cx="226" cy="176" r="26" fill="#FF4020" stroke-width="3"/>
-            <path d="M211 168 A20 20 0 0 1 232 160" fill="none" stroke="#FFFFFF" stroke-width="6"/>
-          </g>
-          <circle cx="226" cy="140" r="64" fill="none" stroke-width="3"/>
-
-          <g clip-path="url(#g2a13-d)">
-            <rect x="12" y="76" width="128" height="128" fill="#1060A0" stroke="none"/>
-            <circle cx="82" cy="128" r="28" fill="#E0E0A0" stroke-width="3"/>
-            <path d="M66 118 A22 22 0 0 1 88 108" fill="none" stroke="#FFFFC0" stroke-width="7"/>
-            <circle cx="36" cy="98"  r="5" fill="#FFFFC0" stroke-width="2"/>
-            <circle cx="28" cy="152" r="4" fill="#FFFFC0" stroke-width="2"/>
-            <circle cx="52" cy="186" r="5" fill="#FFFFC0" stroke-width="2"/>
-          </g>
-          <circle cx="76" cy="140" r="64" fill="none" stroke-width="3"/>
-
-        </g>
-      </svg>`,
-      spot: { x: 62.7, y: 50, w: 21.3, h: 45.7 }
+      svg: "<svg viewBox='0 0 600 280' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='أربعةُ أوقاتٍ لليوم: صباحٌ وظهيرةٌ وبعدَ الظهرِ ومساء'><defs><clipPath id='g2t0'><rect x='16' y='75' width='130' height='130' rx='20'/></clipPath><clipPath id='g2t1'><rect x='162' y='75' width='130' height='130' rx='20'/></clipPath><clipPath id='g2t2'><rect x='308' y='75' width='130' height='130' rx='20'/></clipPath><clipPath id='g2t3'><rect x='454' y='75' width='130' height='130' rx='20'/></clipPath></defs><g clip-path='url(#g2t0)'><image href='images/مساء.png' x='16' y='75' width='130' height='130'/></g><rect x='16' y='75' width='130' height='130' rx='20' fill='none' stroke='#111111' stroke-width='3'/><g clip-path='url(#g2t1)'><image href='images/بعد-الظهر.png' x='162' y='75' width='130' height='130'/></g><rect x='162' y='75' width='130' height='130' rx='20' fill='none' stroke='#111111' stroke-width='3'/><g clip-path='url(#g2t2)'><image href='images/ظهيرة.png' x='308' y='75' width='130' height='130'/></g><rect x='308' y='75' width='130' height='130' rx='20' fill='none' stroke='#111111' stroke-width='3'/><g clip-path='url(#g2t3)'><image href='images/صباح.png' x='454' y='75' width='130' height='130'/></g><rect x='454' y='75' width='130' height='130' rx='20' fill='none' stroke='#111111' stroke-width='3'/></svg>",
+      spot: { x: 62.2, y: 50, w: 21.7, h: 46.4 }
     },
 
     // ② فهم — `reasoning` (المخرَج ⑤ — الْمَعْنى الْخَفيُّ)
