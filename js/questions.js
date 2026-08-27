@@ -29878,67 +29878,15 @@ window.QUESTIONS = {
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
-        "<clipPath id='mmA'>"+
-        "<rect x='12' y='12' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
-        "<clipPath id='mmB'>"+
-        "<rect x='154' y='12' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
-        "<clipPath id='mmC'>"+
-        "<rect x='83' y='154' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
+        "<clipPath id='mmA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='mmB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='mmC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
         "</defs>"+
-        "<g transform='translate(142 0)'>"+
-        "<g clip-path='url(#mmA)'>"+
-        "<rect x='12' y='12' width='134' height='134' fill='#FFF7E6'/>"+
-        "<path d='M52 62 q6 -12 0 -20 M79 60 q6 -14 0 -22 M106 62 q6 -12 0 -20' fill='none' stroke='#C0C0C0' stroke-width='5' stroke-linecap='round'/>"+
-        "<rect x='38' y='84' width='16' height='9' rx='4' fill='#606060' stroke='#111111' stroke-width='2.4'/>"+
-        "<rect x='104' y='84' width='16' height='9' rx='4' fill='#606060' stroke='#111111' stroke-width='2.4'/>"+
-        "<rect x='48' y='78' width='62' height='42' rx='7' fill='#808080'/>"+
-        "<rect x='48' y='78' width='62' height='12' fill='#C0C0C0'/>"+
-        "<rect x='48' y='104' width='62' height='9' fill='#606060'/>"+
-        "<rect x='48' y='113' width='62' height='7' fill='#404040'/>"+
-        "<rect x='48' y='78' width='62' height='42' rx='7' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-        "<rect x='42' y='68' width='74' height='11' rx='5' fill='#808080'/>"+
-        "<rect x='42' y='68' width='74' height='4' rx='3' fill='#C0C0C0'/>"+
-        "<rect x='42' y='68' width='74' height='11' rx='5' fill='none' stroke='#111111' stroke-width='2.6'/>"+
-        "<circle cx='79' cy='63' r='5' fill='#606060' stroke='#111111' stroke-width='2.4'/>"+
-        "<text x='79' y='136' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='19' font-weight='800' fill='#3a2a12'>الطَّعامُ</text>"+
-        "</g>"+
-        "</g>"+
+        "<g clip-path='url(#mmA)'><image href='images/تنظيف.png' x='12' y='12' width='134' height='134'/></g>"+
         "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        "<g transform='translate(-142 0)'>"+
-        "<g clip-path='url(#mmB)'>"+
-        "<rect x='154' y='12' width='134' height='134' fill='#F3FBF0'/>"+
-        "<path d='M232 30 L210 84' fill='none' stroke='#111111' stroke-width='9' stroke-linecap='round'/>"+
-        "<path d='M232 30 L210 84' fill='none' stroke='#9A6636' stroke-width='5' stroke-linecap='round'/>"+
-        "<path d='M196 82 L224 82 L234 116 L186 116 Z' fill='#E08000'/>"+
-        "<path d='M196 82 L224 82 L229 99 L191 99 Z' fill='#FFA000'/>"+
-        "<path d='M188 110 L232 110 L234 116 L186 116 Z' fill='#984800'/>"+
-        "<path d='M196 82 L224 82 L234 116 L186 116 Z' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-        "<path d='M199 99 L195 116 M210 99 L210 116 M221 99 L225 116' stroke='#111111' stroke-width='1.8' opacity='.7'/>"+
-        "<text x='221' y='136' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='19' font-weight='800' fill='#3a2a12'>التَّنْظيفُ</text>"+
-        "</g>"+
-        "</g>"+
+        "<g clip-path='url(#mmB)'><image href='images/طعام.png' x='154' y='12' width='134' height='134'/></g>"+
         "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        "<g clip-path='url(#mmC)'>"+
-        "<rect x='83' y='154' width='134' height='134' fill='#FFF0F6'/>"+
-        "<defs>"+
-        "<clipPath id='mmBall'>"+
-        "<circle cx='150' cy='212' r='34'/>"+
-        "</clipPath>"+
-        "</defs>"+
-        "<g clip-path='url(#mmBall)'>"+
-        "<rect x='110' y='170' width='84' height='24' fill='#FF4020'/>"+
-        "<rect x='110' y='194' width='84' height='18' fill='#FF2020'/>"+
-        "<rect x='110' y='212' width='84' height='18' fill='#E02000'/>"+
-        "<rect x='110' y='230' width='84' height='22' fill='#B01800'/>"+
-        "<ellipse cx='136' cy='190' rx='13' ry='6' fill='#ffffff' opacity='.75' transform='rotate(-25 136 190)'/>"+
-        "</g>"+
-        "<circle cx='150' cy='212' r='34' fill='none' stroke='#111111' stroke-width='2.8'/>"+
-        "<path d='M116 212 h68 M150 178 v68' stroke='#111111' stroke-width='2' opacity='.55'/>"+
-        "<text x='150' y='276' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='19' font-weight='800' fill='#3a2a12'>اللَّعِبُ</text>"+
-        "</g>"+
+        "<g clip-path='url(#mmC)'><image href='images/لعبة.png' x='83' y='154' width='134' height='134'/></g>"+
         "<rect x='83' y='154' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
         "</svg>"
     },
@@ -31204,48 +31152,15 @@ window.QUESTIONS = {
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
-        "<clipPath id='ttA'>"+
-        "<rect x='12' y='12' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
-        "<clipPath id='ttB'>"+
-        "<rect x='154' y='12' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
-        "<clipPath id='ttC'>"+
-        "<rect x='83' y='154' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
+        "<clipPath id='ttA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='ttB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='ttC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
         "</defs>"+
-        "<g clip-path='url(#ttA)'>"+
-        "<rect x='12' y='12' width='134' height='134' fill='#EAF4FF'/>"+
-        "<rect x='34' y='72' width='84' height='16' rx='8' fill='#0080C0'/>"+
-        "<rect x='34' y='72' width='84' height='6'  rx='4' fill='#40C0FF'/>"+
-        "<rect x='34' y='72' width='84' height='16' rx='8' fill='none' stroke='#111111' stroke-width='2.7' stroke-linejoin='round'/>"+
-        "<rect x='96' y='68' width='26' height='24' rx='5' fill='#0060A0' stroke='#111111' stroke-width='2.6'/>"+
-        "<path d='M100 68 v-12 M107 68 v-14 M114 68 v-12' stroke='#FFFFFF' stroke-width='4' stroke-linecap='round'/>"+
-        "<path d='M100 68 v-12 M107 68 v-14 M114 68 v-12' stroke='#111111' stroke-width='1.4' stroke-linecap='round'/>"+
-        "<text x='79' y='126' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='17' font-weight='800' fill='#3a2a12'>تَنْظيفُ</text>"+
-        "<text x='79' y='142' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='17' font-weight='800' fill='#3a2a12'>الْأَسْنانِ</text>"+
-        "</g>"+
+        "<g clip-path='url(#ttA)'><image href='images/أسنان.png' x='12' y='12' width='134' height='134'/></g>"+
         "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        "<g clip-path='url(#ttB)'>"+
-        "<rect x='154' y='12' width='134' height='134' fill='#FFF0F6'/>"+
-        "<circle cx='221' cy='72' r='26' fill='#FF2020'/>"+
-        "<path d='M195 72 a26 26 0 0 1 52 0 Z' fill='#FF4020'/>"+
-        "<circle cx='221' cy='72' r='26' fill='none' stroke='#111111' stroke-width='2.8'/>"+
-        "<path d='M195 72 h52 M221 46 v52' stroke='#FFFFFF' stroke-width='4' opacity='.8'/>"+
-        "<rect x='217' y='98' width='8' height='30' fill='#C0C0C0' stroke='#111111' stroke-width='2.3'/>"+
-        "<text x='221' y='142' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='17' font-weight='800' fill='#3a2a12'>الْحَلْوى</text>"+
-        "</g>"+
+        "<g clip-path='url(#ttB)'><image href='images/حلوى.png' x='154' y='12' width='134' height='134'/></g>"+
         "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        "<g clip-path='url(#ttC)'>"+
-        "<rect x='83' y='154' width='134' height='134' fill='#F2F0FF'/>"+
-        "<rect x='104' y='224' width='92' height='24' rx='6' fill='#0080C0'/>"+
-        "<rect x='104' y='224' width='92' height='8' rx='4' fill='#40C0FF'/>"+
-        "<rect x='104' y='224' width='92' height='24' rx='6' fill='none' stroke='#111111' stroke-width='2.7' stroke-linejoin='round'/>"+
-        "<rect x='112' y='208' width='40' height='18' rx='8' fill='#FFFFFF' stroke='#111111' stroke-width='2.5'/>"+
-        "<path d='M104 248 v14 M196 248 v14' stroke='#111111' stroke-width='7' stroke-linecap='round'/>"+
-        "<path d='M104 248 v14 M196 248 v14' stroke='#9A6636' stroke-width='4' stroke-linecap='round'/>"+
-        "<text x='150' y='276' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='17' font-weight='800' fill='#3a2a12'>النَّوْمُ</text>"+
-        "</g>"+
+        "<g clip-path='url(#ttC)'><image href='images/نوم.png' x='83' y='154' width='134' height='134'/></g>"+
         "<rect x='83' y='154' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
         "</svg>"
     },
@@ -32103,58 +32018,15 @@ window.QUESTIONS = {
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
-        "<clipPath id='shA'>"+
-        "<rect x='12' y='12' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
-        "<clipPath id='shB'>"+
-        "<rect x='154' y='12' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
-        "<clipPath id='shC'>"+
-        "<rect x='83' y='154' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
+        "<clipPath id='shA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='shB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='shC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
         "</defs>"+
-        "<g transform='translate(142 0)'>"+
-        "<g clip-path='url(#shA)'>"+
-        "<rect x='12' y='12' width='134' height='134' fill='#F0FFF4'/>"+
-        "<rect x='72' y='86' width='14' height='40' fill='#9A6636'/>"+
-        "<rect x='72' y='86' width='5'  height='40' fill='#B98551'/>"+
-        "<rect x='72' y='86' width='14' height='40' fill='none' stroke='#111111' stroke-width='2.5'/>"+
-        "<circle cx='79' cy='66' r='34' fill='#4A9018'/>"+
-        "<path d='M45 66 a34 34 0 0 1 68 0 Z' fill='#60C020'/>"+
-        "<path d='M50 52 a34 34 0 0 1 36 -18 Z' fill='#80C020'/>"+
-        "<circle cx='79' cy='66' r='34' fill='none' stroke='#111111' stroke-width='2.8'/>"+
-        "<circle cx='62' cy='58' r='8' fill='#FFA000' stroke='#111111' stroke-width='2.3'/>"+
-        "<circle cx='92' cy='52' r='8' fill='#FFC040' stroke='#111111' stroke-width='2.3'/>"+
-        "<circle cx='86' cy='80' r='8' fill='#FFA000' stroke='#111111' stroke-width='2.3'/>"+
-        "<text x='79' y='140' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>مِشْمِشٌ</text>"+
-        "</g>"+
-        "</g>"+
+        "<g clip-path='url(#shA)'><image href='images/نخلة.png' x='12' y='12' width='134' height='134'/></g>"+
         "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        "<g transform='translate(-142 0)'>"+
-        "<g clip-path='url(#shB)'>"+
-        "<rect x='154' y='12' width='134' height='134' fill='#FFFBEF'/>"+
-        "<path d='M214 126 q4 -50 12 -66 l6 2 q-8 18 -10 64 Z' fill='#9A6636' stroke='#111111' stroke-width='2.5' stroke-linejoin='round'/>"+
-        "<path d='M226 60 q-30 -6 -40 12 q26 2 40 -6 Z' fill='#4A9018' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
-        "<path d='M228 58 q26 -12 42 4 q-26 6 -42 -0 Z' fill='#60C020' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
-        "<path d='M226 56 q-14 -24 4 -34 q10 18 2 34 Z' fill='#80C020' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
-        "<path d='M230 62 q22 8 24 28 q-20 -8 -26 -24 Z' fill='#4A9018' stroke='#111111' stroke-width='2.4' stroke-linejoin='round'/>"+
-        "<circle cx='222' cy='72' r='5' fill='#C06000' stroke='#111111' stroke-width='2'/>"+
-        "<circle cx='234' cy='76' r='5' fill='#984800' stroke='#111111' stroke-width='2'/>"+
-        "<text x='221' y='140' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>نَخْلَةٌ</text>"+
-        "</g>"+
-        "</g>"+
+        "<g clip-path='url(#shB)'><image href='images/مشمش.png' x='154' y='12' width='134' height='134'/></g>"+
         "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        "<g clip-path='url(#shC)'>"+
-        "<rect x='83' y='154' width='134' height='134' fill='#FFF2F2'/>"+
-        "<rect x='143' y='226' width='14' height='38' fill='#9A6636' stroke='#111111' stroke-width='2.5'/>"+
-        "<circle cx='150' cy='208' r='32' fill='#4A9018'/>"+
-        "<path d='M118 208 a32 32 0 0 1 64 0 Z' fill='#60C020'/>"+
-        "<circle cx='150' cy='208' r='32' fill='none' stroke='#111111' stroke-width='2.8'/>"+
-        "<circle cx='134' cy='200' r='8' fill='#FF2020' stroke='#111111' stroke-width='2.3'/>"+
-        "<circle cx='164' cy='196' r='8' fill='#FF4020' stroke='#111111' stroke-width='2.3'/>"+
-        "<circle cx='156' cy='222' r='8' fill='#FF2020' stroke='#111111' stroke-width='2.3'/>"+
-        "<text x='150' y='282' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>تُفّاحٌ</text>"+
-        "</g>"+
+        "<g clip-path='url(#shC)'><image href='images/تفاح.png' x='83' y='154' width='134' height='134'/></g>"+
         "<rect x='83' y='154' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
         "</svg>"
     },
@@ -32226,58 +32098,15 @@ window.QUESTIONS = {
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
-        "<clipPath id='ayA'>"+
-        "<rect x='12' y='12' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
-        "<clipPath id='ayB'>"+
-        "<rect x='154' y='12' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
-        "<clipPath id='ayC'>"+
-        "<rect x='83' y='154' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
+        "<clipPath id='ayA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='ayB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='ayC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
         "</defs>"+
-        "<g clip-path='url(#ayA)'>"+
-        "<rect x='12' y='12' width='134' height='134' fill='#FFFDF0'/>"+
-        "<path d='M52 80 q28 22 54 0' fill='none' stroke='#111111' stroke-width='3'/>"+
-        "<rect x='28' y='54' width='28' height='38' rx='4' fill='#60C020'/>"+
-        "<rect x='28' y='54' width='28' height='10' rx='3' fill='#80C020'/>"+
-        "<rect x='28' y='82' width='28' height='10' fill='#4A9018'/>"+
-        "<rect x='28' y='54' width='28' height='38' rx='4' fill='none' stroke='#111111' stroke-width='2.7' stroke-linejoin='round'/>"+
-        "<rect x='102' y='54' width='28' height='38' rx='4' fill='#FFA000'/>"+
-        "<rect x='102' y='54' width='28' height='10' rx='3' fill='#FFC040'/>"+
-        "<rect x='102' y='82' width='28' height='10' fill='#C06000'/>"+
-        "<rect x='102' y='54' width='28' height='38' rx='4' fill='none' stroke='#111111' stroke-width='2.7' stroke-linejoin='round'/>"+
-        "<text x='79' y='134' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='17' font-weight='800' fill='#3a2a12'>عُلْبَتانِ وَخَيْطٌ</text>"+
-        "</g>"+
+        "<g clip-path='url(#ayA)'><image href='images/علبتان.png' x='12' y='12' width='134' height='134'/></g>"+
         "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        "<g clip-path='url(#ayB)'>"+
-        "<rect x='154' y='12' width='134' height='134' fill='#F0F8FF'/>"+
-        "<defs>"+
-        "<clipPath id='ayBall'>"+
-        "<circle cx='221' cy='72' r='34'/>"+
-        "</clipPath>"+
-        "</defs>"+
-        "<g clip-path='url(#ayBall)'>"+
-        "<rect x='180' y='30' width='84' height='24' fill='#40C0FF'/>"+
-        "<rect x='180' y='54' width='84' height='18' fill='#20A0FF'/>"+
-        "<rect x='180' y='72' width='84' height='18' fill='#2080E0'/>"+
-        "<rect x='180' y='90' width='84' height='22' fill='#1060A0'/>"+
-        "<ellipse cx='206' cy='50' rx='13' ry='6' fill='#ffffff' opacity='.75' transform='rotate(-25 206 50)'/>"+
-        "</g>"+
-        "<circle cx='221' cy='72' r='34' fill='none' stroke='#111111' stroke-width='2.8'/>"+
-        "<text x='221' y='134' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>كُرَةٌ</text>"+
-        "</g>"+
+        "<g clip-path='url(#ayB)'><image href='images/كرة.png' x='154' y='12' width='134' height='134'/></g>"+
         "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        "<g clip-path='url(#ayC)'>"+
-        "<rect x='83' y='154' width='134' height='134' fill='#F3FFF0'/>"+
-        "<rect x='114' y='188' width='72' height='60' rx='5' fill='#4A9018'/>"+
-        "<rect x='114' y='188' width='72' height='14' rx='4' fill='#60C020'/>"+
-        "<rect x='114' y='236' width='72' height='12' fill='#356810'/>"+
-        "<rect x='114' y='188' width='72' height='60' rx='5' fill='none' stroke='#111111' stroke-width='2.8' stroke-linejoin='round'/>"+
-        "<rect x='114' y='188' width='13' height='60' fill='#356810' stroke='#111111' stroke-width='2.4'/>"+
-        "<path d='M136 210 h38 M136 222 h38 M136 234 h26' stroke='#FFFFC0' stroke-width='3.4' stroke-linecap='round'/>"+
-        "<text x='150' y='274' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#3a2a12'>كِتابٌ</text>"+
-        "</g>"+
+        "<g clip-path='url(#ayC)'><image href='images/كتاب.png' x='83' y='154' width='134' height='134'/></g>"+
         "<rect x='83' y='154' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
         "</svg>"
     },
@@ -32343,48 +32172,15 @@ window.QUESTIONS = {
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
-        "<clipPath id='zaA'>"+
-        "<rect x='12' y='12' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
-        "<clipPath id='zaB'>"+
-        "<rect x='154' y='12' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
-        "<clipPath id='zaC'>"+
-        "<rect x='83' y='154' width='134' height='134' rx='12'/>"+
-        "</clipPath>"+
+        "<clipPath id='zaA'><rect x='12' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='zaB'><rect x='154' y='12' width='134' height='134' rx='12'/></clipPath>"+
+        "<clipPath id='zaC'><rect x='83' y='154' width='134' height='134' rx='12'/></clipPath>"+
         "</defs>"+
-        "<g transform='translate(142 0)'>"+
-        "<g clip-path='url(#zaA)'>"+
-        "<rect x='12' y='12' width='134' height='134' fill='#2A2A3E'/>"+
-        "<rect x='40' y='40' width='60' height='50' rx='4' fill='#1A1A2A' stroke='#111111' stroke-width='2.6'/>"+
-        "<path d='M46 46 h48 M46 60 h48' stroke='#3A3A50' stroke-width='4'/>"+
-        "<rect x='30' y='96' width='84' height='12' rx='4' fill='#3A2A1A' stroke='#111111' stroke-width='2.5'/>"+
-        "<circle cx='118' cy='36' r='10' fill='#3A3A50' stroke='#111111' stroke-width='2.4'/>"+
-        "<text x='79' y='134' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='17' font-weight='800' fill='#ffffff'>غُرْفَةٌ مُظْلِمَةٌ</text>"+
-        "</g>"+
-        "</g>"+
+        "<g clip-path='url(#zaA)'><image href='images/غرفة-مضيئة.png' x='12' y='12' width='134' height='134'/></g>"+
         "<rect x='12' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        "<g transform='translate(-142 0)'>"+
-        "<g clip-path='url(#zaB)'>"+
-        "<rect x='154' y='12' width='134' height='134' fill='#FFFDF0'/>"+
-        "<rect x='182' y='40' width='60' height='50' rx='4' fill='#FFFFFF' stroke='#111111' stroke-width='2.6'/>"+
-        "<path d='M188 46 h48 M188 60 h48' stroke='#40C0FF' stroke-width='4'/>"+
-        "<rect x='172' y='96' width='84' height='12' rx='4' fill='#9A6636' stroke='#111111' stroke-width='2.5'/>"+
-        "<circle cx='260' cy='36' r='10' fill='#FFC040' stroke='#111111' stroke-width='2.4'/>"+
-        "<path d='M260 20 v-8 M274 36 h8 M246 36 h-8 M270 26 l6 -6 M250 26 l-6 -6' stroke='#FFA000' stroke-width='3.4' stroke-linecap='round'/>"+
-        "<text x='221' y='134' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='17' font-weight='800' fill='#3a2a12'>غُرْفَةٌ مُضيئَةٌ</text>"+
-        "</g>"+
-        "</g>"+
+        "<g clip-path='url(#zaB)'><image href='images/غرفة-مظلمة.png' x='154' y='12' width='134' height='134'/></g>"+
         "<rect x='154' y='12' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
-        "<g clip-path='url(#zaC)'>"+
-        "<rect x='83' y='154' width='134' height='134' fill='#EAF8E4'/>"+
-        "<rect x='83' y='252' width='134' height='36' fill='#60C020'/>"+
-        "<rect x='144' y='220' width='12' height='34' fill='#9A6636' stroke='#111111' stroke-width='2.4'/>"+
-        "<circle cx='150' cy='206' r='28' fill='#4A9018'/>"+
-        "<path d='M122 206 a28 28 0 0 1 56 0 Z' fill='#60C020'/>"+
-        "<circle cx='150' cy='206' r='28' fill='none' stroke='#111111' stroke-width='2.8'/>"+
-        "<text x='150' y='282' text-anchor='middle' font-family='Cairo,Tajawal,sans-serif' font-size='18' font-weight='800' fill='#ffffff'>حَديقَةٌ</text>"+
-        "</g>"+
+        "<g clip-path='url(#zaC)'><image href='images/حديقة.png' x='83' y='154' width='134' height='134'/></g>"+
         "<rect x='83' y='154' width='134' height='134' rx='12' fill='none' stroke='#111111' stroke-width='3'/>"+
         "</svg>"
     },
