@@ -775,10 +775,10 @@ function renderMatching(q, body, fb){
       c.setAttribute('cx',pt[0]); c.setAttribute('cy',pt[1]); c.setAttribute('r','5'); c.setAttribute('fill',MATCH_LINE); svg.appendChild(c);});
   }
 
-  shuffle(q.pairs).forEach(pr=>{const d=document.createElement('div');const f=qFace(q,pr.a);
+  shuffle(q.pairs).forEach(pr=>{const d=document.createElement('div');const f=qFace(q,pr.a,'a');
     d.className='mitem left'+f.cls;d.innerHTML=f.html;d.dataset.k=pr.a;
     d.onclick=()=>{if(d.classList.contains('matched'))return;L.querySelectorAll('.left').forEach(x=>x.classList.remove('selected'));d.classList.add('selected');sel=d;};L.appendChild(d);});
-  shuffle(q.pairs).forEach(pr=>{const d=document.createElement('div');const f=qFace(q,pr.b);
+  shuffle(q.pairs).forEach(pr=>{const d=document.createElement('div');const f=qFace(q,pr.b,'b');
     d.className='mitem right'+f.cls;d.innerHTML=f.html;d.dataset.k=pr.a;
     d.onclick=()=>{if(!sel||d.classList.contains('matched'))return;
       if(sel.dataset.k===pr.a){drawLink(sel,d);sel.classList.add('matched');d.classList.add('matched');sel.classList.remove('selected');sel=null;done++;playCorrectSound();
@@ -1038,13 +1038,26 @@ function renderSequence(q, body, fb){
    مصدراً واحداً ولا يُنسَخُ رسمٌ باسمَين.
    والتحويلُ يُطبَّقُ على **الكلمةِ المجرّدة** (‏`qPicKey`) فيستوي أن يكتبَ
    المؤلِّفُ الكلمةَ مشكولةً أو خالية. */
-function qFace(q, w){
+/* ⚠️ **`pics: "a"` أو `"b"` — تصويرُ عمودٍ واحدٍ في التوصيل.**
+   في `matching` قد يكونُ تصويرُ العمودَينِ معاً **تسريباً للجواب** لا إعانةً:
+   في `g1s-3-4#3` («صِلْ كُلَّ عُضوٍ بالحاسّة») العمودُ الأيسرُ أعضاءٌ والأيمنُ
+   أسماءُ حواسٍّ تُحالُ إلى أعضائِها — فَـ«العَينُ» و«البَصَرُ» صورتانِ متطابقتان،
+   فيُطابقُ الطفلُ الصورتَينِ بلا تفكيرٍ ويسقطُ ما يقيسُه السؤال.
+   والحلُّ تصويرُ **عمودِ الأعضاءِ وحدَه**: يتعرّفُ التلميذُ على العضوِ بالصورةِ
+   ثمّ يربطُه بالكلمةِ المكتوبة — وهو هدفُ الدرسِ نفسُه.
+   ويخدمُ الحالةَ الثانيةَ كذلك: طرفٌ يُرسَمُ وطرفٌ **عبارةٌ** لا تُرسَم
+   («اليَدُ ↔ نُمسِكُ بِها»)، فيُصوَّرُ ما يُرسَمُ ويبقى الآخرُ نصّاً.
+   ⛔ **وهذا ليس نقضاً لقاعدةِ «نصفِ الرسوم»** — تلك تمنعُ رسمَ بعضِ عناصرِ
+   **مجموعةٍ واحدةٍ** يختارُ منها التلميذ، وهنا عمودانِ دورُهما مختلف. */
+function qFace(q, w, side){
+  const on = q && (q.pics === true || (side && q.pics === side));
+  if (!on) return { cls:'', html:w };
   let key = w;
   if (q && q.picMap && window.qPicKey) {
     const kw = window.qPicKey(w);
     for (const k in q.picMap) if (window.qPicKey(k) === kw) { key = q.picMap[k]; break; }
   }
-  const p = (q && q.pics && window.qPic) ? window.qPic(key) : '';
+  const p = window.qPic ? window.qPic(key) : '';
   return p ? { cls:' haspic', html:`<span class="qpic">${p}</span><span class="qpic-t">${w}</span>` }
            : { cls:'',        html:w };
 }
