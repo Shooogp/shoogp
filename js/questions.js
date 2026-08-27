@@ -5722,7 +5722,7 @@ window.QUESTIONS = {
       image: "images/skeleton.png",
       fit: "height",
       bg: "#fdf9ee",
-      spot: { x: 50, y: 7, r: 9 }
+      spot: { x: 50, y: 7.5, w: 24, h: 13 }
     },
 
     // ① سحب وإفلات: تسمية أجزاء الهيكل (الأصعب)
@@ -5811,7 +5811,7 @@ window.QUESTIONS = {
       image: "images/skeleton.png",
       fit: "height",
       bg: "#fdf9ee",
-      spot: { x: 53, y: 27, r: 11 }
+      spot: { x: 50, y: 28, w: 36, h: 18 }
     },
 
     // ① سحب وإفلات: تسمية عظام الهيكل — تطبيق
@@ -5867,7 +5867,7 @@ window.QUESTIONS = {
       image: "images/skeleton-ages.jpg",
       fit: "width",
       bg: "#fdf9ee",
-      spot: { x: 86, y: 50, r: 12 }
+      spot: { x: 86.2, y: 48, w: 19.5, h: 86 }
     },
 
     // ③ اختيار من متعدد
@@ -5953,7 +5953,7 @@ window.QUESTIONS = {
       image: "images/muscles-arm.jpg",
       fit: "width",
       bg: "#e9dcc2",
-      spot: { x: 22, y: 48, r: 16 }
+      spot: { x: 23.5, y: 54.5, w: 33, h: 49 }
     },
 
     // ③ اختيار من متعدد
@@ -6041,7 +6041,7 @@ window.QUESTIONS = {
       image: "images/medicine-types.jpg",
       fit: "width",
       bg: "#f3e8d6",
-      spot: { x: 86, y: 55, r: 12 }
+      spot: { x: 86.2, y: 53, w: 22.5, h: 80 }
     },
 
     // ④ صواب وخطأ
@@ -6261,7 +6261,7 @@ window.QUESTIONS = {
       image: "images/skeleton.png",
       fit: "height",
       bg: "#fdf9ee",
-      spot: { x: 50, y: 46, r: 8 }
+      spot: { x: 50.5, y: 46, w: 35, h: 12 }
     },
 
     // ⑦ التصنيف في مجموعات — استدلال — 4Bh11
@@ -6516,7 +6516,7 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "في هذا المشهدِ كائنٌ وُضِعَ في الموطنِ الخطأِ — اضغط على الخطأِ.",
       image: "images/خطأ-الموطن.png",
-      spot: { x: 57, y: 29, r: 12 }
+      spot: { x: 57.5, y: 29, w: 23, h: 12 }
     }
 
   ],
@@ -7030,7 +7030,7 @@ window.QUESTIONS = {
       level: "application",
       prompt: "انقر على الحيوانِ الذي يعيشُ في البِركةِ ويسبحُ في مائِها.",
       image: "images/خطأ-الموطن.png",
-      spot: { x: 76, y: 75, r: 10 }
+      spot: { x: 76, y: 74, w: 26, h: 16 }
     },
 
     // ⑦ التصنيف في مجموعات — استدلال — 4Be3
@@ -7511,7 +7511,7 @@ window.QUESTIONS = {
       image: "images/غليان-الماء.png",
       fit: "width",
       bg: "#ffffff",
-      spot: { x: 82, y: 74, r: 13 }
+      spot: { x: 83.5, y: 51.5, w: 11, h: 68 }
     }
 
   ],
@@ -7642,7 +7642,7 @@ window.QUESTIONS = {
       image: "images/مشهد-كائنات-حية.png",
       fit: "width",
       bg: "#eef7ff",
-      spot: { x: 51, y: 47, r: 22 }
+      spot: { x: 53, y: 46.5, w: 24, h: 49 }
     },
 
     // ⑦ التصنيف في مجموعات — 1Bp1 استدلال
@@ -7936,7 +7936,7 @@ window.QUESTIONS = {
       image: "images/مشهد-كائنات-حية.png",
       fit: "width",
       bg: "#eef7ff",
-      spot: { x: 20, y: 53, r: 13 }
+      spot: { x: 20.5, y: 52.5, w: 35, h: 31 }
     },
 
     // ⑥ الترتيب التسلسلي — استدلال — 1Bh5
@@ -8259,7 +8259,7 @@ window.QUESTIONS = {
       prompt: "اضغَطْ على الجُزءِ الَّذي يَمتَصُّ الماءَ مِنَ التُّربَةِ.",
       image: "images/نبتة-اجزاء.png",
       bg: "#eef7ff",
-      spot: { x: 48, y: 84, r: 13 }
+      spot: { x: 48.5, y: 84.5, w: 64, h: 27 }
     },
 
     // ⑦ التصنيف في مجموعات — استدلال — 1Bp5
