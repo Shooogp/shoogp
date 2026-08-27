@@ -775,9 +775,11 @@ function renderMatching(q, body, fb){
       c.setAttribute('cx',pt[0]); c.setAttribute('cy',pt[1]); c.setAttribute('r','5'); c.setAttribute('fill',MATCH_LINE); svg.appendChild(c);});
   }
 
-  shuffle(q.pairs).forEach(pr=>{const d=document.createElement('div');d.className='mitem left';d.textContent=pr.a;d.dataset.k=pr.a;
+  shuffle(q.pairs).forEach(pr=>{const d=document.createElement('div');const f=qFace(q,pr.a);
+    d.className='mitem left'+f.cls;d.innerHTML=f.html;d.dataset.k=pr.a;
     d.onclick=()=>{if(d.classList.contains('matched'))return;L.querySelectorAll('.left').forEach(x=>x.classList.remove('selected'));d.classList.add('selected');sel=d;};L.appendChild(d);});
-  shuffle(q.pairs).forEach(pr=>{const d=document.createElement('div');d.className='mitem right';d.textContent=pr.b;d.dataset.k=pr.a;
+  shuffle(q.pairs).forEach(pr=>{const d=document.createElement('div');const f=qFace(q,pr.b);
+    d.className='mitem right'+f.cls;d.innerHTML=f.html;d.dataset.k=pr.a;
     d.onclick=()=>{if(!sel||d.classList.contains('matched'))return;
       if(sel.dataset.k===pr.a){drawLink(sel,d);sel.classList.add('matched');d.classList.add('matched');sel.classList.remove('selected');sel=null;done++;playCorrectSound();
         if(done===q.pairs.length) qWin(fb,'🌟 ممتاز! أكملت التوصيل',1);}
@@ -979,8 +981,9 @@ function renderSequence(q, body, fb){
   const list=body.querySelector('.seqlist');
   order.forEach(txt=>{
     const li=document.createElement('li');
-    li.className='seqitem'; li.dataset.k=txt; li.draggable=true;
-    li.innerHTML=`<span class="seq-txt">${txt}</span><span class="seq-grip" aria-hidden="true">≡</span>`;
+    const f=qFace(q,txt);
+    li.className='seqitem'+f.cls; li.dataset.k=txt; li.draggable=true;
+    li.innerHTML=`<span class="seq-txt">${f.html}</span><span class="seq-grip" aria-hidden="true">≡</span>`;
     list.appendChild(li);
   });
   const items=()=>[...list.querySelectorAll('.seqitem')];
