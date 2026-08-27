@@ -840,6 +840,24 @@ function renderTrueFalse(q, body, fb){
   body.querySelector('.tf-f').onclick=e=>judge(false,e.currentTarget);
 }
 
+/* هل النقرةُ (px,py) داخلَ منطقةِ الإجابة؟ — الإحداثياتُ نِسَبٌ مئويةٌ من إطارِ الرسم.
+   والمنطقةُ شكلانِ لا شكلٌ واحد:
+     • دائريّةٌ  {x,y,r}    — نصفُ القطرِ r، للأهدافِ المستديرةِ والصغيرة.
+     • مستطيلةٌ {x,y,w,h}  — العرضُ والارتفاعُ كاملَين، للأهدافِ المربَّعةِ والمستطيلة.
+   و(x,y) مركزُ المنطقةِ في الحالتَين، فتحويلُ هدفٍ من دائرةٍ إلى مستطيلٍ لا يمسُّ مركزَه.
+   علّةُ الشكلِ الثاني: الدائرةُ حولَ هدفٍ مربَّعٍ تقتطعُ أركانَه الأربعة (نحوَ ٢١٪ من
+   مساحتِه)، فتُرَدُّ نقرةٌ واقعةٌ في الجزءِ الصحيحِ نفسِه؛ وتوسيعُ نصفِ القطرِ لِتَسَعَها
+   يبتلعُ ما حولَ الهدف. فالمستطيلُ يطابقُ الهدفَ بلا اقتطاعٍ ولا ابتلاع.
+   وإن ذُكر أحدُ البعدَين وحدَه فالآخرُ مثلُه (مربّع). */
+function hitsSpot(sp,px,py){
+  if(!sp) return false;
+  if(sp.w!=null||sp.h!=null){
+    const hw=(sp.w!=null?sp.w:sp.h)/2, hh=(sp.h!=null?sp.h:sp.w)/2;
+    return Math.abs(px-sp.x)<=hw && Math.abs(py-sp.y)<=hh;
+  }
+  return Math.hypot(px-sp.x,py-sp.y)<=(sp.r||10);
+}
+
 /* ⑤ تحديد الأجزاء (hotspot): صورة/رسم + spot{x,y,r} (النقر على الموضع الصحيح) */
 function renderHotspot(q, body, fb){
   const inner=q.svg?q.svg:`<img src="${q.image}" alt="">`;
@@ -853,7 +871,7 @@ function renderHotspot(q, body, fb){
     const px=(e.clientX-box.left)/box.width*100, py=(e.clientY-box.top)/box.height*100;
     if(px<0||px>100||py<0||py>100) return;
     const mark=document.createElement('div');mark.className='hs-mark';mark.style.left=px+'%';mark.style.top=py+'%';
-    if(Math.hypot(px-q.spot.x,py-q.spot.y)<=(q.spot.r||10)){done=true;mark.classList.add('hit');qWin(fb,'🎯 أحسنت! نقرت على المكان الصحيح',2);}
+    if(hitsSpot(q.spot,px,py)){done=true;mark.classList.add('hit');qWin(fb,'🎯 أحسنت! نقرت على المكان الصحيح',2);}
     else{mark.classList.add('miss');qFail(fb,'ليس هنا، حاول مرة أخرى');setTimeout(()=>mark.remove(),800);}
     fig.appendChild(mark);
   };
@@ -873,7 +891,7 @@ function renderFindError(q, body, fb){
     const px=(e.clientX-box.left)/box.width*100, py=(e.clientY-box.top)/box.height*100;
     if(px<0||px>100||py<0||py>100) return;
     const mark=document.createElement('div');mark.className='hs-mark';mark.style.left=px+'%';mark.style.top=py+'%';
-    if(Math.hypot(px-q.spot.x,py-q.spot.y)<=(q.spot.r||10)){done=true;mark.classList.add('hit');qWin(fb,'🔍 أحسنت! اكتشفت الخطأ',2);}
+    if(hitsSpot(q.spot,px,py)){done=true;mark.classList.add('hit');qWin(fb,'🔍 أحسنت! اكتشفت الخطأ',2);}
     else{mark.classList.add('miss');qFail(fb,'ليس هنا الخطأ، دقّق أكثر');setTimeout(()=>mark.remove(),800);}
     fig.appendChild(mark);
   };
