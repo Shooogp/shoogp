@@ -692,7 +692,7 @@ window.QUESTIONS = {
           <rect x="${x-42}" y="48" width="84" height="76" rx="14" fill="#ffffff" stroke="#2f6fb0" stroke-width="5"/>
           <text x="${x}" y="100" font-size="40" font-weight="700" text-anchor="middle" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">${n.lbl}</text>`;}).join("")}
       </svg>`,
-      spot: { x: 63.9, y: 21.0, r: 8 }
+      spot: { x: 63.9, y: 21, w: 9.3, h: 18.5 }
     }
 
   ],
@@ -1138,7 +1138,7 @@ window.QUESTIONS = {
           <path d="M ${c.x+95} ${163} l 23 -23 a 16 16 0 0 1 23 23 l -46 46 l -46 -46 a 16 16 0 0 1 23 -23 z" fill="#2f6fb0"/>
           <text x="${c.x+95}" y="278" font-size="36" font-weight="700" text-anchor="middle" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">${c.exp}</text>`).join("")}
       </svg>`,
-      spot: { x: 38.3, y: 50.0, r: 10 }
+      spot: { x: 38.3, y: 50, w: 21.1, h: 56.1 }
     }
 
   ],
@@ -2410,7 +2410,7 @@ window.QUESTIONS = {
         <text x="150" y="230" font-size="52" font-weight="800" text-anchor="middle" fill="#d97a2b" font-family="Tajawal, Dubai, Cairo, sans-serif">&gt;</text>
         <text x="225" y="232" font-size="52" font-weight="800" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٧٣</text>
       </svg>`,
-      spot: { x: 17, y: 51, r: 13 }
+      spot: { x: 16.7, y: 51.2, w: 26.7, h: 34.1 }
     }
 
   ],
@@ -2472,7 +2472,7 @@ window.QUESTIONS = {
         <rect x="166" y="164" width="16" height="140" rx="8" fill="#ffffff"/>
         ${Array.from({length:50},(_,i)=>{const row=Math.floor(i/7),col=i%7;const cx=174+col*24+(row%2?12:0);const cy=348-row*23;return `<circle cx="${cx}" cy="${cy}" r="11" fill="${['#e8862e','#3e9b4f','#d94f70','#f2c14e','#7f5bd5'][i%5]}" stroke="#5b4632" stroke-width="3"/>`;}).join("")}
       </svg>`,
-      spot: { x: 28, y: 62, r: 14 }
+      spot: { x: 27.8, y: 56.3, w: 23.3, h: 67.8 }
     },
 
     // ⑤ إكمال النمط — استدلال — 2Nn4
@@ -2826,7 +2826,7 @@ window.QUESTIONS = {
         <text x="181" y="226" font-size="40" font-weight="800" text-anchor="middle" fill="#d97a2b" font-family="Tajawal, Dubai, Cairo, sans-serif">=</text>
         <text x="228" y="228" font-size="40" font-weight="800" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٥٦</text>
       </svg>`,
-      spot: { x: 50, y: 51, r: 13 }
+      spot: { x: 50, y: 51.2, w: 26.7, h: 34.1 }
     }
 
   ],
@@ -5616,7 +5616,7 @@ window.QUESTIONS = {
         <text x="485" y="208" font-size="72" font-weight="800" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٦٢</text>
         <text x="665" y="208" font-size="72" font-weight="800" text-anchor="middle" fill="#1f2937" font-family="Tajawal, Dubai, Cairo, sans-serif">٨٥</text>
       </svg>`,
-      spot: { x: 60.6, y: 50, r: 10 }
+      spot: { x: 60.6, y: 50, w: 18.8, h: 50.7 }
     },
 
     // ⑧ ملء الفراغ بالسحب — تطبيق (تعميمات مجموع الفردي والزوجي)
@@ -7177,7 +7177,7 @@ window.QUESTIONS = {
       prompt: "انقر على الصندوقِ الذي تكونُ فيه الجُزيئاتُ متلاصقةً منتظمةً (المادّةُ الصلبةُ).",
       fit: "width",
       bg: "#fdf9ee",
-      spot: { x: 82.5, y: 50, r: 13 },
+      spot: { x: 82.8, y: 50.2, w: 29.4, h: 77.1 },
       // نسبة الرسم ٢٫١٩٦ (shoogp-ui §١.١٠): طالت الصناديق (١٣٠×١٣٠ ⇒ ١٣٨×١٦٥) وكبرت
       // الجزيئات (نق ٩ ⇒ ١٠) وأُعيد توزيعها على الارتفاع الجديد بنفس أعدادها وأنماطها.
       svg: `<svg viewBox="0 0 470 214" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="ثلاثة صناديق بترتيب الجزيئات">
@@ -10923,7 +10923,7 @@ window.QUESTIONS = {
       level: "application",
       prompt: "اضغَطْ على سَلّةِ البُروتيناتِ (اللُّحومِ والأَسماكِ).",
       bg: "#eef7ff",
-      spot: { x: 27, y: 73, r: 16 },
+      spot: { x: 27.5, y: 73.3, w: 35, h: 34.9 },
       svg: `<svg viewBox="0 0 600 430" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="أربع سلال غذائية: ألبان ونشويات وبروتينات وفواكه وخضراوات">
         <g stroke="#111111" stroke-width="3">
           <rect x="60" y="40" width="210" height="150" rx="18" fill="#E08000"/>
@@ -11837,7 +11837,7 @@ window.QUESTIONS = {
       level: "application",
       prompt: "اضغَطْ على البَصمةِ الَّتي خُطوطُها تَدورُ حَولَ مَركَزٍ — بَصمةِ الدَّوّاماتِ.",
       bg: "#f6f2ff",
-      spot: { x: 50, y: 48, r: 18 },
+      spot: { x: 50, y: 48.4, w: 18.8, h: 71 },
       svg: `<svg viewBox="0 0 640 310" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="ثلاث بصمات بأنماط مختلفة">
         <g stroke="#111111" stroke-width="3">
           <rect x="440" y="40" width="120" height="220" rx="60" fill="#F2C3A0"/>
@@ -12078,7 +12078,7 @@ window.QUESTIONS = {
       level: "application",
       prompt: "اضغَطْ على الشَّيءِ غَيرِ الحَيِّ الَّذي يَعمَلُ بِالكَهرَباءِ.",
       bg: "#eef7ff",
-      spot: { x: 50, y: 37.5, r: 17 },
+      spot: { x: 50, y: 37.5, w: 26.5, h: 38.8 },
       svg: `<svg viewBox="0 0 620 320" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="فراشة وحاسوب وصخرة">
         <g stroke="#111111" stroke-width="3">
           <path d="M100,112 C56,62 20,72 20,112 C20,150 58,166 100,154 Z" fill="#FF8000"/>
@@ -12444,7 +12444,7 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "البِطاقَةُ تَقولُ إِنَّ في الإِطارِ سَبْعَةَ أَقْراصٍ — اِضْغَطْ عَلى الخَطَإِ.",
       bg: "#fdf6ec",
-      spot: { x: 82, y: 50, r: 15 },
+      spot: { x: 82.1, y: 50, w: 20, h: 33.8 },
       svg: `<svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <g id="fe-disc">
@@ -12823,7 +12823,7 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "كُلُّ سَطْرٍ يَجِبُ أَنْ يَكونَ مَجْموعُهُ سَبْعَةً — اِضْغَطْ عَلى السَّطْرِ الخاطِئِ.",
       bg: "#fdf6ec",
-      spot: { x: 50, y: 80, r: 17 },
+      spot: { x: 50, y: 78.8, w: 53.6, h: 22.3 },
       svg: `<svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
         <g font-family="Cairo, Tajawal, sans-serif" font-size="42" font-weight="800"
            fill="#111111" text-anchor="middle">
@@ -13441,7 +13441,7 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "سَطْرٌ واحِدٌ فيهِ وَقْتٌ غَيْرُ مَعْقولٍ لِنَشاطِهِ — اِضْغَطْ عَلَيْهِ.",
       bg: "#fdf6ec",
-      spot: { x: 50, y: 80, r: 17 },
+      spot: { x: 50, y: 78.8, w: 67.9, h: 22.3 },
       svg: `<svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
         <g font-family="Cairo, Tajawal, sans-serif" font-size="30" font-weight="800"
            fill="#111111" text-anchor="middle">
@@ -13981,7 +13981,7 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "كُلُّ سَطْرٍ يَجِبُ أَنْ يَكونَ ناتِجُهُ تِسْعَةً — اِضْغَطْ عَلى السَّطْرِ الخاطِئِ.",
       bg: "#fdf6ec",
-      spot: { x: 50, y: 80, r: 17 },
+      spot: { x: 50, y: 78.8, w: 53.6, h: 22.3 },
       svg: `<svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
         <g font-family="Cairo, Tajawal, sans-serif" font-size="42" font-weight="800"
            fill="#111111" text-anchor="middle">
@@ -17010,7 +17010,7 @@ window.QUESTIONS = {
       svg: SHOOGP_SVG_BOOKCOVER,
       fit: "height",
       bg: "#fdf9ee",
-      spot: { x: 50, y: 90, r: 12 }
+      spot: { x: 50, y: 90.3, w: 36, h: 8.8 }
     },
 
     /* ⑦ التصنيف — تطبيق (مجموعتان × عُنصرَين — ضِمنَ قيدِ السعة)
@@ -23110,7 +23110,7 @@ window.QUESTIONS = {
   <use href="#ffd" transform="translate(336,216) rotate(112) scale(.78)"/>
   <use href="#ffd" transform="translate(334,255) rotate(70) scale(.82)"/>
 </svg>`,
-      spot: { x: 74, y: 73, r: 15 }
+      spot: { x: 74.2, y: 73.5, w: 46.3, h: 44.7 }
     }
 
   ],
@@ -26909,7 +26909,7 @@ window.QUESTIONS = {
               stroke="#111111" stroke-width="3"/>
         <circle cx="190" cy="220" r="12" fill="#C06000" stroke="#111111" stroke-width="3"/>
       </svg>`,
-      spot: { x: 68.3, y: 26.7, r: 11 }
+      spot: { x: 68.3, y: 26.7, w: 26.7, h: 36.7 }
     },
 
     // ㊱ الحكم والتعليل — استدلال (المخرَج ⑦) — **استنتاجُ ص ٢٠ وتعلُّمُ ص ٢١**
@@ -29610,7 +29610,7 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "أَيْنَ بَيْتُ بَدْرٍ وَعَبيرَ؟",
       bg: "#f4fbff",
-      spot: { x: 50, y: 74, r: 20 },
+      spot: { x: 50, y: 73.7, w: 44.7, h: 44.7 },
       /* ⚠️ **اللوحةُ مربّعةٌ (300×300) عن قصدٍ لا اتّفاقاً — قيدٌ في محرّكِ `hotspot` نفسِه:**
          اختبارُ الإصابةِ `Math.hypot` يقيسُ بـ**النسبةِ المئويةِ على المحورَين**، والنسبةُ
          الواحدةُ تساوي وحداتٍ مختلفةً إن اختلفَ ضلعا اللوحة. ففي لوحةٍ عريضةٍ تصيرُ
@@ -29708,7 +29708,7 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "مَنْ دَعا لَيْلى إِلَى اللَّعِبِ؟",
       bg: "#f7fbff",
-      spot: { x: 50, y: 74, r: 20 },
+      spot: { x: 50, y: 73.7, w: 44.7, h: 44.7 },
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
@@ -29831,7 +29831,7 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "ماذا تُحَضِّرُ الْأُمُّ؟",
       bg: "#f7fbff",
-      spot: { x: 74, y: 26, r: 20 },
+      spot: { x: 73.7, y: 26.3, w: 44.7, h: 44.7 },
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
@@ -29917,7 +29917,7 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "إِلى أَيْنَ سَتَخْرُجُ الْأُسْرَةُ؟",
       bg: "#fffaf0",
-      spot: { x: 50, y: 74, r: 20 },
+      spot: { x: 50, y: 73.7, w: 44.7, h: 44.7 },
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
@@ -30154,7 +30154,7 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "أَيْنَ وَقَفَ بَدْرٌ مَعَ رِفاقِهِ؟",
       bg: "#f7fbff",
-      spot: { x: 26, y: 26, r: 20 },
+      spot: { x: 26.3, y: 26.3, w: 44.7, h: 44.7 },
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
@@ -30239,7 +30239,7 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "ماذا يَقولُ الْمُسْلِمُ حينَ يَرى مُسْلِمًا؟",
       bg: "#fffdf5",
-      spot: { x: 26, y: 26, r: 20 },
+      spot: { x: 26.3, y: 26.3, w: 44.7, h: 44.7 },
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
@@ -30357,7 +30357,7 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "أَيَّ حَرْفٍ كَتَبَ مالِكٌ الْيَوْمَ؟",
       bg: "#f4fbff",
-      spot: { x: 26, y: 26, r: 20 },
+      spot: { x: 26.3, y: 26.3, w: 44.7, h: 44.7 },
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
@@ -30469,7 +30469,7 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "ماذا ناوَلَتْهُ الْمُعَلِّمَةُ؟",
       bg: "#fdf7ff",
-      spot: { x: 50, y: 74, r: 20 },
+      spot: { x: 50, y: 73.7, w: 44.7, h: 44.7 },
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
@@ -30685,7 +30685,7 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "اِنْقُرْ عَلى بابِ الْمَدْرَسَةِ.",
       bg: "#eef7ff",
-      spot: { x: 49, y: 80, r: 9 },
+      spot: { x: 49.2, y: 73.8, w: 29, h: 25 },
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<image href='images/مدرسة-باب.png' x='0' y='0' width='300' height='300'/>"+
@@ -30762,7 +30762,7 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "اِنْقُرْ عَلى السَّبّورَةِ.",
       bg: "#fffdf5",
-      spot: { x: 50, y: 38, r: 16 },
+      spot: { x: 50.5, y: 37.7, w: 75.7, h: 48.7 },
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<image href='images/سبورة.png' x='0' y='0' width='300' height='300'/>"+
@@ -30858,7 +30858,7 @@ window.QUESTIONS = {
       level: "application",
       prompt: "اِنْقُرْ عَلى مَمَرِّ الْمُشاةِ.",
       bg: "#f4fbff",
-      spot: { x: 50, y: 55, r: 13 },
+      spot: { x: 50, y: 54.8, w: 35.3, h: 35 },
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<image href='images/ممر-مشاة.png' x='0' y='0' width='300' height='300'/>"+
@@ -30930,7 +30930,7 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "ماذا قَدَّمَتِ الْمُرَبِّيَةُ لِعارِفٍ؟",
       bg: "#f4fbff",
-      spot: { x: 74, y: 26, r: 20 },
+      spot: { x: 73.7, y: 26.3, w: 44.7, h: 44.7 },
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
@@ -31007,7 +31007,7 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "بِمَ نَصَحَتْ فاطِمَةُ أَخاها حَمْزَةَ؟",
       bg: "#f6fff2",
-      spot: { x: 26, y: 26, r: 20 },
+      spot: { x: 26.3, y: 26.3, w: 44.7, h: 44.7 },
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
@@ -31085,7 +31085,7 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "بِماذا تَذْهَبُ فَرَحُ إِلَى الْمَدْرَسَةِ؟",
       bg: "#fff6f6",
-      spot: { x: 50, y: 74, r: 20 },
+      spot: { x: 50, y: 73.7, w: 44.7, h: 44.7 },
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
@@ -31164,7 +31164,7 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "ماذا يُباعُ في سوقِ الْقَرْيَةِ؟",
       bg: "#fffaf0",
-      spot: { x: 74, y: 26, r: 20 },
+      spot: { x: 73.7, y: 26.3, w: 44.7, h: 44.7 },
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
@@ -31242,7 +31242,7 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "ماذا رَأَتْ فائِزَةُ تَقْفِزُ حَوْلَ الزَّوْرَقِ؟",
       bg: "#f2fbff",
-      spot: { x: 26, y: 26, r: 20 },
+      spot: { x: 26.3, y: 26.3, w: 44.7, h: 44.7 },
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
@@ -31318,7 +31318,7 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "إِلى أَيْنَ انْطَلَقَتْ أُسْرَةُ طارِقٍ؟",
       bg: "#fffaf2",
-      spot: { x: 50, y: 74, r: 20 },
+      spot: { x: 50, y: 73.7, w: 44.7, h: 44.7 },
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
@@ -31537,7 +31537,7 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "أَيُّ عُلْبَةٍ فيها غِذاءٌ مُتَكامِلٌ؟",
       bg: "#fffaf6",
-      spot: { x: 74, y: 26, r: 20 },
+      spot: { x: 73.7, y: 26.3, w: 44.7, h: 44.7 },
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
@@ -31613,7 +31613,7 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "ما الَّذي يوضَعُ فَوْقَ شَريحَةِ الْخُبْزِ؟",
       bg: "#fffaf0",
-      spot: { x: 50, y: 74, r: 20 },
+      spot: { x: 50, y: 73.7, w: 44.7, h: 44.7 },
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
@@ -31693,7 +31693,7 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "ماذا اشْتَرى وَليدٌ مِنْ سوقِ الْفَواكِهِ؟",
       bg: "#f7fff2",
-      spot: { x: 26, y: 26, r: 20 },
+      spot: { x: 26.3, y: 26.3, w: 44.7, h: 44.7 },
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
@@ -31768,7 +31768,7 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "أَيَّ شَجَرَةٍ غَرَسَ الْجَدُّ؟",
       bg: "#f7fbff",
-      spot: { x: 74, y: 26, r: 20 },
+      spot: { x: 73.7, y: 26.3, w: 44.7, h: 44.7 },
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
@@ -31848,7 +31848,7 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "بِمَ صَنَعَ عادِلٌ لُعْبَتَهُ؟",
       bg: "#fffaf2",
-      spot: { x: 26, y: 26, r: 20 },
+      spot: { x: 26.3, y: 26.3, w: 44.7, h: 44.7 },
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
@@ -31922,7 +31922,7 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "أَيْنَ لا يَقْرَأُ ظافِرٌ؟",
       bg: "#f2f8ff",
-      spot: { x: 74, y: 26, r: 20 },
+      spot: { x: 73.7, y: 26.3, w: 44.7, h: 44.7 },
       svg:
         "<svg viewBox='0 0 300 300'>"+
         "<defs>"+
@@ -32318,7 +32318,7 @@ window.QUESTIONS = {
           <rect x="318" y="169" width="164" height="9" fill="#606060" stroke-width="2"/>
         </g>
       </svg>`,
-      spot: { x: 67, y: 55, r: 13 }
+      spot: { x: 66.7, y: 54.3, w: 27.3, h: 10 }
     },
 
     // ② فهم — `reasoning` (المخرَج ⑥) — **نشاطُ ص ٤١ «خُطْوَتي الثّانِيَةُ» ①**
@@ -32498,7 +32498,7 @@ window.QUESTIONS = {
 
         </g>
       </svg>`,
-      spot: { x: 63, y: 50, r: 11 }
+      spot: { x: 62.7, y: 50, w: 21.3, h: 45.7 }
     },
 
     // ② فهم — `reasoning` (المخرَج ⑤ — الْمَعْنى الْخَفيُّ)
@@ -33004,7 +33004,7 @@ window.QUESTIONS = {
 
         </g>
       </svg>`,
-      spot: { x: 29, y: 27, r: 12 }
+      spot: { x: 28.6, y: 26.5, w: 21.4, h: 21.5 }
     },
 
     // ③ تحليل — `application` — **نشاطُ ص ٢٢ الثالثُ نصّاً**
@@ -33909,7 +33909,7 @@ window.QUESTIONS = {
           <text x="280" y="443" font-size="19" font-weight="700" text-anchor="middle" fill="#111111" stroke="none">مَدٌّ · قَلْقَلَةٌ · إِخْفاءٌ · إِدْغامٌ</text>
         </g>
       </svg>`,
-      spot: { x: 50, y: 27, r: 9 }
+      spot: { x: 50, y: 27.5, w: 67.1, h: 11.9 }
     },
 
     // ⑤ استدلال — المخرَج ③
@@ -34050,7 +34050,7 @@ window.QUESTIONS = {
           <text x="280" y="443" font-size="19" font-weight="700" text-anchor="middle" fill="#111111" stroke="none">مَدٌّ · قَلْقَلَةٌ · إِخْفاءٌ · إِدْغامٌ</text>
         </g>
       </svg>`,
-      spot: { x: 50, y: 27, r: 9 }
+      spot: { x: 50, y: 27.5, w: 67.1, h: 11.9 }
     },
 
     // ⑤ استدلال — المخرَج ③
@@ -34191,7 +34191,7 @@ window.QUESTIONS = {
           <text x="280" y="443" font-size="19" font-weight="700" text-anchor="middle" fill="#111111" stroke="none">مَدٌّ · قَلْقَلَةٌ · إِخْفاءٌ · إِدْغامٌ</text>
         </g>
       </svg>`,
-      spot: { x: 50, y: 27, r: 9 }
+      spot: { x: 50, y: 27.5, w: 67.1, h: 11.9 }
     },
 
     // ⑤ استدلال — المخرَج ③
@@ -34332,7 +34332,7 @@ window.QUESTIONS = {
           <text x="280" y="443" font-size="19" font-weight="700" text-anchor="middle" fill="#111111" stroke="none">مَدٌّ · قَلْقَلَةٌ · إِخْفاءٌ · إِدْغامٌ</text>
         </g>
       </svg>`,
-      spot: { x: 50, y: 27, r: 9 }
+      spot: { x: 50, y: 27.5, w: 67.1, h: 11.9 }
     },
 
     // ⑤ استدلال — المخرَج ③
@@ -34473,7 +34473,7 @@ window.QUESTIONS = {
           <text x="280" y="443" font-size="19" font-weight="700" text-anchor="middle" fill="#111111" stroke="none">مَدٌّ · قَلْقَلَةٌ · إِخْفاءٌ · إِدْغامٌ</text>
         </g>
       </svg>`,
-      spot: { x: 50, y: 27, r: 9 }
+      spot: { x: 50, y: 27.5, w: 67.1, h: 11.9 }
     },
 
     // ⑤ استدلال — المخرَج ③
@@ -34614,7 +34614,7 @@ window.QUESTIONS = {
           <text x="280" y="443" font-size="19" font-weight="700" text-anchor="middle" fill="#111111" stroke="none">مَدٌّ · قَلْقَلَةٌ · إِخْفاءٌ · إِدْغامٌ</text>
         </g>
       </svg>`,
-      spot: { x: 50, y: 27, r: 9 }
+      spot: { x: 50, y: 27.5, w: 67.1, h: 11.9 }
     },
 
     // ⑤ استدلال — المخرَج ③
@@ -34755,7 +34755,7 @@ window.QUESTIONS = {
           <text x="280" y="443" font-size="19" font-weight="700" text-anchor="middle" fill="#111111" stroke="none">مَدٌّ · قَلْقَلَةٌ · إِخْفاءٌ · إِدْغامٌ</text>
         </g>
       </svg>`,
-      spot: { x: 50, y: 27, r: 9 }
+      spot: { x: 50, y: 27.5, w: 67.1, h: 11.9 }
     },
 
     // ⑤ استدلال — المخرَج ③
@@ -34896,7 +34896,7 @@ window.QUESTIONS = {
           <text x="280" y="443" font-size="19" font-weight="700" text-anchor="middle" fill="#111111" stroke="none">مَدٌّ · قَلْقَلَةٌ · إِخْفاءٌ · إِدْغامٌ</text>
         </g>
       </svg>`,
-      spot: { x: 50, y: 27, r: 9 }
+      spot: { x: 50, y: 27.5, w: 67.1, h: 11.9 }
     },
 
     // ⑤ استدلال — المخرَج ③
