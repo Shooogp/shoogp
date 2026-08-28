@@ -6188,31 +6188,8 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "الطريقةُ الآمنةُ أن نأخذَ الجرعةَ المحدّدةَ فقط. اضغط على الخطأِ في هذا المشهدِ.",
       bg: "#f3e8d6",
-      spot: { x: 50, y: 62, r: 16 },
-      svg: `<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="يد تتناول كمية كبيرة من الأقراص من زجاجة دواء">
-        <g transform="rotate(-36 318 96)">
-          <rect x="292" y="54" width="52" height="84" rx="12" fill="#e6913c" stroke="#9c5a1e" stroke-width="4"/>
-          <rect x="303" y="36" width="30" height="24" rx="5" fill="#c76f28" stroke="#9c5a1e" stroke-width="4"/>
-          <rect x="299" y="78" width="38" height="34" rx="4" fill="#fff5e2" stroke="#9c5a1e" stroke-width="2"/>
-          <line x1="305" y1="88" x2="331" y2="88" stroke="#c76f28" stroke-width="3"/>
-          <line x1="305" y1="98" x2="331" y2="98" stroke="#c76f28" stroke-width="3"/>
-        </g>
-        <path d="M132 236 Q126 196 172 190 L236 190 Q282 196 276 236 Q270 268 204 271 Q138 268 132 236 Z" fill="#f0c8a2" stroke="#cf9a6e" stroke-width="5"/>
-        <g fill="#f28a8a" stroke="#b23b3b" stroke-width="2">
-          <ellipse cx="176" cy="176" rx="17" ry="11"/>
-          <ellipse cx="212" cy="170" rx="17" ry="11"/>
-          <ellipse cx="246" cy="178" rx="17" ry="11"/>
-          <ellipse cx="192" cy="192" rx="17" ry="11"/>
-          <ellipse cx="230" cy="192" rx="17" ry="11"/>
-          <ellipse cx="164" cy="196" rx="17" ry="11"/>
-          <ellipse cx="258" cy="198" rx="17" ry="11"/>
-          <ellipse cx="204" cy="156" rx="17" ry="11"/>
-        </g>
-        <g fill="#f7b3b3" stroke="#b23b3b" stroke-width="2">
-          <ellipse cx="238" cy="132" rx="13" ry="8" transform="rotate(-30 238 132)"/>
-          <ellipse cx="222" cy="150" rx="13" ry="8" transform="rotate(-20 222 150)"/>
-        </g>
-      </svg>`
+      spot: { x: 33.0, y: 68.0, w: 40.0, h: 44.0 },
+      svg: "<svg viewBox='0 0 886 900' xmlns='http://www.w3.org/2000/svg'><image href='images/جرعة-الدواء.png' x='0' y='0' width='886' height='900'/></svg>"
     }
 
   ],
@@ -6796,24 +6773,8 @@ window.QUESTIONS = {
       objective: "4Be3: يميّز الطرق التي يؤثّر فيها الإنسان على البيئة",
       level: "reasoning",
       prompt: "في هذا المشهدِ سلوكٌ يضرُّ بالبيئةِ — اضغط على الخطأِ.",
-      spot: { x: 75, y: 24, r: 15 },
-      svg: `<svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="مشهد بيئي فيه مصنع يطلق دخاناً">
-        <rect x="0" y="0" width="400" height="200" fill="#cfe8f5"/>
-        <rect x="0" y="196" width="400" height="64" fill="#bfe0a0"/>
-        <circle cx="52" cy="46" r="24" fill="#f6c945"/>
-        <rect x="98" y="150" width="14" height="48" fill="#8a5a2b"/>
-        <circle cx="105" cy="140" r="32" fill="#4a9b48"/>
-        <rect x="166" y="162" width="12" height="38" fill="#8a5a2b"/>
-        <circle cx="172" cy="152" r="26" fill="#5aa856"/>
-        <rect x="250" y="140" width="112" height="58" fill="#9aa3ab" stroke="#5b6570" stroke-width="3"/>
-        <rect x="292" y="94" width="20" height="48" fill="#7d8790" stroke="#5b6570" stroke-width="3"/>
-        <g fill="#7a7a7a">
-          <circle cx="302" cy="80" r="14"/>
-          <circle cx="288" cy="64" r="16"/>
-          <circle cx="312" cy="56" r="15"/>
-          <circle cx="298" cy="42" r="18"/>
-        </g>
-      </svg>`
+      spot: { x: 25.0, y: 21.0, w: 42.0, h: 34.0 },
+      svg: "<svg viewBox='0 0 900 849' xmlns='http://www.w3.org/2000/svg'><image href='images/مشهد-بيئي.png' x='0' y='0' width='900' height='849'/></svg>"
     }
 
   ],
@@ -8105,24 +8066,8 @@ window.QUESTIONS = {
       prompt: "اضغَطْ على البَذرَةِ الَّتي نَمَت وأصبَحَت نَبتَةً.",
       fit: "width",
       bg: "#eaf3fb",
-      spot: { x: 83, y: 40, r: 14 },
-      svg: `<svg viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="مراحل نمو البذرة">
-        <rect x="0" y="112" width="360" height="108" fill="#c8935e"/>
-        <rect x="0" y="112" width="360" height="9" fill="#a9743f"/>
-        <ellipse cx="60" cy="150" rx="15" ry="10" fill="#e6c15a" stroke="#b9922f" stroke-width="2.5" transform="rotate(20 60 150)"/>
-        <g transform="translate(180 0)">
-          <ellipse cx="0" cy="146" rx="14" ry="9" fill="#e6c15a" stroke="#b9922f" stroke-width="2.5"/>
-          <path d="M0 152 Q-6 176 -14 196" fill="none" stroke="#d9d2b0" stroke-width="4" stroke-linecap="round"/>
-          <path d="M0 152 Q4 172 10 190" fill="none" stroke="#d9d2b0" stroke-width="4" stroke-linecap="round"/>
-        </g>
-        <g transform="translate(300 0)">
-          <line x1="0" y1="118" x2="0" y2="52" stroke="#4e9d42" stroke-width="7" stroke-linecap="round"/>
-          <path d="M0 78 Q-26 70 -40 74 Q-26 90 0 78 Z" fill="#63c154" stroke="#3c8a34" stroke-width="2.5"/>
-          <path d="M0 64 Q26 56 40 60 Q26 76 0 64 Z" fill="#63c154" stroke="#3c8a34" stroke-width="2.5"/>
-          <path d="M0 120 Q-8 150 -16 190" fill="none" stroke="#d9d2b0" stroke-width="4" stroke-linecap="round"/>
-          <path d="M0 120 Q6 150 12 192" fill="none" stroke="#d9d2b0" stroke-width="4" stroke-linecap="round"/>
-        </g>
-      </svg>`
+      spot: { x: 20.2, y: 50.0, w: 33.2, h: 84.9 },
+      svg: "<svg viewBox='0 0 900 424' xmlns='http://www.w3.org/2000/svg'><image href='images/مراحل-البذرة.png' x='0' y='0' width='900' height='424'/></svg>"
     },
 
     // ⑥ الترتيب التسلسلي — 1Bp6 استدلال (مراحل نمو البذرة)
@@ -8189,31 +8134,8 @@ window.QUESTIONS = {
       prompt: "نَبتَةٌ في الضَّوءِ وأُخرى داخِلَ صُندوقٍ مُظلِمٍ. اضغَطْ على النَّبتَةِ الَّتي سَتَنمو أفضَلَ.",
       fit: "width",
       bg: "#eaf3fb",
-      spot: { x: 22, y: 55, r: 15 },
-      svg: `<svg viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="تجربة النبات والضوء">
-        <g fill="#f7d64a">
-          <circle cx="70" cy="42" r="26"/>
-          <g stroke="#f7d64a" stroke-width="5" stroke-linecap="round">
-            <line x1="70" y1="4" x2="70" y2="14"/>
-            <line x1="70" y1="70" x2="70" y2="80"/>
-            <line x1="32" y1="42" x2="42" y2="42"/>
-            <line x1="98" y1="42" x2="108" y2="42"/>
-            <line x1="43" y1="15" x2="50" y2="22"/>
-            <line x1="90" y1="62" x2="97" y2="69"/>
-            <line x1="43" y1="69" x2="50" y2="62"/>
-            <line x1="90" y1="22" x2="97" y2="15"/>
-          </g>
-        </g>
-        <rect x="20" y="150" width="120" height="30" rx="6" fill="#c8935e"/>
-        <path d="M40 150 l40 -34 l40 34 Z" fill="none"/>
-        <line x1="80" y1="150" x2="80" y2="96" stroke="#4e9d42" stroke-width="8" stroke-linecap="round"/>
-        <path d="M80 120 Q52 112 38 116 Q52 132 80 120 Z" fill="#63c154" stroke="#3c8a34" stroke-width="2.5"/>
-        <path d="M80 104 Q108 96 122 100 Q108 116 80 104 Z" fill="#63c154" stroke="#3c8a34" stroke-width="2.5"/>
-        <rect x="235" y="70" width="110" height="110" rx="8" fill="#a9743f" stroke="#7c4a22" stroke-width="4"/>
-        <path d="M235 70 l55 -22 l110 0 l-55 22 Z" fill="#c8935e" stroke="#7c4a22" stroke-width="4"/>
-        <path d="M345 70 l55 -22 l0 110 l-55 22 Z" fill="#9c692f" stroke="#7c4a22" stroke-width="4"/>
-        <text x="290" y="135" font-size="30" text-anchor="middle" fill="#f3e2c6" font-family="Tajawal, Dubai, sans-serif">؟</text>
-      </svg>`
+      spot: { x: 76.0, y: 61.0, w: 40.9, h: 62.0 },
+      svg: "<svg viewBox='0 0 900 805' xmlns='http://www.w3.org/2000/svg'><image href='images/نبتة-ضوء-وظلام.png' x='0' y='0' width='900' height='805'/></svg>"
     },
 
     // ⑦ التصنيف في مجموعات — 1Bp5 استدلال (أماكن مضيئة / مظلمة)
@@ -8479,30 +8401,8 @@ window.QUESTIONS = {
       prompt: "اضغَطْ على الطِّفلِ صاحِبِ الشَّعرِ الداكِنِ.",
       fit: "width",
       bg: "#eef7ff",
-      spot: { x: 82, y: 45, r: 15 },
-      svg: `<svg viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ثلاثة أطفال مختلفون">
-        <g>
-          <circle cx="60" cy="90" r="34" fill="#f6c9a0" stroke="#d89b6a" stroke-width="3"/>
-          <path d="M28 82 Q60 40 92 82 Q92 60 60 52 Q28 60 28 82 Z" fill="#e8b23a" stroke="#c7911f" stroke-width="2.5"/>
-          <circle cx="49" cy="90" r="4" fill="#3b2a1a"/><circle cx="71" cy="90" r="4" fill="#3b2a1a"/>
-          <path d="M50 106 Q60 114 70 106" fill="none" stroke="#7c4a22" stroke-width="3" stroke-linecap="round"/>
-          <rect x="36" y="130" width="48" height="60" rx="14" fill="#e0574c"/>
-        </g>
-        <g>
-          <circle cx="180" cy="90" r="34" fill="#e7b48a" stroke="#c98e5c" stroke-width="3"/>
-          <path d="M148 84 Q180 44 212 84 Q214 62 180 54 Q146 62 148 84 Z" fill="#9b6a3c" stroke="#794f2a" stroke-width="2.5"/>
-          <circle cx="169" cy="90" r="4" fill="#3b2a1a"/><circle cx="191" cy="90" r="4" fill="#3b2a1a"/>
-          <path d="M170 106 Q180 114 190 106" fill="none" stroke="#7c4a22" stroke-width="3" stroke-linecap="round"/>
-          <rect x="156" y="130" width="48" height="60" rx="14" fill="#4e9d42"/>
-        </g>
-        <g>
-          <circle cx="300" cy="90" r="34" fill="#f3d3b3" stroke="#d3ab86" stroke-width="3"/>
-          <path d="M266 86 Q300 40 334 86 Q336 58 300 50 Q262 58 266 86 Z" fill="#2f2622" stroke="#15100d" stroke-width="2.5"/>
-          <circle cx="289" cy="90" r="4" fill="#3b2a1a"/><circle cx="311" cy="90" r="4" fill="#3b2a1a"/>
-          <path d="M290 106 Q300 114 310 106" fill="none" stroke="#7c4a22" stroke-width="3" stroke-linecap="round"/>
-          <rect x="276" y="130" width="48" height="60" rx="14" fill="#2f6fb0"/>
-        </g>
-      </svg>`
+      spot: { x: 81.8, y: 50.1, w: 29.7, h: 90.1 },
+      svg: "<svg viewBox='0 0 900 674' xmlns='http://www.w3.org/2000/svg'><image href='images/أطفال-ثلاثة.png' x='0' y='0' width='900' height='674'/></svg>"
     },
 
     // ⑦ التصنيف في مجموعات — 1Bh1 استدلال (نتشابه فيه / نختلف فيه)
@@ -8572,28 +8472,13 @@ window.QUESTIONS = {
       prompt: "اسحَبِ اسمَ كُلِّ جُزءٍ إلى مَكانِهِ في الجِسمِ.",
       bg: "#eef7ff",
       targets: [
-        { answer: "الرَّأسُ",  box:{x:82,y:8},  dot:{x:50,y:13} },
-        { answer: "الذِّراعُ", box:{x:16,y:32}, dot:{x:33,y:37} },
-        { answer: "اليَدُ",    box:{x:16,y:52}, dot:{x:28,y:51} },
-        { answer: "الساقُ",    box:{x:84,y:70}, dot:{x:59,y:74} },
-        { answer: "القَدَمُ",  box:{x:84,y:90}, dot:{x:57,y:94} }
+        { answer: "الرَّأسُ",  box:{x:82,y:8},  dot:{x:50,y:22} },
+        { answer: "الذِّراعُ", box:{x:16,y:32}, dot:{x:20,y:52} },
+        { answer: "اليَدُ",    box:{x:16,y:52}, dot:{x:14,y:63} },
+        { answer: "الساقُ",    box:{x:84,y:70}, dot:{x:62,y:78} },
+        { answer: "القَدَمُ",  box:{x:84,y:90}, dot:{x:65,y:93} }
       ],
-      svg: `<svg viewBox="0 0 300 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="مخطّط جسم طفل">
-        <circle cx="150" cy="62" r="40" fill="#f6c9a0" stroke="#d89b6a" stroke-width="3"/>
-        <path d="M110 55 Q150 8 190 55 Q192 30 150 22 Q108 30 110 55 Z" fill="#3a2a1c"/>
-        <circle cx="137" cy="60" r="4.5" fill="#3b2a1a"/><circle cx="163" cy="60" r="4.5" fill="#3b2a1a"/>
-        <path d="M150 66 L150 74" stroke="#c98e5c" stroke-width="3" fill="none" stroke-linecap="round"/>
-        <path d="M138 82 Q150 92 162 82" stroke="#b5533f" stroke-width="3" fill="none" stroke-linecap="round"/>
-        <rect x="140" y="98" width="20" height="16" fill="#f6c9a0"/>
-        <path d="M118 116 Q150 108 182 116 L176 250 L124 250 Z" fill="#e0574c" stroke="#b8402f" stroke-width="2"/>
-        <path d="M120 120 Q92 172 84 232" fill="none" stroke="#f6c9a0" stroke-width="16" stroke-linecap="round"/>
-        <path d="M180 120 Q208 172 216 232" fill="none" stroke="#f6c9a0" stroke-width="16" stroke-linecap="round"/>
-        <circle cx="84" cy="238" r="12" fill="#f6c9a0" stroke="#d89b6a" stroke-width="2"/>
-        <circle cx="216" cy="238" r="12" fill="#f6c9a0" stroke="#d89b6a" stroke-width="2"/>
-        <path d="M126 250 L120 430 L146 430 L150 300 L154 430 L180 430 L174 250 Z" fill="#2f6fb0" stroke="#22507f" stroke-width="2"/>
-        <ellipse cx="128" cy="440" rx="20" ry="10" fill="#5a3a22"/>
-        <ellipse cx="172" cy="440" rx="20" ry="10" fill="#5a3a22"/>
-      </svg>`
+      svg: "<svg viewBox='0 0 572 900' xmlns='http://www.w3.org/2000/svg'><image href='images/جسم-طفل.png' x='0' y='0' width='572' height='900'/></svg>"
     },
 
     // ⑦ التصنيف في مجموعات — 1Bh2 استدلال (أجزاء الرأس / أطراف الجسم)
@@ -8673,17 +8558,8 @@ window.QUESTIONS = {
       level: "application",
       prompt: "اضغَطْ على العُضوِ الَّذي نَشُمُّ بِهِ الرَّوائِحَ.",
       bg: "#eef7ff",
-      spot: { x: 50, y: 55, r: 9 },
-      svg: `<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="مخطّط وجه">
-        <ellipse cx="52" cy="152" rx="16" ry="26" fill="#f1b98f" stroke="#d89b6a" stroke-width="3"/>
-        <ellipse cx="248" cy="152" rx="16" ry="26" fill="#f1b98f" stroke="#d89b6a" stroke-width="3"/>
-        <circle cx="150" cy="152" r="108" fill="#f6c9a0" stroke="#d89b6a" stroke-width="3"/>
-        <path d="M60 92 Q150 10 240 92 Q244 40 150 30 Q56 40 60 92 Z" fill="#3a2a1c"/>
-        <circle cx="115" cy="132" r="11" fill="#ffffff" stroke="#c98e5c" stroke-width="2"/><circle cx="115" cy="132" r="5" fill="#3b2a1a"/>
-        <circle cx="185" cy="132" r="11" fill="#ffffff" stroke="#c98e5c" stroke-width="2"/><circle cx="185" cy="132" r="5" fill="#3b2a1a"/>
-        <path d="M150 150 Q141 176 150 184 Q159 182 156 173" fill="none" stroke="#c98e5c" stroke-width="4" stroke-linecap="round"/>
-        <path d="M124 216 Q150 236 176 216" fill="none" stroke="#b5533f" stroke-width="4" stroke-linecap="round"/>
-      </svg>`
+      spot: { x: 48.0, y: 55.0, w: 16.0, h: 21.0 },
+      svg: "<svg viewBox='0 0 900 807' xmlns='http://www.w3.org/2000/svg'><image href='images/وجه-الحواس.png' x='0' y='0' width='900' height='807'/></svg>"
     },
 
     // ⑦ التصنيف في مجموعات — 1Bh3 استدلال (بأيّ حاسّة نعرف كلّ شيء)
@@ -8764,17 +8640,8 @@ window.QUESTIONS = {
       level: "application",
       prompt: "اضغَطْ على الفَمِ الَّذي نَتَذَوَّقُ بِهِ الطَّعامَ باللِّسانِ.",
       bg: "#eef7ff",
-      spot: { x: 50, y: 74, r: 9 },
-      svg: `<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="مخطّط وجه">
-        <ellipse cx="52" cy="152" rx="16" ry="26" fill="#f1b98f" stroke="#d89b6a" stroke-width="3"/>
-        <ellipse cx="248" cy="152" rx="16" ry="26" fill="#f1b98f" stroke="#d89b6a" stroke-width="3"/>
-        <circle cx="150" cy="152" r="108" fill="#f6c9a0" stroke="#d89b6a" stroke-width="3"/>
-        <path d="M60 92 Q150 10 240 92 Q244 40 150 30 Q56 40 60 92 Z" fill="#3a2a1c"/>
-        <circle cx="115" cy="132" r="11" fill="#ffffff" stroke="#c98e5c" stroke-width="2"/><circle cx="115" cy="132" r="5" fill="#3b2a1a"/>
-        <circle cx="185" cy="132" r="11" fill="#ffffff" stroke="#c98e5c" stroke-width="2"/><circle cx="185" cy="132" r="5" fill="#3b2a1a"/>
-        <path d="M150 150 Q141 176 150 184 Q159 182 156 173" fill="none" stroke="#c98e5c" stroke-width="4" stroke-linecap="round"/>
-        <path d="M124 216 Q150 236 176 216" fill="none" stroke="#b5533f" stroke-width="4" stroke-linecap="round"/>
-      </svg>`
+      spot: { x: 47.0, y: 72.0, w: 38.0, h: 13.0 },
+      svg: "<svg viewBox='0 0 900 807' xmlns='http://www.w3.org/2000/svg'><image href='images/وجه-الحواس.png' x='0' y='0' width='900' height='807'/></svg>"
     },
 
     // ⑦ التصنيف في مجموعات — استدلال — 1Bh1
@@ -9001,36 +8868,11 @@ window.QUESTIONS = {
       prompt: "اضغَطْ على رَمزِ الطَّقسِ المُمطِرِ.",
       fit: "width",
       bg: "#eaf3fb",
-      spot: { x: 25, y: 74, r: 13 },
+      spot: { x: 75.3, y: 67.9, w: 42.2, h: 28.6 },
       // نسبة الرسم ١٫٦ (shoogp-ui §١.١٠): أُعيد توزيع الرموز الأربعة على صفّين (٢×٢)
       // فكبر كل رمز ١٫٣ مرّة نسبةً إلى العرض بدل صفٍّ واحدٍ رفيع. لم تُنزَل النسبة تحت ١٫٦
       // كي لا يتجاوز ارتفاعُ الرسم المعروض مسرحَ الـ400px على المنافذ العريضة.
-      svg: `<svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="رموز حالات الطقس">
-        <g transform="translate(100,65) scale(1.3) translate(-55,-55)">
-          <circle cx="55" cy="55" r="22" fill="#f2c230"/>
-          <g stroke="#f2c230" stroke-width="4" stroke-linecap="round">
-            <line x1="55" y1="20" x2="55" y2="8"/><line x1="55" y1="90" x2="55" y2="102"/>
-            <line x1="20" y1="55" x2="8" y2="55"/><line x1="90" y1="55" x2="102" y2="55"/>
-            <line x1="30" y1="30" x2="21" y2="21"/><line x1="80" y1="30" x2="89" y2="21"/>
-            <line x1="30" y1="80" x2="21" y2="89"/><line x1="80" y1="80" x2="89" y2="89"/>
-          </g>
-        </g>
-        <g transform="translate(300,65) scale(1.3) translate(-155,-60)">
-          <path d="M120 70 Q120 50 142 52 Q150 38 168 48 Q188 46 188 66 Q202 68 198 82 L120 82 Q108 80 120 70 Z" fill="#c9d2d9" stroke="#9aa7b0" stroke-width="2"/>
-        </g>
-        <g transform="translate(100,185) scale(1.3) translate(-255,-59)">
-          <path d="M220 60 Q220 40 242 42 Q250 28 268 38 Q288 36 288 56 Q302 58 298 72 L220 72 Q208 70 220 60 Z" fill="#9aa7b0" stroke="#7c8a94" stroke-width="2"/>
-          <g fill="#2f6fb0">
-            <path d="M235 80 q-4 8 0 11 q4 -3 0 -11 Z"/>
-            <path d="M258 80 q-4 8 0 11 q4 -3 0 -11 Z"/>
-            <path d="M281 80 q-4 8 0 11 q4 -3 0 -11 Z"/>
-          </g>
-        </g>
-        <g transform="translate(300,185) scale(1.3) translate(-355,-59)">
-          <path d="M320 60 Q320 40 342 42 Q350 28 368 38 Q388 36 388 56 Q402 58 398 72 L320 72 Q308 70 320 60 Z" fill="#c9d2d9" stroke="#9aa7b0" stroke-width="2"/>
-          <g fill="#7fb2e0"><circle cx="335" cy="86" r="4"/><circle cx="358" cy="86" r="4"/><circle cx="381" cy="86" r="4"/></g>
-        </g>
-      </svg>`
+      svg: "<svg viewBox='0 0 900 892' xmlns='http://www.w3.org/2000/svg'><image href='images/رموز-الطقس.png' x='0' y='0' width='900' height='892'/></svg>"
     },
 
     // ⑦ التصنيف في مجموعات — 2Be3 استدلال (نشاط يناسب كلّ طقس)
@@ -9200,33 +9042,8 @@ window.QUESTIONS = {
       level: "application",
       prompt: "اضغَطْ على رَمزِ الطَّقسِ المُشمِسِ.",
       bg: "#eef7ff",
-      spot: { x: 25, y: 26, r: 13 },
-      svg: `<svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="رموز حالات الطقس">
-        <g transform="translate(100,65) scale(1.3) translate(-55,-55)">
-          <circle cx="55" cy="55" r="22" fill="#f2c230"/>
-          <g stroke="#f2c230" stroke-width="4" stroke-linecap="round">
-            <line x1="55" y1="20" x2="55" y2="8"/><line x1="55" y1="90" x2="55" y2="102"/>
-            <line x1="20" y1="55" x2="8" y2="55"/><line x1="90" y1="55" x2="102" y2="55"/>
-            <line x1="30" y1="30" x2="21" y2="21"/><line x1="80" y1="30" x2="89" y2="21"/>
-            <line x1="30" y1="80" x2="21" y2="89"/><line x1="80" y1="80" x2="89" y2="89"/>
-          </g>
-        </g>
-        <g transform="translate(300,65) scale(1.3) translate(-155,-60)">
-          <path d="M120 70 Q120 50 142 52 Q150 38 168 48 Q188 46 188 66 Q202 68 198 82 L120 82 Q108 80 120 70 Z" fill="#c9d2d9" stroke="#9aa7b0" stroke-width="2"/>
-        </g>
-        <g transform="translate(100,185) scale(1.3) translate(-255,-59)">
-          <path d="M220 60 Q220 40 242 42 Q250 28 268 38 Q288 36 288 56 Q302 58 298 72 L220 72 Q208 70 220 60 Z" fill="#9aa7b0" stroke="#7c8a94" stroke-width="2"/>
-          <g fill="#2f6fb0">
-            <path d="M235 80 q-4 8 0 11 q4 -3 0 -11 Z"/>
-            <path d="M258 80 q-4 8 0 11 q4 -3 0 -11 Z"/>
-            <path d="M281 80 q-4 8 0 11 q4 -3 0 -11 Z"/>
-          </g>
-        </g>
-        <g transform="translate(300,185) scale(1.3) translate(-355,-59)">
-          <path d="M320 60 Q320 40 342 42 Q350 28 368 38 Q388 36 388 56 Q402 58 398 72 L320 72 Q308 70 320 60 Z" fill="#c9d2d9" stroke="#9aa7b0" stroke-width="2"/>
-          <g fill="#7fb2e0"><circle cx="335" cy="86" r="4"/><circle cx="358" cy="86" r="4"/><circle cx="381" cy="86" r="4"/></g>
-        </g>
-      </svg>`
+      spot: { x: 75.3, y: 24.9, w: 24.1, h: 24.2 },
+      svg: "<svg viewBox='0 0 900 892' xmlns='http://www.w3.org/2000/svg'><image href='images/رموز-الطقس.png' x='0' y='0' width='900' height='892'/></svg>"
     },
 
     // ⑦ التصنيف في مجموعات — استدلال — 2Be3
@@ -9300,20 +9117,10 @@ window.QUESTIONS = {
       prompt: "اضغَطْ على أكبَرِ صَخرَةٍ.",
       fit: "width",
       bg: "#f3efe6",
-      spot: { x: 50, y: 74, r: 15 },
+      spot: { x: 72.3, y: 50.0, w: 48.2, h: 85.2 },
       // نسبة الرسم ١٫٦ (shoogp-ui §١.١٠): الصخرتان الصغيرتان في صفٍّ علويّ والكبرى وحدها
       // أسفلهما، فكبرت كلُّها ١٫٢٥ مرّة نسبةً إلى العرض وبقي تفاوتُ الأحجام بيّناً.
-      svg: `<svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ثلاث صخور بأحجام مختلفة">
-        <g transform="translate(100,70) scale(1.25) translate(-73,-109)">
-          <path d="M42 118 Q32 96 55 90 Q78 84 92 100 Q104 116 88 126 Q62 134 42 118 Z" fill="#c2c8cd" stroke="#8a9096" stroke-width="3"/>
-        </g>
-        <g transform="translate(300,70) scale(1.25) translate(-205,-115)">
-          <path d="M165 132 Q150 98 186 88 Q224 80 244 106 Q260 130 234 142 Q194 150 165 132 Z" fill="#b2b9bf" stroke="#7c848a" stroke-width="3"/>
-        </g>
-        <g transform="translate(200,185) scale(1.25) translate(-336,-106)">
-          <path d="M292 148 Q268 92 322 72 Q384 56 396 108 Q404 146 356 152 Q318 156 292 148 Z" fill="#a3abb1" stroke="#6f777d" stroke-width="3"/>
-        </g>
-      </svg>`
+      svg: "<svg viewBox='0 0 900 432' xmlns='http://www.w3.org/2000/svg'><image href='images/صخور-ثلاث.png' x='0' y='0' width='900' height='432'/></svg>"
     },
 
     // ⑥ الترتيب التسلسلي — 2Cp1a استدلال (خطوات الحصول على الصخور من المحجر)
@@ -9670,18 +9477,8 @@ window.QUESTIONS = {
       level: "application",
       prompt: "اضغَطْ على أصغَرِ صَخرَةٍ.",
       bg: "#eef7ff",
-      spot: { x: 25, y: 28, r: 13 },
-      svg: `<svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ثلاث صخور بأحجام مختلفة">
-        <g transform="translate(100,70) scale(1.25) translate(-73,-109)">
-          <path d="M42 118 Q32 96 55 90 Q78 84 92 100 Q104 116 88 126 Q62 134 42 118 Z" fill="#c2c8cd" stroke="#8a9096" stroke-width="3"/>
-        </g>
-        <g transform="translate(300,70) scale(1.25) translate(-205,-115)">
-          <path d="M165 132 Q150 98 186 88 Q224 80 244 106 Q260 130 234 142 Q194 150 165 132 Z" fill="#b2b9bf" stroke="#7c848a" stroke-width="3"/>
-        </g>
-        <g transform="translate(200,185) scale(1.25) translate(-336,-106)">
-          <path d="M292 148 Q268 92 322 72 Q384 56 396 108 Q404 146 356 152 Q318 156 292 148 Z" fill="#a3abb1" stroke="#6f777d" stroke-width="3"/>
-        </g>
-      </svg>`
+      spot: { x: 10.7, y: 78.9, w: 14.2, h: 26.4 },
+      svg: "<svg viewBox='0 0 900 432' xmlns='http://www.w3.org/2000/svg'><image href='images/صخور-ثلاث.png' x='0' y='0' width='900' height='432'/></svg>"
     },
 
     // ⑦ التصنيف في مجموعات — استدلال — 2Cp2
@@ -9845,40 +9642,8 @@ window.QUESTIONS = {
       prompt: "اضغَطْ على الجِسمِ الَّذي يُمكِنُ ثَنيُهُ ولَيُّهُ.",
       fit: "width",
       bg: "#f3f6f8",
-      spot: { x: 75, y: 33, r: 14 },
-      svg: `<svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="أربعة أجسام: كوب زجاج وسلك معدني وصخرة وقضيب حديد">
-        <!-- كوب زجاج (لا يُثنى) -->
-        <g>
-          <ellipse cx="100" cy="116" rx="34" ry="7" fill="#000" opacity="0.10"/>
-          <path d="M80 34 L86 106 Q86 112 100 112 Q114 112 114 106 L120 34 Z" fill="#dff0f7" stroke="#6b7c88" stroke-width="4" stroke-linejoin="round"/>
-          <path d="M89 44 L93 100" stroke="#ffffff" stroke-width="6" stroke-linecap="round" opacity="0.85"/>
-          <ellipse cx="100" cy="34" rx="20" ry="6" fill="#eef8fc" stroke="#6b7c88" stroke-width="4"/>
-        </g>
-        <!-- سلك معدني ملويّ (الإجابة الصحيحة) -->
-        <g>
-          <ellipse cx="300" cy="116" rx="46" ry="7" fill="#000" opacity="0.10"/>
-          <path d="M252 96 Q268 52 288 90 T322 90 Q338 90 350 62" fill="none" stroke="#5d6a73" stroke-width="14" stroke-linecap="round"/>
-          <path d="M252 96 Q268 52 288 90 T322 90 Q338 90 350 62" fill="none" stroke="#c3ced6" stroke-width="6" stroke-linecap="round"/>
-          <circle cx="252" cy="96" r="7" fill="#8e9aa3" stroke="#5d6a73" stroke-width="3"/>
-          <circle cx="350" cy="62" r="7" fill="#8e9aa3" stroke="#5d6a73" stroke-width="3"/>
-        </g>
-        <!-- صخرة (لا تُثنى) -->
-        <g>
-          <ellipse cx="100" cy="228" rx="48" ry="8" fill="#000" opacity="0.12"/>
-          <path d="M56 222 L66 180 L90 162 L124 168 L144 194 L140 222 Z" fill="#9b9186" stroke="#6d655c" stroke-width="4" stroke-linejoin="round"/>
-          <path d="M66 180 L98 190 L92 222 L56 222 Z" fill="#867c72"/>
-          <path d="M90 162 L124 168 L98 190 Z" fill="#b0a69a"/>
-          <path d="M56 222 L66 180 L90 162 L124 168 L144 194 L140 222 Z" fill="none" stroke="#6d655c" stroke-width="4" stroke-linejoin="round"/>
-        </g>
-        <!-- قضيب حديد سميك (لا يُثنى) -->
-        <g>
-          <ellipse cx="300" cy="228" rx="52" ry="8" fill="#000" opacity="0.12"/>
-          <rect x="246" y="180" width="108" height="34" rx="17" fill="#8e9aa3" stroke="#5d6a73" stroke-width="4"/>
-          <path d="M258 189 H342" stroke="#c3ced6" stroke-width="7" stroke-linecap="round"/>
-          <circle cx="266" cy="197" r="4.5" fill="#5d6a73"/>
-          <circle cx="334" cy="197" r="4.5" fill="#5d6a73"/>
-        </g>
-      </svg>`
+      spot: { x: 24.3, y: 23.9, w: 39.3, h: 39.4 },
+      svg: "<svg viewBox='0 0 900 893' xmlns='http://www.w3.org/2000/svg'><image href='images/أجسام-أربعة.png' x='0' y='0' width='900' height='893'/></svg>"
     },
 
     // ⑦ التصنيف في مجموعات — 2Cp3 استدلال (مجموعتان × عنصران — قيد السعة)
@@ -9958,39 +9723,11 @@ window.QUESTIONS = {
       // الشريط العلويّ (y=0..58 من ٢٣٠) مُبقًى فارغاً عمداً ليجلس فيه صفّ الصناديق بلا تراكب.
       targets: [
         // نقطة الرباط على حلقته نفسها لا في جوفها الفارغ (جوف الحلقة ليس جزءاً من الجسم)
-        { answer: "رِباطٌ مَطّاطِيٌّ", box: { x: 15, y: 11 }, dot: { x: 17.5, y: 42 } },
-        { answer: "إسفَنجَةٌ",        box: { x: 50, y: 11 }, dot: { x: 50,   y: 58 } },
-        { answer: "نابِضٌ",           box: { x: 85, y: 11 }, dot: { x: 82.5, y: 56 } }
+        { answer: "رِباطٌ مَطّاطِيٌّ", box:{x:85,y:11}, dot:{x:84.1,y:50} },
+        { answer: "إسفَنجَةٌ",       box:{x:50,y:11}, dot:{x:51.2,y:50} },
+        { answer: "نابِضٌ",         box:{x:15,y:11}, dot:{x:16.7,y:50} }
       ],
-      svg: `<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="رباط مطاطي وإسفنجة ونابض">
-        <!-- رباط مطاطي -->
-        <g>
-          <ellipse cx="70" cy="188" rx="42" ry="7" fill="#000" opacity="0.10"/>
-          <ellipse cx="70" cy="124" rx="44" ry="32" fill="none" stroke="#8a5a2b" stroke-width="18"/>
-          <ellipse cx="70" cy="124" rx="44" ry="32" fill="none" stroke="#d08a45" stroke-width="10"/>
-          <path d="M40 106 q10 -12 26 -14" fill="none" stroke="#f0bb85" stroke-width="5" stroke-linecap="round"/>
-        </g>
-        <!-- إسفنجة -->
-        <g>
-          <ellipse cx="200" cy="188" rx="48" ry="7" fill="#000" opacity="0.10"/>
-          <rect x="154" y="96" width="92" height="76" rx="14" fill="#f2c230" stroke="#a8801f" stroke-width="4"/>
-          <path d="M154 120 q46 -18 92 0 V110 q0 -14 -14 -14 H168 q-14 0 -14 14 Z" fill="#f8dd7c"/>
-          <g fill="#c99a1e">
-            <circle cx="176" cy="136" r="7"/><circle cx="206" cy="150" r="8"/>
-            <circle cx="230" cy="130" r="6"/><circle cx="190" cy="162" r="5"/>
-            <circle cx="228" cy="160" r="6"/>
-          </g>
-          <rect x="154" y="96" width="92" height="76" rx="14" fill="none" stroke="#a8801f" stroke-width="4"/>
-        </g>
-        <!-- نابض -->
-        <g>
-          <ellipse cx="330" cy="188" rx="40" ry="7" fill="#000" opacity="0.10"/>
-          <rect x="296" y="166" width="68" height="11" rx="5.5" fill="#8e9aa3" stroke="#5d6a73" stroke-width="3"/>
-          <path d="M304 162 L356 152 L304 140 L356 130 L304 118 L356 108 L304 98" fill="none" stroke="#5d6a73" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M304 162 L356 152 L304 140 L356 130 L304 118 L356 108 L304 98" fill="none" stroke="#c3ced6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-          <rect x="296" y="86" width="68" height="11" rx="5.5" fill="#8e9aa3" stroke="#5d6a73" stroke-width="3"/>
-        </g>
-      </svg>`
+      svg: "<svg viewBox='0 0 900 508' xmlns='http://www.w3.org/2000/svg'><image href='images/أجسام-مرنة.png' x='0' y='0' width='900' height='508'/></svg>"
     },
 
     // ⑥ الترتيب التسلسلي — 2Cp4 استدلال (ما يحدث للرباط المطاطي بالترتيب)
@@ -10305,36 +10042,8 @@ window.QUESTIONS = {
       level: "application",
       prompt: "اضغَطْ على الجِسمِ الَّذي يَنكَسِرُ ولا يَنثَني.",
       bg: "#eef7ff",
-      spot: { x: 25, y: 29, r: 13 },
-      svg: `<svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="أربعة أجسام: كوب زجاج وسلك معدني وصخرة وقضيب حديد">
-        <g>
-          <ellipse cx="100" cy="116" rx="34" ry="7" fill="#000" opacity="0.10"/>
-          <path d="M80 34 L86 106 Q86 112 100 112 Q114 112 114 106 L120 34 Z" fill="#dff0f7" stroke="#6b7c88" stroke-width="4" stroke-linejoin="round"/>
-          <path d="M89 44 L93 100" stroke="#ffffff" stroke-width="6" stroke-linecap="round" opacity="0.85"/>
-          <ellipse cx="100" cy="34" rx="20" ry="6" fill="#eef8fc" stroke="#6b7c88" stroke-width="4"/>
-        </g>
-        <g>
-          <ellipse cx="300" cy="116" rx="46" ry="7" fill="#000" opacity="0.10"/>
-          <path d="M252 96 Q268 52 288 90 T322 90 Q338 90 350 62" fill="none" stroke="#5d6a73" stroke-width="14" stroke-linecap="round"/>
-          <path d="M252 96 Q268 52 288 90 T322 90 Q338 90 350 62" fill="none" stroke="#c3ced6" stroke-width="6" stroke-linecap="round"/>
-          <circle cx="252" cy="96" r="7" fill="#8e9aa3" stroke="#5d6a73" stroke-width="3"/>
-          <circle cx="350" cy="62" r="7" fill="#8e9aa3" stroke="#5d6a73" stroke-width="3"/>
-        </g>
-        <g>
-          <ellipse cx="100" cy="228" rx="48" ry="8" fill="#000" opacity="0.12"/>
-          <path d="M56 222 L66 180 L90 162 L124 168 L144 194 L140 222 Z" fill="#9b9186" stroke="#6d655c" stroke-width="4" stroke-linejoin="round"/>
-          <path d="M66 180 L98 190 L92 222 L56 222 Z" fill="#867c72"/>
-          <path d="M90 162 L124 168 L98 190 Z" fill="#b0a69a"/>
-          <path d="M56 222 L66 180 L90 162 L124 168 L144 194 L140 222 Z" fill="none" stroke="#6d655c" stroke-width="4" stroke-linejoin="round"/>
-        </g>
-        <g>
-          <ellipse cx="300" cy="228" rx="52" ry="8" fill="#000" opacity="0.12"/>
-          <rect x="246" y="180" width="108" height="34" rx="17" fill="#8e9aa3" stroke="#5d6a73" stroke-width="4"/>
-          <path d="M258 189 H342" stroke="#c3ced6" stroke-width="7" stroke-linecap="round"/>
-          <circle cx="266" cy="197" r="4.5" fill="#5d6a73"/>
-          <circle cx="334" cy="197" r="4.5" fill="#5d6a73"/>
-        </g>
-      </svg>`
+      spot: { x: 75.6, y: 23.8, w: 30.2, h: 40.4 },
+      svg: "<svg viewBox='0 0 900 893' xmlns='http://www.w3.org/2000/svg'><image href='images/أجسام-أربعة.png' x='0' y='0' width='900' height='893'/></svg>"
     },
 
     // ⑦ التصنيف في مجموعات — استدلال — 2Cp4
