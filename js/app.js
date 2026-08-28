@@ -851,9 +851,14 @@ function renderTrueFalse(q, body, fb){
    علّةُ الشكلِ الثاني: الدائرةُ حولَ هدفٍ مربَّعٍ تقتطعُ أركانَه الأربعة (نحوَ ٢١٪ من
    مساحتِه)، فتُرَدُّ نقرةٌ واقعةٌ في الجزءِ الصحيحِ نفسِه؛ وتوسيعُ نصفِ القطرِ لِتَسَعَها
    يبتلعُ ما حولَ الهدف. فالمستطيلُ يطابقُ الهدفَ بلا اقتطاعٍ ولا ابتلاع.
-   وإن ذُكر أحدُ البعدَين وحدَه فالآخرُ مثلُه (مربّع). */
+   وإن ذُكر أحدُ البعدَين وحدَه فالآخرُ مثلُه (مربّع).
+   وشكلٌ ثالثٌ يُبنى منهما: **مصفوفةٌ** من مناطقَ [{…},{…}] — اتّحادُها هو منطقةُ الإجابة.
+   علّتُه: هدفٌ واحدٌ في السؤالِ قد يكونُ **أجساماً متفرّقةً في الرسم** (أوراقُ النبتةِ
+   الأربعُ حولَ ساقِها)، فلا يسعُها مستطيلٌ واحدٌ إلا بابتلاعِ ما بينَها — والمستطيلُ
+   الجامعُ لأوراقِ النبتةِ يبتلعُ الساقَ، وهي **جوابُ سؤالٍ آخرَ في الدرسِ نفسِه**. */
 function hitsSpot(sp,px,py){
   if(!sp) return false;
+  if(Array.isArray(sp)) return sp.some(s=>hitsSpot(s,px,py));
   if(sp.w!=null||sp.h!=null){
     const hw=(sp.w!=null?sp.w:sp.h)/2, hh=(sp.h!=null?sp.h:sp.w)/2;
     return Math.abs(px-sp.x)<=hw && Math.abs(py-sp.y)<=hh;
@@ -1158,20 +1163,26 @@ function renderColor(q, body, fb){
     sw.classList.add('sel'); chosen=sw.dataset.color;
     if(area) area.classList.add('brushing');
   };});
+  /* الجزء الواحد قد يكون **عدّة عناصر** تحمل data-name نفسه (رسمٌ متتبَّعٌ بـvtracer
+     يُخرج الأزهارَ خمسةَ مسارات) — فالنقر على أيّها يلوّن الجزء كلَّه، والتحقّق يقرأ
+     أوّلها. والعنصر المفرد حالةٌ خاصّةٌ من ذلك فلا يتغيّر سلوكه. */
+  const partsOf=name=>[...body.querySelectorAll('.cpart[data-name="'+name+'"]')];
   // تلوين جزء عند الضغط (بعد اختيار لون)
   body.querySelectorAll('.cpart').forEach(part=>{
     part.addEventListener('click',()=>{
       if(!chosen){ fb.textContent='اختر لوناً أوّلاً من اللوحة 🎨'; fb.className='fb qfb'; return; }
-      part.style.fill=chosen; part.dataset.fill=chosen; part.classList.remove('cwrong');
+      partsOf(part.dataset.name).forEach(el=>{
+        el.style.fill=chosen; el.dataset.fill=chosen; el.classList.remove('cwrong');
+      });
     });
   });
   // التحقّق: كل جزء مطلوب باللون الصحيح حسب التعليمات
   body.querySelector('.btn-check').onclick=()=>{
     let ok=0; const need=q.parts.length;
     q.parts.forEach(pt=>{
-      const el=body.querySelector('.cpart[data-name="'+pt.name+'"]'); if(!el) return;
-      if(norm(el.dataset.fill)===norm(pt.color)){ ok++; el.classList.remove('cwrong'); }
-      else el.classList.add('cwrong');
+      const els=partsOf(pt.name); if(!els.length) return;
+      if(norm(els[0].dataset.fill)===norm(pt.color)){ ok++; els.forEach(el=>el.classList.remove('cwrong')); }
+      else els.forEach(el=>el.classList.add('cwrong'));
     });
     if(ok===need && need) qWin(fb,'🎨 أحسنت! لوّنت كل جزء باللون الصحيح',3);
     else qFail(fb,`راجع الألوان — الصحيح ${arNum(ok)} من ${arNum(need)}`);

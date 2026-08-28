@@ -28,11 +28,6 @@
     "    ← يتخطّى البناءَ كلَّه. يُستعمَلُ حينَ تُغري قائمةُ الهيكسات النموذجَ",
     "      برسمِ لوحةِ ألوانٍ داخلَ الصورة (وقعَ فعلاً مع رسمةِ العين)."
   ],
-  "batchId": "2026-08-27-g3fix",
-  "items": [
-    {
-      "name": "g3-adawat2",
-      "prompt": "Create an educational illustration of three well-spaced measuring tools in one horizontal row, with generous white space between each pair and no touching: on the right a long yellow **ruler** lying horizontally with short black tick marks along its edge; in the middle a **thermometer** standing upright — a slim clear glass tube with a red liquid column rising from a round red bulb at its base, and short black scale marks up one side; on the left a clear glass **measuring cup** half full of blue water with tick marks up its side and a small handle. The three tools are roughly equal in height. Image aspect ratio wide, roughly 21:10.\n\nGlossy cartoon vector illustration in a space-sticker style, bold saturated colors, each object shaded with a 3-4 step ramp of its own hue as crisp discrete bands with hard edges and no soft blending, a broad white gloss highlight on curved surfaces, a thin crisp black outline #111111 with rounded caps around every object and its inner parts, plump rounded forms with no sharp angles, objects floating with no ground line and no cast shadow, absolutely no facial features on anything. Pure white background #FFFFFF with no text, labels or numbers. One single standalone image only."
-    }
-  ]
+  "batchId": "—",
+  "items": []
 }
