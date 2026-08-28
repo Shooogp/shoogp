@@ -28,27 +28,15 @@
     "    ← يتخطّى البناءَ كلَّه. يُستعمَلُ حينَ تُغري قائمةُ الهيكسات النموذجَ",
     "      برسمِ لوحةِ ألوانٍ داخلَ الصورة (وقعَ فعلاً مع رسمةِ العين)."
   ],
-  "batchId": "2026-08-28-g34-matching",
+  "batchId": "2026-08-28-g34-bones",
   "items": [
     {
-      "name": "g34-thuban",
-      "subject": "one snake seen from the side, a long green body coiled in a smooth S curve with a lighter belly and a small forked red tongue at the front of its head"
+      "name": "g34-fakhth2",
+      "prompt": "Create an educational illustration of ONE human thigh bone (femur) standing upright on its own, seen from the front: a long straight shaft with a rounded ball head at the top on a short angled neck, and two rounded knobs at the bottom. It is clearly far longer than it is wide.\n\nThe bone is PURE WHITE and off-white only — bone white, ivory and pale grey shades, with a thin crisp black outline. There is NO blue, NO green, NO orange, NO yellow and NO pink anywhere on it. Glossy cartoon vector illustration in a space-sticker style, shaded with a 3-4 step ramp of white and pale grey as crisp discrete bands with hard edges and no soft blending, a broad white gloss highlight on curved surfaces, a thin crisp black outline #111111 with rounded caps around the object and its inner parts, plump rounded forms with no sharp angles, floating with no ground line and no cast shadow, absolutely no facial features on anything. Pure white background #FFFFFF with no text, labels or numbers. One single standalone image only."
     },
     {
-      "name": "g34-fakhth",
-      "subject": "one human thigh bone (femur) on its own, a long straight white bone with a rounded ball head at the top and two rounded knobs at the bottom, clearly much longer than it is wide"
-    },
-    {
-      "name": "g34-asabi",
-      "subject": "the bones of one human hand seen from above, showing the small short finger bones in five fingers, all white, clearly a group of many short little bones"
-    },
-    {
-      "name": "g34-jumjuma",
-      "subject": "one human skull seen from the side, a smooth rounded white dome with a round eye socket opening and a jaw below, clearly a broad flat curved bone plate"
-    },
-    {
-      "name": "g34-faqara",
-      "subject": "one single spine vertebra bone on its own, seen from above at a slight angle, a white ring-shaped bone with a large round hole in its middle and several short irregular bony spikes sticking out around it in different directions"
+      "name": "g34-faqara2",
+      "prompt": "Create an educational illustration of ONE single spine vertebra bone on its own, seen from above: a thick ring of bone with a large round hole through its middle, and several short knobbly bony spikes sticking out around its rim in different directions, giving it a clearly irregular lumpy outline.\n\nThe bone is PURE WHITE and off-white only — bone white, ivory and pale grey shades, with a thin crisp black outline. There is NO blue, NO green, NO orange, NO yellow and NO pink anywhere on it. Glossy cartoon vector illustration in a space-sticker style, shaded with a 3-4 step ramp of white and pale grey as crisp discrete bands with hard edges and no soft blending, a broad white gloss highlight on curved surfaces, a thin crisp black outline #111111 with rounded caps around the object and its inner parts, plump rounded forms with no sharp angles, floating with no ground line and no cast shadow, absolutely no facial features on anything. Pure white background #FFFFFF with no text, labels or numbers. One single standalone image only."
     }
   ]
 }
