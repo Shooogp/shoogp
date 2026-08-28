@@ -28,11 +28,6 @@
     "    ← يتخطّى البناءَ كلَّه. يُستعمَلُ حينَ تُغري قائمةُ الهيكسات النموذجَ",
     "      برسمِ لوحةِ ألوانٍ داخلَ الصورة (وقعَ فعلاً مع رسمةِ العين)."
   ],
-  "batchId": "2026-08-28-sci-fix",
-  "items": [
-    {
-      "name": "sci-c-har-barid2",
-      "prompt": "Create an educational illustration containing EXACTLY FOUR objects and nothing else — one of each, never repeated, never duplicated — arranged in a two-by-two grid with wide gaps so they never touch:\n• TOP RIGHT: ONE cup of hot tea with a handle and two curls of steam. The whole cup is filled with flat solid purple #7B2FF2.\n• TOP LEFT: ONE loaf of bread, a single rounded oval loaf. It is filled with flat solid turquoise #00E5A0.\n• BOTTOM RIGHT: ONE ice cube, a single simple cube. It is filled with flat solid pink #FF00A8.\n• BOTTOM LEFT: ONE ice cream cone, the scoop and the cone together as one shape. It is filled with flat solid sky blue #00A8FF.\nCount them: four objects in total. Do NOT draw a second cup, a second loaf, a second cone or any extra object. None of these four colours appears anywhere else in the picture.\n\nFLAT VECTOR STYLE, NOT glossy: every region is filled with ONE single flat solid colour with NO gradient, NO shading bands, NO gloss highlight, NO texture and NO cast shadow. Each named region is a fully closed shape surrounded by a clean black outline #111111 of even thickness with rounded caps. Regions never overlap and no two regions share a colour. Plump rounded child-friendly forms with no sharp angles, absolutely no facial features on anything. Pure white background #FFFFFF with no text, labels, numbers or shadows. One single standalone image only."
-    }
-  ]
+  "batchId": "2026-08-28-none",
+  "items": []
 }
