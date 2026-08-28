@@ -393,32 +393,6 @@ function renderQuestions(ls){
     m.innerHTML='<div class="qbody" style="text-align:center;padding:14px 6px;font-size:1.15rem">📚 أسئلة هذا الدرس ستُضاف قريباً بإذن الله</div>';
     host.appendChild(m); return;
   }
-/* ══ رسمُ السؤالِ التوضيحيّ — خانةٌ مشتركةٌ لكلِّ الأنواعِ (قرارُ المالك ٢٠٢٦-٠٨-٢٨) ══
-   حقلٌ اختياريٌّ `fig` يُعرَضُ **بينَ نصِّ السؤالِ وجسمِه**، فترثُه كلُّ الأنواعِ
-   تلقائياً بلا تعديلِ نوعٍ واحد. من لا `fig` له لا يتغيّرُ فيه شيء.
-
-   **ولماذا خانةٌ مستقلّةٌ لا `pics` على البطاقات:** في «أحب لغتي» الصفَّينِ الثالثِ
-   والرابعِ **البطاقةُ المرسومةُ ممنوعةٌ** لأنّ الكلمةَ المكتوبةَ قد تكونُ المهارةَ
-   المقيسةَ نفسَها (§قاعدةُ بطاقاتِ الصورِ في `CLAUDE.md`). وهذه الخانةُ **لا تمسُّ
-   ما يُقاس**: الرسمُ يوضّحُ مشهدَ النصِّ أو بيئتَه، والخياراتُ تبقى كلماتٍ.
-
-   الصيغة:  fig: "images/اسم.png"          — صورةٌ بنصٍّ بديلٍ فارغ
-            fig: { src:"images/اسم.png", alt:"وصف" }
-            fig: "<svg …>…</svg>"           — رسمٌ مضمَّنٌ (يبدأُ بـ`<`)
-
-   ⛔ **وليس بديلاً عن رسمِ السؤالِ التفاعليّ**: `hotspot` و`find-error` و`color`
-   و`drag-drop` تضعُ رسمَها في `svg` داخلَ الجسمِ لأنّ الإجابةَ تُقاسُ عليه.
-   وهذه **للتوضيحِ لا للتفاعل** — لا نقرَ عليها ولا سحبَ منها. */
-function qFigHTML(q){
-  const f = q && q.fig; if(!f) return '';
-  const src = (typeof f === 'string') ? f : (f.src || '');
-  if(!src) return '';
-  const alt = (typeof f === 'object' && f.alt) ? f.alt : '';
-  const inner = /^\s*</.test(src) ? src
-    : `<img src="${src}" alt="${alt}" loading="lazy" draggable="false">`;
-  return `<div class="qfig" aria-hidden="${alt?'false':'true'}">${inner}</div>`;
-}
-
   const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor,'puzzle':renderPuzzle,'slider':renderSlider,'memory':renderMemory,'lens':renderLens,'equation-builder':renderEquationBuilder,'number-line':renderNumberLine,'hundred-chart':renderHundredChart,'array':renderArray,'compare':renderCompare,'pattern':renderPattern,'count-tap':renderCountTap,'place-value':renderPlaceValue,'clock':renderClock,'measure-tool':renderMeasureTool,'money':renderMoney,'symmetry':renderSymmetry,'chart-read':renderChartRead,'tashkeel':renderTashkeel,'sentence':renderSentence,'sun-moon':renderSunMoon,'letter-picture':renderLetterPicture,'judge-reason':renderJudgeReason,'listen-locate':renderListenLocate};
 
   // بناء كل البطاقات (تبقى في الصفحة لحفظ إجاباتها، ونُظهر واحدة فقط)
@@ -432,7 +406,6 @@ function qFigHTML(q){
     card.className='card-box qcard';
     card.innerHTML=`<div class="qhead"><span class="qprogress">السؤال ${arNum(i+1)} من ${arNum(qs.length)}</span><span class="qtype">${Q_LABEL[q.type]||''}</span></div>`+
       `<h3 class="qprompt">${q.prompt||q.statement||''}</h3>`+
-      qFigHTML(q)+
       `<div class="qbody"></div><div class="fb qfb"></div>`;
     fn(q, card.querySelector('.qbody'), card.querySelector('.qfb'));
     // زر «إعادة» يعيد بناء جسم السؤال فيولد .actions جديدة داخله — المراقب
