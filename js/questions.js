@@ -4603,6 +4603,7 @@ window.QUESTIONS = {
     // ② معرفة — `4Dh1` — **ناتجُ حلِّ لغزِ «لِنَسْتَكْشِفْ»** بأعدادِه.
     {
       type: "matching",
+      pics: "a",
       objective: "4Dh1: يجيب عن سؤال بعد تحديد البيانات المطلوب جمعها، وينظّم ويمثّل ويفسّر البيانات",
       level: "knowledge",
       prompt: "صِلْ كُلَّ رِياضَةٍ بِعَدَدِ مَنِ اخْتاروها.",
@@ -5793,6 +5794,7 @@ window.QUESTIONS = {
     // ② توصيل: العظم ← نوعه — معرفة
     {
       type: "matching",
+      pics: "a",
       objective: "4Bh6: يلاحظ أنّ للعظام أشكالاً وأحجاماً مختلفة",
       level: "knowledge",
       prompt: "صِل كل عظم بنوعه.",
@@ -6477,6 +6479,7 @@ window.QUESTIONS = {
     // ② توصيل — معرفة
     {
       type: "matching",
+      pics: "a",
       objective: "4Be1: يتحرّى أنواع الحيوانات في المواطن الطبيعية وطرق تلاؤمها",
       level: "knowledge",
       prompt: "صِل كلَّ حيوانٍ بصفتِه في موطنِه.",
@@ -6549,6 +6552,7 @@ window.QUESTIONS = {
     // ② توصيل — معرفة
     {
       type: "matching",
+      pics: "b",
       objective: "4Be2: يستخدم مفتاحاً تعريفياً مبسّطاً",
       level: "knowledge",
       prompt: "صِل كلَّ صفةٍ بالحيوانِ الذي يميّزُه المفتاحُ.",
@@ -6624,6 +6628,7 @@ window.QUESTIONS = {
     // ② توصيل — معرفة
     {
       type: "matching",
+      pics: "a",
       objective: "4Be2: يستخدم مفتاحاً تعريفياً مبسّطاً",
       level: "knowledge",
       prompt: "صِل كلَّ كائنٍ لافقاريٍّ بصفتِه.",
@@ -10390,6 +10395,7 @@ window.QUESTIONS = {
     // ③ التوصيل — معرفة — 3Bp1
     {
       type: "matching",
+      pics: "a",
       objective: "3Bp1: يعرف أن النباتات لها جذور وأوراق وسيقان وأزهار",
       level: "knowledge",
       prompt: "صِلْ كُلَّ جُزءٍ مِنَ النَّبتةِ بِوَظيفَتِهِ.",
@@ -10549,6 +10555,7 @@ window.QUESTIONS = {
     // ③ التوصيل — معرفة — 3Bp3
     {
       type: "matching",
+      pics: "a",
       objective: "3Bp3: يعرف أن الماء يُمتص بواسطة الجذور ويُنقل عبر الساق",
       level: "knowledge",
       prompt: "صِلْ كُلَّ جُزءٍ بِدَورِهِ في رِحلةِ الماءِ.",
