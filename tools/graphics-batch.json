@@ -28,6 +28,30 @@
     "    ← يتخطّى البناءَ كلَّه. يُستعمَلُ حينَ تُغري قائمةُ الهيكسات النموذجَ",
     "      برسمِ لوحةِ ألوانٍ داخلَ الصورة (وقعَ فعلاً مع رسمةِ العين)."
   ],
-  "batchId": "—",
-  "items": []
+  "batchId": "2026-08-28-g34-cards",
+  "items": [
+    { "name": "g34-insan",   "subject": "one child standing upright, seen from the front, full body from head to feet, arms slightly away from the sides, wearing a plain short-sleeved shirt and trousers, plain skin tone, plain dark hair" },
+    { "name": "g34-halazon", "subject": "one garden snail seen from the side, a soft grey body with two short antennae and a round spiral brown shell on its back" },
+    { "name": "g34-namla",   "subject": "one black ant seen from the side, three clear body segments, six legs and two antennae" },
+    { "name": "g34-nahla",   "subject": "one honey bee seen from the side, a plump yellow and black striped body with two small transparent wings" },
+    { "name": "g34-ankabut", "subject": "one spider seen from above, a round dark brown body and eight clearly separated legs spread evenly around it" },
+    { "name": "g34-kalb",    "subject": "one dog standing in profile facing right, a light brown short-haired dog with floppy ears and a raised tail" },
+    { "name": "g34-maez",    "subject": "one goat standing in profile facing right, a white goat with two backward-curving horns, a short beard under the chin and small hooves" },
+    { "name": "g34-dub",     "subject": "one brown bear standing on all four legs in profile facing right, a heavy rounded body with small round ears and short thick legs" },
+    { "name": "g34-nasr",    "subject": "one large eagle in profile facing right with both wings spread wide open, dark brown feathers with a white head and a yellow hooked beak" },
+    { "name": "g34-bajaa",   "subject": "one white swan in profile facing right with a long S-curved neck, an orange beak with a black base, and folded wings" },
+    { "name": "g34-timsah",  "subject": "one green crocodile in profile facing right, a long low body with a long snout, visible back ridges and a long tapering tail" },
+    { "name": "g34-hoot",    "subject": "one large grey whale in profile facing right, a rounded body with a wide horizontal tail fin and a white spout of water rising from its blowhole" },
+    { "name": "g34-hiwar",   "subject": "one baby camel calf standing in profile facing right, small and short-legged with one small soft hump and pale cream fur, clearly a young animal much smaller in proportion than an adult camel" },
+    { "name": "g34-hirra",   "subject": "one small grey kitten sitting upright in profile facing right, a round plump body with a short tail and large ears, clearly a very young cat" },
+    { "name": "g34-bathra",  "subject": "one single plant seed on its own, an oval bean-shaped brown seed with a small pale scar on one side" },
+    { "name": "g34-khubz",   "subject": "one loaf of bread, a golden brown oval loaf with a few diagonal scores across its crust" },
+    { "name": "g34-jubn",    "subject": "one wedge of yellow cheese, a triangular block with a few round holes on its side" },
+    { "name": "g34-tamatim", "subject": "one red tomato seen from the side, a round glossy fruit with a small green star-shaped stalk on top" },
+    { "name": "g34-raqaeq",  "subject": "one open bag of potato crisps, a red foil bag standing upright with a few round golden crisps spilling from its opening" },
+    { "name": "g34-shula",   "subject": "one flame of fire on its own, a tall pointed orange and yellow flame with no candle, no wood and no ground beneath it" },
+    { "name": "g34-sarookh", "subject": "one space rocket standing upright, a white body with an orange nose cone, two orange fins at its base and a round blue window on its side" },
+    { "name": "g34-tawila",  "subject": "one table tennis paddle seen from the front, a round red rubber face with a short wooden handle, and one small white ball beside it" },
+    { "name": "g34-midrab",  "subject": "one tennis racket seen from the front, an oval head with white criss-cross strings and a long blue-wrapped handle, and one yellow-green tennis ball beside it" }
+  ]
 }
