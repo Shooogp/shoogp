@@ -401,3 +401,396 @@
 - بعد التتبّع: ادمج مسارات السمكة في مجموعةٍ باسم `animal-scales-fish` وأعد لونَها الأزرق.
 - أعد حساب `spot` من مركز جسمِ السمكة، وتحقّق أن الدائرةَ لا تلمسُ الدُبَّ (أقربُ الملهيات).
 - بوّابة الجودة ثمّ فحص الإطار.
+
+---
+
+# بنودُ علومِ الصفِّ الثالث — سُجِّلَت ٢٠٢٦-٠٨-٢٧
+
+مسحٌ كاملٌ لأسئلةِ الكتابِ الستِّ والتسعين: **٢٢ سؤالاً تحملُ رسماً**، خمسةٌ منها أُنجِزَت (البنودُ ٩–١٢)، **وسبعةَ عشرَ بقيَت**. هذه البنودُ تُغطّي **أربعةَ عشرَ منها بعشرِ صورٍ** — لأنّ صورةً واحدةً قد تخدمُ أكثرَ من سؤال.
+
+## ⛔ وثلاثةٌ أسقطَتْها البوّابةُ صراحةً
+
+| السؤال | النوع | العلّة |
+|---|---|---|
+| `g3s-1-4#6` | `slider` | **مقياسُ حرارةٍ عدديّ** — رسمٌ هندسيٌّ صرفٌ، و`CLAUDE.md` تنصُّ أنّه لا يدخلُ طابورَ الترقية |
+| `g3s-2-4#6` | `slider` | **مقياسُ ساعاتِ نومٍ عدديّ** — كذلك |
+| `g3s-3-6#6` | `color` | **ستُّ مناطقَ تلوينٍ** والبوّابةُ تشترطُ **≤ ٤**. ولا يُغيَّرُ الهدفُ التعليميُّ بل يبقى الرسمُ يدوياً — «المحتوى يقودُ الأداةَ لا العكس» |
+
+> **ولونُ العزلِ في كلِّ البنودِ أدناهُ `#7B2FF2`** ما لم يُذكَرْ غيرُه — بنفسجيٌّ صريحٌ لا يردُ في سلالمِ ورقةِ المواصفاتِ فلا يلتبسُ بلونٍ حقيقيّ.
+
+
+---
+
+## بند ١٣ — `نبتة-كاملة`
+
+> **يخدمُ **أربعةَ** أسئلةٍ برسمٍ واحد.**
+
+- **اسمُ الملف:** `images/نبتة-كاملة.png` (ومنه `نبتة-كاملة.svg` بعد التتبّع)
+- **المسار:** **تتبّعٌ بـ`vtracer`** — لازمٌ لأنّ التلوينَ يحتاجُ مساراً يُملَأُ لكلِّ منطقة
+- **الهدف:** 3Bp1 · 3Bp3 — أجزاء النبات، وامتصاصُ الماءِ ونقلُه
+- **نسبةُ الـ`viewBox` الحالية:** ٦٠٠×٤٣٠
+
+**الأسئلةُ التي يخدمُها:**
+
+| السؤال | النوع | النصّ | الهدفُ في الرسم |
+|---|---|---|---|
+| `g3s-1-1` #٤ | `hotspot` | اضغَطْ على الجُزءِ الَّذي يَمْتَصُّ الماءَ مِنَ التُّربةِ. | **الجُذور** |
+| `g3s-1-1` #٦ | `color` | لَوِّنْ أَجزاءَ النَّبتةِ: اختَرْ لَوناً مِنَ اللَّوحةِ ثُمَّ اضغَطِ الجُزءَ. | **الجذور والساق والأزهار** |
+| `g3s-1-3` #٤ | `hotspot` | اضغَطْ على الجُزءِ الَّذي يَنقُلُ الماءَ مِنَ الجُذورِ إلى الأَوراقِ. | **السّاق** |
+| `g3s-1-5` #٤ | `hotspot` | اضغَطْ على الجُزءِ الَّذي يَصنَعُ الغِذاءَ لِلنَّبتةِ. | **الأوراق** |
+
+**المناطقُ ولونُ العزلِ والتحييد:**
+
+| المنطقة | المعرّف | لونُ التوليد | المعالجةُ بعدَ التوليد |
+|---|---|---|---|
+| الجذور | `plant-roots` | `#7B2FF2` | تُعادُ إلى **التربة** `#B98551` ← `#9A6636` ← `#7A4C22` ← `#68411D` |
+| الساق | `plant-stem` | `#00E5A0` | يُعادُ إلى **الأخضر** `#80C020` ← `#60C020` ← `#4A9018` ← `#356810` |
+| الأوراق | `plant-leaves` | `#FF00A8` | تُعادُ إلى **الأخضر** نفسِه — فلا يفرّقُها لونٌ عن الساقِ بل شكلُها |
+| الأزهار | `plant-flowers` | `#00A8FF` | تُعادُ إلى **الأحمر** `#FF4020` ← `#FF2020` ← `#E02000` ← `#B01800` |
+
+**نتيجةُ البوّابة:** ✅ مرّ — مناطقُ تفاعليةٌ ≤ ٤ · حدودٌ مغلقة · بلا تداخل · لونُ عزلٍ فريدٌ لكلِّ منطقة
+
+**البرومبت — عربيّ:**
+
+> أنشئ رسماً تعليمياً لنبتةٍ واحدةٍ كاملةٍ من الجانب، قائمةً في وسطِ الإطار، وأجزاؤها الأربعةُ متمايزةٌ تمايزاً تامّاً: **جذورٌ** متفرّعةٌ تحتَ شريطِ تربةٍ أفقيٍّ في أسفلِ الصورة بلونٍ بنفسجيٍّ مسطّحٍ صريحٍ `#7B2FF2` يشملُ كلَّ خيطٍ من الجذور؛ و**ساقٌ** واحدةٌ قائمةٌ سميكةٌ ترتفعُ من التربةِ إلى أعلى الصورةِ بلونٍ أخضرَ فيروزيٍّ مسطّحٍ صريحٍ `#00E5A0` وحدَه؛ و**أربعُ أوراقٍ** كبيرةٍ بيضويّةٍ بعِرقٍ أوسطَ ظاهر، ورقتانِ على كلِّ جانبٍ من الساق، بلونٍ ورديٍّ مسطّحٍ صريحٍ `#FF00A8`؛ و**زهرتانِ** في أعلى الساقِ بخمسِ بتلاتٍ مستديرةٍ ومركزٍ دائريّ، بلونٍ سماويٍّ مسطّحٍ صريحٍ `#00A8FF`. **لا يتكرّرُ أيٌّ من هذه الألوانِ الأربعةِ في غيرِ جزئِه**، والأجزاءُ **لا يتداخلُ بعضُها في بعض**: الأوراقُ تلتقي الساقَ بحدٍّ واضحٍ ولا تعبرُها، والزهرتانِ فوقَ الساقِ لا تلمسانِ الأوراق. شريطُ التربةِ بنّيٌّ `#9A6636` وليس بنفسجياً. نسبةُ الصورةِ نحو ١٤:١٠. رسم كرتونيّ متّجهي لامع بأسلوب ملصقات الفضاء، بألوانٍ صريحةٍ مشبعة، لكلِّ جسمٍ تدرّجُ حجمٍ من ثلاثِ إلى أربعِ درجاتٍ من لونِه نفسِه (فاتحةٌ ثمّ أساسيةٌ ثمّ غامقةٌ ثمّ ظِلّ) بحوافَّ فاصلةٍ واضحةٍ بين الدرجاتِ لا مزجٍ ناعم، مع لمعةٍ بيضاءَ عريضةٍ على الأسطحِ المنحنية، وحدٍّ خارجيٍّ أسودَ رفيعٍ واضحٍ ‎#111111‎ مستديرِ الرؤوسِ يحيطُ كلَّ جسمٍ وأجزاءَه الداخلية (خطٌّ نظيفٌ رفيعٌ لا حدٌّ ثقيل)، بأشكالٍ ممتلئةٍ مستديرةٍ بلا زاويةٍ حادّة، والأجسامُ طافيةٌ بلا خطِّ أرضٍ ولا ظلٍّ مُلقًى، وبلا أيِّ ملامحِ وجهٍ على أيِّ شيءٍ إطلاقاً. الخلفيةُ بيضاءُ نقيّةٌ ‎#FFFFFF‎ بلا أيّ نصوصٍ أو تسمياتٍ أو أرقام. صورة واحدة مستقلّة فقط.
+
+**English:**
+
+> Create an educational illustration of ONE whole plant seen from the side, standing in the centre of the frame, with its four parts completely distinct: **roots** branching below a horizontal soil strip at the bottom, in flat solid purple `#7B2FF2` covering every root thread; ONE thick upright **stem** rising from the soil to the top, in flat solid turquoise-green `#00E5A0` and nothing else; **four large oval leaves** with a visible midrib, two on each side of the stem, in flat solid pink `#FF00A8`; and **two flowers** at the top of the stem, each with five rounded petals and a round centre, in flat solid sky-blue `#00A8FF`. **None of these four colours appears anywhere except on its own part**, and the parts **never overlap**: leaves meet the stem at a clean edge and do not cross it, and the flowers sit above the stem without touching the leaves. The soil strip is brown `#9A6636`, not purple. Image aspect ratio roughly 14:10. Glossy cartoon vector illustration in a space-sticker style, bold saturated colors, each object shaded with a 3-4 step ramp of its own hue (highlight, base, shade, deep shade) as crisp discrete bands with hard edges and no soft blending, a broad white gloss highlight on curved surfaces, a thin crisp black outline #111111 with rounded caps around every object and its inner parts (a clean fine line, not a heavy border), plump rounded forms with no sharp angles, objects floating with no ground line and no cast shadow, absolutely no facial features on anything. Pure white background #FFFFFF with no text, labels or numbers. One single standalone image only.
+
+**ملاحظاتُ التنفيذ:**
+
+- **هذا البندُ يخدمُ أربعةَ أسئلةٍ برسمٍ واحد** — ثلاثةُ `hotspot` بأهدافٍ مختلفةٍ وسؤالُ تلوينٍ واحد.
+- **والتتبّعُ لازمٌ هنا** (بخلافِ بنودِ التحديدِ الخالصة): سؤالُ التلوينِ يحتاجُ كلَّ منطقةٍ **مساراً يُملأ** (`cpart`)، فلا يكفي ملفٌّ نقطيّ.
+- بعدَ التتبّع: تُحيَّدُ **الجذورُ والساقُ والأزهارُ** إلى `#E8E4DC` لأنّها مناطقُ التلوينِ الثلاث؛ **والأوراقُ تبقى خضراءَ** فليست منطقةَ تلوين.
+- ثمّ يُعادُ حسابُ `spot` **ثلاثَ مرّات** — الجذورُ ثمّ الساقُ ثمّ الأوراقُ — **مستطيلاً لا دائرةً** لأنّ الساقَ شريطٌ طوليٌّ والجذورَ مروحةٌ عرضيّة.
+
+---
+
+## بند ١٤ — `هرم-غذائي`
+
+> **يخدمُ **سؤالَين** برسمٍ واحد.**
+
+- **اسمُ الملف:** `images/هرم-غذائي.png`
+- **المسار:** **نقطيٌّ** — إجابةُ التحديدِ نسبةٌ مئويةٌ من صندوقِ الرسمِ لا مسار، فالتتبّعُ كلفةٌ بلا مقابل
+- **الهدف:** 3Bh3 — النظامُ الغذائيُّ الكافي والمتنوّع
+- **نسبةُ الـ`viewBox` الحالية:** ٦٠٠×٤٣٠
+
+**الأسئلةُ التي يخدمُها:**
+
+| السؤال | النوع | النصّ | الهدفُ في الرسم |
+|---|---|---|---|
+| `g3s-2-2` #٤ | `hotspot` | اضغَطْ على قاعِدةِ الهَرَمِ الغِذائيِّ: المَجموعةُ الَّتي نَأكُلُ مِنها أَكثَرَ شَيءٍ. | **القاعدة** |
+| `g3s-2-5` #٤ | `hotspot` | اضغَطْ على المَجموعةِ الَّتي نَأكُلُ مِنها أَقَلَّ شَيءٍ. | **القمّة** |
+
+**المناطقُ ولونُ العزلِ والتحييد:**
+
+| المنطقة | المعرّف | لونُ التوليد | المعالجةُ بعدَ التوليد |
+|---|---|---|---|
+| قاعدةُ الهرم | `pyramid-base` | `—` | لا لونَ عزلٍ — الطبقاتُ متمايزةٌ بمواضعِها فيُقاسُ `spot` بالبكسل |
+| قمّةُ الهرم | `pyramid-top` | `—` | كذلك |
+
+**نتيجةُ البوّابة:** ✅ مرّ — مناطقُ تفاعليةٌ ≤ ٤ · حدودٌ مغلقة · بلا تداخل · لونُ عزلٍ فريدٌ لكلِّ منطقة
+
+**البرومبت — عربيّ:**
+
+> أنشئ رسماً تعليمياً لهرمٍ غذائيٍّ من أربعِ طبقاتٍ أفقيّةٍ متساويةِ السماكةِ يعلو بعضُها بعضاً، **وبينَ كلِّ طبقتَينِ فاصلٌ أبيضُ واضحٌ لا تلامُس**. من الأسفلِ إلى الأعلى: الطبقةُ الأولى **الأعرضُ** برتقاليّةٌ فيها رغيفُ خبزٍ وطبقُ أرزٍ وسنبلةُ قمح؛ والثانيةُ خضراءُ فيها تفّاحةٌ وجزرةٌ وعنقودُ عنب؛ والثالثةُ سماويّةٌ فيها سمكةٌ وبيضةٌ وكوبُ حليب؛ والرابعةُ **الأضيقُ وهي القمّةُ** حمراءُ فيها قطعةُ حلوى وكوبُ مشروبٍ غازيّ. الأطعمةُ داخلَ كلِّ طبقةٍ صغيرةٌ واضحةٌ ولا تتجاوزُ حدودَ طبقتِها. بلا أرقامٍ ولا كلماتٍ على الهرم. نسبةُ الصورةِ نحو ١٤:١٠. رسم كرتونيّ متّجهي لامع بأسلوب ملصقات الفضاء، بألوانٍ صريحةٍ مشبعة، لكلِّ جسمٍ تدرّجُ حجمٍ من ثلاثِ إلى أربعِ درجاتٍ من لونِه نفسِه (فاتحةٌ ثمّ أساسيةٌ ثمّ غامقةٌ ثمّ ظِلّ) بحوافَّ فاصلةٍ واضحةٍ بين الدرجاتِ لا مزجٍ ناعم، مع لمعةٍ بيضاءَ عريضةٍ على الأسطحِ المنحنية، وحدٍّ خارجيٍّ أسودَ رفيعٍ واضحٍ ‎#111111‎ مستديرِ الرؤوسِ يحيطُ كلَّ جسمٍ وأجزاءَه الداخلية (خطٌّ نظيفٌ رفيعٌ لا حدٌّ ثقيل)، بأشكالٍ ممتلئةٍ مستديرةٍ بلا زاويةٍ حادّة، والأجسامُ طافيةٌ بلا خطِّ أرضٍ ولا ظلٍّ مُلقًى، وبلا أيِّ ملامحِ وجهٍ على أيِّ شيءٍ إطلاقاً. الخلفيةُ بيضاءُ نقيّةٌ ‎#FFFFFF‎ بلا أيّ نصوصٍ أو تسمياتٍ أو أرقام. صورة واحدة مستقلّة فقط.
+
+**English:**
+
+> Create an educational illustration of a food pyramid made of four horizontal bands of equal thickness stacked on top of each other, **with a clear white gap between every two bands so they never touch**. From bottom to top: the first band is the **widest** and orange, holding a bread loaf, a plate of rice and a wheat ear; the second is green, holding an apple, a carrot and a bunch of grapes; the third is sky-blue, holding a fish, an egg and a glass of milk; the fourth is the **narrowest, the apex**, and red, holding a sweet and a fizzy-drink cup. The foods inside each band are small, clear, and never cross their band. No numbers and no words on the pyramid. Image aspect ratio roughly 14:10. Glossy cartoon vector illustration in a space-sticker style, bold saturated colors, each object shaded with a 3-4 step ramp of its own hue (highlight, base, shade, deep shade) as crisp discrete bands with hard edges and no soft blending, a broad white gloss highlight on curved surfaces, a thin crisp black outline #111111 with rounded caps around every object and its inner parts (a clean fine line, not a heavy border), plump rounded forms with no sharp angles, objects floating with no ground line and no cast shadow, absolutely no facial features on anything. Pure white background #FFFFFF with no text, labels or numbers. One single standalone image only.
+
+**ملاحظاتُ التنفيذ:**
+
+- **بندٌ واحدٌ لسؤالَين** — القاعدةُ هدفُ الأول، والقمّةُ هدفُ الثاني.
+- **والفاصلُ الأبيضُ بين الطبقاتِ شرطٌ لا زينة**: هو الذي يسمحُ بقياسِ حدودِ كلِّ طبقةٍ بالبكسلِ فلا يبتلعُ مستطيلُ القاعدةِ الطبقةَ التي فوقَها.
+- `spot` **مستطيلٌ** في السؤالَين — الطبقةُ شريطٌ عرضيٌّ لا قرص.
+
+---
+
+## بند ١٥ — `حاجات-النبتة`
+
+- **اسمُ الملف:** `images/حاجات-النبتة.png`
+- **المسار:** **نقطيٌّ** — إجابةُ التحديدِ نسبةٌ مئويةٌ من صندوقِ الرسمِ لا مسار، فالتتبّعُ كلفةٌ بلا مقابل
+- **الهدف:** 3Bp2 — حاجةُ النباتِ إلى الضوءِ والماء
+- **نسبةُ الـ`viewBox` الحالية:** ٦٠٠×٤٣٠
+
+**الأسئلةُ التي يخدمُها:**
+
+| السؤال | النوع | النصّ | الهدفُ في الرسم |
+|---|---|---|---|
+| `g3s-1-2` #٤ | `drag-drop` | اسحَبِ اسمَ ما تَحتاجُهُ النَّبتةُ إلى مَكانِهِ في الصّورةِ. | **ثلاثُ نقاطِ ارتساء** |
+
+**المناطقُ ولونُ العزلِ والتحييد:**
+
+| المنطقة | المعرّف | لونُ التوليد | المعالجةُ بعدَ التوليد |
+|---|---|---|---|
+| — | `—` | `—` | خلفيةٌ فحسب: السحبُ في طبقةٍ فوقَها، فلا مناطقَ تفاعليةَ في الرسم |
+
+**نتيجةُ البوّابة:** ✅ مرّ — مناطقُ تفاعليةٌ ≤ ٤ · حدودٌ مغلقة · بلا تداخل · لونُ عزلٍ فريدٌ لكلِّ منطقة
+
+**البرومبت — عربيّ:**
+
+> أنشئ رسماً تعليمياً لمشهدٍ واحدٍ: **نبتةٌ صغيرةٌ في أصيصٍ بنّيٍّ** في وسطِ أسفلِ الإطارِ لها ساقٌ خضراءُ وأربعُ أوراق؛ و**شمسٌ برتقاليّةٌ** في الزاويةِ العليا اليمنى تُرسِلُ ثلاثةَ أشعّةٍ صفراءَ مستقيمةٍ نحوَ النبتة؛ و**مرشّةُ ماءٍ زرقاءُ** في الزاويةِ العليا اليسرى يتساقطُ منها ثلاثُ قطراتٍ زرقاءَ نحوَ الأصيص؛ و**تربةٌ بنّيّةٌ** ظاهرةٌ داخلَ الأصيصِ في أعلاه. الأجسامُ الثلاثةُ (الشمسُ والمرشّةُ والنبتة) **متباعدةٌ لا يلمسُ أحدُها الآخرَ**، وحولَ كلٍّ منها فراغٌ أبيضُ واسع. نسبةُ الصورةِ نحو ١٤:١٠. رسم كرتونيّ متّجهي لامع بأسلوب ملصقات الفضاء، بألوانٍ صريحةٍ مشبعة، لكلِّ جسمٍ تدرّجُ حجمٍ من ثلاثِ إلى أربعِ درجاتٍ من لونِه نفسِه (فاتحةٌ ثمّ أساسيةٌ ثمّ غامقةٌ ثمّ ظِلّ) بحوافَّ فاصلةٍ واضحةٍ بين الدرجاتِ لا مزجٍ ناعم، مع لمعةٍ بيضاءَ عريضةٍ على الأسطحِ المنحنية، وحدٍّ خارجيٍّ أسودَ رفيعٍ واضحٍ ‎#111111‎ مستديرِ الرؤوسِ يحيطُ كلَّ جسمٍ وأجزاءَه الداخلية (خطٌّ نظيفٌ رفيعٌ لا حدٌّ ثقيل)، بأشكالٍ ممتلئةٍ مستديرةٍ بلا زاويةٍ حادّة، والأجسامُ طافيةٌ بلا خطِّ أرضٍ ولا ظلٍّ مُلقًى، وبلا أيِّ ملامحِ وجهٍ على أيِّ شيءٍ إطلاقاً. الخلفيةُ بيضاءُ نقيّةٌ ‎#FFFFFF‎ بلا أيّ نصوصٍ أو تسمياتٍ أو أرقام. صورة واحدة مستقلّة فقط.
+
+**English:**
+
+> Create an educational illustration of one scene: a **small plant in a brown pot** at the bottom centre of the frame with a green stem and four leaves; an **orange sun** in the top right corner sending three straight yellow rays toward the plant; a **blue watering can** in the top left corner with three blue drops falling toward the pot; and **brown soil** visible at the top of the pot. The three objects (sun, watering can, plant) are **well separated and never touch**, with generous white space around each. Image aspect ratio roughly 14:10. Glossy cartoon vector illustration in a space-sticker style, bold saturated colors, each object shaded with a 3-4 step ramp of its own hue (highlight, base, shade, deep shade) as crisp discrete bands with hard edges and no soft blending, a broad white gloss highlight on curved surfaces, a thin crisp black outline #111111 with rounded caps around every object and its inner parts (a clean fine line, not a heavy border), plump rounded forms with no sharp angles, objects floating with no ground line and no cast shadow, absolutely no facial features on anything. Pure white background #FFFFFF with no text, labels or numbers. One single standalone image only.
+
+**ملاحظاتُ التنفيذ:**
+
+- **سؤالُ سحبٍ وإفلات** — الرسمُ **خلفيةٌ** والتفاعلُ في طبقةٍ فوقَها، فينطبقُ عليه «مسموحٌ الاستبدال» بلا تحفّظ.
+- ⚠️ **وتُعادُ إحداثياتُ `dot` الثلاثُ حتماً** — نِسَبٌ من **الصورةِ الجديدةِ** لا من الرسمِ القديم: الشمسُ والمرشّةُ والتربة.
+- ويُراجَعُ التخطيطُ: نسبةُ ١٤:١٠ = ١٫٤ ≥ ١٫٢ فيتحوّلُ إلى **الصفِّ الأفقيّ** تلقائياً (‏`shoogp-ui` §١٫٧‑هـ).
+
+---
+
+## بند ١٦ — `نبتة-في-الظلام`
+
+- **اسمُ الملف:** `images/نبتة-في-الظلام.png`
+- **المسار:** **نقطيٌّ** — إجابةُ التحديدِ نسبةٌ مئويةٌ من صندوقِ الرسمِ لا مسار، فالتتبّعُ كلفةٌ بلا مقابل
+- **الهدف:** 3Bp2 — حاجةُ النباتِ إلى الضوءِ والماء
+- **نسبةُ الـ`viewBox` الحالية:** ٦٤٠×٣٠٠
+
+**الأسئلةُ التي يخدمُها:**
+
+| السؤال | النوع | النصّ | الهدفُ في الرسم |
+|---|---|---|---|
+| `g3s-1-2` #٦ | `find-error` | في هذا المَشهَدِ خَطَأٌ يَمنَعُ النَّبتةَ مِنَ النُّمُوِّ — اضغَطْ عَلَيهِ. | **الصندوقُ المغلقُ فوقَ النبتة** |
+
+**المناطقُ ولونُ العزلِ والتحييد:**
+
+| المنطقة | المعرّف | لونُ التوليد | المعالجةُ بعدَ التوليد |
+|---|---|---|---|
+| الخطأُ المقصود | `error-box` | `#7B2FF2` | يُعادُ إلى **بنّيِّ الكرتونِ** `#B98551` ← `#9A6636` ← `#7A4C22` |
+
+**نتيجةُ البوّابة:** ✅ مرّ — مناطقُ تفاعليةٌ ≤ ٤ · حدودٌ مغلقة · بلا تداخل · لونُ عزلٍ فريدٌ لكلِّ منطقة
+
+**البرومبت — عربيّ:**
+
+> أنشئ رسماً تعليمياً لثلاثةِ أصائصَ متباعدةٍ في صفٍّ أفقيٍّ واحد، بينَ كلِّ اثنَينِ فراغٌ أبيضُ واسعٌ ولا يتلامسان. الأصيصُ الأيمنُ فيه نبتةٌ خضراءُ نضرةٌ وفوقَها شمسٌ صغيرةٌ برتقاليّة؛ والأوسطُ فيه نبتةٌ خضراءُ نضرةٌ وفوقَها مرشّةُ ماءٍ زرقاءُ تسقيها؛ **والأيسرُ نبتتُه مغطّاةٌ تماماً بصندوقٍ مقلوبٍ مغلقٍ يحجبُ عنها الضوءَ، والصندوقُ بلونٍ بنفسجيٍّ مسطّحٍ صريحٍ `#7B2FF2` لا يتكرّرُ في غيرِه**. الأصائصُ الثلاثةُ بنّيّةٌ متماثلة. نسبةُ الصورةِ عريضةٌ نحو ٢١:١٠. رسم كرتونيّ متّجهي لامع بأسلوب ملصقات الفضاء، بألوانٍ صريحةٍ مشبعة، لكلِّ جسمٍ تدرّجُ حجمٍ من ثلاثِ إلى أربعِ درجاتٍ من لونِه نفسِه (فاتحةٌ ثمّ أساسيةٌ ثمّ غامقةٌ ثمّ ظِلّ) بحوافَّ فاصلةٍ واضحةٍ بين الدرجاتِ لا مزجٍ ناعم، مع لمعةٍ بيضاءَ عريضةٍ على الأسطحِ المنحنية، وحدٍّ خارجيٍّ أسودَ رفيعٍ واضحٍ ‎#111111‎ مستديرِ الرؤوسِ يحيطُ كلَّ جسمٍ وأجزاءَه الداخلية (خطٌّ نظيفٌ رفيعٌ لا حدٌّ ثقيل)، بأشكالٍ ممتلئةٍ مستديرةٍ بلا زاويةٍ حادّة، والأجسامُ طافيةٌ بلا خطِّ أرضٍ ولا ظلٍّ مُلقًى، وبلا أيِّ ملامحِ وجهٍ على أيِّ شيءٍ إطلاقاً. الخلفيةُ بيضاءُ نقيّةٌ ‎#FFFFFF‎ بلا أيّ نصوصٍ أو تسمياتٍ أو أرقام. صورة واحدة مستقلّة فقط.
+
+**English:**
+
+> Create an educational illustration of three well-spaced flower pots in one horizontal row, with generous white space between each pair and no touching. The right pot holds a fresh green plant with a small orange sun above it; the middle pot holds a fresh green plant with a blue watering can above it watering it; **the left pot has its plant completely covered by an upside-down closed box that blocks the light from it, and that box is a flat solid purple `#7B2FF2` that appears nowhere else**. The three pots are identical and brown. Image aspect ratio wide, roughly 21:10. Glossy cartoon vector illustration in a space-sticker style, bold saturated colors, each object shaded with a 3-4 step ramp of its own hue (highlight, base, shade, deep shade) as crisp discrete bands with hard edges and no soft blending, a broad white gloss highlight on curved surfaces, a thin crisp black outline #111111 with rounded caps around every object and its inner parts (a clean fine line, not a heavy border), plump rounded forms with no sharp angles, objects floating with no ground line and no cast shadow, absolutely no facial features on anything. Pure white background #FFFFFF with no text, labels or numbers. One single standalone image only.
+
+**ملاحظاتُ التنفيذ:**
+
+- `spot` **مستطيلٌ** — الصندوقُ مكعّبٌ، والدائرةُ حولَه تقتطعُ أركانَه الأربعة.
+- **ويشملُ المستطيلُ الصندوقَ وحدَه لا الأصيصَ تحتَه** — السؤالُ عن الخطأِ وهو الحجب.
+
+---
+
+## بند ١٧ — `أدوات-القياس`
+
+- **اسمُ الملف:** `images/أدوات-القياس.png`
+- **المسار:** **نقطيٌّ** — إجابةُ التحديدِ نسبةٌ مئويةٌ من صندوقِ الرسمِ لا مسار، فالتتبّعُ كلفةٌ بلا مقابل
+- **الهدف:** 3Eo2 — القياسُ بمعدّاتٍ بسيطةٍ وتسجيلُ الملاحظات
+- **نسبةُ الـ`viewBox` الحالية:** ٦٤٠×٣٠٠
+
+**الأسئلةُ التي يخدمُها:**
+
+| السؤال | النوع | النصّ | الهدفُ في الرسم |
+|---|---|---|---|
+| `g3s-1-4` #٤ | `drag-drop` | اسحَبِ اسمَ كُلِّ أَداةٍ إلى ما تَقيسُهُ. | **نقاطُ ارتساءٍ على الأدوات** |
+
+**المناطقُ ولونُ العزلِ والتحييد:**
+
+| المنطقة | المعرّف | لونُ التوليد | المعالجةُ بعدَ التوليد |
+|---|---|---|---|
+| — | `—` | `—` | خلفيةٌ فحسب — السحبُ في طبقةٍ فوقَها |
+
+**نتيجةُ البوّابة:** ✅ مرّ — مناطقُ تفاعليةٌ ≤ ٤ · حدودٌ مغلقة · بلا تداخل · لونُ عزلٍ فريدٌ لكلِّ منطقة
+
+**البرومبت — عربيّ:**
+
+> أنشئ رسماً تعليمياً لثلاثِ أدواتِ قياسٍ متباعدةٍ في صفٍّ أفقيٍّ واحد، بينَ كلِّ اثنتَينِ فراغٌ أبيضُ واسعٌ ولا تتلامسان: **مسطرةٌ** صفراءُ طويلةٌ مستلقيةٌ أفقياً بعلاماتِ تدريجٍ سوداءَ قصيرةٍ على حافّتِها؛ و**ميزانُ مطبخٍ** أبيضُ بقرصٍ دائريٍّ فيه عقربٌ أحمرُ وصحنٌ مسطّحٌ فوقَه؛ و**كوبُ قياسٍ** زجاجيٌّ شفّافٌ فيه ماءٌ أزرقُ إلى نصفِه وعلاماتُ تدريجٍ على جانبِه. الأدواتُ الثلاثُ متساويةُ الحجمِ تقريباً. نسبةُ الصورةِ عريضةٌ نحو ٢١:١٠. رسم كرتونيّ متّجهي لامع بأسلوب ملصقات الفضاء، بألوانٍ صريحةٍ مشبعة، لكلِّ جسمٍ تدرّجُ حجمٍ من ثلاثِ إلى أربعِ درجاتٍ من لونِه نفسِه (فاتحةٌ ثمّ أساسيةٌ ثمّ غامقةٌ ثمّ ظِلّ) بحوافَّ فاصلةٍ واضحةٍ بين الدرجاتِ لا مزجٍ ناعم، مع لمعةٍ بيضاءَ عريضةٍ على الأسطحِ المنحنية، وحدٍّ خارجيٍّ أسودَ رفيعٍ واضحٍ ‎#111111‎ مستديرِ الرؤوسِ يحيطُ كلَّ جسمٍ وأجزاءَه الداخلية (خطٌّ نظيفٌ رفيعٌ لا حدٌّ ثقيل)، بأشكالٍ ممتلئةٍ مستديرةٍ بلا زاويةٍ حادّة، والأجسامُ طافيةٌ بلا خطِّ أرضٍ ولا ظلٍّ مُلقًى، وبلا أيِّ ملامحِ وجهٍ على أيِّ شيءٍ إطلاقاً. الخلفيةُ بيضاءُ نقيّةٌ ‎#FFFFFF‎ بلا أيّ نصوصٍ أو تسمياتٍ أو أرقام. صورة واحدة مستقلّة فقط.
+
+**English:**
+
+> Create an educational illustration of three well-spaced measuring tools in one horizontal row, with generous white space between each pair and no touching: a long yellow **ruler** lying horizontally with short black tick marks along its edge; a white **kitchen scale** with a round dial holding a red needle and a flat pan on top; and a clear glass **measuring cup** half full of blue water with tick marks up its side. The three tools are roughly equal in size. Image aspect ratio wide, roughly 21:10. Glossy cartoon vector illustration in a space-sticker style, bold saturated colors, each object shaded with a 3-4 step ramp of its own hue (highlight, base, shade, deep shade) as crisp discrete bands with hard edges and no soft blending, a broad white gloss highlight on curved surfaces, a thin crisp black outline #111111 with rounded caps around every object and its inner parts (a clean fine line, not a heavy border), plump rounded forms with no sharp angles, objects floating with no ground line and no cast shadow, absolutely no facial features on anything. Pure white background #FFFFFF with no text, labels or numbers. One single standalone image only.
+
+**ملاحظاتُ التنفيذ:**
+
+- ⚠️ **تُعادُ إحداثياتُ `dot` الثلاثُ** — نِسَبٌ من الصورةِ الجديدةِ لا من الرسمِ القديم.
+- النسبةُ ٢٫١ ≥ ١٫٢ فالتخطيطُ **صفٌّ أفقيٌّ** والبطاقاتُ فوقَ الصورة.
+
+---
+
+## بند ١٨ — `سلال-الغذاء`
+
+- **اسمُ الملف:** `images/سلال-الغذاء.png`
+- **المسار:** **نقطيٌّ** — إجابةُ التحديدِ نسبةٌ مئويةٌ من صندوقِ الرسمِ لا مسار، فالتتبّعُ كلفةٌ بلا مقابل
+- **الهدف:** 3Bh3 — النظامُ الغذائيُّ الكافي والمتنوّع
+- **نسبةُ الـ`viewBox` الحالية:** ٦٠٠×٤٣٠
+
+**الأسئلةُ التي يخدمُها:**
+
+| السؤال | النوع | النصّ | الهدفُ في الرسم |
+|---|---|---|---|
+| `g3s-2-1` #٤ | `hotspot` | اضغَطْ على سَلّةِ البُروتيناتِ (اللُّحومِ والأَسماكِ). | **سلّةُ البروتينات** |
+
+**المناطقُ ولونُ العزلِ والتحييد:**
+
+| المنطقة | المعرّف | لونُ التوليد | المعالجةُ بعدَ التوليد |
+|---|---|---|---|
+| سلّةُ البروتينات | `basket-protein` | `#7B2FF2` | تُعادُ إلى **الكهرمانيّ** `#FFA000` ← `#E08000` ← `#C06000` — لونُ السلّةِ لا محتواها |
+
+**نتيجةُ البوّابة:** ✅ مرّ — مناطقُ تفاعليةٌ ≤ ٤ · حدودٌ مغلقة · بلا تداخل · لونُ عزلٍ فريدٌ لكلِّ منطقة
+
+**البرومبت — عربيّ:**
+
+> أنشئ رسماً تعليمياً لأربعِ سلالٍ متباعدةٍ في مربّعٍ (اثنتانِ فوقَ اثنتَين)، بينَ كلِّ سلّتَينِ فراغٌ أبيضُ واسعٌ ولا تتلامسان. كلُّ سلّةٍ سلّةٌ منسوجةٌ مفتوحةٌ يظهرُ فيها طعامُها: الأولى فيها **حبوبٌ** (رغيفُ خبزٍ وسنبلةُ قمحٍ وطبقُ أرز)؛ والثانيةُ فيها **فواكهُ** (تفّاحةٌ وموزةٌ وعنقودُ عنب)؛ والثالثةُ فيها **خضارٌ** (جزرةٌ وطماطمُ وخيارة)؛ **والرابعةُ فيها بروتيناتٌ (سمكةٌ وقطعةُ لحمٍ وبيضةٌ)، وسلّتُها وحدَها بلونٍ بنفسجيٍّ مسطّحٍ صريحٍ `#7B2FF2` لا يتكرّرُ في غيرِها** — أمّا الطعامُ داخلَها فبألوانِه الطبيعية. السلالُ الثلاثُ الأخرى بنّيّةٌ منسوجة. نسبةُ الصورةِ نحو ١٤:١٠. رسم كرتونيّ متّجهي لامع بأسلوب ملصقات الفضاء، بألوانٍ صريحةٍ مشبعة، لكلِّ جسمٍ تدرّجُ حجمٍ من ثلاثِ إلى أربعِ درجاتٍ من لونِه نفسِه (فاتحةٌ ثمّ أساسيةٌ ثمّ غامقةٌ ثمّ ظِلّ) بحوافَّ فاصلةٍ واضحةٍ بين الدرجاتِ لا مزجٍ ناعم، مع لمعةٍ بيضاءَ عريضةٍ على الأسطحِ المنحنية، وحدٍّ خارجيٍّ أسودَ رفيعٍ واضحٍ ‎#111111‎ مستديرِ الرؤوسِ يحيطُ كلَّ جسمٍ وأجزاءَه الداخلية (خطٌّ نظيفٌ رفيعٌ لا حدٌّ ثقيل)، بأشكالٍ ممتلئةٍ مستديرةٍ بلا زاويةٍ حادّة، والأجسامُ طافيةٌ بلا خطِّ أرضٍ ولا ظلٍّ مُلقًى، وبلا أيِّ ملامحِ وجهٍ على أيِّ شيءٍ إطلاقاً. الخلفيةُ بيضاءُ نقيّةٌ ‎#FFFFFF‎ بلا أيّ نصوصٍ أو تسمياتٍ أو أرقام. صورة واحدة مستقلّة فقط.
+
+**English:**
+
+> Create an educational illustration of four well-spaced baskets arranged in a square (two above two), with generous white space between each pair and no touching. Each is an open woven basket showing its food: the first holds **grains** (a bread loaf, a wheat ear, a plate of rice); the second holds **fruit** (an apple, a banana, a bunch of grapes); the third holds **vegetables** (a carrot, a tomato, a cucumber); **the fourth holds proteins (a fish, a piece of meat, an egg), and that basket alone is a flat solid purple `#7B2FF2` appearing nowhere else** — while the food inside it keeps its natural colours. The other three baskets are brown and woven. Image aspect ratio roughly 14:10. Glossy cartoon vector illustration in a space-sticker style, bold saturated colors, each object shaded with a 3-4 step ramp of its own hue (highlight, base, shade, deep shade) as crisp discrete bands with hard edges and no soft blending, a broad white gloss highlight on curved surfaces, a thin crisp black outline #111111 with rounded caps around every object and its inner parts (a clean fine line, not a heavy border), plump rounded forms with no sharp angles, objects floating with no ground line and no cast shadow, absolutely no facial features on anything. Pure white background #FFFFFF with no text, labels or numbers. One single standalone image only.
+
+**ملاحظاتُ التنفيذ:**
+
+- `spot` **مستطيلٌ** يشملُ السلّةَ ومحتواها معاً — السؤالُ عن «سلّةِ البروتينات» فالهدفُ الوحدةُ كلُّها.
+- **ويُفحَصُ ألّا يبلغَ المستطيلُ سلّةً مجاورةً** — الفراغُ الأبيضُ بينَ السلالِ هو ضمانُ ذلك.
+
+---
+
+## بند ١٩ — `وجبة-فيها-ضار`
+
+- **اسمُ الملف:** `images/وجبة-فيها-ضار.png`
+- **المسار:** **نقطيٌّ** — إجابةُ التحديدِ نسبةٌ مئويةٌ من صندوقِ الرسمِ لا مسار، فالتتبّعُ كلفةٌ بلا مقابل
+- **الهدف:** 3Bh4 — أطعمةٌ غنيّةٌ بالسكرِ أو الدهونِ قد تضرُّ بالصحّة
+- **نسبةُ الـ`viewBox` الحالية:** ٦٤٠×٣٠٠
+
+**الأسئلةُ التي يخدمُها:**
+
+| السؤال | النوع | النصّ | الهدفُ في الرسم |
+|---|---|---|---|
+| `g3s-2-3` #٦ | `find-error` | في هذِهِ الوَجبةِ صِنفٌ يَضُرُّ بِالصِّحّةِ إذا أَكثَرْنا مِنهُ — اضغَطْ عَلَيهِ. | **المشروبُ الغازيّ** |
+
+**المناطقُ ولونُ العزلِ والتحييد:**
+
+| المنطقة | المعرّف | لونُ التوليد | المعالجةُ بعدَ التوليد |
+|---|---|---|---|
+| المشروبُ الغازيّ | `drink-soda` | `#7B2FF2` | يُعادُ إلى **الأحمر** `#FF4020` ← `#FF2020` ← `#E02000` |
+
+**نتيجةُ البوّابة:** ✅ مرّ — مناطقُ تفاعليةٌ ≤ ٤ · حدودٌ مغلقة · بلا تداخل · لونُ عزلٍ فريدٌ لكلِّ منطقة
+
+**البرومبت — عربيّ:**
+
+> أنشئ رسماً تعليمياً لأربعةِ أصنافِ طعامٍ متباعدةٍ في صفٍّ أفقيٍّ واحدٍ على سطحٍ خشبيٍّ بنّيٍّ رفيع، بينَ كلِّ صنفَينِ فراغٌ أبيضُ واسعٌ ولا يتلامسان: **تفّاحةٌ** حمراءُ بورقةٍ خضراء؛ و**كوبُ حليبٍ** أبيضُ ممتلئ؛ و**طبقُ سلطةٍ** فيه ورقُ خسٍّ أخضرُ وشريحةُ طماطمَ حمراء؛ **وكوبُ مشروبٍ غازيٍّ كبيرٌ بغطاءٍ وماصّةٍ، وهو وحدَه بلونٍ بنفسجيٍّ مسطّحٍ صريحٍ `#7B2FF2` لا يتكرّرُ في غيرِه**. نسبةُ الصورةِ عريضةٌ نحو ٢١:١٠. رسم كرتونيّ متّجهي لامع بأسلوب ملصقات الفضاء، بألوانٍ صريحةٍ مشبعة، لكلِّ جسمٍ تدرّجُ حجمٍ من ثلاثِ إلى أربعِ درجاتٍ من لونِه نفسِه (فاتحةٌ ثمّ أساسيةٌ ثمّ غامقةٌ ثمّ ظِلّ) بحوافَّ فاصلةٍ واضحةٍ بين الدرجاتِ لا مزجٍ ناعم، مع لمعةٍ بيضاءَ عريضةٍ على الأسطحِ المنحنية، وحدٍّ خارجيٍّ أسودَ رفيعٍ واضحٍ ‎#111111‎ مستديرِ الرؤوسِ يحيطُ كلَّ جسمٍ وأجزاءَه الداخلية (خطٌّ نظيفٌ رفيعٌ لا حدٌّ ثقيل)، بأشكالٍ ممتلئةٍ مستديرةٍ بلا زاويةٍ حادّة، والأجسامُ طافيةٌ بلا خطِّ أرضٍ ولا ظلٍّ مُلقًى، وبلا أيِّ ملامحِ وجهٍ على أيِّ شيءٍ إطلاقاً. الخلفيةُ بيضاءُ نقيّةٌ ‎#FFFFFF‎ بلا أيّ نصوصٍ أو تسمياتٍ أو أرقام. صورة واحدة مستقلّة فقط.
+
+**English:**
+
+> Create an educational illustration of four well-spaced food items in one horizontal row on a thin brown wooden surface, with generous white space between each pair and no touching: a red **apple** with a green leaf; a full white **glass of milk**; a **bowl of salad** with green lettuce and a red tomato slice; **and a large fizzy-drink cup with a lid and a straw, which alone is a flat solid purple `#7B2FF2` appearing nowhere else**. Image aspect ratio wide, roughly 21:10. Glossy cartoon vector illustration in a space-sticker style, bold saturated colors, each object shaded with a 3-4 step ramp of its own hue (highlight, base, shade, deep shade) as crisp discrete bands with hard edges and no soft blending, a broad white gloss highlight on curved surfaces, a thin crisp black outline #111111 with rounded caps around every object and its inner parts (a clean fine line, not a heavy border), plump rounded forms with no sharp angles, objects floating with no ground line and no cast shadow, absolutely no facial features on anything. Pure white background #FFFFFF with no text, labels or numbers. One single standalone image only.
+
+**ملاحظاتُ التنفيذ:**
+
+- `spot` **مستطيلٌ** — الكوبُ أسطوانةٌ طوليّةٌ بغطاءٍ وماصّة، والدائرةُ تقتطعُ أعلاه وأسفلَه.
+- **والماصّةُ داخلَ المستطيلِ** لأنّها جزءٌ من الكوبِ في عينِ التلميذ.
+
+---
+
+## بند ٢٠ — `عادات-تقوي-الجسم`
+
+- **اسمُ الملف:** `images/عادات-تقوي-الجسم.png`
+- **المسار:** **نقطيٌّ** — إجابةُ التحديدِ نسبةٌ مئويةٌ من صندوقِ الرسمِ لا مسار، فالتتبّعُ كلفةٌ بلا مقابل
+- **الهدف:** 3Bh3 — التمارينُ الرياضيةُ والنظامُ الغذائيّ
+- **نسبةُ الـ`viewBox` الحالية:** ٦٤٠×٣٠٠
+
+**الأسئلةُ التي يخدمُها:**
+
+| السؤال | النوع | النصّ | الهدفُ في الرسم |
+|---|---|---|---|
+| `g3s-2-4` #٤ | `hotspot` | اضغَطْ على ما يُقَوّي عَضَلاتِكَ إذا استَعمَلتَهُ كُلَّ يَومٍ. | **الدرّاجةُ أو الكرة** |
+
+**المناطقُ ولونُ العزلِ والتحييد:**
+
+| المنطقة | المعرّف | لونُ التوليد | المعالجةُ بعدَ التوليد |
+|---|---|---|---|
+| الدرّاجة | `habit-bike` | `#7B2FF2` | تُعادُ إلى **الأحمر** `#FF4020` ← `#FF2020` ← `#E02000` ← `#B01800` |
+
+**نتيجةُ البوّابة:** ✅ مرّ — مناطقُ تفاعليةٌ ≤ ٤ · حدودٌ مغلقة · بلا تداخل · لونُ عزلٍ فريدٌ لكلِّ منطقة
+
+**البرومبت — عربيّ:**
+
+> أنشئ رسماً تعليمياً لثلاثةِ أشياءَ متباعدةٍ في صفٍّ أفقيٍّ واحد، بينَ كلِّ اثنَينِ فراغٌ أبيضُ واسعٌ ولا يتلامسان: **جهازُ تلفازٍ** أسودُ بشاشةٍ سماويّةٍ وقاعدةٍ رفيعة؛ و**كيسُ رقائقَ** برتقاليٌّ منتفخٌ مغلق؛ **ودرّاجةٌ هوائيّةٌ** من الجانبِ بعجلتَينِ وإطارٍ ومقودٍ ودوّاسة، **وهي وحدَها بلونٍ بنفسجيٍّ مسطّحٍ صريحٍ `#7B2FF2` يشملُ إطارَها وعجلتَيها لا يتكرّرُ في غيرِها**. نسبةُ الصورةِ عريضةٌ نحو ٢١:١٠. رسم كرتونيّ متّجهي لامع بأسلوب ملصقات الفضاء، بألوانٍ صريحةٍ مشبعة، لكلِّ جسمٍ تدرّجُ حجمٍ من ثلاثِ إلى أربعِ درجاتٍ من لونِه نفسِه (فاتحةٌ ثمّ أساسيةٌ ثمّ غامقةٌ ثمّ ظِلّ) بحوافَّ فاصلةٍ واضحةٍ بين الدرجاتِ لا مزجٍ ناعم، مع لمعةٍ بيضاءَ عريضةٍ على الأسطحِ المنحنية، وحدٍّ خارجيٍّ أسودَ رفيعٍ واضحٍ ‎#111111‎ مستديرِ الرؤوسِ يحيطُ كلَّ جسمٍ وأجزاءَه الداخلية (خطٌّ نظيفٌ رفيعٌ لا حدٌّ ثقيل)، بأشكالٍ ممتلئةٍ مستديرةٍ بلا زاويةٍ حادّة، والأجسامُ طافيةٌ بلا خطِّ أرضٍ ولا ظلٍّ مُلقًى، وبلا أيِّ ملامحِ وجهٍ على أيِّ شيءٍ إطلاقاً. الخلفيةُ بيضاءُ نقيّةٌ ‎#FFFFFF‎ بلا أيّ نصوصٍ أو تسمياتٍ أو أرقام. صورة واحدة مستقلّة فقط.
+
+**English:**
+
+> Create an educational illustration of three well-spaced objects in one horizontal row, with generous white space between each pair and no touching: a black **television** with a sky-blue screen and a thin stand; a puffed closed orange **crisps bag**; and a **bicycle** seen from the side with two wheels, a frame, handlebars and a pedal, **which alone is a flat solid purple `#7B2FF2` covering its frame and both wheels and appearing nowhere else**. Image aspect ratio wide, roughly 21:10. Glossy cartoon vector illustration in a space-sticker style, bold saturated colors, each object shaded with a 3-4 step ramp of its own hue (highlight, base, shade, deep shade) as crisp discrete bands with hard edges and no soft blending, a broad white gloss highlight on curved surfaces, a thin crisp black outline #111111 with rounded caps around every object and its inner parts (a clean fine line, not a heavy border), plump rounded forms with no sharp angles, objects floating with no ground line and no cast shadow, absolutely no facial features on anything. Pure white background #FFFFFF with no text, labels or numbers. One single standalone image only.
+
+**ملاحظاتُ التنفيذ:**
+
+- `spot` **مستطيلٌ** يشملُ الدرّاجةَ كاملةً — عجلتَينِ وإطاراً ومقوداً.
+- ⚠️ **ونصُّ السؤالِ يُراجَعُ عندَ التنفيذ**: هو اليومَ «ما يُقَوّي عَضَلاتِكَ إذا استَعمَلتَهُ كُلَّ يَومٍ» والدرّاجةُ تُحقّقُه.
+
+---
+
+## بند ٢١ — `بذور-تنتشر-بالريح`
+
+- **اسمُ الملف:** `images/بذور-تنتشر-بالريح.png`
+- **المسار:** **نقطيٌّ** — إجابةُ التحديدِ نسبةٌ مئويةٌ من صندوقِ الرسمِ لا مسار، فالتتبّعُ كلفةٌ بلا مقابل
+- **الهدف:** 3Bh1 — العملياتُ الحيويةُ المشتركةُ ومنها التكاثر
+- **نسبةُ الـ`viewBox` الحالية:** ٦٠٠×٣٦٠
+
+**الأسئلةُ التي يخدمُها:**
+
+| السؤال | النوع | النصّ | الهدفُ في الرسم |
+|---|---|---|---|
+| `g3s-3-3` #٤ | `hotspot` | اضغَطْ على ما يَنتَشِرُ مَعَ الرّيحِ لِتَنمُوَ نَباتاتٌ جَديدةٌ. | **بذرةُ الهندباءِ الطائرة** |
+
+**المناطقُ ولونُ العزلِ والتحييد:**
+
+| المنطقة | المعرّف | لونُ التوليد | المعالجةُ بعدَ التوليد |
+|---|---|---|---|
+| بذرةُ الهندباء | `seed-dandelion` | `#7B2FF2` | تُعادُ إلى **الأبيضِ والرماديّ** `#FFFFFF` ← `#C0C0C0` ← `#808080` — فهي زغبٌ أبيض |
+
+**نتيجةُ البوّابة:** ✅ مرّ — مناطقُ تفاعليةٌ ≤ ٤ · حدودٌ مغلقة · بلا تداخل · لونُ عزلٍ فريدٌ لكلِّ منطقة
+
+**البرومبت — عربيّ:**
+
+> أنشئ رسماً تعليمياً لثلاثةِ أشياءَ متباعدةٍ في صفٍّ أفقيٍّ واحد، بينَ كلِّ اثنَينِ فراغٌ أبيضُ واسعٌ ولا يتلامسان: **حجرٌ** رماديٌّ أملسُ مستديرٌ؛ و**تفّاحةٌ** حمراءُ بورقةٍ خضراء؛ **وبذرةُ هندباءَ طائرةٌ** لها ساقٌ رفيعةٌ ينتهي أعلاها بتاجٍ من الزغبِ المتفرّعِ كالمظلّة، مائلةٌ قليلاً كأنّ الريحَ تحملُها، **وهي وحدَها بلونٍ بنفسجيٍّ مسطّحٍ صريحٍ `#7B2FF2` يشملُ زغبَها وساقَها لا يتكرّرُ في غيرِها**. نسبةُ الصورةِ نحو ١٧:١٠. رسم كرتونيّ متّجهي لامع بأسلوب ملصقات الفضاء، بألوانٍ صريحةٍ مشبعة، لكلِّ جسمٍ تدرّجُ حجمٍ من ثلاثِ إلى أربعِ درجاتٍ من لونِه نفسِه (فاتحةٌ ثمّ أساسيةٌ ثمّ غامقةٌ ثمّ ظِلّ) بحوافَّ فاصلةٍ واضحةٍ بين الدرجاتِ لا مزجٍ ناعم، مع لمعةٍ بيضاءَ عريضةٍ على الأسطحِ المنحنية، وحدٍّ خارجيٍّ أسودَ رفيعٍ واضحٍ ‎#111111‎ مستديرِ الرؤوسِ يحيطُ كلَّ جسمٍ وأجزاءَه الداخلية (خطٌّ نظيفٌ رفيعٌ لا حدٌّ ثقيل)، بأشكالٍ ممتلئةٍ مستديرةٍ بلا زاويةٍ حادّة، والأجسامُ طافيةٌ بلا خطِّ أرضٍ ولا ظلٍّ مُلقًى، وبلا أيِّ ملامحِ وجهٍ على أيِّ شيءٍ إطلاقاً. الخلفيةُ بيضاءُ نقيّةٌ ‎#FFFFFF‎ بلا أيّ نصوصٍ أو تسمياتٍ أو أرقام. صورة واحدة مستقلّة فقط.
+
+**English:**
+
+> Create an educational illustration of three well-spaced objects in one horizontal row, with generous white space between each pair and no touching: a smooth round grey **stone**; a red **apple** with a green leaf; and a flying **dandelion seed** with a thin stalk topped by a branching umbrella-like crown of fluff, tilted slightly as if carried by the wind, **which alone is a flat solid purple `#7B2FF2` covering its fluff and stalk and appearing nowhere else**. Image aspect ratio roughly 17:10. Glossy cartoon vector illustration in a space-sticker style, bold saturated colors, each object shaded with a 3-4 step ramp of its own hue (highlight, base, shade, deep shade) as crisp discrete bands with hard edges and no soft blending, a broad white gloss highlight on curved surfaces, a thin crisp black outline #111111 with rounded caps around every object and its inner parts (a clean fine line, not a heavy border), plump rounded forms with no sharp angles, objects floating with no ground line and no cast shadow, absolutely no facial features on anything. Pure white background #FFFFFF with no text, labels or numbers. One single standalone image only.
+
+**ملاحظاتُ التنفيذ:**
+
+- `spot` **مستطيلٌ** يشملُ الزغبَ والساقَ معاً.
+- **وتاجُ الزغبِ متفرّعٌ رفيعٌ** فيُفحَصُ أنّ لونَ العزلِ بلغَ خيوطَه كلَّها قبلَ القياس، وإلّا خرجَ المستطيلُ أصغرَ من البذرة.
+
+---
+
+## بند ٢٢ — `بصمات-الأصابع`
+
+- **اسمُ الملف:** `images/بصمات-الأصابع.png`
+- **المسار:** **نقطيٌّ** — إجابةُ التحديدِ نسبةٌ مئويةٌ من صندوقِ الرسمِ لا مسار، فالتتبّعُ كلفةٌ بلا مقابل
+- **الهدف:** 3Bh6 — تصنيفُ الكائناتِ بسماتٍ بسيطة
+- **نسبةُ الـ`viewBox` الحالية:** ٦٤٠×٣١٠
+
+**الأسئلةُ التي يخدمُها:**
+
+| السؤال | النوع | النصّ | الهدفُ في الرسم |
+|---|---|---|---|
+| `g3s-3-4` #٤ | `hotspot` | اضغَطْ على البَصمةِ الَّتي خُطوطُها تَدورُ حَولَ مَركَزٍ — بَصمةِ الدَّوّاماتِ. | **بصمةُ الدوّامات** |
+
+**المناطقُ ولونُ العزلِ والتحييد:**
+
+| المنطقة | المعرّف | لونُ التوليد | المعالجةُ بعدَ التوليد |
+|---|---|---|---|
+| بصمةُ الدوّامات | `print-whorl` | `#7B2FF2` | تُعادُ إلى **الرماديِّ المعدنيّ** `#C0C0C0` ← `#808080` ← `#606060` كأختِها فلا يفرّقُها لون |
+
+**نتيجةُ البوّابة:** ✅ مرّ — مناطقُ تفاعليةٌ ≤ ٤ · حدودٌ مغلقة · بلا تداخل · لونُ عزلٍ فريدٌ لكلِّ منطقة
+
+**البرومبت — عربيّ:**
+
+> أنشئ رسماً تعليمياً لثلاثِ بصماتِ أصابعَ متباعدةٍ في صفٍّ أفقيٍّ واحد، كلٌّ منها بيضويّةٌ قائمةٌ بحدٍّ خارجيٍّ واضح، بينَ كلِّ بصمتَينِ فراغٌ أبيضُ واسعٌ ولا تتلامسان. **خطوطُ كلِّ بصمةٍ نمطُها مختلفٌ اختلافاً بيّناً**: اليمنى **أقواسٌ** خطوطٌ متوازيةٌ تعبرُ البصمةَ من جانبٍ إلى جانبٍ في تحدّبٍ خفيفٍ بلا مركز؛ والوسطى **عُقَدٌ** خطوطٌ تدخلُ من جانبٍ واحدٍ وتلتفُّ ثمّ تخرجُ من الجانبِ نفسِه؛ **واليسرى دوّاماتٌ خطوطٌ دائريّةٌ متّحدةُ المركزِ تدورُ حولَ نقطةٍ في وسطِ البصمة، وهي وحدَها بلونٍ بنفسجيٍّ مسطّحٍ صريحٍ `#7B2FF2` لا يتكرّرُ في غيرِها**. البصمتانِ الأُخريانِ رماديّتان. نسبةُ الصورةِ عريضةٌ نحو ٢١:١٠. رسم كرتونيّ متّجهي لامع بأسلوب ملصقات الفضاء، بألوانٍ صريحةٍ مشبعة، لكلِّ جسمٍ تدرّجُ حجمٍ من ثلاثِ إلى أربعِ درجاتٍ من لونِه نفسِه (فاتحةٌ ثمّ أساسيةٌ ثمّ غامقةٌ ثمّ ظِلّ) بحوافَّ فاصلةٍ واضحةٍ بين الدرجاتِ لا مزجٍ ناعم، مع لمعةٍ بيضاءَ عريضةٍ على الأسطحِ المنحنية، وحدٍّ خارجيٍّ أسودَ رفيعٍ واضحٍ ‎#111111‎ مستديرِ الرؤوسِ يحيطُ كلَّ جسمٍ وأجزاءَه الداخلية (خطٌّ نظيفٌ رفيعٌ لا حدٌّ ثقيل)، بأشكالٍ ممتلئةٍ مستديرةٍ بلا زاويةٍ حادّة، والأجسامُ طافيةٌ بلا خطِّ أرضٍ ولا ظلٍّ مُلقًى، وبلا أيِّ ملامحِ وجهٍ على أيِّ شيءٍ إطلاقاً. الخلفيةُ بيضاءُ نقيّةٌ ‎#FFFFFF‎ بلا أيّ نصوصٍ أو تسمياتٍ أو أرقام. صورة واحدة مستقلّة فقط.
+
+**English:**
+
+> Create an educational illustration of three well-spaced fingerprints in one horizontal row, each an upright oval with a clear outline, with generous white space between each pair and no touching. **Each print has a clearly different ridge pattern**: the right one is an **arch** — parallel ridges crossing from side to side in a gentle rise, with no centre; the middle one is a **loop** — ridges entering from one side, curving round, and leaving on the same side; **the left one is a whorl — concentric circular ridges turning around a point at the centre of the print, and it alone is a flat solid purple `#7B2FF2` appearing nowhere else**. The other two prints are grey. Image aspect ratio wide, roughly 21:10. Glossy cartoon vector illustration in a space-sticker style, bold saturated colors, each object shaded with a 3-4 step ramp of its own hue (highlight, base, shade, deep shade) as crisp discrete bands with hard edges and no soft blending, a broad white gloss highlight on curved surfaces, a thin crisp black outline #111111 with rounded caps around every object and its inner parts (a clean fine line, not a heavy border), plump rounded forms with no sharp angles, objects floating with no ground line and no cast shadow, absolutely no facial features on anything. Pure white background #FFFFFF with no text, labels or numbers. One single standalone image only.
+
+**ملاحظاتُ التنفيذ:**
+
+- `spot` **مستطيلٌ** — البصمةُ بيضويّةٌ قائمةٌ، ومستطيلُها أدقُّ من دائرةٍ تقتطعُ طرفَيها.
+- ⚠️ **والتحييدُ هنا شرطُ صحّةٍ لا تجميل**: لو بقيَتِ الدوّاماتُ بنفسجيّةً لَعرفَها التلميذُ باللونِ لا بالنمطِ فسقطَ ما يقيسُه السؤال.
