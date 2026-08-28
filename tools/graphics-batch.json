@@ -28,6 +28,15 @@
     "    ← يتخطّى البناءَ كلَّه. يُستعمَلُ حينَ تُغري قائمةُ الهيكسات النموذجَ",
     "      برسمِ لوحةِ ألوانٍ داخلَ الصورة (وقعَ فعلاً مع رسمةِ العين)."
   ],
-  "batchId": "2026-08-28-none",
-  "items": []
+  "batchId": "2026-08-28-dini-aqrab-dhib",
+  "items": [
+    {
+      "name": "dini-aqrab",
+      "subject": "a single scorpion seen from directly above, with a segmented body, two large front claws and a curved tail arched over its back ending in a stinger, eight legs"
+    },
+    {
+      "name": "dini-dhib",
+      "subject": "a single wolf standing in side profile, with pointed ears, a bushy tail and four legs, its head completely blank with no eyes, no nose and no mouth"
+    }
+  ]
 }
