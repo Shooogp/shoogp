@@ -1511,7 +1511,10 @@ function renderTokenOrder(q, body, fb, cfg){
    عقدة مركزية تتفرّع إلى فروع، لكلّ فرع عنوان ثابت وخانة فارغة يسحب إليها الطالب الكلمة الصحيحة
    من البنك (فأرة + لمس على السبورة). تُرسم خطوط منحنية من المركز إلى كل فرع وتُحدَّث ديناميكياً.
    تُحرّك بطاقة الكلمة نفسها إلى الخانة (تدعم التكرار)؛ نقر الخانة الممتلئة يعيد كلمتها للبنك.
-   عند التحقّق: الخانة الصحيحة خضراء والخاطئة حمراء */
+   عند التحقّق: الخانة الصحيحة خضراء والخاطئة حمراء
+   ▸ **ويقبل `pics` كبقيّة أنواع البطاقات** (٢٠٢٦-٠٨-٢٨): البطاقةُ **تنتقلُ بعينِها**
+     إلى الخانة (‏`slot.appendChild(dragged)`) فيسافرُ الرسمُ معها بلا منطقٍ إضافيّ،
+     والتحقّقُ يقرأُ `data-w` لا نصَّ البطاقة فلا يتأثّر. */
 function renderMindmap(q, body, fb){
   const branches=q.branches||[];
   const bankWords=shuffle(branches.map(b=>b.answer).concat(q.distractors||[]));
@@ -1523,7 +1526,8 @@ function renderMindmap(q, body, fb){
     `<div class="mm-center">${q.center||''}</div>`+
     `<div class="mm-branches">${branchesHtml}</div></div>`+
     `<div class="bank mmbank"><div class="bt">الكلمات:</div><div class="chips mmchips">`+
-    bankWords.map(w=>`<div class="chip mmchip" draggable="true" data-w="${w}">${w}</div>`).join('')+
+    bankWords.map(w=>{const f=qFace(q,w);
+      return `<div class="chip mmchip${f.cls}" draggable="true" data-w="${w}">${f.html}</div>`;}).join('')+
     `</div></div></div>`+
     `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
   // رسم خطوط منحنية من أسفل العقدة المركزية إلى أعلى كل فرع (دقيقة على كل الأحجام)
