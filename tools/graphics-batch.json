@@ -28,6 +28,35 @@
     "    ← يتخطّى البناءَ كلَّه. يُستعمَلُ حينَ تُغري قائمةُ الهيكسات النموذجَ",
     "      برسمِ لوحةِ ألوانٍ داخلَ الصورة (وقعَ فعلاً مع رسمةِ العين)."
   ],
-  "batchId": "—",
-  "items": []
+  "batchId": "2026-08-28-mindmap",
+  "items": [
+    {
+      "name": "mm-aqras",
+      "subject": "a small pile of round medicine tablets, three or four flat white and light-blue pills stacked and overlapping, each a plain smooth disc with a score line across it"
+    },
+    {
+      "name": "mm-marham",
+      "subject": "one closed ointment tube lying at a slight angle, a soft squeezable tube with a rounded body, a folded flat crimped end, and a small white screw cap at the nozzle"
+    },
+    {
+      "name": "mm-sharab",
+      "subject": "one bottle of liquid medicine syrup standing upright, a rounded glass bottle of pink liquid with a white screw cap and a plain blank label panel with no writing, and one small dosing spoon leaning beside it"
+    },
+    {
+      "name": "mm-tabgh",
+      "subject": "three dried tobacco leaves tied together in a small bundle, broad pointed leaves in dry brown and olive tones with visible leaf veins, clearly dried plant leaves and nothing else — no cigarette, no pipe, no smoke, no packet"
+    },
+    {
+      "name": "mm-qawqaa",
+      "subject": "one empty snail shell on its own with no animal inside, a rounded spiral shell in brown and cream bands seen from the side, showing the coiled spiral clearly"
+    },
+    {
+      "name": "mm-asnan",
+      "subject": "a row of five human teeth standing side by side, plain white teeth each with a rounded crown and a short root below, seen from the front, with no gums, no mouth and no face"
+    },
+    {
+      "name": "mm-reeh",
+      "subject": "a gust of wind on its own, three long curved sweeping swirl lines in pale blue and white that spiral and taper to a point, drawn as the familiar wind symbol with nothing else in the picture"
+    }
+  ]
 }
