@@ -29883,6 +29883,7 @@ window.QUESTIONS = {
 
     {
       type: "matching",
+      pics: "a",
       objective: "أَنْ يَتَحَدَّثَ بِجُمَلٍ سَليمَةٍ عَنْ مَضْمونِ اللَّوْحَةِ الْمَعْروضَةِ",
       level: "reasoning",
       prompt: "صِلْ كُلَّ أَداةٍ بِعَمَلِها.",
