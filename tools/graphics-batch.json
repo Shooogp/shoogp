@@ -28,6 +28,27 @@
     "    ← يتخطّى البناءَ كلَّه. يُستعمَلُ حينَ تُغري قائمةُ الهيكسات النموذجَ",
     "      برسمِ لوحةِ ألوانٍ داخلَ الصورة (وقعَ فعلاً مع رسمةِ العين)."
   ],
-  "batchId": "—",
-  "items": []
+  "batchId": "2026-08-28-g34-matching",
+  "items": [
+    {
+      "name": "g34-thuban",
+      "subject": "one snake seen from the side, a long green body coiled in a smooth S curve with a lighter belly and a small forked red tongue at the front of its head"
+    },
+    {
+      "name": "g34-fakhth",
+      "subject": "one human thigh bone (femur) on its own, a long straight white bone with a rounded ball head at the top and two rounded knobs at the bottom, clearly much longer than it is wide"
+    },
+    {
+      "name": "g34-asabi",
+      "subject": "the bones of one human hand seen from above, showing the small short finger bones in five fingers, all white, clearly a group of many short little bones"
+    },
+    {
+      "name": "g34-jumjuma",
+      "subject": "one human skull seen from the side, a smooth rounded white dome with a round eye socket opening and a jaw below, clearly a broad flat curved bone plate"
+    },
+    {
+      "name": "g34-faqara",
+      "subject": "one single spine vertebra bone on its own, seen from above at a slight angle, a white ring-shaped bone with a large round hole in its middle and several short irregular bony spikes sticking out around it in different directions"
+    }
+  ]
 }
