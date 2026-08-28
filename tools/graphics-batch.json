@@ -28,6 +28,15 @@
     "    ← يتخطّى البناءَ كلَّه. يُستعمَلُ حينَ تُغري قائمةُ الهيكسات النموذجَ",
     "      برسمِ لوحةِ ألوانٍ داخلَ الصورة (وقعَ فعلاً مع رسمةِ العين)."
   ],
-  "batchId": "2026-08-28-none",
-  "items": []
+  "batchId": "2026-08-28-arabic-2",
+  "items": [
+    {
+      "name": "ar-samgh",
+      "prompt": "Create an educational illustration of ONE glue stick standing upright with its cap off — a short cylindrical tube with a twist base at the bottom and a rounded column of white glue rising out of the open top. It must clearly be a glue stick, not a pen and not a bottle.\n\nCOLOUR — strictest requirement: the ENTIRE object uses ONE hue and nothing else, in this four-step ramp: highlight #FFA000, base #E08000, shade #C06000, deep shade #984800. Do NOT give different parts different colours. Do NOT paint a colour palette, swatch, stripe or sample bar anywhere in the image. There is no blue, green, grey or brown anywhere in the picture.\n\nGlossy cartoon vector illustration in a space-sticker style, the four steps rendered as crisp discrete bands with hard edges and no soft blending, a broad white gloss highlight on curved surfaces, a thin crisp black outline #111111 with rounded caps around the object and each of its inner parts (a clean fine line, not a heavy border), plump rounded forms with no sharp angles, the object floating with no ground line and no cast shadow, absolutely no facial features on anything. Pure white background #FFFFFF with no text, labels, numbers or shadows. One single standalone image only."
+    },
+    {
+      "name": "ar-miqass",
+      "prompt": "Create an educational illustration of ONE pair of scissors seen flat from the front, blades open in a narrow V shape, with two round finger loops at the handle end and a single round pivot screw where the blades cross. The two blades are the same grey metal and the two loops are the same colour as each other.\n\nCOLOUR — strictest requirement: the ENTIRE object uses ONE hue and nothing else, in this four-step ramp: highlight #FF4020, base #FF2020, shade #E02000, deep shade #B01800. Do NOT give different parts different colours. Do NOT paint a colour palette, swatch, stripe or sample bar anywhere in the image. There is no blue, green, yellow or brown anywhere in the picture.\n\nGlossy cartoon vector illustration in a space-sticker style, the four steps rendered as crisp discrete bands with hard edges and no soft blending, a broad white gloss highlight on curved surfaces, a thin crisp black outline #111111 with rounded caps around the object and each of its inner parts (a clean fine line, not a heavy border), plump rounded forms with no sharp angles, the object floating with no ground line and no cast shadow, absolutely no facial features on anything. Pure white background #FFFFFF with no text, labels, numbers or shadows. One single standalone image only."
+    }
+  ]
 }
