@@ -23260,6 +23260,7 @@ window.QUESTIONS = {
     //    يقولُه الكتابُ في ص ١٨ («الْعَقْرَبُ مَخْلوقٌ خَلَقَهُ اللهُ… يُؤْذي»).
     {
       type: "classify",
+      pics: true,
       objective: "يستعيذ بالله تعالى من الشر",
       level: "application",
       prompt: "صَنِّفْ كُلَّ مَخْلوقٍ.",
