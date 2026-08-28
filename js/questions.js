@@ -11523,48 +11523,8 @@ window.QUESTIONS = {
       level: "application",
       prompt: "اضغَطْ على الكائِنِ الحَيِّ.",
       bg: "#eef7ff",
-      spot: { x: 17.7, y: 50, r: 18 },
-      svg: `<svg viewBox="0 0 620 320" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="فراشة وحاسوب وصخرة">
-        <g stroke="#111111" stroke-width="3">
-          <path d="M100,112 C56,62 20,72 20,112 C20,150 58,166 100,154 Z" fill="#FF8000"/>
-          <path d="M120,112 C164,62 200,72 200,112 C200,150 162,166 120,154 Z" fill="#FF8000"/>
-          <path d="M100,168 C64,178 38,200 48,230 C58,256 92,250 104,214 Z" fill="#E04000"/>
-          <path d="M120,168 C156,178 182,200 172,230 C162,256 128,250 116,214 Z" fill="#E04000"/>
-          <path d="M96,118 C66,90 38,96 38,116 C38,140 64,150 96,144 Z" fill="#FFA000" stroke-width="2"/>
-          <path d="M124,118 C154,90 182,96 182,116 C182,140 156,150 124,144 Z" fill="#FFA000" stroke-width="2"/>
-          <circle cx="62" cy="118" r="9" fill="#FFFFC0" stroke-width="2"/>
-          <circle cx="158" cy="118" r="9" fill="#FFFFC0" stroke-width="2"/>
-          <circle cx="72" cy="214" r="8" fill="#FF8000" stroke-width="2"/>
-          <circle cx="148" cy="214" r="8" fill="#FF8000" stroke-width="2"/>
-          <rect x="101" y="94" width="18" height="130" rx="9" fill="#606060"/>
-          <path d="M106,102 L106,214" stroke="#C0C0C0" stroke-width="4" fill="none"/>
-          <path d="M104,94 C96,70 86,60 74,56" fill="none"/>
-          <path d="M116,94 C124,70 134,60 146,56" fill="none"/>
-          <circle cx="72" cy="54" r="6" fill="#606060"/>
-          <circle cx="148" cy="54" r="6" fill="#606060"/>
-
-          <rect x="228" y="58" width="164" height="124" rx="14" fill="#808080"/>
-          <rect x="242" y="72" width="136" height="96" rx="8" fill="#40C0FF" stroke-width="2"/>
-          <path d="M250,76 L274,76 L250,124 Z" fill="#FFFFFF" stroke="none" opacity=".55"/>
-          <path d="M242,138 L378,138 L378,160 A8,8 0 0 1 370,168 L250,168 A8,8 0 0 1 242,160 Z" fill="#2080E0" stroke-width="2"/>
-          <rect x="292" y="182" width="36" height="26" fill="#606060"/>
-          <rect x="254" y="208" width="112" height="16" rx="8" fill="#606060"/>
-          <rect x="222" y="238" width="176" height="34" rx="10" fill="#C0C0C0"/>
-          <g stroke-width="2" fill="#808080">
-            <rect x="234" y="248" width="20" height="14" rx="3"/>
-            <rect x="262" y="248" width="20" height="14" rx="3"/>
-            <rect x="290" y="248" width="20" height="14" rx="3"/>
-            <rect x="318" y="248" width="20" height="14" rx="3"/>
-            <rect x="346" y="248" width="40" height="14" rx="3"/>
-          </g>
-
-          <path d="M424,232 C412,206 424,174 452,156 C478,138 514,132 544,144 C574,156 590,182 588,208 C586,232 566,248 540,250 L452,250 C436,250 428,244 424,232 Z" fill="#808080"/>
-          <path d="M428,208 C430,182 452,160 484,150 C514,141 548,146 570,166 C548,176 514,172 484,182 C456,191 436,198 428,208 Z" fill="#C0C0C0" stroke-width="2"/>
-          <path d="M434,240 C450,248 476,252 506,250 L540,250 C562,248 578,240 585,224 C558,236 514,240 474,236 C456,234 442,236 434,240 Z" fill="#606060" stroke-width="2"/>
-          <path d="M504,166 L516,196 L502,220" fill="none" stroke-width="3"/>
-          <path d="M452,180 C466,170 482,166 496,168" fill="none" stroke="#FFFFFF" stroke-width="5" opacity=".5"/>
-        </g>
-      </svg>`
+      spot: { x: 83.0, y: 49.9, w: 28.2, h: 47.6 },
+      svg: "<svg viewBox='0 0 900 429' xmlns='http://www.w3.org/2000/svg'><image href='images/حي-وغير-حي.png' x='0' y='0' width='900' height='429'/></svg>",
     },
 
     // ⑤ التصنيف في مجموعات — استدلال — 3Bh2
@@ -11637,48 +11597,8 @@ window.QUESTIONS = {
       level: "application",
       prompt: "اضغَطْ على مَرحَلةِ البَذرةِ.",
       bg: "#f3faee",
-      spot: { x: 87, y: 52, r: 11 },
-      svg: `<svg viewBox="0 0 700 330" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="أربع مراحل لنمو النبتة">
-        <g stroke="#111111" stroke-width="3" font-family="Cairo, Tajawal, sans-serif">
-          <ellipse cx="609" cy="172" rx="27" ry="36" fill="#C06000"/>
-          <path d="M609,136 C592,146 586,164 590,182 C594,198 604,206 609,208 Z" fill="#E08000" stroke-width="2"/>
-          <ellipse cx="600" cy="152" rx="7" ry="11" fill="#FFFFFF" stroke="none" opacity=".55"/>
-          <text x="609" y="290" font-size="34" font-weight="700" text-anchor="middle" fill="#2f3a2c" stroke="none">١</text>
-
-          <ellipse cx="437" cy="186" rx="24" ry="32" fill="#C06000"/>
-          <path d="M437,154 C422,163 417,179 421,194 C425,207 433,214 437,216 Z" fill="#E08000" stroke-width="2"/>
-          <path d="M437,154 C437,138 434,126 428,116" fill="none"/>
-          <path d="M428,116 C414,110 406,116 404,126 C412,132 424,128 428,116 Z" fill="#80C020" stroke-width="2"/>
-          <path d="M437,218 C437,236 442,250 452,262" fill="none"/>
-          <path d="M437,218 C433,236 426,248 414,258" fill="none"/>
-          <text x="437" y="290" font-size="34" font-weight="700" text-anchor="middle" fill="#2f3a2c" stroke="none">٢</text>
-
-          <path d="M264,244 C264,196 268,164 274,132" fill="none" stroke-width="7"/>
-          <path d="M270,178 C246,164 226,168 218,182 C232,196 256,194 270,178 Z" fill="#60C020"/>
-          <path d="M270,196 C294,182 314,186 322,200 C308,214 284,212 270,196 Z" fill="#80C020"/>
-          <path d="M274,148 C258,138 244,142 240,152 C250,162 266,160 274,148 Z" fill="#80C020" stroke-width="2"/>
-          <path d="M264,244 C258,258 250,266 240,272" fill="none"/>
-          <path d="M264,244 C270,258 278,266 288,272" fill="none"/>
-          <text x="264" y="304" font-size="34" font-weight="700" text-anchor="middle" fill="#2f3a2c" stroke="none">٣</text>
-
-          <path d="M92,254 C92,200 96,158 100,112" fill="none" stroke-width="7"/>
-          <path d="M96,168 C70,152 48,156 40,172 C56,188 82,186 96,168 Z" fill="#60C020"/>
-          <path d="M98,190 C124,174 146,178 154,194 C138,210 112,208 98,190 Z" fill="#80C020"/>
-          <path d="M96,146 C78,134 62,138 58,150 C70,162 88,160 96,146 Z" fill="#4A9018" stroke-width="2"/>
-          <circle cx="100" cy="88" r="26" fill="#FFA000"/>
-          <g fill="#FF8000" stroke-width="2">
-            <ellipse cx="100" cy="50" rx="16" ry="22"/>
-            <ellipse cx="138" cy="88" rx="22" ry="16"/>
-            <ellipse cx="100" cy="126" rx="16" ry="22"/>
-            <ellipse cx="62" cy="88" rx="22" ry="16"/>
-          </g>
-          <circle cx="100" cy="88" r="26" fill="#FFA000"/>
-          <circle cx="100" cy="88" r="14" fill="#FFFFC0" stroke-width="2"/>
-          <path d="M92,254 C86,266 78,274 68,280" fill="none"/>
-          <path d="M92,254 C98,266 106,274 116,280" fill="none"/>
-          <text x="92" y="312" font-size="34" font-weight="700" text-anchor="middle" fill="#2f3a2c" stroke="none">٤</text>
-        </g>
-      </svg>`
+      spot: { x: 91.8, y: 57.9, w: 10.7, h: 32.6 },
+      svg: "<svg viewBox='0 0 900 442' xmlns='http://www.w3.org/2000/svg'><image href='images/مراحل-نمو-النبتة.png' x='0' y='0' width='900' height='442'/></svg>",
     },
 
     // ⑤ الترتيب التسلسلي — استدلال — 3Bh1
@@ -11822,35 +11742,8 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "إحدى النَّبتَتَينِ تَميلُ في الاتِّجاهِ الخَطأِ — اضغَطْ عَلَيها.",
       bg: "#fdf9ee",
-      spot: { x: 12.5, y: 52, r: 14 },
-      svg: `<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="نبتتان بجانب نافذة إحداهما تميل بعيداً عن الضوء">
-        <g stroke="#111111" stroke-width="3">
-          <rect x="470" y="40" width="150" height="240" rx="12" fill="#40C0FF"/>
-          <path d="M482,52 L546,52 L482,180 Z" fill="#FFFFFF" stroke="none" opacity=".5"/>
-          <path d="M545,40 L545,280" fill="none" stroke-width="5"/>
-          <path d="M470,160 L620,160" fill="none" stroke-width="5"/>
-          <rect x="470" y="40" width="150" height="240" rx="12" fill="none"/>
-          <g fill="none" stroke="#E0C060" stroke-width="6" opacity=".9">
-            <path d="M452,110 L392,132"/>
-            <path d="M452,160 L392,168"/>
-            <path d="M452,210 L392,204"/>
-          </g>
-
-          <rect x="272" y="290" width="112" height="76" rx="10" fill="#C06000"/>
-          <rect x="264" y="272" width="128" height="26" rx="8" fill="#E08000" stroke-width="2"/>
-          <path d="M328,272 C338,232 356,204 384,186" fill="none" stroke-width="8"/>
-          <path d="M348,224 C376,208 402,212 412,228 C392,248 362,244 348,224 Z" fill="#60C020"/>
-          <path d="M336,254 C312,242 290,246 282,260 C300,276 326,272 336,254 Z" fill="#80C020"/>
-          <path d="M384,186 C374,166 380,148 396,140 C408,154 400,176 384,186 Z" fill="#4A9018"/>
-
-          <rect x="60" y="290" width="112" height="76" rx="10" fill="#C06000"/>
-          <rect x="52" y="272" width="128" height="26" rx="8" fill="#E08000" stroke-width="2"/>
-          <path d="M116,272 C106,232 88,204 60,186" fill="none" stroke-width="8"/>
-          <path d="M96,224 C68,208 42,212 32,228 C52,248 82,244 96,224 Z" fill="#60C020"/>
-          <path d="M108,254 C132,242 154,246 162,260 C144,276 118,272 108,254 Z" fill="#80C020"/>
-          <path d="M60,186 C70,166 64,148 48,140 C36,154 44,176 60,186 Z" fill="#4A9018"/>
-        </g>
-      </svg>`
+      spot: { x: 19.1, y: 56.8, w: 32.7, h: 76.6 },
+      svg: "<svg viewBox='0 0 900 534' xmlns='http://www.w3.org/2000/svg'><image href='images/نبتتان-نحو-الضوء.png' x='0' y='0' width='900' height='534'/></svg>",
     }
 
   ],
@@ -12010,61 +11903,8 @@ window.QUESTIONS = {
       level: "application",
       prompt: "اضغَطْ على الحَيَوانِ ذي الحَراشِفِ.",
       bg: "#eef7ff",
-      spot: { x: 17, y: 50, r: 17 },
-      svg: `<svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="سمكة ودبّ وطائر">
-        <g stroke="#111111" stroke-width="3">
-          <path d="M40,150 C40,110 78,84 118,84 C158,84 190,110 196,150 C190,190 158,216 118,216 C78,216 40,190 40,150 Z" fill="#00A0E0"/>
-          <path d="M40,150 C40,110 78,84 118,84 L118,216 C78,216 40,190 40,150 Z" fill="#40C0FF" stroke="none"/>
-          <path d="M40,150 C40,110 78,84 118,84 C158,84 190,110 196,150 C190,190 158,216 118,216 C78,216 40,190 40,150 Z" fill="none"/>
-          <path d="M196,150 L228,118 L222,150 L228,182 Z" fill="#0080C0"/>
-          <path d="M100,84 C104,58 118,44 136,40 C140,58 132,76 118,86 Z" fill="#0080C0" stroke-width="2"/>
-          <path d="M96,216 C100,238 112,250 128,254 C132,238 124,222 112,214 Z" fill="#0080C0" stroke-width="2"/>
-          <g fill="none" stroke="#0060A0" stroke-width="3">
-            <path d="M84,110 C96,126 96,174 84,190"/>
-            <path d="M116,102 C130,122 130,178 116,198"/>
-            <path d="M148,108 C162,126 162,174 148,192"/>
-          </g>
-          <path d="M64,104 C58,120 56,142 58,158" fill="none" stroke-width="4"/>
-          <ellipse cx="78" cy="122" rx="14" ry="8" fill="#FFFFFF" stroke="none" opacity=".55" transform="rotate(-24 78 122)"/>
-
-          <circle cx="304" cy="70" r="17" fill="#984800"/>
-          <circle cx="368" cy="70" r="17" fill="#984800"/>
-          <circle cx="304" cy="70" r="8" fill="#C06000" stroke-width="2"/>
-          <circle cx="368" cy="70" r="8" fill="#C06000" stroke-width="2"/>
-          <circle cx="336" cy="104" r="42" fill="#C06000"/>
-          <path d="M336,62 A42,42 0 0 0 336,146 Z" fill="#E08000" stroke="none"/>
-          <circle cx="336" cy="104" r="42" fill="none"/>
-          <ellipse cx="336" cy="196" rx="68" ry="58" fill="#C06000"/>
-          <path d="M336,138 A68,58 0 0 0 336,254 Z" fill="#E08000" stroke="none"/>
-          <ellipse cx="336" cy="196" rx="68" ry="58" fill="none"/>
-          <g fill="#984800" stroke-width="2">
-            <ellipse cx="302" cy="248" rx="21" ry="16"/>
-            <ellipse cx="370" cy="248" rx="21" ry="16"/>
-          </g>
-          <g fill="none" stroke="#984800" stroke-width="3">
-            <path d="M288,168 C294,178 294,198 288,208"/>
-            <path d="M302,158 C310,172 310,204 302,218"/>
-          </g>
-          <ellipse cx="316" cy="86" rx="12" ry="8" fill="#FFFFFF" stroke="none" opacity=".5" transform="rotate(-28 316 86)"/>
-
-          <path d="M498,190 L436,172 L446,192 L432,212 L496,214 Z" fill="#2080E0"/>
-          <g fill="#E0C060" stroke-width="2">
-            <path d="M528,228 L528,264 A8,8 0 0 0 544,264 L544,228 Z"/>
-            <path d="M566,228 L566,264 A8,8 0 0 0 582,264 L582,228 Z"/>
-          </g>
-          <path d="M576,74 C578,56 590,46 604,46 C600,62 594,72 586,82 Z" fill="#00A0E0" stroke-width="2"/>
-          <circle cx="580" cy="106" r="34" fill="#40C0FF"/>
-          <ellipse cx="552" cy="182" rx="66" ry="56" fill="#40C0FF"/>
-          <path d="M552,126 A66,56 0 0 0 552,238 Z" fill="#20A0FF" stroke="none"/>
-          <ellipse cx="552" cy="182" rx="66" ry="56" fill="none"/>
-          <path d="M514,164 C546,148 582,156 596,180 C570,202 530,196 514,164 Z" fill="#2080E0"/>
-          <g fill="none" stroke="#1060A0" stroke-width="3">
-            <path d="M524,170 C548,162 574,168 588,182"/>
-            <path d="M522,182 C546,176 570,180 584,194"/>
-          </g>
-          <ellipse cx="566" cy="92" rx="10" ry="7" fill="#FFFFFF" stroke="none" opacity=".5" transform="rotate(-30 566 92)"/>
-        </g>
-      </svg>`
+      spot: { x: 81.4, y: 48.7, w: 31.4, h: 49.4 },
+      svg: "<svg viewBox='0 0 900 429' xmlns='http://www.w3.org/2000/svg'><image href='images/حراشف-فرو-ريش.png' x='0' y='0' width='900' height='429'/></svg>",
     },
 
     // ⑤ التصنيف في مجموعات — استدلال — 3Bh6
@@ -12138,48 +11978,8 @@ window.QUESTIONS = {
       level: "application",
       prompt: "اضغَطْ على الشَّيءِ غَيرِ الحَيِّ الَّذي يَعمَلُ بِالكَهرَباءِ.",
       bg: "#eef7ff",
-      spot: { x: 50, y: 37.5, w: 26.5, h: 38.8 },
-      svg: `<svg viewBox="0 0 620 320" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="فراشة وحاسوب وصخرة">
-        <g stroke="#111111" stroke-width="3">
-          <path d="M100,112 C56,62 20,72 20,112 C20,150 58,166 100,154 Z" fill="#FF8000"/>
-          <path d="M120,112 C164,62 200,72 200,112 C200,150 162,166 120,154 Z" fill="#FF8000"/>
-          <path d="M100,168 C64,178 38,200 48,230 C58,256 92,250 104,214 Z" fill="#E04000"/>
-          <path d="M120,168 C156,178 182,200 172,230 C162,256 128,250 116,214 Z" fill="#E04000"/>
-          <path d="M96,118 C66,90 38,96 38,116 C38,140 64,150 96,144 Z" fill="#FFA000" stroke-width="2"/>
-          <path d="M124,118 C154,90 182,96 182,116 C182,140 156,150 124,144 Z" fill="#FFA000" stroke-width="2"/>
-          <circle cx="62" cy="118" r="9" fill="#FFFFC0" stroke-width="2"/>
-          <circle cx="158" cy="118" r="9" fill="#FFFFC0" stroke-width="2"/>
-          <circle cx="72" cy="214" r="8" fill="#FF8000" stroke-width="2"/>
-          <circle cx="148" cy="214" r="8" fill="#FF8000" stroke-width="2"/>
-          <rect x="101" y="94" width="18" height="130" rx="9" fill="#606060"/>
-          <path d="M106,102 L106,214" stroke="#C0C0C0" stroke-width="4" fill="none"/>
-          <path d="M104,94 C96,70 86,60 74,56" fill="none"/>
-          <path d="M116,94 C124,70 134,60 146,56" fill="none"/>
-          <circle cx="72" cy="54" r="6" fill="#606060"/>
-          <circle cx="148" cy="54" r="6" fill="#606060"/>
-
-          <rect x="228" y="58" width="164" height="124" rx="14" fill="#808080"/>
-          <rect x="242" y="72" width="136" height="96" rx="8" fill="#40C0FF" stroke-width="2"/>
-          <path d="M250,76 L274,76 L250,124 Z" fill="#FFFFFF" stroke="none" opacity=".55"/>
-          <path d="M242,138 L378,138 L378,160 A8,8 0 0 1 370,168 L250,168 A8,8 0 0 1 242,160 Z" fill="#2080E0" stroke-width="2"/>
-          <rect x="292" y="182" width="36" height="26" fill="#606060"/>
-          <rect x="254" y="208" width="112" height="16" rx="8" fill="#606060"/>
-          <rect x="222" y="238" width="176" height="34" rx="10" fill="#C0C0C0"/>
-          <g stroke-width="2" fill="#808080">
-            <rect x="234" y="248" width="20" height="14" rx="3"/>
-            <rect x="262" y="248" width="20" height="14" rx="3"/>
-            <rect x="290" y="248" width="20" height="14" rx="3"/>
-            <rect x="318" y="248" width="20" height="14" rx="3"/>
-            <rect x="346" y="248" width="40" height="14" rx="3"/>
-          </g>
-
-          <path d="M424,232 C412,206 424,174 452,156 C478,138 514,132 544,144 C574,156 590,182 588,208 C586,232 566,248 540,250 L452,250 C436,250 428,244 424,232 Z" fill="#808080"/>
-          <path d="M428,208 C430,182 452,160 484,150 C514,141 548,146 570,166 C548,176 514,172 484,182 C456,191 436,198 428,208 Z" fill="#C0C0C0" stroke-width="2"/>
-          <path d="M434,240 C450,248 476,252 506,250 L540,250 C562,248 578,240 585,224 C558,236 514,240 474,236 C456,234 442,236 434,240 Z" fill="#606060" stroke-width="2"/>
-          <path d="M504,166 L516,196 L502,220" fill="none" stroke-width="3"/>
-          <path d="M452,180 C466,170 482,166 496,168" fill="none" stroke="#FFFFFF" stroke-width="5" opacity=".5"/>
-        </g>
-      </svg>`
+      spot: { x: 50.4, y: 49.8, w: 27.8, h: 54.8 },
+      svg: "<svg viewBox='0 0 900 429' xmlns='http://www.w3.org/2000/svg'><image href='images/حي-وغير-حي.png' x='0' y='0' width='900' height='429'/></svg>",
     },
 
     // ⑤ التصنيف في مجموعات — استدلال — 3Bh1
