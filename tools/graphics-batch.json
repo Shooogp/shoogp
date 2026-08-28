@@ -28,15 +28,68 @@
     "    ← يتخطّى البناءَ كلَّه. يُستعمَلُ حينَ تُغري قائمةُ الهيكسات النموذجَ",
     "      برسمِ لوحةِ ألوانٍ داخلَ الصورة (وقعَ فعلاً مع رسمةِ العين)."
   ],
-  "batchId": "2026-08-28-mindmap-fix",
+  "batchId": "2026-08-28-sci-figs",
   "items": [
     {
-      "name": "mm-marham2",
-      "prompt": "Create an educational illustration of ONE medical ointment tube lying at a slight angle. The tube is PLAIN WHITE along its whole body with ONE single narrow blue band near the shoulder and nothing else — no stripes, no green, no orange, no red, no pattern and no writing. It has a rounded soft body, a flat crimped folded end at the back, and a short white screw cap on the nozzle at the front. It must NOT look like a toothpaste tube.\n\nGlossy cartoon vector illustration in a space-sticker style, bold saturated colors, shaded with a 3-4 step ramp of its own hue as crisp discrete bands with hard edges and no soft blending, a broad white gloss highlight on curved surfaces, a thin crisp black outline #111111 with rounded caps around the object and its inner parts, plump rounded forms with no sharp angles, floating with no ground line and no cast shadow, absolutely no facial features on anything. Pure white background #FFFFFF with no text, labels or numbers. One single standalone image only."
+      "name": "sci-bathra3",
+      "subject": "three stages of a seed growing, shown side by side in one horizontal row with clear gaps between them and no arrows: on the right a single brown seed lying alone; in the middle the same seed split open with one short pale sprout curling up from it; on the left a small young plant standing upright on a short green stem with four green leaves. The three stages are the same size and clearly separated"
     },
     {
-      "name": "mm-reeh2",
-      "prompt": "Create an educational illustration of a gust of wind on its own: three long curved sweeping swirl lines that spiral at one end and taper to a fine point at the other, drawn as the familiar wind symbol. Every line is PALE BLUE and WHITE only — light sky blue with white highlights. There is NO orange, NO yellow, NO green, NO red and NO rainbow anywhere; it must not look like fire or like a coloured ribbon. Nothing else is in the picture.\n\nGlossy cartoon vector illustration in a space-sticker style, shaded with a 3-4 step ramp of light blue as crisp discrete bands with hard edges and no soft blending, a broad white gloss highlight along the curves, a thin crisp black outline #111111 with rounded caps around every swirl, plump rounded forms with no sharp angles, floating with no ground line and no cast shadow, absolutely no facial features on anything. Pure white background #FFFFFF with no text, labels or numbers. One single standalone image only."
+      "name": "sci-daw-zalam",
+      "subject": "two potted plants side by side with a clear gap between them: on the right a healthy plant with an upright green stem and four broad bright green leaves standing under a bright yellow sun with rays; on the left the same plant shut inside a closed brown cardboard box with its lid down, the plant pale yellowish-green with drooping wilted leaves seen through an open side of the box"
+    },
+    {
+      "name": "sci-atfal3",
+      "subject": "three children standing side by side in one row with clear gaps between them, each seen from the front, full body, arms slightly away from the sides, wearing plain simple shirts and trousers in different colours. They differ only in hair: the child on the right has very dark black hair, the child in the middle has pale golden blond hair, the child on the left has red-brown hair"
+    },
+    {
+      "name": "sci-jism-tifl",
+      "subject": "ONE child standing alone facing the front, full body from head to feet, arms held out slightly away from the sides and legs a little apart so the head, each arm, each hand, each leg and each foot are clearly separated and easy to point at, wearing a plain short-sleeved shirt and shorts, plain skin tone, plain dark hair"
+    },
+    {
+      "name": "sci-wajh-hawas",
+      "subject": "one child's face seen from the front, filling the picture: a rounded head with plain dark hair, TWO eyes, ONE nose in the middle, ONE closed smiling mouth below it and TWO ears one on each side. The five parts are large, well separated and easy to point at",
+      "face": true
+    },
+    {
+      "name": "sci-tqs4",
+      "subject": "four separate weather symbols arranged in a two-by-two grid with wide gaps between them and nothing connecting them: top right a bright yellow sun with straight rays; top left a plain white cloud on its own; bottom right a grey rain cloud with five blue rain drops falling below it; bottom left three curved pale blue wind swirl lines"
+    },
+    {
+      "name": "sci-sukhur3",
+      "subject": "three grey rocks resting in one horizontal row with wide gaps between them: on the right a very large rock, in the middle a medium rock about half its size, on the left a very small rock about a quarter of its size. The size difference between the three is obvious at a glance"
+    },
+    {
+      "name": "sci-ajsam4",
+      "subject": "four separate objects arranged in a two-by-two grid with wide gaps between them: top right a clear empty drinking glass; top left a thin metal wire bent into a soft wavy curve; bottom right a grey rock; bottom left a straight solid iron rod"
+    },
+    {
+      "name": "sci-marin3",
+      "subject": "three separate objects in one horizontal row with wide gaps between them: on the right a red rubber band stretched into a loop; in the middle a yellow rectangular sponge with small round holes; on the left a grey coiled metal spring standing upright"
+    },
+    {
+      "name": "sci-jura",
+      "subject": "one open hand seen palm up from the side, tipping a medicine bottle above it so that a large heap of many round white tablets pours out of the bottle and piles up in the palm and spills over its edge. The bottle is a plain amber pill bottle with a white cap and a blank label with no writing. Only the hand and forearm are shown, no person and no face"
+    },
+    {
+      "name": "sci-mashhad-biai",
+      "subject": "a simple outdoor scene in one wide picture: on the right two green leafy trees standing on a strip of green grass with a bright yellow sun above them in a blue sky; on the left a grey factory building with two tall chimneys, and thick dark grey smoke clouds billowing up out of the chimneys into the sky"
+    },
+    {
+      "name": "sci-c-taqs",
+      "prompt": "Create an educational illustration of a simple weather scene with exactly four separate parts that never touch each other: a round SUN in the top right filled with flat solid purple #7B2FF2; one CLOUD in the top left filled with flat solid turquoise #00E5A0; five RAIN DROPS falling in a row below the cloud, all filled with flat solid pink #FF00A8; and a strip of GRASS with a few blades along the whole bottom edge filled with flat solid sky blue #00A8FF. None of these four colours appears anywhere else in the picture.\n\nFLAT VECTOR STYLE, NOT glossy: every region is filled with ONE single flat solid colour with NO gradient, NO shading bands, NO gloss highlight, NO texture and NO cast shadow. Each named region is a fully closed shape surrounded by a clean black outline #111111 of even thickness with rounded caps. Regions never overlap and no two regions share a colour. Plump rounded child-friendly forms with no sharp angles, absolutely no facial features on anything. Pure white background #FFFFFF with no text, labels, numbers or shadows. One single standalone image only."
+    },
+    {
+      "name": "sci-c-turba",
+      "prompt": "Create an educational illustration of a cross-section of ground with exactly three separate stacked layers that never overlap: a top strip of GRASS with short blades filled with flat solid purple #7B2FF2; below it a thick layer of SOIL filled with flat solid turquoise #00E5A0; and inside the lower part six rounded PEBBLES, all filled with flat solid pink #FF00A8, each pebble a separate closed shape not touching another pebble. None of these three colours appears anywhere else.\n\nFLAT VECTOR STYLE, NOT glossy: every region is filled with ONE single flat solid colour with NO gradient, NO shading bands, NO gloss highlight, NO texture and NO cast shadow. Each named region is a fully closed shape surrounded by a clean black outline #111111 of even thickness with rounded caps. Regions never overlap and no two regions share a colour. Plump rounded child-friendly forms with no sharp angles, absolutely no facial features on anything. Pure white background #FFFFFF with no text, labels, numbers or shadows. One single standalone image only."
+    },
+    {
+      "name": "sci-c-har-barid",
+      "prompt": "Create an educational illustration of four separate objects in a two-by-two grid with wide gaps so they never touch: top right a CUP OF TEA with a handle and steam, the whole cup filled with flat solid purple #7B2FF2; top left a LOAF OF BREAD filled with flat solid turquoise #00E5A0; bottom right an ICE CUBE, a simple cube filled with flat solid pink #FF00A8; bottom left an ICE CREAM CONE, the scoop and cone together filled with flat solid sky blue #00A8FF. None of these four colours appears anywhere else.\n\nFLAT VECTOR STYLE, NOT glossy: every region is filled with ONE single flat solid colour with NO gradient, NO shading bands, NO gloss highlight, NO texture and NO cast shadow. Each named region is a fully closed shape surrounded by a clean black outline #111111 of even thickness with rounded caps. Regions never overlap and no two regions share a colour. Plump rounded child-friendly forms with no sharp angles, absolutely no facial features on anything. Pure white background #FFFFFF with no text, labels, numbers or shadows. One single standalone image only."
+    },
+    {
+      "name": "sci-c-hashara",
+      "prompt": "Create an educational illustration of two separate creatures side by side that never touch, resting on a low brown mound of soil: on the right ONE INSECT seen from above with a head, a middle body part and an abdomen, and EXACTLY SIX legs — three on each side, all attached to the middle body part — the whole insect filled with flat solid purple #7B2FF2; on the left ONE EARTHWORM, a long smooth segmented tube curved into an S shape with no legs at all, filled with flat solid turquoise #00E5A0. The soil mound is plain brown #9A6636 and neither purple nor turquoise appears anywhere else.\n\nFLAT VECTOR STYLE, NOT glossy: every region is filled with ONE single flat solid colour with NO gradient, NO shading bands, NO gloss highlight, NO texture and NO cast shadow. Each named region is a fully closed shape surrounded by a clean black outline #111111 of even thickness with rounded caps. Regions never overlap and no two regions share a colour. Plump rounded child-friendly forms with no sharp angles, absolutely no facial features on anything. Pure white background #FFFFFF with no text, labels, numbers or shadows. One single standalone image only."
     }
   ]
 }
