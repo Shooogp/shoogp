@@ -28,11 +28,6 @@
     "    ← يتخطّى البناءَ كلَّه. يُستعمَلُ حينَ تُغري قائمةُ الهيكسات النموذجَ",
     "      برسمِ لوحةِ ألوانٍ داخلَ الصورة (وقعَ فعلاً مع رسمةِ العين)."
   ],
-  "batchId": "2026-08-28-math-mitr2",
-  "items": [
-    {
-      "name": "m-mitr2",
-      "prompt": "Create an educational illustration of ONE folding carpenter's rule, drawn as a SINGLE CONNECTED zig-zag shape. Four straight flat wooden slats of equal length are joined END TO END at three visible round hinge pins, so the whole thing forms one continuous unbroken zig-zag like the letter W lying on its side. Every slat physically touches the next slat at a hinge — no slat floats free, no slat overlaps or crosses another, and there are no loose separate sticks anywhere. The slats are completely blank with no numbers and no tick marks.\n\nCOLOUR — strictest requirement: the ENTIRE object uses ONE hue and nothing else, in this four-step ramp: highlight #B98551, base #9A6636, shade #7A4C22, deep shade #68411D. Do NOT give different slats different colours. Do NOT paint a colour palette, swatch, stripe or sample bar anywhere in the image — the picture contains the folding rule and nothing else. There is no red, blue, green, yellow or grey anywhere.\n\nGlossy cartoon vector illustration in a space-sticker style, the four steps rendered as crisp discrete bands with hard edges and no soft blending, a broad white gloss highlight along the slats, a thin crisp black outline #111111 with rounded caps around the object and each of its inner parts (a clean fine line, not a heavy border), plump rounded forms with no sharp angles, the object floating with no ground line and no cast shadow, absolutely no facial features on anything. Pure white background #FFFFFF with no text, labels, numbers or shadows. One single standalone image only."
-    }
-  ]
+  "batchId": "2026-08-28-none",
+  "items": []
 }
