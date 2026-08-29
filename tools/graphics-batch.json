@@ -28,6 +28,11 @@
     "    ← يتخطّى البناءَ كلَّه. يُستعمَلُ حينَ تُغري قائمةُ الهيكسات النموذجَ",
     "      برسمِ لوحةِ ألوانٍ داخلَ الصورة (وقعَ فعلاً مع رسمةِ العين)."
   ],
-  "batchId": "2026-08-29-none",
-  "items": []
+  "batchId": "2026-08-29-masjid",
+  "items": [
+    {
+      "name": "d-masjid",
+      "prompt": "Create an educational illustration, wide format about 2:1, containing EXACTLY TWO things and nothing else:\n\n• On the LEFT: ONE mosque — a simple building with a rounded dome on top and a single slender minaret beside it, and one arched doorway. No windows detail, no courtyard, no fence, no trees.\n• On the RIGHT: ONE child standing in profile facing the mosque, wearing a plain ankle-length white robe with long sleeves and a small white cap. The child's head is completely blank — NO eyes, NO nose, NO mouth, no hair. The child's hands hang at their sides.\n\nTHE ONE DETAIL THAT MATTERS: on the FRONT of the white robe, at chest height, there is ONE single clearly visible BRIGHT RED STAIN — an irregular rounded blot about one fifth of the robe's width, in flat solid red #FF2020 with the same thin black outline as everything else. It sits fully inside the white robe with white all around it, it does not touch the robe's edge, and it is the only red thing in the entire picture.\n\nCOLOURS: the robe and cap are white #FFFFFF with light grey folds; the mosque is a sand ramp (highlight #B98551, base #9A6636, shade #7A4C22, deep shade #68411D) with a dome in a grey ramp (#C0C0C0, #808080, #606060, #404040). Do NOT paint a colour palette, swatch or sample bar anywhere. No red anywhere except the single stain.\n\nGlossy cartoon vector illustration in a space-sticker style, each ramp as crisp discrete bands with hard edges and no soft blending, a thin crisp black outline #111111 with rounded caps around every object and its inner parts, plump rounded forms, no ground line and no cast shadow, absolutely no facial features on anything. Pure white background #FFFFFF with no text, labels, numbers or shadows. One single standalone image only."
+    }
+  ]
 }
