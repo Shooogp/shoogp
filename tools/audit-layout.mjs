@@ -187,6 +187,28 @@ await page.evaluate(() => {
     return false;
   };
 
+  /* اقتطاعُ الصورةِ في المشهد — و**لماذا يُقاسُ بالنسبةِ المئويةِ من الصورةِ نفسِها**:
+     `.figwrap.fw` عرضُه ١٠٠٪ وارتفاعُه تلقائيّ، فإن كانت نسبةُ الصورةِ أطولَ من
+     المشهدِ فاضَ الفائضُ و`.stage` يقصُّه بـ`overflow:hidden` أعلى وأسفل.
+     ⚠️ والأثرُ ليس بصرياً فحسب: `hitsSpot` يقيسُ النقرةَ على **صندوقِ الصورةِ
+     كاملاً** (‏`fig.getBoundingClientRect()`)، بينما `overflow:hidden` يقصُّ
+     الإصابةَ كما يقصُّ الطلاء — فمنطقةُ إجابةٍ تقعُ في الشريطِ المقصوصِ
+     **لا تُدرَكُ نقرتُها أصلاً**. ولذلك يُبلَّغُ الشريطُ بالنسبةِ ليُقارَنَ
+     بإحداثيّاتِ `spot` و`dot` في `js/questions.js`. */
+  function figCrop(card) {
+    var fig = card.querySelector('.hsfig, .labelimg, .csvg');
+    if (!fig) return null;
+    var st = fig.closest('.stage');
+    if (!st) return null;
+    var scs = getComputedStyle(st);
+    if (scs.overflowY !== 'hidden' && scs.overflowY !== 'clip') return null;
+    var fr = fig.getBoundingClientRect(), sr = st.getBoundingClientRect();
+    if (!fr.height) return null;
+    var top = Math.max(0, sr.top - fr.top), bot = Math.max(0, fr.bottom - sr.bottom);
+    if (top < 1 && bot < 1) return null;
+    return { top: +(100 * top / fr.height).toFixed(1), bot: +(100 * bot / fr.height).toFixed(1) };
+  }
+
   window.__measureCard = function (card) {
     var w = card.querySelector('.qwin');
     if (!w) return { noWin: true };
@@ -201,6 +223,7 @@ await page.evaluate(() => {
       vOut: v.out, vWho: v.who, vText: v.text, vAny: v.any, vAnyWho: v.anyWho,
       vCut: v.vcut, vCutWho: v.vcutWho,
       hits: collisions(w),
+      crop: figCrop(card),
       winW: w.clientWidth, winH: w.clientHeight
     };
   };

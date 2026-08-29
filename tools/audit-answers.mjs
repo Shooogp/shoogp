@@ -46,8 +46,15 @@ const out = await page.evaluate(async (FILTER) => {
     matching: window.renderMatching, 'letter-picture': window.renderLetterPicture,
     memory: window.renderMemory, classify: window.renderClassify, sequence: window.renderSequence,
     'fill-blank': window.renderFillBlank, mindmap: window.renderMindmap,
-    'drag-drop': window.renderDragDrop, color: window.renderColor
+    'drag-drop': window.renderDragDrop, color: window.renderColor,
+    'equation-builder': window.renderEquationBuilder, pattern: window.renderPattern,
+    compare: window.renderCompare
   };
+  /* ثلاثةُ أنواعٍ تتقاسمُ عقدَ `wireBank`: خانةٌ تحملُ `data-answer` وبطاقةٌ تحملُ
+     `data-w`، والتحقّقُ يقارنُ `dataset.placed` بها. فتُحَلُّ بمنطقٍ واحد. */
+  const BANK = { 'fill-blank': ['.blank', '.chip'],
+                 'equation-builder': ['.eqslot', '.eqchip'],
+                 pattern: ['.pt-slot', '.ptchip'] };
   const won = () => /🎉|🌟|ممتاز|أحسنت/.test(fb.textContent);
 
   for (const j of jobs) {
@@ -145,15 +152,15 @@ const out = await page.evaluate(async (FILTER) => {
             if (rec.status==='FAIL') rec.note='الترتيبُ الصحيحُ لم يُقبَل — '+fb.textContent.trim();
           }
         }
-        else if (q.type === 'fill-blank' || q.type === 'mindmap') {
-          const slotSel = q.type==='fill-blank' ? '.blank' : '.mm-slot';
-          const chipSel = q.type==='fill-blank' ? '.chip' : '.mmchip';
+        else if (BANK[q.type] || q.type === 'mindmap') {
+          const slotSel = BANK[q.type] ? BANK[q.type][0] : '.mm-slot';
+          const chipSel = BANK[q.type] ? BANK[q.type][1] : '.mmchip';
           const slots = [...bodyEl.querySelectorAll(slotSel)];
           const chips = [...bodyEl.querySelectorAll(chipSel)];
           const missing = slots.map(s=>s.dataset.answer).filter(a => !chips.some(c=>c.dataset.w===a));
           if (missing.length) { rec.status='FAIL'; rec.note='إجابةٌ بلا بطاقةٍ في البنك: '+[...new Set(missing)].join('، '); }
           else {
-            if (q.type==='fill-blank') slots.forEach(s=>{ s.dataset.placed=s.dataset.answer; s.textContent=s.dataset.answer; });
+            if (BANK[q.type]) slots.forEach(s=>{ s.dataset.placed=s.dataset.answer; s.textContent=s.dataset.answer; });
             else slots.forEach(s=>{ s.appendChild(chips.find(c=>c.dataset.w===s.dataset.answer)); });
             bodyEl.querySelector('.btn-check').click();
             rec.status = won() ? 'ok' : 'FAIL';
@@ -181,6 +188,21 @@ const out = await page.evaluate(async (FILTER) => {
             rec.status = won() ? 'ok' : 'warn';
             if (rec.status==='warn') rec.note='التلوينُ الصحيحُ لم يُنتِجْ رسالةَ فوز — '+fb.textContent.trim();
           }
+        }
+        else if (q.type === 'compare') {
+          /* الرمزُ الصحيحُ يُشتَقُّ بـ`numOf` نفسِها التي يستعملُها السؤال — والطرفُ
+             قد يكونَ عبارةَ منزلةٍ («٤ مِئات» = ٤٠٠) لا رقماً، فالقراءةُ الساذجةُ
+             للأرقامِ تُنتِجُ رمزاً مقلوباً وتُبلِّغُ عيباً لا يقع */
+          const slots = [...bodyEl.querySelectorAll('.cmp-slot')];
+          slots.forEach(sl => {
+            const p = q.pairs[+sl.dataset.i];
+            const a = numOf(p.a), b = numOf(p.b);
+            sl.dataset.placed = a < b ? '<' : a > b ? '>' : '=';
+            sl.textContent = sl.dataset.placed;
+          });
+          bodyEl.querySelector('.btn-check').click();
+          rec.status = won() ? 'ok' : 'FAIL';
+          if (rec.status==='FAIL') rec.note='المقارنةُ الصحيحةُ لم تُقبَل — '+fb.textContent.trim();
         }
         else if (q.type === 'memory') {
           const cards = [...bodyEl.querySelectorAll('.memcard')];
