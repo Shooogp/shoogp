@@ -22984,53 +22984,8 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "اُنْقُرْ عَلى ما يَمْنَعُ صَلاتَهُ في الْمَسْجِدِ.",
       bg: "#eaf6fb",
-      svg: `<svg viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="طفل بثوب أبيض عليه بقعة حمراء يمشي في طريق نحو مسجد بقبة ومئذنتين">
-  <defs>
-    <style>
-      .o3{stroke:#111111;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
-      .o2{stroke:#111111;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-    </style>
-  </defs>
-  <rect x="0" y="0" width="600" height="196" fill="#cfeeff" stroke="none"/>
-  <rect x="0" y="196" width="600" height="124" fill="#B98551" stroke="none"/>
-  <path d="M0 196 L600 196 L600 214 L0 214 Z" fill="#9A6636" stroke="none"/>
-  <path d="M150 214 L300 214 L470 320 L60 320 Z" fill="#E0C080" stroke="none"/>
-
-  <!-- الْمَسْجِدُ -->
-  <rect x="60" y="96" width="22" height="100" rx="6" fill="#E0E0A0" class="o3"/>
-  <path d="M60 96 Q71 72 82 96 Z" fill="#E08000" class="o3"/>
-  <rect x="250" y="96" width="22" height="100" rx="6" fill="#E0E0A0" class="o3"/>
-  <path d="M250 96 Q261 72 272 96 Z" fill="#E08000" class="o3"/>
-  <rect x="92" y="124" width="148" height="72" rx="5" fill="#E0E0A0" class="o3"/>
-  <rect x="92" y="124" width="40" height="72" fill="#FFFFC0" stroke="none"/>
-  <path d="M92 124 Q166 48 240 124 Z" fill="#E08000" class="o3"/>
-  <path d="M120 118 Q166 82 206 100" fill="none" stroke="#FFA000" stroke-width="7" stroke-linecap="round"/>
-  <path d="M166 86 L166 72" class="o3"/>
-  <circle cx="166" cy="66" r="7" fill="#FFA000" class="o2"/>
-  <path d="M148 196 L148 166 Q166 146 184 166 L184 196 Z" fill="#7A4C22" class="o3"/>
-
-  <!-- الطِّفْلُ — بِلا مَلامِحِ وَجْهٍ · الذِّراعانِ خَلْفَ الثَّوْبِ -->
-  <rect x="414" y="190" width="18" height="66" rx="9" fill="#FFFFFF" class="o3"/>
-  <rect x="508" y="190" width="18" height="66" rx="9" fill="#FFFFFF" class="o3"/>
-  <circle cx="423" cy="264" r="10" fill="#E0A87F" class="o2"/>
-  <circle cx="517" cy="264" r="10" fill="#E0A87F" class="o2"/>
-  <path d="M448 184 C438 186 430 204 426 276 L514 276 C510 204 502 186 492 184 Z" fill="#FFFFFF" class="o3"/>
-  <path d="M492 184 C502 186 510 204 514 276 L490 276 C494 204 492 190 492 184 Z" fill="#F0EFE9" stroke="none"/>
-  <ellipse cx="452" cy="286" rx="21" ry="9" fill="#7A4C22" class="o2"/>
-  <ellipse cx="490" cy="286" rx="21" ry="9" fill="#7A4C22" class="o2"/>
-  <rect x="459" y="166" width="22" height="24" rx="9" fill="#C88A5E" class="o2"/>
-  <circle cx="470" cy="148" r="29" fill="#E0A87F" class="o3"/>
-  <path d="M488 124 A29 29 0 0 1 488 172" fill="none" stroke="#C88A5E" stroke-width="7" stroke-linecap="round"/>
-  <ellipse cx="458" cy="141" rx="11" ry="12" fill="#F2C3A0"/>
-  <path d="M443 138 A29 29 0 0 1 497 138 Z" fill="#20A0FF" class="o3"/>
-  <path d="M447 131 A29 29 0 0 1 493 131" fill="none" stroke="#40C0FF" stroke-width="7" stroke-linecap="round"/>
-
-  <!-- النَّجاسَةُ عَلى الثَّوْبِ — مَوْضِعُ الْخَطَأِ -->
-  <path d="M486 199 C497 203 500 213 494 221 C487 230 474 228 471 218 C468 209 476 200 486 199 Z" fill="#FF2020" class="o2"/>
-  <circle cx="474" cy="232" r="5" fill="#E02000" class="o2"/>
-  <circle cx="497" cy="229" r="4" fill="#E02000" class="o2"/>
-</svg>`,
-      spot: { x: 81, y: 66, r: 11 }
+      svg: "<svg viewBox='0 0 900 518' xmlns='http://www.w3.org/2000/svg'><image href='images/مسجد-وطفل.png' x='0' y='0' width='900' height='518'/></svg>",
+      spot: { x: 86.0, y: 57.1, w: 10.0, h: 17.0 }
     }
 
   ],

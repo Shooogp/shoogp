@@ -19,7 +19,12 @@
       `pics` مفعَّلٌ وكلُّ ما لا يُرسَمُ يقعُ في **مجموعةٍ واحدةٍ ويستوعبُها
       بتمامِها** — فيصيرُ «بلا رسمٍ» إجابةً، ويحلُّ السؤالَ من لا يعرفُه.
       وهذا هو الحدُّ الثالثُ في `CLAUDE.md` (§قاعدةُ بطاقاتِ الصور).
-   ③ **المرشَّحُ المحجوبُ بنقصِ مكتبةٍ** (تنبيهٌ لا يُفشِل):
+   ③ **خلفيةُ البطاقةِ الصلبة** (عطبٌ — يُفشِلُ):
+      ملفُّ بطاقةٍ ركنُه معتمٌ — فيظهرُ **مربَّعاً أبيضَ** على كبسولةِ البطاقة.
+      **ووُلِدَ هذا الفحصُ من عطبٍ حقيقيّ (٢٠٢٦-٠٨-٢٩):** ظهرَ «المُشطُ» مربَّعاً في
+      `g1d1-1-2`#٣، فمُسِحَتِ المكتبةُ فإذا **عشرُ بطاقاتٍ من ٢٠٤** كذلك — كلُّها
+      أصولٌ سبقت مسارَ التهيئة، وأكثرُها فُعِّلَ في الجلسةِ نفسِها.
+   ④ **المرشَّحُ المحجوبُ بنقصِ مكتبةٍ** (تنبيهٌ لا يُفشِل):
       `pics` مطفأٌ، وكلُّ بطاقاتِ السؤالِ مرسومةٌ **إلا قليلاً يقعُ في مجموعةٍ
       واحدة** — فلو فُعِّلَ لَكشَف. يُطبَعُ لِيُنظَرَ فيه، لا لِيُوقِفَ النشر.
 
@@ -39,12 +44,52 @@
    من تسعةٍ وخمسينَ سؤالاً سليماً**. وتشغيلُ المصدرِ يُلغي هذا الصنفَ كلَّه:
    لا منطقَ مكرَّرٌ ينحرف. */
 
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
+import { inflateSync } from 'node:zlib';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const read = p => readFileSync(join(ROOT, p), 'utf8');
+
+/* ── شفافيةُ ركنِ الصورة — يقرأُ البكسلَ (٠،٠) من ملفِّ PNG مباشرةً ──────
+   بلا اعتمادِ خارجيّ: `node:zlib` مدمَجٌ كـ`node:fs`، فالأداةُ تبقى بلا
+   `npm install` في سيرِ العمل.
+
+   **ولماذا البكسلُ (٠،٠) وحدَه يكفي:** صفُّ البكسلِ الأولُ لا صفَّ فوقَه،
+   والبكسلُ الأولُ لا بكسلَ يسارَه — فمُتنبِّئُ المرشِّحِ صفرٌ في الأنواعِ
+   الخمسةِ كلِّها، وبايتاتُه الخامُ هي بايتاتُه المفكوكة. فلا حاجةَ إلى فكِّ
+   الصورةِ كلِّها.
+
+   يُرجِعُ: true معتمٌ · false شفّافٌ · null تعذّرَ القياس (مضفورٌ أو غيرُ مدعوم). */
+function cornerOpaque(file) {
+  let b; try { b = readFileSync(file); } catch { return null; }
+  if (b.length < 8 || b.readUInt32BE(0) !== 0x89504e47) return null;
+  let off = 8, ihdr = null, trns = null; const idat = [];
+  while (off + 8 <= b.length) {
+    const len = b.readUInt32BE(off), type = b.toString('latin1', off + 4, off + 8);
+    const data = b.subarray(off + 8, off + 8 + len);
+    if (type === 'IHDR') ihdr = data;
+    else if (type === 'tRNS') trns = data;
+    else if (type === 'IDAT') idat.push(data);
+    else if (type === 'IEND') break;
+    off += 12 + len;
+  }
+  if (!ihdr || !idat.length) return null;
+  const depth = ihdr[8], colour = ihdr[9], interlace = ihdr[12];
+  if (depth !== 8 || interlace !== 0) return null;      // خارجَ نطاقِ القياسِ البسيط
+  let row0; try { row0 = inflateSync(Buffer.concat(idat)); } catch { return null; }
+  if (row0.length < 2) return null;
+  const px = row0.subarray(1);                           // بعدَ بايتِ المرشِّح
+  if (colour === 6) return px[3] > 200;                  // RGBA
+  if (colour === 4) return px[1] > 200;                  // رماديٌّ + ألفا
+  if (colour === 3) {                                    // لوحةُ ألوان
+    if (!trns) return true;                              // بلا tRNS = معتمٌ قطعاً
+    const i = px[0];
+    return (i < trns.length ? trns[i] : 255) > 200;
+  }
+  return true;                                           // 0 و2: لا ألفا أصلاً
+}
 
 /* ── سِجِلُّ الرسوم: يُشغَّلُ المصدرُ نفسُه على document مصطنَع ──────── */
 function loadPics() {
@@ -53,7 +98,12 @@ function loadPics() {
   new Function('window', 'document', read('js/qpics.js'))(win, doc);
   if (typeof win.qPic !== 'function' || !win.QPICS)
     throw new Error('js/qpics.js لم يُصدِّرْ qPic — تغيّرَت بنيتُه');
-  return { has: w => !!win.qPic(w), size: Object.keys(win.QPICS).length };
+  const files = new Set();
+  for (const k of Object.keys(win.QPICS)) {
+    const m = /src="images\/([^"?]+)\.png/.exec(win.QPICS[k]);
+    if (m) files.add(decodeURIComponent(m[1]));
+  }
+  return { has: w => !!win.qPic(w), size: Object.keys(win.QPICS).length, files: [...files].sort() };
 }
 
 /* ── أسئلةُ المنصّة ──────────────────────────────────────────────── */
@@ -137,6 +187,17 @@ for (const lesson of Object.keys(Q)) {
   });
 }
 
+/* ③ خلفيةُ البطاقةِ الصلبة — تظهرُ مربَّعاً أبيضَ على كبسولةِ البطاقة */
+const opaque = [], unmeasured = [];
+for (const f of PICS.files) {
+  const p = join(ROOT, 'images', f + '.png');
+  if (!existsSync(p)) continue;
+  const o = cornerOpaque(p);
+  if (o === null) unmeasured.push(f); else if (o) opaque.push(f);
+}
+if (opaque.length)
+  errors.push(...opaque.map(f => `✘ images/${f}.png  خلفيتُه صلبةٌ — يظهرُ مربَّعاً على البطاقة`));
+
 if (notes.length) {
   console.log('ℹ️  مرشَّحاتٌ لو فُعِّلَ فيها الرسمُ لَكشَف — يُنظَرُ فيها ولا توقفُ النشر:');
   notes.forEach(n => console.log('   ' + n));
@@ -148,4 +209,5 @@ if (errors.length) {
   console.error(`\n  المجموع: ${errors.length}. القاعدةُ في CLAUDE.md §قاعدةُ بطاقاتِ الصور.`);
   process.exit(1);
 }
-console.log(`✓ رسومُ البطاقاتِ سليمة — ${PICS.size} مفتاحاً في السِّجِلّ، ولا مجموعةَ مختلطةً ولا كاشفة.`);
+console.log(`✓ رسومُ البطاقاتِ سليمة — ${PICS.size} مفتاحاً في السِّجِلّ · ${PICS.files.length} ملفَّ بطاقةٍ شفّافَ الخلفية`
+  + (unmeasured.length ? ` (${unmeasured.length} تعذّرَ قياسُه)` : '') + `، ولا مجموعةَ مختلطةً ولا كاشفة.`);
