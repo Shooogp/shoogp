@@ -8,7 +8,11 @@
     "codes": "node generate-codes.cjs",
     "check": "node tools/check-data-sync.mjs",
     "check:pics": "node tools/check-qpics.mjs",
-    "check:all": "npm run check && npm run check:pics"
+    "check:all": "npm run check && npm run check:pics",
+    "audit:layout": "node tools/audit-layout.mjs",
+    "audit:answers": "node tools/audit-answers.mjs",
+    "audit:rules": "node tools/audit-rules.mjs",
+    "audit:shot": "node tools/audit-shot.mjs"
   },
   "devDependencies": {
     "pdfjs-dist": "^6.2.108",
