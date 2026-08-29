@@ -120,6 +120,25 @@ function injectHelpers() {
     return out;
   };
 
+  /* الاستقرار: الإطارُ يُختارُ ثمّ يُصحَّحُ (‏`ShoogpFit` يضبطُ زومَ الصفحةِ فيتغيّرُ
+     الفضاءُ المتاحُ فيُعادُ الاختيار). فيُنتظَرُ حتى تثبتَ قيمةُ `data-fit` ثلاثَ
+     عيّناتٍ متتالية — ولا يُنادى `fitFrame` يدوياً إطلاقاً، فالتطبيقُ هو الذي يقرّر.
+     ⚠️ النداءُ اليدويُّ **يغيّرُ النتيجةَ لا يقرأُها**: مقيسٌ في `g2m-2-1[1]` أنّ
+     `fitFrame` قبلَ `ShoogpFit.apply` يُعطي `l@200%` وبعدَه `m@171%` — وعليه
+     اختلفَ تقريرُ القصِّ اختلافاً كاملاً. */
+  window.__settle = function (card) {
+    return new Promise(function (res) {
+      var last = null, same = 0, n = 0;
+      (function poll() {
+        var f = card.dataset.fit || '';
+        if (f && f === last) { if (++same >= 3) return res(f); }
+        else { same = 0; last = f; }
+        if (++n > 150) return res(f);
+        requestAnimationFrame(function () { setTimeout(poll, 40); });
+      })();
+    });
+  };
+
   /* فتحُ الدرسِ كما يفتحُه المعلّم — لا `renderQuestions` وحدَه (‏`CLAUDE.md`:
      يتخطّى سياقَ الكتابِ فيختارُ إطاراً مختلفاً) */
   window.__openLesson = function (j) {

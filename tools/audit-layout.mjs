@@ -68,11 +68,30 @@ await page.evaluate(() => {
     return out;
   }
 
+  /* حدودُ القصِّ الرأسيِّ التي يخضعُ لها العنصر — أقربُ سلفٍ يقصُّ عمودياً،
+     زائداً هامشَ قصِّه (‏`.qbody` يقصُّ بهامشِ 20px، فاحتسابُه بلا الهامشِ
+     يُبلِّغُ بتراً لا يقع). نظيرُ `clipBoundsOf` الأفقيِّ في `shoogp-ui.js`. */
+  function vClipBounds(el, stop) {
+    var T = -Infinity, B = Infinity, p = el.parentElement;
+    while (p) {
+      var cs = getComputedStyle(p);
+      if (cs.overflowY === 'hidden' || cs.overflowY === 'clip') {
+        var r = p.getBoundingClientRect();
+        var m = cs.overflowY === 'clip' ? (parseFloat(cs.overflowClipMargin) || 0) : 0;
+        T = Math.max(T, r.top + (parseFloat(cs.borderTopWidth) || 0) - m);
+        B = Math.min(B, r.bottom - (parseFloat(cs.borderBottomWidth) || 0) + m);
+      }
+      if (p === stop) break;
+      p = p.parentElement;
+    }
+    return (T === -Infinity && B === Infinity) ? null : { T: T, B: B };
+  }
+
   // vertical overflow past the window's content box (content-bearing elements only)
   function vOverflow(w) {
     var cs = getComputedStyle(w), r = w.getBoundingClientRect();
     var T = r.top + (parseFloat(cs.paddingTop) || 0), B = r.bottom - (parseFloat(cs.paddingBottom) || 0);
-    var out = 0, who = null, any = 0, anyWho = null;
+    var out = 0, who = null, any = 0, anyWho = null, vcut = 0, vcutWho = null;
     var all = w.querySelectorAll('*');
     for (var i = 0; i < all.length; i++) {
       var el = all[i];
@@ -83,11 +102,15 @@ await page.evaluate(() => {
       if (!br.width || !br.height) continue;
       var o = Math.max(T - br.top, br.bottom - B);
       if (o > any) { any = o; anyWho = el; }
+      var cb = vClipBounds(el, w);
+      if (cb) { var k = Math.max(cb.T - br.top, br.bottom - cb.B);
+                if (k > vcut) { vcut = k; vcutWho = el; } }
       if (!isContent(el)) continue;
       if (o > out) { out = o; who = el; }
     }
     return { out: +out.toFixed(1), who: tag(who), text: who ? txt(who) : '',
-             any: +any.toFixed(1), anyWho: tag(anyWho) };
+             any: +any.toFixed(1), anyWho: tag(anyWho),
+             vcut: +vcut.toFixed(1), vcutWho: tag(vcutWho) };
   }
 
   // element-collision among visible content leaves
@@ -176,6 +199,7 @@ await page.evaluate(() => {
       cut: h.cut, selfCut: h.selfCut, who: h.cut > 1 ? h.cutSel : h.selfSel,
       out: h.out, outWho: h.outSel,
       vOut: v.out, vWho: v.who, vText: v.text, vAny: v.any, vAnyWho: v.anyWho,
+      vCut: v.vcut, vCutWho: v.vcutWho,
       hits: collisions(w),
       winW: w.clientWidth, winH: w.clientHeight
     };
@@ -192,29 +216,28 @@ for (const j of list) {
   }
   const n = await page.evaluate(() => document.querySelectorAll('.qcard').length);
   for (let k = 0; k < n; k++) {
-    /* بطاقةٌ واحدةٌ ظاهرةٌ في كلِّ قياس — وإلا تقاسمت البطاقاتُ ارتفاعَ الشريحة */
-    const m = await page.evaluate(k => {
-      const cards = [...document.querySelectorAll('.qcard')];
-      cards.forEach((x, i) => x.style.display = (i === k) ? '' : 'none');
-      const c = cards[k];
-      c.dataset.fitSig = '';
-      fitFrame(c);
-      if (window.ShoogpFit && ShoogpFit.apply) ShoogpFit.apply();
-      if (window.placeChrome) placeChrome();
+    /* التنقّلُ بزرِّ «التالي» نفسِه — لا بإخفاءِ البطاقاتِ يدوياً، فالتطبيقُ
+       يتكفّلُ بالعرضِ وتبنّي أزرارِ «تحقّق» في شريطِ التنقّل، وهو ما يراه المعلّم */
+    const m = await page.evaluate(async k => {
+      if (k > 0) {
+        const nx = document.querySelector('.qnav .qnext');
+        if (nx && nx.style.display !== 'none') nx.click();
+      }
+      const c = [...document.querySelectorAll('.qcard')][k];
+      await window.__settle(c);
       return window.__measureCard(c);
     }, k);
 
     /* الحالةُ الممتلئة — تُقاسُ فقط للأنواعِ التي تعلو بالإجابات */
-    const filled = await page.evaluate(({ f, k }) => {
+    const filled = await page.evaluate(async ({ f, k }) => {
       const c = [...document.querySelectorAll('.qcard')][k];
       const qq = (QUESTIONS[f] || [])[k];
       if (!qq || !window.__fill(c, qq)) return null;
-      c.dataset.fitSig = '';
-      fitFrame(c);
-      if (window.ShoogpFit && ShoogpFit.apply) ShoogpFit.apply();
+      await window.__settle(c);
       const m = window.__measureCard(c);
       return { fFit: m.fit, fCut: m.cut, fSelfCut: m.selfCut, fWho: m.who,
-               fOut: m.out, fOutWho: m.outWho, fVOut: m.vOut, fVWho: m.vWho, fHits: m.hits };
+               fOut: m.out, fOutWho: m.outWho, fVOut: m.vOut, fVWho: m.vWho,
+               fVCut: m.vCut, fVCutWho: m.vCutWho, fHits: m.hits };
     }, { f: j.file, k });
 
     const q = await page.evaluate(({ f, k }) => {
@@ -232,13 +255,14 @@ fs.writeFileSync(OUT, JSON.stringify({ pageErrors, results }, null, 1));
 /* التكبيرُ يضاعفُ البكسل، فالمقارنةُ بالبكسلِ الحقيقيِّ قبلَه لا بعدَه */
 const zoom = r => { const m = /@(\d+)%/.exec(r.fit || ''); return m ? +m[1] / 100 : 1; };
 const cut  = results.filter(r => r.cut > 1 || r.selfCut > 1 || r.fCut > 1 || r.fSelfCut > 1);
+const vcut = results.filter(r => (r.vCut || 0) > 1 || (r.fVCut || 0) > 1);
 const flex = results.filter(r => /flex/.test(r.fit) || /flex/.test(r.fFit || ''));
 const hits = results.filter(r => (r.hits || []).length || (r.fHits || []).length);
 const vert = results.filter(r => Math.max(r.vOut || 0, r.fVOut || 0) / zoom(r) > 3);
 
 console.log(`دروس: ${list.length} · أسئلة: ${results.length} → ${OUT}`);
-console.log(`⛔ قصّ: ${cut.length} · مرنة: ${flex.length} · تداخل: ${hits.length} · رأسيّ: ${vert.length} · أخطاءُ JS: ${pageErrors.length}`);
-[['⛔ قصّ', cut], ['مرنة', flex], ['تداخل', hits], ['رأسيّ', vert]].forEach(([label, arr]) =>
+console.log(`⛔ قصٌّ أفقيّ: ${cut.length} · ⛔ قصٌّ رأسيّ: ${vcut.length} · مرنة: ${flex.length} · تداخل: ${hits.length} · ⚠️ تنفّسٌ رأسيّ: ${vert.length} · أخطاءُ JS: ${pageErrors.length}`);
+[['⛔ قصٌّ أفقيّ', cut], ['⛔ قصٌّ رأسيّ', vcut], ['مرنة', flex], ['تداخل', hits], ['⚠️ تنفّسٌ رأسيّ', vert]].forEach(([label, arr]) =>
   arr.slice(0, 20).forEach(r => console.log(`   ${label}  ${r.id}  ${r.type}  ${r.fit}`)));
 
 await close();
