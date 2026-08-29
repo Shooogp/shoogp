@@ -20,60 +20,7 @@
    أجسام طافية بلا خطّ أرض ولا ظلّ مُلقًى، وبلا أيّ ملامح وجه.
    السلالم: معدنيّ رماديّ (النِّصال) · كهرمانيّ (المقابض والغِمد والنِّطاق) ·
    أبيض الصاروخ (قبضة الخنجر). نسبة viewBox = 600÷430 ≈ 1.40 (دون سقف ٢٫٢). */
-const SHOOGP_SVG_EMBLEM = `<svg viewBox="0 0 600 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="شعار: خنجر عُمانيّ في الوسط وخلفه سيفان متقاطعان يربطهما نِطاق">
-  <g stroke="#111111" stroke-linecap="round" stroke-linejoin="round">
-
-    <!-- السَّيفان المتقاطعان (خلف) — نِصالٌ طويلةٌ تَبرُزُ أسفلَ النِّطاقِ فيَبينُ السَّيفانِ -->
-    <g transform="translate(180 34) rotate(-38)">
-      <path d="M-18 80 L18 80 L10 348 L0 372 L-10 348 Z" fill="#C0C0C0" stroke-width="3"/>
-      <path d="M0 80 L10 348 L0 372 Z" fill="#808080" stroke-width="2"/>
-      <path d="M-12 90 L-6 90 L-4 334 L-9 334 Z" fill="#FFFFFF" stroke="none"/>
-      <rect x="-42" y="58" width="84" height="22" rx="11" fill="#FFA000" stroke-width="3"/>
-      <rect x="-13" y="12" width="26" height="46" rx="8" fill="#E08000" stroke-width="3"/>
-      <rect x="-22" y="-10" width="44" height="26" rx="12" fill="#FFA000" stroke-width="3"/>
-    </g>
-    <g transform="translate(420 34) rotate(38)">
-      <path d="M-18 80 L18 80 L10 348 L0 372 L-10 348 Z" fill="#C0C0C0" stroke-width="3"/>
-      <path d="M0 80 L10 348 L0 372 Z" fill="#808080" stroke-width="2"/>
-      <path d="M-12 90 L-6 90 L-4 334 L-9 334 Z" fill="#FFFFFF" stroke="none"/>
-      <rect x="-42" y="58" width="84" height="22" rx="11" fill="#FFA000" stroke-width="3"/>
-      <rect x="-13" y="12" width="26" height="46" rx="8" fill="#E08000" stroke-width="3"/>
-      <rect x="-22" y="-10" width="44" height="26" rx="12" fill="#FFA000" stroke-width="3"/>
-    </g>
-
-    <!-- النِّطاق (الحزام) — سَيرانِ جِلدِيّانِ مائِلانِ قَليلاً يَشُدّانِ السَّيفَينِ إلى الخِنجَرِ -->
-    <g transform="translate(178 271) rotate(-6)">
-      <rect x="-84" y="-23" width="168" height="46" rx="16" fill="#C06000" stroke-width="3"/>
-      <rect x="-74" y="-15" width="150" height="12" rx="6" fill="#FFA000" stroke="none"/>
-      <rect x="-48" y="3"  width="18"  height="13" rx="5" fill="#984800" stroke-width="2"/>
-      <rect x="8"   y="3"  width="18"  height="13" rx="5" fill="#984800" stroke-width="2"/>
-    </g>
-    <g transform="translate(422 271) rotate(6)">
-      <rect x="-84" y="-23" width="168" height="46" rx="16" fill="#C06000" stroke-width="3"/>
-      <rect x="-76" y="-15" width="150" height="12" rx="6" fill="#FFA000" stroke="none"/>
-      <rect x="-26" y="3"  width="18"  height="13" rx="5" fill="#984800" stroke-width="2"/>
-      <rect x="30"  y="3"  width="18"  height="13" rx="5" fill="#984800" stroke-width="2"/>
-    </g>
-
-    <!-- الخِنْجَر (أمام) -->
-    <rect x="252" y="36" width="96" height="44" rx="14" fill="#F9F8F3" stroke-width="3"/>
-    <rect x="262" y="46" width="30" height="14" rx="7" fill="#FFFFFF" stroke="none"/>
-    <path d="M272 80 H328 L322 144 H278 Z" fill="#FFFFFF" stroke-width="3"/>
-    <path d="M280 88 H290 L287 138 H278 Z" fill="#F7F6F1" stroke="none"/>
-    <rect x="254" y="144" width="92" height="24" rx="7" fill="#FFA000" stroke-width="3"/>
-    <rect x="262" y="168" width="76" height="78" fill="#E08000" stroke-width="3"/>
-    <rect x="270" y="178" width="14" height="58" rx="7" fill="#FFFFFF" stroke="none"/>
-    <path d="M290 186 h22 v14 h-22 z M290 214 h22 v14 h-22 z" fill="#C06000" stroke-width="2"/>
-    <path d="M262 246 H338 V286
-             C338 330 314 358 268 366
-             C240 372 216 364 202 346
-             C230 344 248 331 256 311
-             C261 297 262 274 262 246 Z" fill="#C06000" stroke-width="3"/>
-    <path d="M270 254 h14 c0 34 -6 60 -18 78 c-6 8 -14 14 -24 16 c14 -14 24 -30 28 -48 c3 -14 4 -28 0 -46 z" fill="#FFA000" stroke="none"/>
-    <path d="M300 258 h20 v12 h-20 z" fill="#984800" stroke-width="2"/>
-
-  </g>
-</svg>`;
+const SHOOGP_SVG_EMBLEM = "<svg viewBox='0 0 894 900' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='شعار سلطنة عُمان: خنجر عُمانيّ في الوسط وخلفه سيفان متقاطعان يربطهما نِطاق'><image href='images/شعار-عمان.png' x='0' y='0' width='894' height='900'/></svg>";
 
 /* رسم أصليّ لغلاف قصّة (عنوانها «امتحان») — يخدم سؤالَي الدرس g4a2-2-2
    (تحديد الأجزاء + السحب والإفلات) فيُعرَّف مرّة ويُستعمل مرّتين.
@@ -15431,15 +15378,16 @@ window.QUESTIONS = {
     // ① سحب وإفلات — تطبيق
     {
       type: "drag-drop",
+      fit: "width",
       objective: "يتعرّف أجزاء شعار السلطنة ويسمّيها",
       level: "application",
       prompt: "اسْحَبِ اسْمَ كُلِّ جُزْءٍ إلى مَوْضِعِهِ في الشِّعارِ.",
       bg: "#fdf9ee",
       svg: SHOOGP_SVG_EMBLEM,
       targets: [
-        { answer: "الخِنْجَرُ", box: { x: 50, y: 88 }, dot: { x: 50, y: 46 } },
-        { answer: "السَّيْفانِ", box: { x: 18, y: 88 }, dot: { x: 66, y: 72 } },
-        { answer: "النِّطاقُ",  box: { x: 82, y: 88 }, dot: { x: 30, y: 63 } }
+        { answer: "الخِنْجَرُ", box: { x: 50, y: 88 }, dot: { x: 50, y: 80 } },
+        { answer: "السَّيْفانِ", box: { x: 18, y: 88 }, dot: { x: 12, y: 10 } },
+        { answer: "النِّطاقُ",  box: { x: 82, y: 88 }, dot: { x: 22, y: 47 } }
       ]
     },
 
