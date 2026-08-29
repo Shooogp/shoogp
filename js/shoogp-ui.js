@@ -1051,13 +1051,41 @@ function clipSlackX(el){
   if(cs.overflowX!=='clip') return HOVF_TOL;
   return Math.max(HOVF_TOL, parseFloat(cs.overflowClipMargin)||0);
 }
+/* ═══ العناصرُ التي **تقصُّ أفقياً بنفسِها** داخلَ النافذة ═══
+   قائمةٌ تُحسَبُ مرّةً في كلِّ `fitFrame` وتُستعمَلُ في كلِّ خطوةٍ من البحثِ
+   الثنائيّ — فالبنيةُ لا تتغيّرُ بتغيّرِ عرضِ الإطار، وحسابُها في كلِّ خطوةٍ
+   يُدخِلُ مسحاً كاملاً للشجرةِ ستَّ عشرةَ مرّةً في كلِّ مقاس. */
+var _clipXList=null;
+function clipXKids(w){
+  if(_clipXList) return _clipXList;
+  var out=[], all=w.querySelectorAll('*');
+  for(var i=0;i<all.length;i++){
+    var el=all[i];
+    if(el.closest('svg')) continue;
+    var ox=getComputedStyle(el).overflowX;
+    if(ox==='hidden'||ox==='clip') out.push(el);
+  }
+  return (_clipXList=out);
+}
 function frameFits(f,fill,w,size,Wf){
   var cfg=applyFrame(f,fill,w,size,false);
   f.className='qframe qf-'+size+(cfg.hasFill?' qf-hasfill':'');
   f.style.width=Wf+'px';
   if(w.scrollHeight>w.clientHeight+2) return false;      /* قراءة تفرض التخطيط */
-  var b=w.querySelector('.qbody');
-  return !b || b.scrollWidth<=b.clientWidth+clipSlackX(b);
+  /* ═══ الفيضُ الأفقيُّ الذي يقصُّه العنصرُ **بنفسِه** لا يصلُ إلى النافذةِ إطلاقاً ═══
+     كان الفحصُ مقصوراً على `.qbody`، فما قصَّه ابنٌ من أبنائِه لم يُرَ: صندوقُ
+     مجموعةِ التصنيف (‏`.grp` بـ`overflow-x:hidden`) يبتلعُ فيضَ بطاقتِه فلا يظهرُ
+     في `scrollWidth` النافذة، **فيضيّقُ البحثُ الثنائيُّ الإطارَ على بترٍ لا يراه**.
+     مقيسٌ في `g3a1-1-2#٣`: مجموعةٌ عرضُها ١٦٧px وبطاقتُها ١٧٨ — فجملةُ «اخْتَلَفوا
+     وَظَهَرَتْ مُشْكِلَتُهُمْ» مبتورةُ الطرفَينِ على الشاشة.
+     وهو نظيرُ `selfCut` في `hOverflow` بمعيارِه نفسِه: لا يُحتسَبُ بتراً إلا على
+     عنصرٍ يقصُّ بنفسِه — و`overflow:visible` مهما فاضَ محتواه فهو **مرسومٌ كاملاً**. */
+  var kids=clipXKids(w);
+  for(var i=0;i<kids.length;i++){
+    var el=kids[i];
+    if(el.scrollWidth>el.clientWidth+clipSlackX(el)) return false;
+  }
+  return true;
 }
 /* الملاذ الأخير: حاوية مرنة بروح العائلة، بلا تمرير (صورة الإطار contain). يعيد cfg. */
 function toFlex(f,fill,w,base){
@@ -1249,6 +1277,7 @@ function fitFrame(card){
   var _restore=_wc&&_wc.restore;
   var _kind=(_wc&&_wc.kind)||'static';
   var _worstH=0;                     /* ارتفاع المحتوى بأسوأ الحالات (للتقرير) */
+  _clipXList=null;                   /* قائمةُ القاصّينَ أفقياً تُبنى مرّةً لهذا الضبط */
   var _prevW=f.style.width;          /* العرض المُثبَّت قبل هذا الضبط (للانتقال السلس) */
   f.style.transition='none';         /* عطّل الانتقال أثناء القياس ليطبَّق العرض فوراً */
   try{
@@ -1334,6 +1363,7 @@ function fitFrame(card){
      فلا تحتاج px هنا؛ placeFill يبقى للحاوية المرنة فقط (letterbox). */
   card.dataset.fit=best.size+'@'+Math.round(best.W/best.baseW*100)+'%';
   }finally{
+    _clipXList=null;
     if(_restore) _restore();
     /* §١.٤ز: حشوةُ qflex تُحسَبُ بعدَ استرجاعِ المحتوى الحقيقيِّ (لا بأسوأِ الحالات —
        صندوقُ المرنةِ ديناميكيٌّ أصلاً، وonContentResize يلاحقُ نموَّه أثناءَ الإجابة) */

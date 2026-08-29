@@ -102,10 +102,20 @@ await page.evaluate(() => {
       if (!br.width || !br.height) continue;
       var o = Math.max(T - br.top, br.bottom - B);
       if (o > any) { any = o; anyWho = el; }
+      /* ⚠️ البترُ الرأسيُّ يُحتسَبُ **لعناصرِ المحتوى وحدَها** — بخلافِ الأفقيِّ
+         في `hOverflow`. علّتُه أنّ `.qwin` يحجزُ شريطَ التغذيةِ الراجعةِ
+         (‏`.fb.qfb`) **فارغاً** أسفلَ المحتوى، فيقعُ تحتَ خطِّ القصِّ بلا شيءٍ
+         يُبتَر. واحتسابُه أغرقَ التقريرَ: ٢١ «بتراً» في «أحب لغتي» والرياضيات
+         مصدرُها هذا الشريطُ وحدَه، **وصفرُ عناصرِ محتوىً مبتورةٍ** في كلِّها.
+         وتُحقِّقَ أنّ الرسالةَ نفسَها لا تُبتَرُ حينَ تظهر: شبكةُ `contentRO`
+         تُعيدُ اختيارَ الإطارِ عندَ نموِّ المحتوى، فقِيسَ في خمسةِ أسئلةٍ أنّ
+         أسفلَ الشريطِ يبقى ٢٦–٤٥px **فوقَ** حافّةِ النافذةِ بعدَ الإجابة.
+         ولا يضيعُ بذلك شيءٌ من العيوبِ الحقيقية: في `g2m-5-2#٤` كانت بطاقاتُ
+         البنكِ (‏`div.chip` بنصِّها) مبتورةً فعلاً فتُبلَّغُ باسمِها. */
+      if (!isContent(el)) continue;
       var cb = vClipBounds(el, w);
       if (cb) { var k = Math.max(cb.T - br.top, br.bottom - cb.B);
                 if (k > vcut) { vcut = k; vcutWho = el; } }
-      if (!isContent(el)) continue;
       if (o > out) { out = o; who = el; }
     }
     return { out: +out.toFixed(1), who: tag(who), text: who ? txt(who) : '',
@@ -275,13 +285,17 @@ for (const j of list) {
 
 fs.writeFileSync(OUT, JSON.stringify({ pageErrors, results }, null, 1));
 
-/* التكبيرُ يضاعفُ البكسل، فالمقارنةُ بالبكسلِ الحقيقيِّ قبلَه لا بعدَه */
+/* ═══ العتبةُ بالبكسلِ الحقيقيِّ قبلَ التكبيرِ لا بعدَه ═══
+   الإطارُ يُكبَّرُ إلى ٢٠٠–٤٠٠٪، فبَقيّةُ تقريبٍ مقدارُها نصفُ بكسلٍ في فضاءِ
+   التصميمِ تُقرَأُ بكسلَينِ على الشاشةِ وتتجاوزُ عتبةَ الواحد. وقد أغرقَ ذلك
+   التقريرَ ببلاغاتٍ مقدارُها الحقيقيُّ ٠٫١px. فتُقسَمُ القراءةُ على التكبيرِ أوّلاً. */
 const zoom = r => { const m = /@(\d+)%/.exec(r.fit || ''); return m ? +m[1] / 100 : 1; };
-const cut  = results.filter(r => r.cut > 1 || r.selfCut > 1 || r.fCut > 1 || r.fSelfCut > 1);
-const vcut = results.filter(r => (r.vCut || 0) > 1 || (r.fVCut || 0) > 1);
+const real = (r, ...vals) => Math.max(...vals.map(v => (v || 0))) / zoom(r);
+const cut  = results.filter(r => real(r, r.cut, r.selfCut, r.fCut, r.fSelfCut) > 1);
+const vcut = results.filter(r => real(r, r.vCut, r.fVCut) > 1);
 const flex = results.filter(r => /flex/.test(r.fit) || /flex/.test(r.fFit || ''));
 const hits = results.filter(r => (r.hits || []).length || (r.fHits || []).length);
-const vert = results.filter(r => Math.max(r.vOut || 0, r.fVOut || 0) / zoom(r) > 3);
+const vert = results.filter(r => real(r, r.vOut, r.fVOut) > 3);
 
 console.log(`دروس: ${list.length} · أسئلة: ${results.length} → ${OUT}`);
 console.log(`⛔ قصٌّ أفقيّ: ${cut.length} · ⛔ قصٌّ رأسيّ: ${vcut.length} · مرنة: ${flex.length} · تداخل: ${hits.length} · ⚠️ تنفّسٌ رأسيّ: ${vert.length} · أخطاءُ JS: ${pageErrors.length}`);
