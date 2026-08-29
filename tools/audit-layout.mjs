@@ -181,16 +181,24 @@ await page.evaluate(() => {
         });
         return true;
       }
+      /* ⚠️ **الصنفُ `filled` جزءٌ من الحالةِ لا زينةٌ فيها** — `wireBank.put` يضيفُه
+         مع النصّ، وعليه تُعلَّقُ كسوةُ القشرةِ كلُّها. وحذفُه هنا أخفى عيباً حقيقياً:
+         في `skin-rocky` يقلبُ `.blank.filled` الفراغَ من `inline-block` إلى `flex`
+         فيتمدّدُ بعرضِ الجملةِ ويكسرُها أسطراً — ومرَّ الفحصُ عليه سليماً لأنّه
+         كان يملأُ النصَّ بلا صنف. */
       if (q.type === 'fill-blank') {
         var bl = [].slice.call(body.querySelectorAll('.blank'));
         if (!bl.length) return false;
-        bl.forEach(function (s) { s.dataset.placed = s.dataset.answer; s.textContent = s.dataset.answer; });
+        bl.forEach(function (s) {
+          s.dataset.placed = s.dataset.answer; s.textContent = s.dataset.answer;
+          s.classList.add('filled');
+        });
         return true;
       }
       if (q.type === 'drag-drop') {
         var tg = [].slice.call(body.querySelectorAll('.target'));
         if (!tg.length) return false;
-        tg.forEach(function (t) { t.textContent = t.dataset.answer; });
+        tg.forEach(function (t) { t.textContent = t.dataset.answer; t.classList.add('filled'); });
         return true;
       }
     } catch (e) {}
