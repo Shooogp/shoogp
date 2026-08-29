@@ -374,6 +374,11 @@
   .dnd-dot{position:absolute;width:12px;height:12px;border-radius:50%;background:#f5a04a;
     border:2px solid #fff;transform:translate(-50%,-50%);box-shadow:0 1px 3px rgba(0,0,0,.35)}
   /* صندوق الإفلات الفارغ: يبقى بلونه/شكله القديم (أبيض شفّاف بحدّ منقّط) */
+  /* ‏margin-top/-left: إزاحةُ حارسِ حدودِ المشهد (‏`redraw` في `js/app.js`) — تُكتَبُ
+     سطريّاً على العنصرِ حين يبرزُ عن المسرح، وتبقى صفراً في الأسئلةِ السليمة.
+     ⚠️ **والهامشُ لا `transform`**: التحوّلُ هنا `translate(-50%,-50%)` تُعيدُ كتابتَه
+     قواعدُ الحالاتِ (‏`.over`) وقشرةُ `shoogp-ui.css`، فإزاحةٌ مضافةٌ إليه تسقطُ
+     بالتتالي؛ أمّا الهامشُ فلا ينازعُه أحد. */
   .target{position:absolute;transform:translate(-50%,-50%);background:rgba(255,255,255,.7);
     border:2px dashed #b5c99a;border-radius:12px;padding:8px 4px;min-width:88px;text-align:center;
     font-weight:700;color:#9aa596;font-size:.86rem;transition:.2s}

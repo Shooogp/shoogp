@@ -1107,11 +1107,23 @@ function worstCaseArrange(w){
   var blanks=w.querySelectorAll('.blank');
   var fbChips=w.querySelectorAll('.fillbank .chips .chip');
   if(blanks.length && fbChips.length){
-    var longest=''; Array.prototype.forEach.call(fbChips,function(c){
-      var t=c.textContent||''; if(t.length>longest.length) longest=t; });
     var bsnap=Array.prototype.map.call(blanks,function(b){ return {b:b, txt:b.textContent}; });
-    /* أطول محتوى لكل فراغ = الأطول بين النائب "______" وأطول كلمة */
-    bsnap.forEach(function(o){ if(longest.length>(o.txt||'').length) o.b.textContent=longest; });
+    /* أطولُ محتوىً لكلِّ فراغ = الأعرضُ **رسماً** بين النائبِ "______" وكلماتِ البنك.
+       ⚠️ **والمقياسُ العرضُ المقيسُ لا عددُ المحارف** — وهذا هو الفرقُ كلُّه: النائبُ
+       ستُّ شُرَطٍ عريضةٍ، والكلمةُ العربيةُ محارفُها أكثرُ وعرضُها أقلّ (الحركاتُ
+       محارفُ بلا عرض). فالمقارنةُ بالطولِ النصّيِّ تختارُ الكلمةَ وتظنُّها الأسوأ،
+       بينما هي **الأضيق** — فيُقاسُ الإطارُ على محتوىً أقصرَ من الحقيقيّ ويُختارُ
+       إطارٌ لا يسعُه، ثمّ يُبتَرُ بنكُ الكلماتِ تحتَ حافّةِ النافذة.
+       مقيسٌ في `g2m-5-2#٤`: الجملةُ ٢٩٣px بالنائبِ و٢٠٧px بـ«زَوجُهُ» — فَرْقُ ٩٧px
+       أنتجَ بتراً فعلياً رآه التلميذ. (وكذلك `g2m-4-2#٥` و`g1m-6-2#٤`.)
+       والقياسُ مرّةً واحدةً على الفراغِ الأوّلِ ثمّ يُعمَّم: الفراغاتُ متطابقةُ النمط. */
+    var probe=bsnap[0].b, wid=function(t){ probe.textContent=t; return probe.getBoundingClientRect().width; };
+    var widest=bsnap[0].txt, widestW=wid(widest);
+    Array.prototype.forEach.call(fbChips,function(c){
+      var t=c.textContent||''; var x=wid(t);
+      if(x>widestW){ widestW=x; widest=t; } });
+    probe.textContent=bsnap[0].txt;
+    bsnap.forEach(function(o){ o.b.textContent=widest; });
     return {kind:'fill-blank', restore:function(){
       bsnap.forEach(function(o){ o.b.textContent=o.txt; }); }};
   }

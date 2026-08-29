@@ -686,6 +686,39 @@ function renderDragDrop(q, body, fb){
       const fs = cellFontSvg ? cellFontSvg*ir.width/cellVbW : 0.48*c.h/100*ir.height;
       tg.style.setProperty('--cellfs', fs.toFixed(2)+'px');
     });
+    /* ═══ حارسُ حدودِ المشهد لصناديقِ النوع (أ) ═══
+       الصندوقُ موضوعٌ بنسبةٍ مئويةٍ من المشهدِ **ومركزُه** هو النقطة
+       (‏`translate(-50%,-50%)`)، فنسبةٌ أصغرُ من نصفِ ارتفاعِه تُخرِجُ نصفَه
+       العلويَّ فوقَ الحافّة — و`.stage` يقصُّ بـ`overflow:hidden`، فيرى التلميذُ
+       صندوقاً مبتورَ الأعلى. مقيسٌ في `g2m-8-1#٣`: أربعةُ صناديقَ على `y:8`،
+       ارتفاعُ الواحدِ ٥٧px في مشهدٍ ارتفاعُه ٢٩٣ — فبرزَت ٤٫٣px فوقَ الحافّةِ
+       وبُتِرَت، ومعها ١٫٣px من يسارِ أوّلِها.
+       والعلاجُ **إزاحةٌ بالهامشِ لا إعادةُ تأليف**: يُدفَعُ الصندوقُ إلى الداخلِ بأقلِّ
+       ما يلزم، فتبقى إحداثياتُ المؤلِّفِ كما هي ما دامت داخلَ الحدود، ويُحمى
+       كلُّ سؤالِ سحبٍ قائمٍ ومستقبَليٍّ بلا لمسِ بياناتِه.
+       ⛔ ولا يمسُّ النوعَ (ب): خانتُه مطابِقةٌ لخانةٍ مرسومةٍ في الرسمِ موقعاً
+       ومقاساً، وإزاحتُها تفكُّ المطابقةَ التي هي جوهرُها. */
+    const boxes=[].slice.call(body.querySelectorAll('.target:not(.target-cell)'));
+    if(boxes.length){
+      /* الحدُّ **صندوقُ القصِّ لا صندوقُ الحدّ**: `overflow:hidden` يقصُّ عند حافّةِ
+         الحشوةِ (داخلَ الإطارِ المرسوم)، فالمقارنةُ بالحافّةِ الخارجيةِ تُبقي بقيّةً
+         بمقدارِ سُمكِ الإطار. (مقيسٌ: بقيَ ١٫٣px بعدَ أوّلِ علاجٍ قاسَ الخارجية.) */
+      const scs=getComputedStyle(stage);
+      const bl=(parseFloat(scs.borderLeftWidth)||0), bt=(parseFloat(scs.borderTopWidth)||0),
+            br_=(parseFloat(scs.borderRightWidth)||0), bb=(parseFloat(scs.borderBottomWidth)||0);
+      const cl=sr.left+bl, ct=sr.top+bt, cr=sr.right-br_, cb=sr.bottom-bb;
+      boxes.forEach(tg=>{ tg.style.marginTop=''; tg.style.marginLeft=''; });
+      boxes.forEach(tg=>{
+        const b=R(tg);
+        let dx=Math.max(0, cl-b.left) - Math.max(0, b.right-cr);
+        let dy=Math.max(0, ct-b.top)  - Math.max(0, b.bottom-cb);
+        /* هامشُ أمانٍ نصفُ بكسلٍ في اتجاهِ الدفعِ — يمنعُ بقيّةَ التقريب */
+        if(dx) dx+=Math.sign(dx)*0.5;
+        if(dy) dy+=Math.sign(dy)*0.5;
+        if(Math.abs(dx)>0.2) tg.style.marginLeft=dx.toFixed(1)+'px';
+        if(Math.abs(dy)>0.2) tg.style.marginTop =dy.toFixed(1)+'px';
+      });
+    }
     if(!svg) return;      // كل الأهداف خانات (ب) — لا خطوط ولا نقاط أصلاً
     body.querySelectorAll('.dnd-dot').forEach(dot=>{
       dot.style.left=(ir.left-sr.left + (+dot.dataset.x)/100*ir.width)+'px';
@@ -719,6 +752,18 @@ function renderDragDrop(q, body, fb){
      لا يستقرّ إلا بعد أن تختار خوارزمية الإطار مقاسها وتضبطه، أي بعد relayout الأول.
      الحارس رتيب (يضيف ولا يزيل) فلا يتذبذب مع هذا المراقب. */
   if(window.ResizeObserver){ new ResizeObserver(()=>{ redraw(); dndStageGuard(dndEl); }).observe(stage); }
+  /* ═══ ولا يكفي مراقبُ الأبعادِ وحدَه: الزومُ لا يوقظُه ═══
+     `redraw` كلُّه يقيسُ بـ`fitRect` (فضاءُ التصميمِ = البكسل ÷ الزوم)، و`ShoogpFit`
+     يضبطُ الزومَ بـ`transform` على `.fit-lock` — **والتحويلُ لا يغيّرُ مقاسَ التخطيط**
+     فلا يُطلِقُ `ResizeObserver` أصلاً. فتبقى الخيوطُ والنقاطُ وإزاحةُ حارسِ الحدودِ
+     على قياسِ زومٍ سابق. مقيسٌ في `g2m-8-1#٣`: أزاحَ الحارسُ ٣٫٠٩px والحاجةُ ٥٫٩٧
+     لأنّ آخرَ نداءٍ وقعَ قبلَ استقرارِ الزوم، فبقيَ الصندوقُ مبتوراً ٢px.
+     والمستمعُ **يرفعُ نفسَه** متى فارقَ المسرحُ الصفحة، فلا يتراكمُ مع كلِّ درس. */
+  const onFit=function(){
+    if(!stage.isConnected){ window.removeEventListener('shoogp-fit', onFit); return; }
+    redraw(); dndStageGuard(dndEl);
+  };
+  window.addEventListener('shoogp-fit', onFit);
   if(q.svg) relayout();                                   // نسبة الـSVG معروفة فوراً (قبل اختيار الإطار)
   if(imgEl && imgEl.tagName==='IMG'){
     if(imgEl.complete && imgEl.naturalWidth) relayout();  // صورة مخبّأة: قرّر فوراً
@@ -778,10 +823,29 @@ function renderMatching(q, body, fb){
   shuffle(q.pairs).forEach(pr=>{const d=document.createElement('div');const f=qFace(q,pr.a,'a');
     d.className='mitem left'+f.cls;d.innerHTML=f.html;d.dataset.k=pr.a;
     d.onclick=()=>{if(d.classList.contains('matched'))return;L.querySelectorAll('.left').forEach(x=>x.classList.remove('selected'));d.classList.add('selected');sel=d;};L.appendChild(d);});
+  /* ═══ الحُكمُ بنصِّ البطاقةِ لا بربطِها ═══
+     كانت بطاقةُ العمودِ الأيمنِ تحملُ مفتاحَ **زوجِها** (‏`dataset.k = pr.a`)
+     والتحقّقُ يقارنُه بمفتاحِ المختار. فإن تطابقت بطاقتانِ نصّاً في هذا العمود —
+     وهو واردٌ ومقصودٌ في التصنيفِ بالوصف: «٦ أَوجُه» للمكعّبِ ولمتوازي المستطيلات —
+     رأى التلميذُ بطاقتَينِ لا يفرّقُ بينهما، فالوصلُ إلى «الخطأِ» منهما **يُرَدُّ وهو
+     صحيحٌ نصّاً**، ولا سبيلَ له إلى معرفةِ أيَّتِهما قُصِدَت. مقيسٌ في `g3m-7-2#٢`:
+     وُصِلَ «المُكَعَّب» بـ«٦ أَوجُه» فرُدَّ لأنّها مربوطةٌ بـ«مُتَوازي المُستَطيلات».
+     فالمقياسُ الآنَ **نصُّ الطرفِ الصحيحِ للمختار** (‏`want`).
+
+     ومعه **مبادلةُ الربط**: إن قُبِلَت بطاقةٌ مربوطةٌ بزوجٍ آخرَ بُودِلَ مفتاحُها
+     مع قرينتِها المطابقةِ نصّاً. المبادلةُ **غيرُ مرئيةٍ** (النصُّ واحد) لكنّها
+     تُبقي ما تبقّى من البطاقاتِ قابلاً للوصلِ كاملاً — فلا يُحشَرُ التلميذُ في
+     آخرِ زوجَينِ لا يتطابقان. */
+  const wantOf={}; q.pairs.forEach(p=>{ if(!(p.a in wantOf)) wantOf[p.a]=p.b; });
   shuffle(q.pairs).forEach(pr=>{const d=document.createElement('div');const f=qFace(q,pr.b,'b');
-    d.className='mitem right'+f.cls;d.innerHTML=f.html;d.dataset.k=pr.a;
+    d.className='mitem right'+f.cls;d.innerHTML=f.html;d.dataset.k=pr.a;d.dataset.b=pr.b;
     d.onclick=()=>{if(!sel||d.classList.contains('matched'))return;
-      if(sel.dataset.k===pr.a){drawLink(sel,d);sel.classList.add('matched');d.classList.add('matched');sel.classList.remove('selected');sel=null;done++;playCorrectSound();
+      if(d.dataset.b===wantOf[sel.dataset.k]){
+        if(d.dataset.k!==sel.dataset.k){
+          const twin=[].slice.call(Rr.children).filter(x=>x.dataset.k===sel.dataset.k)[0];
+          if(twin){ twin.dataset.k=d.dataset.k; d.dataset.k=sel.dataset.k; }
+        }
+        drawLink(sel,d);sel.classList.add('matched');d.classList.add('matched');sel.classList.remove('selected');sel=null;done++;playCorrectSound();
         if(done===q.pairs.length) qWin(fb,'🌟 ممتاز! أكملت التوصيل',1);}
       else{qFail(fb,'ليست الإجابة الصحيحة، حاول مجدداً');d.style.background='#fde2e2';setTimeout(()=>d.style.background='',500);}};Rr.appendChild(d);});
   body.querySelector('.btn-reset').onclick=()=>renderMatching(q,body,fb);
@@ -1666,7 +1730,7 @@ function renderSlider(q, body, fb){
    السبورة واتجاه RTL. الصوت عبر playCorrectSound/playWrongSound وqWin خاضعاً لزرّ الكتم العامّ. */
 function renderMemory(q, body, fb){
   // كل زوج → بطاقتان تشتركان في مفتاح k (فهرس الزوج)، ثم تُخلط كل البطاقات مقلوبة
-  const cards=shuffle(q.pairs.reduce((a,p,i)=>a.concat([{k:i,t:p.a},{k:i,t:p.b}]),[]));
+  const cards=shuffle(q.pairs.reduce((a,p,i)=>a.concat([{k:i,s:'a',t:p.a},{k:i,s:'b',t:p.b}]),[]));
   const cols=cards.length<=6?3:4;   // عدد الأعمدة المفضَّل (٦ بطاقات ← ٣ أعمدة، ٨ ← ٤)
   const total=q.pairs.length;
   /* ‏--memcols لا قالب أعمدة إنلاين (DESIGN_RULES.md §أسئلة بطاقات الذاكرة —
@@ -1675,7 +1739,7 @@ function renderMemory(q, body, fb){
   body.innerHTML=`<div class="memory">`+
     `<div class="memgrid" style="--memcols:${cols}">`+
     cards.map(c=>{const f=qFace(q,c.t);
-      return `<button class="memcard" type="button" data-k="${c.k}">`+
+      return `<button class="memcard" type="button" data-k="${c.k}" data-s="${c.s}" data-t="${c.t}">`+
         `<span class="memface memback">🎴</span>`+
         `<span class="memface memfront${f.cls}">${f.html}</span>`+
       `</button>`;}).join('')+
@@ -1687,7 +1751,24 @@ function renderMemory(q, body, fb){
     if(lock || card.classList.contains('flipped') || card.classList.contains('matched')) return;
     card.classList.add('flipped');
     if(!first){ first=card; return; }           // البطاقة الأولى في الدور
-    if(first.dataset.k===card.dataset.k){        // تطابق: تبقى البطاقتان مكشوفتين
+    /* ═══ التطابقُ بنصِّ البطاقتَينِ لا بفهرسِ زوجِهما ═══
+       كانت البطاقتانِ تتطابقانِ بالفهرسِ وحدَه، فإن تكرّرَ نصٌّ في وجهٍ واحدٍ — وهو
+       واردٌ ومقصودٌ في «طابِقْ كلَّ مقارنةٍ بصحّتِها» حيثُ «صَحيح» تتكرّرُ ثلاثاً —
+       صارت ثلاثُ بطاقاتٍ لا يفرّقُ التلميذُ بينها، وقلبُ الصحيحةِ منها **يُرَدُّ
+       خطأً** إن لم تكنْ هي المربوطةَ فهرسياً. مقيسٌ في `g3m-12-2#٦`: قُلِبَت
+       «٢٥ < ٢٥٠» و«صَحيح» — مطابقةٌ سليمةٌ تماماً — فرُدَّت، **فلا يُحَلُّ السؤالُ
+       إلا بالحظّ**. فالمقياسُ الآنَ: وجهانِ مختلفانِ (‏`a` و`b`) ونصّاهما زوجٌ في
+       البيانات. ومبادلةُ الفهرسِ بين القرينتَينِ المتطابقتَينِ نصّاً تُبقي ما تبقّى
+       قابلاً للمطابقةِ كاملاً (مبادلةٌ غيرُ مرئيةٍ — النصُّ واحد). */
+    const A=first.dataset.s==='a'?first:card, B=first.dataset.s==='a'?card:first;
+    const okPair=first.dataset.s!==card.dataset.s &&
+      q.pairs.some(p=>p.a===A.dataset.t && p.b===B.dataset.t);
+    if(okPair){                                  // تطابق: تبقى البطاقتان مكشوفتين
+      if(first.dataset.k!==card.dataset.k){
+        const twin=[].slice.call(body.querySelectorAll('.memcard')).filter(x=>
+          x!==card && x.dataset.k===first.dataset.k && x.dataset.s===card.dataset.s)[0];
+        if(twin){ twin.dataset.k=card.dataset.k; card.dataset.k=first.dataset.k; }
+      }
       first.classList.add('matched'); card.classList.add('matched');
       first=null; matched++; playCorrectSound();
       if(matched===total) qWin(fb,'🎉 أحسنت! كشفت كل الأزواج',3);

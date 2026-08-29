@@ -131,7 +131,10 @@ function injectHelpers() {
       var last = null, same = 0, n = 0;
       (function poll() {
         var f = card.dataset.fit || '';
-        if (f && f === last) { if (++same >= 3) return res(f); }
+        /* ثمّ مهلةٌ أخيرةٌ لانتقالاتِ CSS: `.target` مثلاً فيه `transition:.2s`،
+           فالقراءةُ الفوريةُ تُعيدُ موضعَ ما قبلَ الانتقالِ لا موضعَ الاستقرار —
+           وقد أبلغَت بذلك بتراً في `g2m-8-1#٣` بعدَ إصلاحِه فعلاً. */
+        if (f && f === last) { if (++same >= 3) return setTimeout(function(){ res(f); }, 260); }
         else { same = 0; last = f; }
         if (++n > 150) return res(f);
         requestAnimationFrame(function () { setTimeout(poll, 40); });
