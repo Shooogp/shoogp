@@ -422,6 +422,11 @@
   .csvg .cpart{fill:#efe7d3;stroke:#111111;stroke-width:3;transition:fill .12s;cursor:pointer}
   .csvg .cpart:hover{filter:brightness(.96)}
   .csvg .cpart.cwrong{stroke:#c94a4a!important;stroke-width:5;stroke-dasharray:7 4}
+  /* خطوطُ تفصيلٍ زخرفيةٌ ثابتةٌ فوق منطقةِ التلوين (عروقُ ورقةٍ، خطوطُ خيشومِ سمكة، شقوقُ صخرة...) —
+     لا تُملأ ولا تُنقَر، فتبقى ظاهرةً بلونِها الأسودِ أياً كان لونُ التعبئةِ تحتَها (بلاغُ المالك
+     على رداءةِ رسومِ g3s-3-6#٦، ٢٠٢٦-٠٨-٢٩). لا تُستعمَل داخلَ `.cpart` لئلا تُصبحَ جزءاً منَ
+     المنطقةِ القابلةِ للتلوين. */
+  .csvg .cdeco{fill:none;stroke:#111111;stroke-width:2.2;pointer-events:none}
   /* بعد اختيار دلو: مؤشّر فرشاة طلاء فوق منطقة التلوين (حاسوب) */
   .csvg.brushing,.csvg.brushing .cpart{cursor:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><g stroke='black' stroke-width='1.5' stroke-linejoin='round'><rect x='18' y='3' width='6' height='16' rx='2' transform='rotate(45 21 11)' fill='saddlebrown'/><path d='M10 14 l7 7 l-3 3 l-8 -2 z' fill='gold'/><path d='M5 22 l3 3 l-5 1 z' fill='dimgray'/></g></svg>") 4 28,crosshair}
 
