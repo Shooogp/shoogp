@@ -28,6 +28,11 @@
     "    ← يتخطّى البناءَ كلَّه. يُستعمَلُ حينَ تُغري قائمةُ الهيكسات النموذجَ",
     "      برسمِ لوحةِ ألوانٍ داخلَ الصورة (وقعَ فعلاً مع رسمةِ العين)."
   ],
-  "batchId": "2026-08-29-none",
-  "items": []
+  "batchId": "2026-08-29-shiaar",
+  "items": [
+    {
+      "name": "ar-shiaar",
+      "prompt": "Create an educational illustration of the traditional Omani emblem symbol, drawn as ONE centred object on a plain background, seen flat from the front. It is built from THREE parts and nothing else:\n\n1. THE KHANJAR (curved dagger in its sheath) — stands UPRIGHT in the very centre and in FRONT of everything else. Its rounded pommel and short straight handle are at the TOP; below the handle the sheath curves sharply like the letter J, widening and then hooking up to a point at the bottom right. The sheath is decorated with simple bands.\n2. THE TWO SWORDS — behind the khanjar, CROSSED in an X. Each is a long straight blade; the two blades cross just below the middle of the khanjar, their POINTS angling UP and OUTWARD to the upper left and upper right, and their small round-guarded handles angling DOWN and OUTWARD to the lower left and lower right.\n3. THE BELT — one horizontal decorated band running straight across the middle, passing behind the khanjar and over both swords, tying the three together. Its two ends stop short of the sword blades.\n\nNothing else: no crown, no wreath, no flag, no shield, no stars, no rope, no background scene, and NO people or animals anywhere.\n\nCOLOUR: the khanjar sheath, the sword handles and the belt in an amber ramp (highlight #FFA000, base #E08000, shade #C06000, deep shade #984800); the two sword blades and the khanjar's blade edge in a grey ramp (#C0C0C0, #808080, #606060, #404040). No other colours at all — no red, blue, green or brown. Do NOT paint a colour palette, swatch, stripe or sample bar anywhere.\n\nGlossy cartoon vector illustration in a space-sticker style, each ramp as crisp discrete bands with hard edges and no soft blending, a broad white gloss highlight on curved surfaces, a thin crisp black outline #111111 with rounded caps around every part, plump rounded forms, the emblem floating with no ground line and no cast shadow, absolutely no facial features on anything. Pure white background #FFFFFF with no text, labels, numbers or shadows. Image roughly square. One single standalone image only."
+    }
+  ]
 }
