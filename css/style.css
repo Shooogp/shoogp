@@ -677,7 +677,9 @@
      يحفظُ نسبةَ الصورةِ المربّعةِ (٣٠٠×٣٠٠) داخلَ المربّعِ المخصَّصِ لها. */
   .qpic svg,.qpic .qpic-img{width:100%;height:100%;display:block}
   .qpic .qpic-img{object-fit:contain;user-select:none;-webkit-user-drag:none}
-  .qpic-t{font-size:.88em;font-weight:700}
+  /* ٨٠٠ لا ٧٠٠ — يطابقُ وزنَ نصِّ الخيارِ العاري (‏`.opt` عبرَ القشرات: `font-weight:800`)،
+     فلا يبدو نصُّ الخيارِ المصوَّرِ أخفَّ من نظيرِه غيرِ المصوَّر (طلبُ المالك). */
+  .qpic-t{font-size:.88em;font-weight:800}
 
   .excl-opt:hover:not(:disabled){background:#ffd39a}
   .excl-opt:disabled{cursor:default;opacity:.9}
