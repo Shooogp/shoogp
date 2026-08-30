@@ -11871,7 +11871,11 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "لَوِّنْ مُضاعَفاتِ العَشَرَةِ بِالأَخْضَرِ، وما عَداها بِالأَحْمَرِ.",
       bg: "#fdf6ec",
-      showLabels: true,
+      // ⚠️ showLabels:true كانت تُعرِّفُ الأرقامَ في شريطِ تعليماتٍ عائمٍ منفصلٍ عن الدوائر
+      // الخمسِ الفارغةِ المتطابقةِ الشكل، فلا رابطَ بصريّاً بين الشارةِ ودائرتِها إلا
+      // الترتيبُ الأفقيُّ المجرَّد — غيرُ واضحٍ (بلاغُ المالك). أُلغِيَ الشريطُ، وكُتِبَ كلُّ
+      // رقمٍ داخلَ دائرتِه مباشرةً (فلا حاجةَ لاستنتاجِ المطابقةِ من الموضع).
+      showLabels: false,
       palette: [
         { name: "أَخْضَر", color: "#60C020" },
         { name: "أَحْمَر", color: "#FF2020" }
@@ -11890,6 +11894,14 @@ window.QUESTIONS = {
           <g class="cpart" data-name="٢٠" id="part-t20"><circle cx="290" cy="130" r="44"/></g>
           <g class="cpart" data-name="٣٣" id="part-t33"><circle cx="400" cy="130" r="44"/></g>
           <g class="cpart" data-name="٣٠" id="part-t30"><circle cx="504" cy="130" r="44"/></g>
+        </g>
+        <g font-family="Cairo, Tajawal, sans-serif" font-size="34" font-weight="800"
+           text-anchor="middle" dominant-baseline="central" fill="#111111" pointer-events="none">
+          <text x="70"  y="132">١٠</text>
+          <text x="180" y="132">٢٥</text>
+          <text x="290" y="132">٢٠</text>
+          <text x="400" y="132">٣٣</text>
+          <text x="504" y="132">٣٠</text>
         </g>
       </svg>`
     }
