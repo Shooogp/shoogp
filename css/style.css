@@ -447,6 +447,12 @@
     width:38px;height:38px;border-radius:50%;background:#fff;color:#c8791f;
     display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.1rem;box-shadow:0 2px 5px rgba(0,0,0,.28)}
   .seq-txt{flex:1 1 auto;text-align:right}
+  /* إجابةٌ قصيرةٌ (رقمٌ غالباً) بلا صورة — تُوسَّطُ وتُكبَّرُ بدلَ الجلوسِ عند الحافّة
+     البعيدةِ عن مقبضِ السحب، تاركةً فراغاً واسعاً بينهما (بلاغُ المالك على `g1m-1-1#٤`،
+     ٢٠٢٦-٠٨-٣٠). `flex:1 1 auto` يُبقي `.seq-txt` يملأُ المساحةَ بصرفِ النظرِ عن
+     `justify-content` الحاويةِ، فالمحاذاةُ هنا وحدَها هي الحاكمة — ولا صنفَ `.seqitem`
+     في أيِّ قشرةٍ يُعيد كتابةَ `.seq-txt` فلا حاجةَ لـ`!important` (خلافَ `.opt-num`). */
+  .seq-txt.seq-num{text-align:center;font-size:1.35rem;font-weight:800}
   .seq-grip{flex:0 0 auto;color:#b98a3e;font-size:1.5rem;line-height:1;cursor:grab;user-select:none}
 
   /* ⑦ التصنيف في مجموعات: صناديق جنباً إلى جنب تُسحب إليها العناصر */

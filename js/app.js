@@ -882,12 +882,14 @@ function wireAudioPlayer(scope, src){
      يخدمُ «اقترحْ بديلاً» و«ضعْ عنواناً آخر» حيثُ تصحُّ أكثرُ من إجابة.
      **التوافقُ بالبناءِ لا بالفحص:** فرعُ الرقمِ المفردِ هو تعبيرُ اليومِ حرفياً
      (`+btn.dataset.i===q.answer`)، والرقمُ لا يدخلُ `Array.isArray` أصلاً. */
+/* إجابةٌ قصيرةٌ (رقمٌ أو كلمةٌ من ٣ أحرفٍ فأقلّ، بلا فراغ) تُوسَّطُ في بطاقتِها وتُكبَّرُ
+   بدلَ أن تجلسَ ملتصقةً بحافّةٍ فارغةٍ (بلاغُ المالك). مشتركةٌ بين `renderMcq` (صنفُ
+   `opt-num`) و`renderSequence` (صنفُ `seq-num`) — منطقٌ واحدٌ لكلا الاستعمالَين. */
+function isShortAnswer(s){ return typeof s==='string' && !/\s/.test(s) && s.length<=3; }
+
 function renderMcq(q, body, fb){
   const opts=shuffle(q.options.map((o,idx)=>({o,idx})));
-  /* إجابةٌ قصيرةٌ بلا صورة (رقمٌ أو كلمةٌ من ٣ أحرفٍ فأقلّ، بلا فراغ) تُوسَّطُ في الزرِّ
-     وتُكبَّرُ بدلَ أن تجلسَ ملتصقةً بيمينِ زرٍّ عريضٍ فارغٍ (بلاغُ المالك). الشرطُ نصّيٌّ
-     بحتٌ فلا يمسُّ الخياراتِ الطويلةَ (جملاً كاملة) التي تبقى محاذاةً لليمين كما كانت. */
-  const isShort = s => typeof s==='string' && !/\s/.test(s) && s.length<=3;
+  const isShort = isShortAnswer;
   body.innerHTML=(q.audio?`<div class="qaudio">`+audioPlayerHTML(q.audio)+`</div>`:'')+
     `<div class="opts">`+opts.map(x=>{const f=qFace(q,x.o);
       const shortCls=(!f.cls && isShort(x.o))?' opt-num':'';
@@ -1057,8 +1059,9 @@ function renderSequence(q, body, fb){
   order.forEach(txt=>{
     const li=document.createElement('li');
     const f=qFace(q,txt);
+    const numCls=(!f.cls && isShortAnswer(txt))?' seq-num':'';
     li.className='seqitem'+f.cls; li.dataset.k=txt; li.draggable=true;
-    li.innerHTML=`<span class="seq-txt">${f.html}</span><span class="seq-grip" aria-hidden="true">≡</span>`;
+    li.innerHTML=`<span class="seq-txt${numCls}">${f.html}</span><span class="seq-grip" aria-hidden="true">≡</span>`;
     list.appendChild(li);
   });
   const items=()=>[...list.querySelectorAll('.seqitem')];
