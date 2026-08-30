@@ -937,6 +937,48 @@ function hitsSpot(sp,px,py){
   return Math.hypot(px-sp.x,py-sp.y)<=(sp.r||10);
 }
 
+/* نسبةُ العرضِ إلى الارتفاعِ الحقيقيةُ للوسيط — من `viewBox` لِـSVG أو الأبعادِ الطبيعيةِ
+   لصورة. تعودُ null إن تعذّرَ القياسُ (فيُعتمَدُ صندوقُ `fig` كما هو، السلوكُ القديم). */
+function mediaAspect(media){
+  if(!media) return null;
+  if(media.tagName && media.tagName.toLowerCase()==='svg'){
+    const vb=media.viewBox && media.viewBox.baseVal;
+    if(vb && vb.width && vb.height) return vb.width/vb.height;
+    return null;
+  }
+  return (media.naturalWidth && media.naturalHeight) ? media.naturalWidth/media.naturalHeight : null;
+}
+/* صندوقُ المحتوى الفعليُّ المرسومُ داخلَ `fig` — لا صندوقُ `fig` نفسِه دائماً.
+   العلّة: `.figwrap` عنصرُ flex داخلَ `.stage-img`، وحين تتباعدُ نسبتُه المفروضةُ (عرضُها
+   إلى ارتفاعِها) عن نسبةِ الوسيطِ الحقيقية، يُصغَّرُ المحتوى ويُتوسَّطُ (سلوكُ `viewBox`
+   الافتراضيّ `xMidYMid meet`) تاركاً شريطَي تنفّسٍ فارغَين — فحسابُ النسبةِ المئويةِ على
+   صندوقِ `fig` الخام يُزيحُ الإصابةَ عن `spot` المكتوبةِ على افتراضِ تطابُقِهما.
+   **مقيسٌ حيّاً (بلاغُ المالك على g1m-7-1#٦):** رسمٌ ‎viewBox="0 0 560 260"‎ (نسبتُه ٢٫١٥)
+   دخلَ صندوقاً ٦٠٦×٣٩٨ (نسبتُه ١٫٥٢)، فتصغّرَ المحتوى رأسياً وتوسَّط — نقرةٌ على السطرِ
+   الثالثِ ظاهرياً (‏٧١٫٥٪ من ارتفاعِ صندوقِ `fig`) لم تُصِب `spot.y=78.8` المكتوبةَ على
+   ارتفاعِ المحتوى الفعليّ لا صندوقِ `fig`. */
+function figContentBox(fig){
+  const box=fig.getBoundingClientRect();
+  const ratio=mediaAspect(fig.querySelector('svg,img'));
+  if(!ratio || !box.width || !box.height) return box;
+  const boxRatio=box.width/box.height;
+  let w,h,x,y;
+  if(boxRatio>ratio){ h=box.height; w=h*ratio; x=box.left+(box.width-w)/2; y=box.top; }
+  else{ w=box.width; h=w/ratio; x=box.left; y=box.top+(box.height-h)/2; }
+  return {left:x, top:y, width:w, height:h};
+}
+/* نقطةُ نقرٍ واحدةٌ تُستعمَلُ لغرضَين مختلفَين: موضعُ العلامةِ المرئيةِ نِسبةٌ من صندوقِ
+   `fig` كما يراهُ المستخدمُ (مهما كان توسيطُ المحتوى)، واختبارُ الإصابةِ نِسبةٌ من صندوقِ
+   المحتوى الفعليِّ وحدَه — فلا تنزاحُ العلامةُ عن إصبعِ الطالبِ رغم تصحيحِ الحساب. */
+function figClickPoint(fig,e){
+  const box=fig.getBoundingClientRect();
+  const cbox=figContentBox(fig);
+  return {
+    markX:(e.clientX-box.left)/box.width*100, markY:(e.clientY-box.top)/box.height*100,
+    px:(e.clientX-cbox.left)/cbox.width*100, py:(e.clientY-cbox.top)/cbox.height*100
+  };
+}
+
 /* ⑤ تحديد الأجزاء (hotspot): صورة/رسم + spot{x,y,r} (النقر على الموضع الصحيح) */
 function renderHotspot(q, body, fb){
   const inner=q.svg?q.svg:`<img src="${q.image}" alt="">`;
@@ -946,10 +988,9 @@ function renderHotspot(q, body, fb){
   let done=false;
   fig.onclick=(e)=>{
     if(done)return;
-    const box=fig.getBoundingClientRect();
-    const px=(e.clientX-box.left)/box.width*100, py=(e.clientY-box.top)/box.height*100;
+    const {markX,markY,px,py}=figClickPoint(fig,e);
     if(px<0||px>100||py<0||py>100) return;
-    const mark=document.createElement('div');mark.className='hs-mark';mark.style.left=px+'%';mark.style.top=py+'%';
+    const mark=document.createElement('div');mark.className='hs-mark';mark.style.left=markX+'%';mark.style.top=markY+'%';
     if(hitsSpot(q.spot,px,py)){done=true;mark.classList.add('hit');qWin(fb,'🎯 أحسنت! نقرت على المكان الصحيح',2);}
     else{mark.classList.add('miss');qFail(fb,'ليس هنا، حاول مرة أخرى');setTimeout(()=>mark.remove(),800);}
     fig.appendChild(mark);
@@ -966,10 +1007,9 @@ function renderFindError(q, body, fb){
   let done=false;
   fig.onclick=(e)=>{
     if(done)return;
-    const box=fig.getBoundingClientRect();
-    const px=(e.clientX-box.left)/box.width*100, py=(e.clientY-box.top)/box.height*100;
+    const {markX,markY,px,py}=figClickPoint(fig,e);
     if(px<0||px>100||py<0||py>100) return;
-    const mark=document.createElement('div');mark.className='hs-mark';mark.style.left=px+'%';mark.style.top=py+'%';
+    const mark=document.createElement('div');mark.className='hs-mark';mark.style.left=markX+'%';mark.style.top=markY+'%';
     if(hitsSpot(q.spot,px,py)){done=true;mark.classList.add('hit');qWin(fb,'🔍 أحسنت! اكتشفت الخطأ',2);}
     else{mark.classList.add('miss');qFail(fb,'ليس هنا الخطأ، دقّق أكثر');setTimeout(()=>mark.remove(),800);}
     fig.appendChild(mark);
