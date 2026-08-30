@@ -1586,7 +1586,10 @@
 }
 .shoogp-ui.skin-metal .qwin :is(.tf,.excl-opt,.mitem,.opt.haspic,.opt.opt-num):is(
        .correct,.tf-correct,.ok,.matched,.wrong,.tf-wrong,.no)::after{
-  position:absolute; inset-inline-end:9px; top:50%;
+  /* ٩px يجلسُ **داخلَ** الغطاءِ الطرفيِّ الزخرفيِّ نفسِه (‏`--mt-cap-w:14px`)، فتبدو
+     الشارةُ ملتصقةً بحافّةِ الزرِّ فوقَ خطوطِ تشطيبِه (بلاغُ المالك على g1m-1-1،
+     ٢٠٢٦-٠٨-٣٠). تُدفَعُ إلى ما بعدَ الغطاءِ بهامشٍ صغير. */
+  position:absolute; inset-inline-end:calc(var(--mt-cap-w) + 6px); top:50%;
   margin-inline-start:0; flex:none;
   transform:translateY(-50%);
 }
