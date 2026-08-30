@@ -1195,7 +1195,10 @@
 .ct-badge:empty{display:none}
 /* ⓓ القيمة المنزلية بالمكعبات (place-value): لوحُ عشراتٍ وآحادٍ بترتيب المنازل (العشراتُ يساراً) */
 .pv{display:flex;flex-direction:column;gap:12px;align-items:center}
-.pv-panes{direction:ltr;display:flex;gap:10px;align-items:flex-start;justify-content:center;flex-wrap:wrap}
+/* ‎align-items:stretch‎ لا ‎flex-start‎ — حينَ يحتاجُ عمودُ العشراتِ صفَّينِ (هامشُ العشراتِ
+   أعلاه) تصيرُ ساحتُه أطولَ من ساحةِ الآحاد، فتنتهي المنطقتانِ الباهتتانِ عند ارتفاعَينِ
+   مختلفَين. التمديدُ يُسوّي الحافّتَينِ العلويةَ والسفليةَ معاً (بلاغُ المالك، ٢٠٢٦-٠٨-٣٠). */
+.pv-panes{direction:ltr;display:flex;gap:10px;align-items:stretch;justify-content:center;flex-wrap:wrap}
 .pv-pane{background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.22);border-radius:18px;
   padding:10px 12px;min-width:180px;display:flex;flex-direction:column;gap:8px;align-items:center}
 .pv-head{font-family:'Cairo';font-weight:800;color:#ffe27a;font-size:1.1rem}
