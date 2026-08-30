@@ -2633,8 +2633,11 @@ function renderPlaceValue(q, body, fb){
   }
   body.querySelectorAll('.pv-add').forEach(b=>{ b.onclick=()=>{
     if(done) return;
-    if(b.dataset.p==='tens'){ if(tens>=maxTens){ qFail(fb,'لا تزد على '+arNum(maxTens)+' عشرات'); return; } tens++; }
-    else { if(ones>=maxOnes){ qFail(fb,'لا تزد على '+arNum(maxOnes)+' آحاد'); return; } ones++; }
+    /* ⚠️ الرسالةُ لا تذكرُ رقمَ الحدِّ: `maxTens` الافتراضيُّ = عشراتُ الهدفِ بالضبطِ
+       (أعلاه)، فذكرُ رقمِه هنا كان يُسرّبُ رقمَ العشراتِ الصحيحَ للطالبِ لحظةَ محاولتِه
+       تجاوزَه — قبلَ الضغطِ على «تحقّق» (بلاغُ المالك على سؤالِ بناءِ ١٣، ٢٠٢٦-٠٨-٣٠). */
+    if(b.dataset.p==='tens'){ if(tens>=maxTens){ qFail(fb,'لا يمكنُ إضافةُ المزيدِ من العشراتِ هنا'); return; } tens++; }
+    else { if(ones>=maxOnes){ qFail(fb,'لا يمكنُ إضافةُ المزيدِ من الآحادِ هنا'); return; } ones++; }
     paint();
   };});
   paint();
