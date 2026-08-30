@@ -1135,10 +1135,10 @@
 /* ⚠️ **الأولويةُ مضاعَفةٌ عمداً (‏`.skin-rocky.skin-rocky` و`.qwin.qwin`، وزنٌ ٧):**
    قاعدةُ `.haspic.haspic` العابرةُ للقشراتِ (وزنُها ٦) تُعيدُ كتابةَ `padding` شَرطياً،
    فتغلبُ حجزَنا لو تساوى الوزن — قِيسَ حيّاً: بوزنٍ ٥ سقطَ حجزُ `.opt.haspic` صامتاً. */
-.shoogp-ui.skin-rocky.skin-rocky .qwin.qwin :is(.excl-opt,.opt.haspic){
+.shoogp-ui.skin-rocky.skin-rocky .qwin.qwin :is(.excl-opt,.opt.haspic,.opt.opt-num){
   padding-inline-end:48px !important;
 }
-.shoogp-ui.skin-rocky .qwin :is(.excl-opt,.opt.haspic):is(.correct,.wrong,.ok,.no)::after{
+.shoogp-ui.skin-rocky .qwin :is(.excl-opt,.opt.haspic,.opt.opt-num):is(.correct,.wrong,.ok,.no)::after{
   position:absolute; inset-inline-end:9px; top:50%;
   margin-inline-start:0; flex:none;
   transform:translateY(-50%);
@@ -1581,10 +1581,10 @@
    **⛔ و`.chip`/`.mmchip` خارجَ العلاجِ عمداً** — نفسُ سببِ `skin-rocky` بالقياسِ نفسِه:
    الحجزُ يضيّقُ عمودَ التصنيف/الخريطةِ الثابتَ العرضِ فيرفعُ «أسوأَ حالات» الالتفافِ
    ويُسقِطُ سؤالاً حقيقياً إلى `qflex` (‏`g2m-5-1#٥` و`g2m-6-2#٣` مقيسانِ). */
-.shoogp-ui.skin-metal.skin-metal .qwin.qwin :is(.tf,.excl-opt,.mitem,.opt.haspic){
+.shoogp-ui.skin-metal.skin-metal .qwin.qwin :is(.tf,.excl-opt,.mitem,.opt.haspic,.opt.opt-num){
   padding-inline-end:48px !important;
 }
-.shoogp-ui.skin-metal .qwin :is(.tf,.excl-opt,.mitem,.opt.haspic):is(
+.shoogp-ui.skin-metal .qwin :is(.tf,.excl-opt,.mitem,.opt.haspic,.opt.opt-num):is(
        .correct,.tf-correct,.ok,.matched,.wrong,.tf-wrong,.no)::after{
   position:absolute; inset-inline-end:9px; top:50%;
   margin-inline-start:0; flex:none;
