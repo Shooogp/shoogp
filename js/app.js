@@ -884,9 +884,14 @@ function wireAudioPlayer(scope, src){
      (`+btn.dataset.i===q.answer`)، والرقمُ لا يدخلُ `Array.isArray` أصلاً. */
 function renderMcq(q, body, fb){
   const opts=shuffle(q.options.map((o,idx)=>({o,idx})));
+  /* إجابةٌ قصيرةٌ بلا صورة (رقمٌ أو كلمةٌ من ٣ أحرفٍ فأقلّ، بلا فراغ) تُوسَّطُ في الزرِّ
+     وتُكبَّرُ بدلَ أن تجلسَ ملتصقةً بيمينِ زرٍّ عريضٍ فارغٍ (بلاغُ المالك). الشرطُ نصّيٌّ
+     بحتٌ فلا يمسُّ الخياراتِ الطويلةَ (جملاً كاملة) التي تبقى محاذاةً لليمين كما كانت. */
+  const isShort = s => typeof s==='string' && !/\s/.test(s) && s.length<=3;
   body.innerHTML=(q.audio?`<div class="qaudio">`+audioPlayerHTML(q.audio)+`</div>`:'')+
     `<div class="opts">`+opts.map(x=>{const f=qFace(q,x.o);
-      return `<button class="opt${f.cls}" data-i="${x.idx}">${f.html}</button>`;}).join('')+`</div>`;
+      const shortCls=(!f.cls && isShort(x.o))?' opt-num':'';
+      return `<button class="opt${f.cls}${shortCls}" data-i="${x.idx}">${f.html}</button>`;}).join('')+`</div>`;
   wireAudioPlayer(body,q.audio);
   let done=false;
   body.querySelectorAll('.opt').forEach(btn=>{btn.onclick=()=>{

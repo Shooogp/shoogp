@@ -404,6 +404,19 @@
   font-size:max(18px, calc(21px * var(--s))) !important;
   min-height:60px;
 }
+/* إجابةٌ قصيرةٌ بلا صورة (رقمٌ مفردٌ غالباً — `.opt-num` من `renderMcq` في js/app.js) —
+   تُوسَّطُ وتُكبَّرُ عبرَ كلِّ القشراتِ بصرفِ النظرِ عن محاذاةِ `.opt` الافتراضيةِ لكلِّ
+   قشرة (`text-align:start` في skin-rocky/metal/capsule)، بدلَ أن تجلسَ ملتصقةً بحافّةِ
+   زرٍّ عريضٍ فارغ (بلاغُ المالك على g1m-1-1، ٢٠٢٦-٠٨-٣٠). ‎!important‎ لازمٌ لمجاراةِ
+   ‎!important‎ في قاعدةِ حجمِ الخطِّ أعلاه وقواعدِ محاذاةِ كلِّ قشرةٍ أدناه، والاختيارُ
+   بثلاثِ فئاتٍ (`.qwin .opt.opt-num`) يعلو تلقائياً على قاعدةِ الحجمِ ذاتِ الفئتين
+   حتى لو تساوى الوزنُ في مكانٍ آخر. */
+.qwin .opt.opt-num{
+  text-align:center !important;
+  justify-content:center !important;
+  font-size:max(24px, calc(30px * var(--s))) !important;
+  font-weight:800 !important;
+}
 .qwin .mitem,.qwin .seqitem,.qwin .excl-opt,.qwin .aopt{
   font-size:max(18px, calc(20px * var(--s))) !important;
   min-height:60px; display:flex; align-items:center; justify-content:center;
