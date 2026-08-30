@@ -2739,7 +2739,10 @@ function renderClock(q, body, fb){
   const readout=(mode==='set'||mode==='elapsed')?'<div class="ck-read"><span class="ck-time"></span></div>':'';
   const hint=(mode==='set'||mode==='elapsed')?'<div class="ck-hint">اسحبْ في الحلقةِ الخارجيّةِ لعقربِ الدقائق، وفي الوسطِ لعقربِ الساعات</div>':'';
   const head=(mode==='elapsed'&&start)?'<div class="ck-task">البدايةُ <b>'+fmt(start.h,start.m)+'</b> — أضِفْ <b>'+arNum(addMin)+'</b> دقيقة</div>':'';
-  const opts=(mode==='read')?'<div class="opts">'+shuffle((q.options||[]).slice()).map(o=>'<button class="opt" data-o="'+o+'">'+o+'</button>').join('')+'</div>':'';
+  // شبكةُ عمودين لا عمودٌ واحد (بلاغُ المالك على g1m-9-4#٢): القرصُ ٣٦٠px فوقَ عمودٍ
+  // من ٤ أزرارٍ يحتاجُ ٧٣٠px ارتفاعاً فيدفعُ أزرارَ التالي/السابق تحتَ الشاشةِ على
+  // نوافذَ أقصرَ — والشبكةُ تُنصِّفُ ارتفاعَ القائمةِ دونَ تصغيرِ القرص.
+  const opts=(mode==='read')?'<div class="opts ck-opts">'+shuffle((q.options||[]).slice()).map(o=>'<button class="opt" data-o="'+o+'">'+o+'</button>').join('')+'</div>':'';
   const acts=(mode==='read')?'':'<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>';
   body.innerHTML='<div class="clockq">'+head+
     '<svg class="cksvg" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet">'+

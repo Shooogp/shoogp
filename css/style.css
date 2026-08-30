@@ -1231,6 +1231,11 @@
 .ck-task b{color:#ffe27a;margin-inline:4px}
 .ck-hint{opacity:.72;font-size:.95rem}
 .cksvg{width:min(360px,86vw);height:auto;touch-action:none;cursor:pointer}
+/* شبكةُ عمودين لخياراتِ «كَمِ الساعةُ؟» بدلَ عمودٍ واحد — تُنصِّفُ ارتفاعَ القائمةِ
+   فلا يُدفَعُ زرّا التالي/السابق تحتَ الشاشةِ على نوافذَ أقصر (بلاغُ المالك،
+   g1m-9-4#٢). عددُ الخياراتِ اليومَ ٣ أو ٤ في كلِّ أسئلةِ clock/read، فتبقى
+   الخانةُ الفارغةُ عندَ الفرديِّ (٣) موضعاً مقبولاً بلا تمديدٍ يدويّ. */
+.ck-opts{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 .ck-face{fill:#fffdf6;stroke:#8a5a12;stroke-width:7}
 .ck-tick{stroke:#8a7d63;stroke-width:2.4;stroke-linecap:round}
 .ck-tick-h{stroke:#4a3a18;stroke-width:5}
