@@ -28,11 +28,6 @@
     "    ← يتخطّى البناءَ كلَّه. يُستعمَلُ حينَ تُغري قائمةُ الهيكسات النموذجَ",
     "      برسمِ لوحةِ ألوانٍ داخلَ الصورة (وقعَ فعلاً مع رسمةِ العين)."
   ],
-  "batchId": "2026-08-30-shirt-icon",
-  "items": [
-    {
-      "name": "shirt-outline-icon",
-      "prompt": "أنشئ أيقونةً بسيطة جداً على هيئة ظِلٍّ (سيلويت) صلبٍ أسودَ اللونِ تماماً لقميصٍ قصيرِ الأكمام بسيطٍ من الأمام (كالقميص الأساسيّ في متاجر الملابس)، بلا أيّ تفاصيلَ داخليةٍ أو خطوطِ خياطةٍ أو نقشٍ أو نصٍّ — مجرّد الشكلِ الخارجيّ المصمَتِ فقط (جسمُ القميص وياقةٌ دائريةٌ بسيطةٌ وكُمّانِ قصيرانِ متماثلانِ)، بحوافَّ ناعمةٍ مستديرةٍ قليلاً لا حادّة. القميصُ ثابتٌ مواجهٌ للأمامَ تماماً (بلا ميلٍ ولا منظورٍ جانبيّ) ومتماثلٌ تماماً يميناً ويساراً. اللونُ أسودُ صِرفٌ (#000000) بلا أيّ تدرّجٍ أو ظلٍّ أو نقشٍ بداخلِه، وخلفيةٌ بيضاءُ نقيّةٌ تماماً (#FFFFFF) خاليةٌ من أيِّ عنصرٍ آخر. بلا أيّ نصوصٍ. صورةٌ واحدةٌ مستقلّةٌ فقط.\n\nCreate a very simple, solid black silhouette icon of a basic short-sleeved t-shirt seen from the front (like a plain clothing-store t-shirt icon), with absolutely no internal details, seams, patterns, or text — just the solid outer silhouette shape (the shirt body, a simple round collar notch, and two short symmetrical sleeves), with slightly soft rounded edges rather than sharp corners. The shirt is perfectly front-facing (no tilt, no side perspective) and perfectly symmetrical left-to-right. The color is pure solid black (#000000) with no gradient, shading, or pattern inside it, on a completely pure white background (#FFFFFF) with nothing else in the image. No text anywhere. One single standalone image only."
-    }
-  ]
+  "batchId": "2026-08-30-empty",
+  "items": []
 }
