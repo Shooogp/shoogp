@@ -28,11 +28,6 @@
     "    ← يتخطّى البناءَ كلَّه. يُستعمَلُ حينَ تُغري قائمةُ الهيكسات النموذجَ",
     "      برسمِ لوحةِ ألوانٍ داخلَ الصورة (وقعَ فعلاً مع رسمةِ العين)."
   ],
-  "batchId": "2026-08-30-balance-scale",
-  "items": [
-    {
-      "name": "balance-scale-tilted",
-      "prompt": "أنشئ رسماً تعليمياً بسيطاً جداً لميزانٍ ذي كفّتين (ميزان تقليدي: قاعدةٌ عموديّة وعارضةٌ أفقيّة فوقها تتأرجح، وكفّتان معلّقتان بخيطين من طرفَي العارضة). اجعل العارضة مائلةً بوضوح بحيث تكون الكفّة الظاهرة على يسار الصورة أسفل (أثقل)، والكفّة الظاهرة على يمين الصورة أعلى (أخفّ). ارسم كلّ كفّة على هيئة شكل بسيط (شبه منحرف أو دائرة) بلونٍ مسطّحٍ واحدٍ صريحٍ يختلف كليّاً عن الآخر وعن باقي الرسم — الكفّة اليسرى (السفلى) بلونٍ أخضرَ فاقعٍ صريح، والكفّة اليمنى (العليا) بلونٍ بنفسجيٍّ فاقعٍ صريح — بلا أيّ تدرّج لونيّ أو ظلّ أو نقشٍ أو خطوطٍ داخل مساحة كلّ كفّة، وبحدٍّ خارجيٍّ أسودَ واضحٍ سميكٍ نسبياً يفصل كلّ كفّة عن محيطها بلا أيّ فجوة أو تقطّع. أمّا العارضة والقاعدة والخيطان فارسمها بأسلوبٍ بسيطٍ مسطّحٍ أيضاً (رماديّ فاتح للمعدن، أسود للخطوط) بلا تدرّج فيها هي الأخرى، إذ إنّ الهدف رسمٌ تخطيطيٌّ واضح لا رسمٌ فنّيٌّ معقّد. خلفية بيضاء نقيّة تماماً (#FFFFFF). بلا أيّ نصوصٍ أو أرقامٍ أو تسمياتٍ مكتوبة في الصورة إطلاقاً. بلا أيّ ملامح وجهٍ على أيّ شيء. صورة واحدة مستقلّة فقط.\n\nCreate a very simple educational illustration of a two-pan balance scale (a classic beam balance: a vertical stand with a horizontal beam pivoting on top, and two pans hanging by strings from each end of the beam). Tilt the beam clearly so the pan on the LEFT side of the image is lower (heavier), and the pan on the RIGHT side of the image is higher (lighter). Draw each pan as a simple shape (trapezoid or circle) filled with one single flat, solid, distinct color completely different from the other pan and from the rest of the drawing — the left (lower) pan in a bright solid green, the right (upper) pan in a bright solid purple — with absolutely no gradient, shading, texture, or pattern inside either pan's area, and a clear, fairly thick solid black outline cleanly separating each pan from its surroundings with no gaps or breaks. Draw the beam, stand, and strings in a simple flat style too (light grey for metal parts, black lines), with no gradients on them either — this should read as a clean diagram, not an elaborate illustration. Pure white background (#FFFFFF). Absolutely no text, numbers, or labels anywhere in the image. No facial features on anything. One single standalone image only."
-    }
-  ]
+  "batchId": "2026-08-30-empty",
+  "items": []
 }
