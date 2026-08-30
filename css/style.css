@@ -1215,7 +1215,12 @@
 .pv-line{stroke:#8a5a12;stroke-width:1.4;opacity:.85}
 .pv-item:hover .pv-face{fill:#fff0c2}
 .pv-item.correct .pv-face{fill:#a7c957;stroke:#4e7c1f}
-.pv-add{background:#FFE0B3;color:#3a2c0a;border-color:transparent;font-size:1.05rem;min-height:52px}
+/* ‎margin-top:auto‎ يُلصِقُ الزرَّ بأسفلِ ساحتِه دائماً: ساحتَي العشراتِ والآحادِ تُحجَزانِ
+   بارتفاعَي أسوأِ حالةٍ مختلفَينِ (صفٌّ واحدٌ للعشراتِ غالباً، وحتى أربعةِ صفوفٍ للآحادِ)،
+   فكان زرُّ «+ عشرة» يعلو زرَّ «+ واحد» بمقدارِ الفرقِ بينَ الحجزَين. الهامشُ التلقائيُّ
+   يمتصُّ ذلك الفرقَ فيتساوى الزرّانِ أفقياً معَ تساوي ارتفاعَي الساحتَينِ (‏`stretch` أعلاه) —
+   بلاغُ المالك، ٢٠٢٦-٠٨-٣٠. */
+.pv-add{background:#FFE0B3;color:#3a2c0a;border-color:transparent;font-size:1.05rem;min-height:52px;margin-top:auto}
 .pv-read{display:none}
 .pv-read.show{display:block;background:#fff;border-radius:14px;padding:8px 20px;font-family:'Cairo';
   font-weight:800;font-size:1.35rem;color:#2f3a2c;box-shadow:0 4px 14px rgba(0,0,0,.22)}
