@@ -2578,11 +2578,13 @@ function renderCountTap(q, body, fb){
   const unit=(mode==='step')?step:1;
   const countEl=body.querySelector('.ct-count b');
   const nodes=[].slice.call(body.querySelectorAll(mode==='step'?'.ct-group':'.ct-tile'));
-  /* ترقيمُ ما عُدَّ بترتيب النقر: العددُ يظهر على العنصر نفسِه فيرى الصفُّ العدَّ يتقدّم
-     (وفي وضع القفز يظهر المجموعُ التراكميّ ٥، ١٠، ١٥ … لا رقمُ المجموعة) */
+  /* شارةُ العنصرِ المعدود: علامةُ ✓ في وضعِ «each» — تمييزٌ بصريٌّ لِما عُدَّ فلا يُكرَّرُ
+     ولا يُفوَّتُ، بلا كشفِ رقمِ ترتيبِه (كانت تعرضُ الرقمَ نفسَه، فيتحوّلُ العدُّ إلى مجرّدِ
+     قراءةِ الأرقامِ المكتوبةِ — بلاغُ المالك). أمّا وضعُ «step» (العدُّ بالقفز) فيبقى على
+     الرقمِ التراكميِّ ٥، ١٠، ١٥ … لأنَّ الرقمَ نفسَه هو المهارةُ المقصودةُ هناك لا زخرفةً. */
   function renumber(){
     nodes.forEach(n=>{ n.classList.remove('on'); n.querySelector('.ct-badge').textContent=''; });
-    sel.forEach((n,i)=>{ n.classList.add('on'); n.querySelector('.ct-badge').textContent=arNum((i+1)*unit); });
+    sel.forEach((n,i)=>{ n.classList.add('on'); n.querySelector('.ct-badge').textContent=(mode==='step')?arNum((i+1)*unit):'✓'; });
     countEl.textContent=arNum(sel.length*unit);
   }
   nodes.forEach(n=>{ n.addEventListener('click',()=>{ if(done) return;
