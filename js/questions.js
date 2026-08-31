@@ -1305,6 +1305,16 @@ window.QUESTIONS = {
     // cinstrbar الافتراضيُّ كان يكرّرُها حرفياً (لا معلومةً تعليميةً إضافية) — بخلافِ
     // حالاتِ «خانة N» التي يُخفى شريطُها تلقائياً، وهذه الحالةُ يحتاجُ إخفاءَها تصريحاً
     // لأنّ الأسماءَ ليست بصيغةِ «خانة N».
+    // ⚠️ الدوائرُ استُبدِلَت بكواكبَ (بطلبِ المالكِ نفسِه «اشكال مناسبة للاطفال»، اختارَ
+    // «كوكب» من بين أربعةِ اقتراحاتٍ عُرِضَت عليه) — يتماشى مع الهويةِ الفضائيةِ للمنصّة.
+    // ⚠️ class="cpart" على <circle> الجسمِ مباشرةً لا على <g> يلفُّه — نفسُ الدرسِ
+    // المستفادِ من إثراءِ التفاحةِ أعلاه (السطر ~٨١١): تغليفُ العنصرِ القابلِ للتلوينِ
+    // بعناصرَ زخرفيةٍ أخرى داخلَ <g> واحدٍ يحملُ class="cpart" يمنعُ توريثَ style.fill
+    // من المجموعةِ إلى الدائرة (قِيسَ فعلياً هنا: المجموعةُ تلوَّنت والدائرةُ بقيت كريميةً
+    // — راجِعِ الجلسة). فالحلقةُ وبقعةُ اللمعةِ سيّبتانِ في <g> عاديٍّ بلا class، ولهما
+    // fill/stroke صريحانِ ثابتانِ، بينما الدائرةُ وحدَها تحملُ .cpart وdata-name وid.
+    // نصفُ قطرِ الجسمِ صُغِّرَ من ٥٢ إلى ٤٢ ليتّسعَ للحلقةِ المائلةِ دونَ تلامسِ الكواكبِ
+    // المتجاورة (فحصٌ بصريٌّ حيٌّ لا حسابٌ نظريّ وحده).
     {
       type: "color",
       objective: "2Nn14: يفهم الأعداد الفردية والزوجية ويميزها حتى العدد ٢٠ على الأقل",
@@ -1324,11 +1334,13 @@ window.QUESTIONS = {
         { name: "١٨", color: "#3e9b4f" },
         { name: "٢٠", color: "#3e9b4f" }
       ],
-      svg: `<svg viewBox="0 0 560 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ستة أعداد في دوائر للتلوين">
+      svg: `<svg viewBox="0 0 560 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ستة كواكبَ عليها أعدادٌ للتلوين">
         ${[{n:"٦",cx:450,cy:95},{n:"٩",cx:280,cy:95},{n:"١٢",cx:110,cy:95},{n:"١٥",cx:450,cy:245},{n:"١٨",cx:280,cy:245},{n:"٢٠",cx:110,cy:245}].map(c=>`
-        <g class="cpart" data-name="${c.n}" id="part-n${c.n}">
-          <circle cx="${c.cx}" cy="${c.cy}" r="52"/>
-          <text x="${c.cx}" y="${c.cy+17}" font-size="44" font-weight="800" text-anchor="middle" fill="#243040" stroke="none" font-family="Tajawal, Dubai, Cairo, sans-serif">${c.n}</text>
+        <g>
+          <ellipse cx="${c.cx}" cy="${c.cy}" rx="64" ry="15" fill="none" stroke="#8a744f" stroke-width="6" stroke-linecap="round" transform="rotate(-20 ${c.cx} ${c.cy})"/>
+          <circle class="cpart" data-name="${c.n}" id="part-n${c.n}" cx="${c.cx}" cy="${c.cy}" r="42"/>
+          <ellipse cx="${c.cx-13}" cy="${c.cy-14}" rx="12" ry="7" fill="#ffffff" stroke="none" opacity="0.5" transform="rotate(-25 ${c.cx-13} ${c.cy-14})"/>
+          <text x="${c.cx}" y="${c.cy+13}" font-size="36" font-weight="800" text-anchor="middle" fill="#243040" stroke="none" font-family="Tajawal, Dubai, Cairo, sans-serif">${c.n}</text>
         </g>`).join("")}
       </svg>`
     }
