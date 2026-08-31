@@ -28,6 +28,8 @@
     "    ← يتخطّى البناءَ كلَّه. يُستعمَلُ حينَ تُغري قائمةُ الهيكسات النموذجَ",
     "      برسمِ لوحةِ ألوانٍ داخلَ الصورة (وقعَ فعلاً مع رسمةِ العين)."
   ],
-  "batchId": "2026-08-30-empty",
-  "items": []
+  "batchId": "2026-08-31-scale-stand",
+  "items": [
+    { "name": "meezan-stand", "subject": "a simple weighing-scale stand for a classroom math diagram: a wide flat rectangular horizontal tray or platform on top, holding nothing, supported underneath by a short vertical pillar/post, which stands on a wide trapezoid base — like a simple balance or kitchen scale pedestal without any hanging pans or ropes, colored in warm amber/gold metal tones" }
+  ]
 }
