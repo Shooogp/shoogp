@@ -1504,6 +1504,26 @@
   color:var(--mt-ink) !important;
   cursor:grab;
 }
+/* ⛔ والنوعُ (ب) الممتلئُ مستثنًى من الوجهِ المعدنيّ أعلاه — قاعدةٌ لصيقةٌ بمنطقِ
+   استثناءِ «قطعِ البازلِ وأجزاءِ رسمِ التلوين» (السطرُ ٨٤٦ أعلاه): الخانةُ جزءٌ من
+   الرسمِ نفسِه لا زرَّ إجابةٍ مستقلّاً. ووجهُ `--mt-face` مصمَّمٌ لأزرارٍ عريضةٍ
+   (‏`.opt`/`.chip`)، فحين يُطبَّقُ على خانةٍ عموديةٍ ضيّقةٍ (٧٨×١٣٠ في هذا الصفّ)
+   يبدو أنبوباً لامعاً ضيّقاً لا بطاقةَ رقمٍ مسطّحة — وحدُّه الثابتُ ٣px يضيفُ
+   ضيقاً بصرياً آخرَ فوقَ ذلك (بلاغُ المالك: g2m-1-1#٤ «تضيق الأزرار بعد الإفلات»).
+   فيعودُ النوعُ (ب) بعد الامتلاءِ إلى تسطيحٍ بسيطٍ يطابقُ لونَ الإجابةِ العامَّ
+   (‏#FFE0B3/#a7c957 كما في style.css) بلا وجهٍ معدنيٍّ ولا حدٍّ سميك. */
+.shoogp-ui.skin-metal .qwin .target.target-cell.filled{
+  background:#FFE0B3 !important;
+  border:2px solid #e0b380 !important;
+  box-shadow:none !important;
+  color:#3a2c0a !important;
+  border-radius:8px !important;
+}
+.shoogp-ui.skin-metal .qwin .target.target-cell.filled.correct{
+  background:#a7c957 !important;
+  border-color:#82a83e !important;
+  color:#20340a !important;
+}
 /* صناديقُ التصنيف: صينيةٌ معدنيةٌ غائرةٌ (مستقبِلٌ كذلك) — وتصحيحُ ما طلبَه المالك:
    الخطُّ كان **16px** (دونَ الحدّ) والزوايا **0**. */
 .shoogp-ui.skin-metal .qwin .grp-drop{
