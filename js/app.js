@@ -2574,13 +2574,18 @@ function renderCountTap(q, body, fb){
     for(let i=0;i<count;i++)
       tiles+='<div class="ct-tile" data-i="'+i+'"><span class="ct-glyph">'+glyph+'</span><span class="ct-badge"></span></div>';
   }
-  body.innerHTML='<div class="cnt"><div class="ct-count">عدَدتَ: <b>٠</b>'+
+  /* العدّادُ العلويُّ مخفيٌّ أثناءَ النقرِ ويظهرُ عندَ التحقّقِ فقط (بلاغُ المالك
+     ٢٠٢٦-٠٨-٣١ متمّماً لتعميمِ شارةِ ✓): عرضُه الحيُّ يجعلُ الطالبَ ينقرُ حتى يقرأَ
+     الهدفَ فيه بدلَ أن يعُدَّ ذهنياً. بـvisibility لا display كي يحفظَ مكانَه في
+     التخطيطِ فلا يقفزَ المحتوى (ولا يُعادَ اختيارُ الإطار) عندَ ظهورِه. */
+  body.innerHTML='<div class="cnt"><div class="ct-count" style="visibility:hidden">عدَدتَ: <b>٠</b>'+
     (mode==='step'?' <i>(بالقفز '+arNum(step)+')</i>':'')+'</div>'+
     '<div class="ct-area'+(mode==='step'?' ct-area-step':'')+'">'+tiles+'</div></div>'+
     '<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>';
   const sel=[]; let done=false;
   const unit=(mode==='step')?step:1;
-  const countEl=body.querySelector('.ct-count b');
+  const countWrap=body.querySelector('.ct-count');
+  const countEl=countWrap.querySelector('b');
   const nodes=[].slice.call(body.querySelectorAll(mode==='step'?'.ct-group':'.ct-tile'));
   /* شارةُ العنصرِ المعدود: علامةُ ✓ في الوضعَينِ كِلَيهِما — تمييزٌ بصريٌّ لِما عُدَّ فلا
      يُكرَّرُ ولا يُفوَّتُ، بلا كشفِ رقمِه (كانت تعرضُ الرقمَ نفسَه فيتحوّلُ العدُّ إلى مجرّدِ
@@ -2594,10 +2599,12 @@ function renderCountTap(q, body, fb){
     countEl.textContent=arNum(sel.length*unit);
   }
   nodes.forEach(n=>{ n.addEventListener('click',()=>{ if(done) return;
+    countWrap.style.visibility='hidden';          /* استئنافُ النقرِ بعدَ تحقّقٍ خاطئٍ يخفيه ثانيةً */
     const at=sel.indexOf(n); if(at>=0) sel.splice(at,1); else sel.push(n);
     n.classList.remove('correct','wrong'); renumber(); }); });
   body.querySelector('.btn-check').onclick=()=>{
     if(done) return;
+    countWrap.style.visibility='visible';
     const got=sel.length*unit;
     if(got===target){ done=true; sel.forEach(n=>n.classList.add('correct'));
       qWin(fb,'🎉 أحسنت! عددتَ '+arNum(target)+(mode==='step'?' بالقفز '+arNum(step):''),3);
