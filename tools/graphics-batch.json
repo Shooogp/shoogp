@@ -28,6 +28,8 @@
     "    ← يتخطّى البناءَ كلَّه. يُستعمَلُ حينَ تُغري قائمةُ الهيكسات النموذجَ",
     "      برسمِ لوحةِ ألوانٍ داخلَ الصورة (وقعَ فعلاً مع رسمةِ العين)."
   ],
-  "batchId": "2026-08-31-empty",
-  "items": []
+  "batchId": "2026-08-31-plant-leaf-flat",
+  "items": [
+    { "name": "plant-leaf-flat", "prompt": "Create ONE single simple coloring-book style icon of a plant leaf, for a young child's math app.\n\nThe leaf is a single, simple, classic leaf silhouette (like a basic almond/teardrop leaf shape) with a visible central vein line running down the middle from the stem end to the tip.\n\nCRITICAL STYLE — completely flat, solid, plain colour, NOT a glossy sticker: the entire leaf body is filled with ONE single, completely flat, uniform light green colour — absolutely NO gradient, NO gloss highlight, NO shading bands, NO shadow, NO texture of any kind anywhere in the leaf. Just one plain flat light green shape.\n\nA thin, crisp, uniform black outline traces the outer edge of the leaf, and a thin black line traces the central vein. These are the only two line elements; no other internal lines or markings.\n\nCRITICAL RULE - NO FACE: no eyes, no mouth, no facial features of any kind.\n\nPure white background. Square 1:1 aspect ratio, the leaf centred and filling most of the frame with a small margin, oriented upright (stem/base at the bottom, tip pointing up). One single standalone image only.\n\nABSOLUTELY FORBIDDEN inside the image: any text, letters, numbers, labels, captions, watermarks, gradients, gloss, shading bands, or additional colours. Only exactly one flat light green colour plus the black outline and vein line and white background." }
+  ]
 }
