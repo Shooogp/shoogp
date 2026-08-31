@@ -413,9 +413,7 @@ window.QUESTIONS = {
           <text x="${g.gx+204}" y="208" font-size="46" font-weight="700" text-anchor="middle" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">${g.given}</text>
           <text x="${g.gx+140}" y="208" font-size="42" font-weight="700" text-anchor="middle" fill="#4a3a10" font-family="Cairo, Tajawal, sans-serif">+</text>
           <rect x="${g.gx+24}" y="136" width="104" height="116" rx="14" fill="#efe6d6" stroke="#9c7b3f" stroke-width="5" stroke-dasharray="14 10"/>
-          <rect x="${g.gx+10}" y="272" width="260" height="18" rx="9" fill="#d9c7a4"/>
-          <rect x="${g.gx+129}" y="290" width="22" height="46" fill="#c9b48c"/>
-          <rect x="${g.gx+65}" y="336" width="150" height="20" rx="10" fill="#c9b48c"/>`).join('')}
+          <image href="images/قاعدة-ميزان.png" x="${g.gx+43.5}" y="272" width="193" height="130"/>`).join('')}
       </svg>`,
       targets: [
         { answer: "٨٠", box: { x: 74, y: 6 }, dot: { x: 74.0, y: 47.3 } },
