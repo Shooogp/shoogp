@@ -902,23 +902,33 @@ window.QUESTIONS = {
       ]
     },
 
-    // ③ تحديد الأجزاء — تطبيق — 2Nc2 (وجهُ ساعةٍ مبنيّ SVG، والجواب ٨ زوجُ ٤)
+    // ③ تحديد الأجزاء — تطبيق — 2Nc2 (وجهُ ساعةٍ، والجواب ٨ زوجُ ٤)
     // ⚠️ كانت الصياغةُ «مينا السّاعة» — كلمةٌ فصيحةٌ لكنّها غيرُ مألوفةٍ عند طفلِ
     // الصفِّ الثاني، فالتبَسَ بها المالكُ نفسُه (٢٠٢٦-٠٨-٣١) قبل أن يسألَ عن معناها.
     // بُدِّلت إلى «وجه الساعة» في هذا الدرسِ كلِّه — أبسطُ وأوضحُ للفئةِ العمرية.
+    // ⚠️ ثمّ استُبدلت الحاويةُ الهندسيةُ المرسومةُ يدوياً (دائرةٌ بحدٍّ بنّيّ) برسمةِ
+    // ساعةٍ مولَّدةٍ بجيميناي عبر مسار n8n (بطلبِ المالكِ ٢٠٢٦-٠٨-٣١) — images/وجه-ساعة.png.
+    // الوجهُ الدائريُّ في الصورةِ فارغٌ عمداً: الأرقامُ (١-١٢) ونقطةُ المحورِ تبقى SVG
+    // فوقَها كما كانت (توليدُ أرقامٍ عربيةٍ داخلَ صورةٍ غيرُ موثوقٍ)، فلا يتغيّرُ منطقُ
+    // hotspot ولا حقلُ spot إلا بإعادةِ حسابِ نسبتَيهِ المئويّتَينِ بعدَ تغيّرِ viewBox.
+    // CX/CY/R_FACE مقيسةٌ يدوياً من مركزِ الوجهِ الدائريِّ في الصورةِ بعدَ تحجيمِها.
     {
       type: "hotspot",
       objective: "2Nc2: يجزّئ جميع الأعداد حتى ٢٠ إلى أزواج ويسجل حقائق الجمع والطرح المرتبطة بها",
       level: "application",
       prompt: "على وَجهِ السّاعةِ: اضغَطْ على العَدَدِ الَّذي يُكمِلُ ٤ إلى ١٢.",
       bg: "#fdf9ee",
-      svg: `<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="وجه ساعة عليه الأعداد من واحد إلى اثني عشر">
-        <circle cx="150" cy="150" r="132" fill="#ffffff" stroke="#9c7b3f" stroke-width="7"/>
-        <circle cx="150" cy="150" r="7" fill="#9c7b3f"/>
-        ${Array.from({length:12},(_,i)=>{const n=i+1;const a=n*30*Math.PI/180;const x=150+92*Math.sin(a);const y=150-92*Math.cos(a);const lbl=["١","٢","٣","٤","٥","٦","٧","٨","٩","١٠","١١","١٢"][i];return `
-          <text x="${x.toFixed(1)}" y="${(y+12).toFixed(1)}" font-size="34" font-weight="700" text-anchor="middle" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">${lbl}</text>`;}).join("")}
-      </svg>`,
-      spot: { x: 23.4, y: 65.3, r: 10 }
+      svg: (function(){
+        const CX=190.9, CY=224.2, R_NUM=80.4;
+        const nums = Array.from({length:12},(_,i)=>{const n=i+1;const a=n*30*Math.PI/180;const x=CX+R_NUM*Math.sin(a);const y=CY-R_NUM*Math.cos(a);const lbl=["١","٢","٣","٤","٥","٦","٧","٨","٩","١٠","١١","١٢"][i];return `
+          <text x="${x.toFixed(1)}" y="${(y+10).toFixed(1)}" font-size="30" font-weight="700" text-anchor="middle" fill="#2f3a2c" font-family="Cairo, Tajawal, sans-serif">${lbl}</text>`;}).join("");
+        return `<svg viewBox="0 0 377 410" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="وجه ساعة عليه الأعداد من واحد إلى اثني عشر">
+          <image href="images/وجه-ساعة.png" x="10" y="10" width="356.9" height="390"/>
+          <circle cx="${CX}" cy="${CY}" r="6" fill="#9c7b3f"/>
+          ${nums}
+        </svg>`;
+      })(),
+      spot: { x: 32.2, y: 64.5, r: 8 }
     },
 
     // ④ ملء الفراغ — تطبيق — 2Nc1
