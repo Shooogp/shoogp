@@ -625,6 +625,7 @@ function renderDragDrop(q, body, fb){
       const cells=[];
       inSvg.querySelectorAll('rect[stroke-dasharray],circle[stroke-dasharray],ellipse[stroke-dasharray]').forEach(el=>{
         let cx,cy,w,h;
+        const sw=+el.getAttribute('stroke-width')||0;
         if(el.tagName==='rect'){
           const x=+el.getAttribute('x')||0, y=+el.getAttribute('y')||0;
           w=+el.getAttribute('width'); h=+el.getAttribute('height'); cx=x+w/2; cy=y+h/2;
@@ -634,8 +635,15 @@ function renderDragDrop(q, body, fb){
           w=2*rx; h=2*ry;
         }
         if(!w||!h) return;
+        /* الحدُّ المتقطّعُ مركزيٌّ على المسار (نصفُ سماكتِه داخلٌ ونصفُها خارج)،
+           فيبرزُ بصرياً خارجَ صندوقِ الخانةِ الهندسيّ (x/y/width/height) بمقدار
+           نصفِ سماكتِه من كلِّ جهة. الطبقةُ الشفّافةُ فوقَها بلا امتلاءٍ فلا يُرى
+           هذا الفرقُ، لكنّ خلفيّةَ الامتلاءِ المصمَتةَ (‏.target.filled) تُرسَمُ
+           بمقاسِ الصندوقِ الهندسيِّ المجرَّد فتبدو أضيقَ من الخانةِ الفارغةِ التي
+           استبدلتْها (بلاغُ المالك: g2m-1-1#٤ «تضيق الأزرار بعد الإفلات»). تُضافُ
+           السماكةُ كاملةً (نصفٌ لكلِّ جهةٍ) فيطابقُ الامتلاءُ الحدَّ المرئيَّ نفسَه. */
         cells.push({cx:(cx-vb.x)/vb.width*100, cy:(cy-vb.y)/vb.height*100,
-                    w:w/vb.width*100, h:h/vb.height*100, round:el.tagName!=='rect'});
+                    w:(w+sw)/vb.width*100, h:(h+sw)/vb.height*100, round:el.tagName!=='rect'});
       });
       cellOf=q.targets.map(t=>cells.find(c=>
         Math.abs(t.dot.x-c.cx)<=c.w/2 && Math.abs(t.dot.y-c.cy)<=c.h/2)||null);
