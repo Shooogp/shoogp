@@ -3112,7 +3112,14 @@ function renderChartRead(q, body, fb){
       '<text class="ch-label" x="'+cx.toFixed(1)+'" y="'+(Y1+44)+'">'+s.label+'</text></g>';
   });
   const legend=(mode==='build')?'<div class="ch-legend">'+series.map(s=>'<span>'+s.label+': <b>'+arNum(s.value)+'</b></span>').join('')+'</div>':'';
-  const opts=(mode==='read')?'<div class="opts">'+shuffle((q.options||[]).slice()).map(o=>'<button class="opt" data-o="'+o+'">'+o+'</button>').join('')+'</div>':'';
+  /* خياراتُ القراءةِ صفٌّ أفقيٌّ ملتفٌّ (ch-opts) لا عمودُ .opts الافتراضيُّ: خياراتُ
+     قراءةِ التمثيلِ قصيرةٌ دائماً (عددٌ أو اسمُ فئة)، والعمودُ الرأسيُّ فوقَ رسمٍ بيانيٍّ
+     كاملٍ كان يملأُ أكبرَ إطارٍ (tall) قبلَ الإجابةِ أصلاً، فإذا جاءَ سطرُ التغذيةِ
+     الراجعةِ فاضَ المحتوى إلى الحاويةِ المرنةِ وامتدَّ ذيلُه تحتَ رسمِ الإطارِ (علّةُ
+     qflex الموثّقةُ في CLAUDE.md — بلاغُ المالك ٢٠٢٦-٠٨-٣١ على g2m-10-2#٣).
+     والعلاجُ المنصوصُ تخفيفُ المحتوى لا تعديلُ الواجهة: الصفُّ يوفّرُ ارتفاعَ ثلاثةِ
+     أزرارٍ (~١٩٠px) فيدخلُ السؤالُ إطاراً حقيقياً وسطرُ التغذيةِ محسوبٌ معه. */
+  const opts=(mode==='read')?'<div class="opts ch-opts">'+shuffle((q.options||[]).slice()).map(o=>'<button class="opt'+(isShortAnswer(String(o))?' opt-num':'')+'" data-o="'+o+'">'+o+'</button>').join('')+'</div>':'';
   const acts=(mode==='build')?'<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>':'';
   body.innerHTML='<div class="chartq">'+legend+
     '<svg class="chsvg" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="xMidYMid meet">'+grid+
