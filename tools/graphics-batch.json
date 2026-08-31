@@ -28,6 +28,8 @@
     "    ← يتخطّى البناءَ كلَّه. يُستعمَلُ حينَ تُغري قائمةُ الهيكسات النموذجَ",
     "      برسمِ لوحةِ ألوانٍ داخلَ الصورة (وقعَ فعلاً مع رسمةِ العين)."
   ],
-  "batchId": "2026-08-31-empty",
-  "items": []
+  "batchId": "2026-08-31-plant-leaf",
+  "items": [
+    { "name": "plant-leaf-icon", "subject": "a single simple plant leaf icon, like a green leaf symbol, with a visible central vein line down the middle" }
+  ]
 }
