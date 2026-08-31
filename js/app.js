@@ -3097,18 +3097,27 @@ function renderChartRead(q, body, fb){
   const py=v=>scalePos(v,0,max,Y1,Y0);                 // القيمةُ إلى إحداثيٍّ رأسيّ (محرّكُ التدريجِ نفسُه)
   const vy=y=>scaleVal(y,0,max,Y1,Y0);
   const n=series.length, slot=(AX-X0)/n, bw=Math.min(96, slot*0.62);
+  /* أرقامُ التدريجِ في مُنتصفِ عمودٍ خاصٍّ بها يمينَ المحورِ (AX+45، مرساةُ منتصف):
+     كانت عندَ AX+22 بمرساةِ `start` — والصفحةُ rtl فالنصُّ يمتدُّ **يساراً** من نقطتِه،
+     فتقاطعَ رقمُ الخانتَينِ مع خطِّ المحورِ نفسِه (مقيسٌ: حافّةُ «١٠» عندَ 811.9
+     والمحورُ عندَ 820 — بلاغُ المالك ٢٠٢٦-٠٨-٣١). المرساةُ الوسطى تحيّدُ اتجاهَ
+     الصفحةِ وتُبقي الأرقامَ عموداً موحَّدَ المحاذاةِ خالصَ البعدِ عن المحور. */
   let grid='';
   for(let v=0; v<=max; v+=step){ const y=py(v);
     grid+='<line class="ch-grid" x1="'+X0+'" y1="'+y.toFixed(1)+'" x2="'+AX+'" y2="'+y.toFixed(1)+'"></line>'+
-      '<text class="ch-num" x="'+(AX+22)+'" y="'+(y+10).toFixed(1)+'">'+arNum(v)+'</text>';
+      '<text class="ch-num" x="'+(AX+45)+'" y="'+(y+10).toFixed(1)+'">'+arNum(v)+'</text>';
   }
+  /* رقمُ القيمةِ فوقَ العمودِ (ch-val) في وضعِ البناءِ وحدَه — هناك هو صدى ضبطِ
+     التلميذِ نفسِه. وفي وضعَي القراءةِ والنقرِ **هو الإجابةُ حرفياً** فلا يُبنى
+     أصلاً: يستنتجُ التلميذُ القيمةَ من التدريجِ والخطوطِ المنقّطة (بلاغُ المالك
+     ٢٠٢٦-٠٨-٣١ على g2m-10-2#٣). */
   let bars='';
   series.forEach((s,i)=>{
     const cx=AX-(i+0.5)*slot;                           // الفئةُ الأولى أقصى اليمين (اتجاهُ القراءة)
     bars+='<g class="ch-bar" data-i="'+i+'" data-label="'+s.label+'">'+
       '<rect class="ch-hit" x="'+(cx-slot/2).toFixed(1)+'" y="'+Y0+'" width="'+slot.toFixed(1)+'" height="'+(Y1-Y0)+'"></rect>'+
       '<rect class="ch-face" x="'+(cx-bw/2).toFixed(1)+'" y="'+Y1+'" width="'+bw.toFixed(1)+'" height="0"></rect>'+
-      '<text class="ch-val" x="'+cx.toFixed(1)+'" y="'+(Y1-10)+'"></text>'+
+      (mode==='build'?'<text class="ch-val" x="'+cx.toFixed(1)+'" y="'+(Y1-10)+'"></text>':'')+
       '<text class="ch-label" x="'+cx.toFixed(1)+'" y="'+(Y1+44)+'">'+s.label+'</text></g>';
   });
   const legend=(mode==='build')?'<div class="ch-legend">'+series.map(s=>'<span>'+s.label+': <b>'+arNum(s.value)+'</b></span>').join('')+'</div>':'';
@@ -3134,7 +3143,7 @@ function renderChartRead(q, body, fb){
     const face=g.querySelector('.ch-face'), val=g.querySelector('.ch-val');
     const y=py(cur[i]);
     face.setAttribute('y', y.toFixed(1)); face.setAttribute('height', Math.max(0,Y1-y).toFixed(1));
-    val.setAttribute('y', (y-12).toFixed(1)); val.textContent=cur[i]?arNum(cur[i]):'';
+    if(val){ val.setAttribute('y', (y-12).toFixed(1)); val.textContent=cur[i]?arNum(cur[i]):''; }
   }
   series.forEach((s,i)=>paintBar(i));
   if(mode==='build'){

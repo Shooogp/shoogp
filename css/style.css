@@ -1329,7 +1329,9 @@
 .chsvg{width:min(880px,96%);height:auto;touch-action:none}
 .ch-grid{stroke:rgba(255,255,255,.22);stroke-width:2;stroke-dasharray:8 8}
 .ch-axis{stroke:#fffdf6;stroke-width:5}
-.ch-num{fill:#ffe27a;font-family:'Cairo';font-weight:800;font-size:28px;text-anchor:start}
+/* مرساةُ المنتصفِ لا `start`: الصفحةُ rtl فنصُّ `start` يمتدُّ يساراً من نقطتِه ويتقاطعُ
+   مع خطِّ المحورِ (التفصيلُ عندَ بناءِ ch-num في js/app.js) */
+.ch-num{fill:#ffe27a;font-family:'Cairo';font-weight:800;font-size:28px;text-anchor:middle}
 .ch-label{fill:#fff;font-family:'Cairo';font-weight:700;font-size:28px;text-anchor:middle}
 .ch-val{fill:#fff;font-family:'Cairo';font-weight:800;font-size:28px;text-anchor:middle}
 .ch-title{fill:#fff;font-family:'Cairo';font-weight:700;font-size:26px;text-anchor:end;opacity:.85}
