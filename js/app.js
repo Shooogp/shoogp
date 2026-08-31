@@ -2835,11 +2835,18 @@ function renderMeasureTool(q, body, fb){
       '<g class="ms-obj"><rect class="ms-bar" x="'+X0+'" y="52" height="52" rx="16" width="0"></rect>'+
       '<line class="ms-edge" x1="0" y1="40" x2="0" y2="'+(RY+8)+'"></line></g></svg>';
   } else {
-    W=420; H=300; const CX=210, CY=230, R=170;
+    /* W/H/R كانت 420/300/170 قبلَ هيكلِ الميزان أدناه. تكبيرُ اللوحةِ (٣٠٠←٣٩٠ ثمّ
+       ٣٢٠) زاحمَ خياراتِ scale-read الأربعةَ تحتَه فعلياً حتى مع بقاءِ صنفِ الإطارِ
+       "qf-tall" بلا "qflex" — العلّةُ أنّ فحصَ qflex يقيسُ صندوقَ .qwin المستطيلَ لا
+       حدَّ رسمِ الإطارِ المستديرَ الفعليّ، فلا يُنذِرُ من فيضٍ يبقى داخلَ الصندوقِ
+       ويتجاوزُ الرسمَ (مقيسٌ في g2m-11-1#٣: البطاقاتُ السفليّةُ خرجت من قاعِ الإطارِ
+       المرسومِ فعلياً رغم عدم ظهورِ qflex). فبقيَ W/H كما كانا حرفياً (لا نموَّ إطلاقاً)
+       وصغُر R وحدَه (١٧٠←١٢٥) ليتّسعَ الهيكلُ داخلَ اللوحةِ الأصليةِ نفسِها. */
+    W=420; H=300; const CX=210, CY=195, R=125;
     const A0=-120, A1=120;                                        // قوسُ الميناءِ ٢٤٠ درجة
     const pol=(r,deg)=>({x:CX+r*Math.sin(deg*Math.PI/180), y:CY-r*Math.cos(deg*Math.PI/180)});
     const ang=v=>A0+(v-min)/(max-min)*(A1-A0);
-    window.__msAng=ang; 
+    window.__msAng=ang;
     let marks='';
     ticks.forEach(t=>{ const a=ang(t.v), p1=pol(R-(t.major?34:20),a), p2=pol(R-2,a);
       marks+='<line class="ms-tick'+(t.major?' ms-major':'')+'" x1="'+p1.x.toFixed(1)+'" y1="'+p1.y.toFixed(1)+'" x2="'+p2.x.toFixed(1)+'" y2="'+p2.y.toFixed(1)+'"></line>';
@@ -2847,10 +2854,22 @@ function renderMeasureTool(q, body, fb){
         marks+='<text class="ms-num" x="'+pn.x.toFixed(1)+'" y="'+(pn.y+10).toFixed(1)+'">'+arNum(t.v)+'</text>'; }
     });
     const pa=pol(R,A0), pb=pol(R,A1);
+    /* هَيئةُ «ميزانٍ» لا «ساعة» (بلاغُ المالك ٢٠٢٦-٠٨-٣١): قرصُ التدريجِ وحدَه — مؤشّرٌ
+       يدورُ على وجهٍ دائريٍّ أبيض — لا يفترقُ بصرياً عن وجهِ الساعةِ (`.ck-face` بالبياضِ
+       والحدِّ الكهرمانيِّ نفسِهما تقريباً، والمؤشّرُ بلونِ عقربِ الساعةِ نفسِه `#c8791f`).
+       فأُضيفَ حولَه هيكلُ ميزانٍ قبّانٍ حقيقيّ: عُلَّاقةٌ أعلاه، وكِفّةٌ مُعلَّقةٌ أسفلَه من
+       نقطةِ الارتكازِ نفسِها — سمتٌ لا نظيرَ له في الساعةِ إطلاقاً. الهندسةُ الوظيفيةُ
+       (التدريجُ والمؤشّرُ ونقطةُ الارتكاز) لم تُمَسَّ؛ الإضافةُ زخرفيةٌ خلفَه/تحتَه فقط. */
+    const hookCy=18, hookR=11, caseTop=hookCy+hookR-4, caseBottom=pb.y+8, caseRx=R+24;
+    const armY0=CY+16, panCy=caseBottom+9, panRx=52, panRy=7;
     svgHtml='<svg class="mssvg mssvg-dial" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="xMidYMid meet">'+
+      '<rect class="ms-case" x="'+(CX-caseRx).toFixed(1)+'" y="'+caseTop.toFixed(1)+'" width="'+(caseRx*2).toFixed(1)+'" height="'+(caseBottom-caseTop).toFixed(1)+'" rx="34"></rect>'+
+      '<circle class="ms-hook" cx="'+CX+'" cy="'+hookCy+'" r="'+hookR+'"></circle>'+
       '<path class="ms-dialface" d="M '+pa.x.toFixed(1)+' '+pa.y.toFixed(1)+' A '+R+' '+R+' 0 1 1 '+pb.x.toFixed(1)+' '+pb.y.toFixed(1)+'"></path>'+
       marks+'<g class="ms-needle"><line x1="'+CX+'" y1="'+CY+'" x2="'+CX+'" y2="'+(CY-R+34)+'"></line></g>'+
       '<circle class="ms-pin" cx="'+CX+'" cy="'+CY+'" r="12"></circle>'+
+      '<line class="ms-pan-arm" x1="'+CX+'" y1="'+armY0+'" x2="'+CX+'" y2="'+(panCy-panRy).toFixed(1)+'"></line>'+
+      '<ellipse class="ms-pan" cx="'+CX+'" cy="'+panCy.toFixed(1)+'" rx="'+panRx+'" ry="'+panRy+'"></ellipse>'+
       '<text class="ms-unit" x="'+CX+'" y="'+(CY+34)+'">'+unit+'</text></svg>';
   }
   const readout=isSet?'<div class="ms-read"><b></b> '+unit+'</div>':'';
@@ -2867,7 +2886,7 @@ function renderMeasureTool(q, body, fb){
       bar.setAttribute('width', Math.max(0,x-X0).toFixed(1));
       edge.setAttribute('x1', x.toFixed(1)); edge.setAttribute('x2', x.toFixed(1));
     } else {
-      svg.querySelector('.ms-needle').setAttribute('transform','rotate('+window.__msAng(cur).toFixed(2)+' 210 230)');
+      svg.querySelector('.ms-needle').setAttribute('transform','rotate('+window.__msAng(cur).toFixed(2)+' 210 195)');
     }
     if(readEl) readEl.textContent=arNum(cur);
   }
@@ -2890,7 +2909,7 @@ function renderMeasureTool(q, body, fb){
     if(done) return;
     let v;
     if(isRuler) v=scaleVal(p.x,min,max,60,840);
-    else { const dx=p.x-210, dy=p.y-230; let a=Math.atan2(dx,-dy)*180/Math.PI;
+    else { const dx=p.x-210, dy=p.y-195; let a=Math.atan2(dx,-dy)*180/Math.PI;
       a=Math.max(-120,Math.min(120,a)); v=min+(a+120)/240*(max-min); }
     cur=Math.max(min,Math.min(max, min+Math.round((v-min)/step)*step));
     cur=+cur.toFixed(10); paint();

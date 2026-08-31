@@ -1261,9 +1261,18 @@
 .ms-dialface{fill:none;stroke:#fffdf6;stroke-width:16;stroke-linecap:round}
 .ms-needle line{stroke:#c8791f;stroke-width:11;stroke-linecap:round}
 .ms-pin{fill:#4a3a18}
-.ms-unit{fill:#ffe27a;font-family:'Cairo';font-weight:800;font-size:30px;text-anchor:middle}
+/* كانت #ffe27a (أصفرُ فاتح) لتُقرأَ على خلفيةِ الإطارِ الزرقاءِ مباشرة، قبلَ إضافةِ
+   .ms-case الكهرمانيّةِ الفاتحةِ خلفَها (هيكلُ الميزان أعلاه) — فصارت باهتةً عليها.
+   بُدِّلت إلى لونِ .ms-num نفسِه (بنّيٌّ غامق) ليتّسق مع بقيةِ نصوصِ القرص. */
+.ms-unit{fill:#3f3010;font-family:'Cairo';font-weight:800;font-size:30px;text-anchor:middle}
 .mssvg.correct .ms-bar{fill:#a7c957;stroke:#4e7c1f}
 .mssvg.correct .ms-needle line{stroke:#4e7c1f}
+/* هيكلُ «ميزانِ القبّان» حولَ قرصِ الرياضيات (علّتُه في app.js عند بناءِ svgHtml):
+   حاويةٌ + عُلَّاقةٌ أعلى + كِفّةٌ مُعلَّقةٌ أسفل، بنفسِ سلَّمِ ألوانِ .ms-ruler الكهرمانيّ */
+.ms-case{fill:#f7dfa5;stroke:#8a5a12;stroke-width:4}
+.ms-hook{fill:none;stroke:#8a5a12;stroke-width:6}
+.ms-pan-arm{stroke:#8a5a12;stroke-width:6;stroke-linecap:round}
+.ms-pan{fill:#f7dfa5;stroke:#8a5a12;stroke-width:4}
 .ms-read{background:#fff;border-radius:14px;padding:6px 20px;font-family:'Cairo';font-weight:800;
   font-size:1.4rem;color:#2f3a2c;box-shadow:0 4px 14px rgba(0,0,0,.22)}
 .ms-read b{color:#8a5a12;margin-inline-end:4px}
