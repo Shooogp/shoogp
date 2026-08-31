@@ -2582,13 +2582,15 @@ function renderCountTap(q, body, fb){
   const unit=(mode==='step')?step:1;
   const countEl=body.querySelector('.ct-count b');
   const nodes=[].slice.call(body.querySelectorAll(mode==='step'?'.ct-group':'.ct-tile'));
-  /* شارةُ العنصرِ المعدود: علامةُ ✓ في وضعِ «each» — تمييزٌ بصريٌّ لِما عُدَّ فلا يُكرَّرُ
-     ولا يُفوَّتُ، بلا كشفِ رقمِ ترتيبِه (كانت تعرضُ الرقمَ نفسَه، فيتحوّلُ العدُّ إلى مجرّدِ
-     قراءةِ الأرقامِ المكتوبةِ — بلاغُ المالك). أمّا وضعُ «step» (العدُّ بالقفز) فيبقى على
-     الرقمِ التراكميِّ ٥، ١٠، ١٥ … لأنَّ الرقمَ نفسَه هو المهارةُ المقصودةُ هناك لا زخرفةً. */
+  /* شارةُ العنصرِ المعدود: علامةُ ✓ في الوضعَينِ كِلَيهِما — تمييزٌ بصريٌّ لِما عُدَّ فلا
+     يُكرَّرُ ولا يُفوَّتُ، بلا كشفِ رقمِه (كانت تعرضُ الرقمَ نفسَه فيتحوّلُ العدُّ إلى مجرّدِ
+     قراءةِ الأرقامِ المكتوبةِ — بلاغُ المالك على وضعِ «each» أولاً، ثمّ عمَّمَه على وضعِ
+     «step» ٢٠٢٦-٠٨-٣١: الرقمُ التراكميُّ ٥، ١٠، ١٥ … هو جوابُ القفزةِ نفسُه، وعرضُه
+     يجعلُ العدَّ القفزيَّ قراءةً لا عدّاً — فيَعُدُّ التلميذُ ذهنياً والعدّادُ العلويُّ
+     وحدَه يُجملُ ما عَدَّ كما في وضعِ «each» سواء). */
   function renumber(){
     nodes.forEach(n=>{ n.classList.remove('on'); n.querySelector('.ct-badge').textContent=''; });
-    sel.forEach((n,i)=>{ n.classList.add('on'); n.querySelector('.ct-badge').textContent=(mode==='step')?arNum((i+1)*unit):'✓'; });
+    sel.forEach(n=>{ n.classList.add('on'); n.querySelector('.ct-badge').textContent='✓'; });
     countEl.textContent=arNum(sel.length*unit);
   }
   nodes.forEach(n=>{ n.addEventListener('click',()=>{ if(done) return;
