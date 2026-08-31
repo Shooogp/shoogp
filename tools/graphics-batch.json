@@ -28,6 +28,8 @@
     "    ← يتخطّى البناءَ كلَّه. يُستعمَلُ حينَ تُغري قائمةُ الهيكسات النموذجَ",
     "      برسمِ لوحةِ ألوانٍ داخلَ الصورة (وقعَ فعلاً مع رسمةِ العين)."
   ],
-  "batchId": "2026-08-31-empty",
-  "items": []
+  "batchId": "2026-08-31-planet-coloring",
+  "items": [
+    { "name": "planet-ring-coloring", "prompt": "Create a single flat vector-style illustration of a simple cartoon planet with a tilted ring, for a children's math coloring-page app icon. This must look like a clean coloring-book template with isolated flat color regions, NOT a glossy sticker.\n\nThe planet body is a plain circle filled with ONE flat, completely solid magenta color (exactly #FF00FF), with absolutely no shading, no gradient, no texture, no highlight, no gloss anywhere on it.\n\nAround the planet is a single tilted ring band (like Saturn's rings) passing behind the planet body (hidden by the body in the middle, visible on both the left and right sides beyond the body's edge), filled with ONE flat, completely solid brown color (exactly #8A744F), also with no shading, no gradient, no texture.\n\nA thin, uniform, crisp solid black outline (#111111) traces the outer boundary of the planet body, and a separate thin black outline traces the ring band. The magenta body and the brown ring must be clearly separated by these black outlines with no overlap or color blending between them.\n\nCRITICAL: absolutely no face, no eyes, no mouth, no highlight, no gloss spot, no shadow, no texture, no gradient anywhere in the image — only exactly two flat solid colors (magenta body, brown ring) plus black outlines on a pure white background.\n\nPure white background (#FFFFFF). Square 1:1 aspect ratio. The planet centered, ring tilted at roughly 20 degrees and extending horizontally beyond the body on both sides. One single standalone image only.\n\nABSOLUTELY FORBIDDEN inside the image: any text, letters, numbers, labels, captions, watermarks, additional colors beyond the two specified, gradients, gloss, or shading of any kind. One single standalone image only." }
+  ]
 }
