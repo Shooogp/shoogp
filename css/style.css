@@ -1258,25 +1258,24 @@
 .ms-num{fill:#3f3010;font-family:'Cairo';font-weight:800;font-size:30px;text-anchor:middle}
 .ms-bar{fill:#7fd1ae;stroke:#1f6f52;stroke-width:4}
 .ms-edge{stroke:#1f6f52;stroke-width:3;stroke-dasharray:9 7}
-.ms-dialface{fill:none;stroke:#fffdf6;stroke-width:16;stroke-linecap:round}
 .ms-needle line{stroke:#c8791f;stroke-width:11;stroke-linecap:round}
 .ms-pin{fill:#4a3a18}
 /* كانت #ffe27a (أصفرُ فاتح) لتُقرأَ على خلفيةِ الإطارِ الزرقاءِ مباشرة، قبلَ إضافةِ
-   .ms-case الكهرمانيّةِ الفاتحةِ خلفَها (هيكلُ الميزان أعلاه) — فصارت باهتةً عليها.
-   بُدِّلت إلى لونِ .ms-num نفسِه (بنّيٌّ غامق) ليتّسق مع بقيةِ نصوصِ القرص. */
+   صورةِ هيكلِ الميزانِ الكهرمانيّةِ خلفَها (‏images/هيكل-ميزان.png) — فصارت باهتةً
+   عليها. بُدِّلت إلى لونِ .ms-num نفسِه (بنّيٌّ غامق) ليتّسق مع بقيةِ نصوصِ القرص. */
 .ms-unit{fill:#3f3010;font-family:'Cairo';font-weight:800;font-size:30px;text-anchor:middle}
 .mssvg.correct .ms-bar{fill:#a7c957;stroke:#4e7c1f}
 .mssvg.correct .ms-needle line{stroke:#4e7c1f}
-/* هيكلُ «ميزانِ القبّان» حولَ قرصِ الرياضيات (علّتُه في app.js عند بناءِ svgHtml):
-   حاويةٌ + عُلَّاقةٌ أعلى + كِفّةٌ مُعلَّقةٌ أسفل، بنفسِ سلَّمِ ألوانِ .ms-ruler الكهرمانيّ */
-.ms-case{fill:#f7dfa5;stroke:#8a5a12;stroke-width:4}
-.ms-hook{fill:none;stroke:#8a5a12;stroke-width:6}
-.ms-pan-arm{stroke:#8a5a12;stroke-width:6;stroke-linecap:round}
-.ms-pan{fill:#f7dfa5;stroke:#8a5a12;stroke-width:4}
 .ms-read{background:#fff;border-radius:14px;padding:6px 20px;font-family:'Cairo';font-weight:800;
   font-size:1.4rem;color:#2f3a2c;box-shadow:0 4px 14px rgba(0,0,0,.22)}
 .ms-read b{color:#8a5a12;margin-inline-end:4px}
-.mssvg-dial .ms-num{font-size:26px}
+/* نافذةُ صورةِ الهيكلِ أضيقُ من ميناءِ الرسمِ اليدويِّ القديم (نصفُ قطرٍ ٧٤ لا ١٧٠)،
+   فحُجِّمَ الخطُّ والنصُّ معها لكي لا يتزاحما على القوسِ الأقصر. */
+.mssvg-dial .ms-num{font-size:17px}
+.mssvg-dial .ms-tick{stroke-width:1.8}
+.mssvg-dial .ms-major{stroke-width:3}
+.mssvg-dial .ms-needle line{stroke-width:6}
+.mssvg-dial .ms-unit{font-size:18px}
 /* ⓖ النقود العُمانية (money): عملاتٌ ووَرَقٌ مرسومٌ SVG (لا صورَ عملةٍ حقيقيّة) والقيمُ بالبيسة */
 .moneyq{display:flex;flex-direction:column;gap:10px;align-items:center;width:100%}
 .mn-task{font-family:'Cairo';color:#fff;font-size:1.08rem;text-align:center}
