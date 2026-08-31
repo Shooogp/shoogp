@@ -1334,7 +1334,11 @@
 .ch-num{fill:#ffe27a;font-family:'Cairo';font-weight:800;font-size:28px;text-anchor:middle}
 .ch-label{fill:#fff;font-family:'Cairo';font-weight:700;font-size:28px;text-anchor:middle}
 .ch-val{fill:#fff;font-family:'Cairo';font-weight:800;font-size:28px;text-anchor:middle}
-.ch-title{fill:#fff;font-family:'Cairo';font-weight:700;font-size:26px;text-anchor:end;opacity:.85}
+/* مرساةُ `start` لا `end`: المراسي تتبعُ اتجاهَ النصِّ والصفحةُ rtl — `end` تضعُ آخرَ
+   الكلامِ (أيسرَه) عندَ x فيمتدُّ أولُه يميناً خارجَ اللوحةِ ويُقتَصُّ (ظهرَ «ة (كغم)»
+   بدلَ «الكُتلَة (كغم)» — بلاغُ المالك ٢٠٢٦-٠٨-٣١). و`start` تضعُ أولَه عندَ x فيمتدُّ
+   يساراً فوقَ مساحةِ الرسمِ الفارغة. */
+.ch-title{fill:#fff;font-family:'Cairo';font-weight:700;font-size:26px;text-anchor:start;opacity:.85}
 .ch-hit{fill:transparent}
 .ch-face{fill:#7fd1ae;stroke:#1f6f52;stroke-width:3}
 .ch-bar{cursor:pointer}

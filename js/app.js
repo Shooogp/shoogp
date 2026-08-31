@@ -3100,8 +3100,15 @@ function renderChartRead(q, body, fb){
   const mode=q.mode||'read';
   const series=(q.series||[]).map(s=>({label:String(s.label), value:Math.round(numOf(s.value)||0)}));
   if(!series.length){ body.textContent='لا بيانات في هذا التمثيل'; return; }
-  const step=Math.max(1,Math.round(numOf(q.step)||1));
-  const max=Math.max(step, Math.round(numOf(q.max)|| (Math.ceil(Math.max.apply(null,series.map(s=>s.value))/step)*step)));
+  /* حارسُ الخطوةِ الغائبة (بلاغُ المالك ٢٠٢٦-٠٨-٣١ على g3m-11-2#١): سؤالٌ قيمُه حتى ٤٠
+     بلا حقلِ step كان يرثُ الافتراضيَّ ١ فيرسمُ ٤١ رقماً متراكباً على المحورِ كتلةً واحدة.
+     step الصريحُ في البياناتِ يبقى الحاكمَ؛ وعندَ غيابِه تُختارُ أصغرُ خطوةٍ «مستديرةٍ»
+     تُبقي التدريجاتِ ≤ ١٠ — فتبقى أسئلةُ القيمِ الصغيرةِ على خطوةِ ١ كما كانت. */
+  const rawMax=Math.max.apply(null,series.map(s=>s.value));
+  let step=Math.round(numOf(q.step)||0);
+  if(step<1){ const nice=[1,2,5,10,20,25,50,100,200,250,500,1000];
+    step=nice.find(n=>Math.ceil(rawMax/n)<=10)||1000; }
+  const max=Math.max(step, Math.round(numOf(q.max)|| (Math.ceil(rawMax/step)*step)));
   const W=900, H=470, AX=820, X0=110, Y0=60, Y1=380;
   const py=v=>scalePos(v,0,max,Y1,Y0);                 // القيمةُ إلى إحداثيٍّ رأسيّ (محرّكُ التدريجِ نفسُه)
   const vy=y=>scaleVal(y,0,max,Y1,Y0);
