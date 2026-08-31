@@ -1146,7 +1146,7 @@ window.QUESTIONS = {
       svg: `<svg viewBox="0 0 600 419" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="أربعُ غيوماتٍ في شبكةِ ٢×٢ عليها عملياتُ جمعٍ مجموع كلٍّ منها عشرون، إحداها خاطئة">
         ${[{x:315,y:20,exp:"١٣ + ٧ = ٢٠"},{x:25,y:20,exp:"١٥ + ٥ = ٢٠"},{x:315,y:222,exp:"١٧ + ٤ = ٢٠"},{x:25,y:222,exp:"١٨ + ٢ = ٢٠"}].map(c=>`
           <image href="images/غيمة-شفافة.png" x="${c.x}" y="${c.y}" width="260" height="177"/>
-          <text x="${c.x+130}" y="${c.y+100}" font-size="26" font-weight="700" text-anchor="middle" fill="#000000" font-family="Cairo, Tajawal, sans-serif">${c.exp}</text>`).join("")}
+          <text x="${c.x+130}" y="${c.y+100}" font-size="26" font-weight="900" text-anchor="middle" fill="#000000" font-family="Cairo, Tajawal, sans-serif">${c.exp}</text>`).join("")}
       </svg>`,
       spot: { x: 74.2, y: 74.1, w: 41.3, h: 40.3 }
     }
