@@ -28,8 +28,6 @@
     "    ← يتخطّى البناءَ كلَّه. يُستعمَلُ حينَ تُغري قائمةُ الهيكسات النموذجَ",
     "      برسمِ لوحةِ ألوانٍ داخلَ الصورة (وقعَ فعلاً مع رسمةِ العين)."
   ],
-  "batchId": "2026-09-01-omani-kumma-flattop",
-  "items": [
-    { "name": "omani-kumma-flattop", "prompt": "Create ONE single flat vector-style illustration of a traditional Omani kumma (the embroidered cap worn by men in Oman), simplified as a small icon for a children's math app. It must look like a clean coloring-book drawing with flat isolated colors, NOT a glossy sticker and NOT a realistic photo.\n\nShape — THIS IS CRITICAL: the Omani kumma is a short CYLINDRICAL cap with a FLAT TOP, like an upside-down cooking pot: vertical straight sides, a flat horizontal top with only slightly rounded corners where the top meets the sides, and a flat bottom edge. It is NOT a dome, NOT rounded, NOT a beanie — a flat-topped cylinder, slightly wider than it is tall.\n\nColors — exactly THREE flat solid colors and nothing else:\n1. The cap body: one flat solid cream/off-white color (exactly #F2EAD8) covering the whole cap.\n2. The embroidery: simple LARGE geometric motifs in one flat solid red-brown color (exactly #C04000) — a single row of 4 to 6 big simple diamond shapes across the middle of the side wall, plus a simple zigzag band along the bottom edge, and a small simple motif on the flat top if visible. Motifs must be BIG and FEW (child-icon scale), not fine dense stitching.\n3. A thin, crisp, uniform black outline (#111111) around the outer edge of the cap, along the line where the flat top meets the side wall, and around each embroidery motif.\n\nCRITICAL: completely flat — no gradient, no gloss, no highlight, no shadow, no texture, no fine stitch detail. No face, no person, no head — the cap alone, floating. Pure white background (#FFFFFF). Square 1:1 aspect ratio, the cap centered and filling most of the frame. One single standalone image only.\n\nABSOLUTELY FORBIDDEN: any text, letters, numbers, labels, watermarks, additional colors beyond the three specified, gradients, or shading. One single standalone image only." }
-  ]
+  "batchId": "2026-09-01-empty",
+  "items": []
 }
