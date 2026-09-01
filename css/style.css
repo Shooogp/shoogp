@@ -1118,6 +1118,11 @@
   .arrayq{width:100%;display:flex;flex-direction:column;align-items:center;gap:14px}
   .arsvg{width:100%;height:auto;display:block;max-width:520px;touch-action:manipulation;
     -webkit-user-select:none;user-select:none}
+  /* وضعُ القراءةِ عرضٌ صرفٌ لا لمسَ فيه فيُضيَّق (٣٨٠ لا ٥٢٠) — رسمُ ٤×٦ بالعرضِ
+     الكاملِ كان يرفعُ تقديرَ المحتوى إلى سقفِ tall تماماً فيسقطُ السؤالُ في الحاويةِ
+     المرنةِ على بعضِ المقاييس (بلاغُ المالك ٢٠٢٦-٠٩-٠١ على g4m-3-1#٣). أمّا لوحُ
+     البناءِ (arsvg-build) فيبقى ٥٢٠: خلاياهُ أهدافُ لمسٍ تخضعُ لحدِّ الـ60px. */
+  .arsvg:not(.arsvg-build){max-width:380px}
   .ar-dot{fill:#f5a04a;stroke:#c8791f;stroke-width:3}
   .ar-count{font-family:'Cairo';font-weight:700;color:#fff;font-size:1.1rem;
     text-shadow:0 1px 3px rgba(0,0,0,.34)}
@@ -1347,10 +1352,12 @@
 .ch-bar.wrong .ch-face{fill:#e8b4ad;stroke:#c0392b}
 .ch-legend{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;font-family:'Cairo';color:#fff}
 .ch-legend b{color:#ffe27a;margin-inline-start:4px}
-/* خياراتُ وضعِ القراءةِ صفٌّ أفقيٌّ ملتفٌّ لا عمودُ .opts الافتراضيّ — علّةُ الحاويةِ
-   المرنةِ الموثّقةُ (renderChartRead في js/app.js يشرحُ القصّة) */
-.ch-opts{flex-direction:row;flex-wrap:wrap;justify-content:center;max-width:none}
-.ch-opts .opt{width:auto;min-width:96px}
+/* صفُّ خياراتٍ أفقيٌّ ملتفٌّ (صنفٌ مشتركٌ) لا عمودُ .opts الافتراضيّ — يخدمُ وضعَ
+   القراءةِ في chart-read وفي array سواء: كلاهما رسمٌ كبيرٌ فوقَ خياراتٍ قصيرةٍ،
+   والعمودُ الرأسيُّ كان يوقعُهما في علّةِ الحاويةِ المرنةِ الموثّقةِ
+   (renderChartRead في js/app.js يشرحُ القصّة؛ وبلاغُ array على g4m-3-1#٣) */
+.opts-row{flex-direction:row;flex-wrap:wrap;justify-content:center;max-width:none}
+.opts-row .opt{width:auto;min-width:96px}
 
 /* التنقّل بين الأسئلة (خطوة بخطوة) */
   .qnav{display:flex;align-items:center;justify-content:center;gap:16px;margin:6px 0 10px;flex-wrap:wrap}

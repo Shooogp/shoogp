@@ -2282,10 +2282,14 @@ function renderArray(q, body, fb){
     let dots='';
     for(let r=0;r<rows;r++) for(let c=0;c<cols;c++)
       dots+=`<circle class="ar-dot" cx="${(cols-1-c)*CELL+CELL/2}" cy="${r*CELL+CELL/2}" r="${R}"></circle>`;
+    /* opts-row لا عمودُ .opts: مصفوفةُ ٤×٦ فوقَ أربعةِ أزرارٍ متراصّةٍ رأسياً كانت
+       تملأُ أكبرَ إطارٍ (tall) بلا احتياطٍ وتسقطُ في الحاويةِ المرنةِ على مقاييسَ
+       أُخرى (بلاغُ المالك ٢٠٢٦-٠٩-٠١ على g4m-3-1#٣ بلقطةٍ ذيلُها تحتَ رسمِ الإطار)
+       — نفسُ علاجِ chart-read والصنفُ مشتركٌ بينَهما (css/style.css §.opts-row). */
     const opts=shuffle((q.options||[]).slice());
     body.innerHTML=`<div class="arrayq">`+
       `<svg class="arsvg" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${dots}</svg>`+
-      `<div class="opts">`+opts.map(o=>`<button class="opt" data-o="${o}">${o}</button>`).join('')+`</div>`+
+      `<div class="opts opts-row">`+opts.map(o=>`<button class="opt" data-o="${o}">${o}</button>`).join('')+`</div>`+
       `</div>`;
     let done=false;
     body.querySelectorAll('.opt').forEach(btn=>{ btn.onclick=()=>{
@@ -3142,14 +3146,15 @@ function renderChartRead(q, body, fb){
       '<text class="ch-label" x="'+cx.toFixed(1)+'" y="'+(Y1+44)+'">'+s.label+'</text></g>';
   });
   const legend=(mode==='build')?'<div class="ch-legend">'+series.map(s=>'<span>'+s.label+': <b>'+arNum(s.value)+'</b></span>').join('')+'</div>':'';
-  /* خياراتُ القراءةِ صفٌّ أفقيٌّ ملتفٌّ (ch-opts) لا عمودُ .opts الافتراضيُّ: خياراتُ
+  /* خياراتُ القراءةِ صفٌّ أفقيٌّ ملتفٌّ (opts-row، صنفٌ مشتركٌ يخدمُ chart-read
+     وarray معاً) لا عمودُ .opts الافتراضيُّ: خياراتُ
      قراءةِ التمثيلِ قصيرةٌ دائماً (عددٌ أو اسمُ فئة)، والعمودُ الرأسيُّ فوقَ رسمٍ بيانيٍّ
      كاملٍ كان يملأُ أكبرَ إطارٍ (tall) قبلَ الإجابةِ أصلاً، فإذا جاءَ سطرُ التغذيةِ
      الراجعةِ فاضَ المحتوى إلى الحاويةِ المرنةِ وامتدَّ ذيلُه تحتَ رسمِ الإطارِ (علّةُ
      qflex الموثّقةُ في CLAUDE.md — بلاغُ المالك ٢٠٢٦-٠٨-٣١ على g2m-10-2#٣).
      والعلاجُ المنصوصُ تخفيفُ المحتوى لا تعديلُ الواجهة: الصفُّ يوفّرُ ارتفاعَ ثلاثةِ
      أزرارٍ (~١٩٠px) فيدخلُ السؤالُ إطاراً حقيقياً وسطرُ التغذيةِ محسوبٌ معه. */
-  const opts=(mode==='read')?'<div class="opts ch-opts">'+shuffle((q.options||[]).slice()).map(o=>'<button class="opt'+(isShortAnswer(String(o))?' opt-num':'')+'" data-o="'+o+'">'+o+'</button>').join('')+'</div>':'';
+  const opts=(mode==='read')?'<div class="opts opts-row">'+shuffle((q.options||[]).slice()).map(o=>'<button class="opt'+(isShortAnswer(String(o))?' opt-num':'')+'" data-o="'+o+'">'+o+'</button>').join('')+'</div>':'';
   const acts=(mode==='build')?'<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>':'';
   body.innerHTML='<div class="chartq">'+legend+
     '<svg class="chsvg" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="xMidYMid meet">'+grid+
