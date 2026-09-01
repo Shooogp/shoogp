@@ -1827,6 +1827,22 @@
 .shoogp-ui.skin-capsule .qwin :is(.blank.tshslot.correct,.blank.tshslot.wrong){
   box-shadow:none !important; filter:none !important; background:transparent !important;
 }
+/* ⛔ **`.tshput` كبسولةٌ كاملةٌ بالخطأ — نفسُ داءِ `.lslot` بعكسِ اتّجاهِه.** `.tshput`
+   من أصنافِ `.chip`، فيرثُ زرَّ الكبسولةِ العامَّ (‏§أعلاه: ارتفاعٌ أدنى ٦٤px + حشوةٌ
+   ‎14px 30px‎ + حدَّا صورةٍ ٣٢px)، بينما المطلوبُ **علامةُ تشكيلٍ صغيرةٌ تستقرُّ فوقَ
+   حرفِها** لا زرٌّ منفصلٌ — فتظهرُ الحركةُ في كبسولةٍ عائمةٍ منقطعةٍ الصلةِ عن الحرف
+   (مقيسٌ ومصوَّرٌ حيّاً: عرضُ `.tshword` يكبرُ ٤٨٪ ثمّ ٣٣٪ إضافيةً مع كلِّ حركةٍ تُوضَع).
+   **العلاجُ نفسُ مبدأ `.blank.filled` أعلاه — تحييدُ كسوةِ الكبسولةِ عن هذا السياقِ
+   المصغَّر**، فيرجعُ التشكيلُ إلى حجمِه الأصليِّ في `style.css` (‏`min-width:44px`
+   بلا كبسولة). والتوهّجُ الصحيح/الخطأ (`.blank.correct .chip` أعلاه) نصٌّ `filter`
+   لا خلفيةً، فيبقى عاملاً على النصِّ العاري دونَ تغيير. */
+.shoogp-ui.skin-capsule .qwin .blank.tshslot .tshput{
+  min-height:0 !important; padding:0 2px !important;
+  border-image:none !important; border-width:0 !important; border-style:none !important;
+  background:transparent !important; box-shadow:none !important;
+  display:inline-flex; align-items:center; justify-content:center;
+}
+
 @media(prefers-reduced-motion:reduce){
   .shoogp-ui.skin-capsule .qwin :is(.excl-opt.wrong,.mitem.shake,
                                     .mmchip.no,.aopt.wrong,
