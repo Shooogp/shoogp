@@ -2278,10 +2278,25 @@ function renderArray(q, body, fb){
   const CELL=100, R=30;                                   // خطوة الخلية ونصف قطر القرص
   if(mode==='read'){
     // ── وضع القراءة: المصفوفة معروضة والطالب يختار جملتها ──
+    /* عنصرُ العدِّ قابلٌ للاستبدالِ بياناتياً: `q.dot = {viewBox, w, h, svg}` يجعلُ كلَّ
+       خليّةٍ رمزاً متّجهياً (رسمٌ مولَّدٌ متتبَّعٌ بمسار shoogp-graphics — الكمّةُ العُمانيةُ
+       في g4m-3-1#٣ بطلبِ المالك ٢٠٢٦-٠٩-٠١) بدلَ القرصِ الخام. المساراتُ تُعرَّفُ **مرّةً
+       واحدةً** في <symbol> وتُستنسَخُ بـ<use> لكلِّ خليّةٍ فلا يتضاعفُ وزنُها بعددِ الخلايا؛
+       والمعرِّفُ عشوائيٌّ لكلِّ عرضٍ لأنّ DOM قد يحملُ نسخاً قديمةً من السؤالِ نفسِه.
+       وبنيةُ المصفوفةِ (الصفوفُ والأعمدةُ والعدُّ) لا تتغيّرُ — هي المقروءُ، والرمزُ زيُّ
+       العنصرِ لا هيكلُه. وضعُ البناءِ لا يشملُه هذا (خلاياهُ تفاعليةٌ بحالاتِ تلوين). */
     const W=cols*CELL, H=rows*CELL;
-    let dots='';
-    for(let r=0;r<rows;r++) for(let c=0;c<cols;c++)
-      dots+=`<circle class="ar-dot" cx="${(cols-1-c)*CELL+CELL/2}" cy="${r*CELL+CELL/2}" r="${R}"></circle>`;
+    const sym=(q.dot&&q.dot.svg)?q.dot:null;
+    const sid=sym?('ardot-'+Math.random().toString(36).slice(2,8)):'';
+    const defs=sym?`<defs><symbol id="${sid}" viewBox="${sym.viewBox}">${sym.svg}</symbol></defs>`:'';
+    const dw=sym?Math.min(CELL,+sym.w||80):0, dh=sym?Math.min(CELL,+sym.h||80):0;
+    let dots=defs;
+    for(let r=0;r<rows;r++) for(let c=0;c<cols;c++){
+      const cx=(cols-1-c)*CELL, cy=r*CELL;
+      dots+=sym
+        ?`<use href="#${sid}" x="${cx+(CELL-dw)/2}" y="${cy+(CELL-dh)/2}" width="${dw}" height="${dh}"></use>`
+        :`<circle class="ar-dot" cx="${cx+CELL/2}" cy="${cy+CELL/2}" r="${R}"></circle>`;
+    }
     /* opts-row لا عمودُ .opts: مصفوفةُ ٤×٦ فوقَ أربعةِ أزرارٍ متراصّةٍ رأسياً كانت
        تملأُ أكبرَ إطارٍ (tall) بلا احتياطٍ وتسقطُ في الحاويةِ المرنةِ على مقاييسَ
        أُخرى (بلاغُ المالك ٢٠٢٦-٠٩-٠١ على g4m-3-1#٣ بلقطةٍ ذيلُها تحتَ رسمِ الإطار)
