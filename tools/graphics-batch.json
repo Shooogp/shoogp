@@ -28,6 +28,15 @@
     "    ← يتخطّى البناءَ كلَّه. يُستعمَلُ حينَ تُغري قائمةُ الهيكسات النموذجَ",
     "      برسمِ لوحةِ ألوانٍ داخلَ الصورة (وقعَ فعلاً مع رسمةِ العين)."
   ],
-  "batchId": "2026-09-01-empty3",
-  "items": []
+  "batchId": "2026-09-01-kumma-embroidered",
+  "items": [
+    {
+      "name": "omani-kumma-emb1",
+      "prompt": "Create a simple educational illustration of one single traditional Omani embroidered cap (kumma), drawn from a real reference photo: a FLAT-TOPPED cylinder like an inverted cooking pot, the flat oval top fully visible, with straight slightly tapered sides. The base fabric is white #FFFFFF with off-white shading band #F1EDE4 on the shaded side. All decoration is burnt-orange embroidery #E4713C with a darker accent #C4562A, drawn as SIMPLIFIED bold flat motifs (large clear shapes, not fine detail): a round radial flower medallion centered on the flat top, a narrow zigzag border band just under the top rim, one WIDE middle band around the body filled with large simplified leaf-and-vine motifs, and thin plain orange separator lines between the bands. Keep the motifs big and few so the drawing stays simple. Glossy cartoon vector illustration in a space-sticker style, bold saturated colors as crisp discrete flat shapes with hard edges and no soft blending, no fabric or thread texture, a thin crisp black outline #111111 with rounded caps around the object, plump rounded forms, floating on a pure white #FFFFFF background with no ground line and no cast shadow, absolutely no facial features, no text and no labels. One single standalone image only."
+    },
+    {
+      "name": "omani-kumma-emb2",
+      "prompt": "Create a simple educational illustration of one single traditional Omani embroidered cap (kumma), drawn from a real reference photo: a FLAT-TOPPED cylinder like an inverted cooking pot, the flat oval top fully visible, with straight slightly tapered sides. The base fabric is white #FFFFFF with off-white shading band #F1EDE4 on the shaded side. All decoration is burnt-orange embroidery #E4713C with a darker accent #C4562A, drawn as SIMPLIFIED bold flat motifs (large clear shapes, not fine detail): a round radial flower medallion centered on the flat top, a narrow zigzag border band just under the top rim, one WIDE middle band around the body filled with a repeating row of five big simplified leaves only, and thin plain orange separator lines between the bands. Make it EXTRA simple: at most ten orange shapes in total. Glossy cartoon vector illustration in a space-sticker style, bold saturated colors as crisp discrete flat shapes with hard edges and no soft blending, no fabric or thread texture, a thin crisp black outline #111111 with rounded caps around the object, plump rounded forms, floating on a pure white #FFFFFF background with no ground line and no cast shadow, absolutely no facial features, no text and no labels. One single standalone image only."
+    }
+  ]
 }
