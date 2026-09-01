@@ -1773,11 +1773,44 @@
   color:#7a1f1f !important;
   animation:cardShake .45s ease;
 }
-/* الفراغُ الممتلئُ حاويةٌ شفّافةٌ ونصُّه داخلَ `.chip`، فيحملُ **الابنُ** التوهّجَ واللونَ
-   (أعلاه) ويبقى **الأبُ وحدَه** بلا ظلٍّ كي لا يُرسمَ توهّجانِ متراكبان.
-   (‏`.target` لا يدخلُ هنا — فهو عنصرٌ قائمٌ بذاتِه على الصورةِ لا حاويةٌ لبطاقة.) */
-.shoogp-ui.skin-capsule .qwin :is(.blank.correct,.blank.filled.correct,.blank.wrong){
-  box-shadow:none !important; filter:none !important;
+/* ⛔ **الفراغُ ليس حاويةً لبطاقة — والقاعدةُ السابقةُ هنا كانت مبنيّةً على وهمٍ فأصمتَتِ
+   التغذيةَ الراجعةَ كلَّها** (بلاغُ المالك ٢٠٢٦-٠٩-٠١: «عندَ وضعِ الكلمةِ الخاطئةِ لا تظهرُ
+   أيُّ علامةٍ سوى الاهتزاز»). كان المكتوبُ أنّ نصَّ الفراغِ «داخلَ `.chip`» فيحملُ الابنُ
+   التوهّجَ ويُطفَأُ الأب — **ولا `.chip` هناك أصلاً**: `wireBank.put` يكتبُ
+   `sl.textContent = chip.dataset.w` (‏`js/app.js`)، فالكلمةُ **نصٌّ مباشرٌ** في الفراغ.
+   فكانَ محدِّدُ الابنِ (`.blank.correct .chip`) لا يطابقُ شيئاً، و`filter:none !important`
+   يمحو توهّجَ الأبِ — فلا خضرةَ ولا حمرة.
+   **مقيسٌ قبلَ الإصلاح** (‏`g4a1-0-1` س٣، 1280×800): الفراغُ الخطأُ `filter:none` و
+   `box-shadow:none` ولونُه `rgb(58,42,18)` — **حبرُ النصِّ العاديُّ لا الأحمر**؛ والفراغُ
+   الصحيحُ بلا توهّجٍ كذلك (خضرتُه من `style.css` وحدَها).
+   **والعلاجُ سابقةُ العلومِ نفسُها** (`skin-rocky` §٣.١: الفراغُ يستردُّ وجهاً ملوّناً بعدَ
+   التحقّق): لوحةٌ مستديرةٌ خفيفةٌ تظهرُ **عندَ التحقّقِ وحدَه** يخرجُ من خلفِها التوهّجُ
+   بالمرشِّحِ نفسِه (د‑٢). ولا يُنقَضُ بها «لا كبسولةَ داخلَ كبسولة» — تلك في هيئةِ الاستقرارِ
+   (`.blank.filled`) وهذه حالةُ تغذيةٍ راجعةٍ مؤقّتة.
+   **ولا تغييرَ في التخطيط:** اللوحةُ صندوقُ العنصرِ نفسُه بلا حشوةٍ ولا هامش (قِيسَ:
+   48×25px قبلَ وبعد)، فلا تتزحزحُ الجملة. */
+.shoogp-ui.skin-capsule .qwin :is(.blank.correct,.blank.filled.correct):not(.tshslot){
+  background:rgba(150,205,105,.34) !important; border-radius:999px;
+  color:#20340a !important;
+  /* `style.css` تُلبِسُ الفراغَ الصحيحَ توهّجاً هندسياً 12px — يُطفَأُ هنا فلا يتراكبَ
+     توهّجانِ ولا يتجاوزَ المدى خلوصَ القصِّ المقيسَ في (د‑٢). */
+  box-shadow:none !important;
+  filter:drop-shadow(0 0 var(--cap-glow-in) rgba(90,170,45,.95))
+         drop-shadow(0 0 var(--cap-glow-out) rgba(70,140,35,.88)) !important;
+}
+.shoogp-ui.skin-capsule .qwin :is(.blank.wrong,.blank.filled.wrong):not(.tshslot){
+  background:rgba(232,135,115,.32) !important; border-radius:999px;
+  color:#7a1f1f !important;
+  filter:drop-shadow(0 0 var(--cap-glow-in) rgba(210,50,45,.92))
+         drop-shadow(0 0 var(--cap-glow-out) rgba(175,35,30,.86)) !important;
+}
+/* **والتشكيلُ وحدَه يُستثنى — لأنّه الحالةُ الوحيدةُ التي فيها بطاقةٌ فعلاً داخلَ الفراغ:**
+   `renderTashkeel` يكتبُ `<span class="chip tshput">` في `.blank.tshslot` (‏`js/app.js`).
+   فيحملُ **الابنُ** التوهّجَ بمحدِّدِ `.blank.correct .chip` أعلاه، ويبقى **الأبُ** بلا
+   لوحةٍ ولا ظلٍّ كي لا يُرسمَ توهّجانِ متراكبان. (وهذا هو الوصفُ الذي كان مكتوباً للفراغِ
+   كلِّه خطأً، وموضعُه الصحيحُ هنا وحدَه.) */
+.shoogp-ui.skin-capsule .qwin :is(.blank.tshslot.correct,.blank.tshslot.wrong){
+  box-shadow:none !important; filter:none !important; background:transparent !important;
 }
 @media(prefers-reduced-motion:reduce){
   .shoogp-ui.skin-capsule .qwin :is(.excl-opt.wrong,.mitem.shake,
