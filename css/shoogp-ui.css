@@ -1691,21 +1691,6 @@
 }
 .shoogp-ui.skin-capsule .qwin :where(.opt,.tf,.excl-opt,.mitem,.chip,.mmchip,.seqitem,.aopt,
                                      .blank,.jr-bt){position:relative}
-/* ⛔ **خانةُ ترتيبِ الحروف/الجملة `.lslot` تحجزُ حجمَ الكبسولةِ الممتلئةِ سلفاً — بلاغُ
-   المالك ٢٠٢٦-٠٩-٠١: «الحاويةُ تبدأُ بحجمٍ ثمّ تتغيّرُ عندَ وضعِ كلمةٍ في الفراغ،
-   وهكذا مع كلِّ وضع».** العلّةُ مقيسة: `.lslot` أصلُه `72×72px` design (‏`css/style.css`)،
-   بينما `.lchip` المُفلَتُ فيه زرُّ كبسولةٍ كاملٌ من مجموعةِ `:where()` أعلاه (حشوةٌ
-   `14px 30px` + حدَّا صورةٍ `32px` جانبياً + ارتفاعٌ أدنى `64px`) — فأصغرُ حرفٍ مفردٍ
-   يفرضُ صندوقاً أعرضَ بأكثرَ من الضِّعف. ومع `flex-wrap` على `.lslots` يُدخِلُ ذلك
-   سطراً إضافياً **فجأةً عندَ أوّلِ إفلات**، فتتغيّرُ نسبةُ المحتوى ويُعادُ اختيارُ
-   الإطار (§١.٤ب) — وهو ما يُقرَأُ «الحاويةُ تتغيّرُ حجمَها».
-   **مقيسٌ حيّاً** (‏`g4a1-0-1` س٦، 1280×800، أعرضُ حرفٍ ص): الخانةُ الممتلئةُ
-   `109×52px` (زُوِّمَت) مقابلَ الفارغةِ `47×47px` — زيادةٌ **١٣٢٪** عرضاً.
-   **العلاجُ:** تُحجَزُ الخانةُ سلفاً بحجمِ أكبرِ حرفٍ مُقاسٍ (بهامشٍ)، فلا يتغيّرُ عددُ
-   الأسطرِ ولا حجمُ الحاويةِ بين الفراغِ والامتلاء — **الفراغُ والكبسولةُ صندوقٌ واحدٌ
-   ثابتٌ منذُ أوّلِ رسم**، لا صندوقانِ متفاوتانِ يتبادلانِ الظهور. */
-.shoogp-ui.skin-capsule .qwin .lslot{min-width:172px; min-height:80px}
-
 /* ── الفراغُ في «ملء الفراغ» و«ترتيبِ الحروف»: يبقى **سطرياً** فيحتضنُ كلمتَه ──
    `.blank` أصلُه `inline-block` (‏`css/style.css`)، ومجموعةُ الكبسولةِ أعلاه تجعلُه `flex`
    وهو **مستوى كتلة**، فبعدَ الإفلاتِ يمتدُّ الزرُّ بعرضِ السطرِ كلِّه بلا داعٍ ويُفكِّكُ
@@ -1759,90 +1744,28 @@
    و**8/255 = 3.1٪** على 1280×800.)
    الرقمانِ أدناه **يُعلَنانِ مرّةً** ويستهلكُهما محدِّدا الصواب والخطأ. */
 .shoogp-ui.skin-capsule{
-  /* ⛔ **توهّجٌ ينبعثُ من خلفِ الرسمِ لا حلقةٌ تُرسَمُ على حافّتِه** (بلاغُ المالك ٢٠٢٦-٠٩-٠١:
-     «التوهّجُ ملاصقٌ للزرّ» — في الأخضرِ والأحمرِ معاً). كانَ `box-shadow:0 0 10px 1px`،
-     و`spread:1px` يُصمِتُ أوّلَ بكسلٍ فيرتسمُ **خطٌّ حادُّ الحافّةِ** يتتبّعُ صندوقَ العنصرِ؛
-     وهو **كبسولةٌ هندسيةٌ** (`border-radius:999px`) لا يطابقُ رسمَ الكبسولةِ الذي **طرفاه
-     أبلدُ من نصفِ الدائرة** (§٣ب.٢‑ج مقيسٌ: مسطّحٌ ٢٠px من ٣٧٣) — فتنفصلُ الحلقةُ عن الرسمِ
-     عندَ الأطرافِ وتبدو ملصقةً عليه.
-     **والعلاجُ `drop-shadow` لا `box-shadow`** — يتبعُ **ألفا الرسمِ** بالبكسل، فيخرجُ الوهجُ
-     بهيئةِ الكبسولةِ المرسومةِ متدرّجاً بلا حافّةٍ صمّاء. وهو **نفسُ ما تفعلُه `skin-ivory`
-     منذُ بنائِها** (§٣ج.٢) — فالقشرتانِ تتوحّدانِ على الأسلوبِ الأمتنِ لا على اجتهادٍ جديد.
-     **والمدى محفوظٌ كما كان (٦px تصميميّاً)** فلا يُنقَضُ قيدُ القصِّ المقيسُ في §٣ب.٢‑د. */
-  --cap-glow-in:3px;    /* نواةٌ قريبةٌ تُعطي الإشارةَ وضوحَها */
-  --cap-glow-out:4px;   /* ذيلٌ يخفتُ **قبلَ** حدِّ القصّ — والظلّانِ يتراكمانِ فمداهما ≈ ٣+٤ */
+  --cap-glow:0 0 10px 1px;   /* مدىً تصميميٌّ = 1 + 10/2 = **6px** — دونَ أضيقِ خلوصٍ مقيس */
 }
 .shoogp-ui.skin-capsule .qwin :is(.opt.correct,.tf.tf-correct,.excl-opt.correct,.mitem.matched,
                                   .chip.ok,.mmchip.ok,.seqitem.correct,.aopt.correct,
                                   .blank.correct .chip,.blank.filled.correct .chip,
                                   .target.filled.correct){
-  filter:drop-shadow(0 0 var(--cap-glow-in) rgba(90,170,45,.95))
-         drop-shadow(0 0 var(--cap-glow-out) rgba(70,140,35,.88)) !important;
+  box-shadow:var(--cap-glow) rgba(90,170,45,.95) !important;
   color:#20340a !important;
 }
 .shoogp-ui.skin-capsule .qwin :is(.opt.wrong,.tf.tf-wrong,.excl-opt.wrong,.mitem.shake,
                                   .chip.no,.mmchip.no,.seqitem.wrong,.aopt.wrong,
                                   .blank.wrong .chip,.target.wrong){
-  filter:drop-shadow(0 0 var(--cap-glow-in) rgba(210,50,45,.92))
-         drop-shadow(0 0 var(--cap-glow-out) rgba(175,35,30,.86)) !important;
+  box-shadow:var(--cap-glow) rgba(210,50,45,.92) !important;
   color:#7a1f1f !important;
   animation:cardShake .45s ease;
 }
-/* ⛔ **الفراغُ ليس حاويةً لبطاقة — والقاعدةُ السابقةُ هنا كانت مبنيّةً على وهمٍ فأصمتَتِ
-   التغذيةَ الراجعةَ كلَّها** (بلاغُ المالك ٢٠٢٦-٠٩-٠١: «عندَ وضعِ الكلمةِ الخاطئةِ لا تظهرُ
-   أيُّ علامةٍ سوى الاهتزاز»). كان المكتوبُ أنّ نصَّ الفراغِ «داخلَ `.chip`» فيحملُ الابنُ
-   التوهّجَ ويُطفَأُ الأب — **ولا `.chip` هناك أصلاً**: `wireBank.put` يكتبُ
-   `sl.textContent = chip.dataset.w` (‏`js/app.js`)، فالكلمةُ **نصٌّ مباشرٌ** في الفراغ.
-   فكانَ محدِّدُ الابنِ (`.blank.correct .chip`) لا يطابقُ شيئاً، و`filter:none !important`
-   يمحو توهّجَ الأبِ — فلا خضرةَ ولا حمرة.
-   **مقيسٌ قبلَ الإصلاح** (‏`g4a1-0-1` س٣، 1280×800): الفراغُ الخطأُ `filter:none` و
-   `box-shadow:none` ولونُه `rgb(58,42,18)` — **حبرُ النصِّ العاديُّ لا الأحمر**؛ والفراغُ
-   الصحيحُ بلا توهّجٍ كذلك (خضرتُه من `style.css` وحدَها).
-   **والعلاجُ سابقةُ العلومِ نفسُها** (`skin-rocky` §٣.١: الفراغُ يستردُّ وجهاً ملوّناً بعدَ
-   التحقّق): لوحةٌ مستديرةٌ خفيفةٌ تظهرُ **عندَ التحقّقِ وحدَه** يخرجُ من خلفِها التوهّجُ
-   بالمرشِّحِ نفسِه (د‑٢). ولا يُنقَضُ بها «لا كبسولةَ داخلَ كبسولة» — تلك في هيئةِ الاستقرارِ
-   (`.blank.filled`) وهذه حالةُ تغذيةٍ راجعةٍ مؤقّتة.
-   **ولا تغييرَ في التخطيط:** اللوحةُ صندوقُ العنصرِ نفسُه بلا حشوةٍ ولا هامش (قِيسَ:
-   48×25px قبلَ وبعد)، فلا تتزحزحُ الجملة. */
-.shoogp-ui.skin-capsule .qwin :is(.blank.correct,.blank.filled.correct):not(.tshslot){
-  background:rgba(150,205,105,.34) !important; border-radius:999px;
-  color:#20340a !important;
-  /* `style.css` تُلبِسُ الفراغَ الصحيحَ توهّجاً هندسياً 12px — يُطفَأُ هنا فلا يتراكبَ
-     توهّجانِ ولا يتجاوزَ المدى خلوصَ القصِّ المقيسَ في (د‑٢). */
+/* الفراغُ الممتلئُ حاويةٌ شفّافةٌ ونصُّه داخلَ `.chip`، فيحملُ **الابنُ** التوهّجَ واللونَ
+   (أعلاه) ويبقى **الأبُ وحدَه** بلا ظلٍّ كي لا يُرسمَ توهّجانِ متراكبان.
+   (‏`.target` لا يدخلُ هنا — فهو عنصرٌ قائمٌ بذاتِه على الصورةِ لا حاويةٌ لبطاقة.) */
+.shoogp-ui.skin-capsule .qwin :is(.blank.correct,.blank.filled.correct,.blank.wrong){
   box-shadow:none !important;
-  filter:drop-shadow(0 0 var(--cap-glow-in) rgba(90,170,45,.95))
-         drop-shadow(0 0 var(--cap-glow-out) rgba(70,140,35,.88)) !important;
 }
-.shoogp-ui.skin-capsule .qwin :is(.blank.wrong,.blank.filled.wrong):not(.tshslot){
-  background:rgba(232,135,115,.32) !important; border-radius:999px;
-  color:#7a1f1f !important;
-  filter:drop-shadow(0 0 var(--cap-glow-in) rgba(210,50,45,.92))
-         drop-shadow(0 0 var(--cap-glow-out) rgba(175,35,30,.86)) !important;
-}
-/* **والتشكيلُ وحدَه يُستثنى — لأنّه الحالةُ الوحيدةُ التي فيها بطاقةٌ فعلاً داخلَ الفراغ:**
-   `renderTashkeel` يكتبُ `<span class="chip tshput">` في `.blank.tshslot` (‏`js/app.js`).
-   فيحملُ **الابنُ** التوهّجَ بمحدِّدِ `.blank.correct .chip` أعلاه، ويبقى **الأبُ** بلا
-   لوحةٍ ولا ظلٍّ كي لا يُرسمَ توهّجانِ متراكبان. (وهذا هو الوصفُ الذي كان مكتوباً للفراغِ
-   كلِّه خطأً، وموضعُه الصحيحُ هنا وحدَه.) */
-.shoogp-ui.skin-capsule .qwin :is(.blank.tshslot.correct,.blank.tshslot.wrong){
-  box-shadow:none !important; filter:none !important; background:transparent !important;
-}
-/* ⛔ **`.tshput` كبسولةٌ كاملةٌ بالخطأ — نفسُ داءِ `.lslot` بعكسِ اتّجاهِه.** `.tshput`
-   من أصنافِ `.chip`، فيرثُ زرَّ الكبسولةِ العامَّ (‏§أعلاه: ارتفاعٌ أدنى ٦٤px + حشوةٌ
-   ‎14px 30px‎ + حدَّا صورةٍ ٣٢px)، بينما المطلوبُ **علامةُ تشكيلٍ صغيرةٌ تستقرُّ فوقَ
-   حرفِها** لا زرٌّ منفصلٌ — فتظهرُ الحركةُ في كبسولةٍ عائمةٍ منقطعةٍ الصلةِ عن الحرف
-   (مقيسٌ ومصوَّرٌ حيّاً: عرضُ `.tshword` يكبرُ ٤٨٪ ثمّ ٣٣٪ إضافيةً مع كلِّ حركةٍ تُوضَع).
-   **العلاجُ نفسُ مبدأ `.blank.filled` أعلاه — تحييدُ كسوةِ الكبسولةِ عن هذا السياقِ
-   المصغَّر**، فيرجعُ التشكيلُ إلى حجمِه الأصليِّ في `style.css` (‏`min-width:44px`
-   بلا كبسولة). والتوهّجُ الصحيح/الخطأ (`.blank.correct .chip` أعلاه) نصٌّ `filter`
-   لا خلفيةً، فيبقى عاملاً على النصِّ العاري دونَ تغيير. */
-.shoogp-ui.skin-capsule .qwin .blank.tshslot .tshput{
-  min-height:0 !important; padding:0 2px !important;
-  border-image:none !important; border-width:0 !important; border-style:none !important;
-  background:transparent !important; box-shadow:none !important;
-  display:inline-flex; align-items:center; justify-content:center;
-}
-
 @media(prefers-reduced-motion:reduce){
   .shoogp-ui.skin-capsule .qwin :is(.excl-opt.wrong,.mitem.shake,
                                     .mmchip.no,.aopt.wrong,
