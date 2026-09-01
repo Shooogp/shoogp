@@ -1462,7 +1462,11 @@ function wireBank(body, o){
     picked=(c&&picked!==c)?c:null; if(picked) picked.classList.add('picked'); }
   function put(sl, chip){
     if(!chip||!sl) return;
-    sl.textContent=chip.dataset.w; sl.dataset.placed=chip.dataset.w; sl.dataset.cid=chip.dataset.cid;
+    /* o.face: مُصيِّرٌ اختياريٌّ لوجهِ القيمةِ في الخانة (نصٌّ افتراضاً، وصورةٌ في
+       الأنماطِ المصوّرة — عناصر عمانية ٢٠٢٦-٠٩-٠١)؛ المقارنةُ عندَ التحقّقِ تبقى
+       على `dataset.placed` النصّيّ فلا يمسُّها شكلُ العرض. */
+    if(o.face) sl.innerHTML=o.face(chip.dataset.w); else sl.textContent=chip.dataset.w;
+    sl.dataset.placed=chip.dataset.w; sl.dataset.cid=chip.dataset.cid;
     sl.classList.add('filled'); sl.classList.remove('correct','wrong','over');
     dragged=null; pick(null); sync(); if(o.onChange) o.onChange();
   }
@@ -2276,6 +2280,11 @@ function renderArray(q, body, fb){
   const rows=Math.max(1,Math.round(+q.rows)), cols=Math.max(1,Math.round(+q.cols));
   const mode=q.mode||'build';
   const CELL=100, R=30;                                   // خطوة الخلية ونصف قطر القرص
+  /* `q.dot` صيغتان: كائنٌ كاملٌ `{viewBox,w,h,svg}` أو **مفتاحٌ نصّيٌّ** يُحَلُّ من سِجِلِّ
+     `js/qglyphs.js` (dot:"كمة") — فالمساراتُ الثقيلةُ تُكتَبُ مرّةً واحدةً في السجلِّ
+     وتتشاركُها أسئلةُ البناءِ والقراءةِ كلُّها (تعميم عناصر عمانية ٢٠٢٦-٠٩-٠١). */
+  const dotSym=(typeof q.dot==='string')?((window.QGLYPHS||{})[q.dot]||null)
+              :(q.dot&&q.dot.svg?q.dot:null);
   if(mode==='read'){
     // ── وضع القراءة: المصفوفة معروضة والطالب يختار جملتها ──
     /* عنصرُ العدِّ قابلٌ للاستبدالِ بياناتياً: `q.dot = {viewBox, w, h, svg}` يجعلُ كلَّ
@@ -2286,7 +2295,7 @@ function renderArray(q, body, fb){
        وبنيةُ المصفوفةِ (الصفوفُ والأعمدةُ والعدُّ) لا تتغيّرُ — هي المقروءُ، والرمزُ زيُّ
        العنصرِ لا هيكلُه. وضعُ البناءِ لا يشملُه هذا (خلاياهُ تفاعليةٌ بحالاتِ تلوين). */
     const W=cols*CELL, H=rows*CELL;
-    const sym=(q.dot&&q.dot.svg)?q.dot:null;
+    const sym=dotSym;
     const sid=sym?('ardot-'+Math.random().toString(36).slice(2,8)):'';
     const defs=sym?`<defs><symbol id="${sid}" viewBox="${sym.viewBox}">${sym.svg}</symbol></defs>`:'';
     const dw=sym?Math.min(CELL,+sym.w||80):0, dh=sym?Math.min(CELL,+sym.h||80):0;
@@ -2321,13 +2330,20 @@ function renderArray(q, body, fb){
   const gRows=Math.max(rows, Math.min(8, Math.round(+((q.grid||{}).rows) || rows+2)));
   const gCols=Math.max(cols, Math.min(8, Math.round(+((q.grid||{}).cols) || cols+2)));
   const W=gCols*CELL, H=gRows*CELL;
-  let cells='';
+  /* رمزُ البناءِ يرثُ سلوكَ القرصِ نفسَه: خفيٌّ في الخليّةِ الفارغةِ ويظهرُ عندَ
+     اختيارِها (صنف ar-glyph في css) — فمنطقُ الحالاتِ (on/correct/wrong) لا يتغيّر. */
+  const bsid=dotSym?('ardot-'+Math.random().toString(36).slice(2,8)):'';
+  const bdefs=dotSym?`<defs><symbol id="${bsid}" viewBox="${dotSym.viewBox}">${dotSym.svg}</symbol></defs>`:'';
+  const bw=dotSym?Math.min(CELL-14,+dotSym.w||80):0, bh=dotSym?Math.min(CELL-14,+dotSym.h||80):0;
+  let cells=bdefs;
   for(let r=0;r<gRows;r++) for(let c=0;c<gCols;c++){
     const x=(gCols-1-c)*CELL, y=r*CELL;                   // العمود ٠ أقصى اليمين (اتجاه القراءة)
     cells+=`<g class="ar-cell" data-r="${r}" data-c="${c}">`+
       `<rect class="ar-hit" x="${x}" y="${y}" width="${CELL}" height="${CELL}"></rect>`+
       `<rect class="ar-face" x="${x+5}" y="${y+5}" width="${CELL-10}" height="${CELL-10}" rx="12"></rect>`+
-      `<circle class="ar-dot" cx="${x+CELL/2}" cy="${y+CELL/2}" r="${R}"></circle></g>`;
+      (dotSym
+        ?`<use class="ar-glyph" href="#${bsid}" x="${x+(CELL-bw)/2}" y="${y+(CELL-bh)/2}" width="${bw}" height="${bh}"></use>`
+        :`<circle class="ar-dot" cx="${x+CELL/2}" cy="${y+CELL/2}" r="${R}"></circle>`)+`</g>`;
   }
   body.innerHTML=`<div class="arrayq">`+
     `<div class="ar-count">اخترتَ <b>٠</b> مربّعاً</div>`+
@@ -2534,11 +2550,15 @@ function renderPattern(q, body, fb){
   if(!items.length){ body.textContent='لا عناصر في هذا النمط'; return; }
   const ltr=!!q.ltr;                       // الافتراض: النمط يُقرأ يميناً→يساراً كنصّ الصفحة
   const arrow=ltr?'→':'←';
+  /* عنصرُ النمطِ المصوَّر: قيمةٌ تنتهي بامتدادِ صورةٍ تُعرَضُ <img> (عناصر عمانية
+     ٢٠٢٦-٠٩-٠١)؛ والمقارنةُ في التحقّقِ نصّيةٌ على القيمةِ نفسِها فلا تتأثّر. */
+  const face=it=>/\.(png|jpg|svg)$/.test(it)
+    ? '<img class="pt-img" src="'+it+'" draggable="false" alt="">' : it;
   let si=0;
   const cells=items.map(it=>{
     if(it==='__'){ const i=si++;
       return '<span class="blank pt-slot" data-i="'+i+'" data-answer="'+(answers[i]!=null?answers[i]:'')+'">؟</span>'; }
-    return '<span class="pt-cell">'+it+'</span>';
+    return '<span class="pt-cell">'+face(it)+'</span>';
   });
   const nSlots=si;
   const strip=cells.join('<span class="pt-arrow">'+arrow+'</span>');
@@ -2546,12 +2566,12 @@ function renderPattern(q, body, fb){
     '<div class="pt-strip">'+strip+'</div>'+
     '<div class="bank ptbank"><div class="bt">البطاقات:</div><div class="chips ptchips">'+
     shuffle((q.bank||answers.concat(q.distractors||[])).map(String)).map(w=>
-      '<div class="chip ptchip" draggable="true" data-w="'+w+'">'+w+'</div>').join('')+
+      '<div class="chip ptchip" draggable="true" data-w="'+w+'">'+face(w)+'</div>').join('')+
     '</div></div>'+
     '<div class="pt-rule">'+(q.rule?('القاعدة: '+q.rule):'')+'</div></div>'+
     '<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>';
   // بنك البطاقات: المنطق المشترك نفسه (wireBank) — بطاقة واحدة لكل خانة، والمكرّر يصحّ بالهوية
-  wireBank(body, { chip:'.ptchip', slot:'.pt-slot', empty:'؟' });
+  wireBank(body, { chip:'.ptchip', slot:'.pt-slot', empty:'؟', face:face });
   let done=false;
   body.querySelector('.btn-check').onclick=()=>{
     if(done) return;
@@ -2578,7 +2598,12 @@ function renderPattern(q, body, fb){
    إعادةُ النقر تُلغي العدَّ، والتحقّقُ يقارن المجموعَ بـ`target`. */
 function renderCountTap(q, body, fb){
   const mode=q.mode||'each';
-  const glyph=q.glyph||'🔵';
+  /* `glyphImg` يستبدل بالإيموجي صورةً من `images/` (عناصر عمانية بقرار المالك ٢٠٢٦-٠٩-٠١):
+     العنصرُ المعدودُ زيٌّ لا بنيةٌ، فالمنطقُ كلُّه (النقر، الشارة، العدّاد) لا يمسُّه التبديل.
+     draggable=false كي لا يخطفُ سحبُ الصورةِ الأصليُّ في المتصفحِ نقرَ العدّ. */
+  const glyph=q.glyphImg
+    ? '<img class="ct-glyph ct-glyph-img" src="'+q.glyphImg+'" draggable="false" alt="">'
+    : '<span class="ct-glyph">'+(q.glyph||'🔵')+'</span>';
   const step=Math.max(1,Math.round(numOf(q.step)||1));
   const count=Math.max(1,Math.round(numOf(q.count)||10));
   const groups=Math.max(1,Math.round(numOf(q.groups)||5));
@@ -2586,12 +2611,12 @@ function renderCountTap(q, body, fb){
   let tiles='';
   if(mode==='step'){
     for(let g=0;g<groups;g++){
-      let inner=''; for(let k=0;k<step;k++) inner+='<span class="ct-glyph">'+glyph+'</span>';
+      let inner=''; for(let k=0;k<step;k++) inner+=glyph;
       tiles+='<div class="ct-group" data-g="'+g+'"><div class="ct-glyphs">'+inner+'</div><span class="ct-badge"></span></div>';
     }
   } else {
     for(let i=0;i<count;i++)
-      tiles+='<div class="ct-tile" data-i="'+i+'"><span class="ct-glyph">'+glyph+'</span><span class="ct-badge"></span></div>';
+      tiles+='<div class="ct-tile" data-i="'+i+'">'+glyph+'<span class="ct-badge"></span></div>';
   }
   /* العدّادُ العلويُّ مخفيٌّ أثناءَ النقرِ ويظهرُ عندَ التحقّقِ فقط (بلاغُ المالك
      ٢٠٢٦-٠٨-٣١ متمّماً لتعميمِ شارةِ ✓): عرضُه الحيُّ يجعلُ الطالبَ ينقرُ حتى يقرأَ
@@ -2955,14 +2980,19 @@ function renderMoney(q, body, fb){
   function fmt(v){ if(v>=1000){ const r=Math.floor(v/1000), b=v%1000;
       return arNum(r)+' ر.ع'+(b?(' و'+arNum(b)+' بيسة'):''); } return arNum(v)+' بيسة'; }
   function pieceSvg(v){
-    // ≤١٠٠ بيسة تُرسم عملةً معدنيّةً، وما فوقها ورقةً نقديّةً — تمييزٌ شكليٌّ لا لونيٌّ فحسب
-    if(v<=100) return '<svg class="mn-svg mn-coin" viewBox="0 0 80 80"><circle class="mn-coinface" cx="40" cy="40" r="36"></circle>'+
-      '<circle class="mn-coinring" cx="40" cy="40" r="29"></circle>'+
-      '<text class="mn-val" x="40" y="46">'+arNum(v)+'</text>'+
-      '<text class="mn-unit" x="40" y="63">بيسة</text></svg>';
+    // ≤١٠٠ بيسة تُرسم عملةً معدنيّةً، وما فوقها ورقةً نقديّةً — تمييزٌ شكليٌّ لا لونيٌّ فحسب.
+    // وجها القطعتين صورتان عمانيّتان مولَّدتان (عناصر عمانية — قرار المالك ٢٠٢٦-٠٩-٠١):
+    // عملةٌ بحلقةٍ كهرمانيةٍ منقّطةٍ ووسطٍ فارغٍ، وورقةٌ بإطارٍ أخضرَ مزخرفٍ ووسطٍ فارغٍ —
+    // القيمةُ نصٌّ فوقَهما فلا تتكرّرُ أصولٌ لكلِّ فئة. والإجابةُ نقرُ أزرارٍ لا مسارٌ في
+    // الرسمِ، فالصورةُ هنا مباحةٌ (§حدُّ المنعِ من الاستبدال). وتغذيةُ «صحيح» انتقلت من
+    // تلوينِ وجهِ القطعةِ إلى إطارِ الزرِّ نفسِه (.mn-piece.correct في css).
+    if(v<=100) return '<svg class="mn-svg mn-coin" viewBox="0 0 80 80">'+
+      '<image href="images/عملة-بيسة.png" x="0" y="0" width="80" height="80"></image>'+
+      '<text class="mn-val" x="40" y="44">'+arNum(v)+'</text>'+
+      '<text class="mn-unit" x="40" y="61">بيسة</text></svg>';
     const lbl=(v>=1000)?(arNum(v/1000)+' ر.ع'):(arNum(v)+' بيسة');
-    return '<svg class="mn-svg mn-note" viewBox="0 0 132 76"><rect class="mn-noteface" x="3" y="3" width="126" height="70" rx="9"></rect>'+
-      '<rect class="mn-noteinner" x="13" y="13" width="106" height="50" rx="6"></rect>'+
+    return '<svg class="mn-svg mn-note" viewBox="0 0 132 76">'+
+      '<image href="images/ورقة-ريال.png" x="0" y="6" width="132" height="64" preserveAspectRatio="xMidYMid meet"></image>'+
       '<text class="mn-val mn-noteval" x="66" y="46">'+lbl+'</text></svg>';
   }
   const price=(q.price!=null)?Math.round(numOf(q.price)):null;

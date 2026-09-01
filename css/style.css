@@ -1133,6 +1133,10 @@
   .ar-face{fill:rgba(255,255,255,.55);stroke:#9c7b3f;stroke-width:3;stroke-dasharray:11 8;
     transition:fill .12s}
   .arsvg-build .ar-dot{opacity:0;transition:opacity .12s}
+  /* رمز البناء المتّجهي (dot من سجلّ qglyphs): سلوك القرص نفسه — خفيّ حتى تُختار الخليّة.
+     pointer-events:none كي لا يحجب <use> نقرة الخليّة عن ar-hit */
+  .ar-glyph{opacity:0;transition:opacity .12s;pointer-events:none}
+  .ar-cell.on .ar-glyph{opacity:1}
   .ar-cell:hover .ar-face{fill:#fff6e6}
   /* المختارة: الحدّ يصير صلباً ويظهر القرص — فارق شكليّ مع اللون لا لون فحسب */
   .ar-cell.on .ar-face{fill:#fff;stroke:#c8791f;stroke-width:5;stroke-dasharray:none}
@@ -1174,6 +1178,8 @@
 .ptbank{width:100%}
 .ptbank .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
 .ptchip{min-width:78px;min-height:62px;display:inline-flex;align-items:center;justify-content:center;font-size:1.6rem}
+/* عنصر النمط المصوَّر (عناصر عمانية): الصورة بحجم رقم النمط تقريباً، ولا تعترض النقر والسحب */
+.pt-img{width:44px;height:44px;object-fit:contain;display:block;pointer-events:none}
 /* القاعدة تُكشف عند الصواب (كجملة المصفوفة) لا قبله فلا تُفسد التفكير */
 .pt-rule{display:none}
 .pt-rule.show{display:block;background:#fff;border-radius:14px;padding:8px 20px;
@@ -1190,6 +1196,8 @@
 .ct-group{gap:6px;padding:8px 12px;min-width:auto}
 .ct-glyphs{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;max-width:170px}
 .ct-glyph{font-size:1.9rem;line-height:1}
+/* صورة العنصر المعدود (glyphImg — عناصر عمانية): بمقاس الإيموجي نفسه تقريباً */
+img.ct-glyph-img{width:38px;height:38px;object-fit:contain;display:block;pointer-events:none}
 .ct-tile:hover,.ct-group:hover{background:#fff6e6}
 /* المعدودُ: فارقٌ شكليٌّ (حدٌّ صلبٌ + شارةٌ) لا لونٌ فحسب */
 .ct-tile.on,.ct-group.on{background:#fff;border-color:#c8791f;transform:scale(.96)}
@@ -1306,6 +1314,9 @@
 .mn-total b{color:#ffe27a;font-size:1.35rem;margin-inline-start:6px}
 .mnrack{width:100%}
 .mnchips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+/* بعد اعتماد وجهي العملة المصوّرين (عناصر عمانية) صارت تغذية «صحيح» على إطار الزرّ
+   نفسه لا على تعبئة الوجه — فالصورة معتمة لا يظهر خلفها التلوين */
+.mn-piece.correct{outline:3px solid #4e7c1f;outline-offset:2px;border-radius:14px;background:#eef8dc}
 .mn-piece.correct .mn-coinface{fill:#a7c957;stroke:#4e7c1f}
 .mn-piece.correct .mn-noteface{fill:#a7c957;stroke:#4e7c1f}
 
