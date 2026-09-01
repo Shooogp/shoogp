@@ -28,15 +28,6 @@
     "    ← يتخطّى البناءَ كلَّه. يُستعمَلُ حينَ تُغري قائمةُ الهيكسات النموذجَ",
     "      برسمِ لوحةِ ألوانٍ داخلَ الصورة (وقعَ فعلاً مع رسمةِ العين)."
   ],
-  "batchId": "2026-09-01-omani-house-square",
-  "items": [
-    {
-      "name": "omani-house-sq1",
-      "prompt": "Create a simple educational illustration of one single traditional Omani mud-brick house, in a SQUARE composition: the house is about as TALL as it is WIDE, so the facade is high and fills the frame — not a wide low box. It is a two-storey adobe house with a FLAT roof edged by stepped crenellations along the top, a row of small round wooden beam ends poking out just under the roof line, one arched wooden door at the bottom centre, and two small square windows on the upper floor. The walls are warm mud tones in flat bands: light #B98551, main #9A6636 and dark #7A4C22, with a large plain whitewashed panel #F7F6F1 across the middle of the facade. The door and beams are deeper brown #68411D. Keep it very simple with few large shapes.  Glossy cartoon vector illustration in a space-sticker style, bold saturated colors as crisp discrete flat bands with hard edges and no soft blending, a thin crisp black outline #111111 with rounded caps around every object and its inner parts, plump rounded forms, floating on a pure white #FFFFFF background with no ground line and no cast shadow, absolutely no facial features, no text and no labels. One single standalone image only."
-    },
-    {
-      "name": "omani-house-sq2",
-      "prompt": "Create a simple educational illustration of one single traditional Omani mud-brick house, in a SQUARE composition: the house is about as TALL as it is WIDE, so the facade is high and fills the frame — not a wide low box. It is a tall single-storey adobe house with a FLAT roof edged by stepped crenellations along the top, a row of small round wooden beam ends poking out just under the roof line, one arched wooden door at the bottom centre, and one small arched window on the upper floor and a slim palm tree standing beside the house. The walls are warm mud tones in flat bands: light #B98551, main #9A6636 and dark #7A4C22, with a large plain whitewashed panel #F7F6F1 across the middle of the facade. The door and beams are deeper brown #68411D. Keep it very simple with few large shapes.  Glossy cartoon vector illustration in a space-sticker style, bold saturated colors as crisp discrete flat bands with hard edges and no soft blending, a thin crisp black outline #111111 with rounded caps around every object and its inner parts, plump rounded forms, floating on a pure white #FFFFFF background with no ground line and no cast shadow, absolutely no facial features, no text and no labels. One single standalone image only."
-    }
-  ]
+  "batchId": "2026-09-01-empty4",
+  "items": []
 }
