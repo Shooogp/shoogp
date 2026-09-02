@@ -838,7 +838,9 @@
   .mm-branches{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:18px;justify-content:center}
   .mm-branch{display:flex;flex-direction:column;align-items:center;gap:8px;background:rgba(255,255,255,.14);
     border:1px solid rgba(255,255,255,.25);border-radius:16px;padding:12px 14px;min-width:122px}
-  .mm-label{font-family:'Cairo';font-weight:700;color:#fff;font-size:1.1rem}
+  /* عنوانُ الفرعِ فوقَ الخانةِ أسودُ لا أبيض (طلبُ المالك ٢٠٢٦-٠٩-٠٢): نوافذُ الإطاراتِ
+     كلُّها فاتحةٌ (رقٌّ · كريم · أبيض) فكان الأبيضُ يكادُ يختفي عليها. */
+  .mm-label{font-family:'Cairo';font-weight:700;color:#111111;font-size:1.1rem}
   .mm-slot{min-width:96px;min-height:54px;display:flex;align-items:center;justify-content:center;
     background:rgba(255,255,255,.9);border:2px dashed #e0b380;border-radius:14px;padding:4px;box-sizing:border-box}
   .mm-slot.over{border-color:#82a83e;background:#eef7e2}
