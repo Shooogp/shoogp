@@ -370,7 +370,8 @@
            'الرمز محفوظٌ ولم يُهدَر — افتحي ذلك الكتاب لتجديه مفتوحاً.';
   }
 
-  var box = null, elInput, elMsg, elGo, elBuyWa, elBuySt, elClose, elTitle, elSub, elBand, lastFocus = null;
+  var box = null, elInput, elMsg, elGo, elBuyWa, elBuySt, elClose, elTitle, elSub, elBand,
+      elWaQr, elWaCv, lastFocus = null;
 
   function build() {
     if (box) return box;
@@ -393,6 +394,19 @@
         '<button type="button" class="lockgo">افتح الكتاب</button>' +
         '<p class="lockbuytitle">شراء الكتاب</p>' +
         '<div class="lockbuyrow">' +
+          /* بطاقةُ رمزِ الواتساب — بديلُ الزرِّ على الشاشةِ العريضة. تُبنى مخفيّةً
+             و`setWaHref` هي التي تُظهرُ أحدَهما وتُخفي الآخر. */
+          '<div class="lockwaqr" hidden>' +
+            /* ترويسةُ البطاقة: أيقونةُ واتساب واسمُه — يُعرَفانِ قبلَ أن يُقرَأَ
+               النصّ، وهما ما كان يحملُه الزرُّ الأخضرُ المستبدَل. */
+            '<span class="lockwaqr-brand">' +
+              '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">' +
+                '<path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.23 8.23 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.41a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.21.88 2.39 1 2.55.12.17 1.73 2.64 4.19 3.7.59.25 1.04.4 1.4.52.59.19 1.12.16 1.54.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29Z"/>' +
+              '</svg>واتساب' +
+            '</span>' +
+            '<canvas class="lockwaqr-cv" width="180" height="180" aria-hidden="true"></canvas>' +
+            '<span class="lockwaqr-cap">امسحي الرمز بكاميرا هاتفك<br>لتُفتَحَ محادثة واتساب بطلبك</span>' +
+          '</div>' +
           '<a class="lockbuy lockbuy-wa" target="_blank" rel="noopener">' +
             '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">' +
               '<path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.23 8.23 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.41a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.21.88 2.39 1 2.55.12.17 1.73 2.64 4.19 3.7.59.25 1.04.4 1.4.52.59.19 1.12.16 1.54.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29Z"/>' +
@@ -414,6 +428,8 @@
     elGo    = box.querySelector('.lockgo');
     elBuyWa = box.querySelector('.lockbuy-wa');
     elBuySt = box.querySelector('.lockbuy-site');
+    elWaQr  = box.querySelector('.lockwaqr');
+    elWaCv  = box.querySelector('.lockwaqr-cv');
     elClose = box.querySelector('.lockclose');
 
     /* ثلاثةُ مخارجَ للإغلاق: الزرُّ ✕ · الخلفيةُ خارجَ النافذة · مفتاحُ Escape.
@@ -433,7 +449,10 @@
     box.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') { e.preventDefault(); close(); return; }
       if (e.key !== 'Tab') return;
-      var f = box.querySelectorAll('.lockclose, .lockinput, .lockgo, .lockbuy-wa, .lockbuy-site');
+      /* `:not([hidden])` لازمٌ — زرُّ الواتساب يُخفى حينَ يظهرُ الرمز،
+         ولولاه لوقفَ التركيزُ على عنصرٍ غيرِ مرئيّ. */
+      var f = box.querySelectorAll('.lockclose, .lockinput, .lockgo,' +
+                                   ' .lockbuy-wa:not([hidden]), .lockbuy-site');
       var first = f[0], last = f[f.length - 1];
       if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
@@ -451,19 +470,47 @@
      السبورةُ الذكيةُ شاشةُ لمسٍ فتُبلِغُ `pointer: coarse`، فيُصنَّفُ أهمُّ أجهزةِ
      المنصّةِ هاتفاً. و**أصغرُ القيمتَين** `innerWidth` و`screen.width` لأنّ وضعَ
      «موقع سطح المكتب» في متصفّحِ الهاتفِ يفرضُ منفذاً ≈٩٨٠px فيخدعُ الأولى. */
-  function waBase() {
+  function isWide() {
     var a = window.innerWidth || 9999;
     var b = (window.screen && window.screen.width) || 9999;
-    return (Math.min(a, b) >= 700)
+    return Math.min(a, b) >= 700;
+  }
+
+  function waBase() {
+    return isWide()
       ? 'https://web.whatsapp.com/send?phone=' + WA_NUMBER + '&text='
       : 'https://wa.me/' + WA_NUMBER + '?text=';
   }
 
   /* رسالةُ الواتساب المكتوبةُ سلفاً — صياغتُها مطابقةٌ لِما يتوقّعُه مسارُ الواتساب:
      اسمُ المادةِ ثمّ الصفُّ في سطرٍ واحدٍ بلا زخرفة. */
+  /* ═══ طريقُ الواتساب: رمزٌ على الشاشةِ العريضةِ وزرٌّ على الهاتف ═══
+     على السبورةِ كان الزرُّ يفتحُ **واتساب ويب** — وهو يتطلّبُ جلسةً مسجَّلةً على
+     جهازِ المدرسةِ ويعرضُ محادثاتِ المعلّمةِ أمامَ الصفّ. فالرمزُ ينقلُ الطلبَ إلى
+     هاتفِها هي. وعلى الهاتفِ يبقى الزرُّ: الهاتفُ لا يمسحُ شاشتَه.
+     ⚠️ الرمزُ يحملُ `wa.me` دائماً لا `web.whatsapp.com` — قارئُه هاتفٌ بحكمِ
+     التعريف، فالوجهةُ تطبيقُ الواتساب. */
   function setWaHref(label) {
     if (!elBuyWa) return;
-    elBuyWa.href = waBase() + encodeURIComponent('السلام عليكم، أريد شراء: ' + label);
+    var t = encodeURIComponent('السلام عليكم، أريد شراء: ' + label);
+
+    if (isWide() && elWaCv && typeof QRCode !== 'undefined') {
+      QRCode.toCanvas(elWaCv, 'https://wa.me/' + WA_NUMBER + '?text=' + t,
+        { width: 180, margin: 1, color: { dark: '#000000', light: '#ffffff' } },
+        function (err) {
+          if (err) { waAsButton(t); return; }   // إخفاقُ الرسمِ يُرجِعُ الزرّ
+          elWaQr.removeAttribute('hidden');
+          elBuyWa.setAttribute('hidden', '');
+        });
+      return;
+    }
+    waAsButton(t);
+  }
+
+  function waAsButton(t) {
+    if (elWaQr) elWaQr.setAttribute('hidden', '');
+    elBuyWa.removeAttribute('hidden');
+    elBuyWa.href = waBase() + t;
   }
 
   function say(text, kind) {
