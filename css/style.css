@@ -661,7 +661,11 @@
   .ll-tok.miss{background:rgba(242,112,90,.32)}
   /* الحرفُ المُبرَز: خلفيةٌ نجميةٌ لا لونُ خطٍّ مغاير — فالنصُّ الشريفُ يبقى بلونِه
      الواحدِ ولا يُلوَّنُ حرفٌ منه، والإبرازُ خلفَه لا فيه. */
-  .ll-ch{background:var(--star);border-radius:6px;padding:0 2px;font-weight:inherit}
+  /* لونٌ فقط لا صندوقُ تحديدٍ — أيُّ خلفيةٍ أو حشوةٍ لكلِّ حرفٍ على حدة تفصلُ
+     الحروفَ المتجاورةَ بصرياً (كلٌّ بصندوقِه المستدير)، فيبدو النصُّ الشريفُ مفكَّكاً.
+     المطلوبُ حروفٌ متّصلةٌ كخطِّ المصحف، يتميّزُ حرفُ الحكمِ بلونِه فقط
+     (قرار المالك ٢٠٢٦-٠٩-٠٢). */
+  .ll-ch{color:#5cc98a;font-weight:inherit}
   .ll-tok.ll-whole{background:var(--star);color:#2a2a2a}
   .ll-src{font-size:.95rem;opacity:.85}
   .ll-why{max-width:640px;text-align:center;line-height:1.5;

@@ -3736,16 +3736,27 @@ function renderListenLocate(q, body, fb){
       const chars=hit.chars;
       /* إبرازُ الحروفِ المقصودةِ داخلَ الكلمة — وبلا `chars` تُبرَزُ الكلمةُ كلُّها */
       if(chars&&chars.length){
-        tokEls[sel].innerHTML=cl.map((c,i)=>
-          chars.indexOf(i)>=0?`<b class="ll-ch">${c}</b>`:c).join('');
+        /* الحروفُ المتجاورةُ المطلوبةُ تُلَفُّ معاً بعنصرٍ واحدٍ لا بعنصرٍ لكلِّ حرف —
+           عنصرٌ لكلِّ حرفٍ يفصلُها بصرياً حتى بلا خلفية (كلٌّ صندوقُ سطرٍ مستقلّ). */
+        let html='', i=0;
+        while(i<cl.length){
+          if(chars.indexOf(i)>=0){
+            let j=i; let run='';
+            while(j<cl.length && chars.indexOf(j)>=0){ run+=cl[j]; j++; }
+            html+=`<b class="ll-ch">${run}</b>`; i=j;
+          } else { html+=cl[i]; i++; }
+        }
+        tokEls[sel].innerHTML=html;
       } else tokEls[sel].classList.add('ll-whole');
       tokEls[sel].classList.remove('sel');
       tokEls[sel].classList.add('hit');
       tokEls.forEach(x=>{ x.style.cursor='default'; });
       if(q.why){ why.innerHTML=`<b>لِماذا؟</b> ${q.why}`; why.hidden=false; }
       check.disabled=true;
+      /* لا إعادةَ تلقائيةً للتلاوةِ هنا (قرار المالك ٢٠٢٦-٠٩-٠٢): كانت تتداخلُ صوتياً
+         مع صوتِ الإجابةِ الصحيحةِ الذي يُشغِّلُه qWin نفسُه (playCorrectSound) —
+         فيسمعُ التلميذُ صوتَين معاً. زرُّ «استمع» يبقى متاحاً لإعادةِ التلاوةِ يدوياً. */
       qWin(fb,'🎯 أَحْسَنْتَ! هٰذا مَوْضِعُ الحُكْمِ',2);
-      play();                                        // إعادةُ التلاوةِ لترسيخِ الأثرِ السمعيّ
     } else {
       tokEls[sel].classList.add('miss');
       const bad=tokEls[sel];
