@@ -3682,7 +3682,7 @@ function renderListenLocate(q, body, fb){
     (q.rule?`<div class="ll-rule">الحُكْمُ: <b>${q.rule}</b></div>`:'')+
     /* الآيةُ بخطِّ المصحف — `.tajweed-ayah` (تعريفُ ‎@font-face‎ في `css/style.css`) */
     `<div class="tajweed-ayah ll-ayah">`+
-      toks.map((t,i)=>`<span class="ll-tok" data-i="${i}">${t}</span>`).join('')+
+      toks.map((t,i)=>`<span class="ll-tok" data-i="${i}"><span class="ll-tok-txt">${t}</span></span>`).join('')+
     `</div>`+
     (q.surah?`<div class="ll-src">﴿${q.surah}: ${arNum(q.ayah)}﴾</div>`:'')+
     `<div class="ll-why" hidden></div>`+
@@ -3746,7 +3746,16 @@ function renderListenLocate(q, body, fb){
             html+=`<b class="ll-ch">${run}</b>`; i=j;
           } else { html+=cl[i]; i++; }
         }
-        tokEls[sel].innerHTML=html;
+        /* ⚠️ **العلّةُ الحقيقيةُ لتفرّقِ الحروفِ (قرار المالك ٢٠٢٦-٠٩-٠٢، الجولةُ
+           الثانية):** ‎.ll-tok‎ هو `display:inline-flex` — فحينَ يصيرُ محتواه أكثرَ
+           من عنصرٍ واحدٍ (نصٌّ ثمّ ‎<b>‎ ثمّ نصٌّ) تتحوّلُ هذه العناصرُ إلى **عناصرِ
+           Flex منفصلةٍ blockified**، وكلُّ عنصرِ Flex صندوقٌ تخطيطيٌّ مستقلٌّ لا
+           تتّصلُ الحروفُ العربيةُ عبرَ حدوده — فتنكسرُ صياغةُ الحروفِ (shaping)
+           فعلياً لا بصرياً فقط، أياً كانت خلفيةُ ‎.ll-ch‎ أو حشوتُه. **الإصلاحُ
+           السابقُ (إزالةُ الخلفية) عالجَ عرَضاً واحداً وأبقى السببَ.** الحلُّ: يُكتَبُ
+           المزيجُ داخلَ غلافٍ داخليٍّ واحدٍ ‎.ll-tok-txt‎ (عنصرُ Flex الوحيدُ ثابتاً)
+           فيبقى تدفّقاً نصّياً عادياً داخلَه تتّصلُ فيه الحروفُ بصياغتِها الصحيحة. */
+        tokEls[sel].querySelector('.ll-tok-txt').innerHTML=html;
       } else tokEls[sel].classList.add('ll-whole');
       tokEls[sel].classList.remove('sel');
       tokEls[sel].classList.add('hit');
