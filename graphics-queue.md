@@ -1318,3 +1318,60 @@ colormode=color · color_precision=4 · filter_speckle=16 · mode=spline · path
 
 **مقيسٌ على أربعةِ منافذَ** (‏٤٣٠ · ٨٢٠ · ١٢٨٠ · ١٩٢٠ عرضاً) **بالأوسمةِ مملوءةً**:
 صفرُ تداخلٍ ثنائيِّ البُعد، وصفرُ خروجٍ عن الملعب.
+
+---
+
+## بند ١٠ — `g1d1-1-3` · السؤال السادس (اكتشف الخطأ: آداب العطاس) — **توليد بجيميناي**
+
+> بطلبِ المالك ٢٠٢٦-٠٩-٠٢: «استبدل هذه الرسوم برسوم من الجيميناي». الرسمُ اليدويُّ الحاليُّ
+> (أربعُ لوحاتٍ SVG) جسرٌ مؤقت. **والاستبدالُ مسموحٌ** لأنّ `find-error` تُقاسُ إجابتُه
+> نسبةً من الإطارِ لا مساراً فيه (`CLAUDE.md` §حدُّ المنع من الاستبدال).
+
+- **رمز السؤال:** `g1d1-1-3` (آدابُ العطاس، ديني حياتي الصف الأول ج١) — السؤال الإثرائي `find-error`.
+- **الهدف:** «يتجنّب السلوكيات المنافية لآداب العطاس». المستوى: استدلال.
+- **نصّ السؤال:** «اُنْقُرْ عَلَى الصّورَةِ الَّتي فيها خَطَأٌ.»
+- **البنية بعدَ الاستبدال:** يبقى `viewBox` **600×340** بلوحاتِه الأربع (278×152 لكلٍّ)، وتوضَعُ
+  كلُّ صورةٍ بـ`<image>` داخلَ لوحتِها. **فالـ`spot` لا يتغيّر** (اللوحةُ السفلى اليمنى:
+  `{x:74.2, y:73.5, w:46.3, h:44.7}`) لأنّ هندسةَ الشبكةِ ثابتة.
+- **ثلاثُ صورٍ لا أربع:** اللوحةُ ③ («يُغطّي ويحمدُ الله») = صورةُ ① نفسُها + فقاعةُ «الْحَمْدُ لِلَّهِ»
+  تبقى مرسومةً SVG (نصٌّ عربيٌّ لا يُوكَلُ إلى المولِّد).
+- **الملفّات المقترحة في `images/`:** `عطاس-منديل.png` · `عطاس-كف.png` · `عطاس-مكشوف.png`.
+- **فُحِصَت المكتبةُ أوّلاً:** لا أصلَ لطفلٍ يعطسُ في `images/` (‏`جسم-طفل.png` و`يد.png` و`فم.png` لا تؤدّي المعنى).
+- **قيدُ المحتوى الحاسم:** **بلا ملامحِ وجهٍ إطلاقاً** — الرأسُ بيضةٌ ملساءُ بلا عينٍ ولا أنفٍ ولا فم؛
+  والعطاسُ يدلُّ عليه **ميلُ الرأسِ والرذاذُ** (في ③ وحدَها) لا فمٌ مفتوح. **أيُّ مخرَجٍ فيه وجهٌ يُرفَضُ ويُعادُ التوليد.**
+- **قيدُ النسبة:** كلُّ صورةٍ **عريضةٌ ١٦:٩** (اللوحةُ 278×152 ≈ 1.83).
+
+### الشخصيةُ المشتركةُ في الصورِ الثلاث (تُلصَقُ في كلِّ برومبت)
+طفلٌ عُمانيٌّ نصفيٌّ (من الصدرِ إلى الرأس) يرتدي **دشداشةً بيضاءَ** `#FFFFFF` ← `#F9F8F3` ← `#F7F6F1`
+و**كُمَّةً عُمانيةً سماويةً** بسُلَّمِ `#40C0FF` ← `#20A0FF` ← `#2080E0` ← `#1060A0` بنقشٍ بسيط، بشرتُه
+بسُلَّمِ `#F2C3A0` ← `#E0A87F` ← `#C88A5E` ← `#AA7550`. **رأسُه بيضةٌ ملساءُ بلا أيِّ ملامح.**
+
+### البرومبت ① — `عطاس-منديل.png` (يُلصق في Gemini — صورة واحدة)
+
+**عربي:**
+> أنشئ رسماً تعليمياً لطفلٍ عُمانيٍّ نصفيٍّ (من الصدرِ إلى الرأس) يرتدي دشداشةً بيضاءَ `#FFFFFF` ← `#F9F8F3` ← `#F7F6F1` وكُمَّةً عُمانيةً سماويةً بسُلَّمِ `#40C0FF` ← `#20A0FF` ← `#2080E0` ← `#1060A0`، بشرتُه بسُلَّمِ `#F2C3A0` ← `#E0A87F` ← `#C88A5E`. رأسُه **بيضةٌ ملساءُ بلا أيِّ ملامحِ وجهٍ** — لا عينَ ولا أنفَ ولا فم. رأسُه مائلٌ قليلاً إلى الأمام، **ويداه الاثنتانِ تُمسكانِ منديلاً ورقياً أبيضَ مطويّاً** مضغوطاً على النصفِ السفليِّ من رأسِه حيثُ يكونُ الفمُ والأنف، مع طيّةٍ ظاهرةٍ في المنديل. **لا رذاذَ ولا قطراتٍ** في الصورة. **بلا أيّ وجهٍ أو ملامحَ** على أيِّ شيء. **ولا خطَّ أرضٍ** (الشخصيةُ طافية). الخلفيةُ **بيضاءُ نقيّةٌ `#FFFFFF`** بلا نصوصٍ أو أرقام. نسبةُ الصورةِ ١٦:٩ أفقية. رسم كرتونيّ متّجهي لامع بأسلوب ملصقات الفضاء، بألوانٍ صريحةٍ مشبعة، لكلِّ جسمٍ تدرّجُ حجمٍ من ثلاثِ إلى أربعِ درجاتٍ من لونِه نفسِه (فاتحةٌ ثمّ أساسيةٌ ثمّ غامقةٌ ثمّ ظِلّ) بحوافَّ فاصلةٍ واضحةٍ بين الدرجاتِ لا مزجٍ ناعم، مع لمعةٍ بيضاءَ عريضةٍ على الأسطحِ المنحنية، وحدٍّ خارجيٍّ أسودَ رفيعٍ واضحٍ ‎#111111‎ مستديرِ الرؤوسِ يحيطُ كلَّ جسمٍ وأجزاءَه الداخلية (خطٌّ نظيفٌ رفيعٌ لا حدٌّ ثقيل)، بأشكالٍ ممتلئةٍ مستديرةٍ بلا زاويةٍ حادّة، والأجسامُ طافيةٌ بلا خطِّ أرضٍ ولا ظلٍّ مُلقًى، وبلا أيِّ ملامحِ وجهٍ على أيِّ شيءٍ إطلاقاً. صورة واحدة مستقلّة فقط.
+
+**English:**
+> Create an educational illustration of a half-length Omani boy (chest to head) wearing a white dishdasha in the ramp `#FFFFFF` / `#F9F8F3` / `#F7F6F1` and a sky-blue embroidered Omani kumma cap in the ramp `#40C0FF` / `#20A0FF` / `#2080E0` / `#1060A0`, with skin in the ramp `#F2C3A0` / `#E0A87F` / `#C88A5E`. His head is a **smooth plain oval with absolutely no facial features** — no eyes, no nose, no mouth. His head tilts slightly forward, and **both hands hold a folded white paper tissue** pressed against the lower half of his head where the mouth and nose would be, with a visible fold in the tissue. **No droplets or spray** anywhere in the image. **No face or facial features on anything.** **No ground line** (the figure floats). Pure **white background `#FFFFFF`**, no text or numbers. Image aspect ratio 16:9 horizontal. Glossy cartoon vector illustration in a space-sticker style, bold saturated colors, each object shaded with a 3-4 step ramp of its own hue (highlight, base, shade, deep shade) as crisp discrete bands with hard edges and no soft blending, a broad white gloss highlight on curved surfaces, a thin crisp black outline #111111 with rounded caps around every object and its inner parts (a clean fine line, not a heavy border), plump rounded forms with no sharp angles, objects floating with no ground line and no cast shadow, absolutely no facial features on anything. One single standalone image only.
+
+### البرومبت ② — `عطاس-كف.png` (يُلصق في Gemini — صورة واحدة)
+
+**عربي:**
+> أنشئ رسماً تعليمياً لطفلٍ عُمانيٍّ نصفيٍّ (من الصدرِ إلى الرأس) يرتدي دشداشةً بيضاءَ `#FFFFFF` ← `#F9F8F3` ← `#F7F6F1` وكُمَّةً عُمانيةً سماويةً بسُلَّمِ `#40C0FF` ← `#20A0FF` ← `#2080E0` ← `#1060A0`، بشرتُه بسُلَّمِ `#F2C3A0` ← `#E0A87F` ← `#C88A5E`. رأسُه **بيضةٌ ملساءُ بلا أيِّ ملامحِ وجهٍ** — لا عينَ ولا أنفَ ولا فم. رأسُه مائلٌ قليلاً إلى الأمام، **وكفُّ يدِه اليمنى المفتوحةُ تُغطّي النصفَ السفليَّ من رأسِه** بأصابعَ أربعٍ ظاهرةٍ متلاصقةٍ وإبهامٍ جانبيّ، وذراعُه مرفوعةٌ بكُمِّ الدشداشة. **لا رذاذَ ولا قطراتٍ** في الصورة. **بلا أيّ وجهٍ أو ملامحَ** على أيِّ شيء. **ولا خطَّ أرضٍ**. الخلفيةُ **بيضاءُ نقيّةٌ `#FFFFFF`** بلا نصوصٍ أو أرقام. نسبةُ الصورةِ ١٦:٩ أفقية. رسم كرتونيّ متّجهي لامع بأسلوب ملصقات الفضاء، بألوانٍ صريحةٍ مشبعة، لكلِّ جسمٍ تدرّجُ حجمٍ من ثلاثِ إلى أربعِ درجاتٍ من لونِه نفسِه (فاتحةٌ ثمّ أساسيةٌ ثمّ غامقةٌ ثمّ ظِلّ) بحوافَّ فاصلةٍ واضحةٍ بين الدرجاتِ لا مزجٍ ناعم، مع لمعةٍ بيضاءَ عريضةٍ على الأسطحِ المنحنية، وحدٍّ خارجيٍّ أسودَ رفيعٍ واضحٍ ‎#111111‎ مستديرِ الرؤوسِ يحيطُ كلَّ جسمٍ وأجزاءَه الداخلية (خطٌّ نظيفٌ رفيعٌ لا حدٌّ ثقيل)، بأشكالٍ ممتلئةٍ مستديرةٍ بلا زاويةٍ حادّة، والأجسامُ طافيةٌ بلا خطِّ أرضٍ ولا ظلٍّ مُلقًى، وبلا أيِّ ملامحِ وجهٍ على أيِّ شيءٍ إطلاقاً. صورة واحدة مستقلّة فقط.
+
+**English:**
+> Create an educational illustration of a half-length Omani boy (chest to head) wearing a white dishdasha in the ramp `#FFFFFF` / `#F9F8F3` / `#F7F6F1` and a sky-blue embroidered Omani kumma cap in the ramp `#40C0FF` / `#20A0FF` / `#2080E0` / `#1060A0`, with skin in the ramp `#F2C3A0` / `#E0A87F` / `#C88A5E`. His head is a **smooth plain oval with absolutely no facial features** — no eyes, no nose, no mouth. His head tilts slightly forward, and **his open right palm covers the lower half of his head**, with four visible fingers held together and a thumb to the side, his arm raised in the dishdasha sleeve. **No droplets or spray** anywhere. **No face or facial features on anything.** **No ground line.** Pure **white background `#FFFFFF`**, no text or numbers. Image aspect ratio 16:9 horizontal. Glossy cartoon vector illustration in a space-sticker style, bold saturated colors, each object shaded with a 3-4 step ramp of its own hue (highlight, base, shade, deep shade) as crisp discrete bands with hard edges and no soft blending, a broad white gloss highlight on curved surfaces, a thin crisp black outline #111111 with rounded caps around every object and its inner parts (a clean fine line, not a heavy border), plump rounded forms with no sharp angles, objects floating with no ground line and no cast shadow, absolutely no facial features on anything. One single standalone image only.
+
+### البرومبت ③ — `عطاس-مكشوف.png` — **لوحةُ الخطأ** (يُلصق في Gemini — صورة واحدة)
+
+**عربي:**
+> أنشئ رسماً تعليمياً لطفلٍ عُمانيٍّ نصفيٍّ (من الصدرِ إلى الرأس) يرتدي دشداشةً بيضاءَ `#FFFFFF` ← `#F9F8F3` ← `#F7F6F1` وكُمَّةً عُمانيةً سماويةً بسُلَّمِ `#40C0FF` ← `#20A0FF` ← `#2080E0` ← `#1060A0`، بشرتُه بسُلَّمِ `#F2C3A0` ← `#E0A87F` ← `#C88A5E`. رأسُه **بيضةٌ ملساءُ بلا أيِّ ملامحِ وجهٍ** — لا عينَ ولا أنفَ ولا فم. رأسُه مائلٌ إلى الأمامِ ونحوَ يسارِ الصورة، **ويداه أسفلَ الصورةِ بعيدتانِ عن رأسِه** (لا شيءَ يغطّي رأسَه). ومن النصفِ السفليِّ لرأسِه **تتطايرُ نحوَ يسارِ الصورةِ رشّةٌ من عشرِ قطراتِ رذاذٍ سماويةٍ** `#40C0FF` بحوافَّ سوداء، مختلفةِ الأحجامِ، متباعدةٍ، مع ثلاثةِ خطوطِ حركةٍ قصيرةٍ سماويةٍ باهتة. **بلا أيّ وجهٍ أو ملامحَ** على أيِّ شيء — لا فمَ مفتوحاً ولا عيناً مغمضة؛ العطاسُ يدلُّ عليه الرذاذُ وميلُ الرأسِ فقط. **ولا خطَّ أرضٍ**. الخلفيةُ **بيضاءُ نقيّةٌ `#FFFFFF`** بلا نصوصٍ أو أرقام. نسبةُ الصورةِ ١٦:٩ أفقية. رسم كرتونيّ متّجهي لامع بأسلوب ملصقات الفضاء، بألوانٍ صريحةٍ مشبعة، لكلِّ جسمٍ تدرّجُ حجمٍ من ثلاثِ إلى أربعِ درجاتٍ من لونِه نفسِه (فاتحةٌ ثمّ أساسيةٌ ثمّ غامقةٌ ثمّ ظِلّ) بحوافَّ فاصلةٍ واضحةٍ بين الدرجاتِ لا مزجٍ ناعم، مع لمعةٍ بيضاءَ عريضةٍ على الأسطحِ المنحنية، وحدٍّ خارجيٍّ أسودَ رفيعٍ واضحٍ ‎#111111‎ مستديرِ الرؤوسِ يحيطُ كلَّ جسمٍ وأجزاءَه الداخلية (خطٌّ نظيفٌ رفيعٌ لا حدٌّ ثقيل)، بأشكالٍ ممتلئةٍ مستديرةٍ بلا زاويةٍ حادّة، والأجسامُ طافيةٌ بلا خطِّ أرضٍ ولا ظلٍّ مُلقًى، وبلا أيِّ ملامحِ وجهٍ على أيِّ شيءٍ إطلاقاً. صورة واحدة مستقلّة فقط.
+
+**English:**
+> Create an educational illustration of a half-length Omani boy (chest to head) wearing a white dishdasha in the ramp `#FFFFFF` / `#F9F8F3` / `#F7F6F1` and a sky-blue embroidered Omani kumma cap in the ramp `#40C0FF` / `#20A0FF` / `#2080E0` / `#1060A0`, with skin in the ramp `#F2C3A0` / `#E0A87F` / `#C88A5E`. His head is a **smooth plain oval with absolutely no facial features** — no eyes, no nose, no mouth. His head tilts forward and toward the left of the image, and **his hands are at the bottom of the image, away from his head** (nothing covers his head). From the lower half of his head **a spray of about ten sky-blue droplets** `#40C0FF` with black outlines, of varied sizes and well spaced, **flies toward the left of the image**, with three short faint sky-blue motion lines. **No face or facial features on anything** — no open mouth, no closed eyes; the sneeze is shown only by the droplets and the head tilt. **No ground line.** Pure **white background `#FFFFFF`**, no text or numbers. Image aspect ratio 16:9 horizontal. Glossy cartoon vector illustration in a space-sticker style, bold saturated colors, each object shaded with a 3-4 step ramp of its own hue (highlight, base, shade, deep shade) as crisp discrete bands with hard edges and no soft blending, a broad white gloss highlight on curved surfaces, a thin crisp black outline #111111 with rounded caps around every object and its inner parts (a clean fine line, not a heavy border), plump rounded forms with no sharp angles, objects floating with no ground line and no cast shadow, absolutely no facial features on anything. One single standalone image only.
+
+### خطواتُ ما بعدَ التوليد (لهذا البند)
+1. **افحصِ الوجهَ أوّلاً:** أيُّ عينٍ أو فمٍ في أيِّ صورةٍ ← تُرفَضُ ويُعادُ التوليدُ (جيميناي يميلُ إلى إضافةِ ملامح).
+2. احفظِ الصورَ الثلاثَ في `images/` بالأسماءِ أعلاه (PNG، خلفيةٌ بيضاء).
+3. تُركَّبُ اللوحاتُ الأربعُ بـ`<image>` داخلَ `viewBox` 600×340 نفسِه (③ = صورةُ ① + فقاعةُ الحمدِ SVG)، **و`spot` يبقى كما هو**.
+4. اختبارُ نقرٍ ذو طرفَين (تُقبَلُ اللوحةُ ④ وتُرَدُّ ③ المجاورةُ لها)، ثمّ فحصُ الإطار (§قاعدة فحص الإطار).
