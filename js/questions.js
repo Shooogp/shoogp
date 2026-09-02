@@ -23743,6 +23743,12 @@ window.QUESTIONS = {
     //    الصورة، ثمّ العبارةُ فوقَ الصورةِ بلونٍ ثابتٍ `#111111` **لا تتلوّن**. النصُّ يقعُ
     //    يسارَ البابِ حيثُ الجدارُ صافٍ (قياسُ بكسل: البابُ يشغلُ يمينَ الجدارِ من العرضِ
     //    الأصليِّ ٢٠٥–٢٦٦ من ٣٠٠).
+    // 🖌️ **تخفيفُ اللونِ إلى ١٥٪ (طلبُ المالك ٢٠٢٦-٠٩-٠٢):** لا يُغيَّرُ لونُ اللوحةِ نفسُه
+    //    (يبقى صريحاً في الأزرارِ ولحسابِ التحقّق)، بل تُغطّى منطقةُ الجدارِ الملوَّنةُ
+    //    بـ«غسلةٍ» شفّافةٍ `#F5F4EF` بعتامةِ `0.85` **فوقَ لونِ التلوينِ وتحتَ صورةِ
+    //    الإطار** — فيظهرُ ‎15%‎ فقط من اللونِ المختارِ ممتزجاً بجدارٍ فاتح (تركيبُ ألفا
+    //    قياسيّ: الظاهرُ = ٠٫٨٥×الغسلةِ + ٠٫١٥×اللون). و`dataset.fill` المخزَّنُ للتحقّقِ
+    //    يبقى اللونَ الصريحَ الأصليَّ فلا يتأثّرُ الفحصُ.
     // ⚠️ **والدخيلُ الثاني «أُسْرِفُ في الْماءِ» من قِيَمِ الدليلِ نفسِه**
     //    («الحفاظُ على نعمةِ الماء») — فهو ليس مخالفةَ أدبٍ فحسْبُ بل إهدارَ نعمة.
     {
@@ -23762,27 +23768,31 @@ window.QUESTIONS = {
         { name: "أَتَحَدَّثُ بِالْهاتِفِ", color: "#E02000" },
         { name: "أُسْرِفُ في الْماءِ",    color: "#E02000" }
       ],
-      svg: `<svg viewBox="0 0 600 304" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="أربعةُ بيوتٍ طينيةٍ عُمانيةٍ يُلوَّنُ جدارُ كلٍّ منها: أغلق الباب، أنظف الحمّام، أتحدّث بالهاتف، أُسرف في الماء">
+      svg: `<svg viewBox="0 0 600 304" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="أربعةُ بيوتٍ طينيةٍ عُمانيةٍ يُلوَّنُ جدارُ كلٍّ منها بتخفيفِ ١٥٪: أغلق الباب، أنظف الحمّام، أتحدّث بالهاتف، أُسرف في الماء">
   <g class="cpart" data-name="أُغْلِقُ الْبابَ" id="pt-a" style="stroke:none">
     <rect x="343.3" y="57.2" width="206.6" height="69.2" rx="4" stroke="none"/>
+    <rect x="343.3" y="57.2" width="206.6" height="69.2" rx="4" fill="#F5F4EF" fill-opacity="0.85" stroke="none" pointer-events="none"/>
     <image href="images/بيت-طين-اطار.png" x="314" y="20" width="266" height="121"/>
     <text x="419.5" y="98.8" font-size="19" font-weight="800" text-anchor="middle" fill="#111111" stroke="none" font-family="Tajawal, Dubai, Cairo, sans-serif">أُغْلِقُ الْبابَ</text>
     <rect x="312" y="20" width="270" height="121" fill="none" stroke="none" pointer-events="all"/>
   </g>
   <g class="cpart" data-name="أُنَظِّفُ الْحَمّامَ" id="pt-b" style="stroke:none">
     <rect x="53.3" y="57.2" width="206.6" height="69.2" rx="4" stroke="none"/>
+    <rect x="53.3" y="57.2" width="206.6" height="69.2" rx="4" fill="#F5F4EF" fill-opacity="0.85" stroke="none" pointer-events="none"/>
     <image href="images/بيت-طين-اطار.png" x="24" y="20" width="266" height="121"/>
     <text x="129.5" y="98.8" font-size="19" font-weight="800" text-anchor="middle" fill="#111111" stroke="none" font-family="Tajawal, Dubai, Cairo, sans-serif">أُنَظِّفُ الْحَمّامَ</text>
     <rect x="22" y="20" width="270" height="121" fill="none" stroke="none" pointer-events="all"/>
   </g>
   <g class="cpart" data-name="أَتَحَدَّثُ بِالْهاتِفِ" id="pt-c" style="stroke:none">
     <rect x="343.3" y="204.2" width="206.6" height="69.2" rx="4" stroke="none"/>
+    <rect x="343.3" y="204.2" width="206.6" height="69.2" rx="4" fill="#F5F4EF" fill-opacity="0.85" stroke="none" pointer-events="none"/>
     <image href="images/بيت-طين-اطار.png" x="314" y="167" width="266" height="121"/>
     <text x="419.5" y="245.8" font-size="19" font-weight="800" text-anchor="middle" fill="#111111" stroke="none" font-family="Tajawal, Dubai, Cairo, sans-serif">أَتَحَدَّثُ بِالْهاتِفِ</text>
     <rect x="312" y="167" width="270" height="121" fill="none" stroke="none" pointer-events="all"/>
   </g>
   <g class="cpart" data-name="أُسْرِفُ في الْماءِ" id="pt-d" style="stroke:none">
     <rect x="53.3" y="204.2" width="206.6" height="69.2" rx="4" stroke="none"/>
+    <rect x="53.3" y="204.2" width="206.6" height="69.2" rx="4" fill="#F5F4EF" fill-opacity="0.85" stroke="none" pointer-events="none"/>
     <image href="images/بيت-طين-اطار.png" x="24" y="167" width="266" height="121"/>
     <text x="129.5" y="245.8" font-size="19" font-weight="800" text-anchor="middle" fill="#111111" stroke="none" font-family="Tajawal, Dubai, Cairo, sans-serif">أُسْرِفُ في الْماءِ</text>
     <rect x="22" y="167" width="270" height="121" fill="none" stroke="none" pointer-events="all"/>
