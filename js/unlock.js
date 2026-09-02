@@ -371,7 +371,7 @@
   }
 
   var box = null, elInput, elMsg, elGo, elBuyWa, elBuySt, elClose, elTitle, elSub, elBand,
-      elWaQr, elWaCv, lastFocus = null;
+      elWaQr, elWaCv, elBuyRow, lastFocus = null;
 
   function build() {
     if (box) return box;
@@ -414,7 +414,7 @@
             '<span>واتساب</span>' +
           '</a>' +
           '<a class="lockbuy lockbuy-site" target="_blank" rel="noopener">' +
-            '<span aria-hidden="true">🛒</span><span>من الموقع</span>' +
+            '<span class="lockbuy-ico" aria-hidden="true">🛒</span><span>من الموقع</span>' +
           '</a>' +
         '</div>' +
       '</div>';
@@ -428,6 +428,7 @@
     elGo    = box.querySelector('.lockgo');
     elBuyWa = box.querySelector('.lockbuy-wa');
     elBuySt = box.querySelector('.lockbuy-site');
+    elBuyRow = box.querySelector('.lockbuyrow');
     elWaQr  = box.querySelector('.lockwaqr');
     elWaCv  = box.querySelector('.lockwaqr-cv');
     elClose = box.querySelector('.lockclose');
@@ -501,6 +502,7 @@
           if (err) { waAsButton(t); return; }   // إخفاقُ الرسمِ يُرجِعُ الزرّ
           elWaQr.removeAttribute('hidden');
           elBuyWa.setAttribute('hidden', '');
+          elBuyRow.classList.add('has-qr');   // زرُّ الموقعِ يصيرُ بطاقةً بحجمِ الرمز
         });
       return;
     }
@@ -508,6 +510,7 @@
   }
 
   function waAsButton(t) {
+    if (elBuyRow) elBuyRow.classList.remove('has-qr');
     if (elWaQr) elWaQr.setAttribute('hidden', '');
     elBuyWa.removeAttribute('hidden');
     elBuyWa.href = waBase() + t;
