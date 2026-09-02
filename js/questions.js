@@ -23734,7 +23734,14 @@ window.QUESTIONS = {
     // ⑭ التلوين بالتعليمات — إثرائيّ (المخرَجانِ ④⑤)
     // 🔎 **تلوينُ كلماتٍ لا مشهدٍ** — على نمطِ تأليفِ اللغةِ العربيةِ الموثَّقِ
     //    في `نماذج-الأسئلة.md` (‏`cpart` على `<text>` لا على شكل)، وهو المناسبُ
-    //    لموضوعٍ لا يليقُ رسمُ مشهدِه في نشاطٍ تفاعليّ.
+    //    لموضوعٍ لا يليقُ رسمُ مشهدِه في نشاطٍ تفاعليّ. **البطاقةُ الآنَ بيتٌ طينيٌّ
+    //    عُمانيٌّ** (عناصر عمانية §١٦، بطلبِ المالك ٢٠٢٦-٠٩-٠٢: «طبّق العناصر العمانية…
+    //    البيت الطيني يناسب هذا السؤال») — جدارٌ باللونِ الترابيّ وشريطُ شُرَفاتٍ
+    //    مسنَّنةٍ وصفٌّ من رؤوسِ عوارضَ خشبيةٍ أعلاه، مرسومٌ SVG مباشرةً (شكلٌ هندسيٌّ
+    //    بسيطٌ لا يحتاجُ توليداً خارجياً). **والاستبدالُ زخرفيٌّ صرفٌ لا يمسُّ الآلية**:
+    //    العبارةُ تبقى بلا `fill` خاصٍّ بها فترثُ لونَ المجموعةِ نفسَه كالأصل — هي التي
+    //    تتلوّنُ أخضرَ/أحمرَ، لا جدارُ البيت. مثالُ استبدالِ عنصرٍ زخرفيٍّ بعنصرٍ
+    //    عمانيٍّ كسلالمِ التمرِ والصدفِ في الرياضيات (٢٠٢٦-٠٩-٠١) — لا تغييرَ في المنطق.
     // ⚠️ **والدخيلُ الثاني «أُسْرِفُ في الْماءِ» من قِيَمِ الدليلِ نفسِه**
     //    («الحفاظُ على نعمةِ الماء») — فهو ليس مخالفةَ أدبٍ فحسْبُ بل إهدارَ نعمة.
     {
@@ -23754,26 +23761,70 @@ window.QUESTIONS = {
         { name: "أَتَحَدَّثُ بِالْهاتِفِ", color: "#E02000" },
         { name: "أُسْرِفُ في الْماءِ",    color: "#E02000" }
       ],
-      svg: `<svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="أربع بطاقات كلامية تُلوَّن: أغلق الباب، أنظف الحمام، أتحدث بالهاتف، أسرف في الماء">
+      svg: `<svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="أربعةُ بيوتٍ طينيةٍ عُمانيةٍ على كلٍّ منها عبارةٌ تُلوَّن: أغلق الباب، أنظف الحمّام، أتحدّث بالهاتف، أُسرف في الماء">
   <g class="cpart" data-name="أُغْلِقُ الْبابَ" id="pt-a" style="stroke:none;fill:#3a3226">
-    <rect x="312" y="26" width="270" height="88" rx="16" fill="#FFFFFF" stroke="#111111" stroke-width="3"/>
-    <rect x="312" y="26" width="270" height="88" rx="16" fill="none" pointer-events="all"/>
-    <text x="447" y="80" font-size="24" font-weight="800" text-anchor="middle" font-family="Tajawal, Dubai, Cairo, sans-serif">أُغْلِقُ الْبابَ</text>
+    <rect x="316.0" y="26" width="36" height="16" fill="#9A6636" stroke="#111111" stroke-width="2"/>
+    <rect x="372.5" y="26" width="36" height="16" fill="#9A6636" stroke="#111111" stroke-width="2"/>
+    <rect x="429.0" y="26" width="36" height="16" fill="#9A6636" stroke="#111111" stroke-width="2"/>
+    <rect x="485.5" y="26" width="36" height="16" fill="#9A6636" stroke="#111111" stroke-width="2"/>
+    <rect x="542.0" y="26" width="36" height="16" fill="#9A6636" stroke="#111111" stroke-width="2"/>
+    <rect x="316" y="40" width="262" height="74" rx="5" fill="#B98551" stroke="#111111" stroke-width="3"/>
+    <circle cx="353.4" cy="51" r="3.5" fill="#68411D"/>
+    <circle cx="390.9" cy="51" r="3.5" fill="#68411D"/>
+    <circle cx="428.3" cy="51" r="3.5" fill="#68411D"/>
+    <circle cx="465.7" cy="51" r="3.5" fill="#68411D"/>
+    <circle cx="503.1" cy="51" r="3.5" fill="#68411D"/>
+    <circle cx="540.6" cy="51" r="3.5" fill="#68411D"/>
+    <text x="447" y="86" font-size="23" font-weight="800" text-anchor="middle" font-family="Tajawal, Dubai, Cairo, sans-serif">أُغْلِقُ الْبابَ</text>
+    <rect x="312" y="26" width="270" height="88" fill="none" pointer-events="all"/>
   </g>
   <g class="cpart" data-name="أُنَظِّفُ الْحَمّامَ" id="pt-b" style="stroke:none;fill:#3a3226">
-    <rect x="22" y="26" width="270" height="88" rx="16" fill="#FFFFFF" stroke="#111111" stroke-width="3"/>
-    <rect x="22" y="26" width="270" height="88" rx="16" fill="none" pointer-events="all"/>
-    <text x="157" y="80" font-size="24" font-weight="800" text-anchor="middle" font-family="Tajawal, Dubai, Cairo, sans-serif">أُنَظِّفُ الْحَمّامَ</text>
+    <rect x="26.0" y="26" width="36" height="16" fill="#9A6636" stroke="#111111" stroke-width="2"/>
+    <rect x="82.5" y="26" width="36" height="16" fill="#9A6636" stroke="#111111" stroke-width="2"/>
+    <rect x="139.0" y="26" width="36" height="16" fill="#9A6636" stroke="#111111" stroke-width="2"/>
+    <rect x="195.5" y="26" width="36" height="16" fill="#9A6636" stroke="#111111" stroke-width="2"/>
+    <rect x="252.0" y="26" width="36" height="16" fill="#9A6636" stroke="#111111" stroke-width="2"/>
+    <rect x="26" y="40" width="262" height="74" rx="5" fill="#B98551" stroke="#111111" stroke-width="3"/>
+    <circle cx="63.4" cy="51" r="3.5" fill="#68411D"/>
+    <circle cx="100.9" cy="51" r="3.5" fill="#68411D"/>
+    <circle cx="138.3" cy="51" r="3.5" fill="#68411D"/>
+    <circle cx="175.7" cy="51" r="3.5" fill="#68411D"/>
+    <circle cx="213.1" cy="51" r="3.5" fill="#68411D"/>
+    <circle cx="250.6" cy="51" r="3.5" fill="#68411D"/>
+    <text x="157" y="86" font-size="23" font-weight="800" text-anchor="middle" font-family="Tajawal, Dubai, Cairo, sans-serif">أُنَظِّفُ الْحَمّامَ</text>
+    <rect x="22" y="26" width="270" height="88" fill="none" pointer-events="all"/>
   </g>
   <g class="cpart" data-name="أَتَحَدَّثُ بِالْهاتِفِ" id="pt-c" style="stroke:none;fill:#3a3226">
-    <rect x="312" y="150" width="270" height="88" rx="16" fill="#FFFFFF" stroke="#111111" stroke-width="3"/>
-    <rect x="312" y="150" width="270" height="88" rx="16" fill="none" pointer-events="all"/>
-    <text x="447" y="204" font-size="24" font-weight="800" text-anchor="middle" font-family="Tajawal, Dubai, Cairo, sans-serif">أَتَحَدَّثُ بِالْهاتِفِ</text>
+    <rect x="316.0" y="150" width="36" height="16" fill="#9A6636" stroke="#111111" stroke-width="2"/>
+    <rect x="372.5" y="150" width="36" height="16" fill="#9A6636" stroke="#111111" stroke-width="2"/>
+    <rect x="429.0" y="150" width="36" height="16" fill="#9A6636" stroke="#111111" stroke-width="2"/>
+    <rect x="485.5" y="150" width="36" height="16" fill="#9A6636" stroke="#111111" stroke-width="2"/>
+    <rect x="542.0" y="150" width="36" height="16" fill="#9A6636" stroke="#111111" stroke-width="2"/>
+    <rect x="316" y="164" width="262" height="74" rx="5" fill="#B98551" stroke="#111111" stroke-width="3"/>
+    <circle cx="353.4" cy="175" r="3.5" fill="#68411D"/>
+    <circle cx="390.9" cy="175" r="3.5" fill="#68411D"/>
+    <circle cx="428.3" cy="175" r="3.5" fill="#68411D"/>
+    <circle cx="465.7" cy="175" r="3.5" fill="#68411D"/>
+    <circle cx="503.1" cy="175" r="3.5" fill="#68411D"/>
+    <circle cx="540.6" cy="175" r="3.5" fill="#68411D"/>
+    <text x="447" y="210" font-size="23" font-weight="800" text-anchor="middle" font-family="Tajawal, Dubai, Cairo, sans-serif">أَتَحَدَّثُ بِالْهاتِفِ</text>
+    <rect x="312" y="150" width="270" height="88" fill="none" pointer-events="all"/>
   </g>
   <g class="cpart" data-name="أُسْرِفُ في الْماءِ" id="pt-d" style="stroke:none;fill:#3a3226">
-    <rect x="22" y="150" width="270" height="88" rx="16" fill="#FFFFFF" stroke="#111111" stroke-width="3"/>
-    <rect x="22" y="150" width="270" height="88" rx="16" fill="none" pointer-events="all"/>
-    <text x="157" y="204" font-size="24" font-weight="800" text-anchor="middle" font-family="Tajawal, Dubai, Cairo, sans-serif">أُسْرِفُ في الْماءِ</text>
+    <rect x="26.0" y="150" width="36" height="16" fill="#9A6636" stroke="#111111" stroke-width="2"/>
+    <rect x="82.5" y="150" width="36" height="16" fill="#9A6636" stroke="#111111" stroke-width="2"/>
+    <rect x="139.0" y="150" width="36" height="16" fill="#9A6636" stroke="#111111" stroke-width="2"/>
+    <rect x="195.5" y="150" width="36" height="16" fill="#9A6636" stroke="#111111" stroke-width="2"/>
+    <rect x="252.0" y="150" width="36" height="16" fill="#9A6636" stroke="#111111" stroke-width="2"/>
+    <rect x="26" y="164" width="262" height="74" rx="5" fill="#B98551" stroke="#111111" stroke-width="3"/>
+    <circle cx="63.4" cy="175" r="3.5" fill="#68411D"/>
+    <circle cx="100.9" cy="175" r="3.5" fill="#68411D"/>
+    <circle cx="138.3" cy="175" r="3.5" fill="#68411D"/>
+    <circle cx="175.7" cy="175" r="3.5" fill="#68411D"/>
+    <circle cx="213.1" cy="175" r="3.5" fill="#68411D"/>
+    <circle cx="250.6" cy="175" r="3.5" fill="#68411D"/>
+    <text x="157" y="210" font-size="23" font-weight="800" text-anchor="middle" font-family="Tajawal, Dubai, Cairo, sans-serif">أُسْرِفُ في الْماءِ</text>
+    <rect x="22" y="150" width="270" height="88" fill="none" pointer-events="all"/>
   </g>
 </svg>`
     }
