@@ -32903,6 +32903,9 @@ window.QUESTIONS = {
     // 🔎 والرسمُ **أثاثُ صفحةٍ لا نصُّ آياتٍ**: شريطُ الجزءِ أعلى، ثمّ شريطُ
     //    اسمِ السورةِ بدائرتَي «آياتُها» و«ترتيبُها»، ثمّ البسملةُ، ثمّ دائرتا رقمِ
     //    الآيةِ، ثمّ مفتاحُ العلامات. والمطلوبُ **النقرُ على شريطِ الاسمِ**.
+    //    ⚠️ الدائرتانِ **بترتيبِ المصحفِ من اليمين**: ١ يميناً ثمّ ٢ يسارَها،
+    //    وقبلَ كلٍّ سطرٌ رمزيٌّ مصمتٌ يرمزُ لموضعِ النصِّ (لا حرفَ فيه) —
+    //    صُحِّحَ الترتيبُ المعكوسُ بطلبِ المالك ٢٠٢٦-٠٩-٠٢.
     {
       type: "hotspot",
       objective: "③ معرفة المصحف الشريف وبعض علاماته التوضيحية",
@@ -32928,10 +32931,12 @@ window.QUESTIONS = {
 
           <text x="280" y="228" font-size="28" font-weight="700" text-anchor="middle" fill="#111111" stroke="none">بِسْمِ اللهِ الرَّحْمَنِ الرَّحيمِ</text>
 
-          <circle cx="200" cy="300" r="30" fill="#40C0FF" stroke-width="3"/>
-          <text x="200" y="311" font-size="26" font-weight="800" text-anchor="middle" fill="#111111" stroke="none">١</text>
+          <path d="M396 300 H468" stroke="#C8B080" stroke-width="6" fill="none"/>
           <circle cx="360" cy="300" r="30" fill="#40C0FF" stroke-width="3"/>
-          <text x="360" y="311" font-size="26" font-weight="800" text-anchor="middle" fill="#111111" stroke="none">٢</text>
+          <text x="360" y="311" font-size="26" font-weight="800" text-anchor="middle" fill="#111111" stroke="none">١</text>
+          <path d="M236 300 H324" stroke="#C8B080" stroke-width="6" fill="none"/>
+          <circle cx="200" cy="300" r="30" fill="#40C0FF" stroke-width="3"/>
+          <text x="200" y="311" font-size="26" font-weight="800" text-anchor="middle" fill="#111111" stroke="none">٢</text>
 
           <rect x="92" y="386" width="376" height="66" rx="12" fill="#FFFFFF" stroke-width="3"/>
           <text x="280" y="418" font-size="22" font-weight="700" text-anchor="middle" fill="#111111" stroke="none">مِفْتاحُ الْعَلاماتِ</text>
@@ -33044,6 +33049,9 @@ window.QUESTIONS = {
     // 🔎 والرسمُ **أثاثُ صفحةٍ لا نصُّ آياتٍ**: شريطُ الجزءِ أعلى، ثمّ شريطُ
     //    اسمِ السورةِ بدائرتَي «آياتُها» و«ترتيبُها»، ثمّ البسملةُ، ثمّ دائرتا رقمِ
     //    الآيةِ، ثمّ مفتاحُ العلامات. والمطلوبُ **النقرُ على شريطِ الاسمِ**.
+    //    ⚠️ الدائرتانِ **بترتيبِ المصحفِ من اليمين**: ١ يميناً ثمّ ٢ يسارَها،
+    //    وقبلَ كلٍّ سطرٌ رمزيٌّ مصمتٌ يرمزُ لموضعِ النصِّ (لا حرفَ فيه) —
+    //    صُحِّحَ الترتيبُ المعكوسُ بطلبِ المالك ٢٠٢٦-٠٩-٠٢.
     {
       type: "hotspot",
       objective: "③ معرفة المصحف الشريف وبعض علاماته التوضيحية",
@@ -33069,10 +33077,12 @@ window.QUESTIONS = {
 
           <text x="280" y="228" font-size="28" font-weight="700" text-anchor="middle" fill="#111111" stroke="none">بِسْمِ اللهِ الرَّحْمَنِ الرَّحيمِ</text>
 
-          <circle cx="200" cy="300" r="30" fill="#40C0FF" stroke-width="3"/>
-          <text x="200" y="311" font-size="26" font-weight="800" text-anchor="middle" fill="#111111" stroke="none">١</text>
+          <path d="M396 300 H468" stroke="#C8B080" stroke-width="6" fill="none"/>
           <circle cx="360" cy="300" r="30" fill="#40C0FF" stroke-width="3"/>
-          <text x="360" y="311" font-size="26" font-weight="800" text-anchor="middle" fill="#111111" stroke="none">٢</text>
+          <text x="360" y="311" font-size="26" font-weight="800" text-anchor="middle" fill="#111111" stroke="none">١</text>
+          <path d="M236 300 H324" stroke="#C8B080" stroke-width="6" fill="none"/>
+          <circle cx="200" cy="300" r="30" fill="#40C0FF" stroke-width="3"/>
+          <text x="200" y="311" font-size="26" font-weight="800" text-anchor="middle" fill="#111111" stroke="none">٢</text>
 
           <rect x="92" y="386" width="376" height="66" rx="12" fill="#FFFFFF" stroke-width="3"/>
           <text x="280" y="418" font-size="22" font-weight="700" text-anchor="middle" fill="#111111" stroke="none">مِفْتاحُ الْعَلاماتِ</text>
@@ -33185,6 +33195,9 @@ window.QUESTIONS = {
     // 🔎 والرسمُ **أثاثُ صفحةٍ لا نصُّ آياتٍ**: شريطُ الجزءِ أعلى، ثمّ شريطُ
     //    اسمِ السورةِ بدائرتَي «آياتُها» و«ترتيبُها»، ثمّ البسملةُ، ثمّ دائرتا رقمِ
     //    الآيةِ، ثمّ مفتاحُ العلامات. والمطلوبُ **النقرُ على شريطِ الاسمِ**.
+    //    ⚠️ الدائرتانِ **بترتيبِ المصحفِ من اليمين**: ١ يميناً ثمّ ٢ يسارَها،
+    //    وقبلَ كلٍّ سطرٌ رمزيٌّ مصمتٌ يرمزُ لموضعِ النصِّ (لا حرفَ فيه) —
+    //    صُحِّحَ الترتيبُ المعكوسُ بطلبِ المالك ٢٠٢٦-٠٩-٠٢.
     {
       type: "hotspot",
       objective: "③ معرفة المصحف الشريف وبعض علاماته التوضيحية",
@@ -33210,10 +33223,12 @@ window.QUESTIONS = {
 
           <text x="280" y="228" font-size="28" font-weight="700" text-anchor="middle" fill="#111111" stroke="none">بِسْمِ اللهِ الرَّحْمَنِ الرَّحيمِ</text>
 
-          <circle cx="200" cy="300" r="30" fill="#40C0FF" stroke-width="3"/>
-          <text x="200" y="311" font-size="26" font-weight="800" text-anchor="middle" fill="#111111" stroke="none">١</text>
+          <path d="M396 300 H468" stroke="#C8B080" stroke-width="6" fill="none"/>
           <circle cx="360" cy="300" r="30" fill="#40C0FF" stroke-width="3"/>
-          <text x="360" y="311" font-size="26" font-weight="800" text-anchor="middle" fill="#111111" stroke="none">٢</text>
+          <text x="360" y="311" font-size="26" font-weight="800" text-anchor="middle" fill="#111111" stroke="none">١</text>
+          <path d="M236 300 H324" stroke="#C8B080" stroke-width="6" fill="none"/>
+          <circle cx="200" cy="300" r="30" fill="#40C0FF" stroke-width="3"/>
+          <text x="200" y="311" font-size="26" font-weight="800" text-anchor="middle" fill="#111111" stroke="none">٢</text>
 
           <rect x="92" y="386" width="376" height="66" rx="12" fill="#FFFFFF" stroke-width="3"/>
           <text x="280" y="418" font-size="22" font-weight="700" text-anchor="middle" fill="#111111" stroke="none">مِفْتاحُ الْعَلاماتِ</text>
@@ -33326,6 +33341,9 @@ window.QUESTIONS = {
     // 🔎 والرسمُ **أثاثُ صفحةٍ لا نصُّ آياتٍ**: شريطُ الجزءِ أعلى، ثمّ شريطُ
     //    اسمِ السورةِ بدائرتَي «آياتُها» و«ترتيبُها»، ثمّ البسملةُ، ثمّ دائرتا رقمِ
     //    الآيةِ، ثمّ مفتاحُ العلامات. والمطلوبُ **النقرُ على شريطِ الاسمِ**.
+    //    ⚠️ الدائرتانِ **بترتيبِ المصحفِ من اليمين**: ١ يميناً ثمّ ٢ يسارَها،
+    //    وقبلَ كلٍّ سطرٌ رمزيٌّ مصمتٌ يرمزُ لموضعِ النصِّ (لا حرفَ فيه) —
+    //    صُحِّحَ الترتيبُ المعكوسُ بطلبِ المالك ٢٠٢٦-٠٩-٠٢.
     {
       type: "hotspot",
       objective: "③ معرفة المصحف الشريف وبعض علاماته التوضيحية",
@@ -33351,10 +33369,12 @@ window.QUESTIONS = {
 
           <text x="280" y="228" font-size="28" font-weight="700" text-anchor="middle" fill="#111111" stroke="none">بِسْمِ اللهِ الرَّحْمَنِ الرَّحيمِ</text>
 
-          <circle cx="200" cy="300" r="30" fill="#40C0FF" stroke-width="3"/>
-          <text x="200" y="311" font-size="26" font-weight="800" text-anchor="middle" fill="#111111" stroke="none">١</text>
+          <path d="M396 300 H468" stroke="#C8B080" stroke-width="6" fill="none"/>
           <circle cx="360" cy="300" r="30" fill="#40C0FF" stroke-width="3"/>
-          <text x="360" y="311" font-size="26" font-weight="800" text-anchor="middle" fill="#111111" stroke="none">٢</text>
+          <text x="360" y="311" font-size="26" font-weight="800" text-anchor="middle" fill="#111111" stroke="none">١</text>
+          <path d="M236 300 H324" stroke="#C8B080" stroke-width="6" fill="none"/>
+          <circle cx="200" cy="300" r="30" fill="#40C0FF" stroke-width="3"/>
+          <text x="200" y="311" font-size="26" font-weight="800" text-anchor="middle" fill="#111111" stroke="none">٢</text>
 
           <rect x="92" y="386" width="376" height="66" rx="12" fill="#FFFFFF" stroke-width="3"/>
           <text x="280" y="418" font-size="22" font-weight="700" text-anchor="middle" fill="#111111" stroke="none">مِفْتاحُ الْعَلاماتِ</text>
@@ -33467,6 +33487,9 @@ window.QUESTIONS = {
     // 🔎 والرسمُ **أثاثُ صفحةٍ لا نصُّ آياتٍ**: شريطُ الجزءِ أعلى، ثمّ شريطُ
     //    اسمِ السورةِ بدائرتَي «آياتُها» و«ترتيبُها»، ثمّ البسملةُ، ثمّ دائرتا رقمِ
     //    الآيةِ، ثمّ مفتاحُ العلامات. والمطلوبُ **النقرُ على شريطِ الاسمِ**.
+    //    ⚠️ الدائرتانِ **بترتيبِ المصحفِ من اليمين**: ١ يميناً ثمّ ٢ يسارَها،
+    //    وقبلَ كلٍّ سطرٌ رمزيٌّ مصمتٌ يرمزُ لموضعِ النصِّ (لا حرفَ فيه) —
+    //    صُحِّحَ الترتيبُ المعكوسُ بطلبِ المالك ٢٠٢٦-٠٩-٠٢.
     {
       type: "hotspot",
       objective: "③ معرفة المصحف الشريف وبعض علاماته التوضيحية",
@@ -33492,10 +33515,12 @@ window.QUESTIONS = {
 
           <text x="280" y="228" font-size="28" font-weight="700" text-anchor="middle" fill="#111111" stroke="none">بِسْمِ اللهِ الرَّحْمَنِ الرَّحيمِ</text>
 
-          <circle cx="200" cy="300" r="30" fill="#40C0FF" stroke-width="3"/>
-          <text x="200" y="311" font-size="26" font-weight="800" text-anchor="middle" fill="#111111" stroke="none">١</text>
+          <path d="M396 300 H468" stroke="#C8B080" stroke-width="6" fill="none"/>
           <circle cx="360" cy="300" r="30" fill="#40C0FF" stroke-width="3"/>
-          <text x="360" y="311" font-size="26" font-weight="800" text-anchor="middle" fill="#111111" stroke="none">٢</text>
+          <text x="360" y="311" font-size="26" font-weight="800" text-anchor="middle" fill="#111111" stroke="none">١</text>
+          <path d="M236 300 H324" stroke="#C8B080" stroke-width="6" fill="none"/>
+          <circle cx="200" cy="300" r="30" fill="#40C0FF" stroke-width="3"/>
+          <text x="200" y="311" font-size="26" font-weight="800" text-anchor="middle" fill="#111111" stroke="none">٢</text>
 
           <rect x="92" y="386" width="376" height="66" rx="12" fill="#FFFFFF" stroke-width="3"/>
           <text x="280" y="418" font-size="22" font-weight="700" text-anchor="middle" fill="#111111" stroke="none">مِفْتاحُ الْعَلاماتِ</text>
@@ -33608,6 +33633,9 @@ window.QUESTIONS = {
     // 🔎 والرسمُ **أثاثُ صفحةٍ لا نصُّ آياتٍ**: شريطُ الجزءِ أعلى، ثمّ شريطُ
     //    اسمِ السورةِ بدائرتَي «آياتُها» و«ترتيبُها»، ثمّ البسملةُ، ثمّ دائرتا رقمِ
     //    الآيةِ، ثمّ مفتاحُ العلامات. والمطلوبُ **النقرُ على شريطِ الاسمِ**.
+    //    ⚠️ الدائرتانِ **بترتيبِ المصحفِ من اليمين**: ١ يميناً ثمّ ٢ يسارَها،
+    //    وقبلَ كلٍّ سطرٌ رمزيٌّ مصمتٌ يرمزُ لموضعِ النصِّ (لا حرفَ فيه) —
+    //    صُحِّحَ الترتيبُ المعكوسُ بطلبِ المالك ٢٠٢٦-٠٩-٠٢.
     {
       type: "hotspot",
       objective: "③ معرفة المصحف الشريف وبعض علاماته التوضيحية",
@@ -33633,10 +33661,12 @@ window.QUESTIONS = {
 
           <text x="280" y="228" font-size="28" font-weight="700" text-anchor="middle" fill="#111111" stroke="none">بِسْمِ اللهِ الرَّحْمَنِ الرَّحيمِ</text>
 
-          <circle cx="200" cy="300" r="30" fill="#40C0FF" stroke-width="3"/>
-          <text x="200" y="311" font-size="26" font-weight="800" text-anchor="middle" fill="#111111" stroke="none">١</text>
+          <path d="M396 300 H468" stroke="#C8B080" stroke-width="6" fill="none"/>
           <circle cx="360" cy="300" r="30" fill="#40C0FF" stroke-width="3"/>
-          <text x="360" y="311" font-size="26" font-weight="800" text-anchor="middle" fill="#111111" stroke="none">٢</text>
+          <text x="360" y="311" font-size="26" font-weight="800" text-anchor="middle" fill="#111111" stroke="none">١</text>
+          <path d="M236 300 H324" stroke="#C8B080" stroke-width="6" fill="none"/>
+          <circle cx="200" cy="300" r="30" fill="#40C0FF" stroke-width="3"/>
+          <text x="200" y="311" font-size="26" font-weight="800" text-anchor="middle" fill="#111111" stroke="none">٢</text>
 
           <rect x="92" y="386" width="376" height="66" rx="12" fill="#FFFFFF" stroke-width="3"/>
           <text x="280" y="418" font-size="22" font-weight="700" text-anchor="middle" fill="#111111" stroke="none">مِفْتاحُ الْعَلاماتِ</text>
@@ -33749,6 +33779,9 @@ window.QUESTIONS = {
     // 🔎 والرسمُ **أثاثُ صفحةٍ لا نصُّ آياتٍ**: شريطُ الجزءِ أعلى، ثمّ شريطُ
     //    اسمِ السورةِ بدائرتَي «آياتُها» و«ترتيبُها»، ثمّ البسملةُ، ثمّ دائرتا رقمِ
     //    الآيةِ، ثمّ مفتاحُ العلامات. والمطلوبُ **النقرُ على شريطِ الاسمِ**.
+    //    ⚠️ الدائرتانِ **بترتيبِ المصحفِ من اليمين**: ١ يميناً ثمّ ٢ يسارَها،
+    //    وقبلَ كلٍّ سطرٌ رمزيٌّ مصمتٌ يرمزُ لموضعِ النصِّ (لا حرفَ فيه) —
+    //    صُحِّحَ الترتيبُ المعكوسُ بطلبِ المالك ٢٠٢٦-٠٩-٠٢.
     {
       type: "hotspot",
       objective: "③ معرفة المصحف الشريف وبعض علاماته التوضيحية",
@@ -33774,10 +33807,12 @@ window.QUESTIONS = {
 
           <text x="280" y="228" font-size="28" font-weight="700" text-anchor="middle" fill="#111111" stroke="none">بِسْمِ اللهِ الرَّحْمَنِ الرَّحيمِ</text>
 
-          <circle cx="200" cy="300" r="30" fill="#40C0FF" stroke-width="3"/>
-          <text x="200" y="311" font-size="26" font-weight="800" text-anchor="middle" fill="#111111" stroke="none">١</text>
+          <path d="M396 300 H468" stroke="#C8B080" stroke-width="6" fill="none"/>
           <circle cx="360" cy="300" r="30" fill="#40C0FF" stroke-width="3"/>
-          <text x="360" y="311" font-size="26" font-weight="800" text-anchor="middle" fill="#111111" stroke="none">٢</text>
+          <text x="360" y="311" font-size="26" font-weight="800" text-anchor="middle" fill="#111111" stroke="none">١</text>
+          <path d="M236 300 H324" stroke="#C8B080" stroke-width="6" fill="none"/>
+          <circle cx="200" cy="300" r="30" fill="#40C0FF" stroke-width="3"/>
+          <text x="200" y="311" font-size="26" font-weight="800" text-anchor="middle" fill="#111111" stroke="none">٢</text>
 
           <rect x="92" y="386" width="376" height="66" rx="12" fill="#FFFFFF" stroke-width="3"/>
           <text x="280" y="418" font-size="22" font-weight="700" text-anchor="middle" fill="#111111" stroke="none">مِفْتاحُ الْعَلاماتِ</text>
@@ -33890,6 +33925,9 @@ window.QUESTIONS = {
     // 🔎 والرسمُ **أثاثُ صفحةٍ لا نصُّ آياتٍ**: شريطُ الجزءِ أعلى، ثمّ شريطُ
     //    اسمِ السورةِ بدائرتَي «آياتُها» و«ترتيبُها»، ثمّ البسملةُ، ثمّ دائرتا رقمِ
     //    الآيةِ، ثمّ مفتاحُ العلامات. والمطلوبُ **النقرُ على شريطِ الاسمِ**.
+    //    ⚠️ الدائرتانِ **بترتيبِ المصحفِ من اليمين**: ١ يميناً ثمّ ٢ يسارَها،
+    //    وقبلَ كلٍّ سطرٌ رمزيٌّ مصمتٌ يرمزُ لموضعِ النصِّ (لا حرفَ فيه) —
+    //    صُحِّحَ الترتيبُ المعكوسُ بطلبِ المالك ٢٠٢٦-٠٩-٠٢.
     {
       type: "hotspot",
       objective: "③ معرفة المصحف الشريف وبعض علاماته التوضيحية",
@@ -33915,10 +33953,12 @@ window.QUESTIONS = {
 
           <text x="280" y="228" font-size="28" font-weight="700" text-anchor="middle" fill="#111111" stroke="none">بِسْمِ اللهِ الرَّحْمَنِ الرَّحيمِ</text>
 
-          <circle cx="200" cy="300" r="30" fill="#40C0FF" stroke-width="3"/>
-          <text x="200" y="311" font-size="26" font-weight="800" text-anchor="middle" fill="#111111" stroke="none">١</text>
+          <path d="M396 300 H468" stroke="#C8B080" stroke-width="6" fill="none"/>
           <circle cx="360" cy="300" r="30" fill="#40C0FF" stroke-width="3"/>
-          <text x="360" y="311" font-size="26" font-weight="800" text-anchor="middle" fill="#111111" stroke="none">٢</text>
+          <text x="360" y="311" font-size="26" font-weight="800" text-anchor="middle" fill="#111111" stroke="none">١</text>
+          <path d="M236 300 H324" stroke="#C8B080" stroke-width="6" fill="none"/>
+          <circle cx="200" cy="300" r="30" fill="#40C0FF" stroke-width="3"/>
+          <text x="200" y="311" font-size="26" font-weight="800" text-anchor="middle" fill="#111111" stroke="none">٢</text>
 
           <rect x="92" y="386" width="376" height="66" rx="12" fill="#FFFFFF" stroke-width="3"/>
           <text x="280" y="418" font-size="22" font-weight="700" text-anchor="middle" fill="#111111" stroke="none">مِفْتاحُ الْعَلاماتِ</text>
