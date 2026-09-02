@@ -24751,8 +24751,13 @@ window.QUESTIONS = {
     },
 
     // ⑭ التلوين بالتعليمات — إثرائيّ (المخرَج ④)
-    // 🔎 **تلوينُ كلماتٍ لا مشهدٍ** — على النمطِ الموثَّقِ في `نماذج-الأسئلة.md`
-    //    (‏`cpart` على `<text>`). ومحورُه **الذِّكْرُ** لا النِّعَمُ، فلا يعيدُ التصنيف.
+    // 🔎 ومحورُه **الذِّكْرُ** لا النِّعَمُ، فلا يعيدُ التصنيف.
+    // 🎨 **بيتٌ طينيٌّ عُمانيّ — نفسُ معالجةِ `g1d2-3-4` #٦** (طلبُ المالك ٢٠٢٦-٠٩-٠٢:
+    //    «طبّق نفس الشيء على هذا السؤال»): `images/بيت-طين.png` المعتمَدُ نفسُه (سؤالُ
+    //    بيوتِ الجمعِ في الرياضيات)، بجدارِه مفرَّغاً شفافيةً في `images/بيت-طين-اطار.png`
+    //    فتُكشَفُ عبرَه مساراتُ الجدارِ (بلا `fill` خاصٍّ فترثُ لونَ `cpart`)، والتلوينُ
+    //    مخفَّفٌ إلى ٢٥٪ بغسلةٍ `#F5F4EF` بعتامةِ `0.75` فوقَ اللونِ وتحتَ صورةِ الإطار.
+    //    العبارةُ ثابتةُ اللونِ `#111111` فوقَ الصورةِ يسارَ البابِ حيثُ الجدارُ صافٍ.
     {
       type: "color",
       objective: "يلتزم ذكر الله تعالى",
@@ -24770,26 +24775,34 @@ window.QUESTIONS = {
         { name: "أَتَذَمَّرُ",           color: "#E02000" },
         { name: "أَنْسى النِّعْمَةَ",    color: "#E02000" }
       ],
-      svg: `<svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="أربع بطاقات كلامية تُلوَّن: الحمد لله، سبحان الله، أتذمر، أنسى النعمة">
-  <g class="cpart" data-name="الْحَمْدُ لِلَّهِ" id="p2a" style="stroke:none;fill:#3a3226">
-    <rect x="312" y="26" width="270" height="88" rx="16" fill="#FFFFFF" stroke="#111111" stroke-width="3"/>
-    <rect x="312" y="26" width="270" height="88" rx="16" fill="none" pointer-events="all"/>
-    <text x="447" y="80" font-size="26" font-weight="800" text-anchor="middle" font-family="Tajawal, Dubai, Cairo, sans-serif">الْحَمْدُ لِلَّهِ</text>
+      svg: `<svg viewBox="0 0 600 304" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="أربعةُ بيوتٍ طينيةٍ عُمانيةٍ يُلوَّنُ جدارُ كلٍّ منها بتخفيفِ ٢٥٪: الحمد لله، سبحان الله، أتذمر، أنسى النعمة">
+  <g class="cpart" data-name="الْحَمْدُ لِلَّهِ" id="p2a" style="stroke:none">
+    <rect x="343.3" y="57.2" width="206.6" height="69.2" rx="4" stroke="none"/>
+    <rect x="343.3" y="57.2" width="206.6" height="69.2" rx="4" fill="#F5F4EF" fill-opacity="0.75" stroke="none" pointer-events="none"/>
+    <image href="images/بيت-طين-اطار.png" x="314" y="20" width="266" height="121"/>
+    <text x="419.5" y="98.8" font-size="19" font-weight="800" text-anchor="middle" fill="#111111" stroke="none" font-family="Tajawal, Dubai, Cairo, sans-serif">الْحَمْدُ لِلَّهِ</text>
+    <rect x="312" y="20" width="270" height="121" fill="none" stroke="none" pointer-events="all"/>
   </g>
-  <g class="cpart" data-name="سُبْحانَ اللهِ" id="p2b" style="stroke:none;fill:#3a3226">
-    <rect x="22" y="26" width="270" height="88" rx="16" fill="#FFFFFF" stroke="#111111" stroke-width="3"/>
-    <rect x="22" y="26" width="270" height="88" rx="16" fill="none" pointer-events="all"/>
-    <text x="157" y="80" font-size="26" font-weight="800" text-anchor="middle" font-family="Tajawal, Dubai, Cairo, sans-serif">سُبْحانَ اللهِ</text>
+  <g class="cpart" data-name="سُبْحانَ اللهِ" id="p2b" style="stroke:none">
+    <rect x="53.3" y="57.2" width="206.6" height="69.2" rx="4" stroke="none"/>
+    <rect x="53.3" y="57.2" width="206.6" height="69.2" rx="4" fill="#F5F4EF" fill-opacity="0.75" stroke="none" pointer-events="none"/>
+    <image href="images/بيت-طين-اطار.png" x="24" y="20" width="266" height="121"/>
+    <text x="129.5" y="98.8" font-size="19" font-weight="800" text-anchor="middle" fill="#111111" stroke="none" font-family="Tajawal, Dubai, Cairo, sans-serif">سُبْحانَ اللهِ</text>
+    <rect x="22" y="20" width="270" height="121" fill="none" stroke="none" pointer-events="all"/>
   </g>
-  <g class="cpart" data-name="أَتَذَمَّرُ" id="p2c" style="stroke:none;fill:#3a3226">
-    <rect x="312" y="150" width="270" height="88" rx="16" fill="#FFFFFF" stroke="#111111" stroke-width="3"/>
-    <rect x="312" y="150" width="270" height="88" rx="16" fill="none" pointer-events="all"/>
-    <text x="447" y="204" font-size="26" font-weight="800" text-anchor="middle" font-family="Tajawal, Dubai, Cairo, sans-serif">أَتَذَمَّرُ</text>
+  <g class="cpart" data-name="أَتَذَمَّرُ" id="p2c" style="stroke:none">
+    <rect x="343.3" y="204.2" width="206.6" height="69.2" rx="4" stroke="none"/>
+    <rect x="343.3" y="204.2" width="206.6" height="69.2" rx="4" fill="#F5F4EF" fill-opacity="0.75" stroke="none" pointer-events="none"/>
+    <image href="images/بيت-طين-اطار.png" x="314" y="167" width="266" height="121"/>
+    <text x="419.5" y="245.8" font-size="19" font-weight="800" text-anchor="middle" fill="#111111" stroke="none" font-family="Tajawal, Dubai, Cairo, sans-serif">أَتَذَمَّرُ</text>
+    <rect x="312" y="167" width="270" height="121" fill="none" stroke="none" pointer-events="all"/>
   </g>
-  <g class="cpart" data-name="أَنْسى النِّعْمَةَ" id="p2d" style="stroke:none;fill:#3a3226">
-    <rect x="22" y="150" width="270" height="88" rx="16" fill="#FFFFFF" stroke="#111111" stroke-width="3"/>
-    <rect x="22" y="150" width="270" height="88" rx="16" fill="none" pointer-events="all"/>
-    <text x="157" y="204" font-size="24" font-weight="800" text-anchor="middle" font-family="Tajawal, Dubai, Cairo, sans-serif">أَنْسى النِّعْمَةَ</text>
+  <g class="cpart" data-name="أَنْسى النِّعْمَةَ" id="p2d" style="stroke:none">
+    <rect x="53.3" y="204.2" width="206.6" height="69.2" rx="4" stroke="none"/>
+    <rect x="53.3" y="204.2" width="206.6" height="69.2" rx="4" fill="#F5F4EF" fill-opacity="0.75" stroke="none" pointer-events="none"/>
+    <image href="images/بيت-طين-اطار.png" x="24" y="167" width="266" height="121"/>
+    <text x="129.5" y="245.8" font-size="19" font-weight="800" text-anchor="middle" fill="#111111" stroke="none" font-family="Tajawal, Dubai, Cairo, sans-serif">أَنْسى النِّعْمَةَ</text>
+    <rect x="22" y="167" width="270" height="121" fill="none" stroke="none" pointer-events="all"/>
   </g>
 </svg>`
     }
