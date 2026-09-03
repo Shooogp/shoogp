@@ -267,6 +267,10 @@ select option:disabled{color:var(--muted)}
 
     <label for="phone">رقم هاتفك</label>
     <input type="tel" id="phone" inputmode="numeric" placeholder="٩٦٨ ٠٠٠٠٠٠٠٠">
+    <!-- الرقمُ إجباريٌّ لأنّه ما يملأُ عمودَ «سُلّم إلى» في جدولِ الرموز — فبه يُعدُّ
+         الرمزُ مأخوذاً ولا يُعادُ بيعُه — وبه يُوجَدُ صفُّ المعلّمةِ إن ضاعَ رمزُها.
+         ولا يُرسَلُ إليه شيء. هذا السطرُ يقولُ ذلك للمعلّمةِ (قرارُ المالك ٢٠٢٦-٠٩-٠٣). -->
+    <div class="drop-hint">يُحفظ مع رمزك حتى نجده لكِ إن ضاع — ولا نرسل إليه شيئاً.</div>
 
     <label for="name">اسمك (اختياري)</label>
     <input type="text" id="name" placeholder="للسجلّ فقط">
