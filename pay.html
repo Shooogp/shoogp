@@ -4,13 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>شراء الكتب — شوجب</title>
-<!-- مكتبةُ رمزِ QR. ⚠️ النسخةُ 1.4.4 لا 1.5.x: حزمةُ `qrcode` توقّفت عن نشرِ
-     مجلّدِ `build/` على npm بعدَ 1.4.4، فوسمُ 1.5.4 يرجعُ 404 (ملفّاتُها `lib/`
-     و`bin/` فقط). واجهةُ `QRCode.toCanvas` واحدةٌ في النسختين.
-     و`integrity` يقفلُ الملفَّ على بصمتِه فلا يُنفَّذُ لو تبدّلَ في الـCDN. -->
-<script src="https://cdn.jsdelivr.net/npm/qrcode@1.4.4/build/qrcode.min.js"
-        integrity="sha384-0RsG1yo/crf/1Qc14sho26SXXOTngNCjgJw7fuvXBt9W/OChF/Ijx+aUuBDqQwEk"
-        crossorigin="anonymous"></script>
 
 <!--
   ═══════════════════════════════════════════════════════════════
@@ -184,15 +177,6 @@ input[type=file]{display:none}
 }
 select option:disabled{color:var(--muted)}
 
-/* بطاقةُ رمزِ QR — لإكمالِ الرفعِ من الهاتف */
-.qrcard{
-  margin-bottom:16px;padding:20px;border-radius:14px;text-align:center;
-  background:#0D111A;border:1px solid var(--line);
-}
-.qrcard h2{margin:0 0 6px;font-size:19px;font-weight:700}
-.qrcard p{margin:0 0 14px;color:var(--muted);font-size:15px}
-.qrcard canvas{display:block;margin:0 auto;border-radius:8px}
-
 /* التوقيع: الرمز محفور على شظيّة قمرية — بطاقةٌ لكلِّ كتاب */
 .code-card{
   padding:22px 20px;border-radius:18px;text-align:center;margin-top:14px;
@@ -273,12 +257,6 @@ select option:disabled{color:var(--muted)}
   <!-- ③ الإيصال — لا يظهر قبل التأكيد -->
   <div class="step" id="step3" hidden>
     <div class="step-head"><div class="step-num">٣</div><div class="step-title">ارفعي إيصال التحويل</div></div>
-
-    <div class="qrcard" id="qrCard">
-      <h2>أكملي من هاتفك</h2>
-      <p>التقطي الرمز بكاميرا هاتفك لترفعي الإيصال من هاتفك مباشرة</p>
-      <canvas id="qr"></canvas>
-    </div>
 
     <div class="drop" id="drop" role="button" tabindex="0">
       <div id="dropMain">اضغطي لاختيار ملف الإيصال</div>
@@ -451,8 +429,8 @@ function render(){
   check();
 }
 
-/* كلُّ تغيّرٍ في السلّةِ يُعيدُ الرسمَ **ويُعيدُ رسمَ رمزِ QR** — الرمزُ يحملُ السلّةَ كاملة */
-function afterCartChange(){ render(); if (showQR) drawQR(); }
+/* كلُّ تغيّرٍ في السلّةِ يُعيدُ الرسم */
+function afterCartChange(){ render(); }
 
 $("addBtn").onclick = () => {
   const id = $("addSel").value;
@@ -469,32 +447,6 @@ $("editBtn").onclick = () => {
   render();
   note("لا تحوّلي قبل تأكيد الطلب — المبلغ يتغيّر مع كل كتاب تضيفينه.");
 };
-
-/* ═══════════ رمزُ QR — جسرٌ من الشاشةِ الكبيرةِ إلى الهاتف ═══════════
-   الإيصالُ ملفُّ PDF في تطبيقِ البنكِ على الهاتف، فمن كانت أمامَ شاشةٍ كبيرةٍ
-   تلتقطُ الرمزَ فتُكمِلُ من هاتفِها. **ويحملُ السلّةَ كاملةً** (`?book=a,b`)
-   فتُستأنَفُ على الهاتفِ كما هي. ويُخفى تحتَ **٧٠٠px عرضاً** — أي على
-   الهاتفِ وحدَه، فلا معنى لأن يُصوَّرَ الهاتفُ رمزاً على نفسِه.
-   ⚠️ **بالعرضِ لا بـ`pointer: coarse`** (قرارُ المالك): السبورةُ الذكيةُ شاشةُ
-   لمسٍ فتُبلِغُ `coarse`، فكانَ الفحصُ باللمسِ يُخفي الرمزَ على أهمِّ أجهزةِ
-   المنصّةِ وهي أوْلى الشاشاتِ به. والعرضُ يقرأُ حجمَ الشاشةِ لا نوعَ الإدخال.
-   ⚠️ **أصغرُ القيمتَين `innerWidth` و`screen.width` لا `innerWidth` وحدَه:**
-   وسمُ الـviewport هنا `width=device-width`، لكنّ متصفّحَ الهاتفِ **يتجاوزُه**
-   في وضعِ «موقع سطح المكتب» فيفرضُ منفذَ تخطيطٍ ≈٩٨٠px — فيتجاوزُ `innerWidth`
-   الحدَّ وتظهرُ البطاقةُ على الهاتف. مقيسٌ على الموقعِ الحيِّ بمنفذِ هاتف:
-   ‏`innerWidth` **٩٨١** بينما `screen.width` **٣٧٥**. و`screen.width` يقرأُ
-   الجهازَ نفسَه فلا يتأثّرُ بالوسمِ ولا بوضعِ المتصفّح. */
-function drawQR(){
-  if (!cart.length) return;
-  const url = location.origin + location.pathname + "?book=" + cart.join(",");
-  QRCode.toCanvas($("qr"), url, { width:190, margin:1,
-    color:{ dark:"#EDE8DE", light:"#0D111A" } });
-}
-
-// مكتبةُ الرمزِ من CDN خارجيّ — إن لم تصلْ تُخفى البطاقةُ ولا تنكسرُ الصفحة
-const showQR = Math.min(window.innerWidth, screen.width) >= 700
-            && typeof QRCode !== "undefined";
-if (!showQR) $("qrCard").style.display = "none";
 
 /* ═══════════ الإقلاع: قراءةُ `?book=` المتعدّد ═══════════
    الفصلُ بفاصلة، وأوّلُ مفتاحٍ صالحٍ يصيرُ **البطاقةَ المثبّتة**. */
@@ -532,7 +484,6 @@ Promise.all([
   })
   .catch(() => {
     fatal = "تعذّر تحميل قائمة الكتب. تأكّدي من الإنترنت وأعيدي تحميل الصفحة.";
-    $("qrCard").style.display = "none";   // بلا كتبٍ صالحةٍ لا رمزَ يُرسَم
     render(); note(fatal);
   });
 

@@ -13,7 +13,11 @@
 <!-- طبقةُ الخلفيةِ الفضائيةِ — الصفحةُ الرئيسةُ وحدَها (لا pay.html ولا privacy.html) -->
 <link rel="stylesheet" href="css/space-bg.css?v=20260721-41">
 <!-- مكتبةُ رمزِ QR (نافذةُ القفلِ تعرضُ رمزَ واتساب على الشاشاتِ العريضة).
-     ⚠️ النسخةُ 1.4.4 لا 1.5.x — للسببِ الموثَّقِ في رأسِ `pay.html`. -->
+     ⚠️ النسخةُ 1.4.4 لا 1.5.x: حزمةُ `qrcode` توقّفت عن نشرِ مجلّدِ `build/` على
+     npm بعدَ 1.4.4، فوسمُ 1.5.4 يرجعُ 404 (ملفّاتُها `lib/` و`bin/` فقط). واجهةُ
+     `QRCode.toCanvas` واحدةٌ في النسختين. و`integrity` يقفلُ الملفَّ على بصمتِه
+     فلا يُنفَّذُ لو تبدّلَ في الـCDN. (كانت المكتبةُ في `pay.html` أيضاً لبطاقةِ
+     «أكملي من هاتفك»، وأُزيلت بقرارِ المالك ٢٠٢٦-٠٩-٠٢ — فهذا موضعُها الوحيد.) -->
 <script src="https://cdn.jsdelivr.net/npm/qrcode@1.4.4/build/qrcode.min.js"
         integrity="sha384-0RsG1yo/crf/1Qc14sho26SXXOTngNCjgJw7fuvXBt9W/OChF/Ijx+aUuBDqQwEk"
         crossorigin="anonymous"></script>
