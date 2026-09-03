@@ -260,9 +260,10 @@ select option:disabled{color:var(--muted)}
 
     <div class="drop" id="drop" role="button" tabindex="0">
       <div id="dropMain">اضغطي لاختيار ملف الإيصال</div>
-      <div class="drop-hint">ملف PDF من تطبيق البنك — لا صورة من المعرض</div>
+      <div class="drop-hint">ملف PDF من تطبيق البنك، أو صورة الإيصال</div>
     </div>
-    <input type="file" id="file" accept="application/pdf">
+    <!-- PDF أو صورة — كما في مسارِ الواتساب: الصورةُ تُقرأُ بجيميناي في مسارِ التفعيل -->
+    <input type="file" id="file" accept="application/pdf,image/*">
 
     <label for="phone">رقم هاتفك</label>
     <input type="tel" id="phone" inputmode="numeric" placeholder="٩٦٨ ٠٠٠٠٠٠٠٠">
@@ -509,8 +510,10 @@ fileInput.onchange = onPick;
 function onPick(){
   const f = fileInput.files[0];
   if (!f) return;
-  if (f.type !== "application/pdf"){
-    show(`<div class="msg">الملف ليس PDF. افتحي إشعار التحويل في تطبيق البنك واختاري «مشاركة» ثم احفظيه ملفاً.</div>`);
+  const isPdf = f.type === "application/pdf";
+  const isImg = /^image\//.test(f.type);
+  if (!isPdf && !isImg){
+    show(`<div class="msg">الملف ليس PDF ولا صورة. افتحي إشعار التحويل في تطبيق البنك واختاري «مشاركة» ثم احفظيه ملفاً، أو صوّري الإيصال.</div>`);
     fileInput.value = ""; return;
   }
   drop.classList.add("filled");
