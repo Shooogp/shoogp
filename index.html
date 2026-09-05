@@ -53,8 +53,17 @@
     <!-- ③ شاشة الدروس -->
     <section class="screen" id="lessonsScreen">
       <button class="back" onclick="goHome()">→ رجوع للكتب</button>
-      <div class="screen-title" id="bookTitle"></div>
-      <div class="screen-sub" id="bookSub"></div>
+      <!-- سطرُ الكتاب: اسمُ الكتابِ والصفِّ (وتحتَهما عدُّ الوحداتِ والدروس) في طرفٍ، وشعارُ
+           شوجب في الطرفِ المقابلِ يساراً (قرارُ المالك ٢٠٢٦-٠٩-٠٥) — بالنمطِ نفسِه المستعمَلِ
+           في سطرِ الدرسِ أدناه. شعارُ الترويسةِ المثبَّتِ يُخفى في هذه الشاشةِ (css/style.css)
+           لأنّه كانَ يتراكبُ مع زرِّ الرجوع. -->
+      <div class="book-head">
+        <div class="book-head-text">
+          <div class="screen-title" id="bookTitle"></div>
+          <div class="screen-sub" id="bookSub"></div>
+        </div>
+        <img class="lesson-logo" src="images/logo-mark.png" alt="شوجب">
+      </div>
       <div class="lessons" id="lessons"></div>
     </section>
 
@@ -62,8 +71,8 @@
     <section class="screen" id="activityScreen">
       <button class="back" onclick="backToLessons()">→ رجوع للدروس</button>
       <!-- سطرُ الدرس: عنوانُ الدرسِ في طرفٍ وشعارُ شوجب في الطرفِ المقابل، على سطرٍ واحدٍ
-           فوقَ حاويةِ السؤال. الشعارُ يُخفى من الترويسةِ في هذه الشاشةِ وحدَها (css/style.css)،
-           وموضعُه في صفحاتِ التنقّلِ (الرئيسيةِ وقائمةِ الدروس) لا يُمَسّ. -->
+           فوقَ حاويةِ السؤال. الشعارُ يُخفى من الترويسةِ في هذه الشاشةِ وفي قائمةِ الدروس
+           (css/style.css)، وموضعُه في الصفحةِ الرئيسيةِ لا يُمَسّ. -->
       <div class="lesson-head">
         <div class="screen-title" id="lessonTitle"></div>
         <img class="lesson-logo" src="images/logo-mark.png" alt="شوجب">
