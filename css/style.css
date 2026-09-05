@@ -135,24 +135,31 @@
   .main-title{font-family:'Cairo';font-size:1.1rem;color:#fff;
     text-shadow:0 3px 14px rgba(0,0,0,.35)}
 
-  /* بعد اختيار كتاب (شاشة الدروس أو النشاط): تُصغَّر الترويسة إلى النصف تقريباً
-     وتُحاذى إلى أعلى يمين الشاشة (ضمن التدفّق، فلا تحجب زرّ الرجوع)، فيتّسع المحتوى
-     ويقترب من الأعلى بعد تحرير المساحة الكبيرة التي كانت تشغلها الترويسة الوسطى. */
+  /* بعد اختيار كتاب (شاشة الدروس أو النشاط): تخرجُ الترويسةُ من التدفّقِ وتُثبَّتُ في
+     أعلى اليمين، فيتّسع المحتوى ويقترب من الأعلى بعد تحرير المساحة الكبيرة التي كانت
+     تشغلها الترويسة الوسطى. ولا يبقى منها ظاهراً إلا زرُّ الصوت (أعلى اليسار) — الشعارُ
+     والنصُّ يُخفيانِ في الشاشتَين، وينتقلُ الشعارُ إلى سطرِ العنوانِ (انظر أدناه). */
   .app:has(#lessonsScreen.active) > header,
   .app:has(#activityScreen.active) > header{
     position:fixed; top:6px; right:14px; left:auto; margin:0;
     text-align:right; z-index:40;
   }
-  .app:has(#lessonsScreen.active) > header .logo,
-  .app:has(#activityScreen.active) > header .logo{ height:60px }
-  /* ── صفحةُ الدرسِ وحدَها: الشعارُ ينتقلُ من الترويسةِ إلى سطرِ الدرس ──
+  /* ── صفحتا الدرسِ والوحدات: الشعارُ ينتقلُ من الترويسةِ إلى سطرِ العنوان ──
      في شاشةِ النشاطِ يُخفى شعارُ الترويسةِ ونصُّها، ويظهرُ الشعارُ داخلَ
      ‎.lesson-head‎ على السطرِ نفسِه مع عنوانِ الدرس (الطرفانِ المتقابلان)
-     مباشرةً فوقَ حاويةِ السؤال. صفحةُ التنقّلِ (‎#lessonsScreen‎) لا تُمَسّ. */
+     مباشرةً فوقَ حاويةِ السؤال. وفي شاشةِ الوحداتِ (‎#lessonsScreen‎) الأمرُ نفسُه
+     بـ‎.book-head‎: اسمُ الكتابِ والصفِّ يميناً والشعارُ يساراً مقابلَه (قرارُ المالك
+     ٢٠٢٦-٠٩-٠٥) — كانَ الشعارُ المثبَّتُ في أعلى اليمينِ يتراكبُ مع زرِّ الرجوع. */
+  .app:has(#lessonsScreen.active) > header .logo-wrap,
+  .app:has(#lessonsScreen.active) > header .main-title,
   .app:has(#activityScreen.active) > header .logo-wrap,
   .app:has(#activityScreen.active) > header .main-title{ display:none }
   #activityScreen .lesson-head{display:flex;align-items:center;
     justify-content:space-between;gap:20px;margin-bottom:6px}
+  #lessonsScreen .book-head{display:flex;align-items:center;
+    justify-content:space-between;gap:20px;margin-bottom:24px}
+  #lessonsScreen .book-head-text{flex:1 1 auto;min-width:0}
+  #lessonsScreen .book-head .screen-sub{margin-bottom:0}
   /* هالةٌ داكنةٌ حولَ عنوانِ الدرس: الشريطُ الخلفيُّ صارَ يحملُ لونَ بطاقةِ الكتابِ
      بشفافيةٍ عالية، فبعضُ الألوانِ الفاتحة (الأخضرُ والبرتقاليُّ) تُنزِلُ تباينَ النصِّ
      الفاتحِ إلى ~2.5:1 — دونَ حدِّ 3:1 للنصِّ الكبير. الهالةُ تُعيدُ الفصلَ فوقَ أيِّ
@@ -161,12 +168,9 @@
     text-shadow:0 2px 7px rgba(8,22,18,.80), 0 0 3px rgba(8,22,18,.65)}
   #activityScreen .lesson-head + .screen-sub{
     text-shadow:0 1px 5px rgba(8,22,18,.75)}
-  #activityScreen .lesson-logo{height:60px;width:auto;display:block;flex:0 0 auto;
+  #activityScreen .lesson-logo, #lessonsScreen .lesson-logo{
+    height:60px;width:auto;display:block;flex:0 0 auto;
     filter:drop-shadow(0 6px 16px rgba(0,0,0,.35))}
-  .app:has(#lessonsScreen.active) > header .logo-wrap,
-  .app:has(#activityScreen.active) > header .logo-wrap{ margin-bottom:2px }
-  .app:has(#lessonsScreen.active) > header .main-title,
-  .app:has(#activityScreen.active) > header .main-title{ font-size:.55rem }
   /* زرّ الصوت مثبَّت في أعلى اليسار كي يبقى متاحاً بعيداً عن الشعار */
   .app:has(#lessonsScreen.active) > header .sound-btn,
   .app:has(#activityScreen.active) > header .sound-btn{ position:fixed; top:10px; left:12px; right:auto }
