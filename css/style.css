@@ -156,8 +156,10 @@
   .app:has(#activityScreen.active) > header .main-title{ display:none }
   #activityScreen .lesson-head{display:flex;align-items:center;
     justify-content:space-between;gap:20px;margin-bottom:6px}
+  /* عرضُ السطرِ = عرضُ جدولِ الوحداتِ (‎.lessons‎ 640px) فيقعُ الشعارُ فوقَ الحافةِ
+     اليسرى للجدولِ (فوقَ عدِّ الدروس) ولا يتعدّاها إلى حافةِ الشاشة (قرارُ المالك). */
   #lessonsScreen .book-head{display:flex;align-items:center;
-    justify-content:space-between;gap:20px;margin-bottom:24px}
+    justify-content:space-between;gap:20px;margin-bottom:24px;max-width:640px}
   #lessonsScreen .book-head-text{flex:1 1 auto;min-width:0}
   #lessonsScreen .book-head .screen-sub{margin-bottom:0}
   /* هالةٌ داكنةٌ حولَ عنوانِ الدرس: الشريطُ الخلفيُّ صارَ يحملُ لونَ بطاقةِ الكتابِ
