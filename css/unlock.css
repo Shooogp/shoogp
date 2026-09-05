@@ -372,6 +372,38 @@
 /* منعُ تمريرِ الصفحةِ خلفَ النافذة */
 body.lock-open{overflow:hidden}
 
+/* ═══ إيقافُ الشراءِ مؤقتاً (‏`SALES_PAUSED` في `js/unlock.js`) ═══
+   النافذةُ تظهرُ كما هي لكن **باهتةً وخاملة**، ويعبرُها شريطٌ مائلٌ برتقاليٌّ
+   (لونُ الشعار). الشريطُ أخٌ لـ`.lockbox` داخلَ `.lockwrap` لا ابنٌ لها — فَـ`overflow:auto`
+   على النافذةِ كان سيقتطعُه ويُنشئُ تمريراً أفقياً. `pointer-events:none` عليه
+   فتمرُّ النقرةُ إلى ما تحتَه (الخلفيةُ تُغلِق)، وعلى المحتوى الخاملِ احتياطاً
+   لمتصفّحٍ لا يعرفُ `inert`. يبقى الشريطُ العلويُّ وزرُّ الإغلاقِ بكاملِ وضوحِهما. */
+.locksoon[hidden]{display:none}
+.lockwrap.paused .lockbox > :not(.lockband):not(.lockclose){
+  opacity:.42; filter:grayscale(.6); pointer-events:none;
+}
+.lockwrap.paused .locksoon{
+  position:absolute; z-index:2; left:50%; top:50%;
+  width:min(640px,112vw);
+  transform:translate(-50%,-50%) rotate(-9deg);
+  display:flex; align-items:center; justify-content:center; gap:14px;
+  padding:16px 28px;
+  font-weight:800; font-size:clamp(22px,3.6vw,34px); line-height:1.25;
+  color:#fff; text-shadow:0 2px 0 rgba(120,40,0,.45);
+  background:linear-gradient(180deg,#ff9a3c 0%,#f97316 55%,#e05a0a 100%);
+  border:3px solid #fff3e0; border-radius:14px;
+  box-shadow:inset 0 3px 0 rgba(255,255,255,.55),
+             0 6px 0 #a63f06,
+             0 18px 36px rgba(60,20,0,.55);
+  pointer-events:none;
+  animation:lksoon .32s cubic-bezier(.2,.9,.3,1.3);
+}
+.locksoon-ico{font-size:1.15em; line-height:1}
+@keyframes lksoon{from{opacity:0;transform:translate(-50%,-50%) rotate(-9deg) scale(.7)}to{opacity:1;transform:translate(-50%,-50%) rotate(-9deg)}}
+@media (max-width:520px){
+  .lockwrap.paused .locksoon{padding:12px 18px; gap:10px}
+}
+
 /* ═══════════════ ④ زرُّ تبديلِ القفل (أعلى الصفحة) ═══════════════
    لسانٌ حجريٌّ رمليٌّ مُعلَّقٌ من الحافّةِ العليا (استدارةٌ سفليةٌ فقط)، بهويةِ
    بقيّةِ عناصرِ القفلِ نفسِها (‏`--lk-*`). حالتُه تُقرَأُ **بلا نقر**:
@@ -448,7 +480,7 @@ body.lock-open{overflow:hidden}
 
 /* ── احترامُ `prefers-reduced-motion`: تبقى الوظيفةُ وتسقطُ الحركةُ وحدَها ── */
 @media (prefers-reduced-motion:reduce){
-  .lockback,.lockbox{animation:none}
+  .lockback,.lockbox,.lockwrap.paused .locksoon{animation:none}
   .lockgo,.lockclose,.lesson.paylocked,.lockdev-btn,.lockbuy,
   .paylock-btn{transition:none}
   .lockgo:hover:not(:disabled),.lockclose:hover,.lockbuy:hover,.lockbuy:active,

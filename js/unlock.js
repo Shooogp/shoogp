@@ -97,6 +97,11 @@
    ⚠️ **المفتاحُ هو مفتاحُ الكتابِ نفسُه** (`pending.bookKey`)، وهو مفتاحُ
    `data/books.json` الذي تقرأُ منه صفحةُ الدفعِ قائمتَها — فالطرفانِ على مصدرٍ واحد.
 
+   ── إيقافُ الشراءِ مؤقتاً ──
+   `SALES_PAUSED` (عندَ الثوابتِ أدناه): وهو `true` تظهرُ النافذةُ معطَّلةً بشريطِ
+   «شراءُ الكتبِ قريباً جدّاً»، ولا يعملُ فيها إلا الإغلاق. **مفتاحٌ واحدٌ يُقلَبُ
+   لإعادةِ الشراء** — التفصيلُ عندَ الثابتِ نفسِه.
+
    ── حدٌّ صريحٌ لا يُتجاوَز ──
    هذا **حاجزُ شراءٍ لا حمايةٌ أمنية**. أيُّ قفلٍ في موقعٍ ثابتٍ يمكنُ تجاوزُه من
    أدواتِ المطوّر، وأيُّ رمزٍ يمكنُ مشاركتُه. **لا يُبنى تعقيدٌ إضافيٌّ لمنعِ ذلك** —
@@ -123,6 +128,15 @@
      يستمعُ إليه مسارُ «شوجب — استقبال واتساب» في n8n. */
   var WA_NUMBER = '96871712937';
   var FREE_UNITS = 1;               // الافتراض: وحدةٌ مجانيةٌ واحدةٌ في رأس كل كتاب
+
+  /* ═══ إيقافُ الشراءِ مؤقتاً (قرارُ المالك ٢٠٢٦-٠٩-٠٥) ═══
+     `true` ⇒ نافذةُ الرمزِ **تظهرُ كما هي لكن معطَّلةً**: الخانةُ وزرُّ الفتحِ ورابطا
+     الشراءِ خاملةٌ (`inert` + كسوةٌ باهتة)، ويعلوها شريطٌ مائلٌ «شراءُ الكتبِ قريباً
+     جدّاً». لا يبقى حيّاً إلا زرُّ الإغلاقِ والخلفيةُ وEscape.
+     **لإعادةِ الشراء: `false` هنا وحدَه** — لا موضعَ آخرَ يُلمَس، والكسوةُ في
+     `css/unlock.css` تحتَ `.lockwrap.paused`. ولا يمسُّ الإيقافُ القفلَ نفسَه ولا
+     المنَحَ المحفوظةَ: الكتبُ المفتوحةُ برمزٍ من قبلُ باقيةٌ مفتوحة. */
+  var SALES_PAUSED = true;
 
   /* عددُ الوحداتِ المجانيةِ في رأسِ الكتاب — بالمادّةِ (قرارُ المالك ٢٠٢٦-٠٩-٠٥؛
      الجدولُ في رأسِ الملف). `unitCount` عددُ وحداتِ الكتابِ من الفهرس، ولا يلزمُ
@@ -489,6 +503,13 @@
             '<span class="lockbuy-ico" aria-hidden="true">🛒</span><span>من الموقع</span>' +
           '</a>' +
         '</div>' +
+      '</div>' +
+      /* شريطُ الإيقافِ المؤقت — **أخٌ للنافذةِ لا ابنٌ لها**: `.lockbox` عليها
+         `overflow:auto` فشريطٌ مائلٌ داخلَها يُقتطَعُ ويُنشئُ تمريراً أفقياً.
+         يُعرَضُ بـ`.lockwrap.paused` وحدَها (‏`SALES_PAUSED`). */
+      '<div class="locksoon" id="lockSoon" role="note" hidden>' +
+        '<span class="locksoon-ico" aria-hidden="true">🛒</span>' +
+        '<span>شراءُ الكتبِ قريباً جدّاً</span>' +
       '</div>';
 
     document.body.appendChild(box);
@@ -524,8 +545,10 @@
       if (e.key !== 'Tab') return;
       /* `:not([hidden])` لازمٌ — زرُّ الواتساب يُخفى حينَ يظهرُ الرمز،
          ولولاه لوقفَ التركيزُ على عنصرٍ غيرِ مرئيّ. */
-      var f = box.querySelectorAll('.lockclose, .lockinput, .lockgo,' +
-                                   ' .lockbuy-wa:not([hidden]), .lockbuy-site');
+      var f = SALES_PAUSED
+        ? box.querySelectorAll('.lockclose')          // الإيقافُ المؤقت: لا حيَّ إلا الإغلاق
+        : box.querySelectorAll('.lockclose, .lockinput, .lockgo,' +
+                               ' .lockbuy-wa:not([hidden]), .lockbuy-site');
       var first = f[0], last = f[f.length - 1];
       if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
@@ -624,11 +647,33 @@
       if (id) setWaHref(scopeTitle(id, bundles));
     });
 
+    /* ═══ الإيقافُ المؤقتُ للشراء (‏`SALES_PAUSED`) ═══
+       `inert` يُسقِطُ النقرَ والتركيزَ معاً عن الخانةِ والزرِّ وكتلةِ الشراء — ويبقى
+       `disabled` على الخانةِ والزرِّ احتياطاً لمتصفّحٍ لا يعرفُ `inert`، ومعهما
+       `pointer-events:none` في الكسوة. الروابطُ تحتفظُ بـ`href` (‏`setWaHref` تعيدُ
+       ضبطَه لاحقاً) فالخمولُ من الحاويةِ لا منها. */
+    var soon = box.querySelector('.locksoon');
+    var dialog = box.querySelector('.lockbox');
+    var inertEls = box.querySelectorAll('.locklabel, .lockinput, .lockmsg, .lockgo, .lockbuytitle, .lockbuyrow');
+    box.classList.toggle('paused', SALES_PAUSED);
+    if (SALES_PAUSED) {
+      soon.removeAttribute('hidden');
+      dialog.setAttribute('aria-describedby', 'lockSoon');
+      elInput.disabled = true;
+      elGo.disabled = true;
+      inertEls.forEach(function (el) { el.setAttribute('inert', ''); });
+    } else {
+      soon.setAttribute('hidden', '');
+      dialog.removeAttribute('aria-describedby');
+      elInput.disabled = false;
+      inertEls.forEach(function (el) { el.removeAttribute('inert'); });
+    }
+
     lastFocus = document.activeElement;
     box.removeAttribute('hidden');
     document.body.classList.add('lock-open');
-    // التركيزُ بعدَ الرسمِ كي لا تُلغيه حركةُ الظهور
-    requestAnimationFrame(function () { elInput.focus(); });
+    // التركيزُ بعدَ الرسمِ كي لا تُلغيه حركةُ الظهور — وعلى الإغلاقِ وحدَه عندَ الإيقاف
+    requestAnimationFrame(function () { (SALES_PAUSED ? elClose : elInput).focus(); });
   }
 
   function close() {
