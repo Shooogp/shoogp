@@ -157,7 +157,9 @@ function buildBooks(){
     const el=document.createElement('div');el.className='book '+bk.color+(cover?' has-cover':'');
     if(cover){
       el.innerHTML=(bk.isNew?'<span class="newbadge">جديد!</span>':'')+
-        `<img class="cover-img" src="${cover}" alt="${bk.title}">`;
+        /* ختمُ النشرةِ على الغلاف: بلا `?v=` يبقى الغلافُ القديمُ في ذاكرةِ المتصفّحِ
+           شهوراً بعدَ استبدالِ رسمِه (§النشرُ وختمُ نسخِ الأصول في CLAUDE.md). */
+        `<img class="cover-img" src="${cover}${ASSET_VER}" alt="${bk.title}">`;
     }else{
       el.innerHTML=(bk.isNew?'<span class="newbadge">جديد!</span>':'')+
         `<div class="ic">${bk.ic}</div>`+
