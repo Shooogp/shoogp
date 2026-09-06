@@ -452,7 +452,7 @@
   /* ───────────────────────── نافذة الإدخال ───────────────────────── */
 
   var MSG = {
-    empty:   'أدخلي رمز الفتح أولاً.',
+    empty:   'ادخل رمز الفتح أولاً.',
     bad:     'هذا الرمز غير صحيح. تأكّدي من كتابته كما وصلكِ.',
     expired: 'انتهت صلاحية هذا الرمز. إن كنتِ متأكدة أنه حديث، فتحقّقي من تاريخ الجهاز.',
     net:     'تعذّر الاتصال للتحقّق من الرمز. تأكّدي من الإنترنت وأعيدي المحاولة.',
@@ -512,7 +512,7 @@
         '<div class="lockicon" aria-hidden="true">🔒</div>' +
         '<h2 class="locktitle" id="lockTitle">هذه الوحدة مقفلة</h2>' +
         '<p class="locksub"></p>' +
-        '<label class="locklabel" for="lockInput">أدخلي رمز الفتح</label>' +
+        '<label class="locklabel" for="lockInput">ادخل رمز الفتح</label>' +
         '<input class="lockinput" id="lockInput" type="text" autocomplete="off"' +
               ' spellcheck="false" autocapitalize="characters" dir="ltr" placeholder="XXXXX-XXXXX">' +
         '<p class="lockmsg" role="status" aria-live="polite"></p>' +
@@ -665,7 +665,7 @@
     // لونُ الكتابِ حيث يصحّ: شريطٌ علويٌّ بصنفِ بطاقةِ الكتابِ الحالي
     elBand.className = 'lockband' + (window.currentBookColor ? ' ' + window.currentBookColor : '');
     elTitle.textContent = bookTitle(bookKey);
-    elSub.textContent = 'أدخلي رمز الفتح لتظهر وحدات هذا الكتاب كاملةً.';
+    elSub.textContent = 'ادخل رمز الفتح لتظهر وحدات هذا الكتاب كاملةً.';
     elInput.value = '';
     say('', '');
     elGo.disabled = false;
