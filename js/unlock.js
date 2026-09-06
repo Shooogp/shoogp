@@ -327,6 +327,45 @@
 
   function isLockOff() { return lockOff; }
 
+  /* ═══════════════════ عدّادُ الدخول (قرارُ المالك ٢٠٢٦-٠٩-٠٦) ═══════════════════
+     الموقعُ صفحاتٌ ثابتةٌ بلا خادم، فالعدّادُ يسكنُ n8n: سيرُ «شوجب — عدّاد الدخول»
+     يستقبلُ إشارةً صامتةً ويزيدُ صفَّ اليومِ في جدولِه، ويعيدُ الأرقامَ للمالكِ وحدَه.
+
+     • **مرّةً واحدةً لكلِّ متصفّحٍ في اليوم** — لا كلَّ فتحِ صفحة: فالمقيسُ «أجهزةٌ
+       دخلت اليوم»، وكلُّ إشارةٍ تستهلكُ تنفيذاً من رصيدِ n8n الشهريّ.
+     • **اليومُ ينتهي عندَ منتصفِ الليلِ بتوقيتِ مسقط** (`Asia/Muscat`) هنا وفي n8n
+       سواءً، لا بساعةِ جهازِ المعلّمةِ الخامِ ولا بساعةِ خادمٍ في أوروبا.
+     • **جهازُ المالكِ لا يُحسَب** (وضعُ المطوّر)، ولا `file://` ولا `localhost`.
+     • لا هويةَ تُرسَل: جسمُ الإشارةِ تاريخُ اليومِ فحسب. */
+  var VISIT_URL = 'https://shoogp.app.n8n.cloud/webhook/shoogp-visit-7c1e';
+  var STATS_URL = 'https://shoogp.app.n8n.cloud/webhook/shoogp-visit-stats-7c1e';
+  var VISIT_KEY = 'shoogp-visit-day';
+
+  function muscatDay() {
+    try {
+      return new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Muscat', year: 'numeric', month: '2-digit', day: '2-digit' })
+        .format(new Date());
+    } catch (e) { return new Date().toISOString().slice(0, 10); }
+  }
+
+  function pingVisit() {
+    if (devMode) return;
+    if (location.protocol === 'file:') return;
+    if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) return;
+    var day = muscatDay(), last = null;
+    try { last = localStorage.getItem(VISIT_KEY); } catch (e) {}
+    if (last === day) return;
+    try { localStorage.setItem(VISIT_KEY, day); } catch (e) {}
+    try {
+      if (navigator.sendBeacon) navigator.sendBeacon(VISIT_URL, day);
+      else fetch(VISIT_URL, { method: 'POST', body: day, mode: 'no-cors', keepalive: true }).catch(function () {});
+    } catch (e) {}
+  }
+  pingVisit();
+
+  /* الأرقامُ بالهنديةِ كسائرِ المنصّة */
+  function arDigits(n) { return String(n).replace(/[0-9]/g, function (d) { return '٠١٢٣٤٥٦٧٨٩'[+d]; }); }
+
   /* ───────────────────── حالة القفل (بلا شبكة) ───────────────────── */
 
   /* الوحدةُ مقفلةٌ ما لم تكن مجانيةً بالعتبةِ أو يكن **الكتابُ** ممنوحاً.
@@ -758,7 +797,21 @@
      والزرُّ ينتهي عندَ 46، ولا هامشَ شفّافاً في `logo-mark.png` يخفيه — مقيسٌ:
      أوّلُ صفٍّ معتمٍ = 0). العنصرُ في التدفّقِ **يحجزُ مساحتَه** فيستحيلُ التراكب. */
 
-  var devWrap = null, devBtn = null;
+  var devWrap = null, devBtn = null, devStats = null;
+
+  /* شارةُ العدّادِ بجانبِ الزرّ — تُبنى في وضعِ المطوّرِ وحدَه وتُملأُ من n8n.
+     فشلُ الشبكةِ لا يُعطّلُ شيئاً: تبقى الشارةُ على «…». */
+  function loadStats() {
+    if (!devStats || typeof fetch !== 'function') return;
+    fetch(STATS_URL + '?key=' + encodeURIComponent(DEV_PASS), { cache: 'no-store' })
+      .then(function (r) { return r.json(); })
+      .then(function (s) {
+        if (!s || !s.ok) { devStats.textContent = '👥 الدخول: —'; return; }
+        devStats.textContent = '👥 الدخول: ' + arDigits(s.total) + ' · اليوم: ' + arDigits(s.today) + ' · أمس: ' + arDigits(s.yesterday);
+        devStats.title = 'أجهزةٌ دخلت الموقع (مرّة لكل جهاز في اليوم، بتوقيت مسقط)' + (s.since ? ' — منذ ' + s.since : '');
+      })
+      .catch(function () { devStats.textContent = '👥 الدخول: —'; });
+  }
 
   /* الزومُ المضادّ — نفسُ حيلةِ عمودِ الصاروخِ في `js/fit.js`.
      بدونَه يُرسَمُ الزرُّ بالزومِ العامّ: على منفذِ الهاتفِ (‏375px) الزومُ ≈0.37
@@ -769,6 +822,7 @@
     if (!devBtn) return;
     var z = (window.ShoogpFit && window.ShoogpFit.zoom) || 1;
     devBtn.style.zoom = String(1 / z);
+    if (devStats) devStats.style.zoom = String(1 / z);
   }
 
   function paintBtn() {
@@ -811,10 +865,15 @@
     devBtn.type = 'button';
     devBtn.className = 'lockdev-btn';
     devWrap.appendChild(devBtn);
+    devStats = document.createElement('span');
+    devStats.className = 'lockdev-stats';
+    devStats.textContent = '👥 الدخول: …';
+    devWrap.appendChild(devStats);
     app.insertBefore(devWrap, app.firstChild);   // أوّلُ عنصرٍ في `.app` — فوقَ الترويسة
     devBtn.addEventListener('click', function () { setLockOff(!lockOff); });
     paintBtn();
     fitBtn();
+    loadStats();
   }
 
   window.addEventListener('shoogp-fit', fitBtn);

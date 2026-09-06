@@ -412,7 +412,21 @@ body.lock-open{overflow:hidden}
    واللونُ وحدَه لا يحملُ المعنى — النصُّ والرمزُ يقولانِه أيضاً (عمى الألوان). */
 
 .lockdev{
-  display:flex; justify-content:center; margin:0 0 10px;
+  display:flex; justify-content:center; align-items:flex-start; gap:10px; flex-wrap:wrap; margin:0 0 10px;
+}
+
+/* شارةُ عدّادِ الدخول — لسانٌ رمليٌّ ثانٍ بجانبِ الزرّ، للقراءةِ لا للنقر (`js/unlock.js` §عدّاد الدخول) */
+.lockdev-stats{
+  display:inline-flex; align-items:center; min-height:46px; padding:0 18px;
+  border-radius:0 0 18px 18px;
+  font-family:'Cairo',sans-serif; font-size:16px; font-weight:800;
+  color:var(--lk-ink); white-space:nowrap; cursor:default;
+  background:var(--lk-grain) 0 0/190px 96px repeat,
+             linear-gradient(180deg,var(--lk-hi) 0%,var(--lk-mid) 46%,var(--lk-lo) 100%);
+  border:2px solid var(--lk-edge); border-block-start:0; border-bottom-color:var(--lk-edge-dk);
+  box-shadow:inset 0 -3px 0 rgba(150,112,52,.30),
+             0 3px 0 rgba(163,127,72,.55),
+             0 6px 14px rgba(10,5,30,.35);
 }
 
 .lockdev-btn{
