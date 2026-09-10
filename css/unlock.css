@@ -280,6 +280,16 @@
   color:var(--lk-ink); opacity:.72;
 }
 .lockbuyrow{ display:flex; gap:10px; align-items:center; flex-wrap:wrap }
+
+/* رابطُ دليلِ الشراء — نصٌّ مسطَّرٌ لا زرّ: الطريقانِ فوقَه همُا الفعلُ المطلوب،
+   وهذا شرحٌ لمن احتاجَه فلا ينافسُهما بصرياً. */
+.lockguide{
+  display:block; margin:14px 0 0; text-align:center;
+  font-family:'Cairo',sans-serif; font-size:15px; font-weight:700;
+  color:var(--lk-ink); opacity:.72; text-decoration:underline;
+  text-underline-offset:4px;
+}
+.lockguide:hover{ opacity:1 }
 /* ⚠️ `hidden` وحدَه لا يكفي هنا: `.lockbuy` مُعلَنٌ `display:flex` فيغلبُه. */
 .lockbuyrow [hidden]{ display:none !important }
 
