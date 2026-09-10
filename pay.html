@@ -44,6 +44,9 @@ body{
 .back:hover{background:rgba(255,255,255,.2)}
 h1{font-size:26px;margin:0 0 4px;font-weight:700}
 .sub{color:var(--muted);font-size:16px;margin:0 0 28px}
+/* رابطُ دليلِ الشراء — داخلَ السطرِ الفرعيِّ لا زرّاً مستقلاً: من عرفَ الطريقَ
+   يمضي، ومن احتارَ وجدَه في أوّلِ ما يقرأ. */
+.sub .guidelink{color:var(--stone-soft);white-space:nowrap}
 
 .step{
   background:var(--panel); border:1px solid var(--line);
@@ -214,7 +217,7 @@ select option:disabled{color:var(--muted)}
 <div class="wrap">
   <a class="back" href="index.html">→ رجوع للرئيسة</a>
   <h1>شراء الكتب</h1>
-  <p class="sub">أضيفي كتبك، أكّدي الطلب، حوّلي المبلغ وارفعي الإيصال.</p>
+  <p class="sub">أضيفي كتبك، أكّدي الطلب، حوّلي المبلغ وارفعي الإيصال. <a class="guidelink" href="guide.html">دليل الشراء بالتفصيل ←</a></p>
 
   <!-- ① السلّة -->
   <div class="step" id="step1">

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>دليل الشراء — شوجب</title>
+
+<!--
+  ═══════════════════════════════════════════════════════════════
+  دليلُ الشراء — صفحةٌ ساكنةٌ بلا سكربت. غرضُها أن ترى المعلّمةُ
+  الطريقَ كلَّه قبلَ أن تبدأ، فلا تتوقّفَ في منتصفِه.
+
+  • **المساران معاً**: الموقع (`pay.html`) أوّلاً لأنّ الرمزَ فيه يظهرُ
+    على الشاشةِ في الحال، ثمّ واتساب لمن تفضّلُ المحادثة.
+  • **الأرقامُ في الصفحةِ مطابقةٌ لثلاثةِ مواضعَ حيّة**، وأيُّ تعديلٍ
+    فيها يُعادُ هنا: السعرُ ورقمُ الحسابِ في `CONFIG` أسفلَ `pay.html`
+    (‏`PRICE` و`ACCOUNT`)، ورقمُ الواتساب في `WA_NUMBER` بـ`js/unlock.js`،
+    وهو نفسُه الذي يستمعُ إليه مسارُ n8n.
+  • **الرسوماتُ مولَّدةٌ بجيميناي** عبر مسارِ «شوجب — مولّد رسومات الأسئلة»
+    بأسلوبِ المنصّةِ المسطّح، ومكانُها `images/guide/`.
+  • الصفحةُ قائمةٌ بذاتِها (نمطُها في رأسِها) كأختَيها `pay.html`
+    و`privacy.html` — لا تُحمّلُ `css/style.css` ولا خلفيةَ الفضاء.
+  ═══════════════════════════════════════════════════════════════
+-->
+
+<style>
+:root{
+  --space:#0F131B;          /* خلفية الفضاء */
+  --panel:#171D28;          /* جسم اللوحة */
+  --panel-2:#0D111A;        /* غائرٌ داخلَ اللوحة */
+  --stone:#C9A227;          /* رمليّ — نفس لون قفل الشراء */
+  --stone-soft:#E3C766;
+  --moon:#EDE8DE;           /* أبيض القمر */
+  --muted:#8A93A3;
+  --line:#242C3A;
+  --ok:#5FBF8B;
+  --wa:#3FB27F;             /* أخضرُ قسمِ الواتساب */
+}
+*{box-sizing:border-box}
+body{
+  margin:0; padding:32px 16px 48px; min-height:100vh;
+  background:var(--space);
+  color:var(--moon);
+  font-family:"Tajawal","IBM Plex Sans Arabic",-apple-system,"Segoe UI",sans-serif;
+  font-size:18px; line-height:1.9;
+}
+.wrap{max-width:760px;margin:0 auto}
+img{max-width:100%}
+
+/* رابطُ العودة — بهيئةِ زرِّ الرجوعِ في المنصّة (`.back` في css/style.css) */
+.back{
+  display:inline-block;margin:0 0 18px;padding:10px 18px;border-radius:999px;
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+  color:#fff;font-size:16px;text-decoration:none;
+}
+.back:hover{background:rgba(255,255,255,.2)}
+h1{font-size:30px;margin:0 0 6px;font-weight:700}
+.sub{color:var(--muted);font-size:17px;margin:0 0 26px}
+
+/* ═══════════ لوحةُ «ما الذي تشترينه؟» ═══════════ */
+.facts{
+  background:linear-gradient(180deg,#1D2637,#141A24);
+  border:1px solid var(--stone);border-radius:18px;
+  padding:20px 22px;margin-bottom:34px;
+}
+.facts h2{font-size:19px;margin:0 0 12px;font-weight:700}
+.facts ul{margin:0;padding-inline-start:22px}
+.facts li{margin-bottom:6px}
+.facts li:last-child{margin-bottom:0}
+.facts b{color:var(--stone-soft)}
+
+/* ═══════════ ترويسةُ المسار ═══════════ */
+.path{margin-bottom:40px}
+.path-head{margin-bottom:6px}
+.path-head h2{font-size:23px;margin:0;font-weight:700}
+.path-sub{color:var(--muted);font-size:16px;margin:0 0 20px}
+
+/* ═══════════ بطاقةُ الخطوة ═══════════
+   الرقمُ والنصُّ في طرفٍ، والرسمةُ في الطرفِ المقابل. وتحتَ 640px تنقلبُ
+   إلى عمودٍ واحدٍ فتبقى الرسمةُ فوقَ نصِّها لا بجانبِه مضغوطة. */
+.stepx{
+  display:flex;align-items:center;gap:20px;
+  background:var(--panel);border:1px solid var(--line);border-radius:18px;
+  padding:20px 22px;margin-bottom:14px;
+}
+.stepx .body{flex:1;min-width:0}
+.stepx .row{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.num{
+  width:32px;height:32px;flex:none;border-radius:50%;
+  background:var(--stone);color:#1A1206;
+  display:grid;place-items:center;font-weight:700;font-size:17px;
+}
+.path.wa .num{background:var(--wa);color:#08251A}
+.stepx h3{font-size:19px;margin:0;font-weight:700}
+.stepx p{margin:0;color:#C7CEDA;font-size:17px}
+.stepx p + p{margin-top:8px}
+.stepx .note{color:var(--muted);font-size:15px}
+
+/* قرصُ الرسمة: الرسماتُ مولَّدةٌ على خلفيةٍ بيضاءَ عمداً، فتُوضَعُ على
+   قرصٍ عاجيٍّ يذيبُ حافّتَها البيضاءَ في اللوحةِ الداكنة. */
+.art{
+  width:112px;height:112px;flex:none;border-radius:22px;
+  background:radial-gradient(circle at 50% 45%,#FFFFFF 58%,#EFE9DC 100%);
+  border:1px solid rgba(201,162,39,.35);
+  display:grid;place-items:center;overflow:hidden;
+}
+.art img{width:100%;height:100%;object-fit:contain;display:block}
+
+/* ═══════════ صندوقُ البيانات (الحساب والرقم) ═══════════ */
+.data{
+  margin-top:10px;padding:12px 14px;border-radius:12px;
+  background:var(--panel-2);border:1px solid var(--line);
+  font-size:16px;
+}
+.data .k{color:var(--muted);font-size:15px}
+.data .v{font-weight:700;color:var(--moon);direction:ltr;display:inline-block;unicode-bidi:embed}
+.data div + div{margin-top:4px}
+
+/* ═══════════ الخاتمةُ: كيف أستعملُ الرمز ═══════════ */
+.finish{
+  background:linear-gradient(180deg,#1A2230,#12171F);
+  border:1px solid var(--line);border-left:0;border-right:0;
+  border-radius:18px;padding:22px;margin-bottom:34px;
+}
+.finish h2{font-size:21px;margin:0 0 14px;font-weight:700}
+.finish ol{margin:0;padding-inline-start:22px}
+.finish li{margin-bottom:8px}
+.finish li:last-child{margin-bottom:0}
+.chip{
+  display:inline-block;padding:2px 10px;border-radius:8px;
+  background:rgba(201,162,39,.16);border:1px solid rgba(201,162,39,.4);
+  color:var(--stone-soft);font-size:15px;font-weight:700;
+}
+
+/* ═══════════ أسئلةٌ متكرّرة ═══════════ */
+.faq{margin-bottom:34px}
+.faq h2{font-size:21px;margin:0 0 12px;font-weight:700}
+.faq details{
+  background:var(--panel);border:1px solid var(--line);
+  border-radius:14px;padding:14px 18px;margin-bottom:10px;
+}
+.faq summary{cursor:pointer;font-weight:700;font-size:17px;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"＋";float:left;color:var(--stone);font-weight:700}
+.faq details[open] summary::after{content:"－"}
+.faq details p{margin:10px 0 0;color:#C7CEDA;font-size:16px}
+
+/* ═══════════ دعوةُ الشراء: طريقانِ زرّانِ متكافئان ═══════════
+   بنفسِ ترتيبِ نافذةِ القفلِ ونفسِ لونَيها — الرمليُّ للموقعِ والأخضرُ لواتساب —
+   فلا تتعلّمُ المعلّمةُ الشكلَ مرّتَين. وينكسرانِ عمودَينِ على الشاشةِ الضيّقة. */
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:0 0 30px}
+.cta a{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  flex:0 1 260px; padding:16px 28px;border-radius:14px;
+  background:var(--stone);color:#1A1206;font-weight:700;font-size:19px;
+  text-decoration:none;transition:filter .18s;
+}
+.cta a:hover{filter:brightness(1.08)}
+.cta .cta-wa{background:var(--wa);color:#06251A}
+.cta .cta-wa svg{flex:none}
+
+.foot{text-align:center;color:var(--muted);font-size:15px;margin:0}
+.foot a{color:var(--stone-soft)}
+
+a:focus-visible,summary:focus-visible{outline:2px solid var(--stone-soft);outline-offset:3px}
+
+@media (max-width:640px){
+  body{font-size:17px;padding-top:22px}
+  h1{font-size:25px}
+  .stepx{flex-direction:column;align-items:flex-start;gap:14px;padding:18px}
+  .art{width:96px;height:96px;align-self:center}
+  .stepx h3{font-size:18px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="index.html">→ رجوع للمنصّة</a>
+
+  <h1>دليل الشراء</h1>
+  <p class="sub">من اختيار الكتاب إلى فتحِه أمام صفّك — الطريق كلُّه في صفحةٍ واحدة.</p>
+
+  <!-- ما الذي تشترينه؟ -->
+  <section class="facts">
+    <h2>قبل أن تبدئي</h2>
+    <ul>
+      <li>الوحدة الأولى من كل كتاب <b>مفتوحة مجاناً</b> — جرّبيها مع صفّك قبل الشراء.</li>
+      <li>ثمن الكتاب الواحد <b>ثلاثة ريالات</b> للفصل الدراسي، ويفتح <b>وحدات الكتاب كلَّها</b>.</li>
+      <li>الرمز مرتبطٌ بكِ أنتِ لا بجهازٍ بعينه — أدخليه في أي جهاز تدخلين منه.</li>
+      <li>تستطيعين شراء أكثر من كتاب في طلبٍ واحد بإيصال تحويلٍ واحد.</li>
+    </ul>
+  </section>
+
+  <!-- ═══ المسار الأول: من الموقع ═══ -->
+  <section class="path">
+    <div class="path-head">
+      <h2>الشراء من الموقع</h2>
+    </div>
+    <p class="path-sub">خمس خطوات، والرمز يظهر على الشاشة في نهايتها مباشرةً.</p>
+
+    <div class="stepx">
+      <div class="body">
+        <div class="row"><span class="num">١</span><h3>اختاري كتبك</h3></div>
+        <p>افتحي صفحة الشراء، ثم اختاري الصفّ والمادة واضغطي «إضافة». كرّري ذلك لكل كتابٍ تريدينه.</p>
+      </div>
+      <div class="art"><img src="images/guide/guide-cart.png" alt="سلّة فيها كتب مدرسية"></div>
+    </div>
+
+    <div class="stepx">
+      <div class="body">
+        <div class="row"><span class="num">٢</span><h3>أكّدي الطلب</h3></div>
+        <p>اضغطي «تأكيد الطلب» بعد أن تكتمل سلّتك، فيظهر لك المبلغ ورقم الحساب.</p>
+        <p class="note">المبلغ لا يظهر قبل التأكيد عمداً، حتى لا تُحوِّلي ثمن كتابٍ واحد ثم تضيفي غيره. وإن أردتِ التعديل بعدها فزرّ «تعديل الطلب» يعيد فتح السلّة ويعيد حساب المبلغ.</p>
+      </div>
+      <div class="art"><img src="images/guide/guide-confirm.png" alt="قائمة طلب عليها علامة صحّ"></div>
+    </div>
+
+    <div class="stepx">
+      <div class="body">
+        <div class="row"><span class="num">٣</span><h3>حوّلي المبلغ</h3></div>
+        <p>من تطبيق بنكك، حوّلي المبلغ المعروض إلى الحساب التالي:</p>
+        <div class="data">
+          <div><span class="k">الرقم: </span><span class="v">91496256</span></div>
+          <div><span class="k">الاسم: </span><span class="v">IBRAHIM KHAMIS</span> — بنك مسقط</div>
+        </div>
+        <p class="note">تُقبل تحويلات البنوك المحلية جميعها، لا بنك مسقط وحده.</p>
+      </div>
+      <div class="art"><img src="images/guide/guide-transfer.png" alt="هاتف يخرج منه نقود"></div>
+    </div>
+
+    <div class="stepx">
+      <div class="body">
+        <div class="row"><span class="num">٤</span><h3>ارفعي الإيصال</h3></div>
+        <p>ارفعي إشعار التحويل: ملف PDF من تطبيق البنك، أو صورة للإيصال. ثم اكتبي رقم واتساب واسمك واضغطي «تحقّقي من الدفع».</p>
+        <p class="note">رقم واتساب للتواصل معكِ إن احتاج طلبك مراجعة، والاسم للسجلّ فقط.</p>
+      </div>
+      <div class="art"><img src="images/guide/guide-receipt.png" alt="إيصال يُرفع إلى السحابة"></div>
+    </div>
+
+    <div class="stepx">
+      <div class="body">
+        <div class="row"><span class="num">٥</span><h3>يظهر الرمز على الشاشة</h3></div>
+        <p>خلال ثوانٍ يُقرأ الإيصال ويظهر رمز الفتح أمامك — رمزٌ لكل كتابٍ في طلبك. انسخيه قبل أن تغادري الصفحة.</p>
+      </div>
+      <div class="art"><img src="images/guide/guide-code.png" alt="مفتاح ذهبي وقفل مفتوح"></div>
+    </div>
+  </section>
+
+  <!-- ═══ المسار الثاني: واتساب ═══ -->
+  <section class="path wa">
+    <div class="path-head">
+      <h2>الطلب عبر واتساب</h2>
+    </div>
+    <p class="path-sub">الطريق نفسه، لكنّه يجري في محادثةٍ واحدة ويصلك الرمز فيها.</p>
+
+    <div class="stepx">
+      <div class="body">
+        <div class="row"><span class="num">١</span><h3>افتحي المحادثة</h3></div>
+        <p>من نافذة قفل الكتاب اضغطي زرّ واتساب، فتُفتح محادثةٌ برسالةٍ مكتوبةٍ سلفاً باسم الكتاب — أرسليها كما هي.</p>
+        <p class="note">على السبورة أو الشاشة العريضة يظهر بدل الزرّ رمزٌ تمسحينه بكاميرا هاتفك، فينتقل الطلب إلى هاتفك أنتِ ولا تُعرَض محادثاتك أمام الصفّ.</p>
+        <div class="data">
+          <div><span class="k">رقم شوجب: </span><span class="v">+968 7171 2937</span></div>
+        </div>
+      </div>
+      <div class="art"><img src="images/guide/guide-chat.png" alt="هاتف فوقه فقاعة محادثة"></div>
+    </div>
+
+    <div class="stepx">
+      <div class="body">
+        <div class="row"><span class="num">٢</span><h3>حوّلي المبلغ</h3></div>
+        <p>ثلاثة ريالات عن كل كتابٍ طلبتِه، إلى الحساب نفسه:</p>
+        <div class="data">
+          <div><span class="k">الرقم: </span><span class="v">91496256</span></div>
+          <div><span class="k">الاسم: </span><span class="v">IBRAHIM KHAMIS</span> — بنك مسقط</div>
+        </div>
+      </div>
+      <div class="art"><img src="images/guide/guide-transfer.png" alt="هاتف يخرج منه نقود"></div>
+    </div>
+
+    <div class="stepx">
+      <div class="body">
+        <div class="row"><span class="num">٣</span><h3>أرسلي الإيصال في المحادثة</h3></div>
+        <p>أرسلي إشعار التحويل في المحادثة نفسها — صورةً أو ملف PDF، كلاهما مقبول.</p>
+      </div>
+      <div class="art"><img src="images/guide/guide-receipt.png" alt="إيصال يُرفع إلى السحابة"></div>
+    </div>
+
+    <div class="stepx">
+      <div class="body">
+        <div class="row"><span class="num">٤</span><h3>يصلك الرمز في المحادثة</h3></div>
+        <p>يُقرأ الإيصال ويصلك رمز الفتح في الردّ. وإن احتاج طلبك مراجعةً يدوية وصلتك رسالةٌ تخبرك بذلك.</p>
+      </div>
+      <div class="art"><img src="images/guide/guide-code.png" alt="مفتاح ذهبي وقفل مفتوح"></div>
+    </div>
+  </section>
+
+  <!-- ═══ استعمال الرمز ═══ -->
+  <section class="finish">
+    <h2>وصلك الرمز — كيف تفتحين به الكتاب؟</h2>
+    <ol>
+      <li>افتحي المنصّة واختاري صفّك ثم الكتاب الذي اشتريتِه.</li>
+      <li>اضغطي القفل الكبير على إطار الوحدات المقفلة، فتُفتح نافذة الرمز.</li>
+      <li>الصقي الرمز في الخانة واضغطي <span class="chip">افتح الكتاب</span>، فتُفتح وحدات الكتاب كلُّها في الحال.</li>
+    </ol>
+  </section>
+
+  <!-- ═══ أسئلة متكرّرة ═══ -->
+  <section class="faq">
+    <h2>أسئلة متكرّرة</h2>
+
+    <details>
+      <summary>أدخلتُ الرمز فقال إنه لكتابٍ آخر</summary>
+      <p>الرمز يفتح كتاباً واحداً بعينه. الرسالة تسمّي لك الكتاب الذي يفتحه — افتحي ذلك الكتاب وستجدينه مفتوحاً. ورمزك محفوظٌ ولم يُهدَر.</p>
+    </details>
+
+    <details>
+      <summary>الرمز يقول «انتهت الصلاحية» وهو حديث</summary>
+      <p>تحقّقي من تاريخ جهازك: ساعةٌ مضبوطةٌ على سنةٍ لاحقة تجعل الرمز يبدو منتهياً. اضبطي التاريخ ثم أعيدي المحاولة.</p>
+    </details>
+
+    <details>
+      <summary>هل أشتري لكل صفٍّ أدرّسه؟</summary>
+      <p>لا، الاشتراك مرتبطٌ بكِ لا بالصفّ. تشترين الكتب التي تدرّسينها، وتفتحينها بالرمز في أي جهازٍ تدخلين منه.</p>
+    </details>
+
+    <details>
+      <summary>حوّلتُ المبلغ ولم يصلني رمز</summary>
+      <p>راسلينا على واتساب <span class="v">+968 7171 2937</span> ومعك صورة الإيصال ورقم المرجع البنكي، ويُراجَع طلبك يدوياً.</p>
+    </details>
+
+    <details>
+      <summary>أضفتُ كتاباً بعد التحويل، ماذا أفعل؟</summary>
+      <p>كل كتابٍ إضافيّ بعد التحويل عمليةُ شراءٍ جديدة بإيصالٍ جديد. اجمعي كتبك في سلّةٍ واحدة قبل التأكيد لتُحوّلي مرّةً واحدة.</p>
+    </details>
+  </section>
+
+  <div class="cta">
+    <a href="pay.html">الشراء من الموقع</a>
+    <a class="cta-wa" href="https://wa.me/96871712937?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1%20%D9%83%D8%AA%D8%A7%D8%A8" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.23 8.23 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.41a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.21.88 2.39 1 2.55.12.17 1.73 2.64 4.19 3.7.59.25 1.04.4 1.4.52.59.19 1.12.16 1.54.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29Z"/></svg><span>الشراء من واتساب</span></a>
+  </div>
+
+  <p class="foot"><a href="index.html">المنصّة</a> · <a href="pay.html">شراء كتاب</a> · <a href="privacy.html">سياسة الخصوصية</a> · © ٢٠٢٦ شوجب</p>
+
+</div>
+</body>
+</html>
