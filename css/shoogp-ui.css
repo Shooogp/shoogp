@@ -485,6 +485,9 @@
   color:#3a3a3a;
   text-shadow:0 1px 2px rgba(255,255,255,.55);
 }
+/* ألوان التغذية الراجعة في العلوم: درجة «أساسي» من سُلَّمَي CLAUDE.md */
+.shoogp-ui.subj-science .qwin .qfb.good{ color:#60C020 !important; }
+.shoogp-ui.subj-science .qwin .qfb.bad{  color:#FF2020 !important; }
 
 /* ══ قاعدة تصميم خاصة بكتب الرياضيات (qf-hasfill — التعبئةُ المدموجة) ══
    تعبئةُ أطرِ الرياضياتِ سماويةٌ مشبّعة (#00b6d7 وأخواتُها)، فالنصوصُ الملامسةُ لها
