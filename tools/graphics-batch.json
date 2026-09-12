@@ -28,11 +28,19 @@
   "    ← يتخطّى البناءَ كلَّه. يُستعمَلُ حينَ تُغري قائمةُ الهيكسات النموذجَ",
   "      برسمِ لوحةِ ألوانٍ داخلَ الصورة (وقعَ فعلاً مع رسمةِ العين)."
  ],
- "batchId": "2026-09-13-it-covers",
+ "batchId": "2026-09-13-it-covers-2",
  "items": [
   {
-   "name": "cover-art-g1-it-2026-09-13-it-covers",
-   "subject": "a plump rounded laptop computer with a friendly glowing screen showing a simple gear cog icon, a small rounded satellite dish emitting a curved signal wave above it, and a chunky rounded computer mouse beside it, arranged together as a digital-technology emblem"
+   "name": "cover-art-g2-it-2026-09-13-it-covers-2",
+   "subject": "a plump rounded digital drawing tablet with a stylus pen resting on it, a small chunky 3D cube shape floating beside it, and a colorful rounded paint palette with a few paint dabs, arranged together as a digital-creativity emblem"
+  },
+  {
+   "name": "cover-art-g3-it-2026-09-13-it-covers-2",
+   "subject": "a plump rounded manila folder with a few papers peeking out, a small chunky desktop printer, and a rounded globe with a curved wifi signal wave above it, arranged together as a digital-organization emblem"
+  },
+  {
+   "name": "cover-art-g4-it-2026-09-13-it-covers-2",
+   "subject": "a plump rounded presentation screen on a stand showing a simple bar chart, a small rounded envelope with an at-sign, and a chunky rounded camera, arranged together as a digital-media emblem"
   }
  ]
 }
