@@ -23,7 +23,8 @@ window.DATA_FALLBACK = {
         { key:"g2-arabic-1", band:["#f0a860","#d0863c"], title:"أحب لغتي", term:"الفصل الأول", color:"bk-orange", ic:"🪶", isNew:false, theme:"theme-arabic2a", cover:"images/cover-g2-arabic-1.jpg" },
         { key:"g2-arabic-2", band:["#a888c8","#8666a8"], title:"أحب لغتي", term:"الفصل الأول", color:"bk-purple", ic:"🪶", isNew:false, theme:"theme-arabic2b", cover:"images/cover-g2-arabic-2.jpg" },
         { key:"g2-dini-1", band:["#8fa83a","#6d8528"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-green", ic:"🕌", isNew:false, theme:"theme-dini2a", cover:"images/cover-g2-dini-1.jpg" },
-        { key:"g2-dini-2", band:["#6d8a2c","#52691c"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-green", ic:"🕌", isNew:false, theme:"theme-dini2b", cover:"images/cover-g2-dini-2.jpg" }
+        { key:"g2-dini-2", band:["#6d8a2c","#52691c"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-green", ic:"🕌", isNew:false, theme:"theme-dini2b", cover:"images/cover-g2-dini-2.jpg" },
+        { key:"g2-it", band:["#4C9090","#006060"], title:"عالمي الرقمي", term:"الفصل الأول", color:"bk-teal", ic:"💻", isNew:true, onSale:false, devOnly:true, theme:"theme-it2", cover:"images/cover-g2-it.jpg" }
       ],
       /* ملاحظة: بطاقة علوم الثالث كانت مفقودة من هذا الاحتياط بينما هي في data/books.json —
          فكان الكتاب يختفي في وضع file:// وحده. أُضيفت هنا مع بطاقات الصف الجديدة. */
@@ -33,7 +34,8 @@ window.DATA_FALLBACK = {
         { key:"g3-arabic-1", band:["#f2b989","#d4936a"], title:"أحب لغتي", term:"الفصل الأول", color:"bk-orange", ic:"🪶", isNew:false, theme:"theme-arabic3a", cover:"images/cover-g3-arabic-1.jpg" },
         { key:"g3-arabic-2", band:["#7fc4e8","#5aa0cc"], title:"أحب لغتي", term:"الفصل الأول", color:"bk-blue", ic:"🪶", isNew:false, theme:"theme-arabic3b", cover:"images/cover-g3-arabic-2.jpg" },
         { key:"g3-dini-1", band:["#86bfb8","#609b94"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-teal", ic:"🕌", isNew:false, theme:"theme-dini3a", cover:"images/cover-g3-dini-1.jpg" },
-        { key:"g3-dini-2", band:["#62bcbc","#429898"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-teal", ic:"🕌", isNew:false, theme:"theme-dini3b", cover:"images/cover-g3-dini-2.jpg" }
+        { key:"g3-dini-2", band:["#62bcbc","#429898"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-teal", ic:"🕌", isNew:false, theme:"theme-dini3b", cover:"images/cover-g3-dini-2.jpg" },
+        { key:"g3-it", band:["#D37F5D","#C04818"], title:"عالمي الرقمي", term:"الفصل الأول", color:"bk-orange", ic:"💻", isNew:true, onSale:false, devOnly:true, theme:"theme-it3", cover:"images/cover-g3-it.jpg" }
       ],
       "الرابع": [
         { key:"g4-sci", band:["#5cc98a","#3fa870"], title:"العلوم", term:"الفصل الأول", color:"bk-green", ic:"🔬", isNew:false, onSale:true, theme:"theme-sci", coverReal:"images/cover-g4-sci-real.jpg", coverOriginal:"images/cover-g4-sci.jpg" },
@@ -41,7 +43,8 @@ window.DATA_FALLBACK = {
         { key:"g4-arabic-1", band:["#4bb3ab","#33978f"], title:"أحب لغتي", term:"الفصل الأول", color:"bk-teal", ic:"🪶", isNew:false, theme:"theme-arabic", cover:"images/cover-g4-arabic-1.jpg" },
         { key:"g4-arabic-2", band:["#ec9c70","#c2805c"], title:"أحب لغتي", term:"الفصل الأول", color:"bk-orange", ic:"🪶", isNew:false, theme:"theme-arabic-2", cover:"images/cover-g4-arabic-2.jpg" },
         { key:"g4-dini-1", band:["#4fa8e8","#2f88d0"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-blue", ic:"🕌", isNew:false, theme:"theme-dini", cover:"images/cover-g4-dini-1.jpg" },
-        { key:"g4-dini-2", band:["#4bb3ab","#33978f"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-teal", ic:"🕌", isNew:false, theme:"theme-dini-2", cover:"images/cover-g4-dini-2.jpg" }
+        { key:"g4-dini-2", band:["#4bb3ab","#33978f"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-teal", ic:"🕌", isNew:false, theme:"theme-dini-2", cover:"images/cover-g4-dini-2.jpg" },
+        { key:"g4-it", band:["#7F7F90","#484860"], title:"عالمي الرقمي", term:"الفصل الأول", color:"bk-purple", ic:"💻", isNew:true, onSale:false, devOnly:true, theme:"theme-it4", cover:"images/cover-g4-it.jpg" }
       ]
     },
     "الثاني": {
@@ -302,6 +305,7 @@ window.DATA_FALLBACK = {
         { title:"الدرس الخامس: انتهاء المقاطعة", file:"g4d2-4-5", open:true }
       ]}
     ]},
+    "g4-it": { book:"عالمي الرقمي — الصف الرابع", units:[] },
     "g3-math": { book:"الرياضيات — الصف الثالث", units:[
       { unit:"١أ: العدد وحل المشكلات", lessons:[
         { title:"المئات والعشرات والآحاد (١-١)", file:"g3m-1-1", chapter:1, chapterTitle:"القيمة المكانيّة (١)", open:true },
@@ -574,6 +578,7 @@ window.DATA_FALLBACK = {
         { title:"الدرس السادس: أصِلُ أرحامي", file:"g2d2-4-6", open:true }
       ]}
     ]},
+    "g2-it": { book:"عالمي الرقمي — الصف الثاني", units:[] },
     "g3-dini-1": { book:"ديني حياتي (الجزء الأول) — الصف الثالث", units:[
       { unit:"التلاوة والحفظ", lessons:[
         { title:"التلاوة والحفظ", file:"g3d1-0-1", open:true }
@@ -615,6 +620,7 @@ window.DATA_FALLBACK = {
         { title:"الدرس الخامس: الإمام عليُّ بن أبي طالب كرَّم الله وجهه", file:"g3d2-4-5", open:true },
         { title:"الدرس السادس: العطاء", file:"g3d2-4-6", open:true }
       ]}
-    ]}
+    ]},
+    "g3-it": { book:"عالمي الرقمي — الصف الثالث", units:[] }
   }
 };
