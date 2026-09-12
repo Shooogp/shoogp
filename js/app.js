@@ -150,7 +150,13 @@ function buildGrades(){
 }
 function buildBooks(){
   const wrap=document.getElementById('books');wrap.innerHTML='';
-  const books=DATA.terms[currentTerm][currentGrade];
+  /* `devOnly`: كتابٌ قيدَ الإعداد (بطاقة ظهرت قبل اعتماده النهائي) يُخفى عن
+     الجمهور ولا يظهر إلا في وضع المطوّر (`?dev=` أو localStorage) — قرارُ
+     المالك ٢٠٢٦-٠٩-١٢: الموقعُ مفتوحٌ للعموم الآن، فلا تُرى مراحلُ العملِ قبلَ
+     اعتمادِها. الحقلُ يعيش في بيانات الكتاب (`data/books.json`/`js/data.js`)
+     لا في كودٍ منفصل، وغيابه يُقرأ `false` كبقيّة الأعلام المشابهة (`onSale`). */
+  const isDev = !!(window.ShoogpLock && ShoogpLock.isDevMode());
+  const books=DATA.terms[currentTerm][currentGrade].filter(bk=>!bk.devOnly || isDev);
   if(!books.length){wrap.innerHTML=`<div class="empty">📚 كتب الصف ${currentGrade} — الفصل ${currentTerm} ستُضاف قريباً بإذن الله</div>`;return;}
   books.forEach(bk=>{
     const cover = bk.coverReal ? (USE_REAL_COVER ? bk.coverReal : bk.coverOriginal) : (bk.cover||null);

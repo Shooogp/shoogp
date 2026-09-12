@@ -898,6 +898,7 @@
     normalize:    normalize,
     isLockOff:    isLockOff,
     setLockOff:   setLockOff,
-    FREE_UNITS:   FREE_UNITS
+    FREE_UNITS:   FREE_UNITS,
+    isDevMode:    function () { return devMode; }
   };
 })();
