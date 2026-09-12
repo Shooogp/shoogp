@@ -961,6 +961,18 @@
   .hs-mark.hit{background:rgba(63,157,90,.6)}
   .hs-mark.miss{background:rgba(201,74,74,.6)}
 
+  /* ㊳ حلّ المتاهة (maze) — خاصّة بمادة عالمي الرقمي. الرمزُ المسحوبُ عبر الممرّ */
+  .maze-wrap{display:flex;flex-direction:column;align-items:center;gap:10px}
+  .maze-token{position:absolute;width:34px;height:34px;border-radius:50%;
+    transform:translate(-50%,-50%);background:#f5a04a;border:3px solid #fff;
+    box-shadow:0 3px 10px rgba(0,0,0,.35);cursor:grab;touch-action:none;z-index:4;
+    transition:background .15s,border-color .15s}
+  .maze-token.grab{cursor:grabbing;transform:translate(-50%,-50%) scale(1.12)}
+  .maze-token.off{background:#c94a4a;border-color:#fff}
+  .maze-token.correct{background:#a7c957;border-color:#82a83e}
+  .maze-target-label{font-family:'Cairo';font-weight:800;color:#ffe27a;font-size:1.05rem;
+    text-shadow:0 1px 3px rgba(0,0,0,.34)}
+
   /* ⑱ بطاقات الذاكرة — شبكة بطاقات مقلوبة تُقلب بطاقتان كل دور (نسخة نصية)، بطاقات كبيرة للسبورة و RTL */
   .memory{display:flex;flex-direction:column;align-items:center;gap:18px;width:100%}
   /* تخطيط الشبكة — قاعدة تصميم دائمة (DESIGN_RULES.md §أسئلة بطاقات الذاكرة —

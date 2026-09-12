@@ -377,7 +377,7 @@ function qWin(fb,msg,stars){fb.textContent=msg||'🎉 أحسنت!';fb.className=
 // أي واجهة بلا صاروخ تُبقي wrong.mp3 يعمل (بقية دروس المنصّة كلها تحوي الصاروخ الآن)
 function qFail(fb,msg){fb.textContent=msg||'حاول مرة أخرى';fb.className='fb qfb bad';if(!(window.RocketJourney&&RocketJourney.isActive&&RocketJourney.isActive()))playWrongSound();if(window.RocketJourney)RocketJourney.onAnswer(false);}
 
-const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل','slider':'🎚️ الشريط المتدرج','memory':'🎴 بطاقات الذاكرة','lens':'🔍 العدسة المكبّرة','equation-builder':'🧮 بناء المعادلة','number-line':'📏 خط الأعداد','hundred-chart':'💯 لوحة المائة','array':'🔲 المصفوفات','compare':'⚖️ المقارنة','pattern':'🔁 إكمال النمط','count-tap':'🖐️ العد بالنقر','place-value':'🧱 القيمة المنزلية','clock':'🕐 الساعة التفاعلية','measure-tool':'📐 أداة القياس','money':'🪙 النقود العُمانية','symmetry':'🪞 خط التماثل','chart-read':'📊 التمثيل البياني','tashkeel':'ـَ التشكيل','sentence':'📝 ترتيب الجملة','sun-moon':'☀️ شمسية وقمرية','letter-picture':'🔠 الحرف والصورة','judge-reason':'⚖️ الحكم والتعليل','listen-locate':'🎧 أستمع وأحدّد'};
+const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل','slider':'🎚️ الشريط المتدرج','memory':'🎴 بطاقات الذاكرة','lens':'🔍 العدسة المكبّرة','equation-builder':'🧮 بناء المعادلة','number-line':'📏 خط الأعداد','hundred-chart':'💯 لوحة المائة','array':'🔲 المصفوفات','compare':'⚖️ المقارنة','pattern':'🔁 إكمال النمط','count-tap':'🖐️ العد بالنقر','place-value':'🧱 القيمة المنزلية','clock':'🕐 الساعة التفاعلية','measure-tool':'📐 أداة القياس','money':'🪙 النقود العُمانية','symmetry':'🪞 خط التماثل','chart-read':'📊 التمثيل البياني','tashkeel':'ـَ التشكيل','sentence':'📝 ترتيب الجملة','sun-moon':'☀️ شمسية وقمرية','letter-picture':'🔠 الحرف والصورة','judge-reason':'⚖️ الحكم والتعليل','listen-locate':'🎧 أستمع وأحدّد','maze':'🌀 حلّ المتاهة'};
 
 /* تحويل الأرقام إلى هندية (عربية) للعرض — قاعدةُ المنصّة: **كلُّ رقمٍ يراه المستخدمُ
    بالأرقامِ الهندية**. يُستعمَلُ في محرّكِ الأسئلةِ **وفي طبقةِ التنقّلِ أعلاه أيضاً**
@@ -398,7 +398,7 @@ function renderQuestions(ls){
     m.innerHTML='<div class="qbody" style="text-align:center;padding:14px 6px;font-size:1.15rem">📚 أسئلة هذا الدرس ستُضاف قريباً بإذن الله</div>';
     host.appendChild(m); return;
   }
-  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor,'puzzle':renderPuzzle,'slider':renderSlider,'memory':renderMemory,'lens':renderLens,'equation-builder':renderEquationBuilder,'number-line':renderNumberLine,'hundred-chart':renderHundredChart,'array':renderArray,'compare':renderCompare,'pattern':renderPattern,'count-tap':renderCountTap,'place-value':renderPlaceValue,'clock':renderClock,'measure-tool':renderMeasureTool,'money':renderMoney,'symmetry':renderSymmetry,'chart-read':renderChartRead,'tashkeel':renderTashkeel,'sentence':renderSentence,'sun-moon':renderSunMoon,'letter-picture':renderLetterPicture,'judge-reason':renderJudgeReason,'listen-locate':renderListenLocate};
+  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor,'puzzle':renderPuzzle,'slider':renderSlider,'memory':renderMemory,'lens':renderLens,'equation-builder':renderEquationBuilder,'number-line':renderNumberLine,'hundred-chart':renderHundredChart,'array':renderArray,'compare':renderCompare,'pattern':renderPattern,'count-tap':renderCountTap,'place-value':renderPlaceValue,'clock':renderClock,'measure-tool':renderMeasureTool,'money':renderMoney,'symmetry':renderSymmetry,'chart-read':renderChartRead,'tashkeel':renderTashkeel,'sentence':renderSentence,'sun-moon':renderSunMoon,'letter-picture':renderLetterPicture,'judge-reason':renderJudgeReason,'listen-locate':renderListenLocate,'maze':renderMaze};
 
   // بناء كل البطاقات (تبقى في الصفحة لحفظ إجاباتها، ونُظهر واحدة فقط)
   // شارة رقم السؤال أُلغيت (قرار المالك): مؤشر التقدم «السؤال ٢ من ٦» يغني عنها
@@ -3779,6 +3779,95 @@ function renderListenLocate(q, body, fb){
     }
   };
   body.querySelector('.btn-reset').onclick=()=>renderListenLocate(q,body,fb);
+}
+
+/* ㊳ حلّ المتاهة (maze) — خاصّةٌ بمادّة عالمي الرقمي (تقنية المعلومات).
+   الرسمُ (‏`svg` أو `image`) متاهةٌ كاملةٌ برسمِها بما فيها الهدفُ في مركزِها، تماماً
+   كما في الكتاب. البيانات التفاعليّةُ منفصلةٌ عن الرسمِ تماماً كـ`hotspot`:
+   `path`: [{x,y},…] نقاطُ الممرِّ الصحيحِ (نسبةً مئويةً من إطارِ الرسم) من المدخلِ
+   إلى الهدف، و`tolerance` نصفُ عرضِ الممرِّ بالنسبةِ المئويةِ (افتراضياً ٦).
+   الطالبُ يسحبُ رمزاً (‏`.maze-token`) من المدخلِ متتبّعاً الممرَّ بإصبعِه/فأرتِه —
+   السحبُ **مستمرٌّ لا نقرةٌ واحدة** (فحصُ آليّةِ التفاعلِ: قرارُ المالك ٢٠٢٦-٠٩-١٢
+   اختارَ التتبّعَ الكاملَ لا النقرَ على وجهةٍ بين عدّة، طبقَ الأصلِ في الكتاب).
+   خروجُ الرمزِ عن الممرِّ (تجاوزُ `tolerance`) يُعيدُه إلى نقطةِ البداية — كلمسِ
+   جدارٍ حقيقيّ. الوصولُ إلى آخرِ نقطةٍ في `path` أثناءَ السحبِ يُنهي السؤالَ فوزاً. */
+function renderMaze(q, body, fb){
+  const inner=q.svg?q.svg:`<img src="${q.image}" alt="">`;
+  const figCls = q.fit==='width' ? 'figwrap fw hsfig' : 'figwrap hsfig';
+  body.innerHTML=`<div class="dnd dnd-solo maze-wrap"><div class="stage stage-img"${q.bg?` style="background:${q.bg}"`:''}>`+
+    `<div class="${figCls}">${inner}<div class="maze-token" title="اسحبني عبر الممرّ"></div></div>`+
+    `</div></div>`+
+    (q.targetLabel?`<div class="maze-target-label">🎯 ${q.targetLabel}</div>`:'');
+  const fig=body.querySelector('.hsfig');
+  const token=body.querySelector('.maze-token');
+  const path=q.path;
+  const tol=q.tolerance!=null?+q.tolerance:6;
+
+  // طولُ كلِّ قطعةٍ والطولُ الكليُّ (بوحداتِ النسبةِ المئوية) لحسابِ التقدّمِ النسبيّ
+  const segLens=[]; let total=0;
+  for(let i=0;i<path.length-1;i++){
+    const l=Math.hypot(path[i+1].x-path[i].x, path[i+1].y-path[i].y);
+    segLens.push(l); total+=l;
+  }
+  // أقربُ نقطةٍ على المسارِ لِنقطةٍ (px,py) نسبةً مئويةً من صندوقِ محتوى الرسم،
+  // ومعها تقدّمُها 0..1 على طولِ المسارِ كلِّه (نفسُ منطقِ hitsSpot: مسافةٌ لا مسار)
+  function nearestOnPath(px,py){
+    let best=null, cum=0;
+    for(let i=0;i<path.length-1;i++){
+      const a=path[i], b=path[i+1], dx=b.x-a.x, dy=b.y-a.y;
+      const len2=dx*dx+dy*dy;
+      let t=len2?((px-a.x)*dx+(py-a.y)*dy)/len2:0; t=Math.max(0,Math.min(1,t));
+      const cx=a.x+t*dx, cy=a.y+t*dy, d=Math.hypot(px-cx,py-cy);
+      if(!best||d<best.d) best={d,cx,cy,progress:total?(cum+t*segLens[i])/total:1};
+      cum+=segLens[i];
+    }
+    return best;
+  }
+  // موضعُ الرمزِ يُكتَبُ نسبةً من صندوقِ `fig` كما يراهُ المستخدمُ (مثلَ markX/markY
+  // في hotspot)، لا من صندوقِ المحتوى — فلا ينزاحُ الرمزُ عن الممرِّ المرسومِ بصرياً
+  // حين تختلفُ نسبةُ الرسمِ عن نسبةِ صندوقِه (‏figContentBox أعلاه).
+  function placeAtContentPct(px,py){
+    const box=fig.getBoundingClientRect(), cbox=figContentBox(fig);
+    if(!box.width||!box.height) return false;
+    const xPx=(cbox.left-box.left)+px/100*cbox.width, yPx=(cbox.top-box.top)+py/100*cbox.height;
+    token.style.left=(xPx/box.width*100)+'%'; token.style.top=(yPx/box.height*100)+'%';
+    return true;
+  }
+  // شبكةُ أمانٍ للوضعِ الابتدائيّ: إن استُدعيَ الرسمُ قبلَ اكتمالِ التخطيطِ (صندوقٌ
+  // بلا أبعادٍ بعد) يُعادُ المحاولةُ في الإطارِ التالي بدلَ أن يبقى الرمزُ بلا موضع.
+  (function placeInitial(){ if(!placeAtContentPct(path[0].x,path[0].y)) requestAnimationFrame(placeInitial); })();
+
+  let dragging=false, done=false, offFlash=false;
+  function moveTo(clientX,clientY){
+    if(done) return;
+    const cbox=figContentBox(fig); if(!cbox.width||!cbox.height) return;
+    const px=(clientX-cbox.left)/cbox.width*100, py=(clientY-cbox.top)/cbox.height*100;
+    const n=nearestOnPath(px,py);
+    if(n.d<=tol){
+      offFlash=false; token.classList.remove('off');
+      placeAtContentPct(n.cx,n.cy);
+      if(n.progress>=0.96){
+        done=true; token.classList.add('correct'); endDrag();
+        qWin(fb,'🎉 أحسنت! وصلت إلى الهدف',2);
+      }
+    } else if(!offFlash){
+      // خروجٌ عن الممرِّ — يُعادُ الرمزُ إلى البدايةِ (كلمسِ جدارٍ)؛ مُثبَّطٌ بعلَمٍ
+      // كي لا تتكرّرَ التغذيةُ الراجعةُ مع كلِّ حدثِ حركةٍ طالما الإصبعُ خارجَ الممر.
+      offFlash=true; token.classList.add('off');
+      qFail(fb,'خرجت عن الممرّ! عد إلى البداية وحاول مرّة أخرى');
+      setTimeout(()=>{ placeAtContentPct(path[0].x,path[0].y); token.classList.remove('off'); offFlash=false; },500);
+    }
+  }
+  function onMouseMove(e){ if(dragging) moveTo(e.clientX,e.clientY); }
+  function onTouchMove(e){ if(dragging){ moveTo(e.touches[0].clientX,e.touches[0].clientY); e.preventDefault(); } }
+  function endDrag(){ dragging=false; token.classList.remove('grab');
+    window.removeEventListener('mousemove',onMouseMove); window.removeEventListener('mouseup',endDrag);
+    window.removeEventListener('touchmove',onTouchMove); window.removeEventListener('touchend',endDrag); }
+  function startDrag(){ if(done)return; dragging=true; token.classList.add('grab');
+    window.addEventListener('mousemove',onMouseMove); window.addEventListener('mouseup',endDrag);
+    window.addEventListener('touchmove',onTouchMove,{passive:false}); window.addEventListener('touchend',endDrag); }
+  token.addEventListener('mousedown',e=>{ e.preventDefault(); startDrag(); });
+  token.addEventListener('touchstart',()=>{ startDrag(); },{passive:true});
 }
 
 /* ===== إقلاع ===== */
