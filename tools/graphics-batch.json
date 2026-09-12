@@ -28,19 +28,15 @@
   "    ← يتخطّى البناءَ كلَّه. يُستعمَلُ حينَ تُغري قائمةُ الهيكسات النموذجَ",
   "      برسمِ لوحةِ ألوانٍ داخلَ الصورة (وقعَ فعلاً مع رسمةِ العين)."
  ],
- "batchId": "2026-09-13-it-covers-2",
+ "batchId": "2026-09-13-frame-it-l-s",
  "items": [
   {
-   "name": "cover-art-g2-it-2026-09-13-it-covers-2",
-   "subject": "a plump rounded digital drawing tablet with a stylus pen resting on it, a small chunky 3D cube shape floating beside it, and a colorful rounded paint palette with a few paint dabs, arranged together as a digital-creativity emblem"
+   "name": "frame-it-l-2026-09-13-frame-it-l-s",
+   "prompt": "Create a single decorative picture-frame border ornament for a childrens educational app screen, in the shape of a friendly satellite-and-circuitry theme surrounding a big empty rectangular window in the middle. The border is made of a chunky rounded blue-grey metallic satellite dish shape and a small solar-panel shape with a grid pattern, sitting only in the TOP-RIGHT corner area of the frame, plus a thin glowing sky-blue circuit-trace line (like a printed circuit board trace with small rounded node dots) that runs along the TOP edge and the RIGHT edge of the frame only. The LEFT edge and the BOTTOM-LEFT corner of the frame are completely plain, bare and undecorated — no lines, no shapes, no circuitry there at all. The centre window is a single flat empty area with no objects, no pattern, and no character inside it. The centre window is a large near-square opening, taking up most of the frame, with a moderately thick decorated border on the top and right only, and a thin plain border on the left and bottom. Glossy cartoon vector sticker illustration in a bright space-sticker style. Bold saturated flat colours (sky blue, ocean blue, metallic silver-blue, amber, white). Each part is shaded with three or four crisp discrete colour bands, hard edged, no soft blending. A broad white gloss highlight on every curved surface. A thin crisp near-black outline #111111 around every part. Plump rounded forms, no sharp angles. No ground line, no cast shadow. CRITICAL: absolutely no eyes, no face, no facial features on anything anywhere in the image. ABSOLUTELY FORBIDDEN: any text, letters, numbers, labels, watermarks, colour swatches or legends anywhere in the image. One single standalone image only, square 1:1 canvas, the whole frame filling the canvas edge to edge."
   },
   {
-   "name": "cover-art-g3-it-2026-09-13-it-covers-2",
-   "subject": "a plump rounded manila folder with a few papers peeking out, a small chunky desktop printer, and a rounded globe with a curved wifi signal wave above it, arranged together as a digital-organization emblem"
-  },
-  {
-   "name": "cover-art-g4-it-2026-09-13-it-covers-2",
-   "subject": "a plump rounded presentation screen on a stand showing a simple bar chart, a small rounded envelope with an at-sign, and a chunky rounded camera, arranged together as a digital-media emblem"
+   "name": "frame-it-s-2026-09-13-frame-it-l-s",
+   "prompt": "Create a single decorative picture-frame border ornament for a childrens educational app screen, in the shape of a friendly satellite-and-circuitry theme surrounding a big empty rectangular window in the middle. The border is made of a chunky rounded blue-grey metallic satellite dish shape and a small solar-panel shape with a grid pattern, sitting only in the TOP-RIGHT corner area of the frame, plus a thin glowing sky-blue circuit-trace line (like a printed circuit board trace with small rounded node dots) that runs along the TOP edge and the RIGHT edge of the frame only. The LEFT edge and the BOTTOM-LEFT corner of the frame are completely plain, bare and undecorated — no lines, no shapes, no circuitry there at all. The centre window is a single flat empty area with no objects, no pattern, and no character inside it. The centre window is a very wide, short, letterboxed horizontal opening spanning almost the full width of the canvas but only a thin vertical slice near the middle, leaving a thick decorated band above it (top) and a thick plain band below it (bottom). Glossy cartoon vector sticker illustration in a bright space-sticker style. Bold saturated flat colours (sky blue, ocean blue, metallic silver-blue, amber, white). Each part is shaded with three or four crisp discrete colour bands, hard edged, no soft blending. A broad white gloss highlight on every curved surface. A thin crisp near-black outline #111111 around every part. Plump rounded forms, no sharp angles. No ground line, no cast shadow. CRITICAL: absolutely no eyes, no face, no facial features on anything anywhere in the image. ABSOLUTELY FORBIDDEN: any text, letters, numbers, labels, watermarks, colour swatches or legends anywhere in the image. One single standalone image only, square 1:1 canvas, the whole frame filling the canvas edge to edge."
   }
  ]
 }
