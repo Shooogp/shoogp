@@ -1,0 +1,193 @@
+{
+  "meta": {
+    "subject": "عالمي الرقمي (تقنية المعلومات)",
+    "subjectKey": "it",
+    "cycle": "الحلقة الأولى",
+    "grades": [1, 2, 3, 4],
+    "term": "الفصل الدراسي الأول",
+    "source": "الفهرسة والبطاقة من كتاب-التلميذ.pdf؛ الأهداف من دليل-المعلم.pdf (قرار المالك ٢٠٢٦-٠٩-١٢)",
+    "cognitiveDistribution": "يرث توزيع العلوم: 3 knowledge + 1 application + 1 reasoning للأسئلة الأساسية الخمسة (قرار المالك في المرحلة ٠)",
+    "reports": [
+      "report-g1.md", "report-g2.md", "report-g3.md", "report-g4.md"
+    ],
+    "version": "0.1",
+    "status": "مسودة للمراجعة قبل الدمج في المحرّك"
+  },
+
+  "contentPolicy": {
+    "realScreenshotsAndLogos": {
+      "rule": "لقطاتُ الشاشةِ والشعاراتُ الحقيقيةُ الواردةُ في كتاب التلميذ نفسِه (Windows، Word، PowerPoint، Paint، Chrome، Outlook، Wikipedia، Tinkercad...) تبقى كما هي لأنها موضوعُ التعلّم نفسُه — لا تُستبدَل ولا تُموَّه.",
+      "butWhenWeDraw": "أيُّ رسمٍ **نولّده نحن** لمحاكاةِ واجهةِ برنامجٍ (كمرشَّحاتِ hotspot أو drag-drop الجديدة) يكون محاكاةً مبسّطةً محايدةَ العلامةِ — لا نسخاً حرفياً لواجهةٍ حقيقيةٍ ولا لشعارٍ تجاريّ.",
+      "decidedAt": "المرحلة ٠، ٢٠٢٦-٠٩-١٢ — أُعيد تأكيدُه في المسائل الثلاث بعد المرحلة ١"
+    },
+    "noFaces": {
+      "rule": "قاعدةُ المنصّةِ العامّةُ «بلا ملامح وجه» تسري على كلِّ رسمٍ نبنيه نحن. شخصيّتا الكتابِ الكرتونيّتانِ (وأطفالُ المشاهدِ) بملامحَ كاملةٍ هي محتوى المصدرِ الأصليّ ولا تُستنسَخ."
+    },
+    "sensitiveContent": {
+      "flagged": [
+        {
+          "lesson": "g3i-3-4",
+          "note": "نشاطٌ على نسخِ علمِ عُمان وشعارِ الدولةِ من موقعٍ حكوميّ — يُعامَل بحذرٍ عند التأليف (نسخةٌ مبسّطةٌ لا استنساخٌ للشعارِ الرسميِّ حرفياً)."
+        }
+      ]
+    },
+    "mazeType": {
+      "note": "النوعُ `maze` (حلّ المتاهة) خاصٌّ بمادّةِ عالمي الرقمي، بُني بطلبٍ مستقلٍّ من محتوى الدرسِ g3i-2-4 نفسِه (يحملُ نشاطَي متاهةٍ أصليَّين). لا يُستعمَل في دروسٍ أخرى إلا حيث يناسبُ المحتوى فعلياً بالمثل، ولا يُحشَر."
+    }
+  },
+
+  "books": [
+    {
+      "grade": 1,
+      "bookKey": "g1-it",
+      "units": [
+        {
+          "unit": 1, "title": "حاسوبي",
+          "lessons": [
+            { "code": "g1i-1-1", "title": "الحاسوب في حياتنا", "basic": ["mcq", "true-false", "classify", "matching", "exclude"], "enrichment": null, "status": "ready" },
+            { "code": "g1i-1-2", "title": "أجزاء جهاز الحاسوب", "basic": ["hotspot", "matching", "true-false", "mcq", "drag-drop"], "enrichment": "find-error", "status": "ready" },
+            { "code": "g1i-1-3", "title": "سطح المكتب", "basic": ["hotspot", "classify", "mcq", "true-false", "matching"], "enrichment": "exclude", "status": "ready" },
+            { "code": "g1i-1-4", "title": "انقر واكتب", "basic": ["hotspot", "matching", "true-false", "mcq", "classify"], "enrichment": "memory", "status": "ready" },
+            { "code": "g1i-1-5", "title": "دعنا نتذكر", "basic": ["matching", "classify", "true-false", "mcq", "drag-drop"], "enrichment": "color", "status": "ready", "note": "نشاط تلوين مفاتيح لوحة المفاتيح بحسب الفئة موجود حرفياً في الكتاب" },
+            { "code": "g1i-1-6", "title": "لنطبّق معا", "basic": ["sequence", "true-false", "mcq", "matching", "classify"], "enrichment": null, "status": "ready" }
+          ]
+        },
+        {
+          "unit": 2, "title": "هيا نرسم",
+          "lessons": [
+            { "code": "g1i-2-1", "title": "مقدمة إلى الرسم الرقمي", "basic": ["mcq", "true-false", "matching", "classify", "fill-blank"], "enrichment": "color", "status": "ready", "note": "شبكة تلوين بكسل موجودة حرفياً في الكتاب" },
+            { "code": "g1i-2-2", "title": "رسم الأشكال", "basic": ["hotspot", "matching", "sequence", "mcq", "true-false"], "enrichment": "exclude", "status": "ready" },
+            { "code": "g1i-2-3", "title": "لنتدرب على الأشكال", "basic": ["matching", "true-false", "mcq", "classify", "drag-drop"], "enrichment": "find-error", "status": "ready" },
+            { "code": "g1i-2-4", "title": "دمج الأشكال", "basic": ["sequence", "mcq", "true-false", "matching", "classify"], "enrichment": null, "status": "ready" },
+            { "code": "g1i-2-5", "title": "لنتدرب على دمج الأشكال", "basic": ["sequence", "matching", "true-false", "mcq", "classify"], "enrichment": "puzzle", "status": "ready", "note": "نشاطُ ترقيمِ خطواتٍ ١-٥ موجودٌ حرفياً" },
+            { "code": "g1i-2-6", "title": "الرسم الحر", "basic": ["sequence", "mcq", "true-false", "hotspot", "matching"], "enrichment": null, "status": "ready" }
+          ]
+        },
+        {
+          "unit": 3, "title": "لنتصفح",
+          "lessons": [
+            { "code": "g1i-3-1", "title": "الإنترنت", "basic": ["classify", "true-false", "mcq", "matching", "drag-drop"], "enrichment": "mindmap", "status": "ready" },
+            { "code": "g1i-3-2", "title": "استمتع", "basic": ["exclude", "sequence", "matching", "mcq", "true-false"], "enrichment": "memory", "status": "ready", "note": "شعارات متصفحات حقيقية أربعة — تبقى كما في الكتاب" },
+            { "code": "g1i-3-3", "title": "تواصل", "basic": ["classify", "matching", "mcq", "true-false", "fill-blank"], "enrichment": null, "status": "ready" },
+            { "code": "g1i-3-4", "title": "ابحث", "basic": ["sequence", "mcq", "matching", "true-false", "hotspot"], "enrichment": null, "status": "ready" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "grade": 2,
+      "bookKey": "g2-it",
+      "units": [
+        {
+          "unit": 1, "title": "حاسوبي",
+          "lessons": [
+            { "code": "g2i-1-1", "title": "أَجزاءُ جِهازِ الحاسوبِ", "basic": ["hotspot", "matching", "mcq", "true-false", "classify"], "enrichment": "find-error", "status": "ready" },
+            { "code": "g2i-1-2", "title": "سَطحُ المَكتَبِ", "basic": ["hotspot", "mcq", "true-false", "classify", "matching"], "enrichment": "exclude", "status": "ready" }
+          ]
+        },
+        {
+          "unit": 2, "title": "هيّا نُصَمِّمُ",
+          "lessons": [
+            { "code": "g2i-2-1", "title": "مُقَدِّمَةٌ إلى الرَّسمِ ثُلاثيِّ الأَبعادِ", "basic": ["classify", "hotspot", "mcq", "true-false", "matching"], "enrichment": "mindmap", "status": "ready" },
+            { "code": "g2i-2-2", "title": "التَّعامُلُ مَعَ كائنٍ ثُلاثيِّ الأَبعادِ", "basic": ["sequence", "matching", "mcq", "true-false", "drag-drop"], "enrichment": "memory", "status": "ready" },
+            { "code": "g2i-2-3", "title": "لِنَتَدَرَّبْ على التَّعامُلِ مَعَ كائنٍ ثُلاثيِّ الأَبعادِ", "basic": ["sequence", "mcq", "true-false", "matching", "classify"], "enrichment": null, "status": "ready" },
+            { "code": "g2i-2-4", "title": "إِنشاءُ نَموذَجٍ ثُلاثيِّ الأَبعادِ", "basic": ["hotspot", "sequence", "matching", "mcq", "true-false"], "enrichment": "color", "status": "ready" },
+            { "code": "g2i-2-5", "title": "لِنَتَدَرَّبْ على النَّماذِجِ ثُلاثيَّةِ الأَبعادِ", "basic": ["matching", "mcq", "true-false", "classify", "sequence"], "enrichment": null, "status": "ready" },
+            { "code": "g2i-2-6", "title": "اِستِكشافُ النَّصِّ الثُّلاثيِّ الأَبعاد (استكشاف المكتبة ثلاثية الأبعاد)", "basic": ["hotspot", "sequence", "matching", "mcq", "true-false"], "enrichment": "find-error", "status": "ready", "note": "خلافُ تسميةٍ بين الكتاب والدليل — التغطيةُ تشمل الشقّين معاً (§تقرير الفحص)" }
+          ]
+        },
+        {
+          "unit": 3, "title": "هيّا نَكتُبُ",
+          "lessons": [
+            { "code": "g2i-3-1", "title": "مُقَدِّمَةٌ إلى مُعالَجَةِ الكَلِماتِ", "basic": ["mcq", "true-false", "matching", "classify", "hotspot"], "enrichment": "mindmap", "status": "ready" },
+            { "code": "g2i-3-2", "title": "كِتابَةُ نَصٍّ", "basic": ["sequence", "true-false", "mcq", "matching", "hotspot"], "enrichment": "memory", "status": "ready" },
+            { "code": "g2i-3-3", "title": "لِنَتَدَرَّبْ على الكِتابَةِ", "basic": ["matching", "mcq", "true-false", "sequence", "classify"], "enrichment": null, "status": "ready" },
+            { "code": "g2i-3-4", "title": "التَّحَرُّكُ داخِلَ النَّصِّ", "basic": ["true-false", "mcq", "matching", "hotspot", "classify"], "enrichment": "exclude", "status": "ready" },
+            { "code": "g2i-3-5", "title": "لِنَتَدَرَّبْ على تَحريكِ المُؤَشِّرِ", "basic": ["matching", "mcq", "true-false", "sequence", "classify"], "enrichment": null, "status": "ready" },
+            { "code": "g2i-3-6", "title": "تَنسيقُ النَّصِّ", "basic": ["hotspot", "matching", "sequence", "mcq", "true-false"], "enrichment": "memory", "status": "ready" },
+            { "code": "g2i-3-7", "title": "لِنَتَدَرَّبْ على تَنسيقِ النَّصِّ", "basic": ["matching", "mcq", "true-false", "classify", "hotspot"], "enrichment": null, "status": "ready" },
+            { "code": "g2i-3-8", "title": "أَساسِيّاتُ تَحريرِ النَّصِّ", "basic": ["sequence", "true-false", "mcq", "matching", "classify"], "enrichment": null, "status": "ready" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "grade": 3,
+      "bookKey": "g3-it",
+      "units": [
+        {
+          "unit": 1, "title": "حاسوبي",
+          "lessons": [
+            { "code": "g3i-1-1", "title": "أجهزة التفاعل مع الحاسوب", "basic": ["matching", "classify", "mcq", "true-false", "fill-blank"], "enrichment": "mindmap", "status": "ready" },
+            { "code": "g3i-1-2", "title": "تنظيم الملفات والمجلدات", "basic": ["sequence", "hotspot", "matching", "mcq", "true-false"], "enrichment": "memory", "status": "ready" },
+            { "code": "g3i-1-3", "title": "أجهزة الطباعة والالتقاط", "basic": ["classify", "matching", "mcq", "true-false", "hotspot"], "enrichment": "exclude", "status": "ready" }
+          ]
+        },
+        {
+          "unit": 2, "title": "هيّا نكتب",
+          "lessons": [
+            { "code": "g3i-2-1", "title": "تنسيق النص", "basic": ["matching", "hotspot", "sequence", "mcq", "true-false"], "enrichment": "memory", "status": "ready" },
+            { "code": "g3i-2-2", "title": "لنتدرّب على تنسيق النص", "basic": ["matching", "mcq", "true-false", "sequence", "classify"], "enrichment": null, "status": "ready" },
+            { "code": "g3i-2-3", "title": "إدراج وتنسيق صورة", "basic": ["hotspot", "matching", "sequence", "mcq", "true-false"], "enrichment": "puzzle", "status": "ready" },
+            { "code": "g3i-2-4", "title": "لنتدرّب على التعامل مع النص وتنسيق الصور", "basic": ["maze", "true-false", "fill-blank", "classify", "mcq"], "enrichment": null, "status": "ready", "note": "درسُ نشأةِ نوع `maze` — الكتابُ نفسُه فيه نشاطا «حلّ المتاهة» حرفياً" },
+            { "code": "g3i-2-5", "title": "إنشاء القوائم", "basic": ["classify", "sequence", "fill-blank", "mcq", "true-false"], "enrichment": "mindmap", "status": "ready" },
+            { "code": "g3i-2-6", "title": "لنتدرّب على التعامل مع القوائم", "basic": ["hotspot", "matching", "sequence", "mcq", "fill-blank"], "enrichment": null, "status": "ready" },
+            { "code": "g3i-2-7", "title": "المشروع", "basic": ["sequence", "true-false", "mcq", "matching", "classify"], "enrichment": null, "status": "ready", "note": "لا أهداف مرقّمة في الدليل — استُعينَ بأهداف الوحدة (قرار المالك ٢٠٢٦-٠٩-١٢)" }
+          ]
+        },
+        {
+          "unit": 3, "title": "عالمي المتصل",
+          "lessons": [
+            { "code": "g3i-3-1", "title": "الأمان عبر الإنترنت", "basic": ["fill-blank", "matching", "true-false", "mcq", "classify"], "enrichment": "exclude", "status": "ready" },
+            { "code": "g3i-3-2", "title": "البحث عن المعلومات", "basic": ["hotspot", "sequence", "mcq", "true-false", "matching"], "enrichment": "memory", "status": "ready" },
+            { "code": "g3i-3-3", "title": "أخلاقيات الإنترنت", "basic": ["classify", "fill-blank", "true-false", "mcq", "matching"], "enrichment": "find-error", "status": "ready" },
+            { "code": "g3i-3-4", "title": "العثور على المعلومات", "basic": ["sequence", "mcq", "true-false", "matching", "classify"], "enrichment": null, "status": "ready", "note": "محتوى وطني حسّاس (علم/شعار عُمان) — انظر contentPolicy.sensitiveContent" },
+            { "code": "g3i-3-5", "title": "لنتدرّب على استخدام الإنترنت", "basic": ["true-false", "fill-blank", "matching", "mcq", "classify"], "enrichment": null, "status": "ready" },
+            { "code": "g3i-3-6", "title": "البحث في موسوعة ويكيبيديا", "basic": ["sequence", "hotspot", "mcq", "true-false", "matching"], "enrichment": "mindmap", "status": "ready" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "grade": 4,
+      "bookKey": "g4-it",
+      "units": [
+        {
+          "unit": 1, "title": "حاسوبي",
+          "lessons": [
+            { "code": "g4i-1-1", "title": "كيفية عمل جهاز الحاسوب", "basic": ["classify", "mcq", "true-false", "matching", "sequence"], "enrichment": "mindmap", "status": "ready" },
+            { "code": "g4i-1-2", "title": "أجهزة الوسائط المتعددة", "basic": ["classify", "matching", "hotspot", "mcq", "true-false"], "enrichment": "memory", "status": "ready" },
+            { "code": "g4i-1-3", "title": "التعامل مع الوسائط المتعددة", "basic": ["sequence", "matching", "hotspot", "mcq", "true-false"], "enrichment": "find-error", "status": "ready", "note": "يستوعب أهداف مراجعة الدليل («دعنا نتذكر»)" },
+            { "code": "g4i-1-4", "title": "تطبيق التأثيرات على الصور", "basic": ["sequence", "matching", "hotspot", "mcq", "true-false"], "enrichment": "puzzle", "status": "ready", "note": "صورةُ ريّام الحقيقية تصلح لِhotspot مباشرة" },
+            { "code": "g4i-1-5", "title": "إنشاء فيديو", "basic": ["classify", "sequence", "matching", "mcq", "true-false"], "enrichment": null, "status": "ready" }
+          ]
+        },
+        {
+          "unit": 2, "title": "لنعرض أفكارنا",
+          "lessons": [
+            { "code": "g4i-2-1", "title": "العروض التقديمية", "basic": ["sequence", "matching", "fill-blank", "mcq", "true-false"], "enrichment": "mindmap", "status": "ready", "note": "يستوعب «كن مقدما جيدا»" },
+            { "code": "g4i-2-2", "title": "التعامل مع الصور", "basic": ["hotspot", "matching", "fill-blank", "mcq", "true-false"], "enrichment": "memory", "status": "ready" },
+            { "code": "g4i-2-3", "title": "التأثيرات الانتقالية والحركية", "basic": ["true-false", "matching", "mcq", "classify", "sequence"], "enrichment": "find-error", "status": "ready", "note": "يستوعب نشاطَي «لنتدرب»؛ الكتابُ نفسُه فيه نشاطُ «اكتشف الخطأ في الشرائح» حرفياً" },
+            { "code": "g4i-2-4", "title": "المشروع", "basic": ["sequence", "mcq", "true-false", "matching", "classify"], "enrichment": null, "status": "ready", "note": "لا أهداف مرقّمة في الدليل — استُعينَ بأهداف الوحدة" }
+          ]
+        },
+        {
+          "unit": 3, "title": "عالمي المتصل",
+          "lessons": [
+            { "code": "g4i-3-1", "title": "البريد الإلكتروني", "basic": ["classify", "matching", "mcq", "true-false", "fill-blank"], "enrichment": "mindmap", "status": "ready" },
+            { "code": "g4i-3-2", "title": "التواصل عبر البريد الإلكتروني", "basic": ["hotspot", "matching", "sequence", "mcq", "true-false"], "enrichment": "memory", "status": "ready" }
+          ]
+        }
+      ]
+    }
+  ],
+
+  "openItems": [
+    "توزيعُ عالمي الرقمي المعرفيُّ (٣+١+١) يُثبَّتُ رسمياً في CLAUDE.md §نطاق المواد عند هذا الإيداع.",
+    "لا نوعَ يحتاج بناءً جديداً بعد بناء `maze` — كلُّ الدروس الـ٥٩ حالتُها ready.",
+    "g4i (الصف الرابع): الفهرسة على تبويب الكتاب (١١ درساً) لا ترقيم الدليل الداخليّ الذي يقسّم بعض الدروس فرعياً — مطابقةً لقاعدة «الفهرسة من كتاب التلميذ»."
+  ]
+}
