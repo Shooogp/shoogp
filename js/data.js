@@ -14,7 +14,8 @@ window.DATA_FALLBACK = {
         { key:"g1-arabic-1", band:["#93c93f","#74a52c"], title:"أحب لغتي", term:"الفصل الأول", color:"bk-green", ic:"🪶", isNew:false, theme:"theme-arabic1a", cover:"images/cover-g1-arabic-1.jpg" },
         { key:"g1-arabic-2", band:["#6fa834","#527d22"], title:"أحب لغتي", term:"الفصل الأول", color:"bk-green", ic:"🪶", isNew:false, theme:"theme-arabic1b", cover:"images/cover-g1-arabic-2.jpg" },
         { key:"g1-dini-1", band:["#6fb8e0","#4a95c4"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-blue", ic:"🕌", isNew:false, theme:"theme-dini1a", cover:"images/cover-g1-dini-1.jpg" },
-        { key:"g1-dini-2", band:["#4a93c8","#2f70a4"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-blue", ic:"🕌", isNew:false, theme:"theme-dini1b", cover:"images/cover-g1-dini-2.jpg" }
+        { key:"g1-dini-2", band:["#4a93c8","#2f70a4"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-blue", ic:"🕌", isNew:false, theme:"theme-dini1b", cover:"images/cover-g1-dini-2.jpg" },
+        { key:"g1-it", band:["#3e7dc7","#004890"], title:"عالمي الرقمي", term:"الفصل الأول", color:"bk-blue", ic:"💻", isNew:true, onSale:false, devOnly:true, theme:"theme-it1", cover:"images/cover-g1-it.jpg" }
       ],
       "الثاني": [
         { key:"g2-sci", band:["#f5a04a","#e07f2b"], title:"العلوم", term:"الفصل الأول", color:"bk-orange", ic:"🔬", isNew:false, onSale:true, theme:"theme-sci2", cover:"images/cover-g2-sci.jpg" },
@@ -530,6 +531,7 @@ window.DATA_FALLBACK = {
         { title:"الدرس السادس: النشأة المباركة", file:"g1d2-4-6", open:true }
       ]}
     ]},
+    "g1-it": { book:"عالمي الرقمي — الصف الأول", units:[] },
     "g2-dini-1": { book:"ديني حياتي (الجزء الأول) — الصف الثاني", units:[
       { unit:"التلاوة والحفظ", lessons:[
         { title:"التلاوة والحفظ", file:"g2d1-0-1", open:true }
