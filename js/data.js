@@ -571,7 +571,7 @@ window.DATA_FALLBACK = {
         { title:"الرسم الحر", file:"g1i-2-6", open:true }
       ]},
       { unit:"لنتصفح", lessons:[
-        { title:"الإنترنت", file:"g1i-3-1", open:false },
+        { title:"الإنترنت", file:"g1i-3-1", open:true },
         { title:"استمتع", file:"g1i-3-2", open:false },
         { title:"تواصل", file:"g1i-3-3", open:false },
         { title:"ابحث", file:"g1i-3-4", open:false }
