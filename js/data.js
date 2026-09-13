@@ -568,7 +568,7 @@ window.DATA_FALLBACK = {
         { title:"لنتدرب على الأشكال", file:"g1i-2-3", open:true },
         { title:"دمج الأشكال", file:"g1i-2-4", open:true },
         { title:"لنتدرب على دمج الأشكال", file:"g1i-2-5", open:true },
-        { title:"الرسم الحر", file:"g1i-2-6", open:false }
+        { title:"الرسم الحر", file:"g1i-2-6", open:true }
       ]},
       { unit:"لنتصفح", lessons:[
         { title:"الإنترنت", file:"g1i-3-1", open:false },
