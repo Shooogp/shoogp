@@ -34031,5 +34031,441 @@ window.QUESTIONS = {
       ]
     }
 
+  ],
+
+  // ═══════════════════════ عالمي الرقمي (تقنية المعلومات) ═══════════════════════
+  // الصف الأول — الوحدة ١: حاسوبي — الدرس ١.١: الحاسوب في حياتنا (كتاب التلميذ ص١٦-٢١)
+  "g1i-1-1": [
+
+    // ③ اختيار من متعدد — معرفة (هدف ١: تمييز الحاسوب عن الأجهزة الإلكترونية الأخرى)
+    {
+      type: "mcq",
+      objective: "تمييز الحاسوب عن الأجهزة الإلكترونية الأخرى.",
+      level: "knowledge",
+      prompt: "أَيُّ هذِهِ الأَجهِزَةِ حاسوبٌ؟",
+      options: ["حاسوبٌ مَحمولٌ", "مِكواةٌ", "خَلّاطٌ", "مُجَفِّفُ شَعرٍ"],
+      answer: 0
+    },
+
+    // ④ صواب وخطأ — معرفة (هدف ١)
+    {
+      type: "true-false",
+      objective: "تمييز الحاسوب عن الأجهزة الإلكترونية الأخرى.",
+      level: "knowledge",
+      statement: "يوجَدُ الحاسوبُ بِأَشكالٍ مُختَلِفَةٍ، مِثلَ الحاسوبِ المَكتَبِيِّ والحاسوبِ المَحمولِ.",
+      answer: true
+    },
+
+    // ⑦ التصنيف — معرفة (هدف ١)
+    {
+      type: "classify",
+      objective: "تمييز الحاسوب عن الأجهزة الإلكترونية الأخرى.",
+      level: "knowledge",
+      prompt: "صَنِّفْ كُلَّ جِهازٍ: حاسوبٌ أَم لَيسَ حاسوباً؟",
+      groups: [
+        { name: "حاسوبٌ",        items: ["حاسوبٌ مَكتَبِيٌّ", "حاسوبٌ مَحمولٌ", "جِهازٌ لَوحِيٌّ"] },
+        { name: "لَيسَ حاسوباً", items: ["ثَلّاجَةٌ", "مِكواةٌ", "خَلّاطٌ"] }
+      ]
+    },
+
+    // ② توصيل — تطبيق (هدف ٢: تعديد طرق التّفاعل عند استخدام الحاسوب)
+    {
+      type: "matching",
+      objective: "تعديد طرق التّفاعل عند استخدام الحاسوب.",
+      level: "application",
+      prompt: "صِلْ كُلَّ جِهازٍ بِطَريقَةِ التَّفاعُلِ مَعَهُ.",
+      pairs: [
+        { a: "الجِهازُ اللَّوحِيُّ",        b: "اللَّمسُ بِالإِصبُعِ" },
+        { a: "مُكَبِّرُ الصَّوتِ الذَّكِيُّ", b: "الأَوامِرُ الصَّوتِيَّةُ" },
+        { a: "الحاسوبُ المَكتَبِيُّ",       b: "الفَأرَةُ ولَوحَةُ المَفاتيحِ" },
+        { a: "السّاعَةُ الذَّكِيَّةُ",       b: "لَمسُ الشّاشَةِ الصَّغيرَةِ" }
+      ]
+    },
+
+    // ⑨ الاستبعاد — استدلال (هدف ١)
+    {
+      type: "exclude",
+      objective: "تمييز الحاسوب عن الأجهزة الإلكترونية الأخرى.",
+      level: "reasoning",
+      prompt: "أَيُّ هذِهِ الأَجهِزَةِ لَيسَ حاسوباً؟",
+      options: ["حاسوبٌ مَحمولٌ", "جِهازٌ لَوحِيٌّ", "مِكواةٌ", "حاسوبٌ مَكتَبِيٌّ"],
+      answer: 2,
+      reason: "المِكواةُ جِهازٌ كَهرَبائِيٌّ لِلمَنزِلِ ولَيسَت حاسوباً، والبَقِيَّةُ حَواسيبُ بِأَشكالٍ مُختَلِفَةٍ."
+    }
+
+  ],
+
+  // الصف الأول — الوحدة ١: حاسوبي — الدرس ١.٢: أجزاء جهاز الحاسوب (كتاب التلميذ ص٢٢-٢٩)
+  "g1i-1-2": [
+
+    // ④ صواب وخطأ — معرفة (هدف ٤: اتباع قواعد الأمن والسلامة)
+    {
+      type: "true-false",
+      objective: "اتباع قواعد الأمن والسلامة في أثناء استخدام الحاسوب.",
+      level: "knowledge",
+      statement: "يَنبَغي أَلّا نَلمِسَ أَسلاكَ الحاسوبِ بِأَيدٍ مُبَلَّلَةٍ.",
+      answer: true
+    },
+
+    // ③ اختيار من متعدد — معرفة (هدف ١: التعرف إلى أجزاء جهاز الحاسوب)
+    {
+      type: "mcq",
+      objective: "التعرف إلى أجزاء جهاز الحاسوب.",
+      level: "knowledge",
+      prompt: "أَيُّ جُزءٍ يَتَحَكَّمُ بِكُلِّ أَجزاءِ الحاسوبِ الأُخرى؟",
+      options: ["وَحدَةُ النِّظامِ", "الشّاشَةُ", "الفَأرَةُ", "مُكَبِّرُ الصَّوتِ"],
+      answer: 0
+    },
+
+    // ② توصيل — معرفة (هدف ١)
+    {
+      type: "matching",
+      objective: "التعرف إلى أجزاء جهاز الحاسوب.",
+      level: "knowledge",
+      prompt: "صِلْ كُلَّ جُزءٍ بِوَظيفَتِهِ.",
+      pairs: [
+        { a: "الشّاشَةُ",          b: "عَرضُ الصّورَةِ" },
+        { a: "الطّابِعَةُ",         b: "طِباعَةُ الأَوراقِ" },
+        { a: "مُكَبِّراتُ الصَّوتِ", b: "إِسماعُ الصَّوتِ" },
+        { a: "لَوحَةُ المَفاتيحِ",  b: "كِتابَةُ الحُروفِ" }
+      ]
+    },
+
+    // ⑤ تحديد الأجزاء — تطبيق (هدف ١)
+    {
+      type: "hotspot",
+      objective: "التعرف إلى أجزاء جهاز الحاسوب.",
+      level: "application",
+      prompt: "اضغَطْ على وَحدَةِ النِّظامِ في صورَةِ الحاسوبِ.",
+      svg: '<svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="حاسوب مكتبي بأجزائه: شاشة ووحدة نظام ولوحة مفاتيح وفأرة ومكبرا صوت"><rect x="60" y="30" width="240" height="160" rx="14" fill="#0080C0" stroke="#111111" stroke-width="3"/><rect x="76" y="46" width="208" height="128" rx="6" fill="#40C0FF" stroke="#111111" stroke-width="2"/><ellipse cx="130" cy="80" rx="40" ry="14" fill="#FFFFFF" opacity=".35" transform="rotate(-20 130 80)"/><rect x="140" y="190" width="40" height="30" fill="#0060A0" stroke="#111111" stroke-width="2"/><rect x="100" y="220" width="120" height="16" rx="8" fill="#0060A0" stroke="#111111" stroke-width="3"/><rect x="350" y="40" width="90" height="280" rx="10" fill="#0080C0" stroke="#111111" stroke-width="3"/><rect x="365" y="60" width="60" height="16" rx="6" fill="#0060A0" stroke="#111111" stroke-width="2"/><circle cx="395" cy="100" r="10" fill="#40C0FF" stroke="#111111" stroke-width="2"/><ellipse cx="370" cy="70" rx="10" ry="5" fill="#FFFFFF" opacity=".4"/><rect x="40" y="264" width="240" height="56" rx="10" fill="#C0C0C0" stroke="#111111" stroke-width="3"/><line x1="55" y1="280" x2="265" y2="280" stroke="#808080" stroke-width="2"/><line x1="55" y1="296" x2="265" y2="296" stroke="#808080" stroke-width="2"/><line x1="55" y1="312" x2="265" y2="312" stroke="#808080" stroke-width="2"/><ellipse cx="310" cy="292" rx="30" ry="26" fill="#E08000" stroke="#111111" stroke-width="3"/><line x1="310" y1="266" x2="310" y2="292" stroke="#111111" stroke-width="2"/><ellipse cx="300" cy="280" rx="8" ry="5" fill="#FFFFFF" opacity=".5"/><rect x="470" y="70" width="50" height="90" rx="10" fill="#60C020" stroke="#111111" stroke-width="3"/><circle cx="495" cy="95" r="14" fill="#4A9018" stroke="#111111" stroke-width="2"/><circle cx="495" cy="135" r="10" fill="#4A9018" stroke="#111111" stroke-width="2"/><rect x="470" y="190" width="50" height="90" rx="10" fill="#60C020" stroke="#111111" stroke-width="3"/><circle cx="495" cy="215" r="14" fill="#4A9018" stroke="#111111" stroke-width="2"/><circle cx="495" cy="255" r="10" fill="#4A9018" stroke="#111111" stroke-width="2"/></svg>',
+      bg: "#eef7ff",
+      spot: { x: 65.83, y: 50, w: 15, h: 77.78 }
+    },
+
+    // ① سحب وإفلات — استدلال (هدف ٢: توصيل أجزاء الحاسوب بوحدة النّظام)
+    {
+      type: "drag-drop",
+      objective: "توصيل أجزاء الحاسوب بوحدة النّظام.",
+      level: "reasoning",
+      prompt: "اسحَبْ كُلَّ جُزءٍ إلى المَنفَذِ الَّذي يَتَّصِلُ بِهِ في وَحدَةِ النِّظامِ.",
+      svg: '<svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="حاسوب مكتبي بأجزائه: شاشة ووحدة نظام ولوحة مفاتيح وفأرة ومكبرا صوت"><rect x="60" y="30" width="240" height="160" rx="14" fill="#0080C0" stroke="#111111" stroke-width="3"/><rect x="76" y="46" width="208" height="128" rx="6" fill="#40C0FF" stroke="#111111" stroke-width="2"/><ellipse cx="130" cy="80" rx="40" ry="14" fill="#FFFFFF" opacity=".35" transform="rotate(-20 130 80)"/><rect x="140" y="190" width="40" height="30" fill="#0060A0" stroke="#111111" stroke-width="2"/><rect x="100" y="220" width="120" height="16" rx="8" fill="#0060A0" stroke="#111111" stroke-width="3"/><rect x="350" y="40" width="90" height="280" rx="10" fill="#0080C0" stroke="#111111" stroke-width="3"/><rect x="365" y="60" width="60" height="16" rx="6" fill="#0060A0" stroke="#111111" stroke-width="2"/><circle cx="395" cy="100" r="10" fill="#40C0FF" stroke="#111111" stroke-width="2"/><ellipse cx="370" cy="70" rx="10" ry="5" fill="#FFFFFF" opacity=".4"/><rect x="40" y="264" width="240" height="56" rx="10" fill="#C0C0C0" stroke="#111111" stroke-width="3"/><line x1="55" y1="280" x2="265" y2="280" stroke="#808080" stroke-width="2"/><line x1="55" y1="296" x2="265" y2="296" stroke="#808080" stroke-width="2"/><line x1="55" y1="312" x2="265" y2="312" stroke="#808080" stroke-width="2"/><ellipse cx="310" cy="292" rx="30" ry="26" fill="#E08000" stroke="#111111" stroke-width="3"/><line x1="310" y1="266" x2="310" y2="292" stroke="#111111" stroke-width="2"/><ellipse cx="300" cy="280" rx="8" ry="5" fill="#FFFFFF" opacity=".5"/><rect x="470" y="70" width="50" height="90" rx="10" fill="#60C020" stroke="#111111" stroke-width="3"/><circle cx="495" cy="95" r="14" fill="#4A9018" stroke="#111111" stroke-width="2"/><circle cx="495" cy="135" r="10" fill="#4A9018" stroke="#111111" stroke-width="2"/><rect x="470" y="190" width="50" height="90" rx="10" fill="#60C020" stroke="#111111" stroke-width="3"/><circle cx="495" cy="215" r="14" fill="#4A9018" stroke="#111111" stroke-width="2"/><circle cx="495" cy="255" r="10" fill="#4A9018" stroke="#111111" stroke-width="2"/></svg>',
+      bg: "#eef7ff",
+      targets: [
+        { answer: "الشّاشَةُ",         box: { x: 16, y: 20 }, dot: { x: 65.83, y: 11.11 } },
+        { answer: "لَوحَةُ المَفاتيحِ", box: { x: 84, y: 40 }, dot: { x: 58.33, y: 38.89 } },
+        { answer: "الفَأرَةُ",          box: { x: 16, y: 60 }, dot: { x: 58.33, y: 69.44 } },
+        { answer: "مُكَبِّراتُ الصَّوتِ", box: { x: 84, y: 80 }, dot: { x: 65.83, y: 88.89 } }
+      ]
+    },
+
+    // ⑫ اكتشف الخطأ — إثرائي، استدلال (هدف ١)
+    {
+      type: "find-error",
+      objective: "التعرف إلى أجزاء جهاز الحاسوب.",
+      level: "reasoning",
+      prompt: "اكتَشِفِ الجِهازَ الَّذي لَيسَ مِن أَجزاءِ الحاسوبِ.",
+      svg: '<svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="خمسة أجهزة بينها جهاز ليس من أجزاء الحاسوب"><rect x="20" y="80" width="80" height="110" rx="10" fill="#60C020" stroke="#111111" stroke-width="3"/><circle cx="60" cy="115" r="18" fill="#4A9018" stroke="#111111" stroke-width="2"/><circle cx="60" cy="165" r="13" fill="#4A9018" stroke="#111111" stroke-width="2"/><ellipse cx="35" cy="95" rx="10" ry="5" fill="#FFFFFF" opacity=".4"/><rect x="130" y="110" width="100" height="60" rx="8" fill="#C0C0C0" stroke="#111111" stroke-width="3"/><line x1="142" y1="125" x2="218" y2="125" stroke="#808080" stroke-width="2"/><line x1="142" y1="140" x2="218" y2="140" stroke="#808080" stroke-width="2"/><line x1="142" y1="155" x2="218" y2="155" stroke="#808080" stroke-width="2"/><ellipse cx="300" cy="140" rx="32" ry="28" fill="#E08000" stroke="#111111" stroke-width="3"/><line x1="300" y1="112" x2="300" y2="140" stroke="#111111" stroke-width="2"/><ellipse cx="290" cy="128" rx="8" ry="5" fill="#FFFFFF" opacity=".5"/><rect x="375" y="130" width="100" height="60" rx="12" fill="#FF2020" stroke="#111111" stroke-width="3"/><rect x="395" y="118" width="18" height="22" rx="4" fill="#111111"/><rect x="425" y="118" width="18" height="22" rx="4" fill="#111111"/><rect x="470" y="148" width="12" height="22" rx="4" fill="#C0C0C0" stroke="#111111" stroke-width="2"/><ellipse cx="395" cy="142" rx="15" ry="8" fill="#FFFFFF" opacity=".3"/><rect x="495" y="115" width="90" height="65" rx="8" fill="#0080C0" stroke="#111111" stroke-width="3"/><rect x="505" y="125" width="70" height="45" rx="4" fill="#40C0FF" stroke="#111111" stroke-width="2"/><rect x="530" y="180" width="20" height="12" fill="#0060A0" stroke="#111111" stroke-width="2"/><ellipse cx="515" cy="135" rx="15" ry="6" fill="#FFFFFF" opacity=".35"/></svg>',
+      bg: "#f5f5f5",
+      spot: { x: 70.42, y: 55, w: 17.5, h: 30 }
+    }
+
+  ],
+
+  // الصف الأول — الوحدة ١: حاسوبي — الدرس ١.٣: سطح المكتب (كتاب التلميذ ص٣٠-٣٥)
+  "g1i-1-3": [
+
+    // ④ صواب وخطأ — معرفة (هدف ١: التعرّف إلى الرّموز الأساسيّة لسطح مكتب الحاسوب)
+    {
+      type: "true-false",
+      objective: "التعرّف إلى الرّموز الأساسيّة لسطح مكتب الحاسوب.",
+      level: "knowledge",
+      statement: "سَطحُ المَكتَبِ هُوَ الشّاشَةُ الَّتي تَظهَرُ عِندَ تَشغيلِ الحاسوبِ، وفيها رُموزٌ صَغيرَةٌ.",
+      answer: true
+    },
+
+    // ③ اختيار من متعدد — معرفة (هدف ٣: التمييز بين أنواع ملفات الحاسوب)
+    {
+      type: "mcq",
+      objective: "التمييز بين أنواع ملفات الحاسوب.",
+      level: "knowledge",
+      prompt: "ماذا يُنتِجُ التِقاطُ صورَةٍ بِالكاميرا؟",
+      options: ["مَلَفَّ صورَةٍ", "مَلَفَّ صَوتٍ", "مَلَفَّ نَصٍّ", "مَلَفَّ فيديو"],
+      answer: 0
+    },
+
+    // ② توصيل — معرفة (هدف ٢: تمييز رموز سطح المكتب الأكثر شيوعًا واستخداماتها)
+    {
+      type: "matching",
+      objective: "تمييز رموز سطح المكتب الأكثر شيوعًا واستخداماتها.",
+      level: "knowledge",
+      prompt: "صِلْ كُلَّ رَمزٍ بِاستِخدامِهِ.",
+      pairs: [
+        { a: "سَلَّةُ المَحذوفاتِ",    b: "حِفظُ المَلَفّاتِ المَحذوفَةِ مُؤَقَّتاً" },
+        { a: "مُتَصَفِّحُ الإِنتَرنِتِ", b: "تَصَفُّحُ المَواقِعِ" },
+        { a: "المُجَلَّدُ",           b: "حِفظُ المَلَفّاتِ وتَرتيبُها" },
+        { a: "السّاعَةُ",            b: "مَعرِفَةُ الوَقتِ" }
+      ]
+    },
+
+    // ⑤ تحديد الأجزاء — تطبيق (هدف ١)
+    {
+      type: "hotspot",
+      objective: "التعرّف إلى الرّموز الأساسيّة لسطح مكتب الحاسوب.",
+      level: "application",
+      prompt: "اضغَطْ على رَمزِ سَلَّةِ المَحذوفاتِ.",
+      svg: '<svg viewBox="0 0 600 340" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="سطح مكتب حاسوب برموز: سلة محذوفات ومجلد ومتصفح، وشريط مهام أسفله"><rect x="40" y="30" width="70" height="70" rx="10" fill="#F7F6F1" stroke="#111111" stroke-width="2"/><rect x="60" y="44" width="30" height="8" rx="3" fill="#A0A0A0" stroke="#111111" stroke-width="2"/><rect x="60" y="50" width="30" height="35" rx="4" fill="#808080" stroke="#111111" stroke-width="3"/><line x1="68" y1="58" x2="68" y2="78" stroke="#111111" stroke-width="1.5"/><line x1="75" y1="58" x2="75" y2="78" stroke="#111111" stroke-width="1.5"/><line x1="82" y1="58" x2="82" y2="78" stroke="#111111" stroke-width="1.5"/><rect x="40" y="120" width="70" height="70" rx="10" fill="#F7F6F1" stroke="#111111" stroke-width="2"/><rect x="55" y="140" width="25" height="12" rx="3" fill="#FFA000" stroke="#111111" stroke-width="2"/><rect x="55" y="150" width="50" height="35" rx="4" fill="#E08000" stroke="#111111" stroke-width="3"/><rect x="40" y="210" width="70" height="70" rx="10" fill="#F7F6F1" stroke="#111111" stroke-width="2"/><circle cx="75" cy="245" r="22" fill="#40C0FF" stroke="#111111" stroke-width="3"/><path d="M53 245 A22 10 0 0 0 97 245" fill="none" stroke="#111111" stroke-width="1.5"/><path d="M53 245 A22 10 0 0 1 97 245" fill="none" stroke="#111111" stroke-width="1.5"/><line x1="75" y1="223" x2="75" y2="267" stroke="#111111" stroke-width="1.5"/><rect x="0" y="300" width="600" height="40" fill="#404040"/><circle cx="30" cy="320" r="14" fill="#C0C0C0" stroke="#111111" stroke-width="2"/><rect x="540" y="308" width="50" height="24" rx="4" fill="#606060" stroke="#111111" stroke-width="2"/></svg>',
+      bg: "#dff1ff",
+      spot: { x: 12.5, y: 19.12, w: 11.67, h: 20.59 }
+    },
+
+    // ⑦ التصنيف — استدلال (هدف ٣)
+    {
+      type: "classify",
+      objective: "التمييز بين أنواع ملفات الحاسوب.",
+      level: "reasoning",
+      prompt: "صَنِّفْ كُلَّ نَشاطٍ حَسَبَ نَوعِ المَلَفِّ الَّذي يُنتِجُهُ.",
+      groups: [
+        { name: "مَلَفُّ صورَةٍ", items: ["صورَةٌ مُلتَقَطَةٌ بِالكاميرا", "رَسمَةٌ مِنَ الرَّسّامِ", "صورَةٌ مِنَ الهاتِفِ"] },
+        { name: "مَلَفُّ صَوتٍ",  items: ["أُغنِيَةٌ مُسَجَّلَةٌ", "صَوتُ طائِرٍ مُسَجَّلٌ", "تِلاوَةٌ مُسَجَّلَةٌ"] }
+      ]
+    },
+
+    // ⑨ الاستبعاد — إثرائي، استدلال (هدف ٣)
+    {
+      type: "exclude",
+      objective: "التمييز بين أنواع ملفات الحاسوب.",
+      level: "reasoning",
+      prompt: "أَيُّ هذِهِ لَيسَ نَوعاً مِن أَنواعِ المَلَفّاتِ؟",
+      options: ["مَلَفُّ صورَةٍ", "مَلَفُّ صَوتٍ", "مَلَفُّ نَصٍّ", "لَوحَةُ المَفاتيحِ"],
+      answer: 3,
+      reason: "لَوحَةُ المَفاتيحِ جُزءٌ مِنَ الحاسوبِ لا نَوعُ مَلَفٍّ، والبَقِيَّةُ أَنواعُ مَلَفّاتٍ."
+    }
+
+  ],
+
+  // الصف الأول — الوحدة ١: حاسوبي — الدرس ١.٤: انقر واكتب (كتاب التلميذ ص٣٦-٤٢)
+  "g1i-1-4": [
+
+    // ④ صواب وخطأ — معرفة (هدف ٤: الحفاظ على وضعية الجسم الصحيحة)
+    {
+      type: "true-false",
+      objective: "الحفاظ على وضعية الجسم الصحيحة عند استخدام الحاسوب.",
+      level: "knowledge",
+      statement: "يَنبَغي أَن أَجلِسَ بِظَهرٍ مُستَقيمٍ أَمامَ الحاسوبِ.",
+      answer: true
+    },
+
+    // ③ اختيار من متعدد — معرفة (هدف ٢: فتح تطبيق)
+    {
+      type: "mcq",
+      objective: "فتح تطبيق.",
+      level: "knowledge",
+      prompt: "كَيفَ نَفتَحُ تَطبيقاً عَلى سَطحِ المَكتَبِ؟",
+      options: ["بِالنَّقرِ المُزدَوِجِ عَلى رَمزِهِ", "بِإِغلاقِ الحاسوبِ", "بِسَحبِهِ إِلى سَلَّةِ المَحذوفاتِ", "بِالانتِظارِ فَقَط"],
+      answer: 0
+    },
+
+    // ② توصيل — معرفة (هدف ١: التّعرف إلى أجزاء ووظائف الفأرة ولوحة المفاتيح)
+    {
+      type: "matching",
+      objective: "التّعرف إلى أجزاء ووظائف الفأرة ولوحة المفاتيح.",
+      level: "knowledge",
+      prompt: "صِلْ كُلَّ جُزءٍ بِوَظيفَتِهِ.",
+      pairs: [
+        { a: "الزِّرُّ الأَيسَرُ",  b: "التَّحديدُ والنَّقرُ" },
+        { a: "الزِّرُّ الأَيمَنُ",  b: "فَتحُ القائِمَةِ الإِضافِيَّةِ" },
+        { a: "عَجَلَةُ التَّمريرِ", b: "التَّمريرُ لِأَعلى وأَسفَل" },
+        { a: "مِفتاحُ المَسافَةِ", b: "إِضافَةُ فَراغٍ بَينَ الكَلِماتِ" }
+      ]
+    },
+
+    // ⑤ تحديد الأجزاء — تطبيق (هدف ١)
+    {
+      type: "hotspot",
+      objective: "التّعرف إلى أجزاء ووظائف الفأرة ولوحة المفاتيح.",
+      level: "application",
+      prompt: "اضغَطْ على عَجَلَةِ التَّمريرِ في الفَأرَةِ.",
+      svg: '<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="فأرة حاسوب بأزرارها وعجلة التمرير"><rect x="100" y="80" width="200" height="280" rx="90" fill="#E08000" stroke="#111111" stroke-width="3"/><line x1="200" y1="80" x2="200" y2="160" stroke="#111111" stroke-width="2"/><rect x="185" y="110" width="30" height="45" rx="15" fill="#C06000" stroke="#111111" stroke-width="2"/><ellipse cx="150" cy="130" rx="40" ry="20" fill="#FFFFFF" opacity=".3" transform="rotate(-20 150 130)"/></svg>',
+      bg: "#fff6ec",
+      spot: { x: 50, y: 33.13, w: 7.5, h: 11.25 }
+    },
+
+    // ⑦ التصنيف — استدلال (هدف ٣: استخدام الفأرة ولوحة المفاتيح بطريقة صحيحة وآمنة)
+    {
+      type: "classify",
+      objective: "استخدام الفأرة ولوحة المفاتيح بطريقة صحيحة وآمنة.",
+      level: "reasoning",
+      prompt: "صَنِّفِ السُّلوكَ: صَحيحٌ أَم غَيرُ صَحيحٍ عِندَ استِخدامِ الحاسوبِ؟",
+      groups: [
+        { name: "سُلوكٌ صَحيحٌ",       items: ["الإِمساكُ بِالفَأرَةِ بِاليَدِ اليُمنى", "استِخدامُ اليَدَينِ مَعاً عَلى لَوحَةِ المَفاتيحِ", "الجُلوسُ بِظَهرٍ مُستَقيمٍ"] },
+        { name: "سُلوكٌ غَيرُ صَحيحٍ", items: ["الاقتِرابُ الشَّديدُ مِنَ الشّاشَةِ", "الانحِناءُ عَلى الطّاوِلَةِ"] }
+      ]
+    },
+
+    // ⑰ بطاقات الذاكرة — إثرائي (هدف ١)
+    {
+      type: "memory",
+      objective: "التّعرف إلى أجزاء ووظائف الفأرة ولوحة المفاتيح.",
+      level: "knowledge",
+      prompt: "اعثُر عَلى الأَزواجِ المُتَطابِقَةِ: اقلِبْ بِطاقَتَينِ في كُلِّ دَورٍ لِتُطابِقَ كُلَّ جُزءٍ بِوَظيفَتِهِ.",
+      pairs: [
+        { a: "الفَأرَةُ",         b: "النَّقرُ والتَّحديدُ" },
+        { a: "لَوحَةُ المَفاتيحِ", b: "الكِتابَةُ" },
+        { a: "الشّاشَةُ",         b: "عَرضُ الصّورَةِ" },
+        { a: "مِفتاحُ Backspace", b: "حَذفُ الحَرفِ السّابِقِ" }
+      ]
+    }
+
+  ],
+
+  // الصف الأول — الوحدة ١: حاسوبي — الدرس ١.٥: دعنا نتذكر — مراجعة (كتاب التلميذ ص٤٣-٤٧)
+  "g1i-1-5": [
+
+    // ④ صواب وخطأ — معرفة (هدف ٤: التمييز بين السلوك الآمن وغير الآمن)
+    {
+      type: "true-false",
+      objective: "التمييز بين السلوك الآمن والسلوك غير الآمن عند استخدام الحاسوب.",
+      level: "knowledge",
+      statement: "قَطعُ سِلكِ الحاسوبِ أَثناءَ التَّشغيلِ سُلوكٌ آمِنٌ.",
+      answer: false
+    },
+
+    // ③ اختيار من متعدد — معرفة (هدف ٣: التمييز بين أنواع ملفات الحاسوب)
+    {
+      type: "mcq",
+      objective: "التمييز بين أنواع ملفات الحاسوب.",
+      level: "knowledge",
+      prompt: "أَيُّ نَشاطٍ يُنتِجُ مَلَفَّ صَوتٍ؟",
+      options: ["تَسجيلُ صَوتِ أُغنِيَةٍ", "التِقاطُ صورَةٍ", "كِتابَةُ قِصَّةٍ", "رَسمُ شَكلٍ"],
+      answer: 0
+    },
+
+    // ⑦ التصنيف — معرفة (هدف ١: تسمية الأجزاء الأساسيّة للحاسوب)
+    {
+      type: "classify",
+      objective: "تسمية الأجزاء الأساسيّة للحاسوب.",
+      level: "knowledge",
+      prompt: "صَنِّفْ كُلَّ جُزءٍ: هَل هُوَ مِن أَجزاءِ الحاسوبِ الأَساسِيَّةِ؟",
+      groups: [
+        { name: "مِن أَجزاءِ الحاسوبِ",      items: ["الشّاشَةُ", "لَوحَةُ المَفاتيحِ", "وَحدَةُ النِّظامِ"] },
+        { name: "لَيسَ مِن أَجزاءِ الحاسوبِ", items: ["المِكواةُ", "الثَّلّاجَةُ"] }
+      ]
+    },
+
+    // ② توصيل — تطبيق (هدف ٢: تسمية أجزاء الفأرة)
+    {
+      type: "matching",
+      objective: "تسمية أجزاء الفأرة.",
+      level: "application",
+      prompt: "صِلْ كُلَّ جُزءٍ مِن أَجزاءِ الفَأرَةِ بِوَظيفَتِهِ.",
+      pairs: [
+        { a: "الزِّرُّ الأَيسَرُ",  b: "لِلنَّقرِ والتَّحديدِ" },
+        { a: "الزِّرُّ الأَيمَنُ",  b: "لِفَتحِ القائِمَةِ الإِضافِيَّةِ" },
+        { a: "عَجَلَةُ التَّمريرِ", b: "لِلتَّمريرِ في الصَّفحَةِ" }
+      ]
+    },
+
+    // ① سحب وإفلات — استدلال (هدف ١)
+    {
+      type: "drag-drop",
+      objective: "تسمية الأجزاء الأساسيّة للحاسوب.",
+      level: "reasoning",
+      prompt: "اسحَبْ اسمَ كُلِّ جُزءٍ إلى مَكانِهِ الصَّحيحِ في صورَةِ الحاسوبِ.",
+      svg: '<svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="حاسوب مكتبي بأجزائه: شاشة ووحدة نظام ولوحة مفاتيح وفأرة ومكبرا صوت"><rect x="60" y="30" width="240" height="160" rx="14" fill="#0080C0" stroke="#111111" stroke-width="3"/><rect x="76" y="46" width="208" height="128" rx="6" fill="#40C0FF" stroke="#111111" stroke-width="2"/><ellipse cx="130" cy="80" rx="40" ry="14" fill="#FFFFFF" opacity=".35" transform="rotate(-20 130 80)"/><rect x="140" y="190" width="40" height="30" fill="#0060A0" stroke="#111111" stroke-width="2"/><rect x="100" y="220" width="120" height="16" rx="8" fill="#0060A0" stroke="#111111" stroke-width="3"/><rect x="350" y="40" width="90" height="280" rx="10" fill="#0080C0" stroke="#111111" stroke-width="3"/><rect x="365" y="60" width="60" height="16" rx="6" fill="#0060A0" stroke="#111111" stroke-width="2"/><circle cx="395" cy="100" r="10" fill="#40C0FF" stroke="#111111" stroke-width="2"/><ellipse cx="370" cy="70" rx="10" ry="5" fill="#FFFFFF" opacity=".4"/><rect x="40" y="264" width="240" height="56" rx="10" fill="#C0C0C0" stroke="#111111" stroke-width="3"/><line x1="55" y1="280" x2="265" y2="280" stroke="#808080" stroke-width="2"/><line x1="55" y1="296" x2="265" y2="296" stroke="#808080" stroke-width="2"/><line x1="55" y1="312" x2="265" y2="312" stroke="#808080" stroke-width="2"/><ellipse cx="310" cy="292" rx="30" ry="26" fill="#E08000" stroke="#111111" stroke-width="3"/><line x1="310" y1="266" x2="310" y2="292" stroke="#111111" stroke-width="2"/><ellipse cx="300" cy="280" rx="8" ry="5" fill="#FFFFFF" opacity=".5"/><rect x="470" y="70" width="50" height="90" rx="10" fill="#60C020" stroke="#111111" stroke-width="3"/><circle cx="495" cy="95" r="14" fill="#4A9018" stroke="#111111" stroke-width="2"/><circle cx="495" cy="135" r="10" fill="#4A9018" stroke="#111111" stroke-width="2"/><rect x="470" y="190" width="50" height="90" rx="10" fill="#60C020" stroke="#111111" stroke-width="3"/><circle cx="495" cy="215" r="14" fill="#4A9018" stroke="#111111" stroke-width="2"/><circle cx="495" cy="255" r="10" fill="#4A9018" stroke="#111111" stroke-width="2"/></svg>',
+      bg: "#eef7ff",
+      targets: [
+        { answer: "الشّاشَةُ",         box: { x: 16, y: 20 }, dot: { x: 30, y: 30.56 } },
+        { answer: "وَحدَةُ النِّظامِ", box: { x: 84, y: 40 }, dot: { x: 65.83, y: 50 } },
+        { answer: "لَوحَةُ المَفاتيحِ", box: { x: 16, y: 60 }, dot: { x: 26.67, y: 81.11 } },
+        { answer: "الفَأرَةُ",          box: { x: 84, y: 80 }, dot: { x: 51.67, y: 81.11 } }
+      ]
+    },
+
+    // ⑭ التلوين بالتعليمات — إثرائي (هدف ١) — النشاط موجود حرفياً في الكتاب (ص٤٥)
+    {
+      type: "color",
+      objective: "تسمية الأجزاء الأساسيّة للحاسوب.",
+      level: "knowledge",
+      prompt: "لَوِّنْ مَفاتيحَ لَوحَةِ المَفاتيحِ: الحُروفُ بِالأَزرَقِ، والأَرقامُ بِالأَخضَرِ، ومِفتاحُ الحَذفِ بِالبُرتُقاليِّ، ومِفتاحُ المَسافَةِ بِالأَصفَرِ.",
+      bg: "#fbf8f2",
+      palette: [
+        { name: "أَزرَق", color: "#2f6fb0" },
+        { name: "أَخضَر", color: "#3e9b4f" },
+        { name: "بُرتُقاليّ", color: "#e08000" },
+        { name: "أَصفَر", color: "#e8c93c" }
+      ],
+      parts: [
+        { name: "حروف", color: "#2f6fb0" },
+        { name: "أرقام", color: "#3e9b4f" },
+        { name: "مفتاح الحذف", color: "#e08000" },
+        { name: "مفتاح المسافة", color: "#e8c93c" }
+      ],
+      svg: '<svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg"><g class="cpart" data-name="أرقام"><rect x="20" y="15" width="80" height="50" rx="8"/><text x="60" y="47" font-size="26" text-anchor="middle" fill="#2b2b2b">١</text></g><g class="cpart" data-name="أرقام"><rect x="120" y="15" width="80" height="50" rx="8"/><text x="160" y="47" font-size="26" text-anchor="middle" fill="#2b2b2b">٢</text></g><g class="cpart" data-name="أرقام"><rect x="220" y="15" width="80" height="50" rx="8"/><text x="260" y="47" font-size="26" text-anchor="middle" fill="#2b2b2b">٣</text></g><g class="cpart" data-name="أرقام"><rect x="320" y="15" width="80" height="50" rx="8"/><text x="360" y="47" font-size="26" text-anchor="middle" fill="#2b2b2b">٤</text></g><g class="cpart" data-name="أرقام"><rect x="420" y="15" width="80" height="50" rx="8"/><text x="460" y="47" font-size="26" text-anchor="middle" fill="#2b2b2b">٥</text></g><g class="cpart" data-name="حروف"><rect x="20" y="80" width="80" height="50" rx="8"/><text x="60" y="112" font-size="26" text-anchor="middle" fill="#2b2b2b">ا</text></g><g class="cpart" data-name="حروف"><rect x="120" y="80" width="80" height="50" rx="8"/><text x="160" y="112" font-size="26" text-anchor="middle" fill="#2b2b2b">ب</text></g><g class="cpart" data-name="حروف"><rect x="220" y="80" width="80" height="50" rx="8"/><text x="260" y="112" font-size="26" text-anchor="middle" fill="#2b2b2b">ت</text></g><g class="cpart" data-name="حروف"><rect x="320" y="80" width="80" height="50" rx="8"/><text x="360" y="112" font-size="26" text-anchor="middle" fill="#2b2b2b">ث</text></g><g class="cpart" data-name="حروف"><rect x="420" y="80" width="80" height="50" rx="8"/><text x="460" y="112" font-size="26" text-anchor="middle" fill="#2b2b2b">ج</text></g><g class="cpart" data-name="حروف"><rect x="20" y="145" width="80" height="50" rx="8"/><text x="60" y="177" font-size="26" text-anchor="middle" fill="#2b2b2b">د</text></g><g class="cpart" data-name="حروف"><rect x="120" y="145" width="80" height="50" rx="8"/><text x="160" y="177" font-size="26" text-anchor="middle" fill="#2b2b2b">ه</text></g><g class="cpart" data-name="حروف"><rect x="220" y="145" width="80" height="50" rx="8"/><text x="260" y="177" font-size="24" text-anchor="middle" fill="#2b2b2b">و</text></g><g class="cpart" data-name="مفتاح الحذف"><rect x="340" y="145" width="180" height="50" rx="8"/><text x="430" y="177" font-size="20" text-anchor="middle" fill="#2b2b2b">حذف</text></g><g class="cpart" data-name="مفتاح المسافة"><rect x="100" y="210" width="400" height="45" rx="8"/></g></svg>'
+    }
+
+  ],
+
+  // الصف الأول — الوحدة ١: حاسوبي — الدرس ١.٦: لنطبّق معا — تطبيق عملي (كتاب التلميذ ص٤٨-٥١)
+  "g1i-1-6": [
+
+    // ④ صواب وخطأ — معرفة
+    {
+      type: "true-false",
+      objective: "استخدام الفأرة ولوحة المفاتيح بطريقة صحيحة وآمنة.",
+      level: "knowledge",
+      statement: "النَّقرَةُ المُزدَوِجَةُ تَعني الضَّغطَ عَلى زِرِّ الفَأرَةِ مَرَّتَينِ بِسُرعَةٍ.",
+      answer: true
+    },
+
+    // ③ اختيار من متعدد — معرفة
+    {
+      type: "mcq",
+      objective: "استخدام الفأرة ولوحة المفاتيح بطريقة صحيحة وآمنة.",
+      level: "knowledge",
+      prompt: "أَيُّ مِفتاحٍ نَستَخدِمُهُ لِحَذفِ حَرفٍ كَتَبناهُ بِالخَطَإِ؟",
+      options: ["Backspace", "Enter", "Shift", "Space"],
+      answer: 0
+    },
+
+    // ② توصيل — معرفة
+    {
+      type: "matching",
+      objective: "استخدام الفأرة ولوحة المفاتيح بطريقة صحيحة وآمنة.",
+      level: "knowledge",
+      prompt: "صِلْ كُلَّ إِجراءٍ بِاسمِهِ الصَّحيحِ.",
+      pairs: [
+        { a: "ضَغطَةٌ واحِدَةٌ سَريعَةٌ",                     b: "نَقرَةٌ مُفرَدَةٌ" },
+        { a: "ضَغطَتانِ سَريعَتانِ",                        b: "نَقرَةٌ مُزدَوِجَةٌ" },
+        { a: "تَحريكُ الفَأرَةِ بِلا ضَغطٍ",                 b: "تَحريكُ المُؤَشِّرِ" },
+        { a: "الضَّغطُ عَلى مِفتاحٍ في لَوحَةِ المَفاتيحِ", b: "كِتابَةُ حَرفٍ" }
+      ]
+    },
+
+    // ⑦ التصنيف — تطبيق
+    {
+      type: "classify",
+      objective: "استخدام الفأرة ولوحة المفاتيح بطريقة صحيحة وآمنة.",
+      level: "application",
+      prompt: "صَنِّفْ كُلَّ مِفتاحٍ حَسَبَ نَوعِهِ.",
+      groups: [
+        { name: "حَرفٌ", items: ["أ", "ب", "ت"] },
+        { name: "رَقمٌ", items: ["١", "٢", "٣"] }
+      ]
+    },
+
+    // ⑥ الترتيب التسلسلي — استدلال
+    {
+      type: "sequence",
+      objective: "استخدام الفأرة ولوحة المفاتيح بطريقة صحيحة وآمنة.",
+      level: "reasoning",
+      prompt: "رَتِّبْ خُطُواتِ كِتابَةِ اسمِكَ عَلى الحاسوبِ.",
+      steps: [
+        "تَحريكُ المُؤَشِّرِ إِلى مَكانِ الكِتابَةِ",
+        "النَّقرُ مَرَّةً واحِدَةً لِتَحديدِ المَكانِ",
+        "كِتابَةُ الحُروفِ بِلَوحَةِ المَفاتيحِ",
+        "الضَّغطُ عَلى مِفتاحِ المَسافَةِ بَينَ الكَلِماتِ"
+      ]
+    }
+
   ]
 };

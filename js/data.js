@@ -555,12 +555,12 @@ window.DATA_FALLBACK = {
     ]},
     "g1-it": { book:"عالمي الرقمي — الصف الأول", units:[
       { unit:"حاسوبي", lessons:[
-        { title:"الحاسوب في حياتنا", file:"g1i-1-1", open:false },
-        { title:"أجزاء جهاز الحاسوب", file:"g1i-1-2", open:false },
-        { title:"سطح المكتب", file:"g1i-1-3", open:false },
-        { title:"انقر واكتب", file:"g1i-1-4", open:false },
-        { title:"دعنا نتذكر", file:"g1i-1-5", open:false },
-        { title:"لنطبّق معا", file:"g1i-1-6", open:false }
+        { title:"الحاسوب في حياتنا", file:"g1i-1-1", open:true },
+        { title:"أجزاء جهاز الحاسوب", file:"g1i-1-2", open:true },
+        { title:"سطح المكتب", file:"g1i-1-3", open:true },
+        { title:"انقر واكتب", file:"g1i-1-4", open:true },
+        { title:"دعنا نتذكر", file:"g1i-1-5", open:true },
+        { title:"لنطبّق معا", file:"g1i-1-6", open:true }
       ]},
       { unit:"هيا نرسم", lessons:[
         { title:"مقدمة إلى الرسم الرقمي", file:"g1i-2-1", open:false },
