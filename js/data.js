@@ -633,7 +633,7 @@ window.DATA_FALLBACK = {
         { title:"اِستِكشافُ النَّصِّ الثُّلاثيِّ الأَبعاد", file:"g2i-2-6", open:true }
       ]},
       { unit:"هيّا نَكتُبُ", lessons:[
-        { title:"مُقَدِّمَةٌ إلى مُعالَجَةِ الكَلِماتِ", file:"g2i-3-1", open:false },
+        { title:"مُقَدِّمَةٌ إلى مُعالَجَةِ الكَلِماتِ", file:"g2i-3-1", open:true },
         { title:"كِتابَةُ نَصٍّ", file:"g2i-3-2", open:false },
         { title:"لِنَتَدَرَّبْ على الكِتابَةِ", file:"g2i-3-3", open:false },
         { title:"التَّحَرُّكُ داخِلَ النَّصِّ", file:"g2i-3-4", open:false },
