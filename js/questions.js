@@ -36847,5 +36847,80 @@ window.QUESTIONS = {
       spot: { x: 25, y: 50, w: 42, h: 65 }
     }
 
+  ],
+
+  // الصف الثالث — الوحدة ٢: هيّا نكتب — الدرس ٢.٤: لنتدرّب على التعامل مع النص وتنسيق الصور (تدريب، كتاب التلميذ ص٦٩-٧٥)
+  // ⚠️ درسُ نشأةِ نوع `maze` — نشاطُ «قُم بحلّ المتاهة» في الكتابِ (ص٧٢) رسمٌ فعليٌّ
+  // لمتاهةٍ دائريّةٍ هدفُها أيقونةُ Wrap Text، وهو أصلُ هذا النوعِ في المنصّة.
+  "g3i-2-4": [
+
+    // اختيار من متعدد — معرفة (هدف: إدراج صورة في مستند نصي)
+    {
+      type: "mcq",
+      objective: "إدراج صورة في مستند نصي.",
+      level: "knowledge",
+      prompt: "أَيُّ تَبويبٍ نَختارُهُ لِإِضافَةِ صورَةٍ في المُستَنَدِ؟",
+      options: ["Insert", "Home", "Design", "References"],
+      answer: 0
+    },
+
+    // صواب وخطأ — معرفة (هدف: تطبيق نمط الصورة)
+    {
+      type: "true-false",
+      objective: "تطبيق نمط الصورة.",
+      level: "knowledge",
+      statement: "يُمكِنُكَ تَغييرُ مَظهَرِ الصّورَةِ بَعدَ إِدراجِها في مُستَنَدِ مُعالِجِ الكَلِماتِ، كَإِضافَةِ حَدٍّ أَو نَمَطٍ لَها.",
+      answer: true
+    },
+
+    // ملء الفراغ بالسحب — تطبيق (هدف: إدراج صورة في مستند نصي)
+    {
+      type: "fill-blank",
+      objective: "إدراج صورة في مستند نصي.",
+      level: "application",
+      prompt: "أَكمِلِ الجُملَتَينِ بِسَحبِ الكَلِمَتَينِ المُناسِبَتَينِ.",
+      text: "لِإِضافَةِ صورَةٍ في المُستَنَدِ، اختَرْ تَبويبَ {}. ولِتَعديلِ الصّورَةِ بِطُرُقٍ مُختَلِفَةٍ، استَخدِمِ الخِياراتِ المَوجودَةَ في تَبويبِ {}.",
+      answers: ["Insert", "Picture Format"],
+      distractors: ["Home", "Design"]
+    },
+
+    // التصنيف — معرفة (هدف: استخدام خيار التفاف النص Wrap Text)
+    {
+      type: "classify",
+      objective: "استخدام خيار التفاف النص (Wrap Text).",
+      level: "knowledge",
+      prompt: "صَنِّفْ خِيارَ الالتِفافِ: أَيَضَعُ النَّصَّ فَوقَ الصّورَةِ وتَحتَها فَقَط، أَم يَجعَلُهُ يَلتَفُّ حَولَ حُدودِها؟",
+      groups: [
+        { name: "فَوقَ وتَحتَ الصّورَةِ فَقَط", items: ["Top and Bottom"] },
+        { name: "يَلتَفُّ حَولَ حُدودِ الصّورَةِ", items: ["Tight", "Through"] }
+      ]
+    },
+
+    // حلّ المتاهة — استدلال (هدف: استخدام خيار التفاف النص Wrap Text)
+    {
+      type: "maze",
+      objective: "استخدام خيار التفاف النص (Wrap Text).",
+      level: "reasoning",
+      prompt: "هَل يُمكِنُكَ رَسمُ المَسارِ إلى أَداةِ التِفافِ النَّصِّ (Wrap Text) لِمُساعَدَتي في تَنسيقِ صورَتي؟",
+      bg: "#fdf9ee",
+      svg: `<svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="متاهةٌ مُتَعَرِّجَةٌ تُفضي إلى أداةِ Wrap Text في نهايتها">
+        <path d="M100,10 L100,30 L180,30 L180,70 L20,70 L20,110 L180,110 L180,150 L20,150 L20,190 L100,190"
+              fill="none" stroke="#E08A2B" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M100,10 L100,30 L180,30 L180,70 L20,70 L20,110 L180,110 L180,150 L20,150 L20,190 L100,190"
+              fill="none" stroke="#FDF6E9" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+        <polygon points="92,0 108,0 100,14" fill="#4FA8D8" stroke="#111111" stroke-width="2"/>
+        <circle cx="100" cy="190" r="18" fill="#F0D43A" stroke="#111111" stroke-width="3"/>
+        <text x="100" y="187" font-size="9" text-anchor="middle" fill="#111111" font-family="Arial">Wrap</text>
+        <text x="100" y="197" font-size="9" text-anchor="middle" fill="#111111" font-family="Arial">Text</text>
+      </svg>`,
+      path: [
+        { x: 50, y: 4.5 }, { x: 50, y: 13.6 }, { x: 90, y: 13.6 }, { x: 90, y: 31.8 },
+        { x: 10, y: 31.8 }, { x: 10, y: 50 }, { x: 90, y: 50 }, { x: 90, y: 68.2 },
+        { x: 10, y: 68.2 }, { x: 10, y: 86.4 }, { x: 50, y: 86.4 }
+      ],
+      tolerance: 6,
+      targetLabel: "أداة التفاف النص (Wrap Text)"
+    }
+
   ]
 };
