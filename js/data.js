@@ -574,7 +574,7 @@ window.DATA_FALLBACK = {
         { title:"الإنترنت", file:"g1i-3-1", open:true },
         { title:"استمتع", file:"g1i-3-2", open:true },
         { title:"تواصل", file:"g1i-3-3", open:true },
-        { title:"ابحث", file:"g1i-3-4", open:false }
+        { title:"ابحث", file:"g1i-3-4", open:true }
       ]}
     ]},
     "g2-dini-1": { book:"ديني حياتي (الجزء الأول) — الصف الثاني", units:[
