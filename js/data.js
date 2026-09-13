@@ -635,7 +635,7 @@ window.DATA_FALLBACK = {
       { unit:"هيّا نَكتُبُ", lessons:[
         { title:"مُقَدِّمَةٌ إلى مُعالَجَةِ الكَلِماتِ", file:"g2i-3-1", open:true },
         { title:"كِتابَةُ نَصٍّ", file:"g2i-3-2", open:true },
-        { title:"لِنَتَدَرَّبْ على الكِتابَةِ", file:"g2i-3-3", open:false },
+        { title:"لِنَتَدَرَّبْ على الكِتابَةِ", file:"g2i-3-3", open:true },
         { title:"التَّحَرُّكُ داخِلَ النَّصِّ", file:"g2i-3-4", open:false },
         { title:"لِنَتَدَرَّبْ على تَحريكِ المُؤَشِّرِ", file:"g2i-3-5", open:false },
         { title:"تَنسيقُ النَّصِّ", file:"g2i-3-6", open:false },
