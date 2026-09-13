@@ -838,7 +838,7 @@
       {
         "unit": "حاسوبي",
         "lessons": [
-          { "title": "أَجزاءُ جِهازِ الحاسوبِ", "file": "g2i-1-1", "open": false },
+          { "title": "أَجزاءُ جِهازِ الحاسوبِ", "file": "g2i-1-1", "open": true },
           { "title": "سَطحُ المَكتَبِ", "file": "g2i-1-2", "open": false }
         ]
       },
