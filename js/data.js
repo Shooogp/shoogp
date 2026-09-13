@@ -622,7 +622,7 @@ window.DATA_FALLBACK = {
     "g2-it": { book:"عالمي الرقمي — الصف الثاني", units:[
       { unit:"حاسوبي", lessons:[
         { title:"أَجزاءُ جِهازِ الحاسوبِ", file:"g2i-1-1", open:true },
-        { title:"سَطحُ المَكتَبِ", file:"g2i-1-2", open:false }
+        { title:"سَطحُ المَكتَبِ", file:"g2i-1-2", open:true }
       ]},
       { unit:"هيّا نُصَمِّمُ", lessons:[
         { title:"مُقَدِّمَةٌ إلى الرَّسمِ ثُلاثيِّ الأَبعادِ", file:"g2i-2-1", open:false },
