@@ -640,7 +640,7 @@ window.DATA_FALLBACK = {
         { title:"لِنَتَدَرَّبْ على تَحريكِ المُؤَشِّرِ", file:"g2i-3-5", open:true },
         { title:"تَنسيقُ النَّصِّ", file:"g2i-3-6", open:true },
         { title:"لِنَتَدَرَّبْ على تَنسيقِ النَّصِّ", file:"g2i-3-7", open:true },
-        { title:"أَساسِيّاتُ تَحريرِ النَّصِّ", file:"g2i-3-8", open:false }
+        { title:"أَساسِيّاتُ تَحريرِ النَّصِّ", file:"g2i-3-8", open:true }
       ]}
     ]},
     "g3-dini-1": { book:"ديني حياتي (الجزء الأول) — الصف الثالث", units:[
