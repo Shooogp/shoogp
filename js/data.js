@@ -692,7 +692,7 @@ window.DATA_FALLBACK = {
         { title:"أجهزة الطباعة والالتقاط", file:"g3i-1-3", open:true }
       ]},
       { unit:"هيّا نكتب", lessons:[
-        { title:"تنسيق النص", file:"g3i-2-1", open:false },
+        { title:"تنسيق النص", file:"g3i-2-1", open:true },
         { title:"لنتدرّب على تنسيق النص", file:"g3i-2-2", open:false },
         { title:"إدراج وتنسيق صورة", file:"g3i-2-3", open:false },
         { title:"لنتدرّب على التعامل مع النص وتنسيق الصور", file:"g3i-2-4", open:false },
