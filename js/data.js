@@ -693,7 +693,7 @@ window.DATA_FALLBACK = {
       ]},
       { unit:"هيّا نكتب", lessons:[
         { title:"تنسيق النص", file:"g3i-2-1", open:true },
-        { title:"لنتدرّب على تنسيق النص", file:"g3i-2-2", open:false },
+        { title:"لنتدرّب على تنسيق النص", file:"g3i-2-2", open:true },
         { title:"إدراج وتنسيق صورة", file:"g3i-2-3", open:false },
         { title:"لنتدرّب على التعامل مع النص وتنسيق الصور", file:"g3i-2-4", open:false },
         { title:"إنشاء القوائم", file:"g3i-2-5", open:false },
