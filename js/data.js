@@ -689,7 +689,7 @@ window.DATA_FALLBACK = {
       { unit:"حاسوبي", lessons:[
         { title:"أجهزة التفاعل مع الحاسوب", file:"g3i-1-1", open:true },
         { title:"تنظيم الملفات والمجلدات", file:"g3i-1-2", open:true },
-        { title:"أجهزة الطباعة والالتقاط", file:"g3i-1-3", open:false }
+        { title:"أجهزة الطباعة والالتقاط", file:"g3i-1-3", open:true }
       ]},
       { unit:"هيّا نكتب", lessons:[
         { title:"تنسيق النص", file:"g3i-2-1", open:false },
