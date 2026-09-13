@@ -954,7 +954,7 @@
           { "title": "لنتدرّب على التعامل مع النص وتنسيق الصور", "file": "g3i-2-4", "open": true },
           { "title": "إنشاء القوائم", "file": "g3i-2-5", "open": true },
           { "title": "لنتدرّب على التعامل مع القوائم", "file": "g3i-2-6", "open": true },
-          { "title": "المشروع", "file": "g3i-2-7", "open": false }
+          { "title": "المشروع", "file": "g3i-2-7", "open": true }
         ]
       },
       {
