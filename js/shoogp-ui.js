@@ -56,7 +56,7 @@ function imgURL(name){ return IMG_BASE + name + IMG_VER; }
    يكسرُ الفهرسَ والرموزَ والأغلفة)، واسمُ المادةِ يتبعُ أسماءَ صورِ إطارِها
    `frame-deeny-*.png`. فالجدولُ هذا هو **موضعُ اللقاءِ** بين التسميتين. */
 var SUBJECT_BY_KEY_SUFFIX={ '-sci':'science', '-math':'math',
-  '-arabic-1':'arabic', '-arabic-2':'arabic', '-dini-1':'deeny', '-dini-2':'deeny' };
+  '-arabic-1':'arabic', '-arabic-2':'arabic', '-dini-1':'deeny', '-dini-2':'deeny', '-it':'it' };
 var SHOOGP_BOOKS_SEED=[
   {key:'g1-sci',  prefix:'g1s-', subject:'science'},
   {key:'g2-sci',  prefix:'g2s-', subject:'science'},
@@ -264,6 +264,23 @@ var FRAME_FAMILIES={
     m:{img:'frame-deeny-m.png', ar:'1200 / 966',  win:{top:'16.5%', left:'11.5%', right:'14.5%', bottom:'15.8%'}, hasFill:true, fillColor:'#FFFFFD'},
     l:{img:'frame-deeny-l.png', ar:'927 / 904',   win:{top:'15.8%', left:'15.4%', right:'16.4%', bottom:'13.5%'}, hasFill:true, fillColor:'#FFFFFE'},
     tall:{img:'frame-deeny-tall.png', ar:'927 / 1349', win:{top:'11.9%', left:'15.4%', right:'16.4%', bottom:'10.4%'}, hasFill:true, fillColor:'#FFFFFD'}
+  }},
+  /* عالمي الرقمي — عائلةُ إطارٍ بهويّةِ «قمرٍ صناعيٍّ ودارات» (قرار المالك ٢٠٢٦-٠٩-١٣):
+     قمرٌ صناعيٌّ أزرقُ معدنيٌّ ولوحٌ شمسيٌّ في الزاويةِ العلويةِ اليمنى، وخطوطُ دارةٍ
+     مضيئةٌ تتبعُ الحافّتَين العلويةَ واليمنى فقط — والحافّةُ اليسرى (جهةُ الصاروخ)
+     نظيفةٌ تماماً كما تشترطُ القاعدة. `l` و`s` **مولَّدانِ مستقلَّينِ** بجيميناي (سير
+     «شوجب — مولّد رسومات الأسئلة»)، و`m` و`tall` **مُشتقّانِ من `l`** بإدراجِ لِحامٍ
+     (seam insertion، مكتبة `seam-carving`) لا توسيعاً خطّياً — فتمتصُّ الحوافُّ
+     الملساءُ (اليسرى/السفلى) الاتساعَ ولا يُمَسُّ القمرُ الصناعيُّ ولا خطوطُ الدارة.
+     النافذةُ **شفافةٌ (hasFill:false)** كالقمريّ الافتراضيّ — يظهرُ حقلُ النجومِ
+     المشتركُ خلالَها، وهو منسجمٌ مع هويّةِ «قمرٍ صناعيٍّ ينظرُ إلى الفضاء».
+     نِسَبُ النوافذِ المقيسةُ بعدَ الضبط: s ‏2.688 · m ‏1.402 · l ‏0.99 · tall ‏0.605 —
+     مطابقةٌ لسلّمِ العائلاتِ القائمةِ (انحرافٌ ≤٠٫٠٢ عن كلِّ هدف). */
+  it:{ order:['s','m','l','tall'], flexBase:'l', sizes:{
+    s:{img:'frame-it-s.png', ar:'1064 / 1084', win:{top:'36.81%', left:'13.91%', right:'14%',   bottom:'36.81%'}, hasFill:false},
+    m:{img:'frame-it-m.png', ar:'1471 / 1055', win:{top:'17.82%', left:'9.59%',  right:'17.54%',bottom:'9.67%'},  hasFill:false},
+    l:{img:'frame-it-l.png', ar:'1064 / 1090', win:{top:'17.8%',  left:'8.27%', right:'18.14%', bottom:'9.63%'},  hasFill:false},
+    tall:{img:'frame-it-tall.png', ar:'1064 / 1878', win:{top:'16.83%', left:'8.27%', right:'18.14%', bottom:'14.32%'}, hasFill:false}
   }}
 };
 /* ═══ مادةُ الدرس → عائلةُ الفريم — **جدولٌ لا سلسلةُ شروط** ═══
@@ -273,7 +290,7 @@ var FRAME_FAMILIES={
    ⚠️ **السطرُ هنا وحدَه لا يكفي:** المادةُ تُشتَقُّ من لاحقةِ مفتاحِ الكتابِ في
    `SUBJECT_BY_KEY_SUFFIX` أعلاه، فما لم تُذكرْ لاحقتُه هناك بقيَ `lessonSubject`
    يعيدُ `null` فيسقطَ الدرسُ إلى القمريِّ **بلا أيِّ تحذير**. */
-var FAMILY_BY_SUBJECT={ math:'math', arabic:'arabic', deeny:'deeny' };
+var FAMILY_BY_SUBJECT={ math:'math', arabic:'arabic', deeny:'deeny', it:'it' };
 function famFor(subj){
   var key = (subj && Object.prototype.hasOwnProperty.call(FAMILY_BY_SUBJECT,subj))
             ? FAMILY_BY_SUBJECT[subj] : null;
