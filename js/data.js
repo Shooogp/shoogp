@@ -565,7 +565,7 @@ window.DATA_FALLBACK = {
       { unit:"هيا نرسم", lessons:[
         { title:"مقدمة إلى الرسم الرقمي", file:"g1i-2-1", open:true },
         { title:"رسم الأشكال", file:"g1i-2-2", open:true },
-        { title:"لنتدرب على الأشكال", file:"g1i-2-3", open:false },
+        { title:"لنتدرب على الأشكال", file:"g1i-2-3", open:true },
         { title:"دمج الأشكال", file:"g1i-2-4", open:false },
         { title:"لنتدرب على دمج الأشكال", file:"g1i-2-5", open:false },
         { title:"الرسم الحر", file:"g1i-2-6", open:false }
