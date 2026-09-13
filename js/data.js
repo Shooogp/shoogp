@@ -687,7 +687,7 @@ window.DATA_FALLBACK = {
     ]},
     "g3-it": { book:"عالمي الرقمي — الصف الثالث", units:[
       { unit:"حاسوبي", lessons:[
-        { title:"أجهزة التفاعل مع الحاسوب", file:"g3i-1-1", open:false },
+        { title:"أجهزة التفاعل مع الحاسوب", file:"g3i-1-1", open:true },
         { title:"تنظيم الملفات والمجلدات", file:"g3i-1-2", open:false },
         { title:"أجهزة الطباعة والالتقاط", file:"g3i-1-3", open:false }
       ]},
