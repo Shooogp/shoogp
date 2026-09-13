@@ -638,7 +638,7 @@ window.DATA_FALLBACK = {
         { title:"لِنَتَدَرَّبْ على الكِتابَةِ", file:"g2i-3-3", open:true },
         { title:"التَّحَرُّكُ داخِلَ النَّصِّ", file:"g2i-3-4", open:true },
         { title:"لِنَتَدَرَّبْ على تَحريكِ المُؤَشِّرِ", file:"g2i-3-5", open:true },
-        { title:"تَنسيقُ النَّصِّ", file:"g2i-3-6", open:false },
+        { title:"تَنسيقُ النَّصِّ", file:"g2i-3-6", open:true },
         { title:"لِنَتَدَرَّبْ على تَنسيقِ النَّصِّ", file:"g2i-3-7", open:false },
         { title:"أَساسِيّاتُ تَحريرِ النَّصِّ", file:"g2i-3-8", open:false }
       ]}
