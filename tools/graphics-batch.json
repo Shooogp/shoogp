@@ -28,15 +28,87 @@
   "    ← يتخطّى البناءَ كلَّه. يُستعمَلُ حينَ تُغري قائمةُ الهيكسات النموذجَ",
   "      برسمِ لوحةِ ألوانٍ داخلَ الصورة (وقعَ فعلاً مع رسمةِ العين)."
  ],
- "batchId": "2026-09-13-frame-it-m-tall",
+ "batchId": "2026-09-13-it-vocab-1",
  "items": [
   {
-   "name": "frame-it-m-2026-09-13-frame-it-m-tall",
-   "prompt": "Create a single decorative picture-frame border ornament for a childrens educational app screen, in the shape of a friendly satellite-and-circuitry theme surrounding a big empty rectangular window in the middle. The border is made of a chunky rounded blue-grey metallic satellite dish shape and a small solar-panel shape with a grid pattern, sitting only in the TOP-RIGHT corner area of the frame, plus a thin glowing sky-blue circuit-trace line (like a printed circuit board trace with small rounded node dots) that runs along the TOP edge and the RIGHT edge of the frame only. The LEFT edge and the BOTTOM-LEFT corner of the frame are completely plain, bare and undecorated — no lines, no shapes, no circuitry there at all. The centre window is a single flat empty area with no objects, no pattern, and no character inside it. The centre window is a moderately wide rectangular opening, noticeably wider than it is tall, with a medium-thick decorated border on top and right, and a thin plain border on left and bottom. Glossy cartoon vector sticker illustration in a bright space-sticker style. Bold saturated flat colours (sky blue, ocean blue, metallic silver-blue, amber, white). Each part is shaded with three or four crisp discrete colour bands, hard edged, no soft blending. A broad white gloss highlight on every curved surface. A thin crisp near-black outline #111111 around every part. Plump rounded forms, no sharp angles. No ground line, no cast shadow. CRITICAL: absolutely no eyes, no face, no facial features on anything anywhere in the image. ABSOLUTELY FORBIDDEN: any text, letters, numbers, labels, watermarks, colour swatches or legends anywhere in the image. One single standalone image only, square 1:1 canvas, the whole frame filling the canvas edge to edge."
+   "name": "فأرة-حاسوب",
+   "subject": "a plump rounded white computer mouse with a visible scroll wheel and two click buttons on top"
   },
   {
-   "name": "frame-it-tall-2026-09-13-frame-it-m-tall",
-   "prompt": "Create a single decorative picture-frame border ornament for a childrens educational app screen, in the shape of a friendly satellite-and-circuitry theme surrounding a big empty rectangular window in the middle. The border is made of a chunky rounded blue-grey metallic satellite dish shape and a small solar-panel shape with a grid pattern, sitting only in the TOP-RIGHT corner area of the frame, plus a thin glowing sky-blue circuit-trace line (like a printed circuit board trace with small rounded node dots) that runs along the TOP edge and the RIGHT edge of the frame only. The LEFT edge and the BOTTOM-LEFT corner of the frame are completely plain, bare and undecorated — no lines, no shapes, no circuitry there at all. The centre window is a single flat empty area with no objects, no pattern, and no character inside it. The centre window is a tall narrow vertical opening spanning almost the full height of the canvas but only a slice of its width, leaving a thick decorated band on the right side and a thin plain band on the left side, with only thin borders above and below. Glossy cartoon vector sticker illustration in a bright space-sticker style. Bold saturated flat colours (sky blue, ocean blue, metallic silver-blue, amber, white). Each part is shaded with three or four crisp discrete colour bands, hard edged, no soft blending. A broad white gloss highlight on every curved surface. A thin crisp near-black outline #111111 around every part. Plump rounded forms, no sharp angles. No ground line, no cast shadow. CRITICAL: absolutely no eyes, no face, no facial features on anything anywhere in the image. ABSOLUTELY FORBIDDEN: any text, letters, numbers, labels, watermarks, colour swatches or legends anywhere in the image. One single standalone image only, square 1:1 canvas, the whole frame filling the canvas edge to edge."
+   "name": "لوحة-مفاتيح",
+   "subject": "a plump rounded rectangular computer keyboard viewed from above, with rows of small rounded square keys"
+  },
+  {
+   "name": "طابعة",
+   "subject": "a plump rounded white inkjet printer with a paper tray and a sheet of paper coming out of it"
+  },
+  {
+   "name": "مجلد",
+   "subject": "a plump rounded yellow manila file folder, slightly open, with a colored paper peeking out of the top"
+  },
+  {
+   "name": "ملف-مستند",
+   "subject": "a plump rounded white document sheet icon with a folded top right corner and a few horizontal lines representing text"
+  },
+  {
+   "name": "سماعات-رأس",
+   "subject": "a plump rounded pair of over ear headphones with a curved headband and two round ear cups"
+  },
+  {
+   "name": "لوحة-رسم-رقمية",
+   "subject": "a plump rounded rectangular digital drawing tablet with a stylus pen resting diagonally on top of it"
+  },
+  {
+   "name": "مكعب-ثلاثي-الابعاد",
+   "subject": "a single plump rounded 3D cube shape with visible top, front and side faces in different shades"
+  },
+  {
+   "name": "لوحة-الوان-رسام",
+   "subject": "a plump rounded wooden artist paint palette with a thumb hole and a few round dabs of different colours of paint on it"
+  },
+  {
+   "name": "قرص-صلب-خارجي",
+   "subject": "a plump rounded small portable external hard drive box with a status light dot on the front"
+  },
+  {
+   "name": "ذاكرة-وامضة",
+   "subject": "a plump rounded small USB flash drive with a removable cap and a metal connector end"
+  },
+  {
+   "name": "بطاقة-ذاكرة",
+   "subject": "a single plump rounded small SD memory card with a corner notch and tiny gold contact lines on the back"
+  },
+  {
+   "name": "كاميرا-ويب",
+   "subject": "a plump rounded small round webcam on a little clip stand, with a circular lens in the middle"
+  },
+  {
+   "name": "كاميرا-رقمية",
+   "subject": "a plump rounded compact digital camera with a lens on the front and a small flash"
+  },
+  {
+   "name": "ميكروفون",
+   "subject": "a plump rounded handheld microphone with a round mesh head and a short stand"
+  },
+  {
+   "name": "درع-حماية",
+   "subject": "a plump rounded shield shape standing upright, like a safety or security shield"
+  },
+  {
+   "name": "حشرة-فيروس-حاسوب",
+   "subject": "a single plump rounded cartoon computer bug virus icon shaped like a round beetle with small round legs, sitting on top of a tiny rounded computer screen shape"
+  },
+  {
+   "name": "مغلف-بريد-الكتروني",
+   "subject": "a plump rounded closed envelope shape with a triangular flap on top, viewed from the front"
+  },
+  {
+   "name": "ترس-اعدادات",
+   "subject": "a single plump rounded grey mechanical gear cog wheel shape with a small circle hole in the middle"
+  },
+  {
+   "name": "شاشة-عرض-تقديمي",
+   "subject": "a plump rounded rectangular presentation screen mounted on a short stand, with a simple bar chart shown on the screen"
   }
  ]
 }
