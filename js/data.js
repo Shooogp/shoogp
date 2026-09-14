@@ -320,7 +320,7 @@ window.DATA_FALLBACK = {
         { title:"المشروع", file:"g4i-2-4", open:true }
       ]},
       { unit:"عالمي المتصل", lessons:[
-        { title:"البريد الإلكتروني", file:"g4i-3-1", open:false },
+        { title:"البريد الإلكتروني", file:"g4i-3-1", open:true },
         { title:"التواصل عبر البريد الإلكتروني", file:"g4i-3-2", open:false }
       ]}
     ]},
