@@ -15,7 +15,7 @@ window.DATA_FALLBACK = {
         { key:"g1-arabic-2", band:["#6fa834","#527d22"], title:"أحب لغتي", term:"الفصل الأول", color:"bk-green", ic:"🪶", isNew:false, theme:"theme-arabic1b", cover:"images/cover-g1-arabic-2.jpg" },
         { key:"g1-dini-1", band:["#6fb8e0","#4a95c4"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-blue", ic:"🕌", isNew:false, theme:"theme-dini1a", cover:"images/cover-g1-dini-1.jpg" },
         { key:"g1-dini-2", band:["#4a93c8","#2f70a4"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-blue", ic:"🕌", isNew:false, theme:"theme-dini1b", cover:"images/cover-g1-dini-2.jpg" },
-        { key:"g1-it", band:["#3e7dc7","#004890"], title:"عالمي الرقمي", term:"الفصل الأول", color:"bk-blue", ic:"💻", isNew:true, onSale:false, devOnly:true, theme:"theme-it1", cover:"images/cover-g1-it.jpg" }
+        { key:"g1-it", band:["#3e7dc7","#004890"], title:"عالمي الرقمي", term:"الفصل الأول", color:"bk-blue", ic:"💻", isNew:true, onSale:true, theme:"theme-it1", cover:"images/cover-g1-it.jpg" }
       ],
       "الثاني": [
         { key:"g2-sci", band:["#f5a04a","#e07f2b"], title:"العلوم", term:"الفصل الأول", color:"bk-orange", ic:"🔬", isNew:false, onSale:true, theme:"theme-sci2", cover:"images/cover-g2-sci.jpg" },
@@ -24,7 +24,7 @@ window.DATA_FALLBACK = {
         { key:"g2-arabic-2", band:["#a888c8","#8666a8"], title:"أحب لغتي", term:"الفصل الأول", color:"bk-purple", ic:"🪶", isNew:false, theme:"theme-arabic2b", cover:"images/cover-g2-arabic-2.jpg" },
         { key:"g2-dini-1", band:["#8fa83a","#6d8528"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-green", ic:"🕌", isNew:false, theme:"theme-dini2a", cover:"images/cover-g2-dini-1.jpg" },
         { key:"g2-dini-2", band:["#6d8a2c","#52691c"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-green", ic:"🕌", isNew:false, theme:"theme-dini2b", cover:"images/cover-g2-dini-2.jpg" },
-        { key:"g2-it", band:["#4C9090","#006060"], title:"عالمي الرقمي", term:"الفصل الأول", color:"bk-teal", ic:"💻", isNew:true, onSale:false, devOnly:true, theme:"theme-it2", cover:"images/cover-g2-it.jpg" }
+        { key:"g2-it", band:["#4C9090","#006060"], title:"عالمي الرقمي", term:"الفصل الأول", color:"bk-teal", ic:"💻", isNew:true, onSale:true, theme:"theme-it2", cover:"images/cover-g2-it.jpg" }
       ],
       /* ملاحظة: بطاقة علوم الثالث كانت مفقودة من هذا الاحتياط بينما هي في data/books.json —
          فكان الكتاب يختفي في وضع file:// وحده. أُضيفت هنا مع بطاقات الصف الجديدة. */
@@ -35,7 +35,7 @@ window.DATA_FALLBACK = {
         { key:"g3-arabic-2", band:["#7fc4e8","#5aa0cc"], title:"أحب لغتي", term:"الفصل الأول", color:"bk-blue", ic:"🪶", isNew:false, theme:"theme-arabic3b", cover:"images/cover-g3-arabic-2.jpg" },
         { key:"g3-dini-1", band:["#86bfb8","#609b94"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-teal", ic:"🕌", isNew:false, theme:"theme-dini3a", cover:"images/cover-g3-dini-1.jpg" },
         { key:"g3-dini-2", band:["#62bcbc","#429898"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-teal", ic:"🕌", isNew:false, theme:"theme-dini3b", cover:"images/cover-g3-dini-2.jpg" },
-        { key:"g3-it", band:["#D37F5D","#C04818"], title:"عالمي الرقمي", term:"الفصل الأول", color:"bk-orange", ic:"💻", isNew:true, onSale:false, devOnly:true, theme:"theme-it3", cover:"images/cover-g3-it.jpg" }
+        { key:"g3-it", band:["#D37F5D","#C04818"], title:"عالمي الرقمي", term:"الفصل الأول", color:"bk-orange", ic:"💻", isNew:true, onSale:true, theme:"theme-it3", cover:"images/cover-g3-it.jpg" }
       ],
       "الرابع": [
         { key:"g4-sci", band:["#5cc98a","#3fa870"], title:"العلوم", term:"الفصل الأول", color:"bk-green", ic:"🔬", isNew:false, onSale:true, theme:"theme-sci", coverReal:"images/cover-g4-sci-real.jpg", coverOriginal:"images/cover-g4-sci.jpg" },
@@ -44,7 +44,7 @@ window.DATA_FALLBACK = {
         { key:"g4-arabic-2", band:["#ec9c70","#c2805c"], title:"أحب لغتي", term:"الفصل الأول", color:"bk-orange", ic:"🪶", isNew:false, theme:"theme-arabic-2", cover:"images/cover-g4-arabic-2.jpg" },
         { key:"g4-dini-1", band:["#4fa8e8","#2f88d0"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-blue", ic:"🕌", isNew:false, theme:"theme-dini", cover:"images/cover-g4-dini-1.jpg" },
         { key:"g4-dini-2", band:["#4bb3ab","#33978f"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-teal", ic:"🕌", isNew:false, theme:"theme-dini-2", cover:"images/cover-g4-dini-2.jpg" },
-        { key:"g4-it", band:["#7F7F90","#484860"], title:"عالمي الرقمي", term:"الفصل الأول", color:"bk-purple", ic:"💻", isNew:true, onSale:false, devOnly:true, theme:"theme-it4", cover:"images/cover-g4-it.jpg" }
+        { key:"g4-it", band:["#7F7F90","#484860"], title:"عالمي الرقمي", term:"الفصل الأول", color:"bk-purple", ic:"💻", isNew:true, onSale:true, theme:"theme-it4", cover:"images/cover-g4-it.jpg" }
       ]
     },
     "الثاني": {
