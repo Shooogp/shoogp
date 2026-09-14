@@ -37709,5 +37709,91 @@ window.QUESTIONS = {
       distractors: ["البَرمَجِيّاتُ", "الشّابِكَةُ (الإنترنت)"]
     }
 
+  ],
+
+  // الصف الرابع — الوحدة ١: حاسوبي — الدرس ١.٢: أجهزة الوسائط المتعددة (كتاب التلميذ ص٢٤-٢٩)
+  "g4i-1-2": [
+
+    // التصنيف — استدلال (هدف ١: إنشاء أنواع مختلفة من الملفات بإستخدام أجهزة الوسائط المتعددة)
+    {
+      type: "classify",
+      objective: "إنشاء أنواع مختلفة من الملفات بإستخدام أجهزة الوسائط المتعددة.",
+      level: "reasoning",
+      prompt: "صَنِّفْ طُرُقَ توصيلِ أَجهِزَةِ الوَسائِطِ المُتَعَدِّدَةِ بِالحاسوبِ.",
+      groups: [
+        { name: "اتِّصالٌ سِلكِيٌّ",  items: ["USB", "مَنفَذُ الصَّوتِ (Audio Jack)"] },
+        { name: "اتِّصالٌ لاسِلكِيٌّ", items: ["Wi-Fi", "البلوتوث (Bluetooth)"] }
+      ]
+    },
+
+    // التوصيل — تطبيق (هدف ١: إنشاء أنواع مختلفة من الملفات بإستخدام أجهزة الوسائط المتعددة)
+    {
+      type: "matching",
+      objective: "إنشاء أنواع مختلفة من الملفات بإستخدام أجهزة الوسائط المتعددة.",
+      level: "application",
+      prompt: "صِلْ كُلَّ جِهازٍ بِنَوعِ المِلَفِّ الَّذي يُنشِئُهُ.",
+      pairs: [
+        { a: "كامِيرا الهاتِفِ",                b: "التِقاطُ صُوَرٍ ومَقاطِعِ فيديو" },
+        { a: "سَمّاعَةُ الرَّأسِ بِميكروفونٍ",  b: "تَسجيلُ مَقاطِعَ صَوتِيَّةٍ" },
+        { a: "الماسِحُ الضَّوئِيُّ (Scanner)",  b: "إِدخالُ الصُّوَرِ والوَثائِقِ كَمِلَفٍّ رَقمِيٍّ" }
+      ]
+    },
+
+    // النقطة الساخنة — معرفة (هدف ٢: التعرف إلى خصائص الملف)
+    // ⚠️ رسمٌ توضيحيٌّ أصليٌّ لِهَرَمِ وَحداتِ حَجمِ المِلَفّاتِ (لا لقطةَ شاشةٍ حقيقيّة).
+    {
+      type: "hotspot",
+      objective: "التعرف إلى خصائص الملف.",
+      level: "knowledge",
+      prompt: "انقُرْ عَلى وَحدَةِ المِيغابايت (MB) في هَرَمِ وَحداتِ حَجمِ المِلَفّاتِ.",
+      bg: "#fdf9ee",
+      svg: `<svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="هَرَمٌ مِن خَمسِ طَبَقاتٍ لِوَحداتِ حَجمِ المِلَفّاتِ مِنَ الأَصغَرِ في القِمَّةِ إلى الأَكبَرِ في القاعِدَةِ">
+        <polygon points="120,20 180,20 205,60 95,60" fill="#FF4020" stroke="#111111" stroke-width="3"/>
+        <text x="150" y="45" font-size="14" text-anchor="middle" fill="#FFFFFF" font-family="Cairo, Tajawal, Arial" font-weight="bold">TB</text>
+        <polygon points="95,60 205,60 230,100 70,100" fill="#E08000" stroke="#111111" stroke-width="3"/>
+        <text x="150" y="85" font-size="14" text-anchor="middle" fill="#FFFFFF" font-family="Cairo, Tajawal, Arial" font-weight="bold">GB</text>
+        <polygon points="70,100 230,100 255,140 45,140" fill="#60C020" stroke="#111111" stroke-width="3"/>
+        <text x="150" y="125" font-size="14" text-anchor="middle" fill="#FFFFFF" font-family="Cairo, Tajawal, Arial" font-weight="bold">MB</text>
+        <polygon points="45,140 255,140 280,180 20,180" fill="#20A0FF" stroke="#111111" stroke-width="3"/>
+        <text x="150" y="165" font-size="14" text-anchor="middle" fill="#FFFFFF" font-family="Cairo, Tajawal, Arial" font-weight="bold">KB</text>
+        <polygon points="20,180 280,180 300,220 0,220" fill="#808080" stroke="#111111" stroke-width="3"/>
+        <text x="150" y="205" font-size="14" text-anchor="middle" fill="#FFFFFF" font-family="Cairo, Tajawal, Arial" font-weight="bold">Byte</text>
+      </svg>`,
+      spot: { x: 50, y: 50, w: 62, h: 13 }
+    },
+
+    // اختيار من متعدد — معرفة (هدف ٢: التعرف إلى خصائص الملف)
+    {
+      type: "mcq",
+      objective: "التعرف إلى خصائص الملف.",
+      level: "knowledge",
+      prompt: "أَيُّ امتِدادٍ مِنَ الآتِيَةِ يَدُلُّ عَلى مِلَفِّ عَرضٍ تَقديمِيٍّ؟",
+      options: [".pptx", ".docx", ".mp3", ".jpg"],
+      answer: 0
+    },
+
+    // صواب وخطأ — معرفة (هدف ٢: التعرف إلى خصائص الملف)
+    {
+      type: "true-false",
+      objective: "التعرف إلى خصائص الملف.",
+      level: "knowledge",
+      statement: "غالِباً ما يَكونُ حَجمُ مِلَفِّ الفيديو أَكبَرَ مِن حَجمِ مِلَفٍّ نَصِّيٍّ.",
+      answer: true
+    },
+
+    // ⑥ بطاقات الذاكرة (إثرائي اختياري) — معرفة (هدف ٢: التعرف إلى خصائص الملف)
+    {
+      type: "memory",
+      objective: "التعرف إلى خصائص الملف.",
+      level: "knowledge",
+      prompt: "اقلِبْ بِطاقَتَينِ في كُلِّ دَورٍ لِتَجِدَ كُلَّ امتِدادٍ ونَوعَهُ.",
+      pairs: [
+        { a: ".docx", b: "مُستَندُ مُعالِجِ كَلِماتٍ (Word)" },
+        { a: ".pptx", b: "مِلَفُّ عَرضٍ تَقديمِيٍّ (PowerPoint)" },
+        { a: ".mp3",  b: "مِلَفٌّ صَوتِيٌّ" },
+        { a: ".mp4",  b: "مِلَفُّ فيديو" }
+      ]
+    }
+
   ]
 };
