@@ -37795,5 +37795,109 @@ window.QUESTIONS = {
       ]
     }
 
+  ],
+
+  // الصف الرابع — الوحدة ١: حاسوبي — الدرس ١.٣: التعامل مع الوسائط المتعددة (كتاب التلميذ ص٣٢-٤١)
+  "g4i-1-3": [
+
+    // الترتيب التسلسلي — معرفة (هدف ١: إنشاء مقطع صوتي)
+    {
+      type: "sequence",
+      objective: "إنشاء مقطع صوتي.",
+      level: "knowledge",
+      prompt: "رَتِّبْ خُطُواتِ إِنشاءِ مَقطَعٍ صَوتِيٍّ بِتَطبيقِ مُسَجِّلِ الصَّوتِ (Sound Recorder).",
+      steps: [
+        "انقُرْ زِرَّ البَدءِ (Start) وابحَثْ عَن تَطبيقِ Sound Recorder",
+        "انقُرْ بَدءَ التَّسجيلِ (Start Recording)",
+        "انقُرْ إيقافَ التَّسجيلِ (Stop Recording)",
+        "انقُرْ بِزِرِّ الفَأرَةِ الأَيمَنِ لِفَتحِ مَوقِعِ تَخزينِ المِلَفِّ"
+      ]
+    },
+
+    // التوصيل — تطبيق (هدف ٢: عرض الصور وتحريرها باستخدام تطبيق صور)
+    {
+      type: "matching",
+      objective: "عرض الصور، وتحريرها باستخدام تطبيق صور (Microsoft Photos).",
+      level: "application",
+      prompt: "صِلْ كُلَّ أَداةٍ في تَطبيقِ الصُّوَرِ بِوَظيفَتِها.",
+      pairs: [
+        { a: "أَداةُ القَصِّ (Crop)",       b: "قَصُّ الصّورَةِ" },
+        { a: "أَداةُ الفُرشاةِ",             b: "عامِلُ التَّصفِيَةِ (Filter)" },
+        { a: "أَداةُ السُّطوعِ والتَّباينِ", b: "مُعالَجَةُ الصّورَةِ" },
+        { a: "أَداةُ القَلَمِ",              b: "تَعديلُ الصّورَةِ (Markup)" }
+      ]
+    },
+
+    // النقطة الساخنة — معرفة (هدف ٢: عرض الصور وتحريرها باستخدام تطبيق صور)
+    // ⚠️ رسمٌ توضيحيٌّ أصليٌّ لِشَريطِ أَدَواتِ تَطبيقِ الصُّوَرِ (لا لقطةَ شاشةٍ حقيقيّة).
+    {
+      type: "hotspot",
+      objective: "عرض الصور، وتحريرها باستخدام تطبيق صور (Microsoft Photos).",
+      level: "knowledge",
+      prompt: "انقُرْ عَلى الأَداةِ الَّتي تُستَخدَمُ لِحَذفِ الصّورَةِ.",
+      bg: "#fdf9ee",
+      svg: `<svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="أربَعُ أَدَواتٍ في شَريطِ تَطبيقِ الصُّوَرِ: تَعديلٌ، حَذفٌ، مُشارَكَةٌ، وعَرضُ شَرائِح">
+        <rect x="10" y="70" width="130" height="100" rx="14" fill="#EAF4FB" stroke="#111111" stroke-width="3"/>
+        <path d="M65,120 L100,85 L112,97 L77,132 Z M100,85 L108,77 L120,89 L112,97 Z M65,120 L61,136 L77,132 Z" fill="#2B79C2" stroke="#111111" stroke-width="2.5" stroke-linejoin="round"/>
+        <text x="75" y="150" font-size="12" text-anchor="middle" fill="#111111" font-family="Cairo, Tajawal, Arial">تَعديلٌ (Edit)</text>
+        <rect x="160" y="70" width="130" height="100" rx="14" fill="#FDF6E9" stroke="#111111" stroke-width="3"/>
+        <path d="M210,105 L240,105 M215,105 L217,140 L233,140 L235,105 M212,105 L215,98 L235,98 L238,105" stroke="#E08A2B" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="225" y="150" font-size="12" text-anchor="middle" fill="#111111" font-family="Cairo, Tajawal, Arial">حَذفٌ (Delete)</text>
+      </svg>`,
+      spot: { x: 75, y: 41.6, w: 43, h: 42 }
+    },
+
+    // اختيار من متعدد — معرفة (هدف ٣: قص الصور وتدويرها)
+    {
+      type: "mcq",
+      objective: "قص الصور وتدويرها.",
+      level: "knowledge",
+      prompt: "كَم دَرَجَةً تَدورُ الصّورَةُ في كُلِّ مَرَّةٍ تَنقُرُ فيها زِرَّ Rotate؟",
+      options: ["٩٠ دَرَجَةً", "٤٥ دَرَجَةً", "١٨٠ دَرَجَةً", "٣٦٠ دَرَجَةً"],
+      answer: 0
+    },
+
+    // صواب وخطأ — استدلال (هدف ٣: قص الصور وتدويرها)
+    {
+      type: "true-false",
+      objective: "قص الصور وتدويرها.",
+      level: "reasoning",
+      statement: "عِندَ استِخدامِ أَداةِ القَصِّ (Crop)، تُحذَفُ الأَجزاءُ الغامِقَةُ غَيرُ المُحَدَّدَةِ مِنَ الصّورَةِ.",
+      answer: true
+    },
+
+    // ⑥ اكتشف الخطأ (إثرائي اختياري) — استدلال (هدف ٣: قص الصور وتدويرها)
+    // ⚠️ رسمٌ توضيحيٌّ أصليٌّ لِأَربَعِ نَتائِجِ تَدويرٍ (لا لقطةَ شاشةٍ حقيقيّة).
+    {
+      type: "find-error",
+      objective: "قص الصور وتدويرها.",
+      level: "reasoning",
+      prompt: "سَهمٌ كانَ يُشيرُ إلى الأَعلى، ثُمَّ نُقِرَ زِرُّ Rotate مَرَّةً واحِدَةً عَلى كُلِّ صورَةٍ. ثَلاثُ نَتائِجَ صَحيحَةٌ وواحِدَةٌ خاطِئَةٌ — انقُرْ عَلى الخاطِئَةِ.",
+      bg: "#fdf9ee",
+      svg: `<svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="أربعُ صورٍ لِسَهمٍ بَعدَ تَدويرِهِ مَرَّةً، إِحداها في اتِّجاهٍ خاطِئ">
+        <rect x="10" y="10" width="130" height="100" rx="10" fill="#EAF4FB" stroke="#111111" stroke-width="3"/>
+        <g transform="translate(75,60) rotate(90)">
+          <line x1="0" y1="25" x2="0" y2="-15" stroke="#2B79C2" stroke-width="8" stroke-linecap="round"/>
+          <polyline points="-14,-5 0,-25 14,-5" fill="none" stroke="#2B79C2" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <rect x="160" y="10" width="130" height="100" rx="10" fill="#EAF4FB" stroke="#111111" stroke-width="3"/>
+        <g transform="translate(225,60) rotate(90)">
+          <line x1="0" y1="25" x2="0" y2="-15" stroke="#2B79C2" stroke-width="8" stroke-linecap="round"/>
+          <polyline points="-14,-5 0,-25 14,-5" fill="none" stroke="#2B79C2" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <rect x="10" y="130" width="130" height="100" rx="10" fill="#FBE8E8" stroke="#111111" stroke-width="3"/>
+        <g transform="translate(75,180) rotate(180)">
+          <line x1="0" y1="25" x2="0" y2="-15" stroke="#CC3333" stroke-width="8" stroke-linecap="round"/>
+          <polyline points="-14,-5 0,-25 14,-5" fill="none" stroke="#CC3333" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <rect x="160" y="130" width="130" height="100" rx="10" fill="#EAF4FB" stroke="#111111" stroke-width="3"/>
+        <g transform="translate(225,180) rotate(90)">
+          <line x1="0" y1="25" x2="0" y2="-15" stroke="#2B79C2" stroke-width="8" stroke-linecap="round"/>
+          <polyline points="-14,-5 0,-25 14,-5" fill="none" stroke="#2B79C2" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+      </svg>`,
+      spot: { x: 25, y: 75, w: 43, h: 42 }
+    }
+
   ]
 };

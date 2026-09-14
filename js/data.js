@@ -309,7 +309,7 @@ window.DATA_FALLBACK = {
       { unit:"حاسوبي", lessons:[
         { title:"كيفية عمل جهاز الحاسوب", file:"g4i-1-1", open:true },
         { title:"أجهزة الوسائط المتعددة", file:"g4i-1-2", open:true },
-        { title:"التعامل مع الوسائط المتعددة", file:"g4i-1-3", open:false },
+        { title:"التعامل مع الوسائط المتعددة", file:"g4i-1-3", open:true },
         { title:"تطبيق التأثيرات على الصور", file:"g4i-1-4", open:false },
         { title:"إنشاء فيديو", file:"g4i-1-5", open:false }
       ]},
