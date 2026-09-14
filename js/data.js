@@ -701,7 +701,7 @@ window.DATA_FALLBACK = {
         { title:"المشروع", file:"g3i-2-7", open:true }
       ]},
       { unit:"عالمي المتصل", lessons:[
-        { title:"الأمان عبر الإنترنت", file:"g3i-3-1", open:false },
+        { title:"الأمان عبر الإنترنت", file:"g3i-3-1", open:true },
         { title:"البحث عن المعلومات", file:"g3i-3-2", open:false },
         { title:"أخلاقيات الإنترنت", file:"g3i-3-3", open:false },
         { title:"العثور على المعلومات", file:"g3i-3-4", open:false },
