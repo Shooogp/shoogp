@@ -56,7 +56,7 @@ function imgURL(name){ return IMG_BASE + name + IMG_VER; }
    يكسرُ الفهرسَ والرموزَ والأغلفة)، واسمُ المادةِ يتبعُ أسماءَ صورِ إطارِها
    `frame-deeny-*.png`. فالجدولُ هذا هو **موضعُ اللقاءِ** بين التسميتين. */
 var SUBJECT_BY_KEY_SUFFIX={ '-sci':'science', '-math':'math',
-  '-arabic-1':'arabic', '-arabic-2':'arabic', '-dini-1':'deeny', '-dini-2':'deeny', '-it':'it' };
+  '-arabic-1':'arabic', '-arabic-2':'arabic', '-dini-1':'deeny', '-dini-2':'deeny', '-it':'it', '-en':'en' };
 var SHOOGP_BOOKS_SEED=[
   {key:'g1-sci',  prefix:'g1s-', subject:'science'},
   {key:'g2-sci',  prefix:'g2s-', subject:'science'},
@@ -66,7 +66,11 @@ var SHOOGP_BOOKS_SEED=[
   /* الرياضيات — الصف الثاني: أوّلُ كتابٍ يرثُ مرجعَ مادّتِه بسطرٍ واحدٍ بلا كودٍ خاصّ
      ولا صنفٍ ولا قاعدةِ CSS. عائلةُ math وقشرةُ skin-metal وعلامةُ subj-math تُشتَقُّ
      كلُّها من `subject` وحدَه، ولونُ الشريطِ من `band` في data/books.json. */
-  {key:'g2-math', prefix:'g2m-', subject:'math'}
+  {key:'g2-math', prefix:'g2m-', subject:'math'},
+  /* اللغة الإنجليزية — الصف الأول (مرحلة ٣، مخفيّة بـdevOnly): بلا عائلة إطارٍ
+     خاصّةٍ بعد (FAMILY_BY_SUBJECT)، فتعمل مؤقّتاً على عائلة moon الافتراضية حتى
+     تُبنى إطاراتُها في المرحلة ٥ — كما وُثِّق في create-subject. */
+  {key:'g1-en', prefix:'g1e-', subject:'en'}
 ];
 /* بادئةُ دروسِ الكتابِ من مفتاحِه: `g4-sci`←`g4s-` و`g2-math`←`g2m-` (الصفُّ + أوّلُ
    حرفِ المادةِ). تُستعمَلُ للكتبِ المشتقّةِ فقط، وهي احتياطُ «غيابِ DATA» لا أكثر. */

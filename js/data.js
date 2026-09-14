@@ -15,7 +15,8 @@ window.DATA_FALLBACK = {
         { key:"g1-arabic-2", band:["#6fa834","#527d22"], title:"أحب لغتي", term:"الفصل الأول", color:"bk-green", ic:"🪶", isNew:false, theme:"theme-arabic1b", cover:"images/cover-g1-arabic-2.jpg" },
         { key:"g1-dini-1", band:["#6fb8e0","#4a95c4"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-blue", ic:"🕌", isNew:false, theme:"theme-dini1a", cover:"images/cover-g1-dini-1.jpg" },
         { key:"g1-dini-2", band:["#4a93c8","#2f70a4"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-blue", ic:"🕌", isNew:false, theme:"theme-dini1b", cover:"images/cover-g1-dini-2.jpg" },
-        { key:"g1-it", band:["#3e7dc7","#004890"], title:"عالمي الرقمي", term:"الفصل الأول", color:"bk-blue", ic:"💻", isNew:true, onSale:true, theme:"theme-it1", cover:"images/cover-g1-it.jpg" }
+        { key:"g1-it", band:["#3e7dc7","#004890"], title:"عالمي الرقمي", term:"الفصل الأول", color:"bk-blue", ic:"💻", isNew:true, onSale:true, theme:"theme-it1", cover:"images/cover-g1-it.jpg" },
+        { key:"g1-en", band:["#F6D000","#C5A600"], title:"اللغة الإنجليزية", term:"الفصل الأول", color:"bk-yellow", ic:"💬", isNew:true, onSale:false, devOnly:true, theme:"theme-en1", cover:"images/cover-g1-en.jpg" }
       ],
       "الثاني": [
         { key:"g2-sci", band:["#f5a04a","#e07f2b"], title:"العلوم", term:"الفصل الأول", color:"bk-orange", ic:"🔬", isNew:false, onSale:true, theme:"theme-sci2", cover:"images/cover-g2-sci.jpg" },
@@ -56,6 +57,7 @@ window.DATA_FALLBACK = {
   },
   // فهرس منفصل لكل كتاب  (مطابق لـ data/index.json)
   index: {
+    "g1-en": { book:"اللغة الإنجليزية — الصف الأول", units:[] },
     "g1-sci": { book:"العلوم — الصف الأول", units:[
       { unit:"الكائنات الحيّة", lessons:[
         { title:"النباتات والحيوانات هي كائنات حيّة", file:"g1s-1-1", open:true },
