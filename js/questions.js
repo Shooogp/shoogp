@@ -38116,5 +38116,99 @@ window.QUESTIONS = {
       distractors: ["التَّصميمُ", "الأَلوانُ"]
     }
 
+  ],
+
+  // الصف الرابع — الوحدة ٢: لنعرض أفكارنا — الدرس ٢.٢: التعامل مع الصور (كتاب التلميذ ص٨٥-٩١)
+  "g4i-2-2": [
+
+    // النقطة الساخنة — معرفة (هدف ١: إدراج صورة في العرض التقديمي)
+    // ⚠️ رسمٌ توضيحيٌّ أصليٌّ لِأَربَعِ تَبويباتٍ في شَريطِ PowerPoint (لا لقطةَ شاشةٍ حقيقيّة).
+    {
+      type: "hotspot",
+      objective: "إدراج صورة في العرض التقديمي.",
+      level: "knowledge",
+      prompt: "أَيُّ تَبويبٍ تَختارُهُ لِإِدراجِ صورَةٍ في الشَّريحَةِ؟ انقُرْ عَلَيهِ.",
+      bg: "#fdf9ee",
+      svg: `<svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="أربعةُ تبويباتٍ في شريطِ أدواتِ PowerPoint: Home وInsert وDesign وPicture Format">
+        <rect x="10" y="10" width="130" height="100" rx="14" fill="#EAF4FB" stroke="#111111" stroke-width="3"/>
+        <rect x="55" y="45" width="40" height="30" rx="3" fill="none" stroke="#2B79C2" stroke-width="4"/>
+        <line x1="55" y1="55" x2="95" y2="55" stroke="#2B79C2" stroke-width="3"/>
+        <text x="75" y="95" font-size="13" text-anchor="middle" fill="#111111" font-family="Arial">Home</text>
+        <rect x="160" y="10" width="130" height="100" rx="14" fill="#FDF6E9" stroke="#111111" stroke-width="3"/>
+        <rect x="205" y="45" width="40" height="30" rx="3" fill="none" stroke="#E08A2B" stroke-width="4"/>
+        <circle cx="213" cy="53" r="3" fill="#E08A2B"/>
+        <polyline points="207,71 220,58 230,66 239,50" fill="none" stroke="#E08A2B" stroke-width="3"/>
+        <text x="225" y="95" font-size="13" text-anchor="middle" fill="#111111" font-family="Arial">Insert</text>
+        <rect x="10" y="130" width="130" height="100" rx="14" fill="#EAF4FB" stroke="#111111" stroke-width="3"/>
+        <circle cx="75" cy="170" r="16" fill="none" stroke="#2B79C2" stroke-width="4"/>
+        <path d="M75,154 A16,16 0 0,1 91,170 L75,170 Z" fill="#2B79C2"/>
+        <text x="75" y="205" font-size="13" text-anchor="middle" fill="#111111" font-family="Arial">Design</text>
+        <rect x="160" y="130" width="130" height="100" rx="14" fill="#EAF4FB" stroke="#111111" stroke-width="3"/>
+        <rect x="205" y="150" width="40" height="30" rx="3" fill="none" stroke="#2B79C2" stroke-width="4"/>
+        <circle cx="213" cy="158" r="3" fill="#2B79C2"/>
+        <polyline points="207,176 218,164 227,172 239,156" fill="none" stroke="#2B79C2" stroke-width="3"/>
+        <text x="225" y="197" font-size="11" text-anchor="middle" fill="#111111" font-family="Arial">Picture Format</text>
+      </svg>`,
+      spot: { x: 75, y: 25, w: 43, h: 42 }
+    },
+
+    // التوصيل — تطبيق (هدف ٣: تنسيق الصورة)
+    {
+      type: "matching",
+      objective: "تنسيق الصورة.",
+      level: "application",
+      prompt: "صِلْ كُلَّ أَداةٍ في تَبويبِ تَنسيقِ الصّورَةِ بِوَظيفَتِها.",
+      pairs: [
+        { a: "Picture Styles",     b: "إِضافَةُ نَمطٍ جاهِزٍ لِلصّورَةِ (حَدٌّ وشَكلٌ)" },
+        { a: "Crop",               b: "قَصُّ جُزءٍ مِنَ الصّورَةِ" },
+        { a: "Corrections",        b: "ضَبطُ السُّطوعِ والتَّباينِ" },
+        { a: "Remove Background",  b: "إِزالَةُ خَلفِيَّةِ الصّورَةِ" }
+      ]
+    },
+
+    // ملء الفراغ بالسحب — معرفة (هدف ٢: تغيير حجم الصورة)
+    {
+      type: "fill-blank",
+      objective: "تغيير حجم الصورة.",
+      level: "knowledge",
+      prompt: "أَكمِلِ الجُملَةَ بِسَحبِ الكَلِمَةِ المُناسِبَةِ.",
+      text: "لِتَغييرِ حَجمِ صورَةٍ، ضَعْ {} فَوقَ أَحَدِ مَقابِضِ الزَّوايا الأَربَعِ حَتَّى يَتَحَوَّلَ إِلى {}.",
+      answers: ["مُؤَشِّرَ الفَأرَةِ", "سَهمٍ مُزدَوِجٍ"],
+      distractors: ["لَوحَ المَفاتيحِ", "خَطٍّ مُستَقيمٍ"]
+    },
+
+    // اختيار من متعدد — معرفة (هدف ١: إدراج صورة في العرض التقديمي)
+    {
+      type: "mcq",
+      objective: "إدراج صورة في العرض التقديمي.",
+      level: "knowledge",
+      prompt: "مِن أَيِّ نافِذَةٍ تَختارُ (This Device) لِإِدراجِ صورَةٍ مِن جِهازِكَ؟",
+      options: ["Insert ← Pictures", "Home ← Font", "Design ← Themes", "Review ← Spelling"],
+      answer: 0
+    },
+
+    // صواب وخطأ — استدلال (هدف ٣: تنسيق الصورة)
+    {
+      type: "true-false",
+      objective: "تنسيق الصورة.",
+      level: "reasoning",
+      statement: "إِذا لَم يَظهَرْ تَبويبُ تَنسيقِ الصّورَةِ (Picture Format)، فَهَذا يَعني أَنَّكَ لَم تُحَدِّدِ الصّورَةَ.",
+      answer: true
+    },
+
+    // ⑥ بطاقات الذاكرة (إثرائي اختياري) — معرفة (هدف ٣: تنسيق الصورة)
+    {
+      type: "memory",
+      objective: "تنسيق الصورة.",
+      level: "knowledge",
+      prompt: "اقلِبْ بِطاقَتَينِ في كُلِّ دَورٍ لِتَجِدَ كُلَّ أَداةٍ ووَظيفَتَها.",
+      pairs: [
+        { a: "Picture Styles",    b: "حَدٌّ وشَكلٌ جاهِزٌ لِلصّورَةِ" },
+        { a: "Artistic Effects",  b: "تَأثيرٌ فَنِّيٌّ عَلى الصّورَةِ" },
+        { a: "Crop",              b: "قَصُّ جُزءٍ مِنَ الصّورَةِ" },
+        { a: "Remove Background", b: "إِزالَةُ خَلفِيَّةِ الصّورَةِ" }
+      ]
+    }
+
   ]
 };
