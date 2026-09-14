@@ -28,79 +28,11 @@
   "    ← يتخطّى البناءَ كلَّه. يُستعمَلُ حينَ تُغري قائمةُ الهيكسات النموذجَ",
   "      برسمِ لوحةِ ألوانٍ داخلَ الصورة (وقعَ فعلاً مع رسمةِ العين)."
  ],
- "batchId": "2026-09-14-it-pics-extend-1",
+ "batchId": "2026-09-14-en-cover-g1",
  "items": [
   {
-   "name": "حاسوب-مكتبي",
-   "subject": "a plump rounded desktop computer set: a rectangular monitor screen on a small stand, standing directly beside a plump rounded rectangular tower case with a power button dot on it"
-  },
-  {
-   "name": "جهاز-لوحي",
-   "subject": "a plump rounded rectangular tablet computer, thin flat slab shape with a large screen filling almost the whole front and a single small round home button near the bottom edge"
-  },
-  {
-   "name": "مكواة",
-   "subject": "a plump rounded clothes iron for ironing, triangular flat-bottomed body with a curved handle on top"
-  },
-  {
-   "name": "خلاط",
-   "subject": "a plump rounded kitchen blender, a tall clear jar sitting on a short round motor base with a couple of buttons on the base"
-  },
-  {
-   "name": "مجفف-شعر",
-   "subject": "a plump rounded handheld hair dryer, a short barrel body with a pistol-style handle sticking down from it"
-  },
-  {
-   "name": "ثلاجة",
-   "subject": "a plump rounded tall refrigerator, front view, a single tall rectangular door with one horizontal handle bar down the side"
-  },
-  {
-   "name": "مكبر-صوت-ذكي",
-   "subject": "a plump rounded small cylindrical smart speaker, standing upright, with a ring of tiny dots near the top representing a speaker mesh"
-  },
-  {
-   "name": "ساعة-ذكية",
-   "subject": "a plump rounded smartwatch, a rounded-square screen face attached to a wrist strap curving down on both sides"
-  },
-  {
-   "name": "وحدة-النظام",
-   "subject": "a plump rounded rectangular desktop computer tower case standing upright, with a power button dot and a thin disc-drive slot line on the front"
-  },
-  {
-   "name": "مكبر-صوت",
-   "subject": "a single plump rounded desktop computer speaker, a small upright box shape with a round speaker cone circle on its face"
-  },
-  {
-   "name": "سلة-محذوفات",
-   "subject": "a plump rounded wastebasket bin icon, a trapezoid bin body with a small triangular lid flap on top, like a classic recycle bin symbol"
-  },
-  {
-   "name": "متصفح-انترنت",
-   "subject": "a plump rounded generic web browser window icon: a rectangular window frame with a thin top bar holding one small circle tab, and a simple globe/compass circle shape in the middle of the window body, no logos or brand marks of any kind"
-  },
-  {
-   "name": "مفكرة",
-   "subject": "a plump rounded notepad icon: a small rectangular sheet of paper with a spiral binding along the top edge and a couple of short horizontal lines on the page representing generic text"
-  },
-  {
-   "name": "آلة-حاسبة",
-   "subject": "a plump rounded pocket calculator, a rectangular body with a small screen strip across the top and a grid of small square buttons below it, no digits or symbols on the buttons"
-  },
-  {
-   "name": "قميص",
-   "subject": "a single plump rounded short-sleeved t-shirt, front view, simple crew neckline"
-  },
-  {
-   "name": "جهاز-تحكم-العاب",
-   "subject": "a plump rounded video game controller, a wide rounded handheld shape with two round grip bumps at the bottom sides and a small circular pad and a few small round buttons on the face"
-  },
-  {
-   "name": "نظارات-واقع-افتراضي",
-   "subject": "a plump rounded virtual reality headset, a wide rounded rectangular visor shape with a strap band curving around both sides"
-  },
-  {
-   "name": "ماسح-ضوئي",
-   "subject": "a plump rounded flatbed scanner, a low flat rectangular box shape with a hinged lid line across the top surface"
+   "name": "cover-art-g1-en-2026-09-14-en-cover-g1",
+   "subject": "a plump rounded speech-bubble / chat-bubble shape (a rounded rectangle with a small pointed tail at the bottom), completely empty and blank inside with no marks on it, floating together with two small rounded sparkle stars beside it"
   }
  ]
 }
