@@ -57,7 +57,55 @@ window.DATA_FALLBACK = {
   },
   // فهرس منفصل لكل كتاب  (مطابق لـ data/index.json)
   index: {
-    "g1-en": { book:"اللغة الإنجليزية — الصف الأول", units:[] },
+    "g1-en": { book:"اللغة الإنجليزية — الصف الأول", units:[
+      { unit:"تمهيد", lessons:[
+        { title:"مرحباً بكم!", file:"g1e-0-1", open:false }
+      ]},
+      { unit:"عائلتي وأصدقائي", lessons:[
+        { title:"أصدقائي وعائلتي", file:"g1e-1-1", open:false },
+        { title:"أصوات الحروف: s", file:"g1e-1-2", open:false },
+        { title:"من هذا؟", file:"g1e-1-3", open:false },
+        { title:"هذه أختي", file:"g1e-1-4", open:false },
+        { title:"مشروع: دمى الأصابع", file:"g1e-1-5", open:false },
+        { title:"المراجعة", file:"g1e-1-6", open:false },
+        { title:"استعدّ للاختبار", file:"g1e-1-7", open:false }
+      ]},
+      { unit:"نادي التعلّم ١", lessons:[
+        { title:"الأعداد ١-٦", file:"g1e-lc1-1", open:false },
+        { title:"الألوان", file:"g1e-lc1-2", open:false }
+      ]},
+      { unit:"حقيبتي المدرسية", lessons:[
+        { title:"حقيبتي المدرسية", file:"g1e-2-1", open:false },
+        { title:"أصوات الحروف: a", file:"g1e-2-2", open:false },
+        { title:"عندي... وليس عندي", file:"g1e-2-3", open:false },
+        { title:"ماذا في حقيبتي؟", file:"g1e-2-4", open:false },
+        { title:"مشروع: حقيبة مدرسية", file:"g1e-2-5", open:false },
+        { title:"المراجعة", file:"g1e-2-6", open:false },
+        { title:"استعدّ للاختبار", file:"g1e-2-7", open:false }
+      ]},
+      { unit:"غرفتي الصفية", lessons:[
+        { title:"غرفتي الصفية", file:"g1e-3-1", open:false },
+        { title:"أصوات الحروف: t", file:"g1e-3-2", open:false },
+        { title:"ما هذا؟", file:"g1e-3-3", open:false },
+        { title:"أين الكتاب؟", file:"g1e-3-4", open:false },
+        { title:"مشروع: صندوق أدوات مرتّب", file:"g1e-3-5", open:false },
+        { title:"المراجعة", file:"g1e-3-6", open:false },
+        { title:"استعدّ للاختبار", file:"g1e-3-7", open:false }
+      ]},
+      { unit:"لعبتي المفضلة", lessons:[
+        { title:"لعبتي المفضلة", file:"g1e-4-1", open:false },
+        { title:"أصوات الحروف: p", file:"g1e-4-2", open:false },
+        { title:"ما لونها؟", file:"g1e-4-3", open:false },
+        { title:"لعبتي المفضلة (تدريب)", file:"g1e-4-4", open:false },
+        { title:"مشروع: صندوق الألعاب", file:"g1e-4-5", open:false },
+        { title:"المراجعة", file:"g1e-4-6", open:false },
+        { title:"استعدّ للاختبار", file:"g1e-4-7", open:false }
+      ]},
+      { unit:"نادي التعلّم ٢", lessons:[
+        { title:"الأشكال الهندسية", file:"g1e-lc2-1", open:false },
+        { title:"ما هذه؟", file:"g1e-lc2-2", open:false }
+      ]}
+    ] },
     "g1-sci": { book:"العلوم — الصف الأول", units:[
       { unit:"الكائنات الحيّة", lessons:[
         { title:"النباتات والحيوانات هي كائنات حيّة", file:"g1s-1-1", open:true },
