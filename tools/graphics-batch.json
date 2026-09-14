@@ -28,35 +28,79 @@
   "    ← يتخطّى البناءَ كلَّه. يُستعمَلُ حينَ تُغري قائمةُ الهيكسات النموذجَ",
   "      برسمِ لوحةِ ألوانٍ داخلَ الصورة (وقعَ فعلاً مع رسمةِ العين)."
  ],
- "batchId": "2026-09-13-it-rich-3",
+ "batchId": "2026-09-14-it-pics-extend-1",
  "items": [
   {
-   "name": "butterfly-3region",
-   "prompt": "Create a simple flat cartoon illustration of a butterfly for a children's coloring exercise, viewed from directly above with wings spread symmetrically. Use exactly THREE flat solid colors total, no more: (1) both wings must be the exact same single flat solid light-blue color with no pattern on them, (2) the body (head, thorax and abdomen combined into one simple elongated shape down the center) must be a single flat solid light-yellow color, (3) there must be exactly two small circular spots, one placed on each wing, both in the same single flat solid light-red color, simple plain circles with no pattern inside them. No gradients, no shading, no shadows, no texture, no decorative patterns anywhere else on the wings. A thin crisp black outline #111111 around every shape and around each inner part. Pure white background. No text, no labels, no facial features. One single standalone image only, square 1:1 aspect ratio."
+   "name": "حاسوب-مكتبي",
+   "subject": "a plump rounded desktop computer set: a rectangular monitor screen on a small stand, standing directly beside a plump rounded rectangular tower case with a power button dot on it"
   },
   {
-   "name": "sun-house-scene",
-   "prompt": "Create a very simple flat cartoon illustration for a children's coloring and pointing exercise: a small house under a sun, made of exactly FOUR flat solid color regions total and no more. (1) A plain rectangular sky background filling the entire canvas edge to edge in one flat solid light-blue color. (2) A sun in the upper right area made of a circle with a few short triangular rays directly touching it, the circle and its rays must all be the exact same single flat solid yellow color so together they read as one connected shape. (3) A simple triangular roof in one flat solid dark-red color. (4) A simple rectangular wall/house-body directly below the roof (touching it with no gap and no overlap) in one flat solid beige color. Do not draw a door, windows, chimney, clouds, ground line, or any other element — only these four flat shapes. No gradients, no shading, no shadows, no texture. A thin crisp black outline #111111 around every shape. No text, no facial features. One single standalone image only, landscape aspect ratio close to 4:3."
+   "name": "جهاز-لوحي",
+   "subject": "a plump rounded rectangular tablet computer, thin flat slab shape with a large screen filling almost the whole front and a single small round home button near the bottom edge"
   },
   {
-   "name": "ice-cream-2region",
-   "prompt": "Create a simple flat cartoon illustration for a children's coloring exercise of a single-scoop ice cream cone, front view, made of exactly TWO flat solid color regions total. (1) A round scoop of ice cream on top in one flat solid light-pink color, perfectly plain with no swirl lines or texture. (2) A triangular waffle cone below it, directly touching the scoop with no gap, in one flat solid light-brown color, perfectly plain with no waffle grid pattern or lines. No gradients, no shading, no shadows, no texture, no sprinkles, no extra decoration. A thin crisp black outline #111111 around both shapes. Pure white background. No text, no facial features. One single standalone image only, square 1:1 aspect ratio."
+   "name": "مكواة",
+   "subject": "a plump rounded clothes iron for ironing, triangular flat-bottomed body with a curved handle on top"
   },
   {
-   "name": "ملف-صورة",
-   "prompt": "Create an educational icon-style illustration for a children's app representing an 'image file': a simple rounded-rectangle document page with a small folded triangle at its top-right corner, and printed flat on the face of the page a small simple picture glyph of a mountain peak with a sun/circle above it (like a classic photo icon), rendered in the same flat colors as the rest of the page graphic. glossy cartoon vector illustration in a space-sticker style, bold saturated colors, each part shaded with a 3-4 step ramp of its own hue (highlight, base, shade, deep shade) as crisp discrete bands with hard edges and no soft blending, a broad white gloss highlight on curved surfaces, a thin crisp black outline #111111 with rounded caps around every part (a clean fine line, not a heavy border), plump rounded forms with no sharp angles, floating with no ground line and no cast shadow, absolutely no facial features on anything. No text, no letters, no numbers. One single standalone image only, square 1:1 aspect ratio, plain white background."
+   "name": "خلاط",
+   "subject": "a plump rounded kitchen blender, a tall clear jar sitting on a short round motor base with a couple of buttons on the base"
   },
   {
-   "name": "ملف-نصي",
-   "prompt": "Create an educational icon-style illustration for a children's app representing a 'text file': a simple rounded-rectangle document page with a small folded triangle at its top-right corner, and printed flat on the face of the page a few short horizontal line strokes stacked in a paragraph pattern (representing generic text lines, not real letters), rendered in a contrasting flat color from the page itself. glossy cartoon vector illustration in a space-sticker style, bold saturated colors, each part shaded with a 3-4 step ramp of its own hue (highlight, base, shade, deep shade) as crisp discrete bands with hard edges and no soft blending, a broad white gloss highlight on curved surfaces, a thin crisp black outline #111111 with rounded caps around every part (a clean fine line, not a heavy border), plump rounded forms with no sharp angles, floating with no ground line and no cast shadow, absolutely no facial features on anything. No real letters or numbers anywhere, only abstract line strokes. One single standalone image only, square 1:1 aspect ratio, plain white background."
+   "name": "مجفف-شعر",
+   "subject": "a plump rounded handheld hair dryer, a short barrel body with a pistol-style handle sticking down from it"
   },
   {
-   "name": "ملف-صوتي",
-   "prompt": "Create an educational icon-style illustration for a children's app representing an 'audio file': a simple rounded-rectangle document page with a small folded triangle at its top-right corner, and printed flat on the face of the page a single simple musical eighth-note glyph, rendered in a contrasting flat color from the page itself. glossy cartoon vector illustration in a space-sticker style, bold saturated colors, each part shaded with a 3-4 step ramp of its own hue (highlight, base, shade, deep shade) as crisp discrete bands with hard edges and no soft blending, a broad white gloss highlight on curved surfaces, a thin crisp black outline #111111 with rounded caps around every part (a clean fine line, not a heavy border), plump rounded forms with no sharp angles, floating with no ground line and no cast shadow, absolutely no facial features on anything. No text, no letters, no numbers. One single standalone image only, square 1:1 aspect ratio, plain white background."
+   "name": "ثلاجة",
+   "subject": "a plump rounded tall refrigerator, front view, a single tall rectangular door with one horizontal handle bar down the side"
   },
   {
-   "name": "ملف-فيديو",
-   "prompt": "Create an educational icon-style illustration for a children's app representing a 'video file': a simple rounded-rectangle document page with a small folded triangle at its top-right corner, and printed flat on the face of the page a small simple triangular play-button glyph inside a rounded square (like a classic video play icon), rendered in a contrasting flat color from the page itself. glossy cartoon vector illustration in a space-sticker style, bold saturated colors, each part shaded with a 3-4 step ramp of its own hue (highlight, base, shade, deep shade) as crisp discrete bands with hard edges and no soft blending, a broad white gloss highlight on curved surfaces, a thin crisp black outline #111111 with rounded caps around every part (a clean fine line, not a heavy border), plump rounded forms with no sharp angles, floating with no ground line and no cast shadow, absolutely no facial features on anything. No text, no letters, no numbers. One single standalone image only, square 1:1 aspect ratio, plain white background."
+   "name": "مكبر-صوت-ذكي",
+   "subject": "a plump rounded small cylindrical smart speaker, standing upright, with a ring of tiny dots near the top representing a speaker mesh"
+  },
+  {
+   "name": "ساعة-ذكية",
+   "subject": "a plump rounded smartwatch, a rounded-square screen face attached to a wrist strap curving down on both sides"
+  },
+  {
+   "name": "وحدة-النظام",
+   "subject": "a plump rounded rectangular desktop computer tower case standing upright, with a power button dot and a thin disc-drive slot line on the front"
+  },
+  {
+   "name": "مكبر-صوت",
+   "subject": "a single plump rounded desktop computer speaker, a small upright box shape with a round speaker cone circle on its face"
+  },
+  {
+   "name": "سلة-محذوفات",
+   "subject": "a plump rounded wastebasket bin icon, a trapezoid bin body with a small triangular lid flap on top, like a classic recycle bin symbol"
+  },
+  {
+   "name": "متصفح-انترنت",
+   "subject": "a plump rounded generic web browser window icon: a rectangular window frame with a thin top bar holding one small circle tab, and a simple globe/compass circle shape in the middle of the window body, no logos or brand marks of any kind"
+  },
+  {
+   "name": "مفكرة",
+   "subject": "a plump rounded notepad icon: a small rectangular sheet of paper with a spiral binding along the top edge and a couple of short horizontal lines on the page representing generic text"
+  },
+  {
+   "name": "آلة-حاسبة",
+   "subject": "a plump rounded pocket calculator, a rectangular body with a small screen strip across the top and a grid of small square buttons below it, no digits or symbols on the buttons"
+  },
+  {
+   "name": "قميص",
+   "subject": "a single plump rounded short-sleeved t-shirt, front view, simple crew neckline"
+  },
+  {
+   "name": "جهاز-تحكم-العاب",
+   "subject": "a plump rounded video game controller, a wide rounded handheld shape with two round grip bumps at the bottom sides and a small circular pad and a few small round buttons on the face"
+  },
+  {
+   "name": "نظارات-واقع-افتراضي",
+   "subject": "a plump rounded virtual reality headset, a wide rounded rectangular visor shape with a strap band curving around both sides"
+  },
+  {
+   "name": "ماسح-ضوئي",
+   "subject": "a plump rounded flatbed scanner, a low flat rectangular box shape with a hinged lid line across the top surface"
   }
  ]
 }
