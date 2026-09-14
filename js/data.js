@@ -311,7 +311,7 @@ window.DATA_FALLBACK = {
         { title:"أجهزة الوسائط المتعددة", file:"g4i-1-2", open:true },
         { title:"التعامل مع الوسائط المتعددة", file:"g4i-1-3", open:true },
         { title:"تطبيق التأثيرات على الصور", file:"g4i-1-4", open:true },
-        { title:"إنشاء فيديو", file:"g4i-1-5", open:false }
+        { title:"إنشاء فيديو", file:"g4i-1-5", open:true }
       ]},
       { unit:"لنعرض أفكارنا", lessons:[
         { title:"العروض التقديمية", file:"g4i-2-1", open:false },
