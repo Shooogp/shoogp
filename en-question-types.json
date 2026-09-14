@@ -1,0 +1,118 @@
+{
+  "meta": {
+    "subject": "اللغة الإنجليزية",
+    "subjectKey": "en",
+    "cycle": "الحلقة الأولى",
+    "grades": [1, 2, 3, 4],
+    "term": "الفصل الدراسي الأول",
+    "series": "Team Together Oman (Pearson) — نسخة مخصّصة لوزارة التربية والتعليم، طبعة ٢٠٢٦",
+    "source": "الفهرسة والبطاقة والأهداف كلّها من كتاب-التلميذ (Class Book) — جدول Scope and sequence فيه كافٍ، لا حاجة لدليل معلّم",
+    "threeBookStructure": "كل درسٍ متزامنٌ ١:١ عبر ثلاثة كتب: Class Book (جزء ١) + Activity Book (جزء ٢) + Sounds and Spelling Book (حصة صوتيات) — التأليف يرجع للثلاثة معاً لكل درس. هذا مخالفٌ لحالة «كتاب مقسوم لجزأين» في CLAUDE.md؛ يحتاج توثيقاً مستقلاً بعد الاعتماد",
+    "cognitiveDistribution": "افتراضي: يرث توزيع العلوم 3 knowledge + 1 application + 1 reasoning للأسئلة الأساسية الخمسة — بانتظار تأكيد صريح من المالك (سُئل مرّتين ولم يُجب بعد)",
+    "version": "0.1",
+    "status": "مسودة للمراجعة — الصف الأول فقط، فصل ١"
+  },
+
+  "contentPolicy": {
+    "audioHeavyBook": {
+      "issue": "أغلب أنشطة الكتب الثلاثة صوتية (Listen and circle/point/match/stick/chant...)، والمنصّة لا تملك بنية أصوات إنجليزية (audio/ فيه أصوات الواجهة وتلاوة عربية واحدة فقط).",
+      "decision": "تُحوَّل الأنشطة الصوتية إلى مكافئها البصري/التفاعلي من الكتالوج القائم (mcq/matching/hotspot/classify/true-false...) بدل audio-q. audio-q لم يُخطَّط له في أي درس من هذا الملف — يُرجَّأ إلى ما بعد بناء بنية صوت إنجليزية (TTS أو تسجيل).",
+      "needsOwnerConfirm": true
+    },
+    "namedCharacters": {
+      "issue": "الكتاب يستعمل شخصياتٍ كرتونيةً ثابتةً بأسماء (Jack, Sami, Tom, Fatma, Lily, Meg...) في أنشطة تمييزٍ («Point to Mazin»). رسومها محميةٌ بحقوق نشر فلا تُنسخ، وقاعدة «بلا ملامح وجه» في CLAUDE.md تمنع رسم شخصياتٍ آدميةٍ بوجوهٍ مميَّزة.",
+      "decision": "لا تُؤلَّف أسئلة تمييز شخصية بالاسم. المحتوى المرتبط بالشخصيات (القصص الأربع) يُحوَّل إلى أسئلة على المفردات والتراكيب والقيمة التي تحملها القصة، لا على هوية الشخصية نفسها."
+    },
+    "screenshotsAndLogos": {
+      "note": "لا لقطات شاشة ولا علامات تجارية في كتب الصف الأول (بخلاف عالمي الرقمي) — هذا البند غير ذي موضوع لهذه المادة."
+    },
+    "referencePages": {
+      "note": "Picture dictionary وVocabulary time وProgress path (كتاب التلميذ فقط، ص٥٢-٦١) صفحات تجميع/مراجعة لا دروس مستقلة — تُستعمَل كمصدر إثراء لأسئلة المراجعة (Lesson 6) والاستعداد للاختبار (Lesson 7) لا كدروسٍ منفصلة في الفهرس. يحتاج تأكيد المالك.",
+      "needsOwnerConfirm": true
+    },
+    "nonQuestionContent": {
+      "note": "Project press-outs (كتاب التلميذ ص٦٥-٧٧) وصفحات الملصقات (كتاب النشاط) قصاصات قصٍّ وتركيب يدوية فقط — لا تُستعمل مصدراً لأسئلة."
+    },
+    "learningClubUnits": {
+      "note": "Learning Club 1 و2 (رياضيات/فنون متكاملة: أعداد ١-٦، ألوان، أشكال هندسية) لا تحمل رقم وحدة في الكتاب ولا حصة في كتاب الأصوات والتهجئة. اقتُرح ترقيمها بمعرّف نصّي مستقل (lc1/lc2) بين الوحدتين المحيطتين بها، على غرار سابقة \"unit\": \"تمهيد\" في data/index.json — يحتاج تأكيد المالك في المرحلة ٣/٤.",
+      "needsOwnerConfirm": true
+    }
+  },
+
+  "books": [
+    {
+      "grade": 1,
+      "bookKey": "g1-en",
+      "units": [
+        {
+          "unit": "0", "title": "تمهيد — Welcome (Hello!)",
+          "lessons": [
+            { "code": "g1e-0-1", "title": "مرحباً! — Hello!", "objective": "استخدام تحية بسيطة والتعارف: Hello/Hi, What's your name? My name's…, I'm…", "basic": ["mcq", "true-false", "matching", "sequence", "fill-blank"], "enrichment": "memory", "status": "ready" }
+          ]
+        },
+        {
+          "unit": "1", "title": "Family and friends — عائلتي وأصدقائي",
+          "lessons": [
+            { "code": "g1e-1-1", "title": "Family and friends (١)", "objective": "مفردات: boy, cat, friend, girl", "basic": ["mcq", "matching", "classify", "true-false", "hotspot"], "enrichment": "memory", "status": "ready" },
+            { "code": "g1e-1-2", "title": "أصوات الحروف (٢) — sound s", "objective": "تمييز صوت الحرف s (Sounds and Spelling Book, Unit 1 Lesson 2)", "basic": ["mcq", "classify", "matching", "true-false", "hotspot"], "enrichment": "exclude", "status": "ready" },
+            { "code": "g1e-1-3", "title": "Who's this? (٣) — قصة", "objective": "مفردات: brother, dad, mum, sister؛ تركيب: Who's this? This is (my)…؛ القيمة: Be helpful", "basic": ["mcq", "matching", "fill-blank", "true-false", "sequence"], "enrichment": "color", "status": "ready", "note": "نشاط تلوين مرتبط بالقيمة (Be helpful) موجود حرفياً في كتاب النشاط" },
+            { "code": "g1e-1-4", "title": "Who's this? (٤) — تدريب لغوي", "objective": "تثبيت This is my… بصيغ متعددة", "basic": ["matching", "mcq", "true-false", "fill-blank", "sequence"], "enrichment": "exclude", "status": "ready" },
+            { "code": "g1e-1-5", "title": "مشروع: دمى الأصابع (٥)", "objective": "مراجعة مفردات الوحدة ضمن سياق المشروع", "basic": ["sequence", "mcq", "matching", "true-false", "classify"], "enrichment": "memory", "status": "ready", "note": "محتوى صفحة المشروع نفسها ضعيف لغوياً؛ يُعتمد على مفردات الوحدة" },
+            { "code": "g1e-1-6", "title": "المراجعة (٦)", "objective": "مراجعة تراكمية لمفردات وتراكيب الوحدة ١", "basic": ["mcq", "true-false", "matching", "classify", "fill-blank"], "enrichment": "exclude", "status": "ready" },
+            { "code": "g1e-1-7", "title": "استعدّ للاختبار (٧) — Pre-A1 Starters", "objective": "تدريب على نمط اختبار Pre-A1 Starters", "basic": ["mcq", "matching", "true-false", "classify", "hotspot"], "enrichment": "memory", "status": "ready", "note": "أنشطة الكتاب هنا استماعية بالكامل؛ تُحوَّل لمكافئها البصري (mcq بخيارات مصوّرة) بلا صوت" }
+          ]
+        },
+        {
+          "unit": "lc1", "title": "نادي التعلّم ١ — Meg's Learning Club (أعداد وألوان)",
+          "lessons": [
+            { "code": "g1e-lc1-1", "title": "الأعداد ١-٦ — Numbers", "objective": "العدّ من ١ إلى ٦ (تكامل رياضيات)", "basic": ["mcq", "sequence", "matching", "true-false", "classify"], "enrichment": "color", "status": "ready" },
+            { "code": "g1e-lc1-2", "title": "الألوان — Colours + How old are you?", "objective": "أسماء الألوان الستة؛ Language booster 1: How old are you? I'm (six).", "basic": ["mcq", "matching", "true-false", "classify", "fill-blank"], "enrichment": "memory", "status": "ready" }
+          ]
+        },
+        {
+          "unit": "2", "title": "My school bag — حقيبتي المدرسية",
+          "lessons": [
+            { "code": "g1e-2-1", "title": "My school bag (١)", "objective": "مفردات: bag, pen, eraser, ruler", "basic": ["mcq", "matching", "classify", "true-false", "hotspot"], "enrichment": "memory", "status": "ready" },
+            { "code": "g1e-2-2", "title": "أصوات الحروف (٢) — sound a", "objective": "تمييز صوت الحرف a (Sounds and Spelling Book, Unit 2 Lesson 2)", "basic": ["mcq", "classify", "matching", "true-false", "hotspot"], "enrichment": "exclude", "status": "ready" },
+            { "code": "g1e-2-3", "title": "I've got / I haven't got (٣) — قصة", "objective": "مفردات: book, crayon, pencil, pencil case؛ تركيب: I've got…/I haven't got…؛ القيمة: Look after your things", "basic": ["mcq", "fill-blank", "matching", "true-false", "sequence"], "enrichment": "color", "status": "ready" },
+            { "code": "g1e-2-4", "title": "ماذا في حقيبتي؟ (٤) — تدريب لغوي", "objective": "تثبيت I've got…/I haven't got…", "basic": ["matching", "mcq", "true-false", "fill-blank", "classify"], "enrichment": "exclude", "status": "ready" },
+            { "code": "g1e-2-5", "title": "مشروع: حقيبة مدرسية (٥)", "objective": "مراجعة مفردات الوحدة ضمن سياق المشروع", "basic": ["sequence", "mcq", "matching", "true-false", "classify"], "enrichment": "memory", "status": "ready" },
+            { "code": "g1e-2-6", "title": "المراجعة (٦)", "objective": "مراجعة تراكمية لمفردات وتراكيب الوحدة ٢", "basic": ["mcq", "true-false", "matching", "classify", "fill-blank"], "enrichment": "exclude", "status": "ready" },
+            { "code": "g1e-2-7", "title": "استعدّ للاختبار (٧) — Pre-A1 Starters", "objective": "تدريب على نمط اختبار Pre-A1 Starters", "basic": ["mcq", "matching", "true-false", "classify", "hotspot"], "enrichment": "memory", "status": "ready", "note": "تحويل بصري لأنشطة الاستماع الأصلية" }
+          ]
+        },
+        {
+          "unit": "3", "title": "Our classroom — غرفتي الصفية",
+          "lessons": [
+            { "code": "g1e-3-1", "title": "Our classroom (١)", "objective": "مفردات: door, teacher, whiteboard, window", "basic": ["mcq", "matching", "classify", "true-false", "hotspot"], "enrichment": "memory", "status": "ready" },
+            { "code": "g1e-3-2", "title": "أصوات الحروف (٢) — sound t", "objective": "تمييز صوت الحرف t (Sounds and Spelling Book, Unit 3 Lesson 2)", "basic": ["mcq", "classify", "matching", "true-false", "hotspot"], "enrichment": "exclude", "status": "ready" },
+            { "code": "g1e-3-3", "title": "What's this? (٣) — قصة", "objective": "مفردات: chair, desk, floor, wall؛ تركيب: What's this? It's a…؛ القيمة: Be tidy", "basic": ["mcq", "matching", "fill-blank", "true-false", "hotspot"], "enrichment": "color", "status": "ready" },
+            { "code": "g1e-3-4", "title": "أين الكتاب؟ (٤) — in/on/under", "objective": "حروف جر المكان: The book is in/on/under the bag", "basic": ["hotspot", "matching", "mcq", "true-false", "drag-drop"], "enrichment": "exclude", "status": "ready", "note": "تراكيب in/on/under تُختبر بصرياً (hotspot/drag-drop) بدل نشاط الاستماع الأصلي" },
+            { "code": "g1e-3-5", "title": "مشروع: صندوق أدوات مرتّب (٥)", "objective": "مراجعة مفردات الوحدة ضمن سياق المشروع", "basic": ["sequence", "mcq", "matching", "true-false", "classify"], "enrichment": "memory", "status": "ready" },
+            { "code": "g1e-3-6", "title": "المراجعة (٦)", "objective": "مراجعة تراكمية لمفردات وتراكيب الوحدة ٣", "basic": ["mcq", "true-false", "matching", "classify", "fill-blank"], "enrichment": "exclude", "status": "ready" },
+            { "code": "g1e-3-7", "title": "استعدّ للاختبار (٧) — Pre-A1 Starters", "objective": "تدريب على نمط اختبار Pre-A1 Starters", "basic": ["mcq", "matching", "true-false", "classify", "hotspot"], "enrichment": "memory", "status": "ready" }
+          ]
+        },
+        {
+          "unit": "4", "title": "My favourite toy — لعبتي المفضلة",
+          "lessons": [
+            { "code": "g1e-4-1", "title": "My favourite toy (١)", "objective": "مفردات: ball, car, robot, teddy", "basic": ["mcq", "matching", "classify", "true-false", "hotspot"], "enrichment": "memory", "status": "ready" },
+            { "code": "g1e-4-2", "title": "أصوات الحروف (٢) — sound p", "objective": "تمييز صوت الحرف p (Sounds and Spelling Book, Unit 4 Lesson 2)", "basic": ["mcq", "classify", "matching", "true-false", "hotspot"], "enrichment": "exclude", "status": "ready" },
+            { "code": "g1e-4-3", "title": "What colour is it? (٣) — قصة", "objective": "مفردات: doll, plane, train, yo-yo؛ تركيب: What colour is it? It's…؛ القيمة: Share", "basic": ["mcq", "matching", "fill-blank", "true-false", "classify"], "enrichment": "color", "status": "ready" },
+            { "code": "g1e-4-4", "title": "لعبتي المفضلة (٤) — تدريب لغوي", "objective": "تثبيت What's your favourite toy? It's my…", "basic": ["matching", "mcq", "true-false", "fill-blank", "hotspot"], "enrichment": "exclude", "status": "ready" },
+            { "code": "g1e-4-5", "title": "مشروع: صندوق الألعاب (٥)", "objective": "مراجعة مفردات الوحدة ضمن سياق المشروع", "basic": ["sequence", "mcq", "matching", "true-false", "classify"], "enrichment": "memory", "status": "ready" },
+            { "code": "g1e-4-6", "title": "المراجعة (٦)", "objective": "مراجعة تراكمية لمفردات وتراكيب الوحدة ٤", "basic": ["mcq", "true-false", "matching", "classify", "fill-blank"], "enrichment": "exclude", "status": "ready" },
+            { "code": "g1e-4-7", "title": "استعدّ للاختبار (٧) — Pre-A1 Starters", "objective": "تدريب على نمط اختبار Pre-A1 Starters", "basic": ["mcq", "matching", "true-false", "classify", "hotspot"], "enrichment": "memory", "status": "ready" }
+          ]
+        },
+        {
+          "unit": "lc2", "title": "نادي التعلّم ٢ — Meg's Learning Club (أشكال)",
+          "lessons": [
+            { "code": "g1e-lc2-1", "title": "الأشكال الهندسية — Shapes", "objective": "square, circle, triangle, rectangle (تكامل رياضيات)", "basic": ["mcq", "classify", "matching", "true-false", "sequence"], "enrichment": "color", "status": "ready" },
+            { "code": "g1e-lc2-2", "title": "ما هذه؟ — What are these? (Language booster 2)", "objective": "تركيب: What are these? They're…", "basic": ["mcq", "matching", "true-false", "classify", "fill-blank"], "enrichment": "memory", "status": "ready" }
+          ]
+        }
+      ]
+    }
+  ]
+}
