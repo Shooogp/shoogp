@@ -316,7 +316,7 @@ window.DATA_FALLBACK = {
       { unit:"لنعرض أفكارنا", lessons:[
         { title:"العروض التقديمية", file:"g4i-2-1", open:true },
         { title:"التعامل مع الصور", file:"g4i-2-2", open:true },
-        { title:"التأثيرات الانتقالية والحركية", file:"g4i-2-3", open:false },
+        { title:"التأثيرات الانتقالية والحركية", file:"g4i-2-3", open:true },
         { title:"المشروع", file:"g4i-2-4", open:false }
       ]},
       { unit:"عالمي المتصل", lessons:[
