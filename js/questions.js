@@ -38433,5 +38433,100 @@ window.QUESTIONS = {
       distractors: ["كَلِمَةُ المُرورِ", "المُرفَقاتُ"]
     }
 
+  ],
+
+  // الصف الرابع — الوحدة ٣: عالمي المتصل — الدرس ٣.٢: التواصل عبر البريد الإلكتروني (كتاب التلميذ ص١٢٥-١٣١) — آخر دروس الكتاب
+  "g4i-3-2": [
+
+    // النقطة الساخنة — معرفة (هدف ٣: فتح وقراءة رسالة بريد إلكتروني)
+    // ⚠️ رسمٌ توضيحيٌّ أصليٌّ لِأَربَعِ مُجَلَّداتٍ في تَطبيقِ البَريدِ (لا لقطةَ شاشةٍ حقيقيّة).
+    {
+      type: "hotspot",
+      objective: "فتح وقراءة رسالة بريد إلكتروني.",
+      level: "knowledge",
+      prompt: "أَيُّ مُجَلَّدٍ تَفتَحُهُ لِقِراءَةِ رِسالَةِ بَريدٍ إِلِكترونِيٍّ جَديدَةٍ؟ انقُرْ عَلَيهِ.",
+      bg: "#fdf9ee",
+      svg: `<svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="أربعةُ مجلَّداتٍ في تطبيقِ البريدِ: صندوقُ الواردِ، العناصرُ المُرسَلَةُ، المُسوَّداتُ، البريدُ غيرُ المرغوبِ فيه">
+        <rect x="10" y="10" width="130" height="100" rx="14" fill="#FDF6E9" stroke="#111111" stroke-width="3"/>
+        <path d="M60,55 L110,55 L110,90 L60,90 Z M60,55 L85,78 L110,55" fill="none" stroke="#E08A2B" stroke-width="4" stroke-linejoin="round"/>
+        <path d="M85,40 L85,62 M77,54 L85,64 L93,54" fill="none" stroke="#E08A2B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="75" y="98" font-size="11" text-anchor="middle" fill="#111111" font-family="Arial">Inbox</text>
+        <rect x="160" y="10" width="130" height="100" rx="14" fill="#EAF4FB" stroke="#111111" stroke-width="3"/>
+        <path d="M210,55 L260,55 L260,90 L210,90 Z M210,55 L235,78 L260,55" fill="none" stroke="#2B79C2" stroke-width="4" stroke-linejoin="round"/>
+        <path d="M235,64 L235,42 M227,50 L235,40 L243,50" fill="none" stroke="#2B79C2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="225" y="98" font-size="10" text-anchor="middle" fill="#111111" font-family="Arial">Sent Items</text>
+        <rect x="10" y="130" width="130" height="100" rx="14" fill="#EAF4FB" stroke="#111111" stroke-width="3"/>
+        <path d="M52,205 L58,180 L90,148 L100,158 L68,190 Z M90,148 L100,158" fill="none" stroke="#2B79C2" stroke-width="4" stroke-linejoin="round"/>
+        <text x="75" y="218" font-size="11" text-anchor="middle" fill="#111111" font-family="Arial">Drafts</text>
+        <rect x="160" y="130" width="130" height="100" rx="14" fill="#EAF4FB" stroke="#111111" stroke-width="3"/>
+        <path d="M210,175 L260,175 L260,210 L210,210 Z M210,175 L235,198 L260,175" fill="none" stroke="#2B79C2" stroke-width="4" stroke-linejoin="round"/>
+        <line x1="215" y1="150" x2="235" y2="170" stroke="#CC3333" stroke-width="4" stroke-linecap="round"/>
+        <line x1="235" y1="150" x2="215" y2="170" stroke="#CC3333" stroke-width="4" stroke-linecap="round"/>
+        <text x="225" y="218" font-size="9" text-anchor="middle" fill="#111111" font-family="Arial">Junk Email</text>
+      </svg>`,
+      spot: { x: 25, y: 25, w: 43, h: 42 }
+    },
+
+    // الترتيب التسلسلي — معرفة (هدف ٢: إنشاء وارسال رسالة عبر البريد الإلكتروني)
+    {
+      type: "sequence",
+      objective: "إنشاء وارسال رسالة عبر البريد الإلكتروني.",
+      level: "knowledge",
+      prompt: "رَتِّبْ خُطُواتِ إِنشاءِ رِسالَةِ بَريدٍ إِلِكترونِيٍّ وإِرسالِها.",
+      steps: [
+        "اكتُبْ عُنوانَ مُستَلِمِ الرِّسالَةِ في خانَةِ To",
+        "اكتُبْ عُنوانَ الرِّسالَةِ في Add a subject",
+        "اكتُبْ مُحتَوى الرِّسالَةِ",
+        "انقُرْ أَمرَ إِرسالٍ (Send)"
+      ]
+    },
+
+    // التوصيل — تطبيق (هدف ٤ وهدف ٥)
+    {
+      type: "matching",
+      objective: "الرد على رسالة بريد إلكتروني.",
+      level: "application",
+      prompt: "صِلْ كُلَّ أَمرٍ بِوَظيفَتِهِ.",
+      pairs: [
+        { a: "Reply",             b: "الرَّدُّ عَلى المُرسِلِ فَقَط" },
+        { a: "Reply all",         b: "الرَّدُّ عَلى الكُلِّ إِذا كانَ هُناكَ أَكثَرُ مِن مُستَلِمٍ" },
+        { a: "Attach a file",     b: "إِرفاقُ صورَةٍ أَو مِلَفٍّ بِالرِّسالَةِ" },
+        { a: "Forward",           b: "إِعادَةُ توجيهِ الرِّسالَةِ إلى شَخصٍ آخَرَ" }
+      ]
+    },
+
+    // اختيار من متعدد — معرفة (هدف ٣: فتح وقراءة رسالة بريد إلكتروني)
+    {
+      type: "mcq",
+      objective: "فتح وقراءة رسالة بريد إلكتروني.",
+      level: "knowledge",
+      prompt: "كَيفَ تَعرِفُ أَنَّ رِسالَةَ البَريدِ الإِلِكترونِيِّ لَم تُقرَأْ بَعدُ؟",
+      options: ["يَظهَرُ عُنوانُها بِخَطٍّ عَريضٍ (Bold)", "يَظهَرُ عُنوانُها بِلَونٍ أَحمَرَ", "تَختَفي مِنَ القائِمَةِ", "لا يوجَدُ فَرقٌ"],
+      answer: 0
+    },
+
+    // صواب وخطأ — استدلال (هدف ٦: حفظ صورة من رسالة بريد إلكتروني مستلمة)
+    {
+      type: "true-false",
+      objective: "حفظ صورة من رسالة بريد إلكتروني مستلمة على جهاز الحاسوب.",
+      level: "reasoning",
+      statement: "يُمكِنُ حِفظُ صورَةٍ مُرفَقَةٍ بِرِسالَةٍ عَبرَ النَّقرِ بِزِرِّ الفَأرَةِ الأَيمَنِ عَلَيها ثُمَّ اختِيارِ Save as.",
+      answer: true
+    },
+
+    // ⑥ بطاقات الذاكرة (إثرائي اختياري) — معرفة (هدف ٤: الرد على رسالة بريد إلكتروني)
+    {
+      type: "memory",
+      objective: "الرد على رسالة بريد إلكتروني.",
+      level: "knowledge",
+      prompt: "اقلِبْ بِطاقَتَينِ في كُلِّ دَورٍ لِتَجِدَ كُلَّ أَمرٍ ووَظيفَتَهُ.",
+      pairs: [
+        { a: "Reply",     b: "الرَّدُّ عَلى المُرسِلِ فَقَط" },
+        { a: "Reply all", b: "الرَّدُّ عَلى جَميعِ المُستَلِمينَ" },
+        { a: "Forward",   b: "إِعادَةُ التَّوجيهِ لِشَخصٍ آخَرَ" },
+        { a: "Discard",   b: "حَذفُ المُسَوَّدَةِ" }
+      ]
+    }
+
   ]
 };

@@ -321,7 +321,7 @@ window.DATA_FALLBACK = {
       ]},
       { unit:"عالمي المتصل", lessons:[
         { title:"البريد الإلكتروني", file:"g4i-3-1", open:true },
-        { title:"التواصل عبر البريد الإلكتروني", file:"g4i-3-2", open:false }
+        { title:"التواصل عبر البريد الإلكتروني", file:"g4i-3-2", open:true }
       ]}
     ]},
     "g3-math": { book:"الرياضيات — الصف الثالث", units:[
