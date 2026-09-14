@@ -705,7 +705,7 @@ window.DATA_FALLBACK = {
         { title:"البحث عن المعلومات", file:"g3i-3-2", open:true },
         { title:"أخلاقيات الإنترنت", file:"g3i-3-3", open:true },
         { title:"العثور على المعلومات", file:"g3i-3-4", open:true },
-        { title:"لنتدرّب على استخدام الإنترنت", file:"g3i-3-5", open:false },
+        { title:"لنتدرّب على استخدام الإنترنت", file:"g3i-3-5", open:true },
         { title:"البحث في موسوعة ويكيبيديا", file:"g3i-3-6", open:false }
       ]}
     ]}
