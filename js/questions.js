@@ -37220,5 +37220,99 @@ window.QUESTIONS = {
       reason: "النَّقرُ عَلى الإِعلاناتِ قَد يُعَرِّضُ حاسوبَكَ لِفَيروسٍ، أَمّا البَقِيَّةُ فَطُرُقُ حِمايَةٍ."
     }
 
+  ],
+
+  // الصف الثالث — الوحدة ٣: عالمي المتصل — الدرس ٣.٢: البحث عن المعلومات (كتاب التلميذ ص١٠٢-١٠٨)
+  "g3i-3-2": [
+
+    // النقطة الساخنة — تطبيق (هدف ١: التعرف إلى مكونات واجهة متصفح الإنترنت)
+    // ⚠️ رسمٌ توضيحيٌّ أصليٌّ لِشريطِ أدواتِ متصفّحٍ (لا لقطةَ شاشةٍ حقيقيّة) — أربعُ
+    // مناطقَ في شبكةِ ٢×٢ (نسبةُ الرسمِ ١٫٢٥ ضِمنَ الحدِّ ١٫١–١٫٥ لِرسومِ hotspot).
+    {
+      type: "hotspot",
+      objective: "التعرف إلى مكونات واجهة متصفح الإنترنت.",
+      level: "application",
+      prompt: "أَيُّ مِنطَقَةٍ في المُتَصَفِّحِ تَستَخدِمُها لِكِتابَةِ عُنوانِ المَوقِعِ؟ انقُرْ عَلَيها.",
+      bg: "#fdf9ee",
+      svg: `<svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="أربعةُ عناصرَ مِن شَريطِ أَدواتِ مُتَصَفِّحٍ: الرُّجوعُ، والتَّقَدُّمُ، وشَريطُ العُنوانِ، وتَبويبٌ جَديد">
+        <rect x="10" y="10" width="130" height="100" rx="14" fill="#EAF4FB" stroke="#111111" stroke-width="3"/>
+        <path d="M85,60 L60,60 M60,60 L72,48 M60,60 L72,72" stroke="#2B79C2" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="75" y="95" font-size="13" text-anchor="middle" fill="#111111" font-family="Arial">Back</text>
+        <rect x="160" y="10" width="130" height="100" rx="14" fill="#EAF4FB" stroke="#111111" stroke-width="3"/>
+        <path d="M215,60 L240,60 M240,60 L228,48 M240,60 L228,72" stroke="#2B79C2" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="225" y="95" font-size="13" text-anchor="middle" fill="#111111" font-family="Arial">Forward</text>
+        <rect x="10" y="130" width="130" height="100" rx="14" fill="#FDF6E9" stroke="#111111" stroke-width="3"/>
+        <rect x="25" y="165" width="100" height="30" rx="8" fill="#FFFFFF" stroke="#111111" stroke-width="2.5"/>
+        <circle cx="40" cy="180" r="7" fill="none" stroke="#2B79C2" stroke-width="3"/>
+        <line x1="45" y1="185" x2="52" y2="192" stroke="#2B79C2" stroke-width="3" stroke-linecap="round"/>
+        <text x="75" y="222" font-size="13" text-anchor="middle" fill="#111111" font-family="Arial">Address Bar</text>
+        <rect x="160" y="130" width="130" height="100" rx="14" fill="#EAF4FB" stroke="#111111" stroke-width="3"/>
+        <line x1="225" y1="155" x2="225" y2="185" stroke="#2B79C2" stroke-width="6" stroke-linecap="round"/>
+        <line x1="210" y1="170" x2="240" y2="170" stroke="#2B79C2" stroke-width="6" stroke-linecap="round"/>
+        <text x="225" y="222" font-size="13" text-anchor="middle" fill="#111111" font-family="Arial">New Tab</text>
+      </svg>`,
+      spot: { x: 25, y: 75, w: 43, h: 42 }
+    },
+
+    // الترتيب التسلسلي — استدلال (هدف ٢: استخدام محرك البحث Google للبحث عن معلومات)
+    {
+      type: "sequence",
+      objective: "استخدام محرك البحث (Google) للبحث عن معلومات.",
+      level: "reasoning",
+      prompt: "رَتِّبْ خُطُواتِ البَحثِ عَن مَعلومَةٍ باستِخدامِ مُحَرِّكِ بَحثِ جوجل.",
+      steps: [
+        "افتَحْ مُتَصَفِّحَ الإنترنتِ واكتُبْ www.google.com في شَريطِ العُنوانِ",
+        "اكتُبْ كَلِمَةً أَو عِبارَةً ذاتَ صِلَةٍ بِما تَبحَثُ عَنهُ ثُمَّ اضغَطْ Enter",
+        "انقُرِ النَّتيجَةَ الأَنسَبَ لِموضوعِ بَحثِكَ مِن قائِمَةِ النَّتائِجِ"
+      ]
+    },
+
+    // اختيار من متعدد — معرفة (هدف ١: التعرف إلى مكونات واجهة متصفح الإنترنت)
+    {
+      type: "mcq",
+      objective: "التعرف إلى مكونات واجهة متصفح الإنترنت.",
+      level: "knowledge",
+      prompt: "أَيُّ التَّطبيقاتِ الآتِيَةِ يُعَدُّ مُتَصَفِّحَ إنترنت؟",
+      options: ["Google Chrome", "Microsoft Word", "Calculator", "Paint"],
+      answer: 0
+    },
+
+    // صواب وخطأ — معرفة (هدف ٣: فتح وإغلاق تبويب جديد)
+    {
+      type: "true-false",
+      objective: "فتح وإغلاق تبويب جديد (New Tab).",
+      level: "knowledge",
+      statement: "يُستَخدَمُ زِرُّ New Tab لِفَتحِ أَكثَرَ مِن صَفحَةِ وِيبٍ في نافِذَةٍ واحِدَةٍ.",
+      answer: true
+    },
+
+    // التوصيل — معرفة (هدف ١: التعرف إلى مكونات واجهة متصفح الإنترنت)
+    {
+      type: "matching",
+      objective: "التعرف إلى مكونات واجهة متصفح الإنترنت.",
+      level: "knowledge",
+      prompt: "صِلْ كُلَّ عُنصُرٍ مِن عَناصِرِ المُتَصَفِّحِ بِوَظيفَتِهِ.",
+      pairs: [
+        { a: "زِرُّ Back", b: "العَودَةُ إلى الصَّفحَةِ السّابِقَةِ" },
+        { a: "زِرُّ Forward", b: "الانتِقالُ إلى الصَّفحَةِ التّالِيَةِ" },
+        { a: "شَريطُ العُنوانِ (Address Bar)", b: "كِتابَةُ عُنوانِ المَوقِعِ" },
+        { a: "زِرُّ New Tab", b: "فَتحُ عَلامَةِ تَبويبٍ جَديدَةٍ" }
+      ]
+    },
+
+    // ⑥ بطاقات الذاكرة (إثرائي اختياري) — معرفة (هدف ١: التعرف إلى مكونات واجهة متصفح الإنترنت)
+    {
+      type: "memory",
+      objective: "التعرف إلى مكونات واجهة متصفح الإنترنت.",
+      level: "knowledge",
+      prompt: "اقلِبْ بِطاقَتَينِ في كُلِّ دَورٍ لِتَجِدَ كُلَّ عُنصُرٍ وَوَظيفَتَهُ.",
+      pairs: [
+        { a: "Back", b: "الرُّجوعُ لِلصَّفحَةِ السّابِقَةِ" },
+        { a: "Forward", b: "الانتِقالُ لِلصَّفحَةِ التّالِيَةِ" },
+        { a: "New Tab", b: "فَتحُ عَلامَةِ تَبويبٍ جَديدَةٍ" },
+        { a: "Address Bar", b: "كِتابَةُ عُنوانِ المَوقِعِ" }
+      ]
+    }
+
   ]
 };
