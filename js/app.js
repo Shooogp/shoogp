@@ -930,7 +930,9 @@ function renderMcq(q, body, fb){
 
 /* ④ صواب وخطأ: statement + answer (true/false) */
 function renderTrueFalse(q, body, fb){
-  body.innerHTML=`<div class="tf-btns"><button class="btn tf tf-t">صواب ✔</button><button class="btn tf tf-f">خطأ ✘</button></div>`;
+  body.innerHTML=(q.audio?`<div class="qaudio">`+audioPlayerHTML(q.audio)+`</div>`:'')+
+    `<div class="tf-btns"><button class="btn tf tf-t">صواب ✔</button><button class="btn tf tf-f">خطأ ✘</button></div>`;
+  wireAudioPlayer(body,q.audio);
   let done=false;
   const judge=(val,btn)=>{if(done)return;if(val===q.answer){done=true;btn.classList.add('tf-correct');qWin(fb,'🎉 إجابة صحيحة!',2);}else{btn.classList.add('tf-wrong');qFail(fb,'الإجابة غير صحيحة، فكّر مجدداً');}};
   body.querySelector('.tf-t').onclick=e=>judge(true,e.currentTarget);

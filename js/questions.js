@@ -38659,7 +38659,8 @@ window.QUESTIONS = {
       type: "hotspot",
       objective: "مفردات: boy, cat, friend, girl",
       level: "application",
-      prompt: "Click on the cat.",
+      prompt: "Listen, then click on the cat.",
+      audio: "audio/en/cat.mp3",
       image: "images/طفلان-وقطة.png",
       bg: "#fff6dc",
       spot: { x: 84, y: 74, r: 13 }
@@ -38721,7 +38722,8 @@ window.QUESTIONS = {
       type: "hotspot",
       objective: "تمييز صوت الحرف s",
       level: "application",
-      prompt: "Click on the letter 's'.",
+      prompt: "Listen to the sound, then click the matching letter.",
+      audio: "audio/en/phon-s.mp3",
       svg: `<svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
         <rect x="20" y="40" width="80" height="120" rx="16" fill="#F6D000" stroke="#111111" stroke-width="4"/>
         <text x="60" y="118" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="800" font-size="60" fill="#111111">S</text>
@@ -38736,14 +38738,21 @@ window.QUESTIONS = {
       spot: { x: 15, y: 50, w: 20, h: 60 }
     },
     {
-      type: "classify",
-      objective: "تمييز صوت الحرف s",
+      // نشاط "1.19 Let's blend!" الأصلي في كتاب الأصوات والتهجئة (Unit 1, Lesson 4):
+      // t/a/p → tap، وهو النشاط الصوتي الأهمّ في هذا الدرس — يحلّ محلّ التصنيف النصّي البحت
+      type: "sound-blend",
+      objective: "تمييز صوت الحرف s ودمج الأصوات لتكوين كلمات (Let's blend!)",
       level: "reasoning",
-      prompt: "Sort each word.",
-      groups: [
-        { name: "Starts with s",         items: ["sun", "six", "sit", "sad"] },
-        { name: "Does not start with s", items: ["cat", "dog"] }
-      ]
+      prompt: "Tap each letter to hear its sound, then blend and choose the word.",
+      letters: ["t", "a", "p"],
+      soundOf: {
+        t: "audio/en/phon-t.mp3",
+        a: "audio/en/phon-a.mp3",
+        p: "audio/en/phon-p.mp3"
+      },
+      blendAudio: "audio/en/blend-tap.mp3",
+      options: ["tap", "pat", "sit"],
+      answer: 0
     },
     {
       type: "exclude",
@@ -38771,6 +38780,7 @@ window.QUESTIONS = {
       objective: "مفردات: brother, dad, mum, sister",
       level: "knowledge",
       statement: "'Mum' means mother.",
+      audio: "audio/en/statement-mum-mother.mp3",
       answer: true
     },
     {
@@ -38798,7 +38808,8 @@ window.QUESTIONS = {
       type: "sequence",
       objective: "تركيب: Who's this? This is (my)…",
       level: "reasoning",
-      prompt: "Put the dialogue in the correct order.",
+      prompt: "Listen, then put the dialogue in the correct order.",
+      audio: "audio/en/dialogue-whos-this-mum.mp3",
       steps: ["Hello!", "Who's this?", "This is my mum.", "Hi, Mum!"]
     },
     {
@@ -38864,7 +38875,8 @@ window.QUESTIONS = {
       type: "matching",
       objective: "تثبيت This is my…",
       level: "knowledge",
-      prompt: "Match each word to its opposite.",
+      prompt: "Listen, then match each word to its opposite.",
+      audio: "audio/en/listen-match-family.mp3",
       pairs: [
         { a: "dad",     b: "mum" },
         { a: "brother", b: "sister" },
@@ -38964,7 +38976,8 @@ window.QUESTIONS = {
       type: "mcq",
       objective: "مراجعة تراكمية لمفردات وتراكيب الوحدة ١",
       level: "knowledge",
-      prompt: "Which is a greeting?",
+      prompt: "Listen and tick the greeting word.",
+      audio: "audio/en/hello-greeting.mp3",
       options: ["Hello", "cat", "six", "book"],
       answer: 0
     },
@@ -39023,7 +39036,8 @@ window.QUESTIONS = {
       type: "mcq",
       objective: "تدريب على نمط اختبار Pre-A1 Starters",
       level: "knowledge",
-      prompt: "Which word means 'mother'?",
+      prompt: "Listen and tick the correct word.",
+      audio: "audio/en/mum-word.mp3",
       options: ["mum", "dad", "cat", "six"],
       answer: 0
     },
@@ -39049,7 +39063,8 @@ window.QUESTIONS = {
       type: "hotspot",
       objective: "مفردات: boy, cat, friend, girl",
       level: "application",
-      prompt: "Click on the boy.",
+      prompt: "Listen, then click on the boy.",
+      audio: "audio/en/boy.mp3",
       image: "images/طفلان-وقطة.png",
       bg: "#fff6dc",
       spot: { x: 22, y: 57, w: 21, h: 75 }
@@ -39124,7 +39139,8 @@ window.QUESTIONS = {
       type: "sequence",
       objective: "العدّ من ١ إلى ٦ (تكامل رياضيات)",
       level: "reasoning",
-      prompt: "Put the numbers in counting order.",
+      prompt: "Listen and say, then put the numbers in counting order.",
+      audio: "audio/en/count-1-6.mp3",
       steps: ["one", "two", "three", "four", "five", "six"]
     },
     {
@@ -39175,7 +39191,8 @@ window.QUESTIONS = {
       type: "mcq",
       objective: "أسماء الألوان الستة (تكامل فنون)",
       level: "knowledge",
-      prompt: "Which word is a colour?",
+      prompt: "Listen and circle the colour word.",
+      audio: "audio/en/red-colour.mp3",
       options: ["red", "six", "book", "cat"],
       answer: 0
     },
@@ -39190,7 +39207,8 @@ window.QUESTIONS = {
       type: "matching",
       objective: "أسماء الألوان الستة (تكامل فنون)",
       level: "knowledge",
-      prompt: "Match each colour to what it describes.",
+      prompt: "Listen, then match each colour to what it describes.",
+      audio: "audio/en/listen-match-colours.mp3",
       pairs: [
         { a: "red",    b: "the colour of an apple" },
         { a: "yellow", b: "the colour of the sun" },
