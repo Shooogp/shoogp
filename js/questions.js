@@ -38553,6 +38553,7 @@ window.QUESTIONS = {
 
   // اللغة الإنجليزية/الأول — تمهيد: مرحباً بكم! (Welcome — Hello!)
   // الهدف: استخدام تحية بسيطة والتعارف — Hello/Hi, What's your name?, My name's… / I'm…
+  // محتوى الطالب بالكامل بالإنجليزية (قرار المالك ٢٠٢٦-٠٩-١٥) — انظر en-question-types.json §fullImmersionLanguage
   "g1e-0-1": [
 
     // ③ اختيار من متعدد — معرفة
@@ -38560,7 +38561,7 @@ window.QUESTIONS = {
       type: "mcq",
       objective: "استخدام تحية بسيطة (Hello/Hi) عند مقابلة شخص",
       level: "knowledge",
-      prompt: "أيّ كلمةٍ نقولها للتحية عند مقابلة شخص؟",
+      prompt: "Choose the greeting word.",
       options: ["Hello", "Book", "Cat", "Six"],
       answer: 0
     },
@@ -38570,21 +38571,20 @@ window.QUESTIONS = {
       type: "true-false",
       objective: "استخدام تحية بسيطة (Hello/Hi) عند مقابلة شخص",
       level: "knowledge",
-      statement: "نقول Hello عندما نلتقي بصديق.",
+      statement: "We say 'Hello' when we meet a friend.",
       answer: true
     },
 
-    // ② توصيل — معرفة (هدف: فهم معنى عبارات التحية والتعارف)
+    // ② توصيل — معرفة (هدف: التعرّف على أنماط الحوار في التحية والتعارف)
     {
       type: "matching",
-      objective: "فهم معنى عبارات التحية والتعارف: Hello/Hi, What's your name?, My name's…",
+      objective: "فهم أنماط الحوار في التحية والتعارف: Hello/Hi, What's your name?, My name's…/I'm…",
       level: "knowledge",
-      prompt: "صِل كل عبارة إنجليزية بمعناها.",
+      prompt: "Match each greeting to its answer.",
       pairs: [
-        { a: "Hello!",             b: "مرحباً!" },
-        { a: "Hi!",                b: "أهلاً!" },
-        { a: "What's your name?",  b: "ما اسمك؟" },
-        { a: "My name's Ali.",     b: "اسمي علي." }
+        { a: "Hello!",             b: "Hi!" },
+        { a: "What's your name?",  b: "My name's Noor." },
+        { a: "I'm Ali.",           b: "Hi, Ali!" }
       ]
     },
 
@@ -38593,7 +38593,7 @@ window.QUESTIONS = {
       type: "fill-blank",
       objective: "التعارف بقول My name's… / I'm…",
       level: "application",
-      prompt: "أكمل الجملة بسحب الكلمة المناسبة.",
+      prompt: "Complete the sentence.",
       text: "Hello! My {} is Noor.",
       answers: ["name"],
       distractors: ["book", "cat"]
@@ -38604,21 +38604,20 @@ window.QUESTIONS = {
       type: "sequence",
       objective: "ترتيب خطوات حوار تعارف بسيط بالتسلسل المنطقي",
       level: "reasoning",
-      prompt: "رتّب خطوات حوار التعارف بالترتيب الصحيح.",
+      prompt: "Put the greeting dialogue in the correct order.",
       steps: ["Hello!", "Hi!", "What's your name?", "My name's Noor."]
     },
 
     // ⑰ بطاقات الذاكرة (إثرائي اختياري) — معرفة
     {
       type: "memory",
-      objective: "فهم معنى عبارات التحية والتعارف: Hello/Hi, What's your name?, My name's…",
+      objective: "فهم أنماط الحوار في التحية والتعارف: Hello/Hi, What's your name?, My name's…/I'm…",
       level: "knowledge",
-      prompt: "اعثر على الأزواج المتطابقة بين العبارة الإنجليزية ومعناها.",
+      prompt: "Find the matching pairs.",
       pairs: [
-        { a: "Hello!",             b: "مرحباً!" },
-        { a: "Hi!",                b: "أهلاً!" },
-        { a: "What's your name?",  b: "ما اسمك؟" },
-        { a: "My name's Ali.",     b: "اسمي علي." }
+        { a: "Hello!",             b: "Hi!" },
+        { a: "What's your name?",  b: "My name's Noor." },
+        { a: "I'm Ali.",           b: "Hi, Ali!" }
       ]
     }
 
