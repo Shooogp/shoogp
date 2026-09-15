@@ -1647,6 +1647,282 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════════
+   ★ قشرةُ اللغة الإنجليزية: «الجلدُ الذهبيّ» (skin-leather) ★
+   كسوةٌ بالكودِ وحدَه (CSS/تدرّجات — **بلا أيِّ صورةٍ خارجية**)، على غرارِ بناءِ
+   `skin-metal` حرفياً (نفسُ الطبقاتِ ونفسُ المتغيّراتِ المركّبةِ ونفسُ الحالاتِ
+   السبع)، بلوحةِ ألوانٍ مختلفةٍ فقط: جلدٌ بنّيٌّ دافئٌ بدلَ المعدنِ الفضّيّ، وغِطاءانِ
+   ذهبيّانِ بدلَ الكحليّ — يطابقانِ **لونَ شارةِ الكتابِ نفسَه** `band:["#F6D000","#C5A600"]`
+   (‏`data/books.json`، `g1-en`) لا لوناً مخترَعاً، فتبقى الهويةُ واحدةً بين الشريطِ
+   الخلفيِّ وأزرارِ الإجابة. ولونُ الجسمِ من سُلَّمِ «تربة» المعتمَد في `CLAUDE.md`
+   (§سلالمُ الألوانِ المعتمَدة) — `#B98551`/`#9A6636`/`#7A4C22` — فلا يُخترَعُ سُلَّمٌ
+   جديد. مصدرُ الصنفِ نفسُ منطقِ القشور (`SUBJECT_SKINS.en` ← `lessonSubject`)، فلا
+   مصدرَ ثانٍ للحقيقة، وبقيةُ الموادِّ لا تتأثّرُ إطلاقاً.
+
+   **النطاق (نفسُ عشرةِ محدِّداتِ `skin-metal` بلا زيادةٍ ولا نقصان):** `.opt` ·
+   `.tf` · `.excl-opt` · `.mitem` · `.chip` (ومنه `.chip.mmchip`) · `.seqitem` ·
+   `.blank` · `.target` · `.grp-drop` · `.cswatch`. **خارجَ النطاقِ عمداً** لنفسِ
+   عللِ `skin-metal`: `.grp` و`.cpart` وكلُّ ما هو خارجَ `.qwin`.
+
+   **البناء:** تدرّجٌ رأسيٌّ للجسم #f5e6c8(كريميّ أعلى)←#B98551←#9A6636←#7A4C22 ·
+   خطُّ تشطيبٍ داخليٌّ 1px كريميّ تحتَ الحافّةِ العليا · حافّةٌ داكنةٌ بنّيّة #3a2410 ·
+   حدٌّ خارجيٌّ ذهبيٌّ 3px بتدرّج #F6D000←#C5A600 (بتقنيةِ padding-box/border-box كي
+   يحترمَ الاستدارة) · غطاءانِ ذهبيّانِ على الطرفينِ بخطوطِ تشطيبٍ رأسية (محاكاةُ خيطِ
+   التجليد) · قُرصانِ ذهبيّانِ (بدَلَ مصباحَي `skin-metal`) أعلى منتصفِ العنصرِ وأسفلَه
+   — محاكاةُ مسمارَي تثبيتِ الجلد · نصٌّ بنّيٌّ غامقٌ #3a2410 والرمزُ (✓/✗) بعدَه.
+
+   **كلُّ ذلك في وصفةٍ واحدةٍ (--lth-face) تُعلَنُ على العنصرِ نفسِه** — لا على
+   الحاوية، لنفسِ سببِ `skin-metal` بالحرف (المتغيّرُ المركَّبُ يُستبدَلُ عندَ مُعلِنِه). */
+.shoogp-ui.skin-leather{
+  --lth-hi:#f5e6c8;       /* إضاءةٌ عليا — حافّةُ ورقٍ كريمية */
+  --lth-hi2:#B98551;      /* تربة فاتح (CLAUDE.md) */
+  --lth-mid:#9A6636;      /* تربة أساسي */
+  --lth-lo:#7A4C22;       /* تربة غامق */
+  --lth-finish:#f5e6c8;   /* خطُّ التشطيبِ الداخليّ */
+  --lth-edge:#3a2410;     /* الحافّةُ الداكنة */
+  --lth-cap-a:#F6D000;    /* الأغطيةُ والحدُّ الخارجيّ — ذهبيٌّ فاتح (شارةُ الكتاب) */
+  --lth-cap-b:#C5A600;    /* … وذهبيٌّ غامق (شارةُ الكتاب) */
+  --lth-ink:#3a2410;      /* لونُ النصّ */
+  --lth-lamp:#F6D000;     /* القرصانِ الذهبيّان */
+  --lth-lamp-h:rgba(246,208,0,.55);
+  --lth-cast:rgba(58,36,16,.32);
+  --lth-glow:0 0 0 rgba(0,0,0,0);   /* توهّجُ الحالة — شفّافٌ عادةً */
+  --lth-cap-w:14px;       /* عرضُ الغطاءِ الطرفيّ */
+
+  /* الحدُّ الأدنى المعروضُ — نفسُ رقمَي `skin-metal` (‏78px/23.5px)، فلا يُعادُ
+     اختراعُ حدٍّ آخرَ ولا تُكسَرُ وحدةُ القياسِ بين القشور. */
+  --lth-min-h:78px;
+  --lth-min-f:23.5px;
+}
+
+.shoogp-ui.skin-leather .qwin .opts{max-width:none}
+
+/* ═════ ① الوجهُ الجلديُّ — المجموعةُ كاملةً بوصفةٍ واحدة (نفسُ تقنيةِ skin-metal) ═════ */
+.shoogp-ui.skin-leather .qwin :where(.opt,.tf,.excl-opt,.mitem,.chip,.seqitem,
+                                     .blank,.target,.cswatch,.grp-drop){
+  --lth-lampg:radial-gradient(ellipse at center,
+              var(--lth-lamp) 0 52%, var(--lth-lamp-h) 68%, rgba(246,208,0,0) 100%);
+  --lth-caphair:repeating-linear-gradient(90deg,
+              rgba(255,255,255,.28) 0 1px, rgba(58,36,16,.30) 1px 2px, rgba(255,255,255,0) 2px 4px);
+  --lth-capbase:linear-gradient(180deg, var(--lth-cap-a) 0%, var(--lth-cap-b) 100%);
+  --lth-body:linear-gradient(180deg, var(--lth-hi) 0%, var(--lth-hi2) 20%,
+                                     var(--lth-mid) 55%, var(--lth-lo) 100%);
+  --lth-body-rev:linear-gradient(0deg, var(--lth-hi) 0%, var(--lth-hi2) 20%,
+                                       var(--lth-mid) 55%, var(--lth-lo) 100%);
+}
+.shoogp-ui.skin-leather .qwin :where(.opt,.tf,.excl-opt,.mitem,.chip,.seqitem,
+                                     .blank,.target,.cswatch){
+  --lth-face:
+    var(--lth-lampg)   50% 5px/24px 6px no-repeat padding-box,
+    var(--lth-lampg)   50% calc(100% - 5px)/24px 6px no-repeat padding-box,
+    var(--lth-caphair) 100% 0/var(--lth-cap-w) 100% no-repeat padding-box,
+    var(--lth-capbase) 100% 0/var(--lth-cap-w) 100% no-repeat padding-box,
+    var(--lth-caphair) 0 0/var(--lth-cap-w) 100% no-repeat padding-box,
+    var(--lth-capbase) 0 0/var(--lth-cap-w) 100% no-repeat padding-box,
+    var(--lth-body)    0 0/100% 100% no-repeat padding-box,
+    var(--lth-capbase) 0 0/100% 100% no-repeat border-box;
+  --lth-face-press:
+    var(--lth-lampg)   50% 5px/24px 6px no-repeat padding-box,
+    var(--lth-lampg)   50% calc(100% - 5px)/24px 6px no-repeat padding-box,
+    var(--lth-caphair) 100% 0/var(--lth-cap-w) 100% no-repeat padding-box,
+    var(--lth-capbase) 100% 0/var(--lth-cap-w) 100% no-repeat padding-box,
+    var(--lth-caphair) 0 0/var(--lth-cap-w) 100% no-repeat padding-box,
+    var(--lth-capbase) 0 0/var(--lth-cap-w) 100% no-repeat padding-box,
+    var(--lth-body-rev) 0 0/100% 100% no-repeat padding-box,
+    var(--lth-capbase) 0 0/100% 100% no-repeat border-box;
+  --lth-shadow:
+    inset 0 0 0 1px var(--lth-edge),
+    inset 0 2px 0 -1px var(--lth-finish),
+    inset 0 -7px 10px -8px rgba(58,36,16,.45),
+    0 3px 7px var(--lth-cast),
+    var(--lth-glow);
+  --lth-shadow-hover:
+    inset 0 0 0 1px var(--lth-edge),
+    inset 0 2px 0 -1px #fffaf0,
+    inset 0 -7px 10px -8px rgba(58,36,16,.38),
+    0 6px 13px var(--lth-cast),
+    var(--lth-glow);
+  --lth-shadow-press:
+    inset 0 0 0 1px var(--lth-edge),
+    inset 0 3px 6px rgba(58,36,16,.40),
+    0 1px 2px var(--lth-cast),
+    var(--lth-glow);
+
+  background:var(--lth-face) !important;
+  border:3px solid transparent !important;
+  border-image:none !important;
+  border-style:solid !important;
+  border-radius:14px !important;
+  color:var(--lth-ink) !important;
+  font-weight:800 !important;
+  text-shadow:0 1px 0 rgba(255,250,240,.55) !important;
+  filter:none !important;
+  box-shadow:var(--lth-shadow) !important;
+  min-height:var(--lth-min-h);
+  font-size:var(--lth-min-f) !important;
+  display:flex; align-items:center; gap:10px;
+  padding:12px calc(var(--lth-cap-w) + 12px) !important;
+  transition:transform .14s ease !important;
+}
+.shoogp-ui.skin-leather .qwin :where(.opt,.tf,.excl-opt,.mitem,.chip,.seqitem,
+                                     .blank,.cswatch){position:relative}
+
+/* ═════ ② فروقُ الشكلِ لكلِّ عائلة (مطابقٌ لِـ`skin-metal`) ═════ */
+.shoogp-ui.skin-leather .qwin .opt{justify-content:flex-start; text-align:start}
+.shoogp-ui.skin-leather .qwin :where(.tf,.excl-opt,.mitem,.chip,.blank,.target){
+  justify-content:center; text-align:center;
+}
+.shoogp-ui.skin-leather .qwin .seqitem{justify-content:flex-start}
+.shoogp-ui.skin-leather .qwin .chip{
+  display:inline-flex; cursor:grab;
+  padding:12px calc(var(--lth-cap-w) + 10px) !important;
+}
+.shoogp-ui.skin-leather .qwin .chip.mmchip{min-width:86px}
+.shoogp-ui.skin-leather .qwin .chip.used{opacity:.35; cursor:default}
+.shoogp-ui.skin-leather .qwin .chip.dragging{
+  cursor:grabbing;
+  transform:translateY(-4px) scale(1.06) !important;
+  box-shadow:var(--lth-shadow-hover) !important;
+}
+.shoogp-ui.skin-leather .qwin .cswatch{
+  flex-direction:column; justify-content:center; gap:4px;
+  border-radius:16px !important; padding:10px 14px !important;
+}
+.shoogp-ui.skin-leather .qwin .cswatch-name{font-size:var(--lth-min-f)}
+
+/* ═════ ③ المستقبِلاتُ: جلدٌ **غائر** (قاعدة «المحمول ≠ المستقبِل» §١.٧‑ب) ═════ */
+.shoogp-ui.skin-leather .qwin :is(.blank,.target):not(.filled):not(.correct):not(.wrong){
+  background:
+    var(--lth-body-rev) 0 0/100% 100% no-repeat padding-box !important;
+  border:3px dashed #6a4a26 !important;
+  box-shadow:
+    inset 0 0 0 1px var(--lth-edge),
+    inset 0 3px 8px rgba(58,36,16,.42) !important;
+  color:#4a3018 !important;
+  text-shadow:0 1px 0 rgba(255,250,240,.30) !important;
+}
+.shoogp-ui.skin-leather .qwin .target.target-cell:not(.filled):not(.correct):not(.wrong):not(.over){
+  background:transparent !important;
+  border-color:transparent !important;
+  box-shadow:none !important;
+  color:transparent !important; text-shadow:none !important;
+}
+.shoogp-ui.skin-leather .qwin .target.target-cell{
+  min-height:0 !important; min-width:0 !important; padding:0 !important;
+  font-size:var(--cellfs, var(--lth-min-f)) !important; line-height:1 !important;
+  gap:0 !important;
+}
+.shoogp-ui.skin-leather .qwin .blank{display:inline-flex; vertical-align:middle}
+.shoogp-ui.skin-leather .qwin :is(.blank,.target).over:not(.correct):not(.wrong){
+  box-shadow:
+    inset 0 0 0 1px var(--lth-edge),
+    inset 0 3px 8px rgba(58,36,16,.32),
+    0 0 0 3px rgba(246,208,0,.50),
+    0 0 16px rgba(246,208,0,.65) !important;
+}
+.shoogp-ui.skin-leather .qwin :is(.blank.filled,.target.filled,
+                                  .blank.filled.correct,.target.filled.correct,
+                                  .blank.correct,.blank.wrong,.target.wrong){
+  background:var(--lth-face) !important;
+  border:3px solid transparent !important;
+  border-style:solid !important;
+  box-shadow:var(--lth-shadow) !important;
+  color:var(--lth-ink) !important;
+  cursor:grab;
+}
+.shoogp-ui.skin-leather .qwin .target.target-cell.filled{
+  background:#FFE0B3 !important;
+  border:2px solid #e0b380 !important;
+  box-shadow:none !important;
+  color:#3a2c0a !important;
+  border-radius:8px !important;
+}
+.shoogp-ui.skin-leather .qwin .target.target-cell.filled.correct{
+  background:#a7c957 !important;
+  border-color:#82a83e !important;
+  color:#20340a !important;
+}
+.shoogp-ui.skin-leather .qwin .grp-drop{
+  background:
+    var(--lth-body-rev) 0 0/100% 100% no-repeat padding-box,
+    var(--lth-capbase)  0 0/100% 100% no-repeat border-box !important;
+  border:3px solid transparent !important;
+  border-radius:14px !important;
+  box-shadow:
+    inset 0 0 0 1px var(--lth-edge),
+    inset 0 3px 8px rgba(58,36,16,.40) !important;
+  color:var(--lth-ink);
+  font-size:var(--lth-min-f);
+}
+.shoogp-ui.skin-leather .qwin .grp-drop.over{
+  box-shadow:
+    inset 0 0 0 1px var(--lth-edge),
+    inset 0 3px 8px rgba(58,36,16,.30),
+    0 0 0 3px rgba(246,208,0,.45) !important;
+}
+
+/* ═════ ④ الحالاتُ السبع (مطابقةٌ بنيوياً لِـ`skin-metal`) ═════ */
+.shoogp-ui.skin-leather .qwin :where(.opt,.tf,.excl-opt,.mitem,.chip,.seqitem,
+       .blank.filled,.target.filled,.cswatch):hover:not(:disabled):not(.matched):not(.used){
+  --lth-hi:#fffaf0; --lth-hi2:#c99a63; --lth-mid:#a8763f; --lth-lo:#8a5a2c;
+  transform:translateY(-2px);
+  box-shadow:var(--lth-shadow-hover) !important;
+}
+.shoogp-ui.skin-leather .qwin :where(.opt,.tf,.excl-opt,.mitem,.chip,.seqitem,
+       .blank.filled,.target.filled,.cswatch):active:not(:disabled):not(.matched):not(.used){
+  background:var(--lth-face-press) !important;
+  transform:translateY(1px);
+  box-shadow:var(--lth-shadow-press) !important;
+}
+.shoogp-ui.skin-leather .qwin :is(.mitem.selected,.cswatch.sel){
+  --lth-glow:0 0 0 3px rgba(246,208,0,.55), 0 0 18px 2px rgba(246,208,0,.75);
+  transform:translateY(-1px);
+}
+.shoogp-ui.skin-leather .qwin :is(.opt.correct,.tf.tf-correct,.excl-opt.correct,
+                                  .mitem.matched,.chip.ok,.seqitem.correct,
+                                  .blank.correct,.blank.filled.correct,.target.filled.correct){
+  --lth-lamp:#2fd07d;
+  --lth-lamp-h:rgba(47,208,125,.60);
+  --lth-glow:0 0 14px 1px rgba(47,208,125,.55);
+}
+.shoogp-ui.skin-leather .qwin :is(.opt.wrong,.tf.tf-wrong,.excl-opt.wrong,.mitem.shake,
+                                  .chip.no,.seqitem.wrong,.blank.wrong,.target.wrong){
+  --lth-lamp:#ff5c4d;
+  --lth-lamp-h:rgba(255,92,77,.60);
+  --lth-glow:0 0 14px 1px rgba(255,92,77,.50);
+  animation:cardShake .45s ease;
+}
+@media(prefers-reduced-motion:reduce){
+  .shoogp-ui.skin-leather .qwin :is(.opt.wrong,.tf.tf-wrong,.excl-opt.wrong,.mitem.shake,
+                                    .chip.no,.seqitem.wrong,.blank.wrong,.target.wrong){animation:none}
+}
+.shoogp-ui.skin-leather .qwin :is(.opt,.tf,.excl-opt,.mitem,.chip,.seqitem):is(
+       .correct,.tf-correct,.ok,.matched,.wrong,.tf-wrong,.no)::after{
+  margin-inline-start:auto; flex:0 0 auto;
+  font-size:var(--lth-min-f); font-weight:900; line-height:1; text-shadow:none;
+}
+/* قفزةٌ أفقيةٌ للمحتوى المُوسَّط — نفسُ علاجِ `skin-metal`/`skin-rocky` بالحرف
+   (§١.٩): إخراجُ الشارةِ من تخطيطِ flex مع حجزٍ دائمٍ لمساحتِها. */
+.shoogp-ui.skin-leather.skin-leather .qwin.qwin :is(.tf,.excl-opt,.mitem,.opt.haspic,.opt.opt-num,.seqitem:has(.seq-num)){
+  padding-inline-end:48px !important;
+}
+.shoogp-ui.skin-leather .qwin :is(.tf,.excl-opt,.mitem,.opt.haspic,.opt.opt-num,.seqitem:has(.seq-num)):is(
+       .correct,.tf-correct,.ok,.matched,.wrong,.tf-wrong,.no)::after{
+  position:absolute; inset-inline-end:calc(var(--lth-cap-w) + 6px); top:50%;
+  margin-inline-start:0; flex:none;
+  transform:translateY(-50%);
+}
+.shoogp-ui.skin-leather .qwin :is(.opt,.tf,.excl-opt,.mitem,.chip,.seqitem):is(
+       .correct,.tf-correct,.ok,.matched)::after{content:"✓"; color:#0e7a45}
+.shoogp-ui.skin-leather .qwin :is(.opt,.tf,.excl-opt,.mitem,.chip,.seqitem):is(
+       .wrong,.tf-wrong,.no)::after{content:"✗"; color:#b3271a}
+.shoogp-ui.skin-leather .qwin :is(.opt,.tf,.excl-opt,.aopt):disabled{
+  filter:saturate(.45) brightness(.98) !important; opacity:.92;
+}
+.shoogp-ui.skin-leather .qwin :is(.opt,.excl-opt).correct:disabled{
+  filter:none !important; opacity:1;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
    ★ قشرةُ اللغة العربية: «الكبسولة» (skin-capsule) ★
    نسخٌ من صورةٍ واحدة (btn-true-arabic.png) عبر `border-image` (تقنية ٩-slice) على
    **كلِّ العناصرِ التفاعلية** (نفسُ مجموعةِ عائلةِ `skin-rocky`)، بدلَ تصميمِ حجمٍ منفصلٍ
