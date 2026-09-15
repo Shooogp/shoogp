@@ -39076,5 +39076,158 @@ window.QUESTIONS = {
         { a: "cat",    b: "animal" }
       ]
     }
+  ],
+
+  // اللغة الإنجليزية/الأول — نادي التعلّم ١: Meg's Learning Club (أعداد وألوان)
+  // محتوى الطالب بالكامل بالإنجليزية — انظر en-question-types.json §fullImmersionLanguage
+
+  // نادي التعلّم ١-١: الأعداد ١-٦ (Numbers 1-6)
+  "g1e-lc1-1": [
+    {
+      type: "mcq",
+      objective: "العدّ من ١ إلى ٦ (تكامل رياضيات)",
+      level: "knowledge",
+      prompt: "Which word means the number 3?",
+      options: ["three", "six", "two", "one"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "العدّ من ١ إلى ٦ (تكامل رياضيات)",
+      level: "knowledge",
+      statement: "'Six' comes after 'five'.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "العدّ من ١ إلى ٦ (تكامل رياضيات)",
+      level: "knowledge",
+      prompt: "Match each word to its number.",
+      pairs: [
+        { a: "one",  b: "1" },
+        { a: "two",  b: "2" },
+        { a: "five", b: "5" },
+        { a: "six",  b: "6" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "العدّ من ١ إلى ٦ (تكامل رياضيات)",
+      level: "application",
+      prompt: "Sort each number word.",
+      groups: [
+        { name: "Less than four", items: ["one", "two"] },
+        { name: "Four or more",   items: ["five", "six"] }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "العدّ من ١ إلى ٦ (تكامل رياضيات)",
+      level: "reasoning",
+      prompt: "Put the numbers in counting order.",
+      steps: ["one", "two", "three", "four", "five", "six"]
+    },
+    {
+      type: "color",
+      objective: "العدّ من ١ إلى ٦ (تكامل رياضيات)",
+      level: "application",
+      prompt: "Color the small numbers (1-2) red. Color the big numbers (5-6) blue.",
+      bg: "#fdf9ee",
+      showLabels: false,
+      palette: [
+        { name: "Red",  color: "#c0392b" },
+        { name: "Blue", color: "#1f6feb" }
+      ],
+      parts: [
+        { name: "one",  color: "#c0392b" },
+        { name: "two",  color: "#c0392b" },
+        { name: "five", color: "#1f6feb" },
+        { name: "six",  color: "#1f6feb" }
+      ],
+      svg: `<svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg">
+        <g class="cpart" data-name="one" style="stroke:none;fill:#3a3226">
+          <rect x="12" y="96" width="125" height="92" rx="18" fill="#fffdf6" stroke="#d8c9a4" stroke-width="2"/>
+          <rect x="12" y="96" width="125" height="92" rx="18" fill="none" pointer-events="all"/>
+          <text x="74" y="158" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="700" font-size="34">one</text>
+        </g>
+        <g class="cpart" data-name="two" style="stroke:none;fill:#3a3226">
+          <rect x="162" y="96" width="125" height="92" rx="18" fill="#fffdf6" stroke="#d8c9a4" stroke-width="2"/>
+          <rect x="162" y="96" width="125" height="92" rx="18" fill="none" pointer-events="all"/>
+          <text x="224" y="158" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="700" font-size="34">two</text>
+        </g>
+        <g class="cpart" data-name="five" style="stroke:none;fill:#3a3226">
+          <rect x="312" y="96" width="125" height="92" rx="18" fill="#fffdf6" stroke="#d8c9a4" stroke-width="2"/>
+          <rect x="312" y="96" width="125" height="92" rx="18" fill="none" pointer-events="all"/>
+          <text x="374" y="158" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="700" font-size="34">five</text>
+        </g>
+        <g class="cpart" data-name="six" style="stroke:none;fill:#3a3226">
+          <rect x="462" y="96" width="125" height="92" rx="18" fill="#fffdf6" stroke="#d8c9a4" stroke-width="2"/>
+          <rect x="462" y="96" width="125" height="92" rx="18" fill="none" pointer-events="all"/>
+          <text x="524" y="158" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="700" font-size="34">six</text>
+        </g>
+      </svg>`
+    }
+  ],
+
+  // نادي التعلّم ١-٢: الألوان (Colours) + How old are you?
+  "g1e-lc1-2": [
+    {
+      type: "mcq",
+      objective: "أسماء الألوان الستة (تكامل فنون)",
+      level: "knowledge",
+      prompt: "Which word is a colour?",
+      options: ["red", "six", "book", "cat"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "أسماء الألوان الستة (تكامل فنون)",
+      level: "knowledge",
+      statement: "'Green' is a colour.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "أسماء الألوان الستة (تكامل فنون)",
+      level: "knowledge",
+      prompt: "Match each colour to what it describes.",
+      pairs: [
+        { a: "red",    b: "the colour of an apple" },
+        { a: "yellow", b: "the colour of the sun" },
+        { a: "blue",   b: "the colour of the sky" },
+        { a: "green",  b: "the colour of grass" }
+      ]
+    },
+    {
+      type: "fill-blank",
+      objective: "Language booster 1: How old are you? I'm (six).",
+      level: "application",
+      prompt: "Complete the sentence.",
+      text: "How old are you? I'm {}.",
+      answers: ["six"],
+      distractors: ["red", "cat"]
+    },
+    {
+      type: "classify",
+      objective: "أسماء الألوان الستة (تكامل فنون)",
+      level: "reasoning",
+      prompt: "Sort each colour.",
+      groups: [
+        { name: "Warm colours", items: ["red", "orange"] },
+        { name: "Cool colours", items: ["blue", "green"] }
+      ]
+    },
+    {
+      type: "memory",
+      objective: "أسماء الألوان الستة (تكامل فنون)",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "red",    b: "the colour of an apple" },
+        { a: "yellow", b: "the colour of the sun" },
+        { a: "blue",   b: "the colour of the sky" },
+        { a: "green",  b: "the colour of grass" }
+      ]
+    }
   ]
 };

@@ -71,8 +71,8 @@ window.DATA_FALLBACK = {
         { title:"استعدّ للاختبار", file:"g1e-1-7", open:true }
       ]},
       { unit:"نادي التعلّم ١", lessons:[
-        { title:"الأعداد ١-٦", file:"g1e-lc1-1", open:false },
-        { title:"الألوان", file:"g1e-lc1-2", open:false }
+        { title:"الأعداد ١-٦", file:"g1e-lc1-1", open:true },
+        { title:"الألوان", file:"g1e-lc1-2", open:true }
       ]},
       { unit:"حقيبتي المدرسية", lessons:[
         { title:"حقيبتي المدرسية", file:"g1e-2-1", open:false },

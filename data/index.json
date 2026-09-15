@@ -23,8 +23,8 @@
       {
         "unit": "نادي التعلّم ١",
         "lessons": [
-          { "title": "الأعداد ١-٦", "file": "g1e-lc1-1", "open": false },
-          { "title": "الألوان", "file": "g1e-lc1-2", "open": false }
+          { "title": "الأعداد ١-٦", "file": "g1e-lc1-1", "open": true },
+          { "title": "الألوان", "file": "g1e-lc1-2", "open": true }
         ]
       },
       {
