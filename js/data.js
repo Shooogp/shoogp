@@ -62,13 +62,13 @@ window.DATA_FALLBACK = {
         { title:"مرحباً بكم!", file:"g1e-0-1", open:true }
       ]},
       { unit:"عائلتي وأصدقائي", lessons:[
-        { title:"أصدقائي وعائلتي", file:"g1e-1-1", open:false },
-        { title:"أصوات الحروف: s", file:"g1e-1-2", open:false },
-        { title:"من هذا؟", file:"g1e-1-3", open:false },
-        { title:"هذه أختي", file:"g1e-1-4", open:false },
-        { title:"مشروع: دمى الأصابع", file:"g1e-1-5", open:false },
-        { title:"المراجعة", file:"g1e-1-6", open:false },
-        { title:"استعدّ للاختبار", file:"g1e-1-7", open:false }
+        { title:"أصدقائي وعائلتي", file:"g1e-1-1", open:true },
+        { title:"أصوات الحروف: s", file:"g1e-1-2", open:true },
+        { title:"من هذا؟", file:"g1e-1-3", open:true },
+        { title:"هذه أختي", file:"g1e-1-4", open:true },
+        { title:"مشروع: دمى الأصابع", file:"g1e-1-5", open:true },
+        { title:"المراجعة", file:"g1e-1-6", open:true },
+        { title:"استعدّ للاختبار", file:"g1e-1-7", open:true }
       ]},
       { unit:"نادي التعلّم ١", lessons:[
         { title:"الأعداد ١-٦", file:"g1e-lc1-1", open:false },

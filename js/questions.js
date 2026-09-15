@@ -38621,5 +38621,460 @@ window.QUESTIONS = {
       ]
     }
 
+  ],
+
+  // اللغة الإنجليزية/الأول — الوحدة ١: عائلتي وأصدقائي (Family and friends)
+  // محتوى الطالب بالكامل بالإنجليزية — انظر en-question-types.json §fullImmersionLanguage
+
+  // الدرس ١-١: Family and friends — مفردات: boy, cat, friend, girl
+  "g1e-1-1": [
+    {
+      type: "mcq",
+      objective: "مفردات: boy, cat, friend, girl",
+      level: "knowledge",
+      prompt: "Which word means a female child?",
+      options: ["boy", "girl", "cat", "friend"],
+      answer: 1
+    },
+    {
+      type: "true-false",
+      objective: "مفردات: boy, cat, friend, girl",
+      level: "knowledge",
+      statement: "A cat is a girl.",
+      answer: false
+    },
+    {
+      type: "matching",
+      objective: "مفردات: boy, cat, friend, girl",
+      level: "knowledge",
+      prompt: "Match each word to its group.",
+      pairs: [
+        { a: "boy",    b: "person" },
+        { a: "girl",   b: "person" },
+        { a: "cat",    b: "animal" },
+        { a: "friend", b: "someone you like" }
+      ]
+    },
+    {
+      type: "hotspot",
+      objective: "مفردات: boy, cat, friend, girl",
+      level: "application",
+      prompt: "Click on the cat.",
+      image: "images/طفلان-وقطة.png",
+      bg: "#fff6dc",
+      spot: { x: 84, y: 74, r: 13 }
+    },
+    {
+      type: "classify",
+      objective: "مفردات: boy, cat, friend, girl",
+      level: "reasoning",
+      prompt: "Sort each word.",
+      groups: [
+        { name: "People",  items: ["boy", "girl", "friend"] },
+        { name: "Animal",  items: ["cat"] }
+      ]
+    },
+    {
+      type: "memory",
+      objective: "مفردات: boy, cat, friend, girl",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "boy",    b: "person" },
+        { a: "girl",   b: "person" },
+        { a: "cat",    b: "animal" },
+        { a: "friend", b: "someone you like" }
+      ]
+    }
+  ],
+
+  // الدرس ١-٢: أصوات الحروف — sound s (Sounds and Spelling Book, Unit 1 Lesson 2)
+  "g1e-1-2": [
+    {
+      type: "mcq",
+      objective: "تمييز صوت الحرف s",
+      level: "knowledge",
+      prompt: "Which word starts with the letter 's'?",
+      options: ["sun", "cat", "dog", "pen"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "تمييز صوت الحرف s",
+      level: "knowledge",
+      statement: "The word 'cat' starts with the letter 's'.",
+      answer: false
+    },
+    {
+      type: "matching",
+      objective: "تمييز صوت الحرف s",
+      level: "knowledge",
+      prompt: "Match the letter 's' to words that start with it.",
+      pairs: [
+        { a: "s", b: "sun" },
+        { a: "s", b: "six" },
+        { a: "s", b: "sit" },
+        { a: "s", b: "sad" }
+      ]
+    },
+    {
+      type: "hotspot",
+      objective: "تمييز صوت الحرف s",
+      level: "application",
+      prompt: "Click on the letter 's'.",
+      svg: `<svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="40" width="80" height="120" rx="16" fill="#F6D000" stroke="#111111" stroke-width="4"/>
+        <text x="60" y="118" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="800" font-size="60" fill="#111111">S</text>
+        <rect x="120" y="40" width="80" height="120" rx="16" fill="#F6D000" stroke="#111111" stroke-width="4"/>
+        <text x="160" y="118" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="800" font-size="60" fill="#111111">T</text>
+        <rect x="220" y="40" width="80" height="120" rx="16" fill="#F6D000" stroke="#111111" stroke-width="4"/>
+        <text x="260" y="118" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="800" font-size="60" fill="#111111">M</text>
+        <rect x="320" y="40" width="60" height="120" rx="16" fill="#F6D000" stroke="#111111" stroke-width="4"/>
+        <text x="350" y="118" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="800" font-size="60" fill="#111111">P</text>
+      </svg>`,
+      bg: "#fff6dc",
+      spot: { x: 15, y: 50, w: 20, h: 60 }
+    },
+    {
+      type: "classify",
+      objective: "تمييز صوت الحرف s",
+      level: "reasoning",
+      prompt: "Sort each word.",
+      groups: [
+        { name: "Starts with s",         items: ["sun", "six", "sit", "sad"] },
+        { name: "Does not start with s", items: ["cat", "dog"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "تمييز صوت الحرف s",
+      level: "application",
+      prompt: "Click the word that does NOT start with 's'.",
+      options: ["sun", "six", "cat", "sit"],
+      answer: 2,
+      reason: "'cat' starts with the letter 'c', not 's'."
+    }
+  ],
+
+  // الدرس ١-٣: Who's this? (قصة) — مفردات: brother, dad, mum, sister؛ تركيب: Who's this? This is (my)…؛ القيمة: Be helpful
+  "g1e-1-3": [
+    {
+      type: "mcq",
+      objective: "مفردات: brother, dad, mum, sister",
+      level: "knowledge",
+      prompt: "Which word means 'father'?",
+      options: ["dad", "mum", "sister", "brother"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مفردات: brother, dad, mum, sister",
+      level: "knowledge",
+      statement: "'Mum' means mother.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "مفردات: brother, dad, mum, sister",
+      level: "knowledge",
+      prompt: "Match each word to its meaning.",
+      pairs: [
+        { a: "dad",     b: "father" },
+        { a: "mum",     b: "mother" },
+        { a: "brother", b: "a boy in the family" },
+        { a: "sister",  b: "a girl in the family" }
+      ]
+    },
+    {
+      type: "fill-blank",
+      objective: "تركيب: Who's this? This is (my)…",
+      level: "application",
+      prompt: "Complete the sentence.",
+      text: "Who's this? This is my {}.",
+      answers: ["sister"],
+      distractors: ["book", "six"]
+    },
+    {
+      type: "sequence",
+      objective: "تركيب: Who's this? This is (my)…",
+      level: "reasoning",
+      prompt: "Put the dialogue in the correct order.",
+      steps: ["Hello!", "Who's this?", "This is my mum.", "Hi, Mum!"]
+    },
+    {
+      type: "color",
+      objective: "مفردات: brother, dad, mum، والتمييز بينها وبين كلمات التحية",
+      level: "application",
+      prompt: "Color the family words red. Color the greeting words blue.",
+      bg: "#fdf9ee",
+      showLabels: false,
+      palette: [
+        { name: "Red",  color: "#c0392b" },
+        { name: "Blue", color: "#1f6feb" }
+      ],
+      parts: [
+        { name: "dad",    color: "#c0392b" },
+        { name: "mum",    color: "#c0392b" },
+        { name: "Hello",  color: "#1f6feb" },
+        { name: "Hi",     color: "#1f6feb" }
+      ],
+      svg: `<svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg">
+        <g class="cpart" data-name="dad" style="stroke:none;fill:#3a3226">
+          <rect x="12" y="96" width="125" height="92" rx="18" fill="#fffdf6" stroke="#d8c9a4" stroke-width="2"/>
+          <rect x="12" y="96" width="125" height="92" rx="18" fill="none" pointer-events="all"/>
+          <text x="74" y="158" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="700" font-size="34">dad</text>
+        </g>
+        <g class="cpart" data-name="mum" style="stroke:none;fill:#3a3226">
+          <rect x="162" y="96" width="125" height="92" rx="18" fill="#fffdf6" stroke="#d8c9a4" stroke-width="2"/>
+          <rect x="162" y="96" width="125" height="92" rx="18" fill="none" pointer-events="all"/>
+          <text x="224" y="158" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="700" font-size="34">mum</text>
+        </g>
+        <g class="cpart" data-name="Hello" style="stroke:none;fill:#3a3226">
+          <rect x="312" y="96" width="125" height="92" rx="18" fill="#fffdf6" stroke="#d8c9a4" stroke-width="2"/>
+          <rect x="312" y="96" width="125" height="92" rx="18" fill="none" pointer-events="all"/>
+          <text x="374" y="158" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="700" font-size="30">Hello!</text>
+        </g>
+        <g class="cpart" data-name="Hi" style="stroke:none;fill:#3a3226">
+          <rect x="462" y="96" width="125" height="92" rx="18" fill="#fffdf6" stroke="#d8c9a4" stroke-width="2"/>
+          <rect x="462" y="96" width="125" height="92" rx="18" fill="none" pointer-events="all"/>
+          <text x="524" y="158" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="700" font-size="34">Hi!</text>
+        </g>
+      </svg>`
+    }
+  ],
+
+  // الدرس ١-٤: Who's this? — تدريب لغوي (تثبيت This is my…)
+  "g1e-1-4": [
+    {
+      type: "mcq",
+      objective: "تثبيت This is my…",
+      level: "knowledge",
+      prompt: "Complete: This is my ___ (father).",
+      options: ["dad", "cat", "six", "book"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "تثبيت This is my…",
+      level: "knowledge",
+      statement: "'This is my sister' means the person is a girl.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "تثبيت This is my…",
+      level: "knowledge",
+      prompt: "Match each word to its opposite.",
+      pairs: [
+        { a: "dad",     b: "mum" },
+        { a: "brother", b: "sister" },
+        { a: "boy",     b: "girl" }
+      ]
+    },
+    {
+      type: "fill-blank",
+      objective: "تثبيت This is my…",
+      level: "application",
+      prompt: "Complete the sentence.",
+      text: "This is my {}.",
+      answers: ["brother"],
+      distractors: ["cat", "six"]
+    },
+    {
+      type: "sequence",
+      objective: "تثبيت This is my…",
+      level: "reasoning",
+      prompt: "Put the dialogue in the correct order.",
+      steps: ["Hello!", "Who's this?", "This is my sister.", "Hi, Sister!"]
+    },
+    {
+      type: "exclude",
+      objective: "مفردات: dad, mum, sister، والتمييز عن مفردات أخرى",
+      level: "application",
+      prompt: "Click the word that is NOT a family member.",
+      options: ["dad", "mum", "cat", "sister"],
+      answer: 2,
+      reason: "'cat' is an animal, not a family member."
+    }
+  ],
+
+  // الدرس ١-٥: مشروع دمى الأصابع — مراجعة مفردات الوحدة
+  "g1e-1-5": [
+    {
+      type: "mcq",
+      objective: "مراجعة مفردات الوحدة ١",
+      level: "knowledge",
+      prompt: "Which word means 'a person you like and know well'?",
+      options: ["friend", "cat", "six", "book"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مراجعة مفردات الوحدة ١",
+      level: "knowledge",
+      statement: "'Brother' is a family word.",
+      answer: true
+    },
+    {
+      type: "classify",
+      objective: "مراجعة مفردات الوحدة ١",
+      level: "knowledge",
+      prompt: "Sort each word.",
+      groups: [
+        { name: "Family",     items: ["dad", "mum"] },
+        { name: "Not family", items: ["cat", "friend"] }
+      ]
+    },
+    {
+      type: "matching",
+      objective: "مراجعة مفردات الوحدة ١",
+      level: "application",
+      prompt: "Match each word to its meaning.",
+      pairs: [
+        { a: "dad",    b: "father" },
+        { a: "boy",    b: "a male child" },
+        { a: "cat",    b: "an animal" },
+        { a: "friend", b: "someone you like" }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "تركيب: Who's this? This is (my)…",
+      level: "reasoning",
+      prompt: "Put the dialogue in the correct order.",
+      steps: ["Hello!", "Who's this?", "This is my friend.", "Hi, friend!"]
+    },
+    {
+      type: "memory",
+      objective: "مراجعة مفردات الوحدة ١",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "girl",   b: "a female child" },
+        { a: "sister", b: "a girl in the family" },
+        { a: "friend", b: "someone you like" },
+        { a: "cat",    b: "an animal" }
+      ]
+    }
+  ],
+
+  // الدرس ١-٦: المراجعة — مراجعة تراكمية للوحدة ١
+  "g1e-1-6": [
+    {
+      type: "mcq",
+      objective: "مراجعة تراكمية لمفردات وتراكيب الوحدة ١",
+      level: "knowledge",
+      prompt: "Which is a greeting?",
+      options: ["Hello", "cat", "six", "book"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مراجعة تراكمية لمفردات وتراكيب الوحدة ١",
+      level: "knowledge",
+      statement: "'Sister' is a girl in the family.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "مراجعة تراكمية لمفردات وتراكيب الوحدة ١",
+      level: "knowledge",
+      prompt: "Match each word to its meaning.",
+      pairs: [
+        { a: "Hello!",  b: "Hi!" },
+        { a: "dad",     b: "father" },
+        { a: "cat",     b: "animal" },
+        { a: "friend",  b: "someone you like" }
+      ]
+    },
+    {
+      type: "fill-blank",
+      objective: "تركيب: Who's this? This is (my)…",
+      level: "application",
+      prompt: "Complete the sentence.",
+      text: "Who's this? This is my {}.",
+      answers: ["mum"],
+      distractors: ["six", "book"]
+    },
+    {
+      type: "classify",
+      objective: "مراجعة تراكمية لمفردات وتراكيب الوحدة ١",
+      level: "reasoning",
+      prompt: "Sort each word.",
+      groups: [
+        { name: "Family",   items: ["dad", "sister"] },
+        { name: "Greeting", items: ["Hello", "Hi"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "مراجعة تراكمية لمفردات وتراكيب الوحدة ١",
+      level: "application",
+      prompt: "Click the word that is NOT a greeting.",
+      options: ["Hello", "Hi", "What's your name?", "cat"],
+      answer: 3,
+      reason: "'cat' is an animal, not something you say to greet or talk to someone."
+    }
+  ],
+
+  // الدرس ١-٧: استعدّ للاختبار — Pre-A1 Starters
+  "g1e-1-7": [
+    {
+      type: "mcq",
+      objective: "تدريب على نمط اختبار Pre-A1 Starters",
+      level: "knowledge",
+      prompt: "Which word means 'mother'?",
+      options: ["mum", "dad", "cat", "six"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "تدريب على نمط اختبار Pre-A1 Starters",
+      level: "knowledge",
+      statement: "A friend is an animal.",
+      answer: false
+    },
+    {
+      type: "matching",
+      objective: "تدريب على نمط اختبار Pre-A1 Starters",
+      level: "knowledge",
+      prompt: "Match each question or greeting to its answer.",
+      pairs: [
+        { a: "Hello!",            b: "Hi!" },
+        { a: "What's your name?", b: "My name's Noor." },
+        { a: "Who's this?",       b: "This is my dad." }
+      ]
+    },
+    {
+      type: "hotspot",
+      objective: "مفردات: boy, cat, friend, girl",
+      level: "application",
+      prompt: "Click on the boy.",
+      image: "images/طفلان-وقطة.png",
+      bg: "#fff6dc",
+      spot: { x: 22, y: 57, w: 21, h: 75 }
+    },
+    {
+      type: "classify",
+      objective: "مراجعة تراكمية لمفردات الوحدة ١",
+      level: "reasoning",
+      prompt: "Sort each word.",
+      groups: [
+        { name: "People",  items: ["boy", "girl", "friend"] },
+        { name: "Animal",  items: ["cat"] }
+      ]
+    },
+    {
+      type: "memory",
+      objective: "تدريب على نمط اختبار Pre-A1 Starters",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "Hello!", b: "Hi!" },
+        { a: "dad",    b: "father" },
+        { a: "mum",    b: "mother" },
+        { a: "cat",    b: "animal" }
+      ]
+    }
   ]
 };
