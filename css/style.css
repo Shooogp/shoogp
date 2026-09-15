@@ -655,6 +655,15 @@
      بيمينِ الزرِّ العريض (بلاغُ المالك على g1m-1-1، ٢٠٢٦-٠٨-٣٠). الشرطُ في `renderMcq`
      (js/app.js) نصّيٌّ لا يمسُّ الخياراتِ الطويلة. */
   .opt.opt-num{text-align:center;font-size:1.6rem;font-weight:800}
+  /* دمج الأصوات (sound-blend) — بطاقات حروفٍ ينقرها الطالب لسماع صوت كلٍّ منها،
+     ثم زرّ دمجٍ يسمعها مدموجةً كلمة، ثم يختار الكلمة من .opts القائمة (بلا صنفٍ جديد). */
+  .blendrow{display:flex;justify-content:center;gap:14px;margin:6px 0 16px;flex-wrap:wrap}
+  .blend-tile{width:64px;height:64px;border-radius:14px;background:#FFE0B3;border:2px solid #e0b380;
+    font-family:'Tajawal';font-weight:800;font-size:1.6rem;color:#4a3a10;cursor:pointer;transition:.15s;
+    box-shadow:0 3px 10px rgba(0,0,0,.22)}
+  .blend-tile:hover{background:#ffd39a}
+  .blend-tile.played{background:#a7c957;color:#20340a;border-color:#82a83e}
+  .blend-play{margin:0 auto 14px;display:block}
   /* الحكم والتعليل (judge-reason) — خاصّ باللغة العربية. يعيد استعمال .opts/.opt كما هي،
      ولا يزيد إلا فاصلَ الخطوتين وعنوانَ «لماذا؟» الذي يظهر بعد صحّة الحكم وحدَها */
   .jr{display:flex;flex-direction:column;gap:18px;width:100%;align-items:center}

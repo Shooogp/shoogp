@@ -383,7 +383,7 @@ function qWin(fb,msg,stars){fb.textContent=msg||'🎉 أحسنت!';fb.className=
 // أي واجهة بلا صاروخ تُبقي wrong.mp3 يعمل (بقية دروس المنصّة كلها تحوي الصاروخ الآن)
 function qFail(fb,msg){fb.textContent=msg||'حاول مرة أخرى';fb.className='fb qfb bad';if(!(window.RocketJourney&&RocketJourney.isActive&&RocketJourney.isActive()))playWrongSound();if(window.RocketJourney)RocketJourney.onAnswer(false);}
 
-const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل','slider':'🎚️ الشريط المتدرج','memory':'🎴 بطاقات الذاكرة','lens':'🔍 العدسة المكبّرة','equation-builder':'🧮 بناء المعادلة','number-line':'📏 خط الأعداد','hundred-chart':'💯 لوحة المائة','array':'🔲 المصفوفات','compare':'⚖️ المقارنة','pattern':'🔁 إكمال النمط','count-tap':'🖐️ العد بالنقر','place-value':'🧱 القيمة المنزلية','clock':'🕐 الساعة التفاعلية','measure-tool':'📐 أداة القياس','money':'🪙 النقود العُمانية','symmetry':'🪞 خط التماثل','chart-read':'📊 التمثيل البياني','tashkeel':'ـَ التشكيل','sentence':'📝 ترتيب الجملة','sun-moon':'☀️ شمسية وقمرية','letter-picture':'🔠 الحرف والصورة','judge-reason':'⚖️ الحكم والتعليل','listen-locate':'🎧 أستمع وأحدّد','maze':'🌀 حلّ المتاهة'};
+const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل','slider':'🎚️ الشريط المتدرج','memory':'🎴 بطاقات الذاكرة','lens':'🔍 العدسة المكبّرة','equation-builder':'🧮 بناء المعادلة','number-line':'📏 خط الأعداد','hundred-chart':'💯 لوحة المائة','array':'🔲 المصفوفات','compare':'⚖️ المقارنة','pattern':'🔁 إكمال النمط','count-tap':'🖐️ العد بالنقر','place-value':'🧱 القيمة المنزلية','clock':'🕐 الساعة التفاعلية','measure-tool':'📐 أداة القياس','money':'🪙 النقود العُمانية','symmetry':'🪞 خط التماثل','chart-read':'📊 التمثيل البياني','tashkeel':'ـَ التشكيل','sentence':'📝 ترتيب الجملة','sun-moon':'☀️ شمسية وقمرية','letter-picture':'🔠 الحرف والصورة','judge-reason':'⚖️ الحكم والتعليل','listen-locate':'🎧 أستمع وأحدّد','maze':'🌀 حلّ المتاهة','sound-blend':'🧩 دمج الأصوات'};
 
 /* تحويل الأرقام إلى هندية (عربية) للعرض — قاعدةُ المنصّة: **كلُّ رقمٍ يراه المستخدمُ
    بالأرقامِ الهندية**. يُستعمَلُ في محرّكِ الأسئلةِ **وفي طبقةِ التنقّلِ أعلاه أيضاً**
@@ -404,7 +404,7 @@ function renderQuestions(ls){
     m.innerHTML='<div class="qbody" style="text-align:center;padding:14px 6px;font-size:1.15rem">📚 أسئلة هذا الدرس ستُضاف قريباً بإذن الله</div>';
     host.appendChild(m); return;
   }
-  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor,'puzzle':renderPuzzle,'slider':renderSlider,'memory':renderMemory,'lens':renderLens,'equation-builder':renderEquationBuilder,'number-line':renderNumberLine,'hundred-chart':renderHundredChart,'array':renderArray,'compare':renderCompare,'pattern':renderPattern,'count-tap':renderCountTap,'place-value':renderPlaceValue,'clock':renderClock,'measure-tool':renderMeasureTool,'money':renderMoney,'symmetry':renderSymmetry,'chart-read':renderChartRead,'tashkeel':renderTashkeel,'sentence':renderSentence,'sun-moon':renderSunMoon,'letter-picture':renderLetterPicture,'judge-reason':renderJudgeReason,'listen-locate':renderListenLocate,'maze':renderMaze};
+  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor,'puzzle':renderPuzzle,'slider':renderSlider,'memory':renderMemory,'lens':renderLens,'equation-builder':renderEquationBuilder,'number-line':renderNumberLine,'hundred-chart':renderHundredChart,'array':renderArray,'compare':renderCompare,'pattern':renderPattern,'count-tap':renderCountTap,'place-value':renderPlaceValue,'clock':renderClock,'measure-tool':renderMeasureTool,'money':renderMoney,'symmetry':renderSymmetry,'chart-read':renderChartRead,'tashkeel':renderTashkeel,'sentence':renderSentence,'sun-moon':renderSunMoon,'letter-picture':renderLetterPicture,'judge-reason':renderJudgeReason,'listen-locate':renderListenLocate,'maze':renderMaze,'sound-blend':renderSoundBlend};
 
   // بناء كل البطاقات (تبقى في الصفحة لحفظ إجاباتها، ونُظهر واحدة فقط)
   // شارة رقم السؤال أُلغيت (قرار المالك): مؤشر التقدم «السؤال ٢ من ٦» يغني عنها
@@ -607,12 +607,14 @@ function renderDragDrop(q, body, fb){
   const media = q.svg ? `<div class="labelimg${wideCls}">${q.svg}</div>` : `<img class="labelimg${wideCls}" src="${q.image}" alt="">`;
   // الصناديق حول الصورة (نِسَب مئوية من منطقة النشاط)
   const boxes = q.targets.map((t,i)=>`<div class="target" data-i="${i}" data-answer="${t.answer}" style="left:${t.box.x}%;top:${t.box.y}%">؟</div>`).join('');
-  body.innerHTML=`<div class="dnd"><div class="stage stage-label"${q.bg?` style="background:${q.bg}"`:''}>`+
+  body.innerHTML=(q.audio?`<div class="qaudio">`+audioPlayerHTML(q.audio)+`</div>`:'')+
+    `<div class="dnd"><div class="stage stage-label"${q.bg?` style="background:${q.bg}"`:''}>`+
     media + boxes +
     `</div>`+
     `<div class="bank"><div class="bt">البطاقات:</div>`+
     shuffle(q.targets.map(t=>t.answer)).map(w=>`<div class="chip" draggable="true" data-w="${w}">${w}</div>`).join('')+
     `</div></div><div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
+  wireAudioPlayer(body,q.audio);
   const stage=body.querySelector('.stage'), imgEl=body.querySelector('.labelimg');
   const dndEl=body.querySelector('.dnd');
   const SVGNS='http://www.w3.org/2000/svg';
@@ -814,9 +816,11 @@ function renderDragDrop(q, body, fb){
 /* ② توصيل: خط منحنٍ (Bézier) بنقطتين يُرسم بين المفردتين عند التوصيل الصحيح */
 const MATCH_LINE='#a7c957';
 function renderMatching(q, body, fb){
-  body.innerHTML=`<div class="matchwrap"><svg class="matchsvg"></svg>`+
+  body.innerHTML=(q.audio?`<div class="qaudio">`+audioPlayerHTML(q.audio)+`</div>`:'')+
+    `<div class="matchwrap"><svg class="matchsvg"></svg>`+
     `<div class="match"><div class="mcol mcolL"></div><div class="mcol mcolR"></div></div></div>`+
     `<div class="actions"><button class="btn btn-reset">إعادة ↺</button></div>`;
+  wireAudioPlayer(body,q.audio);
   const wrap=body.querySelector('.matchwrap'), svg=body.querySelector('.matchsvg');
   const L=body.querySelector('.mcolL'), Rr=body.querySelector('.mcolR');
   let sel=null, done=0;
@@ -1002,7 +1006,9 @@ function figClickPoint(fig,e){
 function renderHotspot(q, body, fb){
   const inner=q.svg?q.svg:`<img src="${q.image}" alt="">`;
   const figCls = q.fit==='width' ? 'figwrap fw hsfig' : 'figwrap hsfig';
-  body.innerHTML=`<div class="dnd dnd-solo"><div class="stage stage-img"${q.bg?` style="background:${q.bg}"`:''}><div class="${figCls}">${inner}</div></div></div>`;
+  body.innerHTML=(q.audio?`<div class="qaudio">`+audioPlayerHTML(q.audio)+`</div>`:'')+
+    `<div class="dnd dnd-solo"><div class="stage stage-img"${q.bg?` style="background:${q.bg}"`:''}><div class="${figCls}">${inner}</div></div></div>`;
+  wireAudioPlayer(body,q.audio);
   const fig=body.querySelector('.hsfig'); fig.style.cursor='pointer';
   let done=false;
   fig.onclick=(e)=>{
@@ -1061,6 +1067,40 @@ function renderAudioQ(q, body, fb){
   };});
 }
 
+/* ㊴ دمج الأصوات (sound-blend) — نوعٌ جديد خاصٌّ بصوتيّات اللغة الإنجليزية (بطلبٍ صريحٍ
+   من المالك ٢٠٢٦-٠٩-١٥، en-question-types.json)، يحاكي نشاط «Let's blend!» في كتاب
+   Sounds and Spelling: الطالب ينقر كلَّ بطاقةِ حرفٍ فيسمعُ صوتَها المنفرد (استكشافٌ حرٌّ
+   لا يدخلُ في التصحيح)، وله زرُّ «دمج» اختياريٌّ يُسمِعُ الأصواتَ مدموجةً كلمةً واحدة،
+   ثمّ يختارُ الكلمةَ الصحيحةَ من خياراتٍ — مسارُ التصحيحِ مطابقٌ لِـ`mcq` حرفياً.
+   letters[] بطاقاتُ الحروفِ بترتيبها، soundOf{حرف:مسارُ صوته} إلزاميٌّ لكلِّ حرفٍ في
+   letters، blendAudio (اختياريّ) الكلمةُ مدموجةً بصوتٍ واحد، options[]/answer كـmcq. */
+function renderSoundBlend(q, body, fb){
+  const opts=shuffle(q.options.map((o,idx)=>({o,idx})));
+  const tiles=q.letters.map(L=>`<button class="blend-tile" type="button" data-l="${L}">${L}</button>`).join('');
+  body.innerHTML=
+    `<div class="blendrow">${tiles}</div>`+
+    (q.blendAudio?`<button class="btn aplay blend-play" type="button">🔊 Blend</button>`:'')+
+    `<div class="opts">`+opts.map(x=>`<button class="opt" data-i="${x.idx}">${x.o}</button>`).join('')+`</div>`;
+  // كل بطاقة حرف تُشغّل صوتها الخاص عند النقر — استكشافٌ حرٌّ لا يؤثّر في التصحيح
+  body.querySelectorAll('.blend-tile').forEach(t=>{
+    const L=t.dataset.l, src=q.soundOf&&q.soundOf[L]; if(!src) return;
+    const snd=new Audio(src); snd.preload='auto';
+    t.onclick=()=>{ try{ snd.currentTime=0; const p=snd.play(); if(p&&p.catch)p.catch(function(){}); t.classList.add('played'); }catch(e){} };
+  });
+  if(q.blendAudio){
+    const bbtn=body.querySelector('.blend-play');
+    const bsnd=new Audio(q.blendAudio); bsnd.preload='auto';
+    bbtn.onclick=()=>{ try{ bsnd.currentTime=0; const p=bsnd.play(); if(p&&p.catch)p.catch(function(){}); }catch(e){} };
+  }
+  let done=false;
+  body.querySelectorAll('.opts .opt').forEach(btn=>{ btn.onclick=()=>{
+    if(done)return;
+    const i=+btn.dataset.i;
+    if(i===q.answer){done=true;btn.classList.add('correct');body.querySelectorAll('.opts .opt').forEach(b=>b.disabled=true);qWin(fb,'🎉 إجابة صحيحة!',2);}
+    else{btn.classList.add('wrong');btn.disabled=true;qFail(fb,'ليست الصحيحة، جرّب خياراً آخر');}
+  };});
+}
+
 /* ⑭ التكبير التدريجي (zoom-reveal): image + options[] + answer + (maxZoom, seconds اختياريان).
    تبدأ الصورة مقرّبة جداً (scale=maxZoom) ثم تتّسع تدريجياً إلى حجمها الكامل خلال seconds؛
    التخمين المبكر (والصورة أكثر تقريباً) يمنح نجوماً أكثر. الخيارات تُخلط كنمط MCQ.
@@ -1112,8 +1152,10 @@ function renderSequence(q, body, fb){
   // ترتيب مبدئي مبعثر يختلف عن الصحيح (حتى لا يبدأ محلولاً)
   let order=shuffle(correct);
   if(correct.length>1){ let g=0; while(order.every((s,i)=>s===correct[i]) && g++<20) order=shuffle(correct); }
-  body.innerHTML=`<div class="seq"><div class="seq-hint">اسحب البطاقات لترتيبها</div><ol class="seqlist"></ol></div>`+
+  body.innerHTML=(q.audio?`<div class="qaudio">`+audioPlayerHTML(q.audio)+`</div>`:'')+
+    `<div class="seq"><div class="seq-hint">اسحب البطاقات لترتيبها</div><ol class="seqlist"></ol></div>`+
     `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
+  wireAudioPlayer(body,q.audio);
   const list=body.querySelector('.seqlist');
   order.forEach(txt=>{
     const li=document.createElement('li');
@@ -1206,11 +1248,13 @@ function renderClassify(q, body, fb){
   const all=shuffle(q.groups.reduce((a,g)=>a.concat(g.items),[]));
   const groupsHtml=q.groups.map((g,i)=>
     `<div class="grp"><div class="grp-h">${g.name}</div><div class="grp-drop" data-i="${i}" data-name="${g.name}"></div></div>`).join('');
-  body.innerHTML=`<div class="classify"><div class="grp-row">${groupsHtml}</div>`+
+  body.innerHTML=(q.audio?`<div class="qaudio">`+audioPlayerHTML(q.audio)+`</div>`:'')+
+    `<div class="classify"><div class="grp-row">${groupsHtml}</div>`+
     `<div class="bank clsbank"><div class="bt">العناصر:</div><div class="chips">`+
     all.map(w=>{const f=qFace(q,w);return `<div class="chip${f.cls}" draggable="true" data-w="${w}">${f.html}</div>`;}).join('')+
     `</div></div></div>`+
     `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
+  wireAudioPlayer(body,q.audio);
   let dragged=null;
   const clearMark=()=>body.querySelectorAll('.chip').forEach(c=>c.classList.remove('ok','no'));
   const place=zone=>{ if(!dragged)return; zone.appendChild(dragged); clearMark(); dragged=null; };
@@ -1274,6 +1318,7 @@ function renderColor(q, body, fb){
                    : !(q.parts.length && q.parts.every(pt=>techName.test(String(pt.name).trim())));
   const instr=showLabels ? q.parts.map(pt=>`<span class="cinstr">${pt.name}</span>`).join('') : '';
   body.innerHTML=
+    (q.audio?`<div class="qaudio">`+audioPlayerHTML(q.audio)+`</div>`:'')+
     `<div class="colorq">`+
       `<div class="cpalette">${swatches}</div>`+
       (instr?`<div class="cinstrbar">${instr}</div>`:'')+
@@ -1282,6 +1327,7 @@ function renderColor(q, body, fb){
       `</div></div>`+
     `</div>`+
     `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
+  wireAudioPlayer(body,q.audio);
   const area=body.querySelector('.csvg');
   let chosen=null;
   // اختيار دلو طلاء من اللوحة: يفعّل حالة الرفع (لمس) وفرشاة المؤشّر (حاسوب)
