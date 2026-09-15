@@ -59,7 +59,7 @@ window.DATA_FALLBACK = {
   index: {
     "g1-en": { book:"اللغة الإنجليزية — الصف الأول", units:[
       { unit:"تمهيد", lessons:[
-        { title:"مرحباً بكم!", file:"g1e-0-1", open:false }
+        { title:"مرحباً بكم!", file:"g1e-0-1", open:true }
       ]},
       { unit:"عائلتي وأصدقائي", lessons:[
         { title:"أصدقائي وعائلتي", file:"g1e-1-1", open:false },

@@ -5,7 +5,7 @@
       {
         "unit": "تمهيد",
         "lessons": [
-          { "title": "مرحباً بكم!", "file": "g1e-0-1", "open": false }
+          { "title": "مرحباً بكم!", "file": "g1e-0-1", "open": true }
         ]
       },
       {

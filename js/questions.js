@@ -38549,5 +38549,78 @@ window.QUESTIONS = {
       ]
     }
 
+  ],
+
+  // اللغة الإنجليزية/الأول — تمهيد: مرحباً بكم! (Welcome — Hello!)
+  // الهدف: استخدام تحية بسيطة والتعارف — Hello/Hi, What's your name?, My name's… / I'm…
+  "g1e-0-1": [
+
+    // ③ اختيار من متعدد — معرفة
+    {
+      type: "mcq",
+      objective: "استخدام تحية بسيطة (Hello/Hi) عند مقابلة شخص",
+      level: "knowledge",
+      prompt: "أيّ كلمةٍ نقولها للتحية عند مقابلة شخص؟",
+      options: ["Hello", "Book", "Cat", "Six"],
+      answer: 0
+    },
+
+    // ④ صواب وخطأ — معرفة
+    {
+      type: "true-false",
+      objective: "استخدام تحية بسيطة (Hello/Hi) عند مقابلة شخص",
+      level: "knowledge",
+      statement: "نقول Hello عندما نلتقي بصديق.",
+      answer: true
+    },
+
+    // ② توصيل — معرفة (هدف: فهم معنى عبارات التحية والتعارف)
+    {
+      type: "matching",
+      objective: "فهم معنى عبارات التحية والتعارف: Hello/Hi, What's your name?, My name's…",
+      level: "knowledge",
+      prompt: "صِل كل عبارة إنجليزية بمعناها.",
+      pairs: [
+        { a: "Hello!",             b: "مرحباً!" },
+        { a: "Hi!",                b: "أهلاً!" },
+        { a: "What's your name?",  b: "ما اسمك؟" },
+        { a: "My name's Ali.",     b: "اسمي علي." }
+      ]
+    },
+
+    // ⑧ ملء الفراغ بالسحب — تطبيق
+    {
+      type: "fill-blank",
+      objective: "التعارف بقول My name's… / I'm…",
+      level: "application",
+      prompt: "أكمل الجملة بسحب الكلمة المناسبة.",
+      text: "Hello! My {} is Noor.",
+      answers: ["name"],
+      distractors: ["book", "cat"]
+    },
+
+    // ⑥ الترتيب التسلسلي — استدلال
+    {
+      type: "sequence",
+      objective: "ترتيب خطوات حوار تعارف بسيط بالتسلسل المنطقي",
+      level: "reasoning",
+      prompt: "رتّب خطوات حوار التعارف بالترتيب الصحيح.",
+      steps: ["Hello!", "Hi!", "What's your name?", "My name's Noor."]
+    },
+
+    // ⑰ بطاقات الذاكرة (إثرائي اختياري) — معرفة
+    {
+      type: "memory",
+      objective: "فهم معنى عبارات التحية والتعارف: Hello/Hi, What's your name?, My name's…",
+      level: "knowledge",
+      prompt: "اعثر على الأزواج المتطابقة بين العبارة الإنجليزية ومعناها.",
+      pairs: [
+        { a: "Hello!",             b: "مرحباً!" },
+        { a: "Hi!",                b: "أهلاً!" },
+        { a: "What's your name?",  b: "ما اسمك؟" },
+        { a: "My name's Ali.",     b: "اسمي علي." }
+      ]
+    }
+
   ]
 };
