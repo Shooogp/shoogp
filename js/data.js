@@ -113,10 +113,10 @@ window.DATA_FALLBACK = {
         { title:"Numbers & Colours", file:"g2e-0-2", open:false }
       ]},
       { unit:"Look at my toys!", lessons:[
-        { title:"Look at my toys!", file:"g2e-1-1", open:false },
-        { title:"Helpers Team", file:"g2e-1-2", open:false },
-        { title:"Is it a swing?", file:"g2e-1-3", open:false },
-        { title:"Skills", file:"g2e-1-4", open:false },
+        { title:"Look at my toys! (ai)", file:"g2e-1-1", open:false },
+        { title:"Helpers Team (oa)", file:"g2e-1-2", open:false },
+        { title:"Is it a swing? (ie)", file:"g2e-1-3", open:false },
+        { title:"Skills (a_e)", file:"g2e-1-4", open:false },
         { title:"Project: A toy museum poster", file:"g2e-1-5", open:false },
         { title:"Sharing your toys", file:"g2e-1-6", open:false },
         { title:"Review", file:"g2e-1-7", open:false }
@@ -126,28 +126,28 @@ window.DATA_FALLBACK = {
         { title:"Natural Science: Our senses", file:"g2e-lc1-2", open:false }
       ]},
       { unit:"Where's my pen?", lessons:[
-        { title:"Where's my pen?", file:"g2e-2-1", open:false },
-        { title:"Helpers Team", file:"g2e-2-2", open:false },
-        { title:"This is my pencil case", file:"g2e-2-3", open:false },
-        { title:"Skills", file:"g2e-2-4", open:false },
+        { title:"Where's my pen? (or)", file:"g2e-2-1", open:false },
+        { title:"Helpers Team (ng)", file:"g2e-2-2", open:false },
+        { title:"This is my pencil case (oo)", file:"g2e-2-3", open:false },
+        { title:"Skills (oo)", file:"g2e-2-4", open:false },
         { title:"Project: A plan of your school", file:"g2e-2-5", open:false },
         { title:"Borrowing things", file:"g2e-2-6", open:false },
         { title:"Review", file:"g2e-2-7", open:false }
       ]},
       { unit:"Move your body!", lessons:[
-        { title:"Move your body!", file:"g2e-3-1", open:false },
-        { title:"Helpers Team", file:"g2e-3-2", open:false },
-        { title:"Move your body! (2)", file:"g2e-3-3", open:false },
-        { title:"Skills", file:"g2e-3-4", open:false },
+        { title:"Move your body! (ou)", file:"g2e-3-1", open:false },
+        { title:"Helpers Team (oi)", file:"g2e-3-2", open:false },
+        { title:"Touch your head! (ue)", file:"g2e-3-3", open:false },
+        { title:"Skills (i_e)", file:"g2e-3-4", open:false },
         { title:"Project: A festivals poster", file:"g2e-3-5", open:false },
         { title:"Paying a compliment", file:"g2e-3-6", open:false },
         { title:"Review", file:"g2e-3-7", open:false }
       ]},
       { unit:"Meet my family", lessons:[
-        { title:"Meet my family", file:"g2e-4-1", open:false },
-        { title:"Helpers Team", file:"g2e-4-2", open:false },
-        { title:"My face", file:"g2e-4-3", open:false },
-        { title:"Skills", file:"g2e-4-4", open:false },
+        { title:"Meet my family (ee)", file:"g2e-4-1", open:false },
+        { title:"Helpers Team (er)", file:"g2e-4-2", open:false },
+        { title:"My face (ar)", file:"g2e-4-3", open:false },
+        { title:"Skills (o_e)", file:"g2e-4-4", open:false },
         { title:"Project: A description of a picture", file:"g2e-4-5", open:false },
         { title:"Introducing family and friends", file:"g2e-4-6", open:false },
         { title:"Review", file:"g2e-4-7", open:false }
