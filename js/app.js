@@ -402,6 +402,8 @@ const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصي�
    كما هو (تدهورٌ لطيفٌ لا عطل)، **لكن تغييرَ حرفٍ في نصٍّ عربيٍّ بمكانِ ندائِه يُسقِطُ
    ترجمتَه صامتاً**. فأيُّ تعديلٍ على نصٍّ هنا يُتبَعُ بتعديلِ مفتاحِه في هذا الجدول. */
 const UI_EN = {
+  /* علامةُ الخانةِ الفارغةِ في السحبِ والإفلات */
+  '؟':'?',
   /* الشارتانِ على الفريم */
   'السؤال %1 من %2':'Question %1 of %2',
   '✅ اختيار من متعدد':'✅ Multiple choice',
@@ -707,7 +709,7 @@ function renderDragDrop(q, body, fb){
   const wideCls = q.fit==='width' ? ' lw' : '';
   const media = q.svg ? `<div class="labelimg${wideCls}">${q.svg}</div>` : `<img class="labelimg${wideCls}" src="${q.image}" alt="">`;
   // الصناديق حول الصورة (نِسَب مئوية من منطقة النشاط)
-  const boxes = q.targets.map((t,i)=>`<div class="target" data-i="${i}" data-answer="${t.answer}" style="left:${t.box.x}%;top:${t.box.y}%">؟</div>`).join('');
+  const boxes = q.targets.map((t,i)=>`<div class="target" data-i="${i}" data-answer="${t.answer}" style="left:${t.box.x}%;top:${t.box.y}%">${T('؟')}</div>`).join('');
   body.innerHTML=(q.audio?`<div class="qaudio">`+audioPlayerHTML(q.audio)+`</div>`:'')+
     `<div class="dnd"><div class="stage stage-label"${q.bg?` style="background:${q.bg}"`:''}>`+
     media + boxes +

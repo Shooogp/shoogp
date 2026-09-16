@@ -84,13 +84,13 @@ window.DATA_FALLBACK = {
         { title:"Get ready for Starters", file:"g1e-2-7", open:true }
       ]},
       { unit:"Our classroom", lessons:[
-        { title:"Our classroom", file:"g1e-3-1", open:false },
-        { title:"Sound: t", file:"g1e-3-2", open:false },
-        { title:"What's this?", file:"g1e-3-3", open:false },
-        { title:"Where's the book?", file:"g1e-3-4", open:false },
-        { title:"Project: Desk tidy", file:"g1e-3-5", open:false },
-        { title:"Review", file:"g1e-3-6", open:false },
-        { title:"Get ready for Starters", file:"g1e-3-7", open:false }
+        { title:"Our classroom", file:"g1e-3-1", open:true },
+        { title:"Sound: t", file:"g1e-3-2", open:true },
+        { title:"What's this?", file:"g1e-3-3", open:true },
+        { title:"Where's the book?", file:"g1e-3-4", open:true },
+        { title:"Project: Desk tidy", file:"g1e-3-5", open:true },
+        { title:"Review", file:"g1e-3-6", open:true },
+        { title:"Get ready for Starters", file:"g1e-3-7", open:true }
       ]},
       { unit:"My favourite toy", lessons:[
         { title:"My favourite toy", file:"g1e-4-1", open:false },

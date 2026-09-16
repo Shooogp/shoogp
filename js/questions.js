@@ -39751,4 +39751,556 @@ window.QUESTIONS = {
       ]
     }
   ]
+,
+
+  /* ═══ الوحدة ٣ — Our classroom ════════════════════════════════════════════
+     المفردات: door, teacher, whiteboard, window | chair, desk, floor, wall
+     التراكيب: What's this? It's a…  ·  The book is in / on / under the bag.
+     القيمة: Be tidy   ·   المشروع: Desk tidy
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  // الدرس ٣-١: Our classroom — مفردات: door, teacher, whiteboard, window
+  "g1e-3-1": [
+    {
+      type: "mcq",
+      objective: "مفردات: door, teacher, whiteboard, window",
+      level: "knowledge",
+      prompt: "Which one do you walk through to enter the classroom?",
+      options: ["door", "window", "whiteboard", "teacher"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مفردات: door, teacher, whiteboard, window",
+      level: "knowledge",
+      statement: "The teacher helps you learn.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "مفردات: door, teacher, whiteboard, window",
+      level: "knowledge",
+      prompt: "Match each one to what you do with it.",
+      pairs: [
+        { a: "door",       b: "you go through it" },
+        { a: "window",     b: "you look through it" },
+        { a: "whiteboard", b: "the teacher writes on it" },
+        { a: "teacher",    b: "helps you learn" }
+      ]
+    },
+    {
+      type: "hotspot",
+      objective: "مفردات: door, teacher, whiteboard, window",
+      level: "application",
+      prompt: "Listen, then click on the window.",
+      audio: "audio/en/window.mp3",
+      svg: `<svg viewBox="0 0 560 560" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="20" width="240" height="240" rx="28" fill="#fffdf6" stroke="#d8c9a4" stroke-width="4"/>
+        <image href="images/كرسي.png" x="44" y="44" width="192" height="192" preserveAspectRatio="xMidYMid meet"/>
+        <rect x="300" y="20" width="240" height="240" rx="28" fill="#fffdf6" stroke="#d8c9a4" stroke-width="4"/>
+        <image href="images/باب.png" x="324" y="44" width="192" height="192" preserveAspectRatio="xMidYMid meet"/>
+        <rect x="20" y="300" width="240" height="240" rx="28" fill="#fffdf6" stroke="#d8c9a4" stroke-width="4"/>
+        <image href="images/طاولة.png" x="44" y="324" width="192" height="192" preserveAspectRatio="xMidYMid meet"/>
+        <rect x="300" y="300" width="240" height="240" rx="28" fill="#fffdf6" stroke="#d8c9a4" stroke-width="4"/>
+        <image href="images/نافذة.png" x="324" y="324" width="192" height="192" preserveAspectRatio="xMidYMid meet"/>
+      </svg>`,
+      bg: "#fff6dc",
+      spot: { x: 75, y: 75, w: 42.9, h: 42.9 }
+    },
+    {
+      type: "classify",
+      objective: "مفردات: door, teacher, whiteboard, window",
+      level: "reasoning",
+      prompt: "Sort each word.",
+      groups: [
+        { name: "A thing in the classroom", items: ["door", "window", "whiteboard"] },
+        { name: "A person",                 items: ["teacher"] }
+      ]
+    },
+    {
+      type: "memory",
+      objective: "مفردات: door, teacher, whiteboard, window",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "door",       b: "you go through it" },
+        { a: "window",     b: "you look through it" },
+        { a: "whiteboard", b: "the teacher writes on it" },
+        { a: "teacher",    b: "helps you learn" }
+      ]
+    }
+  ],
+
+  // الدرس ٣-٢: أصوات الحروف — sound t (Sounds and Spelling Book, Unit 3 Lesson 2)
+  "g1e-3-2": [
+    {
+      type: "mcq",
+      objective: "تمييز صوت الحرف t",
+      level: "knowledge",
+      prompt: "Listen, then choose the word that starts with the letter 't'.",
+      audio: "audio/en/ten.mp3",
+      options: ["ten", "bag", "sun", "pen"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "تمييز صوت الحرف t",
+      level: "knowledge",
+      statement: "The word 'cat' ends with the letter 't'.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "تمييز صوت الحرف t",
+      level: "knowledge",
+      prompt: "Match the letter 't' to words that start with it.",
+      pairs: [
+        { a: "t", b: "ten" },
+        { a: "t", b: "top" },
+        { a: "t", b: "tap" },
+        { a: "t", b: "teacher" }
+      ]
+    },
+    {
+      type: "hotspot",
+      objective: "تمييز صوت الحرف t",
+      level: "application",
+      prompt: "Listen to the sound, then click the matching letter.",
+      audio: "audio/en/phon-t.mp3",
+      svg: `<svg viewBox="0 0 440 440" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="20" width="190" height="190" rx="24" fill="#F6D000" stroke="#111111" stroke-width="5"/>
+        <text x="115" y="148" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="800" font-size="100" fill="#111111">S</text>
+        <rect x="230" y="20" width="190" height="190" rx="24" fill="#F6D000" stroke="#111111" stroke-width="5"/>
+        <text x="325" y="148" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="800" font-size="100" fill="#111111">T</text>
+        <rect x="20" y="230" width="190" height="190" rx="24" fill="#F6D000" stroke="#111111" stroke-width="5"/>
+        <text x="115" y="358" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="800" font-size="100" fill="#111111">A</text>
+        <rect x="230" y="230" width="190" height="190" rx="24" fill="#F6D000" stroke="#111111" stroke-width="5"/>
+        <text x="325" y="358" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="800" font-size="100" fill="#111111">P</text>
+      </svg>`,
+      bg: "#fff6dc",
+      spot: { x: 73.9, y: 26.1, w: 43.2, h: 43.2 }
+    },
+    {
+      type: "classify",
+      objective: "تمييز صوت الحرف t",
+      level: "reasoning",
+      prompt: "Sort each word by its first letter.",
+      groups: [
+        { name: "Starts with t", items: ["ten", "top"] },
+        { name: "Starts with s", items: ["sun", "six"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "تمييز صوت الحرف t",
+      level: "application",
+      prompt: "Click the word that does NOT start with 't'.",
+      options: ["ten", "top", "bag", "tap"],
+      answer: 2,
+      reason: "'bag' starts with the letter 'b', not 't'."
+    }
+  ],
+
+  // الدرس ٣-٣: What's this? (قصة) — chair, desk, floor, wall؛ القيمة: Be tidy
+  "g1e-3-3": [
+    {
+      type: "mcq",
+      objective: "مفردات: chair, desk, floor, wall",
+      level: "knowledge",
+      prompt: "Which one do you sit on?",
+      options: ["chair", "wall", "floor", "desk"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مفردات: chair, desk, floor, wall",
+      level: "knowledge",
+      statement: "You write on the floor.",
+      answer: false
+    },
+    {
+      type: "matching",
+      objective: "مفردات: chair, desk, floor, wall",
+      level: "knowledge",
+      prompt: "Match each one to what you do with it.",
+      pairs: [
+        { a: "chair", b: "you sit on it" },
+        { a: "desk",  b: "you work on it" },
+        { a: "floor", b: "you walk on it" },
+        { a: "wall",  b: "the board is on it" }
+      ]
+    },
+    {
+      type: "hotspot",
+      objective: "مفردات: chair, desk, floor, wall؛ تركيب: What's this? It's a…",
+      level: "application",
+      prompt: "Listen, then click on the chair.",
+      audio: "audio/en/chair.mp3",
+      svg: `<svg viewBox="0 0 560 560" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="20" width="240" height="240" rx="28" fill="#fffdf6" stroke="#d8c9a4" stroke-width="4"/>
+        <image href="images/نافذة.png" x="44" y="44" width="192" height="192" preserveAspectRatio="xMidYMid meet"/>
+        <rect x="300" y="20" width="240" height="240" rx="28" fill="#fffdf6" stroke="#d8c9a4" stroke-width="4"/>
+        <image href="images/كرسي.png" x="324" y="44" width="192" height="192" preserveAspectRatio="xMidYMid meet"/>
+        <rect x="20" y="300" width="240" height="240" rx="28" fill="#fffdf6" stroke="#d8c9a4" stroke-width="4"/>
+        <image href="images/باب.png" x="44" y="324" width="192" height="192" preserveAspectRatio="xMidYMid meet"/>
+        <rect x="300" y="300" width="240" height="240" rx="28" fill="#fffdf6" stroke="#d8c9a4" stroke-width="4"/>
+        <image href="images/طاولة.png" x="324" y="324" width="192" height="192" preserveAspectRatio="xMidYMid meet"/>
+      </svg>`,
+      bg: "#fff6dc",
+      spot: { x: 75, y: 25, w: 42.9, h: 42.9 }
+    },
+    {
+      type: "fill-blank",
+      objective: "القيمة: Be tidy",
+      level: "reasoning",
+      prompt: "Complete the sentence.",
+      text: "Tidy your desk, so you can {} your book.",
+      answers: ["find"],
+      distractors: ["wall", "floor"]
+    },
+    {
+      type: "color",
+      objective: "مفردات: chair, desk, floor, wall — التمييز بين الأثاث وأجزاء الغرفة",
+      level: "application",
+      prompt: "Color the furniture green. Color the parts of the room blue.",
+      bg: "#fdf9ee",
+      showLabels: false,
+      palette: [
+        { name: "Green", color: "#2e7d32" },
+        { name: "Blue",  color: "#1f6feb" }
+      ],
+      parts: [
+        { name: "chair", color: "#2e7d32" },
+        { name: "desk",  color: "#2e7d32" },
+        { name: "floor", color: "#1f6feb" },
+        { name: "wall",  color: "#1f6feb" }
+      ],
+      svg: `<svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg">
+        <g class="cpart" data-name="chair" style="stroke:none;fill:#3a3226">
+          <rect x="12" y="96" width="125" height="92" rx="18" fill="#fffdf6" stroke="#d8c9a4" stroke-width="2"/>
+          <rect x="12" y="96" width="125" height="92" rx="18" fill="none" pointer-events="all"/>
+          <text x="74" y="152" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="700" font-size="32">chair</text>
+        </g>
+        <g class="cpart" data-name="desk" style="stroke:none;fill:#3a3226">
+          <rect x="162" y="96" width="125" height="92" rx="18" fill="#fffdf6" stroke="#d8c9a4" stroke-width="2"/>
+          <rect x="162" y="96" width="125" height="92" rx="18" fill="none" pointer-events="all"/>
+          <text x="224" y="152" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="700" font-size="32">desk</text>
+        </g>
+        <g class="cpart" data-name="floor" style="stroke:none;fill:#3a3226">
+          <rect x="312" y="96" width="125" height="92" rx="18" fill="#fffdf6" stroke="#d8c9a4" stroke-width="2"/>
+          <rect x="312" y="96" width="125" height="92" rx="18" fill="none" pointer-events="all"/>
+          <text x="374" y="152" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="700" font-size="32">floor</text>
+        </g>
+        <g class="cpart" data-name="wall" style="stroke:none;fill:#3a3226">
+          <rect x="462" y="96" width="125" height="92" rx="18" fill="#fffdf6" stroke="#d8c9a4" stroke-width="2"/>
+          <rect x="462" y="96" width="125" height="92" rx="18" fill="none" pointer-events="all"/>
+          <text x="524" y="152" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="700" font-size="32">wall</text>
+        </g>
+      </svg>`
+    }
+  ],
+
+  // الدرس ٣-٤: Where's the book? — حروف جر المكان in / on / under
+  "g1e-3-4": [
+    {
+      type: "mcq",
+      objective: "حروف جر المكان: in / on / under",
+      level: "knowledge",
+      prompt: "The book is on top of the desk. Complete: The book is ___ the desk.",
+      options: ["on", "in", "under", "of"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "حروف جر المكان: in / on / under",
+      level: "knowledge",
+      statement: "'Under' means below something.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "حروف جر المكان: in / on / under",
+      level: "knowledge",
+      prompt: "Match each word to its meaning.",
+      pairs: [
+        { a: "on",    b: "on top of something" },
+        { a: "in",    b: "inside something" },
+        { a: "under", b: "below something" }
+      ]
+    },
+    {
+      type: "drag-drop",
+      objective: "حروف جر المكان: in / on / under",
+      level: "application",
+      prompt: "Drag each word to the right picture.",
+      bg: "#fdf9ee",
+      svg: `<svg viewBox="0 0 300 520" xmlns="http://www.w3.org/2000/svg">
+        <image href="images/طاولة.png" x="50" y="90" width="200" height="150" preserveAspectRatio="xMidYMid meet"/>
+        <g>
+          <rect x="105" y="48" width="90" height="44" rx="9" fill="#FF6000" stroke="#111111" stroke-width="3"/>
+          <rect x="105" y="48" width="90" height="14" rx="7" fill="#FF8000" stroke="#111111" stroke-width="2"/>
+          <rect x="148" y="52" width="4" height="36" fill="#C04000"/>
+          <rect x="114" y="72" width="16" height="5" rx="3" fill="#ffffff" opacity=".6"/>
+        </g>
+        <g>
+          <rect x="105" y="250" width="90" height="44" rx="9" fill="#FF6000" stroke="#111111" stroke-width="3"/>
+          <rect x="105" y="250" width="90" height="14" rx="7" fill="#FF8000" stroke="#111111" stroke-width="2"/>
+          <rect x="148" y="254" width="4" height="36" fill="#C04000"/>
+          <rect x="114" y="274" width="16" height="5" rx="3" fill="#ffffff" opacity=".6"/>
+        </g>
+        <path d="M110 350 q40 -44 80 0" fill="none" stroke="#111111" stroke-width="4" stroke-linecap="round"/>
+        <rect x="75" y="350" width="150" height="62" rx="16" fill="#1060A0" stroke="#111111" stroke-width="3"/>
+        <g>
+          <rect x="100" y="360" width="100" height="50" rx="9" fill="#FF6000" stroke="#111111" stroke-width="3"/>
+          <rect x="100" y="360" width="100" height="16" rx="7" fill="#FF8000" stroke="#111111" stroke-width="2"/>
+          <rect x="148" y="364" width="4" height="42" fill="#C04000"/>
+          <rect x="109" y="387" width="18" height="5" rx="3" fill="#ffffff" opacity=".6"/>
+        </g>
+        <rect x="75" y="390" width="150" height="100" rx="22" fill="#20A0FF" stroke="#111111" stroke-width="3"/>
+        <rect x="75" y="390" width="150" height="30" rx="15" fill="#40C0FF" stroke="#111111" stroke-width="2"/>
+        <rect x="89" y="428" width="13" height="42" rx="6" fill="#ffffff" opacity=".55"/>
+      </svg>`,
+      targets: [
+        { answer: "on",    box: { x: 11, y: 11 }, dot: { x: 50.0, y: 13.5 } },
+        { answer: "under", box: { x: 11, y: 50 }, dot: { x: 50.0, y: 52.3 } },
+        { answer: "in",    box: { x: 11, y: 73 }, dot: { x: 50.0, y: 72.1 } }
+      ]
+    },
+    {
+      type: "hotspot",
+      objective: "حروف جر المكان: in / on / under",
+      level: "reasoning",
+      prompt: "Click the book that is UNDER the desk.",
+      svg: `<svg viewBox="0 0 420 620" xmlns="http://www.w3.org/2000/svg">
+        <rect x="40" y="560" width="340" height="10" rx="5" fill="#9A6636" stroke="#111111" stroke-width="2"/>
+        <image href="images/طاولة.png" x="110" y="120" width="200" height="150" preserveAspectRatio="xMidYMid meet"/>
+        <g>
+          <rect x="175" y="78" width="90" height="44" rx="9" fill="#FF6000" stroke="#111111" stroke-width="3"/>
+          <rect x="175" y="78" width="90" height="14" rx="7" fill="#FF8000" stroke="#111111" stroke-width="2"/>
+          <rect x="218" y="82" width="4" height="36" fill="#C04000"/>
+          <rect x="184" y="102" width="16" height="5" rx="3" fill="#ffffff" opacity=".6"/>
+        </g>
+        <g>
+          <rect x="175" y="290" width="90" height="44" rx="9" fill="#FF6000" stroke="#111111" stroke-width="3"/>
+          <rect x="175" y="290" width="90" height="14" rx="7" fill="#FF8000" stroke="#111111" stroke-width="2"/>
+          <rect x="218" y="294" width="4" height="36" fill="#C04000"/>
+          <rect x="184" y="314" width="16" height="5" rx="3" fill="#ffffff" opacity=".6"/>
+        </g>
+        <g>
+          <rect x="100" y="505" width="90" height="44" rx="9" fill="#FF6000" stroke="#111111" stroke-width="3"/>
+          <rect x="100" y="505" width="90" height="14" rx="7" fill="#FF8000" stroke="#111111" stroke-width="2"/>
+          <rect x="143" y="509" width="4" height="36" fill="#C04000"/>
+          <rect x="109" y="529" width="16" height="5" rx="3" fill="#ffffff" opacity=".6"/>
+        </g>
+      </svg>`,
+      bg: "#fff6dc",
+      spot: { x: 52.4, y: 50.3, w: 23, h: 9 }
+    },
+    {
+      type: "exclude",
+      objective: "حروف جر المكان: in / on / under",
+      level: "application",
+      prompt: "Click the word that is NOT a place word.",
+      options: ["on", "in", "under", "book"],
+      answer: 3,
+      reason: "'book' is a thing — 'on', 'in' and 'under' tell you where it is."
+    }
+  ],
+
+  // الدرس ٣-٥: مشروع صندوق أدوات مرتّب — مراجعة مفردات الوحدة ضمن سياق المشروع
+  "g1e-3-5": [
+    {
+      type: "mcq",
+      objective: "مراجعة مفردات الوحدة ٣",
+      level: "knowledge",
+      prompt: "What do you put your pens in to keep your desk tidy?",
+      options: ["a desk tidy", "a window", "a wall", "a floor"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مراجعة مفردات الوحدة ٣؛ القيمة: Be tidy",
+      level: "knowledge",
+      statement: "A tidy desk helps you find your things.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "مراجعة مفردات الوحدة ٣",
+      level: "knowledge",
+      prompt: "Match each one to what you do with it.",
+      pairs: [
+        { a: "chair",  b: "you sit on it" },
+        { a: "desk",   b: "you work on it" },
+        { a: "door",   b: "you go through it" },
+        { a: "window", b: "you look through it" }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "مراجعة مفردات الوحدة ٣ ضمن سياق المشروع",
+      level: "application",
+      prompt: "Put the project steps in the correct order.",
+      steps: [
+        "Take an empty box.",
+        "Cut the box.",
+        "Colour your desk tidy.",
+        "Put your pens in it."
+      ]
+    },
+    {
+      type: "classify",
+      objective: "مراجعة مفردات الوحدة ٣",
+      level: "reasoning",
+      prompt: "Sort each word.",
+      groups: [
+        { name: "You sit on it",        items: ["chair"] },
+        { name: "You do not sit on it", items: ["desk", "wall", "floor"] }
+      ]
+    },
+    {
+      type: "memory",
+      objective: "مراجعة مفردات الوحدة ٣",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "floor",      b: "you walk on it" },
+        { a: "wall",       b: "the board is on it" },
+        { a: "whiteboard", b: "the teacher writes on it" },
+        { a: "desk",       b: "you work on it" }
+      ]
+    }
+  ],
+
+  // الدرس ٣-٦: المراجعة — مراجعة تراكمية لمفردات وتراكيب الوحدة ٣
+  "g1e-3-6": [
+    {
+      type: "mcq",
+      objective: "مراجعة تراكمية لمفردات الوحدة ٣",
+      level: "knowledge",
+      prompt: "Listen and choose the word you hear.",
+      audio: "audio/en/whiteboard.mp3",
+      options: ["whiteboard", "window", "wall", "floor"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مراجعة تراكمية لتراكيب الوحدة ٣",
+      level: "knowledge",
+      statement: "'What's this? It's a desk.' is a correct answer.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "مراجعة تراكمية لمفردات الوحدة ٣",
+      level: "knowledge",
+      prompt: "Match each one to what you do with it.",
+      pairs: [
+        { a: "window", b: "you look through it" },
+        { a: "chair",  b: "you sit on it" },
+        { a: "floor",  b: "you walk on it" },
+        { a: "door",   b: "you go through it" }
+      ]
+    },
+    {
+      type: "fill-blank",
+      objective: "تركيب: What's this? It's a…",
+      level: "application",
+      prompt: "Complete the sentence.",
+      text: "What's this? It's a {}.",
+      answers: ["window"],
+      distractors: ["tidy", "under"]
+    },
+    {
+      type: "classify",
+      objective: "مراجعة تراكمية لمفردات الوحدة ٣",
+      level: "reasoning",
+      prompt: "Sort each word.",
+      groups: [
+        { name: "Furniture",         items: ["chair", "desk"] },
+        { name: "Part of the room",  items: ["floor", "wall"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "مراجعة تراكمية لمفردات الوحدة ٣",
+      level: "application",
+      prompt: "Click the word that is NOT in the classroom.",
+      options: ["door", "window", "cat", "desk"],
+      answer: 2,
+      reason: "'cat' is an animal — it is not a classroom thing."
+    }
+  ],
+
+  // الدرس ٣-٧: استعدّ للاختبار — Pre-A1 Starters
+  "g1e-3-7": [
+    {
+      type: "mcq",
+      objective: "تدريب على نمط اختبار Pre-A1 Starters",
+      level: "knowledge",
+      prompt: "Which word is a classroom thing?",
+      options: ["desk", "mum", "red", "six"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "تدريب على نمط اختبار Pre-A1 Starters",
+      level: "knowledge",
+      statement: "You look through a window.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "تدريب على نمط اختبار Pre-A1 Starters",
+      level: "knowledge",
+      prompt: "Match each word to its first letter.",
+      pairs: [
+        { a: "door",    b: "d" },
+        { a: "window",  b: "w" },
+        { a: "chair",   b: "c" },
+        { a: "teacher", b: "t" }
+      ]
+    },
+    {
+      type: "hotspot",
+      objective: "تدريب على نمط اختبار Pre-A1 Starters",
+      level: "application",
+      prompt: "Listen, then click on the door.",
+      audio: "audio/en/door.mp3",
+      svg: `<svg viewBox="0 0 560 560" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="20" width="240" height="240" rx="28" fill="#fffdf6" stroke="#d8c9a4" stroke-width="4"/>
+        <image href="images/طاولة.png" x="44" y="44" width="192" height="192" preserveAspectRatio="xMidYMid meet"/>
+        <rect x="300" y="20" width="240" height="240" rx="28" fill="#fffdf6" stroke="#d8c9a4" stroke-width="4"/>
+        <image href="images/نافذة.png" x="324" y="44" width="192" height="192" preserveAspectRatio="xMidYMid meet"/>
+        <rect x="20" y="300" width="240" height="240" rx="28" fill="#fffdf6" stroke="#d8c9a4" stroke-width="4"/>
+        <image href="images/كرسي.png" x="44" y="324" width="192" height="192" preserveAspectRatio="xMidYMid meet"/>
+        <rect x="300" y="300" width="240" height="240" rx="28" fill="#fffdf6" stroke="#d8c9a4" stroke-width="4"/>
+        <image href="images/باب.png" x="324" y="324" width="192" height="192" preserveAspectRatio="xMidYMid meet"/>
+      </svg>`,
+      bg: "#fff6dc",
+      spot: { x: 75, y: 75, w: 42.9, h: 42.9 }
+    },
+    {
+      type: "classify",
+      objective: "تدريب على نمط اختبار Pre-A1 Starters",
+      level: "reasoning",
+      prompt: "Sort each word.",
+      groups: [
+        { name: "Furniture",        items: ["chair", "desk"] },
+        { name: "Part of the room", items: ["door", "window"] }
+      ]
+    },
+    {
+      type: "memory",
+      objective: "تدريب على نمط اختبار Pre-A1 Starters",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "door",       b: "you go through it" },
+        { a: "chair",      b: "you sit on it" },
+        { a: "whiteboard", b: "the teacher writes on it" },
+        { a: "floor",      b: "you walk on it" }
+      ]
+    }
+  ]
 };
