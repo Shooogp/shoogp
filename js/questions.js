@@ -41183,11 +41183,15 @@ window.QUESTIONS = {
       ]
     },
     {
-      type: "true-false",
-      objective: "مفردات الألعاب الداخلية",
+      type: "sound-blend",
+      objective: "صوتٌ مقترن: ai (rain, train, tail, nail, snail, chain، Sounds and Spelling Book Unit 1 Lesson 1)",
       level: "knowledge",
-      statement: "A dinosaur is a toy animal.",
-      answer: true
+      prompt: "Tap each card, then blend and choose the word.",
+      letters: ["r", "ain"],
+      soundOf: { r: "audio/en/phon-r.mp3", ain: "audio/en/phon-ain.mp3" },
+      blendAudio: "audio/en/blend-rain.mp3",
+      options: ["rain", "run", "red"],
+      answer: 0
     },
     {
       type: "sequence",
@@ -41221,11 +41225,15 @@ window.QUESTIONS = {
       answer: 0
     },
     {
-      type: "true-false",
-      objective: "القيمة: Be creative",
+      type: "sound-blend",
+      objective: "صوتٌ مقترن: oa (boat, soap, goat, road، Unit 1 Lesson 2)",
       level: "knowledge",
-      statement: "'Be creative' means you can make new things and have new ideas.",
-      answer: true
+      prompt: "Tap each card, then blend and choose the word.",
+      letters: ["b", "oat"],
+      soundOf: { b: "audio/en/phon-b.mp3", oat: "audio/en/phon-oat.mp3" },
+      blendAudio: "audio/en/blend-boat.mp3",
+      options: ["boat", "bag", "bike"],
+      answer: 0
     },
     {
       type: "sequence",
@@ -41308,11 +41316,15 @@ window.QUESTIONS = {
       answer: 0
     },
     {
-      type: "true-false",
-      objective: "مفردات الألعاب الخارجية",
+      type: "sound-blend",
+      objective: "صوتٌ مقترن: ie (tie, pie, die، Unit 1 Lesson 3)",
       level: "knowledge",
-      statement: "A scooter has wheels and you stand on it.",
-      answer: true
+      prompt: "Tap each card, then blend and choose the word.",
+      letters: ["p", "ie"],
+      soundOf: { p: "audio/en/phon-p.mp3", ie: "audio/en/phon-ie.mp3" },
+      blendAudio: "audio/en/blend-pie.mp3",
+      options: ["pie", "pen", "pin"],
+      answer: 0
     },
     {
       type: "matching",
@@ -41369,11 +41381,15 @@ window.QUESTIONS = {
       answer: 0
     },
     {
-      type: "true-false",
-      objective: "صوتٌ مقترن: a_e",
+      type: "sound-blend",
+      objective: "صوتٌ مقترن: a_e (cake, snake, game, lake, flame, rake، Unit 1 Lesson 4)",
       level: "knowledge",
-      statement: "'Game' and 'cake' have the same middle sound.",
-      answer: true
+      prompt: "Tap each card, then blend and choose the word.",
+      letters: ["c", "ake"],
+      soundOf: { c: "audio/en/phon-c.mp3", ake: "audio/en/phon-ake.mp3" },
+      blendAudio: "audio/en/blend-cake.mp3",
+      options: ["cake", "cat", "cup"],
+      answer: 0
     },
     {
       type: "matching",
