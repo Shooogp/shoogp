@@ -10,8 +10,8 @@
     "threeBookStructure": "كل درسٍ متزامنٌ ١:١ عبر ثلاثة كتب: Class Book (جزء ١) + Activity Book (جزء ٢) + Sounds and Spelling Book (حصة صوتيات) — التأليف يرجع للثلاثة معاً لكل درس. هذا مخالفٌ لحالة «كتاب مقسوم لجزأين» في CLAUDE.md؛ يحتاج توثيقاً مستقلاً بعد الاعتماد",
     "cognitiveDistribution": "يرث توزيع العلوم: 3 knowledge + 1 application + 1 reasoning للأسئلة الأساسية الخمسة (قرار المالك ٢٠٢٦-٠٩-١٤)",
     "devOnlyPolicy": "كل بطاقات هذه المادّة (كل الصفوف) تبقى devOnly:true حتى تكتمل الصفوف الأربعة كلّها وقرار صريح مستقل من المالك برفع الإخفاء دفعة واحدة — لا صفّاً بصفّ (تنبيه المالك ٢٠٢٦-٠٩-١٤، مثبّت أيضاً في CLAUDE.md §نطاق المواد)",
-    "version": "0.1",
-    "status": "مسودة للمراجعة — الصف الأول فقط، فصل ١"
+    "version": "0.2",
+    "status": "مسودة للمراجعة — الصفّان الأول والثاني، فصل ١"
   },
 
   "contentPolicy": {
@@ -55,6 +55,16 @@
     },
     "learningClubUnits": {
       "note": "Learning Club 1 و2 (رياضيات/فنون متكاملة: أعداد ١-٦، ألوان، أشكال هندسية) لا تحمل رقم وحدة في الكتاب ولا حصة في كتاب الأصوات والتهجئة. رُقِّمَت بمعرّف نصّي مستقل (lc1/lc2) بين الوحدتين المحيطتين بها، على غرار سابقة \"unit\": \"تمهيد\" في data/index.json.",
+      "confirmed": true
+    },
+    "grade2PhonicsThreading": {
+      "issue": "بنية كتاب الصف الثاني (Team Together 2A) تختلف عن الأول: لا تُفرد الصوتيات درساً مستقلاً في كتاب التلميذ (خلافاً لـLesson 2 = sound في الصف الأول). كل درسٍ مرقَّمٍ في كتاب التلميذ (Lesson 1-7 لكل وحدة) يقترن برقمه نفسه في كتاب الأصوات والتهجئة (Sounds and Spelling Book Unit X, Lesson N)، فالصوتيات موزّعةٌ عبر كل الدروس لا معزولة.",
+      "decision": "لا يُبنى درسٌ منصّةٍ مستقلٌّ للصوتيات في الصف الثاني — بنية الدروس السبعة لكل وحدة تتبع ترقيم كتاب التلميذ نفسه حرفياً (درسٌ منصّة = رقم الدرس في الكتاب)، والصوتيات تُدمَج كسؤالٍ إثرائيٍّ صوتيّ (`sound-blend`/`audio`) داخل الدرس المناسب عند التأليف، بعد تصيير صفحات كتاب الأصوات والتهجئة المقترنة (صوريٌّ غير قابل للاستخراج) وقراءتها بصرياً.",
+      "confirmed": true
+    },
+    "grade2IntegratedPages": {
+      "issue": "كتاب الصف الثاني يضمّ صفحتي Natural Science (What are our senses?) وSocial Studies (In my town) داخل كتاب اللغة الإنجليزية نفسه، ضمن نادي التعلّم بعد كل من الوحدتين ٢ و٤.",
+      "decision": "تُدمجان كدرسي لغةٍ إنجليزية عاديَّين تابعَين لمادّة اللغة الإنجليزية (لا تُصنَّفان علوماً ولا دراساتٍ اجتماعية في data/index.json) — المحتوى العلمي/الاجتماعي فيهما سياقُ مفرداتٍ وتراكيبَ إنجليزية كبقية الدروس.",
       "confirmed": true
     }
   },
@@ -130,6 +140,82 @@
           "lessons": [
             { "code": "g1e-lc2-1", "title": "الأشكال الهندسية — Shapes", "objective": "square, circle, triangle, rectangle (تكامل رياضيات)", "basic": ["mcq", "classify", "matching", "true-false", "sequence"], "enrichment": "color", "status": "ready" },
             { "code": "g1e-lc2-2", "title": "ما هذه؟ — What are these? (Language booster 2)", "objective": "تركيب: What are these? They're…", "basic": ["mcq", "matching", "true-false", "classify", "fill-blank"], "enrichment": "memory", "status": "ready" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": 2,
+      "bookKey": "g2-en",
+      "note": "Team Together Oman 2A. بنية دروس السبعة لكل وحدة تتبع ترقيم كتاب التلميذ نفسه حرفياً (لا يوجد درس صوتيات مستقل — راجع contentPolicy.grade2PhonicsThreading).",
+      "units": [
+        {
+          "unit": "0", "title": "تمهيد — Welcome",
+          "lessons": [
+            { "code": "g2e-0-1", "title": "تحية وتعارف — Hello!", "objective": "Hello/Hi, What's your name? My name's…/I'm…, How old are you? I'm (seven). — أوامر الصف: Stand up/Sit down/Pick up your book/Open your book/Close your book/Wave goodbye", "basic": ["mcq", "true-false", "matching", "sequence", "fill-blank"], "enrichment": "memory", "status": "ready" },
+            { "code": "g2e-0-2", "title": "الأعداد والألوان — Numbers & Colours", "objective": "العدّ من ١ إلى ١٠؛ أسماء الألوان العشرة: red, yellow, blue, green, black, white, pink, purple, orange, brown. What colour is it? It's (green).", "basic": ["mcq", "sequence", "matching", "true-false", "classify"], "enrichment": "color", "status": "ready" }
+          ]
+        },
+        {
+          "unit": "1", "title": "Look at my toys! — انظر إلى ألعابي",
+          "lessons": [
+            { "code": "g2e-1-1", "title": "Look at my toys! (١)", "objective": "مفردات: ألعاب داخلية car, plane, puzzle, yo-yo, building set, doll, action figure, robot, teddy, dinosaur", "basic": ["mcq", "matching", "classify", "true-false", "hotspot"], "enrichment": "memory", "status": "ready" },
+            { "code": "g2e-1-2", "title": "Helpers Team (٢) — قصة", "objective": "تركيب: What's this? It's a…؛ القيمة: Be creative", "basic": ["mcq", "matching", "sequence", "true-false", "fill-blank"], "enrichment": "color", "status": "ready" },
+            { "code": "g2e-1-3", "title": "Is it a swing? (٣) — ألعاب خارجية", "objective": "مفردات: kite, bike, slide, scooter, ball, swing؛ تركيب: Is it a swing? Yes, it is./No, it isn't.", "basic": ["mcq", "true-false", "matching", "classify", "hotspot"], "enrichment": "exclude", "status": "ready" },
+            { "code": "g2e-1-4", "title": "مهارات (٤) — تدريب استماع", "objective": "تثبيت Is it a…? Yes, it is./No, it isn't. بصيغة ألعاب مطابقة", "basic": ["mcq", "true-false", "matching", "sequence", "classify"], "enrichment": "memory", "status": "ready" },
+            { "code": "g2e-1-5", "title": "مشروع: متحف الألعاب (٥)", "objective": "مراجعة مفردات الوحدة ضمن سياق مشروع ملصق متحف الألعاب — ثقافة: Oman's Children Museum", "basic": ["sequence", "mcq", "matching", "true-false", "classify"], "enrichment": "memory", "status": "ready" },
+            { "code": "g2e-1-6", "title": "لنتشارك ألعابنا (٦) — Sharing your toys", "objective": "تركيب: Can I play with it, please? Yes, of course./Let's play together.", "basic": ["matching", "mcq", "true-false", "fill-blank", "classify"], "enrichment": "exclude", "status": "ready" },
+            { "code": "g2e-1-7", "title": "المراجعة (٧) — استعدّ للاختبار", "objective": "مراجعة تراكمية لمفردات وتراكيب الوحدة ١؛ تدريب على نمط اختبار Pre-A1 Starters", "basic": ["mcq", "true-false", "matching", "classify", "hotspot"], "enrichment": "memory", "status": "ready" }
+          ]
+        },
+        {
+          "unit": "lc1", "title": "نادي التعلّم ١ — Atomic's Learning Club (Language booster + Natural Science)",
+          "lessons": [
+            { "code": "g2e-lc1-1", "title": "عالمي المفضّل — Language booster 1", "objective": "مفردات: monster, helicopter, robot, computer, book؛ صفات: big, small, noisy, interesting, scary؛ تركيب: Is it very (interesting)? — What's your favourite book? My favourite book is…", "basic": ["mcq", "matching", "true-false", "classify", "fill-blank"], "enrichment": "memory", "status": "ready" },
+            { "code": "g2e-lc1-2", "title": "حواسّنا الخمس — Natural Science: What are our senses?", "objective": "الحواس الخمس sight, hearing, smell, taste, touch وربطها بأعضاء الجسم (eyes, ears, nose, tongue, hands/feet)", "basic": ["mcq", "matching", "classify", "true-false", "hotspot"], "enrichment": "memory", "status": "ready" }
+          ]
+        },
+        {
+          "unit": "2", "title": "Where's my pen? — أين قلمي",
+          "lessons": [
+            { "code": "g2e-2-1", "title": "Where's my pen? (١)", "objective": "مفردات: أدوات مدرسية bag, book, pencil case, pen, pencil, crayon, ruler, pencil sharpener, eraser, scissors", "basic": ["mcq", "matching", "classify", "true-false", "hotspot"], "enrichment": "memory", "status": "ready" },
+            { "code": "g2e-2-2", "title": "Helpers Team (٢) — قصة", "objective": "مفردات: shelf, cupboard, computer, desk, chair, table؛ تركيب: Where's the pencil? It's in/on/under the desk؛ القيمة: Be tidy", "basic": ["hotspot", "matching", "mcq", "true-false", "drag-drop"], "enrichment": "color", "status": "ready", "note": "تراكيب in/on/under تُختبر بصرياً (hotspot/drag-drop) كما في g1e-3-4" },
+            { "code": "g2e-2-3", "title": "This is my pencil case (٣)", "objective": "تركيب: This is my pencil case./These are my books.", "basic": ["mcq", "true-false", "matching", "classify", "fill-blank"], "enrichment": "exclude", "status": "ready" },
+            { "code": "g2e-2-4", "title": "مهارات (٤) — تدريب استماع", "objective": "تثبيت This is my…/These are my…/Where's the…? بصيغة ألعاب مطابقة", "basic": ["mcq", "true-false", "matching", "sequence", "classify"], "enrichment": "memory", "status": "ready" },
+            { "code": "g2e-2-5", "title": "مشروع: خطة مدرستي (٥)", "objective": "مراجعة مفردات الوحدة ضمن سياق مشروع خطة المدرسة", "basic": ["sequence", "mcq", "matching", "true-false", "classify"], "enrichment": "memory", "status": "ready" },
+            { "code": "g2e-2-6", "title": "استعارة الأدوات (٦) — Borrowing things", "objective": "تركيب: Can I borrow your pen?", "basic": ["matching", "mcq", "true-false", "fill-blank", "classify"], "enrichment": "exclude", "status": "ready" },
+            { "code": "g2e-2-7", "title": "المراجعة (٧) — استعدّ للاختبار", "objective": "مراجعة تراكمية لمفردات وتراكيب الوحدة ٢؛ تدريب على نمط اختبار Pre-A1 Starters", "basic": ["mcq", "true-false", "matching", "classify", "hotspot"], "enrichment": "memory", "status": "ready" }
+          ]
+        },
+        {
+          "unit": "3", "title": "Move your body! — حرّك جسمك",
+          "lessons": [
+            { "code": "g2e-3-1", "title": "Move your body! (١)", "objective": "مفردات الجسم: head, face, tummy, arms, hands, fingers, legs, knees, feet, toes", "basic": ["mcq", "matching", "classify", "true-false", "hotspot"], "enrichment": "memory", "status": "ready" },
+            { "code": "g2e-3-2", "title": "Helpers Team (٢) — قصة Gymbot", "objective": "تركيب: I've got one face./I've got ten toes.؛ القيمة: Do exercise", "basic": ["mcq", "matching", "sequence", "true-false", "hotspot"], "enrichment": "color", "status": "ready" },
+            { "code": "g2e-3-3", "title": "حرّك جسمك! (٣) — أفعال الحركة", "objective": "مفردات: move, bend, stretch, touch, stamp, clap؛ تركيب: Move your body! Touch your head!", "basic": ["mcq", "true-false", "matching", "classify", "sequence"], "enrichment": "exclude", "status": "ready" },
+            { "code": "g2e-3-4", "title": "مهارات (٤) — تدريب استماع", "objective": "تثبيت أوامر الحركة وأجزاء الجسم بصيغة ألعاب مطابقة", "basic": ["mcq", "true-false", "matching", "sequence", "classify"], "enrichment": "memory", "status": "ready" },
+            { "code": "g2e-3-5", "title": "مشروع: ملصق المهرجانات (٥)", "objective": "مراجعة مفردات الوحدة ضمن سياق مشروع ملصق — ثقافة: National Day", "basic": ["sequence", "mcq", "matching", "true-false", "classify"], "enrichment": "memory", "status": "ready" },
+            { "code": "g2e-3-6", "title": "مجاملة (٦) — Paying a compliment", "objective": "تركيب: What a cool picture!", "basic": ["matching", "mcq", "true-false", "fill-blank", "classify"], "enrichment": "exclude", "status": "ready" },
+            { "code": "g2e-3-7", "title": "المراجعة (٧) — استعدّ للاختبار", "objective": "مراجعة تراكمية لمفردات وتراكيب الوحدة ٣؛ تدريب على نمط اختبار Pre-A1 Starters", "basic": ["mcq", "true-false", "matching", "classify", "hotspot"], "enrichment": "memory", "status": "ready" }
+          ]
+        },
+        {
+          "unit": "4", "title": "Meet my family — تعرّف على أسرتي",
+          "lessons": [
+            { "code": "g2e-4-1", "title": "Meet my family (١)", "objective": "مفردات الأسرة: grandma, grandad, mum, dad, uncle, aunt, brother, sister, cousin", "basic": ["mcq", "matching", "classify", "true-false", "hotspot"], "enrichment": "memory", "status": "ready" },
+            { "code": "g2e-4-2", "title": "Helpers Team (٢) — قصة", "objective": "تركيب: Who's this? It's my uncle.؛ القيمة: Love your family", "basic": ["mcq", "matching", "sequence", "true-false", "fill-blank"], "enrichment": "color", "status": "ready" },
+            { "code": "g2e-4-3", "title": "ملامح وجهي (٣) — الوجه والألوان", "objective": "مفردات الوجه: hair, mouth, nose, eyes, ears؛ ألوان الشعر/العينين: fair, brown, red, black؛ تركيب: He's got blue eyes./She's got brown hair.", "basic": ["mcq", "matching", "true-false", "classify", "fill-blank"], "enrichment": "exclude", "status": "ready" },
+            { "code": "g2e-4-4", "title": "مهارات (٤) — تدريب استماع", "objective": "تثبيت Who's this? He's/She's got… بصيغة ألعاب مطابقة", "basic": ["mcq", "true-false", "matching", "sequence", "classify"], "enrichment": "memory", "status": "ready" },
+            { "code": "g2e-4-5", "title": "مشروع: وصف صورة (٥)", "objective": "مراجعة مفردات الوحدة ضمن سياق مشروع وصف صورة (عيد ميلاد الأخ)", "basic": ["sequence", "mcq", "matching", "true-false", "classify"], "enrichment": "memory", "status": "ready" },
+            { "code": "g2e-4-6", "title": "تعريف الأسرة (٦) — Introducing family and friends", "objective": "تركيب: This is my sister. Her name's Asma.", "basic": ["matching", "mcq", "true-false", "fill-blank", "classify"], "enrichment": "exclude", "status": "ready" },
+            { "code": "g2e-4-7", "title": "المراجعة (٧) — استعدّ للاختبار", "objective": "مراجعة تراكمية لمفردات وتراكيب الوحدة ٤؛ تدريب على نمط اختبار Pre-A1 Starters", "basic": ["mcq", "true-false", "matching", "classify", "hotspot"], "enrichment": "memory", "status": "ready" }
+          ]
+        },
+        {
+          "unit": "lc2", "title": "نادي التعلّم ٢ — Atomic's Learning Club (Language booster + Social Studies)",
+          "lessons": [
+            { "code": "g2e-lc2-1", "title": "أجسام غريبة! — Language booster 2", "objective": "أجزاء الجسم: head, feet, leg, arm, hand؛ تركيب العدّ: Is there one arm? No, there isn't. There are four arms./Are there three legs? Yes, there are.", "basic": ["mcq", "matching", "true-false", "classify", "fill-blank"], "enrichment": "memory", "status": "ready" },
+            { "code": "g2e-lc2-2", "title": "مدينتي — Social Studies: In my town", "objective": "أماكن في المدينة: school, hospital, shops, houses, café؛ تركيب: There is a hospital./There are some shops.", "basic": ["mcq", "matching", "classify", "true-false", "hotspot"], "enrichment": "memory", "status": "ready" }
           ]
         }
       ]
