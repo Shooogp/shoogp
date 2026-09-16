@@ -126,13 +126,13 @@ window.DATA_FALLBACK = {
         { title:"Natural Science: Our senses", file:"g2e-lc1-2", open:true }
       ]},
       { unit:"Where's my pen?", lessons:[
-        { title:"Where's my pen? (or)", file:"g2e-2-1", open:false },
-        { title:"Helpers Team (ng)", file:"g2e-2-2", open:false },
-        { title:"This is my pencil case (oo)", file:"g2e-2-3", open:false },
-        { title:"Skills (oo)", file:"g2e-2-4", open:false },
-        { title:"Project: A plan of your school", file:"g2e-2-5", open:false },
-        { title:"Borrowing things", file:"g2e-2-6", open:false },
-        { title:"Review", file:"g2e-2-7", open:false }
+        { title:"Where's my pen? (or)", file:"g2e-2-1", open:true },
+        { title:"Helpers Team (ng)", file:"g2e-2-2", open:true },
+        { title:"This is my pencil case (oo)", file:"g2e-2-3", open:true },
+        { title:"Skills (oo)", file:"g2e-2-4", open:true },
+        { title:"Project: A plan of your school", file:"g2e-2-5", open:true },
+        { title:"Borrowing things", file:"g2e-2-6", open:true },
+        { title:"Review", file:"g2e-2-7", open:true }
       ]},
       { unit:"Move your body!", lessons:[
         { title:"Move your body! (ou)", file:"g2e-3-1", open:false },

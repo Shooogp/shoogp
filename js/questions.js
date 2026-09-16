@@ -41746,5 +41746,441 @@ window.QUESTIONS = {
         { a: "taste",   b: "We taste." }
       ]
     }
+  ],
+
+  // الوحدة ٢: Where's my pen? — أين قلمي
+  // الدرس ٢-١: Where's my pen? — مفردات أدوات المدرسة
+  "g2e-2-1": [
+    {
+      type: "mcq",
+      objective: "مفردات: أدوات مدرسية bag, book, pencil case, pen, pencil, crayon, ruler, pencil sharpener, eraser, scissors",
+      level: "knowledge",
+      prompt: "Which one is scissors?",
+      pics: true,
+      options: ["scissors", "pen", "book", "ruler"],
+      answer: 0
+    },
+    {
+      type: "matching",
+      objective: "مفردات أدوات المدرسة",
+      level: "knowledge",
+      prompt: "Match each thing to what it does.",
+      pairs: [
+        { a: "bag",               b: "You carry your things in it." },
+        { a: "pencil sharpener",  b: "You sharpen your pencil with it." },
+        { a: "cupboard",          b: "You keep things inside it." },
+        { a: "eraser",            b: "You rub out mistakes with it." }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "مفردات أدوات المدرسة",
+      level: "reasoning",
+      prompt: "Sort the things.",
+      pics: true,
+      groups: [
+        { name: "Writing tools", items: ["pen", "pencil"] },
+        { name: "Furniture",     items: ["desk", "chair"] }
+      ]
+    },
+    {
+      type: "sound-blend",
+      objective: "صوتٌ مقترن: or (sport, storm, torch, north, corn، Unit 2 Lesson 1)",
+      level: "knowledge",
+      prompt: "Tap each card, then blend and choose the word.",
+      letters: ["c", "orn"],
+      soundOf: { c: "audio/en/phon-c.mp3", orn: "audio/en/phon-orn.mp3" },
+      blendAudio: "audio/en/blend-corn.mp3",
+      options: ["corn", "cat", "cup"],
+      answer: 0
+    },
+    {
+      type: "sequence",
+      objective: "تركيب: Where's the pencil? It's in/on/under the desk.",
+      level: "application",
+      prompt: "Put the dialogue in order.",
+      steps: ["Where's my pen?", "Is it on the desk?", "No, it isn't.", "Here it is!"]
+    },
+    {
+      type: "memory",
+      objective: "مفردات أدوات المدرسة",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "bag",    b: "Carry" },
+        { a: "eraser", b: "Rub out" },
+        { a: "ruler",  b: "Measure" },
+        { a: "pencil", b: "Write" }
+      ]
+    }
+  ],
+
+  // الدرس ٢-٢: Helpers Team — قصة (Be tidy)
+  "g2e-2-2": [
+    {
+      type: "mcq",
+      objective: "تركيب: Where's the pencil? It's in/on/under the desk؛ القيمة: Be tidy",
+      level: "knowledge",
+      prompt: "Your books! Let's tidy up. It's under the ___.",
+      options: ["desk", "book", "pen", "cat"],
+      answer: 0
+    },
+    {
+      type: "sound-blend",
+      objective: "صوتٌ مقترن: ng (Unit 2 Lesson 2)",
+      level: "knowledge",
+      prompt: "Tap each card, then blend and choose the word.",
+      letters: ["k", "ing"],
+      soundOf: { k: "audio/en/phon-k.mp3", ing: "audio/en/phon-ing.mp3" },
+      blendAudio: "audio/en/blend-king.mp3",
+      options: ["king", "cat", "run"],
+      answer: 0
+    },
+    {
+      type: "sequence",
+      objective: "قصة Helpers Team؛ القيمة: Be tidy",
+      level: "reasoning",
+      prompt: "Put the story in order.",
+      steps: ["Polly! Stop!", "Oh, no! Your books!", "Let's tidy up.", "Well done, Atomic."]
+    },
+    {
+      type: "matching",
+      objective: "قصة Helpers Team",
+      level: "application",
+      prompt: "Match what's said to the reply.",
+      pairs: [
+        { a: "Your books!",                        b: "Let's tidy up." },
+        { a: "Where's my pen?",                    b: "It's under the desk." },
+        { a: "Your crayons.",                      b: "Thank you." },
+        { a: "Your scissors and your rulers.",     b: "Here you are." }
+      ]
+    },
+    {
+      type: "fill-blank",
+      objective: "تركيب: This is my pencil case./These are my books.",
+      level: "knowledge",
+      prompt: "Complete the sentence.",
+      text: "This is my pencil case. {} are my books.",
+      answers: ["These"],
+      distractors: ["This", "It"]
+    },
+    {
+      type: "memory",
+      objective: "القيمة: Be tidy",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "Where's my pen?", b: "It's under the desk." },
+        { a: "Let's tidy up.",  b: "Thank you, Atomic!" },
+        { a: "Your crayons.",   b: "Thank you." },
+        { a: "Your books!",     b: "Oh, no!" }
+      ]
+    }
+  ],
+
+  // الدرس ٢-٣: This is my pencil case — تدريب لغوي
+  "g2e-2-3": [
+    {
+      type: "mcq",
+      objective: "تركيب: This is my pencil case./These are my books.",
+      level: "knowledge",
+      prompt: "This is my pencil case. ___ are my rulers.",
+      options: ["These", "This", "It", "Is"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "تركيب: This is my pencil case./These are my books.",
+      level: "knowledge",
+      statement: "'These are my books' means more than one book.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "تركيب: This is my…/These are my…",
+      level: "application",
+      prompt: "Match one thing to more than one.",
+      pairs: [
+        { a: "pen",    b: "pens" },
+        { a: "book",   b: "books" },
+        { a: "ruler",  b: "rulers" },
+        { a: "crayon", b: "crayons" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تركيب: This is my…/These are my…",
+      level: "reasoning",
+      prompt: "Sort the sentences.",
+      groups: [
+        { name: "One thing",     items: ["This is my pen.", "This is my book."] },
+        { name: "More than one", items: ["These are my pens.", "These are my books."] }
+      ]
+    },
+    {
+      type: "sound-blend",
+      objective: "صوتٌ مقترن: oo القصير (Unit 2 Lesson 3)",
+      level: "knowledge",
+      prompt: "Tap each card, then blend and choose the word.",
+      letters: ["b", "ook"],
+      soundOf: { b: "audio/en/phon-b.mp3", ook: "audio/en/phon-ook.mp3" },
+      blendAudio: "audio/en/blend-book.mp3",
+      options: ["book", "bag", "big"],
+      answer: 0
+    },
+    {
+      type: "memory",
+      objective: "تركيب: This is my…/These are my…",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "pen",    b: "pens" },
+        { a: "book",   b: "books" },
+        { a: "ruler",  b: "rulers" },
+        { a: "crayon", b: "crayons" }
+      ]
+    }
+  ],
+
+  // الدرس ٢-٤: مهارات — تدريب استماع + صوت oo الطويل
+  "g2e-2-4": [
+    {
+      type: "mcq",
+      objective: "تركيب: Where's the pencil? It's in/on/under the desk.",
+      level: "knowledge",
+      prompt: "Where's the pencil? It's ___ the desk.",
+      options: ["on", "is", "are", "this"],
+      answer: 0
+    },
+    {
+      type: "sound-blend",
+      objective: "صوتٌ مقترن: oo الطويل (Unit 2 Lesson 4)",
+      level: "knowledge",
+      prompt: "Tap each card, then blend and choose the word.",
+      letters: ["m", "oon"],
+      soundOf: { m: "audio/en/phon-m.mp3", oon: "audio/en/phon-oon.mp3" },
+      blendAudio: "audio/en/blend-moon.mp3",
+      options: ["moon", "man", "mud"],
+      answer: 0
+    },
+    {
+      type: "matching",
+      objective: "تركيب: Where's the pencil? It's in/on/under the desk.",
+      level: "application",
+      prompt: "Match each word to what it means.",
+      pairs: [
+        { a: "in",    b: "Inside the box" },
+        { a: "on",    b: "On top of the table" },
+        { a: "under", b: "Below the desk" }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "تركيب: Where's the pencil? It's in/on/under the desk.",
+      level: "reasoning",
+      prompt: "Put the dialogue in order.",
+      steps: ["Where's the pencil?", "Is it on the desk?", "No, it isn't.", "It's under the desk."]
+    },
+    {
+      type: "classify",
+      objective: "صوتا oo القصير والطويل معاً",
+      level: "knowledge",
+      prompt: "Sort the words by their 'oo' sound.",
+      groups: [
+        { name: "Long 'oo' (moon)",  items: ["moon", "spoon"] },
+        { name: "Short 'oo' (book)", items: ["book", "foot"] }
+      ]
+    },
+    {
+      type: "memory",
+      objective: "تركيب: in/on/under",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "in",    b: "Inside" },
+        { a: "on",    b: "Top" },
+        { a: "under", b: "Below" }
+      ]
+    }
+  ],
+
+  // الدرس ٢-٥: مشروع — خطة مدرستي
+  "g2e-2-5": [
+    {
+      type: "sequence",
+      objective: "مشروع: خطة مدرستي",
+      level: "application",
+      prompt: "Put the project steps in order.",
+      steps: ["Draw a plan of your school.", "Write the names of the rooms.", "Show your classroom on the plan.", "Show your plan to the class."]
+    },
+    {
+      type: "mcq",
+      objective: "مراجعة مفردات الوحدة ضمن سياق مشروع خطة المدرسة",
+      level: "knowledge",
+      prompt: "Which room do you learn in?",
+      options: ["classroom", "kitchen", "garden", "shop"],
+      answer: 0
+    },
+    {
+      type: "matching",
+      objective: "مراجعة مفردات أدوات المدرسة",
+      level: "knowledge",
+      prompt: "Match each thing to what it does.",
+      pairs: [
+        { a: "bag",     b: "You carry your things in it." },
+        { a: "eraser",  b: "You rub out mistakes with it." },
+        { a: "ruler",   b: "You measure with it." },
+        { a: "scissors", b: "You cut with it." }
+      ]
+    },
+    {
+      type: "true-false",
+      objective: "مشروع: خطة مدرستي",
+      level: "knowledge",
+      statement: "A school plan shows where the rooms are.",
+      answer: true
+    },
+    {
+      type: "classify",
+      objective: "مراجعة مفردات أدوات المدرسة",
+      level: "reasoning",
+      prompt: "Sort the things.",
+      pics: true,
+      groups: [
+        { name: "Writing tools", items: ["pen", "pencil"] },
+        { name: "Furniture",     items: ["desk", "chair"] }
+      ]
+    },
+    {
+      type: "memory",
+      objective: "مراجعة مفردات أدوات المدرسة",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "bag",    b: "Carry" },
+        { a: "eraser", b: "Rub out" },
+        { a: "ruler",  b: "Measure" },
+        { a: "pencil", b: "Write" }
+      ]
+    }
+  ],
+
+  // الدرس ٢-٦: استعارة الأدوات — Borrowing things
+  "g2e-2-6": [
+    {
+      type: "mcq",
+      objective: "تركيب: Can I borrow your pen?",
+      level: "knowledge",
+      prompt: "Can I borrow your pen?",
+      options: ["Yes, of course.", "It's a pen.", "Stand up.", "I'm seven."],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "القيمة: Be tidy — borrowing and giving back",
+      level: "knowledge",
+      statement: "Borrowing things and giving them back is polite.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "تركيب: Can I borrow your…؟",
+      level: "application",
+      prompt: "Match what's asked to the reply.",
+      pairs: [
+        { a: "Can I borrow your ruler?",   b: "Yes, of course." },
+        { a: "Can I borrow your pencil?",  b: "Here you are." },
+        { a: "Thank you!",                 b: "You're welcome." },
+        { a: "Can I borrow your eraser?",  b: "Sure, here it is." }
+      ]
+    },
+    {
+      type: "fill-blank",
+      objective: "تركيب: Can I borrow your pen?",
+      level: "knowledge",
+      prompt: "Complete the question.",
+      text: "Can I {} your pen, please?",
+      answers: ["borrow"],
+      distractors: ["keep", "play"]
+    },
+    {
+      type: "classify",
+      objective: "تركيب: Can I borrow your…؟",
+      level: "reasoning",
+      prompt: "Sort the sentences.",
+      groups: [
+        { name: "Asking",    items: ["Can I borrow your pen?", "Can I borrow your ruler?"] },
+        { name: "Answering", items: ["Yes, of course.", "Here you are."] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "القيمة: Be tidy — borrowing things",
+      level: "knowledge",
+      prompt: "Which one is not about borrowing things?",
+      options: ["Can I borrow your pen?", "Yes, of course.", "Thank you!", "Stand up."],
+      answer: 3
+    }
+  ],
+
+  // الدرس ٢-٧: المراجعة — استعدّ للاختبار
+  "g2e-2-7": [
+    {
+      type: "mcq",
+      objective: "مراجعة تراكمية لمفردات الوحدة ٢",
+      level: "knowledge",
+      prompt: "Which one is a cupboard?",
+      pics: true,
+      options: ["cupboard", "desk", "chair", "bag"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مراجعة تراكمية لتراكيب الوحدة ٢",
+      level: "knowledge",
+      statement: "'Where's the pencil?' is a question about a place.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "مراجعة تراكمية لمفردات الوحدة ٢",
+      level: "knowledge",
+      prompt: "Match each thing to what it does.",
+      pairs: [
+        { a: "scissors", b: "You cut with it." },
+        { a: "ruler",    b: "You measure with it." },
+        { a: "eraser",   b: "You rub out mistakes with it." },
+        { a: "pencil sharpener", b: "You sharpen your pencil with it." }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "مراجعة تراكمية لأصوات الوحدة ٢ (or, ng, oo قصير, oo طويل)",
+      level: "reasoning",
+      prompt: "Sort the words by their sound.",
+      groups: [
+        { name: "'or' sound", items: ["corn", "fork"] },
+        { name: "'oo' sound", items: ["moon", "book"] }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "مراجعة تراكمية — Borrowing things",
+      level: "application",
+      prompt: "Put the dialogue in order.",
+      steps: ["Can I borrow your pen, please?", "Yes, of course.", "Thank you!", "You're welcome."]
+    },
+    {
+      type: "memory",
+      objective: "مراجعة تراكمية لمفردات الوحدة ٢",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "bag",    b: "Carry" },
+        { a: "eraser", b: "Rub out" },
+        { a: "ruler",  b: "Measure" },
+        { a: "pencil", b: "Write" }
+      ]
+    }
   ]
 };
