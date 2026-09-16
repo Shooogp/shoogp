@@ -17,7 +17,8 @@
       { "key": "g2-arabic-2", "band": ["#a888c8", "#8666a8"], "title": "أحب لغتي", "term": "الفصل الأول", "color": "bk-purple", "ic": "🪶", "isNew": false, "theme": "theme-arabic2b", "cover": "images/cover-g2-arabic-2.jpg" },
       { "key": "g2-dini-1", "band": ["#8fa83a", "#6d8528"], "title": "ديني حياتي", "term": "الفصل الأول", "color": "bk-green", "ic": "🕌", "isNew": false, "theme": "theme-dini2a", "cover": "images/cover-g2-dini-1.jpg" },
       { "key": "g2-dini-2", "band": ["#6d8a2c", "#52691c"], "title": "ديني حياتي", "term": "الفصل الأول", "color": "bk-green", "ic": "🕌", "isNew": false, "theme": "theme-dini2b", "cover": "images/cover-g2-dini-2.jpg" },
-      { "key": "g2-it", "band": ["#4C9090", "#006060"], "title": "عالمي الرقمي", "term": "الفصل الأول", "color": "bk-teal", "ic": "💻", "isNew": true, "onSale": true, "theme": "theme-it2", "cover": "images/cover-g2-it.jpg" }
+      { "key": "g2-it", "band": ["#4C9090", "#006060"], "title": "عالمي الرقمي", "term": "الفصل الأول", "color": "bk-teal", "ic": "💻", "isNew": true, "onSale": true, "theme": "theme-it2", "cover": "images/cover-g2-it.jpg" },
+      { "key": "g2-en", "band": ["#D8166C", "#AD1156"], "title": "اللغة الإنجليزية", "term": "الفصل الأول", "color": "bk-pink", "ic": "💬", "isNew": true, "onSale": false, "devOnly": true, "theme": "theme-en2", "cover": "images/cover-g2-en.jpg" }
     ],
     "الثالث": [
       { "key": "g3-sci", "band": ["#f26169", "#cf3a44"], "title": "العلوم", "term": "الفصل الأول", "color": "bk-red", "ic": "🔬", "isNew": false, "onSale": true, "theme": "theme-sci3", "cover": "images/cover-g3-sci.jpg" },

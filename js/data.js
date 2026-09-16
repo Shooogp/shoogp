@@ -25,7 +25,8 @@ window.DATA_FALLBACK = {
         { key:"g2-arabic-2", band:["#a888c8","#8666a8"], title:"أحب لغتي", term:"الفصل الأول", color:"bk-purple", ic:"🪶", isNew:false, theme:"theme-arabic2b", cover:"images/cover-g2-arabic-2.jpg" },
         { key:"g2-dini-1", band:["#8fa83a","#6d8528"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-green", ic:"🕌", isNew:false, theme:"theme-dini2a", cover:"images/cover-g2-dini-1.jpg" },
         { key:"g2-dini-2", band:["#6d8a2c","#52691c"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-green", ic:"🕌", isNew:false, theme:"theme-dini2b", cover:"images/cover-g2-dini-2.jpg" },
-        { key:"g2-it", band:["#4C9090","#006060"], title:"عالمي الرقمي", term:"الفصل الأول", color:"bk-teal", ic:"💻", isNew:true, onSale:true, theme:"theme-it2", cover:"images/cover-g2-it.jpg" }
+        { key:"g2-it", band:["#4C9090","#006060"], title:"عالمي الرقمي", term:"الفصل الأول", color:"bk-teal", ic:"💻", isNew:true, onSale:true, theme:"theme-it2", cover:"images/cover-g2-it.jpg" },
+        { key:"g2-en", band:["#D8166C","#AD1156"], title:"اللغة الإنجليزية", term:"الفصل الأول", color:"bk-pink", ic:"💬", isNew:true, onSale:false, devOnly:true, theme:"theme-en2", cover:"images/cover-g2-en.jpg" }
       ],
       /* ملاحظة: بطاقة علوم الثالث كانت مفقودة من هذا الاحتياط بينما هي في data/books.json —
          فكان الكتاب يختفي في وضع file:// وحده. أُضيفت هنا مع بطاقات الصف الجديدة. */
@@ -104,6 +105,56 @@ window.DATA_FALLBACK = {
       { unit:"Meg's Learning Club 2", lessons:[
         { title:"Shapes", file:"g1e-lc2-1", open:true },
         { title:"What are these?", file:"g1e-lc2-2", open:true }
+      ]}
+    ] },
+    "g2-en": { book:"اللغة الإنجليزية — الصف الثاني", units:[
+      { unit:"Welcome", lessons:[
+        { title:"Hello!", file:"g2e-0-1", open:false },
+        { title:"Numbers & Colours", file:"g2e-0-2", open:false }
+      ]},
+      { unit:"Look at my toys!", lessons:[
+        { title:"Look at my toys!", file:"g2e-1-1", open:false },
+        { title:"Helpers Team", file:"g2e-1-2", open:false },
+        { title:"Is it a swing?", file:"g2e-1-3", open:false },
+        { title:"Skills", file:"g2e-1-4", open:false },
+        { title:"Project: A toy museum poster", file:"g2e-1-5", open:false },
+        { title:"Sharing your toys", file:"g2e-1-6", open:false },
+        { title:"Review", file:"g2e-1-7", open:false }
+      ]},
+      { unit:"Atomic's Learning Club 1", lessons:[
+        { title:"Language booster 1", file:"g2e-lc1-1", open:false },
+        { title:"Natural Science: Our senses", file:"g2e-lc1-2", open:false }
+      ]},
+      { unit:"Where's my pen?", lessons:[
+        { title:"Where's my pen?", file:"g2e-2-1", open:false },
+        { title:"Helpers Team", file:"g2e-2-2", open:false },
+        { title:"This is my pencil case", file:"g2e-2-3", open:false },
+        { title:"Skills", file:"g2e-2-4", open:false },
+        { title:"Project: A plan of your school", file:"g2e-2-5", open:false },
+        { title:"Borrowing things", file:"g2e-2-6", open:false },
+        { title:"Review", file:"g2e-2-7", open:false }
+      ]},
+      { unit:"Move your body!", lessons:[
+        { title:"Move your body!", file:"g2e-3-1", open:false },
+        { title:"Helpers Team", file:"g2e-3-2", open:false },
+        { title:"Move your body! (2)", file:"g2e-3-3", open:false },
+        { title:"Skills", file:"g2e-3-4", open:false },
+        { title:"Project: A festivals poster", file:"g2e-3-5", open:false },
+        { title:"Paying a compliment", file:"g2e-3-6", open:false },
+        { title:"Review", file:"g2e-3-7", open:false }
+      ]},
+      { unit:"Meet my family", lessons:[
+        { title:"Meet my family", file:"g2e-4-1", open:false },
+        { title:"Helpers Team", file:"g2e-4-2", open:false },
+        { title:"My face", file:"g2e-4-3", open:false },
+        { title:"Skills", file:"g2e-4-4", open:false },
+        { title:"Project: A description of a picture", file:"g2e-4-5", open:false },
+        { title:"Introducing family and friends", file:"g2e-4-6", open:false },
+        { title:"Review", file:"g2e-4-7", open:false }
+      ]},
+      { unit:"Atomic's Learning Club 2", lessons:[
+        { title:"Language booster 2", file:"g2e-lc2-1", open:false },
+        { title:"Social Studies: In my town", file:"g2e-lc2-2", open:false }
       ]}
     ] },
     "g1-sci": { book:"العلوم — الصف الأول", units:[
