@@ -381,12 +381,110 @@ function shuffle(a){return a.map(v=>[Math.random(),v]).sort((x,y)=>x[0]-y[0]).ma
 
 // تغذية راجعة موحّدة: نجاح (صوت صحيح + رفع الصاروخ) / إخفاق (اختناق المحرّك + انزلاق)
 // المكافأة هي رحلة الصاروخ (onAnswer)؛ أُزيل نظام النجوم — الوسيط stars مُهمَل (للتوافق فقط)
-function qWin(fb,msg,stars){fb.textContent=msg||'🎉 أحسنت!';fb.className='fb qfb good';playCorrectSound();if(window.RocketJourney)RocketJourney.onAnswer(true);}
+function qWin(fb,msg,stars){fb.textContent=msg||T('🎉 أحسنت!');fb.className='fb qfb good';playCorrectSound();if(window.RocketJourney)RocketJourney.onAnswer(true);}
 // عند الخطأ: يُكتم wrong.mp3 ما دام الصاروخ مركَّباً (اختناق المحرّك هو تنبيه الخطأ)؛
 // أي واجهة بلا صاروخ تُبقي wrong.mp3 يعمل (بقية دروس المنصّة كلها تحوي الصاروخ الآن)
-function qFail(fb,msg){fb.textContent=msg||'حاول مرة أخرى';fb.className='fb qfb bad';if(!(window.RocketJourney&&RocketJourney.isActive&&RocketJourney.isActive()))playWrongSound();if(window.RocketJourney)RocketJourney.onAnswer(false);}
+function qFail(fb,msg){fb.textContent=msg||T('حاول مرة أخرى');fb.className='fb qfb bad';if(!(window.RocketJourney&&RocketJourney.isActive&&RocketJourney.isActive()))playWrongSound();if(window.RocketJourney)RocketJourney.onAnswer(false);}
 
 const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل','slider':'🎚️ الشريط المتدرج','memory':'🎴 بطاقات الذاكرة','lens':'🔍 العدسة المكبّرة','equation-builder':'🧮 بناء المعادلة','number-line':'📏 خط الأعداد','hundred-chart':'💯 لوحة المائة','array':'🔲 المصفوفات','compare':'⚖️ المقارنة','pattern':'🔁 إكمال النمط','count-tap':'🖐️ العد بالنقر','place-value':'🧱 القيمة المنزلية','clock':'🕐 الساعة التفاعلية','measure-tool':'📐 أداة القياس','money':'🪙 النقود العُمانية','symmetry':'🪞 خط التماثل','chart-read':'📊 التمثيل البياني','tashkeel':'ـَ التشكيل','sentence':'📝 ترتيب الجملة','sun-moon':'☀️ شمسية وقمرية','letter-picture':'🔠 الحرف والصورة','judge-reason':'⚖️ الحكم والتعليل','listen-locate':'🎧 أستمع وأحدّد','maze':'🌀 حلّ المتاهة','sound-blend':'🧩 دمج الأصوات'};
+
+/* ═══ لغةُ واجهةِ السؤال — الإنجليزيةُ في مادّةِ اللغةِ الإنجليزيةِ وحدَها ═══
+   قرارُ المالك ٢٠٢٦-٠٩-١٦: ما يراهُ الطالبُ **داخلَ فريمِ السؤالِ** في كتابِ الإنجليزيةِ
+   يُكتَبُ بالإنجليزية (الشارتانِ على الفريمِ · أزرارُ الملعبِ · رسائلُ التغذيةِ الراجعة)،
+   انسجاماً مع الانغماسِ الكاملِ في `CLAUDE.md` §نطاقِ المواد. **وما خارجَ الفريمِ يبقى
+   عربياً** (التنقّلُ والرجوعُ وترويسةُ الشاشة) — حَشوٌ مشتركٌ عبرَ كلِّ المواد.
+
+   **المادّةُ من `shoogpSubject()`** (‏`_curSubject` في js/shoogp-ui.js، يُضبَطُ في ترقيعِ
+   `openLesson`) لا من لاحقةِ المفتاح — فلا مصدرَ ثانٍ للحقيقةِ يَنحرفُ لاحقاً. وبلا
+   المادّةِ (‏`renderQuestions` مستدعاةً خارجَ سياقِ كتاب) يبقى العربيُّ افتراضاً آمناً.
+
+   ⚠️ **مفتاحُ القاموسِ هو النصُّ العربيُّ نفسُه** — فالمفتاحُ الناقصُ يُرجِعُ العربيَّ
+   كما هو (تدهورٌ لطيفٌ لا عطل)، **لكن تغييرَ حرفٍ في نصٍّ عربيٍّ بمكانِ ندائِه يُسقِطُ
+   ترجمتَه صامتاً**. فأيُّ تعديلٍ على نصٍّ هنا يُتبَعُ بتعديلِ مفتاحِه في هذا الجدول. */
+const UI_EN = {
+  /* الشارتانِ على الفريم */
+  'السؤال %1 من %2':'Question %1 of %2',
+  '✅ اختيار من متعدد':'✅ Multiple choice',
+  '⚖️ صواب أو خطأ':'⚖️ True or false',
+  '🔗 توصيل':'🔗 Matching',
+  '🗂️ تصنيف':'🗂️ Sorting',
+  '✏️ ملء الفراغ':'✏️ Fill the gap',
+  '🔢 ترتيب تسلسلي':'🔢 Put in order',
+  '🎴 بطاقات الذاكرة':'🎴 Memory cards',
+  '🎯 تحديد الأجزاء':'🎯 Find and click',
+  '🚫 الاستبعاد':'🚫 Odd one out',
+  '🎨 تلوين بالتعليمات':'🎨 Colour it',
+  '🧩 دمج الأصوات':'🧩 Blend the sounds',
+  '🌿 سحب وإفلات':'🌿 Drag and drop',
+  '🔤 ترتيب الحروف':'🔤 Make the word',
+  '🔍 اكتشف الخطأ':'🔍 Find the mistake',
+  '🧠 خريطة ذهنية':'🧠 Mind map',
+  '🔊 سؤال صوتي':'🔊 Listen and choose',
+  /* أزرارُ الملعبِ وعناوينُ البنوك */
+  'تحقّق ✔':'Check ✔',
+  'إعادة ↺':'Reset ↺',
+  'صواب ✔':'True ✔',
+  'خطأ ✘':'False ✘',
+  'استمع':'Listen',
+  'استمع للكلمة':'Listen to the word',
+  'العناصر:':'Items:',
+  'الكلمات:':'Words:',
+  'البطاقات:':'Cards:',
+  'الحروف:':'Letters:',
+  'اسحب البطاقات لترتيبها':'Drag the cards into order',
+  /* التغذيةُ الراجعة */
+  '🎉 أحسنت!':'🎉 Well done!',
+  'حاول مرة أخرى':'Try again',
+  '🎉 إجابة صحيحة!':'🎉 Correct!',
+  'ليست الصحيحة، جرّب خياراً آخر':'Not quite — try another one',
+  'الإجابة غير صحيحة، فكّر مجدداً':'Not quite — think again',
+  '🌟 ممتاز! أكملت التوصيل':'🌟 Excellent! All matched',
+  'ليست الإجابة الصحيحة، حاول مجدداً':'Not quite — try again',
+  '🎉 أحسنت! كل العناصر في مجموعتها':'🎉 Well done! Everything is in the right group',
+  'راجع التصنيف — الصحيح %1 من %2':'Check your groups — %1 of %2 correct',
+  '🎉 أحسنت! كل الفراغات صحيحة':'🎉 Well done! All the gaps are right',
+  'راجع الفراغات — الصحيح %1 من %2':'Check the gaps — %1 of %2 correct',
+  '🎉 أحسنت! الترتيب صحيح':'🎉 Well done! The order is right',
+  'راجع الترتيب — الصحيح %1 من %2':'Check the order — %1 of %2 correct',
+  'راجع الترتيب':'Check the order',
+  '🎉 أحسنت! كشفت كل الأزواج':'🎉 Well done! You found all the pairs',
+  '🎯 أحسنت! نقرت على المكان الصحيح':'🎯 Well done! That is the right spot',
+  'ليس هنا، حاول مرة أخرى':'Not there — try again',
+  '🔍 أحسنت! اكتشفت الخطأ':'🔍 Well done! You found the mistake',
+  'ليس هنا الخطأ، دقّق أكثر':'That is not the mistake — look again',
+  '🎉 أحسنت! هذا هو الدخيل — ':'🎉 Well done! That is the odd one out — ',
+  '🎉 أحسنت! هذا هو الدخيل':'🎉 Well done! That is the odd one out',
+  'هذا العنصر ينتمي للمجموعة، ابحث عن الدخيل':'That one belongs to the group — find the odd one out',
+  '🎨 أحسنت! لوّنت كل جزء باللون الصحيح':'🎨 Well done! Every part has the right colour',
+  'راجع الألوان — الصحيح %1 من %2':'Check the colours — %1 of %2 correct',
+  'اختر لوناً أوّلاً من اللوحة 🎨':'Pick a colour first 🎨',
+  '🎉 أحسنت! كوّنت الكلمة: ':'🎉 Well done! You made the word: ',
+  '🎉 أحسنت! هذا هو مصدر الصوت':'🎉 Well done! That is the sound',
+  'ليس هذا مصدر الصوت، استمع مرّة أخرى':'Not that one — listen again'
+};
+/* هل واجهةُ السؤالِ إنجليزيةٌ الآن؟ */
+function enUI(){
+  return (typeof window.shoogpSubject==='function') && window.shoogpSubject()==='en';
+}
+/* `T(نصٌّ عربيّ, …أرقام)` — يترجمُ عندَ الاقتضاء، ويستبدلُ `%1`/`%2` بالأرقام.
+   والرقمُ يتبعُ لغةَ النصّ: هنديٌّ في العربية (قاعدةُ المنصّة) ولاتينيٌّ في الإنجليزية —
+   فـ«Question ١ of ٦» عبثٌ، والمخالفةُ مقصودةٌ محصورةٌ بهذه المادّة. */
+function T(ar, ...vals){
+  const en = enUI();
+  let s = en ? (UI_EN[ar] || ar) : ar;
+  if(vals.length) s = s.replace(/%(\d)/g, (_, i) => en ? String(vals[i-1]) : arNum(vals[i-1]));
+  return s;
+}
+/* شريطُ أزرارِ الملعبِ — كانَ مكرَّراً حرفياً في ٣٠ موضعاً عبرَ كلِّ المواد، فصارَ
+   دالّةً واحدةً تترجمُ نفسَها. (‏`actionsHTML` بزرَّي التحقّقِ والإعادة، و`resetBarHTML`
+   بزرِّ الإعادةِ وحدَه حيثُ لا تحقّقَ يدويّ.) */
+function actionsHTML(){
+  return '<div class="actions"><button class="btn btn-check">'+T('تحقّق ✔')+
+         '</button><button class="btn btn-reset">'+T('إعادة ↺')+'</button></div>';
+}
+function resetBarHTML(){
+  return '<div class="actions"><button class="btn btn-reset">'+T('إعادة ↺')+'</button></div>';
+}
 
 /* تحويل الأرقام إلى هندية (عربية) للعرض — قاعدةُ المنصّة: **كلُّ رقمٍ يراه المستخدمُ
    بالأرقامِ الهندية**. يُستعمَلُ في محرّكِ الأسئلةِ **وفي طبقةِ التنقّلِ أعلاه أيضاً**
@@ -418,7 +516,7 @@ function renderQuestions(ls){
     const fn=R[q.type]; if(!fn) return;
     const card=document.createElement('div');
     card.className='card-box qcard';
-    card.innerHTML=`<div class="qhead"><span class="qprogress">السؤال ${arNum(i+1)} من ${arNum(qs.length)}</span><span class="qtype">${Q_LABEL[q.type]||''}</span></div>`+
+    card.innerHTML=`<div class="qhead"><span class="qprogress">${T('السؤال %1 من %2', i+1, qs.length)}</span><span class="qtype">${T(Q_LABEL[q.type]||'')}</span></div>`+
       `<h3 class="qprompt">${q.prompt||q.statement||''}</h3>`+
       `<div class="qbody"></div><div class="fb qfb"></div>`;
     fn(q, card.querySelector('.qbody'), card.querySelector('.qfb'));
@@ -614,9 +712,9 @@ function renderDragDrop(q, body, fb){
     `<div class="dnd"><div class="stage stage-label"${q.bg?` style="background:${q.bg}"`:''}>`+
     media + boxes +
     `</div>`+
-    `<div class="bank"><div class="bt">البطاقات:</div>`+
+    `<div class="bank"><div class="bt">${T('البطاقات:')}</div>`+
     shuffle(q.targets.map(t=>t.answer)).map(w=>`<div class="chip" draggable="true" data-w="${w}">${w}</div>`).join('')+
-    `</div></div><div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
+    `</div></div>${actionsHTML()}`;
   wireAudioPlayer(body,q.audio);
   const stage=body.querySelector('.stage'), imgEl=body.querySelector('.labelimg');
   const dndEl=body.querySelector('.dnd');
@@ -822,7 +920,7 @@ function renderMatching(q, body, fb){
   body.innerHTML=(q.audio?`<div class="qaudio">`+audioPlayerHTML(q.audio)+`</div>`:'')+
     `<div class="matchwrap"><svg class="matchsvg"></svg>`+
     `<div class="match"><div class="mcol mcolL"></div><div class="mcol mcolR"></div></div></div>`+
-    `<div class="actions"><button class="btn btn-reset">إعادة ↺</button></div>`;
+    `${resetBarHTML()}`;
   wireAudioPlayer(body,q.audio);
   const wrap=body.querySelector('.matchwrap'), svg=body.querySelector('.matchsvg');
   const L=body.querySelector('.mcolL'), Rr=body.querySelector('.mcolR');
@@ -872,8 +970,8 @@ function renderMatching(q, body, fb){
           if(twin){ twin.dataset.k=d.dataset.k; d.dataset.k=sel.dataset.k; }
         }
         drawLink(sel,d);sel.classList.add('matched');d.classList.add('matched');sel.classList.remove('selected');sel=null;done++;playCorrectSound();
-        if(done===q.pairs.length) qWin(fb,'🌟 ممتاز! أكملت التوصيل',1);}
-      else{qFail(fb,'ليست الإجابة الصحيحة، حاول مجدداً');d.style.background='#fde2e2';setTimeout(()=>d.style.background='',500);}};Rr.appendChild(d);});
+        if(done===q.pairs.length) qWin(fb,T('🌟 ممتاز! أكملت التوصيل'),1);}
+      else{qFail(fb,T('ليست الإجابة الصحيحة، حاول مجدداً'));d.style.background='#fde2e2';setTimeout(()=>d.style.background='',500);}};Rr.appendChild(d);});
   body.querySelector('.btn-reset').onclick=()=>renderMatching(q,body,fb);
 }
 
@@ -890,7 +988,7 @@ function renderMatching(q, body, fb){
    وإن غابَ المسارُ لم يُبنَ شيءٌ أصلاً، وإن فشلَ التحميلُ ابتُلعَ الخطأُ فلا يكسرُ السؤال. */
 function audioPlayerHTML(src, label){
   if(!src) return '';
-  return `<button class="btn aplay" type="button">🔊 ${label||'استمع'}</button>`;
+  return `<button class="btn aplay" type="button">🔊 ${label||T('استمع')}</button>`;
 }
 function wireAudioPlayer(scope, src){
   if(!src) return;
@@ -926,18 +1024,18 @@ function renderMcq(q, body, fb){
     if(done)return;
     const i=+btn.dataset.i;
     const ok=Array.isArray(q.answer) ? q.answer.indexOf(i)>=0 : i===q.answer;
-    if(ok){done=true;btn.classList.add('correct');body.querySelectorAll('.opt').forEach(b=>b.disabled=true);qWin(fb,'🎉 إجابة صحيحة!',2);}
-    else{btn.classList.add('wrong');btn.disabled=true;qFail(fb,'ليست الصحيحة، جرّب خياراً آخر');}
+    if(ok){done=true;btn.classList.add('correct');body.querySelectorAll('.opt').forEach(b=>b.disabled=true);qWin(fb,T('🎉 إجابة صحيحة!'),2);}
+    else{btn.classList.add('wrong');btn.disabled=true;qFail(fb,T('ليست الصحيحة، جرّب خياراً آخر'));}
   };});
 }
 
 /* ④ صواب وخطأ: statement + answer (true/false) */
 function renderTrueFalse(q, body, fb){
   body.innerHTML=(q.audio?`<div class="qaudio">`+audioPlayerHTML(q.audio)+`</div>`:'')+
-    `<div class="tf-btns"><button class="btn tf tf-t">صواب ✔</button><button class="btn tf tf-f">خطأ ✘</button></div>`;
+    `<div class="tf-btns"><button class="btn tf tf-t">${T('صواب ✔')}</button><button class="btn tf tf-f">${T('خطأ ✘')}</button></div>`;
   wireAudioPlayer(body,q.audio);
   let done=false;
-  const judge=(val,btn)=>{if(done)return;if(val===q.answer){done=true;btn.classList.add('tf-correct');qWin(fb,'🎉 إجابة صحيحة!',2);}else{btn.classList.add('tf-wrong');qFail(fb,'الإجابة غير صحيحة، فكّر مجدداً');}};
+  const judge=(val,btn)=>{if(done)return;if(val===q.answer){done=true;btn.classList.add('tf-correct');qWin(fb,T('🎉 إجابة صحيحة!'),2);}else{btn.classList.add('tf-wrong');qFail(fb,T('الإجابة غير صحيحة، فكّر مجدداً'));}};
   body.querySelector('.tf-t').onclick=e=>judge(true,e.currentTarget);
   body.querySelector('.tf-f').onclick=e=>judge(false,e.currentTarget);
 }
@@ -1021,8 +1119,8 @@ function renderHotspot(q, body, fb){
     const {markX,markY,px,py}=figClickPoint(fig,e);
     if(px<0||px>100||py<0||py>100) return;
     const mark=document.createElement('div');mark.className='hs-mark';mark.style.left=markX+'%';mark.style.top=markY+'%';
-    if(hitsSpot(q.spot,px,py)){done=true;mark.classList.add('hit');qWin(fb,'🎯 أحسنت! نقرت على المكان الصحيح',2);}
-    else{mark.classList.add('miss');qFail(fb,'ليس هنا، حاول مرة أخرى');setTimeout(()=>mark.remove(),800);}
+    if(hitsSpot(q.spot,px,py)){done=true;mark.classList.add('hit');qWin(fb,T('🎯 أحسنت! نقرت على المكان الصحيح'),2);}
+    else{mark.classList.add('miss');qFail(fb,T('ليس هنا، حاول مرة أخرى'));setTimeout(()=>mark.remove(),800);}
     fig.appendChild(mark);
   };
 }
@@ -1040,8 +1138,8 @@ function renderFindError(q, body, fb){
     const {markX,markY,px,py}=figClickPoint(fig,e);
     if(px<0||px>100||py<0||py>100) return;
     const mark=document.createElement('div');mark.className='hs-mark';mark.style.left=markX+'%';mark.style.top=markY+'%';
-    if(hitsSpot(q.spot,px,py)){done=true;mark.classList.add('hit');qWin(fb,'🔍 أحسنت! اكتشفت الخطأ',2);}
-    else{mark.classList.add('miss');qFail(fb,'ليس هنا الخطأ، دقّق أكثر');setTimeout(()=>mark.remove(),800);}
+    if(hitsSpot(q.spot,px,py)){done=true;mark.classList.add('hit');qWin(fb,T('🔍 أحسنت! اكتشفت الخطأ'),2);}
+    else{mark.classList.add('miss');qFail(fb,T('ليس هنا الخطأ، دقّق أكثر'));setTimeout(()=>mark.remove(),800);}
     fig.appendChild(mark);
   };
 }
@@ -1067,8 +1165,8 @@ function renderAudioQ(q, body, fb){
   let done=false;
   body.querySelectorAll('.aopt').forEach(btn=>{ btn.onclick=()=>{
     if(done)return;
-    if(+btn.dataset.i===q.answer){done=true;btn.classList.add('correct');body.querySelectorAll('.aopt').forEach(b=>b.disabled=true);qWin(fb,'🎉 أحسنت! هذا هو مصدر الصوت',2);}
-    else{btn.classList.add('wrong');btn.disabled=true;qFail(fb,'ليس هذا مصدر الصوت، استمع مرّة أخرى');}
+    if(+btn.dataset.i===q.answer){done=true;btn.classList.add('correct');body.querySelectorAll('.aopt').forEach(b=>b.disabled=true);qWin(fb,T('🎉 أحسنت! هذا هو مصدر الصوت'),2);}
+    else{btn.classList.add('wrong');btn.disabled=true;qFail(fb,T('ليس هذا مصدر الصوت، استمع مرّة أخرى'));}
   };});
 }
 
@@ -1101,8 +1199,8 @@ function renderSoundBlend(q, body, fb){
   body.querySelectorAll('.opts .opt').forEach(btn=>{ btn.onclick=()=>{
     if(done)return;
     const i=+btn.dataset.i;
-    if(i===q.answer){done=true;btn.classList.add('correct');body.querySelectorAll('.opts .opt').forEach(b=>b.disabled=true);qWin(fb,'🎉 إجابة صحيحة!',2);}
-    else{btn.classList.add('wrong');btn.disabled=true;qFail(fb,'ليست الصحيحة، جرّب خياراً آخر');}
+    if(i===q.answer){done=true;btn.classList.add('correct');body.querySelectorAll('.opts .opt').forEach(b=>b.disabled=true);qWin(fb,T('🎉 إجابة صحيحة!'),2);}
+    else{btn.classList.add('wrong');btn.disabled=true;qFail(fb,T('ليست الصحيحة، جرّب خياراً آخر'));}
   };});
 }
 
@@ -1158,8 +1256,8 @@ function renderSequence(q, body, fb){
   let order=shuffle(correct);
   if(correct.length>1){ let g=0; while(order.every((s,i)=>s===correct[i]) && g++<20) order=shuffle(correct); }
   body.innerHTML=(q.audio?`<div class="qaudio">`+audioPlayerHTML(q.audio)+`</div>`:'')+
-    `<div class="seq"><div class="seq-hint">اسحب البطاقات لترتيبها</div><ol class="seqlist"></ol></div>`+
-    `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
+    `<div class="seq"><div class="seq-hint">${T('اسحب البطاقات لترتيبها')}</div><ol class="seqlist"></ol></div>`+
+    `${actionsHTML()}`;
   wireAudioPlayer(body,q.audio);
   const list=body.querySelector('.seqlist');
   order.forEach(txt=>{
@@ -1196,8 +1294,8 @@ function renderSequence(q, body, fb){
   body.querySelector('.btn-check').onclick=()=>{
     const cur=items(); let ok=0;
     cur.forEach((li,i)=>{ if(li.dataset.k===correct[i]){li.classList.add('correct');ok++;} else li.classList.add('wrong'); });
-    if(ok===correct.length) qWin(fb,'🎉 أحسنت! الترتيب صحيح',3);
-    else qFail(fb,`راجع الترتيب — الصحيح ${arNum(ok)} من ${arNum(correct.length)}`);
+    if(ok===correct.length) qWin(fb,T('🎉 أحسنت! الترتيب صحيح'),3);
+    else qFail(fb,T('راجع الترتيب — الصحيح %1 من %2', ok, correct.length));
   };
   body.querySelector('.btn-reset').onclick=()=>renderSequence(q,body,fb);
 }
@@ -1255,10 +1353,10 @@ function renderClassify(q, body, fb){
     `<div class="grp"><div class="grp-h">${g.name}</div><div class="grp-drop" data-i="${i}" data-name="${g.name}"></div></div>`).join('');
   body.innerHTML=(q.audio?`<div class="qaudio">`+audioPlayerHTML(q.audio)+`</div>`:'')+
     `<div class="classify"><div class="grp-row">${groupsHtml}</div>`+
-    `<div class="bank clsbank"><div class="bt">العناصر:</div><div class="chips">`+
+    `<div class="bank clsbank"><div class="bt">${T('العناصر:')}</div><div class="chips">`+
     all.map(w=>{const f=qFace(q,w);return `<div class="chip${f.cls}" draggable="true" data-w="${w}">${f.html}</div>`;}).join('')+
     `</div></div></div>`+
-    `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
+    `${actionsHTML()}`;
   wireAudioPlayer(body,q.audio);
   let dragged=null;
   const clearMark=()=>body.querySelectorAll('.chip').forEach(c=>c.classList.remove('ok','no'));
@@ -1282,8 +1380,8 @@ function renderClassify(q, body, fb){
         else{c.classList.add('no');c.classList.remove('ok');}
       });
     });
-    if(ok===total) qWin(fb,'🎉 أحسنت! كل العناصر في مجموعتها',3);
-    else qFail(fb,`راجع التصنيف — الصحيح ${arNum(ok)} من ${arNum(total)}`);
+    if(ok===total) qWin(fb,T('🎉 أحسنت! كل العناصر في مجموعتها'),3);
+    else qFail(fb,T('راجع التصنيف — الصحيح %1 من %2', ok, total));
   };
   body.querySelector('.btn-reset').onclick=()=>renderClassify(q,body,fb);
 }
@@ -1331,7 +1429,7 @@ function renderColor(q, body, fb){
         `<div class="figwrap csvg">${q.svg}</div>`+
       `</div></div>`+
     `</div>`+
-    `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
+    `${actionsHTML()}`;
   wireAudioPlayer(body,q.audio);
   const area=body.querySelector('.csvg');
   let chosen=null;
@@ -1348,7 +1446,7 @@ function renderColor(q, body, fb){
   // تلوين جزء عند الضغط (بعد اختيار لون)
   body.querySelectorAll('.cpart').forEach(part=>{
     part.addEventListener('click',()=>{
-      if(!chosen){ fb.textContent='اختر لوناً أوّلاً من اللوحة 🎨'; fb.className='fb qfb'; return; }
+      if(!chosen){ fb.textContent=T('اختر لوناً أوّلاً من اللوحة 🎨'); fb.className='fb qfb'; return; }
       partsOf(part.dataset.name).forEach(el=>{
         el.style.fill=chosen; el.dataset.fill=chosen; el.classList.remove('cwrong');
       });
@@ -1362,8 +1460,8 @@ function renderColor(q, body, fb){
       if(norm(els[0].dataset.fill)===norm(pt.color)){ ok++; els.forEach(el=>el.classList.remove('cwrong')); }
       else els.forEach(el=>el.classList.add('cwrong'));
     });
-    if(ok===need && need) qWin(fb,'🎨 أحسنت! لوّنت كل جزء باللون الصحيح',3);
-    else qFail(fb,`راجع الألوان — الصحيح ${arNum(ok)} من ${arNum(need)}`);
+    if(ok===need && need) qWin(fb,T('🎨 أحسنت! لوّنت كل جزء باللون الصحيح'),3);
+    else qFail(fb,T('راجع الألوان — الصحيح %1 من %2', ok, need));
   };
   body.querySelector('.btn-reset').onclick=()=>renderColor(q,body,fb);
 }
@@ -1418,7 +1516,7 @@ function renderPuzzle(q, body, fb){
     `<div class="pzboard" style="grid-template-columns:repeat(${cols},1fr);grid-template-rows:repeat(${rows},1fr)">${slots}</div>`+
     `<div class="bank pzbank"><div class="bt">القطع:</div><div class="chips pztray">${pieces}</div></div>`+
     `</div>`+
-    `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
+    `${actionsHTML()}`;
   const board=body.querySelector('.pzboard'), tray=body.querySelector('.pztray');
   if(q.bg) board.style.background=q.bg;
   // نسبة اللوح = نسبة الصورة الحقيقية، وحجم قطع الصينية = حجم خانة اللوح (يُحدَّث مع تغيّر القياس)
@@ -1570,17 +1668,17 @@ function renderFillBlank(q, body, fb){
   sentence+='</p>';
   const bankWords=shuffle(q.answers.concat(q.distractors||[]));
   body.innerHTML=`<div class="fill">${sentence}`+
-    `<div class="bank fillbank"><div class="bt">الكلمات:</div><div class="chips">`+
+    `<div class="bank fillbank"><div class="bt">${T('الكلمات:')}</div><div class="chips">`+
     bankWords.map(w=>`<div class="chip" draggable="true" data-w="${w}">${w}</div>`).join('')+
     `</div></div></div>`+
-    `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
+    `${actionsHTML()}`;
   wireBank(body, { chip:'.chip', slot:'.blank', empty:'______' });
   body.querySelector('.btn-check').onclick=()=>{
     const bls=body.querySelectorAll('.blank'); let ok=0;
     bls.forEach(bl=>{ if(bl.dataset.placed===bl.dataset.answer){bl.classList.add('correct');bl.classList.remove('wrong');ok++;}
       else{bl.classList.add('wrong');bl.classList.remove('correct');} });
-    if(ok===bls.length) qWin(fb,'🎉 أحسنت! كل الفراغات صحيحة',3);
-    else qFail(fb,`راجع الفراغات — الصحيح ${arNum(ok)} من ${arNum(bls.length)}`);
+    if(ok===bls.length) qWin(fb,T('🎉 أحسنت! كل الفراغات صحيحة'),3);
+    else qFail(fb,T('راجع الفراغات — الصحيح %1 من %2', ok, bls.length));
   };
   body.querySelector('.btn-reset').onclick=()=>renderFillBlank(q,body,fb);
 }
@@ -1593,8 +1691,8 @@ function renderExclude(q, body, fb){
   let done=false;
   body.querySelectorAll('.excl-opt').forEach(btn=>{btn.onclick=()=>{
     if(done)return;
-    if(+btn.dataset.i===q.answer){done=true;btn.classList.add('correct');body.querySelectorAll('.excl-opt').forEach(b=>b.disabled=true);qWin(fb, q.reason ? '🎉 أحسنت! هذا هو الدخيل — '+q.reason : '🎉 أحسنت! هذا هو الدخيل',2);}
-    else{btn.classList.add('wrong');btn.disabled=true;qFail(fb,'هذا العنصر ينتمي للمجموعة، ابحث عن الدخيل');}
+    if(+btn.dataset.i===q.answer){done=true;btn.classList.add('correct');body.querySelectorAll('.excl-opt').forEach(b=>b.disabled=true);qWin(fb, q.reason ? T('🎉 أحسنت! هذا هو الدخيل — ')+q.reason : T('🎉 أحسنت! هذا هو الدخيل'),2);}
+    else{btn.classList.add('wrong');btn.disabled=true;qFail(fb,T('هذا العنصر ينتمي للمجموعة، ابحث عن الدخيل'));}
   };});
 }
 
@@ -1610,10 +1708,10 @@ function renderArrange(q, body, fb){
   const out=renderTokenOrder(q, body, fb, {
     target, scatter,
     wrapClass:'arrange', slotClass:'', chipClass:'',
-    bankTitle:'الحروف:',
+    bankTitle:T('الحروف:'),
     reveal:q.word,
-    win:'🎉 أحسنت! كوّنت الكلمة: '+q.word,
-    fail:'راجع الترتيب',
+    win:T('🎉 أحسنت! كوّنت الكلمة: ')+q.word,
+    fail:T('راجع الترتيب'),
     again:()=>renderArrange(q,body,fb)
   });
   /* `audio` (اختياريّ) — يسمعُ الطالبُ الكلمةَ ثمّ يرتّبُ حروفَها، فيخدمُ القضايا الإملائية.
@@ -1623,7 +1721,7 @@ function renderArrange(q, body, fb){
   if(q.audio){
     const bar=document.createElement('div');
     bar.className='qaudio';
-    bar.innerHTML=audioPlayerHTML(q.audio,'استمع للكلمة');
+    bar.innerHTML=audioPlayerHTML(q.audio,T('استمع للكلمة'));
     body.insertBefore(bar, body.firstChild);
     wireAudioPlayer(bar,q.audio);
   }
@@ -1647,7 +1745,7 @@ function renderTokenOrder(q, body, fb, cfg){
     `<div class="bank arrbank"><div class="bt">${cfg.bankTitle}</div><div class="chips lbank">`+
     bank.map(c=>`<div class="chip lchip ${cfg.chipClass}" draggable="true" data-w="${c}">${c}</div>`).join('')+
     `</div></div></div>`+
-    `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
+    `${actionsHTML()}`;
   let dragged=null, done=false;
   const bankEl=body.querySelector('.lbank');
   const clearMark=()=>body.querySelectorAll('.lchip').forEach(c=>c.classList.remove('ok','no'));
@@ -1707,11 +1805,11 @@ function renderMindmap(q, body, fb){
     `<svg class="mmlines"></svg>`+
     `<div class="mm-center">${q.center||''}</div>`+
     `<div class="mm-branches">${branchesHtml}</div></div>`+
-    `<div class="bank mmbank"><div class="bt">الكلمات:</div><div class="chips mmchips">`+
+    `<div class="bank mmbank"><div class="bt">${T('الكلمات:')}</div><div class="chips mmchips">`+
     bankWords.map(w=>{const f=qFace(q,w);
       return `<div class="chip mmchip${f.cls}" draggable="true" data-w="${w}">${f.html}</div>`;}).join('')+
     `</div></div></div>`+
-    `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
+    `${actionsHTML()}`;
   // رسم خطوط منحنية من أسفل العقدة المركزية إلى أعلى كل فرع (دقيقة على كل الأحجام)
   const stage=body.querySelector('.mm-stage'), svg=body.querySelector('.mmlines'), center=body.querySelector('.mm-center');
   const NS='http://www.w3.org/2000/svg';
@@ -1805,7 +1903,7 @@ function renderSlider(q, body, fb){
       `<div class="sld-ends"><span>${arNum(min)}${unit}</span><span>${arNum(max)}${unit}</span></div>`+
     `</div>`+
     `</div>`+
-    `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
+    `${actionsHTML()}`;
   const track=body.querySelector('.sld-track'), thumb=body.querySelector('.sld-thumb');
   const fill=body.querySelector('.sld-fill'), numEl=body.querySelector('.sld-num');
   let val=min, done=false, dragging=false;
@@ -1862,7 +1960,7 @@ function renderMemory(q, body, fb){
         `<span class="memface memfront${f.cls}">${f.html}</span>`+
       `</button>`;}).join('')+
     `</div>`+
-    `<div class="actions"><button class="btn btn-reset">إعادة ↺</button></div>`;
+    `${resetBarHTML()}`;
   let first=null, lock=false, matched=0;
   body.querySelectorAll('.memcard').forEach(card=>{ card.onclick=()=>{
     // تجاهل النقر أثناء قلب زوج غير متطابق، أو على بطاقة مكشوفة/متطابقة
@@ -1889,7 +1987,7 @@ function renderMemory(q, body, fb){
       }
       first.classList.add('matched'); card.classList.add('matched');
       first=null; matched++; playCorrectSound();
-      if(matched===total) qWin(fb,'🎉 أحسنت! كشفت كل الأزواج',3);
+      if(matched===total) qWin(fb,T('🎉 أحسنت! كشفت كل الأزواج'),3);
     }else{                                        // عدم تطابق: تُقلب البطاقتان ثانيةً بعد لحظة
       lock=true; const a=first, b=card; first=null; playWrongSound();
       setTimeout(()=>{ a.classList.remove('flipped'); b.classList.remove('flipped'); lock=false; },900);
@@ -1931,7 +2029,7 @@ function renderLens(q, body, fb){
         `<div class="lens-glass"><img class="lens-frame" src="images/عدسة-إطار.png" alt=""></div>`+
       `</div>`+
     `</div></div></div>`+
-    `<div class="actions"><button class="btn btn-reset">إعادة ↺</button></div>`;
+    `${resetBarHTML()}`;
   const fig=body.querySelector('.lensfig'), glass=body.querySelector('.lens-glass');
   const reveal=body.querySelector('.lens-reveal'), foundLayer=body.querySelector('.lens-found');
   const countEl=body.querySelector('.lens-count'), topImg=body.querySelector('.lens-top');
@@ -2143,8 +2241,8 @@ function renderNumberLine(q, body, fb){
       `<circle class="nl-mdot" cx="0" cy="${Y}" r="12"></circle>`+
       `<text class="nl-mval" x="0" y="${MT+72}"></text></g>` : '';
   const actions = (mode==='jump')
-    ? `<div class="actions"><button class="btn btn-reset">إعادة ↺</button></div>`
-    : `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
+    ? `${resetBarHTML()}`
+    : `${actionsHTML()}`;
   body.innerHTML=`<div class="numline">`+
     (mode==='jump'?`<div class="nl-progress">القَفَزاتُ: <b>٠</b> من <b>${arNum(jCount)}</b></div>`:'')+
     `<svg class="nlsvg" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">`+
@@ -2259,7 +2357,7 @@ function renderHundredChart(q, body, fb){
   body.innerHTML=`<div class="hchart">${bar}`+
     `<svg class="hcsvg qfit-flex" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${cellsHtml}</svg>`+
     `${bank}</div>`+
-    `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
+    `${actionsHTML()}`;
   const cellEls=[].slice.call(body.querySelectorAll('.hc-cell'));
   let done=false, picked=null;
   const sel={};                                            // الخلايا المختارة (multiples/more-less)
@@ -2411,7 +2509,7 @@ function renderArray(q, body, fb){
     `<div class="ar-count">اخترتَ <b>٠</b> مربّعاً</div>`+
     `<svg class="arsvg arsvg-build" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${cells}</svg>`+
     `<div class="ar-sentence"></div></div>`+
-    `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
+    `${actionsHTML()}`;
   const on={}; let done=false;
   const countEl=body.querySelector('.ar-count b');
   body.querySelectorAll('.ar-cell').forEach(g=>{
@@ -2477,7 +2575,7 @@ function renderEquationBuilder(q, body, fb){
     `<div class="bank eqbank"><div class="bt">البطاقات:</div><div class="chips eqchips">`+
     shuffle((q.bank||[]).slice()).map(w=>`<div class="chip eqchip${isEqOp(w)?' eqchip-op':''}" draggable="true" data-w="${w}">${w}</div>`).join('')+
     `</div></div></div>`+
-    `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
+    `${actionsHTML()}`;
   wireBank(body, { chip:'.eqchip', slot:'.eqslot', empty:'؟' });
   // قراءة المعادلة كاملةً بعد استبدال الخانات بما وُضع فيها (null إن بقيت خانة فارغة)
   function readTokens(){
@@ -2561,7 +2659,7 @@ function renderCompare(q, body, fb){
     '<div class="bank cmpbank"><div class="bt">الرموز:</div><div class="chips">'+
     SYMS.map(x=>'<div class="chip cmp-chip" draggable="true" data-s="'+x.s+'"><b>'+x.s+'</b><i>'+x.w+'</i></div>').join('')+
     '</div></div></div>'+
-    '<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>';
+    actionsHTML();
   let picked=null, dragged=null, done=false;
   // بطاقات الرموز **لا تُستهلك**: الرمز نفسه يصلح لعدّة صفوف (بخلاف بنك fill-blank)
   function put(sl, s){ if(!sl||!s) return;
@@ -2631,7 +2729,7 @@ function renderPattern(q, body, fb){
       '<div class="chip ptchip" draggable="true" data-w="'+w+'">'+face(w)+'</div>').join('')+
     '</div></div>'+
     '<div class="pt-rule">'+(q.rule?('القاعدة: '+q.rule):'')+'</div></div>'+
-    '<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>';
+    actionsHTML();
   // بنك البطاقات: المنطق المشترك نفسه (wireBank) — بطاقة واحدة لكل خانة، والمكرّر يصحّ بالهوية
   wireBank(body, { chip:'.ptchip', slot:'.pt-slot', empty:'؟', face:face });
   let done=false;
@@ -2687,7 +2785,7 @@ function renderCountTap(q, body, fb){
   body.innerHTML='<div class="cnt"><div class="ct-count" style="visibility:hidden">عدَدتَ: <b>٠</b>'+
     (mode==='step'?' <i>(بالقفز '+arNum(step)+')</i>':'')+'</div>'+
     '<div class="ct-area'+(mode==='step'?' ct-area-step':'')+'">'+tiles+'</div></div>'+
-    '<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>';
+    actionsHTML();
   const sel=[]; let done=false;
   const unit=(mode==='step')?step:1;
   const countWrap=body.querySelector('.ct-count');
@@ -2743,7 +2841,7 @@ function renderPlaceValue(q, body, fb){
     '</div><div class="pv-read"></div>'+
     (mode==='read'?'<div class="opts">'+shuffle((q.options||[]).slice()).map(o=>'<button class="opt" data-o="'+o+'">'+o+'</button>').join('')+'</div>':'')+
     '</div>'+
-    (mode==='build'?'<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>':'');
+    (mode==='build'?actionsHTML():'');
   const tensBox=body.querySelector('.pv-items[data-p="tens"]'), onesBox=body.querySelector('.pv-items[data-p="ones"]');
   const readEl=body.querySelector('.pv-read');
   let done=false;
@@ -2862,7 +2960,7 @@ function renderClock(q, body, fb){
   // من ٤ أزرارٍ يحتاجُ ٧٣٠px ارتفاعاً فيدفعُ أزرارَ التالي/السابق تحتَ الشاشةِ على
   // نوافذَ أقصرَ — والشبكةُ تُنصِّفُ ارتفاعَ القائمةِ دونَ تصغيرِ القرص.
   const opts=(mode==='read')?'<div class="opts ck-opts">'+shuffle((q.options||[]).slice()).map(o=>'<button class="opt" data-o="'+o+'">'+o+'</button>').join('')+'</div>':'';
-  const acts=(mode==='read')?'':'<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>';
+  const acts=(mode==='read')?'':actionsHTML();
   body.innerHTML='<div class="clockq">'+head+
     '<svg class="cksvg" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet">'+
     '<circle class="ck-face" cx="200" cy="200" r="184"></circle>'+ticks+nums+
@@ -2979,7 +3077,7 @@ function renderMeasureTool(q, body, fb){
   }
   const readout=isSet?'<div class="ms-read"><b></b> '+unit+'</div>':'';
   const opts=(!isSet)?'<div class="opts">'+shuffle((q.options||[]).slice()).map(o=>'<button class="opt" data-o="'+o+'">'+o+'</button>').join('')+'</div>':'';
-  const acts=isSet?'<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>':'';
+  const acts=isSet?actionsHTML():'';
   body.innerHTML='<div class="meas">'+svgHtml+readout+opts+'</div>'+acts;
   const svg=body.querySelector('.mssvg');
   const readEl=body.querySelector('.ms-read b');
@@ -3085,7 +3183,7 @@ function renderMoney(q, body, fb){
       RACK.map(v=>'<button class="mn-piece mn-rackitem" data-v="'+v+'">'+pieceSvg(v)+'</button>').join('')+
       '</div></div>' : '';
   const opts = (mode==='count') ? '<div class="opts">'+shuffle((q.options||[]).slice()).map(o=>'<button class="opt" data-o="'+o+'">'+o+'</button>').join('')+'</div>' : '';
-  const acts = (mode==='count') ? '' : '<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>';
+  const acts = (mode==='count') ? '' : actionsHTML();
   body.innerHTML='<div class="moneyq">'+head+
     '<div class="mn-tray'+(editable?'':' mn-tray-fixed')+'"></div>'+
     '<div class="mn-total">المجموع: <b>'+fmt(0)+'</b></div>'+rack+opts+'</div>'+acts;
@@ -3157,7 +3255,7 @@ function renderSymmetry(q, body, fb){
       : '<line class="sy-axis" x1="-8" y1="'+(H/2)+'" x2="'+(W+8)+'" y2="'+(H/2)+'"></line>';
     body.innerHTML='<div class="symq"><svg class="sysvg" viewBox="-10 -10 '+(W+20)+' '+(H+20)+'" preserveAspectRatio="xMidYMid meet">'+
       cells+ax+'</svg></div>'+
-      '<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>';
+      actionsHTML();
     const on={}; let done=false;
     body.querySelectorAll('.sy-cell').forEach(g=>{ g.addEventListener('click',()=>{
       if(done||g.classList.contains('sy-given')) return;     // الجانبُ المُعطى ثابتٌ لا يُعدَّل
@@ -3193,7 +3291,7 @@ function renderSymmetry(q, body, fb){
     '<line class="sy-lface" x1="'+l.x1+'" y1="'+l.y1+'" x2="'+l.x2+'" y2="'+l.y2+'"></line></g>'; });
   body.innerHTML='<div class="symq"><svg class="sysvg sysvg-shape" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid meet">'+
     '<path class="sy-shape" d="'+path+'"></path>'+ls+'</svg></div>'+
-    '<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>';
+    actionsHTML();
   const sel={}; let done=false;
   body.querySelectorAll('.sy-line').forEach(g=>{ g.addEventListener('click',()=>{
     if(done) return; const i=g.dataset.i;
@@ -3277,7 +3375,7 @@ function renderChartRead(q, body, fb){
      والعلاجُ المنصوصُ تخفيفُ المحتوى لا تعديلُ الواجهة: الصفُّ يوفّرُ ارتفاعَ ثلاثةِ
      أزرارٍ (~١٩٠px) فيدخلُ السؤالُ إطاراً حقيقياً وسطرُ التغذيةِ محسوبٌ معه. */
   const opts=(mode==='read')?'<div class="opts opts-row">'+shuffle((q.options||[]).slice()).map(o=>'<button class="opt'+(isShortAnswer(String(o))?' opt-num':'')+'" data-o="'+o+'">'+o+'</button>').join('')+'</div>':'';
-  const acts=(mode==='build')?'<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>':'';
+  const acts=(mode==='build')?actionsHTML():'';
   body.innerHTML='<div class="chartq">'+legend+
     '<svg class="chsvg" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="xMidYMid meet">'+grid+
     '<line class="ch-axis" x1="'+AX+'" y1="'+Y0+'" x2="'+AX+'" y2="'+Y1+'"></line>'+
@@ -3396,7 +3494,7 @@ function renderTashkeel(q, body, fb){
     `<div class="bank tshbank"><div class="bt">الحركات:</div><div class="chips">`+
     bank.map(m=>`<button type="button" class="chip tshmark" data-m="${m}">ـ${m}</button>`).join('')+
     `</div></div></div>`+
-    `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
+    `${actionsHTML()}`;
   let pick=bank[0], done=false;
   const marks=body.querySelectorAll('.tshmark');
   const paint=()=>marks.forEach(b=>b.classList.toggle('sel', b.dataset.m===pick));
@@ -3475,7 +3573,7 @@ function renderSunMoon(q, body, fb){
     `<div class="bank clsbank"><div class="bt">الكلمات:</div><div class="chips">`+
     shuffle(items).map(it=>`<div class="chip smchip" draggable="true" data-w="${it.word}">${it.word}</div>`).join('')+
     `</div></div></div>`+
-    `<div class="actions"><button class="btn btn-check">تحقّق ✔</button><button class="btn btn-reset">إعادة ↺</button></div>`;
+    `${actionsHTML()}`;
   const kindOf={}, showOf={};
   items.forEach(it=>{kindOf[it.word]=it.kind; showOf[it.word]=it.show;});
   let dragged=null, done=false;
@@ -3567,7 +3665,7 @@ function letterArt(ch, ramp){
 function renderLetterPicture(q, body, fb){
   body.innerHTML=`<div class="matchwrap lpwrap"><svg class="matchsvg"></svg>`+
     `<div class="match"><div class="mcol mcolL"></div><div class="mcol mcolR"></div></div></div>`+
-    `<div class="actions"><button class="btn btn-reset">إعادة ↺</button></div>`;
+    `${resetBarHTML()}`;
   const wrap=body.querySelector('.matchwrap'), svg=body.querySelector('.matchsvg');
   const L=body.querySelector('.mcolL'), Rr=body.querySelector('.mcolR');
   const NS='http://www.w3.org/2000/svg';

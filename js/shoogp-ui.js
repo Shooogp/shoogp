@@ -121,6 +121,10 @@ function lessonInScope(ls){ return !!lessonBook(ls); }
 function lessonSubject(ls){ var b=lessonBook(ls); return b?b.subject:null; }
 /* مادة الدرس المفتوح حالياً — تُضبط في ترقيع openLesson، وتقرؤها resolveCfg */
 var _curSubject=null;
+/* ونقرؤها app.js كذلك لاختيارِ لغةِ واجهةِ السؤال (‏`T()` هناك — الإنجليزيةُ في مادّةِ
+   `en` وحدَها). تُصدَّرُ دالّةً لا متغيّراً كي تُقرأَ القيمةُ الحيّةُ عندَ كلِّ نداء،
+   ولئلّا يُشتَقَّ مصدرٌ ثانٍ للمادّةِ من لاحقةِ مفتاحِ الكتابِ في app.js. */
+window.shoogpSubject=function(){ return _curSubject; };
 /* وكتابُه (مدخلُه في نطاقِ shoogpBooks()) — مفتاحُ لونِ بطاقتِه لكسوةِ الشريطِ الخلفيّ */
 var _curBook=null;
 /* ═══ قشورُ أزرارِ الإجابة حسبَ المادة (كسوةٌ بصريةٌ بحتة) ═══
