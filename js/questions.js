@@ -40126,6 +40126,7 @@ window.QUESTIONS = {
     },
     {
       type: "matching",
+      pics: "a",
       objective: "مراجعة مفردات الوحدة ٣",
       level: "knowledge",
       prompt: "Match each one to what you do with it.",
@@ -40223,6 +40224,7 @@ window.QUESTIONS = {
     },
     {
       type: "exclude",
+      pics: true,
       objective: "مراجعة تراكمية لمفردات الوحدة ٣",
       level: "application",
       prompt: "Click the word that is NOT in the classroom.",
@@ -40282,6 +40284,7 @@ window.QUESTIONS = {
     },
     {
       type: "classify",
+      pics: true,
       objective: "تدريب على نمط اختبار Pre-A1 Starters",
       level: "reasoning",
       prompt: "Sort each word.",
