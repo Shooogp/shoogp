@@ -22,24 +22,19 @@
   "⚠️ **وحدُّ المعدَّلِ خمسةُ طلباتٍ في الدقيقة** (‏`x-ratelimit-limit: 5`)، فالعقدةُ",
   "تُرسِلُ عنصراً واحداً كلَّ ١٥ ثانية."
  ],
- "batchId": "2026-09-16-en-missing-16",
+ "batchId": "2026-09-16-g2en-unit1-sounds",
  "voice": "حطاب",
  "items": [
-  { "name": "ant",               "text": "ant" },
-  { "name": "ball",              "text": "ball" },
-  { "name": "book",              "text": "book" },
-  { "name": "chair",             "text": "chair" },
-  { "name": "door",              "text": "door" },
-  { "name": "eraser",            "text": "eraser" },
-  { "name": "pen",               "text": "pen" },
-  { "name": "plane",             "text": "plane" },
-  { "name": "robot",             "text": "robot" },
-  { "name": "ruler",             "text": "ruler" },
-  { "name": "square",            "text": "square" },
-  { "name": "ten",               "text": "ten" },
-  { "name": "train",             "text": "train" },
-  { "name": "whiteboard",        "text": "whiteboard" },
-  { "name": "window",            "text": "window" },
-  { "name": "dialogue-ive-got",  "text": "Look at my school bag. I've got a book. I haven't got a pencil. Here is my pencil. Look after it!" }
+  { "name": "phon-r",     "text": "r" },
+  { "name": "phon-ain",   "text": "ain" },
+  { "name": "blend-rain", "text": "rain" },
+  { "name": "phon-b",     "text": "b" },
+  { "name": "phon-oat",   "text": "oat" },
+  { "name": "blend-boat", "text": "boat" },
+  { "name": "phon-ie",    "text": "ie" },
+  { "name": "blend-pie",  "text": "pie" },
+  { "name": "phon-c",     "text": "c" },
+  { "name": "phon-ake",   "text": "ake" },
+  { "name": "blend-cake", "text": "cake" }
  ]
 }
