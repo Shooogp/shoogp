@@ -109,8 +109,8 @@ window.DATA_FALLBACK = {
     ] },
     "g2-en": { book:"اللغة الإنجليزية — الصف الثاني", units:[
       { unit:"Welcome", lessons:[
-        { title:"Hello!", file:"g2e-0-1", open:false },
-        { title:"Numbers & Colours", file:"g2e-0-2", open:false }
+        { title:"Hello!", file:"g2e-0-1", open:true },
+        { title:"Numbers & Colours", file:"g2e-0-2", open:true }
       ]},
       { unit:"Look at my toys!", lessons:[
         { title:"Look at my toys! (ai)", file:"g2e-1-1", open:false },

@@ -78,8 +78,8 @@
       {
         "unit": "Welcome",
         "lessons": [
-          { "title": "Hello!", "file": "g2e-0-1", "open": false },
-          { "title": "Numbers & Colours", "file": "g2e-0-2", "open": false }
+          { "title": "Hello!", "file": "g2e-0-1", "open": true },
+          { "title": "Numbers & Colours", "file": "g2e-0-2", "open": true }
         ]
       },
       {

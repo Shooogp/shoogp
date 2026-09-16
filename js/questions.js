@@ -40996,5 +40996,154 @@ window.QUESTIONS = {
         { a: "book", b: "books" }
       ]
     }
+  ],
+
+  // ═══ اللغة الإنجليزية — الصف الثاني (Team Together Oman 2A) ═══
+  // الدرس ٠-١: تحية وتعارف — Hello!
+  "g2e-0-1": [
+    {
+      type: "mcq",
+      objective: "تحية وتعارف: Hello/Hi, What's your name? My name's…",
+      level: "knowledge",
+      prompt: "Hello! What's your name?",
+      options: ["My name's Sami.", "I'm seven.", "Stand up.", "It's a car."],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "السؤال عن العمر: How old are you? I'm (seven).",
+      level: "knowledge",
+      statement: "'How old are you?' is a question about your age.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "أوامر الصف: Stand up/Sit down/Open your book/Close your book",
+      level: "application",
+      prompt: "Match each command to what happens.",
+      pairs: [
+        { a: "Stand up.",        b: "On your feet." },
+        { a: "Sit down.",        b: "On your chair." },
+        { a: "Open your book.",  b: "Book is open." },
+        { a: "Close your book.", b: "Book is closed." }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "تحية وتعارف: Hello/Hi, What's your name? My name's…/I'm…, How old are you? I'm (seven)",
+      level: "reasoning",
+      prompt: "Put the introduction in order.",
+      steps: ["Hello! What's your name?", "Hello! I'm Lily.", "How old are you?", "I'm seven."]
+    },
+    {
+      type: "fill-blank",
+      objective: "تركيب: What's your name? My name's…/I'm…",
+      level: "knowledge",
+      prompt: "Complete the question.",
+      text: "Hello! I'm Fatma. What's your {}?",
+      answers: ["name"],
+      distractors: ["book", "colour"]
+    },
+    {
+      type: "memory",
+      objective: "تحية وتعارف: Hello/Hi, What's your name? My name's…, How old are you? I'm (seven)",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "What's your name?", b: "My name's Lily." },
+        { a: "How old are you?",  b: "I'm seven." },
+        { a: "Hello!",            b: "Hi!" },
+        { a: "Goodbye!",          b: "Bye!" }
+      ]
+    }
+  ],
+
+  // الدرس ٠-٢: الأعداد والألوان — Numbers & Colours
+  "g2e-0-2": [
+    {
+      type: "mcq",
+      objective: "العدّ من ١ إلى ١٠",
+      level: "knowledge",
+      prompt: "Count: one, two, three, four, ___.",
+      options: ["three", "five", "six", "seven"],
+      answer: 1
+    },
+    {
+      type: "matching",
+      objective: "العدّ من ١ إلى ١٠ (كلمة العدد ↔ الرقم)",
+      level: "knowledge",
+      prompt: "Match the number word to the numeral.",
+      pairs: [
+        { a: "one",   b: "1" },
+        { a: "three", b: "3" },
+        { a: "seven", b: "7" },
+        { a: "ten",   b: "10" }
+      ]
+    },
+    {
+      type: "true-false",
+      objective: "العدّ من ١ إلى ١٠",
+      level: "knowledge",
+      statement: "Six comes after five.",
+      answer: true
+    },
+    {
+      type: "sequence",
+      objective: "العدّ من ١ إلى ١٠",
+      level: "application",
+      prompt: "Put the numbers in order, from smallest to biggest.",
+      steps: ["one", "three", "five", "eight", "ten"]
+    },
+    {
+      type: "classify",
+      objective: "أسماء الألوان العشرة: red, yellow, blue, green, black, white, pink, purple, orange, brown",
+      level: "reasoning",
+      prompt: "Sort the colours: warm or cool.",
+      groups: [
+        { name: "Warm colours", items: ["red", "yellow"] },
+        { name: "Cool colours", items: ["blue", "green"] }
+      ]
+    },
+    {
+      type: "color",
+      objective: "أسماء الألوان: What colour is it? It's (green).",
+      level: "knowledge",
+      prompt: "Colour the balloons: 1 red, 2 blue, 3 yellow.",
+      bg: "#eaf6ff",
+      palette: [
+        { name: "Red",    color: "#e6392b" },
+        { name: "Blue",   color: "#2f6fb0" },
+        { name: "Yellow", color: "#f0c418" }
+      ],
+      parts: [
+        { name: "balloon1", color: "#e6392b" },
+        { name: "balloon2", color: "#2f6fb0" },
+        { name: "balloon3", color: "#f0c418" }
+      ],
+      showLabels: false,
+      svg: `<svg viewBox="0 0 520 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three balloons">
+        <g class="cpart" data-name="balloon1" id="part-b1">
+          <ellipse cx="110" cy="140" rx="68" ry="82"/>
+          <path d="M96 216 L124 216 L110 236 Z"/>
+        </g>
+        <path d="M110 236 C 90 270, 130 300, 108 344" fill="none" stroke="#111111" stroke-width="4" stroke-linecap="round"/>
+        <g class="cpart" data-name="balloon2" id="part-b2">
+          <ellipse cx="260" cy="120" rx="68" ry="82"/>
+          <path d="M246 196 L274 196 L260 216 Z"/>
+        </g>
+        <path d="M260 216 C 240 250, 280 280, 258 324" fill="none" stroke="#111111" stroke-width="4" stroke-linecap="round"/>
+        <g class="cpart" data-name="balloon3" id="part-b3">
+          <ellipse cx="410" cy="140" rx="68" ry="82"/>
+          <path d="M396 216 L424 216 L410 236 Z"/>
+        </g>
+        <path d="M410 236 C 390 270, 430 300, 408 344" fill="none" stroke="#111111" stroke-width="4" stroke-linecap="round"/>
+        <ellipse cx="88" cy="105" rx="18" ry="26" fill="#ffffff" opacity="0.35" pointer-events="none"/>
+        <ellipse cx="238" cy="85" rx="18" ry="26" fill="#ffffff" opacity="0.35" pointer-events="none"/>
+        <ellipse cx="388" cy="105" rx="18" ry="26" fill="#ffffff" opacity="0.35" pointer-events="none"/>
+        <text x="110" y="150" text-anchor="middle" font-size="34" font-weight="900" fill="#111111" pointer-events="none">1</text>
+        <text x="260" y="130" text-anchor="middle" font-size="34" font-weight="900" fill="#111111" pointer-events="none">2</text>
+        <text x="410" y="150" text-anchor="middle" font-size="34" font-weight="900" fill="#111111" pointer-events="none">3</text>
+      </svg>`
+    }
   ]
 };
