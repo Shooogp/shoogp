@@ -116,13 +116,13 @@
       {
         "unit": "Move your body!",
         "lessons": [
-          { "title": "Move your body! (ou)", "file": "g2e-3-1", "open": false },
-          { "title": "Helpers Team (oi)", "file": "g2e-3-2", "open": false },
-          { "title": "Touch your head! (ue)", "file": "g2e-3-3", "open": false },
-          { "title": "Skills (i_e)", "file": "g2e-3-4", "open": false },
-          { "title": "Project: A festivals poster", "file": "g2e-3-5", "open": false },
-          { "title": "Paying a compliment", "file": "g2e-3-6", "open": false },
-          { "title": "Review", "file": "g2e-3-7", "open": false }
+          { "title": "Move your body! (ou)", "file": "g2e-3-1", "open": true },
+          { "title": "Helpers Team (oi)", "file": "g2e-3-2", "open": true },
+          { "title": "Touch your head! (ue)", "file": "g2e-3-3", "open": true },
+          { "title": "Skills (i_e)", "file": "g2e-3-4", "open": true },
+          { "title": "Project: A festivals poster", "file": "g2e-3-5", "open": true },
+          { "title": "Paying a compliment", "file": "g2e-3-6", "open": true },
+          { "title": "Review", "file": "g2e-3-7", "open": true }
         ]
       },
       {

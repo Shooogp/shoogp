@@ -42182,5 +42182,468 @@ window.QUESTIONS = {
         { a: "pencil", b: "Write" }
       ]
     }
+  ],
+
+  // الوحدة ٣: Move your body! — حرّك جسمك
+  // الدرس ٣-١: Move your body! — مفردات الجسم
+  "g2e-3-1": [
+    {
+      type: "mcq",
+      objective: "مفردات الجسم: head, face, tummy, arms, hands, fingers, legs, knees, feet, toes",
+      level: "knowledge",
+      prompt: "Which one is your head?",
+      pics: true,
+      options: ["head", "arms", "legs", "feet"],
+      answer: 0
+    },
+    {
+      type: "matching",
+      objective: "مفردات الجسم",
+      level: "knowledge",
+      prompt: "Match each body part to what you do with it.",
+      pairs: [
+        { a: "legs",  b: "You walk with them." },
+        { a: "hands", b: "You hold things with them." },
+        { a: "eyes",  b: "You see with them." },
+        { a: "feet",  b: "You stand on them." }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "مفردات الجسم",
+      level: "reasoning",
+      prompt: "Sort the body parts.",
+      pics: true,
+      groups: [
+        { name: "Upper body", items: ["head", "arms"] },
+        { name: "Lower body", items: ["legs", "feet"] }
+      ]
+    },
+    {
+      type: "sound-blend",
+      objective: "صوتٌ مقترن: ou (Unit 3 Lesson 1)",
+      level: "knowledge",
+      prompt: "Tap each card, then blend and choose the word.",
+      letters: ["h", "ouse"],
+      soundOf: { h: "audio/en/phon-h.mp3", ouse: "audio/en/phon-ouse.mp3" },
+      blendAudio: "audio/en/blend-house.mp3",
+      options: ["house", "hat", "hen"],
+      answer: 0
+    },
+    {
+      type: "sequence",
+      objective: "تركيب: I've got one face./I've got ten toes.",
+      level: "application",
+      prompt: "Put the chant in order.",
+      steps: ["I've got a head.", "I've got two arms.", "I've got two legs.", "I've got ten toes."]
+    },
+    {
+      type: "memory",
+      objective: "تركيب: I've got one face./I've got ten toes.",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "head",  b: "one" },
+        { a: "arms",  b: "two" },
+        { a: "legs",  b: "two" },
+        { a: "toes",  b: "ten" }
+      ]
+    }
+  ],
+
+  // الدرس ٣-٢: Helpers Team — قصة Gymbot (Do exercise)
+  "g2e-3-2": [
+    {
+      type: "mcq",
+      objective: "تركيب: I've got one face./I've got ten toes.",
+      level: "knowledge",
+      prompt: "Bend your knees and touch your ___!",
+      options: ["toes", "head", "arms", "book"],
+      answer: 0
+    },
+    {
+      type: "sound-blend",
+      objective: "صوتٌ مقترن: oi (Unit 3 Lesson 2)",
+      level: "knowledge",
+      prompt: "Tap each card, then blend and choose the word.",
+      letters: ["c", "oin"],
+      soundOf: { c: "audio/en/phon-c.mp3", oin: "audio/en/phon-oin.mp3" },
+      blendAudio: "audio/en/blend-coin.mp3",
+      options: ["coin", "cat", "can"],
+      answer: 0
+    },
+    {
+      type: "sequence",
+      objective: "قصة Gymbot؛ القيمة: Do exercise",
+      level: "reasoning",
+      prompt: "Put Gymbot's instructions in order.",
+      steps: ["Stand up, please!", "Bend your knees and touch your toes!", "Move your legs and stamp your feet!", "Haha! This is fun!"]
+    },
+    {
+      type: "matching",
+      objective: "قصة Gymbot؛ القيمة: Do exercise",
+      level: "application",
+      prompt: "Match each instruction to the body part.",
+      pairs: [
+        { a: "Bend your knees!",  b: "knees" },
+        { a: "Touch your toes!",  b: "toes" },
+        { a: "Stamp your feet!",  b: "feet" },
+        { a: "Move your legs!",   b: "legs" }
+      ]
+    },
+    {
+      type: "fill-blank",
+      objective: "تركيب: I've got one face./I've got ten toes.",
+      level: "knowledge",
+      prompt: "Complete the sentence.",
+      text: "I've got a white head. I've got a blue {}.",
+      answers: ["body"],
+      distractors: ["hand", "foot"]
+    },
+    {
+      type: "color",
+      objective: "القيمة: Do exercise — روبوت Gymbot",
+      level: "knowledge",
+      prompt: "Colour Gymbot! Colour the head, body, arms and legs.",
+      bg: "#eefaf0",
+      palette: [
+        { name: "White",  color: "#f4f6fa" },
+        { name: "Blue",   color: "#2f6fb0" },
+        { name: "Red",    color: "#c94a4a" },
+        { name: "Grey",   color: "#8a93a0" }
+      ],
+      parts: [
+        { name: "head", color: "#f4f6fa" },
+        { name: "body", color: "#2f6fb0" },
+        { name: "arms", color: "#c94a4a" },
+        { name: "legs", color: "#8a93a0" }
+      ],
+      svg: `<svg viewBox="0 0 360 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gymbot the robot">
+        <line x1="180" y1="16" x2="180" y2="38" stroke="#111111" stroke-width="4"/>
+        <circle cx="180" cy="12" r="8" fill="#c94a4a" stroke="#111111" stroke-width="3"/>
+        <g class="cpart" data-name="arms" id="part-arms">
+          <rect x="42"  y="180" width="44" height="110" rx="18"/>
+          <rect x="274" y="180" width="44" height="110" rx="18"/>
+        </g>
+        <g class="cpart" data-name="legs" id="part-legs">
+          <rect x="128" y="340" width="44" height="100" rx="16"/>
+          <rect x="188" y="340" width="44" height="100" rx="16"/>
+        </g>
+        <g class="cpart" data-name="body" id="part-body">
+          <rect x="110" y="170" width="140" height="170" rx="26"/>
+        </g>
+        <g class="cpart" data-name="head" id="part-head">
+          <rect x="118" y="38" width="124" height="110" rx="30"/>
+        </g>
+      </svg>`
+    }
+  ],
+
+  // الدرس ٣-٣: حرّك جسمك! — أفعال الحركة
+  "g2e-3-3": [
+    {
+      type: "mcq",
+      objective: "مفردات: move, bend, stretch, touch, stamp, clap",
+      level: "knowledge",
+      prompt: "Move your body! Touch your ___!",
+      options: ["head", "car", "book", "cat"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مفردات: move, bend, stretch, touch, stamp, clap",
+      level: "knowledge",
+      statement: "'Clap' means you move your hands together.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "مفردات: move, bend, stretch, touch, stamp, clap",
+      level: "application",
+      prompt: "Match each word to what it means.",
+      pairs: [
+        { a: "bend",    b: "You move down." },
+        { a: "stretch", b: "You reach up high." },
+        { a: "stamp",   b: "You hit your foot on the ground." },
+        { a: "clap",    b: "You hit your hands together." }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "مفردات: move, bend, stretch, touch, stamp, clap",
+      level: "reasoning",
+      prompt: "Sort the actions.",
+      groups: [
+        { name: "Hand actions",        items: ["clap", "touch"] },
+        { name: "Whole body actions",  items: ["bend", "stretch"] }
+      ]
+    },
+    {
+      type: "sound-blend",
+      objective: "صوتٌ مقترن: ue (Unit 3 Lesson 3)",
+      level: "knowledge",
+      prompt: "Tap each card, then blend and choose the word.",
+      letters: ["bl", "ue"],
+      soundOf: { bl: "audio/en/phon-bl.mp3", ue: "audio/en/phon-ue.mp3" },
+      blendAudio: "audio/en/blend-blue.mp3",
+      options: ["blue", "black", "big"],
+      answer: 0
+    },
+    {
+      type: "memory",
+      objective: "مفردات: move, bend, stretch, touch, stamp, clap",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "clap",  b: "hands" },
+        { a: "stamp", b: "feet" },
+        { a: "bend",  b: "knees" },
+        { a: "touch", b: "toes" }
+      ]
+    }
+  ],
+
+  // الدرس ٣-٤: مهارات — تدريب استماع + صوت i_e
+  "g2e-3-4": [
+    {
+      type: "mcq",
+      objective: "تركيب: I've got one face./I've got ten toes.",
+      level: "knowledge",
+      prompt: "I've got ten ___.",
+      options: ["toes", "head", "arm", "leg"],
+      answer: 0
+    },
+    {
+      type: "sound-blend",
+      objective: "صوتٌ مقترن: i_e (Unit 3 Lesson 4)",
+      level: "knowledge",
+      prompt: "Tap each card, then blend and choose the word.",
+      letters: ["b", "ike"],
+      soundOf: { b: "audio/en/phon-b.mp3", ike: "audio/en/phon-ike.mp3" },
+      blendAudio: "audio/en/blend-bike.mp3",
+      options: ["bike", "bag", "box"],
+      answer: 0
+    },
+    {
+      type: "matching",
+      objective: "أوامر الحركة وأجزاء الجسم",
+      level: "application",
+      prompt: "Match each command to the body part.",
+      pairs: [
+        { a: "Touch your head!", b: "head" },
+        { a: "Stamp your feet!", b: "feet" },
+        { a: "Bend your knees!", b: "knees" },
+        { a: "Clap your hands!", b: "hands" }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "تركيب: I've got one face./I've got ten toes.",
+      level: "reasoning",
+      prompt: "Put the dialogue in order.",
+      steps: ["How many toes have you got?", "I've got ten toes.", "How many arms have you got?", "I've got two arms."]
+    },
+    {
+      type: "classify",
+      objective: "صوتٌ مقترن: i_e",
+      level: "knowledge",
+      prompt: "Sort the words by their sound.",
+      groups: [
+        { name: "Has the 'i_e' sound", items: ["bike", "kite"] },
+        { name: "No 'i_e' sound",      items: ["cat", "dog"] }
+      ]
+    },
+    {
+      type: "memory",
+      objective: "أوامر الحركة وأجزاء الجسم",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "Touch",  b: "head" },
+        { a: "Stamp",  b: "feet" },
+        { a: "Clap",   b: "hands" },
+        { a: "Bend",   b: "knees" }
+      ]
+    }
+  ],
+
+  // الدرس ٣-٥: مشروع — ملصق المهرجانات (National Day)
+  "g2e-3-5": [
+    {
+      type: "sequence",
+      objective: "مشروع: ملصق المهرجانات",
+      level: "application",
+      prompt: "Put the project steps in order.",
+      steps: ["Draw a picture for National Day.", "Write about the festival.", "Stick it on a big page.", "Show your poster to the class."]
+    },
+    {
+      type: "mcq",
+      objective: "ثقافة: National Day",
+      level: "knowledge",
+      prompt: "Oman celebrates National Day in…",
+      options: ["November", "January", "June", "March"],
+      answer: 0
+    },
+    {
+      type: "matching",
+      objective: "مراجعة مفردات الجسم",
+      level: "knowledge",
+      prompt: "Match each body part to what you do with it.",
+      pairs: [
+        { a: "legs",  b: "You walk with them." },
+        { a: "hands", b: "You clap with them." },
+        { a: "feet",  b: "You stamp with them." },
+        { a: "knees", b: "You bend them." }
+      ]
+    },
+    {
+      type: "true-false",
+      objective: "ثقافة: National Day",
+      level: "knowledge",
+      statement: "National Day is a special celebration for Oman.",
+      answer: true
+    },
+    {
+      type: "classify",
+      objective: "مراجعة مفردات الجسم",
+      level: "reasoning",
+      prompt: "Sort the body parts.",
+      pics: true,
+      groups: [
+        { name: "Upper body", items: ["head", "arms"] },
+        { name: "Lower body", items: ["legs", "feet"] }
+      ]
+    },
+    {
+      type: "memory",
+      objective: "مراجعة مفردات الجسم",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "head",  b: "one" },
+        { a: "arms",  b: "two" },
+        { a: "legs",  b: "two" },
+        { a: "toes",  b: "ten" }
+      ]
+    }
+  ],
+
+  // الدرس ٣-٦: مجاملة — Paying a compliment
+  "g2e-3-6": [
+    {
+      type: "mcq",
+      objective: "تركيب: What a cool picture!",
+      level: "knowledge",
+      prompt: "'What a cool picture!' is used to…",
+      options: ["pay a compliment", "ask a question", "say goodbye", "give an order"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "تركيب: What a cool picture!",
+      level: "knowledge",
+      statement: "Saying something nice about someone's work is a compliment.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "تركيب: What a cool picture!",
+      level: "application",
+      prompt: "Match each compliment to the reply.",
+      pairs: [
+        { a: "What a cool picture!",   b: "Thank you!" },
+        { a: "What a great poster!",   b: "Thanks a lot!" },
+        { a: "I like your drawing!",   b: "That's kind of you!" },
+        { a: "Well done!",             b: "Thank you very much!" }
+      ]
+    },
+    {
+      type: "fill-blank",
+      objective: "تركيب: What a cool picture!",
+      level: "knowledge",
+      prompt: "Complete the sentence.",
+      text: "What a cool {}!",
+      answers: ["picture"],
+      distractors: ["run", "stand"]
+    },
+    {
+      type: "classify",
+      objective: "تركيب: What a cool picture!",
+      level: "reasoning",
+      prompt: "Sort the sentences.",
+      groups: [
+        { name: "Giving a compliment", items: ["What a cool picture!", "I like your drawing!"] },
+        { name: "Saying thank you",    items: ["Thank you!", "Thanks a lot!"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "تركيب: What a cool picture!",
+      level: "knowledge",
+      prompt: "Which one is not paying a compliment?",
+      options: ["What a cool picture!", "I like it!", "Great job!", "Stand up."],
+      answer: 3
+    }
+  ],
+
+  // الدرس ٣-٧: المراجعة — استعدّ للاختبار
+  "g2e-3-7": [
+    {
+      type: "mcq",
+      objective: "مراجعة تراكمية لمفردات الوحدة ٣",
+      level: "knowledge",
+      prompt: "Which one is your legs?",
+      pics: true,
+      options: ["legs", "head", "arms", "feet"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مراجعة تراكمية لتراكيب الوحدة ٣",
+      level: "knowledge",
+      statement: "'Touch your head!' is an action word.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "مراجعة تراكمية لمفردات الوحدة ٣",
+      level: "knowledge",
+      prompt: "Match each action to the body part.",
+      pairs: [
+        { a: "Clap",  b: "hands" },
+        { a: "Stamp", b: "feet" },
+        { a: "Bend",  b: "knees" },
+        { a: "Touch", b: "head" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "مراجعة تراكمية لأصوات الوحدة ٣ (ou, oi, ue, i_e)",
+      level: "reasoning",
+      prompt: "Sort the words by their sound.",
+      groups: [
+        { name: "'ou'/'oi' sound", items: ["house", "coin"] },
+        { name: "'ue'/'i_e' sound", items: ["blue", "bike"] }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "مراجعة تراكمية — Paying a compliment",
+      level: "application",
+      prompt: "Put the dialogue in order.",
+      steps: ["What a cool picture!", "Thank you!", "I like your colours.", "Thanks a lot!"]
+    },
+    {
+      type: "memory",
+      objective: "مراجعة تراكمية لمفردات الوحدة ٣",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "head",  b: "one" },
+        { a: "arms",  b: "two" },
+        { a: "legs",  b: "two" },
+        { a: "toes",  b: "ten" }
+      ]
+    }
   ]
 };
