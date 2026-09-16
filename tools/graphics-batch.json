@@ -28,11 +28,43 @@
   "    ← يتخطّى البناءَ كلَّه. يُستعمَلُ حينَ تُغري قائمةُ الهيكسات النموذجَ",
   "      برسمِ لوحةِ ألوانٍ داخلَ الصورة (وقعَ فعلاً مع رسمةِ العين)."
  ],
- "batchId": "2026-09-15-en-btn-leather",
+ "batchId": "2026-09-16-en-vocab-pics",
  "items": [
   {
-   "name": "btn-leather-en-2026-09-15-en-btn-leather",
-   "prompt": "Create a single wide horizontal capsule-shaped (stadium-shaped) button icon for a children's educational app UI, viewed frontally, filling almost the entire 1536x384 canvas edge to edge with only a thin margin of white around it.\n\nSHAPE: a horizontal capsule / stadium shape — fully rounded semicircular left and right ends, perfectly straight parallel top and bottom edges in between. A single flat button face. Completely plain and empty inside: absolutely no text, no letters, no numbers, no icons, no symbols anywhere on it.\n\nMATERIAL: rich warm brown leather / book-cloth texture, like the cover of a hardcover storybook. Shaded with a smooth vertical gradient: a pale warm cream highlight along the very top edge, transitioning through a warm tan-brown in the upper-middle, to a deeper saddle-brown in the lower-middle, down to a dark chocolate-brown shadow along the very bottom edge. A very subtle fine leather-grain texture across the surface (subtle, not busy or noisy). A soft elongated white gloss highlight band running horizontally across the upper third of the button for a gentle shine.\n\nEMBROIDERED STITCHED EDGE (the most important feature): a neat, clearly visible hand-embroidered running stitch — a single row of small, evenly-spaced short thread dashes — following the entire outline of the capsule shape, placed just inside the outer edge, all the way around including the two rounded end-caps. The stitching thread color must be a soft pale cream / ivory / off-white color only. The stitching must NOT be gold, NOT be yellow, and NOT be metallic in any way — it is plain pale cream sewing thread, the same idea as visible stitching on a leather wallet or bag.\n\nOUTLINE: a thin, crisp, dark brown (almost black, like #2a1608) outline tracing the entire outer silhouette of the capsule shape.\n\nSTYLE: glossy flat cartoon-sticker illustration style consistent with a children's educational app, warm and friendly, plump rounded form with no sharp corners anywhere, the button floating with no ground line and no cast shadow beneath it.\n\nCOLOR RESTRICTION: use only warm brown, tan, cream and dark chocolate-brown tones for the leather body and its stitching. Do absolutely NOT use any gold, yellow, orange-yellow, or metallic gold color anywhere in the image, not on the leather, not on the stitching, not anywhere.\n\nBACKGROUND: pure flat white background outside the button shape, so it can be keyed out later.\n\nABSOLUTELY FORBIDDEN: any text, letters, numbers, labels, captions, watermarks, logos, gold color, yellow color, or metallic color anywhere in the image. One single standalone button image only, filling the canvas — not a grid, not multiple buttons, not a set of color swatches, not a frame with a window cut out of it."
+   "name": "pen-2026-09-16-en-vocab-pics",
+   "subject": "a ballpoint pen with a smooth blue barrel, a silver metal clip on its cap and a fine writing tip, shown diagonally — clearly a ballpoint pen, NOT a wooden pencil: no wood grain, no sharpened graphite tip and no pink eraser"
+  },
+  {
+   "name": "crayon-2026-09-16-en-vocab-pics",
+   "subject": "a single thick wax crayon with a paper wrapper band around its middle and a blunt rounded colouring tip, shown diagonally"
+  },
+  {
+   "name": "pencil-case-2026-09-16-en-vocab-pics",
+   "subject": "a closed fabric pencil case pouch with a zip running along its top and a small zip pull tab, shown from the front"
+  },
+  {
+   "name": "floor-2026-09-16-en-vocab-pics",
+   "subject": "a small square patch of a tiled floor seen from slightly above, made of neat square floor tiles with visible grout lines between them"
+  },
+  {
+   "name": "wall-2026-09-16-en-vocab-pics",
+   "subject": "a small section of a brick wall seen from the front, with neat staggered rows of rectangular bricks and mortar lines between them"
+  },
+  {
+   "name": "robot-2026-09-16-en-vocab-pics",
+   "subject": "a friendly boxy toy robot standing upright with a rectangular body, a square head with a single antenna on top, simple hinged arms and legs — its head front is a completely blank plain panel with absolutely no eyes, no mouth and no facial features of any kind"
+  },
+  {
+   "name": "teddy-2026-09-16-en-vocab-pics",
+   "subject": "a soft plush teddy bear toy sitting upright with round ears, short stubby arms and legs and a lighter coloured belly patch, clearly a stuffed cloth toy — its face is completely blank with absolutely no eyes, no nose and no mouth"
+  },
+  {
+   "name": "doll-2026-09-16-en-vocab-pics",
+   "subject": "a soft rag doll toy standing upright wearing a simple dress, with two braided plaits of yarn hair and mitten hands — its face is completely blank with absolutely no eyes, no nose and no mouth"
+  },
+  {
+   "name": "yoyo-2026-09-16-en-vocab-pics",
+   "subject": "a classic yo-yo toy: two round discs joined at their centre by a short axle, with a length of string wound around the axle and a small finger loop at the free end of the string"
   }
  ]
 }
