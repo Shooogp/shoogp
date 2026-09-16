@@ -22,18 +22,18 @@
   "⚠️ **وحدُّ المعدَّلِ خمسةُ طلباتٍ في الدقيقة** (‏`x-ratelimit-limit: 5`)، فالعقدةُ",
   "تُرسِلُ عنصراً واحداً كلَّ ١٥ ثانية."
  ],
- "batchId": "2026-09-16-g2en-unit2-sounds",
+ "batchId": "2026-09-16-g2en-unit3-sounds",
  "voice": "حطاب",
  "items": [
-  { "name": "phon-orn",   "text": "orn" },
-  { "name": "blend-corn", "text": "corn" },
-  { "name": "phon-k",     "text": "k" },
-  { "name": "phon-ing",   "text": "ing" },
-  { "name": "blend-king", "text": "king" },
-  { "name": "phon-ook",   "text": "ook" },
-  { "name": "blend-book", "text": "book" },
-  { "name": "phon-m",     "text": "m" },
-  { "name": "phon-oon",   "text": "oon" },
-  { "name": "blend-moon", "text": "moon" }
+  { "name": "phon-h",      "text": "h" },
+  { "name": "phon-ouse",   "text": "ouse" },
+  { "name": "blend-house", "text": "house" },
+  { "name": "phon-oin",    "text": "oin" },
+  { "name": "blend-coin",  "text": "coin" },
+  { "name": "phon-bl",     "text": "bl" },
+  { "name": "phon-ue",     "text": "ue" },
+  { "name": "blend-blue",  "text": "blue" },
+  { "name": "phon-ike",    "text": "ike" },
+  { "name": "blend-bike",  "text": "bike" }
  ]
 }
