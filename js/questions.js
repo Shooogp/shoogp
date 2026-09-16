@@ -41594,5 +41594,141 @@ window.QUESTIONS = {
         { a: "car",   b: "Wheels" }
       ]
     }
+  ],
+
+  // نادي التعلّم ١: Atomic's Learning Club (Language booster 1 + Natural Science)
+  // الدرس lc1-1: عالمي المفضّل — Language booster 1
+  "g2e-lc1-1": [
+    {
+      type: "mcq",
+      objective: "مفردات: monster, helicopter, robot, computer, book",
+      level: "knowledge",
+      prompt: "Which one is a computer?",
+      pics: true,
+      options: ["computer", "book", "robot", "monster"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مفردات: monster, helicopter, robot, computer, book",
+      level: "knowledge",
+      statement: "A helicopter can fly.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "صفات: big, small, noisy, interesting, scary",
+      level: "knowledge",
+      prompt: "Match each thing to how it is.",
+      pairs: [
+        { a: "robot",      b: "small" },
+        { a: "monster",    b: "scary" },
+        { a: "helicopter", b: "noisy" },
+        { a: "computer",   b: "interesting" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "صفات: big, small, noisy, interesting, scary",
+      level: "reasoning",
+      prompt: "Sort by sound.",
+      groups: [
+        { name: "Noisy things", items: ["helicopter", "monster"] },
+        { name: "Quiet things", items: ["book", "computer"] }
+      ]
+    },
+    {
+      type: "fill-blank",
+      objective: "تركيب: Is it very (interesting)? Yes, it is./No, it isn't.",
+      level: "application",
+      prompt: "Complete the sentence.",
+      text: "The monster is very {}.",
+      answers: ["scary"],
+      distractors: ["small", "happy"]
+    },
+    {
+      type: "memory",
+      objective: "What's your favourite book? My favourite book is…",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "What's your favourite book?", b: "My favourite book is Cinderella." },
+        { a: "Is it very interesting?",     b: "Yes, it is." },
+        { a: "Is it very scary?",           b: "No, it isn't." },
+        { a: "What's your favourite toy?",  b: "My favourite toy is my robot." }
+      ]
+    }
+  ],
+
+  // الدرس lc1-2: حواسّنا الخمس — Natural Science: What are our senses?
+  "g2e-lc1-2": [
+    {
+      type: "mcq",
+      objective: "الحواس الخمس sight, hearing, smell, taste, touch",
+      level: "knowledge",
+      prompt: "How many senses have we got?",
+      options: ["3", "4", "5", "6"],
+      answer: 2
+    },
+    {
+      type: "true-false",
+      objective: "ربط الحواس بأعضاء الجسم: tongue",
+      level: "knowledge",
+      statement: "We taste with our tongue.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "ربط الحواس بأعضاء الجسم: eyes, ears, nose, tongue",
+      level: "knowledge",
+      prompt: "Match each sense to the body part.",
+      pics: "b",
+      pairs: [
+        { a: "sight",   b: "eyes" },
+        { a: "hearing", b: "ears" },
+        { a: "smell",   b: "nose" },
+        { a: "taste",   b: "tongue" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "ربط الحواس بأعضاء الجسم: eyes, nose, hands",
+      level: "reasoning",
+      prompt: "Sort the body parts.",
+      pics: true,
+      groups: [
+        { name: "On your face",     items: ["eyes", "nose"] },
+        { name: "Not on your face", items: ["hands"] }
+      ]
+    },
+    {
+      type: "hotspot",
+      objective: "ربط الحواس بأعضاء الجسم: We smell with our nose",
+      level: "application",
+      prompt: "We smell with our nose. Click on the nose!",
+      bg: "#fff4e8",
+      svg: `<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A face">
+        <ellipse cx="30" cy="200" rx="26" ry="42" fill="#f2c3a0" stroke="#111111" stroke-width="4"/>
+        <ellipse cx="370" cy="200" rx="26" ry="42" fill="#f2c3a0" stroke="#111111" stroke-width="4"/>
+        <circle cx="200" cy="200" r="168" fill="#f2c3a0" stroke="#111111" stroke-width="4"/>
+        <circle cx="150" cy="168" r="15" fill="#111111"/>
+        <circle cx="250" cy="168" r="15" fill="#111111"/>
+        <path d="M186 200 Q200 240 214 200 Q200 216 186 200 Z" fill="#e0a87f" stroke="#111111" stroke-width="3"/>
+        <path d="M150 268 Q200 300 250 268" fill="none" stroke="#111111" stroke-width="6" stroke-linecap="round"/>
+      </svg>`,
+      spot: { x: 50, y: 52, r: 12 }
+    },
+    {
+      type: "memory",
+      objective: "الحواس الخمس sight, hearing, smell, taste, touch",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "sight",   b: "We see." },
+        { a: "hearing", b: "We hear." },
+        { a: "smell",   b: "We smell." },
+        { a: "taste",   b: "We taste." }
+      ]
+    }
   ]
 };

@@ -122,8 +122,8 @@ window.DATA_FALLBACK = {
         { title:"Review", file:"g2e-1-7", open:true }
       ]},
       { unit:"Atomic's Learning Club 1", lessons:[
-        { title:"Language booster 1", file:"g2e-lc1-1", open:false },
-        { title:"Natural Science: Our senses", file:"g2e-lc1-2", open:false }
+        { title:"Language booster 1", file:"g2e-lc1-1", open:true },
+        { title:"Natural Science: Our senses", file:"g2e-lc1-2", open:true }
       ]},
       { unit:"Where's my pen?", lessons:[
         { title:"Where's my pen? (or)", file:"g2e-2-1", open:false },
