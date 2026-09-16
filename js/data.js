@@ -58,52 +58,52 @@ window.DATA_FALLBACK = {
   // فهرس منفصل لكل كتاب  (مطابق لـ data/index.json)
   index: {
     "g1-en": { book:"اللغة الإنجليزية — الصف الأول", units:[
-      { unit:"تمهيد", lessons:[
-        { title:"مرحباً بكم!", file:"g1e-0-1", open:true }
+      { unit:"Welcome", lessons:[
+        { title:"Hello!", file:"g1e-0-1", open:true }
       ]},
-      { unit:"عائلتي وأصدقائي", lessons:[
-        { title:"أصدقائي وعائلتي", file:"g1e-1-1", open:true },
-        { title:"أصوات الحروف: s", file:"g1e-1-2", open:true },
-        { title:"من هذا؟", file:"g1e-1-3", open:true },
-        { title:"هذه أختي", file:"g1e-1-4", open:true },
-        { title:"مشروع: دمى الأصابع", file:"g1e-1-5", open:true },
-        { title:"المراجعة", file:"g1e-1-6", open:true },
-        { title:"استعدّ للاختبار", file:"g1e-1-7", open:true }
+      { unit:"Family and friends", lessons:[
+        { title:"Family and friends", file:"g1e-1-1", open:true },
+        { title:"Sound: s", file:"g1e-1-2", open:true },
+        { title:"Who's this?", file:"g1e-1-3", open:true },
+        { title:"This is my sister", file:"g1e-1-4", open:true },
+        { title:"Project: Finger puppets", file:"g1e-1-5", open:true },
+        { title:"Review", file:"g1e-1-6", open:true },
+        { title:"Get ready for Starters", file:"g1e-1-7", open:true }
       ]},
-      { unit:"نادي التعلّم ١", lessons:[
-        { title:"الأعداد ١-٦", file:"g1e-lc1-1", open:true },
-        { title:"الألوان", file:"g1e-lc1-2", open:true }
+      { unit:"Meg's Learning Club 1", lessons:[
+        { title:"Numbers 1-6", file:"g1e-lc1-1", open:true },
+        { title:"Colours", file:"g1e-lc1-2", open:true }
       ]},
-      { unit:"حقيبتي المدرسية", lessons:[
-        { title:"حقيبتي المدرسية", file:"g1e-2-1", open:false },
-        { title:"أصوات الحروف: a", file:"g1e-2-2", open:false },
-        { title:"عندي... وليس عندي", file:"g1e-2-3", open:false },
-        { title:"ماذا في حقيبتي؟", file:"g1e-2-4", open:false },
-        { title:"مشروع: حقيبة مدرسية", file:"g1e-2-5", open:false },
-        { title:"المراجعة", file:"g1e-2-6", open:false },
-        { title:"استعدّ للاختبار", file:"g1e-2-7", open:false }
+      { unit:"My school bag", lessons:[
+        { title:"My school bag", file:"g1e-2-1", open:false },
+        { title:"Sound: a", file:"g1e-2-2", open:false },
+        { title:"I've got / I haven't got", file:"g1e-2-3", open:false },
+        { title:"What's in my bag?", file:"g1e-2-4", open:false },
+        { title:"Project: School bag", file:"g1e-2-5", open:false },
+        { title:"Review", file:"g1e-2-6", open:false },
+        { title:"Get ready for Starters", file:"g1e-2-7", open:false }
       ]},
-      { unit:"غرفتي الصفية", lessons:[
-        { title:"غرفتي الصفية", file:"g1e-3-1", open:false },
-        { title:"أصوات الحروف: t", file:"g1e-3-2", open:false },
-        { title:"ما هذا؟", file:"g1e-3-3", open:false },
-        { title:"أين الكتاب؟", file:"g1e-3-4", open:false },
-        { title:"مشروع: صندوق أدوات مرتّب", file:"g1e-3-5", open:false },
-        { title:"المراجعة", file:"g1e-3-6", open:false },
-        { title:"استعدّ للاختبار", file:"g1e-3-7", open:false }
+      { unit:"Our classroom", lessons:[
+        { title:"Our classroom", file:"g1e-3-1", open:false },
+        { title:"Sound: t", file:"g1e-3-2", open:false },
+        { title:"What's this?", file:"g1e-3-3", open:false },
+        { title:"Where's the book?", file:"g1e-3-4", open:false },
+        { title:"Project: Desk tidy", file:"g1e-3-5", open:false },
+        { title:"Review", file:"g1e-3-6", open:false },
+        { title:"Get ready for Starters", file:"g1e-3-7", open:false }
       ]},
-      { unit:"لعبتي المفضلة", lessons:[
-        { title:"لعبتي المفضلة", file:"g1e-4-1", open:false },
-        { title:"أصوات الحروف: p", file:"g1e-4-2", open:false },
-        { title:"ما لونها؟", file:"g1e-4-3", open:false },
-        { title:"لعبتي المفضلة (تدريب)", file:"g1e-4-4", open:false },
-        { title:"مشروع: صندوق الألعاب", file:"g1e-4-5", open:false },
-        { title:"المراجعة", file:"g1e-4-6", open:false },
-        { title:"استعدّ للاختبار", file:"g1e-4-7", open:false }
+      { unit:"My favourite toy", lessons:[
+        { title:"My favourite toy", file:"g1e-4-1", open:false },
+        { title:"Sound: p", file:"g1e-4-2", open:false },
+        { title:"What colour is it?", file:"g1e-4-3", open:false },
+        { title:"What's your favourite toy?", file:"g1e-4-4", open:false },
+        { title:"Project: Toy box", file:"g1e-4-5", open:false },
+        { title:"Review", file:"g1e-4-6", open:false },
+        { title:"Get ready for Starters", file:"g1e-4-7", open:false }
       ]},
-      { unit:"نادي التعلّم ٢", lessons:[
-        { title:"الأشكال الهندسية", file:"g1e-lc2-1", open:false },
-        { title:"ما هذه؟", file:"g1e-lc2-2", open:false }
+      { unit:"Meg's Learning Club 2", lessons:[
+        { title:"Shapes", file:"g1e-lc2-1", open:false },
+        { title:"What are these?", file:"g1e-lc2-2", open:false }
       ]}
     ] },
     "g1-sci": { book:"العلوم — الصف الأول", units:[

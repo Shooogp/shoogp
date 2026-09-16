@@ -224,7 +224,7 @@ function openBook(key){
     /* بلا شارةِ قفلٍ هنا: القفلُ صارَ **واحداً** على إطارِ الوحداتِ المقفلةِ أدناه.
        وتُعادُ الشارةُ استثناءً لوحدةٍ مقفلةٍ تقعُ **خارجَ** الإطار (انظر أدناه). */
     uh.innerHTML=`<span class="unit-no">الوحدة ${arNum(ui+1)}</span>`+
-      `<span class="unit-title">${u.unit}</span>`+
+      `<span class="unit-title" dir="auto">${u.unit}</span>`+
       `<span class="unit-count">${arNum(count)} دروس</span>`+
       `<span class="unit-chevron">⌄</span>`;
 
@@ -246,7 +246,10 @@ function openBook(key){
       const payl = payLocked && authored;
       const el=document.createElement('div');
       el.className='lesson'+(authored?'':(bookOnly?' bookonly':' locked'))+(payl?' paylocked':'');
-      el.innerHTML=`<div class="num">${arNum(n)}</div><div class="lt">${ls.title}`+
+      /* `<bdi>` حولَ العنوان: عنوانٌ لاتينيٌّ ينتهي بعلامةٍ محايدةٍ («?Who's this»)
+         تأخذُ العلامةُ فيه اتجاهَ الصفحةِ RTL فتقفزُ إلى يسارِه. والعزلُ يُبقي
+         اتجاهَ الصفِّ عربياً (فشارةُ «في الكتاب» في موضعِها) ويصحّحُ العنوانَ وحدَه. */
+      el.innerHTML=`<div class="num">${arNum(n)}</div><div class="lt"><bdi>${ls.title}</bdi>`+
         (bookOnly?` <span class="lbook">في الكتاب</span>`:'')+`</div>`+
         `<div class="arrow">${authored?(payl?'🔒':'←'):(bookOnly?'📖':'🔒')}</div>`;
       if(bookOnly) el.setAttribute('aria-label', ls.title+' — نشاطٌ في الكتابِ الورقيّ، بلا أسئلةٍ في المنصّة');
