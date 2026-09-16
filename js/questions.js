@@ -39260,6 +39260,7 @@ window.QUESTIONS = {
   "g1e-2-1": [
     {
       type: "mcq",
+      pics: true,
       objective: "مفردات: bag, pen, eraser, ruler",
       level: "knowledge",
       prompt: "Which one do you use to rub out a mistake?",
@@ -39275,6 +39276,7 @@ window.QUESTIONS = {
     },
     {
       type: "matching",
+      pics: "a",
       objective: "مفردات: bag, pen, eraser, ruler",
       level: "knowledge",
       prompt: "Match each thing to what you use it for.",
@@ -39306,6 +39308,7 @@ window.QUESTIONS = {
     },
     {
       type: "classify",
+      pics: true,
       objective: "مفردات: bag, pen, eraser, ruler",
       level: "reasoning",
       prompt: "Sort each thing.",
@@ -39402,6 +39405,7 @@ window.QUESTIONS = {
   "g1e-2-3": [
     {
       type: "mcq",
+      pics: true,
       objective: "مفردات: book, crayon, pencil, pencil case",
       level: "knowledge",
       prompt: "Which one do you colour with?",
@@ -39417,6 +39421,7 @@ window.QUESTIONS = {
     },
     {
       type: "matching",
+      pics: "a",
       objective: "مفردات: book, crayon, pencil, pencil case",
       level: "knowledge",
       prompt: "Match each thing to what you do with it.",
@@ -39536,6 +39541,7 @@ window.QUESTIONS = {
     },
     {
       type: "classify",
+      pics: true,
       objective: "مفردات الوحدة ٢ — أين يوضع كل شيء",
       level: "reasoning",
       prompt: "Sort each thing.",
@@ -39546,6 +39552,7 @@ window.QUESTIONS = {
     },
     {
       type: "exclude",
+      pics: true,
       objective: "مفردات الوحدة ٢",
       level: "application",
       prompt: "Click the thing you do NOT write with.",
@@ -39559,6 +39566,7 @@ window.QUESTIONS = {
   "g1e-2-5": [
     {
       type: "mcq",
+      pics: true,
       objective: "مراجعة مفردات الوحدة ٢",
       level: "knowledge",
       prompt: "What do you carry your books in?",
@@ -39574,6 +39582,7 @@ window.QUESTIONS = {
     },
     {
       type: "matching",
+      pics: "a",
       objective: "مراجعة مفردات الوحدة ٢",
       level: "knowledge",
       prompt: "Match each thing to where it goes.",
@@ -39598,6 +39607,7 @@ window.QUESTIONS = {
     },
     {
       type: "classify",
+      pics: true,
       objective: "مراجعة مفردات الوحدة ٢",
       level: "reasoning",
       prompt: "Sort each thing.",
@@ -39624,6 +39634,7 @@ window.QUESTIONS = {
   "g1e-2-6": [
     {
       type: "mcq",
+      pics: true,
       objective: "مراجعة تراكمية لمفردات الوحدة ٢",
       level: "knowledge",
       prompt: "Listen and choose the word you hear.",
@@ -39640,6 +39651,7 @@ window.QUESTIONS = {
     },
     {
       type: "matching",
+      pics: "a",
       objective: "مراجعة تراكمية لمفردات الوحدة ٢",
       level: "knowledge",
       prompt: "Match each thing to what you use it for.",
@@ -39661,6 +39673,7 @@ window.QUESTIONS = {
     },
     {
       type: "classify",
+      pics: true,
       objective: "مراجعة تراكمية لمفردات الوحدة ٢",
       level: "reasoning",
       prompt: "Sort each thing.",
@@ -39671,6 +39684,7 @@ window.QUESTIONS = {
     },
     {
       type: "exclude",
+      pics: true,
       objective: "مراجعة تراكمية لمفردات الوحدة ٢",
       level: "application",
       prompt: "Click the word that is NOT a school thing.",
@@ -39730,6 +39744,7 @@ window.QUESTIONS = {
     },
     {
       type: "classify",
+      pics: true,
       objective: "تدريب على نمط اختبار Pre-A1 Starters",
       level: "reasoning",
       prompt: "Sort each thing.",
@@ -39905,6 +39920,7 @@ window.QUESTIONS = {
   "g1e-3-3": [
     {
       type: "mcq",
+      pics: true,
       objective: "مفردات: chair, desk, floor, wall",
       level: "knowledge",
       prompt: "Which one do you sit on?",
@@ -39920,6 +39936,7 @@ window.QUESTIONS = {
     },
     {
       type: "matching",
+      pics: "a",
       objective: "مفردات: chair, desk, floor, wall",
       level: "knowledge",
       prompt: "Match each one to what you do with it.",
@@ -40151,6 +40168,7 @@ window.QUESTIONS = {
     },
     {
       type: "classify",
+      pics: true,
       objective: "مراجعة مفردات الوحدة ٣",
       level: "reasoning",
       prompt: "Sort each word.",
@@ -40177,6 +40195,7 @@ window.QUESTIONS = {
   "g1e-3-6": [
     {
       type: "mcq",
+      pics: true,
       objective: "مراجعة تراكمية لمفردات الوحدة ٣",
       level: "knowledge",
       prompt: "Listen and choose the word you hear.",
@@ -40193,6 +40212,7 @@ window.QUESTIONS = {
     },
     {
       type: "matching",
+      pics: "a",
       objective: "مراجعة تراكمية لمفردات الوحدة ٣",
       level: "knowledge",
       prompt: "Match each one to what you do with it.",
@@ -40214,6 +40234,7 @@ window.QUESTIONS = {
     },
     {
       type: "classify",
+      pics: true,
       objective: "مراجعة تراكمية لمفردات الوحدة ٣",
       level: "reasoning",
       prompt: "Sort each word.",
@@ -40318,6 +40339,7 @@ window.QUESTIONS = {
   "g1e-4-1": [
     {
       type: "mcq",
+      pics: true,
       objective: "مفردات: ball, car, robot, teddy",
       level: "knowledge",
       prompt: "Which toy is round and you can throw it?",
@@ -40333,6 +40355,7 @@ window.QUESTIONS = {
     },
     {
       type: "matching",
+      pics: "a",
       objective: "مفردات: ball, car, robot, teddy",
       level: "knowledge",
       prompt: "Match each toy to what it is like.",
@@ -40364,6 +40387,7 @@ window.QUESTIONS = {
     },
     {
       type: "classify",
+      pics: true,
       objective: "مفردات: ball, car, robot, teddy",
       level: "reasoning",
       prompt: "Sort each toy.",
@@ -40460,6 +40484,7 @@ window.QUESTIONS = {
   "g1e-4-3": [
     {
       type: "mcq",
+      pics: true,
       objective: "مفردات: doll, plane, train, yo-yo",
       level: "knowledge",
       prompt: "Which toy flies in the sky?",
@@ -40475,6 +40500,7 @@ window.QUESTIONS = {
     },
     {
       type: "matching",
+      pics: "a",
       objective: "مفردات: doll, plane, train, yo-yo",
       level: "knowledge",
       prompt: "Match each toy to where it goes.",
@@ -40496,6 +40522,7 @@ window.QUESTIONS = {
     },
     {
       type: "classify",
+      pics: true,
       objective: "مفردات الوحدة ٤؛ القيمة: Share",
       level: "reasoning",
       prompt: "Sort each toy.",
@@ -40612,6 +40639,7 @@ window.QUESTIONS = {
     },
     {
       type: "exclude",
+      pics: true,
       objective: "مفردات الوحدة ٤",
       level: "application",
       prompt: "Click the word that is NOT a toy.",
@@ -40640,6 +40668,7 @@ window.QUESTIONS = {
     },
     {
       type: "matching",
+      pics: "a",
       objective: "مراجعة مفردات الوحدة ٤",
       level: "knowledge",
       prompt: "Match each toy to what it is like.",
@@ -40664,6 +40693,7 @@ window.QUESTIONS = {
     },
     {
       type: "classify",
+      pics: true,
       objective: "مراجعة مفردات الوحدة ٤",
       level: "reasoning",
       prompt: "Sort each toy.",
@@ -40690,6 +40720,7 @@ window.QUESTIONS = {
   "g1e-4-6": [
     {
       type: "mcq",
+      pics: true,
       objective: "مراجعة تراكمية لمفردات الوحدة ٤",
       level: "knowledge",
       prompt: "Listen and choose the word you hear.",
@@ -40706,6 +40737,7 @@ window.QUESTIONS = {
     },
     {
       type: "matching",
+      pics: "a",
       objective: "مراجعة تراكمية لمفردات الوحدة ٤",
       level: "knowledge",
       prompt: "Match each toy to what it is like.",
@@ -40796,6 +40828,7 @@ window.QUESTIONS = {
     },
     {
       type: "classify",
+      pics: true,
       objective: "تدريب على نمط اختبار Pre-A1 Starters",
       level: "reasoning",
       prompt: "Sort each word.",
