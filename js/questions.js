@@ -39248,4 +39248,507 @@ window.QUESTIONS = {
       ]
     }
   ]
+,
+
+  /* ═══ الوحدة ٢ — My school bag ═══════════════════════════════════════════
+     المفردات: bag, pen, eraser, ruler | book, crayon, pencil, pencil case
+     التراكيب: I've got… / I haven't got…   ·   القيمة: Look after your things
+     التوزيع في كل درس: ٣ knowledge + ١ application + ١ reasoning + إثرائيّ حرّ
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  // الدرس ٢-١: My school bag — مفردات: bag, pen, eraser, ruler
+  "g1e-2-1": [
+    {
+      type: "mcq",
+      objective: "مفردات: bag, pen, eraser, ruler",
+      level: "knowledge",
+      prompt: "Which one do you use to rub out a mistake?",
+      options: ["ruler", "eraser", "bag", "pen"],
+      answer: 1
+    },
+    {
+      type: "true-false",
+      objective: "مفردات: bag, pen, eraser, ruler",
+      level: "knowledge",
+      statement: "You write with a pen.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "مفردات: bag, pen, eraser, ruler",
+      level: "knowledge",
+      prompt: "Match each thing to what you use it for.",
+      pairs: [
+        { a: "bag",    b: "to carry your things" },
+        { a: "pen",    b: "to write" },
+        { a: "eraser", b: "to rub out a mistake" },
+        { a: "ruler",  b: "to draw a straight line" }
+      ]
+    },
+    {
+      type: "hotspot",
+      objective: "مفردات: bag, pen, eraser, ruler",
+      level: "application",
+      prompt: "Listen, then click on the ruler.",
+      audio: "audio/en/ruler.mp3",
+      svg: `<svg viewBox="0 0 560 560" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="20" width="240" height="240" rx="28" fill="#fffdf6" stroke="#d8c9a4" stroke-width="4"/>
+        <image href="images/ممحاة.png" x="44" y="44" width="192" height="192" preserveAspectRatio="xMidYMid meet"/>
+        <rect x="300" y="20" width="240" height="240" rx="28" fill="#fffdf6" stroke="#d8c9a4" stroke-width="4"/>
+        <image href="images/حقيبة.png" x="324" y="44" width="192" height="192" preserveAspectRatio="xMidYMid meet"/>
+        <rect x="20" y="300" width="240" height="240" rx="28" fill="#fffdf6" stroke="#d8c9a4" stroke-width="4"/>
+        <image href="images/مسطرة.png" x="44" y="324" width="192" height="192" preserveAspectRatio="xMidYMid meet"/>
+        <rect x="300" y="300" width="240" height="240" rx="28" fill="#fffdf6" stroke="#d8c9a4" stroke-width="4"/>
+        <image href="images/قلم.png" x="324" y="324" width="192" height="192" preserveAspectRatio="xMidYMid meet"/>
+      </svg>`,
+      bg: "#fff6dc",
+      spot: { x: 25, y: 75, w: 42.9, h: 42.9 }
+    },
+    {
+      type: "classify",
+      objective: "مفردات: bag, pen, eraser, ruler",
+      level: "reasoning",
+      prompt: "Sort each thing.",
+      groups: [
+        { name: "Goes in the pencil case", items: ["pen", "eraser", "ruler"] },
+        { name: "Holds everything",        items: ["bag"] }
+      ]
+    },
+    {
+      type: "memory",
+      objective: "مفردات: bag, pen, eraser, ruler",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "bag",    b: "to carry your things" },
+        { a: "pen",    b: "to write" },
+        { a: "eraser", b: "to rub out a mistake" },
+        { a: "ruler",  b: "to draw a straight line" }
+      ]
+    }
+  ],
+
+  // الدرس ٢-٢: أصوات الحروف — sound a (Sounds and Spelling Book, Unit 2 Lesson 2)
+  "g1e-2-2": [
+    {
+      type: "mcq",
+      objective: "تمييز صوت الحرف a",
+      level: "knowledge",
+      prompt: "Listen, then choose the word that starts with the letter 'a'.",
+      audio: "audio/en/ant.mp3",
+      options: ["ant", "bag", "pen", "sun"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "تمييز صوت الحرف a",
+      level: "knowledge",
+      statement: "The word 'bag' has the 'a' sound in the middle.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "تمييز صوت الحرف a",
+      level: "knowledge",
+      prompt: "Match the letter 'a' to words that have its sound.",
+      pairs: [
+        { a: "a", b: "ant" },
+        { a: "a", b: "bag" },
+        { a: "a", b: "cat" },
+        { a: "a", b: "hat" }
+      ]
+    },
+    {
+      type: "hotspot",
+      objective: "تمييز صوت الحرف a",
+      level: "application",
+      prompt: "Listen to the sound, then click the matching letter.",
+      audio: "audio/en/phon-a.mp3",
+      svg: `<svg viewBox="0 0 440 440" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="20" width="190" height="190" rx="24" fill="#F6D000" stroke="#111111" stroke-width="5"/>
+        <text x="115" y="148" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="800" font-size="100" fill="#111111">S</text>
+        <rect x="230" y="20" width="190" height="190" rx="24" fill="#F6D000" stroke="#111111" stroke-width="5"/>
+        <text x="325" y="148" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="800" font-size="100" fill="#111111">A</text>
+        <rect x="20" y="230" width="190" height="190" rx="24" fill="#F6D000" stroke="#111111" stroke-width="5"/>
+        <text x="115" y="358" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="800" font-size="100" fill="#111111">T</text>
+        <rect x="230" y="230" width="190" height="190" rx="24" fill="#F6D000" stroke="#111111" stroke-width="5"/>
+        <text x="325" y="358" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="800" font-size="100" fill="#111111">P</text>
+      </svg>`,
+      bg: "#fff6dc",
+      spot: { x: 73.9, y: 26.1, w: 43.2, h: 43.2 }
+    },
+    {
+      type: "classify",
+      objective: "تمييز صوت الحرف a",
+      level: "reasoning",
+      prompt: "Sort each word by its first letter.",
+      groups: [
+        { name: "Starts with a", items: ["ant", "apple"] },
+        { name: "Starts with s", items: ["sun", "six"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "تمييز صوت الحرف a",
+      level: "application",
+      prompt: "Click the word that does NOT have the 'a' sound.",
+      options: ["cat", "bag", "ant", "pen"],
+      answer: 3,
+      reason: "'pen' has the 'e' sound, not the 'a' sound."
+    }
+  ],
+
+  // الدرس ٢-٣: I've got / I haven't got (قصة) — book, crayon, pencil, pencil case؛ القيمة: Look after your things
+  "g1e-2-3": [
+    {
+      type: "mcq",
+      objective: "مفردات: book, crayon, pencil, pencil case",
+      level: "knowledge",
+      prompt: "Which one do you colour with?",
+      options: ["crayon", "book", "bag", "ruler"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مفردات: book, crayon, pencil, pencil case",
+      level: "knowledge",
+      statement: "A pencil case holds pens and pencils.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "مفردات: book, crayon, pencil, pencil case",
+      level: "knowledge",
+      prompt: "Match each thing to what you do with it.",
+      pairs: [
+        { a: "book",        b: "you read it" },
+        { a: "crayon",      b: "you colour with it" },
+        { a: "pencil",      b: "you write with it" },
+        { a: "pencil case", b: "you keep pencils in it" }
+      ]
+    },
+    {
+      type: "fill-blank",
+      objective: "تركيب: I've got… / I haven't got…",
+      level: "application",
+      prompt: "Complete the sentence.",
+      text: "I've got a {}.",
+      answers: ["pencil"],
+      distractors: ["red", "six"]
+    },
+    {
+      type: "sequence",
+      objective: "تركيب: I've got… / I haven't got…؛ القيمة: Look after your things",
+      level: "reasoning",
+      prompt: "Listen, then put the story in the correct order.",
+      audio: "audio/en/dialogue-ive-got.mp3",
+      steps: [
+        "Look at my school bag.",
+        "I've got a book.",
+        "I haven't got a pencil.",
+        "Here is my pencil. Look after it!"
+      ]
+    },
+    {
+      type: "color",
+      objective: "مفردات الوحدة ٢ — التمييز بين أدوات الكتابة وأدوات الحمل",
+      level: "application",
+      prompt: "Color the writing things blue. Color the carrying things red.",
+      bg: "#fdf9ee",
+      showLabels: false,
+      palette: [
+        { name: "Blue", color: "#1f6feb" },
+        { name: "Red",  color: "#c0392b" }
+      ],
+      parts: [
+        { name: "pen",         color: "#1f6feb" },
+        { name: "pencil",      color: "#1f6feb" },
+        { name: "bag",         color: "#c0392b" },
+        { name: "pencil case", color: "#c0392b" }
+      ],
+      svg: `<svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg">
+        <g class="cpart" data-name="pen" style="stroke:none;fill:#3a3226">
+          <rect x="12" y="96" width="125" height="92" rx="18" fill="#fffdf6" stroke="#d8c9a4" stroke-width="2"/>
+          <rect x="12" y="96" width="125" height="92" rx="18" fill="none" pointer-events="all"/>
+          <text x="74" y="152" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="700" font-size="32">pen</text>
+        </g>
+        <g class="cpart" data-name="pencil" style="stroke:none;fill:#3a3226">
+          <rect x="162" y="96" width="125" height="92" rx="18" fill="#fffdf6" stroke="#d8c9a4" stroke-width="2"/>
+          <rect x="162" y="96" width="125" height="92" rx="18" fill="none" pointer-events="all"/>
+          <text x="224" y="152" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="700" font-size="30">pencil</text>
+        </g>
+        <g class="cpart" data-name="bag" style="stroke:none;fill:#3a3226">
+          <rect x="312" y="96" width="125" height="92" rx="18" fill="#fffdf6" stroke="#d8c9a4" stroke-width="2"/>
+          <rect x="312" y="96" width="125" height="92" rx="18" fill="none" pointer-events="all"/>
+          <text x="374" y="152" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="700" font-size="32">bag</text>
+        </g>
+        <g class="cpart" data-name="pencil case" style="stroke:none;fill:#3a3226">
+          <rect x="462" y="96" width="125" height="92" rx="18" fill="#fffdf6" stroke="#d8c9a4" stroke-width="2"/>
+          <rect x="462" y="96" width="125" height="92" rx="18" fill="none" pointer-events="all"/>
+          <text x="524" y="140" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="700" font-size="26">pencil</text>
+          <text x="524" y="170" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="700" font-size="26">case</text>
+        </g>
+      </svg>`
+    }
+  ],
+
+  // الدرس ٢-٤: What's in my bag? — تدريب لغوي (تثبيت I've got / I haven't got)
+  "g1e-2-4": [
+    {
+      type: "mcq",
+      objective: "تثبيت I've got… / I haven't got…",
+      level: "knowledge",
+      prompt: "Which sentence means you have a pen?",
+      options: [
+        "I've got a pen.",
+        "I haven't got a pen.",
+        "Have a pen?",
+        "No pen."
+      ],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "تثبيت I've got… / I haven't got…",
+      level: "knowledge",
+      statement: "'I haven't got a ruler' means you do not have a ruler.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "تثبيت I've got… / I haven't got…",
+      level: "knowledge",
+      prompt: "Match each sentence to its meaning.",
+      pairs: [
+        { a: "I've got a book.",       b: "I have a book." },
+        { a: "I haven't got a book.",  b: "I do not have a book." },
+        { a: "I've got a crayon.",     b: "I have a crayon." }
+      ]
+    },
+    {
+      type: "fill-blank",
+      objective: "تثبيت I've got… / I haven't got…",
+      level: "application",
+      prompt: "Complete the sentence.",
+      text: "I haven't got a {}.",
+      answers: ["crayon"],
+      distractors: ["blue", "seven"]
+    },
+    {
+      type: "classify",
+      objective: "مفردات الوحدة ٢ — أين يوضع كل شيء",
+      level: "reasoning",
+      prompt: "Sort each thing.",
+      groups: [
+        { name: "In the pencil case", items: ["pen", "eraser"] },
+        { name: "In the bag",         items: ["book", "pencil case"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "مفردات الوحدة ٢",
+      level: "application",
+      prompt: "Click the thing you do NOT write with.",
+      options: ["pen", "pencil", "crayon", "book"],
+      answer: 3,
+      reason: "You read a book — you do not write with it."
+    }
+  ],
+
+  // الدرس ٢-٥: مشروع حقيبة مدرسية — مراجعة مفردات الوحدة ضمن سياق المشروع
+  "g1e-2-5": [
+    {
+      type: "mcq",
+      objective: "مراجعة مفردات الوحدة ٢",
+      level: "knowledge",
+      prompt: "What do you carry your books in?",
+      options: ["bag", "pen", "eraser", "ruler"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مراجعة مفردات الوحدة ٢",
+      level: "knowledge",
+      statement: "You can put a pencil case in your school bag.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "مراجعة مفردات الوحدة ٢",
+      level: "knowledge",
+      prompt: "Match each thing to where it goes.",
+      pairs: [
+        { a: "pen",    b: "the pencil case" },
+        { a: "eraser", b: "the pencil case" },
+        { a: "book",   b: "the school bag" },
+        { a: "ruler",  b: "the pencil case" }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "مراجعة مفردات الوحدة ٢ ضمن سياق المشروع",
+      level: "application",
+      prompt: "Put the project steps in the correct order.",
+      steps: [
+        "Take a piece of paper.",
+        "Draw your school bag.",
+        "Colour your school bag.",
+        "Show your school bag to the class."
+      ]
+    },
+    {
+      type: "classify",
+      objective: "مراجعة مفردات الوحدة ٢",
+      level: "reasoning",
+      prompt: "Sort each thing.",
+      groups: [
+        { name: "You write with it",        items: ["pen", "pencil"] },
+        { name: "You do not write with it", items: ["bag", "book"] }
+      ]
+    },
+    {
+      type: "memory",
+      objective: "مراجعة مفردات الوحدة ٢",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "book",        b: "you read it" },
+        { a: "crayon",      b: "you colour with it" },
+        { a: "ruler",       b: "you draw a line with it" },
+        { a: "pencil case", b: "you keep pencils in it" }
+      ]
+    }
+  ],
+
+  // الدرس ٢-٦: المراجعة — مراجعة تراكمية لمفردات وتراكيب الوحدة ٢
+  "g1e-2-6": [
+    {
+      type: "mcq",
+      objective: "مراجعة تراكمية لمفردات الوحدة ٢",
+      level: "knowledge",
+      prompt: "Listen and choose the word you hear.",
+      audio: "audio/en/eraser.mp3",
+      options: ["eraser", "ruler", "crayon", "book"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مراجعة تراكمية لتراكيب الوحدة ٢",
+      level: "knowledge",
+      statement: "'I've got a pen' means you have a pen.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "مراجعة تراكمية لمفردات الوحدة ٢",
+      level: "knowledge",
+      prompt: "Match each thing to what you use it for.",
+      pairs: [
+        { a: "crayon", b: "to colour" },
+        { a: "ruler",  b: "to draw a straight line" },
+        { a: "eraser", b: "to rub out a mistake" },
+        { a: "bag",    b: "to carry your things" }
+      ]
+    },
+    {
+      type: "fill-blank",
+      objective: "مراجعة تراكمية لمفردات الوحدة ٢",
+      level: "application",
+      prompt: "Complete the sentence.",
+      text: "This is my pencil {}.",
+      answers: ["case"],
+      distractors: ["book", "red"]
+    },
+    {
+      type: "classify",
+      objective: "مراجعة تراكمية لمفردات الوحدة ٢",
+      level: "reasoning",
+      prompt: "Sort each thing.",
+      groups: [
+        { name: "You write or draw with it", items: ["pen", "pencil", "crayon"] },
+        { name: "You keep things in it",     items: ["bag"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "مراجعة تراكمية لمفردات الوحدة ٢",
+      level: "application",
+      prompt: "Click the word that is NOT a school thing.",
+      options: ["ruler", "book", "cat", "crayon"],
+      answer: 2,
+      reason: "'cat' is an animal, not a school thing."
+    }
+  ],
+
+  // الدرس ٢-٧: استعدّ للاختبار — Pre-A1 Starters
+  "g1e-2-7": [
+    {
+      type: "mcq",
+      objective: "تدريب على نمط اختبار Pre-A1 Starters",
+      level: "knowledge",
+      prompt: "Which word is a school thing?",
+      options: ["crayon", "cat", "mum", "red"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "تدريب على نمط اختبار Pre-A1 Starters",
+      level: "knowledge",
+      statement: "A ruler helps you draw a straight line.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "تدريب على نمط اختبار Pre-A1 Starters",
+      level: "knowledge",
+      prompt: "Match each word to its first letter.",
+      pairs: [
+        { a: "bag",    b: "b" },
+        { a: "pen",    b: "p" },
+        { a: "ruler",  b: "r" },
+        { a: "eraser", b: "e" }
+      ]
+    },
+    {
+      type: "hotspot",
+      objective: "تدريب على نمط اختبار Pre-A1 Starters",
+      level: "application",
+      prompt: "Listen, then click on the book.",
+      audio: "audio/en/book.mp3",
+      svg: `<svg viewBox="0 0 560 560" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="20" width="240" height="240" rx="28" fill="#fffdf6" stroke="#d8c9a4" stroke-width="4"/>
+        <image href="images/قلم.png" x="44" y="44" width="192" height="192" preserveAspectRatio="xMidYMid meet"/>
+        <rect x="300" y="20" width="240" height="240" rx="28" fill="#fffdf6" stroke="#d8c9a4" stroke-width="4"/>
+        <image href="images/كتاب.png" x="324" y="44" width="192" height="192" preserveAspectRatio="xMidYMid meet"/>
+        <rect x="20" y="300" width="240" height="240" rx="28" fill="#fffdf6" stroke="#d8c9a4" stroke-width="4"/>
+        <image href="images/مسطرة.png" x="44" y="324" width="192" height="192" preserveAspectRatio="xMidYMid meet"/>
+        <rect x="300" y="300" width="240" height="240" rx="28" fill="#fffdf6" stroke="#d8c9a4" stroke-width="4"/>
+        <image href="images/حقيبة.png" x="324" y="324" width="192" height="192" preserveAspectRatio="xMidYMid meet"/>
+      </svg>`,
+      bg: "#fff6dc",
+      spot: { x: 75, y: 25, w: 42.9, h: 42.9 }
+    },
+    {
+      type: "classify",
+      objective: "تدريب على نمط اختبار Pre-A1 Starters",
+      level: "reasoning",
+      prompt: "Sort each thing.",
+      groups: [
+        { name: "You write with it",   items: ["pen", "pencil"] },
+        { name: "You carry things in it", items: ["bag", "pencil case"] }
+      ]
+    },
+    {
+      type: "memory",
+      objective: "تدريب على نمط اختبار Pre-A1 Starters",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "bag",    b: "to carry your things" },
+        { a: "pen",    b: "to write" },
+        { a: "book",   b: "to read" },
+        { a: "eraser", b: "to rub out a mistake" }
+      ]
+    }
+  ]
 };
