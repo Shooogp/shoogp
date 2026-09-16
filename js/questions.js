@@ -40303,4 +40303,662 @@ window.QUESTIONS = {
       ]
     }
   ]
+,
+
+  /* ═══ الوحدة ٤ — My favourite toy ═════════════════════════════════════════
+     المفردات: ball, car, robot, teddy | doll, plane, train, yo-yo
+     التراكيب: What colour is it? It's…  ·  What's your favourite toy? It's my…
+     القيمة: Share   ·   المشروع: Toy box
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  // الدرس ٤-١: My favourite toy — مفردات: ball, car, robot, teddy
+  "g1e-4-1": [
+    {
+      type: "mcq",
+      objective: "مفردات: ball, car, robot, teddy",
+      level: "knowledge",
+      prompt: "Which toy is round and you can throw it?",
+      options: ["ball", "car", "robot", "teddy"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مفردات: ball, car, robot, teddy",
+      level: "knowledge",
+      statement: "A teddy is a soft toy bear.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "مفردات: ball, car, robot, teddy",
+      level: "knowledge",
+      prompt: "Match each toy to what it is like.",
+      pairs: [
+        { a: "ball",  b: "it is round" },
+        { a: "car",   b: "it has four wheels" },
+        { a: "robot", b: "it looks like a little machine" },
+        { a: "teddy", b: "it is soft" }
+      ]
+    },
+    {
+      type: "hotspot",
+      objective: "مفردات: ball, car, robot, teddy",
+      level: "application",
+      prompt: "Listen, then click on the ball.",
+      audio: "audio/en/ball.mp3",
+      svg: `<svg viewBox="0 0 560 560" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="20" width="240" height="240" rx="28" fill="#fffdf6" stroke="#d8c9a4" stroke-width="4"/>
+        <image href="images/سيارة.png" x="44" y="44" width="192" height="192" preserveAspectRatio="xMidYMid meet"/>
+        <rect x="300" y="20" width="240" height="240" rx="28" fill="#fffdf6" stroke="#d8c9a4" stroke-width="4"/>
+        <image href="images/كرة.png" x="324" y="44" width="192" height="192" preserveAspectRatio="xMidYMid meet"/>
+        <rect x="20" y="300" width="240" height="240" rx="28" fill="#fffdf6" stroke="#d8c9a4" stroke-width="4"/>
+        <image href="images/طائرة.png" x="44" y="324" width="192" height="192" preserveAspectRatio="xMidYMid meet"/>
+        <rect x="300" y="300" width="240" height="240" rx="28" fill="#fffdf6" stroke="#d8c9a4" stroke-width="4"/>
+        <image href="images/قطار.png" x="324" y="324" width="192" height="192" preserveAspectRatio="xMidYMid meet"/>
+      </svg>`,
+      bg: "#fff6dc",
+      spot: { x: 75, y: 25, w: 42.9, h: 42.9 }
+    },
+    {
+      type: "classify",
+      objective: "مفردات: ball, car, robot, teddy",
+      level: "reasoning",
+      prompt: "Sort each toy.",
+      groups: [
+        { name: "It has wheels",        items: ["car"] },
+        { name: "It has no wheels",     items: ["ball", "robot", "teddy"] }
+      ]
+    },
+    {
+      type: "memory",
+      objective: "مفردات: ball, car, robot, teddy",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "ball",  b: "it is round" },
+        { a: "car",   b: "it has four wheels" },
+        { a: "robot", b: "it looks like a little machine" },
+        { a: "teddy", b: "it is soft" }
+      ]
+    }
+  ],
+
+  // الدرس ٤-٢: أصوات الحروف — sound p (Sounds and Spelling Book, Unit 4 Lesson 2)
+  "g1e-4-2": [
+    {
+      type: "mcq",
+      objective: "تمييز صوت الحرف p",
+      level: "knowledge",
+      prompt: "Listen, then choose the word that starts with the letter 'p'.",
+      audio: "audio/en/pen.mp3",
+      options: ["pen", "ball", "sun", "cat"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "تمييز صوت الحرف p",
+      level: "knowledge",
+      statement: "The word 'top' ends with the letter 'p'.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "تمييز صوت الحرف p",
+      level: "knowledge",
+      prompt: "Match the letter 'p' to words that start with it.",
+      pairs: [
+        { a: "p", b: "pen" },
+        { a: "p", b: "pan" },
+        { a: "p", b: "pin" },
+        { a: "p", b: "plane" }
+      ]
+    },
+    {
+      type: "hotspot",
+      objective: "تمييز صوت الحرف p",
+      level: "application",
+      prompt: "Listen to the sound, then click the matching letter.",
+      audio: "audio/en/phon-p.mp3",
+      svg: `<svg viewBox="0 0 440 440" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="20" width="190" height="190" rx="24" fill="#F6D000" stroke="#111111" stroke-width="5"/>
+        <text x="115" y="148" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="800" font-size="100" fill="#111111">S</text>
+        <rect x="230" y="20" width="190" height="190" rx="24" fill="#F6D000" stroke="#111111" stroke-width="5"/>
+        <text x="325" y="148" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="800" font-size="100" fill="#111111">T</text>
+        <rect x="20" y="230" width="190" height="190" rx="24" fill="#F6D000" stroke="#111111" stroke-width="5"/>
+        <text x="115" y="358" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="800" font-size="100" fill="#111111">P</text>
+        <rect x="230" y="230" width="190" height="190" rx="24" fill="#F6D000" stroke="#111111" stroke-width="5"/>
+        <text x="325" y="358" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="800" font-size="100" fill="#111111">A</text>
+      </svg>`,
+      bg: "#fff6dc",
+      spot: { x: 26.1, y: 73.9, w: 43.2, h: 43.2 }
+    },
+    {
+      type: "classify",
+      objective: "تمييز صوت الحرف p",
+      level: "reasoning",
+      prompt: "Sort each word by its first letter.",
+      groups: [
+        { name: "Starts with p", items: ["pen", "pan"] },
+        { name: "Starts with t", items: ["ten", "top"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "تمييز صوت الحرف p",
+      level: "application",
+      prompt: "Click the word that does NOT start with 'p'.",
+      options: ["pen", "pan", "sun", "pin"],
+      answer: 2,
+      reason: "'sun' starts with the letter 's', not 'p'."
+    }
+  ],
+
+  // الدرس ٤-٣: What colour is it? (قصة) — doll, plane, train, yo-yo؛ القيمة: Share
+  "g1e-4-3": [
+    {
+      type: "mcq",
+      objective: "مفردات: doll, plane, train, yo-yo",
+      level: "knowledge",
+      prompt: "Which toy flies in the sky?",
+      options: ["plane", "train", "doll", "yo-yo"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "تركيب: What colour is it? It's…",
+      level: "knowledge",
+      statement: "'What colour is it?' asks about the colour of a thing.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "مفردات: doll, plane, train, yo-yo",
+      level: "knowledge",
+      prompt: "Match each toy to where it goes.",
+      pairs: [
+        { a: "plane", b: "in the sky" },
+        { a: "train", b: "on the rails" },
+        { a: "doll",  b: "in your arms" },
+        { a: "yo-yo", b: "up and down on a string" }
+      ]
+    },
+    {
+      type: "fill-blank",
+      objective: "تركيب: What colour is it? It's…",
+      level: "application",
+      prompt: "Complete the sentence.",
+      text: "What colour is it? It's {}.",
+      answers: ["red"],
+      distractors: ["train", "six"]
+    },
+    {
+      type: "classify",
+      objective: "مفردات الوحدة ٤؛ القيمة: Share",
+      level: "reasoning",
+      prompt: "Sort each toy.",
+      groups: [
+        { name: "It moves",          items: ["plane", "train", "yo-yo"] },
+        { name: "It does not move",  items: ["doll"] }
+      ]
+    },
+    {
+      type: "color",
+      objective: "تركيب: What colour is it? It's…",
+      level: "application",
+      prompt: "Color the ball red. Color the car blue. Color the train green. Color the plane orange.",
+      bg: "#fdf9ee",
+      showLabels: false,
+      palette: [
+        { name: "Red",    color: "#FF2020" },
+        { name: "Blue",   color: "#20A0FF" },
+        { name: "Green",  color: "#60C020" },
+        { name: "Orange", color: "#FFA000" }
+      ],
+      parts: [
+        { name: "ball",  color: "#FF2020" },
+        { name: "car",   color: "#20A0FF" },
+        { name: "train", color: "#60C020" },
+        { name: "plane", color: "#FFA000" }
+      ],
+      svg: `<svg viewBox="0 0 440 440" xmlns="http://www.w3.org/2000/svg">
+      <!-- الكرة -->
+      <g class="cpart" data-name="ball">
+      <circle cx="120" cy="120" r="74" fill="#fffdf6" stroke="#111111" stroke-width="5"/>
+      <path d="M46 120 q74 -52 148 0" fill="none" stroke="#111111" stroke-width="4"/>
+      <path d="M46 120 q74 52 148 0" fill="none" stroke="#111111" stroke-width="4"/>
+      </g>
+      <!-- السيارة: جسمٌ واحدٌ بمقصورةٍ ناتئة، والعجلتانِ خارجَ منطقةِ التلوين -->
+      <circle cx="285" cy="172" r="20" fill="#606060" stroke="#111111" stroke-width="4"/>
+      <circle cx="375" cy="172" r="20" fill="#606060" stroke="#111111" stroke-width="4"/>
+      <g class="cpart" data-name="car">
+      <path d="M240 172 L240 132 Q240 122 250 120 L280 114 L296 84 Q300 76 310 76 L358 76 Q368 76 372 84 L388 114 L418 120 Q428 122 428 132 L428 172 Q428 180 418 180 L250 180 Q240 180 240 172 Z"
+      fill="#fffdf6" stroke="#111111" stroke-width="5" stroke-linejoin="round"/>
+      </g>
+      <!-- القطار: قاطرةٌ بمدخنةٍ، والعجلاتُ خارجَ منطقةِ التلوين -->
+      <circle cx="72" cy="392" r="18" fill="#606060" stroke="#111111" stroke-width="4"/>
+      <circle cx="130" cy="392" r="18" fill="#606060" stroke="#111111" stroke-width="4"/>
+      <circle cx="176" cy="392" r="18" fill="#606060" stroke="#111111" stroke-width="4"/>
+      <g class="cpart" data-name="train">
+      <path d="M46 392 L46 320 Q46 312 54 312 L96 312 L96 268 Q96 260 104 260 L118 260 Q126 260 126 268 L126 312 L140 312 L140 282 Q140 272 150 272 L192 272 Q202 272 202 282 L202 392 Q202 400 194 400 L54 400 Q46 400 46 392 Z"
+      fill="#fffdf6" stroke="#111111" stroke-width="5" stroke-linejoin="round"/>
+      </g>
+      <!-- الطائرة: منظرٌ علويٌّ — بدنٌ وجناحانِ وذيل -->
+      <g class="cpart" data-name="plane">
+      <path d="M334 250 Q346 250 346 272 L346 312 L416 350 Q422 354 422 362 L422 374 L346 350 L346 388 L368 404 L368 414 L334 404 L300 414 L300 404 L322 388 L322 350 L246 374 L246 362 Q246 354 252 350 L322 312 L322 272 Q322 250 334 250 Z"
+      fill="#fffdf6" stroke="#111111" stroke-width="5" stroke-linejoin="round"/>
+      </g>
+      </svg>`
+    }
+  ],
+
+  // الدرس ٤-٤: لعبتي المفضّلة — تدريب لغوي (What's your favourite toy? It's my…)
+  "g1e-4-4": [
+    {
+      type: "mcq",
+      objective: "تثبيت What's your favourite toy? It's my…",
+      level: "knowledge",
+      prompt: "Which answer fits: 'What's your favourite toy?'",
+      options: ["It's my teddy.", "It's red.", "I'm six.", "Hello!"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "تثبيت What's your favourite toy? It's my…",
+      level: "knowledge",
+      statement: "Your favourite toy is the toy you like best.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "تثبيت What's your favourite toy? It's my…",
+      level: "knowledge",
+      prompt: "Match each question to its answer.",
+      pairs: [
+        { a: "What's your favourite toy?", b: "It's my ball." },
+        { a: "What colour is it?",         b: "It's blue." },
+        { a: "How old are you?",           b: "I'm six." }
+      ]
+    },
+    {
+      type: "hotspot",
+      objective: "مفردات الوحدة ٤",
+      level: "application",
+      prompt: "Listen, then click on the train.",
+      audio: "audio/en/train.mp3",
+      svg: `<svg viewBox="0 0 560 560" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="20" width="240" height="240" rx="28" fill="#fffdf6" stroke="#d8c9a4" stroke-width="4"/>
+        <image href="images/طائرة.png" x="44" y="44" width="192" height="192" preserveAspectRatio="xMidYMid meet"/>
+        <rect x="300" y="20" width="240" height="240" rx="28" fill="#fffdf6" stroke="#d8c9a4" stroke-width="4"/>
+        <image href="images/كرة.png" x="324" y="44" width="192" height="192" preserveAspectRatio="xMidYMid meet"/>
+        <rect x="20" y="300" width="240" height="240" rx="28" fill="#fffdf6" stroke="#d8c9a4" stroke-width="4"/>
+        <image href="images/قطار.png" x="44" y="324" width="192" height="192" preserveAspectRatio="xMidYMid meet"/>
+        <rect x="300" y="300" width="240" height="240" rx="28" fill="#fffdf6" stroke="#d8c9a4" stroke-width="4"/>
+        <image href="images/سيارة.png" x="324" y="324" width="192" height="192" preserveAspectRatio="xMidYMid meet"/>
+      </svg>`,
+      bg: "#fff6dc",
+      spot: { x: 25, y: 75, w: 42.9, h: 42.9 }
+    },
+    {
+      type: "fill-blank",
+      objective: "تثبيت What's your favourite toy? It's my…",
+      level: "reasoning",
+      prompt: "Read the clues, then complete the sentence.",
+      text: "My favourite toy is blue and it has four wheels. It's my {}.",
+      answers: ["car"],
+      distractors: ["ball", "doll"]
+    },
+    {
+      type: "exclude",
+      objective: "مفردات الوحدة ٤",
+      level: "application",
+      prompt: "Click the word that is NOT a toy.",
+      options: ["ball", "teddy", "window", "train"],
+      answer: 2,
+      reason: "'window' is a classroom thing, not a toy."
+    }
+  ],
+
+  // الدرس ٤-٥: مشروع صندوق الألعاب — مراجعة مفردات الوحدة ضمن سياق المشروع
+  "g1e-4-5": [
+    {
+      type: "mcq",
+      objective: "مراجعة مفردات الوحدة ٤",
+      level: "knowledge",
+      prompt: "Where do you keep your toys?",
+      options: ["in a toy box", "in a window", "on a wall", "under a floor"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مراجعة مفردات الوحدة ٤؛ القيمة: Share",
+      level: "knowledge",
+      statement: "Sharing your toys with a friend is kind.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "مراجعة مفردات الوحدة ٤",
+      level: "knowledge",
+      prompt: "Match each toy to what it is like.",
+      pairs: [
+        { a: "ball",  b: "it is round" },
+        { a: "plane", b: "it flies" },
+        { a: "train", b: "it is long" },
+        { a: "teddy", b: "it is soft" }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "مراجعة مفردات الوحدة ٤ ضمن سياق المشروع",
+      level: "application",
+      prompt: "Put the project steps in the correct order.",
+      steps: [
+        "Take a big box.",
+        "Colour the box.",
+        "Put your toys in the box.",
+        "Share your toys with a friend."
+      ]
+    },
+    {
+      type: "classify",
+      objective: "مراجعة مفردات الوحدة ٤",
+      level: "reasoning",
+      prompt: "Sort each toy.",
+      groups: [
+        { name: "It can move on its own", items: ["car", "train"] },
+        { name: "You must move it",       items: ["ball", "teddy"] }
+      ]
+    },
+    {
+      type: "memory",
+      objective: "مراجعة مفردات الوحدة ٤",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "plane", b: "in the sky" },
+        { a: "train", b: "on the rails" },
+        { a: "doll",  b: "in your arms" },
+        { a: "car",   b: "on the road" }
+      ]
+    }
+  ],
+
+  // الدرس ٤-٦: المراجعة — مراجعة تراكمية لمفردات وتراكيب الوحدة ٤
+  "g1e-4-6": [
+    {
+      type: "mcq",
+      objective: "مراجعة تراكمية لمفردات الوحدة ٤",
+      level: "knowledge",
+      prompt: "Listen and choose the word you hear.",
+      audio: "audio/en/robot.mp3",
+      options: ["robot", "teddy", "train", "doll"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مراجعة تراكمية لتراكيب الوحدة ٤",
+      level: "knowledge",
+      statement: "'It's my teddy' answers the question 'What's your favourite toy?'",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "مراجعة تراكمية لمفردات الوحدة ٤",
+      level: "knowledge",
+      prompt: "Match each toy to what it is like.",
+      pairs: [
+        { a: "yo-yo", b: "it goes up and down" },
+        { a: "robot", b: "it looks like a little machine" },
+        { a: "ball",  b: "it is round" },
+        { a: "doll",  b: "it looks like a little person" }
+      ]
+    },
+    {
+      type: "fill-blank",
+      objective: "تركيب: What colour is it? It's…",
+      level: "application",
+      prompt: "Complete the sentence.",
+      text: "What colour is your ball? It's {}.",
+      answers: ["green"],
+      distractors: ["teddy", "seven"]
+    },
+    {
+      type: "classify",
+      objective: "مراجعة تراكمية لمفردات الوحدة ٤",
+      level: "reasoning",
+      prompt: "Sort each word.",
+      groups: [
+        { name: "A toy",     items: ["ball", "teddy", "train"] },
+        { name: "A colour",  items: ["green"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "مراجعة تراكمية لمفردات الوحدة ٤",
+      level: "application",
+      prompt: "Click the word that is NOT a colour.",
+      options: ["red", "blue", "doll", "green"],
+      answer: 2,
+      reason: "'doll' is a toy — red, blue and green are colours."
+    }
+  ],
+
+  // الدرس ٤-٧: استعدّ للاختبار — Pre-A1 Starters
+  "g1e-4-7": [
+    {
+      type: "mcq",
+      objective: "تدريب على نمط اختبار Pre-A1 Starters",
+      level: "knowledge",
+      prompt: "Which word is a toy?",
+      options: ["train", "door", "mum", "six"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "تدريب على نمط اختبار Pre-A1 Starters",
+      level: "knowledge",
+      statement: "A plane flies in the sky.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "تدريب على نمط اختبار Pre-A1 Starters",
+      level: "knowledge",
+      prompt: "Match each word to its first letter.",
+      pairs: [
+        { a: "ball",  b: "b" },
+        { a: "train", b: "t" },
+        { a: "doll",  b: "d" },
+        { a: "robot", b: "r" }
+      ]
+    },
+    {
+      type: "hotspot",
+      objective: "تدريب على نمط اختبار Pre-A1 Starters",
+      level: "application",
+      prompt: "Listen, then click on the plane.",
+      audio: "audio/en/plane.mp3",
+      svg: `<svg viewBox="0 0 560 560" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="20" width="240" height="240" rx="28" fill="#fffdf6" stroke="#d8c9a4" stroke-width="4"/>
+        <image href="images/كرة.png" x="44" y="44" width="192" height="192" preserveAspectRatio="xMidYMid meet"/>
+        <rect x="300" y="20" width="240" height="240" rx="28" fill="#fffdf6" stroke="#d8c9a4" stroke-width="4"/>
+        <image href="images/قطار.png" x="324" y="44" width="192" height="192" preserveAspectRatio="xMidYMid meet"/>
+        <rect x="20" y="300" width="240" height="240" rx="28" fill="#fffdf6" stroke="#d8c9a4" stroke-width="4"/>
+        <image href="images/سيارة.png" x="44" y="324" width="192" height="192" preserveAspectRatio="xMidYMid meet"/>
+        <rect x="300" y="300" width="240" height="240" rx="28" fill="#fffdf6" stroke="#d8c9a4" stroke-width="4"/>
+        <image href="images/طائرة.png" x="324" y="324" width="192" height="192" preserveAspectRatio="xMidYMid meet"/>
+      </svg>`,
+      bg: "#fff6dc",
+      spot: { x: 75, y: 75, w: 42.9, h: 42.9 }
+    },
+    {
+      type: "classify",
+      objective: "تدريب على نمط اختبار Pre-A1 Starters",
+      level: "reasoning",
+      prompt: "Sort each word.",
+      groups: [
+        { name: "A toy",             items: ["ball", "teddy"] },
+        { name: "A classroom thing", items: ["desk", "door"] }
+      ]
+    },
+    {
+      type: "memory",
+      objective: "تدريب على نمط اختبار Pre-A1 Starters",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "ball",  b: "it is round" },
+        { a: "plane", b: "it flies" },
+        { a: "train", b: "it is long" },
+        { a: "car",   b: "it has four wheels" }
+      ]
+    }
+  ],
+
+  /* ═══ نادي التعلّم ٢ — Meg's Learning Club (تكامل رياضيات) ═══════════════ */
+
+  // الدرس lc2-1: الأشكال الهندسية — square, circle, triangle, rectangle
+  "g1e-lc2-1": [
+    {
+      type: "mcq",
+      objective: "الأشكال الهندسية (تكامل رياضيات)",
+      level: "knowledge",
+      prompt: "Listen, then choose the shape with four equal sides.",
+      audio: "audio/en/square.mp3",
+      options: ["square", "circle", "triangle", "rectangle"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "الأشكال الهندسية (تكامل رياضيات)",
+      level: "knowledge",
+      statement: "A triangle has three sides.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "الأشكال الهندسية (تكامل رياضيات)",
+      level: "knowledge",
+      prompt: "Match each shape to the number of its sides.",
+      pairs: [
+        { a: "circle",    b: "no sides" },
+        { a: "triangle",  b: "three sides" },
+        { a: "square",    b: "four equal sides" },
+        { a: "rectangle", b: "two long sides and two short sides" }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "الأشكال الهندسية (تكامل رياضيات)",
+      level: "application",
+      prompt: "Put the shapes in order, from the fewest sides to the most sides.",
+      steps: ["circle", "triangle", "square"]
+    },
+    {
+      type: "classify",
+      objective: "الأشكال الهندسية (تكامل رياضيات)",
+      level: "reasoning",
+      prompt: "Sort each shape.",
+      groups: [
+        { name: "It has four sides", items: ["square", "rectangle"] },
+        { name: "It has not",        items: ["circle", "triangle"] }
+      ]
+    },
+    {
+      type: "color",
+      objective: "الأشكال الهندسية (تكامل رياضيات) مع أسماء الألوان",
+      level: "application",
+      prompt: "Color the square blue. Color the circle red. Color the triangle green. Color the rectangle orange.",
+      bg: "#fdf9ee",
+      showLabels: false,
+      palette: [
+        { name: "Blue",   color: "#20A0FF" },
+        { name: "Red",    color: "#FF2020" },
+        { name: "Green",  color: "#60C020" },
+        { name: "Orange", color: "#FFA000" }
+      ],
+      parts: [
+        { name: "square",    color: "#20A0FF" },
+        { name: "circle",    color: "#FF2020" },
+        { name: "triangle",  color: "#60C020" },
+        { name: "rectangle", color: "#FFA000" }
+      ],
+      svg: `<svg viewBox="0 0 440 440" xmlns="http://www.w3.org/2000/svg">
+      <g class="cpart" data-name="square">
+      <rect x="46" y="46" width="148" height="148" rx="10" fill="#fffdf6" stroke="#111111" stroke-width="5"/>
+      </g>
+      <g class="cpart" data-name="circle">
+      <circle cx="320" cy="120" r="76" fill="#fffdf6" stroke="#111111" stroke-width="5"/>
+      </g>
+      <g class="cpart" data-name="triangle">
+      <path d="M120 250 L200 392 L40 392 Z" fill="#fffdf6" stroke="#111111" stroke-width="5" stroke-linejoin="round"/>
+      </g>
+      <g class="cpart" data-name="rectangle">
+      <rect x="236" y="286" width="168" height="106" rx="10" fill="#fffdf6" stroke="#111111" stroke-width="5"/>
+      </g>
+      </svg>`
+    }
+  ],
+
+  // الدرس lc2-2: ما هذه؟ — What are these? They're… (Language booster 2)
+  "g1e-lc2-2": [
+    {
+      type: "mcq",
+      objective: "تركيب: What are these? They're…",
+      level: "knowledge",
+      prompt: "Complete: What are these? They're ___.",
+      options: ["balls", "ball", "a ball", "is balls"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "تركيب: What are these? They're…",
+      level: "knowledge",
+      statement: "'These' means more than one thing.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "تركيب: What are these? They're…",
+      level: "knowledge",
+      prompt: "Match one thing to more than one.",
+      pairs: [
+        { a: "ball", b: "balls" },
+        { a: "car",  b: "cars" },
+        { a: "doll", b: "dolls" },
+        { a: "book", b: "books" }
+      ]
+    },
+    {
+      type: "fill-blank",
+      objective: "تركيب: What are these? They're…",
+      level: "application",
+      prompt: "Complete the sentence.",
+      text: "What are these? They're {}.",
+      answers: ["cars"],
+      distractors: ["car", "a car"]
+    },
+    {
+      type: "classify",
+      objective: "تركيب: What are these? They're…",
+      level: "reasoning",
+      prompt: "Sort each word.",
+      groups: [
+        { name: "One thing",         items: ["ball", "car"] },
+        { name: "More than one",     items: ["balls", "cars"] }
+      ]
+    },
+    {
+      type: "memory",
+      objective: "تركيب: What are these? They're…",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "ball", b: "balls" },
+        { a: "car",  b: "cars" },
+        { a: "doll", b: "dolls" },
+        { a: "book", b: "books" }
+      ]
+    }
+  ]
 };

@@ -54,20 +54,20 @@
       {
         "unit": "My favourite toy",
         "lessons": [
-          { "title": "My favourite toy", "file": "g1e-4-1", "open": false },
-          { "title": "Sound: p", "file": "g1e-4-2", "open": false },
-          { "title": "What colour is it?", "file": "g1e-4-3", "open": false },
-          { "title": "What's your favourite toy?", "file": "g1e-4-4", "open": false },
-          { "title": "Project: Toy box", "file": "g1e-4-5", "open": false },
-          { "title": "Review", "file": "g1e-4-6", "open": false },
-          { "title": "Get ready for Starters", "file": "g1e-4-7", "open": false }
+          { "title": "My favourite toy", "file": "g1e-4-1", "open": true },
+          { "title": "Sound: p", "file": "g1e-4-2", "open": true },
+          { "title": "What colour is it?", "file": "g1e-4-3", "open": true },
+          { "title": "What's your favourite toy?", "file": "g1e-4-4", "open": true },
+          { "title": "Project: Toy box", "file": "g1e-4-5", "open": true },
+          { "title": "Review", "file": "g1e-4-6", "open": true },
+          { "title": "Get ready for Starters", "file": "g1e-4-7", "open": true }
         ]
       },
       {
         "unit": "Meg's Learning Club 2",
         "lessons": [
-          { "title": "Shapes", "file": "g1e-lc2-1", "open": false },
-          { "title": "What are these?", "file": "g1e-lc2-2", "open": false }
+          { "title": "Shapes", "file": "g1e-lc2-1", "open": true },
+          { "title": "What are these?", "file": "g1e-lc2-2", "open": true }
         ]
       }
     ]
