@@ -85,13 +85,13 @@
       {
         "unit": "Look at my toys!",
         "lessons": [
-          { "title": "Look at my toys! (ai)", "file": "g2e-1-1", "open": false },
-          { "title": "Helpers Team (oa)", "file": "g2e-1-2", "open": false },
-          { "title": "Is it a swing? (ie)", "file": "g2e-1-3", "open": false },
-          { "title": "Skills (a_e)", "file": "g2e-1-4", "open": false },
-          { "title": "Project: A toy museum poster", "file": "g2e-1-5", "open": false },
-          { "title": "Sharing your toys", "file": "g2e-1-6", "open": false },
-          { "title": "Review", "file": "g2e-1-7", "open": false }
+          { "title": "Look at my toys! (ai)", "file": "g2e-1-1", "open": true },
+          { "title": "Helpers Team (oa)", "file": "g2e-1-2", "open": true },
+          { "title": "Is it a swing? (ie)", "file": "g2e-1-3", "open": true },
+          { "title": "Skills (a_e)", "file": "g2e-1-4", "open": true },
+          { "title": "Project: A toy museum poster", "file": "g2e-1-5", "open": true },
+          { "title": "Sharing your toys", "file": "g2e-1-6", "open": true },
+          { "title": "Review", "file": "g2e-1-7", "open": true }
         ]
       },
       {

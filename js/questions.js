@@ -41145,5 +41145,454 @@ window.QUESTIONS = {
         <text x="410" y="150" text-anchor="middle" font-size="34" font-weight="900" fill="#111111" pointer-events="none">3</text>
       </svg>`
     }
+  ],
+
+  // الوحدة ١: Look at my toys! — انظر إلى ألعابي
+  // الدرس ١-١: Look at my toys! — مفردات الألعاب الداخلية
+  "g2e-1-1": [
+    {
+      type: "mcq",
+      objective: "مفردات: ألعاب داخلية car, plane, puzzle, yo-yo, building set, doll, action figure, robot, teddy, dinosaur",
+      level: "knowledge",
+      prompt: "Which one is a robot?",
+      pics: true,
+      options: ["robot", "doll", "teddy", "car"],
+      answer: 0
+    },
+    {
+      type: "matching",
+      objective: "مفردات الألعاب الداخلية",
+      level: "knowledge",
+      prompt: "Match each toy to what it is.",
+      pairs: [
+        { a: "building set",  b: "You build it." },
+        { a: "puzzle",        b: "You put the pieces together." },
+        { a: "dinosaur",      b: "A toy animal from long ago." },
+        { a: "action figure", b: "A toy hero." }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "مفردات الألعاب الداخلية",
+      level: "reasoning",
+      prompt: "Sort the toys.",
+      pics: true,
+      groups: [
+        { name: "Soft toys",              items: ["teddy", "doll"] },
+        { name: "Toy vehicles & machines", items: ["car", "robot"] }
+      ]
+    },
+    {
+      type: "true-false",
+      objective: "مفردات الألعاب الداخلية",
+      level: "knowledge",
+      statement: "A dinosaur is a toy animal.",
+      answer: true
+    },
+    {
+      type: "sequence",
+      objective: "تركيب: What's this? It's a…",
+      level: "application",
+      prompt: "Put the chant in order.",
+      steps: ["What's this?", "It's a car.", "A plane and a dinosaur.", "A building set, too."]
+    },
+    {
+      type: "memory",
+      objective: "مفردات الألعاب الداخلية",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "robot", b: "Metal" },
+        { a: "teddy", b: "Soft" },
+        { a: "plane", b: "Flies" },
+        { a: "car",   b: "Wheels" }
+      ]
+    }
+  ],
+
+  // الدرس ١-٢: Helpers Team — قصة (Be creative)
+  "g2e-1-2": [
+    {
+      type: "mcq",
+      objective: "تركيب: What's this? It's a…؛ القيمة: Be creative",
+      level: "knowledge",
+      prompt: "What's this? It's very big. Is it a building set?",
+      options: ["No, it's a teddy robot!", "Yes, it is.", "It's a car.", "It's a yo-yo."],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "القيمة: Be creative",
+      level: "knowledge",
+      statement: "'Be creative' means you can make new things and have new ideas.",
+      answer: true
+    },
+    {
+      type: "sequence",
+      objective: "قصة Helpers Team",
+      level: "reasoning",
+      prompt: "Put the story in order.",
+      steps: ["Hello again. Come in!", "What's this? Is it a building set?", "No, it's a teddy robot!", "Wow!"]
+    },
+    {
+      type: "matching",
+      objective: "قصة Helpers Team",
+      level: "application",
+      prompt: "Match what's said to the reply.",
+      pairs: [
+        { a: "Look! It's a yo-yo!",           b: "Wow!" },
+        { a: "What's this?",                  b: "It's my dinosaur." },
+        { a: "Is it a building set?",         b: "No, it's a teddy robot!" },
+        { a: "It's very big.",                b: "I don't know." }
+      ]
+    },
+    {
+      type: "fill-blank",
+      objective: "تركيب: What's this? It's a…",
+      level: "knowledge",
+      prompt: "Complete the sentence.",
+      text: "No, it's a teddy {}!",
+      answers: ["robot"],
+      distractors: ["car", "doll"]
+    },
+    {
+      type: "color",
+      objective: "القيمة: Be creative — تصميم روبوت دمية جديد",
+      level: "knowledge",
+      prompt: "Design a new teddy robot! Colour the head, ears, body and arms & legs.",
+      bg: "#eef3ff",
+      palette: [
+        { name: "Brown",  color: "#a5673f" },
+        { name: "Grey",   color: "#8a93a0" },
+        { name: "Orange", color: "#e6832b" },
+        { name: "Teal",   color: "#2f9b8f" }
+      ],
+      parts: [
+        { name: "head",  color: "#a5673f" },
+        { name: "ears",  color: "#8a93a0" },
+        { name: "body",  color: "#e6832b" },
+        { name: "limbs", color: "#2f9b8f" }
+      ],
+      svg: `<svg viewBox="0 0 400 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A teddy robot">
+        <line x1="200" y1="18" x2="200" y2="40" stroke="#111111" stroke-width="4"/>
+        <circle cx="200" cy="14" r="9" fill="#c94a4a" stroke="#111111" stroke-width="3"/>
+        <g class="cpart" data-name="ears" id="part-ears">
+          <circle cx="140" cy="55" r="28"/>
+          <circle cx="260" cy="55" r="28"/>
+        </g>
+        <g class="cpart" data-name="limbs" id="part-limbs">
+          <rect x="68"  y="200" width="46" height="112" rx="20"/>
+          <rect x="286" y="200" width="46" height="112" rx="20"/>
+          <rect x="150" y="350" width="46" height="92" rx="18"/>
+          <rect x="204" y="350" width="46" height="92" rx="18"/>
+        </g>
+        <g class="cpart" data-name="body" id="part-body">
+          <rect x="130" y="190" width="140" height="150" rx="32"/>
+        </g>
+        <g class="cpart" data-name="head" id="part-head">
+          <circle cx="200" cy="112" r="72"/>
+        </g>
+      </svg>`
+    }
+  ],
+
+  // الدرس ١-٣: Is it a swing؟ — ألعاب خارجية
+  "g2e-1-3": [
+    {
+      type: "mcq",
+      objective: "مفردات: kite, bike, slide, scooter, ball, swing",
+      level: "knowledge",
+      prompt: "Which one is a bike?",
+      pics: true,
+      options: ["bike", "ball", "kite", "scooter"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مفردات الألعاب الخارجية",
+      level: "knowledge",
+      statement: "A scooter has wheels and you stand on it.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "مفردات الألعاب الخارجية",
+      level: "knowledge",
+      prompt: "Match each toy to what you do with it.",
+      pairs: [
+        { a: "kite",    b: "You fly it in the sky." },
+        { a: "scooter", b: "You stand and push with one foot." },
+        { a: "slide",   b: "You sit and go down fast." },
+        { a: "swing",   b: "You sit and move back and forth." }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "مفردات الألعاب الخارجية",
+      level: "reasoning",
+      prompt: "Sort the toys.",
+      pics: true,
+      groups: [
+        { name: "Toys with wheels",    items: ["bike", "scooter"] },
+        { name: "Toys without wheels", items: ["kite", "swing"] }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "تركيب: Is it a swing? Yes, it is./No, it isn't.",
+      level: "application",
+      prompt: "Put the dialogue in order.",
+      steps: ["Come and play outside today.", "Is it a bike?", "No, it isn't.", "Is it a scooter?", "Yes, it is."]
+    },
+    {
+      type: "memory",
+      objective: "مفردات الألعاب الخارجية",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "kite",    b: "Sky" },
+        { a: "swing",   b: "Back and forth" },
+        { a: "scooter", b: "Push" },
+        { a: "slide",   b: "Down" }
+      ]
+    }
+  ],
+
+  // الدرس ١-٤: Skills — تدريب استماع + صوت a_e
+  "g2e-1-4": [
+    {
+      type: "mcq",
+      objective: "صوتٌ مقترن: a_e (cake, snake, game, lake, flame, rake)",
+      level: "knowledge",
+      prompt: "Which word has the same middle sound as 'cake'?",
+      options: ["snake", "cat", "dog", "bike"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "صوتٌ مقترن: a_e",
+      level: "knowledge",
+      statement: "'Game' and 'cake' have the same middle sound.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "تثبيت Is it a…? Yes, it is./No, it isn't.",
+      level: "application",
+      prompt: "Match the question to the answer.",
+      pairs: [
+        { a: "Is it a car?",    b: "No, it isn't." },
+        { a: "Is it a ball?",   b: "Yes, it is." },
+        { a: "Is it a robot?",  b: "No, it isn't." },
+        { a: "Is it a kite?",   b: "Yes, it is." }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "تثبيت Is it a…? Yes, it is./No, it isn't.",
+      level: "reasoning",
+      prompt: "Put the dialogue in order.",
+      steps: ["Is it a bike?", "No, it isn't.", "Is it a car?", "Yes, it is."]
+    },
+    {
+      type: "classify",
+      objective: "صوتٌ مقترن: a_e",
+      level: "knowledge",
+      prompt: "Sort the words by their sound.",
+      groups: [
+        { name: "Has the 'a_e' sound", items: ["cake", "snake"] },
+        { name: "No 'a_e' sound",      items: ["car", "ball"] }
+      ]
+    },
+    {
+      type: "memory",
+      objective: "صوتٌ مقترن: a_e",
+      level: "knowledge",
+      prompt: "Find the words that rhyme.",
+      pairs: [
+        { a: "cake", b: "snake" },
+        { a: "game", b: "flame" }
+      ]
+    }
+  ],
+
+  // الدرس ١-٥: مشروع — متحف الألعاب (ثقافة: Oman's Children Museum)
+  "g2e-1-5": [
+    {
+      type: "sequence",
+      objective: "مشروع: ملصق متحف ألعاب",
+      level: "application",
+      prompt: "Put the project steps in order.",
+      steps: ["Draw a picture of your favourite toy.", "Write about it: This is my… It's…", "Stick it on a big page.", "Show your poster to the class."]
+    },
+    {
+      type: "mcq",
+      objective: "ثقافة: Oman's Children Museum",
+      level: "knowledge",
+      prompt: "Oman's Children Museum is in…",
+      options: ["Muscat", "Salalah", "Nizwa", "Sohar"],
+      answer: 0
+    },
+    {
+      type: "matching",
+      objective: "مراجعة مفردات الوحدة ضمن سياق المشروع",
+      level: "knowledge",
+      prompt: "Match each toy to a word about it.",
+      pairs: [
+        { a: "teddy", b: "big, brown" },
+        { a: "robot", b: "blue" },
+        { a: "doll",  b: "small" },
+        { a: "car",   b: "red" }
+      ]
+    },
+    {
+      type: "true-false",
+      objective: "ثقافة: Oman's Children Museum",
+      level: "knowledge",
+      statement: "At the Children's Museum, you can do fun activities and make toys.",
+      answer: true
+    },
+    {
+      type: "classify",
+      objective: "مراجعة مفردات الوحدة",
+      level: "reasoning",
+      prompt: "Sort the toys.",
+      pics: true,
+      groups: [
+        { name: "Soft toys",              items: ["teddy", "doll"] },
+        { name: "Toy vehicles & machines", items: ["car", "robot"] }
+      ]
+    },
+    {
+      type: "memory",
+      objective: "مراجعة مفردات الوحدة",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "teddy", b: "This is my teddy." },
+        { a: "car",   b: "This is my car." },
+        { a: "robot", b: "This is my robot." },
+        { a: "kite",  b: "This is my kite." }
+      ]
+    }
+  ],
+
+  // الدرس ١-٦: Sharing your toys — English in action
+  "g2e-1-6": [
+    {
+      type: "mcq",
+      objective: "تركيب: Can I play with it, please?",
+      level: "knowledge",
+      prompt: "Can I play with it, please?",
+      options: ["Yes, of course.", "It's a car.", "Stand up.", "I'm seven."],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "القيمة: Share",
+      level: "knowledge",
+      statement: "'Let's play together' is a kind thing to say.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "تركيب: Can I play with it, please?",
+      level: "application",
+      prompt: "Match what's asked to the reply.",
+      pairs: [
+        { a: "Can I play with your robot?", b: "Yes, of course." },
+        { a: "Is it your new scooter?",     b: "Yes, it's my new scooter." },
+        { a: "Can I play with it, please?", b: "Great! Let's play together." },
+        { a: "What's this?",                b: "It's my new bike." }
+      ]
+    },
+    {
+      type: "fill-blank",
+      objective: "تركيب: Can I play with it, please?",
+      level: "knowledge",
+      prompt: "Complete the question.",
+      text: "Can I play with it, {}?",
+      answers: ["please"],
+      distractors: ["sorry", "thanks"]
+    },
+    {
+      type: "classify",
+      objective: "تركيب: Can I play with it, please?",
+      level: "reasoning",
+      prompt: "Sort the sentences.",
+      groups: [
+        { name: "Asking",    items: ["Can I play with it, please?", "Is it your new scooter?"] },
+        { name: "Answering", items: ["Yes, of course.", "Great! Let's play together."] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "القيمة: Share",
+      level: "knowledge",
+      prompt: "Which one is not about sharing toys?",
+      options: ["Can I play with it, please?", "Let's play together.", "Great!", "Stand up."],
+      answer: 3
+    }
+  ],
+
+  // الدرس ١-٧: المراجعة — استعدّ للاختبار (Pre-A1 Starters)
+  "g2e-1-7": [
+    {
+      type: "mcq",
+      objective: "مراجعة تراكمية لمفردات الوحدة ١",
+      level: "knowledge",
+      prompt: "Which one is a teddy?",
+      pics: true,
+      options: ["teddy", "car", "kite", "robot"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مراجعة تراكمية لتراكيب الوحدة ١",
+      level: "knowledge",
+      statement: "'Is it a car?' is a question about a toy.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "مراجعة تراكمية لمفردات الوحدة ١",
+      level: "knowledge",
+      prompt: "Match each toy to its kind.",
+      pairs: [
+        { a: "car",   b: "A vehicle toy" },
+        { a: "teddy", b: "A soft toy" },
+        { a: "kite",  b: "An outdoor toy" },
+        { a: "robot", b: "A toy machine" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "مراجعة تراكمية لأصوات الوحدة ١ (ai, oa, ie, a_e)",
+      level: "reasoning",
+      prompt: "Sort the words by their sound.",
+      groups: [
+        { name: "'ai' sound",  items: ["train", "rain"] },
+        { name: "'a_e' sound", items: ["cake", "snake"] }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "مراجعة تراكمية — Sharing your toys",
+      level: "application",
+      prompt: "Put the dialogue in order.",
+      steps: ["Can I play with it, please?", "Yes, of course.", "Let's play together.", "Great!"]
+    },
+    {
+      type: "memory",
+      objective: "مراجعة تراكمية لمفردات الوحدة ١",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "robot", b: "Metal" },
+        { a: "teddy", b: "Soft" },
+        { a: "kite",  b: "Sky" },
+        { a: "car",   b: "Wheels" }
+      ]
+    }
   ]
 };
