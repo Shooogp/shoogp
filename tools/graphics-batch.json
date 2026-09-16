@@ -28,43 +28,11 @@
   "    ← يتخطّى البناءَ كلَّه. يُستعمَلُ حينَ تُغري قائمةُ الهيكسات النموذجَ",
   "      برسمِ لوحةِ ألوانٍ داخلَ الصورة (وقعَ فعلاً مع رسمةِ العين)."
  ],
- "batchId": "2026-09-16-en-vocab-pics",
+ "batchId": "2026-09-16-en-floor-retry",
  "items": [
   {
-   "name": "pen-2026-09-16-en-vocab-pics",
-   "subject": "a ballpoint pen with a smooth blue barrel, a silver metal clip on its cap and a fine writing tip, shown diagonally — clearly a ballpoint pen, NOT a wooden pencil: no wood grain, no sharpened graphite tip and no pink eraser"
-  },
-  {
-   "name": "crayon-2026-09-16-en-vocab-pics",
-   "subject": "a single thick wax crayon with a paper wrapper band around its middle and a blunt rounded colouring tip, shown diagonally"
-  },
-  {
-   "name": "pencil-case-2026-09-16-en-vocab-pics",
-   "subject": "a closed fabric pencil case pouch with a zip running along its top and a small zip pull tab, shown from the front"
-  },
-  {
-   "name": "floor-2026-09-16-en-vocab-pics",
-   "subject": "a small square patch of a tiled floor seen from slightly above, made of neat square floor tiles with visible grout lines between them"
-  },
-  {
-   "name": "wall-2026-09-16-en-vocab-pics",
-   "subject": "a small section of a brick wall seen from the front, with neat staggered rows of rectangular bricks and mortar lines between them"
-  },
-  {
-   "name": "robot-2026-09-16-en-vocab-pics",
-   "subject": "a friendly boxy toy robot standing upright with a rectangular body, a square head with a single antenna on top, simple hinged arms and legs — its head front is a completely blank plain panel with absolutely no eyes, no mouth and no facial features of any kind"
-  },
-  {
-   "name": "teddy-2026-09-16-en-vocab-pics",
-   "subject": "a soft plush teddy bear toy sitting upright with round ears, short stubby arms and legs and a lighter coloured belly patch, clearly a stuffed cloth toy — its face is completely blank with absolutely no eyes, no nose and no mouth"
-  },
-  {
-   "name": "doll-2026-09-16-en-vocab-pics",
-   "subject": "a soft rag doll toy standing upright wearing a simple dress, with two braided plaits of yarn hair and mitten hands — its face is completely blank with absolutely no eyes, no nose and no mouth"
-  },
-  {
-   "name": "yoyo-2026-09-16-en-vocab-pics",
-   "subject": "a classic yo-yo toy: two round discs joined at their centre by a short axle, with a length of string wound around the axle and a small finger loop at the free end of the string"
+   "name": "floor-2026-09-16-en-floor-retry",
+   "subject": "small square patch of a wooden plank FLOOR seen from directly above, looking straight down at the ground: four or five long parallel wooden floorboards lying side by side horizontally, each board a warm brown wood plank with a visible seam line between it and the next board. This is the floor you walk on, a flat horizontal surface on the ground — it is NOT a window, NOT a glass pane, NOT a picture frame, NOT a door, and it contains no blue colour, no glass and no frame around it"
   }
  ]
 }
