@@ -924,17 +924,17 @@ window.DATA_FALLBACK = {
         { title:"Get ready for… (A1 Movers)", file:"g4e-3-11", open:true }
       ]},
       { unit:"All about jobs", lessons:[
-        { title:"Jobs (Vocabulary)", file:"g4e-4-1", open:false },
-        { title:"Story", file:"g4e-4-2", open:false },
-        { title:"Present continuous (Grammar)", file:"g4e-4-3", open:false },
-        { title:"Rules & Must/mustn't (Vocabulary & Grammar)", file:"g4e-4-4", open:false },
-        { title:"Unusual jobs around the world (Culture & Project)", file:"g4e-4-5", open:false },
-        { title:"Calling the emergency services", file:"g4e-4-6", open:false },
-        { title:"Reading a careers website (Skills)", file:"g4e-4-7", open:false },
-        { title:"Listening, Speaking & Writing (Skills)", file:"g4e-4-8", open:false },
-        { title:"ew, revise oo/ue (Phonics)", file:"g4e-4-9", open:false },
-        { title:"Review", file:"g4e-4-10", open:false },
-        { title:"Get ready for… (A1 Movers)", file:"g4e-4-11", open:false }
+        { title:"Jobs (Vocabulary)", file:"g4e-4-1", open:true },
+        { title:"Story", file:"g4e-4-2", open:true },
+        { title:"Present continuous (Grammar)", file:"g4e-4-3", open:true },
+        { title:"Rules & Must/mustn't (Vocabulary & Grammar)", file:"g4e-4-4", open:true },
+        { title:"Unusual jobs around the world (Culture & Project)", file:"g4e-4-5", open:true },
+        { title:"Calling the emergency services", file:"g4e-4-6", open:true },
+        { title:"Reading a careers website (Skills)", file:"g4e-4-7", open:true },
+        { title:"Listening, Speaking & Writing (Skills)", file:"g4e-4-8", open:true },
+        { title:"ew, revise oo/ue (Phonics)", file:"g4e-4-9", open:true },
+        { title:"Review", file:"g4e-4-10", open:true },
+        { title:"Get ready for… (A1 Movers)", file:"g4e-4-11", open:true }
       ]},
       { unit:"Bo's Learning Club 2", lessons:[
         { title:"Science: Health", file:"g4e-lc2-1", open:false },

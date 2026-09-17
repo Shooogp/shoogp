@@ -48015,5 +48015,632 @@ window.QUESTIONS = {
       options: ["Look at the picture carefully.", "Close your eyes.", "Write the answers first.", "Talk to your partner."],
       answer: 0
     }
+  ],
+
+  // الوحدة ٤ — All about jobs
+
+  // الدرس ٤-١: المفردات — Jobs (Vocabulary)
+  "g4e-4-1": [
+    {
+      type: "mcq",
+      objective: "مفردات المهن: scientist, farmer, firefighter, police officer, dentist, lawyer, mechanic, computer programmer, chef, vet, engineer, bus driver",
+      level: "knowledge",
+      prompt: "Who works with animals?",
+      options: ["vet", "lawyer", "engineer", "bus driver"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مفردات المهن: dentist",
+      level: "knowledge",
+      statement: "A dentist helps you with your teeth.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "تعريف: chef يعمل في مطعم",
+      level: "knowledge",
+      prompt: "Complete the question.",
+      text: "Who works in a {}?",
+      answers: ["restaurant"],
+      distractors: ["hospital", "school"]
+    },
+    {
+      type: "matching",
+      objective: "ربط كل مهنةٍ بما يفعله صاحبها",
+      level: "application",
+      prompt: "Match each job to what the person does.",
+      pairs: [
+        { a: "vet",         b: "works with animals" },
+        { a: "dentist",     b: "helps with your teeth" },
+        { a: "chef",        b: "works in a restaurant" },
+        { a: "firefighter", b: "helps people" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف المهن: داخل المبنى غالباً أم خارجه",
+      level: "reasoning",
+      prompt: "Sort the jobs: mostly indoors, or mostly outdoors?",
+      groups: [
+        { name: "Mostly indoors",  items: ["dentist", "lawyer", "computer programmer"] },
+        { name: "Mostly outdoors", items: ["farmer", "firefighter", "engineer"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "التمييز بين المهنة والمكان",
+      level: "reasoning",
+      prompt: "Three of these are jobs. Which one isn't?",
+      options: ["mechanic", "scientist", "restaurant", "chef"],
+      answer: 2,
+      reason: "A restaurant is a place, not a job."
+    }
+  ],
+
+  // الدرس ٤-٢: القصّة — The burglar (Story)
+  "g4e-4-2": [
+    {
+      type: "mcq",
+      objective: "قصّة الوحدة: The burglar — شكّ فاطمة بلصّ في منزل لوتي",
+      level: "knowledge",
+      prompt: "Who does Fatma think is in Lottie's house?",
+      options: ["a burglar", "a cousin", "a teacher", "a vet"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "قصّة الوحدة: الاتصال بالشرطة",
+      level: "knowledge",
+      statement: "Fatma calls the police when she thinks there's a burglar.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "قصّة الوحدة: اللصّ فتاةٌ لا ولد",
+      level: "knowledge",
+      prompt: "Complete the summary.",
+      text: "The burglar isn't a boy, it's a {}.",
+      answers: ["girl"],
+      distractors: ["cat", "robot"]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب أحداث القصّة",
+      level: "application",
+      prompt: "Put the story events in order.",
+      steps: ["Sami sees a car outside Lottie's house.", "Fatma and Sami send Bo to investigate.", "Bo watches the person in the house.", "Fatma calls the police.", "They find out it's Lottie's cousin, Alesha."]
+    },
+    {
+      type: "exclude",
+      objective: "فهم أحداث القصّة",
+      level: "reasoning",
+      prompt: "Three of these happened in the story. Which one didn't?",
+      options: ["Bo goes into the house.", "Fatma calls the emergency number.", "The 'burglar' is really Lottie's cousin.", "The police arrest a real burglar."],
+      answer: 3,
+      reason: "There was no real burglar — it was Lottie's cousin, Alesha."
+    },
+    {
+      type: "mcq",
+      objective: "قصّة الوحدة: هوية أليشا — قريبة لوتي",
+      level: "knowledge",
+      prompt: "Who is Alesha?",
+      options: ["Lottie's cousin", "a burglar", "a police officer", "Fatma's sister"],
+      answer: 0
+    }
+  ],
+
+  // الدرس ٤-٣: القواعد — Present continuous (Grammar)
+  "g4e-4-3": [
+    {
+      type: "mcq",
+      objective: "تركيب: He's opening the door.",
+      level: "knowledge",
+      prompt: "Which sentence describes an action happening now?",
+      options: ["He's opening the door.", "He opens the door every day.", "He opened the door.", "He will open the door."],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "تركيب النفي: They aren't playing cards.",
+      level: "knowledge",
+      statement: "'They aren't playing cards' is a negative sentence.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "تركيب السؤال: Are you wearing a green jacket؟",
+      level: "knowledge",
+      prompt: "Complete the question.",
+      text: "{} you wearing a green jacket?",
+      answers: ["Are"],
+      distractors: ["Is", "Do"]
+    },
+    {
+      type: "matching",
+      objective: "ربط كل مهنةٍ بما يفعله صاحبها الآن",
+      level: "application",
+      prompt: "Match each job to what the person is doing now.",
+      pairs: [
+        { a: "the computer programmer", b: "She's programming a computer." },
+        { a: "the chef",                b: "He's cooking." },
+        { a: "the vet",                 b: "She's looking after a cat." }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف الجمل: مثبتة أم منفية",
+      level: "reasoning",
+      prompt: "Sort the sentences: positive or negative?",
+      groups: [
+        { name: "Positive", items: ["I'm watching Lottie's house.", "He's opening the door."] },
+        { name: "Negative", items: ["They aren't playing cards.", "He isn't eating any food."] }
+      ]
+    },
+    {
+      type: "true-false",
+      objective: "قاعدة السؤال في المضارع المستمر",
+      level: "knowledge",
+      statement: "To ask a question in present continuous, we put 'Is/Are' at the start.",
+      answer: true
+    }
+  ],
+
+  // الدرس ٤-٤: المفردات والقواعد — Rules & Must/mustn't
+  "g4e-4-4": [
+    {
+      type: "mcq",
+      objective: "قواعد الصفّ: follow the rules / break the rules",
+      level: "knowledge",
+      prompt: "Which phrase means the opposite of 'follow the rules'?",
+      options: ["break the rules", "put litter in the bin", "arrive on time", "be quiet in class"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "تركيب: You mustn't shout in class.",
+      level: "knowledge",
+      statement: "'You mustn't shout in class' means shouting is not allowed.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "تركيب: You mustn't drop litter in the playground.",
+      level: "knowledge",
+      prompt: "Complete the rule.",
+      text: "You {} drop litter in the playground.",
+      answers: ["mustn't"],
+      distractors: ["must", "can"]
+    },
+    {
+      type: "matching",
+      objective: "ربط كل كلمةٍ بمعناها: must/mustn't",
+      level: "application",
+      prompt: "Match each rule word to its meaning.",
+      pairs: [
+        { a: "must",    b: "you have to do this" },
+        { a: "mustn't", b: "you must not do this" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف السلوك: مسموحٌ أم ممنوعٌ في المدرسة",
+      level: "reasoning",
+      prompt: "Sort the actions: allowed, or not allowed at school?",
+      groups: [
+        { name: "Allowed",     items: ["put litter in the bin", "arrive on time", "be quiet in class"] },
+        { name: "Not allowed", items: ["drop litter", "break the rules", "shout in class"] }
+      ]
+    },
+    {
+      type: "mcq",
+      objective: "أنشودة القواعد: من يقول You mustn't drop any litter؟",
+      level: "knowledge",
+      prompt: "Who says 'You mustn't drop any litter' in the song?",
+      options: ["the bus driver", "the teacher", "the police officer", "the school nurse"],
+      answer: 0
+    }
+  ],
+
+  // الدرس ٤-٥: الثقافة والمشروع — Unusual jobs around the world
+  "g4e-4-5": [
+    {
+      type: "mcq",
+      objective: "الثقافة: النائم المحترف — اختبار الأسرّة",
+      level: "knowledge",
+      prompt: "What does a professional sleeper do?",
+      options: ["tests how good different beds are", "drives a boat in a cave", "tastes different teas", "builds rockets"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "الثقافة: تدريبٌ خمس سنواتٍ لذوّاقة الشاي",
+      level: "knowledge",
+      statement: "A professional tea taster must train for five years.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "ربط كل مهنةٍ غريبةٍ بمكان عملها",
+      level: "knowledge",
+      prompt: "Match each unusual job to its place of work.",
+      pairs: [
+        { a: "boat driver in a cave",  b: "Speedwell Cavern, England" },
+        { a: "professional sleeper",   b: "different beds" },
+        { a: "professional tea taster", b: "around the world" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف المهن الغريبة: تختبر أشياء أم تقود شيئاً",
+      level: "application",
+      prompt: "Sort the jobs: tests things, or drives something?",
+      groups: [
+        { name: "Tests things",     items: ["professional sleeper", "professional tea taster"] },
+        { name: "Drives something", items: ["boat driver in a cave"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "فهم نصّ المهن الغريبة",
+      level: "reasoning",
+      prompt: "Three of these are true about unusual jobs in the text. Which one isn't?",
+      options: ["A boat driver takes visitors under a hill.", "A professional sleeper tests mattresses.", "A tea taster drinks 300 cups a day.", "All unusual jobs pay the same money."],
+      answer: 3,
+      reason: "The text doesn't say anything about how much these jobs pay."
+    },
+    {
+      type: "true-false",
+      objective: "حقيقةٌ طريفة: أعمق كهفٍ في العالم في جورجيا",
+      level: "knowledge",
+      statement: "The Veryovkina cave in Georgia is more than 2,200 metres deep.",
+      answer: true
+    }
+  ],
+
+  // الدرس ٤-٦: اللغة الوظيفية — Calling the emergency services
+  "g4e-4-6": [
+    {
+      type: "mcq",
+      objective: "رقم الطوارئ في الدرس: 9999",
+      level: "knowledge",
+      prompt: "What is the emergency phone number in the lesson?",
+      options: ["9999", "999", "911", "112"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "الاتصال بالطوارئ: الاسم والعنوان",
+      level: "knowledge",
+      statement: "You must give your name and address when you call the emergency services.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "حوار الطوارئ: I need an ambulance, please.",
+      level: "knowledge",
+      prompt: "Complete the call.",
+      text: "I need an {}, please.",
+      answers: ["ambulance"],
+      distractors: ["police officer", "firefighter"]
+    },
+    {
+      type: "matching",
+      objective: "ربط أسئلة موظّف الطوارئ بإجاباتها",
+      level: "application",
+      prompt: "Match each question to its answer in the call.",
+      pairs: [
+        { a: "What's your name?",    b: "Sally Jones." },
+        { a: "What's your address?", b: "4 South Road." },
+        { a: "What's the emergency?", b: "He's got a broken leg." }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب مكالمة الطوارئ",
+      level: "reasoning",
+      prompt: "Put the emergency call in order.",
+      steps: ["Hello, 9999 emergency services.", "I need an ambulance, please.", "What's your name?", "Sally Jones.", "The ambulance is on its way."]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف: معلومةٌ شخصيةٌ أم حالةُ طوارئ",
+      level: "reasoning",
+      prompt: "Sort the words: a person's information, or an emergency?",
+      groups: [
+        { name: "A person's information", items: ["name", "address", "phone number"] },
+        { name: "An emergency",           items: ["a broken leg", "a fire"] }
+      ]
+    }
+  ],
+
+  // الدرس ٤-٧: المهارات — Reading a careers website (Skills)
+  "g4e-4-7": [
+    {
+      type: "mcq",
+      objective: "نصّ القراءة: I love my job! — وارن رسّام ألعاب فيديو",
+      level: "knowledge",
+      prompt: "What is Warren's job?",
+      options: ["video game animator", "zoo vet", "sound artist", "rocket engineer"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "نصّ القراءة: مارتينا تعتني بحيواناتٍ متنوّعة",
+      level: "knowledge",
+      statement: "Martina only takes care of small pets at the zoo.",
+      answer: false
+    },
+    {
+      type: "fill-blank",
+      objective: "نصّ القراءة: مايك فنّان الصوت — قفّازان لصوت جناحَي طائر",
+      level: "knowledge",
+      prompt: "Complete Mike's description.",
+      text: "To make the sound of a bird's wings, you must move a pair of {}.",
+      answers: ["gloves"],
+      distractors: ["wings", "shoes"]
+    },
+    {
+      type: "matching",
+      objective: "ربط كل شخصٍ بمهنته",
+      level: "application",
+      prompt: "Match each person to their job.",
+      pairs: [
+        { a: "Warren",  b: "video game animator" },
+        { a: "Martina", b: "zoo vet" },
+        { a: "Mike",    b: "sound artist" },
+        { a: "Alison",  b: "rocket engineer" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف المهن: تعمل بالصوت أم بالحيوانات",
+      level: "reasoning",
+      prompt: "Sort the jobs: works with sound, or works with animals?",
+      groups: [
+        { name: "Works with sound",   items: ["Mike, the sound artist"] },
+        { name: "Works with animals", items: ["Martina, the zoo vet"] }
+      ]
+    },
+    {
+      type: "mcq",
+      objective: "نصّ القراءة: صواريخ أليسون تصل إلى محطة الفضاء",
+      level: "knowledge",
+      prompt: "Where do Alison's rockets take people?",
+      options: ["the International Space Station", "the moon", "another country", "a zoo"],
+      answer: 0
+    }
+  ],
+
+  // الدرس ٤-٨: المهارات — Listening, Speaking & Writing (Skills)
+  "g4e-4-8": [
+    {
+      type: "mcq",
+      objective: "تقرير طلال: عدد من يريدون أن يكونوا طبّاخين",
+      level: "knowledge",
+      prompt: "How many children in Talal's report want to be chefs?",
+      options: ["2", "1", "3", "4"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "تقرير طلال: يريد أن يكون رسّام ألعاب فيديو",
+      level: "knowledge",
+      statement: "Talal wants to be a video game animator when he grows up.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "تقرير طلال: عزّة تريد أن تكون بيطرية لأنّها تحبّ الحيوانات",
+      level: "knowledge",
+      prompt: "Complete the report.",
+      text: "Azza wants to be a vet because she likes {}.",
+      answers: ["animals"],
+      distractors: ["cars", "cooking"]
+    },
+    {
+      type: "matching",
+      objective: "ربط كل طفلٍ بالمهنة التي يريدها",
+      level: "application",
+      prompt: "Match each child to the job they want.",
+      pairs: [
+        { a: "Ahmed", b: "mechanic" },
+        { a: "Azza",  b: "vet" },
+        { a: "Manar", b: "doctor" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف فقرات التقرير: نتائجٌ أم رأي",
+      level: "reasoning",
+      prompt: "Sort the paragraphs: showing results, or giving an opinion?",
+      groups: [
+        { name: "Showing results",    items: ["Manar, Bayan and Anas want to be doctors.", "Ahmed wants to be a mechanic."] },
+        { name: "Giving an opinion",  items: ["When I grow up, I want to be a video game animator."] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "فهم تقرير طلال",
+      level: "reasoning",
+      prompt: "Three of these are jobs mentioned in Talal's report. Which one isn't?",
+      options: ["doctor", "mechanic", "vet", "teacher"],
+      answer: 3,
+      reason: "Teacher isn't mentioned in Talal's report."
+    }
+  ],
+
+  // الدرس ٤-٩: الصوتيات — ew, revise oo/ue (Phonics)
+  // ⚠️ نصّيٌّ بلا صوتٍ حقيقيّ — مزوّد n8n/داريجات غيرُ مدرَجٍ في قائمة موصّلات
+  // الجلسة إطلاقاً وقت التأليف (٢٠٢٦-٠٩-١٧). يُستبدَل بـsound-blend حقيقي حين يعود.
+  "g4e-4-9": [
+    {
+      type: "mcq",
+      objective: "صوت ew: screw, chew — مراجعة oo/ue: boots, blue",
+      level: "knowledge",
+      prompt: "Which word has the 'ew' sound like in 'chew'?",
+      options: ["screw", "boots", "blue", "moon"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "صوت oo: boots",
+      level: "knowledge",
+      statement: "'Boots' has the 'oo' sound.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "لعبة اللسان: There's a blue screw in my boot!",
+      level: "knowledge",
+      prompt: "Complete the tongue twister.",
+      text: "There's a blue screw in my {}!",
+      answers: ["boot"],
+      distractors: ["hand", "bag"]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف الكلمات حسب صوتها",
+      level: "application",
+      prompt: "Sort the words by their sound.",
+      groups: [
+        { name: "oo", items: ["boots", "moon"] },
+        { name: "ue", items: ["blue", "jewel"] },
+        { name: "ew", items: ["screw", "chew"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "التمييز بين صوت ew وصوت oo",
+      level: "reasoning",
+      prompt: "Three of these have the 'ew' sound. Which one doesn't?",
+      options: ["screw", "chew", "new", "boots"],
+      answer: 3,
+      reason: "'Boots' has the 'oo' sound, not the 'ew' sound."
+    },
+    {
+      type: "matching",
+      objective: "ربط الكلمة بنمط رسمها الصوتيّ",
+      level: "knowledge",
+      prompt: "Match each word to its spelling pattern.",
+      pairs: [
+        { a: "boots", b: "oo" },
+        { a: "blue",  b: "ue" },
+        { a: "screw", b: "ew" },
+        { a: "moon",  b: "oo" }
+      ]
+    }
+  ],
+
+  // الدرس ٤-١٠: المراجعة — Review
+  "g4e-4-10": [
+    {
+      type: "mcq",
+      objective: "مراجعة المضارع المستمر: سائق الحافلة",
+      level: "knowledge",
+      prompt: "What is the bus driver doing?",
+      options: ["He's driving a bus.", "He's cooking food.", "He's teaching a class.", "He's repairing a car."],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "قواعد Green Park: لا سباحة في النهر",
+      level: "knowledge",
+      statement: "In Green Park, you mustn't swim in the river.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "قواعد Green Park: لا إطعام الطيور",
+      level: "knowledge",
+      prompt: "Complete the park rule.",
+      text: "You mustn't {} the birds.",
+      answers: ["feed"],
+      distractors: ["watch", "see"]
+    },
+    {
+      type: "matching",
+      objective: "ربط قواعد Green Park بمسموحٍ أو ممنوع",
+      level: "application",
+      prompt: "Match each Green Park rule to allowed or not allowed.",
+      pairs: [
+        { a: "ride bikes",       b: "allowed" },
+        { a: "drop litter",      b: "not allowed" },
+        { a: "walk on the path", b: "allowed" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف إجابات لعبة Challenge",
+      level: "reasoning",
+      prompt: "Sort the Challenge quiz answers: about a job, or about a place?",
+      groups: [
+        { name: "About a job",   items: ["Sound artists make sounds for TV and films."] },
+        { name: "About a place", items: ["The boat driver works in a cave."] }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب قواعد Green Park كما وردت",
+      level: "reasoning",
+      prompt: "Put these Green Park rules in the order they're listed.",
+      steps: ["walk on the path", "ride bikes", "put litter in the bin"]
+    }
+  ],
+
+  // الدرس ٤-١١: الاستعداد لِ… — Get ready for... (A1 Movers)
+  "g4e-4-11": [
+    {
+      type: "mcq",
+      objective: "نمط اختبار A1 Movers: This car is taking a person to the hospital.",
+      level: "knowledge",
+      prompt: "'This car is taking a person to the hospital.' What is it?",
+      options: ["an ambulance", "a mechanic", "a chef", "a farmer"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "نمط اختبار A1 Movers: This person is repairing a car.",
+      level: "knowledge",
+      statement: "'This person is repairing a car' describes a mechanic.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "نمط اختبار A1 Movers: يعمل لدى فرقة الإطفاء",
+      level: "knowledge",
+      prompt: "Complete the answer.",
+      text: "This person is working for the fire brigade. It's a {}.",
+      answers: ["firefighter"],
+      distractors: ["farmer", "chef"]
+    },
+    {
+      type: "matching",
+      objective: "ربط كل وصفٍ بالمهنة",
+      level: "application",
+      prompt: "Match each description to the job.",
+      pairs: [
+        { a: "This person is cooking some food.",  b: "a chef" },
+        { a: "This person is working in a field.", b: "a farmer" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف المهن: طعامٌ أم مركبات",
+      level: "reasoning",
+      prompt: "Sort the jobs: works with food, or works with vehicles?",
+      groups: [
+        { name: "Works with food",    items: ["chef", "farmer"] },
+        { name: "Works with vehicles", items: ["mechanic", "ambulance driver"] }
+      ]
+    },
+    {
+      type: "mcq",
+      objective: "نصيحة اختبار الكتابة: قراءة الجمل بعناية أولاً",
+      level: "knowledge",
+      prompt: "What should you do before you start writing in A1 Movers Reading and Writing Part 1?",
+      options: ["Read all the sentences carefully.", "Write the answers quickly.", "Skip the pictures.", "Ask a friend."],
+      answer: 0
+    }
   ]
 };
