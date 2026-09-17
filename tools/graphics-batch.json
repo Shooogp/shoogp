@@ -36,12 +36,32 @@
   "⚠️ **والمهنُ أشخاصٌ بالزيِّ والأداةِ** (قرارُ المالك ٢٠٢٦-٠٩-١٧) — قيدُ",
   "NOFACE في العقدةِ يجعلُ الرأسَ شكلاً أملسَ خالياً، فالفرقُ في الزيِّ لا الوجه.",
   "ولم تُرسَمِ المهنةُ بأداتِها وحدَها لأنّ `g3e-4-8#٤` يوصّلُ «chef ↔ a pan»",
-  "و«doctor ↔ a stethoscope» — فرسمُ المهنةِ أداةً يُسقِطُ السؤالَ نفسَه."
+  "و«doctor ↔ a stethoscope» — فرسمُ المهنةِ أداةً يُسقِطُ السؤالَ نفسَه.",
+  "",
+  "══ دفعةُ الإصلاحِ — أربعةُ عناصرَ لم تُولَّدْ بعد (٢٠٢٦-٠٩-١٧) ══",
+  "الأوّلانِ ردَّ عليهما جيميناي 429 RESOURCE_EXHAUSTED (نفادُ الرصيدِ المسبق)،",
+  "والآخَرانِ أُضيفا بقرارِ المالكِ بعدَ مسحٍ مستقلٍّ كشفَهما ولم يُوثَّقا قبلَه.",
+  "وكلُّ عنصرٍ يفتحُ سؤالاً هو البطاقةُ الوحيدةُ الناقصةُ فيه:",
+  "  cloth-hijab      ← حجاب.png        · g3e-2-1#١ · g3e-2-1#٦ · g3e-2-9#٦",
+  "  place-restaurant ← مطعم.png        · g4e-4-1#٦ (وبه وحدَه يُستعمَلُ عالم.png)",
+  "  trans-underground← قطار-أنفاق.png  · g3e-4-3#٥ (٥ من ٦ مرسومةٌ سلفاً)",
+  "  food-bubbletea   ← شاي-فقاعات.png  · g4e-2-5#٥ (٣ من ٤ مرسومةٌ سلفاً)",
+  "",
+  "⚠️ **وقطارُ الأنفاقِ جسمٌ طافٍ لا مشهدُ نفقٍ وقضبان**: بطاقةُ المشهدِ ذاتُ",
+  "الخلفيةِ المصمتةِ يُفشِلُها الفحصُ ③ في `tools/check-qpics.mjs` وتظهرُ مربّعاً",
+  "ملوّناً على الكبسولة (وقعَ فعلاً في بطاقاتِ أوقاتِ اليومِ الأربعة).",
+  "والتمايزُ عن `قطار.png` بالجسمِ نفسِه لا بالمشهد: ذاك **قاطرةٌ بخاريةٌ حمراءُ",
+  "بمدخنة** (فُتِحَ ونُظِرَ إليه)، وهذا مِترو انسيابيٌّ أزرقُ بلا مدخنةٍ ولا دخان —",
+  "والاثنانِ بطاقتانِ في `g3e-4-3#٥` نفسِه، فلو تشابها سقطَ السؤال.",
+  "⚠️ **وشايُ الفقاعاتِ كوبٌ باردٌ طويلٌ بحبيباتٍ داكنة** لا يُشبِهُ `شاي.png`",
+  "(فنجانٌ برتقاليٌّ ساخنٌ على صحنٍ ببخار — فُتِحَ ونُظِرَ إليه)."
  ],
- "batchId": "2026-09-17-en-g34-vocab-fix",
+ "batchId": "2026-09-17-en-g34-vocab-fix2",
  "items": [
   { "name": "cloth-hijab", "subject": "head-and-shoulders bust of a woman wearing an Islamic hijab headscarf, the sky blue scarf draped over the whole head and over both shoulders and closed under the chin, framing a completely plain blank oval face area with nothing drawn on it at all" },
-  { "name": "place-restaurant", "subject": "small restaurant building seen from the front, with a red and white striped awning over a wide glass front window, a door in the middle, and one small round table with two chairs standing outside on the pavement" }
+  { "name": "place-restaurant", "subject": "small restaurant building seen from the front, with a red and white striped awning over a wide glass front window, a door in the middle, and one small round table with two chairs standing outside on the pavement" },
+  { "name": "trans-underground", "subject": "single modern electric underground metro train carriage on its own, seen from a front three-quarter angle, with a smooth rounded sloping nose, one wide dark windscreen across the front, a row of square windows along the side, sky blue and silver body panels divided by a white stripe, two round headlights low at the front and small grey wheels underneath — a sleek modern electric metro train with absolutely no chimney, no funnel and no smoke, and with no tunnel, no rails and no background of any kind around it" },
+  { "name": "food-bubbletea", "subject": "tall clear plastic cup of cold bubble tea standing upright on its own, filled with creamy pale brown milk tea with a thick layer of round dark brown tapioca pearls resting at the bottom of the cup, closed with a flat clear domed lid, and one wide pale green straw pushed down through the lid into the drink" }
  ],
  "_previousItems": [
   { "name": "job-doctor", "subject": "full-body cartoon figure of a doctor standing, wearing a long white medical coat over a blue shirt, with a stethoscope hanging around the neck and a small clipboard held in one hand" },
