@@ -46651,5 +46651,627 @@ window.QUESTIONS = {
       options: ["football", "tennis", "basketball", "cricket"],
       answer: 0
     }
+  ],
+
+  // الوحدة ٢ — Picnic time!
+
+  // الدرس ٢-١: المفردات — Food and drinks (Vocabulary)
+  "g4e-2-1": [
+    {
+      type: "mcq",
+      objective: "مفردات الطعام والشراب: fruit, vegetables, sandwiches, cereal, noodles, milkshake, crisps, cupcakes, salad, tea, coffee, lemonade",
+      level: "knowledge",
+      prompt: "Which of these is a drink?",
+      options: ["milkshake", "salad", "crisps", "cupcakes"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مفردات: crisps مالحة",
+      level: "knowledge",
+      statement: "Crisps are a savoury snack.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "تركيب: Is it sweet or savoury?",
+      level: "knowledge",
+      prompt: "Complete the question.",
+      text: "Is it sweet or {}?",
+      answers: ["savoury"],
+      distractors: ["hungry", "hot"]
+    },
+    {
+      type: "matching",
+      objective: "ربط كل طعامٍ بحلاوته أو ملوحته",
+      level: "application",
+      prompt: "Match each food to sweet or savoury.",
+      pairs: [
+        { a: "cupcakes", b: "sweet" },
+        { a: "noodles",  b: "savoury" },
+        { a: "lemonade", b: "sweet" },
+        { a: "salad",    b: "savoury" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف: طعامٌ أم شراب",
+      level: "reasoning",
+      prompt: "Sort the words: food or drink?",
+      groups: [
+        { name: "Food",  items: ["sandwiches", "cereal", "salad"] },
+        { name: "Drink", items: ["milkshake", "tea", "coffee"] }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب كلمات الطعام هجائياً",
+      level: "knowledge",
+      prompt: "Put the food words in alphabetical order.",
+      steps: ["cereal", "crisps", "fruit", "salad"]
+    }
+  ],
+
+  // الدرس ٢-٢: القصّة — The Secret Shed (Story)
+  "g4e-2-2": [
+    {
+      type: "mcq",
+      objective: "قصّة الوحدة: The Secret Shed — لا خبز لصنع الساندويتش",
+      level: "knowledge",
+      prompt: "Why can't Fatma make sandwiches at first?",
+      options: ["There isn't any bread.", "There isn't any cheese.", "There isn't any butter.", "There isn't a kitchen."],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "قصّة الوحدة: خطأ Bo الطريف — الليمونادة على النودلز",
+      level: "knowledge",
+      statement: "Bo the robot thinks you put lemonade on noodles.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "قصّة الوحدة: Let's form a team, the Discovery Team!",
+      level: "knowledge",
+      prompt: "Complete the line from the story.",
+      text: "Let's form a team, the {} Team!",
+      answers: ["Discovery"],
+      distractors: ["Secret", "Robot"]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب أحداث القصّة",
+      level: "application",
+      prompt: "Put the story events in order.",
+      steps: ["Let's have a picnic, too!", "There isn't any bread!", "Look, Bo. Those are noodles.", "They find an old shed.", "Let's form a team!"]
+    },
+    {
+      type: "exclude",
+      objective: "فهم أحداث القصّة",
+      level: "reasoning",
+      prompt: "Three of these happened in the story. Which one didn't?",
+      options: ["They find an old shed.", "Bo makes a funny mistake with lemonade.", "They form the Discovery Team.", "They go to the beach."],
+      answer: 3,
+      reason: "The story happens in a garden and a shed, not at the beach."
+    },
+    {
+      type: "mcq",
+      objective: "قصّة الوحدة: الليمونادة من الليمون",
+      level: "knowledge",
+      prompt: "Where does lemonade come from, according to the story?",
+      options: ["lemons", "a lake", "milk", "tea"],
+      answer: 0
+    }
+  ],
+
+  // الدرس ٢-٣: القواعد — There is/There are (Grammar)
+  "g4e-2-3": [
+    {
+      type: "mcq",
+      objective: "تركيب: There are a lot of noodles.",
+      level: "knowledge",
+      prompt: "Which word do we use with 'a lot of noodles'?",
+      options: ["are", "is", "am", "be"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "تركيب: There isn't any bread.",
+      level: "knowledge",
+      statement: "'There isn't any bread' means there is some bread.",
+      answer: false
+    },
+    {
+      type: "fill-blank",
+      objective: "تركيب: There is a lot of salad.",
+      level: "knowledge",
+      prompt: "Complete the sentence.",
+      text: "There {} a lot of salad, some coffee and a little lemonade.",
+      answers: ["is"],
+      distractors: ["are", "am"]
+    },
+    {
+      type: "matching",
+      objective: "ربط سؤال There is/are بجوابه",
+      level: "application",
+      prompt: "Match each question to its short answer.",
+      pairs: [
+        { a: "Are there any cupcakes?", b: "Yes, there are." },
+        { a: "Is there any bread?",     b: "No, there isn't." }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف كلمات الكمّية: للمعدود أم لغير المعدود",
+      level: "reasoning",
+      prompt: "Sort the quantity words: a lot/some, or a few/a little?",
+      groups: [
+        { name: "a lot / some",  items: ["a lot of noodles", "some crisps"] },
+        { name: "a few / a little", items: ["a few sandwiches", "a little lemonade"] }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب أطعمة النزهة كما وردت في الدرس",
+      level: "knowledge",
+      prompt: "Put the picnic foods in the order mentioned in the lesson.",
+      steps: ["noodles", "crisps", "sandwiches"]
+    }
+  ],
+
+  // الدرس ٢-٤: المفردات والقواعد — Food and drink containers
+  "g4e-2-4": [
+    {
+      type: "mcq",
+      objective: "أوعية الطعام والشراب: a bottle of water",
+      level: "knowledge",
+      prompt: "What do we call a bottle full of water?",
+      options: ["a bottle of water", "a bag of water", "a cup of water", "a box of water"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "أوعية: a plate of sandwiches",
+      level: "knowledge",
+      statement: "'A plate of sandwiches' uses the word 'plate' as the container.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "أنشودة الوحدة: But there aren't any cups!",
+      level: "knowledge",
+      prompt: "Complete the song.",
+      text: "There's a party in the park! But there aren't any {}!",
+      answers: ["cups"],
+      distractors: ["plates", "bottles"]
+    },
+    {
+      type: "matching",
+      objective: "ربط كل وعاءٍ بطعامه أو شرابه",
+      level: "application",
+      prompt: "Match each container to its food or drink.",
+      pairs: [
+        { a: "a can of",   b: "lemonade" },
+        { a: "a bowl of",  b: "soup" },
+        { a: "a glass of", b: "milk" },
+        { a: "a box of",   b: "cereal" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف الأسئلة: مفردٌ (Is there) أم جمعٌ (Are there)",
+      level: "reasoning",
+      prompt: "Sort the questions: about one thing (Is there) or many things (Are there)?",
+      groups: [
+        { name: "Is there",  items: ["Is there a lot of lemonade?", "Is there any tea?"] },
+        { name: "Are there", items: ["Are there any plates?", "Are there any bottles?"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "التمييز بين الوعاء والمحتوى",
+      level: "reasoning",
+      prompt: "Three of these are containers. Which one isn't?",
+      options: ["can", "bottle", "bowl", "milk"],
+      answer: 3,
+      reason: "'Milk' is a drink, not a container."
+    }
+  ],
+
+  // الدرس ٢-٥: الثقافة والمشروع — Food around the world
+  "g4e-2-5": [
+    {
+      type: "mcq",
+      objective: "الثقافة: سوشي من اليابان — أرزٌ بسمكٍ أو خضراوات",
+      level: "knowledge",
+      prompt: "What is sushi made of?",
+      options: ["rice with fish or vegetables", "bread with curry", "cake with chocolate", "noodles with cheese"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "الثقافة: أكل السوشي بعيدان الأكل",
+      level: "knowledge",
+      statement: "People eat sushi with chopsticks in Japan.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "ربط كل طبقٍ ببلده",
+      level: "knowledge",
+      prompt: "Match each dish to its country.",
+      pairs: [
+        { a: "bunny chow", b: "South Africa" },
+        { a: "sushi",      b: "Japan" },
+        { a: "fondue",     b: "Switzerland" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف طرق الأكل: بأداةٍ خاصّةٍ أم باليد",
+      level: "application",
+      prompt: "Sort the foods: eaten with a special tool, or with your hands?",
+      groups: [
+        { name: "With a special tool", items: ["sushi (chopsticks)", "fondue (sticks)", "bunny chow (spoon)"] },
+        { name: "With your hands",     items: ["sandwiches"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "فهم نصّ أطعمة العالم",
+      level: "reasoning",
+      prompt: "Three of these are foods from the text. Which one doesn't belong?",
+      options: ["bunny chow", "sushi", "bubble tea", "pizza"],
+      answer: 3,
+      reason: "Pizza isn't one of the foods described in the text."
+    },
+    {
+      type: "mcq",
+      objective: "الثقافة: الفوندو السويسريّ",
+      level: "knowledge",
+      prompt: "What do people in Switzerland dip into warm chocolate?",
+      options: ["cake or fruit", "bread", "cheese", "vegetables"],
+      answer: 0
+    }
+  ],
+
+  // الدرس ٢-٦: اللغة الوظيفية — Shopping for food
+  "g4e-2-6": [
+    {
+      type: "mcq",
+      objective: "لغة التسوّق: Can I have six apples, please?",
+      level: "knowledge",
+      prompt: "What do you say to ask for something politely in a shop?",
+      options: ["Can I have six apples, please?", "How old are you?", "What's the time?", "Where do you live?"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "لغة التسوّق: Anything else?",
+      level: "knowledge",
+      statement: "'Anything else?' asks if you want to buy more things.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "حوار المتجر: That's four rials, please.",
+      level: "knowledge",
+      prompt: "Complete the dialogue.",
+      text: "That's four {}, please.",
+      answers: ["rials"],
+      distractors: ["dollars", "pounds"]
+    },
+    {
+      type: "matching",
+      objective: "ربط جمل حوار التسوّق بردودها",
+      level: "application",
+      prompt: "Match each line to its reply.",
+      pairs: [
+        { a: "Can I help you?", b: "Can I have six apples, please?" },
+        { a: "Anything else?",  b: "No, that's it, thanks." }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب حوار التسوّق",
+      level: "reasoning",
+      prompt: "Put the shopping dialogue in order.",
+      steps: ["Can I help you?", "Can I have six apples, please?", "Anything else?", "No, that's it, thanks.", "That's four rials, please."]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف: فاكهةٌ أم عبارة تهذيب",
+      level: "reasoning",
+      prompt: "Sort the words: fruit or a polite phrase?",
+      groups: [
+        { name: "Fruit",         items: ["apples", "oranges", "grapes"] },
+        { name: "Polite phrase", items: ["Can I have...?", "Anything else?"] }
+      ]
+    }
+  ],
+
+  // الدرس ٢-٧: المهارات — Reading: Let's cook! (Skills)
+  "g4e-2-7": [
+    {
+      type: "mcq",
+      objective: "نصّ القراءة: طعام رشا المفضَّل — الهريس",
+      level: "knowledge",
+      prompt: "What is Rasha's favourite food?",
+      options: ["harees", "sushi", "pasta", "bunny chow"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "نصّ القراءة: الهريس مالحٌ لا حلو",
+      level: "knowledge",
+      statement: "Harees is a sweet dessert.",
+      answer: false
+    },
+    {
+      type: "fill-blank",
+      objective: "وصفة الهريس: First, you cook the wheat in some water.",
+      level: "knowledge",
+      prompt: "Complete the recipe step.",
+      text: "First, you cook the wheat in some {}.",
+      answers: ["water"],
+      distractors: ["milk", "oil"]
+    },
+    {
+      type: "matching",
+      objective: "ربط كل كلمة ترتيبٍ بخطوتها",
+      level: "application",
+      prompt: "Match each sequencing word to its step.",
+      pairs: [
+        { a: "First", b: "cook the wheat in water" },
+        { a: "Then",  b: "add the chicken" },
+        { a: "Last",  b: "add butter and serve" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف كلمات الوصفة: مكوّنٌ أم كلمة ترتيب",
+      level: "reasoning",
+      prompt: "Sort the words: an ingredient, or a sequencing word?",
+      groups: [
+        { name: "An ingredient",     items: ["chicken", "wheat", "butter", "spices"] },
+        { name: "A sequencing word", items: ["First", "Then", "After that", "Last"] }
+      ]
+    },
+    {
+      type: "mcq",
+      objective: "وصفة الهريس: لأربعة أشخاص",
+      level: "knowledge",
+      prompt: "How many people is the harees recipe for?",
+      options: ["4", "2", "10", "6"],
+      answer: 0
+    }
+  ],
+
+  // الدرس ٢-٨: المهارات — Listening, Speaking & Writing (Skills)
+  "g4e-2-8": [
+    {
+      type: "mcq",
+      objective: "نصّ الكتابة: وصفة المكرونة بصلصة الطماطم",
+      level: "knowledge",
+      prompt: "In the recipe for pasta with tomato sauce, which ingredient is NOT used?",
+      options: ["tea", "tomatoes", "olive oil", "pasta"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "وصفة المكرونة: لشخصين، عشر دقائق",
+      level: "knowledge",
+      statement: "The pasta recipe is for 2 people and takes 10 minutes.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "وصفة المكرونة: First, you put the olive oil in a hot pan.",
+      level: "knowledge",
+      prompt: "Complete the recipe step.",
+      text: "First, you put the olive oil in a hot {}.",
+      answers: ["pan"],
+      distractors: ["bowl", "plate"]
+    },
+    {
+      type: "matching",
+      objective: "ربط كل كلمة ترتيبٍ بخطوتها",
+      level: "application",
+      prompt: "Match each sequencing word to its step.",
+      pairs: [
+        { a: "Then",       b: "add the tomatoes and cook" },
+        { a: "After that", b: "cook the pasta in hot water" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف بنود قائمة فحص الكتابة",
+      level: "reasoning",
+      prompt: "Sort the writing checklist items: about ingredients, or about writing quality?",
+      groups: [
+        { name: "About ingredients",     items: ["List of ingredients"] },
+        { name: "About writing quality", items: ["Correct spelling", "Clear handwriting"] }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب خطوات وصفة المكرونة",
+      level: "knowledge",
+      prompt: "Put the pasta recipe steps in order.",
+      steps: ["Put the olive oil in a hot pan.", "Add the tomatoes and cook.", "Cook the pasta in hot water.", "Put the pasta into the sauce."]
+    }
+  ],
+
+  // الدرس ٢-٩: الصوتيات — ow, revise oa/o_e (Phonics)
+  // ⚠️ نصّيٌّ بلا صوتٍ حقيقيّ — مزوّد n8n/داريجات غيرُ مدرَجٍ في قائمة موصّلات
+  // الجلسة إطلاقاً وقت التأليف (٢٠٢٦-٠٩-١٧). يُستبدَل بـsound-blend حقيقي حين يعود.
+  "g4e-2-9": [
+    {
+      type: "mcq",
+      objective: "صوت ow: snow, grow — مراجعة oa/o_e: boat, nose",
+      level: "knowledge",
+      prompt: "Which word has the 'ow' sound like in 'snow'?",
+      options: ["grow", "boat", "nose", "coat"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "صوت oa: boat",
+      level: "knowledge",
+      statement: "'Boat' has the 'oa' sound.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "لعبة اللسان: I'm in a boat and there's snow on my nose!",
+      level: "knowledge",
+      prompt: "Complete the tongue twister.",
+      text: "I'm in a boat and there's snow on my {}!",
+      answers: ["nose"],
+      distractors: ["face", "head"]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف الكلمات حسب صوتها",
+      level: "application",
+      prompt: "Sort the words by their sound.",
+      groups: [
+        { name: "oa",  items: ["boat"] },
+        { name: "o_e", items: ["nose"] },
+        { name: "ow",  items: ["snow", "grow"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "التمييز بين صوت ow وصوت oa",
+      level: "reasoning",
+      prompt: "Three of these have the 'ow' sound like in 'snow'. Which one doesn't?",
+      options: ["grow", "show", "row", "boat"],
+      answer: 3,
+      reason: "'Boat' has the 'oa' sound, not the 'ow' sound."
+    },
+    {
+      type: "matching",
+      objective: "ربط الكلمة بنمط رسمها الصوتيّ",
+      level: "knowledge",
+      prompt: "Match each word to its spelling pattern.",
+      pairs: [
+        { a: "boat", b: "oa" },
+        { a: "nose", b: "o_e" },
+        { a: "snow", b: "ow" },
+        { a: "grow", b: "ow" }
+      ]
+    }
+  ],
+
+  // الدرس ٢-١٠: المراجعة — Review
+  "g4e-2-10": [
+    {
+      type: "mcq",
+      objective: "مراجعة مفردات الطعام: cereal",
+      level: "knowledge",
+      prompt: "Which food do you put in a bowl and add milk to for breakfast?",
+      options: ["cereal", "coffee", "water", "vegetables"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مراجعة: الجزر والبصل والبطاطا خضراوات",
+      level: "knowledge",
+      statement: "Carrots, onions and potatoes are all vegetables.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "مراجعة: التفاح والبرتقال والكمثرى فواكه",
+      level: "knowledge",
+      prompt: "Complete the fact.",
+      text: "Apples, oranges and pears are all {}.",
+      answers: ["fruit"],
+      distractors: ["vegetables", "drinks"]
+    },
+    {
+      type: "matching",
+      objective: "ربط كل تلميحٍ بالطعام أو الشراب",
+      level: "application",
+      prompt: "Match each clue to the food or drink.",
+      pairs: [
+        { a: "It's a drink. It's black. It's hot.", b: "coffee" },
+        { a: "You make this food with bread.",      b: "sandwiches" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف إجابات لعبة Challenge",
+      level: "reasoning",
+      prompt: "Sort the Challenge quiz answers: about food, or about a person?",
+      groups: [
+        { name: "About food",   items: ["sushi", "harees"] },
+        { name: "About a person", items: ["Rasha is the winner of Kids Cook!"] }
+      ]
+    },
+    {
+      type: "mcq",
+      objective: "لعبة Challenge: الطعام الياباني بعيدان الأكل",
+      level: "knowledge",
+      prompt: "What Japanese food is eaten with chopsticks?",
+      options: ["sushi", "harees", "bunny chow", "fondue"],
+      answer: 0
+    }
+  ],
+
+  // الدرس ٢-١١: الاستعداد لِ… — Get ready for... (A1 Movers)
+  "g4e-2-11": [
+    {
+      type: "mcq",
+      objective: "نمط اختبار A1 Movers: Dad: Can you go to the shops for me?",
+      level: "knowledge",
+      prompt: "Dad: 'Can you go to the shops for me?' Zaid: ___",
+      options: ["Yes, I can.", "Yes, I am.", "Yes, you are."],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "نمط اختبار A1 Movers: Is there any milk?",
+      level: "knowledge",
+      statement: "'Is there any milk?' 'Yes, there is.' is a correct short answer.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "نمط اختبار A1 Movers: Are there any eggs? Yes, there are.",
+      level: "knowledge",
+      prompt: "Complete the answer.",
+      text: "Are there any eggs? Yes, there {}.",
+      answers: ["are"],
+      distractors: ["is", "am"]
+    },
+    {
+      type: "matching",
+      objective: "ربط سؤال الحوار بجوابه الصحيح",
+      level: "application",
+      prompt: "Match each question to its correct answer.",
+      pairs: [
+        { a: "Do we need anything else?", b: "Yes, we do." },
+        { a: "What do we need?",          b: "We need some cheese." }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "نمط اختبار A1 Movers: تمييز الفاكهة من الخضار",
+      level: "reasoning",
+      prompt: "Sort the pictures: fruit, or not fruit?",
+      groups: [
+        { name: "Fruit",     items: ["apple", "grapes", "orange"] },
+        { name: "Not fruit", items: ["carrot"] }
+      ]
+    },
+    {
+      type: "true-false",
+      objective: "نمط اختبار A1 Movers: Speaking Part 3",
+      level: "knowledge",
+      statement: "In A1 Movers Speaking Part 3, you say why a picture is different.",
+      answer: true
+    }
   ]
 };

@@ -894,17 +894,17 @@ window.DATA_FALLBACK = {
         { title:"Get ready for… (A1 Movers)", file:"g4e-1-11", open:true }
       ]},
       { unit:"Picnic time!", lessons:[
-        { title:"Food and drinks (Vocabulary)", file:"g4e-2-1", open:false },
-        { title:"Story", file:"g4e-2-2", open:false },
-        { title:"There is/There are (Grammar)", file:"g4e-2-3", open:false },
-        { title:"Food and drink containers (Vocabulary & Grammar)", file:"g4e-2-4", open:false },
-        { title:"Food around the world (Culture & Project)", file:"g4e-2-5", open:false },
-        { title:"Shopping for food", file:"g4e-2-6", open:false },
-        { title:"Reading a recipe (Skills)", file:"g4e-2-7", open:false },
-        { title:"Listening, Speaking & Writing (Skills)", file:"g4e-2-8", open:false },
-        { title:"ow, revise oa/o_e (Phonics)", file:"g4e-2-9", open:false },
-        { title:"Review", file:"g4e-2-10", open:false },
-        { title:"Get ready for… (A1 Movers)", file:"g4e-2-11", open:false }
+        { title:"Food and drinks (Vocabulary)", file:"g4e-2-1", open:true },
+        { title:"Story", file:"g4e-2-2", open:true },
+        { title:"There is/There are (Grammar)", file:"g4e-2-3", open:true },
+        { title:"Food and drink containers (Vocabulary & Grammar)", file:"g4e-2-4", open:true },
+        { title:"Food around the world (Culture & Project)", file:"g4e-2-5", open:true },
+        { title:"Shopping for food", file:"g4e-2-6", open:true },
+        { title:"Reading a recipe (Skills)", file:"g4e-2-7", open:true },
+        { title:"Listening, Speaking & Writing (Skills)", file:"g4e-2-8", open:true },
+        { title:"ow, revise oa/o_e (Phonics)", file:"g4e-2-9", open:true },
+        { title:"Review", file:"g4e-2-10", open:true },
+        { title:"Get ready for… (A1 Movers)", file:"g4e-2-11", open:true }
       ]},
       { unit:"Bo's Learning Club 1", lessons:[
         { title:"Maths: Sizes and shapes", file:"g4e-lc1-1", open:false },
