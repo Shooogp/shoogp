@@ -42645,8 +42645,6 @@ window.QUESTIONS = {
   ],
 
   // الوحدة ٤: Meet my family — تعرّف على أسرتي
-  // ⚠️ صوتيّات هذه الوحدة (ee/er/ar/o_e) نصّيةٌ لا sound-blend — مزوّد داريجات/n8n
-  // منقطعٌ عن الجلسة وقت التأليف (٢٠٢٦-٠٩-١٧)؛ يُستبدَل لاحقاً بصوتٍ حقيقيٍّ حين يعود.
   // الدرس ٤-١: Meet my family — مفردات الأسرة
   "g2e-4-1": [
     {
@@ -42670,11 +42668,15 @@ window.QUESTIONS = {
       ]
     },
     {
-      type: "true-false",
+      type: "sound-blend",
       objective: "صوتٌ مقترن: ee (Unit 4 Lesson 1)",
       level: "knowledge",
-      statement: "'Tree' and 'bee' have the same ending sound.",
-      answer: true
+      prompt: "Tap each card, then blend and choose the word.",
+      letters: ["tr", "ee"],
+      soundOf: { tr: "audio/en/phon-tr.mp3", ee: "audio/en/phon-ee.mp3" },
+      blendAudio: "audio/en/blend-tree.mp3",
+      options: ["tree", "train", "try"],
+      answer: 0
     },
     {
       type: "classify",
@@ -42718,14 +42720,15 @@ window.QUESTIONS = {
       answer: 0
     },
     {
-      type: "classify",
+      type: "sound-blend",
       objective: "صوتٌ مقترن: er (Unit 4 Lesson 2)",
       level: "knowledge",
-      prompt: "Sort the words by their sound.",
-      groups: [
-        { name: "Has the 'er' sound", items: ["sister", "brother"] },
-        { name: "No 'er' sound",      items: ["cat", "dog"] }
-      ]
+      prompt: "Tap each card, then blend and choose the word.",
+      letters: ["h", "er"],
+      soundOf: { h: "audio/en/phon-h.mp3", er: "audio/en/phon-er.mp3" },
+      blendAudio: "audio/en/blend-her.mp3",
+      options: ["her", "hair", "hat"],
+      answer: 0
     },
     {
       type: "sequence",
@@ -42809,14 +42812,15 @@ window.QUESTIONS = {
       ]
     },
     {
-      type: "classify",
+      type: "sound-blend",
       objective: "صوتٌ مقترن: ar (Unit 4 Lesson 3)",
       level: "reasoning",
-      prompt: "Sort the words by their sound.",
-      groups: [
-        { name: "Has the 'ar' sound", items: ["car", "star"] },
-        { name: "No 'ar' sound",      items: ["cat", "dog"] }
-      ]
+      prompt: "Tap each card, then blend and choose the word.",
+      letters: ["c", "ar"],
+      soundOf: { c: "audio/en/phon-c.mp3", ar: "audio/en/phon-ar.mp3" },
+      blendAudio: "audio/en/blend-car.mp3",
+      options: ["car", "cat", "cake"],
+      answer: 0
     },
     {
       type: "memory",
@@ -42843,11 +42847,15 @@ window.QUESTIONS = {
       answer: 0
     },
     {
-      type: "true-false",
+      type: "sound-blend",
       objective: "صوتٌ مقترن: o_e (Unit 4 Lesson 4)",
       level: "knowledge",
-      statement: "'Nose' and 'rose' rhyme.",
-      answer: true
+      prompt: "Tap each card, then blend and choose the word.",
+      letters: ["n", "ose"],
+      soundOf: { n: "audio/en/phon-n.mp3", ose: "audio/en/phon-ose.mp3" },
+      blendAudio: "audio/en/blend-nose.mp3",
+      options: ["nose", "name", "nine"],
+      answer: 0
     },
     {
       type: "classify",
@@ -43741,16 +43749,16 @@ window.QUESTIONS = {
   ],
 
   // الدرس ١-٧: الصوتيات — wh, ph (Phonics)
-  // ⚠️ نصّيٌّ بلا صوتٍ حقيقيّ — مزوّد n8n/داريجات غير متصلٍ بالجلسة وقت التأليف
-  // (٢٠٢٦-٠٩-١٧). يُستبدَل بأسئلة sound-blend حقيقية حين يعود المزوّد، على غرار
-  // معالجة الوحدة ٤ في الصفّ الثاني.
   "g3e-1-7": [
     {
-      type: "mcq",
-      objective: "صوتا wh/ph: whale, wheel, phone, dolphin",
+      type: "sound-blend",
+      objective: "صوتٌ مقترن: wh (whale)",
       level: "knowledge",
-      prompt: "Which word starts with the 'ph' sound?",
-      options: ["phone", "wheel", "whale", "white"],
+      prompt: "Tap each card, then blend and choose the word.",
+      letters: ["wh", "ale"],
+      soundOf: { wh: "audio/en/phon-wh.mp3", ale: "audio/en/phon-ale.mp3" },
+      blendAudio: "audio/en/blend-whale.mp3",
+      options: ["whale", "wheel", "white"],
       answer: 0
     },
     {
@@ -44313,16 +44321,16 @@ window.QUESTIONS = {
   ],
 
   // الدرس ٢-٧: الصوتيات — ear, ure (Phonics)
-  // ⚠️ نصّيٌّ بلا صوتٍ حقيقيّ — مزوّد n8n/داريجات غيرُ مدرَجٍ في قائمة موصّلات
-  // الجلسة إطلاقاً وقت التأليف (٢٠٢٦-٠٩-١٧)، لا معطّلاً يمكن تفعيله. يُستبدَل
-  // بأسئلة sound-blend حقيقية حين يعود المزوّد.
   "g3e-2-7": [
     {
-      type: "mcq",
-      objective: "صوتا ear/ure: beard, hear, vulture, picture",
+      type: "sound-blend",
+      objective: "صوتٌ مقترن: ear (hear)",
       level: "knowledge",
-      prompt: "Which word has the 'ure' sound?",
-      options: ["picture", "hear", "beard", "ears"],
+      prompt: "Tap each card, then blend and choose the word.",
+      letters: ["h", "ear"],
+      soundOf: { h: "audio/en/phon-h.mp3", ear: "audio/en/phon-ear.mp3" },
+      blendAudio: "audio/en/blend-hear.mp3",
+      options: ["hear", "hair", "hat"],
       answer: 0
     },
     {
@@ -44995,15 +45003,16 @@ window.QUESTIONS = {
   ],
 
   // الدرس ٣-٧: الصوتيات — i-e, a-e, o-e, u-e (Phonics)
-  // ⚠️ نصّيٌّ بلا صوتٍ حقيقيّ — مزوّد n8n/داريجات غيرُ مدرَجٍ في قائمة موصّلات
-  // الجلسة إطلاقاً وقت التأليف (٢٠٢٦-٠٩-١٧). يُستبدَل بـsound-blend حقيقي حين يعود.
   "g3e-3-7": [
     {
-      type: "mcq",
-      objective: "أصوات i-e/a-e/o-e/u-e: bike, cake, stone, cube",
+      type: "sound-blend",
+      objective: "صوتٌ مقترن: a-e (cake)",
       level: "knowledge",
-      prompt: "Which word has the 'o-e' sound?",
-      options: ["stone", "bike", "cake", "cube"],
+      prompt: "Tap each card, then blend and choose the word.",
+      letters: ["c", "ake"],
+      soundOf: { c: "audio/en/phon-c.mp3", ake: "audio/en/phon-ake.mp3" },
+      blendAudio: "audio/en/blend-cake.mp3",
+      options: ["cake", "cat", "car"],
       answer: 0
     },
     {
@@ -45562,15 +45571,16 @@ window.QUESTIONS = {
   ],
 
   // الدرس ٤-٧: الصوتيات — ea, ea (Phonics)
-  // ⚠️ نصّيٌّ بلا صوتٍ حقيقيّ — مزوّد n8n/داريجات غيرُ مدرَجٍ في قائمة موصّلات
-  // الجلسة إطلاقاً وقت التأليف (٢٠٢٦-٠٩-١٧). يُستبدَل بـsound-blend حقيقي حين يعود.
   "g3e-4-7": [
     {
-      type: "mcq",
-      objective: "صوت ea الطويل: read, beach",
+      type: "sound-blend",
+      objective: "صوتٌ مقترن: ea الطويل (beach)",
       level: "knowledge",
-      prompt: "Which word has the long 'ea' sound, like in 'read'?",
-      options: ["beach", "bread", "head", "weather"],
+      prompt: "Tap each card, then blend and choose the word.",
+      letters: ["b", "ea", "ch"],
+      soundOf: { b: "audio/en/phon-b.mp3", ea: "audio/en/phon-ea.mp3", ch: "audio/en/phon-ch.mp3" },
+      blendAudio: "audio/en/blend-beach.mp3",
+      options: ["beach", "bread", "boat"],
       answer: 0
     },
     {
@@ -46480,15 +46490,16 @@ window.QUESTIONS = {
   ],
 
   // الدرس ١-٩: الصوتيات — y, revise i_e/igh/ie (Phonics)
-  // ⚠️ نصّيٌّ بلا صوتٍ حقيقيّ — مزوّد n8n/داريجات غيرُ مدرَجٍ في قائمة موصّلات
-  // الجلسة إطلاقاً وقت التأليف (٢٠٢٦-٠٩-١٧). يُستبدَل بـsound-blend حقيقي حين يعود.
   "g4e-1-9": [
     {
-      type: "mcq",
-      objective: "صوت y: fly, shy — مراجعة ie/igh/i_e: pie, night, kite",
+      type: "sound-blend",
+      objective: "صوتٌ مقترن: y (fly)",
       level: "knowledge",
-      prompt: "Which word has the 'y' sound like in 'fly'?",
-      options: ["shy", "night", "pie", "kite"],
+      prompt: "Tap each card, then blend and choose the word.",
+      letters: ["fl", "y"],
+      soundOf: { fl: "audio/en/phon-fl.mp3", y: "audio/en/phon-y.mp3" },
+      blendAudio: "audio/en/blend-fly.mp3",
+      options: ["fly", "flag", "fry"],
       answer: 0
     },
     {
@@ -47103,15 +47114,16 @@ window.QUESTIONS = {
   ],
 
   // الدرس ٢-٩: الصوتيات — ow, revise oa/o_e (Phonics)
-  // ⚠️ نصّيٌّ بلا صوتٍ حقيقيّ — مزوّد n8n/داريجات غيرُ مدرَجٍ في قائمة موصّلات
-  // الجلسة إطلاقاً وقت التأليف (٢٠٢٦-٠٩-١٧). يُستبدَل بـsound-blend حقيقي حين يعود.
   "g4e-2-9": [
     {
-      type: "mcq",
-      objective: "صوت ow: snow, grow — مراجعة oa/o_e: boat, nose",
+      type: "sound-blend",
+      objective: "صوتٌ مقترن: ow (snow)",
       level: "knowledge",
-      prompt: "Which word has the 'ow' sound like in 'snow'?",
-      options: ["grow", "boat", "nose", "coat"],
+      prompt: "Tap each card, then blend and choose the word.",
+      letters: ["sn", "ow"],
+      soundOf: { sn: "audio/en/phon-sn.mp3", ow: "audio/en/phon-ow.mp3" },
+      blendAudio: "audio/en/blend-snow.mp3",
+      options: ["snow", "snake", "snack"],
       answer: 0
     },
     {
@@ -47845,15 +47857,16 @@ window.QUESTIONS = {
   ],
 
   // الدرس ٣-٩: الصوتيات — eigh, ei (Phonics)
-  // ⚠️ نصّيٌّ بلا صوتٍ حقيقيّ — مزوّد n8n/داريجات غيرُ مدرَجٍ في قائمة موصّلات
-  // الجلسة إطلاقاً وقت التأليف (٢٠٢٦-٠٩-١٧). يُستبدَل بـsound-blend حقيقي حين يعود.
   "g4e-3-9": [
     {
-      type: "mcq",
-      objective: "صوتا eigh/ei: eight, sleigh, reindeer, reins",
+      type: "sound-blend",
+      objective: "صوتٌ مقترن: eigh (sleigh)",
       level: "knowledge",
-      prompt: "Which word has the 'eigh' sound like in 'eight'?",
-      options: ["sleigh", "reins", "weigh", "vein"],
+      prompt: "Tap each card, then blend and choose the word.",
+      letters: ["sl", "eigh"],
+      soundOf: { sl: "audio/en/phon-sl.mp3", eigh: "audio/en/phon-eigh.mp3" },
+      blendAudio: "audio/en/blend-sleigh.mp3",
+      options: ["sleigh", "sleep", "slide"],
       answer: 0
     },
     {
@@ -48471,15 +48484,16 @@ window.QUESTIONS = {
   ],
 
   // الدرس ٤-٩: الصوتيات — ew, revise oo/ue (Phonics)
-  // ⚠️ نصّيٌّ بلا صوتٍ حقيقيّ — مزوّد n8n/داريجات غيرُ مدرَجٍ في قائمة موصّلات
-  // الجلسة إطلاقاً وقت التأليف (٢٠٢٦-٠٩-١٧). يُستبدَل بـsound-blend حقيقي حين يعود.
   "g4e-4-9": [
     {
-      type: "mcq",
-      objective: "صوت ew: screw, chew — مراجعة oo/ue: boots, blue",
+      type: "sound-blend",
+      objective: "صوتٌ مقترن: ew (chew)",
       level: "knowledge",
-      prompt: "Which word has the 'ew' sound like in 'chew'?",
-      options: ["screw", "boots", "blue", "moon"],
+      prompt: "Tap each card, then blend and choose the word.",
+      letters: ["ch", "ew"],
+      soundOf: { ch: "audio/en/phon-ch.mp3", ew: "audio/en/phon-ew.mp3" },
+      blendAudio: "audio/en/blend-chew.mp3",
+      options: ["chew", "chair", "cheese"],
       answer: 0
     },
     {
