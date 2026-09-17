@@ -45302,6 +45302,11 @@ window.QUESTIONS = {
       objective: "التمييز بين مهنٍ ترتدي زياً موحّداً وغيرها",
       level: "reasoning",
       prompt: "Three of these jobs wear a uniform. Which one doesn't?",
+      /* ⛔ **بلا `pics` بقرارِ المالكِ ٢٠٢٦-٠٩-١٧ — وأربعتُها لها رسمٌ في السجلّ.**
+         فلا يُفعَّلْ ظنّاً أنّ الإطفاءَ سهوٌ أو نقصُ مكتبة: رسومُ المهنِ **أشخاصٌ
+         بالزيِّ والأداة** (قرارُ المالكِ نفسِه في دفعةِ التوليد)، فالرسمُ يُظهِرُ
+         الزيَّ المسؤولَ عنه السؤالُ فيصيرُ **ملاحظةً بصريّةً** بدلَ استرجاعِ
+         المعرفة — ومستواه `reasoning` يفترضُ التفكيرَ لا العَدَّ في الصورة. */
       options: ["pilot", "firefighter", "police officer", "artist"],
       answer: 3,
       reason: "An artist doesn't usually wear a uniform for work."
