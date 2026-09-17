@@ -45908,5 +45908,124 @@ window.QUESTIONS = {
         { name: "Second half", items: ["September", "November", "December"] }
       ]
     }
+  ],
+
+  // ═══════════ اللغة الإنجليزية — الصف الرابع (g4-en) ═══════════
+  // التمهيد — Welcome: New neighbours
+
+  // الدرس ٠-١: بلدانٌ وجنسيّاتٌ وهوايات — New neighbours
+  "g4e-0-1": [
+    {
+      type: "mcq",
+      objective: "بلدان وجنسيات: Oman, Australia, China, Britain, Brazil, Egypt, the USA",
+      level: "knowledge",
+      prompt: "Which country is Lottie from?",
+      options: ["Australia", "Britain", "China", "Egypt"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "بلدان وجنسيات: Egyptian",
+      level: "knowledge",
+      statement: "Someone from Egypt is Egyptian.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "تركيب: Where are you from? I'm from Oman.",
+      level: "knowledge",
+      prompt: "Complete the question.",
+      text: "Where are you from? I'm {} Oman.",
+      answers: ["from"],
+      distractors: ["at", "in"]
+    },
+    {
+      type: "matching",
+      objective: "ربط كل بلدٍ بجنسيّته",
+      level: "application",
+      prompt: "Match each country to its nationality.",
+      pairs: [
+        { a: "Oman",      b: "Omani" },
+        { a: "Australia", b: "Australian" },
+        { a: "China",     b: "Chinese" },
+        { a: "Brazil",    b: "Brazilian" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف الهوايات: داخل المنزل أم خارجه",
+      level: "reasoning",
+      prompt: "Sort the hobbies: indoor or outdoor?",
+      groups: [
+        { name: "Indoor",  items: ["reading", "playing table tennis"] },
+        { name: "Outdoor", items: ["canoeing", "playing football", "swimming"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "التمييز بين الهواية والجنسية",
+      level: "reasoning",
+      prompt: "Three of these are hobbies. Which one isn't?",
+      options: ["canoeing", "swimming", "Australian", "playing tennis"],
+      answer: 2,
+      reason: "'Australian' is a nationality, not a hobby."
+    }
+  ],
+
+  // الدرس ٠-٢: الأعداد ٥٠-١٠٠ — Numbers
+  "g4e-0-2": [
+    {
+      type: "mcq",
+      objective: "الأعداد بالعشرات ٥٠-١٠٠: fifty..one hundred",
+      level: "knowledge",
+      prompt: "What number is 'seventy'?",
+      options: ["70", "17", "7", "700"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "الأعداد ٥٠-١٠٠: ترتيب الأعداد",
+      level: "knowledge",
+      statement: "'Fifty-five' comes before 'sixty'.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "لغز: Fifty-five minus two equals fifty-three.",
+      level: "knowledge",
+      prompt: "Complete the riddle.",
+      text: "Fifty-five minus two equals {}.",
+      answers: ["fifty-three"],
+      distractors: ["fifty-seven", "fifty"]
+    },
+    {
+      type: "matching",
+      objective: "الأعداد ٥٠-١٠٠: الرقم وكلمته",
+      level: "application",
+      prompt: "Match the number to its word.",
+      pairs: [
+        { a: "53",  b: "fifty-three" },
+        { a: "67",  b: "sixty-seven" },
+        { a: "80",  b: "eighty" },
+        { a: "100", b: "one hundred" }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب الأعداد ٥٠-١٠٠ تصاعدياً",
+      level: "reasoning",
+      prompt: "Put the numbers in order, smallest to biggest.",
+      steps: ["fifty", "sixty", "seventy", "eighty", "ninety", "one hundred"]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف الأعداد بعدد مرجعيّ",
+      level: "reasoning",
+      prompt: "Sort the numbers: less than seventy-five, or seventy-five and more?",
+      groups: [
+        { name: "Less than 75", items: ["fifty-one", "sixty-three", "seventy"] },
+        { name: "75 and more",  items: ["eighty", "ninety", "one hundred"] }
+      ]
+    }
   ]
 };

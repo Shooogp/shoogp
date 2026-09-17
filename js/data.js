@@ -877,8 +877,8 @@ window.DATA_FALLBACK = {
     ]},
     "g4-en": { book:"اللغة الإنجليزية — الصف الرابع", units:[
       { unit:"Welcome", lessons:[
-        { title:"New neighbours (Countries & Hobbies)", file:"g4e-0-1", open:false },
-        { title:"Numbers (50-100)", file:"g4e-0-2", open:false }
+        { title:"New neighbours (Countries & Hobbies)", file:"g4e-0-1", open:true },
+        { title:"Numbers (50-100)", file:"g4e-0-2", open:true }
       ]},
       { unit:"New school", lessons:[
         { title:"School subjects (Vocabulary)", file:"g4e-1-1", open:false },
