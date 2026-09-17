@@ -1146,16 +1146,16 @@
       {
         "unit": "Let's dress up!",
         "lessons": [
-          { "title": "Let's dress up! (Vocabulary)", "file": "g3e-2-1", "open": false },
-          { "title": "Story (Helpers Team)", "file": "g3e-2-2", "open": false },
-          { "title": "Whose is it? (Grammar)", "file": "g3e-2-3", "open": false },
-          { "title": "Skills", "file": "g3e-2-4", "open": false },
-          { "title": "Special days in Oman (Culture & Project)", "file": "g3e-2-5", "open": false },
-          { "title": "Asking the price", "file": "g3e-2-6", "open": false },
-          { "title": "ear, ure (Phonics)", "file": "g3e-2-7", "open": false },
-          { "title": "Review", "file": "g3e-2-8", "open": false },
-          { "title": "Get ready for… (Pre A1 Starters)", "file": "g3e-2-9", "open": false },
-          { "title": "Fun corner", "file": "g3e-2-10", "open": false }
+          { "title": "Let's dress up! (Vocabulary)", "file": "g3e-2-1", "open": true },
+          { "title": "Story (Helpers Team)", "file": "g3e-2-2", "open": true },
+          { "title": "Whose is it? (Grammar)", "file": "g3e-2-3", "open": true },
+          { "title": "Skills", "file": "g3e-2-4", "open": true },
+          { "title": "Special days in Oman (Culture & Project)", "file": "g3e-2-5", "open": true },
+          { "title": "Asking the price", "file": "g3e-2-6", "open": true },
+          { "title": "ear, ure (Phonics)", "file": "g3e-2-7", "open": true },
+          { "title": "Review", "file": "g3e-2-8", "open": true },
+          { "title": "Get ready for… (Pre A1 Starters)", "file": "g3e-2-9", "open": true },
+          { "title": "Fun corner", "file": "g3e-2-10", "open": true }
         ]
       },
       {

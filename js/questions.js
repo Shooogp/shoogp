@@ -43970,5 +43970,575 @@ window.QUESTIONS = {
       answer: 3,
       reason: "'wh or ph?' is about sounds, not time."
     }
+  ],
+
+  // الوحدة ٢ — Let's dress up! (Clothes)
+
+  // الدرس ٢-١: المفردات — Let's dress up! (Vocabulary)
+  "g3e-2-1": [
+    {
+      type: "mcq",
+      objective: "مفردات الملابس: hijab, tracksuit, slippers, jumper, coat, jeans, pyjamas, trainers, baseball cap, shirt",
+      level: "knowledge",
+      prompt: "Which of these is something you wear on your feet?",
+      options: ["trainers", "jumper", "hijab", "baseball cap"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مفردات الملابس: tracksuit",
+      level: "knowledge",
+      statement: "A tracksuit is something you wear.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "أنشودة الوحدة: We're wearing jeans, shirts and coats.",
+      level: "knowledge",
+      prompt: "Complete the chant.",
+      text: "We're wearing jeans, shirts and {}.",
+      answers: ["coats"],
+      distractors: ["shoes", "hats"]
+    },
+    {
+      type: "matching",
+      objective: "تركيب: We're/You're/They're wearing...",
+      level: "application",
+      prompt: "Match each group to what they're wearing.",
+      pairs: [
+        { a: "We're",   b: "wearing jeans, shirts and coats." },
+        { a: "You're",  b: "wearing a tracksuit and trainers." },
+        { a: "They're", b: "wearing pyjamas and slippers." }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف الملابس: للرياضة أم للنوم",
+      level: "reasoning",
+      prompt: "Sort the clothes: for sport or for bed?",
+      groups: [
+        { name: "For sport", items: ["tracksuit", "trainers", "baseball cap"] },
+        { name: "For bed",   items: ["pyjamas", "slippers"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "التمييز بين الملبس وغيره",
+      level: "reasoning",
+      prompt: "Three of these are clothes. Which one isn't?",
+      options: ["hijab", "jumper", "coat", "backpack"],
+      answer: 3,
+      reason: "A backpack is something you carry, not something you wear."
+    }
+  ],
+
+  // الدرس ٢-٢: القصّة — The school show (Story)
+  "g3e-2-2": [
+    {
+      type: "mcq",
+      objective: "قصّة الوحدة: The school show — إعادة تدوير الملابس",
+      level: "knowledge",
+      prompt: "What is the school show about?",
+      options: ["wearing recycled clothes", "a maths competition", "a football match", "a cooking show"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "قصّة الوحدة: القيمة — Don't be wasteful",
+      level: "knowledge",
+      statement: "In the story, the friends decide to recycle old clothes.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "قصّة الوحدة: Let's recycle those trainers, Fatma.",
+      level: "knowledge",
+      prompt: "Complete the line from the story.",
+      text: "Let's recycle those {}, Fatma.",
+      answers: ["trainers"],
+      distractors: ["jeans", "shirts"]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب أحداث القصّة",
+      level: "application",
+      prompt: "Put the story events in order.",
+      steps: ["Are you ready for the school show?", "They're wearing hats and dresses.", "Oh no! Those jeans are too small!", "You're wearing pyjamas and slippers!", "Let's recycle those trainers."]
+    },
+    {
+      type: "exclude",
+      objective: "فهم أحداث القصّة",
+      level: "reasoning",
+      prompt: "Three of these happened in the story. Which one didn't?",
+      options: ["They had a school show.", "They recycled old clothes.", "They went swimming.", "Some clothes were too small."],
+      answer: 2,
+      reason: "The story is about a school show and recycling clothes, not swimming."
+    },
+    {
+      type: "mcq",
+      objective: "قيمة القصّة: Don't be wasteful",
+      level: "knowledge",
+      prompt: "What is the value of this story?",
+      options: ["Don't be wasteful", "Be brave", "Say sorry", "Share your toys"],
+      answer: 0
+    }
+  ],
+
+  // الدرس ٢-٣: المفردات — Personal possessions (Vocabulary and Grammar)
+  "g3e-2-3": [
+    {
+      type: "mcq",
+      objective: "مفردات المقتنيات الشخصية: glasses, keys, handbag, backpack, phone, computer",
+      level: "knowledge",
+      prompt: "Which of these do you wear on your face to see better?",
+      options: ["glasses", "keys", "handbag", "phone"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مفردات المقتنيات الشخصية: backpack",
+      level: "knowledge",
+      statement: "A backpack is used to carry things to school.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "أنشودة الوحدة: Our keys are grey. And our computer is, too.",
+      level: "knowledge",
+      prompt: "Complete the song.",
+      text: "Our keys are grey. And our {} is, too.",
+      answers: ["computer"],
+      distractors: ["phone", "backpack"]
+    },
+    {
+      type: "matching",
+      objective: "تركيب: Our/Your/Their + colour",
+      level: "application",
+      prompt: "Match each word to its sentence.",
+      pairs: [
+        { a: "Our",   b: "keys are grey." },
+        { a: "Your",  b: "backpacks are green." },
+        { a: "Their", b: "glasses are blue." }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف المقتنيات: إلكترونية أم لا",
+      level: "reasoning",
+      prompt: "Sort the things: electronic or not electronic?",
+      groups: [
+        { name: "Electronic",     items: ["phone", "computer"] },
+        { name: "Not electronic", items: ["glasses", "keys", "handbag"] }
+      ]
+    },
+    {
+      type: "memory",
+      objective: "أنشودة الوحدة: ربط كل مقتنًى بلونه",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "glasses",   b: "blue" },
+        { a: "keys",      b: "grey" },
+        { a: "backpacks", b: "green" }
+      ]
+    }
+  ],
+
+  // الدرس ٢-٤: المهارات — Skills
+  "g3e-2-4": [
+    {
+      type: "mcq",
+      objective: "تركيب: They're wearing hijabs. Their hijabs are red.",
+      level: "knowledge",
+      prompt: "Which sentence describes what someone is wearing?",
+      options: ["They're wearing hijabs.", "How much is this?", "When do you play?", "It's half past six."],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "تركيب: Their hijabs are red.",
+      level: "knowledge",
+      statement: "'Their hijabs are red' tells us the colour of the hijabs.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "تركيب: Their baseball caps are purple.",
+      level: "knowledge",
+      prompt: "Complete the description.",
+      text: "They're wearing baseball caps. {} baseball caps are purple.",
+      answers: ["Their"],
+      distractors: ["Our", "Your"]
+    },
+    {
+      type: "matching",
+      objective: "ربط الوصف بلونه",
+      level: "application",
+      prompt: "Match each sentence to what it adds.",
+      pairs: [
+        { a: "They're wearing hijabs.",        b: "Their hijabs are red." },
+        { a: "They're wearing baseball caps.", b: "Their baseball caps are purple." }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب بناء الوصف",
+      level: "reasoning",
+      prompt: "Put the description in order.",
+      steps: ["Look at them.", "They're wearing hijabs.", "Their hijabs are red."]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف: ملابس أم ألوان",
+      level: "application",
+      prompt: "Sort the words: clothes or colours?",
+      groups: [
+        { name: "Clothes", items: ["hijab", "baseball cap"] },
+        { name: "Colours", items: ["red", "purple"] }
+      ]
+    }
+  ],
+
+  // الدرس ٢-٥: الثقافة والمشروع — Special days in Oman (Eid Al-Fitr)
+  "g3e-2-5": [
+    {
+      type: "mcq",
+      objective: "الثقافة: عيد الفطر في عُمان",
+      level: "knowledge",
+      prompt: "When do people in Oman celebrate Eid Al-Fitr?",
+      options: ["after Ramadan", "in summer", "on their birthday", "at school"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "الثقافة: العيديّة والحلوى",
+      level: "knowledge",
+      statement: "Families give sweets and Eidiya to children at Eid Al-Fitr.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "الثقافة: مفردات عيد الفطر ومعانيها",
+      level: "knowledge",
+      prompt: "Match each word to its meaning.",
+      pairs: [
+        { a: "Eidiya",             b: "money or gifts for children" },
+        { a: "sweets",             b: "a treat to eat" },
+        { a: "traditional clothes", b: "special clothes for the day" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف مفردات العيد: طعامٌ أم ملبس",
+      level: "application",
+      prompt: "Sort the Eid Al-Fitr words: things you eat or things you wear?",
+      groups: [
+        { name: "You eat",  items: ["sweets"] },
+        { name: "You wear", items: ["traditional clothes"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "فهم عادات عيد الفطر",
+      level: "reasoning",
+      prompt: "Three of these happen at Eid Al-Fitr. Which one doesn't?",
+      options: ["Families give presents.", "People wear traditional clothes.", "People eat sweets.", "People go to school."],
+      answer: 3,
+      reason: "Eid Al-Fitr is a holiday; people don't go to school."
+    },
+    {
+      type: "mcq",
+      objective: "الثقافة: معنى العيديّة",
+      level: "knowledge",
+      prompt: "What is Eidiya?",
+      options: ["money or gifts given to children", "a kind of food", "a school uniform", "a game"],
+      answer: 0
+    }
+  ],
+
+  // الدرس ٢-٦: اللغة الوظيفية — Asking the price (English in action)
+  "g3e-2-6": [
+    {
+      type: "mcq",
+      objective: "لغة السؤال عن السعر: Excuse me.",
+      level: "knowledge",
+      prompt: "What do you say to start asking about a price politely?",
+      options: ["Excuse me.", "Goodbye.", "Well done!", "I'm sorry."],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "لغة السؤال عن السعر: How much is this?",
+      level: "knowledge",
+      statement: "'How much is this?' is a question about price.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "حوار المتجر: It's 5 rials.",
+      level: "knowledge",
+      prompt: "Complete the dialogue.",
+      text: "How much is this baseball cap? It's 5 {}.",
+      answers: ["rials"],
+      distractors: ["dollars", "pounds"]
+    },
+    {
+      type: "matching",
+      objective: "ربط جمل حوار المتجر بردودها",
+      level: "application",
+      prompt: "Match each line to its reply.",
+      pairs: [
+        { a: "Excuse me.",       b: "Yes, can I help you?" },
+        { a: "How much is this?", b: "It's 5 rials." },
+        { a: "Here you are.",    b: "Thank you." }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب حوار المتجر",
+      level: "reasoning",
+      prompt: "Put the shop dialogue in order.",
+      steps: ["Excuse me.", "Yes, can I help you?", "How much is this?", "It's 5 rials.", "Thank you."]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف الأسعار: رخيص أم غالٍ",
+      level: "reasoning",
+      prompt: "Sort the prices: cheap or expensive?",
+      groups: [
+        { name: "Cheap",      items: ["2 OMR", "5 rials"] },
+        { name: "Expensive",  items: ["9 OMR", "7 OMR"] }
+      ]
+    }
+  ],
+
+  // الدرس ٢-٧: الصوتيات — ear, ure (Phonics)
+  // ⚠️ نصّيٌّ بلا صوتٍ حقيقيّ — مزوّد n8n/داريجات غيرُ مدرَجٍ في قائمة موصّلات
+  // الجلسة إطلاقاً وقت التأليف (٢٠٢٦-٠٩-١٧)، لا معطّلاً يمكن تفعيله. يُستبدَل
+  // بأسئلة sound-blend حقيقية حين يعود المزوّد.
+  "g3e-2-7": [
+    {
+      type: "mcq",
+      objective: "صوتا ear/ure: beard, hear, vulture, picture",
+      level: "knowledge",
+      prompt: "Which word has the 'ure' sound?",
+      options: ["picture", "hear", "beard", "ears"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "صوت ear: beard, hear",
+      level: "knowledge",
+      statement: "'Beard' and 'hear' both have the 'ear' sound.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "صوت ure: mixture",
+      level: "knowledge",
+      prompt: "Complete the word.",
+      text: "mixt{}",
+      answers: ["ure"],
+      distractors: ["ear", "er"]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف الكلمات حسب صوتها: ear أم ure",
+      level: "application",
+      prompt: "Sort the words by their sound.",
+      groups: [
+        { name: "ear", items: ["beard", "hear", "ears", "year"] },
+        { name: "ure", items: ["vulture", "picture", "mixture"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "التمييز بين صوتَي ear وure",
+      level: "reasoning",
+      prompt: "Three of these have the 'ear' sound. Which one doesn't?",
+      options: ["beard", "hear", "ears", "picture"],
+      answer: 3,
+      reason: "'Picture' has the 'ure' sound, not 'ear'."
+    },
+    {
+      type: "matching",
+      objective: "كلماتٌ تشترك في الصوت",
+      level: "knowledge",
+      prompt: "Match pairs with the same sound.",
+      pairs: [
+        { a: "vulture", b: "picture" },
+        { a: "beard",   b: "year" },
+        { a: "hear",    b: "ears" }
+      ]
+    }
+  ],
+
+  // الدرس ٢-٨: المراجعة — Review
+  "g3e-2-8": [
+    {
+      type: "mcq",
+      objective: "مراجعة مفردات الملابس والمقتنيات",
+      level: "knowledge",
+      prompt: "Which word names something you wear on your feet?",
+      options: ["trainers", "backpack", "glasses", "keys"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مراجعة: they're = they are",
+      level: "knowledge",
+      statement: "'They're' is short for 'they are'.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "مراجعة: Their pyjamas are pink.",
+      level: "knowledge",
+      prompt: "Complete the description.",
+      text: "They're wearing pyjamas. {} pyjamas are pink.",
+      answers: ["Their"],
+      distractors: ["They're", "Your"]
+    },
+    {
+      type: "matching",
+      objective: "مراجعة: ربط الضمير بصيغة الملكية",
+      level: "application",
+      prompt: "Match each subject to its possessive word.",
+      pairs: [
+        { a: "They're", b: "Their" },
+        { a: "You're",  b: "Your" },
+        { a: "We're",   b: "Our" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "مراجعة تصنيف: ملابس أم أدوات",
+      level: "reasoning",
+      prompt: "Sort the words: clothes or accessories?",
+      groups: [
+        { name: "Clothes",     items: ["trainers", "jeans", "slippers"] },
+        { name: "Accessories", items: ["backpack", "glasses", "keys"] }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "مراجعة حوار المتجر",
+      level: "knowledge",
+      prompt: "Put the shop dialogue in order.",
+      steps: ["Excuse me.", "Yes, can I help you?", "How much is this?", "It's 5 rials."]
+    }
+  ],
+
+  // الدرس ٢-٩: الاستعداد لِ… — Get ready for... (Pre A1 Starters)
+  "g3e-2-9": [
+    {
+      type: "mcq",
+      objective: "نمط اختبار Pre A1 Starters: They're wearing...",
+      level: "knowledge",
+      prompt: "Which sentence uses 'They're' correctly?",
+      options: ["They're wearing hijabs.", "They's wearing hijabs.", "Their wearing hijabs.", "They wearing hijabs."],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "نمط اختبار Pre A1 Starters: I'm wearing...",
+      level: "knowledge",
+      statement: "'I'm wearing a baseball cap' means one person is speaking.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "نمط اختبار Pre A1 Starters: You're wearing jeans.",
+      level: "knowledge",
+      prompt: "Complete with 'You're'.",
+      text: "{} wearing jeans.",
+      answers: ["You're"],
+      distractors: ["Your", "You"]
+    },
+    {
+      type: "matching",
+      objective: "ربط الضمير بجملته",
+      level: "application",
+      prompt: "Match each subject to its sentence.",
+      pairs: [
+        { a: "We're",   b: "wearing glasses." },
+        { a: "You're",  b: "wearing a coat." },
+        { a: "They're", b: "wearing hijabs." }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف صيغ الضمير: شخصٌ واحد أم أكثر",
+      level: "reasoning",
+      prompt: "Sort the forms: one person or more than one?",
+      groups: [
+        { name: "One person",       items: ["I'm", "You're"] },
+        { name: "More than one",    items: ["We're", "They're"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "التمييز بين الملبس وغيره",
+      level: "reasoning",
+      prompt: "Three of these are clothes. Which one doesn't belong?",
+      options: ["jeans", "trainers", "hijab", "computer"],
+      answer: 3,
+      reason: "A computer isn't something you wear."
+    }
+  ],
+
+  // الدرس ٢-١٠: ركن المرح — Fun corner
+  "g3e-2-10": [
+    {
+      type: "mcq",
+      objective: "مراجعة شاملة عبر لعبة الملابس",
+      level: "knowledge",
+      prompt: "In the game, what do you say when someone is wearing a green shirt?",
+      options: ["You're wearing a green shirt.", "I'm wearing a green shirt.", "We're wearing a green shirt.", "They're wearing a green shirt."],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مراجعة مفردات الملابس: trainers",
+      level: "knowledge",
+      statement: "Trainers are worn on your feet.",
+      answer: true
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب الملابس من الرأس إلى القدم",
+      level: "knowledge",
+      prompt: "Put these clothes in order, from head to feet.",
+      steps: ["baseball cap", "glasses", "jacket", "jeans", "trainers"]
+    },
+    {
+      type: "matching",
+      objective: "ربط كل قطعة ملبسٍ بموضعها",
+      level: "application",
+      prompt: "Match each item to where you wear it.",
+      pairs: [
+        { a: "baseball cap", b: "on your head" },
+        { a: "glasses",      b: "on your eyes" },
+        { a: "trainers",     b: "on your feet" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف الملابس: أعلى الجسم أم أسفله",
+      level: "reasoning",
+      prompt: "Sort the clothes: top of the body or bottom of the body?",
+      groups: [
+        { name: "Top",    items: ["baseball cap", "glasses", "jacket"] },
+        { name: "Bottom", items: ["jeans", "trainers"] }
+      ]
+    },
+    {
+      type: "mcq",
+      objective: "تطبيق التركيب داخل لعبة اللوحة",
+      level: "knowledge",
+      prompt: "You spin the 'trainers' picture and they're red. What do you say?",
+      options: ["You're wearing red trainers.", "You're wearing red glasses.", "I'm wearing a red cap.", "They're wearing red jeans."],
+      answer: 0
+    }
   ]
 };
