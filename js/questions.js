@@ -42642,5 +42642,457 @@ window.QUESTIONS = {
         { a: "toes",  b: "ten" }
       ]
     }
+  ],
+
+  // الوحدة ٤: Meet my family — تعرّف على أسرتي
+  // ⚠️ صوتيّات هذه الوحدة (ee/er/ar/o_e) نصّيةٌ لا sound-blend — مزوّد داريجات/n8n
+  // منقطعٌ عن الجلسة وقت التأليف (٢٠٢٦-٠٩-١٧)؛ يُستبدَل لاحقاً بصوتٍ حقيقيٍّ حين يعود.
+  // الدرس ٤-١: Meet my family — مفردات الأسرة
+  "g2e-4-1": [
+    {
+      type: "mcq",
+      objective: "مفردات الأسرة: grandma, grandad, mum, dad, uncle, aunt, brother, sister, cousin",
+      level: "knowledge",
+      prompt: "My mum's mother is my…",
+      options: ["grandma", "aunt", "sister", "cousin"],
+      answer: 0
+    },
+    {
+      type: "matching",
+      objective: "مفردات الأسرة",
+      level: "knowledge",
+      prompt: "Match each family word to who it is.",
+      pairs: [
+        { a: "dad",     b: "My father" },
+        { a: "mum",     b: "My mother" },
+        { a: "brother", b: "A boy in my family" },
+        { a: "sister",  b: "A girl in my family" }
+      ]
+    },
+    {
+      type: "true-false",
+      objective: "صوتٌ مقترن: ee (Unit 4 Lesson 1)",
+      level: "knowledge",
+      statement: "'Tree' and 'bee' have the same ending sound.",
+      answer: true
+    },
+    {
+      type: "classify",
+      objective: "مفردات الأسرة",
+      level: "reasoning",
+      prompt: "Sort the family words.",
+      groups: [
+        { name: "Older generation",        items: ["grandma", "grandad"] },
+        { name: "Same generation as me",   items: ["brother", "sister"] }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "تركيب: Who's this? It's my uncle. He's got blue eyes.",
+      level: "application",
+      prompt: "Put the introduction in order.",
+      steps: ["Who's this?", "It's my uncle.", "He's got blue eyes.", "He's got brown hair."]
+    },
+    {
+      type: "memory",
+      objective: "مفردات الأسرة",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "dad",     b: "father" },
+        { a: "mum",     b: "mother" },
+        { a: "grandma", b: "grandmother" },
+        { a: "grandad", b: "grandfather" }
+      ]
+    }
+  ],
+
+  // الدرس ٤-٢: Helpers Team — قصة (Love your family)
+  "g2e-4-2": [
+    {
+      type: "mcq",
+      objective: "قصة الأسرة؛ القيمة: Love your family",
+      level: "knowledge",
+      prompt: "Look! He's got the ball. Who's that?",
+      options: ["Oh! It's my uncle!", "It's a car.", "Stand up.", "I'm seven."],
+      answer: 0
+    },
+    {
+      type: "classify",
+      objective: "صوتٌ مقترن: er (Unit 4 Lesson 2)",
+      level: "knowledge",
+      prompt: "Sort the words by their sound.",
+      groups: [
+        { name: "Has the 'er' sound", items: ["sister", "brother"] },
+        { name: "No 'er' sound",      items: ["cat", "dog"] }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "قصة الأسرة؛ القيمة: Love your family",
+      level: "reasoning",
+      prompt: "Put the story in order.",
+      steps: ["Look! He's got the ball.", "Who's that?", "Oh! It's my uncle!", "Hooray! Now we can play!"]
+    },
+    {
+      type: "matching",
+      objective: "مفردات الأسرة",
+      level: "application",
+      prompt: "Match each family word to who it is.",
+      pairs: [
+        { a: "uncle", b: "My dad's brother" },
+        { a: "aunt",  b: "My mum's sister" },
+        { a: "dad",   b: "My father" },
+        { a: "mum",   b: "My mother" }
+      ]
+    },
+    {
+      type: "fill-blank",
+      objective: "تركيب: Who's this?",
+      level: "knowledge",
+      prompt: "Complete the question.",
+      text: "Look! He's got the ball. Who's {}?",
+      answers: ["that"],
+      distractors: ["this", "is"]
+    },
+    {
+      type: "memory",
+      objective: "قصة الأسرة",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "Who's this?",         b: "It's my uncle." },
+        { a: "He's got blue eyes.", b: "Yes, that's my uncle." },
+        { a: "Hooray!",             b: "Now we can play!" },
+        { a: "Look!",               b: "He's got the ball." }
+      ]
+    }
+  ],
+
+  // الدرس ٤-٣: ملامح وجهي — الوجه والألوان
+  "g2e-4-3": [
+    {
+      type: "mcq",
+      objective: "مفردات الوجه: hair, mouth, nose, eyes, ears",
+      level: "knowledge",
+      prompt: "Which one is your nose?",
+      pics: true,
+      options: ["nose", "eyes", "ears", "mouth"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "ألوان الشعر/العينين: fair, brown, red, black",
+      level: "knowledge",
+      statement: "'Fair' is a hair colour.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "تركيب: He's got blue eyes./She's got brown hair.",
+      level: "knowledge",
+      prompt: "Complete the sentence.",
+      text: "He's got brown {}.",
+      answers: ["hair"],
+      distractors: ["eyes", "ears"]
+    },
+    {
+      type: "matching",
+      objective: "مفردات الوجه",
+      level: "application",
+      prompt: "Match each face part to what you do with it.",
+      pairs: [
+        { a: "eyes",  b: "You see with them." },
+        { a: "ears",  b: "You hear with them." },
+        { a: "nose",  b: "You smell with it." },
+        { a: "mouth", b: "You eat and talk with it." }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "صوتٌ مقترن: ar (Unit 4 Lesson 3)",
+      level: "reasoning",
+      prompt: "Sort the words by their sound.",
+      groups: [
+        { name: "Has the 'ar' sound", items: ["car", "star"] },
+        { name: "No 'ar' sound",      items: ["cat", "dog"] }
+      ]
+    },
+    {
+      type: "memory",
+      objective: "تركيب: He's got blue eyes./She's got brown hair.",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "blue",  b: "eyes" },
+        { a: "brown", b: "hair" },
+        { a: "fair",  b: "light hair" },
+        { a: "black", b: "dark hair" }
+      ]
+    }
+  ],
+
+  // الدرس ٤-٤: مهارات — تدريب استماع
+  "g2e-4-4": [
+    {
+      type: "mcq",
+      objective: "تركيب: He's got blue eyes./She's got brown hair.",
+      level: "knowledge",
+      prompt: "He's got blue ___.",
+      options: ["eyes", "nose", "hair", "ears"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "صوتٌ مقترن: o_e (Unit 4 Lesson 4)",
+      level: "knowledge",
+      statement: "'Nose' and 'rose' rhyme.",
+      answer: true
+    },
+    {
+      type: "classify",
+      objective: "صوتٌ مقترن: o_e",
+      level: "knowledge",
+      prompt: "Sort the words by their sound.",
+      groups: [
+        { name: "Has the 'o_e' sound", items: ["nose", "rose"] },
+        { name: "No 'o_e' sound",      items: ["cat", "dog"] }
+      ]
+    },
+    {
+      type: "matching",
+      objective: "تركيب: Who's this? He's got…",
+      level: "application",
+      prompt: "Match each question to the answer.",
+      pairs: [
+        { a: "Who's this?",              b: "It's my uncle." },
+        { a: "Has he got blue eyes?",    b: "Yes, he has." },
+        { a: "Has she got brown hair?",  b: "No, she hasn't." },
+        { a: "What's her name?",         b: "Her name's Asma." }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "تركيب: Who's this? He's got…",
+      level: "reasoning",
+      prompt: "Put the dialogue in order.",
+      steps: ["Who's this?", "It's my uncle.", "Has he got blue eyes?", "Yes, he has."]
+    },
+    {
+      type: "memory",
+      objective: "مفردات الأسرة والضمائر",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "grandma", b: "mum's mum or dad's mum" },
+        { a: "grandad", b: "mum's dad or dad's dad" },
+        { a: "uncle",   b: "dad's or mum's brother" },
+        { a: "aunt",    b: "dad's or mum's sister" }
+      ]
+    }
+  ],
+
+  // الدرس ٤-٥: مشروع — وصف صورة (عيد ميلاد الأخ)
+  "g2e-4-5": [
+    {
+      type: "sequence",
+      objective: "مشروع: وصف صورة",
+      level: "application",
+      prompt: "Put the project steps in order.",
+      steps: ["Draw your family celebrating a birthday.", "Write about the picture: This is my…", "Say: It's my birthday.", "Show your picture to the class."]
+    },
+    {
+      type: "mcq",
+      objective: "مشروع: عيد ميلاد الأخ",
+      level: "knowledge",
+      prompt: "It's my brother's birthday today. Happy ___!",
+      options: ["birthday", "name", "book", "car"],
+      answer: 0
+    },
+    {
+      type: "matching",
+      objective: "مراجعة مفردات الأسرة",
+      level: "knowledge",
+      prompt: "Match each family word to who it is.",
+      pairs: [
+        { a: "dad",     b: "My father" },
+        { a: "mum",     b: "My mother" },
+        { a: "grandma", b: "My grandmother" },
+        { a: "grandad", b: "My grandfather" }
+      ]
+    },
+    {
+      type: "true-false",
+      objective: "مشروع: عيد ميلاد الأخ",
+      level: "knowledge",
+      statement: "'Happy birthday!' is something nice to say on someone's birthday.",
+      answer: true
+    },
+    {
+      type: "classify",
+      objective: "مراجعة مفردات الأسرة",
+      level: "reasoning",
+      prompt: "Sort the family words.",
+      groups: [
+        { name: "Older generation",      items: ["grandma", "grandad"] },
+        { name: "Same generation as me", items: ["brother", "sister"] }
+      ]
+    },
+    {
+      type: "color",
+      objective: "مشروع: عيد ميلاد الأخ",
+      level: "knowledge",
+      prompt: "Colour the birthday cake! Colour the base, top, plate and candles.",
+      bg: "#fff0f5",
+      palette: [
+        { name: "Pink",   color: "#e6608f" },
+        { name: "Yellow", color: "#f0c418" },
+        { name: "Brown",  color: "#a5673f" },
+        { name: "Red",    color: "#c94a4a" }
+      ],
+      parts: [
+        { name: "plate",   color: "#a5673f" },
+        { name: "base",    color: "#e6608f" },
+        { name: "top",     color: "#f0c418" },
+        { name: "candles", color: "#c94a4a" }
+      ],
+      svg: `<svg viewBox="0 0 400 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A birthday cake">
+        <g class="cpart" data-name="plate" id="part-plate">
+          <ellipse cx="200" cy="330" rx="150" ry="22"/>
+        </g>
+        <g class="cpart" data-name="base" id="part-base">
+          <rect x="90" y="230" width="220" height="100" rx="14"/>
+        </g>
+        <g class="cpart" data-name="top" id="part-top">
+          <rect x="130" y="160" width="140" height="80" rx="12"/>
+        </g>
+        <g class="cpart" data-name="candles" id="part-candles">
+          <rect x="150" y="90" width="14" height="60" rx="4"/>
+          <rect x="193" y="80" width="14" height="70" rx="4"/>
+          <rect x="236" y="90" width="14" height="60" rx="4"/>
+        </g>
+        <path d="M157 90 Q157 75 163 90 Z" fill="#e6832b"/>
+        <path d="M200 80 Q200 65 206 80 Z" fill="#e6832b"/>
+        <path d="M243 90 Q243 75 249 90 Z" fill="#e6832b"/>
+      </svg>`
+    }
+  ],
+
+  // الدرس ٤-٦: تعريف الأسرة — Introducing family and friends
+  "g2e-4-6": [
+    {
+      type: "mcq",
+      objective: "تركيب: This is my sister. Her name's Asma.",
+      level: "knowledge",
+      prompt: "This is my sister. Her ___ is Asma.",
+      options: ["name", "book", "eyes", "age"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "تركيب: This is my sister. Her name's Asma.",
+      level: "knowledge",
+      statement: "'This is my sister' introduces a family member.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "تركيب: This is my sister. Her name's Asma.",
+      level: "application",
+      prompt: "Match the introduction to the reply.",
+      pairs: [
+        { a: "This is my sister.",   b: "Nice to meet you!" },
+        { a: "Her name's Asma.",     b: "Hello, Asma!" },
+        { a: "This is my friend.",   b: "Nice to meet you!" },
+        { a: "His name's Ali.",      b: "Hello, Ali!" }
+      ]
+    },
+    {
+      type: "fill-blank",
+      objective: "تركيب: This is my sister. Her name's Asma.",
+      level: "knowledge",
+      prompt: "Complete the sentence.",
+      text: "This is my sister. {} name's Asma.",
+      answers: ["Her"],
+      distractors: ["His", "My"]
+    },
+    {
+      type: "classify",
+      objective: "الضمائر: He/His، She/Her",
+      level: "reasoning",
+      prompt: "Sort the words.",
+      groups: [
+        { name: "For a girl or woman", items: ["She", "Her"] },
+        { name: "For a boy or man",    items: ["He", "His"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "تركيب: This is my sister. Her name's Asma.",
+      level: "knowledge",
+      prompt: "Which one is not introducing someone?",
+      options: ["This is my sister.", "Her name's Asma.", "Nice to meet you!", "Stand up."],
+      answer: 3
+    }
+  ],
+
+  // الدرس ٤-٧: المراجعة — استعدّ للاختبار
+  "g2e-4-7": [
+    {
+      type: "mcq",
+      objective: "مراجعة تراكمية لمفردات الوحدة ٤",
+      level: "knowledge",
+      prompt: "Who's this? It's my ___.",
+      options: ["uncle", "car", "book", "ball"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مراجعة تراكمية لتراكيب الوحدة ٤",
+      level: "knowledge",
+      statement: "'He's got brown hair' describes a person.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "مراجعة تراكمية لمفردات الوحدة ٤",
+      level: "knowledge",
+      prompt: "Match each family word to who it is.",
+      pairs: [
+        { a: "dad",   b: "My father" },
+        { a: "mum",   b: "My mother" },
+        { a: "uncle", b: "My dad's brother" },
+        { a: "aunt",  b: "My mum's sister" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "مراجعة تراكمية لأصوات الوحدة ٤ (ee, er, ar, o_e)",
+      level: "reasoning",
+      prompt: "Sort the words by their sound.",
+      groups: [
+        { name: "'ee'/'er' sound", items: ["tree", "sister"] },
+        { name: "'ar'/'o_e' sound", items: ["car", "nose"] }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "مراجعة تراكمية — Introducing family and friends",
+      level: "application",
+      prompt: "Put the introduction in order.",
+      steps: ["This is my sister.", "Her name's Asma.", "Nice to meet you!", "Hello, Asma!"]
+    },
+    {
+      type: "memory",
+      objective: "مراجعة تراكمية لمفردات الوحدة ٤",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "dad",     b: "father" },
+        { a: "mum",     b: "mother" },
+        { a: "grandma", b: "grandmother" },
+        { a: "grandad", b: "grandfather" }
+      ]
+    }
   ]
 };

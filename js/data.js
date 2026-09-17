@@ -144,13 +144,13 @@ window.DATA_FALLBACK = {
         { title:"Review", file:"g2e-3-7", open:true }
       ]},
       { unit:"Meet my family", lessons:[
-        { title:"Meet my family (ee)", file:"g2e-4-1", open:false },
-        { title:"Helpers Team (er)", file:"g2e-4-2", open:false },
-        { title:"My face (ar)", file:"g2e-4-3", open:false },
-        { title:"Skills (o_e)", file:"g2e-4-4", open:false },
-        { title:"Project: A description of a picture", file:"g2e-4-5", open:false },
-        { title:"Introducing family and friends", file:"g2e-4-6", open:false },
-        { title:"Review", file:"g2e-4-7", open:false }
+        { title:"Meet my family (ee)", file:"g2e-4-1", open:true },
+        { title:"Helpers Team (er)", file:"g2e-4-2", open:true },
+        { title:"My face (ar)", file:"g2e-4-3", open:true },
+        { title:"Skills (o_e)", file:"g2e-4-4", open:true },
+        { title:"Project: A description of a picture", file:"g2e-4-5", open:true },
+        { title:"Introducing family and friends", file:"g2e-4-6", open:true },
+        { title:"Review", file:"g2e-4-7", open:true }
       ]},
       { unit:"Atomic's Learning Club 2", lessons:[
         { title:"Language booster 2", file:"g2e-lc2-1", open:false },
