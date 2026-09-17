@@ -38,8 +38,12 @@
   "ولم تُرسَمِ المهنةُ بأداتِها وحدَها لأنّ `g3e-4-8#٤` يوصّلُ «chef ↔ a pan»",
   "و«doctor ↔ a stethoscope» — فرسمُ المهنةِ أداةً يُسقِطُ السؤالَ نفسَه."
  ],
- "batchId": "2026-09-17-en-g34-vocab",
+ "batchId": "2026-09-17-en-g34-vocab-fix",
  "items": [
+  { "name": "cloth-hijab", "subject": "head-and-shoulders bust of a woman wearing an Islamic hijab headscarf, the sky blue scarf draped over the whole head and over both shoulders and closed under the chin, framing a completely plain blank oval face area with nothing drawn on it at all" },
+  { "name": "place-restaurant", "subject": "small restaurant building seen from the front, with a red and white striped awning over a wide glass front window, a door in the middle, and one small round table with two chairs standing outside on the pavement" }
+ ],
+ "_previousItems": [
   { "name": "job-doctor", "subject": "full-body cartoon figure of a doctor standing, wearing a long white medical coat over a blue shirt, with a stethoscope hanging around the neck and a small clipboard held in one hand" },
   { "name": "job-nurse", "subject": "full-body cartoon figure of a nurse standing, wearing a light blue medical uniform with a small red cross badge on the chest and a white nurse cap, carrying a small white first-aid box" },
   { "name": "job-teacher", "subject": "full-body cartoon figure of a school teacher standing beside a small green chalkboard on a wooden stand, wearing a neat shirt and trousers, holding an open book in one hand and a thin pointer stick in the other" },
