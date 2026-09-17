@@ -22,18 +22,27 @@
   "⚠️ **وحدُّ المعدَّلِ خمسةُ طلباتٍ في الدقيقة** (‏`x-ratelimit-limit: 5`)، فالعقدةُ",
   "تُرسِلُ عنصراً واحداً كلَّ ١٥ ثانية."
  ],
- "batchId": "2026-09-17-g2en-unit4-sounds",
+ "batchId": "2026-09-17-g34en-phonics",
  "voice": "حطاب",
  "items": [
-  { "name": "phon-tr",    "text": "tr" },
-  { "name": "phon-ee",    "text": "ee" },
-  { "name": "blend-tree", "text": "tree" },
-  { "name": "phon-er",    "text": "er" },
-  { "name": "blend-her",  "text": "her" },
-  { "name": "phon-ar",    "text": "ar" },
-  { "name": "blend-car",  "text": "car" },
-  { "name": "phon-n",     "text": "n" },
-  { "name": "phon-ose",   "text": "ose" },
-  { "name": "blend-nose", "text": "nose" }
+  { "name": "phon-wh",      "text": "wh" },
+  { "name": "phon-ale",     "text": "ale" },
+  { "name": "blend-whale",  "text": "whale" },
+  { "name": "phon-ear",     "text": "ear" },
+  { "name": "blend-hear",   "text": "hear" },
+  { "name": "phon-ea",      "text": "ea" },
+  { "name": "phon-ch",      "text": "ch" },
+  { "name": "blend-beach",  "text": "beach" },
+  { "name": "phon-fl",      "text": "fl" },
+  { "name": "phon-y",       "text": "y" },
+  { "name": "blend-fly",    "text": "fly" },
+  { "name": "phon-sn",      "text": "sn" },
+  { "name": "phon-ow",      "text": "ow" },
+  { "name": "blend-snow",   "text": "snow" },
+  { "name": "phon-sl",      "text": "sl" },
+  { "name": "phon-eigh",    "text": "eigh" },
+  { "name": "blend-sleigh", "text": "sleigh" },
+  { "name": "phon-ew",      "text": "ew" },
+  { "name": "blend-chew",   "text": "chew" }
  ]
 }
