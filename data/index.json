@@ -1168,16 +1168,16 @@
       {
         "unit": "Hobbies",
         "lessons": [
-          { "title": "Hobbies (Vocabulary)", "file": "g3e-3-1", "open": false },
-          { "title": "Story (Helpers Team)", "file": "g3e-3-2", "open": false },
-          { "title": "Days of the week (Grammar)", "file": "g3e-3-3", "open": false },
-          { "title": "Skills", "file": "g3e-3-4", "open": false },
-          { "title": "Traditional sports in Oman (Culture & Project)", "file": "g3e-3-5", "open": false },
-          { "title": "Saying how often you do things", "file": "g3e-3-6", "open": false },
-          { "title": "i_e, a_e, o_e, u_e (Phonics)", "file": "g3e-3-7", "open": false },
-          { "title": "Review", "file": "g3e-3-8", "open": false },
-          { "title": "Get ready for… (Pre A1 Starters)", "file": "g3e-3-9", "open": false },
-          { "title": "Fun corner", "file": "g3e-3-10", "open": false }
+          { "title": "Hobbies (Vocabulary)", "file": "g3e-3-1", "open": true },
+          { "title": "Story (Helpers Team)", "file": "g3e-3-2", "open": true },
+          { "title": "Days of the week (Grammar)", "file": "g3e-3-3", "open": true },
+          { "title": "Skills", "file": "g3e-3-4", "open": true },
+          { "title": "Traditional sports in Oman (Culture & Project)", "file": "g3e-3-5", "open": true },
+          { "title": "Saying how often you do things", "file": "g3e-3-6", "open": true },
+          { "title": "i_e, a_e, o_e, u_e (Phonics)", "file": "g3e-3-7", "open": true },
+          { "title": "Review", "file": "g3e-3-8", "open": true },
+          { "title": "Get ready for… (Pre A1 Starters)", "file": "g3e-3-9", "open": true },
+          { "title": "Fun corner", "file": "g3e-3-10", "open": true }
         ]
       },
       {

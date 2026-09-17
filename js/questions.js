@@ -44655,5 +44655,573 @@ window.QUESTIONS = {
         { name: "Metres",      items: ["a table", "a door"] }
       ]
     }
+  ],
+
+  // الوحدة ٣ — Hobbies (Activities)
+
+  // الدرس ٣-١: المفردات — Hobbies (Vocabulary)
+  "g3e-3-1": [
+    {
+      type: "mcq",
+      objective: "مفردات الهوايات: watch TV, listen to music, read books, play video games, ride a bike, play tennis, play basketball, roller-skate, skateboard, do karate",
+      level: "knowledge",
+      prompt: "Which activity uses a racket?",
+      options: ["play tennis", "read books", "watch TV", "do karate"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مفردات الهوايات: roller-skate",
+      level: "knowledge",
+      statement: "'Roller-skate' is something you do with wheels on your shoes.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "أنشودة الوحدة: It's time for fun today. Let's play, hip hip hooray!",
+      level: "knowledge",
+      prompt: "Complete the chant.",
+      text: "It's time for fun today. Let's {}, hip hip hooray!",
+      answers: ["play"],
+      distractors: ["work", "sleep"]
+    },
+    {
+      type: "matching",
+      objective: "ربط كل هواية بما تحتاجه",
+      level: "application",
+      prompt: "Match each activity to what you need for it.",
+      pairs: [
+        { a: "play tennis",      b: "a racket" },
+        { a: "ride a bike",      b: "a bike" },
+        { a: "play video games", b: "a game controller" },
+        { a: "read books",       b: "a book" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف الهوايات: هادئة أم نشطة",
+      level: "reasoning",
+      prompt: "Sort the activities: quiet or active?",
+      groups: [
+        { name: "Quiet",  items: ["watch TV", "listen to music", "read books"] },
+        { name: "Active", items: ["play tennis", "ride a bike", "do karate"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "التمييز بين الرياضة وغيرها",
+      level: "reasoning",
+      prompt: "Three of these are sports. Which one isn't?",
+      options: ["play tennis", "play basketball", "do karate", "read books"],
+      answer: 3,
+      reason: "Reading books isn't a sport."
+    }
+  ],
+
+  // الدرس ٣-٢: القصّة — Where's Fatma? (Story)
+  "g3e-3-2": [
+    {
+      type: "mcq",
+      objective: "قصّة الوحدة: Where's Fatma? — تنس الساعة ٩",
+      level: "knowledge",
+      prompt: "In the story, what does Fatma have at 9 o'clock?",
+      options: ["tennis lessons", "a basketball game", "dinner", "a book"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "قصّة الوحدة: تتزحلق على اللوح الساعة ١٠",
+      level: "knowledge",
+      statement: "In the story, Fatma skateboards at 10 o'clock.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "قصّة الوحدة: Where's Fatma?",
+      level: "knowledge",
+      prompt: "Complete the line from the story.",
+      text: "Where's {}?",
+      answers: ["Fatma"],
+      distractors: ["Polly", "Atomic"]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب أحداث القصّة",
+      level: "application",
+      prompt: "Put the story events in order.",
+      steps: ["She plays tennis at 9 o'clock.", "She skateboards at 10 o'clock.", "She doesn't watch TV at 11 o'clock.", "Where is she?"]
+    },
+    {
+      type: "exclude",
+      objective: "فهم أحداث القصّة",
+      level: "reasoning",
+      prompt: "Three of these happened in the story. Which one didn't?",
+      options: ["Fatma played tennis.", "Fatma skateboarded.", "Fatma went swimming.", "Fatma didn't watch TV."],
+      answer: 2,
+      reason: "Swimming isn't mentioned in the story."
+    },
+    {
+      type: "mcq",
+      objective: "قصّة الوحدة: مواعيد أنشطة فاطمة",
+      level: "knowledge",
+      prompt: "At what time does Fatma play tennis?",
+      options: ["9 o'clock", "10 o'clock", "11 o'clock", "12 o'clock"],
+      answer: 0
+    }
+  ],
+
+  // الدرس ٣-٣: أيام الأسبوع — Days of the week (Grammar)
+  "g3e-3-3": [
+    {
+      type: "mcq",
+      objective: "أيام الأسبوع: Sunday..Saturday",
+      level: "knowledge",
+      prompt: "Which day comes right after Tuesday?",
+      options: ["Wednesday", "Monday", "Thursday", "Sunday"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "أيام الأسبوع: the weekend = Friday, Saturday",
+      level: "knowledge",
+      statement: "Friday and Saturday are the weekend in this book.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "أنشودة: Does he go to school on Wednesdays?",
+      level: "knowledge",
+      prompt: "Complete the song.",
+      text: "Does he go to school on Sundays? On Mondays? On Tuesdays? Does he go to school on {}?",
+      answers: ["Wednesdays"],
+      distractors: ["Saturdays", "Fridays"]
+    },
+    {
+      type: "matching",
+      objective: "تركيب: Does he/she...? Yes, he does./No, she doesn't.",
+      level: "application",
+      prompt: "Match each question to its short answer.",
+      pairs: [
+        { a: "Does he watch TV on Saturdays?",   b: "Yes, he does." },
+        { a: "Does she roller-skate on Sundays?", b: "No, she doesn't." }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب أيام الأسبوع",
+      level: "reasoning",
+      prompt: "Put the days of the week in order.",
+      steps: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف الأيام: أيام مدرسة أم عطلة",
+      level: "reasoning",
+      prompt: "Sort the days: school days or the weekend?",
+      groups: [
+        { name: "School days",  items: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"] },
+        { name: "The weekend",  items: ["Friday", "Saturday"] }
+      ]
+    }
+  ],
+
+  // الدرس ٣-٤: المهارات — Skills
+  "g3e-3-4": [
+    {
+      type: "mcq",
+      objective: "التمييز بين كلمة اليوم وكلمة النشاط",
+      level: "knowledge",
+      prompt: "Which word tells us about a day?",
+      options: ["Saturday", "tennis", "racket", "music"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "تركيب: Does he play video games on Tuesdays?",
+      level: "knowledge",
+      statement: "'Does he play video games on Tuesdays?' is a Yes/No question.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "تركيب: Does she skateboard...? Yes, she does.",
+      level: "knowledge",
+      prompt: "Complete the answer.",
+      text: "Does she skateboard on Wednesdays? {}, she does.",
+      answers: ["Yes"],
+      distractors: ["No", "Maybe"]
+    },
+    {
+      type: "matching",
+      objective: "ربط سؤال Does بجوابه",
+      level: "application",
+      prompt: "Match each question to its answer.",
+      pairs: [
+        { a: "Does he roller-skate on Wednesdays?", b: "No, he doesn't. He roller-skates at the weekend." },
+        { a: "Does she play video games on Mondays?", b: "Yes, she does." }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب أيام الأسبوع",
+      level: "reasoning",
+      prompt: "Put the days in order, starting from Sunday.",
+      steps: ["Sunday", "Tuesday", "Thursday", "Saturday"]
+    },
+    {
+      type: "memory",
+      objective: "ربط كل هواية بأداتها",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "tennis",       b: "a racket" },
+        { a: "video games",  b: "a controller" },
+        { a: "basketball",   b: "a hoop" }
+      ]
+    }
+  ],
+
+  // الدرس ٣-٥: الثقافة والمشروع — Traditional sports in Oman
+  "g3e-3-5": [
+    {
+      type: "mcq",
+      objective: "الثقافة: سباق الهوير (دهو) في عُمان",
+      level: "knowledge",
+      prompt: "What is dhow racing?",
+      options: ["a race with traditional sailing boats", "a race with camels", "a race with bikes", "a race with cars"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "الثقافة: سرعة الإبل في سباق الهجن",
+      level: "knowledge",
+      statement: "Camels in camel racing can run at about 64 kilometres an hour.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "ربط الرياضة بأداتها",
+      level: "knowledge",
+      prompt: "Match each sport to what it uses.",
+      pairs: [
+        { a: "camel racing", b: "camels" },
+        { a: "dhow racing",  b: "traditional sailing boats" },
+        { a: "tennis",       b: "a racket" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف الرياضات: على اليابسة أم على الماء",
+      level: "application",
+      prompt: "Sort the sports: on land or on water?",
+      groups: [
+        { name: "On land",  items: ["camel racing", "tennis"] },
+        { name: "On water", items: ["dhow racing"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "فهم نصّ سباق الهجن",
+      level: "reasoning",
+      prompt: "Three of these describe camel racing. Which one doesn't?",
+      options: ["Camels run fast.", "People race camels.", "It happens on water.", "It's a traditional sport."],
+      answer: 2,
+      reason: "Camel racing happens on land in the desert, not on water."
+    },
+    {
+      type: "mcq",
+      objective: "الثقافة: سرعة الإبل في سباق الهجن",
+      level: "knowledge",
+      prompt: "How fast can racing camels run?",
+      options: ["about 64 kilometres an hour", "about 6 kilometres an hour", "about 640 kilometres an hour", "about 16 kilometres an hour"],
+      answer: 0
+    }
+  ],
+
+  // الدرس ٣-٦: اللغة الوظيفية — Saying how often you do things
+  "g3e-3-6": [
+    {
+      type: "mcq",
+      objective: "ظروف التكرار: always, often, never",
+      level: "knowledge",
+      prompt: "Which word means 'every time'?",
+      options: ["always", "often", "never", "sometimes"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "ظرف التكرار: never",
+      level: "knowledge",
+      statement: "'Never' means zero times.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "حوار: I always play tennis. I often watch TV.",
+      level: "knowledge",
+      prompt: "Complete the dialogue.",
+      text: "I always play tennis on Saturdays. I {} watch TV.",
+      answers: ["often"],
+      distractors: ["never", "always"]
+    },
+    {
+      type: "matching",
+      objective: "ربط ظرف التكرار بمعناه",
+      level: "application",
+      prompt: "Match each frequency word to what it means.",
+      pairs: [
+        { a: "always", b: "every day" },
+        { a: "often",  b: "most days" },
+        { a: "never",  b: "no days" }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب ظروف التكرار من الأكثر إلى الأقلّ",
+      level: "reasoning",
+      prompt: "Put the words in order, from most often to least often.",
+      steps: ["always", "often", "never"]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف الكلمات: ظرف تكرار أم اسم يوم",
+      level: "reasoning",
+      prompt: "Sort the words: frequency words or day words?",
+      groups: [
+        { name: "Frequency words", items: ["always", "often", "never"] },
+        { name: "Day words",       items: ["Saturday", "Sunday"] }
+      ]
+    }
+  ],
+
+  // الدرس ٣-٧: الصوتيات — i-e, a-e, o-e, u-e (Phonics)
+  // ⚠️ نصّيٌّ بلا صوتٍ حقيقيّ — مزوّد n8n/داريجات غيرُ مدرَجٍ في قائمة موصّلات
+  // الجلسة إطلاقاً وقت التأليف (٢٠٢٦-٠٩-١٧). يُستبدَل بـsound-blend حقيقي حين يعود.
+  "g3e-3-7": [
+    {
+      type: "mcq",
+      objective: "أصوات i-e/a-e/o-e/u-e: bike, cake, stone, cube",
+      level: "knowledge",
+      prompt: "Which word has the 'o-e' sound?",
+      options: ["stone", "bike", "cake", "cube"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "صوت i-e: bike",
+      level: "knowledge",
+      statement: "'Bike' has the 'i-e' sound.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "لعبة اللسان: The boy has got a cube, a bike, a cake and a stone.",
+      level: "knowledge",
+      prompt: "Complete the tongue twister.",
+      text: "The boy has got a cube, a bike, a cake and a {}.",
+      answers: ["stone"],
+      distractors: ["tube", "kite"]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف الكلمات حسب صوتها",
+      level: "application",
+      prompt: "Sort the words by their sound.",
+      groups: [
+        { name: "i-e", items: ["bike"] },
+        { name: "a-e", items: ["cake"] },
+        { name: "o-e", items: ["stone"] },
+        { name: "u-e", items: ["cube", "tube"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "التمييز بين صوت u-e وغيره",
+      level: "reasoning",
+      prompt: "Three of these have the 'u-e' sound. Which one doesn't?",
+      options: ["cube", "tube", "flute", "stone"],
+      answer: 3,
+      reason: "'Stone' has the 'o-e' sound, not 'u-e'."
+    },
+    {
+      type: "matching",
+      objective: "ربط الكلمة بصوتها",
+      level: "knowledge",
+      prompt: "Match each word to its sound.",
+      pairs: [
+        { a: "bike",  b: "i-e" },
+        { a: "cake",  b: "a-e" },
+        { a: "stone", b: "o-e" },
+        { a: "cube",  b: "u-e" }
+      ]
+    }
+  ],
+
+  // الدرس ٣-٨: المراجعة — Review
+  "g3e-3-8": [
+    {
+      type: "mcq",
+      objective: "مراجعة أيام الأسبوع",
+      level: "knowledge",
+      prompt: "Which of these is a day of the week?",
+      options: ["Thursday", "tennis", "music", "always"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مراجعة تركيب Does she...؟",
+      level: "knowledge",
+      statement: "'Does she play basketball?' is asking about one person (she).",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "مراجعة: Yes, he does.",
+      level: "knowledge",
+      prompt: "Complete the answer.",
+      text: "Does he play tennis on Saturdays? {}, he does.",
+      answers: ["Yes"],
+      distractors: ["No", "Not"]
+    },
+    {
+      type: "matching",
+      objective: "مراجعة: ربط سؤال Does بجوابه",
+      level: "application",
+      prompt: "Match each question to its short answer.",
+      pairs: [
+        { a: "Does she skateboard on Sundays?", b: "Yes, she does." },
+        { a: "Does he read books on Thursdays?", b: "Yes, he does." }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "مراجعة تصنيف: نشاطاتٌ أم أيّام",
+      level: "reasoning",
+      prompt: "Sort the words: activities or days?",
+      groups: [
+        { name: "Activities", items: ["karate", "tennis", "video games"] },
+        { name: "Days",       items: ["Sunday", "Wednesday", "Saturday"] }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "مراجعة ترتيب أيام الأسبوع",
+      level: "knowledge",
+      prompt: "Put the days in order, starting from Sunday.",
+      steps: ["Sunday", "Monday", "Tuesday"]
+    }
+  ],
+
+  // الدرس ٣-٩: الاستعداد لِ… — Get ready for... (Pre A1 Starters)
+  "g3e-3-9": [
+    {
+      type: "mcq",
+      objective: "نمط اختبار Pre A1 Starters: جدولٌ أسبوعيٌّ للأنشطة",
+      level: "knowledge",
+      prompt: "In the schedule, what does the boy do on Wednesdays?",
+      options: ["ride a bike", "play tennis", "read books", "do karate"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "نمط اختبار Pre A1 Starters: جدولٌ أسبوعيّ",
+      level: "knowledge",
+      statement: "In the schedule, the boy does karate on Thursdays.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "نمط اختبار Pre A1 Starters: What does he do on Sundays?",
+      level: "knowledge",
+      prompt: "Complete the answer using the schedule.",
+      text: "What does he do on Sundays? He plays {}.",
+      answers: ["tennis"],
+      distractors: ["basketball", "football"]
+    },
+    {
+      type: "matching",
+      objective: "ربط كل يومٍ بنشاط الجدول",
+      level: "application",
+      prompt: "Match each day to the activity in the schedule.",
+      pairs: [
+        { a: "Sunday",    b: "tennis" },
+        { a: "Monday",    b: "video games" },
+        { a: "Wednesday", b: "a bike" },
+        { a: "Thursday",  b: "karate" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف الأيام حسب الجدول: يقرأ فيها كتباً أم لا",
+      level: "reasoning",
+      prompt: "Sort the days: he reads books, or he doesn't?",
+      groups: [
+        { name: "He reads books",     items: ["Friday", "Saturday"] },
+        { name: "He doesn't read books", items: ["Sunday", "Monday"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "فهم الجدول الأسبوعيّ",
+      level: "reasoning",
+      prompt: "Three of these are in the schedule. Which one isn't?",
+      options: ["tennis", "video games", "swimming", "karate"],
+      answer: 2,
+      reason: "Swimming isn't in the weekly schedule."
+    }
+  ],
+
+  // الدرس ٣-١٠: ركن المرح — Fun corner
+  "g3e-3-10": [
+    {
+      type: "mcq",
+      objective: "تركيب سؤال Does",
+      level: "knowledge",
+      prompt: "What do you ask to find out if someone does an activity on a day?",
+      options: ["Does he/she + activity + on + day?", "What's your name?", "How much is this?", "When is your birthday?"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "الإجابة القصيرة: No, he doesn't.",
+      level: "knowledge",
+      statement: "'No, he doesn't' is a short answer to a Does question.",
+      answer: true
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب كلمات سؤال Does",
+      level: "knowledge",
+      prompt: "Put the question in the correct word order.",
+      steps: ["Does", "he", "play", "tennis", "on", "Mondays?"]
+    },
+    {
+      type: "matching",
+      objective: "ربط سؤال Does بجوابه القصير",
+      level: "application",
+      prompt: "Match each question to its short answer.",
+      pairs: [
+        { a: "Does she play basketball on Wednesdays?", b: "Yes, she does." },
+        { a: "Does he ride a bike on Sundays?",          b: "No, he doesn't." }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف الإجابات: بنعم أم بلا",
+      level: "reasoning",
+      prompt: "Sort the answers: Yes answers or No answers?",
+      groups: [
+        { name: "Yes", items: ["Yes, he does.", "Yes, she does."] },
+        { name: "No",  items: ["No, he doesn't.", "No, she doesn't."] }
+      ]
+    },
+    {
+      type: "mcq",
+      objective: "الإجابة القصيرة الصحيحة بحسب الضمير",
+      level: "knowledge",
+      prompt: "Which is the correct short answer for a question about 'he'?",
+      options: ["Yes, he does.", "Yes, she does.", "Yes, I does.", "Yes, they does."],
+      answer: 0
+    }
   ]
 };
