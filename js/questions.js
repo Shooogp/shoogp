@@ -41311,7 +41311,6 @@ window.QUESTIONS = {
       objective: "مفردات: kite, bike, slide, scooter, ball, swing",
       level: "knowledge",
       prompt: "Which one is a bike?",
-      pics: true,
       options: ["bike", "ball", "kite", "scooter"],
       answer: 0
     },
@@ -41343,7 +41342,6 @@ window.QUESTIONS = {
       objective: "مفردات الألعاب الخارجية",
       level: "reasoning",
       prompt: "Sort the toys.",
-      pics: true,
       groups: [
         { name: "Toys with wheels",    items: ["bike", "scooter"] },
         { name: "Toys without wheels", items: ["kite", "swing"] }
@@ -41620,7 +41618,6 @@ window.QUESTIONS = {
       objective: "مفردات: monster, helicopter, robot, computer, book",
       level: "knowledge",
       prompt: "Which one is a computer?",
-      pics: true,
       options: ["computer", "book", "robot", "monster"],
       answer: 0
     },
