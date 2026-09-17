@@ -43392,5 +43392,583 @@ window.QUESTIONS = {
         { name: "15 and more",  items: ["fifteen", "seventeen", "twenty"] }
       ]
     }
+  ],
+
+  // الوحدة ١ — It's a happy day! (Daily routines)
+
+  // الدرس ١-١: المفردات — It's a happy day! (Vocabulary)
+  "g3e-1-1": [
+    {
+      type: "mcq",
+      objective: "مفردات الروتين اليومي: get up, have breakfast, go to school...",
+      level: "knowledge",
+      prompt: "What do you do first every morning?",
+      options: ["get up", "have dinner", "go to bed", "have art lessons"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مفردات الروتين اليومي: have art lessons",
+      level: "knowledge",
+      statement: "'Have art lessons' means you paint or draw at school.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "أنشودة الوحدة: It's a happy, happy day! I go to school today.",
+      level: "knowledge",
+      prompt: "Complete the chant.",
+      text: "It's a happy day! I go to {} today.",
+      answers: ["school"],
+      distractors: ["bed", "home"]
+    },
+    {
+      type: "matching",
+      objective: "ربط الروتين اليومي بوقته المعتاد",
+      level: "application",
+      prompt: "Match each routine to its usual time.",
+      pairs: [
+        { a: "get up",      b: "morning" },
+        { a: "have lunch",  b: "afternoon" },
+        { a: "have dinner", b: "evening" },
+        { a: "go to bed",   b: "night" }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب الروتين اليومي منطقياً",
+      level: "reasoning",
+      prompt: "Put the school day in order.",
+      steps: ["get up", "have breakfast", "go to school", "have lunch", "have dinner", "go to bed"]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف الروتين اليومي: في المنزل أم في المدرسة",
+      level: "reasoning",
+      prompt: "Sort the routines: at home or at school?",
+      groups: [
+        { name: "At home",   items: ["get up", "have breakfast", "have dinner", "go to bed"] },
+        { name: "At school", items: ["go to school", "have art lessons", "have lunch"] }
+      ]
+    }
+  ],
+
+  // الدرس ١-٢: القصّة — Atomic is colourful! (Story)
+  "g3e-1-2": [
+    {
+      type: "mcq",
+      objective: "قصّة الوحدة: Atomic is colourful! — درس الفنّ اليوم",
+      level: "knowledge",
+      prompt: "What lesson do the friends have today?",
+      options: ["an art lesson", "a maths lesson", "a music lesson", "a sports lesson"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "قصّة الوحدة: We have tennis lessons in the morning.",
+      level: "knowledge",
+      statement: "In the story, the friends have tennis lessons in the morning.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "قصّة الوحدة: Let's paint flowers today!",
+      level: "knowledge",
+      prompt: "Complete the line from the story.",
+      text: "Let's paint {} today!",
+      answers: ["flowers"],
+      distractors: ["Atomic", "pictures"]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب أحداث القصّة",
+      level: "application",
+      prompt: "Put the story events in order.",
+      steps: ["We have an art lesson today.", "They play tennis in the morning.", "Let's paint flowers today!", "Oh no, the flowers!", "Let's paint Atomic."]
+    },
+    {
+      type: "exclude",
+      objective: "فهم أحداث القصّة",
+      level: "reasoning",
+      prompt: "Three of these happened in the story. Which one didn't?",
+      options: ["They painted flowers.", "They had an art lesson.", "They played football.", "They painted Atomic."],
+      answer: 2,
+      reason: "The story is about an art lesson and painting, not about playing football."
+    },
+    {
+      type: "memory",
+      objective: "مفردات القصّة: paintbrushes, flowers, a mess, tidy up",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "paintbrushes", b: "for painting" },
+        { a: "flowers",      b: "a plant" },
+        { a: "a mess",       b: "not tidy" },
+        { a: "tidy up",      b: "make it clean" }
+      ]
+    }
+  ],
+
+  // الدرس ١-٣: أوقات اليوم — Times of the day (Grammar)
+  "g3e-1-3": [
+    {
+      type: "mcq",
+      objective: "مفردات أوقات اليوم: morning, afternoon, evening, night",
+      level: "knowledge",
+      prompt: "Which time comes right after 'afternoon'?",
+      options: ["evening", "morning", "night", "midday"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "تركيب: We have dinner in the evening.",
+      level: "knowledge",
+      statement: "We have dinner in the morning.",
+      answer: false
+    },
+    {
+      type: "fill-blank",
+      objective: "تركيب: When do you have lunch? We have lunch in the afternoon.",
+      level: "knowledge",
+      prompt: "Complete the answer.",
+      text: "When do you have lunch? We have lunch in the {}.",
+      answers: ["afternoon"],
+      distractors: ["morning", "night"]
+    },
+    {
+      type: "matching",
+      objective: "ربط الروتين اليومي بوقته",
+      level: "application",
+      prompt: "Match each routine to its time.",
+      pairs: [
+        { a: "have breakfast", b: "morning" },
+        { a: "have lunch",     b: "afternoon" },
+        { a: "have dinner",    b: "evening" },
+        { a: "go to bed",      b: "night" }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب أوقات اليوم",
+      level: "reasoning",
+      prompt: "Put the times of day in order.",
+      steps: ["morning", "afternoon", "evening", "night"]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف أوقات اليوم: نهاراً أم ليلاً",
+      level: "reasoning",
+      prompt: "Sort the times: daytime or night-time?",
+      groups: [
+        { name: "Daytime",    items: ["morning", "afternoon"] },
+        { name: "Night-time", items: ["evening", "night"] }
+      ]
+    }
+  ],
+
+  // الدرس ١-٤: المهارات — Skills
+  "g3e-1-4": [
+    {
+      type: "mcq",
+      objective: "تركيب: When do you go to school/do homework/play?",
+      level: "knowledge",
+      prompt: "Which question asks about school time?",
+      options: ["When do you go to school?", "What colour is it?", "How old are you?", "Where is the pen?"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "تركيب: When do you play tennis?",
+      level: "knowledge",
+      statement: "'When do you play tennis?' is a question about a time.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "تركيب: When do you do homework?",
+      level: "knowledge",
+      prompt: "Complete the question.",
+      text: "When do you do {}?",
+      answers: ["homework"],
+      distractors: ["breakfast", "school"]
+    },
+    {
+      type: "matching",
+      objective: "ربط سؤال When بجوابه المناسب",
+      level: "application",
+      prompt: "Match each question to its answer.",
+      pairs: [
+        { a: "When do you go to school?", b: "We go to school in the morning." },
+        { a: "When do you have lunch?",   b: "We have lunch in the afternoon." },
+        { a: "When do you do homework?",  b: "We do homework in the evening." },
+        { a: "When do you go to bed?",    b: "We go to bed at night." }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب يوم مدرسيّ نموذجيّ",
+      level: "reasoning",
+      prompt: "Put a typical school day in order.",
+      steps: ["go to school", "have lunch", "do homework", "go to bed"]
+    },
+    {
+      type: "exclude",
+      objective: "التمييز بين أسئلة When وغيرها",
+      level: "reasoning",
+      prompt: "Three of these ask 'When'. Which one doesn't?",
+      options: ["When do you play?", "When do you have dinner?", "What is your name?", "When do you go to school?"],
+      answer: 2,
+      reason: "'What is your name?' doesn't ask about time."
+    }
+  ],
+
+  // الدرس ١-٥: الثقافة والمشروع — Traditional breakfasts
+  "g3e-1-5": [
+    {
+      type: "mcq",
+      objective: "الثقافة: إفطارات تقليدية حول العالم — Japan",
+      level: "knowledge",
+      prompt: "What do people in Japan often have for breakfast?",
+      options: ["fish, rice and soup", "toast and tea", "corn porridge", "pizza"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "الثقافة: إفطارات تقليدية — South Africa",
+      level: "knowledge",
+      statement: "People in South Africa have corn porridge for breakfast.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "الثقافة: ربط كل مكان بإفطاره التقليدي",
+      level: "knowledge",
+      prompt: "Match each place to its breakfast.",
+      pairs: [
+        { a: "the UK",         b: "toast and tea" },
+        { a: "South Africa",   b: "corn porridge" },
+        { a: "Japan",          b: "fish and rice" },
+        { a: "Oman",           b: "Khubz Rakhal" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف مفردات الإفطار: طعام أم شراب",
+      level: "application",
+      prompt: "Sort the breakfast words: food or drink?",
+      groups: [
+        { name: "Food",  items: ["toast", "porridge", "fish"] },
+        { name: "Drink", items: ["tea", "juice", "milk"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "التمييز بين إفطارات النصّ وغيرها",
+      level: "reasoning",
+      prompt: "Three of these are breakfast foods in the text. Which one doesn't belong?",
+      options: ["toast", "porridge", "pizza", "fish"],
+      answer: 2,
+      reason: "Pizza isn't one of the traditional breakfasts described."
+    },
+    {
+      type: "memory",
+      objective: "الثقافة: ربط كل مكان بإفطاره",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "the UK",       b: "toast" },
+        { a: "Japan",        b: "fish" },
+        { a: "Oman",         b: "Khubz Rakhal" },
+        { a: "South Africa", b: "porridge" }
+      ]
+    }
+  ],
+
+  // الدرس ١-٦: قول الوقت — Saying the time (English in action)
+  "g3e-1-6": [
+    {
+      type: "mcq",
+      objective: "قول الوقت: half past / quarter past / quarter to",
+      level: "knowledge",
+      prompt: "It's 7:30. How do you say this?",
+      options: ["It's half past seven.", "It's quarter past seven.", "It's quarter to seven.", "It's seven o'clock."],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "قول الوقت: quarter to",
+      level: "knowledge",
+      statement: "'Quarter to eight' means fifteen minutes before eight o'clock.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "ربط الوقت بصيغته اللفظية",
+      level: "knowledge",
+      prompt: "Match each time to its phrase.",
+      pairs: [
+        { a: "7:15", b: "quarter past seven" },
+        { a: "8:45", b: "quarter to nine" },
+        { a: "6:30", b: "half past six" }
+      ]
+    },
+    {
+      type: "fill-blank",
+      objective: "حوار: We have English at quarter past eight.",
+      level: "application",
+      prompt: "Complete the dialogue.",
+      text: "We have English at {} past eight.",
+      answers: ["quarter"],
+      distractors: ["half", "to"]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب أوقاتٍ زمنياً",
+      level: "reasoning",
+      prompt: "Put the times in order, earliest to latest.",
+      steps: ["half past six", "quarter to seven", "quarter past seven"]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف الأوقات: half past أم quarter",
+      level: "reasoning",
+      prompt: "Sort the times: 'half past' or 'quarter'?",
+      groups: [
+        { name: "Half past", items: ["half past six", "half past seven"] },
+        { name: "Quarter",   items: ["quarter past six", "quarter to seven"] }
+      ]
+    }
+  ],
+
+  // الدرس ١-٧: الصوتيات — wh, ph (Phonics)
+  // ⚠️ نصّيٌّ بلا صوتٍ حقيقيّ — مزوّد n8n/داريجات غير متصلٍ بالجلسة وقت التأليف
+  // (٢٠٢٦-٠٩-١٧). يُستبدَل بأسئلة sound-blend حقيقية حين يعود المزوّد، على غرار
+  // معالجة الوحدة ٤ في الصفّ الثاني.
+  "g3e-1-7": [
+    {
+      type: "mcq",
+      objective: "صوتا wh/ph: whale, wheel, phone, dolphin",
+      level: "knowledge",
+      prompt: "Which word starts with the 'ph' sound?",
+      options: ["phone", "wheel", "whale", "white"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "صوت wh: whale, wheel",
+      level: "knowledge",
+      statement: "'Whale' and 'wheel' both start with the same sound.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "صوت ph: elephant",
+      level: "knowledge",
+      prompt: "Complete the word.",
+      text: "ele{}ant",
+      answers: ["ph"],
+      distractors: ["wh", "f"]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف الكلمات حسب صوتها: wh أم ph",
+      level: "application",
+      prompt: "Sort the words by their sound.",
+      groups: [
+        { name: "wh", items: ["whale", "wheel", "white"] },
+        { name: "ph", items: ["phone", "dolphin", "elephant"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "التمييز بين صوتَي wh وph",
+      level: "reasoning",
+      prompt: "Three of these have the 'ph' sound. Which one doesn't?",
+      options: ["phone", "dolphin", "elephant", "wheel"],
+      answer: 3,
+      reason: "'Wheel' has the 'wh' sound, not 'ph'."
+    },
+    {
+      type: "matching",
+      objective: "كلماتٌ تشترك في الصوت الأول",
+      level: "knowledge",
+      prompt: "Match pairs with the same starting sound.",
+      pairs: [
+        { a: "whale",    b: "wheel" },
+        { a: "phone",    b: "dolphin" },
+        { a: "white",    b: "wheat" },
+        { a: "elephant", b: "alphabet" }
+      ]
+    }
+  ],
+
+  // الدرس ١-٨: المراجعة — Review
+  "g3e-1-8": [
+    {
+      type: "mcq",
+      objective: "مراجعة الروتين اليومي",
+      level: "knowledge",
+      prompt: "Which routine do you do in the morning?",
+      options: ["get up", "have dinner", "go to bed", "watch TV in bed"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مراجعة أوقات اليوم",
+      level: "knowledge",
+      statement: "We have breakfast at night.",
+      answer: false
+    },
+    {
+      type: "fill-blank",
+      objective: "مراجعة تركيب: We have breakfast in the morning.",
+      level: "knowledge",
+      prompt: "Complete the sentence.",
+      text: "We {} breakfast in the morning.",
+      answers: ["have"],
+      distractors: ["go", "play"]
+    },
+    {
+      type: "matching",
+      objective: "مراجعة: ربط سؤال When بجوابه",
+      level: "application",
+      prompt: "Match each question to its answer.",
+      pairs: [
+        { a: "When do you have breakfast?", b: "In the morning." },
+        { a: "When do you have lunch?",     b: "In the afternoon." },
+        { a: "When do you have dinner?",    b: "In the evening." },
+        { a: "When do you go to bed?",      b: "At night." }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "مراجعة تصنيف الروتين: في المنزل أم في المدرسة",
+      level: "reasoning",
+      prompt: "Sort the routines: at home or at school?",
+      groups: [
+        { name: "At home",   items: ["have breakfast", "have dinner", "go to bed"] },
+        { name: "At school", items: ["go to school", "have art lessons", "do homework"] }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "مراجعة ترتيب اليوم المدرسيّ",
+      level: "knowledge",
+      prompt: "Put a school day in order.",
+      steps: ["get up", "have breakfast", "go to school", "have lunch", "have dinner", "go to bed"]
+    }
+  ],
+
+  // الدرس ١-٩: الاستعداد لِ… — Get ready for... (Pre A1 Starters)
+  "g3e-1-9": [
+    {
+      type: "mcq",
+      objective: "نمط اختبار Pre A1 Starters: أسئلة When مع إجاباتٍ قصيرة",
+      level: "knowledge",
+      prompt: "When do you have lunch?",
+      options: ["In the afternoon.", "In the morning.", "At night.", "In the evening."],
+      answer: 0
+    },
+    {
+      type: "fill-blank",
+      objective: "نمط اختبار Pre A1 Starters: كتابة إجابةٍ من كلمة واحدة",
+      level: "knowledge",
+      prompt: "Write one word to complete the answer.",
+      text: "When do you go to school? In the {}.",
+      answers: ["morning"],
+      distractors: ["afternoon", "night"]
+    },
+    {
+      type: "true-false",
+      objective: "نمط اختبار Pre A1 Starters",
+      level: "knowledge",
+      statement: "'In the evening' can answer the question 'When do you have dinner?'",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "ربط أسئلة When بإجاباتٍ قصيرة",
+      level: "application",
+      prompt: "Match each question to a short answer.",
+      pairs: [
+        { a: "When do you do homework?",    b: "In the evening." },
+        { a: "When do you play?",           b: "In the afternoon." },
+        { a: "When do you have breakfast?", b: "In the morning." },
+        { a: "When do you go to bed?",      b: "At night." }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب أجزاء اليوم بحسب حدوثها",
+      level: "reasoning",
+      prompt: "Put these parts of the day in the order they happen.",
+      steps: ["school", "lunch", "homework", "dinner"]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف الأنشطة: صباحاً أم مساءً",
+      level: "knowledge",
+      prompt: "Sort the activities: morning or evening?",
+      groups: [
+        { name: "Morning", items: ["go to school", "have breakfast"] },
+        { name: "Evening", items: ["do homework", "have dinner"] }
+      ]
+    }
+  ],
+
+  // الدرس ١-١٠: ركن المرح — Fun corner
+  "g3e-1-10": [
+    {
+      type: "mcq",
+      objective: "مراجعة شاملة عبر لعبة اللوحة",
+      level: "knowledge",
+      prompt: "What comes after 'have breakfast' on a school day?",
+      options: ["go to school", "go to bed", "have dinner", "watch TV"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مراجعة صوتيّة: phone (ph)",
+      level: "knowledge",
+      statement: "The word 'phone' starts with the 'wh' sound.",
+      answer: false
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب روتين الصباح",
+      level: "knowledge",
+      prompt: "Put the morning in order.",
+      steps: ["I get up.", "I pray.", "I have breakfast.", "I go to school."]
+    },
+    {
+      type: "matching",
+      objective: "ربط مربّعات اللعبة بنوع إجابتها",
+      level: "application",
+      prompt: "Match each game square to what it asks about.",
+      pairs: [
+        { a: "When do you play?", b: "a time of day" },
+        { a: "wh or ph?",         b: "a sound" },
+        { a: "What's the time?",  b: "a clock time" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف مربّعات اللعبة: سؤالٌ أم تعليمة حركة",
+      level: "reasoning",
+      prompt: "Sort the game squares: a question, or an instruction to move?",
+      groups: [
+        { name: "A question",              items: ["When do you play?", "What's the time?"] },
+        { name: "An instruction to move",  items: ["Go forward two spaces.", "Miss a turn."] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "التمييز بين أسئلة الوقت وغيرها",
+      level: "reasoning",
+      prompt: "Three of these ask about time. Which one doesn't?",
+      options: ["When do you play?", "What's the time?", "What time do you have dinner?", "wh or ph?"],
+      answer: 3,
+      reason: "'wh or ph?' is about sounds, not time."
+    }
   ]
 };

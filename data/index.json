@@ -1131,16 +1131,16 @@
       {
         "unit": "It's a happy day!",
         "lessons": [
-          { "title": "It's a happy day! (Vocabulary)", "file": "g3e-1-1", "open": false },
-          { "title": "Atomic is colourful! (Story)", "file": "g3e-1-2", "open": false },
-          { "title": "Times of the day (Grammar)", "file": "g3e-1-3", "open": false },
-          { "title": "Skills", "file": "g3e-1-4", "open": false },
-          { "title": "Traditional breakfasts (Culture & Project)", "file": "g3e-1-5", "open": false },
-          { "title": "Saying the time", "file": "g3e-1-6", "open": false },
-          { "title": "wh, ph (Phonics)", "file": "g3e-1-7", "open": false },
-          { "title": "Review", "file": "g3e-1-8", "open": false },
-          { "title": "Get ready for… (Pre A1 Starters)", "file": "g3e-1-9", "open": false },
-          { "title": "Fun corner", "file": "g3e-1-10", "open": false }
+          { "title": "It's a happy day! (Vocabulary)", "file": "g3e-1-1", "open": true },
+          { "title": "Atomic is colourful! (Story)", "file": "g3e-1-2", "open": true },
+          { "title": "Times of the day (Grammar)", "file": "g3e-1-3", "open": true },
+          { "title": "Skills", "file": "g3e-1-4", "open": true },
+          { "title": "Traditional breakfasts (Culture & Project)", "file": "g3e-1-5", "open": true },
+          { "title": "Saying the time", "file": "g3e-1-6", "open": true },
+          { "title": "wh, ph (Phonics)", "file": "g3e-1-7", "open": true },
+          { "title": "Review", "file": "g3e-1-8", "open": true },
+          { "title": "Get ready for… (Pre A1 Starters)", "file": "g3e-1-9", "open": true },
+          { "title": "Fun corner", "file": "g3e-1-10", "open": true }
         ]
       },
       {
