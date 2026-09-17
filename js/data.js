@@ -153,8 +153,8 @@ window.DATA_FALLBACK = {
         { title:"Review", file:"g2e-4-7", open:true }
       ]},
       { unit:"Atomic's Learning Club 2", lessons:[
-        { title:"Language booster 2", file:"g2e-lc2-1", open:false },
-        { title:"Social Studies: In my town", file:"g2e-lc2-2", open:false }
+        { title:"Language booster 2", file:"g2e-lc2-1", open:true },
+        { title:"Social Studies: In my town", file:"g2e-lc2-2", open:true }
       ]}
     ] },
     "g1-sci": { book:"العلوم — الصف الأول", units:[

@@ -11,7 +11,7 @@
     "cognitiveDistribution": "يرث توزيع العلوم: 3 knowledge + 1 application + 1 reasoning للأسئلة الأساسية الخمسة (قرار المالك ٢٠٢٦-٠٩-١٤)",
     "devOnlyPolicy": "كل بطاقات هذه المادّة (كل الصفوف) تبقى devOnly:true حتى تكتمل الصفوف الأربعة كلّها وقرار صريح مستقل من المالك برفع الإخفاء دفعة واحدة — لا صفّاً بصفّ (تنبيه المالك ٢٠٢٦-٠٩-١٤، مثبّت أيضاً في CLAUDE.md §نطاق المواد)",
     "version": "0.2",
-    "status": "مسودة للمراجعة — الصفّان الأول والثاني، فصل ١"
+    "status": "الصفّ الأول مكتملٌ (٣٣/٣٣)، والصفّ الثاني مكتملٌ (٣٤/٣٤) — الصفّان الثالث والرابع لم يبدآ بعد"
   },
 
   "contentPolicy": {
@@ -216,7 +216,7 @@
           "unit": "lc2", "title": "نادي التعلّم ٢ — Atomic's Learning Club (Language booster + Social Studies)",
           "lessons": [
             { "code": "g2e-lc2-1", "title": "أجسام غريبة! — Language booster 2", "objective": "أجزاء الجسم: head, feet, leg, arm, hand؛ تركيب العدّ: Is there one arm? No, there isn't. There are four arms./Are there three legs? Yes, there are.", "basic": ["mcq", "matching", "true-false", "classify", "fill-blank"], "enrichment": "memory", "status": "ready" },
-            { "code": "g2e-lc2-2", "title": "مدينتي — Social Studies: In my town", "objective": "أماكن في المدينة: school, hospital, shops, houses, café؛ تركيب: There is a hospital./There are some shops.", "basic": ["mcq", "matching", "classify", "true-false", "hotspot"], "enrichment": "memory", "status": "ready" }
+            { "code": "g2e-lc2-2", "title": "مدينتي — Social Studies: In my town", "objective": "أماكن في المدينة: school, hospital, shops, houses, café؛ تركيب: There is a hospital./There are some shops.", "basic": ["mcq", "matching", "true-false", "classify", "sequence"], "enrichment": "memory", "status": "ready", "note": "استبدل hotspot (لا صورة خريطة مدينةٍ مناسبة)؛ لا صورَ لـhospital/café فبقيت الوحدة نصّيةً بالكامل" }
           ]
         }
       ]

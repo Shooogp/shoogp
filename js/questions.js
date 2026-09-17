@@ -43094,5 +43094,128 @@ window.QUESTIONS = {
         { a: "grandad", b: "grandfather" }
       ]
     }
+  ],
+
+  // نادي التعلّم ٢: Atomic's Learning Club (Language booster 2 + Social Studies)
+  // الدرس lc2-1: أجسام غريبة! — Language booster 2
+  "g2e-lc2-1": [
+    {
+      type: "mcq",
+      objective: "تركيب العدّ: Is there one arm? No, there isn't. There are four arms.",
+      level: "knowledge",
+      prompt: "Is there one arm?",
+      options: ["No, there isn't. There are four arms.", "Yes, there is.", "It's a car.", "I'm seven."],
+      answer: 0
+    },
+    {
+      type: "matching",
+      objective: "أجزاء الجسم: head, feet, leg, arm, hand",
+      level: "knowledge",
+      prompt: "Match each body part to how many the monster has.",
+      pairs: [
+        { a: "head", b: "There are two heads." },
+        { a: "feet", b: "There are eight feet." },
+        { a: "legs", b: "There are three legs." },
+        { a: "arms", b: "There are four arms." }
+      ]
+    },
+    {
+      type: "true-false",
+      objective: "تركيب العدّ: Are there three legs? Yes, there are.",
+      level: "knowledge",
+      statement: "'Are there three legs?' asks about a number.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "تركيب العدّ: Is there one arm? No, there isn't. There are four arms.",
+      level: "application",
+      prompt: "Complete the sentence.",
+      text: "Is there one arm? No, there isn't. There {} four arms.",
+      answers: ["are"],
+      distractors: ["is", "am"]
+    },
+    {
+      type: "classify",
+      objective: "أجزاء الجسم: head, feet, leg, arm, hand",
+      level: "reasoning",
+      prompt: "Sort the body parts.",
+      groups: [
+        { name: "Two of these", items: ["arms", "legs"] },
+        { name: "Ten of these", items: ["fingers", "toes"] }
+      ]
+    },
+    {
+      type: "memory",
+      objective: "أجزاء الجسم: head, feet, leg, arm, hand",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "head", b: "two" },
+        { a: "arms", b: "four" },
+        { a: "legs", b: "three" },
+        { a: "feet", b: "eight" }
+      ]
+    }
+  ],
+
+  // الدرس lc2-2: مدينتي — Social Studies: In my town
+  "g2e-lc2-2": [
+    {
+      type: "mcq",
+      objective: "أماكن في المدينة: school, hospital, shops, houses, café",
+      level: "knowledge",
+      prompt: "There is a ___. You go there to buy food.",
+      options: ["shop", "school", "hospital", "house"],
+      answer: 0
+    },
+    {
+      type: "matching",
+      objective: "أماكن في المدينة: school, hospital, shops, houses, café",
+      level: "knowledge",
+      prompt: "Match each place to what you do there.",
+      pairs: [
+        { a: "school",   b: "You learn there." },
+        { a: "hospital", b: "You go there when you're sick." },
+        { a: "café",     b: "You eat and drink there." },
+        { a: "houses",   b: "People live there." }
+      ]
+    },
+    {
+      type: "true-false",
+      objective: "تركيب: There is a hospital.",
+      level: "knowledge",
+      statement: "'There is a hospital' talks about one place.",
+      answer: true
+    },
+    {
+      type: "classify",
+      objective: "أماكن في المدينة: school, hospital, shops, houses, café",
+      level: "reasoning",
+      prompt: "Sort the places.",
+      groups: [
+        { name: "You learn or get help there", items: ["school", "hospital"] },
+        { name: "You live or eat there",        items: ["houses", "café"] }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "تركيب: There is a hospital./There are some shops.",
+      level: "application",
+      prompt: "Put the description in order.",
+      steps: ["There are lots of buildings in my town.", "There is a hospital.", "There is a school.", "There are some shops."]
+    },
+    {
+      type: "memory",
+      objective: "أماكن في المدينة: school, hospital, shops, houses, café",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "school",   b: "learn" },
+        { a: "hospital", b: "get better" },
+        { a: "café",     b: "eat" },
+        { a: "houses",   b: "live" }
+      ]
+    }
   ]
 };
