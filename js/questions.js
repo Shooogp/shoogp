@@ -43674,6 +43674,7 @@ window.QUESTIONS = {
       objective: "التمييز بين إفطارات النصّ وغيرها",
       level: "reasoning",
       prompt: "Three of these are breakfast foods in the text. Which one doesn't belong?",
+      pics: true,
       options: ["toast", "porridge", "pizza", "fish"],
       answer: 2,
       reason: "Pizza isn't one of the traditional breakfasts described."
@@ -44024,6 +44025,7 @@ window.QUESTIONS = {
       objective: "تصنيف الملابس: للرياضة أم للنوم",
       level: "reasoning",
       prompt: "Sort the clothes: for sport or for bed?",
+      pics: true,
       groups: [
         { name: "For sport", items: ["tracksuit", "trainers", "baseball cap"] },
         { name: "For bed",   items: ["pyjamas", "slippers"] }
@@ -44099,6 +44101,7 @@ window.QUESTIONS = {
       objective: "مفردات المقتنيات الشخصية: glasses, keys, handbag, backpack, phone, computer",
       level: "knowledge",
       prompt: "Which of these do you wear on your face to see better?",
+      pics: true,
       options: ["glasses", "keys", "handbag", "phone"],
       answer: 0
     },
@@ -44134,6 +44137,7 @@ window.QUESTIONS = {
       objective: "تصنيف المقتنيات: إلكترونية أم لا",
       level: "reasoning",
       prompt: "Sort the things: electronic or not electronic?",
+      pics: true,
       groups: [
         { name: "Electronic",     items: ["phone", "computer"] },
         { name: "Not electronic", items: ["glasses", "keys", "handbag"] }
@@ -44388,6 +44392,7 @@ window.QUESTIONS = {
       objective: "مراجعة مفردات الملابس والمقتنيات",
       level: "knowledge",
       prompt: "Which word names something you wear on your feet?",
+      pics: true,
       options: ["trainers", "backpack", "glasses", "keys"],
       answer: 0
     },
@@ -44517,6 +44522,7 @@ window.QUESTIONS = {
       objective: "ترتيب الملابس من الرأس إلى القدم",
       level: "knowledge",
       prompt: "Put these clothes in order, from head to feet.",
+      pics: true,
       steps: ["baseball cap", "glasses", "jacket", "jeans", "trainers"]
     },
     {
@@ -44524,6 +44530,7 @@ window.QUESTIONS = {
       objective: "ربط كل قطعة ملبسٍ بموضعها",
       level: "application",
       prompt: "Match each item to where you wear it.",
+      pics: "a",
       pairs: [
         { a: "baseball cap", b: "on your head" },
         { a: "glasses",      b: "on your eyes" },
@@ -44535,6 +44542,7 @@ window.QUESTIONS = {
       objective: "تصنيف الملابس: أعلى الجسم أم أسفله",
       level: "reasoning",
       prompt: "Sort the clothes: top of the body or bottom of the body?",
+      pics: true,
       groups: [
         { name: "Top",    items: ["baseball cap", "glasses", "jacket"] },
         { name: "Bottom", items: ["jeans", "trainers"] }
@@ -45243,6 +45251,7 @@ window.QUESTIONS = {
       objective: "مفردات المهن: doctor, nurse, police officer, builder, astronaut, firefighter, chef, pilot, teacher, artist",
       level: "knowledge",
       prompt: "Which job helps sick people?",
+      pics: true,
       options: ["doctor", "builder", "pilot", "artist"],
       answer: 0
     },
@@ -45279,6 +45288,7 @@ window.QUESTIONS = {
       objective: "تصنيف المهن: تحفظ الأمان أم إبداعية",
       level: "reasoning",
       prompt: "Sort the jobs: helps people stay safe, or is creative?",
+      pics: true,
       groups: [
         { name: "Helps people stay safe", items: ["firefighter", "police officer", "doctor"] },
         { name: "Is creative",            items: ["artist", "chef"] }
@@ -45302,6 +45312,7 @@ window.QUESTIONS = {
       objective: "قصّة الوحدة: The job fair — السيد إبراهيم الطبّاخ",
       level: "knowledge",
       prompt: "What is Mr Ibrahim's job in the story?",
+      pics: true,
       options: ["chef", "pilot", "teacher", "doctor"],
       answer: 0
     },
@@ -45399,6 +45410,7 @@ window.QUESTIONS = {
       objective: "ترتيب كلمات المواصلات كما وردت في الأنشودة",
       level: "knowledge",
       prompt: "Put the transport words in the order they appear in the song.",
+      pics: true,
       steps: ["boat", "train", "motorbike"]
     }
   ],
@@ -45434,7 +45446,7 @@ window.QUESTIONS = {
       objective: "ربط كل مهنةٍ بمواصلتها في الحوار",
       level: "application",
       prompt: "Match each job to its transport in the dialogue.",
-      pics: "b",
+      pics: true,
       pairs: [
         { a: "nurse",   b: "car" },
         { a: "teacher", b: "train" }
@@ -45452,6 +45464,7 @@ window.QUESTIONS = {
       objective: "تصنيف: مهنةٌ أم مواصلة",
       level: "application",
       prompt: "Sort the words: jobs or transport?",
+      pics: true,
       groups: [
         { name: "Jobs",      items: ["nurse", "teacher"] },
         { name: "Transport", items: ["car", "train"] }
@@ -45686,6 +45699,7 @@ window.QUESTIONS = {
       objective: "مراجعة ترتيب كلمات المواصلات",
       level: "knowledge",
       prompt: "Put the transport words in order, as they appear in the chant.",
+      pics: true,
       steps: ["bus", "boat", "train"]
     }
   ],
@@ -45741,6 +45755,7 @@ window.QUESTIONS = {
       objective: "التمييز بين المهنة والمواصلة",
       level: "reasoning",
       prompt: "Three of these are jobs. Which one isn't?",
+      pics: true,
       options: ["teacher", "pilot", "train", "artist"],
       answer: 2,
       reason: "A train is transport, not a job."
@@ -46674,6 +46689,7 @@ window.QUESTIONS = {
       objective: "مفردات الطعام والشراب: fruit, vegetables, sandwiches, cereal, noodles, milkshake, crisps, cupcakes, salad, tea, coffee, lemonade",
       level: "knowledge",
       prompt: "Which of these is a drink?",
+      pics: true,
       options: ["milkshake", "salad", "crisps", "cupcakes"],
       answer: 0
     },
@@ -46771,6 +46787,7 @@ window.QUESTIONS = {
       objective: "قصّة الوحدة: الليمونادة من الليمون",
       level: "knowledge",
       prompt: "Where does lemonade come from, according to the story?",
+      pics: true,
       options: ["lemons", "a lake", "milk", "tea"],
       answer: 0
     }
@@ -46827,6 +46844,7 @@ window.QUESTIONS = {
       objective: "ترتيب أطعمة النزهة كما وردت في الدرس",
       level: "knowledge",
       prompt: "Put the picnic foods in the order mentioned in the lesson.",
+      pics: true,
       steps: ["noodles", "crisps", "sandwiches"]
     }
   ],
@@ -46862,6 +46880,7 @@ window.QUESTIONS = {
       objective: "ربط كل وعاءٍ بطعامه أو شرابه",
       level: "application",
       prompt: "Match each container to its food or drink.",
+      pics: "b",
       pairs: [
         { a: "a can of",   b: "lemonade" },
         { a: "a bowl of",  b: "soup" },
@@ -46884,6 +46903,7 @@ window.QUESTIONS = {
       objective: "التمييز بين الوعاء والمحتوى",
       level: "reasoning",
       prompt: "Three of these are containers. Which one isn't?",
+      pics: true,
       options: ["can", "bottle", "bowl", "milk"],
       answer: 3,
       reason: "'Milk' is a drink, not a container."
@@ -47009,6 +47029,7 @@ window.QUESTIONS = {
       objective: "نصّ القراءة: طعام رشا المفضَّل — الهريس",
       level: "knowledge",
       prompt: "What is Rasha's favourite food?",
+      pics: true,
       options: ["harees", "sushi", "pasta", "bunny chow"],
       answer: 0
     },
@@ -47066,6 +47087,7 @@ window.QUESTIONS = {
       objective: "نصّ الكتابة: وصفة المكرونة بصلصة الطماطم",
       level: "knowledge",
       prompt: "In the recipe for pasta with tomato sauce, which ingredient is NOT used?",
+      pics: true,
       options: ["tea", "tomatoes", "olive oil", "pasta"],
       answer: 0
     },
@@ -47184,6 +47206,7 @@ window.QUESTIONS = {
       objective: "مراجعة مفردات الطعام: cereal",
       level: "knowledge",
       prompt: "Which food do you put in a bowl and add milk to for breakfast?",
+      pics: true,
       options: ["cereal", "coffee", "water", "vegetables"],
       answer: 0
     },
@@ -47228,6 +47251,7 @@ window.QUESTIONS = {
       objective: "لعبة Challenge: الطعام الياباني بعيدان الأكل",
       level: "knowledge",
       prompt: "What Japanese food is eaten with chopsticks?",
+      pics: true,
       options: ["sushi", "harees", "bunny chow", "fondue"],
       answer: 0
     }
@@ -47274,6 +47298,7 @@ window.QUESTIONS = {
       objective: "نمط اختبار A1 Movers: تمييز الفاكهة من الخضار",
       level: "reasoning",
       prompt: "Sort the pictures: fruit, or not fruit?",
+      pics: true,
       groups: [
         { name: "Fruit",     items: ["apple", "grapes", "orange"] },
         { name: "Not fruit", items: ["carrot"] }
@@ -47415,6 +47440,7 @@ window.QUESTIONS = {
       objective: "مفردات التضاريس: river, mountain, lake, waterfall, city, town, forest, hill, island, deep, high, wide",
       level: "knowledge",
       prompt: "Which word means a very big hill that's hard to climb?",
+      pics: true,
       options: ["mountain", "hill", "lake", "forest"],
       answer: 0
     },
@@ -47439,6 +47465,7 @@ window.QUESTIONS = {
       objective: "ربط كل تعريفٍ بكلمته",
       level: "application",
       prompt: "Match each definition to its word.",
+      pics: "b",
       pairs: [
         { a: "It's got water all around it.",       b: "island" },
         { a: "It's got a lot of trees.",             b: "forest" },
@@ -47851,6 +47878,7 @@ window.QUESTIONS = {
       objective: "بطاقة حقائق مصر: التضاريس",
       level: "reasoning",
       prompt: "Three of these are landscape features in Egypt's fact file. Which one isn't?",
+      pics: true,
       options: ["desert", "rivers", "mountains", "supermarket"],
       answer: 3,
       reason: "A supermarket isn't a landscape feature."
@@ -47926,6 +47954,7 @@ window.QUESTIONS = {
       objective: "مراجعة المقارنة: الحيوان الأطول",
       level: "knowledge",
       prompt: "Which animal is the tallest?",
+      pics: true,
       options: ["giraffe", "mouse", "bee", "cheetah"],
       answer: 0
     },
@@ -47950,6 +47979,7 @@ window.QUESTIONS = {
       objective: "ربط كل حيوانٍ بصفته",
       level: "application",
       prompt: "Match each animal to its description.",
+      pics: "a",
       pairs: [
         { a: "giraffe", b: "tall" },
         { a: "cheetah", b: "fast" },
@@ -47971,6 +48001,7 @@ window.QUESTIONS = {
       objective: "ترتيب الحيوانات من الأصغر إلى الأكبر",
       level: "reasoning",
       prompt: "Put the animals in order, from smallest to largest.",
+      pics: true,
       steps: ["bee", "mouse", "giraffe", "whale"]
     }
   ],
@@ -48040,6 +48071,7 @@ window.QUESTIONS = {
       objective: "مفردات المهن: scientist, farmer, firefighter, police officer, dentist, lawyer, mechanic, computer programmer, chef, vet, engineer, bus driver",
       level: "knowledge",
       prompt: "Who works with animals?",
+      pics: true,
       options: ["vet", "lawyer", "engineer", "bus driver"],
       answer: 0
     },
@@ -48251,6 +48283,7 @@ window.QUESTIONS = {
       objective: "أنشودة القواعد: من يقول You mustn't drop any litter؟",
       level: "knowledge",
       prompt: "Who says 'You mustn't drop any litter' in the song?",
+      pics: true,
       options: ["the bus driver", "the teacher", "the police officer", "the school nurse"],
       answer: 0
     }
@@ -48457,6 +48490,7 @@ window.QUESTIONS = {
       objective: "ربط كل طفلٍ بالمهنة التي يريدها",
       level: "application",
       prompt: "Match each child to the job they want.",
+      pics: "b",
       pairs: [
         { a: "Ahmed", b: "mechanic" },
         { a: "Azza",  b: "vet" },
@@ -48478,6 +48512,7 @@ window.QUESTIONS = {
       objective: "فهم تقرير طلال",
       level: "reasoning",
       prompt: "Three of these are jobs mentioned in Talal's report. Which one isn't?",
+      pics: true,
       options: ["doctor", "mechanic", "vet", "teacher"],
       answer: 3,
       reason: "Teacher isn't mentioned in Talal's report."
@@ -48610,6 +48645,7 @@ window.QUESTIONS = {
       objective: "نمط اختبار A1 Movers: This car is taking a person to the hospital.",
       level: "knowledge",
       prompt: "'This car is taking a person to the hospital.' What is it?",
+      pics: true,
       options: ["an ambulance", "a mechanic", "a chef", "a farmer"],
       answer: 0
     },
@@ -48634,6 +48670,7 @@ window.QUESTIONS = {
       objective: "ربط كل وصفٍ بالمهنة",
       level: "application",
       prompt: "Match each description to the job.",
+      pics: "b",
       pairs: [
         { a: "This person is cooking some food.",  b: "a chef" },
         { a: "This person is working in a field.", b: "a farmer" }
@@ -48644,6 +48681,7 @@ window.QUESTIONS = {
       objective: "تصنيف المهن: طعامٌ أم مركبات",
       level: "reasoning",
       prompt: "Sort the jobs: works with food, or works with vehicles?",
+      pics: true,
       groups: [
         { name: "Works with food",    items: ["chef", "farmer"] },
         { name: "Works with vehicles", items: ["mechanic", "ambulance driver"] }
