@@ -45425,6 +45425,7 @@ window.QUESTIONS = {
       objective: "ربط كل مهنةٍ بمواصلتها في الحوار",
       level: "application",
       prompt: "Match each job to its transport in the dialogue.",
+      pics: "b",
       pairs: [
         { a: "nurse",   b: "car" },
         { a: "teacher", b: "train" }
