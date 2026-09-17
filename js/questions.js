@@ -48642,5 +48642,120 @@ window.QUESTIONS = {
       options: ["Read all the sentences carefully.", "Write the answers quickly.", "Skip the pictures.", "Ask a friend."],
       answer: 0
     }
+  ],
+
+  // Bo's Learning Club 2 — Science: Health + Language booster 2
+
+  // الدرس ن٢-١: Science — Health
+  "g4e-lc2-1": [
+    {
+      type: "mcq",
+      objective: "الصحّة: النصح عند ألم المعدة",
+      level: "knowledge",
+      prompt: "What should you do if you have a stomachache?",
+      options: ["drink lots of water", "play video games", "shout", "go to school"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "الصحّة: الصداع وألعاب الفيديو",
+      level: "knowledge",
+      statement: "If you have a headache, you shouldn't play video games.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "الصحّة: سامي مصابٌ بالزكام — يرتاح في الفراش",
+      level: "knowledge",
+      prompt: "Complete the advice.",
+      text: "Sami has a cough and a sore throat. He should have some medicine and {} in bed.",
+      answers: ["rest"],
+      distractors: ["play", "eat"]
+    },
+    {
+      type: "matching",
+      objective: "ربط كل علّةٍ بنصيحتها",
+      level: "application",
+      prompt: "Match each illness to the advice.",
+      pairs: [
+        { a: "a stomachache", b: "drink lots of water" },
+        { a: "a sore throat",  b: "have some medicine, don't shout" },
+        { a: "a cold",         b: "rest in bed, don't go to school" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف الأفعال: يجب فعلها أم لا عند المرض",
+      level: "reasoning",
+      prompt: "Sort the actions: should do, or shouldn't do when ill?",
+      groups: [
+        { name: "Should do",    items: ["drink lots of water", "have some medicine", "rest in bed"] },
+        { name: "Shouldn't do", items: ["play video games", "shout", "go to school"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "التمييز بين العلّة والعلاج",
+      level: "reasoning",
+      prompt: "Three of these are illnesses. Which one isn't?",
+      options: ["headache", "sore throat", "medicine", "stomachache"],
+      answer: 2,
+      reason: "Medicine is something you take, not an illness."
+    }
+  ],
+
+  // الدرس ن٢-٢: Language booster 2 (حوار الطبيب)
+  "g4e-lc2-2": [
+    {
+      type: "mcq",
+      objective: "حوار الطبيب: I don't feel well.",
+      level: "knowledge",
+      prompt: "What do you say to tell the doctor you're ill?",
+      options: ["I don't feel well.", "How much is this?", "When is your birthday?", "Can I help you?"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "حوار الطبيب: What's the matter؟",
+      level: "knowledge",
+      statement: "'What's the matter?' is a question a doctor might ask.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "حوار الطبيب: What should I do؟",
+      level: "knowledge",
+      prompt: "Complete the dialogue.",
+      text: "I have a cold. What should I {}?",
+      answers: ["do"],
+      distractors: ["eat", "say"]
+    },
+    {
+      type: "matching",
+      objective: "ربط جمل حوار الطبيب بردودها",
+      level: "application",
+      prompt: "Match each line to its reply.",
+      pairs: [
+        { a: "Hello. What's the problem?", b: "Hello, doctor. I don't feel well." },
+        { a: "You should rest in bed.",    b: "Thank you, doctor." }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب زيارة الطبيب",
+      level: "reasoning",
+      prompt: "Put the doctor's visit in order.",
+      steps: ["Hello, doctor. I don't feel well.", "What's the matter?", "I have a cold.", "You should rest in bed.", "Thank you, doctor."]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف الأفعال عند المرض: يجب أم لا يجب",
+      level: "reasoning",
+      prompt: "Sort the words: something you should do, or shouldn't do, when you're ill?",
+      groups: [
+        { name: "Should do",    items: ["have some medicine", "rest in bed"] },
+        { name: "Shouldn't do", items: ["play video games", "go to school"] }
+      ]
+    }
   ]
 };

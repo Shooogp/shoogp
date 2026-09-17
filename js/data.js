@@ -937,8 +937,8 @@ window.DATA_FALLBACK = {
         { title:"Get ready for… (A1 Movers)", file:"g4e-4-11", open:true }
       ]},
       { unit:"Bo's Learning Club 2", lessons:[
-        { title:"Science: Health", file:"g4e-lc2-1", open:false },
-        { title:"Language booster 2", file:"g4e-lc2-2", open:false }
+        { title:"Science: Health", file:"g4e-lc2-1", open:true },
+        { title:"Language booster 2", file:"g4e-lc2-2", open:true }
       ]}
     ]}
   }
