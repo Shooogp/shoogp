@@ -1217,17 +1217,17 @@
       {
         "unit": "New school",
         "lessons": [
-          { "title": "School subjects (Vocabulary)", "file": "g4e-1-1", "open": false },
-          { "title": "First day at a new school (Story)", "file": "g4e-1-2", "open": false },
-          { "title": "Present simple with days and times (Grammar)", "file": "g4e-1-3", "open": false },
-          { "title": "Adverbs of frequency (Vocabulary & Grammar)", "file": "g4e-1-4", "open": false },
-          { "title": "Unusual schools around the world (Culture & Project)", "file": "g4e-1-5", "open": false },
-          { "title": "Making arrangements", "file": "g4e-1-6", "open": false },
-          { "title": "Reading: Maryam's Diary (Skills)", "file": "g4e-1-7", "open": false },
-          { "title": "Listening, Speaking & Writing (Skills)", "file": "g4e-1-8", "open": false },
-          { "title": "y, revise i_e/igh/ie (Phonics)", "file": "g4e-1-9", "open": false },
-          { "title": "Review", "file": "g4e-1-10", "open": false },
-          { "title": "Get ready for… (A1 Movers)", "file": "g4e-1-11", "open": false }
+          { "title": "School subjects (Vocabulary)", "file": "g4e-1-1", "open": true },
+          { "title": "First day at a new school (Story)", "file": "g4e-1-2", "open": true },
+          { "title": "Present simple with days and times (Grammar)", "file": "g4e-1-3", "open": true },
+          { "title": "Adverbs of frequency (Vocabulary & Grammar)", "file": "g4e-1-4", "open": true },
+          { "title": "Unusual schools around the world (Culture & Project)", "file": "g4e-1-5", "open": true },
+          { "title": "Making arrangements", "file": "g4e-1-6", "open": true },
+          { "title": "Reading: Maryam's Diary (Skills)", "file": "g4e-1-7", "open": true },
+          { "title": "Listening, Speaking & Writing (Skills)", "file": "g4e-1-8", "open": true },
+          { "title": "y, revise i_e/igh/ie (Phonics)", "file": "g4e-1-9", "open": true },
+          { "title": "Review", "file": "g4e-1-10", "open": true },
+          { "title": "Get ready for… (A1 Movers)", "file": "g4e-1-11", "open": true }
         ]
       },
       {

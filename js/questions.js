@@ -46027,5 +46027,629 @@ window.QUESTIONS = {
         { name: "75 and more",  items: ["eighty", "ninety", "one hundred"] }
       ]
     }
+  ],
+
+  // الوحدة ١ — New school
+
+  // الدرس ١-١: المفردات — School subjects (Vocabulary)
+  "g4e-1-1": [
+    {
+      type: "mcq",
+      objective: "مفردات المواد الدراسية: Maths, Science, Arabic, English, Social Studies, P.E., ICT, Art, Islamic Studies",
+      level: "knowledge",
+      prompt: "Which subject uses computers?",
+      options: ["ICT", "P.E.", "Art", "Arabic"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مفردات: headteacher",
+      level: "knowledge",
+      statement: "The headteacher is a person who works at school.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "تركيب: What's your favourite subject?",
+      level: "knowledge",
+      prompt: "Complete the question.",
+      text: "What subjects do you like? What's your favourite {}?",
+      answers: ["subject"],
+      distractors: ["teacher", "school"]
+    },
+    {
+      type: "matching",
+      objective: "ربط كل كلمةٍ بمجموعتها",
+      level: "application",
+      prompt: "Match each word to its group.",
+      pairs: [
+        { a: "Maths",       b: "a school subject" },
+        { a: "headteacher", b: "a person" },
+        { a: "science lab", b: "a place" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف: موادّ دراسية أم أشخاصٌ في المدرسة",
+      level: "reasoning",
+      prompt: "Sort the words: school subjects or people at school?",
+      groups: [
+        { name: "School subjects",     items: ["Maths", "Science", "Art"] },
+        { name: "People at school",    items: ["headteacher", "school nurse"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "التمييز بين المادّة الدراسية والشخص",
+      level: "reasoning",
+      prompt: "Three of these are school subjects. Which one isn't?",
+      options: ["Science", "Islamic Studies", "school nurse", "Social Studies"],
+      answer: 2,
+      reason: "A school nurse is a person, not a subject."
+    }
+  ],
+
+  // الدرس ١-٢: القصّة — First day at a new school! (Story)
+  "g4e-1-2": [
+    {
+      type: "mcq",
+      objective: "قصّة الوحدة: First day at a new school! — Mrs Safa",
+      level: "knowledge",
+      prompt: "What is the headteacher's name in the story?",
+      options: ["Mrs Safa", "Mrs Zahra", "Mrs Noora", "Mrs Amal"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "قصّة الوحدة: Sami has ICT today",
+      level: "knowledge",
+      statement: "In the story, Sami has ICT when the crash and bang happen.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "قصّة الوحدة: This is Bo, my robot!",
+      level: "knowledge",
+      prompt: "Complete the line from the story.",
+      text: "This is {}, my robot!",
+      answers: ["Bo"],
+      distractors: ["Discovery", "Sami"]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب أحداث القصّة",
+      level: "application",
+      prompt: "Put the story events in order.",
+      steps: ["The children arrive at school.", "Lottie meets the headteacher.", "Lottie meets her new class.", "There's a loud noise.", "Everyone meets Bo."]
+    },
+    {
+      type: "exclude",
+      objective: "فهم أحداث القصّة",
+      level: "reasoning",
+      prompt: "Three of these happened in the story. Which one didn't?",
+      options: ["Lottie met the headteacher.", "There was a loud noise.", "Bo the robot had a problem.", "The children went swimming."],
+      answer: 3,
+      reason: "The story is about Lottie's first day at school, not about swimming."
+    },
+    {
+      type: "mcq",
+      objective: "قصّة الوحدة: Bo هو روبوت سامي",
+      level: "knowledge",
+      prompt: "What is Bo?",
+      options: ["Sami's robot", "the headteacher", "a new subject", "a school nurse"],
+      answer: 0
+    }
+  ],
+
+  // الدرس ١-٣: القواعد — Present simple with days and times (Grammar)
+  "g4e-1-3": [
+    {
+      type: "mcq",
+      objective: "تركيب: When do we have Maths?",
+      level: "knowledge",
+      prompt: "Which word do we use to ask about time?",
+      options: ["When", "Where", "Who", "What colour"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "تركيب: Azza doesn't have P.E. on Wednesdays",
+      level: "knowledge",
+      statement: "'Azza doesn't have P.E. on Wednesdays' means she has P.E. that day.",
+      answer: false
+    },
+    {
+      type: "fill-blank",
+      objective: "تركيب: We have Maths on Tuesdays at half past ten.",
+      level: "knowledge",
+      prompt: "Complete the sentence.",
+      text: "We {} Maths on Tuesdays at half past ten.",
+      answers: ["have"],
+      distractors: ["has", "having"]
+    },
+    {
+      type: "matching",
+      objective: "ربط سؤال الوقت بجوابه",
+      level: "application",
+      prompt: "Match each question to its answer.",
+      pairs: [
+        { a: "When do we have Maths?",         b: "We have Maths on Tuesdays." },
+        { a: "What time do you have Science?", b: "I have Science at quarter past eleven." }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب حصص جدول لوتي الصباحية",
+      level: "reasoning",
+      prompt: "Put Lottie's morning lessons in order.",
+      steps: ["Maths", "Science", "Arabic", "P.E.", "English"]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف الجمل: مثبتة أم منفية",
+      level: "reasoning",
+      prompt: "Sort the sentences: positive or negative?",
+      groups: [
+        { name: "Positive", items: ["I have Science at quarter past eleven."] },
+        { name: "Negative", items: ["Azza doesn't have P.E. on Wednesdays."] }
+      ]
+    }
+  ],
+
+  // الدرس ١-٤: المفردات والقواعد — Adverbs of frequency
+  "g4e-1-4": [
+    {
+      type: "mcq",
+      objective: "ظروف التكرار: always, often, sometimes, never",
+      level: "knowledge",
+      prompt: "Which word means 'zero times'?",
+      options: ["never", "always", "often", "sometimes"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "العبارات الظرفية: every day",
+      level: "knowledge",
+      statement: "'Every day' happens seven times a week.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "أنشودة الوحدة: But she's always so busy!",
+      level: "knowledge",
+      prompt: "Complete the song.",
+      text: "Joory is so busy! I want to play with Joory, but she's always so {}!",
+      answers: ["busy"],
+      distractors: ["happy", "tired"]
+    },
+    {
+      type: "matching",
+      objective: "ربط العبارة الظرفية بمعناها",
+      level: "application",
+      prompt: "Match each phrase to how often it happens.",
+      pairs: [
+        { a: "every day",     b: "seven times a week" },
+        { a: "twice a week",  b: "two times a week" },
+        { a: "once a week",   b: "one time a week" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف: ظرف تكرارٍ أم عبارةٌ ظرفية",
+      level: "reasoning",
+      prompt: "Sort the words: adverbs of frequency or adverbial phrases?",
+      groups: [
+        { name: "Adverbs of frequency", items: ["always", "often", "never"] },
+        { name: "Adverbial phrases",    items: ["every day", "at the weekend", "twice a week"] }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب ظروف التكرار من الأكثر إلى الأقلّ",
+      level: "reasoning",
+      prompt: "Put the frequency words in order, from most to least.",
+      steps: ["always", "often", "sometimes", "never"]
+    }
+  ],
+
+  // الدرس ١-٥: الثقافة والمشروع — Unusual schools around the world
+  "g4e-1-5": [
+    {
+      type: "mcq",
+      objective: "الثقافة: مدارس على قوارب في بنغلاديش بسبب الفيضانات",
+      level: "knowledge",
+      prompt: "In Bangladesh, why do some children study at school on a boat?",
+      options: ["because of floods", "because they like boats", "because there are no roads", "because it's a game"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "الثقافة: مدرسةٌ في الولايات المتحدة تستعمل الحواسيب فقط",
+      level: "knowledge",
+      statement: "In the USA school in the text, children use computers instead of books and paper.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "ربط كل بلدٍ بمدرسته غير المعتادة",
+      level: "knowledge",
+      prompt: "Match each country to its unusual school.",
+      pairs: [
+        { a: "Bangladesh", b: "a school on a boat" },
+        { a: "Indonesia",  b: "a school that uses nature" },
+        { a: "Britain",    b: "Forest School" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف المدارس: داخلية أم خارجية",
+      level: "application",
+      prompt: "Sort the schools: indoors or outdoors?",
+      groups: [
+        { name: "Indoors",  items: ["the boat school", "the computer school"] },
+        { name: "Outdoors", items: ["Forest School"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "فهم نصّ المدارس غير المعتادة",
+      level: "reasoning",
+      prompt: "Three of these are true about unusual schools in the text. Which one isn't?",
+      options: ["Some children study on a boat.", "Some schools never use books.", "Some children sleep at school on weekdays.", "All schools in the world are the same."],
+      answer: 3,
+      reason: "The text says schools around the world are different, not the same."
+    },
+    {
+      type: "mcq",
+      objective: "الثقافة: تعريف boarding school",
+      level: "knowledge",
+      prompt: "What is a 'boarding school'?",
+      options: ["A school where children sleep during the week", "A school on a boat", "A school with no teachers", "A school only for sport"],
+      answer: 0
+    }
+  ],
+
+  // الدرس ١-٦: اللغة الوظيفية — Making arrangements
+  "g4e-1-6": [
+    {
+      type: "mcq",
+      objective: "لغة الاتفاق على موعد: Do you want to...?",
+      level: "knowledge",
+      prompt: "What do you say to suggest a plan?",
+      options: ["Do you want to play football tomorrow?", "How much is this?", "When is your birthday?", "What's the time?"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "لغة الاتفاق على موعد: Sorry, I can't.",
+      level: "knowledge",
+      statement: "'Sorry, I can't' means you cannot do something.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "حوار: Let's meet at quarter to five in the park.",
+      level: "knowledge",
+      prompt: "Complete the dialogue.",
+      text: "Let's meet at quarter to five in the {}.",
+      answers: ["park"],
+      distractors: ["school", "house"]
+    },
+    {
+      type: "matching",
+      objective: "ربط جمل حوار الاتفاق بردودها",
+      level: "application",
+      prompt: "Match each line to its reply.",
+      pairs: [
+        { a: "Do you want to play football tomorrow morning?", b: "Sorry, I can't. I go swimming on Friday mornings." },
+        { a: "When are you back home?",                        b: "At half past four." }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب حوار الاتفاق على موعد",
+      level: "reasoning",
+      prompt: "Put the arrangement in order.",
+      steps: ["Do you want to play football tomorrow morning?", "Sorry, I can't.", "What about Saturday?", "Let's meet at quarter to five."]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف الأوقات: صباحاً أم بعد الظهر",
+      level: "reasoning",
+      prompt: "Sort the times: morning or afternoon?",
+      groups: [
+        { name: "Morning",   items: ["tomorrow morning"] },
+        { name: "Afternoon", items: ["quarter to five"] }
+      ]
+    }
+  ],
+
+  // الدرس ١-٧: المهارات — Reading: Maryam's Diary (Skills)
+  "g4e-1-7": [
+    {
+      type: "mcq",
+      objective: "نصّ القراءة: يوميات مريم — قلقها من المدرسة الجديدة",
+      level: "knowledge",
+      prompt: "Why does Maryam feel worried?",
+      options: ["It's her first day at a new school.", "She lost her book.", "She's ill.", "She missed the bus."],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "نصّ القراءة: صديقتها الجديدة منى",
+      level: "knowledge",
+      statement: "Maryam makes a new friend called Muna.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "نصّ القراءة: أول يوم في الصف الرابع",
+      level: "knowledge",
+      prompt: "Complete the diary entry.",
+      text: "I feel worried! Tomorrow is my first day in Grade 4 at a new {}.",
+      answers: ["school"],
+      distractors: ["house", "town"]
+    },
+    {
+      type: "matching",
+      objective: "ربط كل يومٍ بما حدث فيه",
+      level: "application",
+      prompt: "Match each day to what happened.",
+      pairs: [
+        { a: "Saturday", b: "Maryam feels worried." },
+        { a: "Sunday",   b: "Maryam meets Muna." },
+        { a: "Monday",   b: "Maryam's picture is on the wall." }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف مشاعر مريم عبر اليوميات",
+      level: "reasoning",
+      prompt: "Sort Maryam's feelings: worried or happy?",
+      groups: [
+        { name: "Worried", items: ["I feel worried!", "I'm still worried!"] },
+        { name: "Happy",   items: ["I'm so happy!", "I think this school is going to be OK."] }
+      ]
+    },
+    {
+      type: "mcq",
+      objective: "نصّ القراءة: معلّمتها الجديدة السيدة زهرة",
+      level: "knowledge",
+      prompt: "What is Maryam's new teacher's name?",
+      options: ["Mrs Zahra", "Mrs Safa", "Miss Noora", "Mrs Amal"],
+      answer: 0
+    }
+  ],
+
+  // الدرس ١-٨: المهارات — Listening, Speaking & Writing (Skills)
+  "g4e-1-8": [
+    {
+      type: "mcq",
+      objective: "نصّ الكتابة: My favourite lesson — عمّار",
+      level: "knowledge",
+      prompt: "What is Ammar's favourite lesson?",
+      options: ["English", "Maths", "Science", "Art"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "نصّ الكتابة: عمّار يحب الرياضيات لتعلّم الأعداد",
+      level: "knowledge",
+      statement: "Ammar likes Maths because he likes learning about numbers.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "نصّ الكتابة: نلعب ألعاباً في حصصنا",
+      level: "knowledge",
+      prompt: "Complete Ammar's text.",
+      text: "My favourite lesson is English. I like it because we sometimes play games in our {}.",
+      answers: ["lessons"],
+      distractors: ["books", "tests"]
+    },
+    {
+      type: "matching",
+      objective: "نشاط التحدّث: ماذا تفعل بعد المدرسة",
+      level: "application",
+      prompt: "Match each day to the activity.",
+      pairs: [
+        { a: "On Wednesdays", b: "I go swimming." },
+        { a: "On Thursdays",  b: "I play basketball." }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "قواعد الكتابة الجيدة: الإملاء أم المحتوى",
+      level: "reasoning",
+      prompt: "Sort the writing tips: about spelling/capitals, or about content?",
+      groups: [
+        { name: "Spelling/capitals", items: ["A capital letter at the start of each sentence", "Correct spelling"] },
+        { name: "Content",           items: ["What's your favourite lesson?", "Why do you like it?"] }
+      ]
+    },
+    {
+      type: "memory",
+      objective: "نشاط التحدّث: الأيام والأنشطة",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "Wednesdays", b: "swimming" },
+        { a: "Thursdays",  b: "basketball" }
+      ]
+    }
+  ],
+
+  // الدرس ١-٩: الصوتيات — y, revise i_e/igh/ie (Phonics)
+  // ⚠️ نصّيٌّ بلا صوتٍ حقيقيّ — مزوّد n8n/داريجات غيرُ مدرَجٍ في قائمة موصّلات
+  // الجلسة إطلاقاً وقت التأليف (٢٠٢٦-٠٩-١٧). يُستبدَل بـsound-blend حقيقي حين يعود.
+  "g4e-1-9": [
+    {
+      type: "mcq",
+      objective: "صوت y: fly, shy — مراجعة ie/igh/i_e: pie, night, kite",
+      level: "knowledge",
+      prompt: "Which word has the 'y' sound like in 'fly'?",
+      options: ["shy", "night", "pie", "kite"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "صوتا igh وi_e: night, kite",
+      level: "knowledge",
+      statement: "'Night' and 'kite' have different sounds in this lesson (igh vs i_e).",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "لعبة اللسان: Every night, I eat a pie and fly a kite.",
+      level: "knowledge",
+      prompt: "Complete the tongue twister.",
+      text: "Every night, I eat a pie and fly a {}.",
+      answers: ["kite"],
+      distractors: ["cake", "ball"]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف الكلمات حسب صوتها",
+      level: "application",
+      prompt: "Sort the words by their sound.",
+      groups: [
+        { name: "ie",  items: ["pie"] },
+        { name: "igh", items: ["night"] },
+        { name: "i_e", items: ["kite"] },
+        { name: "y",   items: ["fly", "shy"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "التمييز بين صوت y وصوت igh",
+      level: "reasoning",
+      prompt: "Three of these have the 'y' sound like in 'fly'. Which one doesn't?",
+      options: ["shy", "cry", "try", "night"],
+      answer: 3,
+      reason: "'Night' has the 'igh' sound, not the 'y' sound."
+    },
+    {
+      type: "matching",
+      objective: "ربط الكلمة بنمط رسمها الصوتيّ",
+      level: "knowledge",
+      prompt: "Match each word to its spelling pattern.",
+      pairs: [
+        { a: "pie",   b: "ie" },
+        { a: "night", b: "igh" },
+        { a: "kite",  b: "i_e" },
+        { a: "fly",   b: "y" }
+      ]
+    }
+  ],
+
+  // الدرس ١-١٠: المراجعة — Review
+  "g4e-1-10": [
+    {
+      type: "mcq",
+      objective: "مراجعة مفردات المواد الدراسية",
+      level: "knowledge",
+      prompt: "Which of these is a school subject?",
+      options: ["Science", "headteacher", "every day", "Britain"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مراجعة: How often يسأل عن التكرار",
+      level: "knowledge",
+      statement: "'How often' asks about frequency.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "مراجعة: يوميات آدم — واجب الإنجليزي الأربعاء",
+      level: "knowledge",
+      prompt: "Complete the answer.",
+      text: "When does Adam have English homework? He has English homework on {}.",
+      answers: ["Wednesday"],
+      distractors: ["Monday", "Friday"]
+    },
+    {
+      type: "matching",
+      objective: "ربط نوع السؤال بما يسأل عنه",
+      level: "application",
+      prompt: "Match each question type to what it asks about.",
+      pairs: [
+        { a: "When...?",      b: "a day or time" },
+        { a: "How often...?", b: "how many times" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف أنشطة آدم: واجبٌ أم نشاط",
+      level: "reasoning",
+      prompt: "Sort Adam's activities: homework or an activity?",
+      groups: [
+        { name: "Homework",   items: ["Science", "Maths", "English"] },
+        { name: "An activity", items: ["swimming lesson", "karate lesson", "football"] }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب المواد الدراسية هجائياً",
+      level: "reasoning",
+      prompt: "Put the school subjects in alphabetical order.",
+      steps: ["Art", "English", "Maths", "Science"]
+    }
+  ],
+
+  // الدرس ١-١١: الاستعداد لِ… — Get ready for... (A1 Movers)
+  "g4e-1-11": [
+    {
+      type: "mcq",
+      objective: "نمط اختبار A1 Movers: مشهد الحديقة — فتاةٌ تقرأ عن العلوم",
+      level: "knowledge",
+      prompt: "What is the girl under the tree reading about?",
+      options: ["Science", "Maths", "Art", "History"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "نمط اختبار A1 Movers: Listening Part 2 — كلمةٌ واحدة لكل إجابة",
+      level: "knowledge",
+      statement: "In A1 Movers Listening Part 2, you write one word for each answer.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "نمط اختبار A1 Movers: What has the girl's mother got?",
+      level: "knowledge",
+      prompt: "Complete the answer.",
+      text: "What has the girl's mother got? She's got a {}.",
+      answers: ["bag"],
+      distractors: ["book", "ball"]
+    },
+    {
+      type: "matching",
+      objective: "ربط نوع النشاط بجزء الاختبار",
+      level: "application",
+      prompt: "Match each question type to its exam part.",
+      pairs: [
+        { a: "Look, read and write",       b: "Reading and Writing" },
+        { a: "Listen and write about Ruba", b: "Listening" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف مهامّ الاختبار: قراءةٌ وكتابة أم استماع",
+      level: "reasoning",
+      prompt: "Sort the tasks: reading and writing, or listening?",
+      groups: [
+        { name: "Reading and Writing", items: ["Complete the sentences.", "Answer the questions."] },
+        { name: "Listening",           items: ["Listen and write.", "Write one word for each answer."] }
+      ]
+    },
+    {
+      type: "mcq",
+      objective: "نمط اختبار A1 Movers: مشهد الحديقة — الأولاد يلعبون كرة القدم",
+      level: "knowledge",
+      prompt: "In the picture, what are the boys playing?",
+      options: ["football", "tennis", "basketball", "cricket"],
+      answer: 0
+    }
   ]
 };
