@@ -842,8 +842,8 @@ window.DATA_FALLBACK = {
         { title:"Fun corner", file:"g3e-2-10", open:true }
       ]},
       { unit:"Atomic's Learning Club 1", lessons:[
-        { title:"Language booster 1", file:"g3e-lc1-1", open:false },
-        { title:"Maths: How do we measure things?", file:"g3e-lc1-2", open:false }
+        { title:"Language booster 1", file:"g3e-lc1-1", open:true },
+        { title:"Maths: How do we measure things?", file:"g3e-lc1-2", open:true }
       ]},
       { unit:"Hobbies", lessons:[
         { title:"Hobbies (Vocabulary)", file:"g3e-3-1", open:false },

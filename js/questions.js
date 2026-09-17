@@ -44540,5 +44540,120 @@ window.QUESTIONS = {
       options: ["You're wearing red trainers.", "You're wearing red glasses.", "I'm wearing a red cap.", "They're wearing red jeans."],
       answer: 0
     }
+  ],
+
+  // نادي التعلّم ١ — Atomic's Learning Club (Language booster 1 + Maths)
+
+  // الدرس ن١-١: Language booster 1 (الأعداد ٢١-٣٠ وبالعشرات حتى ١٠٠)
+  "g3e-lc1-1": [
+    {
+      type: "mcq",
+      objective: "الأعداد ٢١-٣٠: twenty-one..thirty",
+      level: "knowledge",
+      prompt: "What number comes after twenty-nine?",
+      options: ["thirty", "twenty-eight", "twenty", "forty"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "الأعداد بالعشرات: ten..one hundred",
+      level: "knowledge",
+      statement: "'Fifty' is a multiple of ten.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "الأعداد ٢١-٣٠ وبالعشرات: الرقم وكلمته",
+      level: "knowledge",
+      prompt: "Match the number to its word.",
+      pairs: [
+        { a: "23", b: "twenty-three" },
+        { a: "27", b: "twenty-seven" },
+        { a: "60", b: "sixty" },
+        { a: "90", b: "ninety" }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب الأعداد ٢١-٣٠ تصاعدياً",
+      level: "application",
+      prompt: "Put the numbers in order.",
+      steps: ["twenty-one", "twenty-four", "twenty-seven", "thirty"]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف الأعداد: ٢١-٣٠ أم بالعشرات",
+      level: "reasoning",
+      prompt: "Sort the numbers: 21-30 or tens (10-100)?",
+      groups: [
+        { name: "21-30", items: ["twenty-two", "twenty-five", "twenty-nine"] },
+        { name: "Tens",  items: ["forty", "seventy", "one hundred"] }
+      ]
+    },
+    {
+      type: "fill-blank",
+      objective: "إكمال العدّ ٢١-٣٠",
+      level: "knowledge",
+      prompt: "Complete the count.",
+      text: "Twenty-eight, twenty-nine, {}.",
+      answers: ["thirty"],
+      distractors: ["twenty", "forty"]
+    }
+  ],
+
+  // الدرس ن١-٢: Maths — How do we measure things?
+  "g3e-lc1-2": [
+    {
+      type: "mcq",
+      objective: "وحدات القياس: millimetres, centimetres, metres",
+      level: "knowledge",
+      prompt: "Which unit do we use to measure how wide a door is?",
+      options: ["metres", "kilograms", "litres", "hours"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "تركيب: There are a hundred centimetres in one metre.",
+      level: "knowledge",
+      statement: "There are 100 centimetres in one metre.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "تركيب: There are ten millimetres in one centimetre.",
+      level: "knowledge",
+      prompt: "Complete the fact.",
+      text: "There are ten {} in one centimetre.",
+      answers: ["millimetres"],
+      distractors: ["metres", "centimetres"]
+    },
+    {
+      type: "matching",
+      objective: "تركيب: How long/wide is it? It's (40) centimetres.",
+      level: "application",
+      prompt: "Match each question to its answer.",
+      pairs: [
+        { a: "How wide is the book?", b: "13 centimetres." },
+        { a: "How long is the book?", b: "20 centimetres." },
+        { a: "How long is the table?", b: "1 metre." }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب الأطوال من الأقصر إلى الأطول",
+      level: "reasoning",
+      prompt: "Put the lengths in order, shortest to longest.",
+      steps: ["1 millimetre", "13 centimetres", "20 centimetres", "1 metre"]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف الأشياء: تُقاس بالسنتيمتر أم بالمتر",
+      level: "reasoning",
+      prompt: "Sort the things: measured in centimetres or in metres?",
+      groups: [
+        { name: "Centimetres", items: ["a book", "a pencil"] },
+        { name: "Metres",      items: ["a table", "a door"] }
+      ]
+    }
   ]
 };
