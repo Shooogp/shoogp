@@ -43217,5 +43217,180 @@ window.QUESTIONS = {
         { a: "houses",   b: "live" }
       ]
     }
+  ],
+
+  // ═══════════ اللغة الإنجليزية — الصف الثالث (g3-en) ═══════════
+  // التمهيد — Welcome: Back to school
+
+  // الدرس ٠-١: لغة الصف — Classroom language
+  "g3e-0-1": [
+    {
+      type: "mcq",
+      objective: "أوامر الصف: Hold up your drawing, Take out/Put away your pencil, Turn on/off the AC",
+      level: "knowledge",
+      prompt: "The teacher wants you to show the class your picture. What do you say?",
+      options: ["Hold up your drawing.", "Tidy up.", "Ask a question.", "Turn off the AC."],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "أوامر الصف: Take out your pencil / Put away your pencil",
+      level: "knowledge",
+      statement: "'Put away your pencil' means you take your pencil out.",
+      answer: false
+    },
+    {
+      type: "fill-blank",
+      objective: "أوامر الصف: Put up your hand / Put down your hand",
+      level: "knowledge",
+      prompt: "Complete the command.",
+      text: "Put {} your hand.",
+      answers: ["up"],
+      distractors: ["out", "away"]
+    },
+    {
+      type: "matching",
+      objective: "أوامر الصف وأضدادها: up/down, on/off, take out/put away",
+      level: "application",
+      prompt: "Match each command to its opposite.",
+      pairs: [
+        { a: "Put up your hand.",        b: "Put down your hand." },
+        { a: "Turn on the AC.",          b: "Turn off the AC." },
+        { a: "Take out your pencil.",    b: "Put away your pencil." }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "أوامر الصف: التمييز بين أمرٍ عن الجسم وأمرٍ عن أداة",
+      level: "reasoning",
+      prompt: "Sort the commands: about your body or about an object?",
+      groups: [
+        { name: "About your body",  items: ["Put up your hand.", "Put down your hand.", "Hold up your drawing."] },
+        { name: "About an object",  items: ["Turn on the AC.", "Take out your pencil.", "Put away your pencil."] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "أوامر الصف: التمييز بين أمرٍ يفعله التلميذ بنفسه وأمرٍ عن الغرفة",
+      level: "reasoning",
+      prompt: "Three of these are things you do with your own body. Which one doesn't belong?",
+      options: ["Put up your hand.", "Put down your hand.", "Pay attention.", "Turn on the AC."],
+      answer: 3,
+      reason: "The first three are things you do with your own body; turning on the AC is about the room, not about you."
+    }
+  ],
+
+  // الدرس ٠-٢: الحروف الهجائية والقواعد — Alphabet & Grammar
+  "g3e-0-2": [
+    {
+      type: "mcq",
+      objective: "الحروف الهجائية بالترتيب",
+      level: "knowledge",
+      prompt: "Which letter comes right after 'M' in the alphabet?",
+      options: ["L", "N", "O", "K"],
+      answer: 1
+    },
+    {
+      type: "true-false",
+      objective: "Grammar: This is a pen. / That is a pen.",
+      level: "knowledge",
+      statement: "We use 'that' for something far away from us.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "تهجئة الكلمات: How do you spell (Anna)? A-n-n-a.",
+      level: "knowledge",
+      prompt: "Spell the word.",
+      text: "b-i-{}-e",
+      answers: ["k"],
+      distractors: ["t", "p"]
+    },
+    {
+      type: "matching",
+      objective: "Grammar: This is a pen./These are pens. — That is a pen./Those are pens.",
+      level: "application",
+      prompt: "Match each sentence to its plural.",
+      pairs: [
+        { a: "This is a pen.",     b: "These are pens." },
+        { a: "That is a book.",    b: "Those are books." },
+        { a: "This is a crayon.",  b: "These are crayons." },
+        { a: "That is a pencil.",  b: "Those are pencils." }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "Grammar: التمييز بين this/these (قريب) وthat/those (بعيد)",
+      level: "reasoning",
+      prompt: "Sort the sentences: near (this/these) or far (that/those)?",
+      groups: [
+        { name: "Near — this/these", items: ["This is a pen.", "These are books."] },
+        { name: "Far — that/those",  items: ["That is a pen.", "Those are books."] }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "الحروف الهجائية بالترتيب",
+      level: "reasoning",
+      prompt: "Put these letters in alphabetical order.",
+      steps: ["A", "D", "H", "K", "P"]
+    }
+  ],
+
+  // الدرس ٠-٣: الأعداد ١١-٢٠ — Numbers (11-20)
+  "g3e-0-3": [
+    {
+      type: "mcq",
+      objective: "الأعداد ١١-٢٠: eleven..twenty",
+      level: "knowledge",
+      prompt: "Which number is 'fifteen'?",
+      options: ["12", "15", "18", "20"],
+      answer: 1
+    },
+    {
+      type: "true-false",
+      objective: "الأعداد ١١-٢٠: ترتيب الأعداد",
+      level: "knowledge",
+      statement: "'Seventeen' comes before 'sixteen'.",
+      answer: false
+    },
+    {
+      type: "matching",
+      objective: "الأعداد ١١-٢٠: الرقم وكلمته",
+      level: "knowledge",
+      prompt: "Match the number to its word.",
+      pairs: [
+        { a: "11", b: "eleven" },
+        { a: "14", b: "fourteen" },
+        { a: "17", b: "seventeen" },
+        { a: "20", b: "twenty" }
+      ]
+    },
+    {
+      type: "fill-blank",
+      objective: "تركيب: How many (desks) can you see? I can see (fifteen) desks.",
+      level: "application",
+      prompt: "Complete the answer.",
+      text: "How many kites can you see? I can see {} kites.",
+      answers: ["thirteen"],
+      distractors: ["thirty", "three"]
+    },
+    {
+      type: "sequence",
+      objective: "الأعداد ١١-٢٠: الترتيب التصاعدي",
+      level: "reasoning",
+      prompt: "Put the numbers in order, from smallest to biggest.",
+      steps: ["eleven", "fourteen", "sixteen", "eighteen", "twenty"]
+    },
+    {
+      type: "classify",
+      objective: "الأعداد ١١-٢٠: المقارنة بعدد مرجعيّ",
+      level: "reasoning",
+      prompt: "Sort the numbers: less than fifteen, or fifteen and more?",
+      groups: [
+        { name: "Less than 15", items: ["eleven", "twelve", "fourteen"] },
+        { name: "15 and more",  items: ["fifteen", "seventeen", "twenty"] }
+      ]
+    }
   ]
 };

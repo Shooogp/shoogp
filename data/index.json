@@ -1123,8 +1123,9 @@
       {
         "unit": "Welcome",
         "lessons": [
-          { "title": "Classroom language", "file": "g3e-0-1", "open": false },
-          { "title": "Alphabet & Asking for names", "file": "g3e-0-2", "open": false }
+          { "title": "Classroom language", "file": "g3e-0-1", "open": true },
+          { "title": "Alphabet & Asking for names", "file": "g3e-0-2", "open": true },
+          { "title": "Numbers (11-20)", "file": "g3e-0-3", "open": true }
         ]
       },
       {

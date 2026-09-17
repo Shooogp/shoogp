@@ -813,8 +813,9 @@ window.DATA_FALLBACK = {
     ]},
     "g3-en": { book:"اللغة الإنجليزية — الصف الثالث", units:[
       { unit:"Welcome", lessons:[
-        { title:"Classroom language", file:"g3e-0-1", open:false },
-        { title:"Alphabet & Asking for names", file:"g3e-0-2", open:false }
+        { title:"Classroom language", file:"g3e-0-1", open:true },
+        { title:"Alphabet & Asking for names", file:"g3e-0-2", open:true },
+        { title:"Numbers (11-20)", file:"g3e-0-3", open:true }
       ]},
       { unit:"It's a happy day!", lessons:[
         { title:"It's a happy day! (Vocabulary)", file:"g3e-1-1", open:false },
