@@ -1249,8 +1249,8 @@
       {
         "unit": "Bo's Learning Club 1",
         "lessons": [
-          { "title": "Maths: Sizes and shapes", "file": "g4e-lc1-1", "open": false },
-          { "title": "Language booster 1", "file": "g4e-lc1-2", "open": false }
+          { "title": "Maths: Sizes and shapes", "file": "g4e-lc1-1", "open": true },
+          { "title": "Language booster 1", "file": "g4e-lc1-2", "open": true }
         ]
       },
       {

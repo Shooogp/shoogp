@@ -907,8 +907,8 @@ window.DATA_FALLBACK = {
         { title:"Get ready for… (A1 Movers)", file:"g4e-2-11", open:true }
       ]},
       { unit:"Bo's Learning Club 1", lessons:[
-        { title:"Maths: Sizes and shapes", file:"g4e-lc1-1", open:false },
-        { title:"Language booster 1", file:"g4e-lc1-2", open:false }
+        { title:"Maths: Sizes and shapes", file:"g4e-lc1-1", open:true },
+        { title:"Language booster 1", file:"g4e-lc1-2", open:true }
       ]},
       { unit:"Along the wadi", lessons:[
         { title:"Landscapes (Vocabulary)", file:"g4e-3-1", open:false },

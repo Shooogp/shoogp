@@ -47273,5 +47273,123 @@ window.QUESTIONS = {
       statement: "In A1 Movers Speaking Part 3, you say why a picture is different.",
       answer: true
     }
+  ],
+
+  // Bo's Learning Club 1 — Maths + Language booster 1
+
+  // الدرس ن١-١: Maths — Sizes and shapes
+  "g4e-lc1-1": [
+    {
+      type: "mcq",
+      objective: "الأشكال: square, round, triangular, rectangular",
+      level: "knowledge",
+      prompt: "What shape is a book usually?",
+      options: ["rectangular", "round", "triangular", "square"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "الأشكال: الصحن قد يكون دائرياً أو مثلثاً",
+      level: "knowledge",
+      statement: "A plate can be round or triangular.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "تركيب: Tea comes in boxes and boxes are square.",
+      level: "knowledge",
+      prompt: "Complete the fact.",
+      text: "Tea comes in boxes and boxes are {}.",
+      answers: ["square"],
+      distractors: ["round", "rectangular"]
+    },
+    {
+      type: "matching",
+      objective: "ربط كل جسمٍ بشكله",
+      level: "application",
+      prompt: "Match each object to its shape.",
+      pairs: [
+        { a: "a large square window",    b: "square" },
+        { a: "a small rectangular door", b: "rectangular" },
+        { a: "a large round moon",       b: "round" },
+        { a: "a small triangular window", b: "triangular" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف الأشكال: ثلاثةُ أضلاعٍ أم أربعة",
+      level: "reasoning",
+      prompt: "Sort the shapes: has 3 sides, or has 4 sides?",
+      groups: [
+        { name: "3 sides", items: ["triangular"] },
+        { name: "4 sides", items: ["square", "rectangular"] }
+      ]
+    },
+    {
+      type: "mcq",
+      objective: "الأشكال: عدد أضلاع الشكل المثلث",
+      level: "knowledge",
+      prompt: "How many sides does a triangular shape have?",
+      options: ["three", "four", "five", "two"],
+      answer: 0
+    }
+  ],
+
+  // الدرس ن١-٢: Language booster 1 (المواضع)
+  "g4e-lc1-2": [
+    {
+      type: "mcq",
+      objective: "مواضع: up, down, top, bottom, above, below",
+      level: "knowledge",
+      prompt: "Which word is the opposite of 'up'?",
+      options: ["down", "top", "above", "below"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مواضع: top وbottom ضدّان",
+      level: "knowledge",
+      statement: "'Top' and 'bottom' are opposites.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "حوار: It's on the bottom shelf. It's below the bread.",
+      level: "knowledge",
+      prompt: "Complete the dialogue.",
+      text: "Where's the juice? It's on the bottom shelf. It's {} the bread.",
+      answers: ["below"],
+      distractors: ["above", "up"]
+    },
+    {
+      type: "matching",
+      objective: "ربط كل كلمةٍ بضدّها",
+      level: "application",
+      prompt: "Match each word to its opposite.",
+      pairs: [
+        { a: "top",   b: "bottom" },
+        { a: "above", b: "below" },
+        { a: "up",    b: "down" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف الكلمات: موضعٌ على رفٍّ أم حركةُ يد",
+      level: "reasoning",
+      prompt: "Sort the words: about a shelf position, or about a hand movement?",
+      groups: [
+        { name: "Shelf position", items: ["top", "bottom", "above", "below"] },
+        { name: "Hand movement",  items: ["up", "down"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "التمييز بين كلمة الموضع والطعام",
+      level: "reasoning",
+      prompt: "Three of these are location words. Which one isn't?",
+      options: ["above", "below", "juice", "top"],
+      answer: 2,
+      reason: "'Juice' is a drink, not a location word."
+    }
   ]
 };
