@@ -45793,5 +45793,120 @@ window.QUESTIONS = {
         { a: "artist",      b: "paint" }
       ]
     }
+  ],
+
+  // نادي التعلّم ٢ — Atomic's Learning Club (Language booster 2 + Social Studies)
+
+  // الدرس ن٢-١: Language booster 2 (الفصول الأربعة)
+  "g3e-lc2-1": [
+    {
+      type: "mcq",
+      objective: "مفردات الفصول: winter, spring, summer, autumn",
+      level: "knowledge",
+      prompt: "How many seasons are there?",
+      options: ["four", "three", "two", "five"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "أنشودة الفصول: Winter is cold.",
+      level: "knowledge",
+      statement: "Winter is cold.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "أنشودة الفصول: Spring is lots of fun.",
+      level: "knowledge",
+      prompt: "Complete the chant.",
+      text: "Autumn is windy, {} is lots of fun.",
+      answers: ["Spring"],
+      distractors: ["Summer", "Winter"]
+    },
+    {
+      type: "matching",
+      objective: "ربط كل فصلٍ بوصفه في الأنشودة",
+      level: "application",
+      prompt: "Match each season to its description.",
+      pairs: [
+        { a: "Winter", b: "is cold" },
+        { a: "Summer", b: "has sun" },
+        { a: "Autumn", b: "is windy" },
+        { a: "Spring", b: "is lots of fun" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف الفصول: حارّ أم بارد",
+      level: "reasoning",
+      prompt: "Sort the seasons: hot or cold?",
+      groups: [
+        { name: "Hot",  items: ["Summer"] },
+        { name: "Cold", items: ["Winter"] }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب الفصول كما وردت في الأنشودة",
+      level: "knowledge",
+      prompt: "Put the seasons in the order of the chant.",
+      steps: ["Winter", "Summer", "Autumn", "Spring"]
+    }
+  ],
+
+  // الدرس ن٢-٢: Social Studies — Important months
+  "g3e-lc2-2": [
+    {
+      type: "mcq",
+      objective: "أشهر السنة: January..December",
+      level: "knowledge",
+      prompt: "Which month comes after May?",
+      options: ["June", "April", "July", "March"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "تركيب: When is your birthday?",
+      level: "knowledge",
+      statement: "'When is your birthday?' asks about a month.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "حوار: When is Jasim's birthday? It's in June.",
+      level: "knowledge",
+      prompt: "Complete the dialogue.",
+      text: "When is Jasim's birthday? It's in {}.",
+      answers: ["June"],
+      distractors: ["May", "July"]
+    },
+    {
+      type: "matching",
+      objective: "ترتيب الأشهر: الأول والأخير والسادس",
+      level: "application",
+      prompt: "Match each month to its position.",
+      pairs: [
+        { a: "January",  b: "the first month" },
+        { a: "December", b: "the last month" },
+        { a: "June",     b: "the sixth month" }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب أشهر السنة",
+      level: "reasoning",
+      prompt: "Put the months in order.",
+      steps: ["January", "February", "March", "April"]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف الأشهر: النصف الأول أم الثاني من السنة",
+      level: "reasoning",
+      prompt: "Sort the months: first half of the year or second half?",
+      groups: [
+        { name: "First half",  items: ["January", "March", "May"] },
+        { name: "Second half", items: ["September", "November", "December"] }
+      ]
+    }
   ]
 };
