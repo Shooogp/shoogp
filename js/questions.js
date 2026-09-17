@@ -47391,5 +47391,629 @@ window.QUESTIONS = {
       answer: 2,
       reason: "'Juice' is a drink, not a location word."
     }
+  ],
+
+  // الوحدة ٣ — Along the wadi
+
+  // الدرس ٣-١: المفردات — Landscapes (Vocabulary)
+  "g4e-3-1": [
+    {
+      type: "mcq",
+      objective: "مفردات التضاريس: river, mountain, lake, waterfall, city, town, forest, hill, island, deep, high, wide",
+      level: "knowledge",
+      prompt: "Which word means a very big hill that's hard to climb?",
+      options: ["mountain", "hill", "lake", "forest"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مفردات: island",
+      level: "knowledge",
+      statement: "An island has water all around it.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "تعريف: city",
+      level: "knowledge",
+      prompt: "Complete the definition.",
+      text: "It's got a lot of buildings and a lot of people. It's very big. It's a {}.",
+      answers: ["city"],
+      distractors: ["town", "forest"]
+    },
+    {
+      type: "matching",
+      objective: "ربط كل تعريفٍ بكلمته",
+      level: "application",
+      prompt: "Match each definition to its word.",
+      pairs: [
+        { a: "It's got water all around it.",       b: "island" },
+        { a: "It's got a lot of trees.",             b: "forest" },
+        { a: "It's hard to climb. It's very high.",  b: "mountain" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف التضاريس: يابسة أم ماء",
+      level: "reasoning",
+      prompt: "Sort the words: land or water?",
+      groups: [
+        { name: "Land",  items: ["mountain", "hill", "forest"] },
+        { name: "Water", items: ["river", "lake", "waterfall"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "التمييز بين وصف الحجم والتضاريس نفسها",
+      level: "reasoning",
+      prompt: "Three of these describe size or depth. Which one isn't?",
+      options: ["deep", "high", "wide", "river"],
+      answer: 3,
+      reason: "'River' is a landscape feature, not a description of size or depth."
+    }
+  ],
+
+  // الدرس ٣-٢: القصّة — The Great Clean-up (Story)
+  "g4e-3-2": [
+    {
+      type: "mcq",
+      objective: "قصّة الوحدة: The Great Clean-up في وادي دربات",
+      level: "knowledge",
+      prompt: "Where does the Great Clean-up happen?",
+      options: ["Wadi Darbat", "Wadi Shab", "the park", "the beach"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "قصّة الوحدة: Bo يساعد في تنظيف الغابة",
+      level: "knowledge",
+      statement: "In the story, Bo helps clean up rubbish in the forest.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "قصّة الوحدة: put the gloves on and pick up the rubbish",
+      level: "knowledge",
+      prompt: "Complete the line from the story.",
+      text: "OK, first, put the gloves on and pick up the {}.",
+      answers: ["rubbish"],
+      distractors: ["wood", "bags"]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب أحداث القصّة",
+      level: "application",
+      prompt: "Put the story events in order.",
+      steps: ["It's the Great Clean-up tomorrow!", "There's a lot of rubbish in the forest.", "Put the gloves on and pick up the rubbish.", "Put wood and cans in the biggest bags.", "Now the bag is wider than the wood!"]
+    },
+    {
+      type: "exclude",
+      objective: "فهم أحداث القصّة",
+      level: "reasoning",
+      prompt: "Three of these happened in the story. Which one didn't?",
+      options: ["They clean up rubbish by the wadi.", "Bo has trouble with the wood.", "They go swimming in the sea.", "They wear gloves to clean up."],
+      answer: 2,
+      reason: "The story is about cleaning up the wadi, not swimming in the sea."
+    },
+    {
+      type: "mcq",
+      objective: "قصّة الوحدة: اسم فعالية التنظيف",
+      level: "knowledge",
+      prompt: "What is the name of the clean-up event?",
+      options: ["The Great Clean-up", "The Secret Shed", "Wadi rescue", "The Discovery Team"],
+      answer: 0
+    }
+  ],
+
+  // الدرس ٣-٣: القواعد — Comparatives and superlatives (Grammar)
+  "g4e-3-3": [
+    {
+      type: "mcq",
+      objective: "تركيب المقارنة: A mountain is higher than a hill.",
+      level: "knowledge",
+      prompt: "Which sentence compares two things?",
+      options: ["A mountain is higher than a hill.", "This is a mountain.", "I like mountains.", "Mountains are big."],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "تركيب المقارنة: dirtier than",
+      level: "knowledge",
+      statement: "'Dirtier than' is used to compare how clean or dirty things are.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "تركيب: The wadi is longer than the road.",
+      level: "knowledge",
+      prompt: "Complete the sentence.",
+      text: "The wadi is {} than the road.",
+      answers: ["longer"],
+      distractors: ["long", "longest"]
+    },
+    {
+      type: "matching",
+      objective: "ربط كل صفةٍ بصيغة المقارنة منها",
+      level: "application",
+      prompt: "Match each adjective to its comparative form.",
+      pairs: [
+        { a: "deep",  b: "deeper" },
+        { a: "high",  b: "higher" },
+        { a: "dirty", b: "dirtier" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف الجمل: مقارنةٌ بين شيئين أم وصفٌ لشيءٍ واحد",
+      level: "reasoning",
+      prompt: "Sort the sentences: comparing two things, or just describing one thing?",
+      groups: [
+        { name: "Comparing two things",   items: ["This mud is deeper than my shoes!", "A mountain is higher than a hill."] },
+        { name: "Describing one thing",   items: ["This forest is beautiful!", "Let's clean up!"] }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب الكلمات حسب الطول",
+      level: "knowledge",
+      prompt: "Put these in order, from shortest word to longest.",
+      steps: ["high", "deep", "dirty"]
+    }
+  ],
+
+  // الدرس ٣-٤: المفردات والقواعد — Superlatives
+  "g4e-3-4": [
+    {
+      type: "mcq",
+      objective: "حقائق عالمية: أعلى جبل — جبل إفرست",
+      level: "knowledge",
+      prompt: "What is the highest mountain in the world?",
+      options: ["Mount Everest", "Jabal Shams", "Jabal Samhan", "Jabal Akhdar"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "حقائق عالمية: أطول نهر — النيل",
+      level: "knowledge",
+      statement: "The Nile is the longest river in the world.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "تركيب التفضيل: Mount Everest is the highest mountain.",
+      level: "knowledge",
+      prompt: "Complete the fact.",
+      text: "Mount Everest is the {} mountain in the world.",
+      answers: ["highest"],
+      distractors: ["higher", "high"]
+    },
+    {
+      type: "matching",
+      objective: "ربط الحقيقة العالمية بإجابتها",
+      level: "application",
+      prompt: "Match each superlative fact to its answer.",
+      pairs: [
+        { a: "the widest river",  b: "the Amazon" },
+        { a: "the driest desert", b: "Atacama" },
+        { a: "the lowest sea",    b: "the Dead Sea" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف الصفات: مقارنةٌ (-er) أم تفضيل (-est)",
+      level: "reasoning",
+      prompt: "Sort the words: comparative (-er) or superlative (-est)?",
+      groups: [
+        { name: "Comparative", items: ["higher", "longer", "colder"] },
+        { name: "Superlative", items: ["highest", "longest", "coldest"] }
+      ]
+    },
+    {
+      type: "mcq",
+      objective: "حقائق عالمية: أطول نهر — النيل",
+      level: "knowledge",
+      prompt: "What is the longest river in the world, according to the lesson?",
+      options: ["the Nile", "the Yangtze", "the Amazon", "the Congo"],
+      answer: 0
+    }
+  ],
+
+  // الدرس ٣-٥: الثقافة والمشروع — Nature reserves in Oman
+  "g4e-3-5": [
+    {
+      type: "mcq",
+      objective: "الثقافة: جزر الديمانيات محميةٌ بحرية",
+      level: "knowledge",
+      prompt: "Which nature reserve is a marine reserve with turtles?",
+      options: ["Daymaniyat Islands", "Jabal Samhan", "Khawr Ruri", "Wadi Shab"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "الثقافة: النمر العربي في جبل سمحان",
+      level: "knowledge",
+      statement: "The Arabian leopard lives in Jabal Samhan.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "ربط كل محميةٍ بما تشتهر به",
+      level: "knowledge",
+      prompt: "Match each nature reserve to what it's known for.",
+      pairs: [
+        { a: "Daymaniyat Islands", b: "turtles and marine life" },
+        { a: "Jabal Samhan",       b: "gazelles and the Arabian leopard" },
+        { a: "Khawr Ruri",         b: "the ruins of Samharam" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف المحميات: جبلية أم مائية",
+      level: "application",
+      prompt: "Sort the nature reserves: mountains, or water?",
+      groups: [
+        { name: "Mountains", items: ["Jabal Samhan"] },
+        { name: "Water",     items: ["Daymaniyat Islands", "Khawr Ruri"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "فهم نصّ محميات عُمان الطبيعية",
+      level: "reasoning",
+      prompt: "Three of these are true about Oman's nature reserves. Which one isn't?",
+      options: ["Jabal Samhan has great views of the sea.", "Turtles lay eggs at Daymaniyat Islands.", "Khawr Ruri has old ruins.", "Oman's largest nature reserve is in Greenland."],
+      answer: 3,
+      reason: "The text says the world's largest nature reserve is in Greenland, not in Oman."
+    },
+    {
+      type: "true-false",
+      objective: "الثقافة: موقع جبل سمحان في محافظة ظفار",
+      level: "knowledge",
+      statement: "Jabal Samhan has great views of the sea from the top.",
+      answer: true
+    }
+  ],
+
+  // الدرس ٣-٦: اللغة الوظيفية — Asking the way
+  "g4e-3-6": [
+    {
+      type: "mcq",
+      objective: "لغة السؤال عن الطريق: Excuse me, can you tell me the way...؟",
+      level: "knowledge",
+      prompt: "What do you say to ask for directions politely?",
+      options: ["Excuse me, can you tell me the way to the park, please?", "How much is this?", "What's your name?", "When is your birthday?"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "لغة الاتجاهات: turn left/right",
+      level: "knowledge",
+      statement: "'Turn left' and 'turn right' are directions.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "حوار الاتجاهات: The park is on the left.",
+      level: "knowledge",
+      prompt: "Complete the directions.",
+      text: "Turn right at the supermarket. Go straight ahead. Go across the road. The park is on the {}.",
+      answers: ["left"],
+      distractors: ["right", "corner"]
+    },
+    {
+      type: "matching",
+      objective: "ربط عبارة الاتجاه بمعناها",
+      level: "application",
+      prompt: "Match each phrase to its meaning.",
+      pairs: [
+        { a: "go straight ahead", b: "continue in the same direction" },
+        { a: "go across the road", b: "cross to the other side" },
+        { a: "turn left",         b: "change direction to the left" }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب تعليمات الطريق",
+      level: "reasoning",
+      prompt: "Put the directions in order.",
+      steps: ["Turn right at the supermarket.", "Go straight ahead.", "Go across the road.", "The park is on the left."]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف الكلمات: اتجاهٌ أم مكان",
+      level: "reasoning",
+      prompt: "Sort the words: a direction, or a place?",
+      groups: [
+        { name: "A direction", items: ["turn left", "turn right", "go straight ahead"] },
+        { name: "A place",     items: ["the park", "the supermarket", "the hospital"] }
+      ]
+    }
+  ],
+
+  // الدرس ٣-٧: المهارات — Reading a story: Wadi rescue! (Skills)
+  "g4e-3-7": [
+    {
+      type: "mcq",
+      objective: "نصّ القراءة: Wadi rescue! — التجديف في وادي شاب",
+      level: "knowledge",
+      prompt: "Where do Jasim and Amjed go canoeing?",
+      options: ["Wadi Shab", "Wadi Darbat", "the sea", "a lake"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "نصّ القراءة: إصابة ذراع أمجد",
+      level: "knowledge",
+      statement: "Amjed hurts his arm when the canoe turns over.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "نصّ القراءة: إشارة الطوارئ — ست نفخات صافرة",
+      level: "knowledge",
+      prompt: "Complete the story.",
+      text: "I blow six times. That's the emergency {}.",
+      answers: ["signal"],
+      distractors: ["whistle", "sound"]
+    },
+    {
+      type: "matching",
+      objective: "ربط أسئلة الفهم بإجاباتها من القصّة",
+      level: "application",
+      prompt: "Match each question to its answer from the story.",
+      pairs: [
+        { a: "How does Jasim call for help?",  b: "He blows a whistle six times." },
+        { a: "How does Amjed get to hospital?", b: "A helicopter takes him." }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف أحداث القصّة: قبل الحادثة أم بعدها",
+      level: "reasoning",
+      prompt: "Sort the events: before the accident, or after the accident?",
+      groups: [
+        { name: "Before the accident", items: ["They go canoeing on Wadi Shab.", "They go very quickly down the wadi."] },
+        { name: "After the accident",  items: ["Jasim blows the whistle.", "The helicopter takes Amjed to hospital."] }
+      ]
+    },
+    {
+      type: "mcq",
+      objective: "نصّ القراءة: سبب انقلاب الزورق",
+      level: "knowledge",
+      prompt: "Why does the canoe turn over?",
+      options: ["There's a big tree across the wadi.", "Amjed can't swim.", "It's raining.", "The whistle is too loud."],
+      answer: 0
+    }
+  ],
+
+  // الدرس ٣-٨: المهارات — Listening, Speaking & Writing (Skills)
+  "g4e-3-8": [
+    {
+      type: "mcq",
+      objective: "نصّ الكتابة: بطاقة حقائق مصر — العاصمة القاهرة",
+      level: "knowledge",
+      prompt: "What is the capital city of Egypt in the fact file?",
+      options: ["Cairo", "Alexandria", "Giza", "Luxor"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "بطاقة حقائق مصر: أطول نهر — النيل",
+      level: "knowledge",
+      statement: "The Nile is the longest river in the Egypt fact file.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "بطاقة حقائق مصر: أعلى جبل — جبل كاترين",
+      level: "knowledge",
+      prompt: "Complete the fact file.",
+      text: "Highest mountain: Gabal {}.",
+      answers: ["Katrine"],
+      distractors: ["Everest", "Samhan"]
+    },
+    {
+      type: "matching",
+      objective: "ربط عنوان بطاقة الحقائق بمعلومته",
+      level: "application",
+      prompt: "Match each heading to its information.",
+      pairs: [
+        { a: "Capital city",        b: "Cairo" },
+        { a: "Longest river",       b: "the Nile" },
+        { a: "My favourite place",  b: "Pyramids of Giza" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف: اسمُ مكانٍ يحتاج حرفاً كبيراً أم لا",
+      level: "reasoning",
+      prompt: "Sort the words: a place name (needs a capital letter), or not?",
+      groups: [
+        { name: "A place name",     items: ["Muscat", "Wadi Shab", "Jabal Samhan"] },
+        { name: "Not a place name", items: ["mountain", "river", "desert"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "بطاقة حقائق مصر: التضاريس",
+      level: "reasoning",
+      prompt: "Three of these are landscape features in Egypt's fact file. Which one isn't?",
+      options: ["desert", "rivers", "mountains", "supermarket"],
+      answer: 3,
+      reason: "A supermarket isn't a landscape feature."
+    }
+  ],
+
+  // الدرس ٣-٩: الصوتيات — eigh, ei (Phonics)
+  // ⚠️ نصّيٌّ بلا صوتٍ حقيقيّ — مزوّد n8n/داريجات غيرُ مدرَجٍ في قائمة موصّلات
+  // الجلسة إطلاقاً وقت التأليف (٢٠٢٦-٠٩-١٧). يُستبدَل بـsound-blend حقيقي حين يعود.
+  "g4e-3-9": [
+    {
+      type: "mcq",
+      objective: "صوتا eigh/ei: eight, sleigh, reindeer, reins",
+      level: "knowledge",
+      prompt: "Which word has the 'eigh' sound like in 'eight'?",
+      options: ["sleigh", "reins", "weigh", "vein"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "صوت ei: reindeer, reins",
+      level: "knowledge",
+      statement: "'Reindeer' and 'reins' both have the 'ei' sound.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "لعبة اللسان: Eight reindeer with reins and a sleigh in the snow.",
+      level: "knowledge",
+      prompt: "Complete the tongue twister.",
+      text: "Eight reindeer with reins and a {} in the snow.",
+      answers: ["sleigh"],
+      distractors: ["car", "boat"]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف الكلمات حسب صوتها",
+      level: "application",
+      prompt: "Sort the words by their sound.",
+      groups: [
+        { name: "ei",   items: ["reindeer", "reins", "weigh", "vein"] },
+        { name: "eigh", items: ["eight", "sleigh", "eighteen"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "التمييز بين صوتَي eigh وei",
+      level: "reasoning",
+      prompt: "Three of these have the 'eigh' sound. Which one doesn't?",
+      options: ["eight", "sleigh", "eighteen", "vein"],
+      answer: 3,
+      reason: "'Vein' has the 'ei' sound, not the 'eigh' sound."
+    },
+    {
+      type: "matching",
+      objective: "ربط الكلمة بنمط رسمها الصوتيّ",
+      level: "knowledge",
+      prompt: "Match each word to its spelling pattern.",
+      pairs: [
+        { a: "eight",  b: "eigh" },
+        { a: "vein",   b: "ei" },
+        { a: "sleigh", b: "eigh" },
+        { a: "weigh",  b: "ei" }
+      ]
+    }
+  ],
+
+  // الدرس ٣-١٠: المراجعة — Review
+  "g4e-3-10": [
+    {
+      type: "mcq",
+      objective: "مراجعة المقارنة: الحيوان الأطول",
+      level: "knowledge",
+      prompt: "Which animal is the tallest?",
+      options: ["giraffe", "mouse", "bee", "cheetah"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مراجعة: الحوت أكبر الحيوانات",
+      level: "knowledge",
+      statement: "A whale is the largest animal in the review.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "مراجعة المقارنة: a car is faster than a bike",
+      level: "knowledge",
+      prompt: "Complete the comparison.",
+      text: "Is a bike faster than a car? No, a car is {} than a bike.",
+      answers: ["faster"],
+      distractors: ["slower", "fast"]
+    },
+    {
+      type: "matching",
+      objective: "ربط كل حيوانٍ بصفته",
+      level: "application",
+      prompt: "Match each animal to its description.",
+      pairs: [
+        { a: "giraffe", b: "tall" },
+        { a: "cheetah", b: "fast" },
+        { a: "mouse",   b: "small" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف إجابات لعبة Challenge",
+      level: "reasoning",
+      prompt: "Sort the Challenge quiz answers: about a place, or about time?",
+      groups: [
+        { name: "About a place", items: ["Jabal Samhan has great views."] },
+        { name: "About time",    items: ["Early morning is the best time to visit Wadi Shab."] }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب الحيوانات من الأصغر إلى الأكبر",
+      level: "reasoning",
+      prompt: "Put the animals in order, from smallest to largest.",
+      steps: ["bee", "mouse", "giraffe", "whale"]
+    }
+  ],
+
+  // الدرس ٣-١١: الاستعداد لِ… — Get ready for... (A1 Movers)
+  "g4e-3-11": [
+    {
+      type: "mcq",
+      objective: "نمط اختبار A1 Movers: Speaking Part 1 — إيجاد الفروق",
+      level: "knowledge",
+      prompt: "In A1 Movers Speaking Part 1, what do you do?",
+      options: ["Find differences between two pictures.", "Answer questions about yourself.", "Write a story.", "Listen and draw."],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "نمط اختبار A1 Movers: مثال الفروق — الجبال",
+      level: "knowledge",
+      statement: "'In picture A there are three mountains, but in picture B there are four' describes a difference.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "نمط اختبار A1 Movers: مثال الفروق",
+      level: "knowledge",
+      prompt: "Complete the example.",
+      text: "In picture A there are three mountains, but in picture B there are {}.",
+      answers: ["four"],
+      distractors: ["two", "five"]
+    },
+    {
+      type: "matching",
+      objective: "ربط جزء الاختبار بمهارته",
+      level: "application",
+      prompt: "Match each exam part to its skill.",
+      pairs: [
+        { a: "Listening Part 1", b: "listen and match" },
+        { a: "Speaking Part 1",  b: "find differences and talk" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف مهامّ الاختبار: استماعٌ أم تحدّث",
+      level: "reasoning",
+      prompt: "Sort the tasks: listening, or speaking?",
+      groups: [
+        { name: "Listening", items: ["Listen and match.", "Listen and write."] },
+        { name: "Speaking",  items: ["Find four differences.", "Talk about them."] }
+      ]
+    },
+    {
+      type: "mcq",
+      objective: "نصيحة اختبار الاستماع: النظر إلى الصورة أولاً",
+      level: "knowledge",
+      prompt: "For the Listening task, what should you do before you listen?",
+      options: ["Look at the picture carefully.", "Close your eyes.", "Write the answers first.", "Talk to your partner."],
+      answer: 0
+    }
   ]
 };

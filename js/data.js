@@ -911,17 +911,17 @@ window.DATA_FALLBACK = {
         { title:"Language booster 1", file:"g4e-lc1-2", open:true }
       ]},
       { unit:"Along the wadi", lessons:[
-        { title:"Landscapes (Vocabulary)", file:"g4e-3-1", open:false },
-        { title:"Story", file:"g4e-3-2", open:false },
-        { title:"Comparatives and superlatives (Grammar)", file:"g4e-3-3", open:false },
-        { title:"Adjectives (Vocabulary & Grammar)", file:"g4e-3-4", open:false },
-        { title:"Nature reserves in Oman (Culture & Project)", file:"g4e-3-5", open:false },
-        { title:"Asking the way", file:"g4e-3-6", open:false },
-        { title:"Reading a story (Skills)", file:"g4e-3-7", open:false },
-        { title:"Listening, Speaking & Writing (Skills)", file:"g4e-3-8", open:false },
-        { title:"eigh, ei (Phonics)", file:"g4e-3-9", open:false },
-        { title:"Review", file:"g4e-3-10", open:false },
-        { title:"Get ready for… (A1 Movers)", file:"g4e-3-11", open:false }
+        { title:"Landscapes (Vocabulary)", file:"g4e-3-1", open:true },
+        { title:"Story", file:"g4e-3-2", open:true },
+        { title:"Comparatives and superlatives (Grammar)", file:"g4e-3-3", open:true },
+        { title:"Adjectives (Vocabulary & Grammar)", file:"g4e-3-4", open:true },
+        { title:"Nature reserves in Oman (Culture & Project)", file:"g4e-3-5", open:true },
+        { title:"Asking the way", file:"g4e-3-6", open:true },
+        { title:"Reading a story (Skills)", file:"g4e-3-7", open:true },
+        { title:"Listening, Speaking & Writing (Skills)", file:"g4e-3-8", open:true },
+        { title:"eigh, ei (Phonics)", file:"g4e-3-9", open:true },
+        { title:"Review", file:"g4e-3-10", open:true },
+        { title:"Get ready for… (A1 Movers)", file:"g4e-3-11", open:true }
       ]},
       { unit:"All about jobs", lessons:[
         { title:"Jobs (Vocabulary)", file:"g4e-4-1", open:false },
