@@ -858,16 +858,16 @@ window.DATA_FALLBACK = {
         { title:"Fun corner", file:"g3e-3-10", open:true }
       ]},
       { unit:"I want to be a doctor!", lessons:[
-        { title:"I want to be a doctor! (Vocabulary)", file:"g3e-4-1", open:false },
-        { title:"Story (Helpers Team)", file:"g3e-4-2", open:false },
-        { title:"How do you go to work? (Grammar)", file:"g3e-4-3", open:false },
-        { title:"Skills", file:"g3e-4-4", open:false },
-        { title:"The yellow school bus (Culture & Project)", file:"g3e-4-5", open:false },
-        { title:"Talking on the phone", file:"g3e-4-6", open:false },
-        { title:"ea, ea (Phonics)", file:"g3e-4-7", open:false },
-        { title:"Review", file:"g3e-4-8", open:false },
-        { title:"Get ready for… (Pre A1 Starters)", file:"g3e-4-9", open:false },
-        { title:"Fun corner", file:"g3e-4-10", open:false }
+        { title:"I want to be a doctor! (Vocabulary)", file:"g3e-4-1", open:true },
+        { title:"Story (Helpers Team)", file:"g3e-4-2", open:true },
+        { title:"How do you go to work? (Grammar)", file:"g3e-4-3", open:true },
+        { title:"Skills", file:"g3e-4-4", open:true },
+        { title:"The yellow school bus (Culture & Project)", file:"g3e-4-5", open:true },
+        { title:"Talking on the phone", file:"g3e-4-6", open:true },
+        { title:"ea, ea (Phonics)", file:"g3e-4-7", open:true },
+        { title:"Review", file:"g3e-4-8", open:true },
+        { title:"Get ready for… (Pre A1 Starters)", file:"g3e-4-9", open:true },
+        { title:"Fun corner", file:"g3e-4-10", open:true }
       ]},
       { unit:"Atomic's Learning Club 2", lessons:[
         { title:"Language booster 2", file:"g3e-lc2-1", open:false },

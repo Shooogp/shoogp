@@ -45223,5 +45223,575 @@ window.QUESTIONS = {
       options: ["Yes, he does.", "Yes, she does.", "Yes, I does.", "Yes, they does."],
       answer: 0
     }
+  ],
+
+  // الوحدة ٤ — I want to be a doctor! (Jobs & transport)
+
+  // الدرس ٤-١: المفردات — I want to be a doctor! (Vocabulary)
+  "g3e-4-1": [
+    {
+      type: "mcq",
+      objective: "مفردات المهن: doctor, nurse, police officer, builder, astronaut, firefighter, chef, pilot, teacher, artist",
+      level: "knowledge",
+      prompt: "Which job helps sick people?",
+      options: ["doctor", "builder", "pilot", "artist"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مفردات المهن: astronaut",
+      level: "knowledge",
+      statement: "An astronaut travels to space.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "أنشودة الوحدة: I want to be a pilot, a doctor and a builder.",
+      level: "knowledge",
+      prompt: "Complete the chant.",
+      text: "I want to be a pilot, a doctor and a {}.",
+      answers: ["builder"],
+      distractors: ["nurse", "chef"]
+    },
+    {
+      type: "matching",
+      objective: "تركيب: a/an + مهنة (a doctor / an artist)",
+      level: "application",
+      prompt: "Match each job to 'a' or 'an'.",
+      pairs: [
+        { a: "doctor",    b: "a doctor" },
+        { a: "artist",    b: "an artist" },
+        { a: "astronaut", b: "an astronaut" },
+        { a: "teacher",   b: "a teacher" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف المهن: تحفظ الأمان أم إبداعية",
+      level: "reasoning",
+      prompt: "Sort the jobs: helps people stay safe, or is creative?",
+      groups: [
+        { name: "Helps people stay safe", items: ["firefighter", "police officer", "doctor"] },
+        { name: "Is creative",            items: ["artist", "chef"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "التمييز بين مهنٍ ترتدي زياً موحّداً وغيرها",
+      level: "reasoning",
+      prompt: "Three of these jobs wear a uniform. Which one doesn't?",
+      options: ["pilot", "firefighter", "police officer", "artist"],
+      answer: 3,
+      reason: "An artist doesn't usually wear a uniform for work."
+    }
+  ],
+
+  // الدرس ٤-٢: القصّة — The job fair (Story)
+  "g3e-4-2": [
+    {
+      type: "mcq",
+      objective: "قصّة الوحدة: The job fair — السيد إبراهيم الطبّاخ",
+      level: "knowledge",
+      prompt: "What is Mr Ibrahim's job in the story?",
+      options: ["chef", "pilot", "teacher", "doctor"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "قصّة الوحدة: السيد أحمد الطيّار يعلّم صنع طائرة ورقية",
+      level: "knowledge",
+      statement: "In the story, Mr Ahmed the pilot teaches the children to fly paper planes.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "قصّة الوحدة: I don't feel well.",
+      level: "knowledge",
+      prompt: "Complete the line from the story.",
+      text: "I don't feel {}.",
+      answers: ["well"],
+      distractors: ["happy", "hungry"]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب أحداث القصّة",
+      level: "application",
+      prompt: "Put the story events in order.",
+      steps: ["This is Mr Ibrahim. He's a chef.", "This is Mr Ahmed. He's a pilot.", "Flying a plane is fun!", "I don't feel well."]
+    },
+    {
+      type: "exclude",
+      objective: "فهم أحداث القصّة",
+      level: "reasoning",
+      prompt: "Three of these happened at the job fair. Which one didn't?",
+      options: ["They met a chef.", "They met a pilot.", "They went to space.", "Someone didn't feel well."],
+      answer: 2,
+      reason: "The story is about a job fair, not a trip to space."
+    },
+    {
+      type: "mcq",
+      objective: "عنوان قصّة الوحدة",
+      level: "knowledge",
+      prompt: "What is the name of the story?",
+      options: ["The job fair", "The school show", "Where's Fatma?", "Atomic is colourful!"],
+      answer: 0
+    }
+  ],
+
+  // الدرس ٤-٣: المواصلات — How do you go to work? (Grammar)
+  "g3e-4-3": [
+    {
+      type: "mcq",
+      objective: "مفردات المواصلات: bus, boat, underground, car, train, motorbike",
+      level: "knowledge",
+      prompt: "Which of these is a way to travel?",
+      options: ["train", "doctor", "chant", "weekend"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "تركيب: He goes to work by boat.",
+      level: "knowledge",
+      statement: "'He goes to work by boat' means he travels by boat.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "أنشودة الوحدة: Bus and underground, car and boat.",
+      level: "knowledge",
+      prompt: "Complete the song.",
+      text: "Bus and underground, car and {}.",
+      answers: ["boat"],
+      distractors: ["train", "bike"]
+    },
+    {
+      type: "matching",
+      objective: "تركيب: He/She goes to work by...",
+      level: "application",
+      prompt: "Match each person to their transport.",
+      pairs: [
+        { a: "He goes to work",      b: "by boat." },
+        { a: "She goes to work",     b: "by train." },
+        { a: "My dad goes to work",  b: "by motorbike." }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف المواصلات: على الماء أم على اليابسة",
+      level: "reasoning",
+      prompt: "Sort the transport: on water or on land?",
+      groups: [
+        { name: "On water", items: ["boat"] },
+        { name: "On land",  items: ["bus", "car", "train", "motorbike", "underground"] }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب كلمات المواصلات كما وردت في الأنشودة",
+      level: "knowledge",
+      prompt: "Put the transport words in the order they appear in the song.",
+      steps: ["boat", "train", "motorbike"]
+    }
+  ],
+
+  // الدرس ٤-٤: المهارات — Skills
+  "g3e-4-4": [
+    {
+      type: "mcq",
+      objective: "دمج المهنة والمواصلة: He's a nurse. He goes to work by car.",
+      level: "knowledge",
+      prompt: "Which sentence tells us about a job AND how someone travels?",
+      options: ["He's a nurse. He goes to work by car.", "He's tall.", "It's Monday.", "She likes tennis."],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "she's = she is",
+      level: "knowledge",
+      statement: "'She's a teacher' is short for 'She is a teacher'.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "حوار: She's a teacher. She goes to work by train.",
+      level: "knowledge",
+      prompt: "Complete the description.",
+      text: "She's a teacher. She goes to work by {}.",
+      answers: ["train"],
+      distractors: ["boat", "bus"]
+    },
+    {
+      type: "matching",
+      objective: "ربط كل مهنةٍ بمواصلتها في الحوار",
+      level: "application",
+      prompt: "Match each job to its transport in the dialogue.",
+      pairs: [
+        { a: "nurse",   b: "car" },
+        { a: "teacher", b: "train" }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب بناء الوصف",
+      level: "reasoning",
+      prompt: "Put the description in order.",
+      steps: ["Look at her.", "She's a teacher.", "She goes to work by train."]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف: مهنةٌ أم مواصلة",
+      level: "application",
+      prompt: "Sort the words: jobs or transport?",
+      groups: [
+        { name: "Jobs",      items: ["nurse", "teacher"] },
+        { name: "Transport", items: ["car", "train"] }
+      ]
+    }
+  ],
+
+  // الدرس ٤-٥: الثقافة والمشروع — The yellow school bus
+  "g3e-4-5": [
+    {
+      type: "mcq",
+      objective: "الثقافة: The yellow school bus — الحافلة المدرسية في الولايات المتحدة",
+      level: "knowledge",
+      prompt: "What colour are all school buses in the United States?",
+      options: ["yellow", "red", "blue", "green"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "الثقافة: السيارات تقف للحافلة المدرسية",
+      level: "knowledge",
+      statement: "Cars stop for school buses in the United States.",
+      answer: true
+    },
+    {
+      type: "matching",
+      objective: "الثقافة: مفردات النصّ ومعانيها",
+      level: "knowledge",
+      prompt: "Match each word to its meaning.",
+      pairs: [
+        { a: "bus driver", b: "drives the school bus" },
+        { a: "stop",       b: "a sign that tells cars to wait" },
+        { a: "students",   b: "children who go to school" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "الثقافة: متى يأخذ السائق الطلاب — للمدرسة أم للبيت",
+      level: "application",
+      prompt: "Sort the times: when the bus driver takes students to school, or takes them home?",
+      groups: [
+        { name: "To school", items: ["morning"] },
+        { name: "Home",      items: ["afternoon"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "فهم نصّ الحافلة المدرسية الصفراء",
+      level: "reasoning",
+      prompt: "Three of these are true about school buses in the text. Which one isn't?",
+      options: ["They are all yellow.", "Cars stop for them.", "They only work on Fridays.", "Bus drivers take students to school."],
+      answer: 2,
+      reason: "The text doesn't say school buses only work on Fridays."
+    },
+    {
+      type: "mcq",
+      objective: "المشروع: رسم بياني عن طريقة الذهاب للمدرسة",
+      level: "knowledge",
+      prompt: "What is the project about?",
+      options: ["How you go to school", "Your favourite sport", "A special day", "Your family"],
+      answer: 0
+    }
+  ],
+
+  // الدرس ٤-٦: اللغة الوظيفية — Talking on the phone
+  "g3e-4-6": [
+    {
+      type: "mcq",
+      objective: "لغة المكالمة الهاتفية: Can I speak to...؟",
+      level: "knowledge",
+      prompt: "What do you say to ask for someone on the phone?",
+      options: ["Can I speak to Emily, please?", "How much is this?", "When is your birthday?", "What's the time?"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "لغة المكالمة الهاتفية: Who is this?",
+      level: "knowledge",
+      statement: "'Who is this?' is something you ask when you don't know who is calling.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "حوار الهاتف: My phone number is 12345708.",
+      level: "knowledge",
+      prompt: "Complete the dialogue.",
+      text: "This is Alice. My phone {} is 12345708.",
+      answers: ["number"],
+      distractors: ["book", "call"]
+    },
+    {
+      type: "matching",
+      objective: "ربط جمل حوار الهاتف بردودها",
+      level: "application",
+      prompt: "Match each line to its reply.",
+      pairs: [
+        { a: "Hello, can I speak to Emily, please?", b: "Emily's not here. Who is this?" },
+        { a: "This is Alice.",                       b: "Thanks, Alice. Emily can call you later." }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب حوار المكالمة الهاتفية",
+      level: "reasoning",
+      prompt: "Put the phone call in order.",
+      steps: ["Hello, can I speak to Emily, please?", "Emily's not here. Who is this?", "This is Alice.", "Emily can call you later."]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف: اسمٌ أم رقم",
+      level: "knowledge",
+      prompt: "Sort the words: a name or a number?",
+      groups: [
+        { name: "A name",   items: ["Emily", "Alice"] },
+        { name: "A number", items: ["12345708"] }
+      ]
+    }
+  ],
+
+  // الدرس ٤-٧: الصوتيات — ea, ea (Phonics)
+  // ⚠️ نصّيٌّ بلا صوتٍ حقيقيّ — مزوّد n8n/داريجات غيرُ مدرَجٍ في قائمة موصّلات
+  // الجلسة إطلاقاً وقت التأليف (٢٠٢٦-٠٩-١٧). يُستبدَل بـsound-blend حقيقي حين يعود.
+  "g3e-4-7": [
+    {
+      type: "mcq",
+      objective: "صوت ea الطويل: read, beach",
+      level: "knowledge",
+      prompt: "Which word has the long 'ea' sound, like in 'read'?",
+      options: ["beach", "bread", "head", "weather"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "صوتا ea: bread (قصير) وread (طويل)",
+      level: "knowledge",
+      statement: "'Bread' and 'read' have the same 'ea' sound.",
+      answer: false
+    },
+    {
+      type: "fill-blank",
+      objective: "لعبة اللسان: I eat bread and read on the beach in the hot weather.",
+      level: "knowledge",
+      prompt: "Complete the tongue twister.",
+      text: "I eat bread and read on the beach in the hot {}.",
+      answers: ["weather"],
+      distractors: ["morning", "water"]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف الكلمات حسب صوت ea الطويل أو القصير",
+      level: "application",
+      prompt: "Sort the words by their 'ea' sound.",
+      groups: [
+        { name: "Long (like read)",   items: ["beach", "sea", "leaf"] },
+        { name: "Short (like bread)", items: ["weather", "head", "feather"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "التمييز بين صوتَي ea الطويل والقصير",
+      level: "reasoning",
+      prompt: "Three of these have the long 'ea' sound. Which one doesn't?",
+      options: ["read", "beach", "sea", "weather"],
+      answer: 3,
+      reason: "'Weather' has the short 'ea' sound, not the long one."
+    },
+    {
+      type: "matching",
+      objective: "ربط الكلمة بصوت ea فيها",
+      level: "knowledge",
+      prompt: "Match each word to its 'ea' sound.",
+      pairs: [
+        { a: "read",  b: "long" },
+        { a: "bread", b: "short" },
+        { a: "beach", b: "long" },
+        { a: "head",  b: "short" }
+      ]
+    }
+  ],
+
+  // الدرس ٤-٨: المراجعة — Review
+  "g3e-4-8": [
+    {
+      type: "mcq",
+      objective: "مراجعة مفردات المهن",
+      level: "knowledge",
+      prompt: "Which of these is a job?",
+      options: ["chef", "train", "weekend", "always"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "مراجعة تركيب: by train",
+      level: "knowledge",
+      statement: "'By train' tells us how someone travels.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "مراجعة: She goes to work by bus.",
+      level: "knowledge",
+      prompt: "Complete the sentence.",
+      text: "She goes to work by {}.",
+      answers: ["bus"],
+      distractors: ["doctor", "teacher"]
+    },
+    {
+      type: "matching",
+      objective: "مراجعة: ربط المهنة بأداتها",
+      level: "application",
+      prompt: "Match each job to what it uses.",
+      pairs: [
+        { a: "chef",        b: "a pan" },
+        { a: "doctor",      b: "a stethoscope" },
+        { a: "builder",     b: "a hard hat" },
+        { a: "firefighter", b: "boots" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "مراجعة تصنيف: مهنةٌ أم مواصلة",
+      level: "reasoning",
+      prompt: "Sort the words: jobs or transport?",
+      groups: [
+        { name: "Jobs",      items: ["nurse", "pilot", "artist"] },
+        { name: "Transport", items: ["car", "boat", "motorbike"] }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "مراجعة ترتيب كلمات المواصلات",
+      level: "knowledge",
+      prompt: "Put the transport words in order, as they appear in the chant.",
+      steps: ["bus", "boat", "train"]
+    }
+  ],
+
+  // الدرس ٤-٩: الاستعداد لِ… — Get ready for... (Pre A1 Starters)
+  "g3e-4-9": [
+    {
+      type: "mcq",
+      objective: "نمط اختبار Pre A1 Starters: جملٌ عن المهن والمواصلات",
+      level: "knowledge",
+      prompt: "Which sentence matches a picture of someone flying a plane?",
+      options: ["I want to be a pilot.", "I want to be a teacher.", "I want to be an artist.", "I want to be a doctor."],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "نمط اختبار Pre A1 Starters",
+      level: "knowledge",
+      statement: "'He goes to work by train' can be true or false for a picture.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "نمط اختبار Pre A1 Starters: She goes to work by underground.",
+      level: "knowledge",
+      prompt: "Complete the sentence.",
+      text: "She goes to work by {}.",
+      answers: ["underground"],
+      distractors: ["car", "boat"]
+    },
+    {
+      type: "matching",
+      objective: "التمييز بين جملةٍ عن مهنةٍ وجملةٍ عن مواصلة",
+      level: "application",
+      prompt: "Match each sentence to its meaning.",
+      pairs: [
+        { a: "I want to be an artist.",     b: "talking about a job you want" },
+        { a: "He goes to work by train.",   b: "talking about how someone travels" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف الجمل: مهنةٌ أم مواصلة",
+      level: "reasoning",
+      prompt: "Sort the sentences: about a job, or about transport?",
+      groups: [
+        { name: "About a job",      items: ["I want to be a pilot.", "I want to be a teacher."] },
+        { name: "About transport",  items: ["He goes to work by train.", "She goes to work by car."] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "التمييز بين المهنة والمواصلة",
+      level: "reasoning",
+      prompt: "Three of these are jobs. Which one isn't?",
+      options: ["teacher", "pilot", "train", "artist"],
+      answer: 2,
+      reason: "A train is transport, not a job."
+    }
+  ],
+
+  // الدرس ٤-١٠: ركن المرح — Fun corner
+  "g3e-4-10": [
+    {
+      type: "mcq",
+      objective: "دمج المهنة والمواصلة داخل لعبة اللوحة",
+      level: "knowledge",
+      prompt: "In the game, you spin 'artist' and 'motorbike'. What do you say?",
+      options: ["I want to be an artist. I want to travel by motorbike.", "I want to be a motorbike. I want to travel by artist.", "I'm an artist on a motorbike.", "I like artists and motorbikes."],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "تركيب: I want to travel by train.",
+      level: "knowledge",
+      statement: "'I want to travel by train' talks about transport.",
+      answer: true
+    },
+    {
+      type: "sequence",
+      objective: "ترتيب كلمات الجملة",
+      level: "knowledge",
+      prompt: "Put the sentence in the correct word order.",
+      steps: ["I", "want", "to", "be", "a", "nurse."]
+    },
+    {
+      type: "matching",
+      objective: "تركيب: a/an + مهنة",
+      level: "application",
+      prompt: "Match each job to 'a' or 'an'.",
+      pairs: [
+        { a: "nurse",     b: "a nurse" },
+        { a: "astronaut", b: "an astronaut" },
+        { a: "pilot",     b: "a pilot" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "تصنيف المهن: تستعمل a أم an",
+      level: "reasoning",
+      prompt: "Sort the words: use 'a' or use 'an'?",
+      groups: [
+        { name: "Use 'a'",  items: ["doctor", "teacher", "builder"] },
+        { name: "Use 'an'", items: ["artist", "astronaut"] }
+      ]
+    },
+    {
+      type: "memory",
+      objective: "ربط كل مهنةٍ بما يرتبط بها",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "pilot",       b: "plane" },
+        { a: "chef",        b: "kitchen" },
+        { a: "firefighter", b: "fire" },
+        { a: "artist",      b: "paint" }
+      ]
+    }
   ]
 };
