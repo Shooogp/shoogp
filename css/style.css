@@ -76,6 +76,9 @@
   /* خلفية اللغة الإنجليزية الثاني — بنفسجي داكن بلمسة وردية/فوشية خفيفة (مشتقّة من band الكتاب) */
   body.theme-en2{
     background:linear-gradient(180deg,#20243f 0%,#431f45 32%,#6d1a4c 65%,#bc1865 100%)}
+  /* خلفية اللغة الإنجليزية الثالث — بنفسجي داكن بلمسة سماوية زرقاء خفيفة (مشتقّة حسابياً من band الكتاب) */
+  body.theme-en3{
+    background:linear-gradient(180deg,#20243f 0%,#1f3f60 32%,#1d5a80 65%,#1c739f 100%)}
 
   /* ── خلفيات الكتب المضافة (رياضيات الثالث · أحب لغتي ١–٣ · ديني حياتي ١–٣) ──
      مشتقّة حسابياً من لون بطاقة كل كتاب: البداية بنفسجي الفضاء #20243f، والنهاية
@@ -310,6 +313,7 @@
     --bk-teal-a:#4bb3ab;   --bk-teal-b:#33978f;
     --bk-yellow-a:#F6D000; --bk-yellow-b:#C5A600;
     --bk-pink-a:#D8166C;   --bk-pink-b:#AD1156;
+    --bk-cyan-a:#0089CE;   --bk-cyan-b:#006EA5;
   }
   .bk-red{background:linear-gradient(145deg,var(--bk-red-a),var(--bk-red-b))}
   .bk-yellow{background:linear-gradient(145deg,var(--bk-yellow-a),var(--bk-yellow-b))}
@@ -319,6 +323,7 @@
   .bk-purple{background:linear-gradient(145deg,var(--bk-purple-a),var(--bk-purple-b))}
   .bk-pink{background:linear-gradient(145deg,var(--bk-pink-a),var(--bk-pink-b))}
   .bk-teal{background:linear-gradient(145deg,var(--bk-teal-a),var(--bk-teal-b))}
+  .bk-cyan{background:linear-gradient(145deg,var(--bk-cyan-a),var(--bk-cyan-b))}
   .empty{grid-column:1/-1;text-align:center;color:#b8aee5;padding:50px;font-size:1.05rem}
 
   /* شاشة الدروس */
