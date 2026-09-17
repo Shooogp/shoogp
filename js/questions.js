@@ -43990,6 +43990,7 @@ window.QUESTIONS = {
       objective: "مفردات الملابس: hijab, tracksuit, slippers, jumper, coat, jeans, pyjamas, trainers, baseball cap, shirt",
       level: "knowledge",
       prompt: "Which of these is something you wear on your feet?",
+      pics: true,
       options: ["trainers", "jumper", "hijab", "baseball cap"],
       answer: 0
     },
@@ -44036,6 +44037,7 @@ window.QUESTIONS = {
       objective: "التمييز بين الملبس وغيره",
       level: "reasoning",
       prompt: "Three of these are clothes. Which one isn't?",
+      pics: true,
       options: ["hijab", "jumper", "coat", "backpack"],
       answer: 3,
       reason: "A backpack is something you carry, not something you wear."
@@ -44494,6 +44496,7 @@ window.QUESTIONS = {
       objective: "التمييز بين الملبس وغيره",
       level: "reasoning",
       prompt: "Three of these are clothes. Which one doesn't belong?",
+      pics: true,
       options: ["jeans", "trainers", "hijab", "computer"],
       answer: 3,
       reason: "A computer isn't something you wear."
@@ -46953,6 +46956,7 @@ window.QUESTIONS = {
       objective: "فهم نصّ أطعمة العالم",
       level: "reasoning",
       prompt: "Three of these are foods from the text. Which one doesn't belong?",
+      pics: true,
       options: ["bunny chow", "sushi", "bubble tea", "pizza"],
       answer: 3,
       reason: "Pizza isn't one of the foods described in the text."
@@ -48118,6 +48122,7 @@ window.QUESTIONS = {
       objective: "التمييز بين المهنة والمكان",
       level: "reasoning",
       prompt: "Three of these are jobs. Which one isn't?",
+      pics: true,
       options: ["mechanic", "scientist", "restaurant", "chef"],
       answer: 2,
       reason: "A restaurant is a place, not a job."
