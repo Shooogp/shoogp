@@ -338,10 +338,10 @@ var FRAME_FAMILIES={
      أسفلَ الفريم). القياسُ بالطريقةِ نفسِها التي يعتمدُها `measureFrameGeo` (أعمدةٌ عندَ
      ٪٢٠/٣٥/٦٥/٨٠ من عرضِ الفتحةِ تتفادى شارةَ النجمةِ المركزية)، من `images/ui/frame-en-*.png`. */
   en:{ order:['s','m','l','tall'], flexBase:'l', sizes:{
-    s:{img:'frame-en-s.png', ar:'1264 / 848',  win:{top:'20.2%', left:'16.3%', right:'15.9%', bottom:'20.0%'}, hasFill:false},
-    m:{img:'frame-en-m.png', ar:'1333 / 1024', win:{top:'19.8%', left:'27.3%', right:'15.3%', bottom:'17.1%'}, hasFill:false},
-    l:{img:'frame-en-l.png', ar:'1024 / 1024', win:{top:'19.8%', left:'19.9%', right:'19.9%', bottom:'19.8%'}, hasFill:false},
-    tall:{img:'frame-en-tall.png', ar:'1024 / 1705', win:{top:'11.9%', left:'19.9%', right:'19.9%', bottom:'12.0%'}, hasFill:false}
+    s:{img:'frame-en-s.png', ar:'1264 / 848',  win:{top:'20.2%', left:'16.3%', right:'15.9%', bottom:'20.0%'}, hasFill:false, fillDip:true},
+    m:{img:'frame-en-m.png', ar:'1333 / 1024', win:{top:'19.8%', left:'27.3%', right:'15.3%', bottom:'17.1%'}, hasFill:false, fillDip:true},
+    l:{img:'frame-en-l.png', ar:'1024 / 1024', win:{top:'19.8%', left:'19.9%', right:'19.9%', bottom:'19.8%'}, hasFill:false, fillDip:true},
+    tall:{img:'frame-en-tall.png', ar:'1024 / 1705', win:{top:'11.9%', left:'19.9%', right:'19.9%', bottom:'12.0%'}, hasFill:false, fillDip:true}
   }}
 };
 /* ═══ مادةُ الدرس → عائلةُ الفريم — **جدولٌ لا سلسلةُ شروط** ═══
@@ -421,11 +421,23 @@ var FILL_K=0.9;
 /* نسبةُ فتحةِ صورةِ الإطار (٪ من أبعاد الصورة) من القياس الحيّ — أو null إن لم يجهز.
    بما أنّ نسبةَ صندوقِ الإطار = نسبةَ صورته (بلا letterbox)، فنسبةُ الفتحةِ من الصورة
    = نسبتُها من الصندوق مباشرةً، فتصلحُ كإزاحةٍ مئويةٍ للتعبئةِ في أيِّ مقاسٍ (scale). */
-function openingPct(name){
+function openingPct(name, dip){
   var g=_frameGeo[name];
   if(!g || g==='pending') return null;
+  var ob=(dip && g.oBdip)?g.oBdip:g.oB;   /* `dip`: حافّةُ التجويفِ لا الحافّةُ المستقيمة */
   return {left:g.oL/g.natW*100, right:(g.natW-1-g.oR)/g.natW*100,
-          top:g.oT/g.natH*100,  bottom:(g.natH-1-g.oB)/g.natH*100};
+          top:g.oT/g.natH*100,  bottom:(g.natH-1-ob)/g.natH*100};
+}
+/* هل صورةُ الإطارِ هذه في خانةٍ تطلبُ التعبئةَ حتى التجويف؟ (بحثٌ في الجدولِ مرّةً لكلِّ اسم) */
+var _fillDip={};
+function fillDipFor(name){
+  if(_fillDip[name]!==undefined) return _fillDip[name];
+  var on=false;
+  Object.keys(FRAME_FAMILIES).forEach(function(fam){
+    var sz=FRAME_FAMILIES[fam].sizes;
+    Object.keys(sz).forEach(function(k){ if(sz[k].img===name && sz[k].fillDip) on=true; });
+  });
+  return (_fillDip[name]=on);
 }
 /* هل للصورةِ فتحةٌ شفّافةٌ حقيقيةٌ تُرى منها التعبئةُ النقطية؟
    القياسُ يلتقطُ «أطولَ مدىً شفّافٍ» في السطرِ/العمودِ الأوسط؛ فإن كانت الصورةُ معتمةَ
@@ -471,7 +483,7 @@ function paintFrame(f,fill,cfg){
   /* تعبئةٌ مدموجةٌ في الصورة (إعلاناً أو واقعاً: صورةٌ بلا فتحةٍ شفّافة) → أخفِ الطبقةَ النقطية */
   if(cfg.hasFill || !frameHasWindow(cfg.img)){ fill.style.display='none'; return; }
   fill.style.display='';
-  var op=openingPct(cfg.img);   /* انحصار التعبئة النقطية بفتحة الصورة (§٥) */
+  var op=openingPct(cfg.img, !!cfg.fillDip);   /* انحصار التعبئة النقطية بفتحة الصورة (§٥) — وحتى التجويفِ إن طُلِب */
   ['top','left','right','bottom'].forEach(function(k){
     var v = op ? (op[k]*FILL_K) : (parseFloat(cfg.win[k])*0.5);
     fill.style[k]=v.toFixed(2)+'%';
@@ -512,6 +524,19 @@ function measureFrameGeo(name){
         if(t<bt) bt=t;
         if(b>bb) bb=b;
       });
+      /* ═══ أعمقُ نقطةٍ شفّافةٍ أسفلَ الفتحة («تجويفُ الشارة») ═══
+         الأعمدةُ الأربعةُ أعلاه تتفادى المركزَ عمداً، فتُعطي الحافّةَ المستقيمةَ للفتحةِ
+         وتُغفِلُ ما ينزلُ تحتَها: في إطارِ الإنجليزيةِ تنحني الفتحةُ نزولاً حولَ شارةِ
+         النجمةِ السفليةِ بعمقِ ٤٫٧٪ من الارتفاعِ (l)، فتبقى الرقعةُ بلا تعبئةٍ وتظهرُ
+         خلفيةُ الصفحةِ منها (لاحظَه المالك ٢٠٢٦-٠٩-١٨). نمسحُ هنا أعمدةً كثيفةً عبرَ
+         عرضِ الفتحةِ نازلينَ من وسطِها حتى أوّلِ بكسلٍ معتم، ونحتفظُ بالأعمق. لا تُستعمَلُ
+         القيمةُ إلا للخاناتِ المعلَّمةِ `fillDip` كي لا يتغيّرَ رسمُ العائلاتِ الأخرى. */
+      var midY=(bt+bb)>>1, bbDip=bb, fi, cxd, yd;
+      for(fi=0.05; fi<=0.951; fi+=0.025){
+        cxd=Math.round(bl+fi*(br-bl)); yd=midY;
+        while(yd<H-1 && d[((yd+1)*W+cxd)*4+3]<128) yd++;
+        if(yd>bbDip) bbDip=yd;
+      }
       /* ═══ صندوقُ الرسمِ المعتم (حافّةُ الإطارِ الفعلية) — مصدرُ موضعِ الأيقونات ═══
          صورةُ الإطارِ تحملُ هامشاً شفّافاً حولَ صخرِ القمر (~2%)، فحافّةُ *الصندوق* ليست
          حافّةَ الإطارِ المرئية. نمسحُ الشفافيةَ مرّةً (في نفسِ التمريرةِ التي تقيسُ الفتحة)
@@ -538,7 +563,7 @@ function measureFrameGeo(name){
       for(y=aT;y<=(H>>1);y++){ if(nearRef(y)){ if(++rc>=runN){ decoT=y-runN+1; break; } } else rc=0; }
       rc=0;
       for(y=aB;y>=(H>>1);y--){ if(nearRef(y)){ if(++rc>=runN){ decoB=y+runN-1; break; } } else rc=0; }
-      _frameGeo[name]={natW:W,natH:H,oL:bl,oR:br,oT:bt,oB:bb,aL:aL,aR:aR,aT:aT,aB:aB,decoT:decoT,decoB:decoB};
+      _frameGeo[name]={natW:W,natH:H,oL:bl,oR:br,oT:bt,oB:bb,oBdip:bbDip,aL:aL,aR:aR,aT:aT,aB:aB,decoT:decoT,decoB:decoB};
     }catch(e){ _frameGeo[name]=null; }   /* تعذّر (CORS مثلاً) → تبقى الإزاحات الاحتياطية */
     reconcileAR(name, im.naturalWidth, im.naturalHeight);
     /* أعد ضبط البطاقة الظاهرة كي تُطبَّق نسبةُ الفتحة الجاهزةُ الآن على التعبئة */
@@ -558,7 +583,7 @@ function placeFill(f,fill,name){
   var bleed=Math.max(2, Math.round(scale*6));            /* تداخلٌ يسير تحت المعدن */
   /* حوافُّ الفتحة داخل صندوق الإطار (بالبكسل): يسار/أعلى موضعان، يمين/أسفل إزاحتان */
   var Lx=offX+geo.oL*scale, Rx=offX+geo.oR*scale;
-  var Ty=offY+geo.oT*scale, By=offY+geo.oB*scale;
+  var Ty=offY+geo.oT*scale, By=offY+((fillDipFor(name)&&geo.oBdip)?geo.oBdip:geo.oB)*scale;
   fill.style.left  =Math.round(Math.max(0, Lx-bleed))+'px';
   fill.style.top   =Math.round(Math.max(0, Ty-bleed))+'px';
   fill.style.right =Math.round(Math.max(0, bw-Rx-bleed))+'px';
