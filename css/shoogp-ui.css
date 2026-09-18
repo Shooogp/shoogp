@@ -1808,14 +1808,32 @@
        .blank.filled.correct,.blank.correct,.target.filled.correct){
   filter:var(--lth-cast) drop-shadow(0 0 var(--lth-glow-in) rgba(90,170,45,.95))
                         drop-shadow(0 0 var(--lth-glow-out) rgba(70,140,35,.88)) !important;
+  /* وجهٌ أخضرُ قياسيٌّ (‏`#a7c957`/`#82a83e`/`#20340a` — ألوانُ style.css نفسُها) بدلَ الجلدِ
+     الملوَّنِ نصُّه وحدَه (قرارُ المالك ٢٠٢٦-٠٩-١٨: كانت الحالةُ تكادُ لا تُرى على البنّيّ).
+     الجلدُ يُرفَعُ (‏`border-image:none`) والحدُّ يبقى بعرضِه فلا يقفزُ التخطيط، والحافّةُ
+     الغامقةُ `outline` مسحوبٌ إلى الداخلِ لأنّ الحدَّ الحقيقيَّ عريضٌ (شرائحُ الجلد) والظلُّ
+     الداخليُّ يُرسَمُ داخلَه فيظهرُ مستطيلاً في الوسط. */
+  border-image:none !important;
+  border-color:transparent !important;
+  background:#a7c957 !important;
+  box-shadow:none !important;
+  outline:3px solid #82a83e !important; outline-offset:-3px !important;
   color:#20340a !important;
+  text-shadow:none !important;
 }
 .shoogp-ui.skin-leather .qwin :is(.opt.wrong,.tf.tf-wrong,.excl-opt.wrong,.mitem.shake,
        .chip.no,.seqitem.wrong,
        .blank.filled.wrong,.target.filled.wrong){
   filter:var(--lth-cast) drop-shadow(0 0 var(--lth-glow-in) rgba(210,50,45,.92))
                         drop-shadow(0 0 var(--lth-glow-out) rgba(175,35,30,.86)) !important;
-  color:#7a1f1f !important;
+  /* وجهٌ أحمرُ قياسيٌّ (‏`#fde2e2`/`#c94a4a`) — انظر تعليقَ الصوابِ أعلاه */
+  border-image:none !important;
+  border-color:transparent !important;
+  background:#fde2e2 !important;
+  box-shadow:none !important;
+  outline:3px solid #c94a4a !important; outline-offset:-3px !important;
+  color:#c94a4a !important;
+  text-shadow:none !important;
   animation:cardShake .45s ease;
 }
 @media(prefers-reduced-motion:reduce){
