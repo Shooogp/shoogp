@@ -488,7 +488,18 @@ const UI_EN = {
   'اختر لوناً أوّلاً من اللوحة 🎨':'Pick a colour first 🎨',
   '🎉 أحسنت! كوّنت الكلمة: ':'🎉 Well done! You made the word: ',
   '🎉 أحسنت! هذا هو مصدر الصوت':'🎉 Well done! That is the sound',
-  'ليس هذا مصدر الصوت، استمع مرّة أخرى':'Not that one — listen again'
+  'ليس هذا مصدر الصوت، استمع مرّة أخرى':'Not that one — listen again',
+  /* حَشوُ شاشةِ النشاطِ خارجَ الفريم (قرارُ المالك ٢٠٢٦-٠٩-١٨ — يَنسَخُ «ابقها» ٢٠٢٦-٠٩-١٦):
+     زرُّ الرجوعِ وأزرارُ التنقّلِ وتقريرُ النتيجة (لا السطرَ الفرعيَّ — يبقى عربياً للتلميذ). أزرارُ السابق/التالي
+     الظاهرةُ فعلاً صورٌ بكلمةٍ يكتبُها enhanceNav في js/shoogp-ui.js — تُترجَمُ هناك. */
+  '→ رجوع للدروس':'← Back to lessons',
+  '→ السابق':'Previous',
+  'التالي ←':'Next',
+  'إنهاء 🏁':'Finish 🏁',
+  '🎉 أنهيت الدرس!':'🎉 Lesson complete!',
+  'أجبت صحيحاً عن <b>%1</b> من <b>%2</b> أسئلة.':'You answered <b>%1</b> of <b>%2</b> questions correctly.',
+  'ممتاز! أكملت كل الأسئلة 🌟':'Excellent! You completed every question 🌟',
+  'أحسنت! يمكنك الرجوع وإكمال ما تبقّى.':'Well done! You can go back and finish the rest.'
 };
 /* هل واجهةُ السؤالِ إنجليزيةٌ الآن؟ */
 function enUI(){
@@ -562,18 +573,23 @@ function renderQuestions(ls){
   const actSub = document.querySelector('#activityScreen .screen-sub');
   if(window.RocketJourney){
     document.body.classList.add('rocket-mode');
+    /* يبقى عربياً في كلِّ الموادِّ — حتى الإنجليزية — بقرارِ المالك ٢٠٢٦-٠٩-١٨:
+       يقرؤُه التلميذُ الصغيرُ الذي لَمّا يقرأِ الإنجليزيةَ بعدُ. */
     if(actSub) actSub.textContent='أجب عن الأسئلة وأطلق صاروخك إلى القمر 🚀';
     RocketJourney.mount(host, total);
   }
+  /* زرُّ الرجوعِ مشتركٌ بين الكتب، فيُضبَطُ في كلِّ فتحٍ (يعودُ عربياً في غيرِ الإنجليزية). */
+  const actBack = document.querySelector('#activityScreen .back');
+  if(actBack) actBack.innerHTML = enUI() ? '<bdi>'+T('→ رجوع للدروس')+'</bdi>' : '→ رجوع للدروس';
 
   // شريط التنقّل — وسطه يتبنّى أزرار «تحقّق/إعادة» من جسم السؤال الظاهر
   // (قرار المالك: الأزرار بين «السابق» و«التالي» خارج الحاوية، فيتفرّغ داخل
   // الإطار للسؤال وحده؛ ومؤشر التقدم صعد إلى رأس البطاقة مكان شارة الرقم الملغاة)
   const nav=document.createElement('div'); nav.className='qnav';
-  nav.innerHTML='<button class="btn qprev">→ السابق</button>'+
+  nav.innerHTML='<button class="btn qprev">'+T('→ السابق')+'</button>'+
     '<span class="qnav-mid"></span>'+
-    '<button class="btn qnext">التالي ←</button>'+
-    '<button class="btn qfinish">إنهاء 🏁</button>';
+    '<button class="btn qnext">'+T('التالي ←')+'</button>'+
+    '<button class="btn qfinish">'+T('إنهاء 🏁')+'</button>';
   host.appendChild(nav);
   const result=document.createElement('div'); result.className='qresult'; host.appendChild(result);
 
@@ -611,12 +627,12 @@ function renderQuestions(ls){
   nav.querySelector('.qnext').onclick=function(){ show(cur+1); };
   nav.querySelector('.qfinish').onclick=function(){
     const good=host.querySelectorAll('.qfb.good').length;
-    result.innerHTML='<div class="card-box qresult-box">'+
-      '<h3>🎉 أنهيت الدرس!</h3>'+
-      '<p>أجبت صحيحاً عن <b>'+arNum(good)+'</b> من <b>'+arNum(total)+'</b> أسئلة.</p>'+
+    result.innerHTML='<div class="card-box qresult-box" dir="auto">'+
+      '<h3>'+T('🎉 أنهيت الدرس!')+'</h3>'+
+      '<p>'+T('أجبت صحيحاً عن <b>%1</b> من <b>%2</b> أسئلة.', good, total)+'</p>'+
       // أُزيل سطر «مجموع نجومك» (النجوم مُستبدَلة برحلة الصاروخ) — بقية التقرير كما هي
-      (good===total ? '<p class="qresult-cheer">ممتاز! أكملت كل الأسئلة 🌟</p>'
-                    : '<p class="qresult-cheer">أحسنت! يمكنك الرجوع وإكمال ما تبقّى.</p>')+
+      (good===total ? '<p class="qresult-cheer">'+T('ممتاز! أكملت كل الأسئلة 🌟')+'</p>'
+                    : '<p class="qresult-cheer">'+T('أحسنت! يمكنك الرجوع وإكمال ما تبقّى.')+'</p>')+
       '</div>';
     // «أحسنت، أكملتَ كلَّ الأسئلة» — مقطعٌ بشريٌّ من المستودع لا نطقٌ آليّ
     if(good===total && window.SHOOGP_SFX) SHOOGP_SFX.voice('all-done');

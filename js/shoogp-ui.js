@@ -1516,15 +1516,18 @@ function fitFrame(card){
    وأُزيلَ فصلُ رمزِ «تحقّق/إعادة» فعادَ الرمزُ في عقدةِ نصِّ الزرِّ كما يكتبُه app.js. */
 function enhanceNav(){
   frameize();
+  /* كلمةُ الزرِّ بلغةِ المادّة (الإنجليزيةُ في `en` وحدَها — قرارُ المالك ٢٠٢٦-٠٩-١٨)؛
+     السهمُ في الصورةِ نفسِها فمعناهُ مكانيٌّ لا لغويّ ولا يتغيّر. */
+  var en = (_curSubject==='en');
   document.querySelectorAll('.qnav .qprev:not([data-img])').forEach(function(b){
     b.dataset.img='1'; b.classList.add('nav-btn','nav-prev');
     b.innerHTML='<img src="images/ui/btn-next-prev.png" alt="">'+
-                '<span class="ncap">السابق</span>';
+                '<span class="ncap">'+(en?'Previous':'السابق')+'</span>';
   });
   document.querySelectorAll('.qnav .qnext:not([data-img])').forEach(function(b){
     b.dataset.img='1'; b.classList.add('nav-btn','nav-next');
     b.innerHTML='<img src="images/ui/btn-next-prev.png" alt="">'+
-                '<span class="ncap">التالي</span>';
+                '<span class="ncap">'+(en?'Next':'التالي')+'</span>';
   });
 }
 /* يضبط البطاقة الظاهرة فقط، مع حارس يمنع حلقة المراقب (كتابتنا للأنماط
