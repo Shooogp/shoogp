@@ -39067,7 +39067,9 @@ window.QUESTIONS = {
       audio: "audio/en/boy.mp3",
       image: "images/طفلان-وقطة.png",
       bg: "#fff6dc",
-      spot: { x: 22, y: 57, w: 21, h: 75 }
+      /* الولدُ والبنتُ رسمُ جيميناي (٢٠٢٦-٠٩-١٨، طلبُ المالك) والقطّةُ من الصورةِ السابقة؛
+         المستطيلُ مقيسٌ من موضعِ اللصقِ في tools-scratch/compose_kids (الولد 70..220 × 60..360) */
+      spot: { x: 24, y: 52, w: 25, h: 75 }
     },
     {
       type: "classify",
