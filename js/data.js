@@ -828,7 +828,8 @@ window.DATA_FALLBACK = {
         { title:"wh, ph (Phonics)", file:"g3e-1-7", open:true },
         { title:"Review", file:"g3e-1-8", open:true },
         { title:"Get ready for… (Pre A1 Starters)", file:"g3e-1-9", open:true },
-        { title:"Fun corner", file:"g3e-1-10", open:true }
+        { title:"Fun corner", file:"g3e-1-10", open:true },
+        { title:"Graded readers: Robot School · Elephant's Day", file:"g3e-1-gr", open:true }
       ]},
       { unit:"Let's dress up!", lessons:[
         { title:"Let's dress up! (Vocabulary)", file:"g3e-2-1", open:true },
@@ -840,7 +841,8 @@ window.DATA_FALLBACK = {
         { title:"ear, ure (Phonics)", file:"g3e-2-7", open:true },
         { title:"Review", file:"g3e-2-8", open:true },
         { title:"Get ready for… (Pre A1 Starters)", file:"g3e-2-9", open:true },
-        { title:"Fun corner", file:"g3e-2-10", open:true }
+        { title:"Fun corner", file:"g3e-2-10", open:true },
+        { title:"Graded readers: The Clothes Game · Dad's Tracksuit", file:"g3e-2-gr", open:true }
       ]},
       { unit:"Atomic's Learning Club 1", lessons:[
         { title:"Language booster 1", file:"g3e-lc1-1", open:true },
@@ -856,7 +858,8 @@ window.DATA_FALLBACK = {
         { title:"i_e, a_e, o_e, u_e (Phonics)", file:"g3e-3-7", open:true },
         { title:"Review", file:"g3e-3-8", open:true },
         { title:"Get ready for… (Pre A1 Starters)", file:"g3e-3-9", open:true },
-        { title:"Fun corner", file:"g3e-3-10", open:true }
+        { title:"Fun corner", file:"g3e-3-10", open:true },
+        { title:"Graded readers: Fun at the Park · The Camel Race", file:"g3e-3-gr", open:true }
       ]},
       { unit:"I want to be a doctor!", lessons:[
         { title:"I want to be a doctor! (Vocabulary)", file:"g3e-4-1", open:true },
@@ -868,7 +871,8 @@ window.DATA_FALLBACK = {
         { title:"ea, ea (Phonics)", file:"g3e-4-7", open:true },
         { title:"Review", file:"g3e-4-8", open:true },
         { title:"Get ready for… (Pre A1 Starters)", file:"g3e-4-9", open:true },
-        { title:"Fun corner", file:"g3e-4-10", open:true }
+        { title:"Fun corner", file:"g3e-4-10", open:true },
+        { title:"Graded readers: It's Jobs Day · A Boat to the Beach", file:"g3e-4-gr", open:true }
       ]},
       { unit:"Atomic's Learning Club 2", lessons:[
         { title:"Language booster 2", file:"g3e-lc2-1", open:true },
@@ -891,7 +895,8 @@ window.DATA_FALLBACK = {
         { title:"Listening, Speaking & Writing (Skills)", file:"g4e-1-8", open:true },
         { title:"y, revise i_e/igh/ie (Phonics)", file:"g4e-1-9", open:true },
         { title:"Review", file:"g4e-1-10", open:true },
-        { title:"Get ready for… (A1 Movers)", file:"g4e-1-11", open:true }
+        { title:"Get ready for… (A1 Movers)", file:"g4e-1-11", open:true },
+        { title:"Graded readers: Welcome to Our School · Hippo's Kite", file:"g4e-1-gr", open:true }
       ]},
       { unit:"Picnic time!", lessons:[
         { title:"Food and drinks (Vocabulary)", file:"g4e-2-1", open:true },
@@ -904,7 +909,8 @@ window.DATA_FALLBACK = {
         { title:"Listening, Speaking & Writing (Skills)", file:"g4e-2-8", open:true },
         { title:"ow, revise oa/o_e (Phonics)", file:"g4e-2-9", open:true },
         { title:"Review", file:"g4e-2-10", open:true },
-        { title:"Get ready for… (A1 Movers)", file:"g4e-2-11", open:true }
+        { title:"Get ready for… (A1 Movers)", file:"g4e-2-11", open:true },
+        { title:"Graded readers: The New Shop · A Bowl of Soup", file:"g4e-2-gr", open:true }
       ]},
       { unit:"Bo's Learning Club 1", lessons:[
         { title:"Maths: Sizes and shapes", file:"g4e-lc1-1", open:true },
@@ -921,7 +927,8 @@ window.DATA_FALLBACK = {
         { title:"Listening, Speaking & Writing (Skills)", file:"g4e-3-8", open:true },
         { title:"eigh, ei (Phonics)", file:"g4e-3-9", open:true },
         { title:"Review", file:"g4e-3-10", open:true },
-        { title:"Get ready for… (A1 Movers)", file:"g4e-3-11", open:true }
+        { title:"Get ready for… (A1 Movers)", file:"g4e-3-11", open:true },
+        { title:"Graded readers: The Boat Race · The Baby Bird", file:"g4e-3-gr", open:true }
       ]},
       { unit:"All about jobs", lessons:[
         { title:"Jobs (Vocabulary)", file:"g4e-4-1", open:true },
@@ -934,7 +941,8 @@ window.DATA_FALLBACK = {
         { title:"Listening, Speaking & Writing (Skills)", file:"g4e-4-8", open:true },
         { title:"ew, revise oo/ue (Phonics)", file:"g4e-4-9", open:true },
         { title:"Review", file:"g4e-4-10", open:true },
-        { title:"Get ready for… (A1 Movers)", file:"g4e-4-11", open:true }
+        { title:"Get ready for… (A1 Movers)", file:"g4e-4-11", open:true },
+        { title:"Graded readers: My Dad's a Mechanic · I Want to Be a Scientist!", file:"g4e-4-gr", open:true }
       ]},
       { unit:"Bo's Learning Club 2", lessons:[
         { title:"Science: Health", file:"g4e-lc2-1", open:true },

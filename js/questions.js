@@ -43981,6 +43981,62 @@ window.QUESTIONS = {
     }
   ],
 
+  // الوحدة ١ — القراءات المتدرّجة: Welcome to Robot School! · Elephant's Day (ص٢٨-٣٥)
+  "g3e-1-gr": [
+    {
+      type: "mcq",
+      objective: "قراءة متدرّجة ١ (Welcome to Robot School!): استرجاع تفصيلٍ صريح — وقت الذهاب إلى المدرسة",
+      level: "knowledge",
+      prompt: "When do the children go to Robot School?",
+      options: ["At eight o'clock", "At half past twelve", "At quarter to three", "At ten o'clock"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "قراءة متدرّجة ١ (Welcome to Robot School!): استرجاع تفصيلٍ صريح — حصص الإنجليزية في الصباح",
+      level: "knowledge",
+      statement: "At Robot School, the children have English lessons in the morning.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "قراءة متدرّجة ٢ (Elephant's Day): إكمال جملةٍ من النصّ — أوقات اليوم",
+      level: "knowledge",
+      prompt: "Complete the sentence from 'Elephant's Day'.",
+      text: "I get up in the {} and I stretch my body.",
+      answers: ["morning"],
+      distractors: ["evening", "night"]
+    },
+    {
+      type: "matching",
+      objective: "قراءة متدرّجة ١ (Welcome to Robot School!): ربط كلّ وقتٍ بما يحدث فيه",
+      level: "application",
+      prompt: "Match each time to what happens at Robot School.",
+      pairs: [
+        { a: "half past eight",  b: "English lessons" },
+        { a: "half past twelve", b: "lunch" },
+        { a: "half past one",    b: "an art lesson" },
+        { a: "quarter to three", b: "go home" }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "قراءة متدرّجة ٢ (Elephant's Day): ترتيب أحداث يوم الفيل",
+      level: "reasoning",
+      prompt: "Put Elephant's day in order.",
+      steps: ["get up and have a big breakfast", "play in the afternoon", "have dinner and sing", "go to bed at ten o'clock"]
+    },
+    {
+      type: "exclude",
+      objective: "قراءة متدرّجة ١ (Welcome to Robot School!): تمييز ما ورد في القصّة ممّا لم يرد",
+      level: "reasoning",
+      prompt: "Three of these are in the Robot School story. Which one isn't?",
+      options: ["English lessons", "lunch with fish and rice", "an art lesson", "a swimming lesson"],
+      answer: 3,
+      reason: "There isn't a swimming lesson at Robot School."
+    }
+  ],
+
   // الوحدة ٢ — Let's dress up! (Clothes)
 
   // الدرس ٢-١: المفردات — Let's dress up! (Vocabulary)
@@ -44558,6 +44614,62 @@ window.QUESTIONS = {
       prompt: "You spin the 'trainers' picture and they're red. What do you say?",
       options: ["You're wearing red trainers.", "You're wearing red glasses.", "I'm wearing a red cap.", "They're wearing red jeans."],
       answer: 0
+    }
+  ],
+
+  // الوحدة ٢ — القراءات المتدرّجة: The Clothes Game · Dad's Tracksuit (ص٤٨-٥٥)
+  "g3e-2-gr": [
+    {
+      type: "mcq",
+      objective: "قراءة متدرّجة ١ (The Clothes Game): استرجاع مكان الأحداث",
+      level: "knowledge",
+      prompt: "Where are the girls in 'The Clothes Game'?",
+      options: ["In their bedroom", "At school", "In the park", "At a shop"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "قراءة متدرّجة ٢ (Dad's Tracksuit): استرجاع تفصيلٍ صريح — صورة الأب",
+      level: "knowledge",
+      statement: "In the picture, Dad is sixteen and he hasn't got a beard or glasses.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "قراءة متدرّجة ١ (The Clothes Game): إكمال جملةٍ من النصّ — ألوان الملابس",
+      level: "knowledge",
+      prompt: "Complete the sentence from the story.",
+      text: "Our slippers are fun and our coats are cool. Our handbags are {}.",
+      answers: ["orange"],
+      distractors: ["blue", "red"]
+    },
+    {
+      type: "matching",
+      objective: "القراءتان: ربط كلّ شخصٍ بما يرتديه (They're wearing…)",
+      level: "application",
+      prompt: "Match each person to what they're wearing.",
+      pairs: [
+        { a: "the girls",           b: "coats, slippers and handbags" },
+        { a: "Dad's football team", b: "red tracksuits and red trainers" },
+        { a: "the boy at the end",  b: "Dad's tracksuit and trainers" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "القراءتان: تصنيف الملابس بحسب القصّة التي وردت فيها",
+      level: "reasoning",
+      prompt: "Sort the clothes: from the dressing up box or from the football picture?",
+      groups: [
+        { name: "Dressing up box",  items: ["slippers", "handbags", "glasses"] },
+        { name: "Football picture", items: ["tracksuits", "trainers"] }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "قراءة متدرّجة ٢ (Dad's Tracksuit): ترتيب أحداث القصّة",
+      level: "reasoning",
+      prompt: "Put 'Dad's Tracksuit' in order.",
+      steps: ["Dad shows me a special book with pictures.", "Dad points to his football team.", "Dad gives me some red clothes.", "We play football."]
     }
   ],
 
@@ -45245,6 +45357,62 @@ window.QUESTIONS = {
     }
   ],
 
+  // الوحدة ٣ — القراءات المتدرّجة: Fun at the Park · The Camel Race (ص٧٢-٧٩)
+  "g3e-3-gr": [
+    {
+      type: "mcq",
+      objective: "قراءة متدرّجة ١ (Fun at the Park): استرجاع تفصيلٍ صريح — ما تحمله بدرية",
+      level: "knowledge",
+      prompt: "What has Badriya got at the park?",
+      options: ["A tennis racket and a tennis ball", "A basketball", "A bike", "A kite"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "قراءة متدرّجة ١ (Fun at the Park): استرجاع الحدث الرئيسي — الكرة في الشجرة",
+      level: "knowledge",
+      statement: "Maryam's basketball goes in a big tree.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "قراءة متدرّجة ٢ (The Camel Race): إكمال جملةٍ من النصّ — يوم السباق",
+      level: "knowledge",
+      prompt: "Complete the sentence from 'The Camel Race'.",
+      text: "It's Saturday and it's an exciting day. It's camel {} day!",
+      answers: ["racing"],
+      distractors: ["football", "tennis"]
+    },
+    {
+      type: "matching",
+      objective: "القراءتان: ربط كلّ شخصيةٍ بما تفعله (He/She plays… — يتوافق مع نحو الوحدة)",
+      level: "application",
+      prompt: "Match each character to what they do.",
+      pairs: [
+        { a: "Maryam",  b: "plays basketball" },
+        { a: "Badriya", b: "plays tennis" },
+        { a: "Farha",   b: "runs fast and wins the race" },
+        { a: "Dad",     b: "watches the race with me" }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "قراءة متدرّجة ٢ (The Camel Race): ترتيب أحداث السباق",
+      level: "reasoning",
+      prompt: "Put 'The Camel Race' in order.",
+      steps: ["The camels run fast and Farha runs, too.", "Farha stops.", "I ride my bike to Farha with a peach.", "Farha runs after the peach and wins."]
+    },
+    {
+      type: "exclude",
+      objective: "قراءة متدرّجة ١ (Fun at the Park): تمييز ما ورد في القصّة ممّا لم يرد",
+      level: "reasoning",
+      prompt: "Three of these are in 'Fun at the Park'. Which one isn't?",
+      options: ["a basketball", "a tennis racket", "a cute bird", "a camel"],
+      answer: 3,
+      reason: "The camel is in the other story, 'The Camel Race'."
+    }
+  ],
+
   // الوحدة ٤ — I want to be a doctor! (Jobs & transport)
 
   // الدرس ٤-١: المفردات — I want to be a doctor! (Vocabulary)
@@ -45825,6 +45993,63 @@ window.QUESTIONS = {
         { a: "chef",        b: "kitchen" },
         { a: "firefighter", b: "fire" },
         { a: "artist",      b: "paint" }
+      ]
+    }
+  ],
+
+  // الوحدة ٤ — القراءات المتدرّجة: It's Jobs Day · A Boat to the Beach (ص٩٢-٩٩)
+  "g3e-4-gr": [
+    {
+      type: "mcq",
+      objective: "قراءة متدرّجة ١ (It's Jobs Day): استرجاع تفصيلٍ صريح — المهنة التي يريدها قيس",
+      level: "knowledge",
+      prompt: "What does Qais want to be?",
+      options: ["A teacher", "A pilot", "A chef", "A doctor"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "قراءة متدرّجة ١ (It's Jobs Day): ربط الملابس بالمهنة — نورة",
+      level: "knowledge",
+      statement: "Noora is wearing a blue hat and a blue jacket because she wants to be a pilot.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "قراءة متدرّجة ٢ (A Boat to the Beach): إكمال جملةٍ من النصّ — وسيلة المواصلات (by train)",
+      level: "knowledge",
+      prompt: "Complete the sentence from 'A Boat to the Beach'.",
+      text: "I always go to the beach with Mum. We go to the beach by {}.",
+      answers: ["train"],
+      distractors: ["bus", "boat"]
+    },
+    {
+      type: "matching",
+      objective: "قراءة متدرّجة ١ (It's Jobs Day): ربط كلّ طفلٍ بمهنته المفضّلة (I want to be a…)",
+      level: "application",
+      prompt: "Match each child to their favourite job.",
+      pairs: [
+        { a: "Noora", b: "a pilot" },
+        { a: "Hamed", b: "a chef" },
+        { a: "Qais",  b: "a teacher" }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "قراءة متدرّجة ٢ (A Boat to the Beach): ترتيب أحداث الرحلة",
+      level: "reasoning",
+      prompt: "Put 'A Boat to the Beach' in order.",
+      steps: ["The train stops.", "We get on the bus, but it stops.", "We wait on the boat, then it goes.", "We play on the beach."]
+    },
+    {
+      type: "memory",
+      objective: "قراءة متدرّجة ١ (It's Jobs Day): مطابقة المهنة بملابسها",
+      level: "knowledge",
+      prompt: "Find the matching pairs: job and clothes.",
+      pairs: [
+        { a: "pilot",   b: "a blue hat and a blue jacket" },
+        { a: "chef",    b: "a white hat and a white jacket" },
+        { a: "teacher", b: "school clothes" }
       ]
     }
   ],
@@ -46688,6 +46913,65 @@ window.QUESTIONS = {
     }
   ],
 
+  // الوحدة ١ — القراءات المتدرّجة: Welcome to Our School · Hippo's Kite (ص٢٨-٣٥)
+  "g4e-1-gr": [
+    {
+      type: "mcq",
+      objective: "قراءة متدرّجة ١ (Welcome to Our School): استرجاع تفصيلٍ صريح — لمن الفيديو",
+      level: "knowledge",
+      prompt: "Who is the school video for?",
+      options: ["Their friends in Brazil", "Their friends in Britain", "The headteacher", "The school nurse"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "قراءة متدرّجة ١ (Welcome to Our School): الأيام والأوقات — حصص العلوم",
+      level: "knowledge",
+      statement: "The children have Science lessons on Tuesdays and Thursdays at nine o'clock.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "قراءة متدرّجة ١ (Welcome to Our School): إكمال جملةٍ من النصّ — الوقت (quarter past eleven)",
+      level: "knowledge",
+      prompt: "Complete the sentence from the video.",
+      text: "We have Arabic lessons every day at quarter past {}.",
+      answers: ["eleven"],
+      distractors: ["nine", "three"]
+    },
+    {
+      type: "matching",
+      objective: "قراءة متدرّجة ٢ (Hippo's Kite): ربط كلّ حيوانٍ بسبب اعتذاره (ظروف التكرار: always/sometimes/never)",
+      level: "application",
+      prompt: "Match each animal to why it can't play with Hippo's kite.",
+      pairs: [
+        { a: "Bird",      b: "always cleans her feathers on Saturday afternoons" },
+        { a: "Snake",     b: "sometimes sleeps in a tall tree" },
+        { a: "Monkey",    b: "is counting his fingers and toes" },
+        { a: "Crocodile", b: "is never too busy for a friend" }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "القراءتان: نسبة كلّ جملةٍ إلى قصّتها",
+      level: "reasoning",
+      prompt: "Sort the sentences: 'Welcome to Our School' or 'Hippo's Kite'?",
+      groups: [
+        { name: "Welcome to Our School", items: ["We grow vegetables in the school garden.", "Science is my favourite lesson."] },
+        { name: "Hippo's Kite",          items: ["Let's meet at half past three.", "I'm too busy. I'm counting my toes."] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "قراءة متدرّجة ١ (Welcome to Our School): تمييز أماكن المدرسة الواردة في الفيديو",
+      level: "reasoning",
+      prompt: "Three of these places are in the school video. Which one isn't?",
+      options: ["the science lab", "the classroom", "the school garden", "the swimming pool"],
+      answer: 3,
+      reason: "The video shows the science lab, the classroom and the school garden."
+    }
+  ],
+
   // الوحدة ٢ — Picnic time!
 
   // الدرس ٢-١: المفردات — Food and drinks (Vocabulary)
@@ -47319,6 +47603,65 @@ window.QUESTIONS = {
       level: "knowledge",
       statement: "In A1 Movers Speaking Part 3, you say why a picture is different.",
       answer: true
+    }
+  ],
+
+  // الوحدة ٢ — القراءات المتدرّجة: The New Shop · A Bowl of Soup (ص٥٠-٥٧)
+  "g4e-2-gr": [
+    {
+      type: "mcq",
+      objective: "قراءة متدرّجة ١ (The New Shop): استرجاع تفصيلٍ صريح — ما يريد حمزة تجربته",
+      level: "knowledge",
+      prompt: "What does Hamzah really want to try at the new shop?",
+      options: ["A milkshake", "A cupcake", "A sandwich", "A pie"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "قراءة متدرّجة ١ (The New Shop): There aren't any… — المتجر فارغ في البداية",
+      level: "knowledge",
+      statement: "At first, there aren't any people at the new shop. It's empty!",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "قراءة متدرّجة ٢ (A Bowl of Soup): إكمال خطوةٍ من الوصفة (First, put…)",
+      level: "knowledge",
+      prompt: "Complete Grandad's recipe.",
+      text: "First, put the {} in a pan. Then, add a little water.",
+      answers: ["noodles"],
+      distractors: ["apples", "rice"]
+    },
+    {
+      type: "matching",
+      objective: "قراءة متدرّجة ٢ (A Bowl of Soup): ربط كلّ وعاءٍ بمحتواه (containers — نحو الوحدة)",
+      level: "application",
+      prompt: "Match each container to its food or drink.",
+      pairs: [
+        { a: "a box of",    b: "noodles" },
+        { a: "a bag of",    b: "rice" },
+        { a: "a bottle of", b: "lemonade" },
+        { a: "a bowl of",   b: "soup" }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "قراءة متدرّجة ٢ (A Bowl of Soup): ترتيب أحداث القصّة",
+      level: "reasoning",
+      prompt: "Put 'A Bowl of Soup' in order.",
+      steps: ["Huda and Muna find Grandad's recipe book.", "They boil the noodles in a pan.", "Grandad brings vegetables from his garden.", "They eat the soup for dinner."]
+    },
+    {
+      type: "memory",
+      objective: "القراءتان: مطابقة كلّ طعامٍ أو شرابٍ بوصفه في القصّة",
+      level: "knowledge",
+      prompt: "Find the matching pairs.",
+      pairs: [
+        { a: "milkshakes", b: "pink or yellow" },
+        { a: "cupcakes",   b: "a lot in the shop window" },
+        { a: "noodles",    b: "in a box" },
+        { a: "lemonade",   b: "in a bottle" }
+      ]
     }
   ],
 
@@ -48071,6 +48414,65 @@ window.QUESTIONS = {
     }
   ],
 
+  // الوحدة ٣ — القراءات المتدرّجة: The Boat Race · The Baby Bird (ص٧٦-٨٣)
+  "g4e-3-gr": [
+    {
+      type: "mcq",
+      objective: "قراءة متدرّجة ١ (The Boat Race): استرجاع تفصيلٍ صريح — صاحبة أطول قارب (superlative)",
+      level: "knowledge",
+      prompt: "Who has the longest boat?",
+      options: ["Mrs Aseel", "Qais", "Yasir", "Azza"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "قراءة متدرّجة ١ (The Boat Race): شرط الفوز بالسباق",
+      level: "knowledge",
+      statement: "The first boat to the hill wins the race.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "قراءة متدرّجة ٢ (The Baby Bird): إكمال جملةٍ من النصّ — تنظيف الغابة",
+      level: "knowledge",
+      prompt: "Complete the sentence from 'The Baby Bird'.",
+      text: "Azza and Muna have nets because they are cleaning up all the {} in the forest.",
+      answers: ["rubbish"],
+      distractors: ["birds", "water"]
+    },
+    {
+      type: "matching",
+      objective: "القراءتان: ربط كلّ شخصيةٍ بما قالته (المقارنات — نحو الوحدة)",
+      level: "application",
+      prompt: "Match each person to what they say.",
+      pairs: [
+        { a: "Yasir", b: "My boat is the quickest!" },
+        { a: "Qais",  b: "You're quicker than me and now you're wetter than me!" },
+        { a: "Muna",  b: "That bird is smaller than the other birds." },
+        { a: "Dad",   b: "I can catch the baby bird in my net." }
+      ]
+    },
+    {
+      type: "classify",
+      objective: "القراءتان: تصنيف مفردات التضاريس بحسب القصّة (river / forest)",
+      level: "reasoning",
+      prompt: "Sort the words: from 'The Boat Race' or from 'The Baby Bird'?",
+      groups: [
+        { name: "The Boat Race", items: ["river", "waterfall", "hill"] },
+        { name: "The Baby Bird", items: ["tall trees", "nets", "wind"] }
+      ]
+    },
+    {
+      type: "exclude",
+      objective: "قراءة متدرّجة ١ (The Boat Race): تمييز صفات النهر والجبال الواردة في النصّ",
+      level: "reasoning",
+      prompt: "Three of these words describe the river or the mountains in the story. Which one doesn't?",
+      options: ["wide", "deep", "high", "tiny"],
+      answer: 3,
+      reason: "The river is wide and deep, and the mountains are high."
+    }
+  ],
+
   // الوحدة ٤ — All about jobs
 
   // الدرس ٤-١: المفردات — Jobs (Vocabulary)
@@ -48704,6 +49106,62 @@ window.QUESTIONS = {
       prompt: "What should you do before you start writing in A1 Movers Reading and Writing Part 1?",
       options: ["Read all the sentences carefully.", "Write the answers quickly.", "Skip the pictures.", "Ask a friend."],
       answer: 0
+    }
+  ],
+
+  // الوحدة ٤ — القراءات المتدرّجة: My Dad's a Mechanic · I Want to Be a Scientist! (ص٩٨-١٠٥)
+  "g4e-4-gr": [
+    {
+      type: "mcq",
+      objective: "قراءة متدرّجة ١ (My Dad's a Mechanic): استرجاع تفصيلٍ صريح — كيف تذهب شهد إلى الورشة",
+      level: "knowledge",
+      prompt: "How does Shahad go to Dad's garage?",
+      options: ["On her skateboard", "By bus", "By car", "On her bike"],
+      answer: 0
+    },
+    {
+      type: "true-false",
+      objective: "قراءة متدرّجة ١ (My Dad's a Mechanic): سبب المشكلة — الأب تحت السيارة",
+      level: "knowledge",
+      statement: "Dad can't get his tools and screws because he's under the white car.",
+      answer: true
+    },
+    {
+      type: "fill-blank",
+      objective: "قراءة متدرّجة ٢ (I Want to Be a Scientist!): إكمال قاعدةٍ (You must only…) — نحو الوحدة",
+      level: "knowledge",
+      prompt: "Complete Mrs Sumaiya's rule.",
+      text: "You must only put a little blue {} in the glass.",
+      answers: ["powder"],
+      distractors: ["water", "sugar"]
+    },
+    {
+      type: "matching",
+      objective: "القراءتان: ربط كلّ شخصٍ بما يفعله الآن (Present continuous — نحو الوحدة)",
+      level: "application",
+      prompt: "Match each person to what they're doing.",
+      pairs: [
+        { a: "Dad",          b: "is working on a white car" },
+        { a: "Shahad",       b: "is cleaning the white car" },
+        { a: "Mrs Sumaiya",  b: "is teaching the children some science" },
+        { a: "Ahmed",        b: "is putting blue powder in his glass" }
+      ]
+    },
+    {
+      type: "sequence",
+      objective: "قراءة متدرّجة ١ (My Dad's a Mechanic): ترتيب أحداث القصّة",
+      level: "reasoning",
+      prompt: "Put 'My Dad's a Mechanic' in order.",
+      steps: ["Dad walks to the garage and I go on my skateboard.", "Dad works under the white car.", "I give Dad my skateboard.", "Dad can get his tools and screws."]
+    },
+    {
+      type: "exclude",
+      objective: "القراءتان: تمييز ما ورد في قصّة الورشة ممّا ورد في قصّة المختبر",
+      level: "reasoning",
+      prompt: "Three of these are in the garage story. Which one isn't?",
+      options: ["a skateboard", "green doors", "tools and screws", "a white coat"],
+      answer: 3,
+      reason: "The white coat is in 'I Want to Be a Scientist!'."
     }
   ],
 
