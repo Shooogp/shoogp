@@ -1741,7 +1741,10 @@
    (‏`flex-start`) فتوسّطت الكلماتُ القصيرةُ وحدَها بصنفِ `opt-num` (≤٣ أحرف) وبقيت
    «girl»/«friend» على الطرف، فبدا الخياراتُ الأربعةُ مختلفةَ المحاذاةِ في السؤالِ الواحد. */
 .shoogp-ui.skin-leather .qwin .opt{justify-content:center; text-align:center}
-.shoogp-ui.skin-leather .qwin .seqitem{justify-content:flex-start; text-align:start; cursor:grab}
+/* بطاقاتُ الترتيبِ موسَّطةٌ كالخيارات (قرارُ المالك ٢٠٢٦-٠٩-١٨) — كانت `flex-start` فتوسّطت
+   الكلماتُ القصيرةُ وحدَها بصنفِ `seq-num` وبقيت الطويلةُ على الطرف. */
+.shoogp-ui.skin-leather .qwin .seqitem{justify-content:center; text-align:center; cursor:grab}
+.shoogp-ui.skin-leather .qwin .seqitem .seq-txt{text-align:center}
 .shoogp-ui.skin-leather .qwin .chip{display:inline-flex; cursor:grab}
 .shoogp-ui.skin-leather .qwin .chip.mmchip{min-width:calc(var(--lth-h) * var(--lth-cap-h) * 2 + 24px)}
 .shoogp-ui.skin-leather .qwin .chip.used{opacity:.35; cursor:default}

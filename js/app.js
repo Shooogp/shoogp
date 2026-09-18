@@ -1323,7 +1323,8 @@ function renderSequence(q, body, fb){
   });
   const items=()=>[...list.querySelectorAll('.seqitem')];
   // الأرقام عمود ثابت خارج الصناديق (١،٢،٣…): تُعرض بجانب كل صفّ عبر data-pos، لا تتحرك مع البطاقة
-  function renumber(){ items().forEach((li,i)=>{ li.setAttribute('data-pos',arNum(i+1)); li.classList.remove('correct','wrong'); }); }
+  /* رقمُ الموضعِ يتبعُ لغةَ الفريم: لاتينيٌّ في الإنجليزية (قاعدةُ الأرقامِ داخلَ الفريم، CLAUDE.md §نطاق المواد) */
+  function renumber(){ items().forEach((li,i)=>{ li.setAttribute('data-pos', enUI()? String(i+1) : arNum(i+1)); li.classList.remove('correct','wrong'); }); }
   renumber();
   // السحب لإعادة الترتيب: تُزاح البطاقات لإفساح مكان البطاقة المسحوبة (فأرة + لمس)
   let dragged=null;
