@@ -1737,7 +1737,10 @@
 .shoogp-ui.skin-leather .qwin .opts{max-width:none}
 
 /* ═══ ② فروقُ الشكلِ لكلِّ عائلة ═══ */
-.shoogp-ui.skin-leather .qwin .opt{justify-content:flex-start; text-align:start}
+/* خياراتُ الإنجليزيةِ مُوسَّطةٌ (قرارُ المالك ٢٠٢٦-٠٩-١٨): كانت على نمطِ القشورِ العربيةِ
+   (‏`flex-start`) فتوسّطت الكلماتُ القصيرةُ وحدَها بصنفِ `opt-num` (≤٣ أحرف) وبقيت
+   «girl»/«friend» على الطرف، فبدا الخياراتُ الأربعةُ مختلفةَ المحاذاةِ في السؤالِ الواحد. */
+.shoogp-ui.skin-leather .qwin .opt{justify-content:center; text-align:center}
 .shoogp-ui.skin-leather .qwin .seqitem{justify-content:flex-start; text-align:start; cursor:grab}
 .shoogp-ui.skin-leather .qwin .chip{display:inline-flex; cursor:grab}
 .shoogp-ui.skin-leather .qwin .chip.mmchip{min-width:calc(var(--lth-h) * var(--lth-cap-h) * 2 + 24px)}
