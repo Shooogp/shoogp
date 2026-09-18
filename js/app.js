@@ -421,7 +421,7 @@ function qWin(fb,msg,stars){fb.textContent=msg||T('🎉 أحسنت!');fb.classNa
 // أي واجهة بلا صاروخ تُبقي wrong.mp3 يعمل (بقية دروس المنصّة كلها تحوي الصاروخ الآن)
 function qFail(fb,msg){fb.textContent=msg||T('حاول مرة أخرى');fb.className='fb qfb bad';if(!(window.RocketJourney&&RocketJourney.isActive&&RocketJourney.isActive()))playWrongSound();if(window.RocketJourney)RocketJourney.onAnswer(false);}
 
-const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل','slider':'🎚️ الشريط المتدرج','memory':'🎴 بطاقات الذاكرة','lens':'🔍 العدسة المكبّرة','equation-builder':'🧮 بناء المعادلة','number-line':'📏 خط الأعداد','hundred-chart':'💯 لوحة المائة','array':'🔲 المصفوفات','compare':'⚖️ المقارنة','pattern':'🔁 إكمال النمط','count-tap':'🖐️ العد بالنقر','place-value':'🧱 القيمة المنزلية','clock':'🕐 الساعة التفاعلية','measure-tool':'📐 أداة القياس','money':'🪙 النقود العُمانية','symmetry':'🪞 خط التماثل','chart-read':'📊 التمثيل البياني','tashkeel':'ـَ التشكيل','sentence':'📝 ترتيب الجملة','sun-moon':'☀️ شمسية وقمرية','letter-picture':'🔠 الحرف والصورة','judge-reason':'⚖️ الحكم والتعليل','listen-locate':'🎧 أستمع وأحدّد','maze':'🌀 حلّ المتاهة','sound-blend':'🧩 دمج الأصوات'};
+const Q_LABEL={'drag-drop':'🌿 سحب وإفلات','matching':'🔗 توصيل','mcq':'✅ اختيار من متعدد','true-false':'⚖️ صواب أو خطأ','hotspot':'🎯 تحديد الأجزاء','sequence':'🔢 ترتيب تسلسلي','classify':'🗂️ تصنيف','fill-blank':'✏️ ملء الفراغ','exclude':'🚫 الاستبعاد','arrange':'🔤 ترتيب الحروف','mindmap':'🧠 خريطة ذهنية','find-error':'🔍 اكتشف الخطأ','audio-q':'🔊 سؤال صوتي','zoom-reveal':'🔎 تكبير تدريجي','color':'🎨 تلوين بالتعليمات','puzzle':'🧩 البازل','slider':'🎚️ الشريط المتدرج','memory':'🎴 بطاقات الذاكرة','lens':'🔍 العدسة المكبّرة','equation-builder':'🧮 بناء المعادلة','number-line':'📏 خط الأعداد','hundred-chart':'💯 لوحة المائة','array':'🔲 المصفوفات','compare':'⚖️ المقارنة','pattern':'🔁 إكمال النمط','count-tap':'🖐️ العد بالنقر','place-value':'🧱 القيمة المنزلية','clock':'🕐 الساعة التفاعلية','measure-tool':'📐 أداة القياس','money':'🪙 النقود العُمانية','symmetry':'🪞 خط التماثل','chart-read':'📊 التمثيل البياني','tashkeel':'ـَ التشكيل','sentence':'📝 ترتيب الجملة','sun-moon':'☀️ شمسية وقمرية','letter-picture':'🔠 الحرف والصورة','judge-reason':'⚖️ الحكم والتعليل','listen-locate':'🎧 أستمع وأحدّد','maze':'🌀 حلّ المتاهة','sound-blend':'🧩 دمج الأصوات','trace-letter':'✍️ تتبّع الحرف'};
 
 /* ═══ لغةُ واجهةِ السؤال — الإنجليزيةُ في مادّةِ اللغةِ الإنجليزيةِ وحدَها ═══
    قرارُ المالك ٢٠٢٦-٠٩-١٦: ما يراهُ الطالبُ **داخلَ فريمِ السؤالِ** في كتابِ الإنجليزيةِ
@@ -452,6 +452,7 @@ const UI_EN = {
   '🚫 الاستبعاد':'🚫 Odd one out',
   '🎨 تلوين بالتعليمات':'🎨 Colour it',
   '🧩 دمج الأصوات':'🧩 Blend the sounds',
+  '✍️ تتبّع الحرف':'✍️ Trace the letter',
   '🌿 سحب وإفلات':'🌿 Drag and drop',
   '🔤 ترتيب الحروف':'🔤 Make the word',
   '🔍 اكتشف الخطأ':'🔍 Find the mistake',
@@ -497,6 +498,11 @@ const UI_EN = {
   'اختر لوناً أوّلاً من اللوحة 🎨':'Pick a colour first 🎨',
   '🎉 أحسنت! كوّنت الكلمة: ':'🎉 Well done! You made the word: ',
   '🎉 أحسنت! هذا هو مصدر الصوت':'🎉 Well done! That is the sound',
+  /* تتبّعُ الحرف */
+  '✍️ أحسنت! رسمت الحرف صحيحاً':'✍️ Well done! You traced the letter',
+  'ابدأ من النقطة الخضراء وتتبّع الحرف':'Start at the green dot and trace the letter',
+  'لم تكمل الحرف — تتبّع المسار كلّه':'Not finished — trace the whole letter',
+  'ابقَ على مسار الحرف وحاول مرة أخرى':'Stay on the letter path and try again',
   'ليس هذا مصدر الصوت، استمع مرّة أخرى':'Not that one — listen again',
   /* حَشوُ شاشةِ النشاطِ خارجَ الفريم (قرارُ المالك ٢٠٢٦-٠٩-١٨ — يَنسَخُ «ابقها» ٢٠٢٦-٠٩-١٦):
      زرُّ الرجوعِ وأزرارُ التنقّلِ وتقريرُ النتيجة (لا السطرَ الفرعيَّ — يبقى عربياً للتلميذ). أزرارُ السابق/التالي
@@ -553,7 +559,7 @@ function renderQuestions(ls){
     m.innerHTML='<div class="qbody" style="text-align:center;padding:14px 6px;font-size:1.15rem">📚 أسئلة هذا الدرس ستُضاف قريباً بإذن الله</div>';
     host.appendChild(m); return;
   }
-  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor,'puzzle':renderPuzzle,'slider':renderSlider,'memory':renderMemory,'lens':renderLens,'equation-builder':renderEquationBuilder,'number-line':renderNumberLine,'hundred-chart':renderHundredChart,'array':renderArray,'compare':renderCompare,'pattern':renderPattern,'count-tap':renderCountTap,'place-value':renderPlaceValue,'clock':renderClock,'measure-tool':renderMeasureTool,'money':renderMoney,'symmetry':renderSymmetry,'chart-read':renderChartRead,'tashkeel':renderTashkeel,'sentence':renderSentence,'sun-moon':renderSunMoon,'letter-picture':renderLetterPicture,'judge-reason':renderJudgeReason,'listen-locate':renderListenLocate,'maze':renderMaze,'sound-blend':renderSoundBlend};
+  const R={'drag-drop':renderDragDrop,'matching':renderMatching,'mcq':renderMcq,'true-false':renderTrueFalse,'hotspot':renderHotspot,'sequence':renderSequence,'classify':renderClassify,'fill-blank':renderFillBlank,'exclude':renderExclude,'arrange':renderArrange,'mindmap':renderMindmap,'find-error':renderFindError,'audio-q':renderAudioQ,'zoom-reveal':renderZoom,'color':renderColor,'puzzle':renderPuzzle,'slider':renderSlider,'memory':renderMemory,'lens':renderLens,'equation-builder':renderEquationBuilder,'number-line':renderNumberLine,'hundred-chart':renderHundredChart,'array':renderArray,'compare':renderCompare,'pattern':renderPattern,'count-tap':renderCountTap,'place-value':renderPlaceValue,'clock':renderClock,'measure-tool':renderMeasureTool,'money':renderMoney,'symmetry':renderSymmetry,'chart-read':renderChartRead,'tashkeel':renderTashkeel,'sentence':renderSentence,'sun-moon':renderSunMoon,'letter-picture':renderLetterPicture,'judge-reason':renderJudgeReason,'listen-locate':renderListenLocate,'maze':renderMaze,'sound-blend':renderSoundBlend,'trace-letter':renderTraceLetter};
 
   // بناء كل البطاقات (تبقى في الصفحة لحفظ إجاباتها، ونُظهر واحدة فقط)
   // شارة رقم السؤال أُلغيت (قرار المالك): مؤشر التقدم «السؤال ٢ من ٦» يغني عنها
@@ -1255,6 +1261,73 @@ function renderSoundBlend(q, body, fb){
     if(i===q.answer){done=true;btn.classList.add('correct');body.querySelectorAll('.opts .opt').forEach(b=>b.disabled=true);qWin(fb,T('🎉 إجابة صحيحة!'),2);}
     else{btn.classList.add('wrong');btn.disabled=true;qFail(fb,T('ليست الصحيحة، جرّب خياراً آخر'));}
   };});
+}
+
+/* ㊵ تتبّعُ الحرفِ بالإصبع (trace-letter) — خاصٌّ بكتابةِ الحروفِ الإنجليزية (بُني بطلبٍ
+   صريحٍ من المالك ٢٠٢٦-٠٩-١٨ نوعاً مستقلاً). يُعرَضُ الحرفُ مساراً إرشادياً عريضاً باهتاً
+   على لوحٍ مربّع، مع نقطةِ بدايةٍ مرقّمةٍ لكلِّ خطّة، ويسحبُ الطالبُ إصبعَه (أو الفأرة) فوقَه
+   فيُرسَمُ أثرُه؛ ثمّ «تحقّق»: تُقاسُ **تغطيةُ** المسارِ (كم من نقاطِه العيّنةِ مرَّ الأثرُ
+   قربَها) و**دقّةُ** الأثرِ (كم من نقاطِه قريبٌ من المسار) — فلا يُقبَلُ شخبطةٌ تغطّي اللوح.
+   الأحرفُ الأربعةُ للصفِّ الأول (s·a·t·p) مسجّلةٌ هنا بترتيبِ خطّاتِها كما يعلّمُها كتابُ
+   الأصواتِ والتهجئة، وأيُّ حرفٍ آخرَ يُمرَّرُ بـ`paths[]` صراحةً. viewBox ثابتٌ 0..100:
+   السطرُ الأساسيُّ y=75، وارتفاعُ الحروفِ الصغيرةِ y=40، والصاعدُ y=15، والنازلُ y=95. */
+const TRACE_LETTERS={
+  s:['M 66 46 C 62 36 38 36 36 48 C 34 60 66 56 66 68 C 66 82 40 84 34 72'],
+  a:['M 62 48 C 56 40 36 40 36 58 C 36 76 56 78 62 68','M 62 42 L 62 76'],
+  t:['M 46 18 L 46 68 C 46 78 56 78 62 72','M 32 42 L 62 42'],
+  p:['M 36 42 L 36 94','M 36 48 C 44 38 64 40 64 56 C 64 72 44 74 36 64']
+};
+function renderTraceLetter(q, body, fb){
+  const strokes=(q.paths&&q.paths.length)?q.paths:(TRACE_LETTERS[q.letter]||[]);
+  if(!strokes.length){ body.innerHTML='<p class="fb qfb bad">trace-letter: no paths for "'+(q.letter||'')+'"</p>'; return; }
+  const TOL=q.tolerance||9;         // نصفُ قطرِ التسامح بوحداتِ viewBox (≈ عرضُ الإصبع على السبورة)
+  const NEED_COVER=q.cover||0.85;   // نسبةُ نقاطِ المسارِ التي يجبُ أن يمرَّ الأثرُ قربَها
+  const NEED_PREC=q.precision||0.8; // نسبةُ نقاطِ الأثرِ التي يجبُ أن تكونَ قربَ المسار
+  const guides=strokes.map(d=>`<path class="tr-guide" d="${d}"/>`).join('');
+  body.innerHTML=(q.audio?`<div class="qaudio">`+audioPlayerHTML(q.audio)+`</div>`:'')+
+    `<div class="trace-wrap"><svg class="trace-board" viewBox="0 0 100 100" aria-label="${q.letter||''}">`+
+      `<line class="tr-line" x1="6" y1="75" x2="94" y2="75"/>`+
+      `<line class="tr-line tr-line-x" x1="6" y1="40" x2="94" y2="40"/>`+
+      guides+`<g class="tr-trail"></g><g class="tr-starts"></g>`+
+    `</svg></div>`+actionsHTML();
+  wireAudioPlayer(body,q.audio);
+  const svg=body.querySelector('.trace-board'), trail=body.querySelector('.tr-trail'), starts=body.querySelector('.tr-starts');
+  const guideEls=[...svg.querySelectorAll('.tr-guide')];
+  /* نقاطُ البدايةِ المرقّمة (بالأرقامِ اللاتينية — داخلَ فريمٍ إنجليزيّ) + سهمُ الاتجاهِ الأوّل */
+  guideEls.forEach((g,i)=>{
+    const p0=g.getPointAtLength(0), p1=g.getPointAtLength(Math.min(8,g.getTotalLength()));
+    const ang=Math.atan2(p1.y-p0.y,p1.x-p0.x)*180/Math.PI;
+    starts.innerHTML+=`<g class="tr-start" transform="translate(${p0.x} ${p0.y})"><circle r="5.2"/><text y="1.9">${i+1}</text>`+
+      `<path class="tr-arrow" d="M 7 -3 L 12 0 L 7 3 Z" transform="rotate(${ang})"/></g>`;
+  });
+  /* عيّناتُ المسار (كلُّ ٢ وحدة) لقياسِ التغطية — **لكلِّ خطّةٍ على حدة**: التغطيةُ المجمَّعةُ
+     قَبِلَت خطّةً واحدةً في `t` (العمودُ الطويلُ يغطّي وحدَه ٨٥٪ من العيّناتِ لأنّ التسامحَ يبتلعُ
+     وسطَ الشريطِ القصير — مقيسٌ عندَ البناء)، فصارَ الشرطُ أن تبلغَ كلُّ خطّةٍ العتبة. */
+  const strokeSamples=guideEls.map(g=>{ const out=[], L=g.getTotalLength(); for(let t=0;t<=L;t+=2){ const p=g.getPointAtLength(t); out.push([p.x,p.y]); } return out; });
+  const samples=[].concat(...strokeSamples);
+  const pts=[]; let cur=null, done=false;
+  function toSvg(e){ const m=svg.getScreenCTM().inverse(); const p=svg.createSVGPoint(); p.x=e.clientX; p.y=e.clientY; const r=p.matrixTransform(m); return [r.x,r.y]; }
+  function down(e){ if(done) return; e.preventDefault(); svg.setPointerCapture&&svg.setPointerCapture(e.pointerId); const [x,y]=toSvg(e);
+    cur=document.createElementNS('http://www.w3.org/2000/svg','polyline'); cur.setAttribute('class','tr-ink'); cur.setAttribute('points',`${x},${y}`); trail.appendChild(cur); pts.push([x,y]); }
+  function move(e){ if(!cur||done) return; e.preventDefault(); const [x,y]=toSvg(e); pts.push([x,y]); cur.setAttribute('points',cur.getAttribute('points')+` ${x},${y}`); }
+  function up(e){ if(!cur) return; e.preventDefault(); cur=null; }
+  svg.addEventListener('pointerdown',down); svg.addEventListener('pointermove',move);
+  svg.addEventListener('pointerup',up); svg.addEventListener('pointercancel',up); svg.addEventListener('pointerleave',up);
+  const near=(a,b,r)=>Math.hypot(a[0]-b[0],a[1]-b[1])<=r;
+  body.querySelector('.btn-check').onclick=()=>{
+    if(done) return;
+    if(!pts.length){ qFail(fb,T('ابدأ من النقطة الخضراء وتتبّع الحرف')); return; }
+    /* عددُ خطّاتِ الإصبعِ (رفعُه بينَ خطّةٍ وخطّة) لا يقلُّ عن خطّاتِ الحرف — يسدُّ ثغرةَ الحرفِ الذي
+       تُلامسُ خطّتُه الثانيةُ حافّةَ الأولى داخلَ التسامح (عمودُ `a` على طرفِ بطنِها — مقيسٌ عندَ البناء) */
+    const inkStrokes=[...trail.querySelectorAll('.tr-ink')].filter(l=>(l.getAttribute('points')||'').includes(' ')).length;
+    if(inkStrokes<strokeSamples.length){ qFail(fb,T('لم تكمل الحرف — تتبّع المسار كلّه')); return; }
+    const covered=Math.min(...strokeSamples.map(ss=>ss.filter(s=>pts.some(p=>near(s,p,TOL))).length/ss.length));
+    const precise=pts.filter(p=>samples.some(s=>near(s,p,TOL*1.3))).length/pts.length;
+    if(covered>=NEED_COVER && precise>=NEED_PREC){ done=true; svg.classList.add('tr-done'); qWin(fb,T('✍️ أحسنت! رسمت الحرف صحيحاً'),3); }
+    else if(covered<NEED_COVER){ qFail(fb,T('لم تكمل الحرف — تتبّع المسار كلّه')); }
+    else { qFail(fb,T('ابقَ على مسار الحرف وحاول مرة أخرى')); }
+  };
+  body.querySelector('.btn-reset').onclick=()=>{ if(done) return; pts.length=0; trail.innerHTML=''; cur=null; fb.textContent=''; fb.className='fb qfb'; };
 }
 
 /* ⑭ التكبير التدريجي (zoom-reveal): image + options[] + answer + (maxZoom, seconds اختياريان).

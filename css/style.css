@@ -679,6 +679,21 @@
   .blend-tile:hover{background:#ffd39a}
   .blend-tile.played{background:#a7c957;color:#20340a;border-color:#82a83e}
   .blend-play{margin:0 auto 14px;display:block}
+  /* ㊵ تتبّع الحرف (trace-letter): لوحٌ مربّعٌ كريميٌّ بسطرَي كتابة، مسارٌ إرشاديٌّ باهتٌ عريض،
+     نقاطُ بدايةٍ خضراءُ مرقّمة، وأثرُ الإصبعِ برتقاليٌّ (برتقاليُّ المنصّة). `touch-action:none`
+     كي لا يُمرِّرَ اللمسُ الصفحةَ على السبورة أثناءَ الرسم. */
+  .trace-wrap{display:flex;justify-content:center;margin:4px 0 10px}
+  .trace-board{width:min(100%,300px);aspect-ratio:1;background:#fff6dc;border-radius:22px;
+    box-shadow:0 3px 10px rgba(0,0,0,.22);touch-action:none;cursor:crosshair;display:block}
+  .trace-board .tr-line{stroke:#d9c9a3;stroke-width:.8;stroke-dasharray:3 2}
+  .trace-board .tr-line-x{stroke-dasharray:1.5 2.5}
+  .trace-board .tr-guide{fill:none;stroke:#bcd3e6;stroke-width:14;stroke-linecap:round;stroke-linejoin:round}
+  .trace-board .tr-ink{fill:none;stroke:#FF6000;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;opacity:.9}
+  .trace-board .tr-start circle{fill:#60C020;stroke:#fff;stroke-width:1.2}
+  .trace-board .tr-start text{fill:#fff;font-family:'Tajawal',sans-serif;font-weight:800;font-size:6px;text-anchor:middle}
+  .trace-board .tr-arrow{fill:#60C020}
+  .trace-board.tr-done .tr-guide{stroke:#a7c957}
+  .trace-board.tr-done{cursor:default}
   /* الحكم والتعليل (judge-reason) — خاصّ باللغة العربية. يعيد استعمال .opts/.opt كما هي،
      ولا يزيد إلا فاصلَ الخطوتين وعنوانَ «لماذا؟» الذي يظهر بعد صحّة الحكم وحدَها */
   .jr{display:flex;flex-direction:column;gap:18px;width:100%;align-items:center}
