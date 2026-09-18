@@ -332,11 +332,16 @@ var FRAME_FAMILIES={
      نِسَبُ النوافذِ المقيسةُ: s ‏1.6903 · m ‏1.1897 · l ‏0.9984 · tall ‏0.4749 — ترتيبٌ
      تصاعديٌّ سليمٌ (s>m>l>tall) وإن لم تُطابقْ أرقامَ عائلةِ IT رقماً برقم؛ لم تُفرَضْ
      مطابقةٌ حرفيةٌ لأنّ عائلاتٍ سابقةً (ديني حياتي: s=2.553) تختلفُ فيما بينها كذلك. */
+  /* ⚠️ حوافُّ النافذةِ **مقيسةٌ من قناةِ ألفا** (٢٠٢٦-٠٩-١٨) لا مقرَّبة: كانت القيمُ
+     الأولى (22/22/22/22 لِـl ونظائرُها) أوسعَ من الفتحةِ الحقيقيةِ بنحوِ ٢٪ من كلِّ جهة،
+     فبقيَ شريطٌ من خلفيةِ الصفحةِ ظاهراً بين اللوحِ الأخضرِ وحافّةِ الجلد (لاحظَه المالكُ
+     أسفلَ الفريم). القياسُ بالطريقةِ نفسِها التي يعتمدُها `measureFrameGeo` (أعمدةٌ عندَ
+     ٪٢٠/٣٥/٦٥/٨٠ من عرضِ الفتحةِ تتفادى شارةَ النجمةِ المركزية)، من `images/ui/frame-en-*.png`. */
   en:{ order:['s','m','l','tall'], flexBase:'l', sizes:{
-    s:{img:'frame-en-s.png', ar:'1264 / 848',  win:{top:'22%', left:'18%', right:'18%', bottom:'22%'}, hasFill:false},
-    m:{img:'frame-en-m.png', ar:'1333 / 1024', win:{top:'22%', left:'29%', right:'17%', bottom:'19%'}, hasFill:false},
-    l:{img:'frame-en-l.png', ar:'1024 / 1024', win:{top:'22%', left:'22%', right:'22%', bottom:'22%'}, hasFill:false},
-    tall:{img:'frame-en-tall.png', ar:'1024 / 1705', win:{top:'14%', left:'22%', right:'22%', bottom:'14%'}, hasFill:false}
+    s:{img:'frame-en-s.png', ar:'1264 / 848',  win:{top:'20.2%', left:'16.3%', right:'15.9%', bottom:'20.0%'}, hasFill:false},
+    m:{img:'frame-en-m.png', ar:'1333 / 1024', win:{top:'19.8%', left:'27.3%', right:'15.3%', bottom:'17.1%'}, hasFill:false},
+    l:{img:'frame-en-l.png', ar:'1024 / 1024', win:{top:'19.8%', left:'19.9%', right:'19.9%', bottom:'19.8%'}, hasFill:false},
+    tall:{img:'frame-en-tall.png', ar:'1024 / 1705', win:{top:'11.9%', left:'19.9%', right:'19.9%', bottom:'12.0%'}, hasFill:false}
   }}
 };
 /* ═══ مادةُ الدرس → عائلةُ الفريم — **جدولٌ لا سلسلةُ شروط** ═══
