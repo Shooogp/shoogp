@@ -38755,13 +38755,12 @@ window.QUESTIONS = {
       answer: 0
     },
     {
-      type: "exclude",
-      objective: "تمييز صوت الحرف s",
+      type: "trace-letter",
+      objective: "كتابة الحرف s الصغير بخطّته الصحيحة (Sounds and Spelling: Trace and write) — إثرائيّ",
       level: "application",
-      prompt: "Click the word that does NOT start with 's'.",
-      options: ["sun", "six", "cat", "sit"],
-      answer: 2,
-      reason: "'cat' starts with the letter 'c', not 's'."
+      prompt: "Listen, then start at the green dot and trace the letter s.",
+      letter: "s",
+      audio: "audio/en/phon-s.mp3"
     }
   ],
 
@@ -39393,13 +39392,12 @@ window.QUESTIONS = {
       ]
     },
     {
-      type: "exclude",
-      objective: "تمييز صوت الحرف a",
+      type: "trace-letter",
+      objective: "كتابة الحرف a الصغير بخطّته الصحيحة (Sounds and Spelling: Trace and write) — إثرائيّ",
       level: "application",
-      prompt: "Click the word that does NOT have the 'a' sound.",
-      options: ["cat", "bag", "ant", "pen"],
-      answer: 3,
-      reason: "'pen' has the 'e' sound, not the 'a' sound."
+      prompt: "Listen, then start at the green dot and trace the letter a.",
+      letter: "a",
+      audio: "audio/en/phon-a.mp3"
     }
   ],
 
@@ -39908,13 +39906,12 @@ window.QUESTIONS = {
       ]
     },
     {
-      type: "exclude",
-      objective: "تمييز صوت الحرف t",
+      type: "trace-letter",
+      objective: "كتابة الحرف t الصغير بخطّته الصحيحة (Sounds and Spelling: Trace and write) — إثرائيّ",
       level: "application",
-      prompt: "Click the word that does NOT start with 't'.",
-      options: ["ten", "top", "bag", "tap"],
-      answer: 2,
-      reason: "'bag' starts with the letter 'b', not 't'."
+      prompt: "Listen, then start at the green dot and trace the letter t.",
+      letter: "t",
+      audio: "audio/en/phon-t.mp3"
     }
   ],
 
@@ -40472,13 +40469,12 @@ window.QUESTIONS = {
       ]
     },
     {
-      type: "exclude",
-      objective: "تمييز صوت الحرف p",
+      type: "trace-letter",
+      objective: "كتابة الحرف p الصغير بخطّته الصحيحة (Sounds and Spelling: Trace and write) — إثرائيّ",
       level: "application",
-      prompt: "Click the word that does NOT start with 'p'.",
-      options: ["pen", "pan", "sun", "pin"],
-      answer: 2,
-      reason: "'sun' starts with the letter 's', not 'p'."
+      prompt: "Listen, then start at the green dot and trace the letter p.",
+      letter: "p",
+      audio: "audio/en/phon-p.mp3"
     }
   ],
 

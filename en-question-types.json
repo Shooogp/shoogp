@@ -93,7 +93,7 @@
           "unit": "1", "title": "Family and friends — عائلتي وأصدقائي",
           "lessons": [
             { "code": "g1e-1-1", "title": "Family and friends (١)", "objective": "مفردات: boy, cat, friend, girl", "basic": ["mcq", "matching", "classify", "true-false", "hotspot"], "enrichment": "memory", "status": "ready" },
-            { "code": "g1e-1-2", "title": "أصوات الحروف (٢) — sound s", "objective": "تمييز صوت الحرف s (Sounds and Spelling Book, Unit 1 Lesson 2)", "basic": ["mcq", "classify", "matching", "true-false", "hotspot"], "enrichment": "exclude", "status": "ready" },
+            { "code": "g1e-1-2", "title": "أصوات الحروف (٢) — sound s", "objective": "تمييز صوت الحرف s (Sounds and Spelling Book, Unit 1 Lesson 2)", "basic": ["mcq", "classify", "matching", "true-false", "hotspot"], "enrichment": "trace-letter", "status": "ready" },
             { "code": "g1e-1-3", "title": "Who's this? (٣) — قصة", "objective": "مفردات: brother, dad, mum, sister؛ تركيب: Who's this? This is (my)…؛ القيمة: Be helpful", "basic": ["mcq", "matching", "fill-blank", "true-false", "sequence"], "enrichment": "color", "status": "ready", "note": "نشاط تلوين مرتبط بالقيمة (Be helpful) موجود حرفياً في كتاب النشاط" },
             { "code": "g1e-1-4", "title": "Who's this? (٤) — تدريب لغوي", "objective": "تثبيت This is my… بصيغ متعددة", "basic": ["matching", "mcq", "true-false", "fill-blank", "sequence"], "enrichment": "exclude", "status": "ready" },
             { "code": "g1e-1-5", "title": "مشروع: دمى الأصابع (٥)", "objective": "مراجعة مفردات الوحدة ضمن سياق المشروع", "basic": ["sequence", "mcq", "matching", "true-false", "classify"], "enrichment": "memory", "status": "ready", "note": "محتوى صفحة المشروع نفسها ضعيف لغوياً؛ يُعتمد على مفردات الوحدة" },
@@ -112,7 +112,7 @@
           "unit": "2", "title": "My school bag — حقيبتي المدرسية",
           "lessons": [
             { "code": "g1e-2-1", "title": "My school bag (١)", "objective": "مفردات: bag, pen, eraser, ruler", "basic": ["mcq", "matching", "classify", "true-false", "hotspot"], "enrichment": "memory", "status": "ready" },
-            { "code": "g1e-2-2", "title": "أصوات الحروف (٢) — sound a", "objective": "تمييز صوت الحرف a (Sounds and Spelling Book, Unit 2 Lesson 2)", "basic": ["mcq", "classify", "matching", "true-false", "hotspot"], "enrichment": "exclude", "status": "ready" },
+            { "code": "g1e-2-2", "title": "أصوات الحروف (٢) — sound a", "objective": "تمييز صوت الحرف a (Sounds and Spelling Book, Unit 2 Lesson 2)", "basic": ["mcq", "classify", "matching", "true-false", "hotspot"], "enrichment": "trace-letter", "status": "ready" },
             { "code": "g1e-2-3", "title": "I've got / I haven't got (٣) — قصة", "objective": "مفردات: book, crayon, pencil, pencil case؛ تركيب: I've got…/I haven't got…؛ القيمة: Look after your things", "basic": ["mcq", "fill-blank", "matching", "true-false", "sequence"], "enrichment": "color", "status": "ready" },
             { "code": "g1e-2-4", "title": "ماذا في حقيبتي؟ (٤) — تدريب لغوي", "objective": "تثبيت I've got…/I haven't got…", "basic": ["matching", "mcq", "true-false", "fill-blank", "classify"], "enrichment": "exclude", "status": "ready" },
             { "code": "g1e-2-5", "title": "مشروع: حقيبة مدرسية (٥)", "objective": "مراجعة مفردات الوحدة ضمن سياق المشروع", "basic": ["sequence", "mcq", "matching", "true-false", "classify"], "enrichment": "memory", "status": "ready" },
@@ -124,7 +124,7 @@
           "unit": "3", "title": "Our classroom — غرفتي الصفية",
           "lessons": [
             { "code": "g1e-3-1", "title": "Our classroom (١)", "objective": "مفردات: door, teacher, whiteboard, window", "basic": ["mcq", "matching", "classify", "true-false", "hotspot"], "enrichment": "memory", "status": "ready" },
-            { "code": "g1e-3-2", "title": "أصوات الحروف (٢) — sound t", "objective": "تمييز صوت الحرف t (Sounds and Spelling Book, Unit 3 Lesson 2)", "basic": ["mcq", "classify", "matching", "true-false", "hotspot"], "enrichment": "exclude", "status": "ready" },
+            { "code": "g1e-3-2", "title": "أصوات الحروف (٢) — sound t", "objective": "تمييز صوت الحرف t (Sounds and Spelling Book, Unit 3 Lesson 2)", "basic": ["mcq", "classify", "matching", "true-false", "hotspot"], "enrichment": "trace-letter", "status": "ready" },
             { "code": "g1e-3-3", "title": "What's this? (٣) — قصة", "objective": "مفردات: chair, desk, floor, wall؛ تركيب: What's this? It's a…؛ القيمة: Be tidy", "basic": ["mcq", "matching", "fill-blank", "true-false", "hotspot"], "enrichment": "color", "status": "ready" },
             { "code": "g1e-3-4", "title": "أين الكتاب؟ (٤) — in/on/under", "objective": "حروف جر المكان: The book is in/on/under the bag", "basic": ["hotspot", "matching", "mcq", "true-false", "drag-drop"], "enrichment": "exclude", "status": "ready", "note": "تراكيب in/on/under تُختبر بصرياً (hotspot/drag-drop) بدل نشاط الاستماع الأصلي" },
             { "code": "g1e-3-5", "title": "مشروع: صندوق أدوات مرتّب (٥)", "objective": "مراجعة مفردات الوحدة ضمن سياق المشروع", "basic": ["sequence", "mcq", "matching", "true-false", "classify"], "enrichment": "memory", "status": "ready" },
@@ -136,7 +136,7 @@
           "unit": "4", "title": "My favourite toy — لعبتي المفضلة",
           "lessons": [
             { "code": "g1e-4-1", "title": "My favourite toy (١)", "objective": "مفردات: ball, car, robot, teddy", "basic": ["mcq", "matching", "classify", "true-false", "hotspot"], "enrichment": "memory", "status": "ready" },
-            { "code": "g1e-4-2", "title": "أصوات الحروف (٢) — sound p", "objective": "تمييز صوت الحرف p (Sounds and Spelling Book, Unit 4 Lesson 2)", "basic": ["mcq", "classify", "matching", "true-false", "hotspot"], "enrichment": "exclude", "status": "ready" },
+            { "code": "g1e-4-2", "title": "أصوات الحروف (٢) — sound p", "objective": "تمييز صوت الحرف p (Sounds and Spelling Book, Unit 4 Lesson 2)", "basic": ["mcq", "classify", "matching", "true-false", "hotspot"], "enrichment": "trace-letter", "status": "ready" },
             { "code": "g1e-4-3", "title": "What colour is it? (٣) — قصة", "objective": "مفردات: doll, plane, train, yo-yo؛ تركيب: What colour is it? It's…؛ القيمة: Share", "basic": ["mcq", "matching", "fill-blank", "true-false", "classify"], "enrichment": "color", "status": "ready" },
             { "code": "g1e-4-4", "title": "لعبتي المفضلة (٤) — تدريب لغوي", "objective": "تثبيت What's your favourite toy? It's my…", "basic": ["matching", "mcq", "true-false", "fill-blank", "hotspot"], "enrichment": "exclude", "status": "ready" },
             { "code": "g1e-4-5", "title": "مشروع: صندوق الألعاب (٥)", "objective": "مراجعة مفردات الوحدة ضمن سياق المشروع", "basic": ["sequence", "mcq", "matching", "true-false", "classify"], "enrichment": "memory", "status": "ready" },
