@@ -191,13 +191,14 @@ function openBook(key){
   window.currentBookColor=currentBookColor;
   window.currentBook=key;
   setTheme(bk && bk.theme ? bk.theme : 'theme-home');
-  /* عنوانُ الكتابِ وزرُّ الرجوعِ في كتابِ الإنجليزية (قرارُ المالك ٢٠٢٦-٠٩-١٨): «English — Grade 1»
+  /* عنوانُ الكتابِ وزرُّ الرجوعِ في كتابِ الإنجليزية (قرارُ المالك ٢٠٢٦-٠٩-١٨): «Team Together — Grade 1»
+     (اسمُ الكتابِ من غلافِه كسائرِ الموادّ — «Team Together Oman 1A» — لا اسمُ المادّة)
      و«← Back to books». حقلُ `book` في البياناتِ يبقى عربياً لأنّ نافذةَ الرمزِ (js/unlock.js)
      تقرؤُه داخلَ جملةٍ عربيةٍ للمعلّمة؛ فالعنوانُ الإنجليزيُّ يُشتَقُّ هنا من رقمِ الصفِّ في المفتاح. */
   const enBookHead = (typeof window.shoogpBookSubject==='function') && window.shoogpBookSubject(key)==='en';
   const gradeNo = (String(key).match(/^g(\d+)-/)||[])[1];
   const titleEl = document.getElementById('bookTitle');
-  if(enBookHead && gradeNo) titleEl.innerHTML = `<bdi>English — Grade ${gradeNo}</bdi>`;
+  if(enBookHead && gradeNo) titleEl.innerHTML = `<bdi>Team Together — Grade ${gradeNo}</bdi>`;
   else titleEl.textContent = idx.book;
   const backBtn = document.querySelector('#lessonsScreen .back');
   if(backBtn) backBtn.innerHTML = enBookHead ? '<bdi>← Back to books</bdi>' : '→ رجوع للكتب';
