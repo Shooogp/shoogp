@@ -38647,12 +38647,12 @@ window.QUESTIONS = {
       type: "matching",
       objective: "مفردات: boy, cat, friend, girl",
       level: "knowledge",
-      prompt: "Match each word to its group.",
+      prompt: "Match each word to its first letter.",
       pairs: [
-        { a: "boy",    b: "person" },
-        { a: "girl",   b: "person" },
-        { a: "cat",    b: "animal" },
-        { a: "friend", b: "someone you like" }
+        { a: "boy",    b: "b" },
+        { a: "girl",   b: "g" },
+        { a: "cat",    b: "c" },
+        { a: "friend", b: "f" }
       ]
     },
     {
@@ -38679,12 +38679,12 @@ window.QUESTIONS = {
       type: "memory",
       objective: "مفردات: boy, cat, friend, girl",
       level: "knowledge",
-      prompt: "Find the matching pairs.",
+      prompt: "Find the pairs: each word and its first letter.",
       pairs: [
-        { a: "boy",    b: "person" },
-        { a: "girl",   b: "person" },
-        { a: "cat",    b: "animal" },
-        { a: "friend", b: "someone you like" }
+        { a: "boy",    b: "b" },
+        { a: "girl",   b: "g" },
+        { a: "cat",    b: "c" },
+        { a: "friend", b: "f" }
       ]
     }
   ],
@@ -38708,14 +38708,14 @@ window.QUESTIONS = {
     },
     {
       type: "matching",
-      objective: "تمييز صوت الحرف s",
+      objective: "تمييز صوت الحرف s بين أصواتٍ أولى أخرى من مفردات الوحدة",
       level: "knowledge",
-      prompt: "Match the letter 's' to words that start with it.",
+      prompt: "Match each letter to the word that starts with it.",
       pairs: [
         { a: "s", b: "sun" },
-        { a: "s", b: "six" },
-        { a: "s", b: "sit" },
-        { a: "s", b: "sad" }
+        { a: "m", b: "mum" },
+        { a: "d", b: "dad" },
+        { a: "c", b: "cat" }
       ]
     },
     {
@@ -39351,14 +39351,14 @@ window.QUESTIONS = {
     },
     {
       type: "matching",
-      objective: "تمييز صوت الحرف a",
+      objective: "تمييز صوت الحرف a بين أصواتٍ أولى أخرى من مفردات الوحدة",
       level: "knowledge",
-      prompt: "Match the letter 'a' to words that have its sound.",
+      prompt: "Match each letter to the word that starts with it.",
       pairs: [
         { a: "a", b: "ant" },
-        { a: "a", b: "bag" },
-        { a: "a", b: "cat" },
-        { a: "a", b: "hat" }
+        { a: "b", b: "bag" },
+        { a: "p", b: "pen" },
+        { a: "r", b: "ruler" }
       ]
     },
     {
@@ -39585,12 +39585,12 @@ window.QUESTIONS = {
       pics: "a",
       objective: "مراجعة مفردات الوحدة ٢",
       level: "knowledge",
-      prompt: "Match each thing to where it goes.",
+      prompt: "Match each thing to what you do with it.",
       pairs: [
-        { a: "pen",    b: "the pencil case" },
-        { a: "eraser", b: "the pencil case" },
-        { a: "book",   b: "the school bag" },
-        { a: "ruler",  b: "the pencil case" }
+        { a: "pen",    b: "write" },
+        { a: "eraser", b: "rub out" },
+        { a: "book",   b: "read" },
+        { a: "ruler",  b: "draw a line" }
       ]
     },
     {
@@ -39866,14 +39866,14 @@ window.QUESTIONS = {
     },
     {
       type: "matching",
-      objective: "تمييز صوت الحرف t",
+      objective: "تمييز صوت الحرف t بين أصواتٍ أولى أخرى من مفردات الوحدة",
       level: "knowledge",
-      prompt: "Match the letter 't' to words that start with it.",
+      prompt: "Match each letter to the word that starts with it.",
       pairs: [
-        { a: "t", b: "ten" },
-        { a: "t", b: "top" },
-        { a: "t", b: "tap" },
-        { a: "t", b: "teacher" }
+        { a: "t", b: "teacher" },
+        { a: "d", b: "door" },
+        { a: "w", b: "window" },
+        { a: "c", b: "chair" }
       ]
     },
     {
@@ -40430,14 +40430,14 @@ window.QUESTIONS = {
     },
     {
       type: "matching",
-      objective: "تمييز صوت الحرف p",
+      objective: "تمييز صوت الحرف p بين أصواتٍ أولى أخرى من مفردات الوحدة",
       level: "knowledge",
-      prompt: "Match the letter 'p' to words that start with it.",
+      prompt: "Match each letter to the word that starts with it.",
       pairs: [
-        { a: "p", b: "pen" },
-        { a: "p", b: "pan" },
-        { a: "p", b: "pin" },
-        { a: "p", b: "plane" }
+        { a: "p", b: "plane" },
+        { a: "b", b: "ball" },
+        { a: "c", b: "car" },
+        { a: "d", b: "doll" }
       ]
     },
     {
@@ -41391,14 +41391,14 @@ window.QUESTIONS = {
     },
     {
       type: "matching",
-      objective: "تثبيت Is it a…? Yes, it is./No, it isn't.",
+      objective: "تثبيت Is it a…? Yes, it is./No, it isn't. مع What's this? / What colour is it?",
       level: "application",
-      prompt: "Match the question to the answer.",
+      prompt: "Match each question to its answer.",
       pairs: [
-        { a: "Is it a car?",    b: "No, it isn't." },
-        { a: "Is it a ball?",   b: "Yes, it is." },
-        { a: "Is it a robot?",  b: "No, it isn't." },
-        { a: "Is it a kite?",   b: "Yes, it is." }
+        { a: "Is it a car?",       b: "No, it isn't." },
+        { a: "Is it a ball?",      b: "Yes, it is." },
+        { a: "What's this?",       b: "It's a robot." },
+        { a: "What colour is it?", b: "It's blue." }
       ]
     },
     {
@@ -42242,7 +42242,6 @@ window.QUESTIONS = {
       pairs: [
         { a: "head",  b: "one" },
         { a: "arms",  b: "two" },
-        { a: "legs",  b: "two" },
         { a: "toes",  b: "ten" }
       ]
     }
@@ -42519,7 +42518,6 @@ window.QUESTIONS = {
       pairs: [
         { a: "head",  b: "one" },
         { a: "arms",  b: "two" },
-        { a: "legs",  b: "two" },
         { a: "toes",  b: "ten" }
       ]
     }
@@ -42638,7 +42636,6 @@ window.QUESTIONS = {
       pairs: [
         { a: "head",  b: "one" },
         { a: "arms",  b: "two" },
-        { a: "legs",  b: "two" },
         { a: "toes",  b: "ten" }
       ]
     }
@@ -43007,12 +43004,12 @@ window.QUESTIONS = {
       type: "matching",
       objective: "تركيب: This is my sister. Her name's Asma.",
       level: "application",
-      prompt: "Match the introduction to the reply.",
+      prompt: "Match each question or introduction to its reply.",
       pairs: [
-        { a: "This is my sister.",   b: "Nice to meet you!" },
-        { a: "Her name's Asma.",     b: "Hello, Asma!" },
-        { a: "This is my friend.",   b: "Nice to meet you!" },
-        { a: "His name's Ali.",      b: "Hello, Ali!" }
+        { a: "Who's this?",         b: "This is my sister." },
+        { a: "What's her name?",    b: "Her name's Asma." },
+        { a: "What's his name?",    b: "His name's Ali." },
+        { a: "This is my friend.",  b: "Nice to meet you!" }
       ]
     },
     {
@@ -45810,14 +45807,14 @@ window.QUESTIONS = {
     },
     {
       type: "matching",
-      objective: "ربط الكلمة بصوت ea فيها",
-      level: "knowledge",
-      prompt: "Match each word to its 'ea' sound.",
+      objective: "ربط الكلمة بكلمةٍ أخرى تحمل صوت ea نفسه (طويلاً أو قصيراً)",
+      level: "reasoning",
+      prompt: "Match each word to the word with the same 'ea' sound.",
       pairs: [
-        { a: "read",  b: "long" },
-        { a: "bread", b: "short" },
-        { a: "beach", b: "long" },
-        { a: "head",  b: "short" }
+        { a: "read",    b: "beach" },
+        { a: "bread",   b: "head" },
+        { a: "sea",     b: "tea" },
+        { a: "weather", b: "feather" }
       ]
     }
   ],
@@ -47003,14 +47000,14 @@ window.QUESTIONS = {
     },
     {
       type: "matching",
-      objective: "ربط كل طعامٍ بحلاوته أو ملوحته",
+      objective: "ربط كل طعامٍ أو شرابٍ بوصفه: حلوٌ أو مالح، طعامٌ أو شراب",
       level: "application",
-      prompt: "Match each food to sweet or savoury.",
+      prompt: "Match each food or drink to what it is.",
       pairs: [
-        { a: "cupcakes", b: "sweet" },
-        { a: "noodles",  b: "savoury" },
-        { a: "lemonade", b: "sweet" },
-        { a: "salad",    b: "savoury" }
+        { a: "cupcakes", b: "a sweet food" },
+        { a: "noodles",  b: "a savoury food" },
+        { a: "lemonade", b: "a sweet drink" },
+        { a: "tea",      b: "a hot drink" }
       ]
     },
     {
@@ -47480,14 +47477,13 @@ window.QUESTIONS = {
     },
     {
       type: "matching",
-      objective: "ربط الكلمة بنمط رسمها الصوتيّ",
+      objective: "ربط الكلمة بكلمةٍ أخرى تحمل نمط الرسم الصوتيّ نفسه",
       level: "knowledge",
-      prompt: "Match each word to its spelling pattern.",
+      prompt: "Match each word to the word with the same spelling pattern.",
       pairs: [
-        { a: "boat", b: "oa" },
-        { a: "nose", b: "o_e" },
-        { a: "snow", b: "ow" },
-        { a: "grow", b: "ow" }
+        { a: "boat", b: "goat" },
+        { a: "nose", b: "home" },
+        { a: "snow", b: "grow" }
       ]
     }
   ],
@@ -48287,14 +48283,13 @@ window.QUESTIONS = {
     },
     {
       type: "matching",
-      objective: "ربط الكلمة بنمط رسمها الصوتيّ",
+      objective: "ربط الكلمة بكلمةٍ أخرى تحمل نمط الرسم الصوتيّ نفسه",
       level: "knowledge",
-      prompt: "Match each word to its spelling pattern.",
+      prompt: "Match each word to the word with the same spelling pattern.",
       pairs: [
-        { a: "eight",  b: "eigh" },
-        { a: "vein",   b: "ei" },
-        { a: "sleigh", b: "eigh" },
-        { a: "weigh",  b: "ei" }
+        { a: "eight", b: "sleigh" },
+        { a: "vein",  b: "rein" },
+        { a: "weigh", b: "eighteen" }
       ]
     }
   ],
@@ -48982,14 +48977,13 @@ window.QUESTIONS = {
     },
     {
       type: "matching",
-      objective: "ربط الكلمة بنمط رسمها الصوتيّ",
+      objective: "ربط الكلمة بكلمةٍ أخرى تحمل نمط الرسم الصوتيّ نفسه",
       level: "knowledge",
-      prompt: "Match each word to its spelling pattern.",
+      prompt: "Match each word to the word with the same spelling pattern.",
       pairs: [
-        { a: "boots", b: "oo" },
-        { a: "blue",  b: "ue" },
-        { a: "screw", b: "ew" },
-        { a: "moon",  b: "oo" }
+        { a: "boots", b: "moon" },
+        { a: "blue",  b: "glue" },
+        { a: "screw", b: "chew" }
       ]
     }
   ],
@@ -49022,13 +49016,14 @@ window.QUESTIONS = {
     },
     {
       type: "matching",
-      objective: "ربط قواعد Green Park بمسموحٍ أو ممنوع",
+      objective: "ربط كل قاعدةٍ من قواعد Green Park بسببها (must/mustn't)",
       level: "application",
-      prompt: "Match each Green Park rule to allowed or not allowed.",
+      prompt: "Match each Green Park rule to its reason.",
       pairs: [
-        { a: "ride bikes",       b: "allowed" },
-        { a: "drop litter",      b: "not allowed" },
-        { a: "walk on the path", b: "allowed" }
+        { a: "You must put litter in the bin.", b: "The park stays clean." },
+        { a: "You must walk on the path.",      b: "The grass stays green." },
+        { a: "You mustn't feed the birds.",     b: "The birds stay healthy." },
+        { a: "You mustn't swim in the river.",  b: "The river is dangerous." }
       ]
     },
     {
