@@ -62,97 +62,97 @@ window.DATA_FALLBACK = {
   index: {
     "g1-en": { book:"اللغة الإنجليزية — الصف الأول", units:[
       { unit:"Welcome", lessons:[
-        { title:"Hello!", file:"g1e-0-1", open:true }
+        { title:"Lesson 1 · Hello!", file:"g1e-0-1", open:true }
       ]},
       { unit:"Family and friends", lessons:[
-        { title:"Family and friends", file:"g1e-1-1", open:true },
-        { title:"Sound: s", file:"g1e-1-2", open:true },
-        { title:"Who's this?", file:"g1e-1-3", open:true },
-        { title:"This is my sister", file:"g1e-1-4", open:true },
-        { title:"Project: Finger puppets", file:"g1e-1-5", open:true },
-        { title:"Review", file:"g1e-1-6", open:true },
-        { title:"Get ready for Starters", file:"g1e-1-7", open:true }
+        { title:"Lesson 1 · Family and friends", file:"g1e-1-1", open:true },
+        { title:"Lesson 2 · Language practice: Sound s", file:"g1e-1-2", open:true },
+        { title:"Lesson 3 · Story: Who's this?", file:"g1e-1-3", open:true },
+        { title:"Lesson 4 · Language practice: This is my sister", file:"g1e-1-4", open:true },
+        { title:"Lesson 5 · Project: Finger puppets", file:"g1e-1-5", open:true },
+        { title:"Lesson 6 · Review", file:"g1e-1-6", open:true },
+        { title:"Lesson 7 · Get ready for… (Pre A1 Starters)", file:"g1e-1-7", open:true }
       ]},
       { unit:"My school bag", lessons:[
-        { title:"My school bag", file:"g1e-2-1", open:true },
-        { title:"Sound: a", file:"g1e-2-2", open:true },
-        { title:"I've got / I haven't got", file:"g1e-2-3", open:true },
-        { title:"What's in my bag?", file:"g1e-2-4", open:true },
-        { title:"Project: School bag", file:"g1e-2-5", open:true },
-        { title:"Review", file:"g1e-2-6", open:true },
-        { title:"Get ready for Starters", file:"g1e-2-7", open:true }
+        { title:"Lesson 1 · My school bag", file:"g1e-2-1", open:true },
+        { title:"Lesson 2 · Language practice: Sound a", file:"g1e-2-2", open:true },
+        { title:"Lesson 3 · Story: I've got / I haven't got", file:"g1e-2-3", open:true },
+        { title:"Lesson 4 · Language practice: What's in my bag?", file:"g1e-2-4", open:true },
+        { title:"Lesson 5 · Project: A school bag", file:"g1e-2-5", open:true },
+        { title:"Lesson 6 · Review", file:"g1e-2-6", open:true },
+        { title:"Lesson 7 · Get ready for… (Pre A1 Starters)", file:"g1e-2-7", open:true }
       ]},
       { unit:"Meg's Learning Club 1", lessons:[
-        { title:"Numbers and colours", file:"g1e-lc1-1", open:true },
-        { title:"Language booster 1", file:"g1e-lc1-2", open:true }
+        { title:"Lesson 1 · Numbers and colours", file:"g1e-lc1-1", open:true },
+        { title:"Lesson 2 · Language booster 1", file:"g1e-lc1-2", open:true }
       ]},
       { unit:"Our classroom", lessons:[
-        { title:"Our classroom", file:"g1e-3-1", open:true },
-        { title:"Sound: t", file:"g1e-3-2", open:true },
-        { title:"What's this?", file:"g1e-3-3", open:true },
-        { title:"Where's the book?", file:"g1e-3-4", open:true },
-        { title:"Project: Desk tidy", file:"g1e-3-5", open:true },
-        { title:"Review", file:"g1e-3-6", open:true },
-        { title:"Get ready for Starters", file:"g1e-3-7", open:true }
+        { title:"Lesson 1 · Our classroom", file:"g1e-3-1", open:true },
+        { title:"Lesson 2 · Language practice: Sound t", file:"g1e-3-2", open:true },
+        { title:"Lesson 3 · Story: What's this?", file:"g1e-3-3", open:true },
+        { title:"Lesson 4 · Language practice: Where's the book?", file:"g1e-3-4", open:true },
+        { title:"Lesson 5 · Project: A desk tidy", file:"g1e-3-5", open:true },
+        { title:"Lesson 6 · Review", file:"g1e-3-6", open:true },
+        { title:"Lesson 7 · Get ready for… (Pre A1 Starters)", file:"g1e-3-7", open:true }
       ]},
       { unit:"My favourite toy", lessons:[
-        { title:"My favourite toy", file:"g1e-4-1", open:true },
-        { title:"Sound: p", file:"g1e-4-2", open:true },
-        { title:"What colour is it?", file:"g1e-4-3", open:true },
-        { title:"What's your favourite toy?", file:"g1e-4-4", open:true },
-        { title:"Project: Toy box", file:"g1e-4-5", open:true },
-        { title:"Review", file:"g1e-4-6", open:true },
-        { title:"Get ready for Starters", file:"g1e-4-7", open:true }
+        { title:"Lesson 1 · My favourite toy", file:"g1e-4-1", open:true },
+        { title:"Lesson 2 · Language practice: Sound p", file:"g1e-4-2", open:true },
+        { title:"Lesson 3 · Story: What colour is it?", file:"g1e-4-3", open:true },
+        { title:"Lesson 4 · Language practice: What's your favourite toy?", file:"g1e-4-4", open:true },
+        { title:"Lesson 5 · Project: A toy box", file:"g1e-4-5", open:true },
+        { title:"Lesson 6 · Review", file:"g1e-4-6", open:true },
+        { title:"Lesson 7 · Get ready for… (Pre A1 Starters)", file:"g1e-4-7", open:true }
       ]},
       { unit:"Meg's Learning Club 2", lessons:[
-        { title:"Shapes", file:"g1e-lc2-1", open:true },
-        { title:"What are these?", file:"g1e-lc2-2", open:true }
+        { title:"Lesson 1 · Shapes", file:"g1e-lc2-1", open:true },
+        { title:"Lesson 2 · Language booster 2", file:"g1e-lc2-2", open:true }
       ]}
     ] },
     "g2-en": { book:"اللغة الإنجليزية — الصف الثاني", units:[
       { unit:"Welcome", lessons:[
-        { title:"Hello!", file:"g2e-0-1", open:true },
-        { title:"Numbers & Colours", file:"g2e-0-2", open:true }
+        { title:"Lessons 1–2 · Classroom language & Meeting new friends", file:"g2e-0-1", open:true },
+        { title:"Lesson 3 · Numbers & Colours", file:"g2e-0-2", open:true }
       ]},
       { unit:"Look at my toys!", lessons:[
-        { title:"Look at my toys! (ai)", file:"g2e-1-1", open:true },
-        { title:"Helpers Team (oa)", file:"g2e-1-2", open:true },
-        { title:"Is it a swing? (ie)", file:"g2e-1-3", open:true },
-        { title:"Skills (a_e)", file:"g2e-1-4", open:true },
-        { title:"Project: A toy museum poster", file:"g2e-1-5", open:true },
-        { title:"Sharing your toys", file:"g2e-1-6", open:true },
-        { title:"Review", file:"g2e-1-7", open:true }
+        { title:"Lesson 1 · Vocabulary and Grammar: Look at my toys! (ai)", file:"g2e-1-1", open:true },
+        { title:"Lesson 2 · Story: New toys (oa)", file:"g2e-1-2", open:true },
+        { title:"Lesson 3 · Vocabulary and Grammar: Is it a swing? (ie)", file:"g2e-1-3", open:true },
+        { title:"Lesson 4 · Skills (a_e)", file:"g2e-1-4", open:true },
+        { title:"Lesson 5 · Culture & Project: Oman's Children Museum", file:"g2e-1-5", open:true },
+        { title:"Lesson 6 · English in action: Sharing your toys", file:"g2e-1-6", open:true },
+        { title:"Lesson 7 · Review & Get ready for… (Pre A1 Starters)", file:"g2e-1-7", open:true }
       ]},
       { unit:"Where's my pen?", lessons:[
-        { title:"Where's my pen? (or)", file:"g2e-2-1", open:true },
-        { title:"Helpers Team (ng)", file:"g2e-2-2", open:true },
-        { title:"This is my pencil case (oo)", file:"g2e-2-3", open:true },
-        { title:"Skills (oo)", file:"g2e-2-4", open:true },
-        { title:"Project: A plan of your school", file:"g2e-2-5", open:true },
-        { title:"Borrowing things", file:"g2e-2-6", open:true },
-        { title:"Review", file:"g2e-2-7", open:true }
+        { title:"Lesson 1 · Vocabulary and Grammar: Where's my pen? (or)", file:"g2e-2-1", open:true },
+        { title:"Lesson 2 · Story: The computer (ng)", file:"g2e-2-2", open:true },
+        { title:"Lesson 3 · Vocabulary and Grammar: This is my pencil case (oo)", file:"g2e-2-3", open:true },
+        { title:"Lesson 4 · Skills (oo)", file:"g2e-2-4", open:true },
+        { title:"Lesson 5 · Culture & Project: My school", file:"g2e-2-5", open:true },
+        { title:"Lesson 6 · English in action: Borrowing things", file:"g2e-2-6", open:true },
+        { title:"Lesson 7 · Review & Get ready for… (Pre A1 Starters)", file:"g2e-2-7", open:true }
       ]},
       { unit:"Atomic's Learning Club 1", lessons:[
-        { title:"Language booster 1", file:"g2e-lc1-1", open:true },
-        { title:"Natural Science: Our senses", file:"g2e-lc1-2", open:true }
+        { title:"Lesson 1 · Language booster 1", file:"g2e-lc1-1", open:true },
+        { title:"Lesson 2 · Natural Science: What are our senses?", file:"g2e-lc1-2", open:true }
       ]},
       { unit:"Move your body!", lessons:[
-        { title:"Move your body! (ou)", file:"g2e-3-1", open:true },
-        { title:"Helpers Team (oi)", file:"g2e-3-2", open:true },
-        { title:"Touch your head! (ue)", file:"g2e-3-3", open:true },
-        { title:"Skills (i_e)", file:"g2e-3-4", open:true },
-        { title:"Project: A festivals poster", file:"g2e-3-5", open:true },
-        { title:"Paying a compliment", file:"g2e-3-6", open:true },
-        { title:"Review", file:"g2e-3-7", open:true }
+        { title:"Lesson 1 · Vocabulary and Grammar: Move your body! (ou)", file:"g2e-3-1", open:true },
+        { title:"Lesson 2 · Story: The robot (oi)", file:"g2e-3-2", open:true },
+        { title:"Lesson 3 · Vocabulary and Grammar: Touch your head! (ue)", file:"g2e-3-3", open:true },
+        { title:"Lesson 4 · Skills (i_e)", file:"g2e-3-4", open:true },
+        { title:"Lesson 5 · Culture & Project: National Day", file:"g2e-3-5", open:true },
+        { title:"Lesson 6 · English in action: Paying a compliment", file:"g2e-3-6", open:true },
+        { title:"Lesson 7 · Review & Get ready for… (Pre A1 Starters)", file:"g2e-3-7", open:true }
       ]},
       { unit:"Meet my family", lessons:[
-        { title:"Meet my family (ee)", file:"g2e-4-1", open:true },
-        { title:"Helpers Team (er)", file:"g2e-4-2", open:true },
-        { title:"My face (ar)", file:"g2e-4-3", open:true },
-        { title:"Skills (o_e)", file:"g2e-4-4", open:true },
-        { title:"Project: A description of a picture", file:"g2e-4-5", open:true },
-        { title:"Introducing family and friends", file:"g2e-4-6", open:true },
-        { title:"Review", file:"g2e-4-7", open:true }
+        { title:"Lesson 1 · Vocabulary and Grammar: Meet my family (ee)", file:"g2e-4-1", open:true },
+        { title:"Lesson 2 · Story: The game (er)", file:"g2e-4-2", open:true },
+        { title:"Lesson 3 · Vocabulary and Grammar: My face (ar)", file:"g2e-4-3", open:true },
+        { title:"Lesson 4 · Skills (o_e)", file:"g2e-4-4", open:true },
+        { title:"Lesson 5 · Culture & Project: My brother's birthday", file:"g2e-4-5", open:true },
+        { title:"Lesson 6 · English in action: Introducing family and friends", file:"g2e-4-6", open:true },
+        { title:"Lesson 7 · Review & Get ready for… (Pre A1 Starters)", file:"g2e-4-7", open:true }
       ]},
       { unit:"Atomic's Learning Club 2", lessons:[
         { title:"Language booster 2", file:"g2e-lc2-1", open:true },
