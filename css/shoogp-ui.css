@@ -1806,34 +1806,20 @@
 .shoogp-ui.skin-leather .qwin :is(.opt.correct,.tf.tf-correct,.excl-opt.correct,.mitem.matched,
        .chip.ok,.seqitem.correct,
        .blank.filled.correct,.blank.correct,.target.filled.correct){
-  filter:var(--lth-cast) drop-shadow(0 0 var(--lth-glow-in) rgba(90,170,45,.95))
-                        drop-shadow(0 0 var(--lth-glow-out) rgba(70,140,35,.88)) !important;
-  /* وجهٌ أخضرُ قياسيٌّ (‏`#a7c957`/`#82a83e`/`#20340a` — ألوانُ style.css نفسُها) بدلَ الجلدِ
-     الملوَّنِ نصُّه وحدَه (قرارُ المالك ٢٠٢٦-٠٩-١٨: كانت الحالةُ تكادُ لا تُرى على البنّيّ).
-     الجلدُ يُرفَعُ (‏`border-image:none`) والحدُّ يبقى بعرضِه فلا يقفزُ التخطيط، والحافّةُ
-     الغامقةُ `outline` مسحوبٌ إلى الداخلِ لأنّ الحدَّ الحقيقيَّ عريضٌ (شرائحُ الجلد) والظلُّ
-     الداخليُّ يُرسَمُ داخلَه فيظهرُ مستطيلاً في الوسط. */
-  border-image:none !important;
-  border-color:transparent !important;
-  background:#a7c957 !important;
-  box-shadow:none !important;
-  outline:3px solid #82a83e !important; outline-offset:-3px !important;
-  color:#20340a !important;
-  text-shadow:none !important;
+  /* الزرُّ الجلديُّ يبقى كما هو؛ يتغيّرُ لونُ الكلمةِ والتوهّجُ وحدَهما إلى الأخضرِ القياسيِّ
+     (‏`#a7c957` وجهُ الصوابِ في style.css) بدلَ الأخضرِ الداكنِ الذي كانَ يكادُ لا يُرى على
+     البنّيّ (قرارُ المالك ٢٠٢٦-٠٩-١٨ — بعدَ رفضِ تلوينِ الوجهِ كلِّه). */
+  filter:var(--lth-cast) drop-shadow(0 0 var(--lth-glow-in) rgba(167,201,87,1))
+                        drop-shadow(0 0 var(--lth-glow-out) rgba(167,201,87,.95)) !important;
+  color:#a7c957 !important;
 }
 .shoogp-ui.skin-leather .qwin :is(.opt.wrong,.tf.tf-wrong,.excl-opt.wrong,.mitem.shake,
        .chip.no,.seqitem.wrong,
        .blank.filled.wrong,.target.filled.wrong){
-  filter:var(--lth-cast) drop-shadow(0 0 var(--lth-glow-in) rgba(210,50,45,.92))
-                        drop-shadow(0 0 var(--lth-glow-out) rgba(175,35,30,.86)) !important;
-  /* وجهٌ أحمرُ قياسيٌّ (‏`#fde2e2`/`#c94a4a`) — انظر تعليقَ الصوابِ أعلاه */
-  border-image:none !important;
-  border-color:transparent !important;
-  background:#fde2e2 !important;
-  box-shadow:none !important;
-  outline:3px solid #c94a4a !important; outline-offset:-3px !important;
+  /* الخطأ: الكلمةُ والتوهّجُ بالأحمرِ القياسيِّ (‏`#c94a4a` حافّةُ الخطأِ في style.css) — انظر أعلاه */
+  filter:var(--lth-cast) drop-shadow(0 0 var(--lth-glow-in) rgba(201,74,74,1))
+                        drop-shadow(0 0 var(--lth-glow-out) rgba(201,74,74,.95)) !important;
   color:#c94a4a !important;
-  text-shadow:none !important;
   animation:cardShake .45s ease;
 }
 @media(prefers-reduced-motion:reduce){
