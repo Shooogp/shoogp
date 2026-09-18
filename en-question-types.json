@@ -102,8 +102,8 @@
         {
           "unit": "lc1", "title": "نادي التعلّم ١ — Meg's Learning Club (أعداد وألوان)",
           "lessons": [
-            { "code": "g1e-lc1-1", "title": "الأعداد ١-٦ — Numbers", "objective": "العدّ من ١ إلى ٦ (تكامل رياضيات)", "basic": ["mcq", "sequence", "matching", "true-false", "classify"], "enrichment": "color", "status": "ready" },
-            { "code": "g1e-lc1-2", "title": "الألوان — Colours + How old are you?", "objective": "أسماء الألوان الستة؛ Language booster 1: How old are you? I'm (six).", "basic": ["mcq", "matching", "true-false", "classify", "fill-blank"], "enrichment": "memory", "status": "ready" }
+            { "code": "g1e-lc1-1", "title": "Numbers and colours — الأعداد ١-٦ والألوان (الدرس ١، ص٢٨-٢٩)", "objective": "العدّ من ١ إلى ٦ (تكامل رياضيات)؛ أسماء الألوان الستة (تكامل فنون)", "basic": ["mcq", "true-false", "matching", "classify", "sequence"], "enrichment": "color", "status": "ready", "note": "أُعيد توزيعُ أسئلةِ النادي على درسَيه كما في الكتاب ٢٠٢٦-٠٩-١٨: كان الدرسُ الأولُ أعداداً وحدَها والثاني ألواناً، والكتابُ يجمعُ الأعدادَ والألوانَ في الدرسِ الأولِ ويُفردُ الثانيَ لِـLanguage booster 1" },
+            { "code": "g1e-lc1-2", "title": "Language booster 1 — How old are you? + مراجعة الأعداد والألوان (الدرس ٢، ص٣٠-٣١)", "objective": "Language booster 1: How old are you? I'm (six). A (red) bag. (Six) bags. — مراجعة الأعداد ١-٦ والألوان", "basic": ["mcq", "true-false", "matching", "fill-blank", "classify"], "enrichment": "memory", "status": "ready" }
           ]
         },
         {

@@ -39096,7 +39096,7 @@ window.QUESTIONS = {
   // اللغة الإنجليزية/الأول — نادي التعلّم ١: Meg's Learning Club (أعداد وألوان)
   // محتوى الطالب بالكامل بالإنجليزية — انظر en-question-types.json §fullImmersionLanguage
 
-  // نادي التعلّم ١-١: الأعداد ١-٦ (Numbers 1-6)
+  // نادي التعلّم ١-١: Numbers and colours — الأعداد ١-٦ والألوان الستة (الدرس ١ في الكتاب ص٢٨-٢٩)
   "g1e-lc1-1": [
     {
       type: "mcq",
@@ -39108,21 +39108,22 @@ window.QUESTIONS = {
     },
     {
       type: "true-false",
-      objective: "العدّ من ١ إلى ٦ (تكامل رياضيات)",
+      objective: "أسماء الألوان الستة (تكامل فنون)",
       level: "knowledge",
-      statement: "'Six' comes after 'five'.",
+      statement: "'Green' is a colour.",
       answer: true
     },
     {
       type: "matching",
-      objective: "العدّ من ١ إلى ٦ (تكامل رياضيات)",
+      objective: "أسماء الألوان الستة (تكامل فنون)",
       level: "knowledge",
-      prompt: "Match each word to its number.",
+      prompt: "Listen, then match each colour to what it describes.",
+      audio: "audio/en/listen-match-colours.mp3",
       pairs: [
-        { a: "one",  b: "1" },
-        { a: "two",  b: "2" },
-        { a: "five", b: "5" },
-        { a: "six",  b: "6" }
+        { a: "red",    b: "the colour of an apple" },
+        { a: "yellow", b: "the colour of the sun" },
+        { a: "blue",   b: "the colour of the sky" },
+        { a: "green",  b: "the colour of grass" }
       ]
     },
     {
@@ -39185,11 +39186,11 @@ window.QUESTIONS = {
     }
   ],
 
-  // نادي التعلّم ١-٢: الألوان (Colours) + How old are you?
+  // نادي التعلّم ١-٢: Language booster 1 — How old are you? + مراجعة الأعداد والألوان (الدرس ٢ في الكتاب ص٣٠-٣١)
   "g1e-lc1-2": [
     {
       type: "mcq",
-      objective: "أسماء الألوان الستة (تكامل فنون)",
+      objective: "Language booster 1 (A (red) bag. (Six) bags.) — مراجعة الألوان",
       level: "knowledge",
       prompt: "Listen and circle the colour word.",
       audio: "audio/en/red-colour.mp3",
@@ -39198,22 +39199,21 @@ window.QUESTIONS = {
     },
     {
       type: "true-false",
-      objective: "أسماء الألوان الستة (تكامل فنون)",
+      objective: "Language booster 1 (A (red) bag. (Six) bags.) — مراجعة الأعداد ١-٦",
       level: "knowledge",
-      statement: "'Green' is a colour.",
+      statement: "'Six' comes after 'five'.",
       answer: true
     },
     {
       type: "matching",
-      objective: "أسماء الألوان الستة (تكامل فنون)",
+      objective: "Language booster 1 (A (red) bag. (Six) bags.) — مراجعة الأعداد ١-٦",
       level: "knowledge",
-      prompt: "Listen, then match each colour to what it describes.",
-      audio: "audio/en/listen-match-colours.mp3",
+      prompt: "Match each word to its number.",
       pairs: [
-        { a: "red",    b: "the colour of an apple" },
-        { a: "yellow", b: "the colour of the sun" },
-        { a: "blue",   b: "the colour of the sky" },
-        { a: "green",  b: "the colour of grass" }
+        { a: "one",  b: "1" },
+        { a: "two",  b: "2" },
+        { a: "five", b: "5" },
+        { a: "six",  b: "6" }
       ]
     },
     {
@@ -39227,7 +39227,7 @@ window.QUESTIONS = {
     },
     {
       type: "classify",
-      objective: "أسماء الألوان الستة (تكامل فنون)",
+      objective: "Language booster 1 (A (red) bag. (Six) bags.) — مراجعة الألوان",
       level: "reasoning",
       prompt: "Sort each colour.",
       groups: [
@@ -39237,7 +39237,7 @@ window.QUESTIONS = {
     },
     {
       type: "memory",
-      objective: "أسماء الألوان الستة (تكامل فنون)",
+      objective: "Language booster 1 (A (red) bag. (Six) bags.) — مراجعة الألوان",
       level: "knowledge",
       prompt: "Find the matching pairs.",
       pairs: [

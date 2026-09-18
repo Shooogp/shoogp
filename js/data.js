@@ -73,10 +73,6 @@ window.DATA_FALLBACK = {
         { title:"Review", file:"g1e-1-6", open:true },
         { title:"Get ready for Starters", file:"g1e-1-7", open:true }
       ]},
-      { unit:"Meg's Learning Club 1", lessons:[
-        { title:"Numbers 1-6", file:"g1e-lc1-1", open:true },
-        { title:"Colours", file:"g1e-lc1-2", open:true }
-      ]},
       { unit:"My school bag", lessons:[
         { title:"My school bag", file:"g1e-2-1", open:true },
         { title:"Sound: a", file:"g1e-2-2", open:true },
@@ -85,6 +81,10 @@ window.DATA_FALLBACK = {
         { title:"Project: School bag", file:"g1e-2-5", open:true },
         { title:"Review", file:"g1e-2-6", open:true },
         { title:"Get ready for Starters", file:"g1e-2-7", open:true }
+      ]},
+      { unit:"Meg's Learning Club 1", lessons:[
+        { title:"Numbers and colours", file:"g1e-lc1-1", open:true },
+        { title:"Language booster 1", file:"g1e-lc1-2", open:true }
       ]},
       { unit:"Our classroom", lessons:[
         { title:"Our classroom", file:"g1e-3-1", open:true },
@@ -123,10 +123,6 @@ window.DATA_FALLBACK = {
         { title:"Sharing your toys", file:"g2e-1-6", open:true },
         { title:"Review", file:"g2e-1-7", open:true }
       ]},
-      { unit:"Atomic's Learning Club 1", lessons:[
-        { title:"Language booster 1", file:"g2e-lc1-1", open:true },
-        { title:"Natural Science: Our senses", file:"g2e-lc1-2", open:true }
-      ]},
       { unit:"Where's my pen?", lessons:[
         { title:"Where's my pen? (or)", file:"g2e-2-1", open:true },
         { title:"Helpers Team (ng)", file:"g2e-2-2", open:true },
@@ -135,6 +131,10 @@ window.DATA_FALLBACK = {
         { title:"Project: A plan of your school", file:"g2e-2-5", open:true },
         { title:"Borrowing things", file:"g2e-2-6", open:true },
         { title:"Review", file:"g2e-2-7", open:true }
+      ]},
+      { unit:"Atomic's Learning Club 1", lessons:[
+        { title:"Language booster 1", file:"g2e-lc1-1", open:true },
+        { title:"Natural Science: Our senses", file:"g2e-lc1-2", open:true }
       ]},
       { unit:"Move your body!", lessons:[
         { title:"Move your body! (ou)", file:"g2e-3-1", open:true },
@@ -813,7 +813,7 @@ window.DATA_FALLBACK = {
       ]}
     ]},
     "g3-en": { book:"اللغة الإنجليزية — الصف الثالث", units:[
-      { unit:"Welcome", lessons:[
+      { unit:"Welcome: Back to school", lessons:[
         { title:"Classroom language", file:"g3e-0-1", open:true },
         { title:"Alphabet & Asking for names", file:"g3e-0-2", open:true },
         { title:"Numbers (11-20)", file:"g3e-0-3", open:true }
@@ -832,7 +832,7 @@ window.DATA_FALLBACK = {
       ]},
       { unit:"Let's dress up!", lessons:[
         { title:"Let's dress up! (Vocabulary)", file:"g3e-2-1", open:true },
-        { title:"Story (Helpers Team)", file:"g3e-2-2", open:true },
+        { title:"The school show (Story)", file:"g3e-2-2", open:true },
         { title:"Whose is it? (Grammar)", file:"g3e-2-3", open:true },
         { title:"Skills", file:"g3e-2-4", open:true },
         { title:"Special days in Oman (Culture & Project)", file:"g3e-2-5", open:true },
@@ -848,7 +848,7 @@ window.DATA_FALLBACK = {
       ]},
       { unit:"Hobbies", lessons:[
         { title:"Hobbies (Vocabulary)", file:"g3e-3-1", open:true },
-        { title:"Story (Helpers Team)", file:"g3e-3-2", open:true },
+        { title:"Where's Fatma? (Story)", file:"g3e-3-2", open:true },
         { title:"Days of the week (Grammar)", file:"g3e-3-3", open:true },
         { title:"Skills", file:"g3e-3-4", open:true },
         { title:"Traditional sports in Oman (Culture & Project)", file:"g3e-3-5", open:true },
@@ -860,7 +860,7 @@ window.DATA_FALLBACK = {
       ]},
       { unit:"I want to be a doctor!", lessons:[
         { title:"I want to be a doctor! (Vocabulary)", file:"g3e-4-1", open:true },
-        { title:"Story (Helpers Team)", file:"g3e-4-2", open:true },
+        { title:"The job fair (Story)", file:"g3e-4-2", open:true },
         { title:"How do you go to work? (Grammar)", file:"g3e-4-3", open:true },
         { title:"Skills", file:"g3e-4-4", open:true },
         { title:"The yellow school bus (Culture & Project)", file:"g3e-4-5", open:true },
@@ -876,7 +876,7 @@ window.DATA_FALLBACK = {
       ]}
     ]},
     "g4-en": { book:"اللغة الإنجليزية — الصف الرابع", units:[
-      { unit:"Welcome", lessons:[
+      { unit:"Welcome: New neighbours", lessons:[
         { title:"New neighbours (Countries & Hobbies)", file:"g4e-0-1", open:true },
         { title:"Numbers (50-100)", file:"g4e-0-2", open:true }
       ]},
@@ -895,7 +895,7 @@ window.DATA_FALLBACK = {
       ]},
       { unit:"Picnic time!", lessons:[
         { title:"Food and drinks (Vocabulary)", file:"g4e-2-1", open:true },
-        { title:"Story", file:"g4e-2-2", open:true },
+        { title:"The Secret Shed (Story)", file:"g4e-2-2", open:true },
         { title:"There is/There are (Grammar)", file:"g4e-2-3", open:true },
         { title:"Food and drink containers (Vocabulary & Grammar)", file:"g4e-2-4", open:true },
         { title:"Food around the world (Culture & Project)", file:"g4e-2-5", open:true },
@@ -912,7 +912,7 @@ window.DATA_FALLBACK = {
       ]},
       { unit:"Along the wadi", lessons:[
         { title:"Landscapes (Vocabulary)", file:"g4e-3-1", open:true },
-        { title:"Story", file:"g4e-3-2", open:true },
+        { title:"The Great Clean-up (Story)", file:"g4e-3-2", open:true },
         { title:"Comparatives and superlatives (Grammar)", file:"g4e-3-3", open:true },
         { title:"Adjectives (Vocabulary & Grammar)", file:"g4e-3-4", open:true },
         { title:"Nature reserves in Oman (Culture & Project)", file:"g4e-3-5", open:true },
@@ -925,7 +925,7 @@ window.DATA_FALLBACK = {
       ]},
       { unit:"All about jobs", lessons:[
         { title:"Jobs (Vocabulary)", file:"g4e-4-1", open:true },
-        { title:"Story", file:"g4e-4-2", open:true },
+        { title:"The burglar (Story)", file:"g4e-4-2", open:true },
         { title:"Present continuous (Grammar)", file:"g4e-4-3", open:true },
         { title:"Rules & Must/mustn't (Vocabulary & Grammar)", file:"g4e-4-4", open:true },
         { title:"Unusual jobs around the world (Culture & Project)", file:"g4e-4-5", open:true },
