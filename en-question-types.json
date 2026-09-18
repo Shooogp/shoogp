@@ -97,7 +97,7 @@
             { "code": "g1e-1-3", "title": "Who's this? (٣) — قصة", "objective": "مفردات: brother, dad, mum, sister؛ تركيب: Who's this? This is (my)…؛ القيمة: Be helpful", "basic": ["mcq", "matching", "fill-blank", "true-false", "sequence"], "enrichment": "color", "status": "ready", "note": "نشاط تلوين مرتبط بالقيمة (Be helpful) موجود حرفياً في كتاب النشاط" },
             { "code": "g1e-1-4", "title": "Who's this? (٤) — تدريب لغوي", "objective": "تثبيت This is my… بصيغ متعددة", "basic": ["matching", "mcq", "true-false", "fill-blank", "sequence"], "enrichment": "exclude", "status": "ready" },
             { "code": "g1e-1-5", "title": "مشروع: دمى الأصابع (٥)", "objective": "مراجعة مفردات الوحدة ضمن سياق المشروع", "basic": ["sequence", "mcq", "matching", "true-false", "classify"], "enrichment": "memory", "status": "ready", "note": "محتوى صفحة المشروع نفسها ضعيف لغوياً؛ يُعتمد على مفردات الوحدة" },
-            { "code": "g1e-1-6", "title": "المراجعة (٦)", "objective": "مراجعة تراكمية لمفردات وتراكيب الوحدة ١", "basic": ["mcq", "true-false", "matching", "classify", "fill-blank"], "enrichment": "exclude", "status": "ready" },
+            { "code": "g1e-1-6", "title": "المراجعة (٦)", "objective": "مراجعة تراكمية لمفردات وتراكيب الوحدة ١", "basic": ["mcq", "true-false", "matching", "classify", "fill-blank"], "enrichment": "trace-letter", "status": "ready" },
             { "code": "g1e-1-7", "title": "استعدّ للاختبار (٧) — Pre-A1 Starters", "objective": "تدريب على نمط اختبار Pre-A1 Starters", "basic": ["mcq", "matching", "true-false", "classify", "hotspot"], "enrichment": "memory", "status": "ready", "note": "أنشطة الكتاب هنا استماعية بالكامل؛ تُحوَّل لمكافئها البصري (mcq بخيارات مصوّرة) بلا صوت" }
           ]
         },
@@ -116,7 +116,7 @@
             { "code": "g1e-2-3", "title": "I've got / I haven't got (٣) — قصة", "objective": "مفردات: book, crayon, pencil, pencil case؛ تركيب: I've got…/I haven't got…؛ القيمة: Look after your things", "basic": ["mcq", "fill-blank", "matching", "true-false", "sequence"], "enrichment": "color", "status": "ready" },
             { "code": "g1e-2-4", "title": "ماذا في حقيبتي؟ (٤) — تدريب لغوي", "objective": "تثبيت I've got…/I haven't got…", "basic": ["matching", "mcq", "true-false", "fill-blank", "classify"], "enrichment": "exclude", "status": "ready" },
             { "code": "g1e-2-5", "title": "مشروع: حقيبة مدرسية (٥)", "objective": "مراجعة مفردات الوحدة ضمن سياق المشروع", "basic": ["sequence", "mcq", "matching", "true-false", "classify"], "enrichment": "memory", "status": "ready" },
-            { "code": "g1e-2-6", "title": "المراجعة (٦)", "objective": "مراجعة تراكمية لمفردات وتراكيب الوحدة ٢", "basic": ["mcq", "true-false", "matching", "classify", "fill-blank"], "enrichment": "exclude", "status": "ready" },
+            { "code": "g1e-2-6", "title": "المراجعة (٦)", "objective": "مراجعة تراكمية لمفردات وتراكيب الوحدة ٢", "basic": ["mcq", "true-false", "matching", "classify", "fill-blank"], "enrichment": "trace-letter", "status": "ready" },
             { "code": "g1e-2-7", "title": "استعدّ للاختبار (٧) — Pre-A1 Starters", "objective": "تدريب على نمط اختبار Pre-A1 Starters", "basic": ["mcq", "matching", "true-false", "classify", "hotspot"], "enrichment": "memory", "status": "ready", "note": "تحويل بصري لأنشطة الاستماع الأصلية" }
           ]
         },
@@ -128,7 +128,7 @@
             { "code": "g1e-3-3", "title": "What's this? (٣) — قصة", "objective": "مفردات: chair, desk, floor, wall؛ تركيب: What's this? It's a…؛ القيمة: Be tidy", "basic": ["mcq", "matching", "fill-blank", "true-false", "hotspot"], "enrichment": "color", "status": "ready" },
             { "code": "g1e-3-4", "title": "أين الكتاب؟ (٤) — in/on/under", "objective": "حروف جر المكان: The book is in/on/under the bag", "basic": ["hotspot", "matching", "mcq", "true-false", "drag-drop"], "enrichment": "exclude", "status": "ready", "note": "تراكيب in/on/under تُختبر بصرياً (hotspot/drag-drop) بدل نشاط الاستماع الأصلي" },
             { "code": "g1e-3-5", "title": "مشروع: صندوق أدوات مرتّب (٥)", "objective": "مراجعة مفردات الوحدة ضمن سياق المشروع", "basic": ["sequence", "mcq", "matching", "true-false", "classify"], "enrichment": "memory", "status": "ready" },
-            { "code": "g1e-3-6", "title": "المراجعة (٦)", "objective": "مراجعة تراكمية لمفردات وتراكيب الوحدة ٣", "basic": ["mcq", "true-false", "matching", "classify", "fill-blank"], "enrichment": "exclude", "status": "ready" },
+            { "code": "g1e-3-6", "title": "المراجعة (٦)", "objective": "مراجعة تراكمية لمفردات وتراكيب الوحدة ٣", "basic": ["mcq", "true-false", "matching", "classify", "fill-blank"], "enrichment": "trace-letter", "status": "ready" },
             { "code": "g1e-3-7", "title": "استعدّ للاختبار (٧) — Pre-A1 Starters", "objective": "تدريب على نمط اختبار Pre-A1 Starters", "basic": ["mcq", "matching", "true-false", "classify", "hotspot"], "enrichment": "memory", "status": "ready" }
           ]
         },
@@ -140,7 +140,7 @@
             { "code": "g1e-4-3", "title": "What colour is it? (٣) — قصة", "objective": "مفردات: doll, plane, train, yo-yo؛ تركيب: What colour is it? It's…؛ القيمة: Share", "basic": ["mcq", "matching", "fill-blank", "true-false", "classify"], "enrichment": "color", "status": "ready" },
             { "code": "g1e-4-4", "title": "لعبتي المفضلة (٤) — تدريب لغوي", "objective": "تثبيت What's your favourite toy? It's my…", "basic": ["matching", "mcq", "true-false", "fill-blank", "hotspot"], "enrichment": "exclude", "status": "ready" },
             { "code": "g1e-4-5", "title": "مشروع: صندوق الألعاب (٥)", "objective": "مراجعة مفردات الوحدة ضمن سياق المشروع", "basic": ["sequence", "mcq", "matching", "true-false", "classify"], "enrichment": "memory", "status": "ready" },
-            { "code": "g1e-4-6", "title": "المراجعة (٦)", "objective": "مراجعة تراكمية لمفردات وتراكيب الوحدة ٤", "basic": ["mcq", "true-false", "matching", "classify", "fill-blank"], "enrichment": "exclude", "status": "ready" },
+            { "code": "g1e-4-6", "title": "المراجعة (٦)", "objective": "مراجعة تراكمية لمفردات وتراكيب الوحدة ٤", "basic": ["mcq", "true-false", "matching", "classify", "fill-blank"], "enrichment": "trace-letter", "status": "ready" },
             { "code": "g1e-4-7", "title": "استعدّ للاختبار (٧) — Pre-A1 Starters", "objective": "تدريب على نمط اختبار Pre-A1 Starters", "basic": ["mcq", "matching", "true-false", "classify", "hotspot"], "enrichment": "memory", "status": "ready" }
           ]
         },

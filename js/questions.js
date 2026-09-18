@@ -39019,13 +39019,12 @@ window.QUESTIONS = {
       ]
     },
     {
-      type: "exclude",
-      objective: "مراجعة تراكمية لمفردات وتراكيب الوحدة ١",
+      type: "trace-letter",
+      objective: "كتابة الحرف الكبير S بخطّاته الصحيحة (Sounds and Spelling: capital letter) — إثرائيّ",
       level: "application",
-      prompt: "Click the word that is NOT a greeting.",
-      options: ["Hello", "Hi", "What's your name?", "cat"],
-      answer: 3,
-      reason: "'cat' is an animal, not something you say to greet or talk to someone."
+      prompt: "Listen, then start at the green dot and trace the capital letter S.",
+      letter: "S",
+      audio: "audio/en/phon-s.mp3"
     }
   ],
 
@@ -39683,14 +39682,12 @@ window.QUESTIONS = {
       ]
     },
     {
-      type: "exclude",
-      pics: true,
-      objective: "مراجعة تراكمية لمفردات الوحدة ٢",
+      type: "trace-letter",
+      objective: "كتابة الحرف الكبير A بخطّاته الصحيحة (Sounds and Spelling: capital letter) — إثرائيّ",
       level: "application",
-      prompt: "Click the word that is NOT a school thing.",
-      options: ["ruler", "book", "cat", "crayon"],
-      answer: 2,
-      reason: "'cat' is an animal, not a school thing."
+      prompt: "Listen, then start at the green dot and trace the capital letter A.",
+      letter: "A",
+      audio: "audio/en/phon-a.mp3"
     }
   ],
 
@@ -40243,14 +40240,12 @@ window.QUESTIONS = {
       ]
     },
     {
-      type: "exclude",
-      pics: true,
-      objective: "مراجعة تراكمية لمفردات الوحدة ٣",
+      type: "trace-letter",
+      objective: "كتابة الحرف الكبير T بخطّاته الصحيحة (Sounds and Spelling: capital letter) — إثرائيّ",
       level: "application",
-      prompt: "Click the word that is NOT in the classroom.",
-      options: ["door", "window", "cat", "desk"],
-      answer: 2,
-      reason: "'cat' is an animal — it is not a classroom thing."
+      prompt: "Listen, then start at the green dot and trace the capital letter T.",
+      letter: "T",
+      audio: "audio/en/phon-t.mp3"
     }
   ],
 
@@ -40766,13 +40761,12 @@ window.QUESTIONS = {
       ]
     },
     {
-      type: "exclude",
-      objective: "مراجعة تراكمية لمفردات الوحدة ٤",
+      type: "trace-letter",
+      objective: "كتابة الحرف الكبير P بخطّاته الصحيحة (Sounds and Spelling: capital letter) — إثرائيّ",
       level: "application",
-      prompt: "Click the word that is NOT a colour.",
-      options: ["red", "blue", "doll", "green"],
-      answer: 2,
-      reason: "'doll' is a toy — red, blue and green are colours."
+      prompt: "Listen, then start at the green dot and trace the capital letter P.",
+      letter: "P",
+      audio: "audio/en/phon-p.mp3"
     }
   ],
 
