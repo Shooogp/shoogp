@@ -337,11 +337,15 @@ var FRAME_FAMILIES={
      فبقيَ شريطٌ من خلفيةِ الصفحةِ ظاهراً بين اللوحِ الأخضرِ وحافّةِ الجلد (لاحظَه المالكُ
      أسفلَ الفريم). القياسُ بالطريقةِ نفسِها التي يعتمدُها `measureFrameGeo` (أعمدةٌ عندَ
      ٪٢٠/٣٥/٦٥/٨٠ من عرضِ الفتحةِ تتفادى شارةَ النجمةِ المركزية)، من `images/ui/frame-en-*.png`. */
+  /* ⚠️ tall وُسِّعَ ١٤٠ عموداً (1024←1164، ٢٠٢٦-٠٩-١٨) بطلبِ المالك: كانت الأزرارُ تلامسُ
+     الجلدَ من الجانبَين. الإدراجُ بالخياطةِ المحسوبةِ داخلَ الفتحةِ الشفّافةِ وحدَها (الحزامانِ
+     الجانبيانِ والزخارفُ والهامشُ الخارجيُّ محميّة)، فاتّسعت الفتحةُ من ٦٠٪ إلى ٦٥٪ من العرضِ
+     والجلدُ على سماكتِه. الأصلُ في images/ui/originals/frame-en-tall.pre-widen.png. */
   en:{ order:['s','m','l','tall'], flexBase:'l', sizes:{
     s:{img:'frame-en-s.png', ar:'1264 / 848',  win:{top:'20.2%', left:'16.3%', right:'15.9%', bottom:'20.0%'}, hasFill:false, fillDip:true},
     m:{img:'frame-en-m.png', ar:'1333 / 1024', win:{top:'19.8%', left:'27.3%', right:'15.3%', bottom:'17.1%'}, hasFill:false, fillDip:true},
     l:{img:'frame-en-l.png', ar:'1024 / 1024', win:{top:'19.8%', left:'19.9%', right:'19.9%', bottom:'19.8%'}, hasFill:false, fillDip:true},
-    tall:{img:'frame-en-tall.png', ar:'1024 / 1705', win:{top:'11.9%', left:'19.9%', right:'19.9%', bottom:'12.0%'}, hasFill:false, fillDip:true}
+    tall:{img:'frame-en-tall.png', ar:'1164 / 1705', win:{top:'11.9%', left:'17.5%', right:'17.5%', bottom:'11.8%'}, hasFill:false, fillDip:true}
   }}
 };
 /* ═══ مادةُ الدرس → عائلةُ الفريم — **جدولٌ لا سلسلةُ شروط** ═══
