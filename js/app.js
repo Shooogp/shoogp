@@ -191,7 +191,16 @@ function openBook(key){
   window.currentBookColor=currentBookColor;
   window.currentBook=key;
   setTheme(bk && bk.theme ? bk.theme : 'theme-home');
-  document.getElementById('bookTitle').textContent=idx.book;
+  /* عنوانُ الكتابِ وزرُّ الرجوعِ في كتابِ الإنجليزية (قرارُ المالك ٢٠٢٦-٠٩-١٨): «English — Grade 1»
+     و«← Back to books». حقلُ `book` في البياناتِ يبقى عربياً لأنّ نافذةَ الرمزِ (js/unlock.js)
+     تقرؤُه داخلَ جملةٍ عربيةٍ للمعلّمة؛ فالعنوانُ الإنجليزيُّ يُشتَقُّ هنا من رقمِ الصفِّ في المفتاح. */
+  const enBookHead = (typeof window.shoogpBookSubject==='function') && window.shoogpBookSubject(key)==='en';
+  const gradeNo = (String(key).match(/^g(\d+)-/)||[])[1];
+  const titleEl = document.getElementById('bookTitle');
+  if(enBookHead && gradeNo) titleEl.innerHTML = `<bdi>English — Grade ${gradeNo}</bdi>`;
+  else titleEl.textContent = idx.book;
+  const backBtn = document.querySelector('#lessonsScreen .back');
+  if(backBtn) backBtn.innerHTML = enBookHead ? '<bdi>← Back to books</bdi>' : '→ رجوع للكتب';
   const totalL = idx.units.reduce((s,u)=>s+u.lessons.length,0);
   const list=document.getElementById('lessons');list.innerHTML='';
   /* كتابٌ له بطاقة ولمّا تُبنَ دروسُه بعد: يُعرض بلطفٍ بدل قائمةٍ فارغة صامتة.
