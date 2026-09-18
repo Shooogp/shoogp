@@ -203,6 +203,17 @@ function openBook(key){
     return;
   }
   document.getElementById('bookSub').textContent=`${arNum(idx.units.length)} وحدات · ${arNum(totalL)} درساً`;
+  /* شاراتُ الفهرسِ في كتابِ الإنجليزية (قرارُ المالك ٢٠٢٦-٠٩-١٨): «Unit 1» و«7 lessons»
+     ورقمُ الدرسِ لاتينيٌّ — استثناءٌ ثانٍ من قاعدةِ «ما خارجَ الفريمِ يبقى عربياً»
+     (‏`CLAUDE.md` §نطاقِ المواد) محصورٌ بهذه الشاشةِ وهذه المادّة: عناوينُ الوحداتِ
+     والدروسِ إنجليزيةٌ بأرقامِ دروسِها اللاتينية («Lesson 3 · Story…»)، فشارةٌ عربيةٌ
+     بجوارِها تُخالفُها رسماً ولغةً. والمادّةُ من `shoogpBookSubject(key)` (الجدولُ في
+     js/shoogp-ui.js) لا من لاحقةِ المفتاحِ هنا. بقيّةُ الشاشةِ (العنوانُ والرجوعُ
+     والعنوانُ الفرعيّ) عربيةٌ كما هي. */
+  const enBook = (typeof window.shoogpBookSubject==='function') && window.shoogpBookSubject(key)==='en';
+  const num = enBook ? String : arNum;
+  const unitWord = enBook ? 'Unit' : 'الوحدة';
+  const lessonsWord = c => enBook ? (c===1 ? 'lesson' : 'lessons') : 'دروس';
   let n=0;
   /* تُجمَعُ الصناديقُ أوّلاً ولا تُلحَقُ بالقائمةِ في الحلقة: قرارُ «أيُّ وحدةٍ تدخلُ
      إطارَ القفل» يحتاجُ معرفةَ **آخرِ وحدةٍ مفتوحة**، ولا تُعرَفُ إلا بعدَ المرورِ
@@ -223,9 +234,9 @@ function openBook(key){
     const count=u.lessons.length;
     /* بلا شارةِ قفلٍ هنا: القفلُ صارَ **واحداً** على إطارِ الوحداتِ المقفلةِ أدناه.
        وتُعادُ الشارةُ استثناءً لوحدةٍ مقفلةٍ تقعُ **خارجَ** الإطار (انظر أدناه). */
-    uh.innerHTML=`<span class="unit-no">الوحدة ${arNum(ui+1)}</span>`+
+    uh.innerHTML=`<span class="unit-no">${unitWord} ${num(ui+1)}</span>`+
       `<span class="unit-title" dir="auto">${u.unit}</span>`+
-      `<span class="unit-count">${arNum(count)} دروس</span>`+
+      `<span class="unit-count">${num(count)} ${lessonsWord(count)}</span>`+
       `<span class="unit-chevron">⌄</span>`;
 
     // حاوية الدروس (تنطوي)
@@ -249,7 +260,7 @@ function openBook(key){
       /* `<bdi>` حولَ العنوان: عنوانٌ لاتينيٌّ ينتهي بعلامةٍ محايدةٍ («?Who's this»)
          تأخذُ العلامةُ فيه اتجاهَ الصفحةِ RTL فتقفزُ إلى يسارِه. والعزلُ يُبقي
          اتجاهَ الصفِّ عربياً (فشارةُ «في الكتاب» في موضعِها) ويصحّحُ العنوانَ وحدَه. */
-      el.innerHTML=`<div class="num">${arNum(n)}</div><div class="lt"><bdi>${ls.title}</bdi>`+
+      el.innerHTML=`<div class="num">${num(n)}</div><div class="lt"><bdi>${ls.title}</bdi>`+
         (bookOnly?` <span class="lbook">في الكتاب</span>`:'')+`</div>`+
         `<div class="arrow">${authored?(payl?'🔒':'←'):(bookOnly?'📖':'🔒')}</div>`;
       if(bookOnly) el.setAttribute('aria-label', ls.title+' — نشاطٌ في الكتابِ الورقيّ، بلا أسئلةٍ في المنصّة');

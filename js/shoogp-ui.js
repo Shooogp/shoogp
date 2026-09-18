@@ -125,6 +125,16 @@ var _curSubject=null;
    `en` وحدَها). تُصدَّرُ دالّةً لا متغيّراً كي تُقرأَ القيمةُ الحيّةُ عندَ كلِّ نداء،
    ولئلّا يُشتَقَّ مصدرٌ ثانٍ للمادّةِ من لاحقةِ مفتاحِ الكتابِ في app.js. */
 window.shoogpSubject=function(){ return _curSubject; };
+/* ومادّةُ **كتابٍ** من مفتاحِه (‏`g3-en`←`en`) — لشاشةِ الفهرسِ حيثُ لا درسَ مفتوحاً
+   بعدُ فَـ`_curSubject` فارغ. المرجعُ الجدولُ نفسُه (‏`SUBJECT_BY_KEY_SUFFIX`) لا
+   استنتاجٌ ثانٍ في app.js. */
+window.shoogpBookSubject=function(key){
+  key=String(key||'');
+  for(var suf in SUBJECT_BY_KEY_SUFFIX){
+    if(key.length>suf.length && key.slice(-suf.length)===suf) return SUBJECT_BY_KEY_SUFFIX[suf];
+  }
+  return null;
+};
 /* وكتابُه (مدخلُه في نطاقِ shoogpBooks()) — مفتاحُ لونِ بطاقتِه لكسوةِ الشريطِ الخلفيّ */
 var _curBook=null;
 /* ═══ قشورُ أزرارِ الإجابة حسبَ المادة (كسوةٌ بصريةٌ بحتة) ═══
