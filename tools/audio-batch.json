@@ -22,27 +22,36 @@
   "⚠️ **وحدُّ المعدَّلِ خمسةُ طلباتٍ في الدقيقة** (‏`x-ratelimit-limit: 5`)، فالعقدةُ",
   "تُرسِلُ عنصراً واحداً كلَّ ١٥ ثانية."
  ],
- "batchId": "2026-09-17-g34en-phonics",
+ "batchId": "2026-09-18-voice-clips",
  "voice": "حطاب",
  "items": [
-  { "name": "phon-wh",      "text": "wh" },
-  { "name": "phon-ale",     "text": "ale" },
-  { "name": "blend-whale",  "text": "whale" },
-  { "name": "phon-ear",     "text": "ear" },
-  { "name": "blend-hear",   "text": "hear" },
-  { "name": "phon-ea",      "text": "ea" },
-  { "name": "phon-ch",      "text": "ch" },
-  { "name": "blend-beach",  "text": "beach" },
-  { "name": "phon-fl",      "text": "fl" },
-  { "name": "phon-y",       "text": "y" },
-  { "name": "blend-fly",    "text": "fly" },
-  { "name": "phon-sn",      "text": "sn" },
-  { "name": "phon-ow",      "text": "ow" },
-  { "name": "blend-snow",   "text": "snow" },
-  { "name": "phon-sl",      "text": "sl" },
-  { "name": "phon-eigh",    "text": "eigh" },
-  { "name": "blend-sleigh", "text": "sleigh" },
-  { "name": "phon-ew",      "text": "ew" },
-  { "name": "blend-chew",   "text": "chew" }
+  {
+   "name": "voice-en-correct",
+   "text": "Well done! Your answer is correct."
+  },
+  {
+   "name": "voice-en-all-done",
+   "text": "Well done! You have completed all the questions."
+  },
+  {
+   "name": "voice-en-moon-arrived",
+   "text": "Well done! You reached the moon right on time!"
+  },
+  {
+   "name": "voice-en-moon-arrived-hard",
+   "text": "Well done! You reached the moon after a challenging journey!"
+  },
+  {
+   "name": "voice-ar-all-done",
+   "text": "أحسنت، أكملت كل الأسئلة."
+  },
+  {
+   "name": "voice-ar-moon-arrived",
+   "text": "أحسنت! وصلت القمر في الوقت المناسب!"
+  },
+  {
+   "name": "voice-ar-moon-arrived-hard",
+   "text": "أحسنت! وصلت القمر بعد رحلة مليئة بالتحدي!"
+  }
  ]
 }
