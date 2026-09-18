@@ -78,6 +78,10 @@ function speak(t){
 // مسار نسبيّ ليعمل على GitHub Pages. يُشغّل فقط عند الإجابة الصحيحة.
 const correctSound = new Audio('audio/correct.mp3');
 correctSound.preload = 'auto';
+/* المقطعُ الإنجليزيُّ نفسُه («Well done! Your answer is correct.») لكتابِ الإنجليزيةِ وحدَه —
+   قرارُ المالك ٢٠٢٦-٠٩-١٨؛ الاختيارُ عندَ التشغيلِ بـ`enUI()` فبقيّةُ الموادِّ على مقطعِها العربيّ. */
+const correctSoundEn = new Audio('audio/voice/en-correct.mp3');
+correctSoundEn.preload = 'auto';
 // صوت الإجابة الخاطئة (audio/wrong.mp3) — بنفس أسلوب صوت الصواب
 const wrongSound = new Audio('audio/wrong.mp3');
 wrongSound.preload = 'auto';
@@ -85,7 +89,8 @@ wrongSound.preload = 'auto';
 let muted = (function(){try{return localStorage.getItem('shoogp-muted')==='1';}catch(e){return false;}})();
 function playCorrectSound(){
   if(muted) return;
-  try{ correctSound.currentTime=0; const p=correctSound.play(); if(p&&p.catch)p.catch(function(){}); }catch(e){}
+  const snd = (typeof enUI==='function' && enUI()) ? correctSoundEn : correctSound;
+  try{ snd.currentTime=0; const p=snd.play(); if(p&&p.catch)p.catch(function(){}); }catch(e){}
 }
 function playWrongSound(){
   if(muted) return;

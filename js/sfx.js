@@ -70,11 +70,20 @@
   for (var _k in NAMES) if (Object.prototype.hasOwnProperty.call(NAMES, _k)) {
     SFX[_k] = SFX_DIRS[0] + NAMES[_k];
   }
+  /* لكلِّ عبارةٍ مقطعانِ: عربيٌّ لكلِّ الموادّ، وإنجليزيٌّ يُختارُ في كتابِ الإنجليزيةِ
+     وحدَه (قرارُ المالك ٢٠٢٦-٠٩-١٨) — المادّةُ من `window.shoogpSubject()` كما في `T()`.
+     كلُّها مولَّدةٌ بصوتِ «حطاب» عبرَ سيرِ n8n «شوجب — تجربة صوت داريجات»
+     (‏`tools/audio-batch.json`، دفعة 2026-09-18-voice-clips). ⚠️ الملفّاتُ العربيةُ
+     الثلاثةُ لم تكنْ في المستودعِ قطُّ قبلَ هذه الدفعة (كانت العبارةُ صامتةً). */
   var VOICE = {
-    'all-done':          'audio/voice/all-done.mp3',           // أحسنت، أكملتَ كلَّ الأسئلة
-    'moon-arrived':      'audio/voice/moon-arrived.mp3',       // وصلتَ القمرَ في الوقتِ المناسب
-    'moon-arrived-hard': 'audio/voice/moon-arrived-hard.mp3'   // وصلتَ بعدَ رحلةٍ مليئةٍ بالتحدّي
+    'all-done':          { ar: 'audio/voice/all-done.mp3',          en: 'audio/voice/en-all-done.mp3' },          // أحسنت، أكملتَ كلَّ الأسئلة
+    'moon-arrived':      { ar: 'audio/voice/moon-arrived.mp3',      en: 'audio/voice/en-moon-arrived.mp3' },      // وصلتَ القمرَ في الوقتِ المناسب
+    'moon-arrived-hard': { ar: 'audio/voice/moon-arrived-hard.mp3', en: 'audio/voice/en-moon-arrived-hard.mp3' }  // وصلتَ بعدَ رحلةٍ مليئةٍ بالتحدّي
   };
+  function voiceLang() {
+    try { return (typeof window.shoogpSubject === 'function' && window.shoogpSubject() === 'en') ? 'en' : 'ar'; }
+    catch (e) { return 'ar'; }
+  }
 
   /* ── الكتم: مصدرُ الحقيقةِ هو `muted` في app.js، وإلّا فالتخزينُ المحليّ ──── */
   function isMuted() {
@@ -175,7 +184,7 @@
     try {
       if (!voiceEl) { voiceEl = new Audio(); voiceEl.preload = 'auto'; }
       voiceEl.pause();
-      voiceEl.src = VOICE[key] + VER;
+      voiceEl.src = VOICE[key][voiceLang()] + VER;
       voiceEl.currentTime = 0;
       var p = voiceEl.play(); if (p && p.catch) p.catch(function () {});
     } catch (e) {}
