@@ -38723,7 +38723,7 @@ window.QUESTIONS = {
       objective: "تمييز صوت الحرف s",
       level: "application",
       prompt: "Listen to the sound, then click the matching letter.",
-      audio: "audio/en/phon-s.mp3",
+      audio: "audio/en/s.mp3",
       svg: `<svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
         <rect x="20" y="40" width="80" height="120" rx="16" fill="#F6D000" stroke="#111111" stroke-width="4"/>
         <text x="60" y="118" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="800" font-size="60" fill="#111111">S</text>
@@ -38746,9 +38746,9 @@ window.QUESTIONS = {
       prompt: "Tap each letter to hear its sound, then blend and choose the word.",
       letters: ["t", "a", "p"],
       soundOf: {
-        t: "audio/en/phon-t.mp3",
-        a: "audio/en/phon-a.mp3",
-        p: "audio/en/phon-p.mp3"
+        t: "audio/en/t.mp3",
+        a: "audio/en/a.mp3",
+        p: "audio/en/p.mp3"
       },
       blendAudio: "audio/en/blend-tap.mp3",
       options: ["tap", "pat", "sit"],
@@ -38760,7 +38760,7 @@ window.QUESTIONS = {
       level: "application",
       prompt: "Listen, then start at the green dot and trace the letter s.",
       letter: "s",
-      audio: "audio/en/phon-s.mp3"
+      audio: "audio/en/s.mp3"
     }
   ],
 
@@ -39024,7 +39024,7 @@ window.QUESTIONS = {
       level: "application",
       prompt: "Listen, then start at the green dot and trace the capital letter S.",
       letter: "S",
-      audio: "audio/en/phon-s.mp3"
+      audio: "audio/en/s.mp3"
     }
   ],
 
@@ -39366,7 +39366,7 @@ window.QUESTIONS = {
       objective: "تمييز صوت الحرف a",
       level: "application",
       prompt: "Listen to the sound, then click the matching letter.",
-      audio: "audio/en/phon-a.mp3",
+      audio: "audio/en/a.mp3",
       svg: `<svg viewBox="0 0 440 440" xmlns="http://www.w3.org/2000/svg">
         <rect x="20" y="20" width="190" height="190" rx="24" fill="#F6D000" stroke="#111111" stroke-width="5"/>
         <text x="115" y="148" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="800" font-size="100" fill="#111111">S</text>
@@ -39396,7 +39396,7 @@ window.QUESTIONS = {
       level: "application",
       prompt: "Listen, then start at the green dot and trace the letter a.",
       letter: "a",
-      audio: "audio/en/phon-a.mp3"
+      audio: "audio/en/a.mp3"
     }
   ],
 
@@ -39687,7 +39687,7 @@ window.QUESTIONS = {
       level: "application",
       prompt: "Listen, then start at the green dot and trace the capital letter A.",
       letter: "A",
-      audio: "audio/en/phon-a.mp3"
+      audio: "audio/en/a.mp3"
     }
   ],
 
@@ -39878,7 +39878,7 @@ window.QUESTIONS = {
       objective: "تمييز صوت الحرف t",
       level: "application",
       prompt: "Listen to the sound, then click the matching letter.",
-      audio: "audio/en/phon-t.mp3",
+      audio: "audio/en/t.mp3",
       svg: `<svg viewBox="0 0 440 440" xmlns="http://www.w3.org/2000/svg">
         <rect x="20" y="20" width="190" height="190" rx="24" fill="#F6D000" stroke="#111111" stroke-width="5"/>
         <text x="115" y="148" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="800" font-size="100" fill="#111111">S</text>
@@ -39908,7 +39908,7 @@ window.QUESTIONS = {
       level: "application",
       prompt: "Listen, then start at the green dot and trace the letter t.",
       letter: "t",
-      audio: "audio/en/phon-t.mp3"
+      audio: "audio/en/t.mp3"
     }
   ],
 
@@ -40245,7 +40245,7 @@ window.QUESTIONS = {
       level: "application",
       prompt: "Listen, then start at the green dot and trace the capital letter T.",
       letter: "T",
-      audio: "audio/en/phon-t.mp3"
+      audio: "audio/en/t.mp3"
     }
   ],
 
@@ -40439,7 +40439,7 @@ window.QUESTIONS = {
       objective: "تمييز صوت الحرف p",
       level: "application",
       prompt: "Listen to the sound, then click the matching letter.",
-      audio: "audio/en/phon-p.mp3",
+      audio: "audio/en/p.mp3",
       svg: `<svg viewBox="0 0 440 440" xmlns="http://www.w3.org/2000/svg">
         <rect x="20" y="20" width="190" height="190" rx="24" fill="#F6D000" stroke="#111111" stroke-width="5"/>
         <text x="115" y="148" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="800" font-size="100" fill="#111111">S</text>
@@ -40469,7 +40469,7 @@ window.QUESTIONS = {
       level: "application",
       prompt: "Listen, then start at the green dot and trace the letter p.",
       letter: "p",
-      audio: "audio/en/phon-p.mp3"
+      audio: "audio/en/p.mp3"
     }
   ],
 
@@ -40766,7 +40766,7 @@ window.QUESTIONS = {
       level: "application",
       prompt: "Listen, then start at the green dot and trace the capital letter P.",
       letter: "P",
-      audio: "audio/en/phon-p.mp3"
+      audio: "audio/en/p.mp3"
     }
   ],
 
@@ -41180,7 +41180,7 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "Tap each card, then blend and choose the word.",
       letters: ["r", "ain"],
-      soundOf: { r: "audio/en/phon-r.mp3", ain: "audio/en/phon-ain.mp3" },
+      soundOf: { r: "audio/en/r.mp3", ain: "audio/en/phon-ain.mp3" },
       blendAudio: "audio/en/blend-rain.mp3",
       options: ["rain", "run", "red"],
       answer: 0
@@ -41222,7 +41222,7 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "Tap each card, then blend and choose the word.",
       letters: ["b", "oat"],
-      soundOf: { b: "audio/en/phon-b.mp3", oat: "audio/en/phon-oat.mp3" },
+      soundOf: { b: "audio/en/b.mp3", oat: "audio/en/phon-oat.mp3" },
       blendAudio: "audio/en/blend-boat.mp3",
       options: ["boat", "bag", "bike"],
       answer: 0
@@ -41312,7 +41312,7 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "Tap each card, then blend and choose the word.",
       letters: ["p", "ie"],
-      soundOf: { p: "audio/en/phon-p.mp3", ie: "audio/en/phon-ie.mp3" },
+      soundOf: { p: "audio/en/p.mp3", ie: "audio/en/ie.mp3" },
       blendAudio: "audio/en/blend-pie.mp3",
       options: ["pie", "pen", "pin"],
       answer: 0
@@ -41912,7 +41912,7 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "Tap each card, then blend and choose the word.",
       letters: ["b", "ook"],
-      soundOf: { b: "audio/en/phon-b.mp3", ook: "audio/en/phon-ook.mp3" },
+      soundOf: { b: "audio/en/b.mp3", ook: "audio/en/phon-ook.mp3" },
       blendAudio: "audio/en/blend-book.mp3",
       options: ["book", "bag", "big"],
       answer: 0
@@ -41947,7 +41947,7 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "Tap each card, then blend and choose the word.",
       letters: ["m", "oon"],
-      soundOf: { m: "audio/en/phon-m.mp3", oon: "audio/en/phon-oon.mp3" },
+      soundOf: { m: "audio/en/m.mp3", oon: "audio/en/phon-oon.mp3" },
       blendAudio: "audio/en/blend-moon.mp3",
       options: ["moon", "man", "mud"],
       answer: 0
@@ -42214,7 +42214,7 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "Tap each card, then blend and choose the word.",
       letters: ["h", "ouse"],
-      soundOf: { h: "audio/en/phon-h.mp3", ouse: "audio/en/phon-ouse.mp3" },
+      soundOf: { h: "audio/en/h.mp3", ouse: "audio/en/phon-ouse.mp3" },
       blendAudio: "audio/en/blend-house.mp3",
       options: ["house", "hat", "hen"],
       answer: 0
@@ -42372,7 +42372,7 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "Tap each card, then blend and choose the word.",
       letters: ["bl", "ue"],
-      soundOf: { bl: "audio/en/phon-bl.mp3", ue: "audio/en/phon-ue.mp3" },
+      soundOf: { bl: "audio/en/phon-bl.mp3", ue: "audio/en/ue.mp3" },
       blendAudio: "audio/en/blend-blue.mp3",
       options: ["blue", "black", "big"],
       answer: 0
@@ -42407,7 +42407,7 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "Tap each card, then blend and choose the word.",
       letters: ["b", "ike"],
-      soundOf: { b: "audio/en/phon-b.mp3", ike: "audio/en/phon-ike.mp3" },
+      soundOf: { b: "audio/en/b.mp3", ike: "audio/en/phon-ike.mp3" },
       blendAudio: "audio/en/blend-bike.mp3",
       options: ["bike", "bag", "box"],
       answer: 0
@@ -42662,7 +42662,7 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "Tap each card, then blend and choose the word.",
       letters: ["tr", "ee"],
-      soundOf: { tr: "audio/en/phon-tr.mp3", ee: "audio/en/phon-ee.mp3" },
+      soundOf: { tr: "audio/en/phon-tr.mp3", ee: "audio/en/ee.mp3" },
       blendAudio: "audio/en/blend-tree.mp3",
       options: ["tree", "train", "try"],
       answer: 0
@@ -42714,7 +42714,7 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "Tap each card, then blend and choose the word.",
       letters: ["h", "er"],
-      soundOf: { h: "audio/en/phon-h.mp3", er: "audio/en/phon-er.mp3" },
+      soundOf: { h: "audio/en/h.mp3", er: "audio/en/er.mp3" },
       blendAudio: "audio/en/blend-her.mp3",
       options: ["her", "hair", "hat"],
       answer: 0
@@ -42806,7 +42806,7 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "Tap each card, then blend and choose the word.",
       letters: ["c", "ar"],
-      soundOf: { c: "audio/en/phon-c.mp3", ar: "audio/en/phon-ar.mp3" },
+      soundOf: { c: "audio/en/phon-c.mp3", ar: "audio/en/ar.mp3" },
       blendAudio: "audio/en/blend-car.mp3",
       options: ["car", "cat", "cake"],
       answer: 0
@@ -42841,7 +42841,7 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "Tap each card, then blend and choose the word.",
       letters: ["n", "ose"],
-      soundOf: { n: "audio/en/phon-n.mp3", ose: "audio/en/phon-ose.mp3" },
+      soundOf: { n: "audio/en/n.mp3", ose: "audio/en/phon-ose.mp3" },
       blendAudio: "audio/en/blend-nose.mp3",
       options: ["nose", "name", "nine"],
       answer: 0
@@ -44379,7 +44379,7 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "Tap each card, then blend and choose the word.",
       letters: ["h", "ear"],
-      soundOf: { h: "audio/en/phon-h.mp3", ear: "audio/en/phon-ear.mp3" },
+      soundOf: { h: "audio/en/h.mp3", ear: "audio/en/phon-ear.mp3" },
       blendAudio: "audio/en/blend-hear.mp3",
       options: ["hear", "hair", "hat"],
       answer: 0
@@ -45757,7 +45757,7 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "Tap each card, then blend and choose the word.",
       letters: ["b", "ea", "ch"],
-      soundOf: { b: "audio/en/phon-b.mp3", ea: "audio/en/phon-ea.mp3", ch: "audio/en/phon-ch.mp3" },
+      soundOf: { b: "audio/en/b.mp3", ea: "audio/en/phon-ea.mp3", ch: "audio/en/ch.mp3" },
       blendAudio: "audio/en/blend-beach.mp3",
       options: ["beach", "bread", "boat"],
       answer: 0
@@ -46735,7 +46735,7 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "Tap each card, then blend and choose the word.",
       letters: ["fl", "y"],
-      soundOf: { fl: "audio/en/phon-fl.mp3", y: "audio/en/phon-y.mp3" },
+      soundOf: { fl: "audio/en/phon-fl.mp3", y: "audio/en/y.mp3" },
       blendAudio: "audio/en/blend-fly.mp3",
       options: ["fly", "flag", "fry"],
       answer: 0
@@ -48926,7 +48926,7 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "Tap each card, then blend and choose the word.",
       letters: ["ch", "ew"],
-      soundOf: { ch: "audio/en/phon-ch.mp3", ew: "audio/en/phon-ew.mp3" },
+      soundOf: { ch: "audio/en/ch.mp3", ew: "audio/en/phon-ew.mp3" },
       blendAudio: "audio/en/blend-chew.mp3",
       options: ["chew", "chair", "cheese"],
       answer: 0
