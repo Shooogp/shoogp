@@ -41376,7 +41376,7 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "Tap each card, then blend and choose the word.",
       letters: ["c", "ake"],
-      soundOf: { c: "audio/en/phon-c.mp3", ake: "audio/en/phon-ake.mp3" },
+      soundOf: { c: "audio/en/c.mp3", ake: "audio/en/phon-ake.mp3" },
       blendAudio: "audio/en/blend-cake.mp3",
       options: ["cake", "cat", "cup"],
       answer: 0
@@ -41778,7 +41778,7 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "Tap each card, then blend and choose the word.",
       letters: ["c", "orn"],
-      soundOf: { c: "audio/en/phon-c.mp3", orn: "audio/en/phon-orn.mp3" },
+      soundOf: { c: "audio/en/c.mp3", orn: "audio/en/phon-orn.mp3" },
       blendAudio: "audio/en/blend-corn.mp3",
       options: ["corn", "cat", "cup"],
       answer: 0
@@ -41820,7 +41820,7 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "Tap each card, then blend and choose the word.",
       letters: ["k", "ing"],
-      soundOf: { k: "audio/en/phon-k.mp3", ing: "audio/en/phon-ing.mp3" },
+      soundOf: { k: "audio/en/k.mp3", ing: "audio/en/phon-ing.mp3" },
       blendAudio: "audio/en/blend-king.mp3",
       options: ["king", "cat", "run"],
       answer: 0
@@ -42255,7 +42255,7 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "Tap each card, then blend and choose the word.",
       letters: ["c", "oin"],
-      soundOf: { c: "audio/en/phon-c.mp3", oin: "audio/en/phon-oin.mp3" },
+      soundOf: { c: "audio/en/c.mp3", oin: "audio/en/phon-oin.mp3" },
       blendAudio: "audio/en/blend-coin.mp3",
       options: ["coin", "cat", "can"],
       answer: 0
@@ -42806,7 +42806,7 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "Tap each card, then blend and choose the word.",
       letters: ["c", "ar"],
-      soundOf: { c: "audio/en/phon-c.mp3", ar: "audio/en/ar.mp3" },
+      soundOf: { c: "audio/en/c.mp3", ar: "audio/en/ar.mp3" },
       blendAudio: "audio/en/blend-car.mp3",
       options: ["car", "cat", "cake"],
       answer: 0
@@ -45122,7 +45122,7 @@ window.QUESTIONS = {
       level: "knowledge",
       prompt: "Tap each card, then blend and choose the word.",
       letters: ["c", "ake"],
-      soundOf: { c: "audio/en/phon-c.mp3", ake: "audio/en/phon-ake.mp3" },
+      soundOf: { c: "audio/en/c.mp3", ake: "audio/en/phon-ake.mp3" },
       blendAudio: "audio/en/blend-cake.mp3",
       options: ["cake", "cat", "car"],
       answer: 0
