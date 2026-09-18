@@ -202,9 +202,9 @@ function openBook(key){
     showScreen('lessonsScreen');
     return;
   }
-  document.getElementById('bookSub').textContent=`${arNum(idx.units.length)} وحدات · ${arNum(totalL)} درساً`;
-  /* شاراتُ الفهرسِ في كتابِ الإنجليزية (قرارُ المالك ٢٠٢٦-٠٩-١٨): «Unit 1» و«7 lessons»
-     ورقمُ الدرسِ لاتينيٌّ — استثناءٌ ثانٍ من قاعدةِ «ما خارجَ الفريمِ يبقى عربياً»
+  /* شاراتُ الفهرسِ والعنوانُ الفرعيُّ في كتابِ الإنجليزية (قرارُ المالك ٢٠٢٦-٠٩-١٨):
+     «7 units · 33 lessons» و«Unit 1» و«7 lessons» ورقمُ الدرسِ لاتينيٌّ — استثناءٌ ثانٍ من
+     قاعدةِ «ما خارجَ الفريمِ يبقى عربياً»
      (‏`CLAUDE.md` §نطاقِ المواد) محصورٌ بهذه الشاشةِ وهذه المادّة: عناوينُ الوحداتِ
      والدروسِ إنجليزيةٌ بأرقامِ دروسِها اللاتينية («Lesson 3 · Story…»)، فشارةٌ عربيةٌ
      بجوارِها تُخالفُها رسماً ولغةً. والمادّةُ من `shoogpBookSubject(key)` (الجدولُ في
@@ -214,6 +214,11 @@ function openBook(key){
   const num = enBook ? String : arNum;
   const unitWord = enBook ? 'Unit' : 'الوحدة';
   const lessonsWord = c => enBook ? (c===1 ? 'lesson' : 'lessons') : 'دروس';
+  /* `<bdi>`: نصٌّ لاتينيٌّ يبدأُ برقمٍ داخلَ صفحةٍ RTL يقفزُ رقمُه إلى آخرِه
+     («units · 33 lessons 7») — والعزلُ يُعطيه اتجاهَ أوّلِ حرفٍ قويٍّ فيه. */
+  document.getElementById('bookSub').innerHTML = '<bdi>' + (enBook
+    ? `${idx.units.length} ${idx.units.length===1?'unit':'units'} · ${totalL} ${lessonsWord(totalL)}`
+    : `${arNum(idx.units.length)} وحدات · ${arNum(totalL)} درساً`) + '</bdi>';
   let n=0;
   /* تُجمَعُ الصناديقُ أوّلاً ولا تُلحَقُ بالقائمةِ في الحلقة: قرارُ «أيُّ وحدةٍ تدخلُ
      إطارَ القفل» يحتاجُ معرفةَ **آخرِ وحدةٍ مفتوحة**، ولا تُعرَفُ إلا بعدَ المرورِ
@@ -236,7 +241,7 @@ function openBook(key){
        وتُعادُ الشارةُ استثناءً لوحدةٍ مقفلةٍ تقعُ **خارجَ** الإطار (انظر أدناه). */
     uh.innerHTML=`<span class="unit-no">${unitWord} ${num(ui+1)}</span>`+
       `<span class="unit-title" dir="auto">${u.unit}</span>`+
-      `<span class="unit-count">${num(count)} ${lessonsWord(count)}</span>`+
+      `<span class="unit-count"><bdi>${num(count)} ${lessonsWord(count)}</bdi></span>`+
       `<span class="unit-chevron">⌄</span>`;
 
     // حاوية الدروس (تنطوي)
