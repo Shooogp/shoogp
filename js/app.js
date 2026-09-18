@@ -33,6 +33,10 @@ const ASSET_VER=(function(){
   return m ? '?v='+m[1] : '';
 })();
 
+/* ═══ ختمُ النشرةِ على صورِ الأسئلة (٢٠٢٦-٠٩-١٨) ═══
+   كلُّ `q.image`/`pr.img` يُلحَقُ به `ASSET_VER` عندَ بناءِ الوسم — كالأغلفةِ والصوتِ أعلاه.
+   بلا الختمِ يبقى الملفُّ القديمُ في ذاكرةِ المتصفّحِ شهوراً بعدَ استبدالِه (وقعَ فعلاً:
+   «طفلان وقطّة» أُعيدَ رسمُها ونُشِرَت ولم يرَها المالك — §النشرُ وختمُ نسخِ الأصول في CLAUDE.md). */
 /* ===== تحميل البيانات (JSON مع نسخة احتياطية) ===== */
 async function loadData(){
   try{
@@ -754,7 +758,7 @@ function renderDragDrop(q, body, fb){
   // الوسط: صورة تُحجّم مباشرةً (تظهر كاملة لكل النِسَب) أو رسم SVG داخل غلاف
   // fit:"width" للرسوم/الصور العريضة (كخط الأعداد): تملأ العرض ويُشتقّ ارتفاعها من نسبتها
   const wideCls = q.fit==='width' ? ' lw' : '';
-  const media = q.svg ? `<div class="labelimg${wideCls}">${q.svg}</div>` : `<img class="labelimg${wideCls}" src="${q.image}" alt="">`;
+  const media = q.svg ? `<div class="labelimg${wideCls}">${q.svg}</div>` : `<img class="labelimg${wideCls}" src="${q.image}${ASSET_VER}" alt="">`;
   // الصناديق حول الصورة (نِسَب مئوية من منطقة النشاط)
   const boxes = q.targets.map((t,i)=>`<div class="target" data-i="${i}" data-answer="${t.answer}" style="left:${t.box.x}%;top:${t.box.y}%">${T('؟')}</div>`).join('');
   body.innerHTML=(q.audio?`<div class="qaudio">`+audioPlayerHTML(q.audio)+`</div>`:'')+
@@ -1156,7 +1160,7 @@ function figClickPoint(fig,e){
 
 /* ⑤ تحديد الأجزاء (hotspot): صورة/رسم + spot{x,y,r} (النقر على الموضع الصحيح) */
 function renderHotspot(q, body, fb){
-  const inner=q.svg?q.svg:`<img src="${q.image}" alt="">`;
+  const inner=q.svg?q.svg:`<img src="${q.image}${ASSET_VER}" alt="">`;
   const figCls = q.fit==='width' ? 'figwrap fw hsfig' : 'figwrap hsfig';
   body.innerHTML=(q.audio?`<div class="qaudio">`+audioPlayerHTML(q.audio)+`</div>`:'')+
     `<div class="dnd dnd-solo"><div class="stage stage-img"${q.bg?` style="background:${q.bg}"`:''}><div class="${figCls}">${inner}</div></div></div>`;
@@ -1177,7 +1181,7 @@ function renderHotspot(q, body, fb){
 /* ⑫ اكتشف الخطأ (find-error): صورة فيها خطأ علمي واحد + spot{x,y,r} — الطالب يضغط على موضع الخطأ.
    نفس آليّة النقطة الساخنة بصرياً؛ عند إصابة موضع الخطأ يفوز، وإلا يشجَّع على التدقيق أكثر */
 function renderFindError(q, body, fb){
-  const inner=q.svg?q.svg:`<img src="${q.image}" alt="">`;
+  const inner=q.svg?q.svg:`<img src="${q.image}${ASSET_VER}" alt="">`;
   const figCls = q.fit==='width' ? 'figwrap fw hsfig' : 'figwrap hsfig';
   body.innerHTML=`<div class="dnd dnd-solo"><div class="stage stage-img"${q.bg?` style="background:${q.bg}"`:''}><div class="${figCls}">${inner}</div></div></div>`;
   const fig=body.querySelector('.hsfig'); fig.style.cursor='pointer';
@@ -1263,7 +1267,7 @@ function renderZoom(q, body, fb){
   const MAXSTARS=5;
   const opts=shuffle(q.options.map((o,idx)=>({o,idx})));
   body.innerHTML=`<div class="zoomq">`+
-    `<div class="zoom-stage"><img class="zoom-img" src="${q.image}" alt=""></div>`+
+    `<div class="zoom-stage"><img class="zoom-img" src="${q.image}${ASSET_VER}" alt=""></div>`+
     `<div class="zoom-meter">التخمين الآن يمنح <b class="zoom-pts">${arNum(MAXSTARS)}</b> ⭐</div>`+
     `<button class="btn zoom-start">ابدأ التكبير 🔎</button>`+
     `<div class="opts zoom-opts" hidden>`+
@@ -1557,7 +1561,7 @@ function renderPuzzle(q, body, fb){
   const posX=i=>cols>1?(i%cols)/(cols-1)*100:0;
   const posY=i=>rows>1?Math.floor(i/cols)/(rows-1)*100:0;
   const piece=i=>`<div class="pzpiece" draggable="true" data-i="${i}" `+
-    `style="background-image:url('${q.image}');background-size:${cols*100}% ${rows*100}%;`+
+    `style="background-image:url('${q.image}${ASSET_VER}');background-size:${cols*100}% ${rows*100}%;`+
     `background-position:${posX(i)}% ${posY(i)}%"></div>`;
   const slots=Array.from({length:n},(_,i)=>`<div class="pzslot" data-i="${i}"></div>`).join('');
   const pieces=shuffle(Array.from({length:n},(_,i)=>i)).map(piece).join('');
@@ -1606,7 +1610,7 @@ function renderPuzzle(q, body, fb){
       board.style.aspectRatio=probe.naturalWidth+'/'+probe.naturalHeight; }
     fitBoard(); sizePieces();
     pzGuard(probe); };   /* حارس امتلاء المعالم (DESIGN_RULES.md §أسئلة البازل) */
-  probe.src=q.image;
+  probe.src=q.image+ASSET_VER;
   if(window.ResizeObserver){
     new ResizeObserver(sizePieces).observe(board);
     /* نراقب الغلاف لا اللوح: كتابتنا لعرض اللوح تُطلق مراقبه فتنشأ حلقة */
@@ -1938,7 +1942,7 @@ function renderSlider(q, body, fb){
   // رسمٌ اختياريٌّ فوق الشريط: svg مباشر أو image من images/ — مرجعٌ بصريٌّ للمقدار
   // المطلوب تقديرُه (قلمٌ يُقدَّر طولُه مثلاً). يُحذف كلياً من DOM إن لم يوجد في البيانات.
   const sldFig=(q.svg||q.image)
-    ? `<div class="sldfig">${q.svg?q.svg:`<img src="${q.image}" alt="">`}</div>`
+    ? `<div class="sldfig">${q.svg?q.svg:`<img src="${q.image}${ASSET_VER}" alt="">`}</div>`
     : '';
   body.innerHTML=`<div class="slider">`+
     sldFig+
@@ -2072,7 +2076,7 @@ function renderLens(q, body, fb){
     `<div class="lens-progress">اكتشفت <b class="lens-count">٠</b> من <b>${arNum(spots.length)}</b></div>`+
     `<div class="dnd dnd-solo"><div class="stage stage-img"${q.bg?` style="background:${q.bg}"`:''}>`+
       `<div class="${figCls}">`+
-        `<img class="lens-top" src="${q.image}" alt="">`+
+        `<img class="lens-top" src="${q.image}${ASSET_VER}" alt="">`+
         `<div class="lens-reveal"><img class="lens-under" src="${q.hidden}" alt=""></div>`+
         `<div class="lens-found"></div>`+
         `<div class="lens-glass"><img class="lens-frame" src="images/عدسة-إطار.png" alt=""></div>`+
@@ -3742,7 +3746,7 @@ function renderLetterPicture(q, body, fb){
   shuffle(q.pairs).forEach(pr=>{
     const d=document.createElement('div');
     d.className='lpcard left'; d.dataset.k=pr.letter;
-    d.innerHTML=`<span class="lpimg">${pr.svg || `<img src="${pr.img}" alt="">`}</span>`+
+    d.innerHTML=`<span class="lpimg">${pr.svg || `<img src="${pr.img}${ASSET_VER}" alt="">`}</span>`+
                 `<span class="lpword">${pr.word||''}</span>`;
     d.onclick=()=>{
       if(!sel || d.classList.contains('matched'))return;
@@ -3996,7 +4000,7 @@ function renderListenLocate(q, body, fb){
    خروجُ الرمزِ عن الممرِّ (تجاوزُ `tolerance`) يُعيدُه إلى نقطةِ البداية — كلمسِ
    جدارٍ حقيقيّ. الوصولُ إلى آخرِ نقطةٍ في `path` أثناءَ السحبِ يُنهي السؤالَ فوزاً. */
 function renderMaze(q, body, fb){
-  const inner=q.svg?q.svg:`<img src="${q.image}" alt="">`;
+  const inner=q.svg?q.svg:`<img src="${q.image}${ASSET_VER}" alt="">`;
   const figCls = q.fit==='width' ? 'figwrap fw hsfig' : 'figwrap hsfig';
   body.innerHTML=`<div class="dnd dnd-solo maze-wrap"><div class="stage stage-img"${q.bg?` style="background:${q.bg}"`:''}>`+
     `<div class="${figCls}">${inner}<div class="maze-token" title="اسحبني عبر الممرّ"></div></div>`+
