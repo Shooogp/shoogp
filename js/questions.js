@@ -48172,7 +48172,7 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "Sort the words: a direction, or a place?",
       groups: [
-        { name: "A direction", items: ["turn left", "turn right", "go straight ahead"] },
+        { name: "A direction", items: ["turn left", "turn right", "go straight"] },
         { name: "A place",     items: ["the park", "the supermarket", "the hospital"] }
       ]
     }
