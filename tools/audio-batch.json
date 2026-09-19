@@ -22,92 +22,40 @@
   "⚠️ **وحدُّ المعدَّلِ خمسةُ طلباتٍ في الدقيقة** (‏`x-ratelimit-limit: 5`)، فالعقدةُ",
   "تُرسِلُ عنصراً واحداً كلَّ ١٥ ثانية."
  ],
- "batchId": "2026-09-19-refix-7-words",
+ "batchId": "2026-09-19-refix-sleigh-whale",
  "voice": "حطاب",
  "items": [
   {
-   "name": "fix-ball-a",
-   "text": "Ball."
+   "name": "fix-sleigh-a",
+   "text": "Sleigh."
   },
   {
-   "name": "fix-ball-b",
-   "text": "Ball! Ball!"
+   "name": "fix-sleigh-b",
+   "text": "Sleigh! Sleigh!"
   },
   {
-   "name": "fix-ball-c",
-   "text": "bawl"
+   "name": "fix-sleigh-c",
+   "text": "slay"
   },
   {
-   "name": "fix-bike-a",
-   "text": "Bike."
+   "name": "fix-sleigh-d",
+   "text": "Slay! Slay!"
   },
   {
-   "name": "fix-bike-b",
-   "text": "Bike! Bike!"
+   "name": "fix-whale-a",
+   "text": "Whale."
   },
   {
-   "name": "fix-bike-c",
-   "text": "byke"
+   "name": "fix-whale-b",
+   "text": "Whale! Whale!"
   },
   {
-   "name": "fix-house-a",
-   "text": "House."
+   "name": "fix-whale-c",
+   "text": "wail"
   },
   {
-   "name": "fix-house-b",
-   "text": "House! House!"
-  },
-  {
-   "name": "fix-house-c",
-   "text": "howss"
-  },
-  {
-   "name": "fix-pie-a",
-   "text": "Pie."
-  },
-  {
-   "name": "fix-pie-b",
-   "text": "Pie! Pie!"
-  },
-  {
-   "name": "fix-pie-c",
-   "text": "pye"
-  },
-  {
-   "name": "fix-mum-a",
-   "text": "Mum."
-  },
-  {
-   "name": "fix-mum-b",
-   "text": "Mum! Mum!"
-  },
-  {
-   "name": "fix-mum-c",
-   "text": "mumm"
-  },
-  {
-   "name": "fix-plane-a",
-   "text": "Plane."
-  },
-  {
-   "name": "fix-plane-b",
-   "text": "Plane! Plane!"
-  },
-  {
-   "name": "fix-plane-c",
-   "text": "plain"
-  },
-  {
-   "name": "fix-ten-a",
-   "text": "Ten."
-  },
-  {
-   "name": "fix-ten-b",
-   "text": "Ten! Ten!"
-  },
-  {
-   "name": "fix-ten-c",
-   "text": "tenn"
+   "name": "fix-whale-d",
+   "text": "Wail! Wail!"
   }
  ]
 }
