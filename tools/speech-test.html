@@ -25,11 +25,15 @@
   #stats{font-size:18px;font-weight:800;margin-bottom:6px}
   #log{direction:ltr;text-align:left;margin:0;padding:0;list-style:none;max-height:240px;overflow:auto}
   #log li{border-bottom:1px solid #3d3560;padding:4px 0} .y{color:#a7c957} .n{color:#ff8a80}
+  #inapp{display:none;max-width:560px;margin:0 auto 12px;background:#7a2a2a;color:#ffd9d9;border-radius:14px;padding:10px 14px;font-size:15px}
+  #meter{height:10px;background:#1d1830;border-radius:6px;margin:12px auto 0;max-width:320px;overflow:hidden}#meterbar{height:100%;width:0;background:#60C020;transition:width .06s}
+  #mictest{background:#3d3560;font-size:15px;min-width:0;padding:8px 14px;margin-top:8px}#diag{min-height:22px;margin-top:6px;color:#ffd166}
   #copy{background:#20A0FF;font-size:15px;min-width:0;padding:8px 14px;margin-top:8px}
 </style></head><body>
 <h1>تجربة سؤال النطق</h1>
 <p class="sub">سؤالٌ واحدٌ للتجربة على السبّورة. يعملُ في Chrome أو Edge، ويحتاجُ إنترنت وميكروفوناً وإذنَ استعمالِه.</p>
 
+<div id="inapp" dir="rtl">⚠ يبدو أنّكَ فتحتَ الرابطَ داخلَ تطبيقٍ آخر (متصفّحٌ داخليّ) — التعرّفُ على الكلامِ لا يعملُ فيه. اضغطْ ⋮ ثمّ «فتح في Chrome».</div>
 <div class="q">
   <p class="prompt">Listen, then say the word.</p>
   <img class="pic" src="../images/كرة.png" alt="">
@@ -39,6 +43,7 @@
     <button id="mic">🎤 Say it</button>
   </div>
   <div id="fb"></div>
+  <div id="meter"><div id="meterbar"></div></div>
   <button id="teacher" title="للمعلّمة: إن نطقَ التلميذُ صحيحاً ولم يتعرّفِ المحرّك">✓ Teacher: correct</button>
 </div>
 
@@ -46,6 +51,8 @@
   <h2>سجلُّ المحاولات — هذا ما نقيسُه</h2>
   <div id="stats">لم تبدأ بعد</div>
   <ul id="log"></ul>
+  <button id="mictest">① افحصِ الميكروفون</button>
+  <div id="diag" dir="rtl"></div>
   <button id="copy">انسخ السجلّ</button>
 </div>
 
@@ -76,22 +83,57 @@ function record(alts,err){
 }
 
 const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+const diag=document.getElementById('diag'), meter=document.getElementById('meterbar');
+const note=(t)=>{lines.push('   · '+t); diag.textContent=t;};
+/* متصفّحٌ داخليٌّ لتطبيقٍ آخر (WebView): تظهرُ فيه واجهةُ التعرّفِ لكنّها لا تعملُ — تنتهي الجلسةُ فوراً بلا خطأ. */
+const UA=navigator.userAgent, inApp=/; wv\)|\bwv\b|FBAN|FBAV|Instagram|Line\/|MicroMessenger|Snapchat|TikTok|Telegram|WhatsApp/i.test(UA);
+if(inApp) document.getElementById('inapp').style.display='block';
+
+/* ① فحصُ الميكروفونِ صراحةً: يطلبُ الإذنَ ويعرضُ مستوى الصوتِ ٢٫٥ ثانية — يفصلُ «الميكروفونُ لا يسمع» عن «المحرّكُ لا يعمل». */
+document.getElementById('mictest').onclick=async()=>{
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){ note('هذا المتصفّحُ لا يتيحُ الميكروفونَ للصفحات — افتحِ الرابطَ في Chrome.'); return; }
+  let stream;
+  try{ stream=await navigator.mediaDevices.getUserMedia({audio:true}); }
+  catch(e){ note('الميكروفونُ مرفوضٌ أو محجوب ('+e.name+') — '+(inApp?'أنتَ في متصفّحٍ داخليّ: افتحِ الرابطَ في Chrome نفسِه.':'اسمحْ به من قفلِ شريطِ العنوان.')); return; }
+  const AC=window.AudioContext||window.webkitAudioContext, ctx=new AC(), an=ctx.createAnalyser(); an.fftSize=512;
+  ctx.createMediaStreamSource(stream).connect(an); const buf=new Uint8Array(an.fftSize); let peak=0; const t0=performance.now();
+  note('تكلّمِ الآن… (فحصُ ٢٫٥ ثانية)');
+  (function loop(){ an.getByteTimeDomainData(buf); let m=0; for(const v of buf) m=Math.max(m,Math.abs(v-128)); peak=Math.max(peak,m);
+    meter.style.width=Math.min(100,m/128*250)+'%';
+    if(performance.now()-t0<2500) requestAnimationFrame(loop);
+    else{ stream.getTracks().forEach(t=>t.stop()); ctx.close(); meter.style.width='0%';
+      note(peak>12?'✓ الميكروفونُ يسمع (ذروة '+peak+'/128) — جرّبْ «Say it» الآن.':'✗ الميكروفونُ مأذونٌ لكنّه لم يلتقطْ صوتاً (ذروة '+peak+') — ارفعْ صوتَك أو افحصِ الجهاز.'); } })();
+};
+
 if(!SR){ mic.disabled=true; mic.style.opacity=.4; say('هذا المتصفّحُ لا يدعمُ التعرّفَ على الكلام — افتحِ الصفحةَ في Chrome أو Edge.','err'); }
 else{
   let rec=null, busy=false;
   mic.onclick=()=>{
     if(busy){ try{rec.stop();}catch(e){} return; }
     rec=new SR(); rec.lang='en-US'; rec.maxAlternatives=5; rec.interimResults=false; rec.continuous=false;
-    let got=false;
-    rec.onstart=()=>{busy=true;mic.classList.add('rec');mic.textContent='● Listening…';say('');};
-    rec.onresult=e=>{got=true;const r=e.results[0];const alts=[];for(let i=0;i<r.length;i++)alts.push({text:r[i].transcript,conf:r[i].confidence||0});record(alts);};
-    rec.onerror=e=>{got=true;
-      if(e.error==='not-allowed'||e.error==='service-not-allowed') say('الميكروفونُ مرفوضٌ — اسمحْ به من قفلِ شريطِ العنوان ثمّ أعدِ المحاولة.','err');
+    let got=false, t0=0, ev=[];
+    const mark=n=>ev.push(n+'@'+Math.round(performance.now()-t0));
+    rec.onstart=()=>{t0=performance.now();busy=true;mic.classList.add('rec');mic.textContent='● Listening…';say('');};
+    rec.onaudiostart=()=>mark('audio'); rec.onsoundstart=()=>mark('sound'); rec.onspeechstart=()=>mark('speech'); rec.onspeechend=()=>mark('speechend');
+    rec.onresult=e=>{got=true;mark('result');const r=e.results[0];const alts=[];for(let i=0;i<r.length;i++)alts.push({text:r[i].transcript,conf:r[i].confidence||0});record(alts);};
+    rec.onerror=e=>{got=true;mark('error:'+e.error);
+      if(e.error==='not-allowed'||e.error==='service-not-allowed') say('الميكروفونُ أو خدمةُ التعرّفِ مرفوضة — '+(inApp?'افتحِ الرابطَ في Chrome نفسِه.':'اسمحْ بالميكروفونِ من قفلِ شريطِ العنوان.'),'err');
       else if(e.error==='audio-capture') say('لا ميكروفونَ موصولٌ بهذا الجهاز.','err');
       else if(e.error==='network') say('لا اتصالَ بالإنترنت — التعرّفُ يحتاجُه.','err');
+      else if(e.error==='language-not-supported') say('خدمةُ التعرّفِ على هذا الجهازِ لا تدعمُ الإنجليزية — ثبّتْ/حدّثْ تطبيقَ Google.','err');
       else record([],e.error);
     };
-    rec.onend=()=>{busy=false;mic.classList.remove('rec');mic.textContent='🎤 Say it';if(!got)record([],'no-speech');};
+    rec.onend=()=>{const dur=Math.round(performance.now()-t0);busy=false;mic.classList.remove('rec');mic.textContent='🎤 Say it';
+      if(!got){
+        /* لم يبدأِ التقاطُ الصوتِ أصلاً أو انتهت الجلسةُ في أقلَّ من ثانية = المحرّكُ لم يعمل، لا أنّ التلميذَ سكت */
+        if(!ev.some(x=>x.startsWith('audio'))||dur<900){ tries++; lines.push('#'+tries+'  [engine did not run — ended after '+dur+'ms, events: '+(ev.join(',')||'none')+']');
+          const li=document.createElement('li');li.className='n';li.textContent=lines[lines.length-1];log.prepend(li);
+          stats.textContent='تعرّفَ على '+hits+' من '+tries+' محاولة';
+          say('محرّكُ التعرّفِ لم يعملْ في هذا المتصفّح — افتحِ الرابطَ في تطبيقِ Chrome نفسِه (⋮ ← «فتح في Chrome»).','err'); }
+        else record([],'no-speech');
+      }
+      lines.push('   · events: '+(ev.join(',')||'none')+' · '+dur+'ms');
+    };
     try{rec.start();}catch(e){say('تعذّرَ تشغيلُ الميكروفون: '+e.message,'err');}
   };
 }
