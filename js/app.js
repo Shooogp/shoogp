@@ -169,7 +169,7 @@ function buildBooks(){
   if(!books.length){wrap.innerHTML=`<div class="empty">📚 كتب الصف ${currentGrade} — الفصل ${currentTerm} ستُضاف قريباً بإذن الله</div>`;return;}
   books.forEach(bk=>{
     const cover = bk.coverReal ? (USE_REAL_COVER ? bk.coverReal : bk.coverOriginal) : (bk.cover||null);
-    const el=document.createElement('div');el.className='book '+bk.color+(cover?' has-cover':'');
+    const el=document.createElement('div');el.className='book '+bk.color+(cover?' has-cover':'')+(/-en$/.test(bk.key)?' cover-en':'');
     if(cover){
       el.innerHTML=(bk.isNew?'<span class="newbadge">جديد!</span>':'')+
         /* ختمُ النشرةِ على الغلاف: بلا `?v=` يبقى الغلافُ القديمُ في ذاكرةِ المتصفّحِ

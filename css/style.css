@@ -253,7 +253,11 @@
     box-shadow:0 10px 24px rgba(217,161,92,.35)}
 
   /* شبكة الكتب (مربّعات منحنية) */
-  .books{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:22px;max-width:720px;margin:0 auto}
+  /* مصفوفةٌ ثابتةٌ من أربعةِ أعمدةٍ (قرارُ المالك ٢٠٢٦-٠٩-١٩): كتبُ الصفِّ الواحدِ ثمانيةٌ فتخرجُ سطرَين
+     × أربعة. كانت `auto-fit` بحدٍّ أدنى 200px داخلَ 720px فتخرجُ ثلاثةَ أعمدةٍ وسطراً ثالثاً ناقصاً.
+     والعرضُ 960px يُبقي البطاقةَ بحجمِها السابقِ تقريباً (~224px)؛ وعلى الشاشةِ الضيّقةِ عمودان. */
+  .books{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;max-width:960px;margin:0 auto}
+  @media(max-width:700px){ .books{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px} }
   /* ═══ إطارُ البطاقةِ الأبيضُ ذو الزوايا السميكة (قرارُ المالك ٢٠٢٦-٠٨-٠١) ═══
      رسمٌ واحدٌ يُستعمَلُ 9-slice (‏`border-image`) — أسلوبُ المنصّةِ المعتمدُ للأطرِ المصوّرةِ
      التي تتمدّدُ مع المحتوى (مهارةُ shoogp-ui §١.١): الأركانُ ثابتةُ الشكلِ والأضلاعُ تتمدّد.
@@ -299,6 +303,10 @@
      (مقيسةٌ: ٤٫٥٪–١٨٪ ارتفاعاً، ٦٪–٢٤٪ عرضاً من كل أغلفة المنصّة) — فتُنزَّلُ
      شارةُ «جديد!» أسفلها بدل تغطيتها. */
   .book.has-cover .newbadge{top:21%;left:6%}
+  /* غلافُ الإنجليزية: العنوانُ «Team Together» وأسماءُ الكتبِ الثلاثةِ تملأُ الشريطَ العلويَّ كلَّه
+     (١٠–٣٨٪ ارتفاعاً)، فالموضعُ العامُّ (٢١٪) يقعُ على كلمةِ «Team». تنزلُ الشارةُ تحتَ الأسماءِ
+     إلى يسارِ القرص (القرصُ يبدأُ عند ٣٨٫٥٪ ولا يتجاوزُ ٤٠٪ عرضاً من اليسارِ عند هذا الارتفاع). */
+  .book.has-cover.cover-en .newbadge{top:41%;left:4%}
   .book.has-cover{padding:0;overflow:hidden;min-height:260px}
   .book.has-cover::after{display:none}
   .cover-img{width:100%;height:100%;object-fit:cover;display:block;border-radius:30px}
