@@ -48741,7 +48741,7 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "Sort the actions: allowed, or not allowed at school?",
       groups: [
-        { name: "Allowed",     items: ["put litter in the bin", "arrive on time", "be quiet in class"] },
+        { name: "Allowed",     items: ["use the bin", "arrive on time", "be quiet"] },
         { name: "Not allowed", items: ["drop litter", "break the rules", "shout in class"] }
       ]
     },
