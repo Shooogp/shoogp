@@ -1571,6 +1571,17 @@ function enhanceNav(){
 /* يضبط البطاقة الظاهرة فقط، مع حارس يمنع حلقة المراقب (كتابتنا للأنماط
    تُطلق المراقب) وتوقيع يتجنّب إعادة الحساب دون داعٍ */
 var _fitBusy=false;
+/* ═══ إشعارٌ وصلَ أثناءَ الانشغالِ لا يضيع (٢٠٢٦-٠٩-١٩ — بلاغُ المالك: سؤالٌ بلا إطار) ═══
+   مراقبُ التغييراتِ يتجاهلُ ما يصلُه و`_fitBusy` قائمٌ (حارسُ الحلقة: كتابتُنا للأنماطِ تُطلقُه)،
+   و`_fitBusy` يُرفَعُ بمؤقّتِ صفر. **والنقرةُ المنتظِرةُ تسبقُ المؤقّتَ في طابورِ المتصفّح**:
+   فإن ضغطَ التلميذُ «التالي» والضبطُ جارٍ (وهو ثقيلٌ على السبّورةِ البطيئة، ويُعادُ حينَ
+   تكتملُ صورةُ الفريمِ من الشبكة — measureFrameGeo) وصلَ إشعارُ السؤالِ الجديدِ والحارسُ
+   قائمٌ فأُهمِلَ **ولم يُعَدْ إليه قطّ** — فبقيَ السؤالُ بلا `aspect-ratio` ولا صورةِ إطار:
+   بطاقةٌ مسحوقةٌ والخياراتُ عائمةٌ تحتَها، حتى يُغيَّرَ حجمُ النافذة. أُعيدَ إنتاجُه حرفيّاً
+   (ضبطٌ ثمّ نقرةٌ في المهمّةِ نفسِها). العلاجُ: الإشعارُ المُهمَلُ يرفعُ `_fitPending`،
+   وعندَ رفعِ الحارسِ يُنفَّذُ مرّةً واحدة — وهو مكافئٌ لإشعارٍ عاديٍّ يصلُ بعدَ الفراغ،
+   فلا حلقةَ جديدة: `fitShown` يرجعُ فوراً بالتوقيعِ إن كانت البطاقةُ مضبوطةً سلفاً. */
+var _fitPending=false;
 function fitShown(){
   if(_fitBusy) return;
   var shown=currentShown();
@@ -1590,7 +1601,10 @@ function fitShown(){
   shown.dataset.fitSig=sig;
   _fitBusy=true;
   try{ fitFrame(shown); }
-  finally{ setTimeout(function(){_fitBusy=false;},0); placeChrome(); scheduleScreenGuard(); }
+  finally{ setTimeout(function(){
+      _fitBusy=false;
+      if(_fitPending){ _fitPending=false; if(gateOn()){ enhanceNav(); fitShown(); watchShown(); placeChrome(); } }
+    },0); placeChrome(); scheduleScreenGuard(); }
 }
 /* ═══ حارسُ الشاشة — «لا يتجاوزُ ارتفاعُ أيِّ إطارٍ (شاملاً حشوةَ qflex) ارتفاعَ
    الشاشةِ المتاح؛ عندَ التجاوزِ يُصغَّرُ المحتوى لا الإطار» (§١.٤ب/§١.٤ز) ═══
@@ -1737,7 +1751,7 @@ function watchShown(){
   }
 }
 
-new MutationObserver(function(){ if(_fitBusy||!gateOn()) return; enhanceNav(); fitShown(); watchShown(); placeChrome(); })
+new MutationObserver(function(){ if(!gateOn()) return; if(_fitBusy){ _fitPending=true; return; } enhanceNav(); fitShown(); watchShown(); placeChrome(); })
   .observe(document.getElementById('questionList'),
     {childList:true,subtree:true,attributes:true,attributeFilter:['style']});
 /* `orientationchange` معه: بعضُ الأجهزةِ تُطلقُه دونَ `resize` موثوقٍ في اللحظةِ
