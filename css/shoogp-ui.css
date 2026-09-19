@@ -206,8 +206,12 @@
   border:0; border-radius:0; box-shadow:none;
   clip-path:inset(0 100% 0 100%);     /* مقتصٌّ تماماً حتى يضبطَه placeBand */
   pointer-events:none;
-  /* انتقالٌ قصيرٌ فلا تقفزُ الحافةُ بين سؤالين مختلفَي العرض */
-  transition:clip-path .20s ease;
+  /* ⛔ بلا انتقال (٢٠٢٦-٠٩-١٩ — بلاغُ المالك: «اهتزاز»). كانَ `clip-path .20s` هنا و`left/top/
+     width/height .20s` على الإطارِ الأبيض — حركتانِ مستقلّتانِ للمستطيلِ الواحد، تُستأنَفانِ مع
+     كلِّ كتابة؛ وplaceBand يُنادى **في كلِّ إطارِ رسمٍ** أثناءَ انتقالِ عرضِ `.qframe` (مراقبُ
+     حجمِه)، فتطاردُ كلٌّ منهما هدفاً متحرّكاً فتهتزّانِ وتنفكّان. والنعومةُ محفوظةٌ بلا انتقال:
+     الشريطُ يلاحقُ الإطارَ إطاراً بإطار، والإطارُ نفسُه هو الذي ينتقلُ بنعومة (‏width .30s). */
+  transition:none;
 }
 @media(prefers-reduced-motion:reduce){ .qband{transition:none} }
 
@@ -225,7 +229,7 @@
   border-image:var(--shoogp-frame) 60 stretch;
   /* حرٌّ من أيِّ `overflow` فوقَه، فالظلُّ يظهرُ حولَه كاملاً (بخلافِ بطاقةِ الكتاب) */
   filter:var(--shoogp-frame-shadow);
-  transition:left .20s ease, top .20s ease, width .20s ease, height .20s ease;
+  transition:none;      /* انظرْ `.qband` أعلاه — الطبقتانِ تتحرّكانِ معاً بلا انتقالٍ خاصّ */
 }
 @media(prefers-reduced-motion:reduce){ .qbandframe{transition:none} }
 

@@ -1063,8 +1063,15 @@ function placeBand(){
   /* الصندوقُ يغطّي المنفذَ (inset:0) ونقتصُّ حوافَّه الأربع: من البكسلِ الحقيقيِّ
      (rect) إلى فضاءِ المحتوى المزوَّم بالقسمةِ على الزوم.
      inset(أعلى يمين أسفل يسار round نصفُ القطر). */
-  b.style.clipPath='inset('+top.toFixed(2)+'px '+(Wv-R/z).toFixed(2)+'px '+
-    (Hv-bot).toFixed(2)+'px '+(L/z).toFixed(2)+'px round '+bandRadius()+'px)';
+  /* ⚠️ الحافّتانِ اليمنى والسفلى بـ`calc(100% - …)` لا بطرحٍ محسوبٍ هنا (٢٠٢٦-٠٩-١٩ — بلاغُ
+     المالك: «الفريمُ الأبيضُ يخرجُ من مكانِه»). كانتا تُكتَبانِ بُعداً عن يمينِ المنفذِ وأسفلِه
+     (‏Wv−R و Hv−bot) بينما الإطارُ الأبيضُ أدناه يُكتَبُ من اليسارِ والأعلى — مرجعانِ
+     متعاكسانِ للمستطيلِ الواحد، فأيُّ تغيّرٍ لاحقٍ في الزومِ أو مقاسِ المنفذِ يُبقي يسارَهما
+     وأعلاهما متطابقَينِ ويُفرِّقُ يمينَهما وأسفلَهما (وهو ما ظهرَ في اللقطةِ حرفيّاً).
+     الآن الطبقتانِ مرسوّتانِ على الأصلِ نفسِه فلا تنفكّانِ مهما تغيّر. */
+  var clip='inset('+top.toFixed(2)+'px calc(100% - '+(R/z).toFixed(2)+'px) calc(100% - '+
+    bot.toFixed(2)+'px) '+(L/z).toFixed(2)+'px round '+bandRadius()+'px)';
+  if(b.style.clipPath!==clip) b.style.clipPath=clip;
   /* إطارُ الشريطِ على **نفسِ المستطيل** المحسوبِ أعلاه (فضاءُ المحتوى المزوَّم عينُه الذي
      يُفسَّرُ به clip-path) — فلا ينزلقُ عنه في أيِّ زومٍ أو مقاس. */
   bf.style.display='block';
@@ -1085,6 +1092,43 @@ function placeBand(){
   setBandVar(b,'--qb-c2x',(Rd-BAND_C2_X*Wb-r2).toFixed(1)+'px');
   setBandVar(b,'--qb-c2y',(bot-BAND_C2_Y*Wb-r2).toFixed(1)+'px');
 }
+/* ═══ حارسُ موضعِ الشريط — يُعيدُ وضعَه كلّما تحرّكَ ما يحتضنُه (٢٠٢٦-٠٩-١٩) ═══
+   الشريطُ وإطارُه `position:fixed` بإحداثياتِ المنفذ، ويُحسَبانِ لحظةَ النداء. وكانَ النداءُ
+   معلّقاً بثلاثةِ مصادرَ فقط (مراقبُ أنماطِ questionList · مراقبُ حجمِ الإطار · resize)، فكلُّ
+   إزاحةٍ تأتي من غيرِها تتركُه في مكانِه القديم: **تمريرُ الصفحة** (الثابتُ لا يتبعُ المحتوى)،
+   **تغيّرُ زومِ fit.js** (على الجذرِ لا على questionList)، التفافُ عنوانِ الدرسِ بعدَ وصولِ
+   الخطّ، اكتمالُ صورةٍ في الترويسة. العلاجُ توقيعٌ رخيصٌ (أربعةُ صناديقَ + الزومُ + التمريرُ
+   + مقاسُ المنفذ) يُفحَصُ كلَّ ربعِ ثانيةٍ والشاشةُ نشِطة، ويُنادى placeChrome عندَ تغيّرِه
+   فقط — فالسؤالُ الساكنُ لا يكلّفُ إلا قراءةَ أربعةِ صناديق. والتمريرُ يُلاحَقُ فوراً بـrAF. */
+var _bandSig='';
+function bandSig(){
+  var shown=currentShown(); if(!shown) return '';
+  var f=shown.querySelector('.qframe'); if(!f) return '';
+  var q=function(el){ if(!el) return '-'; var r=el.getBoundingClientRect();
+    return Math.round(r.left)+','+Math.round(r.top)+','+Math.round(r.width)+','+Math.round(r.height); };
+  return [q(f), q(shown.querySelector('.qhead')), q(document.querySelector('#questionList .qnav')),
+          q(document.querySelector('.rocket-lane')), liveZoom(f).toFixed(4),
+          window.innerWidth, window.innerHeight].join('|');
+}
+function bandWatchTick(){
+  if(!gateOn() || _fitBusy) return;
+  var act=document.getElementById('activityScreen');
+  if(!act || !act.classList.contains('active')) return;
+  var sg=bandSig();
+  if(sg===_bandSig) return;
+  /* ⛔ `placeBand` وحدَها لا `placeChrome`: الشريطُ `position:fixed` خارجَ التدفّقِ فوضعُه لا
+     يمسُّ التخطيط. أمّا `placeIcons` فتُزيحُ الشاراتِ فيتغيّرُ ارتفاعُ العمودِ فيُعيدُ fit.js
+     الزومَ فيتغيّرُ هذا التوقيعُ نفسُه — حلقةٌ مقيسةٌ (الزومُ يتأرجحُ 0.5789↔0.5798 و١٧٧ كتابةً
+     في ثانيتَين) وقعت في النسخةِ الأولى من هذا الحارسِ قبلَ النشر. */
+  placeBand();
+  _bandSig=sg;
+}
+setInterval(bandWatchTick, 250);
+var _bandScrollRAF=0;
+window.addEventListener('scroll', function(){
+  if(_bandScrollRAF) return;
+  _bandScrollRAF=requestAnimationFrame(function(){ _bandScrollRAF=0; if(gateOn()){ placeBand(); _bandSig=bandSig(); } });
+}, {passive:true});
 /* كتابةٌ لا تُطلقُ حلقةَ المراقب (نفسُ مبدأِ setStyleOnce) */
 function setBandVar(el,name,v){
   if(el.style.getPropertyValue(name)!==v) el.style.setProperty(name,v);
