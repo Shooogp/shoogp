@@ -179,7 +179,9 @@
   .app:has(#activityScreen.active) > header .logo-wrap,
   .app:has(#activityScreen.active) > header .main-title,
   .app:has(#lessonsScreen.active) > header .guide-btn,
-  .app:has(#activityScreen.active) > header .guide-btn{ display:none }
+  .app:has(#activityScreen.active) > header .guide-btn,
+  .app:has(#lessonsScreen.active) > header .ig-contact,
+  .app:has(#activityScreen.active) > header .ig-contact{ display:none }
   #activityScreen .lesson-head{display:flex;align-items:center;
     justify-content:space-between;gap:20px;margin-bottom:6px}
   /* عرضُ السطرِ = عرضُ جدولِ الوحداتِ (‎.lessons‎ 640px) فيقعُ الشعارُ فوقَ الحافةِ
@@ -233,6 +235,18 @@
   .guide-btn:hover{background:rgba(201,162,39,.34);color:#fff}
   .guide-btn:active{transform:scale(.94)}
   .guide-ic{font-size:1.15rem;line-height:1}
+
+  /* شارةُ حسابِ إنستغرام تحتَ العبارةِ التعريفيّة (طلبُ المالك ٢٠٢٦-٠٩-١٩). في التدفّقِ لا مُطلَقةُ
+     الموضع — تتوسّطُ تحتَ العبارةِ على كلِّ عرض. حدُّها وردٌ خافتٌ من تدرّجِ الأيقونة. */
+  .ig-contact{display:inline-flex;align-items:center;gap:8px;margin-top:10px;
+    background:rgba(255,255,255,.10);border:1px solid rgba(214,36,159,.45);
+    border-radius:999px;padding:6px 14px 6px 10px;font-family:'Cairo';font-size:.92rem;line-height:1.2;
+    color:#e9e3ff;text-decoration:none;backdrop-filter:blur(6px);transition:.2s;
+    -webkit-user-select:none;user-select:none;touch-action:manipulation}
+  .ig-contact:hover{background:rgba(214,36,159,.22);color:#fff}
+  .ig-contact:active{transform:scale(.96)}
+  .ig-contact .ig-ic{width:1.35rem;height:1.35rem;flex:0 0 auto}
+  .ig-contact .ig-handle{font-weight:800;color:#fff;direction:ltr}
 
   /* تبويب الفصول الدراسية (الأعلى) */
   .terms{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin:6px 0 54px}
