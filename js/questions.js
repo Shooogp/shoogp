@@ -40545,30 +40545,27 @@ window.QUESTIONS = {
       ],
       svg: `<svg viewBox="0 0 440 440" xmlns="http://www.w3.org/2000/svg">
       <!-- الكرة -->
-      <g class="cpart" data-name="ball">
-      <circle cx="120" cy="120" r="74" fill="#fffdf6" stroke="#111111" stroke-width="5"/>
+      <g class="cpart" fill="#fffdf6" data-name="ball">
+      <circle cx="120" cy="120" r="74" stroke="#111111" stroke-width="5"/>
       <path d="M46 120 q74 -52 148 0" fill="none" stroke="#111111" stroke-width="4"/>
       <path d="M46 120 q74 52 148 0" fill="none" stroke="#111111" stroke-width="4"/>
       </g>
       <!-- السيارة: جسمٌ واحدٌ بمقصورةٍ ناتئة، والعجلتانِ خارجَ منطقةِ التلوين -->
       <circle cx="285" cy="172" r="20" fill="#606060" stroke="#111111" stroke-width="4"/>
       <circle cx="375" cy="172" r="20" fill="#606060" stroke="#111111" stroke-width="4"/>
-      <g class="cpart" data-name="car">
-      <path d="M240 172 L240 132 Q240 122 250 120 L280 114 L296 84 Q300 76 310 76 L358 76 Q368 76 372 84 L388 114 L418 120 Q428 122 428 132 L428 172 Q428 180 418 180 L250 180 Q240 180 240 172 Z"
-      fill="#fffdf6" stroke="#111111" stroke-width="5" stroke-linejoin="round"/>
+      <g class="cpart" fill="#fffdf6" data-name="car">
+      <path d="M240 172 L240 132 Q240 122 250 120 L280 114 L296 84 Q300 76 310 76 L358 76 Q368 76 372 84 L388 114 L418 120 Q428 122 428 132 L428 172 Q428 180 418 180 L250 180 Q240 180 240 172 Z" stroke="#111111" stroke-width="5" stroke-linejoin="round"/>
       </g>
       <!-- القطار: قاطرةٌ بمدخنةٍ، والعجلاتُ خارجَ منطقةِ التلوين -->
       <circle cx="72" cy="392" r="18" fill="#606060" stroke="#111111" stroke-width="4"/>
       <circle cx="130" cy="392" r="18" fill="#606060" stroke="#111111" stroke-width="4"/>
       <circle cx="176" cy="392" r="18" fill="#606060" stroke="#111111" stroke-width="4"/>
-      <g class="cpart" data-name="train">
-      <path d="M46 392 L46 320 Q46 312 54 312 L96 312 L96 268 Q96 260 104 260 L118 260 Q126 260 126 268 L126 312 L140 312 L140 282 Q140 272 150 272 L192 272 Q202 272 202 282 L202 392 Q202 400 194 400 L54 400 Q46 400 46 392 Z"
-      fill="#fffdf6" stroke="#111111" stroke-width="5" stroke-linejoin="round"/>
+      <g class="cpart" fill="#fffdf6" data-name="train">
+      <path d="M46 392 L46 320 Q46 312 54 312 L96 312 L96 268 Q96 260 104 260 L118 260 Q126 260 126 268 L126 312 L140 312 L140 282 Q140 272 150 272 L192 272 Q202 272 202 282 L202 392 Q202 400 194 400 L54 400 Q46 400 46 392 Z" stroke="#111111" stroke-width="5" stroke-linejoin="round"/>
       </g>
       <!-- الطائرة: منظرٌ علويٌّ — بدنٌ وجناحانِ وذيل -->
-      <g class="cpart" data-name="plane">
-      <path d="M334 250 Q346 250 346 272 L346 312 L416 350 Q422 354 422 362 L422 374 L346 350 L346 388 L368 404 L368 414 L334 404 L300 414 L300 404 L322 388 L322 350 L246 374 L246 362 Q246 354 252 350 L322 312 L322 272 Q322 250 334 250 Z"
-      fill="#fffdf6" stroke="#111111" stroke-width="5" stroke-linejoin="round"/>
+      <g class="cpart" fill="#fffdf6" data-name="plane">
+      <path d="M334 250 Q346 250 346 272 L346 312 L416 350 Q422 354 422 362 L422 374 L346 350 L346 388 L368 404 L368 414 L334 404 L300 414 L300 404 L322 388 L322 350 L246 374 L246 362 Q246 354 252 350 L322 312 L322 272 Q322 250 334 250 Z" stroke="#111111" stroke-width="5" stroke-linejoin="round"/>
       </g>
       </svg>`
     }
@@ -40912,17 +40909,17 @@ window.QUESTIONS = {
         { name: "rectangle", color: "#FFA000" }
       ],
       svg: `<svg viewBox="0 0 440 440" xmlns="http://www.w3.org/2000/svg">
-      <g class="cpart" data-name="square">
-      <rect x="46" y="46" width="148" height="148" rx="10" fill="#fffdf6" stroke="#111111" stroke-width="5"/>
+      <g class="cpart" fill="#fffdf6" data-name="square">
+      <rect x="46" y="46" width="148" height="148" rx="10" stroke="#111111" stroke-width="5"/>
       </g>
-      <g class="cpart" data-name="circle">
-      <circle cx="320" cy="120" r="76" fill="#fffdf6" stroke="#111111" stroke-width="5"/>
+      <g class="cpart" fill="#fffdf6" data-name="circle">
+      <circle cx="320" cy="120" r="76" stroke="#111111" stroke-width="5"/>
       </g>
-      <g class="cpart" data-name="triangle">
-      <path d="M120 250 L200 392 L40 392 Z" fill="#fffdf6" stroke="#111111" stroke-width="5" stroke-linejoin="round"/>
+      <g class="cpart" fill="#fffdf6" data-name="triangle">
+      <path d="M120 250 L200 392 L40 392 Z" stroke="#111111" stroke-width="5" stroke-linejoin="round"/>
       </g>
-      <g class="cpart" data-name="rectangle">
-      <rect x="236" y="286" width="168" height="106" rx="10" fill="#fffdf6" stroke="#111111" stroke-width="5"/>
+      <g class="cpart" fill="#fffdf6" data-name="rectangle">
+      <rect x="236" y="286" width="168" height="106" rx="10" stroke="#111111" stroke-width="5"/>
       </g>
       </svg>`
     }
