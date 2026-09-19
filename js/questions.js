@@ -43330,8 +43330,8 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "Sort the commands: about your body or about an object?",
       groups: [
-        { name: "About your body",  items: ["Put up your hand.", "Put down your hand.", "Hold up your drawing."] },
-        { name: "About an object",  items: ["Turn on the AC.", "Take out your pencil.", "Put away your pencil."] }
+        { name: "About your body",  items: ["Put up your hand.", "Put down your hand."] },
+        { name: "About an object",  items: ["Take out your pencil.", "Put away your pencil."] }
       ]
     },
     {
@@ -43512,7 +43512,7 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "Sort the routines: at home or at school?",
       groups: [
-        { name: "At home",   items: ["get up", "have breakfast", "have dinner", "go to bed"] },
+        { name: "At home",   items: ["get up", "have breakfast", "go to bed"] },
         { name: "At school", items: ["go to school", "have art lessons", "have lunch"] }
       ]
     }
@@ -44474,7 +44474,7 @@ window.QUESTIONS = {
       level: "application",
       prompt: "Sort the words by their sound.",
       groups: [
-        { name: "ear", items: ["beard", "hear", "ears", "year"] },
+        { name: "ear", items: ["beard", "hear", "year"] },
         { name: "ure", items: ["vulture", "picture", "mixture"] }
       ]
     },
@@ -45007,7 +45007,7 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "Sort the days: school days or the weekend?",
       groups: [
-        { name: "School days",  items: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"] },
+        { name: "School days",  items: ["Sunday", "Monday", "Wednesday", "Thursday"] },
         { name: "The weekend",  items: ["Friday", "Saturday"] }
       ]
     }
@@ -47014,8 +47014,8 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "Sort the sentences: 'Welcome to Our School' or 'Hippo's Kite'?",
       groups: [
-        { name: "Welcome to Our School", items: ["We grow vegetables in the school garden.", "Science is my favourite lesson."] },
-        { name: "Hippo's Kite",          items: ["Let's meet at half past three.", "I'm too busy. I'm counting my toes."] }
+        { name: "Welcome to Our School", items: ["We grow vegetables.", "Science is my favourite."] },
+        { name: "Hippo's Kite",          items: ["Let's meet at half past three.", "I'm counting my toes."] }
       ]
     },
     {
@@ -47416,8 +47416,8 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "Sort the words: an ingredient, or a sequencing word?",
       groups: [
-        { name: "An ingredient",     items: ["chicken", "wheat", "butter", "spices"] },
-        { name: "A sequencing word", items: ["First", "Then", "After that", "Last"] }
+        { name: "An ingredient",     items: ["chicken", "butter", "spices"] },
+        { name: "A sequencing word", items: ["First", "Then", "Last"] }
       ]
     },
     {
@@ -48328,8 +48328,8 @@ window.QUESTIONS = {
       level: "application",
       prompt: "Sort the words by their sound.",
       groups: [
-        { name: "ei",   items: ["reindeer", "reins", "weigh", "vein"] },
-        { name: "eigh", items: ["eight", "sleigh", "eighteen"] }
+        { name: "ei",   items: ["reindeer", "reins", "vein"] },
+        { name: "eigh", items: ["eight", "sleigh", "weigh"] }
       ]
     },
     {
@@ -49265,7 +49265,7 @@ window.QUESTIONS = {
       level: "reasoning",
       prompt: "Sort the actions: should do, or shouldn't do when ill?",
       groups: [
-        { name: "Should do",    items: ["drink lots of water", "have some medicine", "rest in bed"] },
+        { name: "Should do",    items: ["drink water", "take medicine", "rest in bed"] },
         { name: "Shouldn't do", items: ["play video games", "shout", "go to school"] }
       ]
     },
