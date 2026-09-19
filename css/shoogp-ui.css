@@ -1755,6 +1755,18 @@
 }
 .shoogp-ui.skin-leather .qwin .cswatch{flex-direction:column; justify-content:center; gap:4px}
 .shoogp-ui.skin-leather .qwin .cswatch-name{font-size:var(--lth-f)}
+/* لوحةُ الأربعةِ ألوانٍ سطرٌ واحدٌ لا «٣ فوق و١ تحت» (قرارُ المالك ٢٠٢٦-٠٩-١٩).
+   مقيسٌ: الدلوُ الجلديُّ ١٣٠–١٦٤px عرضاً (حافّتاه الجانبيتانِ ٣٢px لكلٍّ) فمجموعُ الأربعةِ ٦٢٥px
+   في لوحةٍ عرضُها ٥٣٣px — فالتفَّ الرابعُ وأكلَ سطراً من ارتفاعِ الإطار، وخرجَ الرسمُ ١٦٣px.
+   بتضييقِ الحافّتَينِ والحشوِ والفجوةِ صارَ ٤٧٣px سطراً واحداً، وكبرَ الرسمُ نحوَ ٢٠٪.
+   **ومحصورٌ بـ`:has(:nth-child(4))`**: لوحاتُ اللونَينِ والثلاثةِ سطرٌ واحدٌ أصلاً فلا تُمَسّ،
+   **وبالقشرةِ الجلديةِ وحدَها**: بقيّةُ القشورِ مقيسةٌ سطراً واحداً حتى بأربعةِ ألوان. */
+.shoogp-ui.skin-leather .qwin .cpalette:has(.cswatch:nth-child(4)){flex-wrap:nowrap; gap:8px}
+.shoogp-ui.skin-leather .qwin .cpalette:has(.cswatch:nth-child(4)) .cswatch{
+  padding:0 4px !important;
+  border-width:calc(var(--lth-h) * var(--lth-cap-v) * .7)
+               calc(var(--lth-h) * var(--lth-cap-h) * .72) !important;
+}
 .shoogp-ui.skin-leather .qwin .blank{display:inline-flex; vertical-align:middle}
 .shoogp-ui.skin-leather .qwin .target{
   min-width:calc(var(--lth-h) * var(--lth-cap-h) * 2 + 28px);
