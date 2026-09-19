@@ -341,9 +341,13 @@ var FRAME_FAMILIES={
      الجلدَ من الجانبَين. الإدراجُ بالخياطةِ المحسوبةِ داخلَ الفتحةِ الشفّافةِ وحدَها (الحزامانِ
      الجانبيانِ والزخارفُ والهامشُ الخارجيُّ محميّة)، فاتّسعت الفتحةُ من ٦٠٪ إلى ٦٥٪ من العرضِ
      والجلدُ على سماكتِه. الأصلُ في images/ui/originals/frame-en-tall.pre-widen.png. */
+  /* ⚠️ m أُعيدَ اشتقاقُه من l (٢٠٢٦-٠٩-١٩) بملاحظةِ المالك «الفريمُ غيرُ منظَّم»: الاشتقاقُ الأوّلُ
+     أدرجَ الأعمدةَ كلَّها في الحزامِ الأيسرِ فصارَ ٢٧٫٣٪ مقابلَ ١٥٫٣٪ للأيمنِ والنافذةُ منزاحةٌ يميناً
+     فيبدو المحتوى مائلاً. الآن الإدراجُ (٢١٦ عموداً، 1024←1240) داخلَ الفتحةِ وحدَها بحمايةِ الحزامَينِ
+     والزخارفِ — فالحزامانِ متساويانِ والنافذةُ متوسّطة. الأصلُ في originals/frame-en-m.pre-recenter.png. */
   en:{ order:['s','m','l','tall'], flexBase:'l', sizes:{
     s:{img:'frame-en-s.png', ar:'1264 / 848',  win:{top:'20.2%', left:'16.3%', right:'15.9%', bottom:'20.0%'}, hasFill:false, fillDip:true},
-    m:{img:'frame-en-m.png', ar:'1333 / 1024', win:{top:'19.8%', left:'27.3%', right:'15.3%', bottom:'17.1%'}, hasFill:false, fillDip:true},
+    m:{img:'frame-en-m.png', ar:'1240 / 1024', win:{top:'19.8%', left:'16.5%', right:'16.5%', bottom:'19.8%'}, hasFill:false, fillDip:true},
     l:{img:'frame-en-l.png', ar:'1024 / 1024', win:{top:'19.8%', left:'19.9%', right:'19.9%', bottom:'19.8%'}, hasFill:false, fillDip:true},
     tall:{img:'frame-en-tall.png', ar:'1164 / 1705', win:{top:'11.9%', left:'17.5%', right:'17.5%', bottom:'11.8%'}, hasFill:false, fillDip:true}
   }}
