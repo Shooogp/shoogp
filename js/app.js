@@ -1052,7 +1052,9 @@ function audioPlayerHTML(src, label){
 function wireAudioPlayer(scope, src){
   if(!src) return;
   const btn=scope.querySelector('.aplay'); if(!btn) return;
-  const snd=new Audio(src); snd.preload='auto';
+  /* صوتُ السؤالِ موسومٌ بـASSET_VER كالصور (٢٠٢٦-٠٩-١٩): مقطعٌ أُعيدَ توليدُه بالاسمِ نفسِه
+     يبقى قديمُه في ذاكرةِ المتصفّحِ شهوراً بلا وسم — وقعَ مع سبعِ كلماتٍ معيبةِ النطق. */
+  const snd=new Audio(src+ASSET_VER); snd.preload='auto';
   btn.onclick=()=>{ try{ snd.currentTime=0; const p=snd.play(); if(p&&p.catch)p.catch(function(){}); }catch(e){} };
 }
 
@@ -1246,12 +1248,12 @@ function renderSoundBlend(q, body, fb){
   // كل بطاقة حرف تُشغّل صوتها الخاص عند النقر — استكشافٌ حرٌّ لا يؤثّر في التصحيح
   body.querySelectorAll('.blend-tile').forEach(t=>{
     const L=t.dataset.l, src=q.soundOf&&q.soundOf[L]; if(!src) return;
-    const snd=new Audio(src); snd.preload='auto';
+    const snd=new Audio(src+ASSET_VER); snd.preload='auto';
     t.onclick=()=>{ try{ snd.currentTime=0; const p=snd.play(); if(p&&p.catch)p.catch(function(){}); t.classList.add('played'); }catch(e){} };
   });
   if(q.blendAudio){
     const bbtn=body.querySelector('.blend-play');
-    const bsnd=new Audio(q.blendAudio); bsnd.preload='auto';
+    const bsnd=new Audio(q.blendAudio+ASSET_VER); bsnd.preload='auto';
     bbtn.onclick=()=>{ try{ bsnd.currentTime=0; const p=bsnd.play(); if(p&&p.catch)p.catch(function(){}); }catch(e){} };
   }
   let done=false;
@@ -4000,7 +4002,7 @@ function renderListenLocate(q, body, fb){
       snd=new Audio();
       snd.preload='auto';
       snd.addEventListener('error',killAudio);       // 404 أو ترميزٌ غيرُ مدعوم
-      snd.src=q.audio;
+      snd.src=q.audio+ASSET_VER;
     }catch(e){ killAudio(); }
   } else killAudio();
   function play(){
