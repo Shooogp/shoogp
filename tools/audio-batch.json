@@ -22,36 +22,92 @@
   "⚠️ **وحدُّ المعدَّلِ خمسةُ طلباتٍ في الدقيقة** (‏`x-ratelimit-limit: 5`)، فالعقدةُ",
   "تُرسِلُ عنصراً واحداً كلَّ ١٥ ثانية."
  ],
- "batchId": "2026-09-18-voice-clips",
+ "batchId": "2026-09-19-refix-7-words",
  "voice": "حطاب",
  "items": [
   {
-   "name": "voice-en-correct",
-   "text": "Well done! Your answer is correct."
+   "name": "fix-ball-a",
+   "text": "Ball."
   },
   {
-   "name": "voice-en-all-done",
-   "text": "Well done! You have completed all the questions."
+   "name": "fix-ball-b",
+   "text": "Ball! Ball!"
   },
   {
-   "name": "voice-en-moon-arrived",
-   "text": "Well done! You reached the moon right on time!"
+   "name": "fix-ball-c",
+   "text": "bawl"
   },
   {
-   "name": "voice-en-moon-arrived-hard",
-   "text": "Well done! You reached the moon after a challenging journey!"
+   "name": "fix-bike-a",
+   "text": "Bike."
   },
   {
-   "name": "voice-ar-all-done",
-   "text": "أحسنت، أكملت كل الأسئلة."
+   "name": "fix-bike-b",
+   "text": "Bike! Bike!"
   },
   {
-   "name": "voice-ar-moon-arrived",
-   "text": "أحسنت! وصلت القمر في الوقت المناسب!"
+   "name": "fix-bike-c",
+   "text": "byke"
   },
   {
-   "name": "voice-ar-moon-arrived-hard",
-   "text": "أحسنت! وصلت القمر بعد رحلة مليئة بالتحدي!"
+   "name": "fix-house-a",
+   "text": "House."
+  },
+  {
+   "name": "fix-house-b",
+   "text": "House! House!"
+  },
+  {
+   "name": "fix-house-c",
+   "text": "howss"
+  },
+  {
+   "name": "fix-pie-a",
+   "text": "Pie."
+  },
+  {
+   "name": "fix-pie-b",
+   "text": "Pie! Pie!"
+  },
+  {
+   "name": "fix-pie-c",
+   "text": "pye"
+  },
+  {
+   "name": "fix-mum-a",
+   "text": "Mum."
+  },
+  {
+   "name": "fix-mum-b",
+   "text": "Mum! Mum!"
+  },
+  {
+   "name": "fix-mum-c",
+   "text": "mumm"
+  },
+  {
+   "name": "fix-plane-a",
+   "text": "Plane."
+  },
+  {
+   "name": "fix-plane-b",
+   "text": "Plane! Plane!"
+  },
+  {
+   "name": "fix-plane-c",
+   "text": "plain"
+  },
+  {
+   "name": "fix-ten-a",
+   "text": "Ten."
+  },
+  {
+   "name": "fix-ten-b",
+   "text": "Ten! Ten!"
+  },
+  {
+   "name": "fix-ten-c",
+   "text": "tenn"
   }
  ]
 }
