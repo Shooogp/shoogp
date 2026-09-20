@@ -1527,7 +1527,8 @@ img.ct-glyph-img{width:38px;height:38px;object-fit:contain;display:block;pointer
      كلُّ مقاسٍ أدناه مضروبٌ فيه، وهوامشُ التمركز (‏margin-left = −العرض÷2) مضروبةٌ معه
      فيبقى كلُّ عنصرٍ متمركزاً على المحور أيّاً كان المعامِل. **لتغييرِ الحجمِ: هذا الرقمُ
      وحدَه.** مواضعُ النظامِ (top للقمر، bottom للأرض، وعرضُ العمودِ 124) مرتبطةٌ بثوابتِ
-     `js/fit.js` (MOON_TOP/EARTH_BOTTOM/LANE_W) — **لا تُغيَّر إلا معها في الملفّين معاً**.
+     `js/fit.js` (MOON_TOP/EARTH_BOTTOM/LANE_W) — **لا تُغيَّر إلا معها في الملفّين معاً**
+     (‏`top` القمرِ استُثنيَ ٢٠٢٦-٠٩-٢٠: أُنزِلَ 40px وحدَه دونَ مسِّ صندوقِ العمود).
      فتصغرُ العناصرُ في مواضعِها بلا إزاحةٍ للمنظومة ولا كسرٍ لعقدِ المحاذاة. وحركةُ
      الصاروخِ ومحطّاتُه تُقاسُ حيّاً من الأبعادِ الفعلية (‏_measure في rocket.js) فتتبعُ
      التصغيرَ تلقائياً.
@@ -1537,8 +1538,11 @@ img.ct-glyph-img{width:38px;height:38px;object-fit:contain;display:block;pointer
     pointer-events:none} /* عرض فقط، لا يعترض اللمس */
   .rocket-lane img{position:absolute;display:block;-webkit-user-select:none;user-select:none}
 
-  /* القمر رأسُ المسار: top هنا + laneTop في fit.js = 50px تحتَ حافّةِ الشاشةِ العليا */
-  .rocket-lane .rj-moon-img{top:32px;left:50%;
+  /* القمر رأسُ المسار: top هنا + laneTop في fit.js (=18) = **90px** تحتَ حافّةِ الشاشةِ العليا.
+     كانَ 32 (فـ50px من الحافّة) ثمّ أُنزِلَ 40px بطلبِ المالك ٢٠٢٦-٠٩-٢٠. وصندوقُ العمودِ
+     نفسُه لم يتغيّرْ (‏`laneTop` و`height` في `js/fit.js` كما كانا) فالأرضُ في مكانِها،
+     والمسارُ يقصرُ 40px — وحركةُ الصاروخِ ومحطّاتُه تُقاسُ حيّاً فتتبعُه تلقائياً. */
+  .rocket-lane .rj-moon-img{top:72px;left:50%;
     width:calc(110px * var(--rj-k));margin-left:calc(-55px * var(--rj-k));z-index:1;
     filter:drop-shadow(0 0 10px rgba(255,246,196,.5))}
   /* المعالم عند انحناءات المنحنى (يوضعها الكود بالـ left/bottom) — مكبّرة */
