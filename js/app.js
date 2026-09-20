@@ -649,6 +649,28 @@ function renderQuestions(ls){
       (good===total ? '<p class="qresult-cheer">'+T('ممتاز! أكملت كل الأسئلة 🌟')+'</p>'
                     : '<p class="qresult-cheer">'+T('أحسنت! يمكنك الرجوع وإكمال ما تبقّى.')+'</p>')+
       '</div>';
+    /* 🧾 شاهدُ الحصّة — ورقةُ ملفِّ الإنجاز (‏`js/witness.js`)، **وضعُ المطوّرِ وحدَه
+       مبدئياً** بقرارِ المالك ٢٠٢٦-٠٩-٢٠. الحجبُ هناك عندَ البناء: بلا وضعِ مطوّرٍ
+       لا يُضافُ عنصرٌ إلى الصفحة.
+       والبياناتُ تُمرَّرُ من هنا ولا تُقرَأُ هناك: `DATA` و`Q_LABEL` معرَّفانِ
+       بـ`let/const` في سكربتٍ كلاسيكيٍّ فلا يصيرانِ خاصيّةً على `window`. */
+    if(window.ShoogpWitness){
+      const bidx=DATA.index[currentBook]||{};
+      const bun=(bidx.units||[]).find(u=>(u.lessons||[]).some(l=>l.file===ls.file));
+      /* الصفُّ والفصلُ من **موقعِ الكتابِ في البيانات** لا من `currentGrade`/`currentTerm`:
+         هذانِ حالةُ تنقّلٍ قد لا تُطابقُ الكتابَ المفتوحَ (فتحٌ برمجيٌّ أو مدخلٌ مباشرٌ
+         لا يمرُّ بزرِّ الصفّ) — ووثيقةٌ تُلصَقُ في ملفٍّ رسميٍّ لا تحتملُ صفّاً خطأً. */
+      let bTerm=currentTerm, bGrade=currentGrade;
+      Object.keys(DATA.terms||{}).forEach(tm=>Object.keys(DATA.terms[tm]||{}).forEach(gr=>{
+        if((DATA.terms[tm][gr]||[]).some(b=>b.key===currentBook)){ bTerm=tm; bGrade=gr; }
+      }));
+      ShoogpWitness.mount(result,{
+        book:bidx.book||'', unit:bun?bun.unit:'', lesson:ls.title||'',
+        grade:bGrade, term:bTerm,
+        questions:qs, good:good, total:total,
+        typeLabel:function(t){ return Q_LABEL[t]||t; }
+      });
+    }
     // «أحسنت، أكملتَ كلَّ الأسئلة» — مقطعٌ بشريٌّ من المستودع لا نطقٌ آليّ
     if(good===total && window.SHOOGP_SFX) SHOOGP_SFX.voice('all-done');
     window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
