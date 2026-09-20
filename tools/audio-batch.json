@@ -22,40 +22,20 @@
   "⚠️ **وحدُّ المعدَّلِ خمسةُ طلباتٍ في الدقيقة** (‏`x-ratelimit-limit: 5`)، فالعقدةُ",
   "تُرسِلُ عنصراً واحداً كلَّ ١٥ ثانية."
  ],
- "batchId": "2026-09-19-refix-sleigh-whale",
+ "batchId": "2026-09-20-promo-letters-voiceover",
  "voice": "حطاب",
  "items": [
   {
-   "name": "fix-sleigh-a",
-   "text": "Sleigh."
+   "name": "promo-letters-a",
+   "text": "في منصة شوجب، يمكنك اختبار قدرة الطالب على كتابة الحروف."
   },
   {
-   "name": "fix-sleigh-b",
-   "text": "Sleigh! Sleigh!"
+   "name": "promo-letters-b",
+   "text": "في مَنَصَّةِ شُوجِب، يُمكِنُكَ اختِبارُ قُدرَةِ الطّالِبِ على كِتابَةِ الحُروف."
   },
   {
-   "name": "fix-sleigh-c",
-   "text": "slay"
-  },
-  {
-   "name": "fix-sleigh-d",
-   "text": "Slay! Slay!"
-  },
-  {
-   "name": "fix-whale-a",
-   "text": "Whale."
-  },
-  {
-   "name": "fix-whale-b",
-   "text": "Whale! Whale!"
-  },
-  {
-   "name": "fix-whale-c",
-   "text": "wail"
-  },
-  {
-   "name": "fix-whale-d",
-   "text": "Wail! Wail!"
+   "name": "promo-letters-c",
+   "text": "مع منصة شوجب، اختبر قدرة الطالب على كتابة الحروف."
   }
  ]
 }
