@@ -1,0 +1,14 @@
+{
+  "name": "shoogp-visit-counter",
+  "version": "1.0.0",
+  "private": true,
+  "description": "عدّادُ دخولِ شوجب على Cloudflare Workers + D1 — بديلُ سيرِ n8n",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "test": "node test/worker.test.mjs"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}

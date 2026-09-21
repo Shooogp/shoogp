@@ -342,6 +342,17 @@
        سواءً، لا بساعةِ جهازِ المعلّمةِ الخامِ ولا بساعةِ خادمٍ في أوروبا.
      • **جهازُ المالكِ لا يُحسَب** (وضعُ المطوّر)، ولا `file://` ولا `localhost`.
      • لا هويةَ تُرسَل: جسمُ الإشارةِ تاريخُ اليومِ فحسب. */
+  /* ⚙️ **عنوانا الخدمةِ — الموضعُ الوحيدُ الذي يُبدَّلُ عندَ النقلِ إلى Cloudflare.**
+     الـWorker جاهزٌ في `workers/visit-counter/` ويُرجِعُ الشكلَ نفسَه حرفياً، فلا
+     يتغيّرُ في هذا الملفِّ سطرٌ غيرُ هذَين. وخطواتُ النشرِ في
+     `workers/visit-counter/README.md` §الخطوة ٨.
+
+     ⛔ **ولم يُبدَّلا بعدُ عمداً:** عنوانُ الـWorker لا يُعرَفُ قبلَ أوّلِ نشرةٍ
+     (‏`https://shoogp-visits.<نطاقُك>.workers.dev`)، وكتابةُ عنوانٍ مُتخيَّلٍ
+     تُسقِطُ العدّادَ فوراً. فبعدَ النشرِ يُعلَّقُ سطرا n8n ويُفعَّلُ سطرا Cloudflare. */
+  // ── بعدَ نشرِ الـWorker: فعِّلْ هذَين واحذفْ سطرَي n8n أدناه ──
+  // var VISIT_URL = 'https://shoogp-visits.<نطاقُك>.workers.dev/visit';
+  // var STATS_URL = 'https://shoogp-visits.<نطاقُك>.workers.dev/stats';
   var VISIT_URL = 'https://shoogp.app.n8n.cloud/webhook/shoogp-visit-7c1e';
   var STATS_URL = 'https://shoogp.app.n8n.cloud/webhook/shoogp-visit-stats-7c1e';
   var VISIT_KEY = 'shoogp-visit-day';
@@ -934,7 +945,14 @@
         if (!s || !s.ok) { devStats.textContent = '👥 الدخول: —'; return; }
         var a = analyse(s), mins = muscatMinutes(), partial = mins >= 0 && mins < 1439;
 
-        var line = ['👥 اليوم ' + arDigits(s.today) + (partial ? ' ⏳' : ''), 'أمس ' + arDigits(s.yesterday)];
+        /* المقارنةُ الصادقةُ الوحيدة: نظيرُ اليومِ من الأسبوعِ الماضي **عندَ هذه
+           الساعةِ نفسِها**. ولا يوفّرُها إلا Cloudflare Worker (جدولُ `hits`)؛
+           فَـn8n لم يحفظِ الساعةَ أصلاً. والحقولُ تغيبُ ⇒ يُطوى السطرُ بلا أثر،
+           فيعملُ الملفُّ مع المصدرَينِ سواءً. */
+        var sameHour = s.refHasHours && s.refDay === a.lwKey ? s.refSoFar : null;
+
+        var line = ['👥 اليوم ' + arDigits(s.today) + (partial ? ' ⏳' : '')
+          + (sameHour !== null ? ' ↔ ' + arDigits(sameHour) : ''), 'أمس ' + arDigits(s.yesterday)];
         if (a.avg !== null) line.push('م٧ ' + arDigits(a.avg));
         line.push('الإجمالي ' + arDigits(s.total));
         if (a.suspect.length) line.push('⚠');
@@ -946,6 +964,10 @@
             + arDigits(mins % 60) + ' دقيقةً من ٢٤ — فلا يُقارَنُ رقمُه بيومٍ كامل.');
         }
         if (a.avg !== null) tip.push('م٧ = متوسّطُ آخرِ ' + arDigits(a.used) + ' أيّامٍ كاملةٍ سليمة.');
+        if (sameHour !== null) {
+          tip.push('↔ ' + dayName(a.lwKey) + ' الماضي عندَ هذه الساعةِ نفسِها: ' + arDigits(sameHour)
+            + ' — وهي المقارنةُ الصادقةُ لا رقمُ اليومِ الكامل.');
+        }
         if (a.lw !== null) tip.push(dayName(a.lwKey) + ' الماضي (' + a.lwKey + '): ' + arDigits(a.lw) + ' — يوماً كاملاً.');
         if (a.past.length) {
           tip.push('آخرُ ' + arDigits(Math.min(14, a.past.length)) + ' يوماً كاملاً (الأقدمُ أوّلاً): '

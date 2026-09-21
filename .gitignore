@@ -61,3 +61,9 @@ codes-private.csv
 # ذاكرةُ بايتكود بايثون لأدواتِ مجلّد tools/ — تُولَّدُ تلقائياً عندَ كلِّ تشغيل،
 # خاصّةٌ بنسخةِ المفسّرِ وجهازِه، ولا قيمةَ لها في المستودع.
 __pycache__/
+
+# أدواتُ Cloudflare Worker لعدّادِ الدخول (`workers/visit-counter/`):
+# `node_modules/` تبعيّاتٌ تُجلَبُ بـ`npm install`، و`.wrangler/` حالةٌ محلّيّةٌ
+# (قاعدةُ D1 للتطويرِ والاختبار) تُبنى من جديدٍ في كلِّ تشغيلٍ ولا تُرفَع.
+workers/*/node_modules/
+workers/*/.wrangler/

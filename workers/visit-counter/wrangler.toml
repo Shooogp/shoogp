@@ -1,0 +1,20 @@
+# شوجب — عدّادُ الدخول (Cloudflare Worker)
+# خطواتُ النشرِ كاملةً في README.md بجانبِ هذا الملف.
+
+name = "shoogp-visits"
+main = "src/worker.js"
+compatibility_date = "2026-09-21"
+
+# الرصدُ في لوحةِ Cloudflare — يُطفأُ بلا أثرٍ على العمل.
+[observability]
+enabled = true
+
+[[d1_databases]]
+binding = "DB"
+database_name = "shoogp-visits"
+# ⬇️ يُملأُ من مُخرَجِ `npx wrangler d1 create shoogp-visits` (خطوةُ ٣ في README).
+# ⚠️ صفرٌ نائبٌ — التطويرُ المحلّيُّ يتجاهلُه، و`wrangler deploy` يرفضُه بوضوح
+database_id = "00000000-0000-0000-0000-000000000000"
+
+# ⛔ `STATS_KEY` **لا يُكتَبُ هنا** — يُحقَنُ سرّاً:
+#    npx wrangler secret put STATS_KEY
