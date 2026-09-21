@@ -438,6 +438,12 @@ body.lock-open{overflow:hidden}
              0 3px 0 rgba(163,127,72,.55),
              0 6px 14px rgba(10,5,30,.35);
 }
+/* الشارةُ صارت تحملُ أربعةَ مراجعَ لا رقمَين (اليوم · أمس · م٧ · الإجمالي)، فنصُّها
+   نحوُ ٥٢ محرفاً ≈ ٤٧٠px — أوسعُ من منفذِ الهاتف. فعلى الضيّقِ تُطوى سطرَين بدلَ أن
+   تخرجَ من الشاشة، و`nowrap` أعلاه يبقى هو الأصلَ على السبّورةِ والحاسوب. */
+@media (max-width:760px){
+  .lockdev-stats{ white-space:normal; text-align:center; line-height:1.35; padding:6px 12px; }
+}
 
 .lockdev-btn{
   display:inline-flex; align-items:center; justify-content:center; gap:8px;

@@ -353,6 +353,40 @@
     } catch (e) { return new Date().toISOString().slice(0, 10); }
   }
 
+  /* ── لا يُعلَّمُ اليومُ «محسوباً» إلا بعدَ خروجِ الإشارةِ فعلاً ──
+     كانَ المفتاحُ يُكتَبُ **قبلَ** الإرسال، فإن لم تخرجِ الإشارةُ ضاعَ الجهازُ
+     ليومِه كلِّه بلا إعادةِ محاولة. الآن يُكتَبُ بعدَها، ومع عدّادِ محاولاتٍ
+     يقفُ عندَ `MAX_TRY` فلا يُستنزَفُ رصيدُ n8n في عطلٍ طويل.
+
+     ⛔ **ولا يُفحَصُ رمزُ استجابةِ HTTP عمداً، ولا يُعادُ الإرسالُ عليه.**
+     ويبهوكُ «استقبال زيارة» مضبوطٌ على `responseMode: onReceived`، فيردُّ ٢٠٠
+     **قبلَ** أن يُنفَّذَ السيرُ أصلاً — فنجاحُ الطلبِ لا يعني أنّ الصفَّ كُتِب،
+     وإعادةُ الإرسالِ عليه تُنفِقُ تنفيذاً بلا فائدة.
+     **مقيسٌ (تنفيذ 3292، ٢٠٢٦-٠٩-١٣):** انقطاعُ ١٢–١٣ سبتمبرَ لم يكن عطلَ نقلٍ
+     بل `Execution limit reached` — نفادُ رصيدِ تنفيذاتِ n8n الشهريّ. والطلبُ
+     كانَ يصلُ ويُردُّ عليه ٢٠٠ ثمّ يسقطُ السير. فالمحاولةُ المكرّرةُ هناك
+     تزيدُ الاستهلاكَ ولا تُنقذُ رقماً. */
+  var VISIT_TRY_KEY = 'shoogp-visit-try';
+  var MAX_TRY = 3;
+
+  function tryCount(day) {
+    try {
+      var raw = localStorage.getItem(VISIT_TRY_KEY);
+      if (!raw) return 0;
+      var at = raw.indexOf('|');
+      if (at < 0 || raw.slice(0, at) !== day) return 0;   // عدّادُ يومٍ مضى — يُهمَل
+      return Number(raw.slice(at + 1)) || 0;
+    } catch (e) { return 0; }
+  }
+
+  function bumpTry(day, n) {
+    try { localStorage.setItem(VISIT_TRY_KEY, day + '|' + n); } catch (e) {}
+  }
+
+  function markDone(day) {
+    try { localStorage.setItem(VISIT_KEY, day); } catch (e) {}
+  }
+
   function pingVisit() {
     if (devMode) return;
     if (location.protocol === 'file:') return;
@@ -360,10 +394,21 @@
     var day = muscatDay(), last = null;
     try { last = localStorage.getItem(VISIT_KEY); } catch (e) {}
     if (last === day) return;
-    try { localStorage.setItem(VISIT_KEY, day); } catch (e) {}
+
+    var tries = tryCount(day);
+    if (tries >= MAX_TRY) { markDone(day); return; }   // كفى — لا يُستنزَفُ الرصيد
+    bumpTry(day, tries + 1);
+
     try {
-      if (navigator.sendBeacon) navigator.sendBeacon(VISIT_URL, day);
-      else fetch(VISIT_URL, { method: 'POST', body: day, mode: 'no-cors', keepalive: true }).catch(function () {});
+      if (navigator.sendBeacon) {
+        // القيمةُ المرجَعةُ تقولُ: أدرجَها المتصفّحُ في طابورِ الإرسالِ أم لا.
+        // ‏`false` يعني أنّها **لم تُرسَلْ قطعاً**، فلا يُعلَّمُ اليومُ وتُعادُ المحاولة.
+        if (navigator.sendBeacon(VISIT_URL, day)) markDone(day);
+        return;
+      }
+      fetch(VISIT_URL, { method: 'POST', body: day, mode: 'no-cors', keepalive: true })
+        .then(function () { markDone(day); })
+        .catch(function () {});      // بلا تعليم ⇒ تُعادُ المحاولةُ في الفتحةِ التالية
     } catch (e) {}
   }
   pingVisit();
@@ -811,6 +856,74 @@
 
   var devWrap = null, devBtn = null, devStats = null;
 
+  /* ═════════════ مراجعُ المقارنةِ في شارةِ العدّاد ═════════════
+     كانت الشارةُ تعرضُ «اليوم» بجانبَ «أمس» بلا مرجع — فيُقارَنُ **نصفُ يومٍ
+     جارٍ** بيومٍ كامل، وهو ما يوحي بانهيارٍ كلَّ صباحٍ ولا انهيار. والمراجعُ
+     كلُّها محسوبةٌ من `days` الذي **يُعيدُه السيرُ أصلاً** (آخرُ ١٤ يوماً)، فلا
+     تنفيذَ إضافيٌّ في n8n ولا تعديلَ في السير. */
+  var AR_WEEK = ['الأحد', 'الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'];
+  var SPARK = '▁▂▃▄▅▆▇█';
+
+  /* مسقطُ بلا توقيتٍ صيفيّ، فالتاريخُ يُحسَبُ على UTC بأمان. */
+  function dayUTC(s) { var p = String(s).split('-'); return new Date(Date.UTC(+p[0], +p[1] - 1, +p[2])); }
+  function dayShift(s, delta) { var d = dayUTC(s); d.setUTCDate(d.getUTCDate() + delta); return d.toISOString().slice(0, 10); }
+  function dayName(s) { return AR_WEEK[dayUTC(s).getUTCDay()]; }
+
+  /* الدقائقُ التي مضت من يومِ مسقط — ‏`-1` إن تعذّرَ القياس. */
+  function muscatMinutes() {
+    try {
+      var hm = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Muscat', hour: '2-digit', minute: '2-digit', hour12: false })
+        .format(new Date()).split(':');
+      return (Number(hm[0]) % 24) * 60 + Number(hm[1]);
+    } catch (e) { return -1; }
+  }
+
+  function median(nums) {
+    var a = nums.slice().sort(function (x, y) { return x - y; });
+    if (!a.length) return 0;
+    var m = a.length >> 1;
+    return a.length % 2 ? a[m] : (a[m - 1] + a[m]) / 2;
+  }
+
+  /* يومٌ كاملٌ رقمُه دونَ ٤٠٪ من وسيطِ أقرانِه = **يومٌ ناقصٌ محتملٌ لا هبوطٌ حقيقيّ**.
+     العتبةُ من حالةٍ مقيسة: ١٢ و١٣ سبتمبر ٢٠٢٦ (‏٣٥ و٤٠) بين أيّامٍ وسيطُها ٢٤٨ — أي
+     ١٤٪ و١٦٪ — وسببُهما `Execution limit reached` في n8n لا انصرافُ المعلّمات.
+     والوسيطُ لا المتوسّطُ مرجعاً، لأنّ اليومَ الناقصَ نفسَه يجرُّ المتوسّطَ إليه. */
+  function analyse(s) {
+    var today = muscatDay();
+    var rows = (s && s.days) || [];
+    var past = rows.filter(function (r) { return r && r.day < today; })
+                   .sort(function (a, b) { return a.day < b.day ? 1 : -1; });   // الأحدثُ أوّلاً
+    var win = past.slice(0, 7);
+
+    /* ⚠️ **والعطلةُ تُقاسُ بالعطلةِ لا بأيّامِ الدوام.** عطلةُ عُمانَ الجمعةُ والسبتُ
+       ورقمُهما أدنى بطبعِه، فبلا هذا التفريقِ وُسِمَت **جمعةُ ٢٠٢٦-٠٩-١٨ (‏٨١)
+       «ناقصةً» وهي يومٌ سليمٌ كامل** — قِيسَ في اختبارِ المنطقِ قبلَ الاعتماد. */
+    function weekend(d) { var w = dayUTC(d).getUTCDay(); return w === 5 || w === 6; }
+    function midOf(pick) {
+      return median(win.filter(function (r) { return pick(r.day); }).map(function (r) { return r.visits; }));
+    }
+    var midWork = midOf(function (d) { return !weekend(d); });
+    var midRest = midOf(weekend);
+
+    var suspect = past.filter(function (r) {
+      var mid = weekend(r.day) ? midRest : midWork;
+      return mid > 0 && r.visits < mid * 0.4;
+    }).map(function (r) { return r.day; });
+    var clean = win.filter(function (r) { return suspect.indexOf(r.day) < 0; });
+    var avg = clean.length
+      ? Math.round(clean.reduce(function (t, r) { return t + r.visits; }, 0) / clean.length)
+      : null;
+    var lwKey = dayShift(today, -7), lw = null;
+    for (var i = 0; i < rows.length; i++) if (rows[i] && rows[i].day === lwKey) lw = rows[i].visits;
+    return { past: past, avg: avg, used: clean.length, suspect: suspect, lwKey: lwKey, lw: lw };
+  }
+
+  function spark(rows) {                       // الأقدمُ أوّلاً
+    var max = Math.max.apply(null, rows.map(function (r) { return r.visits; }).concat([1]));
+    return rows.map(function (r) { return SPARK[Math.min(7, Math.round(r.visits / max * 7))]; }).join('');
+  }
+
   /* شارةُ العدّادِ بجانبِ الزرّ — تُبنى في وضعِ المطوّرِ وحدَه وتُملأُ من n8n.
      فشلُ الشبكةِ لا يُعطّلُ شيئاً: تبقى الشارةُ على «…». */
   function loadStats() {
@@ -819,8 +932,31 @@
       .then(function (r) { return r.json(); })
       .then(function (s) {
         if (!s || !s.ok) { devStats.textContent = '👥 الدخول: —'; return; }
-        devStats.textContent = '👥 الدخول: ' + arDigits(s.total) + ' · اليوم: ' + arDigits(s.today) + ' · أمس: ' + arDigits(s.yesterday);
-        devStats.title = 'أجهزةٌ دخلت الموقع (مرّة لكل جهاز في اليوم، بتوقيت مسقط)' + (s.since ? ' — منذ ' + s.since : '');
+        var a = analyse(s), mins = muscatMinutes(), partial = mins >= 0 && mins < 1439;
+
+        var line = ['👥 اليوم ' + arDigits(s.today) + (partial ? ' ⏳' : ''), 'أمس ' + arDigits(s.yesterday)];
+        if (a.avg !== null) line.push('م٧ ' + arDigits(a.avg));
+        line.push('الإجمالي ' + arDigits(s.total));
+        if (a.suspect.length) line.push('⚠');
+        devStats.textContent = line.join(' · ');
+
+        var tip = ['أجهزةٌ دخلت الموقع — مرّةٌ واحدةٌ لكلِّ جهازٍ في اليوم، بتوقيتِ مسقط.'];
+        if (partial) {
+          tip.push('⏳ اليومُ لم ينتهِ بعد: مضى منه ' + arDigits(Math.floor(mins / 60)) + ' ساعةً و'
+            + arDigits(mins % 60) + ' دقيقةً من ٢٤ — فلا يُقارَنُ رقمُه بيومٍ كامل.');
+        }
+        if (a.avg !== null) tip.push('م٧ = متوسّطُ آخرِ ' + arDigits(a.used) + ' أيّامٍ كاملةٍ سليمة.');
+        if (a.lw !== null) tip.push(dayName(a.lwKey) + ' الماضي (' + a.lwKey + '): ' + arDigits(a.lw) + ' — يوماً كاملاً.');
+        if (a.past.length) {
+          tip.push('آخرُ ' + arDigits(Math.min(14, a.past.length)) + ' يوماً كاملاً (الأقدمُ أوّلاً): '
+            + spark(a.past.slice(0, 14).reverse()));
+        }
+        if (a.suspect.length) {
+          tip.push('⚠️ أيّامٌ ناقصةٌ محتملةٌ لا هبوطٌ حقيقيّ (نفادُ رصيدِ تنفيذاتِ n8n أو عطلُ شبكة): '
+            + a.suspect.join(' · '));
+        }
+        if (s.since) tip.push('منذ ' + s.since);
+        devStats.title = tip.join('\n');
       })
       .catch(function () { devStats.textContent = '👥 الدخول: —'; });
   }
