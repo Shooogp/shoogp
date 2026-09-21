@@ -357,8 +357,8 @@
      الرصيدَ المشتركَ مع تفعيلِ الرموز (§CLAUDE.md رصيدُ تنفيذاتِ n8n). فالمفتاحُ
      الواحدُ يُشعِلُه ويُطفئُه مع المصدرِ **فلا تقعُ حالةٌ نصفُ محوَّلةٍ** يُرسَلُ فيها
      إلى مصدرٍ لا يفهمُها. */
-  var COUNTER = 'n8n';                                          // ← 'cf' بعدَ النشر
-  var CF_BASE = 'https://shoogp-visits.<نطاقُك>.workers.dev';   // ← عنوانُك الحقيقيّ
+  var COUNTER = 'cf';                                          // ← حُوِّلَ ٢٠٢٦-٠٩-٢١
+  var CF_BASE = 'https://shoogp-visits.shooogp.workers.dev';
   var N8N_BASE = 'https://shoogp.app.n8n.cloud/webhook/';
   var ON_CF = COUNTER === 'cf';
 
