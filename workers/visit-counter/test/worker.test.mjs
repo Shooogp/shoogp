@@ -114,7 +114,38 @@ try {
   wrangler('d1', 'execute', 'shoogp-visits', '--local', '--file=seed.sql', '-y');
   ok('إعادةُ البذرِ لا تُضاعِفُ شيئاً', (await (await stats()).json()).total === t2);
 
-  console.log('\n⑩ المسالكُ غيرُ المعروفة');
+  console.log('\n⑩ قِمْعُ الكتب');
+  const hit = (bk, st, ua = UA) => fetch(BASE + '/book', {
+    method: 'POST', body: JSON.stringify({ book: bk, stage: st }),
+    headers: { 'User-Agent': ua, Origin: ORIGIN, 'Content-Type': 'text/plain' },
+  });
+  ok('نبضةٌ صالحةٌ ⇒ ٢٠٤', (await hit('g4-sci', 'open')).status === 204);
+  await hit('g4-sci', 'open'); await hit('g1-en', 'open');
+  await hit('g4-sci', 'lock'); await hit('g4-sci', 'code');
+  s = await (await stats()).json();
+  ok('مجموعُ open = ٣', s.funnel.open === 3, 'وجِد ' + s.funnel.open);
+  ok('مجموعُ lock = ١', s.funnel.lock === 1, 'وجِد ' + s.funnel.lock);
+  ok('مجموعُ code = ١', s.funnel.code === 1, 'وجِد ' + s.funnel.code);
+  ok('كتابانِ في التفصيل', s.books.length === 2, 'وجِد ' + s.books.length);
+  ok('الأقربُ للشراءِ أوّلاً', s.books[0].book === 'g4-sci', 'وجِد ' + s.books[0].book);
+  ok('تفصيلُ g4-sci صحيح',
+    s.books[0].open === 2 && s.books[0].lock === 1 && s.books[0].code === 1,
+    JSON.stringify(s.books[0]));
+  ok('الكتبُ لا تُغيّرُ عدّادَ الأجهزة', s.today === (await (await stats()).json()).today);
+
+  console.log('\n⑪ الجسمُ لا يُوثَقُ به');
+  ok('مفتاحٌ بمحارفَ غريبةٍ ⇒ ٤٠٠', (await hit('g4 sci!<script>', 'open')).status === 400);
+  ok('مفتاحٌ فارغٌ ⇒ ٤٠٠', (await hit('', 'open')).status === 400);
+  ok('مفتاحٌ أطولُ من ٢٤ ⇒ ٤٠٠', (await hit('g'.repeat(25), 'open')).status === 400);
+  ok('مرحلةٌ مجهولةٌ ⇒ ٤٠٠', (await hit('g4-sci', 'buy')).status === 400);
+  ok('جسمٌ غيرُ JSON ⇒ ٤٠٠', (await fetch(BASE + '/book', {
+    method: 'POST', body: 'مرحبا', headers: { 'User-Agent': UA },
+  })).status === 400);
+  ok('زاحفٌ ⇒ ٢٠٤ بلا عدّ', (await hit('g2-math', 'code', 'Googlebot/2.1')).status === 204);
+  s = await (await stats()).json();
+  ok('ولم يدخلِ الزاحفُ الجدول', s.books.length === 2 && s.funnel.code === 1);
+
+  console.log('\n⑫ المسالكُ غيرُ المعروفة');
   ok('مسلكٌ مجهولٌ ⇒ ٤٠٤', (await fetch(BASE + '/x')).status === 404);
   ok('‏GET على /visit ⇒ ٤٠٤', (await fetch(BASE + '/visit')).status === 404);
 } finally {

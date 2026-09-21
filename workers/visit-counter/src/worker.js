@@ -83,6 +83,7 @@ export default {
     }
 
     if (url.pathname === '/visit' && request.method === 'POST') return visit(request, env);
+    if (url.pathname === '/book' && request.method === 'POST') return book(request, env);
     if (url.pathname === '/stats' && request.method === 'GET') return stats(request, env, url);
     return new Response('not found', { status: 404, headers: cors(request) });
   },
@@ -117,6 +118,41 @@ async function visit(request, env) {
   return new Response(null, { status: 204, headers: cors(request) });
 }
 
+/* ─────────────── قِمْعُ الكتب — وحدةُ الشراءِ الحقيقيّة ───────────────
+   عدّادُ `/visit` يقيسُ **أجهزةً**، والسبّورةُ الواحدةُ تستعملُها ثلاثُ معلّماتٍ في
+   اليومِ فتُحسَبُ واحدة. وهذا المسلكُ يقيسُ **الكتابَ** وهو ما يُشترى فعلاً.
+   الوحدة: (يوم × كتاب × مرحلة)، والعميلُ يحرسُ التكرارَ بـ`localStorage`.
+
+   ⚠️ **ويُتحقَّقُ من المفتاحِ والمرحلةِ هنا لا في العميلِ وحدَه** — الجسمُ يأتي من
+   المتصفّحِ فلا يُوثَقُ به، وبلا تحقّقٍ يمتلئُ الجدولُ بصفوفٍ عشوائيّةٍ تُفسدُ القراءة. */
+const BOOK_RE = /^[a-z0-9][a-z0-9-]{1,23}$/;
+const STAGES = new Set(['open', 'lock', 'code']);
+
+async function book(request, env) {
+  if (BOT.test(request.headers.get('User-Agent') || '')) {
+    return new Response(null, { status: 204, headers: cors(request) });
+  }
+
+  let body;
+  try { body = await request.json(); } catch (e) { body = null; }
+  const key = body && typeof body.book === 'string' ? body.book : '';
+  const stage = body && typeof body.stage === 'string' ? body.stage : '';
+  if (!BOOK_RE.test(key) || !STAGES.has(stage)) {
+    return new Response('bad', { status: 400, headers: cors(request) });
+  }
+
+  const day = muscatDay();
+  try {
+    await env.DB.prepare(
+      'INSERT INTO books (day, book, stage, n) VALUES (?1, ?2, ?3, 1) ' +
+      'ON CONFLICT(day, book, stage) DO UPDATE SET n = n + 1'
+    ).bind(day, key, stage).run();
+  } catch (e) {
+    return new Response('db', { status: 500, headers: cors(request) });
+  }
+  return new Response(null, { status: 204, headers: cors(request) });
+}
+
 /* ───────────────────────── قراءةُ الأرقام ─────────────────────────
    ⚠️ **المفتاحُ سترٌ لا أمان:** هو في جافاسكربتِ الصفحةِ فيراه من فتحَ المصدر —
    وكذلك كان في n8n. ولا خطرَ فيه: أسوأُ ما يُتيحُ قراءةَ أعدادٍ مجمّعةٍ لا بيانات.
@@ -126,6 +162,22 @@ function sameKey(a, b) {
   let diff = 0;
   for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
   return diff === 0;
+}
+
+function funnel(rows) {
+  const byBook = new Map();
+  const total = { open: 0, lock: 0, code: 0 };
+  for (const r of rows) {
+    const n = Number(r.n) || 0;
+    if (!(r.stage in total)) continue;
+    total[r.stage] += n;
+    if (!byBook.has(r.book)) byBook.set(r.book, { book: r.book, open: 0, lock: 0, code: 0 });
+    byBook.get(r.book)[r.stage] += n;
+  }
+  const books = [...byBook.values()].sort(
+    (a, b) => b.code - a.code || b.lock - a.lock || b.open - a.open
+  );
+  return { funnel: total, books };
 }
 
 async function stats(request, env, url) {
@@ -142,10 +194,11 @@ async function stats(request, env, url) {
   const yKey = shiftDay(today, -1);
   const refKey = shiftDay(today, -7);
 
-  const [rowsRes, refRes] = await Promise.all([
+  const [rowsRes, refRes, bookRes] = await Promise.all([
     env.DB.prepare('SELECT day, visits FROM days ORDER BY day DESC').all(),
     env.DB.prepare('SELECT COALESCE(SUM(visits), 0) AS n, COUNT(*) AS c FROM hits WHERE day = ?1 AND hour <= ?2')
       .bind(refKey, hour).first(),
+    env.DB.prepare('SELECT book, stage, n FROM books WHERE day = ?1').bind(today).all(),
   ]);
 
   const rows = (rowsRes.results || []).map(r => ({ day: r.day, visits: Number(r.visits) || 0 }));
@@ -169,6 +222,9 @@ async function stats(request, env, url) {
     refSoFar: Number(refRes && refRes.n) || 0,
     refHasHours: Boolean(refRes && Number(refRes.c) > 0),
     atHour: hour,
+    /* قِمْعُ اليوم: مجموعُ المراحلِ الثلاثِ، وتفصيلُها بالكتابِ مرتَّباً بالأقربِ
+       إلى الشراء (‏`code` ثمّ `lock` ثمّ `open`) — فأعلى السطرِ أنفعُ ما يُقرَأ. */
+    ...funnel(bookRes.results || []),
   };
 
   return new Response(JSON.stringify(body), {

@@ -342,19 +342,29 @@
        سواءً، لا بساعةِ جهازِ المعلّمةِ الخامِ ولا بساعةِ خادمٍ في أوروبا.
      • **جهازُ المالكِ لا يُحسَب** (وضعُ المطوّر)، ولا `file://` ولا `localhost`.
      • لا هويةَ تُرسَل: جسمُ الإشارةِ تاريخُ اليومِ فحسب. */
-  /* ⚙️ **عنوانا الخدمةِ — الموضعُ الوحيدُ الذي يُبدَّلُ عندَ النقلِ إلى Cloudflare.**
-     الـWorker جاهزٌ في `workers/visit-counter/` ويُرجِعُ الشكلَ نفسَه حرفياً، فلا
-     يتغيّرُ في هذا الملفِّ سطرٌ غيرُ هذَين. وخطواتُ النشرِ في
-     `workers/visit-counter/README.md` §الخطوة ٨.
+  /* ⚙️ **مصدرُ العدّادِ — سطرانِ يُبدَّلانِ عندَ النقلِ إلى Cloudflare، لا غير.**
+     الـWorker جاهزٌ في `workers/visit-counter/` ويُرجِعُ شكلَ n8n حرفياً، وخطواتُ
+     النشرِ في `workers/visit-counter/README.md` §الخطوة ٨:
 
-     ⛔ **ولم يُبدَّلا بعدُ عمداً:** عنوانُ الـWorker لا يُعرَفُ قبلَ أوّلِ نشرةٍ
-     (‏`https://shoogp-visits.<نطاقُك>.workers.dev`)، وكتابةُ عنوانٍ مُتخيَّلٍ
-     تُسقِطُ العدّادَ فوراً. فبعدَ النشرِ يُعلَّقُ سطرا n8n ويُفعَّلُ سطرا Cloudflare. */
-  // ── بعدَ نشرِ الـWorker: فعِّلْ هذَين واحذفْ سطرَي n8n أدناه ──
-  // var VISIT_URL = 'https://shoogp-visits.<نطاقُك>.workers.dev/visit';
-  // var STATS_URL = 'https://shoogp-visits.<نطاقُك>.workers.dev/stats';
-  var VISIT_URL = 'https://shoogp.app.n8n.cloud/webhook/shoogp-visit-7c1e';
-  var STATS_URL = 'https://shoogp.app.n8n.cloud/webhook/shoogp-visit-stats-7c1e';
+         var COUNTER = 'cf';
+         var CF_BASE = 'https://shoogp-visits.<نطاقُك>.workers.dev';
+
+     ⛔ **ولم يُبدَّلا بعدُ عمداً:** عنوانُ الـWorker لا يُعرَفُ قبلَ أوّلِ نشرة،
+     وكتابةُ عنوانٍ متخيَّلٍ تُسقِطُ العدّادَ فوراً.
+
+     **ولماذا مفتاحٌ واحدٌ لا عنوانانِ مستقلّان:** قِمْعُ الكتبِ (‏`/book`) لا مقابلَ
+     له في n8n أصلاً، **ولا يُحتمَلُ فيه**: نبضاتُه أضعافُ نبضةِ الزيارةِ فتستنزفُ
+     الرصيدَ المشتركَ مع تفعيلِ الرموز (§CLAUDE.md رصيدُ تنفيذاتِ n8n). فالمفتاحُ
+     الواحدُ يُشعِلُه ويُطفئُه مع المصدرِ **فلا تقعُ حالةٌ نصفُ محوَّلةٍ** يُرسَلُ فيها
+     إلى مصدرٍ لا يفهمُها. */
+  var COUNTER = 'n8n';                                          // ← 'cf' بعدَ النشر
+  var CF_BASE = 'https://shoogp-visits.<نطاقُك>.workers.dev';   // ← عنوانُك الحقيقيّ
+  var N8N_BASE = 'https://shoogp.app.n8n.cloud/webhook/';
+  var ON_CF = COUNTER === 'cf';
+
+  var VISIT_URL = ON_CF ? CF_BASE + '/visit' : N8N_BASE + 'shoogp-visit-7c1e';
+  var STATS_URL = ON_CF ? CF_BASE + '/stats' : N8N_BASE + 'shoogp-visit-stats-7c1e';
+  var BOOK_URL  = ON_CF ? CF_BASE + '/book'  : null;   // ⛔ لا مقابلَ له في n8n
   var VISIT_KEY = 'shoogp-visit-day';
 
   function muscatDay() {
@@ -423,6 +433,47 @@
     } catch (e) {}
   }
   pingVisit();
+
+  /* ═══════════ قِمْعُ الكتب — ما يُقاسُ به الشراءُ فعلاً ═══════════
+     ‏`pingVisit` يعدُّ **أجهزة**، والسبّورةُ الواحدةُ تستعملُها ثلاثُ معلّماتٍ في
+     اليومِ فتُحسَبُ واحدة — فلا يصلحُ لتقديرِ المشتريات. **والكتابُ هو وحدةُ الشراء**:
+     معلّمةٌ تفتحُ العلومَ وأخرى تفتحُ الإنجليزيةَ على اللوحِ نفسِه = فرصتا شراءٍ لا
+     واحدة. فالوحدةُ هنا **(جهاز × كتاب × مرحلة × يوم)**، والجهازُ الواحدُ يُحسَبُ
+     مرّةً لكلِّ كتابٍ يفتحُه — وهو المقصودُ بالضبط.
+
+     وثلاثُ مراحلَ تصنعُ قِمْعاً يضيقُ نحوَ الشراء:
+       `open` — فُتِحَ الكتاب            (الفرصة)
+       `lock` — نُقِرَ درسٌ مقفولٌ فيه    (الاهتمام)
+       `code` — فُتِحَت نافذةُ الرمز      (نيّةُ الشراء — أقربُ ما يُقاسُ إلى بيعة)
+
+     ⚠️ **ويقيسُ الفرصةَ لا البيعَ.** العددُ الحقيقيُّ للمشترياتِ في جداولِ الرموزِ
+     بدرايف، وهذا يُقرأُ **بالنسبةِ إليه**: كم `code` لزمَت لبيعةٍ واحدة. */
+  var BOOK_PREFIX = 'shoogp-bk-';
+
+  function pingBook(book, stage) {
+    if (!BOOK_URL) return;                 // مصدرُ n8n لا يحتملُها (§مصدرُ العدّاد)
+    if (devMode) return;
+    if (location.protocol === 'file:') return;
+    if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) return;
+    if (!book || !stage) return;
+
+    var day = muscatDay(), slot = BOOK_PREFIX + stage + '-' + book, last = null;
+    try { last = localStorage.getItem(slot); } catch (e) {}
+    if (last === day) return;
+
+    /* الجسمُ نصٌّ خامٌّ لا `application/json` — فيبقى الطلبُ «بسيطاً» بلا preflight،
+       وإلا سبقَ كلَّ نبضةٍ طلبُ OPTIONS فتضاعفَ العددُ بلا فائدة. */
+    var body = JSON.stringify({ book: book, stage: stage });
+    var mark = function () { try { localStorage.setItem(slot, day); } catch (e) {} };
+    try {
+      if (navigator.sendBeacon) {
+        if (navigator.sendBeacon(BOOK_URL, new Blob([body], { type: 'text/plain' }))) mark();
+        return;
+      }
+      fetch(BOOK_URL, { method: 'POST', body: body, mode: 'no-cors', keepalive: true })
+        .then(mark).catch(function () {});
+    } catch (e) {}
+  }
 
   /* الأرقامُ بالهنديةِ كسائرِ المنصّة */
   function arDigits(n) { return String(n).replace(/[0-9]/g, function (d) { return '٠١٢٣٤٥٦٧٨٩'[+d]; }); }
@@ -727,6 +778,8 @@
 
   /* النافذةُ على مستوى **الكتاب**: لا وسيطَ وحدةٍ ولا عنوانَ وحدة. */
   function ask(bookKey) {
+    /* فُتِحَت نافذةُ الرمز — أضيقُ مراحلِ القِمْعِ وأقربُها إلى بيعةٍ فعليّة. */
+    pingBook(bookKey, 'code');
     build();
     pending = { bookKey: bookKey };
 
@@ -840,6 +893,9 @@
   function nudge() {
     var frame = document.querySelector('.paylock-frame');
     if (!frame) return;
+    /* نُقِرَ درسٌ مقفول — مرحلةُ «الاهتمام» في قِمْعِ الكتب. وبعدَ حارسِ `frame`
+       عمداً: بلا إطارِ قفلٍ في الشاشةِ لم يقعْ نقرٌ على مقفولٍ أصلاً. */
+    pingBook(window.currentBook, 'lock');
     var btn = frame.querySelector('.paylock-btn');
     // إعادةُ التشغيلِ من الصفرِ لو نُقِرَ درسٌ آخرُ أثناءَ الحركة
     clearTimeout(nudgeTimer);
@@ -955,6 +1011,11 @@
           + (sameHour !== null ? ' ↔ ' + arDigits(sameHour) : ''), 'أمس ' + arDigits(s.yesterday)];
         if (a.avg !== null) line.push('م٧ ' + arDigits(a.avg));
         line.push('الإجمالي ' + arDigits(s.total));
+        /* قِمْعُ اليوم — يظهرُ متى وُجدَ مصدرٌ يُرجِعُه (Cloudflare)، ويغيبُ مع n8n. */
+        var f = s.funnel;
+        if (f && (f.open || f.lock || f.code)) {
+          line.push('📚 ' + arDigits(f.open) + ' ← ' + arDigits(f.lock) + ' ← ' + arDigits(f.code));
+        }
         if (a.suspect.length) line.push('⚠');
         devStats.textContent = line.join(' · ');
 
@@ -976,6 +1037,16 @@
         if (a.suspect.length) {
           tip.push('⚠️ أيّامٌ ناقصةٌ محتملةٌ لا هبوطٌ حقيقيّ (نفادُ رصيدِ تنفيذاتِ n8n أو عطلُ شبكة): '
             + a.suspect.join(' · '));
+        }
+        if (f && (f.open || f.lock || f.code)) {
+          tip.push('📚 قِمْعُ اليومِ بالكتاب — كلُّ كتابٍ يُحسَبُ مرّةً لكلِّ جهازٍ في اليوم:');
+          tip.push('   فُتِحَ ' + arDigits(f.open) + ' ← بلغَ المقفولَ ' + arDigits(f.lock)
+            + ' ← فتحَ نافذةَ الرمزِ ' + arDigits(f.code)
+            + (f.open ? '  (نيّةُ شراءٍ ' + arDigits(Math.round(f.code / f.open * 100)) + '٪)' : ''));
+          (s.books || []).slice(0, 8).forEach(function (b) {
+            tip.push('   • ' + b.book + ': ' + arDigits(b.open) + ' ← ' + arDigits(b.lock) + ' ← ' + arDigits(b.code));
+          });
+          tip.push('   ⚠️ هذا يقيسُ **الفرصةَ لا البيعَ** — العددُ الحقيقيُّ في جداولِ الرموزِ بدرايف.');
         }
         if (s.since) tip.push('منذ ' + s.since);
         devStats.title = tip.join('\n');
@@ -1057,6 +1128,9 @@
     guardLesson:  guardLesson,
     ask:          ask,
     nudge:        nudge,
+    /* يُنادَى من `openBook` في `js/app.js` (مرحلةُ «الفرصة») — والمرحلتانِ
+       الأخريانِ (`lock` و`code`) تُنادَيانِ داخلَ هذا الملفِّ من مصدرِهما. */
+    countBook:    pingBook,
     close:        close,
     normalize:    normalize,
     isLockOff:    isLockOff,

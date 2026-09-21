@@ -190,6 +190,10 @@ let currentBook=null;
 let currentBookColor='';   // صنف لون بطاقة الكتاب (bk-*) لتلوين بطاقات الأسئلة بهويته
 function openBook(key){
   currentBook=key;
+  /* قِمْعُ الكتب — مرحلةُ «الفرصة». الكتابُ وحدةُ الشراءِ لا الجهاز: لوحٌ واحدٌ
+     تفتحُ عليه معلّمتانِ مادّتَين = فرصتا شراء. القاعدةُ في `js/unlock.js`
+     §قِمْعُ الكتب، وهي تحرسُ التكرارَ بنفسِها (مرّةٌ لكلِّ كتابٍ في اليوم). */
+  if(window.ShoogpLock && ShoogpLock.countBook) ShoogpLock.countBook(key,'open');
   const idx=DATA.index[key];
   // ابحث عن الكتاب لتطبيق ثيمه ولونه
   const bk=DATA.terms[currentTerm][currentGrade].find(b=>b.key===key);
