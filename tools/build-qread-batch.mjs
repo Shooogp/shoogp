@@ -82,7 +82,18 @@ function waslaMode(t){
 }
 export function liaison(t){
   const w = t.split(' ');
-  if (w.some((x, i) => i && AL_WORD.test(x) && SHORT.test(w[i - 1]) && /\u0629[\u064B-\u0652\u0651]*$/.test(w[i - 1]))) return waslaMode(t);
+  /* أنماطُ الخطرِ التي تُحيلُ النصَّ كلَّه إلى ألفِ الوصل (قرار المالك ٢٠٢٦-٠٩-٢٣ — تحوّطاً بعدَ سماعِ
+     خطأِ التاءِ المربوطة): آخرُ الكلمةِ السابقةِ تاءٌ مربوطةٌ أو همزةٌ أو هاءٌ أو لامٌ أو ياءٌ أو واو،
+     أو حرفٌ يماثلُ الحرفَ الذي سيُلصَقُ به («أَكْمِلِلْ» · «تَحْتَاجُهُلْ» · «أَجْزَاءِلْ»). */
+  const RISK = '\u0629\u0621\u0623\u0624\u0626\u0647\u0644\u064A\u0648';
+  const risky = w.some((x, i) => {
+    if (!i || !AL_WORD.test(x) || !SHORT.test(w[i - 1])) return false;
+    const pl = w[i - 1].replace(/[\u064B-\u0652\u0670]/g, '').slice(-1);
+    const nx = x.replace(/[\u064B-\u0652\u0670]/g, '').slice(2, 3);
+    const joined = (SUN.includes(nx) && /^\u0627\u0644[\u064B-\u0652]*\u0651|^\u0627\u0644\u0652?.[\u064B-\u0652]*\u0651/.test(x)) ? nx : '\u0644';
+    return RISK.includes(pl) || pl === joined;
+  });
+  if (risky) return waslaMode(t);
   for (let i = 1; i < w.length; i++) {
     // «الَّذي/الَّتي» بلامٍ واحدةٍ مشدّدة: تُعامَلُ لامُها معاملةَ الحرفِ الشمسيّ
     const rel = /^\u0627\u0644([\u064B-\u0652]*\u0651[\u064B-\u0652]*)(.*)$/.exec(w[i]);
