@@ -1,0 +1,1857 @@
+{
+ "batchId": "2026-09-23-audit-a1",
+ "checkedAt": "2026-09-23T14:21:51.212Z",
+ "total": 180,
+ "flagged": 15,
+ "items": [
+  {
+   "name": "qr-3f05f454",
+   "text": "Choose the greeting word.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-6f1b6f6c",
+   "text": "We say 'Hello' when we meet a friend.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-c8d56f91",
+   "text": "Match each greeting to its answer.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-a0071590",
+   "text": "Complete the sentence.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-345f45ea",
+   "text": "Put the greeting dialogue in the correct order.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-90e0a791",
+   "text": "Find the matching pairs.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-6fd65428",
+   "text": "Which word means a female child?",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-63f6475b",
+   "text": "A cat is a girl.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-681a82f8",
+   "text": "Match each word to its first letter.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-cda582b9",
+   "text": "Listen, then click on the cat.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-eddc2b14",
+   "text": "Sort each word.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-2f3cecca",
+   "text": "Find the pairs: each word and its first letter.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-ab4717ea",
+   "text": "Which word starts with the letter 's'?",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "'s'",
+      "heard": "'as'",
+      "severity": "major",
+      "note": "The letter 's' was mispronounced as 'as'."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-509175db",
+   "text": "The word 'cat' starts with the letter 's'.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-4fed1d72",
+   "text": "Match each letter to the word that starts with it.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-15efef24",
+   "text": "Listen to the sound, then click the matching letter.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-414c1602",
+   "text": "Tap each letter to hear its sound, then blend and choose the word.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-afb9c023",
+   "text": "Listen, then start at the green dot and trace the letter s.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-aa13bbc1",
+   "text": "Which word means 'father'?",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-253e7d15",
+   "text": "'Mum' means mother.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-a2f2be93",
+   "text": "Match each word to its meaning.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-84ce335f",
+   "text": "Listen, then put the dialogue in the correct order.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-b97cdec9",
+   "text": "Color the family words red. Color the greeting words blue.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": null,
+    "noAudio": true
+   }
+  },
+  {
+   "name": "qr-8023afd0",
+   "text": "Complete: This is my … (father).",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-154ed3b4",
+   "text": "'This is my sister' means the person is a girl.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-100d87d7",
+   "text": "Listen, then match each word to its opposite.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-9e94664d",
+   "text": "Put the dialogue in the correct order.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-2910e44b",
+   "text": "Click the word that is NOT a family member.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-cc483b5b",
+   "text": "Which word means 'a person you like and know well'?",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-b169392a",
+   "text": "'Brother' is a family word.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-94cd1b34",
+   "text": "Listen and tick the greeting word.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-f83a5d8a",
+   "text": "'Sister' is a girl in the family.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-e4719d8f",
+   "text": "Listen, then start at the green dot and trace the capital letter S.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-012736af",
+   "text": "Listen and tick the correct word.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-17b49eb5",
+   "text": "A friend is an animal.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-932c6720",
+   "text": "Match each question or greeting to its answer.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-c16ec603",
+   "text": "Listen, then click on the boy.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-cd0310bb",
+   "text": "Which one do you use to rub out a mistake?",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-7dbdc0ad",
+   "text": "You write with a pen.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-6943e332",
+   "text": "Match each thing to what you use it for.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-75c0c1a1",
+   "text": "Listen, then click on the ruler.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-378baaf8",
+   "text": "Sort each thing.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-3c29bd81",
+   "text": "Listen, then choose the word that starts with the letter 'a'.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-44849384",
+   "text": "The word 'bag' has the 'a' sound in the middle.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "'a'",
+      "heard": "ah",
+      "severity": "major",
+      "note": "Pronounced as 'ah' (/ɑː/) instead of the short 'a' sound (/æ/) or the letter name 'ay' (/eɪ/)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-06e37fa9",
+   "text": "Sort each word by its first letter.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-2fe61641",
+   "text": "Listen, then start at the green dot and trace the letter a.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-6d10ac15",
+   "text": "Which one do you colour with?",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-93d7ad1e",
+   "text": "A pencil case holds pens and pencils.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-b987c447",
+   "text": "Match each thing to what you do with it.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-e48f0ff2",
+   "text": "Listen, then put the story in the correct order.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-33a90f93",
+   "text": "Color the writing things blue. Color the carrying things red.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-b3c20751",
+   "text": "Which sentence means you have a pen?",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-5efdbfd6",
+   "text": "'I haven't got a ruler' means you do not have a ruler.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-90fdccaa",
+   "text": "Match each sentence to its meaning.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-92f128f8",
+   "text": "Click the thing you do NOT write with.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-883f3fd1",
+   "text": "What do you carry your books in?",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-03d63121",
+   "text": "You can put a pencil case in your school bag.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-0293e9bf",
+   "text": "Put the project steps in the correct order.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-b7aaf3d0",
+   "text": "Listen and choose the word you hear.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-50ca1e6b",
+   "text": "'I've got a pen' means you have a pen.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-e44f0b4d",
+   "text": "Listen, then start at the green dot and trace the capital letter A.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-b517b714",
+   "text": "Which word is a school thing?",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-84616806",
+   "text": "A ruler helps you draw a straight line.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-224e47b8",
+   "text": "Listen, then click on the book.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-214254b6",
+   "text": "Which word means the number 3?",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-4357437b",
+   "text": "'Green' is a colour.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-883154d1",
+   "text": "Listen, then match each colour to what it describes.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-85d9cb95",
+   "text": "Sort each number word.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-915d90ff",
+   "text": "Listen and say, then put the numbers in counting order.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-b245eaf5",
+   "text": "Color the small numbers (1-2) red. Color the big numbers (5-6) blue.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": null,
+    "noAudio": true
+   }
+  },
+  {
+   "name": "qr-041d428c",
+   "text": "Listen and circle the colour word.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-e0d00a34",
+   "text": "'Six' comes after 'five'.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-5808a5bd",
+   "text": "Match each word to its number.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-8079ceac",
+   "text": "Sort each colour.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-986eb2d4",
+   "text": "Which one do you walk through to enter the classroom?",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-a2fde14f",
+   "text": "The teacher helps you learn.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-3ec0cc57",
+   "text": "Match each one to what you do with it.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-ffe3ced7",
+   "text": "Listen, then click on the window.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-ecbbe532",
+   "text": "Listen, then choose the word that starts with the letter 't'.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "t",
+      "heard": "at",
+      "severity": "major",
+      "note": "The letter 't' was mispronounced as 'at'."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-25a27bcf",
+   "text": "The word 'cat' ends with the letter 't'.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "t",
+      "heard": "at",
+      "severity": "major",
+      "note": "The letter 't' was mispronounced as 'at'."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-0db20558",
+   "text": "Listen, then start at the green dot and trace the letter t.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-933fdf4a",
+   "text": "Which one do you sit on?",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-ca8ddbb1",
+   "text": "You write on the floor.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-b7ab7bae",
+   "text": "Listen, then click on the chair.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-af76a699",
+   "text": "Color the furniture green. Color the parts of the room blue.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-91d1a86c",
+   "text": "The book is on top of the desk. Complete: The book is … the desk.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": null,
+    "noAudio": true
+   }
+  },
+  {
+   "name": "qr-628d2de4",
+   "text": "'Under' means below something.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-17317cf0",
+   "text": "Drag each word to the right picture.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-5bc36ee6",
+   "text": "Click the book that is UNDER the desk.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-c4832afc",
+   "text": "Click the word that is NOT a place word.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-cc140dd5",
+   "text": "What do you put your pens in to keep your desk tidy?",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-edf302d5",
+   "text": "A tidy desk helps you find your things.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-22c134a2",
+   "text": "'What's this? It's a desk.' is a correct answer.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-e27e665c",
+   "text": "Listen, then start at the green dot and trace the capital letter T.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-9be067b7",
+   "text": "Which word is a classroom thing?",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-24cc5a93",
+   "text": "You look through a window.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-df33554f",
+   "text": "Listen, then click on the door.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-04676be4",
+   "text": "Which toy is round and you can throw it?",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-b7dd1f0b",
+   "text": "A teddy is a soft toy bear.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-646a68ee",
+   "text": "Match each toy to what it is like.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-d7819d10",
+   "text": "Listen, then click on the ball.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-d6e777f8",
+   "text": "Sort each toy.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-59354376",
+   "text": "Listen, then choose the word that starts with the letter 'p'.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "p",
+      "heard": "app",
+      "severity": "major",
+      "note": "The letter 'p' was mispronounced as 'app'."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-b031692e",
+   "text": "The word 'top' ends with the letter 'p'.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-adbbfb94",
+   "text": "Listen, then start at the green dot and trace the letter p.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-a6cb0ea1",
+   "text": "Which toy flies in the sky?",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-a344a9d3",
+   "text": "'What colour is it?' asks about the colour of a thing.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-651ebf80",
+   "text": "Match each toy to where it goes.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-46b98c72",
+   "text": "Color the ball red. Color the car blue. Color the train green. Color the plane orange.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": null,
+    "noAudio": true
+   }
+  },
+  {
+   "name": "qr-d220e133",
+   "text": "Which answer fits: 'What's your favourite toy?'",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-cc9315a2",
+   "text": "Your favourite toy is the toy you like best.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-aa0aa9f4",
+   "text": "Match each question to its answer.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-83a7ce3f",
+   "text": "Listen, then click on the train.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-78c1d614",
+   "text": "Read the clues, then complete the sentence.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-1881f7d1",
+   "text": "Click the word that is NOT a toy.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-c9c9682c",
+   "text": "Where do you keep your toys?",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-0f19ab2a",
+   "text": "Sharing your toys with a friend is kind.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-be0db7d5",
+   "text": "'It's my teddy' answers the question 'What's your favourite toy?'",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-42747020",
+   "text": "Listen, then start at the green dot and trace the capital letter P.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-9bfe4d0a",
+   "text": "Which word is a toy?",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-b58dbdae",
+   "text": "A plane flies in the sky.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-bae30697",
+   "text": "Listen, then click on the plane.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-43dcc08e",
+   "text": "Listen, then choose the shape with four equal sides.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-9efdaea2",
+   "text": "A triangle has three sides.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-dd16cb22",
+   "text": "Match each shape to the number of its sides.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-00a45424",
+   "text": "Put the shapes in order, from the fewest sides to the most sides.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": null,
+    "noAudio": true
+   }
+  },
+  {
+   "name": "qr-1feef177",
+   "text": "Sort each shape.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-4a0c2ec5",
+   "text": "Color the square blue. Color the circle red. Color the triangle green. Color the rectangle orange.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": null,
+    "noAudio": true
+   }
+  },
+  {
+   "name": "qr-b8077bc5",
+   "text": "Complete: What are these? They're ….",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-ceea3b7a",
+   "text": "'These' means more than one thing.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-2fc41137",
+   "text": "Match one thing to more than one.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-85939d5d",
+   "text": "النَّبَاتَاتُ وَالْحَيَوَانَاتُ كَائِنَاتٌ حَيَّةْ.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-e213bd90",
+   "text": "أَيُّ هَذِهِ الْأَشْيَاءِ غَيْرُ حَيّْ؟",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-99650054",
+   "text": "أَكْمِلِ الْجُمْلَةَ بِسَحْبِ الْكَلِمَةِ الْمُنَاسِبَةْ.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-10a4c0f8",
+   "text": "اضْغَطْ عَلَى الْكَائِنِ الْحَيِّ فِي الصُّورَةْ.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-6070d754",
+   "text": "صَنِّفْ كُلَّ شَيْءٍ إِلَى كَائِنٍ حَيٍّ أَوْ شَيْءٍ غَيْرِ حَيّْ.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-92dda353",
+   "text": "أَيُّهَا لَا يَنْتَمِي؟",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-41c2db6d",
+   "text": "تَحْتَاجُ جَمِيعُ الْكَائِنَاتِ الْحَيَّةِ إِلَى مَكَانٍ تَعِيشُ فِيهْ.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": null,
+    "noAudio": true
+   }
+  },
+  {
+   "name": "qr-2bdb9b49",
+   "text": "مَاذَا تُوَفِّرُ الْبِيئَةُ الْمَحَلِّيَّةُ لِلْكَائِنِ الْحَيّْ؟",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-bc0e9f21",
+   "text": "أَكْمِلْ مَا تُوَفِّرُهُ الْبِيئَةُ لِلْكَائِنِ الْحَيِّ بِسَحْبِ الْكَلِمَاتْ.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-7e795fb8",
+   "text": "صِلْ كُلَّ حَيَوَانٍ بِالْمَكَانِ الَّذِي يَعِيشُ فِيهْ.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-71ae9c7e",
+   "text": "صَنِّفِ الْحَيَوَانَاتِ حَسَبَ الْمَكَانِ الَّذِي تَعِيشُ فِيهْ.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-354ffb39",
+   "text": "أَيُّهَا لَا يَعِيشُ فِي الْمَاءْ؟",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-f7600632",
+   "text": "يَكْبُرُ صَغِيرُ الْإِنْسَانِ لِيُصْبِحَ بَالِغَا.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-f214e311",
+   "text": "مَاذَا يُسَمَّى صَغِيرُ الْأَسَدْ؟",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-1aaa3b99",
+   "text": "أَكْمِلِ الْجُمْلَتَيْنِ بِسَحْبِ الْكَلِمَةِ الْمُنَاسِبَةْ.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-1fb7fccd",
+   "text": "صِلْ كُلَّ حَيَوَانٍ بِصَغِيرِهْ.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-630c7056",
+   "text": "رَتِّبْ مَرَاحِلَ نُمُوِّ الْإِنْسَانِ مِنَ الْأَصْغَرِ إِلَى الْأَكْبَرْ.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-ff2b0913",
+   "text": "أَيُّ صَغِيرٍ لَا يُشْبِهُ أَبَاهُ كَثِيرَا؟",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-19d4d7b8",
+   "text": "شُرْبُ الْكَثِيرِ مِنَ الْمَاءِ أَمْرٌ صِحِّيّْ.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-b05b8db9",
+   "text": "أَيُّ هَذِهِ الْأَطْعِمَةِ صِحِّيّْ؟",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-971fec2f",
+   "text": "صِلْ كُلَّ نَوْعٍ بِمِثَالِهْ.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-de92c1ff",
+   "text": "أَكْمِلْ مَا آكُلُهُ لِأَنْمُوَ بِصِحَّةٍ بِسَحْبِ الْكَلِمَاتْ.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "أَكْمِلْ",
+      "heard": "أَكْمَلَ",
+      "severity": "major",
+      "note": "Pronounced as the past tense verb 'أَكْمَلَ' (akmala) instead of the imperative 'أَكْمِلْ' (akmil)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-32fbc315",
+   "text": "صَنِّفِ الْأَطْعِمَةَ وَالْمَشْرُوبَاتِ إِلَى صِحِّيٍّ وَغَيْرِ صِحِّيّْ.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-e81e7380",
+   "text": "أَيُّهَا لَيْسَ طَعَامًا صِحِّيَّا؟",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-f0664849",
+   "text": "أَيُّ هَذِهِ كَائِنٌ حَيّْ؟",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-c4dd935a",
+   "text": "كُلُّ كَائِنٍ حَيٍّ يَحْتَاجُ إِلَى مَكَانٍ يَعِيشُ فِيهْ.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-a67650a0",
+   "text": "أَكْمِلِ الْجُمْلَةَ بِسَحْبِ الْكَلِمَتَيْنِ الْمُنَاسِبَتَيْنْ.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-bd953362",
+   "text": "اضْغَطْ عَلَى الشَّيْءِ غَيْرِ الْحَيِّ الَّذِي يَسِيرُ عَلَى عَجَلَاتْ.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-09aa6b30",
+   "text": "رَتِّبْ مَرَاحِلَ نُمُوِّ الدَّجَاجَةِ مِنَ الْبِدَايَةِ إِلَى النِّهَايَةْ.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-93400d86",
+   "text": "اقْلِبْ بِطَاقَتَيْنِ فِي كُلِّ دَوْرٍ لِتَرْبِطَ كُلَّ حَيَوَانٍ بِصَغِيرِهْ.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "اقْلِبْ",
+      "heard": "أُقَلِّبُ",
+      "severity": "major",
+      "note": "The speaker pronounced the word as the present tense verb 'أُقَلِّبُ' (I turn over) instead of the imperative 'اقْلِبْ' (turn over)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-c547965c",
+   "text": "لِلنَّبَاتِ جُذُورٌ وَسَاقٌ وَأَجْنِحَةْ.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-e6b6b6cc",
+   "text": "أَيُّ أَجْزَاءِ النَّبَاتِ يَنْمُو تَحْتَ التُّرَابْ؟",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-2eafe368",
+   "text": "أَكْمِلْ أَجْزَاءَ النَّبَاتِ بِسَحْبِ الْكَلِمَاتْ.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-17ebcf87",
+   "text": "اسْحَبِ اسْمَ كُلِّ جُزْءٍ إِلَى مَكَانِهِ فِي النَّبْتَةْ.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-cde483a6",
+   "text": "رَتِّبْ أَجْزَاءَ النَّبَاتِ مِنَ الْأَسْفَلِ إِلَى الْأَعْلَى.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-5fac86fa",
+   "text": "أَيُّهَا لَيْسَ جُزْءًا مِنَ النَّبَاتْ؟",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-82403c4e",
+   "text": "تَحْتَاجُ الْبُذُورُ إِلَى الْمِلْحِ لِتَنْمُو.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-aaed2fb2",
+   "text": "مَاذَا تُصْبِحُ الْبَذْرَةُ عِنْدَمَا تَنْمُو؟",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-cb2d075c",
+   "text": "أَكْمِلْ تَرْتِيبَ نُمُوِّ الْبَذْرَةِ بِسَحْبِ الْكَلِمَاتْ.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "أَكْمِلْ",
+      "heard": "أَكْمَلَ",
+      "severity": "major",
+      "note": "Pronounced as past tense 'akmala' instead of imperative 'akmil'."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-1535c40c",
+   "text": "اضْغَطْ عَلَى الْبَذْرَةِ الَّتِي نَمَتْ وَأَصْبَحَتْ نَبْتَةْ.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-25a0a1a2",
+   "text": "رَتِّبْ مَرَاحِلَ نُمُوِّ الْبَذْرَةِ مِنَ الْبِدَايَةِ إِلَى النِّهَايَةْ.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-e649f9f0",
+   "text": "أَيُّهَا لَا تَحْتَاجُهُ الْبَذْرَةُ لِتَنْمُو؟",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-09f215de",
+   "text": "تَنْمُو النَّبَاتَاتُ فِي الظَّلَامِ أَفْضَلَ مِنَ الضَّوْءْ.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-69eaa583",
+   "text": "إِلَى أَيِّ جِهَةٍ تَنْمُو النَّبَاتَاتْ؟",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-a98bbca7",
+   "text": "نَبْتَةٌ فِي الضَّوْءِ وَأُخْرَى دَاخِلَ صُنْدُوقٍ مُظْلِمْ. اضْغَطْ عَلَى النَّبْتَةِ الَّتِي سَتَنْمُو أَفْضَلْ.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-116b6762",
+   "text": "صَنِّفِ الْأَمَاكِنْ: مُضِيئَةٌ تَنْمُو فِيهَا النَّبَاتَاتُ أَمْ مُظْلِمَةٌ لَا تَنْمُو فِيهَا جَيِّدَا.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-0a6bfcdb",
+   "text": "أَيُّهَا لَا يُعْطِي النَّبْتَةَ ضَوْءَا؟",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-cc26707d",
+   "text": "تَحْتَاجُ الْبَذْرَةُ إِلَى الْمَاءِ لِتَنْمُوَ وَتُصْبِحَ نَبْتَةْ.",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-7f5b2be3",
+   "text": "مَاذَا يَحْدُثُ لِلنَّبْتَةِ إِذَا بَقِيَتْ فِي الظَّلَامْ؟",
+   "batchId": "2026-09-23-audit-a1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  }
+ ]
+}
