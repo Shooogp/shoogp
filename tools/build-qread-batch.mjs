@@ -6,10 +6,10 @@
       `audio/qread/` — فتشغيلُه مرّةً بعدَ مرّةٍ يُكمِلُ الناقصَ ولا يُكرِّرُ المولَّد.
       `--limit` يقطعُ الدفعةَ (سيرُ n8n يُرسِلُ عنصراً كلَّ ١٥ ثانية، فَـ٨٠ ≈ ٢٠ دقيقة)،
       و`--sample` يأخذُ عيّنةً موزّعةً على الكتبِ للتجربة.
-      `--redo qr-a,qr-b` يعيدُ توليدَ مقاطعَ موجودة (باسمٍ ملحَقٍ في فرعِ الاستلامِ لأنّ الأصلَ
-      موجودٌ هناك؛ ويُنسَخُ عندَ الاستلامِ إلى اسمِه الأصليّ).
+      `--redo qr-a,qr-b` يعيدُ توليدَ مقاطعَ موجودة.
       **ولا يدخلُ الدفعةَ نصٌّ عربيٌّ غيرُ مشكولٍ تامّاً** (‏`toneProblem`) — قرارُ المالك
       ٢٠٢٦-٠٩-٢٣: داريجات لا يضبطُ النطقَ بلا تشكيل. فيُكتَبُ في `tools/qread-spoken.json` أوّلاً.
+   ‏①ب `node tools/build-qread-batch.mjs import <batchId>` — يستلمُ الدفعةَ من فرعِ `graphics-inbox`.
    ‏② `node tools/build-qread-batch.mjs manifest`
       يكتبُ `js/qread.js` بقائمةِ البصماتِ التي لها ملفٌّ فعلاً — فلا يظهرُ زرٌّ بلا صوت.
    ‏③ `node tools/build-qread-batch.mjs list`   يطبعُ النصَّ المنطوقَ لكلِّ سؤالٍ (للمراجعة).
@@ -22,6 +22,7 @@
    قرآنياً (قرار المالك)، وتُكتَبُ ﷺ صلاةً كاملة، وتُحذَفُ الرموزُ التعبيريةُ (عدُّها هو السؤال). */
 import fs from 'node:fs';
 import vm from 'node:vm';
+import { execSync } from 'node:child_process';
 
 const ROOT = new URL('..', import.meta.url).pathname;
 const GRADE = 'g1-';
@@ -137,6 +138,10 @@ function loadAll(){
   return [...out.values()];
 }
 
+/* لاحقةُ الدفعةِ على اسمِ الملفِّ في فرعِ الاستلام: سيرُ n8n يُنشئُ الملفَّ ولا يستبدلُه، فإعادةُ
+   توليدِ مقطعٍ موجودٍ تفشلُ بلا لاحقة. ويُنزَعُ عندَ الاستلامِ (`import`). */
+const tag = id => String(id).replace(/[^a-z0-9]+/gi, '').slice(-10);
+
 const have = () => new Set(fs.existsSync(ROOT + DIR)
   ? fs.readdirSync(ROOT + DIR).filter(f => f.endsWith('.mp3')).map(f => f.slice(0, -4)) : []);
 
@@ -173,9 +178,18 @@ if (cmd === 'list') {
   const P = ROOT + 'tools/audio-batch.json';
   const old = JSON.parse(fs.readFileSync(P, 'utf8'));
   fs.writeFileSync(P, JSON.stringify({ _readme: old._readme, batchId, voice: 'حطاب',
-    items: items.map(({ name, text }) => ({ name: redo ? name + '--' + batchId.slice(-6) : name, text })) }, null, 1) + '\n');
+    items: items.map(({ name, text }) => ({ name: name + '--' + tag(batchId), text })) }, null, 1) + '\n');
   const left = loadAll().filter(it => !done.has(it.name)).length;
   console.log(`tools/audio-batch.json: ${items.length} عنصراً · الباقي بلا صوت قبلَ هذه الدفعة: ${left}`);
+} else if (cmd === 'import') {       // ينقلُ ملفّاتِ دفعةٍ من فرعِ الاستلامِ إلى audio/qread/ ثمّ يبني السِّجِلّ
+  const t = tag(args[0]); if (!args[0]) throw new Error('batchId مطلوب');
+  const sh = c => execSync(c, { cwd: ROOT, encoding: 'buffer', maxBuffer: 1 << 28 });
+  sh('git fetch -q origin +graphics-inbox:refs/remotes/origin/graphics-inbox');
+  const files = sh('git ls-tree --name-only origin/graphics-inbox audio-inbox/').toString().split('\n')
+    .filter(f => f.endsWith(`--${t}.mp3`));
+  fs.mkdirSync(ROOT + DIR, { recursive: true });
+  for (const f of files) fs.writeFileSync(`${ROOT}${DIR}/${f.slice(12, -(t.length + 6))}.mp3`, sh(`git show origin/graphics-inbox:${f}`));
+  console.log(`استُلِمَ ${files.length} ملفّاً من الدفعة ${args[0]}`);
 } else if (cmd === 'check') {        // فحصُ ملفِّ تشكيلٍ {name: text} قبلَ دمجِه
   const map = JSON.parse(fs.readFileSync(args[0], 'utf8'));
   let n = 0;

@@ -22,20 +22,328 @@
   "⚠️ **وحدُّ المعدَّلِ خمسةُ طلباتٍ في الدقيقة** (‏`x-ratelimit-limit: 5`)، فالعقدةُ",
   "تُرسِلُ عنصراً واحداً كلَّ ١٥ ثانية."
  ],
- "batchId": "2026-09-23-qread-wulida",
+ "batchId": "2026-09-23-qread-b01",
  "voice": "حطاب",
  "items": [
   {
-   "name": "qr-ecf3de73--w1",
-   "text": "أَيْنَ وُلِدَنْ نَبِيُّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ؟"
+   "name": "qr-3f05f454--23qreadb01",
+   "text": "Choose the greeting word."
   },
   {
-   "name": "qr-ecf3de73--w2",
-   "text": "أَيْنَ وُلِدَ نَبِيُّنا مُحَمَّدٌ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ؟"
+   "name": "qr-6f1b6f6c--23qreadb01",
+   "text": "We say 'Hello' when we meet a friend."
   },
   {
-   "name": "qr-ecf3de73--w3",
-   "text": "أَيْنَ كانَ مَوْلِدُ النَّبِيِّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ؟"
+   "name": "qr-c8d56f91--23qreadb01",
+   "text": "Match each greeting to its answer."
+  },
+  {
+   "name": "qr-a0071590--23qreadb01",
+   "text": "Complete the sentence."
+  },
+  {
+   "name": "qr-345f45ea--23qreadb01",
+   "text": "Put the greeting dialogue in the correct order."
+  },
+  {
+   "name": "qr-90e0a791--23qreadb01",
+   "text": "Find the matching pairs."
+  },
+  {
+   "name": "qr-6fd65428--23qreadb01",
+   "text": "Which word means a female child?"
+  },
+  {
+   "name": "qr-63f6475b--23qreadb01",
+   "text": "A cat is a girl."
+  },
+  {
+   "name": "qr-681a82f8--23qreadb01",
+   "text": "Match each word to its first letter."
+  },
+  {
+   "name": "qr-cda582b9--23qreadb01",
+   "text": "Listen, then click on the cat."
+  },
+  {
+   "name": "qr-eddc2b14--23qreadb01",
+   "text": "Sort each word."
+  },
+  {
+   "name": "qr-2f3cecca--23qreadb01",
+   "text": "Find the pairs: each word and its first letter."
+  },
+  {
+   "name": "qr-ab4717ea--23qreadb01",
+   "text": "Which word starts with the letter 's'?"
+  },
+  {
+   "name": "qr-509175db--23qreadb01",
+   "text": "The word 'cat' starts with the letter 's'."
+  },
+  {
+   "name": "qr-4fed1d72--23qreadb01",
+   "text": "Match each letter to the word that starts with it."
+  },
+  {
+   "name": "qr-15efef24--23qreadb01",
+   "text": "Listen to the sound, then click the matching letter."
+  },
+  {
+   "name": "qr-414c1602--23qreadb01",
+   "text": "Tap each letter to hear its sound, then blend and choose the word."
+  },
+  {
+   "name": "qr-afb9c023--23qreadb01",
+   "text": "Listen, then start at the green dot and trace the letter s."
+  },
+  {
+   "name": "qr-aa13bbc1--23qreadb01",
+   "text": "Which word means 'father'?"
+  },
+  {
+   "name": "qr-253e7d15--23qreadb01",
+   "text": "'Mum' means mother."
+  },
+  {
+   "name": "qr-a2f2be93--23qreadb01",
+   "text": "Match each word to its meaning."
+  },
+  {
+   "name": "qr-84ce335f--23qreadb01",
+   "text": "Listen, then put the dialogue in the correct order."
+  },
+  {
+   "name": "qr-b97cdec9--23qreadb01",
+   "text": "Color the family words red. Color the greeting words blue."
+  },
+  {
+   "name": "qr-8023afd0--23qreadb01",
+   "text": "Complete: This is my … (father)."
+  },
+  {
+   "name": "qr-154ed3b4--23qreadb01",
+   "text": "'This is my sister' means the person is a girl."
+  },
+  {
+   "name": "qr-100d87d7--23qreadb01",
+   "text": "Listen, then match each word to its opposite."
+  },
+  {
+   "name": "qr-9e94664d--23qreadb01",
+   "text": "Put the dialogue in the correct order."
+  },
+  {
+   "name": "qr-2910e44b--23qreadb01",
+   "text": "Click the word that is NOT a family member."
+  },
+  {
+   "name": "qr-cc483b5b--23qreadb01",
+   "text": "Which word means 'a person you like and know well'?"
+  },
+  {
+   "name": "qr-b169392a--23qreadb01",
+   "text": "'Brother' is a family word."
+  },
+  {
+   "name": "qr-94cd1b34--23qreadb01",
+   "text": "Listen and tick the greeting word."
+  },
+  {
+   "name": "qr-f83a5d8a--23qreadb01",
+   "text": "'Sister' is a girl in the family."
+  },
+  {
+   "name": "qr-e4719d8f--23qreadb01",
+   "text": "Listen, then start at the green dot and trace the capital letter S."
+  },
+  {
+   "name": "qr-012736af--23qreadb01",
+   "text": "Listen and tick the correct word."
+  },
+  {
+   "name": "qr-17b49eb5--23qreadb01",
+   "text": "A friend is an animal."
+  },
+  {
+   "name": "qr-932c6720--23qreadb01",
+   "text": "Match each question or greeting to its answer."
+  },
+  {
+   "name": "qr-c16ec603--23qreadb01",
+   "text": "Listen, then click on the boy."
+  },
+  {
+   "name": "qr-cd0310bb--23qreadb01",
+   "text": "Which one do you use to rub out a mistake?"
+  },
+  {
+   "name": "qr-7dbdc0ad--23qreadb01",
+   "text": "You write with a pen."
+  },
+  {
+   "name": "qr-6943e332--23qreadb01",
+   "text": "Match each thing to what you use it for."
+  },
+  {
+   "name": "qr-75c0c1a1--23qreadb01",
+   "text": "Listen, then click on the ruler."
+  },
+  {
+   "name": "qr-378baaf8--23qreadb01",
+   "text": "Sort each thing."
+  },
+  {
+   "name": "qr-3c29bd81--23qreadb01",
+   "text": "Listen, then choose the word that starts with the letter 'a'."
+  },
+  {
+   "name": "qr-44849384--23qreadb01",
+   "text": "The word 'bag' has the 'a' sound in the middle."
+  },
+  {
+   "name": "qr-06e37fa9--23qreadb01",
+   "text": "Sort each word by its first letter."
+  },
+  {
+   "name": "qr-2fe61641--23qreadb01",
+   "text": "Listen, then start at the green dot and trace the letter a."
+  },
+  {
+   "name": "qr-6d10ac15--23qreadb01",
+   "text": "Which one do you colour with?"
+  },
+  {
+   "name": "qr-93d7ad1e--23qreadb01",
+   "text": "A pencil case holds pens and pencils."
+  },
+  {
+   "name": "qr-b987c447--23qreadb01",
+   "text": "Match each thing to what you do with it."
+  },
+  {
+   "name": "qr-e48f0ff2--23qreadb01",
+   "text": "Listen, then put the story in the correct order."
+  },
+  {
+   "name": "qr-33a90f93--23qreadb01",
+   "text": "Color the writing things blue. Color the carrying things red."
+  },
+  {
+   "name": "qr-b3c20751--23qreadb01",
+   "text": "Which sentence means you have a pen?"
+  },
+  {
+   "name": "qr-5efdbfd6--23qreadb01",
+   "text": "'I haven't got a ruler' means you do not have a ruler."
+  },
+  {
+   "name": "qr-90fdccaa--23qreadb01",
+   "text": "Match each sentence to its meaning."
+  },
+  {
+   "name": "qr-92f128f8--23qreadb01",
+   "text": "Click the thing you do NOT write with."
+  },
+  {
+   "name": "qr-883f3fd1--23qreadb01",
+   "text": "What do you carry your books in?"
+  },
+  {
+   "name": "qr-03d63121--23qreadb01",
+   "text": "You can put a pencil case in your school bag."
+  },
+  {
+   "name": "qr-0293e9bf--23qreadb01",
+   "text": "Put the project steps in the correct order."
+  },
+  {
+   "name": "qr-b7aaf3d0--23qreadb01",
+   "text": "Listen and choose the word you hear."
+  },
+  {
+   "name": "qr-50ca1e6b--23qreadb01",
+   "text": "'I've got a pen' means you have a pen."
+  },
+  {
+   "name": "qr-e44f0b4d--23qreadb01",
+   "text": "Listen, then start at the green dot and trace the capital letter A."
+  },
+  {
+   "name": "qr-b517b714--23qreadb01",
+   "text": "Which word is a school thing?"
+  },
+  {
+   "name": "qr-84616806--23qreadb01",
+   "text": "A ruler helps you draw a straight line."
+  },
+  {
+   "name": "qr-224e47b8--23qreadb01",
+   "text": "Listen, then click on the book."
+  },
+  {
+   "name": "qr-214254b6--23qreadb01",
+   "text": "Which word means the number 3?"
+  },
+  {
+   "name": "qr-85d9cb95--23qreadb01",
+   "text": "Sort each number word."
+  },
+  {
+   "name": "qr-915d90ff--23qreadb01",
+   "text": "Listen and say, then put the numbers in counting order."
+  },
+  {
+   "name": "qr-b245eaf5--23qreadb01",
+   "text": "Color the small numbers (1-2) red. Color the big numbers (5-6) blue."
+  },
+  {
+   "name": "qr-041d428c--23qreadb01",
+   "text": "Listen and circle the colour word."
+  },
+  {
+   "name": "qr-e0d00a34--23qreadb01",
+   "text": "'Six' comes after 'five'."
+  },
+  {
+   "name": "qr-5808a5bd--23qreadb01",
+   "text": "Match each word to its number."
+  },
+  {
+   "name": "qr-8079ceac--23qreadb01",
+   "text": "Sort each colour."
+  },
+  {
+   "name": "qr-986eb2d4--23qreadb01",
+   "text": "Which one do you walk through to enter the classroom?"
+  },
+  {
+   "name": "qr-a2fde14f--23qreadb01",
+   "text": "The teacher helps you learn."
+  },
+  {
+   "name": "qr-3ec0cc57--23qreadb01",
+   "text": "Match each one to what you do with it."
+  },
+  {
+   "name": "qr-ffe3ced7--23qreadb01",
+   "text": "Listen, then click on the window."
+  },
+  {
+   "name": "qr-ecbbe532--23qreadb01",
+   "text": "Listen, then choose the word that starts with the letter 't'."
+  },
+  {
+   "name": "qr-25a27bcf--23qreadb01",
+   "text": "The word 'cat' ends with the letter 't'."
+  },
+  {
+   "name": "qr-0db20558--23qreadb01",
+   "text": "Listen, then start at the green dot and trace the letter t."
+  },
+  {
+   "name": "qr-933fdf4a--23qreadb01",
+   "text": "Which one do you sit on?"
   }
  ]
 }
