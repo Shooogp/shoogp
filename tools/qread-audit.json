@@ -1,726 +1,726 @@
 {
  "_readme": "دفعةُ فحصِ النطق: يقرؤُها سيرُ n8n «شوجب — فحص نطق الأسئلة (جيميناي)» — لكلِّ مقطعٍ نصُّه القياسيُّ المشكولُ (قبلَ الوصل) — فهو ما ينبغي أن يُسمَع. تُبنى بـ`node tools/build-qread-batch.mjs audit <batchId> [--limit N] [--only a,b]`.",
- "batchId": "2026-09-23-audit-a1",
+ "batchId": "2026-09-23-audit-a2",
  "items": [
   {
-   "name": "qr-3f05f454",
-   "text": "Choose the greeting word."
+   "name": "qr-368a7ced",
+   "text": "صِلْ كُلَّ جُزْءٍ مِنَ النَّبْتَةِ بِعَمَلِهْ."
   },
   {
-   "name": "qr-6f1b6f6c",
-   "text": "We say 'Hello' when we meet a friend."
+   "name": "qr-81ac7722",
+   "text": "اضْغَطْ عَلَى الْجُزْءِ الَّذِي يَمْتَصُّ الْمَاءَ مِنَ التُّرْبَةْ."
   },
   {
-   "name": "qr-c8d56f91",
-   "text": "Match each greeting to its answer."
+   "name": "qr-c3d39ae5",
+   "text": "صَنِّفْ: مَا تَحْتَاجُهُ النَّبْتَةُ لِتَنْمُوَ وَمَا لَا تَحْتَاجُهْ."
   },
   {
-   "name": "qr-a0071590",
-   "text": "Complete the sentence."
+   "name": "qr-3f172702",
+   "text": "لَوِّنْ أَجْزَاءَ النَّبْتَةْ: اخْتَرْ لَوْنًا مِنَ اللَّوْحَةِ ثُمَّ اضْغَطِ الْجُزْءْ."
   },
   {
-   "name": "qr-345f45ea",
-   "text": "Put the greeting dialogue in the correct order."
+   "name": "qr-14c26056",
+   "text": "جَمِيعُ الْأَطْفَالِ يَحْتَاجُونَ أَنْ..."
   },
   {
-   "name": "qr-90e0a791",
-   "text": "Find the matching pairs."
+   "name": "qr-8ebea335",
+   "text": "نَحْنُ مُتَشَابِهُونَ فِي الْكَثِيرِ مِنَ الْأَشْيَاءْ."
   },
   {
-   "name": "qr-6fd65428",
-   "text": "Which word means a female child?"
+   "name": "qr-8882d77c",
+   "text": "أَكْمِلِ الْجُمْلَةَ بِسَحْبِ الْكَلِمَاتِ الْمُنَاسِبَةْ."
   },
   {
-   "name": "qr-63f6475b",
-   "text": "A cat is a girl."
+   "name": "qr-80b7b820",
+   "text": "صِلْ كُلَّ شُعُورٍ بِمَا نَفْعَلُهُ جَمِيعَا."
   },
   {
-   "name": "qr-681a82f8",
-   "text": "Match each word to its first letter."
+   "name": "qr-7d71a93f",
+   "text": "صَنِّفْ: مَا يَحْتَاجُهُ كُلُّ الْأَطْفَالْ، وَمَا يُحِبُّهُ بَعْضُهُمْ فَقَطْ."
   },
   {
-   "name": "qr-cda582b9",
-   "text": "Listen, then click on the cat."
+   "name": "qr-d3bc16b2",
+   "text": "أَكْمِلْ خَرِيطَةَ التَّشَابُهِ بَيْنَنَا بِسَحْبِ الْكَلِمَةِ الْمُنَاسِبَةِ إِلَى كُلِّ فَرْعْ."
   },
   {
-   "name": "qr-eddc2b14",
-   "text": "Sort each word."
+   "name": "qr-8a7da2d3",
+   "text": "التَّلَامِيذُ مُخْتَلِفُونَ قَلِيلًا بَعْضُهُمْ عَنْ بَعْضْ."
   },
   {
-   "name": "qr-2f3cecca",
-   "text": "Find the pairs: each word and its first letter."
+   "name": "qr-bd5a4198",
+   "text": "فِيمَ يَخْتَلِفُ الْأَطْفَالُ بَعْضُهُمْ عَنْ بَعْضْ؟"
   },
   {
-   "name": "qr-ab4717ea",
-   "text": "Which word starts with the letter 's'?"
+   "name": "qr-d4db8087",
+   "text": "أَكْمِلِ الْجُمْلَةَ بِسَحْبِ الْكَلِمَاتِ الَّتِي نَخْتَلِفُ فِيهَا."
   },
   {
-   "name": "qr-509175db",
-   "text": "The word 'cat' starts with the letter 's'."
+   "name": "qr-c0f1596a",
+   "text": "اضْغَطْ عَلَى الطِّفْلِ صَاحِبِ الشَّعْرِ الدَّاكِنْ."
   },
   {
-   "name": "qr-4fed1d72",
-   "text": "Match each letter to the word that starts with it."
+   "name": "qr-2e8fcf33",
+   "text": "صَنِّفْ: أَشْيَاءُ نَتَشَابَهُ فِيهَا، وَأَشْيَاءُ نَخْتَلِفُ فِيهَا."
   },
   {
-   "name": "qr-15efef24",
-   "text": "Listen to the sound, then click the matching letter."
+   "name": "qr-0205c3fc",
+   "text": "أَيُّ شَيْءٍ لَا نَخْتَلِفُ فِيهْ؟"
   },
   {
-   "name": "qr-414c1602",
-   "text": "Tap each letter to hear its sound, then blend and choose the word."
+   "name": "qr-b68195ef",
+   "text": "نُمْسِكُ الْأَشْيَاءَ بِأَصَابِعِ الْقَدَمْ."
   },
   {
-   "name": "qr-afb9c023",
-   "text": "Listen, then start at the green dot and trace the letter s."
+   "name": "qr-ae3a8fb3",
+   "text": "أَيْنَ تُوجَدُ الْعَيْنُ وَالْأَنْفُ وَالْفَمْ؟"
   },
   {
-   "name": "qr-aa13bbc1",
-   "text": "Which word means 'father'?"
+   "name": "qr-3f8fbc25",
+   "text": "اسْحَبِ اسْمَ كُلِّ جُزْءٍ إِلَى مَكَانِهِ فِي الْجِسْمْ."
   },
   {
-   "name": "qr-253e7d15",
-   "text": "'Mum' means mother."
+   "name": "qr-3b7cf4b8",
+   "text": "صَنِّفْ كُلَّ جُزْءْ: هَلْ هُوَ فِي الرَّأْسِ أَمْ مِنَ الْأَطْرَافْ؟"
   },
   {
-   "name": "qr-a2f2be93",
-   "text": "Match each word to its meaning."
+   "name": "qr-d94458f5",
+   "text": "رَكِّبْ صُورَةَ جِسْمِ الطِّفْلْ: اسْحَبْ كُلَّ قِطْعَةٍ إِلَى مَكَانِهَا الصَّحِيحْ."
   },
   {
-   "name": "qr-84ce335f",
-   "text": "Listen, then put the dialogue in the correct order."
+   "name": "qr-c3667e87",
+   "text": "نَسْتَخْدِمُ الْأُذُنَ لِنَرَى الْأَشْيَاءْ."
   },
   {
-   "name": "qr-b97cdec9",
-   "text": "Color the family words red. Color the greeting words blue."
+   "name": "qr-0a263323",
+   "text": "بِأَيِّ حَاسَّةٍ نَعْرِفُ طَعْمَ الطَّعَامْ؟"
   },
   {
-   "name": "qr-8023afd0",
-   "text": "Complete: This is my … (father)."
+   "name": "qr-fcf4398b",
+   "text": "صِلْ كُلَّ عُضْوٍ بِالْحَاسَّةِ الَّتِي نَسْتَخْدِمُهُ فِيهَا."
   },
   {
-   "name": "qr-154ed3b4",
-   "text": "'This is my sister' means the person is a girl."
+   "name": "qr-cf17d9c0",
+   "text": "اضْغَطْ عَلَى الْعُضْوِ الَّذِي نَشُمُّ بِهِ الرَّوَائِحْ."
   },
   {
-   "name": "qr-100d87d7",
-   "text": "Listen, then match each word to its opposite."
+   "name": "qr-2e588ce0",
+   "text": "صَنِّفْ: هَلْ نَعْرِفُ هَذَا الشَّيْءَ بِالْعَيْنِ أَمْ بِالْأُذُنْ؟"
   },
   {
-   "name": "qr-9e94664d",
-   "text": "Put the dialogue in the correct order."
+   "name": "qr-fb806ed3",
+   "text": "اسْتَخْدِمْ حَاسَّةَ السَّمْعْ: اسْتَمِعْ إِلَى الصَّوْتْ، ثُمَّ اخْتَرِ الْحَيَوَانَ الَّذِي أَصْدَرَهْ."
   },
   {
-   "name": "qr-2910e44b",
-   "text": "Click the word that is NOT a family member."
+   "name": "qr-3baf1963",
+   "text": "كُلُّ الْأَطْفَالِ مُتَشَابِهُونَ تَمَامًا فِي كُلِّ شَيْءْ."
   },
   {
-   "name": "qr-cc483b5b",
-   "text": "Which word means 'a person you like and know well'?"
+   "name": "qr-eeca4213",
+   "text": "بِأَيِّ حَاسَّةٍ نَعْرِفُ أَنَّ الْمَاءَ بَارِدْ؟"
   },
   {
-   "name": "qr-b169392a",
-   "text": "'Brother' is a family word."
+   "name": "qr-77bf615d",
+   "text": "صِلْ كُلَّ جُزْءٍ مِنَ الْجِسْمِ بِعَمَلِهْ."
   },
   {
-   "name": "qr-94cd1b34",
-   "text": "Listen and tick the greeting word."
+   "name": "qr-fc825403",
+   "text": "اضْغَطْ عَلَى الْفَمِ الَّذِي نَتَذَوَّقُ بِهِ الطَّعَامَ بِاللِّسَانْ."
   },
   {
-   "name": "qr-f83a5d8a",
-   "text": "'Sister' is a girl in the family."
+   "name": "qr-75c38fde",
+   "text": "صَنِّفْ: أَشْيَاءُ نَتَشَابَهُ فِيهَا جَمِيعَا، وَأَشْيَاءُ يَخْتَلِفُ فِيهَا النَّاسْ."
   },
   {
-   "name": "qr-e4719d8f",
-   "text": "Listen, then start at the green dot and trace the capital letter S."
+   "name": "qr-225bec96",
+   "text": "أَيُّهَا لَيْسَ عُضْوَ حَاسَّةْ؟"
   },
   {
-   "name": "qr-012736af",
-   "text": "Listen and tick the correct word."
+   "name": "qr-07c2a4b9",
+   "text": "اِنْقُرْ سَبْعَ فَرَاشَاتٍ وَعُدَّهَا."
   },
   {
-   "name": "qr-17b49eb5",
-   "text": "A friend is an animal."
+   "name": "qr-17439c02",
+   "text": "أَيُّ هَذِهِ هُوَ الْعَدَدُ ثَمَانِيَةْ؟"
   },
   {
-   "name": "qr-932c6720",
-   "text": "Match each question or greeting to its answer."
+   "name": "qr-9f856043",
+   "text": "صِلْ كُلَّ عَدَدٍ بِاسْمِهِ."
   },
   {
-   "name": "qr-c16ec603",
-   "text": "Listen, then click on the boy."
+   "name": "qr-4b16e2e4",
+   "text": "رَتِّبِ الْأَعْدَادَ مِنَ الْأَصْغَرِ إِلَى الْأَكْبَرْ."
   },
   {
-   "name": "qr-cd0310bb",
-   "text": "Which one do you use to rub out a mistake?"
+   "name": "qr-7751c653",
+   "text": "أَكْمِلِ النَّمَطْ: الْعَدُّ وَاحِدًا وَاحِدًا."
   },
   {
-   "name": "qr-7dbdc0ad",
-   "text": "You write with a pen."
+   "name": "qr-efa85d7e",
+   "text": "اِقْلِبْ بِطَاقَتَيْنِ فِي كُلِّ دَوْرْ: طَابِقْ كُلَّ عَدَدٍ بِمَجْمُوعَتِهْ."
   },
   {
-   "name": "qr-6943e332",
-   "text": "Match each thing to what you use it for."
+   "name": "qr-ebb34f6d",
+   "text": "كَمْ صَدَفَةً فِي هَذِهِ الْمَجْمُوعَةْ؟"
   },
   {
-   "name": "qr-75c0c1a1",
-   "text": "Listen, then click on the ruler."
+   "name": "qr-c92aeaa5",
+   "text": "فِي هَذِهِ الْمَجْمُوعَةِ سِتُّ صَدَفَاتْ:"
   },
   {
-   "name": "qr-378baaf8",
-   "text": "Sort each thing."
+   "name": "qr-9fc62fed",
+   "text": "اِنْقُرْ تِسْعَ صَدَفَاتٍ وَعُدَّهَا."
   },
   {
-   "name": "qr-3c29bd81",
-   "text": "Listen, then choose the word that starts with the letter 'a'."
+   "name": "qr-a661b139",
+   "text": "صِلْ كُلَّ مَجْمُوعَةٍ بِعَدَدِهَا."
   },
   {
-   "name": "qr-44849384",
-   "text": "The word 'bag' has the 'a' sound in the middle."
+   "name": "qr-a448079d",
+   "text": "رَتِّبِ الْمَجْمُوعَاتِ مِنَ الْأَقَلِّ إِلَى الْأَكْثَرْ."
   },
   {
-   "name": "qr-06e37fa9",
-   "text": "Sort each word by its first letter."
+   "name": "qr-c7bcee4d",
+   "text": "كُلُّهَا مَجْمُوعَاتٌ فِيهَا أَرْبَعَةُ عَنَاصِرْ، أَيُّهَا لَا يَنْتَمِي؟"
   },
   {
-   "name": "qr-2fe61641",
-   "text": "Listen, then start at the green dot and trace the letter a."
+   "name": "qr-852eb6dc",
+   "text": "فِي إِطَارِ الْعَشَرَةِ خَمْسَةُ أَقْرَاصٍ حَمْرَاءَ وَثَلَاثَةٌ صَفْرَاءْ. كَمْ قُرْصًا فِيهْ؟"
   },
   {
-   "name": "qr-6d10ac15",
-   "text": "Which one do you colour with?"
+   "name": "qr-8e91237a",
+   "text": "أَكْمِلِ الْمُعَادَلَةَ لِتُكَوِّنَ الْعَشَرَةْ."
   },
   {
-   "name": "qr-93d7ad1e",
-   "text": "A pencil case holds pens and pencils."
+   "name": "qr-e4bd8495",
+   "text": "اِنْقُرْ سِتَّ تَمَرَاتٍ، ثُمَّ فَكِّرْ: كَمْ يَنْقُصُ لِتُكْمِلَ الْعَشَرَةْ؟"
   },
   {
-   "name": "qr-b987c447",
-   "text": "Match each thing to what you do with it."
+   "name": "qr-5f93b009",
+   "text": "اِسْحَبِ الْعَدَدَ إِلَى إِطَارِ الْعَشَرَةِ الَّذِي يَحْمِلُ هَذَا الْعَدَدَ مِنَ الْأَقْرَاصْ."
   },
   {
-   "name": "qr-e48f0ff2",
-   "text": "Listen, then put the story in the correct order."
+   "name": "qr-721337ca",
+   "text": "صِلْ كُلَّ عَدَدٍ بِشَرِيكِهِ الَّذِي يُكَوِّنُ مَعَهُ عَشَرَةْ."
   },
   {
-   "name": "qr-33a90f93",
-   "text": "Color the writing things blue. Color the carrying things red."
+   "name": "qr-4a8e878b",
+   "text": "اِقْلِبْ بِطَاقَتَيْنِ فِي كُلِّ دَوْرْ: طَابِقْ كُلَّ جَمْعٍ بِمَجْمُوعِهْ."
   },
   {
-   "name": "qr-b3c20751",
-   "text": "Which sentence means you have a pen?"
+   "name": "qr-eba0c4a5",
+   "text": "فِي إِطَارِ الْعَشَرَةِ عَشَرَةُ أَقْرَاصٍ، أَخَذْنَا أَرْبَعَةْ. كَمْ بَقِيْ؟"
   },
   {
-   "name": "qr-5efdbfd6",
-   "text": "'I haven't got a ruler' means you do not have a ruler."
+   "name": "qr-9177309f",
+   "text": "أَكْمِلِ الْمُعَادَلَةْ: كَمْ يَبْقَى؟"
   },
   {
-   "name": "qr-90fdccaa",
-   "text": "Match each sentence to its meaning."
+   "name": "qr-8f1418b7",
+   "text": "أَخَذْنَا مِنَ الْعَشَرَةِ خَمْسًا. اِنْقُرِ التَّمَرَاتِ الْبَاقِيَةَ وَعُدَّهَا."
   },
   {
-   "name": "qr-92f128f8",
-   "text": "Click the thing you do NOT write with."
+   "name": "qr-d7aa867a",
+   "text": "أَكْمِلِ الْجُمْلَتَيْنِ بِسَحْبِ الْعَدَدِ الْمُنَاسِبْ."
   },
   {
-   "name": "qr-883f3fd1",
-   "text": "What do you carry your books in?"
+   "name": "qr-de5b88fd",
+   "text": "صِلْ كُلَّ جُمْلَةِ طَرْحٍ بِنَاتِجِهَا."
   },
   {
-   "name": "qr-03d63121",
-   "text": "You can put a pencil case in your school bag."
+   "name": "qr-568d8e2c",
+   "text": "الْبِطَاقَةُ تَقُولُ إِنَّ فِي الْإِطَارِ سَبْعَ تَمَرَاتْ، اِضْغَطْ عَلَى الْخَطَإْ."
   },
   {
-   "name": "qr-0293e9bf",
-   "text": "Put the project steps in the correct order."
+   "name": "qr-e543c554",
+   "text": "ضِعْفُ الْعَدَدِ ثَلَاثَةٍ هُوَ خَمْسَةْ."
   },
   {
-   "name": "qr-b7aaf3d0",
-   "text": "Listen and choose the word you hear."
+   "name": "qr-8be033ea",
+   "text": "مَا ضِعْفُ الْعَدَدِ أَرْبَعَةْ؟"
   },
   {
-   "name": "qr-50ca1e6b",
-   "text": "'I've got a pen' means you have a pen."
+   "name": "qr-84445524",
+   "text": "ابْنِ مَصْفُوفَةً فِيهَا صَفَّانِ، فِي كُلِّ صَفٍّ خَمْسَةُ مُرَبَّعَاتٍ، لِتَرَى ضِعْفَ الْخَمْسَةْ."
   },
   {
-   "name": "qr-e44f0b4d",
-   "text": "Listen, then start at the green dot and trace the capital letter A."
+   "name": "qr-6fa35d1d",
+   "text": "صَنِّفْ كُلَّ جَمْعْ: أَهُوَ ضِعْفٌ أَمْ لَا؟"
   },
   {
-   "name": "qr-b517b714",
-   "text": "Which word is a school thing?"
+   "name": "qr-9978e960",
+   "text": "لَوِّنِ الْمَجْمُوعَةَ الَّتِي تُظْهِرُ ضِعْفًا بِالْأَصْفَرِ، وَالَّتِي لَيْسَتْ ضِعْفًا بِالْأَحْمَرْ."
   },
   {
-   "name": "qr-84616806",
-   "text": "A ruler helps you draw a straight line."
+   "name": "qr-3cb37ff7",
+   "text": "الْحَبْلُ الَّذِي طُولُهُ تِسْعُ وَحَدَاتٍ وَالْحَبْلُ الَّذِي طُولُهُ أَرْبَعُ وَحَدَاتٍ، أَيُّهُمَا أَطْوَلُ؟"
   },
   {
-   "name": "qr-224e47b8",
-   "text": "Listen, then click on the book."
+   "name": "qr-735d7df7",
+   "text": "لِمُقَارَنَةِ طُولَيْنِ مُقَارَنَةً مُبَاشِرَةً نَبْدَأُ مِنَ الطَّرَفِ نَفْسِهْ."
   },
   {
-   "name": "qr-214254b6",
-   "text": "Which word means the number 3?"
+   "name": "qr-82d2fb96",
+   "text": "كَمْ طُولُ الشَّرِيطِ بِالسَّنْتِيمِتْرَاتْ؟"
   },
   {
-   "name": "qr-4357437b",
-   "text": "'Green' is a colour."
+   "name": "qr-026990f9",
+   "text": "رَتِّبِ الْأَشْيَاءَ مِنَ الْأَقْصَرِ إِلَى الْأَطْوَلْ."
   },
   {
-   "name": "qr-883154d1",
-   "text": "Listen, then match each colour to what it describes."
+   "name": "qr-afa4af8e",
+   "text": "قَارِنْ بَيْنَ الطُّولَيْنِ بِالسَّنْتِيمِتْرَاتْ."
   },
   {
-   "name": "qr-85d9cb95",
-   "text": "Sort each number word."
+   "name": "qr-fa042427",
+   "text": "قَدِّرْ طُولَ الْقَلَمِ بِالسَّنْتِيمِتْرَاتِ، اِسْحَبِ الْمُؤَشِّرْ."
   },
   {
-   "name": "qr-915d90ff",
-   "text": "Listen and say, then put the numbers in counting order."
+   "name": "qr-3d4433a5",
+   "text": "مَجْمُوعُ خَمْسَةٍ وَوَاحِدٍ هُوَ:"
   },
   {
-   "name": "qr-b245eaf5",
-   "text": "Color the small numbers (1-2) red. Color the big numbers (5-6) blue."
+   "name": "qr-161da93b",
+   "text": "أَكْمِلِ الْمُعَادَلَةْ."
   },
   {
-   "name": "qr-041d428c",
-   "text": "Listen and circle the colour word."
+   "name": "qr-3ea0ab12",
+   "text": "اِنْقُرْ ثَمَانِيَ صَدَفَاتٍ وَعُدَّهَا."
   },
   {
-   "name": "qr-e0d00a34",
-   "text": "'Six' comes after 'five'."
+   "name": "qr-248c79b6",
+   "text": "صِلْ كُلَّ زَوْجٍ بِمَجْمُوعِهْ."
   },
   {
-   "name": "qr-5808a5bd",
-   "text": "Match each word to its number."
+   "name": "qr-c3be4308",
+   "text": "صَنِّفْ كُلَّ زَوْجٍ حَسَبَ مَجْمُوعِهْ."
   },
   {
-   "name": "qr-8079ceac",
-   "text": "Sort each colour."
+   "name": "qr-6e9a3267",
+   "text": "كُلُّهَا أَزْوَاجٌ مَجْمُوعُهَا ثَمَانِيَةْ، أَيُّهَا لَا يَنْتَمِي؟"
   },
   {
-   "name": "qr-986eb2d4",
-   "text": "Which one do you walk through to enter the classroom?"
+   "name": "qr-56c04fdd",
+   "text": "أَيُّ عَدَدٍ يَقَعُ بَيْنَ أَرْبَعَةَ عَشَرَ وَسِتَّةَ عَشَرْ؟"
   },
   {
-   "name": "qr-a2fde14f",
-   "text": "The teacher helps you learn."
+   "name": "qr-d28e5ce0",
+   "text": "ابْنِ الْعَدَدَ ثَلَاثَةَ عَشَرَ بِالْعَشَرَاتِ وَالْآحَادْ."
   },
   {
-   "name": "qr-3ec0cc57",
-   "text": "Match each one to what you do with it."
+   "name": "qr-be7653fb",
+   "text": "ضَعِ الْمُؤَشِّرَ عَلَى الْعَدَدِ سَبْعَةَ عَشَرْ."
   },
   {
-   "name": "qr-ffe3ced7",
-   "text": "Listen, then click on the window."
+   "name": "qr-b6d14b41",
+   "text": "ضَعِ الرَّمْزَ الْمُنَاسِبَ بَيْنَ كُلِّ عَدَدَيْنْ."
   },
   {
-   "name": "qr-ecbbe532",
-   "text": "Listen, then choose the word that starts with the letter 't'."
+   "name": "qr-7818a0fc",
+   "text": "اِسْحَبِ الْمُؤَشِّرَ إِلَى الْعَدَدِ سِتَّةَ عَشَرْ."
   },
   {
-   "name": "qr-25a27bcf",
-   "text": "The word 'cat' ends with the letter 't'."
+   "name": "qr-6edebc11",
+   "text": "خَمِّنْ: كَمْ مُكَعَّبًا هُنَا تَقْرِيبًا؟"
   },
   {
-   "name": "qr-0db20558",
-   "text": "Listen, then start at the green dot and trace the letter t."
+   "name": "qr-fe6899e8",
+   "text": "التَّقْدِيرُ تَخْمِينٌ قَرِيبٌ مِنَ الْعَدَدِ الْحَقِيقِيّْ."
   },
   {
-   "name": "qr-933fdf4a",
-   "text": "Which one do you sit on?"
+   "name": "qr-f73282f6",
+   "text": "الْآنَ عُدَّ لِلتَّحَقُّقْ: اِنْقُرِ اثْنَيْ عَشَرَ مُكَعَّبًا."
   },
   {
-   "name": "qr-ca8ddbb1",
-   "text": "You write on the floor."
+   "name": "qr-be3e4261",
+   "text": "رَتِّبِ التَّقْدِيرَاتِ مِنَ الْأَصْغَرِ إِلَى الْأَكْبَرْ."
   },
   {
-   "name": "qr-b7ab7bae",
-   "text": "Listen, then click on the chair."
+   "name": "qr-237d5842",
+   "text": "قَارِنْ بَيْنَ التَّقْدِيرِ وَالْعَدَدِ الْحَقِيقِيّْ."
   },
   {
-   "name": "qr-af76a699",
-   "text": "Color the furniture green. Color the parts of the room blue."
+   "name": "qr-811f314e",
+   "text": "اِقْلِبْ بِطَاقَتَيْنِ فِي كُلِّ دَوْرْ: طَابِقْ كُلَّ عَدَدٍ بِاسْمِهْ."
   },
   {
-   "name": "qr-91d1a86c",
-   "text": "The book is on top of the desk. Complete: The book is … the desk."
+   "name": "qr-316c8582",
+   "text": "فِي الْكَفِّ سِتُّ قِطَعْ. فَإِذَا كَانَ مَا فِي الْكَفَّيْنِ ضِعْفَهَا، فَكَمْ قِطْعَةً فِيهِمَا؟"
   },
   {
-   "name": "qr-628d2de4",
-   "text": "'Under' means below something."
+   "name": "qr-43d161de",
+   "text": "إِذَا كَانَ فِي الْكَفِّ خَمْسُ قِطَعٍ فَإِنَّ ضِعْفَهَا إِحْدَى عَشْرَةَ قِطْعَةْ."
   },
   {
-   "name": "qr-17317cf0",
-   "text": "Drag each word to the right picture."
+   "name": "qr-cfa3a829",
+   "text": "اِنْقُرْ عَشْرَ قِطَعٍ وَعُدَّهَا."
   },
   {
-   "name": "qr-5bc36ee6",
-   "text": "Click the book that is UNDER the desk."
+   "name": "qr-f207cf4d",
+   "text": "فِي الْكَفِّ نَحْوُ اثْنَتَيْ عَشْرَةَ قِطْعَةً، صَنِّفِ التَّقْدِيرَاتْ."
   },
   {
-   "name": "qr-c4832afc",
-   "text": "Click the word that is NOT a place word."
+   "name": "qr-6ce5e03b",
+   "text": "قَارِنْ بَيْنَ عَدَدِ قِطَعِ الْكَفِّ وَعَدَدِ قِطَعِ الْكَفَّيْنْ."
   },
   {
-   "name": "qr-cc140dd5",
-   "text": "What do you put your pens in to keep your desk tidy?"
+   "name": "qr-57e31416",
+   "text": "تَقْدِيرٌ لِعَدَدِ الْقِطَعِ فِي كَفٍّ وَاحِدَةْ، أَيُّهَا غَيْرُ مَعْقُولْ؟"
   },
   {
-   "name": "qr-edf302d5",
-   "text": "A tidy desk helps you find your things."
+   "name": "qr-61a66c45",
+   "text": "كَمْ ضِلْعًا لِلْمُضَلَّعِ الْخُمَاسِيّْ؟"
   },
   {
-   "name": "qr-22c134a2",
-   "text": "'What's this? It's a desk.' is a correct answer."
+   "name": "qr-eac6549c",
+   "text": "صِلْ كُلَّ شَكْلٍ بِعَدَدِ أَضْلَاعِهْ."
   },
   {
-   "name": "qr-e27e665c",
-   "text": "Listen, then start at the green dot and trace the capital letter T."
+   "name": "qr-f5253317",
+   "text": "صَنِّفِ الْأَشْكَالْ: أَلَهَا أَضْلَاعٌ مُسْتَقِيمَةٌ أَمْ لَا؟"
   },
   {
-   "name": "qr-9be067b7",
-   "text": "Which word is a classroom thing?"
+   "name": "qr-2de81e6f",
+   "text": "اِنْقُرْ أَرْبَعَةَ عِيدَانْ، وَهُوَ عَدَدُ مَا يَلْزَمُ لِصُنْعِ مُرَبَّعْ."
   },
   {
-   "name": "qr-24cc5a93",
-   "text": "You look through a window."
+   "name": "qr-44cc1093",
+   "text": "رَتِّبِ الْأَشْكَالَ مِنَ الْأَقَلِّ أَضْلَاعًا إِلَى الْأَكْثَرْ."
   },
   {
-   "name": "qr-df33554f",
-   "text": "Listen, then click on the door."
+   "name": "qr-4e3b2817",
+   "text": "اِقْلِبْ بِطَاقَتَيْنِ فِي كُلِّ دَوْرْ: طَابِقْ كُلَّ شَكْلٍ بِوَصْفِهْ."
   },
   {
-   "name": "qr-04676be4",
-   "text": "Which toy is round and you can throw it?"
+   "name": "qr-c90d6681",
+   "text": "أَيُّ مُجَسَّمٍ كُلُّ أَوْجُهِهِ مُرَبَّعَاتْ؟"
   },
   {
-   "name": "qr-b7dd1f0b",
-   "text": "A teddy is a soft toy bear."
+   "name": "qr-35ee5665",
+   "text": "الْكُرَةُ لَهَا وَجْهٌ مُسْتَوٍ وَاحِدْ."
   },
   {
-   "name": "qr-646a68ee",
-   "text": "Match each toy to what it is like."
+   "name": "qr-ed7f61f7",
+   "text": "صِلْ كُلَّ مُجَسَّمٍ بِوَصْفِ أَوْجُهِهِ."
   },
   {
-   "name": "qr-d7819d10",
-   "text": "Listen, then click on the ball."
-  },
-  {
-   "name": "qr-d6e777f8",
-   "text": "Sort each toy."
-  },
-  {
-   "name": "qr-59354376",
-   "text": "Listen, then choose the word that starts with the letter 'p'."
-  },
-  {
-   "name": "qr-b031692e",
-   "text": "The word 'top' ends with the letter 'p'."
-  },
-  {
-   "name": "qr-adbbfb94",
-   "text": "Listen, then start at the green dot and trace the letter p."
-  },
-  {
-   "name": "qr-a6cb0ea1",
-   "text": "Which toy flies in the sky?"
-  },
-  {
-   "name": "qr-a344a9d3",
-   "text": "'What colour is it?' asks about the colour of a thing."
-  },
-  {
-   "name": "qr-651ebf80",
-   "text": "Match each toy to where it goes."
-  },
-  {
-   "name": "qr-46b98c72",
-   "text": "Color the ball red. Color the car blue. Color the train green. Color the plane orange."
-  },
-  {
-   "name": "qr-d220e133",
-   "text": "Which answer fits: 'What's your favourite toy?'"
-  },
-  {
-   "name": "qr-cc9315a2",
-   "text": "Your favourite toy is the toy you like best."
-  },
-  {
-   "name": "qr-aa0aa9f4",
-   "text": "Match each question to its answer."
-  },
-  {
-   "name": "qr-83a7ce3f",
-   "text": "Listen, then click on the train."
-  },
-  {
-   "name": "qr-78c1d614",
-   "text": "Read the clues, then complete the sentence."
-  },
-  {
-   "name": "qr-1881f7d1",
-   "text": "Click the word that is NOT a toy."
-  },
-  {
-   "name": "qr-c9c9682c",
-   "text": "Where do you keep your toys?"
-  },
-  {
-   "name": "qr-0f19ab2a",
-   "text": "Sharing your toys with a friend is kind."
-  },
-  {
-   "name": "qr-be0db7d5",
-   "text": "'It's my teddy' answers the question 'What's your favourite toy?'"
-  },
-  {
-   "name": "qr-42747020",
-   "text": "Listen, then start at the green dot and trace the capital letter P."
-  },
-  {
-   "name": "qr-9bfe4d0a",
-   "text": "Which word is a toy?"
-  },
-  {
-   "name": "qr-b58dbdae",
-   "text": "A plane flies in the sky."
-  },
-  {
-   "name": "qr-bae30697",
-   "text": "Listen, then click on the plane."
-  },
-  {
-   "name": "qr-43dcc08e",
-   "text": "Listen, then choose the shape with four equal sides."
-  },
-  {
-   "name": "qr-9efdaea2",
-   "text": "A triangle has three sides."
-  },
-  {
-   "name": "qr-dd16cb22",
-   "text": "Match each shape to the number of its sides."
-  },
-  {
-   "name": "qr-00a45424",
-   "text": "Put the shapes in order, from the fewest sides to the most sides."
-  },
-  {
-   "name": "qr-1feef177",
-   "text": "Sort each shape."
-  },
-  {
-   "name": "qr-4a0c2ec5",
-   "text": "Color the square blue. Color the circle red. Color the triangle green. Color the rectangle orange."
-  },
-  {
-   "name": "qr-b8077bc5",
-   "text": "Complete: What are these? They're …."
-  },
-  {
-   "name": "qr-ceea3b7a",
-   "text": "'These' means more than one thing."
-  },
-  {
-   "name": "qr-2fc41137",
-   "text": "Match one thing to more than one."
-  },
-  {
-   "name": "qr-85939d5d",
-   "text": "النَّبَاتَاتُ وَالْحَيَوَانَاتُ كَائِنَاتٌ حَيَّةْ."
-  },
-  {
-   "name": "qr-e213bd90",
-   "text": "أَيُّ هَذِهِ الْأَشْيَاءِ غَيْرُ حَيّْ؟"
-  },
-  {
-   "name": "qr-99650054",
-   "text": "أَكْمِلِ الْجُمْلَةَ بِسَحْبِ الْكَلِمَةِ الْمُنَاسِبَةْ."
-  },
-  {
-   "name": "qr-10a4c0f8",
-   "text": "اضْغَطْ عَلَى الْكَائِنِ الْحَيِّ فِي الصُّورَةْ."
-  },
-  {
-   "name": "qr-6070d754",
-   "text": "صَنِّفْ كُلَّ شَيْءٍ إِلَى كَائِنٍ حَيٍّ أَوْ شَيْءٍ غَيْرِ حَيّْ."
-  },
-  {
-   "name": "qr-92dda353",
-   "text": "أَيُّهَا لَا يَنْتَمِي؟"
-  },
-  {
-   "name": "qr-41c2db6d",
-   "text": "تَحْتَاجُ جَمِيعُ الْكَائِنَاتِ الْحَيَّةِ إِلَى مَكَانٍ تَعِيشُ فِيهْ."
-  },
-  {
-   "name": "qr-2bdb9b49",
-   "text": "مَاذَا تُوَفِّرُ الْبِيئَةُ الْمَحَلِّيَّةُ لِلْكَائِنِ الْحَيّْ؟"
-  },
-  {
-   "name": "qr-bc0e9f21",
-   "text": "أَكْمِلْ مَا تُوَفِّرُهُ الْبِيئَةُ لِلْكَائِنِ الْحَيِّ بِسَحْبِ الْكَلِمَاتْ."
-  },
-  {
-   "name": "qr-7e795fb8",
-   "text": "صِلْ كُلَّ حَيَوَانٍ بِالْمَكَانِ الَّذِي يَعِيشُ فِيهْ."
-  },
-  {
-   "name": "qr-71ae9c7e",
-   "text": "صَنِّفِ الْحَيَوَانَاتِ حَسَبَ الْمَكَانِ الَّذِي تَعِيشُ فِيهْ."
-  },
-  {
-   "name": "qr-354ffb39",
-   "text": "أَيُّهَا لَا يَعِيشُ فِي الْمَاءْ؟"
-  },
-  {
-   "name": "qr-f7600632",
-   "text": "يَكْبُرُ صَغِيرُ الْإِنْسَانِ لِيُصْبِحَ بَالِغَا."
-  },
-  {
-   "name": "qr-f214e311",
-   "text": "مَاذَا يُسَمَّى صَغِيرُ الْأَسَدْ؟"
-  },
-  {
-   "name": "qr-1aaa3b99",
+   "name": "qr-dd0383e5",
    "text": "أَكْمِلِ الْجُمْلَتَيْنِ بِسَحْبِ الْكَلِمَةِ الْمُنَاسِبَةْ."
   },
   {
-   "name": "qr-1fb7fccd",
-   "text": "صِلْ كُلَّ حَيَوَانٍ بِصَغِيرِهْ."
+   "name": "qr-6b7ec4fd",
+   "text": "صَنِّفِ الْمُجَسَّمَاتْ: أَيُّهَا يَتَدَحْرَجْ؟"
   },
   {
-   "name": "qr-630c7056",
-   "text": "رَتِّبْ مَرَاحِلَ نُمُوِّ الْإِنْسَانِ مِنَ الْأَصْغَرِ إِلَى الْأَكْبَرْ."
+   "name": "qr-feec0aa6",
+   "text": "كُلُّهَا مُجَسَّمَاتٌ لَهَا أَوْجُهٌ مُسْتَوِيَةْ، أَيُّهَا لَا يَنْتَمِي؟"
   },
   {
-   "name": "qr-ff2b0913",
-   "text": "أَيُّ صَغِيرٍ لَا يُشْبِهُ أَبَاهُ كَثِيرَا؟"
+   "name": "qr-c1ffc1c8",
+   "text": "كَمْ خَطَّ تَمَاثُلٍ لِلْمُرَبَّعْ؟"
   },
   {
-   "name": "qr-19d4d7b8",
-   "text": "شُرْبُ الْكَثِيرِ مِنَ الْمَاءِ أَمْرٌ صِحِّيّْ."
+   "name": "qr-7b5bec85",
+   "text": "لِلدَّائِرَةِ خَطُّ تَمَاثُلٍ وَاحِدٌ فَقَطْ."
   },
   {
-   "name": "qr-b05b8db9",
-   "text": "أَيُّ هَذِهِ الْأَطْعِمَةِ صِحِّيّْ؟"
+   "name": "qr-308060bd",
+   "text": "اِنْقُرْ خُطُوطَ التَّمَاثُلِ فِي الْمُسْتَطِيلْ."
   },
   {
-   "name": "qr-971fec2f",
-   "text": "صِلْ كُلَّ نَوْعٍ بِمِثَالِهْ."
+   "name": "qr-151ecfb9",
+   "text": "أَكْمِلِ النَّمَطَ الْمُتَكَرِّرْ."
   },
   {
-   "name": "qr-de92c1ff",
-   "text": "أَكْمِلْ مَا آكُلُهُ لِأَنْمُوَ بِصِحَّةٍ بِسَحْبِ الْكَلِمَاتْ."
+   "name": "qr-dc558c5f",
+   "text": "صَنِّفِ الْأَشْكَالْ: أَلَهَا خَطُّ تَمَاثُلٍ أَمْ لَا؟"
   },
   {
-   "name": "qr-32fbc315",
-   "text": "صَنِّفِ الْأَطْعِمَةَ وَالْمَشْرُوبَاتِ إِلَى صِحِّيٍّ وَغَيْرِ صِحِّيّْ."
+   "name": "qr-f7d08170",
+   "text": "النَّمَطُ يَتَكَرَّرْ: مُرَبَّعٌ بُرْتُقَالِيٌّ ثُمَّ دَائِرَةٌ حَمْرَاءْ، لَوِّنِ الشَّكْلَيْنِ الْأَخِيرَيْنْ."
   },
   {
-   "name": "qr-e81e7380",
-   "text": "أَيُّهَا لَيْسَ طَعَامًا صِحِّيَّا؟"
+   "name": "qr-9ba09121",
+   "text": "أَيُّ زَوْجٍ مَجْمُوعُهُ سَبْعَةْ؟"
   },
   {
-   "name": "qr-f0664849",
-   "text": "أَيُّ هَذِهِ كَائِنٌ حَيّْ؟"
+   "name": "qr-30954b48",
+   "text": "أَكْمِلِ الْمُعَادَلَةْ: مَا الْعَدَدُ الْمَفْقُودْ؟"
   },
   {
-   "name": "qr-c4dd935a",
-   "text": "كُلُّ كَائِنٍ حَيٍّ يَحْتَاجُ إِلَى مَكَانٍ يَعِيشُ فِيهْ."
+   "name": "qr-07167a28",
+   "text": "صِلْ كُلَّ عَدَدٍ بِشَرِيكِهِ الَّذِي يُكَوِّنُ مَعَهُ سَبْعَةْ."
   },
   {
-   "name": "qr-a67650a0",
-   "text": "أَكْمِلِ الْجُمْلَةَ بِسَحْبِ الْكَلِمَتَيْنِ الْمُنَاسِبَتَيْنْ."
+   "name": "qr-7a16e9a8",
+   "text": "ثَلَاثَةٌ زَائِدُ أَرْبَعَةٍ، يُسَاوِي: أَرْبَعَةٌ زَائِدُ ثَلَاثَةْ."
   },
   {
-   "name": "qr-bd953362",
-   "text": "اضْغَطْ عَلَى الشَّيْءِ غَيْرِ الْحَيِّ الَّذِي يَسِيرُ عَلَى عَجَلَاتْ."
+   "name": "qr-2cb0825e",
+   "text": "كُلُّ سَطْرٍ يَجِبُ أَنْ يَكُونَ مَجْمُوعُهُ سَبْعَةْ، اِضْغَطْ عَلَى السَّطْرِ الْخَاطِئْ."
   },
   {
-   "name": "qr-09aa6b30",
-   "text": "رَتِّبْ مَرَاحِلَ نُمُوِّ الدَّجَاجَةِ مِنَ الْبِدَايَةِ إِلَى النِّهَايَةْ."
+   "name": "qr-61e9118c",
+   "text": "أَيُّ هَذِهِ هُوَ الْعَدَدُ خَمْسَةٌ وَثَلَاثُونْ؟"
   },
   {
-   "name": "qr-93400d86",
-   "text": "اقْلِبْ بِطَاقَتَيْنِ فِي كُلِّ دَوْرٍ لِتَرْبِطَ كُلَّ حَيَوَانٍ بِصَغِيرِهْ."
+   "name": "qr-f5744d6b",
+   "text": "أَكْمِلِ الْخَلَايَا النَّاقِصَةَ فِي اللَّوْحَةْ."
   },
   {
-   "name": "qr-c547965c",
-   "text": "لِلنَّبَاتِ جُذُورٌ وَسَاقٌ وَأَجْنِحَةْ."
+   "name": "qr-3795c84d",
+   "text": "ابْنِ الْعَدَدَ أَرْبَعَةً وَثَلَاثِينَ بِالْعَشَرَاتِ وَالْآحَادْ."
   },
   {
-   "name": "qr-e6b6b6cc",
-   "text": "أَيُّ أَجْزَاءِ النَّبَاتِ يَنْمُو تَحْتَ التُّرَابْ؟"
+   "name": "qr-ffcd4ccd",
+   "text": "عُدَّ بِالْعَشَرَاتْ: اِنْقُرِ الْمَجْمُوعَاتِ بِالتَّرْتِيبِ وَتَوَقَّفْ عِنْدَ الْخَمْسِينْ."
   },
   {
-   "name": "qr-2eafe368",
-   "text": "أَكْمِلْ أَجْزَاءَ النَّبَاتِ بِسَحْبِ الْكَلِمَاتْ."
+   "name": "qr-85cc69bf",
+   "text": "أَكْمِلِ النَّمَطْ: الْعَدُّ التَّنَازُلِيُّ بِالْعَشَرَاتْ."
   },
   {
-   "name": "qr-17ebcf87",
-   "text": "اسْحَبِ اسْمَ كُلِّ جُزْءٍ إِلَى مَكَانِهِ فِي النَّبْتَةْ."
+   "name": "qr-c16315b3",
+   "text": "لَوِّنْ مُضَاعَفَاتِ الْعَشَرَةِ بِالْأَخْضَرْ، وَمَا عَدَاهَا بِالْأَحْمَرْ."
   },
   {
-   "name": "qr-cde483a6",
-   "text": "رَتِّبْ أَجْزَاءَ النَّبَاتِ مِنَ الْأَسْفَلِ إِلَى الْأَعْلَى."
+   "name": "qr-49602b9e",
+   "text": "السَّعَةُ هِيَ:"
   },
   {
-   "name": "qr-5fac86fa",
-   "text": "أَيُّهَا لَيْسَ جُزْءًا مِنَ النَّبَاتْ؟"
+   "name": "qr-669159a8",
+   "text": "الْوِعَاءُ الْأَكْبَرُ يَتَّسِعُ لِمَاءٍ أَكْثَرَ مِنَ الْوِعَاءِ الْأَصْغَرْ."
   },
   {
-   "name": "qr-82403c4e",
-   "text": "تَحْتَاجُ الْبُذُورُ إِلَى الْمِلْحِ لِتَنْمُو."
+   "name": "qr-29e3d43f",
+   "text": "مَلَأْنَا الدَّلَّةَ بِسَبْعَةِ فَنَاجِينْ، اِنْقُرْهَا وَعُدَّهَا."
   },
   {
-   "name": "qr-aaed2fb2",
-   "text": "مَاذَا تُصْبِحُ الْبَذْرَةُ عِنْدَمَا تَنْمُو؟"
+   "name": "qr-ba5a483a",
+   "text": "صِلْ كُلَّ وِعَاءٍ بِعَدَدِ الْأَكْوَابِ الَّتِي تَمْلَؤُهْ."
   },
   {
-   "name": "qr-cb2d075c",
-   "text": "أَكْمِلْ تَرْتِيبَ نُمُوِّ الْبَذْرَةِ بِسَحْبِ الْكَلِمَاتْ."
+   "name": "qr-14dd5006",
+   "text": "قَارِنْ بَيْنَ سَعَتَيِ الْوِعَاءَيْنِ بِعَدَدِ الْأَكْوَابْ."
   },
   {
-   "name": "qr-1535c40c",
-   "text": "اضْغَطْ عَلَى الْبَذْرَةِ الَّتِي نَمَتْ وَأَصْبَحَتْ نَبْتَةْ."
+   "name": "qr-c5838c99",
+   "text": "اِقْلِبْ بِطَاقَتَيْنِ فِي كُلِّ دَوْرْ: طَابِقْ كُلَّ وِعَاءٍ بِسَعَتِهْ."
   },
   {
-   "name": "qr-25a0a1a2",
-   "text": "رَتِّبْ مَرَاحِلَ نُمُوِّ الْبَذْرَةِ مِنَ الْبِدَايَةِ إِلَى النِّهَايَةْ."
+   "name": "qr-cd3c8551",
+   "text": "قَدِّرْ: كَمْ كُوبًا يَمْلَأُ إِبْرِيقًا مُتَوَسِّطًا تَقْرِيبًا؟"
   },
   {
-   "name": "qr-e649f9f0",
-   "text": "أَيُّهَا لَا تَحْتَاجُهُ الْبَذْرَةُ لِتَنْمُو؟"
+   "name": "qr-a9fcd33c",
+   "text": "التَّقْدِيرُ قَبْلَ الْقِيَاسِ يُسَاعِدُنَا عَلَى اخْتِيَارِ الْوِعَاءِ الْمُنَاسِبْ."
   },
   {
-   "name": "qr-09f215de",
-   "text": "تَنْمُو النَّبَاتَاتُ فِي الظَّلَامِ أَفْضَلَ مِنَ الضَّوْءْ."
+   "name": "qr-c2245d24",
+   "text": "صَنِّفِ الْأَوْعِيَةَ حَسَبَ سَعَتِهَا."
   },
   {
-   "name": "qr-69eaa583",
-   "text": "إِلَى أَيِّ جِهَةٍ تَنْمُو النَّبَاتَاتْ؟"
+   "name": "qr-0d66d404",
+   "text": "رَتِّبِ الْأَوْعِيَةَ مِنَ الْأَقَلِّ سَعَةً إِلَى الْأَكْثَرْ."
   },
   {
-   "name": "qr-a98bbca7",
-   "text": "نَبْتَةٌ فِي الضَّوْءِ وَأُخْرَى دَاخِلَ صُنْدُوقٍ مُظْلِمْ. اضْغَطْ عَلَى النَّبْتَةِ الَّتِي سَتَنْمُو أَفْضَلْ."
+   "name": "qr-42ebdac3",
+   "text": "تَقْدِيرٌ لِسَعَةِ كُوبٍ وَاحِدْ، أَيُّهَا غَيْرُ مَعْقُولْ؟"
   },
   {
-   "name": "qr-116b6762",
-   "text": "صَنِّفِ الْأَمَاكِنْ: مُضِيئَةٌ تَنْمُو فِيهَا النَّبَاتَاتُ أَمْ مُظْلِمَةٌ لَا تَنْمُو فِيهَا جَيِّدَا."
+   "name": "qr-99dace4e",
+   "text": "قَدِّرْ: كَمْ كُوبًا يَمْلَأُ هَذَا الْإِبْرِيقْ؟ اِسْحَبِ الْمُؤَشِّرْ."
   },
   {
-   "name": "qr-0a6bfcdb",
-   "text": "أَيُّهَا لَا يُعْطِي النَّبْتَةَ ضَوْءَا؟"
+   "name": "qr-571fbf7d",
+   "text": "فِي مَطْعَمِ الْمَدْرَسَةِ ثَلَاثُ فَطَائِرَ وَأَرْبَعُ حَبَّاتِ تُفَّاحْ. كَمْ صِنْفًا مِنَ الطَّعَامِ فِيهْ؟"
   },
   {
-   "name": "qr-cc26707d",
-   "text": "تَحْتَاجُ الْبَذْرَةُ إِلَى الْمَاءِ لِتَنْمُوَ وَتُصْبِحَ نَبْتَةْ."
+   "name": "qr-93431269",
+   "text": "إِذَا كَانَ فِي الْقَائِمَةِ ثَلَاثُ فَطَائِرَ وَأَرْبَعُ حَبَّاتِ تُفَّاحٍ فَالْمَجْمُوعُ ثَمَانِي قِطَعْ."
   },
   {
-   "name": "qr-7f5b2be3",
-   "text": "مَاذَا يَحْدُثُ لِلنَّبْتَةِ إِذَا بَقِيَتْ فِي الظَّلَامْ؟"
+   "name": "qr-f94853b5",
+   "text": "اِنْقُرْ خَمْسَ تَمَرَاتٍ لِقَائِمَةِ الطَّعَامْ."
+  },
+  {
+   "name": "qr-d15ba144",
+   "text": "ثَلَاثُ فَطَائِرَ وَأَرْبَعُ حَبَّاتِ تُفَّاحْ، أَكْمِلِ الْمُعَادَلَةْ."
+  },
+  {
+   "name": "qr-6ea62524",
+   "text": "صَنِّفْ مَا يَحْتَاجُهُ مَطْعَمُ الْمَدْرَسَةْ."
+  },
+  {
+   "name": "qr-06a86b82",
+   "text": "أَيُّ هَذِهِ الْمَبَالِغِ أَكْبَرْ؟"
+  },
+  {
+   "name": "qr-9c9d1b43",
+   "text": "الرِّيَالُ الْعُمَانِيُّ الْوَاحِدُ يُسَاوِي مِئَةَ بَيْسَةْ."
+  },
+  {
+   "name": "qr-39fb75c8",
+   "text": "ثَمَنُ الْفَطِيرَةِ مِئَةٌ وَخَمْسُونَ بَيْسَةْ، كَوِّنِ الْمَبْلَغْ."
+  },
+  {
+   "name": "qr-2dce5b5b",
+   "text": "صِلْ كُلَّ صِنْفٍ بِثَمَنِهِ."
+  },
+  {
+   "name": "qr-68280392",
+   "text": "قَارِنْ بَيْنَ الثَّمَنَيْنِ بِالْبَيْسَةْ."
+  },
+  {
+   "name": "qr-279b69df",
+   "text": "كُلُّهَا مَبَالِغُ أَقَلُّ مِنْ رِيَالْ، أَيُّهَا لَا يَنْتَمِي؟"
+  },
+  {
+   "name": "qr-39800b1d",
+   "text": "عِنْدَمَا يُشِيرُ الْعَقْرَبُ الطَّوِيلُ إِلَى اثْنَيْ عَشَرَ وَالْقَصِيرُ إِلَى ثَلَاثَةٍ تَكُونُ السَّاعَةْ:"
+  },
+  {
+   "name": "qr-e55cc4e7",
+   "text": "عِنْدَمَا يُشِيرُ الْعَقْرَبُ الطَّوِيلُ إِلَى اثْنَيْ عَشَرَ تَكُونُ السَّاعَةُ تَمَامًا."
+  },
+  {
+   "name": "qr-10ece489",
+   "text": "اضْبِطِ السَّاعَةَ عَلَى الثَّانِيَةِ تَمَامًا."
+  },
+  {
+   "name": "qr-bcd1a8c5",
+   "text": "صِلْ كُلَّ نَشَاطٍ بِوَقْتِهْ."
+  },
+  {
+   "name": "qr-950fa2a3",
+   "text": "رَتِّبْ أَنْشِطَةَ الْيَوْمِ مِنَ الْأَوَّلِ إِلَى الْأَخِيرْ."
+  },
+  {
+   "name": "qr-4bc7df4b",
+   "text": "سَطْرٌ وَاحِدٌ فِيهِ وَقْتٌ غَيْرُ مَعْقُولٍ لِنَشَاطِهْ، اِضْغَطْ عَلَيْهْ."
+  },
+  {
+   "name": "qr-e8ca5392",
+   "text": "فِي الْجَدْوَلِ الزَّمَنِيّْ: الْحِصَّةُ الْأُولَى السَّابِعَةُ وَالثَّانِيَةُ الثَّامِنَةْ. كَمْ تَسْتَغْرِقُ الْحِصَّةْ؟"
+  },
+  {
+   "name": "qr-d822a3ab",
+   "text": "كَمِ السَّاعَةْ؟"
+  },
+  {
+   "name": "qr-41debb92",
+   "text": "أَكْمِلِ الْجَدْوَلَ بِسَحْبِ الْوَقْتِ الْمُنَاسِبْ."
+  },
+  {
+   "name": "qr-ee9e8eae",
+   "text": "صِلْ كُلَّ حِصَّةٍ بِوَقْتِ بِدَايَتِهَا."
+  },
+  {
+   "name": "qr-b695205d",
+   "text": "رَتِّبْ أَوْقَاتَ الْجَدْوَلِ مِنَ الْأَبْكَرِ إِلَى الْأَحْدَثْ."
+  },
+  {
+   "name": "qr-b85aff73",
+   "text": "كُلُّهَا أَوْقَاتُ صَبَاحٍ فِي الْجَدْوَلْ، أَيُّهَا لَا يَنْتَمِي؟"
+  },
+  {
+   "name": "qr-8d6e76a2",
+   "text": "إِذَا مَالَتْ كِفَّةُ الْمِيزَانِ إِلَى أَسْفَلَ فَإِنَّ مَا فِيهَا:"
+  },
+  {
+   "name": "qr-fc8c6a2b",
+   "text": "الشَّيْءُ الْأَكْبَرُ حَجْمًا يَكُونُ دَائِمًا أَثْقَلْ."
+  },
+  {
+   "name": "qr-3a3fdd96",
+   "text": "كَمْ كُتْلَةُ الشَّيْءِ عَلَى الْمِيزَانْ؟"
+  },
+  {
+   "name": "qr-249dffd6",
+   "text": "صَنِّفِ الْأَشْيَاءَ حَسَبَ وَزْنِهَا."
+  },
+  {
+   "name": "qr-980b6cb2",
+   "text": "قَارِنْ بَيْنَ الْكُتْلَتَيْنِ بِالْغِرَامْ."
+  },
+  {
+   "name": "qr-f1bb58b7",
+   "text": "اِقْلِبْ بِطَاقَتَيْنِ فِي كُلِّ دَوْرْ: طَابِقْ كُلَّ شَيْءٍ بِوَصْفِ وَزْنِهْ."
+  },
+  {
+   "name": "qr-ae889ce6",
+   "text": "تَوَازَنَ الْكِتَابُ مَعَ ثَمَانِي مُكَعَّبَاتْ. كَمْ يَزِنُ الْكِتَابْ؟"
+  },
+  {
+   "name": "qr-2706eeb0",
+   "text": "إِذَا اسْتَوَتْ كِفَّتَا الْمِيزَانِ فَالْوَزْنَانِ مُتَسَاوِيَانْ."
+  },
+  {
+   "name": "qr-3064e595",
+   "text": "اِنْقُرْ سِتَّ مُكَعَّبَاتٍ لِتُوَازِنَ الْكِفَّةَ الْأُخْرَى."
+  },
+  {
+   "name": "qr-42a1ce77",
+   "text": "أَدِرْ مُؤَشِّرَ الْمِيزَانِ إِلَى مِئَتَيْنِ وَخَمْسِينَ غِرَامًا."
+  },
+  {
+   "name": "qr-58f62349",
+   "text": "رَتِّبِ الْأَشْيَاءَ مِنَ الْأَخَفِّ إِلَى الْأَثْقَلْ."
+  },
+  {
+   "name": "qr-ea2bf2c9",
+   "text": "لَوِّنِ الْكِفَّةَ الْأَثْقَلَ بِالْأَحْمَرِ وَالْكِفَّةَ الْأَخَفَّ بِالْأَزْرَقْ."
+  },
+  {
+   "name": "qr-fcbbd329",
+   "text": "أَيُّ هَذِهِ عَدَدٌ زَوْجِيّْ؟"
+  },
+  {
+   "name": "qr-7c503819",
+   "text": "الْعَدَدُ الزَّوْجِيُّ يُمْكِنُ تَقْسِيمُهُ إِلَى أَزْوَاجٍ بِلَا بَاقْ."
+  },
+  {
+   "name": "qr-821a255f",
+   "text": "لَوِّنْ مُضَاعَفَاتِ الْعَدَدِ اثْنَيْنِ فِي اللَّوْحَةْ."
+  },
+  {
+   "name": "qr-377b4739",
+   "text": "عُدَّ بِالِاثْنَيْنْ: اِنْقُرِ الْأَزْوَاجَ بِالتَّرْتِيبِ وَتَوَقَّفْ عِنْدَ الْعَشَرَةْ."
+  },
+  {
+   "name": "qr-8f07a276",
+   "text": "صَنِّفِ الْأَعْدَادْ: زَوْجِيٌّ أَمْ فَرْدِيّْ؟"
+  },
+  {
+   "name": "qr-3b20f852",
+   "text": "كُلُّهَا أَعْدَادٌ زَوْجِيَّةْ، أَيُّهَا لَا يَنْتَمِي؟"
+  },
+  {
+   "name": "qr-9b1bd374",
+   "text": "أَيُّ هَذِهِ عَدَدٌ فَرْدِيّْ؟"
+  },
+  {
+   "name": "qr-424a9248",
+   "text": "إِذَا أَضَفْنَا وَاحِدًا إِلَى عَدَدٍ زَوْجِيٍّ بَقِيَ زَوْجِيًّا."
+  },
+  {
+   "name": "qr-7c45c93e",
+   "text": "أَكْمِلْ نَمَطَ الْأَعْدَادِ الْفَرْدِيَّةْ."
+  },
+  {
+   "name": "qr-4937ccae",
+   "text": "أَضِفْ وَاحِدًا إِلَى عَدَدٍ زَوْجِيّْ، أَكْمِلِ الْمُعَادَلَةْ."
+  },
+  {
+   "name": "qr-cd6aad18",
+   "text": "رَتِّبِ الْأَعْدَادَ الْفَرْدِيَّةَ مِنَ الْأَصْغَرِ إِلَى الْأَكْبَرْ."
+  },
+  {
+   "name": "qr-16354d36",
+   "text": "اِقْلِبْ بِطَاقَتَيْنِ فِي كُلِّ دَوْرْ: طَابِقْ كُلَّ عَدَدٍ زَوْجِيٍّ بِالْفَرْدِيِّ الَّذِي يَلِيهْ."
+  },
+  {
+   "name": "qr-69e41fe1",
+   "text": "أَيُّ هَذِهِ الْأَعْدَادِ أَكْبَرْ؟"
   }
  ]
 }
