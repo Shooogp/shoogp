@@ -1,6 +1,6 @@
 {
  "_readme": "دفعةُ فحصِ النطق: يقرؤُها سيرُ n8n «شوجب — فحص نطق الأسئلة (جيميناي)» — لكلِّ مقطعٍ نصُّه كما أُرسِلَ إلى داريجات. تُبنى بـ`node tools/build-qread-batch.mjs audit <batchId> [--limit N] [--only a,b]`.",
- "batchId": "2026-09-23-audit-trial",
+ "batchId": "2026-09-23-audit-trial2",
  "items": [
   {
    "name": "qr-3f05f454",
