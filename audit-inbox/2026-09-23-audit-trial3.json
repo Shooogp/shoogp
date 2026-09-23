@@ -1,0 +1,88 @@
+{
+ "batchId": "2026-09-23-audit-trial3",
+ "checkedAt": "2026-09-23T13:34:34.836Z",
+ "total": 8,
+ "flagged": 3,
+ "items": [
+  {
+   "name": "qr-3f05f454",
+   "text": "Choose the greeting word.",
+   "batchId": "2026-09-23-audit-trial3",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-85939d5d",
+   "text": "النَّبَاتَاتُ وَالْحَيَوَانَاتُ كَائِنَاتٌ حَيَّةْ.",
+   "batchId": "2026-09-23-audit-trial3",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-e213bd90",
+   "text": "أَيُّ هَذِهِ ٱلْأَشْيَاءِ غَيْرُ حَيّْ؟",
+   "batchId": "2026-09-23-audit-trial3",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-99650054",
+   "text": "أَكْمِلِ ٱلْجُمْلَةَ بِسَحْبِ ٱلْكَلِمَةِ ٱلْمُنَاسِبَةْ.",
+   "batchId": "2026-09-23-audit-trial3",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-10a4c0f8",
+   "text": "اضْغَطْ عَلَى الْكَائِنِلْ حَيِّ فِي الصُّورَةْ.",
+   "batchId": "2026-09-23-audit-trial3",
+   "verdict": {
+    "ok": null,
+    "parseError": true,
+    "raw": "{\n  \"ok\": false,\n  \"issues\": [\n    {\n      \"word\": \"الْكَائِنِلْ\",\n      \"heard\": \"الْكَائِنِ\",\n      \"note\": \"The speaker pronounced the word correctly as 'الْكَائِنِ', omitting the extra 'لْ' at the end of the written typo.\"\n    },\n    {\n      \"word\": \"حَيِّ\",\n      \"heard\": \"الْحَيِّ\",\n      \"note\": \"The speaker pronounced the word with the definite article 'الْ' as 'الْحَيِّ', correcting the written typo.\"\n    }\n  ],\n  \"confidence\": \"high\"\n}"
+   }
+  },
+  {
+   "name": "qr-c547965c",
+   "text": "لِلنَّبَاتِ جُذُورٌ وَسَاقٌ وَأَجْنِحَةْ.",
+   "batchId": "2026-09-23-audit-trial3",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-7a16e9a8",
+   "text": "ثَلَاثَةٌ زَائِدُ أَرْبَعَةٍ، يُسَاوِي: أَرْبَعَةٌ زَائِدُ ثَلَاثَةْ.",
+   "batchId": "2026-09-23-audit-trial3",
+   "verdict": {
+    "ok": null,
+    "parseError": true,
+    "raw": "{\n  \"ok\": false,\n  \"issues\": [\n    {\n      \"word\": \"ثَلَاثَةٌ\",\n      \"heard\": \"ثَلَاثَةُ\",\n      \"note\": \"نُطِقَتْ بِالضَّمَّةِ بَدَلًا مِنَ التَّنْوِينِ (ضَمَّتَيْنِ).\"\n    },\n    {\n      \"word\": \"أَرْبَعَةٍ\",\n      \"heard\": \"أَرْبَعَةْ\",\n      \"note\": \"حُذِفَ تَنْوِينُ الْكَسْرِ وَسُكِّنَتِ التَّاءُ الْمَرْبُوطَةُ عِنْدَ الْفَاصِلَةِ.\"\n    },\n    {\n      \"word\": \"أَرْبَعَةٌ\",\n      \"heard\": \"أَرْبَعَةْ\",\n      \"note\": \"حُذِفَ تَنْوِينُ الضَّمِّ وَسُكِّنَتِ التَّاءُ الْمَرْبُوطَةُ فِي وَصْلِ ا"
+   }
+  },
+  {
+   "name": "qr-ecf3de73",
+   "text": "أَيْنَ وُلِدَنْ نَبِيُّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ؟",
+   "batchId": "2026-09-23-audit-trial3",
+   "verdict": {
+    "ok": null,
+    "parseError": true,
+    "raw": "{\n  \"ok\": false,\n  \"issues\": [\n    {\n      \"word\": \"وُلِدَنْ\",\n      \"heard\": \"وُلِدَ\",\n      \"note\": \"The word was pronounced without the final 'n' sound (noon sakina) written in the text.\"\n    },\n    {\n      \"word\": \"نَبِيُّ\",\n      \"heard\": \"النَّبِيُّ\",\n      \"note\": \"Pronounced with the definite article 'ال' (Al-), which is missing in the written text.\"\n    }\n  ],\n  \"confidence\": \"high\"\n}"
+   }
+  }
+ ]
+}
