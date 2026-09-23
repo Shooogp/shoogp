@@ -72,8 +72,12 @@ export function liaison(t){
                   : /^\u0627\u0644\u0652?([\u0621-\u064A])([\u064B-\u0652]*)(.*)$/.exec(w[i]);
     const prev = w[i - 1];
     if (!m || !SHORT.test(prev)) continue;
+    // لفظُ الجلالةِ لا يُمَسّ قبلَه ولا بعدَه: «قالَلْ لَهُ» تقصُرُ مدَّه، و«اللَّهِرْ» تُلصِقُ به حرفاً
+    const bare = x => x.replace(/[\u064B-\u0652\u0670]/g, '');
+    if (/^\u0627\u0644\u0644\u0647/.test(bare(w[i])) || /\u0644\u0644\u0647$/.test(bare(prev))) continue;
     const [, c, marks, rest] = m;
-    if (SUN.includes(c)) { w[i - 1] = prev + c + '\u0652'; w[i] = c + marks.replace('\u0651', '') + rest; }
+    // الإدغامُ بالشدّةِ المكتوبةِ لا بالحرف: «الْتِقاطُ» لامُها أصليّةٌ فتبقى
+    if (SUN.includes(c) && marks.includes('\u0651')) { w[i - 1] = prev + c + '\u0652'; w[i] = c + marks.replace('\u0651', '') + rest; }
     else { w[i - 1] = prev + '\u0644\u0652'; w[i] = c + marks.replace(/^\u0652/, '') + rest; }
   }
   return w.join(' ');
@@ -88,7 +92,7 @@ const SPOKEN = JSON.parse(fs.readFileSync(ROOT + 'tools/qread-spoken.json', 'utf
    قبلَ حرفٍ شمسيٍّ مشدَّد · آخرُ الكلمةِ قبلَ علامةِ ترقيمٍ أو في نهايةِ النصّ (وقف).
    والأرقامُ ممنوعةٌ: تُكتَبُ كلماتٍ معرَبة. يعيدُ سببَ الرفضِ أو ''. */
 const AR = /[\u0621-\u064A]/;
-const MARK = /[\u064B-\u0652]/;
+const MARK = /[\u064B-\u0652\u0670]/;          // ومنها الألفُ الخنجريّة (هٰذا)
 export function toneProblem(t){
   if (!AR.test(t)) return '';                                    // إنجليزيّ
   if (/[0-9\u0660-\u0669]/.test(t)) return 'أرقام';
@@ -96,7 +100,7 @@ export function toneProblem(t){
   const bad = [];
   toks.forEach((tok, ti) => {
     const pausal = /[،؟.,:!؛…]$/.test(tok) || ti === toks.length - 1;
-    const w = tok.replace(/[^\u0621-\u0652]/g, '');
+    const w = tok.replace(/[^\u0621-\u0652\u0670]/g, '');
     if (!AR.test(w)) return;
     const L = [];                                   // [حرف, علاماتُه]
     for (const ch of w) { if (MARK.test(ch)) { if (L.length) L[L.length - 1][1] += ch; } else L.push([ch, '']); }
@@ -105,7 +109,7 @@ export function toneProblem(t){
       if ('\u0627\u0649\u0622'.includes(c)) return false;                       // ا ى آ
       const pm = k ? L[k - 1][1] : '';
       if ((c === '\u0648' && pm.includes('\u064F')) || (c === '\u064A' && pm.includes('\u0650'))) return false;
-      if (c === '\u0644' && k && L[k - 1][0] === '\u0627' && L[k + 1] && L[k + 1][1].includes('\u0651')) return false; // لامُ «ال» الشمسيّة
+      if (c === '\u0644' && k && '\u0627\u0644'.includes(L[k - 1][0]) && L[k + 1] && L[k + 1][1].includes('\u0651')) return false; // لامُ «ال» الشمسيّة (ومنها «لِلنَّبات»)
       if (k === L.length - 1 && pausal) return false;                       // وقف
       return true;
     });
