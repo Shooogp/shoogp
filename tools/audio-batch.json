@@ -22,32 +22,24 @@
   "⚠️ **وحدُّ المعدَّلِ خمسةُ طلباتٍ في الدقيقة** (‏`x-ratelimit-limit: 5`)، فالعقدةُ",
   "تُرسِلُ عنصراً واحداً كلَّ ١٥ ثانية."
  ],
- "batchId": "2026-09-23-qread-patterns",
+ "batchId": "2026-09-23-qread-akmil",
  "voice": "حطاب",
  "items": [
   {
-   "name": "qr-de92c1ff--i1",
-   "text": "أَكْمِلْ، مَا آكُلُهُ لِأَنْمُوَ بِصِحَّةٍ بِسَحْبِ ٱلْكَلِمَاتْ."
+   "name": "qr-de92c1ff--k1",
+   "text": "أَكْمِلِ مَا آكُلُهُ لِأَنْمُوَ بِصِحَّةٍ بِسَحْبِ ٱلْكَلِمَاتْ."
   },
   {
-   "name": "qr-de92c1ff--i2",
-   "text": "أَكْمِلْ مَا آكُلُهُ لِأَنْمُوَ بِصِحَّةٍ بِسَحْبِ ٱلْكَلِمَاتْ."
+   "name": "qr-de92c1ff--k2",
+   "text": "أَكْ مِلْ مَا آكُلُهُ لِأَنْمُوَ بِصِحَّةٍ بِسَحْبِ ٱلْكَلِمَاتْ."
   },
   {
-   "name": "qr-de92c1ff--i3",
-   "text": "أكمل مَا آكُلُهُ لِأَنْمُوَ بِصِحَّةٍ بِسَحْبِ ٱلْكَلِمَاتْ."
+   "name": "qr-de92c1ff--k3",
+   "text": "أَكْمِيلْ مَا آكُلُهُ لِأَنْمُوَ بِصِحَّةٍ بِسَحْبِ ٱلْكَلِمَاتْ."
   },
   {
-   "name": "qr-ecbbe532--e1",
-   "text": "Listen, then choose the word that starts with the letter T."
-  },
-  {
-   "name": "qr-ecbbe532--e2",
-   "text": "Listen, then choose the word that starts with the letter tee."
-  },
-  {
-   "name": "qr-ecbbe532--e3",
-   "text": "Listen, then choose the word that starts with the letter \"T\"."
+   "name": "qr-de92c1ff--k4",
+   "text": "أَكْمِلِ، مَا آكُلُهُ لِأَنْمُوَ بِصِحَّةٍ بِسَحْبِ ٱلْكَلِمَاتْ."
   }
  ]
 }
