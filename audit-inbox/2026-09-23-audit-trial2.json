@@ -1,0 +1,88 @@
+{
+ "batchId": "2026-09-23-audit-trial2",
+ "checkedAt": "2026-09-23T13:33:02.222Z",
+ "total": 8,
+ "flagged": 6,
+ "items": [
+  {
+   "name": "qr-3f05f454",
+   "text": "Choose the greeting word.",
+   "batchId": "2026-09-23-audit-trial2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-85939d5d",
+   "text": "النَّبَاتَاتُ وَالْحَيَوَانَاتُ كَائِنَاتٌ حَيَّةْ.",
+   "batchId": "2026-09-23-audit-trial2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-e213bd90",
+   "text": "أَيُّ هَذِهِ ٱلْأَشْيَاءِ غَيْرُ حَيّْ؟",
+   "batchId": "2026-09-23-audit-trial2",
+   "verdict": {
+    "ok": null,
+    "parseError": true,
+    "raw": "{\n  \"ok\": true,\n  \""
+   }
+  },
+  {
+   "name": "qr-99650054",
+   "text": "أَكْمِلِ ٱلْجُمْلَةَ بِسَحْبِ ٱلْكَلِمَةِ ٱلْمُنَاسِبَةْ.",
+   "batchId": "2026-09-23-audit-trial2",
+   "verdict": {
+    "ok": null,
+    "parseError": true,
+    "raw": "{\n  \"ok\": true,\n  \""
+   }
+  },
+  {
+   "name": "qr-10a4c0f8",
+   "text": "اضْغَطْ عَلَى الْكَائِنِلْ حَيِّ فِي الصُّورَةْ.",
+   "batchId": "2026-09-23-audit-trial2",
+   "verdict": {
+    "ok": null,
+    "parseError": true,
+    "raw": "{\n  \"ok\": true,\n"
+   }
+  },
+  {
+   "name": "qr-c547965c",
+   "text": "لِلنَّبَاتِ جُذُورٌ وَسَاقٌ وَأَجْنِحَةْ.",
+   "batchId": "2026-09-23-audit-trial2",
+   "verdict": {
+    "ok": null,
+    "parseError": true,
+    "raw": "{\n  \""
+   }
+  },
+  {
+   "name": "qr-7a16e9a8",
+   "text": "ثَلَاثَةٌ زَائِدُ أَرْبَعَةٍ، يُسَاوِي: أَرْبَعَةٌ زَائِدُ ثَلَاثَةْ.",
+   "batchId": "2026-09-23-audit-trial2",
+   "verdict": {
+    "ok": null,
+    "parseError": true,
+    "raw": "{\n  \"ok\": false,"
+   }
+  },
+  {
+   "name": "qr-ecf3de73",
+   "text": "أَيْنَ وُلِدَنْ نَبِيُّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ؟",
+   "batchId": "2026-09-23-audit-trial2",
+   "verdict": {
+    "ok": null,
+    "parseError": true,
+    "raw": "{\n  \""
+   }
+  }
+ ]
+}
