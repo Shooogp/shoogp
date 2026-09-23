@@ -22,407 +22,407 @@
   "⚠️ **وحدُّ المعدَّلِ خمسةُ طلباتٍ في الدقيقة** (‏`x-ratelimit-limit: 5`)، فالعقدةُ",
   "تُرسِلُ عنصراً واحداً كلَّ ١٥ ثانية."
  ],
- "batchId": "2026-09-23-qread-b02",
+ "batchId": "2026-09-23-qread-b03",
  "voice": "حطاب",
  "items": [
   {
-   "name": "qr-ca8ddbb1--23qreadb02",
+   "name": "qr-ca8ddbb1--23qreadb03",
    "text": "You write on the floor."
   },
   {
-   "name": "qr-b7ab7bae--23qreadb02",
+   "name": "qr-b7ab7bae--23qreadb03",
    "text": "Listen, then click on the chair."
   },
   {
-   "name": "qr-af76a699--23qreadb02",
+   "name": "qr-af76a699--23qreadb03",
    "text": "Color the furniture green. Color the parts of the room blue."
   },
   {
-   "name": "qr-91d1a86c--23qreadb02",
+   "name": "qr-91d1a86c--23qreadb03",
    "text": "The book is on top of the desk. Complete: The book is … the desk."
   },
   {
-   "name": "qr-628d2de4--23qreadb02",
+   "name": "qr-628d2de4--23qreadb03",
    "text": "'Under' means below something."
   },
   {
-   "name": "qr-17317cf0--23qreadb02",
+   "name": "qr-17317cf0--23qreadb03",
    "text": "Drag each word to the right picture."
   },
   {
-   "name": "qr-5bc36ee6--23qreadb02",
+   "name": "qr-5bc36ee6--23qreadb03",
    "text": "Click the book that is UNDER the desk."
   },
   {
-   "name": "qr-c4832afc--23qreadb02",
+   "name": "qr-c4832afc--23qreadb03",
    "text": "Click the word that is NOT a place word."
   },
   {
-   "name": "qr-cc140dd5--23qreadb02",
+   "name": "qr-cc140dd5--23qreadb03",
    "text": "What do you put your pens in to keep your desk tidy?"
   },
   {
-   "name": "qr-edf302d5--23qreadb02",
+   "name": "qr-edf302d5--23qreadb03",
    "text": "A tidy desk helps you find your things."
   },
   {
-   "name": "qr-22c134a2--23qreadb02",
+   "name": "qr-22c134a2--23qreadb03",
    "text": "'What's this? It's a desk.' is a correct answer."
   },
   {
-   "name": "qr-e27e665c--23qreadb02",
+   "name": "qr-e27e665c--23qreadb03",
    "text": "Listen, then start at the green dot and trace the capital letter T."
   },
   {
-   "name": "qr-9be067b7--23qreadb02",
+   "name": "qr-9be067b7--23qreadb03",
    "text": "Which word is a classroom thing?"
   },
   {
-   "name": "qr-24cc5a93--23qreadb02",
+   "name": "qr-24cc5a93--23qreadb03",
    "text": "You look through a window."
   },
   {
-   "name": "qr-df33554f--23qreadb02",
+   "name": "qr-df33554f--23qreadb03",
    "text": "Listen, then click on the door."
   },
   {
-   "name": "qr-04676be4--23qreadb02",
+   "name": "qr-04676be4--23qreadb03",
    "text": "Which toy is round and you can throw it?"
   },
   {
-   "name": "qr-b7dd1f0b--23qreadb02",
+   "name": "qr-b7dd1f0b--23qreadb03",
    "text": "A teddy is a soft toy bear."
   },
   {
-   "name": "qr-646a68ee--23qreadb02",
+   "name": "qr-646a68ee--23qreadb03",
    "text": "Match each toy to what it is like."
   },
   {
-   "name": "qr-d7819d10--23qreadb02",
+   "name": "qr-d7819d10--23qreadb03",
    "text": "Listen, then click on the ball."
   },
   {
-   "name": "qr-d6e777f8--23qreadb02",
+   "name": "qr-d6e777f8--23qreadb03",
    "text": "Sort each toy."
   },
   {
-   "name": "qr-59354376--23qreadb02",
+   "name": "qr-59354376--23qreadb03",
    "text": "Listen, then choose the word that starts with the letter 'p'."
   },
   {
-   "name": "qr-b031692e--23qreadb02",
+   "name": "qr-b031692e--23qreadb03",
    "text": "The word 'top' ends with the letter 'p'."
   },
   {
-   "name": "qr-adbbfb94--23qreadb02",
+   "name": "qr-adbbfb94--23qreadb03",
    "text": "Listen, then start at the green dot and trace the letter p."
   },
   {
-   "name": "qr-a6cb0ea1--23qreadb02",
+   "name": "qr-a6cb0ea1--23qreadb03",
    "text": "Which toy flies in the sky?"
   },
   {
-   "name": "qr-a344a9d3--23qreadb02",
+   "name": "qr-a344a9d3--23qreadb03",
    "text": "'What colour is it?' asks about the colour of a thing."
   },
   {
-   "name": "qr-651ebf80--23qreadb02",
+   "name": "qr-651ebf80--23qreadb03",
    "text": "Match each toy to where it goes."
   },
   {
-   "name": "qr-46b98c72--23qreadb02",
+   "name": "qr-46b98c72--23qreadb03",
    "text": "Color the ball red. Color the car blue. Color the train green. Color the plane orange."
   },
   {
-   "name": "qr-d220e133--23qreadb02",
+   "name": "qr-d220e133--23qreadb03",
    "text": "Which answer fits: 'What's your favourite toy?'"
   },
   {
-   "name": "qr-cc9315a2--23qreadb02",
+   "name": "qr-cc9315a2--23qreadb03",
    "text": "Your favourite toy is the toy you like best."
   },
   {
-   "name": "qr-aa0aa9f4--23qreadb02",
+   "name": "qr-aa0aa9f4--23qreadb03",
    "text": "Match each question to its answer."
   },
   {
-   "name": "qr-83a7ce3f--23qreadb02",
+   "name": "qr-83a7ce3f--23qreadb03",
    "text": "Listen, then click on the train."
   },
   {
-   "name": "qr-78c1d614--23qreadb02",
+   "name": "qr-78c1d614--23qreadb03",
    "text": "Read the clues, then complete the sentence."
   },
   {
-   "name": "qr-1881f7d1--23qreadb02",
+   "name": "qr-1881f7d1--23qreadb03",
    "text": "Click the word that is NOT a toy."
   },
   {
-   "name": "qr-c9c9682c--23qreadb02",
+   "name": "qr-c9c9682c--23qreadb03",
    "text": "Where do you keep your toys?"
   },
   {
-   "name": "qr-0f19ab2a--23qreadb02",
+   "name": "qr-0f19ab2a--23qreadb03",
    "text": "Sharing your toys with a friend is kind."
   },
   {
-   "name": "qr-be0db7d5--23qreadb02",
+   "name": "qr-be0db7d5--23qreadb03",
    "text": "'It's my teddy' answers the question 'What's your favourite toy?'"
   },
   {
-   "name": "qr-42747020--23qreadb02",
+   "name": "qr-42747020--23qreadb03",
    "text": "Listen, then start at the green dot and trace the capital letter P."
   },
   {
-   "name": "qr-9bfe4d0a--23qreadb02",
+   "name": "qr-9bfe4d0a--23qreadb03",
    "text": "Which word is a toy?"
   },
   {
-   "name": "qr-b58dbdae--23qreadb02",
+   "name": "qr-b58dbdae--23qreadb03",
    "text": "A plane flies in the sky."
   },
   {
-   "name": "qr-bae30697--23qreadb02",
+   "name": "qr-bae30697--23qreadb03",
    "text": "Listen, then click on the plane."
   },
   {
-   "name": "qr-43dcc08e--23qreadb02",
+   "name": "qr-43dcc08e--23qreadb03",
    "text": "Listen, then choose the shape with four equal sides."
   },
   {
-   "name": "qr-9efdaea2--23qreadb02",
+   "name": "qr-9efdaea2--23qreadb03",
    "text": "A triangle has three sides."
   },
   {
-   "name": "qr-dd16cb22--23qreadb02",
+   "name": "qr-dd16cb22--23qreadb03",
    "text": "Match each shape to the number of its sides."
   },
   {
-   "name": "qr-00a45424--23qreadb02",
+   "name": "qr-00a45424--23qreadb03",
    "text": "Put the shapes in order, from the fewest sides to the most sides."
   },
   {
-   "name": "qr-1feef177--23qreadb02",
+   "name": "qr-1feef177--23qreadb03",
    "text": "Sort each shape."
   },
   {
-   "name": "qr-4a0c2ec5--23qreadb02",
+   "name": "qr-4a0c2ec5--23qreadb03",
    "text": "Color the square blue. Color the circle red. Color the triangle green. Color the rectangle orange."
   },
   {
-   "name": "qr-b8077bc5--23qreadb02",
+   "name": "qr-b8077bc5--23qreadb03",
    "text": "Complete: What are these? They're …."
   },
   {
-   "name": "qr-ceea3b7a--23qreadb02",
+   "name": "qr-ceea3b7a--23qreadb03",
    "text": "'These' means more than one thing."
   },
   {
-   "name": "qr-2fc41137--23qreadb02",
+   "name": "qr-2fc41137--23qreadb03",
    "text": "Match one thing to more than one."
   },
   {
-   "name": "qr-85939d5d--23qreadb02",
+   "name": "qr-85939d5d--23qreadb03",
    "text": "النَّبَاتَاتُ وَالْحَيَوَانَاتُ كَائِنَاتٌ حَيَّةْ."
   },
   {
-   "name": "qr-e213bd90--23qreadb02",
+   "name": "qr-e213bd90--23qreadb03",
    "text": "أَيُّ هَذِهِلْ أَشْيَاءِ غَيْرُ حَيّْ؟"
   },
   {
-   "name": "qr-99650054--23qreadb02",
+   "name": "qr-99650054--23qreadb03",
    "text": "أَكْمِلِلْ جُمْلَةَ بِسَحْبِلْ كَلِمَةِلْ مُنَاسِبَةْ."
   },
   {
-   "name": "qr-10a4c0f8--23qreadb02",
+   "name": "qr-10a4c0f8--23qreadb03",
    "text": "اضْغَطْ عَلَى الْكَائِنِلْ حَيِّ فِي الصُّورَةْ."
   },
   {
-   "name": "qr-6070d754--23qreadb02",
+   "name": "qr-6070d754--23qreadb03",
    "text": "صَنِّفْ كُلَّ شَيْءٍ إِلَى كَائِنٍ حَيٍّ أَوْ شَيْءٍ غَيْرِ حَيّْ."
   },
   {
-   "name": "qr-92dda353--23qreadb02",
+   "name": "qr-92dda353--23qreadb03",
    "text": "أَيُّهَا لَا يَنْتَمِي؟"
   },
   {
-   "name": "qr-41c2db6d--23qreadb02",
+   "name": "qr-41c2db6d--23qreadb03",
    "text": "تَحْتَاجُ جَمِيعُلْ كَائِنَاتِلْ حَيَّةِ إِلَى مَكَانٍ تَعِيشُ فِيهْ."
   },
   {
-   "name": "qr-2bdb9b49--23qreadb02",
+   "name": "qr-2bdb9b49--23qreadb03",
    "text": "مَاذَا تُوَفِّرُلْ بِيئَةُلْ مَحَلِّيَّةُ لِلْكَائِنِلْ حَيّْ؟"
   },
   {
-   "name": "qr-bc0e9f21--23qreadb02",
+   "name": "qr-bc0e9f21--23qreadb03",
    "text": "أَكْمِلْ مَا تُوَفِّرُهُلْ بِيئَةُ لِلْكَائِنِلْ حَيِّ بِسَحْبِلْ كَلِمَاتْ."
   },
   {
-   "name": "qr-7e795fb8--23qreadb02",
+   "name": "qr-7e795fb8--23qreadb03",
    "text": "صِلْ كُلَّ حَيَوَانٍ بِالْمَكَانِلْ لَذِي يَعِيشُ فِيهْ."
   },
   {
-   "name": "qr-71ae9c7e--23qreadb02",
+   "name": "qr-71ae9c7e--23qreadb03",
    "text": "صَنِّفِلْ حَيَوَانَاتِ حَسَبَلْ مَكَانِلْ لَذِي تَعِيشُ فِيهْ."
   },
   {
-   "name": "qr-354ffb39--23qreadb02",
+   "name": "qr-354ffb39--23qreadb03",
    "text": "أَيُّهَا لَا يَعِيشُ فِي الْمَاءْ؟"
   },
   {
-   "name": "qr-f7600632--23qreadb02",
+   "name": "qr-f7600632--23qreadb03",
    "text": "يَكْبُرُ صَغِيرُلْ إِنْسَانِ لِيُصْبِحَ بَالِغَا."
   },
   {
-   "name": "qr-f214e311--23qreadb02",
+   "name": "qr-f214e311--23qreadb03",
    "text": "مَاذَا يُسَمَّى صَغِيرُلْ أَسَدْ؟"
   },
   {
-   "name": "qr-1aaa3b99--23qreadb02",
+   "name": "qr-1aaa3b99--23qreadb03",
    "text": "أَكْمِلِلْ جُمْلَتَيْنِ بِسَحْبِلْ كَلِمَةِلْ مُنَاسِبَةْ."
   },
   {
-   "name": "qr-1fb7fccd--23qreadb02",
+   "name": "qr-1fb7fccd--23qreadb03",
    "text": "صِلْ كُلَّ حَيَوَانٍ بِصَغِيرِهْ."
   },
   {
-   "name": "qr-630c7056--23qreadb02",
+   "name": "qr-630c7056--23qreadb03",
    "text": "رَتِّبْ مَرَاحِلَ نُمُوِّ الْإِنْسَانِ مِنَلْ أَصْغَرِ إِلَى الْأَكْبَرْ."
   },
   {
-   "name": "qr-ff2b0913--23qreadb02",
+   "name": "qr-ff2b0913--23qreadb03",
    "text": "أَيُّ صَغِيرٍ لَا يُشْبِهُ أَبَاهُ كَثِيرَا؟"
   },
   {
-   "name": "qr-19d4d7b8--23qreadb02",
+   "name": "qr-19d4d7b8--23qreadb03",
    "text": "شُرْبُلْ كَثِيرِ مِنَلْ مَاءِ أَمْرٌ صِحِّيّْ."
   },
   {
-   "name": "qr-b05b8db9--23qreadb02",
+   "name": "qr-b05b8db9--23qreadb03",
    "text": "أَيُّ هَذِهِلْ أَطْعِمَةِ صِحِّيّْ؟"
   },
   {
-   "name": "qr-971fec2f--23qreadb02",
+   "name": "qr-971fec2f--23qreadb03",
    "text": "صِلْ كُلَّ نَوْعٍ بِمِثَالِهْ."
   },
   {
-   "name": "qr-de92c1ff--23qreadb02",
+   "name": "qr-de92c1ff--23qreadb03",
    "text": "أَكْمِلْ مَا آكُلُهُ لِأَنْمُوَ بِصِحَّةٍ بِسَحْبِلْ كَلِمَاتْ."
   },
   {
-   "name": "qr-32fbc315--23qreadb02",
+   "name": "qr-32fbc315--23qreadb03",
    "text": "صَنِّفِلْ أَطْعِمَةَ وَالْمَشْرُوبَاتِ إِلَى صِحِّيٍّ وَغَيْرِ صِحِّيّْ."
   },
   {
-   "name": "qr-e81e7380--23qreadb02",
+   "name": "qr-e81e7380--23qreadb03",
    "text": "أَيُّهَا لَيْسَ طَعَامًا صِحِّيَّا؟"
   },
   {
-   "name": "qr-f0664849--23qreadb02",
+   "name": "qr-f0664849--23qreadb03",
    "text": "أَيُّ هَذِهِ كَائِنٌ حَيّْ؟"
   },
   {
-   "name": "qr-c4dd935a--23qreadb02",
+   "name": "qr-c4dd935a--23qreadb03",
    "text": "كُلُّ كَائِنٍ حَيٍّ يَحْتَاجُ إِلَى مَكَانٍ يَعِيشُ فِيهْ."
   },
   {
-   "name": "qr-a67650a0--23qreadb02",
+   "name": "qr-a67650a0--23qreadb03",
    "text": "أَكْمِلِلْ جُمْلَةَ بِسَحْبِلْ كَلِمَتَيْنِلْ مُنَاسِبَتَيْنْ."
   },
   {
-   "name": "qr-bd953362--23qreadb02",
+   "name": "qr-bd953362--23qreadb03",
    "text": "اضْغَطْ عَلَى الشَّيْءِ غَيْرِلْ حَيِّ الَّذِي يَسِيرُ عَلَى عَجَلَاتْ."
   },
   {
-   "name": "qr-09aa6b30--23qreadb02",
+   "name": "qr-09aa6b30--23qreadb03",
    "text": "رَتِّبْ مَرَاحِلَ نُمُوِّ الدَّجَاجَةِ مِنَلْ بِدَايَةِ إِلَى النِّهَايَةْ."
   },
   {
-   "name": "qr-93400d86--23qreadb02",
+   "name": "qr-93400d86--23qreadb03",
    "text": "اقْلِبْ بِطَاقَتَيْنِ فِي كُلِّ دَوْرٍ لِتَرْبِطَ كُلَّ حَيَوَانٍ بِصَغِيرِهْ."
   },
   {
-   "name": "qr-c547965c--23qreadb02",
+   "name": "qr-c547965c--23qreadb03",
    "text": "لِلنَّبَاتِ جُذُورٌ وَسَاقٌ وَأَجْنِحَةْ."
   },
   {
-   "name": "qr-e6b6b6cc--23qreadb02",
+   "name": "qr-e6b6b6cc--23qreadb03",
    "text": "أَيُّ أَجْزَاءِنْ نَبَاتِ يَنْمُو تَحْتَتْ تُرَابْ؟"
   },
   {
-   "name": "qr-2eafe368--23qreadb02",
+   "name": "qr-2eafe368--23qreadb03",
    "text": "أَكْمِلْ أَجْزَاءَنْ نَبَاتِ بِسَحْبِلْ كَلِمَاتْ."
   },
   {
-   "name": "qr-17ebcf87--23qreadb02",
+   "name": "qr-17ebcf87--23qreadb03",
    "text": "اسْحَبِ اسْمَ كُلِّ جُزْءٍ إِلَى مَكَانِهِ فِي النَّبْتَةْ."
   },
   {
-   "name": "qr-cde483a6--23qreadb02",
+   "name": "qr-cde483a6--23qreadb03",
    "text": "رَتِّبْ أَجْزَاءَنْ نَبَاتِ مِنَلْ أَسْفَلِ إِلَى الْأَعْلَى."
   },
   {
-   "name": "qr-5fac86fa--23qreadb02",
+   "name": "qr-5fac86fa--23qreadb03",
    "text": "أَيُّهَا لَيْسَ جُزْءًا مِنَنْ نَبَاتْ؟"
   },
   {
-   "name": "qr-82403c4e--23qreadb02",
+   "name": "qr-82403c4e--23qreadb03",
    "text": "تَحْتَاجُلْ بُذُورُ إِلَى الْمِلْحِ لِتَنْمُو."
   },
   {
-   "name": "qr-aaed2fb2--23qreadb02",
+   "name": "qr-aaed2fb2--23qreadb03",
    "text": "مَاذَا تُصْبِحُلْ بَذْرَةُ عِنْدَمَا تَنْمُو؟"
   },
   {
-   "name": "qr-cb2d075c--23qreadb02",
+   "name": "qr-cb2d075c--23qreadb03",
    "text": "أَكْمِلْ تَرْتِيبَ نُمُوِّ الْبَذْرَةِ بِسَحْبِلْ كَلِمَاتْ."
   },
   {
-   "name": "qr-1535c40c--23qreadb02",
+   "name": "qr-1535c40c--23qreadb03",
    "text": "اضْغَطْ عَلَى الْبَذْرَةِلْ لَتِي نَمَتْ وَأَصْبَحَتْ نَبْتَةْ."
   },
   {
-   "name": "qr-25a0a1a2--23qreadb02",
+   "name": "qr-25a0a1a2--23qreadb03",
    "text": "رَتِّبْ مَرَاحِلَ نُمُوِّ الْبَذْرَةِ مِنَلْ بِدَايَةِ إِلَى النِّهَايَةْ."
   },
   {
-   "name": "qr-e649f9f0--23qreadb02",
+   "name": "qr-e649f9f0--23qreadb03",
    "text": "أَيُّهَا لَا تَحْتَاجُهُلْ بَذْرَةُ لِتَنْمُو؟"
   },
   {
-   "name": "qr-09f215de--23qreadb02",
+   "name": "qr-09f215de--23qreadb03",
    "text": "تَنْمُو النَّبَاتَاتُ فِي الظَّلَامِ أَفْضَلَ مِنَضْ ضَوْءْ."
   },
   {
-   "name": "qr-69eaa583--23qreadb02",
+   "name": "qr-69eaa583--23qreadb03",
    "text": "إِلَى أَيِّ جِهَةٍ تَنْمُو النَّبَاتَاتْ؟"
   },
   {
-   "name": "qr-a98bbca7--23qreadb02",
+   "name": "qr-a98bbca7--23qreadb03",
    "text": "نَبْتَةٌ فِي الضَّوْءِ وَأُخْرَى دَاخِلَ صُنْدُوقٍ مُظْلِمْ. اضْغَطْ عَلَى النَّبْتَةِلْ لَتِي سَتَنْمُو أَفْضَلْ."
   },
   {
-   "name": "qr-116b6762--23qreadb02",
+   "name": "qr-116b6762--23qreadb03",
    "text": "صَنِّفِلْ أَمَاكِنْ: مُضِيئَةٌ تَنْمُو فِيهَا النَّبَاتَاتُ أَمْ مُظْلِمَةٌ لَا تَنْمُو فِيهَا جَيِّدَا."
   },
   {
-   "name": "qr-0a6bfcdb--23qreadb02",
+   "name": "qr-0a6bfcdb--23qreadb03",
    "text": "أَيُّهَا لَا يُعْطِي النَّبْتَةَ ضَوْءَا؟"
   },
   {
-   "name": "qr-cc26707d--23qreadb02",
+   "name": "qr-cc26707d--23qreadb03",
    "text": "تَحْتَاجُلْ بَذْرَةُ إِلَى الْمَاءِ لِتَنْمُوَ وَتُصْبِحَ نَبْتَةْ."
   },
   {
-   "name": "qr-7f5b2be3--23qreadb02",
+   "name": "qr-7f5b2be3--23qreadb03",
    "text": "مَاذَا يَحْدُثُ لِلنَّبْتَةِ إِذَا بَقِيَتْ فِي الظَّلَامْ؟"
   },
   {
-   "name": "qr-368a7ced--23qreadb02",
+   "name": "qr-368a7ced--23qreadb03",
    "text": "صِلْ كُلَّ جُزْءٍ مِنَنْ نَبْتَةِ بِعَمَلِهْ."
   },
   {
-   "name": "qr-81ac7722--23qreadb02",
+   "name": "qr-81ac7722--23qreadb03",
    "text": "اضْغَطْ عَلَى الْجُزْءِلْ لَذِي يَمْتَصُّ الْمَاءَ مِنَتْ تُرْبَةْ."
   }
  ]
