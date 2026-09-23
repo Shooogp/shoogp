@@ -89,8 +89,9 @@ function phonetic(t){
   return t.split(' ').map(w => { for (const [re, rep] of PHONETIC) if (re.test(w)) return w.replace(re, rep); return w; }).join(' ');
 }
 
-export function liaison(t){
+export function liaison(t, id){
   t = phonetic(t);
+  for (const [from, to] of (WORD_FIXES[id] || [])) t = t.split(' ').map(w => w === from ? to : w).join(' ');
   const w = t.split(' ');
   /* أنماطُ الخطرِ التي تُحيلُ النصَّ كلَّه إلى ألفِ الوصل (قرار المالك ٢٠٢٦-٠٩-٢٣ — تحوّطاً بعدَ سماعِ
      خطأِ التاءِ المربوطة): آخرُ الكلمةِ السابقةِ تاءٌ مربوطةٌ أو همزةٌ أو هاءٌ أو لامٌ أو ياءٌ أو واو،
@@ -123,7 +124,9 @@ export function liaison(t){
 }
 
 /* النصُّ المشكولُ المعتمَد (قرار المالك ٢٠٢٦-٠٩-٢٣) — يعلو على `spoken()` الآليّ. */
-const SPOKEN = JSON.parse(fs.readFileSync(ROOT + 'tools/qread-spoken.json', 'utf8')).spoken;
+const SPOKEN_DOC = JSON.parse(fs.readFileSync(ROOT + 'tools/qread-spoken.json', 'utf8'));
+const SPOKEN = SPOKEN_DOC.spoken;
+const WORD_FIXES = SPOKEN_DOC.wordFixes || {};   // كتاباتٌ صوتيّةٌ خاصّةٌ بسؤالٍ بعينِه (§_readme)
 
 /* هل النصُّ العربيُّ مشكولٌ تامّاً؟ (قرار المالك ٢٠٢٦-٠٩-٢٣: «بدون مشاكل أخرى في التشكيل»)
    **كلُّ حرفٍ يحملُ حركتَه، ومنه آخرُ الكلمةِ في وسطِ الجملة** — فهو ما يُسقطُه داريجات.
@@ -168,7 +171,7 @@ function loadAll(){
       (Q[l.file] || []).forEach((q, i) => {
         const raw = q.prompt || q.statement; if (!raw) return;
         const name = qreadHash(raw);
-        if (!out.has(name)) { const base = SPOKEN[name] || spoken(raw); out.set(name, { name, base, text: liaison(base), raw, book, refs: [] }); }
+        if (!out.has(name)) { const base = SPOKEN[name] || spoken(raw); out.set(name, { name, base, text: liaison(base, name), raw, book, refs: [] }); }
         out.get(name).refs.push(`${l.file}#${i + 1}`);
       });
     }
