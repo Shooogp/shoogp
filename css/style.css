@@ -672,6 +672,13 @@
   .qtype{color:#eaf1ee;font-size:1.08rem;font-weight:700}
   /* مسافة أوسع تحت نصّ السؤال قبل الصور/الصناديق (يزيد ارتفاع البطاقة عند الحاجة) */
   .qcard>.qprompt{margin:8px 0 38px;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.34);text-align:center}
+  /* زرُّ قراءةِ نصِّ السؤال 🔊 — دائرةٌ صغيرةٌ في رأسِ السطرِ لا تُثقِلُ الإطار (§qreadBtn في js/app.js) */
+  .qprompt .qread{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;
+    width:1.9em;height:1.9em;margin-inline-end:.45em;padding:0;border:none;border-radius:50%;
+    background:#f5a04a;color:#fff;font-size:.85em;line-height:1;cursor:pointer;text-shadow:none;
+    box-shadow:0 2px 0 #c46f1f,0 3px 8px rgba(0,0,0,.25)}
+  .qprompt .qread:hover{filter:brightness(1.06)}
+  .qprompt .qread:active{transform:translateY(2px);box-shadow:0 0 0 #c46f1f,0 1px 4px rgba(0,0,0,.25)}
   /* توسيط محتوى السؤال داخل بطاقته */
   .qcard>.qbody{display:flex;flex-direction:column;align-items:center}
   .qcard>.qbody>*{width:100%}

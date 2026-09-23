@@ -383,7 +383,7 @@ function openLesson(ls){
 let lessonSnd=null;
 /* يُنادى عندَ مغادرةِ شاشةِ النشاطِ من مخرجَيها — وإلا استمرَّ نصُّ الاستماعِ يُسمَعُ
    في صفحةِ الكتبِ بعدَ الخروجِ من الدرس. */
-function stopLessonAudio(){ if(lessonSnd){ try{ lessonSnd.pause(); }catch(e){} } }
+function stopLessonAudio(){ stopQread(); if(lessonSnd){ try{ lessonSnd.pause(); }catch(e){} } }
 function renderLessonAudio(ls){
   const bar=document.getElementById('lessonAudio'); if(!bar) return;
   stopLessonAudio(); lessonSnd=null;
@@ -575,7 +575,7 @@ function renderQuestions(ls){
     const card=document.createElement('div');
     card.className='card-box qcard';
     card.innerHTML=`<div class="qhead"><span class="qprogress">${T('السؤال %1 من %2', i+1, qs.length)}</span><span class="qtype">${T(Q_LABEL[q.type]||'')}</span></div>`+
-      `<h3 class="qprompt">${q.prompt||q.statement||''}</h3>`+
+      `<h3 class="qprompt">${qreadBtn(q.prompt||q.statement)}${q.prompt||q.statement||''}</h3>`+
       `<div class="qbody"></div><div class="fb qfb"></div>`;
     fn(q, card.querySelector('.qbody'), card.querySelector('.qfb'));
     // زر «إعادة» يعيد بناء جسم السؤال فيولد .actions جديدة داخله — المراقب
@@ -632,6 +632,7 @@ function renderQuestions(ls){
     if(act){ navOwner=cards[cur]; navMid.appendChild(act); }
   }
   function show(i){
+    stopQread();
     cur=Math.max(0,Math.min(total-1,i));
     cards.forEach((c,idx)=>{ c.style.display=(idx===cur)?'block':'none'; });
     adoptActions();
@@ -1058,6 +1059,34 @@ function renderMatching(q, body, fb){
         if(done===q.pairs.length) qWin(fb,T('🌟 ممتاز! أكملت التوصيل'),1);}
       else{qFail(fb,T('ليست الإجابة الصحيحة، حاول مجدداً'));d.style.background='#fde2e2';setTimeout(()=>d.style.background='',500);}};Rr.appendChild(d);});
   body.querySelector('.btn-reset').onclick=()=>renderMatching(q,body,fb);
+}
+
+/* ═══ قراءةُ نصِّ السؤالِ صوتياً — زرُّ 🔊 في رأسِ النصّ (قرار المالك ٢٠٢٦-٠٩-٢٣) ═══
+   الملفُّ `audio/qread/<qreadHash(النصّ)>.mp3` بصوتِ «حطاب» من داريجات، والمتاحُ منها في
+   `window.QREAD_HAVE` (‏`js/qread.js`) — يولّدُهما `tools/build-qread-batch.mjs`.
+   **البصمةُ على النصِّ المعروضِ حرفياً**: سؤالٌ عُدِّلَ نصُّه يفقدُ زرَّه بدلَ أن يَقرأَ نصّاً
+   قديماً، فلا يُحتاجُ إلى تذكّرِ إعادةِ التوليدِ ليبقى الصوتُ صادقاً. وغيابُ الملفِّ = لا زرّ.
+   التشغيلُ **بضغطةٍ صريحة** (لا تلقائياً)، ومقطعٌ واحدٌ مشتركٌ يتوقّفُ عند الانتقالِ بين الأسئلة. */
+let qreadSet=null, qreadSnd=null;
+function qreadHash(s){
+  let h=0x811c9dc5;
+  for(const ch of String(s)){ h^=ch.codePointAt(0); h=Math.imul(h,0x01000193)>>>0; }
+  return 'qr-'+h.toString(16).padStart(8,'0');
+}
+function qreadBtn(raw){
+  if(!raw) return '';
+  if(!qreadSet) qreadSet=new Set(window.QREAD_HAVE||[]);
+  const id=qreadHash(raw); if(!qreadSet.has(id)) return '';
+  return `<button class="qread" type="button" data-qr="${id}" aria-label="${T('استمع')}" onclick="playQread(this)">🔊</button>`;
+}
+function stopQread(){ if(qreadSnd){ try{ qreadSnd.pause(); }catch(e){} } }
+function playQread(btn){
+  const src='audio/qread/'+btn.getAttribute('data-qr')+'.mp3'+ASSET_VER;
+  if(!qreadSnd) qreadSnd=new Audio();
+  try{
+    if(qreadSnd.getAttribute('src')!==src){ qreadSnd.src=src; }
+    qreadSnd.currentTime=0; const p=qreadSnd.play(); if(p&&p.catch)p.catch(function(){});
+  }catch(e){}
 }
 
 /* ═══ مشغّلُ صوتِ السؤال — مشتركٌ بين الأنواع ═══
