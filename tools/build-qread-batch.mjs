@@ -226,8 +226,8 @@ if (cmd === 'list') {
   let items = loadAll().filter(it => done.has(it.name) && (!only || only.has(it.name)));
   const limit = opt('--limit'); if (limit) items = items.slice(0, limit);
   fs.writeFileSync(ROOT + 'tools/qread-audit.json', JSON.stringify({
-    _readme: 'دفعةُ فحصِ النطق: يقرؤُها سيرُ n8n «شوجب — فحص نطق الأسئلة (جيميناي)» — لكلِّ مقطعٍ نصُّه كما أُرسِلَ إلى داريجات. تُبنى بـ`node tools/build-qread-batch.mjs audit <batchId> [--limit N] [--only a,b]`.',
-    batchId, items: items.map(({ name, text }) => ({ name, text })) }, null, 1) + '\n');
+    _readme: 'دفعةُ فحصِ النطق: يقرؤُها سيرُ n8n «شوجب — فحص نطق الأسئلة (جيميناي)» — لكلِّ مقطعٍ نصُّه القياسيُّ المشكولُ (قبلَ الوصل) — فهو ما ينبغي أن يُسمَع. تُبنى بـ`node tools/build-qread-batch.mjs audit <batchId> [--limit N] [--only a,b]`.',
+    batchId, items: items.map(({ name, base }) => ({ name, text: base })) }, null, 1) + '\n');   // النصُّ القياسيُّ لا الملصوق: هو ما ينبغي أن يُسمَع
   console.log(`tools/qread-audit.json: ${items.length} مقطعاً للفحص`);
 } else if (cmd === 'check') {        // فحصُ ملفِّ تشكيلٍ {name: text} قبلَ دمجِه
   const map = JSON.parse(fs.readFileSync(args[0], 'utf8'));
