@@ -10,7 +10,7 @@
       **ولا يدخلُ الدفعةَ نصٌّ عربيٌّ غيرُ مشكولٍ تامّاً** (‏`toneProblem`) — قرارُ المالك
       ٢٠٢٦-٠٩-٢٣: داريجات لا يضبطُ النطقَ بلا تشكيل. فيُكتَبُ في `tools/qread-spoken.json` أوّلاً.
    ‏①ب `node tools/build-qread-batch.mjs import <batchId>` — يستلمُ الدفعةَ من فرعِ `graphics-inbox`.
-   ‏①ج `node tools/build-qread-batch.mjs audit <batchId> [--limit N] [--only a,b]` — دفعةُ فحصِ النطقِ بجيميناي.
+   ‏①ج `node tools/build-qread-batch.mjs audit <batchId> [--skip N] [--limit N] [--only a,b]` — دفعةُ فحصِ النطقِ بجيميناي.
    ‏② `node tools/build-qread-batch.mjs manifest`
       يكتبُ `js/qread.js` بقائمةِ البصماتِ التي لها ملفٌّ فعلاً — فلا يظهرُ زرٌّ بلا صوت.
    ‏③ `node tools/build-qread-batch.mjs list`   يطبعُ النصَّ المنطوقَ لكلِّ سؤالٍ (للمراجعة).
@@ -224,7 +224,7 @@ if (cmd === 'list') {
   const only = args.includes('--only') ? new Set(args[args.indexOf('--only') + 1].split(',')) : null;
   const done = have();
   let items = loadAll().filter(it => done.has(it.name) && (!only || only.has(it.name)));
-  const limit = opt('--limit'); if (limit) items = items.slice(0, limit);
+  const skip = opt('--skip') || 0; const limit = opt('--limit'); items = items.slice(skip, limit ? skip + limit : undefined);
   fs.writeFileSync(ROOT + 'tools/qread-audit.json', JSON.stringify({
     _readme: 'دفعةُ فحصِ النطق: يقرؤُها سيرُ n8n «شوجب — فحص نطق الأسئلة (جيميناي)» — لكلِّ مقطعٍ نصُّه القياسيُّ المشكولُ (قبلَ الوصل) — فهو ما ينبغي أن يُسمَع. تُبنى بـ`node tools/build-qread-batch.mjs audit <batchId> [--limit N] [--only a,b]`.',
     batchId, items: items.map(({ name, base }) => ({ name, text: base })) }, null, 1) + '\n');   // النصُّ القياسيُّ لا الملصوق: هو ما ينبغي أن يُسمَع
