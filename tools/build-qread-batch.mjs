@@ -53,23 +53,65 @@ function spoken(raw){
   return t.replace(/\s+/g, ' ').replace(/\s+([؟?.,،:])/g, '$1').trim();
 }
 
+/* ═══ وصلُ «ال» بما قبلَها — كتابةٌ كما يُلفَظ (قرار المالك ٢٠٢٦-٠٩-٢٣) ═══
+   داريجات يُسقطُ حركةَ آخرِ الكلمةِ إذا تلتها كلمةٌ تبدأُ بـ«ال» («وُلِدَ النَّبِيُّ» ← «وُلِدْ»)
+   ولو كانت مشكولة. والعلاجُ الذي اختارَه المالكُ بالسماع: تُنقَلُ لامُ التعريفِ (أو الحرفُ
+   الشمسيُّ المدغَمُ فيها) ساكنةً إلى آخرِ الكلمةِ السابقة، فتبقى الحركةُ داخلَ الكلمة:
+     وُلِدَ النَّبِيُّ ← وُلِدَنْ نَبِيُّ      (شمسيّة: الحرفُ نفسُه)
+     وُلِدَ القَمَرُ  ← وُلِدَلْ قَمَرُ       (قمريّة: اللام)
+   لا يُمسُّ إلا **كلمةٌ تنتهي بحركةٍ قصيرة** تليها **«ال» مجرّدةٌ** بلا علامةِ ترقيمٍ بينهما.
+   وهذه طبقةُ نطقٍ فقط: النصُّ المعروضُ على الشاشةِ لا يتغيّر. */
+const SUN = 'تثدذرزسشصضطظلن';
+const SHORT = /[\u064E\u064F\u0650]$/;          // فتحة · ضمّة · كسرة
+export function liaison(t){
+  const w = t.split(' ');
+  for (let i = 1; i < w.length; i++) {
+    // «الَّذي/الَّتي» بلامٍ واحدةٍ مشدّدة: تُعامَلُ لامُها معاملةَ الحرفِ الشمسيّ
+    const rel = /^\u0627\u0644([\u064B-\u0652]*\u0651[\u064B-\u0652]*)(.*)$/.exec(w[i]);
+    const m = rel ? [null, '\u0644', rel[1], rel[2]]
+                  : /^\u0627\u0644\u0652?([\u0621-\u064A])([\u064B-\u0652]*)(.*)$/.exec(w[i]);
+    const prev = w[i - 1];
+    if (!m || !SHORT.test(prev)) continue;
+    const [, c, marks, rest] = m;
+    if (SUN.includes(c)) { w[i - 1] = prev + c + '\u0652'; w[i] = c + marks.replace('\u0651', '') + rest; }
+    else { w[i - 1] = prev + '\u0644\u0652'; w[i] = c + marks.replace(/^\u0652/, '') + rest; }
+  }
+  return w.join(' ');
+}
+
 /* النصُّ المشكولُ المعتمَد (قرار المالك ٢٠٢٦-٠٩-٢٣) — يعلو على `spoken()` الآليّ. */
 const SPOKEN = JSON.parse(fs.readFileSync(ROOT + 'tools/qread-spoken.json', 'utf8')).spoken;
 
-/* هل النصُّ العربيُّ مشكولٌ تامّاً؟ كلُّ حرفٍ عربيٍّ (عدا حروفِ المدِّ والتاءِ المربوطةِ في
-   الوقفِ وألفِ «ال») يتبعُه تشكيل — ويُقاسُ بنسبةٍ لأنّ الحرفَ الساكنَ الأخيرَ قد يُترَك.
+/* هل النصُّ العربيُّ مشكولٌ تامّاً؟ (قرار المالك ٢٠٢٦-٠٩-٢٣: «بدون مشاكل أخرى في التشكيل»)
+   **كلُّ حرفٍ يحملُ حركتَه، ومنه آخرُ الكلمةِ في وسطِ الجملة** — فهو ما يُسقطُه داريجات.
+   ويُعفى: ألفُ المدِّ والألفُ المقصورة · الواوُ والياءُ بعدَ ضمّةٍ/كسرةٍ (مدّ) · ألفُ «ال» ولامُها
+   قبلَ حرفٍ شمسيٍّ مشدَّد · آخرُ الكلمةِ قبلَ علامةِ ترقيمٍ أو في نهايةِ النصّ (وقف).
    والأرقامُ ممنوعةٌ: تُكتَبُ كلماتٍ معرَبة. يعيدُ سببَ الرفضِ أو ''. */
 const AR = /[\u0621-\u064A]/;
+const MARK = /[\u064B-\u0652]/;
 export function toneProblem(t){
   if (!AR.test(t)) return '';                                    // إنجليزيّ
   if (/[0-9\u0660-\u0669]/.test(t)) return 'أرقام';
-  const words = t.split(/[\s،؟.,:!]+/).filter(w => AR.test(w));
-  const bare = words.filter(w => {
-    const letters = (w.match(/[\u0621-\u064A]/g) || []).filter(c => !'اويىآ'.includes(c)).length;
-    const marks = (w.match(/[\u064B-\u0652]/g) || []).length;
-    return letters > 1 && marks < letters - 1;
+  const toks = t.split(/\s+/).filter(Boolean);
+  const bad = [];
+  toks.forEach((tok, ti) => {
+    const pausal = /[،؟.,:!؛…]$/.test(tok) || ti === toks.length - 1;
+    const w = tok.replace(/[^\u0621-\u0652]/g, '');
+    if (!AR.test(w)) return;
+    const L = [];                                   // [حرف, علاماتُه]
+    for (const ch of w) { if (MARK.test(ch)) { if (L.length) L[L.length - 1][1] += ch; } else L.push([ch, '']); }
+    const miss = L.some(([c, mk], k) => {
+      if (mk) return false;
+      if ('\u0627\u0649\u0622'.includes(c)) return false;                       // ا ى آ
+      const pm = k ? L[k - 1][1] : '';
+      if ((c === '\u0648' && pm.includes('\u064F')) || (c === '\u064A' && pm.includes('\u0650'))) return false;
+      if (c === '\u0644' && k && L[k - 1][0] === '\u0627' && L[k + 1] && L[k + 1][1].includes('\u0651')) return false; // لامُ «ال» الشمسيّة
+      if (k === L.length - 1 && pausal) return false;                       // وقف
+      return true;
+    });
+    if (miss) bad.push(tok);
   });
-  return bare.length ? 'ناقصُ الشكل: ' + bare.slice(0, 3).join(' · ') : '';
+  return bad.length ? 'ناقصُ الشكل: ' + bad.slice(0, 4).join(' · ') : '';
 }
 
 function loadAll(){
@@ -83,7 +125,7 @@ function loadAll(){
       (Q[l.file] || []).forEach((q, i) => {
         const raw = q.prompt || q.statement; if (!raw) return;
         const name = qreadHash(raw);
-        if (!out.has(name)) out.set(name, { name, text: SPOKEN[name] || spoken(raw), raw, book, refs: [] });
+        if (!out.has(name)) { const base = SPOKEN[name] || spoken(raw); out.set(name, { name, base, text: liaison(base), raw, book, refs: [] }); }
         out.get(name).refs.push(`${l.file}#${i + 1}`);
       });
     }
@@ -98,7 +140,7 @@ const [cmd, ...args] = process.argv.slice(2);
 const opt = k => { const i = args.indexOf(k); return i < 0 ? null : Number(args[i + 1]); };
 
 if (cmd === 'list') {
-  for (const it of loadAll()) console.log(`${it.name}\t${it.book}\t${toneProblem(it.text) || 'ok'}\t${it.text}`);
+  for (const it of loadAll()) console.log(`${it.name}\t${it.book}\t${toneProblem(it.base) || 'ok'}\t${it.base}`);
 } else if (cmd === 'manifest') {
   const names = [...have()].sort();
   fs.writeFileSync(ROOT + 'js/qread.js',
@@ -111,9 +153,9 @@ if (cmd === 'list') {
   const done = have();
   const redo = args.includes('--redo') ? new Set(args[args.indexOf('--redo') + 1].split(',')) : null;
   let items = loadAll().filter(it => redo ? redo.has(it.name) : !done.has(it.name));
-  const bad = items.filter(it => toneProblem(it.text));
+  const bad = items.filter(it => toneProblem(it.base));
   if (bad.length) console.log(`⛔ ${bad.length} نصّاً غيرُ مشكولٍ تامّاً خارجَ الدفعة — تُكتَبُ في tools/qread-spoken.json أوّلاً`);
-  items = items.filter(it => !toneProblem(it.text));
+  items = items.filter(it => !toneProblem(it.base));
   const sample = opt('--sample');
   if (sample) {   // عيّنةٌ موزّعةٌ: من كلِّ كتابٍ بالتناوب
     const byBook = {}; items.forEach(it => (byBook[it.book] ||= []).push(it));
@@ -130,6 +172,11 @@ if (cmd === 'list') {
     items: items.map(({ name, text }) => ({ name: redo ? name + '--' + batchId.slice(-6) : name, text })) }, null, 1) + '\n');
   const left = loadAll().filter(it => !done.has(it.name)).length;
   console.log(`tools/audio-batch.json: ${items.length} عنصراً · الباقي بلا صوت قبلَ هذه الدفعة: ${left}`);
+} else if (cmd === 'check') {        // فحصُ ملفِّ تشكيلٍ {name: text} قبلَ دمجِه
+  const map = JSON.parse(fs.readFileSync(args[0], 'utf8'));
+  let n = 0;
+  for (const [k, v] of Object.entries(map)) { const p = toneProblem(v); if (p) { n++; console.log(`${k}\t${p}\t${v}`); } }
+  console.log(n ? `⛔ ${n} نصّاً فيه نقص` : `✓ ${Object.keys(map).length} نصّاً مشكولٌ تامّاً`);
 } else {
   console.log('الاستعمال: batch <batchId> [--limit N] [--sample N] | manifest | list');
 }
