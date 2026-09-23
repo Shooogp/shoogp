@@ -6,6 +6,10 @@
       `audio/qread/` — فتشغيلُه مرّةً بعدَ مرّةٍ يُكمِلُ الناقصَ ولا يُكرِّرُ المولَّد.
       `--limit` يقطعُ الدفعةَ (سيرُ n8n يُرسِلُ عنصراً كلَّ ١٥ ثانية، فَـ٨٠ ≈ ٢٠ دقيقة)،
       و`--sample` يأخذُ عيّنةً موزّعةً على الكتبِ للتجربة.
+      `--redo qr-a,qr-b` يعيدُ توليدَ مقاطعَ موجودة (باسمٍ ملحَقٍ في فرعِ الاستلامِ لأنّ الأصلَ
+      موجودٌ هناك؛ ويُنسَخُ عندَ الاستلامِ إلى اسمِه الأصليّ).
+      **ولا يدخلُ الدفعةَ نصٌّ عربيٌّ غيرُ مشكولٍ تامّاً** (‏`toneProblem`) — قرارُ المالك
+      ٢٠٢٦-٠٩-٢٣: داريجات لا يضبطُ النطقَ بلا تشكيل. فيُكتَبُ في `tools/qread-spoken.json` أوّلاً.
    ‏② `node tools/build-qread-batch.mjs manifest`
       يكتبُ `js/qread.js` بقائمةِ البصماتِ التي لها ملفٌّ فعلاً — فلا يظهرُ زرٌّ بلا صوت.
    ‏③ `node tools/build-qread-batch.mjs list`   يطبعُ النصَّ المنطوقَ لكلِّ سؤالٍ (للمراجعة).
@@ -40,13 +44,32 @@ function spoken(raw){
   if (OVERRIDE[raw]) return OVERRIDE[raw];
   let t = String(raw).replace(/<[^>]+>/g, ' ');
   t = t.replace(/﴿[^﴾]*﴾/g, ' ');
-  t = t.replace(/\s*ﷺ/g, ' صَلّى اللهُ عَلَيْهِ وَسَلَّمَ');
+  t = t.replace(/\s*ﷺ/g, ' صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ');
   t = t.replace(/[\u{1F000}-\u{1FAFF}☀-➿]/gu, ' ');
   t = t.replace(/\s*\+\s*/g, ' زائِدُ ');
   t = t.replace(/\s*>\s*/g, '، ثُمَّ ');
   t = t.replace(/_{2,}/g, '…');
   t = t.replace(/[«»]/g, '').replace(/\s*—\s*/g, '، ');
   return t.replace(/\s+/g, ' ').replace(/\s+([؟?.,،:])/g, '$1').trim();
+}
+
+/* النصُّ المشكولُ المعتمَد (قرار المالك ٢٠٢٦-٠٩-٢٣) — يعلو على `spoken()` الآليّ. */
+const SPOKEN = JSON.parse(fs.readFileSync(ROOT + 'tools/qread-spoken.json', 'utf8')).spoken;
+
+/* هل النصُّ العربيُّ مشكولٌ تامّاً؟ كلُّ حرفٍ عربيٍّ (عدا حروفِ المدِّ والتاءِ المربوطةِ في
+   الوقفِ وألفِ «ال») يتبعُه تشكيل — ويُقاسُ بنسبةٍ لأنّ الحرفَ الساكنَ الأخيرَ قد يُترَك.
+   والأرقامُ ممنوعةٌ: تُكتَبُ كلماتٍ معرَبة. يعيدُ سببَ الرفضِ أو ''. */
+const AR = /[\u0621-\u064A]/;
+export function toneProblem(t){
+  if (!AR.test(t)) return '';                                    // إنجليزيّ
+  if (/[0-9\u0660-\u0669]/.test(t)) return 'أرقام';
+  const words = t.split(/[\s،؟.,:!]+/).filter(w => AR.test(w));
+  const bare = words.filter(w => {
+    const letters = (w.match(/[\u0621-\u064A]/g) || []).filter(c => !'اويىآ'.includes(c)).length;
+    const marks = (w.match(/[\u064B-\u0652]/g) || []).length;
+    return letters > 1 && marks < letters - 1;
+  });
+  return bare.length ? 'ناقصُ الشكل: ' + bare.slice(0, 3).join(' · ') : '';
 }
 
 function loadAll(){
@@ -60,7 +83,7 @@ function loadAll(){
       (Q[l.file] || []).forEach((q, i) => {
         const raw = q.prompt || q.statement; if (!raw) return;
         const name = qreadHash(raw);
-        if (!out.has(name)) out.set(name, { name, text: spoken(raw), raw, book, refs: [] });
+        if (!out.has(name)) out.set(name, { name, text: SPOKEN[name] || spoken(raw), raw, book, refs: [] });
         out.get(name).refs.push(`${l.file}#${i + 1}`);
       });
     }
@@ -75,7 +98,7 @@ const [cmd, ...args] = process.argv.slice(2);
 const opt = k => { const i = args.indexOf(k); return i < 0 ? null : Number(args[i + 1]); };
 
 if (cmd === 'list') {
-  for (const it of loadAll()) console.log(`${it.name}\t${it.book}\t${it.text}`);
+  for (const it of loadAll()) console.log(`${it.name}\t${it.book}\t${toneProblem(it.text) || 'ok'}\t${it.text}`);
 } else if (cmd === 'manifest') {
   const names = [...have()].sort();
   fs.writeFileSync(ROOT + 'js/qread.js',
@@ -86,7 +109,11 @@ if (cmd === 'list') {
 } else if (cmd === 'batch') {
   const batchId = args[0]; if (!batchId || batchId.startsWith('--')) throw new Error('batchId مطلوب');
   const done = have();
-  let items = loadAll().filter(it => !done.has(it.name));
+  const redo = args.includes('--redo') ? new Set(args[args.indexOf('--redo') + 1].split(',')) : null;
+  let items = loadAll().filter(it => redo ? redo.has(it.name) : !done.has(it.name));
+  const bad = items.filter(it => toneProblem(it.text));
+  if (bad.length) console.log(`⛔ ${bad.length} نصّاً غيرُ مشكولٍ تامّاً خارجَ الدفعة — تُكتَبُ في tools/qread-spoken.json أوّلاً`);
+  items = items.filter(it => !toneProblem(it.text));
   const sample = opt('--sample');
   if (sample) {   // عيّنةٌ موزّعةٌ: من كلِّ كتابٍ بالتناوب
     const byBook = {}; items.forEach(it => (byBook[it.book] ||= []).push(it));
@@ -100,7 +127,7 @@ if (cmd === 'list') {
   const P = ROOT + 'tools/audio-batch.json';
   const old = JSON.parse(fs.readFileSync(P, 'utf8'));
   fs.writeFileSync(P, JSON.stringify({ _readme: old._readme, batchId, voice: 'حطاب',
-    items: items.map(({ name, text }) => ({ name, text })) }, null, 1) + '\n');
+    items: items.map(({ name, text }) => ({ name: redo ? name + '--' + batchId.slice(-6) : name, text })) }, null, 1) + '\n');
   const left = loadAll().filter(it => !done.has(it.name)).length;
   console.log(`tools/audio-batch.json: ${items.length} عنصراً · الباقي بلا صوت قبلَ هذه الدفعة: ${left}`);
 } else {
