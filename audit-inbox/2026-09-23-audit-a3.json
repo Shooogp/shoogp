@@ -1,0 +1,1786 @@
+{
+ "batchId": "2026-09-23-audit-a3",
+ "checkedAt": "2026-09-23T15:08:44.699Z",
+ "total": 180,
+ "flagged": 177,
+ "items": [
+  {
+   "name": "qr-2bc2d798",
+   "text": "عَلَى خَطِّ الْأَعْدَادِ يَأْتِي الْعَدَدُ الْأَكْبَرُ بَعْدَ الْأَصْغَرْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "ok": null,
+    "noAudio": true
+   }
+  },
+  {
+   "name": "qr-9c785d0c",
+   "text": "ضَعِ الْمُؤَشِّرَ عَلَى الْعَدَدِ أَرْبَعَةَ عَشَرْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-be3851b7",
+   "text": "اِسْحَبِ الْمُؤَشِّرَ إِلَى الْعَدَدِ ثَمَانِيَةَ عَشَرْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-2e424403",
+   "text": "أَيُّ عَدَدٍ يَقَعُ بَيْنَ سَبْعَةٍ وَتِسْعَةْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-080c9707",
+   "text": "الْعَدَدُ سَبْعَةَ عَشَرَ يَقَعُ بَيْنَ عَشَرَةٍ وَخَمْسَةَ عَشَرْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-cfcda7e9",
+   "text": "ضَعِ الْمُؤَشِّرَ عَلَى الْعَدَدِ الَّذِي يَقَعُ بَيْنَ اثْنَيْ عَشَرَ وَأَرْبَعَةَ عَشَرْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "ok": null,
+    "noAudio": true
+   }
+  },
+  {
+   "name": "qr-1e583cb5",
+   "text": "كُلُّهَا أَعْدَادٌ تَقَعُ بَيْنَ عَشَرَةٍ وَعِشْرِينْ، أَيُّهَا لَا يَنْتَمِي؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "ok": null,
+    "noAudio": true
+   }
+  },
+  {
+   "name": "qr-80b2666b",
+   "text": "أَيُّ زَوْجٍ مَجْمُوعُهُ عَشَرَةْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-832c4393",
+   "text": "اِنْقُرْ أَرْبَعَ تَمَرَاتْ، وَهِيَ مَا يَنْقُصُ السِّتَّةَ لِتُكْمِلَ الْعَشَرَةْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "ok": null,
+    "noAudio": true
+   }
+  },
+  {
+   "name": "qr-2e289afb",
+   "text": "صَنِّفِ الْأَزْوَاجْ: أَمَجْمُوعُهَا عَشَرَةٌ أَمْ لَا؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-292ed8ff",
+   "text": "اِقْلِبْ بِطَاقَتَيْنِ فِي كُلِّ دَوْرْ: طَابِقْ كُلَّ عَدَدٍ بِشَرِيكِهِ إِلَى الْعَشَرَةْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "ok": null,
+    "noAudio": true
+   }
+  },
+  {
+   "name": "qr-bf2a944c",
+   "text": "مَجْمُوعَةٌ فِيهَا خَمْسَةُ أَقْلَامٍ وَأُخْرَى فِيهَا أَرْبَعَةْ. كَمْ قَلَمًا مَعًا؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "ok": null,
+    "noAudio": true
+   }
+  },
+  {
+   "name": "qr-982ac198",
+   "text": "أَكْمِلْ جُمْلَةَ الْجَمْعْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-5cfb199c",
+   "text": "ضُمَّ الْمَجْمُوعَتَيْنْ: اِنْقُرْ تِسْعَةَ أَقْلَامٍ وَعُدَّهَا.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "ok": null,
+    "noAudio": true
+   }
+  },
+  {
+   "name": "qr-2c893e4e",
+   "text": "صِلْ كُلَّ جُمْلَةِ جَمْعٍ بِنَاتِجِهَا.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-1a0cd6ee",
+   "text": "صَنِّفْ كُلَّ جَمْعٍ حَسَبَ نَاتِجِهْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-385e838e",
+   "text": "كُلُّ سَطْرٍ يَجِبُ أَنْ يَكُونَ نَاتِجُهُ تِسْعَةْ، اِضْغَطْ عَلَى السَّطْرِ الْخَاطِئْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "ok": null,
+    "noAudio": true
+   }
+  },
+  {
+   "name": "qr-6ff1e3e0",
+   "text": "فِي السَّلَّةِ تِسْعُ تُفَّاحَاتْ، أَخَذْنَا أَرْبَعًا. كَمْ بَقِيْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "ok": null,
+    "noAudio": true
+   }
+  },
+  {
+   "name": "qr-daab5d2e",
+   "text": "أَكْمِلِ جُمْلَةَ الطَّرْحِ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-e28b226b",
+   "text": "اِنْقُرِ التَّمَرَاتِ الْبَاقِيَةَ الْخَمْسَ وَعُدَّهَا.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-ffa0f0bd",
+   "text": "مِنْ خَمْسِ تَمَرَاتٍ نَأْخُذُ اثْنَتَيْنْ، لَوِّنِ الْمَأْخُوذَتَيْنِ بِالْأَحْمَرِ وَالْبَاقِيَ بِالْأَصْفَرْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "ok": null,
+    "noAudio": true
+   }
+  },
+  {
+   "name": "qr-bbde1ef9",
+   "text": "مَا الْفَرْقُ بَيْنَ تِسْعَةٍ وَأَرْبَعَةْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-fef083b7",
+   "text": "الْفَرْقُ بَيْنَ عَدَدَيْنِ هُوَ عَدَدُ الْقَفَزَاتِ بَيْنَهُمَا عَلَى خَطِّ الْأَعْدَادْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "ok": null,
+    "noAudio": true
+   }
+  },
+  {
+   "name": "qr-63d59a9f",
+   "text": "اِقْفِزْ مِنْ أَرْبَعَةٍ إِلَى تِسْعَةٍ قَفْزَةً قَفْزَةً لِتَجِدَ الْفَرْقْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "ok": null,
+    "noAudio": true
+   }
+  },
+  {
+   "name": "qr-3266d197",
+   "text": "أَكْمِلِ الْمُعَادَلَةَ لِتَجِدَ الْفَرْقْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-df318fae",
+   "text": "قَارِنْ بَيْنَ الْفَرْقَيْنْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-223ad650",
+   "text": "الْفَرْقُ بَيْنَ أَرْبَعَةَ عَشَرَ وَسِتَّةْ، اِسْحَبِ الْمُؤَشِّرَ إِلَيْهْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "ok": null,
+    "noAudio": true
+   }
+  },
+  {
+   "name": "qr-218d26f8",
+   "text": "اثْنَانِ أَكْثَرُ مِنْ خَمْسَةَ عَشَرَ هُوَ:",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-deb75946",
+   "text": "اثْنَانِ أَقَلُّ مِنْ عَشَرَةٍ هُوَ اثْنَا عَشَرْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-5e97e1fa",
+   "text": "اِقْفِزْ بِالِاثْنَيْنِ مِنْ سِتَّةْ: اِنْقُرْ مَوْضِعَ كُلِّ قَفْزَةْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-84a1e0f8",
+   "text": "أَكْمِلِ النَّمَطْ: الْقَفْزُ بِالِاثْنَيْنْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-0e711663",
+   "text": "رَتِّبْ نَوَاتِجَ الْقَفْزِ بِالِاثْنَيْنْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-b8125721",
+   "text": "كُلُّهَا نَوَاتِجُ الْقَفْزِ بِالِاثْنَيْنِ مِنْ سِتَّةْ، أَيُّهَا لَا يَنْتَمِي؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "ok": null,
+    "noAudio": true
+   }
+  },
+  {
+   "name": "qr-76e8e309",
+   "text": "الْعَدَدُ سَبْعَةٌ وَعِشْرُونَ يَتَكَوَّنُ مِنْ:",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-4ec8017d",
+   "text": "ابْنِ الْعَدَدَ سَبْعَةً وَعِشْرِينَ بِالْعَشَرَاتِ وَالْآحَادْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-da0888d6",
+   "text": "ضَعِ الْمُؤَشِّرَ عَلَى الْعَدَدِ ثَلَاثَةٍ وَعِشْرِينْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-a813e2e3",
+   "text": "اِقْلِبْ بِطَاقَتَيْنِ فِي كُلِّ دَوْرْ: طَابِقْ كُلَّ عَدَدٍ بِتَجْزِئَتِهْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "ok": null,
+    "noAudio": true
+   }
+  },
+  {
+   "name": "qr-d535d5c9",
+   "text": "لَدَيْنَا قَمِيصَانِ وَثَلَاثُ قُبَّعَاتْ، كَمْ تَرْكِيبَةً مُخْتَلِفَةً يُمْكِنُ تَكْوِينُهَا؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "ok": null,
+    "noAudio": true
+   }
+  },
+  {
+   "name": "qr-7e02bd76",
+   "text": "الطَّرِيقَةُ الْمُنَظَّمَةُ تُسَاعِدُنَا عَلَى إِيجَادِ كُلِّ التَّرَاكِيبِ بِلَا تَكْرَارْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "ok": null,
+    "noAudio": true
+   }
+  },
+  {
+   "name": "qr-5b57c09d",
+   "text": "ابْنِ مَصْفُوفَةً فِيهَا صَفَّانْ، فِي كُلِّ صَفٍّ ثَلَاثَةُ مُرَبَّعَاتْ، لِتَرَى كُلَّ التَّرَاكِيبْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "ok": null,
+    "noAudio": true
+   }
+  },
+  {
+   "name": "qr-f3b508d7",
+   "text": "اِنْقُرْ سِتَّ كُمَمٍ وَعُدَّهَا.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-1fe655e3",
+   "text": "صَنِّفِ الطُّرُقْ: أَيُّهَا يَضْمَنُ إِيجَادَ كُلِّ التَّرَاكِيبْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-5d31b4e9",
+   "text": "الصَّفُّ الْأَوَّلُ لِلْقَمِيصِ الْأَحْمَرِ وَالثَّانِي لِلْأَزْرَقْ، لَوِّنْ كُلَّ صَفٍّ بِلَوْنِهْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "ok": null,
+    "noAudio": true
+   }
+  },
+  {
+   "name": "qr-d65e2735",
+   "text": "اِنْقُرْ عَلَى بَابِ الْمَدْرَسَةْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-036d507c",
+   "text": "صِلْ كُلَّ شَيْءٍ بِمَكَانِهِ فِي الْمَدْرَسَةْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-b00349b1",
+   "text": "صَنِّفْ: أَيْنَ تَجِدُ كُلَّ مَكَانْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-dbe0baf5",
+   "text": "أَيُّهَا لَيْسَ فِي الْمَدْرَسَةْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-75f0f67b",
+   "text": "رَتِّبْ يَوْمِي فِي الْمَدْرَسَةْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-43a9fb40",
+   "text": "اِقْلِبْ بِطَاقَتَيْنْ: صِلْ كُلَّ شَيْءٍ بِصَوْتِهْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-47343e74",
+   "text": "اِنْقُرْ عَلَى السَّبُّورَةْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-aaf3660c",
+   "text": "صَنِّفْ أَشْيَاءَ صَفِّي.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-d33e3ea6",
+   "text": "صِلْ كُلَّ أَدَاةٍ بِعَمَلِهَا.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-630548e4",
+   "text": "أَيُّهَا لَيْسَ فِي الصَّفّْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-4ca6e2e0",
+   "text": "أَكْمِلِ الْجُمْلَةَ بِسَحْبِ الْكَلِمَةِ الْمُنَاسِبَةْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-8b203628",
+   "text": "رَتِّبْ آدَابَ دُخُولِ الصَّفّْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-bb7fbb50",
+   "text": "ضَعْ كُلَّ أَدَاةٍ فِي مَكَانِهَا.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-7fe571d4",
+   "text": "أَيُّهَا لَيْسَ أَدَاةً مَدْرَسِيَّةْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-686e1c95",
+   "text": "اِنْقُرْ عَلَى مَمَرِّ الْمُشَاةْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-7870fbcf",
+   "text": "رَتِّبْ رِحْلَتِي إِلَى الْمَدْرَسَةْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-6c95065f",
+   "text": "صِلْ شَكْلَ الْبَاءِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-2af5d7e7",
+   "text": "أَيْنَ بَيْتُ بَدْرٍ وَعَبِيرْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-1c3a3ee7",
+   "text": "ضَعِ الْحَرَكَةَ فَوْقَ كُلِّ حَرْفٍ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-6393c185",
+   "text": "رَتِّبِ الْحُرُوفَ لِتُكَوِّنَ الْكَلِمَةْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-80cc3b58",
+   "text": "رَتِّبِ الْكَلِمَاتِ لِتُكَوِّنَ جُمْلَةْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-4feb9ff9",
+   "text": "صَنِّفِ الْكَلِمَاتِ بِحَسَبِ مَوْضِعِ الْبَاءْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-d64438ee",
+   "text": "صِلْ شَكْلَ اللَّامِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-2452d784",
+   "text": "مَنْ دَعَا لَيْلَى إِلَى اللَّعِبْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-8171272f",
+   "text": "صِلْ كُلَّ شَخْصِيَّةٍ بِعُمْرِهَا.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-d246e2a9",
+   "text": "صِلْ شَكْلَ الْمِيمِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-d7749670",
+   "text": "مَاذَا تُحَضِّرُ الْأُمّْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-9e5417a1",
+   "text": "اِقْلِبْ بِطَاقَتَيْنْ: صِلْ كُلَّ مَقْطَعٍ بِكَلِمَتِهْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-a57598af",
+   "text": "صِلْ شَكْلَ الرَّاءِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-c25fdabc",
+   "text": "إِلَى أَيْنَ سَتَخْرُجُ الْأُسْرَةْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-e7f805af",
+   "text": "صِلْ كُلَّ حَرْفٍ بِصُورَةِ كَلِمَتِهْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-f944313c",
+   "text": "صَنِّفِ الْكَلِمَاتِ بِحَسَبِ حَرْفِهَا الْأَوَّلْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-564ed0b4",
+   "text": "أَيُّ الْكَلِمَاتِ لَا تَبْدَأُ بِالرَّاءْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-983c5174",
+   "text": "رَتِّبْ أَشْطُرَ النَّشِيدْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-523b12b9",
+   "text": "صِلْ كُلَّ شَطْرٍ بِتَكْمِلَتِهِ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-1f546b26",
+   "text": "أَكْمِلِ الشَّطْرَ بِسَحْبِ الْكَلِمَةِ الْمُنَاسِبَةْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-e1759715",
+   "text": "رَتِّبِ الْكَلِمَاتِ لِتُكَوِّنَ شَطْرَ النَّشِيدْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-54553c7c",
+   "text": "لِمَنْ يُقَدِّمُ الطِّفْلُ شُكْرَهُ فِي النَّشِيدْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-896191ba",
+   "text": "صِلْ شَكْلَ الدَّالِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-0f7c68e2",
+   "text": "أَيْنَ وَقَفَ بَدْرٌ مَعَ رِفَاقِهْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-2d236e91",
+   "text": "صِلْ شَكْلَ السِّينِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-6424923d",
+   "text": "مَاذَا يَقُولُ الْمُسْلِمُ حِينَ يَرَى مُسْلِمَا؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-19df272f",
+   "text": "صَنِّفِ الْكَلِمَاتِ بِحَسَبِ مَوْضِعِ السِّينْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-35c067ca",
+   "text": "صِلْ شَكْلَ الْكَافِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-7d80a990",
+   "text": "أَيَّ حَرْفٍ كَتَبَ مَالِكٌ الْيَوْمْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-3d07b33d",
+   "text": "أَكْمِلْ خَرِيطَةَ الْكَافِ بِمِثَالٍ لِكُلِّ مَوْضِعْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-b9e4ffaa",
+   "text": "صِلْ شَكْلَ النُّونِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-cf3981c4",
+   "text": "مَاذَا نَاوَلَتْهُ الْمُعَلِّمَةْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-c4aab94e",
+   "text": "رَتِّبْ أَحْدَاثَ النَّصّْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-2fff53e1",
+   "text": "أَكْمِلِ الْكَلِمَةَ بِالْمَقْطَعِ الْمُنَاسِبْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-69d65822",
+   "text": "رَتِّبْ أَبْيَاتَ النَّشِيدْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-f2c05e1d",
+   "text": "بِمَاذَا شَبَّهَ الشَّاعِرُ مَدْرَسَتَهْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-6030d5a8",
+   "text": "صِلْ شَكْلَ الْفَاءِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-11adc2f8",
+   "text": "مَاذَا قَدَّمَتِ الْمُرَبِّيَةُ لِعَارِفْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-dc562a5e",
+   "text": "صَنِّفِ الْكَلِمَاتِ بِحَسَبِ مَوْضِعِ الْفَاءْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-b3b8a6e0",
+   "text": "صِلْ شَكْلَ التَّاءِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-142c03a2",
+   "text": "بِمَ نَصَحَتْ فَاطِمَةُ أَخَاهَا حَمْزَةْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-c7cb34d2",
+   "text": "صِلْ كُلَّ شَيْءٍ بِأَثَرِهِ فِي الْأَسْنَانْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-7e82c42c",
+   "text": "صِلْ شَكْلَ الْحَاءِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-c30ec943",
+   "text": "بِمَاذَا تَذْهَبُ فَرَحُ إِلَى الْمَدْرَسَةْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-49e41b45",
+   "text": "رَتِّبْ مَا سَتَفْعَلُهُ فَرَحْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-6f625b31",
+   "text": "صِلْ شَكْلَ الْقَافِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-d87fd79c",
+   "text": "مَاذَا يُبَاعُ فِي سُوقِ الْقَرْيَةْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-ff364f1d",
+   "text": "اِقْلِبْ بِطَاقَتَيْنْ: صِلْ كُلَّ كَائِنٍ بِصَوْتِهْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-7c3753a5",
+   "text": "صِلْ شَكْلَ الزَّايِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-92418e41",
+   "text": "مَاذَا رَأَتْ فَائِزَةُ تَقْفِزُ حَوْلَ الزَّوْرَقْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-1e752c05",
+   "text": "صِلْ شَكْلَ الطَّاءِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-0ced4cbd",
+   "text": "إِلَى أَيْنَ انْطَلَقَتْ أُسْرَةُ طَارِقْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-8a3402cb",
+   "text": "أَيُّهَا لَيْسَ مِنْ أَدَوَاتِ تَنْظِيفِ الشَّاطِئْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-7ad9df0c",
+   "text": "صَنِّفِ الْكَلِمَاتِ بِحَسَبِ لَامِهَا.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-09a8933b",
+   "text": "بِمَ يُنَظِّفُ الطِّفْلُ أَسْنَانَهْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-7881ba7a",
+   "text": "صِلْ شَكْلَ الْهَمْزَةِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-96ee3ec5",
+   "text": "أَيُّ عُلْبَةٍ فِيهَا غِذَاءٌ مُتَكَامِلْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-a9d1f7fe",
+   "text": "صَنِّفِ الْأَطْعِمَةَ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-e269532e",
+   "text": "صِلْ شَكْلَ الْجِيمِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-24116410",
+   "text": "مَا الَّذِي يُوضَعُ فَوْقَ شَرِيحَةِ الْخُبْزْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-f5b58dcf",
+   "text": "أَكْمِلْ طَرِيقَةَ الْإِعْدَادْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-6ceb6be0",
+   "text": "صِلْ شَكْلَ الْوَاوِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-9624d0e4",
+   "text": "مَاذَا اشْتَرَى وَلِيدٌ مِنْ سُوقِ الْفَوَاكِهْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-40d3ce24",
+   "text": "أَيُّهَا لَيْسَ مِنْ وَجْبَةِ الْيَوْمْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-77db9ade",
+   "text": "صِلْ شَكْلَ الشِّينِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-1c2ee7d5",
+   "text": "أَيَّ شَجَرَةٍ غَرَسَ الْجَدُّ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-16fa3ae8",
+   "text": "رَتِّبْ مَا فَعَلَهُ رَاشِدٌ بِحَبَّاتِ الْمِشْمِشْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-8d3b9fec",
+   "text": "صِلْ شَكْلَ الْعَيْنِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-71260a9a",
+   "text": "بِمَ صَنَعَ عَادِلٌ لُعْبَتَهْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-bd611735",
+   "text": "مَتَى مَوْعِدُ الْعَشَاءِ عِنْدَ سُعَادْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-85815bde",
+   "text": "صِلْ شَكْلَ الظَّاءِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-c82fa864",
+   "text": "أَيْنَ لَا يَقْرَأُ ظَافِرْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-783a7de8",
+   "text": "أَكْمِلْ بِالْكَلِمَةِ الْمُنَاسِبَةْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-5bce9e0b",
+   "text": "بِأَيِّ حَرْفٍ تُكْمِلُ الْكَلِمَةْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-8d50c6ff",
+   "text": "بِمَ يَبْدَأُ الطَّعَامُ فِي النَّشِيدْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-c11217a0",
+   "text": "أَيْنَ نَجِدُ اسْمَ السُّورَةِ وَعَدَدَ آيَاتِهَا فِي صَفْحَةِ الْمُصْحَفْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-93052cca",
+   "text": "صِلْ كُلَّ سُورَةٍ بِعَدَدِ آيَاتِهَا كَمَا فِي شَرِيطِ اسْمِهَا.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "ok": null,
+    "noAudio": true
+   }
+  },
+  {
+   "name": "qr-24410b8e",
+   "text": "الدَّائِرَةُ الَّتِي فِيهَا رَقْمٌ تَدُلُّ عَلَى نِهَايَةِ الْآيَةْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-3fd5bead",
+   "text": "اُنْقُرْ عَلَى شَرِيطِ اسْمِ السُّورَةِ فِي الرَّسْمْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-75cad219",
+   "text": "ثَلَاثُ سُوَرٍ فِي مُقَرَّرِ التِّلَاوَةِ وَالْحِفْظْ، وَوَاحِدَةٌ لَيْسَتْ مِنْهَا، اِضْغَطْ عَلَيْهَا.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "ok": null,
+    "noAudio": true
+   }
+  },
+  {
+   "name": "qr-1209b59d",
+   "text": "صَنِّفْ: مَاذَا نَتْلُو؟ وَمَاذَا يُرْشِدُنَا فَقَطْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "ok": null,
+    "noAudio": true
+   }
+  },
+  {
+   "name": "qr-db04a0d1",
+   "text": "الْآيَةُ الْكَرِيمَةُ الْمَكْتُوبَةُ تُسَمَّى…",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-a5518e0e",
+   "text": "صِلْ كُلَّ كَلِمَةٍ بِمَعْنَاهَا.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-c16ab842",
+   "text": "أَكْمِلِ الْآيَةْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-c3c2669a",
+   "text": "اُنْقُرْ عَلَى اللَّوْحَةِ الَّتِي لَيْسَتْ مِنْ طَرِيقِ الْإِسْلَامْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-912965ab",
+   "text": "نَجَحَ سَالِمٌ فَقَالْ: نَجَحْتُ بِذَكَائِي وَحْدِي. هَلْ قَوْلُهُ صَحِيحْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-1a43cd0c",
+   "text": "أَيُّهَا لَيْسَ مِنْ طَرِيقِ الْإِسْلَامْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-4e3beb78",
+   "text": "بِمَ أَمَرَنَا النَّبِيُّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ فِي الْحَدِيثْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-8ad7d146",
+   "text": "أَكْمِلِ الْحَدِيثْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-d6571118",
+   "text": "صِلْ كُلَّ أَدَاةٍ بِمَا تُنَظِّفُهْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-bce5325c",
+   "text": "صَنِّفْ كُلَّ عَمَلٍ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-cf3e7e69",
+   "text": "اِسْتَيْقَظَ أَحْمَدُ مُتَأَخِّرًا فَذَهَبَ بِلَا اسْتِحْمَامْ. هَلْ فَعَلَ صَوَابَا؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-d3fb6f92",
+   "text": "أَيُّهَا لَيْسَ مِنَ النَّظَافَةْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-ea388b5b",
+   "text": "مَاذَا أَفْعَلُ عِنْدَ الْعُطَاسْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-ee23ae3e",
+   "text": "صِلْ كُلَّ وَاحِدٍ بِمَا يَقُولْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-ce389026",
+   "text": "أَكْمِلْ رَدَّ الْعَاطِسْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-44b1071f",
+   "text": "رَتِّبْ مَا أَفْعَلُهُ عِنْدَ الْعُطَاسْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-15fc4cf9",
+   "text": "عَطَسَ أَحْمَدُ عَلَى الطَّعَامِ بِلَا تَغْطِيَةْ. هَلْ فَعَلَ صَوَابَا؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-3d4868fd",
+   "text": "اُنْقُرْ عَلَى الصُّورَةِ الَّتِي فِيهَا خَطَأْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-a200aef9",
+   "text": "صِلْ كُلَّ عُنْوَانٍ بِجَوَابِهْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-ecf3de73",
+   "text": "أَيْنَ وُلِدَ النَّبِيُّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-501c2784",
+   "text": "رَتِّبْ مَا حَدَثَ فِي عَامِ الْفِيلْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-0af62045",
+   "text": "قَالَ سَالِمْ: مَوْلِدُ النَّبِيِّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ لَا يَهُمُّنِي. هَلْ قَوْلُهُ صَحِيحْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-19af8734",
+   "text": "لَوِّنِ الْبَيْتَ الَّذِي وُلِدَ فِيهِ النَّبِيُّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ بِالْأَخْضَرْ، وَالْكَعْبَةَ بِالْأَسْوَدْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-e4e89327",
+   "text": "أَيُّ الْحَيَوَانَاتِ نَجِسٌ حَرَّمَ اللَّهُ أَكْلَهْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-5af99f18",
+   "text": "النَّجَاسَةُ قَذَارَةٌ نَتَطَهَّرُ مِنْهَا.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-0dbcc277",
+   "text": "أَكْمِلِ الْعِبَارَةْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-8cad6a49",
+   "text": "صَنِّفْ كُلَّ شَيْءٍ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-1627c55e",
+   "text": "سَقَطَ سَالِمٌ فَأَصَابَ ثَوْبَهُ دَمْ، فَذَهَبَ يُصَلِّي. هَلْ فَعَلَ صَوَابَا؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-29e5f7b4",
+   "text": "أَكْمِلْ خَرِيطَةَ الطَّهَارَةْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-82803eab",
+   "text": "بَنَى الْأَبُ بَيْتًا جَمِيلَا، فَمَنْ نَشْكُرُ أَوَّلَا؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-9cfe07d4",
+   "text": "أَكْمِلْ ذِكْرَ الِاسْتِيقَاظْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-bec9c46b",
+   "text": "نَشْكُرُ اللَّهَ بِالْقَوْلِ وَالْفِعْلْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-a6b1d477",
+   "text": "صِلْ كُلَّ نِعْمَةٍ بِمَظْهَرِ شُكْرِهَا.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-2cd1bea1",
+   "text": "قَالَ سَالِمْ: نِعَمُ اللَّهِ عَلَيَّ قَلِيلَةْ. هَلْ قَوْلُهُ صَحِيحْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-506f07a5",
+   "text": "اِقْلِبْ بِطَاقَتَيْنْ: صِلْ كُلَّ نِعْمَةٍ بِشُكْرِهَا.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-e9b4dd99",
+   "text": "صِلْ كُلَّ حَالٍ بِفِعْلِ اللَّهِ فِيهَا.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-f075a763",
+   "text": "مَنِ الَّذِي حَفِظَنِي وَأَنَا فِي بَطْنِ أُمِّي؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-836ff662",
+   "text": "رَتِّبْ مَا أَفْعَلُ إِذَا مَرِضْتْ.",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-c2063482",
+   "text": "قَالَ سَالِمْ: أُحِبُّ اللَّهَ وَلَكِنِّي لَا أُطِيعُهْ. هَلْ قَوْلُهُ صَحِيحْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  },
+  {
+   "name": "qr-c9a4182e",
+   "text": "أَيُّهَا لَيْسَ مِنْ حُبِّي لِلَّهْ؟",
+   "batchId": "2026-09-23-audit-a3",
+   "verdict": {
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+   }
+  }
+ ]
+}
