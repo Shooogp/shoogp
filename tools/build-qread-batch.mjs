@@ -10,6 +10,7 @@
       **ولا يدخلُ الدفعةَ نصٌّ عربيٌّ غيرُ مشكولٍ تامّاً** (‏`toneProblem`) — قرارُ المالك
       ٢٠٢٦-٠٩-٢٣: داريجات لا يضبطُ النطقَ بلا تشكيل. فيُكتَبُ في `tools/qread-spoken.json` أوّلاً.
    ‏①ب `node tools/build-qread-batch.mjs import <batchId>` — يستلمُ الدفعةَ من فرعِ `graphics-inbox`.
+   ‏①ج `node tools/build-qread-batch.mjs audit <batchId> [--limit N] [--only a,b]` — دفعةُ فحصِ النطقِ بجيميناي.
    ‏② `node tools/build-qread-batch.mjs manifest`
       يكتبُ `js/qread.js` بقائمةِ البصماتِ التي لها ملفٌّ فعلاً — فلا يظهرُ زرٌّ بلا صوت.
    ‏③ `node tools/build-qread-batch.mjs list`   يطبعُ النصَّ المنطوقَ لكلِّ سؤالٍ (للمراجعة).
@@ -218,6 +219,16 @@ if (cmd === 'list') {
   fs.mkdirSync(ROOT + DIR, { recursive: true });
   for (const f of files) fs.writeFileSync(`${ROOT}${DIR}/${f.slice(12, -(t.length + 6))}.mp3`, sh(`git show origin/graphics-inbox:${f}`));
   console.log(`استُلِمَ ${files.length} ملفّاً من الدفعة ${args[0]}`);
+} else if (cmd === 'audit') {        // دفعةُ فحصِ النطق لسيرِ n8n «شوجب — فحص نطق الأسئلة (جيميناي)»
+  const batchId = args[0]; if (!batchId || batchId.startsWith('--')) throw new Error('batchId مطلوب');
+  const only = args.includes('--only') ? new Set(args[args.indexOf('--only') + 1].split(',')) : null;
+  const done = have();
+  let items = loadAll().filter(it => done.has(it.name) && (!only || only.has(it.name)));
+  const limit = opt('--limit'); if (limit) items = items.slice(0, limit);
+  fs.writeFileSync(ROOT + 'tools/qread-audit.json', JSON.stringify({
+    _readme: 'دفعةُ فحصِ النطق: يقرؤُها سيرُ n8n «شوجب — فحص نطق الأسئلة (جيميناي)» — لكلِّ مقطعٍ نصُّه كما أُرسِلَ إلى داريجات. تُبنى بـ`node tools/build-qread-batch.mjs audit <batchId> [--limit N] [--only a,b]`.',
+    batchId, items: items.map(({ name, text }) => ({ name, text })) }, null, 1) + '\n');
+  console.log(`tools/qread-audit.json: ${items.length} مقطعاً للفحص`);
 } else if (cmd === 'check') {        // فحصُ ملفِّ تشكيلٍ {name: text} قبلَ دمجِه
   const map = JSON.parse(fs.readFileSync(args[0], 'utf8'));
   let n = 0;
