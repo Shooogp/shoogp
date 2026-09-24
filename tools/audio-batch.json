@@ -22,44 +22,44 @@
   "⚠️ **وحدُّ المعدَّلِ خمسةُ طلباتٍ في الدقيقة** (‏`x-ratelimit-limit: 5`)، فالعقدةُ",
   "تُرسِلُ عنصراً واحداً كلَّ ١٥ ثانية."
  ],
- "batchId": "2026-09-24-qread-variants-3",
+ "batchId": "2026-09-24-qread-r1",
  "voice": "حطاب",
  "items": [
   {
-   "name": "qr-var--sannif-p1",
-   "text": "صَنِّفْ‌ـ كُلَّ زَوْجٍ حَسَبَ مَجْمُوعِهْ."
+   "name": "qr-ab4717ea--924qreadr1",
+   "text": "Which word starts with the letter ess?"
   },
   {
-   "name": "qr-var--sannif-p2",
-   "text": "صَنِّفْ‌ كُلَّ زَوْجٍ حَسَبَ مَجْمُوعِهْ."
+   "name": "qr-509175db--924qreadr1",
+   "text": "The word 'cat' starts with the letter ess."
   },
   {
-   "name": "qr-var--sannif-p3",
-   "text": "صَنْ نِفْ كُلَّ زَوْجٍ حَسَبَ مَجْمُوعِهْ."
+   "name": "qr-3c29bd81--924qreadr1",
+   "text": "Listen, then choose the word that starts with the letter ay."
   },
   {
-   "name": "qr-var--iqlib-q1",
-   "text": "اِقْلِبْ‌ـ بِطَاقَتَيْنِ فِي كُلِّ دَوْرٍ لِتَرْبِطَ كُلَّ حَيَوَانٍ بِصَغِيرِهْ."
+   "name": "qr-44849384--924qreadr1",
+   "text": "The word 'bag' has the ay sound in the middle."
   },
   {
-   "name": "qr-var--iqlib-q2",
-   "text": "اِقْلِبْ‌ بِطَاقَتَيْنِ فِي كُلِّ دَوْرٍ لِتَرْبِطَ كُلَّ حَيَوَانٍ بِصَغِيرِهْ."
+   "name": "qr-50ca1e6b--924qreadr1",
+   "text": "eyeve got a pen' means you have a pen."
   },
   {
-   "name": "qr-var--iqlib-q3",
-   "text": "اِقْ لِبْ بِطَاقَتَيْنِ فِي كُلِّ دَوْرٍ لِتَرْبِطَ كُلَّ حَيَوَانٍ بِصَغِيرِهْ."
+   "name": "qr-ecbbe532--924qreadr1",
+   "text": "Listen, then choose the word that starts with the letter tee."
   },
   {
-   "name": "qr-var--muashir-m1",
-   "text": "ضَعِ ٱلْمُؤَشِّرَ عَلَى ٱلْعَدَدِ سَبْعَةَ عَشَرْ."
+   "name": "qr-25a27bcf--924qreadr1",
+   "text": "The word 'cat' ends with the letter tee."
   },
   {
-   "name": "qr-var--muashir-m2",
-   "text": "ضَعِ ٱلْمُؤَشِّرَ‌ـ عَلَى ٱلْعَدَدِ سَبْعَةَ عَشَرْ."
+   "name": "qr-59354376--924qreadr1",
+   "text": "Listen, then choose the word that starts with the letter pee."
   },
   {
-   "name": "qr-var--muashir-m3",
-   "text": "ضَعِ‌ـ ٱلْمُؤَشِّرَ‌ـ عَلَى ٱلْعَدَدِ سَبْعَةَ عَشَرْ."
+   "name": "qr-b031692e--924qreadr1",
+   "text": "The word 'top' ends with the letter pee."
   }
  ]
 }
