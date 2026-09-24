@@ -24,15 +24,14 @@ for (const b of Object.keys(I).filter(k => k.startsWith('g1-')))
     });
 
 /* المشتبهُ به من التقارير */
-const rows = []; let checked = 0; const seen = new Set();
+/* أحدثُ حكمٍ لكلِّ مقطع (التقاريرُ مرتّبةٌ زمنياً بأسمائها): مقطعٌ أُعيدَ توليدُه بعدَ فحصٍ أوّلٍ يُؤخذُ حكمُ فحصِه الأخير. */
+const latest = new Map();
 for (const f of fs.readdirSync(ROOT + 'tools/qread-audit-reports').filter(f => f.endsWith('.json')).sort()) {
   const r = JSON.parse(fs.readFileSync(ROOT + 'tools/qread-audit-reports/' + f, 'utf8'));
-  for (const it of r.items) {
-    const v = it.verdict || {}; if (v.ok === null || v.ok === undefined) continue; checked++;
-    const major = (v.issues || []).filter(x => x.severity === 'major');
-    if ((v.ok === false || major.length) && !seen.has(it.name)) { seen.add(it.name); rows.push({ ...it, issues: v.issues || [] }); }
-  }
+  for (const it of r.items) { const v = it.verdict || {}; if (v.ok === null || v.ok === undefined) continue; latest.set(it.name, { ...it, issues: v.issues || [], batch: r.batchId }); }
 }
+const checked = latest.size;
+const rows = [...latest.values()].filter(it => it.verdict.ok === false || it.issues.some(x => x.severity === 'major'));
 
 /* الصيغُ التجريبية */
 const VARIANTS = [
@@ -52,6 +51,7 @@ const vsec = VARIANTS.map(g => `<section class="var"><h2>${esc(g.title)}</h2><p>
   g.options.map(([k, label]) => `<label class="opt"><button class="play" type="button" data-src="../audio/qread-variants/${k}.mp3">▶</button>` +
     `<input type="radio" name="${g.group}" value="${k}"> <span>${esc(label)}</span></label>`).join('') + `</section>`).join('\n');
 
+rows.sort((a, b) => ((where[a.name] || [''])[0]).localeCompare((where[b.name] || [''])[0], 'ar'));
 const tr = rows.map((r, i) => {
   const n = String(i + 1).padStart(2, '0');
   const iss = r.issues.map(x => `<div class="iss"><b>${esc(x.word)}</b> ← سُمِعَت <b>${esc(x.heard || '؟')}</b>` +

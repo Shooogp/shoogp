@@ -1,0 +1,436 @@
+{
+ "batchId": "2026-09-23-audit-c2",
+ "checkedAt": "2026-09-24T00:12:28.863Z",
+ "total": 38,
+ "flagged": 5,
+ "items": [
+  {
+   "name": "qr-b97cdec9",
+   "text": "Color the family words red. Color the greeting words blue.",
+   "batchId": "2026-09-23-audit-c2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-b245eaf5",
+   "text": "Color the small numbers (1-2) red. Color the big numbers (5-6) blue.",
+   "batchId": "2026-09-23-audit-c2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-91d1a86c",
+   "text": "The book is on top of the desk. Complete: The book is … the desk.",
+   "batchId": "2026-09-23-audit-c2",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "The",
+      "heard": "---",
+      "severity": "major",
+      "note": "The word 'The' at the beginning of the sentence was skipped."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-46b98c72",
+   "text": "Color the ball red. Color the car blue. Color the train green. Color the plane orange.",
+   "batchId": "2026-09-23-audit-c2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-00a45424",
+   "text": "Put the shapes in order, from the fewest sides to the most sides.",
+   "batchId": "2026-09-23-audit-c2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-4a0c2ec5",
+   "text": "Color the square blue. Color the circle red. Color the triangle green. Color the rectangle orange.",
+   "batchId": "2026-09-23-audit-c2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-7d71a93f",
+   "text": "صَنِّفْ: مَا يَحْتَاجُهُ كُلُّ الْأَطْفَالْ، وَمَا يُحِبُّهُ بَعْضُهُمْ فَقَطْ.",
+   "batchId": "2026-09-23-audit-c2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-d3bc16b2",
+   "text": "أَكْمِلْ خَرِيطَةَ التَّشَابُهِ بَيْنَنَا بِسَحْبِ الْكَلِمَةِ الْمُنَاسِبَةِ إِلَى كُلِّ فَرْعْ.",
+   "batchId": "2026-09-23-audit-c2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-2e8fcf33",
+   "text": "صَنِّفْ: أَشْيَاءُ نَتَشَابَهُ فِيهَا، وَأَشْيَاءُ نَخْتَلِفُ فِيهَا.",
+   "batchId": "2026-09-23-audit-c2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-fb806ed3",
+   "text": "اسْتَخْدِمْ حَاسَّةَ السَّمْعْ: اسْتَمِعْ إِلَى الصَّوْتْ، ثُمَّ اخْتَرِ الْحَيَوَانَ الَّذِي أَصْدَرَهْ.",
+   "batchId": "2026-09-23-audit-c2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-75c38fde",
+   "text": "صَنِّفْ: أَشْيَاءُ نَتَشَابَهُ فِيهَا جَمِيعَا، وَأَشْيَاءُ يَخْتَلِفُ فِيهَا النَّاسْ.",
+   "batchId": "2026-09-23-audit-c2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-852eb6dc",
+   "text": "فِي إِطَارِ الْعَشَرَةِ خَمْسَةُ أَقْرَاصٍ حَمْرَاءَ وَثَلَاثَةٌ صَفْرَاءْ. كَمْ قُرْصًا فِيهْ؟",
+   "batchId": "2026-09-23-audit-c2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-e4bd8495",
+   "text": "اِنْقُرْ سِتَّ تَمَرَاتٍ، ثُمَّ فَكِّرْ: كَمْ يَنْقُصُ لِتُكْمِلَ الْعَشَرَةْ؟",
+   "batchId": "2026-09-23-audit-c2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-8f1418b7",
+   "text": "أَخَذْنَا مِنَ الْعَشَرَةِ خَمْسًا. اِنْقُرِ التَّمَرَاتِ الْبَاقِيَةَ وَعُدَّهَا.",
+   "batchId": "2026-09-23-audit-c2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-84445524",
+   "text": "ابْنِ مَصْفُوفَةً فِيهَا صَفَّانِ، فِي كُلِّ صَفٍّ خَمْسَةُ مُرَبَّعَاتٍ، لِتَرَى ضِعْفَ الْخَمْسَةْ.",
+   "batchId": "2026-09-23-audit-c2",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "مَصْفُوفَةً",
+      "heard": "مَصْفُوفَةٌ",
+      "severity": "major",
+      "note": "Pronounced with tanween damm instead of tanween fath."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-9978e960",
+   "text": "لَوِّنِ الْمَجْمُوعَةَ الَّتِي تُظْهِرُ ضِعْفًا بِالْأَصْفَرِ، وَالَّتِي لَيْسَتْ ضِعْفًا بِالْأَحْمَرْ.",
+   "batchId": "2026-09-23-audit-c2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-3cb37ff7",
+   "text": "الْحَبْلُ الَّذِي طُولُهُ تِسْعُ وَحَدَاتٍ وَالْحَبْلُ الَّذِي طُولُهُ أَرْبَعُ وَحَدَاتٍ، أَيُّهُمَا أَطْوَلُ؟",
+   "batchId": "2026-09-23-audit-c2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-f73282f6",
+   "text": "الْآنَ عُدَّ لِلتَّحَقُّقْ: اِنْقُرِ اثْنَيْ عَشَرَ مُكَعَّبًا.",
+   "batchId": "2026-09-23-audit-c2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-811f314e",
+   "text": "اِقْلِبْ بِطَاقَتَيْنِ فِي كُلِّ دَوْرْ: طَابِقْ كُلَّ عَدَدٍ بِاسْمِهْ.",
+   "batchId": "2026-09-23-audit-c2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-316c8582",
+   "text": "فِي الْكَفِّ سِتُّ قِطَعْ. فَإِذَا كَانَ مَا فِي الْكَفَّيْنِ ضِعْفَهَا، فَكَمْ قِطْعَةً فِيهِمَا؟",
+   "batchId": "2026-09-23-audit-c2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-43d161de",
+   "text": "إِذَا كَانَ فِي الْكَفِّ خَمْسُ قِطَعٍ فَإِنَّ ضِعْفَهَا إِحْدَى عَشْرَةَ قِطْعَةْ.",
+   "batchId": "2026-09-23-audit-c2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-f207cf4d",
+   "text": "فِي الْكَفِّ نَحْوُ اثْنَتَيْ عَشْرَةَ قِطْعَةً، صَنِّفِ التَّقْدِيرَاتْ.",
+   "batchId": "2026-09-23-audit-c2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-6ce5e03b",
+   "text": "قَارِنْ بَيْنَ عَدَدِ قِطَعِ الْكَفِّ وَعَدَدِ قِطَعِ الْكَفَّيْنْ.",
+   "batchId": "2026-09-23-audit-c2",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "الْكَفِّ",
+      "heard": "الْكَفْ",
+      "severity": "major",
+      "note": "Dropped the final kasrah in the middle of the sentence, pronouncing it with a sukun instead."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-57e31416",
+   "text": "تَقْدِيرٌ لِعَدَدِ الْقِطَعِ فِي كَفٍّ وَاحِدَةْ، أَيُّهَا غَيْرُ مَعْقُولْ؟",
+   "batchId": "2026-09-23-audit-c2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-4e3b2817",
+   "text": "اِقْلِبْ بِطَاقَتَيْنِ فِي كُلِّ دَوْرْ: طَابِقْ كُلَّ شَكْلٍ بِوَصْفِهْ.",
+   "batchId": "2026-09-23-audit-c2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-f7d08170",
+   "text": "النَّمَطُ يَتَكَرَّرْ: مُرَبَّعٌ بُرْتُقَالِيٌّ ثُمَّ دَائِرَةٌ حَمْرَاءْ، لَوِّنِ الشَّكْلَيْنِ الْأَخِيرَيْنْ.",
+   "batchId": "2026-09-23-audit-c2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-ffcd4ccd",
+   "text": "عُدَّ بِالْعَشَرَاتْ: اِنْقُرِ الْمَجْمُوعَاتِ بِالتَّرْتِيبِ وَتَوَقَّفْ عِنْدَ الْخَمْسِينْ.",
+   "batchId": "2026-09-23-audit-c2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-c16315b3",
+   "text": "لَوِّنْ مُضَاعَفَاتِ الْعَشَرَةِ بِالْأَخْضَرْ، وَمَا عَدَاهَا بِالْأَحْمَرْ.",
+   "batchId": "2026-09-23-audit-c2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-99dace4e",
+   "text": "قَدِّرْ: كَمْ كُوبًا يَمْلَأُ هَذَا الْإِبْرِيقْ؟ اِسْحَبِ الْمُؤَشِّرْ.",
+   "batchId": "2026-09-23-audit-c2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-571fbf7d",
+   "text": "فِي مَطْعَمِ الْمَدْرَسَةِ ثَلَاثُ فَطَائِرَ وَأَرْبَعُ حَبَّاتِ تُفَّاحْ. كَمْ صِنْفًا مِنَ الطَّعَامِ فِيهْ؟",
+   "batchId": "2026-09-23-audit-c2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-93431269",
+   "text": "إِذَا كَانَ فِي الْقَائِمَةِ ثَلَاثُ فَطَائِرَ وَأَرْبَعُ حَبَّاتِ تُفَّاحٍ فَالْمَجْمُوعُ ثَمَانِي قِطَعْ.",
+   "batchId": "2026-09-23-audit-c2",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "فَطَائِرَ",
+      "heard": "فَطَائِرْ",
+      "severity": "major",
+      "note": "The final fatha was omitted in the middle of the sentence, pronouncing the word with a sukun."
+     },
+     {
+      "word": "تُفَّاحٍ",
+      "heard": "تُفَّاحْ",
+      "severity": "major",
+      "note": "The final tanween was omitted in the middle of the sentence, pronouncing the word with a sukun."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-d15ba144",
+   "text": "ثَلَاثُ فَطَائِرَ وَأَرْبَعُ حَبَّاتِ تُفَّاحْ، أَكْمِلِ الْمُعَادَلَةْ.",
+   "batchId": "2026-09-23-audit-c2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-2bc2d798",
+   "text": "عَلَى خَطِّ الْأَعْدَادِ يَأْتِي الْعَدَدُ الْأَكْبَرُ بَعْدَ الْأَصْغَرْ.",
+   "batchId": "2026-09-23-audit-c2",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "الْعَدَدُ",
+      "heard": "الْعَدُّ",
+      "severity": "major",
+      "note": "The word was pronounced as 'الْعَدُّ' (al-'addu) instead of 'الْعَدَدُ' (al-'adadu), missing the second 'da' syllable."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-cfcda7e9",
+   "text": "ضَعِ الْمُؤَشِّرَ عَلَى الْعَدَدِ الَّذِي يَقَعُ بَيْنَ اثْنَيْ عَشَرَ وَأَرْبَعَةَ عَشَرْ.",
+   "batchId": "2026-09-23-audit-c2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-1e583cb5",
+   "text": "كُلُّهَا أَعْدَادٌ تَقَعُ بَيْنَ عَشَرَةٍ وَعِشْرِينْ، أَيُّهَا لَا يَنْتَمِي؟",
+   "batchId": "2026-09-23-audit-c2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-832c4393",
+   "text": "اِنْقُرْ أَرْبَعَ تَمَرَاتْ، وَهِيَ مَا يَنْقُصُ السِّتَّةَ لِتُكْمِلَ الْعَشَرَةْ.",
+   "batchId": "2026-09-23-audit-c2",
+   "verdict": {
+    "ok": true,
+    "issues": [
+     {
+      "word": "اِنْقُرْ",
+      "heard": "اُنْقُرْ",
+      "severity": "minor",
+      "note": "The text has a kasra on the hamzat al-wasl (اِنْقُرْ), but the engine correctly pronounced it with a damma (اُنْقُرْ) to match the rules of the Arabic imperative verb (نَقَرَ - يَنْقُرُ)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-292ed8ff",
+   "text": "اِقْلِبْ بِطَاقَتَيْنِ فِي كُلِّ دَوْرْ: طَابِقْ كُلَّ عَدَدٍ بِشَرِيكِهِ إِلَى الْعَشَرَةْ.",
+   "batchId": "2026-09-23-audit-c2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-bf2a944c",
+   "text": "مَجْمُوعَةٌ فِيهَا خَمْسَةُ أَقْلَامٍ وَأُخْرَى فِيهَا أَرْبَعَةْ. كَمْ قَلَمًا مَعًا؟",
+   "batchId": "2026-09-23-audit-c2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  }
+ ]
+}
