@@ -107,6 +107,13 @@ function phonetic(t){
   return t.split(' ').map(w => { for (const [re, rep] of PHONETIC) if (re.test(w)) return w.replace(re, rep); return w; }).join(' ');
 }
 
+/* ما ينبغي أن يُسمَع عندَ الفحص: النصُّ القياسيُّ بلا حِيَلِ الوصلِ والفواصل، لكن **بالمرادفاتِ اللفظيةِ** التي
+   قرّرَ المالكُ نطقَها بدلَ كلمةِ الكتاب (‏«صِلْ» ← «وَصِّلْ») — وإلا حكمَ جيميناي على المرادفِ خطأً. */
+const SYNONYMS = [[/^\u0635\u0650\u0644\u0652$/, '\u0648\u064E\u0635\u0651\u0650\u0644\u0652']];
+export function auditText(t){
+  return t.split(' ').map(w => { for (const [re, rep] of SYNONYMS) if (re.test(w)) return w.replace(re, rep); return w; }).join(' ');
+}
+
 export function liaison(t, id){
   t = phonetic(t);
   for (const [from, to] of (WORD_FIXES[id] || [])) t = t.split(' ').map(w => w === from ? to : w).join(' ');
@@ -260,7 +267,7 @@ if (cmd === 'list') {
   const skip = opt('--skip') || 0; const limit = opt('--limit'); items = items.slice(skip, limit ? skip + limit : undefined);
   fs.writeFileSync(ROOT + 'tools/qread-audit.json', JSON.stringify({
     _readme: 'دفعةُ فحصِ النطق: يقرؤُها سيرُ n8n «شوجب — فحص نطق الأسئلة (جيميناي)» — لكلِّ مقطعٍ نصُّه القياسيُّ المشكولُ (قبلَ الوصل) — فهو ما ينبغي أن يُسمَع. تُبنى بـ`node tools/build-qread-batch.mjs audit <batchId> [--limit N] [--only a,b]`.',
-    batchId, items: items.map(({ name, base }) => ({ name, text: base })) }, null, 1) + '\n');   // النصُّ القياسيُّ لا الملصوق: هو ما ينبغي أن يُسمَع
+    batchId, items: items.map(({ name, base }) => ({ name, text: auditText(base) })) }, null, 1) + '\n');   // النصُّ القياسيُّ لا الملصوق: هو ما ينبغي أن يُسمَع
   console.log(`tools/qread-audit.json: ${items.length} مقطعاً للفحص`);
 } else if (cmd === 'check') {        // فحصُ ملفِّ تشكيلٍ {name: text} قبلَ دمجِه
   const map = JSON.parse(fs.readFileSync(args[0], 'utf8'));
