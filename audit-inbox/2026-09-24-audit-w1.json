@@ -1,0 +1,1101 @@
+{
+ "batchId": "2026-09-24-audit-w1",
+ "checkedAt": "2026-09-24T17:11:44.115Z",
+ "total": 75,
+ "flagged": 43,
+ "items": [
+  {
+   "name": "qr-7e795fb8",
+   "text": "وَصِّلْ كُلَّ حَيَوَانٍ بِالْمَكَانِ الَّذِي يَعِيشُ فِيهْ.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-1fb7fccd",
+   "text": "وَصِّلْ كُلَّ حَيَوَانٍ بِصَغِيرِهْ.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-971fec2f",
+   "text": "وَصِّلْ كُلَّ نَوْعٍ بِمِثَالِهْ.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "بِمِثَالِهْ",
+      "heard": "بِمِثَالْ",
+      "severity": "major",
+      "note": "The pronoun suffix 'ـهِ' was omitted, pronouncing the word as 'بِمِثَالْ' instead of 'بِمِثَالِهْ'."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-368a7ced",
+   "text": "وَصِّلْ كُلَّ جُزْءٍ مِنَ النَّبْتَةِ بِعَمَلِهْ.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصَلَ",
+      "severity": "major",
+      "note": "Pronounced as the past tense verb 'وَصَلَ' (wasala) instead of the imperative 'وَصِّلْ' (wassil)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-80b7b820",
+   "text": "وَصِّلْ كُلَّ شُعُورٍ بِمَا نَفْعَلُهُ جَمِيعَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصَلَ",
+      "severity": "major",
+      "note": "Pronounced as the past tense verb 'وَصَلَ' (wasala) instead of the imperative 'وَصِّلْ' (wassil)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-fcf4398b",
+   "text": "وَصِّلْ كُلَّ عُضْوٍ بِالْحَاسَّةِ الَّتِي نَسْتَخْدِمُهُ فِيهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-77bf615d",
+   "text": "وَصِّلْ كُلَّ جُزْءٍ مِنَ الْجِسْمِ بِعَمَلِهْ.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-9f856043",
+   "text": "وَصِّلْ كُلَّ عَدَدٍ بِاسْمِهِ.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصِّلَ",
+      "severity": "major",
+      "note": "The word ending has a fatha instead of a sukun."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-a661b139",
+   "text": "وَصِّلْ كُلَّ مَجْمُوعَةٍ بِعَدَدِهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصِّلُوا",
+      "severity": "major",
+      "note": "Pronounced as plural 'وَصِّلُوا' instead of singular 'وَصِّلْ'."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-721337ca",
+   "text": "وَصِّلْ كُلَّ عَدَدٍ بِشَرِيكِهِ الَّذِي يُكَوِّنُ مَعَهُ عَشَرَةْ.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-de5b88fd",
+   "text": "وَصِّلْ كُلَّ جُمْلَةِ طَرْحٍ بِنَاتِجِهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "طَرْحٍ",
+      "heard": "طُرِحَ",
+      "severity": "major",
+      "note": "Pronounced as the passive verb 'طُرِحَ' instead of the noun 'طَرْحٍ'."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-248c79b6",
+   "text": "وَصِّلْ كُلَّ زَوْجٍ بِمَجْمُوعِهْ.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصِلَ",
+      "severity": "major",
+      "note": "The imperative verb was mispronounced as a past-tense-like form 'وَصِلَ' (waṣila) with a fatḥah on the lām instead of a sukūn, and without the required shadda on the ṣād."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-eac6549c",
+   "text": "وَصِّلْ كُلَّ شَكْلٍ بِعَدَدِ أَضْلَاعِهْ.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-ed7f61f7",
+   "text": "وَصِّلْ كُلَّ مُجَسَّمٍ بِوَصْفِ أَوْجُهِهِ.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصِلَ",
+      "severity": "major",
+      "note": "The word was pronounced as 'وَصِلَ' (waṣila) with a single ṣād (missing shadda) and a fatḥah on the lām instead of a sukūn."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-07167a28",
+   "text": "وَصِّلْ كُلَّ عَدَدٍ بِشَرِيكِهِ الَّذِي يُكَوِّنُ مَعَهُ سَبْعَةْ.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-ba5a483a",
+   "text": "وَصِّلْ كُلَّ وِعَاءٍ بِعَدَدِ الْأَكْوَابِ الَّتِي تَمْلَؤُهْ.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصَلَ",
+      "severity": "major",
+      "note": "Pronounced as the past tense verb 'وَصَلَ' instead of the imperative 'وَصِّلْ' (missing shadda and wrong vowels)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-2dce5b5b",
+   "text": "وَصِّلْ كُلَّ صِنْفٍ بِثَمَنِهِ.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصِّلُوا",
+      "severity": "major",
+      "note": "The verb was pronounced in the plural form 'وَصِّلُوا' instead of the singular 'وَصِّلْ'."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-bcd1a8c5",
+   "text": "وَصِّلْ كُلَّ نَشَاطٍ بِوَقْتِهْ.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-ee9e8eae",
+   "text": "وَصِّلْ كُلَّ حِصَّةٍ بِوَقْتِ بِدَايَتِهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-2c893e4e",
+   "text": "وَصِّلْ كُلَّ جُمْلَةِ جَمْعٍ بِنَاتِجِهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصِّلُوا",
+      "severity": "major",
+      "note": "Pronounced as plural imperative (وَصِّلُوا) instead of singular (وَصِّلْ)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-036d507c",
+   "text": "وَصِّلْ كُلَّ شَيْءٍ بِمَكَانِهِ فِي الْمَدْرَسَةْ.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصَلَ",
+      "severity": "major",
+      "note": "Pronounced as the past tense verb 'وَصَلَ' (wasala) instead of the imperative 'وَصِّلْ' (wassil)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-d33e3ea6",
+   "text": "وَصِّلْ كُلَّ أَدَاةٍ بِعَمَلِهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصِلْ",
+      "severity": "major",
+      "note": "Missing shadda on the letter ص (pronounced as a single consonant instead of geminated)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-6c95065f",
+   "text": "وَصِّلْ شَكْلَ الْبَاءِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصَلَ",
+      "severity": "major",
+      "note": "Pronounced as 'wasala' (past tense) instead of 'wassil' (imperative)."
+     },
+     {
+      "word": "شَكْلَ",
+      "heard": "شَكْلُ",
+      "severity": "major",
+      "note": "Pronounced with damma on the final letter instead of fatha."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-d64438ee",
+   "text": "وَصِّلْ شَكْلَ اللَّامِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصَلَ",
+      "severity": "major",
+      "note": "Pronounced as past tense 'waṣala' instead of imperative 'waṣṣil' (wrong vowels and missing shadda)."
+     },
+     {
+      "word": "شَكْلَ",
+      "heard": "شَكْلُ",
+      "severity": "major",
+      "note": "Wrong final vowel (damma instead of fatha)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-8171272f",
+   "text": "وَصِّلْ كُلَّ شَخْصِيَّةٍ بِعُمْرِهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصَلَ",
+      "severity": "major",
+      "note": "The imperative verb 'وَصِّلْ' was pronounced as the past tense verb 'وَصَلَ' with a fatha on the final letter instead of a sukun, and without the shadda and kasra on the second letter."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-d246e2a9",
+   "text": "وَصِّلْ شَكْلَ الْمِيمِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-a57598af",
+   "text": "وَصِّلْ شَكْلَ الرَّاءِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصِلَ",
+      "severity": "major",
+      "note": "Missing shadda on the letter ص and wrong ending vowel (fathah instead of sukun)."
+     },
+     {
+      "word": "شَكْلَ",
+      "heard": "شَكْلُ",
+      "severity": "major",
+      "note": "Wrong ending vowel (dammah instead of fathah)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-e7f805af",
+   "text": "وَصِّلْ كُلَّ حَرْفٍ بِصُورَةِ كَلِمَتِهْ.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-523b12b9",
+   "text": "وَصِّلْ كُلَّ شَطْرٍ بِتَكْمِلَتِهِ.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصِلَ",
+      "severity": "major",
+      "note": "Pronounced with a fatha on the lam instead of sukun, and missing the shadda on the saad."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-896191ba",
+   "text": "وَصِّلْ شَكْلَ الدَّالِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-2d236e91",
+   "text": "وَصِّلْ شَكْلَ السِّينِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-35c067ca",
+   "text": "وَصِّلْ شَكْلَ الْكَافِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصَلَ",
+      "severity": "major",
+      "note": "Pronounced as the past tense verb 'وَصَلَ' (waṣala) instead of the imperative 'وَصِّلْ' (waṣṣil)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-b9e4ffaa",
+   "text": "وَصِّلْ شَكْلَ النُّونِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصِلَ",
+      "severity": "major",
+      "note": "Missing shadda on the letter ص and pronounced with a final fatḥah instead of sukun."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-6030d5a8",
+   "text": "وَصِّلْ شَكْلَ الْفَاءِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصَلَ",
+      "severity": "major",
+      "note": "Pronounced as the past tense verb 'وَصَلَ' instead of the imperative 'وَصِّلْ' (missing the shaddah-kasrah and ending with a fatḥah instead of a sukūn)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-b3b8a6e0",
+   "text": "وَصِّلْ شَكْلَ التَّاءِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-c7cb34d2",
+   "text": "وَصِّلْ كُلَّ شَيْءٍ بِأَثَرِهِ فِي الْأَسْنَانْ.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصِّلُوا",
+      "severity": "major",
+      "note": "Pronounced as plural 'وَصِّلُوا' (waṣṣilū) instead of singular 'وَصِّلْ' (waṣṣil)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-7e82c42c",
+   "text": "وَصِّلْ شَكْلَ الْحَاءِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-6f625b31",
+   "text": "وَصِّلْ شَكْلَ الْقَافِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-7c3753a5",
+   "text": "وَصِّلْ شَكْلَ الزَّايِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصَلَ",
+      "severity": "major",
+      "note": "Pronounced as past tense verb with fat-ha on the second and third letters instead of imperative with kasra and sukun."
+     },
+     {
+      "word": "شَكْلَ",
+      "heard": "شَكْلُ",
+      "severity": "major",
+      "note": "Pronounced with damma on the final letter instead of fat-ha."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-1e752c05",
+   "text": "وَصِّلْ شَكْلَ الطَّاءِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصَّلَ",
+      "severity": "major",
+      "note": "The imperative verb 'وَصِّلْ' (waṣṣil) was pronounced as the past tense verb 'وَصَّلَ' (waṣṣala)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-7881ba7a",
+   "text": "وَصِّلْ شَكْلَ الْهَمْزَةِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصَلَ",
+      "severity": "major",
+      "note": "Pronounced as the past tense verb 'wasala' instead of the imperative 'wassil'."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-e269532e",
+   "text": "وَصِّلْ شَكْلَ الْجِيمِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصِلَ",
+      "severity": "major",
+      "note": "Missing shadda on ص and wrong vowel on ل (fatḥah instead of sukūn)."
+     },
+     {
+      "word": "شَكْلَ",
+      "heard": "شَكْلُ",
+      "severity": "major",
+      "note": "Wrong vowel on ل (ḍammah instead of fatḥah)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-6ceb6be0",
+   "text": "وَصِّلْ شَكْلَ الْوَاوِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصَلَ",
+      "severity": "major",
+      "note": "Pronounced as the past tense verb 'وَصَلَ' (or 'وَصَّلَ') instead of the imperative 'وَصِّلْ'."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-77db9ade",
+   "text": "وَصِّلْ شَكْلَ الشِّينِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-8d3b9fec",
+   "text": "وَصِّلْ شَكْلَ الْعَيْنِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصِّلَ",
+      "severity": "major",
+      "note": "The final letter was pronounced with a fatha instead of a sukun (waṣṣila instead of waṣṣil)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-85815bde",
+   "text": "وَصِّلْ شَكْلَ الظَّاءِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصَلَ",
+      "severity": "major",
+      "note": "Pronounced as the past tense verb 'وَصَلَ' instead of the imperative 'وَصِّلْ'."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-93052cca",
+   "text": "وَصِّلْ كُلَّ سُورَةٍ بِعَدَدِ آيَاتِهَا كَمَا فِي شَرِيطِ اسْمِهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصِلُوا",
+      "severity": "major",
+      "note": "Pronounced as plural 'وَصِلُوا' instead of singular 'وَصِّلْ'."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-a5518e0e",
+   "text": "وَصِّلْ كُلَّ كَلِمَةٍ بِمَعْنَاهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصِّلُوا",
+      "severity": "major",
+      "note": "Pronounced as plural 'وَصِّلُوا' instead of singular 'وَصِّلْ'."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-d6571118",
+   "text": "وَصِّلْ كُلَّ أَدَاةٍ بِمَا تُنَظِّفُهْ.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-ee23ae3e",
+   "text": "وَصِّلْ كُلَّ وَاحِدٍ بِمَا يَقُولْ.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-a200aef9",
+   "text": "وَصِّلْ كُلَّ عُنْوَانٍ بِجَوَابِهْ.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصَلَ",
+      "severity": "major",
+      "note": "Pronounced as past tense 'وَصَلَ' (wasala) instead of the imperative 'وَصِّلْ' (waṣṣil), missing the shadda and changing the vowels."
+     },
+     {
+      "word": "كُلَّ",
+      "heard": "كُلُّ",
+      "severity": "major",
+      "note": "Pronounced with damma 'كُلُّ' (kullu) instead of fatha 'كُلَّ' (kulla)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-a6b1d477",
+   "text": "وَصِّلْ كُلَّ نِعْمَةٍ بِمَظْهَرِ شُكْرِهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-e9b4dd99",
+   "text": "وَصِّلْ كُلَّ حَالٍ بِفِعْلِ اللَّهِ فِيهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصِّلُوا",
+      "severity": "major",
+      "note": "Pronounced as plural 'وَصِّلُوا' instead of singular 'وَصِّلْ'."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-a585ecc2",
+   "text": "وَصِّلْ كُلَّ اسْمٍ بِمَعْنَاهْ.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-97aa8ea6",
+   "text": "وَصِّلْ كُلَّ عَمَلٍ بِنَوْعِ طَهَارَتِهْ.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-6f3f7c59",
+   "text": "وَصِّلْ كُلَّ صِلَةٍ بِاسْمِهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصِّلُوا",
+      "severity": "major",
+      "note": "Pronounced as plural 'وَصِّلُوا' instead of singular 'وَصِّلْ'."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-0f64e118",
+   "text": "وَصِّلْ كُلَّ حَالٍ بِدُعَائِهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصِّلُوا",
+      "severity": "major",
+      "note": "Pronounced as plural 'وَصِّلُوا' instead of singular 'وَصِّلْ'."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-75ecfb48",
+   "text": "وَصِّلْ كُلَّ حَالٍ بِأَدَبِهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-bc77bf7c",
+   "text": "وَصِّلْ كُلَّ عُضْوٍ بِفَائِدَتِهْ.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصِلَ",
+      "severity": "major",
+      "note": "Pronounced as 'waṣila' instead of the imperative 'waṣṣil' (missing the shaddah on the letter ṣād and ending with a fatḥah instead of a sukūn)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-983cdb0b",
+   "text": "وَصِّلْ كُلَّ مَوْقِفٍ بِمُسَاعَدَتِهْ.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-d5841379",
+   "text": "وَصِّلْ كُلَّ جِهَازٍ بِطَرِيقَةِ التَّفَاعُلِ مَعَهْ.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصَلَ",
+      "severity": "major",
+      "note": "The imperative verb 'وَصِّلْ' (waṣṣil) was pronounced as the past tense verb 'وَصَلَ' (waṣala)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-a12408a2",
+   "text": "وَصِّلْ كُلَّ جُزْءٍ بِوَظِيفَتِهْ.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصِّلُوا",
+      "severity": "major",
+      "note": "Pronounced as plural 'وَصِّلُوا' instead of singular 'وَصِّلْ'."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-cd75b5ba",
+   "text": "وَصِّلْ كُلَّ رَمْزٍ بِاسْتِخْدَامِهْ.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-daef8d69",
+   "text": "وَصِّلْ كُلَّ جُزْءٍ مِنْ أَجْزَاءِ الْفَأْرَةِ بِوَظِيفَتِهْ.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-2d8931d9",
+   "text": "وَصِّلْ كُلَّ إِجْرَاءٍ بِاسْمِهِ الصَّحِيحْ.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصِّلُوا",
+      "severity": "major",
+      "note": "Pronounced as plural 'وَصِّلُوا' instead of singular 'وَصِّلْ'."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-f28136c6",
+   "text": "وَصِّلْ كُلَّ مِيزَةٍ مِنْ مَزَايَا الرَّسْمِ الرَّقْمِيِّ بِوَصْفِهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصَلَ",
+      "severity": "major",
+      "note": "The imperative verb 'وَصِّلْ' (waṣṣil) was pronounced as the past tense verb 'وَصَلَ' (waṣala)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-90a9bba2",
+   "text": "وَصِّلْ كُلَّ أَدَاةٍ فِي تَطْبِيقِ الرَّسَّامِ بِوَظِيفَتِهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-2cc8f9c4",
+   "text": "وَصِّلْ كُلَّ وَصْفٍ بِاسْمِ الْأَدَاةِ الْمُنَاسِبَةِ لَهْ.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-0b9a427b",
+   "text": "وَصِّلْ كُلَّ عَمَلِيَّةٍ بِالْأَدَاةِ الَّتِي تُنَفِّذُهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-8da4b636",
+   "text": "وَصِّلْ كُلَّ رَسْمَةٍ بِالْأَشْكَالِ الَّتِي دُمِجَتْ لِتَكْوِينِهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-75928372",
+   "text": "وَصِّلْ كُلَّ نَوْعٍ مِنَ الْفُرْشَاةِ بِاسْتِخْدَامِهْ.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصَّلَ",
+      "severity": "major",
+      "note": "Pronounced as past tense 'waṣṣala' instead of the imperative 'waṣṣil'."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-2f3e5914",
+   "text": "وَصِّلْ كُلَّ نَوْعِ اتِّصَالٍ بِوَصْفِهْ.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-85789edb",
+   "text": "وَصِّلْ كُلَّ مِيزَةٍ مِنْ مَزَايَا الْبَرِيدِ الْإِلِكْتُرُونِيِّ بِوَصْفِهَا.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-06c0597c",
+   "text": "وَصِّلْ كُلَّ جُزْءٍ مِنْ أَجْزَاءِ رِسَالَةِ الْبَرِيدِ الْإِلِكْتُرُونِيِّ بِوَصْفِهْ.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصَّلَ",
+      "severity": "major",
+      "note": "Pronounced as past tense 'wassala' (وَصَّلَ) instead of imperative 'wassil' (وَصِّلْ)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-de9b6aa6",
+   "text": "وَصِّلْ كُلَّ نَوْعِ مَلَفٍّ بِامْتِدَادَاتِهِ الشَّائِعَةْ.",
+   "batchId": "2026-09-24-audit-w1",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "وَصِّلْ",
+      "heard": "وَصِلَ",
+      "severity": "major",
+      "note": "Missing shadda on the letter ص and wrong ending vowel (fatḥah instead of sukun)."
+     },
+     {
+      "word": "كُلَّ",
+      "heard": "كُلُّ",
+      "severity": "major",
+      "note": "Wrong ending vowel (ḍammah instead of fatḥah)."
+     }
+    ],
+    "confidence": "high"
+   }
+  }
+ ]
+}
