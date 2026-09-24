@@ -1,0 +1,779 @@
+{
+ "batchId": "2026-09-24-audit-w2",
+ "checkedAt": "2026-09-24T18:11:11.560Z",
+ "total": 75,
+ "flagged": 3,
+ "items": [
+  {
+   "name": "qr-7e795fb8",
+   "text": "اِرْبِطْ كُلَّ حَيَوَانٍ بِالْمَكَانِ الَّذِي يَعِيشُ فِيهْ.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-1fb7fccd",
+   "text": "اِرْبِطْ كُلَّ حَيَوَانٍ بِصَغِيرِهْ.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-971fec2f",
+   "text": "اِرْبِطْ كُلَّ نَوْعٍ بِمِثَالِهْ.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-368a7ced",
+   "text": "اِرْبِطْ كُلَّ جُزْءٍ مِنَ النَّبْتَةِ بِعَمَلِهْ.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-80b7b820",
+   "text": "اِرْبِطْ كُلَّ شُعُورٍ بِمَا نَفْعَلُهُ جَمِيعَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-fcf4398b",
+   "text": "اِرْبِطْ كُلَّ عُضْوٍ بِالْحَاسَّةِ الَّتِي نَسْتَخْدِمُهُ فِيهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-77bf615d",
+   "text": "اِرْبِطْ كُلَّ جُزْءٍ مِنَ الْجِسْمِ بِعَمَلِهْ.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-9f856043",
+   "text": "اِرْبِطْ كُلَّ عَدَدٍ بِاسْمِهِ.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-a661b139",
+   "text": "اِرْبِطْ كُلَّ مَجْمُوعَةٍ بِعَدَدِهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-721337ca",
+   "text": "اِرْبِطْ كُلَّ عَدَدٍ بِشَرِيكِهِ الَّذِي يُكَوِّنُ مَعَهُ عَشَرَةْ.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-de5b88fd",
+   "text": "اِرْبِطْ كُلَّ جُمْلَةِ طَرْحٍ بِنَاتِجِهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "طَرْحٍ",
+      "heard": "طَرْحْ",
+      "severity": "major",
+      "note": "The tanween kasr was omitted in the middle of the sentence, pronouncing the word with a sukun instead."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-248c79b6",
+   "text": "اِرْبِطْ كُلَّ زَوْجٍ بِمَجْمُوعِهْ.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-eac6549c",
+   "text": "اِرْبِطْ كُلَّ شَكْلٍ بِعَدَدِ أَضْلَاعِهْ.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-ed7f61f7",
+   "text": "اِرْبِطْ كُلَّ مُجَسَّمٍ بِوَصْفِ أَوْجُهِهِ.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-07167a28",
+   "text": "اِرْبِطْ كُلَّ عَدَدٍ بِشَرِيكِهِ الَّذِي يُكَوِّنُ مَعَهُ سَبْعَةْ.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-ba5a483a",
+   "text": "اِرْبِطْ كُلَّ وِعَاءٍ بِعَدَدِ الْأَكْوَابِ الَّتِي تَمْلَؤُهْ.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-2dce5b5b",
+   "text": "اِرْبِطْ كُلَّ صِنْفٍ بِثَمَنِهِ.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-bcd1a8c5",
+   "text": "اِرْبِطْ كُلَّ نَشَاطٍ بِوَقْتِهْ.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-ee9e8eae",
+   "text": "اِرْبِطْ كُلَّ حِصَّةٍ بِوَقْتِ بِدَايَتِهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-2c893e4e",
+   "text": "اِرْبِطْ كُلَّ جُمْلَةِ جَمْعٍ بِنَاتِجِهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-036d507c",
+   "text": "اِرْبِطْ كُلَّ شَيْءٍ بِمَكَانِهِ فِي الْمَدْرَسَةْ.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-d33e3ea6",
+   "text": "اِرْبِطْ كُلَّ أَدَاةٍ بِعَمَلِهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-6c95065f",
+   "text": "اِرْبِطْ شَكْلَ الْبَاءِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-d64438ee",
+   "text": "اِرْبِطْ شَكْلَ اللَّامِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-8171272f",
+   "text": "اِرْبِطْ كُلَّ شَخْصِيَّةٍ بِعُمْرِهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-d246e2a9",
+   "text": "اِرْبِطْ شَكْلَ الْمِيمِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-a57598af",
+   "text": "اِرْبِطْ شَكْلَ الرَّاءِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-e7f805af",
+   "text": "اِرْبِطْ كُلَّ حَرْفٍ بِصُورَةِ كَلِمَتِهْ.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-523b12b9",
+   "text": "اِرْبِطْ كُلَّ شَطْرٍ بِتَكْمِلَتِهِ.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-896191ba",
+   "text": "اِرْبِطْ شَكْلَ الدَّالِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-2d236e91",
+   "text": "اِرْبِطْ شَكْلَ السِّينِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-35c067ca",
+   "text": "اِرْبِطْ شَكْلَ الْكَافِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-b9e4ffaa",
+   "text": "اِرْبِطْ شَكْلَ النُّونِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "شَكْلَ",
+      "heard": "شَكْلُ",
+      "severity": "major",
+      "note": "The letter 'laam' was pronounced with a damma (u) instead of a fatha (a)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-6030d5a8",
+   "text": "اِرْبِطْ شَكْلَ الْفَاءِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "اِرْبِطْ",
+      "heard": "اِرْبِطُ",
+      "severity": "major",
+      "note": "Pronounced with a damma on the letter ط instead of sukun."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-b3b8a6e0",
+   "text": "اِرْبِطْ شَكْلَ التَّاءِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-c7cb34d2",
+   "text": "اِرْبِطْ كُلَّ شَيْءٍ بِأَثَرِهِ فِي الْأَسْنَانْ.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-7e82c42c",
+   "text": "اِرْبِطْ شَكْلَ الْحَاءِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-6f625b31",
+   "text": "اِرْبِطْ شَكْلَ الْقَافِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-7c3753a5",
+   "text": "اِرْبِطْ شَكْلَ الزَّايِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-1e752c05",
+   "text": "اِرْبِطْ شَكْلَ الطَّاءِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-7881ba7a",
+   "text": "اِرْبِطْ شَكْلَ الْهَمْزَةِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-e269532e",
+   "text": "اِرْبِطْ شَكْلَ الْجِيمِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-6ceb6be0",
+   "text": "اِرْبِطْ شَكْلَ الْوَاوِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-77db9ade",
+   "text": "اِرْبِطْ شَكْلَ الشِّينِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-8d3b9fec",
+   "text": "اِرْبِطْ شَكْلَ الْعَيْنِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-85815bde",
+   "text": "اِرْبِطْ شَكْلَ الظَّاءِ بِصُورَةِ كَلِمَتِهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-93052cca",
+   "text": "اِرْبِطْ كُلَّ سُورَةٍ بِعَدَدِ آيَاتِهَا كَمَا فِي شَرِيطِ اسْمِهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-a5518e0e",
+   "text": "اِرْبِطْ كُلَّ كَلِمَةٍ بِمَعْنَاهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-d6571118",
+   "text": "اِرْبِطْ كُلَّ أَدَاةٍ بِمَا تُنَظِّفُهْ.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-ee23ae3e",
+   "text": "اِرْبِطْ كُلَّ وَاحِدٍ بِمَا يَقُولْ.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-a200aef9",
+   "text": "اِرْبِطْ كُلَّ عُنْوَانٍ بِجَوَابِهْ.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-a6b1d477",
+   "text": "اِرْبِطْ كُلَّ نِعْمَةٍ بِمَظْهَرِ شُكْرِهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-e9b4dd99",
+   "text": "اِرْبِطْ كُلَّ حَالٍ بِفِعْلِ اللَّهِ فِيهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-a585ecc2",
+   "text": "اِرْبِطْ كُلَّ اسْمٍ بِمَعْنَاهْ.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-97aa8ea6",
+   "text": "اِرْبِطْ كُلَّ عَمَلٍ بِنَوْعِ طَهَارَتِهْ.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-6f3f7c59",
+   "text": "اِرْبِطْ كُلَّ صِلَةٍ بِاسْمِهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-0f64e118",
+   "text": "اِرْبِطْ كُلَّ حَالٍ بِدُعَائِهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-75ecfb48",
+   "text": "اِرْبِطْ كُلَّ حَالٍ بِأَدَبِهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-bc77bf7c",
+   "text": "اِرْبِطْ كُلَّ عُضْوٍ بِفَائِدَتِهْ.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-983cdb0b",
+   "text": "اِرْبِطْ كُلَّ مَوْقِفٍ بِمُسَاعَدَتِهْ.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-d5841379",
+   "text": "اِرْبِطْ كُلَّ جِهَازٍ بِطَرِيقَةِ التَّفَاعُلِ مَعَهْ.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-a12408a2",
+   "text": "اِرْبِطْ كُلَّ جُزْءٍ بِوَظِيفَتِهْ.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-cd75b5ba",
+   "text": "اِرْبِطْ كُلَّ رَمْزٍ بِاسْتِخْدَامِهْ.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-daef8d69",
+   "text": "اِرْبِطْ كُلَّ جُزْءٍ مِنْ أَجْزَاءِ الْفَأْرَةِ بِوَظِيفَتِهْ.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-2d8931d9",
+   "text": "اِرْبِطْ كُلَّ إِجْرَاءٍ بِاسْمِهِ الصَّحِيحْ.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-f28136c6",
+   "text": "اِرْبِطْ كُلَّ مِيزَةٍ مِنْ مَزَايَا الرَّسْمِ الرَّقْمِيِّ بِوَصْفِهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-90a9bba2",
+   "text": "اِرْبِطْ كُلَّ أَدَاةٍ فِي تَطْبِيقِ الرَّسَّامِ بِوَظِيفَتِهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-2cc8f9c4",
+   "text": "اِرْبِطْ كُلَّ وَصْفٍ بِاسْمِ الْأَدَاةِ الْمُنَاسِبَةِ لَهْ.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-0b9a427b",
+   "text": "اِرْبِطْ كُلَّ عَمَلِيَّةٍ بِالْأَدَاةِ الَّتِي تُنَفِّذُهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-8da4b636",
+   "text": "اِرْبِطْ كُلَّ رَسْمَةٍ بِالْأَشْكَالِ الَّتِي دُمِجَتْ لِتَكْوِينِهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-75928372",
+   "text": "اِرْبِطْ كُلَّ نَوْعٍ مِنَ الْفُرْشَاةِ بِاسْتِخْدَامِهْ.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-2f3e5914",
+   "text": "اِرْبِطْ كُلَّ نَوْعِ اتِّصَالٍ بِوَصْفِهْ.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-85789edb",
+   "text": "اِرْبِطْ كُلَّ مِيزَةٍ مِنْ مَزَايَا الْبَرِيدِ الْإِلِكْتُرُونِيِّ بِوَصْفِهَا.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-06c0597c",
+   "text": "اِرْبِطْ كُلَّ جُزْءٍ مِنْ أَجْزَاءِ رِسَالَةِ الْبَرِيدِ الْإِلِكْتُرُونِيِّ بِوَصْفِهْ.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-de9b6aa6",
+   "text": "اِرْبِطْ كُلَّ نَوْعِ مَلَفٍّ بِامْتِدَادَاتِهِ الشَّائِعَةْ.",
+   "batchId": "2026-09-24-audit-w2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  }
+ ]
+}
