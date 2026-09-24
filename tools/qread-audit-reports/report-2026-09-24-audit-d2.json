@@ -1,0 +1,1660 @@
+{
+ "batchId": "2026-09-24-audit-d2",
+ "checkedAt": "2026-09-24T13:44:57.933Z",
+ "total": 143,
+ "flagged": 29,
+ "items": [
+  {
+   "name": "qr-ecbbe532",
+   "text": "Listen, then choose the word that starts with the letter tee.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-99650054",
+   "text": "أَكْمِلِ الْجُمْلَةَ بِسَحْبِ الْكَلِمَةِ الْمُنَاسِبَةْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-bc0e9f21",
+   "text": "أَكْمِلْ مَا تُوَفِّرُهُ الْبِيئَةُ لِلْكَائِنِ الْحَيِّ بِسَحْبِ الْكَلِمَاتْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "أَكْمِلْ",
+      "heard": "أَكْمِلَّ",
+      "severity": "major",
+      "note": "The word ending with a sukoon (أَكْمِلْ) was incorrectly pronounced with a shadda and fatha (أَكْمِلَّ)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-f7600632",
+   "text": "يَكْبُرُ صَغِيرُ الْإِنْسَانِ لِيُصْبِحَ بَالِغَا.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-f214e311",
+   "text": "مَاذَا يُسَمَّى صَغِيرُ الْأَسَدْ؟",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-1aaa3b99",
+   "text": "أَكْمِلِ الْجُمْلَتَيْنِ بِسَحْبِ الْكَلِمَةِ الْمُنَاسِبَةْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-1fb7fccd",
+   "text": "صِلْ كُلَّ حَيَوَانٍ بِصَغِيرِهْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "صِلْ",
+      "heard": "صِلُّ",
+      "severity": "major",
+      "note": "The letter lam was pronounced with a damma and shadda (ṣillu) instead of a sukun (ṣil)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-971fec2f",
+   "text": "صِلْ كُلَّ نَوْعٍ بِمِثَالِهْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "صِلْ كُلَّ",
+      "heard": "صِلْ لُمْ كُلَّ",
+      "severity": "major",
+      "note": "An extra word or syllable 'لُمْ' was inserted between 'صِلْ' and 'كُلَّ'."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-de92c1ff",
+   "text": "أَكْمِلْ مَا آكُلُهُ لِأَنْمُوَ بِصِحَّةٍ بِسَحْبِ الْكَلِمَاتْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "أَكْمِلْ",
+      "heard": "أَكْمِلَ",
+      "severity": "major",
+      "note": "The final letter laam was pronounced with a fat-ha (أَكْمِلَ) instead of a sukun (أَكْمِلْ)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-a67650a0",
+   "text": "أَكْمِلِ الْجُمْلَةَ بِسَحْبِ الْكَلِمَتَيْنِ الْمُنَاسِبَتَيْنْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-2eafe368",
+   "text": "أَكْمِلْ أَجْزَاءَ النَّبَاتِ بِسَحْبِ الْكَلِمَاتْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-cb2d075c",
+   "text": "أَكْمِلْ تَرْتِيبَ نُمُوِّ الْبَذْرَةِ بِسَحْبِ الْكَلِمَاتْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-cc26707d",
+   "text": "تَحْتَاجُ الْبَذْرَةُ إِلَى الْمَاءِ لِتَنْمُوَ وَتُصْبِحَ نَبْتَةْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-368a7ced",
+   "text": "صِلْ كُلَّ جُزْءٍ مِنَ النَّبْتَةِ بِعَمَلِهْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-8882d77c",
+   "text": "أَكْمِلِ الْجُمْلَةَ بِسَحْبِ الْكَلِمَاتِ الْمُنَاسِبَةْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-80b7b820",
+   "text": "صِلْ كُلَّ شُعُورٍ بِمَا نَفْعَلُهُ جَمِيعَا.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "صِلْ",
+      "heard": "صِلُّ",
+      "severity": "major",
+      "note": "Pronounced with a damma and shadda (صِلُّ) instead of a sukun (صِلْ)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-d3bc16b2",
+   "text": "أَكْمِلْ خَرِيطَةَ التَّشَابُهِ بَيْنَنَا بِسَحْبِ الْكَلِمَةِ الْمُنَاسِبَةِ إِلَى كُلِّ فَرْعْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-d4db8087",
+   "text": "أَكْمِلِ الْجُمْلَةَ بِسَحْبِ الْكَلِمَاتِ الَّتِي نَخْتَلِفُ فِيهَا.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-d94458f5",
+   "text": "رَكِّبْ صُورَةَ جِسْمِ الطِّفْلْ: اسْحَبْ كُلَّ قِطْعَةٍ إِلَى مَكَانِهَا الصَّحِيحْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-c3667e87",
+   "text": "نَسْتَخْدِمُ الْأُذُنَ لِنَرَى الْأَشْيَاءْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-fcf4398b",
+   "text": "صِلْ كُلَّ عُضْوٍ بِالْحَاسَّةِ الَّتِي نَسْتَخْدِمُهُ فِيهَا.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-eeca4213",
+   "text": "بِأَيِّ حَاسَّةٍ نَعْرِفُ أَنَّ الْمَاءَ بَارِدْ؟",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "حَاسَّةٍ",
+      "heard": "حَاسَةٍ",
+      "severity": "major",
+      "note": "The shadda on the letter س is missing, making it sound like a single 's' (ḥāsatin) instead of a doubled 's' (ḥāssatin)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-7751c653",
+   "text": "أَكْمِلِ النَّمَطْ: الْعَدُّ وَاحِدًا وَاحِدًا.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-efa85d7e",
+   "text": "اِقْلِبْ بِطَاقَتَيْنِ فِي كُلِّ دَوْرْ: طَابِقْ كُلَّ عَدَدٍ بِمَجْمُوعَتِهْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-a661b139",
+   "text": "صِلْ كُلَّ مَجْمُوعَةٍ بِعَدَدِهَا.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "صِلْ",
+      "heard": "صِلُّ",
+      "severity": "major",
+      "note": "The letter 'ل' was pronounced with a shadda and damma (صِلُّ) instead of a sukun (صِلْ)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-8e91237a",
+   "text": "أَكْمِلِ الْمُعَادَلَةَ لِتُكَوِّنَ الْعَشَرَةْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-721337ca",
+   "text": "صِلْ كُلَّ عَدَدٍ بِشَرِيكِهِ الَّذِي يُكَوِّنُ مَعَهُ عَشَرَةْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "صِلْ",
+      "heard": "صِلُّ",
+      "severity": "major",
+      "note": "The letter ل was pronounced with a damma and shadda (ṣillu) instead of a sukun (ṣil)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-eba0c4a5",
+   "text": "فِي إِطَارِ الْعَشَرَةِ عَشَرَةُ أَقْرَاصٍ، أَخَذْنَا أَرْبَعَةْ. كَمْ بَقِيْ؟",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-9177309f",
+   "text": "أَكْمِلِ الْمُعَادَلَةْ: كَمْ يَبْقَى؟",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-d7aa867a",
+   "text": "أَكْمِلِ الْجُمْلَتَيْنِ بِسَحْبِ الْعَدَدِ الْمُنَاسِبْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-de5b88fd",
+   "text": "صِلْ كُلَّ جُمْلَةِ طَرْحٍ بِنَاتِجِهَا.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "طَرْحٍ",
+      "heard": "طُرِحَ",
+      "severity": "major",
+      "note": "Pronounced with wrong vowels as 'طُرِحَ' (turiḥa) instead of 'طَرْحٍ' (ṭarḥin)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-e543c554",
+   "text": "ضِعْفُ الْعَدَدِ ثَلَاثَةٍ هُوَ خَمْسَةْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [
+     {
+      "word": "ثَلَاثَةٍ",
+      "heard": "ثَلَاثَةِ",
+      "severity": "minor",
+      "note": "Tanween pronounced as a single short vowel (kasrah)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-161da93b",
+   "text": "أَكْمِلِ الْمُعَادَلَةْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-248c79b6",
+   "text": "صِلْ كُلَّ زَوْجٍ بِمَجْمُوعِهْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "صِلْ",
+      "heard": "صِلُوا",
+      "severity": "major",
+      "note": "Pronounced as plural 'صِلُوا' instead of singular 'صِلْ'."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-c3be4308",
+   "text": "صَنِّفْ كُلَّ زَوْجٍ حَسَبَ مَجْمُوعِهْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-d28e5ce0",
+   "text": "ابْنِ الْعَدَدَ ثَلَاثَةَ عَشَرَ بِالْعَشَرَاتِ وَالْآحَادْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-fe6899e8",
+   "text": "التَّقْدِيرُ تَخْمِينٌ قَرِيبٌ مِنَ الْعَدَدِ الْحَقِيقِيّْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-f207cf4d",
+   "text": "فِي الْكَفِّ نَحْوُ اثْنَتَيْ عَشْرَةَ قِطْعَةً، صَنِّفِ التَّقْدِيرَاتْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-eac6549c",
+   "text": "صِلْ كُلَّ شَكْلٍ بِعَدَدِ أَضْلَاعِهْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-f5253317",
+   "text": "صَنِّفِ الْأَشْكَالْ: أَلَهَا أَضْلَاعٌ مُسْتَقِيمَةٌ أَمْ لَا؟",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-dd0383e5",
+   "text": "أَكْمِلِ الْجُمْلَتَيْنِ بِسَحْبِ الْكَلِمَةِ الْمُنَاسِبَةْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-151ecfb9",
+   "text": "أَكْمِلِ النَّمَطَ الْمُتَكَرِّرْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-dc558c5f",
+   "text": "صَنِّفِ الْأَشْكَالْ: أَلَهَا خَطُّ تَمَاثُلٍ أَمْ لَا؟",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-f7d08170",
+   "text": "النَّمَطُ يَتَكَرَّرْ: مُرَبَّعٌ بُرْتُقَالِيٌّ ثُمَّ دَائِرَةٌ حَمْرَاءْ، لَوِّنِ الشَّكْلَيْنِ الْأَخِيرَيْنْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-30954b48",
+   "text": "أَكْمِلِ الْمُعَادَلَةْ: مَا الْعَدَدُ الْمَفْقُودْ؟",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-07167a28",
+   "text": "صِلْ كُلَّ عَدَدٍ بِشَرِيكِهِ الَّذِي يُكَوِّنُ مَعَهُ سَبْعَةْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "صِلْ",
+      "heard": "صِلُّ",
+      "severity": "major",
+      "note": "Pronounced with an added shadda and damma instead of a sukoon."
+     },
+     {
+      "word": "كُلَّ",
+      "heard": "كُلُّ",
+      "severity": "major",
+      "note": "Pronounced with a damma instead of a fatha on the final letter."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-f5744d6b",
+   "text": "أَكْمِلِ الْخَلَايَا النَّاقِصَةَ فِي اللَّوْحَةْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-ffcd4ccd",
+   "text": "عُدَّ بِالْعَشَرَاتْ: اِنْقُرِ الْمَجْمُوعَاتِ بِالتَّرْتِيبِ وَتَوَقَّفْ عِنْدَ الْخَمْسِينْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-85cc69bf",
+   "text": "أَكْمِلِ النَّمَطْ: الْعَدُّ التَّنَازُلِيُّ بِالْعَشَرَاتْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-c16315b3",
+   "text": "لَوِّنْ مُضَاعَفَاتِ الْعَشَرَةِ بِالْأَخْضَرْ، وَمَا عَدَاهَا بِالْأَحْمَرْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-c5838c99",
+   "text": "اِقْلِبْ بِطَاقَتَيْنِ فِي كُلِّ دَوْرْ: طَابِقْ كُلَّ وِعَاءٍ بِسَعَتِهْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-c2245d24",
+   "text": "صَنِّفِ الْأَوْعِيَةَ حَسَبَ سَعَتِهَا.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-d15ba144",
+   "text": "ثَلَاثُ فَطَائِرَ وَأَرْبَعُ حَبَّاتِ تُفَّاحْ، أَكْمِلِ الْمُعَادَلَةْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-e55cc4e7",
+   "text": "عِنْدَمَا يُشِيرُ الْعَقْرَبُ الطَّوِيلُ إِلَى اثْنَيْ عَشَرَ تَكُونُ السَّاعَةُ تَمَامًا.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-bcd1a8c5",
+   "text": "صِلْ كُلَّ نَشَاطٍ بِوَقْتِهْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-d822a3ab",
+   "text": "كَمِ السَّاعَةْ؟",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-41debb92",
+   "text": "أَكْمِلِ الْجَدْوَلَ بِسَحْبِ الْوَقْتِ الْمُنَاسِبْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-ee9e8eae",
+   "text": "صِلْ كُلَّ حِصَّةٍ بِوَقْتِ بِدَايَتِهَا.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "صِلْ",
+      "heard": "صِلُّ",
+      "severity": "major",
+      "note": "Pronounced with a damma and shadda on the lam instead of a sukoon."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-f1bb58b7",
+   "text": "اِقْلِبْ بِطَاقَتَيْنِ فِي كُلِّ دَوْرْ: طَابِقْ كُلَّ شَيْءٍ بِوَصْفِ وَزْنِهْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-4937ccae",
+   "text": "أَضِفْ وَاحِدًا إِلَى عَدَدٍ زَوْجِيّْ، أَكْمِلِ الْمُعَادَلَةْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-cd6aad18",
+   "text": "رَتِّبِ الْأَعْدَادَ الْفَرْدِيَّةَ مِنَ الْأَصْغَرِ إِلَى الْأَكْبَرْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-cfcda7e9",
+   "text": "ضَعِ الْمُؤَشِّرَ عَلَى الْعَدَدِ الَّذِي يَقَعُ بَيْنَ اثْنَيْ عَشَرَ وَأَرْبَعَةَ عَشَرْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-982ac198",
+   "text": "أَكْمِلْ جُمْلَةَ الْجَمْعْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-2c893e4e",
+   "text": "صِلْ كُلَّ جُمْلَةِ جَمْعٍ بِنَاتِجِهَا.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "صِلْ",
+      "heard": "صِلُ",
+      "severity": "major",
+      "note": "The imperative verb was pronounced with a dammah on the lam ('صِلُ') instead of a sukun ('صِلْ')."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-ffa0f0bd",
+   "text": "مِنْ خَمْسِ تَمَرَاتٍ نَأْخُذُ اثْنَتَيْنْ، لَوِّنِ الْمَأْخُوذَتَيْنِ بِالْأَحْمَرِ وَالْبَاقِيَ بِالْأَصْفَرْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "لَوِّنِ",
+      "heard": "لَوْنِ",
+      "severity": "major",
+      "note": "Pronounced as 'lawni' (noun) instead of the imperative verb 'lawwini' (missing shadda and correct vowel on the waw)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-fef083b7",
+   "text": "الْفَرْقُ بَيْنَ عَدَدَيْنِ هُوَ عَدَدُ الْقَفَزَاتِ بَيْنَهُمَا عَلَى خَطِّ الْأَعْدَادْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-3266d197",
+   "text": "أَكْمِلِ الْمُعَادَلَةَ لِتَجِدَ الْفَرْقْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-df318fae",
+   "text": "قَارِنْ بَيْنَ الْفَرْقَيْنْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-84a1e0f8",
+   "text": "أَكْمِلِ النَّمَطْ: الْقَفْزُ بِالِاثْنَيْنْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-da0888d6",
+   "text": "ضَعِ الْمُؤَشِّرَ عَلَى الْعَدَدِ ثَلَاثَةٍ وَعِشْرِينْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "ثَلَاثَةٍ",
+      "heard": "ثَلَاثَةَ",
+      "severity": "major",
+      "note": "Pronounced with a fatha on the final letter instead of kasra/tanween kasr."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-d65e2735",
+   "text": "اِنْقُرْ عَلَى بَابِ الْمَدْرَسَةْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-036d507c",
+   "text": "صِلْ كُلَّ شَيْءٍ بِمَكَانِهِ فِي الْمَدْرَسَةْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-d33e3ea6",
+   "text": "صِلْ كُلَّ أَدَاةٍ بِعَمَلِهَا.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "صِلْ",
+      "heard": "صِلُّ",
+      "severity": "major",
+      "note": "Pronounced with an incorrect shaddah and dammah on the letter Lam instead of a sukun."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-4ca6e2e0",
+   "text": "أَكْمِلِ الْجُمْلَةَ بِسَحْبِ الْكَلِمَةِ الْمُنَاسِبَةْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-8171272f",
+   "text": "صِلْ كُلَّ شَخْصِيَّةٍ بِعُمْرِهَا.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "صِلْ",
+      "heard": "صِلُوا",
+      "severity": "major",
+      "note": "Pronounced as plural 'صِلُوا' (or 'صِلُّوا') instead of the singular imperative 'صِلْ'."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-d7749670",
+   "text": "مَاذَا تُحَضِّرُ الْأُمّْ؟",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-c25fdabc",
+   "text": "إِلَى أَيْنَ سَتَخْرُجُ الْأُسْرَةْ؟",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-e7f805af",
+   "text": "صِلْ كُلَّ حَرْفٍ بِصُورَةِ كَلِمَتِهْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "صِلْ",
+      "heard": "صِلُّ",
+      "severity": "major",
+      "note": "The word was pronounced with a damma and shadda on the letter 'ل' (صِلُّ) instead of a sukun (صِلْ)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-f944313c",
+   "text": "صَنِّفِ الْكَلِمَاتِ بِحَسَبِ حَرْفِهَا الْأَوَّلْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-1f546b26",
+   "text": "أَكْمِلِ الشَّطْرَ بِسَحْبِ الْكَلِمَةِ الْمُنَاسِبَةْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-e1759715",
+   "text": "رَتِّبِ الْكَلِمَاتِ لِتُكَوِّنَ شَطْرَ النَّشِيدْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-3d07b33d",
+   "text": "أَكْمِلْ خَرِيطَةَ الْكَافِ بِمِثَالٍ لِكُلِّ مَوْضِعْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-c4aab94e",
+   "text": "رَتِّبْ أَحْدَاثَ النَّصّْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-2fff53e1",
+   "text": "أَكْمِلِ الْكَلِمَةَ بِالْمَقْطَعِ الْمُنَاسِبْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-dc562a5e",
+   "text": "صَنِّفِ الْكَلِمَاتِ بِحَسَبِ مَوْضِعِ الْفَاءْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-c7cb34d2",
+   "text": "صِلْ كُلَّ شَيْءٍ بِأَثَرِهِ فِي الْأَسْنَانْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "صِلْ",
+      "heard": "صِلُّ",
+      "severity": "major",
+      "note": "The letter lam was pronounced with a shadda and damma (ṣillu) instead of a sukoon (ṣil)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-d87fd79c",
+   "text": "مَاذَا يُبَاعُ فِي سُوقِ الْقَرْيَةْ؟",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-ff364f1d",
+   "text": "اِقْلِبْ بِطَاقَتَيْنْ: صِلْ كُلَّ كَائِنٍ بِصَوْتِهْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-f5b58dcf",
+   "text": "أَكْمِلْ طَرِيقَةَ الْإِعْدَادْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-783a7de8",
+   "text": "أَكْمِلْ بِالْكَلِمَةِ الْمُنَاسِبَةْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-93052cca",
+   "text": "صِلْ كُلَّ سُورَةٍ بِعَدَدِ آيَاتِهَا كَمَا فِي شَرِيطِ اسْمِهَا.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-a5518e0e",
+   "text": "صِلْ كُلَّ كَلِمَةٍ بِمَعْنَاهَا.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-c16ab842",
+   "text": "أَكْمِلِ الْآيَةْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-8ad7d146",
+   "text": "أَكْمِلِ الْحَدِيثْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-d6571118",
+   "text": "صِلْ كُلَّ أَدَاةٍ بِمَا تُنَظِّفُهْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-ea388b5b",
+   "text": "مَاذَا أَفْعَلُ عِنْدَ الْعُطَاسْ؟",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-ee23ae3e",
+   "text": "صِلْ كُلَّ وَاحِدٍ بِمَا يَقُولْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-ce389026",
+   "text": "أَكْمِلْ رَدَّ الْعَاطِسْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-a200aef9",
+   "text": "صِلْ كُلَّ عُنْوَانٍ بِجَوَابِهْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "صِلْ",
+      "heard": "صِلُ",
+      "severity": "major",
+      "note": "The letter 'ل' was pronounced with a damma (صِلُ) instead of a sukun (صِلْ)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-ecf3de73",
+   "text": "أَيْنَ وُلِدَ النَّبِيُّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ؟",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-0dbcc277",
+   "text": "أَكْمِلِ الْعِبَارَةْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-29e5f7b4",
+   "text": "أَكْمِلْ خَرِيطَةَ الطَّهَارَةْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-9cfe07d4",
+   "text": "أَكْمِلْ ذِكْرَ الِاسْتِيقَاظْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-a6b1d477",
+   "text": "صِلْ كُلَّ نِعْمَةٍ بِمَظْهَرِ شُكْرِهَا.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "صِلْ",
+      "heard": "صِلُّ",
+      "severity": "major",
+      "note": "The word was pronounced with a damma and shadda on the letter lam (صِلُّ) instead of a sukoon (صِلْ)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-e9b4dd99",
+   "text": "صِلْ كُلَّ حَالٍ بِفِعْلِ اللَّهِ فِيهَا.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-f075a763",
+   "text": "مَنِ الَّذِي حَفِظَنِي وَأَنَا فِي بَطْنِ أُمِّي؟",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-a585ecc2",
+   "text": "صِلْ كُلَّ اسْمٍ بِمَعْنَاهْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-caf3b77a",
+   "text": "أَكْمِلْ بِطَاقَةَ سُورَةِ النَّاسْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-f8874074",
+   "text": "أَكْمِلْ خَرِيطَةَ طَاعَةِ وَالِدَيّ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-97aa8ea6",
+   "text": "صِلْ كُلَّ عَمَلٍ بِنَوْعِ طَهَارَتِهْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "صِلْ",
+      "heard": "صِلُّ",
+      "severity": "major",
+      "note": "Pronounced with a damma and shadda (Sillu) instead of a sukoon (Sil)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-6f3f7c59",
+   "text": "صِلْ كُلَّ صِلَةٍ بِاسْمِهَا.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-c1b2623a",
+   "text": "أَكْمِلْ بِطَاقَةَ سُورَةِ الْفَلَقْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-0f64e118",
+   "text": "صِلْ كُلَّ حَالٍ بِدُعَائِهَا.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "صِلْ",
+      "heard": "صِلُ",
+      "severity": "major",
+      "note": "The letter 'ل' was pronounced with a dammah (صِلُ) instead of a sukoon (صِلْ)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-ce4a302b",
+   "text": "اِقْلِبْ بِطَاقَتَيْنْ: صِلْ كُلَّ مَخْلُوقٍ بِبِيئَتِهْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-75ecfb48",
+   "text": "صِلْ كُلَّ حَالٍ بِأَدَبِهَا.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "صِلْ",
+      "heard": "صِلُ",
+      "severity": "major",
+      "note": "The letter lam was pronounced with a dammah instead of a sukun."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-f6988f92",
+   "text": "خَرَجَ سَالِمٌ مِنَ الْحَمَّامِ وَلَمْ يَغْسِلْ يَدَيْهْ. هَلْ فَعَلَ صَوَابَا؟",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-fde460e8",
+   "text": "رَتِّبْ أَحْدَاثَ الْقِصَّةْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-c3fe2497",
+   "text": "اِقْلِبْ بِطَاقَتَيْنْ: صِلْ كُلَّ شَيْءٍ بِبَرَكَتِهْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-c1791e07",
+   "text": "أَكْمِلْ خَرِيطَةَ احْتِرَامِ مُعَلِّمَتِي.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-f2eaf98e",
+   "text": "صَنِّفْ كُلَّ عِبَارَةْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-bc77bf7c",
+   "text": "صِلْ كُلَّ عُضْوٍ بِفَائِدَتِهْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "صِلْ",
+      "heard": "صِلُّ",
+      "severity": "major",
+      "note": "The word was pronounced with a damma and shadda on the letter 'Lām' (صِلُّ) instead of a sukoon (صِلْ)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-9f42ab19",
+   "text": "أَكْمِلْ خَرِيطَةَ الصِّدْقْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-983cdb0b",
+   "text": "صِلْ كُلَّ مَوْقِفٍ بِمُسَاعَدَتِهْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-aa878ae5",
+   "text": "أَكْمِلْ خَرِيطَةَ الِاقْتِدَاءِ بِالنَّبِيِّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-d5841379",
+   "text": "صِلْ كُلَّ جِهَازٍ بِطَرِيقَةِ التَّفَاعُلِ مَعَهْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-f179202a",
+   "text": "يَنْبَغِي أَلَّا نَلْمِسَ أَسْلَاكَ الْحَاسُوبِ بِأَيْدٍ مُبَلَّلَةْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-a12408a2",
+   "text": "صِلْ كُلَّ جُزْءٍ بِوَظِيفَتِهْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-cd75b5ba",
+   "text": "صِلْ كُلَّ رَمْزٍ بِاسْتِخْدَامِهْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-daef8d69",
+   "text": "صِلْ كُلَّ جُزْءٍ مِنْ أَجْزَاءِ الْفَأْرَةِ بِوَظِيفَتِهْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "صِلْ",
+      "heard": "صِلُّ",
+      "severity": "major",
+      "note": "The letter lam was pronounced with an incorrect shadda and damma (صِلُّ) instead of a sukun (صِلْ)."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-2d8931d9",
+   "text": "صِلْ كُلَّ إِجْرَاءٍ بِاسْمِهِ الصَّحِيحْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-f28136c6",
+   "text": "صِلْ كُلَّ مِيزَةٍ مِنْ مَزَايَا الرَّسْمِ الرَّقْمِيِّ بِوَصْفِهَا.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-f09bf546",
+   "text": "أَكْمِلِ الْخَرِيطَةَ الذِّهْنِيَّةَ بِسَحْبِ الْكَلِمَةِ الْمُنَاسِبَةِ إِلَى كُلِّ فَرْعْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-cee73afe",
+   "text": "رَتِّبْ خُطُوَاتِ فَتْحِ تَطْبِيقِ الرَّسَّامِ (Paint).",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-dd9ade8a",
+   "text": "اسْتَبْعِدِ الْأَدَاةَ الَّتِي لَا تَنْتَمِي إِلَى تَطْبِيقِ الرَّسَّامْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-2cc8f9c4",
+   "text": "صِلْ كُلَّ وَصْفٍ بِاسْمِ الْأَدَاةِ الْمُنَاسِبَةِ لَهْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "صِلْ",
+      "heard": "صِلٌ",
+      "severity": "major",
+      "note": "The imperative verb was pronounced with tanween damm instead of sukun."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-0b9a427b",
+   "text": "صِلْ كُلَّ عَمَلِيَّةٍ بِالْأَدَاةِ الَّتِي تُنَفِّذُهَا.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-e9ebd178",
+   "text": "صَنِّفِ الْأَشْكَالْ: هَلِ اسْتُخْدِمَتْ لِرَسْمِ السَّيَّارَةِ أَمْ لَا؟",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-8da4b636",
+   "text": "صِلْ كُلَّ رَسْمَةٍ بِالْأَشْكَالِ الَّتِي دُمِجَتْ لِتَكْوِينِهَا.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-d35a9ce4",
+   "text": "أَكْمِلِ الْخَرِيطَةَ الذِّهْنِيَّةَ بِسَحْبِ الِاسْتِخْدَامِ الْمُنَاسِبِ إِلَى كُلِّ نَوْعِ فُرْشَاةْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-2f3e5914",
+   "text": "صِلْ كُلَّ نَوْعِ اتِّصَالٍ بِوَصْفِهْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-96f86607",
+   "text": "أَكْمِلِ الْخَرِيطَةَ الذِّهْنِيَّةَ بِسَحْبِ الِاسْتِخْدَامِ الْمُنَاسِبِ إِلَى كُلِّ فَرْعْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": true,
+    "issues": [],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-06c0597c",
+   "text": "صِلْ كُلَّ جُزْءٍ مِنْ أَجْزَاءِ رِسَالَةِ الْبَرِيدِ الْإِلِكْتُرُونِيِّ بِوَصْفِهْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "صِلْ",
+      "heard": "صِلُّوا",
+      "severity": "major",
+      "note": "Pronounced as plural 'صِلُّوا' instead of singular 'صِلْ'."
+     }
+    ],
+    "confidence": "high"
+   }
+  },
+  {
+   "name": "qr-de9b6aa6",
+   "text": "صِلْ كُلَّ نَوْعِ مَلَفٍّ بِامْتِدَادَاتِهِ الشَّائِعَةْ.",
+   "batchId": "2026-09-24-audit-d2",
+   "verdict": {
+    "ok": false,
+    "issues": [
+     {
+      "word": "صِلْ",
+      "heard": "صِلُّ",
+      "severity": "major",
+      "note": "Pronounced with a shadda and damma instead of sukoon."
+     },
+     {
+      "word": "كُلَّ",
+      "heard": "كُلُّ",
+      "severity": "major",
+      "note": "Pronounced with damma instead of fatha on the lam."
+     }
+    ],
+    "confidence": "high"
+   }
+  }
+ ]
+}
