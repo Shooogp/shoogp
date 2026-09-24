@@ -33,23 +33,12 @@ for (const f of fs.readdirSync(ROOT + 'tools/qread-audit-reports').filter(f => f
 const checked = latest.size;
 const rows = [...latest.values()].filter(it => it.verdict.ok === false || it.issues.some(x => x.severity === 'major'));
 
-/* الصيغُ التجريبية */
-const VARIANTS = [
-  { title: 'فعلُ الأمر — سؤالُ العلوم «أَكْمِلْ مَا آكُلُهُ لِأَنْمُوَ بِصِحَّةٍ…»', note: 'رصدَ جيميناي نطقَ «أَكْمِلْ» ماضياً «أَكْمَلَ» في مقطعَين، و«اقْلِبْ» و«صَنِّفْ» و«ضَعِ» و«صِلْ» بحركاتٍ مخالفةٍ في مقاطعَ أخرى. الفائزُ يُعمَّمُ على المقاطعِ المرصودة.',
-    group: 'imp', options: [
-      ['akmil-i1', 'i1 — فاصلةٌ بعدَ الفعل: «أَكْمِلْ، مَا آكُلُهُ…»'],
-      ['akmil-i2', 'i2 — الكتابةُ الحاليةُ نفسُها: «أَكْمِلْ مَا آكُلُهُ…»'],
-      ['akmil-i3', 'i3 — الفعلُ بلا تشكيل: «أكمل مَا آكُلُهُ…»']] },
-  { title: 'الحرفُ الإنجليزيُّ المفرد — «…starts with the letter t»', note: 'رصدَ جيميناي نطقَ الحرفِ المفردِ بينَ علامتَي تنصيصٍ خطأً في ٥ من ٩ مقاطع (t → «at»، p → «app»، s → «as»). الفائزُ يُعمَّمُ على التسعة.',
-    group: 'eng', options: [
-      ['letter-e1', 'e1 — «the letter T»'],
-      ['letter-e2', 'e2 — «the letter tee»'],
-      ['letter-e3', 'e3 — «the letter "T"»']] }
-];
+/* الصيغُ التجريبية — من tools/qread-variants.json (تُحرَّرُ هناك لا هنا) */
+const VARIANTS = JSON.parse(fs.readFileSync(ROOT + 'tools/qread-variants.json', 'utf8')).groups;
 
-const vsec = VARIANTS.map(g => `<section class="var"><h2>${esc(g.title)}</h2><p>${esc(g.note)}</p>` +
+const vsec = VARIANTS.map(g => `<section class="var${g.decided ? ' decided' : ''}"><h2>${esc(g.title)}</h2><p>${esc(g.note)}${g.decided ? ` <b class="dec">✔ قرارُ المالك: ${esc(g.decided)}</b>` : ''}</p>` +
   g.options.map(([k, label]) => `<label class="opt"><button class="play" type="button" data-src="../audio/qread-variants/${k}.mp3">▶</button>` +
-    `<input type="radio" name="${g.group}" value="${k}"> <span>${esc(label)}</span></label>`).join('') + `</section>`).join('\n');
+    (g.decided ? '' : `<input type="radio" name="${g.group}" value="${k}"> `) + `<span>${esc(label)}</span></label>`).join('') + `</section>`).join('\n');
 
 rows.sort((a, b) => ((where[a.name] || [''])[0]).localeCompare((where[b.name] || [''])[0], 'ar'));
 const tr = rows.map((r, i) => {
@@ -66,7 +55,7 @@ const page = `<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-
 <meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
 <style>body{font:16px/1.7 Cairo,Tahoma,sans-serif;margin:0;padding:16px;background:#1d1830;color:#f4f0ff}
 h1{font-size:20px;margin:0 0 6px}h2{font-size:17px;margin:0 0 4px}p{margin:4px 0 12px;color:#cfc6ee}
-.var{background:#2a2340;border-radius:14px;padding:12px 14px;margin:0 0 12px}.opt{display:flex;gap:10px;align-items:center;padding:6px 0;border-top:1px solid #3d3560}
+.var.decided{opacity:.6}.dec{color:#c2f2d1}.var{background:#2a2340;border-radius:14px;padding:12px 14px;margin:0 0 12px}.opt{display:flex;gap:10px;align-items:center;padding:6px 0;border-top:1px solid #3d3560}
 table{border-collapse:collapse;width:100%;background:#2a2340}td,th{border-bottom:1px solid #3d3560;padding:8px;vertical-align:top;text-align:right}
 th{position:sticky;top:0;background:#3d3560}.t{font-size:18px;font-weight:700;min-width:220px}.e{min-width:220px}.w{font-size:13px;color:#cfc6ee}
 .num{text-align:center;font-size:13px;color:#cfc6ee;margin-top:4px}
@@ -76,7 +65,7 @@ tr.isbad{background:#4a2030}.note{width:170px;margin-top:4px}
 #bar{position:sticky;bottom:0;background:#3d3560;padding:10px;display:flex;gap:10px;align-items:center}
 #out{flex:1;height:70px}#copy{font-size:16px;padding:10px 18px;border-radius:12px;border:0;background:#20A0FF;color:#fff;cursor:pointer}</style></head><body>
 <h1>تدقيق نطق الأسئلة — الصف الأول</h1>
-<p>القسمُ الأول: اختر الصيغةَ الصحيحةَ من كلِّ مجموعة. القسمُ الثاني: ${rows.length} مقطعاً حكمَ عليها جيميناي بخطأٍ جوهريٍّ من ${checked} مقطعاً فُحِصَت — اضغط ▶ واسمع، فإن كان الخطأُ حقيقياً علِّمْ عليه واكتبْ ما سمعت. ثمّ اضغط «انسخ القائمة» وألصقها في المحادثة.</p>
+<p>القسمُ الأول: اختر الصيغةَ الصحيحةَ من كلِّ مجموعةٍ لم تُقرَّر بعد (المُقرَّرةُ باهتةٌ بعلامة ✔). القسمُ الثاني: ${rows.length} مقطعاً حكمَ عليها جيميناي بخطأٍ جوهريٍّ من ${checked} مقطعاً فُحِصَت — اضغط ▶ واسمع، فإن كان الخطأُ حقيقياً علِّمْ عليه واكتبْ ما سمعت. ثمّ اضغط «انسخ القائمة» وألصقها في المحادثة.</p>
 ${vsec}
 <h2>المشتبه به</h2>
 <table><thead><tr><th></th><th>النصّ المتوقَّع</th><th>ما رصده جيميناي</th><th>أين يُستعمَل</th><th>حكمك</th></tr></thead><tbody>
