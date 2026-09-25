@@ -45,7 +45,9 @@ const tr = rows.map((r, i) => {
   const n = String(i + 1).padStart(2, '0');
   const iss = r.issues.map(x => `<div class="iss"><b>${esc(x.word)}</b> ← سُمِعَت <b>${esc(x.heard || '؟')}</b>` +
     `${x.severity ? ` <span class="${x.severity}">${x.severity === 'major' ? 'جوهريّ' : 'ثانويّ'}</span>` : ''}${x.note ? `<br><small>${esc(x.note)}</small>` : ''}</div>`).join('');
-  return `<tr data-k="${n} ${r.name}"><td><button class="play" type="button" data-src="../audio/qread/${r.name}.mp3">▶</button><div class="num">${n}</div></td>` +
+  const dj = fs.existsSync(`${ROOT}audio/qread-variants/dj-${r.name}.mp3`);   // نسخةٌ تجريبيةٌ بطريقةِ داريجات (حروفٌ لاتينيةٌ مرافقة)
+  return `<tr data-k="${n} ${r.name}"><td><button class="play" type="button" data-src="../audio/qread/${r.name}.mp3">▶</button><div class="num">${n}</div>` +
+    (dj ? `<button class="play dj" type="button" title="بطريقة داريجات" data-src="../audio/qread-variants/dj-${r.name}.mp3">▶ د</button><div class="num">داريجات</div>` : '') + `</td>` +
     `<td class="t">${esc(r.text)}</td><td class="e">${iss}</td>` +
     `<td class="w">${(where[r.name] || []).map(esc).join('<br>')}</td>` +
     `<td><label><input type="checkbox" class="bad"> خطأٌ فعلاً</label><br><input class="note" placeholder="ماذا سمعت؟"></td></tr>`;
@@ -59,13 +61,13 @@ h1{font-size:20px;margin:0 0 6px}h2{font-size:17px;margin:0 0 4px}p{margin:4px 0
 table{border-collapse:collapse;width:100%;background:#2a2340}td,th{border-bottom:1px solid #3d3560;padding:8px;vertical-align:top;text-align:right}
 th{position:sticky;top:0;background:#3d3560}.t{font-size:18px;font-weight:700;min-width:220px}.e{min-width:220px}.w{font-size:13px;color:#cfc6ee}
 .num{text-align:center;font-size:13px;color:#cfc6ee;margin-top:4px}
-.play{font-size:22px;width:54px;height:44px;border-radius:12px;border:0;background:#FF6000;color:#fff;cursor:pointer}.play.on{background:#60C020}
+.play{font-size:22px;width:54px;height:44px;border-radius:12px;border:0;background:#FF6000;color:#fff;cursor:pointer}.play.on{background:#60C020}.play.dj{background:#20A0FF;margin-top:8px;font-size:15px}
 .iss{margin-bottom:6px}.major{display:inline-block;background:#7a2a2a;color:#ffd9d9;border-radius:8px;padding:0 8px;font-size:12px}.minor{display:inline-block;background:#3d3560;color:#cfc6ee;border-radius:8px;padding:0 8px;font-size:12px}
 tr.isbad{background:#4a2030}.note{width:170px;margin-top:4px}
 #bar{position:sticky;bottom:0;background:#3d3560;padding:10px;display:flex;gap:10px;align-items:center}
 #out{flex:1;height:70px}#copy{font-size:16px;padding:10px 18px;border-radius:12px;border:0;background:#20A0FF;color:#fff;cursor:pointer}</style></head><body>
 <h1>تدقيق نطق الأسئلة — الصف الأول</h1>
-<p>القسمُ الأول: اختر الصيغةَ الصحيحةَ من كلِّ مجموعةٍ لم تُقرَّر بعد (المُقرَّرةُ باهتةٌ بعلامة ✔). القسمُ الثاني: ${rows.length} مقطعاً حكمَ عليها جيميناي بخطأٍ جوهريٍّ من ${checked} مقطعاً فُحِصَت — اضغط ▶ واسمع، فإن كان الخطأُ حقيقياً علِّمْ عليه واكتبْ ما سمعت. ثمّ اضغط «انسخ القائمة» وألصقها في المحادثة.</p>
+<p>القسمُ الأول: اختر الصيغةَ الصحيحةَ من كلِّ مجموعةٍ لم تُقرَّر بعد (المُقرَّرةُ باهتةٌ بعلامة ✔). القسمُ الثاني: ${rows.length} مقطعاً حكمَ عليها جيميناي بخطأٍ جوهريٍّ من ${checked} مقطعاً فُحِصَت — اضغط ▶ (البرتقاليّ) للمقطعِ الحاليّ و«▶ د» (الأزرق) للنسخةِ المولَّدةِ بطريقةِ داريجات (حروفٌ لاتينيةٌ مرافقةٌ للحركات) — فإن كانت الزرقاءُ صحيحةً علِّمْ «خطأٌ فعلاً» على الصفِّ واكتبْ «داريجات» في الخانة، لتُعتمَدَ بدلَ الحالية. ثمّ اضغط «انسخ القائمة» وألصقها في المحادثة.</p>
 ${vsec}
 <h2>المشتبه به</h2>
 <table><thead><tr><th></th><th>النصّ المتوقَّع</th><th>ما رصده جيميناي</th><th>أين يُستعمَل</th><th>حكمك</th></tr></thead><tbody>
