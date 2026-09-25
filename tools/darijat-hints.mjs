@@ -10,9 +10,12 @@ const LAT = { 'ب':'B','ت':'T','ث':'TH','ج':'J','ح':'H','خ':'KH','د':'D','
 const VOW = { 'َ':'a', 'ُ':'u', 'ِ':'i', 'ً':'an', 'ٌ':'un', 'ٍ':'in' };   // الفتحةُ تُرافَقُ داخلَ الكلمةِ المستهدفةِ وحدَها (تعميمُها على الجملةِ أفسدَ ٤٢/٤٢)
 const strip = w => w.replace(/[ً-ْٰ‌ـ.،؟!:؛]/g, '');
 function hintWord(w){
+  /* الفتحةُ لا تُرافَقُ إلا في كلمةٍ ليس فيها كسرةٌ ولا ضمّةٌ ولا سكون (‏«خَطَّ» · «غَرَسَ») — المثالُ المُثبَتُ «أَكْKمِiلْL» بلا مرافقٍ للفتحة */
+  const fathaOnly = !/[\u064F\u0650\u0652\u064C\u064D]/.test(w);
   let out = '';
   for (let i = 0; i < w.length; i++) {
     const c = w[i]; out += c;
+    if ((c === '\u064E' || c === '\u064B') && !fathaOnly) continue;
     if (VOW[c]) { if (w[i + 1] === 'ّ') { out += 'ّ'; i++; } out += VOW[c]; continue; }
     if (c === 'ّ' && VOW[w[i + 1]]) { out += w[i + 1] + VOW[w[i + 1]]; i++; continue; }
     if (c === 'ْ') {
