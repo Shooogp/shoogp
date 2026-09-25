@@ -189,7 +189,7 @@ export function toneProblem(t){
   return bad.length ? 'ناقصُ الشكل: ' + bad.slice(0, 4).join(' · ') : '';
 }
 
-function loadAll(){
+export function loadAll(){
   const ctx = { window: {}, document: {} };
   vm.runInNewContext(fs.readFileSync(ROOT + 'js/questions.js', 'utf8'), ctx);
   const Q = ctx.window.QUESTIONS;
