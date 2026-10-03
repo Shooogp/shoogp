@@ -57,19 +57,20 @@
         title="تواصلوا معنا على إنستغرام" aria-label="للتواصل على حساب الإنستغرام shooogp">
         <svg class="ig-ic" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="igg" cx="30%" cy="107%" r="150%"><stop offset="0" stop-color="#fdf497"/><stop offset=".05" stop-color="#fdf497"/><stop offset=".45" stop-color="#fd5949"/><stop offset=".6" stop-color="#d6249f"/><stop offset=".9" stop-color="#285AEB"/></radialGradient></defs><rect width="24" height="24" rx="6" fill="url(#igg)"/><rect x="5" y="5" width="14" height="14" rx="4" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="12" cy="12" r="3.3" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="16.3" cy="7.7" r="1.1" fill="#fff"/></svg><span>للتواصل على حساب الإنستغرام</span><bdi class="ig-handle">@shooogp</bdi>
       </a>
+      <!-- أيقونةُ فلمِ أسبوعِ الفضاء: ثابتةٌ تحتَ حسابِ الإنستغرام (قرارُ المالك ٢٠٢٦-١٠-٠٣)، رسمُها
+           من جيميناي. تفتحُ النافذةَ `#swModal` في `#home`، وتُخفى خارجَ الشاشةِ الرئيسيةِ كالشعار. -->
+      <button class="sw-fab" id="swFab" type="button" aria-haspopup="dialog"
+        aria-label="شاهد فلم أسبوع الفضاء: رحلة في المجموعة الشمسية">
+        <span class="sw-fab-disc" aria-hidden="true"><img src="media/space-week/icon.png" alt="" width="320" height="320"><span class="sw-fab-play"></span></span>
+        <span class="sw-fab-label">🎬 فلم أسبوع الفضاء</span>
+      </button>
     </header>
 
     <!-- ① الشاشة الرئيسية: الفصل + الصفوف + الكتب -->
     <section class="screen active" id="home">
-      <!-- مبادرةُ أسبوعِ الفضاء (٤–١٠ أكتوبر ٢٠٢٦): أيقونةٌ عائمةٌ في الصفحةِ الرئيسيةِ وحدَها تفتحُ
-           الفلمَ في نافذةٍ فوقَ الصفحة (قرارُ المالك ٢٠٢٦-١٠-٠٣ — بدلَ الشريط). داخلَ `#home` فتختفي
-           مع شاشتَي الوحداتِ والنشاط، وتُحذَفُ تلقائياً بعدَ الأسبوع. صفحةُ `space-week.html` باقيةٌ
-           لرابطِ الإنستغرام. يُحذَفُ الكلُّ لاحقاً مع `css/space-week.css` و`media/space-week/`. -->
-      <button class="sw-fab" id="swFab" type="button" aria-haspopup="dialog"
-        aria-label="شاهد فلم أسبوع الفضاء: رحلة في المجموعة الشمسية">
-        <span class="sw-fab-disc" aria-hidden="true"><span class="sw-fab-play"></span></span>
-        <span class="sw-fab-label">فلم أسبوع الفضاء</span>
-      </button>
+      <!-- نافذةُ فلمِ أسبوعِ الفضاء (٤–١٠ أكتوبر ٢٠٢٦) — تفتحُها الأيقونةُ `#swFab` في الترويسة.
+           تُحذَفان تلقائياً بعدَ الأسبوع. صفحةُ `space-week.html` باقيةٌ لرابطِ الإنستغرام.
+           يُحذَفُ الكلُّ لاحقاً مع `css/space-week.css` و`media/space-week/`. -->
       <div class="sw-modal" id="swModal" role="dialog" aria-modal="true" aria-label="فلم رحلة في المجموعة الشمسية" hidden>
         <div class="sw-modal-box">
           <div class="sw-modal-head">

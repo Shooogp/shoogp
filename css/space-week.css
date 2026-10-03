@@ -2,33 +2,25 @@
    أيقونةُ مبادرةِ «أسبوع الفضاء مع شوجب» ونافذةُ الفلم — الصفحةُ الرئيسيةُ وحدَها
    ───────────────────────────────────────────────────────────────
    • مؤقّتة (٤–١٠ أكتوبر ٢٠٢٦): سكربتٌ في `index.html` يحذفُها بعدَ الأسبوع.
-   • داخلَ `#home` فتختفي تلقائياً مع شاشتَي الوحداتِ والنشاط.
-   • عائمةٌ أسفلَ اليسار (`position:fixed`) فلا تُزيحُ شيئاً من تخطيطِ الصفحة.
-   • الحدُّ الأدنى للّمس (§١.٥ في shoogp-ui): الأيقونةُ 104px، والأزرارُ ≥ 60px بخطِّ ≥ 18px.
+   • الأيقونةُ في الترويسةِ تحتَ حسابِ الإنستغرام، والنافذةُ داخلَ `#home`.
+   • الحدُّ الأدنى للّمس (§١.٥ في shoogp-ui): الأيقونةُ 132px، والأزرارُ ≥ 60px بخطِّ ≥ 18px.
    ═══════════════════════════════════════════════════════════════ */
 
+/* الأيقونةُ ثابتةٌ في الترويسةِ تحتَ حسابِ الإنستغرام (قرارُ المالك ٢٠٢٦-١٠-٠٣)، ورسمُها
+   `media/space-week/icon.png` من جيميناي (زحلُ يخرجُ من إطارٍ ذهبيّ). */
 .sw-fab{
-  position:fixed; left:22px; bottom:22px; z-index:60;
-  display:flex; flex-direction:column; align-items:center; gap:8px;
-  background:none; border:0; padding:0; cursor:pointer; color:#fff;
+  display:flex; flex-direction:column; align-items:center; gap:6px;
+  margin:16px auto 0; background:none; border:0; padding:0; cursor:pointer; color:#fff;
 }
-.sw-fab-disc{
-  position:relative; display:block; width:104px; height:104px; border-radius:50%;
-  background:
-    url('../media/space-week/icon-saturn.png') center/86% no-repeat,
-    radial-gradient(1.4px 1.4px at 22% 28%, #fff 50%, transparent 51%),
-    radial-gradient(1.2px 1.2px at 74% 20%, #ffe7b8 50%, transparent 51%),
-    radial-gradient(1.1px 1.1px at 30% 80%, #fff 50%, transparent 51%),
-    radial-gradient(120% 120% at 30% 25%, #2a3570 0%, #0d1229 70%);
-  border:3px solid rgba(255,190,110,.85);
-  box-shadow:0 8px 22px rgba(0,0,0,.55), 0 0 0 0 rgba(255,150,50,.6);
-  animation:swPulse 2.4s ease-out infinite;
-  transition:transform .18s ease;
-}
-.sw-fab-play{                      /* شارةُ التشغيلِ في الركن */
-  position:absolute; right:-4px; bottom:-4px; width:40px; height:40px; border-radius:50%;
+.sw-fab-disc{ position:relative; display:block; width:132px; height:132px;
+  filter:drop-shadow(0 8px 18px rgba(0,0,0,.5)); animation:swFloat 3.2s ease-in-out infinite;
+  transition:transform .18s ease }
+.sw-fab-disc img{ width:100%; height:100%; display:block }
+.sw-fab-play{                      /* شارةُ التشغيلِ في الركنِ السفليّ */
+  position:absolute; left:6px; bottom:8px; width:42px; height:42px; border-radius:50%;
   background:linear-gradient(180deg,#ff9a3c,#f06a10); border:3px solid #fff;
-  box-shadow:0 4px 10px rgba(0,0,0,.45);
+  box-shadow:0 4px 10px rgba(0,0,0,.45), 0 0 0 0 rgba(255,150,50,.6);
+  animation:swPulse 2.4s ease-out infinite;
 }
 .sw-fab-play::after{
   content:""; position:absolute; left:50%; top:50%; margin:-8px 0 0 -4px;
@@ -36,17 +28,22 @@
 }
 .sw-fab-label{
   font-family:'Cairo'; font-weight:700; font-size:1.125rem; line-height:1.2; white-space:nowrap;
-  padding:6px 14px; border-radius:999px;
-  background:rgba(13,18,41,.88); border:1px solid rgba(255,190,110,.55);
-  box-shadow:0 4px 12px rgba(0,0,0,.4);
+  padding:7px 16px; border-radius:999px; color:#ffd27a;
+  background:rgba(13,18,41,.75); border:1px solid rgba(255,190,110,.55);
 }
-.sw-fab:hover .sw-fab-disc{ transform:scale(1.07) }
-.sw-fab:focus-visible .sw-fab-disc{ outline:3px solid #ffb44a; outline-offset:4px }
+.sw-fab:hover .sw-fab-disc{ transform:scale(1.06) }
+.sw-fab:focus-visible .sw-fab-disc{ outline:3px solid #ffb44a; outline-offset:4px; border-radius:50% }
+@keyframes swFloat{ 0%,100%{ translate:0 0 } 50%{ translate:0 -5px } }
 @keyframes swPulse{
-  0%  { box-shadow:0 8px 22px rgba(0,0,0,.55), 0 0 0 0 rgba(255,150,50,.6) }
-  70% { box-shadow:0 8px 22px rgba(0,0,0,.55), 0 0 0 18px rgba(255,150,50,0) }
-  100%{ box-shadow:0 8px 22px rgba(0,0,0,.55), 0 0 0 0 rgba(255,150,50,0) }
+  0%  { box-shadow:0 4px 10px rgba(0,0,0,.45), 0 0 0 0 rgba(255,150,50,.6) }
+  70% { box-shadow:0 4px 10px rgba(0,0,0,.45), 0 0 0 12px rgba(255,150,50,0) }
+  100%{ box-shadow:0 4px 10px rgba(0,0,0,.45), 0 0 0 0 rgba(255,150,50,0) }
 }
+/* الترويسةُ تحجزُ 122px تحتَها للرسومِ الخلفية؛ الأيقونةُ تأخذُ جزءاً منها فلا تنزلُ الكتبُ كثيراً */
+header:has(.sw-fab){ margin-bottom:56px }
+/* تُخفى خارجَ الشاشةِ الرئيسيةِ كالشعارِ والإنستغرام */
+.app:has(#lessonsScreen.active) > header .sw-fab,
+.app:has(#activityScreen.active) > header .sw-fab{ display:none }
 
 /* ── نافذةُ الفلم ── */
 .sw-modal{
@@ -71,13 +68,12 @@
 
 /* الهاتف: `fit.js` يُصغّرُ تصميمَ الألفِ بكسلٍ كلَّه، فتُكبَّرُ الأيقونةُ تعويضاً */
 @media (max-width:720px){
-  .sw-fab{ left:14px; bottom:14px }
-  .sw-fab-disc{ width:150px; height:150px }
-  .sw-fab-play{ width:56px; height:56px }
-  .sw-fab-play::after{ margin:-11px 0 0 -6px; border-width:11px 0 11px 18px }
-  .sw-fab-label{ font-size:1.6rem; padding:8px 20px }
+  .sw-fab-disc{ width:170px; height:170px }
+  .sw-fab-play{ width:54px; height:54px }
+  .sw-fab-play::after{ margin:-10px 0 0 -5px; border-width:10px 0 10px 16px }
+  .sw-fab-label{ font-size:1.5rem; padding:8px 20px }
   .sw-modal{ padding:10px }
 }
 @media (prefers-reduced-motion:reduce){
-  .sw-fab-disc{ animation:none; transition:none }
+  .sw-fab-disc, .sw-fab-play{ animation:none; transition:none }
 }
