@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>أسبوع الفضاء مع شوجب — رحلة في المجموعة الشمسية</title>
+<meta name="description" content="فلم «رحلة في المجموعة الشمسية» من منصة شوجب لمدارس الحلقة الأولى بمناسبة أسبوع الفضاء العالمي.">
+<meta property="og:title" content="أسبوع الفضاء مع شوجب — رحلة في المجموعة الشمسية">
+<meta property="og:description" content="فلم تعليمي عن الشمس والكواكب الثمانية، جاهز للعرض على السبورة الذكية.">
+<meta property="og:image" content="media/space-week/poster.jpg">
+
+<!--
+  ═══════════════════════════════════════════════════════════════
+  صفحةُ مبادرةِ «أسبوع الفضاء مع شوجب» (٤–١٠ أكتوبر ٢٠٢٦) — مؤقّتة.
+  • قائمةٌ بذاتِها كأخواتِها `guide.html` و`pay.html` (نمطُها في رأسِها).
+  • الفلمُ وصورتُه في `media/space-week/`، ويفتحُها شريطٌ في `index.html`.
+  • الفلم: 1920×1080، 3:34، تعليقُه بصوتِ هاشم من داريجات، ورسومُه من
+    جيميناي وخاماتُ الكواكبِ ثلاثيةُ الأبعادِ مُصيَّرةٌ بـThree.js.
+  ═══════════════════════════════════════════════════════════════
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Cairo:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --space:#0b0f22; --panel:#141a36; --line:rgba(255,255,255,.12);
+  --orange:#ff8a2a; --orange-d:#d85f0a; --gold:#ffd27a; --moon:#eef0fb; --muted:#aab3d6;
+}
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Tajawal',sans-serif}
+html,body{background:var(--space);color:var(--moon)}
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(900px 500px at 85% -10%, rgba(255,138,42,.20), transparent 60%),
+    radial-gradient(800px 600px at 0% 110%, rgba(90,120,255,.18), transparent 60%),
+    var(--space);
+
+}
+body::before{                      /* حقلُ نجوم */
+  content:""; position:fixed; inset:0; pointer-events:none; opacity:.6;
+  background-image:
+    radial-gradient(1.4px 1.4px at 12% 18%, #fff 50%, transparent 51%),
+    radial-gradient(1.1px 1.1px at 28% 72%, #fff 50%, transparent 51%),
+    radial-gradient(1.6px 1.6px at 47% 12%, #ffe7b8 50%, transparent 51%),
+    radial-gradient(1.2px 1.2px at 66% 54%, #fff 50%, transparent 51%),
+    radial-gradient(1.3px 1.3px at 83% 28%, #cfe0ff 50%, transparent 51%),
+    radial-gradient(1.0px 1.0px at 91% 82%, #fff 50%, transparent 51%),
+    radial-gradient(1.2px 1.2px at 6% 90%, #fff 50%, transparent 51%);
+}
+.wrap{position:relative;max-width:1080px;margin:0 auto;padding:22px 20px 60px}
+
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:26px}
+.back{
+  display:inline-flex;align-items:center;gap:8px;min-height:60px;padding:0 22px;border-radius:999px;
+  color:#fff;text-decoration:none;font-weight:700;font-size:1.125rem;
+  background:rgba(255,255,255,.08);border:1px solid var(--line);
+}
+.back:hover{background:rgba(255,255,255,.14)}
+.logo{height:64px;width:auto;display:block;filter:drop-shadow(0 6px 16px rgba(0,0,0,.4))}
+
+h1{font-family:'Cairo';font-weight:900;font-size:2.4rem;line-height:1.3;text-align:center;color:var(--gold);
+  text-shadow:0 3px 18px rgba(255,138,42,.45)}
+.lead{text-align:center;font-size:1.3rem;color:#fff;margin:8px 0 4px;font-weight:700}
+.dates{text-align:center;color:var(--muted);font-size:1.125rem;margin-bottom:24px}
+
+.player{
+  position:relative;border-radius:24px;overflow:hidden;background:#000;
+  border:2px solid rgba(255,190,110,.4);
+  box-shadow:0 18px 50px rgba(0,0,0,.6), 0 0 0 6px rgba(255,255,255,.04);
+}
+.player video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#000}
+
+.actions{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin:22px 0 34px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:64px;padding:0 30px;border-radius:999px;border:0;cursor:pointer;
+  font-weight:800;font-size:1.25rem;color:#fff;text-decoration:none;
+}
+.btn-main{background:linear-gradient(180deg,#ff9a3c,#f06a10);box-shadow:0 5px 0 #b44a06,0 10px 22px rgba(240,106,16,.4)}
+.btn-main:active{transform:translateY(3px);box-shadow:0 2px 0 #b44a06}
+.btn-ghost{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22)}
+.btn-ghost:hover{background:rgba(255,255,255,.14)}
+.btn:focus-visible,.back:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
+
+.card{
+  background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
+  border:1px solid var(--line);border-radius:22px;padding:24px 26px;margin-bottom:20px;
+}
+.card h2{font-family:'Cairo';font-weight:900;font-size:1.45rem;color:var(--gold);margin-bottom:12px}
+.card ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.card li{position:relative;padding-right:30px;font-size:1.15rem;line-height:1.7;color:#e6e9f8}
+.card li::before{content:"✦";position:absolute;right:0;top:0;color:var(--orange)}
+.planets{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.planets span{padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid var(--line);font-size:1.05rem}
+
+.foot{text-align:center;color:var(--muted);font-size:1rem;margin-top:30px;line-height:1.9}
+.foot a{color:#fff}
+
+@media (max-width:640px){
+  h1{font-size:1.8rem}
+  .lead{font-size:1.15rem}
+  .logo{height:52px}
+  .card{padding:20px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <a class="back" href="index.html">→ الصفحة الرئيسية</a>
+    <img class="logo" src="images/logo-mark.png" alt="شوجب">
+  </div>
+
+  <h1>🚀 أسبوع الفضاء مع شوجَب</h1>
+  <p class="lead">فلم «رحلة في المجموعة الشمسية»</p>
+  <p class="dates">أسبوع الفضاء العالمي من ٤ إلى ١٠ أكتوبر ٢٠٢٦ · لمدارس الحلقة الأولى</p>
+
+  <div class="player" id="player">
+    <video id="film" controls playsinline preload="metadata"
+           poster="media/space-week/poster.jpg">
+      <source src="media/space-week/solar-system.mp4" type="video/mp4">
+      متصفّحك لا يدعم تشغيل الفيديو.
+    </video>
+  </div>
+
+  <div class="actions">
+    <button class="btn btn-main" id="fsBtn" type="button">⛶ ملء الشاشة للعرض على السبورة</button>
+    <a class="btn btn-ghost" href="media/space-week/solar-system.mp4" download="رحلة-في-المجموعة-الشمسية-شوجب.mp4">⬇ تنزيل الفلم</a>
+  </div>
+
+  <section class="card">
+    <h2>ماذا يشاهد التلاميذ؟</h2>
+    <ul>
+      <li>انطلاق المركبة من منصة إطلاق عُمانية، ثم رحلة إلى الشمس والكواكب الثمانية واحدًا تلو الآخر.</li>
+      <li>نبذة قصيرة عن كل كوكب بتعليق صوتي عربي، والمعلومة الأساسية مكتوبة على الشاشة.</li>
+      <li>في النهاية سؤالان للفصل: أيّ الكواكب أكبر؟ وأيّها أقرب إلى الشمس؟</li>
+    </ul>
+    <div class="planets" aria-label="محطات الرحلة">
+      <span>الشمس</span><span>عطارد</span><span>الزهرة</span><span>الأرض</span><span>المريخ</span>
+      <span>المشتري</span><span>زحل</span><span>أورانوس</span><span>نبتون</span>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>اقتراحات للمعلّمة</h2>
+    <ul>
+      <li>اعرضي الفلم بملء الشاشة على السبورة الذكية، أو في الطابور الصباحي.</li>
+      <li>عند السؤالين الأخيرين أوقفي الفلم، واتركي التلاميذ يجيبون قبل أن يسمعوا الإجابة.</li>
+      <li>نزّلي الفلم مسبقًا إن كان اتصال المدرسة بالإنترنت ضعيفًا.</li>
+    </ul>
+  </section>
+
+  <p class="foot">
+    منصة شوجَب — أنشطة تعليمية تفاعلية للمناهج العُمانية ·
+    <a href="index.html">shoogp.com</a> ·
+    <a href="https://www.instagram.com/shooogp/" target="_blank" rel="noopener">@shooogp</a>
+  </p>
+</div>
+
+<script>
+  // ملء الشاشة على الحاوية (أوسعُ دعماً من الفيديو نفسِه في متصفّحاتِ السبورات)، ثمّ التشغيل
+  (function(){
+    var btn = document.getElementById('fsBtn');
+    var box = document.getElementById('player');
+    var vid = document.getElementById('film');
+    btn.addEventListener('click', function(){
+      var el = vid.requestFullscreen ? vid : box;
+      var go = el.requestFullscreen || el.webkitRequestFullscreen || el.webkitEnterFullscreen;
+      if (vid.webkitEnterFullscreen && !vid.requestFullscreen) { vid.webkitEnterFullscreen(); }
+      else if (go) { try { go.call(el); } catch(e){} }
+      var p = vid.play(); if (p && p.catch) p.catch(function(){});
+    });
+  })();
+</script>
+</body>
+</html>
