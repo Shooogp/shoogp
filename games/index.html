@@ -305,6 +305,12 @@ button:focus-visible,select:focus-visible{outline:3px solid var(--sun);outline-o
 }
 
 
+/* شريط فتح الكتاب: يظهر حين تكون في الكتاب وحدات مقفلة */
+.unlockbar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:10px;padding:10px 12px 10px 18px;
+  border-radius:16px;background:rgba(255,201,60,.14);border:1.5px solid rgba(255,201,60,.45);font-weight:700;font-size:16px;color:#fff}
+.unlockbar button{all:unset;cursor:pointer;background:var(--sun,#FFC93C);color:#3a2a06;font-weight:800;padding:8px 20px;border-radius:999px;font-size:16px}
+.unlockbar button:focus-visible{outline:3px solid #fff;outline-offset:2px}
+
 /* بلا عدد الأسئلة بجانب قائمة الألعاب (قرار المالك) */
 .qcount{display:none!important}
 </style>
@@ -359,19 +365,47 @@ const countQ = n => n === 1 ? 'سؤال واحد' : n === 2 ? 'سؤالان' : (
 $('eyebrow').textContent = B.subject + ' · ' + B.grade;
 document.title = 'ألعاب ' + B.subject + ' — ' + B.grade;
 
-/* قائمة الدروس: لكل وحدة «الوحدة كاملة» أولاً ثم دروسها */
+/* ═════ القفل: الوحدات المجانية مفتوحة للجميع، والباقي يُفتح برمز الكتاب نفسه ═════
+   الحكم من قفل المنصّة (js/unlock.js) في الصفحة الأم — الصفحة تُفتح طبقةً فوق الفهرس.
+   إن فُتحت وحدها (رابط مباشر) تُفتح الوحدة الأولى فقط. */
+const LOCK = (() => { try{ return window.parent !== window && window.parent.ShoogpLock ? window.parent.ShoogpLock : null; }catch(e){ return null; } })();
+const unitLocked = ui => { try{ return LOCK ? LOCK.isUnitLocked(B.id, ui, B.units.length) : ui > 0; }catch(e){ return ui > 0; } };
+const lockSig = () => B.units.map((u, i) => unitLocked(i) ? 1 : 0).join('');
+
+/* قائمة الدروس: لكل وحدة «الوحدة كاملة» أولاً ثم دروسها؛ الوحدات المقفلة تظهر معطّلة بقفل */
 const SCOPES = {};
-B.units.forEach(u => {
-  const g = document.createElement('optgroup'); g.label = 'الوحدة ' + ar(u.un) + ': ' + u.u;
-  const all = u.lessons.reduce((s, l) => s + l.qs.length, 0);
-  const o = new Option('الوحدة ' + ar(u.un) + ' كاملة — ' + u.u, 'u' + u.un); g.appendChild(o);
-  SCOPES['u' + u.un] = {n: all, name: 'الوحدة ' + ar(u.un) + ' كاملة'};
-  u.lessons.forEach((l, i) => {
-    g.appendChild(new Option(ar(i + 1) + '. ' + l.t, 'l:' + l.id));
-    SCOPES['l:' + l.id] = {n: l.qs.length, name: 'درس «' + l.t + '»'};
+function buildLessons(){
+  const sel = $('lessonSel'), keep = sel.value; sel.innerHTML = '';
+  B.units.forEach((u, ui) => {
+    const locked = unitLocked(ui);
+    const g = document.createElement('optgroup'); g.label = (locked ? '🔒 ' : '') + 'الوحدة ' + ar(u.un) + ': ' + u.u;
+    const all = u.lessons.reduce((s, l) => s + l.qs.length, 0);
+    const o = new Option((locked ? '🔒 ' : '') + 'الوحدة ' + ar(u.un) + ' كاملة — ' + u.u, 'u' + u.un); o.disabled = locked; g.appendChild(o);
+    SCOPES['u' + u.un] = {n: all, name: 'الوحدة ' + ar(u.un) + ' كاملة', locked};
+    u.lessons.forEach((l, i) => {
+      const op = new Option((locked ? '🔒 ' : '') + ar(i + 1) + '. ' + l.t, 'l:' + l.id); op.disabled = locked; g.appendChild(op);
+      SCOPES['l:' + l.id] = {n: l.qs.length, name: 'درس «' + l.t + '»', locked};
+    });
+    sel.appendChild(g);
   });
-  $('lessonSel').appendChild(g);
-});
+  const any = B.units.some((u, i) => unitLocked(i));
+  $('unlockBar').hidden = !any;
+  if(keep && SCOPES[keep] && !SCOPES[keep].locked) sel.value = keep;
+}
+// شريط «افتحي الكتاب» تحت القائمتين حين تكون في الكتاب وحدات مقفلة
+(function(){
+  const bar = document.createElement('div'); bar.id = 'unlockBar'; bar.className = 'unlockbar'; bar.hidden = true;
+  bar.innerHTML = '<span>🔒 ألعاب بقية الوحدات تُفتح مع الكتاب نفسه</span><button type="button" id="unlockBtn">افتحي الكتاب</button>';
+  document.querySelector('.picker').after(bar);
+  $('unlockBtn').addEventListener('click', () => {
+    if(LOCK){ try{ LOCK.ask(B.id); return; }catch(e){} }
+    location.href = '../index.html';
+  });
+})();
+buildLessons();
+// بعد إدخال الرمز في نافذة المنصّة تُفتح الوحدات هنا فوراً
+let SIG = lockSig();
+setInterval(() => { const s2 = lockSig(); if(s2 !== SIG){ SIG = s2; buildLessons(); show(); } }, 1500);
 
 /* قائمة الألعاب: لا تبدأ لعبة قبل أن تختارها المعلّمة */
 $('gameSel').appendChild(new Option('اختاروا لعبة…', ''));
@@ -390,7 +424,11 @@ $('tiles').innerHTML = GAMES.map((g, i) => `<button class="tile c-${g.id}${TALLS
 $('tiles').addEventListener('click', e => { const t = e.target.closest('.tile'); if(t){ $('gameSel').value = t.dataset.g; show(); } });
 
 function show(){
-  const scope = $('lessonSel').value, game = $('gameSel').value, sc = SCOPES[scope];
+  let scope = $('lessonSel').value; if(!SCOPES[scope] || SCOPES[scope].locked){ scope = Object.keys(SCOPES).find(k => k[0] === 'u' && !SCOPES[k].locked) || ''; if(scope) $('lessonSel').value = scope; }
+  /* كتاب كلّ وحداته مقفلة (مثل أحب لغتي ج٢): لا لعبة قبل فتح الكتاب */
+  if(!scope){ $('lead').textContent = 'ألعاب هذا الكتاب تُفتح مع الكتاب نفسه. المسوا «افتحي الكتاب» لإدخال الرمز أو الشراء.';
+    const f = $('frame'); f.hidden = true; f.removeAttribute('src'); $('chooser').hidden = false; $('gameSel').value = ''; $('gameSel').classList.add('empty'); return; }
+  const game = $('gameSel').value, sc = SCOPES[scope];
   $('qcount').textContent = countQ(sc.n);
   $('lead').textContent = 'الأسئلة من ' + sc.name + '. المسوا لعبة لتبدأ، ويمكن تغيير الدرس أو اللعبة في أي وقت من القائمتين.';
   $('gameSel').classList.toggle('empty', !game);
@@ -414,7 +452,8 @@ $('back').addEventListener('click', () => {
 /* الدرس يمكن أن يأتي من الرابط (?scope=u2 أو ?scope=l:g4s-2-3)، واللعبة تختارها المعلّمة كل مرة */
 (function(){
   let s = null; try{ s = new URLSearchParams(location.search).get('scope'); }catch(e){}
-  $('lessonSel').value = s && SCOPES[s] ? s : 'u1';
+  const first = Object.keys(SCOPES).find(k => k[0] === 'u' && !SCOPES[k].locked) || 'u1';
+  $('lessonSel').value = s && SCOPES[s] && !SCOPES[s].locked ? s : first;
   show();
 })();
 
