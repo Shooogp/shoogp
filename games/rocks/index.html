@@ -302,7 +302,7 @@ html.en body *{unicode-bidi:plaintext}
     </div>
     <img class="logo" src="../art/logo.png" alt="شوجب">
   </div>
-  <p class="sub">صخور وعواصف تعترض الغنجة في طريقها إلى الجزيرة: أجيبوا قبل أن تصل، فيزيحها صاروخ شوجب وتُبحر الغنجة ⛵</p>
+  <p class="sub">أجيبوا عن الأسئلة ⛵</p>
 
   <section class="gcard" aria-label="بطاقة اللعبة">
     <div class="gmain">
@@ -386,6 +386,9 @@ function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.fl
 function countQ(n){ if(n===1) return 'سؤال واحد'; if(n===2) return 'سؤالين'; return ar(n)+(n<=10?' أسئلة':' سؤالاً'); }
 /* ═════ الصوت: كلّه مولَّد بالكود (WebAudio) بلا ملفات، ويخضع لزرّ الكتم ═════ */
 let ac=null, muted=false, eng=null, amb=null;
+/* التعليمات الصوتية (صوت راغب من داريجات): تُقال بدل الأسطر المكتوبة. تعمل داخل صفحة الألعاب لأن الإطار يرث إذن التشغيل */
+let voA=null;
+function vo(name){ if(muted) return; try{ if(voA) voA.pause(); voA=new Audio('../audio/'+name+'.mp3'); const p=voA.play(); if(p&&p.catch) p.catch(()=>{}); }catch(e){} }
 function actx(){
   try{ ac = ac || new (window.AudioContext||window.webkitAudioContext)(); if(ac.state==='suspended') ac.resume(); return ac; }
   catch(e){ return null; }
@@ -668,7 +671,7 @@ function hit(timeout){
     const back=S.leg>0; if(back){ S.leg--; renderRoute(); }
     const sx=scrollX; tween(1100,q=>{ scrollX=sx-(back?LEG:0)*(1-Math.pow(1-q,2)); o.x=OB_X1+20+260*q; },()=>{ $('obG').innerHTML=''; OB=null; },j);
     const fb=$('fb'); fb.className='fb bad';
-    fb.innerHTML=(timeout?(o.type==='rock'?'وصلت الصخرة قبل الإجابة':'وصلت العاصفة قبل الإجابة'):'ليست هذه الإجابة')+'، فتضرّرت الغنجة'+(back?' وتراجعت مرحلة.':'.')+'<small>سيعود هذا السؤال مرة أخرى.</small>';
+    fb.className='fb'; fb.innerHTML=''; vo(timeout?(o.type==='rock'?'rocks-rock':'rocks-storm'):'rocks-wrong');
     showNext();
   },j);
 }
@@ -728,7 +731,7 @@ function fireworks(){
 function newGame(unitId){
   timers.forEach(clearTimeout); timers=[]; job++; engineStop(.1);
   $('fx').innerHTML=''; $('dest').innerHTML=''; $('obG').innerHTML=''; OB=null; $('rkG').classList.remove('boost'); rockTo=0;
-  S=fresh(unitId); scrollX=0; renderRoute();
+  S=fresh(unitId); later(()=>vo('rocks-instr'),500); scrollX=0; renderRoute();
   $('eyebrow').textContent=BOOK.subject+' · '+BOOK.grade+' · '+unit.lab;
   draw(); renderQuestion();
 }
@@ -736,7 +739,7 @@ $('next').addEventListener('click',()=>{ if(!S.done){ draw(); renderQuestion(); 
 $('again').addEventListener('click',()=>newGame(S.unitId));
 $('restart').addEventListener('click',()=>newGame(S.unitId));
 $('sound').addEventListener('click',e=>{
-  muted=!muted; e.currentTarget.setAttribute('aria-pressed',String(!muted));
+  muted=!muted; e.currentTarget.setAttribute('aria-pressed',String(!muted)); if(muted&&voA) voA.pause();
   if(muted){ ambStop(); engineStop(.1); } else ambStart();
   try{ localStorage.setItem('sgame.muted',muted?'1':''); }catch(err){}
 });

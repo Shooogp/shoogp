@@ -328,7 +328,7 @@ html.en body *{unicode-bidi:plaintext}
     </div>
     <img class="logo" src="../art/logo.png" alt="شوجب">
   </div>
-  <p class="sub">سؤال واحد للفريقين: من يجيب إجابة صحيحة أولاً يسحب الحبل نحوه، ومن يوصل العلامة الحمراء إلى خطّه يفوز 🚀</p>
+  <p class="sub">تحدٍّ بين فريقين 🚀</p>
 
   <section class="gcard" aria-label="بطاقة اللعبة">
     <div class="gmain3">
@@ -412,6 +412,9 @@ function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.fl
 function countA(n){ if(n===0) return 'بلا إجابات صحيحة'; if(n===1) return 'بإجابة صحيحة واحدة'; if(n===2) return 'بإجابتين صحيحتين'; return 'بـ'+ar(n)+(n<=10?' إجابات صحيحة':' إجابةً صحيحة'); }
 /* ═════ الصوت: كلّه مولَّد بالكود (WebAudio) بلا ملفات، ويخضع لزرّ الكتم ═════ */
 let ac=null, muted=false, eng=null, amb=null;
+/* التعليمات الصوتية (صوت راغب من داريجات): تُقال بدل الأسطر المكتوبة. تعمل داخل صفحة الألعاب لأن الإطار يرث إذن التشغيل */
+let voA=null;
+function vo(name){ if(muted) return; try{ if(voA) voA.pause(); voA=new Audio('../audio/'+name+'.mp3'); const p=voA.play(); if(p&&p.catch) p.catch(()=>{}); }catch(e){} }
 function actx(){
   try{ ac = ac || new (window.AudioContext||window.webkitAudioContext)(); if(ac.state==='suspended') ac.resume(); return ac; }
   catch(e){ return null; }
@@ -644,9 +647,9 @@ function answer(t,i,btn){
     S.lock[t]=true; btn.classList.add('no'); lockTeam(t); sfx('no');
     if(S.lock[other]){
       S.resolved=true; S.queue.push(S.cur);
-      fb(t,'لم يسحب أحد هذه المرة، وسيعود السؤال لاحقاً.'); fb(other,'لم يسحب أحد هذه المرة، وسيعود السؤال لاحقاً.');
+      fb(t,''); fb(other,''); vo('team-none');
       later(nextRound,2200);
-    } else fb(t,'إجابة خاطئة… الدور الآن عند '+TEAMS[other].name);
+    } else { fb(t,''); vo('team-turn-'+other); }
   }
 }
 function pull(t){
@@ -694,14 +697,14 @@ function firework(t){
 function newGame(unitId){
   timers.forEach(clearTimeout); timers=[]; engineLevel(ENG_IDLE);
   $('fx').innerHTML=''; ['a','b'].forEach(t=>{ const w=$('wl'+t); if(w) w.classList.remove('hot'); });
-  S=fresh(unitId); $('tug').style.transform='translateX(0px)'; sagTo=34;
+  S=fresh(unitId); later(()=>vo('tug-instr'),500); $('tug').style.transform='translateX(0px)'; sagTo=34;
   $('eyebrow').textContent=BOOK.subject+' · '+BOOK.grade+' · '+unit.lab;
   renderScore(); nextRound();
 }
 
 $('restart').addEventListener('click',()=>newGame(S.unitId));
 $('sound').addEventListener('click',e=>{
-  muted=!muted; e.currentTarget.setAttribute('aria-pressed',String(!muted));
+  muted=!muted; e.currentTarget.setAttribute('aria-pressed',String(!muted)); if(muted&&voA) voA.pause();
   if(muted) ambStop(); else ambStart();
   try{ localStorage.setItem('sgame.muted',muted?'1':''); }catch(err){}
 });

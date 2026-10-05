@@ -262,7 +262,7 @@ html.en body *{unicode-bidi:plaintext}
     </div>
     <img class="logo" src="../art/logo.png" alt="شوجب">
   </div>
-  <p class="sub">أجيبوا عن الأسئلة، وصاروخ شوجب يُنزل المعلَم قطعةً قطعة 🚀</p>
+  <p class="sub">أجيبوا عن الأسئلة 🚀</p>
 
   <section class="gcard" aria-label="بطاقة اللعبة">
     <div class="gmain">
@@ -525,6 +525,9 @@ function countQ(n){
 
 /* ═════ الصوت: كلّه مولَّد بالكود (WebAudio) بلا ملفات، ويخضع لزرّ الكتم ═════ */
 let ac=null, muted=false, eng=null, amb=null;
+/* التعليمات الصوتية (صوت راغب من داريجات): تُقال بدل الأسطر المكتوبة. تعمل داخل صفحة الألعاب لأن الإطار يرث إذن التشغيل */
+let voA=null;
+function vo(name){ if(muted) return; try{ if(voA) voA.pause(); voA=new Audio('../audio/'+name+'.mp3'); const p=voA.play(); if(p&&p.catch) p.catch(()=>{}); }catch(e){} }
 function actx(){
   try{ ac = ac || new (window.AudioContext||window.webkitAudioContext)(); if(ac.state==='suspended') ac.resume(); return ac; }
   catch(e){ return null; }
@@ -736,7 +739,7 @@ function answer(btn,good){
   }else{
     S.errors++; S.queue.push(S.cur);
     btn.classList.add('no'); sfx('no');
-    fb.className='fb bad'; fb.textContent='ليست هذه الإجابة. سيعود السؤال مرة أخرى.';
+    fb.className='fb'; fb.textContent=''; vo('build-wrong');
   }
   if(!S.night && S.turns>=DAYLIGHT) S.night=true;
   paintSky();
@@ -785,7 +788,7 @@ function resetScene(){
   $('crane').innerHTML=''; $('crane').removeAttribute('class'); engineStop(.1);
 }
 function newGame(unitId){
-  resetScene(); S=fresh(unitId); $('unit').value=S.unitId;
+  resetScene(); S=fresh(unitId); later(()=>vo('build-instr'),500); $('unit').value=S.unitId;
   try{ localStorage.setItem('sgame.'+BOOK.id+'.unit',S.unitId); }catch(e){}
   $('eyebrow').textContent=BOOK.subject+' · '+BOOK.grade+' · '+unit.lab;
   renderPips(); paintSky(); nextQuestion();
@@ -807,7 +810,7 @@ $('next').addEventListener('click',nextQuestion);
 $('again').addEventListener('click',()=>newGame(S.unitId));
 $('restart').addEventListener('click',()=>newGame(S.unitId));
 $('sound').addEventListener('click',e=>{
-  muted=!muted; e.currentTarget.setAttribute('aria-pressed',String(!muted));
+  muted=!muted; e.currentTarget.setAttribute('aria-pressed',String(!muted)); if(muted&&voA) voA.pause();
   if(muted){ ambStop(); engineStop(.1); } else ambStart();
   try{ localStorage.setItem('sgame.muted',muted?'1':''); }catch(err){}
 });

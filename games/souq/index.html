@@ -306,7 +306,7 @@ html.en body *{unicode-bidi:plaintext}
     </div>
     <img class="logo" src="../art/logo.png" alt="شوجب">
   </div>
-  <p class="sub">كل إجابة صحيحة تربحكم ٢٠٠ بيسة؛ اجمعوها واختاروا ما تشترونه من الدكاكين ليطير إلى جفيركم 🧺</p>
+  <p class="sub">أجيبوا عن الأسئلة 🧺</p>
 
   <section class="gcard" aria-label="بطاقة اللعبة">
     <div class="gmain">
@@ -390,6 +390,9 @@ function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.fl
 function countQ(n){ if(n===1) return 'سؤال واحد'; if(n===2) return 'سؤالين'; return ar(n)+(n<=10?' أسئلة':' سؤالاً'); }
 /* ═════ الصوت: كلّه مولَّد بالكود (WebAudio) بلا ملفات، ويخضع لزرّ الكتم ═════ */
 let ac=null, muted=false, eng=null, amb=null;
+/* التعليمات الصوتية (صوت راغب من داريجات): تُقال بدل الأسطر المكتوبة. تعمل داخل صفحة الألعاب لأن الإطار يرث إذن التشغيل */
+let voA=null;
+function vo(name){ if(muted) return; try{ if(voA) voA.pause(); voA=new Audio('../audio/'+name+'.mp3'); const p=voA.play(); if(p&&p.catch) p.catch(()=>{}); }catch(e){} }
 function actx(){
   try{ ac = ac || new (window.AudioContext||window.webkitAudioContext)(); if(ac.state==='suspended') ac.resume(); return ac; }
   catch(e){ return null; }
@@ -637,10 +640,10 @@ function answer(btn,good){
     S.money+=EARN; S.earned+=EARN; coinSnd();
     const w=$('wallet'); w.classList.remove('bump'); void w.offsetWidth; w.classList.add('bump');
     renderShelf();
-    fb.className='fb good'; fb.innerHTML='<small>'+(canBuyAny()?'المسوا غرضاً يلمع في الأسفل لتشتروه، أو ادّخروا لغرض أغلى.':needMsg())+'</small>';
+    fb.className='fb good'; if(canBuyAny()){ fb.innerHTML=''; vo('souq-buy'); } else fb.innerHTML='<small>'+needMsg()+'</small>';
   } else {
     S.errors++; S.queue.push(S.cur); btn.classList.add('no'); sfx('no');
-    fb.className='fb bad'; fb.innerHTML='ليست هذه الإجابة، فلم تربحوا بيسات هذه المرة.<small>سيعود هذا السؤال مرة أخرى.</small>';
+    fb.className='fb'; fb.innerHTML=''; vo('souq-wrong');
   }
   showNext();
 }
@@ -701,7 +704,7 @@ function finale(){
 function newGame(unitId){
   timers.forEach(clearTimeout); timers=[]; cJob++; engineStop(.1);
   $('crane').innerHTML=''; $('fx').innerHTML=''; $('dim').classList.remove('lit'); document.querySelectorAll('.lamp').forEach(l=>l.classList.remove('on'));
-  S=fresh(unitId); $('shelf').classList.remove('busy');
+  S=fresh(unitId); later(()=>vo('souq-instr'),500); $('shelf').classList.remove('busy');
   $('eyebrow').textContent=BOOK.subject+' · '+BOOK.grade+' · '+unit.lab;
   renderShops(); renderBasket(); renderShelf(); draw(); renderQuestion();
 }
@@ -709,7 +712,7 @@ $('next').addEventListener('click',()=>{ if(!S.done){ draw(); renderQuestion(); 
 $('again').addEventListener('click',()=>newGame(S.unitId));
 $('restart').addEventListener('click',()=>newGame(S.unitId));
 $('sound').addEventListener('click',e=>{
-  muted=!muted; e.currentTarget.setAttribute('aria-pressed',String(!muted));
+  muted=!muted; e.currentTarget.setAttribute('aria-pressed',String(!muted)); if(muted&&voA) voA.pause();
   if(muted) engineStop(.1);
   try{ localStorage.setItem('sgame.muted',muted?'1':''); }catch(err){}
 });

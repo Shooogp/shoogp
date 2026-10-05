@@ -403,7 +403,7 @@ function countQ(n){ if(n===1) return 'سؤال واحد'; if(n===2) return 'سؤ
 
 /* ═════ الصوت: كلّه مولَّد بالكود (WebAudio) بلا ملفات، ويخضع لزرّ الكتم ═════ */
 let ac=null, muted=false, eng=null, amb=null;
-/* التعليمات الصوتية (صوت راغب من داريجات): تُقال بدل السطر المكتوب. تعمل داخل صفحة الألعاب لأن الإطار يرث إذن التشغيل */
+/* التعليمات الصوتية (صوت راغب من داريجات): تُقال بدل الأسطر المكتوبة. تعمل داخل صفحة الألعاب لأن الإطار يرث إذن التشغيل */
 let voA=null;
 function vo(name){ if(muted) return; try{ if(voA) voA.pause(); voA=new Audio('../audio/'+name+'.mp3'); const p=voA.play(); if(p&&p.catch) p.catch(()=>{}); }catch(e){} }
 function actx(){
