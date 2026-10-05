@@ -4253,7 +4253,8 @@ loadData().then(function(d){
   }
   btn.addEventListener('click', e => {
     e.preventDefault();
-    fr.setAttribute('src', btn.getAttribute('href'));
+    /* ‏&v= عند كلِّ فتح: صفحةُ الألعابِ خارجَ ختمِ ?v= في النشر، فلا تبقى نسخةٌ قديمةٌ مخزَّنة */
+    fr.setAttribute('src', btn.getAttribute('href') + '&v=' + Date.now().toString(36));
     ov.hidden = false;
     document.documentElement.classList.add('games-open');
     try{ fr.focus(); }catch(err){}

@@ -364,7 +364,7 @@ html.en body *{unicode-bidi:plaintext}
   <p class="hint">💡 مصمَّم للمس على السبورة · يستطيع الفريقان اللمس في الوقت نفسه · الأصوات تعمل بعد أول لمسة</p>
 </div>
 
-<script>/* بيانات الكتاب من ?book= (افتراضياً علوم الرابع) */(function(){var b=null;try{b=new URLSearchParams(location.search).get("book")}catch(e){}if(!b||!/^g[1-4]-[a-z0-9-]+$/.test(b))b="g4-sci";document.write('<script charset="utf-8" src="../data/'+b+'.js"><\/script>')})();</script>
+<script>/* بيانات الكتاب من ?book= (افتراضياً علوم الرابع) */(function(){var b=null,v=null;try{var u=new URLSearchParams(location.search);b=u.get("book");var v=u.get("v")}catch(e){}if(!b||!/^g[1-4]-[a-z0-9-]+$/.test(b))b="g4-sci";document.write('<script charset="utf-8" src="../data/'+b+'.js?v='+(v||'')+'"><\/script>')})();</script>
 <script>
 /* ═════ نطاق الأسئلة: ?scope=u<رقم الوحدة> للوحدة كاملة، أو ?scope=l:<معرّف الدرس> لدرس واحد ═════ */
 const QS_ = new URLSearchParams(location.search);
@@ -529,7 +529,7 @@ function ambStop(){
 document.addEventListener('pointerdown',()=>ambStart(),{passive:true});
 document.addEventListener('visibilitychange',()=>{ try{ if(!ac) return; if(document.hidden) ac.suspend(); else if(!muted) ac.resume(); }catch(e){} });
 
-/* ═════ تحدّي الطائرة الورقية (فريقان): خلفية الجبل الأخضر — صقر يصيح أحياناً بصدى، وريح عند ارتفاع الطائرة فقط ═════ */
+/* ═════ تحدّي الطائرة الورقية (فريقان): خلفية الجبل الأخضر — صقر يصيح أحياناً بصدى، بلا أي صوت ريح ═════ */
 /* صيحة الصقر: «كِييي» حادّة تنزل قليلاً، أحياناً متبوعة بصيحتين قصيرتين، مع صدى بعيد بين الجبال */
 function falconCry(){
   if(!amb || muted || document.hidden) return;
@@ -690,7 +690,7 @@ function answer(t,i,btn){
 function rise(t){
   S.legs[t]++; renderScore();
   const sc=$(t==='a'?'teamA':'teamB').querySelector('.tscore b'); if(sc) sc.textContent=ar(S.legs[t]);
-  windSnd(1.8);
+  /* بلا صوت ريح عند الارتفاع (قرار المالك): يكفي صوت الإجابة الصحيحة */
   later(()=>pick(t),1100); later(()=>pick(t),1450);
   if(S.legs[t]>=WIN) later(()=>win(t),2600);
   else later(nextRound,2500);

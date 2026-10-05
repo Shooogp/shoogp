@@ -343,9 +343,11 @@ button:focus-visible,select:focus-visible{outline:3px solid var(--sun);outline-o
   <p class="hint">💡 مصمَّم للمس على السبورة · الأصوات تعمل بعد أول لمسة</p>
 </div>
 
-<script>/* بيانات الكتاب من ?book= (افتراضياً علوم الرابع) */(function(){var b=null;try{b=new URLSearchParams(location.search).get("book")}catch(e){}if(!b||!/^g[1-4]-[a-z0-9-]+$/.test(b))b="g4-sci";document.write('<script charset="utf-8" src="data/'+b+'.js"><\/script>')})();</script>
+<script>/* بيانات الكتاب من ?book= (افتراضياً علوم الرابع) */(function(){var b=null,v=null;try{var u=new URLSearchParams(location.search);b=u.get("book");var v=u.get("v")}catch(e){}if(!b||!/^g[1-4]-[a-z0-9-]+$/.test(b))b="g4-sci";document.write('<script charset="utf-8" src="data/'+b+'.js?v='+(v||'')+'"><\/script>')})();</script>
 <script>
 const GAMES = [{"id": "build", "f": "build", "x": "&scene=sur", "t": "بناء منارة العيجة", "d": "الصاروخ يُنزل المنارة قطعةً قطعة في صور", "k": "تعاونية"}, {"id": "build-nizwa", "f": "build", "x": "&scene=nizwa", "t": "بناء قلعة نزوى", "d": "الصاروخ يُنزل القلعة قطعةً قطعة في نزوى", "k": "تعاونية"}, {"id": "meteors", "f": "meteors", "x": "", "t": "النيازك فوق نزوى", "d": "المسوا النيزك الذي يحمل الإجابة الصحيحة", "k": "تعاونية"}, {"id": "falaj", "f": "falaj", "x": "", "t": "ماء الفلج إلى المزرعة", "d": "الصاروخ يرفع الحواجز فيجري الماء", "k": "تعاونية"}, {"id": "souq", "f": "souq", "x": "", "t": "التسوّق في سوق مطرح", "d": "اربحوا البيسات واملؤوا الجفير", "k": "تعاونية"}, {"id": "rocks", "f": "rocks", "x": "", "t": "عقبات البحر", "d": "أبحِروا بالغنجة بين الصخور والعواصف", "k": "تعاونية"}, {"id": "balloons", "f": "balloons", "x": "", "t": "بالونات العيد", "d": "فرقعوا البالون الصحيح واملؤوا سلّة العيد", "k": "تعاونية"}, {"id": "tug", "f": "tug", "x": "", "t": "تحدّي شدّ الحبل", "d": "فريقان وسؤال واحد، والأسرع يسحب", "k": "فريقان"}, {"id": "duel", "f": "duel", "x": "", "t": "سباق الغنجتين", "d": "أول غنجة تصل إلى الجزيرة تفوز", "k": "فريقان"}, {"id": "kite", "f": "kite", "x": "", "t": "تحدّي الطائرة الورقية", "d": "إلى قمّة الجبل الأخضر بسلّة ورد", "k": "فريقان"}];
+/* رقم تحميل الصفحة يُلحق بروابط الألعاب كي لا يُعرض للمعلّمة نسخة قديمة مخزّنة من لعبة عُدِّلت */
+const V = Date.now().toString(36);
 const $ = id => document.getElementById(id);
 const ar = n => String(n).replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
 const B = BOOKDATA;
@@ -391,7 +393,7 @@ function show(){
   $('gameSel').classList.toggle('empty', !game);
   const f = $('frame');
   if(!game){ f.hidden = true; f.removeAttribute('src'); $('chooser').hidden = false; return; }
-  const G = GAMES.find(x => x.id === game), src = G.f + '/index.html?embed&book=' + encodeURIComponent(B.id) + '&scope=' + encodeURIComponent(scope) + G.x;
+  const G = GAMES.find(x => x.id === game), src = G.f + '/index.html?embed&v=' + V + '&book=' + encodeURIComponent(B.id) + '&scope=' + encodeURIComponent(scope) + G.x;
   if(f.getAttribute('src') !== src) f.setAttribute('src', src);
   $('chooser').hidden = true; f.hidden = false;
   try{ history.replaceState(null, '', '?book=' + encodeURIComponent(B.id) + '&scope=' + encodeURIComponent(scope)); }catch(e){}

@@ -365,7 +365,7 @@ html.en body *{unicode-bidi:plaintext}
   <p class="hint">💡 مصمَّم للمس على السبورة · يستطيع الفريقان اللمس في الوقت نفسه · الأصوات تعمل بعد أول لمسة</p>
 </div>
 
-<script>/* بيانات الكتاب من ?book= (افتراضياً علوم الرابع) */(function(){var b=null;try{b=new URLSearchParams(location.search).get("book")}catch(e){}if(!b||!/^g[1-4]-[a-z0-9-]+$/.test(b))b="g4-sci";document.write('<script charset="utf-8" src="../data/'+b+'.js"><\/script>')})();</script>
+<script>/* بيانات الكتاب من ?book= (افتراضياً علوم الرابع) */(function(){var b=null,v=null;try{var u=new URLSearchParams(location.search);b=u.get("book");var v=u.get("v")}catch(e){}if(!b||!/^g[1-4]-[a-z0-9-]+$/.test(b))b="g4-sci";document.write('<script charset="utf-8" src="../data/'+b+'.js?v='+(v||'')+'"><\/script>')})();</script>
 <script>
 /* ═════ نطاق الأسئلة: ?scope=u<رقم الوحدة> للوحدة كاملة، أو ?scope=l:<معرّف الدرس> لدرس واحد ═════ */
 const QS_ = new URLSearchParams(location.search);
