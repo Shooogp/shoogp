@@ -628,9 +628,10 @@ function loop(ms){
     /* ملتقى العودين في صورة الطائرة (١٤٣،١٤٣ من ٢٩١×٤٣٨) مُدارٌ مع ميلان الطائرة */
     const px=KW*(143/291-.48), py=-KH*.755+KH*(143/438), rr=r*Math.PI/180;
     const cx=x+px*Math.cos(rr)-py*Math.sin(rr), cy=y+px*Math.sin(rr)+py*Math.cos(rr);
-    /* الخيط يتدلّى: يخرج مائلاً إلى الخارج ثم ينحني نازلاً نحو الأرض، ويتمايل قليلاً */
-    const sd=k==='a'?1:-1, sw=10*Math.sin(s*.9+i*1.7), ex=x+sd*250, ey=1140;
-    const c1x=cx+sd*(120+sw), c1y=cy+40, c2x=ex-sd*(10-sw), c2y=ey-300;
+    /* الخيط مقوّس إلى الأسفل كحبلٍ متدلٍّ (تحت الخطّ المستقيم بين الطائرة والأرض): ينزل من الطائرة أولاً
+       ثم يمتدّ إلى الخارج نحو طرفه على الأرض، ويتمايل قليلاً */
+    const sd=k==='a'?1:-1, sw=12*Math.sin(s*.9+i*1.7), ex=x+sd*300, ey=1150;
+    const c1x=cx+sd*(25+sw*.5), c1y=cy+(ey-cy)*.55, c2x=ex-sd*(150-sw), c2y=ey-10;
     str+=`<path d="M${cx.toFixed(1)},${cy.toFixed(1)} C${c1x.toFixed(1)},${c1y.toFixed(1)} ${c2x.toFixed(1)},${c2y.toFixed(1)} ${ex.toFixed(1)},${ey}" stroke="#fff" stroke-opacity=".9" stroke-width="2.2" fill="none" stroke-linecap="round"/>
       <circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="3" fill="#C9A06A"/>`; });
   $('strings').innerHTML=str;
