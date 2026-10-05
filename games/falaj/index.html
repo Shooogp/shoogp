@@ -722,7 +722,7 @@ function answer(btn,good){
   const fb=$('fb');
   if(good){
     btn.classList.add('ok'); sfx('ok');
-    fb.className='fb good'; fb.textContent='أحسنتم! الصاروخ يرفع الحاجز '+ar(S.removed+1)+' فيجري الماء 💧';
+    fb.className='fb good'; fb.textContent='';
     lift(S.removed);
   } else {
     S.errors++; S.queue.push(S.cur); btn.classList.add('no'); sfx('no');

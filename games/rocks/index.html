@@ -636,7 +636,7 @@ function answer(btn,good){
   const fb=$('fb');
   if(good){
     btn.classList.add('ok'); sfx('ok');
-    fb.className='fb good'; fb.textContent=(OB.type==='rock'?'أحسنتم! أزاح صاروخ شوجب الصخرة':'أحسنتم! بدّد صاروخ شوجب العاصفة')+' وأبحرت الغنجة ⛵';
+    fb.className='fb good'; fb.textContent='';
     clearOb();
   } else {
     S.errors++; btn.classList.add('no'); sfx('no'); hit(false);

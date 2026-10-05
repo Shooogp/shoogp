@@ -718,7 +718,7 @@ function answer(btn,good){
     btn.classList.add('ok'); sfx('ok');
     fb.className='fb good';
     fb.innerHTML='';
-    fb.append('أحسنتم! الصاروخ ينزّل: '+p.name);
+    
     if(q.r){ const s=document.createElement('small'); s.textContent=q.r; fb.appendChild(s); }
     renderFort(p.i); renderPips(); lower(p); engineStart(.18);
     setCap('الصاروخ ينزّل: '+p.name,true);

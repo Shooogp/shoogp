@@ -690,7 +690,7 @@ function answer(t,i,btn){
   if(i===S.Q[t].ok){
     S.resolved=true; btn.classList.add('ok'); lockTeam(t); lockTeam(other);
     S.score[t]++; sfx('ok');
-    fb(t,'أحسنتم! طائرتكم ترتفع مدرّجاً وتجمع الورد 🌹');
+    fb(t,'');
     if(!S.lock[other]) fb(other,'سبقكم '+TEAMS[t].name+' هذه المرة!');
     rise(t);
   } else {

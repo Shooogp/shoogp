@@ -703,7 +703,7 @@ function pick(m){
     M.forEach(o=>{ if(o!==m && o.st==='rise') o.lab.classList.add('gone'); });
     later(()=>{ pop(m); release(m); const k=S.hits-1; later(()=>dropGift(m.x,m.y,k),130); },260);   // الهدية تظهر بعد أن يتمزّق البالون
     $('fb').className='fb good';
-    $('fb').innerHTML='أحسنتم! تفرقع البالون وسقط '+gift[1]+' في سلّة العيد 🎁<small>'+(S.hits<GOAL?'بقي '+ar(GOAL-S.hits)+' من الهدايا':'')+'</small>';
+    $('fb').innerHTML='';
     later(()=>{ $('cnt').textContent=ar(S.hits); if(S.hits>=GOAL) finish(); else showNext(); },1700);
   } else {
     S.errors++;

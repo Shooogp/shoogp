@@ -637,7 +637,7 @@ function answer(btn,good){
     S.money+=EARN; S.earned+=EARN; coinSnd();
     const w=$('wallet'); w.classList.remove('bump'); void w.offsetWidth; w.classList.add('bump');
     renderShelf();
-    fb.className='fb good'; fb.innerHTML='أحسنتم! ربحتم '+ar(EARN)+' بيسة 💰<small>'+(canBuyAny()?'المسوا غرضاً يلمع في الأسفل لتشتروه، أو ادّخروا لغرض أغلى.':needMsg())+'</small>';
+    fb.className='fb good'; fb.innerHTML='<small>'+(canBuyAny()?'المسوا غرضاً يلمع في الأسفل لتشتروه، أو ادّخروا لغرض أغلى.':needMsg())+'</small>';
   } else {
     S.errors++; S.queue.push(S.cur); btn.classList.add('no'); sfx('no');
     fb.className='fb bad'; fb.innerHTML='ليست هذه الإجابة، فلم تربحوا بيسات هذه المرة.<small>سيعود هذا السؤال مرة أخرى.</small>';
