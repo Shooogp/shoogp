@@ -155,6 +155,12 @@
 
 <!-- ملاءمة العرض (fit to viewport): تحجيم موحّد لتملأ الواجهةُ عرضَ النافذة. يُحمّل أولاً ليضبط zoom قبل الرسم -->
 <script src="js/fit.js?v=20260721-41"></script>
+<!-- ألعاب الكتاب: طبقةٌ فوقَ الفهرسِ تحملُ صفحةَ games/ (وضعُ المطوّرِ فقط حتى اعتمادِ الإطلاق).
+     الطبقةُ — لا الانتقالُ إلى صفحةٍ أخرى — كي يعودَ زرُّ الرجوعِ إلى فهرسِ الكتابِ نفسِه،
+     فالمنصّةُ بلا توجيهٍ ولا تحفظُ الكتابَ المفتوحَ في الرابط. -->
+<div class="games-overlay" id="gamesOverlay" hidden>
+  <iframe id="gamesFrame" title="ألعاب الكتاب" allow="autoplay; fullscreen"></iframe>
+</div>
 <!-- وحدة الصوت الموحّدة: قبل rocket.js/app.js لأنّ كليهما يستدعي SHOOGP_SFX عند التعزيز -->
 <script src="js/sfx.js?v=20260721-41"></script>
 <script src="js/data.js?v=20260721-41"></script>

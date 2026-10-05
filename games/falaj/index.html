@@ -1,0 +1,800 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>لعبة الفلج</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Cairo:wght@700;900&display=swap">
+<style>
+/* مسودة صفحة اللعبة داخل موقع شوجب: ترويسة الدرس كما هي في المنصة، ثم «بطاقة الكتاب العامة» كبيرة
+   (لون الكتاب + شبكة النقاط + الدائرتان + الإطار الأبيض) تضمّ السؤال يميناً والمشهد يساراً.
+   بلا عمود الصاروخ وبلا إطار السؤال القمري. القيم مأخوذة من css/style.css و css/shoogp-ui.css. */
+:root{
+  color-scheme: dark;
+  --ink:#eef0ff;            /* نص الصفحة */
+  --sub:#cfc4f5;            /* السطر التعريفي */
+  --hint:#b8aee5;
+  --bk-a:#5cc98a;           /* بطاقة علوم الصف الرابع: bk-green */
+  --bk-b:#3fa870;
+  --wash:rgba(6,38,24,.34);  /* غسلة داكنة فوق لون الكتاب حتى يقرأ النص الأبيض بوضوح */
+  --rk-hi:#fdf4e2; --rk-mid:#f3ddb6; --rk-lo:#e4c691; --rk-edge:#cba86e; --rk-ink:#4a3117;   /* قشرة العلوم الصخرية */
+  --sun:#FFC93C;
+  --body:'Tajawal','Segoe UI',Tahoma,system-ui,sans-serif;
+  --display:'Cairo','Tajawal',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;
+  background:linear-gradient(rgb(28,37,64) 0%,rgb(36,58,84) 32%,rgb(47,85,96) 65%,rgb(58,117,102) 100%) fixed,rgb(36,58,84)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.bgstars{position:fixed;inset:0;pointer-events:none;z-index:0}
+.bgstars i{position:absolute;border-radius:50%;background:#fff}
+
+.page{position:relative;z-index:1;min-height:100%;max-width:1760px;margin-inline:auto;
+  padding-block:10px;padding-inline:clamp(16px,3vw,56px);
+  display:grid;grid-template-rows:auto auto auto minmax(440px,1fr) auto;gap:6px}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.back{font:700 15px var(--body);color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+  border-radius:14px;padding:10px 20px;cursor:pointer;min-height:44px}
+.icon-btn{width:52px;height:40px;border-radius:16px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.14);
+  color:#fff;display:grid;place-items:center;cursor:pointer}
+.icon-btn svg{width:22px;height:22px}
+.tools{display:flex;gap:10px}
+.icon-btn[aria-pressed="false"]{color:rgba(255,255,255,.55)}
+.icon-btn[aria-pressed="false"] .wave{display:none}
+.icon-btn[aria-pressed="true"] .mute-x{display:none}
+.lesson-head{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.eyebrow{display:block;font-weight:700;font-size:clamp(13px,1.05vw,17px);color:var(--sub);text-shadow:0 1px 5px rgba(8,22,18,.75)}
+h1{margin:0;font-family:var(--display);font-weight:700;font-size:clamp(23px,2.2vw,38px);line-height:1.35;color:var(--ink);
+  text-shadow:0 2px 7px rgba(8,22,18,.8),0 0 3px rgba(8,22,18,.65);text-wrap:balance}
+.logo{height:clamp(44px,4.6vw,74px);width:auto;flex:none}
+.sub{margin:0;color:var(--sub);font-size:clamp(14px,1.1vw,18px);text-shadow:0 1px 5px rgba(8,22,18,.75)}
+
+/* ── بطاقة الكتاب العامة ── */
+.gcard{position:relative;container-type:inline-size;isolation:isolate;min-height:0;
+  border:7px solid #fff;border-radius:30px;overflow:hidden;box-shadow:0 2px 5px rgba(0,0,0,.28),0 10px 28px rgba(8,22,18,.3);
+  display:grid;padding:clamp(12px,1.3vw,22px)}
+.gcard::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.9;
+  background:
+    radial-gradient(rgba(255,255,255,.22) 1.6px,rgba(255,255,255,0) 1.9px) 0 0/30px 30px repeat,
+    radial-gradient(closest-side,rgba(255,255,255,.3) 99.4%,rgba(255,255,255,0) 100%) left -60px top -90px/430px 430px no-repeat,
+    radial-gradient(closest-side,rgba(255,255,255,.3) 99.4%,rgba(255,255,255,0) 100%) right -70px bottom -50px/350px 350px no-repeat,
+    linear-gradient(var(--wash),var(--wash)),
+    linear-gradient(160deg,var(--bk-a) 0%,var(--bk-b) 100%)}
+@supports (width:1cqw){
+  .gcard::before{background:
+    radial-gradient(rgba(255,255,255,.22) 1.6px,rgba(255,255,255,0) 1.9px) 0 0/30px 30px repeat,
+    radial-gradient(closest-side,rgba(255,255,255,.3) 99.4%,rgba(255,255,255,0) 100%) left -6.7cqw top -10.4cqw/57.8cqw 57.8cqw no-repeat,
+    radial-gradient(closest-side,rgba(255,255,255,.3) 99.4%,rgba(255,255,255,0) 100%) right -9cqw bottom -5.2cqw/47.4cqw 47.4cqw no-repeat,
+    linear-gradient(var(--wash),var(--wash)),
+    linear-gradient(160deg,var(--bk-a) 0%,var(--bk-b) 100%)}
+}
+.ghead{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.badge{display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;text-shadow:0 2px 3px rgba(0,40,70,.75);
+  background:center/100% 100% no-repeat;white-space:nowrap;flex:none;width:var(--bw);overflow:hidden}
+.badge.qnum{--bw:clamp(170px,14.5vw,260px);height:calc(var(--bw)*163/640);font-family:var(--display);font-size:clamp(15px,1.2vw,21px);background-image:url(../art/badge-qnum.webp)}
+.badge.qtype{--bw:clamp(165px,13.5vw,244px);height:calc(var(--bw)*173/560);font-size:clamp(13px,1.05vw,19px);background-image:url(../art/badge-qtype.webp);
+  padding-left:calc(var(--bw)*.2);padding-top:calc(var(--bw)*.03)}
+#pips{display:none}
+
+.gmain{display:grid;gap:clamp(12px,1.8vw,30px);min-height:0;grid-template-columns:minmax(0,1fr)}
+.stage{order:-1;position:relative;border:5px solid #fff;border-radius:22px;overflow:hidden;background:#4E90DE;direction:ltr;
+  aspect-ratio:1/1;max-width:100%;box-shadow:0 2px 5px rgba(0,0,0,.28)}
+.stage svg{display:block;width:100%;height:100%;overflow:visible}
+.ask{display:flex;flex-direction:column;gap:clamp(10px,1.8vh,20px);min-width:0}
+.ask .mid{margin-block:auto;display:flex;flex-direction:column;gap:clamp(10px,1.8vh,20px)}
+@media (min-width:900px){
+  .page{height:100%}
+  .gmain{grid-template-columns:minmax(0,1.04fr) minmax(0,1fr)}
+  .stage{order:0;aspect-ratio:auto;min-height:320px}
+}
+
+/* ── السؤال: نصّه مباشرةً على البطاقة، وخياراته بقشرة العلوم الصخرية ── */
+.q{display:flex;flex-direction:column;gap:clamp(10px,1.8vh,20px)}
+.kind{margin:0;font-weight:700;font-size:clamp(14px,1.1vw,19px);color:rgba(255,255,255,.95);text-shadow:0 1px 4px rgba(8,40,28,.6)}
+.qtext{margin:0;font-weight:800;font-size:clamp(23px,2.25vw,40px);line-height:1.7;color:#fff;text-wrap:balance;
+  text-shadow:0 2px 6px rgba(8,40,28,.55),0 0 2px rgba(8,40,28,.5)}
+.opts{display:grid;gap:clamp(12px,1.3vw,18px);grid-template-columns:1fr}
+.opts.tf{grid-template-columns:1fr 1fr}
+@media (min-width:1200px){.opts.mcq{grid-template-columns:1fr 1fr}}
+.stone{font:800 clamp(19px,1.7vw,29px)/1.5 var(--body);color:var(--rk-ink);text-align:center;text-shadow:0 1px 0 rgba(255,255,255,.55);
+  min-height:clamp(62px,8vh,96px);padding:12px 22px;cursor:pointer;border:1px solid var(--rk-edge);border-radius:999px;
+  background:
+    radial-gradient(50% 50% at 50% 42%,rgba(132,94,44,.42) 0 30%,rgba(255,252,240,.6) 56%,rgba(255,252,240,0) 76%) 12% 30%/11px 11px no-repeat,
+    radial-gradient(50% 50% at 50% 44%,rgba(146,106,52,.36) 0 33%,rgba(255,250,235,.5) 58%,rgba(255,250,235,0) 77%) 86% 68%/9px 9px no-repeat,
+    radial-gradient(50% 50% at 50% 46%,rgba(160,120,64,.26) 0 36%,rgba(255,248,230,.42) 60%,rgba(255,248,230,0) 78%) 62% 20%/8px 8px no-repeat,
+    linear-gradient(180deg,var(--rk-hi) 0%,var(--rk-mid) 52%,var(--rk-lo) 100%);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.78),inset 0 -3px 0 rgba(150,112,52,.3),inset 0 -8px 11px -7px rgba(120,86,36,.38),
+             0 3px 0 rgba(163,127,72,.55),0 6px 12px rgba(60,40,15,.26);
+  transition:transform .12s,opacity .3s,filter .2s}
+.stone:hover{transform:translateY(-2px)}
+.stone:active{transform:translateY(3px)}
+.opts.locked .stone{pointer-events:none}
+.opts.locked .stone:not(.ok):not(.no){opacity:.55;filter:saturate(.6)}
+.stone.ok{background:linear-gradient(180deg,rgba(255,255,255,.5) 0%,rgba(255,255,255,.14) 40%,rgba(255,255,255,0) 56%),linear-gradient(180deg,#ddf4c8 0%,#aee08a 52%,#8ccf66 100%);
+  border-color:#5fa23f;color:#22380b;box-shadow:0 4px 9px rgba(40,80,20,.28),0 0 14px rgba(190,240,150,.7),inset 0 1px 0 rgba(255,255,255,.45);animation:lift .9s ease both}
+.stone.no{background:linear-gradient(180deg,#fbe3da 0%,#f1bfae 55%,#e3a08b 100%);border-color:#c0705a;color:#5c1f12;animation:shake .45s}
+button:focus-visible,select:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+
+.foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;min-height:72px}
+.fb{margin:0;flex:1 1 220px;min-width:0;font-weight:800;font-size:clamp(17px,1.5vw,25px);line-height:1.6;color:#fff;text-shadow:0 2px 5px rgba(8,40,28,.6)}
+.fb small{display:block;font-weight:500;font-size:.8em;color:rgba(255,255,255,.92)}
+.fb.good{color:#f3ffd9}
+.fb.bad{color:#fff0ea}
+.next{position:relative;flex:none;width:clamp(150px,12.5vw,220px);aspect-ratio:560/234;border:0;padding:0;background:none;cursor:pointer;
+  transition:transform .15s}
+.next img{position:absolute;inset:0;width:100%;height:100%;transform:scaleX(-1)}
+.next span{position:absolute;inset:0;display:grid;place-items:center;padding-inline-start:12%;color:#fff;font:800 clamp(16px,1.3vw,23px) var(--body);
+  text-shadow:0 2px 4px rgba(150,70,5,.85),0 0 8px rgba(150,70,5,.4)}
+.next:hover{transform:scale(1.04)}
+.next:active{transform:scale(.95)}
+
+.done{display:flex;flex-direction:column;gap:12px}
+.done h2{margin:0;font-family:var(--display);font-weight:900;font-size:clamp(28px,2.9vw,52px);line-height:1.35;color:#fff;text-wrap:balance;
+  text-shadow:0 2px 7px rgba(8,40,28,.6)}
+.done p{margin:0;font-weight:700;font-size:clamp(18px,1.6vw,27px);color:#fff;text-shadow:0 1px 4px rgba(8,40,28,.55)}
+.done .fact{font-weight:500;color:rgba(255,255,255,.95)}
+.done .stone{align-self:flex-start;margin-top:8px;padding-inline:34px}
+
+/* ── أدوات المعاينة (ليست جزءاً من صفحة الموقع) ── */
+.page>*{min-width:0}
+.lessonbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding:8px 14px;border-radius:18px;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2)}
+.lessonbar label{display:flex;align-items:center;gap:10px;flex:1 1 320px;min-width:0;font-weight:800;font-size:clamp(15px,1.1vw,19px);color:#fff}
+.lessonbar select{flex:1 1 auto;min-width:0;width:100%;max-width:640px;font:700 clamp(15px,1.1vw,19px) var(--body);color:#fff;background:rgba(9,20,40,.45);
+  border:1px solid rgba(255,255,255,.28);border-radius:12px;padding:8px 12px;min-height:46px;cursor:pointer}
+.lessonbar select option,.lessonbar select optgroup{color:#16213a;background:#fff}
+.lessonbar select optgroup{font-weight:800}
+.lessonbar button{font:800 clamp(15px,1.1vw,19px) var(--body);color:#fff;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);
+  border-radius:12px;padding:8px 18px;cursor:pointer;min-height:46px;display:flex;align-items:center;gap:8px}
+.lessonbar button svg{width:20px;height:20px}
+.lessonbar button:hover{background:rgba(255,255,255,.24)}
+.hint{margin:0;text-align:center;font-size:13px;color:var(--hint)}
+/* الشارة السوداء أسفل المشهد حُذفت (قرار المالك)، ومكانها زرّ «إعادة اللعبة» */
+#cap{display:none!important}
+.restart{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);z-index:3;direction:rtl;
+  display:flex;align-items:center;gap:8px;font:800 clamp(14px,1.3vw,20px)/1.4 var(--body);color:#F6EFE1;cursor:pointer;
+  background:rgba(15,21,48,.82);border:0;border-radius:999px;padding:8px 18px;white-space:nowrap}
+.restart svg{width:20px;height:20px}
+.restart:hover{background:rgba(15,21,48,.95)}
+
+/* ── شارات المشهد ── */
+.chip{position:absolute;direction:rtl;font-weight:800;font-size:clamp(14px,1.3vw,20px);line-height:1.4;
+  padding:8px 16px;border-radius:999px;background:rgba(15,21,48,.82);color:#F6EFE1;max-width:calc(100% - 24px)}
+.sunchip{top:12px;right:12px;display:flex;align-items:center;gap:8px}
+.sunchip i{width:14px;height:14px;border-radius:50%;background:var(--sun);flex:none}
+.sunchip.night i{background:#FDF3C8;box-shadow:inset -5px 0 0 rgba(15,21,48,.82)}
+.cap{bottom:12px;left:50%;transform:translateX(-50%);text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cap.pop{animation:pop .5s}
+
+/* ── المشهد ── */
+#sun{transition:transform 1.6s cubic-bezier(.4,0,.2,1),opacity 1.2s}
+.booting #sun,.booting #tint,.booting #dusk{transition:none}
+#stars,#lights,#moonGlow{opacity:0;transition:opacity 1.4s}
+#moon{opacity:.7;transition:opacity 1.4s}
+.is-night #stars,.is-night #moon,.is-night #lights,.is-night #moonGlow{opacity:1}
+.is-night #sun{opacity:0}
+.ghost{fill:rgba(255,255,255,.14);stroke:#1D2A55;stroke-opacity:.75;stroke-width:4;stroke-dasharray:13 11;stroke-linejoin:round}
+.ghost.built{display:none}
+.is-night .ghost{stroke:#fff;stroke-opacity:.8}
+.ghost.nextup{stroke-opacity:1;stroke-width:6;animation:glow 1.5s ease-in-out infinite}
+.piece .built{display:none}
+.piece.on .built{display:inline}
+.piece.drop .built{animation:lowerF 1.8s cubic-bezier(.16,.7,.3,1) both}
+#crane.lowering .crane-move{animation:lower 1.8s cubic-bezier(.16,.7,.3,1) both}
+#tint{mix-blend-mode:multiply;transition:fill 1.6s}
+#dusk{transition:opacity 1.6s}
+#lights .lt{display:none}
+#lights .lt.on{display:inline}
+#beam{display:none;opacity:.5}
+#beam.on{display:inline}
+.is-night #beam{opacity:.95}
+.beamspin{transform-box:fill-box;transform-origin:center;animation:sweep 3.2s ease-in-out infinite}
+#crane .ropes{transition:opacity .2s}
+#crane.leaving .ropes{opacity:0}
+#crane.leaving .crane-move{animation:leave 1.1s .12s cubic-bezier(.5,0,.9,.4) both}
+.flame{transform-box:fill-box;transform-origin:top center;animation:flick .18s ease-in-out infinite alternate}
+.stage.thud svg{animation:thud .28s}
+.slit{fill:#3E2A1A}
+.is-night .slit,.is-night .lamp{fill:#FFD66B}
+.puff{transform-box:fill-box;transform-origin:center;animation:puff .7s ease-out forwards}
+#flag{display:none}
+#flag.up{display:inline}
+#flag.up .pole{transform-box:fill-box;transform-origin:bottom;animation:grow .6s ease-out both}
+#flag.up .cloth{animation:raise 2.2s .3s cubic-bezier(.3,0,.2,1) both}
+#flag.up .wave{transform-box:fill-box;transform-origin:left center;animation:wave 1.8s 2.4s ease-in-out infinite}
+.spark{transform-box:fill-box;transform-origin:center;animation:spark 1.1s ease-out both}
+#rocket{display:none}
+#rocket.go{display:inline;animation:fly 3.6s 2.2s cubic-bezier(.45,0,.4,1) both}
+
+@keyframes lower{from{transform:translateY(-1100px)}to{transform:translateY(0)}}
+@keyframes lowerF{from{transform:translateY(-1964.3px)}to{transform:translateY(0)}}
+@keyframes leave{from{transform:translateY(0)}to{transform:translateY(-1250px)}}
+@keyframes flick{from{transform:scaleY(.75)}to{transform:scaleY(1.15)}}
+@keyframes thud{0%,100%{transform:translateY(0)}40%{transform:translateY(4px)}}
+@keyframes puff{0%{transform:scale(.3);opacity:.85}100%{transform:scale(2.3) translateY(-6px);opacity:0}}
+@keyframes glow{0%,100%{fill:rgba(255,201,60,.10)}50%{fill:rgba(255,201,60,.42)}}
+@keyframes lift{0%{transform:translateY(0)}35%{transform:translateY(-10px) scale(1.03)}100%{transform:translateY(0)}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(7px)}50%{transform:translateX(-7px)}75%{transform:translateX(4px)}}
+@keyframes pop{0%{transform:translateX(-50%) scale(.85)}60%{transform:translateX(-50%) scale(1.06)}100%{transform:translateX(-50%) scale(1)}}
+@keyframes grow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes raise{from{transform:translateY(216px)}to{transform:translateY(0)}}
+@keyframes wave{0%,100%{transform:skewY(0)}50%{transform:skewY(-5deg)}}
+@keyframes spark{0%{transform:scale(0);opacity:1}60%{opacity:1}100%{transform:scale(1.5);opacity:0}}
+@keyframes sweep{0%,100%{transform:scaleX(1);opacity:.8}50%{transform:scaleX(.05);opacity:.25}}
+@keyframes fly{0%{transform:translate(var(--px),var(--py)) rotate(0deg) scale(1.5);opacity:0}6%{opacity:1}28%{transform:translate(calc(var(--px) - 6px),calc(var(--py) - 220px)) rotate(-8deg) scale(1.5)}90%{opacity:1}100%{transform:translate(var(--mx),var(--my)) rotate(-62deg) scale(.3);opacity:0}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  #rocket.go{display:none}
+}
+
+[hidden]{display:none!important}
+/* ══════ لعبة الفلج ══════ */
+.stage{background:#7EBAF0}
+.ghostP{fill:none;stroke:#fff;stroke-opacity:.55;stroke-width:44;stroke-linecap:round;stroke-linejoin:round}
+.ghostD{fill:none;stroke:#1D2A55;stroke-opacity:.6;stroke-width:3;stroke-dasharray:12 10}
+.nextSeg{fill:none;stroke:#FFC93C;stroke-width:58;stroke-linecap:round;animation:nglow 1.5s ease-in-out infinite}
+@keyframes nglow{0%,100%{stroke-opacity:.12}50%{stroke-opacity:.5}}
+.wSh{fill:none;stroke:#6B4E26;stroke-opacity:.2;stroke-width:62;stroke-linecap:butt;stroke-linejoin:round}
+.wall{fill:none;stroke:#A9784C;stroke-width:58;stroke-linecap:butt;stroke-linejoin:round}
+.wallTop{fill:none;stroke:#C4946A;stroke-width:52;stroke-linecap:butt;stroke-linejoin:round}
+.wallHi{fill:none;stroke:#DDB48C;stroke-opacity:.7;stroke-width:44;stroke-linecap:butt;stroke-linejoin:round}
+.grooveSh{fill:none;stroke:#7E5634;stroke-width:26;stroke-linecap:butt;stroke-linejoin:round}
+.groove{fill:none;stroke:#A87A4E;stroke-width:19;stroke-linecap:butt;stroke-linejoin:round}
+.joint{fill:#A9814F}
+.water{fill:none;stroke:#3FA9E6;stroke-width:17;stroke-linecap:round;stroke-linejoin:round}
+.waterHi{fill:none;stroke:#BFEAFF;stroke-width:5;stroke-linecap:round;stroke-dasharray:10 26;animation:flow 1.1s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-36}}
+.puff{transform-box:fill-box;transform-origin:center;animation:puff .8s ease-out forwards}
+@keyframes puff{0%{transform:scale(.3);opacity:.85}100%{transform:scale(2.3) translateY(-6px);opacity:0}}
+.spark{transform-box:fill-box;transform-origin:center;animation:spark 1.1s ease-out both}
+@keyframes spark{0%{transform:scale(0);opacity:1}60%{opacity:1}100%{transform:scale(1.5);opacity:0}}
+.drop{animation:dropF .9s ease-in forwards}
+@keyframes dropF{0%{transform:translate(0,0);opacity:1}100%{transform:translate(var(--dx),var(--dy));opacity:0}}
+.palm{transition:transform 1.4s cubic-bezier(.3,1.4,.5,1)}
+.palm .frond{transition:fill 1.2s}
+.flame{transform-box:fill-box;transform-origin:top center;animation:flick .18s ease-in-out infinite alternate}
+@keyframes flick{from{transform:scaleY(.75)}to{transform:scaleY(1.15)}}
+.stage.thud svg{animation:thud .28s}
+@keyframes thud{0%,100%{transform:translateY(0)}40%{transform:translateY(4px)}}
+.ropes{transition:opacity .25s}
+.wpulse{animation:wpulse 1.2s ease-in-out infinite}
+@keyframes wpulse{0%,100%{opacity:.35}50%{opacity:.9}}
+
+/* الحواجز والنخيل */
+.gate .gglow{animation:nglow2 1.5s ease-in-out infinite}
+@keyframes nglow2{0%,100%{opacity:.12}50%{opacity:.5}}
+.board{transform-box:fill-box;transform-origin:center bottom}
+.board.shudder{animation:shud .45s}
+@keyframes shud{0%,100%{transform:translateX(0)}25%{transform:translateX(4px)}50%{transform:translateX(-4px)}75%{transform:translateX(2px)}}
+.palm .pin{transition:transform 1.4s cubic-bezier(.3,1.4,.5,1),filter 1.4s;transform:scale(.86);filter:sepia(.85) saturate(.55) brightness(1.04) hue-rotate(-8deg)}
+.palm.grown .pin{transform:scale(1);filter:none}
+
+/* سواقي المزرعة وأحواض النخيل */
+.bSh{fill:none;stroke:#6B4E26;stroke-opacity:.18;stroke-width:30;stroke-linecap:round}
+.bWall{fill:none;stroke:#A9784C;stroke-width:27;stroke-linecap:round}
+.bTop{fill:none;stroke:#C4946A;stroke-width:23;stroke-linecap:round}
+.bGroove{fill:none;stroke:#8E6440;stroke-width:9;stroke-linecap:round}
+.bWater{fill:none;stroke:#3FA9E6;stroke-width:8;stroke-linecap:round}
+.cWater{transform-box:fill-box;transform-origin:center;transform:scale(0);transition:transform .9s cubic-bezier(.3,1.3,.5,1)}
+.cWater.full{transform:scale(1)}
+
+/* داخل صفحة ألعاب الكتاب: الرأس والرجوع والتلميح في الصفحة الأم */
+html.embed body{background:transparent}
+html.embed .bgstars,html.embed .back,html.embed .eyebrow,html.embed .logo,html.embed .hint{display:none}
+html.embed .page{max-width:none;padding:4px 0 10px;grid-template-rows:auto auto minmax(440px,1fr)}
+html.embed .topbar{position:absolute;inset-inline-end:8px;top:6px;z-index:5}
+@media (max-width:899px){html.embed .topbar{position:static;justify-content:flex-end}html.embed .page{grid-template-rows:none}}
+
+/* كتب الإنجليزية: كل سطر يأخذ اتجاه أول حرف فيه، فلا تقفز علامات الترقيم والأرقام */
+html.en body *{unicode-bidi:plaintext}
+</style>
+
+<div class="bgstars" id="bgstars" aria-hidden="true"></div>
+<div class="page" dir="rtl" lang="ar">
+  <div class="topbar">
+    <button class="back" type="button">→ رجوع للدروس</button>
+    <div class="tools">
+    <button class="icon-btn" id="sound" type="button" aria-pressed="true" aria-label="الصوت">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path class="wave" d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/><path class="mute-x" d="M17 9l5 6M22 9l-5 6"/></svg>
+    </button>
+    </div>
+  </div>
+  <div class="lesson-head">
+    <div>
+      <span class="eyebrow" id="eyebrow"></span>
+      <h1>ماذا لو أوصلنا ماء الفلج إلى المزرعة؟</h1>
+    </div>
+    <img class="logo" src="../art/logo.png" alt="شوجب">
+  </div>
+  <p class="sub">أجيبوا عن الأسئلة، وصاروخ شوجب يرفع حواجز الفلج واحداً واحداً حتى يصل الماء إلى النخيل 💧</p>
+
+  <section class="gcard" aria-label="بطاقة اللعبة">
+    <div class="gmain">
+      <div class="ask">
+        <div class="ghead" aria-live="polite">
+          <span class="badge qnum" id="pipText"></span>
+          <span class="badge qtype" id="kindBadge"></span>
+        </div>
+        <div class="mid">
+        <div class="q" id="qwrap">
+          <p class="kind" id="kind"></p>
+          <h2 class="qtext" id="qtext"></h2>
+          <div class="opts" id="opts"></div>
+        </div>
+        <div class="foot" id="foot">
+          <p class="fb" id="fb" aria-live="polite"></p>
+          <button class="next" id="next" type="button" hidden><img src="../art/btn-next.webp" alt=""><span>التالي</span></button>
+        </div>
+        <div class="done" id="done" hidden>
+          <h2 id="doneTitle">وصل الماء إلى المزرعة! 🌴</h2>
+          <p id="doneText"></p>
+          <p class="fact">الأفلاج نظامُ ريٍّ عُمانيّ قديم ينقل الماء من العيون وباطن الجبال إلى القرى والمزارع بالانحدار الطبيعي. وفلج دارس في نزوى واحد من خمسة أفلاج عُمانية مسجّلة في قائمة التراث العالمي.</p>
+          <button class="stone" id="again" type="button">العبوا من جديد</button>
+        </div>
+        </div>
+      </div>
+      <section class="stage" id="stage" aria-label="مشهد الفلج">
+        <svg id="scene" viewBox="150 420 1100 1150" preserveAspectRatio="xMidYMax meet" role="img" aria-label="قناة فلج تحجز ماءها حواجز يرفعها الصاروخ حتى يصل الماء إلى مزرعة النخيل">
+          <defs>
+            <linearGradient id="fadeTop" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7EBAF0"/><stop offset="1" stop-color="#7EBAF0" stop-opacity="0"/></linearGradient>
+            <linearGradient id="fadeBot" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F1D3AF" stop-opacity="0"/><stop offset="1" stop-color="#F1D3AF"/></linearGradient>
+            <linearGradient id="skyHi" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4C8FDB"/><stop offset="1" stop-color="#7EBAF0"/></linearGradient>
+            <linearGradient id="trunkG" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7A4E2A"/><stop offset=".5" stop-color="#A36C3C"/><stop offset="1" stop-color="#6B4322"/></linearGradient>
+            <linearGradient id="poolG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6CC6F2"/><stop offset="1" stop-color="#2E8DCB"/></linearGradient>
+            <radialGradient id="glow"><stop offset="0" stop-color="#FFE08A" stop-opacity=".95"/><stop offset="1" stop-color="#FFE08A" stop-opacity="0"/></radialGradient>
+            <clipPath id="basinClip"><rect id="basinIn" x="1068" y="862" width="128" height="50" rx="6"/></clipPath>
+          </defs>
+          <rect x="-3000" y="-3000" width="8000" height="3002" fill="#7EBAF0"/>
+          <rect x="-3000" y="-900" width="8000" height="902" fill="url(#skyHi)"/>
+          <rect x="-3000" y="766" width="8000" height="1200" fill="#F1D3AF"/>
+          <image href="../art/nizwa2.jpg" x="0" y="0" width="1376" height="768" preserveAspectRatio="none"/>
+          <rect x="-1376" y="0" width="4128" height="36" fill="url(#fadeTop)"/>
+          <rect x="-1376" y="726" width="4128" height="42" fill="url(#fadeBot)"/>
+          <g id="deco"></g>
+          <g id="source"></g>
+          <g id="built"></g>
+          <g id="waterG"><path id="water" class="water"/><path id="waterHi" class="waterHi"/></g>
+          <g id="tunnel" pointer-events="none"></g>
+          <g id="farm"></g>
+          <g id="gates"></g>
+          <g id="palmsF"></g>
+          <g id="fx" pointer-events="none"></g>
+          <g id="crane" pointer-events="none"></g>
+        </svg>
+        <button class="restart" id="restart" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 2.6-5.9"/><path d="M4 4v5h5"/></svg>إعادة اللعبة</button>
+      </section>
+    </div>
+  </section>
+  <p class="hint">💡 مصمَّم للمس على السبورة · الأصوات تعمل بعد أول لمسة</p>
+</div>
+
+<script>/* بيانات الكتاب من ?book= (افتراضياً علوم الرابع) */(function(){var b=null;try{b=new URLSearchParams(location.search).get("book")}catch(e){}if(!b||!/^g[1-4]-[a-z0-9-]+$/.test(b))b="g4-sci";document.write('<script charset="utf-8" src="../data/'+b+'.js"><\/script>')})();</script>
+<script>
+/* ═════ نطاق الأسئلة: ?scope=u<رقم الوحدة> للوحدة كاملة، أو ?scope=l:<معرّف الدرس> لدرس واحد ═════ */
+const QS_ = new URLSearchParams(location.search);
+if(BOOKDATA.en) document.documentElement.classList.add('en');
+
+const EMBED = QS_.has('embed');
+if(EMBED) document.documentElement.classList.add('embed');
+const BOOK = {id:BOOKDATA.id, subject:BOOKDATA.subject, grade:BOOKDATA.grade};
+const UNITS = (function(){
+  const d = n => String(n).replace(/\d/g, c => '٠١٢٣٤٥٦٧٨٩'[c]);
+  const s = QS_.get('scope') || ('u' + (QS_.get('unit') || 1));
+  const all = x => x.lessons.reduce((a,l) => a.concat(l.qs), []);
+  if(s.indexOf('l:') === 0){
+    const id = s.slice(2);
+    for(const x of BOOKDATA.units){ const l = x.lessons.find(l => l.id === id);
+      if(l) return [{id:s, g:BOOK.grade, un:x.un, u:l.t, lab:'درس «'+l.t+'»', qs:l.qs.length ? l.qs : all(x)}]; }
+  }
+  const x = BOOKDATA.units.find(x => 'u'+x.un === s) || BOOKDATA.units[0];
+  return [{id:'u'+x.un, g:BOOK.grade, un:x.un, u:x.u, lab:'الوحدة '+d(x.un)+' كاملة: '+x.u, qs:all(x)}];
+})();
+/* ═════ لعبة الفلج: حواجز تحجز الماء في الفلج، وكل إجابة صحيحة يرفع فيها الصاروخ حاجزاً فيجري الماء ═════ */
+const N = 6;
+const PATH = 'M236,664 L236,748 C236,808 520,716 720,792 S780,952 600,1012 S330,1092 380,1192 S620,1302 800,1322 S950,1342 1002,1342';
+const SVGNS = 'http://www.w3.org/2000/svg';
+const $ = id => document.getElementById(id);
+const ar = n => String(n).replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
+const SC = {amb:'water'};
+let S = null, unit = null, timers = [];
+const later = (fn,ms) => { const id=setTimeout(fn,ms); timers.push(id); };
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function countQ(n){ if(n===1) return 'سؤال واحد'; if(n===2) return 'سؤالين'; return ar(n)+(n<=10?' أسئلة':' سؤالاً'); }
+/* ═════ الصوت: كلّه مولَّد بالكود (WebAudio) بلا ملفات، ويخضع لزرّ الكتم ═════ */
+let ac=null, muted=false, eng=null, amb=null;
+function actx(){
+  try{ ac = ac || new (window.AudioContext||window.webkitAudioContext)(); if(ac.state==='suspended') ac.resume(); return ac; }
+  catch(e){ return null; }
+}
+function noiseSrc(c,dur){
+  const n=Math.max(1,(c.sampleRate*dur)|0), b=c.createBuffer(1,n,c.sampleRate), d=b.getChannelData(0);
+  for(let i=0;i<n;i++) d[i]=Math.random()*2-1;
+  const s=c.createBufferSource(); s.buffer=b; return s;
+}
+function tone(f,at,dur,type,gain,f2){
+  const o=ac.createOscillator(), g=ac.createGain();
+  o.type=type||'sine'; o.frequency.setValueAtTime(f,at); if(f2) o.frequency.exponentialRampToValueAtTime(f2,at+dur);
+  g.gain.setValueAtTime(0.0001,at); g.gain.exponentialRampToValueAtTime(gain||.15,at+.015); g.gain.exponentialRampToValueAtTime(0.0001,at+dur);
+  o.connect(g).connect(ac.destination); o.start(at); o.stop(at+dur+.05);
+}
+function sfx(name){
+  if(muted) return;
+  try{
+    if(!actx()) return;
+    const t=ac.currentTime+.01;
+    if(name==='ok'){ tone(523,t,.14,'triangle',.16); tone(784,t+.11,.24,'triangle',.16); }
+    else if(name==='thud'){ tone(120,t,.28,'sine',.5,42); tone(70,t,.12,'square',.08,40); }
+    else if(name==='no'){ tone(330,t,.32,'triangle',.12,210); }
+    else if(name==='win'){ [523,659,784,1047].forEach((f,i)=>tone(f,t+i*.15,.3,'triangle',.16)); tone(1047,t+.62,.9,'triangle',.12); tone(784,t+.62,.9,'sine',.1); }
+  }catch(e){}
+}
+/* هدير المحرّك: وصفة صاروخ المنصّة نفسها (ضجيج عريض ← lowpass 360 ← bandpass 180، باتّساع خشن وطقطقة عشوائية) */
+function engineStart(level){
+  if(muted) return;
+  try{
+    const c=actx(); if(!c) return; engineStop(.05);
+    const g=c.createGain(); g.gain.value=0; g.connect(c.destination);
+    const amp=c.createGain(); amp.gain.value=1; amp.connect(g);
+    const n=noiseSrc(c,3); n.loop=true;
+    const lp=c.createBiquadFilter(); lp.type='lowpass'; lp.frequency.value=360; lp.Q.value=.6;
+    const bp=c.createBiquadFilter(); bp.type='bandpass'; bp.frequency.value=180; bp.Q.value=.9;
+    const bpg=c.createGain(); bpg.gain.value=2.2;
+    n.connect(lp); lp.connect(bp); bp.connect(bpg); bpg.connect(amp); n.start();
+    const timer=setInterval(()=>{
+      const t=c.currentTime;
+      try{ amp.gain.setTargetAtTime(.55+Math.random()*.75,t,.05); }catch(e){}
+      if(Math.random()<.16){ try{
+        const cn=noiseSrc(c,.05), chp=c.createBiquadFilter(), cg=c.createGain();
+        chp.type='bandpass'; chp.frequency.value=900+Math.random()*700; chp.Q.value=1.2;
+        cg.gain.setValueAtTime(.0001,t); cg.gain.linearRampToValueAtTime(.02+Math.random()*.03,t+.008); cg.gain.exponentialRampToValueAtTime(.0008,t+.05);
+        cn.connect(chp); chp.connect(cg); cg.connect(c.destination); cn.start(t); cn.stop(t+.06);
+      }catch(e){} }
+    },90);
+    g.gain.setTargetAtTime(level,c.currentTime,.22);
+    eng={g,n,timer};
+  }catch(e){}
+}
+function engineLevel(level){ try{ if(eng) eng.g.gain.setTargetAtTime(level,ac.currentTime,.12); }catch(e){} }
+function engineStop(fade){
+  if(!eng) return; const e=eng; eng=null; fade=fade||.5;
+  try{ clearInterval(e.timer); const t=ac.currentTime; e.g.gain.cancelScheduledValues(t); e.g.gain.setTargetAtTime(0,t,fade/3.5);
+    setTimeout(()=>{ try{ e.n.stop(); e.g.disconnect(); }catch(_){} }, fade*1000+250); }catch(_){}
+}
+function ignite(){
+  if(muted) return;
+  try{ const c=actx(); if(!c) return; const t=c.currentTime;
+    const n=noiseSrc(c,1.4), lp=c.createBiquadFilter(), g=c.createGain();
+    lp.type='lowpass'; lp.frequency.setValueAtTime(110,t); lp.frequency.exponentialRampToValueAtTime(420,t+.3); lp.frequency.exponentialRampToValueAtTime(85,t+1.3);
+    g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(.26,t+.12); g.gain.exponentialRampToValueAtTime(.001,t+1.35);
+    n.connect(lp); lp.connect(g); g.connect(c.destination); n.start(t); n.stop(t+1.4);
+    tone(68,t,1.25,'sine',.16,40);
+  }catch(e){}
+}
+/* أجواء الشاطئ: موج خفيف متكرّر ونورس بين حين وآخر (النورس يسكت ليلاً) */
+function gullCry(c,out,at,dur,f0,vol){
+  const o=c.createOscillator(), o2=c.createOscillator(), bp=c.createBiquadFilter(), g=c.createGain();
+  o.type='sawtooth'; o2.type='square';
+  [o,o2].forEach((x,i)=>{ const k=i?1.006:1;
+    x.frequency.setValueAtTime(f0*.74*k,at); x.frequency.exponentialRampToValueAtTime(f0*1.1*k,at+dur*.22); x.frequency.exponentialRampToValueAtTime(f0*.6*k,at+dur); });
+  bp.type='bandpass'; bp.Q.value=3.2; bp.frequency.setValueAtTime(f0*1.9,at); bp.frequency.exponentialRampToValueAtTime(f0*1.25,at+dur);
+  g.gain.setValueAtTime(.0001,at); g.gain.exponentialRampToValueAtTime(vol,at+dur*.18); g.gain.setValueAtTime(vol,at+dur*.5); g.gain.exponentialRampToValueAtTime(.0001,at+dur);
+  o.connect(bp); o2.connect(bp); bp.connect(g); g.connect(out);
+  o.start(at); o2.start(at); o.stop(at+dur+.05); o2.stop(at+dur+.05);
+}
+function birdCall(){
+  if(!amb || muted || (S && S.night) || document.hidden) return;
+  try{ const c=ac; let at=c.currentTime+.05; const f=2600+Math.random()*900, k=3+Math.floor(Math.random()*4);
+    for(let i=0;i<k;i++){ const o=c.createOscillator(), g=c.createGain(), d=.07+Math.random()*.05;
+      o.type='sine'; o.frequency.setValueAtTime(f*(.9+Math.random()*.2),at); o.frequency.exponentialRampToValueAtTime(f*(1.25+Math.random()*.2),at+d*.5); o.frequency.exponentialRampToValueAtTime(f*.95,at+d);
+      g.gain.setValueAtTime(.0001,at); g.gain.exponentialRampToValueAtTime(.035,at+d*.3); g.gain.exponentialRampToValueAtTime(.0001,at+d);
+      o.connect(g); g.connect(amb.gull); o.start(at); o.stop(at+d+.03); at+=d+.05+Math.random()*.06; }
+  }catch(e){}
+}
+function gullCall(){
+  if(!amb || muted || (S && S.night) || document.hidden) return;
+  try{ const c=ac, t=c.currentTime+.05, f0=1150+Math.random()*350, vol=.04+Math.random()*.02;
+    let out=amb.gull;
+    if(c.createStereoPanner){ const p=c.createStereoPanner(); p.pan.value=Math.random()*1.6-.8; p.connect(amb.gull); out=p; }
+    let at=t; gullCry(c,out,at,.5+Math.random()*.15,f0,vol); at+=.62;
+    const k=2+Math.floor(Math.random()*3);
+    for(let i=0;i<k;i++){ const d=.2+Math.random()*.08; gullCry(c,out,at,d,f0*(1.04-i*.03),vol*.85); at+=d+.09; }
+  }catch(e){}
+}
+function ambStart(){
+  if(amb || muted) return;
+  try{
+    const c=actx(); if(!c) return;
+    const out=c.createGain(); out.gain.value=0; out.connect(c.destination);
+    const gull=c.createGain(); gull.gain.value=1; gull.connect(c.destination);
+    const n=noiseSrc(c,4); n.loop=true;
+    const oasis = SC.amb==='oasis';
+    const hp=c.createBiquadFilter(); hp.type='highpass'; hp.frequency.value=oasis?220:140;
+    const lp=c.createBiquadFilter(); lp.type='lowpass'; lp.frequency.value=480; lp.Q.value=.3;
+    const sw=c.createGain(); sw.gain.value=.22;
+    n.connect(hp); hp.connect(lp); lp.connect(sw); sw.connect(out); n.start();
+    out.gain.setTargetAtTime(oasis?.05:.12,c.currentTime,1);
+    amb={out,gull,n,wt:null,gt:null};
+    const wave=()=>{ if(!amb) return;
+      const t=c.currentTime, rise=1.6+Math.random()*1.2, peak=.75+Math.random()*.25;
+      try{ sw.gain.cancelScheduledValues(t); sw.gain.setTargetAtTime(peak,t,rise/3); sw.gain.setTargetAtTime(.2,t+rise,1.3);
+        lp.frequency.cancelScheduledValues(t); lp.frequency.setTargetAtTime(1400+Math.random()*500,t,rise/3); lp.frequency.setTargetAtTime(430,t+rise,1.1); }catch(e){}
+      amb.wt=setTimeout(wave,(rise+3.2+Math.random()*2.5)*1000); };
+    const gulls=(first)=>{ if(!amb) return; if(!first){ if(oasis) birdCall(); else gullCall(); } amb.gt=setTimeout(gulls,(first?3000:9000)+Math.random()*(first?2500:9000)); };
+    wave(); gulls(true);
+  }catch(e){}
+}
+function ambStop(){
+  if(!amb) return; const a=amb; amb=null;
+  try{ clearTimeout(a.wt); clearTimeout(a.gt); const t=ac.currentTime; a.out.gain.cancelScheduledValues(t); a.out.gain.setTargetAtTime(0,t,.15); a.gull.gain.setTargetAtTime(0,t,.05);
+    setTimeout(()=>{ try{ a.n.stop(); a.out.disconnect(); a.gull.disconnect(); }catch(_){} },900); }catch(_){}
+}
+document.addEventListener('pointerdown',()=>ambStart(),{passive:true});
+document.addEventListener('visibilitychange',()=>{ try{ if(!ac) return; if(document.hidden) ac.suspend(); else if(!muted) ac.resume(); }catch(e){} });
+
+/* ═════ الأصوات: خرير الماء فقط (بلا نسيم ولا طيور) ═════ */
+function gurgle(dur){
+  if(muted) return;
+  try{ const c=actx(); if(!c) return; const t=c.currentTime+.01; dur=dur||1.2;
+    const n=noiseSrc(c,dur+.2), bp=c.createBiquadFilter(), g=c.createGain();
+    bp.type='bandpass'; bp.Q.value=.9; bp.frequency.value=900;
+    g.gain.setValueAtTime(.0001,t); g.gain.exponentialRampToValueAtTime(.05,t+.25); g.gain.setValueAtTime(.05,t+dur-.3); g.gain.exponentialRampToValueAtTime(.0001,t+dur);
+    n.connect(bp); bp.connect(g); g.connect(c.destination); n.start(t); n.stop(t+dur+.1);
+    for(let k=0;k<Math.round(dur*9);k++){ const at=t+Math.random()*dur, f=280+Math.random()*420;
+      const o=c.createOscillator(), og=c.createGain(); o.type='sine';
+      o.frequency.setValueAtTime(f,at); o.frequency.exponentialRampToValueAtTime(f*1.9,at+.06);
+      og.gain.setValueAtTime(.0001,at); og.gain.exponentialRampToValueAtTime(.028,at+.01); og.gain.exponentialRampToValueAtTime(.0001,at+.07);
+      o.connect(og); og.connect(c.destination); o.start(at); o.stop(at+.08); }
+  }catch(e){}
+}
+
+/* الخلفية الصوتية: خرير هادئ مستمرّ للماء الجاري في الفلج — ضجيج ناعم يتنفّس ببطء + فقاعات صغيرة متفرّقة */
+function ambStart(){
+  if(amb || muted) return;
+  try{
+    const c=actx(); if(!c) return;
+    const out=c.createGain(); out.gain.value=0; out.connect(c.destination);
+    const n=noiseSrc(c,4); n.loop=true;
+    const bp=c.createBiquadFilter(); bp.type='bandpass'; bp.frequency.value=1300; bp.Q.value=.7;
+    const hs=c.createGain(); hs.gain.value=.5; n.connect(bp); bp.connect(hs); hs.connect(out);
+    const n2=noiseSrc(c,4); n2.loop=true;
+    const lp=c.createBiquadFilter(); lp.type='lowpass'; lp.frequency.value=320;
+    const lw=c.createGain(); lw.gain.value=.7; n2.connect(lp); lp.connect(lw); lw.connect(out);
+    n.start(); n2.start();
+    out.gain.setTargetAtTime(.03,c.currentTime,1);
+    amb={out,n,n2,wt:null,bt:null};
+    const breathe=()=>{ if(!amb) return; const t=c.currentTime, d=1.5+Math.random()*2;
+      try{ bp.frequency.setTargetAtTime(1000+Math.random()*700,t,d/3); hs.gain.setTargetAtTime(.35+Math.random()*.35,t,d/3); }catch(e){}
+      amb.wt=setTimeout(breathe,d*1000); };
+    const bubble=()=>{ if(!amb) return;
+      if(!muted && !document.hidden){ try{ const at=c.currentTime+.01, f=420+Math.random()*700, o=c.createOscillator(), og=c.createGain();
+        o.type='sine'; o.frequency.setValueAtTime(f,at); o.frequency.exponentialRampToValueAtTime(f*1.7,at+.05);
+        og.gain.setValueAtTime(.0001,at); og.gain.exponentialRampToValueAtTime(.007+Math.random()*.006,at+.008); og.gain.exponentialRampToValueAtTime(.0001,at+.06);
+        o.connect(og); og.connect(c.destination); o.start(at); o.stop(at+.07); }catch(e){} }
+      amb.bt=setTimeout(bubble,140+Math.random()*520); };
+    breathe(); bubble();
+  }catch(e){}
+}
+function ambStop(){
+  if(!amb) return; const a=amb; amb=null;
+  try{ clearTimeout(a.wt); clearTimeout(a.bt); const t=ac.currentTime; a.out.gain.cancelScheduledValues(t); a.out.gain.setTargetAtTime(0,t,.15);
+    setTimeout(()=>{ try{ a.n.stop(); a.n2.stop(); a.out.disconnect(); }catch(_){} },900); }catch(_){}
+}
+
+/* ═════ الهندسة ═════ */
+const ROCKET = `<path class="flame" d="M-8,28 Q0,60 8,28Z" fill="#FFB020"/><path class="flame" d="M-4,28 Q0,46 4,28Z" fill="#FFE08A"/><image href="../art/rocket.png" x="-22.4" y="-40" width="44.7" height="72"/>`;
+let PL = null, L = 0;
+function el(tag,attrs,parent){ const e=document.createElementNS(SVGNS,tag); for(const k in attrs) e.setAttribute(k,attrs[k]); if(parent) parent.appendChild(e); return e; }
+function pt(s){ const p=PL.getPointAtLength(Math.max(0,Math.min(L,s))); return [p.x,p.y]; }
+function segWin(k){ const a=L*k/N, b=L*(k+1)/N; return {a,b,dash:`0 ${a.toFixed(1)} ${(b-a).toFixed(1)} ${(L+20).toFixed(0)}`}; }
+function pieceSVG(k){
+  const w=segWin(k).dash;
+  // جدران الفلج كالصورة المرجعية: جصّ (صاروج) أبيض كريميّ ناعم بحافتين مستديرتين، وقاع رمليّ فاتح
+  return `<path class="wSh" d="${PATH}" stroke-dasharray="${w}" transform="translate(0 7)"/><path class="wall" d="${PATH}" stroke-dasharray="${w}"/><path class="wallTop" d="${PATH}" stroke-dasharray="${w}" transform="translate(0 -4)"/><path class="wallHi" d="${PATH}" stroke-dasharray="${w}" transform="translate(0 -7)"/><path class="grooveSh" d="${PATH}" stroke-dasharray="${w}" transform="translate(0 -3)"/><path class="groove" d="${PATH}" stroke-dasharray="${w}" transform="translate(0 -2)"/>`;
+}
+function jointSVG(k){ const [x,y]=pt(L*k/N); return `<ellipse class="joint" cx="${x.toFixed(1)}" cy="${(y-2).toFixed(1)}" rx="12" ry="27" transform="rotate(${angAt(L*k/N).toFixed(1)} ${x.toFixed(1)} ${(y-2).toFixed(1)})" fill="#A9814F" stroke="#7E5C36" stroke-width="2"/>`; }
+function angAt(s){ const a=pt(s-2), b=pt(s+2); return Math.atan2(b[1]-a[1],b[0]-a[0])*180/Math.PI; }
+
+/* ═════ النخيل: صورة واحدة من جيميناي (../art/palm.webp) تُكرَّر بأحجام مختلفة ═════ */
+const PALM_W=699, PALM_H=1286;
+/* نهاية الفلج تتوزّع على أحواض دائرية، كل حوض يحيط بنخلة (مرتّبة من الأبعد إلى الأقرب) */
+const HUB=[1002,1342];
+const PALMS=[[1078,1286,.23],[1166,1328,.25],[1078,1420,.28],[926,1476,.29],[1160,1500,.3]];
+/* ═════ الحواجز: بعدد أسئلة الجولة، موزّعة على القناة ═════ */
+function gateS(k){ return L*(k+1)/(N+1); }
+function stopS(k){ return k>=N ? L : gateS(k)-22; }
+function gateSVG(){        // لوح صغير يسدّ الفلج بين جداريه فقط
+  return `<ellipse cx="0" cy="8" rx="28" ry="6" fill="#6B4E26" opacity=".25"/>
+    <rect x="-29" y="-24" width="7" height="32" rx="3" fill="#B98A5E" stroke="#8A5F3A" stroke-width="1.5"/>
+    <rect x="22" y="-24" width="7" height="32" rx="3" fill="#B98A5E" stroke="#8A5F3A" stroke-width="1.5"/>
+    <g class="board">
+      <rect x="-24" y="-28" width="48" height="34" rx="3" fill="#8B5A2B" stroke="#4A2C12" stroke-width="2.4"/>
+      <path d="M-24,-17 H24 M-24,-6 H24" stroke="#6B4220" stroke-width="2"/>
+      <rect x="-24" y="-24" width="48" height="5" fill="#626A76"/>
+      ${[-17,-6,6,17].map(x=>`<circle cx="${x}" cy="-21.5" r="1.5" fill="#2F343C"/>`).join('')}
+      <path d="M-5,-28 L-5,-33 L5,-33 L5,-28" fill="none" stroke="#3A3F48" stroke-width="2.4"/>
+      <circle cx="0" cy="-39" r="6" fill="none" stroke="#3A3F48" stroke-width="3.2"/><circle cx="0" cy="-39" r="6" fill="none" stroke="#9AA2AE" stroke-width="1.3"/>
+    </g>`;
+}
+function buildScene(){
+  PL=el('path',{d:PATH}); PL.setAttribute('fill','none'); $('scene').appendChild(PL); L=PL.getTotalLength(); PL.remove(); $('scene').appendChild(PL); PL.setAttribute('visibility','hidden');
+  // زخارف: صخور وأعشاب
+  let d='';
+  [[420,780,16],[640,700,11],[880,900,20],[470,950,15],[880,1100,18],[260,1010,19],[560,1420,22],[1100,1180,15],[300,1350,20],[760,1180,14]].forEach(([x,y,r])=>{
+    d+=`<ellipse cx="${x}" cy="${y+r*.55}" rx="${r*1.3}" ry="${r*.35}" fill="#6B4E26" opacity=".18"/><path d="M${x-r},${y+r*.5} Q${x-r*.9},${y-r*.6} ${x},${y-r*.7} Q${x+r*.95},${y-r*.5} ${x+r},${y+r*.5} Z" fill="#B99A72" stroke="#8C6E4C" stroke-width="2"/>`; });
+  [[430,830],[610,800],[860,720],[950,1000],[350,760],[1040,860],[250,1240],[700,1460],[500,1250],[980,1470]].forEach(([x,y])=>{
+    d+=`<path d="M${x},${y} q-6,-16 -12,-20 M${x},${y} q0,-20 2,-24 M${x},${y} q6,-14 13,-17" fill="none" stroke="#7FA34A" stroke-width="3" stroke-linecap="round"/>`; });
+  $('deco').innerHTML=d;
+  // المنبع: فتحة حجرية عند سفح الجبل وبركة صغيرة
+  $('source').innerHTML=`<ellipse cx="236" cy="724" rx="66" ry="14" fill="#6B4E26" opacity=".2"/>
+    <path d="M172,724 L172,650 Q172,600 236,600 Q300,600 300,650 L300,724 Z" fill="#B48C5C" stroke="#7E5C36" stroke-width="3"/>
+    <path d="M200,724 L200,662 Q200,630 236,630 Q272,630 272,662 L272,724 Z" fill="#3B2A1C"/>
+    ${[[184,640],[206,614],[236,606],[266,614],[288,640]].map(([x,y])=>`<ellipse cx="${x}" cy="${y}" rx="13" ry="9" fill="#C9A26E" stroke="#7E5C36" stroke-width="2"/>`).join('')}`;
+  // القناة كاملة من البداية
+  /* قناة واحدة متّصلة بلا فواصل، تخرج من داخل النفق؛ ظلّ النفق يغطّي أولها */
+  const defs0=$('scene').querySelector('defs');
+  defs0.insertAdjacentHTML('beforeend','<linearGradient id="tunShade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2A1C10" stop-opacity="1"/><stop offset=".45" stop-color="#2A1C10" stop-opacity=".8"/><stop offset="1" stop-color="#2A1C10" stop-opacity=".05"/></linearGradient>');
+  $('built').innerHTML=pieceSVG(0).replace(/ stroke-dasharray="[^"]*"/g,'');
+  $('tunnel').innerHTML='<path d="M200,724 L200,662 Q200,630 236,630 Q272,630 272,662 L272,724 Z" fill="url(#tunShade)"/><path d="M172,724 L172,650 Q172,600 236,600 Q300,600 300,650 L300,724 L272,724 L272,662 Q272,630 236,630 Q200,630 200,662 L200,724 Z" fill="#B48C5C" stroke="#7E5C36" stroke-width="3"/>'+[[184,640],[206,612],[236,604],[266,612],[288,640]].map(([x,y])=>`<ellipse cx="${x}" cy="${y}" rx="13" ry="9" fill="#C9A26E" stroke="#7E5C36" stroke-width="2"/>`).join('');
+  // قناع الماء: الخطّ المتلألئ يظهر فقط حيث وصل الماء
+  const defs=$('scene').querySelector('defs');
+  defs.insertAdjacentHTML('beforeend',`<mask id="wMask" maskUnits="userSpaceOnUse" x="0" y="0" width="1400" height="1800"><path id="wMaskP" d="${PATH}" fill="none" stroke="#fff" stroke-width="22" stroke-linecap="round"/></mask>`);
+  $('water').setAttribute('d',PATH); $('waterHi').setAttribute('d',PATH); $('waterHi').setAttribute('mask','url(#wMask)');
+  $('water').setAttribute('transform','translate(0 -3)'); $('waterHi').setAttribute('transform','translate(0 -3)');
+  // المزرعة: مقسِم صغير في آخر الفلج، تخرج منه سواقٍ إلى أحواض دائرية حول النخيل
+  const branch=(i)=>{ const [cx,cy]=PALMS[i], [hx,hy]=HUB, dx=hx-cx, dy=hy-cy, d=Math.hypot(dx/74,dy/27), tx=cx+dx/d, ty=cy+dy/d;
+    const mx=(hx+tx)/2+(ty-hy)*.18, my=(hy+ty)/2-(tx-hx)*.12; return `M${hx},${hy} Q${mx.toFixed(1)},${my.toFixed(1)} ${tx.toFixed(1)},${ty.toFixed(1)}`; };
+  let f='';
+  PALMS.forEach((p,i)=>{ const d=branch(i);
+    f+=`<path class="bSh" d="${d}" transform="translate(0 4)"/><path class="bWall" d="${d}"/><path class="bTop" d="${d}" transform="translate(0 -2)"/><path class="bGroove" d="${d}" transform="translate(0 -1)"/>`; });
+  f+=`<ellipse cx="${HUB[0]}" cy="${HUB[1]+4}" rx="40" ry="20" fill="#6B4E26" opacity=".2"/><ellipse cx="${HUB[0]}" cy="${HUB[1]}" rx="38" ry="19" fill="#C99C6E" stroke="#9A6E44" stroke-width="3"/><ellipse cx="${HUB[0]}" cy="${HUB[1]}" rx="26" ry="12" fill="#A87A4E"/><ellipse id="hubW" cx="${HUB[0]}" cy="${HUB[1]}" rx="26" ry="12" fill="url(#poolG)" opacity="0"/>`;
+  PALMS.forEach((p,i)=>{ f+=`<path id="bw${i}" class="bWater" d="${branch(i)}" transform="translate(0 -1)"/>`; });
+  PALMS.forEach(([x,y],i)=>{
+    f+=`<ellipse cx="${x}" cy="${y+5}" rx="80" ry="30" fill="#6B4E26" opacity=".2"/>
+      <ellipse cx="${x}" cy="${y}" rx="76" ry="28" fill="#C99C6E" stroke="#9A6E44" stroke-width="3"/>
+      <ellipse cx="${x}" cy="${y+1}" rx="62" ry="20" fill="#9C7A55"/>
+      <ellipse id="cw${i}" class="cWater" cx="${x}" cy="${y+1}" rx="62" ry="20" fill="url(#poolG)"/>`; });
+  $('farm').innerHTML=f;
+  PALMS.forEach(([x,y,s],i)=>{ const g=el('g',{class:'palm',transform:`translate(${x} ${y})`},$('palmsF'));
+    g.innerHTML=`<g class="pin"><image href="../art/palm.webp" x="${(-PALM_W*s*.5).toFixed(1)}" y="${(-PALM_H*s).toFixed(1)}" width="${(PALM_W*s).toFixed(1)}" height="${(PALM_H*s).toFixed(1)}"/></g>`; });
+  PALMS.forEach((p,i)=>{ const b=$('bw'+i), n=b.getTotalLength(); b.dataset.len=n; });
+}
+function setFarmWater(on){
+  PALMS.forEach((p,i)=>{ const b=$('bw'+i), n=+b.dataset.len; b.style.transition='none'; b.style.strokeDasharray=`${n} ${n+10}`; b.style.strokeDashoffset=on?0:n;
+    $('cw'+i).classList.toggle('full',!!on); });
+  $('hubW').setAttribute('opacity',on?1:0);
+}
+function setPalms(grown){ document.querySelectorAll('.palm').forEach(g=>g.classList.toggle('grown',grown)); }
+function renderGates(){
+  const G=$('gates'); G.innerHTML='';
+  for(let k=0;k<N;k++){ const [x,y]=pt(gateS(k)); const g=el('g',{class:'gate'+(k===S.removed?' nextup':''),transform:`translate(${x.toFixed(1)} ${(y-4).toFixed(1)})`},G);
+    let h=gateSVG(); if(k<S.removed) h=h.replace(/<g class="board">[\s\S]*<\/g>/,'');   // الحاجز المرفوع: تبقى دعامتاه الحجريتان
+    g.innerHTML=(k===S.removed?'<ellipse class="gglow" cx="0" cy="-12" rx="46" ry="38" fill="#FFC93C"/>':'')+h; g.dataset.k=k; }
+}
+/* ═════ الماء ═════ */
+let wl=0, wTo=0, wRaf=0;
+function setWater(v){
+  wl=v; const da=`${v.toFixed(1)} ${(L+40).toFixed(0)}`;
+  $('water').setAttribute('stroke-dasharray',da); $('wMaskP').setAttribute('stroke-dasharray',da);
+  $('water').style.opacity = v>1?1:0;
+}
+function flowTo(v,dur,done){
+  cancelAnimationFrame(wRaf); const v0=wl, t0=performance.now();
+  if(v>v0+1) gurgle(dur/1000);
+  const step=t=>{ const k=Math.min(1,(t-t0)/dur), e=1-Math.pow(1-k,2); setWater(v0+(v-v0)*e);
+    if(k<1) wRaf=requestAnimationFrame(step); else if(done) done(); };
+  wRaf=requestAnimationFrame(step);
+}
+
+/* ═════ الحالة ═════ */
+function fresh(unitId){
+  unit = UNITS.find(u=>u.id===unitId) || UNITS[0];
+  return {unitId:unit.id, queue:shuffle(unit.qs.map((_,i)=>i)), cur:null, order:null, removed:0, turns:0, errors:0, done:false, answered:false, night:false};
+}
+function draw(){
+  if(!S.queue.length){ const all=shuffle(unit.qs.map((_,i)=>i));
+    S.queue = all.length>1 ? all.filter(i=>i!==S.cur).concat(all.filter(i=>i===S.cur)) : all; }
+  S.cur=S.queue.shift(); const q=unit.qs[S.cur];
+  S.order = q.t==='m' ? shuffle(q.o.map((_,i)=>i)) : null; S.answered=false;
+}
+function renderQuestion(){
+  const q=unit.qs[S.cur], opts=$('opts');
+  $('done').hidden=true; $('qwrap').hidden=false; $('foot').hidden=false;
+  $('pipText').textContent='الحاجز '+ar(S.removed+1)+' من '+ar(N);
+  $('kindBadge').textContent = q.t==='m' ? 'اختيار من متعدد' : 'صواب أو خطأ';
+  $('kind').textContent=q.l?'من درس «'+q.l+'»':'';
+  $('qtext').textContent=q.q;
+  opts.className='opts '+(q.t==='m'?'mcq':'tf'); opts.innerHTML='';
+  const items = q.t==='m' ? S.order.map(i=>({label:q.o[i], good:i===q.a})) : [{label:(BOOKDATA.en?'True':'صواب'), good:q.a===true},{label:(BOOKDATA.en?'False':'خطأ'), good:q.a===false}];
+  items.forEach(it=>{ const b=document.createElement('button'); b.type='button'; b.className='stone'; b.textContent=it.label;
+    b.addEventListener('click',()=>answer(b,it.good)); opts.appendChild(b); });
+  $('fb').className='fb'; $('fb').textContent=''; $('next').hidden=true;
+}
+function answer(btn,good){
+  if(S.answered||S.done) return;
+  S.answered=true; S.turns++; $('opts').classList.add('locked');
+  const fb=$('fb');
+  if(good){
+    btn.classList.add('ok'); sfx('ok');
+    fb.className='fb good'; fb.textContent='أحسنتم! الصاروخ يرفع الحاجز '+ar(S.removed+1)+' فيجري الماء 💧';
+    lift(S.removed);
+  } else {
+    S.errors++; S.queue.push(S.cur); btn.classList.add('no'); sfx('no');
+    fb.className='fb bad'; fb.innerHTML='ليست هذه الإجابة، فبقي الماء محجوزاً.<small>سيعود هذا السؤال مرة أخرى.</small>';
+    splash(); showNext();
+  }
+}
+function showNext(){ const n=$('next'); n.hidden=false; n.focus({preventScroll:true}); }
+
+/* ═════ الصاروخ يرفع الحاجز ═════ */
+let cJob=0;
+function tween(dur,fn,done,job){ const t0=performance.now(); const st=t=>{ if(job!==cJob) return; const q=Math.min(1,(t-t0)/dur); fn(q); if(q<1) requestAnimationFrame(st); else if(done) done(); }; requestAnimationFrame(st); }
+function lift(k){
+  const job=++cJob, gate=document.querySelector('#gates .gate[data-k="'+k+'"]'), [x,y0]=pt(gateS(k)), gy=y0-4;
+  const glow=gate.querySelector('.gglow'); if(glow) glow.remove(); gate.classList.remove('nextup');
+  const ry=Math.max(505,gy-58-170), c=$('crane');
+  c.innerHTML=`<g id="cm"><path class="ropes" d="M${x},${ry+64} L${x},${gy-44}" stroke="#3B2A1A" stroke-width="3.4" stroke-linecap="round"/><path d="M${x-5},${gy-41} q5,8 10,0" fill="none" stroke="#3A3F48" stroke-width="3.4"/><g transform="translate(${x} ${ry}) scale(2.1)">${ROCKET}</g></g>`;
+  const cm=$('cm'); ignite(); engineStart(.18);
+  tween(1400,q=>{ const e=1-Math.pow(1-q,3); cm.setAttribute('transform',`translate(0 ${(-1100*(1-e)).toFixed(1)})`); },()=>{
+    later(()=>{
+      // التعليق: الحاجز يصير جزءاً من حمولة الصاروخ ثم يرتفع
+      const lifted=el('g',{transform:gate.getAttribute('transform')},cm); lifted.appendChild(gate.querySelector('.board'));
+      gate.querySelector('ellipse').remove();
+      engineLevel(.34); S.removed++; dustAt(x,gy);
+      tween(1600,q=>{ const e=q*q; cm.setAttribute('transform',`translate(0 ${(-1300*e).toFixed(1)})`); },()=>{ if(job===cJob){ $('crane').innerHTML=''; engineStop(.8); } },job);
+      later(()=>{ releaseSplash(x,gy); flowTo(stopS(S.removed), 1500, ()=>{ if(S.removed>=N) finale(); }); },350);
+      later(()=>{ renderGates(); },1700);
+      if(S.removed<N) later(showNext,2100); else S.done=true;
+    },250);
+  },job);
+}
+function dustAt(x,y){ [-36,0,36].forEach((dx,i)=>{ const c=el('circle',{cx:x+dx,cy:y+12,r:14+(i%2)*6,fill:'#F6E6C8',class:'puff'},$('fx')); setTimeout(()=>c.remove(),850); }); }
+function releaseSplash(x,y){
+  for(let i=0;i<10;i++){ const a=-Math.PI/2+(Math.random()-.5)*2.2, d=30+Math.random()*40;
+    const c=el('circle',{cx:x,cy:y-6,r:4+Math.random()*3,fill:'#8FD6FF',class:'drop',style:`--dx:${(Math.cos(a)*d).toFixed(0)}px;--dy:${(Math.sin(a)*d).toFixed(0)}px`},$('fx')); setTimeout(()=>c.remove(),950); }
+}
+function splash(){ const [x,y]=pt(gateS(S.removed)); releaseSplash(x-14,y); gurgle(.5);
+  const g=document.querySelector('#gates .gate.nextup .board'); if(g){ g.classList.remove('shudder'); void g.getBBox(); g.classList.add('shudder'); } }
+function finale(){
+  // يمتلئ المقسِم، ثم تجري السواقي إلى الأحواض فتمتلئ الدوائر واحدة تلو الأخرى، ثم تخضرّ النخيل
+  $('hubW').setAttribute('opacity',1); gurgle(2.4);
+  PALMS.forEach((p,i)=>{ const b=$('bw'+i), n=+b.dataset.len;
+    later(()=>{ b.style.transition='stroke-dashoffset .9s ease-out'; b.style.strokeDashoffset=0; },200+i*260);
+    later(()=>{ $('cw'+i).classList.add('full'); },900+i*260); });
+  later(()=>{ setPalms(true); sfx('win'); sparkles(); },2300);
+  $('pipText').textContent='جرى الماء كلّه'; $('kindBadge').textContent='ارتوت النخيل';
+  later(()=>{
+    $('qwrap').hidden=true; $('foot').hidden=true; $('done').hidden=false;
+    $('doneText').textContent='رفعتم الحواجز في '+countQ(S.turns)+(S.errors===0?' بلا أي خطأ.':'، وتعلّمتم من '+(S.errors===1?'خطأ واحد':S.errors===2?'خطأين':ar(S.errors)+(S.errors<=10?' أخطاء':' خطأً'))+'.');
+    $('again').focus({preventScroll:true});
+  },1800);
+}
+function sparkles(){
+  PALMS.forEach(([x,y,s],i)=>{ const top=y-PALM_H*s*.72; const p=el('path',{d:`M${x},${top-14} l5,12 l12,5 l-12,5 l-5,12 l-5,-12 l-12,-5 l12,-5z`,fill:'#FFE08A',class:'spark',style:`animation-delay:${(.2+i*.15)}s`},$('fx')); setTimeout(()=>p.remove(),2400); });
+}
+
+function newGame(unitId){
+  timers.forEach(clearTimeout); timers=[]; cJob++; cancelAnimationFrame(wRaf); engineStop(.1);
+  $('crane').innerHTML=''; $('fx').innerHTML='';
+  S=fresh(unitId); setFarmWater(false); setPalms(false);
+  $('eyebrow').textContent=BOOK.subject+' · '+BOOK.grade+' · '+unit.lab;
+  renderGates(); setWater(0); flowTo(stopS(0),1400);
+  draw(); renderQuestion();
+}
+$('next').addEventListener('click',()=>{ if(!S.done){ draw(); renderQuestion(); } });
+$('again').addEventListener('click',()=>newGame(S.unitId));
+$('restart').addEventListener('click',()=>newGame(S.unitId));
+$('sound').addEventListener('click',e=>{
+  muted=!muted; e.currentTarget.setAttribute('aria-pressed',String(!muted));
+  if(muted){ ambStop(); engineStop(.1); } else ambStart();
+  try{ localStorage.setItem('sgame.muted',muted?'1':''); }catch(err){}
+});
+(function(){ let s=''; for(let i=0;i<70;i++){ const d=1+Math.random()*2; s+=`<i style="left:${(Math.random()*100).toFixed(2)}%;top:${(Math.random()*100).toFixed(2)}%;width:${d.toFixed(1)}px;height:${d.toFixed(1)}px;opacity:${(.35+Math.random()*.55).toFixed(2)}"></i>`; } $('bgstars').innerHTML=s; })();
+function urlUnit(){ try{ const n=+new URLSearchParams(location.search).get('unit'); const u=UNITS.find(x=>x.un===n); return u?u.id:null; }catch(e){ return null; } }
+(function(){
+  let m=''; try{ m=localStorage.getItem('sgame.muted'); }catch(e){}
+  muted=!!m; $('sound').setAttribute('aria-pressed',String(!muted));
+  buildScene(); newGame(urlUnit() || UNITS[0].id);
+})();
+</script>

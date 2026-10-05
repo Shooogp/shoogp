@@ -1,0 +1,2994 @@
+{
+ "g2e-0-1": [
+  {
+   "t": "m",
+   "q": "Hi! How old are you?",
+   "o": [
+    "I'm seven.",
+    "My name's Sami.",
+    "Sit down.",
+    "It's red."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "السؤال عن العمر: How old are you? I'm (seven)."
+  },
+  {
+   "t": "m",
+   "q": "Your teacher says 'Sit down.' What do you do?",
+   "o": [
+    "Sit on your chair.",
+    "Open your book.",
+    "Stand up.",
+    "Close your book."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "أوامر الصف: Stand up/Sit down/Open your book/Close your book"
+  },
+  {
+   "t": "m",
+   "q": "What's your name?",
+   "o": [
+    "I'm Fatma.",
+    "I'm seven.",
+    "It's a pen.",
+    "Open your book."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: What's your name? My name's…/I'm…"
+  },
+  {
+   "t": "m",
+   "q": "Which one is a greeting?",
+   "o": [
+    "Hello!",
+    "Sit down.",
+    "Close your book.",
+    "Seven."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تحية وتعارف: Hello/Hi, What's your name? My name's…"
+  },
+  {
+   "t": "m",
+   "q": "Lily says: 'I'm seven.' What is the question?",
+   "o": [
+    "How old are you?",
+    "What's your name?",
+    "Stand up.",
+    "What colour is it?"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تحية وتعارف: Hello/Hi, What's your name? My name's…, How old are you? I'm (seven)"
+  },
+  {
+   "t": "t",
+   "q": "'Stand up' means sit on your chair.",
+   "a": false,
+   "lv": "k",
+   "obj": "أوامر الصف: Stand up/Sit down/Open your book/Close your book"
+  },
+  {
+   "t": "t",
+   "q": "'Hi' is like 'Hello'.",
+   "a": true,
+   "lv": "k",
+   "obj": "تحية وتعارف: Hello/Hi, What's your name? My name's…"
+  },
+  {
+   "t": "t",
+   "q": "'My name's Sami' tells your age.",
+   "a": false,
+   "lv": "a",
+   "obj": "تحية وتعارف: Hello/Hi, What's your name? My name's…/I'm…, How old are you? I'm (seven)"
+  }
+ ],
+ "g2e-0-2": [
+  {
+   "t": "m",
+   "q": "How many? 🍎🍎🍎",
+   "o": [
+    "three",
+    "two",
+    "four",
+    "five"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "العدّ من ١ إلى ١٠"
+  },
+  {
+   "t": "m",
+   "q": "Which is a colour?",
+   "o": [
+    "purple",
+    "seven",
+    "pencil",
+    "teddy"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "أسماء الألوان العشرة: red, yellow, blue, green, black, white, pink, purple, orange, brown"
+  },
+  {
+   "t": "m",
+   "q": "Which number is 'eight'?",
+   "o": [
+    "8",
+    "3",
+    "6",
+    "9"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "العدّ من ١ إلى ١٠ (كلمة العدد ↔ الرقم)"
+  },
+  {
+   "t": "m",
+   "q": "🍌 What colour is it?",
+   "o": [
+    "It's yellow.",
+    "It's blue.",
+    "It's purple.",
+    "It's ten."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "أسماء الألوان: What colour is it? It's (green)."
+  },
+  {
+   "t": "m",
+   "q": "Which number comes before ten?",
+   "o": [
+    "nine",
+    "eight",
+    "six",
+    "two"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "العدّ من ١ إلى ١٠"
+  },
+  {
+   "t": "t",
+   "q": "Brown is a colour.",
+   "a": true,
+   "lv": "k",
+   "obj": "أسماء الألوان العشرة: red, yellow, blue, green, black, white, pink, purple, orange, brown"
+  },
+  {
+   "t": "t",
+   "q": "Seven comes after eight.",
+   "a": false,
+   "lv": "k",
+   "obj": "العدّ من ١ إلى ١٠"
+  },
+  {
+   "t": "t",
+   "q": "🍓 It's red.",
+   "a": true,
+   "lv": "a",
+   "obj": "أسماء الألوان: What colour is it? It's (green)."
+  }
+ ],
+ "g2e-1-1": [
+  {
+   "t": "m",
+   "q": "Which one is a toy?",
+   "o": [
+    "yo-yo",
+    "rain",
+    "desk",
+    "tree"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات الألعاب الداخلية"
+  },
+  {
+   "t": "m",
+   "q": "Which word has the 'ai' sound?",
+   "o": [
+    "train",
+    "teddy",
+    "car",
+    "doll"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: ai (rain, train, tail, nail, snail, chain، Sounds and Spelling Book Unit 1 Lesson 1)"
+  },
+  {
+   "t": "m",
+   "q": "🚗 What's this?",
+   "o": [
+    "It's a car.",
+    "It's a plane.",
+    "It's a doll.",
+    "It's a robot."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تركيب: What's this? It's a…"
+  },
+  {
+   "t": "m",
+   "q": "Which toy flies in the sky?",
+   "o": [
+    "plane",
+    "teddy",
+    "puzzle",
+    "doll"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "مفردات: ألعاب داخلية car, plane, puzzle, yo-yo, building set, doll, action figure, robot, teddy, dinosaur"
+  },
+  {
+   "t": "m",
+   "q": "Which one is NOT a toy?",
+   "o": [
+    "snail",
+    "robot",
+    "dinosaur",
+    "puzzle"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "مفردات الألعاب الداخلية"
+  },
+  {
+   "t": "t",
+   "q": "A teddy is a toy.",
+   "a": true,
+   "lv": "k",
+   "obj": "مفردات: ألعاب داخلية car, plane, puzzle, yo-yo, building set, doll, action figure, robot, teddy, dinosaur"
+  },
+  {
+   "t": "t",
+   "q": "A building set is a colour.",
+   "a": false,
+   "lv": "k",
+   "obj": "مفردات الألعاب الداخلية"
+  },
+  {
+   "t": "t",
+   "q": "'Nail' has the 'oa' sound.",
+   "a": false,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: ai (rain, train, tail, nail, snail, chain، Sounds and Spelling Book Unit 1 Lesson 1)"
+  }
+ ],
+ "g2e-1-2": [
+  {
+   "t": "m",
+   "q": "Which word has the 'oa' sound?",
+   "o": [
+    "goat",
+    "girl",
+    "cat",
+    "pen"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: oa (boat, soap, goat, road، Unit 1 Lesson 2)"
+  },
+  {
+   "t": "m",
+   "q": "Be creative! What can you do?",
+   "o": [
+    "Design a new toy.",
+    "Break a toy.",
+    "Close your eyes.",
+    "Sit and sleep."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "القيمة: Be creative — تصميم روبوت دمية جديد"
+  },
+  {
+   "t": "m",
+   "q": "🪀 What's this?",
+   "o": [
+    "It's a yo-yo.",
+    "It's a plane.",
+    "It's a teddy.",
+    "It's a book."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تركيب: What's this? It's a…"
+  },
+  {
+   "t": "m",
+   "q": "Which is the right answer to 'What's this?'",
+   "o": [
+    "It's a robot.",
+    "Yes, it is.",
+    "I'm seven.",
+    "Hello again."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تركيب: What's this? It's a…"
+  },
+  {
+   "t": "m",
+   "q": "'soap', 'road', 'boat' — they all have…",
+   "o": [
+    "oa",
+    "ai",
+    "ie",
+    "ee"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: oa (boat, soap, goat, road، Unit 1 Lesson 2)"
+  },
+  {
+   "t": "t",
+   "q": "In the story, the big toy is a teddy robot.",
+   "a": true,
+   "lv": "k",
+   "obj": "قصة Helpers Team"
+  },
+  {
+   "t": "t",
+   "q": "'Goat' has the 'ai' sound.",
+   "a": false,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: oa (boat, soap, goat, road، Unit 1 Lesson 2)"
+  },
+  {
+   "t": "t",
+   "q": "Being creative means making new things.",
+   "a": true,
+   "lv": "k",
+   "obj": "القيمة: Be creative — تصميم روبوت دمية جديد"
+  }
+ ],
+ "g2e-1-3": [
+  {
+   "t": "m",
+   "q": "Which toy has wheels?",
+   "o": [
+    "scooter",
+    "kite",
+    "swing",
+    "slide"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات: kite, bike, slide, scooter, ball, swing"
+  },
+  {
+   "t": "m",
+   "q": "You fly it in the sky. What is it?",
+   "o": [
+    "kite",
+    "ball",
+    "slide",
+    "swing"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات الألعاب الخارجية"
+  },
+  {
+   "t": "m",
+   "q": "Which word has the 'ie' sound?",
+   "o": [
+    "tie",
+    "ten",
+    "top",
+    "tap"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: ie (tie, pie, die، Unit 1 Lesson 3)"
+  },
+  {
+   "t": "m",
+   "q": "⚽ Is it a ball?",
+   "o": [
+    "Yes, it is.",
+    "No, it isn't.",
+    "It's a kite.",
+    "I'm seven."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تركيب: Is it a swing? Yes, it is./No, it isn't."
+  },
+  {
+   "t": "m",
+   "q": "🪁 Is it a slide?",
+   "o": [
+    "No, it isn't. It's a kite.",
+    "Yes, it is.",
+    "No, it isn't. It's a ball.",
+    "Yes, it's a swing."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تركيب: Is it a swing? Yes, it is./No, it isn't."
+  },
+  {
+   "t": "t",
+   "q": "A swing has wheels.",
+   "a": false,
+   "lv": "k",
+   "obj": "مفردات: kite, bike, slide, scooter, ball, swing"
+  },
+  {
+   "t": "t",
+   "q": "'Pie' has the 'ie' sound.",
+   "a": true,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: ie (tie, pie, die، Unit 1 Lesson 3)"
+  },
+  {
+   "t": "t",
+   "q": "You go down a slide.",
+   "a": true,
+   "lv": "a",
+   "obj": "مفردات الألعاب الخارجية"
+  }
+ ],
+ "g2e-1-4": [
+  {
+   "t": "m",
+   "q": "Which word has the 'a_e' sound?",
+   "o": [
+    "lake",
+    "lock",
+    "leg",
+    "lip"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: a_e (cake, snake, game, lake, flame, rake)"
+  },
+  {
+   "t": "m",
+   "q": "Which word rhymes with 'game'?",
+   "o": [
+    "flame",
+    "gum",
+    "green",
+    "goat"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: a_e (cake, snake, game, lake, flame, rake، Unit 1 Lesson 4)"
+  },
+  {
+   "t": "m",
+   "q": "🍊 What colour is it?",
+   "o": [
+    "It's orange.",
+    "It's a ball.",
+    "Yes, it is.",
+    "It's blue."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تثبيت Is it a…? Yes, it is./No, it isn't. مع What's this? / What colour is it?"
+  },
+  {
+   "t": "m",
+   "q": "🎂 Is it a cake?",
+   "o": [
+    "Yes, it is.",
+    "No, it isn't.",
+    "It's a snake.",
+    "It's a lake."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تثبيت Is it a…? Yes, it is./No, it isn't."
+  },
+  {
+   "t": "m",
+   "q": "Which word does NOT have the 'a_e' sound?",
+   "o": [
+    "cat",
+    "cake",
+    "rake",
+    "snake"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "صوتٌ مقترن: a_e"
+  },
+  {
+   "t": "t",
+   "q": "'Snake' and 'cake' have the same sound.",
+   "a": true,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: a_e (cake, snake, game, lake, flame, rake)"
+  },
+  {
+   "t": "t",
+   "q": "'Lake' and 'lock' have the same sound.",
+   "a": false,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: a_e"
+  },
+  {
+   "t": "t",
+   "q": "'What colour is it?' asks about a colour.",
+   "a": true,
+   "lv": "k",
+   "obj": "تثبيت Is it a…? Yes, it is./No, it isn't. مع What's this? / What colour is it?"
+  }
+ ],
+ "g2e-1-5": [
+  {
+   "t": "m",
+   "q": "Oman's Children Museum is a museum for…",
+   "o": [
+    "children",
+    "cars",
+    "fish",
+    "cakes"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ثقافة: Oman's Children Museum"
+  },
+  {
+   "t": "m",
+   "q": "For the poster, first you draw your favourite ___.",
+   "o": [
+    "toy",
+    "house",
+    "teacher",
+    "shop"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مشروع: ملصق متحف ألعاب"
+  },
+  {
+   "t": "m",
+   "q": "On your poster, you write: 'This is my ___.'",
+   "o": [
+    "teddy",
+    "seven",
+    "stand",
+    "hello"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "مراجعة مفردات الوحدة ضمن سياق المشروع"
+  },
+  {
+   "t": "m",
+   "q": "Which one is a toy?",
+   "o": [
+    "dinosaur",
+    "Muscat",
+    "museum",
+    "poster"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة مفردات الوحدة"
+  },
+  {
+   "t": "m",
+   "q": "On the poster, you write about your toy: It's ___.",
+   "o": [
+    "big",
+    "seven",
+    "stand",
+    "hello"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "ثقافة: Oman's Children Museum"
+  },
+  {
+   "t": "t",
+   "q": "You stick your poster on a big page.",
+   "a": true,
+   "lv": "k",
+   "obj": "ثقافة: Oman's Children Museum"
+  },
+  {
+   "t": "t",
+   "q": "You show your poster to the class.",
+   "a": true,
+   "lv": "a",
+   "obj": "مشروع: ملصق متحف ألعاب"
+  },
+  {
+   "t": "t",
+   "q": "A robot is a food.",
+   "a": false,
+   "lv": "k",
+   "obj": "مراجعة مفردات الوحدة"
+  }
+ ],
+ "g2e-1-6": [
+  {
+   "t": "m",
+   "q": "Your friend has got a new scooter. What do you say?",
+   "o": [
+    "Can I play with it, please?",
+    "Stand up.",
+    "Goodbye!",
+    "I'm seven."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تركيب: Can I play with it, please?"
+  },
+  {
+   "t": "m",
+   "q": "Which word is polite?",
+   "o": [
+    "please",
+    "stop",
+    "mine",
+    "no"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: Can I play with it, please?"
+  },
+  {
+   "t": "m",
+   "q": "Sharing means…",
+   "o": [
+    "playing together with your toys",
+    "keeping your toys for you only",
+    "breaking toys",
+    "hiding toys"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "القيمة: Share"
+  },
+  {
+   "t": "m",
+   "q": "Complete: '___! Let's play together.'",
+   "o": [
+    "Great",
+    "Close",
+    "Sit",
+    "Seven"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: Can I play with it, please?"
+  },
+  {
+   "t": "m",
+   "q": "Ali has got a ball. Sara has got no toy. What is kind?",
+   "o": [
+    "Ali shares his ball.",
+    "Ali hides his ball.",
+    "Ali goes home.",
+    "Ali says 'No!'"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "القيمة: Share"
+  },
+  {
+   "t": "t",
+   "q": "Sharing toys is kind.",
+   "a": true,
+   "lv": "k",
+   "obj": "القيمة: Share"
+  },
+  {
+   "t": "t",
+   "q": "'Please' is a rude word.",
+   "a": false,
+   "lv": "k",
+   "obj": "تركيب: Can I play with it, please?"
+  },
+  {
+   "t": "t",
+   "q": "Keeping all the toys for you is sharing.",
+   "a": false,
+   "lv": "a",
+   "obj": "القيمة: Share"
+  }
+ ],
+ "g2e-1-7": [
+  {
+   "t": "m",
+   "q": "Which one is an outdoor toy?",
+   "o": [
+    "swing",
+    "teddy",
+    "doll",
+    "puzzle"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة تراكمية لمفردات الوحدة ١"
+  },
+  {
+   "t": "m",
+   "q": "Which word has the 'oa' sound?",
+   "o": [
+    "soap",
+    "snake",
+    "sun",
+    "tie"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة تراكمية لأصوات الوحدة ١ (ai, oa, ie, a_e)"
+  },
+  {
+   "t": "m",
+   "q": "🪁 Is it a kite?",
+   "o": [
+    "Yes, it is.",
+    "No, it isn't.",
+    "It's a car.",
+    "Sit down."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "مراجعة تراكمية لتراكيب الوحدة ١"
+  },
+  {
+   "t": "m",
+   "q": "What do you say to share?",
+   "o": [
+    "Let's play together.",
+    "Go away.",
+    "It's mine.",
+    "Stand up."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة تراكمية — Sharing your toys"
+  },
+  {
+   "t": "m",
+   "q": "Which word has a different sound? (rain, train, tail, pie)",
+   "o": [
+    "pie",
+    "rain",
+    "train",
+    "tail"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "مراجعة تراكمية لأصوات الوحدة ١ (ai, oa, ie, a_e)"
+  },
+  {
+   "t": "t",
+   "q": "'Cake' has the 'a_e' sound.",
+   "a": true,
+   "lv": "k",
+   "obj": "مراجعة تراكمية لأصوات الوحدة ١ (ai, oa, ie, a_e)"
+  },
+  {
+   "t": "t",
+   "q": "A scooter is a soft toy.",
+   "a": false,
+   "lv": "k",
+   "obj": "مراجعة تراكمية لمفردات الوحدة ١"
+  },
+  {
+   "t": "t",
+   "q": "'What's this?' — 'It's a robot.' is a good answer.",
+   "a": true,
+   "lv": "a",
+   "obj": "مراجعة تراكمية لتراكيب الوحدة ١"
+  }
+ ],
+ "g2e-2-1": [
+  {
+   "t": "m",
+   "q": "Which one do you cut with?",
+   "o": [
+    "scissors",
+    "ruler",
+    "crayon",
+    "bag"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات: أدوات مدرسية bag, book, pencil case, pen, pencil, crayon, ruler, pencil sharpener, eraser, scissors"
+  },
+  {
+   "t": "m",
+   "q": "Which one do you colour with?",
+   "o": [
+    "crayon",
+    "eraser",
+    "ruler",
+    "bag"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات أدوات المدرسة"
+  },
+  {
+   "t": "m",
+   "q": "Which word has the 'or' sound?",
+   "o": [
+    "torch",
+    "ten",
+    "tap",
+    "tie"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: or (sport, storm, torch, north, corn، Unit 2 Lesson 1)"
+  },
+  {
+   "t": "m",
+   "q": "The pen is inside the bag. Where's the pen?",
+   "o": [
+    "It's in the bag.",
+    "It's on the bag.",
+    "It's under the bag.",
+    "It's a bag."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تركيب: Where's the pencil? It's in/on/under the desk."
+  },
+  {
+   "t": "m",
+   "q": "Which one is NOT a school thing?",
+   "o": [
+    "corn",
+    "pencil",
+    "ruler",
+    "eraser"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "مفردات أدوات المدرسة"
+  },
+  {
+   "t": "t",
+   "q": "You carry your books in a bag.",
+   "a": true,
+   "lv": "k",
+   "obj": "مفردات: أدوات مدرسية bag, book, pencil case, pen, pencil, crayon, ruler, pencil sharpener, eraser, scissors"
+  },
+  {
+   "t": "t",
+   "q": "An eraser is for writing.",
+   "a": false,
+   "lv": "k",
+   "obj": "مفردات أدوات المدرسة"
+  },
+  {
+   "t": "t",
+   "q": "'It's under the desk' tells you where.",
+   "a": true,
+   "lv": "a",
+   "obj": "تركيب: Where's the pencil? It's in/on/under the desk."
+  }
+ ],
+ "g2e-2-2": [
+  {
+   "t": "m",
+   "q": "Which word has the 'ng' sound?",
+   "o": [
+    "king",
+    "kite",
+    "cake",
+    "cat"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: ng (Unit 2 Lesson 2)"
+  },
+  {
+   "t": "m",
+   "q": "'Oh, no! Your books!' What do they say next?",
+   "o": [
+    "Let's tidy up.",
+    "Let's go home.",
+    "Goodbye!",
+    "I'm seven."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قصة Helpers Team"
+  },
+  {
+   "t": "m",
+   "q": "Be tidy! Where do your crayons go?",
+   "o": [
+    "In the pencil case.",
+    "On the floor.",
+    "Under the bed.",
+    "In the garden."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "القيمة: Be tidy"
+  },
+  {
+   "t": "m",
+   "q": "These are my ___.",
+   "o": [
+    "books",
+    "book",
+    "pencil case",
+    "bag"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تركيب: This is my pencil case./These are my books."
+  },
+  {
+   "t": "m",
+   "q": "Your friend gives you your crayons. What do you say?",
+   "o": [
+    "Thank you.",
+    "Oh, no!",
+    "Stop!",
+    "Where's my pen?"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "قصة Helpers Team؛ القيمة: Be tidy"
+  },
+  {
+   "t": "t",
+   "q": "Being tidy means putting things away.",
+   "a": true,
+   "lv": "k",
+   "obj": "القيمة: Be tidy"
+  },
+  {
+   "t": "t",
+   "q": "'This is my books.' is right.",
+   "a": false,
+   "lv": "k",
+   "obj": "تركيب: This is my pencil case./These are my books."
+  },
+  {
+   "t": "t",
+   "q": "In the story, they say 'Let's tidy up.'",
+   "a": true,
+   "lv": "k",
+   "obj": "قصة Helpers Team"
+  }
+ ],
+ "g2e-2-3": [
+  {
+   "t": "m",
+   "q": "These are my ___.",
+   "o": [
+    "crayons",
+    "crayon",
+    "pen",
+    "ruler"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: This is my pencil case./These are my books."
+  },
+  {
+   "t": "m",
+   "q": "This is my ___.",
+   "o": [
+    "ruler",
+    "rulers",
+    "pens",
+    "books"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: This is my…/These are my…"
+  },
+  {
+   "t": "m",
+   "q": "Which word has the short 'oo' sound, like 'book'?",
+   "o": [
+    "look",
+    "moon",
+    "boat",
+    "bike"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: oo القصير (Unit 2 Lesson 3)"
+  },
+  {
+   "t": "m",
+   "q": "📚📚📚 Which sentence is right?",
+   "o": [
+    "These are my books.",
+    "This is my books.",
+    "These is my book.",
+    "This are my book."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تركيب: This is my…/These are my…"
+  },
+  {
+   "t": "m",
+   "q": "Which one means more than one?",
+   "o": [
+    "pencils",
+    "pencil",
+    "pencil case",
+    "bag"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تركيب: This is my pencil case./These are my books."
+  },
+  {
+   "t": "t",
+   "q": "'This is my pen' is about one pen.",
+   "a": true,
+   "lv": "k",
+   "obj": "تركيب: This is my pencil case./These are my books."
+  },
+  {
+   "t": "t",
+   "q": "'These are my bag.' is right.",
+   "a": false,
+   "lv": "a",
+   "obj": "تركيب: This is my…/These are my…"
+  },
+  {
+   "t": "t",
+   "q": "'Wood' and 'good' have the short 'oo' sound.",
+   "a": true,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: oo القصير (Unit 2 Lesson 3)"
+  }
+ ],
+ "g2e-2-4": [
+  {
+   "t": "m",
+   "q": "Which word has the long 'oo' sound, like 'moon'?",
+   "o": [
+    "spoon",
+    "book",
+    "foot",
+    "bag"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: oo الطويل (Unit 2 Lesson 4)"
+  },
+  {
+   "t": "m",
+   "q": "The ruler is inside the bag. It's ___ the bag.",
+   "o": [
+    "in",
+    "on",
+    "under",
+    "is"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: in/on/under"
+  },
+  {
+   "t": "m",
+   "q": "Which word means 'below'?",
+   "o": [
+    "under",
+    "on",
+    "in",
+    "up"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: in/on/under"
+  },
+  {
+   "t": "m",
+   "q": "Where's the ball? It's below the chair.",
+   "o": [
+    "It's under the chair.",
+    "It's on the chair.",
+    "It's in the chair.",
+    "It's a chair."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تركيب: Where's the pencil? It's in/on/under the desk."
+  },
+  {
+   "t": "m",
+   "q": "Which word has a different 'oo' sound? (moon, zoo, book, food)",
+   "o": [
+    "book",
+    "moon",
+    "zoo",
+    "food"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "صوتا oo القصير والطويل معاً"
+  },
+  {
+   "t": "t",
+   "q": "'Zoo' has the long 'oo' sound.",
+   "a": true,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: oo الطويل (Unit 2 Lesson 4)"
+  },
+  {
+   "t": "t",
+   "q": "'On the desk' means inside the desk.",
+   "a": false,
+   "lv": "k",
+   "obj": "تركيب: in/on/under"
+  },
+  {
+   "t": "t",
+   "q": "'Where's the pencil?' — 'It's on the desk.' is a good answer.",
+   "a": true,
+   "lv": "a",
+   "obj": "تركيب: Where's the pencil? It's in/on/under the desk."
+  }
+ ],
+ "g2e-2-5": [
+  {
+   "t": "m",
+   "q": "First, you draw a ___ of your school.",
+   "o": [
+    "plan",
+    "cake",
+    "kite",
+    "car"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مشروع: خطة مدرستي"
+  },
+  {
+   "t": "m",
+   "q": "On the plan, you write the names of the ___.",
+   "o": [
+    "rooms",
+    "toys",
+    "colours",
+    "numbers"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مشروع: خطة مدرستي"
+  },
+  {
+   "t": "m",
+   "q": "Which one is in your pencil case?",
+   "o": [
+    "pencil",
+    "desk",
+    "bag",
+    "cupboard"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة مفردات أدوات المدرسة"
+  },
+  {
+   "t": "m",
+   "q": "You want to measure a line. What do you use?",
+   "o": [
+    "ruler",
+    "crayon",
+    "eraser",
+    "bag"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "مراجعة مفردات أدوات المدرسة"
+  },
+  {
+   "t": "m",
+   "q": "Which one is NOT a school thing?",
+   "o": [
+    "kite",
+    "book",
+    "pen",
+    "ruler"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "مراجعة مفردات الوحدة ضمن سياق مشروع خطة المدرسة"
+  },
+  {
+   "t": "t",
+   "q": "You show your school plan to the class.",
+   "a": true,
+   "lv": "k",
+   "obj": "مشروع: خطة مدرستي"
+  },
+  {
+   "t": "t",
+   "q": "Scissors are for writing.",
+   "a": false,
+   "lv": "k",
+   "obj": "مراجعة مفردات أدوات المدرسة"
+  },
+  {
+   "t": "t",
+   "q": "A pencil sharpener makes your pencil sharp.",
+   "a": true,
+   "lv": "a",
+   "obj": "مراجعة مفردات الوحدة ضمن سياق مشروع خطة المدرسة"
+  }
+ ],
+ "g2e-2-6": [
+  {
+   "t": "m",
+   "q": "You haven't got a ruler. What do you say?",
+   "o": [
+    "Can I borrow your ruler, please?",
+    "Here you are.",
+    "You're welcome.",
+    "Stand up."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تركيب: Can I borrow your…؟"
+  },
+  {
+   "t": "m",
+   "q": "'Here you are' means…",
+   "o": [
+    "Take it.",
+    "Sit down.",
+    "Goodbye.",
+    "Where is it?"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: Can I borrow your pen?"
+  },
+  {
+   "t": "m",
+   "q": "After you borrow a pen, you…",
+   "o": [
+    "give it back",
+    "keep it",
+    "break it",
+    "hide it"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "القيمة: Be tidy — borrowing and giving back"
+  },
+  {
+   "t": "m",
+   "q": "Can I borrow your ___?",
+   "o": [
+    "eraser",
+    "teacher",
+    "classroom",
+    "school"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: Can I borrow your…؟"
+  },
+  {
+   "t": "m",
+   "q": "Ali borrows Sara's crayon. Now he gives it back. What does he say?",
+   "o": [
+    "Thank you! Here you are.",
+    "Can I borrow your crayon?",
+    "It's mine now.",
+    "Stop!"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "القيمة: Be tidy — borrowing things"
+  },
+  {
+   "t": "t",
+   "q": "'Can I borrow your pen?' is a polite question.",
+   "a": true,
+   "lv": "k",
+   "obj": "تركيب: Can I borrow your pen?"
+  },
+  {
+   "t": "t",
+   "q": "You keep the things you borrow.",
+   "a": false,
+   "lv": "k",
+   "obj": "القيمة: Be tidy — borrowing things"
+  },
+  {
+   "t": "t",
+   "q": "You say 'Here you are' when you give something.",
+   "a": true,
+   "lv": "a",
+   "obj": "القيمة: Be tidy — borrowing and giving back"
+  }
+ ],
+ "g2e-2-7": [
+  {
+   "t": "m",
+   "q": "Which one do you sit on?",
+   "o": [
+    "chair",
+    "cupboard",
+    "ruler",
+    "bag"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة تراكمية لمفردات الوحدة ٢"
+  },
+  {
+   "t": "m",
+   "q": "Which word has the 'or' sound?",
+   "o": [
+    "fork",
+    "frog",
+    "fish",
+    "foot"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة تراكمية لأصوات الوحدة ٢ (or, ng, oo قصير, oo طويل)"
+  },
+  {
+   "t": "m",
+   "q": "Where's the bag? It's below the desk.",
+   "o": [
+    "It's under the desk.",
+    "It's on the desk.",
+    "It's in the desk.",
+    "It's a desk."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "مراجعة تراكمية لتراكيب الوحدة ٢"
+  },
+  {
+   "t": "m",
+   "q": "Can I borrow your pencil, please?",
+   "o": [
+    "Here you are.",
+    "It's a pencil.",
+    "Oh, no!",
+    "Goodbye."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة تراكمية — Borrowing things"
+  },
+  {
+   "t": "m",
+   "q": "Which word has a different sound? (moon, spoon, zoo, corn)",
+   "o": [
+    "corn",
+    "moon",
+    "spoon",
+    "zoo"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "مراجعة تراكمية لأصوات الوحدة ٢ (or, ng, oo قصير, oo طويل)"
+  },
+  {
+   "t": "t",
+   "q": "'King' has the 'ng' sound.",
+   "a": true,
+   "lv": "k",
+   "obj": "مراجعة تراكمية لأصوات الوحدة ٢ (or, ng, oo قصير, oo طويل)"
+  },
+  {
+   "t": "t",
+   "q": "'These are my pens' is about one pen.",
+   "a": false,
+   "lv": "a",
+   "obj": "مراجعة تراكمية لتراكيب الوحدة ٢"
+  },
+  {
+   "t": "t",
+   "q": "An eraser rubs out mistakes.",
+   "a": true,
+   "lv": "k",
+   "obj": "مراجعة تراكمية لمفردات الوحدة ٢"
+  }
+ ],
+ "g2e-lc1-1": [
+  {
+   "t": "m",
+   "q": "Which word tells the size?",
+   "o": [
+    "big",
+    "noisy",
+    "scary",
+    "book"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "صفات: big, small, noisy, interesting, scary"
+  },
+  {
+   "t": "m",
+   "q": "Which one is very noisy?",
+   "o": [
+    "helicopter",
+    "book",
+    "eraser",
+    "pencil"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "صفات: big, small, noisy, interesting, scary"
+  },
+  {
+   "t": "m",
+   "q": "What's your favourite book?",
+   "o": [
+    "My favourite book is Cinderella.",
+    "It's very noisy.",
+    "Yes, it is.",
+    "I'm seven."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "What's your favourite book? My favourite book is…"
+  },
+  {
+   "t": "m",
+   "q": "The monster is big and scary. Is it very scary?",
+   "o": [
+    "Yes, it is.",
+    "No, it isn't.",
+    "It's a book.",
+    "My favourite book."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تركيب: Is it very (interesting)? Yes, it is./No, it isn't."
+  },
+  {
+   "t": "m",
+   "q": "Which word is the opposite of 'big'?",
+   "o": [
+    "small",
+    "noisy",
+    "scary",
+    "interesting"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "صفات: big, small, noisy, interesting, scary"
+  },
+  {
+   "t": "t",
+   "q": "A computer is a toy animal.",
+   "a": false,
+   "lv": "k",
+   "obj": "مفردات: monster, helicopter, robot, computer, book"
+  },
+  {
+   "t": "t",
+   "q": "'Is it very interesting?' — 'Yes, it is.' is a good answer.",
+   "a": true,
+   "lv": "a",
+   "obj": "تركيب: Is it very (interesting)? Yes, it is./No, it isn't."
+  },
+  {
+   "t": "t",
+   "q": "A robot is a machine.",
+   "a": true,
+   "lv": "k",
+   "obj": "مفردات: monster, helicopter, robot, computer, book"
+  }
+ ],
+ "g2e-lc1-2": [
+  {
+   "t": "m",
+   "q": "We see with our…",
+   "o": [
+    "eyes",
+    "ears",
+    "nose",
+    "tongue"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط الحواس بأعضاء الجسم: eyes, ears, nose, tongue"
+  },
+  {
+   "t": "m",
+   "q": "We hear with our…",
+   "o": [
+    "ears",
+    "eyes",
+    "hands",
+    "tongue"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط الحواس بأعضاء الجسم: eyes, ears, nose, tongue"
+  },
+  {
+   "t": "m",
+   "q": "Which sense uses your hands?",
+   "o": [
+    "touch",
+    "taste",
+    "smell",
+    "hearing"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "الحواس الخمس sight, hearing, smell, taste, touch"
+  },
+  {
+   "t": "m",
+   "q": "🎵 You listen to music. Which sense do you use?",
+   "o": [
+    "hearing",
+    "taste",
+    "touch",
+    "smell"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "الحواس الخمس sight, hearing, smell, taste, touch"
+  },
+  {
+   "t": "m",
+   "q": "Which one is NOT a sense?",
+   "o": [
+    "clap",
+    "sight",
+    "smell",
+    "touch"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "الحواس الخمس sight, hearing, smell, taste, touch"
+  },
+  {
+   "t": "t",
+   "q": "We touch with our hands.",
+   "a": true,
+   "lv": "k",
+   "obj": "ربط الحواس بأعضاء الجسم: eyes, nose, hands"
+  },
+  {
+   "t": "t",
+   "q": "We see with our ears.",
+   "a": false,
+   "lv": "a",
+   "obj": "ربط الحواس بأعضاء الجسم: eyes, ears, nose, tongue"
+  },
+  {
+   "t": "t",
+   "q": "Smell, taste and touch are senses.",
+   "a": true,
+   "lv": "k",
+   "obj": "الحواس الخمس sight, hearing, smell, taste, touch"
+  }
+ ],
+ "g2e-3-1": [
+  {
+   "t": "m",
+   "q": "I've got one ___.",
+   "o": [
+    "face",
+    "fingers",
+    "toes",
+    "legs"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: I've got one face./I've got ten toes."
+  },
+  {
+   "t": "m",
+   "q": "Which one is on your hand?",
+   "o": [
+    "fingers",
+    "toes",
+    "knees",
+    "tummy"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات الجسم: head, face, tummy, arms, hands, fingers, legs, knees, feet, toes"
+  },
+  {
+   "t": "m",
+   "q": "Which word has the 'ou' sound?",
+   "o": [
+    "mouse",
+    "moon",
+    "map",
+    "mug"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: ou (Unit 3 Lesson 1)"
+  },
+  {
+   "t": "m",
+   "q": "I've got two ___.",
+   "o": [
+    "legs",
+    "face",
+    "head",
+    "tummy"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تركيب: I've got one face./I've got ten toes."
+  },
+  {
+   "t": "m",
+   "q": "Which one is NOT a body part?",
+   "o": [
+    "house",
+    "knees",
+    "tummy",
+    "feet"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "مفردات الجسم"
+  },
+  {
+   "t": "t",
+   "q": "Your knees are on your legs.",
+   "a": true,
+   "lv": "k",
+   "obj": "مفردات الجسم"
+  },
+  {
+   "t": "t",
+   "q": "'Cloud' has the 'ou' sound.",
+   "a": true,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: ou (Unit 3 Lesson 1)"
+  },
+  {
+   "t": "t",
+   "q": "'I've got two face.' is right.",
+   "a": false,
+   "lv": "a",
+   "obj": "تركيب: I've got one face./I've got ten toes."
+  }
+ ],
+ "g2e-3-2": [
+  {
+   "t": "m",
+   "q": "Which word has the 'oi' sound?",
+   "o": [
+    "boil",
+    "bell",
+    "ball",
+    "bag"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: oi (Unit 3 Lesson 2)"
+  },
+  {
+   "t": "m",
+   "q": "Gymbot says: 'Move your legs and stamp your ___!'",
+   "o": [
+    "feet",
+    "hands",
+    "head",
+    "book"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قصة Gymbot؛ القيمة: Do exercise"
+  },
+  {
+   "t": "m",
+   "q": "Gymbot is a…",
+   "o": [
+    "robot",
+    "teddy",
+    "dog",
+    "car"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قصة Gymbot؛ القيمة: Do exercise"
+  },
+  {
+   "t": "m",
+   "q": "Exercise is good for your…",
+   "o": [
+    "body",
+    "book",
+    "bag",
+    "pencil"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "القيمة: Do exercise — روبوت Gymbot"
+  },
+  {
+   "t": "m",
+   "q": "Which one is exercise?",
+   "o": [
+    "Bend your knees.",
+    "Close your book.",
+    "Sit and sleep.",
+    "Eat a cake."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "القيمة: Do exercise — روبوت Gymbot"
+  },
+  {
+   "t": "t",
+   "q": "Gymbot says 'Stand up, please!'",
+   "a": true,
+   "lv": "k",
+   "obj": "قصة Gymbot؛ القيمة: Do exercise"
+  },
+  {
+   "t": "t",
+   "q": "'Coin' has the 'ai' sound.",
+   "a": false,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: oi (Unit 3 Lesson 2)"
+  },
+  {
+   "t": "t",
+   "q": "Doing exercise is good for you.",
+   "a": true,
+   "lv": "a",
+   "obj": "القيمة: Do exercise — روبوت Gymbot"
+  }
+ ],
+ "g2e-3-3": [
+  {
+   "t": "m",
+   "q": "Which action do you do with your feet?",
+   "o": [
+    "stamp",
+    "clap",
+    "stretch",
+    "touch"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات: move, bend, stretch, touch, stamp, clap"
+  },
+  {
+   "t": "m",
+   "q": "Which word has the 'ue' sound?",
+   "o": [
+    "glue",
+    "goat",
+    "girl",
+    "gate"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: ue (Unit 3 Lesson 3)"
+  },
+  {
+   "t": "m",
+   "q": "Reach up high! You…",
+   "o": [
+    "stretch",
+    "stamp",
+    "clap",
+    "sit"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات: move, bend, stretch, touch, stamp, clap"
+  },
+  {
+   "t": "m",
+   "q": "Clap your ___!",
+   "o": [
+    "hands",
+    "feet",
+    "toes",
+    "knees"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "مفردات: move, bend, stretch, touch, stamp, clap"
+  },
+  {
+   "t": "m",
+   "q": "Which word rhymes with 'blue'?",
+   "o": [
+    "glue",
+    "black",
+    "bike",
+    "book"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "صوتٌ مقترن: ue (Unit 3 Lesson 3)"
+  },
+  {
+   "t": "t",
+   "q": "'Stamp' is an action word.",
+   "a": true,
+   "lv": "k",
+   "obj": "مفردات: move, bend, stretch, touch, stamp, clap"
+  },
+  {
+   "t": "t",
+   "q": "'Bend' means jump up high.",
+   "a": false,
+   "lv": "k",
+   "obj": "مفردات: move, bend, stretch, touch, stamp, clap"
+  },
+  {
+   "t": "t",
+   "q": "'Clue' has the 'ue' sound.",
+   "a": true,
+   "lv": "a",
+   "obj": "صوتٌ مقترن: ue (Unit 3 Lesson 3)"
+  }
+ ],
+ "g2e-3-4": [
+  {
+   "t": "m",
+   "q": "Which word has the 'i_e' sound?",
+   "o": [
+    "five",
+    "fish",
+    "fan",
+    "fox"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: i_e (Unit 3 Lesson 4)"
+  },
+  {
+   "t": "m",
+   "q": "Which word rhymes with 'kite'?",
+   "o": [
+    "white",
+    "cat",
+    "coat",
+    "cut"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: i_e"
+  },
+  {
+   "t": "m",
+   "q": "How many fingers have you got?",
+   "o": [
+    "I've got ten fingers.",
+    "I've got one finger.",
+    "I've got two fingers.",
+    "It's a finger."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: I've got one face./I've got ten toes."
+  },
+  {
+   "t": "m",
+   "q": "Stamp your ___!",
+   "o": [
+    "feet",
+    "ears",
+    "fingers",
+    "nose"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "أوامر الحركة وأجزاء الجسم"
+  },
+  {
+   "t": "m",
+   "q": "Which word does NOT have the 'i_e' sound?",
+   "o": [
+    "pin",
+    "nine",
+    "line",
+    "bike"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "صوتٌ مقترن: i_e (Unit 3 Lesson 4)"
+  },
+  {
+   "t": "t",
+   "q": "'Nine' has the 'i_e' sound.",
+   "a": true,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: i_e (Unit 3 Lesson 4)"
+  },
+  {
+   "t": "t",
+   "q": "I've got three legs.",
+   "a": false,
+   "lv": "k",
+   "obj": "تركيب: I've got one face./I've got ten toes."
+  },
+  {
+   "t": "t",
+   "q": "'Touch your head!' tells you what to do.",
+   "a": true,
+   "lv": "a",
+   "obj": "أوامر الحركة وأجزاء الجسم"
+  }
+ ],
+ "g2e-3-5": [
+  {
+   "t": "m",
+   "q": "On National Day, we celebrate…",
+   "o": [
+    "Oman",
+    "a robot",
+    "a pencil",
+    "a kite"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ثقافة: National Day"
+  },
+  {
+   "t": "m",
+   "q": "🇴🇲 What do you see on National Day?",
+   "o": [
+    "flags",
+    "snow",
+    "monsters",
+    "dinosaurs"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ثقافة: National Day"
+  },
+  {
+   "t": "m",
+   "q": "For the poster, first you ___ a picture.",
+   "o": [
+    "draw",
+    "eat",
+    "stamp",
+    "sleep"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مشروع: ملصق المهرجانات"
+  },
+  {
+   "t": "m",
+   "q": "You clap with your…",
+   "o": [
+    "hands",
+    "feet",
+    "knees",
+    "toes"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "مراجعة مفردات الجسم"
+  },
+  {
+   "t": "m",
+   "q": "Which one is NOT a body part?",
+   "o": [
+    "flag",
+    "arm",
+    "leg",
+    "head"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "مراجعة مفردات الجسم"
+  },
+  {
+   "t": "t",
+   "q": "On National Day, people put up Oman's flag.",
+   "a": true,
+   "lv": "k",
+   "obj": "ثقافة: National Day"
+  },
+  {
+   "t": "t",
+   "q": "You show your poster to the class.",
+   "a": true,
+   "lv": "k",
+   "obj": "مشروع: ملصق المهرجانات"
+  },
+  {
+   "t": "t",
+   "q": "You walk with your ears.",
+   "a": false,
+   "lv": "a",
+   "obj": "مراجعة مفردات الجسم"
+  }
+ ],
+ "g2e-3-6": [
+  {
+   "t": "m",
+   "q": "Your friend shows you a nice picture. What do you say?",
+   "o": [
+    "What a cool picture!",
+    "Stand up!",
+    "Where's my pen?",
+    "Goodbye!"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تركيب: What a cool picture!"
+  },
+  {
+   "t": "m",
+   "q": "'What a cool picture!' What do you say back?",
+   "o": [
+    "Thank you!",
+    "Sit down.",
+    "It's a pen.",
+    "No, it isn't."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: What a cool picture!"
+  },
+  {
+   "t": "m",
+   "q": "Which one is a compliment?",
+   "o": [
+    "Great job!",
+    "Close your book.",
+    "Where's the ball?",
+    "I'm seven."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: What a cool picture!"
+  },
+  {
+   "t": "m",
+   "q": "What a cool ___!",
+   "o": [
+    "poster",
+    "under",
+    "sit",
+    "is"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: What a cool picture!"
+  },
+  {
+   "t": "m",
+   "q": "Sara has got a great poster. Which is kind?",
+   "o": [
+    "I like your poster!",
+    "Your poster is bad.",
+    "Go away.",
+    "Stop!"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تركيب: What a cool picture!"
+  },
+  {
+   "t": "t",
+   "q": "'Thanks a lot!' is a reply to a compliment.",
+   "a": true,
+   "lv": "k",
+   "obj": "تركيب: What a cool picture!"
+  },
+  {
+   "t": "t",
+   "q": "'Stand up!' is a compliment.",
+   "a": false,
+   "lv": "k",
+   "obj": "تركيب: What a cool picture!"
+  },
+  {
+   "t": "t",
+   "q": "'I like your drawing!' is a kind thing to say.",
+   "a": true,
+   "lv": "a",
+   "obj": "تركيب: What a cool picture!"
+  }
+ ],
+ "g2e-3-7": [
+  {
+   "t": "m",
+   "q": "Which one do you bend?",
+   "o": [
+    "knees",
+    "hair",
+    "tummy",
+    "face"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة تراكمية لمفردات الوحدة ٣"
+  },
+  {
+   "t": "m",
+   "q": "Which word has the 'ou' sound?",
+   "o": [
+    "house",
+    "horse",
+    "hose",
+    "hut"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة تراكمية لأصوات الوحدة ٣ (ou, oi, ue, i_e)"
+  },
+  {
+   "t": "m",
+   "q": "How many faces have you got?",
+   "o": [
+    "I've got one face.",
+    "I've got two faces.",
+    "I've got ten faces.",
+    "It's a face."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "مراجعة تراكمية لتراكيب الوحدة ٣"
+  },
+  {
+   "t": "m",
+   "q": "'Well done!' is a…",
+   "o": [
+    "compliment",
+    "question",
+    "colour",
+    "body part"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة تراكمية — Paying a compliment"
+  },
+  {
+   "t": "m",
+   "q": "Which word has a different sound? (blue, glue, true, bike)",
+   "o": [
+    "bike",
+    "blue",
+    "glue",
+    "true"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "مراجعة تراكمية لأصوات الوحدة ٣ (ou, oi, ue, i_e)"
+  },
+  {
+   "t": "t",
+   "q": "'Coin' has the 'oi' sound.",
+   "a": true,
+   "lv": "k",
+   "obj": "مراجعة تراكمية لأصوات الوحدة ٣ (ou, oi, ue, i_e)"
+  },
+  {
+   "t": "t",
+   "q": "You stamp your hands.",
+   "a": false,
+   "lv": "k",
+   "obj": "مراجعة تراكمية لمفردات الوحدة ٣"
+  },
+  {
+   "t": "t",
+   "q": "'I've got ten toes.' is right.",
+   "a": true,
+   "lv": "a",
+   "obj": "مراجعة تراكمية لتراكيب الوحدة ٣"
+  }
+ ],
+ "g2e-4-1": [
+  {
+   "t": "m",
+   "q": "My dad's father is my…",
+   "o": [
+    "grandad",
+    "uncle",
+    "brother",
+    "cousin"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات الأسرة: grandma, grandad, mum, dad, uncle, aunt, brother, sister, cousin"
+  },
+  {
+   "t": "m",
+   "q": "My uncle's son is my…",
+   "o": [
+    "cousin",
+    "brother",
+    "grandad",
+    "dad"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "مفردات الأسرة"
+  },
+  {
+   "t": "m",
+   "q": "Which word has the 'ee' sound?",
+   "o": [
+    "bee",
+    "bed",
+    "bag",
+    "box"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: ee (Unit 4 Lesson 1)"
+  },
+  {
+   "t": "m",
+   "q": "Which one is a girl?",
+   "o": [
+    "sister",
+    "brother",
+    "uncle",
+    "grandad"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات الأسرة"
+  },
+  {
+   "t": "m",
+   "q": "Who's this?",
+   "o": [
+    "It's my uncle.",
+    "It's my pencil.",
+    "It's red.",
+    "Yes, it is."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تركيب: Who's this? It's my uncle. He's got blue eyes."
+  },
+  {
+   "t": "t",
+   "q": "My mum's sister is my aunt.",
+   "a": true,
+   "lv": "k",
+   "obj": "مفردات الأسرة: grandma, grandad, mum, dad, uncle, aunt, brother, sister, cousin"
+  },
+  {
+   "t": "t",
+   "q": "My brother is a girl.",
+   "a": false,
+   "lv": "k",
+   "obj": "مفردات الأسرة"
+  },
+  {
+   "t": "t",
+   "q": "'Who's this?' asks about a person.",
+   "a": true,
+   "lv": "a",
+   "obj": "تركيب: Who's this? It's my uncle. He's got blue eyes."
+  }
+ ],
+ "g2e-4-2": [
+  {
+   "t": "m",
+   "q": "In the story, who's got the ball?",
+   "o": [
+    "the uncle",
+    "the grandma",
+    "the sister",
+    "the teacher"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قصة الأسرة"
+  },
+  {
+   "t": "m",
+   "q": "In the story: 'Hooray! Now we can ___!'",
+   "o": [
+    "play",
+    "sleep",
+    "eat",
+    "read"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قصة الأسرة؛ القيمة: Love your family"
+  },
+  {
+   "t": "m",
+   "q": "Which word has the 'er' sound?",
+   "o": [
+    "sister",
+    "sit",
+    "six",
+    "sun"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: er (Unit 4 Lesson 2)"
+  },
+  {
+   "t": "m",
+   "q": "Love your family! What can you do?",
+   "o": [
+    "Help your mum.",
+    "Shout at your brother.",
+    "Take your sister's toy.",
+    "Run away."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "قصة الأسرة؛ القيمة: Love your family"
+  },
+  {
+   "t": "m",
+   "q": "A man. He's my dad's brother. Who's this?",
+   "o": [
+    "It's my uncle.",
+    "It's my aunt.",
+    "It's my sister.",
+    "It's my grandma."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تركيب: Who's this?"
+  },
+  {
+   "t": "t",
+   "q": "'Teacher' has the 'er' sound.",
+   "a": true,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: er (Unit 4 Lesson 2)"
+  },
+  {
+   "t": "t",
+   "q": "In the story, the aunt has got the ball.",
+   "a": false,
+   "lv": "k",
+   "obj": "قصة الأسرة"
+  },
+  {
+   "t": "t",
+   "q": "My dad is in my family.",
+   "a": true,
+   "lv": "a",
+   "obj": "مفردات الأسرة"
+  }
+ ],
+ "g2e-4-3": [
+  {
+   "t": "m",
+   "q": "You eat with your…",
+   "o": [
+    "mouth",
+    "ears",
+    "eyes",
+    "hair"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات الوجه: hair, mouth, nose, eyes, ears"
+  },
+  {
+   "t": "m",
+   "q": "Which word has the 'ar' sound?",
+   "o": [
+    "star",
+    "stop",
+    "sun",
+    "sock"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: ar (Unit 4 Lesson 3)"
+  },
+  {
+   "t": "m",
+   "q": "She's got ___ hair.",
+   "o": [
+    "black",
+    "nose",
+    "ears",
+    "mouth"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ألوان الشعر/العينين: fair, brown, red, black"
+  },
+  {
+   "t": "m",
+   "q": "Ali has got brown eyes. Which sentence is right?",
+   "o": [
+    "He's got brown eyes.",
+    "She's got brown eyes.",
+    "He's got brown ears.",
+    "He's got a brown mouth."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تركيب: He's got blue eyes./She's got brown hair."
+  },
+  {
+   "t": "m",
+   "q": "Which one is NOT on your face?",
+   "o": [
+    "feet",
+    "nose",
+    "mouth",
+    "eyes"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "مفردات الوجه"
+  },
+  {
+   "t": "t",
+   "q": "You hear with your ears.",
+   "a": true,
+   "lv": "k",
+   "obj": "مفردات الوجه"
+  },
+  {
+   "t": "t",
+   "q": "You see with your nose.",
+   "a": false,
+   "lv": "k",
+   "obj": "مفردات الوجه: hair, mouth, nose, eyes, ears"
+  },
+  {
+   "t": "t",
+   "q": "'She's got red hair.' is about a girl or a woman.",
+   "a": true,
+   "lv": "a",
+   "obj": "تركيب: He's got blue eyes./She's got brown hair."
+  }
+ ],
+ "g2e-4-4": [
+  {
+   "t": "m",
+   "q": "Which word has the 'o_e' sound?",
+   "o": [
+    "home",
+    "hot",
+    "hat",
+    "hen"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: o_e (Unit 4 Lesson 4)"
+  },
+  {
+   "t": "m",
+   "q": "Which word rhymes with 'nose'?",
+   "o": [
+    "rose",
+    "nut",
+    "net",
+    "nine"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: o_e"
+  },
+  {
+   "t": "m",
+   "q": "Asma is a girl. ___ got brown hair.",
+   "o": [
+    "She's",
+    "He's",
+    "It's",
+    "I'm"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "مفردات الأسرة والضمائر"
+  },
+  {
+   "t": "m",
+   "q": "Has he got blue eyes?",
+   "o": [
+    "Yes, he has.",
+    "Yes, she has.",
+    "Yes, it is.",
+    "Yes, I am."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: Who's this? He's got…"
+  },
+  {
+   "t": "m",
+   "q": "Which word does NOT have the 'o_e' sound?",
+   "o": [
+    "dog",
+    "bone",
+    "rope",
+    "home"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "صوتٌ مقترن: o_e"
+  },
+  {
+   "t": "t",
+   "q": "'He' is for a boy or a man.",
+   "a": true,
+   "lv": "k",
+   "obj": "مفردات الأسرة والضمائر"
+  },
+  {
+   "t": "t",
+   "q": "'She's got blue eyes.' is about a boy.",
+   "a": false,
+   "lv": "k",
+   "obj": "تركيب: He's got blue eyes./She's got brown hair."
+  },
+  {
+   "t": "t",
+   "q": "'Has she got brown hair?' — 'No, she hasn't.' is a good answer.",
+   "a": true,
+   "lv": "a",
+   "obj": "تركيب: Who's this? He's got…"
+  }
+ ],
+ "g2e-4-5": [
+  {
+   "t": "m",
+   "q": "🎂 A birthday ___",
+   "o": [
+    "cake",
+    "kite",
+    "ruler",
+    "desk"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مشروع: عيد ميلاد الأخ"
+  },
+  {
+   "t": "m",
+   "q": "🕯️🕯️🕯️🕯️🕯️🕯️🕯️ How many candles?",
+   "o": [
+    "seven",
+    "six",
+    "eight",
+    "five"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "مشروع: عيد ميلاد الأخ"
+  },
+  {
+   "t": "m",
+   "q": "You draw your family. You write: 'This is my ___.'",
+   "o": [
+    "sister",
+    "red",
+    "seven",
+    "under"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مشروع: وصف صورة"
+  },
+  {
+   "t": "m",
+   "q": "Which one is a family word?",
+   "o": [
+    "grandad",
+    "birthday",
+    "candle",
+    "cake"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة مفردات الأسرة"
+  },
+  {
+   "t": "m",
+   "q": "It's my birthday. I'm seven today. Next year, I'm…",
+   "o": [
+    "eight",
+    "six",
+    "seven",
+    "ten"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "مشروع: عيد ميلاد الأخ"
+  },
+  {
+   "t": "t",
+   "q": "My grandma is my mum's or my dad's mum.",
+   "a": true,
+   "lv": "k",
+   "obj": "مراجعة مفردات الأسرة"
+  },
+  {
+   "t": "t",
+   "q": "You show your picture to the class.",
+   "a": true,
+   "lv": "k",
+   "obj": "مشروع: وصف صورة"
+  },
+  {
+   "t": "t",
+   "q": "My grandad is a girl.",
+   "a": false,
+   "lv": "a",
+   "obj": "مراجعة مفردات الأسرة"
+  }
+ ],
+ "g2e-4-6": [
+  {
+   "t": "m",
+   "q": "This is my brother. ___ name's Ali.",
+   "o": [
+    "His",
+    "Her",
+    "She",
+    "He"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "الضمائر: He/His، She/Her"
+  },
+  {
+   "t": "m",
+   "q": "What's her name?",
+   "o": [
+    "Her name's Asma.",
+    "His name's Ali.",
+    "He's got blue eyes.",
+    "It's a pen."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: This is my sister. Her name's Asma."
+  },
+  {
+   "t": "m",
+   "q": "'This is my friend.' What do you say?",
+   "o": [
+    "Nice to meet you!",
+    "Goodbye!",
+    "Sit down!",
+    "It's a ball."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: This is my sister. Her name's Asma."
+  },
+  {
+   "t": "m",
+   "q": "Asma is a girl. Which word is for Asma?",
+   "o": [
+    "she",
+    "he",
+    "his",
+    "it"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "الضمائر: He/His، She/Her"
+  },
+  {
+   "t": "m",
+   "q": "Ali is my brother. Which sentence is right?",
+   "o": [
+    "His name's Ali.",
+    "Her name's Ali.",
+    "She's Ali.",
+    "His name's Asma."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "الضمائر: He/His، She/Her"
+  },
+  {
+   "t": "t",
+   "q": "'Her' is for a girl.",
+   "a": true,
+   "lv": "k",
+   "obj": "الضمائر: He/His، She/Her"
+  },
+  {
+   "t": "t",
+   "q": "'He' is for a girl.",
+   "a": false,
+   "lv": "k",
+   "obj": "الضمائر: He/His، She/Her"
+  },
+  {
+   "t": "t",
+   "q": "You say 'Nice to meet you!' to a new friend.",
+   "a": true,
+   "lv": "a",
+   "obj": "تركيب: This is my sister. Her name's Asma."
+  }
+ ],
+ "g2e-4-7": [
+  {
+   "t": "m",
+   "q": "My mum's brother is my…",
+   "o": [
+    "uncle",
+    "aunt",
+    "cousin",
+    "grandad"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة تراكمية لمفردات الوحدة ٤"
+  },
+  {
+   "t": "m",
+   "q": "Which word has the 'ar' sound?",
+   "o": [
+    "arm",
+    "egg",
+    "ant",
+    "ink"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة تراكمية لأصوات الوحدة ٤ (ee, er, ar, o_e)"
+  },
+  {
+   "t": "m",
+   "q": "Which word has the 'ee' sound?",
+   "o": [
+    "sheep",
+    "ship",
+    "shop",
+    "shoe"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة تراكمية لأصوات الوحدة ٤ (ee, er, ar, o_e)"
+  },
+  {
+   "t": "m",
+   "q": "This is my aunt. ___ name's Huda.",
+   "o": [
+    "Her",
+    "His",
+    "He",
+    "It"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "مراجعة تراكمية — Introducing family and friends"
+  },
+  {
+   "t": "m",
+   "q": "Which word has a different sound? (nose, rose, home, star)",
+   "o": [
+    "star",
+    "nose",
+    "rose",
+    "home"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "مراجعة تراكمية لأصوات الوحدة ٤ (ee, er, ar, o_e)"
+  },
+  {
+   "t": "t",
+   "q": "My sister is a boy.",
+   "a": false,
+   "lv": "k",
+   "obj": "مراجعة تراكمية لمفردات الوحدة ٤"
+  },
+  {
+   "t": "t",
+   "q": "'He's got black hair.' is about a boy or a man.",
+   "a": true,
+   "lv": "a",
+   "obj": "مراجعة تراكمية لتراكيب الوحدة ٤"
+  },
+  {
+   "t": "t",
+   "q": "'Sister' has the 'er' sound.",
+   "a": true,
+   "lv": "k",
+   "obj": "مراجعة تراكمية لأصوات الوحدة ٤ (ee, er, ar, o_e)"
+  }
+ ],
+ "g2e-lc2-1": [
+  {
+   "t": "m",
+   "q": "🦶🦶 Are there two feet?",
+   "o": [
+    "Yes, there are.",
+    "No, there isn't.",
+    "Yes, there is.",
+    "It's a foot."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تركيب العدّ: Are there three legs? Yes, there are."
+  },
+  {
+   "t": "m",
+   "q": "🧍 Is there one head?",
+   "o": [
+    "Yes, there is.",
+    "Yes, there are.",
+    "No, there are.",
+    "It's a hand."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب العدّ: Is there one arm? No, there isn't. There are four arms."
+  },
+  {
+   "t": "m",
+   "q": "👁️👁️👁️ How many eyes? There are ___ eyes.",
+   "o": [
+    "three",
+    "two",
+    "one",
+    "four"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب العدّ: Is there one arm? No, there isn't. There are four arms."
+  },
+  {
+   "t": "m",
+   "q": "Which one do you hold things with?",
+   "o": [
+    "hand",
+    "foot",
+    "leg",
+    "head"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "أجزاء الجسم: head, feet, leg, arm, hand"
+  },
+  {
+   "t": "m",
+   "q": "👋👋👋 Are there three hands?",
+   "o": [
+    "Yes, there are.",
+    "No, there aren't.",
+    "Yes, there is.",
+    "No, there isn't."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تركيب العدّ: Are there three legs? Yes, there are."
+  },
+  {
+   "t": "t",
+   "q": "'There is one head.' is about one thing.",
+   "a": true,
+   "lv": "k",
+   "obj": "تركيب العدّ: Is there one arm? No, there isn't. There are four arms."
+  },
+  {
+   "t": "t",
+   "q": "'There are one arm.' is right.",
+   "a": false,
+   "lv": "a",
+   "obj": "تركيب العدّ: Is there one arm? No, there isn't. There are four arms."
+  },
+  {
+   "t": "t",
+   "q": "We have got one leg.",
+   "a": false,
+   "lv": "k",
+   "obj": "أجزاء الجسم: head, feet, leg, arm, hand"
+  }
+ ],
+ "g2e-lc2-2": [
+  {
+   "t": "m",
+   "q": "Where do you see a doctor?",
+   "o": [
+    "hospital",
+    "café",
+    "shop",
+    "school"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "أماكن في المدينة: school, hospital, shops, houses, café"
+  },
+  {
+   "t": "m",
+   "q": "There are some ___.",
+   "o": [
+    "shops",
+    "shop",
+    "school",
+    "hospital"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: There is a hospital./There are some shops."
+  },
+  {
+   "t": "m",
+   "q": "There ___ a café.",
+   "o": [
+    "is",
+    "are",
+    "am",
+    "be"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: There is a hospital."
+  },
+  {
+   "t": "m",
+   "q": "You are hungry. Where can you go?",
+   "o": [
+    "café",
+    "hospital",
+    "school",
+    "bank"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "أماكن في المدينة: school, hospital, shops, houses, café"
+  },
+  {
+   "t": "m",
+   "q": "Which one is NOT a place in a town?",
+   "o": [
+    "tummy",
+    "school",
+    "café",
+    "hospital"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "أماكن في المدينة: school, hospital, shops, houses, café"
+  },
+  {
+   "t": "t",
+   "q": "People live in houses.",
+   "a": true,
+   "lv": "k",
+   "obj": "أماكن في المدينة: school, hospital, shops, houses, café"
+  },
+  {
+   "t": "t",
+   "q": "'There are some shops' is about one shop.",
+   "a": false,
+   "lv": "k",
+   "obj": "تركيب: There is a hospital./There are some shops."
+  },
+  {
+   "t": "t",
+   "q": "You buy things at a shop.",
+   "a": true,
+   "lv": "a",
+   "obj": "أماكن في المدينة: school, hospital, shops, houses, café"
+  }
+ ]
+}

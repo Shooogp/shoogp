@@ -1,0 +1,882 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>بالونات العيد</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Cairo:wght@700;900&display=swap">
+<style>
+/* مسودة صفحة اللعبة داخل موقع شوجب: ترويسة الدرس كما هي في المنصة، ثم «بطاقة الكتاب العامة» كبيرة
+   (لون الكتاب + شبكة النقاط + الدائرتان + الإطار الأبيض) تضمّ السؤال يميناً والمشهد يساراً.
+   بلا عمود الصاروخ وبلا إطار السؤال القمري. القيم مأخوذة من css/style.css و css/shoogp-ui.css. */
+:root{
+  color-scheme: dark;
+  --ink:#eef0ff;            /* نص الصفحة */
+  --sub:#cfc4f5;            /* السطر التعريفي */
+  --hint:#b8aee5;
+  --bk-a:#5cc98a;           /* بطاقة علوم الصف الرابع: bk-green */
+  --bk-b:#3fa870;
+  --wash:rgba(6,38,24,.34);  /* غسلة داكنة فوق لون الكتاب حتى يقرأ النص الأبيض بوضوح */
+  --rk-hi:#fdf4e2; --rk-mid:#f3ddb6; --rk-lo:#e4c691; --rk-edge:#cba86e; --rk-ink:#4a3117;   /* قشرة العلوم الصخرية */
+  --sun:#FFC93C;
+  --body:'Tajawal','Segoe UI',Tahoma,system-ui,sans-serif;
+  --display:'Cairo','Tajawal',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;
+  background:linear-gradient(rgb(28,37,64) 0%,rgb(36,58,84) 32%,rgb(47,85,96) 65%,rgb(58,117,102) 100%) fixed,rgb(36,58,84)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.bgstars{position:fixed;inset:0;pointer-events:none;z-index:0}
+.bgstars i{position:absolute;border-radius:50%;background:#fff}
+
+.page{position:relative;z-index:1;min-height:100%;max-width:1760px;margin-inline:auto;
+  padding-block:10px;padding-inline:clamp(16px,3vw,56px);
+  display:grid;grid-template-rows:auto auto auto minmax(440px,1fr) auto;gap:6px}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.back{font:700 15px var(--body);color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+  border-radius:14px;padding:10px 20px;cursor:pointer;min-height:44px}
+.icon-btn{width:52px;height:40px;border-radius:16px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.14);
+  color:#fff;display:grid;place-items:center;cursor:pointer}
+.icon-btn svg{width:22px;height:22px}
+.tools{display:flex;gap:10px}
+.icon-btn[aria-pressed="false"]{color:rgba(255,255,255,.55)}
+.icon-btn[aria-pressed="false"] .wave{display:none}
+.icon-btn[aria-pressed="true"] .mute-x{display:none}
+.lesson-head{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.eyebrow{display:block;font-weight:700;font-size:clamp(13px,1.05vw,17px);color:var(--sub);text-shadow:0 1px 5px rgba(8,22,18,.75)}
+h1{margin:0;font-family:var(--display);font-weight:700;font-size:clamp(23px,2.2vw,38px);line-height:1.35;color:var(--ink);
+  text-shadow:0 2px 7px rgba(8,22,18,.8),0 0 3px rgba(8,22,18,.65);text-wrap:balance}
+.logo{height:clamp(44px,4.6vw,74px);width:auto;flex:none}
+.sub{margin:0;color:var(--sub);font-size:clamp(14px,1.1vw,18px);text-shadow:0 1px 5px rgba(8,22,18,.75)}
+
+/* ── بطاقة الكتاب العامة ── */
+.gcard{position:relative;container-type:inline-size;isolation:isolate;min-height:0;
+  border:7px solid #fff;border-radius:30px;overflow:hidden;box-shadow:0 2px 5px rgba(0,0,0,.28),0 10px 28px rgba(8,22,18,.3);
+  display:grid;padding:clamp(12px,1.3vw,22px)}
+.gcard::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.9;
+  background:
+    radial-gradient(rgba(255,255,255,.22) 1.6px,rgba(255,255,255,0) 1.9px) 0 0/30px 30px repeat,
+    radial-gradient(closest-side,rgba(255,255,255,.3) 99.4%,rgba(255,255,255,0) 100%) left -60px top -90px/430px 430px no-repeat,
+    radial-gradient(closest-side,rgba(255,255,255,.3) 99.4%,rgba(255,255,255,0) 100%) right -70px bottom -50px/350px 350px no-repeat,
+    linear-gradient(var(--wash),var(--wash)),
+    linear-gradient(160deg,var(--bk-a) 0%,var(--bk-b) 100%)}
+@supports (width:1cqw){
+  .gcard::before{background:
+    radial-gradient(rgba(255,255,255,.22) 1.6px,rgba(255,255,255,0) 1.9px) 0 0/30px 30px repeat,
+    radial-gradient(closest-side,rgba(255,255,255,.3) 99.4%,rgba(255,255,255,0) 100%) left -6.7cqw top -10.4cqw/57.8cqw 57.8cqw no-repeat,
+    radial-gradient(closest-side,rgba(255,255,255,.3) 99.4%,rgba(255,255,255,0) 100%) right -9cqw bottom -5.2cqw/47.4cqw 47.4cqw no-repeat,
+    linear-gradient(var(--wash),var(--wash)),
+    linear-gradient(160deg,var(--bk-a) 0%,var(--bk-b) 100%)}
+}
+.ghead{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.badge{display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;text-shadow:0 2px 3px rgba(0,40,70,.75);
+  background:center/100% 100% no-repeat;white-space:nowrap;flex:none;width:var(--bw);overflow:hidden}
+.badge.qnum{--bw:clamp(170px,14.5vw,260px);height:calc(var(--bw)*163/640);font-family:var(--display);font-size:clamp(15px,1.2vw,21px);background-image:url(../art/badge-qnum.webp)}
+.badge.qtype{--bw:clamp(165px,13.5vw,244px);height:calc(var(--bw)*173/560);font-size:clamp(13px,1.05vw,19px);background-image:url(../art/badge-qtype.webp);
+  padding-left:calc(var(--bw)*.2);padding-top:calc(var(--bw)*.03)}
+#pips{display:none}
+
+.gmain{display:grid;gap:clamp(12px,1.8vw,30px);min-height:0;grid-template-columns:minmax(0,1fr)}
+.stage{order:-1;position:relative;border:5px solid #fff;border-radius:22px;overflow:hidden;background:#4E90DE;direction:ltr;
+  aspect-ratio:1/1;max-width:100%;box-shadow:0 2px 5px rgba(0,0,0,.28)}
+.stage svg{display:block;width:100%;height:100%;overflow:visible}
+.ask{display:flex;flex-direction:column;gap:clamp(10px,1.8vh,20px);min-width:0}
+.ask .mid{margin-block:auto;display:flex;flex-direction:column;gap:clamp(10px,1.8vh,20px)}
+@media (min-width:900px){
+  .page{height:100%}
+  .gmain{grid-template-columns:minmax(0,1.04fr) minmax(0,1fr)}
+  .stage{order:0;aspect-ratio:auto;min-height:320px}
+}
+
+/* ── السؤال: نصّه مباشرةً على البطاقة، وخياراته بقشرة العلوم الصخرية ── */
+.q{display:flex;flex-direction:column;gap:clamp(10px,1.8vh,20px)}
+.kind{margin:0;font-weight:700;font-size:clamp(14px,1.1vw,19px);color:rgba(255,255,255,.95);text-shadow:0 1px 4px rgba(8,40,28,.6)}
+.qtext{margin:0;font-weight:800;font-size:clamp(23px,2.25vw,40px);line-height:1.7;color:#fff;text-wrap:balance;
+  text-shadow:0 2px 6px rgba(8,40,28,.55),0 0 2px rgba(8,40,28,.5)}
+.opts{display:grid;gap:clamp(12px,1.3vw,18px);grid-template-columns:1fr}
+.opts.tf{grid-template-columns:1fr 1fr}
+@media (min-width:1200px){.opts.mcq{grid-template-columns:1fr 1fr}}
+.stone{font:800 clamp(19px,1.7vw,29px)/1.5 var(--body);color:var(--rk-ink);text-align:center;text-shadow:0 1px 0 rgba(255,255,255,.55);
+  min-height:clamp(62px,8vh,96px);padding:12px 22px;cursor:pointer;border:1px solid var(--rk-edge);border-radius:999px;
+  background:
+    radial-gradient(50% 50% at 50% 42%,rgba(132,94,44,.42) 0 30%,rgba(255,252,240,.6) 56%,rgba(255,252,240,0) 76%) 12% 30%/11px 11px no-repeat,
+    radial-gradient(50% 50% at 50% 44%,rgba(146,106,52,.36) 0 33%,rgba(255,250,235,.5) 58%,rgba(255,250,235,0) 77%) 86% 68%/9px 9px no-repeat,
+    radial-gradient(50% 50% at 50% 46%,rgba(160,120,64,.26) 0 36%,rgba(255,248,230,.42) 60%,rgba(255,248,230,0) 78%) 62% 20%/8px 8px no-repeat,
+    linear-gradient(180deg,var(--rk-hi) 0%,var(--rk-mid) 52%,var(--rk-lo) 100%);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.78),inset 0 -3px 0 rgba(150,112,52,.3),inset 0 -8px 11px -7px rgba(120,86,36,.38),
+             0 3px 0 rgba(163,127,72,.55),0 6px 12px rgba(60,40,15,.26);
+  transition:transform .12s,opacity .3s,filter .2s}
+.stone:hover{transform:translateY(-2px)}
+.stone:active{transform:translateY(3px)}
+.opts.locked .stone{pointer-events:none}
+.opts.locked .stone:not(.ok):not(.no){opacity:.55;filter:saturate(.6)}
+.stone.ok{background:linear-gradient(180deg,rgba(255,255,255,.5) 0%,rgba(255,255,255,.14) 40%,rgba(255,255,255,0) 56%),linear-gradient(180deg,#ddf4c8 0%,#aee08a 52%,#8ccf66 100%);
+  border-color:#5fa23f;color:#22380b;box-shadow:0 4px 9px rgba(40,80,20,.28),0 0 14px rgba(190,240,150,.7),inset 0 1px 0 rgba(255,255,255,.45);animation:lift .9s ease both}
+.stone.no{background:linear-gradient(180deg,#fbe3da 0%,#f1bfae 55%,#e3a08b 100%);border-color:#c0705a;color:#5c1f12;animation:shake .45s}
+button:focus-visible,select:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+
+.foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;min-height:72px}
+.fb{margin:0;flex:1 1 220px;min-width:0;font-weight:800;font-size:clamp(17px,1.5vw,25px);line-height:1.6;color:#fff;text-shadow:0 2px 5px rgba(8,40,28,.6)}
+.fb small{display:block;font-weight:500;font-size:.8em;color:rgba(255,255,255,.92)}
+.fb.good{color:#f3ffd9}
+.fb.bad{color:#fff0ea}
+.next{position:relative;flex:none;width:clamp(150px,12.5vw,220px);aspect-ratio:560/234;border:0;padding:0;background:none;cursor:pointer;
+  transition:transform .15s}
+.next img{position:absolute;inset:0;width:100%;height:100%;transform:scaleX(-1)}
+.next span{position:absolute;inset:0;display:grid;place-items:center;padding-inline-start:12%;color:#fff;font:800 clamp(16px,1.3vw,23px) var(--body);
+  text-shadow:0 2px 4px rgba(150,70,5,.85),0 0 8px rgba(150,70,5,.4)}
+.next:hover{transform:scale(1.04)}
+.next:active{transform:scale(.95)}
+
+.done{display:flex;flex-direction:column;gap:12px}
+.done h2{margin:0;font-family:var(--display);font-weight:900;font-size:clamp(28px,2.9vw,52px);line-height:1.35;color:#fff;text-wrap:balance;
+  text-shadow:0 2px 7px rgba(8,40,28,.6)}
+.done p{margin:0;font-weight:700;font-size:clamp(18px,1.6vw,27px);color:#fff;text-shadow:0 1px 4px rgba(8,40,28,.55)}
+.done .fact{font-weight:500;color:rgba(255,255,255,.95)}
+.done .stone{align-self:flex-start;margin-top:8px;padding-inline:34px}
+
+/* ── أدوات المعاينة (ليست جزءاً من صفحة الموقع) ── */
+.page>*{min-width:0}
+.lessonbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding:8px 14px;border-radius:18px;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2)}
+.lessonbar label{display:flex;align-items:center;gap:10px;flex:1 1 320px;min-width:0;font-weight:800;font-size:clamp(15px,1.1vw,19px);color:#fff}
+.lessonbar select{flex:1 1 auto;min-width:0;width:100%;max-width:640px;font:700 clamp(15px,1.1vw,19px) var(--body);color:#fff;background:rgba(9,20,40,.45);
+  border:1px solid rgba(255,255,255,.28);border-radius:12px;padding:8px 12px;min-height:46px;cursor:pointer}
+.lessonbar select option,.lessonbar select optgroup{color:#16213a;background:#fff}
+.lessonbar select optgroup{font-weight:800}
+.lessonbar button{font:800 clamp(15px,1.1vw,19px) var(--body);color:#fff;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);
+  border-radius:12px;padding:8px 18px;cursor:pointer;min-height:46px;display:flex;align-items:center;gap:8px}
+.lessonbar button svg{width:20px;height:20px}
+.lessonbar button:hover{background:rgba(255,255,255,.24)}
+.hint{margin:0;text-align:center;font-size:13px;color:var(--hint)}
+/* الشارة السوداء أسفل المشهد حُذفت (قرار المالك)، ومكانها زرّ «إعادة اللعبة» */
+#cap{display:none!important}
+.restart{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);z-index:3;direction:rtl;
+  display:flex;align-items:center;gap:8px;font:800 clamp(14px,1.3vw,20px)/1.4 var(--body);color:#F6EFE1;cursor:pointer;
+  background:rgba(15,21,48,.82);border:0;border-radius:999px;padding:8px 18px;white-space:nowrap}
+.restart svg{width:20px;height:20px}
+.restart:hover{background:rgba(15,21,48,.95)}
+
+/* ── شارات المشهد ── */
+.chip{position:absolute;direction:rtl;font-weight:800;font-size:clamp(14px,1.3vw,20px);line-height:1.4;
+  padding:8px 16px;border-radius:999px;background:rgba(15,21,48,.82);color:#F6EFE1;max-width:calc(100% - 24px)}
+.sunchip{top:12px;right:12px;display:flex;align-items:center;gap:8px}
+.sunchip i{width:14px;height:14px;border-radius:50%;background:var(--sun);flex:none}
+.sunchip.night i{background:#FDF3C8;box-shadow:inset -5px 0 0 rgba(15,21,48,.82)}
+.cap{bottom:12px;left:50%;transform:translateX(-50%);text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cap.pop{animation:pop .5s}
+
+/* ── المشهد ── */
+#sun{transition:transform 1.6s cubic-bezier(.4,0,.2,1),opacity 1.2s}
+.booting #sun,.booting #tint,.booting #dusk{transition:none}
+#stars,#lights,#moonGlow{opacity:0;transition:opacity 1.4s}
+#moon{opacity:.7;transition:opacity 1.4s}
+.is-night #stars,.is-night #moon,.is-night #lights,.is-night #moonGlow{opacity:1}
+.is-night #sun{opacity:0}
+.ghost{fill:rgba(255,255,255,.14);stroke:#1D2A55;stroke-opacity:.75;stroke-width:4;stroke-dasharray:13 11;stroke-linejoin:round}
+.ghost.built{display:none}
+.is-night .ghost{stroke:#fff;stroke-opacity:.8}
+.ghost.nextup{stroke-opacity:1;stroke-width:6;animation:glow 1.5s ease-in-out infinite}
+.piece .built{display:none}
+.piece.on .built{display:inline}
+.piece.drop .built{animation:lowerF 1.8s cubic-bezier(.16,.7,.3,1) both}
+#crane.lowering .crane-move{animation:lower 1.8s cubic-bezier(.16,.7,.3,1) both}
+#tint{mix-blend-mode:multiply;transition:fill 1.6s}
+#dusk{transition:opacity 1.6s}
+#lights .lt{display:none}
+#lights .lt.on{display:inline}
+#beam{display:none;opacity:.5}
+#beam.on{display:inline}
+.is-night #beam{opacity:.95}
+.beamspin{transform-box:fill-box;transform-origin:center;animation:sweep 3.2s ease-in-out infinite}
+#crane .ropes{transition:opacity .2s}
+#crane.leaving .ropes{opacity:0}
+#crane.leaving .crane-move{animation:leave 1.1s .12s cubic-bezier(.5,0,.9,.4) both}
+.flame{transform-box:fill-box;transform-origin:top center;animation:flick .18s ease-in-out infinite alternate}
+.stage.thud svg{animation:thud .28s}
+.slit{fill:#3E2A1A}
+.is-night .slit,.is-night .lamp{fill:#FFD66B}
+.puff{transform-box:fill-box;transform-origin:center;animation:puff .7s ease-out forwards}
+#flag{display:none}
+#flag.up{display:inline}
+#flag.up .pole{transform-box:fill-box;transform-origin:bottom;animation:grow .6s ease-out both}
+#flag.up .cloth{animation:raise 2.2s .3s cubic-bezier(.3,0,.2,1) both}
+#flag.up .wave{transform-box:fill-box;transform-origin:left center;animation:wave 1.8s 2.4s ease-in-out infinite}
+.spark{transform-box:fill-box;transform-origin:center;animation:spark 1.1s ease-out both}
+#rocket{display:none}
+#rocket.go{display:inline;animation:fly 3.6s 2.2s cubic-bezier(.45,0,.4,1) both}
+
+@keyframes lower{from{transform:translateY(-1100px)}to{transform:translateY(0)}}
+@keyframes lowerF{from{transform:translateY(-1964.3px)}to{transform:translateY(0)}}
+@keyframes leave{from{transform:translateY(0)}to{transform:translateY(-1250px)}}
+@keyframes flick{from{transform:scaleY(.75)}to{transform:scaleY(1.15)}}
+@keyframes thud{0%,100%{transform:translateY(0)}40%{transform:translateY(4px)}}
+@keyframes puff{0%{transform:scale(.3);opacity:.85}100%{transform:scale(2.3) translateY(-6px);opacity:0}}
+@keyframes glow{0%,100%{fill:rgba(255,201,60,.10)}50%{fill:rgba(255,201,60,.42)}}
+@keyframes lift{0%{transform:translateY(0)}35%{transform:translateY(-10px) scale(1.03)}100%{transform:translateY(0)}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(7px)}50%{transform:translateX(-7px)}75%{transform:translateX(4px)}}
+@keyframes pop{0%{transform:translateX(-50%) scale(.85)}60%{transform:translateX(-50%) scale(1.06)}100%{transform:translateX(-50%) scale(1)}}
+@keyframes grow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes raise{from{transform:translateY(216px)}to{transform:translateY(0)}}
+@keyframes wave{0%,100%{transform:skewY(0)}50%{transform:skewY(-5deg)}}
+@keyframes spark{0%{transform:scale(0);opacity:1}60%{opacity:1}100%{transform:scale(1.5);opacity:0}}
+@keyframes sweep{0%,100%{transform:scaleX(1);opacity:.8}50%{transform:scaleX(.05);opacity:.25}}
+@keyframes fly{0%{transform:translate(var(--px),var(--py)) rotate(0deg) scale(1.5);opacity:0}6%{opacity:1}28%{transform:translate(calc(var(--px) - 6px),calc(var(--py) - 220px)) rotate(-8deg) scale(1.5)}90%{opacity:1}100%{transform:translate(var(--mx),var(--my)) rotate(-62deg) scale(.3);opacity:0}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  #rocket.go{display:none}
+}
+[hidden]{display:none!important}
+/* ══════ لعبة بالونات العيد ══════ */
+.stage{background:#86C4EB}
+.stage .layer{position:absolute;inset:0;pointer-events:none}
+.mlab{position:absolute;pointer-events:auto;transform:none!important;translate:-50% 0;direction:rtl;transition:opacity .35s!important;
+  font:800 clamp(14px,1.25vw,22px)/1.4 var(--body)!important;min-height:0!important;padding:6px 14px!important;
+  max-width:var(--mw,170px);width:max-content;text-wrap:balance;z-index:2}
+.mlab.tf{font-size:clamp(18px,1.7vw,28px)!important;padding:8px 22px!important}
+.mlab.gone{opacity:0;transition:opacity .35s;pointer-events:none}
+.mlab,.mlab.ok,.mlab.no{animation:none!important}
+.locked .mlab{pointer-events:none}
+.balloon{cursor:pointer}
+.locked .balloon{cursor:default}
+.tip{top:12px;right:12px;display:flex;align-items:center;gap:8px}
+.tip b{color:var(--sun)}
+.instr{margin:0;font-weight:700;font-size:clamp(16px,1.3vw,22px);color:#fff7d6;text-shadow:0 1px 4px rgba(8,40,28,.6)}
+.frag{animation:frag .9s cubic-bezier(.2,.6,.4,1) forwards}
+.conf{animation:conf 1.6s cubic-bezier(.2,.5,.5,1) forwards}
+.pop{transform-box:fill-box;transform-origin:center;animation:pop .45s ease-out forwards}
+.gift{transform-box:fill-box;transform-origin:center bottom}
+.gift.land{animation:land .35s ease-out}
+.bulb{animation:tw 1.6s ease-in-out infinite alternate}
+#basket.bump{animation:bump .4s ease-out;transform-box:fill-box;transform-origin:center bottom}
+@keyframes frag{0%{transform:translate(0,0) rotate(0);opacity:1}100%{transform:translate(var(--dx),var(--dy)) rotate(var(--r,120deg));opacity:0}}
+@keyframes conf{0%{transform:translate(0,0) rotate(0);opacity:1}100%{transform:translate(var(--dx),var(--dy)) rotate(var(--r,360deg));opacity:0}}
+@keyframes pop{0%{transform:scale(.3);opacity:1}100%{transform:scale(1.8);opacity:0}}
+@keyframes land{0%{transform:scale(1.15,.85)}100%{transform:scale(1)}}
+@keyframes bump{0%{transform:scale(1)}40%{transform:scale(1.05,.94)}100%{transform:scale(1)}}
+@keyframes tw{from{opacity:.55}to{opacity:1}}
+
+.ring{transform-box:fill-box;transform-origin:center;animation:ring .5s ease-out forwards}
+.ring.r2{animation-duration:.7s;animation-delay:.05s}
+.frag.star{animation-duration:.6s}
+.stage.quake svg{animation:quake .4s}
+@keyframes ring{0%{transform:scale(.5);opacity:1}100%{transform:scale(4.2);opacity:0}}
+@keyframes quake{0%,100%{transform:translate(0,0)}25%{transform:translate(-5px,3px)}50%{transform:translate(5px,-3px)}75%{transform:translate(-3px,2px)}}
+
+/* داخل صفحة ألعاب الكتاب: الرأس والرجوع والتلميح في الصفحة الأم */
+html.embed body{background:transparent}
+html.embed .bgstars,html.embed .back,html.embed .eyebrow,html.embed .logo,html.embed .hint{display:none}
+html.embed .page{max-width:none;padding:4px 0 10px;grid-template-rows:auto auto minmax(440px,1fr)}
+html.embed .topbar{position:absolute;inset-inline-end:8px;top:6px;z-index:5}
+@media (max-width:899px){html.embed .topbar{position:static;justify-content:flex-end}html.embed .page{grid-template-rows:none}}
+
+/* كتب الإنجليزية: كل سطر يأخذ اتجاه أول حرف فيه، فلا تقفز علامات الترقيم والأرقام */
+html.en body *{unicode-bidi:plaintext}
+</style>
+
+<div class="bgstars" id="bgstars" aria-hidden="true"></div>
+<div class="page" dir="rtl" lang="ar">
+  <div class="topbar">
+    <button class="back" type="button">→ رجوع للدروس</button>
+    <div class="tools">
+    <button class="icon-btn" id="sound" type="button" aria-pressed="true" aria-label="الصوت">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path class="wave" d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/><path class="mute-x" d="M17 9l5 6M22 9l-5 6"/></svg>
+    </button>
+    </div>
+  </div>
+  <div class="lesson-head">
+    <div>
+      <span class="eyebrow" id="eyebrow"></span>
+      <h1 id="ttl">بالونات العيد في الحارة القديمة</h1>
+    </div>
+    <img class="logo" src="../art/logo.png" alt="شوجب">
+  </div>
+  <p class="sub">أجيبوا عن الأسئلة: المسوا البالون الذي يحمل الإجابة الصحيحة فيتفرقع وتسقط هديته في سلّة العيد 🎈</p>
+
+  <section class="gcard" aria-label="بطاقة اللعبة">
+    <div class="gmain">
+      <div class="ask">
+        <div class="ghead" aria-live="polite">
+          <span class="badge qnum" id="pipText"></span>
+          <span class="badge qtype" id="kindBadge"></span>
+        </div>
+        <div class="mid">
+        <div class="q" id="qwrap">
+          <p class="kind" id="kind"></p>
+          <h2 class="qtext" id="qtext"></h2>
+          <p class="instr" id="instr">👆 المسوا البالون الذي يحمل الإجابة الصحيحة قبل أن يطير بعيداً</p>
+        </div>
+        <div class="foot" id="foot">
+          <p class="fb" id="fb" aria-live="polite"></p>
+          <button class="next" id="next" type="button" hidden><img src="../art/btn-next.webp" alt=""><span>التالي</span></button>
+        </div>
+        <div class="done" id="done" hidden>
+          <h2 id="doneTitle"></h2>
+          <p id="doneText"></p>
+          <p class="fact" id="doneFact">قبل العيد تُقام في ولايات عُمان أسواق «الهبطة» لشراء ملابس العيد وحاجاته، وفي العيد يُطهى «الشواء» العُماني في حفرة تحت الأرض يوماً كاملاً أو أكثر، ويأخذ الأطفال «العيدية» من الكبار.</p>
+          <button class="stone" id="again" type="button">العبوا من جديد</button>
+        </div>
+        </div>
+      </div>
+      <section class="stage" id="stage" aria-label="مشهد بالونات العيد في الحارة القديمة">
+        <svg id="scene" viewBox="120 -260 1136 1120" preserveAspectRatio="xMidYMax meet" role="img" aria-label="بالونات ملوّنة تطير في سماء الحارة القديمة وسلّة العيد في وسط الساحة">
+          <defs>
+            <linearGradient id="skyHi" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5FA8E6"/><stop offset="1" stop-color="#86C4EB"/></linearGradient>
+            <linearGradient id="fadeTop" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#86C4EB"/><stop offset="1" stop-color="#86C4EB" stop-opacity="0"/></linearGradient>
+            <linearGradient id="fadeBot" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EFC98F" stop-opacity="0"/><stop offset="1" stop-color="#EFC98F"/></linearGradient>
+            <radialGradient id="shine" cx=".32" cy=".28" r=".5"><stop offset="0" stop-color="#fff" stop-opacity=".75"/><stop offset=".45" stop-color="#fff" stop-opacity=".18"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+            <radialGradient id="shade" cx=".5" cy=".42" r=".62"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".28"/></radialGradient>
+            <radialGradient id="popG"><stop offset="0" stop-color="#FFFBE0"/><stop offset=".5" stop-color="#FFF3B0" stop-opacity=".6"/><stop offset="1" stop-color="#FFF3B0" stop-opacity="0"/></radialGradient>
+            <radialGradient id="glowG"><stop offset="0" stop-color="#FFF6C8"/><stop offset=".4" stop-color="#FFD866" stop-opacity=".8"/><stop offset="1" stop-color="#FFB030" stop-opacity="0"/></radialGradient>
+          </defs>
+          <rect x="-3000" y="-3000" width="8000" height="3002" fill="#86C4EB"/>
+          <rect x="-3000" y="-900" width="8000" height="902" fill="url(#skyHi)"/>
+          <rect x="-3000" y="766" width="8000" height="1200" fill="#EFC98F"/>
+          <image href="../art/hara.jpg" x="0" y="0" width="1376" height="768" preserveAspectRatio="none" transform="translate(1 0) scale(-1 1)"/>
+          <image href="../art/hara.jpg" x="0" y="0" width="1376" height="768" preserveAspectRatio="none" transform="translate(2751 0) scale(-1 1)"/>
+          <image href="../art/hara.jpg" x="0" y="0" width="1376" height="768" preserveAspectRatio="none"/>
+          <rect x="-1376" y="0" width="4128" height="30" fill="url(#fadeTop)"/>
+          <rect x="-1376" y="730" width="4128" height="38" fill="url(#fadeBot)"/>
+          <g id="lights"></g>
+          <ellipse cx="688" cy="760" rx="150" ry="16" fill="#6B4E26" opacity=".22"/>
+          <g id="gifts"></g>
+          <image id="basket" href="../art/jafeer.webp" x="573" y="560" width="230" height="202.3"/>
+          <g id="balloons"></g>
+          <g id="fx" pointer-events="none"></g>
+        </svg>
+        <div class="layer" id="labels"></div>
+        <div class="chip tip" id="tip"><span>🎁 هدايا العيد: <b id="cnt">٠</b> من ٦</span></div>
+        <button class="restart" id="restart" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 2.6-5.9"/><path d="M4 4v5h5"/></svg>إعادة اللعبة</button>
+      </section>
+    </div>
+  </section>
+  <p class="hint">💡 مصمَّم للمس على السبورة · الأصوات تعمل بعد أول لمسة</p>
+</div>
+
+<script>/* بيانات الكتاب من ?book= (افتراضياً علوم الرابع) */(function(){var b=null;try{b=new URLSearchParams(location.search).get("book")}catch(e){}if(!b||!/^g[1-4]-[a-z0-9-]+$/.test(b))b="g4-sci";document.write('<script charset="utf-8" src="../data/'+b+'.js"><\/script>')})();</script>
+<script>
+/* ═════ نطاق الأسئلة: ?scope=u<رقم الوحدة> للوحدة كاملة، أو ?scope=l:<معرّف الدرس> لدرس واحد ═════ */
+const QS_ = new URLSearchParams(location.search);
+if(BOOKDATA.en) document.documentElement.classList.add('en');
+
+const EMBED = QS_.has('embed');
+if(EMBED) document.documentElement.classList.add('embed');
+const BOOK = {id:BOOKDATA.id, subject:BOOKDATA.subject, grade:BOOKDATA.grade};
+const UNITS = (function(){
+  const d = n => String(n).replace(/\d/g, c => '٠١٢٣٤٥٦٧٨٩'[c]);
+  const s = QS_.get('scope') || ('u' + (QS_.get('unit') || 1));
+  const all = x => x.lessons.reduce((a,l) => a.concat(l.qs), []);
+  if(s.indexOf('l:') === 0){
+    const id = s.slice(2);
+    for(const x of BOOKDATA.units){ const l = x.lessons.find(l => l.id === id);
+      if(l) return [{id:s, g:BOOK.grade, un:x.un, u:l.t, lab:'درس «'+l.t+'»', qs:l.qs.length ? l.qs : all(x)}]; }
+  }
+  const x = BOOKDATA.units.find(x => 'u'+x.un === s) || BOOKDATA.units[0];
+  return [{id:'u'+x.un, g:BOOK.grade, un:x.un, u:x.u, lab:'الوحدة '+d(x.un)+' كاملة: '+x.u, qs:all(x)}];
+})();
+/* ═════ بالونات العيد: السؤال في البطاقة، وخياراته معلّقة ببالونات تطير في سماء الحارة القديمة ═════ */
+const GOAL = 6;              // عدد الهدايا التي تملأ سلّة العيد
+const RISE = 40;             // ثوانٍ حتى يطير البالون من الساحة إلى أعلى السماء
+const TOP = -150;            // إذا وصل البالون إلى هنا قبل الإجابة طارت البالونات
+const BR = 76;               // نصف عرض البالون
+const SVGNS = 'http://www.w3.org/2000/svg';
+const $ = id => document.getElementById(id);
+const ar = n => String(n).replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
+const SC = {amb:'sparrows'};
+const COLORS = [['#FF5A6E','#C42A42'],['#FFC93C','#D9921A'],['#49C46A','#228A44'],['#4FA3F2','#2462B8'],['#A57BF0','#6A44C0'],['#FF8A3D','#CC5414']];
+const GIFTS = [['halwa','الحلوى العُمانية',254,254],['dates','التمر',260,231],['lantern','الفانوس',132,253],['kumma','الكُمّة',600,496],['dallah','الدلّة',236,293],['fabric','قماش ثوب العيد',179,270]];
+const BASKET = {x:573, y:560, w:230, h:202.3, rim:621};
+const SLOTS = [[-62,652],[-20,656],[22,652],[62,656],[-40,628],[40,628]];   // مركز الهدية أفقياً وأسفلها داخل السلّة
+
+let S = null, unit = null, M = [], timers = [], raf = 0, lastT = 0;
+const later = (fn,ms) => { const id=setTimeout(fn,ms); timers.push(id); };
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function countQ(n){ if(n===1) return 'سؤال واحد'; if(n===2) return 'سؤالين'; return ar(n)+(n<=10?' أسئلة':' سؤالاً'); }
+
+/* ═════ الصوت: كلّه مولَّد بالكود (WebAudio) بلا ملفات، ويخضع لزرّ الكتم ═════ */
+let ac=null, muted=false, eng=null, amb=null;
+function actx(){
+  try{ ac = ac || new (window.AudioContext||window.webkitAudioContext)(); if(ac.state==='suspended') ac.resume(); return ac; }
+  catch(e){ return null; }
+}
+function noiseSrc(c,dur){
+  const n=Math.max(1,(c.sampleRate*dur)|0), b=c.createBuffer(1,n,c.sampleRate), d=b.getChannelData(0);
+  for(let i=0;i<n;i++) d[i]=Math.random()*2-1;
+  const s=c.createBufferSource(); s.buffer=b; return s;
+}
+function tone(f,at,dur,type,gain,f2){
+  const o=ac.createOscillator(), g=ac.createGain();
+  o.type=type||'sine'; o.frequency.setValueAtTime(f,at); if(f2) o.frequency.exponentialRampToValueAtTime(f2,at+dur);
+  g.gain.setValueAtTime(0.0001,at); g.gain.exponentialRampToValueAtTime(gain||.15,at+.015); g.gain.exponentialRampToValueAtTime(0.0001,at+dur);
+  o.connect(g).connect(ac.destination); o.start(at); o.stop(at+dur+.05);
+}
+function sfx(name){
+  if(muted) return;
+  try{
+    if(!actx()) return;
+    const t=ac.currentTime+.01;
+    if(name==='ok'){ tone(523,t,.14,'triangle',.16); tone(784,t+.11,.24,'triangle',.16); }
+    else if(name==='thud'){ tone(120,t,.28,'sine',.5,42); tone(70,t,.12,'square',.08,40); }
+    else if(name==='no'){ tone(330,t,.32,'triangle',.12,210); }
+    else if(name==='win'){ [523,659,784,1047].forEach((f,i)=>tone(f,t+i*.15,.3,'triangle',.16)); tone(1047,t+.62,.9,'triangle',.12); tone(784,t+.62,.9,'sine',.1); }
+  }catch(e){}
+}
+/* هدير المحرّك: وصفة صاروخ المنصّة نفسها (ضجيج عريض ← lowpass 360 ← bandpass 180، باتّساع خشن وطقطقة عشوائية) */
+function engineStart(level){
+  if(muted) return;
+  try{
+    const c=actx(); if(!c) return; engineStop(.05);
+    const g=c.createGain(); g.gain.value=0; g.connect(c.destination);
+    const amp=c.createGain(); amp.gain.value=1; amp.connect(g);
+    const n=noiseSrc(c,3); n.loop=true;
+    const lp=c.createBiquadFilter(); lp.type='lowpass'; lp.frequency.value=360; lp.Q.value=.6;
+    const bp=c.createBiquadFilter(); bp.type='bandpass'; bp.frequency.value=180; bp.Q.value=.9;
+    const bpg=c.createGain(); bpg.gain.value=2.2;
+    n.connect(lp); lp.connect(bp); bp.connect(bpg); bpg.connect(amp); n.start();
+    const timer=setInterval(()=>{
+      const t=c.currentTime;
+      try{ amp.gain.setTargetAtTime(.55+Math.random()*.75,t,.05); }catch(e){}
+      if(Math.random()<.16){ try{
+        const cn=noiseSrc(c,.05), chp=c.createBiquadFilter(), cg=c.createGain();
+        chp.type='bandpass'; chp.frequency.value=900+Math.random()*700; chp.Q.value=1.2;
+        cg.gain.setValueAtTime(.0001,t); cg.gain.linearRampToValueAtTime(.02+Math.random()*.03,t+.008); cg.gain.exponentialRampToValueAtTime(.0008,t+.05);
+        cn.connect(chp); chp.connect(cg); cg.connect(c.destination); cn.start(t); cn.stop(t+.06);
+      }catch(e){} }
+    },90);
+    g.gain.setTargetAtTime(level,c.currentTime,.22);
+    eng={g,n,timer};
+  }catch(e){}
+}
+function engineLevel(level){ try{ if(eng) eng.g.gain.setTargetAtTime(level,ac.currentTime,.12); }catch(e){} }
+function engineStop(fade){
+  if(!eng) return; const e=eng; eng=null; fade=fade||.5;
+  try{ clearInterval(e.timer); const t=ac.currentTime; e.g.gain.cancelScheduledValues(t); e.g.gain.setTargetAtTime(0,t,fade/3.5);
+    setTimeout(()=>{ try{ e.n.stop(); e.g.disconnect(); }catch(_){} }, fade*1000+250); }catch(_){}
+}
+function ignite(){
+  if(muted) return;
+  try{ const c=actx(); if(!c) return; const t=c.currentTime;
+    const n=noiseSrc(c,1.4), lp=c.createBiquadFilter(), g=c.createGain();
+    lp.type='lowpass'; lp.frequency.setValueAtTime(110,t); lp.frequency.exponentialRampToValueAtTime(420,t+.3); lp.frequency.exponentialRampToValueAtTime(85,t+1.3);
+    g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(.26,t+.12); g.gain.exponentialRampToValueAtTime(.001,t+1.35);
+    n.connect(lp); lp.connect(g); g.connect(c.destination); n.start(t); n.stop(t+1.4);
+    tone(68,t,1.25,'sine',.16,40);
+  }catch(e){}
+}
+/* أجواء الشاطئ: موج خفيف متكرّر ونورس بين حين وآخر (النورس يسكت ليلاً) */
+function gullCry(c,out,at,dur,f0,vol){
+  const o=c.createOscillator(), o2=c.createOscillator(), bp=c.createBiquadFilter(), g=c.createGain();
+  o.type='sawtooth'; o2.type='square';
+  [o,o2].forEach((x,i)=>{ const k=i?1.006:1;
+    x.frequency.setValueAtTime(f0*.74*k,at); x.frequency.exponentialRampToValueAtTime(f0*1.1*k,at+dur*.22); x.frequency.exponentialRampToValueAtTime(f0*.6*k,at+dur); });
+  bp.type='bandpass'; bp.Q.value=3.2; bp.frequency.setValueAtTime(f0*1.9,at); bp.frequency.exponentialRampToValueAtTime(f0*1.25,at+dur);
+  g.gain.setValueAtTime(.0001,at); g.gain.exponentialRampToValueAtTime(vol,at+dur*.18); g.gain.setValueAtTime(vol,at+dur*.5); g.gain.exponentialRampToValueAtTime(.0001,at+dur);
+  o.connect(bp); o2.connect(bp); bp.connect(g); g.connect(out);
+  o.start(at); o2.start(at); o.stop(at+dur+.05); o2.stop(at+dur+.05);
+}
+function birdCall(){
+  if(!amb || muted || (S && S.night) || document.hidden) return;
+  try{ const c=ac; let at=c.currentTime+.05; const f=2600+Math.random()*900, k=3+Math.floor(Math.random()*4);
+    for(let i=0;i<k;i++){ const o=c.createOscillator(), g=c.createGain(), d=.07+Math.random()*.05;
+      o.type='sine'; o.frequency.setValueAtTime(f*(.9+Math.random()*.2),at); o.frequency.exponentialRampToValueAtTime(f*(1.25+Math.random()*.2),at+d*.5); o.frequency.exponentialRampToValueAtTime(f*.95,at+d);
+      g.gain.setValueAtTime(.0001,at); g.gain.exponentialRampToValueAtTime(.035,at+d*.3); g.gain.exponentialRampToValueAtTime(.0001,at+d);
+      o.connect(g); g.connect(amb.gull); o.start(at); o.stop(at+d+.03); at+=d+.05+Math.random()*.06; }
+  }catch(e){}
+}
+function gullCall(){
+  if(!amb || muted || (S && S.night) || document.hidden) return;
+  try{ const c=ac, t=c.currentTime+.05, f0=1150+Math.random()*350, vol=.04+Math.random()*.02;
+    let out=amb.gull;
+    if(c.createStereoPanner){ const p=c.createStereoPanner(); p.pan.value=Math.random()*1.6-.8; p.connect(amb.gull); out=p; }
+    let at=t; gullCry(c,out,at,.5+Math.random()*.15,f0,vol); at+=.62;
+    const k=2+Math.floor(Math.random()*3);
+    for(let i=0;i<k;i++){ const d=.2+Math.random()*.08; gullCry(c,out,at,d,f0*(1.04-i*.03),vol*.85); at+=d+.09; }
+  }catch(e){}
+}
+function ambStart(){
+  if(amb || muted) return;
+  try{
+    const c=actx(); if(!c) return;
+    const out=c.createGain(); out.gain.value=0; out.connect(c.destination);
+    const gull=c.createGain(); gull.gain.value=1; gull.connect(c.destination);
+    const n=noiseSrc(c,4); n.loop=true;
+    const oasis = SC.amb==='oasis';
+    const hp=c.createBiquadFilter(); hp.type='highpass'; hp.frequency.value=oasis?220:140;
+    const lp=c.createBiquadFilter(); lp.type='lowpass'; lp.frequency.value=480; lp.Q.value=.3;
+    const sw=c.createGain(); sw.gain.value=.22;
+    n.connect(hp); hp.connect(lp); lp.connect(sw); sw.connect(out); n.start();
+    out.gain.setTargetAtTime(oasis?.05:.12,c.currentTime,1);
+    amb={out,gull,n,wt:null,gt:null};
+    const wave=()=>{ if(!amb) return;
+      const t=c.currentTime, rise=1.6+Math.random()*1.2, peak=.75+Math.random()*.25;
+      try{ sw.gain.cancelScheduledValues(t); sw.gain.setTargetAtTime(peak,t,rise/3); sw.gain.setTargetAtTime(.2,t+rise,1.3);
+        lp.frequency.cancelScheduledValues(t); lp.frequency.setTargetAtTime(1400+Math.random()*500,t,rise/3); lp.frequency.setTargetAtTime(430,t+rise,1.1); }catch(e){}
+      amb.wt=setTimeout(wave,(rise+3.2+Math.random()*2.5)*1000); };
+    const gulls=(first)=>{ if(!amb) return; if(!first){ if(oasis) birdCall(); else gullCall(); } amb.gt=setTimeout(gulls,(first?3000:9000)+Math.random()*(first?2500:9000)); };
+    wave(); gulls(true);
+  }catch(e){}
+}
+function ambStop(){
+  if(!amb) return; const a=amb; amb=null;
+  try{ clearTimeout(a.wt); clearTimeout(a.gt); const t=ac.currentTime; a.out.gain.cancelScheduledValues(t); a.out.gain.setTargetAtTime(0,t,.15); a.gull.gain.setTargetAtTime(0,t,.05);
+    setTimeout(()=>{ try{ a.n.stop(); a.out.disconnect(); a.gull.disconnect(); }catch(_){} },900); }catch(_){}
+}
+document.addEventListener('pointerdown',()=>ambStart(),{passive:true});
+document.addEventListener('visibilitychange',()=>{ try{ if(!ac) return; if(document.hidden) ac.suspend(); else if(!muted) ac.resume(); }catch(e){} });
+
+/* ═════ أصوات خاصة بالبالونات ═════ */
+function popSnd(){
+  if(muted) return;
+  try{ const c=actx(); if(!c) return; const t=c.currentTime+.01;
+    const n=noiseSrc(c,.18), hp=c.createBiquadFilter(), g=c.createGain();
+    hp.type='highpass'; hp.frequency.value=900;
+    g.gain.setValueAtTime(.0001,t); g.gain.exponentialRampToValueAtTime(.7,t+.004); g.gain.exponentialRampToValueAtTime(.0001,t+.16);
+    n.connect(hp); hp.connect(g); g.connect(c.destination); n.start(t); n.stop(t+.2);
+    tone(220,t,.08,'sine',.18,90); tone(140,t,.18,'sine',.28,45);
+  }catch(e){}
+}
+function floatSnd(){   // صفير هواء خفيف حين تطير البالونات
+  if(muted) return;
+  try{ const c=actx(); if(!c) return; const t=c.currentTime+.01;
+    const n=noiseSrc(c,1), bp=c.createBiquadFilter(), g=c.createGain();
+    bp.type='bandpass'; bp.Q.value=2; bp.frequency.setValueAtTime(600,t); bp.frequency.exponentialRampToValueAtTime(1500,t+.9);
+    g.gain.setValueAtTime(.0001,t); g.gain.exponentialRampToValueAtTime(.06,t+.3); g.gain.exponentialRampToValueAtTime(.0001,t+.95);
+    n.connect(bp); bp.connect(g); g.connect(c.destination); n.start(t); n.stop(t+1);
+  }catch(e){}
+}
+function dropSnd(){ if(muted) return; try{ const c=actx(); if(!c) return; const t=c.currentTime+.01; tone(660,t,.12,'triangle',.08,990); tone(990,t+.1,.16,'triangle',.07,1320); }catch(e){} }
+
+/* ═════ الخلفية الصوتية: عصافير الحارة تزقزق على السطوح والنخيل، مع نسيم هادئ ═════
+   كل زقزقة نغمة قصيرة (٣٠–٩٠ م.ث) تنزلق بسرعة بين ٢٫٥ و٧ كيلوهرتز؛ تأتي في دفعات من عدّة عصافير بأماكن مختلفة،
+   وأحياناً ترتعش في «ترِلّ» سريع */
+function chirp(c,dst,t,f1,f2,dur,vol){
+  const o=c.createOscillator(), g=c.createGain(); o.type='sine';
+  o.frequency.setValueAtTime(f1,t); o.frequency.exponentialRampToValueAtTime(f2,t+dur);
+  g.gain.setValueAtTime(.0001,t); g.gain.exponentialRampToValueAtTime(vol,t+dur*.25); g.gain.exponentialRampToValueAtTime(.0001,t+dur);
+  o.connect(g); g.connect(dst); o.start(t); o.stop(t+dur+.02);
+}
+function sparrow(c,dst,base){   // دفعة من زقزقات عصفور واحد
+  let t=c.currentTime+.03; const n=2+Math.floor(Math.random()*6), kind=Math.random();
+  for(let i=0;i<n;i++){
+    if(kind<.35){ chirp(c,dst,t,base*1.5,base*.9,.05,.32); t+=.07+Math.random()*.05; }                 // «تشيب» نازلة
+    else if(kind<.7){ chirp(c,dst,t,base*.85,base*1.45,.06,.28); chirp(c,dst,t+.065,base*1.4,base*1.05,.045,.22); t+=.16+Math.random()*.08; }   // «تويت»
+    else { for(let k=0;k<6;k++){ chirp(c,dst,t,base*1.2,base*1.05,.025,.2); t+=.032; } t+=.12; }          // ترِلّ سريع
+  }
+}
+function ambStart(){
+  if(amb || muted) return;
+  try{
+    const c=actx(); if(!c) return;
+    const out=c.createGain(); out.gain.value=0; out.connect(c.destination);
+    const n=noiseSrc(c,4); n.loop=true;
+    const lp=c.createBiquadFilter(); lp.type='lowpass'; lp.frequency.value=420;
+    const sw=c.createGain(); sw.gain.value=.2;
+    n.connect(lp); lp.connect(sw); sw.connect(out); n.start();
+    const hp=c.createBiquadFilter(); hp.type='highpass'; hp.frequency.value=1800; hp.connect(out);
+    const birds=[-.75,-.3,.25,.7].map(pan=>{ const g=c.createGain(); g.gain.value=.8+Math.random()*.4;
+      try{ const p=c.createStereoPanner(); p.pan.value=pan; g.connect(p); p.connect(hp); }catch(e){ g.connect(hp); } return {g, base:3000+Math.random()*1400}; });
+    out.gain.setTargetAtTime(.07,c.currentTime,1);
+    amb={out,n,wt:null,bt:null};
+    const breeze=()=>{ if(!amb) return; const t=c.currentTime, r=2+Math.random()*2;
+      try{ sw.gain.setTargetAtTime(.14+Math.random()*.16,t,r/3); lp.frequency.setTargetAtTime(320+Math.random()*300,t,r/3); }catch(e){}
+      amb.wt=setTimeout(breeze,r*1000); };
+    /* دفعة كل ثانية إلى أربع ثوانٍ، وأحياناً يردّ عصفور آخر */
+    const sing=first=>{ if(!amb) return;
+      if(!first && !muted && !document.hidden){ const b=birds[Math.floor(Math.random()*birds.length)]; sparrow(c,b.g,b.base);
+        if(Math.random()<.4){ const o=birds[Math.floor(Math.random()*birds.length)]; setTimeout(()=>{ if(amb) sparrow(c,o.g,o.base); },300+Math.random()*700); } }
+      amb.bt=setTimeout(sing,(first?800:1000)+Math.random()*(first?800:3000)); };
+    breeze(); sing(true);
+  }catch(e){}
+}
+function ambStop(){
+  if(!amb) return; const a=amb; amb=null;
+  try{ clearTimeout(a.wt); clearTimeout(a.bt); const t=ac.currentTime; a.out.gain.cancelScheduledValues(t); a.out.gain.setTargetAtTime(0,t,.15);
+    setTimeout(()=>{ try{ a.n.stop(); a.out.disconnect(); }catch(_){} },900); }catch(_){}
+}
+
+/* ═════ رسم البالون ═════ */
+function balloonSVG(col){
+  const [c1,c2]=col;
+  return `<path class="str" d="M0,${BR*1.28} q-8,20 0,40 t0,40" stroke="#6E5A44" stroke-width="2.4" fill="none"/>
+    <path d="M-9,${BR*1.2+12} L0,${BR*1.2-2} L9,${BR*1.2+12} Z" fill="${c2}"/>
+    <path d="M0,${-BR*1.25} C${BR*1.05},${-BR*1.25} ${BR*1.08},${BR*.35} 0,${BR*1.22} C${-BR*1.08},${BR*.35} ${-BR*1.05},${-BR*1.25} 0,${-BR*1.25} Z" fill="${c1}" stroke="${c2}" stroke-width="2.5"/>
+    <path d="M0,${-BR*1.25} C${BR*1.05},${-BR*1.25} ${BR*1.08},${BR*.35} 0,${BR*1.22} C${-BR*1.08},${BR*.35} ${-BR*1.05},${-BR*1.25} 0,${-BR*1.25} Z" fill="url(#shade)"/>
+    <ellipse cx="${-BR*.32}" cy="${-BR*.55}" rx="${BR*.3}" ry="${BR*.45}" fill="url(#shine)" transform="rotate(-20 ${-BR*.32} ${-BR*.55})"/>`;
+}
+const STRLEN = BR*1.28+80;   // من مركز البالون إلى طرف الخيط حيث تُعلَّق الإجابة
+
+/* ═════ تحويل الإحداثيات من المشهد إلى البكسل ═════ */
+function toPx(x,y){
+  const svg=$('scene'), m=svg.getScreenCTM(), r=$('stage').getBoundingClientRect();
+  if(!m) return [0,0];
+  const p=svg.createSVGPoint(); p.x=x; p.y=y; const q=p.matrixTransform(m);
+  return [q.x-r.left-$('stage').clientLeft, q.y-r.top-$('stage').clientTop];
+}
+function unitPx(){ const m=$('scene').getScreenCTM(); return m?m.a:1; }
+
+/* ═════ الحالة ═════ */
+function fresh(unitId){
+  unit = UNITS.find(u=>u.id===unitId) || UNITS[0];
+  return {unitId:unit.id, queue:shuffle(unit.qs.map((_,i)=>i)), cur:null, hits:0, turns:0, errors:0, answered:false, done:false};
+}
+function draw(){
+  if(!S.queue.length){ const all=shuffle(unit.qs.map((_,i)=>i));
+    S.queue = all.length>1 ? all.filter(i=>i!==S.cur).concat(all.filter(i=>i===S.cur)) : all; }
+  S.cur=S.queue.shift(); S.answered=false;
+}
+function curQ(){
+  const q=unit.qs[S.cur];
+  if(q.t==='t') return {text:q.q, opts:(BOOKDATA.en?['True','False']:['صح','خطأ']), ok:q.a?0:1, tf:true, l:q.l};
+  const order=shuffle(q.o.map((_,i)=>i));
+  return {text:q.q, opts:order.map(i=>q.o[i]), ok:order.indexOf(q.a), tf:false, l:q.l};
+}
+
+/* ═════ موجة البالونات: تنطلق من الساحة على جانبَي السلّة وتصعد ببطء ═════ */
+function clearWave(){ M.forEach(m=>{ m.g.remove(); m.lab.remove(); }); M=[]; }
+function spawn(Q){
+  clearWave();
+  const n=Q.opts.length, nl=Math.ceil(n/2), nr=n-nl, xs=[];
+  for(let k=0;k<nl;k++) xs.push(170+(560-170)*(k+.5)/nl);
+  for(let k=0;k<nr;k++) xs.push(816+(1206-816)*(k+.5)/nr);
+  const w=Math.min(400/nl, nr?400/nr:400);
+  const slots=shuffle([...Array(n).keys()]), cols=shuffle(COLORS);
+  const pxW=Math.max(150, w*unitPx()+10);
+  Q.opts.forEach((txt,i)=>{
+    const k=slots[i], x=xs[k]+(Math.random()*20-10), y=320+(k%2)*80+Math.random()*20;
+    const g=document.createElementNS(SVGNS,'g'); g.setAttribute('class','balloon');
+    g.innerHTML=balloonSVG(cols[i%cols.length]);
+    $('balloons').appendChild(g);
+    const lab=document.createElement('button'); lab.type='button';
+    lab.className='stone mlab'+(Q.tf?' tf':''); lab.textContent=txt; lab.style.setProperty('--mw',pxW+'px');
+    $('labels').appendChild(lab);
+    const m={i, g, lab, col:cols[i%cols.length], x, y, x0:x, ph:Math.random()*6.28, vy:(y-TOP)/RISE, s:.35, op:1, st:'rise'};
+    g.addEventListener('click',()=>pick(m)); lab.addEventListener('click',()=>pick(m));
+    M.push(m);
+  });
+  place(); floatSnd();
+}
+function place(){
+  const u=unitPx(), t=performance.now()/1000;
+  M.forEach(m=>{
+    if(m.st==='gone') return;
+    const rot=4*Math.sin(t*1.3+m.ph);
+    m.g.setAttribute('transform',`translate(${m.x.toFixed(1)} ${m.y.toFixed(1)}) rotate(${rot.toFixed(2)}) scale(${m.s.toFixed(3)})`);
+    m.g.style.opacity=m.op;
+    const [px,py]=toPx(m.x,m.y+STRLEN*m.s);
+    m.lab.style.left=px+'px'; m.lab.style.top=(py-4)+'px';
+    m.lab.style.opacity = m.st==='rise' ? Math.min(1,(m.s-.35)/.4) : '';
+  });
+}
+function loop(t){
+  raf=requestAnimationFrame(loop);
+  const dt=Math.min(.05,(t-(lastT||t))/1000); lastT=t; const s=t/1000;
+  let timeout=false;
+  M.forEach(m=>{
+    if(m.st==='rise'){ m.s=Math.min(1,m.s+dt*1.6); m.y-=m.vy*dt; m.x=m.x0+14*Math.sin(s*.7+m.ph); if(m.y<=TOP) timeout=true; }
+    else if(m.st==='squeeze'){ m.s=Math.min(1.28,m.s+dt*1.3); m.x=m.x0+14*Math.sin(s*.7+m.ph)+(Math.random()*8-4); }
+    else if(m.st==='away'){ m.k+=dt; m.y-=(220+m.k*420)*dt; m.x+=m.vx*dt; m.op=Math.max(0,1-m.k/1.6);
+      if(m.k>=1.6){ m.st='gone'; m.g.remove(); m.lab.remove(); } }
+  });
+  if(M.some(m=>m.st!=='gone')) place();
+  if(timeout && !S.answered) fail(null);
+}
+
+/* ═════ اللمس ═════ */
+function pick(m){
+  if(S.answered || S.done || m.st!=='rise') return;
+  S.answered=true; S.turns++; $('stage').classList.add('locked');
+  const Q=S.Q;
+  if(m.i===Q.ok){
+    const gift=GIFTS[S.hits%GIFTS.length]; S.hits++;
+    m.lab.classList.add('ok'); m.st='squeeze';   // ينتفخ البالون ويرتجف قبل أن يتفرقع
+    M.forEach(o=>{ if(o!==m && o.st==='rise') o.lab.classList.add('gone'); });
+    later(()=>{ pop(m); release(m); const k=S.hits-1; later(()=>dropGift(m.x,m.y,k),130); },260);   // الهدية تظهر بعد أن يتمزّق البالون
+    $('fb').className='fb good';
+    $('fb').innerHTML='أحسنتم! تفرقع البالون وسقط '+gift[1]+' في سلّة العيد 🎁<small>'+(S.hits<GOAL?'بقي '+ar(GOAL-S.hits)+' من الهدايا':'')+'</small>';
+    later(()=>{ $('cnt').textContent=ar(S.hits); if(S.hits>=GOAL) finish(); else showNext(); },1700);
+  } else {
+    S.errors++;
+    m.lab.classList.add('no'); sfx('no');
+    later(()=>fail(m),650);
+  }
+}
+function release(except){   // البالونات الباقية تُفلت وتطير إلى السماء
+  M.forEach(o=>{ if(o!==except && o.st==='rise'){ o.st='away'; o.k=0; o.vx=(Math.random()*60-30); o.lab.classList.add('gone'); } });
+}
+function fail(m){
+  if(!m){ S.answered=true; S.turns++; S.errors++; $('stage').classList.add('locked'); }
+  S.queue.push(S.cur);
+  release(null); floatSnd();
+  $('fb').className='fb bad';
+  $('fb').innerHTML=(m?'ليست هذه الإجابة، فأفلتت البالونات وطارت بعيداً!':'طارت البالونات قبل الإجابة!')+'<small>سيعود هذا السؤال مرة أخرى.</small>';
+  later(showNext,1500);
+}
+function showNext(){ $('next').hidden=false; $('next').focus({preventScroll:true}); }
+
+/* ═════ المؤثّرات ═════ */
+function el(tag,attrs,parent){ const e=document.createElementNS(SVGNS,tag); for(const k in attrs) e.setAttribute(k,attrs[k]); (parent||$('fx')).appendChild(e); return e; }
+/* ═════ تمزّق البالون: يُفتح ثقب مسنّن من نقطة على السطح ويتّسع في جزء من عُشر الثانية، والمطّاط ينكمش نحو العقدة،
+   ثم تتطاير قطع مطّاطية ممزّقة بالجاذبية، وتسقط العقدة وخيطها وبقايا المطّاط المعلّقة بها ═════ */
+const BODY = `M0,${-BR*1.25} C${BR*1.05},${-BR*1.25} ${BR*1.08},${BR*.35} 0,${BR*1.22} C${-BR*1.08},${BR*.35} ${-BR*1.05},${-BR*1.25} 0,${-BR*1.25} Z`;
+let PCS = [], pcsRaf = 0, maskN = 0;
+function jagged(r, n, spread){   // مضلّع بحافة ممزّقة غير منتظمة
+  let d=''; for(let i=0;i<n;i++){ const a=i/n*6.283, rr=r*(1-spread/2+Math.random()*spread);
+    d+=(i?'L':'M')+(Math.cos(a)*rr).toFixed(1)+','+(Math.sin(a)*rr).toFixed(1); }
+  return d+'Z';
+}
+function shred(w,h){   // قطعة مطّاط ممزّقة: شريط ملتوٍ بحواف مسنّنة
+  const n=7, top=[], bot=[];
+  for(let i=0;i<=n;i++){ const x=-w/2+w*i/n, c=Math.sin(i/n*Math.PI)*h*.35;
+    top.push([x, -h/2-c+(Math.random()*h*.45)]); bot.push([x, h/2-c-(Math.random()*h*.45)]); }
+  return 'M'+top.map(p=>p.map(v=>v.toFixed(1)).join(',')).join('L')+'L'+bot.reverse().map(p=>p.map(v=>v.toFixed(1)).join(',')).join('L')+'Z';
+}
+function physics(){
+  cancelAnimationFrame(pcsRaf); let last=performance.now();
+  const step=now=>{ const dt=Math.min(.04,(now-last)/1000); last=now;
+    PCS=PCS.filter(p=>{ p.t+=dt;
+      p.vy+=p.g*dt; p.vx*=Math.pow(p.drag,dt); p.vy*=Math.pow(p.drag,dt);
+      p.x+=p.vx*dt; p.y+=p.vy*dt; p.r+=p.vr*dt; p.vr*=Math.pow(.6,dt);
+      const fl=p.flip?Math.cos(p.t*p.flip):1;   // تقلّب القطعة في الهواء
+      p.el.setAttribute('transform',`translate(${p.x.toFixed(1)} ${p.y.toFixed(1)}) rotate(${p.r.toFixed(1)}) scale(${fl.toFixed(2)} 1)`);
+      const o=p.t>p.life-.4?Math.max(0,(p.life-p.t)/.4):1; p.el.style.opacity=o;
+      if(p.t>=p.life||p.y>900){ p.el.remove(); return false; } return true; });
+    if(PCS.length) pcsRaf=requestAnimationFrame(step); };
+  pcsRaf=requestAnimationFrame(step);
+}
+function pop(m){
+  m.st='gone'; m.lab.classList.add('gone'); later(()=>m.lab.remove(),400);
+  const x=m.x, y=m.y, sc=m.s, [c1,c2]=m.col;
+  /* ١) الثقب: نقطة عشوائية في النصف العلوي، وثقب مسنّن يتّسع ويمزّق الجلد خلال ٠٫١٢ ثانية */
+  const id='tear'+(++maskN), ta=-Math.PI/2+(Math.random()-.5)*1.6, tx=Math.cos(ta)*BR*.7, ty=Math.sin(ta)*BR*.75-BR*.2;
+  const defs=$('scene').querySelector('defs');
+  const mk=document.createElementNS(SVGNS,'mask'); mk.setAttribute('id',id); mk.setAttribute('maskUnits','userSpaceOnUse');
+  mk.setAttribute('x',-BR*3); mk.setAttribute('y',-BR*3); mk.setAttribute('width',BR*6); mk.setAttribute('height',BR*6);
+  mk.innerHTML=`<rect x="${-BR*3}" y="${-BR*3}" width="${BR*6}" height="${BR*6}" fill="#fff"/><path class="hole" d="${jagged(1,18,.7)}" fill="#000" transform="translate(${tx} ${ty}) scale(0)"/>`;
+  defs.appendChild(mk);
+  m.g.querySelectorAll('ellipse').forEach(e=>e.remove());          // يختفي اللمعان لحظة التمزّق
+  const body=m.g.querySelectorAll('path')[2], shade=m.g.querySelectorAll('path')[3];
+  [body,shade].forEach(p=>p&&p.setAttribute('mask',`url(#${id})`));
+  const hole=mk.querySelector('.hole'), t0=performance.now(), D=120;
+  const tear=()=>{ const q=Math.min(1,(performance.now()-t0)/D), e=1-Math.pow(1-q,2);
+    hole.setAttribute('transform',`translate(${tx} ${ty}) scale(${(e*BR*3.2).toFixed(1)}) rotate(${(q*25).toFixed(1)})`);
+    /* المطّاط الباقي ينكمش نحو العقدة */
+    m.g.setAttribute('transform',`translate(${x.toFixed(1)} ${(y+BR*1.2*sc*e*.55).toFixed(1)}) scale(${(sc*(1-.55*e)).toFixed(3)})`);
+    if(q<1) requestAnimationFrame(tear); else { m.g.remove(); mk.remove(); fall(); } };
+  requestAnimationFrame(tear);
+
+  /* ٢) قطع المطّاط: تنطلق من حافة الثقب بسرعة ثم تبطؤها مقاومة الهواء وتسقط بالجاذبية */
+  const hx=x+tx*sc, hy=y+ty*sc;
+  for(let i=0;i<14;i++){
+    const big=i<6, w=(big?34:14)+Math.random()*(big?26:14), h=(big?16:8)+Math.random()*10;
+    const a=ta+(Math.random()-.5)*2.6+(i%2?Math.PI*.35:-Math.PI*.35), v=(big?380:560)+Math.random()*260;
+    const e=el('path',{d:shred(w,h),fill:i%3?c1:c2,stroke:c2,'stroke-width':1.2,'stroke-linejoin':'round'});
+    PCS.push({el:e, x:hx+(Math.random()-.5)*BR*.6*sc, y:hy+(Math.random()-.5)*BR*.6*sc, vx:Math.cos(a)*v, vy:Math.sin(a)*v-120,
+      g:big?700:520, drag:big?.18:.08, r:Math.random()*360, vr:(Math.random()-.5)*1400, flip:6+Math.random()*10, t:0, life:1.6+Math.random()*.6});
+  }
+  /* ٣) العقدة والخيط وبقايا المطّاط المعلّقة بها تسقط بعد التمزّق */
+  function fall(){
+    const g=el('g',{});
+    const k=BR*1.2;
+    g.innerHTML=`<path d="M0,${k-6} q-8,20 0,40 t0,40" stroke="#6E5A44" stroke-width="2.4" fill="none"/>
+      <path d="M-9,${k+12} L0,${k-2} L9,${k+12} Z" fill="${c2}"/>
+      <path d="M0,${k-2} C-14,${k-22} -26,${k-34} -30,${k-52} L-20,${k-48} L-22,${k-62} L-10,${k-40} C-6,${k-30} -2,${k-16} 0,${k-2}Z" fill="${c1}" stroke="${c2}" stroke-width="1.2"/>
+      <path d="M0,${k-2} C10,${k-18} 22,${k-30} 24,${k-46} L16,${k-40} L14,${k-56} L6,${k-34} C4,${k-24} 2,${k-14} 0,${k-2}Z" fill="${c2}" stroke="${c2}" stroke-width="1.2"/>`;
+    PCS.push({el:g, x, y:y+BR*.62*sc, vx:(Math.random()-.5)*60, vy:-40, g:900, drag:.5, r:0, vr:(Math.random()-.5)*160, flip:0, t:0, life:1.8});
+    physics();
+  }
+  physics();
+  /* ٤) نفخة هواء خفيفة وقليل من قصاصات العيد */
+  el('circle',{cx:hx,cy:hy,r:34,fill:'none',stroke:'#fff','stroke-width':6,opacity:.7,class:'ring'});
+  confetti(x,y,16);
+  const st=$('stage'); st.classList.remove('quake'); void st.offsetWidth; st.classList.add('quake');
+  popSnd();
+  later(()=>{ $('fx').querySelectorAll('.ring').forEach(e=>e.remove()); },700);
+}
+function confetti(x,y,n){
+  const cs=['#FF5A6E','#FFC93C','#49C46A','#4FA3F2','#A57BF0','#FF8A3D','#fff'];
+  for(let i=0;i<n;i++){ const a=Math.random()*6.28, d=80+Math.random()*190;
+    const c=el('rect',{x:x-4,y:y-7,width:8,height:14,rx:2,fill:cs[i%cs.length],class:'conf',style:`transform-box:fill-box;transform-origin:center;--dx:${(Math.cos(a)*d).toFixed(0)}px;--dy:${(Math.sin(a)*d*.6+150).toFixed(0)}px;--r:${(Math.random()*720-360).toFixed(0)}deg`});
+    later(()=>c.remove(),1700); }
+}
+/* الهدية تظهر مكان البالون ثم تسقط في قوس إلى السلّة، وتُرسم خلف واجهة السلّة فتبدو داخلها */
+function dropGift(x0,y0,k){
+  const [id,,iw,ih]=GIFTS[k%GIFTS.length], [sx,sb]=SLOTS[k%SLOTS.length];
+  const h=id==='kumma'?72:96, w=h*iw/ih;
+  const tx=BASKET.x+BASKET.w/2+sx, ty=sb;            // مركز أسفل الهدية في السلّة
+  const fly=el('image',{href:'../art/'+id+'.webp',x:(-w/2).toFixed(1),y:(-h).toFixed(1),width:w.toFixed(1),height:h.toFixed(1)});
+  fly.style.filter='drop-shadow(0 4px 6px rgba(0,0,0,.25))';
+  const t0=performance.now(), dur=1050, sy=y0+h/2;
+  const step=()=>{ const q=Math.min(1,(performance.now()-t0)/dur), e=q*q;
+    const x=x0+(tx-x0)*(1-(1-q)*(1-q)), y=sy+(ty-sy)*e-Math.sin(Math.PI*q)*60;
+    fly.setAttribute('transform',`translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${((1-q)*18).toFixed(1)})`);
+    if(q<1){ requestAnimationFrame(step); return; }
+    fly.remove();
+    const g=el('image',{href:'../art/'+id+'.webp',x:(tx-w/2).toFixed(1),y:(ty-h).toFixed(1),width:w.toFixed(1),height:h.toFixed(1),class:'gift land'},$('gifts'));
+    const b=$('basket'); b.classList.remove('bump'); void b.getBBox(); b.classList.add('bump');
+    dropSnd(); };
+  requestAnimationFrame(step);
+}
+
+/* ═════ العرض ═════ */
+function render(){
+  const Q=S.Q, q=unit.qs[S.cur];
+  $('pipText').textContent='الهدية '+ar(Math.min(S.hits+1,GOAL))+' من '+ar(GOAL);
+  $('kindBadge').textContent=Q.tf?'صح أم خطأ':'اختيار من متعدد';
+  $('kind').textContent=q.l?'من درس «'+q.l+'»':'';
+  $('qtext').textContent=Q.text;
+  $('fb').textContent=''; $('fb').className='fb';
+  $('next').hidden=true; $('stage').classList.remove('locked');
+  $('cnt').textContent=ar(S.hits);
+}
+function nextWave(){
+  draw(); S.Q=curQ(); render();
+  $('qwrap').hidden=false; $('foot').hidden=false; $('done').hidden=true;
+  spawn(S.Q);
+}
+function finish(){
+  S.done=true; release(null);
+  $('qwrap').hidden=true; $('foot').hidden=true; $('done').hidden=false;
+  $('doneTitle').textContent='امتلأت سلّة العيد! عيدكم مبارك 🎉';
+  $('doneText').textContent='جمعتم '+ar(GOAL)+' هدايا في '+countQ(S.turns)+(S.errors?'.':' بلا أي خطأ!');
+  $('pipText').textContent='اكتملت السلّة'; $('kindBadge').textContent='أحسنتم';
+  sfx('win');
+  /* سرب بالونات يطير من الساحة احتفالاً، ومطر من القصاصات الملوّنة */
+  for(let i=0;i<14;i++) later(()=>celebrate(),i*160);
+  for(let i=0;i<8;i++) later(()=>confetti(200+Math.random()*976,-180+Math.random()*120,22),i*300);
+}
+function celebrate(){
+  const col=COLORS[Math.floor(Math.random()*COLORS.length)];
+  const g=document.createElementNS(SVGNS,'g'); g.setAttribute('class','balloon'); g.style.pointerEvents='none';
+  g.innerHTML=balloonSVG(col); $('balloons').appendChild(g);
+  const lab=document.createElement('span'); lab.hidden=true; $('labels').appendChild(lab);
+  const x=180+Math.random()*1016;
+  M.push({i:-1, g, lab, col, x, y:700, x0:x, ph:Math.random()*6.28, s:.5+Math.random()*.35, op:1, st:'away', k:0, vx:Math.random()*40-20});
+}
+function newGame(unitId){
+  timers.forEach(clearTimeout); timers=[]; clearWave();
+  $('gifts').innerHTML=''; $('fx').innerHTML='';
+  S=fresh(unitId);
+  $('eyebrow').textContent=BOOK.subject+' · '+BOOK.grade+' · '+unit.lab;
+  nextWave();
+}
+
+$('next').addEventListener('click',()=>{ if(!S.done) nextWave(); });
+$('again').addEventListener('click',()=>newGame(S.unitId));
+$('restart').addEventListener('click',()=>newGame(S.unitId));
+$('sound').addEventListener('click',e=>{
+  muted=!muted; e.currentTarget.setAttribute('aria-pressed',String(!muted));
+  if(muted){ ambStop(); engineStop(.1); } else ambStart();
+  try{ localStorage.setItem('sgame.muted',muted?'1':''); }catch(err){}
+});
+window.addEventListener('resize',()=>{ if(M.length) place(); });
+(function(){ let s=''; for(let i=0;i<70;i++){ const d=1+Math.random()*2; s+=`<i style="left:${(Math.random()*100).toFixed(2)}%;top:${(Math.random()*100).toFixed(2)}%;width:${d.toFixed(1)}px;height:${d.toFixed(1)}px;opacity:${(.35+Math.random()*.55).toFixed(2)}"></i>`; } $('bgstars').innerHTML=s; })();
+function urlUnit(){ try{ const n=+new URLSearchParams(location.search).get('unit'); const u=UNITS.find(x=>x.un===n); return u?u.id:null; }catch(e){ return null; } }
+(function(){
+  let m=''; try{ m=localStorage.getItem('sgame.muted'); }catch(e){}
+  muted=!!m; $('sound').setAttribute('aria-pressed',String(!muted));
+  newGame(urlUnit() || UNITS[0].id);
+  raf=requestAnimationFrame(loop);
+})();
+</script>

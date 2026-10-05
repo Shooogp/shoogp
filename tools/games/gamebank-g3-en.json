@@ -1,0 +1,4490 @@
+{
+ "g3e-0-1": [
+  {
+   "t": "m",
+   "q": "What is the opposite of 'Turn on the AC'?",
+   "o": [
+    "Turn off the AC.",
+    "Put up your hand.",
+    "Take out your pencil.",
+    "Hold up your drawing."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "أوامر الصف وأضدادها: up/down, on/off, take out/put away"
+  },
+  {
+   "t": "m",
+   "q": "What is the opposite of 'Put up your hand'?",
+   "o": [
+    "Put down your hand.",
+    "Put away your pencil.",
+    "Turn on the AC.",
+    "Take out your pencil."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "أوامر الصف: Put up your hand / Put down your hand"
+  },
+  {
+   "t": "m",
+   "q": "You want to write. What does the teacher say?",
+   "o": [
+    "Take out your pencil.",
+    "Put away your pencil.",
+    "Turn off the AC.",
+    "Put down your hand."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "أوامر الصف: Take out your pencil / Put away your pencil"
+  },
+  {
+   "t": "m",
+   "q": "The classroom is very hot. What can the teacher say?",
+   "o": [
+    "Turn on the AC.",
+    "Put away your pencil.",
+    "Put down your hand.",
+    "Hold up your drawing."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "أوامر الصف: Hold up your drawing, Take out/Put away your pencil, Turn on/off the AC"
+  },
+  {
+   "t": "m",
+   "q": "Which command is about the room, not about you?",
+   "o": [
+    "Turn off the AC.",
+    "Put up your hand.",
+    "Put down your hand.",
+    "Take out your pencil."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "أوامر الصف: التمييز بين أمرٍ يفعله التلميذ بنفسه وأمرٍ عن الغرفة"
+  },
+  {
+   "t": "t",
+   "q": "'Put up your hand' is a command about your body.",
+   "a": true,
+   "lv": "k",
+   "obj": "أوامر الصف: التمييز بين أمرٍ عن الجسم وأمرٍ عن أداة"
+  },
+  {
+   "t": "t",
+   "q": "'Take out your pencil' and 'Put away your pencil' mean the same.",
+   "a": false,
+   "lv": "k",
+   "obj": "أوامر الصف وأضدادها: up/down, on/off, take out/put away"
+  },
+  {
+   "t": "t",
+   "q": "'Hold up your drawing' is a command about an object.",
+   "a": true,
+   "lv": "a",
+   "obj": "أوامر الصف: التمييز بين أمرٍ عن الجسم وأمرٍ عن أداة"
+  }
+ ],
+ "g3e-0-2": [
+  {
+   "t": "m",
+   "q": "Which letter comes right before 'D' in the alphabet?",
+   "o": [
+    "C",
+    "E",
+    "B",
+    "F"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "الحروف الهجائية بالترتيب"
+  },
+  {
+   "t": "m",
+   "q": "How do you spell the name Anna?",
+   "o": [
+    "A-n-n-a",
+    "A-n-a",
+    "A-n-n-e",
+    "E-n-n-a"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تهجئة الكلمات: How do you spell (Anna)? A-n-n-a."
+  },
+  {
+   "t": "m",
+   "q": "What is the plural of 'This is a pen.'?",
+   "o": [
+    "These are pens.",
+    "Those are pens.",
+    "This are pens.",
+    "These is a pen."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "Grammar: This is a pen./These are pens. — That is a pen./Those are pens."
+  },
+  {
+   "t": "m",
+   "q": "The book is far away from you. What do you say?",
+   "o": [
+    "That is a book.",
+    "This is a book.",
+    "These are books.",
+    "This book is here."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "Grammar: This is a pen. / That is a pen."
+  },
+  {
+   "t": "m",
+   "q": "Many pencils are far away from you. Which sentence is correct?",
+   "o": [
+    "Those are pencils.",
+    "These are pencils.",
+    "That is pencils.",
+    "This is pencils."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "Grammar: التمييز بين this/these (قريب) وthat/those (بعيد)"
+  },
+  {
+   "t": "t",
+   "q": "'These' is for things near you.",
+   "a": true,
+   "lv": "k",
+   "obj": "Grammar: التمييز بين this/these (قريب) وthat/those (بعيد)"
+  },
+  {
+   "t": "t",
+   "q": "The letter 'Z' comes before 'Y' in the alphabet.",
+   "a": false,
+   "lv": "k",
+   "obj": "الحروف الهجائية بالترتيب"
+  },
+  {
+   "t": "t",
+   "q": "'That is a pen' becomes 'Those are pens' for more than one.",
+   "a": true,
+   "lv": "a",
+   "obj": "Grammar: This is a pen./These are pens. — That is a pen./Those are pens."
+  }
+ ],
+ "g3e-0-3": [
+  {
+   "t": "m",
+   "q": "Which number is 'twelve'?",
+   "o": [
+    "12",
+    "20",
+    "21",
+    "2"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "الأعداد ١١-٢٠: eleven..twenty"
+  },
+  {
+   "t": "m",
+   "q": "How do you write 19 in words?",
+   "o": [
+    "nineteen",
+    "ninety",
+    "nine",
+    "eighteen"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "الأعداد ١١-٢٠: الرقم وكلمته"
+  },
+  {
+   "t": "m",
+   "q": "Which number comes right after 'thirteen'?",
+   "o": [
+    "fourteen",
+    "twelve",
+    "fifteen",
+    "thirty"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "الأعداد ١١-٢٠: ترتيب الأعداد"
+  },
+  {
+   "t": "m",
+   "q": "How many desks can you see? (There are 16 desks.)",
+   "o": [
+    "I can see sixteen desks.",
+    "I can see six desks.",
+    "I can see sixty desks.",
+    "I can see seventeen desks."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تركيب: How many (desks) can you see? I can see (fifteen) desks."
+  },
+  {
+   "t": "m",
+   "q": "Which number is the biggest?",
+   "o": [
+    "eighteen",
+    "eleven",
+    "fifteen",
+    "thirteen"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "الأعداد ١١-٢٠: الترتيب التصاعدي"
+  },
+  {
+   "t": "t",
+   "q": "'Twenty' is 20.",
+   "a": true,
+   "lv": "k",
+   "obj": "الأعداد ١١-٢٠: الرقم وكلمته"
+  },
+  {
+   "t": "t",
+   "q": "'Eleven' is more than fifteen.",
+   "a": false,
+   "lv": "a",
+   "obj": "الأعداد ١١-٢٠: المقارنة بعدد مرجعيّ"
+  },
+  {
+   "t": "t",
+   "q": "'Fourteen' comes before 'fifteen'.",
+   "a": true,
+   "lv": "k",
+   "obj": "الأعداد ١١-٢٠: ترتيب الأعداد"
+  }
+ ],
+ "g3e-1-1": [
+  {
+   "t": "m",
+   "q": "Which meal do you have in the morning?",
+   "o": [
+    "breakfast",
+    "dinner",
+    "lunch",
+    "homework"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات الروتين اليومي: get up, have breakfast, go to school..."
+  },
+  {
+   "t": "m",
+   "q": "What do you do at night?",
+   "o": [
+    "go to bed",
+    "get up",
+    "have breakfast",
+    "go to school"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط الروتين اليومي بوقته المعتاد"
+  },
+  {
+   "t": "m",
+   "q": "Where do you have art lessons?",
+   "o": [
+    "at school",
+    "in bed",
+    "in the kitchen",
+    "in the car"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات الروتين اليومي: have art lessons"
+  },
+  {
+   "t": "m",
+   "q": "Which routine do you do at home?",
+   "o": [
+    "go to bed",
+    "have art lessons",
+    "go to school",
+    "have a maths lesson"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "أنشودة الوحدة: It's a happy, happy day! I go to school today."
+  },
+  {
+   "t": "m",
+   "q": "What comes after \"get up\"?",
+   "o": [
+    "have breakfast",
+    "go to bed",
+    "have dinner",
+    "have lunch"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "ترتيب الروتين اليومي منطقياً"
+  },
+  {
+   "t": "t",
+   "q": "You have art lessons at school.",
+   "a": true,
+   "lv": "a",
+   "obj": "تصنيف الروتين اليومي: في المنزل أم في المدرسة"
+  },
+  {
+   "t": "t",
+   "q": "You go to bed in the morning.",
+   "a": false,
+   "lv": "k",
+   "obj": "ربط الروتين اليومي بوقته المعتاد"
+  },
+  {
+   "t": "t",
+   "q": "'Get up' is something you do at home.",
+   "a": true,
+   "lv": "a",
+   "obj": "تصنيف الروتين اليومي: في المنزل أم في المدرسة"
+  }
+ ],
+ "g3e-1-2": [
+  {
+   "t": "m",
+   "q": "What do the friends want to paint first?",
+   "o": [
+    "flowers",
+    "a car",
+    "a house",
+    "a cat"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قصّة الوحدة: Let's paint flowers today!"
+  },
+  {
+   "t": "m",
+   "q": "What do you use to paint?",
+   "o": [
+    "paintbrushes",
+    "trainers",
+    "keys",
+    "slippers"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات القصّة: paintbrushes, flowers, a mess, tidy up"
+  },
+  {
+   "t": "m",
+   "q": "When the room is not tidy, it is ___.",
+   "o": [
+    "a mess",
+    "a flower",
+    "a lesson",
+    "a paintbrush"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات القصّة: paintbrushes, flowers, a mess, tidy up"
+  },
+  {
+   "t": "m",
+   "q": "In the story, who do the friends paint at the end?",
+   "o": [
+    "Atomic",
+    "the teacher",
+    "a dog",
+    "a robot car"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "فهم أحداث القصّة"
+  },
+  {
+   "t": "m",
+   "q": "What happens FIRST in the story?",
+   "o": [
+    "They have tennis lessons in the morning.",
+    "They paint Atomic.",
+    "They say \"Oh no, the flowers!\"",
+    "Atomic is colourful."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "ترتيب أحداث القصّة"
+  },
+  {
+   "t": "t",
+   "q": "The story is called 'Atomic is colourful!'",
+   "a": true,
+   "lv": "k",
+   "obj": "قصّة الوحدة: Atomic is colourful! — درس الفنّ اليوم"
+  },
+  {
+   "t": "t",
+   "q": "In the story, the friends have a maths lesson today.",
+   "a": false,
+   "lv": "k",
+   "obj": "قصّة الوحدة: Atomic is colourful! — درس الفنّ اليوم"
+  },
+  {
+   "t": "t",
+   "q": "'Tidy up' means make the room clean.",
+   "a": true,
+   "lv": "a",
+   "obj": "مفردات القصّة: paintbrushes, flowers, a mess, tidy up"
+  }
+ ],
+ "g3e-1-3": [
+  {
+   "t": "m",
+   "q": "Which time of day comes first?",
+   "o": [
+    "morning",
+    "evening",
+    "night",
+    "afternoon"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ترتيب أوقات اليوم"
+  },
+  {
+   "t": "m",
+   "q": "When do we have dinner?",
+   "o": [
+    "in the evening",
+    "in the morning",
+    "at midday",
+    "in the afternoon"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: We have dinner in the evening."
+  },
+  {
+   "t": "m",
+   "q": "When do you have breakfast?",
+   "o": [
+    "in the morning",
+    "in the evening",
+    "at night",
+    "in the afternoon"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: When do you have lunch? We have lunch in the afternoon."
+  },
+  {
+   "t": "m",
+   "q": "When do you go to bed?",
+   "o": [
+    "at night",
+    "in the morning",
+    "in the afternoon",
+    "at school"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "ربط الروتين اليومي بوقته"
+  },
+  {
+   "t": "m",
+   "q": "Which time of day is NOT daytime?",
+   "o": [
+    "night",
+    "morning",
+    "afternoon",
+    "midday"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تصنيف أوقات اليوم: نهاراً أم ليلاً"
+  },
+  {
+   "t": "t",
+   "q": "'Morning', 'afternoon', 'evening' and 'night' are times of the day.",
+   "a": true,
+   "lv": "k",
+   "obj": "مفردات أوقات اليوم: morning, afternoon, evening, night"
+  },
+  {
+   "t": "t",
+   "q": "We have breakfast in the evening.",
+   "a": false,
+   "lv": "a",
+   "obj": "ربط الروتين اليومي بوقته"
+  },
+  {
+   "t": "t",
+   "q": "'Evening' comes after 'afternoon'.",
+   "a": true,
+   "lv": "k",
+   "obj": "ترتيب أوقات اليوم"
+  }
+ ],
+ "g3e-1-4": [
+  {
+   "t": "m",
+   "q": "When do you do homework?",
+   "o": [
+    "In the evening.",
+    "Yes, I do.",
+    "It is blue.",
+    "I am nine."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: When do you do homework?"
+  },
+  {
+   "t": "m",
+   "q": "Complete the question: '___ do you play tennis?'",
+   "o": [
+    "When",
+    "What",
+    "Who",
+    "How many"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: When do you play tennis?"
+  },
+  {
+   "t": "m",
+   "q": "Which is a good answer to \"When do you go to school?\"",
+   "o": [
+    "In the morning.",
+    "At night.",
+    "A red bag.",
+    "My teacher."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "ربط سؤال When بجوابه المناسب"
+  },
+  {
+   "t": "m",
+   "q": "Which question asks about a time?",
+   "o": [
+    "When do you play?",
+    "What is your name?",
+    "How old are you?",
+    "What colour is it?"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "التمييز بين أسئلة When وغيرها"
+  },
+  {
+   "t": "m",
+   "q": "On a school day, what do you do after you go to school?",
+   "o": [
+    "have lunch",
+    "get up",
+    "have breakfast",
+    "go to bed"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "ترتيب يوم مدرسيّ نموذجيّ"
+  },
+  {
+   "t": "t",
+   "q": "'When do you go to school?' asks about a time.",
+   "a": true,
+   "lv": "k",
+   "obj": "تركيب: When do you go to school/do homework/play?"
+  },
+  {
+   "t": "t",
+   "q": "'What is your name?' is a When question.",
+   "a": false,
+   "lv": "a",
+   "obj": "التمييز بين أسئلة When وغيرها"
+  },
+  {
+   "t": "t",
+   "q": "On a school day, you go to bed before you do homework.",
+   "a": false,
+   "lv": "k",
+   "obj": "ترتيب يوم مدرسيّ نموذجيّ"
+  }
+ ],
+ "g3e-1-5": [
+  {
+   "t": "m",
+   "q": "What do people in the UK often have for breakfast?",
+   "o": [
+    "toast and tea",
+    "corn porridge",
+    "fish, rice and soup",
+    "Khubz Rakhal"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "الثقافة: ربط كل مكان بإفطاره التقليدي"
+  },
+  {
+   "t": "m",
+   "q": "Which breakfast is from Oman?",
+   "o": [
+    "Khubz Rakhal",
+    "corn porridge",
+    "toast and tea",
+    "fish, rice and soup"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "الثقافة: ربط كل مكان بإفطاره"
+  },
+  {
+   "t": "m",
+   "q": "Where do people have corn porridge for breakfast?",
+   "o": [
+    "South Africa",
+    "Japan",
+    "the UK",
+    "Oman"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "الثقافة: إفطارات تقليدية — South Africa"
+  },
+  {
+   "t": "m",
+   "q": "Which of these is a drink?",
+   "o": [
+    "tea",
+    "toast",
+    "porridge",
+    "fish"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تصنيف مفردات الإفطار: طعام أم شراب"
+  },
+  {
+   "t": "m",
+   "q": "Which of these is a food, not a drink?",
+   "o": [
+    "porridge",
+    "tea",
+    "juice",
+    "milk"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "التمييز بين إفطارات النصّ وغيرها"
+  },
+  {
+   "t": "t",
+   "q": "People in Japan often have fish and rice for breakfast.",
+   "a": true,
+   "lv": "k",
+   "obj": "الثقافة: إفطارات تقليدية حول العالم — Japan"
+  },
+  {
+   "t": "t",
+   "q": "Toast is a drink.",
+   "a": false,
+   "lv": "a",
+   "obj": "تصنيف مفردات الإفطار: طعام أم شراب"
+  },
+  {
+   "t": "t",
+   "q": "Khubz Rakhal is a breakfast from the UK.",
+   "a": false,
+   "lv": "k",
+   "obj": "الثقافة: ربط كل مكان بإفطاره التقليدي"
+  }
+ ],
+ "g3e-1-6": [
+  {
+   "t": "m",
+   "q": "It's 8:15. How do you say this?",
+   "o": [
+    "It's quarter past eight.",
+    "It's quarter to eight.",
+    "It's half past eight.",
+    "It's eight o'clock."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قول الوقت: half past / quarter past / quarter to"
+  },
+  {
+   "t": "m",
+   "q": "It's 6:45. How do you say this?",
+   "o": [
+    "It's quarter to seven.",
+    "It's quarter past six.",
+    "It's half past six.",
+    "It's quarter to six."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قول الوقت: quarter to"
+  },
+  {
+   "t": "m",
+   "q": "Which time is 'half past nine'?",
+   "o": [
+    "9:30",
+    "9:15",
+    "9:45",
+    "8:30"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط الوقت بصيغته اللفظية"
+  },
+  {
+   "t": "m",
+   "q": "'We have English at quarter past eight.' What time is English?",
+   "o": [
+    "8:15",
+    "8:45",
+    "7:45",
+    "8:30"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "حوار: We have English at quarter past eight."
+  },
+  {
+   "t": "m",
+   "q": "Which time is the latest?",
+   "o": [
+    "quarter to eight",
+    "half past seven",
+    "quarter past seven",
+    "seven o'clock"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "ترتيب أوقاتٍ زمنياً"
+  },
+  {
+   "t": "t",
+   "q": "'Half past four' is 4:30.",
+   "a": true,
+   "lv": "k",
+   "obj": "تصنيف الأوقات: half past أم quarter"
+  },
+  {
+   "t": "t",
+   "q": "'Quarter past ten' is 10:45.",
+   "a": false,
+   "lv": "a",
+   "obj": "ربط الوقت بصيغته اللفظية"
+  },
+  {
+   "t": "t",
+   "q": "'Quarter to three' means 2:45.",
+   "a": true,
+   "lv": "k",
+   "obj": "قول الوقت: quarter to"
+  }
+ ],
+ "g3e-1-7": [
+  {
+   "t": "m",
+   "q": "Which word starts with 'wh'?",
+   "o": [
+    "whale",
+    "phone",
+    "fish",
+    "water"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: wh (whale)"
+  },
+  {
+   "t": "m",
+   "q": "Which word has the 'ph' sound?",
+   "o": [
+    "elephant",
+    "wheel",
+    "white",
+    "whale"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "صوت ph: elephant"
+  },
+  {
+   "t": "m",
+   "q": "Which word has the same first sound as 'whale'?",
+   "o": [
+    "wheel",
+    "phone",
+    "hat",
+    "elephant"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "كلماتٌ تشترك في الصوت الأول"
+  },
+  {
+   "t": "m",
+   "q": "Complete the word: ___one (you call people with it)",
+   "o": [
+    "ph",
+    "wh",
+    "f",
+    "th"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تصنيف الكلمات حسب صوتها: wh أم ph"
+  },
+  {
+   "t": "m",
+   "q": "Which word does NOT have the 'wh' sound?",
+   "o": [
+    "dolphin",
+    "whale",
+    "wheel",
+    "white"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "التمييز بين صوتَي wh وph"
+  },
+  {
+   "t": "t",
+   "q": "'Wheel' starts with 'wh'.",
+   "a": true,
+   "lv": "k",
+   "obj": "صوت wh: whale, wheel"
+  },
+  {
+   "t": "t",
+   "q": "'Dolphin' has the 'wh' sound.",
+   "a": false,
+   "lv": "a",
+   "obj": "التمييز بين صوتَي wh وph"
+  },
+  {
+   "t": "t",
+   "q": "In 'elephant', the letters 'ph' sound like 'f'.",
+   "a": true,
+   "lv": "k",
+   "obj": "صوت ph: elephant"
+  }
+ ],
+ "g3e-1-8": [
+  {
+   "t": "m",
+   "q": "When do we have breakfast?",
+   "o": [
+    "in the morning",
+    "at night",
+    "in the evening",
+    "in the afternoon"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة تركيب: We have breakfast in the morning."
+  },
+  {
+   "t": "m",
+   "q": "Which is a time of the day?",
+   "o": [
+    "afternoon",
+    "breakfast",
+    "school",
+    "homework"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة أوقات اليوم"
+  },
+  {
+   "t": "m",
+   "q": "Which routine do you do at school?",
+   "o": [
+    "have art lessons",
+    "go to bed",
+    "get up",
+    "have dinner at home"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة تصنيف الروتين: في المنزل أم في المدرسة"
+  },
+  {
+   "t": "m",
+   "q": "When do you have dinner?",
+   "o": [
+    "In the evening.",
+    "In the morning.",
+    "At school.",
+    "Yes, I do."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "مراجعة: ربط سؤال When بجوابه"
+  },
+  {
+   "t": "m",
+   "q": "What comes right before \"go to school\"?",
+   "o": [
+    "have breakfast",
+    "have dinner",
+    "go to bed",
+    "have lunch"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "مراجعة ترتيب اليوم المدرسيّ"
+  },
+  {
+   "t": "t",
+   "q": "'Get up' is a daily routine.",
+   "a": true,
+   "lv": "k",
+   "obj": "مراجعة الروتين اليومي"
+  },
+  {
+   "t": "t",
+   "q": "'At night' is a good answer to 'When do you go to bed?'",
+   "a": true,
+   "lv": "a",
+   "obj": "مراجعة: ربط سؤال When بجوابه"
+  },
+  {
+   "t": "t",
+   "q": "On a school day, we have lunch before breakfast.",
+   "a": false,
+   "lv": "k",
+   "obj": "مراجعة ترتيب اليوم المدرسيّ"
+  }
+ ],
+ "g3e-1-9": [
+  {
+   "t": "m",
+   "q": "When do you have breakfast?",
+   "o": [
+    "In the morning.",
+    "At night.",
+    "In the evening.",
+    "In the afternoon."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "نمط اختبار Pre A1 Starters: أسئلة When مع إجاباتٍ قصيرة"
+  },
+  {
+   "t": "m",
+   "q": "Choose one word: 'When do you go to bed? At ___.'",
+   "o": [
+    "night",
+    "morning",
+    "afternoon",
+    "school"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "نمط اختبار Pre A1 Starters: كتابة إجابةٍ من كلمة واحدة"
+  },
+  {
+   "t": "m",
+   "q": "When do you do homework?",
+   "o": [
+    "In the evening.",
+    "Yes, I can.",
+    "Ten books.",
+    "It is green."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط أسئلة When بإجاباتٍ قصيرة"
+  },
+  {
+   "t": "m",
+   "q": "Which activity do you usually do in the morning?",
+   "o": [
+    "go to school",
+    "have dinner",
+    "do homework",
+    "go to bed"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تصنيف الأنشطة: صباحاً أم مساءً"
+  },
+  {
+   "t": "m",
+   "q": "Which one happens last in the day?",
+   "o": [
+    "have dinner",
+    "go to school",
+    "have lunch",
+    "have breakfast"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "ترتيب أجزاء اليوم بحسب حدوثها"
+  },
+  {
+   "t": "t",
+   "q": "'In the afternoon' can answer 'When do you have lunch?'",
+   "a": true,
+   "lv": "k",
+   "obj": "نمط اختبار Pre A1 Starters"
+  },
+  {
+   "t": "t",
+   "q": "We usually have dinner in the morning.",
+   "a": false,
+   "lv": "a",
+   "obj": "تصنيف الأنشطة: صباحاً أم مساءً"
+  },
+  {
+   "t": "t",
+   "q": "Lunch comes before dinner.",
+   "a": true,
+   "lv": "k",
+   "obj": "ترتيب أجزاء اليوم بحسب حدوثها"
+  }
+ ],
+ "g3e-1-10": [
+  {
+   "t": "m",
+   "q": "Which word starts with the 'ph' sound?",
+   "o": [
+    "phone",
+    "wheel",
+    "whale",
+    "white"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة صوتيّة: phone (ph)"
+  },
+  {
+   "t": "m",
+   "q": "In the morning, what do you do first?",
+   "o": [
+    "get up",
+    "go to school",
+    "have breakfast",
+    "have lunch"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ترتيب روتين الصباح"
+  },
+  {
+   "t": "m",
+   "q": "Which game square is a question about time?",
+   "o": [
+    "When do you play?",
+    "Go forward two spaces.",
+    "Miss a turn.",
+    "wh or ph?"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "التمييز بين أسئلة الوقت وغيرها"
+  },
+  {
+   "t": "m",
+   "q": "A game square says 'Miss a turn.' What is it?",
+   "o": [
+    "an instruction to move",
+    "a question about time",
+    "a question about sounds",
+    "a clock time"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تصنيف مربّعات اللعبة: سؤالٌ أم تعليمة حركة"
+  },
+  {
+   "t": "m",
+   "q": "A game square says 'What's the time?' What kind of answer do you give?",
+   "o": [
+    "a clock time",
+    "a sound",
+    "a colour",
+    "a number of spaces"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "ربط مربّعات اللعبة بنوع إجابتها"
+  },
+  {
+   "t": "t",
+   "q": "'Go forward two spaces' is a question.",
+   "a": false,
+   "lv": "a",
+   "obj": "تصنيف مربّعات اللعبة: سؤالٌ أم تعليمة حركة"
+  },
+  {
+   "t": "t",
+   "q": "'What time do you have dinner?' asks about time.",
+   "a": true,
+   "lv": "k",
+   "obj": "التمييز بين أسئلة الوقت وغيرها"
+  },
+  {
+   "t": "t",
+   "q": "You have breakfast before you go to school.",
+   "a": true,
+   "lv": "k",
+   "obj": "مراجعة شاملة عبر لعبة اللوحة"
+  }
+ ],
+ "g3e-1-gr": [
+  {
+   "t": "m",
+   "q": "At Robot School, when do the children have lunch?",
+   "o": [
+    "at half past twelve",
+    "at eight o'clock",
+    "at quarter to three",
+    "at half past eight"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قراءة متدرّجة ١ (Welcome to Robot School!): ربط كلّ وقتٍ بما يحدث فيه"
+  },
+  {
+   "t": "m",
+   "q": "At Robot School, what do the children have at half past one?",
+   "o": [
+    "an art lesson",
+    "lunch",
+    "English lessons",
+    "a swimming lesson"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قراءة متدرّجة ١ (Welcome to Robot School!): ربط كلّ وقتٍ بما يحدث فيه"
+  },
+  {
+   "t": "m",
+   "q": "When do the children go home from Robot School?",
+   "o": [
+    "at quarter to three",
+    "at half past twelve",
+    "at eight o'clock",
+    "at ten o'clock"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قراءة متدرّجة ١ (Welcome to Robot School!): ربط كلّ وقتٍ بما يحدث فيه"
+  },
+  {
+   "t": "m",
+   "q": "In 'Elephant's Day', when does Elephant go to bed?",
+   "o": [
+    "at ten o'clock",
+    "at eight o'clock",
+    "in the morning",
+    "in the afternoon"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "قراءة متدرّجة ٢ (Elephant's Day): إكمال جملةٍ من النصّ — أوقات اليوم"
+  },
+  {
+   "t": "m",
+   "q": "What does Elephant do FIRST in the day?",
+   "o": [
+    "gets up and has a big breakfast",
+    "has dinner and sings",
+    "plays in the afternoon",
+    "goes to bed"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "قراءة متدرّجة ٢ (Elephant's Day): ترتيب أحداث يوم الفيل"
+  },
+  {
+   "t": "t",
+   "q": "At Robot School, the children have fish and rice for lunch.",
+   "a": true,
+   "lv": "k",
+   "obj": "قراءة متدرّجة ١ (Welcome to Robot School!): تمييز ما ورد في القصّة ممّا لم يرد"
+  },
+  {
+   "t": "t",
+   "q": "Elephant plays in the afternoon.",
+   "a": true,
+   "lv": "k",
+   "obj": "قراءة متدرّجة ٢ (Elephant's Day): ترتيب أحداث يوم الفيل"
+  },
+  {
+   "t": "t",
+   "q": "The children go to Robot School at ten o'clock.",
+   "a": false,
+   "lv": "a",
+   "obj": "قراءة متدرّجة ١ (Welcome to Robot School!): استرجاع تفصيلٍ صريح — وقت الذهاب إلى المدرسة"
+  }
+ ],
+ "g3e-2-1": [
+  {
+   "t": "m",
+   "q": "What do you wear to bed?",
+   "o": [
+    "pyjamas",
+    "a coat",
+    "trainers",
+    "a baseball cap"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات الملابس: hijab, tracksuit, slippers, jumper, coat, jeans, pyjamas, trainers, baseball cap, shirt"
+  },
+  {
+   "t": "m",
+   "q": "What do you wear on your head in the sun?",
+   "o": [
+    "a baseball cap",
+    "slippers",
+    "jeans",
+    "a jumper"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات الملابس: hijab, tracksuit, slippers, jumper, coat, jeans, pyjamas, trainers, baseball cap, shirt"
+  },
+  {
+   "t": "m",
+   "q": "Complete the chant: 'We're wearing jeans, ___ and coats.'",
+   "o": [
+    "shirts",
+    "keys",
+    "phones",
+    "books"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "أنشودة الوحدة: We're wearing jeans, shirts and coats."
+  },
+  {
+   "t": "m",
+   "q": "Choose the correct sentence.",
+   "o": [
+    "They're wearing tracksuits.",
+    "They're wear tracksuits.",
+    "They wearing tracksuits.",
+    "They's wearing tracksuits."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تركيب: We're/You're/They're wearing..."
+  },
+  {
+   "t": "m",
+   "q": "Which clothes are for sport?",
+   "o": [
+    "a tracksuit",
+    "pyjamas",
+    "slippers",
+    "a hijab"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تصنيف الملابس: للرياضة أم للنوم"
+  },
+  {
+   "t": "t",
+   "q": "A tracksuit is good for sport.",
+   "a": true,
+   "lv": "k",
+   "obj": "مفردات الملابس: tracksuit"
+  },
+  {
+   "t": "t",
+   "q": "Slippers are for playing football.",
+   "a": false,
+   "lv": "a",
+   "obj": "تصنيف الملابس: للرياضة أم للنوم"
+  },
+  {
+   "t": "t",
+   "q": "A phone is a piece of clothing.",
+   "a": false,
+   "lv": "k",
+   "obj": "التمييز بين الملبس وغيره"
+  }
+ ],
+ "g3e-2-2": [
+  {
+   "t": "m",
+   "q": "What is the name of the story?",
+   "o": [
+    "The school show",
+    "Atomic is colourful!",
+    "Where's Fatma?",
+    "The job fair"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قصّة الوحدة: The school show — إعادة تدوير الملابس"
+  },
+  {
+   "t": "m",
+   "q": "In the story, what does the friend want to recycle?",
+   "o": [
+    "trainers",
+    "books",
+    "phones",
+    "paintbrushes"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قصّة الوحدة: Let's recycle those trainers, Fatma."
+  },
+  {
+   "t": "m",
+   "q": "In the story, what is the problem with the jeans?",
+   "o": [
+    "They are too small.",
+    "They are too big.",
+    "They are red.",
+    "They are wet."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "فهم أحداث القصّة"
+  },
+  {
+   "t": "m",
+   "q": "Which line comes FIRST in the story?",
+   "o": [
+    "Are you ready for the school show?",
+    "Let's recycle those trainers.",
+    "Oh no! Those jeans are too small!",
+    "You're wearing pyjamas and slippers!"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "ترتيب أحداث القصّة"
+  },
+  {
+   "t": "m",
+   "q": "'Don't be wasteful.' What does this mean?",
+   "o": [
+    "Use old things again.",
+    "Throw old clothes away.",
+    "Buy lots of new clothes.",
+    "Never wear trainers."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "قيمة القصّة: Don't be wasteful"
+  },
+  {
+   "t": "t",
+   "q": "In the story, someone is wearing pyjamas and slippers.",
+   "a": true,
+   "lv": "k",
+   "obj": "فهم أحداث القصّة"
+  },
+  {
+   "t": "t",
+   "q": "Recycling old clothes is wasteful.",
+   "a": false,
+   "lv": "a",
+   "obj": "قصّة الوحدة: القيمة — Don't be wasteful"
+  },
+  {
+   "t": "t",
+   "q": "Someone in the story says 'Let's recycle those trainers, Fatma.'",
+   "a": true,
+   "lv": "k",
+   "obj": "قصّة الوحدة: Let's recycle those trainers, Fatma."
+  }
+ ],
+ "g3e-2-3": [
+  {
+   "t": "m",
+   "q": "What do you use to open a door?",
+   "o": [
+    "keys",
+    "glasses",
+    "a phone",
+    "a handbag"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات المقتنيات الشخصية: glasses, keys, handbag, backpack, phone, computer"
+  },
+  {
+   "t": "m",
+   "q": "What do you carry on your back to school?",
+   "o": [
+    "a backpack",
+    "glasses",
+    "keys",
+    "a computer"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات المقتنيات الشخصية: backpack"
+  },
+  {
+   "t": "m",
+   "q": "Complete the song: 'Our keys are ___.'",
+   "o": [
+    "grey",
+    "pink",
+    "yellow",
+    "orange"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "أنشودة الوحدة: ربط كل مقتنًى بلونه"
+  },
+  {
+   "t": "m",
+   "q": "Choose the correct sentence.",
+   "o": [
+    "Their glasses are blue.",
+    "They glasses are blue.",
+    "They're glasses are blue.",
+    "There glasses is blue."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تركيب: Our/Your/Their + colour"
+  },
+  {
+   "t": "m",
+   "q": "Which of these is electronic?",
+   "o": [
+    "a phone",
+    "keys",
+    "glasses",
+    "a handbag"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تصنيف المقتنيات: إلكترونية أم لا"
+  },
+  {
+   "t": "t",
+   "q": "A computer is electronic.",
+   "a": true,
+   "lv": "k",
+   "obj": "تصنيف المقتنيات: إلكترونية أم لا"
+  },
+  {
+   "t": "t",
+   "q": "In the song, 'Our keys are grey. And our computer is, too.' means the computer is grey.",
+   "a": true,
+   "lv": "a",
+   "obj": "أنشودة الوحدة: Our keys are grey. And our computer is, too."
+  },
+  {
+   "t": "t",
+   "q": "Keys are electronic.",
+   "a": false,
+   "lv": "k",
+   "obj": "تصنيف المقتنيات: إلكترونية أم لا"
+  }
+ ],
+ "g3e-2-4": [
+  {
+   "t": "m",
+   "q": "'They're wearing baseball caps.' What colour are their caps?",
+   "o": [
+    "purple",
+    "red",
+    "green",
+    "grey"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: Their baseball caps are purple."
+  },
+  {
+   "t": "m",
+   "q": "'They're wearing hijabs.' What colour are their hijabs?",
+   "o": [
+    "red",
+    "purple",
+    "blue",
+    "black"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: Their hijabs are red."
+  },
+  {
+   "t": "m",
+   "q": "Which word is a colour?",
+   "o": [
+    "purple",
+    "hijab",
+    "baseball cap",
+    "jeans"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تصنيف: ملابس أم ألوان"
+  },
+  {
+   "t": "m",
+   "q": "Complete: 'They're wearing hijabs. ___ hijabs are red.'",
+   "o": [
+    "Their",
+    "They're",
+    "There",
+    "They"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تركيب: They're wearing hijabs. Their hijabs are red."
+  },
+  {
+   "t": "m",
+   "q": "What sentence comes after 'They're wearing baseball caps.'?",
+   "o": [
+    "Their baseball caps are purple.",
+    "How much is this?",
+    "Their hijabs are wearing.",
+    "I go to school today."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "ترتيب بناء الوصف"
+  },
+  {
+   "t": "t",
+   "q": "'Hijab' is a colour.",
+   "a": false,
+   "lv": "k",
+   "obj": "تصنيف: ملابس أم ألوان"
+  },
+  {
+   "t": "t",
+   "q": "'Their baseball caps are purple' tells us the colour of the caps.",
+   "a": true,
+   "lv": "a",
+   "obj": "ربط الوصف بلونه"
+  },
+  {
+   "t": "t",
+   "q": "We say 'Their hijabs are red' before 'They're wearing hijabs'.",
+   "a": false,
+   "lv": "k",
+   "obj": "ترتيب بناء الوصف"
+  }
+ ],
+ "g3e-2-5": [
+  {
+   "t": "m",
+   "q": "Who gets Eidiya?",
+   "o": [
+    "children",
+    "teachers",
+    "shops",
+    "cars"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "الثقافة: معنى العيديّة"
+  },
+  {
+   "t": "m",
+   "q": "What do children eat at Eid Al-Fitr?",
+   "o": [
+    "sweets",
+    "pyjamas",
+    "keys",
+    "paint"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "الثقافة: العيديّة والحلوى"
+  },
+  {
+   "t": "m",
+   "q": "What do people wear at Eid Al-Fitr?",
+   "o": [
+    "traditional clothes",
+    "pyjamas",
+    "school uniforms",
+    "tracksuits for football"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "الثقافة: مفردات عيد الفطر ومعانيها"
+  },
+  {
+   "t": "m",
+   "q": "Which Eid word is something you eat?",
+   "o": [
+    "sweets",
+    "traditional clothes",
+    "Eidiya",
+    "presents"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تصنيف مفردات العيد: طعامٌ أم ملبس"
+  },
+  {
+   "t": "m",
+   "q": "Why don't children go to school at Eid Al-Fitr?",
+   "o": [
+    "It is a holiday.",
+    "It is night.",
+    "It is very cold.",
+    "The school is closed for painting."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "فهم عادات عيد الفطر"
+  },
+  {
+   "t": "t",
+   "q": "Eid Al-Fitr comes after Ramadan.",
+   "a": true,
+   "lv": "k",
+   "obj": "الثقافة: عيد الفطر في عُمان"
+  },
+  {
+   "t": "t",
+   "q": "Traditional clothes are something you eat.",
+   "a": false,
+   "lv": "a",
+   "obj": "تصنيف مفردات العيد: طعامٌ أم ملبس"
+  },
+  {
+   "t": "t",
+   "q": "At Eid Al-Fitr, families give presents.",
+   "a": true,
+   "lv": "k",
+   "obj": "فهم عادات عيد الفطر"
+  }
+ ],
+ "g3e-2-6": [
+  {
+   "t": "m",
+   "q": "How do you ask about the price?",
+   "o": [
+    "How much is this?",
+    "How old are you?",
+    "When do you play?",
+    "What is your name?"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "لغة السؤال عن السعر: How much is this?"
+  },
+  {
+   "t": "m",
+   "q": "What does the shop worker say after 'Excuse me.'?",
+   "o": [
+    "Yes, can I help you?",
+    "It's 5 rials.",
+    "Goodbye.",
+    "Thank you."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط جمل حوار المتجر بردودها"
+  },
+  {
+   "t": "m",
+   "q": "What money do we use in Oman?",
+   "o": [
+    "rials",
+    "dollars",
+    "pounds",
+    "euros"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "حوار المتجر: It's 5 rials."
+  },
+  {
+   "t": "m",
+   "q": "'How much is this baseball cap?' Choose the best answer.",
+   "o": [
+    "It's 5 rials.",
+    "It's half past five.",
+    "It's blue.",
+    "It's my cap."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "حوار المتجر: It's 5 rials."
+  },
+  {
+   "t": "m",
+   "q": "Which line comes last in the shop dialogue?",
+   "o": [
+    "Thank you.",
+    "Excuse me.",
+    "How much is this?",
+    "Yes, can I help you?"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "ترتيب حوار المتجر"
+  },
+  {
+   "t": "t",
+   "q": "'Excuse me' is a polite way to start talking to someone.",
+   "a": true,
+   "lv": "k",
+   "obj": "لغة السؤال عن السعر: Excuse me."
+  },
+  {
+   "t": "t",
+   "q": "9 OMR is cheaper than 2 OMR.",
+   "a": false,
+   "lv": "a",
+   "obj": "تصنيف الأسعار: رخيص أم غالٍ"
+  },
+  {
+   "t": "t",
+   "q": "We say 'Thank you' when someone says 'Here you are.'",
+   "a": true,
+   "lv": "k",
+   "obj": "ربط جمل حوار المتجر بردودها"
+  }
+ ],
+ "g3e-2-7": [
+  {
+   "t": "m",
+   "q": "Which word has the 'ear' sound?",
+   "o": [
+    "beard",
+    "picture",
+    "mixture",
+    "vulture"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "صوت ear: beard, hear"
+  },
+  {
+   "t": "m",
+   "q": "Which word has the 'ure' sound?",
+   "o": [
+    "picture",
+    "hear",
+    "year",
+    "beard"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "صوت ure: mixture"
+  },
+  {
+   "t": "m",
+   "q": "Which word has the same sound as 'hear'?",
+   "o": [
+    "year",
+    "mixture",
+    "vulture",
+    "hair"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "كلماتٌ تشترك في الصوت"
+  },
+  {
+   "t": "m",
+   "q": "Complete the word: vult___",
+   "o": [
+    "ure",
+    "ear",
+    "er",
+    "air"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تصنيف الكلمات حسب صوتها: ear أم ure"
+  },
+  {
+   "t": "m",
+   "q": "Which word does NOT have the 'ure' sound?",
+   "o": [
+    "ears",
+    "picture",
+    "mixture",
+    "vulture"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "التمييز بين صوتَي ear وure"
+  },
+  {
+   "t": "t",
+   "q": "'Hear' has the 'ear' sound.",
+   "a": true,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: ear (hear)"
+  },
+  {
+   "t": "t",
+   "q": "'Mixture' has the 'ear' sound.",
+   "a": false,
+   "lv": "a",
+   "obj": "التمييز بين صوتَي ear وure"
+  },
+  {
+   "t": "t",
+   "q": "'Picture' and 'vulture' share the 'ure' sound.",
+   "a": true,
+   "lv": "k",
+   "obj": "كلماتٌ تشترك في الصوت"
+  }
+ ],
+ "g3e-2-8": [
+  {
+   "t": "m",
+   "q": "'They're' is short for ___.",
+   "o": [
+    "they are",
+    "their",
+    "there",
+    "they is"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة: they're = they are"
+  },
+  {
+   "t": "m",
+   "q": "Which word is an accessory, not clothes?",
+   "o": [
+    "glasses",
+    "jeans",
+    "slippers",
+    "trainers"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة تصنيف: ملابس أم أدوات"
+  },
+  {
+   "t": "m",
+   "q": "'You're' goes with which possessive word?",
+   "o": [
+    "Your",
+    "Their",
+    "Our",
+    "My"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة: ربط الضمير بصيغة الملكية"
+  },
+  {
+   "t": "m",
+   "q": "Complete: 'We're wearing coats. ___ coats are green.'",
+   "o": [
+    "Our",
+    "Their",
+    "Your",
+    "We"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "مراجعة: Their pyjamas are pink."
+  },
+  {
+   "t": "m",
+   "q": "In a shop, what do you say after 'Yes, can I help you?'",
+   "o": [
+    "How much is this?",
+    "Excuse me.",
+    "It's 5 rials.",
+    "Good night."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "مراجعة حوار المتجر"
+  },
+  {
+   "t": "t",
+   "q": "A backpack is something you carry.",
+   "a": true,
+   "lv": "k",
+   "obj": "مراجعة مفردات الملابس والمقتنيات"
+  },
+  {
+   "t": "t",
+   "q": "'We're' goes with 'Their'.",
+   "a": false,
+   "lv": "a",
+   "obj": "مراجعة: ربط الضمير بصيغة الملكية"
+  },
+  {
+   "t": "t",
+   "q": "Jeans are clothes.",
+   "a": true,
+   "lv": "k",
+   "obj": "مراجعة تصنيف: ملابس أم أدوات"
+  }
+ ],
+ "g3e-2-9": [
+  {
+   "t": "m",
+   "q": "Complete: 'I'm ___ a coat.'",
+   "o": [
+    "wearing",
+    "wear",
+    "wears",
+    "to wear"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "نمط اختبار Pre A1 Starters: I'm wearing..."
+  },
+  {
+   "t": "m",
+   "q": "Look at your friend. Choose the correct sentence.",
+   "o": [
+    "You're wearing jeans.",
+    "Your wearing jeans.",
+    "You wearing jeans.",
+    "You's wearing jeans."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "نمط اختبار Pre A1 Starters: You're wearing jeans."
+  },
+  {
+   "t": "m",
+   "q": "Many girls have red hijabs. What do you say?",
+   "o": [
+    "They're wearing red hijabs.",
+    "I'm wearing red hijabs.",
+    "They's wearing red hijabs.",
+    "Their wearing red hijabs."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "نمط اختبار Pre A1 Starters: They're wearing..."
+  },
+  {
+   "t": "m",
+   "q": "Which form is for MORE than one person?",
+   "o": [
+    "We're",
+    "I'm",
+    "I am",
+    "I'm not"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تصنيف صيغ الضمير: شخصٌ واحد أم أكثر"
+  },
+  {
+   "t": "m",
+   "q": "Which one is NOT clothes?",
+   "o": [
+    "keys",
+    "jumper",
+    "coat",
+    "shirt"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "التمييز بين الملبس وغيره"
+  },
+  {
+   "t": "t",
+   "q": "'They're wearing hijabs' talks about more than one person.",
+   "a": true,
+   "lv": "k",
+   "obj": "تصنيف صيغ الضمير: شخصٌ واحد أم أكثر"
+  },
+  {
+   "t": "t",
+   "q": "'I'm wearing glasses' talks about more than one person.",
+   "a": false,
+   "lv": "a",
+   "obj": "ربط الضمير بجملته"
+  },
+  {
+   "t": "t",
+   "q": "'We're wearing glasses' is a correct sentence.",
+   "a": true,
+   "lv": "k",
+   "obj": "ربط الضمير بجملته"
+  }
+ ],
+ "g3e-2-10": [
+  {
+   "t": "m",
+   "q": "Where do you wear trainers?",
+   "o": [
+    "on your feet",
+    "on your head",
+    "on your eyes",
+    "on your hands"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة مفردات الملابس: trainers"
+  },
+  {
+   "t": "m",
+   "q": "Where do you wear a baseball cap?",
+   "o": [
+    "on your head",
+    "on your feet",
+    "on your legs",
+    "on your eyes"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط كل قطعة ملبسٍ بموضعها"
+  },
+  {
+   "t": "m",
+   "q": "Which item is on the TOP of the body?",
+   "o": [
+    "jacket",
+    "jeans",
+    "trainers",
+    "slippers"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تصنيف الملابس: أعلى الجسم أم أسفله"
+  },
+  {
+   "t": "m",
+   "q": "In the game, your friend is wearing blue jeans. What do you say?",
+   "o": [
+    "You're wearing blue jeans.",
+    "I'm wearing blue jeans.",
+    "They're wearing a blue cap.",
+    "Your blue jeans wearing."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تطبيق التركيب داخل لعبة اللوحة"
+  },
+  {
+   "t": "m",
+   "q": "From head to feet, what comes right after \"glasses\"?",
+   "o": [
+    "jacket",
+    "trainers",
+    "jeans",
+    "baseball cap"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "ترتيب الملابس من الرأس إلى القدم"
+  },
+  {
+   "t": "t",
+   "q": "Jeans are worn on the bottom of the body.",
+   "a": true,
+   "lv": "k",
+   "obj": "تصنيف الملابس: أعلى الجسم أم أسفله"
+  },
+  {
+   "t": "t",
+   "q": "Glasses are worn on your feet.",
+   "a": false,
+   "lv": "k",
+   "obj": "ربط كل قطعة ملبسٍ بموضعها"
+  },
+  {
+   "t": "t",
+   "q": "From head to feet, the baseball cap comes before the trainers.",
+   "a": true,
+   "lv": "a",
+   "obj": "ترتيب الملابس من الرأس إلى القدم"
+  }
+ ],
+ "g3e-2-gr": [
+  {
+   "t": "m",
+   "q": "In 'Dad's Tracksuit', what does Dad give the boy?",
+   "o": [
+    "some red clothes",
+    "a book",
+    "a ball",
+    "a phone"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قراءة متدرّجة ١ (The Clothes Game): إكمال جملةٍ من النصّ — ألوان الملابس"
+  },
+  {
+   "t": "m",
+   "q": "In 'The Clothes Game', what are the girls wearing?",
+   "o": [
+    "coats, slippers and handbags",
+    "tracksuits and trainers",
+    "pyjamas",
+    "school uniforms"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قراءة متدرّجة ٢ (Dad's Tracksuit): استرجاع تفصيلٍ صريح — صورة الأب"
+  },
+  {
+   "t": "m",
+   "q": "What is Dad's football team wearing?",
+   "o": [
+    "red tracksuits and red trainers",
+    "pyjamas and slippers",
+    "coats and handbags",
+    "hijabs and jeans"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "القراءتان: ربط كلّ شخصٍ بما يرتديه (They're wearing…)"
+  },
+  {
+   "t": "m",
+   "q": "In 'Dad's Tracksuit', what happens at the end?",
+   "o": [
+    "We play football.",
+    "Dad shows me a book.",
+    "Dad points to his team.",
+    "We go to bed."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "قراءة متدرّجة ٢ (Dad's Tracksuit): ترتيب أحداث القصّة"
+  },
+  {
+   "t": "m",
+   "q": "Which clothes come from the dressing up box?",
+   "o": [
+    "slippers",
+    "tracksuits",
+    "red trainers",
+    "football shirts"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "القراءتان: تصنيف الملابس بحسب القصّة التي وردت فيها"
+  },
+  {
+   "t": "t",
+   "q": "Dad's football team wears blue tracksuits.",
+   "a": false,
+   "lv": "k",
+   "obj": "قراءة متدرّجة ١ (The Clothes Game): استرجاع مكان الأحداث"
+  },
+  {
+   "t": "t",
+   "q": "In 'Dad's Tracksuit', Dad shows a special book with pictures.",
+   "a": true,
+   "lv": "k",
+   "obj": "قراءة متدرّجة ٢ (Dad's Tracksuit): ترتيب أحداث القصّة"
+  },
+  {
+   "t": "t",
+   "q": "In 'Dad's Tracksuit', Dad points to his football team.",
+   "a": true,
+   "lv": "a",
+   "obj": "قراءة متدرّجة ٢ (Dad's Tracksuit): استرجاع تفصيلٍ صريح — صورة الأب"
+  }
+ ],
+ "g3e-lc1-1": [
+  {
+   "t": "m",
+   "q": "Which number is 'twenty-six'?",
+   "o": [
+    "26",
+    "62",
+    "20",
+    "16"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "الأعداد ٢١-٣٠: twenty-one..thirty"
+  },
+  {
+   "t": "m",
+   "q": "How do you write 80 in words?",
+   "o": [
+    "eighty",
+    "eighteen",
+    "eight",
+    "eight hundred"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "الأعداد بالعشرات: ten..one hundred"
+  },
+  {
+   "t": "m",
+   "q": "Which word is 100?",
+   "o": [
+    "one hundred",
+    "ten",
+    "one thousand",
+    "ten hundred"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "الأعداد ٢١-٣٠ وبالعشرات: الرقم وكلمته"
+  },
+  {
+   "t": "m",
+   "q": "Complete the count: 'twenty-two, twenty-three, ___'",
+   "o": [
+    "twenty-four",
+    "twenty-five",
+    "thirty-four",
+    "twenty"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "إكمال العدّ ٢١-٣٠"
+  },
+  {
+   "t": "m",
+   "q": "Which number is NOT a ten (10, 20, 30...)?",
+   "o": [
+    "twenty-five",
+    "forty",
+    "seventy",
+    "thirty"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تصنيف الأعداد: ٢١-٣٠ أم بالعشرات"
+  },
+  {
+   "t": "t",
+   "q": "'Twenty-one' comes before 'twenty-two'.",
+   "a": true,
+   "lv": "k",
+   "obj": "ترتيب الأعداد ٢١-٣٠ تصاعدياً"
+  },
+  {
+   "t": "t",
+   "q": "'Forty' is 14.",
+   "a": false,
+   "lv": "k",
+   "obj": "الأعداد ٢١-٣٠ وبالعشرات: الرقم وكلمته"
+  },
+  {
+   "t": "t",
+   "q": "'Twenty-eight' is bigger than 'twenty-three'.",
+   "a": true,
+   "lv": "a",
+   "obj": "ترتيب الأعداد ٢١-٣٠ تصاعدياً"
+  }
+ ],
+ "g3e-lc1-2": [
+  {
+   "t": "m",
+   "q": "Which unit is the smallest?",
+   "o": [
+    "millimetre",
+    "centimetre",
+    "metre",
+    "kilometre"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "وحدات القياس: millimetres, centimetres, metres"
+  },
+  {
+   "t": "m",
+   "q": "How many centimetres are in one metre?",
+   "o": [
+    "a hundred",
+    "ten",
+    "a thousand",
+    "five"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: There are a hundred centimetres in one metre."
+  },
+  {
+   "t": "m",
+   "q": "How many millimetres are in one centimetre?",
+   "o": [
+    "ten",
+    "a hundred",
+    "two",
+    "a thousand"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: There are ten millimetres in one centimetre."
+  },
+  {
+   "t": "m",
+   "q": "'How long is the book?' Choose the best answer.",
+   "o": [
+    "It's 20 centimetres.",
+    "It's 20 o'clock.",
+    "It's 20 rials.",
+    "It's twenty books."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تركيب: How long/wide is it? It's (40) centimetres."
+  },
+  {
+   "t": "m",
+   "q": "Which is the longest?",
+   "o": [
+    "1 metre",
+    "20 centimetres",
+    "13 centimetres",
+    "1 millimetre"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "ترتيب الأطوال من الأقصر إلى الأطول"
+  },
+  {
+   "t": "t",
+   "q": "We measure a pencil in centimetres.",
+   "a": true,
+   "lv": "k",
+   "obj": "تصنيف الأشياء: تُقاس بالسنتيمتر أم بالمتر"
+  },
+  {
+   "t": "t",
+   "q": "A millimetre is longer than a metre.",
+   "a": false,
+   "lv": "k",
+   "obj": "وحدات القياس: millimetres, centimetres, metres"
+  },
+  {
+   "t": "t",
+   "q": "We usually measure a door in metres.",
+   "a": true,
+   "lv": "a",
+   "obj": "تصنيف الأشياء: تُقاس بالسنتيمتر أم بالمتر"
+  }
+ ],
+ "g3e-3-1": [
+  {
+   "t": "m",
+   "q": "Which activity do you do with a ball and a hoop?",
+   "o": [
+    "play basketball",
+    "read books",
+    "listen to music",
+    "watch TV"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات الهوايات: watch TV, listen to music, read books, play video games, ride a bike, play tennis, play basketball, roller-skate, skateboard, do karate"
+  },
+  {
+   "t": "m",
+   "q": "You need a book for this activity. Which one is it?",
+   "o": [
+    "read books",
+    "ride a bike",
+    "do karate",
+    "play tennis"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط كل هواية بما تحتاجه"
+  },
+  {
+   "t": "m",
+   "q": "Complete the chant: It's time for fun today. Let's play, hip hip ___!",
+   "o": [
+    "hooray",
+    "hello",
+    "goodbye",
+    "today"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "أنشودة الوحدة: It's time for fun today. Let's play, hip hip hooray!"
+  },
+  {
+   "t": "m",
+   "q": "Which activity is quiet?",
+   "o": [
+    "listen to music",
+    "play basketball",
+    "do karate",
+    "roller-skate"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تصنيف الهوايات: هادئة أم نشطة"
+  },
+  {
+   "t": "m",
+   "q": "Which one is a sport?",
+   "o": [
+    "do karate",
+    "watch TV",
+    "read books",
+    "listen to music"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "التمييز بين الرياضة وغيرها"
+  },
+  {
+   "t": "t",
+   "q": "You need a racket to ride a bike.",
+   "a": false,
+   "lv": "a",
+   "obj": "ربط كل هواية بما تحتاجه"
+  },
+  {
+   "t": "t",
+   "q": "'Skateboard' and 'roller-skate' are both hobbies.",
+   "a": true,
+   "lv": "k",
+   "obj": "مفردات الهوايات: watch TV, listen to music, read books, play video games, ride a bike, play tennis, play basketball, roller-skate, skateboard, do karate"
+  },
+  {
+   "t": "t",
+   "q": "Doing karate is an active hobby.",
+   "a": true,
+   "lv": "a",
+   "obj": "تصنيف الهوايات: هادئة أم نشطة"
+  }
+ ],
+ "g3e-3-2": [
+  {
+   "t": "m",
+   "q": "In the story, what does Fatma do at 10 o'clock?",
+   "o": [
+    "She skateboards.",
+    "She plays tennis.",
+    "She watches TV.",
+    "She reads books."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قصّة الوحدة: تتزحلق على اللوح الساعة ١٠"
+  },
+  {
+   "t": "m",
+   "q": "What is the name of the story?",
+   "o": [
+    "Where's Fatma?",
+    "The job fair",
+    "Fun at the Park",
+    "The Camel Race"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قصّة الوحدة: Where's Fatma?"
+  },
+  {
+   "t": "m",
+   "q": "What does Fatma do first in the story?",
+   "o": [
+    "She plays tennis.",
+    "She skateboards.",
+    "She watches TV.",
+    "She rides a bike."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "ترتيب أحداث القصّة"
+  },
+  {
+   "t": "m",
+   "q": "Fatma has tennis lessons at 9 o'clock. What time is one hour later?",
+   "o": [
+    "10 o'clock",
+    "8 o'clock",
+    "11 o'clock",
+    "9 o'clock"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "قصّة الوحدة: مواعيد أنشطة فاطمة"
+  },
+  {
+   "t": "m",
+   "q": "At the end of the story, what is the big question?",
+   "o": [
+    "Where is Fatma?",
+    "How old is Fatma?",
+    "What time is it?",
+    "Who is Fatma?"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "فهم أحداث القصّة"
+  },
+  {
+   "t": "t",
+   "q": "In the story, Fatma plays tennis at 11 o'clock.",
+   "a": false,
+   "lv": "k",
+   "obj": "قصّة الوحدة: مواعيد أنشطة فاطمة"
+  },
+  {
+   "t": "t",
+   "q": "In the story, Fatma skateboards after she plays tennis.",
+   "a": true,
+   "lv": "a",
+   "obj": "ترتيب أحداث القصّة"
+  },
+  {
+   "t": "t",
+   "q": "In the story, Fatma watches TV at 11 o'clock.",
+   "a": false,
+   "lv": "k",
+   "obj": "فهم أحداث القصّة"
+  }
+ ],
+ "g3e-3-3": [
+  {
+   "t": "m",
+   "q": "Which day comes before Monday?",
+   "o": [
+    "Sunday",
+    "Tuesday",
+    "Saturday",
+    "Friday"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "أيام الأسبوع: Sunday..Saturday"
+  },
+  {
+   "t": "m",
+   "q": "How many school days are there in a week in this book?",
+   "o": [
+    "five",
+    "four",
+    "six",
+    "seven"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "أيام الأسبوع: the weekend = Friday, Saturday"
+  },
+  {
+   "t": "m",
+   "q": "Complete the song: Does he go to ___ on Wednesdays?",
+   "o": [
+    "school",
+    "tennis",
+    "music",
+    "Monday"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "أنشودة: Does he go to school on Wednesdays?"
+  },
+  {
+   "t": "m",
+   "q": "'Does she ride a bike on Sundays?' Choose the correct short answer.",
+   "o": [
+    "Yes, she does.",
+    "Yes, she is.",
+    "Yes, he do.",
+    "Yes, she do."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تركيب: Does he/she...? Yes, he does./No, she doesn't."
+  },
+  {
+   "t": "m",
+   "q": "Which day is NOT a school day?",
+   "o": [
+    "Friday",
+    "Sunday",
+    "Monday",
+    "Tuesday"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تصنيف الأيام: أيام مدرسة أم عطلة"
+  },
+  {
+   "t": "t",
+   "q": "There are seven days in a week.",
+   "a": true,
+   "lv": "k",
+   "obj": "أيام الأسبوع: Sunday..Saturday"
+  },
+  {
+   "t": "t",
+   "q": "Thursday comes after Friday.",
+   "a": false,
+   "lv": "a",
+   "obj": "ترتيب أيام الأسبوع"
+  },
+  {
+   "t": "t",
+   "q": "'Yes, he does.' is a good answer to 'Does she watch TV?'",
+   "a": false,
+   "lv": "a",
+   "obj": "تركيب: Does he/she...? Yes, he does./No, she doesn't."
+  }
+ ],
+ "g3e-3-4": [
+  {
+   "t": "m",
+   "q": "Which word is an activity, not a day?",
+   "o": [
+    "karate",
+    "Monday",
+    "Friday",
+    "Sunday"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "التمييز بين كلمة اليوم وكلمة النشاط"
+  },
+  {
+   "t": "m",
+   "q": "Complete the question: ___ he play video games on Tuesdays?",
+   "o": [
+    "Does",
+    "Do",
+    "Is",
+    "Are"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: Does he play video games on Tuesdays?"
+  },
+  {
+   "t": "m",
+   "q": "Does she skateboard on Saturdays? Yes, she ___.",
+   "o": [
+    "does",
+    "do",
+    "is",
+    "doesn't"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: Does she skateboard...? Yes, she does."
+  },
+  {
+   "t": "m",
+   "q": "What do you need to play video games?",
+   "o": [
+    "a controller",
+    "a racket",
+    "a hoop",
+    "a book"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "ربط كل هواية بأداتها"
+  },
+  {
+   "t": "m",
+   "q": "He reads books on Fridays only. Does he read books on Mondays?",
+   "o": [
+    "No, he doesn't.",
+    "Yes, he does.",
+    "No, she doesn't.",
+    "Yes, she does."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "ربط سؤال Does بجوابه"
+  },
+  {
+   "t": "t",
+   "q": "Wednesday comes between Tuesday and Thursday.",
+   "a": true,
+   "lv": "k",
+   "obj": "ترتيب أيام الأسبوع"
+  },
+  {
+   "t": "t",
+   "q": "You need a racket to play basketball.",
+   "a": false,
+   "lv": "a",
+   "obj": "ربط كل هواية بأداتها"
+  },
+  {
+   "t": "t",
+   "q": "'Saturday' is the name of an activity.",
+   "a": false,
+   "lv": "k",
+   "obj": "التمييز بين كلمة اليوم وكلمة النشاط"
+  }
+ ],
+ "g3e-3-5": [
+  {
+   "t": "m",
+   "q": "Which traditional sport in Oman uses boats?",
+   "o": [
+    "dhow racing",
+    "camel racing",
+    "tennis",
+    "karate"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "الثقافة: سباق الهوير (دهو) في عُمان"
+  },
+  {
+   "t": "m",
+   "q": "A dhow is a kind of ___.",
+   "o": [
+    "boat",
+    "camel",
+    "car",
+    "bike"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "الثقافة: سباق الهوير (دهو) في عُمان"
+  },
+  {
+   "t": "m",
+   "q": "What do you need for camel racing?",
+   "o": [
+    "camels",
+    "boats",
+    "a racket",
+    "a ball"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط الرياضة بأداتها"
+  },
+  {
+   "t": "m",
+   "q": "Where does dhow racing happen?",
+   "o": [
+    "on the water",
+    "in the desert",
+    "in a park",
+    "in a school"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تصنيف الرياضات: على اليابسة أم على الماء"
+  },
+  {
+   "t": "m",
+   "q": "Which sentence about camel racing is true?",
+   "o": [
+    "Camels run very fast.",
+    "Camels race on the water.",
+    "Camels race in boats.",
+    "Camels race with rackets."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "فهم نصّ سباق الهجن"
+  },
+  {
+   "t": "t",
+   "q": "Dhow racing happens in the desert.",
+   "a": false,
+   "lv": "a",
+   "obj": "تصنيف الرياضات: على اليابسة أم على الماء"
+  },
+  {
+   "t": "t",
+   "q": "Camel racing is a traditional sport in Oman.",
+   "a": true,
+   "lv": "k",
+   "obj": "فهم نصّ سباق الهجن"
+  },
+  {
+   "t": "t",
+   "q": "Camel racing happens on water.",
+   "a": false,
+   "lv": "k",
+   "obj": "الثقافة: سرعة الإبل في سباق الهجن"
+  }
+ ],
+ "g3e-3-6": [
+  {
+   "t": "m",
+   "q": "I don't do it at all. I ___ do it.",
+   "o": [
+    "never",
+    "always",
+    "often",
+    "every"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ظرف التكرار: never"
+  },
+  {
+   "t": "m",
+   "q": "Which word means 'most days'?",
+   "o": [
+    "often",
+    "never",
+    "always",
+    "Sunday"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط ظرف التكرار بمعناه"
+  },
+  {
+   "t": "m",
+   "q": "Which word is a frequency word?",
+   "o": [
+    "always",
+    "Sunday",
+    "tennis",
+    "music"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ظروف التكرار: always, often, never"
+  },
+  {
+   "t": "m",
+   "q": "Ali plays football every day. Ali ___ plays football.",
+   "o": [
+    "always",
+    "never",
+    "Saturday",
+    "weekend"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "ربط ظرف التكرار بمعناه"
+  },
+  {
+   "t": "m",
+   "q": "Which word comes between 'always' and 'never'?",
+   "o": [
+    "often",
+    "always",
+    "never",
+    "today"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "ترتيب ظروف التكرار من الأكثر إلى الأقلّ"
+  },
+  {
+   "t": "t",
+   "q": "'Always' means more times than 'often'.",
+   "a": true,
+   "lv": "a",
+   "obj": "ترتيب ظروف التكرار من الأكثر إلى الأقلّ"
+  },
+  {
+   "t": "t",
+   "q": "'Sunday' is a frequency word.",
+   "a": false,
+   "lv": "k",
+   "obj": "تصنيف الكلمات: ظرف تكرار أم اسم يوم"
+  },
+  {
+   "t": "t",
+   "q": "In the dialogue, the speaker never plays tennis.",
+   "a": false,
+   "lv": "k",
+   "obj": "حوار: I always play tennis. I often watch TV."
+  }
+ ],
+ "g3e-3-7": [
+  {
+   "t": "m",
+   "q": "Which word has the 'a-e' sound, like 'cake'?",
+   "o": [
+    "game",
+    "bike",
+    "stone",
+    "cube"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: a-e (cake)"
+  },
+  {
+   "t": "m",
+   "q": "Which word has the 'i-e' sound, like 'bike'?",
+   "o": [
+    "kite",
+    "cake",
+    "tube",
+    "home"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "صوت i-e: bike"
+  },
+  {
+   "t": "m",
+   "q": "Which word has the 'o-e' sound, like 'stone'?",
+   "o": [
+    "home",
+    "cube",
+    "lake",
+    "five"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط الكلمة بصوتها"
+  },
+  {
+   "t": "m",
+   "q": "Complete the tongue twister: The boy has got a cube, a ___, a cake and a stone.",
+   "o": [
+    "bike",
+    "kite",
+    "tube",
+    "home"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "لعبة اللسان: The boy has got a cube, a bike, a cake and a stone."
+  },
+  {
+   "t": "m",
+   "q": "Which word has the 'u-e' sound, like 'cube'?",
+   "o": [
+    "tube",
+    "cake",
+    "bike",
+    "rope"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "التمييز بين صوت u-e وغيره"
+  },
+  {
+   "t": "t",
+   "q": "'Cake' and 'lake' have the same 'a-e' sound.",
+   "a": true,
+   "lv": "a",
+   "obj": "تصنيف الكلمات حسب صوتها"
+  },
+  {
+   "t": "t",
+   "q": "'Stone' has the 'u-e' sound.",
+   "a": false,
+   "lv": "k",
+   "obj": "التمييز بين صوت u-e وغيره"
+  },
+  {
+   "t": "t",
+   "q": "'Kite' and 'cube' have the same sound.",
+   "a": false,
+   "lv": "r",
+   "obj": "تصنيف الكلمات حسب صوتها"
+  }
+ ],
+ "g3e-3-8": [
+  {
+   "t": "m",
+   "q": "Which day comes after Saturday?",
+   "o": [
+    "Sunday",
+    "Friday",
+    "Monday",
+    "Thursday"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة أيام الأسبوع"
+  },
+  {
+   "t": "m",
+   "q": "Choose the correct question.",
+   "o": [
+    "Does she play tennis on Mondays?",
+    "Does she plays tennis on Mondays?",
+    "Do she play tennis on Mondays?",
+    "Does she tennis on Mondays?"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "مراجعة تركيب Does she...؟"
+  },
+  {
+   "t": "m",
+   "q": "Does he do karate on Thursdays? Yes, ___",
+   "o": [
+    "he does.",
+    "she does.",
+    "he do.",
+    "he is."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة: Yes, he does."
+  },
+  {
+   "t": "m",
+   "q": "Which word is an activity?",
+   "o": [
+    "skateboard",
+    "Tuesday",
+    "Wednesday",
+    "Friday"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة تصنيف: نشاطاتٌ أم أيّام"
+  },
+  {
+   "t": "m",
+   "q": "Today is Tuesday. What day is tomorrow?",
+   "o": [
+    "Wednesday",
+    "Monday",
+    "Thursday",
+    "Sunday"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "مراجعة ترتيب أيام الأسبوع"
+  },
+  {
+   "t": "t",
+   "q": "Monday comes before Sunday.",
+   "a": false,
+   "lv": "a",
+   "obj": "مراجعة ترتيب أيام الأسبوع"
+  },
+  {
+   "t": "t",
+   "q": "'Does she…?' asks about a girl or a woman.",
+   "a": true,
+   "lv": "k",
+   "obj": "مراجعة تركيب Does she...؟"
+  },
+  {
+   "t": "t",
+   "q": "'No, he doesn't.' is the answer to 'Does she play tennis?'",
+   "a": false,
+   "lv": "a",
+   "obj": "مراجعة: ربط سؤال Does بجوابه"
+  }
+ ],
+ "g3e-3-9": [
+  {
+   "t": "m",
+   "q": "In the schedule, what does the boy do on Mondays?",
+   "o": [
+    "play video games",
+    "play tennis",
+    "do karate",
+    "ride a bike"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "نمط اختبار Pre A1 Starters: جدولٌ أسبوعيٌّ للأنشطة"
+  },
+  {
+   "t": "m",
+   "q": "In the schedule, how many days does the boy read books?",
+   "o": [
+    "two",
+    "one",
+    "three",
+    "four"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "نمط اختبار Pre A1 Starters: جدولٌ أسبوعيّ"
+  },
+  {
+   "t": "m",
+   "q": "In the schedule, what does he do on Fridays?",
+   "o": [
+    "He reads books.",
+    "He plays tennis.",
+    "He does karate.",
+    "He plays video games."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "نمط اختبار Pre A1 Starters: What does he do on Sundays?"
+  },
+  {
+   "t": "m",
+   "q": "Look at the schedule. Does he play tennis on Sundays?",
+   "o": [
+    "Yes, he does.",
+    "No, he doesn't.",
+    "Yes, she does.",
+    "No, she doesn't."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "ربط كل يومٍ بنشاط الجدول"
+  },
+  {
+   "t": "m",
+   "q": "In the schedule, on which two days does the boy read books?",
+   "o": [
+    "Friday and Saturday",
+    "Sunday and Monday",
+    "Wednesday and Thursday",
+    "Monday and Thursday"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تصنيف الأيام حسب الجدول: يقرأ فيها كتباً أم لا"
+  },
+  {
+   "t": "t",
+   "q": "In the schedule, the boy plays video games on Wednesdays.",
+   "a": false,
+   "lv": "k",
+   "obj": "فهم الجدول الأسبوعيّ"
+  },
+  {
+   "t": "t",
+   "q": "In the schedule, the boy reads books at the weekend.",
+   "a": true,
+   "lv": "a",
+   "obj": "تصنيف الأيام حسب الجدول: يقرأ فيها كتباً أم لا"
+  },
+  {
+   "t": "t",
+   "q": "In the schedule, the boy does karate on Sundays.",
+   "a": false,
+   "lv": "a",
+   "obj": "ربط كل يومٍ بنشاط الجدول"
+  }
+ ],
+ "g3e-3-10": [
+  {
+   "t": "m",
+   "q": "Which question is correct?",
+   "o": [
+    "Does he ride a bike on Fridays?",
+    "Does he rides a bike on Fridays?",
+    "Do he ride a bike on Fridays?",
+    "Is he ride a bike on Fridays?"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب سؤال Does"
+  },
+  {
+   "t": "m",
+   "q": "Which word comes first in 'Does she play tennis on Mondays?'",
+   "o": [
+    "Does",
+    "she",
+    "play",
+    "tennis"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ترتيب كلمات سؤال Does"
+  },
+  {
+   "t": "m",
+   "q": "He doesn't play basketball. 'Does he play basketball?' What do you say?",
+   "o": [
+    "No, he doesn't.",
+    "Yes, he does.",
+    "No, she doesn't.",
+    "Yes, she does."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "الإجابة القصيرة: No, he doesn't."
+  },
+  {
+   "t": "m",
+   "q": "Which is the correct short answer for a question about 'she'?",
+   "o": [
+    "No, she doesn't.",
+    "No, he doesn't.",
+    "No, she don't.",
+    "No, she isn't."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "الإجابة القصيرة الصحيحة بحسب الضمير"
+  },
+  {
+   "t": "m",
+   "q": "Which answer is a 'No' answer?",
+   "o": [
+    "No, she doesn't.",
+    "Yes, she does.",
+    "Yes, he does.",
+    "Yes, I do."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تصنيف الإجابات: بنعم أم بلا"
+  },
+  {
+   "t": "t",
+   "q": "'Yes, he does.' is the answer to 'Does she play tennis?'",
+   "a": false,
+   "lv": "a",
+   "obj": "الإجابة القصيرة الصحيحة بحسب الضمير"
+  },
+  {
+   "t": "t",
+   "q": "'Does' is the first word in 'Does she play basketball?'",
+   "a": true,
+   "lv": "k",
+   "obj": "ترتيب كلمات سؤال Does"
+  },
+  {
+   "t": "t",
+   "q": "'No, he doesn't.' means he does the activity.",
+   "a": false,
+   "lv": "a",
+   "obj": "الإجابة القصيرة: No, he doesn't."
+  }
+ ],
+ "g3e-3-gr": [
+  {
+   "t": "m",
+   "q": "In 'Fun at the Park', what does Badriya play?",
+   "o": [
+    "tennis",
+    "basketball",
+    "football",
+    "video games"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قراءة متدرّجة ١ (Fun at the Park): استرجاع الحدث الرئيسي — الكرة في الشجرة"
+  },
+  {
+   "t": "m",
+   "q": "In 'The Camel Race', what day is camel racing day?",
+   "o": [
+    "Saturday",
+    "Friday",
+    "Monday",
+    "Sunday"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قراءة متدرّجة ٢ (The Camel Race): إكمال جملةٍ من النصّ — يوم السباق"
+  },
+  {
+   "t": "m",
+   "q": "In 'The Camel Race', who wins the race?",
+   "o": [
+    "Farha",
+    "Dad",
+    "Maryam",
+    "Badriya"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "القراءتان: ربط كلّ شخصيةٍ بما تفعله (He/She plays… — يتوافق مع نحو الوحدة)"
+  },
+  {
+   "t": "m",
+   "q": "In 'The Camel Race', what does the child take to Farha?",
+   "o": [
+    "a peach",
+    "a ball",
+    "a racket",
+    "a book"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "قراءة متدرّجة ٢ (The Camel Race): ترتيب أحداث السباق"
+  },
+  {
+   "t": "m",
+   "q": "Why does Farha run fast again at the end?",
+   "o": [
+    "She runs after the peach.",
+    "She sees a bird.",
+    "She wants to play tennis.",
+    "She wants to go home."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "قراءة متدرّجة ٢ (The Camel Race): ترتيب أحداث السباق"
+  },
+  {
+   "t": "t",
+   "q": "In 'Fun at the Park', Badriya plays basketball.",
+   "a": false,
+   "lv": "a",
+   "obj": "قراءة متدرّجة ١ (Fun at the Park): استرجاع تفصيلٍ صريح — ما تحمله بدرية"
+  },
+  {
+   "t": "t",
+   "q": "There is a cute bird in 'Fun at the Park'.",
+   "a": true,
+   "lv": "k",
+   "obj": "قراءة متدرّجة ١ (Fun at the Park): تمييز ما ورد في القصّة ممّا لم يرد"
+  },
+  {
+   "t": "t",
+   "q": "In 'The Camel Race', Dad watches the race.",
+   "a": true,
+   "lv": "k",
+   "obj": "القراءتان: ربط كلّ شخصيةٍ بما تفعله (He/She plays… — يتوافق مع نحو الوحدة)"
+  }
+ ],
+ "g3e-4-1": [
+  {
+   "t": "m",
+   "q": "Who cooks food?",
+   "o": [
+    "chef",
+    "pilot",
+    "builder",
+    "nurse"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات المهن: doctor, nurse, police officer, builder, astronaut, firefighter, chef, pilot, teacher, artist"
+  },
+  {
+   "t": "m",
+   "q": "Who flies a plane?",
+   "o": [
+    "pilot",
+    "chef",
+    "artist",
+    "teacher"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات المهن: doctor, nurse, police officer, builder, astronaut, firefighter, chef, pilot, teacher, artist"
+  },
+  {
+   "t": "m",
+   "q": "Which job goes to space in a rocket?",
+   "o": [
+    "astronaut",
+    "firefighter",
+    "builder",
+    "nurse"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات المهن: astronaut"
+  },
+  {
+   "t": "m",
+   "q": "Which one is correct?",
+   "o": [
+    "an artist",
+    "a artist",
+    "an doctor",
+    "an teacher"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تركيب: a/an + مهنة (a doctor / an artist)"
+  },
+  {
+   "t": "m",
+   "q": "Which job is creative?",
+   "o": [
+    "artist",
+    "police officer",
+    "firefighter",
+    "doctor"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تصنيف المهن: تحفظ الأمان أم إبداعية"
+  },
+  {
+   "t": "t",
+   "q": "A builder puts out fires.",
+   "a": false,
+   "lv": "k",
+   "obj": "مفردات المهن: doctor, nurse, police officer, builder, astronaut, firefighter, chef, pilot, teacher, artist"
+  },
+  {
+   "t": "t",
+   "q": "We say 'an astronaut'.",
+   "a": true,
+   "lv": "a",
+   "obj": "تركيب: a/an + مهنة (a doctor / an artist)"
+  },
+  {
+   "t": "t",
+   "q": "In the chant, the child wants to be a pilot.",
+   "a": true,
+   "lv": "k",
+   "obj": "أنشودة الوحدة: I want to be a pilot, a doctor and a builder."
+  }
+ ],
+ "g3e-4-2": [
+  {
+   "t": "m",
+   "q": "Who is the pilot in the story?",
+   "o": [
+    "Mr Ahmed",
+    "Mr Ibrahim",
+    "Qais",
+    "Hamed"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قصّة الوحدة: السيد أحمد الطيّار يعلّم صنع طائرة ورقية"
+  },
+  {
+   "t": "m",
+   "q": "What do the children make with Mr Ahmed?",
+   "o": [
+    "paper planes",
+    "cakes",
+    "boats",
+    "kites"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قصّة الوحدة: السيد أحمد الطيّار يعلّم صنع طائرة ورقية"
+  },
+  {
+   "t": "m",
+   "q": "Where are the children in the story?",
+   "o": [
+    "at a job fair",
+    "at the beach",
+    "at a camel race",
+    "at the park"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "فهم أحداث القصّة"
+  },
+  {
+   "t": "m",
+   "q": "In the story, who do the children meet first?",
+   "o": [
+    "Mr Ibrahim, the chef",
+    "Mr Ahmed, the pilot",
+    "a doctor",
+    "an astronaut"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "ترتيب أحداث القصّة"
+  },
+  {
+   "t": "m",
+   "q": "Someone says, 'I don't feel well.' Which job can help?",
+   "o": [
+    "a doctor",
+    "a pilot",
+    "a chef",
+    "a builder"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "قصّة الوحدة: I don't feel well."
+  },
+  {
+   "t": "t",
+   "q": "In the story, Mr Ibrahim is a pilot.",
+   "a": false,
+   "lv": "k",
+   "obj": "قصّة الوحدة: The job fair — السيد إبراهيم الطبّاخ"
+  },
+  {
+   "t": "t",
+   "q": "In the story, someone says, 'Flying a plane is fun!'",
+   "a": true,
+   "lv": "k",
+   "obj": "فهم أحداث القصّة"
+  },
+  {
+   "t": "t",
+   "q": "In the story, the children meet Mr Ahmed before Mr Ibrahim.",
+   "a": false,
+   "lv": "a",
+   "obj": "ترتيب أحداث القصّة"
+  }
+ ],
+ "g3e-4-3": [
+  {
+   "t": "m",
+   "q": "Which transport goes under the ground?",
+   "o": [
+    "underground",
+    "boat",
+    "motorbike",
+    "car"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات المواصلات: bus, boat, underground, car, train, motorbike"
+  },
+  {
+   "t": "m",
+   "q": "Complete the song: Bus and ___, car and boat.",
+   "o": [
+    "underground",
+    "motorbike",
+    "train",
+    "plane"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "أنشودة الوحدة: Bus and underground, car and boat."
+  },
+  {
+   "t": "m",
+   "q": "Which transport goes on water?",
+   "o": [
+    "boat",
+    "bus",
+    "car",
+    "train"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تصنيف المواصلات: على الماء أم على اليابسة"
+  },
+  {
+   "t": "m",
+   "q": "Choose the correct sentence.",
+   "o": [
+    "She goes to work by train.",
+    "She go to work by train.",
+    "She goes to work in train.",
+    "She goes work by train."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تركيب: He/She goes to work by..."
+  },
+  {
+   "t": "m",
+   "q": "Which transport has two wheels?",
+   "o": [
+    "motorbike",
+    "bus",
+    "car",
+    "train"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "مفردات المواصلات: bus, boat, underground, car, train, motorbike"
+  },
+  {
+   "t": "t",
+   "q": "In 'He goes to work by boat', the transport is 'work'.",
+   "a": false,
+   "lv": "k",
+   "obj": "تركيب: He goes to work by boat."
+  },
+  {
+   "t": "t",
+   "q": "A train goes on land.",
+   "a": true,
+   "lv": "k",
+   "obj": "تصنيف المواصلات: على الماء أم على اليابسة"
+  },
+  {
+   "t": "t",
+   "q": "A motorbike goes on water.",
+   "a": false,
+   "lv": "a",
+   "obj": "تصنيف المواصلات: على الماء أم على اليابسة"
+  }
+ ],
+ "g3e-4-4": [
+  {
+   "t": "m",
+   "q": "What is 'she's' short for?",
+   "o": [
+    "she is",
+    "she was",
+    "she does",
+    "she can"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "she's = she is"
+  },
+  {
+   "t": "m",
+   "q": "In the dialogue, how does the nurse go to work?",
+   "o": [
+    "by car",
+    "by train",
+    "by boat",
+    "by motorbike"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط كل مهنةٍ بمواصلتها في الحوار"
+  },
+  {
+   "t": "m",
+   "q": "Which word is a job?",
+   "o": [
+    "nurse",
+    "car",
+    "train",
+    "bus"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تصنيف: مهنةٌ أم مواصلة"
+  },
+  {
+   "t": "m",
+   "q": "Choose the best description of a pilot who goes to work by car.",
+   "o": [
+    "He's a pilot. He goes to work by car.",
+    "He's a car. He goes to work by pilot.",
+    "He's a pilot. He goes to work by pilot.",
+    "He's a car. He's a pilot."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "دمج المهنة والمواصلة: He's a nurse. He goes to work by car."
+  },
+  {
+   "t": "m",
+   "q": "Look at her. / She's a teacher. / She goes to work by train. Which sentence is in the middle?",
+   "o": [
+    "She's a teacher.",
+    "Look at her.",
+    "She goes to work by train.",
+    "It's Monday."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "ترتيب بناء الوصف"
+  },
+  {
+   "t": "t",
+   "q": "'He's a nurse' is short for 'He has a nurse'.",
+   "a": false,
+   "lv": "k",
+   "obj": "she's = she is"
+  },
+  {
+   "t": "t",
+   "q": "In the dialogue, the teacher goes to work by train.",
+   "a": true,
+   "lv": "k",
+   "obj": "حوار: She's a teacher. She goes to work by train."
+  },
+  {
+   "t": "t",
+   "q": "'Train' is a job.",
+   "a": false,
+   "lv": "a",
+   "obj": "تصنيف: مهنةٌ أم مواصلة"
+  }
+ ],
+ "g3e-4-5": [
+  {
+   "t": "m",
+   "q": "In the text, where are all school buses yellow?",
+   "o": [
+    "in the United States",
+    "in Oman",
+    "in Britain",
+    "in China"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "الثقافة: The yellow school bus — الحافلة المدرسية في الولايات المتحدة"
+  },
+  {
+   "t": "m",
+   "q": "In the United States, what do cars do for a school bus?",
+   "o": [
+    "They stop.",
+    "They go faster.",
+    "They race the bus.",
+    "They go on the water."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "الثقافة: السيارات تقف للحافلة المدرسية"
+  },
+  {
+   "t": "m",
+   "q": "Who drives the school bus?",
+   "o": [
+    "the bus driver",
+    "the teacher",
+    "the students",
+    "the chef"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "الثقافة: مفردات النصّ ومعانيها"
+  },
+  {
+   "t": "m",
+   "q": "When does the bus driver take students home?",
+   "o": [
+    "in the afternoon",
+    "in the morning",
+    "before breakfast",
+    "at midnight"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "الثقافة: متى يأخذ السائق الطلاب — للمدرسة أم للبيت"
+  },
+  {
+   "t": "m",
+   "q": "A girl in the United States takes the school bus to school. When does she get on the bus?",
+   "o": [
+    "in the morning",
+    "in the afternoon",
+    "at night",
+    "at the weekend"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "فهم نصّ الحافلة المدرسية الصفراء"
+  },
+  {
+   "t": "t",
+   "q": "In the text, school buses in the United States are all red.",
+   "a": false,
+   "lv": "k",
+   "obj": "الثقافة: The yellow school bus — الحافلة المدرسية في الولايات المتحدة"
+  },
+  {
+   "t": "t",
+   "q": "The bus driver takes students to school in the morning.",
+   "a": true,
+   "lv": "k",
+   "obj": "الثقافة: متى يأخذ السائق الطلاب — للمدرسة أم للبيت"
+  },
+  {
+   "t": "t",
+   "q": "The project is about your favourite food.",
+   "a": false,
+   "lv": "a",
+   "obj": "المشروع: رسم بياني عن طريقة الذهاب للمدرسة"
+  }
+ ],
+ "g3e-4-6": [
+  {
+   "t": "m",
+   "q": "Alice calls. What does she say first?",
+   "o": [
+    "Hello, can I speak to Emily, please?",
+    "This is Alice.",
+    "Emily can call you later.",
+    "Emily's not here."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "ترتيب حوار المكالمة الهاتفية"
+  },
+  {
+   "t": "m",
+   "q": "Emily's not here. What does the other person ask Alice?",
+   "o": [
+    "Who is this?",
+    "How old are you?",
+    "What's the weather like?",
+    "Where's Fatma?"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "لغة المكالمة الهاتفية: Who is this?"
+  },
+  {
+   "t": "m",
+   "q": "What is Alice's phone number?",
+   "o": [
+    "12345708",
+    "12345780",
+    "87054321",
+    "12345078"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "حوار الهاتف: My phone number is 12345708."
+  },
+  {
+   "t": "m",
+   "q": "Emily is not there. What does the person say at the end?",
+   "o": [
+    "Emily can call you later.",
+    "Can I speak to Emily, please?",
+    "This is Alice.",
+    "Hello!"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "ربط جمل حوار الهاتف بردودها"
+  },
+  {
+   "t": "m",
+   "q": "Who wants to speak to Emily?",
+   "o": [
+    "Alice",
+    "Emily",
+    "Fatma",
+    "Noora"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "لغة المكالمة الهاتفية: Can I speak to...؟"
+  },
+  {
+   "t": "t",
+   "q": "'12345708' is a name.",
+   "a": false,
+   "lv": "k",
+   "obj": "تصنيف: اسمٌ أم رقم"
+  },
+  {
+   "t": "t",
+   "q": "In the phone call, Emily is not there.",
+   "a": true,
+   "lv": "k",
+   "obj": "ربط جمل حوار الهاتف بردودها"
+  },
+  {
+   "t": "t",
+   "q": "Alice says, 'Who is this?'",
+   "a": false,
+   "lv": "a",
+   "obj": "لغة المكالمة الهاتفية: Who is this?"
+  }
+ ],
+ "g3e-4-7": [
+  {
+   "t": "m",
+   "q": "Which word has the long 'ea' sound, like 'beach'?",
+   "o": [
+    "sea",
+    "bread",
+    "head",
+    "weather"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: ea الطويل (beach)"
+  },
+  {
+   "t": "m",
+   "q": "Which word has the short 'ea' sound, like 'bread'?",
+   "o": [
+    "head",
+    "leaf",
+    "beach",
+    "eat"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "صوتا ea: bread (قصير) وread (طويل)"
+  },
+  {
+   "t": "m",
+   "q": "Complete the tongue twister: I eat ___ and read on the beach in the hot weather.",
+   "o": [
+    "bread",
+    "tea",
+    "sea",
+    "meat"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "لعبة اللسان: I eat bread and read on the beach in the hot weather."
+  },
+  {
+   "t": "m",
+   "q": "Which word has the same 'ea' sound as 'feather'?",
+   "o": [
+    "weather",
+    "leaf",
+    "tea",
+    "sea"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "ربط الكلمة بكلمةٍ أخرى تحمل صوت ea نفسه (طويلاً أو قصيراً)"
+  },
+  {
+   "t": "m",
+   "q": "Which word has a different 'ea' sound from the others?",
+   "o": [
+    "head",
+    "eat",
+    "sea",
+    "beach"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "التمييز بين صوتَي ea الطويل والقصير"
+  },
+  {
+   "t": "t",
+   "q": "'Leaf' has the long 'ea' sound.",
+   "a": true,
+   "lv": "k",
+   "obj": "تصنيف الكلمات حسب صوت ea الطويل أو القصير"
+  },
+  {
+   "t": "t",
+   "q": "'Head' has the long 'ea' sound.",
+   "a": false,
+   "lv": "a",
+   "obj": "تصنيف الكلمات حسب صوت ea الطويل أو القصير"
+  },
+  {
+   "t": "t",
+   "q": "'Eat' and 'beach' have the same 'ea' sound.",
+   "a": true,
+   "lv": "a",
+   "obj": "ربط الكلمة بكلمةٍ أخرى تحمل صوت ea نفسه (طويلاً أو قصيراً)"
+  }
+ ],
+ "g3e-4-8": [
+  {
+   "t": "m",
+   "q": "Who builds houses?",
+   "o": [
+    "builder",
+    "nurse",
+    "pilot",
+    "chef"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة مفردات المهن"
+  },
+  {
+   "t": "m",
+   "q": "'She goes to work by bus.' How does she travel?",
+   "o": [
+    "by bus",
+    "by train",
+    "by car",
+    "by boat"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة: She goes to work by bus."
+  },
+  {
+   "t": "m",
+   "q": "Complete: I go to school ___ train.",
+   "o": [
+    "by",
+    "at",
+    "to",
+    "of"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة تركيب: by train"
+  },
+  {
+   "t": "m",
+   "q": "Who uses a stethoscope?",
+   "o": [
+    "doctor",
+    "chef",
+    "builder",
+    "pilot"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "مراجعة: ربط المهنة بأداتها"
+  },
+  {
+   "t": "m",
+   "q": "Which word is transport, not a job?",
+   "o": [
+    "motorbike",
+    "nurse",
+    "artist",
+    "pilot"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "مراجعة تصنيف: مهنةٌ أم مواصلة"
+  },
+  {
+   "t": "t",
+   "q": "A chef uses a pan.",
+   "a": true,
+   "lv": "k",
+   "obj": "مراجعة: ربط المهنة بأداتها"
+  },
+  {
+   "t": "t",
+   "q": "In the chant, 'boat' comes before 'bus'.",
+   "a": false,
+   "lv": "a",
+   "obj": "مراجعة ترتيب كلمات المواصلات"
+  },
+  {
+   "t": "t",
+   "q": "'Pilot' is a kind of transport.",
+   "a": false,
+   "lv": "a",
+   "obj": "مراجعة تصنيف: مهنةٌ أم مواصلة"
+  }
+ ],
+ "g3e-4-9": [
+  {
+   "t": "m",
+   "q": "Which sentence matches a picture of a woman cooking?",
+   "o": [
+    "She's a chef.",
+    "She's a pilot.",
+    "She's a builder.",
+    "She's a firefighter."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "نمط اختبار Pre A1 Starters: جملٌ عن المهن والمواصلات"
+  },
+  {
+   "t": "m",
+   "q": "A picture shows a man on a motorbike. Which sentence is true?",
+   "o": [
+    "He goes to work by motorbike.",
+    "He goes to work by boat.",
+    "He goes to work by train.",
+    "He goes to work by underground."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "نمط اختبار Pre A1 Starters"
+  },
+  {
+   "t": "m",
+   "q": "She takes a train under the city. She goes to work by ___.",
+   "o": [
+    "underground",
+    "boat",
+    "motorbike",
+    "car"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "نمط اختبار Pre A1 Starters: She goes to work by underground."
+  },
+  {
+   "t": "m",
+   "q": "Which sentence is about a job?",
+   "o": [
+    "I want to be a firefighter.",
+    "He goes to work by car.",
+    "She goes to work by bus.",
+    "I want to travel by boat."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "التمييز بين جملةٍ عن مهنةٍ وجملةٍ عن مواصلة"
+  },
+  {
+   "t": "m",
+   "q": "Which sentence is about transport?",
+   "o": [
+    "She goes to work by boat.",
+    "I want to be a nurse.",
+    "He's a teacher.",
+    "She's an artist."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تصنيف الجمل: مهنةٌ أم مواصلة"
+  },
+  {
+   "t": "t",
+   "q": "'I want to be a doctor.' is a sentence about transport.",
+   "a": false,
+   "lv": "k",
+   "obj": "التمييز بين المهنة والمواصلة"
+  },
+  {
+   "t": "t",
+   "q": "'She goes to work by underground.' is about transport.",
+   "a": true,
+   "lv": "a",
+   "obj": "تصنيف الجمل: مهنةٌ أم مواصلة"
+  },
+  {
+   "t": "t",
+   "q": "A picture shows a boy on a bus. 'He goes to school by car.' is true.",
+   "a": false,
+   "lv": "a",
+   "obj": "نمط اختبار Pre A1 Starters"
+  }
+ ],
+ "g3e-4-10": [
+  {
+   "t": "m",
+   "q": "In the game, you spin 'pilot' and 'boat'. What do you say?",
+   "o": [
+    "I want to be a pilot. I want to travel by boat.",
+    "I want to be a boat. I want to travel by pilot.",
+    "I want to be an pilot. I want to travel by boat.",
+    "I want to be a pilot. I want to travel by a boat."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "دمج المهنة والمواصلة داخل لعبة اللوحة"
+  },
+  {
+   "t": "m",
+   "q": "Complete: I want to ___ by train.",
+   "o": [
+    "travel",
+    "be",
+    "eat",
+    "read"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: I want to travel by train."
+  },
+  {
+   "t": "m",
+   "q": "In 'I want to be a nurse.', which word comes after 'to'?",
+   "o": [
+    "be",
+    "a",
+    "nurse",
+    "I"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ترتيب كلمات الجملة"
+  },
+  {
+   "t": "m",
+   "q": "Complete: I want to be ___ astronaut.",
+   "o": [
+    "an",
+    "a",
+    "by",
+    "to"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: a/an + مهنة"
+  },
+  {
+   "t": "m",
+   "q": "Which job uses 'an'?",
+   "o": [
+    "artist",
+    "doctor",
+    "teacher",
+    "builder"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تصنيف المهن: تستعمل a أم an"
+  },
+  {
+   "t": "t",
+   "q": "A pilot flies a plane.",
+   "a": true,
+   "lv": "k",
+   "obj": "ربط كل مهنةٍ بما يرتبط بها"
+  },
+  {
+   "t": "t",
+   "q": "We say 'a astronaut'.",
+   "a": false,
+   "lv": "a",
+   "obj": "تركيب: a/an + مهنة"
+  },
+  {
+   "t": "t",
+   "q": "'I want to be a chef.' talks about transport.",
+   "a": false,
+   "lv": "a",
+   "obj": "تركيب: I want to travel by train."
+  }
+ ],
+ "g3e-4-gr": [
+  {
+   "t": "m",
+   "q": "In 'It's Jobs Day', what does Hamed want to be?",
+   "o": [
+    "a chef",
+    "a pilot",
+    "a teacher",
+    "a doctor"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قراءة متدرّجة ١ (It's Jobs Day): ربط كلّ طفلٍ بمهنته المفضّلة (I want to be a…)"
+  },
+  {
+   "t": "m",
+   "q": "In 'A Boat to the Beach', what do they do at the end?",
+   "o": [
+    "They play on the beach.",
+    "They go home by train.",
+    "They wait for the bus.",
+    "They go to school."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قراءة متدرّجة ١ (It's Jobs Day): ربط الملابس بالمهنة — نورة"
+  },
+  {
+   "t": "m",
+   "q": "In 'A Boat to the Beach', who goes to the beach with the child?",
+   "o": [
+    "Mum",
+    "Dad",
+    "the teacher",
+    "a pilot"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قراءة متدرّجة ٢ (A Boat to the Beach): إكمال جملةٍ من النصّ — وسيلة المواصلات (by train)"
+  },
+  {
+   "t": "m",
+   "q": "In 'A Boat to the Beach', what happens to the bus?",
+   "o": [
+    "It stops.",
+    "It flies away.",
+    "It goes under the sea.",
+    "It goes to school."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "قراءة متدرّجة ٢ (A Boat to the Beach): ترتيب أحداث الرحلة"
+  },
+  {
+   "t": "m",
+   "q": "In 'A Boat to the Beach', how do they get to the beach in the end?",
+   "o": [
+    "by boat",
+    "by train",
+    "by bus",
+    "by car"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "قراءة متدرّجة ٢ (A Boat to the Beach): ترتيب أحداث الرحلة"
+  },
+  {
+   "t": "t",
+   "q": "In 'It's Jobs Day', the chef wears a white hat and a white jacket.",
+   "a": true,
+   "lv": "k",
+   "obj": "قراءة متدرّجة ١ (It's Jobs Day): مطابقة المهنة بملابسها"
+  },
+  {
+   "t": "t",
+   "q": "Qais wants to be a pilot.",
+   "a": false,
+   "lv": "k",
+   "obj": "قراءة متدرّجة ١ (It's Jobs Day): استرجاع تفصيلٍ صريح — المهنة التي يريدها قيس"
+  },
+  {
+   "t": "t",
+   "q": "In 'A Boat to the Beach', the train stops.",
+   "a": true,
+   "lv": "a",
+   "obj": "قراءة متدرّجة ٢ (A Boat to the Beach): ترتيب أحداث الرحلة"
+  }
+ ],
+ "g3e-lc2-1": [
+  {
+   "t": "m",
+   "q": "Which word is a season?",
+   "o": [
+    "spring",
+    "Sunday",
+    "June",
+    "morning"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات الفصول: winter, spring, summer, autumn"
+  },
+  {
+   "t": "m",
+   "q": "In the chant, which season has sun?",
+   "o": [
+    "Summer",
+    "Winter",
+    "Autumn",
+    "Spring"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "أنشودة الفصول: Winter is cold."
+  },
+  {
+   "t": "m",
+   "q": "In the chant, which season is windy?",
+   "o": [
+    "Autumn",
+    "Summer",
+    "Winter",
+    "Spring"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط كل فصلٍ بوصفه في الأنشودة"
+  },
+  {
+   "t": "m",
+   "q": "It's very hot and sunny. Which season is it?",
+   "o": [
+    "Summer",
+    "Winter",
+    "Monday",
+    "January"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تصنيف الفصول: حارّ أم بارد"
+  },
+  {
+   "t": "m",
+   "q": "Which word is NOT a season?",
+   "o": [
+    "Sunday",
+    "winter",
+    "summer",
+    "autumn"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "ترتيب الفصول كما وردت في الأنشودة"
+  },
+  {
+   "t": "t",
+   "q": "In the chant, Spring is lots of fun.",
+   "a": true,
+   "lv": "k",
+   "obj": "أنشودة الفصول: Spring is lots of fun."
+  },
+  {
+   "t": "t",
+   "q": "Summer is cold.",
+   "a": false,
+   "lv": "a",
+   "obj": "تصنيف الفصول: حارّ أم بارد"
+  },
+  {
+   "t": "t",
+   "q": "In the chant, Autumn comes first.",
+   "a": false,
+   "lv": "a",
+   "obj": "ترتيب الفصول كما وردت في الأنشودة"
+  }
+ ],
+ "g3e-lc2-2": [
+  {
+   "t": "m",
+   "q": "Which month comes after March?",
+   "o": [
+    "April",
+    "February",
+    "May",
+    "June"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "أشهر السنة: January..December"
+  },
+  {
+   "t": "m",
+   "q": "Which is the first month of the year?",
+   "o": [
+    "January",
+    "December",
+    "June",
+    "March"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ترتيب الأشهر: الأول والأخير والسادس"
+  },
+  {
+   "t": "m",
+   "q": "'When is your birthday?' Choose the best answer.",
+   "o": [
+    "It's in May.",
+    "I'm nine years old.",
+    "It's a big cake.",
+    "I like birthdays."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تركيب: When is your birthday?"
+  },
+  {
+   "t": "m",
+   "q": "Which month comes between June and August?",
+   "o": [
+    "July",
+    "May",
+    "September",
+    "April"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "ترتيب أشهر السنة"
+  },
+  {
+   "t": "m",
+   "q": "Which month is in the second half of the year?",
+   "o": [
+    "October",
+    "February",
+    "April",
+    "March"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تصنيف الأشهر: النصف الأول أم الثاني من السنة"
+  },
+  {
+   "t": "t",
+   "q": "Jasim's birthday is in December.",
+   "a": false,
+   "lv": "k",
+   "obj": "حوار: When is Jasim's birthday? It's in June."
+  },
+  {
+   "t": "t",
+   "q": "There are twelve months in a year.",
+   "a": true,
+   "lv": "k",
+   "obj": "أشهر السنة: January..December"
+  },
+  {
+   "t": "t",
+   "q": "November comes before October.",
+   "a": false,
+   "lv": "a",
+   "obj": "ترتيب أشهر السنة"
+  }
+ ]
+}

@@ -1,0 +1,2906 @@
+{
+ "g1e-0-1": [
+  {
+   "t": "m",
+   "q": "👋 Which word is a greeting?",
+   "o": [
+    "Hi",
+    "Pen",
+    "Dog",
+    "Red"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "استخدام تحية بسيطة (Hello/Hi) عند مقابلة شخص"
+  },
+  {
+   "t": "m",
+   "q": "'Hello!' What do you say back?",
+   "o": [
+    "Hi!",
+    "Six!",
+    "Cat!",
+    "Bag!"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "فهم أنماط الحوار في التحية والتعارف: Hello/Hi, What's your name?, My name's…/I'm…"
+  },
+  {
+   "t": "m",
+   "q": "What's your name? I'm ___.",
+   "o": [
+    "Sami",
+    "pen",
+    "red",
+    "bag"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "التعارف بقول My name's… / I'm…"
+  },
+  {
+   "t": "m",
+   "q": "___ your name?",
+   "o": [
+    "What's",
+    "Hello",
+    "Hi",
+    "My"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "فهم أنماط الحوار في التحية والتعارف: Hello/Hi, What's your name?, My name's…/I'm…"
+  },
+  {
+   "t": "m",
+   "q": "What comes after 'What's your name?'",
+   "o": [
+    "I'm Ali.",
+    "Hello!",
+    "Who's this?",
+    "A pen."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "ترتيب خطوات حوار تعارف بسيط بالتسلسل المنطقي"
+  },
+  {
+   "t": "t",
+   "q": "👋 'Hi' is a greeting.",
+   "a": true,
+   "lv": "k",
+   "obj": "استخدام تحية بسيطة (Hello/Hi) عند مقابلة شخص"
+  },
+  {
+   "t": "t",
+   "q": "We say 'Cat' when we meet a friend.",
+   "a": false,
+   "lv": "k",
+   "obj": "استخدام تحية بسيطة (Hello/Hi) عند مقابلة شخص"
+  },
+  {
+   "t": "t",
+   "q": "'I'm Ali.' tells my name.",
+   "a": true,
+   "lv": "a",
+   "obj": "التعارف بقول My name's… / I'm…"
+  }
+ ],
+ "g1e-1-1": [
+  {
+   "t": "m",
+   "q": "🐱 Which word?",
+   "o": [
+    "cat",
+    "boy",
+    "girl",
+    "friend"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات: boy, cat, friend, girl"
+  },
+  {
+   "t": "m",
+   "q": "👦 Which word?",
+   "o": [
+    "boy",
+    "girl",
+    "cat",
+    "friend"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات: boy, cat, friend, girl"
+  },
+  {
+   "t": "m",
+   "q": "👧 Which word?",
+   "o": [
+    "girl",
+    "boy",
+    "cat",
+    "friend"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات: boy, cat, friend, girl"
+  },
+  {
+   "t": "m",
+   "q": "🐱 c _ t: Which letter is missing?",
+   "o": [
+    "a",
+    "o",
+    "e",
+    "i"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "مفردات: boy, cat, friend, girl"
+  },
+  {
+   "t": "m",
+   "q": "Which word has 4 letters?",
+   "o": [
+    "girl",
+    "boy",
+    "cat",
+    "friend"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "مفردات: boy, cat, friend, girl"
+  },
+  {
+   "t": "t",
+   "q": "👦 = boy",
+   "a": true,
+   "lv": "k",
+   "obj": "مفردات: boy, cat, friend, girl"
+  },
+  {
+   "t": "t",
+   "q": "👧 = boy",
+   "a": false,
+   "lv": "k",
+   "obj": "مفردات: boy, cat, friend, girl"
+  },
+  {
+   "t": "t",
+   "q": "'friend' starts with the letter f.",
+   "a": true,
+   "lv": "a",
+   "obj": "مفردات: boy, cat, friend, girl"
+  }
+ ],
+ "g1e-1-2": [
+  {
+   "t": "m",
+   "q": "☀️ sun: Which letter does it start with?",
+   "o": [
+    "s",
+    "c",
+    "d",
+    "m"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تمييز صوت الحرف s"
+  },
+  {
+   "t": "m",
+   "q": "Which number word starts with 's'?",
+   "o": [
+    "six",
+    "one",
+    "two",
+    "four"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تمييز صوت الحرف s بين أصواتٍ أولى أخرى من مفردات الوحدة"
+  },
+  {
+   "t": "m",
+   "q": "Which family word starts with 's'?",
+   "o": [
+    "sister",
+    "brother",
+    "mum",
+    "dad"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تمييز صوت الحرف s بين أصواتٍ أولى أخرى من مفردات الوحدة"
+  },
+  {
+   "t": "m",
+   "q": "Blend: s-a-t. Which word?",
+   "o": [
+    "sat",
+    "tap",
+    "pat",
+    "sit"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تمييز صوت الحرف s ودمج الأصوات لتكوين كلمات (Let's blend!)"
+  },
+  {
+   "t": "m",
+   "q": "Which word does NOT start with 's'?",
+   "o": [
+    "mum",
+    "sun",
+    "six",
+    "sister"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تمييز صوت الحرف s بين أصواتٍ أولى أخرى من مفردات الوحدة"
+  },
+  {
+   "t": "t",
+   "q": "'sun' starts with the letter s.",
+   "a": true,
+   "lv": "k",
+   "obj": "تمييز صوت الحرف s"
+  },
+  {
+   "t": "t",
+   "q": "'dad' starts with the letter s.",
+   "a": false,
+   "lv": "k",
+   "obj": "تمييز صوت الحرف s بين أصواتٍ أولى أخرى من مفردات الوحدة"
+  },
+  {
+   "t": "t",
+   "q": "s-i-t makes 'sit'.",
+   "a": true,
+   "lv": "a",
+   "obj": "تمييز صوت الحرف s ودمج الأصوات لتكوين كلمات (Let's blend!)"
+  }
+ ],
+ "g1e-1-3": [
+  {
+   "t": "m",
+   "q": "👨 Which word is a man in the family?",
+   "o": [
+    "dad",
+    "mum",
+    "sister",
+    "cat"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات: brother, dad, mum, sister"
+  },
+  {
+   "t": "m",
+   "q": "👩 Which word is a woman in the family?",
+   "o": [
+    "mum",
+    "dad",
+    "brother",
+    "boy"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات: brother, dad, mum, sister"
+  },
+  {
+   "t": "m",
+   "q": "Which word is a boy in the family?",
+   "o": [
+    "brother",
+    "sister",
+    "mum",
+    "girl"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات: brother, dad, mum, sister"
+  },
+  {
+   "t": "m",
+   "q": "___ this? This is my mum.",
+   "o": [
+    "Who's",
+    "Hello",
+    "Hi",
+    "My"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تركيب: Who's this? This is (my)…"
+  },
+  {
+   "t": "m",
+   "q": "Which word is NOT a family word?",
+   "o": [
+    "Hello",
+    "mum",
+    "dad",
+    "brother"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "مفردات: brother, dad, mum، والتمييز بينها وبين كلمات التحية"
+  },
+  {
+   "t": "t",
+   "q": "'Brother' is a boy in the family.",
+   "a": true,
+   "lv": "k",
+   "obj": "مفردات: brother, dad, mum, sister"
+  },
+  {
+   "t": "t",
+   "q": "'Hi' is a family word.",
+   "a": false,
+   "lv": "k",
+   "obj": "مفردات: brother, dad, mum، والتمييز بينها وبين كلمات التحية"
+  },
+  {
+   "t": "t",
+   "q": "'This is my dad.' answers 'Who's this?'",
+   "a": true,
+   "lv": "a",
+   "obj": "تركيب: Who's this? This is (my)…"
+  }
+ ],
+ "g1e-1-4": [
+  {
+   "t": "m",
+   "q": "👧 This is my ___. (a girl in the family)",
+   "o": [
+    "sister",
+    "dad",
+    "brother",
+    "pen"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تثبيت This is my…"
+  },
+  {
+   "t": "m",
+   "q": "👩 This is my ___. (mother)",
+   "o": [
+    "mum",
+    "dad",
+    "sister",
+    "cat"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تثبيت This is my…"
+  },
+  {
+   "t": "m",
+   "q": "Which word is a family word?",
+   "o": [
+    "sister",
+    "pen",
+    "sun",
+    "six"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات: dad, mum, sister، والتمييز عن مفردات أخرى"
+  },
+  {
+   "t": "m",
+   "q": "This ___ my dad.",
+   "o": [
+    "is",
+    "are",
+    "am",
+    "my"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تثبيت This is my…"
+  },
+  {
+   "t": "m",
+   "q": "'This is my ___.' Which word does NOT fit?",
+   "o": [
+    "six",
+    "mum",
+    "dad",
+    "sister"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تثبيت This is my…"
+  },
+  {
+   "t": "t",
+   "q": "👩 This is my mum.",
+   "a": true,
+   "lv": "k",
+   "obj": "تثبيت This is my…"
+  },
+  {
+   "t": "t",
+   "q": "👨 This is my sister.",
+   "a": false,
+   "lv": "k",
+   "obj": "مفردات: dad, mum, sister، والتمييز عن مفردات أخرى"
+  },
+  {
+   "t": "t",
+   "q": "'Dad' and 'mum' are family words.",
+   "a": true,
+   "lv": "a",
+   "obj": "مفردات: dad, mum, sister، والتمييز عن مفردات أخرى"
+  }
+ ],
+ "g1e-1-5": [
+  {
+   "t": "m",
+   "q": "👦 Which word?",
+   "o": [
+    "boy",
+    "girl",
+    "mum",
+    "sister"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة مفردات الوحدة ١"
+  },
+  {
+   "t": "m",
+   "q": "🐱 Which word?",
+   "o": [
+    "cat",
+    "dad",
+    "sun",
+    "pen"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة مفردات الوحدة ١"
+  },
+  {
+   "t": "m",
+   "q": "Which word is a family word?",
+   "o": [
+    "brother",
+    "friend",
+    "cat",
+    "boy"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة مفردات الوحدة ١"
+  },
+  {
+   "t": "m",
+   "q": "👩 Who's this? This is my ___.",
+   "o": [
+    "mum",
+    "dad",
+    "brother",
+    "cat"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تركيب: Who's this? This is (my)…"
+  },
+  {
+   "t": "m",
+   "q": "Which word is a person but NOT family?",
+   "o": [
+    "friend",
+    "mum",
+    "dad",
+    "sister"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "مراجعة مفردات الوحدة ١"
+  },
+  {
+   "t": "t",
+   "q": "🐱 'cat' is a family word.",
+   "a": false,
+   "lv": "k",
+   "obj": "مراجعة مفردات الوحدة ١"
+  },
+  {
+   "t": "t",
+   "q": "👧 = girl",
+   "a": true,
+   "lv": "k",
+   "obj": "مراجعة مفردات الوحدة ١"
+  },
+  {
+   "t": "t",
+   "q": "'Who's this?' asks about a person.",
+   "a": true,
+   "lv": "a",
+   "obj": "تركيب: Who's this? This is (my)…"
+  }
+ ],
+ "g1e-1-6": [
+  {
+   "t": "m",
+   "q": "Which is the capital letter of 's'?",
+   "o": [
+    "S",
+    "s",
+    "C",
+    "Z"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "كتابة الحرف الكبير S بخطّاته الصحيحة (Sounds and Spelling: capital letter) — إثرائيّ"
+  },
+  {
+   "t": "m",
+   "q": "👨 Which word?",
+   "o": [
+    "dad",
+    "mum",
+    "sister",
+    "girl"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة تراكمية لمفردات وتراكيب الوحدة ١"
+  },
+  {
+   "t": "m",
+   "q": "Which word is a greeting?",
+   "o": [
+    "Hi",
+    "dad",
+    "cat",
+    "boy"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة تراكمية لمفردات وتراكيب الوحدة ١"
+  },
+  {
+   "t": "m",
+   "q": "Who's this? Choose the answer.",
+   "o": [
+    "This is my brother.",
+    "It's a pen.",
+    "I'm six.",
+    "Hello!"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تركيب: Who's this? This is (my)…"
+  },
+  {
+   "t": "m",
+   "q": "Which word has the letter 's' two times?",
+   "o": [
+    "sister",
+    "sun",
+    "six",
+    "mum"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "مراجعة تراكمية لمفردات وتراكيب الوحدة ١"
+  },
+  {
+   "t": "t",
+   "q": "'S' is the capital letter of 's'.",
+   "a": true,
+   "lv": "k",
+   "obj": "كتابة الحرف الكبير S بخطّاته الصحيحة (Sounds and Spelling: capital letter) — إثرائيّ"
+  },
+  {
+   "t": "t",
+   "q": "'Mum' is a boy.",
+   "a": false,
+   "lv": "k",
+   "obj": "مراجعة تراكمية لمفردات وتراكيب الوحدة ١"
+  },
+  {
+   "t": "t",
+   "q": "'This is my friend.' answers 'Who's this?'",
+   "a": true,
+   "lv": "a",
+   "obj": "تركيب: Who's this? This is (my)…"
+  }
+ ],
+ "g1e-1-7": [
+  {
+   "t": "m",
+   "q": "👧 Look and choose.",
+   "o": [
+    "girl",
+    "boy",
+    "cat",
+    "dad"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات: boy, cat, friend, girl"
+  },
+  {
+   "t": "m",
+   "q": "🐱 Look and choose.",
+   "o": [
+    "cat",
+    "friend",
+    "mum",
+    "girl"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات: boy, cat, friend, girl"
+  },
+  {
+   "t": "m",
+   "q": "Which word is a greeting?",
+   "o": [
+    "Hello",
+    "brother",
+    "girl",
+    "cat"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة تراكمية لمفردات الوحدة ١"
+  },
+  {
+   "t": "m",
+   "q": "👦 Read and choose: This is a ___.",
+   "o": [
+    "boy",
+    "girl",
+    "cat",
+    "mum"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تدريب على نمط اختبار Pre-A1 Starters"
+  },
+  {
+   "t": "m",
+   "q": "Which word has 6 letters?",
+   "o": [
+    "friend",
+    "girl",
+    "boy",
+    "cat"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "مفردات: boy, cat, friend, girl"
+  },
+  {
+   "t": "t",
+   "q": "👦 This is a girl.",
+   "a": false,
+   "lv": "k",
+   "obj": "تدريب على نمط اختبار Pre-A1 Starters"
+  },
+  {
+   "t": "t",
+   "q": "🐱 This is a cat.",
+   "a": true,
+   "lv": "k",
+   "obj": "مفردات: boy, cat, friend, girl"
+  },
+  {
+   "t": "t",
+   "q": "'Mum' and 'dad' are in my family.",
+   "a": true,
+   "lv": "a",
+   "obj": "مراجعة تراكمية لمفردات الوحدة ١"
+  }
+ ],
+ "g1e-2-1": [
+  {
+   "t": "m",
+   "q": "🎒 Which word?",
+   "o": [
+    "bag",
+    "pen",
+    "ruler",
+    "eraser"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات: bag, pen, eraser, ruler"
+  },
+  {
+   "t": "m",
+   "q": "🖊️ Which word?",
+   "o": [
+    "pen",
+    "bag",
+    "ruler",
+    "eraser"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات: bag, pen, eraser, ruler"
+  },
+  {
+   "t": "m",
+   "q": "📏 Which word?",
+   "o": [
+    "ruler",
+    "pen",
+    "bag",
+    "eraser"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات: bag, pen, eraser, ruler"
+  },
+  {
+   "t": "m",
+   "q": "Which letter does 'bag' start with?",
+   "o": [
+    "b",
+    "p",
+    "r",
+    "e"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "مفردات: bag, pen, eraser, ruler"
+  },
+  {
+   "t": "m",
+   "q": "Which one can hold all the others?",
+   "o": [
+    "bag",
+    "pen",
+    "eraser",
+    "ruler"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "مفردات: bag, pen, eraser, ruler"
+  },
+  {
+   "t": "t",
+   "q": "🎒 = bag",
+   "a": true,
+   "lv": "k",
+   "obj": "مفردات: bag, pen, eraser, ruler"
+  },
+  {
+   "t": "t",
+   "q": "📏 = pen",
+   "a": false,
+   "lv": "k",
+   "obj": "مفردات: bag, pen, eraser, ruler"
+  },
+  {
+   "t": "t",
+   "q": "You can put a pen in a bag.",
+   "a": true,
+   "lv": "a",
+   "obj": "مفردات: bag, pen, eraser, ruler"
+  }
+ ],
+ "g1e-2-2": [
+  {
+   "t": "m",
+   "q": "🐜 ant: Which letter does it start with?",
+   "o": [
+    "a",
+    "n",
+    "t",
+    "e"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تمييز صوت الحرف a"
+  },
+  {
+   "t": "m",
+   "q": "🍎 apple: Which letter does it start with?",
+   "o": [
+    "a",
+    "p",
+    "e",
+    "b"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تمييز صوت الحرف a"
+  },
+  {
+   "t": "m",
+   "q": "Which word starts with 'a'?",
+   "o": [
+    "apple",
+    "bag",
+    "pen",
+    "ruler"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تمييز صوت الحرف a بين أصواتٍ أولى أخرى من مفردات الوحدة"
+  },
+  {
+   "t": "m",
+   "q": "🎒 b _ g: Which letter is missing?",
+   "o": [
+    "a",
+    "e",
+    "i",
+    "o"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تمييز صوت الحرف a"
+  },
+  {
+   "t": "m",
+   "q": "Which word does NOT have the letter 'a'?",
+   "o": [
+    "pen",
+    "bag",
+    "ant",
+    "cat"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تمييز صوت الحرف a بين أصواتٍ أولى أخرى من مفردات الوحدة"
+  },
+  {
+   "t": "t",
+   "q": "'ant' starts with the letter a.",
+   "a": true,
+   "lv": "k",
+   "obj": "تمييز صوت الحرف a"
+  },
+  {
+   "t": "t",
+   "q": "'pen' starts with the letter a.",
+   "a": false,
+   "lv": "k",
+   "obj": "تمييز صوت الحرف a بين أصواتٍ أولى أخرى من مفردات الوحدة"
+  },
+  {
+   "t": "t",
+   "q": "'cat' has the letter a.",
+   "a": true,
+   "lv": "a",
+   "obj": "تمييز صوت الحرف a"
+  }
+ ],
+ "g1e-2-3": [
+  {
+   "t": "m",
+   "q": "📕 Which word?",
+   "o": [
+    "book",
+    "pencil",
+    "crayon",
+    "bag"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات: book, crayon, pencil, pencil case"
+  },
+  {
+   "t": "m",
+   "q": "✏️ Which word?",
+   "o": [
+    "pencil",
+    "pen",
+    "crayon",
+    "ruler"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات: book, crayon, pencil, pencil case"
+  },
+  {
+   "t": "m",
+   "q": "🖍️ Which word?",
+   "o": [
+    "crayon",
+    "pencil",
+    "book",
+    "eraser"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات: book, crayon, pencil, pencil case"
+  },
+  {
+   "t": "m",
+   "q": "I've ___ a book.",
+   "o": [
+    "got",
+    "is",
+    "my",
+    "are"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تركيب: I've got… / I haven't got…"
+  },
+  {
+   "t": "m",
+   "q": "Which one do you NOT write or draw with?",
+   "o": [
+    "pencil case",
+    "pencil",
+    "crayon",
+    "pen"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "مفردات الوحدة ٢ — التمييز بين أدوات الكتابة وأدوات الحمل"
+  },
+  {
+   "t": "t",
+   "q": "📕 = book",
+   "a": true,
+   "lv": "k",
+   "obj": "مفردات: book, crayon, pencil, pencil case"
+  },
+  {
+   "t": "t",
+   "q": "🖍️ = pencil case",
+   "a": false,
+   "lv": "k",
+   "obj": "مفردات: book, crayon, pencil, pencil case"
+  },
+  {
+   "t": "t",
+   "q": "Look after your things: put your pencils in your pencil case.",
+   "a": true,
+   "lv": "a",
+   "obj": "تركيب: I've got… / I haven't got…؛ القيمة: Look after your things"
+  }
+ ],
+ "g1e-2-4": [
+  {
+   "t": "m",
+   "q": "✅🖊️ I've got a ___.",
+   "o": [
+    "pen",
+    "bag",
+    "book",
+    "ruler"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تثبيت I've got… / I haven't got…"
+  },
+  {
+   "t": "m",
+   "q": "🎒 Which word?",
+   "o": [
+    "bag",
+    "book",
+    "pen",
+    "crayon"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات الوحدة ٢"
+  },
+  {
+   "t": "m",
+   "q": "Where does your eraser go?",
+   "o": [
+    "pencil case",
+    "window",
+    "chair",
+    "door"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات الوحدة ٢ — أين يوضع كل شيء"
+  },
+  {
+   "t": "m",
+   "q": "❌📏 I ___ got a ruler.",
+   "o": [
+    "haven't",
+    "have",
+    "am",
+    "is"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تثبيت I've got… / I haven't got…"
+  },
+  {
+   "t": "m",
+   "q": "Which one is too big for a pencil case?",
+   "o": [
+    "book",
+    "pen",
+    "eraser",
+    "pencil"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "مفردات الوحدة ٢ — أين يوضع كل شيء"
+  },
+  {
+   "t": "t",
+   "q": "❌📕 I've got a book.",
+   "a": false,
+   "lv": "k",
+   "obj": "تثبيت I've got… / I haven't got…"
+  },
+  {
+   "t": "t",
+   "q": "A pen goes in the pencil case.",
+   "a": true,
+   "lv": "k",
+   "obj": "مفردات الوحدة ٢ — أين يوضع كل شيء"
+  },
+  {
+   "t": "t",
+   "q": "A book goes in the bag.",
+   "a": true,
+   "lv": "a",
+   "obj": "مفردات الوحدة ٢ — أين يوضع كل شيء"
+  }
+ ],
+ "g1e-2-5": [
+  {
+   "t": "m",
+   "q": "🎒 Which word?",
+   "o": [
+    "bag",
+    "book",
+    "pen",
+    "ruler"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة مفردات الوحدة ٢"
+  },
+  {
+   "t": "m",
+   "q": "📏 Which word?",
+   "o": [
+    "ruler",
+    "eraser",
+    "crayon",
+    "pencil"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة مفردات الوحدة ٢"
+  },
+  {
+   "t": "m",
+   "q": "Which word starts with 'e'?",
+   "o": [
+    "eraser",
+    "pen",
+    "ruler",
+    "bag"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة مفردات الوحدة ٢"
+  },
+  {
+   "t": "m",
+   "q": "My school bag: Which thing do I put in it?",
+   "o": [
+    "book",
+    "door",
+    "window",
+    "wall"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "مراجعة مفردات الوحدة ٢ ضمن سياق المشروع"
+  },
+  {
+   "t": "m",
+   "q": "Which one holds the pencil case?",
+   "o": [
+    "bag",
+    "pen",
+    "eraser",
+    "crayon"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "مراجعة مفردات الوحدة ٢ ضمن سياق المشروع"
+  },
+  {
+   "t": "t",
+   "q": "🖍️ = crayon",
+   "a": true,
+   "lv": "k",
+   "obj": "مراجعة مفردات الوحدة ٢"
+  },
+  {
+   "t": "t",
+   "q": "You write with an eraser.",
+   "a": false,
+   "lv": "k",
+   "obj": "مراجعة مفردات الوحدة ٢"
+  },
+  {
+   "t": "t",
+   "q": "A school bag carries your books.",
+   "a": true,
+   "lv": "a",
+   "obj": "مراجعة مفردات الوحدة ٢ ضمن سياق المشروع"
+  }
+ ],
+ "g1e-2-6": [
+  {
+   "t": "m",
+   "q": "Which is the capital letter of 'a'?",
+   "o": [
+    "A",
+    "a",
+    "H",
+    "V"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "كتابة الحرف الكبير A بخطّاته الصحيحة (Sounds and Spelling: capital letter) — إثرائيّ"
+  },
+  {
+   "t": "m",
+   "q": "🖍️ Which word?",
+   "o": [
+    "crayon",
+    "pencil",
+    "ruler",
+    "pen"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة تراكمية لمفردات الوحدة ٢"
+  },
+  {
+   "t": "m",
+   "q": "📕 Which word?",
+   "o": [
+    "book",
+    "bag",
+    "eraser",
+    "pencil"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة تراكمية لمفردات الوحدة ٢"
+  },
+  {
+   "t": "m",
+   "q": "❌🖊️ I ___ got a pen.",
+   "o": [
+    "haven't",
+    "have",
+    "am",
+    "is"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "مراجعة تراكمية لتراكيب الوحدة ٢"
+  },
+  {
+   "t": "m",
+   "q": "Which thing do you NOT keep in a pencil case?",
+   "o": [
+    "bag",
+    "pen",
+    "eraser",
+    "crayon"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "مراجعة تراكمية لمفردات الوحدة ٢"
+  },
+  {
+   "t": "t",
+   "q": "'A' is the capital letter of 'a'.",
+   "a": true,
+   "lv": "k",
+   "obj": "كتابة الحرف الكبير A بخطّاته الصحيحة (Sounds and Spelling: capital letter) — إثرائيّ"
+  },
+  {
+   "t": "t",
+   "q": "📏 = eraser",
+   "a": false,
+   "lv": "k",
+   "obj": "مراجعة تراكمية لمفردات الوحدة ٢"
+  },
+  {
+   "t": "t",
+   "q": "❌🖍️ I haven't got a crayon.",
+   "a": true,
+   "lv": "a",
+   "obj": "مراجعة تراكمية لتراكيب الوحدة ٢"
+  }
+ ],
+ "g1e-2-7": [
+  {
+   "t": "m",
+   "q": "🖊️ Look and choose.",
+   "o": [
+    "pen",
+    "bag",
+    "book",
+    "ruler"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تدريب على نمط اختبار Pre-A1 Starters"
+  },
+  {
+   "t": "m",
+   "q": "📕 Look and choose.",
+   "o": [
+    "book",
+    "crayon",
+    "pen",
+    "eraser"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تدريب على نمط اختبار Pre-A1 Starters"
+  },
+  {
+   "t": "m",
+   "q": "🎒 Look and choose.",
+   "o": [
+    "bag",
+    "book",
+    "ruler",
+    "pencil"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تدريب على نمط اختبار Pre-A1 Starters"
+  },
+  {
+   "t": "m",
+   "q": "🖍️ Read and choose: I've got a ___.",
+   "o": [
+    "crayon",
+    "ruler",
+    "bag",
+    "pen"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تدريب على نمط اختبار Pre-A1 Starters"
+  },
+  {
+   "t": "m",
+   "q": "Which word is NOT a school thing?",
+   "o": [
+    "cat",
+    "pen",
+    "book",
+    "ruler"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تدريب على نمط اختبار Pre-A1 Starters"
+  },
+  {
+   "t": "t",
+   "q": "📏 This is a ruler.",
+   "a": true,
+   "lv": "k",
+   "obj": "تدريب على نمط اختبار Pre-A1 Starters"
+  },
+  {
+   "t": "t",
+   "q": "🎒 This is a pen.",
+   "a": false,
+   "lv": "k",
+   "obj": "تدريب على نمط اختبار Pre-A1 Starters"
+  },
+  {
+   "t": "t",
+   "q": "You read a book.",
+   "a": true,
+   "lv": "a",
+   "obj": "تدريب على نمط اختبار Pre-A1 Starters"
+  }
+ ],
+ "g1e-lc1-1": [
+  {
+   "t": "m",
+   "q": "🍎🍎 How many?",
+   "o": [
+    "two",
+    "three",
+    "one",
+    "six"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "العدّ من ١ إلى ٦ (تكامل رياضيات)"
+  },
+  {
+   "t": "m",
+   "q": "⭐⭐⭐⭐⭐ How many?",
+   "o": [
+    "five",
+    "four",
+    "six",
+    "three"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "العدّ من ١ إلى ٦ (تكامل رياضيات)"
+  },
+  {
+   "t": "m",
+   "q": "🟦 Which colour?",
+   "o": [
+    "blue",
+    "red",
+    "green",
+    "yellow"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "أسماء الألوان الستة (تكامل فنون)"
+  },
+  {
+   "t": "m",
+   "q": "one, two, three, ___",
+   "o": [
+    "four",
+    "six",
+    "five",
+    "one"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "العدّ من ١ إلى ٦ (تكامل رياضيات)"
+  },
+  {
+   "t": "m",
+   "q": "Which number is the biggest?",
+   "o": [
+    "six",
+    "four",
+    "five",
+    "two"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "العدّ من ١ إلى ٦ (تكامل رياضيات)"
+  },
+  {
+   "t": "t",
+   "q": "🟧 = orange",
+   "a": true,
+   "lv": "k",
+   "obj": "أسماء الألوان الستة (تكامل فنون)"
+  },
+  {
+   "t": "t",
+   "q": "🍎🍎🍎🍎 = six",
+   "a": false,
+   "lv": "k",
+   "obj": "العدّ من ١ إلى ٦ (تكامل رياضيات)"
+  },
+  {
+   "t": "t",
+   "q": "'Four' comes before 'five'.",
+   "a": true,
+   "lv": "a",
+   "obj": "العدّ من ١ إلى ٦ (تكامل رياضيات)"
+  }
+ ],
+ "g1e-lc1-2": [
+  {
+   "t": "m",
+   "q": "🟥🎒 A ___ bag.",
+   "o": [
+    "red",
+    "blue",
+    "green",
+    "yellow"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "Language booster 1 (A (red) bag. (Six) bags.) — مراجعة الألوان"
+  },
+  {
+   "t": "m",
+   "q": "🎒🎒🎒 How many bags?",
+   "o": [
+    "three",
+    "two",
+    "four",
+    "six"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "Language booster 1 (A (red) bag. (Six) bags.) — مراجعة الأعداد ١-٦"
+  },
+  {
+   "t": "m",
+   "q": "🟨 Which colour?",
+   "o": [
+    "yellow",
+    "orange",
+    "red",
+    "green"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "Language booster 1 (A (red) bag. (Six) bags.) — مراجعة الألوان"
+  },
+  {
+   "t": "m",
+   "q": "How ___ are you? I'm six.",
+   "o": [
+    "old",
+    "red",
+    "six",
+    "bag"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "Language booster 1: How old are you? I'm (six)."
+  },
+  {
+   "t": "m",
+   "q": "🎒🎒🎒🎒🎒🎒 Six ___.",
+   "o": [
+    "bags",
+    "bag",
+    "a bag",
+    "red"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "Language booster 1 (A (red) bag. (Six) bags.) — مراجعة الأعداد ١-٦"
+  },
+  {
+   "t": "t",
+   "q": "🎒🎒 = two bags",
+   "a": true,
+   "lv": "k",
+   "obj": "Language booster 1 (A (red) bag. (Six) bags.) — مراجعة الأعداد ١-٦"
+  },
+  {
+   "t": "t",
+   "q": "🟩 = red",
+   "a": false,
+   "lv": "k",
+   "obj": "Language booster 1 (A (red) bag. (Six) bags.) — مراجعة الألوان"
+  },
+  {
+   "t": "t",
+   "q": "'I'm six.' answers 'How old are you?'",
+   "a": true,
+   "lv": "a",
+   "obj": "Language booster 1: How old are you? I'm (six)."
+  }
+ ],
+ "g1e-3-1": [
+  {
+   "t": "m",
+   "q": "🚪 Which word?",
+   "o": [
+    "door",
+    "window",
+    "teacher",
+    "whiteboard"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات: door, teacher, whiteboard, window"
+  },
+  {
+   "t": "m",
+   "q": "🪟 Which word?",
+   "o": [
+    "window",
+    "door",
+    "whiteboard",
+    "teacher"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات: door, teacher, whiteboard, window"
+  },
+  {
+   "t": "m",
+   "q": "👩‍🏫 Which word?",
+   "o": [
+    "teacher",
+    "door",
+    "window",
+    "whiteboard"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات: door, teacher, whiteboard, window"
+  },
+  {
+   "t": "m",
+   "q": "Which letter does 'door' start with?",
+   "o": [
+    "d",
+    "o",
+    "r",
+    "b"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "مفردات: door, teacher, whiteboard, window"
+  },
+  {
+   "t": "m",
+   "q": "Which word is the longest?",
+   "o": [
+    "whiteboard",
+    "window",
+    "door",
+    "teacher"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "مفردات: door, teacher, whiteboard, window"
+  },
+  {
+   "t": "t",
+   "q": "🚪 = door",
+   "a": true,
+   "lv": "k",
+   "obj": "مفردات: door, teacher, whiteboard, window"
+  },
+  {
+   "t": "t",
+   "q": "🪟 = teacher",
+   "a": false,
+   "lv": "k",
+   "obj": "مفردات: door, teacher, whiteboard, window"
+  },
+  {
+   "t": "t",
+   "q": "The teacher writes on the whiteboard.",
+   "a": true,
+   "lv": "a",
+   "obj": "مفردات: door, teacher, whiteboard, window"
+  }
+ ],
+ "g1e-3-2": [
+  {
+   "t": "m",
+   "q": "🔟 ten: Which letter does it start with?",
+   "o": [
+    "t",
+    "e",
+    "n",
+    "d"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تمييز صوت الحرف t"
+  },
+  {
+   "t": "m",
+   "q": "Which classroom word starts with 't'?",
+   "o": [
+    "teacher",
+    "door",
+    "window",
+    "desk"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تمييز صوت الحرف t بين أصواتٍ أولى أخرى من مفردات الوحدة"
+  },
+  {
+   "t": "m",
+   "q": "Which short word starts with 't'?",
+   "o": [
+    "top",
+    "pen",
+    "sun",
+    "bag"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تمييز صوت الحرف t بين أصواتٍ أولى أخرى من مفردات الوحدة"
+  },
+  {
+   "t": "m",
+   "q": "🐱 c a _: Which letter is missing?",
+   "o": [
+    "t",
+    "p",
+    "s",
+    "d"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تمييز صوت الحرف t"
+  },
+  {
+   "t": "m",
+   "q": "Which word does NOT start with 't'?",
+   "o": [
+    "door",
+    "ten",
+    "top",
+    "teacher"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تمييز صوت الحرف t بين أصواتٍ أولى أخرى من مفردات الوحدة"
+  },
+  {
+   "t": "t",
+   "q": "'ten' starts with the letter t.",
+   "a": true,
+   "lv": "k",
+   "obj": "تمييز صوت الحرف t"
+  },
+  {
+   "t": "t",
+   "q": "'window' starts with the letter t.",
+   "a": false,
+   "lv": "k",
+   "obj": "تمييز صوت الحرف t بين أصواتٍ أولى أخرى من مفردات الوحدة"
+  },
+  {
+   "t": "t",
+   "q": "'sit' ends with the letter t.",
+   "a": true,
+   "lv": "a",
+   "obj": "تمييز صوت الحرف t"
+  }
+ ],
+ "g1e-3-3": [
+  {
+   "t": "m",
+   "q": "🪑 Which word?",
+   "o": [
+    "chair",
+    "desk",
+    "wall",
+    "floor"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات: chair, desk, floor, wall"
+  },
+  {
+   "t": "m",
+   "q": "Which word starts with 'f'?",
+   "o": [
+    "floor",
+    "wall",
+    "desk",
+    "chair"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات: chair, desk, floor, wall"
+  },
+  {
+   "t": "m",
+   "q": "Which word starts with 'w'?",
+   "o": [
+    "wall",
+    "desk",
+    "chair",
+    "floor"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات: chair, desk, floor, wall"
+  },
+  {
+   "t": "m",
+   "q": "🪑 What's this? It's a ___.",
+   "o": [
+    "chair",
+    "wall",
+    "floor",
+    "desk"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "مفردات: chair, desk, floor, wall؛ تركيب: What's this? It's a…"
+  },
+  {
+   "t": "m",
+   "q": "Which one is furniture?",
+   "o": [
+    "desk",
+    "wall",
+    "floor",
+    "door"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "مفردات: chair, desk, floor, wall — التمييز بين الأثاث وأجزاء الغرفة"
+  },
+  {
+   "t": "t",
+   "q": "🪑 = chair",
+   "a": true,
+   "lv": "k",
+   "obj": "مفردات: chair, desk, floor, wall"
+  },
+  {
+   "t": "t",
+   "q": "'Be tidy' means leave things on the floor.",
+   "a": false,
+   "lv": "k",
+   "obj": "القيمة: Be tidy"
+  },
+  {
+   "t": "t",
+   "q": "You sit on a chair at your desk.",
+   "a": true,
+   "lv": "a",
+   "obj": "مفردات: chair, desk, floor, wall"
+  }
+ ],
+ "g1e-3-4": [
+  {
+   "t": "m",
+   "q": "📕 inside 🎒: The book is ___ the bag.",
+   "o": [
+    "in",
+    "on",
+    "under",
+    "up"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "حروف جر المكان: in / on / under"
+  },
+  {
+   "t": "m",
+   "q": "⚽ below 🪑: The ball is ___ the chair.",
+   "o": [
+    "under",
+    "in",
+    "on",
+    "up"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "حروف جر المكان: in / on / under"
+  },
+  {
+   "t": "m",
+   "q": "🐱 inside 📦: The cat is ___ the box.",
+   "o": [
+    "in",
+    "on",
+    "under",
+    "up"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "حروف جر المكان: in / on / under"
+  },
+  {
+   "t": "m",
+   "q": "✏️ inside the pencil case: The pencil is ___ the pencil case.",
+   "o": [
+    "in",
+    "on",
+    "under",
+    "up"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "حروف جر المكان: in / on / under"
+  },
+  {
+   "t": "m",
+   "q": "Which word is a place word?",
+   "o": [
+    "under",
+    "pen",
+    "cat",
+    "red"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "حروف جر المكان: in / on / under"
+  },
+  {
+   "t": "t",
+   "q": "'On' and 'under' mean the same.",
+   "a": false,
+   "lv": "k",
+   "obj": "حروف جر المكان: in / on / under"
+  },
+  {
+   "t": "t",
+   "q": "The floor is under your feet.",
+   "a": true,
+   "lv": "k",
+   "obj": "حروف جر المكان: in / on / under"
+  },
+  {
+   "t": "t",
+   "q": "The pen is inside the bag, so the pen is IN the bag.",
+   "a": true,
+   "lv": "a",
+   "obj": "حروف جر المكان: in / on / under"
+  }
+ ],
+ "g1e-3-5": [
+  {
+   "t": "m",
+   "q": "🚪 Which word?",
+   "o": [
+    "door",
+    "floor",
+    "desk",
+    "wall"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة مفردات الوحدة ٣"
+  },
+  {
+   "t": "m",
+   "q": "Which word starts with 'd'?",
+   "o": [
+    "desk",
+    "chair",
+    "wall",
+    "window"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة مفردات الوحدة ٣"
+  },
+  {
+   "t": "m",
+   "q": "Which word starts with 'c'?",
+   "o": [
+    "chair",
+    "desk",
+    "floor",
+    "window"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة مفردات الوحدة ٣"
+  },
+  {
+   "t": "m",
+   "q": "A desk tidy holds my ___.",
+   "o": [
+    "pens",
+    "walls",
+    "doors",
+    "windows"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "مراجعة مفردات الوحدة ٣ ضمن سياق المشروع"
+  },
+  {
+   "t": "m",
+   "q": "Be tidy! Where do your pencils go?",
+   "o": [
+    "in the pencil case",
+    "on the floor",
+    "under the chair",
+    "on the wall"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "مراجعة مفردات الوحدة ٣؛ القيمة: Be tidy"
+  },
+  {
+   "t": "t",
+   "q": "🪟 = window",
+   "a": true,
+   "lv": "k",
+   "obj": "مراجعة مفردات الوحدة ٣"
+  },
+  {
+   "t": "t",
+   "q": "A tidy desk has pens on the floor.",
+   "a": false,
+   "lv": "k",
+   "obj": "مراجعة مفردات الوحدة ٣؛ القيمة: Be tidy"
+  },
+  {
+   "t": "t",
+   "q": "You can make a desk tidy for your pens and pencils.",
+   "a": true,
+   "lv": "a",
+   "obj": "مراجعة مفردات الوحدة ٣ ضمن سياق المشروع"
+  }
+ ],
+ "g1e-3-6": [
+  {
+   "t": "m",
+   "q": "Which is the capital letter of 't'?",
+   "o": [
+    "T",
+    "t",
+    "I",
+    "L"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "كتابة الحرف الكبير T بخطّاته الصحيحة (Sounds and Spelling: capital letter) — إثرائيّ"
+  },
+  {
+   "t": "m",
+   "q": "🪑 Which word?",
+   "o": [
+    "chair",
+    "door",
+    "desk",
+    "floor"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة تراكمية لمفردات الوحدة ٣"
+  },
+  {
+   "t": "m",
+   "q": "👩‍🏫 Which word?",
+   "o": [
+    "teacher",
+    "window",
+    "door",
+    "wall"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة تراكمية لمفردات الوحدة ٣"
+  },
+  {
+   "t": "m",
+   "q": "🚪 What's this? It's a ___.",
+   "o": [
+    "door",
+    "desk",
+    "wall",
+    "floor"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تركيب: What's this? It's a…"
+  },
+  {
+   "t": "m",
+   "q": "⚽ below the desk: The ball is ___ the desk.",
+   "o": [
+    "under",
+    "on",
+    "in",
+    "up"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "مراجعة تراكمية لتراكيب الوحدة ٣"
+  },
+  {
+   "t": "t",
+   "q": "'T' is the capital letter of 't'.",
+   "a": true,
+   "lv": "k",
+   "obj": "كتابة الحرف الكبير T بخطّاته الصحيحة (Sounds and Spelling: capital letter) — إثرائيّ"
+  },
+  {
+   "t": "t",
+   "q": "🪑 = wall",
+   "a": false,
+   "lv": "k",
+   "obj": "مراجعة تراكمية لمفردات الوحدة ٣"
+  },
+  {
+   "t": "t",
+   "q": "'What's this?' asks about a thing.",
+   "a": true,
+   "lv": "a",
+   "obj": "تركيب: What's this? It's a…"
+  }
+ ],
+ "g1e-3-7": [
+  {
+   "t": "m",
+   "q": "🪑 Look and choose.",
+   "o": [
+    "chair",
+    "desk",
+    "door",
+    "floor"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تدريب على نمط اختبار Pre-A1 Starters"
+  },
+  {
+   "t": "m",
+   "q": "🪟 Look and choose.",
+   "o": [
+    "window",
+    "wall",
+    "door",
+    "whiteboard"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تدريب على نمط اختبار Pre-A1 Starters"
+  },
+  {
+   "t": "m",
+   "q": "👩‍🏫 Look and choose.",
+   "o": [
+    "teacher",
+    "boy",
+    "cat",
+    "dad"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تدريب على نمط اختبار Pre-A1 Starters"
+  },
+  {
+   "t": "m",
+   "q": "Read and choose: You sit on a ___.",
+   "o": [
+    "chair",
+    "wall",
+    "window",
+    "door"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تدريب على نمط اختبار Pre-A1 Starters"
+  },
+  {
+   "t": "m",
+   "q": "Which word is NOT a classroom thing?",
+   "o": [
+    "teddy",
+    "desk",
+    "chair",
+    "whiteboard"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تدريب على نمط اختبار Pre-A1 Starters"
+  },
+  {
+   "t": "t",
+   "q": "🚪 This is a door.",
+   "a": true,
+   "lv": "k",
+   "obj": "تدريب على نمط اختبار Pre-A1 Starters"
+  },
+  {
+   "t": "t",
+   "q": "🪑 This is a window.",
+   "a": false,
+   "lv": "k",
+   "obj": "تدريب على نمط اختبار Pre-A1 Starters"
+  },
+  {
+   "t": "t",
+   "q": "You walk on the floor.",
+   "a": true,
+   "lv": "a",
+   "obj": "تدريب على نمط اختبار Pre-A1 Starters"
+  }
+ ],
+ "g1e-4-1": [
+  {
+   "t": "m",
+   "q": "⚽ Which word?",
+   "o": [
+    "ball",
+    "car",
+    "robot",
+    "teddy"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات: ball, car, robot, teddy"
+  },
+  {
+   "t": "m",
+   "q": "🚗 Which word?",
+   "o": [
+    "car",
+    "ball",
+    "teddy",
+    "robot"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات: ball, car, robot, teddy"
+  },
+  {
+   "t": "m",
+   "q": "🤖 Which word?",
+   "o": [
+    "robot",
+    "teddy",
+    "car",
+    "ball"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات: ball, car, robot, teddy"
+  },
+  {
+   "t": "m",
+   "q": "🧸 Which letter does 'teddy' start with?",
+   "o": [
+    "t",
+    "d",
+    "e",
+    "b"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "مفردات: ball, car, robot, teddy"
+  },
+  {
+   "t": "m",
+   "q": "Which word has 5 letters?",
+   "o": [
+    "robot",
+    "ball",
+    "car",
+    "cat"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "مفردات: ball, car, robot, teddy"
+  },
+  {
+   "t": "t",
+   "q": "🚗 = car",
+   "a": true,
+   "lv": "k",
+   "obj": "مفردات: ball, car, robot, teddy"
+  },
+  {
+   "t": "t",
+   "q": "🤖 = ball",
+   "a": false,
+   "lv": "k",
+   "obj": "مفردات: ball, car, robot, teddy"
+  },
+  {
+   "t": "t",
+   "q": "'car' starts with the letter c.",
+   "a": true,
+   "lv": "a",
+   "obj": "مفردات: ball, car, robot, teddy"
+  }
+ ],
+ "g1e-4-2": [
+  {
+   "t": "m",
+   "q": "✈️ plane: Which letter does it start with?",
+   "o": [
+    "p",
+    "l",
+    "b",
+    "t"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تمييز صوت الحرف p"
+  },
+  {
+   "t": "m",
+   "q": "Which school word starts with 'p'?",
+   "o": [
+    "pencil",
+    "bag",
+    "book",
+    "ruler"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تمييز صوت الحرف p بين أصواتٍ أولى أخرى من مفردات الوحدة"
+  },
+  {
+   "t": "m",
+   "q": "Which short word starts with 'p'?",
+   "o": [
+    "pan",
+    "ten",
+    "sun",
+    "mum"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تمييز صوت الحرف p بين أصواتٍ أولى أخرى من مفردات الوحدة"
+  },
+  {
+   "t": "m",
+   "q": "Blend: p-i-n. Which word?",
+   "o": [
+    "pin",
+    "pen",
+    "tin",
+    "nip"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تمييز صوت الحرف p"
+  },
+  {
+   "t": "m",
+   "q": "Which word does NOT start with 'p'?",
+   "o": [
+    "ball",
+    "pen",
+    "pencil",
+    "plane"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تمييز صوت الحرف p بين أصواتٍ أولى أخرى من مفردات الوحدة"
+  },
+  {
+   "t": "t",
+   "q": "'pen' starts with the letter p.",
+   "a": true,
+   "lv": "k",
+   "obj": "تمييز صوت الحرف p"
+  },
+  {
+   "t": "t",
+   "q": "'doll' starts with the letter p.",
+   "a": false,
+   "lv": "k",
+   "obj": "تمييز صوت الحرف p بين أصواتٍ أولى أخرى من مفردات الوحدة"
+  },
+  {
+   "t": "t",
+   "q": "'cap' ends with the letter p.",
+   "a": true,
+   "lv": "a",
+   "obj": "تمييز صوت الحرف p"
+  }
+ ],
+ "g1e-4-3": [
+  {
+   "t": "m",
+   "q": "✈️ Which word?",
+   "o": [
+    "plane",
+    "train",
+    "doll",
+    "yo-yo"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات: doll, plane, train, yo-yo"
+  },
+  {
+   "t": "m",
+   "q": "🚂 Which word?",
+   "o": [
+    "train",
+    "plane",
+    "car",
+    "doll"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات: doll, plane, train, yo-yo"
+  },
+  {
+   "t": "m",
+   "q": "🪀 Which word?",
+   "o": [
+    "yo-yo",
+    "doll",
+    "ball",
+    "train"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات: doll, plane, train, yo-yo"
+  },
+  {
+   "t": "m",
+   "q": "🔴⚽ What colour is it? It's ___.",
+   "o": [
+    "red",
+    "blue",
+    "green",
+    "yellow"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تركيب: What colour is it? It's…"
+  },
+  {
+   "t": "m",
+   "q": "Your friend has no toy. What can you do?",
+   "o": [
+    "share",
+    "run",
+    "sleep",
+    "cry"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "مفردات الوحدة ٤؛ القيمة: Share"
+  },
+  {
+   "t": "t",
+   "q": "🚂 = plane",
+   "a": false,
+   "lv": "k",
+   "obj": "مفردات: doll, plane, train, yo-yo"
+  },
+  {
+   "t": "t",
+   "q": "🪀 = yo-yo",
+   "a": true,
+   "lv": "k",
+   "obj": "مفردات: doll, plane, train, yo-yo"
+  },
+  {
+   "t": "t",
+   "q": "'It's blue.' answers 'What colour is it?'",
+   "a": true,
+   "lv": "a",
+   "obj": "تركيب: What colour is it? It's…"
+  }
+ ],
+ "g1e-4-4": [
+  {
+   "t": "m",
+   "q": "🤖 What's your favourite toy? It's my ___.",
+   "o": [
+    "robot",
+    "red",
+    "six",
+    "teacher"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تثبيت What's your favourite toy? It's my…"
+  },
+  {
+   "t": "m",
+   "q": "🚗 Which word?",
+   "o": [
+    "car",
+    "train",
+    "plane",
+    "ball"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات الوحدة ٤"
+  },
+  {
+   "t": "m",
+   "q": "🧸 Which word?",
+   "o": [
+    "teddy",
+    "doll",
+    "robot",
+    "yo-yo"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات الوحدة ٤"
+  },
+  {
+   "t": "m",
+   "q": "What's your ___ toy?",
+   "o": [
+    "favourite",
+    "red",
+    "six",
+    "name"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تثبيت What's your favourite toy? It's my…"
+  },
+  {
+   "t": "m",
+   "q": "'It's my ___.' Which word does NOT fit?",
+   "o": [
+    "blue",
+    "ball",
+    "teddy",
+    "car"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تثبيت What's your favourite toy? It's my…"
+  },
+  {
+   "t": "t",
+   "q": "✈️ = plane",
+   "a": true,
+   "lv": "k",
+   "obj": "مفردات الوحدة ٤"
+  },
+  {
+   "t": "t",
+   "q": "⚽ = robot",
+   "a": false,
+   "lv": "k",
+   "obj": "مفردات الوحدة ٤"
+  },
+  {
+   "t": "t",
+   "q": "'I'm six.' answers 'What's your favourite toy?'",
+   "a": false,
+   "lv": "a",
+   "obj": "تثبيت What's your favourite toy? It's my…"
+  }
+ ],
+ "g1e-4-5": [
+  {
+   "t": "m",
+   "q": "⚽ Which word?",
+   "o": [
+    "ball",
+    "doll",
+    "robot",
+    "plane"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة مفردات الوحدة ٤"
+  },
+  {
+   "t": "m",
+   "q": "🪆 Which word?",
+   "o": [
+    "doll",
+    "teddy",
+    "train",
+    "car"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة مفردات الوحدة ٤"
+  },
+  {
+   "t": "m",
+   "q": "Which word starts with 'r'?",
+   "o": [
+    "robot",
+    "ball",
+    "car",
+    "teddy"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة مفردات الوحدة ٤"
+  },
+  {
+   "t": "m",
+   "q": "My toy box: Which one can go in it?",
+   "o": [
+    "yo-yo",
+    "window",
+    "door",
+    "wall"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "مراجعة مفردات الوحدة ٤ ضمن سياق المشروع"
+  },
+  {
+   "t": "m",
+   "q": "Sami has a ball. Noor has a doll. They ___ their toys.",
+   "o": [
+    "share",
+    "eat",
+    "write",
+    "read"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "مراجعة مفردات الوحدة ٤؛ القيمة: Share"
+  },
+  {
+   "t": "t",
+   "q": "🚂 = train",
+   "a": true,
+   "lv": "k",
+   "obj": "مراجعة مفردات الوحدة ٤"
+  },
+  {
+   "t": "t",
+   "q": "🚗 = yo-yo",
+   "a": false,
+   "lv": "k",
+   "obj": "مراجعة مفردات الوحدة ٤"
+  },
+  {
+   "t": "t",
+   "q": "Sharing toys makes your friend happy.",
+   "a": true,
+   "lv": "a",
+   "obj": "مراجعة مفردات الوحدة ٤؛ القيمة: Share"
+  }
+ ],
+ "g1e-4-6": [
+  {
+   "t": "m",
+   "q": "Which is the capital letter of 'p'?",
+   "o": [
+    "P",
+    "p",
+    "B",
+    "R"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "كتابة الحرف الكبير P بخطّاته الصحيحة (Sounds and Spelling: capital letter) — إثرائيّ"
+  },
+  {
+   "t": "m",
+   "q": "🪀 Which word?",
+   "o": [
+    "yo-yo",
+    "robot",
+    "ball",
+    "plane"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة تراكمية لمفردات الوحدة ٤"
+  },
+  {
+   "t": "m",
+   "q": "🚗 Which word?",
+   "o": [
+    "car",
+    "doll",
+    "train",
+    "teddy"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة تراكمية لمفردات الوحدة ٤"
+  },
+  {
+   "t": "m",
+   "q": "🔵 What colour is it? It's ___.",
+   "o": [
+    "blue",
+    "red",
+    "yellow",
+    "orange"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تركيب: What colour is it? It's…"
+  },
+  {
+   "t": "m",
+   "q": "Which question asks about colour?",
+   "o": [
+    "What colour is it?",
+    "What's your name?",
+    "Who's this?",
+    "How old are you?"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تركيب: What colour is it? It's…"
+  },
+  {
+   "t": "t",
+   "q": "'P' is the capital letter of 'p'.",
+   "a": true,
+   "lv": "k",
+   "obj": "كتابة الحرف الكبير P بخطّاته الصحيحة (Sounds and Spelling: capital letter) — إثرائيّ"
+  },
+  {
+   "t": "t",
+   "q": "🤖 = teddy",
+   "a": false,
+   "lv": "k",
+   "obj": "مراجعة تراكمية لمفردات الوحدة ٤"
+  },
+  {
+   "t": "t",
+   "q": "'It's green.' answers 'What colour is it?'",
+   "a": true,
+   "lv": "a",
+   "obj": "تركيب: What colour is it? It's…"
+  }
+ ],
+ "g1e-4-7": [
+  {
+   "t": "m",
+   "q": "🚂 Look and choose.",
+   "o": [
+    "train",
+    "plane",
+    "car",
+    "door"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تدريب على نمط اختبار Pre-A1 Starters"
+  },
+  {
+   "t": "m",
+   "q": "🤖 Look and choose.",
+   "o": [
+    "robot",
+    "doll",
+    "ball",
+    "teacher"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تدريب على نمط اختبار Pre-A1 Starters"
+  },
+  {
+   "t": "m",
+   "q": "🪀 Look and choose.",
+   "o": [
+    "yo-yo",
+    "ball",
+    "teddy",
+    "pen"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تدريب على نمط اختبار Pre-A1 Starters"
+  },
+  {
+   "t": "m",
+   "q": "Read and choose: It is soft. It is a ___.",
+   "o": [
+    "teddy",
+    "car",
+    "robot",
+    "plane"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تدريب على نمط اختبار Pre-A1 Starters"
+  },
+  {
+   "t": "m",
+   "q": "Which word is the shortest?",
+   "o": [
+    "car",
+    "robot",
+    "plane",
+    "teddy"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تدريب على نمط اختبار Pre-A1 Starters"
+  },
+  {
+   "t": "t",
+   "q": "🚗 This is a car.",
+   "a": true,
+   "lv": "k",
+   "obj": "تدريب على نمط اختبار Pre-A1 Starters"
+  },
+  {
+   "t": "t",
+   "q": "⚽ This is a doll.",
+   "a": false,
+   "lv": "k",
+   "obj": "تدريب على نمط اختبار Pre-A1 Starters"
+  },
+  {
+   "t": "t",
+   "q": "A teddy is a toy.",
+   "a": true,
+   "lv": "a",
+   "obj": "تدريب على نمط اختبار Pre-A1 Starters"
+  }
+ ],
+ "g1e-lc2-1": [
+  {
+   "t": "m",
+   "q": "🔺 Which shape?",
+   "o": [
+    "triangle",
+    "circle",
+    "square",
+    "rectangle"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "الأشكال الهندسية (تكامل رياضيات)"
+  },
+  {
+   "t": "m",
+   "q": "⚪ Which shape?",
+   "o": [
+    "circle",
+    "square",
+    "triangle",
+    "rectangle"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "الأشكال الهندسية (تكامل رياضيات)"
+  },
+  {
+   "t": "m",
+   "q": "🟦 Which shape?",
+   "o": [
+    "square",
+    "circle",
+    "triangle",
+    "rectangle"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "الأشكال الهندسية (تكامل رياضيات)"
+  },
+  {
+   "t": "m",
+   "q": "🟥 What colour is the square?",
+   "o": [
+    "red",
+    "blue",
+    "green",
+    "yellow"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "الأشكال الهندسية (تكامل رياضيات) مع أسماء الألوان"
+  },
+  {
+   "t": "m",
+   "q": "Which shape is round?",
+   "o": [
+    "circle",
+    "square",
+    "triangle",
+    "rectangle"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "الأشكال الهندسية (تكامل رياضيات)"
+  },
+  {
+   "t": "t",
+   "q": "🔺 = circle",
+   "a": false,
+   "lv": "k",
+   "obj": "الأشكال الهندسية (تكامل رياضيات)"
+  },
+  {
+   "t": "t",
+   "q": "⚪ = circle",
+   "a": true,
+   "lv": "k",
+   "obj": "الأشكال الهندسية (تكامل رياضيات)"
+  },
+  {
+   "t": "t",
+   "q": "🟩 is a green square.",
+   "a": true,
+   "lv": "a",
+   "obj": "الأشكال الهندسية (تكامل رياضيات) مع أسماء الألوان"
+  }
+ ],
+ "g1e-lc2-2": [
+  {
+   "t": "m",
+   "q": "🖊️🖊️ What are these? They're ___.",
+   "o": [
+    "pens",
+    "pen",
+    "a pen",
+    "books"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: What are these? They're…"
+  },
+  {
+   "t": "m",
+   "q": "📕📕📕 What are these? They're ___.",
+   "o": [
+    "books",
+    "book",
+    "a book",
+    "bags"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: What are these? They're…"
+  },
+  {
+   "t": "m",
+   "q": "🚂🚂 What are these? They're ___.",
+   "o": [
+    "trains",
+    "train",
+    "a train",
+    "planes"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: What are these? They're…"
+  },
+  {
+   "t": "m",
+   "q": "What are ___? They're dolls.",
+   "o": [
+    "these",
+    "this",
+    "is",
+    "it"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تركيب: What are these? They're…"
+  },
+  {
+   "t": "m",
+   "q": "Which word means more than one?",
+   "o": [
+    "crayons",
+    "crayon",
+    "pen",
+    "bag"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تركيب: What are these? They're…"
+  },
+  {
+   "t": "t",
+   "q": "🧸🧸 They're teddies.",
+   "a": true,
+   "lv": "k",
+   "obj": "تركيب: What are these? They're…"
+  },
+  {
+   "t": "t",
+   "q": "⚽⚽ They're ball.",
+   "a": false,
+   "lv": "k",
+   "obj": "تركيب: What are these? They're…"
+  },
+  {
+   "t": "t",
+   "q": "'They're cars.' answers 'What are these?'",
+   "a": true,
+   "lv": "a",
+   "obj": "تركيب: What are these? They're…"
+  }
+ ]
+}

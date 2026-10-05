@@ -220,7 +220,7 @@ function openBook(key){
   if(gamesBtn){
     const devOn = !!(window.ShoogpLock && ShoogpLock.isDevMode());
     gamesBtn.hidden = !devOn;
-    gamesBtn.href = 'games.html?book=' + encodeURIComponent(key);
+    gamesBtn.href = 'games/index.html?book=' + encodeURIComponent(key);
     const lbl = gamesBtn.querySelector('span');
     if(lbl) lbl.textContent = enBookHead ? 'Play' : 'العب';
   }
@@ -4238,3 +4238,28 @@ loadData().then(function(d){
   if(books) books.innerHTML =
     '<div class="empty">تعذّر تحميل البيانات. شغّل المشروع عبر الخادم المحلي (start-server.bat) أو تأكد من وجود ملف js/data.js</div>';
 });
+
+/* ═════ ألعاب الكتاب: أيقونةُ «العب» تفتحُ صفحةَ games/ طبقةً فوقَ الفهرس ═════
+   وزرُّ «رجوع للفهرس» داخلَها يرسلُ {shoogp:'games-close'} فتُغلَقُ الطبقةُ ويُفرَّغُ
+   الإطارُ (يتوقّفُ صوتُ اللعبةِ معه)، ويبقى الفهرسُ كما تركته المعلّمة. */
+(function(){
+  const btn = document.getElementById('gamesBtn');
+  const ov = document.getElementById('gamesOverlay');
+  const fr = document.getElementById('gamesFrame');
+  if(!btn || !ov || !fr) return;
+  function close(){
+    ov.hidden = true; fr.removeAttribute('src');
+    document.documentElement.classList.remove('games-open');
+  }
+  btn.addEventListener('click', e => {
+    e.preventDefault();
+    fr.setAttribute('src', btn.getAttribute('href'));
+    ov.hidden = false;
+    document.documentElement.classList.add('games-open');
+    try{ fr.focus(); }catch(err){}
+  });
+  window.addEventListener('message', e => {
+    if(e.source === fr.contentWindow && e.data && e.data.shoogp === 'games-close') close();
+  });
+  window.addEventListener('keydown', e => { if(e.key === 'Escape' && !ov.hidden) close(); });
+})();

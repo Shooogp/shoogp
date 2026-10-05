@@ -1,0 +1,718 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>لعبة سوق مطرح</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Cairo:wght@700;900&display=swap">
+<style>
+/* مسودة صفحة اللعبة داخل موقع شوجب: ترويسة الدرس كما هي في المنصة، ثم «بطاقة الكتاب العامة» كبيرة
+   (لون الكتاب + شبكة النقاط + الدائرتان + الإطار الأبيض) تضمّ السؤال يميناً والمشهد يساراً.
+   بلا عمود الصاروخ وبلا إطار السؤال القمري. القيم مأخوذة من css/style.css و css/shoogp-ui.css. */
+:root{
+  color-scheme: dark;
+  --ink:#eef0ff;            /* نص الصفحة */
+  --sub:#cfc4f5;            /* السطر التعريفي */
+  --hint:#b8aee5;
+  --bk-a:#5cc98a;           /* بطاقة علوم الصف الرابع: bk-green */
+  --bk-b:#3fa870;
+  --wash:rgba(6,38,24,.34);  /* غسلة داكنة فوق لون الكتاب حتى يقرأ النص الأبيض بوضوح */
+  --rk-hi:#fdf4e2; --rk-mid:#f3ddb6; --rk-lo:#e4c691; --rk-edge:#cba86e; --rk-ink:#4a3117;   /* قشرة العلوم الصخرية */
+  --sun:#FFC93C;
+  --body:'Tajawal','Segoe UI',Tahoma,system-ui,sans-serif;
+  --display:'Cairo','Tajawal',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;
+  background:linear-gradient(rgb(28,37,64) 0%,rgb(36,58,84) 32%,rgb(47,85,96) 65%,rgb(58,117,102) 100%) fixed,rgb(36,58,84)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.bgstars{position:fixed;inset:0;pointer-events:none;z-index:0}
+.bgstars i{position:absolute;border-radius:50%;background:#fff}
+
+.page{position:relative;z-index:1;min-height:100%;max-width:1760px;margin-inline:auto;
+  padding-block:10px;padding-inline:clamp(16px,3vw,56px);
+  display:grid;grid-template-rows:auto auto auto minmax(440px,1fr) auto;gap:6px}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.back{font:700 15px var(--body);color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+  border-radius:14px;padding:10px 20px;cursor:pointer;min-height:44px}
+.icon-btn{width:52px;height:40px;border-radius:16px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.14);
+  color:#fff;display:grid;place-items:center;cursor:pointer}
+.icon-btn svg{width:22px;height:22px}
+.tools{display:flex;gap:10px}
+.icon-btn[aria-pressed="false"]{color:rgba(255,255,255,.55)}
+.icon-btn[aria-pressed="false"] .wave{display:none}
+.icon-btn[aria-pressed="true"] .mute-x{display:none}
+.lesson-head{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.eyebrow{display:block;font-weight:700;font-size:clamp(13px,1.05vw,17px);color:var(--sub);text-shadow:0 1px 5px rgba(8,22,18,.75)}
+h1{margin:0;font-family:var(--display);font-weight:700;font-size:clamp(23px,2.2vw,38px);line-height:1.35;color:var(--ink);
+  text-shadow:0 2px 7px rgba(8,22,18,.8),0 0 3px rgba(8,22,18,.65);text-wrap:balance}
+.logo{height:clamp(44px,4.6vw,74px);width:auto;flex:none}
+.sub{margin:0;color:var(--sub);font-size:clamp(14px,1.1vw,18px);text-shadow:0 1px 5px rgba(8,22,18,.75)}
+
+/* ── بطاقة الكتاب العامة ── */
+.gcard{position:relative;container-type:inline-size;isolation:isolate;min-height:0;
+  border:7px solid #fff;border-radius:30px;overflow:hidden;box-shadow:0 2px 5px rgba(0,0,0,.28),0 10px 28px rgba(8,22,18,.3);
+  display:grid;padding:clamp(12px,1.3vw,22px)}
+.gcard::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.9;
+  background:
+    radial-gradient(rgba(255,255,255,.22) 1.6px,rgba(255,255,255,0) 1.9px) 0 0/30px 30px repeat,
+    radial-gradient(closest-side,rgba(255,255,255,.3) 99.4%,rgba(255,255,255,0) 100%) left -60px top -90px/430px 430px no-repeat,
+    radial-gradient(closest-side,rgba(255,255,255,.3) 99.4%,rgba(255,255,255,0) 100%) right -70px bottom -50px/350px 350px no-repeat,
+    linear-gradient(var(--wash),var(--wash)),
+    linear-gradient(160deg,var(--bk-a) 0%,var(--bk-b) 100%)}
+@supports (width:1cqw){
+  .gcard::before{background:
+    radial-gradient(rgba(255,255,255,.22) 1.6px,rgba(255,255,255,0) 1.9px) 0 0/30px 30px repeat,
+    radial-gradient(closest-side,rgba(255,255,255,.3) 99.4%,rgba(255,255,255,0) 100%) left -6.7cqw top -10.4cqw/57.8cqw 57.8cqw no-repeat,
+    radial-gradient(closest-side,rgba(255,255,255,.3) 99.4%,rgba(255,255,255,0) 100%) right -9cqw bottom -5.2cqw/47.4cqw 47.4cqw no-repeat,
+    linear-gradient(var(--wash),var(--wash)),
+    linear-gradient(160deg,var(--bk-a) 0%,var(--bk-b) 100%)}
+}
+.ghead{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.badge{display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;text-shadow:0 2px 3px rgba(0,40,70,.75);
+  background:center/100% 100% no-repeat;white-space:nowrap;flex:none;width:var(--bw);overflow:hidden}
+.badge.qnum{--bw:clamp(170px,14.5vw,260px);height:calc(var(--bw)*163/640);font-family:var(--display);font-size:clamp(15px,1.2vw,21px);background-image:url(../art/badge-qnum.webp)}
+.badge.qtype{--bw:clamp(165px,13.5vw,244px);height:calc(var(--bw)*173/560);font-size:clamp(13px,1.05vw,19px);background-image:url(../art/badge-qtype.webp);
+  padding-left:calc(var(--bw)*.2);padding-top:calc(var(--bw)*.03)}
+#pips{display:none}
+
+.gmain{display:grid;gap:clamp(12px,1.8vw,30px);min-height:0;grid-template-columns:minmax(0,1fr)}
+.stage{order:-1;position:relative;border:5px solid #fff;border-radius:22px;overflow:hidden;background:#4E90DE;direction:ltr;
+  aspect-ratio:1/1;max-width:100%;box-shadow:0 2px 5px rgba(0,0,0,.28)}
+.stage svg{display:block;width:100%;height:100%;overflow:visible}
+.ask{display:flex;flex-direction:column;gap:clamp(10px,1.8vh,20px);min-width:0}
+.ask .mid{margin-block:auto;display:flex;flex-direction:column;gap:clamp(10px,1.8vh,20px)}
+@media (min-width:900px){
+  .page{height:100%}
+  .gmain{grid-template-columns:minmax(0,1.04fr) minmax(0,1fr)}
+  .stage{order:0;aspect-ratio:auto;min-height:320px}
+}
+
+/* ── السؤال: نصّه مباشرةً على البطاقة، وخياراته بقشرة العلوم الصخرية ── */
+.q{display:flex;flex-direction:column;gap:clamp(10px,1.8vh,20px)}
+.kind{margin:0;font-weight:700;font-size:clamp(14px,1.1vw,19px);color:rgba(255,255,255,.95);text-shadow:0 1px 4px rgba(8,40,28,.6)}
+.qtext{margin:0;font-weight:800;font-size:clamp(23px,2.25vw,40px);line-height:1.7;color:#fff;text-wrap:balance;
+  text-shadow:0 2px 6px rgba(8,40,28,.55),0 0 2px rgba(8,40,28,.5)}
+.opts{display:grid;gap:clamp(12px,1.3vw,18px);grid-template-columns:1fr}
+.opts.tf{grid-template-columns:1fr 1fr}
+@media (min-width:1200px){.opts.mcq{grid-template-columns:1fr 1fr}}
+.stone{font:800 clamp(19px,1.7vw,29px)/1.5 var(--body);color:var(--rk-ink);text-align:center;text-shadow:0 1px 0 rgba(255,255,255,.55);
+  min-height:clamp(62px,8vh,96px);padding:12px 22px;cursor:pointer;border:1px solid var(--rk-edge);border-radius:999px;
+  background:
+    radial-gradient(50% 50% at 50% 42%,rgba(132,94,44,.42) 0 30%,rgba(255,252,240,.6) 56%,rgba(255,252,240,0) 76%) 12% 30%/11px 11px no-repeat,
+    radial-gradient(50% 50% at 50% 44%,rgba(146,106,52,.36) 0 33%,rgba(255,250,235,.5) 58%,rgba(255,250,235,0) 77%) 86% 68%/9px 9px no-repeat,
+    radial-gradient(50% 50% at 50% 46%,rgba(160,120,64,.26) 0 36%,rgba(255,248,230,.42) 60%,rgba(255,248,230,0) 78%) 62% 20%/8px 8px no-repeat,
+    linear-gradient(180deg,var(--rk-hi) 0%,var(--rk-mid) 52%,var(--rk-lo) 100%);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.78),inset 0 -3px 0 rgba(150,112,52,.3),inset 0 -8px 11px -7px rgba(120,86,36,.38),
+             0 3px 0 rgba(163,127,72,.55),0 6px 12px rgba(60,40,15,.26);
+  transition:transform .12s,opacity .3s,filter .2s}
+.stone:hover{transform:translateY(-2px)}
+.stone:active{transform:translateY(3px)}
+.opts.locked .stone{pointer-events:none}
+.opts.locked .stone:not(.ok):not(.no){opacity:.55;filter:saturate(.6)}
+.stone.ok{background:linear-gradient(180deg,rgba(255,255,255,.5) 0%,rgba(255,255,255,.14) 40%,rgba(255,255,255,0) 56%),linear-gradient(180deg,#ddf4c8 0%,#aee08a 52%,#8ccf66 100%);
+  border-color:#5fa23f;color:#22380b;box-shadow:0 4px 9px rgba(40,80,20,.28),0 0 14px rgba(190,240,150,.7),inset 0 1px 0 rgba(255,255,255,.45);animation:lift .9s ease both}
+.stone.no{background:linear-gradient(180deg,#fbe3da 0%,#f1bfae 55%,#e3a08b 100%);border-color:#c0705a;color:#5c1f12;animation:shake .45s}
+button:focus-visible,select:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+
+.foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;min-height:72px}
+.fb{margin:0;flex:1 1 220px;min-width:0;font-weight:800;font-size:clamp(17px,1.5vw,25px);line-height:1.6;color:#fff;text-shadow:0 2px 5px rgba(8,40,28,.6)}
+.fb small{display:block;font-weight:500;font-size:.8em;color:rgba(255,255,255,.92)}
+.fb.good{color:#f3ffd9}
+.fb.bad{color:#fff0ea}
+.next{position:relative;flex:none;width:clamp(150px,12.5vw,220px);aspect-ratio:560/234;border:0;padding:0;background:none;cursor:pointer;
+  transition:transform .15s}
+.next img{position:absolute;inset:0;width:100%;height:100%;transform:scaleX(-1)}
+.next span{position:absolute;inset:0;display:grid;place-items:center;padding-inline-start:12%;color:#fff;font:800 clamp(16px,1.3vw,23px) var(--body);
+  text-shadow:0 2px 4px rgba(150,70,5,.85),0 0 8px rgba(150,70,5,.4)}
+.next:hover{transform:scale(1.04)}
+.next:active{transform:scale(.95)}
+
+.done{display:flex;flex-direction:column;gap:12px}
+.done h2{margin:0;font-family:var(--display);font-weight:900;font-size:clamp(28px,2.9vw,52px);line-height:1.35;color:#fff;text-wrap:balance;
+  text-shadow:0 2px 7px rgba(8,40,28,.6)}
+.done p{margin:0;font-weight:700;font-size:clamp(18px,1.6vw,27px);color:#fff;text-shadow:0 1px 4px rgba(8,40,28,.55)}
+.done .fact{font-weight:500;color:rgba(255,255,255,.95)}
+.done .stone{align-self:flex-start;margin-top:8px;padding-inline:34px}
+
+/* ── أدوات المعاينة (ليست جزءاً من صفحة الموقع) ── */
+.page>*{min-width:0}
+.lessonbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding:8px 14px;border-radius:18px;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2)}
+.lessonbar label{display:flex;align-items:center;gap:10px;flex:1 1 320px;min-width:0;font-weight:800;font-size:clamp(15px,1.1vw,19px);color:#fff}
+.lessonbar select{flex:1 1 auto;min-width:0;width:100%;max-width:640px;font:700 clamp(15px,1.1vw,19px) var(--body);color:#fff;background:rgba(9,20,40,.45);
+  border:1px solid rgba(255,255,255,.28);border-radius:12px;padding:8px 12px;min-height:46px;cursor:pointer}
+.lessonbar select option,.lessonbar select optgroup{color:#16213a;background:#fff}
+.lessonbar select optgroup{font-weight:800}
+.lessonbar button{font:800 clamp(15px,1.1vw,19px) var(--body);color:#fff;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);
+  border-radius:12px;padding:8px 18px;cursor:pointer;min-height:46px;display:flex;align-items:center;gap:8px}
+.lessonbar button svg{width:20px;height:20px}
+.lessonbar button:hover{background:rgba(255,255,255,.24)}
+.hint{margin:0;text-align:center;font-size:13px;color:var(--hint)}
+/* الشارة السوداء أسفل المشهد حُذفت (قرار المالك)، ومكانها زرّ «إعادة اللعبة» */
+#cap{display:none!important}
+.restart{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);z-index:3;direction:rtl;
+  display:flex;align-items:center;gap:8px;font:800 clamp(14px,1.3vw,20px)/1.4 var(--body);color:#F6EFE1;cursor:pointer;
+  background:rgba(15,21,48,.82);border:0;border-radius:999px;padding:8px 18px;white-space:nowrap}
+.restart svg{width:20px;height:20px}
+.restart:hover{background:rgba(15,21,48,.95)}
+
+/* ── شارات المشهد ── */
+.chip{position:absolute;direction:rtl;font-weight:800;font-size:clamp(14px,1.3vw,20px);line-height:1.4;
+  padding:8px 16px;border-radius:999px;background:rgba(15,21,48,.82);color:#F6EFE1;max-width:calc(100% - 24px)}
+.sunchip{top:12px;right:12px;display:flex;align-items:center;gap:8px}
+.sunchip i{width:14px;height:14px;border-radius:50%;background:var(--sun);flex:none}
+.sunchip.night i{background:#FDF3C8;box-shadow:inset -5px 0 0 rgba(15,21,48,.82)}
+.cap{bottom:12px;left:50%;transform:translateX(-50%);text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cap.pop{animation:pop .5s}
+
+/* ── المشهد ── */
+#sun{transition:transform 1.6s cubic-bezier(.4,0,.2,1),opacity 1.2s}
+.booting #sun,.booting #tint,.booting #dusk{transition:none}
+#stars,#lights,#moonGlow{opacity:0;transition:opacity 1.4s}
+#moon{opacity:.7;transition:opacity 1.4s}
+.is-night #stars,.is-night #moon,.is-night #lights,.is-night #moonGlow{opacity:1}
+.is-night #sun{opacity:0}
+.ghost{fill:rgba(255,255,255,.14);stroke:#1D2A55;stroke-opacity:.75;stroke-width:4;stroke-dasharray:13 11;stroke-linejoin:round}
+.ghost.built{display:none}
+.is-night .ghost{stroke:#fff;stroke-opacity:.8}
+.ghost.nextup{stroke-opacity:1;stroke-width:6;animation:glow 1.5s ease-in-out infinite}
+.piece .built{display:none}
+.piece.on .built{display:inline}
+.piece.drop .built{animation:lowerF 1.8s cubic-bezier(.16,.7,.3,1) both}
+#crane.lowering .crane-move{animation:lower 1.8s cubic-bezier(.16,.7,.3,1) both}
+#tint{mix-blend-mode:multiply;transition:fill 1.6s}
+#dusk{transition:opacity 1.6s}
+#lights .lt{display:none}
+#lights .lt.on{display:inline}
+#beam{display:none;opacity:.5}
+#beam.on{display:inline}
+.is-night #beam{opacity:.95}
+.beamspin{transform-box:fill-box;transform-origin:center;animation:sweep 3.2s ease-in-out infinite}
+#crane .ropes{transition:opacity .2s}
+#crane.leaving .ropes{opacity:0}
+#crane.leaving .crane-move{animation:leave 1.1s .12s cubic-bezier(.5,0,.9,.4) both}
+.flame{transform-box:fill-box;transform-origin:top center;animation:flick .18s ease-in-out infinite alternate}
+.stage.thud svg{animation:thud .28s}
+.slit{fill:#3E2A1A}
+.is-night .slit,.is-night .lamp{fill:#FFD66B}
+.puff{transform-box:fill-box;transform-origin:center;animation:puff .7s ease-out forwards}
+#flag{display:none}
+#flag.up{display:inline}
+#flag.up .pole{transform-box:fill-box;transform-origin:bottom;animation:grow .6s ease-out both}
+#flag.up .cloth{animation:raise 2.2s .3s cubic-bezier(.3,0,.2,1) both}
+#flag.up .wave{transform-box:fill-box;transform-origin:left center;animation:wave 1.8s 2.4s ease-in-out infinite}
+.spark{transform-box:fill-box;transform-origin:center;animation:spark 1.1s ease-out both}
+#rocket{display:none}
+#rocket.go{display:inline;animation:fly 3.6s 2.2s cubic-bezier(.45,0,.4,1) both}
+
+@keyframes lower{from{transform:translateY(-1100px)}to{transform:translateY(0)}}
+@keyframes lowerF{from{transform:translateY(-1964.3px)}to{transform:translateY(0)}}
+@keyframes leave{from{transform:translateY(0)}to{transform:translateY(-1250px)}}
+@keyframes flick{from{transform:scaleY(.75)}to{transform:scaleY(1.15)}}
+@keyframes thud{0%,100%{transform:translateY(0)}40%{transform:translateY(4px)}}
+@keyframes puff{0%{transform:scale(.3);opacity:.85}100%{transform:scale(2.3) translateY(-6px);opacity:0}}
+@keyframes glow{0%,100%{fill:rgba(255,201,60,.10)}50%{fill:rgba(255,201,60,.42)}}
+@keyframes lift{0%{transform:translateY(0)}35%{transform:translateY(-10px) scale(1.03)}100%{transform:translateY(0)}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(7px)}50%{transform:translateX(-7px)}75%{transform:translateX(4px)}}
+@keyframes pop{0%{transform:translateX(-50%) scale(.85)}60%{transform:translateX(-50%) scale(1.06)}100%{transform:translateX(-50%) scale(1)}}
+@keyframes grow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes raise{from{transform:translateY(216px)}to{transform:translateY(0)}}
+@keyframes wave{0%,100%{transform:skewY(0)}50%{transform:skewY(-5deg)}}
+@keyframes spark{0%{transform:scale(0);opacity:1}60%{opacity:1}100%{transform:scale(1.5);opacity:0}}
+@keyframes sweep{0%,100%{transform:scaleX(1);opacity:.8}50%{transform:scaleX(.05);opacity:.25}}
+@keyframes fly{0%{transform:translate(var(--px),var(--py)) rotate(0deg) scale(1.5);opacity:0}6%{opacity:1}28%{transform:translate(calc(var(--px) - 6px),calc(var(--py) - 220px)) rotate(-8deg) scale(1.5)}90%{opacity:1}100%{transform:translate(var(--mx),var(--my)) rotate(-62deg) scale(.3);opacity:0}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  #rocket.go{display:none}
+}
+
+[hidden]{display:none!important}
+/* ══════ لعبة سوق مطرح ══════ */
+.stage{background:#3A2A1E}
+#dim{transition:opacity 2s}
+#dim.lit{opacity:0}
+.lamp{opacity:0;transition:opacity 1.2s}
+.lamp.on{opacity:1;animation:lampP 2.6s ease-in-out infinite}
+@keyframes lampP{0%,100%{opacity:.75}50%{opacity:1}}
+.shop .nglow{animation:nglow 1.5s ease-in-out infinite}
+@keyframes nglow{0%,100%{opacity:.15}50%{opacity:.6}}
+.shop .shut{transform-box:fill-box;transform-origin:center}
+.shop .shut.rattle{animation:rattle .45s}
+@keyframes rattle{0%,100%{transform:translateX(0)}20%{transform:translateX(5px)}40%{transform:translateX(-5px)}60%{transform:translateX(3px)}80%{transform:translateX(-2px)}}
+.flash{animation:flashA 1.3s ease-out forwards}
+@keyframes flashA{0%{opacity:0}25%{opacity:1}100%{opacity:0}}
+.spark{transform-box:fill-box;transform-origin:center;animation:spark 1.1s ease-out both}
+@keyframes spark{0%{transform:scale(0);opacity:1}60%{opacity:1}100%{transform:scale(1.5);opacity:0}}
+.flame{transform-box:fill-box;transform-origin:top center;animation:flick .18s ease-in-out infinite alternate}
+@keyframes flick{from{transform:scaleY(.75)}to{transform:scaleY(1.15)}}
+.ropes{transition:opacity .25s}
+
+/* ══ التسوّق: المحفظة ورفّ الأغراض والزنبيل ══ */
+.restart{top:12px!important;bottom:auto!important;left:12px!important;transform:none!important;font-size:clamp(12px,1vw,16px)!important;padding:6px 14px!important}
+.wallet{top:12px;right:12px;display:flex;align-items:center;gap:8px;font-size:clamp(15px,1.35vw,22px)}
+.wallet b{color:#FFD86B;font-size:1.15em}
+.wallet.bump{animation:bump .5s}
+@keyframes bump{0%,100%{transform:scale(1)}40%{transform:scale(1.18)}}
+.coin{width:1.25em;height:1.25em;border-radius:50%;background:radial-gradient(circle at 35% 35%,#FFF3B0,#E8B530 55%,#B07D12);box-shadow:inset 0 0 0 2px #9A6A0C;flex:none}
+.shelf{position:absolute;left:8px;right:8px;bottom:8px;z-index:2;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:6px;direction:rtl;
+  padding:6px;border-radius:16px;background:rgba(28,18,40,.72);box-shadow:0 4px 14px rgba(0,0,0,.3)}
+.item{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:2px;min-width:0;padding:4px 2px 5px;border-radius:12px;
+  border:2px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);color:#F6EFE1;cursor:pointer;font:800 clamp(11px,.95vw,16px)/1.2 var(--body);transition:transform .15s,opacity .3s,border-color .3s}
+.item img{width:100%;max-width:64px;aspect-ratio:1/1;object-fit:contain;filter:drop-shadow(0 2px 3px rgba(0,0,0,.35))}
+.item .pr{white-space:nowrap}
+.item.can{border-color:#FFD86B;background:rgba(255,216,107,.18);animation:can 1.4s ease-in-out infinite}
+@keyframes can{0%,100%{box-shadow:0 0 0 0 rgba(255,216,107,.0)}50%{box-shadow:0 0 14px 2px rgba(255,216,107,.65)}}
+.item.can:hover{transform:translateY(-3px)}
+.item.cant{opacity:.55;cursor:default}
+.item.sold{opacity:.45;cursor:default;border-color:rgba(120,220,140,.6)}
+.item.sold::after{content:"✓";position:absolute;top:2px;left:6px;color:#9CF0A8;font-size:1.3em}
+.shelf.busy .item{pointer-events:none}
+.shop .pick{animation:nglow 1s ease-in-out infinite}
+@media (max-width:560px){.shelf{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+/* داخل صفحة ألعاب الكتاب: الرأس والرجوع والتلميح في الصفحة الأم */
+html.embed body{background:transparent}
+html.embed .bgstars,html.embed .back,html.embed .eyebrow,html.embed .logo,html.embed .hint{display:none}
+html.embed .page{max-width:none;padding:4px 0 10px;grid-template-rows:auto auto minmax(440px,1fr)}
+html.embed .topbar{position:absolute;inset-inline-end:8px;top:6px;z-index:5}
+@media (max-width:899px){html.embed .topbar{position:static;justify-content:flex-end}html.embed .page{grid-template-rows:none}}
+
+/* كتب الإنجليزية: كل سطر يأخذ اتجاه أول حرف فيه، فلا تقفز علامات الترقيم والأرقام */
+html.en body *{unicode-bidi:plaintext}
+</style>
+
+<div class="bgstars" id="bgstars" aria-hidden="true"></div>
+<div class="page" dir="rtl" lang="ar">
+  <div class="topbar">
+    <button class="back" type="button">→ رجوع للدروس</button>
+    <div class="tools">
+    <button class="icon-btn" id="sound" type="button" aria-pressed="true" aria-label="الصوت">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path class="wave" d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/><path class="mute-x" d="M17 9l5 6M22 9l-5 6"/></svg>
+    </button>
+    </div>
+  </div>
+  <div class="lesson-head">
+    <div>
+      <span class="eyebrow" id="eyebrow"></span>
+      <h1>ماذا لو تسوّقنا في سوق مطرح؟</h1>
+    </div>
+    <img class="logo" src="../art/logo.png" alt="شوجب">
+  </div>
+  <p class="sub">كل إجابة صحيحة تربحكم ٢٠٠ بيسة؛ اجمعوها واختاروا ما تشترونه من الدكاكين ليطير إلى جفيركم 🧺</p>
+
+  <section class="gcard" aria-label="بطاقة اللعبة">
+    <div class="gmain">
+      <div class="ask">
+        <div class="ghead" aria-live="polite">
+          <span class="badge qnum" id="pipText"></span>
+          <span class="badge qtype" id="kindBadge"></span>
+        </div>
+        <div class="mid">
+        <div class="q" id="qwrap">
+          <p class="kind" id="kind"></p>
+          <h2 class="qtext" id="qtext"></h2>
+          <div class="opts" id="opts"></div>
+        </div>
+        <div class="foot" id="foot">
+          <p class="fb" id="fb" aria-live="polite"></p>
+          <button class="next" id="next" type="button" hidden><img src="../art/btn-next.webp" alt=""><span>التالي</span></button>
+        </div>
+        <div class="done" id="done" hidden>
+          <h2 id="doneTitle">امتلأ الجفير! 🧺</h2>
+          <p id="doneText"></p>
+          <p class="fact">سوق مطرح من أقدم أسواق عُمان، على كورنيش مطرح في محافظة مسقط، ويُسمّى أيضاً «سوق الظلام» لأن سقفه يظلّل ممرّاته. والريال العُماني ألف بيسة.</p>
+          <button class="stone" id="again" type="button">العبوا من جديد</button>
+        </div>
+        </div>
+      </div>
+      <section class="stage" id="stage" aria-label="مشهد سوق مطرح">
+        <svg id="scene" viewBox="0 0 1024 1024" preserveAspectRatio="xMidYMid slice" role="img" aria-label="ممرّ سوق مطرح المسقوف ودكاكينه، وجفير يملؤه الطلاب بما يشترونه">
+          <defs>
+            <linearGradient id="shutG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8E9C98"/><stop offset="1" stop-color="#6A7874"/></linearGradient>
+            <radialGradient id="lampGlow"><stop offset="0" stop-color="#FFD27A" stop-opacity=".9"/><stop offset="1" stop-color="#FFB040" stop-opacity="0"/></radialGradient>
+            <radialGradient id="shopGlow"><stop offset="0" stop-color="#FFF1C2" stop-opacity=".85"/><stop offset="1" stop-color="#FFD27A" stop-opacity="0"/></radialGradient>
+          </defs>
+          <image id="bg" href="../art/souq-bg.jpg" x="0" y="0" width="1024" height="1024"/>
+          <rect id="dim" x="0" y="0" width="1024" height="1024" fill="#1C1430" opacity=".12" pointer-events="none"/>
+          <g id="lamps" pointer-events="none"></g>
+          <g id="shops"></g>
+          <g id="basket"></g>
+          <g id="fx" pointer-events="none"></g>
+          <g id="crane" pointer-events="none"></g>
+        </svg>
+        <div class="wallet chip" id="wallet"><span class="coin"></span><b id="money">٠</b> بيسة</div>
+        <div class="shelf" id="shelf"></div>
+        <button class="restart" id="restart" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 2.6-5.9"/><path d="M4 4v5h5"/></svg>إعادة اللعبة</button>
+      </section>
+    </div>
+  </section>
+  <p class="hint">💡 مصمَّم للمس على السبورة · الأصوات تعمل بعد أول لمسة</p>
+</div>
+
+<script>/* بيانات الكتاب من ?book= (افتراضياً علوم الرابع) */(function(){var b=null;try{b=new URLSearchParams(location.search).get("book")}catch(e){}if(!b||!/^g[1-4]-[a-z0-9-]+$/.test(b))b="g4-sci";document.write('<script charset="utf-8" src="../data/'+b+'.js"><\/script>')})();</script>
+<script>
+/* ═════ نطاق الأسئلة: ?scope=u<رقم الوحدة> للوحدة كاملة، أو ?scope=l:<معرّف الدرس> لدرس واحد ═════ */
+const QS_ = new URLSearchParams(location.search);
+if(BOOKDATA.en) document.documentElement.classList.add('en');
+
+const EMBED = QS_.has('embed');
+if(EMBED) document.documentElement.classList.add('embed');
+const BOOK = {id:BOOKDATA.id, subject:BOOKDATA.subject, grade:BOOKDATA.grade};
+const UNITS = (function(){
+  const d = n => String(n).replace(/\d/g, c => '٠١٢٣٤٥٦٧٨٩'[c]);
+  const s = QS_.get('scope') || ('u' + (QS_.get('unit') || 1));
+  const all = x => x.lessons.reduce((a,l) => a.concat(l.qs), []);
+  if(s.indexOf('l:') === 0){
+    const id = s.slice(2);
+    for(const x of BOOKDATA.units){ const l = x.lessons.find(l => l.id === id);
+      if(l) return [{id:s, g:BOOK.grade, un:x.un, u:l.t, lab:'درس «'+l.t+'»', qs:l.qs.length ? l.qs : all(x)}]; }
+  }
+  const x = BOOKDATA.units.find(x => 'u'+x.un === s) || BOOKDATA.units[0];
+  return [{id:'u'+x.un, g:BOOK.grade, un:x.un, u:x.u, lab:'الوحدة '+d(x.un)+' كاملة: '+x.u, qs:all(x)}];
+})();
+/* ═════ لعبة سوق مطرح: دكاكين مغلقة، وكل إجابة صحيحة يرفع فيها الصاروخ باب دكان فيظهر ما فيه ═════ */
+const N = 8;
+const SVGNS = 'http://www.w3.org/2000/svg';
+const $ = id => document.getElementById(id);
+const ar = n => String(n).replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
+const SC = {amb:'none'};
+let S = null, unit = null, timers = [];
+const later = (fn,ms) => { const id=setTimeout(fn,ms); timers.push(id); };
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function countQ(n){ if(n===1) return 'سؤال واحد'; if(n===2) return 'سؤالين'; return ar(n)+(n<=10?' أسئلة':' سؤالاً'); }
+/* ═════ الصوت: كلّه مولَّد بالكود (WebAudio) بلا ملفات، ويخضع لزرّ الكتم ═════ */
+let ac=null, muted=false, eng=null, amb=null;
+function actx(){
+  try{ ac = ac || new (window.AudioContext||window.webkitAudioContext)(); if(ac.state==='suspended') ac.resume(); return ac; }
+  catch(e){ return null; }
+}
+function noiseSrc(c,dur){
+  const n=Math.max(1,(c.sampleRate*dur)|0), b=c.createBuffer(1,n,c.sampleRate), d=b.getChannelData(0);
+  for(let i=0;i<n;i++) d[i]=Math.random()*2-1;
+  const s=c.createBufferSource(); s.buffer=b; return s;
+}
+function tone(f,at,dur,type,gain,f2){
+  const o=ac.createOscillator(), g=ac.createGain();
+  o.type=type||'sine'; o.frequency.setValueAtTime(f,at); if(f2) o.frequency.exponentialRampToValueAtTime(f2,at+dur);
+  g.gain.setValueAtTime(0.0001,at); g.gain.exponentialRampToValueAtTime(gain||.15,at+.015); g.gain.exponentialRampToValueAtTime(0.0001,at+dur);
+  o.connect(g).connect(ac.destination); o.start(at); o.stop(at+dur+.05);
+}
+function sfx(name){
+  if(muted) return;
+  try{
+    if(!actx()) return;
+    const t=ac.currentTime+.01;
+    if(name==='ok'){ tone(523,t,.14,'triangle',.16); tone(784,t+.11,.24,'triangle',.16); }
+    else if(name==='thud'){ tone(120,t,.28,'sine',.5,42); tone(70,t,.12,'square',.08,40); }
+    else if(name==='no'){ tone(330,t,.32,'triangle',.12,210); }
+    else if(name==='win'){ [523,659,784,1047].forEach((f,i)=>tone(f,t+i*.15,.3,'triangle',.16)); tone(1047,t+.62,.9,'triangle',.12); tone(784,t+.62,.9,'sine',.1); }
+  }catch(e){}
+}
+/* هدير المحرّك: وصفة صاروخ المنصّة نفسها (ضجيج عريض ← lowpass 360 ← bandpass 180، باتّساع خشن وطقطقة عشوائية) */
+function engineStart(level){
+  if(muted) return;
+  try{
+    const c=actx(); if(!c) return; engineStop(.05);
+    const g=c.createGain(); g.gain.value=0; g.connect(c.destination);
+    const amp=c.createGain(); amp.gain.value=1; amp.connect(g);
+    const n=noiseSrc(c,3); n.loop=true;
+    const lp=c.createBiquadFilter(); lp.type='lowpass'; lp.frequency.value=360; lp.Q.value=.6;
+    const bp=c.createBiquadFilter(); bp.type='bandpass'; bp.frequency.value=180; bp.Q.value=.9;
+    const bpg=c.createGain(); bpg.gain.value=2.2;
+    n.connect(lp); lp.connect(bp); bp.connect(bpg); bpg.connect(amp); n.start();
+    const timer=setInterval(()=>{
+      const t=c.currentTime;
+      try{ amp.gain.setTargetAtTime(.55+Math.random()*.75,t,.05); }catch(e){}
+      if(Math.random()<.16){ try{
+        const cn=noiseSrc(c,.05), chp=c.createBiquadFilter(), cg=c.createGain();
+        chp.type='bandpass'; chp.frequency.value=900+Math.random()*700; chp.Q.value=1.2;
+        cg.gain.setValueAtTime(.0001,t); cg.gain.linearRampToValueAtTime(.02+Math.random()*.03,t+.008); cg.gain.exponentialRampToValueAtTime(.0008,t+.05);
+        cn.connect(chp); chp.connect(cg); cg.connect(c.destination); cn.start(t); cn.stop(t+.06);
+      }catch(e){} }
+    },90);
+    g.gain.setTargetAtTime(level,c.currentTime,.22);
+    eng={g,n,timer};
+  }catch(e){}
+}
+function engineLevel(level){ try{ if(eng) eng.g.gain.setTargetAtTime(level,ac.currentTime,.12); }catch(e){} }
+function engineStop(fade){
+  if(!eng) return; const e=eng; eng=null; fade=fade||.5;
+  try{ clearInterval(e.timer); const t=ac.currentTime; e.g.gain.cancelScheduledValues(t); e.g.gain.setTargetAtTime(0,t,fade/3.5);
+    setTimeout(()=>{ try{ e.n.stop(); e.g.disconnect(); }catch(_){} }, fade*1000+250); }catch(_){}
+}
+function ignite(){
+  if(muted) return;
+  try{ const c=actx(); if(!c) return; const t=c.currentTime;
+    const n=noiseSrc(c,1.4), lp=c.createBiquadFilter(), g=c.createGain();
+    lp.type='lowpass'; lp.frequency.setValueAtTime(110,t); lp.frequency.exponentialRampToValueAtTime(420,t+.3); lp.frequency.exponentialRampToValueAtTime(85,t+1.3);
+    g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(.26,t+.12); g.gain.exponentialRampToValueAtTime(.001,t+1.35);
+    n.connect(lp); lp.connect(g); g.connect(c.destination); n.start(t); n.stop(t+1.4);
+    tone(68,t,1.25,'sine',.16,40);
+  }catch(e){}
+}
+/* أجواء الشاطئ: موج خفيف متكرّر ونورس بين حين وآخر (النورس يسكت ليلاً) */
+function gullCry(c,out,at,dur,f0,vol){
+  const o=c.createOscillator(), o2=c.createOscillator(), bp=c.createBiquadFilter(), g=c.createGain();
+  o.type='sawtooth'; o2.type='square';
+  [o,o2].forEach((x,i)=>{ const k=i?1.006:1;
+    x.frequency.setValueAtTime(f0*.74*k,at); x.frequency.exponentialRampToValueAtTime(f0*1.1*k,at+dur*.22); x.frequency.exponentialRampToValueAtTime(f0*.6*k,at+dur); });
+  bp.type='bandpass'; bp.Q.value=3.2; bp.frequency.setValueAtTime(f0*1.9,at); bp.frequency.exponentialRampToValueAtTime(f0*1.25,at+dur);
+  g.gain.setValueAtTime(.0001,at); g.gain.exponentialRampToValueAtTime(vol,at+dur*.18); g.gain.setValueAtTime(vol,at+dur*.5); g.gain.exponentialRampToValueAtTime(.0001,at+dur);
+  o.connect(bp); o2.connect(bp); bp.connect(g); g.connect(out);
+  o.start(at); o2.start(at); o.stop(at+dur+.05); o2.stop(at+dur+.05);
+}
+function birdCall(){
+  if(!amb || muted || (S && S.night) || document.hidden) return;
+  try{ const c=ac; let at=c.currentTime+.05; const f=2600+Math.random()*900, k=3+Math.floor(Math.random()*4);
+    for(let i=0;i<k;i++){ const o=c.createOscillator(), g=c.createGain(), d=.07+Math.random()*.05;
+      o.type='sine'; o.frequency.setValueAtTime(f*(.9+Math.random()*.2),at); o.frequency.exponentialRampToValueAtTime(f*(1.25+Math.random()*.2),at+d*.5); o.frequency.exponentialRampToValueAtTime(f*.95,at+d);
+      g.gain.setValueAtTime(.0001,at); g.gain.exponentialRampToValueAtTime(.035,at+d*.3); g.gain.exponentialRampToValueAtTime(.0001,at+d);
+      o.connect(g); g.connect(amb.gull); o.start(at); o.stop(at+d+.03); at+=d+.05+Math.random()*.06; }
+  }catch(e){}
+}
+function gullCall(){
+  if(!amb || muted || (S && S.night) || document.hidden) return;
+  try{ const c=ac, t=c.currentTime+.05, f0=1150+Math.random()*350, vol=.04+Math.random()*.02;
+    let out=amb.gull;
+    if(c.createStereoPanner){ const p=c.createStereoPanner(); p.pan.value=Math.random()*1.6-.8; p.connect(amb.gull); out=p; }
+    let at=t; gullCry(c,out,at,.5+Math.random()*.15,f0,vol); at+=.62;
+    const k=2+Math.floor(Math.random()*3);
+    for(let i=0;i<k;i++){ const d=.2+Math.random()*.08; gullCry(c,out,at,d,f0*(1.04-i*.03),vol*.85); at+=d+.09; }
+  }catch(e){}
+}
+function ambStart(){
+  if(amb || muted) return;
+  try{
+    const c=actx(); if(!c) return;
+    const out=c.createGain(); out.gain.value=0; out.connect(c.destination);
+    const gull=c.createGain(); gull.gain.value=1; gull.connect(c.destination);
+    const n=noiseSrc(c,4); n.loop=true;
+    const oasis = SC.amb==='oasis';
+    const hp=c.createBiquadFilter(); hp.type='highpass'; hp.frequency.value=oasis?220:140;
+    const lp=c.createBiquadFilter(); lp.type='lowpass'; lp.frequency.value=480; lp.Q.value=.3;
+    const sw=c.createGain(); sw.gain.value=.22;
+    n.connect(hp); hp.connect(lp); lp.connect(sw); sw.connect(out); n.start();
+    out.gain.setTargetAtTime(oasis?.05:.12,c.currentTime,1);
+    amb={out,gull,n,wt:null,gt:null};
+    const wave=()=>{ if(!amb) return;
+      const t=c.currentTime, rise=1.6+Math.random()*1.2, peak=.75+Math.random()*.25;
+      try{ sw.gain.cancelScheduledValues(t); sw.gain.setTargetAtTime(peak,t,rise/3); sw.gain.setTargetAtTime(.2,t+rise,1.3);
+        lp.frequency.cancelScheduledValues(t); lp.frequency.setTargetAtTime(1400+Math.random()*500,t,rise/3); lp.frequency.setTargetAtTime(430,t+rise,1.1); }catch(e){}
+      amb.wt=setTimeout(wave,(rise+3.2+Math.random()*2.5)*1000); };
+    const gulls=(first)=>{ if(!amb) return; if(!first){ if(oasis) birdCall(); else gullCall(); } amb.gt=setTimeout(gulls,(first?3000:9000)+Math.random()*(first?2500:9000)); };
+    wave(); gulls(true);
+  }catch(e){}
+}
+function ambStop(){
+  if(!amb) return; const a=amb; amb=null;
+  try{ clearTimeout(a.wt); clearTimeout(a.gt); const t=ac.currentTime; a.out.gain.cancelScheduledValues(t); a.out.gain.setTargetAtTime(0,t,.15); a.gull.gain.setTargetAtTime(0,t,.05);
+    setTimeout(()=>{ try{ a.n.stop(); a.out.disconnect(); a.gull.disconnect(); }catch(_){} },900); }catch(_){}
+}
+document.addEventListener('pointerdown',()=>ambStart(),{passive:true});
+document.addEventListener('visibilitychange',()=>{ try{ if(!ac) return; if(document.hidden) ac.suspend(); else if(!muted) ac.resume(); }catch(e){} });
+
+/* ═════ الأصوات: صرير الباب المعدني عند رفعه، وطرقة عند الخطأ (بلا خلفية صوتية) ═════ */
+function ambStart(){}
+function ambStop(){}
+function rattleSnd(dur,vol){
+  if(muted) return;
+  try{ const c=actx(); if(!c) return; const t0=c.currentTime+.01; dur=dur||1.2; vol=vol||.06;
+    const n=Math.round(dur*22);
+    for(let k=0;k<n;k++){ const at=t0+k*dur/n+Math.random()*.01, s=noiseSrc(c,.03), bp=c.createBiquadFilter(), g=c.createGain();
+      bp.type='bandpass'; bp.Q.value=4; bp.frequency.value=1800+Math.random()*1400;
+      g.gain.setValueAtTime(.0001,at); g.gain.exponentialRampToValueAtTime(vol*(.6+Math.random()*.4),at+.004); g.gain.exponentialRampToValueAtTime(.0001,at+.03);
+      s.connect(bp); bp.connect(g); g.connect(c.destination); s.start(at); s.stop(at+.04); }
+  }catch(e){}
+}
+function chime(){
+  if(muted) return;
+  try{ if(!actx()) return; const t=ac.currentTime+.02; [1175,1568,2093].forEach((f,i)=>tone(f,t+i*.09,.5,'sine',.06)); }catch(e){}
+}
+
+/* ═════ الدكاكين (مقيسة على صورة الخلفية من جيميناي art/souq-bg.jpg، ١٠٢٤×١٠٢٤) ═════
+   كل فتحة رباعيّ بالمنظور: أعلى-يسار، أعلى-يمين، أسفل-يمين، أسفل-يسار */
+const SHOPS = [
+  [[827,348],[972,328],[972,885],[827,772]],   // يمين ١ (الأقرب)
+  [[ 52,338],[200,352],[200,775],[ 52,880]],   // يسار ١
+  [[712,410],[774,400],[774,722],[712,697]],   // يمين ٢
+  [[250,396],[300,406],[300,695],[250,722]],   // يسار ٢
+  [[667,441],[690,435],[690,657],[667,645]],   // يمين ٣
+  [[332,434],[357,441],[357,648],[332,662]],   // يسار ٣
+  [[630,460],[650,455],[650,620],[630,612]],   // يمين ٤
+  [[375,455],[392,460],[392,617],[375,627]]    // يسار ٤ (الأبعد)
+];
+const LAMPS = [[187,140],[268,222],[313,278],[357,330],[379,352],[399,378],[835,140],[755,222],[709,278],[665,330],[643,352],[625,378]];
+const ROCKET = `<path class="flame" d="M-8,28 Q0,60 8,28Z" fill="#FFB020"/><path class="flame" d="M-4,28 Q0,46 4,28Z" fill="#FFE08A"/><image href="../art/rocket.png" x="-22.4" y="-40" width="44.7" height="72"/>`;
+function el(tag,attrs,parent){ const e=document.createElementNS(SVGNS,tag); for(const k in attrs) e.setAttribute(k,attrs[k]); if(parent) parent.appendChild(e); return e; }
+const lerp=(a,b,t)=>[a[0]+(b[0]-a[0])*t, a[1]+(b[1]-a[1])*t];
+const P=(p)=>p[0].toFixed(1)+','+p[1].toFixed(1);
+
+/* ═════ البضائع: صور من جيميناي (../art/*.webp)، لكل دكان غرض واحد بسعره بالبيسة ═════ */
+const GOAL = 5, EARN = 200;
+const ITEMS = [
+  {shop:1, id:'spice',   name:'بهارات', price:100},
+  {shop:7, id:'dates',   name:'تمر',    price:100},
+  {shop:3, id:'fabric',  name:'قماش',   price:200},
+  {shop:5, id:'halwa',   name:'حلوى',   price:200},
+  {shop:0, id:'kumma',   name:'كُمّة',  price:300},
+  {shop:6, id:'lantern', name:'فانوس',  price:300},
+  {shop:4, id:'dallah',  name:'دلّة',   price:400},
+  {shop:2, id:'khanjar', name:'خنجر',   price:500}
+];
+const IMG = {spice:[236,231],dates:[260,231],fabric:[179,270],halwa:[254,254],kumma:[600,496],lantern:[132,253],dallah:[236,293],khanjar:[248,251],zanbil:[256,236],jafeer:[871,766]};
+const BASKET = {x:512, y:872, w:290};                       // مركز قاعدة الجفير وعرضه
+/* مواضع الأغراض داخل فوهة الجفير: نسبةً إلى خطّ حافته العليا (نصفها السفلي يختفي خلف جداره الأمامي) */
+const RIM = .30;                                   // ارتفاع الحافة من أعلى صورة الجفير
+const SLOTS = [[-84,-12],[82,-10],[-34,-22],[38,-20],[2,-32]];
+function basketGeo(){ const [iw,ih]=IMG.jafeer, h=BASKET.w*ih/iw; return {h, rim:BASKET.y-h+RIM*h}; }
+function slotXY(j){ const g=basketGeo(), [dx,dy]=SLOTS[j]; return [BASKET.x+dx, g.rim+dy]; }
+function shopCenter(i){ const q=SHOPS[i]; return [(q[0][0]+q[1][0]+q[2][0]+q[3][0])/4,(q[0][1]+q[1][1]+q[2][1]+q[3][1])/4]; }
+function itemImg(id,cx,cy,w){ const [iw,ih]=IMG[id], h=w*ih/iw; return `<image href="../art/${id}.webp" x="${(cx-w/2).toFixed(1)}" y="${(cy-h/2).toFixed(1)}" width="${w.toFixed(1)}" height="${h.toFixed(1)}"/>`; }
+function coinSnd(){ if(muted) return; try{ if(!actx()) return; const t=ac.currentTime+.01; tone(2093,t,.12,'triangle',.08); tone(2637,t+.07,.22,'triangle',.08); }catch(e){} }
+
+function buildScene(){
+  $('lamps').innerHTML=LAMPS.map(([x,y],i)=>{ const r=34-(Math.abs(x-512)<180?14:0); return `<circle class="lamp" cx="${x}" cy="${y}" r="${r}" fill="url(#lampGlow)" style="animation-delay:${(-i*.37).toFixed(2)}s"/>`; }).join('');
+  $('shelf').innerHTML=ITEMS.map((it,k)=>`<button class="item" type="button" data-k="${k}" aria-label="${it.name} بسعر ${ar(it.price)} بيسة"><img src="../art/${it.id}.webp" alt=""><span>${it.name}</span><span class="pr">${ar(it.price)} بيسة</span></button>`).join('');
+  $('shelf').querySelectorAll('.item').forEach(b=>b.addEventListener('click',()=>buy(+b.dataset.k)));
+}
+function renderBasket(){
+  const B=BASKET, g=basketGeo(), h=g.h;
+  let s=`<ellipse cx="${B.x}" cy="${B.y+4}" rx="${B.w*.42}" ry="18" fill="#2B1A0E" opacity=".28"/>`;
+  // الجفير بمنظر أماميّ مستقيم: الأغراض تُرسم خلفه فيختفي جزؤها السفلي خلف جداره الأمامي
+  S.bought.forEach((k,j)=>{ const [x,y]=slotXY(j); s+=itemImg(ITEMS[k].id,x,y,84); });
+  s+=`<image href="../art/jafeer.webp" x="${B.x-B.w/2}" y="${(B.y-h).toFixed(1)}" width="${B.w}" height="${h.toFixed(1)}"/>`;
+  $('basket').innerHTML=s;
+}
+function renderShops(){
+  const G=$('shops'); G.innerHTML='';
+  SHOPS.forEach((q,i)=>{ el('g',{class:'shop',id:'shop'+i},G); });
+}
+function renderShelf(){
+  $('money').textContent=ar(S.money);
+  $('shelf').querySelectorAll('.item').forEach(b=>{ const k=+b.dataset.k, it=ITEMS[k], sold=S.bought.includes(k);
+    b.className='item '+(sold?'sold':(S.money>=it.price && !S.done?'can':'cant')); b.disabled=sold||S.money<it.price||S.done; });
+}
+function pickGlow(i,on){ const g=$('shop'+i); g.innerHTML=on?`<path class="pick" d="M${P(SHOPS[i][0])} L${P(SHOPS[i][1])} L${P(SHOPS[i][2])} L${P(SHOPS[i][3])} Z" fill="none" stroke="#FFD86B" stroke-width="${Math.max(3,(SHOPS[i][1][0]-SHOPS[i][0][0])/12).toFixed(1)}" stroke-linejoin="round"/>`:''; }
+
+/* ═════ الحالة ═════ */
+function fresh(unitId){
+  unit = UNITS.find(u=>u.id===unitId) || UNITS[0];
+  return {unitId:unit.id, queue:shuffle(unit.qs.map((_,i)=>i)), cur:null, order:null, money:0, earned:0, bought:[], busy:false, turns:0, errors:0, done:false, answered:false, night:false};
+}
+function draw(){
+  if(!S.queue.length){ const all=shuffle(unit.qs.map((_,i)=>i));
+    S.queue = all.length>1 ? all.filter(i=>i!==S.cur).concat(all.filter(i=>i===S.cur)) : all; }
+  S.cur=S.queue.shift(); const q=unit.qs[S.cur];
+  S.order = q.t==='m' ? shuffle(q.o.map((_,i)=>i)) : null; S.answered=false;
+}
+function renderQuestion(){
+  const q=unit.qs[S.cur], opts=$('opts');
+  $('done').hidden=true; $('qwrap').hidden=false; $('foot').hidden=false;
+  $('pipText').textContent='المشتريات '+ar(S.bought.length)+' من '+ar(GOAL);
+  $('kindBadge').textContent = q.t==='m' ? 'اختيار من متعدد' : 'صواب أو خطأ';
+  $('kind').textContent=q.l?'من درس «'+q.l+'»':'';
+  $('qtext').textContent=q.q;
+  opts.className='opts '+(q.t==='m'?'mcq':'tf'); opts.innerHTML='';
+  const items = q.t==='m' ? S.order.map(i=>({label:q.o[i], good:i===q.a})) : [{label:(BOOKDATA.en?'True':'صواب'), good:q.a===true},{label:(BOOKDATA.en?'False':'خطأ'), good:q.a===false}];
+  items.forEach(it=>{ const b=document.createElement('button'); b.type='button'; b.className='stone'; b.textContent=it.label;
+    b.addEventListener('click',()=>answer(b,it.good)); opts.appendChild(b); });
+  $('fb').className='fb'; $('fb').textContent=''; $('next').hidden=true;
+}
+function needMsg(){ const left=ITEMS.filter((it,k)=>!S.bought.includes(k)).sort((a,b)=>a.price-b.price)[0]; if(!left) return ''; const d=left.price-S.money; return 'تحتاجون '+ar(d)+' بيسة أخرى لشراء '+left.name+'؛ أجيبوا السؤال التالي لتربحوها.'; }
+function canBuyAny(){ return ITEMS.some((it,k)=>!S.bought.includes(k) && S.money>=it.price); }
+function answer(btn,good){
+  if(S.answered||S.done) return;
+  S.answered=true; S.turns++; $('opts').classList.add('locked');
+  const fb=$('fb');
+  if(good){
+    btn.classList.add('ok'); sfx('ok');
+    S.money+=EARN; S.earned+=EARN; coinSnd();
+    const w=$('wallet'); w.classList.remove('bump'); void w.offsetWidth; w.classList.add('bump');
+    renderShelf();
+    fb.className='fb good'; fb.innerHTML='أحسنتم! ربحتم '+ar(EARN)+' بيسة 💰<small>'+(canBuyAny()?'المسوا غرضاً يلمع في الأسفل لتشتروه، أو ادّخروا لغرض أغلى.':needMsg())+'</small>';
+  } else {
+    S.errors++; S.queue.push(S.cur); btn.classList.add('no'); sfx('no');
+    fb.className='fb bad'; fb.innerHTML='ليست هذه الإجابة، فلم تربحوا بيسات هذه المرة.<small>سيعود هذا السؤال مرة أخرى.</small>';
+  }
+  showNext();
+}
+function showNext(){ if(S.done) return; const n=$('next'); n.hidden=false; n.focus({preventScroll:true}); }
+
+/* ═════ الشراء: الصاروخ يأخذ الغرض من دكانه ويضعه في الجفير ═════ */
+let cJob=0;
+function tween(dur,fn,done,job){ const t0=performance.now(); const st=t=>{ if(job!==cJob) return; const q=Math.min(1,(t-t0)/dur); fn(q); if(q<1) requestAnimationFrame(st); else if(done) done(); }; requestAnimationFrame(st); }
+function buy(k){
+  const it=ITEMS[k];
+  if(S.busy||S.done||S.bought.includes(k)||S.money<it.price) return;
+  S.busy=true; $('shelf').classList.add('busy');
+  S.money-=it.price; renderShelf();
+  const job=++cJob, i=it.shop, [cx,cy]=shopCenter(i), sh=SHOPS[i], hgt=sh[3][1]-sh[0][1];
+  const iwA=Math.max(46,Math.min(150,hgt*.42)), iwB=84, [tx,ty]=slotXY(S.bought.length);
+  pickGlow(i,true);
+  // ١) الدفع: عملات تطير من المحفظة إلى الدكان
+  const n=Math.min(5,it.price/100), W=[930,48], c=$('crane');
+  for(let j=0;j<n;j++) later(()=>{ coinSnd();
+    const g=el('g',{},c); g.innerHTML=`<circle r="16" fill="#E8B530" stroke="#9A6A0C" stroke-width="3"/><circle r="9" fill="none" stroke="#FFF3B0" stroke-width="2" opacity=".8"/>`;
+    tween(650,q=>{ const e=q*q*(3-2*q), x=W[0]+(cx-W[0])*e, y=W[1]+(cy-W[1])*e-Math.sin(Math.PI*e)*90; g.setAttribute('transform',`translate(${x.toFixed(1)} ${y.toFixed(1)}) scale(${(1-.4*e).toFixed(2)})`); },()=>g.remove(),job); },j*130);
+  // ٢) الغرض يقفز من دكانه ويطير في قوس إلى داخل الجفير
+  later(()=>{
+    pickGlow(i,false); chime();
+    const g=el('g',{},c);
+    tween(350,q=>{ g.innerHTML=itemImg(it.id,cx,cy,iwA*(.3+.7*q)); },()=>{
+      whooshSnd();
+      tween(1100,q=>{ const e=q*q*(3-2*q), x=cx+(tx-cx)*e, y=cy+(ty-cy)*e-Math.sin(Math.PI*e)*170, w=iwA+(iwB-iwA)*e;
+        g.innerHTML=itemImg(it.id,x,y,w)+(q>.05&&q<.95?`<circle cx="${(x-(tx-cx)*.05).toFixed(1)}" cy="${(y+10).toFixed(1)}" r="5" fill="#FFE08A" opacity=".8"/>`:''); },()=>{
+        g.remove(); S.bought.push(k); renderBasket(); sparkleAt(tx,ty-20); plop();
+        S.busy=false; $('shelf').classList.remove('busy'); renderShelf();
+        $('pipText').textContent='المشتريات '+ar(S.bought.length)+' من '+ar(GOAL);
+        if(S.bought.length>=GOAL){ S.done=true; renderShelf(); later(finale,700); }
+      },job);
+    },job);
+  },n*130+520);
+}
+function whooshSnd(){ if(muted) return; try{ const c=actx(); if(!c) return; const t=c.currentTime+.01, nz=noiseSrc(c,.6), bp=c.createBiquadFilter(), g=c.createGain();
+  bp.type='bandpass'; bp.Q.value=1.2; bp.frequency.setValueAtTime(600,t); bp.frequency.exponentialRampToValueAtTime(1800,t+.5);
+  g.gain.setValueAtTime(.0001,t); g.gain.exponentialRampToValueAtTime(.05,t+.3); g.gain.exponentialRampToValueAtTime(.0001,t+.6);
+  nz.connect(bp); bp.connect(g); g.connect(c.destination); nz.start(t); nz.stop(t+.65); }catch(e){} }
+function plop(){ if(muted) return; try{ if(!actx()) return; const t=ac.currentTime+.01; tone(320,t,.18,'sine',.12,140); }catch(e){} }
+function sparkleAt(x,y){
+  [[-60,-20],[50,-40],[0,-70],[-30,30],[60,20]].forEach(([dx,dy],k)=>{ const p=el('path',{d:`M0,-16 l5,11 l11,5 l-11,5 l-5,11 l-5,-11 l-11,-5 l11,-5z`,transform:`translate(${x+dx} ${y+dy})`,fill:'#FFE08A',class:'spark',style:`animation-delay:${(k*.08).toFixed(2)}s`},$('fx')); setTimeout(()=>p.remove(),1500); });
+}
+function finale(){
+  $('dim').classList.add('lit'); document.querySelectorAll('.lamp').forEach((l,k)=>later(()=>l.classList.add('on'),k*90));
+  sfx('win'); sparkleAt(BASKET.x,BASKET.y-120);
+  $('pipText').textContent='امتلأ الجفير'; $('kindBadge').textContent='أحسنتم';
+  later(()=>{
+    $('qwrap').hidden=true; $('foot').hidden=true; $('done').hidden=false;
+    const spent=S.bought.reduce((a,k)=>a+ITEMS[k].price,0);
+    $('doneText').textContent='ربحتم '+ar(S.earned)+' بيسة في '+countQ(S.turns)+'، واشتريتم '+ar(GOAL)+' أغراض بـ'+ar(spent)+' بيسة'+(S.money?'، وبقي معكم '+ar(S.money)+' بيسة.':'.');
+    $('again').focus({preventScroll:true});
+  },1200);
+}
+
+function newGame(unitId){
+  timers.forEach(clearTimeout); timers=[]; cJob++; engineStop(.1);
+  $('crane').innerHTML=''; $('fx').innerHTML=''; $('dim').classList.remove('lit'); document.querySelectorAll('.lamp').forEach(l=>l.classList.remove('on'));
+  S=fresh(unitId); $('shelf').classList.remove('busy');
+  $('eyebrow').textContent=BOOK.subject+' · '+BOOK.grade+' · '+unit.lab;
+  renderShops(); renderBasket(); renderShelf(); draw(); renderQuestion();
+}
+$('next').addEventListener('click',()=>{ if(!S.done){ draw(); renderQuestion(); } });
+$('again').addEventListener('click',()=>newGame(S.unitId));
+$('restart').addEventListener('click',()=>newGame(S.unitId));
+$('sound').addEventListener('click',e=>{
+  muted=!muted; e.currentTarget.setAttribute('aria-pressed',String(!muted));
+  if(muted) engineStop(.1);
+  try{ localStorage.setItem('sgame.muted',muted?'1':''); }catch(err){}
+});
+(function(){ let s=''; for(let i=0;i<70;i++){ const d=1+Math.random()*2; s+=`<i style="left:${(Math.random()*100).toFixed(2)}%;top:${(Math.random()*100).toFixed(2)}%;width:${d.toFixed(1)}px;height:${d.toFixed(1)}px;opacity:${(.35+Math.random()*.55).toFixed(2)}"></i>`; } $('bgstars').innerHTML=s; })();
+function urlUnit(){ try{ const n=+new URLSearchParams(location.search).get('unit'); const u=UNITS.find(x=>x.un===n); return u?u.id:null; }catch(e){ return null; } }
+(function(){
+  let m=''; try{ m=localStorage.getItem('sgame.muted'); }catch(e){}
+  muted=!!m; $('sound').setAttribute('aria-pressed',String(!muted));
+  buildScene(); newGame(urlUnit() || UNITS[0].id);
+})();
+</script>

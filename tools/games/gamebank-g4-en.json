@@ -1,0 +1,4754 @@
+{
+ "g4e-0-1": [
+  {
+   "t": "m",
+   "q": "Someone from China is ___.",
+   "o": [
+    "Chinese",
+    "Brazilian",
+    "Egyptian",
+    "British"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط كل بلدٍ بجنسيّته"
+  },
+  {
+   "t": "m",
+   "q": "Maha is from Egypt. She is ___.",
+   "o": [
+    "Egyptian",
+    "Omani",
+    "Australian",
+    "American"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "بلدان وجنسيات: Egyptian"
+  },
+  {
+   "t": "m",
+   "q": "'Where are you from?' Choose the best answer.",
+   "o": [
+    "I'm from Oman.",
+    "I'm ten years old.",
+    "I like swimming.",
+    "I'm fine, thank you."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تركيب: Where are you from? I'm from Oman."
+  },
+  {
+   "t": "m",
+   "q": "Which hobby do you usually do outdoors?",
+   "o": [
+    "canoeing",
+    "reading",
+    "playing table tennis",
+    "playing computer games"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تصنيف الهوايات: داخل المنزل أم خارجه"
+  },
+  {
+   "t": "m",
+   "q": "Which word is a hobby, not a nationality?",
+   "o": [
+    "swimming",
+    "Chinese",
+    "British",
+    "Omani"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "التمييز بين الهواية والجنسية"
+  },
+  {
+   "t": "t",
+   "q": "Someone from Britain is British.",
+   "a": true,
+   "lv": "k",
+   "obj": "ربط كل بلدٍ بجنسيّته"
+  },
+  {
+   "t": "t",
+   "q": "Someone from the USA is Brazilian.",
+   "a": false,
+   "lv": "k",
+   "obj": "بلدان وجنسيات: Oman, Australia, China, Britain, Brazil, Egypt, the USA"
+  },
+  {
+   "t": "t",
+   "q": "Reading is a hobby you can do indoors.",
+   "a": true,
+   "lv": "a",
+   "obj": "تصنيف الهوايات: داخل المنزل أم خارجه"
+  }
+ ],
+ "g4e-0-2": [
+  {
+   "t": "m",
+   "q": "Which word is 90?",
+   "o": [
+    "ninety",
+    "nineteen",
+    "nine",
+    "nine hundred"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "الأعداد بالعشرات ٥٠-١٠٠: fifty..one hundred"
+  },
+  {
+   "t": "m",
+   "q": "What number is 'sixty-four'?",
+   "o": [
+    "64",
+    "46",
+    "60",
+    "14"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "الأعداد ٥٠-١٠٠: الرقم وكلمته"
+  },
+  {
+   "t": "m",
+   "q": "Which number comes after ninety-nine?",
+   "o": [
+    "one hundred",
+    "ninety-eight",
+    "ninety",
+    "ten"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "الأعداد ٥٠-١٠٠: ترتيب الأعداد"
+  },
+  {
+   "t": "m",
+   "q": "Seventy plus ten equals ___.",
+   "o": [
+    "eighty",
+    "seventy-one",
+    "sixty",
+    "ninety"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "لغز: Fifty-five minus two equals fifty-three."
+  },
+  {
+   "t": "m",
+   "q": "Which number is the biggest?",
+   "o": [
+    "eighty-eight",
+    "fifty-nine",
+    "seventy-five",
+    "sixty-six"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "ترتيب الأعداد ٥٠-١٠٠ تصاعدياً"
+  },
+  {
+   "t": "t",
+   "q": "'Eighty' is bigger than 'seventy-nine'.",
+   "a": true,
+   "lv": "a",
+   "obj": "الأعداد ٥٠-١٠٠: ترتيب الأعداد"
+  },
+  {
+   "t": "t",
+   "q": "Sixty minus five equals sixty-five.",
+   "a": false,
+   "lv": "a",
+   "obj": "لغز: Fifty-five minus two equals fifty-three."
+  },
+  {
+   "t": "t",
+   "q": "'Fifty' is 50.",
+   "a": true,
+   "lv": "k",
+   "obj": "الأعداد ٥٠-١٠٠: الرقم وكلمته"
+  }
+ ],
+ "g4e-1-1": [
+  {
+   "t": "m",
+   "q": "In which subject do you run and play sports?",
+   "o": [
+    "P.E.",
+    "ICT",
+    "Maths",
+    "Arabic"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات المواد الدراسية: Maths, Science, Arabic, English, Social Studies, P.E., ICT, Art, Islamic Studies"
+  },
+  {
+   "t": "m",
+   "q": "In which subject do you draw and paint?",
+   "o": [
+    "Art",
+    "Science",
+    "Social Studies",
+    "Maths"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات المواد الدراسية: Maths, Science, Arabic, English, Social Studies, P.E., ICT, Art, Islamic Studies"
+  },
+  {
+   "t": "m",
+   "q": "Who is the head of the school?",
+   "o": [
+    "the headteacher",
+    "the school nurse",
+    "a new student",
+    "the bus driver"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات: headteacher"
+  },
+  {
+   "t": "m",
+   "q": "'What's your favourite subject?' Choose the best answer.",
+   "o": [
+    "My favourite subject is Science.",
+    "I'm from Oman.",
+    "It's half past ten.",
+    "I'm nine years old."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تركيب: What's your favourite subject?"
+  },
+  {
+   "t": "m",
+   "q": "Salim loves numbers and adding. What is probably his favourite subject?",
+   "o": [
+    "Maths",
+    "Art",
+    "P.E.",
+    "Arabic"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "مفردات المواد الدراسية: Maths, Science, Arabic, English, Social Studies, P.E., ICT, Art, Islamic Studies"
+  },
+  {
+   "t": "t",
+   "q": "Islamic Studies is a school subject.",
+   "a": true,
+   "lv": "k",
+   "obj": "مفردات المواد الدراسية: Maths, Science, Arabic, English, Social Studies, P.E., ICT, Art, Islamic Studies"
+  },
+  {
+   "t": "t",
+   "q": "'School nurse' is a school subject.",
+   "a": false,
+   "lv": "a",
+   "obj": "التمييز بين المادّة الدراسية والشخص"
+  },
+  {
+   "t": "t",
+   "q": "Social Studies is a school subject.",
+   "a": true,
+   "lv": "k",
+   "obj": "تصنيف: موادّ دراسية أم أشخاصٌ في المدرسة"
+  }
+ ],
+ "g4e-1-2": [
+  {
+   "t": "m",
+   "q": "Who is new at the school in the story?",
+   "o": [
+    "Lottie",
+    "Sami",
+    "Mrs Safa",
+    "Bo"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "فهم أحداث القصّة"
+  },
+  {
+   "t": "m",
+   "q": "What subject does Sami have today?",
+   "o": [
+    "ICT",
+    "Art",
+    "P.E.",
+    "Maths"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قصّة الوحدة: Sami has ICT today"
+  },
+  {
+   "t": "m",
+   "q": "Who is Mrs Safa?",
+   "o": [
+    "the headteacher",
+    "Lottie's mum",
+    "a student",
+    "the school nurse"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قصّة الوحدة: First day at a new school! — Mrs Safa"
+  },
+  {
+   "t": "m",
+   "q": "What happens after Lottie meets her new class?",
+   "o": [
+    "There's a loud noise.",
+    "The children arrive at school.",
+    "Lottie meets the headteacher.",
+    "The children go home."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "ترتيب أحداث القصّة"
+  },
+  {
+   "t": "m",
+   "q": "Sami says, 'This is Bo, my robot!' What does this tell us?",
+   "o": [
+    "Bo belongs to Sami.",
+    "Bo is a teacher.",
+    "Bo is Lottie's brother.",
+    "Bo is a school subject."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "قصّة الوحدة: This is Bo, my robot!"
+  },
+  {
+   "t": "t",
+   "q": "Lottie meets the headteacher before she meets her new class.",
+   "a": true,
+   "lv": "a",
+   "obj": "ترتيب أحداث القصّة"
+  },
+  {
+   "t": "t",
+   "q": "Bo is Lottie's robot.",
+   "a": false,
+   "lv": "k",
+   "obj": "قصّة الوحدة: Bo هو روبوت سامي"
+  },
+  {
+   "t": "t",
+   "q": "The story is about Lottie's first day at a new school.",
+   "a": true,
+   "lv": "k",
+   "obj": "فهم أحداث القصّة"
+  }
+ ],
+ "g4e-1-3": [
+  {
+   "t": "m",
+   "q": "Choose the correct sentence.",
+   "o": [
+    "She doesn't have P.E. on Wednesdays.",
+    "She don't have P.E. on Wednesdays.",
+    "She doesn't has P.E. on Wednesdays.",
+    "She not have P.E. on Wednesdays."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تركيب: Azza doesn't have P.E. on Wednesdays"
+  },
+  {
+   "t": "m",
+   "q": "'Half past ten' is ___.",
+   "o": [
+    "10:30",
+    "10:15",
+    "10:45",
+    "11:30"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: We have Maths on Tuesdays at half past ten."
+  },
+  {
+   "t": "m",
+   "q": "Complete: We have Maths ___ Tuesdays.",
+   "o": [
+    "on",
+    "at",
+    "in",
+    "to"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: We have Maths on Tuesdays at half past ten."
+  },
+  {
+   "t": "m",
+   "q": "Complete: I have Science ___ quarter past eleven.",
+   "o": [
+    "at",
+    "on",
+    "in",
+    "of"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط سؤال الوقت بجوابه"
+  },
+  {
+   "t": "m",
+   "q": "Which lesson does Lottie have first in the morning?",
+   "o": [
+    "Maths",
+    "English",
+    "P.E.",
+    "Arabic"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ترتيب حصص جدول لوتي الصباحية"
+  },
+  {
+   "t": "t",
+   "q": "'When do we have Maths?' asks about a day or a time.",
+   "a": true,
+   "lv": "k",
+   "obj": "تركيب: When do we have Maths?"
+  },
+  {
+   "t": "t",
+   "q": "'He have Art on Sundays.' is a correct sentence.",
+   "a": false,
+   "lv": "a",
+   "obj": "تركيب: We have Maths on Tuesdays at half past ten."
+  },
+  {
+   "t": "t",
+   "q": "'Azza doesn't have P.E. on Wednesdays.' is a negative sentence.",
+   "a": true,
+   "lv": "r",
+   "obj": "تصنيف الجمل: مثبتة أم منفية"
+  }
+ ],
+ "g4e-1-4": [
+  {
+   "t": "m",
+   "q": "Which word means 'all the time'?",
+   "o": [
+    "always",
+    "never",
+    "sometimes",
+    "often"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ظروف التكرار: always, often, sometimes, never"
+  },
+  {
+   "t": "m",
+   "q": "Which one is an adverbial phrase?",
+   "o": [
+    "twice a week",
+    "often",
+    "never",
+    "always"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تصنيف: ظرف تكرارٍ أم عبارةٌ ظرفية"
+  },
+  {
+   "t": "m",
+   "q": "'Once a week' means ___.",
+   "o": [
+    "one time a week",
+    "two times a week",
+    "every day",
+    "zero times"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط العبارة الظرفية بمعناها"
+  },
+  {
+   "t": "m",
+   "q": "Choose the correct sentence.",
+   "o": [
+    "I always play football at the weekend.",
+    "I play football always at the weekend.",
+    "I always football play at the weekend.",
+    "Play I always football at the weekend."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "ظروف التكرار: always, often, sometimes, never"
+  },
+  {
+   "t": "m",
+   "q": "Which word goes between 'often' and 'never'?",
+   "o": [
+    "sometimes",
+    "always",
+    "every day",
+    "twice a week"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "ترتيب ظروف التكرار من الأكثر إلى الأقلّ"
+  },
+  {
+   "t": "t",
+   "q": "In the song, Joory is always busy.",
+   "a": true,
+   "lv": "k",
+   "obj": "أنشودة الوحدة: But she's always so busy!"
+  },
+  {
+   "t": "t",
+   "q": "'Never' means many times.",
+   "a": false,
+   "lv": "k",
+   "obj": "ظروف التكرار: always, often, sometimes, never"
+  },
+  {
+   "t": "t",
+   "q": "'Twice a week' happens more often than 'every day'.",
+   "a": false,
+   "lv": "a",
+   "obj": "ربط العبارة الظرفية بمعناها"
+  }
+ ],
+ "g4e-1-5": [
+  {
+   "t": "m",
+   "q": "Where is the school on a boat?",
+   "o": [
+    "Bangladesh",
+    "Britain",
+    "the USA",
+    "Indonesia"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط كل بلدٍ بمدرسته غير المعتادة"
+  },
+  {
+   "t": "m",
+   "q": "Where is Forest School?",
+   "o": [
+    "Britain",
+    "Bangladesh",
+    "the USA",
+    "Oman"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط كل بلدٍ بمدرسته غير المعتادة"
+  },
+  {
+   "t": "m",
+   "q": "In the USA school, what do children use instead of books?",
+   "o": [
+    "computers",
+    "boats",
+    "trees",
+    "paper"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "الثقافة: مدرسةٌ في الولايات المتحدة تستعمل الحواسيب فقط"
+  },
+  {
+   "t": "m",
+   "q": "At a boarding school, where do children sleep during the week?",
+   "o": [
+    "at school",
+    "at home",
+    "on a boat",
+    "in a forest"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "الثقافة: تعريف boarding school"
+  },
+  {
+   "t": "m",
+   "q": "Which school uses nature?",
+   "o": [
+    "the school in Indonesia",
+    "the school on a boat",
+    "the computer school",
+    "a boarding school"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "الثقافة: مدارس على قوارب في بنغلاديش بسبب الفيضانات"
+  },
+  {
+   "t": "t",
+   "q": "Forest School is outdoors.",
+   "a": true,
+   "lv": "a",
+   "obj": "تصنيف المدارس: داخلية أم خارجية"
+  },
+  {
+   "t": "t",
+   "q": "The computer school in the USA uses a lot of paper.",
+   "a": false,
+   "lv": "a",
+   "obj": "الثقافة: مدرسةٌ في الولايات المتحدة تستعمل الحواسيب فقط"
+  },
+  {
+   "t": "t",
+   "q": "The school in Indonesia uses nature.",
+   "a": true,
+   "lv": "k",
+   "obj": "فهم نصّ المدارس غير المعتادة"
+  }
+ ],
+ "g4e-1-6": [
+  {
+   "t": "m",
+   "q": "'Sorry, I can't. I go swimming on Friday mornings.' What does the speaker do on Friday mornings?",
+   "o": [
+    "goes swimming",
+    "plays football",
+    "goes to school",
+    "goes to the park"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "لغة الاتفاق على موعد: Sorry, I can't."
+  },
+  {
+   "t": "m",
+   "q": "'Quarter to five' is ___.",
+   "o": [
+    "4:45",
+    "5:15",
+    "5:45",
+    "4:15"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "حوار: Let's meet at quarter to five in the park."
+  },
+  {
+   "t": "m",
+   "q": "Where do the friends plan to meet?",
+   "o": [
+    "in the park",
+    "at school",
+    "at the beach",
+    "at the shop"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "حوار: Let's meet at quarter to five in the park."
+  },
+  {
+   "t": "m",
+   "q": "'Do you want to play football?' You are free. What do you say?",
+   "o": [
+    "Yes, OK!",
+    "Sorry, I can't.",
+    "No, I'm from Oman.",
+    "It's quarter to five."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "لغة الاتفاق على موعد: Do you want to...?"
+  },
+  {
+   "t": "m",
+   "q": "Your friend can't play on Friday. What can you say next?",
+   "o": [
+    "What about Saturday?",
+    "Anything else?",
+    "How much is it?",
+    "Where are you from?"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "ترتيب حوار الاتفاق على موعد"
+  },
+  {
+   "t": "t",
+   "q": "'Do you want to play football?' is a way to make a plan with a friend.",
+   "a": true,
+   "lv": "k",
+   "obj": "لغة الاتفاق على موعد: Do you want to...?"
+  },
+  {
+   "t": "t",
+   "q": "'Sorry, I can't' means 'Yes, I can come.'",
+   "a": false,
+   "lv": "a",
+   "obj": "لغة الاتفاق على موعد: Sorry, I can't."
+  },
+  {
+   "t": "t",
+   "q": "'When are you back home?' 'At half past four.' Half past four is 4:30.",
+   "a": true,
+   "lv": "k",
+   "obj": "ربط جمل حوار الاتفاق بردودها"
+  }
+ ],
+ "g4e-1-7": [
+  {
+   "t": "m",
+   "q": "What is Maryam's new friend's name?",
+   "o": [
+    "Muna",
+    "Huda",
+    "Azza",
+    "Lottie"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "نصّ القراءة: صديقتها الجديدة منى"
+  },
+  {
+   "t": "m",
+   "q": "Which grade is Maryam in at her new school?",
+   "o": [
+    "Grade 4",
+    "Grade 1",
+    "Grade 2",
+    "Grade 6"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "نصّ القراءة: أول يوم في الصف الرابع"
+  },
+  {
+   "t": "m",
+   "q": "What happens on Monday?",
+   "o": [
+    "Maryam's picture is on the wall.",
+    "Maryam feels worried about tomorrow.",
+    "Maryam meets Muna.",
+    "Maryam goes swimming."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط كل يومٍ بما حدث فيه"
+  },
+  {
+   "t": "m",
+   "q": "Maryam writes, 'I'm so happy!' How does she feel?",
+   "o": [
+    "happy",
+    "worried",
+    "sad",
+    "angry"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تصنيف مشاعر مريم عبر اليوميات"
+  },
+  {
+   "t": "m",
+   "q": "Maryam writes, 'I think this school is going to be OK.' What does this show?",
+   "o": [
+    "She feels better about her new school.",
+    "She wants to leave the school.",
+    "She is very worried.",
+    "She doesn't like Muna."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تصنيف مشاعر مريم عبر اليوميات"
+  },
+  {
+   "t": "t",
+   "q": "Maryam meets Muna on Sunday.",
+   "a": true,
+   "lv": "k",
+   "obj": "ربط كل يومٍ بما حدث فيه"
+  },
+  {
+   "t": "t",
+   "q": "Maryam's new teacher is Mrs Safa.",
+   "a": false,
+   "lv": "k",
+   "obj": "نصّ القراءة: معلّمتها الجديدة السيدة زهرة"
+  },
+  {
+   "t": "t",
+   "q": "On Saturday, Maryam feels happy and not worried at all.",
+   "a": false,
+   "lv": "a",
+   "obj": "نصّ القراءة: يوميات مريم — قلقها من المدرسة الجديدة"
+  }
+ ],
+ "g4e-1-8": [
+  {
+   "t": "m",
+   "q": "Why does Ammar like English?",
+   "o": [
+    "They sometimes play games in the lessons.",
+    "There is no homework.",
+    "The lessons are outside.",
+    "He can sleep in class."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "نصّ الكتابة: نلعب ألعاباً في حصصنا"
+  },
+  {
+   "t": "m",
+   "q": "Why does Ammar like Maths?",
+   "o": [
+    "He likes learning about numbers.",
+    "He likes painting.",
+    "He likes running.",
+    "He likes cooking."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "نصّ الكتابة: عمّار يحب الرياضيات لتعلّم الأعداد"
+  },
+  {
+   "t": "m",
+   "q": "In good writing, each sentence starts with ___.",
+   "o": [
+    "a capital letter",
+    "a number",
+    "a small letter",
+    "a question mark"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قواعد الكتابة الجيدة: الإملاء أم المحتوى"
+  },
+  {
+   "t": "m",
+   "q": "'On Thursdays, I play basketball.' What does this tell us?",
+   "o": [
+    "what someone does on Thursdays",
+    "someone's favourite subject",
+    "where someone is from",
+    "how old someone is"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "نشاط التحدّث: الأيام والأنشطة"
+  },
+  {
+   "t": "m",
+   "q": "Which sentence answers the question 'Why do you like it?'",
+   "o": [
+    "I like it because we play games.",
+    "My favourite lesson is English.",
+    "On Wednesdays, I go swimming.",
+    "It's quarter past eleven."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "قواعد الكتابة الجيدة: الإملاء أم المحتوى"
+  },
+  {
+   "t": "t",
+   "q": "Ammar's favourite lesson is English.",
+   "a": true,
+   "lv": "k",
+   "obj": "نصّ الكتابة: My favourite lesson — عمّار"
+  },
+  {
+   "t": "t",
+   "q": "In the speaking activity, swimming is on Wednesdays.",
+   "a": true,
+   "lv": "k",
+   "obj": "نشاط التحدّث: الأيام والأنشطة"
+  },
+  {
+   "t": "t",
+   "q": "Correct spelling is not important in good writing.",
+   "a": false,
+   "lv": "a",
+   "obj": "قواعد الكتابة الجيدة: الإملاء أم المحتوى"
+  }
+ ],
+ "g4e-1-9": [
+  {
+   "t": "m",
+   "q": "Which word has the 'y' spelling, like 'fly'?",
+   "o": [
+    "cry",
+    "kite",
+    "pie",
+    "night"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: y (fly)"
+  },
+  {
+   "t": "m",
+   "q": "Which word has 'igh', like 'night'?",
+   "o": [
+    "light",
+    "fly",
+    "bike",
+    "tie"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "صوتا igh وi_e: night, kite"
+  },
+  {
+   "t": "m",
+   "q": "Which word has 'i_e', like 'kite'?",
+   "o": [
+    "time",
+    "high",
+    "try",
+    "lie"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "ربط الكلمة بنمط رسمها الصوتيّ"
+  },
+  {
+   "t": "m",
+   "q": "Which word has 'ie', like 'pie'?",
+   "o": [
+    "tie",
+    "sky",
+    "white",
+    "right"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "ربط الكلمة بنمط رسمها الصوتيّ"
+  },
+  {
+   "t": "m",
+   "q": "These words have the same sound. Which one has a different spelling?",
+   "o": [
+    "night",
+    "fly",
+    "sky",
+    "try"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "التمييز بين صوت y وصوت igh"
+  },
+  {
+   "t": "t",
+   "q": "'Sky' has the 'y' spelling, like 'fly'.",
+   "a": true,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: y (fly)"
+  },
+  {
+   "t": "t",
+   "q": "'Light' has the 'i_e' spelling, like 'kite'.",
+   "a": false,
+   "lv": "a",
+   "obj": "تصنيف الكلمات حسب صوتها"
+  },
+  {
+   "t": "t",
+   "q": "In the tongue twister, I eat a pie and fly a kite.",
+   "a": true,
+   "lv": "k",
+   "obj": "لعبة اللسان: Every night, I eat a pie and fly a kite."
+  }
+ ],
+ "g4e-1-10": [
+  {
+   "t": "m",
+   "q": "Which question asks how often?",
+   "o": [
+    "How often do you play football?",
+    "Where do you play football?",
+    "Who plays football?",
+    "What is football?"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة: How often يسأل عن التكرار"
+  },
+  {
+   "t": "m",
+   "q": "Which of these is one of Adam's activities, not homework?",
+   "o": [
+    "karate lesson",
+    "Maths",
+    "Science",
+    "English"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تصنيف أنشطة آدم: واجبٌ أم نشاط"
+  },
+  {
+   "t": "m",
+   "q": "Which subject comes first in alphabetical order?",
+   "o": [
+    "Arabic",
+    "English",
+    "Maths",
+    "Science"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "ترتيب المواد الدراسية هجائياً"
+  },
+  {
+   "t": "m",
+   "q": "'How often do you have P.E.?' Choose the best answer.",
+   "o": [
+    "Twice a week.",
+    "At half past ten.",
+    "In the gym.",
+    "With Mrs Safa."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "مراجعة: How often يسأل عن التكرار"
+  },
+  {
+   "t": "m",
+   "q": "In which subject do you learn about countries and people?",
+   "o": [
+    "Social Studies",
+    "P.E.",
+    "ICT",
+    "Art"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة مفردات المواد الدراسية"
+  },
+  {
+   "t": "t",
+   "q": "Swimming is one of Adam's homework subjects.",
+   "a": false,
+   "lv": "k",
+   "obj": "تصنيف أنشطة آدم: واجبٌ أم نشاط"
+  },
+  {
+   "t": "t",
+   "q": "'When...?' asks about a day or a time.",
+   "a": true,
+   "lv": "k",
+   "obj": "ربط نوع السؤال بما يسأل عنه"
+  },
+  {
+   "t": "t",
+   "q": "Adam has Maths homework.",
+   "a": true,
+   "lv": "k",
+   "obj": "تصنيف أنشطة آدم: واجبٌ أم نشاط"
+  }
+ ],
+ "g4e-1-11": [
+  {
+   "t": "m",
+   "q": "Where is the girl who is reading about Science?",
+   "o": [
+    "under the tree",
+    "in the classroom",
+    "at the shop",
+    "on a boat"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "نمط اختبار A1 Movers: مشهد الحديقة — فتاةٌ تقرأ عن العلوم"
+  },
+  {
+   "t": "m",
+   "q": "In Listening Part 2, how many words do you write for each answer?",
+   "o": [
+    "one",
+    "two",
+    "three",
+    "five"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "نمط اختبار A1 Movers: Listening Part 2 — كلمةٌ واحدة لكل إجابة"
+  },
+  {
+   "t": "m",
+   "q": "Which task is a Listening task?",
+   "o": [
+    "Listen and write.",
+    "Complete the sentences.",
+    "Answer the questions.",
+    "Look, read and write."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تصنيف مهامّ الاختبار: قراءةٌ وكتابة أم استماع"
+  },
+  {
+   "t": "m",
+   "q": "'What has the girl's mother got?' Choose the correct answer.",
+   "o": [
+    "She's got a bag.",
+    "She have a bag.",
+    "She's got bag.",
+    "Her got a bag."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "نمط اختبار A1 Movers: What has the girl's mother got?"
+  },
+  {
+   "t": "m",
+   "q": "The boys are playing football in the picture. Where are they?",
+   "o": [
+    "in the park",
+    "in a classroom",
+    "in a shop",
+    "in the kitchen"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "نمط اختبار A1 Movers: مشهد الحديقة — الأولاد يلعبون كرة القدم"
+  },
+  {
+   "t": "t",
+   "q": "'Answer the questions' is a Listening task.",
+   "a": false,
+   "lv": "a",
+   "obj": "تصنيف مهامّ الاختبار: قراءةٌ وكتابة أم استماع"
+  },
+  {
+   "t": "t",
+   "q": "In the park picture, a girl is reading under a tree.",
+   "a": true,
+   "lv": "k",
+   "obj": "نمط اختبار A1 Movers: مشهد الحديقة — فتاةٌ تقرأ عن العلوم"
+  },
+  {
+   "t": "t",
+   "q": "'Look, read and write' is a Reading and Writing task.",
+   "a": true,
+   "lv": "k",
+   "obj": "نمط اختبار A1 Movers: Listening Part 2 — كلمةٌ واحدة لكل إجابة"
+  }
+ ],
+ "g4e-1-gr": [
+  {
+   "t": "m",
+   "q": "What time do the children have Arabic lessons?",
+   "o": [
+    "at quarter past eleven",
+    "at nine o'clock",
+    "at half past three",
+    "at quarter to five"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قراءة متدرّجة ١ (Welcome to Our School): إكمال جملةٍ من النصّ — الوقت (quarter past eleven)"
+  },
+  {
+   "t": "m",
+   "q": "What does Bird always do on Saturday afternoons?",
+   "o": [
+    "She cleans her feathers.",
+    "She sleeps in a tall tree.",
+    "She counts her toes.",
+    "She flies a kite."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قراءة متدرّجة ٢ (Hippo's Kite): ربط كلّ حيوانٍ بسبب اعتذاره (ظروف التكرار: always/sometimes/never)"
+  },
+  {
+   "t": "m",
+   "q": "In 'Hippo's Kite', which animal is never too busy for a friend?",
+   "o": [
+    "Crocodile",
+    "Snake",
+    "Bird",
+    "Monkey"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قراءة متدرّجة ٢ (Hippo's Kite): ربط كلّ حيوانٍ بسبب اعتذاره (ظروف التكرار: always/sometimes/never)"
+  },
+  {
+   "t": "m",
+   "q": "Where in the school do the children grow vegetables?",
+   "o": [
+    "the school garden",
+    "the science lab",
+    "the classroom",
+    "the swimming pool"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "قراءة متدرّجة ١ (Welcome to Our School): تمييز أماكن المدرسة الواردة في الفيديو"
+  },
+  {
+   "t": "m",
+   "q": "Which sentence is from 'Hippo's Kite'?",
+   "o": [
+    "Let's meet at half past three.",
+    "We grow vegetables.",
+    "Science is my favourite.",
+    "We have Arabic lessons every day."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "القراءتان: نسبة كلّ جملةٍ إلى قصّتها"
+  },
+  {
+   "t": "t",
+   "q": "Monkey is counting his fingers and toes.",
+   "a": true,
+   "lv": "k",
+   "obj": "قراءة متدرّجة ١ (Welcome to Our School): استرجاع تفصيلٍ صريح — لمن الفيديو"
+  },
+  {
+   "t": "t",
+   "q": "The children have Science lessons on Mondays and Wednesdays.",
+   "a": false,
+   "lv": "k",
+   "obj": "قراءة متدرّجة ١ (Welcome to Our School): الأيام والأوقات — حصص العلوم"
+  },
+  {
+   "t": "t",
+   "q": "Snake sometimes sleeps in a tall tree.",
+   "a": true,
+   "lv": "a",
+   "obj": "قراءة متدرّجة ٢ (Hippo's Kite): ربط كلّ حيوانٍ بسبب اعتذاره (ظروف التكرار: always/sometimes/never)"
+  }
+ ],
+ "g4e-2-1": [
+  {
+   "t": "m",
+   "q": "Which of these is sweet?",
+   "o": [
+    "cupcakes",
+    "crisps",
+    "noodles",
+    "salad"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: Is it sweet or savoury?"
+  },
+  {
+   "t": "m",
+   "q": "Which drink is usually hot?",
+   "o": [
+    "coffee",
+    "lemonade",
+    "milkshake",
+    "cold water"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط كل طعامٍ أو شرابٍ بوصفه: حلوٌ أو مالح، طعامٌ أو شراب"
+  },
+  {
+   "t": "m",
+   "q": "Which food do you make with bread?",
+   "o": [
+    "sandwiches",
+    "noodles",
+    "salad",
+    "cereal"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات الطعام والشراب: fruit, vegetables, sandwiches, cereal, noodles, milkshake, crisps, cupcakes, salad, tea, coffee, lemonade"
+  },
+  {
+   "t": "m",
+   "q": "Which of these is a savoury food?",
+   "o": [
+    "noodles",
+    "cupcakes",
+    "milkshake",
+    "lemonade"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "ربط كل طعامٍ أو شرابٍ بوصفه: حلوٌ أو مالح، طعامٌ أو شراب"
+  },
+  {
+   "t": "m",
+   "q": "Which word comes first in alphabetical order?",
+   "o": [
+    "cupcakes",
+    "noodles",
+    "salad",
+    "tea"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "ترتيب كلمات الطعام هجائياً"
+  },
+  {
+   "t": "t",
+   "q": "Lemonade is a food.",
+   "a": false,
+   "lv": "k",
+   "obj": "تصنيف: طعامٌ أم شراب"
+  },
+  {
+   "t": "t",
+   "q": "Cupcakes are sweet.",
+   "a": true,
+   "lv": "k",
+   "obj": "مفردات: crisps مالحة"
+  },
+  {
+   "t": "t",
+   "q": "Tea and coffee are drinks.",
+   "a": true,
+   "lv": "a",
+   "obj": "تصنيف: طعامٌ أم شراب"
+  }
+ ],
+ "g4e-2-2": [
+  {
+   "t": "m",
+   "q": "What does Fatma want to make?",
+   "o": [
+    "sandwiches",
+    "cupcakes",
+    "noodles",
+    "harees"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قصّة الوحدة: The Secret Shed — لا خبز لصنع الساندويتش"
+  },
+  {
+   "t": "m",
+   "q": "What do the children find in the story?",
+   "o": [
+    "an old shed",
+    "a new shop",
+    "a boat",
+    "a kite"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "فهم أحداث القصّة"
+  },
+  {
+   "t": "m",
+   "q": "The children say, 'Let's have a ___, too!'",
+   "o": [
+    "picnic",
+    "party",
+    "race",
+    "swim"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "فهم أحداث القصّة"
+  },
+  {
+   "t": "m",
+   "q": "What happens after the children find the old shed?",
+   "o": [
+    "They form a team.",
+    "They find there isn't any bread.",
+    "They say, 'Let's have a picnic, too!'",
+    "They go to the shop."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "ترتيب أحداث القصّة"
+  },
+  {
+   "t": "m",
+   "q": "Why is Bo's mistake funny?",
+   "o": [
+    "People don't put lemonade on noodles.",
+    "Bo can't speak.",
+    "The noodles are cold.",
+    "Bo eats all the bread."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "قصّة الوحدة: خطأ Bo الطريف — الليمونادة على النودلز"
+  },
+  {
+   "t": "t",
+   "q": "The children find an old shed before they form a team.",
+   "a": true,
+   "lv": "a",
+   "obj": "ترتيب أحداث القصّة"
+  },
+  {
+   "t": "t",
+   "q": "Lemonade comes from milk.",
+   "a": false,
+   "lv": "k",
+   "obj": "قصّة الوحدة: الليمونادة من الليمون"
+  },
+  {
+   "t": "t",
+   "q": "The story happens at the beach.",
+   "a": false,
+   "lv": "k",
+   "obj": "فهم أحداث القصّة"
+  }
+ ],
+ "g4e-2-3": [
+  {
+   "t": "m",
+   "q": "Choose the correct sentence.",
+   "o": [
+    "There are some crisps.",
+    "There is some crisps.",
+    "There am some crisps.",
+    "There be some crisps."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: There are a lot of noodles."
+  },
+  {
+   "t": "m",
+   "q": "Complete: There ___ any bread.",
+   "o": [
+    "isn't",
+    "aren't",
+    "not",
+    "don't"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: There isn't any bread."
+  },
+  {
+   "t": "m",
+   "q": "Complete: There is a ___ lemonade.",
+   "o": [
+    "little",
+    "few",
+    "many",
+    "lots"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تصنيف كلمات الكمّية: للمعدود أم لغير المعدود"
+  },
+  {
+   "t": "m",
+   "q": "'Are there any cupcakes?' 'No, ___.'",
+   "o": [
+    "there aren't",
+    "there isn't",
+    "there is",
+    "there are"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط سؤال There is/are بجوابه"
+  },
+  {
+   "t": "m",
+   "q": "Choose the correct sentence.",
+   "o": [
+    "There are a few sandwiches.",
+    "There is a few sandwiches.",
+    "There are a little sandwiches.",
+    "There is a little sandwiches."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تصنيف كلمات الكمّية: للمعدود أم لغير المعدود"
+  },
+  {
+   "t": "t",
+   "q": "'There are a lot of noodles.' is correct.",
+   "a": true,
+   "lv": "k",
+   "obj": "تركيب: There are a lot of noodles."
+  },
+  {
+   "t": "t",
+   "q": "'There are a lot of salad.' is correct.",
+   "a": false,
+   "lv": "k",
+   "obj": "تركيب: There is a lot of salad."
+  },
+  {
+   "t": "t",
+   "q": "'Is there any bread?' 'No, there isn't.' is correct.",
+   "a": true,
+   "lv": "a",
+   "obj": "ربط سؤال There is/are بجوابه"
+  }
+ ],
+ "g4e-2-4": [
+  {
+   "t": "m",
+   "q": "Which one goes with 'a box of'?",
+   "o": [
+    "cereal",
+    "lemonade",
+    "water",
+    "soup"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط كل وعاءٍ بطعامه أو شرابه"
+  },
+  {
+   "t": "m",
+   "q": "Which one goes with 'a can of'?",
+   "o": [
+    "lemonade",
+    "sandwiches",
+    "cereal",
+    "cupcakes"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط كل وعاءٍ بطعامه أو شرابه"
+  },
+  {
+   "t": "m",
+   "q": "In the song, where is the party?",
+   "o": [
+    "in the park",
+    "at school",
+    "at the beach",
+    "in the kitchen"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "أنشودة الوحدة: But there aren't any cups!"
+  },
+  {
+   "t": "m",
+   "q": "Choose the correct question.",
+   "o": [
+    "Are there any plates?",
+    "Is there any plates?",
+    "Are there any lemonade?",
+    "Is there a plates?"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تصنيف الأسئلة: مفردٌ (Is there) أم جمعٌ (Are there)"
+  },
+  {
+   "t": "m",
+   "q": "In 'a bottle of water', which word is the container?",
+   "o": [
+    "bottle",
+    "water",
+    "a",
+    "of"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "التمييز بين الوعاء والمحتوى"
+  },
+  {
+   "t": "t",
+   "q": "We say 'a plate of sandwiches'.",
+   "a": true,
+   "lv": "k",
+   "obj": "أوعية: a plate of sandwiches"
+  },
+  {
+   "t": "t",
+   "q": "'Is there any cups?' is a correct question.",
+   "a": false,
+   "lv": "a",
+   "obj": "تصنيف الأسئلة: مفردٌ (Is there) أم جمعٌ (Are there)"
+  },
+  {
+   "t": "t",
+   "q": "'Water' is a container.",
+   "a": false,
+   "lv": "k",
+   "obj": "التمييز بين الوعاء والمحتوى"
+  }
+ ],
+ "g4e-2-5": [
+  {
+   "t": "m",
+   "q": "Where is sushi from?",
+   "o": [
+    "Japan",
+    "Switzerland",
+    "South Africa",
+    "Oman"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط كل طبقٍ ببلده"
+  },
+  {
+   "t": "m",
+   "q": "Where is bunny chow from?",
+   "o": [
+    "South Africa",
+    "Japan",
+    "Switzerland",
+    "Britain"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط كل طبقٍ ببلده"
+  },
+  {
+   "t": "m",
+   "q": "What do people use to dip food into fondue?",
+   "o": [
+    "sticks",
+    "spoons",
+    "cups",
+    "plates"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "الثقافة: الفوندو السويسريّ"
+  },
+  {
+   "t": "m",
+   "q": "Which food from the text do people eat with a spoon?",
+   "o": [
+    "bunny chow",
+    "sushi",
+    "fondue",
+    "sandwiches"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تصنيف طرق الأكل: بأداةٍ خاصّةٍ أم باليد"
+  },
+  {
+   "t": "m",
+   "q": "Maryam loves sweet food. Which dish from the text is best for her?",
+   "o": [
+    "chocolate fondue",
+    "sushi",
+    "bunny chow",
+    "noodles"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "فهم نصّ أطعمة العالم"
+  },
+  {
+   "t": "t",
+   "q": "Sushi is made with rice.",
+   "a": true,
+   "lv": "k",
+   "obj": "الثقافة: سوشي من اليابان — أرزٌ بسمكٍ أو خضراوات"
+  },
+  {
+   "t": "t",
+   "q": "In Switzerland, people dip cake or fruit into warm chocolate.",
+   "a": true,
+   "lv": "k",
+   "obj": "الثقافة: الفوندو السويسريّ"
+  },
+  {
+   "t": "t",
+   "q": "Bunny chow comes from Japan.",
+   "a": false,
+   "lv": "a",
+   "obj": "فهم نصّ أطعمة العالم"
+  }
+ ],
+ "g4e-2-6": [
+  {
+   "t": "m",
+   "q": "What does the shop assistant say first?",
+   "o": [
+    "Can I help you?",
+    "That's four rials, please.",
+    "No, that's it, thanks.",
+    "Can I have six apples, please?"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ترتيب حوار التسوّق"
+  },
+  {
+   "t": "m",
+   "q": "'Anything else?' You don't want more. What do you say?",
+   "o": [
+    "No, that's it, thanks.",
+    "Yes, I'm from Oman.",
+    "It's four o'clock.",
+    "I'm fine."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "لغة التسوّق: Anything else?"
+  },
+  {
+   "t": "m",
+   "q": "How much are the apples in the dialogue?",
+   "o": [
+    "four rials",
+    "six rials",
+    "two rials",
+    "ten rials"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "حوار المتجر: That's four rials, please."
+  },
+  {
+   "t": "m",
+   "q": "How many apples does the customer want?",
+   "o": [
+    "six",
+    "four",
+    "two",
+    "ten"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "لغة التسوّق: Can I have six apples, please?"
+  },
+  {
+   "t": "m",
+   "q": "Which line comes just before 'That's four rials, please.'?",
+   "o": [
+    "No, that's it, thanks.",
+    "Can I help you?",
+    "Anything else?",
+    "Can I have six apples, please?"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "ترتيب حوار التسوّق"
+  },
+  {
+   "t": "t",
+   "q": "The shop assistant says, 'Can I help you?'",
+   "a": true,
+   "lv": "k",
+   "obj": "ربط جمل حوار التسوّق بردودها"
+  },
+  {
+   "t": "t",
+   "q": "'Apples' is a polite phrase.",
+   "a": false,
+   "lv": "k",
+   "obj": "تصنيف: فاكهةٌ أم عبارة تهذيب"
+  },
+  {
+   "t": "t",
+   "q": "In Oman, we pay with rials.",
+   "a": true,
+   "lv": "a",
+   "obj": "حوار المتجر: That's four rials, please."
+  }
+ ],
+ "g4e-2-7": [
+  {
+   "t": "m",
+   "q": "What do you cook first in the harees recipe?",
+   "o": [
+    "the wheat",
+    "the chicken",
+    "the butter",
+    "the spices"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "وصفة الهريس: First, you cook the wheat in some water."
+  },
+  {
+   "t": "m",
+   "q": "What do you add last before you serve the harees?",
+   "o": [
+    "butter",
+    "wheat",
+    "water",
+    "rice"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط كل كلمة ترتيبٍ بخطوتها"
+  },
+  {
+   "t": "m",
+   "q": "Which one is NOT in the harees recipe?",
+   "o": [
+    "pasta",
+    "wheat",
+    "chicken",
+    "butter"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "نصّ القراءة: الهريس مالحٌ لا حلو"
+  },
+  {
+   "t": "m",
+   "q": "Which word is an ingredient?",
+   "o": [
+    "chicken",
+    "First",
+    "Then",
+    "Last"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تصنيف كلمات الوصفة: مكوّنٌ أم كلمة ترتيب"
+  },
+  {
+   "t": "m",
+   "q": "The recipe is for four people. Rasha wants to cook for eight people. What can she do?",
+   "o": [
+    "Use two times the ingredients.",
+    "Use half of the ingredients.",
+    "Use only water.",
+    "Cook only the butter."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "وصفة الهريس: لأربعة أشخاص"
+  },
+  {
+   "t": "t",
+   "q": "In the recipe, you add the chicken after you cook the wheat.",
+   "a": true,
+   "lv": "a",
+   "obj": "ربط كل كلمة ترتيبٍ بخطوتها"
+  },
+  {
+   "t": "t",
+   "q": "'Then' is an ingredient.",
+   "a": false,
+   "lv": "k",
+   "obj": "تصنيف كلمات الوصفة: مكوّنٌ أم كلمة ترتيب"
+  },
+  {
+   "t": "t",
+   "q": "You cook the wheat in some milk.",
+   "a": false,
+   "lv": "k",
+   "obj": "وصفة الهريس: First, you cook the wheat in some water."
+  }
+ ],
+ "g4e-2-8": [
+  {
+   "t": "m",
+   "q": "What do you put in the hot pan first?",
+   "o": [
+    "olive oil",
+    "pasta",
+    "water",
+    "butter"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "وصفة المكرونة: First, you put the olive oil in a hot pan."
+  },
+  {
+   "t": "m",
+   "q": "What kind of sauce is in the recipe?",
+   "o": [
+    "tomato sauce",
+    "chocolate sauce",
+    "cheese sauce",
+    "lemon sauce"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "نصّ الكتابة: وصفة المكرونة بصلصة الطماطم"
+  },
+  {
+   "t": "m",
+   "q": "What do you do with the tomatoes?",
+   "o": [
+    "Add them to the pan and cook.",
+    "Eat them first.",
+    "Put them in a cup.",
+    "Put them in the fridge."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط كل كلمة ترتيبٍ بخطوتها"
+  },
+  {
+   "t": "m",
+   "q": "What is the last step?",
+   "o": [
+    "Put the pasta into the sauce.",
+    "Put the olive oil in a hot pan.",
+    "Add the tomatoes and cook.",
+    "Cook the pasta in hot water."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "ترتيب خطوات وصفة المكرونة"
+  },
+  {
+   "t": "m",
+   "q": "Which item is on a writing checklist?",
+   "o": [
+    "Correct spelling",
+    "Olive oil",
+    "A hot pan",
+    "Tomatoes"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تصنيف بنود قائمة فحص الكتابة"
+  },
+  {
+   "t": "t",
+   "q": "You cook the pasta before you put the olive oil in the pan.",
+   "a": false,
+   "lv": "r",
+   "obj": "ترتيب خطوات وصفة المكرونة"
+  },
+  {
+   "t": "t",
+   "q": "You cook the pasta in hot water.",
+   "a": true,
+   "lv": "k",
+   "obj": "ربط كل كلمة ترتيبٍ بخطوتها"
+  },
+  {
+   "t": "t",
+   "q": "The pasta recipe is for ten people.",
+   "a": false,
+   "lv": "k",
+   "obj": "وصفة المكرونة: لشخصين، عشر دقائق"
+  }
+ ],
+ "g4e-2-9": [
+  {
+   "t": "m",
+   "q": "Which word has 'ow', like 'snow'?",
+   "o": [
+    "slow",
+    "coat",
+    "home",
+    "road"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: ow (snow)"
+  },
+  {
+   "t": "m",
+   "q": "Which word has 'oa', like 'boat'?",
+   "o": [
+    "road",
+    "blow",
+    "rose",
+    "bone"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "صوت oa: boat"
+  },
+  {
+   "t": "m",
+   "q": "Which word has 'o_e', like 'nose'?",
+   "o": [
+    "bone",
+    "soap",
+    "show",
+    "grow"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تصنيف الكلمات حسب صوتها"
+  },
+  {
+   "t": "m",
+   "q": "Which word has the same spelling pattern as 'coat'?",
+   "o": [
+    "toast",
+    "throw",
+    "hope",
+    "low"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "ربط الكلمة بكلمةٍ أخرى تحمل نمط الرسم الصوتيّ نفسه"
+  },
+  {
+   "t": "m",
+   "q": "These words have the same sound. Which one has a different spelling?",
+   "o": [
+    "soap",
+    "snow",
+    "slow",
+    "yellow"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "التمييز بين صوت ow وصوت oa"
+  },
+  {
+   "t": "t",
+   "q": "'Window' ends with 'ow', like 'snow'.",
+   "a": true,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: ow (snow)"
+  },
+  {
+   "t": "t",
+   "q": "'Rope' has the 'oa' spelling.",
+   "a": false,
+   "lv": "a",
+   "obj": "التمييز بين صوت ow وصوت oa"
+  },
+  {
+   "t": "t",
+   "q": "In the tongue twister, there's snow on my nose.",
+   "a": true,
+   "lv": "k",
+   "obj": "لعبة اللسان: I'm in a boat and there's snow on my nose!"
+  }
+ ],
+ "g4e-2-10": [
+  {
+   "t": "m",
+   "q": "Which of these is a vegetable?",
+   "o": [
+    "onion",
+    "pear",
+    "orange",
+    "apple"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة: الجزر والبصل والبطاطا خضراوات"
+  },
+  {
+   "t": "m",
+   "q": "Which of these is a fruit?",
+   "o": [
+    "pear",
+    "potato",
+    "carrot",
+    "onion"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مراجعة: التفاح والبرتقال والكمثرى فواكه"
+  },
+  {
+   "t": "m",
+   "q": "'It's a drink. It's sweet. We make it from lemons.' What is it?",
+   "o": [
+    "lemonade",
+    "coffee",
+    "milkshake",
+    "tea"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "ربط كل تلميحٍ بالطعام أو الشراب"
+  },
+  {
+   "t": "m",
+   "q": "Who is the winner of Kids Cook!?",
+   "o": [
+    "Rasha",
+    "Maryam",
+    "Fatma",
+    "Lottie"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تصنيف إجابات لعبة Challenge"
+  },
+  {
+   "t": "m",
+   "q": "Which word does not belong with the others?",
+   "o": [
+    "cereal",
+    "carrot",
+    "onion",
+    "potato"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "مراجعة: الجزر والبصل والبطاطا خضراوات"
+  },
+  {
+   "t": "t",
+   "q": "Cereal is a drink.",
+   "a": false,
+   "lv": "k",
+   "obj": "مراجعة مفردات الطعام: cereal"
+  },
+  {
+   "t": "t",
+   "q": "Pears are vegetables.",
+   "a": false,
+   "lv": "a",
+   "obj": "مراجعة: التفاح والبرتقال والكمثرى فواكه"
+  },
+  {
+   "t": "t",
+   "q": "Coffee is a hot drink.",
+   "a": true,
+   "lv": "k",
+   "obj": "ربط كل تلميحٍ بالطعام أو الشراب"
+  }
+ ],
+ "g4e-2-11": [
+  {
+   "t": "m",
+   "q": "'Is there any cheese?' 'No, ___.'",
+   "o": [
+    "there isn't",
+    "there aren't",
+    "it isn't",
+    "I can't"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "نمط اختبار A1 Movers: Is there any milk?"
+  },
+  {
+   "t": "m",
+   "q": "'Are there any apples?' 'Yes, ___.'",
+   "o": [
+    "there are",
+    "there is",
+    "I am",
+    "it is"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "نمط اختبار A1 Movers: Are there any eggs? Yes, there are."
+  },
+  {
+   "t": "m",
+   "q": "'What do we need?' Choose the best answer.",
+   "o": [
+    "We need some eggs.",
+    "Yes, we do.",
+    "No, I can't.",
+    "At four o'clock."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "ربط سؤال الحوار بجوابه الصحيح"
+  },
+  {
+   "t": "m",
+   "q": "Which one is a vegetable?",
+   "o": [
+    "potato",
+    "grapes",
+    "apple",
+    "orange"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "نمط اختبار A1 Movers: تمييز الفاكهة من الخضار"
+  },
+  {
+   "t": "m",
+   "q": "Look at four pictures: apple, grapes, orange, carrot. Which one is different, and why?",
+   "o": [
+    "carrot — it isn't a fruit",
+    "apple — it's red",
+    "grapes — they are small",
+    "orange — it's round"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "نمط اختبار A1 Movers: Speaking Part 3"
+  },
+  {
+   "t": "t",
+   "q": "Dad asks Zaid to go to the shops.",
+   "a": true,
+   "lv": "k",
+   "obj": "نمط اختبار A1 Movers: Dad: Can you go to the shops for me?"
+  },
+  {
+   "t": "t",
+   "q": "'Are there any eggs?' 'Yes, there is.' is correct.",
+   "a": false,
+   "lv": "a",
+   "obj": "نمط اختبار A1 Movers: Are there any eggs? Yes, there are."
+  },
+  {
+   "t": "t",
+   "q": "Grapes are fruit.",
+   "a": true,
+   "lv": "k",
+   "obj": "نمط اختبار A1 Movers: تمييز الفاكهة من الخضار"
+  }
+ ],
+ "g4e-2-gr": [
+  {
+   "t": "m",
+   "q": "What colour are the milkshakes at the new shop?",
+   "o": [
+    "pink or yellow",
+    "blue or green",
+    "black or white",
+    "red or orange"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "القراءتان: مطابقة كلّ طعامٍ أو شرابٍ بوصفه في القصّة"
+  },
+  {
+   "t": "m",
+   "q": "Who finds Grandad's recipe book?",
+   "o": [
+    "Huda and Muna",
+    "Hamzah and Rasha",
+    "Lottie and Sami",
+    "Maryam and Fatma"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قراءة متدرّجة ٢ (A Bowl of Soup): ترتيب أحداث القصّة"
+  },
+  {
+   "t": "m",
+   "q": "Where does Grandad get the vegetables?",
+   "o": [
+    "from his garden",
+    "from the new shop",
+    "from a box",
+    "from Japan"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قراءة متدرّجة ٢ (A Bowl of Soup): ترتيب أحداث القصّة"
+  },
+  {
+   "t": "m",
+   "q": "When do they eat the soup?",
+   "o": [
+    "for dinner",
+    "for breakfast",
+    "at school",
+    "at a picnic"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قراءة متدرّجة ٢ (A Bowl of Soup): ترتيب أحداث القصّة"
+  },
+  {
+   "t": "m",
+   "q": "What happens just after they boil the noodles?",
+   "o": [
+    "Grandad brings vegetables from his garden.",
+    "They find the recipe book.",
+    "They eat the soup for dinner.",
+    "They go to the new shop."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "قراءة متدرّجة ٢ (A Bowl of Soup): ترتيب أحداث القصّة"
+  },
+  {
+   "t": "t",
+   "q": "There are a lot of cupcakes in the shop window.",
+   "a": true,
+   "lv": "k",
+   "obj": "القراءتان: مطابقة كلّ طعامٍ أو شرابٍ بوصفه في القصّة"
+  },
+  {
+   "t": "t",
+   "q": "In the story, the rice comes in a bottle.",
+   "a": false,
+   "lv": "a",
+   "obj": "قراءة متدرّجة ٢ (A Bowl of Soup): ربط كلّ وعاءٍ بمحتواه (containers — نحو الوحدة)"
+  },
+  {
+   "t": "t",
+   "q": "In 'A Bowl of Soup', the noodles come in a box.",
+   "a": true,
+   "lv": "r",
+   "obj": "قراءة متدرّجة ١ (The New Shop): There aren't any… — المتجر فارغ في البداية"
+  }
+ ],
+ "g4e-lc1-1": [
+  {
+   "t": "m",
+   "q": "What shape is a ball?",
+   "o": [
+    "round",
+    "square",
+    "triangular",
+    "rectangular"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "الأشكال: square, round, triangular, rectangular"
+  },
+  {
+   "t": "m",
+   "q": "Which shape has four sides that are all the same?",
+   "o": [
+    "square",
+    "round",
+    "triangular",
+    "oval"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "الأشكال: square, round, triangular, rectangular"
+  },
+  {
+   "t": "m",
+   "q": "A door is usually ___.",
+   "o": [
+    "rectangular",
+    "round",
+    "triangular",
+    "star-shaped"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "ربط كل جسمٍ بشكله"
+  },
+  {
+   "t": "m",
+   "q": "How many sides does a rectangular shape have?",
+   "o": [
+    "four",
+    "three",
+    "five",
+    "none"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تصنيف الأشكال: ثلاثةُ أضلاعٍ أم أربعة"
+  },
+  {
+   "t": "m",
+   "q": "A shape has no corners and no straight sides. What shape is it?",
+   "o": [
+    "round",
+    "square",
+    "triangular",
+    "rectangular"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "الأشكال: square, round, triangular, rectangular"
+  },
+  {
+   "t": "t",
+   "q": "A square has four sides.",
+   "a": true,
+   "lv": "k",
+   "obj": "تركيب: Tea comes in boxes and boxes are square."
+  },
+  {
+   "t": "t",
+   "q": "A round shape has three sides.",
+   "a": false,
+   "lv": "a",
+   "obj": "تصنيف الأشكال: ثلاثةُ أضلاعٍ أم أربعة"
+  },
+  {
+   "t": "t",
+   "q": "A plate can only be square.",
+   "a": false,
+   "lv": "k",
+   "obj": "الأشكال: الصحن قد يكون دائرياً أو مثلثاً"
+  }
+ ],
+ "g4e-lc1-2": [
+  {
+   "t": "m",
+   "q": "Which word is the opposite of 'above'?",
+   "o": [
+    "below",
+    "top",
+    "up",
+    "bottom"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط كل كلمةٍ بضدّها"
+  },
+  {
+   "t": "m",
+   "q": "'Where's the juice?' Choose the answer from the dialogue.",
+   "o": [
+    "It's on the bottom shelf.",
+    "It's on the top shelf.",
+    "It's in the bag.",
+    "It's above the bread."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "حوار: It's on the bottom shelf. It's below the bread."
+  },
+  {
+   "t": "m",
+   "q": "The juice is below the bread. Where is the bread?",
+   "o": [
+    "above the juice",
+    "below the juice",
+    "on the floor",
+    "in the juice"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "حوار: It's on the bottom shelf. It's below the bread."
+  },
+  {
+   "t": "m",
+   "q": "Which word is a location word?",
+   "o": [
+    "above",
+    "juice",
+    "bread",
+    "milk"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "التمييز بين كلمة الموضع والطعام"
+  },
+  {
+   "t": "m",
+   "q": "Raise your hands high. Put your hands ___!",
+   "o": [
+    "up",
+    "down",
+    "below",
+    "bottom"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تصنيف الكلمات: موضعٌ على رفٍّ أم حركةُ يد"
+  },
+  {
+   "t": "t",
+   "q": "'Up' and 'down' are opposites.",
+   "a": true,
+   "lv": "k",
+   "obj": "مواضع: up, down, top, bottom, above, below"
+  },
+  {
+   "t": "t",
+   "q": "'Bread' is a location word.",
+   "a": false,
+   "lv": "a",
+   "obj": "التمييز بين كلمة الموضع والطعام"
+  },
+  {
+   "t": "t",
+   "q": "The top shelf is above the bottom shelf.",
+   "a": true,
+   "lv": "a",
+   "obj": "مواضع: top وbottom ضدّان"
+  }
+ ],
+ "g4e-3-1": [
+  {
+   "t": "m",
+   "q": "Water falls down from a high place. What is it?",
+   "o": [
+    "waterfall",
+    "lake",
+    "hill",
+    "island"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات التضاريس: river, mountain, lake, waterfall, city, town, forest, hill, island, deep, high, wide"
+  },
+  {
+   "t": "m",
+   "q": "A place with houses and people, but smaller than a city, is a ___.",
+   "o": [
+    "town",
+    "forest",
+    "lake",
+    "waterfall"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات التضاريس: river, mountain, lake, waterfall, city, town, forest, hill, island, deep, high, wide"
+  },
+  {
+   "t": "m",
+   "q": "There are a lot of trees in a ___.",
+   "o": [
+    "forest",
+    "lake",
+    "river",
+    "island"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط كل تعريفٍ بكلمته"
+  },
+  {
+   "t": "m",
+   "q": "Which one is water?",
+   "o": [
+    "lake",
+    "hill",
+    "mountain",
+    "forest"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تصنيف التضاريس: يابسة أم ماء"
+  },
+  {
+   "t": "m",
+   "q": "Which one is land?",
+   "o": [
+    "hill",
+    "lake",
+    "river",
+    "waterfall"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "التمييز بين وصف الحجم والتضاريس نفسها"
+  },
+  {
+   "t": "t",
+   "q": "A city has a lot of buildings and a lot of people.",
+   "a": true,
+   "lv": "k",
+   "obj": "تعريف: city"
+  },
+  {
+   "t": "t",
+   "q": "A forest has a lot of trees.",
+   "a": true,
+   "lv": "k",
+   "obj": "ربط كل تعريفٍ بكلمته"
+  },
+  {
+   "t": "t",
+   "q": "A hill is water.",
+   "a": false,
+   "lv": "a",
+   "obj": "تصنيف التضاريس: يابسة أم ماء"
+  }
+ ],
+ "g4e-3-2": [
+  {
+   "t": "m",
+   "q": "What do they put on before they pick up the rubbish?",
+   "o": [
+    "gloves",
+    "hats",
+    "boots",
+    "jackets"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قصّة الوحدة: put the gloves on and pick up the rubbish"
+  },
+  {
+   "t": "m",
+   "q": "Where do they put the wood and cans?",
+   "o": [
+    "in the biggest bags",
+    "in the river",
+    "in the car",
+    "in a small box"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "فهم أحداث القصّة"
+  },
+  {
+   "t": "m",
+   "q": "What is in the forest at the start of the story?",
+   "o": [
+    "a lot of rubbish",
+    "a lot of snow",
+    "a boat race",
+    "a burglar"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "فهم أحداث القصّة"
+  },
+  {
+   "t": "m",
+   "q": "Which word from the story means 'things you throw away'?",
+   "o": [
+    "rubbish",
+    "gloves",
+    "forest",
+    "wadi"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "قصّة الوحدة: put the gloves on and pick up the rubbish"
+  },
+  {
+   "t": "m",
+   "q": "Which comes first in the story?",
+   "o": [
+    "It's the Great Clean-up tomorrow!",
+    "Put wood and cans in the biggest bags.",
+    "Now the bag is wider than the wood!",
+    "Put the gloves on and pick up the rubbish."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "ترتيب أحداث القصّة"
+  },
+  {
+   "t": "t",
+   "q": "At the start of the story, the Great Clean-up is tomorrow.",
+   "a": true,
+   "lv": "k",
+   "obj": "ترتيب أحداث القصّة"
+  },
+  {
+   "t": "t",
+   "q": "They put the wood and cans in the smallest bags.",
+   "a": false,
+   "lv": "k",
+   "obj": "فهم أحداث القصّة"
+  },
+  {
+   "t": "t",
+   "q": "The Great Clean-up is about picking up rubbish.",
+   "a": true,
+   "lv": "a",
+   "obj": "قصّة الوحدة: اسم فعالية التنظيف"
+  }
+ ],
+ "g4e-3-3": [
+  {
+   "t": "m",
+   "q": "What is the comparative of 'big'?",
+   "o": [
+    "bigger",
+    "biger",
+    "more big",
+    "biggest"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط كل صفةٍ بصيغة المقارنة منها"
+  },
+  {
+   "t": "m",
+   "q": "What is the comparative of 'dirty'?",
+   "o": [
+    "dirtier",
+    "dirtyer",
+    "more dirty",
+    "dirtiest"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب المقارنة: dirtier than"
+  },
+  {
+   "t": "m",
+   "q": "A mountain is ___ than a hill.",
+   "o": [
+    "higher",
+    "high",
+    "highest",
+    "more high"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب المقارنة: A mountain is higher than a hill."
+  },
+  {
+   "t": "m",
+   "q": "Which sentence describes only one thing?",
+   "o": [
+    "The lake is very deep.",
+    "The lake is deeper than the river.",
+    "The hill is lower than the mountain.",
+    "The city is bigger than the town."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تصنيف الجمل: مقارنةٌ بين شيئين أم وصفٌ لشيءٍ واحد"
+  },
+  {
+   "t": "m",
+   "q": "The road is 2 km long. The wadi is 10 km long. Which sentence is correct?",
+   "o": [
+    "The wadi is longer than the road.",
+    "The road is longer than the wadi.",
+    "The wadi is shorter than the road.",
+    "The road is as long as the wadi."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تركيب: The wadi is longer than the road."
+  },
+  {
+   "t": "t",
+   "q": "'Wider' is the comparative of 'wide'.",
+   "a": true,
+   "lv": "k",
+   "obj": "ربط كل صفةٍ بصيغة المقارنة منها"
+  },
+  {
+   "t": "t",
+   "q": "'The river is deep.' compares two things.",
+   "a": false,
+   "lv": "a",
+   "obj": "تصنيف الجمل: مقارنةٌ بين شيئين أم وصفٌ لشيءٍ واحد"
+  },
+  {
+   "t": "t",
+   "q": "We say 'more high than', not 'higher than'.",
+   "a": false,
+   "lv": "a",
+   "obj": "تركيب المقارنة: A mountain is higher than a hill."
+  }
+ ],
+ "g4e-3-4": [
+  {
+   "t": "m",
+   "q": "What is the driest desert in the world, according to the lesson?",
+   "o": [
+    "the Atacama",
+    "the Wahiba Sands",
+    "the Empty Quarter",
+    "the Gobi"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط الحقيقة العالمية بإجابتها"
+  },
+  {
+   "t": "m",
+   "q": "What is the superlative of 'high'?",
+   "o": [
+    "highest",
+    "higher",
+    "highst",
+    "most high"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تصنيف الصفات: مقارنةٌ (-er) أم تفضيل (-est)"
+  },
+  {
+   "t": "m",
+   "q": "Which word is a superlative?",
+   "o": [
+    "longest",
+    "longer",
+    "long",
+    "wider"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تصنيف الصفات: مقارنةٌ (-er) أم تفضيل (-est)"
+  },
+  {
+   "t": "m",
+   "q": "The Dead Sea is the ___ sea in the world.",
+   "o": [
+    "lowest",
+    "lower",
+    "low",
+    "more low"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "ربط الحقيقة العالمية بإجابتها"
+  },
+  {
+   "t": "m",
+   "q": "Choose the correct sentence.",
+   "o": [
+    "Jabal Shams is the highest mountain in Oman.",
+    "Jabal Shams is the higher mountain in Oman.",
+    "Jabal Shams is the most high mountain in Oman.",
+    "Jabal Shams is highest mountain Oman."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تركيب التفضيل: Mount Everest is the highest mountain."
+  },
+  {
+   "t": "t",
+   "q": "'Wider' is a superlative.",
+   "a": false,
+   "lv": "k",
+   "obj": "تصنيف الصفات: مقارنةٌ (-er) أم تفضيل (-est)"
+  },
+  {
+   "t": "t",
+   "q": "The Amazon is the widest river in the world.",
+   "a": true,
+   "lv": "k",
+   "obj": "ربط الحقيقة العالمية بإجابتها"
+  },
+  {
+   "t": "t",
+   "q": "Mount Everest is higher than Jabal Shams.",
+   "a": true,
+   "lv": "a",
+   "obj": "حقائق عالمية: أعلى جبل — جبل إفرست"
+  }
+ ],
+ "g4e-3-5": [
+  {
+   "t": "m",
+   "q": "Which animals can you see in Jabal Samhan?",
+   "o": [
+    "gazelles",
+    "turtles",
+    "dolphins",
+    "penguins"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط كل محميةٍ بما تشتهر به"
+  },
+  {
+   "t": "m",
+   "q": "Where is Jabal Samhan?",
+   "o": [
+    "in Dhofar",
+    "in Muscat",
+    "in Greenland",
+    "in Egypt"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "الثقافة: موقع جبل سمحان في محافظة ظفار"
+  },
+  {
+   "t": "m",
+   "q": "What can you see at Khawr Ruri?",
+   "o": [
+    "the ruins of Samharam",
+    "the Arabian leopard",
+    "snow",
+    "the Pyramids of Giza"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط كل محميةٍ بما تشتهر به"
+  },
+  {
+   "t": "m",
+   "q": "Where is the largest nature reserve in the world?",
+   "o": [
+    "Greenland",
+    "Oman",
+    "Egypt",
+    "China"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "فهم نصّ محميات عُمان الطبيعية"
+  },
+  {
+   "t": "m",
+   "q": "The Daymaniyat Islands have sea all around them, with turtles and fish. What type of reserve are they?",
+   "o": [
+    "a marine reserve",
+    "a mountain reserve",
+    "a desert reserve",
+    "a forest reserve"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "الثقافة: جزر الديمانيات محميةٌ بحرية"
+  },
+  {
+   "t": "t",
+   "q": "Jabal Samhan is a water reserve.",
+   "a": false,
+   "lv": "a",
+   "obj": "تصنيف المحميات: جبلية أم مائية"
+  },
+  {
+   "t": "t",
+   "q": "Khawr Ruri is a nature reserve with water.",
+   "a": true,
+   "lv": "a",
+   "obj": "تصنيف المحميات: جبلية أم مائية"
+  },
+  {
+   "t": "t",
+   "q": "The Daymaniyat Islands are in the mountains.",
+   "a": false,
+   "lv": "k",
+   "obj": "الثقافة: جزر الديمانيات محميةٌ بحرية"
+  }
+ ],
+ "g4e-3-6": [
+  {
+   "t": "m",
+   "q": "Complete: 'Excuse me, can you tell me the ___ to the hospital, please?'",
+   "o": [
+    "way",
+    "name",
+    "time",
+    "price"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "لغة السؤال عن الطريق: Excuse me, can you tell me the way...؟"
+  },
+  {
+   "t": "m",
+   "q": "Which one is a place?",
+   "o": [
+    "the supermarket",
+    "turn left",
+    "go straight ahead",
+    "turn right"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تصنيف الكلمات: اتجاهٌ أم مكان"
+  },
+  {
+   "t": "m",
+   "q": "What is the opposite of 'turn left'?",
+   "o": [
+    "turn right",
+    "go straight ahead",
+    "go across the road",
+    "stop"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "لغة الاتجاهات: turn left/right"
+  },
+  {
+   "t": "m",
+   "q": "'Where is the park?' Choose the best answer.",
+   "o": [
+    "It's on the left.",
+    "It's ten o'clock.",
+    "It's sunny.",
+    "It's my book."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "حوار الاتجاهات: The park is on the left."
+  },
+  {
+   "t": "m",
+   "q": "In the directions, what comes after 'Go straight ahead'?",
+   "o": [
+    "Go across the road.",
+    "Turn right at the supermarket.",
+    "The park is on the left.",
+    "Excuse me, can you tell me the way?"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "ترتيب تعليمات الطريق"
+  },
+  {
+   "t": "t",
+   "q": "'Go straight ahead' means turn left.",
+   "a": false,
+   "lv": "k",
+   "obj": "ربط عبارة الاتجاه بمعناها"
+  },
+  {
+   "t": "t",
+   "q": "'The hospital' is a direction.",
+   "a": false,
+   "lv": "a",
+   "obj": "تصنيف الكلمات: اتجاهٌ أم مكان"
+  },
+  {
+   "t": "t",
+   "q": "We say 'Excuse me' to ask someone for help politely.",
+   "a": true,
+   "lv": "a",
+   "obj": "لغة السؤال عن الطريق: Excuse me, can you tell me the way...؟"
+  }
+ ],
+ "g4e-3-7": [
+  {
+   "t": "m",
+   "q": "How many times does Jasim blow the whistle?",
+   "o": [
+    "six",
+    "two",
+    "three",
+    "ten"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "نصّ القراءة: إشارة الطوارئ — ست نفخات صافرة"
+  },
+  {
+   "t": "m",
+   "q": "Which part of his body does Amjed hurt?",
+   "o": [
+    "his arm",
+    "his leg",
+    "his head",
+    "his foot"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "نصّ القراءة: إصابة ذراع أمجد"
+  },
+  {
+   "t": "m",
+   "q": "What are Jasim and Amjed doing before the accident?",
+   "o": [
+    "canoeing",
+    "swimming",
+    "climbing",
+    "cycling"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "نصّ القراءة: Wadi rescue! — التجديف في وادي شاب"
+  },
+  {
+   "t": "m",
+   "q": "Why does Jasim blow the whistle six times?",
+   "o": [
+    "It's the emergency signal.",
+    "He's playing a game.",
+    "He's very happy.",
+    "He wants to sing."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "نصّ القراءة: إشارة الطوارئ — ست نفخات صافرة"
+  },
+  {
+   "t": "m",
+   "q": "Which happens after the accident?",
+   "o": [
+    "A helicopter takes Amjed to hospital.",
+    "They go canoeing on Wadi Shab.",
+    "They go very quickly down the wadi.",
+    "They start their trip."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تصنيف أحداث القصّة: قبل الحادثة أم بعدها"
+  },
+  {
+   "t": "t",
+   "q": "A helicopter takes Amjed to hospital.",
+   "a": true,
+   "lv": "k",
+   "obj": "ربط أسئلة الفهم بإجاباتها من القصّة"
+  },
+  {
+   "t": "t",
+   "q": "Jasim blows the whistle before the helicopter comes.",
+   "a": true,
+   "lv": "a",
+   "obj": "نصّ القراءة: سبب انقلاب الزورق"
+  },
+  {
+   "t": "t",
+   "q": "Jasim and Amjed go very slowly down the wadi.",
+   "a": false,
+   "lv": "a",
+   "obj": "تصنيف أحداث القصّة: قبل الحادثة أم بعدها"
+  }
+ ],
+ "g4e-3-8": [
+  {
+   "t": "m",
+   "q": "What is the highest mountain in the Egypt fact file?",
+   "o": [
+    "Gabal Katrine",
+    "Mount Everest",
+    "Jabal Samhan",
+    "Jabal Shams"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "بطاقة حقائق مصر: أعلى جبل — جبل كاترين"
+  },
+  {
+   "t": "m",
+   "q": "Which word needs a capital letter?",
+   "o": [
+    "Cairo",
+    "river",
+    "mountain",
+    "desert"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تصنيف: اسمُ مكانٍ يحتاج حرفاً كبيراً أم لا"
+  },
+  {
+   "t": "m",
+   "q": "Which landscape feature is in the Egypt fact file?",
+   "o": [
+    "desert",
+    "glacier",
+    "rainforest",
+    "volcano"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "بطاقة حقائق مصر: التضاريس"
+  },
+  {
+   "t": "m",
+   "q": "In a fact file, what is 'Capital city'?",
+   "o": [
+    "a heading",
+    "a river",
+    "a mountain",
+    "a desert"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "ربط عنوان بطاقة الحقائق بمعلومته"
+  },
+  {
+   "t": "m",
+   "q": "Which sentence is written correctly?",
+   "o": [
+    "The capital city of Egypt is Cairo.",
+    "the capital city of egypt is cairo.",
+    "The capital city of Egypt is cairo.",
+    "The capital city of egypt is Cairo."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تصنيف: اسمُ مكانٍ يحتاج حرفاً كبيراً أم لا"
+  },
+  {
+   "t": "t",
+   "q": "Alexandria is the capital city of Egypt in the fact file.",
+   "a": false,
+   "lv": "k",
+   "obj": "نصّ الكتابة: بطاقة حقائق مصر — العاصمة القاهرة"
+  },
+  {
+   "t": "t",
+   "q": "'Nile' starts with a capital letter because it is the name of a river.",
+   "a": true,
+   "lv": "a",
+   "obj": "بطاقة حقائق مصر: أطول نهر — النيل"
+  },
+  {
+   "t": "t",
+   "q": "'Mountain' is a place name, so it needs a capital letter.",
+   "a": false,
+   "lv": "a",
+   "obj": "تصنيف: اسمُ مكانٍ يحتاج حرفاً كبيراً أم لا"
+  }
+ ],
+ "g4e-3-9": [
+  {
+   "t": "m",
+   "q": "Which word has the 'eigh' spelling?",
+   "o": [
+    "eight",
+    "reins",
+    "vein",
+    "sleep"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: eigh (sleigh)"
+  },
+  {
+   "t": "m",
+   "q": "Which word has the 'ei' spelling (not 'eigh')?",
+   "o": [
+    "reindeer",
+    "sleigh",
+    "weigh",
+    "eight"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "صوت ei: reindeer, reins"
+  },
+  {
+   "t": "m",
+   "q": "How many reindeer are in the tongue twister?",
+   "o": [
+    "eight",
+    "six",
+    "three",
+    "ten"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "لعبة اللسان: Eight reindeer with reins and a sleigh in the snow."
+  },
+  {
+   "t": "m",
+   "q": "Which word has the same spelling pattern as 'weigh'?",
+   "o": [
+    "sleigh",
+    "vein",
+    "reins",
+    "wet"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "ربط الكلمة بكلمةٍ أخرى تحمل نمط الرسم الصوتيّ نفسه"
+  },
+  {
+   "t": "m",
+   "q": "Which word is the odd one out?",
+   "o": [
+    "reins",
+    "eighteen",
+    "sleigh",
+    "weigh"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "التمييز بين صوتَي eigh وei"
+  },
+  {
+   "t": "t",
+   "q": "'Sleigh' has the 'eigh' spelling.",
+   "a": true,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: eigh (sleigh)"
+  },
+  {
+   "t": "t",
+   "q": "'Vein' has the 'eigh' spelling.",
+   "a": false,
+   "lv": "a",
+   "obj": "التمييز بين صوتَي eigh وei"
+  },
+  {
+   "t": "t",
+   "q": "'Weigh' and 'eight' have the same spelling pattern.",
+   "a": true,
+   "lv": "a",
+   "obj": "تصنيف الكلمات حسب صوتها"
+  }
+ ],
+ "g4e-3-10": [
+  {
+   "t": "m",
+   "q": "Which animal is the fastest?",
+   "o": [
+    "cheetah",
+    "mouse",
+    "bee",
+    "whale"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط كل حيوانٍ بصفته"
+  },
+  {
+   "t": "m",
+   "q": "Which animal is the smallest?",
+   "o": [
+    "bee",
+    "mouse",
+    "giraffe",
+    "whale"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ترتيب الحيوانات من الأصغر إلى الأكبر"
+  },
+  {
+   "t": "m",
+   "q": "When is the best time to visit Wadi Shab?",
+   "o": [
+    "early morning",
+    "at night",
+    "at midday",
+    "late evening"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تصنيف إجابات لعبة Challenge"
+  },
+  {
+   "t": "m",
+   "q": "A giraffe is ___ than a mouse.",
+   "o": [
+    "taller",
+    "tall",
+    "tallest",
+    "more tall"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "مراجعة المقارنة: الحيوان الأطول"
+  },
+  {
+   "t": "m",
+   "q": "A car is faster than a bike. So a bike is ___ than a car.",
+   "o": [
+    "slower",
+    "faster",
+    "bigger",
+    "taller"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "مراجعة المقارنة: a car is faster than a bike"
+  },
+  {
+   "t": "t",
+   "q": "A mouse is bigger than a giraffe.",
+   "a": false,
+   "lv": "k",
+   "obj": "ترتيب الحيوانات من الأصغر إلى الأكبر"
+  },
+  {
+   "t": "t",
+   "q": "A whale is larger than a giraffe.",
+   "a": true,
+   "lv": "a",
+   "obj": "مراجعة: الحوت أكبر الحيوانات"
+  },
+  {
+   "t": "t",
+   "q": "A bike is faster than a car.",
+   "a": false,
+   "lv": "k",
+   "obj": "مراجعة المقارنة: a car is faster than a bike"
+  }
+ ],
+ "g4e-3-11": [
+  {
+   "t": "m",
+   "q": "How many differences do you find in Speaking Part 1?",
+   "o": [
+    "four",
+    "two",
+    "six",
+    "ten"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "نمط اختبار A1 Movers: Speaking Part 1 — إيجاد الفروق"
+  },
+  {
+   "t": "m",
+   "q": "In Listening Part 1, what do you do?",
+   "o": [
+    "Listen and match.",
+    "Write a story.",
+    "Find differences.",
+    "Draw a map."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط جزء الاختبار بمهارته"
+  },
+  {
+   "t": "m",
+   "q": "Which sentence describes a difference?",
+   "o": [
+    "In picture A there are two boats, but in picture B there are three.",
+    "There is a boat.",
+    "I like boats.",
+    "The boat is blue."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "نمط اختبار A1 Movers: مثال الفروق"
+  },
+  {
+   "t": "m",
+   "q": "Which one is a speaking task?",
+   "o": [
+    "Talk about the differences.",
+    "Listen and match.",
+    "Listen and write.",
+    "Listen and colour."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تصنيف مهامّ الاختبار: استماعٌ أم تحدّث"
+  },
+  {
+   "t": "m",
+   "q": "In picture A there is one tree. In picture B there are two trees. What is the difference?",
+   "o": [
+    "There is one more tree in picture B.",
+    "Picture A has more trees.",
+    "The pictures are the same.",
+    "Picture B has no trees."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "نمط اختبار A1 Movers: مثال الفروق — الجبال"
+  },
+  {
+   "t": "t",
+   "q": "In Speaking Part 1, you write a story.",
+   "a": false,
+   "lv": "k",
+   "obj": "نمط اختبار A1 Movers: Speaking Part 1 — إيجاد الفروق"
+  },
+  {
+   "t": "t",
+   "q": "'Listen and match' is a listening task.",
+   "a": true,
+   "lv": "k",
+   "obj": "تصنيف مهامّ الاختبار: استماعٌ أم تحدّث"
+  },
+  {
+   "t": "t",
+   "q": "'Listen and write' is a speaking task.",
+   "a": false,
+   "lv": "k",
+   "obj": "نصيحة اختبار الاستماع: النظر إلى الصورة أولاً"
+  }
+ ],
+ "g4e-3-gr": [
+  {
+   "t": "m",
+   "q": "In 'The Boat Race', what is the river like?",
+   "o": [
+    "wide and deep",
+    "small and dry",
+    "short and dirty",
+    "cold and white"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قراءة متدرّجة ١ (The Boat Race): تمييز صفات النهر والجبال الواردة في النصّ"
+  },
+  {
+   "t": "m",
+   "q": "In 'The Baby Bird', what do Azza and Muna have?",
+   "o": [
+    "nets",
+    "boats",
+    "whistles",
+    "skateboards"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قراءة متدرّجة ٢ (The Baby Bird): إكمال جملةٍ من النصّ — تنظيف الغابة"
+  },
+  {
+   "t": "m",
+   "q": "Muna says, \"That bird is ___ than the other birds.\"",
+   "o": [
+    "smaller",
+    "bigger",
+    "taller",
+    "quicker"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "القراءتان: ربط كلّ شخصيةٍ بما قالته (المقارنات — نحو الوحدة)"
+  },
+  {
+   "t": "m",
+   "q": "Which word is from 'The Baby Bird'?",
+   "o": [
+    "nets",
+    "waterfall",
+    "river",
+    "hill"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "القراءتان: تصنيف مفردات التضاريس بحسب القصّة (river / forest)"
+  },
+  {
+   "t": "m",
+   "q": "Mrs Aseel has the longest boat. So her boat is ___ than the other boats.",
+   "o": [
+    "longer",
+    "shorter",
+    "smaller",
+    "slower"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "قراءة متدرّجة ١ (The Boat Race): استرجاع تفصيلٍ صريح — صاحبة أطول قارب (superlative)"
+  },
+  {
+   "t": "t",
+   "q": "In 'The Boat Race', the mountains are high.",
+   "a": true,
+   "lv": "k",
+   "obj": "قراءة متدرّجة ١ (The Boat Race): تمييز صفات النهر والجبال الواردة في النصّ"
+  },
+  {
+   "t": "t",
+   "q": "'Waterfall' is a word from 'The Baby Bird'.",
+   "a": false,
+   "lv": "a",
+   "obj": "القراءتان: تصنيف مفردات التضاريس بحسب القصّة (river / forest)"
+  },
+  {
+   "t": "t",
+   "q": "Dad says he can catch the baby bird in his net.",
+   "a": true,
+   "lv": "k",
+   "obj": "القراءتان: ربط كلّ شخصيةٍ بما قالته (المقارنات — نحو الوحدة)"
+  }
+ ],
+ "g4e-4-1": [
+  {
+   "t": "m",
+   "q": "Who repairs cars?",
+   "o": [
+    "mechanic",
+    "chef",
+    "dentist",
+    "lawyer"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات المهن: scientist, farmer, firefighter, police officer, dentist, lawyer, mechanic, computer programmer, chef, vet, engineer, bus driver"
+  },
+  {
+   "t": "m",
+   "q": "Who puts out fires?",
+   "o": [
+    "firefighter",
+    "farmer",
+    "vet",
+    "scientist"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "مفردات المهن: scientist, farmer, firefighter, police officer, dentist, lawyer, mechanic, computer programmer, chef, vet, engineer, bus driver"
+  },
+  {
+   "t": "m",
+   "q": "Who works with computers?",
+   "o": [
+    "computer programmer",
+    "farmer",
+    "chef",
+    "bus driver"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط كل مهنةٍ بما يفعله صاحبها"
+  },
+  {
+   "t": "m",
+   "q": "Who grows food in a field?",
+   "o": [
+    "farmer",
+    "lawyer",
+    "dentist",
+    "computer programmer"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "ربط كل مهنةٍ بما يفعله صاحبها"
+  },
+  {
+   "t": "m",
+   "q": "Salim likes cooking. He wants to work in a restaurant. Which job is good for him?",
+   "o": [
+    "chef",
+    "mechanic",
+    "police officer",
+    "engineer"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تعريف: chef يعمل في مطعم"
+  },
+  {
+   "t": "t",
+   "q": "A farmer works mostly outdoors.",
+   "a": true,
+   "lv": "k",
+   "obj": "تصنيف المهن: داخل المبنى غالباً أم خارجه"
+  },
+  {
+   "t": "t",
+   "q": "A dentist helps animals.",
+   "a": false,
+   "lv": "k",
+   "obj": "مفردات المهن: dentist"
+  },
+  {
+   "t": "t",
+   "q": "'Hospital' is a job.",
+   "a": false,
+   "lv": "a",
+   "obj": "التمييز بين المهنة والمكان"
+  }
+ ],
+ "g4e-4-2": [
+  {
+   "t": "m",
+   "q": "What does Sami see outside Lottie's house?",
+   "o": [
+    "a car",
+    "a bus",
+    "a dog",
+    "a helicopter"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "فهم أحداث القصّة"
+  },
+  {
+   "t": "m",
+   "q": "Who do Fatma and Sami send to investigate?",
+   "o": [
+    "Bo",
+    "Lottie",
+    "Alesha",
+    "a police officer"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "فهم أحداث القصّة"
+  },
+  {
+   "t": "m",
+   "q": "Whose house is it in the story?",
+   "o": [
+    "Lottie's",
+    "Fatma's",
+    "Sami's",
+    "Bo's"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قصّة الوحدة: The burglar — شكّ فاطمة بلصّ في منزل لوتي"
+  },
+  {
+   "t": "m",
+   "q": "Is the 'burglar' a boy?",
+   "o": [
+    "No, it's a girl.",
+    "Yes, it's a boy.",
+    "No, it's a man.",
+    "No, it's a dog."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "قصّة الوحدة: اللصّ فتاةٌ لا ولد"
+  },
+  {
+   "t": "m",
+   "q": "What happens first in the story?",
+   "o": [
+    "Sami sees a car outside Lottie's house.",
+    "Fatma calls the police.",
+    "Bo watches the person in the house.",
+    "They find out it's Lottie's cousin."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "ترتيب أحداث القصّة"
+  },
+  {
+   "t": "t",
+   "q": "Bo watches the person in the house.",
+   "a": true,
+   "lv": "k",
+   "obj": "قصّة الوحدة: هوية أليشا — قريبة لوتي"
+  },
+  {
+   "t": "t",
+   "q": "Sami calls the police.",
+   "a": false,
+   "lv": "k",
+   "obj": "قصّة الوحدة: الاتصال بالشرطة"
+  },
+  {
+   "t": "t",
+   "q": "The person in Lottie's house is a stranger.",
+   "a": false,
+   "lv": "a",
+   "obj": "قصّة الوحدة: هوية أليشا — قريبة لوتي"
+  }
+ ],
+ "g4e-4-3": [
+  {
+   "t": "m",
+   "q": "She ___ reading a book.",
+   "o": [
+    "is",
+    "are",
+    "am",
+    "be"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: He's opening the door."
+  },
+  {
+   "t": "m",
+   "q": "They ___ playing football. (negative)",
+   "o": [
+    "aren't",
+    "isn't",
+    "not",
+    "don't"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب النفي: They aren't playing cards."
+  },
+  {
+   "t": "m",
+   "q": "___ he eating lunch?",
+   "o": [
+    "Is",
+    "Are",
+    "Am",
+    "Do"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قاعدة السؤال في المضارع المستمر"
+  },
+  {
+   "t": "m",
+   "q": "Look at the chef! He ___.",
+   "o": [
+    "is cooking food",
+    "is repairing a car",
+    "is driving a bus",
+    "is teaching a class"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "ربط كل مهنةٍ بما يفعله صاحبها الآن"
+  },
+  {
+   "t": "m",
+   "q": "Which question is correct?",
+   "o": [
+    "Are you wearing a green jacket?",
+    "You are wearing a green jacket?",
+    "Are you wear a green jacket?",
+    "Is you wearing a green jacket?"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تركيب السؤال: Are you wearing a green jacket؟"
+  },
+  {
+   "t": "t",
+   "q": "'He isn't eating any food' is a positive sentence.",
+   "a": false,
+   "lv": "k",
+   "obj": "تصنيف الجمل: مثبتة أم منفية"
+  },
+  {
+   "t": "t",
+   "q": "'The vet is helping a dog' is in the present continuous.",
+   "a": true,
+   "lv": "a",
+   "obj": "ربط كل مهنةٍ بما يفعله صاحبها الآن"
+  },
+  {
+   "t": "t",
+   "q": "'He is opening the door' and 'He's opening the door' mean the same.",
+   "a": true,
+   "lv": "k",
+   "obj": "تركيب: He's opening the door."
+  }
+ ],
+ "g4e-4-4": [
+  {
+   "t": "m",
+   "q": "'You ___ arrive on time.' (You have to do this.)",
+   "o": [
+    "must",
+    "mustn't",
+    "aren't",
+    "isn't"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط كل كلمةٍ بمعناها: must/mustn't"
+  },
+  {
+   "t": "m",
+   "q": "Where must you put litter?",
+   "o": [
+    "in the bin",
+    "on the floor",
+    "in the playground",
+    "in your desk"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تركيب: You mustn't drop litter in the playground."
+  },
+  {
+   "t": "m",
+   "q": "Which is a good rule for school?",
+   "o": [
+    "You must be quiet in class.",
+    "You must drop litter.",
+    "You mustn't arrive on time.",
+    "You must shout."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تصنيف السلوك: مسموحٌ أم ممنوعٌ في المدرسة"
+  },
+  {
+   "t": "m",
+   "q": "Which rule is correct?",
+   "o": [
+    "You mustn't shout in class.",
+    "You must shout in class.",
+    "You mustn't be quiet in class.",
+    "You must break the rules."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تركيب: You mustn't shout in class."
+  },
+  {
+   "t": "m",
+   "q": "Ali drops litter in the playground. What is he doing?",
+   "o": [
+    "breaking the rules",
+    "following the rules",
+    "arriving on time",
+    "being quiet"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "قواعد الصفّ: follow the rules / break the rules"
+  },
+  {
+   "t": "t",
+   "q": "'Break the rules' means do what the rules say.",
+   "a": false,
+   "lv": "k",
+   "obj": "قواعد الصفّ: follow the rules / break the rules"
+  },
+  {
+   "t": "t",
+   "q": "'You must' means you have to do it.",
+   "a": true,
+   "lv": "k",
+   "obj": "ربط كل كلمةٍ بمعناها: must/mustn't"
+  },
+  {
+   "t": "t",
+   "q": "'You mustn't drop litter' means you can drop litter.",
+   "a": false,
+   "lv": "a",
+   "obj": "تركيب: You mustn't drop litter in the playground."
+  }
+ ],
+ "g4e-4-5": [
+  {
+   "t": "m",
+   "q": "Where is Speedwell Cavern?",
+   "o": [
+    "England",
+    "Georgia",
+    "Oman",
+    "Egypt"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط كل مهنةٍ غريبةٍ بمكان عملها"
+  },
+  {
+   "t": "m",
+   "q": "How many cups of tea does a tea taster drink in a day?",
+   "o": [
+    "300",
+    "30",
+    "3",
+    "3,000"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "فهم نصّ المهن الغريبة"
+  },
+  {
+   "t": "m",
+   "q": "Which country has the deepest cave in the world?",
+   "o": [
+    "Georgia",
+    "England",
+    "Oman",
+    "China"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "حقيقةٌ طريفة: أعمق كهفٍ في العالم في جورجيا"
+  },
+  {
+   "t": "m",
+   "q": "Which unusual job drives something?",
+   "o": [
+    "boat driver in a cave",
+    "professional sleeper",
+    "professional tea taster",
+    "video game animator"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تصنيف المهن الغريبة: تختبر أشياء أم تقود شيئاً"
+  },
+  {
+   "t": "m",
+   "q": "A professional sleeper says, 'This bed is very comfortable.' What is he doing?",
+   "o": [
+    "testing a bed",
+    "driving a boat",
+    "tasting tea",
+    "building a cave"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "الثقافة: النائم المحترف — اختبار الأسرّة"
+  },
+  {
+   "t": "t",
+   "q": "A professional tea taster trains for two years.",
+   "a": false,
+   "lv": "k",
+   "obj": "الثقافة: تدريبٌ خمس سنواتٍ لذوّاقة الشاي"
+  },
+  {
+   "t": "t",
+   "q": "The boat driver's job is to test beds.",
+   "a": false,
+   "lv": "a",
+   "obj": "تصنيف المهن الغريبة: تختبر أشياء أم تقود شيئاً"
+  },
+  {
+   "t": "t",
+   "q": "A professional sleeper tests things.",
+   "a": true,
+   "lv": "a",
+   "obj": "تصنيف المهن الغريبة: تختبر أشياء أم تقود شيئاً"
+  }
+ ],
+ "g4e-4-6": [
+  {
+   "t": "m",
+   "q": "What is Sally Jones's address in the call?",
+   "o": [
+    "4 South Road",
+    "9999 South Road",
+    "4 North Road",
+    "14 South Road"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "الاتصال بالطوارئ: الاسم والعنوان"
+  },
+  {
+   "t": "m",
+   "q": "What's the emergency in the call?",
+   "o": [
+    "He's got a broken leg.",
+    "There's a fire.",
+    "A car is broken.",
+    "A cat is in a tree."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط أسئلة موظّف الطوارئ بإجاباتها"
+  },
+  {
+   "t": "m",
+   "q": "There is a fire in a house. Who do you need?",
+   "o": [
+    "the fire brigade",
+    "a mechanic",
+    "a chef",
+    "a dentist"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تصنيف: معلومةٌ شخصيةٌ أم حالةُ طوارئ"
+  },
+  {
+   "t": "m",
+   "q": "Someone has a broken leg. What do you say?",
+   "o": [
+    "I need an ambulance, please.",
+    "I need a chef, please.",
+    "I need a mechanic, please.",
+    "I need a bus, please."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "حوار الطوارئ: I need an ambulance, please."
+  },
+  {
+   "t": "m",
+   "q": "What does the operator say at the end of the call?",
+   "o": [
+    "The ambulance is on its way.",
+    "What's your name?",
+    "Hello, 9999 emergency services.",
+    "What's your address?"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "ترتيب مكالمة الطوارئ"
+  },
+  {
+   "t": "t",
+   "q": "'Sally Jones' is a person's information.",
+   "a": true,
+   "lv": "k",
+   "obj": "تصنيف: معلومةٌ شخصيةٌ أم حالةُ طوارئ"
+  },
+  {
+   "t": "t",
+   "q": "The emergency number in the lesson is 911.",
+   "a": false,
+   "lv": "k",
+   "obj": "رقم الطوارئ في الدرس: 9999"
+  },
+  {
+   "t": "t",
+   "q": "The operator starts the call with 'What's your name?'.",
+   "a": false,
+   "lv": "k",
+   "obj": "ترتيب مكالمة الطوارئ"
+  }
+ ],
+ "g4e-4-7": [
+  {
+   "t": "m",
+   "q": "What is Alison's job?",
+   "o": [
+    "rocket engineer",
+    "zoo vet",
+    "sound artist",
+    "video game animator"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط كل شخصٍ بمهنته"
+  },
+  {
+   "t": "m",
+   "q": "What is Martina's job?",
+   "o": [
+    "zoo vet",
+    "rocket engineer",
+    "sound artist",
+    "video game animator"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "نصّ القراءة: مارتينا تعتني بحيواناتٍ متنوّعة"
+  },
+  {
+   "t": "m",
+   "q": "Who makes sounds for TV and films?",
+   "o": [
+    "Mike",
+    "Warren",
+    "Martina",
+    "Alison"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "نصّ القراءة: مايك فنّان الصوت — قفّازان لصوت جناحَي طائر"
+  },
+  {
+   "t": "m",
+   "q": "Which person on the careers website works with animals?",
+   "o": [
+    "Martina",
+    "Mike",
+    "Warren",
+    "Alison"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "تصنيف المهن: تعمل بالصوت أم بالحيوانات"
+  },
+  {
+   "t": "m",
+   "q": "Sara loves drawing and video games. Whose job is best for her?",
+   "o": [
+    "Warren's",
+    "Martina's",
+    "Mike's",
+    "Alison's"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "نصّ القراءة: I love my job! — وارن رسّام ألعاب فيديو"
+  },
+  {
+   "t": "t",
+   "q": "Warren is a sound artist.",
+   "a": false,
+   "lv": "k",
+   "obj": "ربط كل شخصٍ بمهنته"
+  },
+  {
+   "t": "t",
+   "q": "Warren works on video games.",
+   "a": true,
+   "lv": "k",
+   "obj": "نصّ القراءة: I love my job! — وارن رسّام ألعاب فيديو"
+  },
+  {
+   "t": "t",
+   "q": "Mike works with sound.",
+   "a": true,
+   "lv": "a",
+   "obj": "تصنيف المهن: تعمل بالصوت أم بالحيوانات"
+  }
+ ],
+ "g4e-4-8": [
+  {
+   "t": "m",
+   "q": "How many children in Talal's report want to be doctors?",
+   "o": [
+    "3",
+    "1",
+    "2",
+    "4"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "فهم تقرير طلال"
+  },
+  {
+   "t": "m",
+   "q": "Who wants to be a vet?",
+   "o": [
+    "Azza",
+    "Ahmed",
+    "Talal",
+    "Anas"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تقرير طلال: عزّة تريد أن تكون بيطرية لأنّها تحبّ الحيوانات"
+  },
+  {
+   "t": "m",
+   "q": "Who wants to be a mechanic?",
+   "o": [
+    "Ahmed",
+    "Azza",
+    "Manar",
+    "Talal"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط كل طفلٍ بالمهنة التي يريدها"
+  },
+  {
+   "t": "m",
+   "q": "Which job do the most children in the report want?",
+   "o": [
+    "doctor",
+    "chef",
+    "mechanic",
+    "vet"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "فهم تقرير طلال"
+  },
+  {
+   "t": "m",
+   "q": "Which sentence gives an opinion?",
+   "o": [
+    "When I grow up, I want to be a video game animator.",
+    "Ahmed wants to be a mechanic.",
+    "Manar, Bayan and Anas want to be doctors.",
+    "Two children want to be chefs."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "تصنيف فقرات التقرير: نتائجٌ أم رأي"
+  },
+  {
+   "t": "t",
+   "q": "Bayan wants to be a doctor.",
+   "a": true,
+   "lv": "k",
+   "obj": "فهم تقرير طلال"
+  },
+  {
+   "t": "t",
+   "q": "Talal wants to be a mechanic.",
+   "a": false,
+   "lv": "k",
+   "obj": "تقرير طلال: يريد أن يكون رسّام ألعاب فيديو"
+  },
+  {
+   "t": "t",
+   "q": "'Ahmed wants to be a mechanic' gives an opinion.",
+   "a": false,
+   "lv": "a",
+   "obj": "تصنيف فقرات التقرير: نتائجٌ أم رأي"
+  }
+ ],
+ "g4e-4-9": [
+  {
+   "t": "m",
+   "q": "Which word has the 'ew' spelling?",
+   "o": [
+    "new",
+    "moon",
+    "blue",
+    "boots"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: ew (chew)"
+  },
+  {
+   "t": "m",
+   "q": "Which word has the 'oo' spelling?",
+   "o": [
+    "moon",
+    "chew",
+    "glue",
+    "screw"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "صوت oo: boots"
+  },
+  {
+   "t": "m",
+   "q": "What colour is the screw in the tongue twister?",
+   "o": [
+    "blue",
+    "red",
+    "green",
+    "yellow"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "لعبة اللسان: There's a blue screw in my boot!"
+  },
+  {
+   "t": "m",
+   "q": "Which word has the same spelling pattern as 'glue'?",
+   "o": [
+    "blue",
+    "chew",
+    "moon",
+    "boot"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "ربط الكلمة بكلمةٍ أخرى تحمل نمط الرسم الصوتيّ نفسه"
+  },
+  {
+   "t": "m",
+   "q": "Which word is the odd one out?",
+   "o": [
+    "moon",
+    "chew",
+    "new",
+    "screw"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "التمييز بين صوت ew وصوت oo"
+  },
+  {
+   "t": "t",
+   "q": "'Screw' has the 'ew' spelling.",
+   "a": true,
+   "lv": "k",
+   "obj": "صوتٌ مقترن: ew (chew)"
+  },
+  {
+   "t": "t",
+   "q": "'Chew' has the 'oo' spelling.",
+   "a": false,
+   "lv": "a",
+   "obj": "التمييز بين صوت ew وصوت oo"
+  },
+  {
+   "t": "t",
+   "q": "'Blue' and 'glue' have the same spelling pattern.",
+   "a": true,
+   "lv": "a",
+   "obj": "تصنيف الكلمات حسب صوتها"
+  }
+ ],
+ "g4e-4-10": [
+  {
+   "t": "m",
+   "q": "Which one is a Green Park rule?",
+   "o": [
+    "You must put litter in the bin.",
+    "You must feed the birds.",
+    "You must swim in the river.",
+    "You mustn't walk on the path."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط كل قاعدةٍ من قواعد Green Park بسببها (must/mustn't)"
+  },
+  {
+   "t": "m",
+   "q": "What does a sound artist do?",
+   "o": [
+    "makes sounds for TV and films",
+    "drives a boat in a cave",
+    "repairs cars",
+    "tests beds"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تصنيف إجابات لعبة Challenge"
+  },
+  {
+   "t": "m",
+   "q": "Where does the boat driver work?",
+   "o": [
+    "in a cave",
+    "in a park",
+    "in a zoo",
+    "in a garage"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تصنيف إجابات لعبة Challenge"
+  },
+  {
+   "t": "m",
+   "q": "Look! The bus driver ___ the bus.",
+   "o": [
+    "is driving",
+    "are driving",
+    "drive",
+    "am driving"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "مراجعة المضارع المستمر: سائق الحافلة"
+  },
+  {
+   "t": "m",
+   "q": "Which Green Park rule keeps the birds healthy?",
+   "o": [
+    "You mustn't feed the birds.",
+    "You must walk on the path.",
+    "You must put litter in the bin.",
+    "You mustn't swim in the river."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "قواعد Green Park: لا إطعام الطيور"
+  },
+  {
+   "t": "t",
+   "q": "In Green Park, you must walk on the path.",
+   "a": true,
+   "lv": "k",
+   "obj": "ربط كل قاعدةٍ من قواعد Green Park بسببها (must/mustn't)"
+  },
+  {
+   "t": "t",
+   "q": "In Green Park, you can feed the birds.",
+   "a": false,
+   "lv": "k",
+   "obj": "قواعد Green Park: لا إطعام الطيور"
+  },
+  {
+   "t": "t",
+   "q": "'The bus driver is driving a bus' is in the present continuous.",
+   "a": true,
+   "lv": "a",
+   "obj": "مراجعة المضارع المستمر: سائق الحافلة"
+  }
+ ],
+ "g4e-4-11": [
+  {
+   "t": "m",
+   "q": "'This person is helping a sick animal.' Who is it?",
+   "o": [
+    "a vet",
+    "a mechanic",
+    "a chef",
+    "a lawyer"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط كل وصفٍ بالمهنة"
+  },
+  {
+   "t": "m",
+   "q": "'This person is driving a bus.' Who is it?",
+   "o": [
+    "a bus driver",
+    "a farmer",
+    "a dentist",
+    "a scientist"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط كل وصفٍ بالمهنة"
+  },
+  {
+   "t": "m",
+   "q": "Which job works with vehicles?",
+   "o": [
+    "mechanic",
+    "chef",
+    "farmer",
+    "dentist"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تصنيف المهن: طعامٌ أم مركبات"
+  },
+  {
+   "t": "m",
+   "q": "'This person is repairing a car.' Where is this person working?",
+   "o": [
+    "in a garage",
+    "in a restaurant",
+    "in a field",
+    "in a classroom"
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "نمط اختبار A1 Movers: This person is repairing a car."
+  },
+  {
+   "t": "m",
+   "q": "Which description is about a firefighter?",
+   "o": [
+    "This person is putting out a fire.",
+    "This person is cooking some food.",
+    "This person is repairing a car.",
+    "This person is working in a field."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "نمط اختبار A1 Movers: يعمل لدى فرقة الإطفاء"
+  },
+  {
+   "t": "t",
+   "q": "A chef works with food.",
+   "a": true,
+   "lv": "k",
+   "obj": "تصنيف المهن: طعامٌ أم مركبات"
+  },
+  {
+   "t": "t",
+   "q": "'This person is cooking some food' describes a mechanic.",
+   "a": false,
+   "lv": "a",
+   "obj": "ربط كل وصفٍ بالمهنة"
+  },
+  {
+   "t": "t",
+   "q": "'This person is working in a field' describes a farmer.",
+   "a": true,
+   "lv": "k",
+   "obj": "نصيحة اختبار الكتابة: قراءة الجمل بعناية أولاً"
+  }
+ ],
+ "g4e-4-gr": [
+  {
+   "t": "m",
+   "q": "How does Dad go to the garage?",
+   "o": [
+    "He walks.",
+    "He goes by bus.",
+    "He rides a bike.",
+    "He goes on a skateboard."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قراءة متدرّجة ١ (My Dad's a Mechanic): استرجاع تفصيلٍ صريح — كيف تذهب شهد إلى الورشة"
+  },
+  {
+   "t": "m",
+   "q": "What does Shahad give Dad?",
+   "o": [
+    "her skateboard",
+    "her bike",
+    "a white coat",
+    "a glass"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "قراءة متدرّجة ١ (My Dad's a Mechanic): ترتيب أحداث القصّة"
+  },
+  {
+   "t": "m",
+   "q": "What colour is the car that Dad is working on?",
+   "o": [
+    "white",
+    "red",
+    "blue",
+    "green"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "القراءتان: ربط كلّ شخصٍ بما يفعله الآن (Present continuous — نحو الوحدة)"
+  },
+  {
+   "t": "m",
+   "q": "Who is teaching the children some science?",
+   "o": [
+    "Mrs Sumaiya",
+    "Shahad",
+    "Dad",
+    "Ahmed"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "القراءتان: ربط كلّ شخصٍ بما يفعله الآن (Present continuous — نحو الوحدة)"
+  },
+  {
+   "t": "m",
+   "q": "Why does Shahad give Dad her skateboard?",
+   "o": [
+    "So Dad can get his tools and screws.",
+    "So Dad can go home quickly.",
+    "So Dad can play.",
+    "So Dad can clean the car."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "قراءة متدرّجة ١ (My Dad's a Mechanic): سبب المشكلة — الأب تحت السيارة"
+  },
+  {
+   "t": "t",
+   "q": "Ahmed is putting blue powder in his glass.",
+   "a": true,
+   "lv": "a",
+   "obj": "القراءتان: تمييز ما ورد في قصّة الورشة ممّا ورد في قصّة المختبر"
+  },
+  {
+   "t": "t",
+   "q": "Green doors are in 'My Dad's a Mechanic'.",
+   "a": true,
+   "lv": "a",
+   "obj": "القراءتان: تمييز ما ورد في قصّة الورشة ممّا ورد في قصّة المختبر"
+  },
+  {
+   "t": "t",
+   "q": "Mrs Sumaiya says you must put a lot of blue powder in the glass.",
+   "a": false,
+   "lv": "k",
+   "obj": "قراءة متدرّجة ٢ (I Want to Be a Scientist!): إكمال قاعدةٍ (You must only…) — نحو الوحدة"
+  }
+ ],
+ "g4e-lc2-1": [
+  {
+   "t": "m",
+   "q": "What shouldn't you do if you have a sore throat?",
+   "o": [
+    "shout",
+    "drink water",
+    "rest",
+    "have some medicine"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "ربط كل علّةٍ بنصيحتها"
+  },
+  {
+   "t": "m",
+   "q": "Sami has a cold. What should he do?",
+   "o": [
+    "rest in bed",
+    "go to school",
+    "play football",
+    "shout"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "الصحّة: سامي مصابٌ بالزكام — يرتاح في الفراش"
+  },
+  {
+   "t": "m",
+   "q": "Which one is an illness?",
+   "o": [
+    "a cold",
+    "medicine",
+    "water",
+    "bed"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "التمييز بين العلّة والعلاج"
+  },
+  {
+   "t": "m",
+   "q": "Huda has a headache. Which is good advice?",
+   "o": [
+    "She shouldn't play video games.",
+    "She should play video games all day.",
+    "She should shout.",
+    "She should go to school."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "الصحّة: الصداع وألعاب الفيديو"
+  },
+  {
+   "t": "m",
+   "q": "Ali has a cold. Why shouldn't he go to school?",
+   "o": [
+    "He should rest in bed and get better.",
+    "The school is closed.",
+    "He doesn't like school.",
+    "It's the weekend."
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "الصحّة: سامي مصابٌ بالزكام — يرتاح في الفراش"
+  },
+  {
+   "t": "t",
+   "q": "Medicine is an illness.",
+   "a": false,
+   "lv": "k",
+   "obj": "التمييز بين العلّة والعلاج"
+  },
+  {
+   "t": "t",
+   "q": "When you are ill, you should rest in bed.",
+   "a": true,
+   "lv": "k",
+   "obj": "تصنيف الأفعال: يجب فعلها أم لا عند المرض"
+  },
+  {
+   "t": "t",
+   "q": "If you have a sore throat, you should shout.",
+   "a": false,
+   "lv": "a",
+   "obj": "ربط كل علّةٍ بنصيحتها"
+  }
+ ],
+ "g4e-lc2-2": [
+  {
+   "t": "m",
+   "q": "The doctor asks, 'What's the matter?' What do you say?",
+   "o": [
+    "I have a cold.",
+    "I'm ten years old.",
+    "It's on the left.",
+    "I'm from Oman."
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "حوار الطبيب: What's the matter؟"
+  },
+  {
+   "t": "m",
+   "q": "Which question asks the doctor for advice?",
+   "o": [
+    "What should I do?",
+    "What's your name?",
+    "Where are you from?",
+    "What time is it?"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "حوار الطبيب: What should I do؟"
+  },
+  {
+   "t": "m",
+   "q": "Which is something you shouldn't do when you're ill?",
+   "o": [
+    "play video games",
+    "rest in bed",
+    "have some medicine",
+    "drink water"
+   ],
+   "a": 0,
+   "lv": "k",
+   "obj": "تصنيف الأفعال عند المرض: يجب أم لا يجب"
+  },
+  {
+   "t": "m",
+   "q": "The doctor says, 'You should rest in bed.' What do you say?",
+   "o": [
+    "Thank you, doctor.",
+    "Hello, doctor.",
+    "What's the matter?",
+    "I don't feel well."
+   ],
+   "a": 0,
+   "lv": "a",
+   "obj": "ربط جمل حوار الطبيب بردودها"
+  },
+  {
+   "t": "m",
+   "q": "What do you say first at the doctor's?",
+   "o": [
+    "Hello, doctor. I don't feel well.",
+    "Thank you, doctor.",
+    "You should rest in bed.",
+    "What should I do?"
+   ],
+   "a": 0,
+   "lv": "r",
+   "obj": "ترتيب زيارة الطبيب"
+  },
+  {
+   "t": "t",
+   "q": "'I don't feel well' means you are ill.",
+   "a": true,
+   "lv": "k",
+   "obj": "حوار الطبيب: I don't feel well."
+  },
+  {
+   "t": "t",
+   "q": "'You should go to school' is good advice for a cold.",
+   "a": false,
+   "lv": "a",
+   "obj": "تصنيف الأفعال عند المرض: يجب أم لا يجب"
+  },
+  {
+   "t": "t",
+   "q": "The doctor says, 'Thank you, doctor.'",
+   "a": false,
+   "lv": "k",
+   "obj": "ربط جمل حوار الطبيب بردودها"
+  }
+ ]
+}
