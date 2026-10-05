@@ -215,6 +215,15 @@ function openBook(key){
   else titleEl.textContent = idx.book;
   const backBtn = document.querySelector('#lessonsScreen .back');
   if(backBtn) backBtn.innerHTML = enBookHead ? '<bdi>← Back to books</bdi>' : '→ رجوع للكتب';
+  /* أيقونةُ «العب» في رأسِ الفهرس: وضعُ المطوّرِ فقط حتى اعتمادِ إطلاقِ الألعاب. */
+  const gamesBtn = document.getElementById('gamesBtn');
+  if(gamesBtn){
+    const devOn = !!(window.ShoogpLock && ShoogpLock.isDevMode());
+    gamesBtn.hidden = !devOn;
+    gamesBtn.href = 'games.html?book=' + encodeURIComponent(key);
+    const lbl = gamesBtn.querySelector('span');
+    if(lbl) lbl.textContent = enBookHead ? 'Play' : 'العب';
+  }
   const totalL = idx.units.reduce((s,u)=>s+u.lessons.length,0);
   const list=document.getElementById('lessons');list.innerHTML='';
   /* كتابٌ له بطاقة ولمّا تُبنَ دروسُه بعد: يُعرض بلطفٍ بدل قائمةٍ فارغة صامتة.
