@@ -350,9 +350,10 @@ html.en body *{unicode-bidi:plaintext}
         <svg id="scene" viewBox="40 60 690 1040" preserveAspectRatio="xMidYMax slice" role="img" aria-label="طائرتا الفريقين ترتفعان فوق مدرّجات الجبل الأخضر">
           <rect x="-2000" y="-2000" width="5000" height="2400" fill="#8CC3EE"/>
           <g id="bg"></g>
-          <g id="strings"></g>
           <g id="kiteb"></g>
           <g id="kitea"></g>
+          <!-- الخيط أمام الطائرة: يخرج من ملتقى العودين ويتدلّى نحو الأرض -->
+          <g id="strings"></g>
           <g id="fx" pointer-events="none"></g>
         </svg>
         <div class="chip" id="score"></div>
@@ -590,7 +591,9 @@ const BW = 100, BH = BW*766/871, BX = -14, BY = 74; // الجفير المعلّ
 const LANEX = {a:548, b:222};
 let Y0 = 830, STEP = 72;
 const CUR = {a:0, b:0};
-const SLOTS = [[-26,-6],[-9,-7],[8,-6],[25,-7],[-18,-15],[0,-16],[18,-15],[-30,-12],[30,-12],[-8,-24],[10,-24],[0,-31]];
+/* أماكن الورد على فوهة الجفير (مركز الوردة نسبةً إلى أعلى صورة الجفير): الصفّ الأول يغوص خلف حافّته الأمامية
+   فيبدو الورد داخله كهدايا لعبة البالونات، ثم صفّان أعلى منه. فوهة الجفير عند ٣١٪ من ارتفاع صورته. */
+const SLOTS = [[-30,26],[-10,27],[10,27],[30,26],[-20,20],[0,19],[20,20],[-36,22],[36,22],[-10,13],[10,13],[0,8]];
 let WON = null;
 
 function el(tag,attrs,parent){ const e=document.createElementNS(SVGNS,tag); for(const k in attrs) e.setAttribute(k,attrs[k]); if(parent) parent.appendChild(e); return e; }
@@ -600,7 +603,7 @@ function buildScene(){
   $('bg').innerHTML=im(BGX,false);
   ['b','a'].forEach(t=>{
     $('kite'+t).innerHTML=`<g class="kk">
-      <path d="M0,4 L${BX-BW*.36},${BY+6} M0,4 L${BX+BW*.36},${BY+6}" stroke="#7A5A33" stroke-width="2.2" fill="none"/>
+      <path d="M0,4 L${BX-BW*.44},${BY+BH*.33} M0,4 L${BX+BW*.44},${BY+BH*.33}" stroke="#7A5A33" stroke-width="2.2" fill="none"/>
       <g class="roses"></g>
       <g class="heap"></g>
       <image href="../art/jafeer.webp" x="${(BX-BW/2).toFixed(1)}" y="${BY}" width="${BW}" height="${BH.toFixed(1)}"/>
@@ -622,8 +625,14 @@ function loop(ms){
   let str='';
   ['a','b'].forEach((k,i)=>{ const [x,y]=kitePos(k,s), r=5*Math.sin(s*1.1+i*2.2)+(WON===k?3*Math.sin(s*5):0);
     const g=$('kite'+k).firstElementChild; g.setAttribute('transform',`translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${r.toFixed(2)})`);
-    const cx=x, cy=y-KH*.42, ex=x+(k==='a'?110:-110), ey=1130;
-    str+=`<path d="M${cx.toFixed(1)},${cy.toFixed(1)} Q${((cx+ex)/2+(k==='a'?40:-40)).toFixed(1)},${((cy+ey)/2+70).toFixed(1)} ${ex.toFixed(1)},${ey}" stroke="#fff" stroke-opacity=".85" stroke-width="2" fill="none"/>`; });
+    /* ملتقى العودين في صورة الطائرة (١٤٣،١٤٣ من ٢٩١×٤٣٨) مُدارٌ مع ميلان الطائرة */
+    const px=KW*(143/291-.48), py=-KH*.755+KH*(143/438), rr=r*Math.PI/180;
+    const cx=x+px*Math.cos(rr)-py*Math.sin(rr), cy=y+px*Math.sin(rr)+py*Math.cos(rr);
+    /* الخيط يتدلّى: يخرج مائلاً إلى الخارج ثم ينحني نازلاً نحو الأرض، ويتمايل قليلاً */
+    const sd=k==='a'?1:-1, sw=10*Math.sin(s*.9+i*1.7), ex=x+sd*250, ey=1140;
+    const c1x=cx+sd*(120+sw), c1y=cy+40, c2x=ex-sd*(10-sw), c2y=ey-300;
+    str+=`<path d="M${cx.toFixed(1)},${cy.toFixed(1)} C${c1x.toFixed(1)},${c1y.toFixed(1)} ${c2x.toFixed(1)},${c2y.toFixed(1)} ${ex.toFixed(1)},${ey}" stroke="#fff" stroke-opacity=".9" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+      <circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="3" fill="#C9A06A"/>`; });
   $('strings').innerHTML=str;
 }
 
@@ -707,7 +716,7 @@ function pick(t){
     f.setAttribute('transform',`translate(${(sx+(tx-sx)*e).toFixed(1)} ${(sy+(ty-sy)*e-Math.sin(Math.PI*e)*90).toFixed(1)}) rotate(${(q*200).toFixed(0)})`);
     if(q<1) requestAnimationFrame(step);
     else { f.remove(); popSnd();
-      el('image',{href:'../art/rose.webp',class:'rose',width:26,height:21,x:(BX+SLOTS[n][0]-13).toFixed(1),y:(BY+SLOTS[n][1]-12).toFixed(1)},$('kite'+t).querySelector('.roses')); } };
+      el('image',{href:'../art/rose.webp',class:'rose',width:30,height:24,x:(BX+SLOTS[n][0]-15).toFixed(1),y:(BY+SLOTS[n][1]-12).toFixed(1)},$('kite'+t).querySelector('.roses')); } };
   requestAnimationFrame(step);
 }
 function petals(t,k){
@@ -721,7 +730,7 @@ function countL(n){ if(n===0) return 'استعدّوا للجولة القادم
 function win(t){
   WON=t; S.done=true; const other=t==='a'?'b':'a';
   $('kitea').parentNode.insertBefore($('kite'+other),$('kite'+t));
-  el('image',{href:'../art/roses.webp',class:'rose',width:104,height:68,x:(BX-52).toFixed(1),y:(BY-44).toFixed(1)},$('kite'+t).querySelector('.heap'));
+  el('image',{href:'../art/roses.webp',class:'rose',width:104,height:68,x:(BX-52).toFixed(1),y:(BY-30).toFixed(1)},$('kite'+t).querySelector('.heap'));
   sfx('win'); petals(t,26); later(()=>petals(t,20),700);
   const W=$(t==='a'?'teamA':'teamB'), L=$(other==='a'?'teamA':'teamB');
   W.classList.add('won');
