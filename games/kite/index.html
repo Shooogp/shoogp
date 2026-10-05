@@ -529,7 +529,7 @@ function ambStop(){
 document.addEventListener('pointerdown',()=>ambStart(),{passive:true});
 document.addEventListener('visibilitychange',()=>{ try{ if(!ac) return; if(document.hidden) ac.suspend(); else if(!muted) ac.resume(); }catch(e){} });
 
-/* ═════ تحدّي الطائرة الورقية (فريقان): خلفية الجبل الأخضر — ريح خفيفة بين الجبال وصقر يصيح أحياناً بصدى، وريح عند ارتفاع الطائرة ═════ */
+/* ═════ تحدّي الطائرة الورقية (فريقان): خلفية الجبل الأخضر — صقر يصيح أحياناً بصدى، وريح عند ارتفاع الطائرة فقط ═════ */
 /* صيحة الصقر: «كِييي» حادّة تنزل قليلاً، أحياناً متبوعة بصيحتين قصيرتين، مع صدى بعيد بين الجبال */
 function falconCry(){
   if(!amb || muted || document.hidden) return;
@@ -557,39 +557,20 @@ function ambStart(){
   if(amb || muted) return;
   try{
     const c=actx(); if(!c) return;
-    const out=c.createGain(); out.gain.value=0; out.connect(c.destination);
-    /* الصقر يمرّ بصدى خفيف كأنّه يرتدّ عن الجبال */
+    /* الخلفية: صقر يصيح أحياناً بصدى خفيف كأنّه يرتدّ عن الجبال (بلا صوت ريح — قرار المالك) */
     const gull=c.createGain(); gull.gain.value=1; gull.connect(c.destination);
     if(c.createDelay){ const dl=c.createDelay(1.5), fb=c.createGain(), ef=c.createBiquadFilter();
       dl.delayTime.value=.42; fb.gain.value=.28; ef.type='lowpass'; ef.frequency.value=1800;
       gull.connect(dl); dl.connect(ef); ef.connect(fb); fb.connect(dl); ef.connect(c.destination); }
-    /* الريح: ضجيج يمرّ في مرشّح نطاقيّ يتهادى تردّده وشدّته ببطء، فتسمع هبّاتٍ ناعمة وصفيراً خافتاً */
-    const n=noiseSrc(c,4); n.loop=true;
-    const bp=c.createBiquadFilter(); bp.type='bandpass'; bp.frequency.value=520; bp.Q.value=.9;
-    const lp=c.createBiquadFilter(); lp.type='lowpass'; lp.frequency.value=1600;
-    const sw=c.createGain(); sw.gain.value=.35;
-    n.connect(bp); bp.connect(lp); lp.connect(sw); sw.connect(out); n.start();
-    const n2=noiseSrc(c,3); n2.loop=true;
-    const wh=c.createBiquadFilter(); wh.type='bandpass'; wh.frequency.value=1100; wh.Q.value=9;
-    const whg=c.createGain(); whg.gain.value=.0;
-    n2.connect(wh); wh.connect(whg); whg.connect(out); n2.start();
-    out.gain.setTargetAtTime(.11,c.currentTime,1.5);
-    amb={out,gull,n,wt:null,gt:null,n2};
-    const gust=()=>{ if(!amb) return;
-      const t=c.currentTime, rise=2.2+Math.random()*2.5, peak=.45+Math.random()*.55;
-      try{ sw.gain.cancelScheduledValues(t); sw.gain.setTargetAtTime(peak,t,rise/3); sw.gain.setTargetAtTime(.22+Math.random()*.1,t+rise,1.8);
-        bp.frequency.cancelScheduledValues(t); bp.frequency.setTargetAtTime(420+Math.random()*520,t,rise/2.5);
-        const wf=900+Math.random()*700; wh.frequency.cancelScheduledValues(t); wh.frequency.setTargetAtTime(wf,t,rise/3); wh.frequency.setTargetAtTime(wf*.8,t+rise,1.5);
-        whg.gain.cancelScheduledValues(t); whg.gain.setTargetAtTime(peak*.55,t,rise/3); whg.gain.setTargetAtTime(0,t+rise,1.2); }catch(e){}
-      amb.wt=setTimeout(gust,(rise+2.5+Math.random()*3.5)*1000); };
+    amb={gull,gt:null};
     const hawk=(first)=>{ if(!amb) return; if(!first) falconCry(); amb.gt=setTimeout(hawk,(first?5000:15000)+Math.random()*(first?3000:13000)); };
-    gust(); hawk(true);
+    hawk(true);
   }catch(e){}
 }
 function ambStop(){
   if(!amb) return; const a=amb; amb=null;
-  try{ clearTimeout(a.wt); clearTimeout(a.gt); const t=ac.currentTime; a.out.gain.cancelScheduledValues(t); a.out.gain.setTargetAtTime(0,t,.15); a.gull.gain.setTargetAtTime(0,t,.05);
-    setTimeout(()=>{ try{ a.n.stop(); a.n2.stop(); a.out.disconnect(); a.gull.disconnect(); }catch(_){} },900); }catch(_){}
+  try{ clearTimeout(a.gt); a.gull.gain.setTargetAtTime(0,ac.currentTime,.05);
+    setTimeout(()=>{ try{ a.gull.disconnect(); }catch(_){} },900); }catch(_){}
 }
 function windSnd(dur){
   if(muted) return;
