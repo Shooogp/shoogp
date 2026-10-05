@@ -322,15 +322,15 @@ html.en body *{unicode-bidi:plaintext}
           <button class="next" id="next" type="button" hidden><img src="../art/btn-next.webp" alt=""><span>التالي</span></button>
         </div>
         <div class="done" id="done" hidden>
-          <h2 id="doneTitle">وصلت الغنجة إلى الجزيرة! ⛵</h2>
+          <h2 id="doneTitle">وصلت السفينة الشراعية إلى الجزيرة! ⛵</h2>
           <p id="doneText"></p>
-          <p class="fact">اشتهرت صور بصناعة السفن الخشبية الكبيرة مثل الغنجة، وأبحر بها العُمانيون قديماً إلى شرق أفريقيا والهند. وتُعرض في صور اليوم غنجة «فتح الخير» التي صُنعت فيها.</p>
+          <p class="fact">اشتهرت صور بصناعة السفن الخشبية الكبيرة مثل السفينة الشراعية، وأبحر بها العُمانيون قديماً إلى شرق أفريقيا والهند. وتُعرض في صور اليوم سفينة شراعية «فتح الخير» التي صُنعت فيها.</p>
           <button class="stone" id="again" type="button">العبوا من جديد</button>
         </div>
         </div>
       </div>
       <section class="stage" id="stage" aria-label="مشهد رحلة السفينة">
-        <svg id="scene" viewBox="0 0 768 768" preserveAspectRatio="xMidYMid slice" role="img" aria-label="غنجة تعترضها صخور وعواصف يزيحها صاروخ شوجب">
+        <svg id="scene" viewBox="0 0 768 768" preserveAspectRatio="xMidYMid slice" role="img" aria-label="سفينة شراعية تعترضها صخور وعواصف يزيحها صاروخ شوجب">
           <defs>
             <clipPath id="frontClip"><path id="crest"/></clipPath>
             <linearGradient id="skyTop" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4C93EE"/><stop offset="1" stop-color="#5DA2F2"/></linearGradient>
@@ -374,7 +374,7 @@ const UNITS = (function(){
   const x = BOOKDATA.units.find(x => 'u'+x.un === s) || BOOKDATA.units[0];
   return [{id:'u'+x.un, g:BOOK.grade, un:x.un, u:x.u, lab:'الوحدة '+d(x.un)+' كاملة: '+x.u, qs:all(x)}];
 })();
-/* ═════ لعبة السفينة: غنجة تبحر من صور إلى الجزيرة، وكل إجابة صحيحة تدفعها مرحلةً ═════ */
+/* ═════ لعبة السفينة: سفينة شراعية تبحر من صور إلى الجزيرة، وكل إجابة صحيحة تدفعها مرحلةً ═════ */
 const N = 6;
 const SVGNS = 'http://www.w3.org/2000/svg';
 const $ = id => document.getElementById(id);
@@ -387,8 +387,8 @@ function countQ(n){ if(n===1) return 'سؤال واحد'; if(n===2) return 'سؤ
 /* ═════ الصوت: كلّه مولَّد بالكود (WebAudio) بلا ملفات، ويخضع لزرّ الكتم ═════ */
 let ac=null, muted=false, eng=null, amb=null;
 /* التعليمات الصوتية (صوت راغب من داريجات): تُقال بدل الأسطر المكتوبة. تعمل داخل صفحة الألعاب لأن الإطار يرث إذن التشغيل */
-let voA=null;
-function vo(name){ if(muted) return; try{ if(voA) voA.pause(); voA=new Audio('../audio/'+name+'.mp3'); const p=voA.play(); if(p&&p.catch) p.catch(()=>{}); }catch(e){} }
+let voA=null; const VQ=(function(){ try{ return new URLSearchParams(location.search).get('v')||''; }catch(e){ return ''; } })();
+function vo(name){ if(muted) return; try{ if(voA) voA.pause(); voA=new Audio('../audio/'+name+'.mp3'+(VQ?'?v='+VQ:'')); const p=voA.play(); if(p&&p.catch) p.catch(()=>{}); }catch(e){} }
 function actx(){
   try{ ac = ac || new (window.AudioContext||window.webkitAudioContext)(); if(ac.state==='suspended') ac.resume(); return ac; }
   catch(e){ return null; }
@@ -540,10 +540,10 @@ function splashSnd(){
 
 /* ═════ المشهد ═════ */
 const BGW = 1376, CREST = 548;                               // عرض صورة البحر وخطّ الماء أمام السفينة
-const SHIP = {w:370, h:370*658/1186, x:410, wl:.87};          // الغنجة وموضع خطّ مائها من ارتفاعها
+const SHIP = {w:370, h:370*658/1186, x:410, wl:.87};          // السفينة الشراعية وموضع خطّ مائها من ارتفاعها
 const LEG = 560;                                             // مسافة المرحلة الواحدة (تمرير الخلفية)
-const APPROACH = 32;                                         // ثوانٍ حتى تصل العقبة إلى مقدّمة الغنجة
-const OB_X0 = -40, OB_X1 = SHIP.x - SHIP.w*.40;            // من خارج المشهد يساراً إلى مقدّمة الغنجة
+const APPROACH = 32;                                         // ثوانٍ حتى تصل العقبة إلى مقدّمة السفينة الشراعية
+const OB_X0 = -40, OB_X1 = SHIP.x - SHIP.w*.40;            // من خارج المشهد يساراً إلى مقدّمة السفينة الشراعية
 const RK_NOSE = [140,186];
 const ROCKET = `<g class="flameG"><path class="fo" d="M-9,29 C-9.5,44 -3.5,60 0,66 C3.5,60 9.5,44 9,29 Z" fill="url(#foG)"/><path class="fi" d="M-5,29 C-5,40 -2,50 0,54 C2,50 5,40 5,29 Z" fill="url(#fiG)"/></g><image href="../art/rocket.png" x="-22.4" y="-40" width="44.7" height="72"/>`;
 function el(tag,attrs,parent){ const e=document.createElementNS(SVGNS,tag); for(const k in attrs) e.setAttribute(k,attrs[k]); if(parent) parent.appendChild(e); return e; }
@@ -645,7 +645,7 @@ function answer(btn,good){
     S.errors++; btn.classList.add('no'); sfx('no'); hit(false);
   }
 }
-/* الإجابة الصحيحة: شعاع من الصاروخ يفتّت العقبة، ثم تُبحر الغنجة مرحلة */
+/* الإجابة الصحيحة: شعاع من الصاروخ يفتّت العقبة، ثم تُبحر السفينة الشراعية مرحلة */
 function clearOb(){
   const o=OB; o.st='gone'; const j=job, rk=$('rkG'); rk.classList.add('boost'); ignite();
   const len=Math.hypot(o.x-RK_NOSE[0],o.y-60-RK_NOSE[1]).toFixed(0), st=`--len:${len};stroke-dasharray:${len};stroke-dashoffset:${len}`;
@@ -660,7 +660,7 @@ function clearOb(){
     sail();
   },480);
 }
-/* الإجابة الخاطئة أو وصول العقبة: تصطدم بالغنجة فتتضرّر وتتراجع مرحلة */
+/* الإجابة الخاطئة أو وصول العقبة: تصطدم بالسفينة الشراعية فتتضرّر وتتراجع مرحلة */
 function hit(timeout){
   const o=OB; if(!o || o.st!=='come') return;
   if(timeout){ S.answered=true; S.turns++; S.errors++; $('opts').classList.add('locked'); }
@@ -707,7 +707,7 @@ function wave(){
   for(let i=0;i<16;i++){ const a=-Math.PI*(.2+Math.random()*.6), d=50+Math.random()*90;
     const c=el('circle',{cx:bx+Math.random()*120,cy:CREST-10,r:4+Math.random()*6,fill:'#E8FAFF',class:'drop',style:`--dx:${(Math.cos(a)*d).toFixed(0)}px;--dy:${(Math.sin(a)*d).toFixed(0)}px`},$('fx')); setTimeout(()=>c.remove(),1050); }
 }
-/* ═════ الوصول: الجزيرة بنخيلها تظهر أمام الغنجة ═════ */
+/* ═════ الوصول: الجزيرة بنخيلها تظهر أمام السفينة الشراعية ═════ */
 function arrive(){
   const D=$('dest'), x0=scrollX;
   let s=`<g id="isl"><ellipse cx="0" cy="${CREST+10}" rx="230" ry="44" fill="#E9CF94"/><ellipse cx="0" cy="${CREST-2}" rx="200" ry="30" fill="#F3DDA8"/>`;
@@ -717,7 +717,7 @@ function arrive(){
   const isl=$('isl'), j=++job; windSnd(2);
   tween(2200,q=>{ const e=1-Math.pow(1-q,3); scrollX=x0+260*e; isl.setAttribute('transform',`translate(${(-250+290*e).toFixed(1)} 0)`); },()=>{
     sfx('win'); fireworks();
-    $('pipText').textContent='وصلت الغنجة'; $('kindBadge').textContent='أحسنتم';
+    $('pipText').textContent='وصلت السفينة الشراعية'; $('kindBadge').textContent='أحسنتم';
     $('qwrap').hidden=true; $('foot').hidden=true; $('done').hidden=false;
     $('doneText').textContent='أزحتم '+ar(S.cleared)+' عقبات وأبحرتم من صور إلى الجزيرة في '+countQ(S.turns)+(S.errors===0?' بلا أي خطأ.':'، وتعلّمتم من '+(S.errors===1?'خطأ واحد':S.errors===2?'خطأين':ar(S.errors)+(S.errors<=10?' أخطاء':' خطأً'))+'.');
     $('again').focus({preventScroll:true});

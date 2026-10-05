@@ -526,8 +526,8 @@ function countQ(n){
 /* ═════ الصوت: كلّه مولَّد بالكود (WebAudio) بلا ملفات، ويخضع لزرّ الكتم ═════ */
 let ac=null, muted=false, eng=null, amb=null;
 /* التعليمات الصوتية (صوت راغب من داريجات): تُقال بدل الأسطر المكتوبة. تعمل داخل صفحة الألعاب لأن الإطار يرث إذن التشغيل */
-let voA=null;
-function vo(name){ if(muted) return; try{ if(voA) voA.pause(); voA=new Audio('../audio/'+name+'.mp3'); const p=voA.play(); if(p&&p.catch) p.catch(()=>{}); }catch(e){} }
+let voA=null; const VQ=(function(){ try{ return new URLSearchParams(location.search).get('v')||''; }catch(e){ return ''; } })();
+function vo(name){ if(muted) return; try{ if(voA) voA.pause(); voA=new Audio('../audio/'+name+'.mp3'+(VQ?'?v='+VQ:'')); const p=voA.play(); if(p&&p.catch) p.catch(()=>{}); }catch(e){} }
 function actx(){
   try{ ac = ac || new (window.AudioContext||window.webkitAudioContext)(); if(ac.state==='suspended') ac.resume(); return ac; }
   catch(e){ return null; }
@@ -788,7 +788,7 @@ function resetScene(){
   $('crane').innerHTML=''; $('crane').removeAttribute('class'); engineStop(.1);
 }
 function newGame(unitId){
-  resetScene(); S=fresh(unitId); later(()=>vo('build-instr'),500); $('unit').value=S.unitId;
+  resetScene(); S=fresh(unitId); later(()=>vo('build-'+((SC&&SC.id)||'sur')+'-instr'),500); $('unit').value=S.unitId;
   try{ localStorage.setItem('sgame.'+BOOK.id+'.unit',S.unitId); }catch(e){}
   $('eyebrow').textContent=BOOK.subject+' · '+BOOK.grade+' · '+unit.lab;
   renderPips(); paintSky(); nextQuestion();
