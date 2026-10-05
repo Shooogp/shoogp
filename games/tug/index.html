@@ -171,7 +171,7 @@ button:focus-visible,select:focus-visible{outline:3px solid var(--sun);outline-o
 #sun{transition:transform 1.6s cubic-bezier(.4,0,.2,1),opacity 1.2s}
 .booting #sun,.booting #tint,.booting #dusk{transition:none}
 #stars,#lights,#moonGlow{opacity:0;transition:opacity 1.4s}
-#moon{opacity:.7;transition:opacity 1.4s}
+#moon{opacity:0;transition:opacity 1.4s}
 .is-night #stars,.is-night #moon,.is-night #lights,.is-night #moonGlow{opacity:1}
 .is-night #sun{opacity:0}
 .ghost{fill:rgba(255,255,255,.14);stroke:#1D2A55;stroke-opacity:.75;stroke-width:4;stroke-dasharray:13 11;stroke-linejoin:round}
@@ -302,6 +302,8 @@ html.embed .page{max-width:none;padding:4px 0 10px;grid-template-rows:auto auto 
 html.embed .topbar{position:absolute;inset-inline-end:8px;top:6px;z-index:5}
 @media (max-width:899px){html.embed .topbar{position:static;justify-content:flex-end}html.embed .page{grid-template-rows:none}}
 
+/* العناصر المخفية تبقى مخفية حتى لو كان لها display في التنسيق (لوحة «اكتمل البناء» كانت تظهر أثناء اللعب) */
+[hidden]{display:none!important}
 /* كتب الإنجليزية: كل سطر يأخذ اتجاه أول حرف فيه، فلا تقفز علامات الترقيم والأرقام */
 html.en body *{unicode-bidi:plaintext}
 </style>
