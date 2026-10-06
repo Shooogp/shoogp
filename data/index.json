@@ -936,9 +936,9 @@
       {
         "unit": "حيّنا المتكامل",
         "lessons": [
-          { "title": "الحيّ الذي أعيش فيه", "file": "g1h-3-1", "open": false },
-          { "title": "الخدمات في حيّنا", "file": "g1h-3-2", "open": false },
-          { "title": "الحيّ الذي أريد", "file": "g1h-3-3", "open": false }
+          { "title": "الحيّ الذي أعيش فيه", "file": "g1h-3-1", "open": true },
+          { "title": "الخدمات في حيّنا", "file": "g1h-3-2", "open": true },
+          { "title": "الحيّ الذي أريد", "file": "g1h-3-3", "open": true }
         ]
       }
     ]

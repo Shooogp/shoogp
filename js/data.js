@@ -694,9 +694,9 @@ window.DATA_FALLBACK = {
         { title:"شجرة عائلتي", file:"g1h-2-3", open:true }
       ]},
       { unit:"حيّنا المتكامل", lessons:[
-        { title:"الحيّ الذي أعيش فيه", file:"g1h-3-1", open:false },
-        { title:"الخدمات في حيّنا", file:"g1h-3-2", open:false },
-        { title:"الحيّ الذي أريد", file:"g1h-3-3", open:false }
+        { title:"الحيّ الذي أعيش فيه", file:"g1h-3-1", open:true },
+        { title:"الخدمات في حيّنا", file:"g1h-3-2", open:true },
+        { title:"الحيّ الذي أريد", file:"g1h-3-3", open:true }
       ]}
     ]},
     "g2-dini-1": { book:"ديني حياتي (الجزء الأول) — الصف الثاني", units:[
