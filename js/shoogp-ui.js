@@ -56,7 +56,7 @@ function imgURL(name){ return IMG_BASE + name + IMG_VER; }
    يكسرُ الفهرسَ والرموزَ والأغلفة)، واسمُ المادةِ يتبعُ أسماءَ صورِ إطارِها
    `frame-deeny-*.png`. فالجدولُ هذا هو **موضعُ اللقاءِ** بين التسميتين. */
 var SUBJECT_BY_KEY_SUFFIX={ '-sci':'science', '-math':'math',
-  '-arabic-1':'arabic', '-arabic-2':'arabic', '-dini-1':'deeny', '-dini-2':'deeny', '-it':'it', '-en':'en' };
+  '-arabic-1':'arabic', '-arabic-2':'arabic', '-dini-1':'deeny', '-dini-2':'deeny', '-it':'it', '-en':'en', '-hw':'hw' };
 var SHOOGP_BOOKS_SEED=[
   {key:'g1-sci',  prefix:'g1s-', subject:'science'},
   {key:'g2-sci',  prefix:'g2s-', subject:'science'},
@@ -69,7 +69,10 @@ var SHOOGP_BOOKS_SEED=[
   {key:'g2-math', prefix:'g2m-', subject:'math'},
   /* اللغة الإنجليزية — الصف الأول (مرحلة ٣، مخفيّة بـdevOnly): عائلةُ إطارٍ
      «تجليد كتاب ذهبي» مبنيّةٌ في المرحلة ٥ (FAMILY_BY_SUBJECT['en']='en'). */
-  {key:'g1-en', prefix:'g1e-', subject:'en'}
+  {key:'g1-en', prefix:'g1e-', subject:'en'},
+  /* الهوية والمواطنة — الصف الأول (مرحلة ٣، مخفيّة بـdevOnly): تعمل على عائلة `moon`
+     حتى تُبنى إطاراتُها في المرحلة ٥. */
+  {key:'g1-hw', prefix:'g1h-', subject:'hw'}
 ];
 /* بادئةُ دروسِ الكتابِ من مفتاحِه: `g4-sci`←`g4s-` و`g2-math`←`g2m-` (الصفُّ + أوّلُ
    حرفِ المادةِ). تُستعمَلُ للكتبِ المشتقّةِ فقط، وهي احتياطُ «غيابِ DATA» لا أكثر. */
