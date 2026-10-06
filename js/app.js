@@ -219,7 +219,9 @@ function openBook(key){
      القفل داخل صفحة الألعاب: الوحدات المجانية مفتوحة، والباقي برمز الكتاب نفسه. */
   const gamesBtn = document.getElementById('gamesBtn');
   if(gamesBtn){
-    gamesBtn.hidden = false;
+    /* كتابٌ بلا درسٍ مؤلَّفٍ واحد لا ألعابَ له بعد (لا ملفَّ في games/data/) — فتحُ الصفحةِ
+       كان يرمي «BOOKDATA is not defined». فالأيقونةُ تُخفى حتى يُؤلَّفَ أوّلُ درس. */
+    gamesBtn.hidden = !idx.units.some(u => u.lessons.some(l => l.open));
     gamesBtn.href = 'games/index.html?book=' + encodeURIComponent(key);
     const lbl = gamesBtn.querySelector('span');
     if(lbl) lbl.textContent = enBookHead ? 'Play' : 'العب';
@@ -246,11 +248,14 @@ function openBook(key){
   const num = enBook ? String : arNum;
   const unitWord = enBook ? 'Unit' : 'الوحدة';
   const lessonsWord = c => enBook ? (c===1 ? 'lesson' : 'lessons') : 'دروس';
+  /* تمييزُ العددِ العربيّ في سطرِ الكتاب: ١ «وحدة واحدة» · ٢ «وحدتان» · ٣–١٠ جمعٌ («١٠ دروس»)
+     · ١١ فما فوقُ مفردٌ منصوب («١٤ درساً»). كان ثابتاً على «درساً» فظهرَ «٩ درساً» و«١ وحدات». */
+  const arCount = (c, one, two, few, many) => c===1 ? one : c===2 ? two : `${arNum(c)} ${c<=10 ? few : many}`;
   /* `<bdi>`: نصٌّ لاتينيٌّ يبدأُ برقمٍ داخلَ صفحةٍ RTL يقفزُ رقمُه إلى آخرِه
      («units · 33 lessons 7») — والعزلُ يُعطيه اتجاهَ أوّلِ حرفٍ قويٍّ فيه. */
   document.getElementById('bookSub').innerHTML = '<bdi>' + (enBook
     ? `${idx.units.length} ${idx.units.length===1?'unit':'units'} · ${totalL} ${lessonsWord(totalL)}`
-    : `${arNum(idx.units.length)} وحدات · ${arNum(totalL)} درساً`) + '</bdi>';
+    : `${arCount(idx.units.length,'وحدة واحدة','وحدتان','وحدات','وحدةً')} · ${arCount(totalL,'درس واحد','درسان','دروس','درساً')}`) + '</bdi>';
   let n=0;
   /* تُجمَعُ الصناديقُ أوّلاً ولا تُلحَقُ بالقائمةِ في الحلقة: قرارُ «أيُّ وحدةٍ تدخلُ
      إطارَ القفل» يحتاجُ معرفةَ **آخرِ وحدةٍ مفتوحة**، ولا تُعرَفُ إلا بعدَ المرورِ
