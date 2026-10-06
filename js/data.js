@@ -681,6 +681,24 @@ window.DATA_FALLBACK = {
         { title:"ابحث", file:"g1i-3-4", open:true }
       ]}
     ]},
+    "g1-hw": { book:"الهوية والمواطنة — الصف الأول", units:[
+      { unit:"ذاتي المميّزة", lessons:[
+        { title:"من أنا؟", file:"g1h-1-1", open:false },
+        { title:"أنا مميّز", file:"g1h-1-2", open:false },
+        { title:"أعبّر عن مشاعري", file:"g1h-1-3", open:false },
+        { title:"أتعامل مع مشاعري", file:"g1h-1-4", open:false }
+      ]},
+      { unit:"عائلتي السعيدة", lessons:[
+        { title:"أسرتي", file:"g1h-2-1", open:false },
+        { title:"أقربائي", file:"g1h-2-2", open:false },
+        { title:"شجرة عائلتي", file:"g1h-2-3", open:false }
+      ]},
+      { unit:"حيّنا المتكامل", lessons:[
+        { title:"الحيّ الذي أعيش فيه", file:"g1h-3-1", open:false },
+        { title:"الخدمات في حيّنا", file:"g1h-3-2", open:false },
+        { title:"الحيّ الذي أريد", file:"g1h-3-3", open:false }
+      ]}
+    ]},
     "g2-dini-1": { book:"ديني حياتي (الجزء الأول) — الصف الثاني", units:[
       { unit:"التلاوة والحفظ", lessons:[
         { title:"التلاوة والحفظ", file:"g2d1-0-1", open:true }
