@@ -683,10 +683,10 @@ window.DATA_FALLBACK = {
     ]},
     "g1-hw": { book:"الهوية والمواطنة — الصف الأول", units:[
       { unit:"ذاتي المميّزة", lessons:[
-        { title:"من أنا؟", file:"g1h-1-1", open:false },
-        { title:"أنا مميّز", file:"g1h-1-2", open:false },
-        { title:"أعبّر عن مشاعري", file:"g1h-1-3", open:false },
-        { title:"أتعامل مع مشاعري", file:"g1h-1-4", open:false }
+        { title:"من أنا؟", file:"g1h-1-1", open:true },
+        { title:"أنا مميّز", file:"g1h-1-2", open:true },
+        { title:"أعبّر عن مشاعري", file:"g1h-1-3", open:true },
+        { title:"أتعامل مع مشاعري", file:"g1h-1-4", open:true }
       ]},
       { unit:"عائلتي السعيدة", lessons:[
         { title:"أسرتي", file:"g1h-2-1", open:false },
