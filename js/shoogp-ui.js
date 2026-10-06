@@ -72,7 +72,10 @@ var SHOOGP_BOOKS_SEED=[
   {key:'g1-en', prefix:'g1e-', subject:'en'},
   /* الهوية والمواطنة — الصف الأول (مخفيّة بـdevOnly): عائلةُ إطارٍ «جدارُ القلعةِ
      العُمانية» مبنيّةٌ في المرحلة ٥ (FAMILY_BY_SUBJECT['hw']='hw'). */
-  {key:'g1-hw', prefix:'g1h-', subject:'hw'}
+  {key:'g1-hw', prefix:'g1h-', subject:'hw'},
+  /* والصف الثاني (المرحلة ٣ ٢٠٢٦-١٠-٠٦، devOnly): يرثُ عائلةَ إطارِ hw وقشرةَ skin-sarooj
+     تلقائياً من المادّة — FAMILY_BY_SUBJECT وSUBJECT_SKINS بالمادّة لا بالكتاب. */
+  {key:'g2-hw', prefix:'g2h-', subject:'hw'}
 ];
 /* بادئةُ دروسِ الكتابِ من مفتاحِه: `g4-sci`←`g4s-` و`g2-math`←`g2m-` (الصفُّ + أوّلُ
    حرفِ المادةِ). تُستعمَلُ للكتبِ المشتقّةِ فقط، وهي احتياطُ «غيابِ DATA» لا أكثر. */

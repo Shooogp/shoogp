@@ -27,7 +27,8 @@ window.DATA_FALLBACK = {
         { key:"g2-dini-1", band:["#8fa83a","#6d8528"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-green", ic:"🕌", isNew:false, theme:"theme-dini2a", cover:"images/cover-g2-dini-1.jpg" },
         { key:"g2-dini-2", band:["#6d8a2c","#52691c"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-green", ic:"🕌", isNew:false, theme:"theme-dini2b", cover:"images/cover-g2-dini-2.jpg" },
         { key:"g2-it", band:["#4C9090","#006060"], title:"عالمي الرقمي", term:"الفصل الأول", color:"bk-teal", ic:"💻", isNew:true, onSale:true, theme:"theme-it2", cover:"images/cover-g2-it.jpg" },
-        { key:"g2-en", band:["#D8166C","#AD1156"], title:"اللغة الإنجليزية", term:"الفصل الأول", color:"bk-pink", ic:"💬", isNew:true, onSale:true, theme:"theme-en2", cover:"images/cover-g2-en.jpg" }
+        { key:"g2-en", band:["#D8166C","#AD1156"], title:"اللغة الإنجليزية", term:"الفصل الأول", color:"bk-pink", ic:"💬", isNew:true, onSale:true, theme:"theme-en2", cover:"images/cover-g2-en.jpg" },
+        { key:"g2-hw", band:["#C8784E","#A85E38"], title:"الهوية والمواطنة", term:"الفصل الأول", color:"bk-orange", ic:"🏡", isNew:true, devOnly:true, onSale:false, theme:"theme-hw2", cover:"images/cover-g2-hw.jpg" }
       ],
       /* ملاحظة: بطاقة علوم الثالث كانت مفقودة من هذا الاحتياط بينما هي في data/books.json —
          فكان الكتاب يختفي في وضع file:// وحده. أُضيفت هنا مع بطاقات الصف الجديدة. */
