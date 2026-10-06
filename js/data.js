@@ -689,9 +689,9 @@ window.DATA_FALLBACK = {
         { title:"أتعامل مع مشاعري", file:"g1h-1-4", open:true }
       ]},
       { unit:"عائلتي السعيدة", lessons:[
-        { title:"أسرتي", file:"g1h-2-1", open:false },
-        { title:"أقربائي", file:"g1h-2-2", open:false },
-        { title:"شجرة عائلتي", file:"g1h-2-3", open:false }
+        { title:"أسرتي", file:"g1h-2-1", open:true },
+        { title:"أقربائي", file:"g1h-2-2", open:true },
+        { title:"شجرة عائلتي", file:"g1h-2-3", open:true }
       ]},
       { unit:"حيّنا المتكامل", lessons:[
         { title:"الحيّ الذي أعيش فيه", file:"g1h-3-1", open:false },

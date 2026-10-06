@@ -103,7 +103,7 @@ function loadPics() {
     const m = /src="images\/([^"?]+)\.png/.exec(win.QPICS[k]);
     if (m) files.add(decodeURIComponent(m[1]));
   }
-  return { has: w => !!win.qPic(w), size: Object.keys(win.QPICS).length, files: [...files].sort() };
+  return { has: w => !!win.qPic(w), key: win.qPicKey, size: Object.keys(win.QPICS).length, files: [...files].sort() };
 }
 
 /* ── أسئلةُ المنصّة ──────────────────────────────────────────────── */
@@ -152,13 +152,26 @@ function groupsOf(q) {
 /* ── الفحص ───────────────────────────────────────────────────────── */
 const PICS = loadPics();
 const Q = questions();
-const drawn = w => PICS.has(w);
+/* ورسمُ البطاقةِ يُقرَأُ **كما يقرؤُه `qFace`** في `js/app.js`: إن حملَ السؤالُ `picMap`
+   فالكلمةُ التي يطابقُ مفتاحُها المجرَّدُ مفتاحاً فيه تُرسَمُ برسمِ ما يُحالُ إليه.
+   بغيرِه كانت عبارةٌ محالةٌ («سَقيُ الأَشجارِ» ← «مرشة-سقي») تُعَدُّ بلا رسمٍ فيُنذَرُ
+   منها خطأً وهي مرسومةٌ في المتصفّح (‏`g1h-2-1#١`، ٢٠٢٦-١٠-٠٦). */
+let curQ = null;
+const drawn = w => {
+  const pm = curQ && curQ.picMap;
+  if (pm && PICS.key) {
+    const kw = PICS.key(w);
+    for (const k in pm) if (PICS.key(k) === kw) return PICS.has(pm[k]);
+  }
+  return PICS.has(w);
+};
 
 const errors = [], notes = [];
 
 for (const lesson of Object.keys(Q)) {
   Q[lesson].forEach((q, i) => {
     const id = `${lesson}#${i + 1}`;
+    curQ = q;
     const G = groupsOf(q);
     if (!G.length) return;
     const live = G.filter(g => g.live);

@@ -49705,5 +49705,384 @@ window.QUESTIONS = {
       reason: "الصُّراخُ عَلى الآخَرينَ يُؤذيهِم ولا يُهَدِّئُني."
     }
 
+  ],
+
+  /* ═══════════════════════════════════════════════════════════════════
+     الهوية والمواطنة — الصف الأول — الوحدة ٢: عائلتي السعيدة
+     التوزيعُ نفسُه (٣ معرفة + ١ تطبيق + ١ استدلال، والإثرائيُّ آخراً)، وتناوبُ
+     الإثرائيِّ: تلوين ← ذاكرة ← اكتشف الخطأ.
+     ⚠️ **الأقرباءُ نصٌّ بلا رسم**: الشخصياتُ بلا ملامح فرسومُ الجدِّ والعمِّ والخالِ
+     لا تفرّقُ بينهم — والمرسومُ أشياؤهم (كاميرا الخال، سعفيّاتُ الجدّ…).
+     وبطاقاتُ الذاكرةِ نصّيةٌ لأنّ `memory` لا يقبلُ رسمَ عمودٍ واحد.
+     ⛔ **علمُ عُمانَ بلا الشعار** في كلِّ رسومِ الوحدة (قرارُ المالك ٢٠٢٦-١٠-٠٦).
+     شجرةُ العائلةِ رسمٌ واحدٌ بثلاثِ حالات: كاملةٌ (تحديد) · بأربعِ خاناتٍ (سحب) ·
+     باسمٍ خاطئٍ واحد (اكتشف الخطأ) — جهةُ الأبِ يميناً زرقاء، وجهةُ الأمِّ يساراً وردية.
+     ═══════════════════════════════════════════════════════════════════ */
+
+  // الصف الأول — الوحدة ٢: عائلتي السعيدة — الدرس ٢.١: أسرتي (كتاب التلميذ ص٥٢-٥٥)
+  "g1h-2-1": [
+
+    // ② توصيل — معرفة (هـ٢-١): نشاط ١ في الكتاب — الطرفانِ رسمٌ
+    {
+      type: "matching",
+      objective: "هـ٢-١: أُعرِّفُ الآخرينَ بأفرادِ أسرتي.",
+      level: "knowledge",
+      prompt: "صِلْ كُلَّ فَردٍ مِنْ أُسرَةِ شَمساءَ بِما يُحِبُّ.",
+      pics: true,
+      picMap: {
+        "الأَبُ": "شخصية-الأب", "الأُمُّ": "شخصية-الأم", "شَمساءُ": "شخصية-شمساء", "ناصِرٌ": "شخصية-ناصر",
+        "قِراءَةُ الصُّحُفِ": "صحيفة", "سَقيُ الأَشجارِ": "مرشة-سقي", "الرَّسمُ": "رسم",
+        "صُنعُ الأَشياءِ مِنْ جَديدٍ": "سيارة-معاد-تدويرها"
+      },
+      pairs: [
+        { a: "الأَبُ",   b: "قِراءَةُ الصُّحُفِ" },
+        { a: "الأُمُّ",   b: "سَقيُ الأَشجارِ" },
+        { a: "شَمساءُ", b: "الرَّسمُ" },
+        { a: "ناصِرٌ",  b: "صُنعُ الأَشياءِ مِنْ جَديدٍ" }
+      ]
+    },
+
+    // ④ صواب وخطأ — معرفة (هـ٢-١): «أخي أحمدُ الصغير» (ص٥٣)
+    {
+      type: "true-false",
+      objective: "هـ٢-١: أُعرِّفُ الآخرينَ بأفرادِ أسرتي.",
+      level: "knowledge",
+      statement: "أَحمَدُ هُوَ الأَخُ الأَكبَرُ لِشَمساءَ.",
+      answer: false
+    },
+
+    // ⑧ ملء الفراغ — معرفة (هـ٢-١): عملُ الوالدَين (ص٥٢)
+    {
+      type: "fill-blank",
+      objective: "هـ٢-١: أُعرِّفُ الآخرينَ بأفرادِ أسرتي.",
+      level: "knowledge",
+      prompt: "أَكمِلِ الجُملَةَ بِسَحبِ الكَلِمَةِ المُناسِبَةِ.",
+      text: "أُمُّ شَمساءَ تَعمَلُ {}، وأَبوها يَعمَلُ {}.",
+      answers: ["مُعَلِّمَةً", "مُهَندِساً"],
+      distractors: ["طَبيباً"]
+    },
+
+    // ① سحب وإفلات — تطبيق (هـ٢-١): أسرةُ شمساء في أربعِ بطاقات (بلا ملامح)
+    {
+      type: "drag-drop",
+      objective: "هـ٢-١: أُعرِّفُ الآخرينَ بأفرادِ أسرتي.",
+      level: "application",
+      prompt: "ساعِدْ شَمساءَ لِتُعَرِّفَ بِأُسرَتِها: اِسحَبْ كُلَّ كَلِمَةٍ إِلى صاحِبِها.",
+      svg: `<svg viewBox="0 0 360 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="أسرةُ شمساء: الأبُ والأمُّ وناصرٌ وأحمدُ الصغيرُ يحملُ العلم">
+        <g stroke="#111111" stroke-width="3">
+          <rect x="192" y="2" width="166" height="192" rx="18" fill="#E6F4FC"/>
+          <rect x="2" y="2" width="166" height="192" rx="18" fill="#FDE8EF"/>
+          <rect x="192" y="206" width="166" height="192" rx="18" fill="#EAF6DC"/>
+          <rect x="2" y="206" width="166" height="192" rx="18" fill="#FFF3D6"/>
+        </g>
+        <image href="images/شخصية-الأب.png" x="234" y="12" width="82" height="176"/>
+        <image href="images/شخصية-الأم.png" x="30" y="12" width="110" height="176"/>
+        <image href="images/شخصية-ناصر.png" x="243" y="236" width="64" height="152"/>
+        <image href="images/شخصية-أحمد.png" x="38" y="270" width="62" height="120"/>
+        <line x1="99" y1="262" x2="99" y2="354" stroke="#7A4C22" stroke-width="4" stroke-linecap="round"/><g stroke="#111111" stroke-width="1.5"><rect x="101" y="262" width="12" height="27" fill="#E02000"/><rect x="113" y="262" width="30" height="9" fill="#FFFFFF"/><rect x="113" y="271" width="30" height="9" fill="#E02000"/><rect x="113" y="280" width="30" height="9" fill="#2E9B3A"/></g>
+      </svg>`,
+      targets: [
+        { answer: "أَبي",          box: { x: 87, y: 28 }, dot: { x: 94.4, y: 24.5 } },
+        { answer: "أُمّي",          box: { x: 13, y: 28 }, dot: { x: 5.6,  y: 24.5 } },
+        { answer: "أَخي ناصِرٌ",   box: { x: 87, y: 72 }, dot: { x: 94.4, y: 75.5 } },
+        { answer: "أَخي أَحمَدُ",  box: { x: 13, y: 72 }, dot: { x: 5.6,  y: 75.5 } }
+      ]
+    },
+
+    // ③ اختيار من متعدد — استدلال (هـ٢-٥): تعاونُ الأسرةِ في القصّة (ص٥٢-٥٣)
+    {
+      type: "mcq",
+      objective: "هـ٢-٥: أُقدِّرُ كوني جزءاً من عائلتي.",
+      level: "reasoning",
+      prompt: "صَنَعَ ناصِرٌ عَلَماً لِأَحمَدَ، ورَسَمَت شَمساءُ العَلَمَ عَلى خَدِّهِ. ماذا نَستَنتِجُ عَنْ هذِهِ الأُسرَةِ؟",
+      options: ["أَفرادُها يَتَعاوَنونَ ويُحِبُّ بَعضُهُم بَعضاً", "كُلُّ فَردٍ فيها يَعمَلُ وَحدَهُ", "لا يَهتَمّونَ بِأَحمَدَ"],
+      answer: 0
+    },
+
+    // ⑭ التلوين بالتعليمات — إثرائيّ (هـ٢-١): العلمُ الذي يحملُه أحمد — بلا الشعار
+    {
+      type: "color",
+      objective: "هـ٢-١: أُعرِّفُ الآخرينَ بأفرادِ أسرتي.",
+      level: "knowledge",
+      prompt: "لَوِّنْ عَلَمَ بِلادي الَّذي يَحمِلُهُ أَحمَدُ: اِختَرْ لَوناً ثُمَّ اضغَطِ الجُزءَ.",
+      bg: "#fdf9ee",
+      showLabels: false,
+      palette: [
+        { name: "أَحمَرُ", color: "#E02000" },
+        { name: "أَبيَضُ", color: "#FFFFFF" },
+        { name: "أَخضَرُ", color: "#2E9B3A" },
+        { name: "أَزرَقُ", color: "#20A0FF" },
+        { name: "أَصفَرُ", color: "#FFD21F" }
+      ],
+      parts: [
+        { name: "الشَّريطُ الطّوليُّ", color: "#E02000" },
+        { name: "الشَّريطُ العُلويُّ", color: "#FFFFFF" },
+        { name: "الشَّريطُ الأَوسَطُ", color: "#E02000" },
+        { name: "الشَّريطُ السُّفليُّ", color: "#2E9B3A" }
+      ],
+      svg: `<svg viewBox="0 0 380 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="علمُ سلطنةِ عُمانَ بأربعةِ أجزاءٍ للتلوين">
+        <rect x="12" y="14" width="11" height="232" rx="5" fill="#C0C0C0" stroke="#111111" stroke-width="3"/>
+        <circle cx="17.5" cy="13" r="10" fill="#FFA000" stroke="#111111" stroke-width="3"/>
+        <rect class="cpart" data-name="الشَّريطُ الطّوليُّ" x="23" y="24" width="92" height="168"/>
+        <rect class="cpart" data-name="الشَّريطُ العُلويُّ" x="115" y="24" width="250" height="56"/>
+        <rect class="cpart" data-name="الشَّريطُ الأَوسَطُ" x="115" y="80" width="250" height="56"/>
+        <rect class="cpart" data-name="الشَّريطُ السُّفليُّ" x="115" y="136" width="250" height="56"/>
+      </svg>`
+    }
+
+  ],
+
+  // الصف الأول — الوحدة ٢: عائلتي السعيدة — الدرس ٢.٢: أقربائي (كتاب التلميذ ص٥٦-٥٩)
+  "g1h-2-2": [
+
+    // ② توصيل — معرفة (هـ٢-٣): نشاط ١ في الكتاب (ص٥٨)
+    {
+      type: "matching",
+      objective: "هـ٢-٣: أكتشفُ صلةَ القرابةِ بيني وبينَ أقربائي.",
+      level: "knowledge",
+      prompt: "صِلْ كُلَّ عِبارَةٍ بِاسمِ القَريبِ.",
+      pairs: [
+        { a: "أَخو أُمّي",  b: "خالي" },
+        { a: "أُختُ أَبي", b: "عَمَّتي" },
+        { a: "أَخو أَبي",  b: "عَمّي" },
+        { a: "أُختُ أُمّي", b: "خالَتي" }
+      ]
+    },
+
+    // ③ اختيار من متعدد — معرفة (هـ٢-٣): كاميرا الخال (ص٥٧) — الخياراتُ رسمٌ
+    {
+      type: "mcq",
+      objective: "هـ٢-٣: أكتشفُ صلةَ القرابةِ بيني وبينَ أقربائي.",
+      level: "knowledge",
+      prompt: "ماذا يُحِبُّ خالُ شَمساءَ؟",
+      pics: true,
+      picMap: { "التَّصويرُ": "كاميرا-رقمية", "صُنعُ السَّعَفِيّاتِ": "سعفيات", "كِتابَةُ الشِّعرِ": "قصيدة" },
+      options: ["التَّصويرُ", "صُنعُ السَّعَفِيّاتِ", "كِتابَةُ الشِّعرِ"],
+      answer: 0
+    },
+
+    // ④ صواب وخطأ — معرفة (هـ٢-٢) (ص٥٦)
+    {
+      type: "true-false",
+      objective: "هـ٢-٢: أُميّزُ بينَ مفهومِ الأسرةِ والأقرباء.",
+      level: "knowledge",
+      statement: "جَدّي وجَدَّتي مِنْ أَقرِبائي.",
+      answer: true
+    },
+
+    // ⑦ التصنيف — تطبيق (هـ٢-٢)
+    {
+      type: "classify",
+      objective: "هـ٢-٢: أُميّزُ بينَ مفهومِ الأسرةِ والأقرباء.",
+      level: "application",
+      prompt: "صَنِّفْ: مِنْ أُسرَتي، أَم مِنْ أَقرِبائي؟",
+      groups: [
+        { name: "أُسرَتي",   items: ["أَبي", "أُمّي", "أَخي"] },
+        { name: "أَقرِبائي", items: ["جَدَّتي", "عَمّي", "خالَتي"] }
+      ]
+    },
+
+    // ⑧ ملء الفراغ — استدلال (هـ٢-٣): عكسُ صلةِ القرابة
+    {
+      type: "fill-blank",
+      objective: "هـ٢-٣: أكتشفُ صلةَ القرابةِ بيني وبينَ أقربائي.",
+      level: "reasoning",
+      prompt: "فَكِّرْ ثُمَّ أَكمِلْ بِسَحبِ الكَلِمَةِ المُناسِبَةِ.",
+      text: "عَمّي أَخو أَبي، إِذَنْ أَبي {} عَمّي. وخالَتي أُختُ أُمّي، إِذَنْ أُمّي {} خالَتي.",
+      answers: ["أَخو", "أُختُ"],
+      distractors: ["والِدُ", "جَدُّ"]
+    },
+
+    // ⑰ بطاقات الذاكرة — إثرائيّ (هـ٢-٣): القريبُ ↔ ما يحبّه (ص٥٦-٥٧) — نصّيّة
+    {
+      type: "memory",
+      objective: "هـ٢-٣: أكتشفُ صلةَ القرابةِ بيني وبينَ أقربائي.",
+      level: "knowledge",
+      prompt: "اِقلِبْ بِطاقَتَينِ في كُلِّ دَورٍ، وطابِقْ كُلَّ قَريبٍ بِما يُحِبُّهُ.",
+      pairs: [
+        { a: "جَدّي",   b: "السَّعَفِيّاتُ" },
+        { a: "جَدَّتي", b: "القِصَصُ" },
+        { a: "عَمَّتي", b: "الأَلوانُ والزّينَةُ" },
+        { a: "خالَتي", b: "الشِّعرُ" }
+      ]
+    }
+
+  ],
+
+  // الصف الأول — الوحدة ٢: عائلتي السعيدة — الدرس ٢.٣: شجرة عائلتي (كتاب التلميذ ص٦٠-٦١)
+  "g1h-2-3": [
+
+    // ② توصيل — معرفة (هـ٢-٣): أقاربُ جهةِ الأب
+    {
+      type: "matching",
+      objective: "هـ٢-٣: أكتشفُ صلةَ القرابةِ بيني وبينَ أقربائي.",
+      level: "knowledge",
+      prompt: "صِلْ أَقارِبَ شَمساءَ مِنْ جِهَةِ أَبيها بِأَسمائِهِم.",
+      pairs: [
+        { a: "والِدُ أَبي",  b: "جَدّي" },
+        { a: "والِدَةُ أَبي", b: "جَدَّتي" },
+        { a: "أَخو أَبي",   b: "عَمّي" },
+        { a: "أُختُ أَبي",  b: "عَمَّتي" }
+      ]
+    },
+
+    // ④ صواب وخطأ — معرفة (هـ٢-٣): الجدّانِ كلاهما «جدّي»
+    {
+      type: "true-false",
+      objective: "هـ٢-٣: أكتشفُ صلةَ القرابةِ بيني وبينَ أقربائي.",
+      level: "knowledge",
+      statement: "والِدُ أُمّي هُوَ جَدّي أَيضاً.",
+      answer: true
+    },
+
+    // ⑤ تحديد الأجزاء — معرفة (هـ٢-٤): موضعُ الأبناءِ في الشجرة
+    {
+      type: "hotspot",
+      objective: "هـ٢-٤: أرسمُ شجرةَ عائلتي.",
+      level: "knowledge",
+      prompt: "أَينَ مَكانُ شَمساءَ وإِخوَتِها في شَجَرَةِ العائِلَةِ؟ اُنقُرْ عَلَيهِ.",
+      svg: `<svg viewBox="0 0 440 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="شجرةُ عائلةِ شمساء كاملةً: الأجدادُ والأعمامُ والأخوالُ والوالدانِ والأبناء">
+        <path d="M220,30 L220,300" stroke="#68411D" stroke-width="30" stroke-linecap="round"/>
+        <path d="M220,30 L220,300" stroke="#9A6636" stroke-width="22" stroke-linecap="round"/>
+        <path d="M226,40 L226,288" stroke="#B98551" stroke-width="5" stroke-linecap="round"/>
+        <path d="M96,45.0 L344,45.0" stroke="#68411D" stroke-width="12" stroke-linecap="round"/>
+        <path d="M96,45.0 L344,45.0" stroke="#9A6636" stroke-width="6" stroke-linecap="round"/>
+        <path d="M96,137.0 L344,137.0" stroke="#68411D" stroke-width="12" stroke-linecap="round"/>
+        <path d="M96,137.0 L344,137.0" stroke="#9A6636" stroke-width="6" stroke-linecap="round"/>
+        <circle cx="220" cy="14" r="13" fill="#60C020" stroke="#111111" stroke-width="2.5"/>
+        <circle cx="206" cy="24" r="10" fill="#60C020" stroke="#111111" stroke-width="2.5"/>
+        <circle cx="234" cy="24" r="10" fill="#60C020" stroke="#111111" stroke-width="2.5"/>
+        <rect x="344" y="8" width="92" height="74" rx="14" fill="#E6F4FC" stroke="#111111" stroke-width="3"/>
+        <text x="390.0" y="35" font-size="17" font-weight="800" text-anchor="middle" fill="#1060A0">والِدُ أَبي</text>
+        <text x="390.0" y="68" font-size="22" font-weight="800" text-anchor="middle" fill="#3d2f14">جَدّي</text>
+        <rect x="246" y="8" width="92" height="74" rx="14" fill="#E6F4FC" stroke="#111111" stroke-width="3"/>
+        <text x="292.0" y="35" font-size="17" font-weight="800" text-anchor="middle" fill="#1060A0">والِدَةُ أَبي</text>
+        <text x="292.0" y="68" font-size="22" font-weight="800" text-anchor="middle" fill="#3d2f14">جَدَّتي</text>
+        <rect x="102" y="8" width="92" height="74" rx="14" fill="#FDE8EF" stroke="#111111" stroke-width="3"/>
+        <text x="148.0" y="35" font-size="17" font-weight="800" text-anchor="middle" fill="#A02060">والِدُ أُمّي</text>
+        <text x="148.0" y="68" font-size="22" font-weight="800" text-anchor="middle" fill="#3d2f14">جَدّي</text>
+        <rect x="4" y="8" width="92" height="74" rx="14" fill="#FDE8EF" stroke="#111111" stroke-width="3"/>
+        <text x="50.0" y="35" font-size="17" font-weight="800" text-anchor="middle" fill="#A02060">والِدَةُ أُمّي</text>
+        <text x="50.0" y="68" font-size="22" font-weight="800" text-anchor="middle" fill="#3d2f14">جَدَّتي</text>
+        <rect x="344" y="100" width="92" height="74" rx="14" fill="#E6F4FC" stroke="#111111" stroke-width="3"/>
+        <text x="390.0" y="127" font-size="17" font-weight="800" text-anchor="middle" fill="#1060A0">أَخو أَبي</text>
+        <text x="390.0" y="160" font-size="22" font-weight="800" text-anchor="middle" fill="#3d2f14">عَمّي</text>
+        <rect x="246" y="100" width="92" height="74" rx="14" fill="#E6F4FC" stroke="#111111" stroke-width="3"/>
+        <text x="292.0" y="127" font-size="17" font-weight="800" text-anchor="middle" fill="#1060A0">أُختُ أَبي</text>
+        <text x="292.0" y="160" font-size="22" font-weight="800" text-anchor="middle" fill="#3d2f14">عَمَّتي</text>
+        <rect x="102" y="100" width="92" height="74" rx="14" fill="#FDE8EF" stroke="#111111" stroke-width="3"/>
+        <text x="148.0" y="127" font-size="17" font-weight="800" text-anchor="middle" fill="#A02060">أَخو أُمّي</text>
+        <text x="148.0" y="160" font-size="22" font-weight="800" text-anchor="middle" fill="#3d2f14">خالي</text>
+        <rect x="4" y="100" width="92" height="74" rx="14" fill="#FDE8EF" stroke="#111111" stroke-width="3"/>
+        <text x="50.0" y="127" font-size="17" font-weight="800" text-anchor="middle" fill="#A02060">أُختُ أُمّي</text>
+        <text x="50.0" y="160" font-size="22" font-weight="800" text-anchor="middle" fill="#3d2f14">خالَتي</text>
+        <image href="images/شخصية-الأم.png" x="140" y="180" width="66" height="106"/>
+        <image href="images/شخصية-الأب.png" x="234" y="180" width="50" height="106"/>
+        <image href="images/شخصية-أحمد.png" x="150" y="314" width="44" height="84"/>
+        <image href="images/شخصية-شمساء.png" x="197" y="296" width="46" height="102"/>
+        <image href="images/شخصية-ناصر.png" x="248" y="298" width="46" height="100"/>
+      </svg>`,
+      spot: { x: 50.5, y: 86.5, w: 34.5, h: 27 }
+    },
+
+    // ① سحب وإفلات — تطبيق (هـ٢-٤): إكمالُ الشجرة (نشاط ١ في الكتاب ص٦٠) — الخاناتُ الأربعُ
+    // وحدَها بخطٍّ أكبر: الشجرةُ الكاملةُ تصغرُ في مسرحِ السحبِ (أقصاه ٦٠٪ عرضاً) فلا تُقرأ.
+    {
+      type: "drag-drop",
+      objective: "هـ٢-٤: أرسمُ شجرةَ عائلتي.",
+      level: "application",
+      prompt: "أَكمِلْ شَجَرَةَ عائِلَةِ شَمساءَ: اِسحَبْ كُلَّ اسمٍ إِلى خانَتِهِ.",
+      svg: `<svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="شجرةُ عائلةِ شمساء بأربعِ خاناتٍ فارغة: جهةُ الأبِ يميناً وجهةُ الأمِّ يساراً">
+        <path d="M150,220 Q128,224 112,229 M150,220 Q172,224 188,229" stroke="#68411D" stroke-width="12" stroke-linecap="round" fill="none"/>
+        <path d="M150,220 Q128,224 112,229 M150,220 Q172,224 188,229" stroke="#9A6636" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <path d="M150,28 L150,222" stroke="#68411D" stroke-width="30" stroke-linecap="round"/>
+        <path d="M150,28 L150,222" stroke="#9A6636" stroke-width="22" stroke-linecap="round"/>
+        <path d="M156,38 L156,210" stroke="#B98551" stroke-width="5" stroke-linecap="round"/>
+        <path d="M120,50.0 L180,50.0" stroke="#68411D" stroke-width="12" stroke-linecap="round"/>
+        <path d="M120,50.0 L180,50.0" stroke="#9A6636" stroke-width="6" stroke-linecap="round"/>
+        <path d="M120,158.0 L180,158.0" stroke="#68411D" stroke-width="12" stroke-linecap="round"/>
+        <path d="M120,158.0 L180,158.0" stroke="#9A6636" stroke-width="6" stroke-linecap="round"/>
+        <circle cx="150" cy="13" r="12" fill="#60C020" stroke="#111111" stroke-width="2.5"/>
+        <circle cx="137" cy="22" r="9" fill="#60C020" stroke="#111111" stroke-width="2.5"/>
+        <circle cx="163" cy="22" r="9" fill="#60C020" stroke="#111111" stroke-width="2.5"/>
+        <rect x="166" y="8" width="130" height="84" rx="16" fill="#E6F4FC" stroke="#111111" stroke-width="3"/>
+        <text x="231.0" y="42" font-size="24" font-weight="800" text-anchor="middle" fill="#1060A0">والِدُ أَبي</text>
+        <line x1="182" y1="74" x2="280" y2="74" stroke="#1060A0" stroke-width="3" stroke-dasharray="8 7" stroke-linecap="round"/>
+        <rect x="166" y="116" width="130" height="84" rx="16" fill="#E6F4FC" stroke="#111111" stroke-width="3"/>
+        <text x="231.0" y="150" font-size="24" font-weight="800" text-anchor="middle" fill="#1060A0">أَخو أَبي</text>
+        <line x1="182" y1="182" x2="280" y2="182" stroke="#1060A0" stroke-width="3" stroke-dasharray="8 7" stroke-linecap="round"/>
+        <rect x="4" y="8" width="130" height="84" rx="16" fill="#FDE8EF" stroke="#111111" stroke-width="3"/>
+        <text x="69.0" y="42" font-size="24" font-weight="800" text-anchor="middle" fill="#A02060">والِدَةُ أُمّي</text>
+        <line x1="20" y1="74" x2="118" y2="74" stroke="#A02060" stroke-width="3" stroke-dasharray="8 7" stroke-linecap="round"/>
+        <rect x="4" y="116" width="130" height="84" rx="16" fill="#FDE8EF" stroke="#111111" stroke-width="3"/>
+        <text x="69.0" y="150" font-size="24" font-weight="800" text-anchor="middle" fill="#A02060">أُختُ أُمّي</text>
+        <line x1="20" y1="182" x2="118" y2="182" stroke="#A02060" stroke-width="3" stroke-dasharray="8 7" stroke-linecap="round"/>
+      </svg>`,
+      targets: [
+        { answer: "جَدّي",   box: { x: 87, y: 31 }, dot: { x: 96.7, y: 30.8 } },
+        { answer: "عَمّي",   box: { x: 87, y: 74 }, dot: { x: 96.7, y: 75.8 } },
+        { answer: "جَدَّتي", box: { x: 13, y: 31 }, dot: { x: 3.3,  y: 30.8 } },
+        { answer: "خالَتي", box: { x: 13, y: 74 }, dot: { x: 3.3,  y: 75.8 } }
+      ]
+    },
+
+    // ③ اختيار من متعدد — استدلال (هـ٢-٥): نشاط ٢ في الكتاب (ص٦١)
+    {
+      type: "mcq",
+      objective: "هـ٢-٥: أُقدِّرُ كوني جزءاً من عائلتي.",
+      level: "reasoning",
+      prompt: "رَسَمَت شَمساءُ شَجَرَةَ عائِلَتِها مَعَ أُمِّها، وعَلَّقَتها في غُرفَتِها. ماذا يَدُلُّ ذلِكَ؟",
+      options: ["أَنَّها فَخورَةٌ بِأَنَّها جُزءٌ مِنْ عائِلَتِها", "أَنَّها تُحِبُّ الأَشجارَ فَقَط", "أَنَّها لا تَعرِفُ أَقرِباءَها"],
+      answer: 0
+    },
+
+    // ⑫ اكتشف الخطأ — إثرائيّ (هـ٢-٤): «أخو أمّي: عمّي» والصوابُ «خالي» — الشجرةُ بلا الأشخاص
+    // (‏٤٤٠×٢٠٠) لِيكبرَ خطُّ البطاقات.
+    {
+      type: "find-error",
+      objective: "هـ٢-٤: أرسمُ شجرةَ عائلتي.",
+      level: "reasoning",
+      prompt: "في هذِهِ الشَّجَرَةِ اسمٌ وُضِعَ خَطَأً. اُنقُرْ عَلَيهِ.",
+      svg: `<svg viewBox="0 0 440 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="شجرةُ عائلةِ شمساء فيها اسمٌ واحدٌ خاطئ">
+        <path d="M220,180 Q198,184 182,190 M220,180 Q242,184 258,190" stroke="#68411D" stroke-width="12" stroke-linecap="round" fill="none"/>
+        <path d="M220,180 Q198,184 182,190 M220,180 Q242,184 258,190" stroke="#9A6636" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <path d="M220,30 L220,180" stroke="#68411D" stroke-width="30" stroke-linecap="round"/>
+        <path d="M220,30 L220,180" stroke="#9A6636" stroke-width="22" stroke-linecap="round"/>
+        <path d="M226,40 L226,168" stroke="#B98551" stroke-width="5" stroke-linecap="round"/>
+        <path d="M96,45.0 L344,45.0" stroke="#68411D" stroke-width="12" stroke-linecap="round"/>
+        <path d="M96,45.0 L344,45.0" stroke="#9A6636" stroke-width="6" stroke-linecap="round"/>
+        <path d="M96,137.0 L344,137.0" stroke="#68411D" stroke-width="12" stroke-linecap="round"/>
+        <path d="M96,137.0 L344,137.0" stroke="#9A6636" stroke-width="6" stroke-linecap="round"/>
+        <circle cx="220" cy="14" r="13" fill="#60C020" stroke="#111111" stroke-width="2.5"/>
+        <circle cx="206" cy="24" r="10" fill="#60C020" stroke="#111111" stroke-width="2.5"/>
+        <circle cx="234" cy="24" r="10" fill="#60C020" stroke="#111111" stroke-width="2.5"/>
+        <rect x="344" y="8" width="92" height="74" rx="14" fill="#E6F4FC" stroke="#111111" stroke-width="3"/>
+        <text x="390.0" y="35" font-size="17" font-weight="800" text-anchor="middle" fill="#1060A0">والِدُ أَبي</text>
+        <text x="390.0" y="68" font-size="22" font-weight="800" text-anchor="middle" fill="#3d2f14">جَدّي</text>
+        <rect x="246" y="8" width="92" height="74" rx="14" fill="#E6F4FC" stroke="#111111" stroke-width="3"/>
+        <text x="292.0" y="35" font-size="17" font-weight="800" text-anchor="middle" fill="#1060A0">والِدَةُ أَبي</text>
+        <text x="292.0" y="68" font-size="22" font-weight="800" text-anchor="middle" fill="#3d2f14">جَدَّتي</text>
+        <rect x="102" y="8" width="92" height="74" rx="14" fill="#FDE8EF" stroke="#111111" stroke-width="3"/>
+        <text x="148.0" y="35" font-size="17" font-weight="800" text-anchor="middle" fill="#A02060">والِدُ أُمّي</text>
+        <text x="148.0" y="68" font-size="22" font-weight="800" text-anchor="middle" fill="#3d2f14">جَدّي</text>
+        <rect x="4" y="8" width="92" height="74" rx="14" fill="#FDE8EF" stroke="#111111" stroke-width="3"/>
+        <text x="50.0" y="35" font-size="17" font-weight="800" text-anchor="middle" fill="#A02060">والِدَةُ أُمّي</text>
+        <text x="50.0" y="68" font-size="22" font-weight="800" text-anchor="middle" fill="#3d2f14">جَدَّتي</text>
+        <rect x="344" y="100" width="92" height="74" rx="14" fill="#E6F4FC" stroke="#111111" stroke-width="3"/>
+        <text x="390.0" y="127" font-size="17" font-weight="800" text-anchor="middle" fill="#1060A0">أَخو أَبي</text>
+        <text x="390.0" y="160" font-size="22" font-weight="800" text-anchor="middle" fill="#3d2f14">عَمّي</text>
+        <rect x="246" y="100" width="92" height="74" rx="14" fill="#E6F4FC" stroke="#111111" stroke-width="3"/>
+        <text x="292.0" y="127" font-size="17" font-weight="800" text-anchor="middle" fill="#1060A0">أُختُ أَبي</text>
+        <text x="292.0" y="160" font-size="22" font-weight="800" text-anchor="middle" fill="#3d2f14">عَمَّتي</text>
+        <rect x="102" y="100" width="92" height="74" rx="14" fill="#FDE8EF" stroke="#111111" stroke-width="3"/>
+        <text x="148.0" y="127" font-size="17" font-weight="800" text-anchor="middle" fill="#A02060">أَخو أُمّي</text>
+        <text x="148.0" y="160" font-size="22" font-weight="800" text-anchor="middle" fill="#3d2f14">عَمّي</text>
+        <rect x="4" y="100" width="92" height="74" rx="14" fill="#FDE8EF" stroke="#111111" stroke-width="3"/>
+        <text x="50.0" y="127" font-size="17" font-weight="800" text-anchor="middle" fill="#A02060">أُختُ أُمّي</text>
+        <text x="50.0" y="160" font-size="22" font-weight="800" text-anchor="middle" fill="#3d2f14">خالَتي</text>
+      </svg>`,
+      spot: { x: 33.6, y: 68.5, w: 20.9, h: 37 }
+    }
+
   ]
 };
