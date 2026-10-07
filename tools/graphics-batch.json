@@ -75,143 +75,75 @@
   "⛔ والعَلَمُ والخريطةُ وشجرةُ العائلةِ ومخطّطُ الحيِّ والمتاهةُ وبطاقةُ الهويّة",
   "SVG مبنيّةٌ مع السؤالِ لا مولَّدة (العَلَمُ بلا شعار — سياسةُ المادّة)."
  ],
- "batchId": "2026-10-06-hw-graphics-1",
+ "batchId": "2026-10-07-g2hw-graphics-1",
  "items": [
   {
-   "name": "hw-char-nasser",
-   "subject": "full-body standing Omani boy about seven years old seen from the front, wearing a plain white ankle-length dishdasha robe with a small tassel at the collar, a round embroidered Omani kumma cap in white with sky blue and teal embroidery, and brown sandals, arms relaxed at his sides"
+   "name": "g2hw-char-muadh",
+   "subject": "full-body Omani boy about seven years old sitting upright and confident in a grey wheelchair with two large wheels, seen from the front, wearing a plain white ankle-length dishdasha robe, a round embroidered Omani kumma cap in white with sky blue and teal embroidery, and brown sandals, both hands resting on the wheels"
   },
   {
-   "name": "hw-char-shamsa",
-   "subject": "full-body standing Omani girl about nine years old seen from the front, wearing a red headscarf hijab that covers all her hair and wraps under the chin, a long mustard-yellow Omani dress with red embroidery down the front and at the cuffs, red embroidered trousers at the ankles and brown sandals, arms relaxed at her sides"
+   "name": "g2hw-char-grandpa",
+   "subject": "full-body elderly Omani grandfather with a short white beard sitting in a brown wooden armchair, seen from the front, wearing a white ankle-length dishdasha and a plain white kumma cap, a light sky blue blanket over his shoulders because he is unwell, holding a brown walking cane in one hand"
   },
   {
-   "name": "hw-char-ahmed",
-   "subject": "full-body standing small boy about four years old seen from the front, with short black hair, wearing a green t-shirt, blue shorts and white sneakers, arms relaxed at his sides"
+   "name": "g2hw-char-imam",
+   "subject": "full-body standing Omani mosque imam seen from the front, an adult man with a short dark beard, wearing a white ankle-length dishdasha and a neatly wrapped plain white turban, a light brown bisht cloak with a thin gold edge over his shoulders, empty hands relaxed at his sides"
   },
   {
-   "name": "hw-char-father",
-   "subject": "full-body standing Omani man seen from the front, wearing a white ankle-length dishdasha robe with a small tassel at the collar and a wrapped Omani massar turban patterned in sky blue, white and red, and brown leather sandals, empty hands relaxed at his sides"
+   "name": "g2hw-char-neighbour",
+   "subject": "full-body standing Omani neighbour seen from the front, a middle-aged man with a grey moustache wearing a white ankle-length dishdasha and a wrapped brown and orange patterned massar turban, raising one hand in a friendly greeting wave"
   },
   {
-   "name": "hw-char-mother",
-   "subject": "full-body standing Omani woman seen from the front, wearing a long traditional Omani dress in leaf green with gold and red embroidery, matching embroidered trousers at the ankles, and a long orange and red patterned head shawl covering her hair and shoulders, empty hands relaxed at her sides"
+   "name": "g2hw-char-seller",
+   "subject": "full-body standing Omani grocery shopkeeper seen from the front, an adult man wearing a white dishdasha, a white kumma cap and a leaf green shop apron, holding a small wooden crate filled with oranges, bananas and apples"
   },
   {
-   "name": "hw-face-happy",
-   "prompt": "Create ONE single round cartoon emoji face expressing happiness, for a young child's emotions flashcard. The face is a plain round disc in a warm light-orange skin tone. Its features, drawn simply and clearly in dark brown: a big open smile showing white teeth and a red tongue, wide bright eyes, raised curved eyebrows. Glossy cartoon vector sticker style for a young child: plump round shape, bold saturated flat colours shaded with three crisp hard-edged bands, a broad white gloss highlight on the upper part of the disc, and a thin crisp near-black outline. The face floats on a pure white background with no ground line and no cast shadow. Square 1:1, centred, filling the frame. Only the round face itself: no body, no neck, no hair, no hands, no hat. One single standalone image only. ABSOLUTELY FORBIDDEN inside the image: any text, letters, words, numbers, labels, captions, borders, watermarks, and any colour palette, swatch or legend."
+   "name": "g2hw-char-friend",
+   "subject": "full-body standing Omani boy about seven years old seen from the front, wearing a plain white ankle-length dishdasha, a round kumma cap in white with leaf green embroidery, and brown sandals, holding a black and white football under one arm"
   },
   {
-   "name": "hw-face-sad",
-   "prompt": "Create ONE single round cartoon emoji face expressing sadness, for a young child's emotions flashcard. The face is a plain round disc in a warm light-orange skin tone. Its features, drawn simply and clearly in dark brown: a small down-turned mouth, eyebrows slanted upwards in the middle, eyes looking down, and one small sky blue tear drop on one cheek. Glossy cartoon vector sticker style for a young child: plump round shape, bold saturated flat colours shaded with three crisp hard-edged bands, a broad white gloss highlight on the upper part of the disc, and a thin crisp near-black outline. The face floats on a pure white background with no ground line and no cast shadow. Square 1:1, centred, filling the frame. Only the round face itself: no body, no neck, no hair, no hands, no hat. One single standalone image only. ABSOLUTELY FORBIDDEN inside the image: any text, letters, words, numbers, labels, captions, borders, watermarks, and any colour palette, swatch or legend."
+   "name": "g2hw-obj-khanjar",
+   "subject": "a small traditional Omani khanjar dagger in its curved silver sheath with simple engraved patterns, attached to a brown leather belt, lying flat"
   },
   {
-   "name": "hw-face-scared",
-   "prompt": "Create ONE single round cartoon emoji face expressing fear, for a young child's emotions flashcard. The face is a plain round disc in a warm light-orange skin tone. Its features, drawn simply and clearly in dark brown: eyes stretched wide open with small pupils, eyebrows raised high, a wavy worried mouth with clenched teeth, and one small sky blue sweat drop at the temple. Glossy cartoon vector sticker style for a young child: plump round shape, bold saturated flat colours shaded with three crisp hard-edged bands, a broad white gloss highlight on the upper part of the disc, and a thin crisp near-black outline. The face floats on a pure white background with no ground line and no cast shadow. Square 1:1, centred, filling the frame. Only the round face itself: no body, no neck, no hair, no hands, no hat. One single standalone image only. ABSOLUTELY FORBIDDEN inside the image: any text, letters, words, numbers, labels, captions, borders, watermarks, and any colour palette, swatch or legend."
+   "name": "g2hw-obj-stick",
+   "subject": "a single long straight brown wooden stick, slightly tilted diagonally"
   },
   {
-   "name": "hw-face-angry",
-   "prompt": "Create ONE single round cartoon emoji face expressing anger, for a young child's emotions flashcard. The face is a plain round disc in a warm light-orange skin tone. Its features, drawn simply and clearly in dark brown: eyebrows pulled down sharply into a V shape, narrowed eyes, a frowning mouth with clenched teeth, and red flushed cheeks. Glossy cartoon vector sticker style for a young child: plump round shape, bold saturated flat colours shaded with three crisp hard-edged bands, a broad white gloss highlight on the upper part of the disc, and a thin crisp near-black outline. The face floats on a pure white background with no ground line and no cast shadow. Square 1:1, centred, filling the frame. Only the round face itself: no body, no neck, no hair, no hands, no hat. One single standalone image only. ABSOLUTELY FORBIDDEN inside the image: any text, letters, words, numbers, labels, captions, borders, watermarks, and any colour palette, swatch or legend."
+   "name": "g2hw-obj-roses",
+   "subject": "a small bouquet of red and orange roses with green leaves standing in a short clear glass vase"
   },
   {
-   "name": "hw-scene-happy",
-   "prompt": "Create ONE single square picture of a cosy living room with a yellow sofa, where an Omani girl in a red hijab and mustard-yellow dress and an Omani boy in a white dishdasha and embroidered kumma cap sit side by side chatting happily, leaning towards each other, with three small red hearts floating above them.\n\nCRITICAL RULE - NO FACE: no person in the image has eyes, eye highlights, pupils, a mouth, a nose or eyebrows. Every head is a plain, smooth, blank skin-tone shape.\n\nGlossy cartoon vector illustration for a young child in a bright space-sticker style. Bold saturated flat colours from a warm childrens palette of orange, amber, sky blue, ocean blue, leaf green, pale yellow, red, grey, warm skin tone, soil brown and white. Never use purple, violet, pink or magenta. Every object is shaded with three or four crisp hard-edged bands of its own colour with a broad white gloss highlight on curved surfaces, and a thin crisp near-black outline around every object. Plump rounded forms. The whole square 1:1 frame is filled edge to edge with ONE simple scene on a plain, calm, flat-coloured background — only a few large colour areas, no tiny details, no speckles, no busy patterns. One single standalone image only.\n\nABSOLUTELY FORBIDDEN inside the image: any text, letters, words, numbers, labels, captions, borders, watermarks, and any colour palette, swatch or legend."
+   "name": "g2hw-scout-brave",
+   "prompt": "Create ONE single square picture of a dark night campsite with two green tents under a starry sky: an Omani boy scout about seven years old in a beige scout shirt and shorts, a green scout cap and a yellow neckerchief walks alone between the tents holding a lit yellow flashlight whose wide beam lights the path ahead.\n\nCRITICAL RULE - NO FACE: no person in the image has eyes, eye highlights, pupils, a mouth, a nose or eyebrows. Every head is a plain, smooth, blank skin-tone shape.\n\nGlossy cartoon vector illustration for a young child in a bright space-sticker style. Bold saturated flat colours from a warm childrens palette of orange, amber, sky blue, ocean blue, leaf green, pale yellow, red, grey, warm skin tone, soil brown and white. Never use purple, violet, pink or magenta. Every object is shaded with three or four crisp hard-edged bands of its own colour with a broad white gloss highlight on curved surfaces, and a thin crisp near-black outline around every object. Plump rounded forms. The whole square 1:1 frame is filled edge to edge with ONE simple scene on a plain, calm, flat-coloured background — only a few large colour areas, no tiny details, no speckles, no busy patterns. One single standalone image only.\n\nABSOLUTELY FORBIDDEN inside the image: any text, letters, words, numbers, labels, captions, borders, watermarks, flags, emblems, and any colour palette, swatch or legend."
   },
   {
-   "name": "hw-scene-angry",
-   "prompt": "Create ONE single square picture of a children's playroom floor where a toy robot lies broken in pieces beside a knocked-over tower of building blocks; a small boy in a green t-shirt holds a broken robot arm, and an older boy in a white dishdasha and kumma cap stands next to him with both fists clenched and stiff arms, a small jagged red scribble cloud above his head.\n\nCRITICAL RULE - NO FACE: no person in the image has eyes, eye highlights, pupils, a mouth, a nose or eyebrows. Every head is a plain, smooth, blank skin-tone shape.\n\nGlossy cartoon vector illustration for a young child in a bright space-sticker style. Bold saturated flat colours from a warm childrens palette of orange, amber, sky blue, ocean blue, leaf green, pale yellow, red, grey, warm skin tone, soil brown and white. Never use purple, violet, pink or magenta. Every object is shaded with three or four crisp hard-edged bands of its own colour with a broad white gloss highlight on curved surfaces, and a thin crisp near-black outline around every object. Plump rounded forms. The whole square 1:1 frame is filled edge to edge with ONE simple scene on a plain, calm, flat-coloured background — only a few large colour areas, no tiny details, no speckles, no busy patterns. One single standalone image only.\n\nABSOLUTELY FORBIDDEN inside the image: any text, letters, words, numbers, labels, captions, borders, watermarks, and any colour palette, swatch or legend."
+   "name": "g2hw-scout-kind",
+   "prompt": "Create ONE single square picture of a sunny campsite by a river: an Omani boy scout about seven years old in a beige scout shirt and shorts, a green scout cap and a yellow neckerchief kneels beside his scout friend, who sits on the ground holding his knee, and gently wraps a white bandage around the friend's knee; an open red first-aid bag with a white cross lies next to them.\n\nCRITICAL RULE - NO FACE: no person in the image has eyes, eye highlights, pupils, a mouth, a nose or eyebrows. Every head is a plain, smooth, blank skin-tone shape.\n\nGlossy cartoon vector illustration for a young child in a bright space-sticker style. Bold saturated flat colours from a warm childrens palette of orange, amber, sky blue, ocean blue, leaf green, pale yellow, red, grey, warm skin tone, soil brown and white. Never use purple, violet, pink or magenta. Every object is shaded with three or four crisp hard-edged bands of its own colour with a broad white gloss highlight on curved surfaces, and a thin crisp near-black outline around every object. Plump rounded forms. The whole square 1:1 frame is filled edge to edge with ONE simple scene on a plain, calm, flat-coloured background — only a few large colour areas, no tiny details, no speckles, no busy patterns. One single standalone image only.\n\nABSOLUTELY FORBIDDEN inside the image: any text, letters, words, numbers, labels, captions, borders, watermarks, flags, emblems, and any colour palette, swatch or legend."
   },
   {
-   "name": "hw-scene-sad",
-   "prompt": "Create ONE single square picture of a school playground on a sunny day: in the foreground a boy in a white dishdasha and kumma cap sits all alone on a bench with his head bowed and shoulders slumped, while far away in the background two other boys play football together.\n\nCRITICAL RULE - NO FACE: no person in the image has eyes, eye highlights, pupils, a mouth, a nose or eyebrows. Every head is a plain, smooth, blank skin-tone shape.\n\nGlossy cartoon vector illustration for a young child in a bright space-sticker style. Bold saturated flat colours from a warm childrens palette of orange, amber, sky blue, ocean blue, leaf green, pale yellow, red, grey, warm skin tone, soil brown and white. Never use purple, violet, pink or magenta. Every object is shaded with three or four crisp hard-edged bands of its own colour with a broad white gloss highlight on curved surfaces, and a thin crisp near-black outline around every object. Plump rounded forms. The whole square 1:1 frame is filled edge to edge with ONE simple scene on a plain, calm, flat-coloured background — only a few large colour areas, no tiny details, no speckles, no busy patterns. One single standalone image only.\n\nABSOLUTELY FORBIDDEN inside the image: any text, letters, words, numbers, labels, captions, borders, watermarks, and any colour palette, swatch or legend."
+   "name": "g2hw-scout-fast",
+   "prompt": "Create ONE single square picture of a sandy campsite: an Omani boy scout about seven years old in a beige scout shirt and shorts, a green scout cap and a yellow neckerchief runs fast with long strides, with motion lines behind him, carrying a full red bucket of water towards a small campfire whose flames are spreading on the dry grass.\n\nCRITICAL RULE - NO FACE: no person in the image has eyes, eye highlights, pupils, a mouth, a nose or eyebrows. Every head is a plain, smooth, blank skin-tone shape.\n\nGlossy cartoon vector illustration for a young child in a bright space-sticker style. Bold saturated flat colours from a warm childrens palette of orange, amber, sky blue, ocean blue, leaf green, pale yellow, red, grey, warm skin tone, soil brown and white. Never use purple, violet, pink or magenta. Every object is shaded with three or four crisp hard-edged bands of its own colour with a broad white gloss highlight on curved surfaces, and a thin crisp near-black outline around every object. Plump rounded forms. The whole square 1:1 frame is filled edge to edge with ONE simple scene on a plain, calm, flat-coloured background — only a few large colour areas, no tiny details, no speckles, no busy patterns. One single standalone image only.\n\nABSOLUTELY FORBIDDEN inside the image: any text, letters, words, numbers, labels, captions, borders, watermarks, flags, emblems, and any colour palette, swatch or legend."
   },
   {
-   "name": "hw-scene-scared",
-   "prompt": "Create ONE single square picture of a dark bedroom at night lit only by a small bedside lamp: a child lies in bed and pulls a sky blue blanket up over most of the head so only the top of the head shows, a scary dark shadow of a tree branch on the wall and a crescent moon in the window.\n\nCRITICAL RULE - NO FACE: no person in the image has eyes, eye highlights, pupils, a mouth, a nose or eyebrows. Every head is a plain, smooth, blank skin-tone shape.\n\nGlossy cartoon vector illustration for a young child in a bright space-sticker style. Bold saturated flat colours from a warm childrens palette of orange, amber, sky blue, ocean blue, leaf green, pale yellow, red, grey, warm skin tone, soil brown and white. Never use purple, violet, pink or magenta. Every object is shaded with three or four crisp hard-edged bands of its own colour with a broad white gloss highlight on curved surfaces, and a thin crisp near-black outline around every object. Plump rounded forms. The whole square 1:1 frame is filled edge to edge with ONE simple scene on a plain, calm, flat-coloured background — only a few large colour areas, no tiny details, no speckles, no busy patterns. One single standalone image only.\n\nABSOLUTELY FORBIDDEN inside the image: any text, letters, words, numbers, labels, captions, borders, watermarks, and any colour palette, swatch or legend."
+   "name": "g2hw-scout-smart",
+   "prompt": "Create ONE single square picture of a forest path that splits into two ways: an Omani boy scout about seven years old in a beige scout shirt and shorts, a green scout cap and a yellow neckerchief stands at the fork holding an open paper map in one hand and a round compass in the other, looking down at the compass to choose the right way.\n\nCRITICAL RULE - NO FACE: no person in the image has eyes, eye highlights, pupils, a mouth, a nose or eyebrows. Every head is a plain, smooth, blank skin-tone shape.\n\nGlossy cartoon vector illustration for a young child in a bright space-sticker style. Bold saturated flat colours from a warm childrens palette of orange, amber, sky blue, ocean blue, leaf green, pale yellow, red, grey, warm skin tone, soil brown and white. Never use purple, violet, pink or magenta. Every object is shaded with three or four crisp hard-edged bands of its own colour with a broad white gloss highlight on curved surfaces, and a thin crisp near-black outline around every object. Plump rounded forms. The whole square 1:1 frame is filled edge to edge with ONE simple scene on a plain, calm, flat-coloured background — only a few large colour areas, no tiny details, no speckles, no busy patterns. One single standalone image only.\n\nABSOLUTELY FORBIDDEN inside the image: any text, letters, words, numbers, labels, captions, borders, watermarks, flags, emblems, and any colour palette, swatch or legend."
   },
   {
-   "name": "hw-act-hug",
-   "subject": "Omani mother in a long green dress and orange head shawl kneeling and hugging her small child in a white dishdasha in a warm embrace, both seen from the side, with one small red heart above them"
+   "name": "g2hw-scene-robot",
+   "prompt": "Create ONE single square picture of three Omani boys in white dishdashas and embroidered kumma caps celebrating in a classroom around a small orange and grey metal robot they built; one boy sits in a grey wheelchair in the middle raising a golden first-place trophy cup high, the other two boys stand beside him clapping.\n\nCRITICAL RULE - NO FACE: no person in the image has eyes, eye highlights, pupils, a mouth, a nose or eyebrows. Every head is a plain, smooth, blank skin-tone shape.\n\nGlossy cartoon vector illustration for a young child in a bright space-sticker style. Bold saturated flat colours from a warm childrens palette of orange, amber, sky blue, ocean blue, leaf green, pale yellow, red, grey, warm skin tone, soil brown and white. Never use purple, violet, pink or magenta. Every object is shaded with three or four crisp hard-edged bands of its own colour with a broad white gloss highlight on curved surfaces, and a thin crisp near-black outline around every object. Plump rounded forms. The whole square 1:1 frame is filled edge to edge with ONE simple scene on a plain, calm, flat-coloured background — only a few large colour areas, no tiny details, no speckles, no busy patterns. One single standalone image only.\n\nABSOLUTELY FORBIDDEN inside the image: any text, letters, words, numbers, labels, captions, borders, watermarks, flags, emblems, and any colour palette, swatch or legend."
   },
   {
-   "name": "hw-act-thanks",
-   "subject": "big rounded white speech bubble with one large glossy red heart inside it and a small yellow sparkle star beside it"
+   "name": "g2hw-scene-jadad",
+   "prompt": "Create ONE single square picture of an Omani date-palm farm on a hot summer day: a man in a white dishdasha climbs a tall date palm using a rope loop around the trunk and cuts a big cluster of yellow-orange dates, while below two children in Omani clothes collect fallen dates into a woven palm-leaf basket.\n\nCRITICAL RULE - NO FACE: no person in the image has eyes, eye highlights, pupils, a mouth, a nose or eyebrows. Every head is a plain, smooth, blank skin-tone shape.\n\nGlossy cartoon vector illustration for a young child in a bright space-sticker style. Bold saturated flat colours from a warm childrens palette of orange, amber, sky blue, ocean blue, leaf green, pale yellow, red, grey, warm skin tone, soil brown and white. Never use purple, violet, pink or magenta. Every object is shaded with three or four crisp hard-edged bands of its own colour with a broad white gloss highlight on curved surfaces, and a thin crisp near-black outline around every object. Plump rounded forms. The whole square 1:1 frame is filled edge to edge with ONE simple scene on a plain, calm, flat-coloured background — only a few large colour areas, no tiny details, no speckles, no busy patterns. One single standalone image only.\n\nABSOLUTELY FORBIDDEN inside the image: any text, letters, words, numbers, labels, captions, borders, watermarks, flags, emblems, and any colour palette, swatch or legend."
   },
   {
-   "name": "hw-act-washface",
-   "subject": "white bathroom washbasin with a silver tap pouring clear sky blue water into two cupped child hands, with a few splashing water drops"
+   "name": "g2hw-scene-street-error",
+   "prompt": "Create ONE single square picture of a quiet sunny street in a traditional Omani neighbourhood with three sand-coloured houses side by side, each with a wooden door: in front of the middle house a boy in a white dishdasha is dropping a black rubbish bag on the ground right at the neighbour's door, with a few pieces of litter around it; on the left two boys play football nicely, and on the right an older man waters a small green tree with a watering can.\n\nCRITICAL RULE - NO FACE: no person in the image has eyes, eye highlights, pupils, a mouth, a nose or eyebrows. Every head is a plain, smooth, blank skin-tone shape.\n\nGlossy cartoon vector illustration for a young child in a bright space-sticker style. Bold saturated flat colours from a warm childrens palette of orange, amber, sky blue, ocean blue, leaf green, pale yellow, red, grey, warm skin tone, soil brown and white. Never use purple, violet, pink or magenta. Every object is shaded with three or four crisp hard-edged bands of its own colour with a broad white gloss highlight on curved surfaces, and a thin crisp near-black outline around every object. Plump rounded forms. The whole square 1:1 frame is filled edge to edge with ONE simple scene on a plain, calm, flat-coloured background — only a few large colour areas, no tiny details, no speckles, no busy patterns. One single standalone image only.\n\nABSOLUTELY FORBIDDEN inside the image: any text, letters, words, numbers, labels, captions, borders, watermarks, flags, emblems, and any colour palette, swatch or legend."
   },
   {
-   "name": "hw-obj-watering",
-   "subject": "green metal watering can tilted and sprinkling water onto a small young tree sapling growing in a terracotta pot"
-  },
-  {
-   "name": "hw-obj-newspaper",
-   "subject": "folded newspaper whose pages show only plain grey rectangles and grey bars instead of any writing, with a pair of round reading glasses resting on top"
-  },
-  {
-   "name": "hw-obj-recycle",
-   "subject": "small handmade toy car built from a recycled plastic water bottle body, four colourful bottle-cap wheels and a brown cardboard roof, held together with strips of tape"
-  },
-  {
-   "name": "hw-obj-saafiyat",
-   "subject": "traditional Omani woven basket made from dried palm fronds, round with a cone-shaped lid and a knob on top, woven in natural straw beige with bands of dyed red and green palm-leaf strips"
-  },
-  {
-   "name": "hw-obj-storybook",
-   "subject": "open storybook lying flat with a crescent moon, stars and a small palm tree drawn on its two pages and no writing"
-  },
-  {
-   "name": "hw-obj-palette",
-   "subject": "wooden artist paint palette with blobs of red, yellow, blue and green paint and one paintbrush resting across it"
-  },
-  {
-   "name": "hw-obj-poem",
-   "subject": "unrolled paper scroll with several wavy grey lines on it instead of writing, a feather quill pen resting across it and a small red heart in one corner"
-  },
-  {
-   "name": "hw-place-mosque",
-   "subject": "small Omani neighbourhood mosque building with a white rounded dome topped by a small golden crescent, one slim white minaret, arched windows, a wooden arched door and beige walls with green trim"
-  },
-  {
-   "name": "hw-place-grocery",
-   "subject": "small neighbourhood grocery shop building seen from the front with an orange and white striped awning, a glass shop window showing shelves of colourful food boxes and fruit, a door, a crate of oranges outside and a blank sign board with no writing"
-  },
-  {
-   "name": "hw-place-clinic",
-   "subject": "small health centre building seen from the front with white walls, sky blue trim, glass entrance doors and a sign above the door showing only one big red crescent symbol"
-  },
-  {
-   "name": "hw-place-stadium",
-   "subject": "small open-air football stadium seen from above at an angle, a bright green pitch with white lines and two white goals, surrounded by low tiers of orange and sky blue seats and four floodlight poles"
-  },
-  {
-   "name": "hw-place-park",
-   "subject": "small public park playground with a yellow slide, a red swing set, a green bench and two round leafy trees on an oval patch of grass"
-  },
-  {
-   "name": "hw-smart-car",
-   "subject": "futuristic self-driving electric pod car with a rounded glass bubble cabin with nobody inside and no steering wheel, a small round sensor dome on the roof, white body with glowing sky blue light strips"
-  },
-  {
-   "name": "hw-smart-shop",
-   "subject": "futuristic smart shop front with a large curved glass window and a small white delivery robot on wheels standing outside holding a shopping bag"
-  },
-  {
-   "name": "hw-smart-park",
-   "subject": "futuristic digital park: a glowing touch-screen information kiosk standing between two round trees and a bench on a patch of grass, with a small drone flying above"
-  },
-  {
-   "name": "hw-scene-together",
-   "prompt": "Create ONE single square picture of an Omani girl in a red hijab and mustard-yellow embroidered dress and an Omani boy in a white dishdasha and embroidered kumma cap standing side by side holding hands in front of a sandy-coloured Omani fort with round towers under a clear blue sky.\n\nCRITICAL RULE - NO FACE: no person in the image has eyes, eye highlights, pupils, a mouth, a nose or eyebrows. Every head is a plain, smooth, blank skin-tone shape.\n\nGlossy cartoon vector illustration for a young child in a bright space-sticker style. Bold saturated flat colours from a warm childrens palette of orange, amber, sky blue, ocean blue, leaf green, pale yellow, red, grey, warm skin tone, soil brown and white. Never use purple, violet, pink or magenta. Every object is shaded with three or four crisp hard-edged bands of its own colour with a broad white gloss highlight on curved surfaces, and a thin crisp near-black outline around every object. Plump rounded forms. The whole square 1:1 frame is filled edge to edge with ONE simple scene on a plain, calm, flat-coloured background — only a few large colour areas, no tiny details, no speckles, no busy patterns. One single standalone image only.\n\nABSOLUTELY FORBIDDEN inside the image: any text, letters, words, numbers, labels, captions, borders, watermarks, and any colour palette, swatch or legend."
-  },
-  {
-   "name": "hw-scene-treasure",
-   "prompt": "Create ONE single square picture of three children with colourful backpacks seen from behind standing at the open iron gate of a green public park, the middle child holding an unfolded treasure map, palm trees and flowers inside the park.\n\nCRITICAL RULE - NO FACE: no person in the image has eyes, eye highlights, pupils, a mouth, a nose or eyebrows. Every head is a plain, smooth, blank skin-tone shape.\n\nGlossy cartoon vector illustration for a young child in a bright space-sticker style. Bold saturated flat colours from a warm childrens palette of orange, amber, sky blue, ocean blue, leaf green, pale yellow, red, grey, warm skin tone, soil brown and white. Never use purple, violet, pink or magenta. Every object is shaded with three or four crisp hard-edged bands of its own colour with a broad white gloss highlight on curved surfaces, and a thin crisp near-black outline around every object. Plump rounded forms. The whole square 1:1 frame is filled edge to edge with ONE simple scene on a plain, calm, flat-coloured background — only a few large colour areas, no tiny details, no speckles, no busy patterns. One single standalone image only.\n\nABSOLUTELY FORBIDDEN inside the image: any text, letters, words, numbers, labels, captions, borders, watermarks, and any colour palette, swatch or legend."
-  },
-  {
-   "name": "hw-obj-map",
-   "subject": "unfolded paper treasure map with a dotted red path winding between small drawn trees and houses, ending at a red X mark, with no writing"
+   "name": "g2hw-scene-areeja",
+   "prompt": "Create ONE single square picture of a sandy neighbourhood square in an Omani village with palm trees and sand-coloured houses behind: three Omani girls in colourful embroidered dresses (yellow, leaf green and sky blue) with matching headscarves play a hopping game on a column of plain empty squares drawn in the sand; one girl hops on one foot, the others watch and cheer. The squares have no numbers and no writing.\n\nCRITICAL RULE - NO FACE: no person in the image has eyes, eye highlights, pupils, a mouth, a nose or eyebrows. Every head is a plain, smooth, blank skin-tone shape.\n\nGlossy cartoon vector illustration for a young child in a bright space-sticker style. Bold saturated flat colours from a warm childrens palette of orange, amber, sky blue, ocean blue, leaf green, pale yellow, red, grey, warm skin tone, soil brown and white. Never use purple, violet, pink or magenta. Every object is shaded with three or four crisp hard-edged bands of its own colour with a broad white gloss highlight on curved surfaces, and a thin crisp near-black outline around every object. Plump rounded forms. The whole square 1:1 frame is filled edge to edge with ONE simple scene on a plain, calm, flat-coloured background — only a few large colour areas, no tiny details, no speckles, no busy patterns. One single standalone image only.\n\nABSOLUTELY FORBIDDEN inside the image: any text, letters, words, numbers, labels, captions, borders, watermarks, flags, emblems, and any colour palette, swatch or legend."
   }
  ],
  "_previousItems": [
@@ -495,6 +427,142 @@
    "name": "cover-art-g1-hw-landmarks-c-20261006",
    "note": "أيقونة بطاقة الهوية والمواطنة المعتمدة (قرار المالك ٢٠٢٦-١٠-٠٦): العلم + البرج المستدير + النخلة + برج الصحوة + مبخرة ريام. وُلِّدت بجسم الويبهوك المباشر.",
    "subject": "small cheerful Omani homeland scene grouped on one small round sandy-and-green hill: Oman flag (no emblem), round Omani fort tower, Al Sahwa-style gateway clock tower with plain clock faces (no numbers, no writing), white Omani incense-burner monument, one date palm"
+  },
+  {
+   "name": "hw-char-nasser",
+   "subject": "full-body standing Omani boy about seven years old seen from the front, wearing a plain white ankle-length dishdasha robe with a small tassel at the collar, a round embroidered Omani kumma cap in white with sky blue and teal embroidery, and brown sandals, arms relaxed at his sides"
+  },
+  {
+   "name": "hw-char-shamsa",
+   "subject": "full-body standing Omani girl about nine years old seen from the front, wearing a red headscarf hijab that covers all her hair and wraps under the chin, a long mustard-yellow Omani dress with red embroidery down the front and at the cuffs, red embroidered trousers at the ankles and brown sandals, arms relaxed at her sides"
+  },
+  {
+   "name": "hw-char-ahmed",
+   "subject": "full-body standing small boy about four years old seen from the front, with short black hair, wearing a green t-shirt, blue shorts and white sneakers, arms relaxed at his sides"
+  },
+  {
+   "name": "hw-char-father",
+   "subject": "full-body standing Omani man seen from the front, wearing a white ankle-length dishdasha robe with a small tassel at the collar and a wrapped Omani massar turban patterned in sky blue, white and red, and brown leather sandals, empty hands relaxed at his sides"
+  },
+  {
+   "name": "hw-char-mother",
+   "subject": "full-body standing Omani woman seen from the front, wearing a long traditional Omani dress in leaf green with gold and red embroidery, matching embroidered trousers at the ankles, and a long orange and red patterned head shawl covering her hair and shoulders, empty hands relaxed at her sides"
+  },
+  {
+   "name": "hw-face-happy",
+   "prompt": "Create ONE single round cartoon emoji face expressing happiness, for a young child's emotions flashcard. The face is a plain round disc in a warm light-orange skin tone. Its features, drawn simply and clearly in dark brown: a big open smile showing white teeth and a red tongue, wide bright eyes, raised curved eyebrows. Glossy cartoon vector sticker style for a young child: plump round shape, bold saturated flat colours shaded with three crisp hard-edged bands, a broad white gloss highlight on the upper part of the disc, and a thin crisp near-black outline. The face floats on a pure white background with no ground line and no cast shadow. Square 1:1, centred, filling the frame. Only the round face itself: no body, no neck, no hair, no hands, no hat. One single standalone image only. ABSOLUTELY FORBIDDEN inside the image: any text, letters, words, numbers, labels, captions, borders, watermarks, and any colour palette, swatch or legend."
+  },
+  {
+   "name": "hw-face-sad",
+   "prompt": "Create ONE single round cartoon emoji face expressing sadness, for a young child's emotions flashcard. The face is a plain round disc in a warm light-orange skin tone. Its features, drawn simply and clearly in dark brown: a small down-turned mouth, eyebrows slanted upwards in the middle, eyes looking down, and one small sky blue tear drop on one cheek. Glossy cartoon vector sticker style for a young child: plump round shape, bold saturated flat colours shaded with three crisp hard-edged bands, a broad white gloss highlight on the upper part of the disc, and a thin crisp near-black outline. The face floats on a pure white background with no ground line and no cast shadow. Square 1:1, centred, filling the frame. Only the round face itself: no body, no neck, no hair, no hands, no hat. One single standalone image only. ABSOLUTELY FORBIDDEN inside the image: any text, letters, words, numbers, labels, captions, borders, watermarks, and any colour palette, swatch or legend."
+  },
+  {
+   "name": "hw-face-scared",
+   "prompt": "Create ONE single round cartoon emoji face expressing fear, for a young child's emotions flashcard. The face is a plain round disc in a warm light-orange skin tone. Its features, drawn simply and clearly in dark brown: eyes stretched wide open with small pupils, eyebrows raised high, a wavy worried mouth with clenched teeth, and one small sky blue sweat drop at the temple. Glossy cartoon vector sticker style for a young child: plump round shape, bold saturated flat colours shaded with three crisp hard-edged bands, a broad white gloss highlight on the upper part of the disc, and a thin crisp near-black outline. The face floats on a pure white background with no ground line and no cast shadow. Square 1:1, centred, filling the frame. Only the round face itself: no body, no neck, no hair, no hands, no hat. One single standalone image only. ABSOLUTELY FORBIDDEN inside the image: any text, letters, words, numbers, labels, captions, borders, watermarks, and any colour palette, swatch or legend."
+  },
+  {
+   "name": "hw-face-angry",
+   "prompt": "Create ONE single round cartoon emoji face expressing anger, for a young child's emotions flashcard. The face is a plain round disc in a warm light-orange skin tone. Its features, drawn simply and clearly in dark brown: eyebrows pulled down sharply into a V shape, narrowed eyes, a frowning mouth with clenched teeth, and red flushed cheeks. Glossy cartoon vector sticker style for a young child: plump round shape, bold saturated flat colours shaded with three crisp hard-edged bands, a broad white gloss highlight on the upper part of the disc, and a thin crisp near-black outline. The face floats on a pure white background with no ground line and no cast shadow. Square 1:1, centred, filling the frame. Only the round face itself: no body, no neck, no hair, no hands, no hat. One single standalone image only. ABSOLUTELY FORBIDDEN inside the image: any text, letters, words, numbers, labels, captions, borders, watermarks, and any colour palette, swatch or legend."
+  },
+  {
+   "name": "hw-scene-happy",
+   "prompt": "Create ONE single square picture of a cosy living room with a yellow sofa, where an Omani girl in a red hijab and mustard-yellow dress and an Omani boy in a white dishdasha and embroidered kumma cap sit side by side chatting happily, leaning towards each other, with three small red hearts floating above them.\n\nCRITICAL RULE - NO FACE: no person in the image has eyes, eye highlights, pupils, a mouth, a nose or eyebrows. Every head is a plain, smooth, blank skin-tone shape.\n\nGlossy cartoon vector illustration for a young child in a bright space-sticker style. Bold saturated flat colours from a warm childrens palette of orange, amber, sky blue, ocean blue, leaf green, pale yellow, red, grey, warm skin tone, soil brown and white. Never use purple, violet, pink or magenta. Every object is shaded with three or four crisp hard-edged bands of its own colour with a broad white gloss highlight on curved surfaces, and a thin crisp near-black outline around every object. Plump rounded forms. The whole square 1:1 frame is filled edge to edge with ONE simple scene on a plain, calm, flat-coloured background — only a few large colour areas, no tiny details, no speckles, no busy patterns. One single standalone image only.\n\nABSOLUTELY FORBIDDEN inside the image: any text, letters, words, numbers, labels, captions, borders, watermarks, and any colour palette, swatch or legend."
+  },
+  {
+   "name": "hw-scene-angry",
+   "prompt": "Create ONE single square picture of a children's playroom floor where a toy robot lies broken in pieces beside a knocked-over tower of building blocks; a small boy in a green t-shirt holds a broken robot arm, and an older boy in a white dishdasha and kumma cap stands next to him with both fists clenched and stiff arms, a small jagged red scribble cloud above his head.\n\nCRITICAL RULE - NO FACE: no person in the image has eyes, eye highlights, pupils, a mouth, a nose or eyebrows. Every head is a plain, smooth, blank skin-tone shape.\n\nGlossy cartoon vector illustration for a young child in a bright space-sticker style. Bold saturated flat colours from a warm childrens palette of orange, amber, sky blue, ocean blue, leaf green, pale yellow, red, grey, warm skin tone, soil brown and white. Never use purple, violet, pink or magenta. Every object is shaded with three or four crisp hard-edged bands of its own colour with a broad white gloss highlight on curved surfaces, and a thin crisp near-black outline around every object. Plump rounded forms. The whole square 1:1 frame is filled edge to edge with ONE simple scene on a plain, calm, flat-coloured background — only a few large colour areas, no tiny details, no speckles, no busy patterns. One single standalone image only.\n\nABSOLUTELY FORBIDDEN inside the image: any text, letters, words, numbers, labels, captions, borders, watermarks, and any colour palette, swatch or legend."
+  },
+  {
+   "name": "hw-scene-sad",
+   "prompt": "Create ONE single square picture of a school playground on a sunny day: in the foreground a boy in a white dishdasha and kumma cap sits all alone on a bench with his head bowed and shoulders slumped, while far away in the background two other boys play football together.\n\nCRITICAL RULE - NO FACE: no person in the image has eyes, eye highlights, pupils, a mouth, a nose or eyebrows. Every head is a plain, smooth, blank skin-tone shape.\n\nGlossy cartoon vector illustration for a young child in a bright space-sticker style. Bold saturated flat colours from a warm childrens palette of orange, amber, sky blue, ocean blue, leaf green, pale yellow, red, grey, warm skin tone, soil brown and white. Never use purple, violet, pink or magenta. Every object is shaded with three or four crisp hard-edged bands of its own colour with a broad white gloss highlight on curved surfaces, and a thin crisp near-black outline around every object. Plump rounded forms. The whole square 1:1 frame is filled edge to edge with ONE simple scene on a plain, calm, flat-coloured background — only a few large colour areas, no tiny details, no speckles, no busy patterns. One single standalone image only.\n\nABSOLUTELY FORBIDDEN inside the image: any text, letters, words, numbers, labels, captions, borders, watermarks, and any colour palette, swatch or legend."
+  },
+  {
+   "name": "hw-scene-scared",
+   "prompt": "Create ONE single square picture of a dark bedroom at night lit only by a small bedside lamp: a child lies in bed and pulls a sky blue blanket up over most of the head so only the top of the head shows, a scary dark shadow of a tree branch on the wall and a crescent moon in the window.\n\nCRITICAL RULE - NO FACE: no person in the image has eyes, eye highlights, pupils, a mouth, a nose or eyebrows. Every head is a plain, smooth, blank skin-tone shape.\n\nGlossy cartoon vector illustration for a young child in a bright space-sticker style. Bold saturated flat colours from a warm childrens palette of orange, amber, sky blue, ocean blue, leaf green, pale yellow, red, grey, warm skin tone, soil brown and white. Never use purple, violet, pink or magenta. Every object is shaded with three or four crisp hard-edged bands of its own colour with a broad white gloss highlight on curved surfaces, and a thin crisp near-black outline around every object. Plump rounded forms. The whole square 1:1 frame is filled edge to edge with ONE simple scene on a plain, calm, flat-coloured background — only a few large colour areas, no tiny details, no speckles, no busy patterns. One single standalone image only.\n\nABSOLUTELY FORBIDDEN inside the image: any text, letters, words, numbers, labels, captions, borders, watermarks, and any colour palette, swatch or legend."
+  },
+  {
+   "name": "hw-act-hug",
+   "subject": "Omani mother in a long green dress and orange head shawl kneeling and hugging her small child in a white dishdasha in a warm embrace, both seen from the side, with one small red heart above them"
+  },
+  {
+   "name": "hw-act-thanks",
+   "subject": "big rounded white speech bubble with one large glossy red heart inside it and a small yellow sparkle star beside it"
+  },
+  {
+   "name": "hw-act-washface",
+   "subject": "white bathroom washbasin with a silver tap pouring clear sky blue water into two cupped child hands, with a few splashing water drops"
+  },
+  {
+   "name": "hw-obj-watering",
+   "subject": "green metal watering can tilted and sprinkling water onto a small young tree sapling growing in a terracotta pot"
+  },
+  {
+   "name": "hw-obj-newspaper",
+   "subject": "folded newspaper whose pages show only plain grey rectangles and grey bars instead of any writing, with a pair of round reading glasses resting on top"
+  },
+  {
+   "name": "hw-obj-recycle",
+   "subject": "small handmade toy car built from a recycled plastic water bottle body, four colourful bottle-cap wheels and a brown cardboard roof, held together with strips of tape"
+  },
+  {
+   "name": "hw-obj-saafiyat",
+   "subject": "traditional Omani woven basket made from dried palm fronds, round with a cone-shaped lid and a knob on top, woven in natural straw beige with bands of dyed red and green palm-leaf strips"
+  },
+  {
+   "name": "hw-obj-storybook",
+   "subject": "open storybook lying flat with a crescent moon, stars and a small palm tree drawn on its two pages and no writing"
+  },
+  {
+   "name": "hw-obj-palette",
+   "subject": "wooden artist paint palette with blobs of red, yellow, blue and green paint and one paintbrush resting across it"
+  },
+  {
+   "name": "hw-obj-poem",
+   "subject": "unrolled paper scroll with several wavy grey lines on it instead of writing, a feather quill pen resting across it and a small red heart in one corner"
+  },
+  {
+   "name": "hw-place-mosque",
+   "subject": "small Omani neighbourhood mosque building with a white rounded dome topped by a small golden crescent, one slim white minaret, arched windows, a wooden arched door and beige walls with green trim"
+  },
+  {
+   "name": "hw-place-grocery",
+   "subject": "small neighbourhood grocery shop building seen from the front with an orange and white striped awning, a glass shop window showing shelves of colourful food boxes and fruit, a door, a crate of oranges outside and a blank sign board with no writing"
+  },
+  {
+   "name": "hw-place-clinic",
+   "subject": "small health centre building seen from the front with white walls, sky blue trim, glass entrance doors and a sign above the door showing only one big red crescent symbol"
+  },
+  {
+   "name": "hw-place-stadium",
+   "subject": "small open-air football stadium seen from above at an angle, a bright green pitch with white lines and two white goals, surrounded by low tiers of orange and sky blue seats and four floodlight poles"
+  },
+  {
+   "name": "hw-place-park",
+   "subject": "small public park playground with a yellow slide, a red swing set, a green bench and two round leafy trees on an oval patch of grass"
+  },
+  {
+   "name": "hw-smart-car",
+   "subject": "futuristic self-driving electric pod car with a rounded glass bubble cabin with nobody inside and no steering wheel, a small round sensor dome on the roof, white body with glowing sky blue light strips"
+  },
+  {
+   "name": "hw-smart-shop",
+   "subject": "futuristic smart shop front with a large curved glass window and a small white delivery robot on wheels standing outside holding a shopping bag"
+  },
+  {
+   "name": "hw-smart-park",
+   "subject": "futuristic digital park: a glowing touch-screen information kiosk standing between two round trees and a bench on a patch of grass, with a small drone flying above"
+  },
+  {
+   "name": "hw-scene-together",
+   "prompt": "Create ONE single square picture of an Omani girl in a red hijab and mustard-yellow embroidered dress and an Omani boy in a white dishdasha and embroidered kumma cap standing side by side holding hands in front of a sandy-coloured Omani fort with round towers under a clear blue sky.\n\nCRITICAL RULE - NO FACE: no person in the image has eyes, eye highlights, pupils, a mouth, a nose or eyebrows. Every head is a plain, smooth, blank skin-tone shape.\n\nGlossy cartoon vector illustration for a young child in a bright space-sticker style. Bold saturated flat colours from a warm childrens palette of orange, amber, sky blue, ocean blue, leaf green, pale yellow, red, grey, warm skin tone, soil brown and white. Never use purple, violet, pink or magenta. Every object is shaded with three or four crisp hard-edged bands of its own colour with a broad white gloss highlight on curved surfaces, and a thin crisp near-black outline around every object. Plump rounded forms. The whole square 1:1 frame is filled edge to edge with ONE simple scene on a plain, calm, flat-coloured background — only a few large colour areas, no tiny details, no speckles, no busy patterns. One single standalone image only.\n\nABSOLUTELY FORBIDDEN inside the image: any text, letters, words, numbers, labels, captions, borders, watermarks, and any colour palette, swatch or legend."
+  },
+  {
+   "name": "hw-scene-treasure",
+   "prompt": "Create ONE single square picture of three children with colourful backpacks seen from behind standing at the open iron gate of a green public park, the middle child holding an unfolded treasure map, palm trees and flowers inside the park.\n\nCRITICAL RULE - NO FACE: no person in the image has eyes, eye highlights, pupils, a mouth, a nose or eyebrows. Every head is a plain, smooth, blank skin-tone shape.\n\nGlossy cartoon vector illustration for a young child in a bright space-sticker style. Bold saturated flat colours from a warm childrens palette of orange, amber, sky blue, ocean blue, leaf green, pale yellow, red, grey, warm skin tone, soil brown and white. Never use purple, violet, pink or magenta. Every object is shaded with three or four crisp hard-edged bands of its own colour with a broad white gloss highlight on curved surfaces, and a thin crisp near-black outline around every object. Plump rounded forms. The whole square 1:1 frame is filled edge to edge with ONE simple scene on a plain, calm, flat-coloured background — only a few large colour areas, no tiny details, no speckles, no busy patterns. One single standalone image only.\n\nABSOLUTELY FORBIDDEN inside the image: any text, letters, words, numbers, labels, captions, borders, watermarks, and any colour palette, swatch or legend."
+  },
+  {
+   "name": "hw-obj-map",
+   "subject": "unfolded paper treasure map with a dotted red path winding between small drawn trees and houses, ending at a red X mark, with no writing"
   }
  ]
 }
