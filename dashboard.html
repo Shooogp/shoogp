@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>لوحة المالك — شوجب</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Cairo:wght@700;900&display=swap">
+<!--
+  لوحةُ المالك (٢٠٢٦-١٠-٠٧) — صفحةٌ خاصّةٌ غيرُ مربوطةٍ من الموقع، تُفتَحُ بكلمةِ المطوّر.
+  مصدرانِ للبيانات، كلٌّ منهما يفشلُ وحدَه فلا يُسقِطُ الآخر:
+    ① عدّادُ الدخول — Cloudflare Worker ‏/stats (‏workers/visit-counter) — مجّانيٌّ ولا يمسُّ رصيدَ n8n.
+    ② المبيعاتُ والمصاريف — سيرُ n8n «شوجب — بيانات لوحة المالك» (‏0n5kUXqVz8QsnzFN):
+       يقرأُ ملفّاتِ الرموزِ الستّةَ وملفَّ «شوجب — المصاريف» ويُرجِعُ أعداداً مجمّعةً فقط.
+       ⚠️ كلُّ فتحٍ للّوحةِ = تنفيذٌ واحدٌ من رصيدِ n8n المشتركِ مع تفعيلِ الرموز
+       (§CLAUDE.md رصيدُ تنفيذاتِ n8n) — فلا تحديثَ تلقائيَّ دوريّ، والتحديثُ بزرّ.
+  كلمةُ المرورِ لا تُكتَبُ في هذا الملفّ: تُطلَبُ مرّةً وتُحفَظُ في متصفّحِ المالك.
+-->
+<style>
+  :root{
+    --bg1:#14122a; --bg2:#1d1b3a; --bg3:#2b2550;
+    --card:rgba(255,255,255,.055); --card-bd:rgba(255,255,255,.10);
+    --ink:#f4f1ff; --ink2:#bcb6d9; --ink3:#8f88b5;
+    --grid:rgba(255,255,255,.08);
+    /* ألوانُ البيانات — مفحوصةٌ بأداةِ dataviz على السطحِ الداكن (نطاقُ الإضاءة · التباين · عمى الألوان) */
+    --c-sales:#e0681c;   /* المبيعاتُ والإيرادات — برتقاليُّ شوجب */
+    --c-visits:#2a9fdc;  /* الزيارات */
+    --c-profit:#4a9a1a;  /* الربح */
+    --c-exp:#8a84b0;     /* المصاريف — محايد */
+    --good:#7fd86a; --bad:#ff8a7a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;font-family:'Tajawal',sans-serif}
+  html{background:var(--bg1)}
+  html,body{min-height:100%}
+  body{color:var(--ink);background:linear-gradient(180deg,var(--bg1) 0%,var(--bg2) 45%,var(--bg3) 100%);
+    background-attachment:fixed;line-height:1.5}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.55;
+    background-image:radial-gradient(1.4px 1.4px at 12% 18%,#fff 50%,transparent 51%),
+      radial-gradient(1px 1px at 72% 12%,#fff 50%,transparent 51%),radial-gradient(1.2px 1.2px at 35% 64%,#fff 50%,transparent 51%),
+      radial-gradient(1px 1px at 88% 58%,#fff 50%,transparent 51%),radial-gradient(1.6px 1.6px at 55% 30%,#ffd9a8 50%,transparent 51%),
+      radial-gradient(1px 1px at 22% 86%,#fff 50%,transparent 51%),radial-gradient(1.3px 1.3px at 92% 88%,#cfe8ff 50%,transparent 51%);
+    background-size:640px 640px}
+  .wrap{position:relative;max-width:1280px;margin:0 auto;padding:20px 16px 48px}
+
+  header.top{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+  header.top img{width:58px;height:58px;object-fit:contain;filter:drop-shadow(0 4px 10px rgba(0,0,0,.4))}
+  header.top h1{font-family:'Cairo';font-weight:900;font-size:1.6rem;line-height:1.2}
+  header.top h1 small{display:block;font-family:'Tajawal';font-weight:500;font-size:.9rem;color:var(--ink2)}
+  .spacer{flex:1}
+  .stamp{color:var(--ink3);font-size:.85rem}
+  .btn{border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);color:var(--ink);border-radius:999px;
+    padding:9px 18px;font-weight:700;font-size:.95rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+  .btn:hover{background:rgba(255,255,255,.15)}
+  .btn.primary{background:linear-gradient(180deg,#ff9a3c,#e0681c);border-color:#ffb36b;color:#2a1200}
+  .btn:disabled{opacity:.5;cursor:wait}
+
+  .grid{display:grid;gap:14px}
+  .kpis{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .row2{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);margin-top:14px}
+  .row3{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:14px}
+  .full{margin-top:14px}
+  @media (max-width:1100px){.kpis{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  @media (max-width:820px){.row2,.row3{grid-template-columns:minmax(0,1fr)}}
+  @media (max-width:560px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+  .card{background:var(--card);border:1px solid var(--card-bd);border-radius:22px;padding:16px 18px;
+    backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);min-width:0;position:relative}
+  .card h2{font-family:'Cairo';font-weight:700;font-size:1.05rem;display:flex;align-items:center;gap:8px;margin-bottom:4px}
+  .card .sub{color:var(--ink3);font-size:.85rem;margin-bottom:10px}
+
+  .kpi .lbl{color:var(--ink2);font-size:.9rem;display:flex;align-items:center;gap:6px}
+  .kpi .lbl i{width:10px;height:10px;border-radius:3px;display:inline-block}
+  .kpi .val{font-family:'Cairo';font-weight:900;font-size:1.9rem;line-height:1.25;margin-top:4px;white-space:nowrap}
+  .kpi .val small{font-size:.95rem;font-weight:700;color:var(--ink2);margin-inline-start:4px}
+  .kpi .meta{color:var(--ink3);font-size:.82rem;margin-top:2px}
+  .up{color:var(--good)} .down{color:var(--bad)}
+
+  .chart{width:100%;height:auto;display:block;overflow:visible}
+  .chart text{fill:var(--ink3);font-size:11px;font-family:'Tajawal'}
+  .chart .gl{stroke:var(--grid);stroke-width:1}
+  .chart .bar{transition:opacity .15s;pointer-events:none}
+  .chart text{pointer-events:none}
+  .chart .hit{fill:transparent;cursor:pointer}
+  .chart .hit:hover + .bar,.chart .bar.on{opacity:.75}
+  .vlabel{fill:var(--ink)!important;font-weight:700;font-size:12px!important}
+
+  .hbars{display:flex;flex-direction:column;gap:9px}
+  .hb{display:grid;grid-template-columns:110px minmax(0,1fr) 92px;align-items:center;gap:10px;font-size:.92rem}
+  .hb .nm{color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .hb .tr{height:20px;border-radius:6px;background:rgba(255,255,255,.05);overflow:hidden}
+  .hb .fl{height:100%;border-radius:0 4px 4px 0;min-width:2px}
+  .hb .nv{font-weight:800;text-align:start;white-space:nowrap}
+  .hb .nv small{color:var(--ink3);font-weight:500}
+
+  table{width:100%;border-collapse:collapse;font-size:.92rem}
+  th,td{padding:8px 6px;text-align:center;border-bottom:1px solid var(--grid)}
+  th{color:var(--ink2);font-weight:700;font-size:.85rem}
+  td:first-child,th:first-child{text-align:start}
+  td.num{font-weight:800}
+  .cell{display:inline-block;min-width:44px;padding:3px 8px;border-radius:8px;font-weight:800}
+  .tag{display:inline-block;font-size:.75rem;padding:1px 8px;border-radius:999px;margin-inline-start:4px;font-weight:700}
+  .tag.warn{background:rgba(255,170,60,.18);color:#ffc37a}
+  .tag.off{background:rgba(255,255,255,.08);color:var(--ink3)}
+
+  .funnel{display:flex;gap:10px;align-items:stretch;margin:4px 0 12px}
+  .fstep{flex:1;background:rgba(255,255,255,.05);border-radius:14px;padding:10px;text-align:center}
+  .fstep b{display:block;font-family:'Cairo';font-size:1.5rem}
+  .fstep span{color:var(--ink3);font-size:.8rem}
+  .farrow{align-self:center;color:var(--ink3)}
+
+  .note{background:rgba(255,200,120,.08);border:1px dashed rgba(255,200,120,.35);color:#ffd9a8;border-radius:14px;
+    padding:10px 12px;font-size:.88rem;margin-top:10px}
+  .err{color:var(--bad);font-size:.9rem;padding:8px 0}
+  .empty{color:var(--ink3);text-align:center;padding:28px 8px;font-size:.92rem}
+  .skel{height:120px;border-radius:12px;background:linear-gradient(90deg,rgba(255,255,255,.04),rgba(255,255,255,.09),rgba(255,255,255,.04));
+    background-size:200% 100%;animation:sk 1.2s linear infinite}
+  @keyframes sk{to{background-position:-200% 0}}
+
+  #tip{position:fixed;z-index:50;pointer-events:none;background:#0c0b1d;border:1px solid rgba(255,255,255,.2);color:var(--ink);
+    padding:7px 11px;border-radius:10px;font-size:.85rem;box-shadow:0 8px 24px rgba(0,0,0,.45);display:none;white-space:nowrap}
+  #tip b{font-family:'Cairo'}
+
+  /* بوّابةُ كلمةِ المرور */
+  .gate{max-width:420px;margin:12vh auto 0;text-align:center}
+  .gate img{width:96px;height:96px;object-fit:contain}
+  .gate h1{font-family:'Cairo';font-weight:900;font-size:1.6rem;margin:10px 0 6px}
+  .gate p{color:var(--ink2);margin-bottom:16px}
+  .gate input{width:100%;padding:13px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.2);background:rgba(0,0,0,.25);
+    color:var(--ink);font-size:1.05rem;text-align:center;margin-bottom:12px}
+  .gate .err{min-height:1.4em}
+  [hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ═════════ البوّابة ═════════ -->
+  <section class="gate card" id="gate" hidden>
+    <img src="images/logo-mark.png" alt="شوجب">
+    <h1>لوحة المالك</h1>
+    <p>أدخل كلمة المطوّر لعرض الأرقام. تُحفَظ في هذا المتصفّح فقط.</p>
+    <form id="gateForm">
+      <input id="gateKey" type="password" autocomplete="current-password" placeholder="كلمة المرور" required>
+      <button class="btn primary" type="submit">دخول</button>
+      <div class="err" id="gateErr"></div>
+    </form>
+  </section>
+
+  <!-- ═════════ اللوحة ═════════ -->
+  <main id="dash" hidden>
+    <header class="top">
+      <img src="images/logo-mark.png" alt="شوجب">
+      <h1>لوحة المالك<small>منصّة شوجب — الزيارات والمبيعات والمصاريف</small></h1>
+      <div class="spacer"></div>
+      <span class="stamp" id="stamp"></span>
+      <button class="btn" id="refresh" type="button">↻ تحديث</button>
+      <button class="btn" id="logout" type="button" title="نسيان كلمة المرور في هذا المتصفّح">خروج</button>
+    </header>
+
+    <section class="grid kpis" id="kpis">
+      <div class="card kpi"><div class="lbl"><i style="background:var(--c-visits)"></i>زيارات اليوم</div><div class="val" id="k-today">…</div><div class="meta" id="k-today-m"></div></div>
+      <div class="card kpi"><div class="lbl"><i style="background:var(--c-visits)"></i>إجمالي الزيارات</div><div class="val" id="k-total">…</div><div class="meta" id="k-total-m"></div></div>
+      <div class="card kpi"><div class="lbl"><i style="background:var(--c-sales)"></i>الكتب المباعة</div><div class="val" id="k-sold">…</div><div class="meta" id="k-sold-m"></div></div>
+      <div class="card kpi"><div class="lbl"><i style="background:var(--c-sales)"></i>الإيرادات</div><div class="val" id="k-rev">…</div><div class="meta" id="k-rev-m"></div></div>
+      <div class="card kpi"><div class="lbl"><i style="background:var(--c-exp)"></i>المصاريف</div><div class="val" id="k-exp">…</div><div class="meta" id="k-exp-m"></div></div>
+      <div class="card kpi"><div class="lbl"><i style="background:var(--c-profit)"></i>صافي الربح</div><div class="val" id="k-net">…</div><div class="meta" id="k-net-m"></div></div>
+    </section>
+
+    <section class="grid row2">
+      <div class="card">
+        <h2>👥 الدخول للموقع — آخر ١٤ يوماً</h2>
+        <div class="sub">أجهزةٌ دخلت الموقع، مرّةً لكلِّ جهازٍ في اليوم بتوقيت مسقط. العمودُ الباهتُ يومٌ لم ينتهِ بعد.</div>
+        <div id="visitsChart"><div class="skel"></div></div>
+      </div>
+      <div class="card">
+        <h2>📚 قِمع الكتب — اليوم</h2>
+        <div class="sub">كم جهازاً فتح كتاباً، ثم بلغ درساً مقفولاً، ثم فتح نافذة الرمز (نيّة الشراء).</div>
+        <div id="funnel"><div class="skel"></div></div>
+      </div>
+    </section>
+
+    <section class="grid row3">
+      <div class="card">
+        <h2>💰 الإيرادات حسب المادة</h2>
+        <div class="sub" id="revSub">الكتب المباعة × سعر الكتاب.</div>
+        <div id="revBySubj"><div class="skel"></div></div>
+      </div>
+      <div class="card">
+        <h2>📈 المبيعات اليومية — آخر ٣٠ يوماً</h2>
+        <div class="sub">من تاريخ البيع المسجَّل مع كل رمز.</div>
+        <div id="salesChart"><div class="skel"></div></div>
+      </div>
+    </section>
+
+    <section class="card full">
+      <h2>🗂️ المبيعات حسب الكتاب</h2>
+      <div class="sub">عدد الرموز المباعة لكل كتاب، والمتبقّي من رموزه (يُنبَّه إن قلّ عن ١٥).</div>
+      <div id="bookTable" style="overflow-x:auto"><div class="skel"></div></div>
+    </section>
+
+    <section class="grid row3">
+      <div class="card">
+        <h2>🧾 المصاريف حسب الفئة</h2>
+        <div class="sub">من ملف «شوجب — المصاريف» في درايف.</div>
+        <div id="expByCat"><div class="skel"></div></div>
+      </div>
+      <div class="card">
+        <h2>📝 آخر المصاريف <span class="spacer"></span><a class="btn" id="expLink" href="#" target="_blank" rel="noopener" style="font-size:.85rem;padding:6px 14px">＋ أضف مصروفاً</a></h2>
+        <div class="sub">تُضاف في الملف: التاريخ · البند · الفئة · المبلغ بالريال · ملاحظات.</div>
+        <div id="expList"><div class="skel"></div></div>
+      </div>
+    </section>
+  </main>
+</div>
+<div id="tip" role="tooltip"></div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ── المصادر ── */
+  var STATS_URL = 'https://shoogp-visits.shooogp.workers.dev/stats';
+  var DASH_URL  = 'https://shoogp.app.n8n.cloud/webhook/shoogp-dash-7c1e';
+  var KEY_STORE = 'shoogp-dash-key';
+
+  var SUBJ = { sci: 'العلوم', math: 'الرياضيات', din: 'ديني حياتي', lug: 'أحب لغتي', it: 'عالمي الرقمي', en: 'الإنجليزية', hw: 'الهوية والمواطنة' };
+  var SUBJ_ORDER = ['sci', 'math', 'din', 'lug', 'it', 'en'];
+  var GRADE = { g1: 'الأول', g2: 'الثاني', g3: 'الثالث', g4: 'الرابع' };
+  var LOW_STOCK = 15;
+
+  var $ = function (id) { return document.getElementById(id); };
+  var nf = new Intl.NumberFormat('ar-EG');
+  var n = function (x) { return nf.format(Math.round(x * 1000) / 1000); };
+  var esc = function (s) { return String(s).replace(/[&<>"']/g, function (c) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]; }); };
+  var omr = function (x) { return n(x) + '<small>ر.ع</small>'; };
+
+  function getKey() { try { return localStorage.getItem(KEY_STORE) || ''; } catch (e) { return ''; } }
+  function setKey(k) { try { k ? localStorage.setItem(KEY_STORE, k) : localStorage.removeItem(KEY_STORE); } catch (e) {} }
+
+  function muscatDay(d) {
+    return new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Muscat', year: 'numeric', month: '2-digit', day: '2-digit' }).format(d || new Date());
+  }
+  function shiftDay(day, delta) {
+    var p = day.split('-').map(Number), t = new Date(Date.UTC(p[0], p[1] - 1, p[2]));
+    t.setUTCDate(t.getUTCDate() + delta);
+    return t.toISOString().slice(0, 10);
+  }
+  function dayLabel(day) {
+    var p = day.split('-').map(Number);
+    return new Intl.DateTimeFormat('ar-EG', { day: 'numeric', month: 'short', timeZone: 'UTC' }).format(new Date(Date.UTC(p[0], p[1] - 1, p[2])));
+  }
+  function weekday(day) {
+    var p = day.split('-').map(Number);
+    return new Intl.DateTimeFormat('ar-EG', { weekday: 'long', timeZone: 'UTC' }).format(new Date(Date.UTC(p[0], p[1] - 1, p[2])));
+  }
+  /* مفتاحُ كتابٍ (‏g4-dini-2 · g1-sci) ← اسمٌ مقروء */
+  function bookName(key) {
+    var m = /^g(\d)-([a-z]+)(?:-(\d))?$/.exec(key || '');
+    if (!m) return key;
+    var s = { sci: 'العلوم', math: 'الرياضيات', arabic: 'أحب لغتي', dini: 'ديني حياتي', din: 'ديني حياتي', lug: 'أحب لغتي', it: 'عالمي الرقمي', en: 'الإنجليزية', hw: 'الهوية والمواطنة' }[m[2]] || m[2];
+    return s + (m[3] ? ' ج' + n(+m[3]) : '') + ' · ' + (GRADE['g' + m[1]] || m[1]);
+  }
+
+  /* ── التلميح (hover/لمس) ── */
+  var tip = $('tip');
+  function showTip(e, html) {
+    tip.innerHTML = html; tip.style.display = 'block';
+    var x = e.clientX, y = e.clientY, w = tip.offsetWidth, h = tip.offsetHeight;
+    tip.style.left = Math.max(8, Math.min(window.innerWidth - w - 8, x - w / 2)) + 'px';
+    tip.style.top = Math.max(8, y - h - 14) + 'px';
+  }
+  function hideTip() { tip.style.display = 'none'; }
+  document.addEventListener('scroll', hideTip, { passive: true });
+
+  /* ── رسمُ أعمدةٍ رأسيةٍ بلونٍ واحد (سلسلةٌ واحدة: لا مفتاحَ ألوان — العنوانُ يسمّيها) ── */
+  function columnChart(host, pts, opt) {
+    // pts: [{label, value, tip, faded}]
+    // العرضُ من الحاويةِ الحيّة فيبقى الخطُّ 11px حقيقياً على الهاتفِ والسبورةِ سواءً
+    host._chart = [pts, opt];
+    var W = Math.max(300, Math.round(host.clientWidth || 640)), H = W < 480 ? 200 : 230, padL = 34, padR = 8, padT = 22, padB = 30;
+    var max = Math.max.apply(null, pts.map(function (p) { return p.value; }).concat([1]));
+    var step = niceStep(max), top = Math.ceil(max / step) * step || 1;
+    var every = Math.max(1, Math.ceil(pts.length / Math.floor((W - padL) / 64)));   // ~64px لكلِّ تسميةِ تاريخ
+    var cw = (W - padL - padR) / pts.length, bw = Math.max(4, Math.min(34, cw - 6));
+    var y = function (v) { return padT + (H - padT - padB) * (1 - v / top); };
+    var s = '<svg class="chart" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(opt.aria) + '">';
+    for (var g = 0; g <= top + 1e-9; g += step) {
+      s += '<line class="gl" x1="' + padL + '" x2="' + (W - padR) + '" y1="' + y(g) + '" y2="' + y(g) + '"/>';
+      s += '<text x="' + (padL - 6) + '" y="' + (y(g) + 4) + '" text-anchor="end">' + n(g) + '</text>';
+    }
+    var maxI = pts.reduce(function (bi, p, i) { return p.value > pts[bi].value ? i : bi; }, 0);
+    pts.forEach(function (p, i) {
+      // الاتجاهُ من اليمين: أقدمُ يومٍ يميناً كما يُقرَأُ النصُّ العربيّ
+      var cx = W - padR - cw * (i + .5), x = cx - bw / 2, yy = y(p.value), h = Math.max(0, H - padB - yy);
+      var r = Math.min(4, bw / 2, h);
+      var path = h > 0 ? 'M' + x + ',' + (H - padB) + 'V' + (yy + r) + 'Q' + x + ',' + yy + ' ' + (x + r) + ',' + yy +
+        'H' + (x + bw - r) + 'Q' + (x + bw) + ',' + yy + ' ' + (x + bw) + ',' + (yy + r) + 'V' + (H - padB) + 'Z' : '';
+      s += '<rect class="hit" data-i="' + i + '" x="' + (cx - cw / 2) + '" y="' + padT + '" width="' + cw + '" height="' + (H - padT - padB) + '"/>';
+      if (path) s += '<path class="bar" data-b="' + i + '" d="' + path + '" fill="' + opt.color + '"' + (p.faded ? ' fill-opacity=".45"' : '') + '/>';
+      if ((pts.length - 1 - i) % every === 0)
+        s += '<text x="' + cx + '" y="' + (H - padB + 16) + '" text-anchor="middle">' + esc(p.label) + '</text>';
+      if ((i === maxI || i === pts.length - 1) && p.value > 0)
+        s += '<text class="vlabel" x="' + cx + '" y="' + (yy - 6) + '" text-anchor="middle">' + n(p.value) + '</text>';
+    });
+    s += '</svg>';
+    host.innerHTML = s;
+    var svg = host.querySelector('svg');
+    svg.addEventListener('pointermove', function (e) {
+      var t = e.target.closest('.hit'); if (!t) { hideTip(); return; }
+      var i = +t.getAttribute('data-i');
+      svg.querySelectorAll('.bar').forEach(function (b) { b.classList.toggle('on', +b.getAttribute('data-b') === i); });
+      showTip(e, pts[i].tip);
+    });
+    svg.addEventListener('pointerleave', function () { hideTip(); svg.querySelectorAll('.bar.on').forEach(function (b) { b.classList.remove('on'); }); });
+  }
+  var rz;
+  window.addEventListener('resize', function () {
+    clearTimeout(rz);
+    rz = setTimeout(function () {
+      document.querySelectorAll('#visitsChart,#salesChart').forEach(function (h) {
+        if (h._chart) { var note = h.querySelector('.note'); columnChart(h, h._chart[0], h._chart[1]); if (note) h.appendChild(note); }
+      });
+    }, 150);
+  });
+  function niceStep(max) {
+    var raw = max / 4, p = Math.pow(10, Math.floor(Math.log10(raw || 1))), f = raw / p;
+    return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 5 ? 5 : 10) * p;
+  }
+
+  /* ── أعمدةٌ أفقيةٌ بقيمٍ مكتوبة ── */
+  function hbars(host, rows, color, fmt) {
+    var max = Math.max.apply(null, rows.map(function (r) { return r.value; }).concat([1]));
+    host.innerHTML = '<div class="hbars">' + rows.map(function (r) {
+      return '<div class="hb" title="' + esc(r.title || '') + '"><span class="nm">' + esc(r.name) + '</span>' +
+        '<span class="tr"><span class="fl" style="display:block;width:' + (r.value / max * 100) + '%;background:' + color + '"></span></span>' +
+        '<span class="nv">' + fmt(r) + '</span></div>';
+    }).join('') + '</div>';
+  }
+
+  /* ═════════ ① الزيارات (Cloudflare) ═════════ */
+  function renderVisits(s) {
+    if (!s || !s.ok) throw new Error('رفضَ العدّادُ المفتاح');
+    var today = muscatDay(), rows = {};
+    (s.days || []).forEach(function (r) { rows[r.day] = r.visits; });
+    var pts = [];
+    for (var i = 13; i >= 0; i--) {
+      var d = shiftDay(today, -i), v = rows[d] || 0;
+      pts.push({ label: dayLabel(d), value: v, faded: d === today,
+        tip: '<b>' + n(v) + '</b> جهازاً · ' + weekday(d) + ' ' + dayLabel(d) + (d === today ? ' (حتى الآن)' : '') });
+    }
+    columnChart($('visitsChart'), pts, { color: 'var(--c-visits)', aria: 'الزيارات اليومية لآخر ١٤ يوماً' });
+
+    $('k-today').innerHTML = n(s.today);
+    var cmp = [];
+    if (s.refHasHours) {
+      var diff = s.today - s.refSoFar;
+      cmp.push('<span class="' + (diff >= 0 ? 'up' : 'down') + '">' + (diff >= 0 ? '▲ ' : '▼ ') + n(Math.abs(diff)) + '</span> عن ' + weekday(s.refDay) + ' الماضي بالساعة نفسها');
+    }
+    cmp.push('أمس ' + n(s.yesterday));
+    $('k-today-m').innerHTML = cmp.join(' · ');
+    $('k-total').innerHTML = n(s.total);
+    $('k-total-m').textContent = s.since ? 'منذ ' + dayLabel(s.since) + ' ' + nf.format(+s.since.slice(0, 4)).replace(/٬/g, '') : '';
+
+    var f = s.funnel || { open: 0, lock: 0, code: 0 };
+    var pct = f.open ? Math.round(f.code / f.open * 100) : 0;
+    var html = '<div class="funnel">' +
+      '<div class="fstep"><b>' + n(f.open) + '</b><span>فتح كتاباً</span></div><span class="farrow">←</span>' +
+      '<div class="fstep"><b>' + n(f.lock) + '</b><span>بلغ المقفول</span></div><span class="farrow">←</span>' +
+      '<div class="fstep"><b>' + n(f.code) + '</b><span>نافذة الرمز</span></div></div>';
+    var books = (s.books || []).slice(0, 8);
+    if (books.length) {
+      html += '<table><thead><tr><th>الكتاب</th><th>فتح</th><th>مقفول</th><th>الرمز</th></tr></thead><tbody>' +
+        books.map(function (b) { return '<tr><td>' + esc(bookName(b.book)) + '</td><td>' + n(b.open) + '</td><td>' + n(b.lock) + '</td><td class="num">' + n(b.code) + '</td></tr>'; }).join('') +
+        '</tbody></table>';
+      if (f.open) html += '<div class="sub" style="margin-top:8px">نيّة الشراء اليوم: ' + n(pct) + '٪ من فاتحي الكتب. هذا يقيس الفرصة لا البيع.</div>';
+    } else {
+      html += '<div class="empty">لم يُفتَح كتابٌ اليوم بعد.</div>';
+    }
+    $('funnel').innerHTML = html;
+  }
+  function failVisits(e) {
+    ['k-today', 'k-total'].forEach(function (id) { $(id).textContent = '—'; });
+    $('visitsChart').innerHTML = $('funnel').innerHTML = '<div class="err">تعذّر جلب أرقام الدخول (' + esc(e.message || e) + ').</div>';
+  }
+
+  /* ═════════ ② المبيعات والمصاريف (n8n) ═════════ */
+  function renderSales(d) {
+    if (!d || !d.ok) throw new Error('رُفضت كلمة المرور');
+    var price = d.price || 3, sc = d.scopes || {}, sold = 0, codes = 0;
+    Object.keys(sc).forEach(function (k) { sold += sc[k].sold; codes += sc[k].total; });
+    var rev = sold * price;
+    var exp = (d.expenses || []).reduce(function (a, e) { return a + e.amount; }, 0);
+    var net = rev - exp;
+
+    $('k-sold').innerHTML = n(sold);
+    $('k-sold-m').textContent = 'من ' + n(codes) + ' رمزاً مولَّداً';
+    $('k-rev').innerHTML = omr(rev);
+    $('k-rev-m').textContent = n(price) + ' ر.ع للكتاب';
+    $('k-exp').innerHTML = omr(exp);
+    $('k-exp-m').textContent = (d.expenses || []).length ? n(d.expenses.length) + ' بنداً مسجَّلاً' : 'لا مصاريف مسجَّلة بعد';
+    $('k-net').innerHTML = '<span class="' + (net >= 0 ? '' : 'down') + '">' + omr(net) + '</span>';
+    $('k-net-m').textContent = rev ? 'هامش ' + n(Math.round(net / rev * 100)) + '٪' : '';
+
+    /* الإيراداتُ حسبَ المادّة */
+    var bySubj = {};
+    Object.keys(sc).forEach(function (k) { var s = k.split('-')[1]; bySubj[s] = (bySubj[s] || 0) + sc[k].sold; });
+    var rows = SUBJ_ORDER.concat(Object.keys(bySubj).filter(function (s) { return SUBJ_ORDER.indexOf(s) < 0; }))
+      .filter(function (s) { return s in bySubj; })
+      .map(function (s) { return { name: SUBJ[s] || s, value: bySubj[s] * price, sold: bySubj[s] }; })
+      .sort(function (a, b) { return b.value - a.value; });
+    hbars($('revBySubj'), rows, 'var(--c-sales)', function (r) { return n(r.value) + ' <small>ر.ع · ' + n(r.sold) + ' كتب</small>'; });
+    $('revSub').textContent = 'الكتب المباعة × ' + n(price) + ' ر.ع. «ديني حياتي» و«أحب لغتي» رمزٌ واحدٌ يفتح جزأي الصف.';
+
+    /* المبيعاتُ اليومية */
+    var today = muscatDay(), byDay = {};
+    (d.sales || []).forEach(function (p) { byDay[p[1]] = (byDay[p[1]] || 0) + 1; });
+    var pts = [];
+    for (var i = 29; i >= 0; i--) {
+      var day = shiftDay(today, -i), v = byDay[day] || 0;
+      pts.push({ label: dayLabel(day), value: v, faded: day === today,
+        tip: '<b>' + n(v) + '</b> كتب · ' + n(v * price) + ' ر.ع · ' + weekday(day) + ' ' + dayLabel(day) });
+    }
+    var host = $('salesChart');
+    if ((d.sales || []).length) columnChart(host, pts, { color: 'var(--c-sales)', aria: 'المبيعات اليومية لآخر ٣٠ يوماً' });
+    else host.innerHTML = '<div class="empty">لا مبيعاتٍ مؤرَّخةً بعد — سيظهر المنحنى مع أوّل بيعٍ جديد.</div>';
+    if (d.undated) host.insertAdjacentHTML('beforeend', '<div class="note">' + n(d.undated) + ' عملية بيع سبقت تسجيل التاريخ (قبل ٧ أكتوبر ٢٠٢٦) — محسوبةٌ في المجاميع لا في المنحنى.</div>');
+
+    /* جدولُ الكتب: الصفوفُ × الموادّ */
+    var grades = ['g1', 'g2', 'g3', 'g4'];
+    var subjs = SUBJ_ORDER.filter(function (s) { return grades.some(function (g) { return sc[g + '-' + s]; }); });
+    var maxSold = Math.max.apply(null, Object.keys(sc).map(function (k) { return sc[k].sold; }).concat([1]));
+    var t = '<table><thead><tr><th>الصف</th>' + subjs.map(function (s) { return '<th>' + SUBJ[s] + '</th>'; }).join('') + '<th>المجموع</th></tr></thead><tbody>';
+    grades.forEach(function (g) {
+      var tot = 0;
+      t += '<tr><td>' + GRADE[g] + '</td>' + subjs.map(function (s) {
+        var c = sc[g + '-' + s];
+        if (!c) return '<td><span class="tag off">—</span></td>';
+        tot += c.sold;
+        var left = c.total - c.sold, a = c.sold ? .15 + .55 * c.sold / maxSold : 0;
+        return '<td title="' + esc(SUBJ[s] + ' · ' + GRADE[g] + ': بيع ' + c.sold + ' · متبقٍّ ' + left) + '">' +
+          '<span class="cell" style="background:rgba(224,104,28,' + a.toFixed(2) + ')">' + n(c.sold) + '</span>' +
+          (left < LOW_STOCK ? '<span class="tag warn">متبقٍّ ' + n(left) + '</span>' : '') + '</td>';
+      }).join('') + '<td class="num">' + n(tot) + '</td></tr>';
+    });
+    t += '</tbody></table>';
+    $('bookTable').innerHTML = t;
+
+    /* المصاريف */
+    $('expLink').href = d.expensesUrl || '#';
+    var ex = (d.expenses || []).slice();
+    if (!ex.length) {
+      $('expByCat').innerHTML = '<div class="empty">لا مصاريف بعد. أضفها في ملف «شوجب — المصاريف» وستظهر هنا عند التحديث.</div>';
+      $('expList').innerHTML = '<div class="empty">—</div>';
+    } else {
+      var cats = {};
+      ex.forEach(function (e) { cats[e.category] = (cats[e.category] || 0) + e.amount; });
+      hbars($('expByCat'), Object.keys(cats).map(function (c) { return { name: c, value: cats[c] }; }).sort(function (a, b) { return b.value - a.value; }),
+        'var(--c-exp)', function (r) { return n(r.value) + ' <small>ر.ع</small>'; });
+      ex.sort(function (a, b) { return String(b.date).localeCompare(String(a.date)); });
+      $('expList').innerHTML = '<table><thead><tr><th>البند</th><th>الفئة</th><th>التاريخ</th><th>المبلغ</th></tr></thead><tbody>' +
+        ex.slice(0, 10).map(function (e) {
+          return '<tr><td title="' + esc(e.notes) + '">' + esc(e.item) + '</td><td>' + esc(e.category) + '</td><td>' + esc(e.date) + '</td><td class="num">' + n(e.amount) + '</td></tr>';
+        }).join('') + '</tbody></table>';
+    }
+  }
+  function failSales(e) {
+    ['k-sold', 'k-rev', 'k-exp', 'k-net'].forEach(function (id) { $(id).textContent = '—'; });
+    ['revBySubj', 'salesChart', 'bookTable', 'expByCat', 'expList'].forEach(function (id) {
+      $(id).innerHTML = '<div class="err">تعذّر جلب المبيعات (' + esc(e.message || e) + ').</div>';
+    });
+  }
+
+  /* ═════════ التحميل ═════════ */
+  function getJSON(url) {
+    return fetch(url, { cache: 'no-store' }).then(function (r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    });
+  }
+  function load() {
+    var key = getKey(), btn = $('refresh');
+    btn.disabled = true;
+    var q = '?key=' + encodeURIComponent(key);
+    var a = getJSON(STATS_URL + q).then(renderVisits, failVisits);
+    var b = getJSON(DASH_URL + q).then(renderSales).catch(function (e) {
+      if (/كلمة المرور/.test(e.message)) { setKey(''); showGate('كلمة المرور غير صحيحة.'); }
+      failSales(e);
+    });
+    Promise.all([a, b]).then(function () {
+      btn.disabled = false;
+      $('stamp').textContent = 'آخر تحديث ' + new Intl.DateTimeFormat('ar-EG', { hour: 'numeric', minute: '2-digit', timeZone: 'Asia/Muscat' }).format(new Date()) + ' بتوقيت مسقط';
+    });
+  }
+
+  function showGate(msg) {
+    $('dash').hidden = true; $('gate').hidden = false;
+    $('gateErr').textContent = msg || '';
+    setTimeout(function () { $('gateKey').focus(); }, 0);
+  }
+  function showDash() { $('gate').hidden = true; $('dash').hidden = false; load(); }
+
+  $('gateForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var k = $('gateKey').value.trim(); if (!k) return;
+    setKey(k); $('gateKey').value = ''; showDash();
+  });
+  $('refresh').addEventListener('click', load);
+  $('logout').addEventListener('click', function () { setKey(''); showGate(); });
+
+  getKey() ? showDash() : showGate();
+})();
+</script>
+</body>
+</html>
