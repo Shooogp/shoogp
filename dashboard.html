@@ -125,9 +125,11 @@
   .hub-lines{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
   .hub-lines .glow{fill:none;stroke-width:6;stroke-opacity:.18;vector-effect:non-scaling-stroke;filter:blur(2px)}
   .hub-lines .wire{fill:none;stroke-width:1.6;vector-effect:non-scaling-stroke}
-  .hub-lines .flow{fill:none;stroke-width:2.2;vector-effect:non-scaling-stroke;stroke-dasharray:4 14;animation:flow 2.4s linear infinite}
+  /* «حركةُ النمل»: نقاطٌ مستديرةٌ (‏dash بطولٍ يقاربُ الصفرَ ورأسٍ مستدير) متوهّجةٌ — كُبِّرت بطلبِ المالك */
+  .hub-lines .flow{fill:none;stroke-width:6;stroke-linecap:round;vector-effect:non-scaling-stroke;stroke-dasharray:0.1 16;
+    animation:flow 1.8s linear infinite;filter:drop-shadow(0 0 3px currentColor) drop-shadow(0 0 6px currentColor)}
   .hub-lines .node{stroke:none}
-  @keyframes flow{to{stroke-dashoffset:-36}}
+  @keyframes flow{to{stroke-dashoffset:-32.2}}
   .hub-lines .tick{stroke:var(--neon);stroke-opacity:.35;stroke-width:1;vector-effect:non-scaling-stroke}
 
   .ring{position:absolute;left:50%;top:50%;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none}
@@ -154,6 +156,12 @@
     animation:pulse 3.6s ease-in-out infinite}
   @keyframes pulse{50%{box-shadow:0 0 30px rgba(56,200,255,1),0 0 80px rgba(56,200,255,.45),inset 0 0 36px rgba(56,200,255,.55)}}
   .orb::before{content:"";position:absolute;inset:9%;border-radius:50%;border:1px solid rgba(120,220,255,.35)}
+  /* شبكةٌ كرويّةٌ متوهّجةٌ خلفَ الشعار (على نمطِ الصورةِ المرجعيّة) — تُبنى في buildOrbNet وتدورُ ببطء */
+  .orb-net{position:absolute;inset:4%;width:92%;height:92%;border-radius:50%;overflow:hidden;pointer-events:none;
+    animation:netspin 80s linear infinite;-webkit-mask:radial-gradient(circle,#000 62%,transparent 72%);mask:radial-gradient(circle,#000 62%,transparent 72%)}
+  .orb-net line{stroke-width:.35;stroke-linecap:round}
+  .orb-net circle{filter:drop-shadow(0 0 1.2px #8fe4ff)}
+  @keyframes netspin{to{transform:rotate(360deg)}}
   /* الشعارُ وحدَه يملأُ الكرة (طلبُ المالك ٢٠٢٦-١٠-٠٧) — متوهّجٌ بهالتَين: برتقاليّةٍ من لونِه وسماويّةٍ من الكرة */
   .orb img{position:relative;width:62%;height:auto;
     filter:drop-shadow(0 0 3px rgba(255,255,255,.85)) drop-shadow(0 0 10px rgba(255,150,60,.95)) drop-shadow(0 0 22px rgba(255,120,40,.6)) drop-shadow(0 0 30px rgba(56,200,255,.45));
@@ -267,7 +275,7 @@
   [hidden]{display:none!important}
 
   @media (prefers-reduced-motion:reduce){
-    .ring,.orb,.orb img,.hub-lines .flow,.skel{animation:none!important}
+    .ring,.orb,.orb img,.orb-net,.hub-lines .flow,.skel{animation:none!important}
   }
 </style>
 </head>
@@ -351,6 +359,7 @@
           <div class="ring r3"></div><div class="ring r2"></div><div class="ring r1"></div>
           <div class="beam"></div><div class="plat"></div>
           <div class="orb">
+            <svg class="orb-net" id="orbNet" viewBox="-50 -50 100 100" aria-hidden="true"></svg>
             <img src="images/logo-mark.png" alt="شوجب">
           </div>
           <!-- السداسيّاتُ تُبنى من JS (‏HUB_NODES) -->
@@ -494,6 +503,35 @@
       hub.appendChild(hex);
     });
     $('hubLines').innerHTML = lines;
+    buildOrbNet();
+  }
+
+  /* شبكةُ الكرة: نقاطٌ موزّعةٌ على سطحِ كرةٍ (‏توزيعُ فيبوناتشي فتتقاربُ المسافاتُ بلا تكدّس)،
+     مُسقَطةٌ على مستوى، وكلُّ نقطتَينِ متجاورتَينِ على الكرةِ يصلُهما خطّ — فتبدو كرةً شبكيّة.
+     الوجهُ الأماميُّ أسطعُ والخلفيُّ خافت، فيُقرأُ العمق. حتميّةٌ بلا عشوائيّة: الشكلُ نفسُه في كلِّ فتح. */
+  function buildOrbNet() {
+    var N = 70, R = 46, pts = [], g = Math.PI * (3 - Math.sqrt(5)), tilt = 0.45;
+    for (var i = 0; i < N; i++) {
+      var y = 1 - (i + .5) / N * 2, r = Math.sqrt(1 - y * y), th = g * i;
+      var x = Math.cos(th) * r, z = Math.sin(th) * r;
+      var y2 = y * Math.cos(tilt) - z * Math.sin(tilt), z2 = y * Math.sin(tilt) + z * Math.cos(tilt);   // ميلٌ يُظهرُ القطبَ قليلاً
+      pts.push([x, y2, z2]);
+    }
+    var lines = '', dots = '', LIM = 0.52;   // أقصى مسافةٍ على الكرةِ يُرسَمُ بينها خطّ
+    for (var a = 0; a < N; a++) for (var b = a + 1; b < N; b++) {
+      var dx = pts[a][0] - pts[b][0], dy = pts[a][1] - pts[b][1], dz = pts[a][2] - pts[b][2];
+      if (dx * dx + dy * dy + dz * dz > LIM * LIM) continue;
+      var depth = (pts[a][2] + pts[b][2]) / 2, op = (0.12 + 0.5 * (depth + 1) / 2).toFixed(2);
+      var col = (a + b) % 9 === 0 ? '#ffae5c' : '#7fdcff';   // خيوطٌ برتقاليّةٌ قليلةٌ كالمرجع
+      lines += '<line x1="' + (pts[a][0] * R).toFixed(2) + '" y1="' + (pts[a][1] * R).toFixed(2) + '" x2="' + (pts[b][0] * R).toFixed(2) +
+        '" y2="' + (pts[b][1] * R).toFixed(2) + '" stroke="' + col + '" stroke-opacity="' + op + '"/>';
+    }
+    pts.forEach(function (p) {
+      var front = (p[2] + 1) / 2;
+      dots += '<circle cx="' + (p[0] * R).toFixed(2) + '" cy="' + (p[1] * R).toFixed(2) + '" r="' + (0.5 + front * 0.9).toFixed(2) +
+        '" fill="#c9f1ff" fill-opacity="' + (0.25 + front * 0.75).toFixed(2) + '"/>';
+    });
+    $('orbNet').innerHTML = lines + dots;
   }
 
   /* ── التلميح (hover/لمس) ── */
