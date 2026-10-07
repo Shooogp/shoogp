@@ -454,7 +454,7 @@
     <section class="row one" id="sec-stock">
       <div class="card">
         <h2><svg class="ic"><use href="#i-grid"/></svg>مخزون الرموز</h2>
-        <div class="sub" id="stockSub">لكل مادة دائرة، وصفوفها أقواس حولها (الأول في الداخل). طول القوس = المستهلَك من رموز الكتاب، ونصف الدائرة الكاملة = نفدت. الأحمر الوامض تحت ٢٠ — مرّر على الصف للتفاصيل.</div>
+        <div class="sub" id="stockSub">لكل مادة دائرة، وصفوفها أقواس حولها (الأول في الداخل). طول القوس = المتبقّي من رموز الكتاب: ممتلئ حين لم يُبَع شيء، وينقص من أعلاه مع كل بيع. الأحمر الوامض تحت ٢٠ — مرّر على الصف للتفاصيل.</div>
         <div id="stockBox"><div class="skel"></div></div>
       </div>
     </section>
@@ -940,8 +940,8 @@
     items.forEach(function (i) { byKey[i.k] = i; });
     /* مخطّطٌ دائريٌّ لكلِّ مادّة (طلبُ المالك ٢٠٢٦-١٠-٠٧، على نمطِ «الإنفوجرافيك الملتفّ»):
        اسمُ المادّةِ في الدائرة، وأربعةُ أقواسٍ متّحدةِ المركزِ للصفوف (الأوّلُ في الداخل).
-       طولُ القوسِ = المستهلَكُ من رموزِ الكتاب (نصفُ دائرةٍ كاملةٌ = نفدت كلُّها)، يبدأُ من أسفلَ
-       ويلتفُّ يميناً صعوداً؛ ومن أسفلِه ساقٌ مستقيمةٌ إلى اليسارِ تحملُ اسمَ الصفِّ وأرقامَه.
+       طولُ القوسِ = المتبقّي من رموزِ الكتاب (طلبُ المالك): ممتلئٌ نصفَ دائرةٍ حينَ لم يُستهلَكْ شيء،
+       وينقصُ من طرفِه العلويِّ نحوَ الأسفلِ مع كلِّ بيع، فالمثبَّتُ أسفلُه عندَ الساق؛ ومن أسفلِه ساقٌ مستقيمةٌ إلى اليسارِ تحملُ اسمَ الصفِّ وأرقامَه.
        والحرجُ (تحتَ ٢٠) أحمرُ وامضٌ مع «⚠» في الساق — لا يُعتمَدُ اللونُ وحدَه. */
     var W = 360, R0 = 60, GAP = 19, SW = 13, cx = W - 125, cy = 126, H = cy + R0 + 3 * GAP + 12;
     var GN = ['الأول', 'الثاني', 'الثالث', 'الرابع'];
@@ -961,14 +961,14 @@
           return;
         }
         sum += i.left; used += i.sold; all += i.total;
-        var p = i.total ? i.sold / i.total : 0, low = i.left < LOW_STOCK, c = low ? '#ff4d4d' : shade;
+        var p = i.total ? i.left / i.total : 0, low = i.left < LOW_STOCK, c = low ? '#ff4d4d' : shade;
         rings += '<g class="rg' + (low ? ' low' : '') + '" data-k="' + i.k + '" tabindex="0" style="color:' + c + '">' +
           (p > 0 ? '<path class="rfill" d="' + arc(r, p) + '" style="stroke-width:' + SW + '"/>' : '') +
           '<line class="rleg" x1="' + cx + '" y1="' + y + '" x2="8" y2="' + y + '" style="stroke-width:' + SW + '"/>' +
-          '<text class="rlab" x="' + (cx - 10) + '" y="' + (y + 3.6) + '">' + (low ? '⚠ ' : '') + GN[gi] + ' — ' + n(Math.round(p * 100)) + '٪</text>' +   // لا «·»: تشبهُ الصفرَ الهنديَّ فيُقرأُ ٣٠٪ «٣٠٠٪»
-          '<text class="rnum" x="16" y="' + (y + 3.6) + '">' + n(i.sold) + ' من ' + n(i.total) + '</text></g>';
+          '<text class="rlab" x="' + (cx - 10) + '" y="' + (y + 3.6) + '">' + (low ? '⚠ ' : '') + GN[gi] + ' — متبقٍّ ' + n(Math.round(p * 100)) + '٪</text>' +   // لا «·»: تشبهُ الصفرَ الهنديَّ فيُقرأُ ٣٠٪ «٣٠٠٪»
+          '<text class="rnum" x="16" y="' + (y + 3.6) + '">' + n(i.left) + ' من ' + n(i.total) + '</text></g>';
       });
-      return '<figure class="rad"><svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(SUBJ[sj] + ': استُهلك ' + used + ' من ' + all + ' رمزاً') + '">' + rings +
+      return '<figure class="rad"><svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(SUBJ[sj] + ': متبقٍّ ' + sum + ' من ' + all + ' رمزاً') + '">' + rings +
         '<circle class="rhub" cx="' + cx + '" cy="' + cy + '" r="' + (R0 - SW / 2 - 6) + '" style="stroke:' + col + '"/>' +
         '<text class="rname" x="' + cx + '" y="' + (cy - 3) + '">' + esc(SUBJ[sj]) + '</text>' +
         '<text class="rsub" x="' + cx + '" y="' + (cy + 15) + '">متبقٍّ ' + n(sum) + '</text></svg></figure>';
