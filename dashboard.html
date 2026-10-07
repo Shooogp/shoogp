@@ -676,7 +676,7 @@
   }
   function failVisits(e) {
     ['h-visits', 'h-total', 'h-intent'].forEach(function (id) { $(id).textContent = '—'; });
-    $('visitsChart').innerHTML = $('funnel').innerHTML = '<div class="err">تعذّر جلب أرقام الدخول (' + esc(e.message || e) + ').</div>';
+    $('visitsChart').innerHTML = $('funnel').innerHTML = '<div class="err">تعذّر جلب أرقام الدخول: ' + esc(why(e)) + '.</div>';
     setStatus('st-cf', false, 'غير متاح');
   }
 
@@ -768,7 +768,7 @@
   function failSales(e) {
     ['h-sold', 'h-rev', 'h-exp'].forEach(function (id) { $(id).textContent = '—'; });
     ['gaugeBox', 'revBySubj', 'salesChart', 'bookTable', 'expByCat', 'expList'].forEach(function (id) {
-      $(id).innerHTML = '<div class="err">تعذّر جلب المبيعات (' + esc(e.message || e) + ').</div>';
+      $(id).innerHTML = '<div class="err">تعذّر جلب المبيعات: ' + esc(why(e)) + '.</div>';
     });
     setStatus('st-n8n', false, 'غير متاح');
   }
@@ -802,11 +802,22 @@
   }
 
   /* ═════════ التحميل ═════════ */
-  function getJSON(url) {
+  /* إخفاقُ الشبكةِ (لا ردَّ من الخادمِ أصلاً) يُعادُ مرّةً بعدَ ثانيتَين؛ أمّا ردٌّ برقمِ خطأٍ فلا يُعاد.
+     «Failed to fetch» يعني أنّ الطلبَ لم يخرجْ: انقطاعٌ، أو مانعُ إعلانات، أو متصفّحٌ داخلَ تطبيقٍ آخر. */
+  function getJSON(url, retried) {
     return fetch(url, { cache: 'no-store' }).then(function (r) {
       if (!r.ok) throw new Error('HTTP ' + r.status);
       return r.json();
+    }, function (e) {
+      if (retried) throw new Error('net');
+      return new Promise(function (ok) { setTimeout(ok, 2000); }).then(function () { return getJSON(url, true); });
     });
+  }
+  function why(e) {
+    var m = String((e && e.message) || e);
+    if (m === 'net') return 'لم يصل الطلب — تأكّد من الاتصال بالإنترنت، وأوقف مانع الإعلانات لهذه الصفحة، وافتحها في متصفّح عادي لا من داخل تطبيق، ثم اضغط «تحديث»';
+    if (/HTTP 403/.test(m)) return 'رُفضت كلمة المرور';
+    return m;
   }
   function load() {
     var key = getKey(), btn = $('refresh');
