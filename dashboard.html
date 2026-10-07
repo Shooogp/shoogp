@@ -131,7 +131,7 @@
   .hub-lines .node{stroke:none}
   @keyframes flow{to{stroke-dashoffset:-32.2}}
   /* تدريجُ الساعةِ في طبقةٍ مستقلّةٍ تدورُ وحدَها (طلبُ المالك ٢٠٢٦-١٠-٠٧) — والأسلاكُ ثابتة */
-  .hub-ticks{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;animation:tickspin 40s linear infinite}
+  .hub-ticks{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;animation:tickspin 40s linear infinite reverse}
   @keyframes tickspin{to{transform:rotate(360deg)}}
   .hub-ticks .tick.major{stroke-opacity:.75;stroke-width:1.6;filter:drop-shadow(0 0 2px var(--neon))}
   .hub-ticks .tick{stroke:var(--neon);stroke-opacity:.35;stroke-width:1;vector-effect:non-scaling-stroke}
