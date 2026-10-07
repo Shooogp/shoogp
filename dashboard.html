@@ -162,6 +162,9 @@
   .orb-net line{stroke-width:.35;stroke-linecap:round}
   .orb-net circle{filter:drop-shadow(0 0 1.2px #8fe4ff)}
   @keyframes netspin{to{transform:rotate(360deg)}}
+  /* الشعارُ داخلَ الكرة (طلبُ المالك ٢٠٢٦-١٠-٠٧): نصفُها الخلفيُّ وراءَه ونصفُها الأماميُّ فوقَه بشفافيّة،
+     فيبدو الشعارُ معلَّقاً في جوفِ الشبكةِ لا ملصَقاً عليها */
+  .orb-net.front{opacity:.6}
   /* الشعارُ وحدَه يملأُ الكرة (طلبُ المالك ٢٠٢٦-١٠-٠٧) — متوهّجٌ بهالتَين: برتقاليّةٍ من لونِه وسماويّةٍ من الكرة */
   .orb img{position:relative;width:62%;height:auto;
     filter:drop-shadow(0 0 3px rgba(255,255,255,.85)) drop-shadow(0 0 10px rgba(255,150,60,.95)) drop-shadow(0 0 22px rgba(255,120,40,.6)) drop-shadow(0 0 30px rgba(56,200,255,.45));
@@ -361,6 +364,7 @@
           <div class="orb">
             <svg class="orb-net" id="orbNet" viewBox="-50 -50 100 100" aria-hidden="true"></svg>
             <img src="images/logo-mark.png" alt="شوجب">
+            <svg class="orb-net front" id="orbNetFront" viewBox="-50 -50 100 100" aria-hidden="true"></svg>
           </div>
           <!-- السداسيّاتُ تُبنى من JS (‏HUB_NODES) -->
         </div>
@@ -517,21 +521,24 @@
       var y2 = y * Math.cos(tilt) - z * Math.sin(tilt), z2 = y * Math.sin(tilt) + z * Math.cos(tilt);   // ميلٌ يُظهرُ القطبَ قليلاً
       pts.push([x, y2, z2]);
     }
-    var lines = '', dots = '', LIM = 0.52;   // أقصى مسافةٍ على الكرةِ يُرسَمُ بينها خطّ
+    var back = '', front = '', LIM = 0.52;   // أقصى مسافةٍ على الكرةِ يُرسَمُ بينها خطّ
     for (var a = 0; a < N; a++) for (var b = a + 1; b < N; b++) {
       var dx = pts[a][0] - pts[b][0], dy = pts[a][1] - pts[b][1], dz = pts[a][2] - pts[b][2];
       if (dx * dx + dy * dy + dz * dz > LIM * LIM) continue;
       var depth = (pts[a][2] + pts[b][2]) / 2, op = (0.12 + 0.5 * (depth + 1) / 2).toFixed(2);
       var col = (a + b) % 9 === 0 ? '#ffae5c' : '#7fdcff';   // خيوطٌ برتقاليّةٌ قليلةٌ كالمرجع
-      lines += '<line x1="' + (pts[a][0] * R).toFixed(2) + '" y1="' + (pts[a][1] * R).toFixed(2) + '" x2="' + (pts[b][0] * R).toFixed(2) +
+      var ln = '<line x1="' + (pts[a][0] * R).toFixed(2) + '" y1="' + (pts[a][1] * R).toFixed(2) + '" x2="' + (pts[b][0] * R).toFixed(2) +
         '" y2="' + (pts[b][1] * R).toFixed(2) + '" stroke="' + col + '" stroke-opacity="' + op + '"/>';
+      if (depth >= 0) front += ln; else back += ln;
     }
     pts.forEach(function (p) {
-      var front = (p[2] + 1) / 2;
-      dots += '<circle cx="' + (p[0] * R).toFixed(2) + '" cy="' + (p[1] * R).toFixed(2) + '" r="' + (0.5 + front * 0.9).toFixed(2) +
-        '" fill="#c9f1ff" fill-opacity="' + (0.25 + front * 0.75).toFixed(2) + '"/>';
+      var f = (p[2] + 1) / 2;
+      var dot = '<circle cx="' + (p[0] * R).toFixed(2) + '" cy="' + (p[1] * R).toFixed(2) + '" r="' + (0.5 + f * 0.9).toFixed(2) +
+        '" fill="#c9f1ff" fill-opacity="' + (0.25 + f * 0.75).toFixed(2) + '"/>';
+      if (p[2] >= 0) front += dot; else back += dot;
     });
-    $('orbNet').innerHTML = lines + dots;
+    $('orbNet').innerHTML = back;          // وراءَ الشعار
+    $('orbNetFront').innerHTML = front;    // فوقَه — والدورانُ حولَ محورِ النظرِ فلا ينقلبُ الأمامُ خلفاً
   }
 
   /* ── التلميح (hover/لمس) ── */
