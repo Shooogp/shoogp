@@ -1,0 +1,49 @@
+# ═══════════ مرحِّلُ api.shoogp.com (قرارُ المالك ٢٠٢٦-١٠-٠٧) ═══════════
+# بعضُ شبكاتِ جهاتِ العملِ والمدارسِ تحجبُ ‎*.workers.dev‎ و‎*.n8n.cloud‎، فلا تصلُ إليهما
+# لوحةُ المالكِ ولا تفعيلُ الرموزِ في pay.html. هذا الموقعُ على Netlify **يُرحِّلُ فقط**:
+# يستقبلُ الطلبَ على نطاقِ شوجب نفسِه ويمرّرُه كما هو (‏status 200 = وكيلٌ لا تحويل).
+#
+# ⚠️ **احتياطٌ لا طريقٌ أوّل:** الصفحاتُ تطلبُ العنوانَ الأصليَّ أوّلاً، ولا تلجأُ إلى هنا إلا
+# إن لم يخرجِ الطلبُ أصلاً (‏TypeError) — فمن تعملُ شبكتُها اليومَ لا يتغيّرُ عليها شيء.
+#
+# ⛔ **ومسارٌ صريحٌ لكلِّ ويبهوك** لا `/*` عامّ: لا يُرحَّلُ إلا ما تحتاجُه المنصّة.
+# ⚠️ **ومهلةُ وكيلِ Netlify نحوُ ٢٦ ثانية،** وأطولُ تفعيلٍ مقيسٍ ٢٣ ثانية (قراءةُ جيميناي
+# للإيصال) — فإن تجاوزَها في الاحتياطِ أعادت المعلّمةُ المحاولةَ فردَّ المسارُ رموزَها نفسَها
+# (‏فرعُ «resend» في «الفحوص واختيار الرمز» — لا حجزَ مكرَّر).
+
+[build]
+  publish = "."
+  # لا يُعادُ النشرُ إلا إن تغيّرَ هذا المجلّد — بقيّةُ دفعاتِ المستودعِ لا تمسُّه
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- ."
+
+# ── n8n ──
+[[redirects]]
+  from = "/n8n/activate"
+  to = "https://shoogp.app.n8n.cloud/webhook/activate"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/n8n/shoogp-dash-7c1e"
+  to = "https://shoogp.app.n8n.cloud/webhook/shoogp-dash-7c1e"
+  status = 200
+  force = true
+
+# ── عدّادُ الدخول (Cloudflare Worker) ──
+[[redirects]]
+  from = "/cf/stats"
+  to = "https://shoogp-visits.shooogp.workers.dev/stats"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/cf/visit"
+  to = "https://shoogp-visits.shooogp.workers.dev/visit"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/cf/book"
+  to = "https://shoogp-visits.shooogp.workers.dev/book"
+  status = 200
+  force = true

@@ -802,15 +802,20 @@
   }
 
   /* ═════════ التحميل ═════════ */
-  /* إخفاقُ الشبكةِ (لا ردَّ من الخادمِ أصلاً) يُعادُ مرّةً بعدَ ثانيتَين؛ أمّا ردٌّ برقمِ خطأٍ فلا يُعاد.
-     «Failed to fetch» يعني أنّ الطلبَ لم يخرجْ: انقطاعٌ، أو مانعُ إعلانات، أو متصفّحٌ داخلَ تطبيقٍ آخر. */
-  function getJSON(url, retried) {
-    return fetch(url, { cache: 'no-store' }).then(function (r) {
+  /* إخفاقُ الشبكةِ (لا ردَّ من الخادمِ أصلاً) يعني غالباً أنّ الشبكةَ تحجبُ ‎workers.dev‎ أو ‎n8n.cloud‎
+     (مقيسٌ على شبكةِ جهةِ عملِ المالك ٢٠٢٦-١٠-٠٧) — فيُعادُ الطلبُ عبرَ المرحِّلِ على نطاقِ شوجب
+     (‏proxy/netlify.toml). أمّا ردٌّ برقمِ خطأٍ فقد وصلَ الخادمَ فلا يُعاد. */
+  var RELAY = 'https://api.shoogp.com';
+  var RELAY_OF = {};
+  RELAY_OF[STATS_URL] = RELAY + '/cf/stats';
+  RELAY_OF[DASH_URL] = RELAY + '/n8n/shoogp-dash-7c1e';
+  function getJSON(base, q, viaRelay) {
+    return fetch((viaRelay ? RELAY_OF[base] : base) + q, { cache: 'no-store' }).then(function (r) {
       if (!r.ok) throw new Error('HTTP ' + r.status);
       return r.json();
-    }, function (e) {
-      if (retried) throw new Error('net');
-      return new Promise(function (ok) { setTimeout(ok, 2000); }).then(function () { return getJSON(url, true); });
+    }, function () {
+      if (viaRelay || !RELAY_OF[base]) throw new Error('net');
+      return getJSON(base, q, true);
     });
   }
   function why(e) {
@@ -823,8 +828,8 @@
     var key = getKey(), btn = $('refresh');
     btn.disabled = true;
     var q = '?key=' + encodeURIComponent(key);
-    var a = getJSON(STATS_URL + q).then(renderVisits).catch(failVisits);
-    var b = getJSON(DASH_URL + q).then(renderSales).catch(function (e) {
+    var a = getJSON(STATS_URL, q).then(renderVisits).catch(failVisits);
+    var b = getJSON(DASH_URL, q).then(renderSales).catch(function (e) {
       if (/كلمة المرور/.test(e.message)) { setKey(''); showGate('كلمة المرور غير صحيحة.'); }
       failSales(e);
     });

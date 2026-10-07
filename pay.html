@@ -288,6 +288,7 @@ select option:disabled{color:var(--muted)}
 /* ═══════════ CONFIG — عدّلي هذه القيم ═══════════ */
 const CONFIG = {
   WEBHOOK : "https://shoogp.app.n8n.cloud/webhook/activate",
+  WEBHOOK_RELAY : "https://api.shoogp.com/n8n/activate",   // احتياطٌ للشبكاتِ التي تحجبُ n8n.cloud
   PRICE   : 3,            // سعرُ **الكتابِ الواحد** — والمجموعُ يُضرَبُ بعددِ كتبِ السلّة
   ACCOUNT : "91496256",   // ← رقم الحساب أو رقم الهاتف للتحويل
   HOLDER  : "IBRAHIM KHAMIS — بنك مسقط",
@@ -555,7 +556,12 @@ $("go").onclick = async () => {
   fd.append("name",  $("name").value);
 
   try{
-    const res  = await fetch(CONFIG.WEBHOOK, { method:"POST", body: fd });
+    /* بعضُ شبكاتِ المدارسِ وجهاتِ العملِ تحجبُ ‎n8n.cloud‎ فلا يخرجُ الطلبُ أصلاً (‏TypeError) —
+       فيُعادُ عبرَ المرحِّلِ على نطاقِ شوجب (‏proxy/netlify.toml). ولو كانَ الطلبُ الأوّلُ قد وصلَ
+       ثمّ انقطعَ الردّ، فالمسارُ يعرفُ الإيصالَ والرقمَ فيردُّ الرموزَ نفسَها بلا حجزٍ مكرَّر. */
+    let res;
+    try { res = await fetch(CONFIG.WEBHOOK, { method:"POST", body: fd }); }
+    catch (e) { res = await fetch(CONFIG.WEBHOOK_RELAY, { method:"POST", body: fd }); }
     const data = await res.json();
 
     if (data.ok){
