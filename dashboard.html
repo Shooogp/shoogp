@@ -233,6 +233,26 @@
   .hex .hl{font-size:max(9px,1.85cqw);white-space:nowrap;color:var(--ink2);line-height:1.25;margin-top:.4cqw}
   .hex .hm{font-size:max(8.5px,1.65cqw);color:var(--ink3);line-height:1.2;margin-top:.2cqw;white-space:nowrap}
 
+  /* ═════════ الاشتراكاتُ الشهريّة (طلبُ المالك ٢٠٢٦-١٠-٠٧): سداسيٌّ كبيرٌ لكلِّ اشتراك ═════════
+     بنفسِ هيئةِ سداسيّاتِ المركز، لكن في صفٍّ عاديٍّ لا مواضعَ مطلقة — فأحجامُ خطوطِها بالبكسلِ لا بـcqw */
+  .subs{display:flex;flex-wrap:wrap;justify-content:center;gap:18px 26px;padding:8px 0 4px}
+  .hex.sub{position:relative;left:auto;top:auto;transform:none;width:210px;flex:none}
+  .hex.sub:hover{transform:scale(1.05)}
+  .hex.sub .in{padding:0 12%}
+  .hex.sub .logo{width:30%;height:auto;margin-bottom:6px;filter:drop-shadow(0 0 6px color-mix(in srgb,var(--hc) 70%,transparent))}
+  .hex.sub .sn{font-family:'Cairo';font-weight:800;font-size:1rem;color:#fff;line-height:1.2}
+  .hex.sub .sp{font-size:.72rem;color:var(--ink3);line-height:1.2;margin-bottom:4px}
+  .hex.sub .hv{font-size:1.45rem}
+  .hex.sub .usd{font-size:.74rem;color:var(--ink2);line-height:1.2}
+  .hex.sub .ren{margin-top:6px;font-size:.76rem;line-height:1.3;color:var(--ink2);border-top:1px solid color-mix(in srgb,var(--hc) 40%,transparent);padding-top:5px}
+  .hex.sub .ren b{display:block;color:var(--ink);font-size:.86rem}
+  .hex.sub .ren.soon b{color:var(--warn)}
+  .subs-sum{text-align:center;color:var(--ink2);font-size:.9rem;margin-top:10px}
+  .subs-sum b{color:var(--ink);font-size:1.1rem}
+  @media (max-width:520px){.subs{gap:14px}.hex.sub{width:calc(50% - 8px);min-width:150px}
+    .hex.sub .sp{display:none}.hex.sub .logo{width:24%;margin-bottom:3px}.hex.sub .ren{margin-top:4px;padding-top:3px}
+    .hex.sub .sn{font-size:.88rem}.hex.sub .hv{font-size:1.15rem}.hex.sub .sp,.hex.sub .usd,.hex.sub .ren{font-size:.66rem}.hex.sub .ren b{font-size:.74rem}}
+
   /* ═════════ العدّادُ نصفُ الدائريّ ═════════ */
   .gauge{display:block;width:100%;max-width:300px;margin:4px auto 0}
   .gauge .gtrack{fill:none;stroke:rgba(120,180,255,.12);stroke-width:16}
@@ -377,6 +397,7 @@
         <a href="#sec-sales"><svg><use href="#i-chart"/></svg>المبيعات</a>
         <a href="#sec-books"><svg><use href="#i-book"/></svg>الكتب</a>
         <a href="#sec-exp"><svg><use href="#i-receipt"/></svg>المصاريف</a>
+        <a href="#sec-subs"><svg><use href="#i-refresh"/></svg>الاشتراكات</a>
         <a href="#sec-stock"><svg><use href="#i-grid"/></svg>المخزون</a>
       </nav>
       <div class="tools">
@@ -430,6 +451,14 @@
           <h2><svg class="ic"><use href="#i-bell"/></svg>تنبيهات</h2>
           <ul class="alerts" id="alerts"><li><span class="ai i">…</span><span>جارٍ التحميل…</span></li></ul>
         </div>
+      </div>
+    </section>
+
+    <section class="row one" id="sec-subs">
+      <div class="card">
+        <h2><svg class="ic"><use href="#i-refresh"/></svg>الاشتراكات الشهرية</h2>
+        <div class="sub">آخر رسومٍ شهريةٍ لكل اشتراك في ملف المصاريف، وموعد التجديد التالي في اليوم نفسه من الشهر القادم.</div>
+        <div id="subsBox"><div class="skel"></div></div>
       </div>
     </section>
 
@@ -871,8 +900,67 @@
           return '<tr><td title="' + esc(e.notes) + '">' + esc(e.item) + '</td><td>' + esc(e.category) + '</td><td>' + esc(e.date) + '</td><td class="num">' + n(e.amount) + '</td></tr>';
         }).join('') + '</tbody></table>';
     }
+    renderSubs(d.expenses || []);
     setStatus('st-n8n', true, 'متّصل');
   }
+  /* ═════════ الاشتراكاتُ الشهريّة ═════════
+     تُشتقُّ من ملفِّ المصاريفِ نفسِه فلا مصدرَ ثانٍ: كلُّ فئةٍ تبدأُ بـ«اشتراك» تُؤخَذُ آخرُ رسومِها
+     الشهريّة (بندٌ فيه «شهري» — فرصيدُ Claude الإضافيُّ لا يُحسَبُ اشتراكاً)، والتجديدُ في اليومِ نفسِه
+     من الشهرِ التالي. والدولارُ من «US$» في الملاحظات. اشتراكٌ جديدٌ يظهرُ بإضافةِ سطرِه في الملفّ. */
+  var SUB_BRAND = [
+    { re: /claude/i, color: '#d97757', svg: (function () {
+        var g = '';   // شرارةُ Claude: أشعّةٌ مستديرةٌ متفاوتةُ الطول
+        for (var i = 0; i < 12; i++) {
+          var a = i * 30 * Math.PI / 180, L = i % 2 ? 7.2 : 10;
+          g += '<line x1="' + (12 + 2 * Math.cos(a)).toFixed(2) + '" y1="' + (12 + 2 * Math.sin(a)).toFixed(2) + '" x2="' + (12 + L * Math.cos(a)).toFixed(2) + '" y2="' + (12 + L * Math.sin(a)).toFixed(2) + '"/>';
+        }
+        return '<svg class="logo" viewBox="0 0 24 24" aria-hidden="true"><g stroke="#d97757" stroke-width="2.4" stroke-linecap="round">' + g + '</g></svg>';
+      })() },
+    { re: /gemini/i, color: '#6f8cff',
+      svg: '<svg class="logo" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="gemG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4f8bff"/><stop offset="1" stop-color="#b47cff"/></linearGradient></defs>' +
+        '<path fill="url(#gemG)" d="M12 1.5C12 7.3 16.7 12 22.5 12 16.7 12 12 16.7 12 22.5 12 16.7 7.3 12 1.5 12 7.3 12 12 7.3 12 1.5z"/></svg>' },
+    { re: /n8n/i, color: '#ea4b71',
+      svg: '<svg class="logo" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="#ea4b71" stroke-width="1.9" stroke-linecap="round">' +
+        '<path d="M5.5 12h5M13.5 12c2 0 2.2-5 4.5-5M13.5 12c2 0 2.2 5 4.5 5"/></g><g fill="#ea4b71"><circle cx="3.6" cy="12" r="2.2"/><circle cx="12" cy="12" r="2.2"/><circle cx="20" cy="7" r="2.2"/><circle cx="20" cy="17" r="2.2"/></g></svg>' }
+  ];
+  function addMonths(day, k) {
+    var p = day.split('-').map(Number), y = p[0], m = p[1] - 1 + k;
+    y += Math.floor(m / 12); m = ((m % 12) + 12) % 12;
+    var last = new Date(Date.UTC(y, m + 1, 0)).getUTCDate();
+    return new Date(Date.UTC(y, m, Math.min(p[2], last))).toISOString().slice(0, 10);
+  }
+  function daysBetween(a, b) { return Math.round((Date.parse(b) - Date.parse(a)) / 864e5); }
+  var SUBS = [];
+  function renderSubs(expenses) {
+    var latest = {};
+    expenses.forEach(function (e) {
+      if (!/^اشتراك/.test(e.category) || !/شهري/.test(e.item) || !/^\d{4}-\d{2}-\d{2}/.test(e.date)) return;
+      var c = latest[e.category];
+      if (!c || e.date > c.date) latest[e.category] = e;
+    });
+    var today = muscatDay();
+    var subs = Object.keys(latest).map(function (cat) {
+      var e = latest[cat], d = e.date.slice(0, 10), next = addMonths(d, 1), k = 1;
+      while (next < today && k < 24) next = addMonths(d, ++k);   // سطرٌ متأخّرٌ لم يُسجَّلْ تجديدُه بعد
+      var usd = /US\$\s*([\d.]+)/.exec(e.notes || '');
+      return { name: cat.replace(/^اشتراك\s*/, ''), plan: e.item.replace(/\s*—\s*شهري.*$/, ''), amount: e.amount,
+        usd: usd ? +usd[1] : null, last: d, next: next, left: daysBetween(today, next), stale: k > 1 };
+    }).sort(function (a, b) { return a.next.localeCompare(b.next); });
+    SUBS = subs;
+    if (!subs.length) { $('subsBox').innerHTML = '<div class="empty">لا اشتراكات بعد — أضف في ملف المصاريف بنداً فئته تبدأ بـ«اشتراك» وفيه كلمة «شهري».</div>'; return; }
+    var total = 0, totalUsd = 0;
+    $('subsBox').innerHTML = '<div class="subs">' + subs.map(function (s) {
+      total += s.amount; if (s.usd) totalUsd += s.usd;
+      var b = SUB_BRAND.filter(function (x) { return x.re.test(s.name); })[0] || { color: 'var(--c-exp)', svg: '<svg class="logo" viewBox="0 0 24 24"><use href="#i-receipt"/></svg>' };
+      var when = s.left === 0 ? 'اليوم' : s.left === 1 ? 'غداً' : 'بعد ' + n(s.left) + ' يوماً';
+      return '<div class="hex sub" style="--hc:' + b.color + '" title="' + esc('آخر رسوم: ' + s.last + (s.stale ? ' — لم يُسجَّل تجديد بعدها' : '')) + '">' +
+        '<span class="in">' + b.svg + '<span class="sn">' + esc(s.name) + '</span><span class="sp">' + esc(s.plan) + '</span>' +
+        '<b class="hv">' + omr(s.amount) + '</b><span class="usd">' + (s.usd ? n(s.usd) + ' $ شهرياً' : 'شهرياً') + '</span>' +
+        '<span class="ren' + (s.left <= 3 ? ' soon' : '') + '">التجديد<b>' + weekday(s.next) + ' ' + dayLabel(s.next) + '</b>' + when + '</span></span></div>';
+    }).join('') + '</div><div class="subs-sum">مجموع الاشتراكات الشهرية: <b>' + omr(total) + '</b>' +
+      (totalUsd ? ' · ' + n(totalUsd) + ' $' : '') + '</div>';
+  }
+
   /* ═════════ مخزونُ الرموز ═════════
      المتبقّي = المولَّدُ − المُسلَّم (من ملفّاتِ الرموزِ نفسِها). وتقديرُ النفادِ من سرعةِ
      البيعِ المؤرَّخِ في آخرِ ٣٠ يوماً — ولا يُعرَضُ إلا بعدَ بيعتَينِ مؤرَّختَين للكتاب،
@@ -924,7 +1012,7 @@
   }
   function failSales(e) {
     ['h-sold', 'h-rev', 'h-exp'].forEach(function (id) { $(id).textContent = '—'; });
-    ['gaugeBox', 'revBySubj', 'salesChart', 'bookTable', 'expByCat', 'expList', 'stockBox'].forEach(function (id) {
+    ['gaugeBox', 'revBySubj', 'salesChart', 'bookTable', 'expByCat', 'expList', 'stockBox', 'subsBox'].forEach(function (id) {
       $(id).innerHTML = '<div class="err">تعذّر جلب المبيعات: ' + esc(why(e)) + '.</div>';
     });
     setStatus('st-n8n', false, 'غير متاح');
@@ -943,6 +1031,9 @@
       out.push(todaySales ? ['g', '✓', 'مبيعات اليوم: ' + n(todaySales) + ' كتب', n(todaySales * (S.price || 3)) + ' ر.ع']
                           : ['i', 'i', 'لا مبيعات مسجَّلة اليوم بعد', 'تُحدَّث مع كل تفعيل رمز']);
       if (!(S.expenses || []).length) out.push(['i', 'i', 'لم تُسجَّل مصاريف بعد', 'صافي الربح يساوي الإيرادات حتى تُضاف']);
+      SUBS.forEach(function (x) {
+        if (x.left <= 3) out.push(['w', '!', 'يتجدّد اشتراك ' + x.name + ' ' + (x.left ? 'بعد ' + n(x.left) + ' أيام' : 'اليوم'), n(x.amount) + ' ر.ع' + (x.usd ? ' · ' + n(x.usd) + ' $' : '') + ' — تأكّد من رصيد البطاقة']);
+      });
     }
     if (V) {
       if (V.refHasHours) {
