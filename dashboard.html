@@ -154,11 +154,11 @@
     animation:pulse 3.6s ease-in-out infinite}
   @keyframes pulse{50%{box-shadow:0 0 30px rgba(56,200,255,1),0 0 80px rgba(56,200,255,.45),inset 0 0 36px rgba(56,200,255,.55)}}
   .orb::before{content:"";position:absolute;inset:9%;border-radius:50%;border:1px solid rgba(120,220,255,.35)}
-  .orb img{width:30%;height:auto;filter:drop-shadow(0 0 8px rgba(255,170,90,.7));margin-bottom:1.2cqw}
-  .orb .ol{font-size:max(10px,2.3cqw);color:#bfeaff;letter-spacing:.5px}
-  .orb .ov{font-family:'Cairo';font-weight:900;font-size:max(17px,5cqw);line-height:1.1;color:#fff;text-shadow:0 0 12px rgba(56,200,255,.9)}
-  .orb .ov small{font-size:.45em;font-weight:700;color:#bfeaff;margin-inline-start:3px}
-  .orb .om{font-size:max(9.5px,2.1cqw);color:var(--ink2)}
+  /* الشعارُ وحدَه يملأُ الكرة (طلبُ المالك ٢٠٢٦-١٠-٠٧) — متوهّجٌ بهالتَين: برتقاليّةٍ من لونِه وسماويّةٍ من الكرة */
+  .orb img{position:relative;width:82%;height:auto;
+    filter:drop-shadow(0 0 3px rgba(255,255,255,.85)) drop-shadow(0 0 10px rgba(255,150,60,.95)) drop-shadow(0 0 22px rgba(255,120,40,.6)) drop-shadow(0 0 30px rgba(56,200,255,.45));
+    animation:logoGlow 3.6s ease-in-out infinite}
+  @keyframes logoGlow{50%{filter:drop-shadow(0 0 4px rgba(255,255,255,1)) drop-shadow(0 0 14px rgba(255,160,70,1)) drop-shadow(0 0 30px rgba(255,120,40,.8)) drop-shadow(0 0 40px rgba(56,200,255,.6))}}
 
   .hex{position:absolute;left:var(--x);top:var(--y);width:22%;aspect-ratio:.866;transform:translate(-50%,-50%);
     text-decoration:none;color:var(--ink);filter:drop-shadow(0 0 6px var(--hc)) drop-shadow(0 0 16px color-mix(in srgb,var(--hc) 45%,transparent));
@@ -267,7 +267,7 @@
   [hidden]{display:none!important}
 
   @media (prefers-reduced-motion:reduce){
-    .ring,.orb,.hub-lines .flow,.skel{animation:none!important}
+    .ring,.orb,.orb img,.hub-lines .flow,.skel{animation:none!important}
   }
 </style>
 </head>
@@ -351,10 +351,7 @@
           <div class="ring r3"></div><div class="ring r2"></div><div class="ring r1"></div>
           <div class="beam"></div><div class="plat"></div>
           <div class="orb">
-            <img src="images/logo-mark.png" alt="">
-            <span class="ol">صافي الربح</span>
-            <b class="ov" id="h-net">…</b>
-            <span class="om" id="h-net-m"></span>
+            <img src="images/logo-mark.png" alt="شوجب">
           </div>
           <!-- السداسيّاتُ تُبنى من JS (‏HUB_NODES) -->
         </div>
@@ -699,8 +696,6 @@
     $('h-rev-m').textContent = n(price) + ' ر.ع للكتاب';
     $('h-exp').innerHTML = omr(exp);
     $('h-exp-m').textContent = (d.expenses || []).length ? n(d.expenses.length) + ' بنود' : 'لا بنود بعد';
-    $('h-net').innerHTML = omr(net);
-    $('h-net-m').textContent = 'الإيرادات − المصاريف';
 
     var dated = (d.sales || []).length;
     gauge($('gaugeBox'), margin, [
@@ -771,7 +766,7 @@
     setStatus('st-n8n', true, 'متّصل');
   }
   function failSales(e) {
-    ['h-sold', 'h-rev', 'h-exp', 'h-net'].forEach(function (id) { $(id).textContent = '—'; });
+    ['h-sold', 'h-rev', 'h-exp'].forEach(function (id) { $(id).textContent = '—'; });
     ['gaugeBox', 'revBySubj', 'salesChart', 'bookTable', 'expByCat', 'expList'].forEach(function (id) {
       $(id).innerHTML = '<div class="err">تعذّر جلب المبيعات (' + esc(e.message || e) + ').</div>';
     });
