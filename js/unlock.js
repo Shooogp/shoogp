@@ -997,7 +997,7 @@
      والزرُّ ينتهي عندَ 46، ولا هامشَ شفّافاً في `logo-mark.png` يخفيه — مقيسٌ:
      أوّلُ صفٍّ معتمٍ = 0). العنصرُ في التدفّقِ **يحجزُ مساحتَه** فيستحيلُ التراكب. */
 
-  var devWrap = null, devBtn = null, devStats = null;
+  var devWrap = null, devBtn = null, devStats = null, devDash = null;
 
   /* ═════════════ مراجعُ المقارنةِ في شارةِ العدّاد ═════════════
      كانت الشارةُ تعرضُ «اليوم» بجانبَ «أمس» بلا مرجع — فيُقارَنُ **نصفُ يومٍ
@@ -1140,6 +1140,7 @@
     var z = (window.ShoogpFit && window.ShoogpFit.zoom) || 1;
     devBtn.style.zoom = String(1 / z);
     if (devStats) devStats.style.zoom = String(1 / z);
+    if (devDash) devDash.style.zoom = String(1 / z);
   }
 
   function paintBtn() {
@@ -1186,6 +1187,18 @@
     devStats.className = 'lockdev-stats';
     devStats.textContent = '👥 الدخول: …';
     devWrap.appendChild(devStats);
+    /* بابُ لوحةِ المالك (طلبُ المالك ٢٠٢٦-١٠-٠٧) — وضعُ المطوّرِ أثبتَ الكلمةَ سلفاً،
+       فتُودَعُ في مفتاحِ اللوحةِ (‏`shoogp-dash-key` في `dashboard.html`، الأصلُ نفسُه)
+       فتفتحُ اللوحةُ بلا سؤالٍ ثانٍ عن كلمةِ المرور. */
+    devDash = document.createElement('a');
+    devDash.className = 'lockdev-btn lockdev-dash';
+    devDash.href = 'dashboard.html';
+    devDash.textContent = '📊 لوحة المالك';
+    devDash.title = 'الزيارات والمبيعات والمصاريف';
+    devDash.addEventListener('click', function () {
+      try { localStorage.setItem('shoogp-dash-key', DEV_PASS); } catch (e) {}
+    });
+    devWrap.appendChild(devDash);
     app.insertBefore(devWrap, app.firstChild);   // أوّلُ عنصرٍ في `.app` — فوقَ الترويسة
     devBtn.addEventListener('click', function () { setLockOff(!lockOff); });
     paintBtn();

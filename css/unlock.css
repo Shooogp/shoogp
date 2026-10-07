@@ -468,6 +468,7 @@ body.lock-open{overflow:hidden}
 }
 .lockdev-btn:active{transform:translateY(-2px);
   box-shadow:inset 0 -3px 0 rgba(150,112,52,.28), 0 1px 0 rgba(163,127,72,.55), 0 3px 8px rgba(10,5,30,.35)}
+a.lockdev-btn{text-decoration:none}
 .lockdev-btn:focus-visible{outline:3px solid #7f5cc0; outline-offset:-4px}
 
 /* حالةُ التعطيل — أحمرُ صريحٌ لا يُخطئُه النظر، بالبنيةِ الحجريةِ نفسِها */
