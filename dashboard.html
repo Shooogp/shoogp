@@ -233,25 +233,10 @@
   .hex .hl{font-size:max(9px,1.85cqw);white-space:nowrap;color:var(--ink2);line-height:1.25;margin-top:.4cqw}
   .hex .hm{font-size:max(8.5px,1.65cqw);color:var(--ink3);line-height:1.2;margin-top:.2cqw;white-space:nowrap}
 
-  /* ═════════ الاشتراكاتُ الشهريّة (طلبُ المالك ٢٠٢٦-١٠-٠٧): سداسيٌّ كبيرٌ لكلِّ اشتراك ═════════
-     بنفسِ هيئةِ سداسيّاتِ المركز، لكن في صفٍّ عاديٍّ لا مواضعَ مطلقة — فأحجامُ خطوطِها بالبكسلِ لا بـcqw */
-  .subs{display:flex;flex-wrap:wrap;justify-content:center;gap:18px 26px;padding:8px 0 4px}
-  .hex.sub{position:relative;left:auto;top:auto;transform:none;width:210px;flex:none}
-  .hex.sub:hover{transform:scale(1.05)}
-  .hex.sub .in{padding:0 12%}
-  .hex.sub .logo{width:30%;height:auto;margin-bottom:6px;filter:drop-shadow(0 0 6px color-mix(in srgb,var(--hc) 70%,transparent))}
-  .hex.sub .sn{font-family:'Cairo';font-weight:800;font-size:1rem;color:#fff;line-height:1.2}
-  .hex.sub .sp{font-size:.72rem;color:var(--ink3);line-height:1.2;margin-bottom:4px}
-  .hex.sub .hv{font-size:1.45rem}
-  .hex.sub .usd{font-size:.74rem;color:var(--ink2);line-height:1.2}
-  .hex.sub .ren{margin-top:6px;font-size:.76rem;line-height:1.3;color:var(--ink2);border-top:1px solid color-mix(in srgb,var(--hc) 40%,transparent);padding-top:5px}
-  .hex.sub .ren b{display:block;color:var(--ink);font-size:.86rem}
-  .hex.sub .ren.soon b{color:var(--warn)}
-  .subs-sum{text-align:center;color:var(--ink2);font-size:.9rem;margin-top:10px}
-  .subs-sum b{color:var(--ink);font-size:1.1rem}
-  @media (max-width:520px){.subs{gap:14px}.hex.sub{width:calc(50% - 8px);min-width:150px}
-    .hex.sub .sp{display:none}.hex.sub .logo{width:24%;margin-bottom:3px}.hex.sub .ren{margin-top:4px;padding-top:3px}
-    .hex.sub .sn{font-size:.88rem}.hex.sub .hv{font-size:1.15rem}.hex.sub .sp,.hex.sub .usd,.hex.sub .ren{font-size:.66rem}.hex.sub .ren b{font-size:.74rem}}
+  /* أيقونةُ السداسيّ: رمزٌ خطّيٌّ أو شعارُ اشتراكٍ ملوّن (خاناتُ الاشتراكات) */
+  .hex .hi{display:contents}
+  .hex .hm.soon{color:var(--warn);font-weight:700}
+  @container (max-width:480px){.hex .hm .dl{display:none}}   /* الجوّال: التاريخُ وحدَه، والعدُّ في التلميح */
 
   /* ═════════ العدّادُ نصفُ الدائريّ ═════════ */
   .gauge{display:block;width:100%;max-width:300px;margin:4px auto 0}
@@ -397,7 +382,6 @@
         <a href="#sec-sales"><svg><use href="#i-chart"/></svg>المبيعات</a>
         <a href="#sec-books"><svg><use href="#i-book"/></svg>الكتب</a>
         <a href="#sec-exp"><svg><use href="#i-receipt"/></svg>المصاريف</a>
-        <a href="#sec-subs"><svg><use href="#i-refresh"/></svg>الاشتراكات</a>
         <a href="#sec-stock"><svg><use href="#i-grid"/></svg>المخزون</a>
       </nav>
       <div class="tools">
@@ -451,14 +435,6 @@
           <h2><svg class="ic"><use href="#i-bell"/></svg>تنبيهات</h2>
           <ul class="alerts" id="alerts"><li><span class="ai i">…</span><span>جارٍ التحميل…</span></li></ul>
         </div>
-      </div>
-    </section>
-
-    <section class="row one" id="sec-subs">
-      <div class="card">
-        <h2><svg class="ic"><use href="#i-refresh"/></svg>الاشتراكات الشهرية</h2>
-        <div class="sub">آخر رسومٍ شهريةٍ لكل اشتراك في ملف المصاريف، وموعد التجديد التالي في اليوم نفسه من الشهر القادم.</div>
-        <div id="subsBox"><div class="skel"></div></div>
       </div>
     </section>
 
@@ -566,9 +542,11 @@
   var HUB_NODES = [
     { id: 'visits', ang: -90, color: 'var(--c-visits)', icon: 'i-users',   label: 'زيارات اليوم',    href: '#sec-visits' },
     { id: 'sold',   ang: -30, color: 'var(--c-sales)',  icon: 'i-book',    label: 'الكتب المباعة',   href: '#sec-books' },
-    { id: 'rev',    ang:  30, color: 'var(--c-sales)',  icon: 'i-coin',    label: 'الإيرادات',       href: '#sec-sales' },
-    { id: 'intent', ang:  90, color: 'var(--neon)',     icon: 'i-target',  label: 'نيّة الشراء اليوم', href: '#sec-visits' },
-    { id: 'exp',    ang: 150, color: 'var(--c-exp)',    icon: 'i-receipt', label: 'المصاريف',        href: '#sec-exp' },
+    // الثلاثةُ السفلى للاشتراكاتِ الشهريّة (طلبُ المالك ٢٠٢٦-١٠-٠٧) — حلّت محلَّ الإيراداتِ والمصاريفِ
+    // (مكرّرتانِ في «هامش الربح») ونيّةِ الشراء (مكرّرةٌ في «قِمع الكتب»). تملؤُها renderSubs
+    { id: 'sub0',   ang:  30, color: 'var(--c-exp)',    icon: 'i-receipt', label: 'اشتراك',          href: '#sec-exp' },
+    { id: 'sub1',   ang:  90, color: 'var(--c-exp)',    icon: 'i-receipt', label: 'اشتراك',          href: '#sec-exp' },
+    { id: 'sub2',   ang: 150, color: 'var(--c-exp)',    icon: 'i-receipt', label: 'اشتراك',          href: '#sec-exp' },
     { id: 'total',  ang: 210, color: 'var(--c-visits)', icon: 'i-eye',     label: 'إجمالي الزيارات', href: '#sec-visits' }
   ];
   function buildHub() {
@@ -585,13 +563,13 @@
       var ex = 50 + (HUB_R - 11) * Math.cos(r), ey = 50 + (HUB_R - 11) * Math.sin(r);
       var kx = sx + (ex - sx) * .55, ky = sy;
       var d = 'M' + sx.toFixed(2) + ',' + sy.toFixed(2) + ' L' + kx.toFixed(2) + ',' + ky.toFixed(2) + ' L' + ex.toFixed(2) + ',' + ey.toFixed(2);
-      lines += '<path class="glow" d="' + d + '" style="stroke:' + nd.color + '"/>' +
-               '<path class="wire" d="' + d + '" style="stroke:' + nd.color + ';stroke-opacity:.7"/>' +
-               '<path class="flow" d="' + d + '" style="stroke:' + nd.color + '"/>';
+      lines += '<g data-n="' + nd.id + '" style="color:' + nd.color + '"><path class="glow" d="' + d + '" style="stroke:currentColor"/>' +
+               '<path class="wire" d="' + d + '" style="stroke:currentColor;stroke-opacity:.7"/>' +
+               '<path class="flow" d="' + d + '" style="stroke:currentColor"/></g>';
       var hex = document.createElement('a');
-      hex.className = 'hex'; hex.href = nd.href;
+      hex.className = 'hex'; hex.href = nd.href; hex.id = 'hex-' + nd.id;
       hex.style.setProperty('--x', x + '%'); hex.style.setProperty('--y', y + '%'); hex.style.setProperty('--hc', nd.color);
-      hex.innerHTML = '<span class="in"><svg viewBox="0 0 24 24"><use href="#' + nd.icon + '"/></svg><b class="hv" id="h-' + nd.id + '">…</b>' +
+      hex.innerHTML = '<span class="in"><span class="hi" id="h-' + nd.id + '-i"><svg viewBox="0 0 24 24"><use href="#' + nd.icon + '"/></svg></span><b class="hv" id="h-' + nd.id + '">…</b>' +
         '<span class="hl">' + nd.label + '</span><span class="hm" id="h-' + nd.id + '-m"></span></span>';
       hub.appendChild(hex);
     });
@@ -794,12 +772,10 @@
 
     var f = s.funnel || { open: 0, lock: 0, code: 0 };
     var pct = f.open ? Math.round(f.code / f.open * 100) : 0;
-    $('h-intent').textContent = n(pct) + '٪';
-    $('h-intent-m').textContent = n(f.code) + ' من ' + n(f.open);
     var html = '<div class="funnel">' +
       '<div class="fstep"><b>' + n(f.open) + '</b><span>فتح كتاباً</span></div><span class="farrow">←</span>' +
       '<div class="fstep"><b>' + n(f.lock) + '</b><span>بلغ المقفول</span></div><span class="farrow">←</span>' +
-      '<div class="fstep"><b>' + n(f.code) + '</b><span>نافذة الرمز</span></div></div>';
+      '<div class="fstep"><b>' + n(f.code) + '</b><span>نافذة الرمز' + (f.open ? ' · ' + n(pct) + '٪' : '') + '</span></div></div>';
     var books = (s.books || []).slice(0, 6);
     html += books.length
       ? '<table><thead><tr><th>الكتاب</th><th>فتح</th><th>مقفول</th><th>الرمز</th></tr></thead><tbody>' +
@@ -810,7 +786,7 @@
     setStatus('st-cf', true, 'متّصل');
   }
   function failVisits(e) {
-    ['h-visits', 'h-total', 'h-intent'].forEach(function (id) { $(id).textContent = '—'; });
+    ['h-visits', 'h-total'].forEach(function (id) { $(id).textContent = '—'; });
     $('visitsChart').innerHTML = $('funnel').innerHTML = '<div class="err">تعذّر جلب أرقام الدخول: ' + esc(why(e)) + '.</div>';
     setStatus('st-cf', false, 'غير متاح');
   }
@@ -827,10 +803,6 @@
 
     $('h-sold').textContent = n(sold);
     $('h-sold-m').textContent = 'من ' + n(codes);
-    $('h-rev').innerHTML = omr(rev);
-    $('h-rev-m').textContent = n(price) + ' ر.ع للكتاب';
-    $('h-exp').innerHTML = omr(exp);
-    $('h-exp-m').textContent = (d.expenses || []).length ? n(d.expenses.length) + ' بنود' : 'لا بنود بعد';
 
     var dated = (d.sales || []).length;
     gauge($('gaugeBox'), margin, [
@@ -947,18 +919,23 @@
         usd: usd ? +usd[1] : null, last: d, next: next, left: daysBetween(today, next), stale: k > 1 };
     }).sort(function (a, b) { return a.next.localeCompare(b.next); });
     SUBS = subs;
-    if (!subs.length) { $('subsBox').innerHTML = '<div class="empty">لا اشتراكات بعد — أضف في ملف المصاريف بنداً فئته تبدأ بـ«اشتراك» وفيه كلمة «شهري».</div>'; return; }
-    var total = 0, totalUsd = 0;
-    $('subsBox').innerHTML = '<div class="subs">' + subs.map(function (s) {
-      total += s.amount; if (s.usd) totalUsd += s.usd;
-      var b = SUB_BRAND.filter(function (x) { return x.re.test(s.name); })[0] || { color: 'var(--c-exp)', svg: '<svg class="logo" viewBox="0 0 24 24"><use href="#i-receipt"/></svg>' };
-      var when = s.left === 0 ? 'اليوم' : s.left === 1 ? 'غداً' : 'بعد ' + n(s.left) + ' يوماً';
-      return '<div class="hex sub" style="--hc:' + b.color + '" title="' + esc('آخر رسوم: ' + s.last + (s.stale ? ' — لم يُسجَّل تجديد بعدها' : '')) + '">' +
-        '<span class="in">' + b.svg + '<span class="sn">' + esc(s.name) + '</span><span class="sp">' + esc(s.plan) + '</span>' +
-        '<b class="hv">' + omr(s.amount) + '</b><span class="usd">' + (s.usd ? n(s.usd) + ' $ شهرياً' : 'شهرياً') + '</span>' +
-        '<span class="ren' + (s.left <= 3 ? ' soon' : '') + '">التجديد<b>' + weekday(s.next) + ' ' + dayLabel(s.next) + '</b>' + when + '</span></span></div>';
-    }).join('') + '</div><div class="subs-sum">مجموع الاشتراكات الشهرية: <b>' + omr(total) + '</b>' +
-      (totalUsd ? ' · ' + n(totalUsd) + ' $' : '') + '</div>';
+    for (var i = 0; i < 3; i++) {
+      var sl = subs[i], hex = $('hex-sub' + i), wire = document.querySelector('#hubLines [data-n="sub' + i + '"]');
+      if (!sl) {   // اشتراكاتٌ أقلُّ من ثلاثة: الخانةُ تدعو إلى الإضافة
+        $('h-sub' + i).textContent = '—'; hex.querySelector('.hl').textContent = 'لا اشتراك';
+        $('h-sub' + i + '-m').textContent = 'أضفه في ملف المصاريف'; continue;
+      }
+      var b = SUB_BRAND.filter(function (x) { return x.re.test(sl.name); })[0] || { color: 'var(--c-exp)', svg: '<svg viewBox="0 0 24 24"><use href="#i-receipt"/></svg>' };
+      hex.style.setProperty('--hc', b.color); if (wire) wire.style.color = b.color;
+      $('h-sub' + i + '-i').innerHTML = b.svg;
+      $('h-sub' + i).innerHTML = omr(sl.amount);
+      hex.querySelector('.hl').textContent = sl.name + (sl.usd ? ' · ' + n(sl.usd) + ' $' : '');
+      var mm = $('h-sub' + i + '-m');
+      // قصيرٌ عمداً ليبقى داخلَ السداسيِّ في الجوّال: «↻ ٢٦ أكتوبر · ١٩ يوماً»
+      mm.innerHTML = '↻ ' + dayLabel(sl.next) + '<span class="dl"> · ' + (sl.left === 0 ? 'اليوم' : sl.left === 1 ? 'غداً' : n(sl.left) + ' يوماً') + '</span>';
+      mm.classList.toggle('soon', sl.left <= 3);
+      hex.title = 'اشتراك شهري: ' + sl.plan + ' — التجديد ' + weekday(sl.next) + ' ' + dayLabel(sl.next) + ' — آخر رسوم ' + sl.last + (sl.stale ? ' (لم يُسجَّل تجديد بعدها)' : '');
+    }
   }
 
   /* ═════════ مخزونُ الرموز ═════════
@@ -1011,8 +988,8 @@
     return d;
   }
   function failSales(e) {
-    ['h-sold', 'h-rev', 'h-exp'].forEach(function (id) { $(id).textContent = '—'; });
-    ['gaugeBox', 'revBySubj', 'salesChart', 'bookTable', 'expByCat', 'expList', 'stockBox', 'subsBox'].forEach(function (id) {
+    ['h-sold', 'h-sub0', 'h-sub1', 'h-sub2'].forEach(function (id) { $(id).textContent = '—'; });
+    ['gaugeBox', 'revBySubj', 'salesChart', 'bookTable', 'expByCat', 'expList', 'stockBox'].forEach(function (id) {
       $(id).innerHTML = '<div class="err">تعذّر جلب المبيعات: ' + esc(why(e)) + '.</div>';
     });
     setStatus('st-n8n', false, 'غير متاح');
