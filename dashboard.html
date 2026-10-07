@@ -843,7 +843,7 @@
   /* إخفاقُ الشبكةِ (لا ردَّ من الخادمِ أصلاً) يعني غالباً أنّ الشبكةَ تحجبُ ‎workers.dev‎ أو ‎n8n.cloud‎
      (مقيسٌ على شبكةِ جهةِ عملِ المالك ٢٠٢٦-١٠-٠٧) — فيُعادُ الطلبُ عبرَ المرحِّلِ على نطاقِ شوجب
      (‏proxy/netlify.toml). أمّا ردٌّ برقمِ خطأٍ فقد وصلَ الخادمَ فلا يُعاد. */
-  var RELAY = 'https://api.shoogp.com';
+  var RELAY = 'https://deft-quokka-075818.netlify.app';  // يُستبدَلُ بـapi.shoogp.com متى رُبِطَ النطاق
   var RELAY_OF = {};
   RELAY_OF[STATS_URL] = RELAY + '/cf/stats';
   RELAY_OF[DASH_URL] = RELAY + '/n8n/shoogp-dash-7c1e';
