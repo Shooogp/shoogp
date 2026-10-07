@@ -100,6 +100,20 @@
   .col > .card{flex:1}
   .row{display:grid;gap:14px;margin-top:14px;grid-template-columns:repeat(3,minmax(0,1fr))}
   .row.two{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .row.one{grid-template-columns:minmax(0,1fr)!important}
+  /* مخزونُ الرموز: بلاطةٌ لكلِّ كتابٍ بشريطِ المتبقّي — اللونُ مع الرقمِ والكلمةِ لا وحدَه */
+  .stock-sum{display:flex;flex-wrap:wrap;gap:10px 22px;margin:2px 0 14px;font-size:.9rem;color:var(--ink2)}
+  .stock-sum b{color:var(--ink);font-size:1.15rem;margin-inline-end:4px}
+  .stock{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(190px,1fr))}
+  .st-tile{border:1px solid rgba(120,180,255,.18);border-radius:12px;padding:9px 12px;background:rgba(10,30,70,.35)}
+  .st-tile .nm{font-size:.82rem;color:var(--ink2);display:flex;justify-content:space-between;gap:6px}
+  .st-tile .v{font-size:1.25rem;font-weight:800;margin:2px 0 6px}
+  .st-tile .v small{font-size:.72rem;color:var(--ink3);font-weight:600;margin-inline-start:4px}
+  .st-tile .tr{display:block;height:6px;border-radius:999px;background:rgba(120,180,255,.12);overflow:hidden}
+  .st-tile .fl{display:block;height:100%;border-radius:999px;box-shadow:0 0 8px currentColor}
+  .st-tile.low{border-color:rgba(255,138,122,.6);box-shadow:0 0 12px rgba(255,138,122,.25)}
+  .st-tile.mid{border-color:rgba(255,195,122,.45)}
+  .st-tile .eta{font-size:.72rem;color:var(--ink3);margin-top:5px}
   @media (max-width:1180px){
     .main{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
     .main .hubcol{grid-column:1 / -1;order:-1}
@@ -333,6 +347,7 @@
         <a href="#sec-sales"><svg><use href="#i-chart"/></svg>المبيعات</a>
         <a href="#sec-books"><svg><use href="#i-book"/></svg>الكتب</a>
         <a href="#sec-exp"><svg><use href="#i-receipt"/></svg>المصاريف</a>
+        <a href="#sec-stock"><svg><use href="#i-grid"/></svg>المخزون</a>
       </nav>
       <div class="tools">
         <button class="btn" id="refresh" type="button"><svg width="16" height="16"><use href="#i-refresh"/></svg>تحديث</button>
@@ -409,7 +424,7 @@
     <section class="row two">
       <div class="card" id="sec-books">
         <h2><svg class="ic"><use href="#i-book"/></svg>المبيعات حسب الكتاب</h2>
-        <div class="sub">عدد الرموز المباعة لكل كتاب، والمتبقّي من رموزه (يُنبَّه إن قلّ عن ١٥).</div>
+        <div class="sub">عدد الرموز المباعة لكل كتاب، والمتبقّي من رموزه (يُنبَّه إن قلّ عن ٢٠).</div>
         <div id="bookTable" style="overflow-x:auto"><div class="skel"></div></div>
       </div>
       <div class="card">
@@ -417,6 +432,14 @@
           <a class="btn" id="expLink" href="#" target="_blank" rel="noopener" style="margin-inline-start:auto;font-size:.8rem;padding:5px 12px">＋ أضف مصروفاً</a></h2>
         <div class="sub">تُضاف في الملف: التاريخ · البند · الفئة · المبلغ بالريال · ملاحظات.</div>
         <div id="expList"><div class="skel"></div></div>
+      </div>
+    </section>
+
+    <section class="row one" id="sec-stock">
+      <div class="card">
+        <h2><svg class="ic"><use href="#i-grid"/></svg>مخزون الرموز</h2>
+        <div class="sub" id="stockSub">المتبقّي من رموز كل كتاب — مرتّبةً من الأقلّ. الأحمر تحت ٢٠، والكهرمانيّ تحت ٥٠.</div>
+        <div id="stockBox"><div class="skel"></div></div>
       </div>
     </section>
 
@@ -441,7 +464,7 @@
   var SUBJ = { sci: 'العلوم', math: 'الرياضيات', din: 'ديني حياتي', lug: 'أحب لغتي', it: 'عالمي الرقمي', en: 'الإنجليزية', hw: 'الهوية والمواطنة' };
   var SUBJ_ORDER = ['sci', 'math', 'din', 'lug', 'it', 'en'];
   var GRADE = { g1: 'الأول', g2: 'الثاني', g3: 'الثالث', g4: 'الرابع' };
-  var LOW_STOCK = 15;
+  var LOW_STOCK = 20;   // تحتَه يُنبَّه: يكفي لأسابيعَ قبلَ أن تدفعَ معلّمةٌ ولا تجدَ رمزاً
 
   var $ = function (id) { return document.getElementById(id); };
   var nf = new Intl.NumberFormat('ar-EG');
@@ -797,6 +820,8 @@
     });
     $('bookTable').innerHTML = t + '</tbody></table>';
 
+    renderStock(sc, d.sales || []);
+
     /* المصاريف */
     $('expLink').href = d.expensesUrl || '#';
     var ex = (d.expenses || []).slice();
@@ -816,9 +841,43 @@
     }
     setStatus('st-n8n', true, 'متّصل');
   }
+  /* ═════════ مخزونُ الرموز ═════════
+     المتبقّي = المولَّدُ − المُسلَّم (من ملفّاتِ الرموزِ نفسِها). وتقديرُ النفادِ من سرعةِ
+     البيعِ المؤرَّخِ في آخرِ ٣٠ يوماً — ولا يُعرَضُ إلا بعدَ بيعتَينِ مؤرَّختَين للكتاب،
+     فبيعةٌ واحدةٌ لا تصنعُ سرعةً. والمبيعاتُ قبلَ ٢٠٢٦-١٠-٠٧ بلا تاريخٍ فلا تدخلُ فيه. */
+  function renderStock(sc, sales) {
+    var since = shiftDay(muscatDay(), -29), pace = {};
+    sales.forEach(function (p) { if (p[1] >= since) pace[p[0]] = (pace[p[0]] || 0) + 1; });
+    var items = Object.keys(sc).map(function (k) {
+      var c = sc[k], left = Math.max(0, c.total - c.sold), per = pace[k] || 0;
+      // الأيّامُ المرصودةُ: من أوّلِ تاريخٍ مسجَّلٍ (٧ أكتوبر) حتى اليوم، بحدٍّ أقصى ٣٠
+      return { k: k, left: left, total: c.total, sold: c.sold, eta: per >= 2 ? Math.round(left / (per / observedDays())) : null };
+    }).sort(function (a, b) { return a.left - b.left || b.sold - a.sold; });
+    var totLeft = items.reduce(function (a, i) { return a + i.left; }, 0), tot = items.reduce(function (a, i) { return a + i.total; }, 0);
+    var low = items.filter(function (i) { return i.left < LOW_STOCK; }).length;
+    var html = '<div class="stock-sum"><span><b>' + n(totLeft) + '</b>رمزاً متبقّياً من ' + n(tot) + '</span>' +
+      '<span><b>' + n(items.length) + '</b>كتاباً</span>' +
+      '<span><b style="color:' + (low ? 'var(--bad)' : 'var(--good)') + '">' + n(low) + '</b>' + (low ? 'كتاب تحت ٢٠ — ولِّد رموزاً جديدة بمسار n8n' : 'كتاب تحت ٢٠ — المخزون آمن') + '</span></div>';
+    html += '<div class="stock">' + items.map(function (i) {
+      var pct = i.total ? i.left / i.total * 100 : 0, cls = i.left < LOW_STOCK ? 'low' : i.left < 50 ? 'mid' : '';
+      var col = cls === 'low' ? 'var(--bad)' : cls === 'mid' ? 'var(--warn)' : 'var(--good)';
+      var word = cls === 'low' ? 'ينفد' : cls === 'mid' ? 'متوسّط' : 'آمن';
+      return '<div class="st-tile ' + cls + '" title="' + esc(bookName(i.k) + ': بيع ' + i.sold + ' من ' + i.total) + '">' +
+        '<div class="nm"><span>' + esc(bookName(i.k)) + '</span><span style="color:' + col + '">' + word + '</span></div>' +
+        '<div class="v" style="color:' + col + '">' + n(i.left) + '<small>من ' + n(i.total) + '</small></div>' +
+        '<span class="tr"><span class="fl" style="width:' + pct.toFixed(1) + '%;background:' + col + ';color:' + col + '"></span></span>' +
+        (i.eta !== null ? '<div class="eta">بالسرعة الحالية ينفد خلال ≈ ' + n(i.eta) + ' يوماً</div>' : '') + '</div>';
+    }).join('') + '</div>';
+    $('stockBox').innerHTML = html;
+  }
+  function observedDays() {
+    var first = '2026-10-07', today = muscatDay(), d = 1;
+    while (d < 30 && shiftDay(first, d) <= today) d++;
+    return d;
+  }
   function failSales(e) {
     ['h-sold', 'h-rev', 'h-exp'].forEach(function (id) { $(id).textContent = '—'; });
-    ['gaugeBox', 'revBySubj', 'salesChart', 'bookTable', 'expByCat', 'expList'].forEach(function (id) {
+    ['gaugeBox', 'revBySubj', 'salesChart', 'bookTable', 'expByCat', 'expList', 'stockBox'].forEach(function (id) {
       $(id).innerHTML = '<div class="err">تعذّر جلب المبيعات: ' + esc(why(e)) + '.</div>';
     });
     setStatus('st-n8n', false, 'غير متاح');
