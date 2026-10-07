@@ -104,16 +104,44 @@
   /* مخزونُ الرموز: بلاطةٌ لكلِّ كتابٍ بشريطِ المتبقّي — اللونُ مع الرقمِ والكلمةِ لا وحدَه */
   .stock-sum{display:flex;flex-wrap:wrap;gap:10px 22px;margin:2px 0 14px;font-size:.9rem;color:var(--ink2)}
   .stock-sum b{color:var(--ink);font-size:1.15rem;margin-inline-end:4px}
-  .stock{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(190px,1fr))}
-  .st-tile{border:1px solid rgba(120,180,255,.18);border-radius:12px;padding:9px 12px;background:rgba(10,30,70,.35)}
-  .st-tile .nm{font-size:.82rem;color:var(--ink2);display:flex;justify-content:space-between;gap:6px}
-  .st-tile .v{font-size:1.25rem;font-weight:800;margin:2px 0 6px}
-  .st-tile .v small{font-size:.72rem;color:var(--ink3);font-weight:600;margin-inline-start:4px}
-  .st-tile .tr{display:block;height:6px;border-radius:999px;background:rgba(120,180,255,.12);overflow:hidden}
-  .st-tile .fl{display:block;height:100%;border-radius:999px;box-shadow:0 0 8px currentColor}
-  .st-tile.low{border-color:rgba(255,138,122,.6);box-shadow:0 0 12px rgba(255,138,122,.25)}
-  .st-tile.mid{border-color:rgba(255,195,122,.45)}
-  .st-tile .eta{font-size:.72rem;color:var(--ink3);margin-top:5px}
+  /* خزّاناتُ الوقود (اقتراحٌ اعتمدَه المالك ٢٠٢٦-١٠-٠٧): خزّانٌ لكلِّ مادّةٍ وحجرةٌ لكلِّ صفّ،
+     ارتفاعُ السائلِ = المتبقّي من رموزِ الكتاب. والإنذارُ لونٌ ووميضٌ وسهمٌ معاً لا لونٌ وحدَه */
+  .tanks{display:flex;justify-content:space-around;gap:12px;padding:6px 4px 0}
+  .tank{flex:1;max-width:120px;display:flex;flex-direction:column;align-items:center;gap:8px}
+  .tank .tn{font-size:.85rem;font-weight:700;color:var(--ink2);white-space:nowrap}
+  .tank .tt{font-size:1.05rem;font-weight:800;color:var(--tc)}
+  .tank .tt small{display:block;font-size:.68rem;color:var(--ink3);font-weight:600;text-align:center}
+  .tbody{position:relative;width:64px;height:280px;display:flex;flex-direction:column-reverse;gap:3px;padding:5px;
+    border-radius:20px;border:1.5px solid color-mix(in srgb,var(--tc) 55%,transparent);
+    background:linear-gradient(90deg,rgba(255,255,255,.07),rgba(255,255,255,0) 40%,rgba(0,0,0,.25)),rgba(6,20,48,.75);
+    box-shadow:0 0 14px color-mix(in srgb,var(--tc) 30%,transparent),inset 0 0 12px rgba(0,0,0,.5)}
+  .tbody::after{content:"";position:absolute;top:10px;bottom:10px;inset-inline-start:9px;width:5px;border-radius:9px;
+    background:linear-gradient(180deg,rgba(255,255,255,.45),rgba(255,255,255,.05));pointer-events:none}
+  .tcell{position:relative;flex:1;border-radius:14px;overflow:hidden;background:rgba(120,180,255,.06);cursor:default}
+  .tcell .g{position:absolute;top:3px;inset-inline-end:6px;font-size:.62rem;color:var(--ink3);z-index:2}
+  .tcell .fuel{position:absolute;inset:auto 0 0 0;height:var(--p);border-radius:0 0 12px 12px;
+    background:linear-gradient(180deg,color-mix(in srgb,var(--tc) 100%,#fff 25%),var(--tc) 35%,color-mix(in srgb,var(--tc) 70%,#000));
+    box-shadow:0 0 10px var(--tc);transition:height .8s ease}
+  .tcell .fuel::before{content:"";position:absolute;inset:-3px 0 auto 0;height:6px;border-radius:50%;
+    background:color-mix(in srgb,var(--tc) 60%,#fff);opacity:.8;animation:wave 2.6s ease-in-out infinite}
+  @keyframes wave{50%{transform:scaleX(.82) translateY(1px)}}
+  .tcell.low{box-shadow:inset 0 0 0 1.5px #ff4d4d,0 0 8px rgba(255,77,77,.5)}
+  .tcell.low .fuel{--tc:#ff4d4d;animation:lowblink 1.1s ease-in-out infinite}
+  @keyframes lowblink{50%{opacity:.45}}
+  .tcell.low::after{content:"◀";position:absolute;inset-inline-start:-2px;top:50%;transform:translate(-100%,-50%);
+    color:#ff4d4d;font-size:.8rem;text-shadow:0 0 6px #ff4d4d}
+  .tcell.none .fuel{display:none}
+  @media (max-width:640px){
+    .tanks{flex-direction:column;gap:12px}
+    .tank{max-width:none;flex-direction:row;width:100%}
+    .tank .tn{width:82px;font-size:.8rem;white-space:normal}
+    .tank .tt{width:52px;text-align:center}
+    .tbody{flex:1;width:auto;height:46px;flex-direction:row;padding:4px}
+    .tbody::after{inset:6px 10px auto 10px;width:auto;height:4px}
+    .tcell .fuel{inset:0 0 0 auto;height:auto;width:var(--p);border-radius:12px 0 0 12px}
+    .tcell .fuel::before{display:none}
+    .tcell.low::after{content:"▼";inset-inline-start:50%;top:-2px;transform:translate(50%,-100%)}
+  }
   @media (max-width:1180px){
     .main{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
     .main .hubcol{grid-column:1 / -1;order:-1}
@@ -145,7 +173,9 @@
   .hub-lines .node{stroke:none}
   @keyframes flow{to{stroke-dashoffset:-32.2}}
   /* تدريجُ الساعةِ في طبقةٍ مستقلّةٍ تدورُ وحدَها (طلبُ المالك ٢٠٢٦-١٠-٠٧) — والأسلاكُ ثابتة */
-  .hub-ticks{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;animation:tickspin 40s linear infinite reverse}
+  /* مربّعُها ٧٠٪ لا ١٠٠٪: المربّعُ الدوّارُ يمدُّ ركنَه بقطرِه، فلو ملأَ اللوحَ لخرجَ ركنُه عن الشاشةِ
+     في الجوّالِ فصارَ للصفحةِ تمريرٌ أفقيّ (مقيسٌ: ٤٢٩px على منفذ ٣٩٠) — والتدريجُ كلُّه في نصفِ قطرِ ٣٢٫٥ */
+  .hub-ticks{position:absolute;inset:15%;width:70%;height:70%;pointer-events:none;animation:tickspin 40s linear infinite reverse}
   @keyframes tickspin{to{transform:rotate(360deg)}}
   .hub-ticks .tick.major{stroke-opacity:.75;stroke-width:1.6;filter:drop-shadow(0 0 2px var(--neon))}
   .hub-ticks .tick{stroke:var(--neon);stroke-opacity:.35;stroke-width:1;vector-effect:non-scaling-stroke}
@@ -296,7 +326,7 @@
   [hidden]{display:none!important}
 
   @media (prefers-reduced-motion:reduce){
-    .ring,.orb,.orb img,.orb-net,.hub-ticks,.hub-lines .flow,.skel{animation:none!important}
+    .ring,.orb,.orb img,.orb-net,.hub-ticks,.tcell .fuel,.tcell .fuel::before,.hub-lines .flow,.skel{animation:none!important}
   }
 </style>
 </head>
@@ -377,7 +407,7 @@
           <p>زيارات · مبيعات · مصاريف</p>
         </div>
         <div class="hub" id="hub">
-          <svg class="hub-ticks" id="hubTicks" viewBox="0 0 100 100" aria-hidden="true"></svg>
+          <svg class="hub-ticks" id="hubTicks" viewBox="15 15 70 70" aria-hidden="true"></svg>
           <svg class="hub-lines" id="hubLines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>
           <div class="ring r3"></div><div class="ring r2"></div><div class="ring r1"></div>
           <div class="beam"></div><div class="plat"></div>
@@ -438,7 +468,7 @@
     <section class="row one" id="sec-stock">
       <div class="card">
         <h2><svg class="ic"><use href="#i-grid"/></svg>مخزون الرموز</h2>
-        <div class="sub" id="stockSub">المتبقّي من رموز كل كتاب — مرتّبةً من الأقلّ. الأحمر تحت ٢٠، والكهرمانيّ تحت ٥٠.</div>
+        <div class="sub" id="stockSub">خزّانٌ لكل مادة وحجرةٌ لكل صف (١ في الأسفل)، وارتفاع الوقود = المتبقّي من الرموز. الحجرة الحمراء الوامضة تحت ٢٠ — مرّر عليها للتفاصيل.</div>
         <div id="stockBox"><div class="skel"></div></div>
       </div>
     </section>
@@ -463,6 +493,8 @@
 
   var SUBJ = { sci: 'العلوم', math: 'الرياضيات', din: 'ديني حياتي', lug: 'أحب لغتي', it: 'عالمي الرقمي', en: 'الإنجليزية', hw: 'الهوية والمواطنة' };
   var SUBJ_ORDER = ['sci', 'math', 'din', 'lug', 'it', 'en'];
+  // لونُ كلِّ مادّةٍ في خزّاناتِ الوقود — متمايزةٌ على الخلفيةِ الداكنة، وبعيدةٌ عن أحمرِ الإنذار
+  var SUBJ_COLOR = { sci: '#4ec36a', math: '#2a9fdc', din: '#e0b44a', lug: '#ff8a3d', it: '#9b7bff', en: '#2fd4c4' };
   var GRADE = { g1: 'الأول', g2: 'الثاني', g3: 'الثالث', g4: 'الرابع' };
   var LOW_STOCK = 20;   // تحتَه يُنبَّه: يكفي لأسابيعَ قبلَ أن تدفعَ معلّمةٌ ولا تجدَ رمزاً
 
@@ -858,17 +890,32 @@
     var html = '<div class="stock-sum"><span><b>' + n(totLeft) + '</b>رمزاً متبقّياً من ' + n(tot) + '</span>' +
       '<span><b>' + n(items.length) + '</b>كتاباً</span>' +
       '<span><b style="color:' + (low ? 'var(--bad)' : 'var(--good)') + '">' + n(low) + '</b>' + (low ? 'كتاب تحت ٢٠ — ولِّد رموزاً جديدة بمسار n8n' : 'كتاب تحت ٢٠ — المخزون آمن') + '</span></div>';
-    html += '<div class="stock">' + items.map(function (i) {
-      var pct = i.total ? i.left / i.total * 100 : 0, cls = i.left < LOW_STOCK ? 'low' : i.left < 50 ? 'mid' : '';
-      var col = cls === 'low' ? 'var(--bad)' : cls === 'mid' ? 'var(--warn)' : 'var(--good)';
-      var word = cls === 'low' ? 'ينفد' : cls === 'mid' ? 'متوسّط' : 'آمن';
-      return '<div class="st-tile ' + cls + '" title="' + esc(bookName(i.k) + ': بيع ' + i.sold + ' من ' + i.total) + '">' +
-        '<div class="nm"><span>' + esc(bookName(i.k)) + '</span><span style="color:' + col + '">' + word + '</span></div>' +
-        '<div class="v" style="color:' + col + '">' + n(i.left) + '<small>من ' + n(i.total) + '</small></div>' +
-        '<span class="tr"><span class="fl" style="width:' + pct.toFixed(1) + '%;background:' + col + ';color:' + col + '"></span></span>' +
-        (i.eta !== null ? '<div class="eta">بالسرعة الحالية ينفد خلال ≈ ' + n(i.eta) + ' يوماً</div>' : '') + '</div>';
+    var byKey = {};
+    items.forEach(function (i) { byKey[i.k] = i; });
+    html += '<div class="tanks">' + SUBJ_ORDER.filter(function (sj) {
+      return ['g1', 'g2', 'g3', 'g4'].some(function (g) { return byKey[g + '-' + sj]; });
+    }).map(function (sj) {
+      var sum = 0, cells = ['g1', 'g2', 'g3', 'g4'].map(function (g, gi) {
+        var i = byKey[g + '-' + sj];
+        if (!i) return '<div class="tcell none"><span class="g">' + n(gi + 1) + '</span></div>';
+        sum += i.left;
+        var pct = i.total ? i.left / i.total * 100 : 0;
+        return '<div class="tcell' + (i.left < LOW_STOCK ? ' low' : '') + '" data-k="' + i.k + '" tabindex="0">' +
+          '<span class="g">' + n(gi + 1) + '</span><span class="fuel" style="--p:' + pct.toFixed(1) + '%"></span></div>';
+      }).join('');
+      return '<div class="tank" style="--tc:' + SUBJ_COLOR[sj] + '"><div class="tn">' + SUBJ[sj] + '</div>' +
+        '<div class="tbody" role="img" aria-label="' + esc(SUBJ[sj] + ': متبقٍّ ' + sum) + '">' + cells + '</div>' +
+        '<div class="tt">' + n(sum) + '<small>متبقٍّ</small></div></div>';
     }).join('') + '</div>';
     $('stockBox').innerHTML = html;
+    [].forEach.call($('stockBox').querySelectorAll('.tcell[data-k]'), function (c) {
+      var i = byKey[c.getAttribute('data-k')];
+      var t = '<b>' + esc(bookName(i.k)) + '</b><br>بقيَ ' + n(i.left) + ' من ' + n(i.total) + ' · بيعَ ' + n(i.sold) +
+        (i.eta !== null ? '<br>ينفد خلال ≈ ' + n(i.eta) + ' يوماً' : '') + (i.left < LOW_STOCK ? '<br>⚠ ولِّد رموزاً جديدة' : '');
+      c.addEventListener('mousemove', function (e) { showTip(e, t); });
+      c.addEventListener('mouseleave', hideTip);
+      c.addEventListener('click', function (e) { showTip(e, t); });
+    });
   }
   function observedDays() {
     var first = '2026-10-07', today = muscatDay(), d = 1;
