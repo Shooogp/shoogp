@@ -168,9 +168,9 @@ window.DATA_FALLBACK = {
         { title:"أنا أستطيع", file:"g2h-1-3", open:true }
       ]},
       { unit:"أفتخر بعائلتي", lessons:[
-        { title:"أتواصل مع عائلتي", file:"g2h-2-1", open:false },
-        { title:"أتعاون مع عائلتي", file:"g2h-2-2", open:false },
-        { title:"أتشاور مع عائلتي", file:"g2h-2-3", open:false }
+        { title:"أتواصل مع عائلتي", file:"g2h-2-1", open:true },
+        { title:"أتعاون مع عائلتي", file:"g2h-2-2", open:true },
+        { title:"أتشاور مع عائلتي", file:"g2h-2-3", open:true }
       ]},
       { unit:"أنتمي إلى الحيّ", lessons:[
         { title:"من يعيش معي في الحيّ؟", file:"g2h-3-1", open:false },

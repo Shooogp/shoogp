@@ -160,9 +160,9 @@
       {
         "unit": "أفتخر بعائلتي",
         "lessons": [
-          { "title": "أتواصل مع عائلتي", "file": "g2h-2-1", "open": false },
-          { "title": "أتعاون مع عائلتي", "file": "g2h-2-2", "open": false },
-          { "title": "أتشاور مع عائلتي", "file": "g2h-2-3", "open": false }
+          { "title": "أتواصل مع عائلتي", "file": "g2h-2-1", "open": true },
+          { "title": "أتعاون مع عائلتي", "file": "g2h-2-2", "open": true },
+          { "title": "أتشاور مع عائلتي", "file": "g2h-2-3", "open": true }
         ]
       },
       {
