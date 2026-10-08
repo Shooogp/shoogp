@@ -708,6 +708,18 @@ function spawn(Q){
   });
   place(); whoosh(); ambLevel(true);
 }
+
+function deoverlap(){
+  const L=M.filter(m=>m.st!=='gone').map(m=>m.lab).filter(l=>l.isConnected&&!l.classList.contains('gone'));
+  L.forEach(l=>{ l.style.marginTop='0px'; });
+  const R=L.map(l=>{ const r=l.getBoundingClientRect(); return {l:r.left,r:r.right,t:r.top,b:r.bottom}; });
+  const ord=L.map((l,i)=>i).sort((a,b)=>R[a].t-R[b].t);
+  for(let x=0;x<ord.length;x++){ const i=ord[x];
+    for(let y=0;y<x;y++){ const j=ord[y], A=R[j], B=R[i];
+      if(A.l<B.r-2 && B.l<A.r-2 && A.t<B.b-2 && B.t<A.b-2){ const d=A.b-B.t+6; B.t+=d; B.b+=d; L[i].style.marginTop=(parseFloat(L[i].style.marginTop)||0)+d+'px'; y=-1; }
+    }
+  }
+}
 function place(){
   const u=unitPx();
   M.forEach(m=>{
@@ -718,6 +730,7 @@ function place(){
     const [px,py]=toPx(m.x,m.y);
     m.lab.style.left=px+'px'; m.lab.style.top=(py+(R*1.05*m.s)*u+6)+'px';
   });
+  deoverlap();
 }
 function loop(t){
   raf=requestAnimationFrame(loop);
