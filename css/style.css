@@ -235,6 +235,9 @@
   .games-overlay[hidden]{display:none}
   .games-overlay iframe{width:100%;height:100%;border:0;display:block}
   html.games-open, html.games-open body{overflow:hidden}
+  /* تكبيرُ الملاءمة (fit.js) يصغّرُ الجذرَ في الشاشاتِ الأضيقِ من ١٠٠٠px، فيصغرُ إطارُ الألعابِ
+     معه ويتمدّدُ داخلياً فيتوقّفُ التمرير — فنلغيه ما دامت طبقةُ الألعابِ مفتوحة */
+  html.games-open{zoom:1 !important}
   /* زرّ الصوت مثبَّت في أعلى اليسار كي يبقى متاحاً بعيداً عن الشعار */
   .app:has(#lessonsScreen.active) > header .sound-btn,
   .app:has(#activityScreen.active) > header .sound-btn{ position:fixed; top:10px; left:12px; right:auto }
