@@ -175,9 +175,9 @@ window.DATA_FALLBACK = {
         { title:"أثر مشروع أسرتي", file:"g4h-2-3", open:true }
       ]},
       { unit:"حيّنا المتفاعل", lessons:[
-        { title:"أنا متطوّع", file:"g4h-3-1", open:false },
-        { title:"أخطّط للعمل التطوّعي", file:"g4h-3-2", open:false },
-        { title:"تطوّعي حياة", file:"g4h-3-3", open:false }
+        { title:"أنا متطوّع", file:"g4h-3-1", open:true },
+        { title:"أخطّط للعمل التطوّعي", file:"g4h-3-2", open:true },
+        { title:"تطوّعي حياة", file:"g4h-3-3", open:true }
       ]}
     ]},
     "g3-hw": { book:"الهوية والمواطنة — الصف الثالث", units:[
