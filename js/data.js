@@ -165,9 +165,9 @@ window.DATA_FALLBACK = {
     ] },
     "g4-hw": { book:"الهوية والمواطنة — الصف الرابع", units:[
       { unit:"ذاتي المجيدة", lessons:[
-        { title:"أنا أجيد", file:"g4h-1-1", open:false },
-        { title:"أنمّي ما أجيد", file:"g4h-1-2", open:false },
-        { title:"أستفيد ممّا أجيد", file:"g4h-1-3", open:false }
+        { title:"أنا أجيد", file:"g4h-1-1", open:true },
+        { title:"أنمّي ما أجيد", file:"g4h-1-2", open:true },
+        { title:"أستفيد ممّا أجيد", file:"g4h-1-3", open:true }
       ]},
       { unit:"أسرتي المنتجة", lessons:[
         { title:"أسرتي تجيد", file:"g4h-2-1", open:false },
