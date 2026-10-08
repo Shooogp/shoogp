@@ -169,9 +169,9 @@ window.DATA_FALLBACK = {
         { title:"أحمي ذاتي", file:"g3h-1-3", open:true }
       ]},
       { unit:"حقوقي وواجباتي الأسرية", lessons:[
-        { title:"حقوقي الأسرية", file:"g3h-2-1", open:false },
-        { title:"واجباتي الأسرية", file:"g3h-2-2", open:false },
-        { title:"ميثاق أسرتي", file:"g3h-2-3", open:false }
+        { title:"حقوقي الأسرية", file:"g3h-2-1", open:true },
+        { title:"واجباتي الأسرية", file:"g3h-2-2", open:true },
+        { title:"ميثاق أسرتي", file:"g3h-2-3", open:true }
       ]},
       { unit:"حقوقي وواجباتي في الحيّ", lessons:[
         { title:"أنا أحتاج.. أنا ألتزم", file:"g3h-3-1", open:false },
