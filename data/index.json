@@ -168,9 +168,9 @@
       {
         "unit": "أنتمي إلى الحيّ",
         "lessons": [
-          { "title": "من يعيش معي في الحيّ؟", "file": "g2h-3-1", "open": false },
-          { "title": "سبلتنا العُمانية", "file": "g2h-3-2", "open": false },
-          { "title": "ألعابنا الشعبية", "file": "g2h-3-3", "open": false }
+          { "title": "من يعيش معي في الحيّ؟", "file": "g2h-3-1", "open": true },
+          { "title": "سبلتنا العُمانية", "file": "g2h-3-2", "open": true },
+          { "title": "ألعابنا الشعبية", "file": "g2h-3-3", "open": true }
         ]
       }
     ]

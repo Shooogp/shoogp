@@ -173,9 +173,9 @@ window.DATA_FALLBACK = {
         { title:"أتشاور مع عائلتي", file:"g2h-2-3", open:true }
       ]},
       { unit:"أنتمي إلى الحيّ", lessons:[
-        { title:"من يعيش معي في الحيّ؟", file:"g2h-3-1", open:false },
-        { title:"سبلتنا العُمانية", file:"g2h-3-2", open:false },
-        { title:"ألعابنا الشعبية", file:"g2h-3-3", open:false }
+        { title:"من يعيش معي في الحيّ؟", file:"g2h-3-1", open:true },
+        { title:"سبلتنا العُمانية", file:"g2h-3-2", open:true },
+        { title:"ألعابنا الشعبية", file:"g2h-3-3", open:true }
       ]}
     ]},
     "g1-sci": { book:"العلوم — الصف الأول", units:[
