@@ -160,9 +160,9 @@
       {
         "unit": "أسرتي المنتجة",
         "lessons": [
-          { "title": "أسرتي تجيد", "file": "g4h-2-1", "open": false },
-          { "title": "أخطّط لمشروع أسرتي", "file": "g4h-2-2", "open": false },
-          { "title": "أثر مشروع أسرتي", "file": "g4h-2-3", "open": false }
+          { "title": "أسرتي تجيد", "file": "g4h-2-1", "open": true },
+          { "title": "أخطّط لمشروع أسرتي", "file": "g4h-2-2", "open": true },
+          { "title": "أثر مشروع أسرتي", "file": "g4h-2-3", "open": true }
         ]
       },
       {
