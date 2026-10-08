@@ -163,6 +163,23 @@ window.DATA_FALLBACK = {
         { title:"Social Studies: In my town", file:"g2e-lc2-2", open:true }
       ]}
     ] },
+    "g4-hw": { book:"الهوية والمواطنة — الصف الرابع", units:[
+      { unit:"ذاتي المجيدة", lessons:[
+        { title:"أنا أجيد", file:"g4h-1-1", open:false },
+        { title:"أنمّي ما أجيد", file:"g4h-1-2", open:false },
+        { title:"أستفيد ممّا أجيد", file:"g4h-1-3", open:false }
+      ]},
+      { unit:"أسرتي المنتجة", lessons:[
+        { title:"أسرتي تجيد", file:"g4h-2-1", open:false },
+        { title:"أخطّط لمشروع أسرتي", file:"g4h-2-2", open:false },
+        { title:"أثر مشروع أسرتي", file:"g4h-2-3", open:false }
+      ]},
+      { unit:"حيّنا المتفاعل", lessons:[
+        { title:"أنا متطوّع", file:"g4h-3-1", open:false },
+        { title:"أخطّط للعمل التطوّعي", file:"g4h-3-2", open:false },
+        { title:"تطوّعي حياة", file:"g4h-3-3", open:false }
+      ]}
+    ]},
     "g3-hw": { book:"الهوية والمواطنة — الصف الثالث", units:[
       { unit:"أحافظ على ذاتي", lessons:[
         { title:"أعتني بجسدي", file:"g3h-1-1", open:true },
