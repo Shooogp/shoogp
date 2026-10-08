@@ -162,6 +162,23 @@ window.DATA_FALLBACK = {
         { title:"Social Studies: In my town", file:"g2e-lc2-2", open:true }
       ]}
     ] },
+    "g3-hw": { book:"الهوية والمواطنة — الصف الثالث", units:[
+      { unit:"أحافظ على ذاتي", lessons:[
+        { title:"أعتني بجسدي", file:"g3h-1-1", open:false },
+        { title:"أهتمّ بعقلي", file:"g3h-1-2", open:false },
+        { title:"أحمي ذاتي", file:"g3h-1-3", open:false }
+      ]},
+      { unit:"حقوقي وواجباتي الأسرية", lessons:[
+        { title:"حقوقي الأسرية", file:"g3h-2-1", open:false },
+        { title:"واجباتي الأسرية", file:"g3h-2-2", open:false },
+        { title:"ميثاق أسرتي", file:"g3h-2-3", open:false }
+      ]},
+      { unit:"حقوقي وواجباتي في الحيّ", lessons:[
+        { title:"أنا أحتاج.. أنا ألتزم", file:"g3h-3-1", open:false },
+        { title:"أخذٌ وعطاء", file:"g3h-3-2", open:false },
+        { title:"قواعد مدرستي", file:"g3h-3-3", open:false }
+      ]}
+    ]},
     "g2-hw": { book:"الهوية والمواطنة — الصف الثاني", units:[
       { unit:"أتقبّل ذاتي", lessons:[
         { title:"صفاتي", file:"g2h-1-1", open:true },
