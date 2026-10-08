@@ -174,9 +174,9 @@ window.DATA_FALLBACK = {
         { title:"ميثاق أسرتي", file:"g3h-2-3", open:true }
       ]},
       { unit:"حقوقي وواجباتي في الحيّ", lessons:[
-        { title:"أنا أحتاج.. أنا ألتزم", file:"g3h-3-1", open:false },
-        { title:"أخذٌ وعطاء", file:"g3h-3-2", open:false },
-        { title:"قواعد مدرستي", file:"g3h-3-3", open:false }
+        { title:"أنا أحتاج.. أنا ألتزم", file:"g3h-3-1", open:true },
+        { title:"أخذٌ وعطاء", file:"g3h-3-2", open:true },
+        { title:"قواعد مدرستي", file:"g3h-3-3", open:true }
       ]}
     ]},
     "g2-hw": { book:"الهوية والمواطنة — الصف الثاني", units:[
