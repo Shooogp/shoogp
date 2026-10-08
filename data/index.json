@@ -152,9 +152,9 @@
       {
         "unit": "أحافظ على ذاتي",
         "lessons": [
-          { "title": "أعتني بجسدي", "file": "g3h-1-1", "open": false },
-          { "title": "أهتمّ بعقلي", "file": "g3h-1-2", "open": false },
-          { "title": "أحمي ذاتي", "file": "g3h-1-3", "open": false }
+          { "title": "أعتني بجسدي", "file": "g3h-1-1", "open": true },
+          { "title": "أهتمّ بعقلي", "file": "g3h-1-2", "open": true },
+          { "title": "أحمي ذاتي", "file": "g3h-1-3", "open": true }
         ]
       },
       {

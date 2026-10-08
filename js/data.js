@@ -164,9 +164,9 @@ window.DATA_FALLBACK = {
     ] },
     "g3-hw": { book:"الهوية والمواطنة — الصف الثالث", units:[
       { unit:"أحافظ على ذاتي", lessons:[
-        { title:"أعتني بجسدي", file:"g3h-1-1", open:false },
-        { title:"أهتمّ بعقلي", file:"g3h-1-2", open:false },
-        { title:"أحمي ذاتي", file:"g3h-1-3", open:false }
+        { title:"أعتني بجسدي", file:"g3h-1-1", open:true },
+        { title:"أهتمّ بعقلي", file:"g3h-1-2", open:true },
+        { title:"أحمي ذاتي", file:"g3h-1-3", open:true }
       ]},
       { unit:"حقوقي وواجباتي الأسرية", lessons:[
         { title:"حقوقي الأسرية", file:"g3h-2-1", open:false },
