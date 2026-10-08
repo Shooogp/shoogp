@@ -266,13 +266,14 @@ button:focus-visible,select:focus-visible{outline:3px solid var(--sun);outline-o
 @keyframes quake{0%,100%{transform:translate(0,0)}25%{transform:translate(-5px,3px)}50%{transform:translate(5px,-3px)}75%{transform:translate(-3px,2px)}}
 #instr{display:none!important}
 
-/* أزرار الإجابة: قماش العيد المطرّز */
-.stone{background:radial-gradient(70% 90% at 50% 50%,rgba(110,12,22,.62),rgba(110,12,22,.2) 75%),url(../art/btn-fabric.webp) center/320px repeat;border:4px solid #5a0f14;border-radius:20px;color:#fffaf0;text-shadow:0 2px 0 #3a0508,0 0 10px rgba(60,5,10,1),0 0 4px rgba(60,5,10,1);
-  box-shadow:inset 0 0 0 2px #f2c14e,inset 0 -5px 0 rgba(0,0,0,.18),0 5px 0 #3e080c,0 10px 16px rgba(0,0,0,.32)}
-.stone.ok{background:linear-gradient(180deg,rgba(150,240,120,.6),rgba(60,170,60,.65)),url(../art/btn-fabric.webp) center/320px repeat;border-color:#2f6b1c;color:#fff;
-  text-shadow:0 2px 0 #1d4a10,0 0 8px rgba(20,60,10,.7);box-shadow:0 0 18px rgba(170,255,140,.8),0 5px 0 #24521a,inset 0 2px 0 rgba(255,255,255,.4)}
-.stone.no{background:linear-gradient(180deg,rgba(240,120,110,.6),rgba(190,60,50,.65)),url(../art/btn-fabric.webp) center/320px repeat;border-color:#7a1f16;color:#fff;
-  text-shadow:0 2px 0 #5a120c;box-shadow:0 5px 0 #5a160f,0 10px 16px rgba(0,0,0,.35)}
+/* أزرار الإجابة: قماش زينة العيد */
+.stone:where(:not(#again)){overflow:visible;--c:#2fa24a;background:repeating-linear-gradient(90deg,rgba(255,255,255,.10) 0 9%,rgba(0,0,0,.07) 14%,rgba(255,255,255,.10) 22%),linear-gradient(180deg,rgba(0,0,0,.22) 0 9px,rgba(255,255,255,.12) 10px,rgba(255,255,255,0) 40%,rgba(0,0,0,.12)),var(--c);border:none;border-radius:2px 2px 6px 6px;
+  color:#fff;padding-top:16px;text-shadow:0 2px 0 rgba(0,0,0,.35),0 0 8px rgba(0,0,0,.35);box-shadow:0 6px 12px rgba(0,0,0,.25),inset 0 -3px 0 rgba(0,0,0,.12)}
+.stone:where(:not(#again))::before{content:"";position:absolute;left:-14px;right:-14px;top:2px;height:3px;border-radius:2px;background:#f4ead6;box-shadow:0 1px 1px rgba(0,0,0,.35);pointer-events:none}
+.opts .stone:where(:not(#again)):nth-child(4n+1){--c:#2fa24a} .opts .stone:where(:not(#again)):nth-child(4n+2){--c:#d8352f}
+.opts .stone:where(:not(#again)):nth-child(4n+3),.stone:where(:not(#again)).yel{--c:#f2b632;color:#5a3a00;text-shadow:0 1px 0 rgba(255,245,210,.8)} .opts .stone:where(:not(#again)):nth-child(4n+4){--c:#ec7a24}
+.stone:where(:not(#again)).ok{--c:#3cc457 !important;color:#fff !important;text-shadow:0 2px 0 rgba(0,0,0,.35) !important;box-shadow:0 0 0 4px #fff,0 0 22px 6px rgba(170,255,140,.9),0 6px 12px rgba(0,0,0,.25)}
+.stone:where(:not(#again)).no{--c:#e0473f !important;color:#fff !important;text-shadow:0 2px 0 rgba(0,0,0,.35) !important;box-shadow:0 0 0 4px #ffd5cf,0 6px 12px rgba(0,0,0,.25)}
 
 /* داخل صفحة ألعاب الكتاب: الرأس والرجوع والتلميح في الصفحة الأم */
 html.embed body{background:transparent}
@@ -661,14 +662,14 @@ function spawn(Q){
   const slots=shuffle([...Array(n).keys()]), cols=shuffle(COLORS);
   const pxW=Math.max(150, w*unitPx()+10);
   Q.opts.forEach((txt,i)=>{
-    const k=slots[i], x=xs[k]+(Math.random()*20-10), y=320+(k%2)*80+Math.random()*20;
+    const k=slots[i], x=xs[k]+(Math.random()*20-10), y=320+(k%2)*170+Math.random()*20;
     const g=document.createElementNS(SVGNS,'g'); g.setAttribute('class','balloon');
     g.innerHTML=balloonSVG(cols[i%cols.length]);
     $('balloons').appendChild(g);
     const lab=document.createElement('button'); lab.type='button';
-    lab.className='stone mlab'+(Q.tf?' tf':''); lab.textContent=txt; lab.style.setProperty('--mw',pxW+'px');
+    lab.className='stone mlab'+(Q.tf?' tf':''); lab.textContent=txt; lab.style.setProperty('--mw',pxW+'px'); lab.style.setProperty('--c',['#2fa24a','#d8352f','#f2b632','#ec7a24'][i%4]); if(i%4==2) lab.classList.add('yel');
     $('labels').appendChild(lab);
-    const m={i, g, lab, col:cols[i%cols.length], x, y, x0:x, ph:Math.random()*6.28, vy:(y-TOP)/RISE, s:.35, op:1, st:'rise'};
+    const m={i, g, lab, col:cols[i%cols.length], x, y, x0:x, ph:Math.random()*6.28, top:TOP+(k%2)*170, vy:(y-TOP-(k%2)*170)/RISE, s:.35, op:1, st:'rise'};
     g.addEventListener('click',()=>pick(m)); lab.addEventListener('click',()=>pick(m));
     M.push(m);
   });
@@ -691,7 +692,7 @@ function loop(t){
   const dt=Math.min(.05,(t-(lastT||t))/1000); lastT=t; const s=t/1000;
   let timeout=false;
   M.forEach(m=>{
-    if(m.st==='rise'){ m.s=Math.min(1,m.s+dt*1.6); m.y-=m.vy*dt; m.x=m.x0+14*Math.sin(s*.7+m.ph); if(m.y<=TOP) timeout=true; }
+    if(m.st==='rise'){ m.s=Math.min(1,m.s+dt*1.6); m.y-=m.vy*dt; m.x=m.x0+14*Math.sin(s*.7+m.ph); if(m.y<=m.top) timeout=true; }
     else if(m.st==='squeeze'){ m.s=Math.min(1.28,m.s+dt*1.3); m.x=m.x0+14*Math.sin(s*.7+m.ph)+(Math.random()*8-4); }
     else if(m.st==='away'){ m.k+=dt; m.y-=(220+m.k*420)*dt; m.x+=m.vx*dt; m.op=Math.max(0,1-m.k/1.6);
       if(m.k>=1.6){ m.st='gone'; m.g.remove(); m.lab.remove(); } }
