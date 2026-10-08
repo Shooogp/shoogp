@@ -163,9 +163,9 @@ window.DATA_FALLBACK = {
     ] },
     "g2-hw": { book:"الهوية والمواطنة — الصف الثاني", units:[
       { unit:"أتقبّل ذاتي", lessons:[
-        { title:"صفاتي", file:"g2h-1-1", open:false },
-        { title:"أتقبّل صفاتي", file:"g2h-1-2", open:false },
-        { title:"أنا أستطيع", file:"g2h-1-3", open:false }
+        { title:"صفاتي", file:"g2h-1-1", open:true },
+        { title:"أتقبّل صفاتي", file:"g2h-1-2", open:true },
+        { title:"أنا أستطيع", file:"g2h-1-3", open:true }
       ]},
       { unit:"أفتخر بعائلتي", lessons:[
         { title:"أتواصل مع عائلتي", file:"g2h-2-1", open:false },
