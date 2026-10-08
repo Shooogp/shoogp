@@ -310,6 +310,11 @@ button:focus-visible,select:focus-visible{outline:3px solid var(--sun);outline-o
   border-radius:16px;background:rgba(255,201,60,.14);border:1.5px solid rgba(255,201,60,.45);font-weight:700;font-size:16px;color:#fff}
 .unlockbar button{all:unset;cursor:pointer;background:var(--sun,#FFC93C);color:#3a2a06;font-weight:800;padding:8px 20px;border-radius:999px;font-size:16px}
 .unlockbar button:focus-visible{outline:3px solid #fff;outline-offset:2px}
+/* شريط «افتحي الكتاب» صفٌّ إضافيّ بين القائمتين وساحة اللعب: بدونه يأخذ الشريط صفّ الساحة
+   فتنضغط بطاقات الألعاب وتُقصّ ويتوقّف التمرير */
+.page:has(> #unlockBar:not([hidden])){grid-template-rows:auto auto auto auto minmax(560px,1fr) auto}
+/* قائمة البطاقات (لا لعبة مختارة): الصفحة تطول بقدر البطاقات وتعمل بالتمرير بدل قصّها */
+.page:has(#chooser:not([hidden])){height:auto;min-height:100%}
 
 /* بلا عدد الأسئلة بجانب قائمة الألعاب (قرار المالك) */
 .qcount{display:none!important}
