@@ -51,7 +51,8 @@ window.DATA_FALLBACK = {
         { key:"g4-dini-1", band:["#4fa8e8","#2f88d0"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-blue", ic:"🕌", isNew:false, theme:"theme-dini", cover:"images/cover-g4-dini-1.jpg" },
         { key:"g4-dini-2", band:["#4bb3ab","#33978f"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-teal", ic:"🕌", isNew:false, theme:"theme-dini-2", cover:"images/cover-g4-dini-2.jpg" },
         { key:"g4-it", band:["#7F7F90","#484860"], title:"عالمي الرقمي", term:"الفصل الأول", color:"bk-purple", ic:"💻", isNew:true, onSale:true, theme:"theme-it4", cover:"images/cover-g4-it.jpg" },
-        { key:"g4-en", band:["#00A838","#00862D"], title:"اللغة الإنجليزية", term:"الفصل الأول", color:"bk-emerald", ic:"💬", isNew:true, onSale:true, theme:"theme-en4", cover:"images/cover-g4-en.jpg" }
+        { key:"g4-en", band:["#00A838","#00862D"], title:"اللغة الإنجليزية", term:"الفصل الأول", color:"bk-emerald", ic:"💬", isNew:true, onSale:true, theme:"theme-en4", cover:"images/cover-g4-en.jpg" },
+        { key:"g4-hw", band:["#D6AC4E","#B48A30"], title:"الهوية والمواطنة", term:"الفصل الأول", color:"bk-yellow", ic:"🏡", isNew:true, devOnly:true, onSale:false, theme:"theme-hw4", cover:"images/cover-g4-hw.jpg" }
       ]
     },
     "الثاني": {

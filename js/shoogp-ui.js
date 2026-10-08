@@ -76,7 +76,8 @@ var SHOOGP_BOOKS_SEED=[
   /* والصف الثاني (المرحلة ٣ ٢٠٢٦-١٠-٠٦، devOnly): يرثُ عائلةَ إطارِ hw وقشرةَ skin-sarooj
      تلقائياً من المادّة — FAMILY_BY_SUBJECT وSUBJECT_SKINS بالمادّة لا بالكتاب. */
   {key:'g2-hw', prefix:'g2h-', subject:'hw'},
-  {key:'g3-hw', prefix:'g3h-', subject:'hw'}
+  {key:'g3-hw', prefix:'g3h-', subject:'hw'},
+  {key:'g4-hw', prefix:'g4h-', subject:'hw'}
 ];
 /* بادئةُ دروسِ الكتابِ من مفتاحِه: `g4-sci`←`g4s-` و`g2-math`←`g2m-` (الصفُّ + أوّلُ
    حرفِ المادةِ). تُستعمَلُ للكتبِ المشتقّةِ فقط، وهي احتياطُ «غيابِ DATA» لا أكثر. */
