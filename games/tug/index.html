@@ -295,6 +295,14 @@ button:focus-visible,select:focus-visible{outline:3px solid var(--sun);outline-o
 @media (max-width:560px){ .gmain3{grid-template-columns:1fr} }
 @media (prefers-reduced-motion:reduce){ #tug{transition:none} }
 
+/* أزرار الإجابة: الحبل المجدول */
+.stone{background:radial-gradient(70% 90% at 50% 50%,rgba(70,40,10,.5),rgba(70,40,10,.12) 75%),url(../art/btn-rope.webp) center/240px repeat;border:4px solid #5e3a12;border-radius:20px;color:#fff8ea;text-shadow:0 2px 0 #3a2208,0 0 10px rgba(50,25,5,1),0 0 4px rgba(50,25,5,1);
+  box-shadow:inset 0 0 0 2px #e8c27a,inset 0 -5px 0 rgba(0,0,0,.18),0 5px 0 #45290b,0 10px 16px rgba(0,0,0,.32)}
+.stone.ok{background:linear-gradient(180deg,rgba(150,240,120,.6),rgba(60,170,60,.65)),url(../art/btn-rope.webp) center/240px repeat;border-color:#2f6b1c;color:#fff;
+  text-shadow:0 2px 0 #1d4a10,0 0 8px rgba(20,60,10,.7);box-shadow:0 0 18px rgba(170,255,140,.8),0 5px 0 #24521a,inset 0 2px 0 rgba(255,255,255,.4)}
+.stone.no{background:linear-gradient(180deg,rgba(240,120,110,.6),rgba(190,60,50,.65)),url(../art/btn-rope.webp) center/240px repeat;border-color:#7a1f16;color:#fff;
+  text-shadow:0 2px 0 #5a120c;box-shadow:0 5px 0 #5a160f,0 10px 16px rgba(0,0,0,.35)}
+
 /* داخل صفحة ألعاب الكتاب: الرأس والرجوع والتلميح في الصفحة الأم */
 html.embed body{background:transparent}
 html.embed .bgstars,html.embed .back,html.embed .eyebrow,html.embed .logo,html.embed .hint{display:none}

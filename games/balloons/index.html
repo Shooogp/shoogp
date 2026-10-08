@@ -266,6 +266,14 @@ button:focus-visible,select:focus-visible{outline:3px solid var(--sun);outline-o
 @keyframes quake{0%,100%{transform:translate(0,0)}25%{transform:translate(-5px,3px)}50%{transform:translate(5px,-3px)}75%{transform:translate(-3px,2px)}}
 #instr{display:none!important}
 
+/* أزرار الإجابة: قماش العيد المطرّز */
+.stone{background:radial-gradient(70% 90% at 50% 50%,rgba(110,12,22,.62),rgba(110,12,22,.2) 75%),url(../art/btn-fabric.webp) center/320px repeat;border:4px solid #5a0f14;border-radius:20px;color:#fffaf0;text-shadow:0 2px 0 #3a0508,0 0 10px rgba(60,5,10,1),0 0 4px rgba(60,5,10,1);
+  box-shadow:inset 0 0 0 2px #f2c14e,inset 0 -5px 0 rgba(0,0,0,.18),0 5px 0 #3e080c,0 10px 16px rgba(0,0,0,.32)}
+.stone.ok{background:linear-gradient(180deg,rgba(150,240,120,.6),rgba(60,170,60,.65)),url(../art/btn-fabric.webp) center/320px repeat;border-color:#2f6b1c;color:#fff;
+  text-shadow:0 2px 0 #1d4a10,0 0 8px rgba(20,60,10,.7);box-shadow:0 0 18px rgba(170,255,140,.8),0 5px 0 #24521a,inset 0 2px 0 rgba(255,255,255,.4)}
+.stone.no{background:linear-gradient(180deg,rgba(240,120,110,.6),rgba(190,60,50,.65)),url(../art/btn-fabric.webp) center/320px repeat;border-color:#7a1f16;color:#fff;
+  text-shadow:0 2px 0 #5a120c;box-shadow:0 5px 0 #5a160f,0 10px 16px rgba(0,0,0,.35)}
+
 /* داخل صفحة ألعاب الكتاب: الرأس والرجوع والتلميح في الصفحة الأم */
 html.embed body{background:transparent}
 html.embed .bgstars,html.embed .back,html.embed .eyebrow,html.embed .logo,html.embed .hint{display:none}
