@@ -1579,6 +1579,10 @@ img.ct-glyph-img{width:38px;height:38px;object-fit:contain;display:block;pointer
   .site-foot{text-align:center;margin-top:10px;color:#6f679a;font-size:.78rem}
   .site-foot a{color:#9f96cf;font-size:.78rem;text-decoration:none}
   .site-foot a:hover{color:#ffd257;text-decoration:underline}
+  /* الإفصاحُ القانونيّ تحتَ التذييل (سجلٌّ وترخيصٌ وتواصل) — خطٌّ أصغرُ منه، ولونٌ مقروءٌ على الخلفيةِ الفضائية (الأخفتُ منه غابَ عن العينِ في الفحص) */
+  .site-legal{text-align:center;margin:6px 0 0;color:#a39bd3;font-size:.74rem;line-height:1.8}
+  .site-legal a{color:#c4bcef;text-decoration:none}
+  .site-legal a:hover{color:#ffd257;text-decoration:underline}
 
   /* ═══════════ رحلة الصاروخ (بديل النجوم — مؤشّر تقدّم بصريّ) ═══════════
      الصاروخ صورة جسم فقط (rocket-body.png)؛ اللهب والدخان حيّان بالكامل بالكود
