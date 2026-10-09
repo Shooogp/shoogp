@@ -16,8 +16,8 @@ window.DATA_FALLBACK = {
         { key:"g1-dini-1", band:["#6fb8e0","#4a95c4"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-blue", ic:"🕌", isNew:false, theme:"theme-dini1a", cover:"images/cover-g1-dini-1.jpg" },
         { key:"g1-dini-2", band:["#4a93c8","#2f70a4"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-blue", ic:"🕌", isNew:false, theme:"theme-dini1b", cover:"images/cover-g1-dini-2.jpg" },
         { key:"g1-it", band:["#3e7dc7","#004890"], title:"عالمي الرقمي", term:"الفصل الأول", color:"bk-blue", ic:"💻", isNew:true, onSale:true, theme:"theme-it1", cover:"images/cover-g1-it.jpg" },
-        { key:"g1-en", band:["#F6D000","#C5A600"], title:"اللغة الإنجليزية", term:"الفصل الأول", color:"bk-yellow", ic:"💬", isNew:true, onSale:true, theme:"theme-en1", cover:"images/cover-g1-en.jpg" },
-        { key:"g1-hw", band:["#4FA3D4","#2E80B3"], title:"الهوية والمواطنة", term:"الفصل الأول", color:"bk-blue", ic:"🏡", isNew:true, devOnly:true, onSale:false, theme:"theme-hw1", cover:"images/cover-g1-hw.jpg" }
+        { key:"g1-hw", band:["#4FA3D4","#2E80B3"], title:"الهوية والمواطنة", term:"الفصل الأول", color:"bk-blue", ic:"🏡", isNew:true, onSale:true, theme:"theme-hw1", cover:"images/cover-g1-hw.jpg" },
+        { key:"g1-en", band:["#F6D000","#C5A600"], title:"اللغة الإنجليزية", term:"الفصل الأول", color:"bk-yellow", ic:"💬", isNew:true, onSale:true, theme:"theme-en1", cover:"images/cover-g1-en.jpg" }
       ],
       "الثاني": [
         { key:"g2-sci", band:["#f5a04a","#e07f2b"], title:"العلوم", term:"الفصل الأول", color:"bk-orange", ic:"🔬", isNew:false, onSale:true, theme:"theme-sci2", cover:"images/cover-g2-sci.jpg" },
@@ -27,8 +27,8 @@ window.DATA_FALLBACK = {
         { key:"g2-dini-1", band:["#8fa83a","#6d8528"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-green", ic:"🕌", isNew:false, theme:"theme-dini2a", cover:"images/cover-g2-dini-1.jpg" },
         { key:"g2-dini-2", band:["#6d8a2c","#52691c"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-green", ic:"🕌", isNew:false, theme:"theme-dini2b", cover:"images/cover-g2-dini-2.jpg" },
         { key:"g2-it", band:["#4C9090","#006060"], title:"عالمي الرقمي", term:"الفصل الأول", color:"bk-teal", ic:"💻", isNew:true, onSale:true, theme:"theme-it2", cover:"images/cover-g2-it.jpg" },
-        { key:"g2-en", band:["#D8166C","#AD1156"], title:"اللغة الإنجليزية", term:"الفصل الأول", color:"bk-pink", ic:"💬", isNew:true, onSale:true, theme:"theme-en2", cover:"images/cover-g2-en.jpg" },
-        { key:"g2-hw", band:["#C8784E","#A85E38"], title:"الهوية والمواطنة", term:"الفصل الأول", color:"bk-orange", ic:"🏡", isNew:true, devOnly:true, onSale:false, theme:"theme-hw2", cover:"images/cover-g2-hw.jpg" }
+        { key:"g2-hw", band:["#C8784E","#A85E38"], title:"الهوية والمواطنة", term:"الفصل الأول", color:"bk-orange", ic:"🏡", isNew:true, onSale:true, theme:"theme-hw2", cover:"images/cover-g2-hw.jpg" },
+        { key:"g2-en", band:["#D8166C","#AD1156"], title:"اللغة الإنجليزية", term:"الفصل الأول", color:"bk-pink", ic:"💬", isNew:true, onSale:true, theme:"theme-en2", cover:"images/cover-g2-en.jpg" }
       ],
       /* ملاحظة: بطاقة علوم الثالث كانت مفقودة من هذا الاحتياط بينما هي في data/books.json —
          فكان الكتاب يختفي في وضع file:// وحده. أُضيفت هنا مع بطاقات الصف الجديدة. */
@@ -40,6 +40,7 @@ window.DATA_FALLBACK = {
         { key:"g3-dini-1", band:["#86bfb8","#609b94"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-teal", ic:"🕌", isNew:false, theme:"theme-dini3a", cover:"images/cover-g3-dini-1.jpg" },
         { key:"g3-dini-2", band:["#62bcbc","#429898"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-teal", ic:"🕌", isNew:false, theme:"theme-dini3b", cover:"images/cover-g3-dini-2.jpg" },
         { key:"g3-it", band:["#D37F5D","#C04818"], title:"عالمي الرقمي", term:"الفصل الأول", color:"bk-orange", ic:"💻", isNew:true, onSale:true, theme:"theme-it3", cover:"images/cover-g3-it.jpg" },
+        { key:"g3-hw", band:["#2E9E5B","#1F7F46"], title:"الهوية والمواطنة", term:"الفصل الأول", color:"bk-green", ic:"🏡", isNew:true, onSale:true, theme:"theme-hw3", cover:"images/cover-g3-hw.jpg" },
         { key:"g3-en", band:["#0089CE","#006EA5"], title:"اللغة الإنجليزية", term:"الفصل الأول", color:"bk-cyan", ic:"💬", isNew:true, onSale:true, theme:"theme-en3", cover:"images/cover-g3-en.jpg" }
       ],
       "الرابع": [
@@ -50,6 +51,7 @@ window.DATA_FALLBACK = {
         { key:"g4-dini-1", band:["#4fa8e8","#2f88d0"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-blue", ic:"🕌", isNew:false, theme:"theme-dini", cover:"images/cover-g4-dini-1.jpg" },
         { key:"g4-dini-2", band:["#4bb3ab","#33978f"], title:"ديني حياتي", term:"الفصل الأول", color:"bk-teal", ic:"🕌", isNew:false, theme:"theme-dini-2", cover:"images/cover-g4-dini-2.jpg" },
         { key:"g4-it", band:["#7F7F90","#484860"], title:"عالمي الرقمي", term:"الفصل الأول", color:"bk-purple", ic:"💻", isNew:true, onSale:true, theme:"theme-it4", cover:"images/cover-g4-it.jpg" },
+        { key:"g4-hw", band:["#D6AC4E","#B48A30"], title:"الهوية والمواطنة", term:"الفصل الأول", color:"bk-yellow", ic:"🏡", isNew:true, onSale:true, theme:"theme-hw4", cover:"images/cover-g4-hw.jpg" },
         { key:"g4-en", band:["#00A838","#00862D"], title:"اللغة الإنجليزية", term:"الفصل الأول", color:"bk-emerald", ic:"💬", isNew:true, onSale:true, theme:"theme-en4", cover:"images/cover-g4-en.jpg" }
       ]
     },
@@ -161,21 +163,55 @@ window.DATA_FALLBACK = {
         { title:"Social Studies: In my town", file:"g2e-lc2-2", open:true }
       ]}
     ] },
+    "g4-hw": { book:"الهوية والمواطنة — الصف الرابع", units:[
+      { unit:"ذاتي المجيدة", lessons:[
+        { title:"أنا أجيد", file:"g4h-1-1", open:true },
+        { title:"أنمّي ما أجيد", file:"g4h-1-2", open:true },
+        { title:"أستفيد ممّا أجيد", file:"g4h-1-3", open:true }
+      ]},
+      { unit:"أسرتي المنتجة", lessons:[
+        { title:"أسرتي تجيد", file:"g4h-2-1", open:true },
+        { title:"أخطّط لمشروع أسرتي", file:"g4h-2-2", open:true },
+        { title:"أثر مشروع أسرتي", file:"g4h-2-3", open:true }
+      ]},
+      { unit:"حيّنا المتفاعل", lessons:[
+        { title:"أنا متطوّع", file:"g4h-3-1", open:true },
+        { title:"أخطّط للعمل التطوّعي", file:"g4h-3-2", open:true },
+        { title:"تطوّعي حياة", file:"g4h-3-3", open:true }
+      ]}
+    ]},
+    "g3-hw": { book:"الهوية والمواطنة — الصف الثالث", units:[
+      { unit:"أحافظ على ذاتي", lessons:[
+        { title:"أعتني بجسدي", file:"g3h-1-1", open:true },
+        { title:"أهتمّ بعقلي", file:"g3h-1-2", open:true },
+        { title:"أحمي ذاتي", file:"g3h-1-3", open:true }
+      ]},
+      { unit:"حقوقي وواجباتي الأسرية", lessons:[
+        { title:"حقوقي الأسرية", file:"g3h-2-1", open:true },
+        { title:"واجباتي الأسرية", file:"g3h-2-2", open:true },
+        { title:"ميثاق أسرتي", file:"g3h-2-3", open:true }
+      ]},
+      { unit:"حقوقي وواجباتي في الحيّ", lessons:[
+        { title:"أنا أحتاج.. أنا ألتزم", file:"g3h-3-1", open:true },
+        { title:"أخذٌ وعطاء", file:"g3h-3-2", open:true },
+        { title:"قواعد مدرستي", file:"g3h-3-3", open:true }
+      ]}
+    ]},
     "g2-hw": { book:"الهوية والمواطنة — الصف الثاني", units:[
       { unit:"أتقبّل ذاتي", lessons:[
-        { title:"صفاتي", file:"g2h-1-1", open:false },
-        { title:"أتقبّل صفاتي", file:"g2h-1-2", open:false },
-        { title:"أنا أستطيع", file:"g2h-1-3", open:false }
+        { title:"صفاتي", file:"g2h-1-1", open:true },
+        { title:"أتقبّل صفاتي", file:"g2h-1-2", open:true },
+        { title:"أنا أستطيع", file:"g2h-1-3", open:true }
       ]},
       { unit:"أفتخر بعائلتي", lessons:[
-        { title:"أتواصل مع عائلتي", file:"g2h-2-1", open:false },
-        { title:"أتعاون مع عائلتي", file:"g2h-2-2", open:false },
-        { title:"أتشاور مع عائلتي", file:"g2h-2-3", open:false }
+        { title:"أتواصل مع عائلتي", file:"g2h-2-1", open:true },
+        { title:"أتعاون مع عائلتي", file:"g2h-2-2", open:true },
+        { title:"أتشاور مع عائلتي", file:"g2h-2-3", open:true }
       ]},
       { unit:"أنتمي إلى الحيّ", lessons:[
-        { title:"من يعيش معي في الحيّ؟", file:"g2h-3-1", open:false },
-        { title:"سبلتنا العُمانية", file:"g2h-3-2", open:false },
-        { title:"ألعابنا الشعبية", file:"g2h-3-3", open:false }
+        { title:"من يعيش معي في الحيّ؟", file:"g2h-3-1", open:true },
+        { title:"سبلتنا العُمانية", file:"g2h-3-2", open:true },
+        { title:"ألعابنا الشعبية", file:"g2h-3-3", open:true }
       ]}
     ]},
     "g1-sci": { book:"العلوم — الصف الأول", units:[

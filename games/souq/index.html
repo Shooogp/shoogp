@@ -273,6 +273,15 @@ button:focus-visible,select:focus-visible{outline:3px solid var(--sun);outline-o
 .shop .pick{animation:nglow 1s ease-in-out infinite}
 @media (max-width:560px){.shelf{grid-template-columns:repeat(4,minmax(0,1fr))}}
 
+/* أزرار الإجابة: لوحة الدكّان في سوق مطرح */
+.stone:where(:not(#again)){background:radial-gradient(120% 140% at 85% 0%,rgba(255,226,170,.55),rgba(255,226,170,0) 60%),linear-gradient(180deg,#f1e6d2,#e4d4b8 60%,#d8c4a2);border:3px solid #5e3422;border-radius:4px;color:#4a2814;text-shadow:0 1px 0 rgba(255,250,238,.85);
+  box-shadow:inset 0 0 0 5px #9a6040,inset 0 0 0 6px #6e3f27,inset 2px 3px 0 6px #b67c52,inset 0 8px 10px 4px rgba(90,50,20,.22),
+  0 4px 0 #4a2818,0 9px 14px rgba(0,0,0,.3);padding-inline:26px}
+.stone:where(:not(#again)).ok{background:linear-gradient(180deg,#d9f2c0,#a8dc86 60%,#88c866);border-color:#2f6b1c;color:#1d3f0c;
+  box-shadow:inset 0 0 0 5px #4f8f2e,inset 0 0 0 6px #2f6b1c,0 0 18px rgba(170,255,140,.8),0 4px 0 #24521a}
+.stone:where(:not(#again)).no{background:linear-gradient(180deg,#f8d6cc,#eba692 60%,#de8a74);border-color:#7a1f16;color:#5a1208;
+  box-shadow:inset 0 0 0 5px #a8402e,inset 0 0 0 6px #7a1f16,0 4px 0 #5a160f,0 9px 14px rgba(0,0,0,.3)}
+
 /* داخل صفحة ألعاب الكتاب: الرأس والرجوع والتلميح في الصفحة الأم */
 html.embed body{background:transparent}
 html.embed .bgstars,html.embed .back,html.embed .eyebrow,html.embed .logo,html.embed .hint{display:none}

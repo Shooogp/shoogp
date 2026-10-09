@@ -282,6 +282,14 @@ button:focus-visible,select:focus-visible{outline:3px solid var(--sun);outline-o
 @keyframes rkFlick{0%{transform:scaleY(.82) scaleX(1.07) skewX(3deg)}50%{transform:scaleY(1.12) scaleX(.95) skewX(-2deg)}100%{transform:scaleY(1.26) scaleX(.9) skewX(-4deg) translateY(1px)}}
 #instr{display:none!important}
 
+/* أزرار الإجابة: صخر النيزك المتوهّج */
+.stone:where(:not(#again)){background:radial-gradient(70% 90% at 50% 50%,rgba(40,14,2,.55),rgba(40,14,2,.15) 75%),url(../art/btn-meteor.webp) center/280px repeat;border:4px solid #3a1a08;border-radius:20px;color:#fff6e0;text-shadow:0 2px 0 #2a0e02,0 0 10px rgba(30,8,0,1),0 0 4px rgba(30,8,0,1);
+  box-shadow:inset 0 0 0 2px #ffb347,inset 0 -5px 0 rgba(0,0,0,.18),0 5px 0 #220c02,0 10px 16px rgba(0,0,0,.32)}
+.stone:where(:not(#again)).ok{background:linear-gradient(180deg,rgba(150,240,120,.6),rgba(60,170,60,.65)),url(../art/btn-meteor.webp) center/280px repeat;border-color:#2f6b1c;color:#fff;
+  text-shadow:0 2px 0 #1d4a10,0 0 8px rgba(20,60,10,.7);box-shadow:0 0 18px rgba(170,255,140,.8),0 5px 0 #24521a,inset 0 2px 0 rgba(255,255,255,.4)}
+.stone:where(:not(#again)).no{background:linear-gradient(180deg,rgba(240,120,110,.6),rgba(190,60,50,.65)),url(../art/btn-meteor.webp) center/280px repeat;border-color:#7a1f16;color:#fff;
+  text-shadow:0 2px 0 #5a120c;box-shadow:0 5px 0 #5a160f,0 10px 16px rgba(0,0,0,.35)}
+
 /* داخل صفحة ألعاب الكتاب: الرأس والرجوع والتلميح في الصفحة الأم */
 html.embed body{background:transparent}
 html.embed .bgstars,html.embed .back,html.embed .eyebrow,html.embed .logo,html.embed .hint{display:none}
@@ -700,6 +708,18 @@ function spawn(Q){
   });
   place(); whoosh(); ambLevel(true);
 }
+
+function deoverlap(){
+  const L=M.filter(m=>m.st!=='gone').map(m=>m.lab).filter(l=>l.isConnected&&!l.classList.contains('gone'));
+  L.forEach(l=>{ l.style.marginTop='0px'; });
+  const R=L.map(l=>{ const r=l.getBoundingClientRect(); return {l:r.left,r:r.right,t:r.top,b:r.bottom}; });
+  const ord=L.map((l,i)=>i).sort((a,b)=>R[a].t-R[b].t);
+  for(let x=0;x<ord.length;x++){ const i=ord[x];
+    for(let y=0;y<x;y++){ const j=ord[y], A=R[j], B=R[i];
+      if(A.l<B.r-2 && B.l<A.r-2 && A.t<B.b-2 && B.t<A.b-2){ const d=A.b-B.t+6; B.t+=d; B.b+=d; L[i].style.marginTop=(parseFloat(L[i].style.marginTop)||0)+d+'px'; y=-1; }
+    }
+  }
+}
 function place(){
   const u=unitPx();
   M.forEach(m=>{
@@ -710,6 +730,7 @@ function place(){
     const [px,py]=toPx(m.x,m.y);
     m.lab.style.left=px+'px'; m.lab.style.top=(py+(R*1.05*m.s)*u+6)+'px';
   });
+  deoverlap();
 }
 function loop(t){
   raf=requestAnimationFrame(loop);
