@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>فاتورة شوجب</title>
+<!--
+  فاتورةُ الشراء — المسودةُ ٢ المعتمدة (قرارُ المالك ٢٠٢٦-١٠-٠٩): إيصالٌ بأسلوبِ البقالة.
+
+  ⚙️ كيف تعمل:
+  سيرُ n8n «شوجب — تفعيل من واتساب» يبني رابطَ هذه الصفحة وفي ذيلِه بياناتُ الطلب
+  (‎#d=‎ ثمّ JSON مرمَّزٌ base64url)، ثمّ يطلبُ من Firecrawl طباعتَها PDF، فيُرسَلُ الملفُّ
+  إلى المعلّمة في واتساب. فالتصميمُ هنا وحدَه — لا نسخةَ ثانيةً منه في n8n.
+
+  البياناتُ في ذيلِ الرابط (‎#‎) لا في الاستعلام (‎?‎) عمداً: المتصفّحُ لا يُرسِلُ الذيلَ إلى
+  الخادم، فلا تمرُّ الرموزُ بخادمِ GitHub Pages.
+
+  عقدُ البيانات (يُغيَّرُ هنا وفي عقدةِ «تجهيز الفاتورة» معاً):
+    n  رقمُ الفاتورة        "SH-7140"
+    d  وقتُ البيع بتوقيتِ مسقط "2026-10-09 10:56"
+    w  آخرُ أربعةِ أرقامٍ من واتساب المعلّمة "9255"
+    ch قناةُ الشراء          "wa" | "web"
+    it الكتب: [{ s: النطاق "g1-hw", c: الرمز, e: الانتهاء "2027-07-31" }]
+    p  سعرُ الكتابِ الواحد   3
+    b  البنك (اختياري)       "بنك مسقط"
+    r  مرجعُ التحويل         "BMCT015639347811"
+    tt وقتُ التحويل كما في الإيصال (اختياري) "10:55:12"
+    tm الفصلُ الدراسيّ (اختياري، الافتراضيّ ف١)
+
+  بلا بيانات: تُعرَضُ فاتورةٌ نموذجيّةٌ بختمِ «نموذج».
+  الأرقامُ هنديّةٌ في التواريخِ والمبالغ، ولاتينيّةٌ في الرموزِ والمراجعِ والهاتف — كما في المسودة.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;700&family=IBM+Plex+Mono:wght@500;600&display=block">
+<style>
+  :root{
+    --ink:#1A1A1A; --muted:#444444; --rule:#7A7A7A; --paper:#FBFAF6; --desk:#E6E7EE;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    background:var(--desk); color:var(--ink);
+    font-family:'IBM Plex Sans Arabic',sans-serif;
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+    display:flex; justify-content:center; padding:40px 16px;
+  }
+  .mono{font-family:'IBM Plex Mono',monospace}
+  .receipt{width:340px; display:flex; flex-direction:column; filter:drop-shadow(0 6px 14px rgba(20,24,58,.18))}
+  .edge{display:block; width:340px; height:10px}
+  .paper{background:var(--paper); padding:18px 24px 22px; display:flex; flex-direction:column; gap:14px; font-size:13px; line-height:1.6; position:relative}
+  .rule{border-top:1.5px dashed var(--rule)}
+  .head{display:flex; flex-direction:column; align-items:center; gap:2px; text-align:center}
+  .head img{height:52px; width:auto; display:block; margin-bottom:6px}
+  .brand{font-size:17px; font-weight:700; white-space:nowrap; line-height:1.5}
+  .tag{font-size:12px; color:var(--muted); white-space:nowrap; line-height:1.5}
+  .small{font-size:12px}
+  .tiny{font-size:11px; color:var(--muted)}
+  .block{display:flex; flex-direction:column; gap:2px}
+  .row{display:flex; justify-content:space-between; gap:12px}
+  .title{text-align:center; font-size:15px; font-weight:700; margin-bottom:4px}
+  .items{display:flex; flex-direction:column; gap:10px}
+  .items .hdr{font-weight:700; font-size:12px}
+  .item{display:flex; flex-direction:column}
+  .item .name{font-weight:500}
+  .item .row{color:var(--muted)}
+  .item .row span:last-child{color:var(--ink)}
+  .double{border-top:3px double var(--ink)}
+  .total{align-items:baseline; font-weight:700}
+  .total span:first-child{font-size:16px}
+  .total span:last-child{font-size:22px}
+  .paid{font-weight:700; border:1.5px solid var(--ink); border-radius:4px; padding:0 8px}
+  .codes{display:flex; flex-direction:column; gap:8px}
+  .codes .row{align-items:center}
+  .code{font-weight:600; border:1.5px dashed var(--ink); padding:2px 10px}
+  .codes .sub{text-align:center}
+  .foot{display:flex; flex-direction:column; align-items:center; gap:6px; text-align:center}
+  .foot .qr{width:104px; height:104px; display:block}
+  .thanks{font-size:15px; font-weight:700; margin-top:6px}
+  .stamp{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center; pointer-events:none;
+  }
+  .stamp[hidden]{display:none}
+  .stamp span{
+    transform:rotate(-24deg); border:4px solid rgba(200,40,40,.55); color:rgba(200,40,40,.55);
+    font-size:54px; font-weight:700; padding:0 22px; border-radius:10px; letter-spacing:2px;
+  }
+  @media print{
+    body{background:#fff; padding:0; display:block}
+    .receipt{filter:none; margin:0}
+  }
+</style>
+</head>
+<body>
+<div class="receipt" id="receipt">
+  <svg class="edge" viewBox="0 0 340 10" preserveAspectRatio="none" aria-hidden="true"><path id="edgeTop" fill="#FBFAF6"/></svg>
+  <div class="paper">
+    <div class="head">
+      <img src="images/invoice/logo-black.png" alt="شعار شوجب">
+      <div class="brand">منصة شوجب</div>
+      <div class="tag">منصّتك للأنشطة التعليمية التفاعلية</div>
+      <div class="small"><bdi class="mono">shoogp.com</bdi> · سلطنة عُمان</div>
+      <div class="tiny">س.ت <bdi class="mono">1669593</bdi> · ترخيص <bdi class="mono">L3836055</bdi></div>
+    </div>
+
+    <div class="rule"></div>
+
+    <div class="block">
+      <div class="title">* فاتورة شراء *</div>
+      <div class="row"><span>رقم الفاتورة</span><bdi class="mono" id="no"></bdi></div>
+      <div class="row"><span>التاريخ</span><span id="date"></span></div>
+      <div class="row"><span>واتساب العميلة</span><bdi class="mono" id="wa"></bdi></div>
+      <div class="row"><span>قناة الشراء</span><span id="channel"></span></div>
+    </div>
+
+    <div class="rule"></div>
+
+    <div class="items" id="items">
+      <div class="row hdr"><span>الصنف</span><span>المبلغ</span></div>
+    </div>
+
+    <div class="rule"></div>
+
+    <div class="block" style="gap:6px">
+      <div class="row"><span>عدد الأصناف</span><span id="count"></span></div>
+      <div class="double"></div>
+      <div class="row total"><span>الإجمالي</span><span id="total"></span></div>
+    </div>
+
+    <div class="rule"></div>
+
+    <div class="block" id="pay">
+      <div class="row"><span>طريقة الدفع</span><span id="method"></span></div>
+      <div class="row"><span>مرجع التحويل</span><bdi class="mono" id="ref"></bdi></div>
+      <div class="row" id="ttRow"><span>وقت التحويل</span><span id="tt"></span></div>
+      <div class="row"><span>الحالة</span><span class="paid">مدفوعة</span></div>
+    </div>
+
+    <div class="rule"></div>
+
+    <div class="codes" id="codes">
+      <div style="text-align:center; font-weight:700">رموز فتح الكتب</div>
+    </div>
+
+    <div class="rule"></div>
+
+    <div class="foot">
+      <img class="qr" src="images/invoice/qr.svg" alt="رمز QR يفتح موقع شوجب">
+      <div class="tiny">امسحي الرمز لفتح المنصة</div>
+      <div class="thanks">شكراً لكِ</div>
+      <div class="small">ابدئي رحلة صفّك إلى القمر</div>
+      <div class="tiny" style="margin-top:4px">واتساب <bdi class="mono">71712937</bdi> · إنستغرام <bdi class="mono">@shooogp</bdi></div>
+      <div class="tiny">فاتورة إلكترونية لا تحتاج إلى توقيع</div>
+    </div>
+    <div class="stamp" id="stamp" hidden><span>نموذج</span></div>
+  </div>
+  <svg class="edge" viewBox="0 0 340 10" preserveAspectRatio="none" aria-hidden="true"><path id="edgeBot" fill="#FBFAF6"/></svg>
+</div>
+
+<script>
+(function () {
+  // ===== الأسماء — تطابقُ SUBJ_AR وGRADE_AR في عقدةِ «الفحوص واختيار الرمز» =====
+  var SUBJ  = { sci:'العلوم', math:'الرياضيات', din:'ديني حياتي', lug:'أحب لغتي', it:'عالمي الرقمي', en:'اللغة الإنجليزية', hw:'الهوية والمواطنة' };
+  var SHORT = { sci:'العلوم', math:'الرياضيات', din:'ديني حياتي', lug:'أحب لغتي', it:'عالمي الرقمي', en:'الإنجليزية',       hw:'الهوية' };
+  var GRADE = { g1:'الأول', g2:'الثاني', g3:'الثالث', g4:'الرابع' };
+
+  var DEMO = { n:'SH-0000', d:'2026-10-09 10:56', w:'0000', ch:'wa', p:3, b:'بنك مسقط', r:'BMCT000000000000', tt:'10:55:00',
+               it:[{ s:'g1-hw', c:'A1B2C-D3E4F', e:'2027-07-31' }, { s:'g4-hw', c:'G5H6J-K7L8M', e:'2027-07-31' }] };
+
+  function readData() {
+    var m = /[#&]d=([A-Za-z0-9_\-]+)/.exec(location.hash || '');
+    if (!m) return null;
+    try {
+      var b64 = m[1].replace(/-/g, '+').replace(/_/g, '/');
+      while (b64.length % 4) b64 += '=';
+      var bin = atob(b64), bytes = new Uint8Array(bin.length);
+      for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      return JSON.parse(new TextDecoder().decode(bytes));
+    } catch (e) { return null; }
+  }
+
+  var IND = '٠١٢٣٤٥٦٧٨٩';
+  function ar(s) { return String(s).replace(/[0-9]/g, function (d) { return IND[+d]; }); }
+  function money(n) { return ar(Number(n).toFixed(3)).replace('.', '٫'); }
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function clock(h, m) {               // 13:05 ← ١:٠٥ م
+    h = +h; var pm = h >= 12, h12 = h % 12 || 12;
+    return ar(h12 + ':' + pad(+m)) + (pm ? ' م' : ' ص');
+  }
+  function dateAr(iso) {               // 2027-07-31 ← ٣١/٠٧/٢٠٢٧
+    var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(iso || ''));
+    return m ? ar(m[3] + '/' + m[2] + '/' + m[1]) : ar(iso || '');
+  }
+  function stamp(s) {                  // "2026-10-09 10:56" ← ٠٩/١٠/٢٠٢٦ — ١٠:٥٦ ص
+    var m = /^(\d{4})-(\d{2})-(\d{2})[ T](\d{1,2}):(\d{2})/.exec(String(s || ''));
+    return m ? dateAr(m[1] + '-' + m[2] + '-' + m[3]) + ' — ' + clock(m[4], m[5]) : ar(s || '');
+  }
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function $(id) { return document.getElementById(id); }
+
+  // الحافّتانِ الممزّقتان — المسارُ نفسُه في المسودة
+  var top = 'M0,10', bot = 'M0,0';
+  for (var x = 5; x <= 340; x += 5) { var up = (x / 5) % 2 === 1; top += ' L' + x + ',' + (up ? 2 : 10); bot += ' L' + x + ',' + (up ? 8 : 0); }
+  $('edgeTop').setAttribute('d', top + ' Z');
+  $('edgeBot').setAttribute('d', bot + ' Z');
+
+  var data = readData(), demo = !data;
+  if (demo) data = DEMO;
+  $('stamp').hidden = !demo;
+
+  var items = Array.isArray(data.it) ? data.it : [];
+  var price = Number(data.p) || 0;
+  var term  = data.tm || 'ف١';         // كتبُ المنصّةِ اليومَ كلُّها للفصلِ الأول
+
+  document.title = 'فاتورة شوجب ' + (data.n || '');
+  $('no').textContent = data.n || '';
+  $('date').textContent = stamp(data.d);
+  $('wa').textContent = '+968 ••••' + String(data.w || '').slice(-4);
+  $('channel').textContent = data.ch === 'web' ? 'الموقع' : 'واتساب';
+
+  items.forEach(function (it) {
+    var p = String(it.s || '').split('-');
+    var name = (SUBJ[p[1]] || it.s) + ' — الصف ' + (GRADE[p[0]] || '') + ' (' + term + ')';
+    var box = el('div', 'item');
+    box.appendChild(el('span', 'name', name));
+    var row = el('div', 'row');
+    row.appendChild(el('span', null, ar('1') + ' × ' + money(price)));
+    row.appendChild(el('span', null, money(price)));
+    box.appendChild(row);
+    $('items').appendChild(box);
+  });
+
+  $('count').textContent = ar(items.length);
+  $('total').textContent = money(price * items.length) + ' ر.ع';
+  $('method').textContent = 'تحويل بنكي' + (data.b ? ' — ' + data.b : '');
+  $('ref').textContent = data.r || '';
+  var tm = /^(\d{1,2}):(\d{2})/.exec(String(data.tt || ''));
+  if (tm) $('tt').textContent = clock(tm[1], tm[2]); else $('ttRow').remove();
+
+  var exps = {};
+  items.forEach(function (it) {
+    var p = String(it.s || '').split('-');
+    var row = el('div', 'row');
+    row.appendChild(el('span', null, (SHORT[p[1]] || it.s) + ' — ' + (GRADE[p[0]] || '')));
+    var c = el('bdi', 'mono code', it.c || '');
+    row.appendChild(c);
+    $('codes').appendChild(row);
+    exps[it.e || ''] = 1;
+  });
+  var expList = Object.keys(exps).filter(Boolean).sort();
+  var sub = el('div', 'tiny sub',
+    (expList.length ? 'صالحة حتى ' + expList.map(dateAr).join(' و') + ' · ' : '') + 'الصقي الرمز في قفل الكتاب');
+  $('codes').appendChild(sub);
+
+  // مقاسُ صفحةِ الطباعة = مقاسُ الإيصالِ نفسِه (عرضُه ٣٤٠px = ٩٠مم، وطولُه بحسبِ عددِ الكتب)
+  function fitPage() {
+    var h = $('receipt').getBoundingClientRect().height;
+    var mm = h * 25.4 / 96 + 1;
+    var st = $('pageSize') || document.head.appendChild(Object.assign(document.createElement('style'), { id: 'pageSize' }));
+    st.textContent = '@page{size:90mm ' + mm.toFixed(1) + 'mm;margin:0}';
+  }
+  fitPage();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitPage);
+  window.addEventListener('load', fitPage);
+})();
+</script>
+</body>
+</html>
