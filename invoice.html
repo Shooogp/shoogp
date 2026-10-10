@@ -28,6 +28,10 @@
     r  مرجعُ التحويل         "BMCT015639347811"
     tt وقتُ التحويل كما في الإيصال (اختياري) "10:55:12"
     tm الفصلُ الدراسيّ (اختياري، الافتراضيّ ف١)
+    o  فاتورةٌ لطلبٍ سابق (اختياري: 1) — لِمن اشترت قبلَ إطلاقِ الفاتورة ٢٠٢٦-١٠-١٠:
+       سطرُ «فاتورة لطلب سابق»، و`d` تاريخُ الإصدار لا البيع، وبلا `o` لا يتغيّرُ شيء.
+    sd تاريخُ الشراءِ الأصليّ إن عُرِف "2026-10-08" (اختياري — مع `o` وحدَه)
+  وكلُّ سطرٍ اختياريٍّ غائبٍ يُحذَفُ لا يُعرَضُ فارغاً: الهاتف، القناة، المرجع، وقتُ التحويل.
 
   بلا بيانات: تُعرَضُ فاتورةٌ نموذجيّةٌ بختمِ «نموذج».
   الأرقامُ هنديّةٌ في التواريخِ والمبالغ، ولاتينيّةٌ في الرموزِ والمراجعِ والهاتف — كما في المسودة.
@@ -83,6 +87,7 @@
     position:absolute; inset:0; display:flex; align-items:center; justify-content:center; pointer-events:none;
   }
   .stamp[hidden]{display:none}
+  [hidden]{display:none !important}   /* ‎.row‎ مرنةٌ فتغلبُ سمةَ hidden لولا هذا */
   .stamp span{
     transform:rotate(-24deg); border:4px solid rgba(200,40,40,.55); color:rgba(200,40,40,.55);
     font-size:54px; font-weight:700; padding:0 22px; border-radius:10px; letter-spacing:2px;
@@ -115,10 +120,12 @@
 
     <div class="block">
       <div class="title">* فاتورة شراء *</div>
+      <div class="tiny" id="oldNote" style="text-align:center; margin:-6px 0 4px" hidden>فاتورة لطلب سابق</div>
       <div class="row"><span>رقم الفاتورة</span><bdi class="mono" id="no"></bdi></div>
-      <div class="row"><span>التاريخ</span><span id="date"></span></div>
+      <div class="row"><span id="dateLbl">التاريخ</span><span id="date"></span></div>
+      <div class="row" id="sdRow" hidden><span>تاريخ الشراء</span><span id="sd"></span></div>
       <div class="row" id="waRow"><span>واتساب العميلة</span><bdi class="mono" id="wa"></bdi></div>
-      <div class="row"><span>قناة الشراء</span><span id="channel"></span></div>
+      <div class="row" id="chRow"><span>قناة الشراء</span><span id="channel"></span></div>
     </div>
 
     <div class="rule"></div>
@@ -139,7 +146,7 @@
 
     <div class="block" id="pay">
       <div class="row"><span>طريقة الدفع</span><span id="method"></span></div>
-      <div class="row"><span>مرجع التحويل</span><bdi class="mono" id="ref"></bdi></div>
+      <div class="row" id="refRow"><span>مرجع التحويل</span><bdi class="mono" id="ref"></bdi></div>
       <div class="row" id="ttRow"><span>وقت التحويل</span><span id="tt"></span></div>
       <div class="row"><span>الحالة</span><span class="paid">مدفوعة</span></div>
     </div>
@@ -228,7 +235,14 @@
   // الشراءُ من الموقعِ رقمُه اختياريّ — فبلا رقمٍ يُحذَفُ السطرُ لا يُعرَضُ فارغاً
   if (String(data.w || '').replace(/\D/g, '').length >= 4) $('wa').textContent = '+968 ••••' + String(data.w).slice(-4);
   else $('waRow').remove();
-  $('channel').textContent = data.ch === 'web' ? 'الموقع' : 'واتساب';
+  if (data.ch === 'web' || data.ch === 'wa') $('channel').textContent = data.ch === 'web' ? 'الموقع' : 'واتساب';
+  else $('chRow').remove();
+  // فاتورةٌ لطلبٍ سابق: التاريخُ تاريخُ إصدارِها، وتاريخُ الشراءِ سطرٌ مستقلٌّ إن عُرِف
+  if (data.o) {
+    $('oldNote').hidden = false;
+    $('dateLbl').textContent = 'تاريخ الإصدار';
+    if (/^\d{4}-\d{2}-\d{2}/.test(String(data.sd || ''))) { $('sd').textContent = dateAr(data.sd); $('sdRow').hidden = false; }
+  }
 
   items.forEach(function (it) {
     var p = String(it.s || '').split('-');
@@ -245,7 +259,7 @@
   $('count').textContent = ar(items.length);
   $('total').textContent = money(price * items.length) + ' ر.ع';
   $('method').textContent = 'تحويل بنكي' + (data.b ? ' — ' + data.b : '');
-  $('ref').textContent = data.r || '';
+  if (data.r) $('ref').textContent = data.r; else $('refRow').remove();
   var tm = /^(\d{1,2}):(\d{2})/.exec(String(data.tt || ''));
   if (tm) $('tt').textContent = clock(tm[1], tm[2]); else $('ttRow').remove();
 
