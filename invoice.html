@@ -9,9 +9,10 @@
   فاتورةُ الشراء — المسودةُ ٢ المعتمدة (قرارُ المالك ٢٠٢٦-١٠-٠٩): إيصالٌ بأسلوبِ البقالة.
 
   ⚙️ كيف تعمل:
-  سيرُ n8n «شوجب — تفعيل من واتساب» يبني رابطَ هذه الصفحة وفي ذيلِه بياناتُ الطلب
-  (‎#d=‎ ثمّ JSON مرمَّزٌ base64url)، ثمّ يطلبُ من Firecrawl طباعتَها PDF، فيُرسَلُ الملفُّ
-  إلى المعلّمة في واتساب. فالتصميمُ هنا وحدَه — لا نسخةَ ثانيةً منه في n8n.
+  سيرا n8n «شوجب — تفعيل من واتساب» و«شوجب — التفعيل من الموقع» يبنيانِ رابطَ هذه الصفحة وفي
+  ذيلِه بياناتُ الطلب (‎#d=‎ ثمّ JSON مرمَّزٌ base64url)، ثمّ يطلبانِ من Firecrawl طباعتَها PDF،
+  فيُرسَلُ الملفُّ إلى المعلّمة في واتساب. وصفحةُ الدفعِ (pay.html) تفتحُ الرابطَ نفسَه بزرِّ
+  «عرض الفاتورة». فالتصميمُ هنا وحدَه — لا نسخةَ ثانيةً منه في n8n.
 
   البياناتُ في ذيلِ الرابط (‎#‎) لا في الاستعلام (‎?‎) عمداً: المتصفّحُ لا يُرسِلُ الذيلَ إلى
   الخادم، فلا تمرُّ الرموزُ بخادمِ GitHub Pages.
@@ -19,7 +20,7 @@
   عقدُ البيانات (يُغيَّرُ هنا وفي عقدةِ «تجهيز الفاتورة» معاً):
     n  رقمُ الفاتورة        "SH-7140"
     d  وقتُ البيع بتوقيتِ مسقط "2026-10-09 10:56"
-    w  آخرُ أربعةِ أرقامٍ من واتساب المعلّمة "9255"
+    w  آخرُ أربعةِ أرقامٍ من واتساب المعلّمة "9255" (اختياري — بلا رقمٍ يُحذَفُ سطرُه)
     ch قناةُ الشراء          "wa" | "web"
     it الكتب: [{ s: النطاق "g1-hw", c: الرمز, e: الانتهاء "2027-07-31" }]
     p  سعرُ الكتابِ الواحد   3
@@ -44,7 +45,7 @@
     background:var(--desk); color:var(--ink);
     font-family:'IBM Plex Sans Arabic',sans-serif;
     -webkit-print-color-adjust:exact; print-color-adjust:exact;
-    display:flex; justify-content:center; padding:40px 16px;
+    display:flex; flex-direction:column; align-items:center; gap:18px; padding:40px 16px;
   }
   .mono{font-family:'IBM Plex Mono',monospace}
   .receipt{width:340px; display:flex; flex-direction:column; filter:drop-shadow(0 6px 14px rgba(20,24,58,.18))}
@@ -86,9 +87,15 @@
     transform:rotate(-24deg); border:4px solid rgba(200,40,40,.55); color:rgba(200,40,40,.55);
     font-size:54px; font-weight:700; padding:0 22px; border-radius:10px; letter-spacing:2px;
   }
+  .save{
+    font:inherit; font-size:15px; font-weight:700; color:#fff; background:#1A1A1A; border:0;
+    border-radius:999px; padding:10px 26px; cursor:pointer;
+  }
+  .save:hover{background:#333}
   @media print{
     body{background:#fff; padding:0; display:block}
     .receipt{filter:none; margin:0}
+    .save{display:none}
   }
 </style>
 </head>
@@ -110,7 +117,7 @@
       <div class="title">* فاتورة شراء *</div>
       <div class="row"><span>رقم الفاتورة</span><bdi class="mono" id="no"></bdi></div>
       <div class="row"><span>التاريخ</span><span id="date"></span></div>
-      <div class="row"><span>واتساب العميلة</span><bdi class="mono" id="wa"></bdi></div>
+      <div class="row" id="waRow"><span>واتساب العميلة</span><bdi class="mono" id="wa"></bdi></div>
       <div class="row"><span>قناة الشراء</span><span id="channel"></span></div>
     </div>
 
@@ -157,6 +164,8 @@
   </div>
   <svg class="edge" viewBox="0 0 340 10" preserveAspectRatio="none" aria-hidden="true"><path id="edgeBot" fill="#FBFAF6"/></svg>
 </div>
+<!-- يظهرُ على الشاشةِ وحدَها (لِمن فتحَت الفاتورةَ من صفحةِ الدفع) ويختفي في الطباعةِ وفي ملفِّ PDF -->
+<button class="save" type="button" onclick="window.print()">حفظ الفاتورة PDF أو طباعتها</button>
 
 <script>
 (function () {
@@ -216,7 +225,9 @@
   document.title = 'فاتورة شوجب ' + (data.n || '');
   $('no').textContent = data.n || '';
   $('date').textContent = stamp(data.d);
-  $('wa').textContent = '+968 ••••' + String(data.w || '').slice(-4);
+  // الشراءُ من الموقعِ رقمُه اختياريّ — فبلا رقمٍ يُحذَفُ السطرُ لا يُعرَضُ فارغاً
+  if (String(data.w || '').replace(/\D/g, '').length >= 4) $('wa').textContent = '+968 ••••' + String(data.w).slice(-4);
+  else $('waRow').remove();
   $('channel').textContent = data.ch === 'web' ? 'الموقع' : 'واتساب';
 
   items.forEach(function (it) {

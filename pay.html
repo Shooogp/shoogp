@@ -204,6 +204,12 @@ select option:disabled{color:var(--muted)}
 .btn-copy:hover{border-color:var(--stone)}
 /* الفعلُ الوحيدُ هنا نسخٌ ولصق، والسطرُ يقولُ أينَ يُلصَق */
 .code-hint{margin:14px 0 0;color:var(--muted);font-size:14px;text-align:center}
+/* فاتورةُ الشراء (المسودةُ ٢ المعتمدة — invoice.html): تُفتَحُ في لسانٍ جديدٍ وتُحفَظُ PDF من هناك */
+.btn-invoice{
+  display:block;margin-top:14px;padding:13px;border-radius:12px;text-align:center;
+  color:var(--moon);border:1px dashed var(--line);text-decoration:none;font-size:16px;
+}
+.btn-invoice:hover{border-color:var(--stone)}
 
 .spin{display:inline-block;width:17px;height:17px;vertical-align:-3px;
   border:2px solid rgba(0,0,0,.25);border-top-color:#1A1206;border-radius:50%;
@@ -275,8 +281,10 @@ select option:disabled{color:var(--muted)}
          «سُلّم إلى» في جدولِ الرموز — فبه يُعدُّ الرمزُ مأخوذاً ولا يُعادُ بيعُه. والآن
          يملؤُه مسارُ «التفعيل من الموقع» بالاسمِ، وإلا بالرقمِ، وإلا بالمرجعِ البنكيِّ
          — فلا يفرغُ أبداً. ومن تركَت الرقمَ لا سبيلَ إلى مبادرتِها بالتواصل، ويُطلَبُ
-         منها الإيصالُ حينَ تراجع. ولا يُرسَلُ إلى الرقمِ شيء. -->
-    <label for="phone">رقم هاتفك (اختياري — يُحفظ مع رمزك حتى نجده لكِ إن ضاع، ولا نرسل إليه شيئاً)</label>
+         منها الإيصالُ حينَ تراجع.
+         ومنذُ ٢٠٢٦-١٠-١٠ (قرارُ المالك) **تُرسَلُ إليه فاتورةُ الشراءِ وحدَها** بقالبِ واتساب
+         `shoogp_purchase_receipt` — ولا شيءَ غيرُها؛ وكانَ النصُّ قبلَه «ولا نرسل إليه شيئاً». -->
+    <label for="phone">رقم واتسابك (اختياري — تصلكِ عليه فاتورة الشراء، ويُحفظ مع رمزكِ حتى نجده لكِ إن ضاع)</label>
     <input type="tel" id="phone" inputmode="numeric" placeholder="٩٦٨ ٠٠٠٠٠٠٠٠">
 
     <label for="name">اسمك (اختياري)</label>
@@ -590,7 +598,10 @@ $("go").onclick = async () => {
              <div class="expires">صالح حتى ${c.expires || "—"}</div>
              <button class="btn-copy" data-code="${i}">نسخ الرمز</button>
            </div>`).join("") +
-        `<p class="code-hint">انسخي كل رمز والصقيه في خانة فتح الكتاب الخاص به</p>`
+        `<p class="code-hint">انسخي كل رمز والصقيه في خانة فتح الكتاب الخاص به</p>` +
+        /* `invoice` رابطُ invoice.html ببياناتِ الطلبِ في ذيلِه — يبنيه «تجهيز رد النجاح» في n8n */
+        (/^https:\/\/shoogp\.com\/invoice\.html#d=[\w-]+$/.test(data.invoice || "")
+          ? `<a class="btn-invoice" href="${data.invoice}" target="_blank" rel="noopener">🧾 عرض فاتورة الشراء وحفظها</a>` : "")
       );
       $("result").querySelectorAll("[data-code]").forEach(b =>
         b.onclick = async () => {
