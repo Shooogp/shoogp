@@ -15,7 +15,6 @@
 <!-- شاهدُ الحصّة: ورقةٌ مطبوعةٌ لملفِّ إنجازِ المعلّمة (وضعُ المطوّرِ وحدَه مبدئياً) -->
 <link rel="stylesheet" href="css/witness.css?v=20260721-41">
 <!-- أيقونةُ مبادرةِ أسبوعِ الفضاء ونافذةُ الفلم في الصفحةِ الرئيسية (مؤقّتة) -->
-<link rel="stylesheet" href="css/space-week.css?v=20260721-41">
 <!-- مكتبةُ رمزِ QR (نافذةُ القفلِ تعرضُ رمزَ واتساب على الشاشاتِ العريضة).
      ⚠️ النسخةُ 1.4.4 لا 1.5.x: حزمةُ `qrcode` توقّفت عن نشرِ مجلّدِ `build/` على
      npm بعدَ 1.4.4، فوسمُ 1.5.4 يرجعُ 404 (ملفّاتُها `lib/` و`bin/` فقط). واجهةُ
@@ -57,50 +56,10 @@
         title="تواصلوا معنا على إنستغرام" aria-label="للتواصل على حساب الإنستغرام shooogp">
         <svg class="ig-ic" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="igg" cx="30%" cy="107%" r="150%"><stop offset="0" stop-color="#fdf497"/><stop offset=".05" stop-color="#fdf497"/><stop offset=".45" stop-color="#fd5949"/><stop offset=".6" stop-color="#d6249f"/><stop offset=".9" stop-color="#285AEB"/></radialGradient></defs><rect width="24" height="24" rx="6" fill="url(#igg)"/><rect x="5" y="5" width="14" height="14" rx="4" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="12" cy="12" r="3.3" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="16.3" cy="7.7" r="1.1" fill="#fff"/></svg><span>للتواصل على حساب الإنستغرام</span><bdi class="ig-handle">@shooogp</bdi>
       </a>
-      <!-- أيقونةُ فلمِ أسبوعِ الفضاء: ثابتةٌ تحتَ حسابِ الإنستغرام (قرارُ المالك ٢٠٢٦-١٠-٠٣)، رسمُها
-           من جيميناي. تفتحُ النافذةَ `#swModal` في `#home`، وتُخفى خارجَ الشاشةِ الرئيسيةِ كالشعار. -->
-      <button class="sw-fab" id="swFab" type="button" aria-haspopup="dialog"
-        aria-label="شاهد فلم أسبوع الفضاء: رحلة في المجموعة الشمسية">
-        <span class="sw-fab-disc" aria-hidden="true"><img src="media/space-week/icon.png" alt="" width="320" height="320"><span class="sw-fab-play"></span></span>
-        <span class="sw-fab-label">🎬 فلم أسبوع الفضاء</span>
-      </button>
     </header>
 
     <!-- ① الشاشة الرئيسية: الفصل + الصفوف + الكتب -->
     <section class="screen active" id="home">
-      <!-- نافذةُ فلمِ أسبوعِ الفضاء (٤–١٠ أكتوبر ٢٠٢٦) — تفتحُها الأيقونةُ `#swFab` في الترويسة.
-           تُحذَفان تلقائياً بعدَ الأسبوع. صفحةُ `space-week.html` باقيةٌ لرابطِ الإنستغرام.
-           يُحذَفُ الكلُّ لاحقاً مع `css/space-week.css` و`media/space-week/`. -->
-      <div class="sw-modal" id="swModal" role="dialog" aria-modal="true" aria-label="فلم رحلة في المجموعة الشمسية" hidden>
-        <div class="sw-modal-box">
-          <div class="sw-modal-head">
-            <span class="sw-modal-title">🚀 رحلة في المجموعة الشمسية</span>
-            <button class="sw-modal-btn" id="swFull" type="button">⛶ ملء الشاشة</button>
-            <button class="sw-modal-btn sw-close" id="swClose" type="button" aria-label="إغلاق">✕</button>
-          </div>
-          <video id="swVideo" controls playsinline preload="none" poster="media/space-week/poster.jpg">
-            <source src="media/space-week/solar-system.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
-      <script>
-        (function(){
-          var fab=document.getElementById('swFab'), modal=document.getElementById('swModal'),
-              vid=document.getElementById('swVideo');
-          // تُحذَفُ بعدَ آخرِ يومٍ من أسبوعِ الفضاء (بتوقيتِ مسقط)
-          if (Date.now() >= Date.parse('2026-10-11T00:00:00+04:00')) { fab.remove(); modal.remove(); return; }
-          function open(){ modal.hidden=false; var p=vid.play(); if(p&&p.catch)p.catch(function(){}); document.getElementById('swClose').focus(); }
-          function close(){ vid.pause(); if(document.fullscreenElement&&document.exitFullscreen)document.exitFullscreen(); modal.hidden=true; fab.focus(); }
-          fab.addEventListener('click', open);
-          document.getElementById('swClose').addEventListener('click', close);
-          modal.addEventListener('click', function(e){ if(e.target===modal) close(); });
-          document.addEventListener('keydown', function(e){ if(e.key==='Escape' && !modal.hidden) close(); });
-          document.getElementById('swFull').addEventListener('click', function(){
-            if (vid.requestFullscreen) vid.requestFullscreen();
-            else if (vid.webkitEnterFullscreen) vid.webkitEnterFullscreen();
-          });
-        })();
-      </script>
       <p class="choose-line">اختر صفّك ثم كتابك، ولننطلق في المغامرة!</p>
       <div class="terms" id="terms"></div>
       <div class="grades" id="grades"></div>
