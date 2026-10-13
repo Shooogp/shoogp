@@ -32,6 +32,7 @@
     --c-visits:#2a9fdc;  /* الزيارات */
     --c-profit:#4a9a1a;  /* الربح */
     --c-exp:#8a84b0;     /* المصاريف — محايد */
+    --c-gift:#e2a6ff;    /* الإهداءات — معزولةٌ عن المبيعات */
     --good:#7fe06a; --bad:#ff8a7a; --warn:#ffc37a;
   }
   *{box-sizing:border-box;margin:0;padding:0;font-family:'Tajawal',sans-serif}
@@ -261,6 +262,10 @@
   .tag{display:inline-block;font-size:.72rem;padding:1px 8px;border-radius:999px;margin-inline-start:4px;font-weight:700}
   .tag.warn{background:rgba(255,170,60,.16);color:var(--warn);border:1px solid rgba(255,170,60,.35)}
   .tag.off{color:var(--ink3)}
+  .tag.gift{background:rgba(214,120,255,.14);color:var(--c-gift);border:1px solid rgba(214,120,255,.35)}
+  .gift-sum b{margin-inline:6px}
+  .gift-list{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}
+  .gift-list .tag{margin:0}
 
   .funnel{display:flex;gap:8px;align-items:stretch;margin:4px 0 12px}
   .fstep{flex:1;background:rgba(56,200,255,.06);border:1px solid rgba(56,200,255,.18);border-radius:12px;padding:8px;text-align:center}
@@ -362,6 +367,7 @@
         <a href="#sec-visits"><svg><use href="#i-users"/></svg>الدخول</a>
         <a href="#sec-sales"><svg><use href="#i-chart"/></svg>المبيعات</a>
         <a href="#sec-books"><svg><use href="#i-book"/></svg>الكتب</a>
+        <a href="#sec-gifts"><svg><use href="#i-users"/></svg>المشترون والإهداءات</a>
         <a href="#sec-exp"><svg><use href="#i-receipt"/></svg>المصاريف</a>
         <a href="#sec-stock"><svg><use href="#i-grid"/></svg>المخزون</a>
       </nav>
@@ -448,6 +454,14 @@
           <a class="btn" id="expLink" href="#" target="_blank" rel="noopener" style="margin-inline-start:auto;font-size:.8rem;padding:5px 12px">＋ أضف مصروفاً</a></h2>
         <div class="sub">تُضاف في الملف: التاريخ · البند · الفئة · المبلغ بالريال · ملاحظات.</div>
         <div id="expList"><div class="skel"></div></div>
+      </div>
+    </section>
+
+    <section class="row one" id="sec-gifts">
+      <div class="card">
+        <h2><svg class="ic"><use href="#i-users"/></svg>المشترون والإهداءات</h2>
+        <div class="sub">الرموز المُهداة معزولة: لا تدخل المبيعات ولا الإيرادات. وعند استرداد المبالغ يستحقّها من دفع وحده، لا المُهدى إليهم.</div>
+        <div id="giftBox"><div class="skel"></div></div>
       </div>
     </section>
 
@@ -776,8 +790,8 @@
   function renderSales(d) {
     if (!d || !d.ok) throw new Error('رُفضت كلمة المرور');
     S = d;
-    var price = d.price || 3, sc = d.scopes || {}, sold = 0, codes = 0;
-    Object.keys(sc).forEach(function (k) { sold += sc[k].sold; codes += sc[k].total; });
+    var price = d.price || 3, sc = d.scopes || {}, sold = 0, codes = 0, gifted = 0;
+    Object.keys(sc).forEach(function (k) { sold += sc[k].sold; codes += sc[k].total; gifted += sc[k].gifted || 0; });
     var rev = sold * price;
     var exp = (d.expenses || []).reduce(function (a, e) { return a + e.amount; }, 0);
     var net = rev - exp, margin = rev ? net / rev * 100 : 0;
@@ -790,7 +804,7 @@
       ['الإيرادات', omr(rev)],
       ['المصاريف', omr(exp)],
       ['صافي الربح', omr(net)],
-      ['الرموز المتبقّية', n(codes - sold) + '<small>رمزاً</small>']
+      ['الرموز المتبقّية', n(codes - sold - gifted) + '<small>رمزاً</small>']
     ]);
 
     /* الإيراداتُ حسبَ المادّة */
@@ -826,14 +840,16 @@
         var c = sc[g + '-' + s];
         if (!c) return '<td><span class="tag off">—</span></td>';
         tot += c.sold;
-        var left = c.total - c.sold, a = c.sold ? .12 + .5 * c.sold / maxSold : 0;
-        return '<td title="' + esc(SUBJ[s] + ' · ' + GRADE[g] + ': بيع ' + c.sold + ' · متبقٍّ ' + left) + '">' +
+        var left = c.total - c.sold - (c.gifted || 0), a = c.sold ? .12 + .5 * c.sold / maxSold : 0;
+        return '<td title="' + esc(SUBJ[s] + ' · ' + GRADE[g] + ': بيع ' + c.sold + (c.gifted ? ' · أُهدي ' + c.gifted : '') + ' · متبقٍّ ' + left) + '">' +
           '<span class="cell" style="background:rgba(224,104,28,' + a.toFixed(2) + ')' + (c.sold ? '' : ';border-color:rgba(120,180,255,.15)') + '">' + n(c.sold) + '</span>' +
+          (c.gifted ? '<span class="tag gift">🎁 ' + n(c.gifted) + '</span>' : '') +
           (left < LOW_STOCK ? '<span class="tag warn">متبقٍّ ' + n(left) + '</span>' : '') + '</td>';
       }).join('') + '<td class="num">' + n(tot) + '</td></tr>';
     });
     $('bookTable').innerHTML = t + '</tbody></table>';
 
+    renderGifts(d, sc, sold, gifted, price);
     renderStock(sc, d.sales || []);
 
     /* المصاريف */
@@ -919,6 +935,28 @@
     }
   }
 
+  /* ═════════ المشترون والإهداءات (قرارُ المالك ٢٠٢٦-١٠-١٣) ═════════
+     الإهداءُ رمزٌ «رقم المرجع» فيه يبدأُ بـ«إهداء»، يعزلُه سيرُ n8n في gifted فلا يدخلُ المبيعَ ولا الإيراد.
+     والغايةُ معرفةُ المستحقّين إن استُردّت المبالغُ يوماً: من دفعَ وحدَه. وتبقى اللوحةُ أعداداً بلا أسماء —
+     والقائمةُ الاسميّةُ في ملفّاتِ الرموز: كلُّ صفٍّ فيه «سُلّم إلى» وليس في «رقم المرجع» كلمةُ «إهداء». */
+  function renderGifts(d, sc, sold, gifted, price) {
+    // «العنوانُ: العدد» لا «العددُ ثمّ المعدود» — فالمعدودُ العربيُّ يتغيّرُ بينَ ٣ و١١ و١٠٠
+    var html = '<div class="stock-sum gift-sum">' +
+      '<span>مستحقّو الاسترداد (من دفع):<b>' + n(d.buyers || 0) + '</b></span>' +
+      '<span>الكتب المدفوعة:<b>' + n(sold) + '</b>≈ ' + n(sold * price) + ' ر.ع</span>' +
+      '<span>الرموز المُهداة:<b style="color:var(--c-gift)">' + n(gifted) + '</b>· المُهدى إليهم:<b style="color:var(--c-gift)">' + n(d.giftPeople || 0) + '</b>— لا تُستردّ</span></div>';
+    var keys = Object.keys(sc).filter(function (k) { return sc[k].gifted; });
+    if (keys.length) {
+      html += '<div class="gift-list">' + keys.sort().map(function (k) {
+        return '<span class="tag gift">' + esc(bookName(k)) + ' × ' + n(sc[k].gifted) + '</span>';
+      }).join('') + '</div>';
+    } else {
+      html += '<div class="empty" style="padding:10px 8px">لا رموز مُهداة بعد.</div>';
+    }
+    if (d.paidNoContact) html += '<div class="note">' + n(d.paidNoContact) + ' كتب مدفوعة بلا رقم هاتف في ملفّ الرموز — يُتعرَّف على صاحبها بالاسم أو مرجع التحويل.</div>';
+    $('giftBox').innerHTML = html;
+  }
+
   /* ═════════ مخزونُ الرموز ═════════
      المتبقّي = المولَّدُ − المُسلَّم (من ملفّاتِ الرموزِ نفسِها). وتقديرُ النفادِ من سرعةِ
      البيعِ المؤرَّخِ في آخرِ ٣٠ يوماً — ولا يُعرَضُ إلا بعدَ بيعتَينِ مؤرَّختَين للكتاب،
@@ -927,9 +965,9 @@
     var since = shiftDay(muscatDay(), -29), pace = {};
     sales.forEach(function (p) { if (p[1] >= since) pace[p[0]] = (pace[p[0]] || 0) + 1; });
     var items = Object.keys(sc).map(function (k) {
-      var c = sc[k], left = Math.max(0, c.total - c.sold), per = pace[k] || 0;
+      var c = sc[k], left = Math.max(0, c.total - c.sold - (c.gifted || 0)), per = pace[k] || 0;
       // الأيّامُ المرصودةُ: من أوّلِ تاريخٍ مسجَّلٍ (٧ أكتوبر) حتى اليوم، بحدٍّ أقصى ٣٠
-      return { k: k, left: left, total: c.total, sold: c.sold, eta: per >= 2 ? Math.round(left / (per / observedDays())) : null };
+      return { k: k, left: left, total: c.total, sold: c.sold, gifted: c.gifted || 0, eta: per >= 2 ? Math.round(left / (per / observedDays())) : null };
     }).sort(function (a, b) { return a.left - b.left || b.sold - a.sold; });
     var totLeft = items.reduce(function (a, i) { return a + i.left; }, 0), tot = items.reduce(function (a, i) { return a + i.total; }, 0);
     var low = items.filter(function (i) { return i.left < LOW_STOCK; }).length;
@@ -960,7 +998,7 @@
             '<text class="rlab dim" x="' + (cx - 10) + '" y="' + (y + 3.6) + '">' + GN[gi] + ' — لا كتاب</text>';
           return;
         }
-        sum += i.left; used += i.sold; all += i.total;
+        sum += i.left; used += i.sold + i.gifted; all += i.total;
         var p = i.total ? i.left / i.total : 0, low = i.left < LOW_STOCK, c = low ? '#ff4d4d' : shade;
         rings += '<g class="rg' + (low ? ' low' : '') + '" data-k="' + i.k + '" tabindex="0" style="color:' + c + '">' +
           (p > 0 ? '<path class="rfill" d="' + arc(r, p) + '" style="stroke-width:' + SW + '"/>' : '') +
@@ -976,7 +1014,7 @@
     $('stockBox').innerHTML = html;
     [].forEach.call($('stockBox').querySelectorAll('.rg[data-k]'), function (c) {
       var i = byKey[c.getAttribute('data-k')];
-      var t = '<b>' + esc(bookName(i.k)) + '</b><br>استُهلك ' + n(i.sold) + ' من ' + n(i.total) + ' · بقيَ ' + n(i.left) +
+      var t = '<b>' + esc(bookName(i.k)) + '</b><br>بيع ' + n(i.sold) + (i.gifted ? ' · أُهدي ' + n(i.gifted) : '') + ' من ' + n(i.total) + ' · بقيَ ' + n(i.left) +
         (i.eta !== null ? '<br>ينفد خلال ≈ ' + n(i.eta) + ' يوماً' : '') + (i.left < LOW_STOCK ? '<br>⚠ ولِّد رموزاً جديدة' : '');
       c.addEventListener('mousemove', function (e) { showTip(e, t); });
       c.addEventListener('mouseleave', hideTip);
@@ -990,7 +1028,7 @@
   }
   function failSales(e) {
     ['h-sold', 'h-sub0', 'h-sub1', 'h-sub2'].forEach(function (id) { $(id).textContent = '—'; });
-    ['gaugeBox', 'revBySubj', 'salesChart', 'bookTable', 'expByCat', 'expList', 'stockBox'].forEach(function (id) {
+    ['gaugeBox', 'revBySubj', 'salesChart', 'bookTable', 'giftBox', 'expByCat', 'expList', 'stockBox'].forEach(function (id) {
       $(id).innerHTML = '<div class="err">تعذّر جلب المبيعات: ' + esc(why(e)) + '.</div>';
     });
     setStatus('st-n8n', false, 'غير متاح');
@@ -1000,10 +1038,10 @@
   function renderAlerts() {
     var out = [];
     if (S && S.scopes) {
-      var low = Object.keys(S.scopes).filter(function (k) { var c = S.scopes[k]; return c.total - c.sold < LOW_STOCK; });
+      var low = Object.keys(S.scopes).filter(function (k) { var c = S.scopes[k]; return c.total - c.sold - (c.gifted || 0) < LOW_STOCK; });
       low.forEach(function (k) {
         var c = S.scopes[k];
-        out.push(['w', '!', 'رموز ' + bookName(k) + ' توشك أن تنفد', 'متبقٍّ ' + n(c.total - c.sold) + ' — ولِّد رموزاً جديدةً بمسار n8n']);
+        out.push(['w', '!', 'رموز ' + bookName(k) + ' توشك أن تنفد', 'متبقٍّ ' + n(c.total - c.sold - (c.gifted || 0)) + ' — ولِّد رموزاً جديدةً بمسار n8n']);
       });
       var todaySales = (S.sales || []).filter(function (p) { return p[1] === muscatDay(); }).length;
       out.push(todaySales ? ['g', '✓', 'مبيعات اليوم: ' + n(todaySales) + ' كتب', n(todaySales * (S.price || 3)) + ' ر.ع']
