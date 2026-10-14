@@ -166,12 +166,14 @@
   .ring.r2{width:50%;height:50%;border:1.5px dashed rgba(56,200,255,.28);animation:spin 60s linear infinite}
   .ring.r3{width:66%;height:66%;border:1px solid rgba(56,200,255,.12);border-top-color:rgba(224,104,28,.7);border-bottom-color:rgba(224,104,28,.5);
     animation:spin 24s linear infinite reverse;filter:drop-shadow(0 0 4px rgba(224,104,28,.6))}
+  /* الخطُّ المتوهّجُ حولَ التدريج (طلبُ المالك ٢٠٢٦-١٠-١٤): كانَ حافّةَ المنصّةِ البيضاويّةَ تحتَ الكرةِ فصارَ دائرةً
+     تحيطُ بالتدريج — والتدريجُ ينتهي عندَ نصفِ قطرِ ٣٢٫٥٪ فالدائرةُ ٧٠٪ (نصفُ قطرِ ٣٥٪) خارجَه بقليل.
+     وحُذِفَ معها الخطُّ البرتقاليُّ البيضاويُّ الذي كانَ يحيطُ بالمنصّة */
+  .ring.r4{width:70%;height:70%;border:2px solid rgba(56,200,255,.55);box-shadow:0 0 14px rgba(56,200,255,.6),inset 0 0 10px rgba(56,200,255,.25)}
   @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
-  /* منصّةُ الضوءِ تحتَ الكرة */
+  /* منصّةُ الضوءِ تحتَ الكرة — توهّجٌ وحدَه بلا حافّة */
   .plat{position:absolute;left:50%;top:76%;width:58%;height:12%;transform:translate(-50%,-50%);pointer-events:none;border-radius:50%;
     background:radial-gradient(ellipse at center,rgba(56,200,255,.55) 0%,rgba(56,200,255,.18) 35%,transparent 70%)}
-  .plat::before,.plat::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid rgba(56,200,255,.55);box-shadow:0 0 14px rgba(56,200,255,.6)}
-  .plat::after{inset:-22% -12%;border:1.5px solid rgba(224,104,28,.55);border-left-color:transparent;border-right-color:transparent;box-shadow:0 0 12px rgba(224,104,28,.4)}
   .beam{position:absolute;left:50%;top:60%;width:12%;height:16%;transform:translateX(-50%);pointer-events:none;
     background:linear-gradient(180deg,rgba(56,200,255,.0),rgba(56,200,255,.35));filter:blur(4px)}
 
@@ -401,7 +403,7 @@
         <div class="hub" id="hub">
           <svg class="hub-ticks" id="hubTicks" viewBox="15 15 70 70" aria-hidden="true"></svg>
           <svg class="hub-lines" id="hubLines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>
-          <div class="ring r3"></div><div class="ring r2"></div><div class="ring r1"></div>
+          <div class="ring r4"></div><div class="ring r3"></div><div class="ring r2"></div><div class="ring r1"></div>
           <div class="beam"></div><div class="plat"></div>
           <div class="orb">
             <svg class="orb-net" id="orbNet" viewBox="-50 -50 100 100" aria-hidden="true"></svg>
