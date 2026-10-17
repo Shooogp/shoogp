@@ -555,10 +555,14 @@ $("phone").oninput = check;
 function check(){
   const digits = $("phone").value.replace(/\D/g,"").length;
   const phoneOk = digits === 0 || digits >= 8;
-  $("go").disabled = !(confirmed && cart.length && !fatal && fileInput.files[0] && phoneOk);
+  $("go").disabled = !(confirmed && cart.length && !fatal && !pendingSaved && fileInput.files[0] && phoneOk);
 }
 
 function show(html){ $("result").innerHTML = html; }
+
+/* طلبٌ محفوظٌ معلَّقاً (`pending`): وصلَ الإيصالُ لكنّ التحقّقَ الآليَّ متوقّف (نفادُ رصيدِ جيميناي مثلاً) —
+   يحفظُه n8n ويُكمِلُه بعدَ الإصلاحِ ويرسلُ الرمزَ إلى واتسابِها. فيبقى الزرُّ مقفولاً كي لا تعيدَ الإرسال. */
+let pendingSaved = false;
 
 /* ═══════════ الإرسال ═══════════ */
 $("go").onclick = async () => {
@@ -612,6 +616,9 @@ $("go").onclick = async () => {
             b.textContent = "تم النسخ";
           }catch(e){ b.textContent = "انسخيه يدوياً"; }
         });
+    } else if (data.pending){
+      pendingSaved = true;
+      show(`<div class="note">${data.message}</div>`);
     } else {
       show(`<div class="msg">${data.message || "تعذّر التحقّق من الإيصال."}</div>`);
     }
