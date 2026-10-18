@@ -98,10 +98,13 @@
    ⚠️ **المفتاحُ هو مفتاحُ الكتابِ نفسُه** (`pending.bookKey`)، وهو مفتاحُ
    `data/books.json` الذي تقرأُ منه صفحةُ الدفعِ قائمتَها — فالطرفانِ على مصدرٍ واحد.
 
-   ── إيقافُ الشراءِ مؤقتاً ──
-   `SALES_PAUSED` (عندَ الثوابتِ أدناه): وهو `true` تظهرُ النافذةُ معطَّلةً بشريطِ
-   «شراءُ الكتبِ قريباً جدّاً»، ولا يعملُ فيها إلا الإغلاق. **مفتاحٌ واحدٌ يُقلَبُ
-   لإعادةِ الشراء** — التفصيلُ عندَ الثابتِ نفسِه.
+   ── إيقافُ الشراءِ مؤقتاً وفتحُ كلِّ الوحدات ──
+   **المفتاحانِ في `js/sales-state.js` لا هنا** (منذُ ٢٠٢٦-١٠-١٨ — تقرؤُهما أيضاً
+   `pay.html` و`guide.html`، فلا يصحُّ أن يسكنا ملفّاً لا تحمّلُه تلك الصفحات):
+   • `paused` ← `SALES_PAUSED` أدناه: النافذةُ معطَّلةٌ بشريطِ «شراءُ الكتبِ قريباً
+     جدّاً»، ولا يعملُ فيها إلا الإغلاق.
+   • `freeAll` ← `FREE_ALL` أدناه: `isUnitLocked` يُرجِعُ `false` لكلِّ وحدة، ويُرسَمُ
+     شريطُ الإعلانِ في الشاشةِ الرئيسية (‏`freeBanner`).
 
    ── حدٌّ صريحٌ لا يُتجاوَز ──
    هذا **حاجزُ شراءٍ لا حمايةٌ أمنية**. أيُّ قفلٍ في موقعٍ ثابتٍ يمكنُ تجاوزُه من
@@ -146,10 +149,19 @@
      `true` ⇒ نافذةُ الرمزِ **تظهرُ كما هي لكن معطَّلةً**: الخانةُ وزرُّ الفتحِ ورابطا
      الشراءِ خاملةٌ (`inert` + كسوةٌ باهتة)، ويعلوها شريطٌ مائلٌ «شراءُ الكتبِ قريباً
      جدّاً». لا يبقى حيّاً إلا زرُّ الإغلاقِ والخلفيةُ وEscape.
-     **لإعادةِ الشراء: `false` هنا وحدَه** — لا موضعَ آخرَ يُلمَس، والكسوةُ في
+     **يُقرَأُ من `js/sales-state.js` (‏`paused`) ولا يُكتَبُ هنا** — والكسوةُ في
      `css/unlock.css` تحتَ `.lockwrap.paused`. ولا يمسُّ الإيقافُ القفلَ نفسَه ولا
-     المنَحَ المحفوظةَ: الكتبُ المفتوحةُ برمزٍ من قبلُ باقيةٌ مفتوحة. */
-  var SALES_PAUSED = false;
+     المنَحَ المحفوظةَ: الكتبُ المفتوحةُ برمزٍ من قبلُ باقيةٌ مفتوحة.
+     ⚠️ وغيابُ الملفِّ (صفحةٌ لم تحمّلْه) يُقرَأُ **حالاً طبيعياً**: بيعٌ قائمٌ وقفلٌ عامل. */
+  var SALES = window.SHOOGP_SALES || {};
+  var SALES_PAUSED = !!SALES.paused;
+
+  /* ═══ فتحُ كلِّ الوحداتِ مؤقتاً (قرارُ المالك ٢٠٢٦-١٠-١٨ — أسبوعُ شوجب المجانيّ) ═══
+     `true` ⇒ `isUnitLocked` يُرجِعُ `false` لكلِّ وحدةٍ في كلِّ كتاب، فلا إطارَ قفلٍ
+     ولا نافذةَ رمز، وصفحةُ الألعابِ ترثُه (تسألُ `isUnitLocked` نفسَه). **ولا يقرأُ
+     المنَحَ ولا يكتبُها** — كمفتاحِ التعطيلِ أدناه — فمن اشترت يبقى كتابُها مفتوحاً
+     بعدَ إطفائِه. ويُقرَأُ من `js/sales-state.js` (‏`freeAll`). */
+  var FREE_ALL = !!SALES.freeAll;
 
   /* عددُ الوحداتِ المجانيةِ في رأسِ الكتاب — بالمادّةِ (قرارُ المالك ٢٠٢٦-٠٩-٠٥؛
      الجدولُ في رأسِ الملف). `unitCount` عددُ وحداتِ الكتابِ من الفهرس، ولا يلزمُ
@@ -496,6 +508,7 @@
      لا فحصَ لنطاقِ وحدةٍ — أُسقِط (انظر رأسَ الملف). `unitCount` عددُ وحداتِ
      الكتابِ (يلزمُ لـ«ديني حياتي» وحدَها — `freeUnits`). */
   function isUnitLocked(bookKey, unitIndex, unitCount) {
+    if (FREE_ALL) return false;                        // فتحٌ عامٌّ مؤقت (‏`js/sales-state.js`)
     if (lockOff) return false;                         // القفلُ معطَّلٌ ⇒ كلُّ الوحداتِ مفتوحة
     if (!bookKey) return false;
     if (unitIndex < freeUnits(bookKey, unitCount)) return false;   // الرأسُ المجانيُّ بالمادّة
@@ -1211,8 +1224,33 @@
   else buildBtn();
 
   /* ───────────────────────────── الواجهة ───────────────────────────── */
+  /* ═══ شريطُ الفتحِ المجانيّ في الشاشةِ الرئيسية (قرارُ المالك ٢٠٢٦-١٠-١٨) ═══
+     يُرسَمُ ما دامَ `FREE_ALL` قائماً فوقَ سطرِ «اختر صفّك…» داخلَ `#home`، فيغيبُ
+     تلقائياً في شاشتَي الوحداتِ والنشاطِ مع الشاشةِ نفسِها. نصُّه من
+     `js/sales-state.js` (‏`title` و`until`) — فالتمديدُ تعديلُ نصٍّ هناك لا هنا.
+     والنمطُ في `css/style.css` تحتَ `.free-banner`. */
+  function freeBanner() {
+    if (!FREE_ALL) return;
+    var home = document.getElementById('home');
+    if (!home || home.querySelector('.free-banner')) return;
+    var b = document.createElement('div');
+    b.className = 'free-banner';
+    b.setAttribute('role', 'note');
+    b.innerHTML =
+      '<span class="fb-ic" aria-hidden="true">🎁</span>' +
+      '<span class="fb-t">' + (SALES.title || 'أسبوع شوجب المجاني') + '</span>' +
+      '<span class="fb-sep" aria-hidden="true">·</span>' +
+      '<span class="fb-d">جميع الوحدات متاحة دون رمز' +
+        (SALES.until ? ' حتى <b>' + SALES.until + '</b>' : '') + '</span>';
+    home.insertBefore(b, home.firstChild);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', freeBanner);
+  else freeBanner();
+
   window.ShoogpLock = {
     isUnitLocked: isUnitLocked,
+    isFreeAll:    function () { return FREE_ALL; },
+    isSalesPaused:function () { return SALES_PAUSED; },
     freeUnits:    freeUnits,
     guardLesson:  guardLesson,
     ask:          ask,

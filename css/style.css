@@ -245,6 +245,19 @@
   .app:has(#lessonsScreen.active), .app:has(#activityScreen.active){ padding-top:12px }
   .choose-line{text-align:center;color:#cfc4f5;font-size:1.35rem;
     margin:6px 0 12px;font-weight:500}
+  /* شريطُ الفتحِ المجانيّ (‏`freeBanner` في `js/unlock.js`، ومفتاحُه في `js/sales-state.js`):
+     كبسولةٌ برتقاليةٌ خفيفةٌ فوقَ «اختر صفّك» — لونُ إعلانِ إنستغرامِ الأسبوعِ نفسُه. */
+  .free-banner{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 10px;
+    width:fit-content;max-width:100%;margin:4px auto 14px;padding:9px 22px;border-radius:999px;
+    background:linear-gradient(135deg,rgba(255,164,40,.22),rgba(242,122,18,.14));
+    border:1px solid rgba(255,179,59,.6);box-shadow:0 6px 22px rgba(245,138,22,.18);
+    font-family:'Cairo';font-size:1.08rem;line-height:1.5;color:#F4EEE3;text-align:center}
+  .free-banner .fb-ic{font-size:1.25rem;line-height:1}
+  .free-banner .fb-t{font-weight:900;color:#FFB33B}
+  .free-banner .fb-sep{color:rgba(255,179,59,.7)}
+  .free-banner b{font-weight:900;color:#FFC24A}
+  @media (max-width:560px){ .free-banner{border-radius:18px;padding:9px 16px;font-size:1rem}
+    .free-banner .fb-sep{display:none} }
   .tagline{font-family:'Cairo';color:#ffd257 !important;font-size:1.1rem !important;
     margin-top:8px !important;margin-bottom:4px !important;font-weight:700}
   header h1{font-family:'Cairo';font-size:2rem;text-shadow:0 3px 14px rgba(0,0,0,.35)}

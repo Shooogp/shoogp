@@ -2,6 +2,8 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
+<!-- حالةُ البيعِ (‏`paused`) — إن كان موقوفاً تُخفى السلّةُ وتظهرُ رسالةُ الإيقاف -->
+<script src="js/sales-state.js?v=20260721-41"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>شراء الكتب — شوجب</title>
 
@@ -228,10 +230,11 @@ select option:disabled{color:var(--muted)}
 <div class="wrap">
   <a class="back" href="index.html">→ رجوع للرئيسة</a>
   <h1>شراء الكتب</h1>
-  <p class="sub">أضيفي كتبك، أكّدي الطلب، حوّلي المبلغ وارفعي الإيصال. <a class="guidelink" href="guide.html">دليل الشراء بالتفصيل ←</a></p>
+  <div data-sales-paused-note></div>
+  <p class="sub" data-hide-when-paused>أضيفي كتبك، أكّدي الطلب، حوّلي المبلغ وارفعي الإيصال. <a class="guidelink" href="guide.html">دليل الشراء بالتفصيل ←</a></p>
 
   <!-- ① السلّة -->
-  <div class="step" id="step1">
+  <div class="step" id="step1" data-hide-when-paused>
     <div class="step-head"><div class="step-num">١</div><div class="step-title">كتبك</div></div>
 
     <div id="cartWrap">
@@ -255,7 +258,7 @@ select option:disabled{color:var(--muted)}
   </div>
 
   <!-- ② المبلغ والحساب — لا يظهران قبل التأكيد -->
-  <div class="step" id="step2" hidden>
+  <div class="step" id="step2" data-hide-when-paused hidden>
     <div class="step-head"><div class="step-num">٢</div><div class="step-title">حوّلي المبلغ</div></div>
 
     <div class="amount"><span>المبلغ المطلوب</span><b id="price">—</b></div>
@@ -269,7 +272,7 @@ select option:disabled{color:var(--muted)}
   </div>
 
   <!-- ③ الإيصال — لا يظهر قبل التأكيد -->
-  <div class="step" id="step3" hidden>
+  <div class="step" id="step3" data-hide-when-paused hidden>
     <div class="step-head"><div class="step-num">٣</div><div class="step-title">ارفعي إيصال التحويل</div></div>
 
     <div class="drop" id="drop" role="button" tabindex="0">
@@ -566,6 +569,7 @@ let pendingSaved = false;
 
 /* ═══════════ الإرسال ═══════════ */
 $("go").onclick = async () => {
+  if (window.SHOOGP_SALES && SHOOGP_SALES.paused) return;   // الشراءُ موقوف (‏`js/sales-state.js`)
   const btn = $("go");
   btn.disabled = true;
   btn.innerHTML = 'جارٍ التحقّق<span class="spin"></span>';
