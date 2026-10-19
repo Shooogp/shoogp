@@ -245,19 +245,43 @@
   .app:has(#lessonsScreen.active), .app:has(#activityScreen.active){ padding-top:12px }
   .choose-line{text-align:center;color:#cfc4f5;font-size:1.35rem;
     margin:6px 0 12px;font-weight:500}
-  /* شريطُ الفتحِ المجانيّ (‏`freeBanner` في `js/unlock.js`، ومفتاحُه في `js/sales-state.js`):
-     كبسولةٌ برتقاليةٌ خفيفةٌ فوقَ «اختر صفّك» — لونُ إعلانِ إنستغرامِ الأسبوعِ نفسُه. */
-  .free-banner{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 10px;
-    width:fit-content;max-width:100%;margin:4px auto 14px;padding:9px 22px;border-radius:999px;
-    background:linear-gradient(135deg,rgba(255,164,40,.22),rgba(242,122,18,.14));
-    border:1px solid rgba(255,179,59,.6);box-shadow:0 6px 22px rgba(245,138,22,.18);
-    font-family:'Cairo';font-size:1.08rem;line-height:1.5;color:#F4EEE3;text-align:center}
-  .free-banner .fb-ic{font-size:1.25rem;line-height:1}
-  .free-banner .fb-t{font-weight:900;color:#FFB33B}
-  .free-banner .fb-sep{color:rgba(255,179,59,.7)}
-  .free-banner b{font-weight:900;color:#FFC24A}
-  @media (max-width:560px){ .free-banner{border-radius:18px;padding:9px 16px;font-size:1rem}
-    .free-banner .fb-sep{display:none} }
+  /* بطاقةُ الفتحِ المجانيّ (‏`freeBanner` في `js/unlock.js`، ومفتاحُها في `js/sales-state.js`):
+     نسخةٌ مصغّرةٌ من إعلانِ إنستغرامِ الأسبوع — سماءٌ كحليّةٌ بلونِ سماءِ الرسمةِ نفسِها
+     (‎#0f214a‎ ← ‎#1b3c6b‎ مقيسةٌ منها) كي يذوبَ وهجُ الهديةِ المقصوصةِ فيها بلا حافّة.
+     العنوانُ يميناً والرسمةُ يساراً (أنفُ الصاروخِ يشيرُ إلى العنوان)، وسطرُ التاريخِ تحتَهما.
+     والصاروخُ يطلُّ من حافّةِ البطاقةِ العليا (‏`margin-top` سالب) فتبقى البطاقةُ قصيرة. */
+  .free-hero{display:grid;grid-template-columns:auto auto;grid-template-areas:"title art" "sub sub";
+    align-items:center;justify-content:center;column-gap:20px;
+    width:fit-content;max-width:100%;margin:46px auto 16px;padding:12px 26px 14px 22px;border-radius:26px;
+    background:
+      radial-gradient(1.6px 1.6px at 14% 22%,rgba(255,255,255,.9),transparent 70%),
+      radial-gradient(1.2px 1.2px at 38% 78%,rgba(255,255,255,.7),transparent 70%),
+      radial-gradient(1.4px 1.4px at 62% 16%,rgba(255,255,255,.8),transparent 70%),
+      radial-gradient(1.1px 1.1px at 84% 64%,rgba(255,255,255,.6),transparent 70%),
+      radial-gradient(1.3px 1.3px at 6% 70%,rgba(255,236,170,.8),transparent 70%),
+      linear-gradient(180deg,#0f214a 0%,#173263 100%);
+    border:1px solid rgba(255,179,59,.55);
+    box-shadow:0 12px 34px rgba(0,0,0,.38),0 0 0 4px rgba(255,164,40,.07),0 0 40px rgba(245,138,22,.16)}
+  .free-hero .fh-title{grid-area:title;font-family:'Cairo';font-weight:900;line-height:1.08;text-align:right;
+    filter:drop-shadow(0 4px 10px rgba(0,0,0,.4))}
+  .free-hero .t1{display:block;font-size:2.15rem;color:#fff}
+  .free-hero .t2{display:block;font-size:2.75rem;padding-bottom:.12em;
+    background:linear-gradient(180deg,#FFC24A 0%,#FF9A1F 60%,#F27A12 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .free-hero .fh-art{grid-area:art;width:136px;height:183px;margin-top:-66px;
+    background:url(../images/promo/free-week-gift.webp) center/contain no-repeat;
+    filter:drop-shadow(0 8px 12px rgba(0,0,0,.35));animation:fh-float 4.6s ease-in-out infinite}
+  .free-hero .fh-sub{grid-area:sub;text-align:center;font-family:'Cairo';font-weight:700;font-size:1.2rem;
+    line-height:1.6;color:#F4EEE3;margin-top:6px;padding-top:9px;border-top:1px dashed rgba(255,179,59,.38)}
+  .free-hero .fh-sub b{display:inline-block;font-weight:900;color:#14204a;margin-inline-start:4px;
+    background:linear-gradient(180deg,#FFC24A,#F58A16);border-radius:12px;padding:0 12px 2px;white-space:nowrap}
+  @keyframes fh-float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-7px) rotate(-1.5deg)}}
+  @media (prefers-reduced-motion:reduce){ .free-hero .fh-art{animation:none} }
+  @media (max-width:560px){
+    .free-hero{column-gap:12px;padding:10px 16px 12px 14px;border-radius:20px;margin-top:38px}
+    .free-hero .t1{font-size:1.6rem} .free-hero .t2{font-size:2.05rem}
+    .free-hero .fh-art{width:92px;height:124px;margin-top:-44px}
+    .free-hero .fh-sub{font-size:1rem} }
   .tagline{font-family:'Cairo';color:#ffd257 !important;font-size:1.1rem !important;
     margin-top:8px !important;margin-bottom:4px !important;font-weight:700}
   header h1{font-family:'Cairo';font-size:2rem;text-shadow:0 3px 14px rgba(0,0,0,.35)}

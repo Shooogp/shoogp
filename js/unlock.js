@@ -104,7 +104,7 @@
    • `paused` ← `SALES_PAUSED` أدناه: النافذةُ معطَّلةٌ بشريطِ «شراءُ الكتبِ قريباً
      جدّاً»، ولا يعملُ فيها إلا الإغلاق.
    • `freeAll` ← `FREE_ALL` أدناه: `isUnitLocked` يُرجِعُ `false` لكلِّ وحدة، ويُرسَمُ
-     شريطُ الإعلانِ في الشاشةِ الرئيسية (‏`freeBanner`).
+     بطاقةُ الإعلانِ في الشاشةِ الرئيسية (‏`freeBanner`).
 
    ── حدٌّ صريحٌ لا يُتجاوَز ──
    هذا **حاجزُ شراءٍ لا حمايةٌ أمنية**. أيُّ قفلٍ في موقعٍ ثابتٍ يمكنُ تجاوزُه من
@@ -1224,24 +1224,29 @@
   else buildBtn();
 
   /* ───────────────────────────── الواجهة ───────────────────────────── */
-  /* ═══ شريطُ الفتحِ المجانيّ في الشاشةِ الرئيسية (قرارُ المالك ٢٠٢٦-١٠-١٨) ═══
-     يُرسَمُ ما دامَ `FREE_ALL` قائماً فوقَ سطرِ «اختر صفّك…» داخلَ `#home`، فيغيبُ
-     تلقائياً في شاشتَي الوحداتِ والنشاطِ مع الشاشةِ نفسِها. نصُّه من
-     `js/sales-state.js` (‏`title` و`until`) — فالتمديدُ تعديلُ نصٍّ هناك لا هنا.
-     والنمطُ في `css/style.css` تحتَ `.free-banner`. */
+  /* ═══ بطاقةُ الفتحِ المجانيّ في الشاشةِ الرئيسية (قرارُ المالك ٢٠٢٦-١٠-١٨/١٩) ═══
+     تُرسَمُ ما دامَ `FREE_ALL` قائماً فوقَ سطرِ «اختر صفّك…» داخلَ `#home`، فتغيبُ
+     تلقائياً في شاشتَي الوحداتِ والنشاطِ مع الشاشةِ نفسِها. ثلاثةُ عناصر — طلبُ المالك
+     ٢٠٢٦-١٠-١٩: **الصاروخُ والهديةُ** (رسمةُ إعلانِ إنستغرامِ الأسبوعِ نفسُها، مقصوصةً في
+     `images/promo/free-week-gift.webp`) و**العنوانُ** بجانبِها، و**سطرُ التاريخِ تحتَهما**.
+     النصُّ من `js/sales-state.js` (‏`title` و`until`) — فالتمديدُ تعديلُ نصٍّ هناك لا هنا؛
+     والعنوانُ يُقسَمُ سطرَين: الكلمةُ الأخيرةُ («المجاني») بالبرتقاليّ كما في الإعلان.
+     والنمطُ في `css/style.css` تحتَ `.free-hero`. */
   function freeBanner() {
     if (!FREE_ALL) return;
     var home = document.getElementById('home');
-    if (!home || home.querySelector('.free-banner')) return;
+    if (!home || home.querySelector('.free-hero')) return;
+    var words = String(SALES.title || 'أسبوع شوجب المجاني').split(/\s+/);
+    var last = words.pop();
     var b = document.createElement('div');
-    b.className = 'free-banner';
+    b.className = 'free-hero';
     b.setAttribute('role', 'note');
     b.innerHTML =
-      '<span class="fb-ic" aria-hidden="true">🎁</span>' +
-      '<span class="fb-t">' + (SALES.title || 'أسبوع شوجب المجاني') + '</span>' +
-      '<span class="fb-sep" aria-hidden="true">·</span>' +
-      '<span class="fb-d">جميع الوحدات متاحة دون رمز' +
-        (SALES.until ? ' حتى <b>' + SALES.until + '</b>' : '') + '</span>';
+      '<div class="fh-title"><span class="t1">' + words.join(' ') + '</span>' +
+        '<span class="t2">' + last + '</span></div>' +
+      '<div class="fh-art" aria-hidden="true"></div>' +
+      '<div class="fh-sub">جميع الوحدات متاحة' +
+        (SALES.until ? ' حتى تاريخ <b>' + SALES.until + '</b>' : '') + '</div>';
     home.insertBefore(b, home.firstChild);
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', freeBanner);
