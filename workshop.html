@@ -185,11 +185,11 @@ input[aria-invalid=true]{border-color:var(--danger)}
 .p-stars{position:absolute;top:0;left:0;fill:var(--star)}
 .ink .p-stars{opacity:.4}
 .p-stars .sp{fill:var(--gold)}
-.p-moon{position:absolute;top:-40px;left:-46px;width:280px;height:254px}
+.p-moon{position:absolute;top:-62px;left:-62px;width:280px;height:254px}
 .p-saturn{position:absolute;top:34px;left:322px;width:118px;height:66px}
 .p-path{position:absolute;top:0;left:0}
 .p-path path{stroke:var(--path)}
-.p-rocket{position:absolute;top:268px;left:212px;width:92px;height:145px;transform:rotate(-21deg)}
+.p-rocket{position:absolute;top:214px;left:214px;width:92px;height:145px;transform:rotate(-21deg)}
 .p-logo{position:absolute;top:44px;right:48px;width:210px;height:148px}
 .logo-ink,.ink .logo-color{display:none}
 .ink .logo-ink{display:block}
@@ -200,8 +200,9 @@ input[aria-invalid=true]{border-color:var(--danger)}
 .p-tagline{margin:0;font-family:"Cairo",sans-serif;font-weight:800;font-size:24px;line-height:1.4;color:var(--gold)}
 
 /* رمزُ QR داخلَ إطارِ المادّة — المقاساتُ الدقيقةُ يضعُها layoutQR() من جدولِ FRAMES */
-.p-qr{position:absolute;top:446px;left:46px;width:300px;display:flex;flex-direction:column;align-items:center;gap:4px}
-.p-frame{position:relative;width:300px;height:300px}
+/* الإطارُ ‎336px‎ (كان ‎300‎ — كُبِّرَ بطلبِ المالك ٢٠٢٦-١٠-٢٢، والصاروخُ ومسارُه والقمرُ رُفِعَت لتفسحَ له) */
+.p-qr{position:absolute;top:398px;left:34px;width:336px;display:flex;flex-direction:column;align-items:center;gap:4px}
+.p-frame{position:relative;width:336px;height:336px}
 .p-frame-img{position:absolute;inset:0;width:100%;height:100%}
 .p-mat{position:absolute;background:#fff;display:flex;align-items:center;justify-content:center}
 .p-qrbox{position:relative}
@@ -211,7 +212,7 @@ input[aria-invalid=true]{border-color:var(--danger)}
 .p-qr-label{margin-top:6px;font-family:"Cairo",sans-serif;font-weight:800;font-size:20px;line-height:1.4}
 .p-url{font-family:"Cairo",sans-serif;font-weight:900;font-size:30px;line-height:1.25;letter-spacing:.5px;direction:ltr}
 
-.p-credits{position:absolute;top:538px;right:48px;width:373px;height:296px;display:flex;flex-direction:column;gap:12px}
+.p-credits{position:absolute;top:538px;right:48px;width:358px;height:296px;display:flex;flex-direction:column;gap:12px}
 .p-school{display:flex;align-items:flex-start;gap:10px}
 .p-school svg{flex:none;margin-top:4px}
 .p-school-name{flex:1;min-width:0;font-family:"Cairo",sans-serif;font-weight:900;font-size:28px;line-height:1.3;text-wrap:balance}
@@ -406,7 +407,7 @@ input[aria-invalid=true]{border-color:var(--danger)}
             <img class="p-moon" src="images/rocket/moon.png?v=20261022" alt="">
             <img class="p-saturn" src="images/ui/space-saturn.png?v=20261022" alt="">
             <svg class="p-path" aria-hidden="true" width="793" height="520" viewBox="0 0 793 520">
-              <path d="M198 452C214 406 246 372 258 340S214 266 196 222" fill="none" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="0.1 11"/>
+              <path d="M200 400C214 356 248 322 260 288S216 214 180 182" fill="none" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="0.1 11"/>
             </svg>
             <img class="p-rocket" src="images/rocket/rocket-body.png?v=20261022" alt="">
             <img class="p-logo logo-color" src="images/logo.png?v=20261022" alt="شوجب — مصدرك للأسئلة التفاعلية">
@@ -518,7 +519,7 @@ input[aria-invalid=true]{border-color:var(--danger)}
     hw:     { ar: [975, 985],   cx: 48.46, cy: 51.78, c: 66.34 }
   };
   var FRAME_KEYS = Object.keys(FRAMES);
-  var FRAME_W = 300;                // عرضُ الإطارِ بإحداثياتِ التصميم
+  var FRAME_W = 336;                // عرضُ الإطارِ بإحداثياتِ التصميم (يطابقُ .p-frame في CSS)
 
   function $(id) { return document.getElementById(id); }
   var f = {
