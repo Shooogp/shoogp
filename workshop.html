@@ -22,10 +22,16 @@
 <!--
   ═══════════════════════════════════════════════════════════════
   منشورُ مشغلِ شوجب — صفحةٌ مستقلّةٌ تُعبّئُ فيها المعلّمةُ بياناتِ
-  المشغلِ فيتحدّثُ المنشورُ أمامَها، ثمّ تطبعُه A4 أو تحفظُه PDF.
+  المشغلِ فيتحدّثُ المنشورُ أمامَها، ثمّ تطبعُه بطاقةً A5 أو تحفظُه PDF.
 
-  • المنشورُ مرسومٌ بالبكسل على ‎793×1122‎ (‎= A4 عند 96 نقطة/بوصة‎)؛
-    يُصغَّرُ للمعاينةِ بـ transform فقط، ويُطبَعُ بحجمِه الحقيقيّ.
+  • البطاقةُ A5 (‎.sheet = 559×793‎ عند 96 نقطة/بوصة). والتصميمُ داخلَها مرسومٌ على
+    إحداثياتِ ‎793×1122‎ ومُصغَّرٌ بنسبةِ A5/A4 الثابتة ‎(0.70492)‎ — فالأرقامُ في CSS
+    أدناه بإحداثياتِ التصميمِ لا بإحداثياتِ الورق.
+  • الطباعةُ: A5 ورقةً واحدة، أو نسختانِ على A4 أفقيةٍ تُقصّانِ من الخطِّ المتقطّع.
+    ‎#pageBox‎ هي الصفحةُ المطبوعةُ نفسُها (المعاينةُ = الطباعة)، وقاعدةُ ‎@page‎ في ‎#pageRule‎.
+  • إطارُ رمزِ QR من إطاراتِ أسئلةِ المواد (‎images/ui/frame-<المادة>-l.png‎) —
+    تختارُه المعلّمةُ أو يُختارُ عشوائياً. نوافذُها من جدولِ ‎win‎ في ‎js/shoogp-ui.js‎،
+    والرمزُ على بساطٍ أبيضَ داخلَ النافذة (‎FRAMES‎ أدناه). إطارُ مادّةٍ جديدةٍ = سطرٌ هناك.
   • نصوصُ المعلّماتِ تُكتَبُ بـ textContent لا innerHTML (أمان).
   • الأسماءُ الطويلةُ والكثيرةُ تُصغَّرُ تلقائياً (fitAll) لتبقى داخلَ إطارِها.
   • رمزُ QR ثابتٌ يفتحُ https://shoogp.com — مسارُه مرسومٌ هنا (29×29،
@@ -37,6 +43,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@500;700&display=swap">
+<!-- مقاسُ صفحةِ الطباعة — يُبدِّلُه الكودُ بحسبِ خيارِ الورق -->
+<style id="pageRule">@page{size:148mm 210mm;margin:0}</style>
 
 <style>
 /* ───────────── الصفحة ───────────── */
@@ -51,6 +59,7 @@
   --danger:#F08A78;
 }
 *{box-sizing:border-box}
+[hidden]{display:none !important}   /* لا يغلبُه display في الأصناف (.p-team · .p-chip · .icon-btn) */
 body{
   margin:0; padding:24px 16px 48px;
   background:var(--space); color:var(--moon);
@@ -132,6 +141,14 @@ input[aria-invalid=true]{border-color:var(--danger)}
   font:inherit;font-size:15px;
 }
 .secondary:hover{color:var(--moon)}
+.frame-row{display:flex;gap:8px}
+.frame-row select{
+  flex:1;min-width:0;min-height:48px;padding:8px 14px;
+  background:var(--field);color:var(--moon);border:1px solid var(--line);border-radius:12px;
+  font:inherit;font-size:17px;color-scheme:dark;cursor:pointer;
+}
+.frame-row select:focus{outline:2px solid var(--orange);outline-offset:1px}
+.icon-btn.dice:hover{color:var(--orange);border-color:var(--orange)}
 .err{margin:0;color:var(--danger);font-weight:700;font-size:15px}
 .err:empty{display:none}
 .tip{margin:4px 0 0;font-size:14px;color:var(--muted);line-height:1.7}
@@ -142,12 +159,18 @@ input[aria-invalid=true]{border-color:var(--danger)}
 .sheet-frame{display:flex;justify-content:center}
 .sheet-scale{position:relative;overflow:hidden;border-radius:4px;box-shadow:0 12px 40px rgba(0,0,0,.5);background:#fff}
 
-/* ───────────── المنشور (A4 = 793×1122) ───────────── */
+/* ───────────── الصفحة: بطاقةٌ A5، أو بطاقتانِ على A4 أفقية — والمعاينةُ هي ما يُطبَع ───────────── */
+.pagebox{position:absolute;top:0;right:0;transform-origin:top right;display:flex;align-items:flex-start;background:#fff}
+.sheet{
+  position:relative;flex:none;
+  width:559px;height:793px;overflow:hidden;background:#fff;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact;
+}
 .poster{
   --ink:#1C2540; --sky:#1C2540; --sky-text:#FFFFFF;
   --gold:#FFD257; --accent:#F8A020; --muted:#4A5470;
   --chip:#FFF1D9; --star:#FFFFFF; --path:#FFD257; --rule:#D5DBE8;
-  position:absolute;top:0;right:0;transform-origin:top right;
+  position:absolute;top:0;right:0;transform-origin:top right;transform:scale(.70492);
   width:793px;height:1122px;overflow:hidden;
   background:#fff;color:var(--ink);direction:rtl;
   font-family:"Tajawal",Tahoma,sans-serif;
@@ -172,24 +195,28 @@ input[aria-invalid=true]{border-color:var(--danger)}
 .ink .logo-ink{display:block}
 
 .p-head{position:absolute;top:214px;right:48px;width:370px;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
-.p-kicker{font-family:"Cairo",sans-serif;font-weight:800;font-size:17px;line-height:1.5;color:var(--gold);border:2px solid var(--gold);border-radius:999px;padding:2px 16px}
+.p-kicker{font-family:"Cairo",sans-serif;font-weight:800;font-size:18px;line-height:1.5;color:var(--gold);border:2px solid var(--gold);border-radius:999px;padding:2px 16px}
 .p-title{margin:0;width:100%;font-family:"Cairo",sans-serif;font-weight:900;font-size:46px;line-height:1.25;color:var(--sky-text);text-wrap:balance}
 .p-tagline{margin:0;font-family:"Cairo",sans-serif;font-weight:800;font-size:24px;line-height:1.4;color:var(--gold)}
 
-.p-qr{position:absolute;top:452px;left:48px;width:296px;background:#fff;border:4px solid var(--accent);border-radius:30px;padding:16px 34px 12px;display:flex;flex-direction:column;align-items:center;gap:12px}
-.p-qr-label{font-family:"Cairo",sans-serif;font-weight:800;font-size:18px;line-height:1.4}
-.p-qrbox{position:relative;width:220px;height:220px}
-.p-qrbox svg{display:block}
-.p-badge{position:absolute;top:78px;left:78px;width:64px;height:64px;background:#fff;border:3px solid var(--accent);border-radius:17px;display:flex;align-items:center;justify-content:center}
-.p-badge img{width:30px;height:47px}
-.p-url{font-family:"Cairo",sans-serif;font-weight:900;font-size:28px;line-height:1.3;letter-spacing:.5px;direction:ltr}
+/* رمزُ QR داخلَ إطارِ المادّة — المقاساتُ الدقيقةُ يضعُها layoutQR() من جدولِ FRAMES */
+.p-qr{position:absolute;top:446px;left:46px;width:300px;display:flex;flex-direction:column;align-items:center;gap:4px}
+.p-frame{position:relative;width:300px;height:300px}
+.p-frame-img{position:absolute;inset:0;width:100%;height:100%}
+.p-mat{position:absolute;background:#fff;display:flex;align-items:center;justify-content:center}
+.p-qrbox{position:relative}
+.p-qrbox svg{display:block;width:100%;height:100%}
+.p-badge{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;border:3px solid var(--accent);border-radius:24%;display:flex;align-items:center;justify-content:center}
+.p-badge img{height:72%;width:auto}
+.p-qr-label{margin-top:6px;font-family:"Cairo",sans-serif;font-weight:800;font-size:20px;line-height:1.4}
+.p-url{font-family:"Cairo",sans-serif;font-weight:900;font-size:30px;line-height:1.25;letter-spacing:.5px;direction:ltr}
 
 .p-credits{position:absolute;top:538px;right:48px;width:373px;height:296px;display:flex;flex-direction:column;gap:12px}
 .p-school{display:flex;align-items:flex-start;gap:10px}
 .p-school svg{flex:none;margin-top:4px}
 .p-school-name{flex:1;min-width:0;font-family:"Cairo",sans-serif;font-weight:900;font-size:28px;line-height:1.3;text-wrap:balance}
 .p-rule{border-top:2px dashed var(--rule)}
-.p-label{font-size:16px;font-weight:700;line-height:1.4;color:var(--muted)}
+.p-label{font-size:17px;font-weight:700;line-height:1.4;color:var(--muted)}
 .p-by{display:flex;flex-direction:column;gap:2px}
 .p-name{font-family:"Cairo",sans-serif;font-weight:800;font-size:24px;line-height:1.35;white-space:nowrap;overflow:hidden}
 .p-team{flex:1;min-height:0;display:flex;flex-direction:column;gap:4px}
@@ -209,18 +236,18 @@ input[aria-invalid=true]{border-color:var(--danger)}
 
 .p-bottom{position:absolute;top:852px;left:48px;right:48px;bottom:44px;display:flex;flex-direction:column;justify-content:space-between;align-items:center}
 .p-info{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
-.p-chip{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--rule);border-radius:999px;padding:4px 16px;font-weight:700;font-size:17px;line-height:1.5}
+.p-chip{display:inline-flex;align-items:center;gap:8px;border:2px solid var(--rule);border-radius:999px;padding:4px 16px;font-weight:700;font-size:18px;line-height:1.5}
 .p-chip svg{flex:none;stroke:var(--accent)}
 .p-feats{width:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
 .p-feat{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center}
 .p-feat-ico{width:46px;height:46px;border-radius:50%;background:var(--chip);display:flex;align-items:center;justify-content:center;margin-bottom:4px}
 .ink .p-feat-ico{border:2px solid var(--ink)}
-.p-feat b{font-family:"Cairo",sans-serif;font-weight:800;font-size:17px;line-height:1.35}
-.p-feat span{font-size:16px;font-weight:500;line-height:1.4;color:var(--muted)}
+.p-feat b{font-family:"Cairo",sans-serif;font-weight:800;font-size:18px;line-height:1.35}
+.p-feat span{font-size:17px;font-weight:500;line-height:1.4;color:var(--muted)}
 .p-foot{display:flex;flex-direction:column;align-items:center;gap:10px}
-.p-foot hr{width:200px;margin:0;border:0;border-top:1px solid var(--rule)}
-.p-insta{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:700;color:var(--muted)}
-.p-insta b{font-family:"Cairo",sans-serif;font-weight:800;font-size:19px;color:var(--ink);direction:ltr}
+.p-foot hr{width:200px;margin:0;border:0;border-top:2px solid var(--rule)}
+.p-insta{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:700;color:var(--muted)}
+.p-insta b{font-family:"Cairo",sans-serif;font-weight:800;font-size:20px;color:var(--ink);direction:ltr}
 
 /* ───────────── حارسُ وضعِ المطوِّر ───────────── */
 .soon{display:none;max-width:520px;margin:12vh auto 0;text-align:center}
@@ -233,13 +260,19 @@ input[aria-invalid=true]{border-color:var(--danger)}
 .is-dev .dev-badge{display:block}
 
 /* ───────────── الطباعة ───────────── */
-@page{size:A4 portrait;margin:0}
+/* تُطبَعُ ‎#pageBox‎ نفسُها بلا تصغير — لا نسخَ عندَ الطباعة: نسخةٌ تُصنَعُ لحظةَ الطباعةِ قد
+   تخرجُ بلا صورِها، لأنّ المتصفّحَ لم يرسمْها بعدُ (مقيسٌ في الاختبار). فالنسخةُ الثانيةُ في وضعِ
+   «نسختان على A4» حاضرةٌ في المعاينةِ مرسومةً قبلَ الطباعة (syncCopy).
+   ‎559×2 + 5 = 1123px‎ = عرضُ A4 الأفقيّ تماماً، و‎793px‎ دونَ ارتفاعِه فلا صفحةَ ثانية. */
+.cut{flex:none;width:5px;height:793px;
+  background:repeating-linear-gradient(to bottom,#8A93A3 0 6px,transparent 6px 12px) center/1px 100% no-repeat;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
 @media print{
   html,body{background:#fff !important;margin:0 !important;padding:0 !important}
-  .no-print{display:none !important}
-  .wrap,.layout,.preview,.sheet-frame{display:block !important;max-width:none;margin:0;padding:0;position:static !important}
-  .sheet-scale{width:auto !important;height:auto !important;box-shadow:none;border-radius:0;overflow:visible}
-  .poster{position:relative !important;transform:none !important;break-inside:avoid}
+  .soon,.page-head,#form,.preview-cap{display:none !important}
+  .wrap,.layout,.preview,.sheet-frame{display:block !important;max-width:none !important;margin:0 !important;padding:0 !important;position:static !important}
+  .sheet-scale{width:auto !important;height:auto !important;box-shadow:none !important;border-radius:0 !important;overflow:visible !important}
+  .pagebox{position:static !important;transform:none !important}
 }
 </style>
 </head>
@@ -256,7 +289,7 @@ input[aria-invalid=true]{border-color:var(--danger)}
     <a class="back" href="index.html">→ رجوع للمنصّة</a>
     <p class="dev-badge">🔧 وضع المطوّر — الصفحة غير ظاهرة للمعلمات بعد</p>
     <h1>منشور مشغل شوجب</h1>
-    <p>اكتبي بيانات المشغل، وسيتحدّث المنشور أمامك مباشرة، ثم اطبعيه أو احفظيه PDF بمقاس A4.</p>
+    <p>اكتبي بيانات المشغل، وسيتحدّث المنشور أمامك مباشرة، ثم اطبعيه أو احفظيه PDF بمقاس A5.</p>
   </header>
 
   <div class="layout">
@@ -305,6 +338,32 @@ input[aria-invalid=true]{border-color:var(--danger)}
           <input type="text" id="fPlace" maxlength="50" placeholder="مثال: مركز مصادر التعلم">
         </div>
         <div class="field">
+          <label for="fFrame">إطار رمز QR</label>
+          <div class="frame-row">
+            <select id="fFrame">
+              <option value="random">عشوائي</option>
+              <option value="moon">العلوم</option>
+              <option value="math">الرياضيات</option>
+              <option value="arabic">أحب لغتي</option>
+              <option value="deeny">ديني حياتي</option>
+              <option value="it">عالمي الرقمي</option>
+              <option value="en">اللغة الإنجليزية</option>
+              <option value="hw">الهوية والمواطنة</option>
+            </select>
+            <button type="button" class="icon-btn dice" id="reroll" aria-label="إطار عشوائي آخر" title="إطار عشوائي آخر">
+              <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="8.5" cy="8.5" r="1.2" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.2" fill="currentColor"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1.2" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1.2" fill="currentColor"/></svg>
+            </button>
+          </div>
+          <p class="hint">إطار المادة التي يدور حولها المشغل، أو عشوائي من إطارات المنصة.</p>
+        </div>
+        <div class="field">
+          <span class="legend" id="paperLegend">ورق الطباعة</span>
+          <div class="seg" role="radiogroup" aria-labelledby="paperLegend">
+            <label><input type="radio" name="paper" value="a5" checked> A5</label>
+            <label><input type="radio" name="paper" value="a4x2"> نسختان على A4</label>
+          </div>
+        </div>
+        <div class="field">
           <span class="legend" id="variantLegend">نسخة الطباعة</span>
           <div class="seg" role="radiogroup" aria-labelledby="variantLegend">
             <label><input type="radio" name="variant" value="color" checked> ملوّنة</label>
@@ -319,15 +378,17 @@ input[aria-invalid=true]{border-color:var(--danger)}
           <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/></svg>
           طباعة أو حفظ PDF
         </button>
-        <p class="tip">في نافذة الطباعة اختاري الورق <b>A4</b> والهوامش <b>بلا</b>، أو اختاري «حفظ بصيغة PDF» لإرساله.</p>
+        <p class="tip" id="tip"></p>
         <button type="button" class="secondary" id="resetBtn">مسح البيانات</button>
       </div>
     </form>
 
     <section class="preview" aria-label="معاينة المنشور">
-      <p class="preview-cap no-print">معاينة — مقاس A4</p>
+      <p class="preview-cap no-print" id="previewCap">معاينة — بطاقة A5</p>
       <div class="sheet-frame" id="frame">
         <div class="sheet-scale" id="scaleBox">
+        <div class="pagebox" id="pageBox">
+         <div class="sheet" id="sheet">
 
           <div class="poster" id="poster">
             <div class="p-sky"></div>
@@ -345,7 +406,7 @@ input[aria-invalid=true]{border-color:var(--danger)}
             <img class="p-moon" src="images/rocket/moon.png?v=20261022" alt="">
             <img class="p-saturn" src="images/ui/space-saturn.png?v=20261022" alt="">
             <svg class="p-path" aria-hidden="true" width="793" height="520" viewBox="0 0 793 520">
-              <path d="M240 452C262 410 270 372 258 340S214 266 196 222" fill="none" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="0.1 11"/>
+              <path d="M198 452C214 406 246 372 258 340S214 266 196 222" fill="none" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="0.1 11"/>
             </svg>
             <img class="p-rocket" src="images/rocket/rocket-body.png?v=20261022" alt="">
             <img class="p-logo logo-color" src="images/logo.png?v=20261022" alt="شوجب — مصدرك للأسئلة التفاعلية">
@@ -358,11 +419,16 @@ input[aria-invalid=true]{border-color:var(--danger)}
             </div>
 
             <div class="p-qr">
-              <div class="p-qr-label">امسحي الرمز بالجوال</div>
-              <div class="p-qrbox">
-                <svg role="img" aria-label="رمز الاستجابة السريعة لموقع شوجب" width="220" height="220" viewBox="0 0 29 29" shape-rendering="crispEdges"><path fill="#1C2540" d="M0 0h7v1h-7zM10 0h2v1h-2zM14 0h4v1h-4zM19 0h2v1h-2zM22 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM8 1h5v1h-5zM17 1h1v1h-1zM19 1h1v1h-1zM22 1h1v1h-1zM28 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM10 2h4v1h-4zM16 2h3v1h-3zM22 2h1v1h-1zM24 2h3v1h-3zM28 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM12 3h2v1h-2zM18 3h1v1h-1zM22 3h1v1h-1zM24 3h3v1h-3zM28 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM9 4h1v1h-1zM14 4h5v1h-5zM22 4h1v1h-1zM24 4h3v1h-3zM28 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM8 5h1v1h-1zM10 5h1v1h-1zM12 5h1v1h-1zM17 5h1v1h-1zM19 5h2v1h-2zM22 5h1v1h-1zM28 5h1v1h-1zM0 6h7v1h-7zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM18 6h1v1h-1zM20 6h1v1h-1zM22 6h7v1h-7zM8 7h5v1h-5zM16 7h1v1h-1zM4 8h4v1h-4zM9 8h1v1h-1zM11 8h1v1h-1zM15 8h2v1h-2zM20 8h1v1h-1zM22 8h2v1h-2zM27 8h1v1h-1zM1 9h1v1h-1zM3 9h1v1h-1zM5 9h1v1h-1zM8 9h4v1h-4zM13 9h1v1h-1zM17 9h3v1h-3zM24 9h5v1h-5zM0 10h1v1h-1zM4 10h1v1h-1zM6 10h3v1h-3zM19 10h1v1h-1zM21 10h1v1h-1zM28 10h1v1h-1zM0 11h1v1h-1zM3 11h1v1h-1zM7 11h1v1h-1zM9 11h1v1h-1zM19 11h3v1h-3zM24 11h1v1h-1zM27 11h2v1h-2zM0 12h2v1h-2zM5 12h5v1h-5zM20 12h1v1h-1zM23 12h1v1h-1zM25 12h1v1h-1zM28 12h1v1h-1zM0 13h1v1h-1zM3 13h2v1h-2zM8 13h2v1h-2zM22 13h1v1h-1zM24 13h1v1h-1zM26 13h3v1h-3zM3 14h5v1h-5zM9 14h1v1h-1zM20 14h3v1h-3zM24 14h1v1h-1zM28 14h1v1h-1zM0 15h1v1h-1zM3 15h2v1h-2zM7 15h1v1h-1zM19 15h1v1h-1zM21 15h3v1h-3zM25 15h1v1h-1zM0 16h1v1h-1zM3 16h1v1h-1zM5 16h2v1h-2zM8 16h1v1h-1zM19 16h1v1h-1zM27 16h1v1h-1zM0 17h3v1h-3zM4 17h1v1h-1zM9 17h1v1h-1zM19 17h2v1h-2zM23 17h2v1h-2zM28 17h1v1h-1zM2 18h1v1h-1zM5 18h4v1h-4zM20 18h1v1h-1zM24 18h1v1h-1zM26 18h1v1h-1zM28 18h1v1h-1zM3 19h1v1h-1zM7 19h1v1h-1zM10 19h2v1h-2zM13 19h1v1h-1zM16 19h3v1h-3zM24 19h2v1h-2zM27 19h1v1h-1zM0 20h2v1h-2zM4 20h4v1h-4zM9 20h3v1h-3zM13 20h1v1h-1zM16 20h10v1h-10zM8 21h1v1h-1zM11 21h3v1h-3zM15 21h2v1h-2zM18 21h1v1h-1zM20 21h1v1h-1zM24 21h1v1h-1zM26 21h1v1h-1zM28 21h1v1h-1zM0 22h7v1h-7zM8 22h1v1h-1zM11 22h1v1h-1zM16 22h2v1h-2zM19 22h2v1h-2zM22 22h1v1h-1zM24 22h1v1h-1zM28 22h1v1h-1zM0 23h1v1h-1zM6 23h1v1h-1zM8 23h4v1h-4zM13 23h3v1h-3zM17 23h4v1h-4zM24 23h2v1h-2zM0 24h1v1h-1zM2 24h3v1h-3zM6 24h1v1h-1zM8 24h1v1h-1zM10 24h4v1h-4zM16 24h1v1h-1zM18 24h7v1h-7zM27 24h2v1h-2zM0 25h1v1h-1zM2 25h3v1h-3zM6 25h1v1h-1zM9 25h1v1h-1zM12 25h2v1h-2zM15 25h1v1h-1zM17 25h1v1h-1zM23 25h1v1h-1zM25 25h3v1h-3zM0 26h1v1h-1zM2 26h3v1h-3zM6 26h1v1h-1zM10 26h1v1h-1zM12 26h1v1h-1zM14 26h8v1h-8zM25 26h4v1h-4zM0 27h1v1h-1zM6 27h1v1h-1zM15 27h2v1h-2zM18 27h1v1h-1zM23 27h1v1h-1zM25 27h1v1h-1zM27 27h2v1h-2zM0 28h7v1h-7zM9 28h1v1h-1zM13 28h1v1h-1zM15 28h1v1h-1zM18 28h1v1h-1zM22 28h1v1h-1zM24 28h2v1h-2zM27 28h1v1h-1z"/></svg>
-                <div class="p-badge"><img src="images/rocket/rocket-body.png?v=20261022" alt=""></div>
+              <div class="p-frame" id="pFrame">
+                <img class="p-frame-img" id="pFrameImg" src="images/ui/frame-moon-l.png?v=20261022" alt="">
+                <div class="p-mat" id="pMat">
+              <div class="p-qrbox" id="pQrBox">
+                <svg role="img" aria-label="رمز الاستجابة السريعة لموقع شوجب" viewBox="0 0 29 29" shape-rendering="crispEdges"><path fill="#1C2540" d="M0 0h7v1h-7zM10 0h2v1h-2zM14 0h4v1h-4zM19 0h2v1h-2zM22 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM8 1h5v1h-5zM17 1h1v1h-1zM19 1h1v1h-1zM22 1h1v1h-1zM28 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM10 2h4v1h-4zM16 2h3v1h-3zM22 2h1v1h-1zM24 2h3v1h-3zM28 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM12 3h2v1h-2zM18 3h1v1h-1zM22 3h1v1h-1zM24 3h3v1h-3zM28 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM9 4h1v1h-1zM14 4h5v1h-5zM22 4h1v1h-1zM24 4h3v1h-3zM28 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM8 5h1v1h-1zM10 5h1v1h-1zM12 5h1v1h-1zM17 5h1v1h-1zM19 5h2v1h-2zM22 5h1v1h-1zM28 5h1v1h-1zM0 6h7v1h-7zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM18 6h1v1h-1zM20 6h1v1h-1zM22 6h7v1h-7zM8 7h5v1h-5zM16 7h1v1h-1zM4 8h4v1h-4zM9 8h1v1h-1zM11 8h1v1h-1zM15 8h2v1h-2zM20 8h1v1h-1zM22 8h2v1h-2zM27 8h1v1h-1zM1 9h1v1h-1zM3 9h1v1h-1zM5 9h1v1h-1zM8 9h4v1h-4zM13 9h1v1h-1zM17 9h3v1h-3zM24 9h5v1h-5zM0 10h1v1h-1zM4 10h1v1h-1zM6 10h3v1h-3zM19 10h1v1h-1zM21 10h1v1h-1zM28 10h1v1h-1zM0 11h1v1h-1zM3 11h1v1h-1zM7 11h1v1h-1zM9 11h1v1h-1zM19 11h3v1h-3zM24 11h1v1h-1zM27 11h2v1h-2zM0 12h2v1h-2zM5 12h5v1h-5zM20 12h1v1h-1zM23 12h1v1h-1zM25 12h1v1h-1zM28 12h1v1h-1zM0 13h1v1h-1zM3 13h2v1h-2zM8 13h2v1h-2zM22 13h1v1h-1zM24 13h1v1h-1zM26 13h3v1h-3zM3 14h5v1h-5zM9 14h1v1h-1zM20 14h3v1h-3zM24 14h1v1h-1zM28 14h1v1h-1zM0 15h1v1h-1zM3 15h2v1h-2zM7 15h1v1h-1zM19 15h1v1h-1zM21 15h3v1h-3zM25 15h1v1h-1zM0 16h1v1h-1zM3 16h1v1h-1zM5 16h2v1h-2zM8 16h1v1h-1zM19 16h1v1h-1zM27 16h1v1h-1zM0 17h3v1h-3zM4 17h1v1h-1zM9 17h1v1h-1zM19 17h2v1h-2zM23 17h2v1h-2zM28 17h1v1h-1zM2 18h1v1h-1zM5 18h4v1h-4zM20 18h1v1h-1zM24 18h1v1h-1zM26 18h1v1h-1zM28 18h1v1h-1zM3 19h1v1h-1zM7 19h1v1h-1zM10 19h2v1h-2zM13 19h1v1h-1zM16 19h3v1h-3zM24 19h2v1h-2zM27 19h1v1h-1zM0 20h2v1h-2zM4 20h4v1h-4zM9 20h3v1h-3zM13 20h1v1h-1zM16 20h10v1h-10zM8 21h1v1h-1zM11 21h3v1h-3zM15 21h2v1h-2zM18 21h1v1h-1zM20 21h1v1h-1zM24 21h1v1h-1zM26 21h1v1h-1zM28 21h1v1h-1zM0 22h7v1h-7zM8 22h1v1h-1zM11 22h1v1h-1zM16 22h2v1h-2zM19 22h2v1h-2zM22 22h1v1h-1zM24 22h1v1h-1zM28 22h1v1h-1zM0 23h1v1h-1zM6 23h1v1h-1zM8 23h4v1h-4zM13 23h3v1h-3zM17 23h4v1h-4zM24 23h2v1h-2zM0 24h1v1h-1zM2 24h3v1h-3zM6 24h1v1h-1zM8 24h1v1h-1zM10 24h4v1h-4zM16 24h1v1h-1zM18 24h7v1h-7zM27 24h2v1h-2zM0 25h1v1h-1zM2 25h3v1h-3zM6 25h1v1h-1zM9 25h1v1h-1zM12 25h2v1h-2zM15 25h1v1h-1zM17 25h1v1h-1zM23 25h1v1h-1zM25 25h3v1h-3zM0 26h1v1h-1zM2 26h3v1h-3zM6 26h1v1h-1zM10 26h1v1h-1zM12 26h1v1h-1zM14 26h8v1h-8zM25 26h4v1h-4zM0 27h1v1h-1zM6 27h1v1h-1zM15 27h2v1h-2zM18 27h1v1h-1zM23 27h1v1h-1zM25 27h1v1h-1zM27 27h2v1h-2zM0 28h7v1h-7zM9 28h1v1h-1zM13 28h1v1h-1zM15 28h1v1h-1zM18 28h1v1h-1zM22 28h1v1h-1zM24 28h2v1h-2zM27 28h1v1h-1z"/></svg>
+                <div class="p-badge" id="pBadge"><img src="images/rocket/rocket-body.png?v=20261022" alt=""></div>
               </div>
+                </div>
+              </div>
+              <div class="p-qr-label">امسحي الرمز بالجوال</div>
               <div class="p-url">shoogp.com</div>
             </div>
 
@@ -418,6 +484,9 @@ input[aria-invalid=true]{border-color:var(--danger)}
             </div>
           </div>
 
+         </div>
+         <div class="cut" id="cutLine" hidden></div>
+        </div>
         </div>
       </div>
     </section>
@@ -433,7 +502,23 @@ input[aria-invalid=true]{border-color:var(--danger)}
   var KEY = 'shoogp-workshop-poster-v1';
   var MAX_TEAM = 8;
   var DEFAULT_TITLE = 'منصة شوجب التفاعلية';
-  var W = 793, H = 1122;
+  var SW = 559, SH = 793;           // بطاقة A5 بالبكسل (96 نقطة/بوصة)
+  var V = '?v=20261022';
+
+  /* ── إطاراتُ المواد (مقاس l) ──
+     ar: أبعادُ الصورة · cx/cy: مركزُ النافذةِ ٪ من العرضِ/الارتفاع · c: ضلعُ البساطِ الأبيضِ ٪ من العرض.
+     مشتقّةٌ من نوافذِ ‎win‎ في ‎js/shoogp-ui.js‎ (أكبرُ مربّعٍ متمركزٍ فيها × ٠٫٩٨)، ومفحوصةٌ بالعينِ على الإطاراتِ السبعة. */
+  var FRAMES = {
+    moon:   { ar: [1246, 1222], cx: 50.5,  cy: 49.5,  c: 74.48 },
+    math:   { ar: [1261, 1247], cx: 50.0,  cy: 47.25, c: 66.38 },
+    arabic: { ar: [1254, 1254], cx: 51.05, cy: 49.45, c: 61.05 },
+    deeny:  { ar: [927, 904],   cx: 49.5,  cy: 51.15, c: 66.84 },
+    it:     { ar: [958, 982],   cx: 47.34, cy: 53.57, c: 64.54 },
+    en:     { ar: [1024, 1024], cx: 50.0,  cy: 50.0,  c: 59.0 },
+    hw:     { ar: [975, 985],   cx: 48.46, cy: 51.78, c: 66.34 }
+  };
+  var FRAME_KEYS = Object.keys(FRAMES);
+  var FRAME_W = 300;                // عرضُ الإطارِ بإحداثياتِ التصميم
 
   function $(id) { return document.getElementById(id); }
   var f = {
@@ -441,8 +526,34 @@ input[aria-invalid=true]{border-color:var(--danger)}
     date: $('fDate'), time: $('fTime'), place: $('fPlace')
   };
   var team = $('team'), addTeamBtn = $('addTeam'), teamHint = $('teamHint');
-  var poster = $('poster'), frame = $('frame'), scaleBox = $('scaleBox');
+  var poster = $('poster'), sheet = $('sheet'), frame = $('frame'), scaleBox = $('scaleBox');
+  var fFrame = $('fFrame'), reroll = $('reroll'), pageBox = $('pageBox'), cutLine = $('cutLine');
+  var copy = null;                  // البطاقةُ الثانيةُ في وضعِ «نسختان على A4» — حاضرةٌ في المعاينة
   var err = $('err');
+  var frameRnd = '';                // الإطارُ الذي وقعَ عليه الاختيارُ العشوائيُّ (يُحفَظُ فتطابقُ الطباعةُ المعاينة)
+
+  function pickRandom(except) {
+    var pool = FRAME_KEYS.filter(function (k) { return k !== except; });
+    return pool[Math.floor(Math.random() * pool.length)];
+  }
+  function frameKey() { return fFrame.value === 'random' ? frameRnd : fFrame.value; }
+
+  /* ── رمزُ QR داخلَ الإطار: البساطُ الأبيضُ في نافذتِه، والرمزُ ٨٠٪ منه (هامشُه الأبيضُ ≈٣٫٦ وحدات) ── */
+  function layoutQR() {
+    var k = frameKey(), g = FRAMES[k];
+    var fh = FRAME_W * g.ar[1] / g.ar[0];
+    var img = $('pFrameImg'), src = 'images/ui/frame-' + k + '-l.png' + V;
+    if (img.getAttribute('src') !== src) img.setAttribute('src', src);
+    var box = $('pFrame'); box.style.height = fh + 'px';
+    var C = FRAME_W * g.c / 100, mat = $('pMat');
+    mat.style.width = mat.style.height = C + 'px';
+    mat.style.left = (FRAME_W * g.cx / 100 - C / 2) + 'px';
+    mat.style.top = (fh * g.cy / 100 - C / 2) + 'px';
+    mat.style.borderRadius = (C * 0.14) + 'px';
+    var q = C * 0.8, qb = $('pQrBox');
+    qb.style.width = qb.style.height = q + 'px';
+    var b = $('pBadge'); b.style.width = b.style.height = (q * 0.27) + 'px';
+  }
 
   /* ── أرقامٌ عربية ── */
   function arNum(s) { return String(s).replace(/[0-9]/g, function (d) { return '٠١٢٣٤٥٦٧٨٩'[d]; }); }
@@ -497,13 +608,16 @@ input[aria-invalid=true]{border-color:var(--danger)}
   addTeamBtn.addEventListener('click', function () { addTeamRow('', true); });
 
   /* ── الحفظ في المتصفّح ── */
-  function variant() { var r = document.querySelector('input[name=variant]:checked'); return r ? r.value : 'color'; }
+  function radio(name, dflt) { var r = document.querySelector('input[name=' + name + ']:checked'); return r ? r.value : dflt; }
+  function variant() { return radio('variant', 'color'); }
+  function paper() { return radio('paper', 'a5'); }
   function readState() {
     return {
       school: f.school.value.trim(), presenter: f.presenter.value.trim(),
       team: teamInputs().map(function (i) { return i.value.trim(); }).filter(Boolean),
       title: f.title.value.trim(), date: f.date.value, time: f.time.value,
-      place: f.place.value.trim(), variant: variant()
+      place: f.place.value.trim(), variant: variant(),
+      frame: fFrame.value, frameRnd: frameRnd, paper: paper()
     };
   }
   function save(s) { try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) {} }
@@ -517,6 +631,9 @@ input[aria-invalid=true]{border-color:var(--danger)}
     (Array.isArray(s.team) ? s.team.slice(0, MAX_TEAM) : []).forEach(function (n) { addTeamRow(String(n), false); });
     if (!teamInputs().length) addTeamRow('', false);
     if (s.variant === 'ink') document.querySelector('input[name=variant][value=ink]').checked = true;
+    if (s.paper === 'a4x2') document.querySelector('input[name=paper][value=a4x2]').checked = true;
+    if (typeof s.frame === 'string' && (s.frame === 'random' || FRAMES[s.frame])) fFrame.value = s.frame;
+    frameRnd = FRAMES[s.frameRnd] ? s.frameRnd : pickRandom();
   }
 
   /* ── تصغيرُ النصِّ ليبقى داخلَ إطارِه ── */
@@ -585,28 +702,72 @@ input[aria-invalid=true]{border-color:var(--danger)}
     $('pInfo').hidden = !any;
 
     poster.classList.toggle('ink', s.variant === 'ink');
+    layoutQR();
+    reroll.hidden = s.frame !== 'random';
+    var twoUp = s.paper === 'a4x2';
+    $('pageRule').textContent = twoUp ? '@page{size:297mm 210mm;margin:0}' : '@page{size:148mm 210mm;margin:0}';
+    $('previewCap').textContent = twoUp ? 'معاينة — ورقة A4 فيها بطاقتان A5' : 'معاينة — بطاقة A5';
+    $('tip').textContent = twoUp
+      ? 'تُطبع بطاقتان على ورقة A4 أفقية، ثم تُقصّ الورقة من المنتصف عند الخط المتقطّع. اختاري الهوامش «بلا».'
+      : 'في نافذة الطباعة اختاري الورق A5 والهوامش «بلا»، أو «حفظ بصيغة PDF» لإرساله.';
     if (s.school) f.school.removeAttribute('aria-invalid');
     if (s.presenter) f.presenter.removeAttribute('aria-invalid');
     if (s.school && s.presenter) err.textContent = '';
     save(s);
     fitAll();
+    syncCopy(twoUp);
+    scalePreview();
+  }
+
+  /* ── البطاقةُ الثانية: تُنسَخُ صورُها مرّةً واحدة، ثمّ تُزامَنُ نصوصُها ومقاساتُها فقط
+     (فلا تُعادُ صورُها مع كلِّ حرفٍ تكتبُه المعلّمة) ── */
+  function stripIds(node) {
+    node.removeAttribute('id');
+    Array.prototype.forEach.call(node.querySelectorAll('[id]'), function (el) { el.removeAttribute('id'); });
+    return node;
+  }
+  function syncCopy(on) {
+    cutLine.hidden = !on;
+    if (!on) { if (copy) copy.hidden = true; return; }
+    if (!copy) { copy = stripIds(sheet.cloneNode(true)); copy.setAttribute('aria-hidden', 'true'); pageBox.appendChild(copy); }
+    copy.hidden = false;
+    var lp = poster, cp = copy.querySelector('.poster');
+    cp.className = lp.className;
+    ['.p-head', '.p-credits', '.p-bottom'].forEach(function (sel) {
+      var fresh = stripIds(lp.querySelector(sel).cloneNode(true));
+      cp.replaceChild(fresh, cp.querySelector(sel));
+    });
+    ['.p-frame', '.p-mat', '.p-qrbox', '.p-badge'].forEach(function (sel) {
+      cp.querySelector(sel).style.cssText = lp.querySelector(sel).style.cssText;
+    });
+    var src = $('pFrameImg').getAttribute('src'), ci = cp.querySelector('.p-frame-img');
+    if (ci.getAttribute('src') !== src) ci.setAttribute('src', src);
   }
   Object.keys(f).forEach(function (k) { f[k].addEventListener('input', update); });
-  Array.prototype.forEach.call(document.querySelectorAll('input[name=variant]'), function (r) { r.addEventListener('change', update); });
+  Array.prototype.forEach.call(document.querySelectorAll('input[name=variant],input[name=paper]'), function (r) { r.addEventListener('change', update); });
+  fFrame.addEventListener('change', update);
+  reroll.addEventListener('click', function () { frameRnd = pickRandom(frameRnd); update(); });
 
-  /* ── تحجيمُ المعاينة ── */
+  /* ── تحجيمُ المعاينة (البطاقةُ كلُّها؛ التصميمُ داخلَها مُصغَّرٌ أصلاً إلى A5) ── */
   function scalePreview() {
+    var pw = paper() === 'a4x2' ? SW * 2 + 5 : SW;
     var w = frame.clientWidth;
     var maxH = window.matchMedia('(min-width: 901px)').matches ? window.innerHeight - 70 : Infinity;
-    var s = Math.min(w / W, maxH / H, 1);
-    scaleBox.style.width = (W * s) + 'px';
-    scaleBox.style.height = (H * s) + 'px';
-    poster.style.transform = 'scale(' + s + ')';
+    var s = Math.min(w / pw, maxH / SH, 1.25);
+    scaleBox.style.width = (pw * s) + 'px';
+    scaleBox.style.height = (SH * s) + 'px';
+    pageBox.style.transform = 'scale(' + s + ')';
   }
   if (window.ResizeObserver) new ResizeObserver(scalePreview).observe(frame);
   window.addEventListener('resize', scalePreview);
 
-  /* ── الطباعة ── */
+  /* ── الطباعة: الصفحةُ في المعاينةِ نفسُها — تُنتظَرُ الخطوطُ وكلُّ صورِها قبلَ فتحِ النافذة ── */
+  function imagesReady(root) {
+    return Promise.all(Array.prototype.map.call(root.querySelectorAll('img'), function (i) {
+      if (i.complete && i.naturalWidth) return i.decode ? i.decode().catch(function () {}) : null;
+      return new Promise(function (r) { i.addEventListener('load', r, { once: true }); i.addEventListener('error', r, { once: true }); });
+    }));
+  }
   $('printBtn').addEventListener('click', function () {
     var s = readState(), missing = [];
     if (!s.school) { f.school.setAttribute('aria-invalid', 'true'); missing.push(f.school); }
@@ -616,10 +777,9 @@ input[aria-invalid=true]{border-color:var(--danger)}
       missing[0].focus();
       return;
     }
-    var go = function () { fitAll(); window.print(); };
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(go); else go();
+    var fonts = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+    Promise.all([fonts, imagesReady(pageBox)]).then(function () { fitAll(); syncCopy(paper() === 'a4x2'); window.print(); });
   });
-  window.addEventListener('beforeprint', fitAll);
 
   $('resetBtn').addEventListener('click', function () {
     if (!window.confirm('مسح كل البيانات المكتوبة؟')) return;
@@ -627,6 +787,8 @@ input[aria-invalid=true]{border-color:var(--danger)}
     Object.keys(f).forEach(function (k) { f[k].value = ''; f[k].removeAttribute('aria-invalid'); });
     team.textContent = ''; addTeamRow('', false);
     document.querySelector('input[name=variant][value=color]').checked = true;
+    document.querySelector('input[name=paper][value=a5]').checked = true;
+    fFrame.value = 'random'; frameRnd = pickRandom();
     err.textContent = '';
     update();
   });
