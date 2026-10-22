@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>منشور مشغل شوجب — للطباعة</title>
+
+<!-- 🔧 حارسُ وضعِ المطوِّر (طلبُ المالك ٢٠٢٦-١٠-٢٢): الصفحةُ قيدُ التجربة، فلا يرى نموذجَها
+     إلا من فعّلَ وضعَ المطوِّرِ في المنصّة (‏`shoogp-dev` في `js/unlock.js`، وبابُها زرٌّ في
+     شريطِه). غيرُه يرى إشعارَ «قريباً». ويقعُ في الرأسِ قبلَ رسمِ الصفحةِ فلا يومضُ النموذج.
+     ⚠️ حجبٌ لا تأمين — كحجبِ زرِّ القفلِ نفسِه.
+     **وعندَ اعتمادِها للمعلّمات:** اجعلْ `DEV_ONLY = false` (سطرٌ واحد)، ثمّ أضِفْ لها رابطاً ظاهراً. -->
+<script>
+  var DEV_ONLY = true;
+  var isDev = false;
+  try { isDev = localStorage.getItem('shoogp-dev') === '1'; } catch (e) {}
+  document.documentElement.classList.add(!DEV_ONLY || isDev ? 'is-open' : 'is-closed');
+  if (DEV_ONLY && isDev) document.documentElement.classList.add('is-dev');
+</script>
+
+<!--
+  ═══════════════════════════════════════════════════════════════
+  منشورُ مشغلِ شوجب — صفحةٌ مستقلّةٌ تُعبّئُ فيها المعلّمةُ بياناتِ
+  المشغلِ فيتحدّثُ المنشورُ أمامَها، ثمّ تطبعُه A4 أو تحفظُه PDF.
+
+  • المنشورُ مرسومٌ بالبكسل على ‎793×1122‎ (‎= A4 عند 96 نقطة/بوصة‎)؛
+    يُصغَّرُ للمعاينةِ بـ transform فقط، ويُطبَعُ بحجمِه الحقيقيّ.
+  • نصوصُ المعلّماتِ تُكتَبُ بـ textContent لا innerHTML (أمان).
+  • الأسماءُ الطويلةُ والكثيرةُ تُصغَّرُ تلقائياً (fitAll) لتبقى داخلَ إطارِها.
+  • رمزُ QR ثابتٌ يفتحُ https://shoogp.com — مسارُه مرسومٌ هنا (29×29،
+    تصحيح H، ووسطُه ‎9×9‎ مُفرَّغٌ لشارةِ الصاروخ). اختُبرَت قراءتُه.
+  • البياناتُ تُحفَظُ في متصفّحِ المعلّمةِ وحدَه (localStorage) — لا تُرسَلُ لأيِّ خادم.
+  ═══════════════════════════════════════════════════════════════
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@500;700&display=swap">
+
+<style>
+/* ───────────── الصفحة ───────────── */
+:root{
+  --space:#0F131B;   /* خلفية الفضاء — كصفحة الشراء */
+  --panel:#171D28;
+  --field:#0D111A;
+  --line:#2A3344;
+  --moon:#EDE8DE;
+  --muted:#9AA3B2;
+  --orange:#F8A020;  /* برتقالي الشعار */
+  --danger:#F08A78;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; padding:24px 16px 48px;
+  background:var(--space); color:var(--moon);
+  font-family:"Tajawal",-apple-system,"Segoe UI",Tahoma,sans-serif;
+  font-size:17px; line-height:1.7;
+}
+.wrap{max-width:1200px;margin:0 auto}
+.back{
+  display:inline-block;margin:0 0 18px;padding:10px 18px;border-radius:999px;
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+  color:#fff;font-size:16px;text-decoration:none;
+}
+.back:hover{background:rgba(255,255,255,.2)}
+.page-head h1{font-family:"Cairo",sans-serif;font-weight:900;font-size:28px;line-height:1.4;margin:0 0 4px}
+.page-head p{margin:0 0 24px;color:var(--muted);font-size:16px}
+
+.layout{display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);gap:28px;align-items:start}
+@media (max-width:900px){.layout{grid-template-columns:minmax(0,1fr)}}
+
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px}
+.panel h2{font-family:"Cairo",sans-serif;font-weight:800;font-size:19px;margin:0 0 12px;color:#fff}
+.group + .group{margin-top:22px;padding-top:20px;border-top:1px solid var(--line)}
+
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.field:last-child{margin-bottom:0}
+.field label,.legend{font-weight:700;font-size:16px}
+.req{color:var(--orange)}
+.hint{font-size:14px;color:var(--muted);margin:0}
+input[type=text],input[type=date],input[type=time]{
+  width:100%;min-height:48px;padding:10px 14px;
+  background:var(--field);color:var(--moon);
+  border:1px solid var(--line);border-radius:12px;
+  font:inherit;font-size:17px;
+}
+input[type=date],input[type=time]{color-scheme:dark}
+input::placeholder{color:#6F7889}
+input:focus{outline:2px solid var(--orange);outline-offset:1px}
+input[aria-invalid=true]{border-color:var(--danger)}
+.row2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+
+.team{display:flex;flex-direction:column;gap:8px;margin-bottom:10px}
+.team-row{display:flex;gap:8px}
+.team-row input{flex:1;min-width:0}
+.icon-btn{
+  flex:none;width:48px;height:48px;border-radius:12px;cursor:pointer;
+  background:transparent;border:1px solid var(--line);color:var(--muted);
+  display:flex;align-items:center;justify-content:center;
+}
+.icon-btn:hover{color:var(--danger);border-color:var(--danger)}
+.add-btn{
+  width:100%;min-height:48px;border-radius:12px;cursor:pointer;
+  background:transparent;border:1.5px dashed #4A5468;color:var(--moon);
+  font:inherit;font-weight:700;font-size:16px;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.add-btn:hover{border-color:var(--orange);color:var(--orange)}
+.add-btn:disabled{opacity:.45;cursor:not-allowed;border-color:#4A5468;color:var(--moon)}
+
+.seg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:6px}
+.seg label{
+  display:flex;align-items:center;gap:10px;min-height:48px;padding:8px 14px;
+  border:1px solid var(--line);border-radius:12px;background:var(--field);
+  font-weight:700;font-size:16px;cursor:pointer;
+}
+.seg input{accent-color:var(--orange);width:18px;height:18px;margin:0;flex:none}
+.seg label:has(input:checked){border-color:var(--orange)}
+
+.actions{margin-top:22px;display:flex;flex-direction:column;gap:10px}
+.primary{
+  width:100%;min-height:54px;border:0;border-radius:999px;cursor:pointer;
+  background:var(--orange);color:#1A1206;
+  font-family:"Cairo",sans-serif;font-weight:800;font-size:19px;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+}
+.primary:hover{background:#FFB23D}
+.secondary{
+  align-self:center;min-height:44px;padding:6px 16px;border-radius:999px;cursor:pointer;
+  background:transparent;border:1px solid var(--line);color:var(--muted);
+  font:inherit;font-size:15px;
+}
+.secondary:hover{color:var(--moon)}
+.err{margin:0;color:var(--danger);font-weight:700;font-size:15px}
+.err:empty{display:none}
+.tip{margin:4px 0 0;font-size:14px;color:var(--muted);line-height:1.7}
+
+/* المعاينة */
+@media (min-width:901px){.preview{position:sticky;top:16px}}
+.preview-cap{margin:0 0 10px;color:var(--muted);font-size:15px;text-align:center}
+.sheet-frame{display:flex;justify-content:center}
+.sheet-scale{position:relative;overflow:hidden;border-radius:4px;box-shadow:0 12px 40px rgba(0,0,0,.5);background:#fff}
+
+/* ───────────── المنشور (A4 = 793×1122) ───────────── */
+.poster{
+  --ink:#1C2540; --sky:#1C2540; --sky-text:#FFFFFF;
+  --gold:#FFD257; --accent:#F8A020; --muted:#4A5470;
+  --chip:#FFF1D9; --star:#FFFFFF; --path:#FFD257; --rule:#D5DBE8;
+  position:absolute;top:0;right:0;transform-origin:top right;
+  width:793px;height:1122px;overflow:hidden;
+  background:#fff;color:var(--ink);direction:rtl;
+  font-family:"Tajawal",Tahoma,sans-serif;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact;
+}
+/* نسخةٌ موفّرةٌ للحبر: سماءٌ فاتحةٌ وشعارٌ كحليّ — تُقرأُ بالأبيضِ والأسودِ أيضاً */
+.poster.ink{
+  --sky:#F1F4FA; --sky-text:#1C2540; --gold:#C46A00; --accent:#1C2540;
+  --muted:#3D4766; --chip:transparent; --star:#1C2540; --path:#1C2540; --rule:#C3CAD9;
+}
+.p-sky{position:absolute;top:0;left:0;width:793px;height:520px;background:var(--sky);border-radius:0 0 50% 50%/0 0 80px 80px}
+.p-stars{position:absolute;top:0;left:0;fill:var(--star)}
+.ink .p-stars{opacity:.4}
+.p-stars .sp{fill:var(--gold)}
+.p-moon{position:absolute;top:-40px;left:-46px;width:280px;height:254px}
+.p-saturn{position:absolute;top:34px;left:322px;width:118px;height:66px}
+.p-path{position:absolute;top:0;left:0}
+.p-path path{stroke:var(--path)}
+.p-rocket{position:absolute;top:268px;left:212px;width:92px;height:145px;transform:rotate(-21deg)}
+.p-logo{position:absolute;top:44px;right:48px;width:210px;height:148px}
+.logo-ink,.ink .logo-color{display:none}
+.ink .logo-ink{display:block}
+
+.p-head{position:absolute;top:214px;right:48px;width:370px;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.p-kicker{font-family:"Cairo",sans-serif;font-weight:800;font-size:17px;line-height:1.5;color:var(--gold);border:2px solid var(--gold);border-radius:999px;padding:2px 16px}
+.p-title{margin:0;width:100%;font-family:"Cairo",sans-serif;font-weight:900;font-size:46px;line-height:1.25;color:var(--sky-text);text-wrap:balance}
+.p-tagline{margin:0;font-family:"Cairo",sans-serif;font-weight:800;font-size:24px;line-height:1.4;color:var(--gold)}
+
+.p-qr{position:absolute;top:452px;left:48px;width:296px;background:#fff;border:4px solid var(--accent);border-radius:30px;padding:16px 34px 12px;display:flex;flex-direction:column;align-items:center;gap:12px}
+.p-qr-label{font-family:"Cairo",sans-serif;font-weight:800;font-size:18px;line-height:1.4}
+.p-qrbox{position:relative;width:220px;height:220px}
+.p-qrbox svg{display:block}
+.p-badge{position:absolute;top:78px;left:78px;width:64px;height:64px;background:#fff;border:3px solid var(--accent);border-radius:17px;display:flex;align-items:center;justify-content:center}
+.p-badge img{width:30px;height:47px}
+.p-url{font-family:"Cairo",sans-serif;font-weight:900;font-size:28px;line-height:1.3;letter-spacing:.5px;direction:ltr}
+
+.p-credits{position:absolute;top:538px;right:48px;width:373px;height:296px;display:flex;flex-direction:column;gap:12px}
+.p-school{display:flex;align-items:flex-start;gap:10px}
+.p-school svg{flex:none;margin-top:4px}
+.p-school-name{flex:1;min-width:0;font-family:"Cairo",sans-serif;font-weight:900;font-size:28px;line-height:1.3;text-wrap:balance}
+.p-rule{border-top:2px dashed var(--rule)}
+.p-label{font-size:16px;font-weight:700;line-height:1.4;color:var(--muted)}
+.p-by{display:flex;flex-direction:column;gap:2px}
+.p-name{font-family:"Cairo",sans-serif;font-weight:800;font-size:24px;line-height:1.35;white-space:nowrap;overflow:hidden}
+.p-team{flex:1;min-height:0;display:flex;flex-direction:column;gap:4px}
+.p-names{
+  flex:1;min-height:0;overflow:hidden;list-style:none;margin:0;padding:0;
+  display:grid;grid-template-columns:minmax(0,1fr);grid-auto-rows:min-content;column-gap:18px;row-gap:2px;
+  font-weight:700;font-size:19px;line-height:1.5;
+}
+.p-names.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.p-names li{display:flex;align-items:center;gap:8px;min-width:0}
+.p-names li::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.p-names span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.p-names.wrapn li{align-items:flex-start}
+.p-names.wrapn li::before{margin-top:.6em}
+.p-names.wrapn span{white-space:normal;line-height:1.3}
+.ph{opacity:.38}
+
+.p-bottom{position:absolute;top:852px;left:48px;right:48px;bottom:44px;display:flex;flex-direction:column;justify-content:space-between;align-items:center}
+.p-info{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.p-chip{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--rule);border-radius:999px;padding:4px 16px;font-weight:700;font-size:17px;line-height:1.5}
+.p-chip svg{flex:none;stroke:var(--accent)}
+.p-feats{width:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.p-feat{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center}
+.p-feat-ico{width:46px;height:46px;border-radius:50%;background:var(--chip);display:flex;align-items:center;justify-content:center;margin-bottom:4px}
+.ink .p-feat-ico{border:2px solid var(--ink)}
+.p-feat b{font-family:"Cairo",sans-serif;font-weight:800;font-size:17px;line-height:1.35}
+.p-feat span{font-size:16px;font-weight:500;line-height:1.4;color:var(--muted)}
+.p-foot{display:flex;flex-direction:column;align-items:center;gap:10px}
+.p-foot hr{width:200px;margin:0;border:0;border-top:1px solid var(--rule)}
+.p-insta{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:700;color:var(--muted)}
+.p-insta b{font-family:"Cairo",sans-serif;font-weight:800;font-size:19px;color:var(--ink);direction:ltr}
+
+/* ───────────── حارسُ وضعِ المطوِّر ───────────── */
+.soon{display:none;max-width:520px;margin:12vh auto 0;text-align:center}
+.soon h1{font-family:"Cairo",sans-serif;font-weight:900;font-size:26px;margin:0 0 8px}
+.soon p{color:var(--muted);margin:0 0 22px}
+.is-closed .wrap{display:none}
+.is-closed .soon{display:block}
+.dev-badge{display:none;margin:0 0 14px;padding:6px 14px;border-radius:999px;width:fit-content;
+  background:rgba(127,92,192,.18);border:1px solid #7f5cc0;color:#d9c9f5;font-size:14px;font-weight:700}
+.is-dev .dev-badge{display:block}
+
+/* ───────────── الطباعة ───────────── */
+@page{size:A4 portrait;margin:0}
+@media print{
+  html,body{background:#fff !important;margin:0 !important;padding:0 !important}
+  .no-print{display:none !important}
+  .wrap,.layout,.preview,.sheet-frame{display:block !important;max-width:none;margin:0;padding:0;position:static !important}
+  .sheet-scale{width:auto !important;height:auto !important;box-shadow:none;border-radius:0;overflow:visible}
+  .poster{position:relative !important;transform:none !important;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="soon no-print">
+  <h1>هذه الصفحة قيد التجهيز</h1>
+  <p>منشور مشاغل شوجب سيكون متاحاً للمعلمات قريباً بإذن الله.</p>
+  <a class="back" href="index.html">→ رجوع للمنصّة</a>
+</div>
+
+<div class="wrap">
+
+  <header class="page-head no-print">
+    <a class="back" href="index.html">→ رجوع للمنصّة</a>
+    <p class="dev-badge">🔧 وضع المطوّر — الصفحة غير ظاهرة للمعلمات بعد</p>
+    <h1>منشور مشغل شوجب</h1>
+    <p>اكتبي بيانات المشغل، وسيتحدّث المنشور أمامك مباشرة، ثم اطبعيه أو احفظيه PDF بمقاس A4.</p>
+  </header>
+
+  <div class="layout">
+
+    <form class="panel no-print" id="form" autocomplete="off" novalidate>
+      <div class="group">
+        <h2>بيانات المشغل</h2>
+        <div class="field">
+          <label for="fSchool">اسم المدرسة <span class="req">*</span></label>
+          <input type="text" id="fSchool" maxlength="70" placeholder="مثال: مدرسة النهضة للتعليم الأساسي">
+        </div>
+        <div class="field">
+          <label for="fPresenter">المعلمة مقدّمة المشغل <span class="req">*</span></label>
+          <input type="text" id="fPresenter" maxlength="40" placeholder="مثال: أ. فاطمة البلوشية">
+        </div>
+      </div>
+
+      <div class="group">
+        <h2>المعلمات المشاركات</h2>
+        <div class="team" id="team"></div>
+        <button type="button" class="add-btn" id="addTeam">
+          <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+          إضافة معلمة مشاركة
+        </button>
+        <p class="hint" id="teamHint">حتى ٨ معلمات — اتركي الخانة فارغة إن لم تكن هناك مشاركات.</p>
+      </div>
+
+      <div class="group">
+        <h2>خيارات إضافية</h2>
+        <div class="field">
+          <label for="fTitle">عنوان المشغل</label>
+          <input type="text" id="fTitle" maxlength="60" placeholder="منصة شوجب التفاعلية">
+        </div>
+        <div class="row2">
+          <div class="field">
+            <label for="fDate">التاريخ</label>
+            <input type="date" id="fDate">
+          </div>
+          <div class="field">
+            <label for="fTime">الوقت</label>
+            <input type="time" id="fTime">
+          </div>
+        </div>
+        <div class="field">
+          <label for="fPlace">المكان</label>
+          <input type="text" id="fPlace" maxlength="50" placeholder="مثال: مركز مصادر التعلم">
+        </div>
+        <div class="field">
+          <span class="legend" id="variantLegend">نسخة الطباعة</span>
+          <div class="seg" role="radiogroup" aria-labelledby="variantLegend">
+            <label><input type="radio" name="variant" value="color" checked> ملوّنة</label>
+            <label><input type="radio" name="variant" value="ink"> موفّرة للحبر</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <p class="err" id="err" role="alert"></p>
+        <button type="button" class="primary" id="printBtn">
+          <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/></svg>
+          طباعة أو حفظ PDF
+        </button>
+        <p class="tip">في نافذة الطباعة اختاري الورق <b>A4</b> والهوامش <b>بلا</b>، أو اختاري «حفظ بصيغة PDF» لإرساله.</p>
+        <button type="button" class="secondary" id="resetBtn">مسح البيانات</button>
+      </div>
+    </form>
+
+    <section class="preview" aria-label="معاينة المنشور">
+      <p class="preview-cap no-print">معاينة — مقاس A4</p>
+      <div class="sheet-frame" id="frame">
+        <div class="sheet-scale" id="scaleBox">
+
+          <div class="poster" id="poster">
+            <div class="p-sky"></div>
+            <svg class="p-stars" aria-hidden="true" width="793" height="520" viewBox="0 0 793 520">
+              <circle cx="380" cy="38" r="1.8"/><circle cx="470" cy="112" r="1.3"/><circle cx="318" cy="150" r="1.5"/>
+              <circle cx="560" cy="26" r="1.2"/><circle cx="760" cy="22" r="1.4"/><circle cx="88" cy="330" r="1.6"/>
+              <circle cx="36" cy="372" r="1.2"/><circle cx="150" cy="430" r="1.4"/><circle cx="720" cy="430" r="1.3"/>
+              <circle cx="610" cy="486" r="1.6"/><circle cx="760" cy="300" r="1.1"/><circle cx="470" cy="470" r="1.2"/>
+              <path d="M120 286l2.2 6.6 6.6 2.2-6.6 2.2-2.2 6.6-2.2-6.6-6.6-2.2 6.6-2.2z"/>
+              <path d="M640 440l1.8 5.2 5.2 1.8-5.2 1.8-1.8 5.2-1.8-5.2-5.2-1.8 5.2-1.8z"/>
+              <path class="sp" d="M500 186l2.8 8.2 8.2 2.8-8.2 2.8-2.8 8.2-2.8-8.2-8.2-2.8 8.2-2.8z"/>
+              <path class="sp" d="M700 462l2.4 7 7 2.4-7 2.4-2.4 7-2.4-7-7-2.4 7-2.4z"/>
+              <path class="sp" d="M30 404l2 5.8 5.8 2-5.8 2-2 5.8-2-5.8-5.8-2 5.8-2z"/>
+            </svg>
+            <img class="p-moon" src="images/rocket/moon.png?v=20261022" alt="">
+            <img class="p-saturn" src="images/ui/space-saturn.png?v=20261022" alt="">
+            <svg class="p-path" aria-hidden="true" width="793" height="520" viewBox="0 0 793 520">
+              <path d="M240 452C262 410 270 372 258 340S214 266 196 222" fill="none" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="0.1 11"/>
+            </svg>
+            <img class="p-rocket" src="images/rocket/rocket-body.png?v=20261022" alt="">
+            <img class="p-logo logo-color" src="images/logo.png?v=20261022" alt="شوجب — مصدرك للأسئلة التفاعلية">
+            <img class="p-logo logo-ink" src="images/logo-ink.png?v=20261022" alt="شوجب — مصدرك للأسئلة التفاعلية">
+
+            <div class="p-head">
+              <span class="p-kicker">مشغل تدريبي</span>
+              <h2 class="p-title" id="pTitle">منصة شوجب التفاعلية</h2>
+              <p class="p-tagline">ابدئي رحلة صفّك إلى القمر</p>
+            </div>
+
+            <div class="p-qr">
+              <div class="p-qr-label">امسحي الرمز بالجوال</div>
+              <div class="p-qrbox">
+                <svg role="img" aria-label="رمز الاستجابة السريعة لموقع شوجب" width="220" height="220" viewBox="0 0 29 29" shape-rendering="crispEdges"><path fill="#1C2540" d="M0 0h7v1h-7zM10 0h2v1h-2zM14 0h4v1h-4zM19 0h2v1h-2zM22 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM8 1h5v1h-5zM17 1h1v1h-1zM19 1h1v1h-1zM22 1h1v1h-1zM28 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM10 2h4v1h-4zM16 2h3v1h-3zM22 2h1v1h-1zM24 2h3v1h-3zM28 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM12 3h2v1h-2zM18 3h1v1h-1zM22 3h1v1h-1zM24 3h3v1h-3zM28 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM9 4h1v1h-1zM14 4h5v1h-5zM22 4h1v1h-1zM24 4h3v1h-3zM28 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM8 5h1v1h-1zM10 5h1v1h-1zM12 5h1v1h-1zM17 5h1v1h-1zM19 5h2v1h-2zM22 5h1v1h-1zM28 5h1v1h-1zM0 6h7v1h-7zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM18 6h1v1h-1zM20 6h1v1h-1zM22 6h7v1h-7zM8 7h5v1h-5zM16 7h1v1h-1zM4 8h4v1h-4zM9 8h1v1h-1zM11 8h1v1h-1zM15 8h2v1h-2zM20 8h1v1h-1zM22 8h2v1h-2zM27 8h1v1h-1zM1 9h1v1h-1zM3 9h1v1h-1zM5 9h1v1h-1zM8 9h4v1h-4zM13 9h1v1h-1zM17 9h3v1h-3zM24 9h5v1h-5zM0 10h1v1h-1zM4 10h1v1h-1zM6 10h3v1h-3zM19 10h1v1h-1zM21 10h1v1h-1zM28 10h1v1h-1zM0 11h1v1h-1zM3 11h1v1h-1zM7 11h1v1h-1zM9 11h1v1h-1zM19 11h3v1h-3zM24 11h1v1h-1zM27 11h2v1h-2zM0 12h2v1h-2zM5 12h5v1h-5zM20 12h1v1h-1zM23 12h1v1h-1zM25 12h1v1h-1zM28 12h1v1h-1zM0 13h1v1h-1zM3 13h2v1h-2zM8 13h2v1h-2zM22 13h1v1h-1zM24 13h1v1h-1zM26 13h3v1h-3zM3 14h5v1h-5zM9 14h1v1h-1zM20 14h3v1h-3zM24 14h1v1h-1zM28 14h1v1h-1zM0 15h1v1h-1zM3 15h2v1h-2zM7 15h1v1h-1zM19 15h1v1h-1zM21 15h3v1h-3zM25 15h1v1h-1zM0 16h1v1h-1zM3 16h1v1h-1zM5 16h2v1h-2zM8 16h1v1h-1zM19 16h1v1h-1zM27 16h1v1h-1zM0 17h3v1h-3zM4 17h1v1h-1zM9 17h1v1h-1zM19 17h2v1h-2zM23 17h2v1h-2zM28 17h1v1h-1zM2 18h1v1h-1zM5 18h4v1h-4zM20 18h1v1h-1zM24 18h1v1h-1zM26 18h1v1h-1zM28 18h1v1h-1zM3 19h1v1h-1zM7 19h1v1h-1zM10 19h2v1h-2zM13 19h1v1h-1zM16 19h3v1h-3zM24 19h2v1h-2zM27 19h1v1h-1zM0 20h2v1h-2zM4 20h4v1h-4zM9 20h3v1h-3zM13 20h1v1h-1zM16 20h10v1h-10zM8 21h1v1h-1zM11 21h3v1h-3zM15 21h2v1h-2zM18 21h1v1h-1zM20 21h1v1h-1zM24 21h1v1h-1zM26 21h1v1h-1zM28 21h1v1h-1zM0 22h7v1h-7zM8 22h1v1h-1zM11 22h1v1h-1zM16 22h2v1h-2zM19 22h2v1h-2zM22 22h1v1h-1zM24 22h1v1h-1zM28 22h1v1h-1zM0 23h1v1h-1zM6 23h1v1h-1zM8 23h4v1h-4zM13 23h3v1h-3zM17 23h4v1h-4zM24 23h2v1h-2zM0 24h1v1h-1zM2 24h3v1h-3zM6 24h1v1h-1zM8 24h1v1h-1zM10 24h4v1h-4zM16 24h1v1h-1zM18 24h7v1h-7zM27 24h2v1h-2zM0 25h1v1h-1zM2 25h3v1h-3zM6 25h1v1h-1zM9 25h1v1h-1zM12 25h2v1h-2zM15 25h1v1h-1zM17 25h1v1h-1zM23 25h1v1h-1zM25 25h3v1h-3zM0 26h1v1h-1zM2 26h3v1h-3zM6 26h1v1h-1zM10 26h1v1h-1zM12 26h1v1h-1zM14 26h8v1h-8zM25 26h4v1h-4zM0 27h1v1h-1zM6 27h1v1h-1zM15 27h2v1h-2zM18 27h1v1h-1zM23 27h1v1h-1zM25 27h1v1h-1zM27 27h2v1h-2zM0 28h7v1h-7zM9 28h1v1h-1zM13 28h1v1h-1zM15 28h1v1h-1zM18 28h1v1h-1zM22 28h1v1h-1zM24 28h2v1h-2zM27 28h1v1h-1z"/></svg>
+                <div class="p-badge"><img src="images/rocket/rocket-body.png?v=20261022" alt=""></div>
+              </div>
+              <div class="p-url">shoogp.com</div>
+            </div>
+
+            <div class="p-credits">
+              <div class="p-school">
+                <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 21h19"/><path d="M4.5 21V10.5L12 5l7.5 5.5V21"/><path d="M12 5V2.5h3"/><path d="M9.5 21v-5h5v5"/><path d="M8 12.5h.01M16 12.5h.01"/></svg>
+                <div class="p-school-name" id="pSchool"></div>
+              </div>
+              <div class="p-rule"></div>
+              <div class="p-by">
+                <span class="p-label">تقديم المعلمة</span>
+                <div class="p-name" id="pPresenter"></div>
+              </div>
+              <div class="p-team" id="pTeamWrap">
+                <span class="p-label">بمشاركة المعلمات</span>
+                <ul class="p-names" id="pTeam"></ul>
+              </div>
+            </div>
+
+            <div class="p-bottom">
+              <div class="p-info" id="pInfo">
+                <span class="p-chip" id="cDate"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span id="pDate"></span></span>
+                <span class="p-chip" id="cTime"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg><span id="pTime"></span></span>
+                <span class="p-chip" id="cPlace"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg><span id="pPlace"></span></span>
+              </div>
+
+              <div class="p-feats">
+                <div class="p-feat">
+                  <div class="p-feat-ico"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1C2540" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.5C10 5 7 4.5 3.5 5v13c3.5-.5 6.5 0 8.5 1.5 2-1.5 5-2 8.5-1.5V5C17 4.5 14 5 12 6.5z"/><path d="M12 6.5v13"/></svg></div>
+                  <b>وفق المنهج العُماني</b>
+                  <span>مرتبطة بدروس الكتب</span>
+                </div>
+                <div class="p-feat">
+                  <div class="p-feat-ico"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1C2540" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5c3 2.2 4.5 5.6 4.5 9.5v4h-9v-4c0-3.9 1.5-7.3 4.5-9.5z"/><circle cx="12" cy="9.5" r="1.8"/><path d="M7.5 13.5L5 16v3l2.5-1.5"/><path d="M16.5 13.5L19 16v3l-2.5-1.5"/><path d="M10 19.5c.5 1.2 1.2 2 2 2.5.8-.5 1.5-1.3 2-2.5"/></svg></div>
+                  <b>صاروخ الإنجاز</b>
+                  <span>يصعد مع كل إجابة صحيحة</span>
+                </div>
+                <div class="p-feat">
+                  <div class="p-feat-ico"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1C2540" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7.5h10a4.5 4.5 0 0 1 4.4 5.4l-.9 4.3a2.6 2.6 0 0 1-4.6 1.1L14 15.5h-4l-1.9 2.8a2.6 2.6 0 0 1-4.6-1.1l-.9-4.3A4.5 4.5 0 0 1 7 7.5z"/><path d="M8 10.5v3M6.5 12h3"/><circle cx="15.5" cy="11" r=".6"/><circle cx="17.5" cy="13" r=".6"/></svg></div>
+                  <b>ألعاب تعليمية</b>
+                  <span>منافسات ممتعة داخل الصف</span>
+                </div>
+              </div>
+
+              <div class="p-foot">
+                <hr>
+                <div class="p-insta">
+                  <span>تابعينا على إنستغرام</span>
+                  <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1C2540" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6"/></svg>
+                  <b>@shooogp</b>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  if (document.documentElement.classList.contains('is-closed')) return;   // حارسُ وضعِ المطوِّر
+
+  var KEY = 'shoogp-workshop-poster-v1';
+  var MAX_TEAM = 8;
+  var DEFAULT_TITLE = 'منصة شوجب التفاعلية';
+  var W = 793, H = 1122;
+
+  function $(id) { return document.getElementById(id); }
+  var f = {
+    school: $('fSchool'), presenter: $('fPresenter'), title: $('fTitle'),
+    date: $('fDate'), time: $('fTime'), place: $('fPlace')
+  };
+  var team = $('team'), addTeamBtn = $('addTeam'), teamHint = $('teamHint');
+  var poster = $('poster'), frame = $('frame'), scaleBox = $('scaleBox');
+  var err = $('err');
+
+  /* ── أرقامٌ عربية ── */
+  function arNum(s) { return String(s).replace(/[0-9]/g, function (d) { return '٠١٢٣٤٥٦٧٨٩'[d]; }); }
+
+  function fmtDate(v) {
+    if (!v) return '';
+    var p = v.split('-');
+    var d = new Date(+p[0], +p[1] - 1, +p[2]);
+    try {
+      return new Intl.DateTimeFormat('ar-OM-u-nu-arab', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }).format(d);
+    } catch (e) { return arNum(p[2] + '/' + p[1] + '/' + p[0]); }
+  }
+  function fmtTime(v) {
+    if (!v) return '';
+    var p = v.split(':');
+    try {
+      return new Intl.DateTimeFormat('ar-OM-u-nu-arab', { hour: 'numeric', minute: '2-digit', hour12: true }).format(new Date(2000, 0, 1, +p[0], +p[1]));
+    } catch (e) { return arNum(v); }
+  }
+
+  /* ── خانات المشاركات ── */
+  function teamInputs() { return Array.prototype.slice.call(team.querySelectorAll('input')); }
+  function refreshTeamUI() {
+    var rows = teamInputs();
+    addTeamBtn.disabled = rows.length >= MAX_TEAM;
+    teamHint.textContent = rows.length >= MAX_TEAM
+      ? 'وصلتِ إلى الحدّ الأعلى: ٨ معلمات.'
+      : 'حتى ٨ معلمات — اتركي الخانة فارغة إن لم تكن هناك مشاركات.';
+    rows.forEach(function (inp, i) { inp.setAttribute('aria-label', 'اسم المعلمة المشاركة ' + arNum(i + 1)); });
+  }
+  function addTeamRow(value, focus) {
+    if (teamInputs().length >= MAX_TEAM) return;
+    var row = document.createElement('div');
+    row.className = 'team-row';
+    var inp = document.createElement('input');
+    inp.type = 'text'; inp.maxLength = 40; inp.placeholder = 'اسم المعلمة المشاركة';
+    inp.value = value || '';
+    inp.addEventListener('input', update);
+    var del = document.createElement('button');
+    del.type = 'button'; del.className = 'icon-btn'; del.setAttribute('aria-label', 'حذف هذه المعلمة');
+    del.innerHTML = '<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+    del.addEventListener('click', function () {
+      row.remove();
+      if (!teamInputs().length) addTeamRow('', false);
+      refreshTeamUI(); update();
+    });
+    row.appendChild(inp); row.appendChild(del);
+    team.appendChild(row);
+    refreshTeamUI();
+    if (focus) inp.focus();
+  }
+  addTeamBtn.addEventListener('click', function () { addTeamRow('', true); });
+
+  /* ── الحفظ في المتصفّح ── */
+  function variant() { var r = document.querySelector('input[name=variant]:checked'); return r ? r.value : 'color'; }
+  function readState() {
+    return {
+      school: f.school.value.trim(), presenter: f.presenter.value.trim(),
+      team: teamInputs().map(function (i) { return i.value.trim(); }).filter(Boolean),
+      title: f.title.value.trim(), date: f.date.value, time: f.time.value,
+      place: f.place.value.trim(), variant: variant()
+    };
+  }
+  function save(s) { try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) {} }
+  function load() {
+    var s = null;
+    try { s = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) {}
+    if (!s || typeof s !== 'object') s = {};
+    ['school', 'presenter', 'title', 'date', 'time', 'place'].forEach(function (k) {
+      if (typeof s[k] === 'string') f[k].value = s[k];
+    });
+    (Array.isArray(s.team) ? s.team.slice(0, MAX_TEAM) : []).forEach(function (n) { addTeamRow(String(n), false); });
+    if (!teamInputs().length) addTeamRow('', false);
+    if (s.variant === 'ink') document.querySelector('input[name=variant][value=ink]').checked = true;
+  }
+
+  /* ── تصغيرُ النصِّ ليبقى داخلَ إطارِه ── */
+  // قياساتُ offset/scroll لا تتأثّرُ بتصغيرِ المعاينة (transform)، فالحسابُ واحدٌ في المعاينةِ والطباعة.
+  // maxH: ارتفاعٌ ثابتٌ بالبكسل (ميزانُ الإطار) — فالعنوانُ الطويلُ يصيرُ ثلاثةَ أسطرٍ أصغرَ في المساحةِ نفسِها.
+  function fitBox(el, max, min, maxH) {
+    var s = max;
+    el.style.fontSize = s + 'px';
+    while (s > min && (el.offsetHeight > maxH + 1 || el.scrollWidth > el.clientWidth + 1)) {
+      s -= 1; el.style.fontSize = s + 'px';
+    }
+  }
+  // الأسماءُ لا تُقصُّ بنقاط: تصغرُ أوّلاً، فإن بقيَ اسمٌ أطولَ من عمودِه يُسمَحُ له بسطرٍ ثانٍ.
+  function fitNames(ul, count) {
+    var spans = ul.getElementsByTagName('span');
+    function clipped() {
+      for (var i = 0; i < spans.length; i++) if (spans[i].scrollWidth > spans[i].clientWidth + 1) return true;
+      return false;
+    }
+    function tall() { return ul.scrollHeight > ul.clientHeight + 1; }
+    var start = count <= 3 ? 21 : 19, s = start;
+    ul.classList.remove('wrapn');
+    ul.style.fontSize = s + 'px';
+    while (s > 16 && (tall() || clipped())) { s -= 0.5; ul.style.fontSize = s + 'px'; }
+    if (clipped()) {
+      // سطرٌ ثانٍ للاسمِ الطويل، ونبدأُ من الحجمِ الأكبرِ ثانيةً لأنّ الالتفافَ يحرّرُ العرض
+      ul.classList.add('wrapn');
+      s = start; ul.style.fontSize = s + 'px';
+      while (s > 13 && tall()) { s -= 0.5; ul.style.fontSize = s + 'px'; }
+    }
+  }
+  function fitAll() {
+    fitBox($('pTitle'), 46, 28, 116);
+    fitBox($('pSchool'), 28, 18, 74);
+    fitBox($('pPresenter'), 24, 16, 33);
+    var ul = $('pTeam');
+    fitNames(ul, ul.children.length);
+  }
+
+  /* ── تحديثُ المنشور ── */
+  function setText(el, value, placeholder) {
+    el.textContent = value || placeholder;
+    el.classList.toggle('ph', !value);
+  }
+  function update() {
+    var s = readState();
+    setText($('pSchool'), s.school, 'اسم المدرسة');
+    setText($('pPresenter'), s.presenter, 'اسم المعلمة');
+    $('pTitle').textContent = s.title || DEFAULT_TITLE;
+
+    var ul = $('pTeam');
+    ul.textContent = '';
+    s.team.forEach(function (n) {
+      var li = document.createElement('li'), sp = document.createElement('span');
+      sp.textContent = n; li.appendChild(sp); ul.appendChild(li);
+    });
+    ul.classList.toggle('two', s.team.length > 3);
+    $('pTeamWrap').hidden = !s.team.length;
+
+    var info = { Date: fmtDate(s.date), Time: fmtTime(s.time), Place: s.place }, any = false;
+    Object.keys(info).forEach(function (k) {
+      $('p' + k).textContent = info[k];
+      $('c' + k).hidden = !info[k];
+      if (info[k]) any = true;
+    });
+    $('pInfo').hidden = !any;
+
+    poster.classList.toggle('ink', s.variant === 'ink');
+    if (s.school) f.school.removeAttribute('aria-invalid');
+    if (s.presenter) f.presenter.removeAttribute('aria-invalid');
+    if (s.school && s.presenter) err.textContent = '';
+    save(s);
+    fitAll();
+  }
+  Object.keys(f).forEach(function (k) { f[k].addEventListener('input', update); });
+  Array.prototype.forEach.call(document.querySelectorAll('input[name=variant]'), function (r) { r.addEventListener('change', update); });
+
+  /* ── تحجيمُ المعاينة ── */
+  function scalePreview() {
+    var w = frame.clientWidth;
+    var maxH = window.matchMedia('(min-width: 901px)').matches ? window.innerHeight - 70 : Infinity;
+    var s = Math.min(w / W, maxH / H, 1);
+    scaleBox.style.width = (W * s) + 'px';
+    scaleBox.style.height = (H * s) + 'px';
+    poster.style.transform = 'scale(' + s + ')';
+  }
+  if (window.ResizeObserver) new ResizeObserver(scalePreview).observe(frame);
+  window.addEventListener('resize', scalePreview);
+
+  /* ── الطباعة ── */
+  $('printBtn').addEventListener('click', function () {
+    var s = readState(), missing = [];
+    if (!s.school) { f.school.setAttribute('aria-invalid', 'true'); missing.push(f.school); }
+    if (!s.presenter) { f.presenter.setAttribute('aria-invalid', 'true'); missing.push(f.presenter); }
+    if (missing.length) {
+      err.textContent = 'اكتبي اسم المدرسة واسم المعلمة مقدّمة المشغل قبل الطباعة.';
+      missing[0].focus();
+      return;
+    }
+    var go = function () { fitAll(); window.print(); };
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(go); else go();
+  });
+  window.addEventListener('beforeprint', fitAll);
+
+  $('resetBtn').addEventListener('click', function () {
+    if (!window.confirm('مسح كل البيانات المكتوبة؟')) return;
+    try { localStorage.removeItem(KEY); } catch (e) {}
+    Object.keys(f).forEach(function (k) { f[k].value = ''; f[k].removeAttribute('aria-invalid'); });
+    team.textContent = ''; addTeamRow('', false);
+    document.querySelector('input[name=variant][value=color]').checked = true;
+    err.textContent = '';
+    update();
+  });
+
+  load();
+  update();
+  scalePreview();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitAll);
+})();
+</script>
+</body>
+</html>

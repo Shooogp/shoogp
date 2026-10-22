@@ -1010,7 +1010,7 @@
      والزرُّ ينتهي عندَ 46، ولا هامشَ شفّافاً في `logo-mark.png` يخفيه — مقيسٌ:
      أوّلُ صفٍّ معتمٍ = 0). العنصرُ في التدفّقِ **يحجزُ مساحتَه** فيستحيلُ التراكب. */
 
-  var devWrap = null, devBtn = null, devStats = null, devDash = null;
+  var devWrap = null, devBtn = null, devStats = null, devDash = null, devPoster = null;
 
   /* ═════════════ مراجعُ المقارنةِ في شارةِ العدّاد ═════════════
      كانت الشارةُ تعرضُ «اليوم» بجانبَ «أمس» بلا مرجع — فيُقارَنُ **نصفُ يومٍ
@@ -1154,6 +1154,7 @@
     devBtn.style.zoom = String(1 / z);
     if (devStats) devStats.style.zoom = String(1 / z);
     if (devDash) devDash.style.zoom = String(1 / z);
+    if (devPoster) devPoster.style.zoom = String(1 / z);
   }
 
   function paintBtn() {
@@ -1212,6 +1213,14 @@
       try { localStorage.setItem('shoogp-dash-key', DEV_PASS); } catch (e) {}
     });
     devWrap.appendChild(devDash);
+    /* بابُ منشورِ المشغلِ (طلبُ المالك ٢٠٢٦-١٠-٢٢) — في وضعِ المطوِّرِ وحدَه حتى يُعتمَد؛
+       والصفحةُ نفسُها (‏`workshop.html`) تحجبُ نموذجَها عن غيرِ المطوِّرِ بالمفتاحِ نفسِه (‏`DEV_KEY`). */
+    devPoster = document.createElement('a');
+    devPoster.className = 'lockdev-btn lockdev-dash';
+    devPoster.href = 'workshop.html';
+    devPoster.textContent = '🖨️ منشور المشغل';
+    devPoster.title = 'منشور مشاغل شوجب للطباعة — قيد التجربة';
+    devWrap.appendChild(devPoster);
     app.insertBefore(devWrap, app.firstChild);   // أوّلُ عنصرٍ في `.app` — فوقَ الترويسة
     devBtn.addEventListener('click', function () { setLockOff(!lockOff); });
     paintBtn();
