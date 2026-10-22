@@ -193,7 +193,9 @@
   .app:has(#lessonsScreen.active) > header .guide-btn,
   .app:has(#activityScreen.active) > header .guide-btn,
   .app:has(#lessonsScreen.active) > header .ig-contact,
-  .app:has(#activityScreen.active) > header .ig-contact{ display:none }
+  .app:has(#activityScreen.active) > header .ig-contact,
+  .app:has(#lessonsScreen.active) > header .workshop-btn,
+  .app:has(#activityScreen.active) > header .workshop-btn{ display:none }
   #activityScreen .lesson-head{display:flex;align-items:center;
     justify-content:space-between;gap:20px;margin-bottom:6px}
   /* عرضُ السطرِ = عرضُ جدولِ الوحداتِ (‎.lessons‎ 640px) فيقعُ الشعارُ فوقَ الحافةِ
@@ -309,6 +311,23 @@
   .guide-btn:hover{background:rgba(201,162,39,.34);color:#fff}
   .guide-btn:active{transform:scale(.94)}
   .guide-ic{font-size:1.15rem;line-height:1}
+
+  /* أيقونةُ «منشور المشغل» — أعلى يسارِ الرئيسية، مقابلَ زرَّي الصوتِ ودليلِ الشراء (طلبُ المالك
+     ٢٠٢٦-١٠-٢٢). بنمطِ أيقونةِ «العب» نفسِه: رسمةٌ وتحتَها كلمتُها، ونبضٌ خفيفٌ يتوقّفُ لمن يفضّلُ
+     تقليلَ الحركة. */
+  .workshop-btn{position:absolute;top:0;left:0;display:flex;flex-direction:column;align-items:center;gap:2px;
+    text-decoration:none;color:#ffd257;font-family:'Cairo';font-weight:800;font-size:.92rem;line-height:1.1;
+    -webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;touch-action:manipulation}
+  .workshop-btn img{height:84px;width:auto;display:block;
+    filter:drop-shadow(0 6px 14px rgba(0,0,0,.4)) drop-shadow(0 0 10px rgba(255,200,80,.22));
+    transition:transform .2s ease;animation:gamesPulse 2.6s ease-in-out infinite}
+  .workshop-btn span{text-shadow:0 2px 6px rgba(8,22,18,.8);white-space:nowrap}
+  .workshop-btn:hover img,.workshop-btn:focus-visible img{transform:scale(1.08) rotate(-3deg);animation:none}
+  .workshop-btn:active img{transform:scale(.95)}
+  @media (prefers-reduced-motion:reduce){.workshop-btn img{animation:none}}
+  /* الهاتفُ يصغّرُ الصفحةَ كلَّها (fit.js — ‎zoom ≈ 0.39‎ على عرضِ 390px) فتصيرُ الأيقونةُ ٣٣px وكلمتُها
+     ٦px لا تُقرأ؛ فتُكبَّرُ هنا وحدَها لتبلغَ ≈٥٠px وكلمتُها ≈١٠px بعدَ التصغير. */
+  @media (max-width:520px){.workshop-btn img{height:128px}.workshop-btn{font-size:1.6rem;gap:4px}}
 
   /* شارةُ حسابِ إنستغرام تحتَ العبارةِ التعريفيّة (طلبُ المالك ٢٠٢٦-٠٩-١٩). في التدفّقِ لا مُطلَقةُ
      الموضع — تتوسّطُ تحتَ العبارةِ على كلِّ عرض. حدُّها وردٌ خافتٌ من تدرّجِ الأيقونة. */
