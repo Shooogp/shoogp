@@ -1213,13 +1213,13 @@
       try { localStorage.setItem('shoogp-dash-key', DEV_PASS); } catch (e) {}
     });
     devWrap.appendChild(devDash);
-    /* بابُ منشورِ المشغلِ (طلبُ المالك ٢٠٢٦-١٠-٢٢) — في وضعِ المطوِّرِ وحدَه حتى يُعتمَد؛
-       والصفحةُ نفسُها (‏`workshop.html`) تحجبُ نموذجَها عن غيرِ المطوِّرِ بالمفتاحِ نفسِه (‏`DEV_KEY`). */
+    /* بابُ منشورِ المشغلِ (طلبُ المالك ٢٠٢٦-١٠-٢٢) — اختصارٌ للمطوِّر؛ والصفحةُ نفسُها (‏`workshop.html`)
+       مفتوحةٌ للمعلّماتِ منذُ ٢٠٢٦-١٠-٢٢ (‏`DEV_ONLY = false` فيها) ورابطُها العامُّ shoogp.com/workshop. */
     devPoster = document.createElement('a');
     devPoster.className = 'lockdev-btn lockdev-dash';
     devPoster.href = 'workshop.html';
     devPoster.textContent = '🖨️ منشور المشغل';
-    devPoster.title = 'منشور مشاغل شوجب للطباعة — قيد التجربة';
+    devPoster.title = 'منشور مشاغل شوجب للطباعة';
     devWrap.appendChild(devPoster);
     app.insertBefore(devWrap, app.firstChild);   // أوّلُ عنصرٍ في `.app` — فوقَ الترويسة
     devBtn.addEventListener('click', function () { setLockOff(!lockOff); });

@@ -6,13 +6,11 @@
 <meta name="robots" content="noindex, nofollow">
 <title>منشور مشغل شوجب — للطباعة</title>
 
-<!-- 🔧 حارسُ وضعِ المطوِّر (طلبُ المالك ٢٠٢٦-١٠-٢٢): الصفحةُ قيدُ التجربة، فلا يرى نموذجَها
-     إلا من فعّلَ وضعَ المطوِّرِ في المنصّة (‏`shoogp-dev` في `js/unlock.js`، وبابُها زرٌّ في
-     شريطِه). غيرُه يرى إشعارَ «قريباً». ويقعُ في الرأسِ قبلَ رسمِ الصفحةِ فلا يومضُ النموذج.
-     ⚠️ حجبٌ لا تأمين — كحجبِ زرِّ القفلِ نفسِه.
-     **وعندَ اعتمادِها للمعلّمات:** اجعلْ `DEV_ONLY = false` (سطرٌ واحد)، ثمّ أضِفْ لها رابطاً ظاهراً. -->
+<!-- 🔧 حارسُ وضعِ المطوِّر: بدأت الصفحةُ للمطوِّرِ وحدَه (‏`shoogp-dev` في `js/unlock.js`)، ثمّ
+     **فُتِحَت للمعلّماتِ بقرارِ المالك ٢٠٢٦-١٠-٢٢** مع إعلانِ إنستغرام (رابطُه shoogp.com/workshop).
+     لإعادةِ حجبِها: `DEV_ONLY = true` — فيرى غيرُ المطوِّرِ إشعارَ «قريباً». ⚠️ حجبٌ لا تأمين. -->
 <script>
-  var DEV_ONLY = true;
+  var DEV_ONLY = false;
   var isDev = false;
   try { isDev = localStorage.getItem('shoogp-dev') === '1'; } catch (e) {}
   document.documentElement.classList.add(!DEV_ONLY || isDev ? 'is-open' : 'is-closed');
@@ -29,13 +27,14 @@
     أدناه بإحداثياتِ التصميمِ لا بإحداثياتِ الورق.
   • الطباعةُ: A5 ورقةً واحدة، أو نسختانِ على A4 أفقيةٍ تُقصّانِ من الخطِّ المتقطّع.
     ‎#pageBox‎ هي الصفحةُ المطبوعةُ نفسُها (المعاينةُ = الطباعة)، وقاعدةُ ‎@page‎ في ‎#pageRule‎.
-  • إطارُ رمزِ QR من إطاراتِ أسئلةِ المواد (‎images/ui/frame-<المادة>-l.png‎) —
-    تختارُه المعلّمةُ أو يُختارُ عشوائياً. نوافذُها من جدولِ ‎win‎ في ‎js/shoogp-ui.js‎،
-    والرمزُ على بساطٍ أبيضَ داخلَ النافذة (‎FRAMES‎ أدناه). إطارُ مادّةٍ جديدةٍ = سطرٌ هناك.
+  • إطارُ رمزِ QR من إطاراتِ أسئلةِ المواد بنوافذَ بيضاء (‎images/workshop/frame-<المادة>.png‎) —
+    تختارُه المعلّمةُ أو يُختارُ عشوائياً، وهندستُه في ‎FRAMES‎ أدناه. إطارُ مادّةٍ جديدةٍ = صورةٌ وسطرٌ هناك.
   • نصوصُ المعلّماتِ تُكتَبُ بـ textContent لا innerHTML (أمان).
   • الأسماءُ الطويلةُ والكثيرةُ تُصغَّرُ تلقائياً (fitAll) لتبقى داخلَ إطارِها.
-  • رمزُ QR ثابتٌ يفتحُ https://shoogp.com — مسارُه مرسومٌ هنا (29×29،
-    تصحيح H، ووسطُه ‎9×9‎ مُفرَّغٌ لشارةِ الصاروخ). اختُبرَت قراءتُه.
+  • رمزُ QR بالشعار (‎images/workshop/qr-shoogp.png‎) يفتحُ https://shoogp.com — الإصدار ٦ بتصحيح H،
+    وشعارُ «شوجب» منسوجٌ فيه وكلُّ وحدةٍ تحفظُ قيمتَها في مركزِها، فلا يستهلكُ الشعارُ شيئاً من التصحيح.
+    مقروءٌ بقارئِ ZXing من البطاقةِ المطبوعةِ حتى ‎110dpi‎ (٢٠٢٦-١٠-٢٢). ⚠️ قارئُ OpenCV لا يقرؤُه — ولا يقرأُ
+    مثالَ رمزِ جوجل المنسوجِ نفسَه — فلا يُحتكَمُ إليه. إعادةُ توليدِه: سكربتُ الجلسةِ ‎logo_qr2.py‎ (غيرُ مودَعٍ).
   • البياناتُ تُحفَظُ في متصفّحِ المعلّمةِ وحدَه (localStorage) — لا تُرسَلُ لأيِّ خادم.
   ═══════════════════════════════════════════════════════════════
 -->
@@ -204,11 +203,8 @@ input[aria-invalid=true]{border-color:var(--danger)}
 .p-qr{position:absolute;top:398px;left:34px;width:336px;display:flex;flex-direction:column;align-items:center;gap:4px}
 .p-frame{position:relative;width:336px;height:336px}
 .p-frame-img{position:absolute;inset:0;width:100%;height:100%}
-.p-mat{position:absolute;background:#fff;display:flex;align-items:center;justify-content:center}
-.p-qrbox{position:relative}
-.p-qrbox svg{display:block;width:100%;height:100%}
-.p-badge{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;border:3px solid var(--accent);border-radius:24%;display:flex;align-items:center;justify-content:center}
-.p-badge img{height:72%;width:auto}
+.p-mat{position:absolute}
+.p-mat img{display:block;width:100%;height:100%}
 .p-qr-label{margin-top:6px;font-family:"Cairo",sans-serif;font-weight:800;font-size:20px;line-height:1.4}
 .p-url{font-family:"Cairo",sans-serif;font-weight:900;font-size:30px;line-height:1.25;letter-spacing:.5px;direction:ltr}
 
@@ -421,13 +417,8 @@ input[aria-invalid=true]{border-color:var(--danger)}
 
             <div class="p-qr">
               <div class="p-frame" id="pFrame">
-                <img class="p-frame-img" id="pFrameImg" src="images/ui/frame-moon-l.png?v=20261022" alt="">
-                <div class="p-mat" id="pMat">
-              <div class="p-qrbox" id="pQrBox">
-                <svg role="img" aria-label="رمز الاستجابة السريعة لموقع شوجب" viewBox="0 0 29 29" shape-rendering="crispEdges"><path fill="#1C2540" d="M0 0h7v1h-7zM10 0h2v1h-2zM14 0h4v1h-4zM19 0h2v1h-2zM22 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM8 1h5v1h-5zM17 1h1v1h-1zM19 1h1v1h-1zM22 1h1v1h-1zM28 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM10 2h4v1h-4zM16 2h3v1h-3zM22 2h1v1h-1zM24 2h3v1h-3zM28 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM12 3h2v1h-2zM18 3h1v1h-1zM22 3h1v1h-1zM24 3h3v1h-3zM28 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM9 4h1v1h-1zM14 4h5v1h-5zM22 4h1v1h-1zM24 4h3v1h-3zM28 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM8 5h1v1h-1zM10 5h1v1h-1zM12 5h1v1h-1zM17 5h1v1h-1zM19 5h2v1h-2zM22 5h1v1h-1zM28 5h1v1h-1zM0 6h7v1h-7zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM18 6h1v1h-1zM20 6h1v1h-1zM22 6h7v1h-7zM8 7h5v1h-5zM16 7h1v1h-1zM4 8h4v1h-4zM9 8h1v1h-1zM11 8h1v1h-1zM15 8h2v1h-2zM20 8h1v1h-1zM22 8h2v1h-2zM27 8h1v1h-1zM1 9h1v1h-1zM3 9h1v1h-1zM5 9h1v1h-1zM8 9h4v1h-4zM13 9h1v1h-1zM17 9h3v1h-3zM24 9h5v1h-5zM0 10h1v1h-1zM4 10h1v1h-1zM6 10h3v1h-3zM19 10h1v1h-1zM21 10h1v1h-1zM28 10h1v1h-1zM0 11h1v1h-1zM3 11h1v1h-1zM7 11h1v1h-1zM9 11h1v1h-1zM19 11h3v1h-3zM24 11h1v1h-1zM27 11h2v1h-2zM0 12h2v1h-2zM5 12h5v1h-5zM20 12h1v1h-1zM23 12h1v1h-1zM25 12h1v1h-1zM28 12h1v1h-1zM0 13h1v1h-1zM3 13h2v1h-2zM8 13h2v1h-2zM22 13h1v1h-1zM24 13h1v1h-1zM26 13h3v1h-3zM3 14h5v1h-5zM9 14h1v1h-1zM20 14h3v1h-3zM24 14h1v1h-1zM28 14h1v1h-1zM0 15h1v1h-1zM3 15h2v1h-2zM7 15h1v1h-1zM19 15h1v1h-1zM21 15h3v1h-3zM25 15h1v1h-1zM0 16h1v1h-1zM3 16h1v1h-1zM5 16h2v1h-2zM8 16h1v1h-1zM19 16h1v1h-1zM27 16h1v1h-1zM0 17h3v1h-3zM4 17h1v1h-1zM9 17h1v1h-1zM19 17h2v1h-2zM23 17h2v1h-2zM28 17h1v1h-1zM2 18h1v1h-1zM5 18h4v1h-4zM20 18h1v1h-1zM24 18h1v1h-1zM26 18h1v1h-1zM28 18h1v1h-1zM3 19h1v1h-1zM7 19h1v1h-1zM10 19h2v1h-2zM13 19h1v1h-1zM16 19h3v1h-3zM24 19h2v1h-2zM27 19h1v1h-1zM0 20h2v1h-2zM4 20h4v1h-4zM9 20h3v1h-3zM13 20h1v1h-1zM16 20h10v1h-10zM8 21h1v1h-1zM11 21h3v1h-3zM15 21h2v1h-2zM18 21h1v1h-1zM20 21h1v1h-1zM24 21h1v1h-1zM26 21h1v1h-1zM28 21h1v1h-1zM0 22h7v1h-7zM8 22h1v1h-1zM11 22h1v1h-1zM16 22h2v1h-2zM19 22h2v1h-2zM22 22h1v1h-1zM24 22h1v1h-1zM28 22h1v1h-1zM0 23h1v1h-1zM6 23h1v1h-1zM8 23h4v1h-4zM13 23h3v1h-3zM17 23h4v1h-4zM24 23h2v1h-2zM0 24h1v1h-1zM2 24h3v1h-3zM6 24h1v1h-1zM8 24h1v1h-1zM10 24h4v1h-4zM16 24h1v1h-1zM18 24h7v1h-7zM27 24h2v1h-2zM0 25h1v1h-1zM2 25h3v1h-3zM6 25h1v1h-1zM9 25h1v1h-1zM12 25h2v1h-2zM15 25h1v1h-1zM17 25h1v1h-1zM23 25h1v1h-1zM25 25h3v1h-3zM0 26h1v1h-1zM2 26h3v1h-3zM6 26h1v1h-1zM10 26h1v1h-1zM12 26h1v1h-1zM14 26h8v1h-8zM25 26h4v1h-4zM0 27h1v1h-1zM6 27h1v1h-1zM15 27h2v1h-2zM18 27h1v1h-1zM23 27h1v1h-1zM25 27h1v1h-1zM27 27h2v1h-2zM0 28h7v1h-7zM9 28h1v1h-1zM13 28h1v1h-1zM15 28h1v1h-1zM18 28h1v1h-1zM22 28h1v1h-1zM24 28h2v1h-2zM27 28h1v1h-1z"/></svg>
-                <div class="p-badge" id="pBadge"><img src="images/rocket/rocket-body.png?v=20261022" alt=""></div>
-              </div>
-                </div>
+                <img class="p-frame-img" id="pFrameImg" src="images/workshop/frame-moon.png?v=20261022" alt="">
+                <div class="p-mat" id="pMat"><img src="images/workshop/qr-shoogp.png?v=20261022" alt="رمز الاستجابة السريعة لموقع شوجب"></div>
               </div>
               <div class="p-qr-label">امسحي الرمز بالجوال</div>
               <div class="p-url">shoogp.com</div>
@@ -506,17 +497,19 @@ input[aria-invalid=true]{border-color:var(--danger)}
   var SW = 559, SH = 793;           // بطاقة A5 بالبكسل (96 نقطة/بوصة)
   var V = '?v=20261022';
 
-  /* ── إطاراتُ المواد (مقاس l) ──
-     ar: أبعادُ الصورة · cx/cy: مركزُ النافذةِ ٪ من العرضِ/الارتفاع · c: ضلعُ البساطِ الأبيضِ ٪ من العرض.
-     مشتقّةٌ من نوافذِ ‎win‎ في ‎js/shoogp-ui.js‎ (أكبرُ مربّعٍ متمركزٍ فيها × ٠٫٩٨)، ومفحوصةٌ بالعينِ على الإطاراتِ السبعة. */
+  /* ── إطاراتُ المواد بنوافذَ بيضاء (images/workshop/frame-<المادة>.png) ──
+     نُسَخٌ من إطاراتِ أسئلةِ المواد (مقاس l) لُوِّنَت نافذتُها كلُّها بالأبيض حتى حافّتِها (طلبُ المالك ٢٠٢٦-١٠-٢٢:
+     «بلا المنطقةِ الزرقاء»)، ومُصغَّرةٌ إلى عرضِ ١٠٠٠ بكسل — تكفي الطباعةَ بدقّةٍ عالية.
+     ar: أبعادُ الصورة · cx/cy: مركزُ النافذةِ ٪ من العرضِ/الارتفاع · c: أكبرُ مربّعٍ يسعُه بياضُ النافذةِ (× ٠٫٩٧) ٪ من العرض —
+     مقيسةٌ بالبكسلِ من بياضِ كلِّ نافذة. والرمزُ يملأُ هذا المربّعَ (هامشُه الأبيضُ داخلَ صورتِه نفسِها). */
   var FRAMES = {
-    moon:   { ar: [1246, 1222], cx: 50.5,  cy: 49.5,  c: 74.48 },
-    math:   { ar: [1261, 1247], cx: 50.0,  cy: 47.25, c: 66.38 },
-    arabic: { ar: [1254, 1254], cx: 51.05, cy: 49.45, c: 61.05 },
-    deeny:  { ar: [927, 904],   cx: 49.5,  cy: 51.15, c: 66.84 },
-    it:     { ar: [958, 982],   cx: 47.34, cy: 53.57, c: 64.54 },
-    en:     { ar: [1024, 1024], cx: 50.0,  cy: 50.0,  c: 59.0 },
-    hw:     { ar: [975, 985],   cx: 48.46, cy: 51.78, c: 66.34 }
+    moon:   { ar: [1000, 981],  cx: 50.08, cy: 49.55, c: 59.07 },
+    math:   { ar: [1000, 989],  cx: 50.08, cy: 48.68, c: 64.08 },
+    arabic: { ar: [1000, 1000], cx: 51.04, cy: 49.64, c: 54.94 },
+    deeny:  { ar: [1000, 975],  cx: 49.68, cy: 50.88, c: 58.68 },
+    it:     { ar: [1000, 1025], cx: 47.23, cy: 53.51, c: 55.53 },
+    en:     { ar: [1000, 1000], cx: 50.0,  cy: 52.29, c: 47.85 },
+    hw:     { ar: [1000, 1010], cx: 48.36, cy: 51.73, c: 60.0 }
   };
   var FRAME_KEYS = Object.keys(FRAMES);
   var FRAME_W = 336;                // عرضُ الإطارِ بإحداثياتِ التصميم (يطابقُ .p-frame في CSS)
@@ -539,21 +532,17 @@ input[aria-invalid=true]{border-color:var(--danger)}
   }
   function frameKey() { return fFrame.value === 'random' ? frameRnd : fFrame.value; }
 
-  /* ── رمزُ QR داخلَ الإطار: البساطُ الأبيضُ في نافذتِه، والرمزُ ٨٠٪ منه (هامشُه الأبيضُ ≈٣٫٦ وحدات) ── */
+  /* ── رمزُ QR بالشعار داخلَ نافذةِ الإطار البيضاء: يملأُ أكبرَ مربّعٍ فيها ── */
   function layoutQR() {
     var k = frameKey(), g = FRAMES[k];
     var fh = FRAME_W * g.ar[1] / g.ar[0];
-    var img = $('pFrameImg'), src = 'images/ui/frame-' + k + '-l.png' + V;
+    var img = $('pFrameImg'), src = 'images/workshop/frame-' + k + '.png' + V;
     if (img.getAttribute('src') !== src) img.setAttribute('src', src);
     var box = $('pFrame'); box.style.height = fh + 'px';
     var C = FRAME_W * g.c / 100, mat = $('pMat');
     mat.style.width = mat.style.height = C + 'px';
     mat.style.left = (FRAME_W * g.cx / 100 - C / 2) + 'px';
     mat.style.top = (fh * g.cy / 100 - C / 2) + 'px';
-    mat.style.borderRadius = (C * 0.14) + 'px';
-    var q = C * 0.8, qb = $('pQrBox');
-    qb.style.width = qb.style.height = q + 'px';
-    var b = $('pBadge'); b.style.width = b.style.height = (q * 0.27) + 'px';
   }
 
   /* ── أرقامٌ عربية ── */
@@ -738,7 +727,7 @@ input[aria-invalid=true]{border-color:var(--danger)}
       var fresh = stripIds(lp.querySelector(sel).cloneNode(true));
       cp.replaceChild(fresh, cp.querySelector(sel));
     });
-    ['.p-frame', '.p-mat', '.p-qrbox', '.p-badge'].forEach(function (sel) {
+    ['.p-frame', '.p-mat'].forEach(function (sel) {
       cp.querySelector(sel).style.cssText = lp.querySelector(sel).style.cssText;
     });
     var src = $('pFrameImg').getAttribute('src'), ci = cp.querySelector('.p-frame-img');
