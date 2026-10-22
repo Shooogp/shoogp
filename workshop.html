@@ -76,7 +76,8 @@ body{
 .page-head p{margin:0 0 24px;color:var(--muted);font-size:16px}
 
 .layout{display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);gap:28px;align-items:start}
-@media (max-width:900px){.layout{grid-template-columns:minmax(0,1fr)}}
+/* على الهاتفِ عمودٌ واحد: المعاينةُ أوّلاً ثمّ نموذجُ التعبئة تحتَها (قرارُ المالك ٢٠٢٦-١٠-٢٢) */
+@media (max-width:900px){.layout{grid-template-columns:minmax(0,1fr)}.preview{order:-1}}
 
 .panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px}
 .panel h2{font-family:"Cairo",sans-serif;font-weight:800;font-size:19px;margin:0 0 12px;color:#fff}
