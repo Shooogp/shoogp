@@ -2,6 +2,8 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
+<!-- حالةُ الفتحِ المجانيّ (‏`freeAll` في js/sales-state.js) — تفتحُ وحداتِ الألعابِ كلَّها ولو فُتِحَت الصفحةُ برابطٍ مباشر -->
+<script src="../js/sales-state.js?v=20260721-41"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ألعاب الكتاب — شوجب</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Cairo:wght@700;900&display=swap">
@@ -374,7 +376,10 @@ document.title = 'ألعاب ' + B.subject + ' — ' + B.grade;
    الحكم من قفل المنصّة (js/unlock.js) في الصفحة الأم — الصفحة تُفتح طبقةً فوق الفهرس.
    إن فُتحت وحدها (رابط مباشر) تُفتح الوحدة الأولى فقط. */
 const LOCK = (() => { try{ return window.parent !== window && window.parent.ShoogpLock ? window.parent.ShoogpLock : null; }catch(e){ return null; } })();
-const unitLocked = ui => { try{ return LOCK ? LOCK.isUnitLocked(B.id, ui, B.units.length) : ui > 0; }catch(e){ return ui > 0; } };
+/* وفي الفتحِ المجانيِّ العامّ (أسبوعُ شوجب المجانيّ — `freeAll`) كلُّ الوحداتِ مفتوحةٌ في الحالتَين:
+   طبقةً فوقَ الفهرسِ (والقفلُ الأمُّ يقولُ ذلك أصلاً) أو برابطٍ مباشرٍ لا أمَّ له. */
+const FREE_ALL = !!(window.SHOOGP_SALES && window.SHOOGP_SALES.freeAll);
+const unitLocked = ui => { if(FREE_ALL) return false; try{ return LOCK ? LOCK.isUnitLocked(B.id, ui, B.units.length) : ui > 0; }catch(e){ return ui > 0; } };
 const lockSig = () => B.units.map((u, i) => unitLocked(i) ? 1 : 0).join('');
 
 /* قائمة الدروس: لكل وحدة «الوحدة كاملة» أولاً ثم دروسها؛ الوحدات المقفلة تظهر معطّلة بقفل */
