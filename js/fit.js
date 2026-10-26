@@ -20,6 +20,7 @@
   var DESIGN_W = 1000;   // العرض التصميميّ
   var DESIGN_H = 700;    // ارتفاع تصميميّ مرجعيّ (للصاروخ ونظام الإطار)
   var ZOOM_MAX = 3, ZOOM_MIN = 0.2;
+  var ZOOM_LOCK_MAX = 1;   // سقفُ شاشةِ الأسئلة — العلّةُ والقياسُ عندَ موضعِ الاستعمالِ أدناه
 
   var state = { zoom:1, designW:DESIGN_W, designH:DESIGN_H, contentH:DESIGN_H, active:true };
   window.ShoogpFit = state;
@@ -41,11 +42,25 @@
     if(app.style.maxWidth!==DESIGN_W+'px') app.style.maxWidth=DESIGN_W+'px';
     if(app.style.marginLeft!=='auto'){ app.style.marginLeft='auto'; app.style.marginRight='auto'; }
   }
+  /* ⚠️ عمودُ الصاروخِ **لا يدخلُ في هذا القياس** — وكانَ يدخلُه فيسقُفُ الزومَ تحتَ ١
+     إلى الأبد (مقيسٌ ٢٠٢٦-١٠-٢٦).
+
+     العلّةُ حلقةٌ مغلقة: ارتفاعُ العمودِ نفسُه مُسنَدٌ أدناه في `apply()` إلى
+     `ih − LANE_MARGIN − laneTop + EARTH_BOTTOM` = **`ih − 38`**. فلو حُسِبَ هنا
+     صارَ طولُ المحتوى `92 + (ih−38) + 8` = **`ih + 62`** — أي **أطولَ من المنفذِ
+     دائماً مهما كبُرَ** — فيصيرُ `zoom = (ih−4)/(ih+62)` ولا يبلغُ ١ أبداً:
+     0.942 عند 1080 · 0.956 عند 1440 · 0.970 عند 2160. فلوحُ المدرسةِ 86″ بدقّةِ
+     3840×2160 كانَ يعرضُ المنصّةَ بمقاسِ تصميمِها 1000×700 ولا يستفيدُ من مساحتِه.
+
+     وإخراجُه صحيحٌ لا تساهُل: العمودُ `position:fixed` **خارجَ تدفّقِ `.app`**،
+     ويُطبَّقُ عليه في `apply()` **زومٌ مضادٌّ (`1/zoom`)** فيُرسَمُ بالبكسلِ الحقيقيِّ
+     ولا يتأثّرُ بزومِ المحتوى إطلاقاً، وموضعُه وارتفاعُه مشتقّانِ من `ih` الحيِّ
+     فهو **مضمونُ الاحتواءِ بالبناءِ لا بالقياس**. فإدخالُه في حسابِ ما يُزَمُّ
+     لأجلِه تحصيلُ حاصلٍ يضرُّ ولا ينفع.
+     *(الحارسُ من عهدِ ما قبلَ الزومِ المضادّ، حينَ كانَ العمودُ يُزَمُّ مع المحتوى
+     فعلاً — وبقيَ بعدَه سهواً.)* */
   function contentHeight(app){
-    var h = app ? app.scrollHeight : DESIGN_H;           // مستقلّ عن zoom
-    var lane = document.querySelector('.rocket-lane');   // عمود الصاروخ ثابت (خارج تدفّق .app)
-    if(lane){ var lh = 92 + lane.offsetHeight + 8; if(lh>h) h=lh; }   // top:92 تصميميّ + هامش
-    return Math.max(1, h);
+    return Math.max(1, app ? app.scrollHeight : DESIGN_H);   // مستقلّ عن zoom
   }
 
   function apply(){
@@ -62,8 +77,16 @@
     var locked=!!(act && act.classList.contains('active'));
     de.classList.toggle('fit-lock', locked);
     // هامش أمان بسيط (بضعة بكسلات) كي لا يُقصّ المحتوى عند الحافّة
+    /* 🔴 سقفُ الزومِ في شاشةِ الأسئلةِ **١ لا `ZOOM_MAX`** — حدُّ سلامةٍ مقيسٌ لا تفضيل.
+       فوقَ ١ تنكشفُ علّةُ طلاءٍ في Chromium: خلفيةُ `body` المنتشرةُ إلى لوحِ الصفحةِ
+       تُطلى بجزءٍ من المنفذِ فقط، فيظهرُ أسفلُ الشاشةِ وجانبُها **أسودَ**. مقيسٌ
+       ٢٠٢٦-١٠-٢٦ على زوم 1.477 و2.013، **ولا يُصلحُه** نقلُ التدرّجِ إلى الجذرِ ولا
+       `background-attachment:scroll` — جُرِّبا واختُبِرا بطلاءٍ فاقعٍ فلم يصلا المنطقةَ
+       السوداء. ورفعُ السقفِ فوقَ ١ يحتاجُ حلَّ تلك العلّةِ أوّلاً، وهو **طلبٌ مستقلّ**
+       (ومعه قرارُ مالكٍ في المقياس: كلُّ ورقةِ مواصفاتِ الإطاراتِ والقشورِ معايَرةٌ
+       على ١:١). و`ZOOM_MAX` يبقى للمرجعِ ولا يُستعمَلُ هنا. */
     var zoom = locked
-      ? Math.max(ZOOM_MIN, Math.min(ZOOM_MAX, Math.min((iw-2)/DESIGN_W, (ih-4)/Hc)))
+      ? Math.max(ZOOM_MIN, Math.min(ZOOM_LOCK_MAX, Math.min((iw-2)/DESIGN_W, (ih-4)/Hc)))
       : Math.max(ZOOM_MIN, Math.min(1, (iw-2)/DESIGN_W));
     de.style.zoom = String(zoom);
     state.zoom=zoom; state.designW=DESIGN_W; state.designH=DESIGN_H; state.contentH=Hc; state.active=true;
