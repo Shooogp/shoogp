@@ -10,6 +10,8 @@
   يُدارُ باللمس أو الفأرة. لا رابطَ إليها من الرئيسة، ولا تعتمدُ على css/style.css ولا js/app.js.
   - المجسّماتُ من سير n8n «شوجب — مولّد المجسّمات (Meshy)»، مضغوطةً (خامات WebP بـ1024px)
     في مجلّد models/. لإضافة مجسّم: انسخ ملفّه إلى models/ وأضف سطراً في MODELS أدناه.
+  - «المجمر العماني» (majmar) من حساب المالك في Sketchfab (‏@shooogp، رخصة CC BY باسمه)،
+    مضغوطٌ بخامات WebP بـ2048px (‏12.4 م.ب ← 2.5 م.ب).
   - نافذةُ المجسّم = إزاحاتُ نافذةِ frame-moon-l نفسُها في js/shoogp-ui.js
     (top 10.5% · left 12.5% · right 11.5% · bottom 11.5%) — إن تغيّرت هناك تُغيَّر هنا.
   - وسمُ ?v= على الصور والمجسّمات يُختَمُ تلقائياً عند النشر (pages.yml) فيكسرُ ذاكرةَ المتصفّح.
@@ -188,7 +190,9 @@ model-viewer::part(default-progress-bar){border-radius:3px}
 <script>
 /* قائمةُ المجسّمات — أضف سطراً لكلّ مجسّمٍ جديدٍ في models/ */
 var MODELS = [
-  { id:'samosa',       name:'سمبوسة',       file:'models/samosa.glb?v=0',       thumb:'models/samosa.png?v=0' },
+  /* orbit اختياريّ: زاوية الكاميرا الأولى لهذا المجسّم (وإلا الافتراضية) */
+  { id:'majmar',       name:'المجمر العماني', file:'models/majmar.glb?v=0',     thumb:'models/majmar.png?v=0', orbit:'20deg 72deg 105%' },
+  { id:'samosa',      name:'سمبوسة',       file:'models/samosa.glb?v=0',       thumb:'models/samosa.png?v=0' },
   { id:'pie',          name:'فطيرة',        file:'models/pie.glb?v=0',          thumb:'models/pie.png?v=0' },
   { id:'chicken-rice', name:'أرز بالدجاج',  file:'models/chicken-rice.glb?v=0', thumb:'models/chicken-rice.png?v=0' }
 ];
@@ -197,11 +201,13 @@ var mv   = document.getElementById('mv');
 var dock = document.getElementById('dock');
 var msg  = document.getElementById('msg');
 var chips = {};
-var DEFAULT_ORBIT = mv.getAttribute('camera-orbit');
+var BASE_ORBIT = mv.getAttribute('camera-orbit');
+var DEFAULT_ORBIT = BASE_ORBIT;
 
 function show(id){
   var m = MODELS.filter(function(x){ return x.id === id; })[0] || MODELS[0];
   msg.classList.remove('on');
+  DEFAULT_ORBIT = m.orbit || BASE_ORBIT;
   mv.src = m.file;
   mv.alt = 'مجسّم ' + m.name;
   Object.keys(chips).forEach(function(k){ chips[k].setAttribute('aria-pressed', k === m.id ? 'true' : 'false'); });
