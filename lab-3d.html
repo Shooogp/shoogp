@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مختبر المجسّمات — شوجب</title>
+<meta name="robots" content="noindex">
+<!--
+  ⚠️ صفحة تجريبية منفصلة: مجسّمٌ ثلاثيُّ الأبعاد داخلَ الإطار القمريّ للعلوم (frame-moon-l)
+  يُدارُ باللمس أو الفأرة. لا رابطَ إليها من الرئيسة، ولا تعتمدُ على css/style.css ولا js/app.js.
+  - المجسّماتُ من سير n8n «شوجب — مولّد المجسّمات (Meshy)»، مضغوطةً (خامات WebP بـ1024px)
+    في مجلّد models/. لإضافة مجسّم: انسخ ملفّه إلى models/ وأضف سطراً في MODELS أدناه.
+  - نافذةُ المجسّم = إزاحاتُ نافذةِ frame-moon-l نفسُها في js/shoogp-ui.js
+    (top 10.5% · left 12.5% · right 11.5% · bottom 11.5%) — إن تغيّرت هناك تُغيَّر هنا.
+  - وسمُ ?v= على الصور والمجسّمات يُختَمُ تلقائياً عند النشر (pages.yml) فيكسرُ ذاكرةَ المتصفّح.
+  - مباشرةً إلى مجسّم: lab-3d.html?m=pie
+-->
+<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@4.4.0/dist/model-viewer.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;800&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Tajawal',sans-serif;-webkit-tap-highlight-color:transparent}
+:root{
+  --ink:#eef0ff;
+  --sand:#f6c27e;
+  --sand-deep:#c98a43;
+  --orange:#f5a04a;
+}
+html,body{height:100%}
+body{
+  color:var(--ink);
+  min-height:100dvh;
+  overflow:hidden;
+  display:flex;flex-direction:column;align-items:center;
+  /* خلفية العلوم نفسُها (body.theme-sci في css/style.css) + نجومٌ خفيفة */
+  background:
+    radial-gradient(1.4px 1.4px at 12% 18%, rgba(255,255,255,.75), transparent 60%),
+    radial-gradient(1.2px 1.2px at 78% 12%, rgba(255,255,255,.6), transparent 60%),
+    radial-gradient(1.6px 1.6px at 88% 46%, rgba(255,255,255,.7), transparent 60%),
+    radial-gradient(1.2px 1.2px at 6% 62%, rgba(255,255,255,.55), transparent 60%),
+    radial-gradient(1.4px 1.4px at 22% 88%, rgba(255,255,255,.6), transparent 60%),
+    radial-gradient(1.2px 1.2px at 64% 92%, rgba(255,255,255,.5), transparent 60%),
+    radial-gradient(1.3px 1.3px at 44% 6%, rgba(255,255,255,.55), transparent 60%),
+    linear-gradient(180deg,#1c2540 0%,#243a54 32%,#2f5560 65%,#3a7566 100%);
+}
+
+/* ═══ الترويسة ═══ */
+.top{
+  width:100%;max-width:1200px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:14px 20px 0;
+}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{height:48px;width:auto;filter:drop-shadow(0 2px 6px rgba(0,0,0,.35))}
+.brand h1{font-size:24px;font-weight:800;letter-spacing:0}
+.badge{
+  font-size:15px;font-weight:700;color:#3b2306;
+  background:var(--sand);border-radius:999px;padding:6px 14px;white-space:nowrap;
+  box-shadow:inset 0 -3px 0 rgba(0,0,0,.12);
+}
+
+/* ═══ المسرح: الإطار في المنتصف ═══ */
+.stage{
+  flex:1;min-height:0;width:100%;
+  display:flex;align-items:center;justify-content:center;
+  padding:8px 16px;
+  container-type:size;
+}
+.frame{
+  position:relative;
+  aspect-ratio:1246 / 1222;              /* نسبةُ frame-moon-l الفعلية — خطٌّ أحمر */
+  /* أكبرُ مقاسٍ يسعُه المسرحُ عرضاً وارتفاعاً معاً، فلا تنكسرُ النسبة */
+  width:min(94vw, 70vh * 1.0196, 900px);
+  width:min(100cqw, 100cqh * 1.0196, 900px);
+}
+.rim{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:contain;                     /* الفائضُ فراغٌ لا مطّ */
+  pointer-events:none;user-select:none;-webkit-user-drag:none;
+  filter:drop-shadow(0 14px 28px rgba(0,0,0,.45));
+}
+/* نافذةُ المجسّم = نافذةُ الإطار */
+.win{
+  position:absolute;
+  top:10.5%;left:12.5%;right:11.5%;bottom:11.5%;
+  border-radius:16% / 16%;
+  overflow:hidden;
+}
+model-viewer{
+  width:100%;height:100%;
+  background:transparent;
+  --poster-color:transparent;
+  --progress-bar-color:var(--orange);
+  --progress-bar-height:6px;
+  outline:none;
+}
+model-viewer::part(default-progress-bar){border-radius:3px}
+
+/* رسالةُ الخطأ داخلَ النافذة */
+.msg{
+  position:absolute;inset:0;display:none;
+  align-items:center;justify-content:center;text-align:center;
+  padding:12%;font-size:22px;font-weight:700;color:#5a3307;
+}
+.msg.on{display:flex}
+
+/* ═══ شريطُ المجسّمات ═══ */
+.dock{
+  display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px;
+  padding:6px 16px 18px;
+}
+.chip{
+  display:flex;align-items:center;gap:10px;
+  min-height:64px;padding:6px 18px 6px 10px;
+  border:none;border-radius:999px;cursor:pointer;
+  font-size:20px;font-weight:700;color:#3b2306;
+  background:linear-gradient(180deg,#fbd9a4,#f0b468);
+  box-shadow:inset 0 -4px 0 rgba(0,0,0,.14), 0 4px 12px rgba(0,0,0,.25);
+  transition:transform .15s ease, box-shadow .15s ease, filter .15s ease;
+}
+.chip img{width:50px;height:50px;object-fit:contain;filter:drop-shadow(0 2px 3px rgba(0,0,0,.3))}
+.chip:hover{filter:brightness(1.05)}
+.chip:active{transform:translateY(2px)}
+.chip[aria-pressed="true"]{
+  background:linear-gradient(180deg,#ffb35c,#f08a2c);color:#fff;
+  box-shadow:inset 0 -4px 0 rgba(0,0,0,.18), 0 0 0 3px rgba(255,255,255,.85), 0 6px 16px rgba(0,0,0,.3);
+}
+.reset{
+  width:64px;height:64px;border-radius:50%;border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.14);color:var(--ink);
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.35);
+  transition:background .15s ease, transform .15s ease;
+}
+.reset:hover{background:rgba(255,255,255,.22)}
+.reset:active{transform:translateY(2px)}
+.reset svg{width:30px;height:30px}
+
+@media (max-width:640px){
+  .brand h1{font-size:19px}
+  .brand img{height:38px}
+  .chip{font-size:17px;min-height:60px}
+  .chip img{width:42px;height:42px}
+}
+@media (prefers-reduced-motion:reduce){
+  .chip,.reset{transition:none}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="brand">
+    <img src="images/logo-mark.png?v=0" alt="شوجب">
+    <h1>مختبر المجسّمات</h1>
+  </div>
+  <span class="badge">صفحة تجريبية</span>
+</header>
+
+<main class="stage">
+  <div class="frame">
+    <img class="rim" src="images/ui/frame-moon-l.png?v=0" alt="">
+    <div class="win">
+      <model-viewer id="mv"
+        camera-controls
+        touch-action="none"
+        auto-rotate
+        auto-rotate-delay="2500"
+        rotation-per-second="18deg"
+        interaction-prompt="auto"
+        interaction-prompt-threshold="2500"
+        shadow-intensity="1"
+        shadow-softness="0.9"
+        exposure="1.05"
+        camera-orbit="0deg 68deg 105%"
+        min-camera-orbit="auto auto 70%"
+        max-camera-orbit="auto auto 160%"
+        field-of-view="30deg"
+        alt="مجسّم ثلاثي الأبعاد">
+      </model-viewer>
+      <div class="msg" id="msg">تعذّر تحميل المجسّم</div>
+    </div>
+  </div>
+</main>
+
+<nav class="dock" id="dock" aria-label="المجسّمات"></nav>
+
+<script>
+/* قائمةُ المجسّمات — أضف سطراً لكلّ مجسّمٍ جديدٍ في models/ */
+var MODELS = [
+  { id:'samosa',       name:'سمبوسة',       file:'models/samosa.glb?v=0',       thumb:'models/samosa.png?v=0' },
+  { id:'pie',          name:'فطيرة',        file:'models/pie.glb?v=0',          thumb:'models/pie.png?v=0' },
+  { id:'chicken-rice', name:'أرز بالدجاج',  file:'models/chicken-rice.glb?v=0', thumb:'models/chicken-rice.png?v=0' }
+];
+
+var mv   = document.getElementById('mv');
+var dock = document.getElementById('dock');
+var msg  = document.getElementById('msg');
+var chips = {};
+var DEFAULT_ORBIT = mv.getAttribute('camera-orbit');
+
+function show(id){
+  var m = MODELS.filter(function(x){ return x.id === id; })[0] || MODELS[0];
+  msg.classList.remove('on');
+  mv.src = m.file;
+  mv.alt = 'مجسّم ' + m.name;
+  Object.keys(chips).forEach(function(k){ chips[k].setAttribute('aria-pressed', k === m.id ? 'true' : 'false'); });
+  try { history.replaceState(null, '', '?m=' + m.id); } catch(e){}
+}
+
+function resetView(){
+  mv.cameraOrbit = DEFAULT_ORBIT;
+  mv.fieldOfView = '30deg';
+  mv.jumpCameraToGoal();
+}
+
+MODELS.forEach(function(m){
+  var b = document.createElement('button');
+  b.className = 'chip'; b.type = 'button';
+  b.innerHTML = '<img alt="" src="' + m.thumb + '"><span>' + m.name + '</span>';
+  b.addEventListener('click', function(){ show(m.id); });
+  chips[m.id] = b; dock.appendChild(b);
+});
+
+var r = document.createElement('button');
+r.className = 'reset'; r.type = 'button';
+r.title = 'إعادة الوضع'; r.setAttribute('aria-label', 'إعادة الوضع');
+r.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>';
+r.addEventListener('click', resetView);
+dock.appendChild(r);
+
+mv.addEventListener('load', function(){ resetView(); });
+mv.addEventListener('error', function(){ msg.classList.add('on'); });
+
+/* إخفاءُ الشريط إن كان مجسّماً واحداً */
+if (MODELS.length < 2) { Object.keys(chips).forEach(function(k){ chips[k].style.display = 'none'; }); }
+
+var q = new URLSearchParams(location.search).get('m');
+show(q || MODELS[0].id);
+</script>
+</body>
+</html>
