@@ -12,10 +12,10 @@
     في مجلّد models/. لإضافة مجسّم: انسخ ملفّه إلى models/ وأضف سطراً في MODELS أدناه.
   - «المجمر العماني» (majmar) من حساب المالك في Sketchfab (‏@shooogp، رخصة CC BY باسمه)،
     مضغوطٌ بخامات WebP بـ2048px (‏12.4 م.ب ← 2.5 م.ب).
-  - نافذةُ المجسّم = إزاحاتُ نافذةِ frame-moon-l نفسُها في js/shoogp-ui.js
-    (top 10.5% · left 12.5% · right 11.5% · bottom 11.5%) — إن تغيّرت هناك تُغيَّر هنا.
+  - نافذةُ المجسّم = إزاحاتُ نافذةِ الإطارِ نفسُها في js/shoogp-ui.js (FRAMES أدناه).
   - وسمُ ?v= على الصور والمجسّمات يُختَمُ تلقائياً عند النشر (pages.yml) فيكسرُ ذاكرةَ المتصفّح.
-  - مباشرةً إلى مجسّم: lab-3d.html?m=pie
+  - مباشرةً إلى مجسّم: lab-3d.html?m=pie · وبإطار الرياضيات: lab-3d.html?m=pie&f=math
+  - الإطاران (العلوم frame-moon-l · الرياضيات frame-math-l) في FRAMES أدناه، يبدّلهما زرّا الترويسة.
 -->
 <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@4.4.0/dist/model-viewer.min.js"></script>
 <style>
@@ -34,31 +34,50 @@ body{
   min-height:100dvh;
   overflow:hidden;
   display:flex;flex-direction:column;align-items:center;
-  /* خلفية العلوم نفسُها (body.theme-sci في css/style.css) + نجومٌ خفيفة */
-  background:
+  /* خلفيةُ المادّة نفسُها (body.theme-sci / theme-math في css/style.css) + نجومٌ خفيفة */
+  --stars:
     radial-gradient(1.4px 1.4px at 12% 18%, rgba(255,255,255,.75), transparent 60%),
     radial-gradient(1.2px 1.2px at 78% 12%, rgba(255,255,255,.6), transparent 60%),
     radial-gradient(1.6px 1.6px at 88% 46%, rgba(255,255,255,.7), transparent 60%),
     radial-gradient(1.2px 1.2px at 6% 62%, rgba(255,255,255,.55), transparent 60%),
     radial-gradient(1.4px 1.4px at 22% 88%, rgba(255,255,255,.6), transparent 60%),
     radial-gradient(1.2px 1.2px at 64% 92%, rgba(255,255,255,.5), transparent 60%),
-    radial-gradient(1.3px 1.3px at 44% 6%, rgba(255,255,255,.55), transparent 60%),
-    linear-gradient(180deg,#1c2540 0%,#243a54 32%,#2f5560 65%,#3a7566 100%);
+    radial-gradient(1.3px 1.3px at 44% 6%, rgba(255,255,255,.55), transparent 60%);
+  background:var(--stars), linear-gradient(180deg,#1c2540 0%,#243a54 32%,#2f5560 65%,#3a7566 100%);
+}
+body[data-frame="math"]{
+  background:var(--stars), linear-gradient(180deg,#22253f 0%,#333f54 32%,#47605a 65%,#5a7a55 100%);
 }
 
 /* ═══ الترويسة ═══ */
 .top{
   width:100%;max-width:1200px;
-  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px 16px;
   padding:14px 20px 0;
 }
 .brand{display:flex;align-items:center;gap:12px}
 .brand img{height:48px;width:auto;filter:drop-shadow(0 2px 6px rgba(0,0,0,.35))}
-.brand h1{font-size:24px;font-weight:800;letter-spacing:0}
-.badge{
-  font-size:15px;font-weight:700;color:#3b2306;
-  background:var(--sand);border-radius:999px;padding:6px 14px;white-space:nowrap;
-  box-shadow:inset 0 -3px 0 rgba(0,0,0,.12);
+.brand h1{font-size:24px;font-weight:800;letter-spacing:0;line-height:1.2}
+.brand small{display:block;font-size:14px;font-weight:700;color:var(--sand)}
+
+/* ═══ مبدّلُ الإطار ═══ */
+.seg{
+  display:flex;gap:4px;padding:4px;border-radius:999px;
+  background:rgba(255,255,255,.12);
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.22);
+}
+.seg button{
+  display:flex;align-items:center;gap:8px;
+  min-height:60px;padding:6px 18px 6px 10px;
+  border:none;border-radius:999px;cursor:pointer;background:transparent;
+  font-size:18px;font-weight:700;color:var(--ink);
+  transition:background .15s ease, color .15s ease;
+}
+.seg button img{width:44px;height:44px;object-fit:contain}
+.seg button:hover{background:rgba(255,255,255,.1)}
+.seg button[aria-pressed="true"]{
+  background:linear-gradient(180deg,#ffb35c,#f08a2c);color:#fff;
+  box-shadow:inset 0 -3px 0 rgba(0,0,0,.18);
 }
 
 /* ═══ المسرح: الإطار في المنتصف ═══ */
@@ -70,10 +89,13 @@ body{
 }
 .frame{
   position:relative;
-  aspect-ratio:1246 / 1222;              /* نسبةُ frame-moon-l الفعلية — خطٌّ أحمر */
+  /* نسبةُ صورةِ الإطارِ الفعلية — خطٌّ أحمر؛ تُكتَبُ من FRAMES في الأسفل */
+  --ar:1246 / 1222; --r:1.0196;
+  --wt:10.5%; --wl:12.5%; --wr:11.5%; --wb:11.5%; --wrad:16% / 16%;
+  aspect-ratio:var(--ar);
   /* أكبرُ مقاسٍ يسعُه المسرحُ عرضاً وارتفاعاً معاً، فلا تنكسرُ النسبة */
-  width:min(94vw, 70vh * 1.0196, 900px);
-  width:min(100cqw, 100cqh * 1.0196, 900px);
+  width:min(94vw, 70vh * var(--r), 900px);
+  width:min(100cqw, 100cqh * var(--r), 900px);
 }
 .rim{
   position:absolute;inset:0;width:100%;height:100%;
@@ -84,8 +106,8 @@ body{
 /* نافذةُ المجسّم = نافذةُ الإطار */
 .win{
   position:absolute;
-  top:10.5%;left:12.5%;right:11.5%;bottom:11.5%;
-  border-radius:16% / 16%;
+  top:var(--wt);left:var(--wl);right:var(--wr);bottom:var(--wb);
+  border-radius:var(--wrad);
   overflow:hidden;
 }
 model-viewer{
@@ -104,6 +126,7 @@ model-viewer::part(default-progress-bar){border-radius:3px}
   align-items:center;justify-content:center;text-align:center;
   padding:12%;font-size:22px;font-weight:700;color:#5a3307;
 }
+body[data-frame="math"] .msg{color:#fff}
 .msg.on{display:flex}
 
 /* ═══ شريطُ المجسّمات ═══ */
@@ -139,13 +162,16 @@ model-viewer::part(default-progress-bar){border-radius:3px}
 .reset svg{width:30px;height:30px}
 
 @media (max-width:640px){
+  .top{justify-content:center;padding-top:10px}
   .brand h1{font-size:19px}
   .brand img{height:38px}
+  .seg button{font-size:16px;padding:6px 14px 6px 8px}
+  .seg button img{width:38px;height:38px}
   .chip{font-size:17px;min-height:60px}
   .chip img{width:42px;height:42px}
 }
 @media (prefers-reduced-motion:reduce){
-  .chip,.reset{transition:none}
+  .chip,.reset,.seg button{transition:none}
 }
 </style>
 </head>
@@ -154,14 +180,14 @@ model-viewer::part(default-progress-bar){border-radius:3px}
 <header class="top">
   <div class="brand">
     <img src="images/logo-mark.png?v=0" alt="شوجب">
-    <h1>مختبر المجسّمات</h1>
+    <h1>مختبر المجسّمات<small>صفحة تجريبية</small></h1>
   </div>
-  <span class="badge">صفحة تجريبية</span>
+  <div class="seg" id="seg" role="group" aria-label="الإطار"></div>
 </header>
 
 <main class="stage">
-  <div class="frame">
-    <img class="rim" src="images/ui/frame-moon-l.png?v=0" alt="">
+  <div class="frame" id="frame">
+    <img class="rim" id="rim" src="images/ui/frame-moon-l.png?v=0" alt="">
     <div class="win">
       <model-viewer id="mv"
         camera-controls
@@ -197,12 +223,46 @@ var MODELS = [
   { id:'chicken-rice', name:'أرز بالدجاج',  file:'models/chicken-rice.glb?v=0', thumb:'models/chicken-rice.png?v=0' }
 ];
 
+/* الإطارات — مقاس l من كلِّ عائلة. ar وwin منقولةٌ حرفياً من FRAME_FAMILIES في
+   js/shoogp-ui.js (moon.l و math.l)؛ إن تغيّرت هناك تُغيَّر هنا. r = عرض÷ارتفاع. */
+var FRAMES = {
+  sci:  { name:'العلوم',    img:'images/ui/frame-moon-l.png?v=0', ar:'1246 / 1222', r:1246/1222,
+          win:{t:'10.5%', l:'12.5%', r:'11.5%', b:'11.5%'}, rad:'16% / 16%' },
+  math: { name:'الرياضيات', img:'images/ui/frame-math-l.png?v=0', ar:'1261 / 1247', r:1261/1247,
+          win:{t:'13%',   l:'15%',   r:'15%',   b:'18.5%'}, rad:'12% / 12%' }
+};
+
 var mv   = document.getElementById('mv');
 var dock = document.getElementById('dock');
 var msg  = document.getElementById('msg');
-var chips = {};
+var seg  = document.getElementById('seg');
+var frame = document.getElementById('frame');
+var rim  = document.getElementById('rim');
+var chips = {}, segBtns = {};
 var BASE_ORBIT = mv.getAttribute('camera-orbit');
 var DEFAULT_ORBIT = BASE_ORBIT;
+var cur = { m:null, f:'sci' };
+
+function syncURL(){
+  var p = new URLSearchParams();
+  if (cur.m) p.set('m', cur.m);
+  if (cur.f !== 'sci') p.set('f', cur.f);
+  try { history.replaceState(null, '', '?' + p.toString()); } catch(e){}
+}
+
+function setFrame(key){
+  var f = FRAMES[key] || FRAMES.sci;
+  key = FRAMES[key] ? key : 'sci';
+  var s = frame.style;
+  s.setProperty('--ar', f.ar); s.setProperty('--r', String(f.r));
+  s.setProperty('--wt', f.win.t); s.setProperty('--wl', f.win.l);
+  s.setProperty('--wr', f.win.r); s.setProperty('--wb', f.win.b);
+  s.setProperty('--wrad', f.rad);
+  rim.src = f.img;
+  document.body.dataset.frame = key;
+  Object.keys(segBtns).forEach(function(k){ segBtns[k].setAttribute('aria-pressed', k === key ? 'true' : 'false'); });
+  cur.f = key; syncURL();
+}
 
 function show(id){
   var m = MODELS.filter(function(x){ return x.id === id; })[0] || MODELS[0];
@@ -211,8 +271,19 @@ function show(id){
   mv.src = m.file;
   mv.alt = 'مجسّم ' + m.name;
   Object.keys(chips).forEach(function(k){ chips[k].setAttribute('aria-pressed', k === m.id ? 'true' : 'false'); });
-  try { history.replaceState(null, '', '?m=' + m.id); } catch(e){}
+  cur.m = m.id; syncURL();
 }
+
+/* أزرارُ الإطار، وتحميلُ صورِها مسبقاً فلا يومضُ الإطارُ عند التبديل */
+Object.keys(FRAMES).forEach(function(k){
+  var f = FRAMES[k];
+  var b = document.createElement('button');
+  b.type = 'button';
+  b.innerHTML = '<img alt="" src="' + f.img + '"><span>إطار ' + f.name + '</span>';
+  b.addEventListener('click', function(){ setFrame(k); });
+  segBtns[k] = b; seg.appendChild(b);
+  (new Image()).src = f.img;
+});
 
 function resetView(){
   mv.cameraOrbit = DEFAULT_ORBIT;
@@ -241,8 +312,9 @@ mv.addEventListener('error', function(){ msg.classList.add('on'); });
 /* إخفاءُ الشريط إن كان مجسّماً واحداً */
 if (MODELS.length < 2) { Object.keys(chips).forEach(function(k){ chips[k].style.display = 'none'; }); }
 
-var q = new URLSearchParams(location.search).get('m');
-show(q || MODELS[0].id);
+var qs = new URLSearchParams(location.search);
+setFrame(qs.get('f') || 'sci');
+show(qs.get('m') || MODELS[0].id);
 </script>
 </body>
 </html>
