@@ -196,12 +196,12 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset
 .wedge text.u{font-family:var(--body);font-weight:800;stroke-width:6}
 .wedge .shade{fill:#0b1433;opacity:0;transition:opacity .3s}
 .wedge .lite{fill:#fff;opacity:0;transition:opacity .15s}
-.wedge .arc{fill:none;stroke:#FFF3B8;stroke-width:10;stroke-linejoin:round;opacity:0;transition:opacity .25s}
+/* الربعُ المختارُ يتوهّجُ كلُّه (طلبُ المالك: بلا خطٍّ حولَه) — ضوءٌ ناعمٌ مموَّهُ الحوافّ يُدمَجُ بالشاشةِ فوقَ لونِ الربع */
+.wedge .glowfill{fill:#FFF3C4;opacity:0;mix-blend-mode:screen;pointer-events:none}
 .wedge.live .lite{opacity:.16}
 .dial.picked .wedge:not(.hit) .shade{opacity:.6}
 .dial.picked .wedge:not(.hit) text{opacity:.5}
-.dial.picked .wedge.hit .lite{opacity:.1}
-.dial.picked .wedge.hit .arc{opacity:1;animation:arcglow 1.1s ease-in-out infinite}
+.dial.picked .wedge.hit .glowfill{opacity:.32;animation:areaglow 1.4s ease-in-out infinite}
 .flame{transform-box:fill-box;transform-origin:50% 0;animation:flick .16s ease-in-out infinite alternate}
 .flame-g{opacity:.55;transition:opacity .3s}
 .spinning .flame-g{opacity:1}
@@ -267,7 +267,7 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset
 @keyframes lift{0%{transform:translateY(0)}35%{transform:translateY(-10px) scale(1.03)}100%{transform:translateY(0)}}
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(7px)}50%{transform:translateX(-7px)}75%{transform:translateX(4px)}}
 @keyframes flick{from{transform:scaleY(.72)}to{transform:scaleY(1.14)}}
-@keyframes arcglow{0%,100%{stroke-width:9;opacity:1}50%{stroke-width:14;opacity:.7}}
+@keyframes areaglow{0%,100%{opacity:.18}50%{opacity:.46}}
 @keyframes litup{0%{transform:scale(.2);opacity:0}100%{transform:scale(1);opacity:1}}
 @keyframes plant{0%{transform:scaleY(0);opacity:1}100%{transform:scaleY(1);opacity:1}}
 @keyframes arrive{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
@@ -382,6 +382,7 @@ function buildDial(){
     <linearGradient id="flameG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFF6C2"/><stop offset=".45" stop-color="#FFC23A"/><stop offset="1" stop-color="#FF6A1A" stop-opacity="0"/></linearGradient>
     <filter id="glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="10" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
     <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#000" flood-opacity=".38"/></filter>
+    <filter id="soft" x="-25%" y="-25%" width="150%" height="150%"><feGaussianBlur stdDeviation="18"/></filter>
   </defs>`;
   s += `<image href="games/art/compass-dial.webp${VQ}" x="-492" y="-492" width="984" height="984" filter="url(#shadow)"/>`;
   // الأرباعُ الأربعة: إعتامٌ لغيرِ المختار، وإضاءةٌ خفيفةٌ للمارّ تحتَ الإبرة، وقوسٌ متوهّجٌ على حافّةِ المختار
@@ -391,7 +392,7 @@ function buildDial(){
     wedges+=`<g class="wedge" id="w${i}" data-dir="${i}">
       <path class="shade" d="${sector(48, 397, d.deg-45, d.deg+45)}"/>
       <path class="lite" d="${sector(48, 397, d.deg-45, d.deg+45)}"/>
-      <path class="arc" d="${sector(60, 374, d.deg-40.5, d.deg+40.5)}" filter="url(#glow)"/>
+      <path class="glowfill" d="${sector(72, 368, d.deg-38, d.deg+38)}" filter="url(#soft)"/>
       <text x="${cx.toFixed(1)}" y="${(cy-8).toFixed(1)}" text-anchor="middle" font-size="46">${d.name}</text>
       <text class="u" id="wu${i}" x="${cx.toFixed(1)}" y="${(cy+36).toFixed(1)}" text-anchor="middle" font-size="28">${d.gift?'هدية':UNIT_NO[i]}</text>
     </g>`;
