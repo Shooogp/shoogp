@@ -220,7 +220,7 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset
 #jafeer.bump{animation:bump .4s ease-out;transform-box:fill-box;transform-origin:center bottom}
 .giftmid{align-items:center;text-align:center}
 .giftmid .dtag{align-self:center}
-.giftbox{all:unset;box-sizing:border-box;cursor:pointer;display:block;width:clamp(180px,16.5vw,280px);aspect-ratio:240/230;margin:2px auto 0;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.giftbox{all:unset;box-sizing:border-box;cursor:pointer;display:block;width:clamp(150px,13.5vw,230px);aspect-ratio:593/741;margin:2px auto 0;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 .giftbox svg{display:block;width:100%;height:100%;overflow:visible}
 .giftbox:not(.open){animation:wiggle 2s ease-in-out infinite}
 .giftbox:focus-visible{outline:3px solid var(--sun);outline-offset:6px;border-radius:24px}
@@ -274,7 +274,7 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset
 @keyframes land{0%{transform:scaleY(.8)}60%{transform:scaleY(1.06)}100%{transform:scaleY(1)}}
 @keyframes bump{0%,100%{transform:scale(1)}40%{transform:scale(1.06,.94)}}
 @keyframes wiggle{0%,62%,100%{transform:rotate(0)}70%{transform:rotate(-5deg)}78%{transform:rotate(5deg)}86%{transform:rotate(-3deg)}94%{transform:rotate(2deg)}}
-@keyframes lidoff{0%{transform:translate(0,0) rotate(0);opacity:1}100%{transform:translate(-40px,-120px) rotate(-30deg);opacity:0}}
+@keyframes lidoff{0%{transform:translate(0,0) rotate(0);opacity:1}100%{transform:translate(-110px,-320px) rotate(-30deg);opacity:0}}
 @keyframes rays{0%{opacity:0;transform:scale(.3) rotate(0)}25%{opacity:1}100%{opacity:.35;transform:scale(1.15) rotate(30deg)}}
 @keyframes nudge{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
 @media (prefers-reduced-motion:reduce){
@@ -529,29 +529,20 @@ function prepare(ref){
 /* ═════ الواجهة ═════ */
 const ICON_COMPASS = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M15.5 8.5l-2 5-5 2 2-5z" fill="currentColor"/></svg>';
 const ICON_GIFT = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="9" width="17" height="11.5" rx="2"/><path d="M2.5 9h19M12 9v11.5M12 9c-1.5-3.5-6-4.2-6-1.6C6 9 12 9 12 9zM12 9c1.5-3.5 6-4.2 6-1.6C18 9 12 9 12 9z"/></svg>';
-/* صندوقُ الهدية مرسومٌ بالكود: قاعدةٌ بنفسجيّةٌ (لونُ الغرب) وشريطٌ ذهبيّ، وغطاءٌ بفيونكةٍ يطيرُ عندَ الفتح */
+/* صندوقُ الهدية من جيميناي (طلبُ المالك ٢٠٢٦-١١-٠١): قطعتانِ مولَّدتانِ في صورةٍ واحدةٍ ثمّ مفصولتان —
+   جسمُ الصندوقِ games/art/gift-base.webp (٤٨٩×٣٩٥) والغطاءُ بفيونكتِه games/art/gift-lid.webp (٥١٣×٢٧٤).
+   الغطاءُ يجلسُ فوقَ الجسمِ متداخلاً ١٨ وحدةً ويطيرُ وحدَه عندَ الفتح، والأشعّةُ خلفَهما بالكود. */
+const GIFT_TOP = 256;                     // أعلى جسمِ الصندوق في إحداثيّاتِ الرسم (حيثُ تخرجُ الهدية)
 const GIFTBOX_SVG = (function(){
-  let rays=''; for(let i=0;i<12;i++){ const a=i*30; rays+=`<path d="M120 100 L${(120+130*Math.cos((a-5)*Math.PI/180)).toFixed(1)} ${(100+130*Math.sin((a-5)*Math.PI/180)).toFixed(1)} L${(120+130*Math.cos((a+5)*Math.PI/180)).toFixed(1)} ${(100+130*Math.sin((a+5)*Math.PI/180)).toFixed(1)}Z" fill="#FFE9A0" fill-opacity=".55"/>`; }
-  return `<svg viewBox="0 0 240 230" aria-hidden="true"><defs>
-    <linearGradient id="gbA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#B9ABFF"/><stop offset=".55" stop-color="#8B76F0"/><stop offset="1" stop-color="#5E49C9"/></linearGradient>
-    <linearGradient id="gbL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D2C8FF"/><stop offset="1" stop-color="#9C8BF2"/></linearGradient>
-    <linearGradient id="gbR" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FFE48A"/><stop offset=".5" stop-color="#FFC23A"/><stop offset="1" stop-color="#E09A18"/></linearGradient>
+  const cx = 256.5, cy = GIFT_TOP + 40;
+  let rays=''; for(let i=0;i<12;i++){ const a=i*30, R=330;
+    rays+=`<path d="M${cx} ${cy} L${(cx+R*Math.cos((a-5)*Math.PI/180)).toFixed(1)} ${(cy+R*Math.sin((a-5)*Math.PI/180)).toFixed(1)} L${(cx+R*Math.cos((a+5)*Math.PI/180)).toFixed(1)} ${(cy+R*Math.sin((a+5)*Math.PI/180)).toFixed(1)}Z" fill="#FFE9A0" fill-opacity=".55"/>`; }
+  return `<svg viewBox="-40 -50 593 741" aria-hidden="true"><defs>
     <radialGradient id="gbG" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#FFF8D8" stop-opacity=".95"/><stop offset="1" stop-color="#FFD54A" stop-opacity="0"/></radialGradient>
   </defs>
-  <g class="rays">${rays}<circle cx="120" cy="100" r="80" fill="url(#gbG)"/></g>
-  <g class="base">
-    <rect x="34" y="100" width="172" height="118" rx="16" fill="url(#gbA)" stroke="#111" stroke-width="4"/>
-    <rect x="104" y="100" width="32" height="118" fill="url(#gbR)" stroke="#111" stroke-width="3"/>
-    <rect x="48" y="114" width="14" height="88" rx="7" fill="#fff" fill-opacity=".38"/>
-  </g>
-  <g class="lid">
-    <rect x="22" y="70" width="196" height="40" rx="12" fill="url(#gbL)" stroke="#111" stroke-width="4"/>
-    <rect x="103" y="70" width="34" height="40" fill="url(#gbR)" stroke="#111" stroke-width="3"/>
-    <rect x="34" y="78" width="56" height="9" rx="4.5" fill="#fff" fill-opacity=".5"/>
-    <path d="M120 66C92 26 52 40 76 64C88 76 108 72 120 66Z" fill="url(#gbR)" stroke="#111" stroke-width="3.5" stroke-linejoin="round"/>
-    <path d="M120 66C148 26 188 40 164 64C152 76 132 72 120 66Z" fill="url(#gbR)" stroke="#111" stroke-width="3.5" stroke-linejoin="round"/>
-    <ellipse cx="120" cy="66" rx="14" ry="12" fill="url(#gbR)" stroke="#111" stroke-width="3.5"/>
-  </g></svg>`;
+  <g class="rays">${rays}<circle cx="${cx}" cy="${cy}" r="200" fill="url(#gbG)"/></g>
+  <image class="base" href="games/art/gift-base.webp${VQ}" x="12" y="${GIFT_TOP}" width="489" height="395"/>
+  <g class="lid"><image href="games/art/gift-lid.webp${VQ}" x="0" y="0" width="513" height="274"/></g></svg>`;
 })();
 function leftText(left){ return left===1 ? 'بقيت نجمةٌ واحدة للوصول إلى القمر' : left===2 ? 'بقيت نجمتان للوصول إلى القمر' : 'بقيت ' + ar(left) + ' نجوم للوصول إلى القمر'; }
 function andList(a){ return a.length<2 ? (a[0]||'') : a.slice(0,-1).join('، ') + ' و' + a[a.length-1]; }
@@ -762,7 +753,7 @@ function openGift(){
   S.phase = 'answered';
   box.classList.add('open'); box.disabled = true;
   sfx('gift');
-  const r = box.getBoundingClientRect(), cx = r.left + r.width/2, cy = r.top + r.height*.5;
+  const r = box.getBoundingClientRect(), cx = r.left + r.width/2, cy = r.top + r.height*(GIFT_TOP+50)/741;
   sparkBurst(cx, cy, 18, ['#FFE48A','#fff','#9C8BF2','#FF7A8E','#5CD0F2']);
   S.stars++; S.gifts.push(c.gift[1]);
   const left = GOAL - S.stars;
@@ -771,7 +762,7 @@ function openGift(){
   document.querySelector('.badge.qnum').textContent = `النجوم: ${ar(S.stars)} من ${ar(GOAL)}`;
   const fb = $('fb'); fb.className = 'fb good';
   fb.innerHTML = left>0 ? `نجمةٌ مجانية!<small>${leftText(left)}</small>` : 'اكتملت النجوم الستّ!';
-  flyGift(c.gift, S.gifts.length-1, cx, cy - r.height*.1, game);
+  flyGift(c.gift, S.gifts.length-1, cx, cy, game);
   setTimeout(() => {
     if(S!==game) return;
     flyStar({x:cx, y:cy}, S.stars-1, () => {
@@ -905,6 +896,7 @@ document.addEventListener('keydown', e => {
 });
 
 buildDial(); buildSky(); buildGrades(); setNeedle(0); render();
+['gift-base','gift-lid'].concat(GIFTS.map(g=>g[0])).forEach(n=>{ const im=new Image(); im.src='games/art/'+n+'.webp'+VQ; });
 // اختيارٌ مسبقٌ للصفّ من الرابط (?g=1..4) لمن يشاركُ رابطَ صفٍّ بعينه
 try{ const g = parseInt(new URLSearchParams(location.search).get('g'),10); if(g>=1 && g<=4) chooseGrade(g); }catch(e){}
 })();
