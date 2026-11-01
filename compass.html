@@ -9,7 +9,7 @@
 <!--
   بوصلة العلوم — مبادرة شوجب بمناسبة مهرجان العلوم (نوفمبر ٢٠٢٦).
   صفحةٌ مستقلّةٌ للسبورة: تختارُ المعلّمةُ الصفّ، ويُديرُ الطلابُ البوصلةَ (إبرتُها صاروخُ شوجب)،
-  فتقفُ على اتجاه: الشمالُ والشرقُ والجنوبُ لوحداتِ كتابِ العلوم الثلاث، والغربُ «مفاجأة» من أيّ وحدة.
+  فتقفُ على اتجاه: الشمالُ والشرقُ والجنوبُ لوحداتِ كتابِ العلوم الثلاث، والغربُ «صندوق الهدايا»: هديةٌ عُمانيةٌ تدخلُ السلّةَ ونجمةٌ بلا سؤال.
   كلُّ إجابةٍ صحيحةٍ تُضيءُ نجمةً، وبستِّ نجومٍ (مراحلُ الألعابِ كلِّها) ينطلقُ الصاروخُ إلى القمر.
   الأسئلةُ من بنوكِ الألعاب نفسِها (games/data/g?-sci.js — اختيار من متعدد وصح/خطأ)، ولا تُؤلَّفُ لها أسئلةٌ خاصّة.
   قواعدُ الألعابِ مرعيّة: لا خسارة، الخطأُ لا يكشفُ الإجابةَ ويعودُ سؤالُه لاحقاً، الأصواتُ بالكودِ وتخضعُ لزرِّ الكتم.
@@ -213,6 +213,21 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset
 #flag{opacity:0}
 #moonImg.arrive{animation:arrive 1.2s ease-in-out 2;transform-box:fill-box;transform-origin:center}
 #flag.up{animation:plant .7s cubic-bezier(.2,1.4,.4,1) both;transform-box:fill-box;transform-origin:50% 100%}
+.basket{position:absolute;right:8px;bottom:6px;z-index:2;width:min(18cqw,21cqh);height:auto;overflow:visible;pointer-events:none;
+  filter:drop-shadow(0 6px 8px rgba(0,0,0,.35))}
+.gift.land{animation:land .35s ease-out;transform-box:fill-box;transform-origin:center bottom}
+#jafeer.bump{animation:bump .4s ease-out;transform-box:fill-box;transform-origin:center bottom}
+.giftmid{align-items:center;text-align:center}
+.giftmid .dtag{align-self:center}
+.giftbox{all:unset;box-sizing:border-box;cursor:pointer;display:block;width:clamp(180px,16.5vw,280px);aspect-ratio:240/230;margin:2px auto 0;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.giftbox svg{display:block;width:100%;height:100%;overflow:visible}
+.giftbox:not(.open){animation:wiggle 2s ease-in-out infinite}
+.giftbox:focus-visible{outline:3px solid var(--sun);outline-offset:6px;border-radius:24px}
+.giftbox .lid{transform-box:fill-box;transform-origin:50% 100%}
+.giftbox.open{cursor:default}
+.giftbox.open .lid{animation:lidoff .75s cubic-bezier(.3,1.3,.5,1) forwards}
+.giftbox .rays{opacity:0;transform-box:fill-box;transform-origin:center}
+.giftbox.open .rays{animation:rays 1.8s ease-out forwards}
 .restart{position:absolute;bottom:10px;left:10px;z-index:3;direction:rtl;
   display:flex;align-items:center;gap:8px;font:800 clamp(13px,1.15vw,18px)/1.4 var(--body);color:#F6EFE1;cursor:pointer;
   background:rgba(15,21,48,.82);border:0;border-radius:999px;padding:7px 16px;white-space:nowrap}
@@ -255,6 +270,11 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset
 @keyframes litup{0%{transform:scale(.2);opacity:0}100%{transform:scale(1);opacity:1}}
 @keyframes plant{0%{transform:scaleY(0);opacity:1}100%{transform:scaleY(1);opacity:1}}
 @keyframes arrive{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+@keyframes land{0%{transform:scaleY(.8)}60%{transform:scaleY(1.06)}100%{transform:scaleY(1)}}
+@keyframes bump{0%,100%{transform:scale(1)}40%{transform:scale(1.06,.94)}}
+@keyframes wiggle{0%,62%,100%{transform:rotate(0)}70%{transform:rotate(-5deg)}78%{transform:rotate(5deg)}86%{transform:rotate(-3deg)}94%{transform:rotate(2deg)}}
+@keyframes lidoff{0%{transform:translate(0,0) rotate(0);opacity:1}100%{transform:translate(-40px,-120px) rotate(-30deg);opacity:0}}
+@keyframes rays{0%{opacity:0;transform:scale(.3) rotate(0)}25%{opacity:1}100%{opacity:.35;transform:scale(1.15) rotate(30deg)}}
 @keyframes nudge{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
@@ -292,6 +312,7 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset
         <div class="sky" aria-hidden="true">
           <svg id="sky" viewBox="0 0 1000 200" preserveAspectRatio="xMidYMid meet"></svg>
         </div>
+        <svg class="basket" id="basket" viewBox="0 0 230 262" aria-hidden="true"><g id="gifts"></g><image id="jafeer" href="games/art/jafeer.webp?v=20261101-1" x="0" y="58" width="230" height="202.3"/></svg>
         <div class="dialbox">
           <svg class="dial" id="dial" viewBox="-500 -500 1000 1000" role="button" tabindex="0" aria-label="أدِر البوصلة"></svg>
         </div>
@@ -321,15 +342,19 @@ const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const GRADES = [
   {g:1, name:'الصف الأول'}, {g:2, name:'الصف الثاني'}, {g:3, name:'الصف الثالث'}, {g:4, name:'الصف الرابع'}
 ];
-/* الاتجاهات بترتيب عقارب الساعة من الشمال. الثلاثة الأولى لوحدات الكتاب، والغرب مفاجأة من أيّ وحدة */
+/* الاتجاهات بترتيب عقارب الساعة من الشمال. الثلاثة الأولى لوحدات الكتاب، والغرب صندوق الهدايا */
 const DIRS = [
   {k:'n', name:'الشمال', deg:0},
   {k:'e', name:'الشرق',  deg:90},
   {k:'s', name:'الجنوب', deg:180},
-  {k:'w', name:'الغرب',  deg:270, surprise:true}
+  {k:'w', name:'الغرب',  deg:270, gift:true}
 ];
 const COLORS = {n:['#FFA552','#E06A1F'], e:['#5CD0F2','#2389C9'], s:['#FF7A8E','#CF3550'], w:['#9C8BF2','#5E49C9']};
 const UNIT_NO = ['الوحدة ١','الوحدة ٢','الوحدة ٣'];
+/* هدايا صندوق الغرب: أغراضُ سوق مطرح نفسُها كما في «بالونات العيد» (عناصرُ المنصّة أوّلاً)، والسلّةُ الجفير.
+   [الملف، الاسم، العرض، الارتفاع] — ومواضعُها في السلّة [إزاحةُ المركز أفقياً، أسفلُ الهدية] منقولةٌ من «بالونات العيد» */
+const GIFTS = [['halwa','الحلوى العُمانية',254,254],['dates','التمر',260,231],['lantern','الفانوس',132,253],['kumma','الكُمّة',600,496],['dallah','الدلّة',236,293],['fabric','القماش الملوّن',179,270]];
+const SLOTS = [[-62,150],[-20,154],[22,150],[62,154],[-40,126],[40,126]];
 
 let BOOKS = {}, S = null, angle = 0, spinning = false, muted = false;
 
@@ -379,7 +404,7 @@ function buildDial(){
     wedges+=`<g class="wedge" id="w${i}" data-dir="${i}">
       <path d="${sector(130, 410, d.deg-42, d.deg+42)}" fill="url(#wg-${d.k})"/>
       <text x="${cx.toFixed(1)}" y="${(cy-14).toFixed(1)}" text-anchor="middle" font-size="52">${d.name}</text>
-      <text class="u" id="wu${i}" x="${cx.toFixed(1)}" y="${(cy+40).toFixed(1)}" text-anchor="middle" font-size="31">${d.surprise?'مفاجأة':UNIT_NO[i]}</text>
+      <text class="u" id="wu${i}" x="${cx.toFixed(1)}" y="${(cy+40).toFixed(1)}" text-anchor="middle" font-size="31">${d.gift?'هدية':UNIT_NO[i]}</text>
     </g>`;
   });
   s += `<g>${wedges}</g><g>${rose}</g>`;
@@ -434,6 +459,10 @@ function sfx(name){
     else if(name==='tick'){ tone(1900,t,.03,'square',.035); tone(950,t,.04,'triangle',.05); }
     else if(name==='land'){ tone(660,t,.18,'triangle',.13); tone(990,t+.09,.3,'sine',.11); }
     else if(name==='star'){ [1175,1568,2093].forEach((f,i)=>tone(f,t+i*.07,.35,'sine',.09)); }
+    else if(name==='gift'){ const n=noiseSrc(ac,.12), g=ac.createGain(), hp=ac.createBiquadFilter(); hp.type='highpass'; hp.frequency.value=900;
+      g.gain.setValueAtTime(.22,t); g.gain.exponentialRampToValueAtTime(.001,t+.12); n.connect(hp); hp.connect(g); g.connect(ac.destination); n.start(t); n.stop(t+.13);
+      [784,988,1175,1568,2093].forEach((f,i)=>tone(f,t+.06+i*.07,.32,'triangle',.11)); }
+    else if(name==='drop'){ tone(190,t,.16,'sine',.22,95); tone(420,t+.02,.08,'triangle',.05); }
     else if(name==='win'){ [523,659,784,1047].forEach((f,i)=>tone(f,t+i*.15,.3,'triangle',.16)); tone(1047,t+.62,.9,'triangle',.12); tone(784,t+.62,.9,'sine',.1); }
   }catch(e){}
 }
@@ -495,7 +524,7 @@ function fresh(g){
   const book = BOOKS[g];
   const n = Math.min(3, book.units.length);
   const queues = []; for(let u=0;u<n;u++) queues.push(unitQueue(book,u));
-  return {g, book, queues, stars:0, phase:'ready', last:-1, cur:null, spins:0};
+  return {g, book, queues, stars:0, phase:'ready', last:-1, cur:null, spins:0, giftQ:shuffle(GIFTS.map((_,i)=>i)), gifts:[]};
 }
 function takeFrom(u){
   const q = S.queues[u];
@@ -512,10 +541,41 @@ function prepare(ref){
 
 /* ═════ الواجهة ═════ */
 const ICON_COMPASS = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M15.5 8.5l-2 5-5 2 2-5z" fill="currentColor"/></svg>';
+const ICON_GIFT = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="9" width="17" height="11.5" rx="2"/><path d="M2.5 9h19M12 9v11.5M12 9c-1.5-3.5-6-4.2-6-1.6C6 9 12 9 12 9zM12 9c1.5-3.5 6-4.2 6-1.6C18 9 12 9 12 9z"/></svg>';
+/* صندوقُ الهدية مرسومٌ بالكود: قاعدةٌ بنفسجيّةٌ (لونُ الغرب) وشريطٌ ذهبيّ، وغطاءٌ بفيونكةٍ يطيرُ عندَ الفتح */
+const GIFTBOX_SVG = (function(){
+  let rays=''; for(let i=0;i<12;i++){ const a=i*30; rays+=`<path d="M120 100 L${(120+130*Math.cos((a-5)*Math.PI/180)).toFixed(1)} ${(100+130*Math.sin((a-5)*Math.PI/180)).toFixed(1)} L${(120+130*Math.cos((a+5)*Math.PI/180)).toFixed(1)} ${(100+130*Math.sin((a+5)*Math.PI/180)).toFixed(1)}Z" fill="#FFE9A0" fill-opacity=".55"/>`; }
+  return `<svg viewBox="0 0 240 230" aria-hidden="true"><defs>
+    <linearGradient id="gbA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#B9ABFF"/><stop offset=".55" stop-color="#8B76F0"/><stop offset="1" stop-color="#5E49C9"/></linearGradient>
+    <linearGradient id="gbL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D2C8FF"/><stop offset="1" stop-color="#9C8BF2"/></linearGradient>
+    <linearGradient id="gbR" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FFE48A"/><stop offset=".5" stop-color="#FFC23A"/><stop offset="1" stop-color="#E09A18"/></linearGradient>
+    <radialGradient id="gbG" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#FFF8D8" stop-opacity=".95"/><stop offset="1" stop-color="#FFD54A" stop-opacity="0"/></radialGradient>
+  </defs>
+  <g class="rays">${rays}<circle cx="120" cy="100" r="80" fill="url(#gbG)"/></g>
+  <g class="base">
+    <rect x="34" y="100" width="172" height="118" rx="16" fill="url(#gbA)" stroke="#111" stroke-width="4"/>
+    <rect x="104" y="100" width="32" height="118" fill="url(#gbR)" stroke="#111" stroke-width="3"/>
+    <rect x="48" y="114" width="14" height="88" rx="7" fill="#fff" fill-opacity=".38"/>
+  </g>
+  <g class="lid">
+    <rect x="22" y="70" width="196" height="40" rx="12" fill="url(#gbL)" stroke="#111" stroke-width="4"/>
+    <rect x="103" y="70" width="34" height="40" fill="url(#gbR)" stroke="#111" stroke-width="3"/>
+    <rect x="34" y="78" width="56" height="9" rx="4.5" fill="#fff" fill-opacity=".5"/>
+    <path d="M120 66C92 26 52 40 76 64C88 76 108 72 120 66Z" fill="url(#gbR)" stroke="#111" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M120 66C148 26 188 40 164 64C152 76 132 72 120 66Z" fill="url(#gbR)" stroke="#111" stroke-width="3.5" stroke-linejoin="round"/>
+    <ellipse cx="120" cy="66" rx="14" ry="12" fill="url(#gbR)" stroke="#111" stroke-width="3.5"/>
+  </g></svg>`;
+})();
+function leftText(left){ return left===1 ? 'بقيت نجمةٌ واحدة للوصول إلى القمر' : left===2 ? 'بقيت نجمتان للوصول إلى القمر' : 'بقيت ' + ar(left) + ' نجوم للوصول إلى القمر'; }
+function andList(a){ return a.length<2 ? (a[0]||'') : a.slice(0,-1).join('، ') + ' و' + a[a.length-1]; }
+function giftsLine(){
+  const g = S ? S.gifts : []; if(!g.length) return '';
+  return `<p class="fact">وفي سلّتِكم ${g.length===1 ? 'هديةٌ عُمانية' : g.length===2 ? 'هديتانِ عُمانيّتان' : ar(g.length)+' هدايا عُمانية'}: ${andList(g)}.</p>`;
+}
 function unitTitle(i){ if(!S) return ''; const u=S.book.units[i]; return u ? u.u : ''; }
 function legendHTML(){
   return `<ul class="legend" id="legend">` + DIRS.map((d,i)=>
-    `<li class="d-${d.k}" id="lg${i}"><i></i><b>${d.name}</b><span>${d.surprise ? 'مفاجأة: سؤال من أيّ وحدة' : UNIT_NO[i] + ': ' + unitTitle(i)}</span></li>`).join('') + `</ul>`;
+    `<li class="d-${d.k}" id="lg${i}"><i></i><b>${d.name}</b><span>${d.gift ? 'صندوق الهدايا: هديةٌ ونجمةٌ بلا سؤال' : UNIT_NO[i] + ': ' + unitTitle(i)}</span></li>`).join('') + `</ul>`;
 }
 function badgeHTML(withType){
   const n = S ? S.stars : 0;
@@ -549,7 +609,7 @@ function render(){
   }
   if(S.phase==='q' || S.phase==='answered'){
     const c = S.cur, d = DIRS[c.dir];
-    const where = d.surprise ? `مفاجأة · ${UNIT_NO[c.unit]}: ${unitTitle(c.unit)}` : `${d.name} · ${UNIT_NO[c.dir]}: ${unitTitle(c.dir)}`;
+    const where = `${d.name} · ${UNIT_NO[c.dir]}: ${unitTitle(c.dir)}`;
     ask.innerHTML = badgeHTML(c.Q.tf ? 'صح أم خطأ' : 'اختيار من متعدد') + `<div class="mid">
       <span class="dtag d-${d.k}">${ICON_COMPASS}${where}</span>
       ${c.Q.lesson ? `<p class="from">من درس «${c.Q.lesson}»</p>` : `<p class="from">من مراجعة الوحدة</p>`}
@@ -559,11 +619,22 @@ function render(){
     ask.querySelectorAll('.stone').forEach(b=> b.onclick = () => answer(+b.dataset.i, b));
     return;
   }
+  if(S.phase==='gift'){
+    ask.innerHTML = badgeHTML('هدية') + `<div class="mid giftmid">
+      <span class="dtag d-w">${ICON_GIFT}الغرب · صندوق الهدايا</span>
+      <h2 id="giftTitle">صندوقُ هدايا!</h2>
+      <p class="lead" id="giftLead">المسوا الصندوق لتفتحوه.</p>
+      <button class="giftbox" id="giftbox" type="button" aria-label="افتحوا صندوق الهدايا">${GIFTBOX_SVG}</button>
+    </div><div class="foot"><p class="fb" id="fb"></p><span id="footBtn"></span></div>`;
+    $('giftbox').onclick = openGift;
+    return;
+  }
   if(S.phase==='done'){
     ask.innerHTML = badgeHTML() + `<div class="mid done">
       <h2>اكتملت رحلة البوصلة!</h2>
       <p>ستُّ نجومٍ أضاءت الطريق، ووصل صاروخ شوجب إلى القمر.</p>
       <p class="motto">العلومُ بوصلتُنا، والقمرُ وجهتُنا!</p>
+      ${giftsLine()}
       <p class="fact">هل تعلمون؟ كان البحّارةُ العُمانيون قديماً يهتدون بالنجومِ والبوصلةِ في رحلاتهم البعيدة عبرَ المحيطِ الهندي.</p>
       <button class="stone" id="again" type="button">العبوا من جديد</button>
     </div>`;
@@ -599,6 +670,7 @@ function stopAll(){ spinning=false; cancelAnimationFrame(raf); engineStop(.2); d
 function resetScene(){
   for(let i=0;i<GOAL;i++){ const st=$('st'+i); st.setAttribute('class','slot-off'); $('ln'+i).setAttribute('class','trail'); }
   $('flag').setAttribute('class',''); $('moonImg').setAttribute('class','');
+  $('gifts').innerHTML = '';
   $('needle').style.visibility='';
   wedgeState(-1);
   $('dial').classList.remove('busy');
@@ -655,10 +727,16 @@ function land(d){
   angle = angle % 360; setNeedle(angle);
   wedgeState(d);
   sfx('land');
-  const unit = DIRS[d].surprise ? Math.floor(Math.random()*S.queues.length) : Math.min(d, S.queues.length-1);
-  const ref = takeFrom(unit);
-  S.cur = {dir:d, unit, ref, Q:prepare(ref)};
-  S.phase = 'q';
+  if(DIRS[d].gift){
+    if(!S.giftQ.length) S.giftQ = shuffle(GIFTS.map((_,i)=>i));
+    S.cur = {dir:d, gift:GIFTS[S.giftQ.shift()]};
+    S.phase = 'gift';
+  } else {
+    const unit = Math.min(d, S.queues.length-1);
+    const ref = takeFrom(unit);
+    S.cur = {dir:d, unit, ref, Q:prepare(ref)};
+    S.phase = 'q';
+  }
   render();
   // على الهاتف تنزلُ الأسئلةُ تحتَ البوصلة، فنمرّرُ إليها
   if(matchMedia('(max-width:899px)').matches){ try{ $('ask').scrollIntoView({behavior: reduced?'auto':'smooth', block:'start'}); }catch(e){} }
@@ -675,10 +753,11 @@ function answer(i, btn){
     S.stars++;
     const left = GOAL - S.stars;
     fb.className='fb good';
-    fb.innerHTML = left>0 ? `أحسنتم! أضأتم نجمةً جديدة<small>${left===1?'بقيت نجمةٌ واحدة للوصول إلى القمر':left===2?'بقيت نجمتان للوصول إلى القمر':'بقيت '+ar(left)+' نجوم للوصول إلى القمر'}</small>` : 'أحسنتم! اكتملت النجوم الستّ';
+    fb.innerHTML = left>0 ? `أحسنتم! أضأتم نجمةً جديدة<small>${leftText(left)}</small>` : 'أحسنتم! اكتملت النجوم الستّ';
     document.querySelector('.badge.qnum').textContent = `النجوم: ${ar(S.stars)} من ${ar(GOAL)}`;
-    flyStar(c.dir, S.stars-1, () => {
-      if(S.stars >= GOAL) setTimeout(finale, 450);
+    const game = S;
+    flyStar(centerOf($('w'+c.dir).querySelector('path')), S.stars-1, () => {
+      if(S===game && S.stars >= GOAL) setTimeout(() => { if(S===game) finale(); }, 450);
     });
     if(S.stars < GOAL) showNext();
   } else {
@@ -689,14 +768,73 @@ function answer(i, btn){
     showNext();
   }
 }
-function showNext(){
-  setTimeout(()=>{ if(!S || S.phase!=='answered') return; const f=$('footBtn'); if(!f) return; f.outerHTML = spinButton(); $('spinBtn').onclick = spin; }, 650);
+function openGift(){
+  if(!S || S.phase!=='gift') return;
+  actx();
+  const game = S, c = S.cur, box = $('giftbox');
+  S.phase = 'answered';
+  box.classList.add('open'); box.disabled = true;
+  sfx('gift');
+  const r = box.getBoundingClientRect(), cx = r.left + r.width/2, cy = r.top + r.height*.5;
+  sparkBurst(cx, cy, 18, ['#FFE48A','#fff','#9C8BF2','#FF7A8E','#5CD0F2']);
+  S.stars++; S.gifts.push(c.gift[1]);
+  const left = GOAL - S.stars;
+  $('giftTitle').textContent = 'هديتُكم: ' + c.gift[1] + '!';
+  $('giftLead').textContent = 'دخلت الهديةُ سلّتَكم، ومعها نجمةٌ مجانية.';
+  document.querySelector('.badge.qnum').textContent = `النجوم: ${ar(S.stars)} من ${ar(GOAL)}`;
+  const fb = $('fb'); fb.className = 'fb good';
+  fb.innerHTML = left>0 ? `نجمةٌ مجانية!<small>${leftText(left)}</small>` : 'اكتملت النجوم الستّ!';
+  flyGift(c.gift, S.gifts.length-1, cx, cy - r.height*.1, game);
+  setTimeout(() => {
+    if(S!==game) return;
+    flyStar({x:cx, y:cy}, S.stars-1, () => {
+      if(S===game && S.stars >= GOAL) setTimeout(() => { if(S===game) finale(); }, 450);
+    });
+  }, reduced ? 0 : 1000);
+  if(left>0) showNext(1700);
+}
+/* الهديةُ تقفزُ من الصندوقِ في قوسٍ إلى السلّة، وتُرسَمُ خلفَ واجهةِ الجفيرِ فتبدو داخلَه */
+function flyGift(g, k, x0, y0, game){
+  const [id,,iw,ih] = g, [sx,sb] = SLOTS[k % SLOTS.length];
+  const h = id==='kumma' ? 88 : 118, w = h*iw/ih;
+  const svg = $('basket'), m = svg.getScreenCTM(); if(!m) return;
+  const pt = svg.createSVGPoint(); pt.x = 115 + sx; pt.y = sb - h/2;
+  const dst = pt.matrixTransform(m), sc = m.a;
+  const W = w*sc, H = h*sc;
+  const el = document.createElement('div'); el.className = 'flyer';
+  el.style.width = W+'px'; el.style.height = H+'px';
+  el.innerHTML = `<img src="games/art/${id}.webp${VQ}" alt="">`;
+  document.body.appendChild(el);
+  const kf = (x,y,s,r) => ({transform:`translate(${x-W/2}px,${y-H/2}px) scale(${s}) rotate(${r}deg)`});
+  const midX = (x0+dst.x)/2, midY = Math.min(y0, dst.y) - 110;
+  const up = Math.max(70, H*1.6);
+  const anim = el.animate([
+      {...kf(x0,y0,.3,0), offset:0, easing:'cubic-bezier(.2,1.4,.4,1)'},
+      {...kf(x0,y0-up,2.6,-6), offset:.24},
+      {...kf(x0,y0-up-10,2.6,6), offset:.5, easing:'cubic-bezier(.45,0,.3,1)'},
+      {...kf(midX,midY,1.3,10), offset:.76},
+      {...kf(dst.x,dst.y,1,0), offset:1}
+    ], {duration: reduced?10:2100, fill:'forwards'});
+  anim.onfinish = () => {
+    el.remove(); if(S!==game) return;
+    const im = document.createElementNS(SVGNS,'image');
+    im.setAttribute('href', `games/art/${id}.webp${VQ}`);
+    im.setAttribute('x', (115+sx-w/2).toFixed(1)); im.setAttribute('y', (sb-h).toFixed(1));
+    im.setAttribute('width', w.toFixed(1)); im.setAttribute('height', h.toFixed(1));
+    im.setAttribute('class', 'gift land');
+    $('gifts').appendChild(im);
+    const b = $('jafeer'); b.classList.remove('bump'); void b.getBBox(); b.classList.add('bump');
+    sfx('drop');
+  };
+}
+function showNext(delay){
+  setTimeout(()=>{ if(!S || S.phase!=='answered') return; const f=$('footBtn'); if(!f) return; f.outerHTML = spinButton(); $('spinBtn').onclick = spin; }, delay || 650);
 }
 
 /* نجمةٌ تطيرُ من القطاع إلى مكانِها في سماءِ الرحلة */
 function centerOf(el){ const r=el.getBoundingClientRect(); return {x:r.left+r.width/2, y:r.top+r.height/2, w:r.width, h:r.height}; }
-function flyStar(dir, slot, done){
-  const src = centerOf($('w'+dir).querySelector('path'));
+function flyStar(src, slot, done){
+  const game = S;
   const dst = centerOf($('st'+slot));
   const size = Math.max(34, dst.w*1.25);
   const el = document.createElement('div'); el.className='flyer';
@@ -709,7 +847,7 @@ function flyStar(dir, slot, done){
     {duration: reduced?10:1100, easing:'cubic-bezier(.45,0,.3,1)', fill:'forwards'});
   sparkBurst(src.x, src.y, 10, ['#FFE48A','#fff','#FFD54A']);
   anim.onfinish = () => {
-    el.remove();
+    el.remove(); if(S!==game) return;
     const st=$('st'+slot); st.setAttribute('class','slot-on lit');
     if(slot>0) $('ln'+(slot-1)).setAttribute('class','trail on');
     sfx('star');
@@ -731,6 +869,7 @@ function sparkBurst(x, y, n, colors){
 /* الختام: الصاروخُ يغادرُ البوصلةَ إلى القمر، ويُرفَعُ العلمُ عليه */
 function finale(){
   if(!S) return;
+  const game = S;
   S.phase='done';
   $('ln'+(GOAL-1)).setAttribute('class','trail on');
   const moon = $('moonImg').getBoundingClientRect();
@@ -756,7 +895,7 @@ function finale(){
     ], {duration: reduced?10:2600, easing:'cubic-bezier(.5,0,.4,1)', fill:'forwards'});
   render();
   anim.onfinish = () => {
-    el.remove(); engineStop(.5);
+    el.remove(); if(S!==game) return; engineStop(.5);
     $('flag').setAttribute('class','up'); $('moonImg').setAttribute('class','arrive');
     sfx('win');
     const c = centerOf($('flag'));
