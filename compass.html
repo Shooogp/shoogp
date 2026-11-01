@@ -24,10 +24,10 @@
   --wash:rgba(6,38,24,.34);
   --rk-hi:#fdf4e2; --rk-mid:#f3ddb6; --rk-lo:#e4c691; --rk-edge:#cba86e; --rk-ink:#4a3117;
   --sun:#FFC93C;
-  --n1:#FFA552; --n2:#E06A1F;
-  --e1:#5CD0F2; --e2:#2389C9;
-  --s1:#FF7A8E; --s2:#CF3550;
-  --w1:#9C8BF2; --w2:#5E49C9;
+  --n1:#F5BE62; --n2:#D98F2E;   /* ألوانُ بلاطاتِ وجهِ البوصلة (مقيسةٌ من الصورة) */
+  --e1:#86C8EE; --e2:#4A97D0;
+  --s1:#F28C86; --s2:#D45E58;
+  --w1:#BE9EE8; --w2:#8E6CCB;
   --body:'Tajawal','Segoe UI',Tahoma,system-ui,sans-serif;
   --display:'Cairo','Tajawal',system-ui,sans-serif;
 }
@@ -192,15 +192,16 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset
 .dialbox{position:absolute;inset:16% 0 0 0;display:grid;place-items:center;padding-bottom:2cqh}
 .dial{display:block;width:min(92cqw,79cqh);height:min(92cqw,79cqh);overflow:visible;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 .dial.busy{cursor:default}
-.wedge{transition:opacity .25s,filter .25s}
-.wedge path{stroke:rgba(255,255,255,.35);stroke-width:3}
-.wedge text{fill:#fff;font-family:var(--display);font-weight:900;paint-order:stroke;stroke:rgba(10,18,45,.35);stroke-width:5;pointer-events:none}
-.wedge text.u{font-family:var(--body);font-weight:800;stroke-width:4;fill:rgba(255,255,255,.95)}
-.dial.picked .wedge{opacity:.38;filter:saturate(.55)}
-.dial.picked .wedge.hit{opacity:1;filter:url(#glow) saturate(1.15)}
-.dial.picked .wedge.hit path{stroke:#fff;stroke-width:7}
-.wedge.live{filter:brightness(1.25)}
-.wedge.hit{animation:beat 1.1s ease-in-out 2}
+.wedge text{fill:#fff;font-family:var(--display);font-weight:900;paint-order:stroke;stroke:rgba(40,22,10,.55);stroke-width:7;stroke-linejoin:round;pointer-events:none;transition:opacity .3s}
+.wedge text.u{font-family:var(--body);font-weight:800;stroke-width:6}
+.wedge .shade{fill:#0b1433;opacity:0;transition:opacity .3s}
+.wedge .lite{fill:#fff;opacity:0;transition:opacity .15s}
+.wedge .arc{fill:none;stroke:#FFF3B8;stroke-width:12;stroke-linecap:round;opacity:0;transition:opacity .25s}
+.wedge.live .lite{opacity:.16}
+.dial.picked .wedge:not(.hit) .shade{opacity:.6}
+.dial.picked .wedge:not(.hit) text{opacity:.5}
+.dial.picked .wedge.hit .lite{opacity:.1}
+.dial.picked .wedge.hit .arc{opacity:1;animation:arcglow 1.1s ease-in-out infinite}
 .flame{transform-box:fill-box;transform-origin:50% 0;animation:flick .16s ease-in-out infinite alternate}
 .flame-g{opacity:.55;transition:opacity .3s}
 .spinning .flame-g{opacity:1}
@@ -266,7 +267,7 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset
 @keyframes lift{0%{transform:translateY(0)}35%{transform:translateY(-10px) scale(1.03)}100%{transform:translateY(0)}}
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(7px)}50%{transform:translateX(-7px)}75%{transform:translateX(4px)}}
 @keyframes flick{from{transform:scaleY(.72)}to{transform:scaleY(1.14)}}
-@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.035)}}
+@keyframes arcglow{0%,100%{stroke-width:10;opacity:1}50%{stroke-width:17;opacity:.7}}
 @keyframes litup{0%{transform:scale(.2);opacity:0}100%{transform:scale(1);opacity:1}}
 @keyframes plant{0%{transform:scaleY(0);opacity:1}100%{transform:scaleY(1);opacity:1}}
 @keyframes arrive{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
@@ -349,7 +350,6 @@ const DIRS = [
   {k:'s', name:'الجنوب', deg:180},
   {k:'w', name:'الغرب',  deg:270, gift:true}
 ];
-const COLORS = {n:['#FFA552','#E06A1F'], e:['#5CD0F2','#2389C9'], s:['#FF7A8E','#CF3550'], w:['#9C8BF2','#5E49C9']};
 const UNIT_NO = ['الوحدة ١','الوحدة ٢','الوحدة ٣'];
 /* هدايا صندوق الغرب: أغراضُ سوق مطرح نفسُها كما في «بالونات العيد» (عناصرُ المنصّة أوّلاً)، والسلّةُ الجفير.
    [الملف، الاسم، العرض، الارتفاع] — ومواضعُها في السلّة [إزاحةُ المركز أفقياً، أسفلُ الهدية] منقولةٌ من «بالونات العيد» */
@@ -373,50 +373,38 @@ function starPath(R, r){
   return p+'Z';
 }
 function buildDial(){
-  const W=250, H=Math.round(250*483/300), P=.64;          // الصاروخ: يدور حول نقطةٍ قربَ ذيله فيشيرُ رأسُه إلى الاتجاه
+  /* وجهُ البوصلةِ صورةٌ من جيميناي (games/art/compass-dial.webp: إطارٌ نحاسيٌّ ووجهٌ كحليٌّ وأربعُ بلاطاتٍ ملوّنةٍ ونجمةٌ ثمانية)،
+     وما فوقَها بالكود: أسماءُ الاتجاهات، وطبقتا الإعتامِ والإضاءةِ لكلِّ ربع، وقوسُ التوهّج، وإبرةُ الصاروخ.
+     مقيسٌ من الصورة بنسبةِ نصفِ قطرِها: البلاطاتُ من ٠٫٢٠ إلى ٠٫٧٢٥ وعرضُ كلٍّ منها ±٣٧°، والحلقةُ النحاسيّةُ من ٠٫٨١. */
+  const W=205, H=Math.round(205*483/300), P=.62;          // الصاروخ: يدور حول نقطةٍ قربَ ذيله فيشيرُ رأسُه إلى الاتجاه
   let s = `<defs>
-    <radialGradient id="face" cx="50%" cy="45%" r="60%"><stop offset="0" stop-color="#2c4386"/><stop offset=".7" stop-color="#18234d"/><stop offset="1" stop-color="#0f1736"/></radialGradient>
-    <linearGradient id="brass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFEBB0"/><stop offset=".35" stop-color="#E6B24C"/><stop offset=".62" stop-color="#A8741F"/><stop offset="1" stop-color="#F1CF79"/></linearGradient>
     <radialGradient id="hubG" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#FFF2C8"/><stop offset=".55" stop-color="#E2AE48"/><stop offset="1" stop-color="#9C6A1C"/></radialGradient>
     <linearGradient id="flameG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFF6C2"/><stop offset=".45" stop-color="#FFC23A"/><stop offset="1" stop-color="#FF6A1A" stop-opacity="0"/></linearGradient>
     <filter id="glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="10" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-    <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#000" flood-opacity=".38"/></filter>`;
-  DIRS.forEach(d=>{ const c=COLORS[d.k]; s+=`<radialGradient id="wg-${d.k}" cx="50%" cy="50%" r="50%"><stop offset=".25" stop-color="${c[1]}"/><stop offset="1" stop-color="${c[0]}"/></radialGradient>`; });
-  s += `</defs>`;
-  // الإطار النحاسي والوجه
-  s += `<circle r="492" fill="url(#brass)" stroke="#5e3f0d" stroke-width="5" filter="url(#shadow)"/>`;
-  s += `<circle r="458" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="2"/>`;
-  s += `<circle r="452" fill="url(#face)" stroke="#6b4a12" stroke-width="5"/>`;
-  // تدريج الحافّة
-  let ticks='';
-  for(let i=0;i<72;i++){ const deg=i*5, L = i%9===0?34 : i%3===0?20 : 11, w = i%9===0?5:3;
-    const [x1,y1]=pol(450,deg), [x2,y2]=pol(450-L,deg);
-    ticks+=`<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="#F6DFA0" stroke-opacity="${i%9===0?.95:.6}" stroke-width="${w}" stroke-linecap="round"/>`; }
-  s += `<g>${ticks}</g>`;
-  // نجمة البوصلة الثمانية الخافتة في المركز
-  let rose=''; for(let i=0;i<8;i++){ const deg=i*45, long=i%2===0, R=long?150:105;
-    const [tx,ty]=pol(R,deg), [lx,ly]=pol(26,deg-45), [rx,ry]=pol(26,deg+45);
-    rose+=`<path d="M${tx.toFixed(1)} ${ty.toFixed(1)}L${lx.toFixed(1)} ${ly.toFixed(1)}L0 0L${rx.toFixed(1)} ${ry.toFixed(1)}Z" fill="${long?'#F1CF79':'#c99a3e'}" fill-opacity="${long?.55:.38}"/>`; }
-  // القطاعات الأربعة
+    <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#000" flood-opacity=".38"/></filter>
+  </defs>`;
+  s += `<image href="games/art/compass-dial.webp${VQ}" x="-492" y="-492" width="984" height="984" filter="url(#shadow)"/>`;
+  // الأرباعُ الأربعة: إعتامٌ لغيرِ المختار، وإضاءةٌ خفيفةٌ للمارّ تحتَ الإبرة، وقوسٌ متوهّجٌ على حافّةِ المختار
   let wedges='';
   DIRS.forEach((d,i)=>{
-    const [cx,cy]=pol(i%2? 322:342, d.deg);
+    const [cx,cy]=pol(i%2? 288:300, d.deg);
+    const [ax,ay]=pol(376,d.deg-34), [bx,by]=pol(376,d.deg+34);
     wedges+=`<g class="wedge" id="w${i}" data-dir="${i}">
-      <path d="${sector(130, 410, d.deg-42, d.deg+42)}" fill="url(#wg-${d.k})"/>
-      <text x="${cx.toFixed(1)}" y="${(cy-14).toFixed(1)}" text-anchor="middle" font-size="52">${d.name}</text>
-      <text class="u" id="wu${i}" x="${cx.toFixed(1)}" y="${(cy+40).toFixed(1)}" text-anchor="middle" font-size="31">${d.gift?'هدية':UNIT_NO[i]}</text>
+      <path class="shade" d="${sector(96, 362, d.deg-45, d.deg+45)}"/>
+      <path class="lite" d="${sector(96, 362, d.deg-45, d.deg+45)}"/>
+      <path class="arc" d="M${ax.toFixed(1)} ${ay.toFixed(1)}A376 376 0 0 1 ${bx.toFixed(1)} ${by.toFixed(1)}" filter="url(#glow)"/>
+      <text x="${cx.toFixed(1)}" y="${(cy-8).toFixed(1)}" text-anchor="middle" font-size="46">${d.name}</text>
+      <text class="u" id="wu${i}" x="${cx.toFixed(1)}" y="${(cy+36).toFixed(1)}" text-anchor="middle" font-size="28">${d.gift?'هدية':UNIT_NO[i]}</text>
     </g>`;
   });
-  s += `<g>${wedges}</g><g>${rose}</g>`;
-  // معيّنات صغيرة على الأقطار في الحافّة
-  for(let i=0;i<4;i++){ const deg=45+i*90, [x,y]=pol(472,deg); s+=`<rect x="${(x-9).toFixed(1)}" y="${(y-9).toFixed(1)}" width="18" height="18" transform="rotate(45 ${x.toFixed(1)} ${y.toFixed(1)})" fill="#fff7d6" stroke="#6b4a12" stroke-width="3"/>`; }
+  s += `<g>${wedges}</g>`;
   // الإبرة: صاروخ شوجب بلهبه
   const tailY = (1-P)*H;
   s += `<g id="needle" filter="url(#shadow)">
-    <g class="flame-g"><path class="flame" d="M-38 ${(tailY-6).toFixed(1)}Q0 ${(tailY+150).toFixed(1)} 38 ${(tailY-6).toFixed(1)}Z" fill="url(#flameG)"/>
-      <path class="flame" d="M-20 ${(tailY-6).toFixed(1)}Q0 ${(tailY+82).toFixed(1)} 20 ${(tailY-6).toFixed(1)}Z" fill="#FFF8D8" fill-opacity=".85"/></g>
+    <g class="flame-g"><path class="flame" d="M-32 ${(tailY-6).toFixed(1)}Q0 ${(tailY+125).toFixed(1)} 32 ${(tailY-6).toFixed(1)}Z" fill="url(#flameG)"/>
+      <path class="flame" d="M-17 ${(tailY-6).toFixed(1)}Q0 ${(tailY+68).toFixed(1)} 17 ${(tailY-6).toFixed(1)}Z" fill="#FFF8D8" fill-opacity=".85"/></g>
     <image id="rocketImg" href="games/art/rocket.png${VQ}" x="${-W/2}" y="${(-P*H).toFixed(1)}" width="${W}" height="${H}"/>
-    <circle r="17" fill="url(#hubG)" stroke="#5e3f0d" stroke-width="4"/>
+    <circle r="15" fill="url(#hubG)" stroke="#5e3f0d" stroke-width="4"/>
   </g>`;
   $('dial').innerHTML = s;
 }
@@ -807,11 +795,11 @@ function flyGift(g, k, x0, y0, game){
   document.body.appendChild(el);
   const kf = (x,y,s,r) => ({transform:`translate(${x-W/2}px,${y-H/2}px) scale(${s}) rotate(${r}deg)`});
   const midX = (x0+dst.x)/2, midY = Math.min(y0, dst.y) - 110;
-  const up = Math.max(70, H*1.6);
+  const up = Math.max(50, H*1.05);
   const anim = el.animate([
       {...kf(x0,y0,.3,0), offset:0, easing:'cubic-bezier(.2,1.4,.4,1)'},
-      {...kf(x0,y0-up,2.6,-6), offset:.24},
-      {...kf(x0,y0-up-10,2.6,6), offset:.5, easing:'cubic-bezier(.45,0,.3,1)'},
+      {...kf(x0,y0-up,2.0,-6), offset:.24},
+      {...kf(x0,y0-up-8,2.0,6), offset:.5, easing:'cubic-bezier(.45,0,.3,1)'},
       {...kf(midX,midY,1.3,10), offset:.76},
       {...kf(dst.x,dst.y,1,0), offset:1}
     ], {duration: reduced?10:2100, fill:'forwards'});
@@ -877,7 +865,7 @@ function finale(){
   // الصاروخُ في الإبرةِ مائلٌ بزاويةِ الإبرة؛ نطيّرُه من مركزِ صندوقِه
   const box = $('rocketImg').getBoundingClientRect();
   const ang = ((angle%360)+360)%360;
-  const RW = 250*($('dial').getBoundingClientRect().width/1000), RH = RW*483/300;
+  const RW = 205*($('dial').getBoundingClientRect().width/1000), RH = RW*483/300;
   el.style.width = RW+'px'; el.style.height = RH+'px';
   el.innerHTML = `<span class="ffl"></span><img src="games/art/rocket.png${VQ}" alt="">`;
   document.body.appendChild(el);
