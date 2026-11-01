@@ -70,6 +70,14 @@
 
     <!-- ① الشاشة الرئيسية: الفصل + الصفوف + الكتب -->
     <section class="screen active" id="home">
+      <!-- إعلانُ «مبادرة شوجب لمهرجان العلوم» (قرارُ المالك ٢٠٢٦-١١-٠١): حلَّ محلَّ بطاقةِ أسبوعِ شوجب،
+           ويفتحُ صفحةَ بوصلةِ العلوم compass.html. رسمتُه وجهُ البوصلةِ وصاروخُها من صورِ الصفحةِ نفسِها
+           (games/art)، والإبرةُ تتمايلُ بالـCSS. لإزالتِه بعدَ المهرجانِ يُحذَفُ هذا العنصرُ وحدَه. -->
+      <a class="fest-hero" href="compass.html" aria-label="مبادرة شوجب لمهرجان العلوم — افتحي بوصلة العلوم">
+        <span class="fh-title"><span class="t1">مبادرة شوجب</span><span class="t2">لمهرجان العلوم</span></span>
+        <span class="fe-art" aria-hidden="true"><img class="fe-dial" src="games/art/compass-dial.webp?v=20261101-1" alt=""><img class="fe-needle" src="games/art/rocket.png?v=20261101-1" alt=""></span>
+        <span class="fh-sub">بوصلة العلوم: نشاطٌ تفاعليّ للسبورة في العلوم للصفوف ١–٤<b>ابدئي الآن ←</b></span>
+      </a>
       <p class="choose-line">اختر صفّك ثم كتابك، ولننطلق في المغامرة!</p>
       <div class="terms" id="terms"></div>
       <div class="grades" id="grades"></div>

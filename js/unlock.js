@@ -1242,7 +1242,7 @@
      والعنوانُ يُقسَمُ سطرَين: الكلمةُ الأخيرةُ («المجاني») بالبرتقاليّ كما في الإعلان.
      والنمطُ في `css/style.css` تحتَ `.free-hero`. */
   function freeBanner() {
-    if (!FREE_ALL) return;
+    if (!FREE_ALL || SALES.banner === false) return;   // `banner:false` يُخفي البطاقةَ ويُبقي الفتح (‏`js/sales-state.js`)
     var home = document.getElementById('home');
     if (!home || home.querySelector('.free-hero')) return;
     var words = String(SALES.title || 'أسبوع شوجب المجاني').split(/\s+/);
