@@ -24,10 +24,10 @@
   --wash:rgba(6,38,24,.34);
   --rk-hi:#fdf4e2; --rk-mid:#f3ddb6; --rk-lo:#e4c691; --rk-edge:#cba86e; --rk-ink:#4a3117;
   --sun:#FFC93C;
-  --n1:#F5BE62; --n2:#D98F2E;   /* ألوانُ بلاطاتِ وجهِ البوصلة (مقيسةٌ من الصورة) */
-  --e1:#86C8EE; --e2:#4A97D0;
-  --s1:#F28C86; --s2:#D45E58;
-  --w1:#BE9EE8; --w2:#8E6CCB;
+  --n1:#F7B65A; --n2:#DC8A2C;   /* ألوانُ أرباعِ وجهِ البوصلة (مقيسةٌ من الصورة) */
+  --e1:#86CAF0; --e2:#4A98D2;
+  --s1:#F8857F; --s2:#D9585A;
+  --w1:#C49CEB; --w2:#9070D0;
   --body:'Tajawal','Segoe UI',Tahoma,system-ui,sans-serif;
   --display:'Cairo','Tajawal',system-ui,sans-serif;
 }
@@ -196,7 +196,7 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset
 .wedge text.u{font-family:var(--body);font-weight:800;stroke-width:6}
 .wedge .shade{fill:#0b1433;opacity:0;transition:opacity .3s}
 .wedge .lite{fill:#fff;opacity:0;transition:opacity .15s}
-.wedge .arc{fill:none;stroke:#FFF3B8;stroke-width:12;stroke-linecap:round;opacity:0;transition:opacity .25s}
+.wedge .arc{fill:none;stroke:#FFF3B8;stroke-width:10;stroke-linejoin:round;opacity:0;transition:opacity .25s}
 .wedge.live .lite{opacity:.16}
 .dial.picked .wedge:not(.hit) .shade{opacity:.6}
 .dial.picked .wedge:not(.hit) text{opacity:.5}
@@ -267,7 +267,7 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset
 @keyframes lift{0%{transform:translateY(0)}35%{transform:translateY(-10px) scale(1.03)}100%{transform:translateY(0)}}
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(7px)}50%{transform:translateX(-7px)}75%{transform:translateX(4px)}}
 @keyframes flick{from{transform:scaleY(.72)}to{transform:scaleY(1.14)}}
-@keyframes arcglow{0%,100%{stroke-width:10;opacity:1}50%{stroke-width:17;opacity:.7}}
+@keyframes arcglow{0%,100%{stroke-width:9;opacity:1}50%{stroke-width:14;opacity:.7}}
 @keyframes litup{0%{transform:scale(.2);opacity:0}100%{transform:scale(1);opacity:1}}
 @keyframes plant{0%{transform:scaleY(0);opacity:1}100%{transform:scaleY(1);opacity:1}}
 @keyframes arrive{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
@@ -373,12 +373,12 @@ function starPath(R, r){
   return p+'Z';
 }
 function buildDial(){
-  /* وجهُ البوصلةِ صورةٌ من جيميناي (games/art/compass-dial.webp: إطارٌ نحاسيٌّ ووجهٌ كحليٌّ وأربعُ بلاطاتٍ ملوّنةٍ ونجمةٌ ثمانية)،
-     وما فوقَها بالكود: أسماءُ الاتجاهات، وطبقتا الإعتامِ والإضاءةِ لكلِّ ربع، وقوسُ التوهّج، وإبرةُ الصاروخ.
-     مقيسٌ من الصورة بنسبةِ نصفِ قطرِها: البلاطاتُ من ٠٫٢٠ إلى ٠٫٧٢٥ وعرضُ كلٍّ منها ±٣٧°، والحلقةُ النحاسيّةُ من ٠٫٨١. */
+  /* وجهُ البوصلةِ صورةٌ من جيميناي (games/art/compass-dial.webp: إطارٌ نحاسيٌّ وأربعةُ أرباعٍ ملوّنةٍ تملأُ الوجهَ كلَّه
+     بلا فراغ، تفصلُها حواجزُ نحاسيّةٌ على الأقطارِ تلتقي تحتَ غطاءٍ نحاسيٍّ في المركز — طلبُ المالك ٢٠٢٦-١١-٠١)،
+     وما فوقَها بالكود: أسماءُ الاتجاهات، وطبقتا الإعتامِ والإضاءةِ لكلِّ ربع، وإطارُ التوهّجِ حولَ المختار، وإبرةُ الصاروخ.
+     مقيسٌ من الصورة بنسبةِ نصفِ قطرِها: الأرباعُ من ٠٫١١ (حافّةُ الغطاء) إلى ٠٫٧٨ (حافّةُ الحلقة) بعرض ±٤٢° تقريباً. */
   const W=205, H=Math.round(205*483/300), P=.62;          // الصاروخ: يدور حول نقطةٍ قربَ ذيله فيشيرُ رأسُه إلى الاتجاه
   let s = `<defs>
-    <radialGradient id="hubG" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#FFF2C8"/><stop offset=".55" stop-color="#E2AE48"/><stop offset="1" stop-color="#9C6A1C"/></radialGradient>
     <linearGradient id="flameG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFF6C2"/><stop offset=".45" stop-color="#FFC23A"/><stop offset="1" stop-color="#FF6A1A" stop-opacity="0"/></linearGradient>
     <filter id="glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="10" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
     <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#000" flood-opacity=".38"/></filter>
@@ -387,12 +387,11 @@ function buildDial(){
   // الأرباعُ الأربعة: إعتامٌ لغيرِ المختار، وإضاءةٌ خفيفةٌ للمارّ تحتَ الإبرة، وقوسٌ متوهّجٌ على حافّةِ المختار
   let wedges='';
   DIRS.forEach((d,i)=>{
-    const [cx,cy]=pol(i%2? 288:300, d.deg);
-    const [ax,ay]=pol(376,d.deg-34), [bx,by]=pol(376,d.deg+34);
+    const [cx,cy]=pol(i%2? 292:305, d.deg);
     wedges+=`<g class="wedge" id="w${i}" data-dir="${i}">
-      <path class="shade" d="${sector(96, 362, d.deg-45, d.deg+45)}"/>
-      <path class="lite" d="${sector(96, 362, d.deg-45, d.deg+45)}"/>
-      <path class="arc" d="M${ax.toFixed(1)} ${ay.toFixed(1)}A376 376 0 0 1 ${bx.toFixed(1)} ${by.toFixed(1)}" filter="url(#glow)"/>
+      <path class="shade" d="${sector(48, 397, d.deg-45, d.deg+45)}"/>
+      <path class="lite" d="${sector(48, 397, d.deg-45, d.deg+45)}"/>
+      <path class="arc" d="${sector(60, 374, d.deg-40.5, d.deg+40.5)}" filter="url(#glow)"/>
       <text x="${cx.toFixed(1)}" y="${(cy-8).toFixed(1)}" text-anchor="middle" font-size="46">${d.name}</text>
       <text class="u" id="wu${i}" x="${cx.toFixed(1)}" y="${(cy+36).toFixed(1)}" text-anchor="middle" font-size="28">${d.gift?'هدية':UNIT_NO[i]}</text>
     </g>`;
@@ -404,7 +403,6 @@ function buildDial(){
     <g class="flame-g"><path class="flame" d="M-32 ${(tailY-6).toFixed(1)}Q0 ${(tailY+125).toFixed(1)} 32 ${(tailY-6).toFixed(1)}Z" fill="url(#flameG)"/>
       <path class="flame" d="M-17 ${(tailY-6).toFixed(1)}Q0 ${(tailY+68).toFixed(1)} 17 ${(tailY-6).toFixed(1)}Z" fill="#FFF8D8" fill-opacity=".85"/></g>
     <image id="rocketImg" href="games/art/rocket.png${VQ}" x="${-W/2}" y="${(-P*H).toFixed(1)}" width="${W}" height="${H}"/>
-    <circle r="15" fill="url(#hubG)" stroke="#5e3f0d" stroke-width="4"/>
   </g>`;
   $('dial').innerHTML = s;
 }
@@ -659,7 +657,7 @@ function resetScene(){
   for(let i=0;i<GOAL;i++){ const st=$('st'+i); st.setAttribute('class','slot-off'); $('ln'+i).setAttribute('class','trail'); }
   $('flag').setAttribute('class',''); $('moonImg').setAttribute('class','');
   $('gifts').innerHTML = '';
-  $('needle').style.visibility='';
+  $('needle').style.display='';
   wedgeState(-1);
   $('dial').classList.remove('busy');
 }
@@ -869,7 +867,7 @@ function finale(){
   el.style.width = RW+'px'; el.style.height = RH+'px';
   el.innerHTML = `<span class="ffl"></span><img src="games/art/rocket.png${VQ}" alt="">`;
   document.body.appendChild(el);
-  $('needle').style.visibility='hidden';
+  $('needle').style.display='none';   // لا visibility: مجموعةٌ عليها مرشّحُ ظلٍّ تُرسَمُ مربّعاً أسودَ في كروم
   const sx = box.left+box.width/2, sy = box.top+box.height/2;
   const mx = moon.left+moon.width/2, my = moon.top+moon.height*.35;
   const k = (x,y,s,rot,o) => ({transform:`translate(${x-RW/2}px,${y-RH/2}px) rotate(${rot}deg) scale(${s})`, opacity:o});
