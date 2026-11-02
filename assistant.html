@@ -260,12 +260,12 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
 .hud-run{stroke-dasharray:70 930;animation:hudrun 9s linear infinite;filter:drop-shadow(0 0 5px #7FEAF0)}
 @keyframes hudrun{from{stroke-dashoffset:1000}to{stroke-dashoffset:0}}
 @media (prefers-reduced-motion:reduce){.hud-run{display:none}}
-/* ما داخلَ اللوحةِ الكحليّةِ بألوانِها: فقاعةُ المساعدِ وخانةُ الكتابةِ وزرُّ الميكروفون */
-.card.hud .msg.ai{background:rgba(22,46,108,.88);border-color:rgba(79,209,218,.3)}
-.card.hud .typebar input{background:rgba(5,12,36,.9);border-color:rgba(79,209,218,.3)}
-.card.hud .txt-toggle{border-color:rgba(79,209,218,.35);color:#9FDDE2;background:rgba(10,24,66,.6)}
+/* ما داخلَ اللوحةِ الرماديّةِ بألوانِها: فقاعةُ المساعدِ وخانةُ الكتابةِ وزرُّ الميكروفون */
+.card.hud .msg.ai{background:rgba(66,72,82,.88);border-color:rgba(79,209,218,.3)}
+.card.hud .typebar input{background:rgba(16,18,22,.9);border-color:rgba(79,209,218,.3)}
+.card.hud .txt-toggle{border-color:rgba(79,209,218,.35);color:#9FDDE2;background:rgba(40,44,51,.6)}
 .card.hud .txt-toggle:hover{color:#D9F7F9;border-color:rgba(79,209,218,.6)}
-.card.hud .round{background:rgba(10,24,66,.95);border-color:rgba(79,209,218,.35)}
+.card.hud .round{background:rgba(40,44,51,.95);border-color:rgba(79,209,218,.35)}
 .card.hud .round.mic[aria-pressed="false"]{background:#2A1A1A;border-color:#5B2C27}
 .card.hud .round.end{background:#3A1E1C;border-color:#6B2E28}
 
@@ -718,10 +718,10 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
 
   /* ═══════════ إطارُ المحادثة (‏Hud) ═══════════
      خطّانِ سماويّانِ بزاويتَينِ مقطوعتَين (أعلى اليمين وأسفل اليسار) ولسانَينِ بارزَين، تتفرّعُ منهما
-     دوائرُ تنتهي بنقاط، ورقائقُ صغيرة، ولوحةٌ داخليّةٌ كحليّةٌ بخطوطِ مسحٍ خافتة، ونبضةُ ضوءٍ
+     دوائرُ تنتهي بنقاط، ورقائقُ صغيرة، ولوحةٌ داخليّةٌ رماديّةٌ بخطوطِ مسحٍ خافتة، ونبضةُ ضوءٍ
      تجري على الإطار. يُعادُ الرسمُ بمقاسِ البطاقةِ (‏ResizeObserver) لأنّ المحادثةَ تطولُ وتقصر. */
   var Hud = (function () {
-    var host = $('session'), NS = 'http://www.w3.org/2000/svg', CY = '#4FD1DA', DK = '#0A173F';   // DK: الكحليُّ الغامقُ أسفلَ اللوحة
+    var host = $('session'), NS = 'http://www.w3.org/2000/svg', CY = '#4FD1DA', DK = '#1C1F24';   // DK: الرماديُّ الغامقُ أسفلَ اللوحة
     var svg = document.createElementNS(NS, 'svg');
     svg.setAttribute('class', 'hudsvg'); svg.setAttribute('aria-hidden', 'true');
     host.insertBefore(svg, host.firstChild); host.classList.add('hud');
@@ -746,7 +746,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
       host.style.setProperty('--hs', s);
       var y1 = h * .26, y2 = y1 + Math.min(140 * s, h * .16), y3 = h * .68, y4 = y3 + Math.min(120 * s, h * .14);
       var o = '<defs><linearGradient id="hudFill" x1="0" y1="0" x2="0" y2="1">'
-        + '<stop offset="0" stop-color="#13285F"/><stop offset="1" stop-color="' + DK + '"/></linearGradient>'
+        + '<stop offset="0" stop-color="#353A42"/><stop offset="1" stop-color="' + DK + '"/></linearGradient>'
         + '<pattern id="hudScan" width="5" height="5" patternUnits="userSpaceOnUse">'
         + '<path d="M.5 0V5" stroke="' + CY + '" stroke-opacity=".06"/></pattern></defs>';
       /* اللوحةُ الداخليّة */
