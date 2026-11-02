@@ -30,6 +30,10 @@
        ‏PCM ‏16kHz وتشغّلُ الردَّ ‏PCM ‏24kHz، وتعرضُ التفريغَ النصّيَّ للطرفين.
   لا تُحفَظُ المحادثةُ ولا الصوتُ في شوجب؛ يُسجَّلُ في n8n عددُ الجلسات وحدَه (للحدّ اليومي).
 
+  صوتُ المحادثة (‏`VOICE_KEY`): امرأةٌ «مساعدة شوجب» أو رجلٌ «مساعد شوجب». الصوتُ نفسُه وتعليماتُه
+  بصيغةِ المذكّرِ يختارُهما n8n («بناء تعليمات المساعد» — ‏VOICES)، وأثرُ «الآلة» الخفيفُ يُضافُ هنا
+  في المتصفّح (‏`machineFx` ومقاديرُه في `MACHINE`).
+
   اسمُ المعلّمة (اختياريّ، ‏`NAME_KEY`): يُحفَظُ في متصفّحِها وحدَه ويُرسَلُ مع طلبِ الرمز،
   فتناديها المساعدةُ «الأستاذة …». ‏`cleanName` هنا وفي «تحقق من الطلب» بـn8n نسختانِ
   من قاعدةٍ واحدة: حروفٌ ومسافاتٌ فقط (لا رموزَ تُدسُّ بها أوامرُ للمساعدة)، ثلاثُ كلماتٍ
@@ -147,6 +151,16 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
 .namefield input:focus{outline:none}
 .namefield input::placeholder{color:#5D6880}
 .namebox .hint{margin:4px 0 0;font-size:14px;color:var(--muted);line-height:1.6}
+/* ── صوت المحادثة: امرأة أو رجل ── */
+.voicebox{margin:0 0 18px}
+.vlabel{display:block;font-size:16px;font-weight:700;margin:0 0 6px}
+.voices{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.vopt{
+  min-height:52px;border-radius:14px;border:1px solid var(--line);background:#081230;color:var(--moon);
+  font:inherit;font-size:17px;font-weight:700;cursor:pointer;line-height:1.5;padding:6px 8px;
+}
+.vopt small{display:block;font-size:13px;font-weight:500;color:var(--muted);line-height:1.2}
+.vopt[aria-checked="true"]{background:rgba(201,162,39,.14);border-color:var(--stone);color:var(--stone-soft)}
 .unit{margin-bottom:14px}
 .unit-head{font-size:15px;color:var(--muted);margin:0 0 8px;font-weight:700}
 .lessons{display:grid;gap:8px}
@@ -275,13 +289,21 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
     <h2>اختاري الدرس</h2>
     <p class="note">التجربة الأولى على كتب العلوم للفصل الدراسي الأول.</p>
     <div class="namebox">
-      <label for="nameInput">كيف تناديكِ المساعدة؟ <span class="opt">(اختياري)</span></label>
+      <label for="nameInput"><span id="nameQ">كيف تناديكِ المساعدة؟</span> <span class="opt">(اختياري)</span></label>
       <div class="namefield">
         <span class="prefix" aria-hidden="true">الأستاذة</span>
         <input id="nameInput" type="text" placeholder="اكتبي اسمكِ" maxlength="24" autocomplete="given-name" enterkeyhint="done">
       </div>
       <p class="hint">يُحفظ في هذا المتصفّح فقط.</p>
     </div>
+    <div class="voicebox">
+      <span class="vlabel" id="voiceLabel">صوت المحادثة</span>
+      <div class="voices" role="radiogroup" aria-labelledby="voiceLabel">
+        <button type="button" class="vopt" data-v="f" role="radio" aria-checked="true">صوت امرأة<small>دافئ هادئ</small></button>
+        <button type="button" class="vopt" data-v="m" role="radio" aria-checked="false">صوت رجل<small>بلمسة آليّة</small></button>
+      </div>
+    </div>
+    <span class="vlabel">الصف</span>
     <div class="grades" role="group" aria-label="الصف">
       <button class="grade" data-g="1" aria-pressed="false">الأول<small>العلوم</small></button>
       <button class="grade" data-g="2" aria-pressed="false">الثاني<small>العلوم</small></button>
@@ -369,6 +391,10 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
   var DEVICE_KEY = 'shoogp.assistant.device';
   var GRADE_KEY = 'shoogp.assistant.grade';
   var NAME_KEY = 'shoogp.assistant.name';
+  var VOICE_KEY = 'shoogp.assistant.voice';
+  var voicePref = 'f';   // f امرأة (مساعدة شوجب) · m رجل (مساعد شوجب) — يُقرأُ من المتصفّحِ بعدَ تعريفِ store
+  /* ما يتغيّرُ بجنسِ الصوت: اسمُ المساعدِ في المحادثةِ وصيغةُ حديثِه عن نفسِه */
+  function V(f, m) { return voicePref === 'm' ? m : f; }
 
   /* ═══════════ أدوات صغيرة ═══════════ */
   var $ = function (id) { return document.getElementById(id); };
@@ -388,6 +414,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
     return d;
   }
   var GRADE_AR = { '1': 'الأول', '2': 'الثاني', '3': 'الثالث', '4': 'الرابع' };
+  voicePref = store.get(VOICE_KEY) === 'm' ? 'm' : 'f';
 
   /* اسمُ المعلّمة — نسخةُ «تحقق من الطلب» في n8n نفسُها (الحَكَمُ هناك، وهذه للعرض) */
   function cleanName(v) {
@@ -645,6 +672,15 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
     ni.oninput = function () { store.set(NAME_KEY, cleanName(ni.value)); };
     ni.onchange = function () { ni.value = cleanName(ni.value); store.set(NAME_KEY, ni.value); };
     ni.onkeydown = function (e) { if (e.key === 'Enter') ni.blur(); };
+    var vopts = document.querySelectorAll('.vopt');
+    var markVoice = function () {
+      Array.prototype.forEach.call(vopts, function (b) { b.setAttribute('aria-checked', b.getAttribute('data-v') === voicePref ? 'true' : 'false'); });
+      $('nameQ').textContent = V('كيف تناديكِ المساعدة؟', 'كيف يناديكِ المساعد؟');
+    };
+    Array.prototype.forEach.call(vopts, function (b) {
+      b.onclick = function () { voicePref = b.getAttribute('data-v') === 'm' ? 'm' : 'f'; store.set(VOICE_KEY, voicePref); markVoice(); };
+    });
+    markVoice();
     var grades = document.querySelectorAll('.grade');
     Array.prototype.forEach.call(grades, function (b) {
       b.onclick = function () { pickGrade(b.getAttribute('data-g')); };
@@ -703,7 +739,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
     $('timer').textContent = '';
     $('startWrap').hidden = false; $('controls').hidden = true; $('typebar').hidden = true;
     $('startBtn').disabled = false;
-    setOrb('idle'); setStatus('', 'جاهزة حين تكونين جاهزة.');
+    setOrb('idle'); setStatus('', V('جاهزة', 'جاهز') + ' حين تكونين جاهزة.');
     $('startBtn').onclick = function () { start(lesson); };
     $('changeLesson').onclick = function () { stop(''); showPicker(); };
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -717,6 +753,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
     var p = { lesson: lessonId, device: deviceId() };
     var nm = cleanName($('nameInput').value);
     if (nm) p.name = nm;
+    p.voice = voicePref;
     var body = new URLSearchParams(p);
     var go = function (url) { return fetch(url, { method: 'POST', body: body }); };
     return go(CONFIG.TOKEN_URL)
@@ -734,9 +771,9 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
   async function start(lesson) {
     if (S) return;
     $('startBtn').disabled = true;
-    setOrb('connecting'); setStatus('', 'يجري تجهيز المساعدة…');
+    setOrb('connecting'); setStatus('', V('يجري تجهيز المساعدة…', 'يجري تجهيز المساعد…'));
 
-    S = { lesson: lesson, ws: null, ctx: null, stream: null, worklet: null, muted: false, ended: false,
+    S = { lesson: lesson, male: voicePref === 'm', ws: null, ctx: null, stream: null, worklet: null, muted: false, ended: false,
           sources: [], nextTime: 0, outLevel: 0, inLevel: 0, me: null, ai: null, timerId: null, raf: null, ready: false };
 
     try {
@@ -839,7 +876,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
       var el = document.createElement('div');
       el.className = 'msg ' + key + ' pending';
       el.innerHTML = '<span class="who"></span><span class="tx"></span>';
-      el.querySelector('.who').textContent = key === 'me' ? 'أنتِ' : 'مساعدة شوجب';
+      el.querySelector('.who').textContent = key === 'me' ? 'أنتِ' : (S && S.male ? 'مساعد شوجب' : 'مساعدة شوجب');
       $('chat').appendChild(el);
       S[key] = { el: el, tx: el.querySelector('.tx'), pending: true };
     }
@@ -891,12 +928,45 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
     };
     S.worklet = node; S.src = src;
 
-    /* مخرجُ الردّ ومقياسُ مستواه لحركةِ القمر */
+    /* مخرجُ الردّ ومقياسُ مستواه لحركةِ الحلقة — والصوتُ الرجاليُّ يمرُّ بأثرِ «الآلة» قبلَهما */
     S.out = ctx.createGain(); S.out.gain.value = 1;
     S.analyser = ctx.createAnalyser(); S.analyser.fftSize = 512;
-    S.out.connect(S.analyser); S.analyser.connect(ctx.destination);
+    if (S.male) S.fxOsc = machineFx(ctx, S.out, S.analyser); else S.out.connect(S.analyser);
+    S.analyser.connect(ctx.destination);
     S.levelBuf = new Float32Array(S.analyser.fftSize);
     animate();
+  }
+
+  /* ═══════════ صوتُ الآلةِ الخفيف — للصوتِ الرجاليّ وحدَه ═══════════
+     يبقى الصوتُ الأصليُّ هو الغالب، وتُضافُ فوقَه طبقتانِ خفيفتان:
+       ① رنينٌ معدنيّ: صدىً قصيرٌ جداً يرتدُّ على نفسِه، كأنّ الصوتَ يخرجُ من جسمٍ معدنيّ.
+       ② طنينٌ إلكترونيّ: يُضرَبُ الصوتُ بنغمةٍ منخفضة (تعديلٌ حلقيّ).
+     وتُقَصُّ من الطبقتَينِ الأطرافُ (ما دونَ ١٥٠ هرتز وما فوقَ ٧ كيلوهرتز) فيبقى الكلامُ واضحاً.
+     المقاديرُ كلُّها في MACHINE: رفعُ comb وring يزيدُ «الآلة»، وتصفيرُهما يُطفئُها. */
+  var MACHINE = { dry: 0.78, comb: 0.30, combMs: 7, feedback: 0.42, ring: 0.18, ringHz: 50 };
+  function machineFx(ctx, input, output) {
+    var M = MACHINE;
+    /* محدِّدٌ في الآخر: يمنعُ التشوّهَ حينَ تجتمعُ الطبقاتُ على مقطعٍ عالٍ، ولا يمسُّ الكلامَ العاديّ */
+    var lim = ctx.createDynamicsCompressor();
+    lim.threshold.value = -4; lim.knee.value = 2; lim.ratio.value = 20; lim.attack.value = 0.002; lim.release.value = 0.12;
+    lim.connect(output); output = lim;
+    var dry = ctx.createGain(); dry.gain.value = M.dry;
+    input.connect(dry); dry.connect(output);
+    var hp = ctx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 150;
+    var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 7000;
+    input.connect(hp); hp.connect(lp);
+    /* ① الرنين المعدنيّ */
+    var delay = ctx.createDelay(0.05); delay.delayTime.value = M.combMs / 1000;
+    var fb = ctx.createGain(); fb.gain.value = M.feedback;
+    var comb = ctx.createGain(); comb.gain.value = M.comb;
+    lp.connect(delay); delay.connect(fb); fb.connect(delay); delay.connect(comb); comb.connect(output);
+    /* ② الطنين الإلكترونيّ */
+    var ring = ctx.createGain(); ring.gain.value = 0;
+    var osc = ctx.createOscillator(); osc.frequency.value = M.ringHz;
+    osc.connect(ring.gain); osc.start();
+    var ringOut = ctx.createGain(); ringOut.gain.value = M.ring;
+    lp.connect(ring); ring.connect(ringOut); ringOut.connect(output);
+    return osc;
   }
 
   function b64(buf) {
@@ -937,7 +1007,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
         S.analyser.getFloatTimeDomainData(S.levelBuf);
         var sum = 0; for (var i = 0; i < S.levelBuf.length; i++) sum += S.levelBuf[i] * S.levelBuf[i];
         Viz.level(Math.sqrt(sum / S.levelBuf.length) * 3.2);
-        if (S.vis !== 'speaking') { S.vis = 'speaking'; setOrb('speaking'); setStatus('speaking', 'تتحدّث مساعدة شوجب…'); }
+        if (S.vis !== 'speaking') { S.vis = 'speaking'; setOrb('speaking'); setStatus('speaking', S.male ? 'يتحدّث مساعد شوجب…' : 'تتحدّث مساعدة شوجب…'); }
       } else {
         var want = S.muted ? 'idle' : 'listening';
         Viz.level(S.muted ? 0 : S.inLevel * 4);
