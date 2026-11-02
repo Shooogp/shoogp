@@ -1284,7 +1284,8 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
     $('gate').innerHTML = '<h2>المتصفّح لا يدعم المحادثة الصوتية</h2><p class="note">افتحي الصفحة في Chrome أو Safari أو Edge حديث.</p>';
     return;
   }
-  if (store.get(GATE_KEY) === '1') showPicker(); else showGate();
+  /* المالكُ (وضعُ المطوّر) لا يُقِرُّ بأنّه معلّمة — يُنقَلُ إلى الاختيارِ حيثُ خيارُه مباشرةً (طلبُه ٢٠٢٦-١١-٠٢) */
+  if (store.get(GATE_KEY) === '1' || isDev) showPicker(); else showGate();
 })();
 </script>
 </body>
