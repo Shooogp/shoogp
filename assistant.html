@@ -154,6 +154,10 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
 .namefield input:focus{outline:none}
 .namefield input::placeholder{color:#5D6880}
 .namebox .hint{margin:4px 0 0;font-size:14px;color:var(--muted);line-height:1.6}
+.projbtn{display:block;width:100%;margin:0 0 18px;padding:12px 14px;border:1px dashed var(--stone);border-radius:14px;
+  background:rgba(201,162,39,.08);color:var(--stone-soft);font:inherit;font-size:17px;font-weight:700;cursor:pointer;line-height:1.5}
+.projbtn small{display:block;font-size:13px;font-weight:500;color:var(--muted)}
+.projbtn:hover{background:rgba(201,162,39,.14)}
 .ownerrow{margin:10px 0 0;padding:10px 14px;font-size:15px;line-height:1.6;border-style:dashed;border-color:var(--stone)}
 /* ── صوت المحادثة: امرأة أو رجل ── */
 .voicebox{margin:0 0 18px}
@@ -319,7 +323,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
       <!-- خيارُ المالك: لا يظهرُ إلا في وضعِ المطوّر (‏shoogp-dev في هذا المتصفّح) -->
       <label class="check ownerrow" id="ownerRow" hidden>
         <input type="checkbox" id="ownerCheck">
-        <span>خيار المالك: نادِني باسمي بلا لقب، وخاطبني بصيغة المذكّر.</span>
+        <span>خيار المالك: نادِني باسمي بلا لقب، وخاطبني بصيغة المذكّر، وافتح لي الحديث عن مشروع شوجب كلّه.</span>
       </label>
     </div>
     <div class="voicebox">
@@ -329,6 +333,8 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
         <button type="button" class="vopt" data-v="m" role="radio" aria-checked="false">صوت رجل<small>بلمسة آليّة</small></button>
       </div>
     </div>
+    <!-- للمالكِ وحدَه: محادثةٌ مفتوحةٌ في المشروعِ كلِّه بلا درس -->
+    <button type="button" class="projbtn" id="projectBtn" hidden>محادثة مفتوحة عن مشروع شوجب<small>أفكار وتطوير ونقاش في كلّ ما يخصّ شوجب</small></button>
     <span class="vlabel">الصف</span>
     <div class="grades" role="group" aria-label="الصف">
       <button class="grade" data-g="1" aria-pressed="false">الأول<small>العلوم</small></button>
@@ -418,7 +424,8 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
   var GRADE_KEY = 'shoogp.assistant.grade';
   var NAME_KEY = 'shoogp.assistant.name';
   var VOICE_KEY = 'shoogp.assistant.voice';
-  var OWNER_KEY = 'shoogp.assistant.owner';   // خيارُ المالك: اسمُه بلا لقبٍ وخطابٌ بالمذكّر
+  var OWNER_KEY = 'shoogp.assistant.owner';   // خيارُ المالك: اسمُه بلا لقبٍ وخطابٌ بالمذكّر ومحادثةُ المشروع
+  var DASH_KEY = 'shoogp-dash-key';             // كلمةُ المطوّرِ كما تحفظُها لوحةُ المالك (‏js/unlock.js)
   var isDev = false;                            // وضعُ المطوّرِ في الموقعِ نفسِه (‏js/unlock.js ‏DEV_KEY)
   var voicePref = 'f';   // f امرأة (مساعدة شوجب) · m رجل (مساعد شوجب) — يُقرأُ من المتصفّحِ بعدَ تعريفِ store
   /* ما يتغيّرُ بجنسِ الصوت: اسمُ المساعدِ في المحادثةِ وصيغةُ حديثِه عن نفسِه */
@@ -796,11 +803,20 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
       var markOwner = function () {
         document.querySelector('.namefield .prefix').hidden = oc.checked;     // بلا «الأستاذة»
         $('nameQ').textContent = nameQText();
+        $('projectBtn').hidden = !oc.checked;
       };
       oc.onchange = function () {
+        if (oc.checked && !store.get(DASH_KEY)) {
+          /* المحادثةُ المفتوحةُ يتحقّقُ منها n8n بكلمةِ المطوّر — نفسُ مفتاحِ لوحةِ المالك */
+          var k = window.prompt('اكتب كلمة المطوّر (كلمة لوحة المالك نفسها):', '');
+          if (k) store.set(DASH_KEY, k.trim());
+        }
         store.set(OWNER_KEY, oc.checked ? '1' : '0');
         if (oc.checked && !cleanName(ni.value)) { ni.value = 'إبراهيم'; store.set(NAME_KEY, ni.value); }
         markOwner();
+      };
+      $('projectBtn').onclick = function () {
+        openSession(null, { id: 'project', title: 'مشروع شوجب', unit: 'محادثة مفتوحة', unitNo: 0, lessonNo: 0 });
       };
       markOwner();
     }
@@ -861,7 +877,8 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
     $('picker').hidden = true; $('session').hidden = false;
     var g = lesson.id.charAt(1);
     $('sTitle').textContent = lesson.title;
-    $('sMeta').textContent = 'العلوم — الصف ' + GRADE_AR[g] + ' · الوحدة ' + arNum(lesson.unitNo) + ': ' + lesson.unit;
+    $('sMeta').textContent = lesson.id === 'project' ? 'محادثة مفتوحة · أفكار وتطوير ونقاش'
+      : 'العلوم — الصف ' + GRADE_AR[g] + ' · الوحدة ' + arNum(lesson.unitNo) + ': ' + lesson.unit;
     $('chat').innerHTML = '<p class="chat-empty">سيظهر الحديث مكتوباً هنا.</p>';
     $('timer').textContent = '';
     $('startWrap').hidden = false; $('controls').hidden = true; $('typebar').hidden = true;
@@ -881,7 +898,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
     var nm = cleanName($('nameInput').value);
     if (nm) p.name = nm;
     p.voice = voicePref;
-    if (ownerOn()) p.addr = 'm';
+    if (ownerOn()) { p.addr = 'm'; p.okey = store.get(DASH_KEY) || ''; }
     var body = new URLSearchParams(p);
     var go = function (url) { return fetch(url, { method: 'POST', body: body }); };
     return go(CONFIG.TOKEN_URL)
