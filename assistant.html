@@ -152,11 +152,11 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
 .timer{font-variant-numeric:tabular-nums;color:var(--muted);font-size:16px;white-space:nowrap}
 .timer.warn{color:var(--stone-soft)}
 
-.stage{display:grid;place-items:center;padding:18px 0 6px}
-.orb{position:relative;width:min(220px,58vw);aspect-ratio:1}
+.stage{display:grid;place-items:center;padding:30px 0 16px}
+.orb{position:relative;width:min(200px,50vw);aspect-ratio:1}
 .orb .ring{position:absolute;inset:0;border-radius:50%;border:2px solid rgba(201,162,39,.0);
   transform:scale(var(--lvl,1));transition:transform .08s linear, border-color .3s}
-.orb .ring.r2{inset:-14px;transform:scale(calc(1 + (var(--lvl,1) - 1) * .6))}
+.orb .ring.r2{inset:-12px;transform:scale(calc(1 + (var(--lvl,1) - 1) * .5))}
 .orb .moon{position:absolute;inset:16%;border-radius:50%;
   background:
     radial-gradient(circle at 34% 30%, rgba(255,255,255,.95) 0 10%, transparent 11%),
@@ -695,7 +695,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
         }
       }
     }
-    orb.style.setProperty('--lvl', (1 + Math.min(lvl, 0.35)).toFixed(3));
+    orb.style.setProperty('--lvl', (1 + Math.min(lvl, 0.1)).toFixed(3));   // نبضٌ محسوسٌ لا يتجاوزُ المسرح
     S.raf = requestAnimationFrame(animate);
   }
 
