@@ -40,6 +40,14 @@ jobs:
       - name: فحص رسوم البطاقات
         run: node tools/check-qpics.mjs
 
+      # معرفةُ «مساعد المعلّمة» (data/assistant/*.json) وأرقامُ المنصّةِ فيها تُعادُ مع كلِّ نشرة،
+      # فلا يجيبُ المساعدُ بعددِ كتبٍ أو دروسٍ قديمٍ إن نُسِيَ `npm run assistant-data` بعدَ تأليف.
+      # لا يمنعُ النشرَ إن تعثّر (continue-on-error): يبقى الملفُّ المرفوعُ في المستودعِ كما هو.
+      # لا يستوردُ إلا `node:fs` و`node:vm` المدمَجَين.
+      - name: إعادة بناء معرفة مساعد المعلمة
+        continue-on-error: true
+        run: node tools/build-assistant-data.mjs
+
       - name: ختم ?v= ببصمة النشرة
         run: |
           STAMP="${GITHUB_SHA:0:8}"

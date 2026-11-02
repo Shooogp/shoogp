@@ -112,6 +112,84 @@ function bankFact(b) {
 /* مقارنةٌ بلا حركاتٍ ولا ترقيم — لإسقاطِ المكرَّرِ بين الدرسِ وبنكِ الألعاب */
 const key = (s) => String(s).replace(/[ً-ْـ]/g, '').replace(/[^\p{L}\p{N}]+/gu, '');
 
+/* ═══ أرقامُ المنصّةِ لمحادثةِ المالك (طلبُ إبراهيم ٢٠٢٦-١١-٠٢) ═══
+   سألَ المساعدَ «كم عددُ الكتب؟» فقالَ لا أعرف — لأنّ ملخّصَ n8n (‏BRIEF) نصٌّ ثابتٌ بلا أرقام،
+   وتعليماتُه تمنعُه أن يخترعَ رقماً. فالأرقامُ تُحسَبُ هنا من البياناتِ نفسِها وتُعادُ مع كلِّ تشغيل،
+   فلا تتقادم: data/books.json (البطاقاتُ المنشورة) · data/index.json (الوحداتُ والدروس) ·
+   js/questions.js (الأسئلة) · games/data (بنوكُ الألعاب) · data/bundles.json · js/sales-state.js ·
+   js/unlock.js (المجّانيّ) · pay.html (السعر).
+   وتُكتَبُ جُملاً عربيةً جاهزةً في حقلِ `platform` من كلِّ ملفِّ كتاب — لأنّ سيرَ n8n يجلبُ ملفّاً
+   واحداً في كلِّ جلسة، فلا عقدةَ جلبٍ ثانية. ولا تُقرَأُ إلا في محادثةِ المالك. */
+function platformLines() {
+  const books = JSON.parse(fs.readFileSync('data/books.json', 'utf8'));
+  const bundles = JSON.parse(fs.readFileSync('data/bundles.json', 'utf8'));
+  const salesSrc = fs.readFileSync('js/sales-state.js', 'utf8');
+  const unlockSrc = fs.readFileSync('js/unlock.js', 'utf8');
+  const price = Number((fs.readFileSync('pay.html', 'utf8').match(/PRICE\s*:\s*([\d.]+)/) || [])[1]) || 0;
+
+  /* قاعدةُ المجّانيّ من js/unlock.js نفسِه (‏freeUnits) — لا نسخةَ ثانيةً منها هنا */
+  const fuSrc = (unlockSrc.match(/function freeUnits\([\s\S]*?\n  }\n/) || [])[0];
+  const fuDefault = Number((unlockSrc.match(/var FREE_UNITS\s*=\s*(\d+)/) || [])[1] || 1);
+  const freeUnits = fuSrc ? vm.runInNewContext(`var FREE_UNITS=${fuDefault};${fuSrc};freeUnits`) : () => fuDefault;
+  /* القيمُ من كائنِ SHOOGP_SALES نفسِه لا من تعليقِ رأسِ الملفّ (فيه «freeAll:false» مثالاً) */
+  const salesObj = (salesSrc.match(/SHOOGP_SALES\s*=\s*\{([\s\S]*?)\}/) || [])[1] || '';
+  const flag = (k) => /true/.test((salesObj.match(new RegExp(k + '\\s*:\\s*(\\w+)')) || [])[1] || '');
+  const sTitle = (salesObj.match(/title\s*:\s*'([^']*)'/) || [])[1] || '';
+
+  const inBundle = new Set(Object.values(bundles).flatMap((b) => b.members || []));
+  const bankCount = (key) => Object.values(loadBank(key)).reduce((n, qs) => n + qs.length, 0);
+  const N = (n) => String(n);
+
+  const terms = [];
+  const subj = new Map();   // اسمُ المادّة ← مجاميعُها
+  const perBook = [];
+  const types = new Set();
+  let cards = 0, hidden = 0, standaloneSale = 0, units = 0, lessons = 0, qCount = 0, bankAll = 0;
+
+  for (const [term, grades] of Object.entries(books)) {
+    let termCards = 0;
+    for (const [grade, list] of Object.entries(grades)) {
+      for (const bk of list) {
+        if (bk.devOnly) { hidden++; continue; }
+        termCards++; cards++;
+        if (!inBundle.has(bk.key) && bk.onSale) standaloneSale++;
+        const ix = index[bk.key] || { units: [] };
+        const u = ix.units.length;
+        const ls = ix.units.flatMap((x) => x.lessons);
+        const q = ls.reduce((n, l) => n + (Q[l.file] || []).length, 0);
+        ls.forEach((l) => (Q[l.file] || []).forEach((x) => x.type && types.add(x.type)));
+        const bank = bankCount(bk.key);
+        units += u; lessons += ls.length; qCount += q; bankAll += bank;
+        const part = /-1$/.test(bk.key) ? ' (الجزء الأول)' : /-2$/.test(bk.key) && inBundle.has(bk.key) ? ' (الجزء الثاني)' : '';
+        const f = freeUnits(bk.key, u);
+        const free = f === Infinity || f >= u ? 'الكتابُ كلُّه' : f <= 0 ? 'لا شيء' : f === u - 1 && u > 2 ? 'كلُّ الوحداتِ إلا الأخيرة' : f === 1 ? 'الوحدةُ الأولى' : f === 2 ? 'الوحدتان الأوليان' : `أوّلُ ${N(f)} وحدات`;
+        perBook.push(`- ${bk.title}${part} — الصف ${grade}: الوحدات ${N(u)}، الدروس ${N(ls.length)}، الأسئلة ${N(q)}، بنك الألعاب ${N(bank)}، المجّانيّ في الوضع العادي: ${free}.`);
+        const s = subj.get(bk.title) || { cards: 0, grades: new Set(), units: 0, lessons: 0, q: 0, bank: 0 };
+        s.cards++; s.grades.add(grade); s.units += u; s.lessons += ls.length; s.q += q; s.bank += bank;
+        subj.set(bk.title, s);
+      }
+    }
+    terms.push(`الفصل الدراسي ${term}: ${termCards ? N(termCards) + ' بطاقة' : 'لم يُبنَ بعد'}`);
+  }
+
+  const bundleSale = Object.values(bundles).filter((b) => b.onSale).length;
+  const sellable = standaloneSale + bundleSale;
+  const twoPart = [...inBundle].filter((k) => /-1$/.test(k)).length;   // كتابٌ بجزأين = بطاقتان
+  /* صيغةُ «الاسم: العدد» عمداً — فالمساعدُ يصوغُ العددَ والمعدودَ نطقاً صحيحاً، بدلَ «4 كتاباً» */
+  const lines = [
+    `- الكتب المنشورة: بطاقات الكتب ${N(cards)}، وهي ${N(cards - twoPart)} كتاباً مطبوعاً لأنّ أحبّ لغتي وديني حياتي بجزأين في كلّ صفّ وكلّ جزءٍ بطاقة. المواد ${N(subj.size)}، والصفوف من الأول إلى الرابع. ${terms.join('، ')}.` + (hidden ? ` ومخفيٌّ قيد الإعداد: ${N(hidden)}.` : ''),
+    `- المجموع في المنصّة كلّها: الوحدات ${N(units)}، الدروس ${N(lessons)}، الأسئلة التفاعلية في الدروس ${N(qCount)}، أسئلة بنوك الألعاب ${N(bankAll)}، أنواع الأسئلة المستعملة ${N(types.size)}.`,
+    `- وحدات البيع ${N(sellable)}: كتبٌ مستقلّة ${N(standaloneSale)}، وحزمُ جزأين ${N(bundleSale)} (أحبّ لغتي وديني حياتي يُباع جزآهما برمزٍ واحد)` + (price ? `، والسعر ${N(price)} ريالات عُمانية لكلّ وحدةٍ للعام الدراسي.` : '.'),
+    '- لكلّ مادّة (مجموع الصفوف الأربعة):',
+    ...[...subj].map(([t, s]) => `  - ${t}: البطاقات ${N(s.cards)}، الوحدات ${N(s.units)}، الدروس ${N(s.lessons)}، الأسئلة ${N(s.q)}، بنك الألعاب ${N(s.bank)}.`),
+    '- لكلّ كتاب:',
+    ...perBook.map((l) => '  ' + l),
+    `- حالُ البيع الآن: ${flag('freeAll') ? `كلّ الوحدات مفتوحةٌ مجّاناً للجميع${sTitle ? ` («${sTitle}»)` : ''}` : 'القفلُ عاملٌ على الوحدات غير المجّانية'}، و${flag('paused') ? 'الشراءُ موقوفٌ مؤقّتاً' : 'الشراءُ قائم'}.`,
+  ];
+  return { generated: new Date().toISOString().slice(0, 10), lines };
+}
+const PLATFORM = platformLines();
+
 fs.mkdirSync(OUT_DIR, { recursive: true });
 let total = 0;
 for (const book of BOOKS) {
@@ -140,7 +218,7 @@ for (const book of BOOKS) {
       total++;
     });
   });
-  const out = { book, title: b.book, generated: new Date().toISOString().slice(0, 10), lessons };
+  const out = { book, title: b.book, generated: new Date().toISOString().slice(0, 10), platform: PLATFORM, lessons };
   fs.writeFileSync(`${OUT_DIR}/${book}.json`, JSON.stringify(out, null, 1) + '\n');
   const size = fs.statSync(`${OUT_DIR}/${book}.json`).size;
   console.log(`✓ ${book}: ${Object.keys(lessons).length} درساً — ${(size / 1024).toFixed(1)} ك.ب`);
