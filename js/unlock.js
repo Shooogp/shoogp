@@ -1010,7 +1010,7 @@
      والزرُّ ينتهي عندَ 46، ولا هامشَ شفّافاً في `logo-mark.png` يخفيه — مقيسٌ:
      أوّلُ صفٍّ معتمٍ = 0). العنصرُ في التدفّقِ **يحجزُ مساحتَه** فيستحيلُ التراكب. */
 
-  var devWrap = null, devBtn = null, devStats = null, devDash = null, devPoster = null;
+  var devWrap = null, devBtn = null, devStats = null, devDash = null, devAsst = null, devPoster = null;
 
   /* ═════════════ مراجعُ المقارنةِ في شارةِ العدّاد ═════════════
      كانت الشارةُ تعرضُ «اليوم» بجانبَ «أمس» بلا مرجع — فيُقارَنُ **نصفُ يومٍ
@@ -1154,6 +1154,7 @@
     devBtn.style.zoom = String(1 / z);
     if (devStats) devStats.style.zoom = String(1 / z);
     if (devDash) devDash.style.zoom = String(1 / z);
+    if (devAsst) devAsst.style.zoom = String(1 / z);
     if (devPoster) devPoster.style.zoom = String(1 / z);
   }
 
@@ -1213,6 +1214,22 @@
       try { localStorage.setItem('shoogp-dash-key', DEV_PASS); } catch (e) {}
     });
     devWrap.appendChild(devDash);
+    /* بابُ مساعدِ المالكِ الصوتيّ (طلبُ المالك ٢٠٢٦-١١-٠٢) — الصفحةُ نفسُها (‏`assistant.html`) للمعلّماتِ،
+       وخيارُ المالكِ فيها لا يظهرُ إلا في وضعِ المطوّر. فالزرُّ يُودِعُ الكلمةَ (لمحادثةِ المشروع) ويُشعِلُ
+       خيارَ المالكِ مسبقاً، فتفتحُ الصفحةُ وزرُّ «محادثة مفتوحة عن مشروع شوجب» ظاهرٌ بلا سؤال. */
+    devAsst = document.createElement('a');
+    devAsst.className = 'lockdev-btn lockdev-dash';
+    devAsst.href = 'assistant.html';
+    devAsst.textContent = '🎙️ مساعد المالك';
+    devAsst.title = 'المساعد الصوتي: محادثة عن المشروع وأرقام اللوحة';
+    devAsst.addEventListener('click', function () {
+      try {
+        localStorage.setItem('shoogp-dash-key', DEV_PASS);
+        localStorage.setItem('shoogp.assistant.owner', '1');
+        if (!localStorage.getItem('shoogp.assistant.name')) localStorage.setItem('shoogp.assistant.name', 'إبراهيم');
+      } catch (e) {}
+    });
+    devWrap.appendChild(devAsst);
     /* بابُ منشورِ المشغلِ (طلبُ المالك ٢٠٢٦-١٠-٢٢) — اختصارٌ للمطوِّر؛ والصفحةُ نفسُها (‏`workshop.html`)
        مفتوحةٌ للمعلّماتِ منذُ ٢٠٢٦-١٠-٢٢ (‏`DEV_ONLY = false` فيها) ورابطُها العامُّ shoogp.com/workshop. */
     devPoster = document.createElement('a');
