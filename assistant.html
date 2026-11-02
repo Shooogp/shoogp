@@ -946,10 +946,8 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
      وهو هادئٌ بطلبِ المالك (٢٠٢٦-١١-٠٢): يُشغَّلُ أبطأَ قليلاً (rate) فيعمقُ ويتّزن، والطنينُ خافت،
      وتُخفَّضُ الحدّةُ العاليةُ في الصوتِ كلِّه (shelfDb فوقَ shelfHz).
      المقاديرُ كلُّها في MACHINE: رفعُ comb وring يزيدُ «الآلة»، وتصفيرُهما يُطفئُها؛ وrate ‏1 يُعيدُ السرعة. */
-  /* ③ وتجربةُ «الهمسِ المسموع» (طلبُ المالك ٢٠٢٦-١١-٠٢): نَفَسٌ ناعمٌ يتبعُ قوّةَ الصوت (breath)، وأبطأُ
-     (rate ‏0.94 ← 0.9). لإلغاءِ التجربةِ: breath ‏0 وrate ‏0.94، ومعهما سطرُ طريقةِ الكلامِ في n8n. */
   var MACHINE = { dry: 0.8, comb: 0.26, combMs: 7, feedback: 0.38, ring: 0.09, ringHz: 45,
-                  lowpass: 5200, shelfHz: 3500, shelfDb: -5, rate: 0.9, breath: 1.4, breathHz: 2600 };
+                  lowpass: 5200, shelfHz: 3500, shelfDb: -5, rate: 0.94 };
   function machineFx(ctx, input, output) {
     var M = MACHINE;
     /* محدِّدٌ في الآخر: يمنعُ التشوّهَ حينَ تجتمعُ الطبقاتُ على مقطعٍ عالٍ، ولا يمسُّ الكلامَ العاديّ */
@@ -975,23 +973,6 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
     osc.connect(ring.gain); osc.start();
     var ringOut = ctx.createGain(); ringOut.gain.value = M.ring;
     lp.connect(ring); ring.connect(ringOut); ringOut.connect(output);
-    /* ③ نَفَسُ الهمس: ضجيجٌ ناعمٌ يفتحُه غلافُ الصوتِ وحدَه — يعلو حينَ يتكلّمُ ويسكتُ حينَ يسكت.
-       يذهبُ إلى المحدِّدِ مباشرةً لا عبرَ مخفِّفِ الحدّة، فالهمسُ نفسُه في التردّداتِ العالية */
-    if (M.breath > 0) {
-      var len = ctx.sampleRate * 2, nb = ctx.createBuffer(1, len, ctx.sampleRate), nd = nb.getChannelData(0);
-      for (var i = 0; i < len; i++) nd[i] = Math.random() * 2 - 1;
-      var noise = ctx.createBufferSource(); noise.buffer = nb; noise.loop = true;
-      var bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = M.breathHz; bp.Q.value = 0.7;
-      var vca = ctx.createGain(); vca.gain.value = 0;
-      noise.connect(bp); bp.connect(vca); vca.connect(lim);
-      var rect = ctx.createWaveShaper(), cv = new Float32Array(1025);         // القيمةُ المطلقة = قوّةُ الصوت
-      for (var k = 0; k < 1025; k++) cv[k] = Math.abs(k / 512 - 1);
-      rect.curve = cv;
-      var env = ctx.createBiquadFilter(); env.type = 'lowpass'; env.frequency.value = 18; env.Q.value = 0.5;
-      var amt = ctx.createGain(); amt.gain.value = M.breath;
-      input.connect(rect); rect.connect(env); env.connect(amt); amt.connect(vca.gain);
-      noise.start();
-    }
     return osc;
   }
 
