@@ -34,11 +34,11 @@
 
 <style>
 :root{
-  --space:#0B0F17;
+  --space:#040A1A;
   --space-2:#121826;
-  --panel:#161D2B;
-  --panel-2:#1B2333;
-  --line:#263044;
+  --panel:#0B1430;
+  --panel-2:#0F1A3A;
+  --line:#1C2A50;
   --moon:#EDE8DE;
   --moon-2:#D9D1C1;
   --muted:#8E97A8;
@@ -54,8 +54,8 @@
 html,body{margin:0;min-height:100%}
 body{
   background:
-    radial-gradient(1200px 700px at 85% -10%, rgba(64,192,255,.10), transparent 60%),
-    radial-gradient(900px 600px at 0% 110%, rgba(201,162,39,.08), transparent 60%),
+    radial-gradient(1100px 700px at 50% 18%, rgba(20,52,120,.45), transparent 65%),
+    radial-gradient(900px 600px at 0% 110%, rgba(255,150,40,.07), transparent 60%),
     var(--space);
   color:var(--moon);
   font-family:"Tajawal","IBM Plex Sans Arabic",-apple-system,"Segoe UI",Tahoma,sans-serif;
@@ -87,7 +87,7 @@ body{
 .beta{font-size:13px;font-weight:700;color:var(--stone-soft);border:1px solid rgba(201,162,39,.5);
   border-radius:999px;padding:2px 12px;letter-spacing:.2px}
 .hero{display:flex;align-items:center;gap:16px;margin-bottom:6px}
-.hero-moon{width:56px;height:56px;flex:none}
+.hero-mark{width:56px;height:56px;flex:none}
 h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
 .sub{margin:4px 0 26px;color:var(--muted);font-size:17px}
 
@@ -106,7 +106,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
   background:var(--stone);box-shadow:0 0 0 3px rgba(201,162,39,.18)}
 
 .check{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:14px;
-  background:#0F1522;border:1px solid var(--line);cursor:pointer;margin-bottom:14px}
+  background:#081230;border:1px solid var(--line);cursor:pointer;margin-bottom:14px}
 .check input{width:22px;height:22px;margin-top:5px;accent-color:var(--stone);flex:none}
 
 .btn{
@@ -125,7 +125,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
 /* ── اختيار الدرس ── */
 .grades{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:18px}
 .grade{
-  min-height:52px;border-radius:14px;border:1px solid var(--line);background:#0F1522;color:var(--moon);
+  min-height:52px;border-radius:14px;border:1px solid var(--line);background:#081230;color:var(--moon);
   font:inherit;font-size:17px;font-weight:700;cursor:pointer;
 }
 .grade small{display:block;font-size:13px;font-weight:500;color:var(--muted);line-height:1.2}
@@ -136,7 +136,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
 .lesson{
   display:flex;align-items:center;gap:12px;width:100%;text-align:start;
   padding:12px 16px;min-height:52px;border-radius:14px;border:1px solid var(--line);
-  background:#0F1522;color:var(--moon);font:inherit;font-size:17px;cursor:pointer;
+  background:#081230;color:var(--moon);font:inherit;font-size:17px;cursor:pointer;
 }
 .lesson:hover{border-color:rgba(201,162,39,.6);background:#121A29}
 .lesson .n{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;
@@ -152,30 +152,10 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
 .timer{font-variant-numeric:tabular-nums;color:var(--muted);font-size:16px;white-space:nowrap}
 .timer.warn{color:var(--stone-soft)}
 
-.stage{display:grid;place-items:center;padding:30px 0 16px}
-.orb{position:relative;width:min(200px,50vw);aspect-ratio:1}
-.orb .ring{position:absolute;inset:0;border-radius:50%;border:2px solid rgba(201,162,39,.0);
-  transform:scale(var(--lvl,1));transition:transform .08s linear, border-color .3s}
-.orb .ring.r2{inset:-12px;transform:scale(calc(1 + (var(--lvl,1) - 1) * .5))}
-.orb .moon{position:absolute;inset:16%;border-radius:50%;
-  background:
-    radial-gradient(circle at 34% 30%, rgba(255,255,255,.95) 0 10%, transparent 11%),
-    radial-gradient(circle at 64% 58%, rgba(166,152,124,.55) 0 9%, transparent 10%),
-    radial-gradient(circle at 38% 68%, rgba(166,152,124,.45) 0 6%, transparent 7%),
-    radial-gradient(circle at 70% 30%, rgba(166,152,124,.40) 0 5%, transparent 6%),
-    radial-gradient(circle at 40% 35%, #FFFDF6, #EDE8DE 45%, #C9BFA8 100%);
-  box-shadow:0 0 0 6px rgba(237,232,222,.06), 0 0 60px rgba(237,232,222,.18), inset -14px -16px 30px rgba(120,104,72,.35);
-  transition:box-shadow .25s, filter .25s;
-}
-.orb.listening .ring{border-color:rgba(201,162,39,.65)}
-.orb.listening .ring.r2{border-color:rgba(201,162,39,.25)}
-.orb.speaking .ring{border-color:rgba(64,192,255,.6)}
-.orb.speaking .ring.r2{border-color:rgba(64,192,255,.22)}
-.orb.speaking .moon{box-shadow:0 0 0 6px rgba(64,192,255,.10), 0 0 90px rgba(64,192,255,.32), inset -14px -16px 30px rgba(120,104,72,.35)}
-.orb.connecting .moon{animation:breathe 1.4s ease-in-out infinite}
-.orb.idle .moon{filter:saturate(.7) brightness(.85)}
-@keyframes breathe{50%{filter:brightness(.8);transform:scale(.97)}}
-@media (prefers-reduced-motion:reduce){.orb .ring{transition:none}.orb.connecting .moon{animation:none}}
+.stage{display:grid;place-items:center;padding:4px 0 0;margin:0 -8px;
+  background:radial-gradient(closest-side, rgba(18,46,110,.55), rgba(8,20,52,.25) 70%, transparent)}
+/* الحلقةُ الحيّة — تُرسَمُ بالكود في <canvas> (‏`Viz` أدناه)، والشعارُ في وسطِها images/logo-mark.png */
+.viz{display:block;width:100%;max-width:400px;aspect-ratio:1}
 
 .status{margin:12px 0 4px;text-align:center;font-size:17px;color:var(--moon-2);min-height:1.9em}
 .status .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-inline-end:8px;vertical-align:middle;background:var(--muted)}
@@ -185,7 +165,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
 
 .controls{display:flex;justify-content:center;gap:14px;margin:12px 0 4px}
 .round{
-  width:64px;height:64px;border-radius:50%;border:1px solid var(--line);background:#0F1522;color:var(--moon);
+  width:64px;height:64px;border-radius:50%;border:1px solid var(--line);background:#081230;color:var(--moon);
   display:grid;place-items:center;cursor:pointer;transition:background .15s,border-color .15s;
 }
 .round svg{width:28px;height:28px}
@@ -202,7 +182,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
 /* ── التفريغ النصّي ── */
 .chat{display:flex;flex-direction:column;gap:10px;margin-top:6px;max-height:46vh;overflow-y:auto;padding:4px 2px;scroll-behavior:smooth}
 .msg{max-width:88%;padding:10px 14px;border-radius:16px;font-size:17px;line-height:1.8;white-space:pre-wrap;word-wrap:break-word}
-.msg.ai{align-self:flex-start;background:#18233A;border:1px solid #233457;border-start-start-radius:6px}
+.msg.ai{align-self:flex-start;background:#0F2350;border:1px solid #1E3B78;border-start-start-radius:6px}
 .msg.me{align-self:flex-end;background:#2A2412;border:1px solid #4A3E17;border-start-end-radius:6px}
 .msg .who{display:block;font-size:13px;color:var(--muted);margin-bottom:2px}
 .msg.pending{opacity:.75}
@@ -210,7 +190,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
 
 .typebar{display:flex;gap:8px;margin-top:14px}
 .typebar input{
-  flex:1;min-width:0;padding:12px 14px;border-radius:12px;background:#0D111A;border:1px solid var(--line);
+  flex:1;min-width:0;padding:12px 14px;border-radius:12px;background:#060F28;border:1px solid var(--line);
   color:var(--moon);font:inherit;font-size:17px;
 }
 .typebar input:focus{outline:2px solid var(--stone-soft);outline-offset:1px}
@@ -224,7 +204,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
 @media (max-width:520px){
   body{font-size:17px}
   h1{font-size:25px}
-  .hero-moon{width:46px;height:46px}
+  .hero-mark{width:46px;height:46px}
   .card{padding:18px}
   .grades{gap:6px}
   .grade{font-size:16px}
@@ -241,11 +221,15 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
   </div>
 
   <div class="hero">
-    <svg class="hero-moon" viewBox="0 0 64 64" aria-hidden="true">
-      <defs><radialGradient id="hm" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#FFFDF6"/><stop offset=".5" stop-color="#EDE8DE"/><stop offset="1" stop-color="#BFB49C"/></radialGradient></defs>
-      <circle cx="32" cy="32" r="26" fill="url(#hm)"/>
-      <circle cx="41" cy="38" r="5" fill="#A6987C" opacity=".5"/><circle cx="25" cy="42" r="3.5" fill="#A6987C" opacity=".45"/><circle cx="43" cy="22" r="3" fill="#A6987C" opacity=".4"/>
-      <path d="M8 46c9 8 31 12 48-2" fill="none" stroke="#C9A227" stroke-width="2.5" stroke-linecap="round" opacity=".8"/>
+    <svg class="hero-mark" viewBox="0 0 64 64" aria-hidden="true">
+      <defs>
+        <linearGradient id="hmR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFB347"/><stop offset=".5" stop-color="#9ED6FF"/><stop offset="1" stop-color="#FFB347"/></linearGradient>
+        <linearGradient id="hmW" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5AB4FF"/><stop offset="1" stop-color="#FFA42A"/></linearGradient>
+      </defs>
+      <path d="M10 30c3-12 15-21 27-19s20 12 18 23-13 20-27 19S7 42 10 30z" fill="none" stroke="url(#hmW)" stroke-width="1.6" opacity=".9"/>
+      <path d="M14 38c-2-11 7-22 19-23s22 7 21 18-11 18-23 18-16-4-17-13z" fill="none" stroke="url(#hmW)" stroke-width="1.1" opacity=".6"/>
+      <circle cx="32" cy="32" r="15" fill="#081638" stroke="url(#hmR)" stroke-width="2.4"/>
+      <circle cx="32" cy="17.5" r="3" fill="#FFB347" opacity=".55"/><circle cx="32" cy="46.5" r="3" fill="#FFB347" opacity=".55"/>
     </svg>
     <div>
       <h1>مساعدة المعلّمة</h1>
@@ -293,9 +277,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
     </div>
 
     <div class="stage">
-      <div class="orb idle" id="orb" aria-hidden="true">
-        <div class="ring r2"></div><div class="ring"></div><div class="moon"></div>
-      </div>
+      <canvas class="viz" id="viz" aria-hidden="true"></canvas>
     </div>
     <div class="status" id="status" role="status" aria-live="polite"><span class="dot"></span><span id="statusText">جاهزة حين تكونين جاهزة.</span></div>
 
@@ -381,6 +363,166 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
   }
   var GRADE_AR = { '1': 'الأول', '2': 'الثاني', '3': 'الثالث', '4': 'الرابع' };
 
+  /* ═══════════ الحلقةُ الحيّة (Viz) ═══════════
+     حلقةٌ متوهّجةٌ في وسطِها شعارُ شوجب، تحيطُ بها ثلاثةُ أشرطةٍ من خيوطٍ منقّطةٍ تلتوي
+     ببطءٍ وشراراتٌ برتقاليّة. تتنفّسُ وهي تنتظر، وتتذبذبُ بمستوى الصوتِ حينَ تتكلّمُ المساعدة
+     (وتُطلقُ موجاتٍ دائريّة)، وتستجيبُ بلطفٍ لصوتِ المعلّمة. الحالات: idle · connecting · listening · speaking. */
+  var Viz = (function () {
+    var cv = document.getElementById('viz'), g = cv.getContext('2d');
+    var W = 0, dpr = 1, state = 'idle', target = 0, L = 0, last = 0, ph = 0, rippleAcc = 0;
+    var reduce = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+    var logo = new Image(), logoOk = false;
+    logo.onload = function () { logoOk = true; };
+    logo.src = 'images/logo-mark.png';
+    var TAU = Math.PI * 2;
+    /* ثلاثةُ أشرطة: تشوّهٌ بموجتَين (k1·k2) + التواءٌ يُضيّقُ الشريطَ ويوسّعُه (tk·tw) */
+    var RIB = [
+      { k1: 3, k2: 2, a1: .045, a2: .024, sp: .16,  tk: 2, tw: .052, p: 0 },
+      { k1: 3, k2: 4, a1: .040, a2: .020, sp: -.12, tk: 3, tw: .044, p: 2.1 },
+      { k1: 2, k2: 5, a1: .036, a2: .016, sp: .09,  tk: 2, tw: .048, p: 4.2 }
+    ];
+    var STRANDS = 9, PTS = 150;
+    var sparks = [];
+    for (var i = 0; i < 34; i++) sparks.push({ a: Math.random() * TAU, r: .29 + Math.random() * .19, s: (Math.random() - .5) * .3, z: .6 + Math.random() * 1.3, tw: Math.random() * TAU });
+    var ripples = [];
+
+    function size() {
+      var w = cv.clientWidth; if (!w) return;
+      dpr = Math.min(window.devicePixelRatio || 1, 2); W = w;
+      cv.width = Math.round(w * dpr); cv.height = Math.round(w * dpr);
+    }
+    function conic(stops, start) {
+      if (g.createConicGradient) {
+        var gr = g.createConicGradient(start, W / 2, W / 2);
+        stops.forEach(function (st) { gr.addColorStop(st[0], st[1]); });
+        return gr;
+      }
+      var lg = g.createLinearGradient(0, 0, W, W);   // احتياطٌ للمتصفّحاتِ القديمة
+      lg.addColorStop(0, '#5AB4FF'); lg.addColorStop(.5, '#FFB347'); lg.addColorStop(1, '#5AB4FF');
+      return lg;
+    }
+    var RIB_STOPS = [[0, '#5AB4FF'], [.17, '#FFA42A'], [.36, '#A8DAFF'], [.55, '#FFB347'], [.74, '#4F9DFF'], [.9, '#FF9A1F'], [1, '#5AB4FF']];
+    var RING_STOPS = [[0, '#FFB347'], [.25, '#A8DAFF'], [.5, '#FFB347'], [.75, '#A8DAFF'], [1, '#FFB347']];
+
+    function frame(now) {
+      requestAnimationFrame(frame);
+      if (!W || cv.width !== Math.round(cv.clientWidth * dpr)) size();
+      if (!W || !cv.offsetParent) { last = now; return; }        // مخفيّةٌ — لا رسم
+      var dt = last ? Math.min(.05, (now - last) / 1000) : .016; last = now;
+      var spd = state === 'speaking' ? 1.8 : state === 'connecting' ? 1.5 : state === 'listening' ? 1 : .5;
+      if (reduce) spd *= .3;
+      ph += dt * spd;
+
+      var tgt = state === 'idle' ? .03 : state === 'connecting' ? .2 + .16 * Math.sin(now / 260) : target;
+      L += (tgt - L) * (tgt > L ? .35 : .08);                       // صعودٌ سريعٌ وهبوطٌ هادئ
+      var wob = reduce ? .3 : 1;
+      var c = W / 2, Rc = W * .255, R0 = W * .33, dim = state === 'idle' ? .6 : 1;
+
+      g.setTransform(dpr, 0, 0, dpr, 0, 0);
+      g.clearRect(0, 0, W, W);
+      g.globalCompositeOperation = 'lighter';
+
+      /* موجاتٌ دائريّةٌ تنطلقُ من الحلقةِ حينَ تتكلّم */
+      if (state === 'speaking' && !reduce) {
+        rippleAcc += dt * (1 + L * 4);
+        if (rippleAcc > .5) { rippleAcc = 0; ripples.push({ r: Rc, a: .3 + L * .45 }); }
+      }
+      ripples = ripples.filter(function (rp) {
+        rp.r += dt * W * .2; rp.a -= dt * .5;
+        if (rp.a <= 0 || rp.r > W * .5) return false;
+        g.beginPath(); g.arc(c, c, rp.r, 0, TAU);
+        g.strokeStyle = 'rgba(120,190,255,' + (rp.a * .45) + ')'; g.lineWidth = 1.4; g.stroke();
+        return true;
+      });
+
+      /* الأشرطة */
+      var grad = conic(RIB_STOPS, ph * .15);
+      g.strokeStyle = grad;
+      for (var j = 0; j < RIB.length; j++) {
+        var rb = RIB[j];
+        var p1 = rb.p + rb.sp * ph * 2.2, p2 = -rb.p * .7 + rb.sp * ph * 2.9, pt = rb.p + ph * .6;
+        for (var s = 0; s < STRANDS; s++) {
+          var u = s / (STRANDS - 1) - .5, edge = Math.abs(u) * 2;
+          g.beginPath();
+          for (var q = 0; q <= PTS; q++) {
+            var th = q / PTS * TAU;
+            var r = R0
+              + W * (rb.a1 * Math.sin(rb.k1 * th + p1) + rb.a2 * Math.sin(rb.k2 * th + p2)) * (1 + .7 * L)
+              + W * rb.tw * Math.sin(rb.tk * th + pt) * u * (1 + .5 * L)
+              + W * .014 * wob * L * Math.sin(11 * th + ph * 9 + j * 2 + s * .25);
+            var x = c + r * Math.cos(th), y = c + r * Math.sin(th);
+            if (q) g.lineTo(x, y); else g.moveTo(x, y);
+          }
+          if (edge > .99) {                                          // حافّتا الشريطِ خيطانِ مضيئان
+            g.setLineDash([]);
+            g.globalAlpha = (.5 + .4 * L) * dim; g.lineWidth = 1.3; g.stroke();
+            g.globalAlpha = .07 * dim; g.lineWidth = 7; g.stroke();
+          } else {                                                   // والداخلُ خيوطٌ منقّطة
+            g.setLineDash([1, 2.8]);
+            g.globalAlpha = (.16 + .3 * edge + .25 * L) * dim; g.lineWidth = 1; g.stroke();
+          }
+        }
+      }
+      g.setLineDash([]); g.globalAlpha = 1;
+
+      /* شرارات */
+      for (var k = 0; k < sparks.length; k++) {
+        var sp = sparks[k];
+        sp.a += sp.s * dt * spd;
+        var rr = W * sp.r + (state === 'speaking' ? W * .012 * wob * L * Math.sin(ph * 12 + sp.tw) : 0);
+        var al = (.3 + .45 * Math.sin(ph * 2.5 + sp.tw)) * dim;
+        if (al <= 0) continue;
+        g.fillStyle = 'rgba(255,170,60,' + al.toFixed(3) + ')';
+        g.beginPath(); g.arc(c + rr * Math.cos(sp.a), c + rr * Math.sin(sp.a), sp.z, 0, TAU); g.fill();
+      }
+
+      /* القرصُ والحلقة */
+      var R = Rc * (1 + .035 * L);
+      g.globalCompositeOperation = 'source-over';
+      var dg = g.createRadialGradient(c, c, R * .1, c, c, R);
+      dg.addColorStop(0, '#0C1D45'); dg.addColorStop(1, '#06112C');
+      g.beginPath(); g.arc(c, c, R, 0, TAU); g.fillStyle = dg; g.fill();
+
+      g.globalCompositeOperation = 'lighter';
+      var rg = conic(RING_STOPS, -Math.PI / 2 + Math.sin(ph * .4) * .25);
+      g.strokeStyle = rg;
+      [[16, .08], [8, .18], [3, .95]].forEach(function (w) {
+        g.beginPath(); g.arc(c, c, R, 0, TAU);
+        g.lineWidth = w[0] * (1 + .6 * L); g.globalAlpha = w[1] * dim; g.stroke();
+      });
+      g.globalAlpha = 1;
+
+      /* وهجٌ برتقاليٌّ أعلى الحلقةِ وأسفلَها */
+      [-1, 1].forEach(function (sg) {
+        var hy = c + sg * R, hr = W * (.16 + .06 * L);
+        var hg = g.createRadialGradient(c, hy, 0, c, hy, hr);
+        hg.addColorStop(0, 'rgba(255,190,90,' + ((.55 + .4 * L) * dim) + ')');
+        hg.addColorStop(.35, 'rgba(255,150,40,' + ((.18 + .2 * L) * dim) + ')');
+        hg.addColorStop(1, 'rgba(255,140,30,0)');
+        g.save(); g.translate(c, hy); g.scale(1, .32); g.translate(-c, -hy);
+        g.fillStyle = hg; g.beginPath(); g.arc(c, hy, hr, 0, TAU); g.fill();
+        g.restore();
+      });
+      g.beginPath(); g.arc(c, c, R * .94, 0, TAU);
+      g.strokeStyle = 'rgba(160,210,255,' + (.16 * dim) + ')'; g.lineWidth = 1; g.stroke();
+
+      /* الشعار */
+      g.globalCompositeOperation = 'source-over';
+      if (logoOk) {
+        var lw = R * 1.3 * (1 + .025 * L), lh = lw * logo.naturalHeight / logo.naturalWidth;
+        g.globalAlpha = state === 'idle' ? .85 : 1;
+        g.drawImage(logo, c - lw / 2, c - lh / 2 - R * .02, lw, lh);
+        g.globalAlpha = 1;
+      }
+    }
+    window.addEventListener('resize', size);
+    requestAnimationFrame(frame);
+    return {
+      state: function (s) { state = s; },
+      level: function (v) { target = Math.max(0, Math.min(1, v || 0)); }
+    };
+  })();
+
   /* ═══════════ ① الإقرار ═══════════ */
   function showGate() {
     $('gate').hidden = false; $('picker').hidden = true; $('session').hidden = true;
@@ -459,7 +601,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  function setOrb(state) { $('orb').className = 'orb ' + state; }
+  function setOrb(state) { Viz.state(state); }
   function setStatus(cls, text) { $('status').className = 'status ' + (cls || ''); $('statusText').textContent = text; }
 
   /* — طلبُ الرمز من n8n — */
@@ -550,7 +692,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
       S.ready = true;
       $('startWrap').hidden = true; $('controls').hidden = false; $('typebar').hidden = false;
       $('chat').innerHTML = '';
-      setOrb('listening'); setStatus('listening', 'أستمع إليكِ…');
+      S.vis = 'listening'; setOrb('listening'); setStatus('listening', 'أستمع إليكِ…');
       startTimer();
       sendText(CONFIG.KICKOFF, true);
       return;
@@ -676,26 +818,24 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
   }
   function speaking() { return S && S.ctx && S.nextTime > S.ctx.currentTime + 0.02; }
 
-  /* حركةُ القمر: تنبضُ الحلقةُ بمستوى صوتِ المتكلّم */
+  /* مستوى الصوتِ يُغذّي الحلقة: صوتُ المساعدةِ وهي تتكلّم، وصوتُ المعلّمةِ وهي تتكلّم */
   function animate() {
     if (!S || S.ended) return;
-    var orb = $('orb'), lvl = 0;
     if (S.ready) {
       if (speaking()) {
         S.analyser.getFloatTimeDomainData(S.levelBuf);
         var sum = 0; for (var i = 0; i < S.levelBuf.length; i++) sum += S.levelBuf[i] * S.levelBuf[i];
-        lvl = Math.sqrt(sum / S.levelBuf.length) * 3.2;
-        if (orb.className !== 'orb speaking') { setOrb('speaking'); setStatus('speaking', 'تتحدّث مساعدة شوجب…'); }
+        Viz.level(Math.sqrt(sum / S.levelBuf.length) * 3.2);
+        if (S.vis !== 'speaking') { S.vis = 'speaking'; setOrb('speaking'); setStatus('speaking', 'تتحدّث مساعدة شوجب…'); }
       } else {
-        lvl = S.muted ? 0 : S.inLevel * 4;
-        var want = S.muted ? 'orb idle' : 'orb listening';
-        if (orb.className !== want) {
-          setOrb(S.muted ? 'idle' : 'listening');
+        var want = S.muted ? 'idle' : 'listening';
+        Viz.level(S.muted ? 0 : S.inLevel * 4);
+        if (S.vis !== want) {
+          S.vis = want; setOrb(want);
           setStatus(S.muted ? '' : 'listening', S.muted ? 'الميكروفون مكتوم. اضغطي الزرّ لتتحدّثي.' : 'أستمع إليكِ…');
         }
       }
     }
-    orb.style.setProperty('--lvl', (1 + Math.min(lvl, 0.1)).toFixed(3));   // نبضٌ محسوسٌ لا يتجاوزُ المسرح
     S.raf = requestAnimationFrame(animate);
   }
 
@@ -750,7 +890,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
     $('startWrap').hidden = false; $('startBtn').disabled = false;
     $('micBtn').setAttribute('aria-pressed', 'true'); $('micBtn').querySelector('.slash').style.display = 'none';
     $('micLabel').textContent = 'الميكروفون يعمل';
-    $('timer').textContent = ''; $('orb').style.setProperty('--lvl', 1);
+    $('timer').textContent = ''; Viz.level(0);
     setOrb('idle');
     if (text) setStatus(isError ? 'error' : '', text);
     $('startBtn').onclick = function () { start(s.lesson); };
