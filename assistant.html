@@ -236,6 +236,23 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
 .foot{margin-top:18px;text-align:center;color:var(--muted);font-size:14px;line-height:1.8}
 .link{color:var(--stone-soft);background:none;border:0;font:inherit;cursor:pointer;text-decoration:underline;padding:0}
 
+/* ── إطارُ المحادثة: لوحةٌ تقنيّةٌ بدوائرَ سماويّة (طلبُ المالك ٢٠٢٦-١١-٠٢) ──
+   رسمٌ أصليٌّ بـSVG يُعادُ بمقاسِ البطاقةِ كلّما تغيّرَ (‏Hud في السكربت) — لا صورة، فيمتدُّ مع المحادثة */
+.card.hud{--hs:1;background:transparent;border:0;border-radius:0;position:relative;
+  padding:calc(var(--hs) * 30px + 14px)}
+.card.hud > .hudsvg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:visible}
+.card.hud > :not(.hudsvg){position:relative;z-index:1}
+.hud-lines{filter:drop-shadow(0 0 3px rgba(79,209,218,.55))}
+.hud-run{stroke-dasharray:70 930;animation:hudrun 9s linear infinite;filter:drop-shadow(0 0 4px #7FEAF0)}
+@keyframes hudrun{from{stroke-dashoffset:1000}to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){.hud-run{display:none}}
+/* ما داخلَ اللوحةِ الفيروزيّةِ بألوانِها: فقاعةُ المساعدِ وخانةُ الكتابةِ وزرُّ الميكروفون */
+.card.hud .msg.ai{background:rgba(14,52,61,.88);border-color:rgba(79,209,218,.3)}
+.card.hud .typebar input{background:rgba(4,20,25,.9);border-color:rgba(79,209,218,.3)}
+.card.hud .round{background:rgba(8,32,38,.95);border-color:rgba(79,209,218,.35)}
+.card.hud .round.mic[aria-pressed="false"]{background:#2A1A1A;border-color:#5B2C27}
+.card.hud .round.end{background:#3A1E1C;border-color:#6B2E28}
+
 @media (max-width:520px){
   body{font-size:17px}
   h1{font-size:25px}
@@ -668,6 +685,84 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
       state: function (s) { state = s; },
       level: function (v) { target = Math.max(0, Math.min(1, v || 0)); }
     };
+  })();
+
+  /* ═══════════ إطارُ المحادثة (‏Hud) ═══════════
+     خطّانِ سماويّانِ بزاويتَينِ مقطوعتَين (أعلى اليمين وأسفل اليسار) ولسانَينِ بارزَين، تتفرّعُ منهما
+     دوائرُ تنتهي بنقاط، ورقائقُ صغيرة، ولوحةٌ داخليّةٌ فيروزيّةٌ داكنةٌ بخطوطِ مسحٍ خافتة، ونبضةُ ضوءٍ
+     تجري على الإطار. يُعادُ الرسمُ بمقاسِ البطاقةِ (‏ResizeObserver) لأنّ المحادثةَ تطولُ وتقصر. */
+  var Hud = (function () {
+    var host = $('session'), NS = 'http://www.w3.org/2000/svg', CY = '#4FD1DA', DK = '#06161B';
+    var svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('class', 'hudsvg'); svg.setAttribute('aria-hidden', 'true');
+    host.insertBefore(svg, host.firstChild); host.classList.add('hud');
+    var lastW = 0, lastH = 0;
+    var n = function (v) { return Math.round(v * 10) / 10; };
+    var path = function (pts, close) {
+      return 'M' + pts.map(function (p) { return n(p[0]) + ' ' + n(p[1]); }).join(' L') + (close ? ' Z' : '');
+    };
+    function outline(w, h, d, s, tab) {
+      var C = 28 * s, t = tab ? 6 * s : 0;
+      var y1 = h * .26, y2 = y1 + Math.min(140 * s, h * .16), y3 = h * .68, y4 = y3 + Math.min(120 * s, h * .14);
+      return [[d, d], [w - d - C, d], [w - d, d + C], [w - d, y1], [w - d + t, y1 + t], [w - d + t, y2 - t], [w - d, y2],
+              [w - d, h - d], [d + C, h - d], [d, h - d - C], [d, y4], [d - t, y4 - t], [d - t, y3 + t], [d, y3]];
+    }
+    function draw() {
+      var w = host.clientWidth, h = host.clientHeight;
+      if (!w || !h || (w === lastW && h === lastH)) return;
+      lastW = w; lastH = h;
+      var s = w < 520 ? .72 : 1, d = 16 * s, d2 = d + 6 * s, ip = 30 * s, r = 14 * s, C = 28 * s, t = 6 * s;
+      host.style.setProperty('--hs', s);
+      var y1 = h * .26, y2 = y1 + Math.min(140 * s, h * .16), y3 = h * .68, y4 = y3 + Math.min(120 * s, h * .14);
+      var o = '<defs><linearGradient id="hudFill" x1="0" y1="0" x2="0" y2="1">'
+        + '<stop offset="0" stop-color="#0D2C33"/><stop offset="1" stop-color="' + DK + '"/></linearGradient>'
+        + '<pattern id="hudScan" width="5" height="5" patternUnits="userSpaceOnUse">'
+        + '<path d="M.5 0V5" stroke="' + CY + '" stroke-opacity=".06"/></pattern></defs>';
+      /* اللوحةُ الداخليّة */
+      var pr = 'x="' + n(ip) + '" y="' + n(ip) + '" width="' + n(w - 2 * ip) + '" height="' + n(h - 2 * ip) + '" rx="' + n(r) + '"';
+      o += '<rect ' + pr + ' fill="url(#hudFill)" fill-opacity=".92"/><rect ' + pr + ' fill="url(#hudScan)"/>'
+        + '<rect ' + pr + ' fill="none" stroke="' + CY + '" stroke-opacity=".28"/>';
+      /* دوائرُ خافتةٌ داخلَ اللوحة */
+      var a = ip + 24 * s, b = w - ip - 24 * s;
+      o += '<g fill="none" stroke="' + CY + '" stroke-opacity=".1" stroke-width="1">'
+        + '<path d="' + path([[a, h * .2], [w * .42, h * .2], [w * .42 + 14 * s, h * .2 + 14 * s], [w * .42 + 14 * s, h * .46]]) + '"/>'
+        + '<path d="' + path([[b, h * .58], [w * .62, h * .58], [w * .62 - 14 * s, h * .58 + 14 * s], [w * .62 - 14 * s, h * .8], [a + 40 * s, h * .8]]) + '"/>'
+        + '<path d="' + path([[w * .5, ip + 10 * s], [w * .5, h * .12]]) + '"/></g>';
+      /* الخطوطُ والدوائرُ المتفرّعة */
+      var main = path(outline(w, h, d, s, true), true), q = 7 * s, L = 14 * s, nodes = [];
+      var tr = function (pts) { nodes.push(pts[pts.length - 1]); return '<path d="' + path(pts) + '" stroke-width="1.1"/>'; };
+      o += '<g class="hud-lines" fill="none" stroke="' + CY + '" stroke-linecap="round" stroke-linejoin="round">'
+        + '<path d="' + main + '" stroke-width="1.7"/>'
+        + '<path d="' + path(outline(w, h, d2, s, false), true) + '" stroke-width="1" stroke-opacity=".5"/>';
+      [.12, .47, .72].forEach(function (k) { var x = w * k; o += tr([[x, d], [x, d - q], [x - L, d - q]]); });
+      [.13, .52, .87].forEach(function (k) { var y = h * k; o += tr([[w - d, y], [w - d + q, y], [w - d + q, y + L]]); });
+      [.3, .58, .84].forEach(function (k) { var x = w * k; o += tr([[x, h - d], [x, h - d + q], [x + L, h - d + q]]); });
+      [.1, .42].forEach(function (k) { var y = h * k; o += tr([[d, y], [d - q, y], [d - q, y - L]]); });
+      o += tr([[w - d - C / 2, d + C / 2], [w - d - C / 2 + 9 * s, d + C / 2 - 9 * s]]);
+      o += tr([[d + C / 2, h - d - C / 2], [d + C / 2 - 9 * s, h - d - C / 2 + 9 * s]]);
+      nodes.forEach(function (p) { o += '<circle cx="' + n(p[0]) + '" cy="' + n(p[1]) + '" r="' + n(2.6 * s) + '" fill="' + DK + '" stroke-width="1.2"/>'; });
+      o += '</g>';
+      /* رقائقُ صغيرة */
+      o += '<g fill="' + CY + '" fill-opacity=".85">';
+      for (var i = 0; i < 6; i++) {
+        o += '<rect x="' + n(w * .22 + i * 8 * s) + '" y="' + n(d - 1.5 * s) + '" width="' + n(5 * s) + '" height="' + n(3 * s) + '"/>';
+        o += '<rect x="' + n(w * .42 + i * 8 * s) + '" y="' + n(h - d - 1.5 * s) + '" width="' + n(5 * s) + '" height="' + n(3 * s) + '"/>';
+      }
+      for (var j = 0; j < 4; j++) {
+        o += '<rect x="' + n(w - d + 1 * s) + '" y="' + n(y1 + 16 * s + j * 8 * s) + '" width="' + n(4 * s) + '" height="' + n(4 * s) + '"/>';
+      }
+      o += '</g>';
+      o += '<g fill="' + DK + '" stroke="' + CY + '" stroke-width="1.2">'
+        + '<rect x="' + n(w * .56) + '" y="' + n(d - 3.5 * s) + '" width="' + n(18 * s) + '" height="' + n(7 * s) + '" rx="' + n(3.5 * s) + '"/>'
+        + '<rect x="' + n(d - t / 2 - 3.5 * s) + '" y="' + n((y3 + y4) / 2 - 9 * s) + '" width="' + n(7 * s) + '" height="' + n(18 * s) + '" rx="' + n(3.5 * s) + '"/></g>';
+      /* نبضةُ الضوءِ الجارية */
+      o += '<path class="hud-run" pathLength="1000" d="' + main + '" fill="none" stroke="#B8F6FA" stroke-width="2" stroke-linecap="round"/>';
+      svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+      svg.innerHTML = o;
+    }
+    if (window.ResizeObserver) new ResizeObserver(draw).observe(host);
+    window.addEventListener('resize', draw);
+    return { draw: draw };
   })();
 
   /* ═══════════ ① الإقرار ═══════════ */
