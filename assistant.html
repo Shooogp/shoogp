@@ -29,6 +29,11 @@
     ٣) الصفحةُ تتّصلُ بجيميناي لايف مباشرةً (WebSocket) بالرمز، فترسلُ صوتَ الميكروفون
        ‏PCM ‏16kHz وتشغّلُ الردَّ ‏PCM ‏24kHz، وتعرضُ التفريغَ النصّيَّ للطرفين.
   لا تُحفَظُ المحادثةُ ولا الصوتُ في شوجب؛ يُسجَّلُ في n8n عددُ الجلسات وحدَه (للحدّ اليومي).
+
+  اسمُ المعلّمة (اختياريّ، ‏`NAME_KEY`): يُحفَظُ في متصفّحِها وحدَه ويُرسَلُ مع طلبِ الرمز،
+  فتناديها المساعدةُ «الأستاذة …». ‏`cleanName` هنا وفي «تحقق من الطلب» بـn8n نسختانِ
+  من قاعدةٍ واحدة: حروفٌ ومسافاتٌ فقط (لا رموزَ تُدسُّ بها أوامرُ للمساعدة)، ثلاثُ كلماتٍ
+  و٢٤ حرفاً على الأكثر، ويُحذَفُ «الأستاذة/المعلمة» إن كتبَته. ولا يُسجَّلُ في جدولِ الجلسات.
   ═══════════════════════════════════════════════════════════════
 -->
 
@@ -130,6 +135,18 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
 }
 .grade small{display:block;font-size:13px;font-weight:500;color:var(--muted);line-height:1.2}
 .grade[aria-pressed="true"]{background:rgba(201,162,39,.14);border-color:var(--stone);color:var(--stone-soft)}
+/* ── اسم المعلّمة: «الأستاذة» ثابتةٌ قبلَ الخانة فترى المعلّمةُ كيف ستُنادى ── */
+.namebox{margin:0 0 18px}
+.namebox label{display:block;font-size:16px;font-weight:700;margin-bottom:6px}
+.namebox .opt{font-weight:500;color:var(--muted);font-size:14px}
+.namefield{display:flex;align-items:stretch;border:1px solid var(--line);border-radius:12px;background:#060F28;overflow:hidden}
+.namefield:focus-within{outline:2px solid var(--stone-soft);outline-offset:1px}
+.namefield .prefix{flex:none;display:grid;place-items:center;padding:0 14px;color:var(--stone-soft);font-weight:700;
+  background:rgba(201,162,39,.10);border-inline-end:1px solid var(--line)}
+.namefield input{flex:1;min-width:0;padding:11px 14px;border:0;background:transparent;color:var(--moon);font:inherit;font-size:17px}
+.namefield input:focus{outline:none}
+.namefield input::placeholder{color:#5D6880}
+.namebox .hint{margin:4px 0 0;font-size:14px;color:var(--muted);line-height:1.6}
 .unit{margin-bottom:14px}
 .unit-head{font-size:15px;color:var(--muted);margin:0 0 8px;font-weight:700}
 .lessons{display:grid;gap:8px}
@@ -257,6 +274,14 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
   <section class="card" id="picker" hidden>
     <h2>اختاري الدرس</h2>
     <p class="note">التجربة الأولى على كتب العلوم للفصل الدراسي الأول.</p>
+    <div class="namebox">
+      <label for="nameInput">كيف تناديكِ المساعدة؟ <span class="opt">(اختياري)</span></label>
+      <div class="namefield">
+        <span class="prefix" aria-hidden="true">الأستاذة</span>
+        <input id="nameInput" type="text" placeholder="اكتبي اسمكِ" maxlength="24" autocomplete="given-name" enterkeyhint="done">
+      </div>
+      <p class="hint">يُحفظ في هذا المتصفّح فقط.</p>
+    </div>
     <div class="grades" role="group" aria-label="الصف">
       <button class="grade" data-g="1" aria-pressed="false">الأول<small>العلوم</small></button>
       <button class="grade" data-g="2" aria-pressed="false">الثاني<small>العلوم</small></button>
@@ -343,6 +368,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
   var GATE_KEY = 'shoogp.assistant.teacher';
   var DEVICE_KEY = 'shoogp.assistant.device';
   var GRADE_KEY = 'shoogp.assistant.grade';
+  var NAME_KEY = 'shoogp.assistant.name';
 
   /* ═══════════ أدوات صغيرة ═══════════ */
   var $ = function (id) { return document.getElementById(id); };
@@ -362,6 +388,18 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
     return d;
   }
   var GRADE_AR = { '1': 'الأول', '2': 'الثاني', '3': 'الثالث', '4': 'الرابع' };
+
+  /* اسمُ المعلّمة — نسخةُ «تحقق من الطلب» في n8n نفسُها (الحَكَمُ هناك، وهذه للعرض) */
+  function cleanName(v) {
+    var s = String(v || '');
+    if (s.normalize) s = s.normalize('NFC');
+    s = s.replace(/[ً-ْٰ]/g, '')                    // الحركات
+      .replace(/[^ء-غف-يA-Za-z ]+/g, ' ')       // حروفٌ ومسافاتٌ فقط
+      .replace(/\s+/g, ' ').trim()
+      .replace(/^(?:(?:ال)?(?:[اأإ]ستاذ[ةه]?|معلم[ةه])|أ)(?:\s+|$)/, '');
+    s = s.split(' ').slice(0, 3).join(' ').slice(0, 24).trim();
+    return s.length >= 2 ? s : '';
+  }
 
   /* ═══════════ الحلقةُ الحيّة (Viz) ═══════════
      حلقةٌ متوهّجةٌ في وسطِها شعارُ شوجب، تحيطُ بها ثلاثةُ أشرطةٍ من خيوطٍ منقّطةٍ تلتوي
@@ -602,6 +640,11 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
   var books = {};
   function showPicker() {
     $('picker').hidden = false; $('session').hidden = true;
+    var ni = $('nameInput');
+    if (!ni.value) ni.value = store.get(NAME_KEY) || '';
+    ni.oninput = function () { store.set(NAME_KEY, cleanName(ni.value)); };
+    ni.onchange = function () { ni.value = cleanName(ni.value); store.set(NAME_KEY, ni.value); };
+    ni.onkeydown = function (e) { if (e.key === 'Enter') ni.blur(); };
     var grades = document.querySelectorAll('.grade');
     Array.prototype.forEach.call(grades, function (b) {
       b.onclick = function () { pickGrade(b.getAttribute('data-g')); };
@@ -671,7 +714,10 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
 
   /* — طلبُ الرمز من n8n — */
   function requestToken(lessonId) {
-    var body = new URLSearchParams({ lesson: lessonId, device: deviceId() });
+    var p = { lesson: lessonId, device: deviceId() };
+    var nm = cleanName($('nameInput').value);
+    if (nm) p.name = nm;
+    var body = new URLSearchParams(p);
     var go = function (url) { return fetch(url, { method: 'POST', body: body }); };
     return go(CONFIG.TOKEN_URL)
       .catch(function () { return go(CONFIG.TOKEN_RELAY); })   // الطلبُ لم يخرج أصلاً (شبكةٌ حاجبة)
