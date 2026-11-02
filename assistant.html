@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>مساعدة المعلّمة — شوجب</title>
+<meta name="description" content="مساعدة شوجب الصوتية للمعلّمات: اسألي عن درس العلوم بصوتكِ واحصلي على شرح مبسّط وأفكار لإيصاله لتلاميذكِ.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap">
+
+<!--
+  ═══════════════════════════════════════════════════════════════
+  مساعدة المعلّمة — محادثةٌ صوتيّةٌ حيّةٌ مع جيميناي لايف عن درسٍ من كتاب العلوم.
+  ───────────────────────────────────────────────────────────────
+  ⛔ **للمعلّمات وحدَهنّ، لا للتلاميذ** (قرار المالك ٢٠٢٦-١١-٠٢): شروطُ Gemini API
+  تمنعُ استعمالَه في خدمةٍ يُرجَّحُ أن يصلَها من هم دونَ ١٨ سنة. لذلك:
+    • الصفحةُ مستقلّةٌ خارجَ الدروسِ المعروضةِ على السبورة، ولا زرَّ لها داخلَ الدرس.
+    • تبدأُ بإقرارِ «أنا معلّمة» (‏`GATE_KEY`)، والمساعدةُ نفسُها مأمورةٌ في تعليماتِها
+      بألّا تتابعَ مع طفل.
+  نسخةُ التلاميذ إن بُنيت لاحقاً تكونُ على مزوّدٍ يسمحُ بذلك، لا على هذه الصفحة.
+
+  المسار:
+    ١) الصفحةُ تطلبُ من n8n «شوجب — مساعد المعلمة (رمز الجلسة)» رمزاً مؤقّتاً للدرس
+       (‏`TOKEN_URL`، والمرحِّلُ احتياطاً للشبكاتِ التي تحجبُ n8n.cloud).
+    ٢) n8n يبني تعليماتِ المساعدة من data/assistant/<كتاب>.json ويقفلُها داخلَ الرمز —
+       فلا يستطيعُ المتصفّحُ تغييرَها، ولا يظهرُ مفتاحُ جيميناي هنا أبداً.
+    ٣) الصفحةُ تتّصلُ بجيميناي لايف مباشرةً (WebSocket) بالرمز، فترسلُ صوتَ الميكروفون
+       ‏PCM ‏16kHz وتشغّلُ الردَّ ‏PCM ‏24kHz، وتعرضُ التفريغَ النصّيَّ للطرفين.
+  لا تُحفَظُ المحادثةُ ولا الصوتُ في شوجب؛ يُسجَّلُ في n8n عددُ الجلسات وحدَه (للحدّ اليومي).
+  ═══════════════════════════════════════════════════════════════
+-->
+
+<style>
+:root{
+  --space:#0B0F17;
+  --space-2:#121826;
+  --panel:#161D2B;
+  --panel-2:#1B2333;
+  --line:#263044;
+  --moon:#EDE8DE;
+  --moon-2:#D9D1C1;
+  --muted:#8E97A8;
+  --stone:#C9A227;          /* رمليّ المنصّة */
+  --stone-soft:#E3C766;
+  --sky:#40C0FF;
+  --ok:#5FBF8B;
+  --danger:#E0705F;
+  --radius:18px;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0;min-height:100%}
+body{
+  background:
+    radial-gradient(1200px 700px at 85% -10%, rgba(64,192,255,.10), transparent 60%),
+    radial-gradient(900px 600px at 0% 110%, rgba(201,162,39,.08), transparent 60%),
+    var(--space);
+  color:var(--moon);
+  font-family:"Tajawal","IBM Plex Sans Arabic",-apple-system,"Segoe UI",Tahoma,sans-serif;
+  font-size:18px;line-height:1.85;
+  -webkit-font-smoothing:antialiased;
+}
+/* نجومٌ ثابتةٌ خفيفة — زخرفةٌ لا تعيقُ القراءة */
+.stars{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.7;
+  background-image:
+    radial-gradient(1.2px 1.2px at 12% 18%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 72% 12%, #fff 50%, transparent 51%),
+    radial-gradient(1.4px 1.4px at 88% 44%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 34% 62%, #fff 50%, transparent 51%),
+    radial-gradient(1.2px 1.2px at 58% 82%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 8% 88%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 46% 30%, #cfe6ff 50%, transparent 51%),
+    radial-gradient(1.3px 1.3px at 92% 86%, #ffe9b0 50%, transparent 51%);
+}
+.page{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:24px 16px 48px}
+
+/* ── الترويسة ── */
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}
+.back{
+  display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:8px 18px;border-radius:999px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);
+  color:#fff;font-size:16px;text-decoration:none;
+}
+.back:hover{background:rgba(255,255,255,.15)}
+.beta{font-size:13px;font-weight:700;color:var(--stone-soft);border:1px solid rgba(201,162,39,.5);
+  border-radius:999px;padding:2px 12px;letter-spacing:.2px}
+.hero{display:flex;align-items:center;gap:16px;margin-bottom:6px}
+.hero-moon{width:56px;height:56px;flex:none}
+h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
+.sub{margin:4px 0 26px;color:var(--muted);font-size:17px}
+
+/* ── اللوحات ── */
+.card{
+  background:linear-gradient(180deg,var(--panel-2),var(--panel));
+  border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px;margin-bottom:16px;
+}
+.card h2{margin:0 0 10px;font-size:20px;font-weight:700}
+.card p{margin:0 0 12px}
+.note{color:var(--muted);font-size:16px}
+.points{margin:4px 0 16px;padding:0;list-style:none}
+.points li{position:relative;padding-inline-start:26px;margin-bottom:8px}
+.points li::before{content:"";position:absolute;inset-inline-start:4px;top:.75em;width:9px;height:9px;border-radius:50%;
+  background:var(--stone);box-shadow:0 0 0 3px rgba(201,162,39,.18)}
+
+.check{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:14px;
+  background:#0F1522;border:1px solid var(--line);cursor:pointer;margin-bottom:14px}
+.check input{width:22px;height:22px;margin-top:5px;accent-color:var(--stone);flex:none}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:52px;padding:12px 24px;border-radius:14px;border:0;cursor:pointer;
+  font:inherit;font-weight:700;font-size:18px;transition:filter .15s, transform .15s, background .15s;
+}
+.btn:active{transform:scale(.98)}
+.btn-primary{background:var(--stone);color:#1A1206;width:100%}
+.btn-primary:hover:not(:disabled){filter:brightness(1.08)}
+.btn-primary:disabled{opacity:.4;cursor:not-allowed}
+.btn-ghost{background:transparent;border:1px solid var(--line);color:var(--moon)}
+.btn-ghost:hover{border-color:var(--stone)}
+:focus-visible{outline:2px solid var(--stone-soft);outline-offset:3px}
+
+/* ── اختيار الدرس ── */
+.grades{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:18px}
+.grade{
+  min-height:52px;border-radius:14px;border:1px solid var(--line);background:#0F1522;color:var(--moon);
+  font:inherit;font-size:17px;font-weight:700;cursor:pointer;
+}
+.grade small{display:block;font-size:13px;font-weight:500;color:var(--muted);line-height:1.2}
+.grade[aria-pressed="true"]{background:rgba(201,162,39,.14);border-color:var(--stone);color:var(--stone-soft)}
+.unit{margin-bottom:14px}
+.unit-head{font-size:15px;color:var(--muted);margin:0 0 8px;font-weight:700}
+.lessons{display:grid;gap:8px}
+.lesson{
+  display:flex;align-items:center;gap:12px;width:100%;text-align:start;
+  padding:12px 16px;min-height:52px;border-radius:14px;border:1px solid var(--line);
+  background:#0F1522;color:var(--moon);font:inherit;font-size:17px;cursor:pointer;
+}
+.lesson:hover{border-color:rgba(201,162,39,.6);background:#121A29}
+.lesson .n{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(64,192,255,.12);color:#8ED8FF;font-size:15px;font-weight:700}
+.lesson .t{flex:1}
+.lesson .go{color:var(--muted);font-size:20px}
+.loading{color:var(--muted);text-align:center;padding:18px}
+
+/* ── الجلسة ── */
+.session-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px}
+.session-title{font-size:20px;font-weight:800;line-height:1.4}
+.session-meta{color:var(--muted);font-size:15px}
+.timer{font-variant-numeric:tabular-nums;color:var(--muted);font-size:16px;white-space:nowrap}
+.timer.warn{color:var(--stone-soft)}
+
+.stage{display:grid;place-items:center;padding:18px 0 6px}
+.orb{position:relative;width:min(220px,58vw);aspect-ratio:1}
+.orb .ring{position:absolute;inset:0;border-radius:50%;border:2px solid rgba(201,162,39,.0);
+  transform:scale(var(--lvl,1));transition:transform .08s linear, border-color .3s}
+.orb .ring.r2{inset:-14px;transform:scale(calc(1 + (var(--lvl,1) - 1) * .6))}
+.orb .moon{position:absolute;inset:16%;border-radius:50%;
+  background:
+    radial-gradient(circle at 34% 30%, rgba(255,255,255,.95) 0 10%, transparent 11%),
+    radial-gradient(circle at 64% 58%, rgba(166,152,124,.55) 0 9%, transparent 10%),
+    radial-gradient(circle at 38% 68%, rgba(166,152,124,.45) 0 6%, transparent 7%),
+    radial-gradient(circle at 70% 30%, rgba(166,152,124,.40) 0 5%, transparent 6%),
+    radial-gradient(circle at 40% 35%, #FFFDF6, #EDE8DE 45%, #C9BFA8 100%);
+  box-shadow:0 0 0 6px rgba(237,232,222,.06), 0 0 60px rgba(237,232,222,.18), inset -14px -16px 30px rgba(120,104,72,.35);
+  transition:box-shadow .25s, filter .25s;
+}
+.orb.listening .ring{border-color:rgba(201,162,39,.65)}
+.orb.listening .ring.r2{border-color:rgba(201,162,39,.25)}
+.orb.speaking .ring{border-color:rgba(64,192,255,.6)}
+.orb.speaking .ring.r2{border-color:rgba(64,192,255,.22)}
+.orb.speaking .moon{box-shadow:0 0 0 6px rgba(64,192,255,.10), 0 0 90px rgba(64,192,255,.32), inset -14px -16px 30px rgba(120,104,72,.35)}
+.orb.connecting .moon{animation:breathe 1.4s ease-in-out infinite}
+.orb.idle .moon{filter:saturate(.7) brightness(.85)}
+@keyframes breathe{50%{filter:brightness(.8);transform:scale(.97)}}
+@media (prefers-reduced-motion:reduce){.orb .ring{transition:none}.orb.connecting .moon{animation:none}}
+
+.status{margin:12px 0 4px;text-align:center;font-size:17px;color:var(--moon-2);min-height:1.9em}
+.status .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-inline-end:8px;vertical-align:middle;background:var(--muted)}
+.status.listening .dot{background:var(--stone)}
+.status.speaking .dot{background:var(--sky)}
+.status.error{color:#F2A398}
+
+.controls{display:flex;justify-content:center;gap:14px;margin:12px 0 4px}
+.round{
+  width:64px;height:64px;border-radius:50%;border:1px solid var(--line);background:#0F1522;color:var(--moon);
+  display:grid;place-items:center;cursor:pointer;transition:background .15s,border-color .15s;
+}
+.round svg{width:28px;height:28px}
+.round:hover{border-color:var(--stone)}
+.round.mic[aria-pressed="false"]{background:#2A1A1A;border-color:#5B2C27;color:#F2A398}
+.round.end{background:#3A1E1C;border-color:#6B2E28;color:#FFB4A8}
+.round.end:hover{background:#4A2420}
+.ctl-label{display:block;text-align:center;font-size:13px;color:var(--muted);margin-top:4px}
+.ctl{display:flex;flex-direction:column;align-items:center}
+
+.start-wrap{text-align:center}
+.start-wrap .btn{width:auto;min-width:240px}
+
+/* ── التفريغ النصّي ── */
+.chat{display:flex;flex-direction:column;gap:10px;margin-top:6px;max-height:46vh;overflow-y:auto;padding:4px 2px;scroll-behavior:smooth}
+.msg{max-width:88%;padding:10px 14px;border-radius:16px;font-size:17px;line-height:1.8;white-space:pre-wrap;word-wrap:break-word}
+.msg.ai{align-self:flex-start;background:#18233A;border:1px solid #233457;border-start-start-radius:6px}
+.msg.me{align-self:flex-end;background:#2A2412;border:1px solid #4A3E17;border-start-end-radius:6px}
+.msg .who{display:block;font-size:13px;color:var(--muted);margin-bottom:2px}
+.msg.pending{opacity:.75}
+.chat-empty{color:var(--muted);text-align:center;font-size:15px;padding:6px}
+
+.typebar{display:flex;gap:8px;margin-top:14px}
+.typebar input{
+  flex:1;min-width:0;padding:12px 14px;border-radius:12px;background:#0D111A;border:1px solid var(--line);
+  color:var(--moon);font:inherit;font-size:17px;
+}
+.typebar input:focus{outline:2px solid var(--stone-soft);outline-offset:1px}
+.typebar button{flex:none;width:52px;border-radius:12px;border:1px solid var(--stone);background:transparent;color:var(--stone-soft);cursor:pointer;display:grid;place-items:center}
+.typebar button:disabled{opacity:.4;cursor:not-allowed}
+.typebar svg{width:22px;height:22px;transform:scaleX(-1)}
+
+.foot{margin-top:18px;text-align:center;color:var(--muted);font-size:14px;line-height:1.8}
+.link{color:var(--stone-soft);background:none;border:0;font:inherit;cursor:pointer;text-decoration:underline;padding:0}
+
+@media (max-width:520px){
+  body{font-size:17px}
+  h1{font-size:25px}
+  .hero-moon{width:46px;height:46px}
+  .card{padding:18px}
+  .grades{gap:6px}
+  .grade{font-size:16px}
+}
+</style>
+</head>
+<body>
+<div class="stars" aria-hidden="true"></div>
+
+<main class="page">
+  <div class="top">
+    <a class="back" href="index.html">→ المنصّة</a>
+    <span class="beta">تجريبي</span>
+  </div>
+
+  <div class="hero">
+    <svg class="hero-moon" viewBox="0 0 64 64" aria-hidden="true">
+      <defs><radialGradient id="hm" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#FFFDF6"/><stop offset=".5" stop-color="#EDE8DE"/><stop offset="1" stop-color="#BFB49C"/></radialGradient></defs>
+      <circle cx="32" cy="32" r="26" fill="url(#hm)"/>
+      <circle cx="41" cy="38" r="5" fill="#A6987C" opacity=".5"/><circle cx="25" cy="42" r="3.5" fill="#A6987C" opacity=".45"/><circle cx="43" cy="22" r="3" fill="#A6987C" opacity=".4"/>
+      <path d="M8 46c9 8 31 12 48-2" fill="none" stroke="#C9A227" stroke-width="2.5" stroke-linecap="round" opacity=".8"/>
+    </svg>
+    <div>
+      <h1>مساعدة المعلّمة</h1>
+    </div>
+  </div>
+  <p class="sub">اسألي عن درس العلوم بصوتكِ، وتجيبكِ مساعدة شوجب بشرحٍ مبسّطٍ وأفكارٍ لإيصاله لتلاميذكِ.</p>
+
+  <!-- ① الإقرار: للمعلّمات وحدهنّ -->
+  <section class="card" id="gate" hidden>
+    <h2>قبل أن نبدأ</h2>
+    <ul class="points">
+      <li>المساعدة لتحضيركِ أنتِ: شرح المفهوم، وأمثلة، وأسئلة، وأفكار أنشطة.</li>
+      <li><strong>ليست للتلاميذ</strong>، فلا تُشغَّل على السبورة أمامهم ولا يتحدّث معها طفل.</li>
+      <li>تعمل بالذكاء الاصطناعي وقد تخطئ، فراجعي المعلومة قبل الحصّة.</li>
+      <li>لا تحفظ شوجب صوتكِ ولا المحادثة.</li>
+    </ul>
+    <label class="check">
+      <input type="checkbox" id="gateCheck">
+      <span>أنا معلّمة، وسأستعمل المساعدة لتحضير دروسي، لا مع التلاميذ.</span>
+    </label>
+    <button class="btn btn-primary" id="gateBtn" disabled>متابعة</button>
+  </section>
+
+  <!-- ② اختيار الدرس -->
+  <section class="card" id="picker" hidden>
+    <h2>اختاري الدرس</h2>
+    <p class="note">التجربة الأولى على كتب العلوم للفصل الدراسي الأول.</p>
+    <div class="grades" role="group" aria-label="الصف">
+      <button class="grade" data-g="1" aria-pressed="false">الأول<small>العلوم</small></button>
+      <button class="grade" data-g="2" aria-pressed="false">الثاني<small>العلوم</small></button>
+      <button class="grade" data-g="3" aria-pressed="false">الثالث<small>العلوم</small></button>
+      <button class="grade" data-g="4" aria-pressed="false">الرابع<small>العلوم</small></button>
+    </div>
+    <div id="lessonList"><p class="loading">اختاري الصف لتظهر دروسه.</p></div>
+  </section>
+
+  <!-- ③ الجلسة -->
+  <section class="card" id="session" hidden>
+    <div class="session-head">
+      <div>
+        <div class="session-title" id="sTitle">—</div>
+        <div class="session-meta" id="sMeta">—</div>
+      </div>
+      <div class="timer" id="timer" aria-live="off"></div>
+    </div>
+
+    <div class="stage">
+      <div class="orb idle" id="orb" aria-hidden="true">
+        <div class="ring r2"></div><div class="ring"></div><div class="moon"></div>
+      </div>
+    </div>
+    <div class="status" id="status" role="status" aria-live="polite"><span class="dot"></span><span id="statusText">جاهزة حين تكونين جاهزة.</span></div>
+
+    <div class="start-wrap" id="startWrap">
+      <button class="btn btn-primary" id="startBtn">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>
+        ابدئي المحادثة
+      </button>
+      <p class="note" style="margin-top:10px">سيطلب المتصفّح إذن الميكروفون. الجلسة حتى ١٠ دقائق.</p>
+    </div>
+
+    <div class="controls" id="controls" hidden>
+      <div class="ctl">
+        <button class="round mic" id="micBtn" aria-pressed="true" aria-label="كتم الميكروفون">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/><path class="slash" d="M4 4l16 16" style="display:none"/></svg>
+        </button>
+        <span class="ctl-label" id="micLabel">الميكروفون يعمل</span>
+      </div>
+      <div class="ctl">
+        <button class="round end" id="endBtn" aria-label="إنهاء الجلسة">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 9c-2.4 0-4.7.5-6.8 1.4-.7.3-1.2 1-1.2 1.8v2.3c0 .8.8 1.4 1.6 1.2l2.9-.8c.6-.2 1-.7 1-1.3v-1.5c.8-.2 1.6-.3 2.5-.3s1.7.1 2.5.3v1.5c0 .6.4 1.1 1 1.3l2.9.8c.8.2 1.6-.4 1.6-1.2v-2.3c0-.8-.5-1.5-1.2-1.8C16.7 9.5 14.4 9 12 9z"/></svg>
+        </button>
+        <span class="ctl-label">إنهاء</span>
+      </div>
+    </div>
+
+    <div class="chat" id="chat" aria-live="polite"></div>
+
+    <form class="typebar" id="typebar" hidden>
+      <input id="typeInput" type="text" placeholder="أو اكتبي سؤالكِ هنا…" autocomplete="off" maxlength="400">
+      <button type="submit" id="typeSend" aria-label="إرسال" disabled>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+      </button>
+    </form>
+
+    <div class="foot">
+      <button class="link" id="changeLesson">اختيار درسٍ آخر</button>
+    </div>
+  </section>
+
+  <p class="foot">مساعدة آليّة بالذكاء الاصطناعي من منصّة شوجب — قد تخطئ، فراجعي المعلومة.<br>
+    لأسئلة الشراء والتفعيل: واتساب شوجب.</p>
+</main>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ═══════════ الإعداد ═══════════ */
+  var CONFIG = {
+    TOKEN_URL: 'https://shoogp.app.n8n.cloud/webhook/teacher-live',
+    TOKEN_RELAY: 'https://deft-quokka-075818.netlify.app/n8n/teacher-live',  // احتياطٌ للشبكاتِ التي تحجبُ n8n.cloud
+    /* الرمزُ المؤقّتُ يعملُ مع النقطةِ «المقيَّدة» Constrained؛ والنسخةُ الثانيةُ احتياطٌ إن رُفضت الأولى */
+    WS_URLS: [
+      'wss://generativelanguage.googleapis.com/ws/google.ai.generativelanguage.v1beta.GenerativeService.BidiGenerateContentConstrained',
+      'wss://generativelanguage.googleapis.com/ws/google.ai.generativelanguage.v1alpha.GenerativeService.BidiGenerateContentConstrained'
+    ],
+    IN_RATE: 16000,         // ما يستقبلُه جيميناي لايف
+    OUT_RATE: 24000,        // ما يُرسلُه
+    CHUNK_MS: 80,           // طولُ قطعةِ الميكروفونِ المرسَلة
+    KICKOFF: 'بدأت الجلسة'  // تعليماتُ المساعدةِ تجعلُها ترحّبُ عندَ هذه العبارة
+  };
+  var GATE_KEY = 'shoogp.assistant.teacher';
+  var DEVICE_KEY = 'shoogp.assistant.device';
+  var GRADE_KEY = 'shoogp.assistant.grade';
+
+  /* ═══════════ أدوات صغيرة ═══════════ */
+  var $ = function (id) { return document.getElementById(id); };
+  var AR = '٠١٢٣٤٥٦٧٨٩';
+  var arNum = function (n) { return String(n).replace(/[0-9]/g, function (d) { return AR[d]; }); };
+  var store = {
+    get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+    set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  };
+  function deviceId() {
+    var d = store.get(DEVICE_KEY);
+    if (!d) {
+      var a = new Uint8Array(9); (window.crypto || window.msCrypto).getRandomValues(a);
+      d = Array.prototype.map.call(a, function (x) { return ('0' + x.toString(16)).slice(-2); }).join('');
+      store.set(DEVICE_KEY, d);
+    }
+    return d;
+  }
+  var GRADE_AR = { '1': 'الأول', '2': 'الثاني', '3': 'الثالث', '4': 'الرابع' };
+
+  /* ═══════════ ① الإقرار ═══════════ */
+  function showGate() {
+    $('gate').hidden = false; $('picker').hidden = true; $('session').hidden = true;
+    $('gateCheck').onchange = function () { $('gateBtn').disabled = !this.checked; };
+    $('gateBtn').onclick = function () {
+      store.set(GATE_KEY, '1');
+      $('gate').hidden = true; showPicker();
+    };
+  }
+
+  /* ═══════════ ② اختيار الدرس ═══════════ */
+  var books = {};
+  function showPicker() {
+    $('picker').hidden = false; $('session').hidden = true;
+    var grades = document.querySelectorAll('.grade');
+    Array.prototype.forEach.call(grades, function (b) {
+      b.onclick = function () { pickGrade(b.getAttribute('data-g')); };
+    });
+    var g = store.get(GRADE_KEY);
+    if (g && GRADE_AR[g]) pickGrade(g);
+  }
+  function pickGrade(g) {
+    store.set(GRADE_KEY, g);
+    Array.prototype.forEach.call(document.querySelectorAll('.grade'), function (b) {
+      b.setAttribute('aria-pressed', b.getAttribute('data-g') === g ? 'true' : 'false');
+    });
+    var list = $('lessonList');
+    var key = 'g' + g + '-sci';
+    if (books[key]) { renderLessons(books[key]); return; }
+    list.innerHTML = '<p class="loading">يجري تحميل الدروس…</p>';
+    fetch('data/assistant/' + key + '.json', { cache: 'no-cache' })
+      .then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
+      .then(function (d) { books[key] = d; renderLessons(d); })
+      .catch(function () { list.innerHTML = '<p class="loading">تعذّر تحميل الدروس. تحقّقي من الاتصال ثمّ أعيدي المحاولة.</p>'; });
+  }
+  function renderLessons(book) {
+    var list = $('lessonList'); list.innerHTML = '';
+    var units = {};
+    Object.keys(book.lessons).forEach(function (id) {
+      var l = book.lessons[id]; l.id = id;
+      (units[l.unitNo] = units[l.unitNo] || { name: l.unit, items: [] }).items.push(l);
+    });
+    Object.keys(units).sort(function (a, b) { return a - b; }).forEach(function (no) {
+      var u = units[no];
+      var wrap = document.createElement('div'); wrap.className = 'unit';
+      var h = document.createElement('p'); h.className = 'unit-head';
+      h.textContent = 'الوحدة ' + arNum(no) + ': ' + u.name; wrap.appendChild(h);
+      var box = document.createElement('div'); box.className = 'lessons';
+      u.items.sort(function (a, b) { return a.lessonNo - b.lessonNo; }).forEach(function (l) {
+        var b = document.createElement('button'); b.className = 'lesson'; b.type = 'button';
+        b.innerHTML = '<span class="n"></span><span class="t"></span><span class="go" aria-hidden="true">‹</span>';
+        b.querySelector('.n').textContent = arNum(l.lessonNo);
+        b.querySelector('.t').textContent = l.title;
+        b.onclick = function () { openSession(book, l); };
+        box.appendChild(b);
+      });
+      wrap.appendChild(box); list.appendChild(wrap);
+    });
+  }
+
+  /* ═══════════ ③ الجلسة ═══════════ */
+  var S = null;   // حالةُ الجلسةِ الجارية
+
+  function openSession(book, lesson) {
+    $('picker').hidden = true; $('session').hidden = false;
+    var g = lesson.id.charAt(1);
+    $('sTitle').textContent = lesson.title;
+    $('sMeta').textContent = 'العلوم — الصف ' + GRADE_AR[g] + ' · الوحدة ' + arNum(lesson.unitNo) + ': ' + lesson.unit;
+    $('chat').innerHTML = '<p class="chat-empty">سيظهر الحديث مكتوباً هنا.</p>';
+    $('timer').textContent = '';
+    $('startWrap').hidden = false; $('controls').hidden = true; $('typebar').hidden = true;
+    $('startBtn').disabled = false;
+    setOrb('idle'); setStatus('', 'جاهزة حين تكونين جاهزة.');
+    $('startBtn').onclick = function () { start(lesson); };
+    $('changeLesson').onclick = function () { stop(''); showPicker(); };
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function setOrb(state) { $('orb').className = 'orb ' + state; }
+  function setStatus(cls, text) { $('status').className = 'status ' + (cls || ''); $('statusText').textContent = text; }
+
+  /* — طلبُ الرمز من n8n — */
+  function requestToken(lessonId) {
+    var body = new URLSearchParams({ lesson: lessonId, device: deviceId() });
+    var go = function (url) { return fetch(url, { method: 'POST', body: body }); };
+    return go(CONFIG.TOKEN_URL)
+      .catch(function () { return go(CONFIG.TOKEN_RELAY); })   // الطلبُ لم يخرج أصلاً (شبكةٌ حاجبة)
+      .then(function (r) {
+        return r.json().catch(function () { return {}; }).then(function (j) {
+          if (!r.ok || !j.ok || !j.token) {
+            var e = new Error(j.message || 'تعذّر بدء الجلسة الآن. حاولي بعد قليل.'); e.code = j.error || r.status; throw e;
+          }
+          return j;
+        });
+      });
+  }
+
+  async function start(lesson) {
+    if (S) return;
+    $('startBtn').disabled = true;
+    setOrb('connecting'); setStatus('', 'يجري تجهيز المساعدة…');
+
+    S = { lesson: lesson, ws: null, ctx: null, stream: null, worklet: null, muted: false, ended: false,
+          sources: [], nextTime: 0, outLevel: 0, inLevel: 0, me: null, ai: null, timerId: null, raf: null, ready: false };
+
+    try {
+      /* الصوتُ يُفتَحُ داخلَ لمسةِ الزرّ — شرطُ سفاري والآيباد */
+      var AC = window.AudioContext || window.webkitAudioContext;
+      S.ctx = new AC();
+      if (S.ctx.state === 'suspended') await S.ctx.resume();
+      S.stream = await navigator.mediaDevices.getUserMedia({
+        audio: { channelCount: 1, echoCancellation: true, noiseSuppression: true, autoGainControl: true }
+      });
+    } catch (e) {
+      fail('لم يُسمح بالميكروفون. اسمحي للمتصفّح باستعماله ثمّ أعيدي المحاولة.');
+      return;
+    }
+
+    var info;
+    try { info = await requestToken(lesson.id); }
+    catch (e) { fail(e.message); return; }
+    if (!S || S.ended) return;
+    S.maxMinutes = info.maxMinutes || 10;
+    S.model = info.model;
+
+    try { await setupAudio(); }
+    catch (e) { fail('تعذّر تشغيل الصوت في هذا المتصفّح. جرّبي Chrome أو Safari حديثاً.'); return; }
+
+    connect(info.token, 0);
+  }
+
+  /* — الاتصالُ بجيميناي لايف — */
+  function connect(token, urlIndex) {
+    var url = CONFIG.WS_URLS[urlIndex] + '?access_token=' + encodeURIComponent(token);
+    var ws = new WebSocket(url);
+    ws.binaryType = 'arraybuffer';
+    S.ws = ws;
+    var opened = false;
+    ws.onopen = function () {
+      opened = true;
+      /* الإعدادُ الحقيقيُّ مقفلٌ داخلَ الرمز؛ يكفي هنا اسمُ النموذج */
+      ws.send(JSON.stringify({ setup: { model: S.model } }));
+    };
+    ws.onmessage = function (ev) {
+      var txt = typeof ev.data === 'string' ? ev.data : new TextDecoder().decode(ev.data);
+      var msg; try { msg = JSON.parse(txt); } catch (e) { return; }
+      onServer(msg);
+    };
+    ws.onerror = function () {};
+    ws.onclose = function (ev) {
+      if (!S || S.ended) return;
+      if (!S.ready && urlIndex + 1 < CONFIG.WS_URLS.length) { connect(token, urlIndex + 1); return; }
+      var why = closeReason(ev, opened);
+      stop(why, true);
+    };
+  }
+  function closeReason(ev, opened) {
+    var r = (ev && ev.reason) || '';
+    if (/quota|exhaust|billing|RESOURCE_EXHAUSTED/i.test(r)) return 'المساعدة متوقّفة مؤقّتاً. حاولي لاحقاً.';
+    if (/expire/i.test(r)) return 'انتهت مدّة الجلسة.';
+    if (!opened) return 'تعذّر الاتصال بالمساعدة. تحقّقي من الإنترنت ثمّ أعيدي المحاولة.';
+    return 'انقطع الاتصال بالمساعدة.';
+  }
+
+  function onServer(msg) {
+    if (msg.setupComplete) {
+      S.ready = true;
+      $('startWrap').hidden = true; $('controls').hidden = false; $('typebar').hidden = false;
+      $('chat').innerHTML = '';
+      setOrb('listening'); setStatus('listening', 'أستمع إليكِ…');
+      startTimer();
+      sendText(CONFIG.KICKOFF, true);
+      return;
+    }
+    if (msg.goAway) { setStatus('', 'ستنتهي الجلسة بعد لحظات.'); }
+    var sc = msg.serverContent;
+    if (!sc) return;
+
+    if (sc.interrupted) { flushPlayback(); }
+
+    if (sc.inputTranscription && sc.inputTranscription.text) {
+      closeBubble('ai');            // قاطعت المعلّمةُ الردّ أو بدأت دوراً جديداً
+      appendTo('me', sc.inputTranscription.text);
+    }
+    if (sc.outputTranscription && sc.outputTranscription.text) {
+      closeBubble('me');
+      appendTo('ai', sc.outputTranscription.text);
+    }
+    if (sc.modelTurn && sc.modelTurn.parts) {
+      sc.modelTurn.parts.forEach(function (p) {
+        if (p.inlineData && p.inlineData.data && /audio/.test(p.inlineData.mimeType || 'audio')) playPcm(p.inlineData.data);
+      });
+    }
+    if (sc.turnComplete || sc.generationComplete) {
+      closeBubble('ai');
+    }
+  }
+
+  /* — التفريغُ النصّيّ: فقاعةٌ لكلِّ دورٍ تتراكمُ فيها الأجزاء — */
+  function appendTo(who, text) {
+    var key = who === 'me' ? 'me' : 'ai';
+    if (!S[key]) {
+      var el = document.createElement('div');
+      el.className = 'msg ' + key + ' pending';
+      el.innerHTML = '<span class="who"></span><span class="tx"></span>';
+      el.querySelector('.who').textContent = key === 'me' ? 'أنتِ' : 'مساعدة شوجب';
+      $('chat').appendChild(el);
+      S[key] = { el: el, tx: el.querySelector('.tx'), pending: true };
+    }
+    S[key].tx.textContent += text;
+    var c = $('chat'); c.scrollTop = c.scrollHeight;
+  }
+  function closeBubble(key) {
+    if (S && S[key]) { S[key].el.classList.remove('pending'); S[key].tx.textContent = S[key].tx.textContent.trim(); S[key] = null; }
+  }
+
+  function sendText(text, hidden) {
+    if (!S || !S.ws || S.ws.readyState !== 1) return;
+    if (!hidden) { closeBubble('me'); appendTo('me', text); closeBubble('me'); flushPlayback(); }
+    S.ws.send(JSON.stringify({ clientContent: { turns: [{ role: 'user', parts: [{ text: text }] }], turnComplete: true } }));
+  }
+
+  /* ═══════════ الصوت ═══════════ */
+  /* معالجٌ يعملُ في خيطِ الصوت: يحوّلُ الميكروفونَ من معدّلِ الجهازِ إلى 16kHz و Int16 */
+  /* التحويلُ بمتوسّطِ كلِّ نافذة (يصلحُ لأيِّ نسبةٍ: 48000 أو 44100 → 16000) — مرشّحٌ بسيطٌ يكفي الكلام */
+  var WORKLET = [
+    'class Pcm16 extends AudioWorkletProcessor {',
+    '  constructor(o){ super(); var p=(o&&o.processorOptions)||{}; var out=p.outRate||16000;',
+    '    this.ratio=sampleRate/out; this.next=this.ratio; this.pos=0; this.acc=0; this.cnt=0;',
+    '    this.chunk=Math.round(out*(p.chunkMs||80)/1000); this.buf=new Int16Array(this.chunk); this.n=0; this.sum=0; }',
+    '  process(inputs){ var ch=inputs[0]&&inputs[0][0]; if(!ch) return true;',
+    '    for(var i=0;i<ch.length;i++){ this.acc+=ch[i]; this.cnt++; this.pos+=1;',
+    '      if(this.pos>=this.next){ this.next+=this.ratio; var s=this.acc/this.cnt; this.acc=0; this.cnt=0;',
+    '        if(s>1)s=1; else if(s<-1)s=-1; this.sum+=s*s; this.buf[this.n++]=s<0?s*32768:s*32767;',
+    '        if(this.n===this.chunk){ this.port.postMessage({pcm:this.buf.buffer, rms:Math.sqrt(this.sum/this.chunk)}, [this.buf.buffer]);',
+    '          this.buf=new Int16Array(this.chunk); this.n=0; this.sum=0; } } }',
+    '    if(this.pos>1e6){ this.pos-=1e6; this.next-=1e6; }',
+    '    return true; }',
+    '}',
+    "registerProcessor('pcm16', Pcm16);"
+  ].join('\n');
+
+  async function setupAudio() {
+    var ctx = S.ctx;
+    var url = URL.createObjectURL(new Blob([WORKLET], { type: 'application/javascript' }));
+    await ctx.audioWorklet.addModule(url);
+    var src = ctx.createMediaStreamSource(S.stream);
+    var node = new AudioWorkletNode(ctx, 'pcm16', { processorOptions: { outRate: CONFIG.IN_RATE, chunkMs: CONFIG.CHUNK_MS } });
+    var sink = ctx.createGain(); sink.gain.value = 0;      // المعالجُ يحتاجُ مخرجاً موصولاً ليعمل، بلا صوت
+    src.connect(node); node.connect(sink); sink.connect(ctx.destination);
+    node.port.onmessage = function (e) {
+      if (!S || !S.ready || S.muted || !S.ws || S.ws.readyState !== 1) { if (S) S.inLevel = 0; return; }
+      S.inLevel = e.data.rms;
+      S.ws.send(JSON.stringify({ realtimeInput: { audio: { data: b64(e.data.pcm), mimeType: 'audio/pcm;rate=' + CONFIG.IN_RATE } } }));
+    };
+    S.worklet = node; S.src = src;
+
+    /* مخرجُ الردّ ومقياسُ مستواه لحركةِ القمر */
+    S.out = ctx.createGain(); S.out.gain.value = 1;
+    S.analyser = ctx.createAnalyser(); S.analyser.fftSize = 512;
+    S.out.connect(S.analyser); S.analyser.connect(ctx.destination);
+    S.levelBuf = new Float32Array(S.analyser.fftSize);
+    animate();
+  }
+
+  function b64(buf) {
+    var bytes = new Uint8Array(buf), s = '', step = 0x8000;
+    for (var i = 0; i < bytes.length; i += step) s += String.fromCharCode.apply(null, bytes.subarray(i, i + step));
+    return btoa(s);
+  }
+
+  function playPcm(data) {
+    var bin = atob(data), n = bin.length >> 1;
+    var f32 = new Float32Array(n);
+    for (var i = 0; i < n; i++) {
+      var v = bin.charCodeAt(2 * i) | (bin.charCodeAt(2 * i + 1) << 8);
+      if (v >= 0x8000) v -= 0x10000;
+      f32[i] = v / 32768;
+    }
+    var ctx = S.ctx;
+    var buf = ctx.createBuffer(1, n, CONFIG.OUT_RATE);
+    buf.getChannelData(0).set(f32);
+    var src = ctx.createBufferSource(); src.buffer = buf; src.connect(S.out);
+    var t = Math.max(ctx.currentTime + 0.05, S.nextTime);
+    src.start(t); S.nextTime = t + buf.duration;
+    S.sources.push(src);
+    src.onended = function () { var k = S && S.sources.indexOf(src); if (k > -1) S.sources.splice(k, 1); };
+  }
+  function flushPlayback() {
+    if (!S) return;
+    S.sources.forEach(function (s) { try { s.stop(); } catch (e) {} });
+    S.sources = []; S.nextTime = 0;
+  }
+  function speaking() { return S && S.ctx && S.nextTime > S.ctx.currentTime + 0.02; }
+
+  /* حركةُ القمر: تنبضُ الحلقةُ بمستوى صوتِ المتكلّم */
+  function animate() {
+    if (!S || S.ended) return;
+    var orb = $('orb'), lvl = 0;
+    if (S.ready) {
+      if (speaking()) {
+        S.analyser.getFloatTimeDomainData(S.levelBuf);
+        var sum = 0; for (var i = 0; i < S.levelBuf.length; i++) sum += S.levelBuf[i] * S.levelBuf[i];
+        lvl = Math.sqrt(sum / S.levelBuf.length) * 3.2;
+        if (orb.className !== 'orb speaking') { setOrb('speaking'); setStatus('speaking', 'تتحدّث مساعدة شوجب…'); }
+      } else {
+        lvl = S.muted ? 0 : S.inLevel * 4;
+        var want = S.muted ? 'orb idle' : 'orb listening';
+        if (orb.className !== want) {
+          setOrb(S.muted ? 'idle' : 'listening');
+          setStatus(S.muted ? '' : 'listening', S.muted ? 'الميكروفون مكتوم. اضغطي الزرّ لتتحدّثي.' : 'أستمع إليكِ…');
+        }
+      }
+    }
+    orb.style.setProperty('--lvl', (1 + Math.min(lvl, 0.35)).toFixed(3));
+    S.raf = requestAnimationFrame(animate);
+  }
+
+  /* ═══════════ المؤقّت والتحكّم ═══════════ */
+  function startTimer() {
+    var end = Date.now() + S.maxMinutes * 60000;
+    var tick = function () {
+      if (!S || S.ended) return;
+      var left = Math.max(0, end - Date.now());
+      var m = Math.floor(left / 60000), s = Math.floor((left % 60000) / 1000);
+      $('timer').textContent = arNum(m) + ':' + arNum(('0' + s).slice(-2));
+      $('timer').classList.toggle('warn', left < 60000);
+      if (left <= 0) { stop('انتهت مدّة الجلسة (' + arNum(S.maxMinutes) + ' دقائق). يمكنكِ بدء جلسة جديدة.'); return; }
+      S.timerId = setTimeout(tick, 500);
+    };
+    tick();
+  }
+
+  $('micBtn').onclick = function () {
+    if (!S) return;
+    S.muted = !S.muted;
+    S.stream && S.stream.getAudioTracks().forEach(function (t) { t.enabled = !S.muted; });
+    this.setAttribute('aria-pressed', S.muted ? 'false' : 'true');
+    this.setAttribute('aria-label', S.muted ? 'تشغيل الميكروفون' : 'كتم الميكروفون');
+    this.querySelector('.slash').style.display = S.muted ? '' : 'none';
+    $('micLabel').textContent = S.muted ? 'الميكروفون مكتوم' : 'الميكروفون يعمل';
+    /* إشعارُ جيميناي بانقطاعِ الصوت حتى لا ينتظرَ بقيّةَ الجملة */
+    if (S.muted && S.ws && S.ws.readyState === 1) S.ws.send(JSON.stringify({ realtimeInput: { audioStreamEnd: true } }));
+  };
+  $('endBtn').onclick = function () { stop('انتهت الجلسة. يمكنكِ بدء جلسة جديدة متى شئتِ.'); };
+
+  $('typeInput').oninput = function () { $('typeSend').disabled = !this.value.trim(); };
+  $('typebar').onsubmit = function (e) {
+    e.preventDefault();
+    var v = $('typeInput').value.trim(); if (!v) return;
+    sendText(v, false); $('typeInput').value = ''; $('typeSend').disabled = true;
+  };
+
+  function fail(text) { stop(text, true); }
+
+  function stop(text, isError) {
+    if (!S) return;
+    var s = S; s.ended = true; S = null;
+    try { s.ws && s.ws.readyState <= 1 && s.ws.close(1000); } catch (e) {}
+    try { s.stream && s.stream.getTracks().forEach(function (t) { t.stop(); }); } catch (e) {}
+    try { s.worklet && s.worklet.disconnect(); s.src && s.src.disconnect(); } catch (e) {}
+    try { s.sources.forEach(function (x) { x.stop(); }); } catch (e) {}
+    try { s.ctx && s.ctx.close(); } catch (e) {}
+    clearTimeout(s.timerId); cancelAnimationFrame(s.raf);
+    ['me', 'ai'].forEach(function (k) { if (s[k]) s[k].el.classList.remove('pending'); });
+    $('controls').hidden = true; $('typebar').hidden = true;
+    $('startWrap').hidden = false; $('startBtn').disabled = false;
+    $('micBtn').setAttribute('aria-pressed', 'true'); $('micBtn').querySelector('.slash').style.display = 'none';
+    $('micLabel').textContent = 'الميكروفون يعمل';
+    $('timer').textContent = ''; $('orb').style.setProperty('--lvl', 1);
+    setOrb('idle');
+    if (text) setStatus(isError ? 'error' : '', text);
+    $('startBtn').onclick = function () { start(s.lesson); };
+  }
+  window.addEventListener('pagehide', function () { stop(''); });
+
+  /* ═══════════ البدء ═══════════ */
+  if (!window.WebSocket || !navigator.mediaDevices || !window.AudioWorkletNode) {
+    $('gate').hidden = false;
+    $('gate').innerHTML = '<h2>المتصفّح لا يدعم المحادثة الصوتية</h2><p class="note">افتحي الصفحة في Chrome أو Safari أو Edge حديث.</p>';
+    return;
+  }
+  if (store.get(GATE_KEY) === '1') showPicker(); else showGate();
+})();
+</script>
+</body>
+</html>

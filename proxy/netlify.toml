@@ -24,6 +24,12 @@
   force = true
 
 [[redirects]]
+  from = "/n8n/teacher-live"
+  to = "https://shoogp.app.n8n.cloud/webhook/teacher-live"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/n8n/shoogp-dash-7c1e"
   to = "https://shoogp.app.n8n.cloud/webhook/shoogp-dash-7c1e"
   status = 200
