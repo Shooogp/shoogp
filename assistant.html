@@ -34,6 +34,9 @@
   بصيغةِ المذكّرِ يختارُهما n8n («بناء تعليمات المساعد» — ‏VOICES)، وأثرُ «الآلة» الخفيفُ يُضافُ هنا
   في المتصفّح (‏`machineFx` ومقاديرُه في `MACHINE`).
 
+  خيارُ المالك (‏`OWNER_KEY`): لا يظهرُ إلا في وضعِ المطوّر (‏`shoogp-dev`)، فيُرسَلُ ‏addr=m فيناديه المساعدُ
+  باسمِه بلا لقبٍ ويخاطبُه بالمذكّر — والمعلّماتُ لا يرينه.
+
   اسمُ المعلّمة (اختياريّ، ‏`NAME_KEY`): يُحفَظُ في متصفّحِها وحدَه ويُرسَلُ مع طلبِ الرمز،
   فتناديها المساعدةُ «الأستاذة …». ‏`cleanName` هنا وفي «تحقق من الطلب» بـn8n نسختانِ
   من قاعدةٍ واحدة: حروفٌ ومسافاتٌ فقط (لا رموزَ تُدسُّ بها أوامرُ للمساعدة)، ثلاثُ كلماتٍ
@@ -151,6 +154,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
 .namefield input:focus{outline:none}
 .namefield input::placeholder{color:#5D6880}
 .namebox .hint{margin:4px 0 0;font-size:14px;color:var(--muted);line-height:1.6}
+.ownerrow{margin:10px 0 0;padding:10px 14px;font-size:15px;line-height:1.6;border-style:dashed;border-color:var(--stone)}
 /* ── صوت المحادثة: امرأة أو رجل ── */
 .voicebox{margin:0 0 18px}
 .vlabel{display:block;font-size:16px;font-weight:700;margin:0 0 6px}
@@ -295,6 +299,11 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
         <input id="nameInput" type="text" placeholder="اكتبي اسمكِ" maxlength="24" autocomplete="given-name" enterkeyhint="done">
       </div>
       <p class="hint">يُحفظ في هذا المتصفّح فقط.</p>
+      <!-- خيارُ المالك: لا يظهرُ إلا في وضعِ المطوّر (‏shoogp-dev في هذا المتصفّح) -->
+      <label class="check ownerrow" id="ownerRow" hidden>
+        <input type="checkbox" id="ownerCheck">
+        <span>خيار المالك: نادِني باسمي بلا لقب، وخاطبني بصيغة المذكّر.</span>
+      </label>
     </div>
     <div class="voicebox">
       <span class="vlabel" id="voiceLabel">صوت المحادثة</span>
@@ -392,6 +401,8 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
   var GRADE_KEY = 'shoogp.assistant.grade';
   var NAME_KEY = 'shoogp.assistant.name';
   var VOICE_KEY = 'shoogp.assistant.voice';
+  var OWNER_KEY = 'shoogp.assistant.owner';   // خيارُ المالك: اسمُه بلا لقبٍ وخطابٌ بالمذكّر
+  var isDev = false;                            // وضعُ المطوّرِ في الموقعِ نفسِه (‏js/unlock.js ‏DEV_KEY)
   var voicePref = 'f';   // f امرأة (مساعدة شوجب) · m رجل (مساعد شوجب) — يُقرأُ من المتصفّحِ بعدَ تعريفِ store
   /* ما يتغيّرُ بجنسِ الصوت: اسمُ المساعدِ في المحادثةِ وصيغةُ حديثِه عن نفسِه */
   function V(f, m) { return voicePref === 'm' ? m : f; }
@@ -415,6 +426,11 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
   }
   var GRADE_AR = { '1': 'الأول', '2': 'الثاني', '3': 'الثالث', '4': 'الرابع' };
   voicePref = store.get(VOICE_KEY) === 'm' ? 'm' : 'f';
+  isDev = store.get('shoogp-dev') === '1';
+  function ownerOn() { return isDev && $('ownerCheck').checked; }
+  function nameQText() {
+    return ownerOn() ? V('كيف تناديك المساعدة؟', 'كيف يناديك المساعد؟') : V('كيف تناديكِ المساعدة؟', 'كيف يناديكِ المساعد؟');
+  }
 
   /* اسمُ المعلّمة — نسخةُ «تحقق من الطلب» في n8n نفسُها (الحَكَمُ هناك، وهذه للعرض) */
   function cleanName(v) {
@@ -676,8 +692,23 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
     var vopts = document.querySelectorAll('.vopt');
     var markVoice = function () {
       Array.prototype.forEach.call(vopts, function (b) { b.setAttribute('aria-checked', b.getAttribute('data-v') === voicePref ? 'true' : 'false'); });
-      $('nameQ').textContent = V('كيف تناديكِ المساعدة؟', 'كيف يناديكِ المساعد؟');
+      $('nameQ').textContent = nameQText();
     };
+    if (isDev) {
+      var oc = $('ownerCheck');
+      $('ownerRow').hidden = false;
+      oc.checked = store.get(OWNER_KEY) === '1';
+      var markOwner = function () {
+        document.querySelector('.namefield .prefix').hidden = oc.checked;     // بلا «الأستاذة»
+        $('nameQ').textContent = nameQText();
+      };
+      oc.onchange = function () {
+        store.set(OWNER_KEY, oc.checked ? '1' : '0');
+        if (oc.checked && !cleanName(ni.value)) { ni.value = 'إبراهيم'; store.set(NAME_KEY, ni.value); }
+        markOwner();
+      };
+      markOwner();
+    }
     Array.prototype.forEach.call(vopts, function (b) {
       b.onclick = function () { voicePref = b.getAttribute('data-v') === 'm' ? 'm' : 'f'; store.set(VOICE_KEY, voicePref); markVoice(); };
     });
@@ -755,6 +786,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
     var nm = cleanName($('nameInput').value);
     if (nm) p.name = nm;
     p.voice = voicePref;
+    if (ownerOn()) p.addr = 'm';
     var body = new URLSearchParams(p);
     var go = function (url) { return fetch(url, { method: 'POST', body: body }); };
     return go(CONFIG.TOKEN_URL)
@@ -774,7 +806,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
     $('startBtn').disabled = true;
     setOrb('connecting'); setStatus('', V('يجري تجهيز المساعدة…', 'يجري تجهيز المساعد…'));
 
-    S = { lesson: lesson, male: voicePref === 'm', ws: null, ctx: null, stream: null, worklet: null, muted: false, ended: false,
+    S = { lesson: lesson, male: voicePref === 'm', owner: ownerOn(), ws: null, ctx: null, stream: null, worklet: null, muted: false, ended: false,
           sources: [], nextTime: 0, outLevel: 0, inLevel: 0, me: null, ai: null, timerId: null, raf: null, ready: false };
 
     try {
@@ -877,7 +909,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
       var el = document.createElement('div');
       el.className = 'msg ' + key + ' pending';
       el.innerHTML = '<span class="who"></span><span class="tx"></span>';
-      el.querySelector('.who').textContent = key === 'me' ? 'أنتِ' : (S && S.male ? 'مساعد شوجب' : 'مساعدة شوجب');
+      el.querySelector('.who').textContent = key === 'me' ? (S && S.owner ? 'أنت' : 'أنتِ') : (S && S.male ? 'مساعد شوجب' : 'مساعدة شوجب');
       $('chat').appendChild(el);
       S[key] = { el: el, tx: el.querySelector('.tx'), pending: true };
     }
