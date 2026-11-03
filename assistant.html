@@ -1216,9 +1216,10 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
     }
   }
 
-  /* ═══════════ أوامرُ الفتح — لجلسةِ المالكِ وحدَها (طلبُه ٢٠٢٦-١١-٠٣) ═══════════
-     يقولُ إبراهيم «افتح لوحة المالك» أو «افتح درس الهيكل العظمي للصف الرابع» فيستدعي جيميناي أداةً،
-     وتعريفُ الأدواتِ في n8n داخلَ الرمزِ المقفل («بناء تعليمات المساعد» ‏TOOLS) — فجلسةُ المعلّمةِ لا تُعطاها أصلاً.
+  /* ═══════════ أوامرُ الفتح — للمالكِ ثمّ للمعلّمةِ أيضاً (طلبُ المالك ٢٠٢٦-١١-٠٣) ═══════════
+     يُقالُ «افتح لوحة المالك» أو «افتحي درس الهيكل العظمي للصف الرابع» أو «أين أجدُ درساً عن المغناطيس؟» فيستدعي
+     جيميناي أداةً، وتعريفُ الأدواتِ في n8n داخلَ الرمزِ المقفل (عقدةُ «أدوات الفتح»): للمالكِ الصفحاتُ الثلاثُ مع لوحتِه،
+     وللمعلّمةِ الدروسُ والكتبُ والرئيسيّةُ وصفحةُ الشراء — ولوحةُ المالكِ مرفوضةٌ هنا أيضاً لغيرِ المالك (حارسٌ ثانٍ).
      والتنفيذُ هنا: تبحثُ الصفحةُ في فهرسِ الموقعِ نفسِه (‏data/index.json — كلُّ الكتبِ والدروس)، فلا تُكتَبُ
      قائمةُ الدروسِ في التعليمات، ثمّ تفتحُ الرابطَ المباشرَ (‏index.html?book=…&lesson=… — ‏openFromUrl في js/app.js)
      في تبويبٍ مسمّى يُعادُ استعمالُه فلا تتكاثرُ التبويبات.
@@ -1298,7 +1299,13 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
           if (x.l.open) s += 0.05;
           return { x: x, s: s };
         }).filter(function (o) { return o.s >= 1; }).sort(function (p, r) { return r.s - p.s; });
-        if (!scored.length) return { status: 'not_found', note: 'لم أجد درساً بهذا الاسم.' };
+        if (!scored.length) {
+          /* لا عنوانَ يطابقُ الكلماتِ حرفياً (جمعٌ تكسيرٌ أو مرادف: «السلسلة» و«السلاسل»): إن ضاقَ البحثُ إلى كتابٍ
+             أو كتابَين تُرَدُّ عناوينُ دروسِهما فيختارُ النموذجُ الأقربَ بفهمِه ثمّ يستدعي الأداةَ بعنوانِه — بلا قائمةٍ في التعليمات */
+          var keys = all.map(function (x) { return x.key; }).filter(function (k, i, arr) { return arr.indexOf(k) === i; });
+          if (keys.length <= 2) return { status: 'not_found', note: 'لا عنوانَ يطابق هذه الكلمات حرفياً. هذه عناوين دروس الكتاب: إن كان أحدها هو المقصود بالمعنى فاستدعِ الأداة بعنوانه، وإلا فقل إنّه ليس في الكتاب.', titles: all.map(function (x) { return x.book + ' · الوحدة ' + arNum(x.ui) + ': ' + x.l.title; }) };
+          return { status: 'not_found', note: 'لم أجد درساً بهذا الاسم. إن عُرفت المادّة والصفّ فاستدعِ الأداة بهما لتصلك عناوين دروس ذلك الكتاب.' };
+        }
         if (scored[1] && scored[0].s - scored[1].s < 0.5) {
           return { status: 'ambiguous', note: 'أكثر من درس يطابق، فاسأله أيّها يريد.', candidates: scored.slice(0, 5).map(function (o) { return lessonLabel(o.x); }) };
         }
@@ -1324,7 +1331,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
     try { w = window.open(url, OPEN_WIN); } catch (e) {}
     if (w) { hideOpenBar(); return { status: 'opened', opened: r.label }; }
     showOpenBar(url, r.label);
-    return { status: 'needs_click', ready: r.label, note: 'المتصفّح منع الفتح التلقائيّ، فظهر في صفحة المساعد زرّ «افتح» يضغطه ليفتحها.' };
+    return { status: 'needs_click', ready: r.label, note: 'المتصفّح منع الفتح التلقائيّ، فظهر أسفل صفحة المساعد زرّ «افتح» يُضغَط لفتحها.' };
   }
   function showOpenBar(url, label) {
     var a = $('openLink');
@@ -1338,7 +1345,8 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
     var calls = (tc && tc.functionCalls) || [];
     Promise.all(calls.map(function (fc) {
       var a = fc.args || {}, job;
-      if (!S || !S.owner) job = Promise.resolve({ status: 'error', note: 'الأوامر لجلسة المالك وحدها.' });
+      if (!S) job = Promise.resolve({ status: 'error', note: 'لا جلسة.' });
+      else if (fc.name === 'open_page' && a.page === 'dashboard' && !S.owner) job = Promise.resolve({ status: 'error', note: 'لوحة المالك للمالك وحده.' });
       else if (fc.name === 'open_page') job = Promise.resolve(PAGES[a.page] ? { url: PAGES[a.page][0], label: PAGES[a.page][1] } : { status: 'not_found', note: 'صفحة غير معروفة.' });
       else if (fc.name === 'open_book') job = findBook(a);
       else if (fc.name === 'open_lesson') job = findLesson(a);
@@ -1568,17 +1576,27 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
     tick();
   }
 
-  $('micBtn').onclick = function () {
+  function setMuted(on) {
     if (!S) return;
-    S.muted = !S.muted;
+    S.muted = !!on;
     S.stream && S.stream.getAudioTracks().forEach(function (t) { t.enabled = !S.muted; });
-    this.setAttribute('aria-pressed', S.muted ? 'false' : 'true');
-    this.setAttribute('aria-label', S.muted ? 'تشغيل الميكروفون' : 'كتم الميكروفون');
-    this.querySelector('.slash').style.display = S.muted ? '' : 'none';
+    var b = $('micBtn');
+    b.setAttribute('aria-pressed', S.muted ? 'false' : 'true');
+    b.setAttribute('aria-label', S.muted ? 'تشغيل الميكروفون' : 'كتم الميكروفون');
+    b.querySelector('.slash').style.display = S.muted ? '' : 'none';
     $('micLabel').textContent = S.muted ? 'الميكروفون مكتوم' : 'الميكروفون يعمل';
     /* إشعارُ جيميناي بانقطاعِ الصوت حتى لا ينتظرَ بقيّةَ الجملة */
     if (S.muted && S.ws && S.ws.readyState === 1) S.ws.send(JSON.stringify({ realtimeInput: { audioStreamEnd: true } }));
-  };
+  }
+  $('micBtn').onclick = function () { if (S) { S.autoMuted = false; setMuted(!S.muted); } };
+  /* كتمٌ تلقائيٌّ في جلسةِ المعلّمةِ حينَ تُخفى صفحةُ المساعد (طلبُ المالك ٢٠٢٦-١١-٠٣ بفتحِ الدروسِ للمعلّمة):
+     الدرسُ يُفتَحُ في تبويبٍ آخرَ وقد يُعرَضُ على السبورةِ أمامَ التلاميذ، والمساعدةُ للمعلّماتِ وحدَهنّ — فلا تسمعُ الصفَّ
+     ما دامت صفحتُها مخفيّة، ويعودُ الميكروفونُ حينَ ترجعُ المعلّمةُ إليها (إلا إن كتمَته هي بيدِها). وجلسةُ المالكِ مستثناة. */
+  document.addEventListener('visibilitychange', function () {
+    if (!S || S.owner) return;
+    if (document.hidden) { if (!S.muted) { S.autoMuted = true; setMuted(true); } }
+    else if (S.autoMuted) { S.autoMuted = false; setMuted(false); }
+  });
   $('endBtn').onclick = function () { stop('انتهت الجلسة. يمكنكِ بدء جلسة جديدة متى شئتِ.'); };
 
   /* المحادثةُ المكتوبة: مخفيّةٌ افتراضاً، ويُحفَظُ اختيارُ المعلّمةِ في متصفّحِها */
