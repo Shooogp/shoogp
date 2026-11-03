@@ -904,6 +904,13 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
       /* اللوحةُ الرماديّةُ خلفَ الإطار — حوافُّها تحتَ الصفائحِ المعتمة */
       var ip = 70 * s;
       o += '<rect x="' + n2(ox + ip) + '" y="' + n2(oy + ip) + '" width="' + n2(W - 2 * ip) + '" height="' + n2(H - 2 * ip) + '" fill="url(#hudFill)" fill-opacity=".94"/>';
+      /* لوحةُ الدوائرِ الخافتةُ فوقَ الرماديّ (تجربةٌ بطلبِ المالك ٢٠٢٦-١١-٠٣) — بلاطةٌ متّصلةُ الحوافِّ تتكرّرُ مهما طالت المحادثة */
+      if (CIRCUIT.on) {
+        var ts = w < 520 ? CIRCUIT.small : 1, tw = n2(CIRCUIT.w * ts), th = n2(CIRCUIT.h * ts);
+        o += '<defs><pattern id="hudCirc" patternUnits="userSpaceOnUse" x="' + n2(ox + ip) + '" y="' + n2(oy + ip) + '" width="' + tw + '" height="' + th + '">'
+          + '<image href="' + CIRCUIT.src + '" width="' + tw + '" height="' + th + '"/></pattern></defs>'
+          + '<rect x="' + n2(ox + ip) + '" y="' + n2(oy + ip) + '" width="' + n2(W - 2 * ip) + '" height="' + n2(H - 2 * ip) + '" fill="url(#hudCirc)" opacity="' + CIRCUIT.opacity + '"/>';
+      }
       o += frame(F.src, false);
       /* ومضاتُ النيون (طلبُ المالك ٢٠٢٦-١١-٠٣): الخطوطُ السماويّةُ ثمّ البرتقاليّةُ تتوهّجُ ببطءٍ وتخبو، متباعدةً ومتناوبة (‏.hud-glow) */
       /* الطورُ من ساعةِ الصفحةِ لا من لحظةِ الرسم: الإطارُ يُعادُ رسمُه كلّما تغيّرَ مقاسُ البطاقة، فلو بدأت الحركةُ من جديدٍ
@@ -914,6 +921,9 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
       svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
       svg.innerHTML = o;
     }
+    /* خلفيّةُ «لوحة الدوائر» داخلَ الإطار (تجربةٌ بطلبِ المالك ٢٠٢٦-١١-٠٣ بصورةٍ مرجعيّة): رسمٌ أصليٌّ بالأسلوبِ نفسِه لا الصورةُ نفسُها،
+       يولّدُه tools/make-circuit-bg.py. ‏opacity: الخفوت (كلُّ الشدّةِ هنا) · small: مقاسُ البلاطةِ على الشاشاتِ الضيّقة · on:false يُطفئُها */
+    var CIRCUIT = { on: true, src: 'images/ui/assistant-circuit.svg', w: 480, h: 720, small: .8, opacity: .12 };
     var GLOW_T = 12, GLOW_AT = { c: 2, o: 8 };                     // يطابقانِ hudGlow في CSS: ١٢ ثانيةً، والبرتقاليُّ بعدَ السماويِّ بستّ
     if (HUD_IMG.on) host.classList.add('hud-img');
     function draw() {
