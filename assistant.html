@@ -540,8 +540,19 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
       return { pts: pts, edges: edges, P: new Float32Array(N * 3), tw: tw };
     })();
     /* تجربة (طلبُ المالك ٢٠٢٦-١١-٠٣): نقاطُ الشبكةِ تومضُ بوهجٍ ذهبيٍّ — كشراراتِ الخارج — وهي تتكلّم.
-       on: إطفاؤها بـfalse · speed: سرعةُ الوميض · sharp: قِصَرُ الومضة (أكبرُ = ومضاتٌ أقصرُ وأندر) · min/gain: شدّتُها بلا صوتٍ ومع ارتفاعِه */
-    var NET_GOLD = { on: true, speed: 6, sharp: 4, min: .35, gain: .9 };
+       on: إطفاؤها بـfalse · speed: سرعةُ تكرارِ الومضات · rise: زمنُ اشتعالِها (جزءٌ من الدورة) · fade: زمنُ تلاشيها (أكبرُ = ذيلٌ أطول)
+       · min/gain: شدّتُها بلا صوتٍ ومع ارتفاعِه · size: نصفُ قطرِ الوهجِ بأضعافِ النقطة */
+    var NET_GOLD = { on: true, speed: 3.5, rise: .06, fade: .18, min: .4, gain: .9, size: 9 };
+    /* ومضةُ ضوء: اشتعالٌ سريعٌ ثمّ تلاشٍ أُسّيٌّ بطيء — كما تخبو الشرارة — لا نبضٌ متماثلُ الصعودِ والهبوط */
+    function flash(t) {
+      var s = (t % TAU) / TAU;                                        // موضعُ النقطةِ في دورتِها (٠–١)
+      if (s < NET_GOLD.rise) { var a = s / NET_GOLD.rise; return a * a * (3 - 2 * a); }
+      return Math.exp(-(s - NET_GOLD.rise) / NET_GOLD.fade);
+    }
+    /* منحنى تلاشي الومضة: [الموضع، اللون، الشدّة] — لبٌّ مشبعٌ عريضٌ ثمّ ذوبانٌ ناعمٌ إلى الصفر بلا حافّة.
+       (اللبُّ عريضٌ عمداً: الذهبيُّ نصفُ الشفّافِ فوقَ الأزرقِ يصيرُ رماديّاً، فالوهجُ يبقى مشبعاً حتى يذوب — مقيس) */
+    var GLOW = [[0, '255,250,225', 1], [.1, '255,230,150', .97], [.22, '255,204,92', .86], [.34, '255,182,60', .62],
+      [.46, '255,164,44', .36], [.6, '255,150,34', .15], [.76, '255,142,30', .045], [.9, '255,140,30', .01], [1, '255,140,30', 0]];
     var goldOn = 0;                                                    // يصعدُ ويهبطُ بنعومةٍ مع حالةِ الكلام
     function projectNet(c, rot, Rs) {
       var cy = Math.cos(rot), sy = Math.sin(rot), ct = Math.cos(.45), st = Math.sin(.45), P = NET.P;
@@ -566,26 +577,22 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
         var f = (z + 1) / 2, r = (.6 + f * 1.1) * (1 + .5 * L), x = P[i * 3], y = P[i * 3 + 1];
         var ga = 0;                                                    // شدّةُ الوميضِ الذهبيِّ لهذه النقطة (٠–١)
         if (goldOn > .01) {
-          var fl = reduce ? .5 : Math.pow(Math.max(0, Math.sin(ph * NET_GOLD.speed + NET.tw[i])), NET_GOLD.sharp);
+          var fl = reduce ? .5 : flash(ph * NET_GOLD.speed + NET.tw[i]);
           ga = Math.min(1, goldOn * fl * Math.min(1, NET_GOLD.min + NET_GOLD.gain * L));
         }
-        var blue = 1 - .9 * ga;                                        // الذهبُ يحلُّ محلَّ الأزرقِ لا يُضافُ إليه (وإلا ابيضّ)
+        var blue = 1 - ga;                                             // الذهبُ يحلُّ محلَّ الأزرقِ لا يُضافُ إليه (وإلا ابيضّ)
         g.fillStyle = 'rgba(143,228,255,' + ((.1 + .16 * f) * am * blue).toFixed(3) + ')';
         g.beginPath(); g.arc(x, y, r * 3, 0, TAU); g.fill();
         g.fillStyle = 'rgba(201,241,255,' + ((.25 + .75 * f) * am * blue).toFixed(3) + ')';
         g.beginPath(); g.arc(x, y, r, 0, TAU); g.fill();
         if (ga > .02) {
-          var gv = ga * (.55 + .45 * f) * Math.min(1, am / .6);
+          /* ومضةُ ضوءٍ لا دائرة (طلبُ المالك ٢٠٢٦-١١-٠٣): تدرّجٌ واحدٌ يتلاشى كمنحنى جرس — لبٌّ أبيضُ ذهبيٌّ حارّ
+             يذوبُ في الذهبيِّ ثمّ الكهرمانيّ حتى الصفر — فلا حافّةَ حادّةَ في أيِّ موضع. ‏NET_GOLD.size: نصفُ قطرِها بأضعافِ النقطة */
+          var gv = Math.min(1, ga * (.55 + .45 * f) * Math.min(1, am / .6)), R6 = r * NET_GOLD.size;
           g.globalCompositeOperation = 'source-over';                                    // فوقَ الكرةِ لا مضافاً إليها: يبقى ذهبيّاً مشبعاً
-          var hg = g.createRadialGradient(x, y, 0, x, y, r * 6);                         // هالةٌ ذهبيّةٌ تتلاشى
-          hg.addColorStop(0, 'rgba(255,184,60,' + (gv * .6).toFixed(3) + ')');
-          hg.addColorStop(.35, 'rgba(255,160,40,' + (gv * .22).toFixed(3) + ')');
-          hg.addColorStop(1, 'rgba(255,140,30,0)');
-          g.fillStyle = hg; g.beginPath(); g.arc(x, y, r * 6, 0, TAU); g.fill();
-          g.fillStyle = 'rgba(255,190,70,' + Math.min(1, gv).toFixed(3) + ')';
-          g.beginPath(); g.arc(x, y, r * 1.6, 0, TAU); g.fill();
-          g.fillStyle = 'rgba(255,236,170,' + Math.min(1, gv).toFixed(3) + ')';
-          g.beginPath(); g.arc(x, y, r * .7, 0, TAU); g.fill();
+          var hg = g.createRadialGradient(x, y, 0, x, y, R6);
+          for (var gs = 0; gs < GLOW.length; gs++) hg.addColorStop(GLOW[gs][0], 'rgba(' + GLOW[gs][1] + ',' + (gv * GLOW[gs][2]).toFixed(3) + ')');
+          g.fillStyle = hg; g.beginPath(); g.arc(x, y, R6, 0, TAU); g.fill();
           g.globalCompositeOperation = 'lighter';
         }
       }
