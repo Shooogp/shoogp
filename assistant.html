@@ -256,6 +256,8 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
 .card.hud{--hs:1;background:transparent;border:0;border-radius:0;position:relative;
   padding:calc(var(--hs) * 30px + 14px)}
 .card.hud > .hudsvg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:visible}
+/* إطارُ الصورة (‏HUD_IMG): الحشوةُ تُحسَبُ من نافذةِ الإطارِ المقيسة بمقاسِه الجاري */
+.card.hud.hud-img{padding:var(--pt,40px) var(--px,38px) var(--pb,44px)}
 .card.hud > :not(.hudsvg){position:relative;z-index:1}
 .hud-lines{filter:drop-shadow(0 0 4px rgba(79,209,218,.6))}
 .hud-run{stroke-dasharray:70 930;animation:hudrun 9s linear infinite;filter:drop-shadow(0 0 5px #7FEAF0)}
@@ -783,10 +785,65 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
       return [[d, d], [w - d - C, d], [w - d, d + C], [w - d, y1], [w - d + t, y1 + t], [w - d + t, y2 - t], [w - d, y2],
               [w - d, h - d], [d + C, h - d], [d, h - d - C], [d, y4], [d - t, y4 - t], [d - t, y3 + t], [d, y3]];
     }
+    /* ── إطارُ الصورة (طلبُ المالك ٢٠٢٦-١١-٠٣): فريمٌ معدنيٌّ مولَّدٌ بجيميناي بإشراطاتٍ سماويّةٍ وخطٍّ برتقاليّ ──
+       يُقطَّعُ من صورةٍ واحدةٍ بقطعٍ تُرسَمُ بـ<svg viewBox> متداخلة: الزوايا الأربعُ والزخرفتانِ الوسطيّتانِ في كلِّ ضلعٍ
+       بمقاسِها الثابت (لا تُمطّ)، وشريحةٌ رفيعةٌ متجانسةٌ من كلِّ ضلعٍ تُمَدُّ لتملأَ ما بينها — فيطولُ الإطارُ مع المحادثةِ
+       ولا تتشوّهُ زخارفُه. كلُّ الأرقامِ بوحداتِ الأصلِ (٨٩٦×١٢٠٠ كما خرجَ من جيميناي) مهما كانَ مقاسُ الملفِّ المنشور.
+       on:false يُعيدُ الإطارَ المرسومَ القديمَ كما كان. */
+    var HUD_IMG = {
+      on: true, src: 'images/ui/assistant-frame-a.webp', W: 896, H: 1200,
+      m: [22, 36],                  // الهامشُ الشفّافُ حولَ الإطار (يُخرَجُ خارجَ البطاقة)
+      c: [215, 225],                // الزاويةُ: عرضٌ × ارتفاع
+      win: [151, 169, 171, 189, 202], // النافذة: الجانبُ · الأعلى · الجانبُ عندَ الزخرفة · الأعلى عندَ الزخرفة · الأسفلُ من الحافّةِ عندَ الزخرفة
+      tFill: [222, 242], bFill: [235, 260], hOrn: [296, 600],   // شريحتا الأعلى والأسفل (x) وزخرفتُهما الوسطى
+      sFill: [285, 320], vOrn: [372, 828],                       // شريحةُ الجانبَين (y) وزخرفتُهما الوسطى
+      scale: function (w) { return w < 520 ? .22 : .3; }        // مقاسُ الرسمِ: بكسل CSS لكلِّ وحدةٍ من الأصل
+    };
+    function drawImg(w, h) {
+      var F = HUD_IMG, s = F.scale(w), n2 = function (v) { return Math.round(v * 100) / 100; };
+      var ox = -F.m[0] * s, oy = -F.m[1] * s, W = w + 2 * F.m[0] * s, H = h + 2 * F.m[1] * s;   // الإطارُ كلُّه بإحداثيّاتِ البطاقة
+      var cw = F.c[0] * s, ch = F.c[1] * s;
+      host.style.setProperty('--px', n2((F.win[2] - F.m[0]) * s + 4) + 'px');
+      host.style.setProperty('--pt', n2((F.win[3] - F.m[1]) * s + 6) + 'px');
+      host.style.setProperty('--pb', n2((F.win[4] - F.m[1]) * s + 6) + 'px');
+      function pc(sx, sy, sw, sh, dx, dy, dw, dh) {    // قطعةٌ من الصورة: المصدرُ بوحداتِ الأصل والوجهةُ ببكسلات CSS
+        return '<svg x="' + n2(dx) + '" y="' + n2(dy) + '" width="' + n2(dw) + '" height="' + n2(dh) + '" viewBox="' + sx + ' ' + sy + ' ' + sw + ' ' + sh
+          + '" preserveAspectRatio="none" overflow="hidden"><image href="' + F.src + '" width="' + F.W + '" height="' + F.H + '" preserveAspectRatio="none"/></svg>';
+      }
+      var o = '<defs><linearGradient id="hudFill" x1="0" y1="0" x2="0" y2="1">'
+        + '<stop offset="0" stop-color="#353A42"/><stop offset="1" stop-color="' + DK + '"/></linearGradient></defs>';
+      /* اللوحةُ الرماديّةُ خلفَ الإطار — حوافُّها تحتَ الصفائحِ المعتمة */
+      var ip = 70 * s;
+      o += '<rect x="' + n2(ox + ip) + '" y="' + n2(oy + ip) + '" width="' + n2(W - 2 * ip) + '" height="' + n2(H - 2 * ip) + '" fill="url(#hudFill)" fill-opacity=".94"/>';
+      var bh = F.H - F.c[1], rw = F.W - F.c[0];                   // بدايةُ الزاويتَين السفليّتَين واليمنيَين في الأصل
+      var ex = W - 2 * cw, ey = H - 2 * ch, ov = 1;               // طولُ ما بينَ الزاويتَين · وتداخلٌ بكسلٌ واحدٌ يمنعُ الشقوق
+      /* ① الشرائحُ الممدودة */
+      o += pc(F.tFill[0], 0, F.tFill[1] - F.tFill[0], F.c[1], ox + cw - ov, oy, ex + 2 * ov, ch);
+      o += pc(F.bFill[0], bh, F.bFill[1] - F.bFill[0], F.c[1], ox + cw - ov, oy + H - ch, ex + 2 * ov, ch);
+      o += pc(0, F.sFill[0], F.c[0], F.sFill[1] - F.sFill[0], ox, oy + ch - ov, cw, ey + 2 * ov);
+      o += pc(rw, F.sFill[0], F.c[0], F.sFill[1] - F.sFill[0], ox + W - cw, oy + ch - ov, cw, ey + 2 * ov);
+      /* ② الزخارفُ الوسطى بمقاسِها — تُحذَفُ إن ضاقَ الضلعُ عنها */
+      var hw = (F.hOrn[1] - F.hOrn[0]) * s, vh = (F.vOrn[1] - F.vOrn[0]) * s;
+      if (hw < ex - 8) {
+        o += pc(F.hOrn[0], 0, F.hOrn[1] - F.hOrn[0], F.c[1], ox + (W - hw) / 2, oy, hw, ch);
+        o += pc(F.hOrn[0], bh, F.hOrn[1] - F.hOrn[0], F.c[1], ox + (W - hw) / 2, oy + H - ch, hw, ch);
+      }
+      if (vh < ey - 8) {
+        o += pc(0, F.vOrn[0], F.c[0], F.vOrn[1] - F.vOrn[0], ox, oy + (H - vh) / 2, cw, vh);
+        o += pc(rw, F.vOrn[0], F.c[0], F.vOrn[1] - F.vOrn[0], ox + W - cw, oy + (H - vh) / 2, cw, vh);
+      }
+      /* ③ الزوايا فوقَ الكلّ */
+      o += pc(0, 0, F.c[0], F.c[1], ox, oy, cw, ch) + pc(rw, 0, F.c[0], F.c[1], ox + W - cw, oy, cw, ch)
+        + pc(0, bh, F.c[0], F.c[1], ox, oy + H - ch, cw, ch) + pc(rw, bh, F.c[0], F.c[1], ox + W - cw, oy + H - ch, cw, ch);
+      svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+      svg.innerHTML = o;
+    }
+    if (HUD_IMG.on) host.classList.add('hud-img');
     function draw() {
       var w = host.clientWidth, h = host.clientHeight;
       if (!w || !h || (w === lastW && h === lastH)) return;
       lastW = w; lastH = h;
+      if (HUD_IMG.on) return drawImg(w, h);
       var s = w < 520 ? .72 : 1, d = 16 * s, d2 = d + 6 * s, ip = 30 * s, r = 14 * s, C = 28 * s, t = 6 * s;
       host.style.setProperty('--hs', s);
       var y1 = h * .26, y2 = y1 + Math.min(140 * s, h * .16), y3 = h * .68, y4 = y3 + Math.min(120 * s, h * .14);
