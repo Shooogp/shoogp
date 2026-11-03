@@ -536,26 +536,18 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
         var dx = pts[a][0] - pts[b][0], dy = pts[a][1] - pts[b][1], dz = pts[a][2] - pts[b][2];
         if (dx * dx + dy * dy + dz * dz <= LIM2) edges.push([a, b, (a + b) % 9 === 0]);   // خيوطٌ برتقاليّةٌ قليلة
       }
-      return { pts: pts, edges: edges, P: new Float32Array(N * 3), D: new Float32Array(N) };   // D: بُعدُ النقطةِ عن المركزِ على الشاشة (٠ المركز · ١ الحافّة)
+      var tw = []; for (var t = 0; t < N; t++) tw.push(Math.random() * TAU);   // طورُ وميضِ كلِّ نقطة
+      return { pts: pts, edges: edges, P: new Float32Array(N * 3), tw: tw };
     })();
     /* تجربة (طلبُ المالك ٢٠٢٦-١١-٠٣): نقاطُ الشبكةِ تومضُ بوهجٍ ذهبيٍّ — كشراراتِ الخارج — وهي تتكلّم.
-       لا عشوائيّاً بل **موجاتٌ تبدأُ من حافّةِ الدائرةِ وتنقبضُ نحوَ المركز**، تخفتُ كلّما تقدّمت حتى تتلاشى عندَه.
-       on: إطفاؤها بـfalse · speed: سرعةُ الموجة (١ ÷ (speed × ٠٫٩) = ثوانٍ من الحافّةِ إلى المركز) · waves: موجاتٌ متتابعةٌ في الدورة
-       · width: سُمكُ مقدّمةِ الموجة · tail: ذيلُ الضوءِ خلفَها (أكبرُ = يخبو أبطأ) · fall: سرعةُ خفوتِها نحوَ المركز (أكبرُ = أسرع)
+       on: إطفاؤها بـfalse · speed: سرعةُ تكرارِ الومضات · rise: زمنُ اشتعالِها (جزءٌ من الدورة) · fade: زمنُ تلاشيها (أكبرُ = ذيلٌ أطول)
        · min/gain: شدّتُها بلا صوتٍ ومع ارتفاعِه · size: نصفُ قطرِ الوهجِ بأضعافِ النقطة */
-    var NET_GOLD = { on: true, speed: .7, waves: 2, width: .09, tail: .16, fall: 1.1, min: .4, gain: .9, size: 9 };
-    /* شدّةُ الموجةِ عندَ نقطةٍ بُعدُها d: الموجةُ w تسيرُ من ١٫١ (خارجَ الحافّةِ قليلاً فلا تظهرُ النقاطُ فجأة) إلى ٠ */
-    function wave(d) {
-      var best = 0, n = NET_GOLD.waves;
-      for (var k = 0; k < n; k++) {
-        var w = 1.1 * (1 - ((ph * NET_GOLD.speed + k / n) % 1));
-        if (w <= .01) continue;
-        var dd = d - w;                                               // موجبٌ: النقطةُ خلفَ المقدّمة (عبرَتها) · سالبٌ: لم تصلْها بعد
-        var b = dd >= 0 ? Math.exp(-dd / NET_GOLD.tail) : Math.exp(-(dd / NET_GOLD.width) * (dd / NET_GOLD.width));
-        b *= Math.pow(Math.min(1, w), NET_GOLD.fall);                 // تخفتُ وهي تقتربُ من المركزِ حتى الصفر
-        if (b > best) best = b;
-      }
-      return best;
+    var NET_GOLD = { on: true, speed: 3.5, rise: .06, fade: .18, min: .4, gain: .9, size: 9 };
+    /* ومضةُ ضوء: اشتعالٌ سريعٌ ثمّ تلاشٍ أُسّيٌّ بطيء — كما تخبو الشرارة — لا نبضٌ متماثلُ الصعودِ والهبوط */
+    function flash(t) {
+      var s = (t % TAU) / TAU;                                        // موضعُ النقطةِ في دورتِها (٠–١)
+      if (s < NET_GOLD.rise) { var a = s / NET_GOLD.rise; return a * a * (3 - 2 * a); }
+      return Math.exp(-(s - NET_GOLD.rise) / NET_GOLD.fade);
     }
     /* منحنى تلاشي الومضة: [الموضع، اللون، الشدّة] — لبٌّ مشبعٌ عريضٌ ثمّ ذوبانٌ ناعمٌ إلى الصفر بلا حافّة.
        (اللبُّ عريضٌ عمداً: الذهبيُّ نصفُ الشفّافِ فوقَ الأزرقِ يصيرُ رماديّاً، فالوهجُ يبقى مشبعاً حتى يذوب — مقيس) */
@@ -568,7 +560,6 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
         var p = NET.pts[i], x = p[0] * cy + p[2] * sy, z = -p[0] * sy + p[2] * cy, y = p[1];
         var y2 = y * ct - z * st, z2 = y * st + z * ct;            // ميلٌ يُظهرُ القطبَ قليلاً
         P[i * 3] = c + x * Rs; P[i * 3 + 1] = c + y2 * Rs; P[i * 3 + 2] = z2;
-        NET.D[i] = Math.sqrt(x * x + y2 * y2);
       }
     }
     function drawNet(front, am) {
@@ -586,7 +577,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
         var f = (z + 1) / 2, r = (.6 + f * 1.1) * (1 + .5 * L), x = P[i * 3], y = P[i * 3 + 1];
         var ga = 0;                                                    // شدّةُ الوميضِ الذهبيِّ لهذه النقطة (٠–١)
         if (goldOn > .01) {
-          var fl = reduce ? .45 * NET.D[i] : wave(NET.D[i]);         // مع «تقليل الحركة»: وهجٌ ثابتٌ يخفتُ نحوَ المركز
+          var fl = reduce ? .5 : flash(ph * NET_GOLD.speed + NET.tw[i]);
           ga = Math.min(1, goldOn * fl * Math.min(1, NET_GOLD.min + NET_GOLD.gain * L));
         }
         var blue = 1 - ga;                                             // الذهبُ يحلُّ محلَّ الأزرقِ لا يُضافُ إليه (وإلا ابيضّ)
