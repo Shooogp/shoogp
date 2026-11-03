@@ -4228,6 +4228,34 @@ function renderMaze(q, body, fb){
   token.addEventListener('touchstart',()=>{ startDrag(); },{passive:true});
 }
 
+/* ═══ رابطٌ مباشرٌ إلى كتابٍ أو درس: ‎?book=g4-sci‎ و‎&lesson=g4s-1-2‎ ═══
+   يفتحُه مساعدُ المالكِ الصوتيُّ في assistant.html حينَ يقولُ «افتح درسَ كذا» (طلبُ المالك ٢٠٢٦-١١-٠٣).
+   يمرُّ بالمسارِ نفسِه الذي يمرُّ به النقر: الصفُّ والفصلُ يُضبَطانِ ثمّ openBook ثمّ openLesson،
+   فحارسُ القفلِ (‏guardLesson) يحرسُ الدرسَ المقفلَ كما يحرسُه عندَ النقر، والكتابُ المخفيُّ (‏devOnly)
+   لا يُفتَحُ إلا في وضعِ المطوّر. ومفتاحٌ مجهولٌ يُتجاهَلُ فتبقى الصفحةُ الرئيسيّةُ كما هي. */
+function openFromUrl(){
+  let key, lid;
+  try { const p=new URLSearchParams(location.search); key=p.get('book'); lid=p.get('lesson'); } catch(e){ return; }
+  if(!key) return;
+  const isDev = !!(window.ShoogpLock && ShoogpLock.isDevMode());
+  for(const t in DATA.terms){
+    for(const g in DATA.terms[t]){
+      const bk=DATA.terms[t][g].find(b=>b.key===key);
+      if(!bk) continue;
+      if(bk.devOnly && !isDev) return;
+      currentTerm=t; currentGrade=g;
+      buildTerms(); buildGrades(); buildBooks();
+      openBook(key);
+      if(lid && DATA.index[key]){
+        let ls=null;
+        DATA.index[key].units.forEach(u=>u.lessons.forEach(l=>{ if(l.file===lid) ls=l; }));
+        if(ls && ls.open) openLesson(ls);
+      }
+      return;
+    }
+  }
+}
+
 /* ===== إقلاع ===== */
 // أسئلة الدرس تُبنى عند فتحه (renderQuestions)؛ الصفوف والكتب تنتظر البيانات
 
@@ -4237,6 +4265,7 @@ loadData().then(function(d){
   buildTerms();
   buildGrades();
   buildBooks();
+  openFromUrl();
 }).catch(function(err){
   console.error('فشل تحميل البيانات:', err);
   const books = document.getElementById('books');

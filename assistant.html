@@ -219,6 +219,16 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
 .msg.me{align-self:flex-end;background:#2A2412;border:1px solid #4A3E17;border-start-end-radius:6px}
 .msg .who{display:block;font-size:13px;color:var(--muted);margin-bottom:2px}
 .msg.pending{opacity:.75}
+/* زرُّ «افتح» لأوامرِ المالك حينَ يُحجَبُ الفتحُ التلقائيّ */
+.openbar{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:60;display:flex;align-items:center;gap:6px;
+  max-width:calc(100vw - 32px);padding:8px;background:rgba(24,26,32,.94);border:1px solid rgba(255,150,40,.55);border-radius:18px;
+  box-shadow:0 10px 30px rgba(0,0,0,.5),0 0 18px rgba(255,140,30,.25)}
+.openbar[hidden]{display:none}
+.openbar a{display:block;min-width:0;max-width:72vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:12px 18px;border-radius:12px;
+  background:linear-gradient(180deg,#FFB052,#FF7A12);color:#241203;font-weight:700;font-size:17px;text-decoration:none}
+.openbar a:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.openbar button{flex:none;width:40px;height:40px;border:0;border-radius:12px;background:transparent;color:#cfd3dc;font-size:24px;line-height:1;cursor:pointer}
+.openbar button:hover{background:rgba(255,255,255,.08)}
 .chat-empty{color:var(--muted);text-align:center;font-size:15px;padding:6px}
 
 .typebar{display:flex;gap:8px;margin-top:14px}
@@ -459,6 +469,12 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
   <p class="foot">مساعدة آليّة بالذكاء الاصطناعي من منصّة شوجب — قد تخطئ، فراجعي المعلومة.<br>
     لأسئلة الشراء والتفعيل: واتساب شوجب.</p>
 </main>
+
+<!-- زرُّ الفتحِ لأوامرِ المالك: يظهرُ حينَ يحجبُ المتصفّحُ فتحَ الصفحةِ تلقائياً (‏onToolCall) -->
+<div class="openbar" id="openBar" hidden>
+  <a id="openLink" href="#" target="shoogp-open">افتح</a>
+  <button type="button" id="openClose" aria-label="إغلاق">×</button>
+</div>
 
 <script>
 (function () {
@@ -1100,6 +1116,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
       return;
     }
     $('startBtn').disabled = true;
+    hideOpenBar();
     setOrb('connecting'); setStatus('', V('يجري تجهيز المساعدة…', 'يجري تجهيز المساعد…'));
 
     S = { lesson: lesson, male: voicePref !== 'f', cine: voicePref === 'c', owner: ownerOn(), ws: null, ctx: null, stream: null, worklet: null, muted: false, ended: false,
@@ -1165,6 +1182,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
   }
 
   function onServer(msg) {
+    if (msg.toolCall) { onToolCall(msg.toolCall); return; }
     if (msg.setupComplete) {
       S.ready = true;
       $('startWrap').hidden = true; $('controls').hidden = false; $('typebar').hidden = false;
@@ -1196,6 +1214,143 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
     if (sc.turnComplete || sc.generationComplete) {
       closeBubble('ai');
     }
+  }
+
+  /* ═══════════ أوامرُ الفتح — لجلسةِ المالكِ وحدَها (طلبُه ٢٠٢٦-١١-٠٣) ═══════════
+     يقولُ إبراهيم «افتح لوحة المالك» أو «افتح درس الهيكل العظمي للصف الرابع» فيستدعي جيميناي أداةً،
+     وتعريفُ الأدواتِ في n8n داخلَ الرمزِ المقفل («بناء تعليمات المساعد» ‏TOOLS) — فجلسةُ المعلّمةِ لا تُعطاها أصلاً.
+     والتنفيذُ هنا: تبحثُ الصفحةُ في فهرسِ الموقعِ نفسِه (‏data/index.json — كلُّ الكتبِ والدروس)، فلا تُكتَبُ
+     قائمةُ الدروسِ في التعليمات، ثمّ تفتحُ الرابطَ المباشرَ (‏index.html?book=…&lesson=… — ‏openFromUrl في js/app.js)
+     في تبويبٍ مسمّى يُعادُ استعمالُه فلا تتكاثرُ التبويبات.
+     والمتصفّحُ يحجبُ فتحَ نافذةٍ لم تسبقْها نقرة (وأمرُ الصوتِ ليس نقرة)، فإن حُجِبَت ظهرَ زرُّ «افتح» يضغطُه؛
+     ومن سمحَ بالنوافذِ المنبثقةِ لموقعِ شوجب مرّةً فُتحَت له مباشرةً بعدَها. */
+  var OPEN_WIN = 'shoogp-open';
+  var PAGES = { home: ['index.html', 'الصفحة الرئيسية'], dashboard: ['dashboard.html', 'لوحة المالك'], pay: ['pay.html', 'صفحة الدفع'] };
+  var SUBJ_CODE = { 'العلوم': 'sci', 'الرياضيات': 'math', 'أحب لغتي': 'arabic', 'ديني حياتي': 'dini', 'عالمي الرقمي': 'it', 'الهوية والمواطنة': 'hw', 'اللغة الإنجليزية': 'en' };
+  var SITE_IX = null;   // فهرسُ الموقع: يُجلَبُ مرّةً عندَ أوّلِ أمر
+  function siteIndex() {
+    if (SITE_IX) return Promise.resolve(SITE_IX);
+    return fetch('data/index.json', { cache: 'no-cache' })
+      .then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
+      .then(function (ix) { SITE_IX = ix; return ix; });
+  }
+  /* تطبيعٌ للمطابقة: بلا تشكيلٍ ولا تطويل، والهمزاتُ ألفاً، والتاءُ المربوطةُ هاءً، والأرقامُ الهنديّةُ لاتينيّة */
+  function normAr(s) {
+    return String(s || '').normalize('NFC')
+      .replace(/[ً-ْٰـ]/g, '')
+      .replace(/[أإآٱ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي').replace(/ؤ/g, 'و').replace(/ئ/g, 'ي')
+      .replace(/[٠-٩]/g, function (d) { return String(AR.indexOf(d)); })
+      .toLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
+  }
+  var STOP = { 'درس': 1, 'دروس': 1, 'افتح': 1, 'عن': 1, 'في': 1, 'من': 1, 'الي': 1, 'علي': 1, 'و': 1, 'لي': 1, 'lesson': 1, 'the': 1, 'a': 1 };
+  function toks(s) {
+    return normAr(s).split(' ').filter(Boolean).map(function (w) {
+      if (w.length > 4) w = w.replace(/^(وال|بال|فال|كال|لل)/, 'ال');
+      return w.length > 3 ? w.replace(/^ال/, '') : w;
+    }).filter(function (w) { return w && !STOP[w]; });
+  }
+  function tokScore(q, words) {
+    var best = 0;
+    words.forEach(function (w) {
+      var s = w === q ? 3
+        : (q.length >= 3 && w.length >= 3 && (w.indexOf(q) === 0 || q.indexOf(w) === 0)) ? 2
+        : (q.length >= 4 && w.indexOf(q) > -1) ? 1.5 : 0;
+      if (s > best) best = s;
+    });
+    return best;
+  }
+  /* كلُّ دروسِ الكتبِ المطابقةِ للمادّةِ والصفّ — ورقمُ الدرسِ كما يظهرُ في الفهرس (‏n متتابعٌ في الكتاب كلِّه) */
+  function lessonsOf(ix, a) {
+    var out = [], code = SUBJ_CODE[a.subject] || '', grade = parseInt(a.grade, 10) || 0, part = parseInt(a.part, 10) || 0;
+    Object.keys(ix).forEach(function (key) {
+      var m = key.match(/^g([1-4])-([a-z]+)(?:-([12]))?$/); if (!m) return;
+      if (grade && +m[1] !== grade) return;
+      if (code && m[2] !== code) return;
+      if (part && m[3] && +m[3] !== part) return;
+      var n = 0;
+      ix[key].units.forEach(function (u, ui) {
+        u.lessons.forEach(function (l, li) { n++; out.push({ key: key, book: ix[key].book, unit: u.unit, ui: ui + 1, li: li + 1, n: n, l: l }); });
+      });
+    });
+    return out;
+  }
+  function lessonLabel(x) { return x.l.title + ' — ' + x.book + ' (الوحدة ' + arNum(x.ui) + ')'; }
+  function findLesson(a) {
+    return siteIndex().then(function (ix) {
+      var all = lessonsOf(ix, a);
+      if (!all.length) return { status: 'not_found', note: 'لا يوجد كتاب يطابق المادّة والصف المذكورين.' };
+      var un = parseInt(a.unit_number, 10) || 0, ln = parseInt(a.lesson_number, 10) || 0;
+      var q = toks(a.query || ''), pick = null;
+      if (un) all = all.filter(function (x) { return x.ui === un; });
+      if (!q.length && (un || ln)) {
+        var books = all.map(function (x) { return x.key; }).filter(function (k, i, arr) { return arr.indexOf(k) === i; });
+        if (books.length > 1) return { status: 'ambiguous', note: 'رقم الدرس يطابق أكثر من كتاب (القائمة أدناه)، فاسأله أيّها يريد.', candidates: books.slice(0, 6).map(function (k) { return ix[k].book; }) };
+        pick = all.filter(function (x) { return un ? x.li === (ln || 1) : x.n === ln; })[0];
+        if (!pick) return { status: 'not_found', note: 'لا يوجد درس بهذا الرقم.' };
+      } else if (q.length) {
+        var whole = normAr(a.query);
+        var scored = all.map(function (x) {
+          var tw = toks(x.l.title), uw = toks(x.unit), s = 0;
+          q.forEach(function (t) { var st = tokScore(t, tw); s += st || tokScore(t, uw) * 0.4; });
+          s /= q.length;
+          if (whole.length >= 4 && normAr(x.l.title).indexOf(whole) > -1) s += 2;
+          if (tw.join(' ') === q.join(' ')) s += 1.5;   // العنوانُ نفسُه بلا زيادة («الهياكل العظمية» لا «… والحركة»)
+          if (x.l.open) s += 0.05;
+          return { x: x, s: s };
+        }).filter(function (o) { return o.s >= 1; }).sort(function (p, r) { return r.s - p.s; });
+        if (!scored.length) return { status: 'not_found', note: 'لم أجد درساً بهذا الاسم.' };
+        if (scored[1] && scored[0].s - scored[1].s < 0.5) {
+          return { status: 'ambiguous', note: 'أكثر من درس يطابق، فاسأله أيّها يريد.', candidates: scored.slice(0, 5).map(function (o) { return lessonLabel(o.x); }) };
+        }
+        pick = scored[0].x;
+      } else {
+        return { status: 'need_more', note: 'اسأله عن اسم الدرس أو رقمه.' };
+      }
+      if (!pick.l.open) return { status: 'not_ready', lesson: lessonLabel(pick), note: 'هذا الدرس لم تُؤلَّف أسئلته في المنصّة بعد.' };
+      return { url: 'index.html?book=' + pick.key + '&lesson=' + encodeURIComponent(pick.l.file), label: lessonLabel(pick) };
+    });
+  }
+  function findBook(a) {
+    return siteIndex().then(function (ix) {
+      var code = SUBJ_CODE[a.subject], g = parseInt(a.grade, 10);
+      if (!code || !(g >= 1 && g <= 4)) return { status: 'need_more', note: 'اسأله عن المادّة والصف.' };
+      var key = 'g' + g + '-' + code + ((code === 'arabic' || code === 'dini') ? '-' + (+a.part === 2 ? 2 : 1) : '');
+      if (!ix[key]) return { status: 'not_found', note: 'هذا الكتاب غير موجود في المنصّة.' };
+      return { url: 'index.html?book=' + key, label: ix[key].book };
+    });
+  }
+  function openTarget(r) {
+    var url = new URL(r.url, location.href).href, w = null;
+    try { w = window.open(url, OPEN_WIN); } catch (e) {}
+    if (w) { hideOpenBar(); return { status: 'opened', opened: r.label }; }
+    showOpenBar(url, r.label);
+    return { status: 'needs_click', ready: r.label, note: 'المتصفّح منع الفتح التلقائيّ، فظهر في صفحة المساعد زرّ «افتح» يضغطه ليفتحها.' };
+  }
+  function showOpenBar(url, label) {
+    var a = $('openLink');
+    a.href = url; a.textContent = 'افتح: ' + label; a.title = label;
+    $('openBar').hidden = false;
+  }
+  function hideOpenBar() { $('openBar').hidden = true; }
+  $('openLink').onclick = function () { setTimeout(hideOpenBar, 50); };
+  $('openClose').onclick = hideOpenBar;
+  function onToolCall(tc) {
+    var calls = (tc && tc.functionCalls) || [];
+    Promise.all(calls.map(function (fc) {
+      var a = fc.args || {}, job;
+      if (!S || !S.owner) job = Promise.resolve({ status: 'error', note: 'الأوامر لجلسة المالك وحدها.' });
+      else if (fc.name === 'open_page') job = Promise.resolve(PAGES[a.page] ? { url: PAGES[a.page][0], label: PAGES[a.page][1] } : { status: 'not_found', note: 'صفحة غير معروفة.' });
+      else if (fc.name === 'open_book') job = findBook(a);
+      else if (fc.name === 'open_lesson') job = findLesson(a);
+      else job = Promise.resolve({ status: 'error', note: 'أمر غير معروف.' });
+      return job
+        .then(function (r) { return r.url ? openTarget(r) : r; })
+        .catch(function () { return { status: 'error', note: 'تعذّرت قراءة فهرس الموقع.' }; })
+        .then(function (res) { return { id: fc.id, name: fc.name, response: res }; });
+    })).then(function (responses) {
+      if (!responses.length || !S || !S.ws || S.ws.readyState !== 1) return;
+      S.ws.send(JSON.stringify({ toolResponse: { functionResponses: responses } }));
+    });
   }
 
   /* — التفريغُ النصّيّ: فقاعةٌ لكلِّ دورٍ تتراكمُ فيها الأجزاء — */
