@@ -163,6 +163,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
 .voicebox{margin:0 0 18px}
 .vlabel{display:block;font-size:16px;font-weight:700;margin:0 0 6px}
 .voices{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.vopt-c{grid-column:1 / -1;border-style:dashed;border-color:var(--stone)}
 .vopt{
   min-height:52px;border-radius:14px;border:1px solid var(--line);background:#081230;color:var(--moon);
   font:inherit;font-size:17px;font-weight:700;cursor:pointer;line-height:1.5;padding:6px 8px;
@@ -343,6 +344,8 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
       <div class="voices" role="radiogroup" aria-labelledby="voiceLabel">
         <button type="button" class="vopt" data-v="f" role="radio" aria-checked="true">صوت امرأة<small>دافئ هادئ</small></button>
         <button type="button" class="vopt" data-v="m" role="radio" aria-checked="false">صوت رجل<small>بلمسة آليّة</small></button>
+        <!-- تجريبيٌّ للمالكِ وحدَه (وضعُ المطوّر): راوٍ عميقٌ هادئٌ بأثرٍ سينمائيّ — cinemaFx -->
+        <button type="button" class="vopt vopt-c" data-v="c" role="radio" aria-checked="false" hidden>صوت سينمائي<small>تجريبي · للمالك</small></button>
       </div>
     </div>
     <!-- للمالكِ وحدَه: محادثةٌ مفتوحةٌ في المشروعِ كلِّه بلا درس -->
@@ -449,9 +452,9 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
   var OWNER_KEY = 'shoogp.assistant.owner';   // خيارُ المالك: اسمُه بلا لقبٍ وخطابٌ بالمذكّر ومحادثةُ المشروع
   var DASH_KEY = 'shoogp-dash-key';             // كلمةُ المطوّرِ كما تحفظُها لوحةُ المالك (‏js/unlock.js)
   var isDev = false;                            // وضعُ المطوّرِ في الموقعِ نفسِه (‏js/unlock.js ‏DEV_KEY)
-  var voicePref = 'f';   // f امرأة (مساعدة شوجب) · m رجل (مساعد شوجب) — يُقرأُ من المتصفّحِ بعدَ تعريفِ store
+  var voicePref = 'f';   // f امرأة (مساعدة شوجب) · m رجل (مساعد شوجب) · c سينمائيّ تجريبيّ للمالك — يُقرأُ من المتصفّحِ بعدَ تعريفِ store
   /* ما يتغيّرُ بجنسِ الصوت: اسمُ المساعدِ في المحادثةِ وصيغةُ حديثِه عن نفسِه */
-  function V(f, m) { return voicePref === 'm' ? m : f; }
+  function V(f, m) { return voicePref === 'f' ? f : m; }   // الرجاليُّ والسينمائيُّ كلاهما بصيغةِ المذكّر
 
   /* ═══════════ أدوات صغيرة ═══════════ */
   var $ = function (id) { return document.getElementById(id); };
@@ -471,8 +474,9 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
     return d;
   }
   var GRADE_AR = { '1': 'الأول', '2': 'الثاني', '3': 'الثالث', '4': 'الرابع' };
-  voicePref = store.get(VOICE_KEY) === 'm' ? 'm' : 'f';
+  voicePref = store.get(VOICE_KEY);
   isDev = store.get('shoogp-dev') === '1';
+  if (voicePref !== 'm' && !(voicePref === 'c' && isDev)) voicePref = voicePref === 'c' ? 'm' : 'f';   // السينمائيُّ للمطوّرِ وحدَه
   function ownerOn() { return isDev && $('ownerCheck').checked; }
   /* كلمةُ المطوّرِ لمحادثةِ المشروع — تُطلَبُ كلّما غابت، لا عندَ وضعِ العلامةِ وحدَه:
      لوحةُ المالكِ تمحوها عندَ «خروج» أو كلمةٍ مرفوضة (المفتاحُ مشترك)، فتبقى العلامةُ ويضيعُ المفتاح */
@@ -829,6 +833,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
       $('nameQ').textContent = nameQText();
     };
     if (isDev) {
+      document.querySelector('.vopt-c').hidden = false;
       var oc = $('ownerCheck');
       $('ownerRow').hidden = false;
       oc.checked = store.get(OWNER_KEY) === '1';
@@ -851,7 +856,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
       markOwner();
     }
     Array.prototype.forEach.call(vopts, function (b) {
-      b.onclick = function () { voicePref = b.getAttribute('data-v') === 'm' ? 'm' : 'f'; store.set(VOICE_KEY, voicePref); markVoice(); };
+      b.onclick = function () { var v = b.getAttribute('data-v'); voicePref = (v === 'm' || v === 'c') ? v : 'f'; store.set(VOICE_KEY, voicePref); markVoice(); };
     });
     markVoice();
     var grades = document.querySelectorAll('.grade');
@@ -927,7 +932,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
     var p = { lesson: lessonId, device: deviceId() };
     var nm = cleanName($('nameInput').value);
     if (nm) p.name = nm;
-    p.voice = voicePref;
+    p.voice = voicePref === 'c' ? 'c' + CINEMA.voice : voicePref;   // السينمائيُّ: الحرفُ c ثمّ اسمُ صوتِه
     if (ownerOn()) { p.addr = 'm'; p.okey = store.get(DASH_KEY) || ''; }
     var body = new URLSearchParams(p);
     var go = function (url) { return fetch(url, { method: 'POST', body: body }); };
@@ -954,7 +959,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
     $('startBtn').disabled = true;
     setOrb('connecting'); setStatus('', V('يجري تجهيز المساعدة…', 'يجري تجهيز المساعد…'));
 
-    S = { lesson: lesson, male: voicePref === 'm', owner: ownerOn(), ws: null, ctx: null, stream: null, worklet: null, muted: false, ended: false,
+    S = { lesson: lesson, male: voicePref !== 'f', cine: voicePref === 'c', owner: ownerOn(), ws: null, ctx: null, stream: null, worklet: null, muted: false, ended: false,
           sources: [], nextTime: 0, outLevel: 0, inLevel: 0, me: null, ai: null, timerId: null, raf: null, ready: false };
 
     try {
@@ -1112,7 +1117,8 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
     /* مخرجُ الردّ ومقياسُ مستواه لحركةِ الحلقة — والصوتُ الرجاليُّ يمرُّ بأثرِ «الآلة» قبلَهما */
     S.out = ctx.createGain(); S.out.gain.value = 1;
     S.analyser = ctx.createAnalyser(); S.analyser.fftSize = 512;
-    if (S.male) S.fxOsc = machineFx(ctx, S.out, S.analyser); else S.out.connect(S.analyser);
+    if (S.cine) cinemaFx(ctx, S.out, S.analyser);
+    else if (S.male) S.fxOsc = machineFx(ctx, S.out, S.analyser); else S.out.connect(S.analyser);
     S.analyser.connect(ctx.destination);
     S.levelBuf = new Float32Array(S.analyser.fftSize);
     animate();
@@ -1156,6 +1162,46 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
     return osc;
   }
 
+  /* ═══════════ الصوتُ السينمائيّ — تجريبيٌّ للمالك (طلبُه ٢٠٢٦-١١-٠٣) ═══════════
+     يحاكي صوتَ راوٍ في فيديو أرسلَه المالك: رجلٌ عميقٌ هادئٌ بطيءُ الإيقاعِ واضحُ الحضور، كأنّه في قاعة.
+     جيميناي لايف لا يستنسخُ صوتاً بعينِه، فالأساسُ صوتٌ جاهزٌ منه (‏VOICES.c في n8n، اختيرَ بقياسِ الطبقةِ
+     ومدى التنغيمِ واللمعانِ على عيّناتٍ عربيّة) — وهذه الطبقةُ تُكمِلُه في المتصفّح:
+       ① يُشغَّلُ أبطأَ قليلاً (rate) فتنخفضُ طبقتُه ويتّزنُ إيقاعُه.
+       ② ضاغطٌ ليّنٌ يسوّي الصوتَ كصوتِ راوٍ مسجَّل، ثمّ دفءٌ في الصدر (lowDb) ووضوحٌ في الحضور (presDb).
+       ③ صدى قاعةٍ خفيفٌ واسع (wet · decay) بعدَ تأخيرٍ قصير، مقصوصُ الأطرافِ فلا يُعكّرُ الكلام.
+     والمقاديرُ كلُّها في CINEMA: تصفيرُ wet يُطفئُ الصدى، وrate ‏1 يُعيدُ السرعة.
+     وvoice هو صوتُ جيميناي الأساسُ يُرسَلُ ‏«c»+اسمَه (‏cOrus) فيقبلُه n8n من MALE_TRY — فتبديلُه هنا لا في n8n.
+     اختيرَ Orus بالقياس (٢٠٢٦-١١-٠٣): طبقتُه بعدَ الإبطاءِ ١١٣ هرتز مقابلَ ١٠٦ في الفيديو، ومدى تنغيمِه ٩٫١ مقابلَ ٩٫٣. */
+  var CINEMA = { voice: 'Orus', rate: 0.94, lowHz: 140, lowDb: 3, presHz: 3200, presDb: 3, wet: 0.16, decay: 1.6, predelayMs: 25 };
+  function cinemaFx(ctx, input, output) {
+    var C = CINEMA;
+    var lim = ctx.createDynamicsCompressor();
+    lim.threshold.value = -3; lim.knee.value = 2; lim.ratio.value = 20; lim.attack.value = 0.002; lim.release.value = 0.12;
+    lim.connect(output);
+    var comp = ctx.createDynamicsCompressor();
+    comp.threshold.value = -22; comp.knee.value = 8; comp.ratio.value = 3; comp.attack.value = 0.006; comp.release.value = 0.25;
+    var low = ctx.createBiquadFilter(); low.type = 'lowshelf'; low.frequency.value = C.lowHz; low.gain.value = C.lowDb;
+    var pres = ctx.createBiquadFilter(); pres.type = 'peaking'; pres.frequency.value = C.presHz; pres.Q.value = 0.9; pres.gain.value = C.presDb;
+    input.connect(comp); comp.connect(low); low.connect(pres);
+    var dry = ctx.createGain(); dry.gain.value = 0.9;
+    pres.connect(dry); dry.connect(lim);
+    var pre = ctx.createDelay(0.2); pre.delayTime.value = C.predelayMs / 1000;
+    var hp = ctx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 250;
+    var conv = ctx.createConvolver(); conv.buffer = hallIR(ctx, C.decay);
+    var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 5500;
+    var wet = ctx.createGain(); wet.gain.value = C.wet;
+    pres.connect(pre); pre.connect(hp); hp.connect(conv); conv.connect(lp); lp.connect(wet); wet.connect(lim);
+  }
+  /* استجابةُ قاعةٍ مصنوعة: ضجيجٌ يخفتُ تدريجاً، لكلِّ أذنٍ ضجيجُها فيتّسعُ الصدى — بذرةٌ ثابتةٌ فلا يتغيّرُ بينَ الجلسات */
+  function hallIR(ctx, sec) {
+    var sr = ctx.sampleRate, n = Math.floor(sr * sec), b = ctx.createBuffer(2, n, sr), seed = 7;
+    for (var ch = 0; ch < 2; ch++) {
+      var d = b.getChannelData(ch);
+      for (var i = 0; i < n; i++) { seed = (seed * 16807) % 2147483647; d[i] = (seed / 1073741823.5 - 1) * Math.pow(1 - i / n, 3.2); }
+    }
+    return b;
+  }
+
   function b64(buf) {
     var bytes = new Uint8Array(buf), s = '', step = 0x8000;
     for (var i = 0; i < bytes.length; i += step) s += String.fromCharCode.apply(null, bytes.subarray(i, i + step));
@@ -1174,7 +1220,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
     var buf = ctx.createBuffer(1, n, CONFIG.OUT_RATE);
     buf.getChannelData(0).set(f32);
     var src = ctx.createBufferSource(); src.buffer = buf; src.connect(S.out);
-    var rate = S.male ? MACHINE.rate : 1;            // الصوتُ الرجاليُّ أبطأُ قليلاً: أهدأُ وأعمق
+    var rate = S.cine ? CINEMA.rate : S.male ? MACHINE.rate : 1;   // الرجاليُّ والسينمائيُّ أبطأُ قليلاً: أهدأُ وأعمق
     src.playbackRate.value = rate;
     var t = Math.max(ctx.currentTime + 0.05, S.nextTime);
     src.start(t); S.nextTime = t + buf.duration / rate;
