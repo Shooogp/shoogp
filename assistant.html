@@ -1260,6 +1260,32 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
     });
     return best;
   }
+  /* رقمُ الوحدةِ كما يقولُه المعلّم: إن كانت في عناوينِ وحداتِ الكتابِ ألفاظُ ترتيبٍ («الوحدة الأولى» في ديني حياتي،
+     «المحور الثاني» في أحب لغتي) فالرقمُ منها — فلا تُعَدُّ «التلاوة والحفظ» ولا «درس المراجعة» وحدةً أولى، ويصيرُ
+     «المحور الثاني» ثانياً ولو كانَ وحدَه في الجزء الثاني. وإلا فترتيبُها في الفهرس (العلوم والرياضيات والإنجليزية…) */
+  var ORD = [['اول', 1], ['ثاني', 2], ['ثالث', 3], ['رابع', 4], ['خامس', 5], ['سادس', 6], ['سابع', 7], ['ثامن', 8]];
+  function ordOf(title) {
+    var w = normAr(title).split(' ');
+    for (var i = 0; i < w.length; i++) {
+      var b = w[i].replace(/^ال/, '').replace(/ه$/, '').replace(/ي$/, '');
+      for (var j = 0; j < ORD.length; j++) if (b === ORD[j][0] || b === ORD[j][0].replace(/ي$/, '')) return ORD[j][1];
+    }
+    return 0;
+  }
+  /* وفي «أحب لغتي» يسبقُ «الدرسَ الأول» استماعٌ ومستندٌ بصريّ — فرقمُ الدرسِ من عنوانِه («الدرس الثالث: …») إن بدأ به */
+  function lessonOrd(title) {
+    var t = normAr(String(title).split(':')[0]);
+    return /^الدرس /.test(t) ? ordOf(t) : 0;
+  }
+  function unitNumbers(units) {
+    var ords = units.map(function (u) { return ordOf(u.unit); });
+    var any = ords.some(Boolean);
+    return units.map(function (u, i) { return any ? (ords[i] || 0) : i + 1; });
+  }
+  /* اسمُ الوحدةِ للعرض: العنوانُ وحدَه إن حملَ رقمَه («الوحدة الأولى» · «١أ: العدد…»)، وإلا «الوحدة ٢: النباتات» */
+  function unitName(x) {
+    return (!x.ui || ordOf(x.unit) || /^[0-9٠-٩]/.test(x.unit)) ? x.unit : 'الوحدة ' + arNum(x.ui) + ': ' + x.unit;
+  }
   /* كلُّ دروسِ الكتبِ المطابقةِ للمادّةِ والصفّ — ورقمُ الدرسِ كما يظهرُ في الفهرس (‏n متتابعٌ في الكتاب كلِّه) */
   function lessonsOf(ix, a) {
     var out = [], code = SUBJ_CODE[a.subject] || '', grade = parseInt(a.grade, 10) || 0, part = parseInt(a.part, 10) || 0;
@@ -1268,15 +1294,24 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
       if (grade && +m[1] !== grade) return;
       if (code && m[2] !== code) return;
       if (part && m[3] && +m[3] !== part) return;
-      var n = 0;
+      var n = 0, nums = unitNumbers(ix[key].units);
       ix[key].units.forEach(function (u, ui) {
-        u.lessons.forEach(function (l, li) { n++; out.push({ key: key, book: ix[key].book, unit: u.unit, ui: ui + 1, li: li + 1, n: n, l: l }); });
+        u.lessons.forEach(function (l, li) { n++; out.push({ key: key, book: ix[key].book, unit: u.unit, ui: nums[ui], li: li + 1, n: n, l: l }); });
       });
     });
     return out;
   }
-  function lessonLabel(x) { return x.l.title + ' — ' + x.book + ' (الوحدة ' + arNum(x.ui) + ')'; }
+  function lessonLabel(x) { return x.l.title + ' — ' + x.book + ' (' + unitName(x) + ')'; }
   function findLesson(a) {
+    return resolveLesson(a).then(function (r) {
+      if (!r.pick) return r;
+      var pick = r.pick;
+      if (!pick.l.open) return { status: 'not_ready', lesson: lessonLabel(pick), note: 'هذا الدرس لم تُؤلَّف أسئلته في المنصّة بعد.' };
+      return { url: 'index.html?book=' + pick.key + '&lesson=' + encodeURIComponent(pick.l.file), label: lessonLabel(pick) };
+    });
+  }
+  /* يحدّدُ الدرسَ من كلامِ المتحدّث (اسمُه أو رقمُه) — يعودُ بـ{pick} أو بردٍّ فيه status يُرسَلُ إلى النموذج كما هو */
+  function resolveLesson(a) {
     return siteIndex().then(function (ix) {
       var all = lessonsOf(ix, a);
       if (!all.length) return { status: 'not_found', note: 'لا يوجد كتاب يطابق المادّة والصف المذكورين.' };
@@ -1286,7 +1321,9 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
       if (!q.length && (un || ln)) {
         var books = all.map(function (x) { return x.key; }).filter(function (k, i, arr) { return arr.indexOf(k) === i; });
         if (books.length > 1) return { status: 'ambiguous', note: 'رقم الدرس يطابق أكثر من كتاب (القائمة أدناه)، فاسأله أيّها يريد.', candidates: books.slice(0, 6).map(function (k) { return ix[k].book; }) };
-        pick = all.filter(function (x) { return un ? x.li === (ln || 1) : x.n === ln; })[0];
+        pick = un ? (all.filter(function (x) { return lessonOrd(x.l.title) === (ln || 1); })[0]
+          || all.filter(function (x) { return x.li === (ln || 1); })[0])
+          : all.filter(function (x) { return x.n === ln; })[0];
         if (!pick) return { status: 'not_found', note: 'لا يوجد درس بهذا الرقم.' };
       } else if (q.length) {
         var whole = normAr(a.query);
@@ -1294,7 +1331,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
           var tw = toks(x.l.title), uw = toks(x.unit), s = 0;
           q.forEach(function (t) { var st = tokScore(t, tw); s += st || tokScore(t, uw) * 0.4; });
           s /= q.length;
-          if (whole.length >= 4 && normAr(x.l.title).indexOf(whole) > -1) s += 2;
+          if (whole.length >= 3 && normAr(x.l.title).indexOf(whole) > -1) s += 2;   // ومنه رقمُ نشاطِ الرياضيات «٤-١»
           if (tw.join(' ') === q.join(' ')) s += 1.5;   // العنوانُ نفسُه بلا زيادة («الهياكل العظمية» لا «… والحركة»)
           if (x.l.open) s += 0.05;
           return { x: x, s: s };
@@ -1303,7 +1340,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
           /* لا عنوانَ يطابقُ الكلماتِ حرفياً (جمعٌ تكسيرٌ أو مرادف: «السلسلة» و«السلاسل»): إن ضاقَ البحثُ إلى كتابٍ
              أو كتابَين تُرَدُّ عناوينُ دروسِهما فيختارُ النموذجُ الأقربَ بفهمِه ثمّ يستدعي الأداةَ بعنوانِه — بلا قائمةٍ في التعليمات */
           var keys = all.map(function (x) { return x.key; }).filter(function (k, i, arr) { return arr.indexOf(k) === i; });
-          if (keys.length <= 2) return { status: 'not_found', note: 'لا عنوانَ يطابق هذه الكلمات حرفياً. هذه عناوين دروس الكتاب: إن كان أحدها هو المقصود بالمعنى فاستدعِ الأداة بعنوانه، وإلا فقل إنّه ليس في الكتاب.', titles: all.map(function (x) { return x.book + ' · الوحدة ' + arNum(x.ui) + ': ' + x.l.title; }) };
+          if (keys.length <= 2) return { status: 'not_found', note: 'لا عنوانَ يطابق هذه الكلمات حرفياً. هذه عناوين دروس الكتاب: إن كان أحدها هو المقصود بالمعنى فاستدعِ الأداة بعنوانه، وإلا فقل إنّه ليس في الكتاب.', titles: all.map(function (x) { return x.book + ' · ' + unitName(x) + ' · ' + x.l.title; }) };
           return { status: 'not_found', note: 'لم أجد درساً بهذا الاسم. إن عُرفت المادّة والصفّ فاستدعِ الأداة بهما لتصلك عناوين دروس ذلك الكتاب.' };
         }
         if (scored[1] && scored[0].s - scored[1].s < 0.5) {
@@ -1313,8 +1350,62 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
       } else {
         return { status: 'need_more', note: 'اسأله عن اسم الدرس أو رقمه.' };
       }
-      if (!pick.l.open) return { status: 'not_ready', lesson: lessonLabel(pick), note: 'هذا الدرس لم تُؤلَّف أسئلته في المنصّة بعد.' };
-      return { url: 'index.html?book=' + pick.key + '&lesson=' + encodeURIComponent(pick.l.file), label: lessonLabel(pick) };
+      return { pick: pick };
+    });
+  }
+
+  /* ═══ أداتا البحث في محتوى المنصّة — لمحادثةِ المالك (طلبُ إبراهيم ٢٠٢٦-١١-٠٣: «لا يعرفُ الدروسَ والفهارسَ والأسئلة») ═══
+     ‏get_book_index: فهرسُ كتابٍ من data/index.json نفسِه (الوحداتُ بأرقامِها والدروسُ بعناوينِها، والمؤلَّفُ منها).
+     ‏get_lesson_content: أهدافُ درسٍ وأسئلتُه (النوعُ والمستوى والهدفُ والإجابة) وبنكُ ألعابِه، من ملفِّ الكتابِ في
+     data/assistant/lessons/ (يبنيه tools/build-assistant-data.mjs مع كلِّ نشرة) — يُجلَبُ الملفُّ حينَ يُسأَلُ عنه فقط. */
+  function bookKeys(ix, a) {
+    var code = SUBJ_CODE[a.subject], g = parseInt(a.grade, 10), p = parseInt(a.part, 10);
+    if (!code || !(g >= 1 && g <= 4)) return null;
+    if (code === 'arabic' || code === 'dini') return (p === 1 || p === 2 ? [p] : [1, 2]).map(function (n) { return 'g' + g + '-' + code + '-' + n; }).filter(function (k) { return ix[k]; });
+    return ix['g' + g + '-' + code] ? ['g' + g + '-' + code] : [];
+  }
+  function getBookIndex(a) {
+    return siteIndex().then(function (ix) {
+      var keys = bookKeys(ix, a);
+      if (!keys) return { status: 'need_more', note: 'اسأله عن المادّة والصف.' };
+      if (!keys.length) return { status: 'not_found', note: 'هذا الكتاب غير موجود في المنصّة.' };
+      return { status: 'ok', books: keys.map(function (k) {
+        var nums = unitNumbers(ix[k].units), ready = 0, total = 0;
+        var units = ix[k].units.map(function (u, ui) {
+          return { unit: unitName({ ui: nums[ui], unit: u.unit }), lessons: u.lessons.map(function (l, li) {
+            total++; if (l.open) ready++;
+            return (li + 1) + '. ' + l.title + (l.open ? '' : ' (لم يُؤلَّف بعد)');
+          }) };
+        });
+        return { book: ix[k].book, lessons_total: total, lessons_ready: ready, units: units };
+      }) };
+    });
+  }
+  var LESSON_DATA = {};   // ملفُّ كلِّ كتابٍ يُجلَبُ مرّةً في الجلسة
+  function lessonData(key) {
+    if (!LESSON_DATA[key]) LESSON_DATA[key] = fetch('data/assistant/lessons/' + key + '.json', { cache: 'no-cache' })
+      .then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
+      .catch(function (e) { delete LESSON_DATA[key]; throw e; });
+    return LESSON_DATA[key];
+  }
+  function getLessonContent(a) {
+    return resolveLesson(a).then(function (r) {
+      if (!r.pick) return r;
+      var pick = r.pick;
+      if (!pick.l.open) return { status: 'not_ready', lesson: lessonLabel(pick), note: 'هذا الدرس في فهرس الكتاب لكن أسئلته لم تُؤلَّف في المنصّة بعد.' };
+      return lessonData(pick.key).then(function (d) {
+        var e = d.lessons && d.lessons[pick.l.file];
+        if (!e) return { status: 'not_found', lesson: lessonLabel(pick), note: 'لم أجد بيانات هذا الدرس.' };
+        return {
+          status: 'ok', lesson: lessonLabel(pick), pages: e.pages || undefined,
+          objectives: e.objectives,
+          questions: e.questions.map(function (q, i) {
+            return (i + 1) + '. [' + q.type + ' · ' + q.level + (q.objective ? ' · الهدف ' + q.objective : '') + '] ' + q.text;
+          }),
+          game_bank: e.bank,
+          note: 'كلّ سطر في questions سؤالٌ من أسئلة الدرس التفاعلية: نوعه ومستواه ورقم هدفه من objectives، ثمّ نصّه، وبعد السهم ← إجابته الصحيحة. وgame_bank أسئلة بنك ألعاب الدرس.'
+        };
+      });
     });
   }
   function findBook(a) {
@@ -1350,6 +1441,8 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
       else if (fc.name === 'open_page') job = Promise.resolve(PAGES[a.page] ? { url: PAGES[a.page][0], label: PAGES[a.page][1] } : { status: 'not_found', note: 'صفحة غير معروفة.' });
       else if (fc.name === 'open_book') job = findBook(a);
       else if (fc.name === 'open_lesson') job = findLesson(a);
+      else if (fc.name === 'get_book_index') job = getBookIndex(a);
+      else if (fc.name === 'get_lesson_content') job = getLessonContent(a);
       else job = Promise.resolve({ status: 'error', note: 'أمر غير معروف.' });
       return job
         .then(function (r) { return r.url ? openTarget(r) : r; })

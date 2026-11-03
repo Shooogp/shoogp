@@ -58,6 +58,20 @@ const clean = (s) => String(s ?? '').replace(/\s+/g, ' ').trim();
 const isText = (s) => typeof s === 'string' && s.trim() && !s.includes('<') && !/\.(png|jpe?g|svg|webp|wav|mp3)$/i.test(s);
 const label = (o) => (typeof o === 'string' ? o : (o && (o.label || o.text || o.name)) || '');
 
+/* الأرقامُ الهنديةُ ← عدد (لِحسابِ إجابةِ «المقارنة»، فهي لا تُخزَّنُ في السؤال) */
+const numOf = (s) => Number(String(s).replace(/[٠-٩]/g, (d) => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[^\d.]/g, ''));
+const compareLine = (a, b) => {
+  const x = numOf(a), y = numOf(b);
+  return `${a} ${x > y ? 'أكبر من' : x < y ? 'أصغر من' : 'يساوي'} ${b}`;
+};
+/* «الشمسية والقمرية»: الإجابةُ تُحسَبُ من الحرفِ بعدَ «ال» (لا تُخزَّنُ في السؤال) */
+const SUN = new Set('تثدذرزسشصضطظلن');
+const sunMoon = (words) => {
+  const g = { s: [], m: [] };
+  for (const w of words) { const b = String(w).replace(/[ً-ْـ]/g, ''); (SUN.has(b.replace(/^ال/, '')[0]) ? g.s : g.m).push(w); }
+  return `شمسية: ${g.s.join('، ')} · قمرية: ${g.m.join('، ')}`;
+};
+
 /* سؤالٌ ← سطرُ حقيقة. ما لا يحملُ نصّاً مفهوماً (بازل بلا نصّ) يعودُ بموجِّهِه وحدَه */
 function factOf(q) {
   const P = clean(q.prompt);
@@ -91,6 +105,61 @@ function factOf(q) {
       return `${P} ← ${(q.spots || []).map((s) => clean(s.label)).join('، ')}`;
     case 'slider':
       return `${P} ← نحو ${q.answer}${q.unit ? ' ' + q.unit : ''}`;
+    /* ── أنواعُ الموادِّ الأخرى (لملفّاتِ بحثِ المالك — ‏lessons/) ── */
+    case 'judge-reason':
+      return `${P} ← ${clean(label(q.options?.[q.answer]))}، ${clean(label(q.reasons?.[q.reasonAnswer]))}`;
+    case 'equation-builder': {
+      let i = 0;
+      return `${P} ← ${(q.tokens || []).map((t) => (t === '__' ? q.answers?.[i++] ?? '…' : t)).join(' ')}`;
+    }
+    case 'pattern': {
+      let i = 0;
+      return `${P} ← ${(q.items || []).map((t) => (t === '__' ? q.answers?.[i++] ?? '…' : t)).join('، ')}${q.rule ? ` (${clean(q.rule)})` : ''}`;
+    }
+    case 'tashkeel':
+    case 'arrange':
+      return `${P} ← ${clean(q.word)}`;
+    case 'sentence':
+      return `${P} ← ${clean(q.sentence)}`;
+    case 'sun-moon':
+      return `${P} ← ${sunMoon(q.words || [])}`;
+    case 'letter-picture':
+      return `${P} ← ${(q.pairs || []).map((p) => `${clean(p.letter)} ↔ ${clean(p.word)}`).join(' · ')}`;
+    case 'sound-blend':
+      return `${P} [${(q.letters || []).join(' ')}] ← ${clean(label(q.options?.[q.answer]))}`;
+    case 'trace-letter':
+      return `${P} ← الحرف ${clean(q.letter)}`;
+    case 'compare':
+      return `${P} ← ${(q.pairs || []).map((p) => compareLine(p.a, p.b)).join(' · ')}`;
+    case 'count-tap':
+      return `${P} ← ${q.target ?? q.count ?? ''}`;
+    case 'number-line':
+      return `${P} ← ${q.target ?? ''}`;
+    case 'hundred-chart':
+      return `${P} ← ${(q.missing || q.multiple ? [].concat(q.missing || [], q.multiple ? [`مضاعفات ${q.multiple}`] : []) : []).join('، ')}`;
+    case 'array':
+      return `${P} ← ${q.rows} صفوف × ${q.cols}${q.answerSentence ? ` (${clean(q.answerSentence)})` : ''}`;
+    case 'measure-tool':
+      return `${P} ← ${q.target ?? q.value ?? ''}${q.unit ? ' ' + q.unit : ''}`;
+    case 'clock':
+      return `${P} ← ${clean(q.target)}`;
+    case 'chart-read':
+      return `${P} ← ${clean(q.answer)} [${(q.series || []).map((s) => `${clean(s.label)} ${s.value}`).join('، ')}]`;
+    case 'money':
+      return `${P} ← ${q.target ?? ''} بيسة`;
+    case 'place-value':
+      return `${P} ← ${q.target}`;
+    case 'symmetry':
+      return `${P} ← خطوط التماثل الصحيحة: ${(q.lines || []).filter((l) => l.ok).length}`;
+    case 'listen-locate':
+      return `${P} (سورة ${clean(q.surah)} الآية ${q.ayah})${q.why ? ` ← ${clean(q.why)}` : ''}`;
+    case 'maze':
+      return `${P} ← ${clean(q.targetLabel)}`;
+    case 'hotspot':
+    case 'find-error':
+      return `${P} (الجواب موضعٌ يُنقَرُ في الرسم)`;
+    case 'puzzle':
+      return `${P} (بازل صورة)`;
     default: {
       /* احتياطٌ لأيِّ نوعٍ آخر: الموجِّهُ وما فيه من نصوصٍ قصيرة */
       const bits = [];
@@ -224,3 +293,57 @@ for (const book of BOOKS) {
   console.log(`✓ ${book}: ${Object.keys(lessons).length} درساً — ${(size / 1024).toFixed(1)} ك.ب`);
 }
 console.log(`المجموع: ${total} درساً`);
+
+/* ═══ ملفّاتُ البحثِ لمحادثةِ المالك — data/assistant/lessons/<كتاب>.json (طلبُ إبراهيم ٢٠٢٦-١١-٠٣) ═══
+   لاحظَ أنّ المساعدَ في محادثتِه «لا يعرفُ الدروسَ والفهارسَ والأسئلة»: فملفّاتُ العلومِ أعلاه تُقرَأُ
+   لدرسٍ واحدٍ تختارُه المعلّمة. فهنا ملفٌّ لكلِّ كتابٍ في الموقع (الموادُّ كلُّها) فيه كلُّ درسٍ بأهدافِه
+   وأسئلتِه (النوعُ والمستوى والهدفُ والإجابة) وبنكِ ألعابِه — تجلبُه الصفحةُ (assistant.html) حينَ يسألُ
+   المالكُ عن درسٍ بأداةِ get_lesson_content، فلا يدخلُ تعليماتِ الجلسةِ كلُّه (‏js/questions.js ٢٫٤ ميغابايت). */
+const TYPE_AR = {
+  mcq: 'اختيار من متعدد', 'true-false': 'صح وخطأ', matching: 'التوصيل', classify: 'التصنيف', 'fill-blank': 'ملء الفراغ',
+  sequence: 'الترتيب التسلسلي', exclude: 'الاستبعاد', 'judge-reason': 'الحكم والتعليل', memory: 'بطاقات الذاكرة',
+  hotspot: 'النقطة الساخنة', mindmap: 'الخريطة الذهنية', 'equation-builder': 'بناء المعادلة', color: 'التلوين بالتعليمات',
+  'drag-drop': 'السحب والإفلات', tashkeel: 'التشكيل', sentence: 'ترتيب كلمات الجملة', 'find-error': 'اكتشف الخطأ',
+  arrange: 'ترتيب الحروف', 'sound-blend': 'دمج الأصوات', 'letter-picture': 'توصيل الحرف بالصورة', 'count-tap': 'العدّ بالنقر',
+  compare: 'المقارنة', 'number-line': 'خط الأعداد', puzzle: 'البازل', pattern: 'النمط', slider: 'الشريط المتدرّج',
+  array: 'المصفوفة', 'measure-tool': 'أداة القياس', 'hundred-chart': 'لوحة المائة', 'trace-letter': 'تتبّع الحرف',
+  clock: 'الساعة', 'listen-locate': 'استمع وحدّد', 'chart-read': 'قراءة التمثيل البياني', money: 'النقود',
+  'place-value': 'القيمة المنزلية', symmetry: 'التماثل', 'sun-moon': 'الشمسية والقمرية', maze: 'المتاهة',
+  'audio-q': 'السؤال الصوتي', lens: 'العدسة المكبّرة',
+};
+const LEVEL_AR = { knowledge: 'معرفة', application: 'تطبيق', reasoning: 'استدلال', evaluation: 'تقويم' };
+/* «أحب لغتي» بمسمّياتِ وثيقةِ التقويم (§مستويات «أحب لغتي» في CLAUDE.md) */
+const LEVEL_AR_LUG = { knowledge: 'التذكّر', reasoning: 'الفهم والاستدلال المباشر', application: 'التطبيق والتحليل والإبداع', evaluation: 'التقويم' };
+const LOOK_DIR = `${OUT_DIR}/lessons`;
+fs.mkdirSync(LOOK_DIR, { recursive: true });
+let lookLessons = 0, lookBytes = 0;
+for (const [book, b] of Object.entries(index)) {
+  const bank = loadBank(book);
+  const LV = /arabic/.test(book) ? LEVEL_AR_LUG : LEVEL_AR;
+  const lessons = {};
+  b.units.forEach((u, ui) => {
+    u.lessons.forEach((l, li) => {
+      const qs = Q[l.file] || [];
+      const objectives = [...new Set(qs.map((q) => clean(q.objective)).filter(Boolean))];
+      const seen = new Set();
+      const questions = qs.map((q) => {
+        const text = factOf(q);
+        seen.add(key(text));
+        const o = objectives.indexOf(clean(q.objective));
+        return { type: TYPE_AR[q.type] || q.type, level: LV[q.level] || q.level || '', ...(o > -1 ? { objective: o + 1 } : {}), text };
+      });
+      const extra = [];
+      (bank[l.file] || []).forEach((x) => { const f = bankFact(x); const k = key(f); if (f && k.length > 3 && !seen.has(k)) { seen.add(k); extra.push(f); } });
+      lessons[l.file] = {
+        title: clean(l.title), unit: clean(u.unit), unitNo: ui + 1, lessonNo: li + 1,
+        ...(pagesOf[l.file] ? { pages: pagesOf[l.file] } : {}),
+        objectives, questions, bank: extra,
+      };
+      lookLessons++;
+    });
+  });
+  const f = `${LOOK_DIR}/${book}.json`;
+  fs.writeFileSync(f, JSON.stringify({ book, title: b.book, generated: PLATFORM.generated, lessons }) + '\n');
+  lookBytes += fs.statSync(f).size;
+}
+console.log(`✓ ملفّاتُ بحثِ المالك: ${Object.keys(index).length} كتاباً، ${lookLessons} درساً — ${(lookBytes / 1024).toFixed(0)} ك.ب`);
