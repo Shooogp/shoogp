@@ -536,8 +536,13 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
         var dx = pts[a][0] - pts[b][0], dy = pts[a][1] - pts[b][1], dz = pts[a][2] - pts[b][2];
         if (dx * dx + dy * dy + dz * dz <= LIM2) edges.push([a, b, (a + b) % 9 === 0]);   // خيوطٌ برتقاليّةٌ قليلة
       }
-      return { pts: pts, edges: edges, P: new Float32Array(N * 3) };
+      var tw = []; for (var t = 0; t < N; t++) tw.push(Math.random() * TAU);   // طورُ وميضِ كلِّ نقطة
+      return { pts: pts, edges: edges, P: new Float32Array(N * 3), tw: tw };
     })();
+    /* تجربة (طلبُ المالك ٢٠٢٦-١١-٠٣): نقاطُ الشبكةِ تومضُ بوهجٍ ذهبيٍّ — كشراراتِ الخارج — وهي تتكلّم.
+       on: إطفاؤها بـfalse · speed: سرعةُ الوميض · sharp: قِصَرُ الومضة (أكبرُ = ومضاتٌ أقصرُ وأندر) · min/gain: شدّتُها بلا صوتٍ ومع ارتفاعِه */
+    var NET_GOLD = { on: true, speed: 6, sharp: 4, min: .35, gain: .9 };
+    var goldOn = 0;                                                    // يصعدُ ويهبطُ بنعومةٍ مع حالةِ الكلام
     function projectNet(c, rot, Rs) {
       var cy = Math.cos(rot), sy = Math.sin(rot), ct = Math.cos(.45), st = Math.sin(.45), P = NET.P;
       for (var i = 0; i < NET.pts.length; i++) {
@@ -558,11 +563,31 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
       }
       for (var i = 0; i < NET.pts.length; i++) {
         var z = P[i * 3 + 2]; if ((z >= 0) !== front) continue;
-        var f = (z + 1) / 2, r = (.6 + f * 1.1) * (1 + .5 * L);
-        g.fillStyle = 'rgba(143,228,255,' + ((.1 + .16 * f) * am).toFixed(3) + ')';
-        g.beginPath(); g.arc(P[i * 3], P[i * 3 + 1], r * 3, 0, TAU); g.fill();
-        g.fillStyle = 'rgba(201,241,255,' + ((.25 + .75 * f) * am).toFixed(3) + ')';
-        g.beginPath(); g.arc(P[i * 3], P[i * 3 + 1], r, 0, TAU); g.fill();
+        var f = (z + 1) / 2, r = (.6 + f * 1.1) * (1 + .5 * L), x = P[i * 3], y = P[i * 3 + 1];
+        var ga = 0;                                                    // شدّةُ الوميضِ الذهبيِّ لهذه النقطة (٠–١)
+        if (goldOn > .01) {
+          var fl = reduce ? .5 : Math.pow(Math.max(0, Math.sin(ph * NET_GOLD.speed + NET.tw[i])), NET_GOLD.sharp);
+          ga = Math.min(1, goldOn * fl * Math.min(1, NET_GOLD.min + NET_GOLD.gain * L));
+        }
+        var blue = 1 - .9 * ga;                                        // الذهبُ يحلُّ محلَّ الأزرقِ لا يُضافُ إليه (وإلا ابيضّ)
+        g.fillStyle = 'rgba(143,228,255,' + ((.1 + .16 * f) * am * blue).toFixed(3) + ')';
+        g.beginPath(); g.arc(x, y, r * 3, 0, TAU); g.fill();
+        g.fillStyle = 'rgba(201,241,255,' + ((.25 + .75 * f) * am * blue).toFixed(3) + ')';
+        g.beginPath(); g.arc(x, y, r, 0, TAU); g.fill();
+        if (ga > .02) {
+          var gv = ga * (.55 + .45 * f) * Math.min(1, am / .6);
+          g.globalCompositeOperation = 'source-over';                                    // فوقَ الكرةِ لا مضافاً إليها: يبقى ذهبيّاً مشبعاً
+          var hg = g.createRadialGradient(x, y, 0, x, y, r * 6);                         // هالةٌ ذهبيّةٌ تتلاشى
+          hg.addColorStop(0, 'rgba(255,184,60,' + (gv * .6).toFixed(3) + ')');
+          hg.addColorStop(.35, 'rgba(255,160,40,' + (gv * .22).toFixed(3) + ')');
+          hg.addColorStop(1, 'rgba(255,140,30,0)');
+          g.fillStyle = hg; g.beginPath(); g.arc(x, y, r * 6, 0, TAU); g.fill();
+          g.fillStyle = 'rgba(255,190,70,' + Math.min(1, gv).toFixed(3) + ')';
+          g.beginPath(); g.arc(x, y, r * 1.6, 0, TAU); g.fill();
+          g.fillStyle = 'rgba(255,236,170,' + Math.min(1, gv).toFixed(3) + ')';
+          g.beginPath(); g.arc(x, y, r * .7, 0, TAU); g.fill();
+          g.globalCompositeOperation = 'lighter';
+        }
       }
     }
     var ripples = [];
@@ -597,6 +622,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
 
       var tgt = state === 'idle' ? .03 : state === 'connecting' ? .2 + .16 * Math.sin(now / 260) : target;
       L += (tgt - L) * (tgt > L ? .35 : .08);                       // صعودٌ سريعٌ وهبوطٌ هادئ
+      goldOn += ((NET_GOLD.on && state === 'speaking' ? 1 : 0) - goldOn) * .06;
       var wob = reduce ? .3 : 1;
       var c = W / 2, Rc = W * .255, R0 = W * .33, dim = state === 'idle' ? .6 : 1;
 
