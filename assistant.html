@@ -9,6 +9,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap">
+<!-- خلفيّةُ الصفحةِ الرئيسيّةِ نفسُها (طلبُ المالك ٢٠٢٦-١١-٠٣): الصاروخُ والقمرُ وزحلُ والكوكبُ الباهتة -->
+<link rel="stylesheet" href="css/space-bg.css?v=20260721-41">
 
 <!--
   ═══════════════════════════════════════════════════════════════
@@ -64,28 +66,19 @@
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html,body{margin:0;min-height:100%}
+/* خلفيّةُ الصفحةِ الرئيسيّةِ لشوجب نفسُها (طلبُ المالك ٢٠٢٦-١١-٠٣): تدرّجُ «الفضاء الرماديّ» من css/style.css (‏body.theme-home)،
+   ثابتٌ لا يتحرّكُ مع التمرير، وفوقَه طبقةُ css/space-bg.css ونجومٌ تتلألأ كما في الرئيسيّة */
 body{
-  background:
-    radial-gradient(1100px 700px at 50% 18%, rgba(20,52,120,.45), transparent 65%),
-    radial-gradient(900px 600px at 0% 110%, rgba(255,150,40,.07), transparent 60%),
-    var(--space);
+  background:linear-gradient(180deg,#26262e 0%,#33333d 30%,#45454f 60%,#575762 100%) fixed;
   color:var(--moon);
   font-family:"Tajawal","IBM Plex Sans Arabic",-apple-system,"Segoe UI",Tahoma,sans-serif;
   font-size:18px;line-height:1.85;
   -webkit-font-smoothing:antialiased;
 }
-/* نجومٌ ثابتةٌ خفيفة — زخرفةٌ لا تعيقُ القراءة */
-.stars{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.7;
-  background-image:
-    radial-gradient(1.2px 1.2px at 12% 18%, #fff 50%, transparent 51%),
-    radial-gradient(1px 1px at 72% 12%, #fff 50%, transparent 51%),
-    radial-gradient(1.4px 1.4px at 88% 44%, #fff 50%, transparent 51%),
-    radial-gradient(1px 1px at 34% 62%, #fff 50%, transparent 51%),
-    radial-gradient(1.2px 1.2px at 58% 82%, #fff 50%, transparent 51%),
-    radial-gradient(1px 1px at 8% 88%, #fff 50%, transparent 51%),
-    radial-gradient(1px 1px at 46% 30%, #cfe6ff 50%, transparent 51%),
-    radial-gradient(1.3px 1.3px at 92% 86%, #ffe9b0 50%, transparent 51%);
-}
+.stars{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.stars i{position:absolute;background:#fff;border-radius:50%;opacity:.7;animation:tw 3s infinite}
+@keyframes tw{0%,100%{opacity:.3}50%{opacity:.9}}
+@media (prefers-reduced-motion:reduce){.stars i{animation:none}}
 .page{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:24px 16px 48px}
 
 /* ── الترويسة ── */
@@ -257,6 +250,11 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
   padding:calc(var(--hs) * 30px + 14px)}
 .card.hud > .hudsvg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:visible}
 /* إطارُ الصورة (‏HUD_IMG): الحشوةُ تُحسَبُ من نافذةِ الإطارِ المقيسة بمقاسِه الجاري */
+/* ومضاتُ نيونِ الإطار (طلبُ المالك ٢٠٢٦-١١-٠٣): خفيفةٌ متباعدةٌ بطيئة — كلُّ لونٍ يتوهّجُ مرّةً كلَّ ١٢ ثانيةً (صعودٌ في ثانيةٍ
+   وخفوتٌ في ثانيةٍ ونصف)، والبرتقاليُّ في منتصفِ دورةِ السماويّ؛ والطورُ يضبطُه Hud (‏GLOW_AT) فلا يبدأُ من الصفرِ مع كلِّ رسم */
+.hud-glow{opacity:0;mix-blend-mode:screen;animation:hudGlow 12s ease-in-out infinite}
+@keyframes hudGlow{0%,100%{opacity:0}9%{opacity:.75}22%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.hud-glow{animation:none}}
 .card.hud.hud-img{padding:var(--pt,40px) var(--px,38px) var(--pb,44px)}
 /* ── أزرارُ الجلسةِ من تصميمِ الإطار (طلبُ المالك ٢٠٢٦-١١-٠٣) — صفائحُ معدنيّةٌ مولَّدةٌ بجيميناي بالأسلوبِ نفسِه ──
    الزرُّ العريضُ صورةٌ تُقطَّعُ ثلاثاً (‏border-image): الطرفانِ بمقاسِهما والوسطُ يمتدُّ مع النصّ. الأصلُ ٦٦٢×١٧٢ والطرفُ ٩٨،
@@ -309,7 +307,10 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
 </style>
 </head>
 <body>
-<div class="stars" aria-hidden="true"></div>
+<div class="space-bg" aria-hidden="true"><i class="sb-rocket"></i><i class="sb-moon"></i><i class="sb-saturn"></i><i class="sb-planet"></i></div>
+<div class="stars" id="stars" aria-hidden="true"></div>
+<script>/* ستّونَ نجمةً عشوائيّةً تتلألأ — كما في js/app.js للصفحةِ الرئيسيّة */
+(function(){var s=document.getElementById('stars');for(var i=0;i<60;i++){var t=document.createElement('i'),z=Math.random()*3+1;t.style.width=z+'px';t.style.height=z+'px';t.style.left=Math.random()*100+'%';t.style.top=Math.random()*100+'%';t.style.animationDelay=Math.random()*3+'s';s.appendChild(t);}})();</script>
 
 <main class="page">
   <div class="top">
@@ -572,11 +573,14 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
        · min/gain: شدّتُها بلا صوتٍ ومع ارتفاعِه · size: نصفُ قطرِ الوهجِ بأضعافِ النقطة */
     var NET_GOLD = { on: true, speed: 3.5, rise: .06, fade: .18, min: .4, gain: .9, size: 9 };
     /* ومضةُ ضوء: اشتعالٌ سريعٌ ثمّ تلاشٍ أُسّيٌّ بطيء — كما تخبو الشرارة — لا نبضٌ متماثلُ الصعودِ والهبوط */
-    function flash(t) {
+    function flashEnv(t, rise, fade) {
       var s = (t % TAU) / TAU;                                        // موضعُ النقطةِ في دورتِها (٠–١)
-      if (s < NET_GOLD.rise) { var a = s / NET_GOLD.rise; return a * a * (3 - 2 * a); }
-      return Math.exp(-(s - NET_GOLD.rise) / NET_GOLD.fade);
+      if (s < rise) { var a = s / rise; return a * a * (3 - 2 * a); }
+      return Math.exp(-(s - rise) / fade);
     }
+    function flash(t) { return flashEnv(t, NET_GOLD.rise, NET_GOLD.fade); }
+    /* شراراتُ الخارج بالومضةِ نفسِها: speed أبطأُ قليلاً من الداخل، وbase لمعةٌ باقيةٌ بينَ الومضات، وsize نصفُ قطرِ الوهجِ بأضعافِ الشرارة */
+    var SPARK = { speed: 2.4, rise: .06, fade: .2, base: .12, size: 7 };
     /* منحنى تلاشي الومضة: [الموضع، اللون، الشدّة] — لبٌّ مشبعٌ عريضٌ ثمّ ذوبانٌ ناعمٌ إلى الصفر بلا حافّة.
        (اللبُّ عريضٌ عمداً: الذهبيُّ نصفُ الشفّافِ فوقَ الأزرقِ يصيرُ رماديّاً، فالوهجُ يبقى مشبعاً حتى يذوب — مقيس) */
     var GLOW = [[0, '255,250,225', 1], [.1, '255,230,150', .97], [.22, '255,204,92', .86], [.34, '255,182,60', .62],
@@ -709,17 +713,19 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
       }
       g.setLineDash([]); g.globalAlpha = 1;
 
-      /* شرارات */
+      /* شراراتُ الخارج — ومضاتُ ضوءٍ كنقاطِ الشبكةِ في الداخل (طلبُ المالك ٢٠٢٦-١١-٠٣): كلُّ شرارةٍ تشتعلُ بسرعةٍ ثمّ تخبو
+         ببطءٍ في طورِها الخاصّ، وتُرسَمُ بتدرّجِ GLOW نفسِه فلا حافّةَ لها. وتبقى منها لمعةٌ خافتةٌ (‏SPARK.base) كالنجمِ البعيد */
       for (var k = 0; k < sparks.length; k++) {
         var sp = sparks[k];
         sp.a += sp.s * dt * spd;
         var rr = W * sp.r + (state === 'speaking' ? W * .012 * wob * L * Math.sin(ph * 12 + sp.tw) : 0);
-        var al = (.4 + .5 * Math.sin(ph * 2.5 + sp.tw)) * dim;
-        if (al <= 0) continue;
-        var sx = c + rr * Math.cos(sp.a), sy = c + rr * Math.sin(sp.a);
-        if (sp.z > 1.5) { g.fillStyle = 'rgba(255,170,50,' + (al * .22).toFixed(3) + ')'; g.beginPath(); g.arc(sx, sy, sp.z * 3.2, 0, TAU); g.fill(); }
-        g.fillStyle = 'rgba(255,196,90,' + al.toFixed(3) + ')';
-        g.beginPath(); g.arc(sx, sy, sp.z, 0, TAU); g.fill();
+        var fe = reduce ? .5 : flashEnv(ph * SPARK.speed + sp.tw, SPARK.rise, SPARK.fade);
+        var al = Math.min(1, (SPARK.base + (1 - SPARK.base) * fe) * dim * (1 + .4 * L));
+        if (al < .01) continue;
+        var sx = c + rr * Math.cos(sp.a), sy = c + rr * Math.sin(sp.a), sr = sp.z * SPARK.size * (.7 + .3 * fe);
+        var sg = g.createRadialGradient(sx, sy, 0, sx, sy, sr);
+        for (var q2 = 0; q2 < GLOW.length; q2++) sg.addColorStop(GLOW[q2][0], 'rgba(' + GLOW[q2][1] + ',' + (al * GLOW[q2][2]).toFixed(3) + ')');
+        g.fillStyle = sg; g.beginPath(); g.arc(sx, sy, sr, 0, TAU); g.fill();
       }
 
       /* القرص: كرةُ الشبكةِ خلفَ الشعارِ وأمامَه — مقصوصةٌ داخلَ الحلقة */
@@ -818,6 +824,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
        on:false يُعيدُ الإطارَ المرسومَ القديمَ كما كان. */
     var HUD_IMG = {
       on: true, src: 'images/ui/assistant-frame-a.webp', W: 896, H: 1200,
+      glow: { c: 'images/ui/assistant-frame-a-glow-c.webp', o: 'images/ui/assistant-frame-a-glow-o.webp' },   // طبقتا الوهج: خطوطُ النيونِ وحدَها مستخرجةً من الإطار
       m: [22, 36],                  // الهامشُ الشفّافُ حولَ الإطار (يُخرَجُ خارجَ البطاقة)
       c: [215, 225],                // الزاويةُ: عرضٌ × ارتفاع
       win: [151, 169, 171, 189, 202], // النافذة: الجانبُ · الأعلى · الجانبُ عندَ الزخرفة · الأعلى عندَ الزخرفة · الأسفلُ من الحافّةِ عندَ الزخرفة
@@ -832,38 +839,60 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
       host.style.setProperty('--px', n2((F.win[2] - F.m[0]) * s + 4) + 'px');
       host.style.setProperty('--pt', n2((F.win[3] - F.m[1]) * s + 6) + 'px');
       host.style.setProperty('--pb', n2((F.win[4] - F.m[1]) * s + 6) + 'px');
-      function pc(sx, sy, sw, sh, dx, dy, dw, dh) {    // قطعةٌ من الصورة: المصدرُ بوحداتِ الأصل والوجهةُ ببكسلات CSS
+      function pc(src, sx, sy, sw, sh, dx, dy, dw, dh) {    // قطعةٌ من الصورة: المصدرُ بوحداتِ الأصل والوجهةُ ببكسلات CSS
         return '<svg x="' + n2(dx) + '" y="' + n2(dy) + '" width="' + n2(dw) + '" height="' + n2(dh) + '" viewBox="' + sx + ' ' + sy + ' ' + sw + ' ' + sh
-          + '" preserveAspectRatio="none" overflow="hidden"><image href="' + F.src + '" width="' + F.W + '" height="' + F.H + '" preserveAspectRatio="none"/></svg>';
+          + '" preserveAspectRatio="none" overflow="hidden"><image href="' + src + '" width="' + F.W + '" height="' + F.H + '" preserveAspectRatio="none"/></svg>';
+      }
+      var bh = F.H - F.c[1], rw = F.W - F.c[0];                   // بدايةُ الزاويتَين السفليّتَين واليمنيَين في الأصل
+      var ex = W - 2 * cw, ey = H - 2 * ch;                        // طولُ ما بينَ الزاويتَين
+      var hw = (F.hOrn[1] - F.hOrn[0]) * s, vh = (F.vOrn[1] - F.vOrn[0]) * s;
+      var hOrn = hw < ex - 8, vOrn = vh < ey - 8;                  // تُحذَفُ الزخرفةُ إن ضاقَ الضلعُ عنها
+      /* الإطارُ كلُّه من صورةٍ واحدة — يُرسَمُ للمعدنِ ثمّ مرّتَينِ لطبقتَي الوهجِ بالقطعِ نفسِها.
+         ‏split: في طبقتَي الوهجِ لا تمرُّ الشريحةُ تحتَ الزخرفة ولا تتداخلُ القطع، وإلا تضاعفَ الضوءُ حيثُ تتراكب */
+      function frame(src, split) {
+        var ov = split ? 0 : 1, out = '';                          // تداخلُ بكسلٍ في المعدنِ يمنعُ الشقوق
+        function hFill(sx0, sx1, sy, y) {                          // شريحةُ الأعلى أو الأسفل
+          if (split && hOrn) {
+            var a = ox + cw, b = ox + (W - hw) / 2, c = ox + (W + hw) / 2, d = ox + W - cw;
+            out += pc(src, sx0, sy, sx1 - sx0, F.c[1], a, y, b - a, ch) + pc(src, sx0, sy, sx1 - sx0, F.c[1], c, y, d - c, ch);
+          } else out += pc(src, sx0, sy, sx1 - sx0, F.c[1], ox + cw - ov, y, ex + 2 * ov, ch);
+        }
+        function vFill(sx, x) {                                    // شريحةُ اليمينِ أو اليسار
+          var sy0 = F.sFill[0], sh = F.sFill[1] - F.sFill[0];
+          if (split && vOrn) {
+            var a = oy + ch, b = oy + (H - vh) / 2, c = oy + (H + vh) / 2, d = oy + H - ch;
+            out += pc(src, sx, sy0, F.c[0], sh, x, a, cw, b - a) + pc(src, sx, sy0, F.c[0], sh, x, c, cw, d - c);
+          } else out += pc(src, sx, sy0, F.c[0], sh, x, oy + ch - ov, cw, ey + 2 * ov);
+        }
+        /* ① الشرائحُ الممدودة */
+        hFill(F.tFill[0], F.tFill[1], 0, oy); hFill(F.bFill[0], F.bFill[1], bh, oy + H - ch);
+        vFill(0, ox); vFill(rw, ox + W - cw);
+        /* ② الزخارفُ الوسطى بمقاسِها */
+        if (hOrn) out += pc(src, F.hOrn[0], 0, F.hOrn[1] - F.hOrn[0], F.c[1], ox + (W - hw) / 2, oy, hw, ch)
+          + pc(src, F.hOrn[0], bh, F.hOrn[1] - F.hOrn[0], F.c[1], ox + (W - hw) / 2, oy + H - ch, hw, ch);
+        if (vOrn) out += pc(src, 0, F.vOrn[0], F.c[0], F.vOrn[1] - F.vOrn[0], ox, oy + (H - vh) / 2, cw, vh)
+          + pc(src, rw, F.vOrn[0], F.c[0], F.vOrn[1] - F.vOrn[0], ox + W - cw, oy + (H - vh) / 2, cw, vh);
+        /* ③ الزوايا فوقَ الكلّ */
+        out += pc(src, 0, 0, F.c[0], F.c[1], ox, oy, cw, ch) + pc(src, rw, 0, F.c[0], F.c[1], ox + W - cw, oy, cw, ch)
+          + pc(src, 0, bh, F.c[0], F.c[1], ox, oy + H - ch, cw, ch) + pc(src, rw, bh, F.c[0], F.c[1], ox + W - cw, oy + H - ch, cw, ch);
+        return out;
       }
       var o = '<defs><linearGradient id="hudFill" x1="0" y1="0" x2="0" y2="1">'
         + '<stop offset="0" stop-color="#353A42"/><stop offset="1" stop-color="' + DK + '"/></linearGradient></defs>';
       /* اللوحةُ الرماديّةُ خلفَ الإطار — حوافُّها تحتَ الصفائحِ المعتمة */
       var ip = 70 * s;
       o += '<rect x="' + n2(ox + ip) + '" y="' + n2(oy + ip) + '" width="' + n2(W - 2 * ip) + '" height="' + n2(H - 2 * ip) + '" fill="url(#hudFill)" fill-opacity=".94"/>';
-      var bh = F.H - F.c[1], rw = F.W - F.c[0];                   // بدايةُ الزاويتَين السفليّتَين واليمنيَين في الأصل
-      var ex = W - 2 * cw, ey = H - 2 * ch, ov = 1;               // طولُ ما بينَ الزاويتَين · وتداخلٌ بكسلٌ واحدٌ يمنعُ الشقوق
-      /* ① الشرائحُ الممدودة */
-      o += pc(F.tFill[0], 0, F.tFill[1] - F.tFill[0], F.c[1], ox + cw - ov, oy, ex + 2 * ov, ch);
-      o += pc(F.bFill[0], bh, F.bFill[1] - F.bFill[0], F.c[1], ox + cw - ov, oy + H - ch, ex + 2 * ov, ch);
-      o += pc(0, F.sFill[0], F.c[0], F.sFill[1] - F.sFill[0], ox, oy + ch - ov, cw, ey + 2 * ov);
-      o += pc(rw, F.sFill[0], F.c[0], F.sFill[1] - F.sFill[0], ox + W - cw, oy + ch - ov, cw, ey + 2 * ov);
-      /* ② الزخارفُ الوسطى بمقاسِها — تُحذَفُ إن ضاقَ الضلعُ عنها */
-      var hw = (F.hOrn[1] - F.hOrn[0]) * s, vh = (F.vOrn[1] - F.vOrn[0]) * s;
-      if (hw < ex - 8) {
-        o += pc(F.hOrn[0], 0, F.hOrn[1] - F.hOrn[0], F.c[1], ox + (W - hw) / 2, oy, hw, ch);
-        o += pc(F.hOrn[0], bh, F.hOrn[1] - F.hOrn[0], F.c[1], ox + (W - hw) / 2, oy + H - ch, hw, ch);
-      }
-      if (vh < ey - 8) {
-        o += pc(0, F.vOrn[0], F.c[0], F.vOrn[1] - F.vOrn[0], ox, oy + (H - vh) / 2, cw, vh);
-        o += pc(rw, F.vOrn[0], F.c[0], F.vOrn[1] - F.vOrn[0], ox + W - cw, oy + (H - vh) / 2, cw, vh);
-      }
-      /* ③ الزوايا فوقَ الكلّ */
-      o += pc(0, 0, F.c[0], F.c[1], ox, oy, cw, ch) + pc(rw, 0, F.c[0], F.c[1], ox + W - cw, oy, cw, ch)
-        + pc(0, bh, F.c[0], F.c[1], ox, oy + H - ch, cw, ch) + pc(rw, bh, F.c[0], F.c[1], ox + W - cw, oy + H - ch, cw, ch);
+      o += frame(F.src, false);
+      /* ومضاتُ النيون (طلبُ المالك ٢٠٢٦-١١-٠٣): الخطوطُ السماويّةُ ثمّ البرتقاليّةُ تتوهّجُ ببطءٍ وتخبو، متباعدةً ومتناوبة (‏.hud-glow) */
+      /* الطورُ من ساعةِ الصفحةِ لا من لحظةِ الرسم: الإطارُ يُعادُ رسمُه كلّما تغيّرَ مقاسُ البطاقة، فلو بدأت الحركةُ من جديدٍ
+         مع كلِّ رسمٍ لما ظهرت ومضةٌ ما دامت المحادثةُ تطول. ‏GLOW_T: طولُ الدورة · GLOW_AT: موعدُ ومضةِ كلِّ لونٍ فيها */
+      var now = (performance.now() / 1000) % GLOW_T;
+      if (F.glow) for (var k in F.glow) o += '<g class="hud-glow hud-glow-' + k + '" style="animation-delay:' + (GLOW_AT[k] - now).toFixed(2) + 's">'
+        + frame(F.glow[k], true) + '</g>';
       svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
       svg.innerHTML = o;
     }
+    var GLOW_T = 12, GLOW_AT = { c: 2, o: 8 };                     // يطابقانِ hudGlow في CSS: ١٢ ثانيةً، والبرتقاليُّ بعدَ السماويِّ بستّ
     if (HUD_IMG.on) host.classList.add('hud-img');
     function draw() {
       var w = host.clientWidth, h = host.clientHeight;
