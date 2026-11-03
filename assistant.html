@@ -730,8 +730,8 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
 
   /* ═══════════ إطارُ المحادثة (‏Hud) ═══════════
      خطّانِ سماويّانِ بزاويتَينِ مقطوعتَين (أعلى اليمين وأسفل اليسار) ولسانَينِ بارزَين، تتفرّعُ منهما
-     دوائرُ تنتهي بنقاط، ورقائقُ صغيرة، ولوحةٌ داخليّةٌ رماديّةٌ بخطوطِ مسحٍ خافتة، ونبضةُ ضوءٍ
-     تجري على الإطار. يُعادُ الرسمُ بمقاسِ البطاقةِ (‏ResizeObserver) لأنّ المحادثةَ تطولُ وتقصر. */
+     دوائرُ تنتهي بنقاط، ورقائقُ صغيرة، ولوحةٌ داخليّةٌ رماديّةٌ صافية، ونبضةُ ضوءٍ تجري على الإطار.
+     (خطوطُ المسحِ والدوائرُ الخافتةُ داخلَ اللوحةِ أُزيلَت بطلبِ المالك ٢٠٢٦-١١-٠٣.) يُعادُ الرسمُ بمقاسِ البطاقةِ (‏ResizeObserver) لأنّ المحادثةَ تطولُ وتقصر. */
   var Hud = (function () {
     var host = $('session'), NS = 'http://www.w3.org/2000/svg', CY = '#4FD1DA', DK = '#1C1F24';   // DK: الرماديُّ الغامقُ أسفلَ اللوحة
     var svg = document.createElementNS(NS, 'svg');
@@ -758,19 +758,11 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
       host.style.setProperty('--hs', s);
       var y1 = h * .26, y2 = y1 + Math.min(140 * s, h * .16), y3 = h * .68, y4 = y3 + Math.min(120 * s, h * .14);
       var o = '<defs><linearGradient id="hudFill" x1="0" y1="0" x2="0" y2="1">'
-        + '<stop offset="0" stop-color="#353A42"/><stop offset="1" stop-color="' + DK + '"/></linearGradient>'
-        + '<pattern id="hudScan" width="5" height="5" patternUnits="userSpaceOnUse">'
-        + '<path d="M.5 0V5" stroke="' + CY + '" stroke-opacity=".06"/></pattern></defs>';
+        + '<stop offset="0" stop-color="#353A42"/><stop offset="1" stop-color="' + DK + '"/></linearGradient></defs>';
       /* اللوحةُ الداخليّة */
       var pr = 'x="' + n(ip) + '" y="' + n(ip) + '" width="' + n(w - 2 * ip) + '" height="' + n(h - 2 * ip) + '" rx="' + n(r) + '"';
-      o += '<rect ' + pr + ' fill="url(#hudFill)" fill-opacity=".92"/><rect ' + pr + ' fill="url(#hudScan)"/>'
+      o += '<rect ' + pr + ' fill="url(#hudFill)" fill-opacity=".92"/>'
         + '<rect ' + pr + ' fill="none" stroke="' + CY + '" stroke-opacity=".28"/>';
-      /* دوائرُ خافتةٌ داخلَ اللوحة */
-      var a = ip + 24 * s, b = w - ip - 24 * s;
-      o += '<g fill="none" stroke="' + CY + '" stroke-opacity=".1" stroke-width="1">'
-        + '<path d="' + path([[a, h * .2], [w * .42, h * .2], [w * .42 + 14 * s, h * .2 + 14 * s], [w * .42 + 14 * s, h * .46]]) + '"/>'
-        + '<path d="' + path([[b, h * .58], [w * .62, h * .58], [w * .62 - 14 * s, h * .58 + 14 * s], [w * .62 - 14 * s, h * .8], [a + 40 * s, h * .8]]) + '"/>'
-        + '<path d="' + path([[w * .5, ip + 10 * s], [w * .5, h * .12]]) + '"/></g>';
       /* الخطوطُ والدوائرُ المتفرّعة */
       var main = path(outline(w, h, d, s, true), true), q = 7 * s, L = 14 * s, nodes = [];
       var tr = function (pts) { nodes.push(pts[pts.length - 1]); return '<path d="' + path(pts) + '" stroke-width="' + SW.trace + '"/>'; };
