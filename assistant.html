@@ -1192,7 +1192,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
   }
 
   function onServer(msg) {
-    if (msg.toolCall) { onToolCall(msg.toolCall); return; }
+    if (msg.toolCall) { endStretch(); onToolCall(msg.toolCall); return; }
     if (msg.setupComplete) {
       S.ready = true;
       $('startWrap').hidden = true; $('controls').hidden = false; $('typebar').hidden = false;
@@ -1222,6 +1222,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
       });
     }
     if (sc.turnComplete || sc.generationComplete) {
+      endStretch();
       closeBubble('ai');
     }
   }
@@ -1575,13 +1576,14 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
      يحاكي صوتَ راوٍ في فيديو أرسلَه المالك: رجلٌ عميقٌ هادئٌ بطيءُ الإيقاعِ واضحُ الحضور، كأنّه في قاعة.
      جيميناي لايف لا يستنسخُ صوتاً بعينِه، فالأساسُ صوتٌ جاهزٌ منه (‏VOICES.c في n8n، اختيرَ بقياسِ الطبقةِ
      ومدى التنغيمِ واللمعانِ على عيّناتٍ عربيّة) — وهذه الطبقةُ تُكمِلُه في المتصفّح:
-       ① يُشغَّلُ أبطأَ قليلاً (rate) فتنخفضُ طبقتُه ويتّزنُ إيقاعُه.
+       ① يُشغَّلُ أبطأَ قليلاً (rate) فتنخفضُ طبقتُه ويتّزنُ إيقاعُه، ثمّ يُبطَّأُ فوقَ ذلك بلا خفضٍ للطبقة (tempo — ‏makeStretch أدناه).
        ② ضاغطٌ ليّنٌ يسوّي الصوتَ كصوتِ راوٍ مسجَّل، ثمّ دفءٌ في الصدر (lowDb) ووضوحٌ في الحضور (presDb).
        ③ صدى قاعةٍ خفيفٌ واسع (wet · decay) بعدَ تأخيرٍ قصير، مقصوصُ الأطرافِ فلا يُعكّرُ الكلام.
-     والمقاديرُ كلُّها في CINEMA: تصفيرُ wet يُطفئُ الصدى، وrate ‏1 يُعيدُ السرعة.
+     والمقاديرُ كلُّها في CINEMA: تصفيرُ wet يُطفئُ الصدى، وrate ‏1 يُعيدُ الطبقةَ والسرعة، وtempo ‏1 يُلغي الإبطاءَ الإضافيّ.
+     والسرعةُ النهائيّةُ = rate × tempo (‏٠٫٩٤ × ٠٫٨٥ ≈ ٠٫٨٠ من سرعةِ جيميناي) — والطبقةُ تتبعُ rate وحدَه.
      وvoice هو صوتُ جيميناي الأساسُ يُرسَلُ ‏«c»+اسمَه (‏cOrus) فيقبلُه n8n من MALE_TRY — فتبديلُه هنا لا في n8n.
      اختارَ المالكُ Charon (العيّنةَ ٣) بالسماع ٢٠٢٦-١١-٠٣، بعدَ أن رشّحَ القياسُ Orus (طبقتُه بعدَ الإبطاءِ ١١٣ هرتز مقابلَ ١٠٦ في الفيديو). */
-  var CINEMA = { voice: 'Charon', rate: 0.94, lowHz: 140, lowDb: 3, presHz: 3200, presDb: 3, wet: 0.16, decay: 1.6, predelayMs: 25 };
+  var CINEMA = { voice: 'Charon', rate: 0.94, tempo: 0.85, lowHz: 140, lowDb: 3, presHz: 3200, presDb: 3, wet: 0.16, decay: 1.6, predelayMs: 25 };
   function cinemaFx(ctx, input, output) {
     var C = CINEMA;
     var lim = ctx.createDynamicsCompressor();
@@ -1611,6 +1613,70 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
     return b;
   }
 
+  /* ── إبطاءٌ بلا خفضِ طبقة — للصوتِ السينمائيّ (طلبُ المالك ٢٠٢٦-١١-٠٤: «ابطئ سرعة المساعد في الوضع السينمائي») ──
+     خفضُ rate وحدَه يُبطئُ ويُخفِضُ الطبقةَ معاً، وطبقةُ Charon الأصليّةُ (‏١٠٥ هرتز، مقيسة) تساوي طبقةَ راوي الفيديو
+     أصلاً — فالمزيدُ منه يُثقِلُ الصوتَ حتى يصيرَ كشريطٍ بطيء. فالإبطاءُ الإضافيُّ بطريقةِ WSOLA: تُقطَعُ الموجةُ نوافذَ
+     قصيرةً (٣٠ م.ث) تُعادُ متباعدةً، وكلُّ نافذةٍ تُزاحُ حتى ±٨ م.ث لتطابقَ امتدادَ ما قبلَها فلا تتكسّرُ الموجة.
+     ومتدفّقٌ لأنّ الصوتَ يصلُ قطعاً: يحتفظُ بنحوِ ٥٠ م.ث حتى تصلَ القطعةُ التالية، ويُفرِغُها end() آخرَ الدور.
+     ‏alpha = مدّةُ الخارجِ ÷ مدّةِ الداخل (> ١ يُبطئ). والناتجُ واحدٌ أيّاً كان تقطيعُ الداخل (مُختبَر). */
+  function makeStretch(alpha, sr) {
+    var N = 2 * Math.round(sr * 0.015), H = N / 2, Ha = H / alpha, D = Math.round(sr * 0.008);
+    var win = new Float32Array(N), i;
+    for (i = 0; i < N; i++) win[i] = 0.5 - 0.5 * Math.cos(2 * Math.PI * i / N);
+    var buf, base, k, prev, tail;
+    function reset() { buf = new Float32Array(0); base = 0; k = 0; prev = 0; tail = new Float32Array(H); }
+    function corr(c, t, step) { var s = 0; for (var j = 0; j < N; j += step) s += buf[c + j] * buf[t + j]; return s; }
+    function best(nom) {                     // أقربُ موضعٍ حولَ nom يشبهُ امتدادَ النافذةِ السابقة
+      var lo = Math.max(nom - D, 0) - base, hi = nom + D - base, t = prev + H - base, at = lo, bv = -Infinity, c, v;
+      for (c = lo; c <= hi; c += 2) { v = corr(c, t, 2); if (v > bv) { bv = v; at = c; } }
+      var a = Math.max(lo, at - 1), b = Math.min(hi, at + 1); bv = -Infinity;
+      for (c = a; c <= b; c++) { v = corr(c, t, 1); if (v > bv) { bv = v; at = c; } }
+      return at + base;
+    }
+    function run(out, limit) {
+      for (;;) {
+        var end = base + buf.length, s, nom = Math.round(k * Ha), j;
+        if (k === 0) { if (end < N) break; s = 0; }
+        else {
+          if (limit != null && nom >= limit) break;
+          if (Math.max(nom + D, prev + H) + N > end) break;
+          s = best(nom);
+        }
+        var o = new Float32Array(H), p = s - base;
+        if (k === 0) for (j = 0; j < H; j++) o[j] = buf[p + j];           // أوّلُ الدورِ كما هو، بلا تلاشٍ داخل
+        else for (j = 0; j < H; j++) o[j] = tail[j] + win[j] * buf[p + j];
+        for (j = 0; j < H; j++) tail[j] = win[H + j] * buf[p + H + j];
+        out.push(o); prev = s; k++;
+      }
+      if (k > 0) {                           // ما قبلَ الحاجةِ يُرمى، فلا يتضخّمُ الداخلُ في الأدوارِ الطويلة
+        var keep = Math.min(prev + H, Math.round(k * Ha) - D);
+        if (keep - base > sr) { buf = buf.slice(keep - base); base = keep; }
+      }
+      return out;
+    }
+    function join(parts) {
+      var n = 0, o, at = 0; parts.forEach(function (p) { n += p.length; });
+      o = new Float32Array(n); parts.forEach(function (p) { o.set(p, at); at += p.length; });
+      return o;
+    }
+    reset();
+    return {
+      push: function (f32) {
+        var nb = new Float32Array(buf.length + f32.length); nb.set(buf); nb.set(f32, buf.length); buf = nb;
+        return join(run([]));
+      },
+      end: function () {                     // آخرُ الدور: تُكمَلُ البقيّةُ بصمتٍ وتُفرَغُ كلُّها
+        if (!buf.length && k === 0) return new Float32Array(0);
+        var realEnd = base + buf.length, pad = N + H + 2 * D + 2;
+        var nb = new Float32Array(buf.length + pad); nb.set(buf); buf = nb;
+        var out = run([], realEnd); out.push(tail.slice());
+        reset();
+        return join(out);
+      },
+      reset: reset
+    };
+  }
+
   function b64(buf) {
     var bytes = new Uint8Array(buf), s = '', step = 0x8000;
     for (var i = 0; i < bytes.length; i += step) s += String.fromCharCode.apply(null, bytes.subarray(i, i + step));
@@ -1625,6 +1691,19 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
       if (v >= 0x8000) v -= 0x10000;
       f32[i] = v / 32768;
     }
+    if (S.cine && CINEMA.tempo < 1) {        // السينمائيّ: إبطاءٌ إضافيٌّ بلا خفضِ طبقة
+      S.stretch = S.stretch || makeStretch(1 / CINEMA.tempo, CONFIG.OUT_RATE);
+      f32 = S.stretch.push(f32);
+    }
+    playF32(f32);
+  }
+  /* آخرُ الدورِ (أو قبلَ استدعاءِ أداة): تُفرَغُ البقيّةُ المحتجَزةُ في المُبطِّئ فلا يُبتَرُ آخرُ مقطع */
+  function endStretch() {
+    if (S && S.stretch) playF32(S.stretch.end());
+  }
+  function playF32(f32) {
+    var n = f32.length;
+    if (!n) return;
     var ctx = S.ctx;
     var buf = ctx.createBuffer(1, n, CONFIG.OUT_RATE);
     buf.getChannelData(0).set(f32);
@@ -1640,6 +1719,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
     if (!S) return;
     S.sources.forEach(function (s) { try { s.stop(); } catch (e) {} });
     S.sources = []; S.nextTime = 0;
+    if (S.stretch) S.stretch.reset();
   }
   function speaking() { return S && S.ctx && S.nextTime > S.ctx.currentTime + 0.02; }
 
