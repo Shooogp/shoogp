@@ -4234,8 +4234,9 @@ function renderMaze(q, body, fb){
    فحارسُ القفلِ (‏guardLesson) يحرسُ الدرسَ المقفلَ كما يحرسُه عندَ النقر، والكتابُ المخفيُّ (‏devOnly)
    لا يُفتَحُ إلا في وضعِ المطوّر. ومفتاحٌ مجهولٌ يُتجاهَلُ فتبقى الصفحةُ الرئيسيّةُ كما هي. */
 function openFromUrl(){
-  let key, lid;
-  try { const p=new URLSearchParams(location.search); key=p.get('book'); lid=p.get('lesson'); } catch(e){ return; }
+  let key, lid, games, gScope, gGame;
+  try { const p=new URLSearchParams(location.search); key=p.get('book'); lid=p.get('lesson');
+    games=p.get('games'); gScope=p.get('scope'); gGame=p.get('game'); } catch(e){ return; }
   if(!key) return;
   const isDev = !!(window.ShoogpLock && ShoogpLock.isDevMode());
   for(const t in DATA.terms){
@@ -4246,6 +4247,9 @@ function openFromUrl(){
       currentTerm=t; currentGrade=g;
       buildTerms(); buildGrades(); buildBooks();
       openBook(key);
+      /* ‏&games=1: صفحةُ «ألعاب الكتاب» طبقةً فوقَ الفهرسِ كأنّ المعلّمةَ ضغطت «العب» — بدرسٍ أو وحدةٍ (‏scope)
+         ولعبةٍ (‏game) إن ذُكرا. يفتحُها مساعدُ المعلّمة (أداةُ open_games — ٢٠٢٦-١١-٠٤)، والقفلُ يبقى حكمَ هذه الصفحة. */
+      if(games){ if(window.ShoogpOpenGames) window.ShoogpOpenGames(gScope, gGame); return; }
       if(lid && DATA.index[key]){
         let ls=null;
         DATA.index[key].units.forEach(u=>u.lessons.forEach(l=>{ if(l.file===lid) ls=l; }));
@@ -4285,14 +4289,22 @@ loadData().then(function(d){
     ov.hidden = true; fr.removeAttribute('src');
     document.documentElement.classList.remove('games-open');
   }
-  btn.addEventListener('click', e => {
-    e.preventDefault();
+  function open(extra){
     /* ‏&v= عند كلِّ فتح: صفحةُ الألعابِ خارجَ ختمِ ?v= في النشر، فلا تبقى نسخةٌ قديمةٌ مخزَّنة */
-    fr.setAttribute('src', btn.getAttribute('href') + '&v=' + Date.now().toString(36));
+    fr.setAttribute('src', btn.getAttribute('href') + (extra || '') + '&v=' + Date.now().toString(36));
     ov.hidden = false;
     document.documentElement.classList.add('games-open');
     try{ fr.focus(); }catch(err){}
-  });
+  }
+  btn.addEventListener('click', e => { e.preventDefault(); open(''); });
+  /* ومن الرابطِ المباشر (‏openFromUrl: ‏?book=…&games=1&scope=…&game=…) بعدَ فتحِ الكتاب — لا يُفتَحُ لكتابٍ لا ألعابَ له */
+  window.ShoogpOpenGames = function(scope, game){
+    if(btn.hidden) return;
+    let x = '';
+    if(scope) x += '&scope=' + encodeURIComponent(scope);
+    if(game) x += '&game=' + encodeURIComponent(game);
+    open(x);
+  };
   window.addEventListener('message', e => {
     if(e.source === fr.contentWindow && e.data && e.data.shoogp === 'games-close') close();
   });

@@ -1428,6 +1428,67 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
       return { url: 'index.html?book=' + key, label: ix[key].book };
     });
   }
+
+  /* ═══ أداةُ open_games — صفحةُ «ألعاب الكتاب» (طلبُ إبراهيم ٢٠٢٦-١١-٠٤: «لا يعلمُ شيئاً عن ألعابِ شوجب») ═══
+     تُفتَحُ طبقةً فوقَ فهرسِ الكتاب (‏index.html?book=…&games=1 — ‏openFromUrl في js/app.js) كأنّ المعلّمةَ ضغطت «العب»،
+     فيبقى حكمُ القفلِ للصفحةِ الأمّ. النطاقُ درسٌ (‏l:<ملفُّه>) أو وحدةٌ كاملة (‏u<ترتيبُها في الفهرس> — رقمُها المنطوقُ
+     يُحوَّلُ بـ unitNumbers)، واللعبةُ من data/assistant/games.json (يبنيه tools/build-assistant-data.mjs من GAMES في
+     games/index.html) بمطابقةِ اسمِها وأسمائِها الأخرى (‏aka). وبلا لعبةٍ تختارُها المعلّمةُ من الصفحة. */
+  var GAMES_LIST = null;
+  function gamesList() {
+    if (GAMES_LIST) return Promise.resolve(GAMES_LIST);
+    return fetch('data/assistant/games.json', { cache: 'no-cache' })
+      .then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
+      .then(function (d) { GAMES_LIST = d.games || []; return GAMES_LIST; });
+  }
+  var GAME_STOP = { 'لعبه': 1, 'عاب': 1, 'لعب': 1, 'تحدي': 1 };
+  function matchGame(list, name) {
+    var q = toks(name).filter(function (w) { return !GAME_STOP[w]; });
+    var names = list.map(function (g) { return g.name; });
+    if (!q.length) return { status: 'need_more', note: 'اسأله أيّ لعبةٍ يريد، أو افتح الصفحة بلا لعبة.', games: names };
+    var scored = list.map(function (g) {
+      var w = toks(g.name + ' ' + (g.aka || '')), s = 0;
+      q.forEach(function (t) { s += tokScore(t, w); });
+      return { g: g, s: s / q.length };
+    }).filter(function (o) { return o.s >= 1; }).sort(function (a, b) { return b.s - a.s; });
+    if (!scored.length) return { status: 'not_found', note: 'لا لعبة بهذا الاسم في شوجب. هذه ألعابها:', games: names };
+    if (scored[1] && scored[0].s - scored[1].s < 0.5) return { status: 'ambiguous', note: 'أكثر من لعبة تطابق، فاسأله أيّها يريد.', candidates: scored.slice(0, 4).map(function (o) { return o.g.name; }) };
+    return { game: scored[0].g };
+  }
+  function findGames(a) {
+    return Promise.all([siteIndex(), gamesList()]).then(function (r) {
+      var ix = r[0], game = null;
+      if (a.game && String(a.game).trim()) { var m = matchGame(r[1], a.game); if (!m.game) return m; game = m.game; }
+      var un = parseInt(a.unit_number, 10) || 0;
+      var lessonAsked = (a.query && String(a.query).trim()) || parseInt(a.lesson_number, 10);
+      var where = lessonAsked
+        ? resolveLesson(a).then(function (rl) {
+            if (!rl.pick) return rl;
+            if (!rl.pick.l.open) return { status: 'not_ready', lesson: lessonLabel(rl.pick), note: 'هذا الدرس لم تُؤلَّف أسئلته بعد، فلا ألعاب له.' };
+            return { key: rl.pick.key, scope: 'l:' + rl.pick.l.file, what: 'درس «' + rl.pick.l.title + '»' };
+          })
+        : Promise.resolve((function () {
+            var keys = bookKeys(ix, a);
+            if (!keys) return { status: 'need_more', note: 'اسأله عن المادّة والصف، أو عن اسم الدرس.' };
+            if (!keys.length) return { status: 'not_found', note: 'هذا الكتاب غير موجود في المنصّة.' };
+            if (!un) return { key: keys[0] };   // أحب لغتي وديني حياتي بلا جزء: الجزء الأول
+            for (var i = 0; i < keys.length; i++) {
+              var units = ix[keys[i]].units, pos = unitNumbers(units).indexOf(un);
+              if (pos > -1) return { key: keys[i], scope: 'u' + (pos + 1), what: unitName({ ui: un, unit: units[pos].unit }) + ' كاملة' };
+            }
+            return { status: 'not_found', note: 'لا وحدة بهذا الرقم في الكتاب.' };
+          })());
+      return where.then(function (w) {
+        if (!w.key) return w;
+        var b = ix[w.key];
+        if (!b.units.some(function (u) { return u.lessons.some(function (l) { return l.open; }); })) return { status: 'not_ready', note: 'لم تُؤلَّف دروس هذا الكتاب بعد، فلا ألعاب له.' };
+        return {
+          url: 'index.html?book=' + w.key + '&games=1' + (w.scope ? '&scope=' + encodeURIComponent(w.scope) : '') + (game ? '&game=' + game.id : ''),
+          label: 'ألعاب ' + b.book + (w.what ? ' — ' + w.what : '') + (game ? ' — ' + game.name : '')
+        };
+      });
+    });
+  }
   function openTarget(r) {
     var url = new URL(r.url, location.href).href, w = null;
     try { w = window.open(url, OPEN_WIN); } catch (e) {}
@@ -1452,6 +1513,7 @@ h1{margin:0;font-size:30px;font-weight:800;line-height:1.3}
       else if (fc.name === 'open_page') job = Promise.resolve(PAGES[a.page] ? { url: PAGES[a.page][0], label: PAGES[a.page][1] } : { status: 'not_found', note: 'صفحة غير معروفة.' });
       else if (fc.name === 'open_book') job = findBook(a);
       else if (fc.name === 'open_lesson') job = findLesson(a);
+      else if (fc.name === 'open_games') job = findGames(a);
       else if (fc.name === 'get_book_index') job = getBookIndex(a);
       else if (fc.name === 'get_lesson_content') job = getLessonContent(a);
       else job = Promise.resolve({ status: 'error', note: 'أمر غير معروف.' });

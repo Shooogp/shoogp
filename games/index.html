@@ -459,11 +459,13 @@ $('back').addEventListener('click', () => {
   location.href = '../index.html';
 });
 
-/* الدرس يمكن أن يأتي من الرابط (?scope=u2 أو ?scope=l:g4s-2-3)، واللعبة تختارها المعلّمة كل مرة */
+/* الدرس يمكن أن يأتي من الرابط (?scope=u2 أو ?scope=l:g4s-2-3)، واللعبة تختارها المعلّمة كل مرة —
+   إلا إن طلبتها من مساعد المعلّمة (‏?game=<id> — أداة open_games، ٢٠٢٦-١١-٠٤) فتبدأ مباشرةً */
 (function(){
-  let s = null; try{ s = new URLSearchParams(location.search).get('scope'); }catch(e){}
+  let s = null, gm = null; try{ const u = new URLSearchParams(location.search); s = u.get('scope'); gm = u.get('game'); }catch(e){}
   const first = Object.keys(SCOPES).find(k => k[0] === 'u' && !SCOPES[k].locked) || 'u1';
   $('lessonSel').value = s && SCOPES[s] && !SCOPES[s].locked ? s : first;
+  if(gm && GAMES.some(x => x.id === gm)) $('gameSel').value = gm;
   show();
 })();
 
