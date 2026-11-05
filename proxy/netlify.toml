@@ -29,6 +29,13 @@
   status = 200
   force = true
 
+# صفحةُ مساعدِ أولياءِ الأمور (ask.html — تجربة ٢٠٢٦-١١-٠٥)
+[[redirects]]
+  from = "/n8n/shoogp-ask"
+  to = "https://shoogp.app.n8n.cloud/webhook/shoogp-ask"
+  status = 200
+  force = true
+
 [[redirects]]
   from = "/n8n/shoogp-dash-7c1e"
   to = "https://shoogp.app.n8n.cloud/webhook/shoogp-dash-7c1e"

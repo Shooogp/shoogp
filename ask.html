@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1C1830">
+<title>مساعد شوجب</title>
+<link rel="icon" href="images/wa/logo-mark.webp?v=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;600;700;800&display=swap">
+
+<!--
+  ═══════════════════════════════════════════════════════════════
+  مساعد شوجب لأولياء الأمور والمعلّمات — صفحةٌ تُفتَح من زرٍّ في واتساب (تجربة، ٢٠٢٦-١١-٠٥).
+  تختارُ الأمُّ أو المعلّمةُ ما تريد هنا، ويصلُ الردُّ في محادثةِ شوجب على واتساب نفسِها.
+
+  • الرابطُ يحملُ ‎?t=‎ رمزاً مؤقّتاً لرقمِها (يولّده «مساعد أولياء الأمور» في n8n مع زرِّ الصفحة،
+    صالحٌ ٢٣ ساعةً كي يبقى الردُّ داخلَ نافذةِ واتساب) — فلا تكتبُ رقمَها ولا تُفتَحُ الصفحةُ لغيرِها.
+  • الإرسالُ ‎FormData‎ إلى ويبهوك ‎shoogp-ask‎ (سيرُ «شوجب — صفحة مساعد أولياء الأمور (تجربة)»)،
+    والمرحِّلُ احتياطٌ عندَ ‎TypeError‎ وحدَه كما في pay.html.
+  • الصورُ تُصغَّرُ هنا (‏١٦٠٠ بكسل JPEG) قبلَ الرفع، والصوتُ يُسجَّلُ OGG/Opus بمكتبةِ opus-recorder
+    (‏js/vendor — MIT) لأنّ واتساب لا يقبلُ WebM ولا WAV.
+  • التصميمُ: لوحةُ «صفحة في موقع شوجب» في مسودّةِ التصميم، ورسومُها من مكتبةِ المنصّة (images/wa).
+  ═══════════════════════════════════════════════════════════════
+-->
+
+<style>
+:root{
+  --bg1:#1C1830; --bg2:#241E3E; --bg3:#2E2650;
+  --ink:#FFFFFF; --muted:#C9C3E6; --soft:#D9D3F2;
+  --glass:rgba(255,255,255,.07); --line:rgba(255,255,255,.16);
+  --warn-bg:rgba(255,160,0,.12); --warn-line:rgba(255,160,0,.35); --warn-ink:#FFE7BF;
+}
+*{box-sizing:border-box}
+html{background:var(--bg1)}
+body{
+  margin:0; min-height:100vh; min-height:100dvh; color:var(--ink);
+  background:linear-gradient(180deg,var(--bg1) 0%,var(--bg2) 45%,var(--bg3) 100%) fixed;
+  font-family:'Cairo',system-ui,-apple-system,'Segoe UI',sans-serif;
+  -webkit-tap-highlight-color:transparent;
+}
+body::before{
+  content:""; position:fixed; inset:0; pointer-events:none; opacity:.85;
+  background-image:
+    radial-gradient(1.6px 1.6px at 8% 5%,#fff,transparent 70%),
+    radial-gradient(1.2px 1.2px at 26% 11%,#fff,transparent 70%),
+    radial-gradient(1.4px 1.4px at 44% 3%,#fff,transparent 70%),
+    radial-gradient(1px 1px at 62% 9%,#fff,transparent 70%),
+    radial-gradient(1.3px 1.3px at 12% 19%,#fff,transparent 70%),
+    radial-gradient(1px 1px at 52% 16%,#fff,transparent 70%),
+    radial-gradient(1.2px 1.2px at 90% 64%,#fff,transparent 70%),
+    radial-gradient(1px 1px at 6% 72%,#fff,transparent 70%);
+}
+button{font-family:inherit;color:inherit}
+.app{position:relative;max-width:460px;margin:0 auto;padding:14px 16px calc(18px + env(safe-area-inset-bottom));min-height:100vh;min-height:100dvh;display:flex;flex-direction:column}
+.scr{flex:1;display:flex;flex-direction:column;gap:16px}
+.scr[hidden]{display:none}
+h1,h2,p{margin:0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ── الرئيسية ── */
+.top{display:flex;align-items:center;justify-content:space-between}
+.logo{width:96px;height:auto;display:block}
+.iconbtn{width:44px;height:44px;flex-shrink:0;border:1.5px solid rgba(255,255,255,.22);border-radius:50%;background:rgba(255,255,255,.08);display:grid;place-items:center;padding:0;cursor:pointer}
+.hello span{font-size:15px;font-weight:600;color:var(--muted)}
+.hello h1{font-size:28px;font-weight:800;line-height:1.4}
+.role{position:relative;height:236px;flex-shrink:0;border-radius:28px;overflow:hidden;padding:22px;border:2px solid rgba(255,255,255,.14);display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-align:right;cursor:pointer;transition:transform .12s}
+.role:active{transform:scale(.98)}
+.role-p{background:linear-gradient(170deg,#0D4482 0%,#1C6FBF 50%,#4DB6EE 100%)}
+.role-t{background:linear-gradient(170deg,#34205F 0%,#6A3586 52%,#D9682E 100%)}
+.role img{position:absolute;pointer-events:none}
+.role .rt{position:relative;font-size:24px;font-weight:800;line-height:1.35}
+.role .rs{position:relative;max-width:200px;font-size:15px;font-weight:600;line-height:1.6;color:#EEF6FF}
+.role .go{position:absolute;right:22px;bottom:22px;width:52px;height:52px;border-radius:50%;background:#fff;display:grid;place-items:center}
+.role-p .go{color:#0D4482}.role-t .go{color:#6A3586}
+.foot{margin-top:auto;display:flex;align-items:center;justify-content:center;gap:8px;font-size:14px;font-weight:600;color:var(--muted);padding-top:4px}
+
+/* ── رأسُ الخطوة ── */
+.hdr{display:flex;align-items:center;gap:10px}
+.hdr h1{flex:1;font-size:19px;font-weight:800}
+.hdr .step{font-size:14px;font-weight:700;color:var(--muted)}
+.prog{display:flex;gap:6px;margin-top:-6px}
+.prog i{flex:1;height:6px;border-radius:3px;background:rgba(255,255,255,.18)}
+.prog i.on{background:#FF8000}
+.banner{position:relative;height:112px;flex-shrink:0;border-radius:24px;overflow:hidden;padding:18px 20px;display:flex;flex-direction:column;justify-content:center;gap:2px;background:linear-gradient(170deg,#0D4482 0%,#1C6FBF 55%,#4DB6EE 100%);border:2px solid rgba(255,255,255,.14)}
+.banner img{position:absolute;pointer-events:none}
+.banner b{position:relative;font-size:19px;font-weight:800;line-height:1.4}
+.banner span{position:relative;font-size:14px;font-weight:600;color:#E6F4FF}
+.lbl{font-size:17px;font-weight:800;display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.lbl small{font-size:13px;font-weight:600;color:var(--muted)}
+fieldset{margin:0;padding:0;border:0;min-width:0}
+legend{padding:0;margin-bottom:12px;width:100%}
+
+/* ── الدوائرُ الملوّنة (سلالمُ ألوانِ المنصّة، حدٌّ أسودُ ولمعةٌ بيضاء) ── */
+.r-orange{--l:#FF8000;--b:#E04000;--d:#C04000}
+.r-sky{--l:#40C0FF;--b:#2080E0;--d:#1060A0}
+.r-green{--l:#80C020;--b:#4A9018;--d:#356810}
+.r-amber{--l:#FFA000;--b:#C06000;--d:#984800}
+.r-red{--l:#FF4020;--b:#E02000;--d:#B01800}
+.r-ocean{--l:#00A0E0;--b:#0060A0;--d:#004880}
+.r-metal{--l:#A0A0A0;--b:#707070;--d:#404040}
+.grades{display:flex;justify-content:space-between;padding:0 6px}
+.subjects{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:8px;row-gap:14px}
+.cell{display:flex;flex-direction:column;align-items:center;gap:8px}
+.cell .lb{font-size:14px;font-weight:600;color:var(--muted);text-align:center;line-height:1.3}
+.subjects .cell{gap:6px}.subjects .cell .lb{font-size:13px}
+.cell.sel .lb{color:#fff;font-weight:800}
+.circ{position:relative;width:64px;height:64px;border-radius:50%;border:2.5px solid #111;padding:0;cursor:pointer;
+  background:linear-gradient(180deg,var(--l) 0 34%,var(--b) 34% 72%,var(--d) 72% 100%);color:#fff;
+  display:grid;place-items:center;font-size:30px;font-weight:800;line-height:1;
+  -webkit-text-stroke:3px #111;paint-order:stroke fill;transition:transform .12s}
+.circ:active{transform:scale(.94)}
+.circ::before{content:"";position:absolute;top:12%;right:20%;width:32%;height:13%;border-radius:50%;background:rgba(255,255,255,.8);transform:rotate(-24deg)}
+.circ svg{position:relative;width:26px;height:26px}
+.circ.s56{width:56px;height:56px}
+.circ.s48{width:48px;height:48px;font-size:23px;-webkit-text-stroke:2.5px #111}
+.circ.s44{width:44px;height:44px}.circ.s44 svg{width:21px;height:21px}
+.circ[aria-pressed="true"]{box-shadow:0 0 0 4px var(--bg2),0 0 0 7px #fff}
+.circ[aria-pressed="true"]::after{content:"";position:absolute;top:-8px;left:-8px;width:24px;height:24px;border-radius:50%;
+  background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23241E3E' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/14px no-repeat}
+.circ.s48[aria-pressed="true"]::after,.circ.s44[aria-pressed="true"]::after{width:20px;height:20px;top:-7px;left:-7px;background-size:12px}
+
+/* ── الشرائح والصور والنصّ ── */
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{height:32px;padding:0 12px 0 14px;border-radius:16px;background:rgba(255,255,255,.1);font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px}
+.chip i{width:12px;height:12px;border-radius:50%;border:1.5px solid #111;background:var(--b,#A04A90)}
+.photos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.thumb{position:relative;height:124px}
+.thumb img{width:100%;height:100%;object-fit:cover;border:2.5px solid #111;border-radius:18px;display:block;background:#fff}
+.thumb .x{position:absolute;top:-12px;left:-12px;width:44px;height:44px;border:0;padding:0;background:transparent;display:grid;place-items:center;cursor:pointer}
+.thumb .x span{width:26px;height:26px;border-radius:50%;border:2px solid #111;background:#fff;color:#111;display:grid;place-items:center}
+.add{height:124px;border:2px dashed rgba(255,255,255,.4);border-radius:18px;background:rgba(255,255,255,.05);font-size:14px;font-weight:700;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:0;cursor:pointer}
+.bub{position:relative;width:46px;height:46px;border-radius:50%;border:2.5px solid #111;
+  background:linear-gradient(180deg,#FF8000 0 34%,#E04000 34% 72%,#C04000 72% 100%);display:grid;place-items:center;color:#fff}
+.bub::before{content:"";position:absolute;top:12%;right:20%;width:30%;height:12%;border-radius:50%;background:rgba(255,255,255,.8);transform:rotate(-24deg)}
+.bub svg{position:relative}
+textarea{width:100%;border:1.5px solid rgba(255,255,255,.22);border-radius:20px;padding:12px 14px;background:rgba(255,255,255,.07);color:#fff;font-family:inherit;font-size:16px;font-weight:600;line-height:1.6;resize:none}
+textarea::placeholder{color:#A9A2CC}
+textarea:focus{outline:2px solid #FF8000;outline-offset:1px}
+.mic{display:flex;align-items:center;gap:10px}
+.mic .bub{width:44px;height:44px;cursor:pointer;padding:0}
+.mic.rec .bub{background:linear-gradient(180deg,#FF4020 0 34%,#E02000 34% 72%,#B01800 72% 100%);animation:pulse 1.2s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,64,32,.6)}50%{box-shadow:0 0 0 10px rgba(255,64,32,0)}}
+.mic span{font-size:14px;font-weight:600;color:var(--muted)}
+.mic.rec span{color:#FFB4A0;font-weight:700}
+.voice{display:flex;align-items:center;gap:10px;padding:6px 6px 6px 10px;border-radius:24px;background:rgba(255,255,255,.1);border:1px solid var(--line)}
+.voice[hidden]{display:none}
+.voice .pl,.voice .dl{width:44px;height:44px;border-radius:50%;border:0;display:grid;place-items:center;cursor:pointer;padding:0}
+.voice .pl{background:#FF8000;color:#111}
+.voice .dl{background:transparent;color:#fff}
+.voice b{flex:1;font-size:15px;font-weight:700}
+.opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.opt{position:relative;height:64px;border:1.5px solid rgba(255,255,255,.2);border-radius:20px;background:rgba(255,255,255,.06);font-size:15px;font-weight:700;display:flex;align-items:center;gap:10px;padding:0 12px;cursor:pointer;text-align:right}
+.opt i{width:38px;height:38px;flex-shrink:0;border-radius:50%;border:2px solid #111;display:grid;place-items:center}
+.opt[aria-pressed="true"]{border:2px solid #fff;background:rgba(255,255,255,.14);font-weight:800}
+.opt[aria-pressed="true"]::after{content:"";position:absolute;top:-9px;left:-9px;width:22px;height:22px;border-radius:50%;
+  background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C04000' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/13px no-repeat}
+.note{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-radius:16px;background:var(--warn-bg);border:1px solid var(--warn-line);font-size:13.5px;font-weight:600;line-height:1.6;color:var(--warn-ink)}
+.note svg{flex-shrink:0;margin-top:2px}
+.consent{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;border-radius:18px;background:var(--warn-bg);border:1px solid var(--warn-line);cursor:pointer}
+.consent input{width:22px;height:22px;margin:3px 0 0;flex-shrink:0;accent-color:#E04000}
+.consent span{font-size:14.5px;font-weight:600;line-height:1.7;color:var(--warn-ink)}
+.desc{padding:10px 14px;border-radius:16px;background:var(--glass);border:1px solid rgba(255,255,255,.12);font-size:14px;font-weight:600;line-height:1.6;color:#E4DFF7}
+
+/* ── بطاقاتُ نوعِ الرسالة (المعلّمة) ── */
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.tile{position:relative;height:150px;border-radius:22px;border:2px solid rgba(255,255,255,.14);padding:0 6px 12px;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;cursor:pointer;font-size:14px;font-weight:800;line-height:1.35;text-align:center}
+.tile img{position:absolute;top:10px;left:50%;transform:translateX(-50%);pointer-events:none}
+.tile span{position:relative}
+.tile[data-k="today"]{background:linear-gradient(170deg,#34205F 0%,#6A3586 55%,#A9481F 100%)}
+.tile[data-k="notice"]{background:linear-gradient(170deg,#0B2F5A 0%,#0D4482 50%,#1C6FBF 100%)}
+.tile[data-k="homework"]{background:linear-gradient(170deg,#1E3F0C 0%,#2E5C10 50%,#3E7A14 100%)}
+.tile[aria-pressed="true"]{border:3px solid #fff}
+.tile[aria-pressed="true"]::after{content:"";position:absolute;top:8px;left:8px;width:24px;height:24px;border-radius:50%;
+  background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23241E3E' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/14px no-repeat}
+
+/* ── الزرُّ الأساسيّ ── */
+.cta{position:relative;margin-top:auto;height:56px;flex-shrink:0;width:100%;border:2.5px solid #111;border-radius:28px;overflow:hidden;
+  background:linear-gradient(180deg,#E04000 0 55%,#C04000 55% 100%);color:#fff;font-size:19px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;text-decoration:none}
+.cta::before{content:"";position:absolute;top:7px;right:26px;width:46px;height:7px;border-radius:4px;background:rgba(255,255,255,.5)}
+.cta *{position:relative}
+.cta[aria-busy="true"]{opacity:.75;pointer-events:none}
+.cta:focus-visible,.circ:focus-visible,.opt:focus-visible,.tile:focus-visible,.role:focus-visible,.add:focus-visible{outline:3px solid #FFD257;outline-offset:3px}
+.err{min-height:0;font-size:14.5px;font-weight:700;color:#FFB4A0;line-height:1.6}
+.err:empty{display:none}
+.link{height:44px;border:0;background:transparent;color:#FFB070;font-size:16px;font-weight:700;cursor:pointer}
+.warnbox{padding:12px 14px;border-radius:16px;background:var(--warn-bg);border:1px solid var(--warn-line);font-size:14.5px;font-weight:600;line-height:1.7;color:var(--warn-ink)}
+.warnbox[hidden]{display:none}
+
+/* ── وصل الطلب ── */
+.scene{position:relative;height:280px;flex-shrink:0;margin:0 -16px;overflow:hidden}
+.scene img{position:absolute;pointer-events:none}
+.scene .rocket{animation:lift 3.2s ease-in-out infinite}
+@keyframes lift{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.sent-t{text-align:center;display:flex;flex-direction:column;gap:4px}
+.sent-t h1{font-size:30px;font-weight:800;line-height:1.35}
+.sent-t p{font-size:16px;font-weight:600;line-height:1.6;color:var(--soft)}
+.steps{margin:0;padding:14px 16px;list-style:none;border-radius:22px;background:var(--glass);border:1px solid rgba(255,255,255,.12);display:flex;flex-direction:column;gap:12px}
+.steps li{display:flex;align-items:center;gap:12px;font-size:15px;font-weight:700}
+.steps li.wait{color:var(--muted);font-weight:600}
+.steps .dot{width:32px;height:32px;flex-shrink:0;border-radius:50%;display:grid;place-items:center}
+.steps .done .dot{border:2px solid #111;background:linear-gradient(180deg,#80C020 0 40%,#4A9018 40% 100%)}
+.steps .now .dot{border:2.5px solid #FF8000;gap:3px;grid-auto-flow:column}
+.steps .now .dot i{width:4px;height:4px;border-radius:50%;background:#FFB070;animation:blink 1.2s infinite}
+.steps .now .dot i:nth-child(2){animation-delay:.2s}.steps .now .dot i:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,100%{opacity:.3}50%{opacity:1}}
+.steps .wait .dot{border:2px solid rgba(255,255,255,.3)}
+.steps .tag{margin-inline-start:auto;height:24px;padding:0 10px;border-radius:12px;background:rgba(255,128,0,.2);color:#FFC890;font-size:12px;font-weight:700;display:flex;align-items:center}
+.bottom{margin-top:auto;display:flex;flex-direction:column;gap:4px}
+.bottom .cta{margin-top:0}
+
+dialog{max-width:420px;width:calc(100% - 32px);border:1px solid rgba(255,255,255,.18);border-radius:24px;padding:20px;background:#2A2348;color:#fff;font-family:inherit}
+dialog::backdrop{background:rgba(10,8,20,.6)}
+dialog h2{font-size:19px;font-weight:800;margin-bottom:10px}
+dialog ol{margin:0 0 12px;padding:0 20px 0 0;display:flex;flex-direction:column;gap:6px;font-size:15px;font-weight:600;line-height:1.7}
+dialog p{font-size:13.5px;font-weight:600;line-height:1.7;color:var(--muted);margin-bottom:14px}
+dialog .cta{height:48px;font-size:17px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main class="app">
+
+  <!-- ═══ الرئيسية ═══ -->
+  <section class="scr" id="home" aria-labelledby="homeH">
+    <div class="top">
+      <img class="logo" src="images/wa/logo-mark.webp?v=1" alt="شوجب">
+      <button type="button" class="iconbtn" id="helpBtn" aria-label="كيف يعمل المساعد؟">
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 9a2.5 2.5 0 1 1 3.6 2.2c-.7.4-1.1.9-1.1 1.7V14"/><path d="M12 17.5h.01"/></svg>
+      </button>
+    </div>
+    <div class="hello"><span id="greet">أهلاً بكِ</span><h1 id="homeH">كيف نساعدكِ اليوم؟</h1></div>
+    <p class="warnbox" id="noToken" hidden>افتحي هذه الصفحة من زرّ «افتحي مساعد شوجب» في محادثة شوجب على واتساب، ليصلكِ الردّ هناك.</p>
+
+    <button type="button" class="role role-p" data-go="p1">
+      <img src="images/wa/cloud.webp?v=1" alt="" style="left:-16px;top:30px;width:74px;opacity:.9">
+      <img src="images/wa/earth-pad.webp?v=1" alt="" style="left:-20px;bottom:-58px;width:196px">
+      <img src="images/wa/cloud.webp?v=1" alt="" style="left:112px;bottom:26px;width:92px">
+      <span class="rt">أنا وليّة أمر</span>
+      <span class="rs">سؤال عن واجب طفلكِ، وكيف تشرحينه له.</span>
+      <span class="go" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg></span>
+    </button>
+
+    <button type="button" class="role role-t" data-go="t1">
+      <img src="images/wa/moon.webp?v=1" alt="" style="left:-34px;bottom:-66px;width:196px">
+      <img src="images/wa/satellite.webp?v=1" alt="" style="left:132px;bottom:40px;width:86px">
+      <span class="rt">أنا معلّمة</span>
+      <span class="rs" style="color:#F3E8FF">صورة السبّورة تصير رسالةً جاهزةً لجروب الأمهات.</span>
+      <span class="go" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg></span>
+    </button>
+
+    <p class="foot">
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1.4-4.2A8 8 0 1 1 8.4 19z"/></svg>
+      الردّ يصلكِ في محادثة واتساب نفسها
+    </p>
+  </section>
+
+  <!-- ═══ وليّ الأمر ١: الصف والمادة ═══ -->
+  <section class="scr" id="p1" hidden aria-labelledby="p1H">
+    <div class="hdr">
+      <button type="button" class="iconbtn" data-back aria-label="رجوع"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button>
+      <h1 id="p1H">سؤال عن الواجب</h1><span class="step">١ من ٢</span>
+    </div>
+    <div class="prog" aria-hidden="true"><i class="on"></i><i></i></div>
+    <div class="banner">
+      <img src="images/wa/earth-pad.webp?v=1" alt="" style="left:-10px;bottom:-48px;width:124px">
+      <img src="images/wa/cloud.webp?v=1" alt="" style="left:96px;bottom:-6px;width:56px">
+      <b>اختاري صفّ طفلكِ ومادّته</b>
+      <span>نحفظهما لكِ للمرّة القادمة</span>
+    </div>
+    <fieldset><legend class="lbl">الصف</legend><div class="grades" id="pGrades"></div></fieldset>
+    <fieldset><legend class="lbl">المادة</legend><div class="subjects" id="pSubjects"></div></fieldset>
+    <p class="err" id="p1Err" role="alert"></p>
+    <button type="button" class="cta" id="p1Next"><span>التالي</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg></button>
+  </section>
+
+  <!-- ═══ وليّ الأمر ٢: الصورة والسؤال ═══ -->
+  <section class="scr" id="p2" hidden aria-labelledby="p2H">
+    <div class="hdr">
+      <button type="button" class="iconbtn" data-back aria-label="رجوع إلى الصف والمادة"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button>
+      <h1 id="p2H">سؤال عن الواجب</h1><span class="step">٢ من ٢</span>
+    </div>
+    <div class="prog" aria-hidden="true"><i class="on"></i><i class="on"></i></div>
+    <div class="chips" id="pChips"></div>
+
+    <section style="display:flex;flex-direction:column;gap:10px">
+      <h2 class="lbl"><span>صورة الواجب</span><small>حتى ٣ صور</small></h2>
+      <div class="photos" id="pPhotos"></div>
+      <input type="file" id="pFile" accept="image/*" multiple hidden>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:10px">
+      <label class="lbl" for="pText">سؤالكِ</label>
+      <textarea id="pText" rows="2" placeholder="مثلاً: لا أعرف كيف أشرح له الجمع مع الحمل."></textarea>
+      <div class="mic" id="pMic">
+        <button type="button" class="bub" aria-label="سجّلي سؤالكِ بصوتكِ"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/></svg></button>
+        <span aria-live="polite">أو سجّليه بصوتكِ</span>
+      </div>
+      <div class="voice" id="pVoice" hidden></div>
+    </section>
+
+    <fieldset>
+      <legend class="lbl">كيف يصلكِ الردّ؟</legend>
+      <div class="opts">
+        <button type="button" class="opt" data-voice="0" aria-pressed="false">
+          <i style="background:linear-gradient(180deg,#40C0FF 0 40%,#2080E0 40% 100%)"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M5 7h14"/><path d="M5 12h14"/><path d="M5 17h9"/></svg></i>مكتوباً
+        </button>
+        <button type="button" class="opt" data-voice="1" aria-pressed="true">
+          <i style="background:linear-gradient(180deg,#FF8000 0 40%,#E04000 40% 100%)"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M4 10v4"/><path d="M8 7v10"/><path d="M12 4v16"/><path d="M16 8v8"/><path d="M20 10v4"/></svg></i>مكتوباً وصوتيّة
+        </button>
+      </div>
+    </fieldset>
+
+    <p class="note"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFC870" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 7.5h.01"/></svg>يشرح لكِ المساعد الحلّ وطريقة تعليمه لطفلكِ، ولا يحلّ الواجب عنه.</p>
+    <p class="err" id="p2Err" role="alert"></p>
+    <button type="button" class="cta" id="p2Send"><span>أرسلي السؤال</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="transform:scaleX(-1)"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4z"/></svg></button>
+  </section>
+
+  <!-- ═══ المعلّمة ١: نوع الرسالة والصف ═══ -->
+  <section class="scr" id="t1" hidden aria-labelledby="t1H">
+    <div class="hdr">
+      <button type="button" class="iconbtn" data-back aria-label="رجوع"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button>
+      <h1 id="t1H">رسالة لجروب الأمهات</h1><span class="step">١ من ٢</span>
+    </div>
+    <div class="prog" aria-hidden="true"><i class="on"></i><i></i></div>
+    <fieldset>
+      <legend class="lbl">ماذا تُرسلين للأمهات؟</legend>
+      <div class="tiles">
+        <button type="button" class="tile" data-k="today" aria-pressed="true"><img src="images/wa/guide-chat.webp?v=1" alt="" style="width:80px"><span>ماذا تعلّمنا اليوم؟</span></button>
+        <button type="button" class="tile" data-k="notice" aria-pressed="false"><img src="images/wa/satellite.webp?v=1" alt="" style="top:24px;width:90px;transform:translateX(-50%) rotate(-12deg)"><span>إعلان</span></button>
+        <button type="button" class="tile" data-k="homework" aria-pressed="false"><img src="images/wa/guide-confirm.webp?v=1" alt="" style="width:78px"><span>شرح الواجب</span></button>
+      </div>
+    </fieldset>
+    <p class="desc" id="tDesc" aria-live="polite"></p>
+    <fieldset><legend class="lbl"><span>الصف</span><small id="tSaved" hidden>محفوظ من آخر مرّة</small></legend><div class="grades" id="tGrades" style="padding:0 14px"></div></fieldset>
+    <fieldset><legend class="lbl">المادة</legend><div class="subjects" id="tSubjects" style="row-gap:10px"></div></fieldset>
+    <p class="err" id="t1Err" role="alert"></p>
+    <button type="button" class="cta" id="t1Next"><span>التالي</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg></button>
+  </section>
+
+  <!-- ═══ المعلّمة ٢: الصور والتفاصيل ═══ -->
+  <section class="scr" id="t2" hidden aria-labelledby="t2H">
+    <div class="hdr">
+      <button type="button" class="iconbtn" data-back aria-label="رجوع إلى نوع الرسالة"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button>
+      <h1 id="t2H">رسالة لجروب الأمهات</h1><span class="step">٢ من ٢</span>
+    </div>
+    <div class="prog" aria-hidden="true"><i class="on"></i><i class="on"></i></div>
+    <div class="chips" id="tChips"></div>
+
+    <section style="display:flex;flex-direction:column;gap:10px">
+      <h2 class="lbl"><span id="tPhotoL">صور السبّورة أو الواجب</span><small id="tPhotoS">حتى ٣ صور</small></h2>
+      <div class="photos" id="tPhotos"></div>
+      <input type="file" id="tFile" accept="image/*" multiple hidden>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:10px">
+      <label class="lbl" for="tText"><span id="tTextL">ما تريدين إضافته</span><small id="tTextS">اختياري</small></label>
+      <textarea id="tText" rows="2" placeholder="مثلاً: الاختبار القصير يوم الأحد."></textarea>
+      <div class="mic" id="tMic">
+        <button type="button" class="bub" aria-label="سجّلي ملاحظتكِ بصوتكِ"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/></svg></button>
+        <span aria-live="polite">أو سجّليها بصوتكِ</span>
+      </div>
+      <div class="voice" id="tVoice" hidden></div>
+    </section>
+
+    <label class="consent" for="tOk">
+      <input type="checkbox" id="tOk">
+      <span>صوّرتُ السبّورة أو الواجب وحده: بلا وجوه التلاميذ ولا أسمائهم.</span>
+    </label>
+    <p class="err" id="t2Err" role="alert"></p>
+    <button type="button" class="cta" id="t2Send"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13 7l4 4"/></svg><span>اكتبي الرسالة</span></button>
+  </section>
+
+  <!-- ═══ وصل الطلب ═══ -->
+  <section class="scr" id="sent" hidden aria-labelledby="sentH">
+    <div class="scene" aria-hidden="true">
+      <img src="images/wa/moon.webp?v=1" alt="" style="left:28px;top:16px;width:74px">
+      <img class="rocket" src="images/wa/rocket.webp?v=1" alt="" style="right:52px;top:2px;width:80px">
+      <img src="images/wa/earth-pad.webp?v=1" alt="" style="left:50%;margin-left:-98px;bottom:-34px;width:196px">
+      <img src="images/wa/cloud.webp?v=1" alt="" style="right:30px;bottom:6px;width:104px">
+      <img src="images/wa/cloud.webp?v=1" alt="" style="left:20px;bottom:26px;width:76px">
+    </div>
+    <div class="sent-t"><h1 id="sentH">وصل سؤالكِ</h1><p id="sentP">يصلكِ الشرح في محادثة واتساب خلال دقيقة تقريباً.</p></div>
+    <ol class="steps">
+      <li class="done"><span class="dot" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></span><span id="st1">وصل طلبكِ</span></li>
+      <li class="now"><span class="dot" aria-hidden="true"><i></i><i></i><i></i></span><span id="st2">نكتب الشرح لكِ</span><span class="tag">الآن</span></li>
+      <li class="wait"><span class="dot" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9C3E6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1.4-4.2A8 8 0 1 1 8.4 19z"/></svg></span>نرسله إلى واتساب</li>
+    </ol>
+    <div class="bottom">
+      <a class="cta" id="backWa" href="https://wa.me/96871712937"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1.4-4.2A8 8 0 1 1 8.4 19z"/></svg><span>العودة إلى واتساب</span></a>
+      <button type="button" class="link" id="again">سؤال آخر</button>
+    </div>
+  </section>
+
+</main>
+
+<dialog id="help" aria-labelledby="helpH">
+  <h2 id="helpH">كيف يعمل مساعد شوجب؟</h2>
+  <ol>
+    <li>اختاري: أنا وليّة أمر، أو أنا معلّمة.</li>
+    <li>أرفقي صورة الواجب أو السبّورة، أو اكتبي، أو سجّلي بصوتكِ.</li>
+    <li>يصلكِ الردّ في محادثة شوجب على واتساب خلال دقيقة تقريباً.</li>
+  </ol>
+  <p>المساعد للأمهات والمعلّمات: يشرح ولا يحلّ الواجب عن الطفل، والمعلّمة هي المرجع. صوّري الكتاب أو السبّورة وحدها، بلا وجوه الأطفال ولا أسمائهم. وهو مساعدٌ آليّ يعمل بالذكاء الاصطناعيّ، في مرحلة تجربة.</p>
+  <form method="dialog"><button class="cta" type="submit"><span>فهمت</span></button></form>
+</dialog>
+
+<script src="js/vendor/opus-recorder/recorder.min.js?v=1"></script>
+<script>
+(function () {
+  'use strict';
+  var HOOK  = 'https://shoogp.app.n8n.cloud/webhook/shoogp-ask';
+  var RELAY = 'https://deft-quokka-075818.netlify.app/n8n/shoogp-ask';   // احتياطٌ للشبكاتِ التي تحجبُ n8n.cloud
+  var ENC   = 'js/vendor/opus-recorder/encoderWorker.min.js?v=1';
+  var KEY   = 'shoogp.ask';
+  var MAXF  = 3, MAXREC = 120;
+  var T = (new URLSearchParams(location.search).get('t') || '').trim();
+  var $ = function (id) { return document.getElementById(id); };
+  var AR = '٠١٢٣٤٥٦٧٨٩';
+  var ar = function (n) { return String(n).replace(/\d/g, function (d) { return AR.charAt(+d); }); };
+  var mmss = function (s) { return ar(Math.floor(s / 60) + ':' + ('0' + (s % 60)).slice(-2)); };
+
+  var GRADES = [
+    { k: 1, n: 'الأول', c: 'orange' }, { k: 2, n: 'الثاني', c: 'sky' },
+    { k: 3, n: 'الثالث', c: 'green' }, { k: 4, n: 'الرابع', c: 'amber' }
+  ];
+  var IC = {
+    sci: '<path d="M9 3h6"/><path d="M10 3v6l-5 9a2 2 0 0 0 1.7 3h10.6a2 2 0 0 0 1.7-3l-5-9V3"/><path d="M7.5 15h9"/>',
+    math: '<path d="M7 4v6"/><path d="M4 7h6"/><path d="M14 7h6"/><path d="M5 15l4 4"/><path d="M9 15l-4 4"/><path d="M14 17h6"/><path d="M17 14.2v.01"/><path d="M17 19.8v.01"/>',
+    lug: '<path d="M3 5h6a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H3z"/><path d="M21 5h-6a3 3 0 0 0-3 3v12a2 2 0 0 1 2-2h7z"/>',
+    en: '<path d="M4 5h16v11H10l-5 4v-4H4z"/><path d="M8 9h8"/><path d="M8 12h5"/>',
+    din: '<path d="M15 4a8 8 0 1 0 5.5 13A7 7 0 0 1 15 4z"/>',
+    it: '<rect x="5" y="5" width="14" height="10" rx="1.5"/><path d="M3 19h18"/>',
+    hw: '<path d="M6 21V4"/><path d="M6 4h12l-2.5 4L18 12H6"/>'
+  };
+  var SUBJ = [
+    { k: 'sci', n: 'العلوم', c: 'green' }, { k: 'math', n: 'الرياضيات', c: 'sky' },
+    { k: 'lug', n: 'أحب لغتي', c: 'orange' }, { k: 'en', n: 'الإنجليزية', c: 'red' },
+    { k: 'din', n: 'ديني حياتي', c: 'ocean' }, { k: 'it', n: 'عالمي الرقمي', c: 'metal' },
+    { k: 'hw', n: 'الهوية والمواطنة', c: 'amber' }
+  ];
+  var RAMP = { orange: '#E04000', sky: '#2080E0', green: '#4A9018', amber: '#C06000', red: '#E02000', ocean: '#0060A0', metal: '#707070' };
+  var KIND = {
+    today: { n: 'ماذا تعلّمنا اليوم؟', d: 'صورة السبّورة تصير ملخّصاً للدرس، ونشاطاً صغيراً تفعله الأم مع طفلها في البيت.', ph: 'صور السبّورة أو الواجب', note: 'ما تريدين إضافته' },
+    notice: { n: 'إعلان', d: 'اكتبي أو سجّلي ما تريدين إبلاغه (اختبار، أدوات، موعد) فيصير إعلاناً مرتّباً للجروب.', ph: 'صورة مع الإعلان', note: 'نصّ الإعلان' },
+    homework: { n: 'شرح الواجب', d: 'صورة الواجب تصير شرحاً لأسئلته للأمهات، وكيف يساعدن أطفالهن فيه دون أن يحللنه عنهم.', ph: 'صور الواجب', note: 'ما تريدين إضافته' }
+  };
+
+  var S = {
+    p: { g: 0, s: '', voice: true, files: [], audio: null },
+    t: { g: 0, s: '', k: 'today', files: [], audio: null },
+    role: ''
+  };
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { saved = {}; }
+  if (saved.p) { S.p.g = +saved.p.g || 0; S.p.s = saved.p.s || ''; S.p.voice = saved.p.voice !== false; }
+  if (saved.t) { S.t.g = +saved.t.g || 0; S.t.s = saved.t.s || ''; S.t.k = KIND[saved.t.k] ? saved.t.k : 'today'; }
+  function save() {
+    try {
+      localStorage.setItem(KEY, JSON.stringify({
+        role: S.role, p: { g: S.p.g, s: S.p.s, voice: S.p.voice }, t: { g: S.t.g, s: S.t.s, k: S.t.k }
+      }));
+    } catch (e) {}
+  }
+  var gName = function (k) { var g = GRADES.filter(function (x) { return x.k === k; })[0]; return g ? g.n : ''; };
+  var sOf = function (k) { return SUBJ.filter(function (x) { return x.k === k; })[0] || null; };
+
+  // ── التنقّل (زرُّ الرجوعِ في الهاتفِ يعودُ خطوةً) ──
+  function show(id, push) {
+    Array.prototype.forEach.call(document.querySelectorAll('.scr'), function (s) { s.hidden = s.id !== id; });
+    if (push !== false) history.pushState({ s: id }, '');
+    window.scrollTo(0, 0);
+    if (id === 'p2') renderChips('p');
+    if (id === 't2') { renderChips('t'); renderTeacher2(); }
+  }
+  window.addEventListener('popstate', function (e) { stopRec(); show((e.state && e.state.s) || 'home', false); });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-back]'), function (b) { b.addEventListener('click', function () { history.back(); }); });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-go]'), function (b) {
+    b.addEventListener('click', function () { S.role = b.dataset.go === 'p1' ? 'p' : 't'; save(); show(b.dataset.go); });
+  });
+
+  // ── الدوائر ──
+  function cell(list, f, kind, size) {
+    var sel = kind === 'g' ? S[f].g : S[f].s;
+    return list.map(function (x) {
+      var on = x.k === sel;
+      var inner = kind === 'g' ? ar(x.k) : '<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">' + IC[x.k] + '</svg>';
+      return '<div class="cell' + (on ? ' sel' : '') + '"><button type="button" class="circ r-' + x.c + ' ' + size + '" data-' + kind + '="' + x.k + '" aria-pressed="' + on + '" aria-label="' + (kind === 'g' ? 'الصف ' : '') + x.n + '">' + inner + '</button><span class="lb" aria-hidden="true">' + x.n + '</span></div>';
+    }).join('');
+  }
+  function renderCircles() {
+    $('pGrades').innerHTML = cell(GRADES, 'p', 'g', '');
+    $('pSubjects').innerHTML = cell(SUBJ, 'p', 's', 's56');
+    $('tGrades').innerHTML = cell(GRADES, 't', 'g', 's48');
+    $('tSubjects').innerHTML = cell(SUBJ, 't', 's', 's44');
+  }
+  function bindCircles(id, f) {
+    $(id).addEventListener('click', function (e) {
+      var b = e.target.closest('.circ'); if (!b) return;
+      if (b.dataset.g) S[f].g = +b.dataset.g; else S[f].s = b.dataset.s;
+      $(f + '1Err').textContent = '';
+      save(); renderCircles();
+      var again = document.querySelector('#' + id + ' [data-' + (b.dataset.g ? 'g' : 's') + '="' + (b.dataset.g || b.dataset.s) + '"]');
+      if (again) again.focus();
+    });
+  }
+  ['pGrades', 'pSubjects'].forEach(function (id) { bindCircles(id, 'p'); });
+  ['tGrades', 'tSubjects'].forEach(function (id) { bindCircles(id, 't'); });
+
+  function renderChips(f) {
+    var st = S[f], s = sOf(st.s), out = [];
+    if (f === 't') out.push(['#A04A90', KIND[st.k].n]);
+    if (s) out.push([RAMP[s.c], s.n]);
+    if (st.g) out.push([RAMP[GRADES[st.g - 1].c], 'الصف ' + gName(st.g)]);
+    $(f + 'Chips').innerHTML = out.map(function (c) { return '<span class="chip"><i style="--b:' + c[0] + '"></i>' + c[1] + '</span>'; }).join('');
+  }
+
+  // ── المعلّمة: نوعُ الرسالة ──
+  function renderKind() {
+    Array.prototype.forEach.call(document.querySelectorAll('.tile'), function (t) { t.setAttribute('aria-pressed', String(t.dataset.k === S.t.k)); });
+    $('tDesc').textContent = KIND[S.t.k].d;
+  }
+  document.querySelector('.tiles').addEventListener('click', function (e) {
+    var t = e.target.closest('.tile'); if (!t) return;
+    S.t.k = t.dataset.k; save(); renderKind();
+  });
+  function renderTeacher2() {
+    var k = KIND[S.t.k];
+    $('tPhotoL').textContent = k.ph;
+    $('tPhotoS').textContent = S.t.k === 'notice' ? 'اختياري' : 'حتى ٣ صور';
+    $('tTextL').textContent = k.note;
+    $('tTextS').textContent = S.t.k === 'notice' ? '' : 'اختياري';
+  }
+
+  $('p1Next').addEventListener('click', function () {
+    if (!S.p.g || !S.p.s) { $('p1Err').textContent = !S.p.g ? 'اختاري صفّ طفلكِ.' : 'اختاري المادة.'; return; }
+    show('p2');
+  });
+  $('t1Next').addEventListener('click', function () {
+    if (!S.t.g || !S.t.s) { $('t1Err').textContent = !S.t.g ? 'اختاري الصف.' : 'اختاري المادة.'; return; }
+    show('t2');
+  });
+
+  // ── نوعُ الردّ (وليّ الأمر) ──
+  function renderVoiceOpt() {
+    Array.prototype.forEach.call(document.querySelectorAll('.opt'), function (o) { o.setAttribute('aria-pressed', String((o.dataset.voice === '1') === S.p.voice)); });
+  }
+  document.querySelector('.opts').addEventListener('click', function (e) {
+    var o = e.target.closest('.opt'); if (!o) return;
+    S.p.voice = o.dataset.voice === '1'; save(); renderVoiceOpt();
+  });
+
+  // ── الصور: تُصغَّرُ قبلَ الرفع ──
+  function shrink(file) {
+    return new Promise(function (res, rej) {
+      var u = URL.createObjectURL(file), img = new Image();
+      img.onload = function () {
+        var w = img.naturalWidth, h = img.naturalHeight, k = Math.min(1, 1600 / Math.max(w, h));
+        var c = document.createElement('canvas'); c.width = Math.round(w * k); c.height = Math.round(h * k);
+        c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+        URL.revokeObjectURL(u);
+        c.toBlob(function (b) { b ? res(b) : rej(new Error('blob')); }, 'image/jpeg', 0.82);
+      };
+      img.onerror = function () { URL.revokeObjectURL(u); rej(new Error('img')); };
+      img.src = u;
+    });
+  }
+  function renderPhotos(f) {
+    var st = S[f], html = st.files.map(function (x, i) {
+      return '<div class="thumb"><img src="' + x.url + '" alt="الصورة ' + ar(i + 1) + '"><button type="button" class="x" data-i="' + i + '" aria-label="حذف الصورة ' + ar(i + 1) + '"><span><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"><path d="M6 6l12 12"/><path d="M18 6L6 18"/></svg></span></button></div>';
+    }).join('');
+    if (st.files.length < MAXF) html += '<button type="button" class="add"><span class="bub" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></span>أضيفي صورة</button>';
+    $(f + 'Photos').innerHTML = html;
+  }
+  ['p', 't'].forEach(function (f) {
+    $(f + 'Photos').addEventListener('click', function (e) {
+      var x = e.target.closest('.x');
+      if (x) { var it = S[f].files.splice(+x.dataset.i, 1)[0]; if (it) URL.revokeObjectURL(it.url); renderPhotos(f); return; }
+      if (e.target.closest('.add')) $(f + 'File').click();
+    });
+    $(f + 'File').addEventListener('change', function () {
+      var list = Array.prototype.slice.call(this.files || []).slice(0, MAXF - S[f].files.length);
+      this.value = '';
+      var errEl = $(f + '2Err'); errEl.textContent = '';
+      list.reduce(function (p, file) {
+        return p.then(function () {
+          return shrink(file).then(function (b) { S[f].files.push({ blob: b, url: URL.createObjectURL(b) }); renderPhotos(f); })
+            .catch(function () { errEl.textContent = 'تعذّرت قراءة إحدى الصور. جرّبي صورةً أخرى.'; });
+        });
+      }, Promise.resolve());
+    });
+  });
+
+  // ── التسجيلُ الصوتيّ: OGG/Opus (يقبلُه واتساب وجيميناي) ──
+  var rec = null;
+  function micUi(f, on, secs) {
+    var box = $(f + 'Mic'), sp = box.querySelector('span'), b = box.querySelector('button');
+    box.classList.toggle('rec', !!on);
+    sp.textContent = on ? 'جارٍ التسجيل \u2066' + mmss(secs || 0) + '\u2069 — اضغطي للإيقاف' : (f === 'p' ? 'أو سجّليه بصوتكِ' : 'أو سجّليها بصوتكِ');
+    b.setAttribute('aria-label', on ? 'إيقاف التسجيل' : (f === 'p' ? 'سجّلي سؤالكِ بصوتكِ' : 'سجّلي ملاحظتكِ بصوتكِ'));
+  }
+  function renderVoice(f) {
+    var v = $(f + 'Voice'), a = S[f].audio;
+    v.hidden = !a;
+    if (!a) { v.innerHTML = ''; return; }
+    v.innerHTML = '<button type="button" class="pl" aria-label="استماع إلى التسجيل"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 12L7 5v14z"/></svg></button><b>تسجيلكِ <bdi dir="ltr">' + mmss(a.secs) + '</bdi></b><button type="button" class="dl" aria-label="حذف التسجيل"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16"/><path d="M9 7V4h6v3"/><path d="M6 7l1 13h10l1-13"/></svg></button>';
+    v.querySelector('.pl').onclick = function () { try { new Audio(a.url).play(); } catch (e) {} };
+    v.querySelector('.dl').onclick = function () { URL.revokeObjectURL(a.url); S[f].audio = null; renderVoice(f); };
+  }
+  function stopRec() {
+    if (!rec) return;
+    var r = rec; rec = null; clearInterval(r.tick);
+    r.secs = Math.max(1, Math.round((Date.now() - r.t0) / 1000));
+    micUi(r.f, false);
+    try { r.inst.stop(); } catch (e) {}
+  }
+  function startRec(f) {
+    var errEl = $(f + '2Err'); errEl.textContent = '';
+    if (!(window.Recorder && Recorder.isRecordingSupported())) {
+      errEl.textContent = 'التسجيل غير متاح في هذا المتصفح. اكتبي سؤالكِ، أو أرسلي صوتيّتكِ في محادثة واتساب.'; return;
+    }
+    var r = { f: f, t0: 0, secs: 0, tick: 0 };
+    r.inst = new Recorder({ encoderPath: ENC, numberOfChannels: 1, encoderSampleRate: 16000, encoderBitRate: 24000, encoderApplication: 2048, streamPages: false });
+    r.inst.ondataavailable = function (arr) {
+      var blob = new Blob([arr], { type: 'audio/ogg' });
+      if (S[f].audio) URL.revokeObjectURL(S[f].audio.url);
+      S[f].audio = { blob: blob, url: URL.createObjectURL(blob), secs: r.secs };
+      renderVoice(f);
+    };
+    r.inst.start().then(function () {
+      rec = r; r.t0 = Date.now(); micUi(f, true, 0);
+      r.tick = setInterval(function () {
+        var s = Math.round((Date.now() - r.t0) / 1000);
+        micUi(f, true, s);
+        if (s >= MAXREC) stopRec();
+      }, 500);
+    }).catch(function () {
+      errEl.textContent = 'لم نستطع فتح الميكروفون. اسمحي للصفحة باستعماله، أو أرسلي صوتيّتكِ في محادثة واتساب.';
+    });
+  }
+  ['p', 't'].forEach(function (f) {
+    $(f + 'Mic').querySelector('button').addEventListener('click', function () {
+      if (rec) { var mine = rec.f === f; stopRec(); if (mine) return; }
+      startRec(f);
+    });
+  });
+
+  // ── الإرسال ──
+  function post(fd) {
+    return fetch(HOOK, { method: 'POST', body: fd })
+      .catch(function (e) { if (e instanceof TypeError) return fetch(RELAY, { method: 'POST', body: fd }); throw e; })
+      .then(function (r) { return r.json().catch(function () { return { ok: false }; }); });
+  }
+  function send(f) {
+    var st = S[f], btn = $(f + '2Send'), errEl = $(f + '2Err');
+    var text = ($(f + 'Text').value || '').trim();
+    errEl.textContent = '';
+    if (rec) { errEl.textContent = 'أوقفي التسجيل أولاً.'; return; }
+    if (!T) { errEl.textContent = 'افتحي هذه الصفحة من زرّ «افتحي مساعد شوجب» في محادثة شوجب على واتساب.'; return; }
+    if (!st.files.length && !text && !st.audio) {
+      errEl.textContent = f === 'p' ? 'أرفقي صورة الواجب، أو اكتبي سؤالكِ، أو سجّليه بصوتكِ.' : (st.k === 'notice' ? 'اكتبي نصّ الإعلان أو سجّليه بصوتكِ.' : 'أرفقي صورة السبّورة أو الواجب.');
+      return;
+    }
+    if (f === 't' && st.files.length && !$('tOk').checked) { errEl.textContent = 'أكّدي أنّ الصور بلا وجوه التلاميذ ولا أسمائهم.'; $('tOk').focus(); return; }
+    var s = sOf(st.s), fd = new FormData();
+    fd.append('t', T);
+    fd.append('role', f === 'p' ? 'parent' : 'teacher');
+    fd.append('grade', String(st.g)); fd.append('gradeName', gName(st.g));
+    fd.append('subject', st.s); fd.append('subjectName', s ? s.n : '');
+    fd.append('kind', f === 't' ? st.k : ''); fd.append('kindName', f === 't' ? KIND[st.k].n : '');
+    fd.append('voice', f === 'p' && st.voice ? '1' : '0');
+    fd.append('text', text.slice(0, 1500));
+    st.files.forEach(function (x, i) { fd.append('img' + i, x.blob, 'img' + i + '.jpg'); });
+    if (st.audio) fd.append('audio', st.audio.blob, 'voice.ogg');
+    btn.setAttribute('aria-busy', 'true');
+    var lab = btn.querySelector('span'), was = lab.textContent; lab.textContent = 'جارٍ الإرسال…';
+    post(fd).then(function (j) {
+      if (j && j.ok) {
+        st.files.forEach(function (x) { URL.revokeObjectURL(x.url); });
+        st.files = []; if (st.audio) URL.revokeObjectURL(st.audio.url); st.audio = null;
+        $(f + 'Text').value = ''; if (f === 't') $('tOk').checked = false;
+        renderPhotos(f); renderVoice(f);
+        $('sentH').textContent = f === 'p' ? 'وصل سؤالكِ' : 'وصل طلبكِ';
+        $('sentP').textContent = f === 'p' ? 'يصلكِ الشرح في محادثة واتساب خلال دقيقة تقريباً.' : 'تصلكِ الرسالة الجاهزة في محادثة واتساب خلال دقيقة تقريباً.';
+        $('st2').textContent = f === 'p' ? 'نكتب الشرح لكِ' : 'نكتب الرسالة';
+        $('again').textContent = f === 'p' ? 'سؤال آخر' : 'رسالة أخرى';
+        $('again').dataset.f = f;
+        show('sent');
+      } else {
+        errEl.textContent = (j && j.message) || 'تعذّر الإرسال. حاولي مرّة أخرى بعد قليل.';
+      }
+    }).catch(function () {
+      errEl.textContent = 'تعذّر الاتصال. تأكّدي من الإنترنت وحاولي مرّة أخرى.';
+    }).then(function () { btn.removeAttribute('aria-busy'); lab.textContent = was; });
+  }
+  $('p2Send').addEventListener('click', function () { send('p'); });
+  $('t2Send').addEventListener('click', function () { send('t'); });
+  $('again').addEventListener('click', function () { show(this.dataset.f === 't' ? 't2' : 'p2'); });
+
+  // ── المساعدة والتحيّة ──
+  $('helpBtn').addEventListener('click', function () { var d = $('help'); if (d.showModal) d.showModal(); else d.setAttribute('open', ''); });
+  var hr = new Date().getHours();
+  $('greet').textContent = hr < 12 ? 'صباح الخير' : 'مساء الخير';
+  $('noToken').hidden = !!T;
+
+  // ── البدء: من آخر مسارٍ اختارته ──
+  renderCircles(); renderKind(); renderVoiceOpt(); renderPhotos('p'); renderPhotos('t');
+  history.replaceState({ s: 'home' }, '');
+  if (T && saved.role === 'p') { S.role = 'p'; show('p1'); }
+  else if (T && saved.role === 't') { S.role = 't'; show('t1'); }
+  if (saved.t && saved.t.g) $('tSaved').hidden = false;
+})();
+</script>
+</body>
+</html>
