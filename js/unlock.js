@@ -1272,7 +1272,7 @@
         '<span class="t2">' + last + '</span></div>' +
       '<div class="fh-art" aria-hidden="true"></div>' +
       '<div class="fh-sub">جميع الوحدات متاحة' +
-        (SALES.until ? ' حتى تاريخ <b>' + SALES.until + '</b>' : '') + '</div>';
+        (SALES.until ? ' حتى <b>' + SALES.until + '</b>' : '') + '</div>';
     home.insertBefore(b, home.firstChild);
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', freeBanner);
