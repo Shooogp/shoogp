@@ -1010,7 +1010,7 @@
      والزرُّ ينتهي عندَ 46، ولا هامشَ شفّافاً في `logo-mark.png` يخفيه — مقيسٌ:
      أوّلُ صفٍّ معتمٍ = 0). العنصرُ في التدفّقِ **يحجزُ مساحتَه** فيستحيلُ التراكب. */
 
-  var devWrap = null, devBtn = null, devStats = null, devDash = null, devAsst = null, devPoster = null;
+  var devWrap = null, devBtn = null, devStats = null, devDash = null, devAsst = null, devPoster = null, devPapers = null;
 
   /* ═════════════ مراجعُ المقارنةِ في شارةِ العدّاد ═════════════
      كانت الشارةُ تعرضُ «اليوم» بجانبَ «أمس» بلا مرجع — فيُقارَنُ **نصفُ يومٍ
@@ -1156,6 +1156,7 @@
     if (devDash) devDash.style.zoom = String(1 / z);
     if (devAsst) devAsst.style.zoom = String(1 / z);
     if (devPoster) devPoster.style.zoom = String(1 / z);
+    if (devPapers) devPapers.style.zoom = String(1 / z);
   }
 
   function paintBtn() {
@@ -1238,6 +1239,14 @@
     devPoster.textContent = '🖨️ منشور المشغل';
     devPoster.title = 'منشور مشاغل شوجب للطباعة';
     devWrap.appendChild(devPoster);
+    /* بابُ الأوراقِ الورقيّة (٢٠٢٦-١١-١١) — `papers.html` خلفَ وضعِ المطوّرِ نفسِه (‏`DEV_ONLY` فيها)،
+       وهذه الإشارةُ في المتصفّحِ قائمةٌ هنا سلفاً فتفتحُ بلا وسيط. */
+    devPapers = document.createElement('a');
+    devPapers.className = 'lockdev-btn lockdev-dash';
+    devPapers.href = 'papers.html';
+    devPapers.textContent = '📝 الأوراق الورقية';
+    devPapers.title = 'أسئلة قصيرة واختبارات قصيرة للطباعة — العلوم';
+    devWrap.appendChild(devPapers);
     app.insertBefore(devWrap, app.firstChild);   // أوّلُ عنصرٍ في `.app` — فوقَ الترويسة
     devBtn.addEventListener('click', function () { setLockOff(!lockOff); });
     paintBtn();
