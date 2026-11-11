@@ -1,10 +1,13 @@
 // مولّد مكتبة الأوراق: يرسل كل مهمّة إلى وكيل n8n، يفحص الناتج، ويطلب تصحيحاً مرة واحدة عند المخالفة.
 const fs = require('fs'), path = require('path');
-const { validatePaper } = require('./validate.js');
+const { validatePaper } = require('./validate.cjs');
 let jsonrepair = s => s;
 try { ({ jsonrepair } = require('jsonrepair')); } catch (e) { /* اختياري: npm i jsonrepair لإصلاح JSON المكسور */ }
 const HOOK = 'https://shoogp.app.n8n.cloud/webhook/shoogp-papers-x7q2';
-const SYS = fs.readFileSync(path.join(__dirname, 'sys-prompt.txt'), 'utf8');
+const PICS = require('./pics.cjs');
+// قائمةُ الرسومِ تُلحَقُ بالتعليماتِ هنا لا في الملفّ — فتتبعُ سِجلَّ js/qpics.js كلّما زادت رسومُه.
+const SYS = fs.readFileSync(path.join(__dirname, 'sys-prompt.txt'), 'utf8') +
+  '\n\nالرسوم المتاحة (' + PICS.words.length + ' كلمة):\n' + PICS.words.join('، ');
 const BANK = JSON.parse(fs.readFileSync(path.join(__dirname, 'bank-sci.json'), 'utf8'));
 const OUT = path.join(__dirname, 'out');  // bank-sci.json وout/ ملفّات عمل محلية لا تُودَع
 fs.mkdirSync(OUT, { recursive: true });
@@ -52,12 +55,12 @@ async function run(job, model) {
     catch (e) { return { paper: null, raw: r.text || '{}', err: r.error || 'لا ورقة' }; }
   };
   let r = await call(base), attempts = 1, firstErrors = null;
-  let t = take(r), paper = t.paper, errors = paper ? validatePaper(paper, req) : [t.err];
+  let t = take(r), paper = t.paper, errors = paper ? validatePaper(paper, req, PICS) : [t.err];
   while (errors.length && attempts < 3) {
     if (!firstErrors) firstErrors = errors;
     r = await call({ ...base, previous: t.raw, errors });
     attempts++;
-    t = take(r); paper = t.paper; errors = paper ? validatePaper(paper, req) : [t.err];
+    t = take(r); paper = t.paper; errors = paper ? validatePaper(paper, req, PICS) : [t.err];
   }
   const rec = { id: job.id, kind: job.kind, grade: job.grade, domain: job.domain, unitNo: job.unitNo, unit: job.unit,
     lessons: job.lessons.map(l => ({ id: l.id, title: l.title })), model: r.model, attempts, ok: errors.length === 0,
@@ -74,6 +77,7 @@ async function run(job, model) {
   const skipDone = args.includes('--skip-done');
   let J = jobs();
   if (only.length) J = J.filter(j => only.includes(j.id));
+  if (args.includes('--sq')) J = J.filter(j => j.kind === 'short-questions');   // الأسئلةُ القصيرةُ وحدَها
   if (skipDone) J = J.filter(j => { try { return !JSON.parse(fs.readFileSync(path.join(OUT, j.id + '.json'))).ok; } catch { return true; } });
   console.log('jobs', J.length, 'model', model);
   let i = 0;

@@ -1,12 +1,17 @@
-// فحص ورقة الوكيل مقابل مواصفات الوثيقة — نصّ واحد يُلصق في عقدة n8n ويُستعمل محلياً.
-function validatePaper(p, req) {
+// فحص ورقة الوكيل مقابل مواصفات الوثيقة والنموذج المعتمد (٢٠٢٦-١١-١١).
+// pics (اختياري): { keys: Set, key: fn } من pics.cjs — لفحص أنّ كلَّ كلمةٍ مطلوبٍ رسمُها لها رسمٌ في سِجلّ شوجب.
+function validatePaper(p, req, pics) {
   const E = [];
   const strip = s => String(s || '').replace(/[ً-ْٰـ]/g, '').replace(/\s+/g, ' ').trim();
   if (!p || typeof p !== 'object') return ['الناتج ليس كائن JSON'];
   const items = Array.isArray(p.items) ? p.items : null;
   if (!items) return ['لا توجد مصفوفة items'];
   const isTest = req.kind === 'short-test';
-  const TYPES = ['mcq','tf','correct-word','matching','fill','classify','sequence','exclude','label','mindmap','short','data-table'];
+  const TYPES = ['mcq','tf','correct-word','matching','fill','classify','sequence','exclude','label','mindmap','short','data-table','opinion'];
+  // أنماطُ النموذجِ المعتمدِ للأسئلة القصيرة: اختيارٌ بالتظليل، توصيلٌ بالصور، سؤالُ رأيٍ (توافقه؟ فسّر، ارسم).
+  const CORE = ['mcq','matching','opinion'];
+  const hasPic = w => !pics || pics.keys.has(pics.key(w));
+  const noPic = (list, at, what) => { const miss = list.filter(w => !hasPic(w)); if (miss.length) E.push(`${at}: ${what} بلا رسم في سجلّ شوجب: ${miss.join('، ')}`); };
   const LEVELS = ['knowledge','application','reasoning'];
   const DIFF = { L: 0, M: 1, H: 2 };
   const seeds = {}; const lessonIds = {};
@@ -60,6 +65,8 @@ function validatePaper(p, req) {
         if (!(Number.isInteger(it.answer) && it.answer >= 0 && it.answer < arr(it.options).length)) E.push(`${at}: answer خارج البدائل`);
         if (new Set(arr(it.options).map(strip)).size !== arr(it.options).length) E.push(`${at}: بدائل مكرّرة`);
         if (Number(it.marks) !== 1) E.push(`${at}: mcq بدرجة واحدة`);
+        if (it.pics === true) noPic(arr(it.options), at, 'بدائل');
+        if (it.stemPic) noPic([it.stemPic], at, 'stemPic');
         break;
       case 'tf':
         if (isTest) E.push(`${at}: tf ممنوع في الاختبار القصير`);
@@ -73,7 +80,15 @@ function validatePaper(p, req) {
       case 'matching':
         if (arr(it.pairs).length < 3 || arr(it.pairs).length > 4) E.push(`${at}: matching يحتاج ٣–٤ أزواج`);
         if (arr(it.pairs).some(x => !x || !x.a || !x.b)) E.push(`${at}: زوج ناقص`);
-        if (isTest && !it.extra) E.push(`${at}: matching في الاختبار يحتاج extra`);
+        if (!it.extra) E.push(`${at}: matching يحتاج extra (بند زائد في العمود الثاني)`);
+        if (it.pics === true || it.pics === 'a') noPic(arr(it.pairs).map(x => x && x.a), at, 'العمود الأول');
+        if (it.pics === true || it.pics === 'b') noPic(arr(it.pairs).map(x => x && x.b).concat(it.extra ? [it.extra] : []), at, 'العمود الثاني');
+        break;
+      case 'opinion':
+        if (isTest) E.push(`${at}: opinion للأسئلة القصيرة فقط`);
+        if (!it.scenario || !it.question || !it.explain) E.push(`${at}: opinion يحتاج scenario وquestion وexplain`);
+        if (!['نعم','لا'].includes(strip(it.answer))) E.push(`${at}: answer في opinion «نعم» أو «لا»`);
+        if (it.scenePics) { if (!Array.isArray(it.scenePics) || it.scenePics.length > 3) E.push(`${at}: scenePics مصفوفة من ١–٣`); else noPic(it.scenePics, at, 'scenePics'); }
         break;
       case 'fill': {
         const blanks = (String(it.text || '').match(/\{\}/g) || []).length;
@@ -84,6 +99,7 @@ function validatePaper(p, req) {
       case 'classify':
         if (arr(it.groups).length < 2 || arr(it.groups).length > 3) E.push(`${at}: classify يحتاج مجموعتين أو ثلاثاً`);
         if (arr(it.groups).some(g => !g || !g.name || arr(g.items).length < 2)) E.push(`${at}: مجموعة ناقصة`);
+        if (it.pics === true) noPic(arr(it.groups).flatMap(g => arr(g && g.items)), at, 'عناصر');
         break;
       case 'sequence':
         if (arr(it.steps).length < 3 || arr(it.steps).length > 5) E.push(`${at}: sequence يحتاج ٣–٥ خطوات`);
@@ -92,6 +108,7 @@ function validatePaper(p, req) {
         if (arr(it.options).length !== 4) E.push(`${at}: exclude يحتاج ٤ عناصر`);
         if (!(Number.isInteger(it.answer) && it.answer >= 0 && it.answer < arr(it.options).length)) E.push(`${at}: answer خارج العناصر`);
         if (Number(it.marks) !== 1) E.push(`${at}: exclude بدرجة واحدة`);
+        if (it.pics === true) noPic(arr(it.options), at, 'عناصر');
         break;
       case 'label': {
         const s = seeds[it.seed];
@@ -127,6 +144,7 @@ function validatePaper(p, req) {
     if (new Set(types).size !== types.length) E.push('نوع مفردة مكرّر في الورقة');
     if (Object.keys(levels).length < 2) E.push('الورقة بمستوى معرفي واحد');
     if (req.domain === 'inquiry' && !(req.grade === 1 || req.grade === 2)) E.push('أسئلة الاستقصاء القصيرة للصفين ١–٢ فقط');
+    if (types.filter(t => CORE.includes(t)).length < 2) E.push('الورقة تحتاج نمطين على الأقل من أنماط النموذج: mcq وmatching وopinion');
   }
   return E;
 }

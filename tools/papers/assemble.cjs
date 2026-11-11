@@ -1,6 +1,7 @@
 // يجمع أوراق out/ في ملفّ لكلّ صفّ: data/papers/sci-g<n>.json، ويُلحق بمفردات label صورة الأصل ومواضع أجزائه.
 const fs = require('fs'), path = require('path');
-const { validatePaper } = require('./validate.js');
+const { validatePaper } = require('./validate.cjs');
+const PICS = require('./pics.cjs');
 const BANK = JSON.parse(fs.readFileSync(path.join(__dirname, 'bank-sci.json'), 'utf8'));
 const OUT = path.join(__dirname, 'out');
 const DEST = process.argv[2];
@@ -24,7 +25,7 @@ for (const g of Object.values(BANK)) {
       }
     }
     const req = { kind: rec.kind, grade: rec.grade, domain: rec.domain, lessons: g.units.flatMap(u => u.lessons).filter(l => rec.lessons.some(x => x.id === l.id)) };
-    rec.errors = validatePaper(rec.paper, req);
+    rec.errors = validatePaper(rec.paper, req, PICS);
     rec.ok = rec.errors.length === 0;
     delete rec.firstErrors;
     lib.papers[rec.id] = rec;

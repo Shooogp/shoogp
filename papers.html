@@ -24,7 +24,7 @@
   ═══════════════════════════════════════════════════════════════
   الأوراقُ الورقيةُ — مكتبةُ أوراقِ التقويمِ المكتوبةِ في العلوم (الفصلُ الأول)
   • المصدرُ: data/papers/sci-g<الصف>.json — أوراقٌ ولّدها «شوجب — وكيل الأوراق الورقية» (n8n)
-    بتعليماتِ وثيقةِ تقويمِ المجالِ الثاني ١–٤ (سبتمبر ٢٠٢٦)، وفحصَها الفاحصُ الآليُّ (js/papers-validate.js).
+    بتعليماتِ وثيقةِ تقويمِ المجالِ الثاني ١–٤ (سبتمبر ٢٠٢٦)، وفحصَها الفاحصُ الآليُّ (tools/papers/validate.cjs).
   • الأنواع: أسئلةٌ قصيرةٌ (المعرفةُ والفهم) لكلِّ درس، وأسئلةُ الاستقصاءِ للصفّينِ ١–٢ لكلِّ وحدة،
     واختبارٌ قصيرٌ للصفّينِ ٣–٤ لكلِّ وحدة.
   • الطباعةُ بالأبيضِ والأسودِ على A4، بلا هويةِ شوجب (قرارُ المالك)، وورقةُ التلميذِ ودليلُ التصحيحِ منفصلان.
@@ -75,12 +75,42 @@
   .fields .dots{display:inline-block;border-bottom:1px dotted #000;min-width:58%;transform:translateY(-3px)}
   .meta{display:flex;gap:18px;flex-wrap:wrap;font-family:'Tajawal';font-size:11pt;margin-top:4px}
   .note{font-family:'Tajawal';font-size:10.5pt;margin-top:4px}
+  /* ترويسةُ النموذج المعتمد (٢٠٢٦-١١-١١): مربّعُ الدرجة · العنوان · الاسم والصفّ والمدرسة */
+  .phdr{display:flex;gap:4mm;align-items:flex-start;margin-bottom:5mm;font-family:'Tajawal'}
+  .gbox{border-collapse:collapse;font-weight:800;font-size:11pt;flex:0 0 auto}
+  .gbox td{border:1.5px solid #000;padding:1mm 2mm;text-align:center;height:9mm;min-width:12mm;line-height:1.3}
+  .gbox td.lb{min-width:20mm}
+  .tbox{flex:1;border:1.5px solid #000;padding:2mm 3mm;font-weight:800;font-size:14pt;text-align:center;line-height:1.55;align-self:stretch;display:flex;align-items:center;justify-content:center}
+  .sbox{flex:0 0 auto;border:1.5px solid #000;padding:1mm 3mm;font-size:11.5pt;font-weight:700;line-height:2.05}
+  .sbox .dots{display:inline-block;width:36mm;border-bottom:1.2px dotted #000;margin-right:1mm}
+  table.items{width:100%;border-collapse:collapse}
+  table.items th,table.items td{border:1.5px solid #000;vertical-align:top;padding:2mm 2.5mm}
+  table.items th{font-family:'Tajawal';font-weight:800;font-size:12pt;text-align:center;vertical-align:middle}
+  table.items td.n{width:13mm;text-align:center;font-family:'Tajawal';font-weight:800}
+  table.items td.m{width:16mm;text-align:center;font-family:'Tajawal';font-weight:800;font-size:11.5pt}
+  tr.item{break-inside:avoid;page-break-inside:avoid}
+  .stem{font-weight:700}
+  .circ{display:inline-block;width:13px;height:13px;border:1.6px solid #000;border-radius:50%;vertical-align:middle;margin-left:2mm}
+  .copts{display:flex;flex-wrap:wrap;gap:2mm 10mm;font-weight:700}
+  .copts.col{flex-direction:column}
+  /* رسومُ شوجب في الورقة (سِجلّ js/qpics.js) — رماديّةٌ كما تُطبَع */
+  .pc{display:inline-flex;flex-direction:column;align-items:center;gap:.5mm;vertical-align:middle}
+  .pc .qpic-img,.pc svg{width:19mm;height:19mm;object-fit:contain;filter:grayscale(1) contrast(1.15)}
+  .pc b{font-weight:700;font-size:11.5pt;line-height:1.3}
+  .pbox{border:1.3px solid #000;border-radius:4px;padding:1mm 2.5mm}
+  .popts{display:flex;flex-wrap:wrap;gap:3mm 9mm;justify-content:flex-start;align-items:flex-end}
+  .popt{display:inline-flex;flex-direction:column;align-items:center;gap:1mm;font-weight:700}
+  .spic{float:left;margin:0 4mm 1mm 0}
+  .spic .qpic-img,.spic svg{width:17mm;height:17mm;object-fit:contain;filter:grayscale(1) contrast(1.15)}
+  .scene{display:flex;gap:8mm;justify-content:center;margin:1mm 0 2mm}
+  .drawbox{border:1.3px dashed #000;height:36mm;border-radius:6px;margin-top:1mm}
+  .match.pics{row-gap:4mm}
   .item{margin:0 0 6mm;break-inside:avoid;page-break-inside:avoid}
   .qh{display:flex;gap:8px;align-items:flex-start}
   .num{flex:0 0 auto;width:26px;height:26px;border:1.5px solid #000;border-radius:50%;text-align:center;line-height:23px;font-family:'Tajawal';font-weight:800;font-size:11pt;margin-top:4px}
   .ptext{flex:1}
   .mark{flex:0 0 auto;border:1.5px solid #000;border-radius:5px;padding:0 6px;font-family:'Tajawal';font-weight:700;font-size:10.5pt;white-space:nowrap;margin-top:4px}
-  .body{padding-right:34px;margin-top:2mm}
+  .body{margin-top:2mm}
   .opts{display:grid;grid-template-columns:repeat(2,1fr);gap:2mm 8mm}
   .opts.four{grid-template-columns:repeat(4,1fr)}
   .opt b{font-family:'Tajawal'}
@@ -116,6 +146,9 @@
   .key td.c{text-align:center;white-space:nowrap}
   .key .tot{font-family:'Tajawal';font-weight:700;margin-top:4mm;display:flex;gap:10mm}
   .key .ans{white-space:pre-line}
+  .key .ktitle{font-family:'Tajawal';font-weight:800;font-size:13pt;text-decoration:underline;text-underline-offset:5px;margin:0 0 4mm}
+  .key table.k5{font-size:11pt}
+  .key table.k5 td{vertical-align:middle}
 
   @page{size:A4;margin:0}
   @media print{
@@ -152,6 +185,7 @@
   </div>
 </div>
 
+<script src="js/qpics.js?v=1"></script>
 <script>
 (function () {
   if (document.documentElement.classList.contains('is-closed')) return;
@@ -243,42 +277,62 @@
     window.print();
   };
 
-  function head(rec, d, isKey) {
-    var p = rec.paper, g = rec.grade;
-    var scope = rec.kind === 'short-questions' && rec.domain === 'knowledge'
-      ? 'الدرس: ' + esc(rec.lessons[0].title) : 'الوحدة ' + ar(rec.unitNo) + ': ' + esc(rec.unit);
-    var time = rec.kind === 'short-test' ? 'حصّة دراسيّة واحدة' : 'عشر دقائق';
-    var title = (isKey ? 'دليل التصحيح — ' : '') + esc(p.title || '');
-    var h = '<div class="hdr"><div class="hdr-top"><span>مادّة العلوم — الصفّ ' + GR[g] + '</span><span class="hdr-title">' + title + '</span><span>الدرجة: ' + ar(p.total) + '</span></div>';
-    if (!isKey) h += '<div class="fields"><span>اسم التلميذ/ـة: <i class="dots"></i></span><span>الصفّ والشعبة: <i class="dots"></i></span><span>اسم المدرسة: <i class="dots"></i></span><span>التاريخ: <i class="dots"></i></span></div>';
-    h += '<div class="meta"><span>' + scope + '</span><span>الزمن: ' + time + '</span><span>عدد المفردات: ' + ar(p.items.length) + '</span></div>';
-    if (!isKey && g === 1) h += '<div class="note">للمعلّمة: تُقرأ التعليماتُ للتلاميذ.</div>';
-    return h + '</div>';
+  /* عنوانُ الورقةِ بصيغةِ النموذجِ المعتمد: «سؤال قصير (  ) معرفة وفهم في مادة العلوم للصف الأول الأساسي».
+     الرقمُ بينَ القوسَين تكتبُه المعلّمة (ترتيبُ الورقةِ في الرصد)، فالمكتبةُ ورقةٌ لكلِّ درسٍ أو وحدة. */
+  var DOM = { knowledge: 'معرفة وفهم', inquiry: 'استقصاء علمي' };
+  function titleOf(rec) {
+    var gr = 'في مادة العلوم للصف ' + GR[rec.grade] + ' الأساسي';
+    return rec.kind === 'short-test' ? 'اختبار قصير (&nbsp;&nbsp;&nbsp;) ' + gr : 'سؤال قصير (&nbsp;&nbsp;&nbsp;) ' + DOM[rec.domain] + ' ' + gr;
+  }
+  function head(rec) {
+    var rows = rec.kind === 'short-test' ? ['معرفة وفهم', 'استقصاء علمي'] : [DOM[rec.domain]];
+    var g = '<table class="gbox"><tr><td class="lb">الدرجة</td><td></td><td></td></tr>' +
+      rows.map(function (r) { return '<tr><td class="lb">' + r + '</td><td></td><td></td></tr>'; }).join('') + '</table>';
+    return '<div class="phdr">' + g + '<div class="tbox">' + titleOf(rec) + '</div>' +
+      '<div class="sbox"><div>الاسم :<i class="dots"></i></div><div>الصف :<i class="dots"></i></div><div>المدرسة :<i class="dots"></i></div></div></div>';
   }
 
   function student(rec, d) {
-    var h = '<div class="sheet student">' + head(rec, d, false);
+    var h = '<div class="sheet student">' + head(rec) +
+      '<table class="items"><tr><th>المفردة</th><th>الـــــســـــؤال</th><th>الدرجة</th></tr>';
     rec.paper.items.forEach(function (it, i) { h += item(it, i, rec, d); });
-    return h + '</div>';
+    return h + '</table></div>';
   }
 
-  function qh(i, text, marks) {
-    return '<div class="qh"><span class="num">' + ar(i + 1) + '</span><div class="ptext">' + lines(text) + '</div><span class="mark">(' + ar(marks) + ' ' + (marks === 1 ? 'درجة' : 'درجتان') + ')</span></div>';
+  function qh(i, text) { return '<div class="stem">' + lines(text) + '</div>'; }
+  function pic(w) { return (window.qPic && window.qPic(w)) || ''; }
+  /* بطاقةُ صورةٍ بكلمتِها؛ الكلمةُ بلا رسمٍ تبقى نصّاً (لا فراغ). */
+  function pcard(w, boxed) { var im = pic(w); var c = im ? '<span class="pc">' + im + '<b>' + esc(ar(w)) + '</b></span>' : '<span>' + esc(ar(w)) + '</span>'; return boxed && im ? '<span class="pbox">' + c + '</span>' : c; }
+  /* مطابقةٌ تتجاوزُ الحركات: «ضع دائرة حول» تُطابِقُ «ضَعْ دائِرَةً حَوْلَ». */
+  function fuzzy(plain) { return new RegExp('^\\s*' + plain.split('').map(function (c) { return c === ' ' ? '\\s+' : c + '[\\u064B-\\u0652\\u0670\\u0640]*'; }).join(''), ''); }
+  var SHADE = '(ظَلِّلْ دائِرَةَ الإجابَةِ الصَّحيحَةِ)';
+  var GENERIC = [fuzzy('ضع دائرة حول رمز الإجابة الصحيحة'), fuzzy('ضع دائرة حول الإجابة الصحيحة')];
+  var RAMZ = /(حَ?وْ?لَ?\s+)رَ?مْ?زِ?\s+/;
+  /* تعليمةُ الاختيارِ من متعدّدٍ بصيغةِ النموذج: الدوائرُ تُظلَّل، فلا رموزَ (أ، ب) ولا «رمز الإجابة». */
+  function mcqStem(p) {
+    p = String(p || '');
+    for (var k = 0; k < GENERIC.length; k++) {
+      var m = GENERIC[k].exec(p);
+      if (m) { var rest = p.slice(m[0].length).replace(/^\s*[:：،]\s*/, ''); return rest + ' ' + SHADE; }
+    }
+    return p.replace(RAMZ, '$1');
   }
   function bank(words, seed) { return '<div class="bank">' + shuffle(words, seed).map(function (w) { return '<span>' + esc(ar(w)) + '</span>'; }).join('') + '</div>'; }
   function wlines(n) { var s = '<div class="lines">'; for (var k = 0; k < n; k++) s += '<div class="ln"></div>'; return s + '</div>'; }
 
   function item(it, i, rec, d) {
-    var seed = rec.id + '#' + i, m = Number(it.marks) || 1, h = '<div class="item">', b = '';
+    var seed = rec.id + '#' + i, m = Number(it.marks) || 1, h = '', b = '';
     switch (it.type) {
       case 'mcq': {
         var long = (it.options || []).some(function (o) { return String(o).length > 18; });
-        h += qh(i, it.prompt, m);
-        b = '<div class="opts' + (long ? '' : ' four') + '">' + (it.options || []).map(function (o, k) { return '<div class="opt"><b>' + LET[k] + ')</b> ' + esc(ar(o)) + '</div>'; }).join('') + '</div>';
+        h += (it.stemPic && pic(it.stemPic) ? '<span class="spic">' + pic(it.stemPic) + '</span>' : '') + qh(i, mcqStem(it.prompt));
+        if (it.pics === true) b = '<div class="popts">' + (it.options || []).map(function (o) { return '<span class="popt">' + (pic(o) ? '<span class="pc">' + pic(o) + '</span>' : '') + '<span><i class="circ"></i>' + esc(ar(o)) + '</span></span>'; }).join('') + '</div>';
+        else b = '<div class="copts' + (long ? ' col' : '') + '">' + (it.options || []).map(function (o) { return '<span><i class="circ"></i>' + esc(ar(o)) + '</span>'; }).join('') + '</div>';
+        b += '<div style="clear:both"></div>';
         break; }
       case 'tf':
-        h += qh(i, 'ضَعْ عَلامَةَ (✓) أَمامَ العِبارَةِ الصَّحيحَةِ، وعَلامَةَ (✗) أَمامَ العِبارَةِ الخاطِئَةِ:', m);
-        b = '<div class="tf-row"><span>' + esc(ar(it.statement)) + '</span><span class="paren">(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span></div>';
+        h += qh(i, 'هَلِ العِبارَةُ الآتِيَةُ صَحيحَةٌ أَمْ خاطِئَةٌ؟ (ظَلِّلِ الدّائِرَةَ)');
+        b = '<div style="font-weight:700">' + esc(ar(it.statement)) + '</div><div class="copts" style="margin-top:2mm"><span><i class="circ"></i>صَحيحَةٌ</span><span><i class="circ"></i>خاطِئَةٌ</span></div>';
         break;
       case 'correct-word': {
         h += qh(i, it.prompt || 'اُكْتُبِ الكَلِمَةَ الصَّحيحَةَ مَكانَ الكَلِمَةِ الَّتي تَحْتَها خَطٌّ:', m);
@@ -292,8 +346,10 @@
         var A = (it.pairs || []).map(function (p) { return p.a; }), B = (it.pairs || []).map(function (p) { return p.b; });
         if (it.extra) B.push(it.extra);
         B = shuffle(B, seed);
-        b = '<div class="match">';
-        for (var r = 0; r < Math.max(A.length, B.length); r++) b += '<div class="a">' + (A[r] != null ? '<span>' + esc(ar(A[r])) + '</span><i class="dot"></i>' : '') + '</div><div></div><div class="b">' + (B[r] != null ? '<i class="dot"></i><span>' + esc(ar(B[r])) + '</span>' : '') + '</div>';
+        var pa = it.pics === true || it.pics === 'a', pb = it.pics === true || it.pics === 'b';
+        var cell = function (w, on) { return on ? pcard(w, true) : '<span>' + esc(ar(w)) + '</span>'; };
+        b = '<div class="match' + (pa || pb ? ' pics' : '') + '"><div class="a"><b>(أ)</b></div><div></div><div class="b"><b>(ب)</b></div>';
+        for (var r = 0; r < Math.max(A.length, B.length); r++) b += '<div class="a">' + (A[r] != null ? cell(A[r], pa) + '<i class="dot"></i>' : '') + '</div><div></div><div class="b">' + (B[r] != null ? '<i class="dot"></i>' + cell(B[r], pb) : '') + '</div>';
         b += '</div>';
         break; }
       case 'fill': {
@@ -304,7 +360,8 @@
         h += qh(i, it.prompt, m);
         var G = it.groups || [], all = [], rows = 0;
         G.forEach(function (g) { all = all.concat(g.items || []); rows = Math.max(rows, (g.items || []).length); });
-        b = bank(all, seed) + '<table class="grid"><tr>' + G.map(function (g) { return '<th>' + esc(ar(g.name)) + '</th>'; }).join('') + '</tr>';
+        b = (it.pics === true ? '<div class="bank">' + shuffle(all, seed).map(function (w) { return pcard(w); }).join('') + '</div>' : bank(all, seed)) +
+          '<table class="grid"><tr>' + G.map(function (g) { return '<th>' + esc(ar(g.name)) + '</th>'; }).join('') + '</tr>';
         for (var rr = 0; rr < rows; rr++) b += '<tr>' + G.map(function () { return '<td class="w"></td>'; }).join('') + '</tr>';
         b += '</table>';
         break; }
@@ -314,7 +371,7 @@
         break;
       case 'exclude':
         h += qh(i, it.prompt, m);
-        b = '<div class="boxes">' + (it.options || []).map(function (o) { return '<span class="box">' + esc(ar(o)) + '</span>'; }).join('') + '</div>';
+        b = '<div class="boxes">' + (it.options || []).map(function (o) { return '<span class="box">' + (it.pics === true ? pcard(o) : esc(ar(o))) + '</span>'; }).join('') + '</div>';
         break;
       case 'label': {
         h += qh(i, it.prompt, m);
@@ -344,24 +401,57 @@
         if (parts.length > 1) b += parts.slice(1).map(function (l) { return '<div>' + esc(ar(l)) + '</div>' + wlines(1); }).join('');
         else b += wlines(1);
         break; }
+      case 'opinion': {
+        /* سؤالُ الرأي بصيغةِ النموذج: موقفٌ ثمّ «هل توافقه الرأي؟» نعم/لا، ثمّ فسِّرْ، ويجوز اُرْسُمْ. */
+        h += qh(i, String(it.scenario || '') + ' ' + String(it.question || ''));
+        var sp = (it.scenePics || []).filter(function (w) { return pic(w); });
+        b = (sp.length ? '<div class="scene">' + sp.map(function (w) { return pcard(w, true); }).join('') + '</div>' : '') +
+          '<div class="copts"><span><i class="circ"></i>نَعَمْ</span><span><i class="circ"></i>لا</span></div>' +
+          '<div class="stem" style="margin-top:2mm">' + lines(it.explain || 'فَسِّرْ إجابَتَكَ:') + '</div>' + wlines(Math.max(1, Math.min(2, Number(it.lines) || 1)));
+        if (it.draw) b += '<div class="stem" style="margin-top:2mm">' + lines(it.draw) + '</div><div class="drawbox"></div>';
+        break; }
       default:
         h += qh(i, it.prompt || '', m);
     }
-    return h + '<div class="body">' + b + '</div></div>';
+    return '<tr class="item"><td class="n">' + ar(i + 1) + '-</td><td>' + h + '<div class="body">' + b + '</div></td><td class="m">' + (m === 2 ? 'درجتان' : 'درجة') + '</td></tr>';
   }
 
+  /* معاييرُ التصحيح: المفردةُ ذاتُ الدرجةِ الواحدة بعبارةِ النموذج. */
+  function criteria(it) {
+    var g = strip(it.guidance || '').replace(/[.\s]+$/, '');
+    if (Number(it.marks) === 1 && /^اجابة صحيحة\s*=\s*[1١]$/.test(g.replace(/[إأآ]/g, 'ا'))) return 'درجة في حالة الإجابة الصحيحة\nصفر في حالة الإجابة الخاطئة';
+    return ar(it.guidance || '');
+  }
+  function answerOf(it) {
+    var a = ar(String(it.answerText || '').replace(/\s*->\s*/g, ' ← '));
+    if (it.type === 'tf' && typeof it.answer === 'boolean') return '● ' + (it.answer ? 'صَحيحَةٌ' : 'خاطِئَةٌ');
+    return it.type === 'mcq' ? '● ' + a : a;
+  }
   function keySheet(rec, d) {
-    var titles = {}; rec.lessons.forEach(function (l) { titles[l.id] = l.title; });
     var k = 0, q = 0;
-    var h = '<div class="sheet key">' + head(rec, d, true) + '<table><tr><th>المفردة</th><th>فرع المادة والدرس</th><th>رقم الهدف</th><th>الهدف التعليمي</th><th>الهدف التقويمي</th><th>الصعوبة</th><th>الإجابة</th><th>الدرجة</th><th>إرشادات إضافية</th></tr>';
-    rec.paper.items.forEach(function (it, i) {
-      var lid = String(it.seed || '').split('#')[0], obj = String(it.objective || ''), mm = /^\s*([0-9][A-Za-z]{2,3}[0-9]+)\s*[:：]\s*(.*)$/.exec(obj);
-      if (it.domain === 'inquiry') q += Number(it.marks) || 0; else k += Number(it.marks) || 0;
-      h += '<tr><td class="c">' + ar(i + 1) + '</td><td>' + esc(ST[it.strand] || it.strand || '') + (titles[lid] ? ' — ' + esc(titles[lid]) : '') + '</td>' +
-        '<td class="c">' + esc(mm ? mm[1] : '—') + '</td><td>' + esc(mm ? mm[2] : obj) + '</td><td class="c">' + esc(LV[it.level] || it.level) + '</td>' +
-        '<td class="c">' + esc(DF[it.difficulty] || it.difficulty) + '</td><td class="ans">' + esc(ar(String(it.answerText || '').replace(/\s*->\s*/g, ' ← '))) + '</td><td class="c">' + ar(it.marks) + '</td><td>' + esc(ar(it.guidance || '')) + '</td></tr>';
-    });
-    h += '</table><div class="tot"><span>المعرفة والفهم: ' + ar(k) + '</span><span>الاستقصاء العلمي: ' + ar(q) + '</span><span>المجموع: ' + ar(k + q) + '</span></div>';
+    rec.paper.items.forEach(function (it) { if (it.domain === 'inquiry') q += Number(it.marks) || 0; else k += Number(it.marks) || 0; });
+    var scope = rec.kind === 'short-questions' && rec.domain === 'knowledge' ? 'الدرس: ' + esc(rec.lessons[0].title) : 'الوحدة ' + ar(rec.unitNo) + ': ' + esc(rec.unit);
+    var h = '<div class="sheet key"><div class="ktitle">نموذج الإجابة — ' + titleOf(rec) + '</div><div class="meta" style="margin:-2mm 0 4mm">' + scope + '</div>';
+    if (rec.kind === 'short-test') {
+      /* الاختبارُ القصير: أعمدةُ دليلِ التصحيحِ كما تسمّيها الوثيقة. */
+      var titles = {}; rec.lessons.forEach(function (l) { titles[l.id] = l.title; });
+      h += '<table><tr><th>المفردة</th><th>فرع المادة والدرس</th><th>رقم الهدف</th><th>الهدف التعليمي</th><th>الهدف التقويمي</th><th>الصعوبة</th><th>الإجابة</th><th>الدرجة</th><th>إرشادات إضافية</th></tr>';
+      rec.paper.items.forEach(function (it, i) {
+        var lid = String(it.seed || '').split('#')[0], obj = String(it.objective || ''), mm = /^\s*([0-9][A-Za-z]{2,3}[0-9]+)\s*[:：]\s*(.*)$/.exec(obj);
+        h += '<tr><td class="c">' + ar(i + 1) + '</td><td>' + esc(ST[it.strand] || it.strand || '') + (titles[lid] ? ' — ' + esc(titles[lid]) : '') + '</td>' +
+          '<td class="c">' + esc(mm ? mm[1] : '—') + '</td><td>' + esc(mm ? mm[2] : obj) + '</td><td class="c">' + esc(LV[it.level] || it.level) + '</td>' +
+          '<td class="c">' + esc(DF[it.difficulty] || it.difficulty) + '</td><td class="ans">' + esc(answerOf(it)) + '</td><td class="c">' + ar(it.marks) + '</td><td>' + esc(ar(it.guidance || '')) + '</td></tr>';
+      });
+      h += '</table><div class="tot"><span>المعرفة والفهم: ' + ar(k) + '</span><span>الاستقصاء العلمي: ' + ar(q) + '</span><span>المجموع: ' + ar(k + q) + '</span></div>';
+    } else {
+      /* السؤالُ القصير: أعمدةُ النموذجِ المعتمد — م · الدرجة · الإجابة · معايير التصحيح · الهدف المنتهي. */
+      h += '<table class="k5"><tr><th>م</th><th>الدرجة</th><th>الإجابة</th><th>معايير التصحيح</th><th>الهدف المنتهي</th></tr>';
+      rec.paper.items.forEach(function (it, i) {
+        var obj = String(it.objective || '').replace(/^\s*([0-9][A-Za-z]{2,3}[0-9]+)\s*[:：]\s*/, '$1 ');
+        h += '<tr><td class="c">' + ar(i + 1) + '</td><td class="c">' + ar(it.marks) + '</td><td class="ans">' + esc(answerOf(it)) + '</td><td class="ans">' + esc(criteria(it)) + '</td><td>' + esc(obj) + '</td></tr>';
+      });
+      h += '</table><div class="tot"><span>المجموع: ' + ar(k + q) + '</span></div>';
+    }
     return h + '</div>';
   }
 
