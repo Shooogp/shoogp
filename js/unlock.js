@@ -1244,7 +1244,7 @@
     devPapers = document.createElement('a');
     devPapers.className = 'lockdev-btn lockdev-dash';
     devPapers.href = 'papers.html';
-    devPapers.textContent = '📝 الأوراق الورقية';
+    devPapers.textContent = '📝 صانع الاختبارات';
     devPapers.title = 'أسئلة قصيرة واختبارات قصيرة للطباعة — العلوم';
     devWrap.appendChild(devPapers);
     app.insertBefore(devWrap, app.firstChild);   // أوّلُ عنصرٍ في `.app` — فوقَ الترويسة
